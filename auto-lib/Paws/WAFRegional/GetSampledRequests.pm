@@ -41,16 +41,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'StartTime' => '2016-09-27T15:50Z',
           'EndTime'   => '2016-09-27T15:50Z'
         },
-        'RuleId'   => 'WAFRule-1-Example',
         'WebAclId' => 'createwebacl-1472061481310',
+        'RuleId'   => 'WAFRule-1-Example',
         'MaxItems' => 100
       }
     );
 
     # Results:
+    my $TimeWindow      = $GetSampledRequestsResponse->TimeWindow;
     my $SampledRequests = $GetSampledRequestsResponse->SampledRequests;
     my $PopulationSize  = $GetSampledRequestsResponse->PopulationSize;
-    my $TimeWindow      = $GetSampledRequestsResponse->TimeWindow;
 
     # Returns a L<Paws::WAFRegional::GetSampledRequestsResponse> object.
 

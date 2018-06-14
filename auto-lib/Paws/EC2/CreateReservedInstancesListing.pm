@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       PriceSchedules => [
         {
           Price        => 1,        # OPTIONAL
-          Term         => 1,        # OPTIONAL
           CurrencyCode => 'USD',    # values: USD; OPTIONAL
+          Term         => 1,        # OPTIONAL
         },
         ...
       ],

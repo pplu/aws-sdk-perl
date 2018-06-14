@@ -47,16 +47,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $IsTruncated    = $ListObjectsOutput->IsTruncated;
-    my $Marker         = $ListObjectsOutput->Marker;
-    my $Name           = $ListObjectsOutput->Name;
-    my $CommonPrefixes = $ListObjectsOutput->CommonPrefixes;
-    my $Delimiter      = $ListObjectsOutput->Delimiter;
     my $Contents       = $ListObjectsOutput->Contents;
-    my $MaxKeys        = $ListObjectsOutput->MaxKeys;
-    my $NextMarker     = $ListObjectsOutput->NextMarker;
+    my $IsTruncated    = $ListObjectsOutput->IsTruncated;
     my $Prefix         = $ListObjectsOutput->Prefix;
     my $EncodingType   = $ListObjectsOutput->EncodingType;
+    my $Delimiter      = $ListObjectsOutput->Delimiter;
+    my $CommonPrefixes = $ListObjectsOutput->CommonPrefixes;
+    my $Marker         = $ListObjectsOutput->Marker;
+    my $NextMarker     = $ListObjectsOutput->NextMarker;
+    my $Name           = $ListObjectsOutput->Name;
+    my $MaxKeys        = $ListObjectsOutput->MaxKeys;
 
     # Returns a L<Paws::S3::ListObjectsOutput> object.
 

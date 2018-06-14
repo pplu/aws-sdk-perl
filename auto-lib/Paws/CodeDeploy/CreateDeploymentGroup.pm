@@ -46,21 +46,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DeploymentGroupName => 'MyDeploymentGroupName',
       ServiceRoleArn      => 'MyRole',
       AlarmConfiguration  => {
-        alarms => [
+        ignorePollAlarmFailure => 1,    # OPTIONAL
+        alarms                 => [
           {
-            name => 'MyAlarmName',    # OPTIONAL
+            name => 'MyAlarmName',      # OPTIONAL
           },
           ...
-        ],                            # OPTIONAL
-        ignorePollAlarmFailure => 1,  # OPTIONAL
-        enabled                => 1,  # OPTIONAL
+        ],                              # OPTIONAL
+        enabled => 1,                   # OPTIONAL
       },    # OPTIONAL
       AutoRollbackConfiguration => {
-        events => [
+        enabled => 1,    # OPTIONAL
+        events  => [
           'DEPLOYMENT_FAILURE',
           ... # values: DEPLOYMENT_FAILURE, DEPLOYMENT_STOP_ON_ALARM, DEPLOYMENT_STOP_ON_REQUEST
         ],    # OPTIONAL
-        enabled => 1,    # OPTIONAL
       },    # OPTIONAL
       AutoScalingGroups => [ 'MyAutoScalingGroupName', ... ],    # OPTIONAL
       BlueGreenDeploymentConfiguration => {
@@ -69,9 +69,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           action => 'TERMINATE',    # values: TERMINATE, KEEP_ALIVE; OPTIONAL
         },    # OPTIONAL
         deploymentReadyOption => {
-          waitTimeInMinutes => 1,                      # OPTIONAL
-          actionOnTimeout   => 'CONTINUE_DEPLOYMENT'
+          actionOnTimeout => 'CONTINUE_DEPLOYMENT'
           ,    # values: CONTINUE_DEPLOYMENT, STOP_DEPLOYMENT; OPTIONAL
+          waitTimeInMinutes => 1,    # OPTIONAL
         },    # OPTIONAL
         greenFleetProvisioningOption => {
           action => 'DISCOVER_EXISTING'
@@ -86,26 +86,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       Ec2TagFilters => [
         {
-          Value => 'MyValue',    # OPTIONAL
-          Key   => 'MyKey',      # OPTIONAL
           Type =>
             'KEY_ONLY',  # values: KEY_ONLY, VALUE_ONLY, KEY_AND_VALUE; OPTIONAL
+          Key   => 'MyKey',      # OPTIONAL
+          Value => 'MyValue',    # OPTIONAL
         },
         ...
-      ],                 # OPTIONAL
+      ],                         # OPTIONAL
       Ec2TagSet => {
         ec2TagSetList => [
           [
             {
-              Value => 'MyValue',    # OPTIONAL
-              Key   => 'MyKey',      # OPTIONAL
-              Type  => 'KEY_ONLY'
+              Type => 'KEY_ONLY'
               ,    # values: KEY_ONLY, VALUE_ONLY, KEY_AND_VALUE; OPTIONAL
+              Key   => 'MyKey',      # OPTIONAL
+              Value => 'MyValue',    # OPTIONAL
             },
             ...
           ],
           ...
-        ],         # OPTIONAL
+        ],                           # OPTIONAL
       },    # OPTIONAL
       LoadBalancerInfo => {
         elbInfoList => [
@@ -123,9 +123,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       OnPremisesInstanceTagFilters => [
         {
-          Key => 'MyKey',    # OPTIONAL
           Type =>
             'KEY_ONLY',  # values: KEY_ONLY, VALUE_ONLY, KEY_AND_VALUE; OPTIONAL
+          Key   => 'MyKey',      # OPTIONAL
           Value => 'MyValue',    # OPTIONAL
         },
         ...
@@ -134,9 +134,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         onPremisesTagSetList => [
           [
             {
-              Key  => 'MyKey',     # OPTIONAL
               Type => 'KEY_ONLY'
               ,    # values: KEY_ONLY, VALUE_ONLY, KEY_AND_VALUE; OPTIONAL
+              Key   => 'MyKey',      # OPTIONAL
               Value => 'MyValue',    # OPTIONAL
             },
             ...
@@ -146,15 +146,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       TriggerConfigurations => [
         {
-          triggerTargetArn => 'MyTriggerTargetArn',    # OPTIONAL
-          triggerName      => 'MyTriggerName',         # OPTIONAL
-          triggerEvents    => [
+          triggerEvents => [
             'DeploymentStart',
             ... # values: DeploymentStart, DeploymentSuccess, DeploymentFailure, DeploymentStop, DeploymentRollback, DeploymentReady, InstanceStart, InstanceSuccess, InstanceFailure, InstanceReady
           ],    # OPTIONAL
+          triggerName      => 'MyTriggerName',         # OPTIONAL
+          triggerTargetArn => 'MyTriggerTargetArn',    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],                                               # OPTIONAL
     );
 
     # Results:

@@ -82,8 +82,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       StorageType        => 'MyString',                          # OPTIONAL
       Tags               => [
         {
-          Value => 'MyString',
           Key   => 'MyString',
+          Value => 'MyString',
         },
         ...
       ],                                                         # OPTIONAL

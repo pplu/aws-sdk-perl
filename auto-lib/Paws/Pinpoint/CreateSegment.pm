@@ -33,12 +33,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ApplicationId       => 'My__string',
       WriteSegmentRequest => {
         Dimensions => {
-          Behavior => {
-            Recency => {
-              Duration =>
-                'HR_24',    # values: HR_24, DAY_7, DAY_14, DAY_30; OPTIONAL
-              RecencyType => 'ACTIVE',    # values: ACTIVE, INACTIVE; OPTIONAL
-            },    # OPTIONAL
+          Attributes => {
+            'My__string' => {
+              AttributeType =>
+                'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+              Values => [ 'My__string', ... ],    # OPTIONAL
+            },
+          },    # OPTIONAL
+          UserAttributes => {
+            'My__string' => {
+              AttributeType =>
+                'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+              Values => [ 'My__string', ... ],    # OPTIONAL
+            },
           },    # OPTIONAL
           Demographic => {
             Platform => {
@@ -47,11 +54,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Values => [ 'My__string', ... ],    # OPTIONAL
             },    # OPTIONAL
             Model => {
-              DimensionType =>
-                'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-              Values => [ 'My__string', ... ],    # OPTIONAL
-            },    # OPTIONAL
-            Channel => {
               DimensionType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
               Values => [ 'My__string', ... ],    # OPTIONAL
@@ -71,26 +73,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
               Values => [ 'My__string', ... ],    # OPTIONAL
             },    # OPTIONAL
-          },    # OPTIONAL
-          UserAttributes => {
-            'My__string' => {
-              AttributeType =>
+            Channel => {
+              DimensionType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
               Values => [ 'My__string', ... ],    # OPTIONAL
-            },
-          },    # OPTIONAL
-          Attributes => {
-            'My__string' => {
-              AttributeType =>
-                'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-              Values => [ 'My__string', ... ],    # OPTIONAL
-            },
+            },    # OPTIONAL
           },    # OPTIONAL
           Location => {
             Country => {
               DimensionType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
               Values => [ 'My__string', ... ],    # OPTIONAL
+            },    # OPTIONAL
+          },    # OPTIONAL
+          Behavior => {
+            Recency => {
+              Duration =>
+                'HR_24',    # values: HR_24, DAY_7, DAY_14, DAY_30; OPTIONAL
+              RecencyType => 'ACTIVE',    # values: ACTIVE, INACTIVE; OPTIONAL
             },    # OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL

@@ -34,19 +34,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'Tags' => [
 
           {
-            'Key'               => 'Role',
-            'ResourceType'      => 'auto-scaling-group',
             'ResourceId'        => 'my-auto-scaling-group',
-            'PropagateAtLaunch' => true,
-            'Value'             => 'WebServer'
+            'Value'             => 'WebServer',
+            'ResourceType'      => 'auto-scaling-group',
+            'PropagateAtLaunch' => 1,
+            'Key'               => 'Role'
           },
 
           {
-            'Key'               => 'Dept',
-            'ResourceType'      => 'auto-scaling-group',
             'ResourceId'        => 'my-auto-scaling-group',
-            'PropagateAtLaunch' => true,
-            'Value'             => 'Research'
+            'Value'             => 'Research',
+            'ResourceType'      => 'auto-scaling-group',
+            'PropagateAtLaunch' => 1,
+            'Key'               => 'Dept'
           }
         ]
       }

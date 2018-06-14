@@ -36,7 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       {
         'UserName'              => 'Bob',
         'Password'              => 'h]6EszR}vJ*m',
-        'PasswordResetRequired' => true
+        'PasswordResetRequired' => 1
       }
     );
 

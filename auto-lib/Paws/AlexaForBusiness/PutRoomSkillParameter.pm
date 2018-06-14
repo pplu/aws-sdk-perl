@@ -31,8 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $a4b = Paws->service('AlexaForBusiness');
     my $PutRoomSkillParameterResponse = $a4b->PutRoomSkillParameter(
       RoomSkillParameter => {
-        ParameterValue => 'MyRoomSkillParameterValue',    # min: 1, max: 512
         ParameterKey   => 'MyRoomSkillParameterKey',      # min: 1, max: 256
+        ParameterValue => 'MyRoomSkillParameterValue',    # min: 1, max: 512
 
       },
       SkillId => 'MySkillId',

@@ -36,24 +36,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Values => [
-            'MyString', ...    # OPTIONAL
-          ],                   # OPTIONAL
-          Name => 'MyString',  # OPTIONAL
+          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name => 'MyString',
         },
         ...
-      ],                       # OPTIONAL
-      InstanceIds => [
-        'MyString', ...        # OPTIONAL
-      ],                       # OPTIONAL
-      MaxResults => 1,             # OPTIONAL
-      NextToken  => 'MyString',    # OPTIONAL
+      ],                                    # OPTIONAL
+      InstanceIds => [ 'MyString', ... ],   # OPTIONAL
+      MaxResults  => 1,                     # OPTIONAL
+      NextToken   => 'MyString',            # OPTIONAL
       );
 
     # Results:
+    my $NextToken = $DescribeInstanceCreditSpecificationsResult->NextToken;
     my $InstanceCreditSpecifications =
       $DescribeInstanceCreditSpecificationsResult->InstanceCreditSpecifications;
-    my $NextToken = $DescribeInstanceCreditSpecificationsResult->NextToken;
 
     # Returns a L<Paws::EC2::DescribeInstanceCreditSpecificationsResult> object.
 

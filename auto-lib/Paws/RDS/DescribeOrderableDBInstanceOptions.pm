@@ -44,7 +44,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'EngineVersion'   => '5.6.27',
         'LicenseModel'    => 'general-public-license',
         'Engine'          => 'mysql',
-        'Vpc'             => true,
+        'Vpc'             => 1,
         'DBInstanceClass' => 'db.t2.micro'
       }
       );

@@ -37,31 +37,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RestApiId       => 'MyString',
       PatchOperations => [
         {
-          op =>
-            'add',    # values: add, remove, replace, move, copy, test; OPTIONAL
           from  => 'MyString',
           value => 'MyString',
           path  => 'MyString',
+          op =>
+            'add',    # values: add, remove, replace, move, copy, test; OPTIONAL
         },
         ...
       ],              # OPTIONAL
     );
 
     # Results:
-    my $Type                 = $Integration->Type;
-    my $TimeoutInMillis      = $Integration->TimeoutInMillis;
+    my $HttpMethod           = $Integration->HttpMethod;
+    my $Credentials          = $Integration->Credentials;
+    my $ContentHandling      = $Integration->ContentHandling;
     my $RequestTemplates     = $Integration->RequestTemplates;
+    my $IntegrationResponses = $Integration->IntegrationResponses;
+    my $ConnectionType       = $Integration->ConnectionType;
+    my $ConnectionId         = $Integration->ConnectionId;
+    my $Type                 = $Integration->Type;
     my $RequestParameters    = $Integration->RequestParameters;
     my $CacheKeyParameters   = $Integration->CacheKeyParameters;
-    my $ConnectionId         = $Integration->ConnectionId;
+    my $TimeoutInMillis      = $Integration->TimeoutInMillis;
     my $PassthroughBehavior  = $Integration->PassthroughBehavior;
     my $CacheNamespace       = $Integration->CacheNamespace;
-    my $IntegrationResponses = $Integration->IntegrationResponses;
     my $Uri                  = $Integration->Uri;
-    my $Credentials          = $Integration->Credentials;
-    my $HttpMethod           = $Integration->HttpMethod;
-    my $ContentHandling      = $Integration->ContentHandling;
-    my $ConnectionType       = $Integration->ConnectionType;
 
     # Returns a L<Paws::ApiGateway::Integration> object.
 

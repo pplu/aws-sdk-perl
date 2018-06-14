@@ -42,13 +42,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $Causes          = $DescribeEnvironmentHealthResult->Causes;
-    my $Color           = $DescribeEnvironmentHealthResult->Color;
     my $HealthStatus    = $DescribeEnvironmentHealthResult->HealthStatus;
-    my $InstancesHealth = $DescribeEnvironmentHealthResult->InstancesHealth;
     my $EnvironmentName = $DescribeEnvironmentHealthResult->EnvironmentName;
+    my $InstancesHealth = $DescribeEnvironmentHealthResult->InstancesHealth;
     my $ApplicationMetrics =
       $DescribeEnvironmentHealthResult->ApplicationMetrics;
     my $RefreshedAt = $DescribeEnvironmentHealthResult->RefreshedAt;
+    my $Color       = $DescribeEnvironmentHealthResult->Color;
 
   # Returns a L<Paws::ElasticBeanstalk::DescribeEnvironmentHealthResult> object.
 

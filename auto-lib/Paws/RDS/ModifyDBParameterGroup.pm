@@ -36,9 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'Parameters' => [
 
           {
-            'ParameterValue' => 'America/Phoenix',
             'ParameterName'  => 'time_zone',
-            'ApplyMethod'    => 'immediate'
+            'ApplyMethod'    => 'immediate',
+            'ParameterValue' => 'America/Phoenix'
           }
         ],
         'DBParameterGroupName' => 'mymysqlparametergroup'

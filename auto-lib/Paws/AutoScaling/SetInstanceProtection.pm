@@ -33,9 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example enables instance protection for the specified instance.
     my $SetInstanceProtectionAnswer = $autoscaling->SetInstanceProtection(
       {
-        'AutoScalingGroupName' => 'my-auto-scaling-group',
-        'ProtectedFromScaleIn' => true,
-        'InstanceIds'          => ['i-93633f9b']
+        'ProtectedFromScaleIn' => 1,
+        'InstanceIds'          => ['i-93633f9b'],
+        'AutoScalingGroupName' => 'my-auto-scaling-group'
       }
     );
 
@@ -44,8 +44,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SetInstanceProtectionAnswer = $autoscaling->SetInstanceProtection(
       {
         'ProtectedFromScaleIn' => 0,
-        'AutoScalingGroupName' => 'my-auto-scaling-group',
-        'InstanceIds'          => ['i-93633f9b']
+        'InstanceIds'          => ['i-93633f9b'],
+        'AutoScalingGroupName' => 'my-auto-scaling-group'
       }
     );
 

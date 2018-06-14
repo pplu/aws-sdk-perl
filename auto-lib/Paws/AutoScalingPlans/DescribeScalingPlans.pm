@@ -34,30 +34,30 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeScalingPlansResponse = $autoscaling->DescribeScalingPlans(
       ApplicationSources => [
         {
-          CloudFormationStackARN => 'MyXmlString',    # OPTIONAL
-          TagFilters             => [
+          TagFilters => [
             {
               Values => [
-                'MyXmlStringMaxLen256', ...           # min: 1, max: 256
-              ],                                      # OPTIONAL
-              Key => 'MyXmlStringMaxLen128',    # min: 1, max: 128; OPTIONAL
+                'MyXmlStringMaxLen256', ...    # min: 1, max: 256
+              ],                               # OPTIONAL
+              Key => 'MyXmlStringMaxLen128',   # min: 1, max: 128; OPTIONAL
             },
             ...
-          ],                                    # OPTIONAL
+          ],                                   # OPTIONAL
+          CloudFormationStackARN => 'MyXmlString',    # OPTIONAL
         },
         ...
-      ],                                        # OPTIONAL
-      MaxResults       => 1,                    # OPTIONAL
-      NextToken        => 'MyNextToken',        # OPTIONAL
+      ],                                              # OPTIONAL
+      MaxResults       => 1,                          # OPTIONAL
+      NextToken        => 'MyNextToken',              # OPTIONAL
       ScalingPlanNames => [
-        'MyScalingPlanName', ...                # min: 1, max: 128
-      ],                                        # OPTIONAL
-      ScalingPlanVersion => 1,                  # OPTIONAL
+        'MyScalingPlanName', ...                      # min: 1, max: 128
+      ],                                              # OPTIONAL
+      ScalingPlanVersion => 1,                        # OPTIONAL
     );
 
     # Results:
-    my $ScalingPlans = $DescribeScalingPlansResponse->ScalingPlans;
     my $NextToken    = $DescribeScalingPlansResponse->NextToken;
+    my $ScalingPlans = $DescribeScalingPlansResponse->ScalingPlans;
 
     # Returns a L<Paws::AutoScalingPlans::DescribeScalingPlansResponse> object.
 

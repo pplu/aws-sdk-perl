@@ -52,8 +52,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $TotalNumberOfUsers = $DescribeUsersResponse->TotalNumberOfUsers;
-    my $Marker             = $DescribeUsersResponse->Marker;
     my $Users              = $DescribeUsersResponse->Users;
+    my $Marker             = $DescribeUsersResponse->Marker;
 
     # Returns a L<Paws::WorkDocs::DescribeUsersResponse> object.
 

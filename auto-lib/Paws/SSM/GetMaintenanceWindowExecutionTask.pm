@@ -36,23 +36,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $StartTime = $GetMaintenanceWindowExecutionTaskResult->StartTime;
-    my $MaxConcurrency =
-      $GetMaintenanceWindowExecutionTaskResult->MaxConcurrency;
-    my $MaxErrors     = $GetMaintenanceWindowExecutionTaskResult->MaxErrors;
-    my $StatusDetails = $GetMaintenanceWindowExecutionTaskResult->StatusDetails;
-    my $EndTime       = $GetMaintenanceWindowExecutionTaskResult->EndTime;
-    my $Status        = $GetMaintenanceWindowExecutionTaskResult->Status;
-    my $WindowExecutionId =
-      $GetMaintenanceWindowExecutionTaskResult->WindowExecutionId;
-    my $TaskArn     = $GetMaintenanceWindowExecutionTaskResult->TaskArn;
-    my $ServiceRole = $GetMaintenanceWindowExecutionTaskResult->ServiceRole;
-    my $TaskExecutionId =
-      $GetMaintenanceWindowExecutionTaskResult->TaskExecutionId;
+    my $TaskArn = $GetMaintenanceWindowExecutionTaskResult->TaskArn;
+    my $Status  = $GetMaintenanceWindowExecutionTaskResult->Status;
     my $TaskParameters =
       $GetMaintenanceWindowExecutionTaskResult->TaskParameters;
-    my $Type     = $GetMaintenanceWindowExecutionTaskResult->Type;
-    my $Priority = $GetMaintenanceWindowExecutionTaskResult->Priority;
+    my $ServiceRole   = $GetMaintenanceWindowExecutionTaskResult->ServiceRole;
+    my $StatusDetails = $GetMaintenanceWindowExecutionTaskResult->StatusDetails;
+    my $MaxErrors     = $GetMaintenanceWindowExecutionTaskResult->MaxErrors;
+    my $Type          = $GetMaintenanceWindowExecutionTaskResult->Type;
+    my $TaskExecutionId =
+      $GetMaintenanceWindowExecutionTaskResult->TaskExecutionId;
+    my $WindowExecutionId =
+      $GetMaintenanceWindowExecutionTaskResult->WindowExecutionId;
+    my $EndTime   = $GetMaintenanceWindowExecutionTaskResult->EndTime;
+    my $StartTime = $GetMaintenanceWindowExecutionTaskResult->StartTime;
+    my $Priority  = $GetMaintenanceWindowExecutionTaskResult->Priority;
+    my $MaxConcurrency =
+      $GetMaintenanceWindowExecutionTaskResult->MaxConcurrency;
 
     # Returns a L<Paws::SSM::GetMaintenanceWindowExecutionTaskResult> object.
 

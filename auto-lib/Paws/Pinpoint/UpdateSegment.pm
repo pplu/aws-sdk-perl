@@ -35,65 +35,65 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SegmentId           => 'My__string',
       WriteSegmentRequest => {
         Dimensions => {
-          UserAttributes => {
+          Attributes => {
             'My__string' => {
-              Values => [ 'My__string', ... ],    # OPTIONAL
               AttributeType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+              Values => [ 'My__string', ... ],    # OPTIONAL
             },
           },    # OPTIONAL
-          Behavior => {
-            Recency => {
-              RecencyType => 'ACTIVE',    # values: ACTIVE, INACTIVE; OPTIONAL
-              Duration =>
-                'HR_24',    # values: HR_24, DAY_7, DAY_14, DAY_30; OPTIONAL
-            },    # OPTIONAL
+          UserAttributes => {
+            'My__string' => {
+              AttributeType =>
+                'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+              Values => [ 'My__string', ... ],    # OPTIONAL
+            },
           },    # OPTIONAL
           Demographic => {
             Platform => {
-              Values => [ 'My__string', ... ],    # OPTIONAL
               DimensionType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-            },    # OPTIONAL
-            DeviceType => {
               Values => [ 'My__string', ... ],    # OPTIONAL
-              DimensionType =>
-                'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-            },    # OPTIONAL
-            AppVersion => {
-              Values => [ 'My__string', ... ],    # OPTIONAL
-              DimensionType =>
-                'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-            },    # OPTIONAL
-            Make => {
-              Values => [ 'My__string', ... ],    # OPTIONAL
-              DimensionType =>
-                'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
             },    # OPTIONAL
             Model => {
-              Values => [ 'My__string', ... ],    # OPTIONAL
               DimensionType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+              Values => [ 'My__string', ... ],    # OPTIONAL
+            },    # OPTIONAL
+            DeviceType => {
+              DimensionType =>
+                'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+              Values => [ 'My__string', ... ],    # OPTIONAL
+            },    # OPTIONAL
+            Make => {
+              DimensionType =>
+                'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+              Values => [ 'My__string', ... ],    # OPTIONAL
+            },    # OPTIONAL
+            AppVersion => {
+              DimensionType =>
+                'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+              Values => [ 'My__string', ... ],    # OPTIONAL
             },    # OPTIONAL
             Channel => {
-              Values => [ 'My__string', ... ],    # OPTIONAL
               DimensionType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+              Values => [ 'My__string', ... ],    # OPTIONAL
             },    # OPTIONAL
           },    # OPTIONAL
           Location => {
             Country => {
-              Values => [ 'My__string', ... ],    # OPTIONAL
               DimensionType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+              Values => [ 'My__string', ... ],    # OPTIONAL
             },    # OPTIONAL
           },    # OPTIONAL
-          Attributes => {
-            'My__string' => {
-              Values => [ 'My__string', ... ],    # OPTIONAL
-              AttributeType =>
-                'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-            },
+          Behavior => {
+            Recency => {
+              Duration =>
+                'HR_24',    # values: HR_24, DAY_7, DAY_14, DAY_30; OPTIONAL
+              RecencyType => 'ACTIVE',    # values: ACTIVE, INACTIVE; OPTIONAL
+            },    # OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
         Name => 'My__string',

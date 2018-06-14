@@ -42,7 +42,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       GlobalTableProvisionedWriteCapacityUnits => 1,        # OPTIONAL
       ReplicaSettingsUpdate                    => [
         {
-          RegionName                                => 'MyRegionName',
+          RegionName => 'MyRegionName',
+          ReplicaProvisionedReadCapacityUnits       => 1,   # min: 1, ; OPTIONAL
           ReplicaGlobalSecondaryIndexSettingsUpdate => [
             {
               IndexName => 'MyIndexName',                   # min: 3, max: 255
@@ -50,10 +51,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },
             ...
           ],    # min: 1, max: 20; OPTIONAL
-          ReplicaProvisionedReadCapacityUnits => 1,    # min: 1, ; OPTIONAL
         },
         ...
-      ],                                               # OPTIONAL
+      ],        # OPTIONAL
     );
 
     # Results:
@@ -63,7 +63,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::DynamoDB::UpdateGlobalTableSettingsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dynamodb/UpdateGlobalTableSettings>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10>
 
 =head1 ATTRIBUTES
 

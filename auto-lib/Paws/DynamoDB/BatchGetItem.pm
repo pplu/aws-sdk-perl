@@ -47,20 +47,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },
 
               {
-                'Artist' => {
-                  'S' => 'Acme Band'
-                },
                 'SongTitle' => {
                   'S' => 'Happy Day'
+                },
+                'Artist' => {
+                  'S' => 'Acme Band'
                 }
               },
 
               {
-                'Artist' => {
-                  'S' => 'No One You Know'
-                },
                 'SongTitle' => {
                   'S' => 'Scared of My Shadow'
+                },
+                'Artist' => {
+                  'S' => 'No One You Know'
                 }
               }
             ],

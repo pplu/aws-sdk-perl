@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeVolumesResult = $ec2->DescribeVolumes();
 
     # Results:
-    my $NextToken = $DescribeVolumesResult->NextToken;
     my $Volumes   = $DescribeVolumesResult->Volumes;
+    my $NextToken = $DescribeVolumesResult->NextToken;
 
     # Returns a L<Paws::EC2::DescribeVolumesResult> object.
     # To describe volumes that are attached to a specific instance

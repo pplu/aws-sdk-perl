@@ -36,11 +36,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $BrokerId      = $DescribeUserResponse->BrokerId;
-    my $Username      = $DescribeUserResponse->Username;
-    my $ConsoleAccess = $DescribeUserResponse->ConsoleAccess;
-    my $Pending       = $DescribeUserResponse->Pending;
     my $Groups        = $DescribeUserResponse->Groups;
+    my $ConsoleAccess = $DescribeUserResponse->ConsoleAccess;
+    my $Username      = $DescribeUserResponse->Username;
+    my $Pending       = $DescribeUserResponse->Pending;
+    my $BrokerId      = $DescribeUserResponse->BrokerId;
 
     # Returns a L<Paws::MQ::DescribeUserResponse> object.
 

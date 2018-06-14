@@ -34,15 +34,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ModifyTargetGroupAttributesOutput =
       $elasticloadbalancing->ModifyTargetGroupAttributes(
       {
+        'TargetGroupArn' =>
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067',
         'Attributes' => [
 
           {
             'Value' => 600,
             'Key'   => 'deregistration_delay.timeout_seconds'
           }
-        ],
-        'TargetGroupArn' =>
-'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067'
+        ]
       }
       );
 

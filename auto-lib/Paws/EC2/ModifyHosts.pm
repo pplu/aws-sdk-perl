@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Unsuccessful = $ModifyHostsResult->Unsuccessful;
     my $Successful   = $ModifyHostsResult->Successful;
+    my $Unsuccessful = $ModifyHostsResult->Unsuccessful;
 
     # Returns a L<Paws::EC2::ModifyHostsResult> object.
 

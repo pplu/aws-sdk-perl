@@ -33,60 +33,60 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateLinkAttributesResponse = $clouddirectory->UpdateLinkAttributes(
       AttributeUpdates => [
         {
+          AttributeKey => {
+            FacetName => 'MyFacetName',        # min: 1, max: 64
+            SchemaArn => 'MyArn',
+            Name      => 'MyAttributeName',    # min: 1, max: 64
+
+          },    # OPTIONAL
           AttributeAction => {
+            AttributeUpdateValue => {
+              NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
+              BooleanValue  => 1,                             # OPTIONAL
+              StringValue   => 'MyStringAttributeValue',      # OPTIONAL
+              DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
+              BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
+            },    # OPTIONAL
             AttributeActionType =>
               'CREATE_OR_UPDATE',   # values: CREATE_OR_UPDATE, DELETE; OPTIONAL
-            AttributeUpdateValue => {
-              DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
-              BooleanValue  => 1,                             # OPTIONAL
-              NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
-              BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
-              StringValue   => 'MyStringAttributeValue',      # OPTIONAL
-            },    # OPTIONAL
-          },    # OPTIONAL
-          AttributeKey => {
-            Name      => 'MyAttributeName',    # min: 1, max: 64
-            SchemaArn => 'MyArn',
-            FacetName => 'MyFacetName',        # min: 1, max: 64
-
           },    # OPTIONAL
         },
         ...
       ],
       DirectoryArn       => 'MyArn',
       TypedLinkSpecifier => {
-        SourceObjectReference => {
-          Selector => 'MySelectorObjectReference',    # OPTIONAL
-        },
-        TypedLinkFacet => {
-          TypedLinkName => 'MyTypedLinkName',
-          SchemaArn     => 'MyArn',
-
-        },
-        TargetObjectReference => {
-          Selector => 'MySelectorObjectReference',    # OPTIONAL
-        },
         IdentityAttributeValues => [
           {
-            AttributeName => 'MyAttributeName',       # min: 1, max: 64
+            AttributeName => 'MyAttributeName',    # min: 1, max: 64
             Value         => {
-              DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
-              BooleanValue  => 1,                             # OPTIONAL
               NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
-              BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
+              BooleanValue  => 1,                             # OPTIONAL
               StringValue   => 'MyStringAttributeValue',      # OPTIONAL
+              DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
+              BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
             },    # OPTIONAL
 
           },
           ...
         ],
+        TargetObjectReference => {
+          Selector => 'MySelectorObjectReference',    # OPTIONAL
+        },
+        SourceObjectReference => {
+          Selector => 'MySelectorObjectReference',    # OPTIONAL
+        },
+        TypedLinkFacet => {
+          SchemaArn     => 'MyArn',
+          TypedLinkName => 'MyTypedLinkName',
+
+        },
 
       },
 
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clouddirectory/UpdateLinkAttributes>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/directory-service/>
 
 =head1 ATTRIBUTES
 

@@ -38,9 +38,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $Marker = $DescribeNotificationSubscriptionsResponse->Marker;
     my $Subscriptions =
       $DescribeNotificationSubscriptionsResponse->Subscriptions;
+    my $Marker = $DescribeNotificationSubscriptionsResponse->Marker;
 
 # Returns a L<Paws::WorkDocs::DescribeNotificationSubscriptionsResponse> object.
 

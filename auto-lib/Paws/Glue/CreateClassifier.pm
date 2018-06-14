@@ -31,14 +31,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $glue = Paws->service('Glue');
     my $CreateClassifierResponse = $glue->CreateClassifier(
       GrokClassifier => {
+        GrokPattern    => 'MyGrokPattern',       # min: 1, max: 2048
         Classification => 'MyClassification',
         Name           => 'MyNameString',        # min: 1, max: 255
-        GrokPattern    => 'MyGrokPattern',       # min: 1, max: 2048
         CustomPatterns => 'MyCustomPatterns',    # max: 16000; OPTIONAL
       },    # OPTIONAL
       JsonClassifier => {
-        Name     => 'MyNameString',    # min: 1, max: 255
         JsonPath => 'MyJsonPath',
+        Name     => 'MyNameString',    # min: 1, max: 255
 
       },    # OPTIONAL
       XMLClassifier => {

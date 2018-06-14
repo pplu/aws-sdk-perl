@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $downloadUrl = $ExportBundleResult->downloadUrl;
+    my $DownloadUrl = $ExportBundleResult->DownloadUrl;
 
     # Returns a L<Paws::MobileHub::ExportBundleResult> object.
 

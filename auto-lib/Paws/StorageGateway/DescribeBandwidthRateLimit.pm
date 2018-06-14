@@ -39,11 +39,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $AverageDownloadRateLimitInBitsPerSec =
+      $DescribeBandwidthRateLimitOutput->AverageDownloadRateLimitInBitsPerSec;
     my $AverageUploadRateLimitInBitsPerSec =
       $DescribeBandwidthRateLimitOutput->AverageUploadRateLimitInBitsPerSec;
     my $GatewayARN = $DescribeBandwidthRateLimitOutput->GatewayARN;
-    my $AverageDownloadRateLimitInBitsPerSec =
-      $DescribeBandwidthRateLimitOutput->AverageDownloadRateLimitInBitsPerSec;
 
    # Returns a L<Paws::StorageGateway::DescribeBandwidthRateLimitOutput> object.
 

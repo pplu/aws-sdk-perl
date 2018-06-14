@@ -48,9 +48,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description           => 'MyNonZeroAndMaxString',    # OPTIONAL
       EC2InboundPermissions => [
         {
+          ToPort   => 1,                                   # min: 1, max: 60000
           IpRange  => 'MyNonBlankString',
           FromPort => 1,                                   # min: 1, max: 60000
-          ToPort   => 1,                                   # min: 1, max: 60000
           Protocol => 'TCP',                               # values: TCP, UDP
 
         },
@@ -67,8 +67,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       PeerVpcAwsAccountId            => 'MyNonZeroAndMaxString',    # OPTIONAL
       PeerVpcId                      => 'MyNonZeroAndMaxString',    # OPTIONAL
       ResourceCreationLimitPolicy    => {
-        NewGameSessionsPerCreator => 1,                             # OPTIONAL
         PolicyPeriodInMinutes     => 1,                             # OPTIONAL
+        NewGameSessionsPerCreator => 1,                             # OPTIONAL
       },    # OPTIONAL
       RuntimeConfiguration => {
         MaxConcurrentGameSessionActivations =>
@@ -93,7 +93,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::GameLift::CreateFleetOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gamelift/CreateFleet>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01>
 
 =head1 ATTRIBUTES
 

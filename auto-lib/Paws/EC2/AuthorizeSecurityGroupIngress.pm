@@ -44,14 +44,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       GroupName     => 'MyString',    # OPTIONAL
       IpPermissions => [
         {
-          IpProtocol => 'MyString',
-          Ipv6Ranges => [
-            {
-              CidrIpv6    => 'MyString',
-              Description => 'MyString',
-            },
-            ...
-          ],                          # OPTIONAL
+          ToPort        => 1,
           PrefixListIds => [
             {
               PrefixListId => 'MyString',
@@ -59,27 +52,34 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },
             ...
           ],                          # OPTIONAL
-          ToPort           => 1,
-          UserIdGroupPairs => [
-            {
-              GroupId                => 'MyString',
-              UserId                 => 'MyString',
-              VpcPeeringConnectionId => 'MyString',
-              GroupName              => 'MyString',
-              Description            => 'MyString',
-              PeeringStatus          => 'MyString',
-              VpcId                  => 'MyString',
-            },
-            ...
-          ],    # OPTIONAL
           IpRanges => [
             {
               CidrIp      => 'MyString',
               Description => 'MyString',
             },
             ...
+          ],                          # OPTIONAL
+          FromPort   => 1,
+          Ipv6Ranges => [
+            {
+              CidrIpv6    => 'MyString',
+              Description => 'MyString',
+            },
+            ...
+          ],                          # OPTIONAL
+          IpProtocol       => 'MyString',
+          UserIdGroupPairs => [
+            {
+              UserId                 => 'MyString',
+              VpcId                  => 'MyString',
+              PeeringStatus          => 'MyString',
+              GroupId                => 'MyString',
+              VpcPeeringConnectionId => 'MyString',
+              GroupName              => 'MyString',
+              Description            => 'MyString',
+            },
+            ...
           ],    # OPTIONAL
-          FromPort => 1,
         },
         ...
       ],        # OPTIONAL

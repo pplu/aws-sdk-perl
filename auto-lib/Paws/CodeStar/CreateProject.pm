@@ -39,9 +39,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $ClientRequestToken = $CreateProjectResult->ClientRequestToken;
-    my $Arn                = $CreateProjectResult->Arn;
-    my $Id                 = $CreateProjectResult->Id;
     my $ProjectTemplateId  = $CreateProjectResult->ProjectTemplateId;
+    my $Id                 = $CreateProjectResult->Id;
+    my $Arn                = $CreateProjectResult->Arn;
 
     # Returns a L<Paws::CodeStar::CreateProjectResult> object.
 

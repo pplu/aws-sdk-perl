@@ -34,13 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 # The example sets the examplevault notification configuration.
     $glacier->SetVaultNotifications(
       {
+        'AccountId'               => '-',
         'VaultName'               => 'examplevault',
         'VaultNotificationConfig' => {
+          'SNSTopic' => 'arn:aws:sns:us-west-2:012345678901:mytopic',
           'Events' =>
-            [ 'ArchiveRetrievalCompleted', 'InventoryRetrievalCompleted' ],
-          'SNSTopic' => 'arn:aws:sns:us-west-2:012345678901:mytopic'
-        },
-        'AccountId' => '-'
+            [ 'ArchiveRetrievalCompleted', 'InventoryRetrievalCompleted' ]
+        }
       }
     );
 

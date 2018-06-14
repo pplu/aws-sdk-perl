@@ -41,8 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Things    = $SearchIndexResponse->Things;
-    my $NextToken = $SearchIndexResponse->NextToken;
+    my $nextToken = $SearchIndexResponse->nextToken;
+    my $things    = $SearchIndexResponse->things;
 
     # Returns a L<Paws::IoT::SearchIndexResponse> object.
 

@@ -55,12 +55,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $RequestCharged       = $UploadPartOutput->RequestCharged;
-    my $ETag                 = $UploadPartOutput->ETag;
-    my $SSECustomerKeyMD5    = $UploadPartOutput->SSECustomerKeyMD5;
     my $ServerSideEncryption = $UploadPartOutput->ServerSideEncryption;
+    my $SSECustomerKeyMD5    = $UploadPartOutput->SSECustomerKeyMD5;
     my $SSECustomerAlgorithm = $UploadPartOutput->SSECustomerAlgorithm;
+    my $ETag                 = $UploadPartOutput->ETag;
     my $SSEKMSKeyId          = $UploadPartOutput->SSEKMSKeyId;
+    my $RequestCharged       = $UploadPartOutput->RequestCharged;
 
     # Returns a L<Paws::S3::UploadPartOutput> object.
 

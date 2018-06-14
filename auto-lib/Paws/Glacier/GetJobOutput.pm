@@ -37,18 +37,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $GetJobOutputOutput = $glacier->GetJobOutput(
       {
         'AccountId' => '-',
+        'Range'     => '',
         'JobId' =>
 'zbxcm3Z_3z5UkoroF7SuZKrxgGoDc3RloGduS7Eg-RO47Yc6FxsdGBgf_Q2DK5Ejh18CnTS5XW4_XqlNHS61dsO4CnMW',
-        'VaultName' => 'my-vaul',
-        'Range'     => ''
+        'VaultName' => 'my-vaul'
       }
     );
 
     # Results:
     my $body         = $GetJobOutputOutput->body;
     my $status       = $GetJobOutputOutput->status;
-    my $contentType  = $GetJobOutputOutput->contentType;
     my $acceptRanges = $GetJobOutputOutput->acceptRanges;
+    my $contentType  = $GetJobOutputOutput->contentType;
 
     # Returns a L<Paws::Glacier::GetJobOutputOutput> object.
 

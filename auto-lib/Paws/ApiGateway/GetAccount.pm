@@ -30,10 +30,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Account = $apigateway->GetAccount();
 
     # Results:
-    my $Features          = $Account->Features;
-    my $ThrottleSettings  = $Account->ThrottleSettings;
-    my $CloudwatchRoleArn = $Account->CloudwatchRoleArn;
     my $ApiKeyVersion     = $Account->ApiKeyVersion;
+    my $Features          = $Account->Features;
+    my $CloudwatchRoleArn = $Account->CloudwatchRoleArn;
+    my $ThrottleSettings  = $Account->ThrottleSettings;
 
     # Returns a L<Paws::ApiGateway::Account> object.
 

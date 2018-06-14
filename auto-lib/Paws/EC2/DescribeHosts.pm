@@ -33,23 +33,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeHostsResult = $ec2->DescribeHosts(
       Filter => [
         {
-          Name   => 'MyString',    # OPTIONAL
-          Values => [
-            'MyString', ...        # OPTIONAL
-          ],                       # OPTIONAL
+          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name => 'MyString',
         },
         ...
-      ],                           # OPTIONAL
-      HostIds => [
-        'MyString', ...            # OPTIONAL
-      ],                           # OPTIONAL
-      MaxResults => 1,             # OPTIONAL
-      NextToken  => 'MyString',    # OPTIONAL
+      ],                                    # OPTIONAL
+      HostIds    => [ 'MyString', ... ],    # OPTIONAL
+      MaxResults => 1,                      # OPTIONAL
+      NextToken  => 'MyString',             # OPTIONAL
     );
 
     # Results:
-    my $Hosts     = $DescribeHostsResult->Hosts;
     my $NextToken = $DescribeHostsResult->NextToken;
+    my $Hosts     = $DescribeHostsResult->Hosts;
 
     # Returns a L<Paws::EC2::DescribeHostsResult> object.
 

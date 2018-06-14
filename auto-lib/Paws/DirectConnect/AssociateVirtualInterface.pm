@@ -35,25 +35,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $VirtualGatewayId       = $VirtualInterface->VirtualGatewayId;
-    my $DirectConnectGatewayId = $VirtualInterface->DirectConnectGatewayId;
-    my $AddressFamily          = $VirtualInterface->AddressFamily;
-    my $VirtualInterfaceType   = $VirtualInterface->VirtualInterfaceType;
-    my $AuthKey                = $VirtualInterface->AuthKey;
-    my $Asn                    = $VirtualInterface->Asn;
-    my $VirtualInterfaceName   = $VirtualInterface->VirtualInterfaceName;
     my $BgpPeers               = $VirtualInterface->BgpPeers;
-    my $VirtualInterfaceId     = $VirtualInterface->VirtualInterfaceId;
-    my $Location               = $VirtualInterface->Location;
     my $RouteFilterPrefixes    = $VirtualInterface->RouteFilterPrefixes;
-    my $Vlan                   = $VirtualInterface->Vlan;
-    my $ConnectionId           = $VirtualInterface->ConnectionId;
     my $CustomerRouterConfig   = $VirtualInterface->CustomerRouterConfig;
-    my $CustomerAddress        = $VirtualInterface->CustomerAddress;
-    my $AmazonSideAsn          = $VirtualInterface->AmazonSideAsn;
-    my $AmazonAddress          = $VirtualInterface->AmazonAddress;
+    my $Vlan                   = $VirtualInterface->Vlan;
     my $VirtualInterfaceState  = $VirtualInterface->VirtualInterfaceState;
+    my $ConnectionId           = $VirtualInterface->ConnectionId;
+    my $AmazonAddress          = $VirtualInterface->AmazonAddress;
+    my $Asn                    = $VirtualInterface->Asn;
+    my $CustomerAddress        = $VirtualInterface->CustomerAddress;
     my $OwnerAccount           = $VirtualInterface->OwnerAccount;
+    my $Location               = $VirtualInterface->Location;
+    my $AmazonSideAsn          = $VirtualInterface->AmazonSideAsn;
+    my $VirtualInterfaceType   = $VirtualInterface->VirtualInterfaceType;
+    my $DirectConnectGatewayId = $VirtualInterface->DirectConnectGatewayId;
+    my $VirtualInterfaceName   = $VirtualInterface->VirtualInterfaceName;
+    my $VirtualInterfaceId     = $VirtualInterface->VirtualInterfaceId;
+    my $AddressFamily          = $VirtualInterface->AddressFamily;
+    my $VirtualGatewayId       = $VirtualInterface->VirtualGatewayId;
+    my $AuthKey                = $VirtualInterface->AuthKey;
 
     # Returns a L<Paws::DirectConnect::VirtualInterface> object.
 

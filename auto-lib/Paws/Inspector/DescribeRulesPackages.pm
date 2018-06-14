@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $rulesPackages = $DescribeRulesPackagesResponse->rulesPackages;
     my $failedItems   = $DescribeRulesPackagesResponse->failedItems;
+    my $rulesPackages = $DescribeRulesPackagesResponse->rulesPackages;
 
     # Returns a L<Paws::Inspector::DescribeRulesPackagesResponse> object.
 

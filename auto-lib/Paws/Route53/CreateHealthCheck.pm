@@ -36,40 +36,40 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       HealthCheckConfig => {
         Type => 'HTTP'
         , # values: HTTP, HTTPS, HTTP_STR_MATCH, HTTPS_STR_MATCH, TCP, CALCULATED, CLOUDWATCH_METRIC
-        EnableSNI       => 1,    # OPTIONAL
-        AlarmIdentifier => {
-          Name   => 'MyAlarmName',    # min: 1, max: 256
-          Region => 'us-east-1'
-          , # values: us-east-1, us-east-2, us-west-1, us-west-2, ca-central-1, eu-central-1, eu-west-1, eu-west-2, eu-west-3, ap-south-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, ap-northeast-2, ap-northeast-3, sa-east-1min: 1, max: 64
-
-        },    # OPTIONAL
-        FullyQualifiedDomainName =>
-          'MyFullyQualifiedDomainName',    # max: 255; OPTIONAL
-        ChildHealthChecks => [
-          'MyHealthCheckId', ...           # max: 64
-        ],                                 # max: 256; OPTIONAL
-        IPAddress        => 'MyIPAddress', # max: 45; OPTIONAL
-        FailureThreshold => 1,             # min: 1, max: 10; OPTIONAL
-        Inverted         => 1,             # OPTIONAL
-        Regions          => [
+        HealthThreshold => 1,    # max: 256; OPTIONAL
+        RequestInterval => 1,    # min: 10, max: 30; OPTIONAL
+        Regions         => [
           'us-east-1',
           ... # values: us-east-1, us-west-1, us-west-2, eu-west-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, sa-east-1min: 1, max: 64
         ],    # min: 3, max: 64; OPTIONAL
-        HealthThreshold => 1,                   # max: 256; OPTIONAL
-        SearchString    => 'MySearchString',    # max: 255; OPTIONAL
-        Port            => 1,                   # min: 1, max: 65535; OPTIONAL
-        ResourcePath    => 'MyResourcePath',    # max: 255; OPTIONAL
+        Inverted     => 1,                   # OPTIONAL
+        ResourcePath => 'MyResourcePath',    # max: 255; OPTIONAL
+        FullyQualifiedDomainName =>
+          'MyFullyQualifiedDomainName',      # max: 255; OPTIONAL
+        EnableSNI        => 1,               # OPTIONAL
+        FailureThreshold => 1,               # min: 1, max: 10; OPTIONAL
+        IPAddress        => 'MyIPAddress',   # max: 45; OPTIONAL
+        AlarmIdentifier  => {
+          Region => 'us-east-1'
+          , # values: us-east-1, us-east-2, us-west-1, us-west-2, ca-central-1, eu-central-1, eu-west-1, eu-west-2, eu-west-3, ap-south-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, ap-northeast-2, ap-northeast-3, sa-east-1min: 1, max: 64
+          Name => 'MyAlarmName',    # min: 1, max: 256
+
+        },    # OPTIONAL
+        MeasureLatency    => 1,                   # OPTIONAL
+        SearchString      => 'MySearchString',    # max: 255; OPTIONAL
+        ChildHealthChecks => [
+          'MyHealthCheckId', ...                  # max: 64
+        ],                                        # max: 256; OPTIONAL
         InsufficientDataHealthStatus =>
           'Healthy',    # values: Healthy, Unhealthy, LastKnownStatus; OPTIONAL
-        MeasureLatency  => 1,    # OPTIONAL
-        RequestInterval => 1,    # min: 10, max: 30; OPTIONAL
+        Port => 1,      # min: 1, max: 65535; OPTIONAL
       },
 
     );
 
     # Results:
-    my $Location    = $CreateHealthCheckResponse->Location;
     my $HealthCheck = $CreateHealthCheckResponse->HealthCheck;
+    my $Location    = $CreateHealthCheckResponse->Location;
 
     # Returns a L<Paws::Route53::CreateHealthCheckResponse> object.
 

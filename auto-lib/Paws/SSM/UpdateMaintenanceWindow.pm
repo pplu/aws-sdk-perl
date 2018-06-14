@@ -48,15 +48,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Duration = $UpdateMaintenanceWindowResult->Duration;
+    my $Enabled  = $UpdateMaintenanceWindowResult->Enabled;
+    my $WindowId = $UpdateMaintenanceWindowResult->WindowId;
     my $AllowUnassociatedTargets =
       $UpdateMaintenanceWindowResult->AllowUnassociatedTargets;
+    my $Cutoff      = $UpdateMaintenanceWindowResult->Cutoff;
     my $Schedule    = $UpdateMaintenanceWindowResult->Schedule;
     my $Name        = $UpdateMaintenanceWindowResult->Name;
-    my $Enabled     = $UpdateMaintenanceWindowResult->Enabled;
-    my $Cutoff      = $UpdateMaintenanceWindowResult->Cutoff;
-    my $WindowId    = $UpdateMaintenanceWindowResult->WindowId;
     my $Description = $UpdateMaintenanceWindowResult->Description;
+    my $Duration    = $UpdateMaintenanceWindowResult->Duration;
 
     # Returns a L<Paws::SSM::UpdateMaintenanceWindowResult> object.
 

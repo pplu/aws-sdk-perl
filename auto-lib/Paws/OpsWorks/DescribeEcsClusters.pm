@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $EcsClusters = $DescribeEcsClustersResult->EcsClusters;
     my $NextToken   = $DescribeEcsClustersResult->NextToken;
+    my $EcsClusters = $DescribeEcsClustersResult->EcsClusters;
 
     # Returns a L<Paws::OpsWorks::DescribeEcsClustersResult> object.
 

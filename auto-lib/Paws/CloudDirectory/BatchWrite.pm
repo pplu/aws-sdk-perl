@@ -33,191 +33,173 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DirectoryArn => 'MyArn',
       Operations   => [
         {
+          DetachPolicy => {
+            ObjectReference => {
+              Selector => 'MySelectorObjectReference',    # OPTIONAL
+            },    # OPTIONAL
+            PolicyReference => {
+              Selector => 'MySelectorObjectReference',    # OPTIONAL
+            },    # OPTIONAL
+
+          },    # OPTIONAL
           CreateIndex => {
             IsUnique                    => 1,
             OrderedIndexedAttributeList => [
               {
-                FacetName => 'MyFacetName',        # min: 1, max: 64; OPTIONAL
-                Name      => 'MyAttributeName',    # min: 1, max: 64
+                FacetName => 'MyFacetName',        # min: 1, max: 64
                 SchemaArn => 'MyArn',
+                Name      => 'MyAttributeName',    # min: 1, max: 64
 
               },
               ...
             ],
+            LinkName => 'MyLinkName',              # min: 1, max: 64; OPTIONAL
             BatchReferenceName => 'MyBatchReferenceName',    # OPTIONAL
-            LinkName           => 'MyLinkName',              # min: 1, max: 64
             ParentReference    => {
               Selector => 'MySelectorObjectReference',       # OPTIONAL
-            },
+            },    # OPTIONAL
           },    # OPTIONAL
-          AttachObject => {
-            ParentReference => {
+          AttachTypedLink => {
+            TargetObjectReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
-            },
-            LinkName       => 'MyLinkName',               # min: 1, max: 64
-            ChildReference => {
+            },    # OPTIONAL
+            SourceObjectReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
+            },    # OPTIONAL
+            TypedLinkFacet => {
+              SchemaArn     => 'MyArn',
+              TypedLinkName => 'MyTypedLinkName',
+
             },
-
-          },    # OPTIONAL
-          RemoveFacetFromObject => {
-            SchemaFacet => {
-              FacetName => 'MyFacetName',    # min: 1, max: 64; OPTIONAL
-              SchemaArn => 'MyArn',
-            },
-            ObjectReference => {
-              Selector => 'MySelectorObjectReference',    # OPTIONAL
-            },
-
-          },    # OPTIONAL
-          DetachTypedLink => {
-            TypedLinkSpecifier => {
-              TypedLinkFacet => {
-                TypedLinkName => 'MyTypedLinkName',
-                SchemaArn     => 'MyArn',
-
-              },
-              SourceObjectReference => {
-                Selector => 'MySelectorObjectReference',    # OPTIONAL
-              },
-              IdentityAttributeValues => [
-                {
-                  Value => {
-                    DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
-                    BooleanValue  => 1,                             # OPTIONAL
-                    NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
-                    BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
-                    StringValue   => 'MyStringAttributeValue',      # OPTIONAL
-                  },
-                  AttributeName => 'MyAttributeName',    # min: 1, max: 64
-
+            Attributes => [
+              {
+                AttributeName => 'MyAttributeName',    # min: 1, max: 64
+                Value         => {
+                  StringValue   => 'MyStringAttributeValue',      # OPTIONAL
+                  DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
+                  NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
+                  BooleanValue  => 1,                             # OPTIONAL
+                  BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
                 },
-                ...
-              ],
-              TargetObjectReference => {
-                Selector => 'MySelectorObjectReference',    # OPTIONAL
+
               },
+              ...
+            ],
 
-            },
-
-          },    # OPTIONAL
-          DetachObject => {
-            LinkName        => 'MyLinkName',    # min: 1, max: 64
-            ParentReference => {
-              Selector => 'MySelectorObjectReference',    # OPTIONAL
-            },
-            BatchReferenceName => 'MyBatchReferenceName',    # OPTIONAL
           },    # OPTIONAL
           DetachFromIndex => {
             IndexReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
-            },
+            },    # OPTIONAL
             TargetReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
-            },
+            },    # OPTIONAL
 
           },    # OPTIONAL
           DeleteObject => {
             ObjectReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
-            },
+            },    # OPTIONAL
 
           },    # OPTIONAL
           AttachPolicy => {
+            ObjectReference => {
+              Selector => 'MySelectorObjectReference',    # OPTIONAL
+            },    # OPTIONAL
             PolicyReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
+            },    # OPTIONAL
+
+          },    # OPTIONAL
+          AddFacetToObject => {
+            SchemaFacet => {
+              FacetName => 'MyFacetName',    # min: 1, max: 64
+              SchemaArn => 'MyArn',
             },
             ObjectReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
-            },
-
-          },    # OPTIONAL
-          CreateObject => {
+            },    # OPTIONAL
             ObjectAttributeList => [
               {
                 Key => {
-                  FacetName => 'MyFacetName',        # min: 1, max: 64; OPTIONAL
-                  Name      => 'MyAttributeName',    # min: 1, max: 64
+                  FacetName => 'MyFacetName',        # min: 1, max: 64
                   SchemaArn => 'MyArn',
+                  Name      => 'MyAttributeName',    # min: 1, max: 64
 
                 },
                 Value => {
-                  DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
-                  BooleanValue  => 1,                             # OPTIONAL
-                  NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
-                  BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
                   StringValue   => 'MyStringAttributeValue',      # OPTIONAL
+                  DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
+                  NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
+                  BooleanValue  => 1,                             # OPTIONAL
+                  BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
                 },
 
               },
               ...
             ],
-            SchemaFacet => [
-              {
-                FacetName => 'MyFacetName',    # min: 1, max: 64; OPTIONAL
-                SchemaArn => 'MyArn',
-              },
-              ...
-            ],
+
+          },    # OPTIONAL
+          DetachObject => {
+            LinkName        => 'MyLinkName',    # min: 1, max: 64; OPTIONAL
             ParentReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
-            },
+            },    # OPTIONAL
             BatchReferenceName => 'MyBatchReferenceName',    # OPTIONAL
-            LinkName           => 'MyLinkName',              # min: 1, max: 64
           },    # OPTIONAL
-          DetachPolicy => {
-            PolicyReference => {
+          AttachToIndex => {
+            IndexReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
-            },
-            ObjectReference => {
+            },    # OPTIONAL
+            TargetReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
-            },
+            },    # OPTIONAL
 
           },    # OPTIONAL
           UpdateLinkAttributes => {
             TypedLinkSpecifier => {
-              TypedLinkFacet => {
-                TypedLinkName => 'MyTypedLinkName',
-                SchemaArn     => 'MyArn',
-
-              },
-              SourceObjectReference => {
-                Selector => 'MySelectorObjectReference',    # OPTIONAL
-              },
               IdentityAttributeValues => [
                 {
-                  Value => {
-                    DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
-                    BooleanValue  => 1,                             # OPTIONAL
-                    NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
-                    BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
-                    StringValue   => 'MyStringAttributeValue',      # OPTIONAL
-                  },
                   AttributeName => 'MyAttributeName',    # min: 1, max: 64
+                  Value         => {
+                    StringValue   => 'MyStringAttributeValue',      # OPTIONAL
+                    DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
+                    NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
+                    BooleanValue  => 1,                             # OPTIONAL
+                    BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
+                  },
 
                 },
                 ...
               ],
               TargetObjectReference => {
+                Selector => 'MySelectorObjectReference',            # OPTIONAL
+              },    # OPTIONAL
+              SourceObjectReference => {
                 Selector => 'MySelectorObjectReference',    # OPTIONAL
+              },    # OPTIONAL
+              TypedLinkFacet => {
+                SchemaArn     => 'MyArn',
+                TypedLinkName => 'MyTypedLinkName',
+
               },
 
             },
             AttributeUpdates => [
               {
                 AttributeKey => {
-                  FacetName => 'MyFacetName',        # min: 1, max: 64; OPTIONAL
-                  Name      => 'MyAttributeName',    # min: 1, max: 64
+                  FacetName => 'MyFacetName',        # min: 1, max: 64
                   SchemaArn => 'MyArn',
+                  Name      => 'MyAttributeName',    # min: 1, max: 64
 
                 },
                 AttributeAction => {
                   AttributeUpdateValue => {
-                    DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
-                    BooleanValue  => 1,                             # OPTIONAL
-                    NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
-                    BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
                     StringValue   => 'MyStringAttributeValue',      # OPTIONAL
+                    DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
+                    NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
+                    BooleanValue  => 1,                             # OPTIONAL
+                    BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
                   },
                   AttributeActionType => 'CREATE_OR_UPDATE'
                   ,    # values: CREATE_OR_UPDATE, DELETE; OPTIONAL
@@ -227,24 +209,75 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ],
 
           },    # OPTIONAL
+          DetachTypedLink => {
+            TypedLinkSpecifier => {
+              IdentityAttributeValues => [
+                {
+                  AttributeName => 'MyAttributeName',    # min: 1, max: 64
+                  Value         => {
+                    StringValue   => 'MyStringAttributeValue',      # OPTIONAL
+                    DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
+                    NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
+                    BooleanValue  => 1,                             # OPTIONAL
+                    BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
+                  },
+
+                },
+                ...
+              ],
+              TargetObjectReference => {
+                Selector => 'MySelectorObjectReference',            # OPTIONAL
+              },    # OPTIONAL
+              SourceObjectReference => {
+                Selector => 'MySelectorObjectReference',    # OPTIONAL
+              },    # OPTIONAL
+              TypedLinkFacet => {
+                SchemaArn     => 'MyArn',
+                TypedLinkName => 'MyTypedLinkName',
+
+              },
+
+            },
+
+          },    # OPTIONAL
+          RemoveFacetFromObject => {
+            SchemaFacet => {
+              FacetName => 'MyFacetName',    # min: 1, max: 64
+              SchemaArn => 'MyArn',
+            },
+            ObjectReference => {
+              Selector => 'MySelectorObjectReference',    # OPTIONAL
+            },    # OPTIONAL
+
+          },    # OPTIONAL
+          AttachObject => {
+            LinkName       => 'MyLinkName',    # min: 1, max: 64; OPTIONAL
+            ChildReference => {
+              Selector => 'MySelectorObjectReference',    # OPTIONAL
+            },    # OPTIONAL
+            ParentReference => {
+              Selector => 'MySelectorObjectReference',    # OPTIONAL
+            },    # OPTIONAL
+
+          },    # OPTIONAL
           UpdateObjectAttributes => {
             AttributeUpdates => [
               {
                 ObjectAttributeAction => {
-                  ObjectAttributeUpdateValue => {
-                    DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
-                    BooleanValue  => 1,                             # OPTIONAL
-                    NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
-                    BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
-                    StringValue   => 'MyStringAttributeValue',      # OPTIONAL
-                  },
                   ObjectAttributeActionType => 'CREATE_OR_UPDATE'
                   ,    # values: CREATE_OR_UPDATE, DELETE; OPTIONAL
+                  ObjectAttributeUpdateValue => {
+                    StringValue   => 'MyStringAttributeValue',      # OPTIONAL
+                    DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
+                    NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
+                    BooleanValue  => 1,                             # OPTIONAL
+                    BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
+                  },
                 },    # OPTIONAL
                 ObjectAttributeKey => {
-                  FacetName => 'MyFacetName',        # min: 1, max: 64; OPTIONAL
-                  Name      => 'MyAttributeName',    # min: 1, max: 64
+                  FacetName => 'MyFacetName',        # min: 1, max: 64
                   SchemaArn => 'MyArn',
+                  Name      => 'MyAttributeName',    # min: 1, max: 64
 
                 },
               },
@@ -252,74 +285,41 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ],
             ObjectReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
-            },
+            },    # OPTIONAL
 
           },    # OPTIONAL
-          AttachToIndex => {
-            IndexReference => {
-              Selector => 'MySelectorObjectReference',    # OPTIONAL
-            },
-            TargetReference => {
-              Selector => 'MySelectorObjectReference',    # OPTIONAL
-            },
-
-          },    # OPTIONAL
-          AttachTypedLink => {
-            Attributes => [
+          CreateObject => {
+            SchemaFacet => [
               {
-                Value => {
-                  DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
-                  BooleanValue  => 1,                             # OPTIONAL
-                  NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
-                  BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
-                  StringValue   => 'MyStringAttributeValue',      # OPTIONAL
-                },
-                AttributeName => 'MyAttributeName',    # min: 1, max: 64
-
+                FacetName => 'MyFacetName',    # min: 1, max: 64
+                SchemaArn => 'MyArn',
               },
               ...
             ],
-            SourceObjectReference => {
-              Selector => 'MySelectorObjectReference',    # OPTIONAL
-            },
-            TypedLinkFacet => {
-              TypedLinkName => 'MyTypedLinkName',
-              SchemaArn     => 'MyArn',
-
-            },
-            TargetObjectReference => {
-              Selector => 'MySelectorObjectReference',    # OPTIONAL
-            },
-
-          },    # OPTIONAL
-          AddFacetToObject => {
-            ObjectReference => {
-              Selector => 'MySelectorObjectReference',    # OPTIONAL
-            },
-            SchemaFacet => {
-              FacetName => 'MyFacetName',    # min: 1, max: 64; OPTIONAL
-              SchemaArn => 'MyArn',
-            },
             ObjectAttributeList => [
               {
                 Key => {
-                  FacetName => 'MyFacetName',        # min: 1, max: 64; OPTIONAL
-                  Name      => 'MyAttributeName',    # min: 1, max: 64
+                  FacetName => 'MyFacetName',        # min: 1, max: 64
                   SchemaArn => 'MyArn',
+                  Name      => 'MyAttributeName',    # min: 1, max: 64
 
                 },
                 Value => {
-                  DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
-                  BooleanValue  => 1,                             # OPTIONAL
-                  NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
-                  BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
                   StringValue   => 'MyStringAttributeValue',      # OPTIONAL
+                  DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
+                  NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
+                  BooleanValue  => 1,                             # OPTIONAL
+                  BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
                 },
 
               },
               ...
             ],
-
+            LinkName => 'MyLinkName',    # min: 1, max: 64; OPTIONAL
+            BatchReferenceName => 'MyBatchReferenceName',    # OPTIONAL
+            ParentReference    => {
+              Selector => 'MySelectorObjectReference',       # OPTIONAL
+            },    # OPTIONAL
           },    # OPTIONAL
         },
         ...

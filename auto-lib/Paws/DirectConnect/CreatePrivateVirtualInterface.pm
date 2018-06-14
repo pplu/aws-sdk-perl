@@ -31,39 +31,39 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $VirtualInterface = $directconnect->CreatePrivateVirtualInterface(
       ConnectionId               => 'MyConnectionId',
       NewPrivateVirtualInterface => {
-        vlan                   => 1,
         asn                    => 1,
         virtualInterfaceName   => 'MyVirtualInterfaceName',
-        virtualGatewayId       => 'MyVirtualGatewayId',          # OPTIONAL
-        amazonAddress          => 'MyAmazonAddress',             # OPTIONAL
+        vlan                   => 1,
         directConnectGatewayId => 'MyDirectConnectGatewayId',    # OPTIONAL
-        addressFamily   => 'ipv4',                # values: ipv4, ipv6; OPTIONAL
-        customerAddress => 'MyCustomerAddress',   # OPTIONAL
-        authKey         => 'MyBGPAuthKey',        # OPTIONAL
+        amazonAddress          => 'MyAmazonAddress',             # OPTIONAL
+        authKey                => 'MyBGPAuthKey',                # OPTIONAL
+        customerAddress        => 'MyCustomerAddress',           # OPTIONAL
+        addressFamily    => 'ipv4',               # values: ipv4, ipv6; OPTIONAL
+        virtualGatewayId => 'MyVirtualGatewayId', # OPTIONAL
       },
 
     );
 
     # Results:
-    my $VirtualGatewayId       = $VirtualInterface->VirtualGatewayId;
-    my $DirectConnectGatewayId = $VirtualInterface->DirectConnectGatewayId;
-    my $AddressFamily          = $VirtualInterface->AddressFamily;
-    my $VirtualInterfaceType   = $VirtualInterface->VirtualInterfaceType;
-    my $AuthKey                = $VirtualInterface->AuthKey;
-    my $Asn                    = $VirtualInterface->Asn;
-    my $VirtualInterfaceName   = $VirtualInterface->VirtualInterfaceName;
     my $BgpPeers               = $VirtualInterface->BgpPeers;
-    my $VirtualInterfaceId     = $VirtualInterface->VirtualInterfaceId;
-    my $Location               = $VirtualInterface->Location;
     my $RouteFilterPrefixes    = $VirtualInterface->RouteFilterPrefixes;
-    my $Vlan                   = $VirtualInterface->Vlan;
-    my $ConnectionId           = $VirtualInterface->ConnectionId;
     my $CustomerRouterConfig   = $VirtualInterface->CustomerRouterConfig;
-    my $CustomerAddress        = $VirtualInterface->CustomerAddress;
-    my $AmazonSideAsn          = $VirtualInterface->AmazonSideAsn;
-    my $AmazonAddress          = $VirtualInterface->AmazonAddress;
+    my $Vlan                   = $VirtualInterface->Vlan;
     my $VirtualInterfaceState  = $VirtualInterface->VirtualInterfaceState;
+    my $ConnectionId           = $VirtualInterface->ConnectionId;
+    my $AmazonAddress          = $VirtualInterface->AmazonAddress;
+    my $Asn                    = $VirtualInterface->Asn;
+    my $CustomerAddress        = $VirtualInterface->CustomerAddress;
     my $OwnerAccount           = $VirtualInterface->OwnerAccount;
+    my $Location               = $VirtualInterface->Location;
+    my $AmazonSideAsn          = $VirtualInterface->AmazonSideAsn;
+    my $VirtualInterfaceType   = $VirtualInterface->VirtualInterfaceType;
+    my $DirectConnectGatewayId = $VirtualInterface->DirectConnectGatewayId;
+    my $VirtualInterfaceName   = $VirtualInterface->VirtualInterfaceName;
+    my $VirtualInterfaceId     = $VirtualInterface->VirtualInterfaceId;
+    my $AddressFamily          = $VirtualInterface->AddressFamily;
+    my $VirtualGatewayId       = $VirtualInterface->VirtualGatewayId;
+    my $AuthKey                = $VirtualInterface->AuthKey;
 
     # Returns a L<Paws::DirectConnect::VirtualInterface> object.
 

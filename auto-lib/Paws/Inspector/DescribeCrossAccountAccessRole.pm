@@ -33,9 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $inspector->DescribeCrossAccountAccessRole();
 
     # Results:
-    my $valid        = $DescribeCrossAccountAccessRoleResponse->valid;
-    my $registeredAt = $DescribeCrossAccountAccessRoleResponse->registeredAt;
     my $roleArn      = $DescribeCrossAccountAccessRoleResponse->roleArn;
+    my $registeredAt = $DescribeCrossAccountAccessRoleResponse->registeredAt;
+    my $valid        = $DescribeCrossAccountAccessRoleResponse->valid;
 
   # Returns a L<Paws::Inspector::DescribeCrossAccountAccessRoleResponse> object.
 

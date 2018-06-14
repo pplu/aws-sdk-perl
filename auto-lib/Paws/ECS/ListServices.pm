@@ -5,6 +5,7 @@ package Paws::ECS::ListServices;
   has LaunchType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'launchType' );
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has SchedulingStrategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'schedulingStrategy' );
 
   use MooseX::ClassAttribute;
 
@@ -85,6 +86,12 @@ to retrieve the next items in a list and not for other programmatic
 purposes.
 
 
+
+=head2 SchedulingStrategy => Str
+
+The scheduling strategy for services to list.
+
+Valid values are: C<"REPLICA">, C<"DAEMON">
 
 
 =head1 SEE ALSO

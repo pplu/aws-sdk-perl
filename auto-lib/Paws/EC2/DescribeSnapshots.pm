@@ -43,8 +43,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken = $DescribeSnapshotsResult->NextToken;
     my $Snapshots = $DescribeSnapshotsResult->Snapshots;
+    my $NextToken = $DescribeSnapshotsResult->NextToken;
 
     # Returns a L<Paws::EC2::DescribeSnapshotsResult> object.
     # To describe snapshots using filters
@@ -52,20 +52,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # in the ``pending`` status.
     my $DescribeSnapshotsResult = $ec2->DescribeSnapshots(
       {
-        'OwnerIds' => [012345678910],
-        'Filters'  => [
+        'Filters' => [
 
           {
-            'Name'   => 'status',
-            'Values' => ['pending']
+            'Values' => ['pending'],
+            'Name'   => 'status'
           }
-        ]
+        ],
+        'OwnerIds' => [012345678910]
       }
     );
 
     # Results:
-    my $NextToken = $DescribeSnapshotsResult->NextToken;
     my $Snapshots = $DescribeSnapshotsResult->Snapshots;
+    my $NextToken = $DescribeSnapshotsResult->NextToken;
 
     # Returns a L<Paws::EC2::DescribeSnapshotsResult> object.
 

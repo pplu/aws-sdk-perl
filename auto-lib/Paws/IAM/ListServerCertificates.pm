@@ -36,10 +36,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $IsTruncated = $ListServerCertificatesResponse->IsTruncated;
     my $ServerCertificateMetadataList =
       $ListServerCertificatesResponse->ServerCertificateMetadataList;
-    my $Marker      = $ListServerCertificatesResponse->Marker;
-    my $IsTruncated = $ListServerCertificatesResponse->IsTruncated;
+    my $Marker = $ListServerCertificatesResponse->Marker;
 
     # Returns a L<Paws::IAM::ListServerCertificatesResponse> object.
 

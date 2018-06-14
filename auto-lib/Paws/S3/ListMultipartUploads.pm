@@ -47,18 +47,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Uploads            = $ListMultipartUploadsOutput->Uploads;
     my $IsTruncated        = $ListMultipartUploadsOutput->IsTruncated;
-    my $MaxUploads         = $ListMultipartUploadsOutput->MaxUploads;
-    my $NextUploadIdMarker = $ListMultipartUploadsOutput->NextUploadIdMarker;
-    my $NextKeyMarker      = $ListMultipartUploadsOutput->NextKeyMarker;
-    my $CommonPrefixes     = $ListMultipartUploadsOutput->CommonPrefixes;
-    my $Delimiter          = $ListMultipartUploadsOutput->Delimiter;
-    my $KeyMarker          = $ListMultipartUploadsOutput->KeyMarker;
-    my $UploadIdMarker     = $ListMultipartUploadsOutput->UploadIdMarker;
     my $Bucket             = $ListMultipartUploadsOutput->Bucket;
+    my $Uploads            = $ListMultipartUploadsOutput->Uploads;
+    my $KeyMarker          = $ListMultipartUploadsOutput->KeyMarker;
+    my $MaxUploads         = $ListMultipartUploadsOutput->MaxUploads;
+    my $NextKeyMarker      = $ListMultipartUploadsOutput->NextKeyMarker;
     my $Prefix             = $ListMultipartUploadsOutput->Prefix;
+    my $UploadIdMarker     = $ListMultipartUploadsOutput->UploadIdMarker;
+    my $NextUploadIdMarker = $ListMultipartUploadsOutput->NextUploadIdMarker;
     my $EncodingType       = $ListMultipartUploadsOutput->EncodingType;
+    my $Delimiter          = $ListMultipartUploadsOutput->Delimiter;
+    my $CommonPrefixes     = $ListMultipartUploadsOutput->CommonPrefixes;
 
     # Returns a L<Paws::S3::ListMultipartUploadsOutput> object.
 

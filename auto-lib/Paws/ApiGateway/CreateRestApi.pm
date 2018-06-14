@@ -53,17 +53,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Version                = $RestApi->Version;
+    my $Id                     = $RestApi->Id;
+    my $BinaryMediaTypes       = $RestApi->BinaryMediaTypes;
     my $ApiKeySource           = $RestApi->ApiKeySource;
-    my $Description            = $RestApi->Description;
     my $EndpointConfiguration  = $RestApi->EndpointConfiguration;
     my $CreatedDate            = $RestApi->CreatedDate;
+    my $Version                = $RestApi->Version;
+    my $MinimumCompressionSize = $RestApi->MinimumCompressionSize;
     my $Policy                 = $RestApi->Policy;
     my $Warnings               = $RestApi->Warnings;
-    my $Id                     = $RestApi->Id;
+    my $Description            = $RestApi->Description;
     my $Name                   = $RestApi->Name;
-    my $BinaryMediaTypes       = $RestApi->BinaryMediaTypes;
-    my $MinimumCompressionSize = $RestApi->MinimumCompressionSize;
 
     # Returns a L<Paws::ApiGateway::RestApi> object.
 

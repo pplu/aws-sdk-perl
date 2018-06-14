@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Tags      = $ListTagsForProjectResult->Tags;
     my $NextToken = $ListTagsForProjectResult->NextToken;
+    my $Tags      = $ListTagsForProjectResult->Tags;
 
     # Returns a L<Paws::CodeStar::ListTagsForProjectResult> object.
 

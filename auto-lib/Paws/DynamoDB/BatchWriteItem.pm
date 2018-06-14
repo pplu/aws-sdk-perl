@@ -40,11 +40,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             {
               'PutRequest' => {
                 'Item' => {
-                  'AlbumTitle' => {
-                    'S' => 'Somewhat Famous'
-                  },
                   'SongTitle' => {
                     'S' => 'Call Me Today'
+                  },
+                  'AlbumTitle' => {
+                    'S' => 'Somewhat Famous'
                   },
                   'Artist' => {
                     'S' => 'No One You Know'
@@ -56,11 +56,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             {
               'PutRequest' => {
                 'Item' => {
-                  'AlbumTitle' => {
-                    'S' => 'Songs About Life'
-                  },
                   'SongTitle' => {
                     'S' => 'Happy Day'
+                  },
+                  'AlbumTitle' => {
+                    'S' => 'Songs About Life'
                   },
                   'Artist' => {
                     'S' => 'Acme Band'
@@ -72,11 +72,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             {
               'PutRequest' => {
                 'Item' => {
-                  'AlbumTitle' => {
-                    'S' => 'Blue Sky Blues'
-                  },
                   'SongTitle' => {
                     'S' => 'Scared of My Shadow'
+                  },
+                  'AlbumTitle' => {
+                    'S' => 'Blue Sky Blues'
                   },
                   'Artist' => {
                     'S' => 'No One You Know'

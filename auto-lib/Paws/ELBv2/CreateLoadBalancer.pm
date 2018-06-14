@@ -54,11 +54,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateLoadBalancerOutput = $elasticloadbalancing->CreateLoadBalancer(
       {
         'Subnets'        => [ 'subnet-b7d581c0', 'subnet-8360a9e7' ],
+        'Scheme'         => 'internal',
         'Name'           => 'my-internal-load-balancer',
         'SecurityGroups' => [
 
-        ],
-        'Scheme' => 'internal'
+        ]
       }
     );
 

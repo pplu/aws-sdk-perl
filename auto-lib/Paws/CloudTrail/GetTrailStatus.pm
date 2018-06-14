@@ -33,33 +33,33 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $LatestNotificationAttemptSucceeded =
-      $GetTrailStatusResponse->LatestNotificationAttemptSucceeded;
-    my $LatestNotificationAttemptTime =
-      $GetTrailStatusResponse->LatestNotificationAttemptTime;
-    my $LatestNotificationError =
-      $GetTrailStatusResponse->LatestNotificationError;
-    my $StopLoggingTime = $GetTrailStatusResponse->StopLoggingTime;
-    my $LatestDeliveryAttemptTime =
-      $GetTrailStatusResponse->LatestDeliveryAttemptTime;
-    my $LatestDigestDeliveryError =
-      $GetTrailStatusResponse->LatestDigestDeliveryError;
-    my $LatestDeliveryTime = $GetTrailStatusResponse->LatestDeliveryTime;
-    my $TimeLoggingStarted = $GetTrailStatusResponse->TimeLoggingStarted;
-    my $TimeLoggingStopped = $GetTrailStatusResponse->TimeLoggingStopped;
-    my $LatestCloudWatchLogsDeliveryError =
-      $GetTrailStatusResponse->LatestCloudWatchLogsDeliveryError;
-    my $LatestDeliveryAttemptSucceeded =
-      $GetTrailStatusResponse->LatestDeliveryAttemptSucceeded;
-    my $LatestNotificationTime =
-      $GetTrailStatusResponse->LatestNotificationTime;
-    my $LatestDeliveryError = $GetTrailStatusResponse->LatestDeliveryError;
-    my $StartLoggingTime    = $GetTrailStatusResponse->StartLoggingTime;
-    my $LatestCloudWatchLogsDeliveryTime =
-      $GetTrailStatusResponse->LatestCloudWatchLogsDeliveryTime;
-    my $IsLogging = $GetTrailStatusResponse->IsLogging;
+    my $IsLogging        = $GetTrailStatusResponse->IsLogging;
+    my $StartLoggingTime = $GetTrailStatusResponse->StartLoggingTime;
     my $LatestDigestDeliveryTime =
       $GetTrailStatusResponse->LatestDigestDeliveryTime;
+    my $StopLoggingTime = $GetTrailStatusResponse->StopLoggingTime;
+    my $LatestNotificationTime =
+      $GetTrailStatusResponse->LatestNotificationTime;
+    my $LatestCloudWatchLogsDeliveryError =
+      $GetTrailStatusResponse->LatestCloudWatchLogsDeliveryError;
+    my $LatestNotificationError =
+      $GetTrailStatusResponse->LatestNotificationError;
+    my $LatestDeliveryError = $GetTrailStatusResponse->LatestDeliveryError;
+    my $LatestNotificationAttemptTime =
+      $GetTrailStatusResponse->LatestNotificationAttemptTime;
+    my $LatestDeliveryAttemptSucceeded =
+      $GetTrailStatusResponse->LatestDeliveryAttemptSucceeded;
+    my $LatestDigestDeliveryError =
+      $GetTrailStatusResponse->LatestDigestDeliveryError;
+    my $LatestDeliveryAttemptTime =
+      $GetTrailStatusResponse->LatestDeliveryAttemptTime;
+    my $LatestNotificationAttemptSucceeded =
+      $GetTrailStatusResponse->LatestNotificationAttemptSucceeded;
+    my $TimeLoggingStopped = $GetTrailStatusResponse->TimeLoggingStopped;
+    my $LatestDeliveryTime = $GetTrailStatusResponse->LatestDeliveryTime;
+    my $TimeLoggingStarted = $GetTrailStatusResponse->TimeLoggingStarted;
+    my $LatestCloudWatchLogsDeliveryTime =
+      $GetTrailStatusResponse->LatestCloudWatchLogsDeliveryTime;
 
     # Returns a L<Paws::CloudTrail::GetTrailStatusResponse> object.
 

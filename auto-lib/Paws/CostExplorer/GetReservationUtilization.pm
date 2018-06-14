@@ -33,29 +33,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ce = Paws->service('CostExplorer');
     my $GetReservationUtilizationResponse = $ce->GetReservationUtilization(
       TimePeriod => {
-        End   => 'MyYearMonthDay',
         Start => 'MyYearMonthDay',
+        End   => 'MyYearMonthDay',
 
       },
       Filter => {
+        Or         => [ <Expression>, ... ],    # OPTIONAL
+        Not        => <Expression>,
         Dimensions => {
+          Values => [ 'MyValue', ... ],         # OPTIONAL
           Key => 'AZ'
           , # values: AZ, INSTANCE_TYPE, LINKED_ACCOUNT, OPERATION, PURCHASE_TYPE, REGION, SERVICE, USAGE_TYPE, USAGE_TYPE_GROUP, RECORD_TYPE, OPERATING_SYSTEM, TENANCY, SCOPE, PLATFORM, SUBSCRIPTION_ID, LEGAL_ENTITY_NAME, DEPLOYMENT_OPTION, DATABASE_ENGINE, CACHE_ENGINE, INSTANCE_TYPE_FAMILY; OPTIONAL
-          Values => [ 'MyValue', ... ],    # OPTIONAL
         },    # OPTIONAL
-        Or => [ <Expression>, ... ],    # OPTIONAL
+        And => [ <Expression>, ... ],    # OPTIONAL
         Tags => {
           Values => [ 'MyValue', ... ],    # OPTIONAL
           Key => 'MyTagKey',               # OPTIONAL
         },    # OPTIONAL
-        And => [ <Expression>, ... ],    # OPTIONAL
-        Not => <Expression>,
       },    # OPTIONAL
       Granularity => 'DAILY',    # OPTIONAL
       GroupBy     => [
         {
-          Key  => 'MyGroupDefinitionKey',    # OPTIONAL
           Type => 'DIMENSION',               # values: DIMENSION, TAG; OPTIONAL
+          Key  => 'MyGroupDefinitionKey',    # OPTIONAL
         },
         ...
       ],                                     # OPTIONAL
@@ -63,10 +63,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $Total         = $GetReservationUtilizationResponse->Total;
     my $NextPageToken = $GetReservationUtilizationResponse->NextPageToken;
     my $UtilizationsByTime =
       $GetReservationUtilizationResponse->UtilizationsByTime;
-    my $Total = $GetReservationUtilizationResponse->Total;
 
     # Returns a L<Paws::CostExplorer::GetReservationUtilizationResponse> object.
 

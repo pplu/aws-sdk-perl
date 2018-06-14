@@ -39,22 +39,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       StatusCode      => 'MyStatusCode',
       PatchOperations => [
         {
-          path  => 'MyString',
+          from  => 'MyString',
           value => 'MyString',
+          path  => 'MyString',
           op =>
             'add',    # values: add, remove, replace, move, copy, test; OPTIONAL
-          from => 'MyString',
         },
         ...
       ],              # OPTIONAL
     );
 
     # Results:
+    my $StatusCode         = $IntegrationResponse->StatusCode;
+    my $SelectionPattern   = $IntegrationResponse->SelectionPattern;
     my $ContentHandling    = $IntegrationResponse->ContentHandling;
     my $ResponseParameters = $IntegrationResponse->ResponseParameters;
-    my $StatusCode         = $IntegrationResponse->StatusCode;
     my $ResponseTemplates  = $IntegrationResponse->ResponseTemplates;
-    my $SelectionPattern   = $IntegrationResponse->SelectionPattern;
 
     # Returns a L<Paws::ApiGateway::IntegrationResponse> object.
 

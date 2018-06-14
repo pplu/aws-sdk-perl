@@ -39,19 +39,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Key => 'MyObjectKey',    # min: 1,
 
         },    # OPTIONAL
+        RedirectAllRequestsTo => {
+          HostName => 'MyHostName',
+          Protocol => 'http',         # values: http, https; OPTIONAL
+        },    # OPTIONAL
         RoutingRules => [
           {
             Redirect => {
-              HostName             => 'MyHostName',
-              ReplaceKeyPrefixWith => 'MyReplaceKeyPrefixWith',    # OPTIONAL
-              HttpRedirectCode     => 'MyHttpRedirectCode',        # OPTIONAL
-              ReplaceKeyWith       => 'MyReplaceKeyWith',          # OPTIONAL
+              HttpRedirectCode => 'MyHttpRedirectCode',    # OPTIONAL
+              ReplaceKeyWith   => 'MyReplaceKeyWith',      # OPTIONAL
+              HostName         => 'MyHostName',
               Protocol => 'http',    # values: http, https; OPTIONAL
+              ReplaceKeyPrefixWith => 'MyReplaceKeyPrefixWith',    # OPTIONAL
             },
             Condition => {
-              KeyPrefixEquals => 'MyKeyPrefixEquals',    # OPTIONAL
+              KeyPrefixEquals => 'MyKeyPrefixEquals',              # OPTIONAL
               HttpErrorCodeReturnedEquals =>
-                'MyHttpErrorCodeReturnedEquals',         # OPTIONAL
+                'MyHttpErrorCodeReturnedEquals',                   # OPTIONAL
             },    # OPTIONAL
           },
           ...
@@ -60,10 +64,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Suffix => 'MySuffix',
 
         },        # OPTIONAL
-        RedirectAllRequestsTo => {
-          HostName => 'MyHostName',
-          Protocol => 'http',         # values: http, https; OPTIONAL
-        },    # OPTIONAL
       },
       ContentMD5 => 'MyContentMD5',    # OPTIONAL
     );

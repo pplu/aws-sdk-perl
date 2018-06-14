@@ -32,8 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateGcmChannelResponse = $pinpoint->UpdateGcmChannel(
       ApplicationId     => 'My__string',
       GCMChannelRequest => {
-        ApiKey  => 'My__string',
         Enabled => 1,              # OPTIONAL
+        ApiKey  => 'My__string',
       },
 
     );

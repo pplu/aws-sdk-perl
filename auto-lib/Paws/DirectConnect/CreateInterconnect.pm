@@ -38,15 +38,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $LagId             = $Interconnect->LagId;
-    my $Region            = $Interconnect->Region;
     my $InterconnectState = $Interconnect->InterconnectState;
     my $Bandwidth         = $Interconnect->Bandwidth;
-    my $LoaIssueTime      = $Interconnect->LoaIssueTime;
-    my $InterconnectName  = $Interconnect->InterconnectName;
     my $InterconnectId    = $Interconnect->InterconnectId;
-    my $Location          = $Interconnect->Location;
     my $AwsDevice         = $Interconnect->AwsDevice;
+    my $LagId             = $Interconnect->LagId;
+    my $LoaIssueTime      = $Interconnect->LoaIssueTime;
+    my $Location          = $Interconnect->Location;
+    my $InterconnectName  = $Interconnect->InterconnectName;
+    my $Region            = $Interconnect->Region;
 
     # Returns a L<Paws::DirectConnect::Interconnect> object.
 

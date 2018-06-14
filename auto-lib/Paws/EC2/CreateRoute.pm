@@ -42,9 +42,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # gateway.
     my $CreateRouteResult = $ec2->CreateRoute(
       {
+        'GatewayId'            => 'igw-c0a643a9',
         'DestinationCidrBlock' => '0.0.0.0/0',
-        'RouteTableId'         => 'rtb-22574640',
-        'GatewayId'            => 'igw-c0a643a9'
+        'RouteTableId'         => 'rtb-22574640'
       }
     );
 

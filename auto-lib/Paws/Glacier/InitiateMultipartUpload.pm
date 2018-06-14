@@ -36,9 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # part size of 1 MiB (1024 x 1024 bytes) per file.
     my $InitiateMultipartUploadOutput = $glacier->InitiateMultipartUpload(
       {
-        'VaultName' => 'my-vault',
+        'PartSize'  => 1048576,
         'AccountId' => '-',
-        'PartSize'  => 1048576
+        'VaultName' => 'my-vault'
       }
     );
 

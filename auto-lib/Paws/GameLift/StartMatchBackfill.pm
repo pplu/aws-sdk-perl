@@ -35,22 +35,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       GameSessionArn    => 'MyArnStringModel',
       Players           => [
         {
-          PlayerAttributes => {
-            'MyNonZeroAndMaxString' => {
-              S   => 'MyNonZeroAndMaxString',    # min: 1, max: 1024; OPTIONAL
-              SDM => {
-                'MyNonZeroAndMaxString' => 1, # key: min: 1, max: 1024; OPTIONAL
-              },    # OPTIONAL
-              N  => 1,
-              SL => [
-                'MyNonZeroAndMaxString', ...    # min: 1, max: 1024; OPTIONAL
-              ],                                # OPTIONAL
-            },    # key: min: 1, max: 1024; OPTIONAL
-          },    # OPTIONAL
-          Team        => 'MyNonZeroAndMaxString',  # min: 1, max: 1024; OPTIONAL
-          PlayerId    => 'MyNonZeroAndMaxString',  # min: 1, max: 1024; OPTIONAL
+          Team        => 'MyNonZeroAndMaxString',    # min: 1, max: 1024
+          PlayerId    => 'MyNonZeroAndMaxString',    # min: 1, max: 1024
           LatencyInMs => {
             'MyNonEmptyString' => 1,    # key: min: 1, , value: min: 1,
+          },    # OPTIONAL
+          PlayerAttributes => {
+            'MyNonZeroAndMaxString' => {
+              S  => 'MyNonZeroAndMaxString',    # min: 1, max: 1024
+              N  => 1,
+              SL => [
+                'MyNonZeroAndMaxString', ...    # min: 1, max: 1024
+              ],                                # OPTIONAL
+              SDM => {
+                'MyNonZeroAndMaxString' => 1,    # key: min: 1, max: 1024
+              },    # OPTIONAL
+            },    # key: min: 1, max: 1024
           },    # OPTIONAL
         },
         ...

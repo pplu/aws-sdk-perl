@@ -42,10 +42,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Criterion => {
           'My__string' => {
             Gte => 1,                              # OPTIONAL
-            Neq => [ 'My__string', ... ],          # OPTIONAL
             Lte => 1,                              # OPTIONAL
-            Gt  => 1,                              # OPTIONAL
+            Neq => [ 'My__string', ... ],          # OPTIONAL
             Eq  => [ 'My__string', ... ],          # OPTIONAL
+            Gt  => 1,                              # OPTIONAL
             Lt  => 1,                              # OPTIONAL
           },
         },    # OPTIONAL

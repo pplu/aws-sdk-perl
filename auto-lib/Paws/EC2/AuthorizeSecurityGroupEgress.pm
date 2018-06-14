@@ -42,14 +42,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       FromPort      => 1,             # OPTIONAL
       IpPermissions => [
         {
-          Ipv6Ranges => [
-            {
-              CidrIpv6    => 'MyString',
-              Description => 'MyString',
-            },
-            ...
-          ],                          # OPTIONAL
-          IpProtocol    => 'MyString',
           ToPort        => 1,
           PrefixListIds => [
             {
@@ -58,29 +50,37 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },
             ...
           ],                          # OPTIONAL
-          FromPort => 1,
           IpRanges => [
             {
-              Description => 'MyString',
               CidrIp      => 'MyString',
+              Description => 'MyString',
             },
             ...
           ],                          # OPTIONAL
+          FromPort   => 1,
+          Ipv6Ranges => [
+            {
+              CidrIpv6    => 'MyString',
+              Description => 'MyString',
+            },
+            ...
+          ],                          # OPTIONAL
+          IpProtocol       => 'MyString',
           UserIdGroupPairs => [
             {
+              UserId                 => 'MyString',
               VpcId                  => 'MyString',
               PeeringStatus          => 'MyString',
-              Description            => 'MyString',
-              GroupName              => 'MyString',
-              VpcPeeringConnectionId => 'MyString',
-              UserId                 => 'MyString',
               GroupId                => 'MyString',
+              VpcPeeringConnectionId => 'MyString',
+              GroupName              => 'MyString',
+              Description            => 'MyString',
             },
             ...
-          ],                          # OPTIONAL
+          ],    # OPTIONAL
         },
         ...
-      ],                              # OPTIONAL
+      ],        # OPTIONAL
       IpProtocol                 => 'MyString',    # OPTIONAL
       SourceSecurityGroupName    => 'MyString',    # OPTIONAL
       SourceSecurityGroupOwnerId => 'MyString',    # OPTIONAL

@@ -47,19 +47,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $IsTruncated         = $ListObjectVersionsOutput->IsTruncated;
-    my $NextKeyMarker       = $ListObjectVersionsOutput->NextKeyMarker;
     my $Versions            = $ListObjectVersionsOutput->Versions;
-    my $Delimiter           = $ListObjectVersionsOutput->Delimiter;
-    my $KeyMarker           = $ListObjectVersionsOutput->KeyMarker;
-    my $Name                = $ListObjectVersionsOutput->Name;
-    my $CommonPrefixes      = $ListObjectVersionsOutput->CommonPrefixes;
+    my $IsTruncated         = $ListObjectVersionsOutput->IsTruncated;
+    my $DeleteMarkers       = $ListObjectVersionsOutput->DeleteMarkers;
     my $VersionIdMarker     = $ListObjectVersionsOutput->VersionIdMarker;
-    my $MaxKeys             = $ListObjectVersionsOutput->MaxKeys;
-    my $NextVersionIdMarker = $ListObjectVersionsOutput->NextVersionIdMarker;
+    my $KeyMarker           = $ListObjectVersionsOutput->KeyMarker;
+    my $NextKeyMarker       = $ListObjectVersionsOutput->NextKeyMarker;
     my $Prefix              = $ListObjectVersionsOutput->Prefix;
     my $EncodingType        = $ListObjectVersionsOutput->EncodingType;
-    my $DeleteMarkers       = $ListObjectVersionsOutput->DeleteMarkers;
+    my $Delimiter           = $ListObjectVersionsOutput->Delimiter;
+    my $CommonPrefixes      = $ListObjectVersionsOutput->CommonPrefixes;
+    my $MaxKeys             = $ListObjectVersionsOutput->MaxKeys;
+    my $Name                = $ListObjectVersionsOutput->Name;
+    my $NextVersionIdMarker = $ListObjectVersionsOutput->NextVersionIdMarker;
 
     # Returns a L<Paws::S3::ListObjectVersionsOutput> object.
 

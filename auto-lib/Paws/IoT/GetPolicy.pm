@@ -34,13 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CreationDate     = $GetPolicyResponse->CreationDate;
-    my $GenerationId     = $GetPolicyResponse->GenerationId;
-    my $DefaultVersionId = $GetPolicyResponse->DefaultVersionId;
-    my $PolicyDocument   = $GetPolicyResponse->PolicyDocument;
-    my $PolicyName       = $GetPolicyResponse->PolicyName;
     my $PolicyArn        = $GetPolicyResponse->PolicyArn;
     my $LastModifiedDate = $GetPolicyResponse->LastModifiedDate;
+    my $CreationDate     = $GetPolicyResponse->CreationDate;
+    my $GenerationId     = $GetPolicyResponse->GenerationId;
+    my $PolicyDocument   = $GetPolicyResponse->PolicyDocument;
+    my $DefaultVersionId = $GetPolicyResponse->DefaultVersionId;
+    my $PolicyName       = $GetPolicyResponse->PolicyName;
 
     # Returns a L<Paws::IoT::GetPolicyResponse> object.
 

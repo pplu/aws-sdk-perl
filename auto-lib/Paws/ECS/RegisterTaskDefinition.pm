@@ -40,22 +40,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example registers a task definition to the specified family.
     my $RegisterTaskDefinitionResponse = $ecs->RegisterTaskDefinition(
       {
-        'Family'  => 'sleep360',
         'Volumes' => [
 
         ],
-        'TaskRoleArn'          => '',
         'ContainerDefinitions' => [
 
           {
             'Memory'    => 10,
-            'Command'   => [ 'sleep', 360 ],
-            'Image'     => 'busybox',
+            'Essential' => 1,
             'Cpu'       => 10,
             'Name'      => 'sleep',
-            'Essential' => true
+            'Image'     => 'busybox',
+            'Command'   => [ 'sleep', 360 ]
           }
-        ]
+        ],
+        'TaskRoleArn' => '',
+        'Family'      => 'sleep360'
       }
     );
 

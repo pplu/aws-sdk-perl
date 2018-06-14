@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AssociationIds => [ 'MyString', ... ],    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',
           Values => [ 'MyString', ... ],        # OPTIONAL
+          Name => 'MyString',
         },
         ...
       ],                                        # OPTIONAL
@@ -45,10 +45,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $NextToken = $DescribeIamInstanceProfileAssociationsResult->NextToken;
     my $IamInstanceProfileAssociations =
       $DescribeIamInstanceProfileAssociationsResult
       ->IamInstanceProfileAssociations;
-    my $NextToken = $DescribeIamInstanceProfileAssociationsResult->NextToken;
 
   # Returns a L<Paws::EC2::DescribeIamInstanceProfileAssociationsResult> object.
 

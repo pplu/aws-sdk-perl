@@ -31,38 +31,38 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $clouddirectory = Paws->service('CloudDirectory');
     my $CreateTypedLinkFacetResponse = $clouddirectory->CreateTypedLinkFacet(
       Facet => {
-        Name       => 'MyTypedLinkName',
         Attributes => [
           {
-            Type =>
-              'STRING',    # values: STRING, BINARY, BOOLEAN, NUMBER, DATETIME
-            Name => 'MyAttributeName',    # min: 1, max: 64
             RequiredBehavior =>
               'REQUIRED_ALWAYS',    # values: REQUIRED_ALWAYS, NOT_REQUIRED
-            DefaultValue => {
-              NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
-              BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
-              StringValue   => 'MyStringAttributeValue',      # OPTIONAL
-              DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
-              BooleanValue  => 1,                             # OPTIONAL
-            },    # OPTIONAL
+            Type =>
+              'STRING',    # values: STRING, BINARY, BOOLEAN, NUMBER, DATETIME
+            Name  => 'MyAttributeName',    # min: 1, max: 64
             Rules => {
               'MyRuleKey' => {
+                Type => 'BINARY_LENGTH'
+                , # values: BINARY_LENGTH, NUMBER_COMPARISON, STRING_FROM_SET, STRING_LENGTH; OPTIONAL
                 Parameters =>
                   { 'MyRuleParameterKey' => 'MyRuleParameterValue', }
                 ,    # OPTIONAL
-                Type => 'BINARY_LENGTH'
-                , # values: BINARY_LENGTH, NUMBER_COMPARISON, STRING_FROM_SET, STRING_LENGTH; OPTIONAL
               },    # key: min: 1, max: 64
             },    # OPTIONAL
-            IsImmutable => 1,    # OPTIONAL
+            IsImmutable  => 1,    # OPTIONAL
+            DefaultValue => {
+              NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
+              BooleanValue  => 1,                             # OPTIONAL
+              StringValue   => 'MyStringAttributeValue',      # OPTIONAL
+              DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
+              BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
+            },    # OPTIONAL
           },
           ...
         ],
         IdentityAttributeOrder => [
           'MyAttributeName',
-          ...                    # min: 1, max: 64
+          ...     # min: 1, max: 64
         ],
+        Name => 'MyTypedLinkName',
 
       },
       SchemaArn => 'MyArn',

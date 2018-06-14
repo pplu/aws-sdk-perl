@@ -40,8 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $LastEvaluatedBackupArn = $ListBackupsOutput->LastEvaluatedBackupArn;
     my $BackupSummaries        = $ListBackupsOutput->BackupSummaries;
+    my $LastEvaluatedBackupArn = $ListBackupsOutput->LastEvaluatedBackupArn;
 
     # Returns a L<Paws::DynamoDB::ListBackupsOutput> object.
 

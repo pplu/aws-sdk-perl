@@ -39,38 +39,38 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example sends a formatted email:
     my $SendEmailResponse = $email->SendEmail(
       {
-        'Source'           => 'sender@example.com',
+        'SourceArn'        => '',
+        'ReturnPathArn'    => '',
         'ReplyToAddresses' => [
 
         ],
-        'SourceArn'     => '',
-        'ReturnPathArn' => '',
-        'ReturnPath'    => '',
-        'Message'       => {
-          'Body' => {
-            'Text' => {
-              'Charset' => 'UTF-8',
-              'Data'    => 'This is the message body in text format.'
-            },
-            'Html' => {
-              'Data' =>
-'This message body contains HTML formatting. It can, for example, contain links like this one: <a class="ulink" href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide" target="_blank">Amazon SES Developer Guide</a>.',
-              'Charset' => 'UTF-8'
-            }
-          },
+        'Message' => {
           'Subject' => {
             'Charset' => 'UTF-8',
             'Data'    => 'Test email'
+          },
+          'Body' => {
+            'Html' => {
+              'Charset' => 'UTF-8',
+              'Data' =>
+'This message body contains HTML formatting. It can, for example, contain links like this one: <a class="ulink" href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide" target="_blank">Amazon SES Developer Guide</a>.'
+            },
+            'Text' => {
+              'Charset' => 'UTF-8',
+              'Data'    => 'This is the message body in text format.'
+            }
           }
         },
+        'Source'      => 'sender@example.com',
         'Destination' => {
-          'CcAddresses' => ['recipient3@example.com'],
-          'ToAddresses' =>
-            [ 'recipient1@example.com', 'recipient2@example.com' ],
+          'CcAddresses'  => ['recipient3@example.com'],
           'BccAddresses' => [
 
-          ]
-        }
+          ],
+          'ToAddresses' =>
+            [ 'recipient1@example.com', 'recipient2@example.com' ]
+        },
+        'ReturnPath' => ''
       }
     );
 

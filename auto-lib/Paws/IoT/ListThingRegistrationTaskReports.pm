@@ -40,10 +40,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $ReportType = $ListThingRegistrationTaskReportsResponse->ReportType;
     my $ResourceLinks =
       $ListThingRegistrationTaskReportsResponse->ResourceLinks;
-    my $ReportType = $ListThingRegistrationTaskReportsResponse->ReportType;
-    my $NextToken  = $ListThingRegistrationTaskReportsResponse->NextToken;
+    my $NextToken = $ListThingRegistrationTaskReportsResponse->NextToken;
 
     # Returns a L<Paws::IoT::ListThingRegistrationTaskReportsResponse> object.
 

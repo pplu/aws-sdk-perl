@@ -42,13 +42,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $PlayerSessions = $DescribePlayerSessionsOutput->PlayerSessions;
     my $NextToken      = $DescribePlayerSessionsOutput->NextToken;
+    my $PlayerSessions = $DescribePlayerSessionsOutput->PlayerSessions;
 
     # Returns a L<Paws::GameLift::DescribePlayerSessionsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gamelift/DescribePlayerSessions>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01>
 
 =head1 ATTRIBUTES
 

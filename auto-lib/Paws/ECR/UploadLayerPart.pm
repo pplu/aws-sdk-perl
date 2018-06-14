@@ -42,9 +42,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $RegistryId       = $UploadLayerPartResponse->RegistryId;
     my $LastByteReceived = $UploadLayerPartResponse->LastByteReceived;
     my $UploadId         = $UploadLayerPartResponse->UploadId;
-    my $RegistryId       = $UploadLayerPartResponse->RegistryId;
     my $RepositoryName   = $UploadLayerPartResponse->RepositoryName;
 
     # Returns a L<Paws::ECR::UploadLayerPartResponse> object.

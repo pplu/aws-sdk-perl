@@ -35,10 +35,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InitialVersion  => {
         Devices => [
           {
+            SyncShadow     => 1,              # OPTIONAL
+            ThingArn       => 'My__string',
             CertificateArn => 'My__string',
             Id             => 'My__string',
-            ThingArn       => 'My__string',
-            SyncShadow     => 1,              # OPTIONAL
           },
           ...
         ],                                    # OPTIONAL
@@ -47,14 +47,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $LatestVersionArn  = $CreateDeviceDefinitionResponse->LatestVersionArn;
-    my $Arn               = $CreateDeviceDefinitionResponse->Arn;
-    my $Name              = $CreateDeviceDefinitionResponse->Name;
     my $CreationTimestamp = $CreateDeviceDefinitionResponse->CreationTimestamp;
-    my $LatestVersion     = $CreateDeviceDefinitionResponse->LatestVersion;
+    my $LatestVersionArn  = $CreateDeviceDefinitionResponse->LatestVersionArn;
+    my $Id                = $CreateDeviceDefinitionResponse->Id;
     my $LastUpdatedTimestamp =
       $CreateDeviceDefinitionResponse->LastUpdatedTimestamp;
-    my $Id = $CreateDeviceDefinitionResponse->Id;
+    my $Arn           = $CreateDeviceDefinitionResponse->Arn;
+    my $Name          = $CreateDeviceDefinitionResponse->Name;
+    my $LatestVersion = $CreateDeviceDefinitionResponse->LatestVersion;
 
     # Returns a L<Paws::Greengrass::CreateDeviceDefinitionResponse> object.
 

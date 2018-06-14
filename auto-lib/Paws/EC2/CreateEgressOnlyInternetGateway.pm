@@ -37,9 +37,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $ClientToken = $CreateEgressOnlyInternetGatewayResult->ClientToken;
     my $EgressOnlyInternetGateway =
       $CreateEgressOnlyInternetGatewayResult->EgressOnlyInternetGateway;
+    my $ClientToken = $CreateEgressOnlyInternetGatewayResult->ClientToken;
 
     # Returns a L<Paws::EC2::CreateEgressOnlyInternetGatewayResult> object.
 

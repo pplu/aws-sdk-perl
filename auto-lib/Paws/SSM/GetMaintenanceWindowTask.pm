@@ -35,21 +35,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $TaskArn      = $GetMaintenanceWindowTaskResult->TaskArn;
-    my $WindowTaskId = $GetMaintenanceWindowTaskResult->WindowTaskId;
-    my $Description  = $GetMaintenanceWindowTaskResult->Description;
-    my $WindowId     = $GetMaintenanceWindowTaskResult->WindowId;
-    my $TaskType     = $GetMaintenanceWindowTaskResult->TaskType;
-    my $LoggingInfo  = $GetMaintenanceWindowTaskResult->LoggingInfo;
+    my $LoggingInfo    = $GetMaintenanceWindowTaskResult->LoggingInfo;
+    my $ServiceRoleArn = $GetMaintenanceWindowTaskResult->ServiceRoleArn;
+    my $TaskArn        = $GetMaintenanceWindowTaskResult->TaskArn;
+    my $WindowId       = $GetMaintenanceWindowTaskResult->WindowId;
+    my $TaskParameters = $GetMaintenanceWindowTaskResult->TaskParameters;
+    my $WindowTaskId   = $GetMaintenanceWindowTaskResult->WindowTaskId;
+    my $TaskType       = $GetMaintenanceWindowTaskResult->TaskType;
+    my $MaxErrors      = $GetMaintenanceWindowTaskResult->MaxErrors;
+    my $Targets        = $GetMaintenanceWindowTaskResult->Targets;
+    my $Priority       = $GetMaintenanceWindowTaskResult->Priority;
     my $TaskInvocationParameters =
       $GetMaintenanceWindowTaskResult->TaskInvocationParameters;
-    my $TaskParameters = $GetMaintenanceWindowTaskResult->TaskParameters;
-    my $Priority       = $GetMaintenanceWindowTaskResult->Priority;
-    my $ServiceRoleArn = $GetMaintenanceWindowTaskResult->ServiceRoleArn;
-    my $MaxConcurrency = $GetMaintenanceWindowTaskResult->MaxConcurrency;
-    my $MaxErrors      = $GetMaintenanceWindowTaskResult->MaxErrors;
+    my $Description    = $GetMaintenanceWindowTaskResult->Description;
     my $Name           = $GetMaintenanceWindowTaskResult->Name;
-    my $Targets        = $GetMaintenanceWindowTaskResult->Targets;
+    my $MaxConcurrency = $GetMaintenanceWindowTaskResult->MaxConcurrency;
 
     # Returns a L<Paws::SSM::GetMaintenanceWindowTaskResult> object.
 

@@ -33,37 +33,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateDistributionWithTagsResult =
       $cloudfront->CreateDistributionWithTags(
       DistributionConfigWithTags => {
-        Tags => {
-          Items => [
-            {
-              Key   => 'MyTagKey',      # min: 1, max: 128
-              Value => 'MyTagValue',    # max: 256; OPTIONAL
-            },
-            ...
-          ],                            # OPTIONAL
-        },
         DistributionConfig => {
-          Origins => {
+          CallerReference => 'Mystring',
+          Origins         => {
             Quantity => 1,
             Items    => [
               {
-                Id                 => 'Mystring',
-                DomainName         => 'Mystring',
-                OriginPath         => 'Mystring',
-                CustomOriginConfig => {
-                  HTTPPort  => 1,
-                  HTTPSPort => 1,
-                  OriginProtocolPolicy =>
-                    'http-only',   # values: http-only, match-viewer, https-only
-                  OriginReadTimeout      => 1,
-                  OriginKeepaliveTimeout => 1,
-                  OriginSslProtocols     => {
-                    Quantity => 1,
-                    Items    => [
-                      'SSLv3', ...    # values: SSLv3, TLSv1, TLSv1.1, TLSv1.2
-                    ],
+                Id             => 'Mystring',
+                DomainName     => 'Mystring',
+                S3OriginConfig => {
+                  OriginAccessIdentity => 'Mystring',
 
-                  },    # OPTIONAL
                 },    # OPTIONAL
                 CustomHeaders => {
                   Quantity => 1,
@@ -76,26 +56,45 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     ...
                   ],    # OPTIONAL
                 },    # OPTIONAL
-                S3OriginConfig => {
-                  OriginAccessIdentity => 'Mystring',
+                OriginPath         => 'Mystring',
+                CustomOriginConfig => {
+                  HTTPSPort => 1,
+                  HTTPPort  => 1,
+                  OriginProtocolPolicy =>
+                    'http-only',   # values: http-only, match-viewer, https-only
+                  OriginSslProtocols => {
+                    Items => [
+                      'SSLv3', ...    # values: SSLv3, TLSv1, TLSv1.1, TLSv1.2
+                    ],
+                    Quantity => 1,
 
+                  },    # OPTIONAL
+                  OriginKeepaliveTimeout => 1,
+                  OriginReadTimeout      => 1,
                 },    # OPTIONAL
               },
               ...
             ],        # min: 1, ; OPTIONAL
           },
-          Comment              => 'Mystring',
-          Enabled              => 1,
           DefaultCacheBehavior => {
+            MinTTL => 1,
+            ViewerProtocolPolicy =>
+              'allow-all',    # values: allow-all, https-only, redirect-to-https
+            TrustedSigners => {
+              Quantity => 1,
+              Enabled  => 1,
+              Items    => [ 'Mystring', ... ],    # OPTIONAL
+            },
+            TargetOriginId  => 'Mystring',
             ForwardedValues => {
-              QueryString => 1,
-              Cookies     => {
-                Forward          => 'none',    # values: none, whitelist, all
+              Cookies => {
+                Forward          => 'none',       # values: none, whitelist, all
                 WhitelistedNames => {
                   Quantity => 1,
                   Items    => [ 'Mystring', ... ],    # OPTIONAL
                 },    # OPTIONAL
               },
+              QueryString          => 1,
               QueryStringCacheKeys => {
                 Quantity => 1,
                 Items    => [ 'Mystring', ... ],    # OPTIONAL
@@ -105,34 +104,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Items    => [ 'Mystring', ... ],    # OPTIONAL
               },    # OPTIONAL
             },
-            TrustedSigners => {
-              Enabled  => 1,
-              Quantity => 1,
-              Items    => [ 'Mystring', ... ],    # OPTIONAL
-            },
-            TargetOriginId => 'Mystring',
-            MinTTL         => 1,
-            ViewerProtocolPolicy =>
-              'allow-all',    # values: allow-all, https-only, redirect-to-https
-            DefaultTTL             => 1,
-            SmoothStreaming        => 1,
-            FieldLevelEncryptionId => 'Mystring',
-            Compress               => 1,
-            AllowedMethods         => {
-              Items => [
-                'GET',
-                ...    # values: GET, HEAD, POST, PUT, PATCH, OPTIONS, DELETE
-              ],
-              Quantity      => 1,
-              CachedMethods => {
-                Quantity => 1,
-                Items    => [
-                  'GET',
-                  ...    # values: GET, HEAD, POST, PUT, PATCH, OPTIONS, DELETE
-                ],
-
-              },    # OPTIONAL
-            },    # OPTIONAL
+            FieldLevelEncryptionId     => 'Mystring',
+            MaxTTL                     => 1,
+            DefaultTTL                 => 1,
+            Compress                   => 1,
+            SmoothStreaming            => 1,
             LambdaFunctionAssociations => {
               Quantity => 1,
               Items    => [
@@ -145,57 +121,59 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ...
               ],    # OPTIONAL
             },    # OPTIONAL
-            MaxTTL => 1,
+            AllowedMethods => {
+              Quantity => 1,
+              Items    => [
+                'GET',
+                ...    # values: GET, HEAD, POST, PUT, PATCH, OPTIONS, DELETE
+              ],
+              CachedMethods => {
+                Quantity => 1,
+                Items    => [
+                  'GET',
+                  ...    # values: GET, HEAD, POST, PUT, PATCH, OPTIONS, DELETE
+                ],
+
+              },    # OPTIONAL
+            },    # OPTIONAL
           },
-          CallerReference   => 'Mystring',
-          DefaultRootObject => 'Mystring',
-          Aliases           => {
-            Quantity => 1,
-            Items    => [ 'Mystring', ... ],    # OPTIONAL
-          },    # OPTIONAL
+          Enabled           => 1,
+          Comment           => 'Mystring',
+          IsIPV6Enabled     => 1,
           ViewerCertificate => {
+            IAMCertificateId  => 'Mystring',
+            ACMCertificateArn => 'Mystring',
+            SSLSupportMethod  => 'sni-only',   # values: sni-only, vip; OPTIONAL
             MinimumProtocolVersion => 'SSLv3'
             , # values: SSLv3, TLSv1, TLSv1_2016, TLSv1.1_2016, TLSv1.2_2018; OPTIONAL
+            Certificate                  => 'Mystring',
             CloudFrontDefaultCertificate => 1,
-            ACMCertificateArn            => 'Mystring',
-            SSLSupportMethod => 'sni-only',    # values: sni-only, vip; OPTIONAL
-            Certificate      => 'Mystring',
-            IAMCertificateId => 'Mystring',
             CertificateSource =>
               'cloudfront',    # values: cloudfront, iam, acm; OPTIONAL
-          },    # OPTIONAL
-          PriceClass => 'PriceClass_100'
-          ,   # values: PriceClass_100, PriceClass_200, PriceClass_All; OPTIONAL
-          Logging => {
-            Prefix         => 'Mystring',
-            Enabled        => 1,
-            Bucket         => 'Mystring',
-            IncludeCookies => 1,
-
           },    # OPTIONAL
           CacheBehaviors => {
             Quantity => 1,
             Items    => [
               {
-                PathPattern          => 'Mystring',
+                MinTTL               => 1,
                 ViewerProtocolPolicy => 'allow-all'
                 ,    # values: allow-all, https-only, redirect-to-https
-                TargetOriginId => 'Mystring',
-                MinTTL         => 1,
                 TrustedSigners => {
-                  Enabled  => 1,
                   Quantity => 1,
+                  Enabled  => 1,
                   Items    => [ 'Mystring', ... ],    # OPTIONAL
                 },
+                TargetOriginId  => 'Mystring',
+                PathPattern     => 'Mystring',
                 ForwardedValues => {
-                  QueryString => 1,
-                  Cookies     => {
+                  Cookies => {
                     Forward          => 'none',   # values: none, whitelist, all
                     WhitelistedNames => {
                       Quantity => 1,
                       Items    => [ 'Mystring', ... ],    # OPTIONAL
                     },    # OPTIONAL
                   },
+                  QueryString          => 1,
                   QueryStringCacheKeys => {
                     Quantity => 1,
                     Items    => [ 'Mystring', ... ],    # OPTIONAL
@@ -205,26 +183,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     Items    => [ 'Mystring', ... ],    # OPTIONAL
                   },    # OPTIONAL
                 },
-                AllowedMethods => {
-                  Items => [
-                    'GET',
-                    ...   # values: GET, HEAD, POST, PUT, PATCH, OPTIONS, DELETE
-                  ],
-                  Quantity      => 1,
-                  CachedMethods => {
-                    Quantity => 1,
-                    Items    => [
-                      'GET',
-                      ... # values: GET, HEAD, POST, PUT, PATCH, OPTIONS, DELETE
-                    ],
-
-                  },    # OPTIONAL
-                },    # OPTIONAL
-                Compress                   => 1,
                 FieldLevelEncryptionId     => 'Mystring',
-                SmoothStreaming            => 1,
-                DefaultTTL                 => 1,
                 MaxTTL                     => 1,
+                DefaultTTL                 => 1,
+                Compress                   => 1,
+                SmoothStreaming            => 1,
                 LambdaFunctionAssociations => {
                   Quantity => 1,
                   Items    => [
@@ -237,9 +200,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     ...
                   ],    # OPTIONAL
                 },    # OPTIONAL
+                AllowedMethods => {
+                  Quantity => 1,
+                  Items    => [
+                    'GET',
+                    ...   # values: GET, HEAD, POST, PUT, PATCH, OPTIONS, DELETE
+                  ],
+                  CachedMethods => {
+                    Quantity => 1,
+                    Items    => [
+                      'GET',
+                      ... # values: GET, HEAD, POST, PUT, PATCH, OPTIONS, DELETE
+                    ],
+
+                  },    # OPTIONAL
+                },    # OPTIONAL
               },
               ...
             ],        # OPTIONAL
+          },    # OPTIONAL
+          HttpVersion => 'http1.1',    # values: http1.1, http2; OPTIONAL
+          Aliases     => {
+            Quantity => 1,
+            Items    => [ 'Mystring', ... ],    # OPTIONAL
           },    # OPTIONAL
           CustomErrorResponses => {
             Quantity => 1,
@@ -253,18 +236,35 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ...
             ],    # OPTIONAL
           },    # OPTIONAL
-          HttpVersion  => 'http1.1',    # values: http1.1, http2; OPTIONAL
+          DefaultRootObject => 'Mystring',
+          WebACLId          => 'Mystring',
+          Logging           => {
+            IncludeCookies => 1,
+            Bucket         => 'Mystring',
+            Enabled        => 1,
+            Prefix         => 'Mystring',
+
+          },    # OPTIONAL
+          PriceClass => 'PriceClass_100'
+          ,   # values: PriceClass_100, PriceClass_200, PriceClass_All; OPTIONAL
           Restrictions => {
             GeoRestriction => {
               Quantity => 1,
               RestrictionType =>
-                'blacklist',            # values: blacklist, whitelist, none
+                'blacklist',    # values: blacklist, whitelist, none
               Items => [ 'Mystring', ... ],    # OPTIONAL
             },
 
           },    # OPTIONAL
-          IsIPV6Enabled => 1,
-          WebACLId      => 'Mystring',
+        },
+        Tags => {
+          Items => [
+            {
+              Key   => 'MyTagKey',      # min: 1, max: 128
+              Value => 'MyTagValue',    # max: 256; OPTIONAL
+            },
+            ...
+          ],                            # OPTIONAL
         },
 
       },
@@ -272,9 +272,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $Location     = $CreateDistributionWithTagsResult->Location;
-    my $ETag         = $CreateDistributionWithTagsResult->ETag;
     my $Distribution = $CreateDistributionWithTagsResult->Distribution;
+    my $ETag         = $CreateDistributionWithTagsResult->ETag;
+    my $Location     = $CreateDistributionWithTagsResult->Location;
 
     # Returns a L<Paws::CloudFront::CreateDistributionWithTagsResult> object.
 

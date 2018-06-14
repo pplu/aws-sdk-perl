@@ -32,17 +32,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeAutomationExecutionsResult = $ssm->DescribeAutomationExecutions(
       Filters => [
         {
-          Key => 'DocumentNamePrefix'
-          , # values: DocumentNamePrefix, ExecutionStatus, ExecutionId, ParentExecutionId, CurrentAction, StartTimeBefore, StartTimeAfter
           Values => [
             'MyAutomationExecutionFilterValue', ...    # min: 1, max: 150
           ],                                           # min: 1, max: 10
+          Key => 'DocumentNamePrefix'
+          , # values: DocumentNamePrefix, ExecutionStatus, ExecutionId, ParentExecutionId, CurrentAction, StartTimeBefore, StartTimeAfter
 
         },
         ...
-      ],                                               # OPTIONAL
-      MaxResults => 1,                                 # OPTIONAL
-      NextToken  => 'MyNextToken',                     # OPTIONAL
+      ],    # OPTIONAL
+      MaxResults => 1,                # OPTIONAL
+      NextToken  => 'MyNextToken',    # OPTIONAL
     );
 
     # Results:

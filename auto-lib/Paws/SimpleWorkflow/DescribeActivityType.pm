@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $TypeInfo      = $ActivityTypeDetail->TypeInfo;
     my $Configuration = $ActivityTypeDetail->Configuration;
+    my $TypeInfo      = $ActivityTypeDetail->TypeInfo;
 
     # Returns a L<Paws::SimpleWorkflow::ActivityTypeDetail> object.
 

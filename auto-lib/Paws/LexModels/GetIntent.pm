@@ -36,21 +36,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CreatedDate           = $GetIntentResponse->CreatedDate;
     my $SampleUtterances      = $GetIntentResponse->SampleUtterances;
-    my $ConfirmationPrompt    = $GetIntentResponse->ConfirmationPrompt;
-    my $FollowUpPrompt        = $GetIntentResponse->FollowUpPrompt;
-    my $ConclusionStatement   = $GetIntentResponse->ConclusionStatement;
-    my $Checksum              = $GetIntentResponse->Checksum;
-    my $LastUpdatedDate       = $GetIntentResponse->LastUpdatedDate;
     my $RejectionStatement    = $GetIntentResponse->RejectionStatement;
-    my $Description           = $GetIntentResponse->Description;
-    my $Version               = $GetIntentResponse->Version;
-    my $FulfillmentActivity   = $GetIntentResponse->FulfillmentActivity;
-    my $Name                  = $GetIntentResponse->Name;
     my $ParentIntentSignature = $GetIntentResponse->ParentIntentSignature;
-    my $Slots                 = $GetIntentResponse->Slots;
+    my $FulfillmentActivity   = $GetIntentResponse->FulfillmentActivity;
     my $DialogCodeHook        = $GetIntentResponse->DialogCodeHook;
+    my $LastUpdatedDate       = $GetIntentResponse->LastUpdatedDate;
+    my $ConclusionStatement   = $GetIntentResponse->ConclusionStatement;
+    my $Slots                 = $GetIntentResponse->Slots;
+    my $CreatedDate           = $GetIntentResponse->CreatedDate;
+    my $Version               = $GetIntentResponse->Version;
+    my $FollowUpPrompt        = $GetIntentResponse->FollowUpPrompt;
+    my $ConfirmationPrompt    = $GetIntentResponse->ConfirmationPrompt;
+    my $Description           = $GetIntentResponse->Description;
+    my $Name                  = $GetIntentResponse->Name;
+    my $Checksum              = $GetIntentResponse->Checksum;
 
     # Returns a L<Paws::LexModels::GetIntentResponse> object.
 

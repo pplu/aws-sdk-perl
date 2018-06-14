@@ -43,20 +43,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'OptionsToRemove' => [
 
           {
-            'OptionName' => 'ConfigDocument',
-            'Namespace'  => 'aws:elasticbeanstalk:healthreporting:system'
+            'Namespace'  => 'aws:elasticbeanstalk:healthreporting:system',
+            'OptionName' => 'ConfigDocument'
           }
         ]
       }
       );
 
     # Results:
-    my $ApplicationName = $ConfigurationSettingsDescription->ApplicationName;
     my $TemplateName    = $ConfigurationSettingsDescription->TemplateName;
-    my $DateUpdated     = $ConfigurationSettingsDescription->DateUpdated;
     my $DateCreated     = $ConfigurationSettingsDescription->DateCreated;
+    my $ApplicationName = $ConfigurationSettingsDescription->ApplicationName;
     my $SolutionStackName =
       $ConfigurationSettingsDescription->SolutionStackName;
+    my $DateUpdated = $ConfigurationSettingsDescription->DateUpdated;
 
  # Returns a L<Paws::ElasticBeanstalk::ConfigurationSettingsDescription> object.
 

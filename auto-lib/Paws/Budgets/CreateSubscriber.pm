@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       BudgetName   => 'MyBudgetName',
       Notification => {
         NotificationType => 'ACTUAL',    # values: ACTUAL, FORECASTED
+        Threshold        => 1,           # min: 0.1, max: 1000000000
         ComparisonOperator =>
           'GREATER_THAN',    # values: GREATER_THAN, LESS_THAN, EQUAL_TO
-        Threshold => 1,      # min: 0.1, max: 1000000000
         ThresholdType =>
           'PERCENTAGE',      # values: PERCENTAGE, ABSOLUTE_VALUE; OPTIONAL
       },

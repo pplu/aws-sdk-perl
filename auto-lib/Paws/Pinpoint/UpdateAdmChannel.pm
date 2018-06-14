@@ -32,8 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateAdmChannelResponse = $pinpoint->UpdateAdmChannel(
       ADMChannelRequest => {
         ClientId     => 'My__string',    # OPTIONAL
-        ClientSecret => 'My__string',    # OPTIONAL
         Enabled      => 1,               # OPTIONAL
+        ClientSecret => 'My__string',    # OPTIONAL
       },
       ApplicationId => 'My__string',
 

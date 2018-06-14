@@ -62,15 +62,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $SupportedLoginProviders   = $IdentityPool->SupportedLoginProviders;
-    my $CognitoIdentityProviders  = $IdentityPool->CognitoIdentityProviders;
-    my $OpenIdConnectProviderARNs = $IdentityPool->OpenIdConnectProviderARNs;
-    my $SamlProviderARNs          = $IdentityPool->SamlProviderARNs;
-    my $IdentityPoolId            = $IdentityPool->IdentityPoolId;
-    my $IdentityPoolName          = $IdentityPool->IdentityPoolName;
     my $AllowUnauthenticatedIdentities =
       $IdentityPool->AllowUnauthenticatedIdentities;
-    my $DeveloperProviderName = $IdentityPool->DeveloperProviderName;
+    my $CognitoIdentityProviders  = $IdentityPool->CognitoIdentityProviders;
+    my $DeveloperProviderName     = $IdentityPool->DeveloperProviderName;
+    my $OpenIdConnectProviderARNs = $IdentityPool->OpenIdConnectProviderARNs;
+    my $IdentityPoolId            = $IdentityPool->IdentityPoolId;
+    my $IdentityPoolName          = $IdentityPool->IdentityPoolName;
+    my $SamlProviderARNs          = $IdentityPool->SamlProviderARNs;
+    my $SupportedLoginProviders   = $IdentityPool->SupportedLoginProviders;
 
     # Returns a L<Paws::CognitoIdentity::IdentityPool> object.
 

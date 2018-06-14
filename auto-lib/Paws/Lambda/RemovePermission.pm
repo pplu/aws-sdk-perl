@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This operation removes a Lambda function's permissions
     $lambda->RemovePermission(
       {
-        'StatementId'  => 'role-statement-id',
+        'Qualifier'    => 1,
         'FunctionName' => 'myFunction',
-        'Qualifier'    => 1
+        'StatementId'  => 'role-statement-id'
       }
     );
 

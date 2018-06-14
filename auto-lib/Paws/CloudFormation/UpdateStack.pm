@@ -47,28 +47,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # stack.
     my $UpdateStackOutput = $cloudformation->UpdateStack(
       {
-        'ResourceTypes' => [
-
-        ],
         'TemplateURL' => 'https://s3.amazonaws.com/example/updated.template',
-        'Tags'        => [
-
-        ],
-        'StackName'        => 'MyStack',
-        'NotificationARNs' => [
-
-        ],
-        'Parameters' => [
+        'Parameters'  => [
 
           {
-            'ParameterValue' => 'ExampleKeyPair',
-            'ParameterKey'   => 'KeyPairName'
+            'ParameterKey'   => 'KeyPairName',
+            'ParameterValue' => 'ExampleKeyPair'
           },
 
           {
-            'ParameterValue' => 'ExampleSubnetID1, ExampleSubnetID2',
-            'ParameterKey'   => 'SubnetIDs'
+            'ParameterKey'   => 'SubnetIDs',
+            'ParameterValue' => 'ExampleSubnetID1, ExampleSubnetID2'
           }
+        ],
+        'NotificationARNs' => [
+
+        ],
+        'Tags' => [
+
+        ],
+        'StackName'     => 'MyStack',
+        'ResourceTypes' => [
+
         ]
       }
     );
@@ -83,10 +83,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # uses the default value from the template.
     my $UpdateStackOutput = $cloudformation->UpdateStack(
       {
-        'Parameters' => [
+        'TemplateURL' => 'https://s3.amazonaws.com/example/updated.template',
+        'Parameters'  => [
 
           {
-            'UsePreviousValue' => true,
+            'UsePreviousValue' => 1,
             'ParameterKey'     => 'KeyPairName'
           },
 
@@ -98,14 +99,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'NotificationARNs' => [
 
         ],
-        'TemplateURL'   => 'https://s3.amazonaws.com/example/updated.template',
-        'ResourceTypes' => [
-
-        ],
         'Tags' => [
 
         ],
-        'StackName' => 'MyStack'
+        'StackName'     => 'MyStack',
+        'ResourceTypes' => [
+
+        ]
       }
     );
 
@@ -117,15 +117,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example adds two stack notification topics to the specified stack.
     my $UpdateStackOutput = $cloudformation->UpdateStack(
       {
-        'ResourceTypes' => [
+        'UsePreviousTemplate' => 1,
+        'StackName'           => 'MyStack',
+        'Parameters'          => [
 
         ],
-        'StackName'   => 'MyStack',
         'TemplateURL' => 'https://s3.amazonaws.com/example/updated.template',
-        'UsePreviousTemplate' => true,
-        'Capabilities'        => [
-
-        ],
         'NotificationARNs' => [
           'arn:aws:sns:use-east-1:123456789012:mytopic1',
           'arn:aws:sns:us-east-1:123456789012:mytopic2'
@@ -133,7 +130,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'Tags' => [
 
         ],
-        'Parameters' => [
+        'Capabilities' => [
+
+        ],
+        'ResourceTypes' => [
 
         ]
       }

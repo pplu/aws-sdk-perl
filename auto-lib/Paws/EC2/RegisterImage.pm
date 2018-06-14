@@ -45,19 +45,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       BillingProducts     => [ 'MyString', ... ],    # OPTIONAL
       BlockDeviceMappings => [
         {
-          Ebs => {
-            VolumeSize          => 1,                # OPTIONAL
-            DeleteOnTermination => 1,                # OPTIONAL
-            SnapshotId          => 'MyString',
-            KmsKeyId            => 'MyString',
-            Encrypted           => 1,                # OPTIONAL
-            Iops                => 1,                # OPTIONAL
+          DeviceName  => 'MyString',
+          VirtualName => 'MyString',
+          NoDevice    => 'MyString',
+          Ebs         => {
+            SnapshotId => 'MyString',
+            Iops       => 1,                         # OPTIONAL
             VolumeType =>
               'standard',    # values: standard, io1, gp2, sc1, st1; OPTIONAL
+            VolumeSize          => 1,            # OPTIONAL
+            KmsKeyId            => 'MyString',
+            DeleteOnTermination => 1,            # OPTIONAL
+            Encrypted           => 1,            # OPTIONAL
           },    # OPTIONAL
-          NoDevice    => 'MyString',
-          VirtualName => 'MyString',
-          DeviceName  => 'MyString',
         },
         ...
       ],        # OPTIONAL

@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $NextPageToken = $ListProvisioningArtifactsOutput->NextPageToken;
     my $ProvisioningArtifactDetails =
       $ListProvisioningArtifactsOutput->ProvisioningArtifactDetails;
-    my $NextPageToken = $ListProvisioningArtifactsOutput->NextPageToken;
 
     # Returns a L<Paws::ServiceCatalog::ListProvisioningArtifactsOutput> object.
 

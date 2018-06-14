@@ -33,10 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Url            = $GetOpenIDConnectProviderResponse->Url;
-    my $ThumbprintList = $GetOpenIDConnectProviderResponse->ThumbprintList;
     my $CreateDate     = $GetOpenIDConnectProviderResponse->CreateDate;
     my $ClientIDList   = $GetOpenIDConnectProviderResponse->ClientIDList;
+    my $ThumbprintList = $GetOpenIDConnectProviderResponse->ThumbprintList;
+    my $Url            = $GetOpenIDConnectProviderResponse->Url;
 
     # Returns a L<Paws::IAM::GetOpenIDConnectProviderResponse> object.
 

@@ -34,15 +34,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $ec2->ModifyVpcPeeringConnectionOptions(
       VpcPeeringConnectionId           => 'MyString',
       AccepterPeeringConnectionOptions => {
-        AllowEgressFromLocalVpcToRemoteClassicLink => 1,    # OPTIONAL
         AllowDnsResolutionFromRemoteVpc            => 1,    # OPTIONAL
         AllowEgressFromLocalClassicLinkToRemoteVpc => 1,    # OPTIONAL
+        AllowEgressFromLocalVpcToRemoteClassicLink => 1,    # OPTIONAL
       },    # OPTIONAL
       DryRun                            => 1,    # OPTIONAL
       RequesterPeeringConnectionOptions => {
-        AllowEgressFromLocalVpcToRemoteClassicLink => 1,    # OPTIONAL
         AllowDnsResolutionFromRemoteVpc            => 1,    # OPTIONAL
         AllowEgressFromLocalClassicLinkToRemoteVpc => 1,    # OPTIONAL
+        AllowEgressFromLocalVpcToRemoteClassicLink => 1,    # OPTIONAL
       },    # OPTIONAL
       );
 

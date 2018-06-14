@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # instance in a VPC.
     my $AssociateAddressResult = $ec2->AssociateAddress(
       {
-        'AllocationId' => 'eipalloc-64d5890a',
-        'InstanceId'   => 'i-0b263919b6498b123'
+        'InstanceId'   => 'i-0b263919b6498b123',
+        'AllocationId' => 'eipalloc-64d5890a'
       }
     );
 
@@ -66,8 +66,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # EC2-Classic.
     my $AssociateAddressResult = $ec2->AssociateAddress(
       {
-        'PublicIp'   => '198.51.100.0',
-        'InstanceId' => 'i-07ffe74c7330ebf53'
+        'InstanceId' => 'i-07ffe74c7330ebf53',
+        'PublicIp'   => '198.51.100.0'
       }
     );
 

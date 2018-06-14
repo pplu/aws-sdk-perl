@@ -39,14 +39,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $LatestExecutionContext =
-      $WorkflowExecutionDetail->LatestExecutionContext;
-    my $OpenCounts    = $WorkflowExecutionDetail->OpenCounts;
     my $ExecutionInfo = $WorkflowExecutionDetail->ExecutionInfo;
+    my $OpenCounts    = $WorkflowExecutionDetail->OpenCounts;
     my $LatestActivityTaskTimestamp =
       $WorkflowExecutionDetail->LatestActivityTaskTimestamp;
     my $ExecutionConfiguration =
       $WorkflowExecutionDetail->ExecutionConfiguration;
+    my $LatestExecutionContext =
+      $WorkflowExecutionDetail->LatestExecutionContext;
 
     # Returns a L<Paws::SimpleWorkflow::WorkflowExecutionDetail> object.
 

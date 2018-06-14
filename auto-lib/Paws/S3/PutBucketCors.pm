@@ -39,9 +39,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             AllowedMethods => [ 'MyAllowedMethod', ... ],
             AllowedOrigins => [ 'MyAllowedOrigin', ... ],
+            ExposeHeaders  => [ 'MyExposeHeader',  ... ],    # OPTIONAL
             AllowedHeaders => [ 'MyAllowedHeader', ... ],    # OPTIONAL
             MaxAgeSeconds => 1,                              # OPTIONAL
-            ExposeHeaders => [ 'MyExposeHeader', ... ],      # OPTIONAL
           },
           ...
         ],

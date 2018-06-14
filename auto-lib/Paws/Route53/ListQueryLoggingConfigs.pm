@@ -39,9 +39,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $NextToken = $ListQueryLoggingConfigsResponse->NextToken;
     my $QueryLoggingConfigs =
       $ListQueryLoggingConfigsResponse->QueryLoggingConfigs;
-    my $NextToken = $ListQueryLoggingConfigsResponse->NextToken;
 
     # Returns a L<Paws::Route53::ListQueryLoggingConfigsResponse> object.
 

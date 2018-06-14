@@ -62,16 +62,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CloneAppIds          => [ 'MyString', ... ],    # OPTIONAL
       ClonePermissions     => 1,                      # OPTIONAL
       ConfigurationManager => {
-        Name    => 'MyString',
         Version => 'MyString',
+        Name    => 'MyString',
       },                                              # OPTIONAL
       CustomCookbooksSource => {
-        Url      => 'MyString',
-        Type     => 'git',        # values: git, svn, archive, s3; OPTIONAL
-        SshKey   => 'MyString',
         Revision => 'MyString',
-        Username => 'MyString',
+        Type     => 'git',        # values: git, svn, archive, s3; OPTIONAL
         Password => 'MyString',
+        Username => 'MyString',
+        SshKey   => 'MyString',
+        Url      => 'MyString',
       },    # OPTIONAL
       CustomJson                => 'MyString',    # OPTIONAL
       DefaultAvailabilityZone   => 'MyString',    # OPTIONAL

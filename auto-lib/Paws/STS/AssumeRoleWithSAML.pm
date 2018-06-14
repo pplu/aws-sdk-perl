@@ -40,14 +40,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NameQualifier    = $AssumeRoleWithSAMLResponse->NameQualifier;
-    my $PackedPolicySize = $AssumeRoleWithSAMLResponse->PackedPolicySize;
     my $Subject          = $AssumeRoleWithSAMLResponse->Subject;
+    my $Credentials      = $AssumeRoleWithSAMLResponse->Credentials;
+    my $SubjectType      = $AssumeRoleWithSAMLResponse->SubjectType;
     my $Audience         = $AssumeRoleWithSAMLResponse->Audience;
     my $AssumedRoleUser  = $AssumeRoleWithSAMLResponse->AssumedRoleUser;
-    my $Credentials      = $AssumeRoleWithSAMLResponse->Credentials;
+    my $NameQualifier    = $AssumeRoleWithSAMLResponse->NameQualifier;
+    my $PackedPolicySize = $AssumeRoleWithSAMLResponse->PackedPolicySize;
     my $Issuer           = $AssumeRoleWithSAMLResponse->Issuer;
-    my $SubjectType      = $AssumeRoleWithSAMLResponse->SubjectType;
 
     # Returns a L<Paws::STS::AssumeRoleWithSAMLResponse> object.
 

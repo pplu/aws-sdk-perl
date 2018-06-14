@@ -38,10 +38,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $NextToken = $ListTranscriptionJobsResponse->NextToken;
+    my $Status    = $ListTranscriptionJobsResponse->Status;
     my $TranscriptionJobSummaries =
       $ListTranscriptionJobsResponse->TranscriptionJobSummaries;
-    my $Status    = $ListTranscriptionJobsResponse->Status;
-    my $NextToken = $ListTranscriptionJobsResponse->NextToken;
 
     # Returns a L<Paws::Transcribe::ListTranscriptionJobsResponse> object.
 

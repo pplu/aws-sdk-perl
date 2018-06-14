@@ -31,19 +31,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $AddCustomAttributesResponse = $cognito -idp->AddCustomAttributes(
       CustomAttributes => [
         {
+          DeveloperOnlyAttribute => 1,    # OPTIONAL
           AttributeDataType =>
             'String',    # values: String, Number, DateTime, Boolean; OPTIONAL
+          Mutable                    => 1,    # OPTIONAL
+          Required                   => 1,    # OPTIONAL
           NumberAttributeConstraints => {
-            MinValue => 'MyStringType',    # OPTIONAL
-            MaxValue => 'MyStringType',    # OPTIONAL
+            MaxValue => 'MyStringType',       # OPTIONAL
+            MinValue => 'MyStringType',       # OPTIONAL
           },    # OPTIONAL
           StringAttributeConstraints => {
-            MinLength => 'MyStringType',    # OPTIONAL
             MaxLength => 'MyStringType',    # OPTIONAL
+            MinLength => 'MyStringType',    # OPTIONAL
           },    # OPTIONAL
-          Mutable                => 1,    # OPTIONAL
-          Required               => 1,    # OPTIONAL
-          DeveloperOnlyAttribute => 1,    # OPTIONAL
           Name => 'MyCustomAttributeNameType',    # min: 1, max: 20; OPTIONAL
         },
         ...

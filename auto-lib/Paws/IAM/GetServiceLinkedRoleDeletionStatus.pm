@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $Status = $GetServiceLinkedRoleDeletionStatusResponse->Status;
     my $Reason = $GetServiceLinkedRoleDeletionStatusResponse->Reason;
+    my $Status = $GetServiceLinkedRoleDeletionStatusResponse->Status;
 
     # Returns a L<Paws::IAM::GetServiceLinkedRoleDeletionStatusResponse> object.
 

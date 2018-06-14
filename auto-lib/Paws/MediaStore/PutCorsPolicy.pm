@@ -32,17 +32,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ContainerName => 'MyContainerName',
       CorsPolicy    => [
         {
-          AllowedMethods => [
-            'PUT', ...    # values: PUT, GET, DELETE, HEAD
-          ],              # OPTIONAL
-          AllowedOrigins => [ 'MyOrigin', ... ],    # OPTIONAL
-          MaxAgeSeconds  => 1,                      # max: 2147483647; OPTIONAL
-          ExposeHeaders  => [
-            'MyHeader', ...                         # min: 1, max: 8192
-          ],                                        # max: 100; OPTIONAL
+          ExposeHeaders => [
+            'MyHeader', ...    # min: 1, max: 8192
+          ],                   # max: 100; OPTIONAL
           AllowedHeaders => [
-            'MyHeader', ...                         # min: 1, max: 8192
-          ],                                        # max: 100; OPTIONAL
+            'MyHeader', ...    # min: 1, max: 8192
+          ],                   # max: 100; OPTIONAL
+          AllowedMethods => [
+            'PUT', ...         # values: PUT, GET, DELETE, HEAD
+          ],                   # OPTIONAL
+          MaxAgeSeconds => 1,                       # max: 2147483647; OPTIONAL
+          AllowedOrigins => [ 'MyOrigin', ... ],    # OPTIONAL
         },
         ...
       ],

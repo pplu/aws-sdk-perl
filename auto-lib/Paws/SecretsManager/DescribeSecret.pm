@@ -33,19 +33,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $KmsKeyId           = $DescribeSecretResponse->KmsKeyId;
-    my $LastAccessedDate   = $DescribeSecretResponse->LastAccessedDate;
-    my $LastRotatedDate    = $DescribeSecretResponse->LastRotatedDate;
-    my $Description        = $DescribeSecretResponse->Description;
-    my $ARN                = $DescribeSecretResponse->ARN;
     my $VersionIdsToStages = $DescribeSecretResponse->VersionIdsToStages;
-    my $Name               = $DescribeSecretResponse->Name;
+    my $LastRotatedDate    = $DescribeSecretResponse->LastRotatedDate;
+    my $DeletedDate        = $DescribeSecretResponse->DeletedDate;
+    my $RotationEnabled    = $DescribeSecretResponse->RotationEnabled;
+    my $KmsKeyId           = $DescribeSecretResponse->KmsKeyId;
+    my $ARN                = $DescribeSecretResponse->ARN;
     my $RotationRules      = $DescribeSecretResponse->RotationRules;
     my $Tags               = $DescribeSecretResponse->Tags;
     my $LastChangedDate    = $DescribeSecretResponse->LastChangedDate;
     my $RotationLambdaARN  = $DescribeSecretResponse->RotationLambdaARN;
-    my $RotationEnabled    = $DescribeSecretResponse->RotationEnabled;
-    my $DeletedDate        = $DescribeSecretResponse->DeletedDate;
+    my $LastAccessedDate   = $DescribeSecretResponse->LastAccessedDate;
+    my $Name               = $DescribeSecretResponse->Name;
+    my $Description        = $DescribeSecretResponse->Description;
 
     # Returns a L<Paws::SecretsManager::DescribeSecretResponse> object.
 

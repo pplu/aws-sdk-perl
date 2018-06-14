@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $NextToken           = $GetServersResponse->NextToken;
-    my $ServerCatalogStatus = $GetServersResponse->ServerCatalogStatus;
     my $LastModifiedOn      = $GetServersResponse->LastModifiedOn;
+    my $ServerCatalogStatus = $GetServersResponse->ServerCatalogStatus;
     my $ServerList          = $GetServersResponse->ServerList;
 
     # Returns a L<Paws::SMS::GetServersResponse> object.

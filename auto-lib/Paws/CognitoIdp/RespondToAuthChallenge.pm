@@ -48,12 +48,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $Session = $RespondToAuthChallengeResponse->Session;
     my $AuthenticationResult =
       $RespondToAuthChallengeResponse->AuthenticationResult;
-    my $ChallengeName = $RespondToAuthChallengeResponse->ChallengeName;
-    my $Session       = $RespondToAuthChallengeResponse->Session;
     my $ChallengeParameters =
       $RespondToAuthChallengeResponse->ChallengeParameters;
+    my $ChallengeName = $RespondToAuthChallengeResponse->ChallengeName;
 
     # Returns a L<Paws::CognitoIdp::RespondToAuthChallengeResponse> object.
 

@@ -50,22 +50,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # Know".
     my $QueryOutput = $dynamodb->Query(
       {
-        'KeyConditionExpression'    => 'Artist = :v1',
-        'ProjectionExpression'      => 'SongTitle',
         'ExpressionAttributeValues' => {
           ':v1' => {
             'S' => 'No One You Know'
           }
         },
-        'TableName' => 'Music'
+        'TableName'              => 'Music',
+        'ProjectionExpression'   => 'SongTitle',
+        'KeyConditionExpression' => 'Artist = :v1'
       }
     );
 
     # Results:
-    my $Items            = $QueryOutput->Items;
-    my $Count            = $QueryOutput->Count;
     my $ScannedCount     = $QueryOutput->ScannedCount;
+    my $Items            = $QueryOutput->Items;
     my $ConsumedCapacity = $QueryOutput->ConsumedCapacity;
+    my $Count            = $QueryOutput->Count;
 
     # Returns a L<Paws::DynamoDB::QueryOutput> object.
 

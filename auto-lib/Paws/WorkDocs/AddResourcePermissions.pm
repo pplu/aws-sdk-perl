@@ -44,8 +44,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ResourceId          => 'MyResourceIdType',
       AuthenticationToken => 'MyAuthenticationHeaderType',    # OPTIONAL
       NotificationOptions => {
-        SendEmail    => 1,                  # OPTIONAL
         EmailMessage => 'MyMessageType',    # max: 2048; OPTIONAL
+        SendEmail    => 1,                  # OPTIONAL
       },    # OPTIONAL
     );
 

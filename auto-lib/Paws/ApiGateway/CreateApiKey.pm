@@ -42,8 +42,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name               => 'MyString',    # OPTIONAL
       StageKeys          => [
         {
-          restApiId => 'MyString',
           stageName => 'MyString',
+          restApiId => 'MyString',
         },
         ...
       ],                                   # OPTIONAL
@@ -51,15 +51,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CreatedDate     = $ApiKey->CreatedDate;
-    my $Description     = $ApiKey->Description;
-    my $LastUpdatedDate = $ApiKey->LastUpdatedDate;
     my $Value           = $ApiKey->Value;
-    my $Name            = $ApiKey->Name;
-    my $Enabled         = $ApiKey->Enabled;
-    my $StageKeys       = $ApiKey->StageKeys;
     my $Id              = $ApiKey->Id;
+    my $Enabled         = $ApiKey->Enabled;
+    my $LastUpdatedDate = $ApiKey->LastUpdatedDate;
+    my $CreatedDate     = $ApiKey->CreatedDate;
     my $CustomerId      = $ApiKey->CustomerId;
+    my $Description     = $ApiKey->Description;
+    my $Name            = $ApiKey->Name;
+    my $StageKeys       = $ApiKey->StageKeys;
 
     # Returns a L<Paws::ApiGateway::ApiKey> object.
 

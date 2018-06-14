@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken   = $ListDetectorsResponse->NextToken;
     my $DetectorIds = $ListDetectorsResponse->DetectorIds;
+    my $NextToken   = $ListDetectorsResponse->NextToken;
 
     # Returns a L<Paws::GuardDuty::ListDetectorsResponse> object.
 

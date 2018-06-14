@@ -36,14 +36,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # their corresponding IP addresses; otherwise, it does not.
     my $DescribeVpcAttributeResult = $ec2->DescribeVpcAttribute(
       {
-        'Attribute' => 'enableDnsSupport',
-        'VpcId'     => 'vpc-a01106c2'
+        'VpcId'     => 'vpc-a01106c2',
+        'Attribute' => 'enableDnsSupport'
       }
     );
 
     # Results:
-    my $EnableDnsSupport = $DescribeVpcAttributeResult->EnableDnsSupport;
     my $VpcId            = $DescribeVpcAttributeResult->VpcId;
+    my $EnableDnsSupport = $DescribeVpcAttributeResult->EnableDnsSupport;
 
     # Returns a L<Paws::EC2::DescribeVpcAttributeResult> object.
     # To describe the enableDnsHostnames attribute

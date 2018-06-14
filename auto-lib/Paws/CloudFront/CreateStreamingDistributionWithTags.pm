@@ -33,6 +33,33 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateStreamingDistributionWithTagsResult =
       $cloudfront->CreateStreamingDistributionWithTags(
       StreamingDistributionConfigWithTags => {
+        StreamingDistributionConfig => {
+          CallerReference => 'Mystring',
+          S3Origin        => {
+            OriginAccessIdentity => 'Mystring',
+            DomainName           => 'Mystring',
+
+          },
+          TrustedSigners => {
+            Quantity => 1,
+            Enabled  => 1,
+            Items    => [ 'Mystring', ... ],    # OPTIONAL
+          },
+          Enabled => 1,
+          Comment => 'Mystring',
+          Aliases => {
+            Quantity => 1,
+            Items    => [ 'Mystring', ... ],    # OPTIONAL
+          },    # OPTIONAL
+          Logging => {
+            Bucket  => 'Mystring',
+            Enabled => 1,
+            Prefix  => 'Mystring',
+
+          },    # OPTIONAL
+          PriceClass => 'PriceClass_100'
+          ,   # values: PriceClass_100, PriceClass_200, PriceClass_All; OPTIONAL
+        },
         Tags => {
           Items => [
             {
@@ -42,43 +69,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ...
           ],                            # OPTIONAL
         },
-        StreamingDistributionConfig => {
-          S3Origin => {
-            OriginAccessIdentity => 'Mystring',
-            DomainName           => 'Mystring',
-
-          },
-          Enabled         => 1,
-          Comment         => 'Mystring',
-          CallerReference => 'Mystring',
-          TrustedSigners  => {
-            Quantity => 1,
-            Enabled  => 1,
-            Items    => [ 'Mystring', ... ],    # OPTIONAL
-          },
-          Aliases => {
-            Quantity => 1,
-            Items    => [ 'Mystring', ... ],    # OPTIONAL
-          },    # OPTIONAL
-          Logging => {
-            Bucket  => 'Mystring',
-            Prefix  => 'Mystring',
-            Enabled => 1,
-
-          },    # OPTIONAL
-          PriceClass => 'PriceClass_100'
-          ,   # values: PriceClass_100, PriceClass_200, PriceClass_All; OPTIONAL
-        },
 
       },
 
       );
 
     # Results:
+    my $ETag = $CreateStreamingDistributionWithTagsResult->ETag;
     my $StreamingDistribution =
       $CreateStreamingDistributionWithTagsResult->StreamingDistribution;
     my $Location = $CreateStreamingDistributionWithTagsResult->Location;
-    my $ETag     = $CreateStreamingDistributionWithTagsResult->ETag;
 
 # Returns a L<Paws::CloudFront::CreateStreamingDistributionWithTagsResult> object.
 

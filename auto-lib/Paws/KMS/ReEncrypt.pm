@@ -35,15 +35,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example reencrypts data with the specified CMK.
     my $ReEncryptResponse = $kms->ReEncrypt(
       {
-        'CiphertextBlob'   => '<binary data>',
-        'DestinationKeyId' => '0987dcba-09fe-87dc-65ba-ab0987654321'
+        'DestinationKeyId' => '0987dcba-09fe-87dc-65ba-ab0987654321',
+        'CiphertextBlob'   => '<binary data>'
       }
     );
 
     # Results:
-    my $CiphertextBlob = $ReEncryptResponse->CiphertextBlob;
     my $KeyId          = $ReEncryptResponse->KeyId;
     my $SourceKeyId    = $ReEncryptResponse->SourceKeyId;
+    my $CiphertextBlob = $ReEncryptResponse->CiphertextBlob;
 
     # Returns a L<Paws::KMS::ReEncryptResponse> object.
 

@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CertificateChain = $ExportCertificateResponse->CertificateChain;
-    my $PrivateKey       = $ExportCertificateResponse->PrivateKey;
     my $Certificate      = $ExportCertificateResponse->Certificate;
+    my $PrivateKey       = $ExportCertificateResponse->PrivateKey;
+    my $CertificateChain = $ExportCertificateResponse->CertificateChain;
 
     # Returns a L<Paws::ACM::ExportCertificateResponse> object.
 

@@ -33,12 +33,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $BucketName                 = $LoggingStatus->BucketName;
+    my $LastSuccessfulDeliveryTime = $LoggingStatus->LastSuccessfulDeliveryTime;
     my $S3KeyPrefix                = $LoggingStatus->S3KeyPrefix;
     my $LastFailureTime            = $LoggingStatus->LastFailureTime;
-    my $LastSuccessfulDeliveryTime = $LoggingStatus->LastSuccessfulDeliveryTime;
-    my $LastFailureMessage         = $LoggingStatus->LastFailureMessage;
-    my $BucketName                 = $LoggingStatus->BucketName;
     my $LoggingEnabled             = $LoggingStatus->LoggingEnabled;
+    my $LastFailureMessage         = $LoggingStatus->LastFailureMessage;
 
     # Returns a L<Paws::RedShift::LoggingStatus> object.
 

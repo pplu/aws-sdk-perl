@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Name = $GetCelebrityInfoResponse->Name;
     my $Urls = $GetCelebrityInfoResponse->Urls;
+    my $Name = $GetCelebrityInfoResponse->Name;
 
     # Returns a L<Paws::Rekognition::GetCelebrityInfoResponse> object.
 

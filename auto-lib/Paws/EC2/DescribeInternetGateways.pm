@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'Filters' => [
 
           {
-            'Name'   => 'attachment.vpc-id',
-            'Values' => ['vpc-a01106c2']
+            'Values' => ['vpc-a01106c2'],
+            'Name'   => 'attachment.vpc-id'
           }
         ]
       }

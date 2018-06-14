@@ -35,21 +35,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AccountId     => 'MyAccountId',
       BudgetName    => 'MyBudgetName',
       NewSubscriber => {
-        Address          => 'MySubscriberAddress',    # min: 1,
         SubscriptionType => 'SNS',                    # values: SNS, EMAIL
+        Address          => 'MySubscriberAddress',    # min: 1,
 
       },
       Notification => {
+        NotificationType => 'ACTUAL',    # values: ACTUAL, FORECASTED
+        Threshold        => 1,           # min: 0.1, max: 1000000000
         ComparisonOperator =>
           'GREATER_THAN',    # values: GREATER_THAN, LESS_THAN, EQUAL_TO
-        Threshold        => 1,           # min: 0.1, max: 1000000000
-        NotificationType => 'ACTUAL',    # values: ACTUAL, FORECASTED
         ThresholdType =>
-          'PERCENTAGE',    # values: PERCENTAGE, ABSOLUTE_VALUE; OPTIONAL
+          'PERCENTAGE',      # values: PERCENTAGE, ABSOLUTE_VALUE; OPTIONAL
       },
       OldSubscriber => {
-        Address          => 'MySubscriberAddress',    # min: 1,
         SubscriptionType => 'SNS',                    # values: SNS, EMAIL
+        Address          => 'MySubscriberAddress',    # min: 1,
 
       },
 

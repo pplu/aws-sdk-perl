@@ -44,10 +44,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $DimensionValues = $GetDimensionValuesResponse->DimensionValues;
     my $ReturnSize      = $GetDimensionValuesResponse->ReturnSize;
-    my $TotalSize       = $GetDimensionValuesResponse->TotalSize;
     my $NextPageToken   = $GetDimensionValuesResponse->NextPageToken;
+    my $DimensionValues = $GetDimensionValuesResponse->DimensionValues;
+    my $TotalSize       = $GetDimensionValuesResponse->TotalSize;
 
     # Returns a L<Paws::CostExplorer::GetDimensionValuesResponse> object.
 

@@ -36,9 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Marker        = $ListSSHPublicKeysResponse->Marker;
-    my $SSHPublicKeys = $ListSSHPublicKeysResponse->SSHPublicKeys;
     my $IsTruncated   = $ListSSHPublicKeysResponse->IsTruncated;
+    my $SSHPublicKeys = $ListSSHPublicKeysResponse->SSHPublicKeys;
+    my $Marker        = $ListSSHPublicKeysResponse->Marker;
 
     # Returns a L<Paws::IAM::ListSSHPublicKeysResponse> object.
 

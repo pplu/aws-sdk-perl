@@ -43,16 +43,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $BatchSize    = $EventSourceMappingConfiguration->BatchSize;
-    my $LastModified = $EventSourceMappingConfiguration->LastModified;
-    my $State        = $EventSourceMappingConfiguration->State;
-    my $StateTransitionReason =
-      $EventSourceMappingConfiguration->StateTransitionReason;
-    my $EventSourceArn = $EventSourceMappingConfiguration->EventSourceArn;
-    my $UUID           = $EventSourceMappingConfiguration->UUID;
-    my $FunctionArn    = $EventSourceMappingConfiguration->FunctionArn;
     my $LastProcessingResult =
       $EventSourceMappingConfiguration->LastProcessingResult;
+    my $EventSourceArn = $EventSourceMappingConfiguration->EventSourceArn;
+    my $State          = $EventSourceMappingConfiguration->State;
+    my $StateTransitionReason =
+      $EventSourceMappingConfiguration->StateTransitionReason;
+    my $BatchSize    = $EventSourceMappingConfiguration->BatchSize;
+    my $FunctionArn  = $EventSourceMappingConfiguration->FunctionArn;
+    my $UUID         = $EventSourceMappingConfiguration->UUID;
+    my $LastModified = $EventSourceMappingConfiguration->LastModified;
 
     # Returns a L<Paws::Lambda::EventSourceMappingConfiguration> object.
 

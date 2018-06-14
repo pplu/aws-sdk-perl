@@ -40,19 +40,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateCachediSCSIVolumeOutput =
       $storagegateway->CreateCachediSCSIVolume(
       {
+        'ClientToken'        => 'cachedvol112233',
+        'VolumeSizeInBytes'  => 536870912000,
+        'SnapshotId'         => 'snap-f47b7b94',
         'TargetName'         => 'my-volume',
         'NetworkInterfaceId' => '10.1.1.1',
-        'VolumeSizeInBytes'  => 536870912000,
-        'ClientToken'        => 'cachedvol112233',
         'GatewayARN' =>
-          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B',
-        'SnapshotId' => 'snap-f47b7b94'
+          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B'
       }
       );
 
     # Results:
-    my $VolumeARN = $CreateCachediSCSIVolumeOutput->VolumeARN;
     my $TargetARN = $CreateCachediSCSIVolumeOutput->TargetARN;
+    my $VolumeARN = $CreateCachediSCSIVolumeOutput->VolumeARN;
 
     # Returns a L<Paws::StorageGateway::CreateCachediSCSIVolumeOutput> object.
 

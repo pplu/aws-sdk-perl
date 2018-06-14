@@ -40,8 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $Versions  = $ListSecretVersionIdsResponse->Versions;
     my $ARN       = $ListSecretVersionIdsResponse->ARN;
-    my $Name      = $ListSecretVersionIdsResponse->Name;
     my $NextToken = $ListSecretVersionIdsResponse->NextToken;
+    my $Name      = $ListSecretVersionIdsResponse->Name;
 
     # Returns a L<Paws::SecretsManager::ListSecretVersionIdsResponse> object.
 

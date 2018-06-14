@@ -34,13 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Label = $DescribeLunaClientResponse->Label;
-    my $LastModifiedTimestamp =
-      $DescribeLunaClientResponse->LastModifiedTimestamp;
     my $Certificate = $DescribeLunaClientResponse->Certificate;
-    my $ClientArn   = $DescribeLunaClientResponse->ClientArn;
     my $CertificateFingerprint =
       $DescribeLunaClientResponse->CertificateFingerprint;
+    my $LastModifiedTimestamp =
+      $DescribeLunaClientResponse->LastModifiedTimestamp;
+    my $Label     = $DescribeLunaClientResponse->Label;
+    my $ClientArn = $DescribeLunaClientResponse->ClientArn;
 
     # Returns a L<Paws::CloudHSM::DescribeLunaClientResponse> object.
 

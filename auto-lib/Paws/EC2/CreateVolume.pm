@@ -40,22 +40,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Availability Zone ``us-east-1a``.
     my $Volume = $ec2->CreateVolume(
       {
-        'AvailabilityZone' => 'us-east-1a',
         'Size'             => 80,
-        'VolumeType'       => 'gp2'
+        'VolumeType'       => 'gp2',
+        'AvailabilityZone' => 'us-east-1a'
       }
     );
 
     # Results:
+    my $SnapshotId       = $Volume->SnapshotId;
+    my $CreateTime       = $Volume->CreateTime;
+    my $VolumeId         = $Volume->VolumeId;
+    my $State            = $Volume->State;
     my $Encrypted        = $Volume->Encrypted;
     my $AvailabilityZone = $Volume->AvailabilityZone;
-    my $VolumeType       = $Volume->VolumeType;
-    my $State            = $Volume->State;
-    my $Iops             = $Volume->Iops;
-    my $VolumeId         = $Volume->VolumeId;
-    my $SnapshotId       = $Volume->SnapshotId;
     my $Size             = $Volume->Size;
-    my $CreateTime       = $Volume->CreateTime;
+    my $Iops             = $Volume->Iops;
+    my $VolumeType       = $Volume->VolumeType;
 
     # Returns a L<Paws::EC2::Volume> object.
     # To create a new Provisioned IOPS (SSD) volume from a snapshot
@@ -63,24 +63,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # provisioned IOPS from a snapshot in the Availability Zone ``us-east-1a``.
     my $Volume = $ec2->CreateVolume(
       {
-        'Iops'             => 1000,
-        'AvailabilityZone' => 'us-east-1a',
         'SnapshotId'       => 'snap-066877671789bd71b',
-        'VolumeType'       => 'io1'
+        'Iops'             => 1000,
+        'VolumeType'       => 'io1',
+        'AvailabilityZone' => 'us-east-1a'
       }
     );
 
     # Results:
-    my $Size             = $Volume->Size;
-    my $SnapshotId       = $Volume->SnapshotId;
-    my $VolumeId         = $Volume->VolumeId;
-    my $CreateTime       = $Volume->CreateTime;
-    my $Tags             = $Volume->Tags;
     my $Attachments      = $Volume->Attachments;
-    my $AvailabilityZone = $Volume->AvailabilityZone;
-    my $VolumeType       = $Volume->VolumeType;
+    my $SnapshotId       = $Volume->SnapshotId;
+    my $CreateTime       = $Volume->CreateTime;
+    my $VolumeId         = $Volume->VolumeId;
     my $State            = $Volume->State;
+    my $AvailabilityZone = $Volume->AvailabilityZone;
+    my $Size             = $Volume->Size;
     my $Iops             = $Volume->Iops;
+    my $Tags             = $Volume->Tags;
+    my $VolumeType       = $Volume->VolumeType;
 
     # Returns a L<Paws::EC2::Volume> object.
 

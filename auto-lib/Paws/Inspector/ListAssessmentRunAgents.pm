@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # the assessment runs.
     my $ListAssessmentRunAgentsResponse = $inspector->ListAssessmentRunAgents(
       {
+        'MaxResults' => 123,
         'AssessmentRunArn' =>
-'arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-4r1V2mAw/run/0-MKkpXXPE',
-        'MaxResults' => 123
+'arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-4r1V2mAw/run/0-MKkpXXPE'
       }
     );
 

@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Position = $VpcLinks->Position;
     my $Items    = $VpcLinks->Items;
+    my $Position = $VpcLinks->Position;
 
     # Returns a L<Paws::ApiGateway::VpcLinks> object.
 

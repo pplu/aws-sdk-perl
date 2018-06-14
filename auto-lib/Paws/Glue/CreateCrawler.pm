@@ -43,20 +43,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Targets      => {
         S3Targets => [
           {
-            Exclusions => [
-              'MyPath', ...    # OPTIONAL
-            ],                 # OPTIONAL
-            Path => 'MyPath',  # OPTIONAL
+            Exclusions => [ 'MyPath', ... ],    # OPTIONAL
+            Path => 'MyPath',
           },
           ...
-        ],                     # OPTIONAL
+        ],                                      # OPTIONAL
         JdbcTargets => [
           {
-            Path           => 'MyPath',              # OPTIONAL
+            Exclusions     => [ 'MyPath', ... ],     # OPTIONAL
+            Path           => 'MyPath',
             ConnectionName => 'MyConnectionName',    # OPTIONAL
-            Exclusions     => [
-              'MyPath', ...                          # OPTIONAL
-            ],                                       # OPTIONAL
           },
           ...
         ],                                           # OPTIONAL

@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken = $ListInputsResponse->NextToken;
     my $Inputs    = $ListInputsResponse->Inputs;
+    my $NextToken = $ListInputsResponse->NextToken;
 
     # Returns a L<Paws::MediaLive::ListInputsResponse> object.
 

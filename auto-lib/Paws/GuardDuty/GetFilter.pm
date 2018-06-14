@@ -36,10 +36,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Name            = $GetFilterResponse->Name;
-    my $Action          = $GetFilterResponse->Action;
     my $Rank            = $GetFilterResponse->Rank;
+    my $Action          = $GetFilterResponse->Action;
     my $FindingCriteria = $GetFilterResponse->FindingCriteria;
+    my $Name            = $GetFilterResponse->Name;
     my $Description     = $GetFilterResponse->Description;
 
     # Returns a L<Paws::GuardDuty::GetFilterResponse> object.

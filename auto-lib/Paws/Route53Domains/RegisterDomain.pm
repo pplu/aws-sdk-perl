@@ -38,10 +38,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $route53domains = Paws->service('Route53Domains');
     my $RegisterDomainResponse = $route53domains->RegisterDomain(
       AdminContact => {
-        AddressLine2 => 'MyAddressLine',    # max: 255; OPTIONAL
-        ContactType  => 'PERSON'
-        , # values: PERSON, COMPANY, ASSOCIATION, PUBLIC_BODY, RESELLER; OPTIONAL
-        ExtraParams => [
+        FirstName    => 'MyContactName',    # max: 255; OPTIONAL
+        AddressLine1 => 'MyAddressLine',    # max: 255; OPTIONAL
+        ExtraParams  => [
           {
             Value => 'MyExtraParamValue',    # max: 2048
             Name  => 'DUNS_NUMBER'
@@ -50,26 +49,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],    # OPTIONAL
-        City             => 'MyCity',           # max: 255; OPTIONAL
-        ZipCode          => 'MyZipCode',        # max: 255; OPTIONAL
-        OrganizationName => 'MyContactName',    # max: 255; OPTIONAL
-        FirstName        => 'MyContactName',    # max: 255; OPTIONAL
-        AddressLine1     => 'MyAddressLine',    # max: 255; OPTIONAL
-        Email            => 'MyEmail',          # max: 254; OPTIONAL
-        LastName         => 'MyContactName',    # max: 255; OPTIONAL
-        CountryCode      => 'AD'
+        ZipCode          => 'MyZipCode',          # max: 255; OPTIONAL
+        Email            => 'MyEmail',            # max: 254; OPTIONAL
+        PhoneNumber      => 'MyContactNumber',    # max: 30; OPTIONAL
+        OrganizationName => 'MyContactName',      # max: 255; OPTIONAL
+        AddressLine2     => 'MyAddressLine',      # max: 255; OPTIONAL
+        City             => 'MyCity',             # max: 255; OPTIONAL
+        State            => 'MyState',            # max: 255; OPTIONAL
+        LastName         => 'MyContactName',      # max: 255; OPTIONAL
+        ContactType      => 'PERSON'
+        , # values: PERSON, COMPANY, ASSOCIATION, PUBLIC_BODY, RESELLER; OPTIONAL
+        CountryCode => 'AD'
         , # values: AD, AE, AF, AG, AI, AL, AM, AN, AO, AQ, AR, AS, AT, AU, AW, AZ, BA, BB, BD, BE, BF, BG, BH, BI, BJ, BL, BM, BN, BO, BR, BS, BT, BW, BY, BZ, CA, CC, CD, CF, CG, CH, CI, CK, CL, CM, CN, CO, CR, CU, CV, CX, CY, CZ, DE, DJ, DK, DM, DO, DZ, EC, EE, EG, ER, ES, ET, FI, FJ, FK, FM, FO, FR, GA, GB, GD, GE, GH, GI, GL, GM, GN, GQ, GR, GT, GU, GW, GY, HK, HN, HR, HT, HU, ID, IE, IL, IM, IN, IQ, IR, IS, IT, JM, JO, JP, KE, KG, KH, KI, KM, KN, KP, KR, KW, KY, KZ, LA, LB, LC, LI, LK, LR, LS, LT, LU, LV, LY, MA, MC, MD, ME, MF, MG, MH, MK, ML, MM, MN, MO, MP, MR, MS, MT, MU, MV, MW, MX, MY, MZ, NA, NC, NE, NG, NI, NL, NO, NP, NR, NU, NZ, OM, PA, PE, PF, PG, PH, PK, PL, PM, PN, PR, PT, PW, PY, QA, RO, RS, RU, RW, SA, SB, SC, SD, SE, SG, SH, SI, SK, SL, SM, SN, SO, SR, ST, SV, SY, SZ, TC, TD, TG, TH, TJ, TK, TL, TM, TN, TO, TR, TT, TV, TW, TZ, UA, UG, US, UY, UZ, VA, VC, VE, VG, VI, VN, VU, WF, WS, YE, YT, ZA, ZM, ZW; OPTIONAL
-        PhoneNumber => 'MyContactNumber',    # max: 30; OPTIONAL
-        State       => 'MyState',            # max: 255; OPTIONAL
-        Fax         => 'MyContactNumber',    # max: 30; OPTIONAL
+        Fax => 'MyContactNumber',    # max: 30; OPTIONAL
       },
       DomainName        => 'MyDomainName',
       DurationInYears   => 1,
       RegistrantContact => {
-        AddressLine2 => 'MyAddressLine',     # max: 255; OPTIONAL
-        ContactType  => 'PERSON'
-        , # values: PERSON, COMPANY, ASSOCIATION, PUBLIC_BODY, RESELLER; OPTIONAL
-        ExtraParams => [
+        FirstName    => 'MyContactName',    # max: 255; OPTIONAL
+        AddressLine1 => 'MyAddressLine',    # max: 255; OPTIONAL
+        ExtraParams  => [
           {
             Value => 'MyExtraParamValue',    # max: 2048
             Name  => 'DUNS_NUMBER'
@@ -78,24 +77,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],    # OPTIONAL
-        City             => 'MyCity',           # max: 255; OPTIONAL
-        ZipCode          => 'MyZipCode',        # max: 255; OPTIONAL
-        OrganizationName => 'MyContactName',    # max: 255; OPTIONAL
-        FirstName        => 'MyContactName',    # max: 255; OPTIONAL
-        AddressLine1     => 'MyAddressLine',    # max: 255; OPTIONAL
-        Email            => 'MyEmail',          # max: 254; OPTIONAL
-        LastName         => 'MyContactName',    # max: 255; OPTIONAL
-        CountryCode      => 'AD'
+        ZipCode          => 'MyZipCode',          # max: 255; OPTIONAL
+        Email            => 'MyEmail',            # max: 254; OPTIONAL
+        PhoneNumber      => 'MyContactNumber',    # max: 30; OPTIONAL
+        OrganizationName => 'MyContactName',      # max: 255; OPTIONAL
+        AddressLine2     => 'MyAddressLine',      # max: 255; OPTIONAL
+        City             => 'MyCity',             # max: 255; OPTIONAL
+        State            => 'MyState',            # max: 255; OPTIONAL
+        LastName         => 'MyContactName',      # max: 255; OPTIONAL
+        ContactType      => 'PERSON'
+        , # values: PERSON, COMPANY, ASSOCIATION, PUBLIC_BODY, RESELLER; OPTIONAL
+        CountryCode => 'AD'
         , # values: AD, AE, AF, AG, AI, AL, AM, AN, AO, AQ, AR, AS, AT, AU, AW, AZ, BA, BB, BD, BE, BF, BG, BH, BI, BJ, BL, BM, BN, BO, BR, BS, BT, BW, BY, BZ, CA, CC, CD, CF, CG, CH, CI, CK, CL, CM, CN, CO, CR, CU, CV, CX, CY, CZ, DE, DJ, DK, DM, DO, DZ, EC, EE, EG, ER, ES, ET, FI, FJ, FK, FM, FO, FR, GA, GB, GD, GE, GH, GI, GL, GM, GN, GQ, GR, GT, GU, GW, GY, HK, HN, HR, HT, HU, ID, IE, IL, IM, IN, IQ, IR, IS, IT, JM, JO, JP, KE, KG, KH, KI, KM, KN, KP, KR, KW, KY, KZ, LA, LB, LC, LI, LK, LR, LS, LT, LU, LV, LY, MA, MC, MD, ME, MF, MG, MH, MK, ML, MM, MN, MO, MP, MR, MS, MT, MU, MV, MW, MX, MY, MZ, NA, NC, NE, NG, NI, NL, NO, NP, NR, NU, NZ, OM, PA, PE, PF, PG, PH, PK, PL, PM, PN, PR, PT, PW, PY, QA, RO, RS, RU, RW, SA, SB, SC, SD, SE, SG, SH, SI, SK, SL, SM, SN, SO, SR, ST, SV, SY, SZ, TC, TD, TG, TH, TJ, TK, TL, TM, TN, TO, TR, TT, TV, TW, TZ, UA, UG, US, UY, UZ, VA, VC, VE, VG, VI, VN, VU, WF, WS, YE, YT, ZA, ZM, ZW; OPTIONAL
-        PhoneNumber => 'MyContactNumber',    # max: 30; OPTIONAL
-        State       => 'MyState',            # max: 255; OPTIONAL
-        Fax         => 'MyContactNumber',    # max: 30; OPTIONAL
+        Fax => 'MyContactNumber',    # max: 30; OPTIONAL
       },
       TechContact => {
-        AddressLine2 => 'MyAddressLine',     # max: 255; OPTIONAL
-        ContactType  => 'PERSON'
-        , # values: PERSON, COMPANY, ASSOCIATION, PUBLIC_BODY, RESELLER; OPTIONAL
-        ExtraParams => [
+        FirstName    => 'MyContactName',    # max: 255; OPTIONAL
+        AddressLine1 => 'MyAddressLine',    # max: 255; OPTIONAL
+        ExtraParams  => [
           {
             Value => 'MyExtraParamValue',    # max: 2048
             Name  => 'DUNS_NUMBER'
@@ -104,18 +103,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],    # OPTIONAL
-        City             => 'MyCity',           # max: 255; OPTIONAL
-        ZipCode          => 'MyZipCode',        # max: 255; OPTIONAL
-        OrganizationName => 'MyContactName',    # max: 255; OPTIONAL
-        FirstName        => 'MyContactName',    # max: 255; OPTIONAL
-        AddressLine1     => 'MyAddressLine',    # max: 255; OPTIONAL
-        Email            => 'MyEmail',          # max: 254; OPTIONAL
-        LastName         => 'MyContactName',    # max: 255; OPTIONAL
-        CountryCode      => 'AD'
+        ZipCode          => 'MyZipCode',          # max: 255; OPTIONAL
+        Email            => 'MyEmail',            # max: 254; OPTIONAL
+        PhoneNumber      => 'MyContactNumber',    # max: 30; OPTIONAL
+        OrganizationName => 'MyContactName',      # max: 255; OPTIONAL
+        AddressLine2     => 'MyAddressLine',      # max: 255; OPTIONAL
+        City             => 'MyCity',             # max: 255; OPTIONAL
+        State            => 'MyState',            # max: 255; OPTIONAL
+        LastName         => 'MyContactName',      # max: 255; OPTIONAL
+        ContactType      => 'PERSON'
+        , # values: PERSON, COMPANY, ASSOCIATION, PUBLIC_BODY, RESELLER; OPTIONAL
+        CountryCode => 'AD'
         , # values: AD, AE, AF, AG, AI, AL, AM, AN, AO, AQ, AR, AS, AT, AU, AW, AZ, BA, BB, BD, BE, BF, BG, BH, BI, BJ, BL, BM, BN, BO, BR, BS, BT, BW, BY, BZ, CA, CC, CD, CF, CG, CH, CI, CK, CL, CM, CN, CO, CR, CU, CV, CX, CY, CZ, DE, DJ, DK, DM, DO, DZ, EC, EE, EG, ER, ES, ET, FI, FJ, FK, FM, FO, FR, GA, GB, GD, GE, GH, GI, GL, GM, GN, GQ, GR, GT, GU, GW, GY, HK, HN, HR, HT, HU, ID, IE, IL, IM, IN, IQ, IR, IS, IT, JM, JO, JP, KE, KG, KH, KI, KM, KN, KP, KR, KW, KY, KZ, LA, LB, LC, LI, LK, LR, LS, LT, LU, LV, LY, MA, MC, MD, ME, MF, MG, MH, MK, ML, MM, MN, MO, MP, MR, MS, MT, MU, MV, MW, MX, MY, MZ, NA, NC, NE, NG, NI, NL, NO, NP, NR, NU, NZ, OM, PA, PE, PF, PG, PH, PK, PL, PM, PN, PR, PT, PW, PY, QA, RO, RS, RU, RW, SA, SB, SC, SD, SE, SG, SH, SI, SK, SL, SM, SN, SO, SR, ST, SV, SY, SZ, TC, TD, TG, TH, TJ, TK, TL, TM, TN, TO, TR, TT, TV, TW, TZ, UA, UG, US, UY, UZ, VA, VC, VE, VG, VI, VN, VU, WF, WS, YE, YT, ZA, ZM, ZW; OPTIONAL
-        PhoneNumber => 'MyContactNumber',    # max: 30; OPTIONAL
-        State       => 'MyState',            # max: 255; OPTIONAL
-        Fax         => 'MyContactNumber',    # max: 30; OPTIONAL
+        Fax => 'MyContactNumber',    # max: 30; OPTIONAL
       },
       AutoRenew                       => 1,               # OPTIONAL
       IdnLangCode                     => 'MyLangCode',    # OPTIONAL

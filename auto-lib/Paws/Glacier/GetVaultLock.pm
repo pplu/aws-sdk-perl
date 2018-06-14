@@ -41,9 +41,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $CreationDate   = $GetVaultLockOutput->CreationDate;
-    my $ExpirationDate = $GetVaultLockOutput->ExpirationDate;
     my $Policy         = $GetVaultLockOutput->Policy;
     my $State          = $GetVaultLockOutput->State;
+    my $ExpirationDate = $GetVaultLockOutput->ExpirationDate;
 
     # Returns a L<Paws::Glacier::GetVaultLockOutput> object.
 

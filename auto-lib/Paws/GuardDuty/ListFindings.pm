@@ -37,26 +37,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       FindingCriteria => {
         Criterion => {
           'My__string' => {
-            Gt  => 1,                        # OPTIONAL
+            Gte => 1,                        # OPTIONAL
             Lte => 1,                        # OPTIONAL
             Neq => [ 'My__string', ... ],    # OPTIONAL
-            Gte => 1,                        # OPTIONAL
-            Lt  => 1,                        # OPTIONAL
             Eq  => [ 'My__string', ... ],    # OPTIONAL
+            Gt  => 1,                        # OPTIONAL
+            Lt  => 1,                        # OPTIONAL
           },
         },    # OPTIONAL
       },    # OPTIONAL
       MaxResults   => 1,                # OPTIONAL
       NextToken    => 'MyNextToken',    # OPTIONAL
       SortCriteria => {
-        OrderBy       => 'ASC',          # values: ASC, DESC; OPTIONAL
         AttributeName => 'My__string',
+        OrderBy       => 'ASC',          # values: ASC, DESC; OPTIONAL
       },    # OPTIONAL
     );
 
     # Results:
-    my $FindingIds = $ListFindingsResponse->FindingIds;
     my $NextToken  = $ListFindingsResponse->NextToken;
+    my $FindingIds = $ListFindingsResponse->FindingIds;
 
     # Returns a L<Paws::GuardDuty::ListFindingsResponse> object.
 

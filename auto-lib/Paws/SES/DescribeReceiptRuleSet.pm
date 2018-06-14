@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Metadata = $DescribeReceiptRuleSetResponse->Metadata;
     my $Rules    = $DescribeReceiptRuleSetResponse->Rules;
+    my $Metadata = $DescribeReceiptRuleSetResponse->Metadata;
 
     # Returns a L<Paws::SES::DescribeReceiptRuleSetResponse> object.
 

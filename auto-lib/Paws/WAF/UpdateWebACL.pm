@@ -35,8 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # ID webacl-1472061481310.
     my $UpdateWebACLResponse = $waf->UpdateWebACL(
       {
-        'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
-        'Updates'     => [
+        'Updates' => [
 
           {
             'ActivatedRule' => {
@@ -49,10 +48,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'Action' => 'DELETE'
           }
         ],
-        'WebACLId'      => 'webacl-1472061481310',
+        'ChangeToken'   => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
         'DefaultAction' => {
           'Type' => 'ALLOW'
-        }
+        },
+        'WebACLId' => 'webacl-1472061481310'
       }
     );
 

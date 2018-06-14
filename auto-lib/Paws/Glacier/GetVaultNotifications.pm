@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # my-vault.
     my $GetVaultNotificationsOutput = $glacier->GetVaultNotifications(
       {
-        'VaultName' => 'my-vault',
-        'AccountId' => '-'
+        'AccountId' => '-',
+        'VaultName' => 'my-vault'
       }
     );
 

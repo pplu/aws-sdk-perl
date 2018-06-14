@@ -37,38 +37,38 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Id                          => 'Mystring',
       StreamingDistributionConfig => {
         CallerReference => 'Mystring',
-        TrustedSigners  => {
+        S3Origin        => {
+          OriginAccessIdentity => 'Mystring',
+          DomainName           => 'Mystring',
+
+        },
+        TrustedSigners => {
           Quantity => 1,
           Enabled  => 1,
           Items    => [ 'Mystring', ... ],    # OPTIONAL
         },
-        S3Origin => {
-          DomainName           => 'Mystring',
-          OriginAccessIdentity => 'Mystring',
-
-        },
-        Comment => 'Mystring',
         Enabled => 1,
+        Comment => 'Mystring',
         Aliases => {
           Quantity => 1,
           Items    => [ 'Mystring', ... ],    # OPTIONAL
         },    # OPTIONAL
-        PriceClass => 'PriceClass_100'
-        ,     # values: PriceClass_100, PriceClass_200, PriceClass_All; OPTIONAL
         Logging => {
+          Bucket  => 'Mystring',
           Enabled => 1,
           Prefix  => 'Mystring',
-          Bucket  => 'Mystring',
 
         },    # OPTIONAL
+        PriceClass => 'PriceClass_100'
+        ,     # values: PriceClass_100, PriceClass_200, PriceClass_All; OPTIONAL
       },
       IfMatch => 'Mystring',    # OPTIONAL
       );
 
     # Results:
+    my $ETag = $UpdateStreamingDistributionResult->ETag;
     my $StreamingDistribution =
       $UpdateStreamingDistributionResult->StreamingDistribution;
-    my $ETag = $UpdateStreamingDistributionResult->ETag;
 
     # Returns a L<Paws::CloudFront::UpdateStreamingDistributionResult> object.
 

@@ -41,19 +41,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Destinations => [
         {
           Destination => {
+            BccAddresses => [ 'MyAddress', ... ],    # OPTIONAL
             ToAddresses  => [ 'MyAddress', ... ],    # OPTIONAL
             CcAddresses  => [ 'MyAddress', ... ],    # OPTIONAL
-            BccAddresses => [ 'MyAddress', ... ],    # OPTIONAL
           },
-          ReplacementTemplateData => 'MyTemplateData',   # max: 262144; OPTIONAL
-          ReplacementTags         => [
+          ReplacementTags => [
             {
               Value => 'MyMessageTagValue',
               Name  => 'MyMessageTagName',
 
             },
             ...
-          ],                                             # OPTIONAL
+          ],                                         # OPTIONAL
+          ReplacementTemplateData => 'MyTemplateData',   # max: 262144; OPTIONAL
         },
         ...
       ],

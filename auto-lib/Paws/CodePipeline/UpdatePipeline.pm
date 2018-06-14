@@ -29,27 +29,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $codepipeline = Paws->service('CodePipeline');
     my $UpdatePipelineOutput = $codepipeline->UpdatePipeline(
       Pipeline => {
-        artifactStore => {
-          type          => 'S3',                         # values: S3
-          location      => 'MyArtifactStoreLocation',    # min: 3, max: 63
-          encryptionKey => {
-            id   => 'MyEncryptionKeyId',                 # min: 1, max: 100
-            type => 'KMS',                               # values: KMS
-
-          },    # OPTIONAL
-        },
-        stages => [
+        roleArn => 'MyRoleArn',    # max: 1024
+        stages  => [
           {
-            name    => 'MyStageName',    # min: 1, max: 100
             actions => [
               {
                 name         => 'MyActionName',    # min: 1, max: 100
                 actionTypeId => {
+                  provider => 'MyActionProvider',    # min: 1, max: 25
+                  owner    => 'AWS',          # values: AWS, ThirdParty, Custom
+                  version  => 'MyVersion',    # min: 1, max: 9
                   category => 'Source'
                   ,    # values: Source, Build, Deploy, Test, Invoke, Approval
-                  version  => 'MyVersion',           # min: 1, max: 9
-                  provider => 'MyActionProvider',    # min: 1, max: 25
-                  owner => 'AWS',    # values: AWS, ThirdParty, Custom
 
                 },
                 outputArtifacts => [
@@ -59,8 +50,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },
                   ...
                 ],                               # OPTIONAL
-                runOrder       => 1,             # min: 1, max: 999; OPTIONAL
-                roleArn        => 'MyRoleArn',   # max: 1024
                 inputArtifacts => [
                   {
                     name => 'MyArtifactName',    # min: 1, max: 100
@@ -68,6 +57,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },
                   ...
                 ],                               # OPTIONAL
+                roleArn       => 'MyRoleArn',    # max: 1024
+                runOrder      => 1,              # min: 1, max: 999; OPTIONAL
                 configuration => {
                   'MyActionConfigurationKey' => 'MyActionConfigurationValue'
                   ,    # key: min: 1, max: 50, value: min: 1, max: 1000
@@ -75,6 +66,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },
               ...
             ],
+            name     => 'MyStageName',    # min: 1, max: 100
             blockers => [
               {
                 name => 'MyBlockerName',    # min: 1, max: 100
@@ -86,9 +78,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],
-        roleArn => 'MyRoleArn',             # max: 1024
-        name    => 'MyPipelineName',        # min: 1, max: 100
-        version => 1,                       # min: 1, ; OPTIONAL
+        name          => 'MyPipelineName',    # min: 1, max: 100
+        artifactStore => {
+          location      => 'MyArtifactStoreLocation',    # min: 3, max: 63
+          type          => 'S3',                         # values: S3
+          encryptionKey => {
+            id   => 'MyEncryptionKeyId',                 # min: 1, max: 100
+            type => 'KMS',                               # values: KMS
+
+          },    # OPTIONAL
+        },
+        version => 1,    # min: 1, ; OPTIONAL
       },
 
     );

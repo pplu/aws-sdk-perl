@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $CertificateArn = $CreateCertificateFromCsrResponse->CertificateArn;
     my $CertificateId  = $CreateCertificateFromCsrResponse->CertificateId;
     my $CertificatePem = $CreateCertificateFromCsrResponse->CertificatePem;
-    my $CertificateArn = $CreateCertificateFromCsrResponse->CertificateArn;
 
     # Returns a L<Paws::IoT::CreateCertificateFromCsrResponse> object.
 

@@ -35,6 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateFieldLevelEncryptionProfileResult =
       $cloudfront->UpdateFieldLevelEncryptionProfile(
       FieldLevelEncryptionProfileConfig => {
+        CallerReference    => 'Mystring',
         EncryptionEntities => {
           Quantity => 1,
           Items    => [
@@ -50,9 +51,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ...
           ],                                        # OPTIONAL
         },
-        CallerReference => 'Mystring',
-        Name            => 'Mystring',
-        Comment         => 'Mystring',
+        Name    => 'Mystring',
+        Comment => 'Mystring',
       },
       Id      => 'Mystring',
       IfMatch => 'Mystring',                        # OPTIONAL

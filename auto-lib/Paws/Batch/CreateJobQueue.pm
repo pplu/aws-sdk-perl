@@ -36,22 +36,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # compute environment.
     my $CreateJobQueueResponse = $batch->CreateJobQueue(
       {
-        'JobQueueName'            => 'LowPriority',
-        'State'                   => 'ENABLED',
         'Priority'                => 10,
         'ComputeEnvironmentOrder' => [
 
           {
-            'ComputeEnvironment' => 'M4Spot',
-            'Order'              => 1
+            'Order'              => 1,
+            'ComputeEnvironment' => 'M4Spot'
           }
-        ]
+        ],
+        'JobQueueName' => 'LowPriority',
+        'State'        => 'ENABLED'
       }
     );
 
     # Results:
-    my $jobQueueName = $CreateJobQueueResponse->jobQueueName;
     my $jobQueueArn  = $CreateJobQueueResponse->jobQueueArn;
+    my $jobQueueName = $CreateJobQueueResponse->jobQueueName;
 
     # Returns a L<Paws::Batch::CreateJobQueueResponse> object.
     # To create a job queue with multiple compute environments
@@ -60,21 +60,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # environment with an order of 2.
     my $CreateJobQueueResponse = $batch->CreateJobQueue(
       {
-        'State'                   => 'ENABLED',
-        'JobQueueName'            => 'HighPriority',
         'Priority'                => 1,
         'ComputeEnvironmentOrder' => [
 
           {
-            'ComputeEnvironment' => 'C4OnDemand',
-            'Order'              => 1
+            'Order'              => 1,
+            'ComputeEnvironment' => 'C4OnDemand'
           },
 
           {
-            'ComputeEnvironment' => 'M4Spot',
-            'Order'              => 2
+            'Order'              => 2,
+            'ComputeEnvironment' => 'M4Spot'
           }
-        ]
+        ],
+        'JobQueueName' => 'HighPriority',
+        'State'        => 'ENABLED'
       }
     );
 

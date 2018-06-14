@@ -39,10 +39,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $LanguageCode     = $UpdateVocabularyResponse->LanguageCode;
-    my $VocabularyState  = $UpdateVocabularyResponse->VocabularyState;
-    my $LastModifiedTime = $UpdateVocabularyResponse->LastModifiedTime;
     my $VocabularyName   = $UpdateVocabularyResponse->VocabularyName;
+    my $LastModifiedTime = $UpdateVocabularyResponse->LastModifiedTime;
+    my $VocabularyState  = $UpdateVocabularyResponse->VocabularyState;
+    my $LanguageCode     = $UpdateVocabularyResponse->LanguageCode;
 
     # Returns a L<Paws::Transcribe::UpdateVocabularyResponse> object.
 

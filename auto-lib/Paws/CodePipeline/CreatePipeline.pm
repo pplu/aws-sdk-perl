@@ -29,7 +29,55 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $codepipeline = Paws->service('CodePipeline');
     my $CreatePipelineOutput = $codepipeline->CreatePipeline(
       Pipeline => {
-        roleArn       => 'MyRoleArn',         # max: 1024
+        roleArn => 'MyRoleArn',    # max: 1024
+        stages  => [
+          {
+            actions => [
+              {
+                name         => 'MyActionName',    # min: 1, max: 100
+                actionTypeId => {
+                  provider => 'MyActionProvider',    # min: 1, max: 25
+                  owner    => 'AWS',          # values: AWS, ThirdParty, Custom
+                  version  => 'MyVersion',    # min: 1, max: 9
+                  category => 'Source'
+                  ,    # values: Source, Build, Deploy, Test, Invoke, Approval
+
+                },
+                outputArtifacts => [
+                  {
+                    name => 'MyArtifactName',    # min: 1, max: 100
+
+                  },
+                  ...
+                ],                               # OPTIONAL
+                inputArtifacts => [
+                  {
+                    name => 'MyArtifactName',    # min: 1, max: 100
+
+                  },
+                  ...
+                ],                               # OPTIONAL
+                roleArn       => 'MyRoleArn',    # max: 1024
+                runOrder      => 1,              # min: 1, max: 999; OPTIONAL
+                configuration => {
+                  'MyActionConfigurationKey' => 'MyActionConfigurationValue'
+                  ,    # key: min: 1, max: 50, value: min: 1, max: 1000
+                },    # OPTIONAL
+              },
+              ...
+            ],
+            name     => 'MyStageName',    # min: 1, max: 100
+            blockers => [
+              {
+                name => 'MyBlockerName',    # min: 1, max: 100
+                type => 'Schedule',         # values: Schedule
+
+              },
+              ...
+            ],                              # OPTIONAL
+          },
+          ...
+        ],
         name          => 'MyPipelineName',    # min: 1, max: 100
         artifactStore => {
           location      => 'MyArtifactStoreLocation',    # min: 3, max: 63
@@ -40,55 +88,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },    # OPTIONAL
         },
-        stages => [
-          {
-            name    => 'MyStageName',    # min: 1, max: 100
-            actions => [
-              {
-                actionTypeId => {
-                  version  => 'MyVersion',           # min: 1, max: 9
-                  provider => 'MyActionProvider',    # min: 1, max: 25
-                  owner    => 'AWS',     # values: AWS, ThirdParty, Custom
-                  category => 'Source'
-                  ,    # values: Source, Build, Deploy, Test, Invoke, Approval
-
-                },
-                name            => 'MyActionName',    # min: 1, max: 100
-                outputArtifacts => [
-                  {
-                    name => 'MyArtifactName',         # min: 1, max: 100
-
-                  },
-                  ...
-                ],                                    # OPTIONAL
-                configuration => {
-                  'MyActionConfigurationKey' => 'MyActionConfigurationValue'
-                  ,    # key: min: 1, max: 50, value: min: 1, max: 1000
-                },    # OPTIONAL
-                roleArn        => 'MyRoleArn',    # max: 1024
-                inputArtifacts => [
-                  {
-                    name => 'MyArtifactName',     # min: 1, max: 100
-
-                  },
-                  ...
-                ],                                # OPTIONAL
-                runOrder => 1,                    # min: 1, max: 999; OPTIONAL
-              },
-              ...
-            ],
-            blockers => [
-              {
-                type => 'Schedule',               # values: Schedule
-                name => 'MyBlockerName',          # min: 1, max: 100
-
-              },
-              ...
-            ],                                    # OPTIONAL
-          },
-          ...
-        ],
-        version => 1,                             # min: 1, ; OPTIONAL
+        version => 1,    # min: 1, ; OPTIONAL
       },
 
     );

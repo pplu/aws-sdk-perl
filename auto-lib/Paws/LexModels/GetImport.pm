@@ -34,13 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $FailureReason = $GetImportResponse->FailureReason;
-    my $MergeStrategy = $GetImportResponse->MergeStrategy;
-    my $ResourceType  = $GetImportResponse->ResourceType;
-    my $Name          = $GetImportResponse->Name;
-    my $ImportStatus  = $GetImportResponse->ImportStatus;
-    my $ImportId      = $GetImportResponse->ImportId;
     my $CreatedDate   = $GetImportResponse->CreatedDate;
+    my $ImportId      = $GetImportResponse->ImportId;
+    my $MergeStrategy = $GetImportResponse->MergeStrategy;
+    my $FailureReason = $GetImportResponse->FailureReason;
+    my $ResourceType  = $GetImportResponse->ResourceType;
+    my $ImportStatus  = $GetImportResponse->ImportStatus;
+    my $Name          = $GetImportResponse->Name;
 
     # Returns a L<Paws::LexModels::GetImportResponse> object.
 

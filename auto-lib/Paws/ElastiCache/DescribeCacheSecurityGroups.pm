@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Marker              = $CacheSecurityGroupMessage->Marker;
     my $CacheSecurityGroups = $CacheSecurityGroupMessage->CacheSecurityGroups;
+    my $Marker              = $CacheSecurityGroupMessage->Marker;
 
     # Returns a L<Paws::ElastiCache::CacheSecurityGroupMessage> object.
 

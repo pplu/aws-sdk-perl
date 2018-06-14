@@ -41,9 +41,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ContentSHA256 = $PutObjectResponse->ContentSHA256;
     my $ETag          = $PutObjectResponse->ETag;
     my $StorageClass  = $PutObjectResponse->StorageClass;
+    my $ContentSHA256 = $PutObjectResponse->ContentSHA256;
 
     # Returns a L<Paws::MediaStoreData::PutObjectResponse> object.
 

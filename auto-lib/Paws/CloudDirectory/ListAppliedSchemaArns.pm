@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $SchemaArns = $ListAppliedSchemaArnsResponse->SchemaArns;
     my $NextToken  = $ListAppliedSchemaArnsResponse->NextToken;
+    my $SchemaArns = $ListAppliedSchemaArnsResponse->SchemaArns;
 
     # Returns a L<Paws::CloudDirectory::ListAppliedSchemaArnsResponse> object.
 

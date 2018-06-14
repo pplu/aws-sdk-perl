@@ -34,40 +34,38 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ApplicationId   => 'My__string',
       EndpointId      => 'My__string',
       EndpointRequest => {
-        Attributes => { 'My__string' => [ 'My__string', ... ], },    # OPTIONAL
-        RequestId  => 'My__string',
-        Address    => 'My__string',
-        Metrics    => {
-          'My__string' => 1,    # , value: OPTIONAL
-        },    # OPTIONAL
-        Location => {
-          Longitude  => 1,              # OPTIONAL
-          Region     => 'My__string',
-          PostalCode => 'My__string',
-          Latitude   => 1,              # OPTIONAL
-          City       => 'My__string',
-          Country    => 'My__string',
-        },    # OPTIONAL
+        RequestId   => 'My__string',
         ChannelType => 'GCM'
         , # values: GCM, APNS, APNS_SANDBOX, APNS_VOIP, APNS_VOIP_SANDBOX, ADM, SMS, EMAIL, BAIDU, CUSTOM; OPTIONAL
-        OptOut        => 'My__string',
-        EffectiveDate => 'My__string',
-        Demographic   => {
+        Attributes     => { 'My__string' => [ 'My__string', ... ], }, # OPTIONAL
+        OptOut         => 'My__string',
+        EndpointStatus => 'My__string',
+        Demographic    => {
+          ModelVersion    => 'My__string',
+          Platform        => 'My__string',
           Model           => 'My__string',
-          Timezone        => 'My__string',
+          Locale          => 'My__string',
           Make            => 'My__string',
+          Timezone        => 'My__string',
           AppVersion      => 'My__string',
           PlatformVersion => 'My__string',
-          Locale          => 'My__string',
-          Platform        => 'My__string',
-          ModelVersion    => 'My__string',
-        },    # OPTIONAL
-        User => {
+        },                                                            # OPTIONAL
+        Address => 'My__string',
+        User    => {
           UserId         => 'My__string',
           UserAttributes => { 'My__string' => [ 'My__string', ... ], }
-          ,    # OPTIONAL
+          ,                                                           # OPTIONAL
         },    # OPTIONAL
-        EndpointStatus => 'My__string',
+        Metrics => { 'My__string' => 1, },    # OPTIONAL
+        Location => {
+          Region     => 'My__string',
+          PostalCode => 'My__string',
+          Latitude   => 1,
+          Longitude  => 1,
+          City       => 'My__string',
+          Country    => 'My__string',
+        },                                    # OPTIONAL
+        EffectiveDate => 'My__string',
       },
 
     );

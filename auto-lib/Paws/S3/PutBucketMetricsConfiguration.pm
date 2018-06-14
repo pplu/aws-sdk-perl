@@ -39,22 +39,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Id     => 'MyMetricsId',
         Filter => {
           Tag => {
-            Value => 'MyValue',
             Key   => 'MyObjectKey',    # min: 1,
+            Value => 'MyValue',
 
-          },    # OPTIONAL
-          And => {
-            Tags => [
+          },
+          Prefix => 'MyPrefix',        # OPTIONAL
+          And    => {
+            Prefix => 'MyPrefix',      # OPTIONAL
+            Tags   => [
               {
-                Value => 'MyValue',
                 Key   => 'MyObjectKey',    # min: 1,
+                Value => 'MyValue',
 
               },
-              ...                          # OPTIONAL
+              ...
             ],                             # OPTIONAL
-            Prefix => 'MyPrefix',          # OPTIONAL
           },    # OPTIONAL
-          Prefix => 'MyPrefix',    # OPTIONAL
         },    # OPTIONAL
       },
 

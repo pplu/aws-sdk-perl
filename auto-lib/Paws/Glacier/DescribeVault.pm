@@ -39,11 +39,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $SizeInBytes      = $DescribeVaultOutput->SizeInBytes;
+    my $VaultARN         = $DescribeVaultOutput->VaultARN;
     my $CreationDate     = $DescribeVaultOutput->CreationDate;
     my $VaultName        = $DescribeVaultOutput->VaultName;
-    my $VaultARN         = $DescribeVaultOutput->VaultARN;
     my $NumberOfArchives = $DescribeVaultOutput->NumberOfArchives;
-    my $SizeInBytes      = $DescribeVaultOutput->SizeInBytes;
 
     # Returns a L<Paws::Glacier::DescribeVaultOutput> object.
 

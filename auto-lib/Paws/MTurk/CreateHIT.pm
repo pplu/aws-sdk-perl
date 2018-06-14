@@ -52,6 +52,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         PolicyName => 'MyString',
         Parameters => [
           {
+            Values     => [ 'MyString', ... ],    # OPTIONAL
+            Key        => 'MyString',
             MapEntries => [
               {
                 Values => [ 'MyString', ... ],    # OPTIONAL
@@ -59,8 +61,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },
               ...
             ],                                    # OPTIONAL
-            Key    => 'MyString',
-            Values => [ 'MyString', ... ],        # OPTIONAL
           },
           ...
         ],                                        # OPTIONAL
@@ -69,8 +69,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       HITLayoutId                => 'MyEntityId',    # OPTIONAL
       HITLayoutParameters        => [
         {
-          Name  => 'MyString',
           Value => 'MyString',
+          Name  => 'MyString',
 
         },
         ...
@@ -79,6 +79,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         PolicyName => 'MyString',
         Parameters => [
           {
+            Values     => [ 'MyString', ... ],       # OPTIONAL
+            Key        => 'MyString',
             MapEntries => [
               {
                 Values => [ 'MyString', ... ],       # OPTIONAL
@@ -86,8 +88,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },
               ...
             ],                                       # OPTIONAL
-            Key    => 'MyString',
-            Values => [ 'MyString', ... ],           # OPTIONAL
           },
           ...
         ],                                           # OPTIONAL
@@ -99,8 +99,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Comparator => 'LessThan'
           , # values: LessThan, LessThanOrEqualTo, GreaterThan, GreaterThanOrEqualTo, EqualTo, NotEqualTo, Exists, DoesNotExist, In, NotIn
           QualificationTypeId => 'MyString',
+          RequiredToPreview   => 1,            # OPTIONAL
           ActionsGuarded      => 'Accept'
           , # values: Accept, PreviewAndAccept, DiscoverPreviewAndAccept; OPTIONAL
+          IntegerValues => [ 1, ... ],    # OPTIONAL
           LocaleValues => [
             {
               Country     => 'MyCountryParameters',    # min: 2, max: 2
@@ -108,8 +110,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },
             ...
           ],                                           # OPTIONAL
-          IntegerValues => [ 1, ... ],                 # OPTIONAL
-          RequiredToPreview => 1,                      # OPTIONAL
         },
         ...
       ],                                               # OPTIONAL

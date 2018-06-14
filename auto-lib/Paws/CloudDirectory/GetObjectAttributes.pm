@@ -41,8 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Selector => 'MySelectorObjectReference',    # OPTIONAL
       },
       SchemaFacet => {
-        SchemaArn => 'MyArn',
         FacetName => 'MyFacetName',                 # min: 1, max: 64; OPTIONAL
+        SchemaArn => 'MyArn',
       },
       ConsistencyLevel => 'SERIALIZABLE',           # OPTIONAL
     );

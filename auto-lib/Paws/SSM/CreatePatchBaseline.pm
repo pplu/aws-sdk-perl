@@ -92,11 +92,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],                               # OPTIONAL
       Sources => [
         {
-          Name          => 'MyPatchSourceName',
+          Products => [
+            'MyPatchSourceProduct', ...    # min: 1, max: 128
+          ],                               # min: 1, max: 20
           Configuration => 'MyPatchSourceConfiguration',    # min: 1, max: 512
-          Products      => [
-            'MyPatchSourceProduct', ...                     # min: 1, max: 128
-          ],                                                # min: 1, max: 20
+          Name          => 'MyPatchSourceName',
 
         },
         ...

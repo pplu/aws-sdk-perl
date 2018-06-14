@@ -46,22 +46,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $RoleArn       = $CreateDevEndpointResponse->RoleArn;
-    my $Status        = $CreateDevEndpointResponse->Status;
-    my $FailureReason = $CreateDevEndpointResponse->FailureReason;
-    my $EndpointName  = $CreateDevEndpointResponse->EndpointName;
+    my $EndpointName = $CreateDevEndpointResponse->EndpointName;
+    my $Status       = $CreateDevEndpointResponse->Status;
     my $ZeppelinRemoteSparkInterpreterPort =
       $CreateDevEndpointResponse->ZeppelinRemoteSparkInterpreterPort;
-    my $ExtraJarsS3Path  = $CreateDevEndpointResponse->ExtraJarsS3Path;
-    my $AvailabilityZone = $CreateDevEndpointResponse->AvailabilityZone;
-    my $SubnetId         = $CreateDevEndpointResponse->SubnetId;
-    my $VpcId            = $CreateDevEndpointResponse->VpcId;
+    my $CreatedTimestamp    = $CreateDevEndpointResponse->CreatedTimestamp;
+    my $ExtraJarsS3Path     = $CreateDevEndpointResponse->ExtraJarsS3Path;
+    my $AvailabilityZone    = $CreateDevEndpointResponse->AvailabilityZone;
+    my $VpcId               = $CreateDevEndpointResponse->VpcId;
+    my $SecurityGroupIds    = $CreateDevEndpointResponse->SecurityGroupIds;
+    my $RoleArn             = $CreateDevEndpointResponse->RoleArn;
+    my $NumberOfNodes       = $CreateDevEndpointResponse->NumberOfNodes;
+    my $FailureReason       = $CreateDevEndpointResponse->FailureReason;
+    my $YarnEndpointAddress = $CreateDevEndpointResponse->YarnEndpointAddress;
+    my $SubnetId            = $CreateDevEndpointResponse->SubnetId;
     my $ExtraPythonLibsS3Path =
       $CreateDevEndpointResponse->ExtraPythonLibsS3Path;
-    my $CreatedTimestamp    = $CreateDevEndpointResponse->CreatedTimestamp;
-    my $SecurityGroupIds    = $CreateDevEndpointResponse->SecurityGroupIds;
-    my $YarnEndpointAddress = $CreateDevEndpointResponse->YarnEndpointAddress;
-    my $NumberOfNodes       = $CreateDevEndpointResponse->NumberOfNodes;
 
     # Returns a L<Paws::Glue::CreateDevEndpointResponse> object.
 

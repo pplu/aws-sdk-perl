@@ -32,21 +32,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InstanceId => 'MyInstanceId',
       Items      => [
         {
-          TypeName      => 'MyInventoryItemTypeName',        # min: 1, max: 100
           CaptureTime   => 'MyInventoryItemCaptureTime',
           SchemaVersion => 'MyInventoryItemSchemaVersion',
-          Content       => [
+          TypeName      => 'MyInventoryItemTypeName',       # min: 1, max: 100
+          ContentHash   => 'MyInventoryItemContentHash',    # max: 256; OPTIONAL
+          Context       => {
+            'MyAttributeName' =>
+              'MyAttributeValue',    # key: min: 1, max: 64, value: max: 4096
+          },    # max: 50; OPTIONAL
+          Content => [
             {
               'MyAttributeName' =>
                 'MyAttributeValue',    # key: min: 1, max: 64, value: max: 4096
             },
             ...                        # max: 50
           ],                           # max: 10000; OPTIONAL
-          ContentHash => 'MyInventoryItemContentHash',    # max: 256; OPTIONAL
-          Context     => {
-            'MyAttributeName' =>
-              'MyAttributeValue',    # key: min: 1, max: 64, value: max: 4096
-          },    # max: 50; OPTIONAL
         },
         ...
       ],

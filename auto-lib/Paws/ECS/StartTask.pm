@@ -46,32 +46,32 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
       },    # OPTIONAL
       Overrides => {
-        taskRoleArn        => 'MyString',
         executionRoleArn   => 'MyString',
+        taskRoleArn        => 'MyString',
         containerOverrides => [
           {
-            memoryReservation => 1,                     # OPTIONAL
-            command           => [ 'MyString', ... ],
-            environment       => [
+            cpu         => 1,                     # OPTIONAL
+            name        => 'MyString',
+            memory      => 1,                     # OPTIONAL
+            command     => [ 'MyString', ... ],
+            environment => [
               {
                 value => 'MyString',
                 name  => 'MyString',
               },
               ...
-            ],                                          # OPTIONAL
-            name   => 'MyString',
-            memory => 1,                                # OPTIONAL
-            cpu    => 1,                                # OPTIONAL
+            ],                                    # OPTIONAL
+            memoryReservation => 1,               # OPTIONAL
           },
           ...
-        ],                                              # OPTIONAL
+        ],                                        # OPTIONAL
       },    # OPTIONAL
       StartedBy => 'MyString',    # OPTIONAL
     );
 
     # Results:
-    my $Failures = $StartTaskResponse->Failures;
     my $Tasks    = $StartTaskResponse->Tasks;
+    my $Failures = $StartTaskResponse->Failures;
 
     # Returns a L<Paws::ECS::StartTaskResponse> object.
 

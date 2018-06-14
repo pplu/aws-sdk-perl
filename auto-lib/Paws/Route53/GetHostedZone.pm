@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $HostedZone    = $GetHostedZoneResponse->HostedZone;
-    my $DelegationSet = $GetHostedZoneResponse->DelegationSet;
     my $VPCs          = $GetHostedZoneResponse->VPCs;
+    my $DelegationSet = $GetHostedZoneResponse->DelegationSet;
 
     # Returns a L<Paws::Route53::GetHostedZoneResponse> object.
 

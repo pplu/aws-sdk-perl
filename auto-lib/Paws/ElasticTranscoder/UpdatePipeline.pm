@@ -39,37 +39,37 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Id            => 'MyId',
       AwsKmsKeyArn  => 'MyKeyArn',    # OPTIONAL
       ContentConfig => {
-        Permissions => [
-          {
-            Access => [ 'MyAccessControl', ... ],    # max: 30; OPTIONAL
-            GranteeType => 'MyGranteeType',          # OPTIONAL
-            Grantee => 'MyGrantee',    # min: 1, max: 255; OPTIONAL
-          },
-          ...
-        ],                             # max: 30; OPTIONAL
         Bucket       => 'MyBucketName',      # OPTIONAL
         StorageClass => 'MyStorageClass',    # OPTIONAL
+        Permissions  => [
+          {
+            GranteeType => 'MyGranteeType',    # OPTIONAL
+            Grantee     => 'MyGrantee',        # min: 1, max: 255; OPTIONAL
+            Access => [ 'MyAccessControl', ... ],    # max: 30; OPTIONAL
+          },
+          ...
+        ],                                           # max: 30; OPTIONAL
       },    # OPTIONAL
       InputBucket   => 'MyBucketName',    # OPTIONAL
       Name          => 'MyName',          # OPTIONAL
       Notifications => {
-        Error       => 'MySnsTopic',      # OPTIONAL
-        Progressing => 'MySnsTopic',      # OPTIONAL
         Completed   => 'MySnsTopic',      # OPTIONAL
+        Progressing => 'MySnsTopic',      # OPTIONAL
+        Error       => 'MySnsTopic',      # OPTIONAL
         Warning     => 'MySnsTopic',      # OPTIONAL
       },    # OPTIONAL
       Role            => 'MyRole',    # OPTIONAL
       ThumbnailConfig => {
-        Permissions => [
-          {
-            Access => [ 'MyAccessControl', ... ],    # max: 30; OPTIONAL
-            GranteeType => 'MyGranteeType',          # OPTIONAL
-            Grantee => 'MyGrantee',    # min: 1, max: 255; OPTIONAL
-          },
-          ...
-        ],                             # max: 30; OPTIONAL
         Bucket       => 'MyBucketName',      # OPTIONAL
         StorageClass => 'MyStorageClass',    # OPTIONAL
+        Permissions  => [
+          {
+            GranteeType => 'MyGranteeType',    # OPTIONAL
+            Grantee     => 'MyGrantee',        # min: 1, max: 255; OPTIONAL
+            Access => [ 'MyAccessControl', ... ],    # max: 30; OPTIONAL
+          },
+          ...
+        ],                                           # max: 30; OPTIONAL
       },    # OPTIONAL
     );
 

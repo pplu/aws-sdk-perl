@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ResourceArn => 'MyArn',
       Tags        => [
         {
-          Value => 'MyTagValue',    # OPTIONAL
           Key   => 'MyTagKey',      # OPTIONAL
+          Value => 'MyTagValue',    # OPTIONAL
         },
         ...
       ],

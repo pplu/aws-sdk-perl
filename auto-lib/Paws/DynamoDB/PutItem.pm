@@ -41,18 +41,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $PutItemOutput = $dynamodb->PutItem(
       {
         'Item' => {
-          'AlbumTitle' => {
-            'S' => 'Somewhat Famous'
-          },
           'SongTitle' => {
             'S' => 'Call Me Today'
+          },
+          'AlbumTitle' => {
+            'S' => 'Somewhat Famous'
           },
           'Artist' => {
             'S' => 'No One You Know'
           }
         },
-        'TableName'              => 'Music',
-        'ReturnConsumedCapacity' => 'TOTAL'
+        'ReturnConsumedCapacity' => 'TOTAL',
+        'TableName'              => 'Music'
       }
     );
 

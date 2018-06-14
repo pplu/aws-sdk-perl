@@ -41,8 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $FailedPutCount   = $PutRecordBatchOutput->FailedPutCount;
     my $RequestResponses = $PutRecordBatchOutput->RequestResponses;
+    my $FailedPutCount   = $PutRecordBatchOutput->FailedPutCount;
 
     # Returns a L<Paws::Firehose::PutRecordBatchOutput> object.
 

@@ -126,14 +126,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],                      # OPTIONAL
       Slots => [
         {
-          slotConstraint   => 'Required',      # values: Required, Optional
-          name             => 'MySlotName',    # min: 1, max: 100
-          sampleUtterances => [
-            'MyUtterance', ...                 # min: 1, max: 200
-          ],                                   # max: 10; OPTIONAL
-          priority => 1,                       # max: 100; OPTIONAL
+          name            => 'MySlotName',       # min: 1, max: 100
+          slotConstraint  => 'Required',         # values: Required, Optional
+          priority        => 1,                  # max: 100; OPTIONAL
+          slotTypeVersion => 'MyVersion',        # min: 1, max: 64; OPTIONAL
+          description     => 'MyDescription',    # max: 200
           slotType =>
-            'MyCustomOrBuiltinSlotTypeName',    # min: 1, max: 100; OPTIONAL
+            'MyCustomOrBuiltinSlotTypeName',     # min: 1, max: 100; OPTIONAL
+          responseCard     => 'MyResponseCard',  # min: 1, max: 50000; OPTIONAL
+          sampleUtterances => [
+            'MyUtterance', ...                   # min: 1, max: 200
+          ],                                     # max: 10; OPTIONAL
           valueElicitationPrompt => {
             messages => [
               {
@@ -147,31 +150,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             maxAttempts  => 1,                   # min: 1, max: 5
             responseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
           },
-          responseCard    => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
-          slotTypeVersion => 'MyVersion',         # min: 1, max: 64; OPTIONAL
-          description     => 'MyDescription',     # max: 200
         },
         ...
-      ],                                          # OPTIONAL
+      ],                                         # OPTIONAL
     );
 
     # Results:
-    my $LastUpdatedDate       = $PutIntentResponse->LastUpdatedDate;
-    my $Description           = $PutIntentResponse->Description;
-    my $FollowUpPrompt        = $PutIntentResponse->FollowUpPrompt;
-    my $SampleUtterances      = $PutIntentResponse->SampleUtterances;
-    my $ConfirmationPrompt    = $PutIntentResponse->ConfirmationPrompt;
+    my $RejectionStatement    = $PutIntentResponse->RejectionStatement;
     my $CreateVersion         = $PutIntentResponse->CreateVersion;
+    my $ParentIntentSignature = $PutIntentResponse->ParentIntentSignature;
+    my $ConclusionStatement   = $PutIntentResponse->ConclusionStatement;
     my $DialogCodeHook        = $PutIntentResponse->DialogCodeHook;
     my $Checksum              = $PutIntentResponse->Checksum;
-    my $ConclusionStatement   = $PutIntentResponse->ConclusionStatement;
-    my $Version               = $PutIntentResponse->Version;
-    my $RejectionStatement    = $PutIntentResponse->RejectionStatement;
-    my $CreatedDate           = $PutIntentResponse->CreatedDate;
-    my $Slots                 = $PutIntentResponse->Slots;
-    my $Name                  = $PutIntentResponse->Name;
+    my $SampleUtterances      = $PutIntentResponse->SampleUtterances;
     my $FulfillmentActivity   = $PutIntentResponse->FulfillmentActivity;
-    my $ParentIntentSignature = $PutIntentResponse->ParentIntentSignature;
+    my $LastUpdatedDate       = $PutIntentResponse->LastUpdatedDate;
+    my $Slots                 = $PutIntentResponse->Slots;
+    my $CreatedDate           = $PutIntentResponse->CreatedDate;
+    my $Version               = $PutIntentResponse->Version;
+    my $FollowUpPrompt        = $PutIntentResponse->FollowUpPrompt;
+    my $ConfirmationPrompt    = $PutIntentResponse->ConfirmationPrompt;
+    my $Description           = $PutIntentResponse->Description;
+    my $Name                  = $PutIntentResponse->Name;
 
     # Returns a L<Paws::LexModels::PutIntentResponse> object.
 

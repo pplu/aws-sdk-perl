@@ -43,9 +43,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $ARN           = $PutSecretValueResponse->ARN;
-    my $VersionId     = $PutSecretValueResponse->VersionId;
-    my $Name          = $PutSecretValueResponse->Name;
     my $VersionStages = $PutSecretValueResponse->VersionStages;
+    my $Name          = $PutSecretValueResponse->Name;
+    my $VersionId     = $PutSecretValueResponse->VersionId;
 
     # Returns a L<Paws::SecretsManager::PutSecretValueResponse> object.
 

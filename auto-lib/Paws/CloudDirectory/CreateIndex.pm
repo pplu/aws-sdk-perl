@@ -37,9 +37,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       IsUnique                    => 1,
       OrderedIndexedAttributeList => [
         {
-          Name      => 'MyAttributeName',    # min: 1, max: 64
-          SchemaArn => 'MyArn',
           FacetName => 'MyFacetName',        # min: 1, max: 64
+          SchemaArn => 'MyArn',
+          Name      => 'MyAttributeName',    # min: 1, max: 64
 
         },
         ...

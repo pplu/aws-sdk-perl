@@ -40,9 +40,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $NextToken = $ListElasticsearchInstanceTypesResponse->NextToken;
     my $ElasticsearchInstanceTypes =
       $ListElasticsearchInstanceTypesResponse->ElasticsearchInstanceTypes;
+    my $NextToken = $ListElasticsearchInstanceTypesResponse->NextToken;
 
     # Returns a L<Paws::ES::ListElasticsearchInstanceTypesResponse> object.
 

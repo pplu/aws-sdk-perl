@@ -51,14 +51,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $NextToken = $ListHyperParameterTuningJobsResponse->NextToken;
     my $HyperParameterTuningJobSummaries =
       $ListHyperParameterTuningJobsResponse->HyperParameterTuningJobSummaries;
-    my $NextToken = $ListHyperParameterTuningJobsResponse->NextToken;
 
     # Returns a L<Paws::SageMaker::ListHyperParameterTuningJobsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sagemaker/ListHyperParameterTuningJobs>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24>
 
 =head1 ATTRIBUTES
 

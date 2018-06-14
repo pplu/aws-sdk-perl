@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # AdministratorAccess to the IAM user named Alice.
     $iam->AttachUserPolicy(
       {
-        'PolicyArn' => 'arn:aws:iam::aws:policy/AdministratorAccess',
-        'UserName'  => 'Alice'
+        'UserName'  => 'Alice',
+        'PolicyArn' => 'arn:aws:iam::aws:policy/AdministratorAccess'
       }
     );
 

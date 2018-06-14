@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # submitted for verification with Amazon SES:
     my $ListIdentitiesResponse = $email->ListIdentities(
       {
-        'IdentityType' => 'EmailAddress',
+        'MaxItems'     => 123,
         'NextToken'    => '',
-        'MaxItems'     => 123
+        'IdentityType' => 'EmailAddress'
       }
     );
 

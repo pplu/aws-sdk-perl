@@ -37,12 +37,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $Marker = $DescribeReplicationTaskAssessmentResultsResponse->Marker;
     my $ReplicationTaskAssessmentResults =
       $DescribeReplicationTaskAssessmentResultsResponse
       ->ReplicationTaskAssessmentResults;
     my $BucketName =
       $DescribeReplicationTaskAssessmentResultsResponse->BucketName;
+    my $Marker = $DescribeReplicationTaskAssessmentResultsResponse->Marker;
 
 # Returns a L<Paws::DMS::DescribeReplicationTaskAssessmentResultsResponse> object.
 

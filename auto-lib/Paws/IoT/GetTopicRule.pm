@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Rule    = $GetTopicRuleResponse->Rule;
     my $RuleArn = $GetTopicRuleResponse->RuleArn;
+    my $Rule    = $GetTopicRuleResponse->Rule;
 
     # Returns a L<Paws::IoT::GetTopicRuleResponse> object.
 

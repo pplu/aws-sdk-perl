@@ -43,8 +43,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $EncryptionType    = $PutRecordsOutput->EncryptionType;
-    my $FailedRecordCount = $PutRecordsOutput->FailedRecordCount;
     my $Records           = $PutRecordsOutput->Records;
+    my $FailedRecordCount = $PutRecordsOutput->FailedRecordCount;
 
     # Returns a L<Paws::Kinesis::PutRecordsOutput> object.
 

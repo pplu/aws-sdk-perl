@@ -35,20 +35,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CurrentApplicationVersionId => 1,
       ReferenceDataSource         => {
         ReferenceSchema => {
-          RecordFormat => {
-            RecordFormatType  => 'JSON',    # values: JSON, CSV
-            MappingParameters => {
-              CSVMappingParameters => {
-                RecordRowDelimiter    => 'MyRecordRowDelimiter',       # min: 1,
-                RecordColumnDelimiter => 'MyRecordColumnDelimiter',    # min: 1,
-
-              },    # OPTIONAL
-              JSONMappingParameters => {
-                RecordRowPath => 'MyRecordRowPath',    # min: 1,
-
-              },    # OPTIONAL
-            },    # OPTIONAL
-          },
           RecordColumns => [
             {
               SqlType => 'MyRecordColumnSqlType',    # min: 1,
@@ -57,12 +43,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },
             ...
           ],                                         # min: 1, max: 1000
-          RecordEncoding => 'MyRecordEncoding',      # OPTIONAL
+          RecordFormat => {
+            RecordFormatType  => 'JSON',             # values: JSON, CSV
+            MappingParameters => {
+              CSVMappingParameters => {
+                RecordColumnDelimiter => 'MyRecordColumnDelimiter',    # min: 1,
+                RecordRowDelimiter    => 'MyRecordRowDelimiter',       # min: 1,
+
+              },    # OPTIONAL
+              JSONMappingParameters => {
+                RecordRowPath => 'MyRecordRowPath',    # min: 1,
+
+              },    # OPTIONAL
+            },    # OPTIONAL
+          },
+          RecordEncoding => 'MyRecordEncoding',    # OPTIONAL
         },
         TableName             => 'MyInAppTableName',    # min: 1, max: 32
         S3ReferenceDataSource => {
-          FileKey          => 'MyFileKey',              # min: 1, max: 1024
           ReferenceRoleARN => 'MyRoleARN',              # min: 1, max: 2048
+          FileKey          => 'MyFileKey',              # min: 1, max: 1024
           BucketARN        => 'MyBucketARN',            # min: 1, max: 2048
 
         },    # OPTIONAL

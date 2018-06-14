@@ -42,31 +42,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # cluster does not ship until these five node jobs have been created.
     my $CreateClusterResult = $snowball->CreateCluster(
       {
-        'Resources' => {
-          'S3Resources' => [
-
-            {
-              'KeyRange' => {
-
-              },
-              'BucketArn' => 'arn:aws:s3:::MyBucket'
-            }
-          ]
-        },
-        'Description' => 'MyCluster',
+        'ShippingOption' => 'SECOND_DAY',
         'KmsKeyARN' =>
 'arn:aws:kms:us-east-1:123456789012:key/abcd1234-12ab-34cd-56ef-123456123456',
-        'JobType'        => 'LOCAL_USE',
-        'ShippingOption' => 'SECOND_DAY',
-        'Notification'   => {
+        'Notification' => {
           'NotifyAll'         => 0,
           'JobStatesToNotify' => [
 
           ]
         },
+        'AddressId' => 'ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b',
+        'JobType'   => 'LOCAL_USE',
+        'Resources' => {
+          'S3Resources' => [
+
+            {
+              'BucketArn' => 'arn:aws:s3:::MyBucket',
+              'KeyRange'  => {
+
+              }
+            }
+          ]
+        },
+        'RoleARN' => 'arn:aws:iam::123456789012:role/snowball-import-S3-role',
         'SnowballType' => 'EDGE',
-        'RoleARN'   => 'arn:aws:iam::123456789012:role/snowball-import-S3-role',
-        'AddressId' => 'ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b'
+        'Description'  => 'MyCluster'
       }
     );
 

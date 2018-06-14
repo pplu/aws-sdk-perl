@@ -86,8 +86,8 @@ parameter path and name. For example:
 C</Dev/DBServer/MySQL/db-string13>
 
 For information about parameter name requirements and restrictions, see
-About Creating Systems Manager Parameters
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-su-create.html#sysman-paramstore-su-create-about)
+Creating Systems Manager Parameters
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-su-create.html)
 in the I<AWS Systems Manager User Guide>.
 
 The maximum length constraint listed below includes capacity for

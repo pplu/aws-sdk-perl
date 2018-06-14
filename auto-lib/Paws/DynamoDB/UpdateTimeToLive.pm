@@ -31,8 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateTimeToLiveOutput = $dynamodb->UpdateTimeToLive(
       TableName               => 'MyTableName',
       TimeToLiveSpecification => {
-        Enabled       => 1,
         AttributeName => 'MyTimeToLiveAttributeName',    # min: 1, max: 255
+        Enabled       => 1,
 
       },
 

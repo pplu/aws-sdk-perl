@@ -36,9 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $NextToken = $DescribeDirectoriesResult->NextToken;
     my $DirectoryDescriptions =
       $DescribeDirectoriesResult->DirectoryDescriptions;
-    my $NextToken = $DescribeDirectoriesResult->NextToken;
 
     # Returns a L<Paws::DS::DescribeDirectoriesResult> object.
 

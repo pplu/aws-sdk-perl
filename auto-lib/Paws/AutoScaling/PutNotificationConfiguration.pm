@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # group.
     $autoscaling->PutNotificationConfiguration(
       {
-        'AutoScalingGroupName' => 'my-auto-scaling-group',
+        'NotificationTypes' => ['autoscaling:TEST_NOTIFICATION'],
         'TopicARN' => 'arn:aws:sns:us-west-2:123456789012:my-sns-topic',
-        'NotificationTypes' => ['autoscaling:TEST_NOTIFICATION']
+        'AutoScalingGroupName' => 'my-auto-scaling-group'
       }
     );
 

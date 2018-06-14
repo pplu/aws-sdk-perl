@@ -35,20 +35,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RestApiId            => 'MyString',
       PatchOperations      => [
         {
+          from  => 'MyString',
+          value => 'MyString',
+          path  => 'MyString',
           op =>
             'add',    # values: add, remove, replace, move, copy, test; OPTIONAL
-          from  => 'MyString',
-          path  => 'MyString',
-          value => 'MyString',
         },
         ...
       ],              # OPTIONAL
     );
 
     # Results:
-    my $Description = $DocumentationVersion->Description;
-    my $Version     = $DocumentationVersion->Version;
     my $CreatedDate = $DocumentationVersion->CreatedDate;
+    my $Version     = $DocumentationVersion->Version;
+    my $Description = $DocumentationVersion->Description;
 
     # Returns a L<Paws::ApiGateway::DocumentationVersion> object.
 

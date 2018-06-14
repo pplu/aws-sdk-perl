@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $GetProductsResponse = $api . pricing->GetProducts(
       Filters => [
         {
-          Value => 'MyString',
           Field => 'MyString',
           Type  => 'TERM_MATCH',    # values: TERM_MATCH
+          Value => 'MyString',
 
         },
         ...
@@ -49,8 +49,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $NextToken     = $GetProductsResponse->NextToken;
-    my $PriceList     = $GetProductsResponse->PriceList;
     my $FormatVersion = $GetProductsResponse->FormatVersion;
+    my $PriceList     = $GetProductsResponse->PriceList;
 
     # Returns a L<Paws::Pricing::GetProductsResponse> object.
 

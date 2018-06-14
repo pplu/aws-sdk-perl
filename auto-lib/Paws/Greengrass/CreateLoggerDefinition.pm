@@ -35,11 +35,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InitialVersion  => {
         Loggers => [
           {
-            Component =>
-              'GreengrassSystem',   # values: GreengrassSystem, Lambda; OPTIONAL
-            Id    => 'My__string',
             Space => 1,            # OPTIONAL
             Type  => 'FileSystem', # values: FileSystem, AWSCloudWatch; OPTIONAL
+            Component =>
+              'GreengrassSystem',   # values: GreengrassSystem, Lambda; OPTIONAL
+            Id => 'My__string',
             Level =>
               'DEBUG',    # values: DEBUG, INFO, WARN, ERROR, FATAL; OPTIONAL
           },
@@ -50,14 +50,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Name              = $CreateLoggerDefinitionResponse->Name;
     my $CreationTimestamp = $CreateLoggerDefinitionResponse->CreationTimestamp;
-    my $LatestVersion     = $CreateLoggerDefinitionResponse->LatestVersion;
     my $LatestVersionArn  = $CreateLoggerDefinitionResponse->LatestVersionArn;
-    my $Arn               = $CreateLoggerDefinitionResponse->Arn;
     my $Id                = $CreateLoggerDefinitionResponse->Id;
     my $LastUpdatedTimestamp =
       $CreateLoggerDefinitionResponse->LastUpdatedTimestamp;
+    my $Arn           = $CreateLoggerDefinitionResponse->Arn;
+    my $Name          = $CreateLoggerDefinitionResponse->Name;
+    my $LatestVersion = $CreateLoggerDefinitionResponse->LatestVersion;
 
     # Returns a L<Paws::Greengrass::CreateLoggerDefinitionResponse> object.
 

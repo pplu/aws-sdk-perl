@@ -46,8 +46,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $images   = $BatchGetImageResponse->images;
     my $failures = $BatchGetImageResponse->failures;
+    my $images   = $BatchGetImageResponse->images;
 
     # Returns a L<Paws::ECR::BatchGetImageResponse> object.
 

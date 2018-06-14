@@ -43,23 +43,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $PaymentDue   = $GetReservedInstancesExchangeQuoteResult->PaymentDue;
-    my $CurrencyCode = $GetReservedInstancesExchangeQuoteResult->CurrencyCode;
+    my $TargetConfigurationValueRollup =
+      $GetReservedInstancesExchangeQuoteResult->TargetConfigurationValueRollup;
+    my $IsValidExchange =
+      $GetReservedInstancesExchangeQuoteResult->IsValidExchange;
     my $ReservedInstanceValueSet =
       $GetReservedInstancesExchangeQuoteResult->ReservedInstanceValueSet;
+    my $ReservedInstanceValueRollup =
+      $GetReservedInstancesExchangeQuoteResult->ReservedInstanceValueRollup;
     my $TargetConfigurationValueSet =
       $GetReservedInstancesExchangeQuoteResult->TargetConfigurationValueSet;
+    my $CurrencyCode = $GetReservedInstancesExchangeQuoteResult->CurrencyCode;
     my $OutputReservedInstancesWillExpireAt =
       $GetReservedInstancesExchangeQuoteResult
       ->OutputReservedInstancesWillExpireAt;
-    my $ReservedInstanceValueRollup =
-      $GetReservedInstancesExchangeQuoteResult->ReservedInstanceValueRollup;
-    my $IsValidExchange =
-      $GetReservedInstancesExchangeQuoteResult->IsValidExchange;
+    my $PaymentDue = $GetReservedInstancesExchangeQuoteResult->PaymentDue;
     my $ValidationFailureReason =
       $GetReservedInstancesExchangeQuoteResult->ValidationFailureReason;
-    my $TargetConfigurationValueRollup =
-      $GetReservedInstancesExchangeQuoteResult->TargetConfigurationValueRollup;
 
     # Returns a L<Paws::EC2::GetReservedInstancesExchangeQuoteResult> object.
 

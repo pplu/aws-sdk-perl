@@ -37,9 +37,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $EndTime   = $GetServiceGraphResult->EndTime;
     my $NextToken = $GetServiceGraphResult->NextToken;
     my $Services  = $GetServiceGraphResult->Services;
+    my $EndTime   = $GetServiceGraphResult->EndTime;
     my $StartTime = $GetServiceGraphResult->StartTime;
 
     # Returns a L<Paws::XRay::GetServiceGraphResult> object.

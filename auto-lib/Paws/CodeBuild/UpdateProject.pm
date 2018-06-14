@@ -41,11 +41,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateProjectOutput = $codebuild->UpdateProject(
       Name      => 'MyNonEmptyString',
       Artifacts => {
-        type => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
-        name => 'MyString',        # OPTIONAL
+        type      => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
+        packaging => 'NONE',            # values: NONE, ZIP; OPTIONAL
         namespaceType => 'NONE',        # values: NONE, BUILD_ID; OPTIONAL
-        packaging     => 'NONE',        # values: NONE, ZIP; OPTIONAL
         location      => 'MyString',    # OPTIONAL
+        name          => 'MyString',    # OPTIONAL
         path          => 'MyString',    # OPTIONAL
       },    # OPTIONAL
       BadgeEnabled => 1,    # OPTIONAL
@@ -56,34 +56,34 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description   => 'MyProjectDescription',    # OPTIONAL
       EncryptionKey => 'MyNonEmptyString',        # OPTIONAL
       Environment   => {
-        type =>
-          'WINDOWS_CONTAINER',    # values: WINDOWS_CONTAINER, LINUX_CONTAINER
         computeType => 'BUILD_GENERAL1_SMALL'
         , # values: BUILD_GENERAL1_SMALL, BUILD_GENERAL1_MEDIUM, BUILD_GENERAL1_LARGE
-        image                => 'MyNonEmptyString',    # min: 1,
-        privilegedMode       => 1,
+        image => 'MyNonEmptyString',    # min: 1,
+        type =>
+          'WINDOWS_CONTAINER',    # values: WINDOWS_CONTAINER, LINUX_CONTAINER
+        certificate          => 'MyString',    # OPTIONAL
         environmentVariables => [
           {
-            name  => 'MyNonEmptyString',               # min: 1,
-            value => 'MyString',                       # OPTIONAL
+            value => 'MyString',               # OPTIONAL
+            name  => 'MyNonEmptyString',       # min: 1,
             type => 'PLAINTEXT',  # values: PLAINTEXT, PARAMETER_STORE; OPTIONAL
           },
           ...
         ],                        # OPTIONAL
-        certificate => 'MyString',    # OPTIONAL
+        privilegedMode => 1,
       },    # OPTIONAL
       ServiceRole => 'MyNonEmptyString',    # OPTIONAL
       Source      => {
         type => 'CODECOMMIT'
         , # values: CODECOMMIT, CODEPIPELINE, GITHUB, S3, BITBUCKET, GITHUB_ENTERPRISE
-        gitCloneDepth => 1,             # OPTIONAL
-        location      => 'MyString',    # OPTIONAL
-        insecureSsl   => 1,
-        auth          => {
-          type     => 'OAUTH',          # values: OAUTH
-          resource => 'MyString',       # OPTIONAL
+        insecureSsl => 1,
+        auth        => {
+          type     => 'OAUTH',       # values: OAUTH
+          resource => 'MyString',    # OPTIONAL
         },    # OPTIONAL
-        buildspec => 'MyString',    # OPTIONAL
+        buildspec     => 'MyString',    # OPTIONAL
+        location      => 'MyString',    # OPTIONAL
+        gitCloneDepth => 1,             # OPTIONAL
       },    # OPTIONAL
       Tags => [
         {
@@ -94,13 +94,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],                              # OPTIONAL
       TimeoutInMinutes => 1,          # OPTIONAL
       VpcConfig        => {
+        securityGroupIds => [
+          'MyNonEmptyString', ...     # min: 1,
+        ],                            # max: 5; OPTIONAL
         vpcId   => 'MyNonEmptyString',    # min: 1,
         subnets => [
           'MyNonEmptyString', ...         # min: 1,
         ],                                # max: 16; OPTIONAL
-        securityGroupIds => [
-          'MyNonEmptyString', ...         # min: 1,
-        ],                                # max: 5; OPTIONAL
       },    # OPTIONAL
     );
 

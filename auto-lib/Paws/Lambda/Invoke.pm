@@ -37,20 +37,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This operation invokes a Lambda function
     my $InvocationResponse = $lambda->Invoke(
       {
-        'InvocationType' => 'Event',
-        'FunctionName'   => 'MyFunction',
         'Qualifier'      => 1,
         'Payload'        => 'fileb://file-path/input.json',
+        'FunctionName'   => 'MyFunction',
         'LogType'        => 'Tail',
+        'InvocationType' => 'Event',
         'ClientContext'  => 'MyApp'
       }
     );
 
     # Results:
     my $StatusCode    = $InvocationResponse->StatusCode;
-    my $FunctionError = $InvocationResponse->FunctionError;
     my $LogResult     = $InvocationResponse->LogResult;
     my $Payload       = $InvocationResponse->Payload;
+    my $FunctionError = $InvocationResponse->FunctionError;
 
     # Returns a L<Paws::Lambda::InvocationResponse> object.
 

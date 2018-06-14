@@ -47,11 +47,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $StatusCode         = $IntegrationResponse->StatusCode;
+    my $SelectionPattern   = $IntegrationResponse->SelectionPattern;
     my $ContentHandling    = $IntegrationResponse->ContentHandling;
     my $ResponseParameters = $IntegrationResponse->ResponseParameters;
-    my $StatusCode         = $IntegrationResponse->StatusCode;
     my $ResponseTemplates  = $IntegrationResponse->ResponseTemplates;
-    my $SelectionPattern   = $IntegrationResponse->SelectionPattern;
 
     # Returns a L<Paws::ApiGateway::IntegrationResponse> object.
 

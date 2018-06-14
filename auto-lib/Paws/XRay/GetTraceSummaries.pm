@@ -41,10 +41,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $TracesProcessedCount = $GetTraceSummariesResult->TracesProcessedCount;
     my $TraceSummaries       = $GetTraceSummariesResult->TraceSummaries;
-    my $ApproximateTime      = $GetTraceSummariesResult->ApproximateTime;
     my $NextToken            = $GetTraceSummariesResult->NextToken;
+    my $TracesProcessedCount = $GetTraceSummariesResult->TracesProcessedCount;
+    my $ApproximateTime      = $GetTraceSummariesResult->ApproximateTime;
 
     # Returns a L<Paws::XRay::GetTraceSummariesResult> object.
 

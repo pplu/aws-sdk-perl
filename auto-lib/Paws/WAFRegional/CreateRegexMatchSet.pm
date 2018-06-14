@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $RegexMatchSet = $CreateRegexMatchSetResponse->RegexMatchSet;
     my $ChangeToken   = $CreateRegexMatchSetResponse->ChangeToken;
+    my $RegexMatchSet = $CreateRegexMatchSetResponse->RegexMatchSet;
 
     # Returns a L<Paws::WAFRegional::CreateRegexMatchSetResponse> object.
 

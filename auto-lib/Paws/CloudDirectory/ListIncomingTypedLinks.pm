@@ -49,17 +49,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             StartMode => 'FIRST'
             , # values: FIRST, LAST, LAST_BEFORE_MISSING_VALUES, INCLUSIVE, EXCLUSIVE
             EndValue => {
-              BooleanValue  => 1,                             # OPTIONAL
-              DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
-              StringValue   => 'MyStringAttributeValue',      # OPTIONAL
               NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
+              BooleanValue  => 1,                             # OPTIONAL
+              StringValue   => 'MyStringAttributeValue',      # OPTIONAL
+              DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
               BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
             },    # OPTIONAL
             StartValue => {
-              BooleanValue  => 1,                             # OPTIONAL
-              DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
-              StringValue   => 'MyStringAttributeValue',      # OPTIONAL
               NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
+              BooleanValue  => 1,                             # OPTIONAL
+              StringValue   => 'MyStringAttributeValue',      # OPTIONAL
+              DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
               BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
             },    # OPTIONAL
           },

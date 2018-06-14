@@ -35,8 +35,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # group if the URL contains the specified pattern (for example, /img/*).
     my $CreateRuleOutput = $elasticloadbalancing->CreateRule(
       {
-        'Priority' => 10,
-        'Actions'  => [
+        'Conditions' => [
+
+          {
+            'Field'  => 'path-pattern',
+            'Values' => ['/img/*']
+          }
+        ],
+        'ListenerArn' =>
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-load-balancer/50dc6c495c0c9188/f2f7dc8efc522ab2',
+        'Actions' => [
 
           {
             'TargetGroupArn' =>
@@ -44,15 +52,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'Type' => 'forward'
           }
         ],
-        'ListenerArn' =>
-'arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-load-balancer/50dc6c495c0c9188/f2f7dc8efc522ab2',
-        'Conditions' => [
-
-          {
-            'Field'  => 'path-pattern',
-            'Values' => ['/img/*']
-          }
-        ]
+        'Priority' => 10
       }
     );
 

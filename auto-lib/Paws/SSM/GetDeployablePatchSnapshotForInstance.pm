@@ -36,11 +36,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $Product    = $GetDeployablePatchSnapshotForInstanceResult->Product;
-    my $SnapshotId = $GetDeployablePatchSnapshotForInstanceResult->SnapshotId;
-    my $InstanceId = $GetDeployablePatchSnapshotForInstanceResult->InstanceId;
     my $SnapshotDownloadUrl =
       $GetDeployablePatchSnapshotForInstanceResult->SnapshotDownloadUrl;
+    my $InstanceId = $GetDeployablePatchSnapshotForInstanceResult->InstanceId;
+    my $SnapshotId = $GetDeployablePatchSnapshotForInstanceResult->SnapshotId;
+    my $Product    = $GetDeployablePatchSnapshotForInstanceResult->Product;
 
    # Returns a L<Paws::SSM::GetDeployablePatchSnapshotForInstanceResult> object.
 

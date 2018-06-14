@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $PolicyNames = $ListKeyPoliciesResponse->PolicyNames;
     my $Truncated   = $ListKeyPoliciesResponse->Truncated;
+    my $PolicyNames = $ListKeyPoliciesResponse->PolicyNames;
 
     # Returns a L<Paws::KMS::ListKeyPoliciesResponse> object.
 

@@ -37,9 +37,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $TranslatedText     = $TranslateTextResponse->TranslatedText;
-    my $TargetLanguageCode = $TranslateTextResponse->TargetLanguageCode;
     my $SourceLanguageCode = $TranslateTextResponse->SourceLanguageCode;
+    my $TargetLanguageCode = $TranslateTextResponse->TargetLanguageCode;
+    my $TranslatedText     = $TranslateTextResponse->TranslatedText;
 
     # Returns a L<Paws::Translate::TranslateTextResponse> object.
 

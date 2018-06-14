@@ -42,8 +42,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken     = $DescribeMetricFiltersResponse->NextToken;
-    my $MetricFilters = $DescribeMetricFiltersResponse->MetricFilters;
+    my $nextToken     = $DescribeMetricFiltersResponse->nextToken;
+    my $metricFilters = $DescribeMetricFiltersResponse->metricFilters;
 
     # Returns a L<Paws::CloudWatchLogs::DescribeMetricFiltersResponse> object.
 

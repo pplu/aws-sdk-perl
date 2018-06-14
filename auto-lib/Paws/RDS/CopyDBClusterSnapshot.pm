@@ -37,9 +37,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # DB cluster snapshot.
     my $CopyDBClusterSnapshotResult = $rds->CopyDBClusterSnapshot(
       {
-        'TargetDBClusterSnapshotIdentifier' => 'cluster-snapshot-copy-1',
         'SourceDBClusterSnapshotIdentifier' =>
-          'rds:sample-cluster-2016-09-14-10-38'
+          'rds:sample-cluster-2016-09-14-10-38',
+        'TargetDBClusterSnapshotIdentifier' => 'cluster-snapshot-copy-1'
       }
     );
 

@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Jar        => 'MyXmlString',    # max: 10280
             Properties => [
               {
-                Value => 'MyXmlString',     # max: 10280
                 Key   => 'MyXmlString',     # max: 10280
+                Value => 'MyXmlString',     # max: 10280
               },
               ...
             ],                              # OPTIONAL

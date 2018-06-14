@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $StatusMessage = $StopDeploymentOutput->StatusMessage;
     my $Status        = $StopDeploymentOutput->Status;
+    my $StatusMessage = $StopDeploymentOutput->StatusMessage;
 
     # Returns a L<Paws::CodeDeploy::StopDeploymentOutput> object.
 

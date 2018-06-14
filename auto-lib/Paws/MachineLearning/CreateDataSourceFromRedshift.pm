@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DataSourceId => 'MyEntityId',
       DataSpec     => {
         DatabaseInformation => {
-          DatabaseName      => 'MyRedshiftDatabaseName',       # min: 1, max: 64
           ClusterIdentifier => 'MyRedshiftClusterIdentifier',  # min: 1, max: 63
+          DatabaseName      => 'MyRedshiftDatabaseName',       # min: 1, max: 64
 
         },
         DatabaseCredentials => {
@@ -45,11 +45,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Username => 'MyRedshiftDatabaseUsername',    # min: 1, max: 128
 
         },
-        S3StagingLocation => 'MyS3Url',                  # max: 2048
         SelectSqlQuery    => 'MyRedshiftSelectSqlQuery', # min: 1, max: 16777216
+        S3StagingLocation => 'MyS3Url',                  # max: 2048
+        DataRearrangement => 'MyDataRearrangement',      # OPTIONAL
         DataSchemaUri     => 'MyS3Url',                  # max: 2048
         DataSchema        => 'MyDataSchema',             # max: 131071; OPTIONAL
-        DataRearrangement => 'MyDataRearrangement',      # OPTIONAL
       },
       RoleARN           => 'MyRoleARN',
       ComputeStatistics => 1,                            # OPTIONAL

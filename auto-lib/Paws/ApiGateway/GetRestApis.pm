@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Position = $RestApis->Position;
     my $Items    = $RestApis->Items;
+    my $Position = $RestApis->Position;
 
     # Returns a L<Paws::ApiGateway::RestApis> object.
 

@@ -47,13 +47,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Attribute           => 'instanceType',    # OPTIONAL
       BlockDeviceMappings => [
         {
-          NoDevice => 'MyString',
-          Ebs      => {
+          DeviceName  => 'MyString',
+          VirtualName => 'MyString',
+          NoDevice    => 'MyString',
+          Ebs         => {
             VolumeId            => 'MyString',
             DeleteOnTermination => 1,            # OPTIONAL
           },    # OPTIONAL
-          DeviceName  => 'MyString',
-          VirtualName => 'MyString',
         },
         ...
       ],        # OPTIONAL

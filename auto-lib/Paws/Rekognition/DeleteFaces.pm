@@ -32,8 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This operation deletes one or more faces from a Rekognition collection.
     my $DeleteFacesResponse = $rekognition->DeleteFaces(
       {
-        'FaceIds'      => ['ff43d742-0c13-5d16-a3e8-03d3f58e980b'],
-        'CollectionId' => 'myphotos'
+        'CollectionId' => 'myphotos',
+        'FaceIds'      => ['ff43d742-0c13-5d16-a3e8-03d3f58e980b']
       }
     );
 

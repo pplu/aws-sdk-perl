@@ -16,6 +16,7 @@ package Paws::ECS::Service;
   has PlatformVersion => (is => 'ro', isa => 'Str', request_name => 'platformVersion', traits => ['NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
   has RunningCount => (is => 'ro', isa => 'Int', request_name => 'runningCount', traits => ['NameInRequest']);
+  has SchedulingStrategy => (is => 'ro', isa => 'Str', request_name => 'schedulingStrategy', traits => ['NameInRequest']);
   has ServiceArn => (is => 'ro', isa => 'Str', request_name => 'serviceArn', traits => ['NameInRequest']);
   has ServiceName => (is => 'ro', isa => 'Str', request_name => 'serviceName', traits => ['NameInRequest']);
   has ServiceRegistries => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ServiceRegistry]', request_name => 'serviceRegistries', traits => ['NameInRequest']);
@@ -158,6 +159,36 @@ Elastic Load Balancing load balancer.
 =head2 RunningCount => Int
 
   The number of tasks in the cluster that are in the C<RUNNING> state.
+
+
+=head2 SchedulingStrategy => Str
+
+  The scheduling strategy to use for the service. For more information,
+see Services
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguideecs_services.html).
+
+There are two service scheduler strategies available:
+
+=over
+
+=item *
+
+C<REPLICA>-The replica scheduling strategy places and maintains the
+desired number of tasks across your cluster. By default, the service
+scheduler spreads tasks across Availability Zones. You can use task
+placement strategies and constraints to customize task placement
+decisions.
+
+=item *
+
+C<DAEMON>-The daemon scheduling strategy deploys exactly one task on
+each container instance in your cluster. When using this strategy, do
+not specify a desired number of tasks or any task placement strategies.
+
+Fargate tasks do not support the C<DAEMON> scheduling strategy.
+
+=back
+
 
 
 =head2 ServiceArn => Str

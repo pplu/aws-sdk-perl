@@ -38,13 +38,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $PolicyDocuments = $TestInvokeAuthorizerResponse->PolicyDocuments;
     my $DisconnectAfterInSeconds =
       $TestInvokeAuthorizerResponse->DisconnectAfterInSeconds;
     my $IsAuthenticated = $TestInvokeAuthorizerResponse->IsAuthenticated;
+    my $PrincipalId     = $TestInvokeAuthorizerResponse->PrincipalId;
     my $RefreshAfterInSeconds =
       $TestInvokeAuthorizerResponse->RefreshAfterInSeconds;
-    my $PrincipalId = $TestInvokeAuthorizerResponse->PrincipalId;
+    my $PolicyDocuments = $TestInvokeAuthorizerResponse->PolicyDocuments;
 
     # Returns a L<Paws::IoT::TestInvokeAuthorizerResponse> object.
 

@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken  = $ListExecutionsOutput->NextToken;
     my $Executions = $ListExecutionsOutput->Executions;
+    my $NextToken  = $ListExecutionsOutput->NextToken;
 
     # Returns a L<Paws::StepFunctions::ListExecutionsOutput> object.
 

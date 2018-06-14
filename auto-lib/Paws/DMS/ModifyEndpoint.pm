@@ -57,30 +57,30 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ExternalTableDefinition   => 'MyString',    # OPTIONAL
       ExtraConnectionAttributes => 'MyString',    # OPTIONAL
       MongoDbSettings           => {
-        KmsKeyId   => 'MyString',
-        ServerName => 'MyString',
+        AuthSource        => 'MyString',
+        Password          => 'MySecretString',  # OPTIONAL
+        Username          => 'MyString',
+        ServerName        => 'MyString',
+        AuthType          => 'no',              # values: no, password; OPTIONAL
+        ExtractDocId      => 'MyString',
+        Port              => 1,                 # OPTIONAL
+        DocsToInvestigate => 'MyString',
+        KmsKeyId          => 'MyString',
         AuthMechanism =>
           'default',    # values: default, mongodb_cr, scram_sha_1; OPTIONAL
-        ExtractDocId      => 'MyString',
-        Password          => 'MySecretString',  # OPTIONAL
-        AuthSource        => 'MyString',
-        Username          => 'MyString',
-        DocsToInvestigate => 'MyString',
-        NestingLevel      => 'none',            # values: none, one; OPTIONAL
-        AuthType          => 'no',              # values: no, password; OPTIONAL
-        DatabaseName      => 'MyString',
-        Port              => 1,                 # OPTIONAL
+        DatabaseName => 'MyString',
+        NestingLevel => 'none',       # values: none, one; OPTIONAL
       },    # OPTIONAL
       Password   => 'MySecretString',    # OPTIONAL
       Port       => 1,                   # OPTIONAL
       S3Settings => {
-        ExternalTableDefinition => 'MyString',
-        CsvRowDelimiter         => 'MyString',
-        BucketName              => 'MyString',
         BucketFolder            => 'MyString',
-        CompressionType         => 'none',       # values: none, gzip; OPTIONAL
-        ServiceAccessRoleArn    => 'MyString',
+        BucketName              => 'MyString',
         CsvDelimiter            => 'MyString',
+        CompressionType         => 'none',       # values: none, gzip; OPTIONAL
+        ExternalTableDefinition => 'MyString',
+        ServiceAccessRoleArn    => 'MyString',
+        CsvRowDelimiter         => 'MyString',
       },    # OPTIONAL
       ServerName           => 'MyString',    # OPTIONAL
       ServiceAccessRoleArn => 'MyString',    # OPTIONAL

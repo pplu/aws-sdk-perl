@@ -46,8 +46,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Marker             = $ReservedCacheNodeMessage->Marker;
     my $ReservedCacheNodes = $ReservedCacheNodeMessage->ReservedCacheNodes;
+    my $Marker             = $ReservedCacheNodeMessage->Marker;
 
     # Returns a L<Paws::ElastiCache::ReservedCacheNodeMessage> object.
 

@@ -33,10 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ThingName        => 'My__string',
       ConnectivityInfo => [
         {
+          Metadata    => 'My__string',
+          PortNumber  => 1,              # OPTIONAL
           HostAddress => 'My__string',
           Id          => 'My__string',
-          PortNumber  => 1,              # OPTIONAL
-          Metadata    => 'My__string',
         },
         ...
       ],                                 # OPTIONAL

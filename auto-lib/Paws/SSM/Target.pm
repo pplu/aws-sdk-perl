@@ -44,9 +44,10 @@ provide one or more instance IDs in the call.
   User-defined criteria for sending commands that target instances that
 meet the criteria. Key can be tag:E<lt>Amazon EC2 tagE<gt> or
 InstanceIds. For more information about how to send commands that
-target instances using Key,Value parameters, see Executing a Command
-Using Systems Manager Run Command
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html).
+target instances using Key,Value parameters, see Targeting Multiple
+Instances
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-targeting)
+in the I<AWS Systems Manager User Guide>.
 
 
 =head2 Values => ArrayRef[Str|Undef]
@@ -55,9 +56,9 @@ Using Systems Manager Run Command
 tag:ServerRole, you could specify value:WebServer to execute a command
 on instances that include Amazon EC2 tags of ServerRole,WebServer. For
 more information about how to send commands that target instances using
-Key,Value parameters, see Executing a Command Using Systems Manager Run
-Command
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html).
+Key,Value parameters, see Sending Commands to a Fleet
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html)
+in the I<AWS Systems Manager User Guide>.
 
 
 

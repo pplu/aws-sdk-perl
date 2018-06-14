@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $TagOptions      = $DescribePortfolioOutput->TagOptions;
     my $PortfolioDetail = $DescribePortfolioOutput->PortfolioDetail;
     my $Tags            = $DescribePortfolioOutput->Tags;
+    my $TagOptions      = $DescribePortfolioOutput->TagOptions;
 
     # Returns a L<Paws::ServiceCatalog::DescribePortfolioOutput> object.
 

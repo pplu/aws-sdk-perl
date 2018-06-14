@@ -51,8 +51,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'Filters' => [
 
           {
-            'Name'   => 'volume-status.status',
-            'Values' => ['impaired']
+            'Values' => ['impaired'],
+            'Name'   => 'volume-status.status'
           }
         ]
       }

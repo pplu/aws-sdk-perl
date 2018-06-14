@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $PolicyDocument = $GetRolePolicyResponse->PolicyDocument;
     my $RoleName       = $GetRolePolicyResponse->RoleName;
     my $PolicyName     = $GetRolePolicyResponse->PolicyName;
-    my $PolicyDocument = $GetRolePolicyResponse->PolicyDocument;
 
     # Returns a L<Paws::IAM::GetRolePolicyResponse> object.
 

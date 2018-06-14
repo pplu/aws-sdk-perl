@@ -40,19 +40,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $EndpointURL     = $EnvironmentDescription->EndpointURL;
     my $Tier            = $EnvironmentDescription->Tier;
-    my $ApplicationName = $EnvironmentDescription->ApplicationName;
     my $DateCreated     = $EnvironmentDescription->DateCreated;
-    my $DateUpdated     = $EnvironmentDescription->DateUpdated;
-    my $CNAME           = $EnvironmentDescription->CNAME;
-    my $Health          = $EnvironmentDescription->Health;
     my $EnvironmentName = $EnvironmentDescription->EnvironmentName;
+    my $Status          = $EnvironmentDescription->Status;
+    my $CNAME           = $EnvironmentDescription->CNAME;
     my $AbortableOperationInProgress =
       $EnvironmentDescription->AbortableOperationInProgress;
-    my $SolutionStackName = $EnvironmentDescription->SolutionStackName;
+    my $EndpointURL       = $EnvironmentDescription->EndpointURL;
     my $EnvironmentId     = $EnvironmentDescription->EnvironmentId;
-    my $Status            = $EnvironmentDescription->Status;
+    my $Health            = $EnvironmentDescription->Health;
+    my $ApplicationName   = $EnvironmentDescription->ApplicationName;
+    my $SolutionStackName = $EnvironmentDescription->SolutionStackName;
+    my $DateUpdated       = $EnvironmentDescription->DateUpdated;
 
     # Returns a L<Paws::ElasticBeanstalk::EnvironmentDescription> object.
 

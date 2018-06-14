@@ -2,6 +2,7 @@
 package Paws::ECS::DeleteService;
   use Moose;
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
+  has Force => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'force' );
   has Service => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'service' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -49,6 +50,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs
 The short name or full Amazon Resource Name (ARN) of the cluster that
 hosts the service to delete. If you do not specify a cluster, the
 default cluster is assumed.
+
+
+
+=head2 Force => Bool
+
+If C<true>, allows you to delete a service even if it has not been
+scaled down to zero tasks. It is only necessary to use this if the
+service is using the C<REPLICA> scheduling strategy.
 
 
 

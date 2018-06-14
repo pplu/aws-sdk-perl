@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateDBSubnetGroupResult = $rds->CreateDBSubnetGroup(
       {
         'DBSubnetGroupName'        => 'mydbsubnetgroup',
-        'DBSubnetGroupDescription' => 'My DB subnet group',
-        'SubnetIds'                => [ 'subnet-1fab8a69', 'subnet-d43a468c' ]
+        'SubnetIds'                => [ 'subnet-1fab8a69', 'subnet-d43a468c' ],
+        'DBSubnetGroupDescription' => 'My DB subnet group'
       }
     );
 

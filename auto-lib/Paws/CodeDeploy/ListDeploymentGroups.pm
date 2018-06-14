@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $ApplicationName  = $ListDeploymentGroupsOutput->ApplicationName;
     my $NextToken        = $ListDeploymentGroupsOutput->NextToken;
     my $DeploymentGroups = $ListDeploymentGroupsOutput->DeploymentGroups;
-    my $ApplicationName  = $ListDeploymentGroupsOutput->ApplicationName;
 
     # Returns a L<Paws::CodeDeploy::ListDeploymentGroupsOutput> object.
 

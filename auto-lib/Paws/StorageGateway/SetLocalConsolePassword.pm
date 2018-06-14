@@ -33,9 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SetLocalConsolePasswordOutput =
       $storagegateway->SetLocalConsolePassword(
       {
+        'LocalConsolePassword' => 'PassWordMustBeAtLeast6Chars.',
         'GatewayARN' =>
-          'arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B',
-        'LocalConsolePassword' => 'PassWordMustBeAtLeast6Chars.'
+          'arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B'
       }
       );
 

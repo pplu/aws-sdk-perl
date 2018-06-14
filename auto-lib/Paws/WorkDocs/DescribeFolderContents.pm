@@ -47,9 +47,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $Documents = $DescribeFolderContentsResponse->Documents;
     my $Folders   = $DescribeFolderContentsResponse->Folders;
     my $Marker    = $DescribeFolderContentsResponse->Marker;
-    my $Documents = $DescribeFolderContentsResponse->Documents;
 
     # Returns a L<Paws::WorkDocs::DescribeFolderContentsResponse> object.
 

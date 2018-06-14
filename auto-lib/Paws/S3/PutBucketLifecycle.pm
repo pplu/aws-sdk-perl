@@ -40,25 +40,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             Status => 'Enabled',                   # values: Enabled, Disabled
             Filter => {
-              And => {
+              Prefix => 'MyRuleFilterPrefix',      # OPTIONAL
+              And    => {
                 Tag => {
-                  Value => 'MyValue',
                   Key   => 'MyObjectKey',          # min: 1,
+                  Value => 'MyValue',
 
                 },    # OPTIONAL
                 Prefix => 'MyRuleFilterAnd',    # OPTIONAL
               },    # OPTIONAL
-              Prefix => 'MyRuleFilterPrefix',    # OPTIONAL
             },
-            NoncurrentVersionTransition => {
+            Transition => {
+              Date => '1970-01-01T01:00:00',    # OPTIONAL
               StorageClass =>
                 'GLACIER',  # values: GLACIER, STANDARD_IA, ONEZONE_IA; OPTIONAL
-              NoncurrentDays => 1,    # OPTIONAL
+              Days => 1,    # OPTIONAL
             },    # OPTIONAL
-            Expiration => {
-              Date                      => '1970-01-01T01:00:00',    # OPTIONAL
-              ExpiredObjectDeleteMarker => 1,                        # OPTIONAL
-              Days                      => 1,                        # OPTIONAL
+            NoncurrentVersionTransition => {
+              NoncurrentDays => 1,    # OPTIONAL
+              StorageClass =>
+                'GLACIER',  # values: GLACIER, STANDARD_IA, ONEZONE_IA; OPTIONAL
             },    # OPTIONAL
             ID                             => 'MyID',    # OPTIONAL
             AbortIncompleteMultipartUpload => {
@@ -67,11 +68,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             NoncurrentVersionExpiration => {
               NoncurrentDays => 1,    # OPTIONAL
             },    # OPTIONAL
-            Transition => {
-              Days => 1,                        # OPTIONAL
-              Date => '1970-01-01T01:00:00',    # OPTIONAL
-              StorageClass =>
-                'GLACIER',  # values: GLACIER, STANDARD_IA, ONEZONE_IA; OPTIONAL
+            Expiration => {
+              Date                      => '1970-01-01T01:00:00',    # OPTIONAL
+              Days                      => 1,                        # OPTIONAL
+              ExpiredObjectDeleteMarker => 1,                        # OPTIONAL
             },    # OPTIONAL
           },
           ...

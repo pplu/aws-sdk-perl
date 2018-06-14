@@ -33,17 +33,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateThingGroupResponse = $iot->UpdateThingGroup(
       ThingGroupName       => 'MyThingGroupName',
       ThingGroupProperties => {
+        thingGroupDescription =>
+          'MyThingGroupDescription',    # max: 2028; OPTIONAL
         attributePayload => {
           attributes => {
             'MyAttributeName' =>
-              'MyAttributeValue',    # key: max: 128, value: max: 800
+              'MyAttributeValue',       # key: max: 128, value: max: 800
           },    # OPTIONAL
           merge => 1,    # OPTIONAL
         },    # OPTIONAL
-        thingGroupDescription =>
-          'MyThingGroupDescription',    # max: 2028; OPTIONAL
       },
-      ExpectedVersion => 1,             # OPTIONAL
+      ExpectedVersion => 1,    # OPTIONAL
     );
 
     # Results:

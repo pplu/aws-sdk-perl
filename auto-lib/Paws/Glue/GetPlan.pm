@@ -34,18 +34,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $GetPlanResponse = $glue->GetPlan(
       Mapping => [
         {
+          SourcePath  => 'MySchemaPathString',    # OPTIONAL
           SourceType  => 'MyFieldType',           # OPTIONAL
           TargetTable => 'MyTableName',           # OPTIONAL
-          TargetType  => 'MyFieldType',           # OPTIONAL
           TargetPath  => 'MySchemaPathString',    # OPTIONAL
           SourceTable => 'MyTableName',           # OPTIONAL
-          SourcePath  => 'MySchemaPathString',    # OPTIONAL
+          TargetType  => 'MyFieldType',           # OPTIONAL
         },
         ...
       ],
       Source => {
-        DatabaseName => 'MyNameString',           # min: 1, max: 255
         TableName    => 'MyNameString',           # min: 1, max: 255
+        DatabaseName => 'MyNameString',           # min: 1, max: 255
 
       },
       Language => 'PYTHON',                       # OPTIONAL
@@ -69,8 +69,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       Sinks => [
         {
-          DatabaseName => 'MyNameString',    # min: 1, max: 255
           TableName    => 'MyNameString',    # min: 1, max: 255
+          DatabaseName => 'MyNameString',    # min: 1, max: 255
 
         },
         ...
@@ -78,8 +78,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ScalaCode    = $GetPlanResponse->ScalaCode;
     my $PythonScript = $GetPlanResponse->PythonScript;
+    my $ScalaCode    = $GetPlanResponse->ScalaCode;
 
     # Returns a L<Paws::Glue::GetPlanResponse> object.
 

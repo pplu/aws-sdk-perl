@@ -32,10 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $EstimateTemplateCostOutput = $cloudformation->EstimateTemplateCost(
       Parameters => [
         {
-          ResolvedValue    => 'MyParameterValue',    # OPTIONAL
-          ParameterKey     => 'MyParameterKey',      # OPTIONAL
           UsePreviousValue => 1,                     # OPTIONAL
+          ParameterKey     => 'MyParameterKey',      # OPTIONAL
           ParameterValue   => 'MyParameterValue',    # OPTIONAL
+          ResolvedValue    => 'MyParameterValue',    # OPTIONAL
         },
         ...
       ],                                             # OPTIONAL

@@ -34,14 +34,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateRuleResponse = $waf -regional->CreateRule(
       {
         'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
-        'MetricName'  => 'WAFByteHeaderRule',
-        'Name'        => 'WAFByteHeaderRule'
+        'Name'        => 'WAFByteHeaderRule',
+        'MetricName'  => 'WAFByteHeaderRule'
       }
     );
 
     # Results:
-    my $Rule        = $CreateRuleResponse->Rule;
     my $ChangeToken = $CreateRuleResponse->ChangeToken;
+    my $Rule        = $CreateRuleResponse->Rule;
 
     # Returns a L<Paws::WAFRegional::CreateRuleResponse> object.
 

@@ -35,14 +35,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This operation retrieves a Lambda functions
     my $ListFunctionsResponse = $lambda->ListFunctions(
       {
-        'Marker'   => '',
-        'MaxItems' => 123
+        'MaxItems' => 123,
+        'Marker'   => ''
       }
     );
 
     # Results:
-    my $NextMarker = $ListFunctionsResponse->NextMarker;
     my $Functions  = $ListFunctionsResponse->Functions;
+    my $NextMarker = $ListFunctionsResponse->NextMarker;
 
     # Returns a L<Paws::Lambda::ListFunctionsResponse> object.
 

@@ -51,15 +51,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CreatedDate            = $PutSlotTypeResponse->CreatedDate;
-    my $LastUpdatedDate        = $PutSlotTypeResponse->LastUpdatedDate;
-    my $Checksum               = $PutSlotTypeResponse->Checksum;
-    my $Description            = $PutSlotTypeResponse->Description;
-    my $Version                = $PutSlotTypeResponse->Version;
-    my $Name                   = $PutSlotTypeResponse->Name;
-    my $ValueSelectionStrategy = $PutSlotTypeResponse->ValueSelectionStrategy;
-    my $EnumerationValues      = $PutSlotTypeResponse->EnumerationValues;
     my $CreateVersion          = $PutSlotTypeResponse->CreateVersion;
+    my $ValueSelectionStrategy = $PutSlotTypeResponse->ValueSelectionStrategy;
+    my $LastUpdatedDate        = $PutSlotTypeResponse->LastUpdatedDate;
+    my $CreatedDate            = $PutSlotTypeResponse->CreatedDate;
+    my $Version                = $PutSlotTypeResponse->Version;
+    my $EnumerationValues      = $PutSlotTypeResponse->EnumerationValues;
+    my $Description            = $PutSlotTypeResponse->Description;
+    my $Name                   = $PutSlotTypeResponse->Name;
+    my $Checksum               = $PutSlotTypeResponse->Checksum;
 
     # Returns a L<Paws::LexModels::PutSlotTypeResponse> object.
 

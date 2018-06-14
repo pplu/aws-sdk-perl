@@ -36,10 +36,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Group       = $GetGroupResponse->Group;
-    my $Marker      = $GetGroupResponse->Marker;
     my $IsTruncated = $GetGroupResponse->IsTruncated;
     my $Users       = $GetGroupResponse->Users;
+    my $Marker      = $GetGroupResponse->Marker;
+    my $Group       = $GetGroupResponse->Group;
 
     # Returns a L<Paws::IAM::GetGroupResponse> object.
 

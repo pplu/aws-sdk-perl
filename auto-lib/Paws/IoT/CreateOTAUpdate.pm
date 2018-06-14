@@ -41,31 +41,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           codeSigning => {
             awsSignerJobId    => 'MySigningJobId',    # OPTIONAL
             customCodeSigning => {
-              hashAlgorithm      => 'MyHashAlgorithm',         # OPTIONAL
-              signatureAlgorithm => 'MySignatureAlgorithm',    # OPTIONAL
-              signature          => {
-                inlineDocument => 'BlobSignature',             # OPTIONAL
-                stream         => {
-                  streamId => 'MyStreamId',    # min: 1, max: 128; OPTIONAL
-                  fileId   => 1,               # max: 255; OPTIONAL
-                },    # OPTIONAL
-              },    # OPTIONAL
               certificateChain => {
+                stream => {
+                  fileId   => 1,               # max: 255; OPTIONAL
+                  streamId => 'MyStreamId',    # min: 1, max: 128; OPTIONAL
+                },    # OPTIONAL
                 inlineDocument  => 'MyInlineDocument',     # OPTIONAL
                 certificateName => 'MyCertificateName',    # OPTIONAL
-                stream          => {
-                  streamId => 'MyStreamId',    # min: 1, max: 128; OPTIONAL
-                  fileId   => 1,               # max: 255; OPTIONAL
-                },    # OPTIONAL
               },    # OPTIONAL
+              hashAlgorithm => 'MyHashAlgorithm',    # OPTIONAL
+              signature     => {
+                stream => {
+                  fileId   => 1,               # max: 255; OPTIONAL
+                  streamId => 'MyStreamId',    # min: 1, max: 128; OPTIONAL
+                },    # OPTIONAL
+                inlineDocument => 'BlobSignature',    # OPTIONAL
+              },    # OPTIONAL
+              signatureAlgorithm => 'MySignatureAlgorithm',    # OPTIONAL
             },    # OPTIONAL
           },    # OPTIONAL
-          fileSource => {
-            streamId => 'MyStreamId',    # min: 1, max: 128; OPTIONAL
+          attributes  => { 'MyKey' => 'MyValue', },    # OPTIONAL
+          fileVersion => 'MyOTAUpdateFileVersion',     # OPTIONAL
+          fileSource  => {
             fileId   => 1,               # max: 255; OPTIONAL
+            streamId => 'MyStreamId',    # min: 1, max: 128; OPTIONAL
           },    # OPTIONAL
-          attributes => { 'MyKey' => 'MyValue', },    # OPTIONAL
-          fileVersion => 'MyOTAUpdateFileVersion',    # OPTIONAL
         },
         ...
       ],
@@ -78,11 +78,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $OtaUpdateId     = $CreateOTAUpdateResponse->OtaUpdateId;
+    my $OtaUpdateArn    = $CreateOTAUpdateResponse->OtaUpdateArn;
     my $OtaUpdateStatus = $CreateOTAUpdateResponse->OtaUpdateStatus;
     my $AwsIotJobArn    = $CreateOTAUpdateResponse->AwsIotJobArn;
     my $AwsIotJobId     = $CreateOTAUpdateResponse->AwsIotJobId;
-    my $OtaUpdateArn    = $CreateOTAUpdateResponse->OtaUpdateArn;
+    my $OtaUpdateId     = $CreateOTAUpdateResponse->OtaUpdateId;
 
     # Returns a L<Paws::IoT::CreateOTAUpdateResponse> object.
 

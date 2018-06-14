@@ -58,9 +58,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $Description = $DescribeNetworkInterfaceAttributeResult->Description;
     my $NetworkInterfaceId =
       $DescribeNetworkInterfaceAttributeResult->NetworkInterfaceId;
+    my $Description = $DescribeNetworkInterfaceAttributeResult->Description;
 
     # Returns a L<Paws::EC2::DescribeNetworkInterfaceAttributeResult> object.
     # To describe the groupSet attribute of a network interface
@@ -69,15 +69,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeNetworkInterfaceAttributeResult =
       $ec2->DescribeNetworkInterfaceAttribute(
       {
-        'NetworkInterfaceId' => 'eni-686ea200',
-        'Attribute'          => 'groupSet'
+        'Attribute'          => 'groupSet',
+        'NetworkInterfaceId' => 'eni-686ea200'
       }
       );
 
     # Results:
+    my $Groups = $DescribeNetworkInterfaceAttributeResult->Groups;
     my $NetworkInterfaceId =
       $DescribeNetworkInterfaceAttributeResult->NetworkInterfaceId;
-    my $Groups = $DescribeNetworkInterfaceAttributeResult->Groups;
 
     # Returns a L<Paws::EC2::DescribeNetworkInterfaceAttributeResult> object.
     # To describe the sourceDestCheck attribute of a network interface
@@ -86,16 +86,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeNetworkInterfaceAttributeResult =
       $ec2->DescribeNetworkInterfaceAttribute(
       {
-        'NetworkInterfaceId' => 'eni-686ea200',
-        'Attribute'          => 'sourceDestCheck'
+        'Attribute'          => 'sourceDestCheck',
+        'NetworkInterfaceId' => 'eni-686ea200'
       }
       );
 
     # Results:
-    my $NetworkInterfaceId =
-      $DescribeNetworkInterfaceAttributeResult->NetworkInterfaceId;
     my $SourceDestCheck =
       $DescribeNetworkInterfaceAttributeResult->SourceDestCheck;
+    my $NetworkInterfaceId =
+      $DescribeNetworkInterfaceAttributeResult->NetworkInterfaceId;
 
     # Returns a L<Paws::EC2::DescribeNetworkInterfaceAttributeResult> object.
 

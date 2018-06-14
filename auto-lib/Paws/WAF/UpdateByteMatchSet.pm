@@ -34,23 +34,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # match set with the ID exampleIDs3t-46da-4fdb-b8d5-abc321j569j5.
     my $UpdateByteMatchSetResponse = $waf->UpdateByteMatchSet(
       {
-        'ByteMatchSetId' => 'exampleIDs3t-46da-4fdb-b8d5-abc321j569j5',
-        'Updates'        => [
+        'Updates' => [
 
           {
-            'Action'         => 'DELETE',
             'ByteMatchTuple' => {
-              'TargetString'         => 'badrefer1',
-              'PositionalConstraint' => 'CONTAINS',
+              'TargetString' => 'badrefer1',
+              'FieldToMatch' => {
+                'Type' => 'HEADER',
+                'Data' => 'referer'
+              },
               'TextTransformation'   => 'NONE',
-              'FieldToMatch'         => {
-                'Data' => 'referer',
-                'Type' => 'HEADER'
-              }
-            }
+              'PositionalConstraint' => 'CONTAINS'
+            },
+            'Action' => 'DELETE'
           }
         ],
-        'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f'
+        'ByteMatchSetId' => 'exampleIDs3t-46da-4fdb-b8d5-abc321j569j5',
+        'ChangeToken'    => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f'
       }
     );
 

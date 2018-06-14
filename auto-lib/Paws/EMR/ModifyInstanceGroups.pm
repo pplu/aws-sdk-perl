@@ -36,13 +36,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ShrinkPolicy    => {
             InstanceResizePolicy => {
               InstanceTerminationTimeout => 1,                        # OPTIONAL
-              InstancesToTerminate       => [ 'MyInstanceId', ... ],  # OPTIONAL
               InstancesToProtect         => [ 'MyInstanceId', ... ],  # OPTIONAL
+              InstancesToTerminate       => [ 'MyInstanceId', ... ],  # OPTIONAL
             },    # OPTIONAL
             DecommissionTimeout => 1,    # OPTIONAL
           },    # OPTIONAL
-          InstanceCount => 1,                                      # OPTIONAL
           EC2InstanceIdsToTerminate => [ 'MyInstanceId', ... ],    # OPTIONAL
+          InstanceCount => 1,                                      # OPTIONAL
         },
         ...
       ],                                                           # OPTIONAL

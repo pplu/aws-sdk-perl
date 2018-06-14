@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken = $ListTopicRulesResponse->NextToken;
     my $Rules     = $ListTopicRulesResponse->Rules;
+    my $NextToken = $ListTopicRulesResponse->NextToken;
 
     # Returns a L<Paws::IoT::ListTopicRulesResponse> object.
 

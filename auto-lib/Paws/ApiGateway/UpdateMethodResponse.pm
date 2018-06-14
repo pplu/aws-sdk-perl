@@ -39,20 +39,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       StatusCode      => 'MyStatusCode',
       PatchOperations => [
         {
+          from  => 'MyString',
+          value => 'MyString',
+          path  => 'MyString',
           op =>
             'add',    # values: add, remove, replace, move, copy, test; OPTIONAL
-          from  => 'MyString',
-          path  => 'MyString',
-          value => 'MyString',
         },
         ...
       ],              # OPTIONAL
     );
 
     # Results:
-    my $ResponseParameters = $MethodResponse->ResponseParameters;
     my $StatusCode         = $MethodResponse->StatusCode;
     my $ResponseModels     = $MethodResponse->ResponseModels;
+    my $ResponseParameters = $MethodResponse->ResponseParameters;
 
     # Returns a L<Paws::ApiGateway::MethodResponse> object.
 

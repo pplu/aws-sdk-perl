@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $StagesAvailable = $GetTemplateOutput->StagesAvailable;
     my $TemplateBody    = $GetTemplateOutput->TemplateBody;
+    my $StagesAvailable = $GetTemplateOutput->StagesAvailable;
 
     # Returns a L<Paws::CloudFormation::GetTemplateOutput> object.
 

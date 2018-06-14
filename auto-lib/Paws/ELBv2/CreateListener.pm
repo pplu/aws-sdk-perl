@@ -37,6 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # forwards requests to the specified target group.
     my $CreateListenerOutput = $elasticloadbalancing->CreateListener(
       {
+        'LoadBalancerArn' =>
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188',
         'DefaultActions' => [
 
           {
@@ -45,10 +47,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'Type' => 'forward'
           }
         ],
-        'LoadBalancerArn' =>
-'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188',
-        'Port'     => 80,
-        'Protocol' => 'HTTP'
+        'Protocol' => 'HTTP',
+        'Port'     => 80
       }
     );
 
@@ -66,6 +66,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # Access Management (IAM).
     my $CreateListenerOutput = $elasticloadbalancing->CreateListener(
       {
+        'LoadBalancerArn' =>
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188',
         'Certificates' => [
 
           {
@@ -73,19 +75,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               'arn:aws:iam::123456789012:server-certificate/my-server-cert'
           }
         ],
-        'LoadBalancerArn' =>
-'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188',
+        'SslPolicy'      => 'ELBSecurityPolicy-2015-05',
         'DefaultActions' => [
 
           {
-            'Type' => 'forward',
             'TargetGroupArn' =>
-'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067'
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067',
+            'Type' => 'forward'
           }
         ],
-        'Port'      => 443,
-        'SslPolicy' => 'ELBSecurityPolicy-2015-05',
-        'Protocol'  => 'HTTPS'
+        'Protocol' => 'HTTPS',
+        'Port'     => 443
       }
     );
 

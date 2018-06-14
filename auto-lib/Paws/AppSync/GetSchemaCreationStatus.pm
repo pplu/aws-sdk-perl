@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Status  = $GetSchemaCreationStatusResponse->Status;
     my $Details = $GetSchemaCreationStatusResponse->Details;
+    my $Status  = $GetSchemaCreationStatusResponse->Status;
 
     # Returns a L<Paws::AppSync::GetSchemaCreationStatusResponse> object.
 

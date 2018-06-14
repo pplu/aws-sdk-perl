@@ -35,22 +35,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $IdleSessionTTLInSeconds =
-      $CreateBotVersionResponse->IdleSessionTTLInSeconds;
     my $ClarificationPrompt = $CreateBotVersionResponse->ClarificationPrompt;
-    my $Locale              = $CreateBotVersionResponse->Locale;
-    my $Name                = $CreateBotVersionResponse->Name;
-    my $AbortStatement      = $CreateBotVersionResponse->AbortStatement;
+    my $Status              = $CreateBotVersionResponse->Status;
     my $ChildDirected       = $CreateBotVersionResponse->ChildDirected;
+    my $Locale              = $CreateBotVersionResponse->Locale;
+    my $AbortStatement      = $CreateBotVersionResponse->AbortStatement;
+    my $LastUpdatedDate     = $CreateBotVersionResponse->LastUpdatedDate;
     my $VoiceId             = $CreateBotVersionResponse->VoiceId;
     my $CreatedDate         = $CreateBotVersionResponse->CreatedDate;
-    my $Description         = $CreateBotVersionResponse->Description;
     my $Version             = $CreateBotVersionResponse->Version;
     my $FailureReason       = $CreateBotVersionResponse->FailureReason;
     my $Intents             = $CreateBotVersionResponse->Intents;
-    my $Checksum            = $CreateBotVersionResponse->Checksum;
-    my $LastUpdatedDate     = $CreateBotVersionResponse->LastUpdatedDate;
-    my $Status              = $CreateBotVersionResponse->Status;
+    my $IdleSessionTTLInSeconds =
+      $CreateBotVersionResponse->IdleSessionTTLInSeconds;
+    my $Description = $CreateBotVersionResponse->Description;
+    my $Name        = $CreateBotVersionResponse->Name;
+    my $Checksum    = $CreateBotVersionResponse->Checksum;
 
     # Returns a L<Paws::LexModels::CreateBotVersionResponse> object.
 

@@ -33,21 +33,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $TargetNumberOfNodes    = $ResizeProgressMessage->TargetNumberOfNodes;
-    my $ImportTablesNotStarted = $ResizeProgressMessage->ImportTablesNotStarted;
-    my $ImportTablesCompleted  = $ResizeProgressMessage->ImportTablesCompleted;
-    my $EstimatedTimeToCompletionInSeconds =
-      $ResizeProgressMessage->EstimatedTimeToCompletionInSeconds;
-    my $ElapsedTimeInSeconds = $ResizeProgressMessage->ElapsedTimeInSeconds;
+    my $TargetClusterType = $ResizeProgressMessage->TargetClusterType;
     my $TotalResizeDataInMegaBytes =
       $ResizeProgressMessage->TotalResizeDataInMegaBytes;
-    my $ImportTablesInProgress = $ResizeProgressMessage->ImportTablesInProgress;
-    my $TargetNodeType         = $ResizeProgressMessage->TargetNodeType;
-    my $ProgressInMegaBytes    = $ResizeProgressMessage->ProgressInMegaBytes;
-    my $Status                 = $ResizeProgressMessage->Status;
-    my $TargetClusterType      = $ResizeProgressMessage->TargetClusterType;
+    my $ImportTablesCompleted = $ResizeProgressMessage->ImportTablesCompleted;
+    my $Status                = $ResizeProgressMessage->Status;
+    my $ProgressInMegaBytes   = $ResizeProgressMessage->ProgressInMegaBytes;
+    my $ElapsedTimeInSeconds  = $ResizeProgressMessage->ElapsedTimeInSeconds;
     my $AvgResizeRateInMegaBytesPerSecond =
       $ResizeProgressMessage->AvgResizeRateInMegaBytesPerSecond;
+    my $TargetNumberOfNodes    = $ResizeProgressMessage->TargetNumberOfNodes;
+    my $ImportTablesInProgress = $ResizeProgressMessage->ImportTablesInProgress;
+    my $ImportTablesNotStarted = $ResizeProgressMessage->ImportTablesNotStarted;
+    my $EstimatedTimeToCompletionInSeconds =
+      $ResizeProgressMessage->EstimatedTimeToCompletionInSeconds;
+    my $TargetNodeType = $ResizeProgressMessage->TargetNodeType;
 
     # Returns a L<Paws::RedShift::ResizeProgressMessage> object.
 

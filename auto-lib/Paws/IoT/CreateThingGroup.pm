@@ -34,15 +34,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ThingGroupName       => 'MyThingGroupName',
       ParentGroupName      => 'MyThingGroupName',    # OPTIONAL
       ThingGroupProperties => {
+        thingGroupDescription =>
+          'MyThingGroupDescription',                 # max: 2028; OPTIONAL
         attributePayload => {
-          merge      => 1,                           # OPTIONAL
           attributes => {
             'MyAttributeName' =>
               'MyAttributeValue',    # key: max: 128, value: max: 800
           },    # OPTIONAL
+          merge => 1,    # OPTIONAL
         },    # OPTIONAL
-        thingGroupDescription =>
-          'MyThingGroupDescription',    # max: 2028; OPTIONAL
       },    # OPTIONAL
     );
 

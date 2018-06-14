@@ -47,11 +47,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $SmsMfaConfiguration =
-      $SetUserPoolMfaConfigResponse->SmsMfaConfiguration;
+    my $MfaConfiguration = $SetUserPoolMfaConfigResponse->MfaConfiguration;
     my $SoftwareTokenMfaConfiguration =
       $SetUserPoolMfaConfigResponse->SoftwareTokenMfaConfiguration;
-    my $MfaConfiguration = $SetUserPoolMfaConfigResponse->MfaConfiguration;
+    my $SmsMfaConfiguration =
+      $SetUserPoolMfaConfigResponse->SmsMfaConfiguration;
 
     # Returns a L<Paws::CognitoIdp::SetUserPoolMfaConfigResponse> object.
 

@@ -36,9 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Marker      = $ListRolesResponse->Marker;
     my $IsTruncated = $ListRolesResponse->IsTruncated;
     my $Roles       = $ListRolesResponse->Roles;
+    my $Marker      = $ListRolesResponse->Marker;
 
     # Returns a L<Paws::IAM::ListRolesResponse> object.
 

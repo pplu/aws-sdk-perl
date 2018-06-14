@@ -38,9 +38,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $FormatVersion = $DescribeServicesResponse->FormatVersion;
     my $NextToken     = $DescribeServicesResponse->NextToken;
     my $Services      = $DescribeServicesResponse->Services;
+    my $FormatVersion = $DescribeServicesResponse->FormatVersion;
 
     # Returns a L<Paws::Pricing::DescribeServicesResponse> object.
 

@@ -38,16 +38,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         type  => 'HOST_COUNT',    # values: HOST_COUNT, FLEET_PERCENT; OPTIONAL
       },    # OPTIONAL
       TrafficRoutingConfig => {
-        timeBasedLinear => {
-          linearInterval   => 1,    # OPTIONAL
-          linearPercentage => 1,    # OPTIONAL
-        },    # OPTIONAL
-        type => 'TimeBasedCanary'
-        ,     # values: TimeBasedCanary, TimeBasedLinear, AllAtOnce; OPTIONAL
         timeBasedCanary => {
           canaryPercentage => 1,    # OPTIONAL
           canaryInterval   => 1,    # OPTIONAL
         },    # OPTIONAL
+        timeBasedLinear => {
+          linearPercentage => 1,    # OPTIONAL
+          linearInterval   => 1,    # OPTIONAL
+        },    # OPTIONAL
+        type => 'TimeBasedCanary'
+        ,     # values: TimeBasedCanary, TimeBasedLinear, AllAtOnce; OPTIONAL
       },    # OPTIONAL
     );
 

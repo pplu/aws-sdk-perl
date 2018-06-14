@@ -40,10 +40,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $StartAt           = $DescribeSnapshotScheduleOutput->StartAt;
+    my $Timezone          = $DescribeSnapshotScheduleOutput->Timezone;
     my $RecurrenceInHours = $DescribeSnapshotScheduleOutput->RecurrenceInHours;
     my $Description       = $DescribeSnapshotScheduleOutput->Description;
     my $VolumeARN         = $DescribeSnapshotScheduleOutput->VolumeARN;
-    my $Timezone          = $DescribeSnapshotScheduleOutput->Timezone;
 
     # Returns a L<Paws::StorageGateway::DescribeSnapshotScheduleOutput> object.
 

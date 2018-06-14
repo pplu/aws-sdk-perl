@@ -35,22 +35,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $SampleUtterances    = $CreateIntentVersionResponse->SampleUtterances;
-    my $ConfirmationPrompt  = $CreateIntentVersionResponse->ConfirmationPrompt;
-    my $CreatedDate         = $CreateIntentVersionResponse->CreatedDate;
-    my $FollowUpPrompt      = $CreateIntentVersionResponse->FollowUpPrompt;
-    my $Version             = $CreateIntentVersionResponse->Version;
-    my $Description         = $CreateIntentVersionResponse->Description;
-    my $RejectionStatement  = $CreateIntentVersionResponse->RejectionStatement;
-    my $ConclusionStatement = $CreateIntentVersionResponse->ConclusionStatement;
-    my $LastUpdatedDate     = $CreateIntentVersionResponse->LastUpdatedDate;
-    my $Checksum            = $CreateIntentVersionResponse->Checksum;
+    my $SampleUtterances   = $CreateIntentVersionResponse->SampleUtterances;
+    my $RejectionStatement = $CreateIntentVersionResponse->RejectionStatement;
     my $ParentIntentSignature =
       $CreateIntentVersionResponse->ParentIntentSignature;
-    my $Name                = $CreateIntentVersionResponse->Name;
     my $FulfillmentActivity = $CreateIntentVersionResponse->FulfillmentActivity;
     my $DialogCodeHook      = $CreateIntentVersionResponse->DialogCodeHook;
+    my $LastUpdatedDate     = $CreateIntentVersionResponse->LastUpdatedDate;
+    my $ConclusionStatement = $CreateIntentVersionResponse->ConclusionStatement;
     my $Slots               = $CreateIntentVersionResponse->Slots;
+    my $CreatedDate         = $CreateIntentVersionResponse->CreatedDate;
+    my $Version             = $CreateIntentVersionResponse->Version;
+    my $FollowUpPrompt      = $CreateIntentVersionResponse->FollowUpPrompt;
+    my $ConfirmationPrompt  = $CreateIntentVersionResponse->ConfirmationPrompt;
+    my $Description         = $CreateIntentVersionResponse->Description;
+    my $Name                = $CreateIntentVersionResponse->Name;
+    my $Checksum            = $CreateIntentVersionResponse->Checksum;
 
     # Returns a L<Paws::LexModels::CreateIntentVersionResponse> object.
 

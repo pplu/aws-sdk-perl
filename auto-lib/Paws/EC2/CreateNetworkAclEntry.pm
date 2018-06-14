@@ -42,16 +42,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # any associated subnet.
     $ec2->CreateNetworkAclEntry(
       {
-        'RuleAction'   => 'allow',
-        'RuleNumber'   => 100,
-        'Protocol'     => 'udp',
-        'NetworkAclId' => 'acl-5fb85d36',
-        'PortRange'    => {
+        'RuleAction' => 'allow',
+        'RuleNumber' => 100,
+        'PortRange'  => {
           'To'   => 53,
           'From' => 53
         },
-        'Egress'    => 0,
-        'CidrBlock' => '0.0.0.0/0'
+        'CidrBlock'    => '0.0.0.0/0',
+        'Protocol'     => 'udp',
+        'NetworkAclId' => 'acl-5fb85d36',
+        'Egress'       => 0
       }
     );
 

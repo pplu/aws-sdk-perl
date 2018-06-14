@@ -39,17 +39,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             'Action'         => 'DELETE',
             'SizeConstraint' => {
-              'Size'         => 0,
               'FieldToMatch' => {
                 'Type' => 'QUERY_STRING'
               },
-              'ComparisonOperator' => 'GT',
-              'TextTransformation' => 'NONE'
+              'Size'               => 0,
+              'TextTransformation' => 'NONE',
+              'ComparisonOperator' => 'GT'
             }
           }
         ],
-        'ChangeToken'         => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
-        'SizeConstraintSetId' => 'example1ds3t-46da-4fdb-b8d5-abc321j569j5'
+        'SizeConstraintSetId' => 'example1ds3t-46da-4fdb-b8d5-abc321j569j5',
+        'ChangeToken'         => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f'
       }
     );
 

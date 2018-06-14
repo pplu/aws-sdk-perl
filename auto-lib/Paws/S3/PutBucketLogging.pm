@@ -36,23 +36,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Bucket              => 'MyBucketName',
       BucketLoggingStatus => {
         LoggingEnabled => {
-          TargetPrefix => 'MyTargetPrefix',
           TargetBucket => 'MyTargetBucket',
+          TargetPrefix => 'MyTargetPrefix',
           TargetGrants => [
             {
-              Permission =>
-                'FULL_CONTROL',    # values: FULL_CONTROL, READ, WRITE; OPTIONAL
               Grantee => {
                 Type => 'CanonicalUser'
                 ,    # values: CanonicalUser, AmazonCustomerByEmail, Group
-                URI          => 'MyURI',             # OPTIONAL
-                ID           => 'MyID',              # OPTIONAL
                 DisplayName  => 'MyDisplayName',     # OPTIONAL
+                ID           => 'MyID',              # OPTIONAL
                 EmailAddress => 'MyEmailAddress',    # OPTIONAL
+                URI          => 'MyURI',             # OPTIONAL
               },    # OPTIONAL
+              Permission =>
+                'FULL_CONTROL',    # values: FULL_CONTROL, READ, WRITE; OPTIONAL
             },
             ...
-          ],        # OPTIONAL
+          ],                       # OPTIONAL
         },    # OPTIONAL
       },
       ContentMD5 => 'MyContentMD5',    # OPTIONAL

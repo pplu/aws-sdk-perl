@@ -34,15 +34,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $AttachedChannels = $DescribeInputResponse->AttachedChannels;
-    my $Destinations     = $DescribeInputResponse->Destinations;
-    my $Type             = $DescribeInputResponse->Type;
+    my $Id               = $DescribeInputResponse->Id;
     my $State            = $DescribeInputResponse->State;
+    my $AttachedChannels = $DescribeInputResponse->AttachedChannels;
+    my $Sources          = $DescribeInputResponse->Sources;
+    my $Type             = $DescribeInputResponse->Type;
+    my $Destinations     = $DescribeInputResponse->Destinations;
+    my $Arn              = $DescribeInputResponse->Arn;
     my $Name             = $DescribeInputResponse->Name;
     my $SecurityGroups   = $DescribeInputResponse->SecurityGroups;
-    my $Arn              = $DescribeInputResponse->Arn;
-    my $Id               = $DescribeInputResponse->Id;
-    my $Sources          = $DescribeInputResponse->Sources;
 
     # Returns a L<Paws::MediaLive::DescribeInputResponse> object.
 

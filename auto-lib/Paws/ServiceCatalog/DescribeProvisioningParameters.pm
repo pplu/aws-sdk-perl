@@ -41,11 +41,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $ConstraintSummaries =
       $DescribeProvisioningParametersOutput->ConstraintSummaries;
-    my $TagOptions = $DescribeProvisioningParametersOutput->TagOptions;
-    my $UsageInstructions =
-      $DescribeProvisioningParametersOutput->UsageInstructions;
     my $ProvisioningArtifactParameters =
       $DescribeProvisioningParametersOutput->ProvisioningArtifactParameters;
+    my $UsageInstructions =
+      $DescribeProvisioningParametersOutput->UsageInstructions;
+    my $TagOptions = $DescribeProvisioningParametersOutput->TagOptions;
 
 # Returns a L<Paws::ServiceCatalog::DescribeProvisioningParametersOutput> object.
 

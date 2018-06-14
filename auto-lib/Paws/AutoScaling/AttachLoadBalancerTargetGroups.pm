@@ -34,10 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $AttachLoadBalancerTargetGroupsResultType =
       $autoscaling->AttachLoadBalancerTargetGroups(
       {
-        'TargetGroupARNs' => [
+        'AutoScalingGroupName' => 'my-auto-scaling-group',
+        'TargetGroupARNs'      => [
 'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067'
-        ],
-        'AutoScalingGroupName' => 'my-auto-scaling-group'
+        ]
       }
       );
 

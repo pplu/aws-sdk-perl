@@ -39,9 +39,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $NextToken     = $GetFaceSearchResponse->NextToken;
+    my $Persons       = $GetFaceSearchResponse->Persons;
     my $VideoMetadata = $GetFaceSearchResponse->VideoMetadata;
     my $JobStatus     = $GetFaceSearchResponse->JobStatus;
-    my $Persons       = $GetFaceSearchResponse->Persons;
     my $StatusMessage = $GetFaceSearchResponse->StatusMessage;
 
     # Returns a L<Paws::Rekognition::GetFaceSearchResponse> object.

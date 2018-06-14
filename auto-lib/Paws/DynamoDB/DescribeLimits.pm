@@ -34,12 +34,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $TableMaxWriteCapacityUnits =
       $DescribeLimitsOutput->TableMaxWriteCapacityUnits;
-    my $AccountMaxWriteCapacityUnits =
-      $DescribeLimitsOutput->AccountMaxWriteCapacityUnits;
     my $AccountMaxReadCapacityUnits =
       $DescribeLimitsOutput->AccountMaxReadCapacityUnits;
     my $TableMaxReadCapacityUnits =
       $DescribeLimitsOutput->TableMaxReadCapacityUnits;
+    my $AccountMaxWriteCapacityUnits =
+      $DescribeLimitsOutput->AccountMaxWriteCapacityUnits;
 
     # Returns a L<Paws::DynamoDB::DescribeLimitsOutput> object.
 

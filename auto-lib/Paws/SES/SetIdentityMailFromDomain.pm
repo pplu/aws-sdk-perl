@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # domain for an identity:
     my $SetIdentityMailFromDomainResponse = $email->SetIdentityMailFromDomain(
       {
-        'MailFromDomain'      => 'bounces.example.com',
+        'Identity'            => 'user@example.com',
         'BehaviorOnMXFailure' => 'UseDefaultValue',
-        'Identity'            => 'user@example.com'
+        'MailFromDomain'      => 'bounces.example.com'
       }
     );
 

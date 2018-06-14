@@ -44,8 +44,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $ReturnSize    = $GetTagsResponse->ReturnSize;
     my $NextPageToken = $GetTagsResponse->NextPageToken;
-    my $Tags          = $GetTagsResponse->Tags;
     my $TotalSize     = $GetTagsResponse->TotalSize;
+    my $Tags          = $GetTagsResponse->Tags;
 
     # Returns a L<Paws::CostExplorer::GetTagsResponse> object.
 

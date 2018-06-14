@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $Limit = $GetReusableDelegationSetLimitResponse->Limit;
     my $Count = $GetReusableDelegationSetLimitResponse->Count;
+    my $Limit = $GetReusableDelegationSetLimitResponse->Limit;
 
     # Returns a L<Paws::Route53::GetReusableDelegationSetLimitResponse> object.
 

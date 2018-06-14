@@ -35,23 +35,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     $s3->PutBucketReplication(
       Bucket                   => 'MyBucketName',
       ReplicationConfiguration => {
-        Role  => 'MyRole',
         Rules => [
           {
             Status      => 'Enabled',    # values: Enabled, Disabled
             Prefix      => 'MyPrefix',
             Destination => {
               Bucket                   => 'MyBucketName',
+              Account                  => 'MyAccountId',    # OPTIONAL
               AccessControlTranslation => {
                 Owner => 'Destination',    # values: Destination
 
               },    # OPTIONAL
-              StorageClass => 'STANDARD'
-              , # values: STANDARD, REDUCED_REDUNDANCY, STANDARD_IA, ONEZONE_IA; OPTIONAL
-              Account                 => 'MyAccountId',    # OPTIONAL
               EncryptionConfiguration => {
                 ReplicaKmsKeyID => 'MyReplicaKmsKeyID',    # OPTIONAL
               },    # OPTIONAL
+              StorageClass => 'STANDARD'
+              , # values: STANDARD, REDUCED_REDUNDANCY, STANDARD_IA, ONEZONE_IA; OPTIONAL
             },
             SourceSelectionCriteria => {
               SseKmsEncryptedObjects => {
@@ -63,6 +62,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],
+        Role => 'MyRole',
 
       },
       ContentMD5 => 'MyContentMD5',    # OPTIONAL

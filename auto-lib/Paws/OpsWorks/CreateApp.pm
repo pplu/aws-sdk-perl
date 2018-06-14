@@ -43,12 +43,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       StackId   => 'MyString',
       Type      => 'aws-flow-ruby',
       AppSource => {
-        Url      => 'MyString',
-        Type     => 'git',        # values: git, svn, archive, s3; OPTIONAL
         Revision => 'MyString',
-        SshKey   => 'MyString',
-        Username => 'MyString',
+        Type     => 'git',        # values: git, svn, archive, s3; OPTIONAL
         Password => 'MyString',
+        Username => 'MyString',
+        SshKey   => 'MyString',
+        Url      => 'MyString',
       },    # OPTIONAL
       Attributes => {
         'DocumentRoot' => 'MyString'
@@ -56,9 +56,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       DataSources => [
         {
-          DatabaseName => 'MyString',
           Type         => 'MyString',
           Arn          => 'MyString',
+          DatabaseName => 'MyString',
         },
         ...
       ],    # OPTIONAL
@@ -67,16 +67,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EnableSsl   => 1,                      # OPTIONAL
       Environment => [
         {
-          Value  => 'MyString',
           Key    => 'MyString',
+          Value  => 'MyString',
           Secure => 1,
         },
         ...
       ],                                     # OPTIONAL
       Shortname        => 'MyString',        # OPTIONAL
       SslConfiguration => {
-        PrivateKey  => 'MyString',
         Certificate => 'MyString',
+        PrivateKey  => 'MyString',
         Chain       => 'MyString',
       },                                     # OPTIONAL
     );

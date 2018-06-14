@@ -39,11 +39,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateDeploymentOutput = $codedeploy->CreateDeployment(
       ApplicationName           => 'MyApplicationName',
       AutoRollbackConfiguration => {
-        events => [
+        enabled => 1,    # OPTIONAL
+        events  => [
           'DEPLOYMENT_FAILURE',
           ... # values: DEPLOYMENT_FAILURE, DEPLOYMENT_STOP_ON_ALARM, DEPLOYMENT_STOP_ON_REQUEST
         ],    # OPTIONAL
-        enabled => 1,    # OPTIONAL
       },    # OPTIONAL
       DeploymentConfigName          => 'MyDeploymentConfigName',    # OPTIONAL
       DeploymentGroupName           => 'MyDeploymentGroupName',     # OPTIONAL
@@ -55,20 +55,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           repository => 'MyRepository',                             # OPTIONAL
           commitId   => 'MyCommitId',                               # OPTIONAL
         },    # OPTIONAL
-        s3Location => {
-          bundleType => 'tar',    # values: tar, tgz, zip, YAML, JSON; OPTIONAL
-          version => 'MyVersionId',    # OPTIONAL
-          eTag    => 'MyETag',         # OPTIONAL
-          bucket  => 'MyS3Bucket',     # OPTIONAL
-          key     => 'MyS3Key',        # OPTIONAL
-        },    # OPTIONAL
         string => {
-          sha256  => 'MyRawStringSha256',     # OPTIONAL
           content => 'MyRawStringContent',    # OPTIONAL
+          sha256  => 'MyRawStringSha256',     # OPTIONAL
         },    # OPTIONAL
         revisionType => 'S3',    # values: S3, GitHub, String; OPTIONAL
+        s3Location   => {
+          eTag    => 'MyETag',         # OPTIONAL
+          key     => 'MyS3Key',        # OPTIONAL
+          version => 'MyVersionId',    # OPTIONAL
+          bundleType => 'tar',    # values: tar, tgz, zip, YAML, JSON; OPTIONAL
+          bucket => 'MyS3Bucket', # OPTIONAL
+        },    # OPTIONAL
       },    # OPTIONAL
       TargetInstances => {
+        tagFilters => [
+          {
+            Type => 'KEY_ONLY'
+            ,    # values: KEY_ONLY, VALUE_ONLY, KEY_AND_VALUE; OPTIONAL
+            Key   => 'MyKey',      # OPTIONAL
+            Value => 'MyValue',    # OPTIONAL
+          },
+          ...
+        ],                         # OPTIONAL
         ec2TagSet => {
           ec2TagSetList => [
             [
@@ -83,15 +92,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ...                        # OPTIONAL
           ],                           # OPTIONAL
         },    # OPTIONAL
-        tagFilters => [
-          {
-            Type => 'KEY_ONLY'
-            ,    # values: KEY_ONLY, VALUE_ONLY, KEY_AND_VALUE; OPTIONAL
-            Key   => 'MyKey',      # OPTIONAL
-            Value => 'MyValue',    # OPTIONAL
-          },
-          ...
-        ],                         # OPTIONAL
         autoScalingGroups => [ 'MyAutoScalingGroupName', ... ],    # OPTIONAL
       },    # OPTIONAL
       UpdateOutdatedInstancesOnly => 1,    # OPTIONAL

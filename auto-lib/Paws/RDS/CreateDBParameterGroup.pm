@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example creates a DB parameter group.
     my $CreateDBParameterGroupResult = $rds->CreateDBParameterGroup(
       {
-        'Description'            => 'My MySQL parameter group',
         'DBParameterGroupName'   => 'mymysqlparametergroup',
+        'Description'            => 'My MySQL parameter group',
         'DBParameterGroupFamily' => 'mysql5.6'
       }
     );

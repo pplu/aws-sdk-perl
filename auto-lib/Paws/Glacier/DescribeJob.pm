@@ -35,22 +35,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # specified by the job ID.
     my $GlacierJobDescription = $glacier->DescribeJob(
       {
+        'AccountId' => '-',
         'JobId' =>
 'zbxcm3Z_3z5UkoroF7SuZKrxgGoDc3RloGduS7Eg-RO47Yc6FxsdGBgf_Q2DK5Ejh18CnTS5XW4_XqlNHS61dsO4Cn',
-        'AccountId' => '-',
         'VaultName' => 'my-vault'
       }
     );
 
     # Results:
+    my $StatusCode   = $GlacierJobDescription->StatusCode;
+    my $Completed    = $GlacierJobDescription->Completed;
+    my $VaultARN     = $GlacierJobDescription->VaultARN;
     my $CreationDate = $GlacierJobDescription->CreationDate;
     my $Action       = $GlacierJobDescription->Action;
-    my $VaultARN     = $GlacierJobDescription->VaultARN;
-    my $StatusCode   = $GlacierJobDescription->StatusCode;
     my $InventoryRetrievalParameters =
       $GlacierJobDescription->InventoryRetrievalParameters;
-    my $Completed = $GlacierJobDescription->Completed;
-    my $JobId     = $GlacierJobDescription->JobId;
+    my $JobId = $GlacierJobDescription->JobId;
 
     # Returns a L<Paws::Glacier::GlacierJobDescription> object.
 

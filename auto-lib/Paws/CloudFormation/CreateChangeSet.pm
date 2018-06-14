@@ -53,10 +53,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       NotificationARNs => [ 'MyNotificationARN', ... ],    # OPTIONAL
       Parameters       => [
         {
-          ResolvedValue    => 'MyParameterValue',          # OPTIONAL
+          UsePreviousValue => 1,                           # OPTIONAL
           ParameterKey     => 'MyParameterKey',            # OPTIONAL
           ParameterValue   => 'MyParameterValue',          # OPTIONAL
-          UsePreviousValue => 1,                           # OPTIONAL
+          ResolvedValue    => 'MyParameterValue',          # OPTIONAL
         },
         ...
       ],                                                   # OPTIONAL
@@ -77,8 +77,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       Tags => [
         {
-          Value => 'MyTagValue',    # min: 1, max: 256
           Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # min: 1, max: 256
 
         },
         ...

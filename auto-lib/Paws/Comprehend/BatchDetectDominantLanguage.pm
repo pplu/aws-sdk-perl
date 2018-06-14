@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $ResultList = $BatchDetectDominantLanguageResponse->ResultList;
     my $ErrorList  = $BatchDetectDominantLanguageResponse->ErrorList;
+    my $ResultList = $BatchDetectDominantLanguageResponse->ResultList;
 
     # Returns a L<Paws::Comprehend::BatchDetectDominantLanguageResponse> object.
 

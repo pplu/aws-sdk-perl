@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextPageToken = $DescribeRecordOutput->NextPageToken;
     my $RecordOutputs = $DescribeRecordOutput->RecordOutputs;
+    my $NextPageToken = $DescribeRecordOutput->NextPageToken;
     my $RecordDetail  = $DescribeRecordOutput->RecordDetail;
 
     # Returns a L<Paws::ServiceCatalog::DescribeRecordOutput> object.

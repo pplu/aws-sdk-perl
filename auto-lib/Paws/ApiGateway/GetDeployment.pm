@@ -38,9 +38,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $CreatedDate = $Deployment->CreatedDate;
+    my $Id          = $Deployment->Id;
     my $ApiSummary  = $Deployment->ApiSummary;
     my $Description = $Deployment->Description;
-    my $Id          = $Deployment->Id;
 
     # Returns a L<Paws::ApiGateway::Deployment> object.
 

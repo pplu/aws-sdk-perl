@@ -50,9 +50,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $RequestCharged = $DeleteObjectsOutput->RequestCharged;
     my $Errors         = $DeleteObjectsOutput->Errors;
     my $Deleted        = $DeleteObjectsOutput->Deleted;
+    my $RequestCharged = $DeleteObjectsOutput->RequestCharged;
 
     # Returns a L<Paws::S3::DeleteObjectsOutput> object.
 

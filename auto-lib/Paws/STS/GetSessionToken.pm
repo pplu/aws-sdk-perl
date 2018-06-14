@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $GetSessionTokenResponse = $sts->GetSessionToken(
       {
         'SerialNumber'    => 'YourMFASerialNumber',
-        'TokenCode'       => 123456,
-        'DurationSeconds' => 3600
+        'DurationSeconds' => 3600,
+        'TokenCode'       => 123456
       }
     );
 

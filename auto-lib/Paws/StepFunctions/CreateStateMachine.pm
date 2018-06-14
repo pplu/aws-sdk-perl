@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $StateMachineArn = $CreateStateMachineOutput->StateMachineArn;
     my $CreationDate    = $CreateStateMachineOutput->CreationDate;
+    my $StateMachineArn = $CreateStateMachineOutput->StateMachineArn;
 
     # Returns a L<Paws::StepFunctions::CreateStateMachineOutput> object.
 

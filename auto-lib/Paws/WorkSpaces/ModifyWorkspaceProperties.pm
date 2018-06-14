@@ -32,11 +32,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $workspaces->ModifyWorkspaceProperties(
       WorkspaceId         => 'MyWorkspaceId',
       WorkspaceProperties => {
-        RunningModeAutoStopTimeoutInMinutes => 1,        # OPTIONAL
-        RootVolumeSizeGib                   => 1,        # OPTIONAL
-        UserVolumeSizeGib                   => 1,        # OPTIONAL
-        ComputeTypeName                     => 'VALUE'
+        RootVolumeSizeGib => 1,        # OPTIONAL
+        ComputeTypeName   => 'VALUE'
         ,    # values: VALUE, STANDARD, PERFORMANCE, POWER, GRAPHICS; OPTIONAL
+        UserVolumeSizeGib                   => 1,    # OPTIONAL
+        RunningModeAutoStopTimeoutInMinutes => 1,    # OPTIONAL
         RunningMode => 'AUTO_STOP',    # values: AUTO_STOP, ALWAYS_ON; OPTIONAL
       },
 

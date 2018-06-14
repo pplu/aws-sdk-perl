@@ -40,8 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $ContentType        = $SdkResponse->ContentType;
-    my $Body               = $SdkResponse->Body;
     my $ContentDisposition = $SdkResponse->ContentDisposition;
+    my $Body               = $SdkResponse->Body;
 
     # Returns a L<Paws::ApiGateway::SdkResponse> object.
 

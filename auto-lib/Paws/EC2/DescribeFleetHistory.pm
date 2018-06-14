@@ -42,16 +42,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $LastEvaluatedTime = $DescribeFleetHistoryResult->LastEvaluatedTime;
-    my $StartTime         = $DescribeFleetHistoryResult->StartTime;
-    my $FleetId           = $DescribeFleetHistoryResult->FleetId;
     my $NextToken         = $DescribeFleetHistoryResult->NextToken;
+    my $FleetId           = $DescribeFleetHistoryResult->FleetId;
+    my $LastEvaluatedTime = $DescribeFleetHistoryResult->LastEvaluatedTime;
     my $HistoryRecords    = $DescribeFleetHistoryResult->HistoryRecords;
+    my $StartTime         = $DescribeFleetHistoryResult->StartTime;
 
     # Returns a L<Paws::EC2::DescribeFleetHistoryResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DescribeFleetHistory>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15>
 
 =head1 ATTRIBUTES
 

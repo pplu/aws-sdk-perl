@@ -38,10 +38,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'Listeners'        => [
 
           {
-            'InstanceProtocol' => 'HTTP',
             'InstancePort'     => 80,
+            'Protocol'         => 'HTTP',
             'LoadBalancerPort' => 80,
-            'Protocol'         => 'HTTP'
+            'InstanceProtocol' => 'HTTP'
           }
         ]
       }
@@ -57,12 +57,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'Listeners'        => [
 
           {
-            'LoadBalancerPort' => 443,
-            'InstancePort'     => 80,
+            'InstancePort' => 80,
             'SSLCertificateId' =>
               'arn:aws:iam::123456789012:server-certificate/my-server-cert',
-            'InstanceProtocol' => 'HTTP',
-            'Protocol'         => 'HTTPS'
+            'Protocol'         => 'HTTPS',
+            'LoadBalancerPort' => 443,
+            'InstanceProtocol' => 'HTTP'
           }
         ]
       }

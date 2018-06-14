@@ -33,23 +33,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateFieldLevelEncryptionProfileResult =
       $cloudfront->CreateFieldLevelEncryptionProfile(
       FieldLevelEncryptionProfileConfig => {
-        Name               => 'Mystring',
         CallerReference    => 'Mystring',
         EncryptionEntities => {
           Quantity => 1,
           Items    => [
             {
-              ProviderId    => 'Mystring',
+              PublicKeyId   => 'Mystring',
               FieldPatterns => {
                 Quantity => 1,
                 Items    => [ 'Mystring', ... ],    # OPTIONAL
               },
-              PublicKeyId => 'Mystring',
+              ProviderId => 'Mystring',
 
             },
             ...
           ],                                        # OPTIONAL
         },
+        Name    => 'Mystring',
         Comment => 'Mystring',
       },
 

@@ -33,7 +33,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateFieldLevelEncryptionConfigResult =
       $cloudfront->CreateFieldLevelEncryptionConfig(
       FieldLevelEncryptionConfig => {
-        CallerReference       => 'Mystring',
+        CallerReference          => 'Mystring',
+        ContentTypeProfileConfig => {
+          ForwardWhenContentTypeIsUnknown => 1,
+          ContentTypeProfiles             => {
+            Quantity => 1,
+            Items    => [
+              {
+                ContentType => 'Mystring',
+                Format      => 'URLEncoded',    # values: URLEncoded
+                ProfileId   => 'Mystring',
+              },
+              ...
+            ],                                  # OPTIONAL
+          },    # OPTIONAL
+        },    # OPTIONAL
+        Comment               => 'Mystring',
         QueryArgProfileConfig => {
           ForwardWhenQueryArgProfileIsUnknown => 1,
           QueryArgProfiles                    => {
@@ -48,30 +63,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ],    # OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
-        Comment                  => 'Mystring',
-        ContentTypeProfileConfig => {
-          ForwardWhenContentTypeIsUnknown => 1,
-          ContentTypeProfiles             => {
-            Quantity => 1,
-            Items    => [
-              {
-                Format      => 'URLEncoded',    # values: URLEncoded
-                ContentType => 'Mystring',
-                ProfileId   => 'Mystring',
-              },
-              ...
-            ],                                  # OPTIONAL
-          },    # OPTIONAL
-        },    # OPTIONAL
       },
 
       );
 
     # Results:
-    my $ETag = $CreateFieldLevelEncryptionConfigResult->ETag;
+    my $ETag     = $CreateFieldLevelEncryptionConfigResult->ETag;
+    my $Location = $CreateFieldLevelEncryptionConfigResult->Location;
     my $FieldLevelEncryption =
       $CreateFieldLevelEncryptionConfigResult->FieldLevelEncryption;
-    my $Location = $CreateFieldLevelEncryptionConfigResult->Location;
 
  # Returns a L<Paws::CloudFront::CreateFieldLevelEncryptionConfigResult> object.
 

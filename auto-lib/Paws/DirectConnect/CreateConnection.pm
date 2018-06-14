@@ -38,18 +38,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Vlan            = $Connection->Vlan;
-    my $ConnectionId    = $Connection->ConnectionId;
-    my $Region          = $Connection->Region;
-    my $LagId           = $Connection->LagId;
-    my $Bandwidth       = $Connection->Bandwidth;
-    my $OwnerAccount    = $Connection->OwnerAccount;
-    my $PartnerName     = $Connection->PartnerName;
-    my $LoaIssueTime    = $Connection->LoaIssueTime;
-    my $Location        = $Connection->Location;
-    my $AwsDevice       = $Connection->AwsDevice;
     my $ConnectionState = $Connection->ConnectionState;
     my $ConnectionName  = $Connection->ConnectionName;
+    my $Vlan            = $Connection->Vlan;
+    my $ConnectionId    = $Connection->ConnectionId;
+    my $Bandwidth       = $Connection->Bandwidth;
+    my $PartnerName     = $Connection->PartnerName;
+    my $AwsDevice       = $Connection->AwsDevice;
+    my $OwnerAccount    = $Connection->OwnerAccount;
+    my $LagId           = $Connection->LagId;
+    my $LoaIssueTime    = $Connection->LoaIssueTime;
+    my $Location        = $Connection->Location;
+    my $Region          = $Connection->Region;
 
     # Returns a L<Paws::DirectConnect::Connection> object.
 

@@ -39,29 +39,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This operation updates a Lambda function's code
     my $FunctionConfiguration = $lambda->UpdateFunctionCode(
       {
-        'S3ObjectVersion' => 1,
         'S3Key'           => 'myKey',
-        'ZipFile'         => 'fileb://file-path/file.zip',
+        'S3ObjectVersion' => 1,
+        'S3Bucket'        => 'myBucket',
+        'Publish'         => 1,
         'FunctionName'    => 'myFunction',
-        'Publish'         => true,
-        'S3Bucket'        => 'myBucket'
+        'ZipFile'         => 'fileb://file-path/file.zip'
       }
     );
 
     # Results:
-    my $Timeout      = $FunctionConfiguration->Timeout;
     my $Role         = $FunctionConfiguration->Role;
-    my $LastModified = $FunctionConfiguration->LastModified;
-    my $Version      = $FunctionConfiguration->Version;
-    my $Description  = $FunctionConfiguration->Description;
+    my $Runtime      = $FunctionConfiguration->Runtime;
     my $FunctionName = $FunctionConfiguration->FunctionName;
     my $CodeSize     = $FunctionConfiguration->CodeSize;
-    my $VpcConfig    = $FunctionConfiguration->VpcConfig;
-    my $CodeSha256   = $FunctionConfiguration->CodeSha256;
-    my $FunctionArn  = $FunctionConfiguration->FunctionArn;
+    my $Version      = $FunctionConfiguration->Version;
     my $Handler      = $FunctionConfiguration->Handler;
-    my $Runtime      = $FunctionConfiguration->Runtime;
     my $MemorySize   = $FunctionConfiguration->MemorySize;
+    my $VpcConfig    = $FunctionConfiguration->VpcConfig;
+    my $FunctionArn  = $FunctionConfiguration->FunctionArn;
+    my $Timeout      = $FunctionConfiguration->Timeout;
+    my $Description  = $FunctionConfiguration->Description;
+    my $CodeSha256   = $FunctionConfiguration->CodeSha256;
+    my $LastModified = $FunctionConfiguration->LastModified;
 
     # Returns a L<Paws::Lambda::FunctionConfiguration> object.
 

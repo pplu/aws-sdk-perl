@@ -45,9 +45,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $Tags          = $CreateGroupOutput->Tags;
     my $ResourceQuery = $CreateGroupOutput->ResourceQuery;
     my $Group         = $CreateGroupOutput->Group;
-    my $Tags          = $CreateGroupOutput->Tags;
 
     # Returns a L<Paws::ResourceGroups::CreateGroupOutput> object.
 

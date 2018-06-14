@@ -41,8 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $PolicyToPathList = $LookupPolicyResponse->PolicyToPathList;
     my $NextToken        = $LookupPolicyResponse->NextToken;
+    my $PolicyToPathList = $LookupPolicyResponse->PolicyToPathList;
 
     # Returns a L<Paws::CloudDirectory::LookupPolicyResponse> object.
 

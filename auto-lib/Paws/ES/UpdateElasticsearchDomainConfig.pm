@@ -43,30 +43,30 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AdvancedOptions => { 'MyString' => 'MyString', },    # OPTIONAL
       CognitoOptions  => {
         UserPoolId     => 'MyUserPoolId',        # min: 1, max: 55; OPTIONAL
-        IdentityPoolId => 'MyIdentityPoolId',    # min: 1, max: 55; OPTIONAL
-        RoleArn        => 'MyRoleArn',           # min: 20, max: 2048; OPTIONAL
         Enabled        => 1,                     # OPTIONAL
+        RoleArn        => 'MyRoleArn',           # min: 20, max: 2048; OPTIONAL
+        IdentityPoolId => 'MyIdentityPoolId',    # min: 1, max: 55; OPTIONAL
       },    # OPTIONAL
       EBSOptions => {
-        VolumeSize => 1,             # OPTIONAL
         Iops       => 1,             # OPTIONAL
         VolumeType => 'standard',    # values: standard, gp2, io1; OPTIONAL
+        VolumeSize => 1,             # OPTIONAL
         EBSEnabled => 1,             # OPTIONAL
       },    # OPTIONAL
       ElasticsearchClusterConfig => {
         DedicatedMasterType => 'm3.medium.elasticsearch'
         , # values: m3.medium.elasticsearch, m3.large.elasticsearch, m3.xlarge.elasticsearch, m3.2xlarge.elasticsearch, m4.large.elasticsearch, m4.xlarge.elasticsearch, m4.2xlarge.elasticsearch, m4.4xlarge.elasticsearch, m4.10xlarge.elasticsearch, t2.micro.elasticsearch, t2.small.elasticsearch, t2.medium.elasticsearch, r3.large.elasticsearch, r3.xlarge.elasticsearch, r3.2xlarge.elasticsearch, r3.4xlarge.elasticsearch, r3.8xlarge.elasticsearch, i2.xlarge.elasticsearch, i2.2xlarge.elasticsearch, d2.xlarge.elasticsearch, d2.2xlarge.elasticsearch, d2.4xlarge.elasticsearch, d2.8xlarge.elasticsearch, c4.large.elasticsearch, c4.xlarge.elasticsearch, c4.2xlarge.elasticsearch, c4.4xlarge.elasticsearch, c4.8xlarge.elasticsearch, r4.large.elasticsearch, r4.xlarge.elasticsearch, r4.2xlarge.elasticsearch, r4.4xlarge.elasticsearch, r4.8xlarge.elasticsearch, r4.16xlarge.elasticsearch, i3.large.elasticsearch, i3.xlarge.elasticsearch, i3.2xlarge.elasticsearch, i3.4xlarge.elasticsearch, i3.8xlarge.elasticsearch, i3.16xlarge.elasticsearch; OPTIONAL
-        InstanceCount => 1,                          # OPTIONAL
-        InstanceType  => 'm3.medium.elasticsearch'
+        DedicatedMasterEnabled => 1,                          # OPTIONAL
+        InstanceType           => 'm3.medium.elasticsearch'
         , # values: m3.medium.elasticsearch, m3.large.elasticsearch, m3.xlarge.elasticsearch, m3.2xlarge.elasticsearch, m4.large.elasticsearch, m4.xlarge.elasticsearch, m4.2xlarge.elasticsearch, m4.4xlarge.elasticsearch, m4.10xlarge.elasticsearch, t2.micro.elasticsearch, t2.small.elasticsearch, t2.medium.elasticsearch, r3.large.elasticsearch, r3.xlarge.elasticsearch, r3.2xlarge.elasticsearch, r3.4xlarge.elasticsearch, r3.8xlarge.elasticsearch, i2.xlarge.elasticsearch, i2.2xlarge.elasticsearch, d2.xlarge.elasticsearch, d2.2xlarge.elasticsearch, d2.4xlarge.elasticsearch, d2.8xlarge.elasticsearch, c4.large.elasticsearch, c4.xlarge.elasticsearch, c4.2xlarge.elasticsearch, c4.4xlarge.elasticsearch, c4.8xlarge.elasticsearch, r4.large.elasticsearch, r4.xlarge.elasticsearch, r4.2xlarge.elasticsearch, r4.4xlarge.elasticsearch, r4.8xlarge.elasticsearch, r4.16xlarge.elasticsearch, i3.large.elasticsearch, i3.xlarge.elasticsearch, i3.2xlarge.elasticsearch, i3.4xlarge.elasticsearch, i3.8xlarge.elasticsearch, i3.16xlarge.elasticsearch; OPTIONAL
-        DedicatedMasterEnabled => 1,    # OPTIONAL
-        ZoneAwarenessEnabled   => 1,    # OPTIONAL
-        DedicatedMasterCount   => 1,    # OPTIONAL
+        DedicatedMasterCount => 1,    # OPTIONAL
+        ZoneAwarenessEnabled => 1,    # OPTIONAL
+        InstanceCount        => 1,    # OPTIONAL
       },    # OPTIONAL
       LogPublishingOptions => {
         'INDEX_SLOW_LOGS' => {
-          CloudWatchLogsLogGroupArn => 'MyCloudWatchLogsLogGroupArn', # OPTIONAL
           Enabled                   => 1,                             # OPTIONAL
+          CloudWatchLogsLogGroupArn => 'MyCloudWatchLogsLogGroupArn', # OPTIONAL
         },    # key: values: INDEX_SLOW_LOGS, SEARCH_SLOW_LOGS
       },    # OPTIONAL
       SnapshotOptions => {

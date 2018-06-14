@@ -32,15 +32,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Initiates an ad-hoc snapshot of a gateway volume.
     my $CreateSnapshotOutput = $storagegateway->CreateSnapshot(
       {
-        'SnapshotDescription' => 'My root volume snapshot as of 10/03/2017',
         'VolumeARN' =>
-'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABB'
+'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABB',
+        'SnapshotDescription' => 'My root volume snapshot as of 10/03/2017'
       }
     );
 
     # Results:
-    my $VolumeARN  = $CreateSnapshotOutput->VolumeARN;
     my $SnapshotId = $CreateSnapshotOutput->SnapshotId;
+    my $VolumeARN  = $CreateSnapshotOutput->VolumeARN;
 
     # Returns a L<Paws::StorageGateway::CreateSnapshotOutput> object.
 

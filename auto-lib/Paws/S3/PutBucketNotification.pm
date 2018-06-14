@@ -35,36 +35,36 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     $s3->PutBucketNotification(
       Bucket                    => 'MyBucketName',
       NotificationConfiguration => {
-        TopicConfiguration => {
+        QueueConfiguration => {
+          Events => [
+            's3:ReducedRedundancyLostObject',
+            ... # values: s3:ReducedRedundancyLostObject, s3:ObjectCreated:*, s3:ObjectCreated:Put, s3:ObjectCreated:Post, s3:ObjectCreated:Copy, s3:ObjectCreated:CompleteMultipartUpload, s3:ObjectRemoved:*, s3:ObjectRemoved:Delete, s3:ObjectRemoved:DeleteMarkerCreated; OPTIONAL
+          ],    # OPTIONAL
+          Queue => 'MyQueueArn',                      # OPTIONAL
           Id    => 'MyNotificationId',                # OPTIONAL
           Event => 's3:ReducedRedundancyLostObject'
-          , # values: s3:ReducedRedundancyLostObject, s3:ObjectCreated:*, s3:ObjectCreated:Put, s3:ObjectCreated:Post, s3:ObjectCreated:Copy, s3:ObjectCreated:CompleteMultipartUpload, s3:ObjectRemoved:*, s3:ObjectRemoved:Delete, s3:ObjectRemoved:DeleteMarkerCreated
-          Topic  => 'MyTopicArn',    # OPTIONAL
+          , # values: s3:ReducedRedundancyLostObject, s3:ObjectCreated:*, s3:ObjectCreated:Put, s3:ObjectCreated:Post, s3:ObjectCreated:Copy, s3:ObjectCreated:CompleteMultipartUpload, s3:ObjectRemoved:*, s3:ObjectRemoved:Delete, s3:ObjectRemoved:DeleteMarkerCreated; OPTIONAL
+        },    # OPTIONAL
+        TopicConfiguration => {
           Events => [
             's3:ReducedRedundancyLostObject',
-            ... # values: s3:ReducedRedundancyLostObject, s3:ObjectCreated:*, s3:ObjectCreated:Put, s3:ObjectCreated:Post, s3:ObjectCreated:Copy, s3:ObjectCreated:CompleteMultipartUpload, s3:ObjectRemoved:*, s3:ObjectRemoved:Delete, s3:ObjectRemoved:DeleteMarkerCreated
+            ... # values: s3:ReducedRedundancyLostObject, s3:ObjectCreated:*, s3:ObjectCreated:Put, s3:ObjectCreated:Post, s3:ObjectCreated:Copy, s3:ObjectCreated:CompleteMultipartUpload, s3:ObjectRemoved:*, s3:ObjectRemoved:Delete, s3:ObjectRemoved:DeleteMarkerCreated; OPTIONAL
           ],    # OPTIONAL
+          Topic => 'MyTopicArn',                      # OPTIONAL
+          Id    => 'MyNotificationId',                # OPTIONAL
+          Event => 's3:ReducedRedundancyLostObject'
+          , # values: s3:ReducedRedundancyLostObject, s3:ObjectCreated:*, s3:ObjectCreated:Put, s3:ObjectCreated:Post, s3:ObjectCreated:Copy, s3:ObjectCreated:CompleteMultipartUpload, s3:ObjectRemoved:*, s3:ObjectRemoved:Delete, s3:ObjectRemoved:DeleteMarkerCreated; OPTIONAL
         },    # OPTIONAL
         CloudFunctionConfiguration => {
-          CloudFunction => 'MyCloudFunction',                 # OPTIONAL
-          Event         => 's3:ReducedRedundancyLostObject'
-          , # values: s3:ReducedRedundancyLostObject, s3:ObjectCreated:*, s3:ObjectCreated:Put, s3:ObjectCreated:Post, s3:ObjectCreated:Copy, s3:ObjectCreated:CompleteMultipartUpload, s3:ObjectRemoved:*, s3:ObjectRemoved:Delete, s3:ObjectRemoved:DeleteMarkerCreated
-          Id             => 'MyNotificationId',                 # OPTIONAL
-          InvocationRole => 'MyCloudFunctionInvocationRole',    # OPTIONAL
-          Events         => [
+          CloudFunction => 'MyCloudFunction',    # OPTIONAL
+          Events        => [
             's3:ReducedRedundancyLostObject',
-            ... # values: s3:ReducedRedundancyLostObject, s3:ObjectCreated:*, s3:ObjectCreated:Put, s3:ObjectCreated:Post, s3:ObjectCreated:Copy, s3:ObjectCreated:CompleteMultipartUpload, s3:ObjectRemoved:*, s3:ObjectRemoved:Delete, s3:ObjectRemoved:DeleteMarkerCreated
+            ... # values: s3:ReducedRedundancyLostObject, s3:ObjectCreated:*, s3:ObjectCreated:Put, s3:ObjectCreated:Post, s3:ObjectCreated:Copy, s3:ObjectCreated:CompleteMultipartUpload, s3:ObjectRemoved:*, s3:ObjectRemoved:Delete, s3:ObjectRemoved:DeleteMarkerCreated; OPTIONAL
           ],    # OPTIONAL
-        },    # OPTIONAL
-        QueueConfiguration => {
+          Id    => 'MyNotificationId',                # OPTIONAL
           Event => 's3:ReducedRedundancyLostObject'
-          , # values: s3:ReducedRedundancyLostObject, s3:ObjectCreated:*, s3:ObjectCreated:Put, s3:ObjectCreated:Post, s3:ObjectCreated:Copy, s3:ObjectCreated:CompleteMultipartUpload, s3:ObjectRemoved:*, s3:ObjectRemoved:Delete, s3:ObjectRemoved:DeleteMarkerCreated
-          Id     => 'MyNotificationId',    # OPTIONAL
-          Queue  => 'MyQueueArn',          # OPTIONAL
-          Events => [
-            's3:ReducedRedundancyLostObject',
-            ... # values: s3:ReducedRedundancyLostObject, s3:ObjectCreated:*, s3:ObjectCreated:Put, s3:ObjectCreated:Post, s3:ObjectCreated:Copy, s3:ObjectCreated:CompleteMultipartUpload, s3:ObjectRemoved:*, s3:ObjectRemoved:Delete, s3:ObjectRemoved:DeleteMarkerCreated
-          ],    # OPTIONAL
+          , # values: s3:ReducedRedundancyLostObject, s3:ObjectCreated:*, s3:ObjectCreated:Put, s3:ObjectCreated:Post, s3:ObjectCreated:Copy, s3:ObjectCreated:CompleteMultipartUpload, s3:ObjectRemoved:*, s3:ObjectRemoved:Delete, s3:ObjectRemoved:DeleteMarkerCreated; OPTIONAL
+          InvocationRole => 'MyCloudFunctionInvocationRole',    # OPTIONAL
         },    # OPTIONAL
       },
       ContentMD5 => 'MyContentMD5',    # OPTIONAL

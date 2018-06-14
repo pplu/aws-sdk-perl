@@ -47,9 +47,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $NextToken = $DescribeMaintenanceWindowExecutionsResult->NextToken;
     my $WindowExecutions =
       $DescribeMaintenanceWindowExecutionsResult->WindowExecutions;
-    my $NextToken = $DescribeMaintenanceWindowExecutionsResult->NextToken;
 
     # Returns a L<Paws::SSM::DescribeMaintenanceWindowExecutionsResult> object.
 

@@ -32,14 +32,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateImportJobResponse = $pinpoint->CreateImportJob(
       ApplicationId    => 'My__string',
       ImportJobRequest => {
-        RoleArn           => 'My__string',
+        Format            => 'CSV',          # values: CSV, JSON; OPTIONAL
+        SegmentId         => 'My__string',
+        RegisterEndpoints => 1,              # OPTIONAL
         ExternalId        => 'My__string',
         S3Url             => 'My__string',
-        RegisterEndpoints => 1,              # OPTIONAL
-        SegmentId         => 'My__string',
+        RoleArn           => 'My__string',
         SegmentName       => 'My__string',
         DefineSegment     => 1,              # OPTIONAL
-        Format            => 'CSV',          # values: CSV, JSON; OPTIONAL
       },
 
     );

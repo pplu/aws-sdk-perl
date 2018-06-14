@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Position = $Resources->Position;
     my $Items    = $Resources->Items;
+    my $Position = $Resources->Position;
 
     # Returns a L<Paws::ApiGateway::Resources> object.
 

@@ -40,8 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Success  = $TestRoleResponse->Success;
     my $Messages = $TestRoleResponse->Messages;
+    my $Success  = $TestRoleResponse->Success;
 
     # Returns a L<Paws::ElasticTranscoder::TestRoleResponse> object.
 

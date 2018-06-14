@@ -44,13 +44,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # item, as they appear after the update, are returned in the response.
     my $UpdateItemOutput = $dynamodb->UpdateItem(
       {
+        'ExpressionAttributeValues' => {
+          ':t' => {
+            'S' => 'Louder Than Ever'
+          },
+          ':y' => {
+            'N' => 2015
+          }
+        },
         'ReturnValues'             => 'ALL_NEW',
+        'TableName'                => 'Music',
         'ExpressionAttributeNames' => {
           '#AT' => 'AlbumTitle',
           '#Y'  => 'Year'
         },
-        'UpdateExpression' => 'SET #Y = :y, #AT = :t',
-        'Key'              => {
+        'Key' => {
           'SongTitle' => {
             'S' => 'Happy Day'
           },
@@ -58,15 +66,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'S' => 'Acme Band'
           }
         },
-        'ExpressionAttributeValues' => {
-          ':y' => {
-            'N' => 2015
-          },
-          ':t' => {
-            'S' => 'Louder Than Ever'
-          }
-        },
-        'TableName' => 'Music'
+        'UpdateExpression' => 'SET #Y = :y, #AT = :t'
       }
     );
 

@@ -51,13 +51,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $OwnerInformation =
-      $UpdateMaintenanceWindowTargetResult->OwnerInformation;
+    my $Targets        = $UpdateMaintenanceWindowTargetResult->Targets;
+    my $WindowTargetId = $UpdateMaintenanceWindowTargetResult->WindowTargetId;
     my $WindowId       = $UpdateMaintenanceWindowTargetResult->WindowId;
     my $Description    = $UpdateMaintenanceWindowTargetResult->Description;
     my $Name           = $UpdateMaintenanceWindowTargetResult->Name;
-    my $WindowTargetId = $UpdateMaintenanceWindowTargetResult->WindowTargetId;
-    my $Targets        = $UpdateMaintenanceWindowTargetResult->Targets;
+    my $OwnerInformation =
+      $UpdateMaintenanceWindowTargetResult->OwnerInformation;
 
     # Returns a L<Paws::SSM::UpdateMaintenanceWindowTargetResult> object.
 

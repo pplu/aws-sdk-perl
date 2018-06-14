@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $IsTruncated      = $ListAttachedUserPoliciesResponse->IsTruncated;
-    my $Marker           = $ListAttachedUserPoliciesResponse->Marker;
     my $AttachedPolicies = $ListAttachedUserPoliciesResponse->AttachedPolicies;
+    my $Marker           = $ListAttachedUserPoliciesResponse->Marker;
 
     # Returns a L<Paws::IAM::ListAttachedUserPoliciesResponse> object.
 

@@ -33,29 +33,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SearchRoomsResponse = $a4b->SearchRooms(
       Filters => [
         {
-          Key    => 'MyFilterKey',    # min: 1, max: 500
           Values => [
-            'MyFilterValue', ...      # min: 1, max: 500
-          ],                          # max: 5
+            'MyFilterValue', ...    # min: 1, max: 500
+          ],                        # max: 5
+          Key => 'MyFilterKey',     # min: 1, max: 500
 
         },
         ...
-      ],                              # OPTIONAL
-      MaxResults   => 1,              # OPTIONAL
-      NextToken    => 'MyNextToken',  # OPTIONAL
+      ],                            # OPTIONAL
+      MaxResults   => 1,                # OPTIONAL
+      NextToken    => 'MyNextToken',    # OPTIONAL
       SortCriteria => [
         {
-          Key   => 'MySortKey',       # min: 1, max: 500
-          Value => 'ASC',             # values: ASC, DESC
+          Key   => 'MySortKey',         # min: 1, max: 500
+          Value => 'ASC',               # values: ASC, DESC
 
         },
         ...
-      ],                              # OPTIONAL
+      ],                                # OPTIONAL
     );
 
     # Results:
-    my $Rooms      = $SearchRoomsResponse->Rooms;
     my $NextToken  = $SearchRoomsResponse->NextToken;
+    my $Rooms      = $SearchRoomsResponse->Rooms;
     my $TotalCount = $SearchRoomsResponse->TotalCount;
 
     # Returns a L<Paws::AlexaForBusiness::SearchRoomsResponse> object.

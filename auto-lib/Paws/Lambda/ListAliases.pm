@@ -35,16 +35,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This operation retrieves a Lambda function's aliases
     my $ListAliasesResponse = $lambda->ListAliases(
       {
-        'FunctionName'    => 'myFunction',
-        'FunctionVersion' => 1,
         'MaxItems'        => 123,
+        'FunctionVersion' => 1,
+        'FunctionName'    => 'myFunction',
         'Marker'          => ''
       }
     );
 
     # Results:
-    my $Aliases    = $ListAliasesResponse->Aliases;
     my $NextMarker = $ListAliasesResponse->NextMarker;
+    my $Aliases    = $ListAliasesResponse->Aliases;
 
     # Returns a L<Paws::Lambda::ListAliasesResponse> object.
 

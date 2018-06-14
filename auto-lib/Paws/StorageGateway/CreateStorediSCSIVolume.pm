@@ -37,13 +37,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateStorediSCSIVolumeOutput =
       $storagegateway->CreateStorediSCSIVolume(
       {
+        'PreserveExistingData' => 1,
         'DiskId'               => 'pci-0000:03:00.0-scsi-0:0:0:0',
+        'SnapshotId'           => 'snap-f47b7b94',
         'TargetName'           => 'my-volume',
         'NetworkInterfaceId'   => '10.1.1.1',
-        'PreserveExistingData' => true,
         'GatewayARN' =>
-          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B',
-        'SnapshotId' => 'snap-f47b7b94'
+          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B'
       }
       );
 

@@ -44,8 +44,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Models    = $ListModelsOutput->Models;
     my $NextToken = $ListModelsOutput->NextToken;
+    my $Models    = $ListModelsOutput->Models;
 
     # Returns a L<Paws::SageMaker::ListModelsOutput> object.
 

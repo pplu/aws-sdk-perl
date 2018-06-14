@@ -32,28 +32,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $email->CreateConfigurationSetEventDestination(
       ConfigurationSetName => 'MyConfigurationSetName',
       EventDestination     => {
-        Name               => 'MyEventDestinationName',
         MatchingEventTypes => [
           'send',
           ... # values: send, reject, bounce, complaint, delivery, open, click, renderingFailure
         ],
-        Enabled        => 1,    # OPTIONAL
+        Name                       => 'MyEventDestinationName',
+        Enabled                    => 1,                          # OPTIONAL
+        KinesisFirehoseDestination => {
+          DeliveryStreamARN => 'MyAmazonResourceName',
+          IAMRoleARN        => 'MyAmazonResourceName',
+
+        },                                                        # OPTIONAL
         SNSDestination => {
           TopicARN => 'MyAmazonResourceName',
 
-        },                      # OPTIONAL
-        KinesisFirehoseDestination => {
-          IAMRoleARN        => 'MyAmazonResourceName',
-          DeliveryStreamARN => 'MyAmazonResourceName',
-
-        },                      # OPTIONAL
+        },                                                        # OPTIONAL
         CloudWatchDestination => {
           DimensionConfigurations => [
             {
-              DefaultDimensionValue => 'MyDefaultDimensionValue',
-              DimensionName         => 'MyDimensionName',
+              DimensionName => 'MyDimensionName',
               DimensionValueSource =>
                 'messageTag',    # values: messageTag, emailHeader, linkTag
+              DefaultDimensionValue => 'MyDefaultDimensionValue',
 
             },
             ...

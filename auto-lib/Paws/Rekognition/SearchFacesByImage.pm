@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # the largest face in an S3 bucket stored image.
     my $SearchFacesByImageResponse = $rekognition->SearchFacesByImage(
       {
-        'FaceMatchThreshold' => 95,
         'CollectionId'       => 'myphotos',
         'MaxFaces'           => 5,
+        'FaceMatchThreshold' => 95,
         'Image'              => {
           'S3Object' => {
             'Bucket' => 'mybucket',
@@ -48,11 +48,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $FaceMatches = $SearchFacesByImageResponse->FaceMatches;
     my $SearchedFaceConfidence =
       $SearchFacesByImageResponse->SearchedFaceConfidence;
     my $SearchedFaceBoundingBox =
       $SearchFacesByImageResponse->SearchedFaceBoundingBox;
+    my $FaceMatches = $SearchFacesByImageResponse->FaceMatches;
 
     # Returns a L<Paws::Rekognition::SearchFacesByImageResponse> object.
 

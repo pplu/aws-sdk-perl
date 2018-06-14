@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $TokenNameList = $ListGitHubAccountTokenNamesOutput->TokenNameList;
     my $NextToken     = $ListGitHubAccountTokenNamesOutput->NextToken;
+    my $TokenNameList = $ListGitHubAccountTokenNamesOutput->TokenNameList;
 
     # Returns a L<Paws::CodeDeploy::ListGitHubAccountTokenNamesOutput> object.
 

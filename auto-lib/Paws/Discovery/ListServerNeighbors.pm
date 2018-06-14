@@ -41,9 +41,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $NextToken = $ListServerNeighborsResponse->NextToken;
+    my $Neighbors = $ListServerNeighborsResponse->Neighbors;
     my $KnownDependencyCount =
       $ListServerNeighborsResponse->KnownDependencyCount;
-    my $Neighbors = $ListServerNeighborsResponse->Neighbors;
 
     # Returns a L<Paws::Discovery::ListServerNeighborsResponse> object.
 

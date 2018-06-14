@@ -36,19 +36,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The example completes a multipart upload for a 3 MiB archive.
     my $ArchiveCreationOutput = $glacier->CompleteMultipartUpload(
       {
-        'AccountId' => '-',
         'UploadId' =>
 '19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR7vgFuJV6NtcV5zpsJ',
-        'ArchiveSize' => 3145728,
         'Checksum' =>
           '9628195fcdbcbbe76cdde456d4646fa7de5f219fb39823836d81f0cc0e18aa67',
-        'VaultName' => 'my-vault'
+        'AccountId'   => '-',
+        'ArchiveSize' => 3145728,
+        'VaultName'   => 'my-vault'
       }
     );
 
     # Results:
-    my $location  = $ArchiveCreationOutput->location;
     my $checksum  = $ArchiveCreationOutput->checksum;
+    my $location  = $ArchiveCreationOutput->location;
     my $archiveId = $ArchiveCreationOutput->archiveId;
 
     # Returns a L<Paws::Glacier::ArchiveCreationOutput> object.

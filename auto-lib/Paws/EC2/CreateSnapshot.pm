@@ -41,14 +41,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $State       = $Snapshot->State;
-    my $Description = $Snapshot->Description;
-    my $OwnerId     = $Snapshot->OwnerId;
+    my $VolumeSize  = $Snapshot->VolumeSize;
     my $SnapshotId  = $Snapshot->SnapshotId;
     my $VolumeId    = $Snapshot->VolumeId;
-    my $Tags        = $Snapshot->Tags;
-    my $VolumeSize  = $Snapshot->VolumeSize;
+    my $State       = $Snapshot->State;
+    my $OwnerId     = $Snapshot->OwnerId;
     my $StartTime   = $Snapshot->StartTime;
+    my $Tags        = $Snapshot->Tags;
+    my $Description = $Snapshot->Description;
 
     # Returns a L<Paws::EC2::Snapshot> object.
 

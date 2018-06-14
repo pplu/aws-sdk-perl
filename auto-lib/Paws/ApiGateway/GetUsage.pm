@@ -43,11 +43,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $UsagePlanId = $Usage->UsagePlanId;
-    my $Items       = $Usage->Items;
-    my $StartDate   = $Usage->StartDate;
-    my $Position    = $Usage->Position;
     my $EndDate     = $Usage->EndDate;
+    my $Items       = $Usage->Items;
+    my $Position    = $Usage->Position;
+    my $UsagePlanId = $Usage->UsagePlanId;
+    my $StartDate   = $Usage->StartDate;
 
     # Returns a L<Paws::ApiGateway::Usage> object.
 

@@ -34,12 +34,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example creates a web ACL named CreateExample.
     my $CreateWebACLResponse = $waf->CreateWebACL(
       {
-        'Name'          => 'CreateExample',
+        'ChangeToken'   => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
         'DefaultAction' => {
           'Type' => 'ALLOW'
         },
-        'MetricName'  => 'CreateExample',
-        'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f'
+        'Name'       => 'CreateExample',
+        'MetricName' => 'CreateExample'
       }
     );
 

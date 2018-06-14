@@ -34,18 +34,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $TemplateSubject =
-      $GetCustomVerificationEmailTemplateResponse->TemplateSubject;
-    my $SuccessRedirectionURL =
-      $GetCustomVerificationEmailTemplateResponse->SuccessRedirectionURL;
+    my $FailureRedirectionURL =
+      $GetCustomVerificationEmailTemplateResponse->FailureRedirectionURL;
     my $TemplateName =
       $GetCustomVerificationEmailTemplateResponse->TemplateName;
     my $FromEmailAddress =
       $GetCustomVerificationEmailTemplateResponse->FromEmailAddress;
+    my $SuccessRedirectionURL =
+      $GetCustomVerificationEmailTemplateResponse->SuccessRedirectionURL;
     my $TemplateContent =
       $GetCustomVerificationEmailTemplateResponse->TemplateContent;
-    my $FailureRedirectionURL =
-      $GetCustomVerificationEmailTemplateResponse->FailureRedirectionURL;
+    my $TemplateSubject =
+      $GetCustomVerificationEmailTemplateResponse->TemplateSubject;
 
     # Returns a L<Paws::SES::GetCustomVerificationEmailTemplateResponse> object.
 

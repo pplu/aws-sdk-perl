@@ -36,14 +36,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InitialVersion  => {
         Functions => [
           {
-            FunctionArn           => 'My__string',
             FunctionConfiguration => {
-              Timeout      => 1,              # OPTIONAL
-              EncodingType => 'binary',       # values: binary, json; OPTIONAL
-              Executable   => 'My__string',
-              Environment  => {
-                AccessSysfs => 1,                                  # OPTIONAL
-                Variables => { 'My__string' => 'My__string', },    # OPTIONAL
+              ExecArgs    => 'My__string',
+              Executable  => 'My__string',
+              Environment => {
                 ResourceAccessPolicies => [
                   {
                     ResourceId => 'My__string',
@@ -51,12 +47,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },
                   ...
                 ],                                # OPTIONAL
+                Variables => { 'My__string' => 'My__string', },    # OPTIONAL
+                AccessSysfs => 1,                                  # OPTIONAL
               },    # OPTIONAL
-              MemorySize => 1,              # OPTIONAL
-              Pinned     => 1,              # OPTIONAL
-              ExecArgs   => 'My__string',
+              MemorySize   => 1,           # OPTIONAL
+              EncodingType => 'binary',    # values: binary, json; OPTIONAL
+              Pinned       => 1,           # OPTIONAL
+              Timeout      => 1,           # OPTIONAL
             },    # OPTIONAL
-            Id => 'My__string',
+            Id          => 'My__string',
+            FunctionArn => 'My__string',
           },
           ...
         ],        # OPTIONAL
@@ -65,13 +65,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $LastUpdatedTimestamp =
-      $CreateFunctionDefinitionResponse->LastUpdatedTimestamp;
-    my $Id               = $CreateFunctionDefinitionResponse->Id;
-    my $LatestVersionArn = $CreateFunctionDefinitionResponse->LatestVersionArn;
-    my $Arn              = $CreateFunctionDefinitionResponse->Arn;
     my $CreationTimestamp =
       $CreateFunctionDefinitionResponse->CreationTimestamp;
+    my $LatestVersionArn = $CreateFunctionDefinitionResponse->LatestVersionArn;
+    my $Id               = $CreateFunctionDefinitionResponse->Id;
+    my $LastUpdatedTimestamp =
+      $CreateFunctionDefinitionResponse->LastUpdatedTimestamp;
+    my $Arn           = $CreateFunctionDefinitionResponse->Arn;
     my $Name          = $CreateFunctionDefinitionResponse->Name;
     my $LatestVersion = $CreateFunctionDefinitionResponse->LatestVersion;
 

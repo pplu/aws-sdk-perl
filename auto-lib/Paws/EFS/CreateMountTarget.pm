@@ -41,13 +41,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $MountTargetId      = $MountTargetDescription->MountTargetId;
-    my $OwnerId            = $MountTargetDescription->OwnerId;
-    my $FileSystemId       = $MountTargetDescription->FileSystemId;
-    my $NetworkInterfaceId = $MountTargetDescription->NetworkInterfaceId;
-    my $IpAddress          = $MountTargetDescription->IpAddress;
     my $LifeCycleState     = $MountTargetDescription->LifeCycleState;
     my $SubnetId           = $MountTargetDescription->SubnetId;
+    my $NetworkInterfaceId = $MountTargetDescription->NetworkInterfaceId;
+    my $IpAddress          = $MountTargetDescription->IpAddress;
+    my $FileSystemId       = $MountTargetDescription->FileSystemId;
+    my $OwnerId            = $MountTargetDescription->OwnerId;
+    my $MountTargetId      = $MountTargetDescription->MountTargetId;
 
     # Returns a L<Paws::EFS::MountTargetDescription> object.
 

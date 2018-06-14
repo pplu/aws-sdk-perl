@@ -59,17 +59,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $HomePageUrl   = $CreateApplicationResponse->HomePageUrl;
-    my $LicenseUrl    = $CreateApplicationResponse->LicenseUrl;
-    my $Labels        = $CreateApplicationResponse->Labels;
-    my $ApplicationId = $CreateApplicationResponse->ApplicationId;
-    my $Description   = $CreateApplicationResponse->Description;
-    my $Version       = $CreateApplicationResponse->Version;
-    my $Name          = $CreateApplicationResponse->Name;
     my $CreationTime  = $CreateApplicationResponse->CreationTime;
-    my $ReadmeUrl     = $CreateApplicationResponse->ReadmeUrl;
-    my $Author        = $CreateApplicationResponse->Author;
+    my $HomePageUrl   = $CreateApplicationResponse->HomePageUrl;
     my $SpdxLicenseId = $CreateApplicationResponse->SpdxLicenseId;
+    my $ApplicationId = $CreateApplicationResponse->ApplicationId;
+    my $Version       = $CreateApplicationResponse->Version;
+    my $Labels        = $CreateApplicationResponse->Labels;
+    my $LicenseUrl    = $CreateApplicationResponse->LicenseUrl;
+    my $ReadmeUrl     = $CreateApplicationResponse->ReadmeUrl;
+    my $Description   = $CreateApplicationResponse->Description;
+    my $Name          = $CreateApplicationResponse->Name;
+    my $Author        = $CreateApplicationResponse->Author;
 
     # Returns a L<Paws::ServerlessRepo::CreateApplicationResponse> object.
 

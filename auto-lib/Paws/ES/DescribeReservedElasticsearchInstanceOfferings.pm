@@ -38,11 +38,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $NextToken =
+      $DescribeReservedElasticsearchInstanceOfferingsResponse->NextToken;
     my $ReservedElasticsearchInstanceOfferings =
       $DescribeReservedElasticsearchInstanceOfferingsResponse
       ->ReservedElasticsearchInstanceOfferings;
-    my $NextToken =
-      $DescribeReservedElasticsearchInstanceOfferingsResponse->NextToken;
 
 # Returns a L<Paws::ES::DescribeReservedElasticsearchInstanceOfferingsResponse> object.
 

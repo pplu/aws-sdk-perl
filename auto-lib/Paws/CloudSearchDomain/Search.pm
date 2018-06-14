@@ -59,10 +59,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $hits   = $SearchResponse->hits;
-    my $facets = $SearchResponse->facets;
-    my $stats  = $SearchResponse->stats;
-    my $status = $SearchResponse->status;
+    my $Facets = $SearchResponse->Facets;
+    my $Status = $SearchResponse->Status;
+    my $Hits   = $SearchResponse->Hits;
+    my $Stats  = $SearchResponse->Stats;
 
     # Returns a L<Paws::CloudSearchDomain::SearchResponse> object.
 

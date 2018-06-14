@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $BotAliases = $GetBotAliasesResponse->BotAliases;
     my $NextToken  = $GetBotAliasesResponse->NextToken;
+    my $BotAliases = $GetBotAliasesResponse->BotAliases;
 
     # Returns a L<Paws::LexModels::GetBotAliasesResponse> object.
 

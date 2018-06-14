@@ -34,23 +34,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $servicediscovery = Paws->service('ServiceDiscovery');
     my $CreateServiceResponse = $servicediscovery->CreateService(
       DnsConfig => {
-        NamespaceId => 'MyResourceId',    # max: 64
-        DnsRecords  => [
+        DnsRecords => [
           {
-            Type => 'SRV',                # values: SRV, A, AAAA, CNAME
-            TTL  => 1,                    # max: 2147483647
+            Type => 'SRV',    # values: SRV, A, AAAA, CNAME
+            TTL  => 1,        # max: 2147483647
 
           },
           ...
         ],
+        NamespaceId => 'MyResourceId',    # max: 64
         RoutingPolicy => 'MULTIVALUE',  # values: MULTIVALUE, WEIGHTED; OPTIONAL
       },
       Name              => 'MyServiceName',
       CreatorRequestId  => 'MyResourceId',             # OPTIONAL
       Description       => 'MyResourceDescription',    # OPTIONAL
       HealthCheckConfig => {
-        ResourcePath => 'MyResourcePath',   # max: 255; OPTIONAL
         Type         => 'HTTP',             # values: HTTP, HTTPS, TCP; OPTIONAL
+        ResourcePath => 'MyResourcePath',   # max: 255; OPTIONAL
         FailureThreshold => 1,              # min: 1, max: 10; OPTIONAL
       },    # OPTIONAL
       HealthCheckCustomConfig => {

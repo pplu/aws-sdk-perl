@@ -32,17 +32,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Rule    => 'MyRuleName',
       Targets => [
         {
-          Arn               => 'MyTargetArn',      # min: 1, max: 1600
-          Id                => 'MyTargetId',       # min: 1, max: 64
-          RoleArn           => 'MyRoleArn',        # min: 1, max: 1600; OPTIONAL
-          Input             => 'MyTargetInput',    # max: 8192; OPTIONAL
+          Arn               => 'MyTargetArn',    # min: 1, max: 1600
+          Id                => 'MyTargetId',     # min: 1, max: 64
           KinesisParameters => {
             PartitionKeyPath => 'MyTargetPartitionKeyPath',    # max: 256
 
           },    # OPTIONAL
-          InputPath     => 'MyTargetInputPath',    # max: 256; OPTIONAL
-          SqsParameters => {
-            MessageGroupId => 'MyMessageGroupId',    # OPTIONAL
+          EcsParameters => {
+            TaskDefinitionArn => 'MyArn',    # min: 1, max: 1600
+            TaskCount         => 1,          # min: 1, ; OPTIONAL
           },    # OPTIONAL
           InputTransformer => {
             InputTemplate => 'MyTransformerInput',    # min: 1, max: 8192
@@ -51,32 +49,34 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ,    # key: min: 1, max: 256, value: max: 256; OPTIONAL
             },    # max: 10; OPTIONAL
           },    # OPTIONAL
-          RunCommandParameters => {
-            RunCommandTargets => [
-              {
-                Key    => 'MyRunCommandTargetKey',    # min: 1, max: 128
-                Values => [
-                  'MyRunCommandTargetValue', ...      # min: 1, max: 256
-                ],                                    # min: 1, max: 50
-
-              },
-              ...
-            ],                                        # min: 1, max: 5
-
+          InputPath     => 'MyTargetInputPath',    # max: 256; OPTIONAL
+          SqsParameters => {
+            MessageGroupId => 'MyMessageGroupId',    # OPTIONAL
           },    # OPTIONAL
+          RoleArn         => 'MyRoleArn',        # min: 1, max: 1600; OPTIONAL
+          Input           => 'MyTargetInput',    # max: 8192; OPTIONAL
           BatchParameters => {
-            JobName         => 'MyString',
-            JobDefinition   => 'MyString',
+            JobDefinition => 'MyString',
+            JobName       => 'MyString',
+            RetryStrategy => {
+              Attempts => 1,                     # OPTIONAL
+            },    # OPTIONAL
             ArrayProperties => {
               Size => 1,    # OPTIONAL
             },    # OPTIONAL
-            RetryStrategy => {
-              Attempts => 1,    # OPTIONAL
-            },    # OPTIONAL
           },    # OPTIONAL
-          EcsParameters => {
-            TaskDefinitionArn => 'MyArn',    # min: 1, max: 1600
-            TaskCount         => 1,          # min: 1, ; OPTIONAL
+          RunCommandParameters => {
+            RunCommandTargets => [
+              {
+                Values => [
+                  'MyRunCommandTargetValue', ...    # min: 1, max: 256
+                ],                                  # min: 1, max: 50
+                Key => 'MyRunCommandTargetKey',     # min: 1, max: 128
+
+              },
+              ...
+            ],                                      # min: 1, max: 5
+
           },    # OPTIONAL
         },
         ...
@@ -85,8 +85,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $FailedEntryCount = $PutTargetsResponse->FailedEntryCount;
     my $FailedEntries    = $PutTargetsResponse->FailedEntries;
+    my $FailedEntryCount = $PutTargetsResponse->FailedEntryCount;
 
     # Returns a L<Paws::CloudWatchEvents::PutTargetsResponse> object.
 

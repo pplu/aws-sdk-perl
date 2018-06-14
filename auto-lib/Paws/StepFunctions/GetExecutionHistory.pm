@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Events    = $GetExecutionHistoryOutput->Events;
-    my $NextToken = $GetExecutionHistoryOutput->NextToken;
+    my $nextToken = $GetExecutionHistoryOutput->nextToken;
+    my $events    = $GetExecutionHistoryOutput->events;
 
     # Returns a L<Paws::StepFunctions::GetExecutionHistoryOutput> object.
 

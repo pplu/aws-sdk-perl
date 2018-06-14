@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $History = $swf->GetWorkflowExecutionHistory(
       Domain    => 'MyDomainName',
       Execution => {
-        runId      => 'MyWorkflowRunId',    # min: 1, max: 64
         workflowId => 'MyWorkflowId',       # min: 1, max: 256
+        runId      => 'MyWorkflowRunId',    # min: 1, max: 64
 
       },
       MaximumPageSize => 1,                 # OPTIONAL
@@ -44,8 +44,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Events        = $History->Events;
     my $NextPageToken = $History->NextPageToken;
+    my $Events        = $History->Events;
 
     # Returns a L<Paws::SimpleWorkflow::History> object.
 

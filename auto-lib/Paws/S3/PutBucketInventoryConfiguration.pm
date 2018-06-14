@@ -36,32 +36,32 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Bucket                 => 'MyBucketName',
       Id                     => 'MyInventoryId',
       InventoryConfiguration => {
-        IsEnabled   => 1,
+        IncludedObjectVersions => 'All',    # values: All, Current
+        Schedule               => {
+          Frequency => 'Daily',             # values: Daily, Weekly
+
+        },
+        Id          => 'MyInventoryId',
         Destination => {
           S3BucketDestination => {
-            Format     => 'CSV',            # values: CSV, ORC
             Bucket     => 'MyBucketName',
-            Prefix     => 'MyPrefix',       # OPTIONAL
+            Format     => 'CSV',            # values: CSV, ORC
+            AccountId  => 'MyAccountId',    # OPTIONAL
             Encryption => {
+              SSES3 => {
+
+              },                            # OPTIONAL
               SSEKMS => {
                 KeyId => 'MySSEKMSKeyId',
 
               },                            # OPTIONAL
-              SSES3 => {
-
-              },                            # OPTIONAL
             },    # OPTIONAL
-            AccountId => 'MyAccountId',    # OPTIONAL
+            Prefix => 'MyPrefix',    # OPTIONAL
           },
 
         },
-        Id       => 'MyInventoryId',
-        Schedule => {
-          Frequency => 'Daily',            # values: Daily, Weekly
-
-        },
-        IncludedObjectVersions => 'All',    # values: All, Current
-        OptionalFields         => [
+        IsEnabled      => 1,
+        OptionalFields => [
           'Size',
           ... # values: Size, LastModifiedDate, StorageClass, ETag, IsMultipartUploaded, ReplicationStatus, EncryptionStatus
         ],    # OPTIONAL

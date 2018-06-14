@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $nextToken      = $ListEnvironmentsResult->nextToken;
-    my $environmentIds = $ListEnvironmentsResult->environmentIds;
+    my $EnvironmentIds = $ListEnvironmentsResult->EnvironmentIds;
+    my $NextToken      = $ListEnvironmentsResult->NextToken;
 
     # Returns a L<Paws::Cloud9::ListEnvironmentsResult> object.
 

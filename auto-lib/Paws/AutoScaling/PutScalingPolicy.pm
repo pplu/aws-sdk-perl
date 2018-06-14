@@ -43,9 +43,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $PolicyARNType = $autoscaling->PutScalingPolicy(
       {
         'AdjustmentType'       => 'ChangeInCapacity',
-        'PolicyName'           => 'ScaleIn',
+        'ScalingAdjustment'    => -1,
         'AutoScalingGroupName' => 'my-auto-scaling-group',
-        'ScalingAdjustment'    => -1
+        'PolicyName'           => 'ScaleIn'
       }
     );
 

@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Session    = $AssociateSoftwareTokenResponse->Session;
     my $SecretCode = $AssociateSoftwareTokenResponse->SecretCode;
+    my $Session    = $AssociateSoftwareTokenResponse->Session;
 
     # Returns a L<Paws::CognitoIdp::AssociateSoftwareTokenResponse> object.
 

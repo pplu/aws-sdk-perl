@@ -42,20 +42,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RepositoryName     => 'MyRepositoryName',
       ClientRequestToken => 'MyClientRequestToken',    # OPTIONAL
       Location           => {
-        filePath            => 'MyPath',    # OPTIONAL
-        relativeFileVersion => 'BEFORE',    # values: BEFORE, AFTER; OPTIONAL
         filePosition        => 1,           # OPTIONAL
+        relativeFileVersion => 'BEFORE',    # values: BEFORE, AFTER; OPTIONAL
+        filePath            => 'MyPath',    # OPTIONAL
       },    # OPTIONAL
       );
 
     # Results:
-    my $Comment        = $PostCommentForPullRequestOutput->Comment;
-    my $BeforeCommitId = $PostCommentForPullRequestOutput->BeforeCommitId;
-    my $RepositoryName = $PostCommentForPullRequestOutput->RepositoryName;
-    my $PullRequestId  = $PostCommentForPullRequestOutput->PullRequestId;
-    my $BeforeBlobId   = $PostCommentForPullRequestOutput->BeforeBlobId;
-    my $AfterCommitId  = $PostCommentForPullRequestOutput->AfterCommitId;
     my $AfterBlobId    = $PostCommentForPullRequestOutput->AfterBlobId;
+    my $PullRequestId  = $PostCommentForPullRequestOutput->PullRequestId;
+    my $Comment        = $PostCommentForPullRequestOutput->Comment;
+    my $RepositoryName = $PostCommentForPullRequestOutput->RepositoryName;
+    my $BeforeCommitId = $PostCommentForPullRequestOutput->BeforeCommitId;
+    my $AfterCommitId  = $PostCommentForPullRequestOutput->AfterCommitId;
+    my $BeforeBlobId   = $PostCommentForPullRequestOutput->BeforeBlobId;
     my $Location       = $PostCommentForPullRequestOutput->Location;
 
     # Returns a L<Paws::CodeCommit::PostCommentForPullRequestOutput> object.

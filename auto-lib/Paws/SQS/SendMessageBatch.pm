@@ -31,20 +31,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SendMessageBatchResult = $sqs->SendMessageBatch(
       Entries => [
         {
-          Id                     => 'MyString',
           MessageBody            => 'MyString',
-          MessageGroupId         => 'MyString',
-          DelaySeconds           => 1,            # OPTIONAL
+          Id                     => 'MyString',
           MessageDeduplicationId => 'MyString',
+          DelaySeconds           => 1,            # OPTIONAL
+          MessageGroupId         => 'MyString',
           MessageAttributes      => {
             'MyString' => {
               DataType         => 'MyString',
-              StringListValues => [ 'MyString', ... ],    # OPTIONAL
+              BinaryListValues => [ 'BlobBinary', ... ],    # OPTIONAL
+              BinaryValue      => 'BlobBinary',
+              StringListValues => [ 'MyString', ... ],      # OPTIONAL
               StringValue      => 'MyString',
-              BinaryValue      => 'BlobBinary',           # OPTIONAL
-              BinaryListValues => [
-                'BlobBinary', ...                         # OPTIONAL
-              ],                                          # OPTIONAL
             },
           },    # OPTIONAL
         },
@@ -55,8 +53,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Failed     = $SendMessageBatchResult->Failed;
     my $Successful = $SendMessageBatchResult->Successful;
+    my $Failed     = $SendMessageBatchResult->Failed;
 
     # Returns a L<Paws::SQS::SendMessageBatchResult> object.
 

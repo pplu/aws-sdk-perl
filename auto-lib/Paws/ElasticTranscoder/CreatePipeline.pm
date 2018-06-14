@@ -41,35 +41,35 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Role          => 'MyRole',
       AwsKmsKeyArn  => 'MyKeyArn',       # OPTIONAL
       ContentConfig => {
-        StorageClass => 'MyStorageClass',    # OPTIONAL
         Bucket       => 'MyBucketName',
+        StorageClass => 'MyStorageClass',    # OPTIONAL
         Permissions  => [
           {
-            Access => [ 'MyAccessControl', ... ],   # max: 30; OPTIONAL
-            Grantee => 'MyGrantee',                 # min: 1, max: 255; OPTIONAL
-            GranteeType => 'MyGranteeType',         # OPTIONAL
+            GranteeType => 'MyGranteeType',    # OPTIONAL
+            Grantee     => 'MyGrantee',        # min: 1, max: 255; OPTIONAL
+            Access => [ 'MyAccessControl', ... ],    # max: 30; OPTIONAL
           },
           ...
-        ],                                          # max: 30; OPTIONAL
+        ],                                           # max: 30; OPTIONAL
       },    # OPTIONAL
       Notifications => {
-        Warning     => 'MySnsTopic',    # OPTIONAL
         Completed   => 'MySnsTopic',    # OPTIONAL
         Progressing => 'MySnsTopic',    # OPTIONAL
         Error       => 'MySnsTopic',    # OPTIONAL
+        Warning     => 'MySnsTopic',    # OPTIONAL
       },    # OPTIONAL
       OutputBucket    => 'MyBucketName',    # OPTIONAL
       ThumbnailConfig => {
-        StorageClass => 'MyStorageClass',    # OPTIONAL
         Bucket       => 'MyBucketName',
+        StorageClass => 'MyStorageClass',    # OPTIONAL
         Permissions  => [
           {
-            Access => [ 'MyAccessControl', ... ],   # max: 30; OPTIONAL
-            Grantee => 'MyGrantee',                 # min: 1, max: 255; OPTIONAL
-            GranteeType => 'MyGranteeType',         # OPTIONAL
+            GranteeType => 'MyGranteeType',    # OPTIONAL
+            Grantee     => 'MyGrantee',        # min: 1, max: 255; OPTIONAL
+            Access => [ 'MyAccessControl', ... ],    # max: 30; OPTIONAL
           },
           ...
-        ],                                          # max: 30; OPTIONAL
+        ],                                           # max: 30; OPTIONAL
       },    # OPTIONAL
     );
 

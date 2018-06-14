@@ -35,18 +35,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # description. It also enables remote access of devices in the device pool.
     my $UpdateDevicePoolResult = $devicefarm->UpdateDevicePool(
       {
+        'Name'  => 'NewName',
         'Rules' => [
 
           {
             'Operator'  => 'EQUALS',
-            'Value'     => 'True',
-            'Attribute' => 'REMOTE_ACCESS_ENABLED'
+            'Attribute' => 'REMOTE_ACCESS_ENABLED',
+            'Value'     => 'True'
           }
         ],
-        'Name' => 'NewName',
+        'Description' => 'NewDescription',
         'Arn' =>
-'arn:aws:devicefarm:us-west-2::devicepool:082d10e5-d7d7-48a5-ba5c-12345EXAMPLE',
-        'Description' => 'NewDescription'
+'arn:aws:devicefarm:us-west-2::devicepool:082d10e5-d7d7-48a5-ba5c-12345EXAMPLE'
       }
     );
 

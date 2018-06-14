@@ -33,10 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeParametersResult = $ssm->DescribeParameters(
       Filters => [
         {
-          Key    => 'Name',    # values: Name, Type, KeyId
           Values => [
             'MyParametersFilterValue', ...    # min: 1, max: 1024
           ],                                  # min: 1, max: 50
+          Key => 'Name',                      # values: Name, Type, KeyId
 
         },
         ...
@@ -56,8 +56,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken  = $DescribeParametersResult->NextToken;
     my $Parameters = $DescribeParametersResult->Parameters;
+    my $NextToken  = $DescribeParametersResult->NextToken;
 
     # Returns a L<Paws::SSM::DescribeParametersResult> object.
 

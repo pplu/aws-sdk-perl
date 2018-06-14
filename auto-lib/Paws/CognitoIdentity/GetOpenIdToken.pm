@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $IdentityId = $GetOpenIdTokenResponse->IdentityId;
     my $Token      = $GetOpenIdTokenResponse->Token;
+    my $IdentityId = $GetOpenIdTokenResponse->IdentityId;
 
     # Returns a L<Paws::CognitoIdentity::GetOpenIdTokenResponse> object.
 

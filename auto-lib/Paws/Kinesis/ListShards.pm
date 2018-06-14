@@ -40,8 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Shards    = $ListShardsOutput->Shards;
     my $NextToken = $ListShardsOutput->NextToken;
+    my $Shards    = $ListShardsOutput->Shards;
 
     # Returns a L<Paws::Kinesis::ListShardsOutput> object.
 

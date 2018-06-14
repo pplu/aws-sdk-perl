@@ -39,10 +39,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $ProvisioningArtifactDetail =
-      $DescribeProvisioningArtifactOutput->ProvisioningArtifactDetail;
     my $Status = $DescribeProvisioningArtifactOutput->Status;
     my $Info   = $DescribeProvisioningArtifactOutput->Info;
+    my $ProvisioningArtifactDetail =
+      $DescribeProvisioningArtifactOutput->ProvisioningArtifactDetail;
 
  # Returns a L<Paws::ServiceCatalog::DescribeProvisioningArtifactOutput> object.
 

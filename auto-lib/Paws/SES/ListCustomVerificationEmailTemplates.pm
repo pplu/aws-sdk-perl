@@ -35,10 +35,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $NextToken = $ListCustomVerificationEmailTemplatesResponse->NextToken;
     my $CustomVerificationEmailTemplates =
       $ListCustomVerificationEmailTemplatesResponse
       ->CustomVerificationEmailTemplates;
+    my $NextToken = $ListCustomVerificationEmailTemplatesResponse->NextToken;
 
   # Returns a L<Paws::SES::ListCustomVerificationEmailTemplatesResponse> object.
 

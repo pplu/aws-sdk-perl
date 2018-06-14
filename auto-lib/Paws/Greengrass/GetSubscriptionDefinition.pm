@@ -35,15 +35,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $Id = $GetSubscriptionDefinitionResponse->Id;
-    my $LastUpdatedTimestamp =
-      $GetSubscriptionDefinitionResponse->LastUpdatedTimestamp;
-    my $LatestVersion = $GetSubscriptionDefinitionResponse->LatestVersion;
-    my $Name          = $GetSubscriptionDefinitionResponse->Name;
     my $CreationTimestamp =
       $GetSubscriptionDefinitionResponse->CreationTimestamp;
-    my $Arn              = $GetSubscriptionDefinitionResponse->Arn;
     my $LatestVersionArn = $GetSubscriptionDefinitionResponse->LatestVersionArn;
+    my $Id               = $GetSubscriptionDefinitionResponse->Id;
+    my $LastUpdatedTimestamp =
+      $GetSubscriptionDefinitionResponse->LastUpdatedTimestamp;
+    my $Arn           = $GetSubscriptionDefinitionResponse->Arn;
+    my $Name          = $GetSubscriptionDefinitionResponse->Name;
+    my $LatestVersion = $GetSubscriptionDefinitionResponse->LatestVersion;
 
     # Returns a L<Paws::Greengrass::GetSubscriptionDefinitionResponse> object.
 

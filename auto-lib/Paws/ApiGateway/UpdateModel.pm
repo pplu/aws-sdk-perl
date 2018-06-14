@@ -35,11 +35,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RestApiId       => 'MyString',
       PatchOperations => [
         {
-          from => 'MyString',
-          op =>
-            'add',    # values: add, remove, replace, move, copy, test; OPTIONAL
+          from  => 'MyString',
           value => 'MyString',
           path  => 'MyString',
+          op =>
+            'add',    # values: add, remove, replace, move, copy, test; OPTIONAL
         },
         ...
       ],              # OPTIONAL
@@ -47,9 +47,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $Schema      = $Model->Schema;
-    my $Description = $Model->Description;
     my $Id          = $Model->Id;
     my $ContentType = $Model->ContentType;
+    my $Description = $Model->Description;
     my $Name        = $Model->Name;
 
     # Returns a L<Paws::ApiGateway::Model> object.

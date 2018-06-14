@@ -53,8 +53,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],                                       # OPTIONAL
       AnalyticsConfiguration => {
         ExternalId     => 'MyStringType',
-        RoleArn        => 'MyArnType',         # min: 20, max: 2048
         ApplicationId  => 'MyHexStringType',
+        RoleArn        => 'MyArnType',         # min: 20, max: 2048
         UserDataShared => 1,
       },    # OPTIONAL
       CallbackURLs => [

@@ -52,8 +52,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Results   = $DescribeMLModelsOutput->Results;
     my $NextToken = $DescribeMLModelsOutput->NextToken;
+    my $Results   = $DescribeMLModelsOutput->Results;
 
     # Returns a L<Paws::MachineLearning::DescribeMLModelsOutput> object.
 

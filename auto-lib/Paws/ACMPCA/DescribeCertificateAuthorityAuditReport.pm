@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $CreatedAt = $DescribeCertificateAuthorityAuditReportResponse->CreatedAt;
     my $S3Key     = $DescribeCertificateAuthorityAuditReportResponse->S3Key;
+    my $CreatedAt = $DescribeCertificateAuthorityAuditReportResponse->CreatedAt;
     my $S3BucketName =
       $DescribeCertificateAuthorityAuditReportResponse->S3BucketName;
     my $AuditReportStatus =

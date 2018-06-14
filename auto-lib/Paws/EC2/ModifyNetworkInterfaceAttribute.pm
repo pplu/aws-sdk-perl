@@ -37,11 +37,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # interface.
     $ec2->ModifyNetworkInterfaceAttribute(
       {
-        'Attachment' => {
-          'AttachmentId'        => 'eni-attach-43348162',
-          'DeleteOnTermination' => 0
-        },
-        'NetworkInterfaceId' => 'eni-686ea200'
+        'NetworkInterfaceId' => 'eni-686ea200',
+        'Attachment'         => {
+          'DeleteOnTermination' => 0,
+          'AttachmentId'        => 'eni-attach-43348162'
+        }
       }
     );
 
@@ -62,8 +62,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # network interface.
     $ec2->ModifyNetworkInterfaceAttribute(
       {
-        'NetworkInterfaceId' => 'eni-686ea200',
-        'Groups'             => [ 'sg-903004f8', 'sg-1a2b3c4d' ]
+        'Groups'             => [ 'sg-903004f8', 'sg-1a2b3c4d' ],
+        'NetworkInterfaceId' => 'eni-686ea200'
       }
     );
 
@@ -72,10 +72,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # specified network interface.
     $ec2->ModifyNetworkInterfaceAttribute(
       {
-        'NetworkInterfaceId' => 'eni-686ea200',
-        'SourceDestCheck'    => {
+        'SourceDestCheck' => {
           'Value' => 0
-        }
+        },
+        'NetworkInterfaceId' => 'eni-686ea200'
       }
     );
 

@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # retention period and preferred backup window.
     my $PromoteReadReplicaResult = $rds->PromoteReadReplica(
       {
-        'BackupRetentionPeriod' => 1,
         'DBInstanceIdentifier'  => 'mydbreadreplica',
-        'PreferredBackupWindow' => '03:30-04:00'
+        'PreferredBackupWindow' => '03:30-04:00',
+        'BackupRetentionPeriod' => 1
       }
     );
 

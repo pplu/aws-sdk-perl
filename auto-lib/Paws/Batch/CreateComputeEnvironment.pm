@@ -40,26 +40,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       {
         'ComputeEnvironmentName' => 'C4OnDemand',
         'Type'                   => 'MANAGED',
-        'ServiceRole' => 'arn:aws:iam::012345678910:role/AWSBatchServiceRole',
-        'State'       => 'ENABLED',
-        'ComputeResources' => {
-          'Ec2KeyPair' => 'id_rsa',
-          'MinvCpus'   => 0,
-          'Subnets' =>
-            [ 'subnet-220c0e0a', 'subnet-1a95556d', 'subnet-978f6dce' ],
+        'ComputeResources'       => {
+          'Ec2KeyPair'       => 'id_rsa',
+          'DesiredvCpus'     => 48,
+          'SecurityGroupIds' => ['sg-cf5093b2'],
+          'Tags'             => {
+            'Name' => 'Batch Instance - C4OnDemand'
+          },
+          'InstanceRole'  => 'ecsInstanceRole',
           'InstanceTypes' => [
             'c4.large', 'c4.xlarge', 'c4.2xlarge', 'c4.4xlarge',
             'c4.8xlarge'
           ],
-          'DesiredvCpus'     => 48,
-          'SecurityGroupIds' => ['sg-cf5093b2'],
-          'InstanceRole'     => 'ecsInstanceRole',
-          'Type'             => 'EC2',
-          'MaxvCpus'         => 128,
-          'Tags'             => {
-            'Name' => 'Batch Instance - C4OnDemand'
-          }
-        }
+          'MaxvCpus' => 128,
+          'Type'     => 'EC2',
+          'Subnets' =>
+            [ 'subnet-220c0e0a', 'subnet-1a95556d', 'subnet-978f6dce' ],
+          'MinvCpus' => 0
+        },
+        'State'       => 'ENABLED',
+        'ServiceRole' => 'arn:aws:iam::012345678910:role/AWSBatchServiceRole'
       }
     );
 
@@ -78,27 +78,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateComputeEnvironmentResponse = $batch->CreateComputeEnvironment(
       {
         'ComputeEnvironmentName' => 'M4Spot',
-        'State'                  => 'ENABLED',
-        'ServiceRole' => 'arn:aws:iam::012345678910:role/AWSBatchServiceRole',
-        'Type'        => 'MANAGED',
-        'ComputeResources' => {
-          'Ec2KeyPair'    => 'id_rsa',
-          'InstanceTypes' => ['m4'],
-          'Subnets' =>
-            [ 'subnet-220c0e0a', 'subnet-1a95556d', 'subnet-978f6dce' ],
-          'MinvCpus' => 0,
-          'SpotIamFleetRole' =>
-            'arn:aws:iam::012345678910:role/aws-ec2-spot-fleet-role',
-          'Type'             => 'SPOT',
-          'SecurityGroupIds' => ['sg-cf5093b2'],
-          'InstanceRole'     => 'ecsInstanceRole',
+        'Type'                   => 'MANAGED',
+        'ComputeResources'       => {
+          'Ec2KeyPair'       => 'id_rsa',
           'BidPercentage'    => 20,
           'DesiredvCpus'     => 4,
+          'SecurityGroupIds' => ['sg-cf5093b2'],
           'Tags'             => {
             'Name' => 'Batch Instance - M4Spot'
           },
-          'MaxvCpus' => 128
-        }
+          'InstanceRole'  => 'ecsInstanceRole',
+          'InstanceTypes' => ['m4'],
+          'MaxvCpus'      => 128,
+          'SpotIamFleetRole' =>
+            'arn:aws:iam::012345678910:role/aws-ec2-spot-fleet-role',
+          'Type' => 'SPOT',
+          'Subnets' =>
+            [ 'subnet-220c0e0a', 'subnet-1a95556d', 'subnet-978f6dce' ],
+          'MinvCpus' => 0
+        },
+        'State'       => 'ENABLED',
+        'ServiceRole' => 'arn:aws:iam::012345678910:role/AWSBatchServiceRole'
       }
     );
 

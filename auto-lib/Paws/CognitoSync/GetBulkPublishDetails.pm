@@ -34,13 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $IdentityPoolId = $GetBulkPublishDetailsResponse->IdentityPoolId;
+    my $FailureMessage = $GetBulkPublishDetailsResponse->FailureMessage;
     my $BulkPublishCompleteTime =
       $GetBulkPublishDetailsResponse->BulkPublishCompleteTime;
-    my $FailureMessage = $GetBulkPublishDetailsResponse->FailureMessage;
+    my $BulkPublishStatus = $GetBulkPublishDetailsResponse->BulkPublishStatus;
+    my $IdentityPoolId    = $GetBulkPublishDetailsResponse->IdentityPoolId;
     my $BulkPublishStartTime =
       $GetBulkPublishDetailsResponse->BulkPublishStartTime;
-    my $BulkPublishStatus = $GetBulkPublishDetailsResponse->BulkPublishStatus;
 
     # Returns a L<Paws::CognitoSync::GetBulkPublishDetailsResponse> object.
 

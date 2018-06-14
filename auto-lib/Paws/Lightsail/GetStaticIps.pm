@@ -32,8 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextPageToken = $GetStaticIpsResult->NextPageToken;
     my $StaticIps     = $GetStaticIpsResult->StaticIps;
+    my $NextPageToken = $GetStaticIpsResult->NextPageToken;
 
     # Returns a L<Paws::Lightsail::GetStaticIpsResult> object.
 

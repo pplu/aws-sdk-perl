@@ -68,13 +68,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CopyPartResult       = $UploadPartCopyOutput->CopyPartResult;
     my $ServerSideEncryption = $UploadPartCopyOutput->ServerSideEncryption;
     my $SSECustomerKeyMD5    = $UploadPartCopyOutput->SSECustomerKeyMD5;
+    my $SSECustomerAlgorithm = $UploadPartCopyOutput->SSECustomerAlgorithm;
+    my $CopyPartResult       = $UploadPartCopyOutput->CopyPartResult;
+    my $SSEKMSKeyId          = $UploadPartCopyOutput->SSEKMSKeyId;
     my $RequestCharged       = $UploadPartCopyOutput->RequestCharged;
     my $CopySourceVersionId  = $UploadPartCopyOutput->CopySourceVersionId;
-    my $SSEKMSKeyId          = $UploadPartCopyOutput->SSEKMSKeyId;
-    my $SSECustomerAlgorithm = $UploadPartCopyOutput->SSECustomerAlgorithm;
 
     # Returns a L<Paws::S3::UploadPartCopyOutput> object.
 

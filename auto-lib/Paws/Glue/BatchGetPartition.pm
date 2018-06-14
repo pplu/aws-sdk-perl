@@ -46,8 +46,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Partitions      = $BatchGetPartitionResponse->Partitions;
     my $UnprocessedKeys = $BatchGetPartitionResponse->UnprocessedKeys;
+    my $Partitions      = $BatchGetPartitionResponse->Partitions;
 
     # Returns a L<Paws::Glue::BatchGetPartitionResponse> object.
 

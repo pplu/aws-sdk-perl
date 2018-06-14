@@ -38,18 +38,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $DBClusterIdentifier = $DBClusterBacktrack->DBClusterIdentifier;
-    my $BacktrackTo         = $DBClusterBacktrack->BacktrackTo;
-    my $Status              = $DBClusterBacktrack->Status;
-    my $BacktrackedFrom     = $DBClusterBacktrack->BacktrackedFrom;
     my $BacktrackIdentifier = $DBClusterBacktrack->BacktrackIdentifier;
+    my $Status              = $DBClusterBacktrack->Status;
+    my $DBClusterIdentifier = $DBClusterBacktrack->DBClusterIdentifier;
     my $BacktrackRequestCreationTime =
       $DBClusterBacktrack->BacktrackRequestCreationTime;
+    my $BacktrackedFrom = $DBClusterBacktrack->BacktrackedFrom;
+    my $BacktrackTo     = $DBClusterBacktrack->BacktrackTo;
 
     # Returns a L<Paws::RDS::DBClusterBacktrack> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/BacktrackDBCluster>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31>
 
 =head1 ATTRIBUTES
 

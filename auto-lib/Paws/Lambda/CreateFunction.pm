@@ -46,37 +46,37 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example creates a Lambda function.
     my $FunctionConfiguration = $lambda->CreateFunction(
       {
-        'Handler' => 'souce_file.handler_name',
+        'Role'    => 'arn:aws:iam::123456789012:role/service-role/role-name',
         'Runtime' => 'nodejs4.3',
-        'Code'    => {
+        'Publish' => 1,
+        'FunctionName' => 'MyFunction',
+        'Code'         => {
 
         },
-        'Publish'    => true,
+        'Handler'    => 'souce_file.handler_name',
         'MemorySize' => 128,
-        'Role'       => 'arn:aws:iam::123456789012:role/service-role/role-name',
-        'Timeout'    => 15,
-        'Description'  => '',
-        'FunctionName' => 'MyFunction',
-        'VpcConfig'    => {
+        'VpcConfig'  => {
 
-        }
+        },
+        'Timeout'     => 15,
+        'Description' => ''
       }
     );
 
     # Results:
-    my $Handler      = $FunctionConfiguration->Handler;
-    my $FunctionArn  = $FunctionConfiguration->FunctionArn;
-    my $Runtime      = $FunctionConfiguration->Runtime;
-    my $MemorySize   = $FunctionConfiguration->MemorySize;
     my $Role         = $FunctionConfiguration->Role;
-    my $Timeout      = $FunctionConfiguration->Timeout;
-    my $LastModified = $FunctionConfiguration->LastModified;
-    my $Version      = $FunctionConfiguration->Version;
+    my $Runtime      = $FunctionConfiguration->Runtime;
     my $FunctionName = $FunctionConfiguration->FunctionName;
+    my $CodeSize     = $FunctionConfiguration->CodeSize;
+    my $Version      = $FunctionConfiguration->Version;
+    my $Handler      = $FunctionConfiguration->Handler;
+    my $MemorySize   = $FunctionConfiguration->MemorySize;
+    my $VpcConfig    = $FunctionConfiguration->VpcConfig;
+    my $FunctionArn  = $FunctionConfiguration->FunctionArn;
+    my $Timeout      = $FunctionConfiguration->Timeout;
     my $Description  = $FunctionConfiguration->Description;
     my $CodeSha256   = $FunctionConfiguration->CodeSha256;
-    my $VpcConfig    = $FunctionConfiguration->VpcConfig;
-    my $CodeSize     = $FunctionConfiguration->CodeSize;
+    my $LastModified = $FunctionConfiguration->LastModified;
 
     # Returns a L<Paws::Lambda::FunctionConfiguration> object.
 

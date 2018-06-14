@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $NextToken = $ListAWSServiceAccessForOrganizationResponse->NextToken;
     my $EnabledServicePrincipals =
       $ListAWSServiceAccessForOrganizationResponse->EnabledServicePrincipals;
-    my $NextToken = $ListAWSServiceAccessForOrganizationResponse->NextToken;
 
 # Returns a L<Paws::Organizations::ListAWSServiceAccessForOrganizationResponse> object.
 

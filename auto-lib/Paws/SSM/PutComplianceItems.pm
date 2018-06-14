@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ComplianceType   => 'MyComplianceTypeName',
       ExecutionSummary => {
         ExecutionTime => '1970-01-01T01:00:00',
-        ExecutionType => 'MyComplianceExecutionType',    # max: 50; OPTIONAL
         ExecutionId   => 'MyComplianceExecutionId',      # max: 100; OPTIONAL
+        ExecutionType => 'MyComplianceExecutionType',    # max: 50; OPTIONAL
       },
       Items => [
         {
@@ -48,8 +48,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'MyAttributeName' =>
               'MyAttributeValue',    # key: min: 1, max: 64, value: max: 4096
           },    # OPTIONAL
-          Id    => 'MyComplianceItemId',       # min: 1, max: 100; OPTIONAL
           Title => 'MyComplianceItemTitle',    # max: 500; OPTIONAL
+          Id    => 'MyComplianceItemId',       # min: 1, max: 100; OPTIONAL
         },
         ...
       ],

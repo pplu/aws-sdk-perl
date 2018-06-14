@@ -40,14 +40,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       PageSize     => 1,                # OPTIONAL
       PageToken    => 'MyPageToken',    # OPTIONAL
       SearchFilter => {
-        Value => 'MySearchFilterValue',    # OPTIONAL
         Key   => 'MySearchFilterKey',      # OPTIONAL
+        Value => 'MySearchFilterValue',    # OPTIONAL
       },    # OPTIONAL
     );
 
     # Results:
-    my $RecordDetails = $ListRecordHistoryOutput->RecordDetails;
     my $NextPageToken = $ListRecordHistoryOutput->NextPageToken;
+    my $RecordDetails = $ListRecordHistoryOutput->RecordDetails;
 
     # Returns a L<Paws::ServiceCatalog::ListRecordHistoryOutput> object.
 

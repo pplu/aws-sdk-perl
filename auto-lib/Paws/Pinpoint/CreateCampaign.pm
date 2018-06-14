@@ -32,220 +32,220 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateCampaignResponse = $pinpoint->CreateCampaign(
       ApplicationId        => 'My__string',
       WriteCampaignRequest => {
-        Schedule => {
-          QuietTime => {
-            End   => 'My__string',
-            Start => 'My__string',
-          },    # OPTIONAL
-          EndTime   => 'My__string',
-          Timezone  => 'My__string',
-          StartTime => 'My__string',
-          Frequency =>
-            'ONCE',    # values: ONCE, HOURLY, DAILY, WEEKLY, MONTHLY; OPTIONAL
-          IsLocalTime => 1,    # OPTIONAL
+        SegmentVersion => 1,              # OPTIONAL
+        SegmentId      => 'My__string',
+        Limits         => {
+          MessagesPerSecond => 1,         # OPTIONAL
+          Daily             => 1,         # OPTIONAL
+          MaximumDuration   => 1,         # OPTIONAL
+          Total             => 1,         # OPTIONAL
         },    # OPTIONAL
-        IsPaused       => 1,    # OPTIONAL
         HoldoutPercent => 1,    # OPTIONAL
         Hook           => {
-          Mode => 'DELIVERY',    # values: DELIVERY, FILTER; OPTIONAL
           LambdaFunctionName => 'My__string',
-          WebUrl             => 'My__string',
-        },    # OPTIONAL
-        Description => 'My__string',
-        Name        => 'My__string',
-        Limits      => {
-          Total             => 1,    # OPTIONAL
-          Daily             => 1,    # OPTIONAL
-          MessagesPerSecond => 1,    # OPTIONAL
-          MaximumDuration   => 1,    # OPTIONAL
-        },    # OPTIONAL
-        TreatmentName        => 'My__string',
-        TreatmentDescription => 'My__string',
-        MessageConfiguration => {
-          ADMMessage => {
-            MediaUrl   => 'My__string',
-            Title      => 'My__string',
-            JsonBody   => 'My__string',
-            SilentPush => 1,              # OPTIONAL
-            RawContent => 'My__string',
-            Body       => 'My__string',
-            Action => 'OPEN_APP',   # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
-            ImageIconUrl      => 'My__string',
-            Url               => 'My__string',
-            ImageSmallIconUrl => 'My__string',
-            ImageUrl          => 'My__string',
-          },    # OPTIONAL
-          DefaultMessage => {
-            MediaUrl   => 'My__string',
-            Title      => 'My__string',
-            JsonBody   => 'My__string',
-            SilentPush => 1,              # OPTIONAL
-            RawContent => 'My__string',
-            Body       => 'My__string',
-            Action => 'OPEN_APP',   # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
-            ImageIconUrl      => 'My__string',
-            Url               => 'My__string',
-            ImageSmallIconUrl => 'My__string',
-            ImageUrl          => 'My__string',
-          },    # OPTIONAL
-          EmailMessage => {
-            Body        => 'My__string',
-            HtmlBody    => 'My__string',
-            FromAddress => 'My__string',
-            Title       => 'My__string',
-          },    # OPTIONAL
-          SMSMessage => {
-            Body => 'My__string',
-            MessageType =>
-              'TRANSACTIONAL',    # values: TRANSACTIONAL, PROMOTIONAL; OPTIONAL
-            SenderId => 'My__string',
-          },    # OPTIONAL
-          GCMMessage => {
-            MediaUrl   => 'My__string',
-            Title      => 'My__string',
-            JsonBody   => 'My__string',
-            SilentPush => 1,              # OPTIONAL
-            RawContent => 'My__string',
-            Body       => 'My__string',
-            Action => 'OPEN_APP',   # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
-            ImageIconUrl      => 'My__string',
-            Url               => 'My__string',
-            ImageSmallIconUrl => 'My__string',
-            ImageUrl          => 'My__string',
-          },    # OPTIONAL
-          APNSMessage => {
-            MediaUrl   => 'My__string',
-            Title      => 'My__string',
-            JsonBody   => 'My__string',
-            SilentPush => 1,              # OPTIONAL
-            RawContent => 'My__string',
-            Body       => 'My__string',
-            Action => 'OPEN_APP',   # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
-            ImageIconUrl      => 'My__string',
-            Url               => 'My__string',
-            ImageSmallIconUrl => 'My__string',
-            ImageUrl          => 'My__string',
-          },    # OPTIONAL
-          BaiduMessage => {
-            MediaUrl   => 'My__string',
-            Title      => 'My__string',
-            JsonBody   => 'My__string',
-            SilentPush => 1,              # OPTIONAL
-            RawContent => 'My__string',
-            Body       => 'My__string',
-            Action => 'OPEN_APP',   # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
-            ImageIconUrl      => 'My__string',
-            Url               => 'My__string',
-            ImageSmallIconUrl => 'My__string',
-            ImageUrl          => 'My__string',
-          },    # OPTIONAL
+          Mode   => 'DELIVERY',     # values: DELIVERY, FILTER; OPTIONAL
+          WebUrl => 'My__string',
         },    # OPTIONAL
         AdditionalTreatments => [
           {
-            TreatmentDescription => 'My__string',
-            TreatmentName        => 'My__string',
-            MessageConfiguration => {
-              ADMMessage => {
-                MediaUrl   => 'My__string',
-                Title      => 'My__string',
-                JsonBody   => 'My__string',
-                SilentPush => 1,              # OPTIONAL
-                RawContent => 'My__string',
-                Body       => 'My__string',
-                Action =>
-                  'OPEN_APP',    # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
-                ImageIconUrl      => 'My__string',
-                Url               => 'My__string',
-                ImageSmallIconUrl => 'My__string',
-                ImageUrl          => 'My__string',
-              },    # OPTIONAL
-              DefaultMessage => {
-                MediaUrl   => 'My__string',
-                Title      => 'My__string',
-                JsonBody   => 'My__string',
-                SilentPush => 1,              # OPTIONAL
-                RawContent => 'My__string',
-                Body       => 'My__string',
-                Action =>
-                  'OPEN_APP',    # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
-                ImageIconUrl      => 'My__string',
-                Url               => 'My__string',
-                ImageSmallIconUrl => 'My__string',
-                ImageUrl          => 'My__string',
-              },    # OPTIONAL
-              EmailMessage => {
-                Body        => 'My__string',
-                HtmlBody    => 'My__string',
-                FromAddress => 'My__string',
-                Title       => 'My__string',
-              },    # OPTIONAL
-              SMSMessage => {
-                Body        => 'My__string',
-                MessageType => 'TRANSACTIONAL'
-                ,    # values: TRANSACTIONAL, PROMOTIONAL; OPTIONAL
-                SenderId => 'My__string',
-              },    # OPTIONAL
-              GCMMessage => {
-                MediaUrl   => 'My__string',
-                Title      => 'My__string',
-                JsonBody   => 'My__string',
-                SilentPush => 1,              # OPTIONAL
-                RawContent => 'My__string',
-                Body       => 'My__string',
-                Action =>
-                  'OPEN_APP',    # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
-                ImageIconUrl      => 'My__string',
-                Url               => 'My__string',
-                ImageSmallIconUrl => 'My__string',
-                ImageUrl          => 'My__string',
-              },    # OPTIONAL
-              APNSMessage => {
-                MediaUrl   => 'My__string',
-                Title      => 'My__string',
-                JsonBody   => 'My__string',
-                SilentPush => 1,              # OPTIONAL
-                RawContent => 'My__string',
-                Body       => 'My__string',
-                Action =>
-                  'OPEN_APP',    # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
-                ImageIconUrl      => 'My__string',
-                Url               => 'My__string',
-                ImageSmallIconUrl => 'My__string',
-                ImageUrl          => 'My__string',
-              },    # OPTIONAL
-              BaiduMessage => {
-                MediaUrl   => 'My__string',
-                Title      => 'My__string',
-                JsonBody   => 'My__string',
-                SilentPush => 1,              # OPTIONAL
-                RawContent => 'My__string',
-                Body       => 'My__string',
-                Action =>
-                  'OPEN_APP',    # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
-                ImageIconUrl      => 'My__string',
-                Url               => 'My__string',
-                ImageSmallIconUrl => 'My__string',
-                ImageUrl          => 'My__string',
-              },    # OPTIONAL
-            },    # OPTIONAL
-            Schedule => {
-              QuietTime => {
-                End   => 'My__string',
-                Start => 'My__string',
-              },    # OPTIONAL
-              EndTime   => 'My__string',
-              Timezone  => 'My__string',
-              StartTime => 'My__string',
+            SizePercent => 1,    # OPTIONAL
+            Schedule    => {
               Frequency =>
                 'ONCE', # values: ONCE, HOURLY, DAILY, WEEKLY, MONTHLY; OPTIONAL
-              IsLocalTime => 1,    # OPTIONAL
+              Timezone  => 'My__string',
+              QuietTime => {
+                Start => 'My__string',
+                End   => 'My__string',
+              },        # OPTIONAL
+              StartTime   => 'My__string',
+              IsLocalTime => 1,              # OPTIONAL
+              EndTime     => 'My__string',
             },    # OPTIONAL
-            SizePercent => 1,    # OPTIONAL
+            MessageConfiguration => {
+              BaiduMessage => {
+                ImageUrl => 'My__string',
+                Action =>
+                  'OPEN_APP',    # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
+                Body              => 'My__string',
+                SilentPush        => 1,              # OPTIONAL
+                MediaUrl          => 'My__string',
+                Title             => 'My__string',
+                RawContent        => 'My__string',
+                ImageSmallIconUrl => 'My__string',
+                ImageIconUrl      => 'My__string',
+                Url               => 'My__string',
+                JsonBody          => 'My__string',
+              },    # OPTIONAL
+              GCMMessage => {
+                ImageUrl => 'My__string',
+                Action =>
+                  'OPEN_APP',    # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
+                Body              => 'My__string',
+                SilentPush        => 1,              # OPTIONAL
+                MediaUrl          => 'My__string',
+                Title             => 'My__string',
+                RawContent        => 'My__string',
+                ImageSmallIconUrl => 'My__string',
+                ImageIconUrl      => 'My__string',
+                Url               => 'My__string',
+                JsonBody          => 'My__string',
+              },    # OPTIONAL
+              SMSMessage => {
+                MessageType => 'TRANSACTIONAL'
+                ,    # values: TRANSACTIONAL, PROMOTIONAL; OPTIONAL
+                Body     => 'My__string',
+                SenderId => 'My__string',
+              },    # OPTIONAL
+              EmailMessage => {
+                FromAddress => 'My__string',
+                Body        => 'My__string',
+                HtmlBody    => 'My__string',
+                Title       => 'My__string',
+              },    # OPTIONAL
+              APNSMessage => {
+                ImageUrl => 'My__string',
+                Action =>
+                  'OPEN_APP',    # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
+                Body              => 'My__string',
+                SilentPush        => 1,              # OPTIONAL
+                MediaUrl          => 'My__string',
+                Title             => 'My__string',
+                RawContent        => 'My__string',
+                ImageSmallIconUrl => 'My__string',
+                ImageIconUrl      => 'My__string',
+                Url               => 'My__string',
+                JsonBody          => 'My__string',
+              },    # OPTIONAL
+              DefaultMessage => {
+                ImageUrl => 'My__string',
+                Action =>
+                  'OPEN_APP',    # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
+                Body              => 'My__string',
+                SilentPush        => 1,              # OPTIONAL
+                MediaUrl          => 'My__string',
+                Title             => 'My__string',
+                RawContent        => 'My__string',
+                ImageSmallIconUrl => 'My__string',
+                ImageIconUrl      => 'My__string',
+                Url               => 'My__string',
+                JsonBody          => 'My__string',
+              },    # OPTIONAL
+              ADMMessage => {
+                ImageUrl => 'My__string',
+                Action =>
+                  'OPEN_APP',    # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
+                Body              => 'My__string',
+                SilentPush        => 1,              # OPTIONAL
+                MediaUrl          => 'My__string',
+                Title             => 'My__string',
+                RawContent        => 'My__string',
+                ImageSmallIconUrl => 'My__string',
+                ImageIconUrl      => 'My__string',
+                Url               => 'My__string',
+                JsonBody          => 'My__string',
+              },    # OPTIONAL
+            },    # OPTIONAL
+            TreatmentDescription => 'My__string',
+            TreatmentName        => 'My__string',
           },
           ...
-        ],                       # OPTIONAL
-        SegmentId      => 'My__string',
-        SegmentVersion => 1,              # OPTIONAL
+        ],        # OPTIONAL
+        Schedule => {
+          Frequency =>
+            'ONCE',    # values: ONCE, HOURLY, DAILY, WEEKLY, MONTHLY; OPTIONAL
+          Timezone  => 'My__string',
+          QuietTime => {
+            Start => 'My__string',
+            End   => 'My__string',
+          },           # OPTIONAL
+          StartTime   => 'My__string',
+          IsLocalTime => 1,              # OPTIONAL
+          EndTime     => 'My__string',
+        },    # OPTIONAL
+        IsPaused             => 1,    # OPTIONAL
+        MessageConfiguration => {
+          BaiduMessage => {
+            ImageUrl => 'My__string',
+            Action => 'OPEN_APP',   # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
+            Body   => 'My__string',
+            SilentPush        => 1,              # OPTIONAL
+            MediaUrl          => 'My__string',
+            Title             => 'My__string',
+            RawContent        => 'My__string',
+            ImageSmallIconUrl => 'My__string',
+            ImageIconUrl      => 'My__string',
+            Url               => 'My__string',
+            JsonBody          => 'My__string',
+          },    # OPTIONAL
+          GCMMessage => {
+            ImageUrl => 'My__string',
+            Action => 'OPEN_APP',   # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
+            Body   => 'My__string',
+            SilentPush        => 1,              # OPTIONAL
+            MediaUrl          => 'My__string',
+            Title             => 'My__string',
+            RawContent        => 'My__string',
+            ImageSmallIconUrl => 'My__string',
+            ImageIconUrl      => 'My__string',
+            Url               => 'My__string',
+            JsonBody          => 'My__string',
+          },    # OPTIONAL
+          SMSMessage => {
+            MessageType =>
+              'TRANSACTIONAL',    # values: TRANSACTIONAL, PROMOTIONAL; OPTIONAL
+            Body     => 'My__string',
+            SenderId => 'My__string',
+          },    # OPTIONAL
+          EmailMessage => {
+            FromAddress => 'My__string',
+            Body        => 'My__string',
+            HtmlBody    => 'My__string',
+            Title       => 'My__string',
+          },    # OPTIONAL
+          APNSMessage => {
+            ImageUrl => 'My__string',
+            Action => 'OPEN_APP',   # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
+            Body   => 'My__string',
+            SilentPush        => 1,              # OPTIONAL
+            MediaUrl          => 'My__string',
+            Title             => 'My__string',
+            RawContent        => 'My__string',
+            ImageSmallIconUrl => 'My__string',
+            ImageIconUrl      => 'My__string',
+            Url               => 'My__string',
+            JsonBody          => 'My__string',
+          },    # OPTIONAL
+          DefaultMessage => {
+            ImageUrl => 'My__string',
+            Action => 'OPEN_APP',   # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
+            Body   => 'My__string',
+            SilentPush        => 1,              # OPTIONAL
+            MediaUrl          => 'My__string',
+            Title             => 'My__string',
+            RawContent        => 'My__string',
+            ImageSmallIconUrl => 'My__string',
+            ImageIconUrl      => 'My__string',
+            Url               => 'My__string',
+            JsonBody          => 'My__string',
+          },    # OPTIONAL
+          ADMMessage => {
+            ImageUrl => 'My__string',
+            Action => 'OPEN_APP',   # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
+            Body   => 'My__string',
+            SilentPush        => 1,              # OPTIONAL
+            MediaUrl          => 'My__string',
+            Title             => 'My__string',
+            RawContent        => 'My__string',
+            ImageSmallIconUrl => 'My__string',
+            ImageIconUrl      => 'My__string',
+            Url               => 'My__string',
+            JsonBody          => 'My__string',
+          },    # OPTIONAL
+        },    # OPTIONAL
+        TreatmentDescription => 'My__string',
+        TreatmentName        => 'My__string',
+        Name                 => 'My__string',
+        Description          => 'My__string',
       },
 
     );

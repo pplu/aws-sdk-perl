@@ -36,7 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Auto Scaling group.
     $autoscaling->ExecutePolicy(
       {
-        'HonorCooldown'        => true,
+        'HonorCooldown'        => 1,
         'AutoScalingGroupName' => 'my-auto-scaling-group',
         'PolicyName'           => 'ScaleIn'
       }

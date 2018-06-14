@@ -37,11 +37,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Warnings       = $UpdateConfigurationResponse->Warnings;
     my $Id             = $UpdateConfigurationResponse->Id;
+    my $Warnings       = $UpdateConfigurationResponse->Warnings;
     my $Arn            = $UpdateConfigurationResponse->Arn;
-    my $LatestRevision = $UpdateConfigurationResponse->LatestRevision;
     my $Name           = $UpdateConfigurationResponse->Name;
+    my $LatestRevision = $UpdateConfigurationResponse->LatestRevision;
 
     # Returns a L<Paws::MQ::UpdateConfigurationResponse> object.
 

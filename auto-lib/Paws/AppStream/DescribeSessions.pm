@@ -42,8 +42,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Sessions  = $DescribeSessionsResult->Sessions;
     my $NextToken = $DescribeSessionsResult->NextToken;
+    my $Sessions  = $DescribeSessionsResult->Sessions;
 
     # Returns a L<Paws::AppStream::DescribeSessionsResult> object.
 

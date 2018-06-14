@@ -36,9 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $GlobalTables = $ListGlobalTablesOutput->GlobalTables;
     my $LastEvaluatedGlobalTableName =
       $ListGlobalTablesOutput->LastEvaluatedGlobalTableName;
+    my $GlobalTables = $ListGlobalTablesOutput->GlobalTables;
 
     # Returns a L<Paws::DynamoDB::ListGlobalTablesOutput> object.
 

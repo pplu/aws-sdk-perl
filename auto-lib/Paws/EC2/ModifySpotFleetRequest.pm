@@ -48,9 +48,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # request without terminating any Spot Instances as a result.
     my $ModifySpotFleetRequestResponse = $ec2->ModifySpotFleetRequest(
       {
+        'TargetCapacity'                  => 10,
         'ExcessCapacityTerminationPolicy' => 'NoTermination ',
-        'SpotFleetRequestId' => 'sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE',
-        'TargetCapacity'     => 10
+        'SpotFleetRequestId' => 'sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE'
       }
     );
 

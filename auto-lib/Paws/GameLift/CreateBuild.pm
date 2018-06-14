@@ -34,22 +34,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name            => 'MyNonZeroAndMaxString',    # OPTIONAL
       OperatingSystem => 'WINDOWS_2012',             # OPTIONAL
       StorageLocation => {
-        RoleArn => 'MyNonEmptyString',               # min: 1, ; OPTIONAL
         Bucket  => 'MyNonEmptyString',               # min: 1, ; OPTIONAL
         Key     => 'MyNonEmptyString',               # min: 1, ; OPTIONAL
+        RoleArn => 'MyNonEmptyString',               # min: 1, ; OPTIONAL
       },    # OPTIONAL
       Version => 'MyNonZeroAndMaxString',    # OPTIONAL
     );
 
     # Results:
     my $UploadCredentials = $CreateBuildOutput->UploadCredentials;
-    my $StorageLocation   = $CreateBuildOutput->StorageLocation;
     my $Build             = $CreateBuildOutput->Build;
+    my $StorageLocation   = $CreateBuildOutput->StorageLocation;
 
     # Returns a L<Paws::GameLift::CreateBuildOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gamelift/CreateBuild>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01>
 
 =head1 ATTRIBUTES
 

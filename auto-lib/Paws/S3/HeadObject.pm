@@ -59,31 +59,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $PartsCount              = $HeadObjectOutput->PartsCount;
-    my $MissingMeta             = $HeadObjectOutput->MissingMeta;
-    my $LastModified            = $HeadObjectOutput->LastModified;
-    my $CacheControl            = $HeadObjectOutput->CacheControl;
-    my $ContentDisposition      = $HeadObjectOutput->ContentDisposition;
+    my $ReplicationStatus       = $HeadObjectOutput->ReplicationStatus;
     my $ContentLength           = $HeadObjectOutput->ContentLength;
-    my $RequestCharged          = $HeadObjectOutput->RequestCharged;
-    my $Expiration              = $HeadObjectOutput->Expiration;
+    my $ContentType             = $HeadObjectOutput->ContentType;
+    my $SSEKMSKeyId             = $HeadObjectOutput->SSEKMSKeyId;
     my $Metadata                = $HeadObjectOutput->Metadata;
-    my $SSECustomerAlgorithm    = $HeadObjectOutput->SSECustomerAlgorithm;
-    my $ContentLanguage         = $HeadObjectOutput->ContentLanguage;
-    my $AcceptRanges            = $HeadObjectOutput->AcceptRanges;
-    my $StorageClass            = $HeadObjectOutput->StorageClass;
-    my $ContentEncoding         = $HeadObjectOutput->ContentEncoding;
+    my $RequestCharged          = $HeadObjectOutput->RequestCharged;
     my $WebsiteRedirectLocation = $HeadObjectOutput->WebsiteRedirectLocation;
+    my $Restore                 = $HeadObjectOutput->Restore;
+    my $ETag                    = $HeadObjectOutput->ETag;
+    my $ContentLanguage         = $HeadObjectOutput->ContentLanguage;
     my $Expires                 = $HeadObjectOutput->Expires;
     my $VersionId               = $HeadObjectOutput->VersionId;
-    my $Restore                 = $HeadObjectOutput->Restore;
-    my $ContentType             = $HeadObjectOutput->ContentType;
-    my $ETag                    = $HeadObjectOutput->ETag;
-    my $ReplicationStatus       = $HeadObjectOutput->ReplicationStatus;
-    my $SSECustomerKeyMD5       = $HeadObjectOutput->SSECustomerKeyMD5;
+    my $LastModified            = $HeadObjectOutput->LastModified;
+    my $Expiration              = $HeadObjectOutput->Expiration;
+    my $MissingMeta             = $HeadObjectOutput->MissingMeta;
+    my $PartsCount              = $HeadObjectOutput->PartsCount;
+    my $AcceptRanges            = $HeadObjectOutput->AcceptRanges;
     my $DeleteMarker            = $HeadObjectOutput->DeleteMarker;
     my $ServerSideEncryption    = $HeadObjectOutput->ServerSideEncryption;
-    my $SSEKMSKeyId             = $HeadObjectOutput->SSEKMSKeyId;
+    my $SSECustomerKeyMD5       = $HeadObjectOutput->SSECustomerKeyMD5;
+    my $SSECustomerAlgorithm    = $HeadObjectOutput->SSECustomerAlgorithm;
+    my $CacheControl            = $HeadObjectOutput->CacheControl;
+    my $ContentEncoding         = $HeadObjectOutput->ContentEncoding;
+    my $StorageClass            = $HeadObjectOutput->StorageClass;
+    my $ContentDisposition      = $HeadObjectOutput->ContentDisposition;
 
     # Returns a L<Paws::S3::HeadObjectOutput> object.
 

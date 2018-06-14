@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AgentIds => [ 'MyAgentId', ... ],    # OPTIONAL
       Filters => [
         {
-          values    => [ 'MyFilterValue', ... ],
           name      => 'MyString',
+          values    => [ 'MyFilterValue', ... ],
           condition => 'MyCondition',
 
         },
@@ -46,8 +46,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $AgentsInfo = $DescribeAgentsResponse->AgentsInfo;
     my $NextToken  = $DescribeAgentsResponse->NextToken;
+    my $AgentsInfo = $DescribeAgentsResponse->AgentsInfo;
 
     # Returns a L<Paws::Discovery::DescribeAgentsResponse> object.
 

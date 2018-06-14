@@ -39,7 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $type = $UpdateTypeResponse->type;
+    my $Type = $UpdateTypeResponse->Type;
 
     # Returns a L<Paws::AppSync::UpdateTypeResponse> object.
 

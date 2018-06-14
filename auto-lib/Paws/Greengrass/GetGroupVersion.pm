@@ -36,10 +36,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Id                = $GetGroupVersionResponse->Id;
+    my $CreationTimestamp = $GetGroupVersionResponse->CreationTimestamp;
     my $Version           = $GetGroupVersionResponse->Version;
     my $Definition        = $GetGroupVersionResponse->Definition;
-    my $CreationTimestamp = $GetGroupVersionResponse->CreationTimestamp;
+    my $Id                = $GetGroupVersionResponse->Id;
     my $Arn               = $GetGroupVersionResponse->Arn;
 
     # Returns a L<Paws::Greengrass::GetGroupVersionResponse> object.

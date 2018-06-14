@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Configuration = $GetFunctionResponse->Configuration;
     my $Code          = $GetFunctionResponse->Code;
+    my $Configuration = $GetFunctionResponse->Configuration;
 
     # Returns a L<Paws::Lambda::GetFunctionResponse> object.
 

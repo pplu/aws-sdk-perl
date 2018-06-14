@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Marker          = $ClusterVersionsMessage->Marker;
     my $ClusterVersions = $ClusterVersionsMessage->ClusterVersions;
+    my $Marker          = $ClusterVersionsMessage->Marker;
 
     # Returns a L<Paws::RedShift::ClusterVersionsMessage> object.
 

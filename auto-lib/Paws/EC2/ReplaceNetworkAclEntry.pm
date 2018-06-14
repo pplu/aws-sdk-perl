@@ -42,16 +42,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # any associated subnet.
     $ec2->ReplaceNetworkAclEntry(
       {
-        'CidrBlock' => '203.0.113.12/24',
-        'Egress'    => 0,
-        'PortRange' => {
-          'From' => 53,
-          'To'   => 53
+        'RuleAction' => 'allow',
+        'RuleNumber' => 100,
+        'PortRange'  => {
+          'To'   => 53,
+          'From' => 53
         },
-        'NetworkAclId' => 'acl-5fb85d36',
+        'CidrBlock'    => '203.0.113.12/24',
         'Protocol'     => 'udp',
-        'RuleNumber'   => 100,
-        'RuleAction'   => 'allow'
+        'NetworkAclId' => 'acl-5fb85d36',
+        'Egress'       => 0
       }
     );
 

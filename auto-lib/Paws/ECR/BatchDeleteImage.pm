@@ -34,19 +34,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # repository called ubuntu in the default registry for an account.
     my $BatchDeleteImageResponse = $ecr->BatchDeleteImage(
       {
-        'ImageIds' => [
+        'RepositoryName' => 'ubuntu',
+        'ImageIds'       => [
 
           {
             'ImageTag' => 'precise'
           }
-        ],
-        'RepositoryName' => 'ubuntu'
+        ]
       }
     );
 
     # Results:
-    my $imageIds = $BatchDeleteImageResponse->imageIds;
     my $failures = $BatchDeleteImageResponse->failures;
+    my $imageIds = $BatchDeleteImageResponse->imageIds;
 
     # Returns a L<Paws::ECR::BatchDeleteImageResponse> object.
 

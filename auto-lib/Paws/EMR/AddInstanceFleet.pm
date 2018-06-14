@@ -31,30 +31,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $AddInstanceFleetOutput = $elasticmapreduce->AddInstanceFleet(
       ClusterId     => 'MyXmlStringMaxLen256',
       InstanceFleet => {
-        InstanceFleetType    => 'MASTER',    # values: MASTER, CORE, TASK
-        LaunchSpecifications => {
-          SpotSpecification => {
-            TimeoutDurationMinutes => 1,                      # OPTIONAL
-            TimeoutAction          => 'SWITCH_TO_ON_DEMAND'
-            ,    # values: SWITCH_TO_ON_DEMAND, TERMINATE_CLUSTER
-            BlockDurationMinutes => 1,    # OPTIONAL
-          },
-
-        },    # OPTIONAL
-        TargetOnDemandCapacity => 1,                         # OPTIONAL
-        Name                   => 'MyXmlStringMaxLen256',    # max: 256
-        TargetSpotCapacity     => 1,                         # OPTIONAL
-        InstanceTypeConfigs    => [
+        InstanceFleetType   => 'MASTER',    # values: MASTER, CORE, TASK
+        InstanceTypeConfigs => [
           {
-            InstanceType => 'MyInstanceType',                # min: 1, max: 256
-            BidPriceAsPercentageOfOnDemandPrice => 1,        # OPTIONAL
-            BidPrice         => 'MyXmlStringMaxLen256',      # max: 256
-            WeightedCapacity => 1,                           # OPTIONAL
+            InstanceType     => 'MyInstanceType',          # min: 1, max: 256
+            BidPrice         => 'MyXmlStringMaxLen256',    # max: 256
+            WeightedCapacity => 1,
             Configurations   => [
               {
                 Properties     => { 'MyString' => 'MyString', },    # OPTIONAL
-                Configurations => <ConfigurationList>,
                 Classification => 'MyString',
+                Configurations => <ConfigurationList>,
               },
               ...
             ],                                                      # OPTIONAL
@@ -62,8 +49,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               EbsBlockDeviceConfigs => [
                 {
                   VolumeSpecification => {
-                    SizeInGB   => 1,
                     VolumeType => 'MyString',
+                    SizeInGB   => 1,
                     Iops       => 1,
                   },
                   VolumesPerInstance => 1,
@@ -72,9 +59,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ],                                                    # OPTIONAL
               EbsOptimized => 1,                                    # OPTIONAL
             },    # OPTIONAL
+            BidPriceAsPercentageOfOnDemandPrice => 1,    # OPTIONAL
           },
           ...
-        ],        # OPTIONAL
+        ],                                               # OPTIONAL
+        LaunchSpecifications => {
+          SpotSpecification => {
+            TimeoutDurationMinutes => 1,
+            TimeoutAction          => 'SWITCH_TO_ON_DEMAND'
+            ,    # values: SWITCH_TO_ON_DEMAND, TERMINATE_CLUSTER
+            BlockDurationMinutes => 1,
+          },
+
+        },    # OPTIONAL
+        TargetSpotCapacity     => 1,
+        TargetOnDemandCapacity => 1,
+        Name                   => 'MyXmlStringMaxLen256',    # max: 256
       },
 
     );

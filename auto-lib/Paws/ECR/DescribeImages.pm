@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       ImageIds => [
         {
-          imageDigest => 'MyImageDigest',    # OPTIONAL
           imageTag    => 'MyImageTag',       # OPTIONAL
+          imageDigest => 'MyImageDigest',    # OPTIONAL
         },
         ...
       ],                                     # OPTIONAL
@@ -50,8 +50,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken    = $DescribeImagesResponse->NextToken;
     my $ImageDetails = $DescribeImagesResponse->ImageDetails;
+    my $NextToken    = $DescribeImagesResponse->NextToken;
 
     # Returns a L<Paws::ECR::DescribeImagesResponse> object.
 

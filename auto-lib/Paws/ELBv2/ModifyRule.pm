@@ -33,15 +33,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example modifies the condition for the specified rule.
     my $ModifyRuleOutput = $elasticloadbalancing->ModifyRule(
       {
-        'RuleArn' =>
-'arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/my-load-balancer/50dc6c495c0c9188/f2f7dc8efc522ab2/9683b2d02a6cabee',
         'Conditions' => [
 
           {
-            'Values' => ['/images/*'],
-            'Field'  => 'path-pattern'
+            'Field'  => 'path-pattern',
+            'Values' => ['/images/*']
           }
-        ]
+        ],
+        'RuleArn' =>
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/my-load-balancer/50dc6c495c0c9188/f2f7dc8efc522ab2/9683b2d02a6cabee'
       }
     );
 

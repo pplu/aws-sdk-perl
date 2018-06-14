@@ -40,13 +40,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'Name'   => 'mytargetimage'
           }
         },
-        'SimilarityThreshold' => 90,
-        'SourceImage'         => {
+        'SourceImage' => {
           'S3Object' => {
             'Bucket' => 'mybucket',
             'Name'   => 'mysourceimage'
           }
-        }
+        },
+        'SimilarityThreshold' => 90
       }
     );
 

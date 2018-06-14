@@ -40,15 +40,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example deletes an item from the Music table.
     my $DeleteItemOutput = $dynamodb->DeleteItem(
       {
-        'Key' => {
+        'TableName' => 'Music',
+        'Key'       => {
           'SongTitle' => {
             'S' => 'Scared of My Shadow'
           },
           'Artist' => {
             'S' => 'No One You Know'
           }
-        },
-        'TableName' => 'Music'
+        }
       }
     );
 

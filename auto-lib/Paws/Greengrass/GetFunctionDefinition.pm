@@ -34,14 +34,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $CreationTimestamp = $GetFunctionDefinitionResponse->CreationTimestamp;
+    my $LatestVersionArn  = $GetFunctionDefinitionResponse->LatestVersionArn;
+    my $Id                = $GetFunctionDefinitionResponse->Id;
     my $LastUpdatedTimestamp =
       $GetFunctionDefinitionResponse->LastUpdatedTimestamp;
-    my $Id                = $GetFunctionDefinitionResponse->Id;
-    my $LatestVersionArn  = $GetFunctionDefinitionResponse->LatestVersionArn;
-    my $Arn               = $GetFunctionDefinitionResponse->Arn;
-    my $Name              = $GetFunctionDefinitionResponse->Name;
-    my $CreationTimestamp = $GetFunctionDefinitionResponse->CreationTimestamp;
-    my $LatestVersion     = $GetFunctionDefinitionResponse->LatestVersion;
+    my $Arn           = $GetFunctionDefinitionResponse->Arn;
+    my $Name          = $GetFunctionDefinitionResponse->Name;
+    my $LatestVersion = $GetFunctionDefinitionResponse->LatestVersion;
 
     # Returns a L<Paws::Greengrass::GetFunctionDefinitionResponse> object.
 

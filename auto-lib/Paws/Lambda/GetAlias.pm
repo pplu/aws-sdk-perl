@@ -39,10 +39,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $FunctionVersion = $AliasConfiguration->FunctionVersion;
+    my $AliasArn        = $AliasConfiguration->AliasArn;
     my $Name            = $AliasConfiguration->Name;
     my $Description     = $AliasConfiguration->Description;
-    my $AliasArn        = $AliasConfiguration->AliasArn;
-    my $FunctionVersion = $AliasConfiguration->FunctionVersion;
 
     # Returns a L<Paws::Lambda::AliasConfiguration> object.
 

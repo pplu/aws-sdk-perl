@@ -33,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # sent from an identity:
     my $SetIdentityDkimEnabledResponse = $email->SetIdentityDkimEnabled(
       {
-        'DkimEnabled' => true,
+        'DkimEnabled' => 1,
         'Identity'    => 'user@example.com'
       }
     );

@@ -35,17 +35,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Rekognition collection.
     my $IndexFacesResponse = $rekognition->IndexFaces(
       {
+        'CollectionId' => 'myphotos',
+        'Image'        => {
+          'S3Object' => {
+            'Bucket' => 'mybucket',
+            'Name'   => 'myphoto'
+          }
+        },
         'DetectionAttributes' => [
 
         ],
-        'ExternalImageId' => 'myphotoid',
-        'CollectionId'    => 'myphotos',
-        'Image'           => {
-          'S3Object' => {
-            'Name'   => 'myphoto',
-            'Bucket' => 'mybucket'
-          }
-        }
+        'ExternalImageId' => 'myphotoid'
       }
     );
 

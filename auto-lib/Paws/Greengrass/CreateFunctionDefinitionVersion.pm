@@ -36,27 +36,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AmznClientToken      => 'My__string',    # OPTIONAL
       Functions            => [
         {
-          Id                    => 'My__string',
-          FunctionArn           => 'My__string',
           FunctionConfiguration => {
-            Pinned      => 1,                  # OPTIONAL
             ExecArgs    => 'My__string',
+            Executable  => 'My__string',
             Environment => {
               ResourceAccessPolicies => [
                 {
-                  Permission => 'ro',           # values: ro, rw; OPTIONAL
                   ResourceId => 'My__string',
+                  Permission => 'ro',           # values: ro, rw; OPTIONAL
                 },
                 ...
               ],                                # OPTIONAL
               Variables => { 'My__string' => 'My__string', },    # OPTIONAL
               AccessSysfs => 1,                                  # OPTIONAL
             },    # OPTIONAL
-            MemorySize   => 1,              # OPTIONAL
-            EncodingType => 'binary',       # values: binary, json; OPTIONAL
-            Executable   => 'My__string',
-            Timeout      => 1,              # OPTIONAL
+            MemorySize   => 1,           # OPTIONAL
+            EncodingType => 'binary',    # values: binary, json; OPTIONAL
+            Pinned       => 1,           # OPTIONAL
+            Timeout      => 1,           # OPTIONAL
           },    # OPTIONAL
+          Id          => 'My__string',
+          FunctionArn => 'My__string',
         },
         ...
       ],        # OPTIONAL
@@ -65,9 +65,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $CreationTimestamp =
       $CreateFunctionDefinitionVersionResponse->CreationTimestamp;
-    my $Arn     = $CreateFunctionDefinitionVersionResponse->Arn;
-    my $Id      = $CreateFunctionDefinitionVersionResponse->Id;
     my $Version = $CreateFunctionDefinitionVersionResponse->Version;
+    my $Id      = $CreateFunctionDefinitionVersionResponse->Id;
+    my $Arn     = $CreateFunctionDefinitionVersionResponse->Arn;
 
 # Returns a L<Paws::Greengrass::CreateFunctionDefinitionVersionResponse> object.
 

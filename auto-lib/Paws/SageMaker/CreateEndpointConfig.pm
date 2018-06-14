@@ -34,24 +34,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EndpointConfigName => 'MyEndpointConfigName',
       ProductionVariants => [
         {
-          InitialInstanceCount => 1,               # min: 1,
-          InstanceType         => 'ml.t2.medium'
+          VariantName  => 'MyVariantName',    # max: 63
+          InstanceType => 'ml.t2.medium'
           , # values: ml.t2.medium, ml.t2.large, ml.t2.xlarge, ml.t2.2xlarge, ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge, ml.c4.large, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.c5.large, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge
-          VariantName          => 'MyVariantName',    # max: 63
-          ModelName            => 'MyModelName',      # max: 63
-          InitialVariantWeight => 1.0,                # OPTIONAL
+          ModelName            => 'MyModelName',    # max: 63
+          InitialInstanceCount => 1,                # min: 1,
+          InitialVariantWeight => 1.0,              # OPTIONAL
         },
         ...
       ],
-      KmsKeyId => 'MyKmsKeyId',                       # OPTIONAL
+      KmsKeyId => 'MyKmsKeyId',                     # OPTIONAL
       Tags     => [
         {
-          Value => 'MyTagValue',                      # max: 256
-          Key   => 'MyTagKey',                        # min: 1, max: 128
+          Key   => 'MyTagKey',                      # min: 1, max: 128
+          Value => 'MyTagValue',                    # max: 256
 
         },
         ...
-      ],                                              # OPTIONAL
+      ],                                            # OPTIONAL
     );
 
     # Results:

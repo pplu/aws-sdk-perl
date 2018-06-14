@@ -40,9 +40,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Marker = $ClusterSecurityGroupMessage->Marker;
     my $ClusterSecurityGroups =
       $ClusterSecurityGroupMessage->ClusterSecurityGroups;
+    my $Marker = $ClusterSecurityGroupMessage->Marker;
 
     # Returns a L<Paws::RedShift::ClusterSecurityGroupMessage> object.
 

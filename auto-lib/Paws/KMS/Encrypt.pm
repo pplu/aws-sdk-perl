@@ -35,14 +35,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # (CMK).
     my $EncryptResponse = $kms->Encrypt(
       {
-        'Plaintext' => '<binary data>',
-        'KeyId'     => '1234abcd-12ab-34cd-56ef-1234567890ab'
+        'KeyId'     => '1234abcd-12ab-34cd-56ef-1234567890ab',
+        'Plaintext' => '<binary data>'
       }
     );
 
     # Results:
-    my $CiphertextBlob = $EncryptResponse->CiphertextBlob;
     my $KeyId          = $EncryptResponse->KeyId;
+    my $CiphertextBlob = $EncryptResponse->CiphertextBlob;
 
     # Returns a L<Paws::KMS::EncryptResponse> object.
 

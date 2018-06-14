@@ -33,10 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $elasticbeanstalk->ListAvailableSolutionStacks();
 
     # Results:
-    my $SolutionStackDetails =
-      $ListAvailableSolutionStacksResultMessage->SolutionStackDetails;
     my $SolutionStacks =
       $ListAvailableSolutionStacksResultMessage->SolutionStacks;
+    my $SolutionStackDetails =
+      $ListAvailableSolutionStacksResultMessage->SolutionStackDetails;
 
 # Returns a L<Paws::ElasticBeanstalk::ListAvailableSolutionStacksResultMessage> object.
 

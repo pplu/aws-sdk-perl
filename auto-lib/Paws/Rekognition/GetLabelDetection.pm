@@ -38,11 +38,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $StatusMessage = $GetLabelDetectionResponse->StatusMessage;
     my $Labels        = $GetLabelDetectionResponse->Labels;
-    my $JobStatus     = $GetLabelDetectionResponse->JobStatus;
-    my $VideoMetadata = $GetLabelDetectionResponse->VideoMetadata;
     my $NextToken     = $GetLabelDetectionResponse->NextToken;
+    my $VideoMetadata = $GetLabelDetectionResponse->VideoMetadata;
+    my $JobStatus     = $GetLabelDetectionResponse->JobStatus;
+    my $StatusMessage = $GetLabelDetectionResponse->StatusMessage;
 
     # Returns a L<Paws::Rekognition::GetLabelDetectionResponse> object.
 

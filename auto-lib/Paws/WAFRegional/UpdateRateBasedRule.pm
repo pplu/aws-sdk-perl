@@ -38,10 +38,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           Action    => 'INSERT',    # values: INSERT, DELETE
           Predicate => {
-            Negated => 1,
-            Type    => 'IPMatch'
-            , # values: IPMatch, ByteMatch, SqlInjectionMatch, GeoMatch, SizeConstraint, XssMatch, RegexMatch
             DataId => 'MyResourceId',    # min: 1, max: 128
+            Type   => 'IPMatch'
+            , # values: IPMatch, ByteMatch, SqlInjectionMatch, GeoMatch, SizeConstraint, XssMatch, RegexMatch
+            Negated => 1,
 
           },
 

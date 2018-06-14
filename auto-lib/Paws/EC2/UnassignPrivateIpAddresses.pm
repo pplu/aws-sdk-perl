@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # network interface.
     $ec2->UnassignPrivateIpAddresses(
       {
-        'NetworkInterfaceId' => 'eni-e5aa89a3',
-        'PrivateIpAddresses' => ['10.0.0.82']
+        'PrivateIpAddresses' => ['10.0.0.82'],
+        'NetworkInterfaceId' => 'eni-e5aa89a3'
       }
     );
 

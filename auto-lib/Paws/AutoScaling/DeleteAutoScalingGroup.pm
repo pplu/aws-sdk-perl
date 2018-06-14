@@ -41,7 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # instances.
     $autoscaling->DeleteAutoScalingGroup(
       {
-        'ForceDelete'          => true,
+        'ForceDelete'          => 1,
         'AutoScalingGroupName' => 'my-auto-scaling-group'
       }
     );

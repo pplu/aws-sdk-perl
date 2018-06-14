@@ -31,18 +31,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $glue = Paws->service('Glue');
     my $UpdateConnectionResponse = $glue->UpdateConnection(
       ConnectionInput => {
-        Name                 => 'MyNameString',    # min: 1, max: 255
-        ConnectionType       => 'JDBC',            # values: JDBC, SFTP
+        ConnectionType       => 'JDBC',    # values: JDBC, SFTP
         ConnectionProperties => {
           'HOST' => 'MyValueString'
           , # key: values: HOST, PORT, USERNAME, PASSWORD, JDBC_DRIVER_JAR_URI, JDBC_DRIVER_CLASS_NAME, JDBC_ENGINE, JDBC_ENGINE_VERSION, CONFIG_FILES, INSTANCE_ID, JDBC_CONNECTION_URL, value: max: 1024
         },    # max: 100
+        Name                           => 'MyNameString',    # min: 1, max: 255
         PhysicalConnectionRequirements => {
-          SubnetId            => 'MyNameString',    # min: 1, max: 255
-          AvailabilityZone    => 'MyNameString',    # min: 1, max: 255
+          SubnetId            => 'MyNameString',             # min: 1, max: 255
           SecurityGroupIdList => [
-            'MyNameString', ...                     # min: 1, max: 255
-          ],                                        # max: 50; OPTIONAL
+            'MyNameString', ...                              # min: 1, max: 255
+          ],                                                 # max: 50; OPTIONAL
+          AvailabilityZone => 'MyNameString',                # min: 1, max: 255
         },    # OPTIONAL
         MatchCriteria => [
           'MyNameString', ...    # min: 1, max: 255

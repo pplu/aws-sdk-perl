@@ -33,10 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       TriggerUpdate => {
         Actions => [
           {
-            Arguments => {
-              'MyGenericString' =>
-                'MyGenericString',    # key: OPTIONAL, value: OPTIONAL
-            },    # OPTIONAL
+            Arguments => { 'MyGenericString' => 'MyGenericString', }, # OPTIONAL
             JobName              => 'MyNameString',    # min: 1, max: 255
             NotificationProperty => {
               NotifyDelayAfter => 1,                   # min: 1, ; OPTIONAL
@@ -45,21 +42,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],                   # OPTIONAL
+        Schedule  => 'MyGenericString',
         Predicate => {
           Conditions => [
             {
-              LogicalOperator => 'EQUALS',    # values: EQUALS; OPTIONAL
+              LogicalOperator => 'EQUALS',          # values: EQUALS; OPTIONAL
+              JobName         => 'MyNameString',    # min: 1, max: 255
               State           => 'STARTING'
               , # values: STARTING, RUNNING, STOPPING, STOPPED, SUCCEEDED, FAILED, TIMEOUT; OPTIONAL
-              JobName => 'MyNameString',    # min: 1, max: 255
             },
             ...
-          ],                                # OPTIONAL
-          Logical => 'AND',                 # values: AND, ANY; OPTIONAL
+          ],    # OPTIONAL
+          Logical => 'AND',    # values: AND, ANY; OPTIONAL
         },    # OPTIONAL
-        Description => 'MyDescriptionString',    # max: 2048; OPTIONAL
-        Schedule    => 'MyGenericString',        # OPTIONAL
         Name        => 'MyNameString',           # min: 1, max: 255
+        Description => 'MyDescriptionString',    # max: 2048; OPTIONAL
       },
 
     );

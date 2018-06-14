@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DeregisterContainerInstanceResponse = $ecs->DeregisterContainerInstance(
       {
         'ContainerInstance' => 'container_instance_UUID',
-        'Force'             => true,
-        'Cluster'           => 'default'
+        'Cluster'           => 'default',
+        'Force'             => 1
       }
     );
 

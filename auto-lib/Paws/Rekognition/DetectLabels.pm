@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'MinConfidence' => 70,
         'Image'         => {
           'S3Object' => {
-            'Name'   => 'myphoto',
-            'Bucket' => 'mybucket'
+            'Bucket' => 'mybucket',
+            'Name'   => 'myphoto'
           }
         },
         'MaxLabels' => 123

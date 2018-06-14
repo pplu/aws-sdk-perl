@@ -44,9 +44,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CacheClusterEnabled => 1,            # OPTIONAL
       CacheClusterSize    => '0.5',        # OPTIONAL
       CanarySettings      => {
+        useStageCache          => 1,
         stageVariableOverrides => { 'MyString' => 'MyString', },    # OPTIONAL
         percentTraffic         => 1,                                # OPTIONAL
-        useStageCache          => 1,
         deploymentId           => 'MyString',
       },    # OPTIONAL
       Description          => 'MyString',                       # OPTIONAL
@@ -56,21 +56,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Variables            = $Stage->Variables;
     my $CacheClusterStatus   = $Stage->CacheClusterStatus;
-    my $StageName            = $Stage->StageName;
     my $CacheClusterEnabled  = $Stage->CacheClusterEnabled;
-    my $AccessLogSettings    = $Stage->AccessLogSettings;
-    my $MethodSettings       = $Stage->MethodSettings;
-    my $Tags                 = $Stage->Tags;
-    my $ClientCertificateId  = $Stage->ClientCertificateId;
-    my $Description          = $Stage->Description;
-    my $DeploymentId         = $Stage->DeploymentId;
-    my $LastUpdatedDate      = $Stage->LastUpdatedDate;
-    my $DocumentationVersion = $Stage->DocumentationVersion;
-    my $CreatedDate          = $Stage->CreatedDate;
     my $CanarySettings       = $Stage->CanarySettings;
+    my $AccessLogSettings    = $Stage->AccessLogSettings;
+    my $LastUpdatedDate      = $Stage->LastUpdatedDate;
+    my $Variables            = $Stage->Variables;
+    my $CreatedDate          = $Stage->CreatedDate;
+    my $StageName            = $Stage->StageName;
+    my $ClientCertificateId  = $Stage->ClientCertificateId;
+    my $MethodSettings       = $Stage->MethodSettings;
+    my $DocumentationVersion = $Stage->DocumentationVersion;
+    my $DeploymentId         = $Stage->DeploymentId;
     my $CacheClusterSize     = $Stage->CacheClusterSize;
+    my $Tags                 = $Stage->Tags;
+    my $Description          = $Stage->Description;
 
     # Returns a L<Paws::ApiGateway::Stage> object.
 

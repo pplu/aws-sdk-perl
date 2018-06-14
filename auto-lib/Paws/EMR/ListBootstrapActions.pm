@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Marker           = $ListBootstrapActionsOutput->Marker;
     my $BootstrapActions = $ListBootstrapActionsOutput->BootstrapActions;
+    my $Marker           = $ListBootstrapActionsOutput->Marker;
 
     # Returns a L<Paws::EMR::ListBootstrapActionsOutput> object.
 

@@ -32,14 +32,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example creates an XSS match set named MySampleXssMatchSet.
     my $CreateXssMatchSetResponse = $waf->CreateXssMatchSet(
       {
-        'Name'        => 'MySampleXssMatchSet',
-        'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f'
+        'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
+        'Name'        => 'MySampleXssMatchSet'
       }
     );
 
     # Results:
-    my $XssMatchSet = $CreateXssMatchSetResponse->XssMatchSet;
     my $ChangeToken = $CreateXssMatchSetResponse->ChangeToken;
+    my $XssMatchSet = $CreateXssMatchSetResponse->XssMatchSet;
 
     # Returns a L<Paws::WAF::CreateXssMatchSetResponse> object.
 

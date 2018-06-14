@@ -36,26 +36,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       BounceSender             => 'MyAddress',
       BouncedRecipientInfoList => [
         {
-          Recipient    => 'MyAddress',
-          RecipientArn => 'MyAmazonResourceName',    # OPTIONAL
-          BounceType   => 'DoesNotExist'
+          Recipient  => 'MyAddress',
+          BounceType => 'DoesNotExist'
           , # values: DoesNotExist, MessageTooLarge, ExceededQuota, ContentRejected, Undefined, TemporaryFailure; OPTIONAL
+          RecipientArn       => 'MyAmazonResourceName',    # OPTIONAL
           RecipientDsnFields => {
             Status => 'MyDsnStatus',
             Action =>
               'failed',  # values: failed, delayed, delivered, relayed, expanded
-            DiagnosticCode  => 'MyDiagnosticCode',    # OPTIONAL
-            RemoteMta       => 'MyRemoteMta',         # OPTIONAL
             ExtensionFields => [
               {
-                Name  => 'MyExtensionFieldName',
                 Value => 'MyExtensionFieldValue',
+                Name  => 'MyExtensionFieldName',
 
               },
               ...
-            ],                                        # OPTIONAL
-            FinalRecipient  => 'MyAddress',
+            ],           # OPTIONAL
+            RemoteMta       => 'MyRemoteMta',            # OPTIONAL
+            DiagnosticCode  => 'MyDiagnosticCode',       # OPTIONAL
             LastAttemptDate => '1970-01-01T01:00:00',    # OPTIONAL
+            FinalRecipient  => 'MyAddress',
           },    # OPTIONAL
         },
         ...
@@ -67,8 +67,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ReportingMta    => 'MyReportingMta',
         ExtensionFields => [
           {
-            Name  => 'MyExtensionFieldName',
             Value => 'MyExtensionFieldValue',
+            Name  => 'MyExtensionFieldName',
 
           },
           ...

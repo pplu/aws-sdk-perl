@@ -34,13 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ListFragmentsOutput = $kinesisvideo->ListFragments(
       StreamName       => 'MyStreamName',
       FragmentSelector => {
+        FragmentSelectorType =>
+          'PRODUCER_TIMESTAMP',   # values: PRODUCER_TIMESTAMP, SERVER_TIMESTAMP
         TimestampRange => {
           StartTimestamp => '1970-01-01T01:00:00',
           EndTimestamp   => '1970-01-01T01:00:00',
 
         },
-        FragmentSelectorType =>
-          'PRODUCER_TIMESTAMP',   # values: PRODUCER_TIMESTAMP, SERVER_TIMESTAMP
 
       },    # OPTIONAL
       MaxResults => 1,             # OPTIONAL
@@ -48,8 +48,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Fragments = $ListFragmentsOutput->Fragments;
     my $NextToken = $ListFragmentsOutput->NextToken;
+    my $Fragments = $ListFragmentsOutput->Fragments;
 
     # Returns a L<Paws::KinesisVideoArchivedMedia::ListFragmentsOutput> object.
 

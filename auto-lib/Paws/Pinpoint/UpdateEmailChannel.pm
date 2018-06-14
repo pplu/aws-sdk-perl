@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EmailChannelRequest => {
         FromAddress => 'My__string',
         Identity    => 'My__string',
-        RoleArn     => 'My__string',
         Enabled     => 1,              # OPTIONAL
+        RoleArn     => 'My__string',
       },
 
     );

@@ -42,8 +42,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $ContentType        = $ExportResponse->ContentType;
-    my $Body               = $ExportResponse->Body;
     my $ContentDisposition = $ExportResponse->ContentDisposition;
+    my $Body               = $ExportResponse->Body;
 
     # Returns a L<Paws::ApiGateway::ExportResponse> object.
 

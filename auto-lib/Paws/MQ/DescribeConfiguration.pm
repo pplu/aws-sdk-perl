@@ -34,13 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Arn            = $DescribeConfigurationResponse->Arn;
-    my $LatestRevision = $DescribeConfigurationResponse->LatestRevision;
-    my $Name           = $DescribeConfigurationResponse->Name;
     my $EngineVersion  = $DescribeConfigurationResponse->EngineVersion;
-    my $EngineType     = $DescribeConfigurationResponse->EngineType;
-    my $Description    = $DescribeConfigurationResponse->Description;
     my $Id             = $DescribeConfigurationResponse->Id;
+    my $Arn            = $DescribeConfigurationResponse->Arn;
+    my $EngineType     = $DescribeConfigurationResponse->EngineType;
+    my $Name           = $DescribeConfigurationResponse->Name;
+    my $Description    = $DescribeConfigurationResponse->Description;
+    my $LatestRevision = $DescribeConfigurationResponse->LatestRevision;
 
     # Returns a L<Paws::MQ::DescribeConfigurationResponse> object.
 

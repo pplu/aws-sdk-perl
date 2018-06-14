@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ReservedInstancesOfferingId => 'MyString',
       DryRun                      => 1,            # OPTIONAL
       LimitPrice                  => {
-        CurrencyCode => 'USD',                     # values: USD; OPTIONAL
         Amount       => 1,                         # OPTIONAL
+        CurrencyCode => 'USD',                     # values: USD; OPTIONAL
       },    # OPTIONAL
       );
 

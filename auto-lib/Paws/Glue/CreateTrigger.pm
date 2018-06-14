@@ -36,29 +36,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateTriggerResponse = $glue->CreateTrigger(
       Actions => [
         {
-          Timeout              => 1,                # min: 1, ; OPTIONAL
+          Arguments => { 'MyGenericString' => 'MyGenericString', },   # OPTIONAL
           JobName              => 'MyNameString',   # min: 1, max: 255; OPTIONAL
           NotificationProperty => {
             NotifyDelayAfter => 1,                  # min: 1, ; OPTIONAL
           },    # OPTIONAL
-          Arguments => { 'MyGenericString' => 'MyGenericString', },   # OPTIONAL
+          Timeout => 1,    # min: 1, ; OPTIONAL
         },
         ...
       ],
       Name        => 'MyNameString',
       Type        => 'SCHEDULED',
-      Description => 'MyDescriptionString',                           # OPTIONAL
+      Description => 'MyDescriptionString',    # OPTIONAL
       Predicate   => {
         Conditions => [
           {
-            JobName => 'MyNameString',    # min: 1, max: 255; OPTIONAL
-            State   => 'STARTING'
+            LogicalOperator => 'EQUALS',          # values: EQUALS; OPTIONAL
+            JobName         => 'MyNameString',    # min: 1, max: 255; OPTIONAL
+            State           => 'STARTING'
             , # values: STARTING, RUNNING, STOPPING, STOPPED, SUCCEEDED, FAILED, TIMEOUT; OPTIONAL
-            LogicalOperator => 'EQUALS',    # values: EQUALS; OPTIONAL
           },
           ...
-        ],                                  # OPTIONAL
-        Logical => 'AND',                   # values: AND, ANY; OPTIONAL
+        ],    # OPTIONAL
+        Logical => 'AND',    # values: AND, ANY; OPTIONAL
       },    # OPTIONAL
       Schedule        => 'MyGenericString',    # OPTIONAL
       StartOnCreation => 1,                    # OPTIONAL

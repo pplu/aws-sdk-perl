@@ -33,15 +33,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ModifyLoadBalancerAttributesOutput =
       $elasticloadbalancing->ModifyLoadBalancerAttributes(
       {
+        'LoadBalancerArn' =>
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188',
         'Attributes' => [
 
           {
-            'Key'   => 'deletion_protection.enabled',
-            'Value' => 'true'
+            'Value' => 'true',
+            'Key'   => 'deletion_protection.enabled'
           }
-        ],
-        'LoadBalancerArn' =>
-'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188'
+        ]
       }
       );
 
@@ -84,8 +84,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'Attributes' => [
 
           {
-            'Key'   => 'access_logs.s3.enabled',
-            'Value' => 'true'
+            'Value' => 'true',
+            'Key'   => 'access_logs.s3.enabled'
           },
 
           {

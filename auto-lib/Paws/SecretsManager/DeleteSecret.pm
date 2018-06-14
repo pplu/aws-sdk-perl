@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $ARN          = $DeleteSecretResponse->ARN;
-    my $DeletionDate = $DeleteSecretResponse->DeletionDate;
     my $Name         = $DeleteSecretResponse->Name;
+    my $DeletionDate = $DeleteSecretResponse->DeletionDate;
 
     # Returns a L<Paws::SecretsManager::DeleteSecretResponse> object.
 

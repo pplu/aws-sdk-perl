@@ -33,15 +33,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Timestamp           = $DomainMetadataResult->Timestamp;
-    my $AttributeValueCount = $DomainMetadataResult->AttributeValueCount;
+    my $Timestamp          = $DomainMetadataResult->Timestamp;
+    my $AttributeNameCount = $DomainMetadataResult->AttributeNameCount;
+    my $ItemCount          = $DomainMetadataResult->ItemCount;
     my $AttributeValuesSizeBytes =
       $DomainMetadataResult->AttributeValuesSizeBytes;
-    my $AttributeNameCount = $DomainMetadataResult->AttributeNameCount;
-    my $ItemNamesSizeBytes = $DomainMetadataResult->ItemNamesSizeBytes;
+    my $AttributeValueCount = $DomainMetadataResult->AttributeValueCount;
+    my $ItemNamesSizeBytes  = $DomainMetadataResult->ItemNamesSizeBytes;
     my $AttributeNamesSizeBytes =
       $DomainMetadataResult->AttributeNamesSizeBytes;
-    my $ItemCount = $DomainMetadataResult->ItemCount;
 
     # Returns a L<Paws::SDB::DomainMetadataResult> object.
 

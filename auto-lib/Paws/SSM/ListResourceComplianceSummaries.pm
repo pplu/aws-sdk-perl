@@ -33,16 +33,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $ssm->ListResourceComplianceSummaries(
       Filters => [
         {
-          Key => 'MyComplianceStringFilterKey',    # min: 1, max: 200; OPTIONAL
-          Values => [ 'MyComplianceFilterValue', ... ]
-          ,                                        # min: 1, max: 20; OPTIONAL
           Type => 'EQUAL'
           , # values: EQUAL, NOT_EQUAL, BEGIN_WITH, LESS_THAN, GREATER_THAN; OPTIONAL
+          Values => [ 'MyComplianceFilterValue', ... ]
+          ,    # min: 1, max: 20; OPTIONAL
+          Key => 'MyComplianceStringFilterKey',    # min: 1, max: 200; OPTIONAL
         },
         ...
-      ],    # OPTIONAL
-      MaxResults => 1,                # OPTIONAL
-      NextToken  => 'MyNextToken',    # OPTIONAL
+      ],                                           # OPTIONAL
+      MaxResults => 1,                             # OPTIONAL
+      NextToken  => 'MyNextToken',                 # OPTIONAL
       );
 
     # Results:

@@ -39,12 +39,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $GatewayARN = $DescribeWorkingStorageOutput->GatewayARN;
     my $WorkingStorageUsedInBytes =
       $DescribeWorkingStorageOutput->WorkingStorageUsedInBytes;
-    my $DiskIds = $DescribeWorkingStorageOutput->DiskIds;
     my $WorkingStorageAllocatedInBytes =
       $DescribeWorkingStorageOutput->WorkingStorageAllocatedInBytes;
+    my $DiskIds    = $DescribeWorkingStorageOutput->DiskIds;
+    my $GatewayARN = $DescribeWorkingStorageOutput->GatewayARN;
 
     # Returns a L<Paws::StorageGateway::DescribeWorkingStorageOutput> object.
 

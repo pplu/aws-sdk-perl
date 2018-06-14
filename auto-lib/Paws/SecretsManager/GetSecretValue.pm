@@ -36,13 +36,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $CreatedDate   = $GetSecretValueResponse->CreatedDate;
     my $ARN           = $GetSecretValueResponse->ARN;
+    my $VersionStages = $GetSecretValueResponse->VersionStages;
     my $SecretBinary  = $GetSecretValueResponse->SecretBinary;
     my $SecretString  = $GetSecretValueResponse->SecretString;
-    my $VersionStages = $GetSecretValueResponse->VersionStages;
     my $Name          = $GetSecretValueResponse->Name;
     my $VersionId     = $GetSecretValueResponse->VersionId;
-    my $CreatedDate   = $GetSecretValueResponse->CreatedDate;
 
     # Returns a L<Paws::SecretsManager::GetSecretValueResponse> object.
 

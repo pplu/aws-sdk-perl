@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Jobs          = $ListJobsByPipelineResponse->Jobs;
     my $NextPageToken = $ListJobsByPipelineResponse->NextPageToken;
+    my $Jobs          = $ListJobsByPipelineResponse->Jobs;
 
     # Returns a L<Paws::ElasticTranscoder::ListJobsByPipelineResponse> object.
 

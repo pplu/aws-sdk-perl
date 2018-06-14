@@ -31,13 +31,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $elasticmapreduce = Paws->service('EMR');
     my $PutAutoScalingPolicyOutput = $elasticmapreduce->PutAutoScalingPolicy(
       AutoScalingPolicy => {
-        Constraints => {
-          MinCapacity => 1,
-          MaxCapacity => 1,
-
-        },
         Rules => [
           {
+            Trigger => {
+              CloudWatchAlarmDefinition => {
+                MetricName         => 'MyString',
+                Period             => 1,
+                ComparisonOperator => 'GREATER_THAN_OR_EQUAL'
+                , # values: GREATER_THAN_OR_EQUAL, GREATER_THAN, LESS_THAN, LESS_THAN_OR_EQUAL
+                Threshold => 1,
+                Statistic => 'SAMPLE_COUNT'
+                , # values: SAMPLE_COUNT, AVERAGE, SUM, MINIMUM, MAXIMUM; OPTIONAL
+                Dimensions => [
+                  {
+                    Key   => 'MyString',
+                    Value => 'MyString',
+                  },
+                  ...
+                ],    # OPTIONAL
+                Unit => 'NONE'
+                , # values: NONE, SECONDS, MICRO_SECONDS, MILLI_SECONDS, BYTES, KILO_BYTES, MEGA_BYTES, GIGA_BYTES, TERA_BYTES, BITS, KILO_BITS, MEGA_BITS, GIGA_BITS, TERA_BITS, PERCENT, COUNT, BYTES_PER_SECOND, KILO_BYTES_PER_SECOND, MEGA_BYTES_PER_SECOND, GIGA_BYTES_PER_SECOND, TERA_BYTES_PER_SECOND, BITS_PER_SECOND, KILO_BITS_PER_SECOND, MEGA_BITS_PER_SECOND, GIGA_BITS_PER_SECOND, TERA_BITS_PER_SECOND, COUNT_PER_SECOND; OPTIONAL
+                EvaluationPeriods => 1,
+                Namespace         => 'MyString',
+              },
+
+            },
             Action => {
               SimpleScalingPolicyConfiguration => {
                 ScalingAdjustment => 1,
@@ -47,34 +65,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },
               Market => 'ON_DEMAND',    # values: ON_DEMAND, SPOT; OPTIONAL
             },
-            Trigger => {
-              CloudWatchAlarmDefinition => {
-                Period             => 1,
-                Threshold          => 1,
-                ComparisonOperator => 'GREATER_THAN_OR_EQUAL'
-                , # values: GREATER_THAN_OR_EQUAL, GREATER_THAN, LESS_THAN, LESS_THAN_OR_EQUAL
-                MetricName => 'MyString',
-                Statistic  => 'SAMPLE_COUNT'
-                , # values: SAMPLE_COUNT, AVERAGE, SUM, MINIMUM, MAXIMUM; OPTIONAL
-                Namespace  => 'MyString',
-                Dimensions => [
-                  {
-                    Value => 'MyString',
-                    Key   => 'MyString',
-                  },
-                  ...
-                ],    # OPTIONAL
-                Unit => 'NONE'
-                , # values: NONE, SECONDS, MICRO_SECONDS, MILLI_SECONDS, BYTES, KILO_BYTES, MEGA_BYTES, GIGA_BYTES, TERA_BYTES, BITS, KILO_BITS, MEGA_BITS, GIGA_BITS, TERA_BITS, PERCENT, COUNT, BYTES_PER_SECOND, KILO_BYTES_PER_SECOND, MEGA_BYTES_PER_SECOND, GIGA_BYTES_PER_SECOND, TERA_BYTES_PER_SECOND, BITS_PER_SECOND, KILO_BITS_PER_SECOND, MEGA_BITS_PER_SECOND, GIGA_BITS_PER_SECOND, TERA_BITS_PER_SECOND, COUNT_PER_SECOND; OPTIONAL
-                EvaluationPeriods => 1,
-              },
-
-            },
             Name        => 'MyString',
             Description => 'MyString',
           },
           ...
         ],
+        Constraints => {
+          MaxCapacity => 1,
+          MinCapacity => 1,
+
+        },
 
       },
       ClusterId       => 'MyClusterId',
@@ -83,9 +83,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $InstanceGroupId   = $PutAutoScalingPolicyOutput->InstanceGroupId;
     my $AutoScalingPolicy = $PutAutoScalingPolicyOutput->AutoScalingPolicy;
     my $ClusterId         = $PutAutoScalingPolicyOutput->ClusterId;
+    my $InstanceGroupId   = $PutAutoScalingPolicyOutput->InstanceGroupId;
 
     # Returns a L<Paws::EMR::PutAutoScalingPolicyOutput> object.
 

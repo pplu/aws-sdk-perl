@@ -33,17 +33,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $InstancesWithInstalledOtherPatches =
-      $DescribePatchGroupStateResult->InstancesWithInstalledOtherPatches;
-    my $InstancesWithNotApplicablePatches =
-      $DescribePatchGroupStateResult->InstancesWithNotApplicablePatches;
     my $InstancesWithFailedPatches =
       $DescribePatchGroupStateResult->InstancesWithFailedPatches;
-    my $InstancesWithMissingPatches =
-      $DescribePatchGroupStateResult->InstancesWithMissingPatches;
     my $InstancesWithInstalledPatches =
       $DescribePatchGroupStateResult->InstancesWithInstalledPatches;
     my $Instances = $DescribePatchGroupStateResult->Instances;
+    my $InstancesWithNotApplicablePatches =
+      $DescribePatchGroupStateResult->InstancesWithNotApplicablePatches;
+    my $InstancesWithMissingPatches =
+      $DescribePatchGroupStateResult->InstancesWithMissingPatches;
+    my $InstancesWithInstalledOtherPatches =
+      $DescribePatchGroupStateResult->InstancesWithInstalledOtherPatches;
 
     # Returns a L<Paws::SSM::DescribePatchGroupStateResult> object.
 

@@ -38,16 +38,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeSpotFleetRequestHistoryResponse =
       $ec2->DescribeSpotFleetRequestHistory(
       {
-        'SpotFleetRequestId' => 'sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE',
-        'StartTime'          => '2015-05-26T00:00:00Z'
+        'StartTime'          => '2015-05-26T00:00:00Z',
+        'SpotFleetRequestId' => 'sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE'
       }
       );
 
     # Results:
-    my $StartTime = $DescribeSpotFleetRequestHistoryResponse->StartTime;
     my $NextToken = $DescribeSpotFleetRequestHistoryResponse->NextToken;
     my $HistoryRecords =
       $DescribeSpotFleetRequestHistoryResponse->HistoryRecords;
+    my $StartTime = $DescribeSpotFleetRequestHistoryResponse->StartTime;
     my $SpotFleetRequestId =
       $DescribeSpotFleetRequestHistoryResponse->SpotFleetRequestId;
 

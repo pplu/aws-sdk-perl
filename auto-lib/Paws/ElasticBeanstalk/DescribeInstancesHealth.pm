@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeInstancesHealthResult =
       $elasticbeanstalk->DescribeInstancesHealth(
       {
-        'AttributeNames'  => ['All'],
-        'EnvironmentName' => 'my-env'
+        'EnvironmentName' => 'my-env',
+        'AttributeNames'  => ['All']
       }
       );
 

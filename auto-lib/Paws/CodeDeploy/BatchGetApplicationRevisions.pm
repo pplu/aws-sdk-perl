@@ -33,13 +33,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ApplicationName => 'MyApplicationName',
       Revisions       => [
         {
-          s3Location => {
-            eTag    => 'MyETag',         # OPTIONAL
-            version => 'MyVersionId',    # OPTIONAL
-            bundleType => 'tar',   # values: tar, tgz, zip, YAML, JSON; OPTIONAL
-            key    => 'MyS3Key',       # OPTIONAL
-            bucket => 'MyS3Bucket',    # OPTIONAL
-          },    # OPTIONAL
           gitHubLocation => {
             repository => 'MyRepository',    # OPTIONAL
             commitId   => 'MyCommitId',      # OPTIONAL
@@ -49,6 +42,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             sha256  => 'MyRawStringSha256',     # OPTIONAL
           },    # OPTIONAL
           revisionType => 'S3',    # values: S3, GitHub, String; OPTIONAL
+          s3Location   => {
+            eTag    => 'MyETag',         # OPTIONAL
+            key     => 'MyS3Key',        # OPTIONAL
+            version => 'MyVersionId',    # OPTIONAL
+            bundleType => 'tar',   # values: tar, tgz, zip, YAML, JSON; OPTIONAL
+            bucket => 'MyS3Bucket',    # OPTIONAL
+          },    # OPTIONAL
         },
         ...
       ],
@@ -56,9 +56,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $ErrorMessage    = $BatchGetApplicationRevisionsOutput->ErrorMessage;
-    my $ApplicationName = $BatchGetApplicationRevisionsOutput->ApplicationName;
     my $Revisions       = $BatchGetApplicationRevisionsOutput->Revisions;
+    my $ApplicationName = $BatchGetApplicationRevisionsOutput->ApplicationName;
+    my $ErrorMessage    = $BatchGetApplicationRevisionsOutput->ErrorMessage;
 
     # Returns a L<Paws::CodeDeploy::BatchGetApplicationRevisionsOutput> object.
 

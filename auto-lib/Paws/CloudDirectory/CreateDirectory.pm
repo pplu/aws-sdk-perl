@@ -36,9 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $DirectoryArn     = $CreateDirectoryResponse->DirectoryArn;
-    my $ObjectIdentifier = $CreateDirectoryResponse->ObjectIdentifier;
     my $AppliedSchemaArn = $CreateDirectoryResponse->AppliedSchemaArn;
+    my $ObjectIdentifier = $CreateDirectoryResponse->ObjectIdentifier;
+    my $DirectoryArn     = $CreateDirectoryResponse->DirectoryArn;
     my $Name             = $CreateDirectoryResponse->Name;
 
     # Returns a L<Paws::CloudDirectory::CreateDirectoryResponse> object.

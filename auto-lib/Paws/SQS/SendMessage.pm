@@ -39,12 +39,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MessageAttributes => {
         'MyString' => {
           DataType         => 'MyString',
-          StringListValues => [ 'MyString', ... ],    # OPTIONAL
-          BinaryValue      => 'BlobBinary',           # OPTIONAL
+          BinaryListValues => [ 'BlobBinary', ... ],    # OPTIONAL
+          BinaryValue      => 'BlobBinary',
+          StringListValues => [ 'MyString', ... ],      # OPTIONAL
           StringValue      => 'MyString',
-          BinaryListValues => [
-            'BlobBinary', ...                         # OPTIONAL
-          ],                                          # OPTIONAL
         },
       },    # OPTIONAL
       MessageDeduplicationId => 'MyString',    # OPTIONAL
@@ -52,10 +50,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $MessageId              = $SendMessageResult->MessageId;
-    my $MD5OfMessageBody       = $SendMessageResult->MD5OfMessageBody;
     my $MD5OfMessageAttributes = $SendMessageResult->MD5OfMessageAttributes;
     my $SequenceNumber         = $SendMessageResult->SequenceNumber;
+    my $MD5OfMessageBody       = $SendMessageResult->MD5OfMessageBody;
+    my $MessageId              = $SendMessageResult->MessageId;
 
     # Returns a L<Paws::SQS::SendMessageResult> object.
 

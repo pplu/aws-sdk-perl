@@ -38,10 +38,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $ActionType = $ApplyEnvironmentManagedActionResult->ActionType;
+    my $ActionId   = $ApplyEnvironmentManagedActionResult->ActionId;
     my $Status     = $ApplyEnvironmentManagedActionResult->Status;
     my $ActionDescription =
       $ApplyEnvironmentManagedActionResult->ActionDescription;
-    my $ActionId = $ApplyEnvironmentManagedActionResult->ActionId;
 
 # Returns a L<Paws::ElasticBeanstalk::ApplyEnvironmentManagedActionResult> object.
 

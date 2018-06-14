@@ -36,27 +36,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $StandardErrorUrl = $GetCommandInvocationResult->StandardErrorUrl;
-    my $ExecutionElapsedTime =
-      $GetCommandInvocationResult->ExecutionElapsedTime;
-    my $ExecutionStartDateTime =
-      $GetCommandInvocationResult->ExecutionStartDateTime;
-    my $DocumentVersion = $GetCommandInvocationResult->DocumentVersion;
-    my $ExecutionEndDateTime =
-      $GetCommandInvocationResult->ExecutionEndDateTime;
-    my $ResponseCode = $GetCommandInvocationResult->ResponseCode;
     my $StandardErrorContent =
       $GetCommandInvocationResult->StandardErrorContent;
-    my $CommandId         = $GetCommandInvocationResult->CommandId;
-    my $StatusDetails     = $GetCommandInvocationResult->StatusDetails;
-    my $Status            = $GetCommandInvocationResult->Status;
-    my $DocumentName      = $GetCommandInvocationResult->DocumentName;
-    my $PluginName        = $GetCommandInvocationResult->PluginName;
-    my $StandardOutputUrl = $GetCommandInvocationResult->StandardOutputUrl;
-    my $InstanceId        = $GetCommandInvocationResult->InstanceId;
+    my $InstanceId = $GetCommandInvocationResult->InstanceId;
+    my $ExecutionEndDateTime =
+      $GetCommandInvocationResult->ExecutionEndDateTime;
+    my $ExecutionElapsedTime =
+      $GetCommandInvocationResult->ExecutionElapsedTime;
+    my $Status           = $GetCommandInvocationResult->Status;
+    my $DocumentName     = $GetCommandInvocationResult->DocumentName;
+    my $StatusDetails    = $GetCommandInvocationResult->StatusDetails;
+    my $PluginName       = $GetCommandInvocationResult->PluginName;
+    my $StandardErrorUrl = $GetCommandInvocationResult->StandardErrorUrl;
+    my $ExecutionStartDateTime =
+      $GetCommandInvocationResult->ExecutionStartDateTime;
+    my $CommandId = $GetCommandInvocationResult->CommandId;
     my $StandardOutputContent =
       $GetCommandInvocationResult->StandardOutputContent;
     my $Comment = $GetCommandInvocationResult->Comment;
+    my $CloudWatchOutputConfig =
+      $GetCommandInvocationResult->CloudWatchOutputConfig;
+    my $ResponseCode      = $GetCommandInvocationResult->ResponseCode;
+    my $DocumentVersion   = $GetCommandInvocationResult->DocumentVersion;
+    my $StandardOutputUrl = $GetCommandInvocationResult->StandardOutputUrl;
 
     # Returns a L<Paws::SSM::GetCommandInvocationResult> object.
 

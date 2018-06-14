@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $Slots            = $GetBuiltinIntentResponse->Slots;
     my $Signature        = $GetBuiltinIntentResponse->Signature;
     my $SupportedLocales = $GetBuiltinIntentResponse->SupportedLocales;
-    my $Slots            = $GetBuiltinIntentResponse->Slots;
 
     # Returns a L<Paws::LexModels::GetBuiltinIntentResponse> object.
 

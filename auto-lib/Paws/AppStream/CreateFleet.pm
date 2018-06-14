@@ -50,20 +50,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DisconnectTimeoutInSeconds => 1,                  # OPTIONAL
       DisplayName                => 'MyDisplayName',    # OPTIONAL
       DomainJoinInfo             => {
+        DirectoryName => 'MyDirectoryName',             # OPTIONAL
         OrganizationalUnitDistinguishedName =>
           'MyOrganizationalUnitDistinguishedName',      # max: 2000; OPTIONAL
-        DirectoryName => 'MyDirectoryName',             # OPTIONAL
       },    # OPTIONAL
       EnableDefaultInternetAccess => 1,              # OPTIONAL
       FleetType                   => 'ALWAYS_ON',    # OPTIONAL
       MaxUserDurationInSeconds    => 1,              # OPTIONAL
       VpcConfig                   => {
-        SecurityGroupIds => [
-          'MyString', ...                            # min: 1,
-        ],                                           # max: 5; OPTIONAL
         SubnetIds => [
           'MyString', ...                            # min: 1,
         ],                                           # OPTIONAL
+        SecurityGroupIds => [
+          'MyString', ...                            # min: 1,
+        ],                                           # max: 5; OPTIONAL
       },    # OPTIONAL
     );
 

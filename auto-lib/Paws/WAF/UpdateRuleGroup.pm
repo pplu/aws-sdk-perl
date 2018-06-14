@@ -36,15 +36,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           Action        => 'INSERT',    # values: INSERT, DELETE
           ActivatedRule => {
-            RuleId   => 'MyResourceId',    # min: 1, max: 128
             Priority => 1,
-            Action   => {
-              Type => 'BLOCK',             # values: BLOCK, ALLOW, COUNT
+            RuleId   => 'MyResourceId',    # min: 1, max: 128
+            Type   => 'REGULAR',  # values: REGULAR, RATE_BASED, GROUP; OPTIONAL
+            Action => {
+              Type => 'BLOCK',    # values: BLOCK, ALLOW, COUNT
 
             },    # OPTIONAL
-            Type => 'REGULAR',    # values: REGULAR, RATE_BASED, GROUP; OPTIONAL
             OverrideAction => {
-              Type => 'NONE',     # values: NONE, COUNT
+              Type => 'NONE',    # values: NONE, COUNT
 
             },    # OPTIONAL
           },

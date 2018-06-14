@@ -49,21 +49,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Version                 => 'MyVersion',
       ConfigurationProperties => [
         {
-          required  => 1,
           key       => 1,
+          required  => 1,
           name      => 'MyActionConfigurationKey',    # min: 1, max: 50
           secret    => 1,
           queryable => 1,
-          type => 'String',    # values: String, Number, Boolean; OPTIONAL
           description => 'MyDescription',    # min: 1, max: 160; OPTIONAL
+          type => 'String',    # values: String, Number, Boolean; OPTIONAL
         },
         ...
-      ],                                     # OPTIONAL
+      ],                       # OPTIONAL
       Settings => {
-        revisionUrlTemplate  => 'MyUrlTemplate',   # min: 1, max: 2048; OPTIONAL
         executionUrlTemplate => 'MyUrlTemplate',   # min: 1, max: 2048; OPTIONAL
         entityUrlTemplate    => 'MyUrlTemplate',   # min: 1, max: 2048; OPTIONAL
         thirdPartyConfigurationUrl => 'MyUrl',     # min: 1, max: 2048; OPTIONAL
+        revisionUrlTemplate => 'MyUrlTemplate',    # min: 1, max: 2048; OPTIONAL
       },    # OPTIONAL
     );
 

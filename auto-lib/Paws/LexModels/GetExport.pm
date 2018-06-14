@@ -40,13 +40,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $Version       = $GetExportResponse->Version;
+    my $FailureReason = $GetExportResponse->FailureReason;
+    my $ResourceType  = $GetExportResponse->ResourceType;
+    my $ExportType    = $GetExportResponse->ExportType;
+    my $Url           = $GetExportResponse->Url;
     my $ExportStatus  = $GetExportResponse->ExportStatus;
     my $Name          = $GetExportResponse->Name;
-    my $Version       = $GetExportResponse->Version;
-    my $ExportType    = $GetExportResponse->ExportType;
-    my $ResourceType  = $GetExportResponse->ResourceType;
-    my $FailureReason = $GetExportResponse->FailureReason;
-    my $Url           = $GetExportResponse->Url;
 
     # Returns a L<Paws::LexModels::GetExportResponse> object.
 

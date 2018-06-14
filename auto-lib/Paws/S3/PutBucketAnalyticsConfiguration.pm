@@ -34,10 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $s3 = Paws->service('S3');
     $s3->PutBucketAnalyticsConfiguration(
       AnalyticsConfiguration => {
-        Id                   => 'MyAnalyticsId',
         StorageClassAnalysis => {
           DataExport => {
-            Destination => {
+            OutputSchemaVersion => 'V_1',    # values: V_1
+            Destination         => {
               S3BucketDestination => {
                 Bucket          => 'MyBucketName',
                 Format          => 'CSV',            # values: CSV
@@ -46,27 +46,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },
 
             },
-            OutputSchemaVersion => 'V_1',            # values: V_1
 
           },    # OPTIONAL
         },
+        Id     => 'MyAnalyticsId',
         Filter => {
-          Prefix => 'MyPrefix',    # OPTIONAL
-          Tag    => {
-            Value => 'MyValue',
+          Tag => {
             Key   => 'MyObjectKey',    # min: 1,
+            Value => 'MyValue',
 
-          },    # OPTIONAL
-          And => {
-            Tags => [
+          },
+          Prefix => 'MyPrefix',        # OPTIONAL
+          And    => {
+            Prefix => 'MyPrefix',      # OPTIONAL
+            Tags   => [
               {
-                Value => 'MyValue',
                 Key   => 'MyObjectKey',    # min: 1,
+                Value => 'MyValue',
 
               },
-              ...                          # OPTIONAL
+              ...
             ],                             # OPTIONAL
-            Prefix => 'MyPrefix',          # OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
       },

@@ -47,13 +47,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $Location       = $PostCommentForComparedCommitOutput->Location;
-    my $RepositoryName = $PostCommentForComparedCommitOutput->RepositoryName;
-    my $BeforeBlobId   = $PostCommentForComparedCommitOutput->BeforeBlobId;
-    my $AfterBlobId    = $PostCommentForComparedCommitOutput->AfterBlobId;
-    my $Comment        = $PostCommentForComparedCommitOutput->Comment;
-    my $AfterCommitId  = $PostCommentForComparedCommitOutput->AfterCommitId;
     my $BeforeCommitId = $PostCommentForComparedCommitOutput->BeforeCommitId;
+    my $AfterBlobId    = $PostCommentForComparedCommitOutput->AfterBlobId;
+    my $AfterCommitId  = $PostCommentForComparedCommitOutput->AfterCommitId;
+    my $BeforeBlobId   = $PostCommentForComparedCommitOutput->BeforeBlobId;
+    my $Location       = $PostCommentForComparedCommitOutput->Location;
+    my $Comment        = $PostCommentForComparedCommitOutput->Comment;
+    my $RepositoryName = $PostCommentForComparedCommitOutput->RepositoryName;
 
     # Returns a L<Paws::CodeCommit::PostCommentForComparedCommitOutput> object.
 

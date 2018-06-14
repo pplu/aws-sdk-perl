@@ -33,18 +33,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateCloudFrontOriginAccessIdentityResult =
       $cloudfront->CreateCloudFrontOriginAccessIdentity(
       CloudFrontOriginAccessIdentityConfig => {
-        Comment         => 'Mystring',
         CallerReference => 'Mystring',
+        Comment         => 'Mystring',
 
       },
 
       );
 
     # Results:
-    my $ETag = $CreateCloudFrontOriginAccessIdentityResult->ETag;
     my $CloudFrontOriginAccessIdentity =
       $CreateCloudFrontOriginAccessIdentityResult
       ->CloudFrontOriginAccessIdentity;
+    my $ETag     = $CreateCloudFrontOriginAccessIdentityResult->ETag;
     my $Location = $CreateCloudFrontOriginAccessIdentityResult->Location;
 
 # Returns a L<Paws::CloudFront::CreateCloudFrontOriginAccessIdentityResult> object.

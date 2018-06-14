@@ -38,10 +38,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $VideoMetadata    = $GetContentModerationResponse->VideoMetadata;
-    my $JobStatus        = $GetContentModerationResponse->JobStatus;
     my $NextToken        = $GetContentModerationResponse->NextToken;
     my $ModerationLabels = $GetContentModerationResponse->ModerationLabels;
+    my $VideoMetadata    = $GetContentModerationResponse->VideoMetadata;
+    my $JobStatus        = $GetContentModerationResponse->JobStatus;
     my $StatusMessage    = $GetContentModerationResponse->StatusMessage;
 
     # Returns a L<Paws::Rekognition::GetContentModerationResponse> object.

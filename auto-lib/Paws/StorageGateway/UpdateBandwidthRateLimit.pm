@@ -36,10 +36,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateBandwidthRateLimitOutput =
       $storagegateway->UpdateBandwidthRateLimit(
       {
-        'GatewayARN' =>
-          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B',
         'AverageDownloadRateLimitInBitsPerSec' => 102400,
-        'AverageUploadRateLimitInBitsPerSec'   => 51200
+        'AverageUploadRateLimitInBitsPerSec'   => 51200,
+        'GatewayARN' =>
+          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B'
       }
       );
 

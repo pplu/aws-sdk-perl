@@ -49,17 +49,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $EnvironmentName   = $EnvironmentDescription->EnvironmentName;
-    my $EndpointURL       = $EnvironmentDescription->EndpointURL;
     my $Tier              = $EnvironmentDescription->Tier;
-    my $ApplicationName   = $EnvironmentDescription->ApplicationName;
-    my $DateUpdated       = $EnvironmentDescription->DateUpdated;
     my $DateCreated       = $EnvironmentDescription->DateCreated;
-    my $Health            = $EnvironmentDescription->Health;
-    my $CNAME             = $EnvironmentDescription->CNAME;
-    my $SolutionStackName = $EnvironmentDescription->SolutionStackName;
+    my $EnvironmentName   = $EnvironmentDescription->EnvironmentName;
     my $Status            = $EnvironmentDescription->Status;
+    my $CNAME             = $EnvironmentDescription->CNAME;
+    my $EndpointURL       = $EnvironmentDescription->EndpointURL;
     my $EnvironmentId     = $EnvironmentDescription->EnvironmentId;
+    my $ApplicationName   = $EnvironmentDescription->ApplicationName;
+    my $Health            = $EnvironmentDescription->Health;
+    my $SolutionStackName = $EnvironmentDescription->SolutionStackName;
+    my $DateUpdated       = $EnvironmentDescription->DateUpdated;
     my $VersionLabel      = $EnvironmentDescription->VersionLabel;
 
     # Returns a L<Paws::ElasticBeanstalk::EnvironmentDescription> object.
@@ -71,9 +71,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'OptionSettings' => [
 
           {
+            'Value'      => 15,
             'Namespace'  => 'aws:elb:healthcheck',
-            'OptionName' => 'Interval',
-            'Value'      => 15
+            'OptionName' => 'Interval'
           },
 
           {
@@ -89,9 +89,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
 
           {
-            'OptionName' => 'UnhealthyThreshold',
+            'Value'      => 3,
             'Namespace'  => 'aws:elb:healthcheck',
-            'Value'      => 3
+            'OptionName' => 'UnhealthyThreshold'
           }
         ],
         'EnvironmentName' => 'my-env'
@@ -99,20 +99,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $EnvironmentName   = $EnvironmentDescription->EnvironmentName;
-    my $Tier              = $EnvironmentDescription->Tier;
-    my $EndpointURL       = $EnvironmentDescription->EndpointURL;
-    my $ApplicationName   = $EnvironmentDescription->ApplicationName;
-    my $DateCreated       = $EnvironmentDescription->DateCreated;
-    my $DateUpdated       = $EnvironmentDescription->DateUpdated;
-    my $Health            = $EnvironmentDescription->Health;
-    my $CNAME             = $EnvironmentDescription->CNAME;
-    my $SolutionStackName = $EnvironmentDescription->SolutionStackName;
-    my $EnvironmentId     = $EnvironmentDescription->EnvironmentId;
-    my $Status            = $EnvironmentDescription->Status;
-    my $VersionLabel      = $EnvironmentDescription->VersionLabel;
+    my $Tier            = $EnvironmentDescription->Tier;
+    my $DateCreated     = $EnvironmentDescription->DateCreated;
+    my $EnvironmentName = $EnvironmentDescription->EnvironmentName;
+    my $Status          = $EnvironmentDescription->Status;
+    my $CNAME           = $EnvironmentDescription->CNAME;
     my $AbortableOperationInProgress =
       $EnvironmentDescription->AbortableOperationInProgress;
+    my $EndpointURL       = $EnvironmentDescription->EndpointURL;
+    my $EnvironmentId     = $EnvironmentDescription->EnvironmentId;
+    my $Health            = $EnvironmentDescription->Health;
+    my $ApplicationName   = $EnvironmentDescription->ApplicationName;
+    my $SolutionStackName = $EnvironmentDescription->SolutionStackName;
+    my $DateUpdated       = $EnvironmentDescription->DateUpdated;
+    my $VersionLabel      = $EnvironmentDescription->VersionLabel;
 
     # Returns a L<Paws::ElasticBeanstalk::EnvironmentDescription> object.
 

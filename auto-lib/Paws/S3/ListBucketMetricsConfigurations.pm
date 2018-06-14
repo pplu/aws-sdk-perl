@@ -38,13 +38,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $MetricsConfigurationList =
-      $ListBucketMetricsConfigurationsOutput->MetricsConfigurationList;
+    my $IsTruncated = $ListBucketMetricsConfigurationsOutput->IsTruncated;
     my $NextContinuationToken =
       $ListBucketMetricsConfigurationsOutput->NextContinuationToken;
+    my $MetricsConfigurationList =
+      $ListBucketMetricsConfigurationsOutput->MetricsConfigurationList;
     my $ContinuationToken =
       $ListBucketMetricsConfigurationsOutput->ContinuationToken;
-    my $IsTruncated = $ListBucketMetricsConfigurationsOutput->IsTruncated;
 
     # Returns a L<Paws::S3::ListBucketMetricsConfigurationsOutput> object.
 

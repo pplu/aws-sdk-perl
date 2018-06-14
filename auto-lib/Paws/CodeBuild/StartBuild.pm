@@ -48,12 +48,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $StartBuildOutput = $codebuild->StartBuild(
       ProjectName       => 'MyNonEmptyString',
       ArtifactsOverride => {
-        type => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
+        type      => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
+        packaging => 'NONE',            # values: NONE, ZIP; OPTIONAL
         namespaceType => 'NONE',        # values: NONE, BUILD_ID; OPTIONAL
+        location      => 'MyString',    # OPTIONAL
         name          => 'MyString',    # OPTIONAL
         path          => 'MyString',    # OPTIONAL
-        location      => 'MyString',    # OPTIONAL
-        packaging     => 'NONE',        # values: NONE, ZIP; OPTIONAL
       },    # OPTIONAL
       BuildspecOverride => 'MyString',    # OPTIONAL
       CacheOverride     => {
@@ -88,7 +88,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Build = $StartBuildOutput->Build;
+    my $build = $StartBuildOutput->build;
 
     # Returns a L<Paws::CodeBuild::StartBuildOutput> object.
 

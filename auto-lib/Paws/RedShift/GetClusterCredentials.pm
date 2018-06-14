@@ -42,8 +42,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $DbPassword = $ClusterCredentials->DbPassword;
     my $Expiration = $ClusterCredentials->Expiration;
+    my $DbPassword = $ClusterCredentials->DbPassword;
     my $DbUser     = $ClusterCredentials->DbUser;
 
     # Returns a L<Paws::RedShift::ClusterCredentials> object.

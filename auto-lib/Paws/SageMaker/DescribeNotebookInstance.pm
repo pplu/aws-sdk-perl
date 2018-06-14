@@ -33,27 +33,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $CreationTime = $DescribeNotebookInstanceOutput->CreationTime;
+    my $InstanceType = $DescribeNotebookInstanceOutput->InstanceType;
     my $NotebookInstanceStatus =
       $DescribeNotebookInstanceOutput->NotebookInstanceStatus;
-    my $DirectInternetAccess =
-      $DescribeNotebookInstanceOutput->DirectInternetAccess;
-    my $InstanceType = $DescribeNotebookInstanceOutput->InstanceType;
-    my $RoleArn      = $DescribeNotebookInstanceOutput->RoleArn;
-    my $NotebookInstanceLifecycleConfigName =
-      $DescribeNotebookInstanceOutput->NotebookInstanceLifecycleConfigName;
-    my $FailureReason = $DescribeNotebookInstanceOutput->FailureReason;
-    my $NetworkInterfaceId =
-      $DescribeNotebookInstanceOutput->NetworkInterfaceId;
     my $KmsKeyId = $DescribeNotebookInstanceOutput->KmsKeyId;
-    my $SubnetId = $DescribeNotebookInstanceOutput->SubnetId;
-    my $Url      = $DescribeNotebookInstanceOutput->Url;
+    my $RoleArn  = $DescribeNotebookInstanceOutput->RoleArn;
     my $NotebookInstanceArn =
       $DescribeNotebookInstanceOutput->NotebookInstanceArn;
-    my $LastModifiedTime = $DescribeNotebookInstanceOutput->LastModifiedTime;
-    my $CreationTime     = $DescribeNotebookInstanceOutput->CreationTime;
-    my $SecurityGroups   = $DescribeNotebookInstanceOutput->SecurityGroups;
     my $NotebookInstanceName =
       $DescribeNotebookInstanceOutput->NotebookInstanceName;
+    my $FailureReason    = $DescribeNotebookInstanceOutput->FailureReason;
+    my $LastModifiedTime = $DescribeNotebookInstanceOutput->LastModifiedTime;
+    my $SubnetId         = $DescribeNotebookInstanceOutput->SubnetId;
+    my $NotebookInstanceLifecycleConfigName =
+      $DescribeNotebookInstanceOutput->NotebookInstanceLifecycleConfigName;
+    my $NetworkInterfaceId =
+      $DescribeNotebookInstanceOutput->NetworkInterfaceId;
+    my $DirectInternetAccess =
+      $DescribeNotebookInstanceOutput->DirectInternetAccess;
+    my $Url            = $DescribeNotebookInstanceOutput->Url;
+    my $SecurityGroups = $DescribeNotebookInstanceOutput->SecurityGroups;
 
     # Returns a L<Paws::SageMaker::DescribeNotebookInstanceOutput> object.
 

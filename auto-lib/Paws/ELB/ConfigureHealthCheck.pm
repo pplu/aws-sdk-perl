@@ -35,11 +35,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $elasticloadbalancing->ConfigureHealthCheck(
       {
         'HealthCheck' => {
-          'UnhealthyThreshold' => 2,
           'Target'             => 'HTTP:80/png',
           'Interval'           => 30,
-          'HealthyThreshold'   => 2,
-          'Timeout'            => 3
+          'UnhealthyThreshold' => 2,
+          'Timeout'            => 3,
+          'HealthyThreshold'   => 2
         },
         'LoadBalancerName' => 'my-load-balancer'
       }

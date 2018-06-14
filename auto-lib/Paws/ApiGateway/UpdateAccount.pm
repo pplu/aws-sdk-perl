@@ -31,21 +31,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Account = $apigateway->UpdateAccount(
       PatchOperations => [
         {
-          from => 'MyString',    # OPTIONAL
+          from  => 'MyString',    # OPTIONAL
+          value => 'MyString',    # OPTIONAL
+          path  => 'MyString',    # OPTIONAL
           op =>
             'add',    # values: add, remove, replace, move, copy, test; OPTIONAL
-          path  => 'MyString',    # OPTIONAL
-          value => 'MyString',    # OPTIONAL
         },
         ...
-      ],                          # OPTIONAL
+      ],              # OPTIONAL
     );
 
     # Results:
-    my $Features          = $Account->Features;
-    my $ThrottleSettings  = $Account->ThrottleSettings;
-    my $CloudwatchRoleArn = $Account->CloudwatchRoleArn;
     my $ApiKeyVersion     = $Account->ApiKeyVersion;
+    my $Features          = $Account->Features;
+    my $CloudwatchRoleArn = $Account->CloudwatchRoleArn;
+    my $ThrottleSettings  = $Account->ThrottleSettings;
 
     # Returns a L<Paws::ApiGateway::Account> object.
 

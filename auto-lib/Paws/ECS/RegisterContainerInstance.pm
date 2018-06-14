@@ -50,19 +50,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InstanceIdentityDocumentSignature => 'MyString',    # OPTIONAL
       TotalResources                    => [
         {
-          name           => 'MyString',
-          integerValue   => 1,                            # OPTIONAL
-          stringSetValue => [ 'MyString', ... ],          # OPTIONAL
-          type           => 'MyString',
-          doubleValue    => 1,                            # OPTIONAL
           longValue      => 1,                            # OPTIONAL
+          name           => 'MyString',
+          type           => 'MyString',
+          integerValue   => 1,                            # OPTIONAL
+          doubleValue    => 1,                            # OPTIONAL
+          stringSetValue => [ 'MyString', ... ],          # OPTIONAL
         },
         ...
       ],                                                  # OPTIONAL
       VersionInfo => {
+        agentVersion  => 'MyString',
         dockerVersion => 'MyString',
         agentHash     => 'MyString',
-        agentVersion  => 'MyString',
       },                                                  # OPTIONAL
     );
 

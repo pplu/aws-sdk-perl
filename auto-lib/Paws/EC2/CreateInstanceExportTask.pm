@@ -34,10 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InstanceId     => 'MyString',
       Description    => 'MyString',    # OPTIONAL
       ExportToS3Task => {
-        S3Bucket        => 'MyString',
         S3Prefix        => 'MyString',
-        DiskImageFormat => 'VMDK',       # values: VMDK, RAW, VHD; OPTIONAL
         ContainerFormat => 'ova',        # values: ova; OPTIONAL
+        DiskImageFormat => 'VMDK',       # values: VMDK, RAW, VHD; OPTIONAL
+        S3Bucket        => 'MyString',
       },    # OPTIONAL
       TargetEnvironment => 'citrix',    # OPTIONAL
     );

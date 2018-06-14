@@ -33,17 +33,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Cutoff      = $GetMaintenanceWindowResult->Cutoff;
-    my $WindowId    = $GetMaintenanceWindowResult->WindowId;
-    my $Description = $GetMaintenanceWindowResult->Description;
-    my $CreatedDate = $GetMaintenanceWindowResult->CreatedDate;
-    my $Duration    = $GetMaintenanceWindowResult->Duration;
+    my $Enabled      = $GetMaintenanceWindowResult->Enabled;
+    my $WindowId     = $GetMaintenanceWindowResult->WindowId;
+    my $ModifiedDate = $GetMaintenanceWindowResult->ModifiedDate;
+    my $CreatedDate  = $GetMaintenanceWindowResult->CreatedDate;
     my $AllowUnassociatedTargets =
       $GetMaintenanceWindowResult->AllowUnassociatedTargets;
-    my $Schedule     = $GetMaintenanceWindowResult->Schedule;
-    my $Name         = $GetMaintenanceWindowResult->Name;
-    my $ModifiedDate = $GetMaintenanceWindowResult->ModifiedDate;
-    my $Enabled      = $GetMaintenanceWindowResult->Enabled;
+    my $Cutoff      = $GetMaintenanceWindowResult->Cutoff;
+    my $Schedule    = $GetMaintenanceWindowResult->Schedule;
+    my $Name        = $GetMaintenanceWindowResult->Name;
+    my $Description = $GetMaintenanceWindowResult->Description;
+    my $Duration    = $GetMaintenanceWindowResult->Duration;
 
     # Returns a L<Paws::SSM::GetMaintenanceWindowResult> object.
 

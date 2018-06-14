@@ -34,14 +34,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateSizeConstraintSetResponse =
       $waf -regional->CreateSizeConstraintSet(
       {
-        'Name'        => 'MySampleSizeConstraintSet',
-        'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f'
+        'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
+        'Name'        => 'MySampleSizeConstraintSet'
       }
       );
 
     # Results:
-    my $SizeConstraintSet = $CreateSizeConstraintSetResponse->SizeConstraintSet;
     my $ChangeToken       = $CreateSizeConstraintSetResponse->ChangeToken;
+    my $SizeConstraintSet = $CreateSizeConstraintSetResponse->SizeConstraintSet;
 
     # Returns a L<Paws::WAFRegional::CreateSizeConstraintSetResponse> object.
 

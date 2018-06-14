@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Accounts  = $ListAccountsForParentResponse->Accounts;
     my $NextToken = $ListAccountsForParentResponse->NextToken;
+    my $Accounts  = $ListAccountsForParentResponse->Accounts;
 
     # Returns a L<Paws::Organizations::ListAccountsForParentResponse> object.
 

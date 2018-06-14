@@ -34,7 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       {
         'RuleSetName' => 'MyRuleSet',
         'Rule'        => {
-          'Actions' => [
+          'TlsPolicy' => 'Optional',
+          'Actions'   => [
 
             {
               'S3Action' => {
@@ -43,10 +44,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               }
             }
           ],
-          'Name'        => 'MyRule',
-          'Enabled'     => true,
-          'TlsPolicy'   => 'Optional',
-          'ScanEnabled' => true
+          'Enabled'     => 1,
+          'ScanEnabled' => 1,
+          'Name'        => 'MyRule'
         }
       }
     );

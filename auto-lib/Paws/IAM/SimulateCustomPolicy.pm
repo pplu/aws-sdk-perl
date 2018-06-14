@@ -47,17 +47,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ContextEntries => [
         {
           ContextKeyValues => [ 'MyContextKeyValueType', ... ],    # OPTIONAL
+          ContextKeyName => 'MyContextKeyNameType', # min: 5, max: 256; OPTIONAL
           ContextKeyType => 'string'
           , # values: string, stringList, numeric, numericList, boolean, booleanList, ip, ipList, binary, binaryList, date, dateList; OPTIONAL
-          ContextKeyName => 'MyContextKeyNameType', # min: 5, max: 256; OPTIONAL
         },
         ...
-      ],                                            # OPTIONAL
-      Marker       => 'MymarkerType',               # OPTIONAL
-      MaxItems     => 1,                            # OPTIONAL
+      ],    # OPTIONAL
+      Marker       => 'MymarkerType',    # OPTIONAL
+      MaxItems     => 1,                 # OPTIONAL
       ResourceArns => [
-        'MyResourceNameType', ...                   # min: 1, max: 2048
-      ],                                            # OPTIONAL
+        'MyResourceNameType', ...        # min: 1, max: 2048
+      ],                                 # OPTIONAL
       ResourceHandlingOption => 'MyResourceHandlingOptionType',    # OPTIONAL
       ResourceOwner          => 'MyResourceNameType',              # OPTIONAL
       ResourcePolicy         => 'MypolicyDocumentType',            # OPTIONAL

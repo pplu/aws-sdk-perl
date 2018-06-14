@@ -34,42 +34,42 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $ec2->UpdateSecurityGroupRuleDescriptionsEgress(
       IpPermissions => [
         {
-          IpProtocol => 'MyString',    # OPTIONAL
-          Ipv6Ranges => [
-            {
-              CidrIpv6    => 'MyString',    # OPTIONAL
-              Description => 'MyString',    # OPTIONAL
-            },
-            ...
-          ],                                # OPTIONAL
-          IpRanges => [
-            {
-              CidrIp      => 'MyString',    # OPTIONAL
-              Description => 'MyString',    # OPTIONAL
-            },
-            ...
-          ],                                # OPTIONAL
-          UserIdGroupPairs => [
-            {
-              GroupId                => 'MyString',    # OPTIONAL
-              UserId                 => 'MyString',    # OPTIONAL
-              VpcPeeringConnectionId => 'MyString',    # OPTIONAL
-              Description            => 'MyString',    # OPTIONAL
-              PeeringStatus          => 'MyString',    # OPTIONAL
-              GroupName              => 'MyString',    # OPTIONAL
-              VpcId                  => 'MyString',    # OPTIONAL
-            },
-            ...
-          ],                                           # OPTIONAL
-          FromPort      => 1,                          # OPTIONAL
+          ToPort        => 1,    # OPTIONAL
           PrefixListIds => [
             {
-              PrefixListId => 'MyString',              # OPTIONAL
-              Description  => 'MyString',              # OPTIONAL
+              PrefixListId => 'MyString',    # OPTIONAL
+              Description  => 'MyString',    # OPTIONAL
+            },
+            ...
+          ],                                 # OPTIONAL
+          IpRanges => [
+            {
+              CidrIp      => 'MyString',     # OPTIONAL
+              Description => 'MyString',     # OPTIONAL
+            },
+            ...
+          ],                                 # OPTIONAL
+          FromPort   => 1,                   # OPTIONAL
+          Ipv6Ranges => [
+            {
+              CidrIpv6    => 'MyString',     # OPTIONAL
+              Description => 'MyString',     # OPTIONAL
+            },
+            ...
+          ],                                 # OPTIONAL
+          IpProtocol       => 'MyString',    # OPTIONAL
+          UserIdGroupPairs => [
+            {
+              UserId                 => 'MyString',    # OPTIONAL
+              VpcId                  => 'MyString',    # OPTIONAL
+              PeeringStatus          => 'MyString',    # OPTIONAL
+              GroupId                => 'MyString',    # OPTIONAL
+              VpcPeeringConnectionId => 'MyString',    # OPTIONAL
+              GroupName              => 'MyString',    # OPTIONAL
+              Description            => 'MyString',    # OPTIONAL
             },
             ...
           ],                                           # OPTIONAL
-          ToPort => 1,                                 # OPTIONAL
         },
         ...
       ],

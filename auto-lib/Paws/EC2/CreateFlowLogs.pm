@@ -42,9 +42,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $FlowLogIds   = $CreateFlowLogsResult->FlowLogIds;
     my $ClientToken  = $CreateFlowLogsResult->ClientToken;
     my $Unsuccessful = $CreateFlowLogsResult->Unsuccessful;
+    my $FlowLogIds   = $CreateFlowLogsResult->FlowLogIds;
 
     # Returns a L<Paws::EC2::CreateFlowLogsResult> object.
 

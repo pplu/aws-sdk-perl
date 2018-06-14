@@ -69,9 +69,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EngineVersion               => 'MyString',             # OPTIONAL
       NodeGroupConfiguration      => [
         {
-          ReplicaCount             => 1,                      # OPTIONAL
           PrimaryAvailabilityZone  => 'MyString',
           ReplicaAvailabilityZones => [ 'MyString', ... ],    # OPTIONAL
+          ReplicaCount             => 1,                      # OPTIONAL
           Slots                    => 'MyString',
         },
         ...
@@ -91,8 +91,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SnapshotWindow             => 'MyString',               # OPTIONAL
       Tags                       => [
         {
-          Value => 'MyString',
           Key   => 'MyString',
+          Value => 'MyString',
         },
         ...
       ],                                                      # OPTIONAL

@@ -48,8 +48,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken       = $ListAttacksResponse->NextToken;
     my $AttackSummaries = $ListAttacksResponse->AttackSummaries;
+    my $NextToken       = $ListAttacksResponse->NextToken;
 
     # Returns a L<Paws::Shield::ListAttacksResponse> object.
 

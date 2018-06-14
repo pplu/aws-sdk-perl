@@ -44,15 +44,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $IsTruncated =
       $ListTrafficPolicyInstancesByHostedZoneResponse->IsTruncated;
-    my $TrafficPolicyInstanceNameMarker =
-      $ListTrafficPolicyInstancesByHostedZoneResponse
-      ->TrafficPolicyInstanceNameMarker;
     my $MaxItems = $ListTrafficPolicyInstancesByHostedZoneResponse->MaxItems;
-    my $TrafficPolicyInstances =
-      $ListTrafficPolicyInstancesByHostedZoneResponse->TrafficPolicyInstances;
     my $TrafficPolicyInstanceTypeMarker =
       $ListTrafficPolicyInstancesByHostedZoneResponse
       ->TrafficPolicyInstanceTypeMarker;
+    my $TrafficPolicyInstanceNameMarker =
+      $ListTrafficPolicyInstancesByHostedZoneResponse
+      ->TrafficPolicyInstanceNameMarker;
+    my $TrafficPolicyInstances =
+      $ListTrafficPolicyInstancesByHostedZoneResponse->TrafficPolicyInstances;
 
 # Returns a L<Paws::Route53::ListTrafficPolicyInstancesByHostedZoneResponse> object.
 

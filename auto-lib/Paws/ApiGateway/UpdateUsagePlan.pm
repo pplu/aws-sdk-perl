@@ -33,24 +33,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       UsagePlanId     => 'MyString',
       PatchOperations => [
         {
-          path  => 'MyString',
+          from  => 'MyString',
           value => 'MyString',
+          path  => 'MyString',
           op =>
             'add',    # values: add, remove, replace, move, copy, test; OPTIONAL
-          from => 'MyString',
         },
         ...
       ],              # OPTIONAL
     );
 
     # Results:
-    my $Id          = $UsagePlan->Id;
-    my $Throttle    = $UsagePlan->Throttle;
-    my $Description = $UsagePlan->Description;
-    my $Name        = $UsagePlan->Name;
-    my $ProductCode = $UsagePlan->ProductCode;
-    my $Quota       = $UsagePlan->Quota;
-    my $ApiStages   = $UsagePlan->ApiStages;
+    my $quota       = $UsagePlan->quota;
+    my $productCode = $UsagePlan->productCode;
+    my $throttle    = $UsagePlan->throttle;
+    my $name        = $UsagePlan->name;
+    my $id          = $UsagePlan->id;
+    my $apiStages   = $UsagePlan->apiStages;
+    my $description = $UsagePlan->description;
 
     # Returns a L<Paws::ApiGateway::UsagePlan> object.
 

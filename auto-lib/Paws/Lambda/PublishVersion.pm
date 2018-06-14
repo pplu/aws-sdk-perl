@@ -42,19 +42,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $VpcConfig    = $FunctionConfiguration->VpcConfig;
-    my $CodeSha256   = $FunctionConfiguration->CodeSha256;
+    my $Role         = $FunctionConfiguration->Role;
+    my $Runtime      = $FunctionConfiguration->Runtime;
+    my $FunctionName = $FunctionConfiguration->FunctionName;
     my $CodeSize     = $FunctionConfiguration->CodeSize;
     my $Version      = $FunctionConfiguration->Version;
-    my $FunctionName = $FunctionConfiguration->FunctionName;
-    my $Description  = $FunctionConfiguration->Description;
-    my $LastModified = $FunctionConfiguration->LastModified;
-    my $Role         = $FunctionConfiguration->Role;
-    my $Timeout      = $FunctionConfiguration->Timeout;
-    my $MemorySize   = $FunctionConfiguration->MemorySize;
-    my $Runtime      = $FunctionConfiguration->Runtime;
     my $Handler      = $FunctionConfiguration->Handler;
+    my $MemorySize   = $FunctionConfiguration->MemorySize;
+    my $VpcConfig    = $FunctionConfiguration->VpcConfig;
     my $FunctionArn  = $FunctionConfiguration->FunctionArn;
+    my $Timeout      = $FunctionConfiguration->Timeout;
+    my $Description  = $FunctionConfiguration->Description;
+    my $CodeSha256   = $FunctionConfiguration->CodeSha256;
+    my $LastModified = $FunctionConfiguration->LastModified;
 
     # Returns a L<Paws::Lambda::FunctionConfiguration> object.
 

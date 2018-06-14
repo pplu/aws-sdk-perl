@@ -46,22 +46,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],                                       # OPTIONAL
       Inputs => [
         {
-          NamePrefix  => 'MyInAppStreamName',    # min: 1, max: 32
           InputSchema => {
-            RecordFormat => {
-              RecordFormatType  => 'JSON',       # values: JSON, CSV
-              MappingParameters => {
-                CSVMappingParameters => {
-                  RecordColumnDelimiter => 'MyRecordColumnDelimiter',  # min: 1,
-                  RecordRowDelimiter    => 'MyRecordRowDelimiter',     # min: 1,
-
-                },    # OPTIONAL
-                JSONMappingParameters => {
-                  RecordRowPath => 'MyRecordRowPath',    # min: 1,
-
-                },    # OPTIONAL
-              },    # OPTIONAL
-            },
             RecordColumns => [
               {
                 SqlType => 'MyRecordColumnSqlType',    # min: 1,
@@ -70,12 +55,32 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },
               ...
             ],                                         # min: 1, max: 1000
-            RecordEncoding => 'MyRecordEncoding',      # OPTIONAL
+            RecordFormat => {
+              RecordFormatType  => 'JSON',             # values: JSON, CSV
+              MappingParameters => {
+                CSVMappingParameters => {
+                  RecordRowDelimiter    => 'MyRecordRowDelimiter',     # min: 1,
+                  RecordColumnDelimiter => 'MyRecordColumnDelimiter',  # min: 1,
+
+                },    # OPTIONAL
+                JSONMappingParameters => {
+                  RecordRowPath => 'MyRecordRowPath',    # min: 1,
+
+                },    # OPTIONAL
+              },    # OPTIONAL
+            },
+            RecordEncoding => 'MyRecordEncoding',    # OPTIONAL
           },
+          NamePrefix           => 'MyInAppStreamName',    # min: 1, max: 32
+          KinesisFirehoseInput => {
+            RoleARN     => 'MyRoleARN',                   # min: 1, max: 2048
+            ResourceARN => 'MyResourceARN',               # min: 1, max: 2048
+
+          },    # OPTIONAL
           InputProcessingConfiguration => {
             InputLambdaProcessor => {
-              ResourceARN => 'MyResourceARN',          # min: 1, max: 2048
-              RoleARN     => 'MyRoleARN',              # min: 1, max: 2048
+              RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
+              ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
 
             },
 
@@ -88,33 +93,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
 
           },    # OPTIONAL
-          KinesisFirehoseInput => {
-            RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
-            ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
-
-          },    # OPTIONAL
         },
         ...
       ],        # OPTIONAL
       Outputs => [
         {
-          Name              => 'MyInAppStreamName',    # min: 1, max: 32
           DestinationSchema => {
-            RecordFormatType => 'JSON',                # values: JSON, CSV
+            RecordFormatType => 'JSON',    # values: JSON, CSV
           },
-          KinesisStreamsOutput => {
-            ResourceARN => 'MyResourceARN',            # min: 1, max: 2048
-            RoleARN     => 'MyRoleARN',                # min: 1, max: 2048
+          Name                  => 'MyInAppStreamName',    # min: 1, max: 32
+          KinesisFirehoseOutput => {
+            RoleARN     => 'MyRoleARN',                    # min: 1, max: 2048
+            ResourceARN => 'MyResourceARN',                # min: 1, max: 2048
 
           },    # OPTIONAL
-          KinesisFirehoseOutput => {
+          KinesisStreamsOutput => {
             RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
             ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
 
           },    # OPTIONAL
           LambdaOutput => {
-            ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
             RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
+            ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
 
           },    # OPTIONAL
         },

@@ -32,17 +32,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateUserDefinedFunctionResponse = $glue->CreateUserDefinedFunction(
       DatabaseName  => 'MyNameString',
       FunctionInput => {
-        OwnerType    => 'USER',            # values: USER, ROLE, GROUP; OPTIONAL
         FunctionName => 'MyNameString',    # min: 1, max: 255
-        OwnerName    => 'MyNameString',    # min: 1, max: 255
-        ClassName    => 'MyNameString',    # min: 1, max: 255
+        OwnerType    => 'USER',            # values: USER, ROLE, GROUP; OPTIONAL
         ResourceUris => [
           {
-            Uri          => 'MyURI',    # min: 1, max: 1024; OPTIONAL
             ResourceType => 'JAR',      # values: JAR, FILE, ARCHIVE; OPTIONAL
+            Uri          => 'MyURI',    # min: 1, max: 1024; OPTIONAL
           },
           ...
         ],                              # max: 1000; OPTIONAL
+        ClassName => 'MyNameString',    # min: 1, max: 255
+        OwnerName => 'MyNameString',    # min: 1, max: 255
       },
       CatalogId => 'MyCatalogIdString',    # OPTIONAL
     );

@@ -55,8 +55,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $NextToken  = $SearchProfilesResponse->NextToken;
-    my $TotalCount = $SearchProfilesResponse->TotalCount;
     my $Profiles   = $SearchProfilesResponse->Profiles;
+    my $TotalCount = $SearchProfilesResponse->TotalCount;
 
     # Returns a L<Paws::AlexaForBusiness::SearchProfilesResponse> object.
 

@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example deletes the specified DB cluster.
     my $DeleteDBClusterResult = $rds->DeleteDBCluster(
       {
-        'DBClusterIdentifier' => 'mydbcluster',
-        'SkipFinalSnapshot'   => true
+        'SkipFinalSnapshot'   => 1,
+        'DBClusterIdentifier' => 'mydbcluster'
       }
     );
 

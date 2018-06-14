@@ -37,11 +37,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $MaxItems     = $ListHealthChecksResponse->MaxItems;
-    my $Marker       = $ListHealthChecksResponse->Marker;
-    my $NextMarker   = $ListHealthChecksResponse->NextMarker;
-    my $HealthChecks = $ListHealthChecksResponse->HealthChecks;
     my $IsTruncated  = $ListHealthChecksResponse->IsTruncated;
+    my $MaxItems     = $ListHealthChecksResponse->MaxItems;
+    my $HealthChecks = $ListHealthChecksResponse->HealthChecks;
+    my $NextMarker   = $ListHealthChecksResponse->NextMarker;
+    my $Marker       = $ListHealthChecksResponse->Marker;
 
     # Returns a L<Paws::Route53::ListHealthChecksResponse> object.
 

@@ -40,8 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         StaticRoutesOnly => 1,
         TunnelOptions    => [
           {
-            PreSharedKey     => 'MyString',
             TunnelInsideCidr => 'MyString',
+            PreSharedKey     => 'MyString',
           },
           ...
         ],                               # OPTIONAL

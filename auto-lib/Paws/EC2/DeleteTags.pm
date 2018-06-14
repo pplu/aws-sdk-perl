@@ -33,14 +33,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example deletes the tag Stack=test from the specified image.
     $ec2->DeleteTags(
       {
-        'Tags' => [
+        'Resources' => ['ami-78a54011'],
+        'Tags'      => [
 
           {
             'Value' => 'test',
             'Key'   => 'Stack'
           }
-        ],
-        'Resources' => ['ami-78a54011']
+        ]
       }
     );
 

@@ -36,31 +36,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             {
               MessageType => 'ConfigurationItemChangeNotification'
               , # values: ConfigurationItemChangeNotification, ConfigurationSnapshotDeliveryCompleted, ScheduledNotification, OversizedConfigurationItemChangeNotification; OPTIONAL
+              EventSource => 'aws.config',    # values: aws.config; OPTIONAL
               MaximumExecutionFrequency => 'One_Hour'
               , # values: One_Hour, Three_Hours, Six_Hours, Twelve_Hours, TwentyFour_Hours; OPTIONAL
-              EventSource => 'aws.config',    # values: aws.config; OPTIONAL
             },
             ...
-          ],                                  # max: 25; OPTIONAL
+          ],    # max: 25; OPTIONAL
         },
-        MaximumExecutionFrequency => 'One_Hour'
-        , # values: One_Hour, Three_Hours, Six_Hours, Twelve_Hours, TwentyFour_Hours; OPTIONAL
+        Scope => {
+          TagKey => 'MyStringWithCharLimit128',    # min: 1, max: 128; OPTIONAL
+          ComplianceResourceTypes => [
+            'MyStringWithCharLimit256', ...        # min: 1, max: 256
+          ],                                       # max: 100; OPTIONAL
+          ComplianceResourceId =>
+            'MyBaseResourceId',                    # min: 1, max: 768; OPTIONAL
+          TagValue => 'MyStringWithCharLimit256',  # min: 1, max: 256
+        },    # OPTIONAL
         ConfigRuleName => 'MyStringWithCharLimit64', # min: 1, max: 64; OPTIONAL
-        ConfigRuleState => 'ACTIVE'
-        ,    # values: ACTIVE, DELETING, DELETING_RESULTS, EVALUATING; OPTIONAL
+        ConfigRuleId   => 'MyString',                # OPTIONAL
         InputParameters =>
           'MyStringWithCharLimit1024',    # min: 1, max: 1024; OPTIONAL
-        Scope => {
-          ComplianceResourceTypes => [
-            'MyStringWithCharLimit256', ...    # min: 1, max: 256
-          ],                                   # max: 100; OPTIONAL
-          TagValue => 'MyStringWithCharLimit256',   # min: 1, max: 256
-          TagKey   => 'MyStringWithCharLimit128',   # min: 1, max: 128; OPTIONAL
-          ComplianceResourceId =>
-            'MyBaseResourceId',                     # min: 1, max: 768; OPTIONAL
-        },    # OPTIONAL
-        ConfigRuleArn => 'MyString',    # OPTIONAL
-        ConfigRuleId  => 'MyString',    # OPTIONAL
+        MaximumExecutionFrequency => 'One_Hour'
+        , # values: One_Hour, Three_Hours, Six_Hours, Twelve_Hours, TwentyFour_Hours; OPTIONAL
+        ConfigRuleArn   => 'MyString',    # OPTIONAL
+        ConfigRuleState => 'ACTIVE'
+        ,    # values: ACTIVE, DELETING, DELETING_RESULTS, EVALUATING; OPTIONAL
         Description => 'MyEmptiableStringWithCharLimit256', # max: 256; OPTIONAL
       },
 

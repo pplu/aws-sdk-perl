@@ -47,19 +47,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $RequestSpotInstancesResult = $ec2->RequestSpotInstances(
       {
         'Type'                => 'one-time',
-        'InstanceCount'       => 5,
         'SpotPrice'           => 0.03,
+        'InstanceCount'       => 5,
         'LaunchSpecification' => {
-          'IamInstanceProfile' => {
-            'Arn' => 'arn:aws:iam::123456789012:instance-profile/my-iam-role'
-          },
-          'InstanceType' => 'm3.medium',
-          'ImageId'      => 'ami-1a2b3c4d',
-          'KeyName'      => 'my-key-pair',
-          'Placement'    => {
+          'SecurityGroupIds' => ['sg-1a2b3c4d'],
+          'KeyName'          => 'my-key-pair',
+          'ImageId'          => 'ami-1a2b3c4d',
+          'InstanceType'     => 'm3.medium',
+          'Placement'        => {
             'AvailabilityZone' => 'us-west-2a'
           },
-          'SecurityGroupIds' => ['sg-1a2b3c4d']
+          'IamInstanceProfile' => {
+            'Arn' => 'arn:aws:iam::123456789012:instance-profile/my-iam-role'
+          }
         }
       }
     );
@@ -71,18 +71,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # receive a public IP address by default.
     my $RequestSpotInstancesResult = $ec2->RequestSpotInstances(
       {
+        'Type'                => 'one-time',
+        'SpotPrice'           => 0.050,
+        'InstanceCount'       => 5,
         'LaunchSpecification' => {
+          'SecurityGroupIds'   => ['sg-1a2b3c4d'],
           'ImageId'            => 'ami-1a2b3c4d',
           'InstanceType'       => 'm3.medium',
+          'SubnetId'           => 'subnet-1a2b3c4d',
           'IamInstanceProfile' => {
             'Arn' => 'arn:aws:iam::123456789012:instance-profile/my-iam-role'
-          },
-          'SubnetId'         => 'subnet-1a2b3c4d',
-          'SecurityGroupIds' => ['sg-1a2b3c4d']
-        },
-        'InstanceCount' => 5,
-        'SpotPrice'     => 0.050,
-        'Type'          => 'one-time'
+          }
+        }
       }
     );
 

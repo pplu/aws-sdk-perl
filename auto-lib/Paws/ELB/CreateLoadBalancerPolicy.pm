@@ -36,16 +36,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateLoadBalancerPolicyOutput =
       $elasticloadbalancing->CreateLoadBalancerPolicy(
       {
+        'LoadBalancerName' => 'my-load-balancer',
+        'PolicyTypeName'   => 'ProxyProtocolPolicyType',
         'PolicyAttributes' => [
 
           {
-            'AttributeValue' => 'true',
-            'AttributeName'  => 'ProxyProtocol'
+            'AttributeName'  => 'ProxyProtocol',
+            'AttributeValue' => 'true'
           }
         ],
-        'PolicyName'       => 'my-ProxyProtocol-policy',
-        'LoadBalancerName' => 'my-load-balancer',
-        'PolicyTypeName'   => 'ProxyProtocolPolicyType'
+        'PolicyName' => 'my-ProxyProtocol-policy'
       }
       );
 
@@ -74,16 +74,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateLoadBalancerPolicyOutput =
       $elasticloadbalancing->CreateLoadBalancerPolicy(
       {
-        'PolicyTypeName'   => 'BackendServerAuthenticationPolicyType',
         'LoadBalancerName' => 'my-load-balancer',
-        'PolicyName'       => 'my-authentication-policy',
+        'PolicyTypeName'   => 'BackendServerAuthenticationPolicyType',
         'PolicyAttributes' => [
 
           {
-            'AttributeValue' => 'my-PublicKey-policy',
-            'AttributeName'  => 'PublicKeyPolicyName'
+            'AttributeName'  => 'PublicKeyPolicyName',
+            'AttributeValue' => 'my-PublicKey-policy'
           }
-        ]
+        ],
+        'PolicyName' => 'my-authentication-policy'
       }
       );
 

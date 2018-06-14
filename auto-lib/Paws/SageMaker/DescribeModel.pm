@@ -33,12 +33,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ModelName        = $DescribeModelOutput->ModelName;
-    my $PrimaryContainer = $DescribeModelOutput->PrimaryContainer;
     my $CreationTime     = $DescribeModelOutput->CreationTime;
     my $ModelArn         = $DescribeModelOutput->ModelArn;
+    my $ModelName        = $DescribeModelOutput->ModelName;
     my $ExecutionRoleArn = $DescribeModelOutput->ExecutionRoleArn;
     my $VpcConfig        = $DescribeModelOutput->VpcConfig;
+    my $PrimaryContainer = $DescribeModelOutput->PrimaryContainer;
 
     # Returns a L<Paws::SageMaker::DescribeModelOutput> object.
 

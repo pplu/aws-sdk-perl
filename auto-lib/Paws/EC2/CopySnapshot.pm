@@ -41,8 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CopySnapshotResult = $ec2->CopySnapshot(
       {
         'SourceSnapshotId'  => 'snap-066877671789bd71b',
-        'Description'       => 'This is my copied snapshot.',
         'DestinationRegion' => 'us-east-1',
+        'Description'       => 'This is my copied snapshot.',
         'SourceRegion'      => 'us-west-2'
       }
     );

@@ -33,9 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Test-Role:
     $iam->UpdateAssumeRolePolicy(
       {
+        'RoleName' => 'S3AccessForEC2Instances',
         'PolicyDocument' =>
-'{"Version":"2012-10-17","Statement":[{"Effect":"Allow","Principal":{"Service":["ec2.amazonaws.com"]},"Action":["sts:AssumeRole"]}]}',
-        'RoleName' => 'S3AccessForEC2Instances'
+'{"Version":"2012-10-17","Statement":[{"Effect":"Allow","Principal":{"Service":["ec2.amazonaws.com"]},"Action":["sts:AssumeRole"]}]}'
       }
     );
 

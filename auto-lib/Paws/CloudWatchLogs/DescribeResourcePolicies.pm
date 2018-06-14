@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken        = $DescribeResourcePoliciesResponse->NextToken;
     my $ResourcePolicies = $DescribeResourcePoliciesResponse->ResourcePolicies;
+    my $NextToken        = $DescribeResourcePoliciesResponse->NextToken;
 
    # Returns a L<Paws::CloudWatchLogs::DescribeResourcePoliciesResponse> object.
 

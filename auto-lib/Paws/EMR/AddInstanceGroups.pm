@@ -31,57 +31,66 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $AddInstanceGroupsOutput = $elasticmapreduce->AddInstanceGroups(
       InstanceGroups => [
         {
-          InstanceCount     => 1,
-          InstanceRole      => 'MASTER',            # values: MASTER, CORE, TASK
           InstanceType      => 'MyInstanceType',    # min: 1, max: 256
+          InstanceRole      => 'MASTER',            # values: MASTER, CORE, TASK
+          InstanceCount     => 1,
           AutoScalingPolicy => {
-            Constraints => {
-              MinCapacity => 1,
-              MaxCapacity => 1,
-
-            },
             Rules => [
               {
-                Action => {
-                  SimpleScalingPolicyConfiguration => {
-                    ScalingAdjustment => 1,
-                    AdjustmentType    => 'CHANGE_IN_CAPACITY'
-                    , # values: CHANGE_IN_CAPACITY, PERCENT_CHANGE_IN_CAPACITY, EXACT_CAPACITY; OPTIONAL
-                    CoolDown => 1,
-                  },
-                  Market => 'ON_DEMAND',    # values: ON_DEMAND, SPOT; OPTIONAL
-                },
                 Trigger => {
                   CloudWatchAlarmDefinition => {
                     Threshold          => 1,
+                    MetricName         => 'MyString',
                     Period             => 1,
                     ComparisonOperator => 'GREATER_THAN_OR_EQUAL'
                     , # values: GREATER_THAN_OR_EQUAL, GREATER_THAN, LESS_THAN, LESS_THAN_OR_EQUAL
-                    MetricName => 'MyString',
-                    Unit       => 'NONE'
-                    , # values: NONE, SECONDS, MICRO_SECONDS, MILLI_SECONDS, BYTES, KILO_BYTES, MEGA_BYTES, GIGA_BYTES, TERA_BYTES, BITS, KILO_BITS, MEGA_BITS, GIGA_BITS, TERA_BITS, PERCENT, COUNT, BYTES_PER_SECOND, KILO_BYTES_PER_SECOND, MEGA_BYTES_PER_SECOND, GIGA_BYTES_PER_SECOND, TERA_BYTES_PER_SECOND, BITS_PER_SECOND, KILO_BITS_PER_SECOND, MEGA_BITS_PER_SECOND, GIGA_BITS_PER_SECOND, TERA_BITS_PER_SECOND, COUNT_PER_SECOND; OPTIONAL
-                    Statistic => 'SAMPLE_COUNT'
-                    , # values: SAMPLE_COUNT, AVERAGE, SUM, MINIMUM, MAXIMUM; OPTIONAL
                     EvaluationPeriods => 1,
-                    Namespace         => 'MyString',
-                    Dimensions        => [
+                    Statistic         => 'SAMPLE_COUNT'
+                    , # values: SAMPLE_COUNT, AVERAGE, SUM, MINIMUM, MAXIMUM; OPTIONAL
+                    Dimensions => [
                       {
                         Value => 'MyString',
                         Key   => 'MyString',
                       },
                       ...
                     ],    # OPTIONAL
+                    Namespace => 'MyString',
+                    Unit      => 'NONE'
+                    , # values: NONE, SECONDS, MICRO_SECONDS, MILLI_SECONDS, BYTES, KILO_BYTES, MEGA_BYTES, GIGA_BYTES, TERA_BYTES, BITS, KILO_BITS, MEGA_BITS, GIGA_BITS, TERA_BITS, PERCENT, COUNT, BYTES_PER_SECOND, KILO_BYTES_PER_SECOND, MEGA_BYTES_PER_SECOND, GIGA_BYTES_PER_SECOND, TERA_BYTES_PER_SECOND, BITS_PER_SECOND, KILO_BITS_PER_SECOND, MEGA_BITS_PER_SECOND, GIGA_BITS_PER_SECOND, TERA_BITS_PER_SECOND, COUNT_PER_SECOND; OPTIONAL
                   },
 
+                },
+                Action => {
+                  SimpleScalingPolicyConfiguration => {
+                    ScalingAdjustment => 1,
+                    CoolDown          => 1,
+                    AdjustmentType    => 'CHANGE_IN_CAPACITY'
+                    , # values: CHANGE_IN_CAPACITY, PERCENT_CHANGE_IN_CAPACITY, EXACT_CAPACITY; OPTIONAL
+                  },
+                  Market => 'ON_DEMAND',    # values: ON_DEMAND, SPOT; OPTIONAL
                 },
                 Name        => 'MyString',
                 Description => 'MyString',
               },
               ...
             ],
+            Constraints => {
+              MaxCapacity => 1,
+              MinCapacity => 1,
+
+            },
 
           },    # OPTIONAL
-          Market           => 'ON_DEMAND',   # values: ON_DEMAND, SPOT; OPTIONAL
+          Market => 'ON_DEMAND',    # values: ON_DEMAND, SPOT; OPTIONAL
+          BidPrice       => 'MyXmlStringMaxLen256',    # max: 256; OPTIONAL
+          Configurations => [
+            {
+              Properties     => { 'MyString' => 'MyString', },    # OPTIONAL
+              Classification => 'MyString',
+              Configurations => <ConfigurationList>,
+            },
+            ...
+          ],                                                      # OPTIONAL
           EbsConfiguration => {
             EbsBlockDeviceConfigs => [
               {
@@ -93,19 +102,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 VolumesPerInstance => 1,
               },
               ...
-            ],                               # OPTIONAL
-            EbsOptimized => 1,               # OPTIONAL
+            ],                                                    # OPTIONAL
+            EbsOptimized => 1,                                    # OPTIONAL
           },    # OPTIONAL
-          Configurations => [
-            {
-              Properties     => { 'MyString' => 'MyString', },    # OPTIONAL
-              Configurations => <ConfigurationList>,
-              Classification => 'MyString',
-            },
-            ...
-          ],                                                      # OPTIONAL
-          Name     => 'MyXmlStringMaxLen256',    # max: 256; OPTIONAL
-          BidPrice => 'MyXmlStringMaxLen256',    # max: 256; OPTIONAL
+          Name => 'MyXmlStringMaxLen256',    # max: 256; OPTIONAL
         },
         ...
       ],
@@ -114,8 +114,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $JobFlowId        = $AddInstanceGroupsOutput->JobFlowId;
     my $InstanceGroupIds = $AddInstanceGroupsOutput->InstanceGroupIds;
+    my $JobFlowId        = $AddInstanceGroupsOutput->JobFlowId;
 
     # Returns a L<Paws::EMR::AddInstanceGroupsOutput> object.
 

@@ -37,9 +37,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $PolicyArn       = $CreatePolicyResponse->PolicyArn;
-    my $PolicyName      = $CreatePolicyResponse->PolicyName;
-    my $PolicyDocument  = $CreatePolicyResponse->PolicyDocument;
     my $PolicyVersionId = $CreatePolicyResponse->PolicyVersionId;
+    my $PolicyDocument  = $CreatePolicyResponse->PolicyDocument;
+    my $PolicyName      = $CreatePolicyResponse->PolicyName;
 
     # Returns a L<Paws::IoT::CreatePolicyResponse> object.
 

@@ -37,11 +37,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateMaintenanceStartTimeOutput =
       $storagegateway->UpdateMaintenanceStartTime(
       {
-        'HourOfDay' => 0,
+        'MinuteOfHour' => 30,
+        'HourOfDay'    => 0,
         'GatewayARN' =>
           'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B',
-        'DayOfWeek'    => 2,
-        'MinuteOfHour' => 30
+        'DayOfWeek' => 2
       }
       );
 

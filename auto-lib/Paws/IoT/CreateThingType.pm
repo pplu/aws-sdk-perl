@@ -32,10 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateThingTypeResponse = $iot->CreateThingType(
       ThingTypeName       => 'MyThingTypeName',
       ThingTypeProperties => {
-        searchableAttributes => [
-          'MyAttributeName', ...    # max: 128
-        ],                          # OPTIONAL
         thingTypeDescription => 'MyThingTypeDescription',  # max: 2028; OPTIONAL
+        searchableAttributes => [
+          'MyAttributeName', ...                           # max: 128
+        ],                                                 # OPTIONAL
       },    # OPTIONAL
     );
 

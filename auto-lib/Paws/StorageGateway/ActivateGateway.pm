@@ -37,12 +37,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Activates the gateway you previously deployed on your host.
     my $ActivateGatewayOutput = $storagegateway->ActivateGateway(
       {
-        'GatewayRegion'     => 'us-east-1',
         'GatewayTimezone'   => 'GMT-12:00',
         'TapeDriveType'     => 'IBM-ULT3580-TD5',
-        'MediumChangerType' => 'AWS-Gateway-VTL',
+        'GatewayRegion'     => 'us-east-1',
         'GatewayType'       => 'STORED',
         'GatewayName'       => 'My_Gateway',
+        'MediumChangerType' => 'AWS-Gateway-VTL',
         'ActivationKey'     => '29AV1-3OFV9-VVIUB-NKT0I-LRO6V'
       }
     );

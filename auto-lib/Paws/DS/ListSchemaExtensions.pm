@@ -36,9 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $NextToken = $ListSchemaExtensionsResult->NextToken;
     my $SchemaExtensionsInfo =
       $ListSchemaExtensionsResult->SchemaExtensionsInfo;
-    my $NextToken = $ListSchemaExtensionsResult->NextToken;
 
     # Returns a L<Paws::DS::ListSchemaExtensionsResult> object.
 

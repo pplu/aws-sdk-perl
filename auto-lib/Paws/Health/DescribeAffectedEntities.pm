@@ -35,9 +35,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         eventArns => [
           'MyeventArn', ...    # max: 1600
         ],                     # min: 1, max: 10
-        statusCodes => [
-          'IMPAIRED', ...      # values: IMPAIRED, UNIMPAIRED, UNKNOWN
-        ],                     # min: 1, max: 3; OPTIONAL
+        entityValues => [
+          'MyentityValue', ...    # max: 256
+        ],                        # min: 1, max: 100; OPTIONAL
+        entityArns => [
+          'MyentityArn', ...      # max: 1600
+        ],                        # min: 1, max: 100; OPTIONAL
         lastUpdatedTimes => [
           {
             to   => '1970-01-01T01:00:00',    # OPTIONAL
@@ -45,27 +48,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],                                    # min: 1, max: 10; OPTIONAL
-        entityArns => [
-          'MyentityArn', ...                  # max: 1600
-        ],                                    # min: 1, max: 100; OPTIONAL
         tags => [
           {
             'MytagKey' => 'MytagValue',       # key: max: 127, value: max: 255
           },
           ...                                 # max: 50
         ],                                    # max: 50; OPTIONAL
-        entityValues => [
-          'MyentityValue', ...                # max: 256
-        ],                                    # min: 1, max: 100; OPTIONAL
+        statusCodes => [
+          'IMPAIRED', ...    # values: IMPAIRED, UNIMPAIRED, UNKNOWN
+        ],                   # min: 1, max: 3; OPTIONAL
       },
-      Locale     => 'Mylocale',               # OPTIONAL
-      MaxResults => 1,                        # OPTIONAL
-      NextToken  => 'MynextToken',            # OPTIONAL
+      Locale     => 'Mylocale',       # OPTIONAL
+      MaxResults => 1,                # OPTIONAL
+      NextToken  => 'MynextToken',    # OPTIONAL
     );
 
     # Results:
-    my $NextToken = $DescribeAffectedEntitiesResponse->NextToken;
-    my $Entities  = $DescribeAffectedEntitiesResponse->Entities;
+    my $nextToken = $DescribeAffectedEntitiesResponse->nextToken;
+    my $entities  = $DescribeAffectedEntitiesResponse->entities;
 
     # Returns a L<Paws::Health::DescribeAffectedEntitiesResponse> object.
 

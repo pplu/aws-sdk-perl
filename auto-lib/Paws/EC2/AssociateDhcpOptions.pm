@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # VPC.
     $ec2->AssociateDhcpOptions(
       {
-        'DhcpOptionsId' => 'dopt-d9070ebb',
-        'VpcId'         => 'vpc-a01106c2'
+        'VpcId'         => 'vpc-a01106c2',
+        'DhcpOptionsId' => 'dopt-d9070ebb'
       }
     );
 

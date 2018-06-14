@@ -46,26 +46,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AbortStatement => {
         messages => [
           {
+            content => 'MyContentString',    # min: 1, max: 1000
             contentType => 'PlainText', # values: PlainText, SSML, CustomPayload
-            content     => 'MyContentString',    # min: 1, max: 1000
-            groupNumber => 1,                    # min: 1, max: 5; OPTIONAL
+            groupNumber => 1,           # min: 1, max: 5; OPTIONAL
           },
           ...
-        ],                                       # min: 1, max: 15
-        responseCard => 'MyResponseCard',        # min: 1, max: 50000; OPTIONAL
+        ],                              # min: 1, max: 15
+        responseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
       },    # OPTIONAL
       Checksum            => 'MyString',    # OPTIONAL
       ClarificationPrompt => {
         messages => [
           {
+            content => 'MyContentString',    # min: 1, max: 1000
             contentType => 'PlainText', # values: PlainText, SSML, CustomPayload
-            content     => 'MyContentString',    # min: 1, max: 1000
-            groupNumber => 1,                    # min: 1, max: 5; OPTIONAL
+            groupNumber => 1,           # min: 1, max: 5; OPTIONAL
           },
           ...
-        ],                                       # min: 1, max: 15
-        maxAttempts  => 1,                       # min: 1, max: 5
-        responseCard => 'MyResponseCard',        # min: 1, max: 50000; OPTIONAL
+        ],                              # min: 1, max: 15
+        maxAttempts  => 1,                   # min: 1, max: 5
+        responseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
       },    # OPTIONAL
       CreateVersion           => 1,                  # OPTIONAL
       Description             => 'MyDescription',    # OPTIONAL
@@ -83,22 +83,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $IdleSessionTTLInSeconds = $PutBotResponse->IdleSessionTTLInSeconds;
+    my $Status                  = $PutBotResponse->Status;
     my $CreateVersion           = $PutBotResponse->CreateVersion;
-    my $Description             = $PutBotResponse->Description;
-    my $LastUpdatedDate         = $PutBotResponse->LastUpdatedDate;
-    my $ClarificationPrompt     = $PutBotResponse->ClarificationPrompt;
-    my $Name                    = $PutBotResponse->Name;
-    my $Locale                  = $PutBotResponse->Locale;
-    my $AbortStatement          = $PutBotResponse->AbortStatement;
-    my $CreatedDate             = $PutBotResponse->CreatedDate;
-    my $VoiceId                 = $PutBotResponse->VoiceId;
     my $ChildDirected           = $PutBotResponse->ChildDirected;
-    my $Version                 = $PutBotResponse->Version;
+    my $FailureReason           = $PutBotResponse->FailureReason;
     my $Intents                 = $PutBotResponse->Intents;
     my $Checksum                = $PutBotResponse->Checksum;
-    my $Status                  = $PutBotResponse->Status;
-    my $FailureReason           = $PutBotResponse->FailureReason;
+    my $ClarificationPrompt     = $PutBotResponse->ClarificationPrompt;
+    my $AbortStatement          = $PutBotResponse->AbortStatement;
+    my $Locale                  = $PutBotResponse->Locale;
+    my $LastUpdatedDate         = $PutBotResponse->LastUpdatedDate;
+    my $VoiceId                 = $PutBotResponse->VoiceId;
+    my $CreatedDate             = $PutBotResponse->CreatedDate;
+    my $Version                 = $PutBotResponse->Version;
+    my $IdleSessionTTLInSeconds = $PutBotResponse->IdleSessionTTLInSeconds;
+    my $Description             = $PutBotResponse->Description;
+    my $Name                    = $PutBotResponse->Name;
 
     # Returns a L<Paws::LexModels::PutBotResponse> object.
 

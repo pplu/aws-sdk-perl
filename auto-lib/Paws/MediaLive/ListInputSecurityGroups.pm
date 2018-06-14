@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken = $ListInputSecurityGroupsResponse->NextToken;
     my $InputSecurityGroups =
       $ListInputSecurityGroupsResponse->InputSecurityGroups;
+    my $NextToken = $ListInputSecurityGroupsResponse->NextToken;
 
     # Returns a L<Paws::MediaLive::ListInputSecurityGroupsResponse> object.
 

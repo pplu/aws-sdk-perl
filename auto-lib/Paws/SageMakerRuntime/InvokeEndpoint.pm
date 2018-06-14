@@ -39,10 +39,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Body        = $InvokeEndpointOutput->Body;
     my $ContentType = $InvokeEndpointOutput->ContentType;
     my $InvokedProductionVariant =
       $InvokeEndpointOutput->InvokedProductionVariant;
+    my $Body = $InvokeEndpointOutput->Body;
 
     # Returns a L<Paws::SageMakerRuntime::InvokeEndpointOutput> object.
 

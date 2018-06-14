@@ -34,10 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       StartSelector => {
         StartSelectorType => 'FRAGMENT_NUMBER'
         , # values: FRAGMENT_NUMBER, SERVER_TIMESTAMP, PRODUCER_TIMESTAMP, NOW, EARLIEST, CONTINUATION_TOKEN
-        ContinuationToken => 'MyContinuationToken', # min: 1, max: 128; OPTIONAL
-        StartTimestamp    => '1970-01-01T01:00:00', # OPTIONAL
         AfterFragmentNumber =>
-          'MyFragmentNumberString',                 # min: 1, max: 128; OPTIONAL
+          'MyFragmentNumberString',    # min: 1, max: 128; OPTIONAL
+        StartTimestamp    => '1970-01-01T01:00:00', # OPTIONAL
+        ContinuationToken => 'MyContinuationToken', # min: 1, max: 128; OPTIONAL
       },
       StreamARN  => 'MyResourceARN',                # OPTIONAL
       StreamName => 'MyStreamName',                 # OPTIONAL

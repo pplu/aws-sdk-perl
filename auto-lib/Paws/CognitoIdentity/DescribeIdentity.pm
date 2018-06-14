@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Logins           = $IdentityDescription->Logins;
     my $LastModifiedDate = $IdentityDescription->LastModifiedDate;
+    my $Logins           = $IdentityDescription->Logins;
     my $CreationDate     = $IdentityDescription->CreationDate;
     my $IdentityId       = $IdentityDescription->IdentityId;
 

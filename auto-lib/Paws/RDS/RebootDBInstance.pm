@@ -32,8 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example reboots the specified DB instance without forcing a failover.
     my $RebootDBInstanceResult = $rds->RebootDBInstance(
       {
-        'ForceFailover'        => 0,
-        'DBInstanceIdentifier' => 'mymysqlinstance'
+        'DBInstanceIdentifier' => 'mymysqlinstance',
+        'ForceFailover'        => 0
       }
     );
 

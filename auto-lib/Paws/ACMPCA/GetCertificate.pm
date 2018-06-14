@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CertificateChain = $GetCertificateResponse->CertificateChain;
     my $Certificate      = $GetCertificateResponse->Certificate;
+    my $CertificateChain = $GetCertificateResponse->CertificateChain;
 
     # Returns a L<Paws::ACMPCA::GetCertificateResponse> object.
 

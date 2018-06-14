@@ -39,9 +39,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $NextToken = $DescribeScalingPlanResourcesResponse->NextToken;
     my $ScalingPlanResources =
       $DescribeScalingPlanResourcesResponse->ScalingPlanResources;
-    my $NextToken = $DescribeScalingPlanResourcesResponse->NextToken;
 
 # Returns a L<Paws::AutoScalingPlans::DescribeScalingPlanResourcesResponse> object.
 

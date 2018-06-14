@@ -67,22 +67,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           VirtualName => 'MyString',
           NoDevice    => 'MyString',
           Ebs         => {
+            SnapshotId => 'MyString',
+            Iops       => 1,
             VolumeType =>
               'standard',    # values: standard, io1, gp2, sc1, st1; OPTIONAL
-            Iops                => 1,
-            Encrypted           => 1,            # OPTIONAL
-            KmsKeyId            => 'MyString',
-            SnapshotId          => 'MyString',
-            DeleteOnTermination => 1,            # OPTIONAL
             VolumeSize          => 1,
+            KmsKeyId            => 'MyString',
+            DeleteOnTermination => 1,            # OPTIONAL
+            Encrypted           => 1,            # OPTIONAL
           },    # OPTIONAL
         },
         ...
       ],        # OPTIONAL
       ClientToken => 'MyString',    # OPTIONAL
       CpuOptions  => {
-        CoreCount      => 1,
         ThreadsPerCore => 1,
+        CoreCount      => 1,
       },                            # OPTIONAL
       CreditSpecification => {
         CpuCredits => 'MyString',
@@ -105,16 +105,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ImageId                           => 'MyString',    # OPTIONAL
       InstanceInitiatedShutdownBehavior => 'stop',        # OPTIONAL
       InstanceMarketOptions             => {
-        MarketType  => 'spot',    # values: spot; OPTIONAL
         SpotOptions => {
+          MaxPrice             => 'MyString',
+          ValidUntil           => '1970-01-01T01:00:00',    # OPTIONAL
           BlockDurationMinutes => 1,
           SpotInstanceType =>
-            'one-time',           # values: one-time, persistent; OPTIONAL
-          ValidUntil => '1970-01-01T01:00:00',    # OPTIONAL
+            'one-time',    # values: one-time, persistent; OPTIONAL
           InstanceInterruptionBehavior =>
             'hibernate',    # values: hibernate, stop, terminate; OPTIONAL
-          MaxPrice => 'MyString',
         },    # OPTIONAL
+        MarketType => 'spot',    # values: spot; OPTIONAL
       },    # OPTIONAL
       InstanceType     => 't1.micro',                                 # OPTIONAL
       Ipv6AddressCount => 1,                                          # OPTIONAL
@@ -123,8 +123,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       KeyName          => 'MyString',                                 # OPTIONAL
       LaunchTemplate   => {
         LaunchTemplateName => 'MyString',
-        LaunchTemplateId   => 'MyString',
         Version            => 'MyString',
+        LaunchTemplateId   => 'MyString',
       },                                                              # OPTIONAL
       Monitoring => {
         Enabled => 1,                                                 # OPTIONAL
@@ -132,33 +132,33 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       NetworkInterfaces => [
         {
-          SubnetId                       => 'MyString',
-          DeviceIndex                    => 1,
-          Groups                         => [ 'MyString', ... ],    # OPTIONAL
-          DeleteOnTermination            => 1,                      # OPTIONAL
-          PrivateIpAddress               => 'MyString',
-          SecondaryPrivateIpAddressCount => 1,
-          NetworkInterfaceId             => 'MyString',
-          Ipv6Addresses      => [ { Ipv6Address => 'MyString', }, ... ],
-          Description        => 'MyString',
+          Groups        => [ 'MyString', ... ],                       # OPTIONAL
+          Ipv6Addresses => [ { Ipv6Address => 'MyString', }, ... ],
           PrivateIpAddresses => [
             {
               PrivateIpAddress => 'MyString',
-              Primary          => 1,                                # OPTIONAL
+              Primary          => 1,                                  # OPTIONAL
             },
             ...
-          ],                                                        # OPTIONAL
-          AssociatePublicIpAddress => 1,                            # OPTIONAL
-          Ipv6AddressCount         => 1,
+          ],                                                          # OPTIONAL
+          DeviceIndex                    => 1,
+          SubnetId                       => 'MyString',
+          DeleteOnTermination            => 1,                        # OPTIONAL
+          SecondaryPrivateIpAddressCount => 1,
+          PrivateIpAddress               => 'MyString',
+          AssociatePublicIpAddress       => 1,                        # OPTIONAL
+          NetworkInterfaceId             => 'MyString',
+          Ipv6AddressCount               => 1,
+          Description                    => 'MyString',
         },
         ...
-      ],                                                            # OPTIONAL
+      ],                                                              # OPTIONAL
       Placement => {
-        SpreadDomain => 'MyString',
         Affinity     => 'MyString',
+        SpreadDomain => 'MyString',
         Tenancy      => 'default',  # values: default, dedicated, host; OPTIONAL
+        HostId       => 'MyString',
         AvailabilityZone => 'MyString',
-        HostId           => 'MyString',
         GroupName        => 'MyString',
       },    # OPTIONAL
       PrivateIpAddress  => 'MyString',             # OPTIONAL
@@ -168,27 +168,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SubnetId          => 'MyString',             # OPTIONAL
       TagSpecifications => [
         {
+          ResourceType => 'customer-gateway'
+          , # values: customer-gateway, dhcp-options, image, instance, internet-gateway, network-acl, network-interface, reserved-instances, route-table, snapshot, spot-instances-request, subnet, security-group, volume, vpc, vpn-connection, vpn-gateway; OPTIONAL
           Tags => [
             {
               Key   => 'MyString',
               Value => 'MyString',
             },
             ...
-          ],                                       # OPTIONAL
-          ResourceType => 'customer-gateway'
-          , # values: customer-gateway, dhcp-options, image, instance, internet-gateway, network-acl, network-interface, reserved-instances, route-table, snapshot, spot-instances-request, subnet, security-group, volume, vpc, vpn-connection, vpn-gateway; OPTIONAL
+          ],    # OPTIONAL
         },
         ...
-      ],    # OPTIONAL
+      ],        # OPTIONAL
       UserData => 'MyString',    # OPTIONAL
     );
 
     # Results:
-    my $RequesterId   = $Reservation->RequesterId;
-    my $ReservationId = $Reservation->ReservationId;
-    my $OwnerId       = $Reservation->OwnerId;
     my $Groups        = $Reservation->Groups;
+    my $RequesterId   = $Reservation->RequesterId;
     my $Instances     = $Reservation->Instances;
+    my $OwnerId       = $Reservation->OwnerId;
+    my $ReservationId = $Reservation->ReservationId;
 
     # Returns a L<Paws::EC2::Reservation> object.
 

@@ -31,31 +31,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateJobResponse = $glue->UpdateJob(
       JobName   => 'MyNameString',
       JobUpdate => {
-        LogUri               => 'MyUriString',    # OPTIONAL
-        NotificationProperty => {
-          NotifyDelayAfter => 1,                  # min: 1, ; OPTIONAL
+        ExecutionProperty => {
+          MaxConcurrentRuns => 1,    # OPTIONAL
         },    # OPTIONAL
-        DefaultArguments => {
-          'MyGenericString' =>
-            'MyGenericString',    # key: OPTIONAL, value: OPTIONAL
-        },    # OPTIONAL
+        LogUri      => 'MyUriString',    # OPTIONAL
         Connections => {
-          Connections => [
-            'MyGenericString', ...    # OPTIONAL
-          ],                          # OPTIONAL
+          Connections => [ 'MyGenericString', ... ],    # OPTIONAL
         },    # OPTIONAL
-        Command => {
+        MaxRetries => 1,    # OPTIONAL
+        Command    => {
           ScriptLocation => 'MyScriptLocationString',    # OPTIONAL
-          Name           => 'MyGenericString',           # OPTIONAL
+          Name           => 'MyGenericString',
         },    # OPTIONAL
-        Timeout           => 1,                        # min: 1, ; OPTIONAL
+        NotificationProperty => {
+          NotifyDelayAfter => 1,    # min: 1, ; OPTIONAL
+        },    # OPTIONAL
+        Role => 'MyRoleString',    # OPTIONAL
+        DefaultArguments => { 'MyGenericString' => 'MyGenericString', }
+        ,                          # OPTIONAL
         AllocatedCapacity => 1,                        # OPTIONAL
         Description       => 'MyDescriptionString',    # max: 2048; OPTIONAL
-        ExecutionProperty => {
-          MaxConcurrentRuns => 1,                      # OPTIONAL
-        },    # OPTIONAL
-        Role       => 'MyRoleString',    # OPTIONAL
-        MaxRetries => 1,                 # OPTIONAL
+        Timeout           => 1,                        # min: 1, ; OPTIONAL
       },
 
     );

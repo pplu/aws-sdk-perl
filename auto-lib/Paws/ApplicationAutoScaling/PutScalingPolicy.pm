@@ -39,7 +39,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # the service by 200%, with a cool down period of 60 seconds.
     my $PutScalingPolicyResponse = $autoscaling->PutScalingPolicy(
       {
+        'ResourceId'                     => 'service/default/web-app',
+        'ServiceNamespace'               => 'ecs',
+        'ScalableDimension'              => 'ecs:service:DesiredCount',
+        'PolicyType'                     => 'StepScaling',
         'StepScalingPolicyConfiguration' => {
+          'AdjustmentType'  => 'PercentChangeInCapacity',
           'StepAdjustments' => [
 
             {
@@ -47,14 +52,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               'ScalingAdjustment'        => 200
             }
           ],
-          'AdjustmentType' => 'PercentChangeInCapacity',
-          'Cooldown'       => 60
+          'Cooldown' => 60
         },
-        'PolicyType'        => 'StepScaling',
-        'ServiceNamespace'  => 'ecs',
-        'PolicyName'        => 'web-app-cpu-gt-75',
-        'ResourceId'        => 'service/default/web-app',
-        'ScalableDimension' => 'ecs:service:DesiredCount'
+        'PolicyName' => 'web-app-cpu-gt-75'
       }
     );
 
@@ -69,13 +69,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $PutScalingPolicyResponse = $autoscaling->PutScalingPolicy(
       {
-        'PolicyName'        => 'fleet-cpu-gt-75',
-        'ScalableDimension' => 'ec2:spot-fleet-request:TargetCapacity',
         'ResourceId' =>
           'spot-fleet-request/sfr-45e69d8a-be48-4539-bbf3-3464e99c50c3',
-        'ServiceNamespace'               => 'ec2',
-        'PolicyType'                     => 'StepScaling',
+        'ServiceNamespace'  => 'ec2',
+        'ScalableDimension' => 'ec2:spot-fleet-request:TargetCapacity',
+        'PolicyType'        => 'StepScaling',
         'StepScalingPolicyConfiguration' => {
+          'AdjustmentType'  => 'PercentChangeInCapacity',
           'StepAdjustments' => [
 
             {
@@ -83,9 +83,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               'ScalingAdjustment'        => 200
             }
           ],
-          'AdjustmentType' => 'PercentChangeInCapacity',
-          'Cooldown'       => 180
-        }
+          'Cooldown' => 180
+        },
+        'PolicyName' => 'fleet-cpu-gt-75'
       }
     );
 

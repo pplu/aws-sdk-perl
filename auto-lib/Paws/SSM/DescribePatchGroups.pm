@@ -44,8 +44,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Mappings  = $DescribePatchGroupsResult->Mappings;
     my $NextToken = $DescribePatchGroupsResult->NextToken;
+    my $Mappings  = $DescribePatchGroupsResult->Mappings;
 
     # Returns a L<Paws::SSM::DescribePatchGroupsResult> object.
 

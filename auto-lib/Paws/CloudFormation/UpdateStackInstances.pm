@@ -38,18 +38,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       StackSetName => 'MyStackSetNameOrId',
       OperationId          => 'MyClientRequestToken',    # OPTIONAL
       OperationPreferences => {
-        FailureToleranceCount      => 1,                    # OPTIONAL
-        RegionOrder                => [ 'MyRegion', ... ],
-        FailureTolerancePercentage => 1,                    # max: 100; OPTIONAL
-        MaxConcurrentPercentage => 1,    # min: 1, max: 100; OPTIONAL
-        MaxConcurrentCount      => 1,    # min: 1, ; OPTIONAL
+        MaxConcurrentPercentage    => 1,    # min: 1, max: 100; OPTIONAL
+        FailureTolerancePercentage => 1,    # max: 100; OPTIONAL
+        RegionOrder           => [ 'MyRegion', ... ],
+        FailureToleranceCount => 1,                     # OPTIONAL
+        MaxConcurrentCount    => 1,                     # min: 1, ; OPTIONAL
       },    # OPTIONAL
       ParameterOverrides => [
         {
-          ResolvedValue    => 'MyParameterValue',    # OPTIONAL
-          ParameterKey     => 'MyParameterKey',      # OPTIONAL
           UsePreviousValue => 1,                     # OPTIONAL
+          ParameterKey     => 'MyParameterKey',      # OPTIONAL
           ParameterValue   => 'MyParameterValue',    # OPTIONAL
+          ResolvedValue    => 'MyParameterValue',    # OPTIONAL
         },
         ...
       ],                                             # OPTIONAL

@@ -39,23 +39,36 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'MyValueString', ...                        # max: 1024
           ],                                            # OPTIONAL
           StorageDescriptor => {
-            SkewedInfo => {
+            InputFormat => 'MyFormatString',            # max: 128; OPTIONAL
+            SkewedInfo  => {
+              SkewedColumnValues => [ 'MyColumnValuesString', ... ],  # OPTIONAL
               SkewedColumnValueLocationMaps =>
                 { 'MyColumnValuesString' => 'MyColumnValuesString', }
-              ,                                         # OPTIONAL
-              SkewedColumnValues => [ 'MyColumnValuesString', ... ],  # OPTIONAL
+              ,                                                       # OPTIONAL
               SkewedColumnNames => [
                 'MyNameString', ...    # min: 1, max: 255
               ],                       # OPTIONAL
             },    # OPTIONAL
-            OutputFormat           => 'MyFormatString',    # max: 128; OPTIONAL
-            Location               => 'MyLocationString',  # max: 2056; OPTIONAL
-            StoredAsSubDirectories => 1,                   # OPTIONAL
-            Columns                => [
+            NumberOfBuckets => 1,                   # OPTIONAL
+            Compressed      => 1,                   # OPTIONAL
+            OutputFormat    => 'MyFormatString',    # max: 128; OPTIONAL
+            BucketColumns   => [
+              'MyNameString', ...                   # min: 1, max: 255
+            ],                                      # OPTIONAL
+            SerdeInfo => {
+              SerializationLibrary => 'MyNameString',    # min: 1, max: 255
+              Parameters           => {
+                'MyKeyString' => 'MyParametersMapValue'
+                ,    # key: min: 1, max: 255, value: max: 512000
+              },    # OPTIONAL
+              Name => 'MyNameString',    # min: 1, max: 255
+            },    # OPTIONAL
+            Location => 'MyLocationString',    # max: 2056; OPTIONAL
+            Columns  => [
               {
                 Name    => 'MyNameString',          # min: 1, max: 255
-                Comment => 'MyCommentString',       # max: 255; OPTIONAL
                 Type    => 'MyColumnTypeString',    # max: 131072; OPTIONAL
+                Comment => 'MyCommentString',       # max: 255; OPTIONAL
               },
               ...
             ],                                      # OPTIONAL
@@ -71,31 +84,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               'MyKeyString' => 'MyParametersMapValue'
               ,    # key: min: 1, max: 255, value: max: 512000
             },    # OPTIONAL
-            SerdeInfo => {
-              Parameters => {
-                'MyKeyString' => 'MyParametersMapValue'
-                ,    # key: min: 1, max: 255, value: max: 512000
-              },    # OPTIONAL
-              Name                 => 'MyNameString',    # min: 1, max: 255
-              SerializationLibrary => 'MyNameString',    # min: 1, max: 255
-            },    # OPTIONAL
-            NumberOfBuckets => 1,                   # OPTIONAL
-            Compressed      => 1,                   # OPTIONAL
-            InputFormat     => 'MyFormatString',    # max: 128; OPTIONAL
-            BucketColumns   => [
-              'MyNameString', ...                   # min: 1, max: 255
-            ],                                      # OPTIONAL
+            StoredAsSubDirectories => 1,    # OPTIONAL
           },    # OPTIONAL
-          Parameters => {
+          LastAccessTime => '1970-01-01T01:00:00',    # OPTIONAL
+          Parameters     => {
             'MyKeyString' => 'MyParametersMapValue'
             ,    # key: min: 1, max: 255, value: max: 512000
           },    # OPTIONAL
-          LastAccessTime => '1970-01-01T01:00:00',    # OPTIONAL
         },
         ...
       ],
       TableName => 'MyNameString',
-      CatalogId => 'MyCatalogIdString',               # OPTIONAL
+      CatalogId => 'MyCatalogIdString',    # OPTIONAL
     );
 
     # Results:

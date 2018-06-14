@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ApplicationId => 'My__string',
       Statements    => [
         {
-          Principals  => [ 'My__string', ... ],
           Actions     => [ 'My__string', ... ],
+          Principals  => [ 'My__string', ... ],
           StatementId => 'My__string',
         },
         ...

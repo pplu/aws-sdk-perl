@@ -34,24 +34,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ce = Paws->service('CostExplorer');
     my $GetCostAndUsageResponse = $ce->GetCostAndUsage(
       Filter => {
-        And => [ <Expression>, ... ],    # OPTIONAL
-        Tags => {
-          Key => 'MyTagKey',               # OPTIONAL
-          Values => [ 'MyValue', ... ],    # OPTIONAL
-        },    # OPTIONAL
-        Not        => <Expression>,
         Or         => [ <Expression>, ... ],    # OPTIONAL
+        Not        => <Expression>,
         Dimensions => {
+          Values => [ 'MyValue', ... ],         # OPTIONAL
           Key => 'AZ'
           , # values: AZ, INSTANCE_TYPE, LINKED_ACCOUNT, OPERATION, PURCHASE_TYPE, REGION, SERVICE, USAGE_TYPE, USAGE_TYPE_GROUP, RECORD_TYPE, OPERATING_SYSTEM, TENANCY, SCOPE, PLATFORM, SUBSCRIPTION_ID, LEGAL_ENTITY_NAME, DEPLOYMENT_OPTION, DATABASE_ENGINE, CACHE_ENGINE, INSTANCE_TYPE_FAMILY; OPTIONAL
+        },    # OPTIONAL
+        And => [ <Expression>, ... ],    # OPTIONAL
+        Tags => {
           Values => [ 'MyValue', ... ],    # OPTIONAL
+          Key => 'MyTagKey',               # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       Granularity => 'DAILY',    # OPTIONAL
       GroupBy     => [
         {
-          Key  => 'MyGroupDefinitionKey',    # OPTIONAL
           Type => 'DIMENSION',               # values: DIMENSION, TAG; OPTIONAL
+          Key  => 'MyGroupDefinitionKey',    # OPTIONAL
         },
         ...
       ],                                     # OPTIONAL

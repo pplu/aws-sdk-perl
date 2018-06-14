@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken = $ListGroupsOutput->NextToken;
     my $Groups    = $ListGroupsOutput->Groups;
+    my $NextToken = $ListGroupsOutput->NextToken;
 
     # Returns a L<Paws::ResourceGroups::ListGroupsOutput> object.
 

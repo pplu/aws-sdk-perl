@@ -73,12 +73,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example creates a DB instance.
     my $CreateDBInstanceResult = $rds->CreateDBInstance(
       {
+        'MasterUserPassword'   => 'MyPassword',
+        'DBInstanceIdentifier' => 'mymysqlinstance',
         'AllocatedStorage'     => 5,
         'Engine'               => 'MySQL',
-        'DBInstanceClass'      => 'db.t2.micro',
-        'DBInstanceIdentifier' => 'mymysqlinstance',
-        'MasterUserPassword'   => 'MyPassword',
-        'MasterUsername'       => 'MyUser'
+        'MasterUsername'       => 'MyUser',
+        'DBInstanceClass'      => 'db.t2.micro'
       }
     );
 

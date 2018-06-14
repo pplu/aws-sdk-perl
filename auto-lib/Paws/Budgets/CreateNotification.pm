@@ -43,8 +43,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },
       Subscribers => [
         {
-          Address          => 'MySubscriberAddress',    # min: 1,
           SubscriptionType => 'SNS',                    # values: SNS, EMAIL
+          Address          => 'MySubscriberAddress',    # min: 1,
 
         },
         ...

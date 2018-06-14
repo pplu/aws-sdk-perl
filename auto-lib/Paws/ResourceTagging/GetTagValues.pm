@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $TagValues       = $GetTagValuesOutput->TagValues;
     my $PaginationToken = $GetTagValuesOutput->PaginationToken;
+    my $TagValues       = $GetTagValuesOutput->TagValues;
 
     # Returns a L<Paws::ResourceTagging::GetTagValuesOutput> object.
 

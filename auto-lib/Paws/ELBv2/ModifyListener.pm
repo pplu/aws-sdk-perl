@@ -36,6 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example changes the default action for the specified listener.
     my $ModifyListenerOutput = $elasticloadbalancing->ModifyListener(
       {
+        'ListenerArn' =>
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-load-balancer/50dc6c495c0c9188/f2f7dc8efc522ab2',
         'DefaultActions' => [
 
           {
@@ -43,9 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-new-targets/2453ed029918f21f',
             'Type' => 'forward'
           }
-        ],
-        'ListenerArn' =>
-'arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-load-balancer/50dc6c495c0c9188/f2f7dc8efc522ab2'
+        ]
       }
     );
 

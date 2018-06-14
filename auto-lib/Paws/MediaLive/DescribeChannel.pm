@@ -34,15 +34,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $RoleArn               = $DescribeChannelResponse->RoleArn;
-    my $State                 = $DescribeChannelResponse->State;
-    my $InputSpecification    = $DescribeChannelResponse->InputSpecification;
-    my $Destinations          = $DescribeChannelResponse->Destinations;
-    my $EgressEndpoints       = $DescribeChannelResponse->EgressEndpoints;
-    my $EncoderSettings       = $DescribeChannelResponse->EncoderSettings;
-    my $PipelinesRunningCount = $DescribeChannelResponse->PipelinesRunningCount;
-    my $LogLevel              = $DescribeChannelResponse->LogLevel;
     my $Id                    = $DescribeChannelResponse->Id;
+    my $EncoderSettings       = $DescribeChannelResponse->EncoderSettings;
+    my $InputSpecification    = $DescribeChannelResponse->InputSpecification;
+    my $State                 = $DescribeChannelResponse->State;
+    my $LogLevel              = $DescribeChannelResponse->LogLevel;
+    my $RoleArn               = $DescribeChannelResponse->RoleArn;
+    my $EgressEndpoints       = $DescribeChannelResponse->EgressEndpoints;
+    my $Destinations          = $DescribeChannelResponse->Destinations;
+    my $PipelinesRunningCount = $DescribeChannelResponse->PipelinesRunningCount;
     my $Arn                   = $DescribeChannelResponse->Arn;
     my $InputAttachments      = $DescribeChannelResponse->InputAttachments;
     my $Name                  = $DescribeChannelResponse->Name;

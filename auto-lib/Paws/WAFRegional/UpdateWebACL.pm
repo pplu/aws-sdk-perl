@@ -38,21 +38,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'Updates' => [
 
           {
-            'Action'        => 'DELETE',
             'ActivatedRule' => {
-              'Priority' => 1,
-              'RuleId'   => 'WAFRule-1-Example',
-              'Action'   => {
+              'RuleId' => 'WAFRule-1-Example',
+              'Action' => {
                 'Type' => 'ALLOW'
-              }
-            }
+              },
+              'Priority' => 1
+            },
+            'Action' => 'DELETE'
           }
         ],
         'ChangeToken'   => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
-        'WebACLId'      => 'webacl-1472061481310',
         'DefaultAction' => {
           'Type' => 'ALLOW'
-        }
+        },
+        'WebACLId' => 'webacl-1472061481310'
       }
     );
 

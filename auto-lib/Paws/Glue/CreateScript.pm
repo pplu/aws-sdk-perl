@@ -40,15 +40,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],                                               # OPTIONAL
       DagNodes => [
         {
-          NodeType => 'MyCodeGenNodeType',
-          Args     => [
+          Args => [
             {
-              Name  => 'MyCodeGenArgName',             # OPTIONAL
               Value => 'MyCodeGenArgValue',
+              Name  => 'MyCodeGenArgName',             # OPTIONAL
               Param => 1,                              # OPTIONAL
             },
             ...
           ],                                           # max: 50
+          NodeType   => 'MyCodeGenNodeType',
           Id         => 'MyCodeGenIdentifier',         # min: 1, max: 255
           LineNumber => 1,                             # OPTIONAL
         },

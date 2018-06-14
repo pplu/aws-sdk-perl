@@ -33,14 +33,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $DirectoryId       = $DescribeOrganizationResponse->DirectoryId;
     my $DefaultMailDomain = $DescribeOrganizationResponse->DefaultMailDomain;
-    my $Alias             = $DescribeOrganizationResponse->Alias;
     my $OrganizationId    = $DescribeOrganizationResponse->OrganizationId;
     my $ErrorMessage      = $DescribeOrganizationResponse->ErrorMessage;
-    my $DirectoryType     = $DescribeOrganizationResponse->DirectoryType;
     my $State             = $DescribeOrganizationResponse->State;
+    my $Alias             = $DescribeOrganizationResponse->Alias;
+    my $DirectoryId       = $DescribeOrganizationResponse->DirectoryId;
     my $CompletedDate     = $DescribeOrganizationResponse->CompletedDate;
+    my $DirectoryType     = $DescribeOrganizationResponse->DirectoryType;
 
     # Returns a L<Paws::WorkMail::DescribeOrganizationResponse> object.
 

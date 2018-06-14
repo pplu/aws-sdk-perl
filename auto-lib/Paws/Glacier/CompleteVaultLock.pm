@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # lock from the InProgress state to the Locked state.
     $glacier->CompleteVaultLock(
       {
-        'VaultName' => 'example-vault',
+        'AccountId' => '-',
         'LockId'    => 'AE863rKkWZU53SLW5be4DUcW',
-        'AccountId' => '-'
+        'VaultName' => 'example-vault'
       }
     );
 

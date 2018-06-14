@@ -36,11 +36,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AmznClientToken      => 'My__string',    # OPTIONAL
       Resources            => [
         {
+          Id                    => 'My__string',
           ResourceDataContainer => {
+            LocalVolumeResourceData => {
+              DestinationPath   => 'My__string',
+              SourcePath        => 'My__string',
+              GroupOwnerSetting => {
+                AutoAddGroupOwner => 1,              # OPTIONAL
+                GroupOwner        => 'My__string',
+              },    # OPTIONAL
+            },    # OPTIONAL
             SageMakerMachineLearningModelResourceData => {
-              SageMakerJobArn => 'My__string',
               DestinationPath => 'My__string',
-            },                                 # OPTIONAL
+              SageMakerJobArn => 'My__string',
+            },    # OPTIONAL
             LocalDeviceResourceData => {
               SourcePath        => 'My__string',
               GroupOwnerSetting => {
@@ -49,19 +58,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
             },    # OPTIONAL
             S3MachineLearningModelResourceData => {
+              DestinationPath => 'My__string',
               S3Uri           => 'My__string',
-              DestinationPath => 'My__string',
-            },    # OPTIONAL
-            LocalVolumeResourceData => {
-              SourcePath        => 'My__string',
-              GroupOwnerSetting => {
-                AutoAddGroupOwner => 1,              # OPTIONAL
-                GroupOwner        => 'My__string',
-              },    # OPTIONAL
-              DestinationPath => 'My__string',
             },    # OPTIONAL
           },    # OPTIONAL
-          Id   => 'My__string',
           Name => 'My__string',
         },
         ...
@@ -69,11 +69,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $Id      = $CreateResourceDefinitionVersionResponse->Id;
-    my $Version = $CreateResourceDefinitionVersionResponse->Version;
     my $CreationTimestamp =
       $CreateResourceDefinitionVersionResponse->CreationTimestamp;
-    my $Arn = $CreateResourceDefinitionVersionResponse->Arn;
+    my $Version = $CreateResourceDefinitionVersionResponse->Version;
+    my $Id      = $CreateResourceDefinitionVersionResponse->Id;
+    my $Arn     = $CreateResourceDefinitionVersionResponse->Arn;
 
 # Returns a L<Paws::Greengrass::CreateResourceDefinitionVersionResponse> object.
 

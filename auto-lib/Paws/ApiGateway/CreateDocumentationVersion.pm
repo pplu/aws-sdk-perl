@@ -39,9 +39,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Description = $DocumentationVersion->Description;
-    my $Version     = $DocumentationVersion->Version;
     my $CreatedDate = $DocumentationVersion->CreatedDate;
+    my $Version     = $DocumentationVersion->Version;
+    my $Description = $DocumentationVersion->Description;
 
     # Returns a L<Paws::ApiGateway::DocumentationVersion> object.
 

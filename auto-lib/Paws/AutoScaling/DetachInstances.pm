@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Scaling group.
     my $DetachInstancesAnswer = $autoscaling->DetachInstances(
       {
-        'ShouldDecrementDesiredCapacity' => true,
+        'ShouldDecrementDesiredCapacity' => 1,
         'InstanceIds'                    => ['i-93633f9b'],
         'AutoScalingGroupName'           => 'my-auto-scaling-group'
       }

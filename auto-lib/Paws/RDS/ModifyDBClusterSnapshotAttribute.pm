@@ -37,10 +37,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ModifyDBClusterSnapshotAttributeResult =
       $rds->ModifyDBClusterSnapshotAttribute(
       {
-        'ValuesToAdd'                 => [ 123451234512, 123456789012 ],
         'ValuesToRemove'              => ['all'],
+        'DBClusterSnapshotIdentifier' => 'manual-cluster-snapshot1',
         'AttributeName'               => 'restore',
-        'DBClusterSnapshotIdentifier' => 'manual-cluster-snapshot1'
+        'ValuesToAdd'                 => [ 123451234512, 123456789012 ]
       }
       );
 

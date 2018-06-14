@@ -42,12 +42,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $CreatedDate     = $PutBotAliasResponse->CreatedDate;
-    my $Name            = $PutBotAliasResponse->Name;
-    my $Description     = $PutBotAliasResponse->Description;
-    my $BotVersion      = $PutBotAliasResponse->BotVersion;
-    my $Checksum        = $PutBotAliasResponse->Checksum;
-    my $LastUpdatedDate = $PutBotAliasResponse->LastUpdatedDate;
     my $BotName         = $PutBotAliasResponse->BotName;
+    my $BotVersion      = $PutBotAliasResponse->BotVersion;
+    my $Description     = $PutBotAliasResponse->Description;
+    my $Name            = $PutBotAliasResponse->Name;
+    my $LastUpdatedDate = $PutBotAliasResponse->LastUpdatedDate;
+    my $Checksum        = $PutBotAliasResponse->Checksum;
 
     # Returns a L<Paws::LexModels::PutBotAliasResponse> object.
 

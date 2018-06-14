@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $PortfolioDetails = $ListAcceptedPortfolioSharesOutput->PortfolioDetails;
     my $NextPageToken    = $ListAcceptedPortfolioSharesOutput->NextPageToken;
+    my $PortfolioDetails = $ListAcceptedPortfolioSharesOutput->PortfolioDetails;
 
   # Returns a L<Paws::ServiceCatalog::ListAcceptedPortfolioSharesOutput> object.
 

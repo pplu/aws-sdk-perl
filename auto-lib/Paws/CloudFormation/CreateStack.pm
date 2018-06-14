@@ -55,10 +55,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       OnFailure                   => 'DO_NOTHING',                    # OPTIONAL
       Parameters                  => [
         {
-          ResolvedValue    => 'MyParameterValue',                     # OPTIONAL
-          ParameterKey     => 'MyParameterKey',                       # OPTIONAL
           UsePreviousValue => 1,                                      # OPTIONAL
+          ParameterKey     => 'MyParameterKey',                       # OPTIONAL
           ParameterValue   => 'MyParameterValue',                     # OPTIONAL
+          ResolvedValue    => 'MyParameterValue',                     # OPTIONAL
         },
         ...
       ],                                                              # OPTIONAL
@@ -67,22 +67,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],                         # OPTIONAL
       RoleARN               => 'MyRoleARN',    # OPTIONAL
       RollbackConfiguration => {
-        RollbackTriggers => [
+        MonitoringTimeInMinutes => 1,          # max: 180; OPTIONAL
+        RollbackTriggers        => [
           {
-            Arn  => 'MyArn',
             Type => 'MyType',
+            Arn  => 'MyArn',
 
           },
           ...
         ],                                     # max: 5; OPTIONAL
-        MonitoringTimeInMinutes => 1,          # max: 180; OPTIONAL
       },    # OPTIONAL
       StackPolicyBody => 'MyStackPolicyBody',    # OPTIONAL
       StackPolicyURL  => 'MyStackPolicyURL',     # OPTIONAL
       Tags            => [
         {
-          Value => 'MyTagValue',                 # min: 1, max: 256
           Key   => 'MyTagKey',                   # min: 1, max: 128
+          Value => 'MyTagValue',                 # min: 1, max: 256
 
         },
         ...

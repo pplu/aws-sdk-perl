@@ -37,28 +37,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RestApiId       => 'MyString',
       PatchOperations => [
         {
-          path  => 'MyString',
+          from  => 'MyString',
           value => 'MyString',
+          path  => 'MyString',
           op =>
             'add',    # values: add, remove, replace, move, copy, test; OPTIONAL
-          from => 'MyString',
         },
         ...
       ],              # OPTIONAL
     );
 
     # Results:
-    my $RequestParameters   = $Method->RequestParameters;
-    my $OperationName       = $Method->OperationName;
-    my $AuthorizerId        = $Method->AuthorizerId;
-    my $ApiKeyRequired      = $Method->ApiKeyRequired;
-    my $AuthorizationType   = $Method->AuthorizationType;
-    my $MethodResponses     = $Method->MethodResponses;
-    my $RequestValidatorId  = $Method->RequestValidatorId;
-    my $RequestModels       = $Method->RequestModels;
-    my $AuthorizationScopes = $Method->AuthorizationScopes;
     my $HttpMethod          = $Method->HttpMethod;
+    my $AuthorizationScopes = $Method->AuthorizationScopes;
     my $MethodIntegration   = $Method->MethodIntegration;
+    my $OperationName       = $Method->OperationName;
+    my $RequestValidatorId  = $Method->RequestValidatorId;
+    my $AuthorizerId        = $Method->AuthorizerId;
+    my $MethodResponses     = $Method->MethodResponses;
+    my $RequestParameters   = $Method->RequestParameters;
+    my $RequestModels       = $Method->RequestModels;
+    my $AuthorizationType   = $Method->AuthorizationType;
+    my $ApiKeyRequired      = $Method->ApiKeyRequired;
 
     # Returns a L<Paws::ApiGateway::Method> object.
 

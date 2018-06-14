@@ -38,10 +38,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $RegistryId     = $CompleteLayerUploadResponse->RegistryId;
-    my $UploadId       = $CompleteLayerUploadResponse->UploadId;
-    my $LayerDigest    = $CompleteLayerUploadResponse->LayerDigest;
-    my $RepositoryName = $CompleteLayerUploadResponse->RepositoryName;
+    my $uploadId       = $CompleteLayerUploadResponse->uploadId;
+    my $layerDigest    = $CompleteLayerUploadResponse->layerDigest;
+    my $registryId     = $CompleteLayerUploadResponse->registryId;
+    my $repositoryName = $CompleteLayerUploadResponse->repositoryName;
 
     # Returns a L<Paws::ECR::CompleteLayerUploadResponse> object.
 

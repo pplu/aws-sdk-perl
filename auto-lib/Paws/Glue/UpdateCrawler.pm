@@ -53,22 +53,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       TablePrefix => 'MyTablePrefix',    # OPTIONAL
       Targets     => {
-        JdbcTargets => [
-          {
-            Exclusions => [
-              'MyPath', ...              # OPTIONAL
-            ],                           # OPTIONAL
-            ConnectionName => 'MyConnectionName',    # OPTIONAL
-            Path           => 'MyPath',              # OPTIONAL
-          },
-          ...
-        ],                                           # OPTIONAL
         S3Targets => [
           {
-            Path       => 'MyPath',                  # OPTIONAL
-            Exclusions => [
-              'MyPath', ...                          # OPTIONAL
-            ],                                       # OPTIONAL
+            Exclusions => [ 'MyPath', ... ],    # OPTIONAL
+            Path => 'MyPath',
+          },
+          ...
+        ],                                      # OPTIONAL
+        JdbcTargets => [
+          {
+            Exclusions     => [ 'MyPath', ... ],     # OPTIONAL
+            Path           => 'MyPath',
+            ConnectionName => 'MyConnectionName',    # OPTIONAL
           },
           ...
         ],                                           # OPTIONAL

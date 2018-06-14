@@ -34,16 +34,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # specified CMK.
     my $GetParametersForImportResponse = $kms->GetParametersForImport(
       {
-        'KeyId'             => '1234abcd-12ab-34cd-56ef-1234567890ab',
         'WrappingAlgorithm' => 'RSAES_OAEP_SHA_1',
+        'KeyId'             => '1234abcd-12ab-34cd-56ef-1234567890ab',
         'WrappingKeySpec'   => 'RSA_2048'
       }
     );
 
     # Results:
-    my $ImportToken       = $GetParametersForImportResponse->ImportToken;
     my $ParametersValidTo = $GetParametersForImportResponse->ParametersValidTo;
     my $KeyId             = $GetParametersForImportResponse->KeyId;
+    my $ImportToken       = $GetParametersForImportResponse->ImportToken;
     my $PublicKey         = $GetParametersForImportResponse->PublicKey;
 
     # Returns a L<Paws::KMS::GetParametersForImportResponse> object.

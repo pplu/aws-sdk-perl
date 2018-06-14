@@ -37,10 +37,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $BrokerId   = $ListUsersResponse->BrokerId;
+    my $Users      = $ListUsersResponse->Users;
     my $NextToken  = $ListUsersResponse->NextToken;
     my $MaxResults = $ListUsersResponse->MaxResults;
-    my $Users      = $ListUsersResponse->Users;
+    my $BrokerId   = $ListUsersResponse->BrokerId;
 
     # Returns a L<Paws::MQ::ListUsersResponse> object.
 

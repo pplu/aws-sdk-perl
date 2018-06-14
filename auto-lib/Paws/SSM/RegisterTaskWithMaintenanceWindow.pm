@@ -65,46 +65,46 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name                     => 'MyMaintenanceWindowName',    # OPTIONAL
       Priority                 => 1,                            # OPTIONAL
       TaskInvocationParameters => {
+        Automation => {
+          DocumentVersion => 'MyDocumentVersion',               # OPTIONAL
+          Parameters      => {
+            'MyAutomationParameterKey' => [
+              'MyAutomationParameterValue', ...    # min: 1, max: 512
+            ],    # key: min: 1, max: 30, value: max: 10
+          },    # min: 1, max: 200; OPTIONAL
+        },    # OPTIONAL
         Lambda => {
+          Qualifier =>
+            'MyMaintenanceWindowLambdaQualifier',   # min: 1, max: 128; OPTIONAL
           Payload => 'BlobMaintenanceWindowLambdaPayload', # max: 4096; OPTIONAL
           ClientContext => 'MyMaintenanceWindowLambdaClientContext'
           ,    # min: 1, max: 8000; OPTIONAL
-          Qualifier =>
-            'MyMaintenanceWindowLambdaQualifier',   # min: 1, max: 128; OPTIONAL
         },    # OPTIONAL
         RunCommand => {
-          Comment            => 'MyComment',         # max: 100; OPTIONAL
           OutputS3BucketName => 'MyS3BucketName',    # min: 3, max: 63
-          DocumentHash       => 'MyDocumentHash',    # max: 256; OPTIONAL
+          Comment            => 'MyComment',         # max: 100; OPTIONAL
+          TimeoutSeconds   => 1,           # min: 30, max: 2592000; OPTIONAL
+          DocumentHashType => 'Sha256',    # values: Sha256, Sha1; OPTIONAL
+          OutputS3KeyPrefix => 'MyS3KeyPrefix',     # max: 500; OPTIONAL
+          ServiceRoleArn    => 'MyServiceRole',
+          DocumentHash      => 'MyDocumentHash',    # max: 256; OPTIONAL
+          Parameters => { 'MyParameterName' => [ 'MyParameterValue', ... ], }
+          ,                                         # OPTIONAL
           NotificationConfig => {
+            NotificationType =>
+              'Command',    # values: Command, Invocation; OPTIONAL
             NotificationEvents => [
               'All',
               ... # values: All, InProgress, Success, TimedOut, Cancelled, Failed
             ],    # OPTIONAL
-            NotificationType =>
-              'Command',    # values: Command, Invocation; OPTIONAL
             NotificationArn => 'MyNotificationArn',    # OPTIONAL
           },    # OPTIONAL
-          TimeoutSeconds => 1,    # min: 30, max: 2592000; OPTIONAL
-          OutputS3KeyPrefix => 'MyS3KeyPrefix', # max: 500; OPTIONAL
-          DocumentHashType  => 'Sha256',        # values: Sha256, Sha1; OPTIONAL
-          Parameters => { 'MyParameterName' => [ 'MyParameterValue', ... ], }
-          ,                                     # OPTIONAL
-          ServiceRoleArn => 'MyServiceRole',
         },    # OPTIONAL
         StepFunctions => {
           Input =>
             'MyMaintenanceWindowStepFunctionsInput',    # max: 4096; OPTIONAL
           Name =>
             'MyMaintenanceWindowStepFunctionsName',  # min: 1, max: 80; OPTIONAL
-        },    # OPTIONAL
-        Automation => {
-          DocumentVersion => 'MyDocumentVersion',    # OPTIONAL
-          Parameters      => {
-            'MyAutomationParameterKey' => [
-              'MyAutomationParameterValue', ...      # min: 1, max: 512
-            ],    # key: min: 1, max: 30, value: max: 10
-          },    # min: 1, max: 200; OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       TaskParameters => {

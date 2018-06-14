@@ -45,8 +45,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       NextToken    => 'MyNextToken',    # OPTIONAL
       SortCriteria => [
         {
-          Value => 'ASC',               # values: ASC, DESC
           Key   => 'MySortKey',         # min: 1, max: 500
+          Value => 'ASC',               # values: ASC, DESC
 
         },
         ...
@@ -55,8 +55,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $NextToken  = $SearchUsersResponse->NextToken;
-    my $TotalCount = $SearchUsersResponse->TotalCount;
     my $Users      = $SearchUsersResponse->Users;
+    my $TotalCount = $SearchUsersResponse->TotalCount;
 
     # Returns a L<Paws::AlexaForBusiness::SearchUsersResponse> object.
 
