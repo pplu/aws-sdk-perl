@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Members   = $ListGroupMembersResponse->Members;
     my $NextToken = $ListGroupMembersResponse->NextToken;
+    my $Members   = $ListGroupMembersResponse->Members;
 
     # Returns a L<Paws::WorkMail::ListGroupMembersResponse> object.
 

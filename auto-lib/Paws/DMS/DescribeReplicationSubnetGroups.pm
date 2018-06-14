@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $dms->DescribeReplicationSubnetGroups(
       Filters => [
         {
-          Name   => 'MyString',
           Values => [ 'MyString', ... ],
+          Name   => 'MyString',
 
         },
         ...
@@ -44,9 +44,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $Marker = $DescribeReplicationSubnetGroupsResponse->Marker;
     my $ReplicationSubnetGroups =
       $DescribeReplicationSubnetGroupsResponse->ReplicationSubnetGroups;
+    my $Marker = $DescribeReplicationSubnetGroupsResponse->Marker;
 
     # Returns a L<Paws::DMS::DescribeReplicationSubnetGroupsResponse> object.
 

@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $DocumentSource = $DescribeJobResponse->DocumentSource;
     my $Job            = $DescribeJobResponse->Job;
+    my $DocumentSource = $DescribeJobResponse->DocumentSource;
 
     # Returns a L<Paws::IoT::DescribeJobResponse> object.
 

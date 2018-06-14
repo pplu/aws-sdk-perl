@@ -31,8 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DefineExpressionResponse = $cloudsearch->DefineExpression(
       DomainName => 'MyDomainName',
       Expression => {
-        ExpressionName  => 'MyStandardName',       # min: 1, max: 64
         ExpressionValue => 'MyExpressionValue',    # min: 1, max: 10240
+        ExpressionName  => 'MyStandardName',       # min: 1, max: 64
 
       },
 

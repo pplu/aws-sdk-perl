@@ -14,8 +14,9 @@ use Carp;
 use Paws;
 
 my $service    = 'S3';
-my $region     = 'us-east-1';
-my $bucketname = 'paws-test-bucket';
+# my $region     = 'us-east-1';
+my $region     = 'us-west-2';
+my $bucketname = 'shadowcatjesstest';
 my $test_dir   = 'uploads/test_';
 
 
@@ -46,7 +47,7 @@ my $s3 = Paws->service($service,
     $response = $s3->CreateBucket(
       Bucket => $bucketname,
       CreateBucketConfiguration => {
-        LocationConstraint => 'eu-west-1', 
+        LocationConstraint => 'us-west-2', 
       },
     );
     p $response;

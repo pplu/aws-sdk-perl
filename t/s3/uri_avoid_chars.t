@@ -20,7 +20,7 @@ my $paws = Paws->new(config => {
   caller => Paws::Net::MockCaller->new(
     mock_dir => 't/s3/uri_avoid_chars',
     mock_mode => 'REPLAY',
-    mock_mode => 'RECORD',
+#    mock_mode => 'RECORD',
   ),
 #  credentials => 'Test::CustomCredentials'
 });
@@ -55,8 +55,6 @@ foreach my $char (@to_encode) {
       );
   };
 
-## The URI should contain a once-encoded character:
-#  is($s3->caller->actual_request->url, 'https://s3-us-west-2.amazonaws.com/test-uri-paws/test' . uri_escape($char), "S3 uri encoded correctly");
 }
 
 done_testing;

@@ -33,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $DeploymentInfo = $GetDeploymentOutput->DeploymentInfo;
+    my $deploymentInfo = $GetDeploymentOutput->deploymentInfo;
 
     # Returns a L<Paws::CodeDeploy::GetDeploymentOutput> object.
 

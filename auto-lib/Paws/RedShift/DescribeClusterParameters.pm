@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Marker     = $ClusterParameterGroupDetails->Marker;
     my $Parameters = $ClusterParameterGroupDetails->Parameters;
+    my $Marker     = $ClusterParameterGroupDetails->Marker;
 
     # Returns a L<Paws::RedShift::ClusterParameterGroupDetails> object.
 

@@ -43,8 +43,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       StartTime  => '1970-01-01T01:00:00',
       Dimensions => [
         {
-          Name  => 'MyDimensionName',     # min: 1, max: 255
           Value => 'MyDimensionValue',    # min: 1, max: 255
+          Name  => 'MyDimensionName',     # min: 1, max: 255
 
         },
         ...

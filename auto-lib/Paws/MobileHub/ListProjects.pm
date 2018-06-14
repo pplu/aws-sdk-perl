@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken = $ListProjectsResult->NextToken;
     my $Projects  = $ListProjectsResult->Projects;
+    my $NextToken = $ListProjectsResult->NextToken;
 
     # Returns a L<Paws::MobileHub::ListProjectsResult> object.
 

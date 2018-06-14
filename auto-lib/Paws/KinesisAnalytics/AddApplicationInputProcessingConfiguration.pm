@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InputId                      => 'MyId',
       InputProcessingConfiguration => {
         InputLambdaProcessor => {
-          ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
           RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
+          ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
 
         },
 

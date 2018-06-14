@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Instances = $ListInstancesResponse->Instances;
     my $NextToken = $ListInstancesResponse->NextToken;
+    my $Instances = $ListInstancesResponse->Instances;
 
     # Returns a L<Paws::ServiceDiscovery::ListInstancesResponse> object.
 

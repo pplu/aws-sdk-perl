@@ -41,8 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Entitlements = $GetEntitlementsResult->Entitlements;
     my $NextToken    = $GetEntitlementsResult->NextToken;
+    my $Entitlements = $GetEntitlementsResult->Entitlements;
 
     # Returns a L<Paws::MarketplaceEntitlement::GetEntitlementsResult> object.
 

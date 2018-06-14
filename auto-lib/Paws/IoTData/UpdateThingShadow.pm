@@ -36,7 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Payload = $UpdateThingShadowResponse->Payload;
+    my $payload = $UpdateThingShadowResponse->payload;
 
     # Returns a L<Paws::IoTData::UpdateThingShadowResponse> object.
 

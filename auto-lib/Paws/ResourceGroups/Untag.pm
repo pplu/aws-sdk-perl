@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Arn  = $UntagOutput->Arn;
     my $Keys = $UntagOutput->Keys;
+    my $Arn  = $UntagOutput->Arn;
 
     # Returns a L<Paws::ResourceGroups::UntagOutput> object.
 

@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Bundles       = $GetBundlesResult->Bundles;
     my $NextPageToken = $GetBundlesResult->NextPageToken;
+    my $Bundles       = $GetBundlesResult->Bundles;
 
     # Returns a L<Paws::Lightsail::GetBundlesResult> object.
 

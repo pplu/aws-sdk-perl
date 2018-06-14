@@ -40,8 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $Description = $CancelJobResponse->Description;
-    my $JobArn      = $CancelJobResponse->JobArn;
     my $JobId       = $CancelJobResponse->JobId;
+    my $JobArn      = $CancelJobResponse->JobArn;
 
     # Returns a L<Paws::IoT::CancelJobResponse> object.
 

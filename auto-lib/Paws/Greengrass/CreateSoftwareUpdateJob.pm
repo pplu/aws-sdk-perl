@@ -45,8 +45,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $IotJobArn = $CreateSoftwareUpdateJobResponse->IotJobArn;
     my $IotJobId  = $CreateSoftwareUpdateJobResponse->IotJobId;
+    my $IotJobArn = $CreateSoftwareUpdateJobResponse->IotJobArn;
 
     # Returns a L<Paws::Greengrass::CreateSoftwareUpdateJobResponse> object.
 

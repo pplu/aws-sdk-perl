@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $LaunchPathSummaries = $ListLaunchPathsOutput->LaunchPathSummaries;
     my $NextPageToken       = $ListLaunchPathsOutput->NextPageToken;
+    my $LaunchPathSummaries = $ListLaunchPathsOutput->LaunchPathSummaries;
 
     # Returns a L<Paws::ServiceCatalog::ListLaunchPathsOutput> object.
 

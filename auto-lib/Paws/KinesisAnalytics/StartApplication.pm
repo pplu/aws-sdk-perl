@@ -32,11 +32,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ApplicationName     => 'MyApplicationName',
       InputConfigurations => [
         {
-          Id                                 => 'MyId',    # min: 1, max: 50
           InputStartingPositionConfiguration => {
             InputStartingPosition =>
               'NOW',   # values: NOW, TRIM_HORIZON, LAST_STOPPED_POINT; OPTIONAL
           },
+          Id => 'MyId',    # min: 1, max: 50
 
         },
         ...

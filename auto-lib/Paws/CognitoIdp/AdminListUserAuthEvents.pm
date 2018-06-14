@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $AuthEvents = $AdminListUserAuthEventsResponse->AuthEvents;
     my $NextToken  = $AdminListUserAuthEventsResponse->NextToken;
+    my $AuthEvents = $AdminListUserAuthEventsResponse->AuthEvents;
 
     # Returns a L<Paws::CognitoIdp::AdminListUserAuthEventsResponse> object.
 

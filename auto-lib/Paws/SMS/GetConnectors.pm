@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ConnectorList = $GetConnectorsResponse->ConnectorList;
     my $NextToken     = $GetConnectorsResponse->NextToken;
+    my $ConnectorList = $GetConnectorsResponse->ConnectorList;
 
     # Returns a L<Paws::SMS::GetConnectorsResponse> object.
 

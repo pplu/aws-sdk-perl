@@ -29,8 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeLimitsOutput = $kinesis->DescribeLimits();
 
     # Results:
-    my $OpenShardCount = $DescribeLimitsOutput->OpenShardCount;
     my $ShardLimit     = $DescribeLimitsOutput->ShardLimit;
+    my $OpenShardCount = $DescribeLimitsOutput->OpenShardCount;
 
     # Returns a L<Paws::Kinesis::DescribeLimitsOutput> object.
 

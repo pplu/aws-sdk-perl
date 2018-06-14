@@ -46,8 +46,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Marker = $DescribeTapesOutput->Marker;
     my $Tapes  = $DescribeTapesOutput->Tapes;
+    my $Marker = $DescribeTapesOutput->Marker;
 
     # Returns a L<Paws::StorageGateway::DescribeTapesOutput> object.
 

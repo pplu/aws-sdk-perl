@@ -32,11 +32,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       GlobalTableName => 'MyTableName',
       ReplicaUpdates  => [
         {
-          Create => {
+          Delete => {
             RegionName => 'MyRegionName',
 
           },    # OPTIONAL
-          Delete => {
+          Create => {
             RegionName => 'MyRegionName',
 
           },    # OPTIONAL

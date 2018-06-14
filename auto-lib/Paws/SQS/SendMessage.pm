@@ -54,6 +54,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $MD5OfMessageBody       = $SendMessageResult->MD5OfMessageBody;
     my $MessageId              = $SendMessageResult->MessageId;
     my $SequenceNumber         = $SendMessageResult->SequenceNumber;
+    my $MD5OfMessageBody       = $SendMessageResult->MD5OfMessageBody;
+    my $MessageId              = $SendMessageResult->MessageId;
 
     # Returns a L<Paws::SQS::SendMessageResult> object.
 

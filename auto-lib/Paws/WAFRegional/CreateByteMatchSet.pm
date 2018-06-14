@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ByteMatchSet = $CreateByteMatchSetResponse->ByteMatchSet;
     my $ChangeToken  = $CreateByteMatchSetResponse->ChangeToken;
+    my $ByteMatchSet = $CreateByteMatchSetResponse->ByteMatchSet;
 
     # Returns a L<Paws::WAFRegional::CreateByteMatchSetResponse> object.
 

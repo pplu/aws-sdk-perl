@@ -46,8 +46,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Key        => 'MyString',
             MapEntries => [
               {
-                Key    => 'MyString',
                 Values => [ 'MyString', ... ],    # OPTIONAL
+                Key => 'MyString',
               },
               ...
             ],                                    # OPTIONAL
@@ -59,8 +59,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       HITLayoutId         => 'MyEntityId',    # OPTIONAL
       HITLayoutParameters => [
         {
-          Name  => 'MyString',
           Value => 'MyString',
+          Name  => 'MyString',
 
         },
         ...
@@ -72,8 +72,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Key        => 'MyString',
             MapEntries => [
               {
-                Key    => 'MyString',
                 Values => [ 'MyString', ... ],    # OPTIONAL
+                Key => 'MyString',
               },
               ...
             ],                                    # OPTIONAL
