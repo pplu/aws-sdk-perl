@@ -33,23 +33,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To terminate an environment
     # The following operation terminates an Elastic Beanstalk environment named
     # my-env:
-    my $EnvironmentDescription =
-      $elasticbeanstalk->TerminateEnvironment( 'EnvironmentName' => 'my-env' );
+    my $EnvironmentDescription = $elasticbeanstalk->TerminateEnvironment(
+      {
+        'EnvironmentName' => 'my-env'
+      }
+    );
 
     # Results:
+    my $Tier            = $EnvironmentDescription->Tier;
+    my $DateCreated     = $EnvironmentDescription->DateCreated;
+    my $EnvironmentName = $EnvironmentDescription->EnvironmentName;
+    my $Status          = $EnvironmentDescription->Status;
+    my $CNAME           = $EnvironmentDescription->CNAME;
     my $AbortableOperationInProgress =
       $EnvironmentDescription->AbortableOperationInProgress;
-    my $ApplicationName   = $EnvironmentDescription->ApplicationName;
-    my $CNAME             = $EnvironmentDescription->CNAME;
-    my $DateCreated       = $EnvironmentDescription->DateCreated;
-    my $DateUpdated       = $EnvironmentDescription->DateUpdated;
     my $EndpointURL       = $EnvironmentDescription->EndpointURL;
     my $EnvironmentId     = $EnvironmentDescription->EnvironmentId;
-    my $EnvironmentName   = $EnvironmentDescription->EnvironmentName;
     my $Health            = $EnvironmentDescription->Health;
+    my $ApplicationName   = $EnvironmentDescription->ApplicationName;
     my $SolutionStackName = $EnvironmentDescription->SolutionStackName;
-    my $Status            = $EnvironmentDescription->Status;
-    my $Tier              = $EnvironmentDescription->Tier;
+    my $DateUpdated       = $EnvironmentDescription->DateUpdated;
 
     # Returns a L<Paws::ElasticBeanstalk::EnvironmentDescription> object.
 
@@ -106,7 +109,7 @@ environment, but the AWS resources continue to operate.
 =back
 
 For more information, see the AWS Elastic Beanstalk User Guide.
-(https://docs.aws.amazon.com/elasticbeanstalk/latest/ug/)
+(http://docs.aws.amazon.com/elasticbeanstalk/latest/ug/)
 
 Default: C<true>
 

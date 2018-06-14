@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextMarker = $ListRuleGroupsResponse->NextMarker;
     my $RuleGroups = $ListRuleGroupsResponse->RuleGroups;
+    my $NextMarker = $ListRuleGroupsResponse->NextMarker;
 
     # Returns a L<Paws::WAFRegional::ListRuleGroupsResponse> object.
 

@@ -33,9 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateUserDefinedFunctionResponse = $glue->UpdateUserDefinedFunction(
       DatabaseName  => 'MyNameString',
       FunctionInput => {
-        ClassName    => 'MyNameString',    # min: 1, max: 255
         FunctionName => 'MyNameString',    # min: 1, max: 255
-        OwnerName    => 'MyNameString',    # min: 1, max: 255
         OwnerType    => 'USER',            # values: USER, ROLE, GROUP; OPTIONAL
         ResourceUris => [
           {
@@ -44,6 +42,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],                              # max: 1000; OPTIONAL
+        ClassName => 'MyNameString',    # min: 1, max: 255
+        OwnerName => 'MyNameString',    # min: 1, max: 255
       },
       FunctionName => 'MyNameString',
       CatalogId    => 'MyCatalogIdString',    # OPTIONAL
@@ -58,7 +58,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head2 CatalogId => Str
 
 The ID of the Data Catalog where the function to be updated is located.
-If none is provided, the AWS account ID is used by default.
+If none is supplied, the AWS account ID is used by default.
 
 
 
@@ -71,7 +71,7 @@ located.
 
 =head2 B<REQUIRED> FunctionInput => L<Paws::Glue::UserDefinedFunctionInput>
 
-A C<FunctionInput> object that redefines the function in the Data
+A C<FunctionInput> object that re-defines the function in the Data
 Catalog.
 
 

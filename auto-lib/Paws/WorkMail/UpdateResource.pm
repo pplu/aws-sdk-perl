@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ResourceId     => 'MyResourceId',
       BookingOptions => {
         AutoAcceptRequests             => 1,    # OPTIONAL
-        AutoDeclineConflictingRequests => 1,    # OPTIONAL
         AutoDeclineRecurringRequests   => 1,    # OPTIONAL
+        AutoDeclineConflictingRequests => 1,    # OPTIONAL
       },    # OPTIONAL
       Name => 'MyResourceName',    # OPTIONAL
     );

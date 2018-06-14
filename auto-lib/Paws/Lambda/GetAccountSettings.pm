@@ -32,8 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $GetAccountSettingsResponse = $lambda->GetAccountSettings();
 
     # Results:
-    my $AccountLimit = $GetAccountSettingsResponse->AccountLimit;
     my $AccountUsage = $GetAccountSettingsResponse->AccountUsage;
+    my $AccountLimit = $GetAccountSettingsResponse->AccountLimit;
 
     # Returns a L<Paws::Lambda::GetAccountSettingsResponse> object.
 

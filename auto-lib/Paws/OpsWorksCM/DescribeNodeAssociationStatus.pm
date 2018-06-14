@@ -36,10 +36,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $EngineAttributes =
-      $DescribeNodeAssociationStatusResponse->EngineAttributes;
     my $NodeAssociationStatus =
       $DescribeNodeAssociationStatusResponse->NodeAssociationStatus;
+    my $EngineAttributes =
+      $DescribeNodeAssociationStatusResponse->EngineAttributes;
 
   # Returns a L<Paws::OpsWorksCM::DescribeNodeAssociationStatusResponse> object.
 

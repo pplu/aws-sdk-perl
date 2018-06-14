@@ -33,57 +33,59 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # This example adds three new items to the Music table using a batch of three
    # PutItem requests.
     my $BatchWriteItemOutput = $dynamodb->BatchWriteItem(
-      'RequestItems' => {
-        'Music' => [
+      {
+        'RequestItems' => {
+          'Music' => [
 
-          {
-            'PutRequest' => {
-              'Item' => {
-                'AlbumTitle' => {
-                  'S' => 'Somewhat Famous'
-                },
-                'Artist' => {
-                  'S' => 'No One You Know'
-                },
-                'SongTitle' => {
-                  'S' => 'Call Me Today'
+            {
+              'PutRequest' => {
+                'Item' => {
+                  'SongTitle' => {
+                    'S' => 'Call Me Today'
+                  },
+                  'AlbumTitle' => {
+                    'S' => 'Somewhat Famous'
+                  },
+                  'Artist' => {
+                    'S' => 'No One You Know'
+                  }
+                }
+              }
+            },
+
+            {
+              'PutRequest' => {
+                'Item' => {
+                  'SongTitle' => {
+                    'S' => 'Happy Day'
+                  },
+                  'AlbumTitle' => {
+                    'S' => 'Songs About Life'
+                  },
+                  'Artist' => {
+                    'S' => 'Acme Band'
+                  }
+                }
+              }
+            },
+
+            {
+              'PutRequest' => {
+                'Item' => {
+                  'SongTitle' => {
+                    'S' => 'Scared of My Shadow'
+                  },
+                  'AlbumTitle' => {
+                    'S' => 'Blue Sky Blues'
+                  },
+                  'Artist' => {
+                    'S' => 'No One You Know'
+                  }
                 }
               }
             }
-          },
-
-          {
-            'PutRequest' => {
-              'Item' => {
-                'AlbumTitle' => {
-                  'S' => 'Songs About Life'
-                },
-                'Artist' => {
-                  'S' => 'Acme Band'
-                },
-                'SongTitle' => {
-                  'S' => 'Happy Day'
-                }
-              }
-            }
-          },
-
-          {
-            'PutRequest' => {
-              'Item' => {
-                'AlbumTitle' => {
-                  'S' => 'Blue Sky Blues'
-                },
-                'Artist' => {
-                  'S' => 'No One You Know'
-                },
-                'SongTitle' => {
-                  'S' => 'Scared of My Shadow'
-                }
-              }
-            }
-          }
-        ]
+          ]
+        }
       }
     );
 
@@ -133,8 +135,8 @@ C<Item> - A map of attributes and their values. Each entry in this map
 consists of an attribute name and an attribute value. Attribute values
 must not be null; string and binary type attributes must have lengths
 greater than zero; and set type attributes must not be empty. Requests
-that contain empty values are rejected with a C<ValidationException>
-exception.
+that contain empty values will be rejected with a
+C<ValidationException> exception.
 
 If you specify any attributes that are part of an index key, then the
 data types for those attributes must match those of the schema in the

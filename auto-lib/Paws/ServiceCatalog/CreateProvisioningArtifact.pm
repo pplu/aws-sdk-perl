@@ -37,21 +37,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Info => {
           'MyProvisioningArtifactInfoKey' => 'MyProvisioningArtifactInfoValue',
         },    # min: 1, max: 100
-        Description => 'MyProvisioningArtifactDescription',    # OPTIONAL
-        DisableTemplateValidation => 1,                               # OPTIONAL
-        Name                      => 'MyProvisioningArtifactName',    # OPTIONAL
-        Type                      => 'CLOUD_FORMATION_TEMPLATE'
+        Type => 'CLOUD_FORMATION_TEMPLATE'
         , # values: CLOUD_FORMATION_TEMPLATE, MARKETPLACE_AMI, MARKETPLACE_CAR; OPTIONAL
+        Name        => 'MyProvisioningArtifactName',           # OPTIONAL
+        Description => 'MyProvisioningArtifactDescription',    # OPTIONAL
       },
       ProductId      => 'MyId',
-      AcceptLanguage => 'MyAcceptLanguage',    # OPTIONAL
+      AcceptLanguage => 'MyAcceptLanguage',                    # OPTIONAL
       );
 
     # Results:
-    my $Info = $CreateProvisioningArtifactOutput->Info;
+    my $Status = $CreateProvisioningArtifactOutput->Status;
+    my $Info   = $CreateProvisioningArtifactOutput->Info;
     my $ProvisioningArtifactDetail =
       $CreateProvisioningArtifactOutput->ProvisioningArtifactDetail;
-    my $Status = $CreateProvisioningArtifactOutput->Status;
 
    # Returns a L<Paws::ServiceCatalog::CreateProvisioningArtifactOutput> object.
 

@@ -32,56 +32,44 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $VirtualInterface = $directconnect->AllocatePublicVirtualInterface(
       ConnectionId                        => 'MyConnectionId',
       NewPublicVirtualInterfaceAllocation => {
-        Asn                  => 1,
-        VirtualInterfaceName => 'MyVirtualInterfaceName',
-        Vlan                 => 1,
-        AddressFamily   => 'ipv4',                # values: ipv4, ipv6; OPTIONAL
-        AmazonAddress   => 'MyAmazonAddress',     # OPTIONAL
-        AuthKey         => 'MyBGPAuthKey',        # OPTIONAL
-        CustomerAddress => 'MyCustomerAddress',   # OPTIONAL
-        RouteFilterPrefixes => [
+        asn                  => 1,
+        virtualInterfaceName => 'MyVirtualInterfaceName',
+        vlan                 => 1,
+        routeFilterPrefixes  => [
           {
-            Cidr => 'MyCIDR',                     # OPTIONAL
+            cidr => 'MyCIDR',    # OPTIONAL
           },
           ...
-        ],                                        # OPTIONAL
-        Tags => [
-          {
-            Key   => 'MyTagKey',                  # min: 1, max: 128
-            Value => 'MyTagValue',                # max: 256; OPTIONAL
-          },
-          ...
-        ],                                        # min: 1; OPTIONAL
+        ],                       # OPTIONAL
+        amazonAddress   => 'MyAmazonAddress',     # OPTIONAL
+        authKey         => 'MyBGPAuthKey',        # OPTIONAL
+        customerAddress => 'MyCustomerAddress',   # OPTIONAL
+        addressFamily   => 'ipv4',                # values: ipv4, ipv6; OPTIONAL
       },
       OwnerAccount => 'MyOwnerAccount',
 
     );
 
     # Results:
-    my $AddressFamily          = $VirtualInterface->AddressFamily;
-    my $AmazonAddress          = $VirtualInterface->AmazonAddress;
-    my $AmazonSideAsn          = $VirtualInterface->AmazonSideAsn;
-    my $Asn                    = $VirtualInterface->Asn;
-    my $AuthKey                = $VirtualInterface->AuthKey;
-    my $AwsDeviceV2            = $VirtualInterface->AwsDeviceV2;
     my $BgpPeers               = $VirtualInterface->BgpPeers;
-    my $ConnectionId           = $VirtualInterface->ConnectionId;
-    my $CustomerAddress        = $VirtualInterface->CustomerAddress;
-    my $CustomerRouterConfig   = $VirtualInterface->CustomerRouterConfig;
-    my $DirectConnectGatewayId = $VirtualInterface->DirectConnectGatewayId;
-    my $JumboFrameCapable      = $VirtualInterface->JumboFrameCapable;
-    my $Location               = $VirtualInterface->Location;
-    my $Mtu                    = $VirtualInterface->Mtu;
-    my $OwnerAccount           = $VirtualInterface->OwnerAccount;
-    my $Region                 = $VirtualInterface->Region;
     my $RouteFilterPrefixes    = $VirtualInterface->RouteFilterPrefixes;
-    my $Tags                   = $VirtualInterface->Tags;
-    my $VirtualGatewayId       = $VirtualInterface->VirtualGatewayId;
-    my $VirtualInterfaceId     = $VirtualInterface->VirtualInterfaceId;
-    my $VirtualInterfaceName   = $VirtualInterface->VirtualInterfaceName;
-    my $VirtualInterfaceState  = $VirtualInterface->VirtualInterfaceState;
-    my $VirtualInterfaceType   = $VirtualInterface->VirtualInterfaceType;
+    my $CustomerRouterConfig   = $VirtualInterface->CustomerRouterConfig;
     my $Vlan                   = $VirtualInterface->Vlan;
+    my $VirtualInterfaceState  = $VirtualInterface->VirtualInterfaceState;
+    my $ConnectionId           = $VirtualInterface->ConnectionId;
+    my $AmazonAddress          = $VirtualInterface->AmazonAddress;
+    my $Asn                    = $VirtualInterface->Asn;
+    my $CustomerAddress        = $VirtualInterface->CustomerAddress;
+    my $OwnerAccount           = $VirtualInterface->OwnerAccount;
+    my $Location               = $VirtualInterface->Location;
+    my $AmazonSideAsn          = $VirtualInterface->AmazonSideAsn;
+    my $VirtualInterfaceType   = $VirtualInterface->VirtualInterfaceType;
+    my $DirectConnectGatewayId = $VirtualInterface->DirectConnectGatewayId;
+    my $VirtualInterfaceName   = $VirtualInterface->VirtualInterfaceName;
+    my $VirtualInterfaceId     = $VirtualInterface->VirtualInterfaceId;
+    my $AddressFamily          = $VirtualInterface->AddressFamily;
+    my $VirtualGatewayId       = $VirtualInterface->VirtualGatewayId;
+    my $AuthKey                = $VirtualInterface->AuthKey;
 
     # Returns a L<Paws::DirectConnect::VirtualInterface> object.
 
@@ -93,20 +81,26 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =head2 B<REQUIRED> ConnectionId => Str
 
-The ID of the connection on which the public virtual interface is
-provisioned.
+The connection ID on which the public virtual interface is provisioned.
+
+Default: None
 
 
 
 =head2 B<REQUIRED> NewPublicVirtualInterfaceAllocation => L<Paws::DirectConnect::NewPublicVirtualInterfaceAllocation>
 
-Information about the public virtual interface.
+Detailed information for the public virtual interface to be
+provisioned.
+
+Default: None
 
 
 
 =head2 B<REQUIRED> OwnerAccount => Str
 
-The ID of the AWS account that owns the public virtual interface.
+The AWS account that will own the new public virtual interface.
+
+Default: None
 
 
 

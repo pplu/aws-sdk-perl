@@ -45,7 +45,8 @@ method.
 
 =head2 VpceConfigurationArns => ArrayRef[Str|Undef]
 
-  An array of ARNs included in the VPC endpoint configuration.
+  An array of Amazon Resource Names (ARNs) included in the VPC endpoint
+configuration.
 
 
 

@@ -39,8 +39,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following command sets the password policy to require a minimum length
     # of eight characters and to require one or more numbers in the password:
     $iam->UpdateAccountPasswordPolicy(
-      'MinimumPasswordLength' => 8,
-      'RequireNumbers'        => 1
+      {
+        'RequireNumbers'        => 1,
+        'MinimumPasswordLength' => 8
+      }
     );
 
 
@@ -55,7 +57,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam
 Allows all IAM users in your account to use the AWS Management Console
 to change their own passwords. For more information, see Letting IAM
 Users Change Their Own Passwords
-(https://docs.aws.amazon.com/IAM/latest/UserGuide/HowToPwdIAMUser.html)
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/HowToPwdIAMUser.html)
 in the I<IAM User Guide>.
 
 If you do not specify a value for this parameter, then the operation

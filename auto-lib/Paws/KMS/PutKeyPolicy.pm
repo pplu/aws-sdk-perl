@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To attach a key policy to a customer master key (CMK)
     # The following example attaches a key policy to the specified CMK.
     $kms->PutKeyPolicy(
-      'KeyId'  => '1234abcd-12ab-34cd-56ef-1234567890ab',
-      'Policy' => '{
+      {
+        'Policy' => '{
     "Version": "2012-10-17",
     "Id": "custom-policy-2016-12-07",
     "Statement": [
@@ -108,7 +108,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     ]
 }
 ',
-      'PolicyName' => 'default'
+        'KeyId'      => '1234abcd-12ab-34cd-56ef-1234567890ab',
+        'PolicyName' => 'default'
+      }
     );
 
 
@@ -127,7 +129,7 @@ Setting this value to true increases the risk that the CMK becomes
 unmanageable. Do not set this value to true indiscriminately.
 
 For more information, refer to the scenario in the Default Key Policy
-(https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam)
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam)
 section in the I<AWS Key Management Service Developer Guide>.
 
 Use this parameter only when you intend to prevent the principal that
@@ -178,7 +180,7 @@ policy must allow the principal that is making the C<PutKeyPolicy>
 request to make a subsequent C<PutKeyPolicy> request on the CMK. This
 reduces the risk that the CMK becomes unmanageable. For more
 information, refer to the scenario in the Default Key Policy
-(https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam)
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam)
 section of the I<AWS Key Management Service Developer Guide>.
 
 =item *
@@ -190,15 +192,12 @@ you might need to enforce a delay before including the new principal in
 a key policy because the new principal might not be immediately visible
 to AWS KMS. For more information, see Changes that I make are not
 always immediately visible
-(https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency)
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency)
 in the I<AWS Identity and Access Management User Guide>.
 
 =back
 
-The key policy cannot exceed 32 kilobytes (32768 bytes). For more
-information, see Resource Quotas
-(https://docs.aws.amazon.com/kms/latest/developerguide/resource-limits.html)
-in the I<AWS Key Management Service Developer Guide>.
+The key policy size limit is 32 kilobytes (32768 bytes).
 
 
 

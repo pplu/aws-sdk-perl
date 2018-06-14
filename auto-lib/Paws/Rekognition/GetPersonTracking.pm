@@ -38,11 +38,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $JobStatus     = $GetPersonTrackingResponse->JobStatus;
     my $NextToken     = $GetPersonTrackingResponse->NextToken;
     my $Persons       = $GetPersonTrackingResponse->Persons;
-    my $StatusMessage = $GetPersonTrackingResponse->StatusMessage;
     my $VideoMetadata = $GetPersonTrackingResponse->VideoMetadata;
+    my $JobStatus     = $GetPersonTrackingResponse->JobStatus;
+    my $StatusMessage = $GetPersonTrackingResponse->StatusMessage;
 
     # Returns a L<Paws::Rekognition::GetPersonTrackingResponse> object.
 
@@ -70,9 +70,9 @@ value you can specify is 1000. If you specify a value greater than
 =head2 NextToken => Str
 
 If the previous response was incomplete (because there are more persons
-to retrieve), Amazon Rekognition Video returns a pagination token in
-the response. You can use this pagination token to retrieve the next
-set of persons.
+to retrieve), Rekognition Video returns a pagination token in the
+response. You can use this pagination token to retrieve the next set of
+persons.
 
 
 

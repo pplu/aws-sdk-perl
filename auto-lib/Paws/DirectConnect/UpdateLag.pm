@@ -36,23 +36,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $AllowsHostedConnections = $Lag->AllowsHostedConnections;
-    my $AwsDevice               = $Lag->AwsDevice;
-    my $AwsDeviceV2             = $Lag->AwsDeviceV2;
     my $Connections             = $Lag->Connections;
-    my $ConnectionsBandwidth    = $Lag->ConnectionsBandwidth;
-    my $HasLogicalRedundancy    = $Lag->HasLogicalRedundancy;
-    my $JumboFrameCapable       = $Lag->JumboFrameCapable;
-    my $LagId                   = $Lag->LagId;
     my $LagName                 = $Lag->LagName;
     my $LagState                = $Lag->LagState;
-    my $Location                = $Lag->Location;
-    my $MinimumLinks            = $Lag->MinimumLinks;
     my $NumberOfConnections     = $Lag->NumberOfConnections;
+    my $MinimumLinks            = $Lag->MinimumLinks;
+    my $AwsDevice               = $Lag->AwsDevice;
+    my $AllowsHostedConnections = $Lag->AllowsHostedConnections;
     my $OwnerAccount            = $Lag->OwnerAccount;
-    my $ProviderName            = $Lag->ProviderName;
+    my $LagId                   = $Lag->LagId;
+    my $Location                = $Lag->Location;
+    my $ConnectionsBandwidth    = $Lag->ConnectionsBandwidth;
     my $Region                  = $Lag->Region;
-    my $Tags                    = $Lag->Tags;
 
     # Returns a L<Paws::DirectConnect::Lag> object.
 
@@ -64,13 +59,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =head2 B<REQUIRED> LagId => Str
 
-The ID of the LAG.
+The ID of the LAG to update.
+
+Example: dxlag-abc123
+
+Default: None
 
 
 
 =head2 LagName => Str
 
-The name of the LAG.
+The name for the LAG.
+
+Example: "C<3x10G LAG to AWS>"
+
+Default: None
 
 
 
@@ -78,6 +81,8 @@ The name of the LAG.
 
 The minimum number of physical connections that must be operational for
 the LAG itself to be operational.
+
+Default: None
 
 
 

@@ -41,11 +41,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $NextToken =
+      $DescribeConfigurationAggregatorSourcesStatusResponse->NextToken;
     my $AggregatedSourceStatusList =
       $DescribeConfigurationAggregatorSourcesStatusResponse
       ->AggregatedSourceStatusList;
-    my $NextToken =
-      $DescribeConfigurationAggregatorSourcesStatusResponse->NextToken;
 
 # Returns a L<Paws::Config::DescribeConfigurationAggregatorSourcesStatusResponse> object.
 

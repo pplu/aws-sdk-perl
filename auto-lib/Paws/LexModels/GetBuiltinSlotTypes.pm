@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken = $GetBuiltinSlotTypesResponse->NextToken;
     my $SlotTypes = $GetBuiltinSlotTypesResponse->SlotTypes;
+    my $NextToken = $GetBuiltinSlotTypesResponse->NextToken;
 
     # Returns a L<Paws::LexModels::GetBuiltinSlotTypesResponse> object.
 

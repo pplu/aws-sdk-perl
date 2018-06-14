@@ -38,19 +38,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # create volume permission for a user with the account ID ``123456789012``.
     # If the command succeeds, no output is returned.
     $ec2->ModifySnapshotAttribute(
-      'Attribute'     => 'createVolumePermission',
-      'OperationType' => 'remove',
-      'SnapshotId'    => 'snap-1234567890abcdef0',
-      'UserIds'       => [123456789012]
+      {
+        'OperationType' => 'remove',
+        'SnapshotId'    => 'snap-1234567890abcdef0',
+        'Attribute'     => 'createVolumePermission',
+        'UserIds'       => [123456789012]
+      }
     );
 
     # To make a snapshot public
     # This example makes the snapshot ``snap-1234567890abcdef0`` public.
     $ec2->ModifySnapshotAttribute(
-      'Attribute'     => 'createVolumePermission',
-      'GroupNames'    => ['all'],
-      'OperationType' => 'add',
-      'SnapshotId'    => 'snap-1234567890abcdef0'
+      {
+        'OperationType' => 'add',
+        'GroupNames'    => ['all'],
+        'SnapshotId'    => 'snap-1234567890abcdef0',
+        'Attribute'     => 'createVolumePermission'
+      }
     );
 
 
@@ -62,8 +66,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 Attribute => Str
 
-The snapshot attribute to modify. Only volume creation permissions can
-be modified.
+The snapshot attribute to modify.
+
+Only volume creation permissions may be modified at the customer level.
 
 Valid values are: C<"productCodes">, C<"createVolumePermission">
 

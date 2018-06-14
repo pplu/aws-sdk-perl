@@ -30,14 +30,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $lightsail = Paws->service('Lightsail');
     my $CreateDomainEntryResult = $lightsail->CreateDomainEntry(
       DomainEntry => {
-        Id      => 'MyNonEmptyString',    # OPTIONAL
-        IsAlias => 1,                     # OPTIONAL
-        Name    => 'MyDomainName',        # OPTIONAL
-        Options => {
+        target  => 'Mystring',             # OPTIONAL
+        id      => 'MyNonEmptyString',     # OPTIONAL
+        name    => 'MyDomainName',         # OPTIONAL
+        type    => 'MyDomainEntryType',    # OPTIONAL
+        options => {
           'MyDomainEntryOptionsKeys' => 'Mystring',    # , value: OPTIONAL
         },    # OPTIONAL
-        Target => 'Mystring',             # OPTIONAL
-        Type   => 'MyDomainEntryType',    # OPTIONAL
+        isAlias => 1,    # OPTIONAL
       },
       DomainName => 'MyDomainName',
 

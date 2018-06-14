@@ -33,29 +33,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       VpcLinkId       => 'MyString',
       PatchOperations => [
         {
-          From => 'MyString',
-          Op =>
+          from  => 'MyString',
+          value => 'MyString',
+          path  => 'MyString',
+          op =>
             'add',    # values: add, remove, replace, move, copy, test; OPTIONAL
-          Path  => 'MyString',
-          Value => 'MyString',
         },
         ...
       ],              # OPTIONAL
     );
 
     # Results:
-    my $Description   = $VpcLink->Description;
-    my $Id            = $VpcLink->Id;
-    my $Name          = $VpcLink->Name;
-    my $Status        = $VpcLink->Status;
-    my $StatusMessage = $VpcLink->StatusMessage;
-    my $Tags          = $VpcLink->Tags;
     my $TargetArns    = $VpcLink->TargetArns;
+    my $Id            = $VpcLink->Id;
+    my $Status        = $VpcLink->Status;
+    my $Description   = $VpcLink->Description;
+    my $Name          = $VpcLink->Name;
+    my $StatusMessage = $VpcLink->StatusMessage;
 
     # Returns a L<Paws::ApiGateway::VpcLink> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/UpdateVpcLink>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>
 
 =head1 ATTRIBUTES
 

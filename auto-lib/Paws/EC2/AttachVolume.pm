@@ -34,17 +34,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example attaches a volume (``vol-1234567890abcdef0``) to an instance
     # (``i-01474ef662b89480``) as ``/dev/sdf``.
     my $VolumeAttachment = $ec2->AttachVolume(
-      'Device'     => '/dev/sdf',
-      'InstanceId' => 'i-01474ef662b89480',
-      'VolumeId'   => 'vol-1234567890abcdef0'
+      {
+        'InstanceId' => 'i-01474ef662b89480',
+        'Device'     => '/dev/sdf',
+        'VolumeId'   => 'vol-1234567890abcdef0'
+      }
     );
 
     # Results:
-    my $AttachTime = $VolumeAttachment->AttachTime;
-    my $Device     = $VolumeAttachment->Device;
     my $InstanceId = $VolumeAttachment->InstanceId;
-    my $State      = $VolumeAttachment->State;
+    my $Device     = $VolumeAttachment->Device;
+    my $AttachTime = $VolumeAttachment->AttachTime;
     my $VolumeId   = $VolumeAttachment->VolumeId;
+    my $State      = $VolumeAttachment->State;
 
     # Returns a L<Paws::EC2::VolumeAttachment> object.
 

@@ -50,9 +50,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Events             = $FilterLogEventsResponse->Events;
-    my $NextToken          = $FilterLogEventsResponse->NextToken;
     my $SearchedLogStreams = $FilterLogEventsResponse->SearchedLogStreams;
+    my $NextToken          = $FilterLogEventsResponse->NextToken;
+    my $Events             = $FilterLogEventsResponse->Events;
 
     # Returns a L<Paws::CloudWatchLogs::FilterLogEventsResponse> object.
 

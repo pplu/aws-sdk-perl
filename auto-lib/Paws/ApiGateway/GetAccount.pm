@@ -31,14 +31,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $ApiKeyVersion     = $Account->ApiKeyVersion;
-    my $CloudwatchRoleArn = $Account->CloudwatchRoleArn;
     my $Features          = $Account->Features;
+    my $CloudwatchRoleArn = $Account->CloudwatchRoleArn;
     my $ThrottleSettings  = $Account->ThrottleSettings;
 
     # Returns a L<Paws::ApiGateway::Account> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/GetAccount>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>
 
 =head1 ATTRIBUTES
 

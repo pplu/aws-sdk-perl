@@ -34,21 +34,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Arn                   = $DeleteChannelResponse->Arn;
-    my $ChannelClass          = $DeleteChannelResponse->ChannelClass;
-    my $Destinations          = $DeleteChannelResponse->Destinations;
-    my $EgressEndpoints       = $DeleteChannelResponse->EgressEndpoints;
-    my $EncoderSettings       = $DeleteChannelResponse->EncoderSettings;
     my $Id                    = $DeleteChannelResponse->Id;
-    my $InputAttachments      = $DeleteChannelResponse->InputAttachments;
+    my $EncoderSettings       = $DeleteChannelResponse->EncoderSettings;
     my $InputSpecification    = $DeleteChannelResponse->InputSpecification;
-    my $LogLevel              = $DeleteChannelResponse->LogLevel;
-    my $Name                  = $DeleteChannelResponse->Name;
-    my $PipelineDetails       = $DeleteChannelResponse->PipelineDetails;
-    my $PipelinesRunningCount = $DeleteChannelResponse->PipelinesRunningCount;
-    my $RoleArn               = $DeleteChannelResponse->RoleArn;
     my $State                 = $DeleteChannelResponse->State;
-    my $Tags                  = $DeleteChannelResponse->Tags;
+    my $LogLevel              = $DeleteChannelResponse->LogLevel;
+    my $RoleArn               = $DeleteChannelResponse->RoleArn;
+    my $EgressEndpoints       = $DeleteChannelResponse->EgressEndpoints;
+    my $Destinations          = $DeleteChannelResponse->Destinations;
+    my $PipelinesRunningCount = $DeleteChannelResponse->PipelinesRunningCount;
+    my $Arn                   = $DeleteChannelResponse->Arn;
+    my $InputAttachments      = $DeleteChannelResponse->InputAttachments;
+    my $Name                  = $DeleteChannelResponse->Name;
 
     # Returns a L<Paws::MediaLive::DeleteChannelResponse> object.
 

@@ -33,15 +33,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $AllowClassicFlow = $IdentityPool->AllowClassicFlow;
     my $AllowUnauthenticatedIdentities =
       $IdentityPool->AllowUnauthenticatedIdentities;
     my $CognitoIdentityProviders  = $IdentityPool->CognitoIdentityProviders;
     my $DeveloperProviderName     = $IdentityPool->DeveloperProviderName;
+    my $OpenIdConnectProviderARNs = $IdentityPool->OpenIdConnectProviderARNs;
     my $IdentityPoolId            = $IdentityPool->IdentityPoolId;
     my $IdentityPoolName          = $IdentityPool->IdentityPoolName;
-    my $IdentityPoolTags          = $IdentityPool->IdentityPoolTags;
-    my $OpenIdConnectProviderARNs = $IdentityPool->OpenIdConnectProviderARNs;
     my $SamlProviderARNs          = $IdentityPool->SamlProviderARNs;
     my $SupportedLoginProviders   = $IdentityPool->SupportedLoginProviders;
 

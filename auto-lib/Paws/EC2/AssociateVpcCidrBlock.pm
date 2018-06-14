@@ -3,9 +3,6 @@ package Paws::EC2::AssociateVpcCidrBlock;
   use Moose;
   has AmazonProvidedIpv6CidrBlock => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'amazonProvidedIpv6CidrBlock' );
   has CidrBlock => (is => 'ro', isa => 'Str');
-  has Ipv6CidrBlock => (is => 'ro', isa => 'Str');
-  has Ipv6CidrBlockNetworkBorderGroup => (is => 'ro', isa => 'Str');
-  has Ipv6Pool => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'vpcId' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -33,20 +30,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $AssociateVpcCidrBlockResult = $ec2->AssociateVpcCidrBlock(
-      VpcId                           => 'MyVpcId',
-      AmazonProvidedIpv6CidrBlock     => 1,                    # OPTIONAL
-      CidrBlock                       => 'MyString',           # OPTIONAL
-      Ipv6CidrBlock                   => 'MyString',           # OPTIONAL
-      Ipv6CidrBlockNetworkBorderGroup => 'MyString',           # OPTIONAL
-      Ipv6Pool                        => 'MyIpv6PoolEc2Id',    # OPTIONAL
+      VpcId                       => 'MyString',
+      AmazonProvidedIpv6CidrBlock => 1,             # OPTIONAL
+      CidrBlock                   => 'MyString',    # OPTIONAL
     );
 
     # Results:
-    my $CidrBlockAssociation =
-      $AssociateVpcCidrBlockResult->CidrBlockAssociation;
+    my $VpcId = $AssociateVpcCidrBlockResult->VpcId;
     my $Ipv6CidrBlockAssociation =
       $AssociateVpcCidrBlockResult->Ipv6CidrBlockAssociation;
-    my $VpcId = $AssociateVpcCidrBlockResult->VpcId;
+    my $CidrBlockAssociation =
+      $AssociateVpcCidrBlockResult->CidrBlockAssociation;
 
     # Returns a L<Paws::EC2::AssociateVpcCidrBlockResult> object.
 
@@ -67,34 +61,6 @@ size of the CIDR block.
 =head2 CidrBlock => Str
 
 An IPv4 CIDR block to associate with the VPC.
-
-
-
-=head2 Ipv6CidrBlock => Str
-
-An IPv6 CIDR block from the IPv6 address pool. You must also specify
-C<Ipv6Pool> in the request.
-
-To let Amazon choose the IPv6 CIDR block for you, omit this parameter.
-
-
-
-=head2 Ipv6CidrBlockNetworkBorderGroup => Str
-
-The name of the location from which we advertise the IPV6 CIDR block.
-Use this parameter to limit the CiDR block to this location.
-
-You must set C<AmazonProvidedIpv6CidrBlock> to C<true> to use this
-parameter.
-
-You can have one IPv6 CIDR block association per network border group.
-
-
-
-=head2 Ipv6Pool => Str
-
-The ID of an IPv6 address pool from which to allocate the IPv6 CIDR
-block.
 
 
 

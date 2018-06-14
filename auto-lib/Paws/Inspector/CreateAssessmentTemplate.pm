@@ -35,19 +35,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Creates an assessment template for the assessment target that is specified
     # by the ARN of the assessment target.
     my $CreateAssessmentTemplateResponse = $inspector->CreateAssessmentTemplate(
-      'AssessmentTargetArn' =>
-        'arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX',
-      'AssessmentTemplateName' => 'ExampleAssessmentTemplate',
-      'DurationInSeconds'      => 180,
-      'RulesPackageArns' =>
-        ['arn:aws:inspector:us-west-2:758058086616:rulespackage/0-11B9DBXp'],
-      'UserAttributesForFindings' => [
+      {
+        'UserAttributesForFindings' => [
 
-        {
-          'Key'   => 'Example',
-          'Value' => 'example'
-        }
-      ]
+          {
+            'Value' => 'example',
+            'Key'   => 'Example'
+          }
+        ],
+        'AssessmentTemplateName' => 'ExampleAssessmentTemplate',
+        'DurationInSeconds'      => 180,
+        'RulesPackageArns' =>
+          ['arn:aws:inspector:us-west-2:758058086616:rulespackage/0-11B9DBXp'],
+        'AssessmentTargetArn' =>
+          'arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX'
+      }
     );
 
     # Results:
@@ -80,7 +82,8 @@ correspond to a particular assessment target must be unique.
 
 =head2 B<REQUIRED> DurationInSeconds => Int
 
-The duration of the assessment run in seconds.
+The duration of the assessment run in seconds. The default value is
+3600 seconds (one hour).
 
 
 

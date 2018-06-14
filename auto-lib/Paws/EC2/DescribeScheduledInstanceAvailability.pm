@@ -40,14 +40,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # schedule as an example.
     my $DescribeScheduledInstanceAvailabilityResult =
       $ec2->DescribeScheduledInstanceAvailability(
-      'FirstSlotStartTimeRange' => {
-        'EarliestTime' => '2016-01-31T00:00:00Z',
-        'LatestTime'   => '2016-01-31T04:00:00Z'
-      },
-      'Recurrence' => {
-        'Frequency'      => 'Weekly',
-        'Interval'       => 1,
-        'OccurrenceDays' => [1]
+      {
+        'FirstSlotStartTimeRange' => {
+          'LatestTime'   => '2016-01-31T04:00:00Z',
+          'EarliestTime' => '2016-01-31T00:00:00Z'
+        },
+        'Recurrence' => {
+          'Frequency'      => 'Weekly',
+          'Interval'       => 1,
+          'OccurrenceDays' => [1]
+        }
       }
       );
 
@@ -75,7 +77,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-The filters.
+One or more filters.
 
 =over
 

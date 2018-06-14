@@ -1,7 +1,6 @@
 
 package Paws::CodePipeline::PutWebhook;
   use Moose;
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has Webhook => (is => 'ro', isa => 'Paws::CodePipeline::WebhookDefinition', traits => ['NameInRequest'], request_name => 'webhook' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -30,34 +29,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $codepipeline = Paws->service('CodePipeline');
     my $PutWebhookOutput = $codepipeline->PutWebhook(
       Webhook => {
-        Authentication =>
-          'GITHUB_HMAC',    # values: GITHUB_HMAC, IP, UNAUTHENTICATED
-        AuthenticationConfiguration => {
-          AllowedIPRange => 'MyWebhookAuthConfigurationAllowedIPRange'
-          ,                 # min: 1, max: 100; OPTIONAL
-          SecretToken => 'MyWebhookAuthConfigurationSecretToken'
-          ,                 # min: 1, max: 100; OPTIONAL
-        },
-        Filters => [
+        filters => [
           {
-            JsonPath    => 'MyJsonPath',       # min: 1, max: 150
-            MatchEquals => 'MyMatchEquals',    # min: 1, max: 150; OPTIONAL
+            jsonPath    => 'MyJsonPath',       # min: 1, max: 150
+            matchEquals => 'MyMatchEquals',    # min: 1, max: 150; OPTIONAL
           },
           ...
         ],                                     # max: 5
-        Name           => 'MyWebhookName',     # min: 1, max: 100
-        TargetAction   => 'MyActionName',      # min: 1, max: 100
-        TargetPipeline => 'MyPipelineName',    # min: 1, max: 100
+        authentication =>
+          'GITHUB_HMAC',    # values: GITHUB_HMAC, IP, UNAUTHENTICATED
+        targetAction                => 'MyActionName',      # min: 1, max: 100
+        targetPipeline              => 'MyPipelineName',    # min: 1, max: 100
+        name                        => 'MyWebhookName',     # min: 1, max: 100
+        authenticationConfiguration => {
+          SecretToken => 'MyWebhookAuthConfigurationSecretToken'
+          ,    # min: 1, max: 100; OPTIONAL
+          AllowedIPRange => 'MyWebhookAuthConfigurationAllowedIPRange'
+          ,    # min: 1, max: 100; OPTIONAL
+        },
 
       },
-      Tags => [
-        {
-          Key   => 'MyTagKey',                 # min: 1, max: 128
-          Value => 'MyTagValue',               # max: 256
 
-        },
-        ...
-      ],                                       # OPTIONAL
     );
 
     # Results:
@@ -66,24 +58,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::CodePipeline::PutWebhookOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codepipeline/PutWebhook>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09>
 
 =head1 ATTRIBUTES
-
-
-=head2 Tags => ArrayRef[L<Paws::CodePipeline::Tag>]
-
-The tags for the webhook.
-
 
 
 =head2 B<REQUIRED> Webhook => L<Paws::CodePipeline::WebhookDefinition>
 
 The detail provided in an input file to create the webhook, such as the
 webhook name, the pipeline name, and the action name. Give the webhook
-a unique name that helps you identify it. You might name the webhook
-after the pipeline and action it targets so that you can easily
-recognize what it's used for later.
+a unique name which identifies the webhook being defined. You may
+choose to name the webhook after the pipeline and action it targets so
+that you can easily recognize what it's used for later.
 
 
 

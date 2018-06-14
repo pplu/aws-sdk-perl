@@ -33,9 +33,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following command changes the status of a signing certificate for a
     # user named Bob to Inactive.
     $iam->UpdateSigningCertificate(
-      'CertificateId' => 'TA7SMP42TDN5Z26OBPJE7EXAMPLE',
-      'Status'        => 'Inactive',
-      'UserName'      => 'Bob'
+      {
+        'UserName'      => 'Bob',
+        'Status'        => 'Inactive',
+        'CertificateId' => 'TA7SMP42TDN5Z26OBPJE7EXAMPLE'
+      }
     );
 
 
@@ -49,7 +51,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam
 
 The ID of the signing certificate you want to update.
 
-This parameter allows (through its regex pattern
+This parameter allows (per its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters that can
 consist of any upper or lowercased letter or digit.
 
@@ -67,7 +69,7 @@ Valid values are: C<"Active">, C<"Inactive">
 
 The name of the IAM user the signing certificate belongs to.
 
-This parameter allows (through its regex pattern
+This parameter allows (per its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
 also include any of the following characters: _+=,.@-

@@ -31,17 +31,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $PutEventSelectorsResponse = $cloudtrail->PutEventSelectors(
       EventSelectors => [
         {
-          DataResources => [
-            {
-              Type   => 'MyString',
-              Values => [ 'MyString', ... ],    # OPTIONAL
-            },
-            ...
-          ],                                    # OPTIONAL
-          ExcludeManagementEventSources => [ 'MyString', ... ],    # OPTIONAL
-          IncludeManagementEvents       => 1,                      # OPTIONAL
           ReadWriteType =>
             'ReadOnly',    # values: ReadOnly, WriteOnly, All; OPTIONAL
+          IncludeManagementEvents => 1,    # OPTIONAL
+          DataResources           => [
+            {
+              Type   => 'MyString',        # OPTIONAL
+              Values => [
+                'MyString', ...            # OPTIONAL
+              ],                           # OPTIONAL
+            },
+            ...
+          ],                               # OPTIONAL
         },
         ...
       ],
@@ -50,8 +51,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $EventSelectors = $PutEventSelectorsResponse->EventSelectors;
     my $TrailARN       = $PutEventSelectorsResponse->TrailARN;
+    my $EventSelectors = $PutEventSelectorsResponse->EventSelectors;
 
     # Returns a L<Paws::CloudTrail::PutEventSelectorsResponse> object.
 
@@ -101,7 +102,7 @@ Not be in IP address format (for example, 192.168.5.4)
 
 If you specify a trail ARN, it must be in the format:
 
-C<arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail>
+C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>
 
 
 

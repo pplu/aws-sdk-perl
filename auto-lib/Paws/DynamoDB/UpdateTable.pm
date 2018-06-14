@@ -2,11 +2,8 @@
 package Paws::DynamoDB::UpdateTable;
   use Moose;
   has AttributeDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::AttributeDefinition]');
-  has BillingMode => (is => 'ro', isa => 'Str');
   has GlobalSecondaryIndexUpdates => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::GlobalSecondaryIndexUpdate]');
   has ProvisionedThroughput => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughput');
-  has ReplicaUpdates => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::ReplicationGroupUpdate]');
-  has SSESpecification => (is => 'ro', isa => 'Paws::DynamoDB::SSESpecification');
   has StreamSpecification => (is => 'ro', isa => 'Paws::DynamoDB::StreamSpecification');
   has TableName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -38,11 +35,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # This example increases the provisioned read and write capacity on the Music
    # table.
     my $UpdateTableOutput = $dynamodb->UpdateTable(
-      'ProvisionedThroughput' => {
-        'ReadCapacityUnits'  => 10,
-        'WriteCapacityUnits' => 10
-      },
-      'TableName' => 'MusicCollection'
+      {
+        'TableName'             => 'MusicCollection',
+        'ProvisionedThroughput' => {
+          'ReadCapacityUnits'  => 10,
+          'WriteCapacityUnits' => 10
+        }
+      }
     );
 
     # Results:
@@ -64,35 +63,6 @@ C<AttributeDefinitions> must include the key element(s) of the new
 index.
 
 
-
-=head2 BillingMode => Str
-
-Controls how you are charged for read and write throughput and how you
-manage capacity. When switching from pay-per-request to provisioned
-capacity, initial provisioned capacity values must be set. The initial
-provisioned capacity values are estimated based on the consumed read
-and write capacity of your table and global secondary indexes over the
-past 30 minutes.
-
-=over
-
-=item *
-
-C<PROVISIONED> - We recommend using C<PROVISIONED> for predictable
-workloads. C<PROVISIONED> sets the billing mode to Provisioned Mode
-(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.Manual).
-
-=item *
-
-C<PAY_PER_REQUEST> - We recommend using C<PAY_PER_REQUEST> for
-unpredictable workloads. C<PAY_PER_REQUEST> sets the billing mode to
-On-Demand Mode
-(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.OnDemand).
-
-=back
-
-
-Valid values are: C<"PROVISIONED">, C<"PAY_PER_REQUEST">
 
 =head2 GlobalSecondaryIndexUpdates => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndexUpdate>]
 
@@ -116,11 +86,8 @@ C<Delete> - remove a global secondary index from the table.
 
 =back
 
-You can create or delete only one global secondary index per
-C<UpdateTable> operation.
-
 For more information, see Managing Global Secondary Indexes
-(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.OnlineOps.html)
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.OnlineOps.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 
@@ -132,30 +99,13 @@ index.
 
 
 
-=head2 ReplicaUpdates => ArrayRef[L<Paws::DynamoDB::ReplicationGroupUpdate>]
-
-A list of replica update actions (create, delete, or update) for the
-table.
-
-This property only applies to Version 2019.11.21
-(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
-of global tables.
-
-
-
-=head2 SSESpecification => L<Paws::DynamoDB::SSESpecification>
-
-The new server-side encryption settings for the specified table.
-
-
-
 =head2 StreamSpecification => L<Paws::DynamoDB::StreamSpecification>
 
 Represents the DynamoDB Streams configuration for the table.
 
-You receive a C<ResourceInUseException> if you try to enable a stream
-on a table that already has a stream, or if you try to disable a stream
-on a table that doesn't have a stream.
+You will receive a C<ResourceInUseException> if you attempt to enable a
+stream on a table that already has a stream, or if you attempt to
+disable a stream on a table which does not have a stream.
 
 
 

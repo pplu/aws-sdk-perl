@@ -1,13 +1,10 @@
 
 package Paws::Transcribe::StartTranscriptionJob;
   use Moose;
-  has JobExecutionSettings => (is => 'ro', isa => 'Paws::Transcribe::JobExecutionSettings');
   has LanguageCode => (is => 'ro', isa => 'Str', required => 1);
   has Media => (is => 'ro', isa => 'Paws::Transcribe::Media', required => 1);
-  has MediaFormat => (is => 'ro', isa => 'Str');
+  has MediaFormat => (is => 'ro', isa => 'Str', required => 1);
   has MediaSampleRateHertz => (is => 'ro', isa => 'Int');
-  has OutputBucketName => (is => 'ro', isa => 'Str');
-  has OutputEncryptionKMSKeyId => (is => 'ro', isa => 'Str');
   has Settings => (is => 'ro', isa => 'Paws::Transcribe::Settings');
   has TranscriptionJobName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -40,25 +37,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Media        => {
         MediaFileUri => 'MyUri',    # min: 1, max: 2000; OPTIONAL
       },
+      MediaFormat          => 'mp3',
       TranscriptionJobName => 'MyTranscriptionJobName',
-      JobExecutionSettings => {
-        AllowDeferredExecution => 1,                        # OPTIONAL
-        DataAccessRoleArn      => 'MyDataAccessRoleArn',    # OPTIONAL
-      },    # OPTIONAL
-      MediaFormat              => 'mp3',                   # OPTIONAL
-      MediaSampleRateHertz     => 1,                       # OPTIONAL
-      OutputBucketName         => 'MyOutputBucketName',    # OPTIONAL
-      OutputEncryptionKMSKeyId => 'MyKMSKeyId',            # OPTIONAL
-      Settings                 => {
-        ChannelIdentification  => 1,           # OPTIONAL
-        MaxAlternatives        => 1,           # min: 2, max: 10; OPTIONAL
-        MaxSpeakerLabels       => 1,           # min: 2, max: 10; OPTIONAL
-        ShowAlternatives       => 1,           # OPTIONAL
-        ShowSpeakerLabels      => 1,           # OPTIONAL
-        VocabularyFilterMethod => 'remove',    # values: remove, mask; OPTIONAL
-        VocabularyFilterName =>
-          'MyVocabularyFilterName',            # min: 1, max: 200; OPTIONAL
-        VocabularyName => 'MyVocabularyName',  # min: 1, max: 200; OPTIONAL
+      MediaSampleRateHertz => 1,                          # OPTIONAL
+      Settings             => {
+        VocabularyName    => 'MyVocabularyName',    # min: 1, max: 200; OPTIONAL
+        MaxSpeakerLabels  => 1,                     # min: 2, max: 10; OPTIONAL
+        ShowSpeakerLabels => 1,                     # OPTIONAL
       },    # OPTIONAL
     );
 
@@ -73,20 +58,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 =head1 ATTRIBUTES
 
 
-=head2 JobExecutionSettings => L<Paws::Transcribe::JobExecutionSettings>
-
-Provides information about how a transcription job is executed. Use
-this field to indicate that the job can be queued for deferred
-execution if the concurrency limit is reached and there are no slots
-available to immediately run the job.
-
-
-
 =head2 B<REQUIRED> LanguageCode => Str
 
 The language code for the language used in the input media file.
 
-Valid values are: C<"en-US">, C<"es-US">, C<"en-AU">, C<"fr-CA">, C<"en-GB">, C<"de-DE">, C<"pt-BR">, C<"fr-FR">, C<"it-IT">, C<"ko-KR">, C<"es-ES">, C<"en-IN">, C<"hi-IN">, C<"ar-SA">, C<"ru-RU">, C<"zh-CN">, C<"nl-NL">, C<"id-ID">, C<"ta-IN">, C<"fa-IR">, C<"en-IE">, C<"en-AB">, C<"en-WL">, C<"pt-PT">, C<"te-IN">, C<"tr-TR">, C<"de-CH">, C<"he-IL">, C<"ms-MY">, C<"ja-JP">, C<"ar-AE">
+Valid values are: C<"en-US">, C<"es-US">
 
 =head2 B<REQUIRED> Media => L<Paws::Transcribe::Media>
 
@@ -94,7 +70,7 @@ An object that describes the input media for a transcription job.
 
 
 
-=head2 MediaFormat => Str
+=head2 B<REQUIRED> MediaFormat => Str
 
 The format of the input media file.
 
@@ -103,84 +79,6 @@ Valid values are: C<"mp3">, C<"mp4">, C<"wav">, C<"flac">
 =head2 MediaSampleRateHertz => Int
 
 The sample rate, in Hertz, of the audio track in the input media file.
-
-If you do not specify the media sample rate, Amazon Transcribe
-determines the sample rate. If you specify the sample rate, it must
-match the sample rate detected by Amazon Transcribe. In most cases, you
-should leave the C<MediaSampleRateHertz> field blank and let Amazon
-Transcribe determine the sample rate.
-
-
-
-=head2 OutputBucketName => Str
-
-The location where the transcription is stored.
-
-If you set the C<OutputBucketName>, Amazon Transcribe puts the
-transcription in the specified S3 bucket. When you call the
-GetTranscriptionJob operation, the operation returns this location in
-the C<TranscriptFileUri> field. The S3 bucket must have permissions
-that allow Amazon Transcribe to put files in the bucket. For more
-information, see Permissions Required for IAM User Roles
-(https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user).
-
-You can specify an AWS Key Management Service (KMS) key to encrypt the
-output of your transcription using the C<OutputEncryptionKMSKeyId>
-parameter. If you don't specify a KMS key, Amazon Transcribe uses the
-default Amazon S3 key for server-side encryption of transcripts that
-are placed in your S3 bucket.
-
-If you don't set the C<OutputBucketName>, Amazon Transcribe generates a
-pre-signed URL, a shareable URL that provides secure access to your
-transcription, and returns it in the C<TranscriptFileUri> field. Use
-this URL to download the transcription.
-
-
-
-=head2 OutputEncryptionKMSKeyId => Str
-
-The Amazon Resource Name (ARN) of the AWS Key Management Service (KMS)
-key used to encrypt the output of the transcription job. The user
-calling the C<StartTranscriptionJob> operation must have permission to
-use the specified KMS key.
-
-You can use either of the following to identify a KMS key in the
-current account:
-
-=over
-
-=item *
-
-KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab"
-
-=item *
-
-KMS Key Alias: "alias/ExampleAlias"
-
-=back
-
-You can use either of the following to identify a KMS key in the
-current account or another account:
-
-=over
-
-=item *
-
-Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:region:account
-ID:key/1234abcd-12ab-34cd-56ef-1234567890ab"
-
-=item *
-
-ARN of a KMS Key Alias: "arn:aws:kms:region:account
-ID:alias/ExampleAlias"
-
-=back
-
-If you don't specify an encryption key, the output of the transcription
-job is encrypted with the default Amazon S3 key (SSE-S3).
-
-If you specify a KMS key to encrypt your output, you must also specify
-an output location in the C<OutputBucketName> parameter.
 
 
 
@@ -193,9 +91,7 @@ transcription job.
 
 =head2 B<REQUIRED> TranscriptionJobName => Str
 
-The name of the job. Note that you can't use the strings "." or ".." by
-themselves as the job name. The name must also be unique within an AWS
-account.
+The name of the job. The name must be unique within an AWS account.
 
 
 

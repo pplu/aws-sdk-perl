@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SubmitTaskStateChangeResponse = $ecs->SubmitTaskStateChange(
       Attachments => [
         {
-          AttachmentArn => 'MyString',
-          Status        => 'MyString',
+          attachmentArn => 'MyString',
+          status        => 'MyString',
 
         },
         ...
@@ -47,21 +47,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Cluster    => 'MyString',    # OPTIONAL
       Containers => [
         {
-          ContainerName   => 'MyString',
-          ExitCode        => 1,            # OPTIONAL
-          ImageDigest     => 'MyString',
-          NetworkBindings => [
+          reason          => 'MyString',
+          containerName   => 'MyString',
+          status          => 'MyString',
+          exitCode        => 1,            # OPTIONAL
+          networkBindings => [
             {
-              BindIP        => 'MyString',
-              ContainerPort => 1,            # OPTIONAL
-              HostPort      => 1,            # OPTIONAL
-              Protocol      => 'tcp',        # values: tcp, udp; OPTIONAL
+              protocol      => 'tcp',        # values: tcp, udp; OPTIONAL
+              bindIP        => 'MyString',
+              hostPort      => 1,            # OPTIONAL
+              containerPort => 1,            # OPTIONAL
             },
             ...
           ],                                 # OPTIONAL
-          Reason    => 'MyString',
-          RuntimeId => 'MyString',
-          Status    => 'MyString',
         },
         ...
       ],                                     # OPTIONAL
@@ -105,19 +103,19 @@ Any containers associated with the state change request.
 
 =head2 ExecutionStoppedAt => Str
 
-The Unix timestamp for when the task execution stopped.
+The Unix time stamp for when the task execution stopped.
 
 
 
 =head2 PullStartedAt => Str
 
-The Unix timestamp for when the container image pull began.
+The Unix time stamp for when the container image pull began.
 
 
 
 =head2 PullStoppedAt => Str
 
-The Unix timestamp for when the container image pull completed.
+The Unix time stamp for when the container image pull completed.
 
 
 

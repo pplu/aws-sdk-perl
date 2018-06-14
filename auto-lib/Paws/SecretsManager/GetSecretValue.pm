@@ -36,13 +36,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ARN           = $GetSecretValueResponse->ARN;
     my $CreatedDate   = $GetSecretValueResponse->CreatedDate;
-    my $Name          = $GetSecretValueResponse->Name;
+    my $ARN           = $GetSecretValueResponse->ARN;
+    my $VersionStages = $GetSecretValueResponse->VersionStages;
     my $SecretBinary  = $GetSecretValueResponse->SecretBinary;
     my $SecretString  = $GetSecretValueResponse->SecretString;
+    my $Name          = $GetSecretValueResponse->Name;
     my $VersionId     = $GetSecretValueResponse->VersionId;
-    my $VersionStages = $GetSecretValueResponse->VersionStages;
 
     # Returns a L<Paws::SecretsManager::GetSecretValueResponse> object.
 
@@ -58,20 +58,6 @@ Specifies the secret containing the version that you want to retrieve.
 You can specify either the Amazon Resource Name (ARN) or the friendly
 name of the secret.
 
-If you specify an ARN, we generally recommend that you specify a
-complete ARN. You can specify a partial ARN tooE<mdash>for example, if
-you donE<rsquo>t include the final hyphen and six random characters
-that Secrets Manager adds at the end of the ARN when you created the
-secret. A partial ARN match can work as long as it uniquely matches
-only one secret. However, if your secret has a name that ends in a
-hyphen followed by six characters (before Secrets Manager adds the
-hyphen and six characters to the ARN) and you try to use that as a
-partial ARN, then those characters cause Secrets Manager to assume that
-youE<rsquo>re specifying a complete ARN. This confusion can cause
-unexpected results. To avoid this situation, we recommend that you
-donE<rsquo>t create secret names that end with a hyphen followed by six
-characters.
-
 
 
 =head2 VersionId => Str
@@ -79,7 +65,7 @@ characters.
 Specifies the unique identifier of the version of the secret that you
 want to retrieve. If you specify this parameter then don't specify
 C<VersionStage>. If you don't specify either a C<VersionStage> or
-C<VersionId> then the default is to perform the operation on the
+C<SecretVersionId> then the default is to perform the operation on the
 version with the C<VersionStage> value of C<AWSCURRENT>.
 
 This value is typically a UUID-type
@@ -95,8 +81,8 @@ label attached to the version.
 
 Staging labels are used to keep track of different versions during the
 rotation process. If you use this parameter then don't specify
-C<VersionId>. If you don't specify either a C<VersionStage> or
-C<VersionId>, then the default is to perform the operation on the
+C<SecretVersionId>. If you don't specify either a C<VersionStage> or
+C<SecretVersionId>, then the default is to perform the operation on the
 version with the C<VersionStage> value of C<AWSCURRENT>.
 
 

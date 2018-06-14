@@ -8,7 +8,6 @@ package Paws::ElasticBeanstalk::CreateApplicationVersion;
   has Process => (is => 'ro', isa => 'Bool');
   has SourceBuildInformation => (is => 'ro', isa => 'Paws::ElasticBeanstalk::SourceBuildInformation');
   has SourceBundle => (is => 'ro', isa => 'Paws::ElasticBeanstalk::S3Location');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::Tag]');
   has VersionLabel => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -40,15 +39,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # my-app:
     my $ApplicationVersionDescriptionMessage =
       $elasticbeanstalk->CreateApplicationVersion(
-      'ApplicationName'       => 'my-app',
-      'AutoCreateApplication' => 1,
-      'Description'           => 'my-app-v1',
-      'Process'               => 1,
-      'SourceBundle'          => {
-        'S3Bucket' => 'my-bucket',
-        'S3Key'    => 'sample.war'
-      },
-      'VersionLabel' => 'v1'
+      {
+        'AutoCreateApplication' => 1,
+        'SourceBundle'          => {
+          'S3Key'    => 'sample.war',
+          'S3Bucket' => 'my-bucket'
+        },
+        'Process'         => 1,
+        'ApplicationName' => 'my-app',
+        'Description'     => 'my-app-v1',
+        'VersionLabel'    => 'v1'
+      }
       );
 
     # Results:
@@ -92,14 +93,10 @@ Describes this version.
 
 =head2 Process => Bool
 
-Pre-processes and validates the environment manifest (C<env.yaml>) and
+Preprocesses and validates the environment manifest (C<env.yaml>) and
 configuration files (C<*.config> files in the C<.ebextensions> folder)
 in the source bundle. Validating configuration files can identify
 issues prior to deploying the application version to an environment.
-
-You must turn processing on for application versions that you create
-using AWS CodeBuild or AWS CodeCommit. For application versions built
-from a source bundle in Amazon S3, processing is optional.
 
 The C<Process> option validates Elastic Beanstalk configuration files.
 It doesn't validate your application's configuration files, like proxy
@@ -125,15 +122,6 @@ Specify a source bundle in S3 or a commit in an AWS CodeCommit
 repository (with C<SourceBuildInformation>), but not both. If neither
 C<SourceBundle> nor C<SourceBuildInformation> are provided, Elastic
 Beanstalk uses a sample application.
-
-
-
-=head2 Tags => ArrayRef[L<Paws::ElasticBeanstalk::Tag>]
-
-Specifies the tags applied to the application version.
-
-Elastic Beanstalk applies these tags only to the application version.
-Environments that use the application version don't inherit the tags.
 
 
 

@@ -1,8 +1,7 @@
 
 package Paws::StorageGateway::UpdateMaintenanceStartTime;
   use Moose;
-  has DayOfMonth => (is => 'ro', isa => 'Int');
-  has DayOfWeek => (is => 'ro', isa => 'Int');
+  has DayOfWeek => (is => 'ro', isa => 'Int', required => 1);
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
   has HourOfDay => (is => 'ro', isa => 'Int', required => 1);
   has MinuteOfHour => (is => 'ro', isa => 'Int', required => 1);
@@ -37,11 +36,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # zone.
     my $UpdateMaintenanceStartTimeOutput =
       $storagegateway->UpdateMaintenanceStartTime(
-      'DayOfWeek' => 2,
-      'GatewayARN' =>
-        'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B',
-      'HourOfDay'    => 0,
-      'MinuteOfHour' => 30
+      {
+        'MinuteOfHour' => 30,
+        'HourOfDay'    => 0,
+        'GatewayARN' =>
+          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B',
+        'DayOfWeek' => 2
+      }
       );
 
     # Results:
@@ -55,21 +56,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sto
 =head1 ATTRIBUTES
 
 
-=head2 DayOfMonth => Int
+=head2 B<REQUIRED> DayOfWeek => Int
 
-The day of the month component of the maintenance start time
-represented as an ordinal number from 1 to 28, where 1 represents the
-first day of the month and 28 represents the last day of the month.
-
-This value is only available for tape and volume gateways.
-
-
-
-=head2 DayOfWeek => Int
-
-The day of the week component of the maintenance start time week
-represented as an ordinal number from 0 to 6, where 0 represents Sunday
-and 6 Saturday.
+The maintenance start time day of the week represented as an ordinal
+number from 0 to 6, where 0 represents Sunday and 6 Saturday.
 
 
 

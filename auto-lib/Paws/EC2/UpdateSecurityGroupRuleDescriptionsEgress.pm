@@ -34,39 +34,39 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $ec2->UpdateSecurityGroupRuleDescriptionsEgress(
       IpPermissions => [
         {
-          FromPort   => 1,             # OPTIONAL
-          IpProtocol => 'MyString',    # OPTIONAL
-          IpRanges   => [
-            {
-              CidrIp      => 'MyString',    # OPTIONAL
-              Description => 'MyString',    # OPTIONAL
-            },
-            ...
-          ],                                # OPTIONAL
-          Ipv6Ranges => [
-            {
-              CidrIpv6    => 'MyString',    # OPTIONAL
-              Description => 'MyString',    # OPTIONAL
-            },
-            ...
-          ],                                # OPTIONAL
+          ToPort        => 1,    # OPTIONAL
           PrefixListIds => [
             {
-              Description  => 'MyString',    # OPTIONAL
               PrefixListId => 'MyString',    # OPTIONAL
+              Description  => 'MyString',    # OPTIONAL
             },
             ...
           ],                                 # OPTIONAL
-          ToPort           => 1,             # OPTIONAL
+          IpRanges => [
+            {
+              CidrIp      => 'MyString',     # OPTIONAL
+              Description => 'MyString',     # OPTIONAL
+            },
+            ...
+          ],                                 # OPTIONAL
+          FromPort   => 1,                   # OPTIONAL
+          Ipv6Ranges => [
+            {
+              CidrIpv6    => 'MyString',     # OPTIONAL
+              Description => 'MyString',     # OPTIONAL
+            },
+            ...
+          ],                                 # OPTIONAL
+          IpProtocol       => 'MyString',    # OPTIONAL
           UserIdGroupPairs => [
             {
-              Description            => 'MyString',    # OPTIONAL
-              GroupId                => 'MyString',    # OPTIONAL
-              GroupName              => 'MyString',    # OPTIONAL
-              PeeringStatus          => 'MyString',    # OPTIONAL
               UserId                 => 'MyString',    # OPTIONAL
               VpcId                  => 'MyString',    # OPTIONAL
+              PeeringStatus          => 'MyString',    # OPTIONAL
+              GroupId                => 'MyString',    # OPTIONAL
               VpcPeeringConnectionId => 'MyString',    # OPTIONAL
+              GroupName              => 'MyString',    # OPTIONAL
+              Description            => 'MyString',    # OPTIONAL
             },
             ...
           ],                                           # OPTIONAL
@@ -74,8 +74,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ...
       ],
       DryRun    => 1,                                  # OPTIONAL
-      GroupId   => 'MySecurityGroupId',                # OPTIONAL
-      GroupName => 'MySecurityGroupName',              # OPTIONAL
+      GroupId   => 'MyString',                         # OPTIONAL
+      GroupName => 'MyString',                         # OPTIONAL
       );
 
     # Results:

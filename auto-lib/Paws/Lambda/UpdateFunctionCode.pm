@@ -38,28 +38,30 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To update a Lambda function's code
     # This operation updates a Lambda function's code
     my $FunctionConfiguration = $lambda->UpdateFunctionCode(
-      'FunctionName'    => 'myFunction',
-      'Publish'         => 1,
-      'S3Bucket'        => 'myBucket',
-      'S3Key'           => 'myKey',
-      'S3ObjectVersion' => 1,
-      'ZipFile'         => 'fileb://file-path/file.zip'
+      {
+        'S3Key'           => 'myKey',
+        'S3ObjectVersion' => 1,
+        'S3Bucket'        => 'myBucket',
+        'Publish'         => 1,
+        'FunctionName'    => 'myFunction',
+        'ZipFile'         => 'fileb://file-path/file.zip'
+      }
     );
 
     # Results:
-    my $CodeSha256   = $FunctionConfiguration->CodeSha256;
-    my $CodeSize     = $FunctionConfiguration->CodeSize;
-    my $Description  = $FunctionConfiguration->Description;
-    my $FunctionArn  = $FunctionConfiguration->FunctionArn;
-    my $FunctionName = $FunctionConfiguration->FunctionName;
-    my $Handler      = $FunctionConfiguration->Handler;
-    my $LastModified = $FunctionConfiguration->LastModified;
-    my $MemorySize   = $FunctionConfiguration->MemorySize;
     my $Role         = $FunctionConfiguration->Role;
     my $Runtime      = $FunctionConfiguration->Runtime;
-    my $Timeout      = $FunctionConfiguration->Timeout;
+    my $FunctionName = $FunctionConfiguration->FunctionName;
+    my $CodeSize     = $FunctionConfiguration->CodeSize;
     my $Version      = $FunctionConfiguration->Version;
+    my $Handler      = $FunctionConfiguration->Handler;
+    my $MemorySize   = $FunctionConfiguration->MemorySize;
     my $VpcConfig    = $FunctionConfiguration->VpcConfig;
+    my $FunctionArn  = $FunctionConfiguration->FunctionArn;
+    my $Timeout      = $FunctionConfiguration->Timeout;
+    my $Description  = $FunctionConfiguration->Description;
+    my $CodeSha256   = $FunctionConfiguration->CodeSha256;
+    my $LastModified = $FunctionConfiguration->LastModified;
 
     # Returns a L<Paws::Lambda::FunctionConfiguration> object.
 
@@ -71,78 +73,76 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 DryRun => Bool
 
-Set to true to validate the request parameters and access permissions
-without modifying the function code.
+This boolean parameter can be used to test your request to AWS Lambda
+to update the Lambda function and publish a version as an atomic
+operation. It will do all necessary computation and validation of your
+code but will not upload it or a publish a version. Each time this
+operation is invoked, the C<CodeSha256> hash value of the provided code
+will also be computed and returned in the response.
 
 
 
 =head2 B<REQUIRED> FunctionName => Str
 
-The name of the Lambda function.
+The existing Lambda function name whose code you want to replace.
 
-B<Name formats>
-
-=over
-
-=item *
-
-B<Function name> - C<my-function>.
-
-=item *
-
-B<Function ARN> -
-C<arn:aws:lambda:us-west-2:123456789012:function:my-function>.
-
-=item *
-
-B<Partial ARN> - C<123456789012:function:my-function>.
-
-=back
-
-The length constraint applies only to the full ARN. If you specify only
-the function name, it is limited to 64 characters in length.
+You can specify a function name (for example, C<Thumbnail>) or you can
+specify Amazon Resource Name (ARN) of the function (for example,
+C<arn:aws:lambda:us-west-2:account-id:function:ThumbNail>). AWS Lambda
+also allows you to specify a partial ARN (for example,
+C<account-id:Thumbnail>). Note that the length constraint applies only
+to the ARN. If you specify only the function name, it is limited to 64
+characters in length.
 
 
 
 =head2 Publish => Bool
 
-Set to true to publish a new version of the function after updating the
-code. This has the same effect as calling PublishVersion separately.
+This boolean parameter can be used to request AWS Lambda to update the
+Lambda function and publish a version as an atomic operation.
 
 
 
 =head2 RevisionId => Str
 
-Only update the function if the revision ID matches the ID that's
-specified. Use this option to avoid modifying a function that has
-changed since you last read it.
+An optional value you can use to ensure you are updating the latest
+update of the function version or alias. If the C<RevisionID> you pass
+doesn't match the latest C<RevisionId> of the function or alias, it
+will fail with an error message, advising you to retrieve the latest
+function version or alias C<RevisionID> using either or .
 
 
 
 =head2 S3Bucket => Str
 
-An Amazon S3 bucket in the same AWS Region as your function. The bucket
-can be in a different AWS account.
+Amazon S3 bucket name where the .zip file containing your deployment
+package is stored. This bucket must reside in the same AWS Region where
+you are creating the Lambda function.
 
 
 
 =head2 S3Key => Str
 
-The Amazon S3 key of the deployment package.
+The Amazon S3 object (the deployment package) key name you want to
+upload.
 
 
 
 =head2 S3ObjectVersion => Str
 
-For versioned objects, the version of the deployment package object to
-use.
+The Amazon S3 object (the deployment package) version you want to
+upload.
 
 
 
 =head2 ZipFile => Str
 
-The base64-encoded contents of the deployment package. AWS SDK and AWS
-CLI clients handle the encoding for you.
+The contents of your zip file containing your deployment package. If
+you are using the web API directly, the contents of the zip file must
+be base64-encoded. If you are using the AWS SDKs or the AWS CLI, the
+SDKs or CLI will do the encoding for you. For more information about
+creating a .zip file, see Execution Permissions
+(http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html).
 
 
 

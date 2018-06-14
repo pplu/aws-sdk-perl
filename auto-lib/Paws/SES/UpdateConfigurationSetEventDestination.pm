@@ -36,30 +36,30 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'send',
           ... # values: send, reject, bounce, complaint, delivery, open, click, renderingFailure
         ],
-        Name                  => 'MyEventDestinationName',
+        Name                       => 'MyEventDestinationName',
+        Enabled                    => 1,                          # OPTIONAL
+        KinesisFirehoseDestination => {
+          DeliveryStreamARN => 'MyAmazonResourceName',
+          IAMRoleARN        => 'MyAmazonResourceName',
+
+        },                                                        # OPTIONAL
+        SNSDestination => {
+          TopicARN => 'MyAmazonResourceName',
+
+        },                                                        # OPTIONAL
         CloudWatchDestination => {
           DimensionConfigurations => [
             {
-              DefaultDimensionValue => 'MyDefaultDimensionValue',
-              DimensionName         => 'MyDimensionName',
+              DimensionName => 'MyDimensionName',
               DimensionValueSource =>
                 'messageTag',    # values: messageTag, emailHeader, linkTag
+              DefaultDimensionValue => 'MyDefaultDimensionValue',
 
             },
             ...
           ],
 
         },    # OPTIONAL
-        Enabled                    => 1,    # OPTIONAL
-        KinesisFirehoseDestination => {
-          DeliveryStreamARN => 'MyAmazonResourceName',
-          IAMRoleARN        => 'MyAmazonResourceName',
-
-        },                                  # OPTIONAL
-        SNSDestination => {
-          TopicARN => 'MyAmazonResourceName',
-
-        },                                  # OPTIONAL
       },
 
       );

@@ -2,7 +2,6 @@
 package Paws::FMS::PutPolicy;
   use Moose;
   has Policy => (is => 'ro', isa => 'Paws::FMS::Policy', required => 1);
-  has TagList => (is => 'ro', isa => 'ArrayRef[Paws::FMS::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -30,53 +29,32 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $fms = Paws->service('FMS');
     my $PutPolicyResponse = $fms->PutPolicy(
       Policy => {
-        ExcludeResourceTags       => 1,
-        PolicyName                => 'MyResourceName',    # min: 1, max: 128
         RemediationEnabled        => 1,
         ResourceType              => 'MyResourceType',    # min: 1, max: 128
+        PolicyName                => 'MyResourceName',    # min: 1, max: 128
         SecurityServicePolicyData => {
-          Type => 'WAF'
-          , # values: WAF, SHIELD_ADVANCED, SECURITY_GROUPS_COMMON, SECURITY_GROUPS_CONTENT_AUDIT, SECURITY_GROUPS_USAGE_AUDIT
+          Type => 'WAF',                                  # values: WAF
           ManagedServiceData =>
             'MyManagedServiceData',    # min: 1, max: 1024; OPTIONAL
         },
-        ExcludeMap => {
-          'ACCOUNT' => [
-            'MyCustomerPolicyScopeId', ...    # min: 1, max: 1024
-          ],                                  # key: values: ACCOUNT
-        },    # OPTIONAL
-        IncludeMap => {
-          'ACCOUNT' => [
-            'MyCustomerPolicyScopeId', ...    # min: 1, max: 1024
-          ],                                  # key: values: ACCOUNT
-        },    # OPTIONAL
-        PolicyId => 'MyPolicyId',    # min: 36, max: 36; OPTIONAL
+        ExcludeResourceTags => 1,
+        PolicyId            => 'MyPolicyId',    # min: 36, max: 36; OPTIONAL
         PolicyUpdateToken =>
-          'MyPolicyUpdateToken',     # min: 1, max: 1024; OPTIONAL
+          'MyPolicyUpdateToken',                # min: 1, max: 1024; OPTIONAL
         ResourceTags => [
           {
-            Key   => 'MyResourceTagKey',      # min: 1, max: 128
-            Value => 'MyResourceTagValue',    # max: 256; OPTIONAL
+            Key   => 'MyTagKey',                # min: 1, max: 128
+            Value => 'MyTagValue',              # max: 256; OPTIONAL
           },
           ...
-        ],                                    # max: 8; OPTIONAL
-        ResourceTypeList => [
-          'MyResourceType', ...               # min: 1, max: 128
-        ],                                    # OPTIONAL
+        ],                                      # max: 8; OPTIONAL
       },
-      TagList => [
-        {
-          Key   => 'MyTagKey',                # min: 1, max: 128
-          Value => 'MyTagValue',              # max: 256
 
-        },
-        ...
-      ],                                      # OPTIONAL
     );
 
     # Results:
-    my $Policy    = $PutPolicyResponse->Policy;
     my $PolicyArn = $PutPolicyResponse->PolicyArn;
+    my $Policy    = $PutPolicyResponse->Policy;
 
     # Returns a L<Paws::FMS::PutPolicyResponse> object.
 
@@ -89,12 +67,6 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/fms
 =head2 B<REQUIRED> Policy => L<Paws::FMS::Policy>
 
 The details of the AWS Firewall Manager policy to be created.
-
-
-
-=head2 TagList => ArrayRef[L<Paws::FMS::Tag>]
-
-The tags to add to the AWS resource.
 
 
 

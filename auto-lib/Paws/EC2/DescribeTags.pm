@@ -33,13 +33,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To describe the tags for a single resource
     # This example describes the tags for the specified instance.
     my $DescribeTagsResult = $ec2->DescribeTags(
-      'Filters' => [
+      {
+        'Filters' => [
 
-        {
-          'Name'   => 'resource-id',
-          'Values' => ['i-1234567890abcdef8']
-        }
-      ]
+          {
+            'Values' => ['i-1234567890abcdef8'],
+            'Name'   => 'resource-id'
+          }
+        ]
+      }
     );
 
     # Results:
@@ -64,7 +66,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-The filters.
+One or more filters.
 
 =over
 
@@ -74,24 +76,17 @@ C<key> - The tag key.
 
 =item *
 
-C<resource-id> - The ID of the resource.
+C<resource-id> - The resource ID.
 
 =item *
 
 C<resource-type> - The resource type (C<customer-gateway> |
-C<dedicated-host> | C<dhcp-options> | C<elastic-ip> | C<fleet> |
-C<fpga-image> | C<image> | C<instance> | C<host-reservation> |
-C<internet-gateway> | C<launch-template> | C<natgateway> |
-C<network-acl> | C<network-interface> | C<reserved-instances> |
+C<dhcp-options> | C<elastic-ip> | C<fpga-image> | C<image> |
+C<instance> | C<internet-gateway> | C<launch-template> | C<natgateway>
+| C<network-acl> | C<network-interface> | C<reserved-instances> |
 C<route-table> | C<security-group> | C<snapshot> |
 C<spot-instances-request> | C<subnet> | C<volume> | C<vpc> |
 C<vpc-peering-connection> | C<vpn-connection> | C<vpn-gateway>).
-
-=item *
-
-C<tag>:E<lt>keyE<gt> - The key/value combination of the tag. For
-example, specify "tag:Owner" for the filter name and "TeamA" for the
-filter value to find resources with the tag "Owner=TeamA".
 
 =item *
 

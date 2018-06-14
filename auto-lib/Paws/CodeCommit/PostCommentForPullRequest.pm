@@ -42,21 +42,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RepositoryName     => 'MyRepositoryName',
       ClientRequestToken => 'MyClientRequestToken',    # OPTIONAL
       Location           => {
-        FilePath            => 'MyPath',    # OPTIONAL
-        FilePosition        => 1,           # OPTIONAL
-        RelativeFileVersion => 'BEFORE',    # values: BEFORE, AFTER; OPTIONAL
+        filePosition        => 1,           # OPTIONAL
+        relativeFileVersion => 'BEFORE',    # values: BEFORE, AFTER; OPTIONAL
+        filePath            => 'MyPath',    # OPTIONAL
       },    # OPTIONAL
       );
 
     # Results:
     my $AfterBlobId    = $PostCommentForPullRequestOutput->AfterBlobId;
+    my $PullRequestId  = $PostCommentForPullRequestOutput->PullRequestId;
+    my $Comment        = $PostCommentForPullRequestOutput->Comment;
+    my $RepositoryName = $PostCommentForPullRequestOutput->RepositoryName;
+    my $BeforeCommitId = $PostCommentForPullRequestOutput->BeforeCommitId;
     my $AfterCommitId  = $PostCommentForPullRequestOutput->AfterCommitId;
     my $BeforeBlobId   = $PostCommentForPullRequestOutput->BeforeBlobId;
-    my $BeforeCommitId = $PostCommentForPullRequestOutput->BeforeCommitId;
-    my $Comment        = $PostCommentForPullRequestOutput->Comment;
     my $Location       = $PostCommentForPullRequestOutput->Location;
-    my $PullRequestId  = $PostCommentForPullRequestOutput->PullRequestId;
-    my $RepositoryName = $PostCommentForPullRequestOutput->RepositoryName;
 
     # Returns a L<Paws::CodeCommit::PostCommentForPullRequestOutput> object.
 
@@ -83,11 +83,11 @@ tip of the branch at the time the pull request was created.
 
 =head2 ClientRequestToken => Str
 
-A unique, client-generated idempotency token that, when provided in a
+A unique, client-generated idempotency token that when provided in a
 request, ensures the request cannot be repeated with a changed
 parameter. If a request is received with the same parameters and a
-token is included, the request returns information about the initial
-request that used that token.
+token is included, the request will return information about the
+initial request that used that token.
 
 
 
@@ -100,9 +100,9 @@ The content of your comment on the change.
 =head2 Location => L<Paws::CodeCommit::Location>
 
 The location of the change where you want to post your comment. If no
-location is provided, the comment is posted as a general comment on the
-pull request difference between the before commit ID and the after
-commit ID.
+location is provided, the comment will be posted as a general comment
+on the pull request difference between the before commit ID and the
+after commit ID.
 
 
 

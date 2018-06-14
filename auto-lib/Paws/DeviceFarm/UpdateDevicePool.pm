@@ -2,9 +2,7 @@
 package Paws::DeviceFarm::UpdateDevicePool;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn' , required => 1);
-  has ClearMaxDevices => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'clearMaxDevices' );
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
-  has MaxDevices => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxDevices' );
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' );
   has Rules => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Rule]', traits => ['NameInRequest'], request_name => 'rules' );
 
@@ -36,18 +34,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # The following example updates the specified device pool with a new name and
    # description. It also enables remote access of devices in the device pool.
     my $UpdateDevicePoolResult = $devicefarm->UpdateDevicePool(
-      'Arn' =>
-'arn:aws:devicefarm:us-west-2::devicepool:082d10e5-d7d7-48a5-ba5c-12345EXAMPLE',
-      'Description' => 'NewDescription',
-      'Name'        => 'NewName',
-      'Rules'       => [
+      {
+        'Name'  => 'NewName',
+        'Rules' => [
 
-        {
-          'Attribute' => 'REMOTE_ACCESS_ENABLED',
-          'Operator'  => 'EQUALS',
-          'Value'     => 'True'
-        }
-      ]
+          {
+            'Operator'  => 'EQUALS',
+            'Attribute' => 'REMOTE_ACCESS_ENABLED',
+            'Value'     => 'True'
+          }
+        ],
+        'Description' => 'NewDescription',
+        'Arn' =>
+'arn:aws:devicefarm:us-west-2::devicepool:082d10e5-d7d7-48a5-ba5c-12345EXAMPLE'
+      }
     );
 
     # Results:
@@ -63,57 +63,28 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dev
 
 =head2 B<REQUIRED> Arn => Str
 
-The Amazon Resource Name (ARN) of the Device Farm device pool to
-update.
-
-
-
-=head2 ClearMaxDevices => Bool
-
-Sets whether the C<maxDevices> parameter applies to your device pool.
-If you set this parameter to C<true>, the C<maxDevices> parameter does
-not apply, and Device Farm does not limit the number of devices that it
-adds to your device pool. In this case, Device Farm adds all available
-devices that meet the criteria specified in the C<rules> parameter.
-
-If you use this parameter in your request, you cannot use the
-C<maxDevices> parameter in the same request.
+The Amazon Resourc Name (ARN) of the Device Farm device pool you wish
+to update.
 
 
 
 =head2 Description => Str
 
-A description of the device pool to update.
-
-
-
-=head2 MaxDevices => Int
-
-The number of devices that Device Farm can add to your device pool.
-Device Farm adds devices that are available and that meet the criteria
-that you assign for the C<rules> parameter. Depending on how many
-devices meet these constraints, your device pool might contain fewer
-devices than the value for this parameter.
-
-By specifying the maximum number of devices, you can control the costs
-that you incur by running tests.
-
-If you use this parameter in your request, you cannot use the
-C<clearMaxDevices> parameter in the same request.
+A description of the device pool you wish to update.
 
 
 
 =head2 Name => Str
 
-A string that represents the name of the device pool to update.
+A string representing the name of the device pool you wish to update.
 
 
 
 =head2 Rules => ArrayRef[L<Paws::DeviceFarm::Rule>]
 
-Represents the rules to modify for the device pool. Updating rules is
-optional. If you update rules for your request, the update replaces the
-existing rules.
+Represents the rules you wish to modify for the device pool. Updating
+rules is optional; however, if you choose to update rules for your
+request, the update will replace the existing rules.
 
 
 

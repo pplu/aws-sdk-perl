@@ -37,46 +37,46 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     $ec2->AuthorizeSecurityGroupIngress(
-      CidrIp        => 'MyString',               # OPTIONAL
-      DryRun        => 1,                        # OPTIONAL
-      FromPort      => 1,                        # OPTIONAL
-      GroupId       => 'MySecurityGroupId',      # OPTIONAL
-      GroupName     => 'MySecurityGroupName',    # OPTIONAL
+      CidrIp        => 'MyString',    # OPTIONAL
+      DryRun        => 1,             # OPTIONAL
+      FromPort      => 1,             # OPTIONAL
+      GroupId       => 'MyString',    # OPTIONAL
+      GroupName     => 'MyString',    # OPTIONAL
       IpPermissions => [
         {
-          FromPort   => 1,
-          IpProtocol => 'MyString',
-          IpRanges   => [
+          ToPort        => 1,
+          PrefixListIds => [
+            {
+              PrefixListId => 'MyString',
+              Description  => 'MyString',
+            },
+            ...
+          ],                          # OPTIONAL
+          IpRanges => [
             {
               CidrIp      => 'MyString',
               Description => 'MyString',
             },
             ...
-          ],                                     # OPTIONAL
+          ],                          # OPTIONAL
+          FromPort   => 1,
           Ipv6Ranges => [
             {
               CidrIpv6    => 'MyString',
               Description => 'MyString',
             },
             ...
-          ],                                     # OPTIONAL
-          PrefixListIds => [
-            {
-              Description  => 'MyString',
-              PrefixListId => 'MyString',
-            },
-            ...
-          ],                                     # OPTIONAL
-          ToPort           => 1,
+          ],                          # OPTIONAL
+          IpProtocol       => 'MyString',
           UserIdGroupPairs => [
             {
-              Description            => 'MyString',
-              GroupId                => 'MyString',
-              GroupName              => 'MyString',
-              PeeringStatus          => 'MyString',
               UserId                 => 'MyString',
               VpcId                  => 'MyString',
+              PeeringStatus          => 'MyString',
+              GroupId                => 'MyString',
               VpcPeeringConnectionId => 'MyString',
+              GroupName              => 'MyString',
+              Description            => 'MyString',
             },
             ...
           ],    # OPTIONAL
@@ -97,12 +97,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 CidrIp => Str
 
-The IPv4 address range, in CIDR format. You can't specify this
-parameter when specifying a source security group. To specify an IPv6
-address range, use a set of IP permissions.
-
-Alternatively, use a set of IP permissions to specify multiple rules
-and a description for the rule.
+The CIDR IPv4 address range. You can't specify this parameter when
+specifying a source security group.
 
 
 
@@ -117,12 +113,10 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 FromPort => Int
 
-The start of port range for the TCP and UDP protocols, or an ICMP type
-number. For the ICMP type number, use C<-1> to specify all types. If
-you specify all ICMP types, you must specify all codes.
-
-Alternatively, use a set of IP permissions to specify multiple rules
-and a description for the rule.
+The start of port range for the TCP and UDP protocols, or an
+ICMP/ICMPv6 type number. For the ICMP/ICMPv6 type number, use C<-1> to
+specify all types. If you specify all ICMP/ICMPv6 types, you must
+specify all codes.
 
 
 
@@ -144,7 +138,8 @@ request.
 
 =head2 IpPermissions => ArrayRef[L<Paws::EC2::IpPermission>]
 
-The sets of IP permissions.
+One or more sets of IP permissions. Can be used to specify multiple
+rules in a single command.
 
 
 
@@ -153,14 +148,12 @@ The sets of IP permissions.
 The IP protocol name (C<tcp>, C<udp>, C<icmp>) or number (see Protocol
 Numbers
 (http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)).
-To specify C<icmpv6>, use a set of IP permissions.
-
-[VPC only] Use C<-1> to specify all protocols. If you specify C<-1> or
-a protocol other than C<tcp>, C<udp>, or C<icmp>, traffic on all ports
-is allowed, regardless of any ports you specify.
-
-Alternatively, use a set of IP permissions to specify multiple rules
-and a description for the rule.
+(VPC only) Use C<-1> to specify all protocols. If you specify C<-1>, or
+a protocol number other than C<tcp>, C<udp>, C<icmp>, or C<58>
+(ICMPv6), traffic on all ports is allowed, regardless of any ports you
+specify. For C<tcp>, C<udp>, and C<icmp>, you must specify a port
+range. For protocol C<58> (ICMPv6), you can optionally specify a port
+range; if you don't, traffic for all types and codes is allowed.
 
 
 
@@ -178,10 +171,10 @@ EC2-VPC, the source security group must be in the same VPC.
 
 =head2 SourceSecurityGroupOwnerId => Str
 
-[nondefault VPC] The AWS account ID for the source security group, if
-the source security group is in a different account. You can't specify
-this parameter in combination with the following parameters: the CIDR
-IP address range, the IP protocol, the start of the port range, and the
+[EC2-Classic] The AWS account ID for the source security group, if the
+source security group is in a different account. You can't specify this
+parameter in combination with the following parameters: the CIDR IP
+address range, the IP protocol, the start of the port range, and the
 end of the port range. Creates rules that grant full ICMP, UDP, and TCP
 access. To create a rule with a specific IP protocol and port range,
 use a set of IP permissions instead.
@@ -190,12 +183,10 @@ use a set of IP permissions instead.
 
 =head2 ToPort => Int
 
-The end of port range for the TCP and UDP protocols, or an ICMP code
-number. For the ICMP code number, use C<-1> to specify all codes. If
-you specify all ICMP types, you must specify all codes.
-
-Alternatively, use a set of IP permissions to specify multiple rules
-and a description for the rule.
+The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6
+code number. For the ICMP/ICMPv6 code number, use C<-1> to specify all
+codes. If you specify all ICMP/ICMPv6 types, you must specify all
+codes.
 
 
 

@@ -45,16 +45,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       VPC => {
         VPCId     => 'MyVPCId',    # max: 1024; OPTIONAL
         VPCRegion => 'us-east-1'
-        , # values: us-east-1, us-east-2, us-west-1, us-west-2, eu-west-1, eu-west-2, eu-west-3, eu-central-1, ap-east-1, me-south-1, ap-southeast-1, ap-southeast-2, ap-south-1, ap-northeast-1, ap-northeast-2, ap-northeast-3, eu-north-1, sa-east-1, ca-central-1, cn-north-1min: 1, max: 64; OPTIONAL
+        , # values: us-east-1, us-east-2, us-west-1, us-west-2, eu-west-1, eu-west-2, eu-west-3, eu-central-1, ap-southeast-1, ap-southeast-2, ap-south-1, ap-northeast-1, ap-northeast-2, ap-northeast-3, sa-east-1, ca-central-1, cn-north-1min: 1, max: 64; OPTIONAL
       },    # OPTIONAL
     );
 
     # Results:
-    my $ChangeInfo    = $CreateHostedZoneResponse->ChangeInfo;
-    my $DelegationSet = $CreateHostedZoneResponse->DelegationSet;
+    my $VPC           = $CreateHostedZoneResponse->VPC;
     my $HostedZone    = $CreateHostedZoneResponse->HostedZone;
     my $Location      = $CreateHostedZoneResponse->Location;
-    my $VPC           = $CreateHostedZoneResponse->VPC;
+    my $DelegationSet = $CreateHostedZoneResponse->DelegationSet;
+    my $ChangeInfo    = $CreateHostedZoneResponse->ChangeInfo;
 
     # Returns a L<Paws::Route53::CreateHostedZoneResponse> object.
 
@@ -80,8 +80,7 @@ stamp.
 If you want to associate a reusable delegation set with this hosted
 zone, the ID that Amazon Route 53 assigned to the reusable delegation
 set when you created it. For more information about reusable delegation
-sets, see CreateReusableDelegationSet
-(https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateReusableDelegationSet.html).
+sets, see CreateReusableDelegationSet.
 
 
 
@@ -108,17 +107,18 @@ C<HostedZoneConfig> and the other elements.
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the domain. Specify a fully qualified domain name, for
-example, I<www.example.com>. The trailing dot is optional; Amazon Route
-53 assumes that the domain name is fully qualified. This means that
+The name of the domain. For resource record types that include a domain
+name, specify a fully qualified domain name, for example,
+I<www.example.com>. The trailing dot is optional; Amazon Route 53
+assumes that the domain name is fully qualified. This means that Amazon
 Route 53 treats I<www.example.com> (without a trailing dot) and
 I<www.example.com.> (with a trailing dot) as identical.
 
 If you're creating a public hosted zone, this is the name you have
 registered with your DNS registrar. If your domain name is registered
-with a registrar other than Route 53, change the name servers for your
-domain to the set of C<NameServers> that C<CreateHostedZone> returns in
-C<DelegationSet>.
+with a registrar other than Amazon Route 53, change the name servers
+for your domain to the set of C<NameServers> that C<CreateHostedZone>
+returns in C<DelegationSet>.
 
 
 
@@ -129,9 +129,7 @@ about the Amazon VPC that you're associating with this hosted zone.
 
 You can specify only one Amazon VPC when you create a private hosted
 zone. To associate additional Amazon VPCs with the hosted zone, use
-AssociateVPCWithHostedZone
-(https://docs.aws.amazon.com/Route53/latest/APIReference/API_AssociateVPCWithHostedZone.html)
-after you create a hosted zone.
+AssociateVPCWithHostedZone after you create a hosted zone.
 
 
 

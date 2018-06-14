@@ -45,12 +45,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $AliasArn        = $AliasConfiguration->AliasArn;
-    my $Description     = $AliasConfiguration->Description;
     my $FunctionVersion = $AliasConfiguration->FunctionVersion;
-    my $Name            = $AliasConfiguration->Name;
     my $RevisionId      = $AliasConfiguration->RevisionId;
+    my $AliasArn        = $AliasConfiguration->AliasArn;
     my $RoutingConfig   = $AliasConfiguration->RoutingConfig;
+    my $Description     = $AliasConfiguration->Description;
+    my $Name            = $AliasConfiguration->Name;
 
     # Returns a L<Paws::Lambda::AliasConfiguration> object.
 
@@ -62,55 +62,35 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 Description => Str
 
-A description of the alias.
+Description of the alias.
 
 
 
 =head2 B<REQUIRED> FunctionName => Str
 
-The name of the Lambda function.
-
-B<Name formats>
-
-=over
-
-=item *
-
-B<Function name> - C<MyFunction>.
-
-=item *
-
-B<Function ARN> -
-C<arn:aws:lambda:us-west-2:123456789012:function:MyFunction>.
-
-=item *
-
-B<Partial ARN> - C<123456789012:function:MyFunction>.
-
-=back
-
-The length constraint applies only to the full ARN. If you specify only
+Name of the Lambda function for which you want to create an alias. Note
+that the length constraint applies only to the ARN. If you specify only
 the function name, it is limited to 64 characters in length.
 
 
 
 =head2 B<REQUIRED> FunctionVersion => Str
 
-The function version that the alias invokes.
+Lambda function version for which you are creating the alias.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the alias.
+Name for the alias you are creating.
 
 
 
 =head2 RoutingConfig => L<Paws::Lambda::AliasRoutingConfiguration>
 
-The routing configuration
-(https://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html)
-of the alias.
+Specifies an additional version your alias can point to, allowing you
+to dictate what percentage of traffic will invoke each version. For
+more information, see lambda-traffic-shifting-using-aliases.
 
 
 

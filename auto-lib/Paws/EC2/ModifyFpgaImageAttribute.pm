@@ -37,25 +37,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $ModifyFpgaImageAttributeResult = $ec2->ModifyFpgaImageAttribute(
-      FpgaImageId    => 'MyFpgaImageId',
-      Attribute      => 'description',     # OPTIONAL
-      Description    => 'MyString',        # OPTIONAL
-      DryRun         => 1,                 # OPTIONAL
+      FpgaImageId    => 'MyString',
+      Attribute      => 'description',    # OPTIONAL
+      Description    => 'MyString',       # OPTIONAL
+      DryRun         => 1,                # OPTIONAL
       LoadPermission => {
-        Add => [
-          {
-            Group  => 'all',               # values: all; OPTIONAL
-            UserId => 'MyString',
-          },
-          ...
-        ],                                 # OPTIONAL
         Remove => [
           {
-            Group  => 'all',               # values: all; OPTIONAL
             UserId => 'MyString',
+            Group  => 'all',              # values: all; OPTIONAL
           },
           ...
-        ],                                 # OPTIONAL
+        ],                                # OPTIONAL
+        Add => [
+          {
+            UserId => 'MyString',
+            Group  => 'all',              # values: all; OPTIONAL
+          },
+          ...
+        ],                                # OPTIONAL
       },    # OPTIONAL
       Name          => 'MyString',             # OPTIONAL
       OperationType => 'add',                  # OPTIONAL
@@ -123,23 +123,23 @@ Valid values are: C<"add">, C<"remove">
 
 =head2 ProductCodes => ArrayRef[Str|Undef]
 
-The product codes. After you add a product code to an AFI, it can't be
-removed. This parameter is valid only when modifying the
+One or more product codes. After you add a product code to an AFI, it
+can't be removed. This parameter is valid only when modifying the
 C<productCodes> attribute.
 
 
 
 =head2 UserGroups => ArrayRef[Str|Undef]
 
-The user groups. This parameter is valid only when modifying the
-C<loadPermission> attribute.
+One or more user groups. This parameter is valid only when modifying
+the C<loadPermission> attribute.
 
 
 
 =head2 UserIds => ArrayRef[Str|Undef]
 
-The AWS account IDs. This parameter is valid only when modifying the
-C<loadPermission> attribute.
+One or more AWS account IDs. This parameter is valid only when
+modifying the C<loadPermission> attribute.
 
 
 

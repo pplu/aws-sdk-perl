@@ -1,7 +1,6 @@
 
 package Paws::Rekognition::DetectModerationLabels;
   use Moose;
-  has HumanLoopConfig => (is => 'ro', isa => 'Paws::Rekognition::HumanLoopConfig');
   has Image => (is => 'ro', isa => 'Paws::Rekognition::Image', required => 1);
   has MinConfidence => (is => 'ro', isa => 'Num');
 
@@ -31,32 +30,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $rekognition = Paws->service('Rekognition');
     my $DetectModerationLabelsResponse = $rekognition->DetectModerationLabels(
       Image => {
-        Bytes    => 'BlobImageBlob',    # min: 1, max: 5242880; OPTIONAL
         S3Object => {
           Bucket  => 'MyS3Bucket',           # min: 3, max: 255; OPTIONAL
-          Name    => 'MyS3ObjectName',       # min: 1, max: 1024; OPTIONAL
           Version => 'MyS3ObjectVersion',    # min: 1, max: 1024; OPTIONAL
+          Name    => 'MyS3ObjectName',       # min: 1, max: 1024; OPTIONAL
         },    # OPTIONAL
+        Bytes => 'BlobImageBlob',    # min: 1, max: 5242880; OPTIONAL
       },
-      HumanLoopConfig => {
-        FlowDefinitionArn => 'MyFlowDefinitionArn',    # max: 256
-        HumanLoopName     => 'MyHumanLoopName',        # min: 1, max: 63
-        DataAttributes    => {
-          ContentClassifiers => [
-            'FreeOfPersonallyIdentifiableInformation',
-            ... # values: FreeOfPersonallyIdentifiableInformation, FreeOfAdultContent
-          ],    # max: 256; OPTIONAL
-        },    # OPTIONAL
-      },    # OPTIONAL
-      MinConfidence => 1.0,    # OPTIONAL
+      MinConfidence => 1.0,          # OPTIONAL
     );
 
     # Results:
-    my $HumanLoopActivationOutput =
-      $DetectModerationLabelsResponse->HumanLoopActivationOutput;
     my $ModerationLabels = $DetectModerationLabelsResponse->ModerationLabels;
-    my $ModerationModelVersion =
-      $DetectModerationLabelsResponse->ModerationModelVersion;
 
     # Returns a L<Paws::Rekognition::DetectModerationLabelsResponse> object.
 
@@ -66,22 +51,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rek
 =head1 ATTRIBUTES
 
 
-=head2 HumanLoopConfig => L<Paws::Rekognition::HumanLoopConfig>
-
-Sets up the configuration for human evaluation, including the
-FlowDefinition the image will be sent to.
-
-
-
 =head2 B<REQUIRED> Image => L<Paws::Rekognition::Image>
 
 The input image as base64-encoded bytes or an S3 object. If you use the
 AWS CLI to call Amazon Rekognition operations, passing base64-encoded
 image bytes is not supported.
-
-If you are using an AWS SDK to call Amazon Rekognition, you might not
-need to base64-encode image bytes passed using the C<Bytes> field. For
-more information, see Images in the Amazon Rekognition developer guide.
 
 
 

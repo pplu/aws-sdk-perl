@@ -33,8 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To delete a route
     # This example deletes the specified route from the specified route table.
     $ec2->DeleteRoute(
-      'DestinationCidrBlock' => '0.0.0.0/0',
-      'RouteTableId'         => 'rtb-22574640'
+      {
+        'DestinationCidrBlock' => '0.0.0.0/0',
+        'RouteTableId'         => 'rtb-22574640'
+      }
     );
 
 

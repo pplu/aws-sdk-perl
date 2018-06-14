@@ -36,22 +36,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',    # OPTIONAL
-          Values => [
-            'MyString', ...        # OPTIONAL
-          ],                       # OPTIONAL
+          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name => 'MyString',
         },
         ...
-      ],                           # OPTIONAL
-      IncludeAllInstances => 1,                          # OPTIONAL
-      InstanceIds         => [ 'MyInstanceId', ... ],    # OPTIONAL
-      MaxResults          => 1,                          # OPTIONAL
-      NextToken           => 'MyString',                 # OPTIONAL
+      ],                                    # OPTIONAL
+      IncludeAllInstances => 1,                      # OPTIONAL
+      InstanceIds         => [ 'MyString', ... ],    # OPTIONAL
+      MaxResults          => 1,                      # OPTIONAL
+      NextToken           => 'MyString',             # OPTIONAL
     );
 
     # Results:
-    my $InstanceStatuses = $DescribeInstanceStatusResult->InstanceStatuses;
     my $NextToken        = $DescribeInstanceStatusResult->NextToken;
+    my $InstanceStatuses = $DescribeInstanceStatusResult->InstanceStatuses;
 
     # Returns a L<Paws::EC2::DescribeInstanceStatusResult> object.
 
@@ -72,7 +70,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-The filters.
+One or more filters.
 
 =over
 
@@ -92,11 +90,6 @@ C<event.description> - A description of the event.
 
 =item *
 
-C<event.instance-event-id> - The ID of the event whose date and time
-you are modifying.
-
-=item *
-
 C<event.not-after> - The latest end time for the scheduled event (for
 example, C<2014-09-15T17:15:20.000Z>).
 
@@ -107,15 +100,10 @@ C<event.not-before> - The earliest start time for the scheduled event
 
 =item *
 
-C<event.not-before-deadline> - The deadline for starting the event (for
-example, C<2014-09-15T17:15:20.000Z>).
-
-=item *
-
 C<instance-state-code> - The code for the instance state, as a 16-bit
-unsigned integer. The high byte is used for internal purposes and
-should be ignored. The low byte is set based on the state represented.
-The valid values are 0 (pending), 16 (running), 32 (shutting-down), 48
+unsigned integer. The high byte is an opaque internal value and should
+be ignored. The low byte is set based on the state represented. The
+valid values are 0 (pending), 16 (running), 32 (shutting-down), 48
 (terminated), 64 (stopping), and 80 (stopped).
 
 =item *
@@ -164,7 +152,7 @@ Default: C<false>
 
 =head2 InstanceIds => ArrayRef[Str|Undef]
 
-The instance IDs.
+One or more instance IDs.
 
 Default: Describes all your instances.
 

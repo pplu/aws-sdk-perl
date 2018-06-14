@@ -31,22 +31,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $WorkflowExecutionDetail = $swf->DescribeWorkflowExecution(
       Domain    => 'MyDomainName',
       Execution => {
-        RunId      => 'MyWorkflowRunId',    # min: 1, max: 64
-        WorkflowId => 'MyWorkflowId',       # min: 1, max: 256
+        workflowId => 'MyWorkflowId',       # min: 1, max: 256
+        runId      => 'MyWorkflowRunId',    # min: 1, max: 64
 
       },
 
     );
 
     # Results:
-    my $ExecutionConfiguration =
-      $WorkflowExecutionDetail->ExecutionConfiguration;
     my $ExecutionInfo = $WorkflowExecutionDetail->ExecutionInfo;
+    my $OpenCounts    = $WorkflowExecutionDetail->OpenCounts;
     my $LatestActivityTaskTimestamp =
       $WorkflowExecutionDetail->LatestActivityTaskTimestamp;
+    my $ExecutionConfiguration =
+      $WorkflowExecutionDetail->ExecutionConfiguration;
     my $LatestExecutionContext =
       $WorkflowExecutionDetail->LatestExecutionContext;
-    my $OpenCounts = $WorkflowExecutionDetail->OpenCounts;
 
     # Returns a L<Paws::SimpleWorkflow::WorkflowExecutionDetail> object.
 

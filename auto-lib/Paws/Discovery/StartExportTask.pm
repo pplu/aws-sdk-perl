@@ -37,9 +37,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],                                            # OPTIONAL
       Filters => [
         {
-          Condition => 'MyCondition',
-          Name      => 'MyFilterName',
-          Values    => [ 'MyFilterValue', ... ],
+          name      => 'MyFilterName',
+          values    => [ 'MyFilterValue', ... ],
+          condition => 'MyCondition',
 
         },
         ...

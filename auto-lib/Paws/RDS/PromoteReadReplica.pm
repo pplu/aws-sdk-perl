@@ -33,9 +33,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example promotes the specified read replica and sets its backup
     # retention period and preferred backup window.
     my $PromoteReadReplicaResult = $rds->PromoteReadReplica(
-      'BackupRetentionPeriod' => 1,
-      'DBInstanceIdentifier'  => 'mydbreadreplica',
-      'PreferredBackupWindow' => '03:30-04:00'
+      {
+        'DBInstanceIdentifier'  => 'mydbreadreplica',
+        'PreferredBackupWindow' => '03:30-04:00',
+        'BackupRetentionPeriod' => 1
+      }
     );
 
 
@@ -47,9 +49,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 BackupRetentionPeriod => Int
 
-The number of days for which automated backups are retained. Setting
-this parameter to a positive number enables backups. Setting this
-parameter to 0 disables automated backups.
+The number of days to retain automated backups. Setting this parameter
+to a positive number enables backups. Setting this parameter to 0
+disables automated backups.
 
 Default: 1
 
@@ -59,11 +61,7 @@ Constraints:
 
 =item *
 
-Must be a value from 0 to 35.
-
-=item *
-
-Can't be set to 0 if the DB instance is a source to Read Replicas.
+Must be a value from 0 to 8
 
 =back
 
@@ -97,7 +95,7 @@ parameter.
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region. To see the time blocks available,
 see Adjusting the Preferred Maintenance Window
-(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
 in the I<Amazon RDS User Guide.>
 
 Constraints:

@@ -33,23 +33,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ApprovalRules   = $GetPatchBaselineResult->ApprovalRules;
+    my $GlobalFilters   = $GetPatchBaselineResult->GlobalFilters;
     my $ApprovedPatches = $GetPatchBaselineResult->ApprovedPatches;
-    my $ApprovedPatchesComplianceLevel =
-      $GetPatchBaselineResult->ApprovedPatchesComplianceLevel;
+    my $RejectedPatches = $GetPatchBaselineResult->RejectedPatches;
+    my $Sources         = $GetPatchBaselineResult->Sources;
+    my $ModifiedDate    = $GetPatchBaselineResult->ModifiedDate;
+    my $CreatedDate     = $GetPatchBaselineResult->CreatedDate;
+    my $PatchGroups     = $GetPatchBaselineResult->PatchGroups;
     my $ApprovedPatchesEnableNonSecurity =
       $GetPatchBaselineResult->ApprovedPatchesEnableNonSecurity;
-    my $BaselineId            = $GetPatchBaselineResult->BaselineId;
-    my $CreatedDate           = $GetPatchBaselineResult->CreatedDate;
-    my $Description           = $GetPatchBaselineResult->Description;
-    my $GlobalFilters         = $GetPatchBaselineResult->GlobalFilters;
-    my $ModifiedDate          = $GetPatchBaselineResult->ModifiedDate;
-    my $Name                  = $GetPatchBaselineResult->Name;
-    my $OperatingSystem       = $GetPatchBaselineResult->OperatingSystem;
-    my $PatchGroups           = $GetPatchBaselineResult->PatchGroups;
-    my $RejectedPatches       = $GetPatchBaselineResult->RejectedPatches;
-    my $RejectedPatchesAction = $GetPatchBaselineResult->RejectedPatchesAction;
-    my $Sources               = $GetPatchBaselineResult->Sources;
+    my $ApprovalRules = $GetPatchBaselineResult->ApprovalRules;
+    my $ApprovedPatchesComplianceLevel =
+      $GetPatchBaselineResult->ApprovedPatchesComplianceLevel;
+    my $BaselineId      = $GetPatchBaselineResult->BaselineId;
+    my $OperatingSystem = $GetPatchBaselineResult->OperatingSystem;
+    my $Description     = $GetPatchBaselineResult->Description;
+    my $Name            = $GetPatchBaselineResult->Name;
 
     # Returns a L<Paws::SSM::GetPatchBaselineResult> object.
 

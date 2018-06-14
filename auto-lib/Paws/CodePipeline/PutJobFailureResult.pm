@@ -30,10 +30,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $codepipeline = Paws->service('CodePipeline');
     $codepipeline->PutJobFailureResult(
       FailureDetails => {
-        Message => 'MyMessage',    # min: 1, max: 5000
-        Type    => 'JobFailed'
+        message => 'MyMessage',    # min: 1, max: 5000
+        type    => 'JobFailed'
         , # values: JobFailed, ConfigurationError, PermissionError, RevisionOutOfSync, RevisionUnavailable, SystemUnavailable
-        ExternalExecutionId => 'MyExecutionId',    # min: 1, max: 1500; OPTIONAL
+        externalExecutionId => 'MyExecutionId',    # min: 1, max: 1500; OPTIONAL
       },
       JobId => 'MyJobId',
 
@@ -54,7 +54,7 @@ The details about the failure of a job.
 =head2 B<REQUIRED> JobId => Str
 
 The unique system-generated ID of the job that failed. This is the same
-ID returned from C<PollForJobs>.
+ID returned from PollForJobs.
 
 
 

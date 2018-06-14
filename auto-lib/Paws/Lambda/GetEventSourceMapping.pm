@@ -30,20 +30,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $lambda = Paws->service('Lambda');
     # To retrieve a Lambda function's event source mapping
     # This operation retrieves a Lambda function's event source mapping
-    my $EventSourceMappingConfiguration =
-      $lambda->GetEventSourceMapping( 'UUID' => '123489-xxxxx-kdla8d89d7' );
+    my $EventSourceMappingConfiguration = $lambda->GetEventSourceMapping(
+      {
+        'UUID' => '123489-xxxxx-kdla8d89d7'
+      }
+    );
 
     # Results:
-    my $BatchSize      = $EventSourceMappingConfiguration->BatchSize;
-    my $EventSourceArn = $EventSourceMappingConfiguration->EventSourceArn;
-    my $FunctionArn    = $EventSourceMappingConfiguration->FunctionArn;
-    my $LastModified   = $EventSourceMappingConfiguration->LastModified;
     my $LastProcessingResult =
       $EventSourceMappingConfiguration->LastProcessingResult;
-    my $State = $EventSourceMappingConfiguration->State;
+    my $EventSourceArn = $EventSourceMappingConfiguration->EventSourceArn;
+    my $State          = $EventSourceMappingConfiguration->State;
     my $StateTransitionReason =
       $EventSourceMappingConfiguration->StateTransitionReason;
-    my $UUID = $EventSourceMappingConfiguration->UUID;
+    my $BatchSize    = $EventSourceMappingConfiguration->BatchSize;
+    my $FunctionArn  = $EventSourceMappingConfiguration->FunctionArn;
+    my $UUID         = $EventSourceMappingConfiguration->UUID;
+    my $LastModified = $EventSourceMappingConfiguration->LastModified;
 
     # Returns a L<Paws::Lambda::EventSourceMappingConfiguration> object.
 
@@ -55,7 +58,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 B<REQUIRED> UUID => Str
 
-The identifier of the event source mapping.
+The AWS Lambda assigned ID of the event source mapping.
 
 
 

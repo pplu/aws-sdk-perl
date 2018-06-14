@@ -33,33 +33,33 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $IsLogging = $GetTrailStatusResponse->IsLogging;
-    my $LatestCloudWatchLogsDeliveryError =
-      $GetTrailStatusResponse->LatestCloudWatchLogsDeliveryError;
-    my $LatestCloudWatchLogsDeliveryTime =
-      $GetTrailStatusResponse->LatestCloudWatchLogsDeliveryTime;
-    my $LatestDeliveryAttemptSucceeded =
-      $GetTrailStatusResponse->LatestDeliveryAttemptSucceeded;
-    my $LatestDeliveryAttemptTime =
-      $GetTrailStatusResponse->LatestDeliveryAttemptTime;
-    my $LatestDeliveryError = $GetTrailStatusResponse->LatestDeliveryError;
-    my $LatestDeliveryTime  = $GetTrailStatusResponse->LatestDeliveryTime;
-    my $LatestDigestDeliveryError =
-      $GetTrailStatusResponse->LatestDigestDeliveryError;
+    my $IsLogging        = $GetTrailStatusResponse->IsLogging;
+    my $StartLoggingTime = $GetTrailStatusResponse->StartLoggingTime;
     my $LatestDigestDeliveryTime =
       $GetTrailStatusResponse->LatestDigestDeliveryTime;
-    my $LatestNotificationAttemptSucceeded =
-      $GetTrailStatusResponse->LatestNotificationAttemptSucceeded;
-    my $LatestNotificationAttemptTime =
-      $GetTrailStatusResponse->LatestNotificationAttemptTime;
-    my $LatestNotificationError =
-      $GetTrailStatusResponse->LatestNotificationError;
+    my $StopLoggingTime = $GetTrailStatusResponse->StopLoggingTime;
     my $LatestNotificationTime =
       $GetTrailStatusResponse->LatestNotificationTime;
-    my $StartLoggingTime   = $GetTrailStatusResponse->StartLoggingTime;
-    my $StopLoggingTime    = $GetTrailStatusResponse->StopLoggingTime;
-    my $TimeLoggingStarted = $GetTrailStatusResponse->TimeLoggingStarted;
+    my $LatestCloudWatchLogsDeliveryError =
+      $GetTrailStatusResponse->LatestCloudWatchLogsDeliveryError;
+    my $LatestNotificationError =
+      $GetTrailStatusResponse->LatestNotificationError;
+    my $LatestDeliveryError = $GetTrailStatusResponse->LatestDeliveryError;
+    my $LatestNotificationAttemptTime =
+      $GetTrailStatusResponse->LatestNotificationAttemptTime;
+    my $LatestDeliveryAttemptSucceeded =
+      $GetTrailStatusResponse->LatestDeliveryAttemptSucceeded;
+    my $LatestDigestDeliveryError =
+      $GetTrailStatusResponse->LatestDigestDeliveryError;
+    my $LatestDeliveryAttemptTime =
+      $GetTrailStatusResponse->LatestDeliveryAttemptTime;
+    my $LatestNotificationAttemptSucceeded =
+      $GetTrailStatusResponse->LatestNotificationAttemptSucceeded;
     my $TimeLoggingStopped = $GetTrailStatusResponse->TimeLoggingStopped;
+    my $LatestDeliveryTime = $GetTrailStatusResponse->LatestDeliveryTime;
+    my $TimeLoggingStarted = $GetTrailStatusResponse->TimeLoggingStarted;
+    my $LatestCloudWatchLogsDeliveryTime =
+      $GetTrailStatusResponse->LatestCloudWatchLogsDeliveryTime;
 
     # Returns a L<Paws::CloudTrail::GetTrailStatusResponse> object.
 
@@ -76,7 +76,7 @@ requesting status. To get the status of a shadow trail (a replication
 of the trail in another region), you must specify its ARN. The format
 of a trail ARN is:
 
-C<arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail>
+C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>
 
 
 

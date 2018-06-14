@@ -7,7 +7,6 @@ package Paws::LexModels::PutBot;
   has ClarificationPrompt => (is => 'ro', isa => 'Paws::LexModels::Prompt', traits => ['NameInRequest'], request_name => 'clarificationPrompt');
   has CreateVersion => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'createVersion');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has DetectSentiment => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'detectSentiment');
   has IdleSessionTTLInSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'idleSessionTTLInSeconds');
   has Intents => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::Intent]', traits => ['NameInRequest'], request_name => 'intents');
   has Locale => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'locale', required => 1);
@@ -45,37 +44,36 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Locale         => 'en-US',
       Name           => 'MyBotName',
       AbortStatement => {
-        Messages => [
+        messages => [
           {
-            Content => 'MyContentString',    # min: 1, max: 1000
-            ContentType => 'PlainText', # values: PlainText, SSML, CustomPayload
-            GroupNumber => 1,           # min: 1, max: 5; OPTIONAL
+            content => 'MyContentString',    # min: 1, max: 1000
+            contentType => 'PlainText', # values: PlainText, SSML, CustomPayload
+            groupNumber => 1,           # min: 1, max: 5; OPTIONAL
           },
           ...
         ],                              # min: 1, max: 15
-        ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
+        responseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
       },    # OPTIONAL
       Checksum            => 'MyString',    # OPTIONAL
       ClarificationPrompt => {
-        MaxAttempts => 1,                   # min: 1, max: 5
-        Messages    => [
+        messages => [
           {
-            Content => 'MyContentString',    # min: 1, max: 1000
-            ContentType => 'PlainText', # values: PlainText, SSML, CustomPayload
-            GroupNumber => 1,           # min: 1, max: 5; OPTIONAL
+            content => 'MyContentString',    # min: 1, max: 1000
+            contentType => 'PlainText', # values: PlainText, SSML, CustomPayload
+            groupNumber => 1,           # min: 1, max: 5; OPTIONAL
           },
           ...
         ],                              # min: 1, max: 15
-        ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
+        maxAttempts  => 1,                   # min: 1, max: 5
+        responseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
       },    # OPTIONAL
       CreateVersion           => 1,                  # OPTIONAL
       Description             => 'MyDescription',    # OPTIONAL
-      DetectSentiment         => 1,                  # OPTIONAL
       IdleSessionTTLInSeconds => 1,                  # OPTIONAL
       Intents                 => [
         {
-          IntentName    => 'MyIntentName',           # min: 1, max: 100
-          IntentVersion => 'MyVersion',              # min: 1, max: 64
+          intentVersion => 'MyVersion',              # min: 1, max: 64
+          intentName    => 'MyIntentName',           # min: 1, max: 100
 
         },
         ...
@@ -85,28 +83,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $AbortStatement          = $PutBotResponse->AbortStatement;
-    my $Checksum                = $PutBotResponse->Checksum;
-    my $ChildDirected           = $PutBotResponse->ChildDirected;
-    my $ClarificationPrompt     = $PutBotResponse->ClarificationPrompt;
-    my $CreateVersion           = $PutBotResponse->CreateVersion;
-    my $CreatedDate             = $PutBotResponse->CreatedDate;
-    my $Description             = $PutBotResponse->Description;
-    my $DetectSentiment         = $PutBotResponse->DetectSentiment;
-    my $FailureReason           = $PutBotResponse->FailureReason;
-    my $IdleSessionTTLInSeconds = $PutBotResponse->IdleSessionTTLInSeconds;
-    my $Intents                 = $PutBotResponse->Intents;
-    my $LastUpdatedDate         = $PutBotResponse->LastUpdatedDate;
-    my $Locale                  = $PutBotResponse->Locale;
-    my $Name                    = $PutBotResponse->Name;
     my $Status                  = $PutBotResponse->Status;
-    my $Version                 = $PutBotResponse->Version;
+    my $CreateVersion           = $PutBotResponse->CreateVersion;
+    my $ChildDirected           = $PutBotResponse->ChildDirected;
+    my $FailureReason           = $PutBotResponse->FailureReason;
+    my $Intents                 = $PutBotResponse->Intents;
+    my $Checksum                = $PutBotResponse->Checksum;
+    my $ClarificationPrompt     = $PutBotResponse->ClarificationPrompt;
+    my $AbortStatement          = $PutBotResponse->AbortStatement;
+    my $Locale                  = $PutBotResponse->Locale;
+    my $LastUpdatedDate         = $PutBotResponse->LastUpdatedDate;
     my $VoiceId                 = $PutBotResponse->VoiceId;
+    my $CreatedDate             = $PutBotResponse->CreatedDate;
+    my $Version                 = $PutBotResponse->Version;
+    my $IdleSessionTTLInSeconds = $PutBotResponse->IdleSessionTTLInSeconds;
+    my $Description             = $PutBotResponse->Description;
+    my $Name                    = $PutBotResponse->Name;
 
     # Returns a L<Paws::LexModels::PutBotResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/models.lex/PutBot>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/lex/>
 
 =head1 ATTRIBUTES
 
@@ -128,11 +125,6 @@ For example, in a pizza ordering application, C<OrderPizza> might be
 one of the intents. This intent might require the C<CrustType> slot.
 You specify the C<valueElicitationPrompt> field when you create the
 C<CrustType> slot.
-
-If you have defined a fallback intent the abort statement will not be
-sent to the user, the fallback intent is used instead. For more
-information, see AMAZON.FallbackIntent
-(https://docs.aws.amazon.com/lex/latest/dg/built-in-intent-fallback.html).
 
 
 
@@ -185,7 +177,7 @@ Lex FAQ. (https://aws.amazon.com/lex/faqs#data-security)
 
 When Amazon Lex doesn't understand the user's intent, it uses this
 message to get clarification. To specify how many times Amazon Lex
-should repeat the clarification prompt, use the C<maxAttempts> field.
+should repeate the clarification prompt, use the C<maxAttempts> field.
 If Amazon Lex still doesn't understand, it sends the message in the
 C<abortStatement> field.
 
@@ -194,63 +186,17 @@ correct response from the user. for example, for a bot that orders
 pizza and drinks, you might create this clarification prompt: "What
 would you like to do? You can say 'Order a pizza' or 'Order a drink.'"
 
-If you have defined a fallback intent, it will be invoked if the
-clarification prompt is repeated the number of times defined in the
-C<maxAttempts> field. For more information, see AMAZON.FallbackIntent
-(https://docs.aws.amazon.com/lex/latest/dg/built-in-intent-fallback.html).
-
-If you don't define a clarification prompt, at runtime Amazon Lex will
-return a 400 Bad Request exception in three cases:
-
-=over
-
-=item *
-
-Follow-up prompt - When the user responds to a follow-up prompt but
-does not provide an intent. For example, in response to a follow-up
-prompt that says "Would you like anything else today?" the user says
-"Yes." Amazon Lex will return a 400 Bad Request exception because it
-does not have a clarification prompt to send to the user to get an
-intent.
-
-=item *
-
-Lambda function - When using a Lambda function, you return an
-C<ElicitIntent> dialog type. Since Amazon Lex does not have a
-clarification prompt to get an intent from the user, it returns a 400
-Bad Request exception.
-
-=item *
-
-PutSession operation - When using the C<PutSession> operation, you send
-an C<ElicitIntent> dialog type. Since Amazon Lex does not have a
-clarification prompt to get an intent from the user, it returns a 400
-Bad Request exception.
-
-=back
-
-
 
 
 =head2 CreateVersion => Bool
 
-When set to C<true> a new numbered version of the bot is created. This
-is the same as calling the C<CreateBotVersion> operation. If you don't
-specify C<createVersion>, the default is C<false>.
+
 
 
 
 =head2 Description => Str
 
 A description of the bot.
-
-
-
-=head2 DetectSentiment => Bool
-
-When set to C<true> user utterances are sent to Amazon Comprehend for
-sentiment analysis. If you don't specify C<detectSentiment>, the
-default is C<false>.
 
 
 
@@ -313,9 +259,9 @@ Valid values are: C<"SAVE">, C<"BUILD">
 
 The Amazon Polly voice ID that you want Amazon Lex to use for voice
 interactions with the user. The locale configured for the voice must
-match the locale of the bot. For more information, see Voices in Amazon
-Polly (https://docs.aws.amazon.com/polly/latest/dg/voicelist.html) in
-the I<Amazon Polly Developer Guide>.
+match the locale of the bot. For more information, see Available Voices
+(http://docs.aws.amazon.com/polly/latest/dg/voicelist.html) in the
+I<Amazon Polly Developer Guide>.
 
 
 

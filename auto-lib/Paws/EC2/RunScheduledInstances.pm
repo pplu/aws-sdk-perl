@@ -34,25 +34,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To launch a Scheduled Instance in a VPC
     # This example launches the specified Scheduled Instance in a VPC.
     my $RunScheduledInstancesResult = $ec2->RunScheduledInstances(
-      'InstanceCount'       => 1,
-      'LaunchSpecification' => {
-        'IamInstanceProfile' => {
-          'Name' => 'my-iam-role'
-        },
-        'ImageId'           => 'ami-12345678',
-        'InstanceType'      => 'c4.large',
-        'KeyName'           => 'my-key-pair',
-        'NetworkInterfaces' => [
+      {
+        'ScheduledInstanceId' => 'sci-1234-1234-1234-1234-123456789012',
+        'InstanceCount'       => 1,
+        'LaunchSpecification' => {
+          'KeyName'           => 'my-key-pair',
+          'ImageId'           => 'ami-12345678',
+          'InstanceType'      => 'c4.large',
+          'NetworkInterfaces' => [
 
-          {
-            'AssociatePublicIpAddress' => 1,
-            'DeviceIndex'              => 0,
-            'Groups'                   => ['sg-12345678'],
-            'SubnetId'                 => 'subnet-12345678'
+            {
+              'Groups'                   => ['sg-12345678'],
+              'AssociatePublicIpAddress' => 1,
+              'SubnetId'                 => 'subnet-12345678',
+              'DeviceIndex'              => 0
+            }
+          ],
+          'IamInstanceProfile' => {
+            'Name' => 'my-iam-role'
           }
-        ]
-      },
-      'ScheduledInstanceId' => 'sci-1234-1234-1234-1234-123456789012'
+        }
+      }
     );
 
     # Results:
@@ -62,20 +64,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To launch a Scheduled Instance in EC2-Classic
     # This example launches the specified Scheduled Instance in EC2-Classic.
     my $RunScheduledInstancesResult = $ec2->RunScheduledInstances(
-      'InstanceCount'       => 1,
-      'LaunchSpecification' => {
-        'IamInstanceProfile' => {
-          'Name' => 'my-iam-role'
-        },
-        'ImageId'      => 'ami-12345678',
-        'InstanceType' => 'c4.large',
-        'KeyName'      => 'my-key-pair',
-        'Placement'    => {
-          'AvailabilityZone' => 'us-west-2b'
-        },
-        'SecurityGroupIds' => ['sg-12345678']
-      },
-      'ScheduledInstanceId' => 'sci-1234-1234-1234-1234-123456789012'
+      {
+        'ScheduledInstanceId' => 'sci-1234-1234-1234-1234-123456789012',
+        'InstanceCount'       => 1,
+        'LaunchSpecification' => {
+          'SecurityGroupIds' => ['sg-12345678'],
+          'KeyName'          => 'my-key-pair',
+          'ImageId'          => 'ami-12345678',
+          'InstanceType'     => 'c4.large',
+          'Placement'        => {
+            'AvailabilityZone' => 'us-west-2b'
+          },
+          'IamInstanceProfile' => {
+            'Name' => 'my-iam-role'
+          }
+        }
+      }
     );
 
     # Results:
@@ -93,7 +97,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 Unique, case-sensitive identifier that ensures the idempotency of the
 request. For more information, see Ensuring Idempotency
-(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 
 
 

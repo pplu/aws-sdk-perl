@@ -2,12 +2,12 @@
 package Paws::Greengrass::CreateSoftwareUpdateJob;
   use Moose;
   has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
-  has S3UrlSignerRole => (is => 'ro', isa => 'Str', required => 1);
-  has SoftwareToUpdate => (is => 'ro', isa => 'Str', required => 1);
+  has S3UrlSignerRole => (is => 'ro', isa => 'Str');
+  has SoftwareToUpdate => (is => 'ro', isa => 'Str');
   has UpdateAgentLogLevel => (is => 'ro', isa => 'Str');
-  has UpdateTargets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has UpdateTargetsArchitecture => (is => 'ro', isa => 'Str', required => 1);
-  has UpdateTargetsOperatingSystem => (is => 'ro', isa => 'Str', required => 1);
+  has UpdateTargets => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has UpdateTargetsArchitecture => (is => 'ro', isa => 'Str');
+  has UpdateTargetsOperatingSystem => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -35,25 +35,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $greengrass = Paws->service('Greengrass');
     my $CreateSoftwareUpdateJobResponse = $greengrass->CreateSoftwareUpdateJob(
-      S3UrlSignerRole              => 'MyS3UrlSignerRole',
-      SoftwareToUpdate             => 'core',
-      UpdateTargets                => [ 'My__string', ... ],
-      UpdateTargetsArchitecture    => 'armv6l',
-      UpdateTargetsOperatingSystem => 'ubuntu',
-      AmznClientToken              => 'My__string',            # OPTIONAL
-      UpdateAgentLogLevel          => 'NONE',                  # OPTIONAL
+      AmznClientToken              => 'My__string',             # OPTIONAL
+      S3UrlSignerRole              => 'MyS3UrlSignerRole',      # OPTIONAL
+      SoftwareToUpdate             => 'core',                   # OPTIONAL
+      UpdateAgentLogLevel          => 'NONE',                   # OPTIONAL
+      UpdateTargets                => [ 'My__string', ... ],    # OPTIONAL
+      UpdateTargetsArchitecture    => 'armv7l',                 # OPTIONAL
+      UpdateTargetsOperatingSystem => 'ubuntu',                 # OPTIONAL
     );
 
     # Results:
-    my $IotJobArn = $CreateSoftwareUpdateJobResponse->IotJobArn;
     my $IotJobId  = $CreateSoftwareUpdateJobResponse->IotJobId;
-    my $PlatformSoftwareVersion =
-      $CreateSoftwareUpdateJobResponse->PlatformSoftwareVersion;
+    my $IotJobArn = $CreateSoftwareUpdateJobResponse->IotJobArn;
 
     # Returns a L<Paws::Greengrass::CreateSoftwareUpdateJobResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/greengrass/CreateSoftwareUpdateJob>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>
 
 =head1 ATTRIBUTES
 
@@ -64,13 +62,13 @@ A client token used to correlate requests and responses.
 
 
 
-=head2 B<REQUIRED> S3UrlSignerRole => Str
+=head2 S3UrlSignerRole => Str
 
 
 
 
 
-=head2 B<REQUIRED> SoftwareToUpdate => Str
+=head2 SoftwareToUpdate => Str
 
 
 
@@ -82,23 +80,23 @@ Valid values are: C<"core">, C<"ota_agent">
 
 Valid values are: C<"NONE">, C<"TRACE">, C<"DEBUG">, C<"VERBOSE">, C<"INFO">, C<"WARN">, C<"ERROR">, C<"FATAL">
 
-=head2 B<REQUIRED> UpdateTargets => ArrayRef[Str|Undef]
+=head2 UpdateTargets => ArrayRef[Str|Undef]
 
 
 
 
 
-=head2 B<REQUIRED> UpdateTargetsArchitecture => Str
+=head2 UpdateTargetsArchitecture => Str
 
 
 
-Valid values are: C<"armv6l">, C<"armv7l">, C<"x86_64">, C<"aarch64">
+Valid values are: C<"armv7l">, C<"x86_64">, C<"aarch64">
 
-=head2 B<REQUIRED> UpdateTargetsOperatingSystem => Str
+=head2 UpdateTargetsOperatingSystem => Str
 
 
 
-Valid values are: C<"ubuntu">, C<"raspbian">, C<"amazon_linux">, C<"openwrt">
+Valid values are: C<"ubuntu">, C<"raspbian">, C<"amazon_linux">
 
 
 =head1 SEE ALSO

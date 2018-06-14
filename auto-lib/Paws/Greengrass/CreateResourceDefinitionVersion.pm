@@ -37,64 +37,48 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Resources            => [
         {
           Id                    => 'My__string',
-          Name                  => 'My__string',
           ResourceDataContainer => {
-            LocalDeviceResourceData => {
-              GroupOwnerSetting => {
-                AutoAddGroupOwner => 1,              # OPTIONAL
-                GroupOwner        => 'My__string',
-              },    # OPTIONAL
-              SourcePath => 'My__string',
-            },    # OPTIONAL
             LocalVolumeResourceData => {
               DestinationPath   => 'My__string',
+              SourcePath        => 'My__string',
               GroupOwnerSetting => {
                 AutoAddGroupOwner => 1,              # OPTIONAL
                 GroupOwner        => 'My__string',
               },    # OPTIONAL
-              SourcePath => 'My__string',
-            },    # OPTIONAL
-            S3MachineLearningModelResourceData => {
-              DestinationPath => 'My__string',
-              OwnerSetting    => {
-                GroupOwner      => 'My__string',
-                GroupPermission => 'ro',           # values: ro, rw
-
-              },    # OPTIONAL
-              S3Uri => 'My__string',
             },    # OPTIONAL
             SageMakerMachineLearningModelResourceData => {
               DestinationPath => 'My__string',
-              OwnerSetting    => {
-                GroupOwner      => 'My__string',
-                GroupPermission => 'ro',           # values: ro, rw
-
-              },    # OPTIONAL
               SageMakerJobArn => 'My__string',
             },    # OPTIONAL
-            SecretsManagerSecretResourceData => {
-              ARN                               => 'My__string',
-              AdditionalStagingLabelsToDownload => [ 'My__string', ... ]
-              ,    # OPTIONAL
+            LocalDeviceResourceData => {
+              SourcePath        => 'My__string',
+              GroupOwnerSetting => {
+                AutoAddGroupOwner => 1,              # OPTIONAL
+                GroupOwner        => 'My__string',
+              },    # OPTIONAL
             },    # OPTIONAL
-          },
-
+            S3MachineLearningModelResourceData => {
+              DestinationPath => 'My__string',
+              S3Uri           => 'My__string',
+            },    # OPTIONAL
+          },    # OPTIONAL
+          Name => 'My__string',
         },
         ...
-      ],          # OPTIONAL
+      ],        # OPTIONAL
       );
 
     # Results:
-    my $Arn = $CreateResourceDefinitionVersionResponse->Arn;
     my $CreationTimestamp =
       $CreateResourceDefinitionVersionResponse->CreationTimestamp;
-    my $Id      = $CreateResourceDefinitionVersionResponse->Id;
     my $Version = $CreateResourceDefinitionVersionResponse->Version;
+    my $Id      = $CreateResourceDefinitionVersionResponse->Id;
+    my $Arn     = $CreateResourceDefinitionVersionResponse->Arn;
 
 # Returns a L<Paws::Greengrass::CreateResourceDefinitionVersionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/greengrass/CreateResourceDefinitionVersion>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>
 
 =head1 ATTRIBUTES
 

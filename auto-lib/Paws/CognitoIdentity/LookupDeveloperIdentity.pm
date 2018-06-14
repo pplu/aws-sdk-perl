@@ -41,10 +41,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $NextToken = $LookupDeveloperIdentityResponse->NextToken;
     my $DeveloperUserIdentifierList =
       $LookupDeveloperIdentityResponse->DeveloperUserIdentifierList;
     my $IdentityId = $LookupDeveloperIdentityResponse->IdentityId;
-    my $NextToken  = $LookupDeveloperIdentityResponse->NextToken;
 
    # Returns a L<Paws::CognitoIdentity::LookupDeveloperIdentityResponse> object.
 

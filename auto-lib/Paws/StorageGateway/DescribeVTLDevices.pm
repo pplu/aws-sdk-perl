@@ -34,19 +34,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a description of virtual tape library (VTL) devices for the
     # specified gateway.
     my $DescribeVTLDevicesOutput = $storagegateway->DescribeVTLDevices(
-      'GatewayARN' =>
-        'arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B',
-      'Limit'         => 123,
-      'Marker'        => 1,
-      'VTLDeviceARNs' => [
+      {
+        'VTLDeviceARNs' => [
 
-      ]
+        ],
+        'Limit'  => 123,
+        'Marker' => 1,
+        'GatewayARN' =>
+          'arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B'
+      }
     );
 
     # Results:
-    my $GatewayARN = $DescribeVTLDevicesOutput->GatewayARN;
-    my $Marker     = $DescribeVTLDevicesOutput->Marker;
     my $VTLDevices = $DescribeVTLDevicesOutput->VTLDevices;
+    my $Marker     = $DescribeVTLDevicesOutput->Marker;
+    my $GatewayARN = $DescribeVTLDevicesOutput->GatewayARN;
 
     # Returns a L<Paws::StorageGateway::DescribeVTLDevicesOutput> object.
 

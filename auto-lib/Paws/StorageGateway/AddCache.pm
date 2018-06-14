@@ -32,10 +32,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example shows a request that activates a gateway-stored
     # volume.
     my $AddCacheOutput = $storagegateway->AddCache(
-      'DiskIds' =>
-        [ 'pci-0000:03:00.0-scsi-0:0:0:0', 'pci-0000:03:00.0-scsi-0:0:1:0' ],
-      'GatewayARN' =>
-        'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B'
+      {
+        'DiskIds' =>
+          [ 'pci-0000:03:00.0-scsi-0:0:0:0', 'pci-0000:03:00.0-scsi-0:0:1:0' ],
+        'GatewayARN' =>
+          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B'
+      }
     );
 
     # Results:
@@ -51,9 +53,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sto
 
 =head2 B<REQUIRED> DiskIds => ArrayRef[Str|Undef]
 
-An array of strings that identify disks that are to be configured as
-working storage. Each string have a minimum length of 1 and maximum
-length of 300. You can get the disk IDs from the ListLocalDisks API.
+
 
 
 

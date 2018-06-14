@@ -44,8 +44,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Differences = $GetDifferencesOutput->Differences;
     my $NextToken   = $GetDifferencesOutput->NextToken;
+    my $Differences = $GetDifferencesOutput->Differences;
 
     # Returns a L<Paws::CodeCommit::GetDifferencesOutput> object.
 

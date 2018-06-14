@@ -33,20 +33,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example deletes an XssMatchTuple object (filters) in an
     # XssMatchSet with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.
     my $UpdateXssMatchSetResponse = $waf -regional->UpdateXssMatchSet(
-      'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
-      'Updates'     => [
+      {
+        'Updates' => [
 
-        {
-          'Action'        => 'DELETE',
-          'XssMatchTuple' => {
-            'FieldToMatch' => {
-              'Type' => 'QUERY_STRING'
-            },
-            'TextTransformation' => 'URL_DECODE'
+          {
+            'Action'        => 'DELETE',
+            'XssMatchTuple' => {
+              'FieldToMatch' => {
+                'Type' => 'QUERY_STRING'
+              },
+              'TextTransformation' => 'URL_DECODE'
+            }
           }
-        }
-      ],
-      'XssMatchSetId' => 'example1ds3t-46da-4fdb-b8d5-abc321j569j5'
+        ],
+        'XssMatchSetId' => 'example1ds3t-46da-4fdb-b8d5-abc321j569j5',
+        'ChangeToken'   => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f'
+      }
     );
 
     # Results:
@@ -69,7 +71,7 @@ The value returned by the most recent call to GetChangeToken.
 =head2 B<REQUIRED> Updates => ArrayRef[L<Paws::WAFRegional::XssMatchSetUpdate>]
 
 An array of C<XssMatchSetUpdate> objects that you want to insert into
-or delete from an XssMatchSet. For more information, see the applicable
+or delete from a XssMatchSet. For more information, see the applicable
 data types:
 
 =over

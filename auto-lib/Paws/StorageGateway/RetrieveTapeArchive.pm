@@ -33,10 +33,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # gateway-VTL. Virtual tapes archived in the VTS are not associated with any
     # gateway.
     my $RetrieveTapeArchiveOutput = $storagegateway->RetrieveTapeArchive(
-      'GatewayARN' =>
-        'arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B',
-      'TapeARN' =>
-        'arn:aws:storagegateway:us-east-1:999999999999:tape/TEST0AA2AF'
+      {
+        'TapeARN' =>
+          'arn:aws:storagegateway:us-east-1:999999999999:tape/TEST0AA2AF',
+        'GatewayARN' =>
+          'arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B'
+      }
     );
 
     # Results:
@@ -54,7 +56,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sto
 
 The Amazon Resource Name (ARN) of the gateway you want to retrieve the
 virtual tape to. Use the ListGateways operation to return a list of
-gateways for your account and AWS Region.
+gateways for your account and region.
 
 You retrieve archived virtual tapes to only one gateway and the gateway
 must be a tape gateway.

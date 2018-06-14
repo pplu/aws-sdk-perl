@@ -40,19 +40,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       BeforeCommitId     => 'MyCommitId',              # OPTIONAL
       ClientRequestToken => 'MyClientRequestToken',    # OPTIONAL
       Location           => {
-        FilePath            => 'MyPath',    # OPTIONAL
-        FilePosition        => 1,           # OPTIONAL
-        RelativeFileVersion => 'BEFORE',    # values: BEFORE, AFTER; OPTIONAL
+        filePosition        => 1,           # OPTIONAL
+        relativeFileVersion => 'BEFORE',    # values: BEFORE, AFTER; OPTIONAL
+        filePath            => 'MyPath',    # OPTIONAL
       },    # OPTIONAL
       );
 
     # Results:
+    my $BeforeCommitId = $PostCommentForComparedCommitOutput->BeforeCommitId;
     my $AfterBlobId    = $PostCommentForComparedCommitOutput->AfterBlobId;
     my $AfterCommitId  = $PostCommentForComparedCommitOutput->AfterCommitId;
     my $BeforeBlobId   = $PostCommentForComparedCommitOutput->BeforeBlobId;
-    my $BeforeCommitId = $PostCommentForComparedCommitOutput->BeforeCommitId;
-    my $Comment        = $PostCommentForComparedCommitOutput->Comment;
     my $Location       = $PostCommentForComparedCommitOutput->Location;
+    my $Comment        = $PostCommentForComparedCommitOutput->Comment;
     my $RepositoryName = $PostCommentForComparedCommitOutput->RepositoryName;
 
     # Returns a L<Paws::CodeCommit::PostCommentForComparedCommitOutput> object.
@@ -66,25 +66,24 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 =head2 B<REQUIRED> AfterCommitId => Str
 
 To establish the directionality of the comparison, the full commit ID
-of the after commit.
+of the 'after' commit.
 
 
 
 =head2 BeforeCommitId => Str
 
 To establish the directionality of the comparison, the full commit ID
-of the before commit. Required for commenting on any commit unless that
-commit is the initial commit.
+of the 'before' commit.
 
 
 
 =head2 ClientRequestToken => Str
 
-A unique, client-generated idempotency token that, when provided in a
+A unique, client-generated idempotency token that when provided in a
 request, ensures the request cannot be repeated with a changed
 parameter. If a request is received with the same parameters and a
-token is included, the request returns information about the initial
-request that used that token.
+token is included, the request will return information about the
+initial request that used that token.
 
 
 

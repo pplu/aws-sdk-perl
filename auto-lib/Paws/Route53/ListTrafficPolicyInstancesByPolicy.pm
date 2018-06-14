@@ -46,16 +46,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $HostedZoneIdMarker =
-      $ListTrafficPolicyInstancesByPolicyResponse->HostedZoneIdMarker;
     my $IsTruncated = $ListTrafficPolicyInstancesByPolicyResponse->IsTruncated;
     my $MaxItems    = $ListTrafficPolicyInstancesByPolicyResponse->MaxItems;
-    my $TrafficPolicyInstanceNameMarker =
-      $ListTrafficPolicyInstancesByPolicyResponse
-      ->TrafficPolicyInstanceNameMarker;
+    my $HostedZoneIdMarker =
+      $ListTrafficPolicyInstancesByPolicyResponse->HostedZoneIdMarker;
     my $TrafficPolicyInstanceTypeMarker =
       $ListTrafficPolicyInstancesByPolicyResponse
       ->TrafficPolicyInstanceTypeMarker;
+    my $TrafficPolicyInstanceNameMarker =
+      $ListTrafficPolicyInstancesByPolicyResponse
+      ->TrafficPolicyInstanceNameMarker;
     my $TrafficPolicyInstances =
       $ListTrafficPolicyInstancesByPolicyResponse->TrafficPolicyInstances;
 

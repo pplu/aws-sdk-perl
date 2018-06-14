@@ -34,26 +34,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Arn                  = $GetGroupResponse->Arn;
     my $CreationTimestamp    = $GetGroupResponse->CreationTimestamp;
+    my $LatestVersionArn     = $GetGroupResponse->LatestVersionArn;
     my $Id                   = $GetGroupResponse->Id;
     my $LastUpdatedTimestamp = $GetGroupResponse->LastUpdatedTimestamp;
-    my $LatestVersion        = $GetGroupResponse->LatestVersion;
-    my $LatestVersionArn     = $GetGroupResponse->LatestVersionArn;
+    my $Arn                  = $GetGroupResponse->Arn;
     my $Name                 = $GetGroupResponse->Name;
-    my $Tags                 = $GetGroupResponse->Tags;
+    my $LatestVersion        = $GetGroupResponse->LatestVersion;
 
     # Returns a L<Paws::Greengrass::GetGroupResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/greengrass/GetGroup>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> GroupId => Str
 
-The ID of the Greengrass group.
+The ID of the AWS Greengrass group.
 
 
 

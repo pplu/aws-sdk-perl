@@ -34,17 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $IndexName          = $DescribeThingGroupResponse->IndexName;
-    my $QueryString        = $DescribeThingGroupResponse->QueryString;
-    my $QueryVersion       = $DescribeThingGroupResponse->QueryVersion;
-    my $Status             = $DescribeThingGroupResponse->Status;
-    my $ThingGroupArn      = $DescribeThingGroupResponse->ThingGroupArn;
-    my $ThingGroupId       = $DescribeThingGroupResponse->ThingGroupId;
     my $ThingGroupMetadata = $DescribeThingGroupResponse->ThingGroupMetadata;
+    my $Version            = $DescribeThingGroupResponse->Version;
     my $ThingGroupName     = $DescribeThingGroupResponse->ThingGroupName;
+    my $ThingGroupArn      = $DescribeThingGroupResponse->ThingGroupArn;
     my $ThingGroupProperties =
       $DescribeThingGroupResponse->ThingGroupProperties;
-    my $Version = $DescribeThingGroupResponse->Version;
+    my $ThingGroupId = $DescribeThingGroupResponse->ThingGroupId;
 
     # Returns a L<Paws::IoT::DescribeThingGroupResponse> object.
 

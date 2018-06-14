@@ -5,8 +5,6 @@ package Paws::DirectConnect::CreateConnection;
   has ConnectionName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionName' , required => 1);
   has LagId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagId' );
   has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location' , required => 1);
-  has ProviderName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'providerName' );
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
@@ -37,34 +35,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ConnectionName => 'MyConnectionName',
       Location       => 'MyLocationCode',
       LagId          => 'MyLagId',            # OPTIONAL
-      ProviderName   => 'MyProviderName',     # OPTIONAL
-      Tags           => [
-        {
-          Key   => 'MyTagKey',                # min: 1, max: 128
-          Value => 'MyTagValue',              # max: 256; OPTIONAL
-        },
-        ...
-      ],                                      # OPTIONAL
     );
 
     # Results:
-    my $AwsDevice            = $Connection->AwsDevice;
-    my $AwsDeviceV2          = $Connection->AwsDeviceV2;
-    my $Bandwidth            = $Connection->Bandwidth;
-    my $ConnectionId         = $Connection->ConnectionId;
-    my $ConnectionName       = $Connection->ConnectionName;
-    my $ConnectionState      = $Connection->ConnectionState;
-    my $HasLogicalRedundancy = $Connection->HasLogicalRedundancy;
-    my $JumboFrameCapable    = $Connection->JumboFrameCapable;
-    my $LagId                = $Connection->LagId;
-    my $LoaIssueTime         = $Connection->LoaIssueTime;
-    my $Location             = $Connection->Location;
-    my $OwnerAccount         = $Connection->OwnerAccount;
-    my $PartnerName          = $Connection->PartnerName;
-    my $ProviderName         = $Connection->ProviderName;
-    my $Region               = $Connection->Region;
-    my $Tags                 = $Connection->Tags;
-    my $Vlan                 = $Connection->Vlan;
+    my $ConnectionState = $Connection->ConnectionState;
+    my $ConnectionName  = $Connection->ConnectionName;
+    my $Vlan            = $Connection->Vlan;
+    my $ConnectionId    = $Connection->ConnectionId;
+    my $Bandwidth       = $Connection->Bandwidth;
+    my $PartnerName     = $Connection->PartnerName;
+    my $AwsDevice       = $Connection->AwsDevice;
+    my $OwnerAccount    = $Connection->OwnerAccount;
+    my $LagId           = $Connection->LagId;
+    my $LoaIssueTime    = $Connection->LoaIssueTime;
+    my $Location        = $Connection->Location;
+    my $Region          = $Connection->Region;
 
     # Returns a L<Paws::DirectConnect::Connection> object.
 
@@ -76,38 +61,25 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =head2 B<REQUIRED> Bandwidth => Str
 
-The bandwidth of the connection.
+
 
 
 
 =head2 B<REQUIRED> ConnectionName => Str
 
-The name of the connection.
+
 
 
 
 =head2 LagId => Str
 
-The ID of the LAG.
+
 
 
 
 =head2 B<REQUIRED> Location => Str
 
-The location of the connection.
 
-
-
-=head2 ProviderName => Str
-
-The name of the service provider associated with the requested
-connection.
-
-
-
-=head2 Tags => ArrayRef[L<Paws::DirectConnect::Tag>]
-
-The tags to associate with the lag.
 
 
 

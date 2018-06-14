@@ -1,8 +1,7 @@
 
 package Paws::CloudFormation::DeleteStackInstances;
   use Moose;
-  has Accounts => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has DeploymentTargets => (is => 'ro', isa => 'Paws::CloudFormation::DeploymentTargets');
+  has Accounts => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has OperationId => (is => 'ro', isa => 'Str');
   has OperationPreferences => (is => 'ro', isa => 'Paws::CloudFormation::StackSetOperationPreferences');
   has Regions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
@@ -34,21 +33,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $cloudformation = Paws->service('CloudFormation');
     my $DeleteStackInstancesOutput = $cloudformation->DeleteStackInstances(
-      Regions           => [ 'MyRegion', ... ],
-      RetainStacks      => 1,
-      StackSetName      => 'MyStackSetName',
-      Accounts          => [ 'MyAccount', ... ],    # OPTIONAL
-      DeploymentTargets => {
-        Accounts              => [ 'MyAccount',              ... ],
-        OrganizationalUnitIds => [ 'MyOrganizationalUnitId', ... ],   # OPTIONAL
-      },    # OPTIONAL
+      Accounts     => [ 'MyAccount', ... ],
+      Regions      => [ 'MyRegion',  ... ],
+      RetainStacks => 1,
+      StackSetName => 'MyStackSetName',
       OperationId          => 'MyClientRequestToken',    # OPTIONAL
       OperationPreferences => {
-        FailureToleranceCount      => 1,    # OPTIONAL
-        FailureTolerancePercentage => 1,    # max: 100; OPTIONAL
-        MaxConcurrentCount         => 1,    # min: 1; OPTIONAL
         MaxConcurrentPercentage    => 1,    # min: 1, max: 100; OPTIONAL
-        RegionOrder => [ 'MyRegion', ... ],
+        FailureTolerancePercentage => 1,    # max: 100; OPTIONAL
+        RegionOrder           => [ 'MyRegion', ... ],
+        FailureToleranceCount => 1,                     # OPTIONAL
+        MaxConcurrentCount    => 1,                     # min: 1, ; OPTIONAL
       },    # OPTIONAL
     );
 
@@ -63,21 +58,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 =head1 ATTRIBUTES
 
 
-=head2 Accounts => ArrayRef[Str|Undef]
+=head2 B<REQUIRED> Accounts => ArrayRef[Str|Undef]
 
-[Self-managed permissions] The names of the AWS accounts that you want
-to delete stack instances for.
-
-You can specify C<Accounts> or C<DeploymentTargets>, but not both.
-
-
-
-=head2 DeploymentTargets => L<Paws::CloudFormation::DeploymentTargets>
-
-[C<Service-managed> permissions] The AWS Organizations accounts from
-which to delete stack instances.
-
-You can specify C<Accounts> or C<DeploymentTargets>, but not both.
+The names of the AWS accounts that you want to delete stack instances
+for.
 
 
 
@@ -118,7 +102,7 @@ delete the stacks. You can't reassociate a retained stack or add an
 existing, saved stack to a new stack set.
 
 For more information, see Stack set operation options
-(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-ops-options).
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-ops-options).
 
 
 

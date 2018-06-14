@@ -38,16 +38,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Capabilities       = $GetTemplateSummaryOutput->Capabilities;
+    my $Metadata           = $GetTemplateSummaryOutput->Metadata;
+    my $Parameters         = $GetTemplateSummaryOutput->Parameters;
+    my $Version            = $GetTemplateSummaryOutput->Version;
     my $CapabilitiesReason = $GetTemplateSummaryOutput->CapabilitiesReason;
     my $DeclaredTransforms = $GetTemplateSummaryOutput->DeclaredTransforms;
     my $Description        = $GetTemplateSummaryOutput->Description;
-    my $Metadata           = $GetTemplateSummaryOutput->Metadata;
-    my $Parameters         = $GetTemplateSummaryOutput->Parameters;
-    my $ResourceIdentifierSummaries =
-      $GetTemplateSummaryOutput->ResourceIdentifierSummaries;
-    my $ResourceTypes = $GetTemplateSummaryOutput->ResourceTypes;
-    my $Version       = $GetTemplateSummaryOutput->Version;
+    my $Capabilities       = $GetTemplateSummaryOutput->Capabilities;
+    my $ResourceTypes      = $GetTemplateSummaryOutput->ResourceTypes;
 
     # Returns a L<Paws::CloudFormation::GetTemplateSummaryOutput> object.
 
@@ -84,7 +82,7 @@ C<StackName>, C<StackSetName>, C<TemplateBody>, or C<TemplateURL>.
 Structure containing the template body with a minimum length of 1 byte
 and a maximum length of 51,200 bytes. For more information about
 templates, see Template Anatomy
-(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 in the AWS CloudFormation User Guide.
 
 Conditional: You must specify only one of the following parameters:
@@ -97,7 +95,7 @@ C<StackName>, C<StackSetName>, C<TemplateBody>, or C<TemplateURL>.
 Location of file containing the template body. The URL must point to a
 template (max size: 460,800 bytes) that is located in an Amazon S3
 bucket. For more information about templates, see Template Anatomy
-(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 in the AWS CloudFormation User Guide.
 
 Conditional: You must specify only one of the following parameters:

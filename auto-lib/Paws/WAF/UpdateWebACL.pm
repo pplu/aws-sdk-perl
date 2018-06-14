@@ -34,24 +34,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example deletes an ActivatedRule object in a WebACL with the
     # ID webacl-1472061481310.
     my $UpdateWebACLResponse = $waf->UpdateWebACL(
-      'ChangeToken'   => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
-      'DefaultAction' => {
-        'Type' => 'ALLOW'
-      },
-      'Updates' => [
+      {
+        'Updates' => [
 
-        {
-          'Action'        => 'DELETE',
-          'ActivatedRule' => {
-            'Action' => {
-              'Type' => 'ALLOW'
+          {
+            'ActivatedRule' => {
+              'RuleId' => 'WAFRule-1-Example',
+              'Action' => {
+                'Type' => 'ALLOW'
+              },
+              'Priority' => 1
             },
-            'Priority' => 1,
-            'RuleId'   => 'WAFRule-1-Example'
+            'Action' => 'DELETE'
           }
-        }
-      ],
-      'WebACLId' => 'webacl-1472061481310'
+        ],
+        'ChangeToken'   => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
+        'DefaultAction' => {
+          'Type' => 'ALLOW'
+        },
+        'WebACLId' => 'webacl-1472061481310'
+      }
     );
 
     # Results:
@@ -97,8 +99,8 @@ WebACLUpdate: Contains C<Action> and C<ActivatedRule>
 
 ActivatedRule: Contains C<Action>, C<OverrideAction>, C<Priority>,
 C<RuleId>, and C<Type>. C<ActivatedRule|OverrideAction> applies only
-when updating or adding a C<RuleGroup> to a C<WebACL>. In this case,
-you do not use C<ActivatedRule|Action>. For all other update requests,
+when updating or adding a C<RuleGroup> to a C<WebACL>. In this case you
+do not use C<ActivatedRule|Action>. For all other update requests,
 C<ActivatedRule|Action> is used instead of
 C<ActivatedRule|OverrideAction>.
 

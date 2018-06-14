@@ -10,8 +10,6 @@ package Paws::ApiGateway::CreateDomainName;
   has EndpointConfiguration => (is => 'ro', isa => 'Paws::ApiGateway::EndpointConfiguration', traits => ['NameInRequest'], request_name => 'endpointConfiguration');
   has RegionalCertificateArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'regionalCertificateArn');
   has RegionalCertificateName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'regionalCertificateName');
-  has SecurityPolicy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'securityPolicy');
-  has Tags => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -46,38 +44,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CertificateName       => 'MyString',    # OPTIONAL
       CertificatePrivateKey => 'MyString',    # OPTIONAL
       EndpointConfiguration => {
-        Types => [
-          'REGIONAL', ...                     # values: REGIONAL, EDGE, PRIVATE
+        types => [
+          'REGIONAL', ...                     # values: REGIONAL, EDGE
         ],                                    # OPTIONAL
-        VpcEndpointIds => [ 'MyString', ... ],    # OPTIONAL
       },    # OPTIONAL
-      RegionalCertificateArn  => 'MyString',                       # OPTIONAL
-      RegionalCertificateName => 'MyString',                       # OPTIONAL
-      SecurityPolicy          => 'TLS_1_0',                        # OPTIONAL
-      Tags                    => { 'MyString' => 'MyString', },    # OPTIONAL
+      RegionalCertificateArn  => 'MyString',    # OPTIONAL
+      RegionalCertificateName => 'MyString',    # OPTIONAL
     );
 
     # Results:
-    my $CertificateArn           = $DomainName->CertificateArn;
-    my $CertificateName          = $DomainName->CertificateName;
     my $CertificateUploadDate    = $DomainName->CertificateUploadDate;
-    my $DistributionDomainName   = $DomainName->DistributionDomainName;
+    my $CertificateName          = $DomainName->CertificateName;
+    my $RegionalHostedZoneId     = $DomainName->RegionalHostedZoneId;
+    my $CertificateArn           = $DomainName->CertificateArn;
     my $DistributionHostedZoneId = $DomainName->DistributionHostedZoneId;
-    my $DomainName               = $DomainName->DomainName;
-    my $DomainNameStatus         = $DomainName->DomainNameStatus;
-    my $DomainNameStatusMessage  = $DomainName->DomainNameStatusMessage;
+    my $DistributionDomainName   = $DomainName->DistributionDomainName;
     my $EndpointConfiguration    = $DomainName->EndpointConfiguration;
+    my $RegionalDomainName       = $DomainName->RegionalDomainName;
     my $RegionalCertificateArn   = $DomainName->RegionalCertificateArn;
     my $RegionalCertificateName  = $DomainName->RegionalCertificateName;
-    my $RegionalDomainName       = $DomainName->RegionalDomainName;
-    my $RegionalHostedZoneId     = $DomainName->RegionalHostedZoneId;
-    my $SecurityPolicy           = $DomainName->SecurityPolicy;
-    my $Tags                     = $DomainName->Tags;
+    my $DomainName               = $DomainName->DomainName;
 
     # Returns a L<Paws::ApiGateway::DomainName> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/CreateDomainName>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>
 
 =head1 ATTRIBUTES
 
@@ -149,21 +140,6 @@ only supported source.
 
 The user-friendly name of the certificate that will be used by regional
 endpoint for this domain name.
-
-
-
-=head2 SecurityPolicy => Str
-
-The Transport Layer Security (TLS) version + cipher suite for this
-DomainName. The valid values are C<TLS_1_0> and C<TLS_1_2>.
-
-Valid values are: C<"TLS_1_0">, C<"TLS_1_2">
-
-=head2 Tags => L<Paws::ApiGateway::MapOfStringToString>
-
-The key-value map of strings. The valid character set is
-[a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not
-start with C<aws:>. The tag value can be up to 256 characters.
 
 
 

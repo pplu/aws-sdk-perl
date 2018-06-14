@@ -4,7 +4,6 @@ package Paws::EC2::CreateNetworkInterface;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Groups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'SecurityGroupId' );
-  has InterfaceType => (is => 'ro', isa => 'Str');
   has Ipv6AddressCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'ipv6AddressCount' );
   has Ipv6Addresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceIpv6Address]', traits => ['NameInRequest'], request_name => 'ipv6Addresses' );
   has PrivateIpAddress => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'privateIpAddress' );
@@ -39,10 +38,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create a network interface
     # This example creates a network interface for the specified subnet.
     my $CreateNetworkInterfaceResult = $ec2->CreateNetworkInterface(
-      'Description'      => 'my network interface',
-      'Groups'           => ['sg-903004f8'],
-      'PrivateIpAddress' => '10.0.2.17',
-      'SubnetId'         => 'subnet-9d4a7b6c'
+      {
+        'Groups'           => ['sg-903004f8'],
+        'SubnetId'         => 'subnet-9d4a7b6c',
+        'Description'      => 'my network interface',
+        'PrivateIpAddress' => '10.0.2.17'
+      }
     );
 
     # Results:
@@ -76,15 +77,6 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 The IDs of one or more security groups.
 
 
-
-=head2 InterfaceType => Str
-
-Indicates the type of network interface. To create an Elastic Fabric
-Adapter (EFA), specify C<efa>. For more information, see Elastic Fabric
-Adapter (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
-
-Valid values are: C<"efa">
 
 =head2 Ipv6AddressCount => Int
 
@@ -131,7 +123,7 @@ IP address using C<privateIpAddresses>.
 The number of IP addresses you can assign to a network interface varies
 by instance type. For more information, see IP Addresses Per ENI Per
 Instance Type
-(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI)
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
 

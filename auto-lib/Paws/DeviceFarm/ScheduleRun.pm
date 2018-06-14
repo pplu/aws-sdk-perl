@@ -3,8 +3,7 @@ package Paws::DeviceFarm::ScheduleRun;
   use Moose;
   has AppArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'appArn' );
   has Configuration => (is => 'ro', isa => 'Paws::DeviceFarm::ScheduleRunConfiguration', traits => ['NameInRequest'], request_name => 'configuration' );
-  has DevicePoolArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'devicePoolArn' );
-  has DeviceSelectionConfiguration => (is => 'ro', isa => 'Paws::DeviceFarm::DeviceSelectionConfiguration', traits => ['NameInRequest'], request_name => 'deviceSelectionConfiguration' );
+  has DevicePoolArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'devicePoolArn' , required => 1);
   has ExecutionConfiguration => (is => 'ro', isa => 'Paws::DeviceFarm::ExecutionConfiguration', traits => ['NameInRequest'], request_name => 'executionConfiguration' );
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' );
   has ProjectArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectArn' , required => 1);
@@ -37,15 +36,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To schedule a test run
     # The following example schedules a test run named MyRun.
     my $ScheduleRunResult = $devicefarm->ScheduleRun(
-      'DevicePoolArn' =>
-        'arn:aws:devicefarm:us-west-2:123456789101:pool:EXAMPLE-GUID-123-456',
-      'Name' => 'MyRun',
-      'ProjectArn' =>
+      {
+        'Test' => {
+          'TestPackageArn' =>
+'arn:aws:devicefarm:us-west-2:123456789101:test:EXAMPLE-GUID-123-456',
+          'Type' => 'APPIUM_JAVA_JUNIT'
+        },
+        'ProjectArn' =>
 'arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456',
-      'Test' => {
-        'TestPackageArn' =>
-          'arn:aws:devicefarm:us-west-2:123456789101:test:EXAMPLE-GUID-123-456',
-        'Type' => 'APPIUM_JAVA_JUNIT'
+        'Name' => 'MyRun',
+        'DevicePoolArn' =>
+          'arn:aws:devicefarm:us-west-2:123456789101:pool:EXAMPLE-GUID-123-456'
       }
     );
 
@@ -62,8 +63,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dev
 
 =head2 AppArn => Str
 
-The ARN of an application package to run tests against, created with
-CreateUpload. See ListUploads.
+The ARN of the app to schedule a run.
 
 
 
@@ -73,19 +73,9 @@ Information about the settings for the run to be scheduled.
 
 
 
-=head2 DevicePoolArn => Str
+=head2 B<REQUIRED> DevicePoolArn => Str
 
 The ARN of the device pool for the run to be scheduled.
-
-
-
-=head2 DeviceSelectionConfiguration => L<Paws::DeviceFarm::DeviceSelectionConfiguration>
-
-The filter criteria used to dynamically select a set of devices for a
-test run and the maximum number of devices to be included in the run.
-
-Either B< C<devicePoolArn> > or B< C<deviceSelectionConfiguration> > is
-required in a request.
 
 
 

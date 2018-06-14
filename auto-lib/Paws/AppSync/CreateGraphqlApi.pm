@@ -1,14 +1,11 @@
 
 package Paws::AppSync::CreateGraphqlApi;
   use Moose;
-  has AdditionalAuthenticationProviders => (is => 'ro', isa => 'ArrayRef[Paws::AppSync::AdditionalAuthenticationProvider]', traits => ['NameInRequest'], request_name => 'additionalAuthenticationProviders');
   has AuthenticationType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authenticationType', required => 1);
   has LogConfig => (is => 'ro', isa => 'Paws::AppSync::LogConfig', traits => ['NameInRequest'], request_name => 'logConfig');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
   has OpenIDConnectConfig => (is => 'ro', isa => 'Paws::AppSync::OpenIDConnectConfig', traits => ['NameInRequest'], request_name => 'openIDConnectConfig');
-  has Tags => (is => 'ro', isa => 'Paws::AppSync::TagMap', traits => ['NameInRequest'], request_name => 'tags');
   has UserPoolConfig => (is => 'ro', isa => 'Paws::AppSync::UserPoolConfig', traits => ['NameInRequest'], request_name => 'userPoolConfig');
-  has XrayEnabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'xrayEnabled');
 
   use MooseX::ClassAttribute;
 
@@ -36,47 +33,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $appsync = Paws->service('AppSync');
     my $CreateGraphqlApiResponse = $appsync->CreateGraphqlApi(
-      AuthenticationType                => 'API_KEY',
-      Name                              => 'MyString',
-      AdditionalAuthenticationProviders => [
-        {
-          AuthenticationType => 'API_KEY'
-          , # values: API_KEY, AWS_IAM, AMAZON_COGNITO_USER_POOLS, OPENID_CONNECT
-          OpenIDConnectConfig => {
-            Issuer   => 'MyString',
-            AuthTTL  => 1,            # OPTIONAL
-            ClientId => 'MyString',
-            IatTTL   => 1,            # OPTIONAL
-          },    # OPTIONAL
-          UserPoolConfig => {
-            AwsRegion        => 'MyString',
-            UserPoolId       => 'MyString',
-            AppIdClientRegex => 'MyString',
-          },    # OPTIONAL
-        },
-        ...
-      ],        # OPTIONAL
-      LogConfig => {
-        CloudWatchLogsRoleArn => 'MyString',
-        FieldLogLevel         => 'NONE',       # values: NONE, ERROR, ALL
-        ExcludeVerboseContent => 1,            # OPTIONAL
+      AuthenticationType => 'API_KEY',
+      Name               => 'MyString',
+      LogConfig          => {
+        fieldLogLevel         => 'NONE',       # values: NONE, ERROR, ALL
+        cloudWatchLogsRoleArn => 'MyString',
+
       },    # OPTIONAL
       OpenIDConnectConfig => {
-        Issuer   => 'MyString',
-        AuthTTL  => 1,            # OPTIONAL
-        ClientId => 'MyString',
-        IatTTL   => 1,            # OPTIONAL
-      },    # OPTIONAL
-      Tags => {
-        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
+        issuer   => 'MyString',
+        iatTTL   => 1,            # OPTIONAL
+        authTTL  => 1,            # OPTIONAL
+        clientId => 'MyString',
       },    # OPTIONAL
       UserPoolConfig => {
-        AwsRegion        => 'MyString',
-        DefaultAction    => 'ALLOW',      # values: ALLOW, DENY
-        UserPoolId       => 'MyString',
-        AppIdClientRegex => 'MyString',
+        defaultAction    => 'ALLOW',      # values: ALLOW, DENY
+        awsRegion        => 'MyString',
+        userPoolId       => 'MyString',
+        appIdClientRegex => 'MyString',
       },    # OPTIONAL
-      XrayEnabled => 1,    # OPTIONAL
     );
 
     # Results:
@@ -90,23 +65,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/app
 =head1 ATTRIBUTES
 
 
-=head2 AdditionalAuthenticationProviders => ArrayRef[L<Paws::AppSync::AdditionalAuthenticationProvider>]
-
-A list of additional authentication providers for the C<GraphqlApi>
-API.
-
-
-
 =head2 B<REQUIRED> AuthenticationType => Str
 
-The authentication type: API key, AWS IAM, OIDC, or Amazon Cognito user
-pools.
+The authentication type: API key, IAM, or Amazon Cognito User Pools.
 
 Valid values are: C<"API_KEY">, C<"AWS_IAM">, C<"AMAZON_COGNITO_USER_POOLS">, C<"OPENID_CONNECT">
 
 =head2 LogConfig => L<Paws::AppSync::LogConfig>
 
-The Amazon CloudWatch Logs configuration.
+The Amazon CloudWatch logs configuration.
 
 
 
@@ -118,26 +85,13 @@ A user-supplied name for the C<GraphqlApi>.
 
 =head2 OpenIDConnectConfig => L<Paws::AppSync::OpenIDConnectConfig>
 
-The OpenID Connect configuration.
-
-
-
-=head2 Tags => L<Paws::AppSync::TagMap>
-
-A C<TagMap> object.
+The Open Id Connect configuration configuration.
 
 
 
 =head2 UserPoolConfig => L<Paws::AppSync::UserPoolConfig>
 
-The Amazon Cognito user pool configuration.
-
-
-
-=head2 XrayEnabled => Bool
-
-A flag indicating whether to enable X-Ray tracing for the
-C<GraphqlApi>.
+The Amazon Cognito User Pool configuration.
 
 
 

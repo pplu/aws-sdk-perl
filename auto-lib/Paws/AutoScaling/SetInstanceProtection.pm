@@ -32,17 +32,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To enable instance protection for an instance
     # This example enables instance protection for the specified instance.
     my $SetInstanceProtectionAnswer = $autoscaling->SetInstanceProtection(
-      'AutoScalingGroupName' => 'my-auto-scaling-group',
-      'InstanceIds'          => ['i-93633f9b'],
-      'ProtectedFromScaleIn' => 1
+      {
+        'ProtectedFromScaleIn' => 1,
+        'InstanceIds'          => ['i-93633f9b'],
+        'AutoScalingGroupName' => 'my-auto-scaling-group'
+      }
     );
 
     # To disable instance protection for an instance
     # This example disables instance protection for the specified instance.
     my $SetInstanceProtectionAnswer = $autoscaling->SetInstanceProtection(
-      'AutoScalingGroupName' => 'my-auto-scaling-group',
-      'InstanceIds'          => ['i-93633f9b'],
-      'ProtectedFromScaleIn' => 0
+      {
+        'ProtectedFromScaleIn' => 0,
+        'InstanceIds'          => ['i-93633f9b'],
+        'AutoScalingGroupName' => 'my-auto-scaling-group'
+      }
     );
 
 
@@ -66,8 +70,8 @@ One or more instance IDs.
 
 =head2 B<REQUIRED> ProtectedFromScaleIn => Bool
 
-Indicates whether the instance is protected from termination by Amazon
-EC2 Auto Scaling when scaling in.
+Indicates whether the instance is protected from termination by Auto
+Scaling when scaling in.
 
 
 

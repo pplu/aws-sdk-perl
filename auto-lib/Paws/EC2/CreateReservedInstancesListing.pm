@@ -36,13 +36,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InstanceCount  => 1,
       PriceSchedules => [
         {
-          CurrencyCode => 'USD',    # values: USD; OPTIONAL
           Price        => 1,        # OPTIONAL
+          CurrencyCode => 'USD',    # values: USD; OPTIONAL
           Term         => 1,        # OPTIONAL
         },
         ...
       ],
-      ReservedInstancesId => 'MyReservationId',
+      ReservedInstancesId => 'MyString',
 
       );
 
@@ -63,7 +63,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 Unique, case-sensitive identifier you provide to ensure idempotency of
 your listings. This helps avoid duplicate listings. For more
 information, see Ensuring Idempotency
-(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 
 
 

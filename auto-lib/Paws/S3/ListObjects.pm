@@ -47,16 +47,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CommonPrefixes = $ListObjectsOutput->CommonPrefixes;
     my $Contents       = $ListObjectsOutput->Contents;
-    my $Delimiter      = $ListObjectsOutput->Delimiter;
-    my $EncodingType   = $ListObjectsOutput->EncodingType;
     my $IsTruncated    = $ListObjectsOutput->IsTruncated;
-    my $Marker         = $ListObjectsOutput->Marker;
-    my $MaxKeys        = $ListObjectsOutput->MaxKeys;
-    my $Name           = $ListObjectsOutput->Name;
-    my $NextMarker     = $ListObjectsOutput->NextMarker;
     my $Prefix         = $ListObjectsOutput->Prefix;
+    my $EncodingType   = $ListObjectsOutput->EncodingType;
+    my $Delimiter      = $ListObjectsOutput->Delimiter;
+    my $CommonPrefixes = $ListObjectsOutput->CommonPrefixes;
+    my $Marker         = $ListObjectsOutput->Marker;
+    my $NextMarker     = $ListObjectsOutput->NextMarker;
+    my $Name           = $ListObjectsOutput->Name;
+    my $MaxKeys        = $ListObjectsOutput->MaxKeys;
 
     # Returns a L<Paws::S3::ListObjectsOutput> object.
 
@@ -68,7 +68,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-The name of the bucket containing the objects.
+
 
 
 

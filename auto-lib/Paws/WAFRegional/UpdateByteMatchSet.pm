@@ -33,23 +33,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example deletes a ByteMatchTuple object (filters) in an byte
     # match set with the ID exampleIDs3t-46da-4fdb-b8d5-abc321j569j5.
     my $UpdateByteMatchSetResponse = $waf -regional->UpdateByteMatchSet(
-      'ByteMatchSetId' => 'exampleIDs3t-46da-4fdb-b8d5-abc321j569j5',
-      'ChangeToken'    => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
-      'Updates'        => [
+      {
+        'Updates' => [
 
-        {
-          'Action'         => 'DELETE',
-          'ByteMatchTuple' => {
-            'FieldToMatch' => {
-              'Data' => 'referer',
-              'Type' => 'HEADER'
+          {
+            'ByteMatchTuple' => {
+              'TargetString' => 'badrefer1',
+              'FieldToMatch' => {
+                'Type' => 'HEADER',
+                'Data' => 'referer'
+              },
+              'TextTransformation'   => 'NONE',
+              'PositionalConstraint' => 'CONTAINS'
             },
-            'PositionalConstraint' => 'CONTAINS',
-            'TargetString'         => 'badrefer1',
-            'TextTransformation'   => 'NONE'
+            'Action' => 'DELETE'
           }
-        }
-      ]
+        ],
+        'ByteMatchSetId' => 'exampleIDs3t-46da-4fdb-b8d5-abc321j569j5',
+        'ChangeToken'    => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f'
+      }
     );
 
     # Results:

@@ -31,8 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $DefaultLogLevel = $GetV2LoggingOptionsResponse->DefaultLogLevel;
-    my $DisableAllLogs  = $GetV2LoggingOptionsResponse->DisableAllLogs;
     my $RoleArn         = $GetV2LoggingOptionsResponse->RoleArn;
+    my $DisableAllLogs  = $GetV2LoggingOptionsResponse->DisableAllLogs;
 
     # Returns a L<Paws::IoT::GetV2LoggingOptionsResponse> object.
 

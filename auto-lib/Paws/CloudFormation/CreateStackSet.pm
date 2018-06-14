@@ -2,13 +2,11 @@
 package Paws::CloudFormation::CreateStackSet;
   use Moose;
   has AdministrationRoleARN => (is => 'ro', isa => 'Str');
-  has AutoDeployment => (is => 'ro', isa => 'Paws::CloudFormation::AutoDeployment');
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ClientRequestToken => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has ExecutionRoleName => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
-  has PermissionModel => (is => 'ro', isa => 'Str');
   has StackSetName => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Tag]');
   has TemplateBody => (is => 'ro', isa => 'Str');
@@ -41,28 +39,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateStackSetOutput = $cloudformation->CreateStackSet(
       StackSetName          => 'MyStackSetName',
       AdministrationRoleARN => 'MyRoleARN',        # OPTIONAL
-      AutoDeployment        => {
-        Enabled                      => 1,         # OPTIONAL
-        RetainStacksOnAccountRemoval => 1,         # OPTIONAL
-      },    # OPTIONAL
-      Capabilities => [
-        'CAPABILITY_IAM',
-        ... # values: CAPABILITY_IAM, CAPABILITY_NAMED_IAM, CAPABILITY_AUTO_EXPAND
-      ],    # OPTIONAL
+      Capabilities          => [
+        'CAPABILITY_IAM', ...    # values: CAPABILITY_IAM, CAPABILITY_NAMED_IAM
+      ],                         # OPTIONAL
       ClientRequestToken => 'MyClientRequestToken',    # OPTIONAL
       Description        => 'MyDescription',           # OPTIONAL
       ExecutionRoleName  => 'MyExecutionRoleName',     # OPTIONAL
       Parameters         => [
         {
+          UsePreviousValue => 1,                       # OPTIONAL
           ParameterKey     => 'MyParameterKey',        # OPTIONAL
           ParameterValue   => 'MyParameterValue',      # OPTIONAL
           ResolvedValue    => 'MyParameterValue',      # OPTIONAL
-          UsePreviousValue => 1,                       # OPTIONAL
         },
         ...
       ],                                               # OPTIONAL
-      PermissionModel => 'SERVICE_MANAGED',            # OPTIONAL
-      Tags            => [
+      Tags => [
         {
           Key   => 'MyTagKey',                         # min: 1, max: 128
           Value => 'MyTagValue',                       # min: 1, max: 256
@@ -99,126 +91,62 @@ in the I<AWS CloudFormation User Guide>.
 
 
 
-=head2 AutoDeployment => L<Paws::CloudFormation::AutoDeployment>
-
-Describes whether StackSets automatically deploys to AWS Organizations
-accounts that are added to the target organization or organizational
-unit (OU). Specify only if C<PermissionModel> is C<SERVICE_MANAGED>.
-
-If you specify C<AutoDeployment>, do not specify C<DeploymentTargets>
-or C<Regions>.
-
-
-
 =head2 Capabilities => ArrayRef[Str|Undef]
 
-In some cases, you must explicitly acknowledge that your stack set
-template contains certain capabilities in order for AWS CloudFormation
-to create the stack set and related stack instances.
+A list of values that you must specify before AWS CloudFormation can
+create certain stack sets. Some stack set templates might include
+resources that can affect permissions in your AWS accountE<mdash>for
+example, by creating new AWS Identity and Access Management (IAM)
+users. For those stack sets, you must explicitly acknowledge their
+capabilities by specifying this parameter.
 
-=over
-
-=item *
-
-C<CAPABILITY_IAM> and C<CAPABILITY_NAMED_IAM>
-
-Some stack templates might include resources that can affect
-permissions in your AWS account; for example, by creating new AWS
-Identity and Access Management (IAM) users. For those stack sets, you
-must explicitly acknowledge this by specifying one of these
-capabilities.
-
-The following IAM resources require you to specify either the
-C<CAPABILITY_IAM> or C<CAPABILITY_NAMED_IAM> capability.
-
-=over
-
-=item *
-
-If you have IAM resources, you can specify either capability.
-
-=item *
-
-If you have IAM resources with custom names, you I<must> specify
-C<CAPABILITY_NAMED_IAM>.
-
-=item *
-
-If you don't specify either of these capabilities, AWS CloudFormation
-returns an C<InsufficientCapabilities> error.
-
-=back
-
-If your stack template contains these resources, we recommend that you
-review all permissions associated with them and edit their permissions
-if necessary.
+The only valid values are CAPABILITY_IAM and CAPABILITY_NAMED_IAM. The
+following resources require you to specify this parameter:
 
 =over
 
 =item *
 
 AWS::IAM::AccessKey
-(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html)
 
 =item *
 
 AWS::IAM::Group
-(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html)
 
 =item *
 
 AWS::IAM::InstanceProfile
-(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
 
 =item *
 
 AWS::IAM::Policy
-(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html)
 
 =item *
 
 AWS::IAM::Role
-(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
 
 =item *
 
 AWS::IAM::User
-(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html)
 
 =item *
 
 AWS::IAM::UserToGroupAddition
-(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html)
 
 =back
+
+If your stack template contains these resources, we recommend that you
+review all permissions that are associated with them and edit their
+permissions if necessary.
+
+If you have IAM resources, you can specify either capability. If you
+have IAM resources with custom names, you must specify
+CAPABILITY_NAMED_IAM. If you don't specify this parameter, this action
+returns an C<InsufficientCapabilities> error.
 
 For more information, see Acknowledging IAM Resources in AWS
-CloudFormation Templates
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
-
-=item *
-
-C<CAPABILITY_AUTO_EXPAND>
-
-Some templates contain macros. If your stack template contains one or
-more macros, and you choose to create a stack directly from the
-processed template, without first reviewing the resulting changes in a
-change set, you must acknowledge this capability. For more information,
-see Using AWS CloudFormation Macros to Perform Custom Processing on
-Templates
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
-
-Stack sets do not currently support macros in stack templates. (This
-includes the AWS::Include
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html)
-and AWS::Serverless
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html)
-transforms, which are macros hosted by AWS CloudFormation.) Even if you
-specify this capability, if you include a macro in your template the
-stack set operation will fail.
-
-=back
-
+CloudFormation Templates.
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities)
 
 
 
@@ -261,33 +189,6 @@ The input parameters for the stack set template.
 
 
 
-=head2 PermissionModel => Str
-
-Describes how the IAM roles required for stack set operations are
-created. By default, C<SELF-MANAGED> is specified.
-
-=over
-
-=item *
-
-With C<self-managed> permissions, you must create the administrator and
-execution roles required to deploy to target accounts. For more
-information, see Grant Self-Managed Stack Set Permissions
-(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-self-managed.html).
-
-=item *
-
-With C<service-managed> permissions, StackSets automatically creates
-the IAM roles required to deploy to accounts managed by AWS
-Organizations. For more information, see Grant Service-Managed Stack
-Set Permissions
-(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-service-managed.html).
-
-=back
-
-
-Valid values are: C<"SERVICE_MANAGED">, C<"SELF_MANAGED">
-
 =head2 B<REQUIRED> StackSetName => Str
 
 The name to associate with the stack set. The name must be unique in
@@ -318,7 +219,7 @@ with an C<access denied> error, and the stack set is not created.
 The structure that contains the template body, with a minimum length of
 1 byte and a maximum length of 51,200 bytes. For more information, see
 Template Anatomy
-(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 in the AWS CloudFormation User Guide.
 
 Conditional: You must specify either the TemplateBody or the
@@ -331,7 +232,7 @@ TemplateURL parameter, but not both.
 The location of the file that contains the template body. The URL must
 point to a template (maximum size: 460,800 bytes) that's located in an
 Amazon S3 bucket. For more information, see Template Anatomy
-(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 in the AWS CloudFormation User Guide.
 
 Conditional: You must specify either the TemplateBody or the

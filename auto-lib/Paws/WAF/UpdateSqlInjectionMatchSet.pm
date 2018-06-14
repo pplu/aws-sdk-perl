@@ -34,20 +34,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # a SQL injection match set with the ID
     # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
     my $UpdateSqlInjectionMatchSetResponse = $waf->UpdateSqlInjectionMatchSet(
-      'ChangeToken'            => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
-      'SqlInjectionMatchSetId' => 'example1ds3t-46da-4fdb-b8d5-abc321j569j5',
-      'Updates'                => [
+      {
+        'Updates' => [
 
-        {
-          'Action'                 => 'DELETE',
-          'SqlInjectionMatchTuple' => {
-            'FieldToMatch' => {
-              'Type' => 'QUERY_STRING'
-            },
-            'TextTransformation' => 'URL_DECODE'
+          {
+            'Action'                 => 'DELETE',
+            'SqlInjectionMatchTuple' => {
+              'FieldToMatch' => {
+                'Type' => 'QUERY_STRING'
+              },
+              'TextTransformation' => 'URL_DECODE'
+            }
           }
-        }
-      ]
+        ],
+        'ChangeToken'            => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
+        'SqlInjectionMatchSetId' => 'example1ds3t-46da-4fdb-b8d5-abc321j569j5'
+      }
     );
 
     # Results:

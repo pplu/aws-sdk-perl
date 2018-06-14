@@ -32,23 +32,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # CreateReceiptRule
     # The following example creates a new receipt rule:
     my $CreateReceiptRuleResponse = $email->CreateReceiptRule(
-      'After' => '',
-      'Rule'  => {
-        'Actions' => [
+      {
+        'RuleSetName' => 'MyRuleSet',
+        'After'       => '',
+        'Rule'        => {
+          'TlsPolicy' => 'Optional',
+          'Actions'   => [
 
-          {
-            'S3Action' => {
-              'BucketName'      => 'MyBucket',
-              'ObjectKeyPrefix' => 'email'
+            {
+              'S3Action' => {
+                'BucketName'      => 'MyBucket',
+                'ObjectKeyPrefix' => 'email'
+              }
             }
-          }
-        ],
-        'Enabled'     => 1,
-        'Name'        => 'MyRule',
-        'ScanEnabled' => 1,
-        'TlsPolicy'   => 'Optional'
-      },
-      'RuleSetName' => 'MyRuleSet'
+          ],
+          'Enabled'     => 1,
+          'ScanEnabled' => 1,
+          'Name'        => 'MyRule'
+        }
+      }
     );
 
 

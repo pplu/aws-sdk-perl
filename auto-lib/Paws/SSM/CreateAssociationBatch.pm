@@ -30,32 +30,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateAssociationBatchResult = $ssm->CreateAssociationBatch(
       Entries => [
         {
-          Name            => 'MyDocumentARN',
-          AssociationName => 'MyAssociationName',    # OPTIONAL
-          AutomationTargetParameterName =>
-            'MyAutomationTargetParameterName',       # min: 1, max: 50; OPTIONAL
-          ComplianceSeverity => 'CRITICAL'
-          ,    # values: CRITICAL, HIGH, MEDIUM, LOW, UNSPECIFIED; OPTIONAL
-          DocumentVersion => 'MyDocumentVersion',    # OPTIONAL
-          InstanceId      => 'MyInstanceId',         # OPTIONAL
-          MaxConcurrency  => 'MyMaxConcurrency',     # min: 1, max: 7; OPTIONAL
-          MaxErrors       => 'MyMaxErrors',          # min: 1, max: 7; OPTIONAL
-          OutputLocation  => {
+          Name           => 'MyDocumentName',
+          OutputLocation => {
             S3Location => {
               OutputS3BucketName =>
-                'MyS3BucketName',                    # min: 3, max: 63; OPTIONAL
-              OutputS3KeyPrefix => 'MyS3KeyPrefix',  # max: 500; OPTIONAL
+                'MyS3BucketName',    # min: 3, max: 63; OPTIONAL
               OutputS3Region    => 'MyS3Region',     # min: 3, max: 20; OPTIONAL
+              OutputS3KeyPrefix => 'MyS3KeyPrefix',  # max: 500; OPTIONAL
             },    # OPTIONAL
           },    # OPTIONAL
-          Parameters => { 'MyParameterName' => [ 'MyParameterValue', ... ], }
-          ,     # OPTIONAL
+          DocumentVersion => 'MyDocumentVersion',    # OPTIONAL
+          InstanceId      => 'MyInstanceId',         # OPTIONAL
+          AssociationName => 'MyAssociationName',    # OPTIONAL
           ScheduleExpression =>
             'MyScheduleExpression',    # min: 1, max: 256; OPTIONAL
+          Parameters => { 'MyParameterName' => [ 'MyParameterValue', ... ], }
+          ,                            # OPTIONAL
           Targets => [
             {
-              Key    => 'MyTargetKey',              # min: 1, max: 163; OPTIONAL
               Values => [ 'MyTargetValue', ... ],   # max: 50; OPTIONAL
+              Key => 'MyTargetKey',                 # min: 1, max: 128; OPTIONAL
             },
             ...
           ],                                        # max: 5; OPTIONAL
@@ -66,8 +60,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Failed     = $CreateAssociationBatchResult->Failed;
     my $Successful = $CreateAssociationBatchResult->Successful;
+    my $Failed     = $CreateAssociationBatchResult->Failed;
 
     # Returns a L<Paws::SSM::CreateAssociationBatchResult> object.
 

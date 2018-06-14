@@ -1,16 +1,12 @@
 
 package Paws::AppStream::CreateStack;
   use Moose;
-  has AccessEndpoints => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::AccessEndpoint]');
-  has ApplicationSettings => (is => 'ro', isa => 'Paws::AppStream::ApplicationSettings');
   has Description => (is => 'ro', isa => 'Str');
   has DisplayName => (is => 'ro', isa => 'Str');
-  has EmbedHostDomains => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has FeedbackURL => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has RedirectURL => (is => 'ro', isa => 'Str');
   has StorageConnectors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::StorageConnector]');
-  has Tags => (is => 'ro', isa => 'Paws::AppStream::Tags');
   has UserSettings => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::UserSetting]');
 
   use MooseX::ClassAttribute;
@@ -38,39 +34,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $appstream2 = Paws->service('AppStream');
     my $CreateStackResult = $appstream2->CreateStack(
-      Name            => 'MyName',
-      AccessEndpoints => [
-        {
-          EndpointType => 'STREAMING',    # values: STREAMING
-          VpceId       => 'MyString',     # min: 1; OPTIONAL
-        },
-        ...
-      ],                                  # OPTIONAL
-      ApplicationSettings => {
-        Enabled       => 1,
-        SettingsGroup => 'MySettingsGroup',    # max: 100; OPTIONAL
-      },    # OPTIONAL
-      Description      => 'MyDescription',    # OPTIONAL
-      DisplayName      => 'MyDisplayName',    # OPTIONAL
-      EmbedHostDomains => [
-        'MyEmbedHostDomain', ...              # max: 128
-      ],                                      # OPTIONAL
-      FeedbackURL       => 'MyFeedbackURL',   # OPTIONAL
-      RedirectURL       => 'MyRedirectURL',   # OPTIONAL
+      Name              => 'MyString',
+      Description       => 'MyDescription',    # OPTIONAL
+      DisplayName       => 'MyDisplayName',    # OPTIONAL
+      FeedbackURL       => 'MyFeedbackURL',    # OPTIONAL
+      RedirectURL       => 'MyRedirectURL',    # OPTIONAL
       StorageConnectors => [
         {
-          ConnectorType =>
-            'HOMEFOLDERS',    # values: HOMEFOLDERS, GOOGLE_DRIVE, ONE_DRIVE
-          Domains => [
-            'MyDomain', ...    # min: 1, max: 64
-          ],                   # max: 10; OPTIONAL
-          ResourceIdentifier => 'MyResourceIdentifier',    # min: 1; OPTIONAL
+          ConnectorType => 'HOMEFOLDERS',    # values: HOMEFOLDERS, GOOGLE_DRIVE
+          Domains       => [
+            'MyDomain', ...                  # max: 64
+          ],                                 # max: 10; OPTIONAL
+          ResourceIdentifier => 'MyResourceIdentifier',    # min: 1, ; OPTIONAL
         },
         ...
       ],                                                   # OPTIONAL
-      Tags => {
-        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
-      },    # OPTIONAL
       UserSettings => [
         {
           Action => 'CLIPBOARD_COPY_FROM_LOCAL_DEVICE'
@@ -88,45 +66,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::AppStream::CreateStackResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/appstream2/CreateStack>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
 
 =head1 ATTRIBUTES
 
 
-=head2 AccessEndpoints => ArrayRef[L<Paws::AppStream::AccessEndpoint>]
-
-The list of interface VPC endpoint (interface endpoint) objects. Users
-of the stack can connect to AppStream 2.0 only through the specified
-endpoints.
-
-
-
-=head2 ApplicationSettings => L<Paws::AppStream::ApplicationSettings>
-
-The persistent application settings for users of a stack. When these
-settings are enabled, changes that users make to applications and
-Windows settings are automatically saved after each session and applied
-to the next session.
-
-
-
 =head2 Description => Str
 
-The description to display.
+The description for display.
 
 
 
 =head2 DisplayName => Str
 
-The stack name to display.
-
-
-
-=head2 EmbedHostDomains => ArrayRef[Str|Undef]
-
-The domains where AppStream 2.0 streaming sessions can be embedded in
-an iframe. You must approve the domains that you want to host embedded
-AppStream 2.0 streaming sessions.
+The stack name for display.
 
 
 
@@ -153,25 +106,6 @@ ends.
 =head2 StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]
 
 The storage connectors to enable.
-
-
-
-=head2 Tags => L<Paws::AppStream::Tags>
-
-The tags to associate with the stack. A tag is a key-value pair, and
-the value is optional. For example, Environment=Test. If you do not
-specify a value, Environment=.
-
-If you do not specify a value, the value is set to an empty string.
-
-Generally allowed characters are: letters, numbers, and spaces
-representable in UTF-8, and the following special characters:
-
-_ . : / = + \ - @
-
-For more information about tags, see Tagging Your Resources
-(https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
-in the I<Amazon AppStream 2.0 Administration Guide>.
 
 
 

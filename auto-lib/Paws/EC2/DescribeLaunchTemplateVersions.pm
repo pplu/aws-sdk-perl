@@ -40,28 +40,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',    # OPTIONAL
-          Values => [
-            'MyString', ...        # OPTIONAL
-          ],                       # OPTIONAL
+          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name => 'MyString',
         },
         ...
-      ],                           # OPTIONAL
-      LaunchTemplateId   => 'MyLaunchTemplateId',      # OPTIONAL
+      ],                                    # OPTIONAL
+      LaunchTemplateId   => 'MyString',                # OPTIONAL
       LaunchTemplateName => 'MyLaunchTemplateName',    # OPTIONAL
       MaxResults         => 1,                         # OPTIONAL
       MaxVersion         => 'MyString',                # OPTIONAL
       MinVersion         => 'MyString',                # OPTIONAL
       NextToken          => 'MyString',                # OPTIONAL
-      Versions           => [
-        'MyString', ...                                # OPTIONAL
-      ],                                               # OPTIONAL
+      Versions           => [ 'MyString', ... ],       # OPTIONAL
       );
 
     # Results:
+    my $NextToken = $DescribeLaunchTemplateVersionsResult->NextToken;
     my $LaunchTemplateVersions =
       $DescribeLaunchTemplateVersionsResult->LaunchTemplateVersions;
-    my $NextToken = $DescribeLaunchTemplateVersionsResult->NextToken;
 
     # Returns a L<Paws::EC2::DescribeLaunchTemplateVersionsResult> object.
 
@@ -143,7 +139,7 @@ template ID or launch template name in the request.
 
 The maximum number of results to return in a single call. To retrieve
 the remaining results, make another call with the returned C<NextToken>
-value. This value can be between 1 and 200.
+value. This value can be between 5 and 1000.
 
 
 

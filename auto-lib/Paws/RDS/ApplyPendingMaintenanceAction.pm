@@ -33,10 +33,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example immediately applies a pending system update to a DB instance.
     my $ApplyPendingMaintenanceActionResult =
       $rds->ApplyPendingMaintenanceAction(
-      'ApplyAction' => 'system-update',
-      'OptInType'   => 'immediate',
-      'ResourceIdentifier' =>
-        'arn:aws:rds:us-east-1:992648334831:db:mymysqlinstance'
+      {
+        'ResourceIdentifier' =>
+          'arn:aws:rds:us-east-1:992648334831:db:mymysqlinstance',
+        'ApplyAction' => 'system-update',
+        'OptInType'   => 'immediate'
+      }
       );
 
 
@@ -50,8 +52,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 The pending maintenance action to apply to this resource.
 
-Valid values: C<system-update>, C<db-upgrade>, C<hardware-maintenance>,
-C<ca-certificate-rotation>
+Valid values: C<system-update>, C<db-upgrade>
 
 
 
@@ -88,7 +89,7 @@ requests.
 The RDS Amazon Resource Name (ARN) of the resource that the pending
 maintenance action applies to. For information about creating an ARN,
 see Constructing an RDS Amazon Resource Name (ARN)
-(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing).
 
 
 

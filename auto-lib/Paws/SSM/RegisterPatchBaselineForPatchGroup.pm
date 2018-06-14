@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $BaselineId = $RegisterPatchBaselineForPatchGroupResult->BaselineId;
     my $PatchGroup = $RegisterPatchBaselineForPatchGroupResult->PatchGroup;
+    my $BaselineId = $RegisterPatchBaselineForPatchGroupResult->BaselineId;
 
     # Returns a L<Paws::SSM::RegisterPatchBaselineForPatchGroupResult> object.
 

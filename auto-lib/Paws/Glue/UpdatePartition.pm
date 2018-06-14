@@ -34,69 +34,65 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdatePartitionResponse = $glue->UpdatePartition(
       DatabaseName   => 'MyNameString',
       PartitionInput => {
-        LastAccessTime   => '1970-01-01T01:00:00',    # OPTIONAL
         LastAnalyzedTime => '1970-01-01T01:00:00',    # OPTIONAL
-        Parameters       => {
-          'MyKeyString' =>
-            'MyParametersMapValue',  # key: min: 1, max: 255, value: max: 512000
-        },    # OPTIONAL
+        Values           => [
+          'MyValueString', ...                        # max: 1024
+        ],                                            # OPTIONAL
         StorageDescriptor => {
-          BucketColumns => [
-            'MyNameString', ...    # min: 1, max: 255
-          ],                       # OPTIONAL
-          Columns => [
-            {
-              Name       => 'MyNameString',       # min: 1, max: 255
-              Comment    => 'MyCommentString',    # max: 255; OPTIONAL
-              Parameters => {
-                'MyKeyString' => 'MyParametersMapValue'
-                ,    # key: min: 1, max: 255, value: max: 512000
-              },    # OPTIONAL
-              Type => 'MyColumnTypeString',    # max: 131072; OPTIONAL
-            },
-            ...
-          ],                                   # OPTIONAL
-          Compressed      => 1,                     # OPTIONAL
-          InputFormat     => 'MyFormatString',      # max: 128; OPTIONAL
-          Location        => 'MyLocationString',    # max: 2056; OPTIONAL
-          NumberOfBuckets => 1,                     # OPTIONAL
-          OutputFormat    => 'MyFormatString',      # max: 128; OPTIONAL
-          Parameters      => {
-            'MyKeyString' => 'MyParametersMapValue'
-            ,    # key: min: 1, max: 255, value: max: 512000
-          },    # OPTIONAL
-          SerdeInfo => {
-            Name       => 'MyNameString',    # min: 1, max: 255
-            Parameters => {
-              'MyKeyString' => 'MyParametersMapValue'
-              ,    # key: min: 1, max: 255, value: max: 512000
-            },    # OPTIONAL
-            SerializationLibrary => 'MyNameString',    # min: 1, max: 255
-          },    # OPTIONAL
-          SkewedInfo => {
+          InputFormat => 'MyFormatString',            # max: 128; OPTIONAL
+          SkewedInfo  => {
+            SkewedColumnValues => [ 'MyColumnValuesString', ... ],    # OPTIONAL
+            SkewedColumnValueLocationMaps =>
+              { 'MyColumnValuesString' => 'MyColumnValuesString', },  # OPTIONAL
             SkewedColumnNames => [
               'MyNameString', ...    # min: 1, max: 255
             ],                       # OPTIONAL
-            SkewedColumnValueLocationMaps =>
-              { 'MyColumnValuesString' => 'MyColumnValuesString', },  # OPTIONAL
-            SkewedColumnValues => [ 'MyColumnValuesString', ... ],    # OPTIONAL
           },    # OPTIONAL
+          NumberOfBuckets => 1,                   # OPTIONAL
+          Compressed      => 1,                   # OPTIONAL
+          OutputFormat    => 'MyFormatString',    # max: 128; OPTIONAL
+          BucketColumns   => [
+            'MyNameString', ...                   # min: 1, max: 255
+          ],                                      # OPTIONAL
+          SerdeInfo => {
+            SerializationLibrary => 'MyNameString',    # min: 1, max: 255
+            Parameters           => {
+              'MyKeyString' => 'MyParametersMapValue'
+              ,    # key: min: 1, max: 255, value: max: 512000
+            },    # OPTIONAL
+            Name => 'MyNameString',    # min: 1, max: 255
+          },    # OPTIONAL
+          Location => 'MyLocationString',    # max: 2056; OPTIONAL
+          Columns  => [
+            {
+              Name    => 'MyNameString',          # min: 1, max: 255
+              Type    => 'MyColumnTypeString',    # max: 131072; OPTIONAL
+              Comment => 'MyCommentString',       # max: 255; OPTIONAL
+            },
+            ...
+          ],                                      # OPTIONAL
           SortColumns => [
             {
-              Column    => 'MyNameString',    # min: 1, max: 255
-              SortOrder => 1,                 # max: 1
+              SortOrder => 1,                     # max: 1
+              Column    => 'MyNameString',        # min: 1, max: 255
 
             },
             ...
-          ],                                  # OPTIONAL
-          StoredAsSubDirectories => 1,        # OPTIONAL
+          ],                                      # OPTIONAL
+          Parameters => {
+            'MyKeyString' => 'MyParametersMapValue'
+            ,    # key: min: 1, max: 255, value: max: 512000
+          },    # OPTIONAL
+          StoredAsSubDirectories => 1,    # OPTIONAL
         },    # OPTIONAL
-        Values => [
-          'MyValueString', ...    # max: 1024
-        ],                        # OPTIONAL
+        LastAccessTime => '1970-01-01T01:00:00',    # OPTIONAL
+        Parameters     => {
+          'MyKeyString' =>
+            'MyParametersMapValue',  # key: min: 1, max: 255, value: max: 512000
+        },    # OPTIONAL
       },
       PartitionValueList => [
-        'MyValueString', ...      # max: 1024
+        'MyValueString', ...    # max: 1024
       ],
       TableName => 'MyNameString',
       CatalogId => 'MyCatalogIdString',    # OPTIONAL
@@ -111,7 +107,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head2 CatalogId => Str
 
 The ID of the Data Catalog where the partition to be updated resides.
-If none is provided, the AWS account ID is used by default.
+If none is supplied, the AWS account ID is used by default.
 
 
 
@@ -124,7 +120,7 @@ resides.
 
 =head2 B<REQUIRED> PartitionInput => L<Paws::Glue::PartitionInput>
 
-The new partition object to update the partition to.
+The new partition object to which to update the partition.
 
 
 
@@ -136,7 +132,7 @@ A list of the values defining the partition.
 
 =head2 B<REQUIRED> TableName => Str
 
-The name of the table in which the partition to be updated is located.
+The name of the table where the partition to be updated is located.
 
 
 

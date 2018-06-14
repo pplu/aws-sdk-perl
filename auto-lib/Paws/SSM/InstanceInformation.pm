@@ -99,16 +99,16 @@ return the IAM role for Amazon EC2 instances.
 
 =head2 IsLatestVersion => Bool
 
-  Indicates whether the latest version of SSM Agent is running on your
-Linux Managed Instance. This field does not indicate whether or not the
-latest version is installed on Windows managed instances, because some
-older versions of Windows Server use the EC2Config service to process
-SSM requests.
+  Indicates whether latest version of SSM Agent is running on your
+instance. Some older versions of Windows Server use the EC2Config
+service to process SSM requests. For this reason, this field does not
+indicate whether or not the latest version is installed on Windows
+managed instances.
 
 
 =head2 LastAssociationExecutionDate => Str
 
-  The date the association was last run.
+  The date the association was last executed.
 
 
 =head2 LastPingDateTime => Str

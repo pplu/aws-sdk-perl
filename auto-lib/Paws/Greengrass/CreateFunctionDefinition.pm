@@ -4,7 +4,6 @@ package Paws::Greengrass::CreateFunctionDefinition;
   has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
   has InitialVersion => (is => 'ro', isa => 'Paws::Greengrass::FunctionDefinitionVersion');
   has Name => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'Paws::Greengrass::Tags', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -35,32 +34,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $greengrass->CreateFunctionDefinition(
       AmznClientToken => 'My__string',    # OPTIONAL
       InitialVersion  => {
-        DefaultConfig => {
-          Execution => {
-            IsolationMode => 'GreengrassContainer'
-            ,    # values: GreengrassContainer, NoContainer; OPTIONAL
-            RunAs => {
-              Gid => 1,    # OPTIONAL
-              Uid => 1,    # OPTIONAL
-            },    # OPTIONAL
-          },    # OPTIONAL
-        },    # OPTIONAL
         Functions => [
           {
-            Id                    => 'My__string',
-            FunctionArn           => 'My__string',
             FunctionConfiguration => {
-              EncodingType => 'binary',    # values: binary, json; OPTIONAL
-              Environment  => {
-                AccessSysfs => 1,          # OPTIONAL
-                Execution   => {
-                  IsolationMode => 'GreengrassContainer'
-                  ,    # values: GreengrassContainer, NoContainer; OPTIONAL
-                  RunAs => {
-                    Gid => 1,    # OPTIONAL
-                    Uid => 1,    # OPTIONAL
-                  },    # OPTIONAL
-                },    # OPTIONAL
+              ExecArgs    => 'My__string',
+              Executable  => 'My__string',
+              Environment => {
                 ResourceAccessPolicies => [
                   {
                     ResourceId => 'My__string',
@@ -69,36 +48,37 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   ...
                 ],                                # OPTIONAL
                 Variables => { 'My__string' => 'My__string', },    # OPTIONAL
+                AccessSysfs => 1,                                  # OPTIONAL
               },    # OPTIONAL
-              ExecArgs   => 'My__string',
-              Executable => 'My__string',
-              MemorySize => 1,              # OPTIONAL
-              Pinned     => 1,              # OPTIONAL
-              Timeout    => 1,              # OPTIONAL
+              MemorySize   => 1,           # OPTIONAL
+              EncodingType => 'binary',    # values: binary, json; OPTIONAL
+              Pinned       => 1,           # OPTIONAL
+              Timeout      => 1,           # OPTIONAL
             },    # OPTIONAL
+            Id          => 'My__string',
+            FunctionArn => 'My__string',
           },
           ...
         ],        # OPTIONAL
       },    # OPTIONAL
-      Name => 'My__string',                         # OPTIONAL
-      Tags => { 'My__string' => 'My__string', },    # OPTIONAL
+      Name => 'My__string',    # OPTIONAL
       );
 
     # Results:
-    my $Arn = $CreateFunctionDefinitionResponse->Arn;
     my $CreationTimestamp =
       $CreateFunctionDefinitionResponse->CreationTimestamp;
-    my $Id = $CreateFunctionDefinitionResponse->Id;
+    my $LatestVersionArn = $CreateFunctionDefinitionResponse->LatestVersionArn;
+    my $Id               = $CreateFunctionDefinitionResponse->Id;
     my $LastUpdatedTimestamp =
       $CreateFunctionDefinitionResponse->LastUpdatedTimestamp;
-    my $LatestVersion    = $CreateFunctionDefinitionResponse->LatestVersion;
-    my $LatestVersionArn = $CreateFunctionDefinitionResponse->LatestVersionArn;
-    my $Name             = $CreateFunctionDefinitionResponse->Name;
+    my $Arn           = $CreateFunctionDefinitionResponse->Arn;
+    my $Name          = $CreateFunctionDefinitionResponse->Name;
+    my $LatestVersion = $CreateFunctionDefinitionResponse->LatestVersion;
 
     # Returns a L<Paws::Greengrass::CreateFunctionDefinitionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/greengrass/CreateFunctionDefinition>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>
 
 =head1 ATTRIBUTES
 
@@ -118,12 +98,6 @@ Information about the initial version of the function definition.
 =head2 Name => Str
 
 The name of the function definition.
-
-
-
-=head2 Tags => L<Paws::Greengrass::Tags>
-
-Tag(s) to add to the new resource.
 
 
 

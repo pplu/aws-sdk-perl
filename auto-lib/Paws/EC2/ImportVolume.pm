@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ImportVolumeResult = $ec2->ImportVolume(
       AvailabilityZone => 'MyString',
       Image            => {
-        Bytes             => 1,
         Format            => 'VMDK',       # values: VMDK, RAW, VHD
+        Bytes             => 1,
         ImportManifestUrl => 'MyString',
 
       },

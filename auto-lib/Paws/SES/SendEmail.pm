@@ -38,37 +38,40 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # SendEmail
     # The following example sends a formatted email:
     my $SendEmailResponse = $email->SendEmail(
-      'Destination' => {
-        'BccAddresses' => [
+      {
+        'SourceArn'        => '',
+        'ReturnPathArn'    => '',
+        'ReplyToAddresses' => [
 
         ],
-        'CcAddresses' => ['recipient3@example.com'],
-        'ToAddresses' => [ 'recipient1@example.com', 'recipient2@example.com' ]
-      },
-      'Message' => {
-        'Body' => {
-          'Html' => {
+        'Message' => {
+          'Subject' => {
             'Charset' => 'UTF-8',
-            'Data' =>
-'This message body contains HTML formatting. It can, for example, contain links like this one: <a class="ulink" href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide" target="_blank">Amazon SES Developer Guide</a>.'
+            'Data'    => 'Test email'
           },
-          'Text' => {
-            'Charset' => 'UTF-8',
-            'Data'    => 'This is the message body in text format.'
+          'Body' => {
+            'Html' => {
+              'Charset' => 'UTF-8',
+              'Data' =>
+'This message body contains HTML formatting. It can, for example, contain links like this one: <a class="ulink" href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide" target="_blank">Amazon SES Developer Guide</a>.'
+            },
+            'Text' => {
+              'Charset' => 'UTF-8',
+              'Data'    => 'This is the message body in text format.'
+            }
           }
         },
-        'Subject' => {
-          'Charset' => 'UTF-8',
-          'Data'    => 'Test email'
-        }
-      },
-      'ReplyToAddresses' => [
+        'Source'      => 'sender@example.com',
+        'Destination' => {
+          'CcAddresses'  => ['recipient3@example.com'],
+          'BccAddresses' => [
 
-      ],
-      'ReturnPath'    => '',
-      'ReturnPathArn' => '',
-      'Source'        => 'sender@example.com',
-      'SourceArn'     => ''
+          ],
+          'ToAddresses' =>
+            [ 'recipient1@example.com', 'recipient2@example.com' ]
+        },
+        'ReturnPath' => ''
+      }
     );
 
     # Results:
@@ -137,7 +140,7 @@ C<ReturnPath> to be C<feedback@example.com>.
 
 For more information about sending authorization, see the Amazon SES
 Developer Guide
-(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 
 
 
@@ -147,13 +150,13 @@ The email address that is sending the email. This email address must be
 either individually verified with Amazon SES, or from a domain that has
 been verified with Amazon SES. For information about verifying
 identities, see the Amazon SES Developer Guide
-(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html).
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html).
 
 If you are sending on behalf of another user and have been permitted to
 do so by a sending authorization policy, then you must also specify the
 C<SourceArn> parameter. For more information about sending
 authorization, see the Amazon SES Developer Guide
-(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 
 Amazon SES does not support the SMTPUTF8 extension, as described in
 RFC6531 (https://tools.ietf.org/html/rfc6531). For this reason, the
@@ -187,7 +190,7 @@ C<Source> to be C<user@example.com>.
 
 For more information about sending authorization, see the Amazon SES
 Developer Guide
-(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 
 
 

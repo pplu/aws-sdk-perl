@@ -32,15 +32,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # This example immediately changes the specified setting for the specified DB
    # parameter group.
     my $DBParameterGroupNameMessage = $rds->ModifyDBParameterGroup(
-      'DBParameterGroupName' => 'mymysqlparametergroup',
-      'Parameters'           => [
+      {
+        'Parameters' => [
 
-        {
-          'ApplyMethod'    => 'immediate',
-          'ParameterName'  => 'time_zone',
-          'ParameterValue' => 'America/Phoenix'
-        }
-      ]
+          {
+            'ParameterName'  => 'time_zone',
+            'ApplyMethod'    => 'immediate',
+            'ParameterValue' => 'America/Phoenix'
+          }
+        ],
+        'DBParameterGroupName' => 'mymysqlparametergroup'
+      }
     );
 
 
@@ -60,7 +62,7 @@ Constraints:
 
 =item *
 
-If supplied, must match the name of an existing C<DBParameterGroup>.
+If supplied, must match the name of an existing DBParameterGroup.
 
 =back
 
@@ -71,7 +73,7 @@ If supplied, must match the name of an existing C<DBParameterGroup>.
 
 An array of parameter names, values, and the apply method for the
 parameter update. At least one parameter name, value, and apply method
-must be supplied; later arguments are optional. A maximum of 20
+must be supplied; subsequent arguments are optional. A maximum of 20
 parameters can be modified in a single request.
 
 Valid Values (for the application method): C<immediate |

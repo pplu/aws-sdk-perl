@@ -33,15 +33,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # The following example retrieves the public key and import token for the
    # specified CMK.
     my $GetParametersForImportResponse = $kms->GetParametersForImport(
-      'KeyId'             => '1234abcd-12ab-34cd-56ef-1234567890ab',
-      'WrappingAlgorithm' => 'RSAES_OAEP_SHA_1',
-      'WrappingKeySpec'   => 'RSA_2048'
+      {
+        'WrappingAlgorithm' => 'RSAES_OAEP_SHA_1',
+        'KeyId'             => '1234abcd-12ab-34cd-56ef-1234567890ab',
+        'WrappingKeySpec'   => 'RSA_2048'
+      }
     );
 
     # Results:
-    my $ImportToken       = $GetParametersForImportResponse->ImportToken;
-    my $KeyId             = $GetParametersForImportResponse->KeyId;
     my $ParametersValidTo = $GetParametersForImportResponse->ParametersValidTo;
+    my $KeyId             = $GetParametersForImportResponse->KeyId;
+    my $ImportToken       = $GetParametersForImportResponse->ImportToken;
     my $PublicKey         = $GetParametersForImportResponse->PublicKey;
 
     # Returns a L<Paws::KMS::GetParametersForImportResponse> object.
@@ -54,8 +56,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms
 
 =head2 B<REQUIRED> KeyId => Str
 
-The identifier of the symmetric CMK into which you will import key
-material. The C<Origin> of the CMK must be C<EXTERNAL>.
+The identifier of the CMK into which you will import key material. The
+CMK's C<Origin> must be C<EXTERNAL>.
 
 Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
 
@@ -83,7 +85,7 @@ To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
 The algorithm you will use to encrypt the key material before importing
 it with ImportKeyMaterial. For more information, see Encrypt the Key
 Material
-(https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-encrypt-key-material.html)
+(http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-encrypt-key-material.html)
 in the I<AWS Key Management Service Developer Guide>.
 
 Valid values are: C<"RSAES_PKCS1_V1_5">, C<"RSAES_OAEP_SHA_1">, C<"RSAES_OAEP_SHA_256">

@@ -39,13 +39,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $DNSName          = $ListHostedZonesByNameResponse->DNSName;
-    my $HostedZoneId     = $ListHostedZonesByNameResponse->HostedZoneId;
-    my $HostedZones      = $ListHostedZonesByNameResponse->HostedZones;
     my $IsTruncated      = $ListHostedZonesByNameResponse->IsTruncated;
     my $MaxItems         = $ListHostedZonesByNameResponse->MaxItems;
-    my $NextDNSName      = $ListHostedZonesByNameResponse->NextDNSName;
     my $NextHostedZoneId = $ListHostedZonesByNameResponse->NextHostedZoneId;
+    my $DNSName          = $ListHostedZonesByNameResponse->DNSName;
+    my $HostedZones      = $ListHostedZonesByNameResponse->HostedZones;
+    my $NextDNSName      = $ListHostedZonesByNameResponse->NextDNSName;
+    my $HostedZoneId     = $ListHostedZonesByNameResponse->HostedZoneId;
 
     # Returns a L<Paws::Route53::ListHostedZonesByNameResponse> object.
 

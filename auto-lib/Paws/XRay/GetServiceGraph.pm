@@ -2,8 +2,6 @@
 package Paws::XRay::GetServiceGraph;
   use Moose;
   has EndTime => (is => 'ro', isa => 'Str', required => 1);
-  has GroupARN => (is => 'ro', isa => 'Str');
-  has GroupName => (is => 'ro', isa => 'Str');
   has NextToken => (is => 'ro', isa => 'Str');
   has StartTime => (is => 'ro', isa => 'Str', required => 1);
 
@@ -35,17 +33,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $GetServiceGraphResult = $xray->GetServiceGraph(
       EndTime   => '1970-01-01T01:00:00',
       StartTime => '1970-01-01T01:00:00',
-      GroupARN  => 'MyGroupARN',            # OPTIONAL
-      GroupName => 'MyGroupName',           # OPTIONAL
       NextToken => 'MyString',              # OPTIONAL
     );
 
     # Results:
-    my $ContainsOldGroupVersions =
-      $GetServiceGraphResult->ContainsOldGroupVersions;
-    my $EndTime   = $GetServiceGraphResult->EndTime;
     my $NextToken = $GetServiceGraphResult->NextToken;
     my $Services  = $GetServiceGraphResult->Services;
+    my $EndTime   = $GetServiceGraphResult->EndTime;
     my $StartTime = $GetServiceGraphResult->StartTime;
 
     # Returns a L<Paws::XRay::GetServiceGraphResult> object.
@@ -58,25 +52,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/xra
 
 =head2 B<REQUIRED> EndTime => Str
 
-The end of the timeframe for which to generate a graph.
-
-
-
-=head2 GroupARN => Str
-
-The ARN of a group to generate a graph based on.
-
-
-
-=head2 GroupName => Str
-
-The name of a group to generate a graph based on.
+The end of the time frame for which to generate a graph.
 
 
 
 =head2 NextToken => Str
 
-Pagination token.
+Pagination token. Not used.
 
 
 

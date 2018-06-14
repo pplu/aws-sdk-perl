@@ -34,8 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example lists up to 20 certificates for the specified certificate
     # identifier.
     my $CertificateMessage = $rds->DescribeCertificates(
-      'CertificateIdentifier' => 'rds-ca-2015',
-      'MaxRecords'            => 20
+      {
+        'CertificateIdentifier' => 'rds-ca-2015',
+        'MaxRecords'            => 20
+      }
     );
 
 
@@ -66,14 +68,14 @@ Must match an existing CertificateIdentifier.
 
 =head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
-This parameter isn't currently supported.
+This parameter is not currently supported.
 
 
 
 =head2 Marker => Str
 
 An optional pagination token provided by a previous
-C<DescribeCertificates> request. If this parameter is specified, the
+DescribeCertificates request. If this parameter is specified, the
 response includes only records beyond the marker, up to the value
 specified by C<MaxRecords>.
 
@@ -83,8 +85,8 @@ specified by C<MaxRecords>.
 
 The maximum number of records to include in the response. If more
 records exist than the specified C<MaxRecords> value, a pagination
-token called a marker is included in the response so you can retrieve
-the remaining results.
+token called a marker is included in the response so that the remaining
+results can be retrieved.
 
 Default: 100
 

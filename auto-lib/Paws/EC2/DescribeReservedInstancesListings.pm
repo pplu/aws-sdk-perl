@@ -33,15 +33,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $ec2->DescribeReservedInstancesListings(
       Filters => [
         {
-          Name   => 'MyString',    # OPTIONAL
-          Values => [
-            'MyString', ...        # OPTIONAL
-          ],                       # OPTIONAL
+          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name => 'MyString',
         },
         ...
-      ],                           # OPTIONAL
-      ReservedInstancesId        => 'MyReservationId',                # OPTIONAL
-      ReservedInstancesListingId => 'MyReservedInstancesListingId',   # OPTIONAL
+      ],                                    # OPTIONAL
+      ReservedInstancesId        => 'MyString',    # OPTIONAL
+      ReservedInstancesListingId => 'MyString',    # OPTIONAL
       );
 
     # Results:

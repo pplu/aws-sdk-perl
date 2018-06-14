@@ -36,38 +36,46 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example modifies the attachment attribute of the specified network
     # interface.
     $ec2->ModifyNetworkInterfaceAttribute(
-      'Attachment' => {
-        'AttachmentId'        => 'eni-attach-43348162',
-        'DeleteOnTermination' => 0
-      },
-      'NetworkInterfaceId' => 'eni-686ea200'
+      {
+        'NetworkInterfaceId' => 'eni-686ea200',
+        'Attachment'         => {
+          'DeleteOnTermination' => 0,
+          'AttachmentId'        => 'eni-attach-43348162'
+        }
+      }
     );
 
     # To modify the description attribute of a network interface
     # This example modifies the description attribute of the specified network
     # interface.
     $ec2->ModifyNetworkInterfaceAttribute(
-      'Description' => {
-        'Value' => 'My description'
-      },
-      'NetworkInterfaceId' => 'eni-686ea200'
+      {
+        'NetworkInterfaceId' => 'eni-686ea200',
+        'Description'        => {
+          'Value' => 'My description'
+        }
+      }
     );
 
     # To modify the groupSet attribute of a network interface
     # This example command modifies the groupSet attribute of the specified
     # network interface.
     $ec2->ModifyNetworkInterfaceAttribute(
-      'Groups'             => [ 'sg-903004f8', 'sg-1a2b3c4d' ],
-      'NetworkInterfaceId' => 'eni-686ea200'
+      {
+        'Groups'             => [ 'sg-903004f8', 'sg-1a2b3c4d' ],
+        'NetworkInterfaceId' => 'eni-686ea200'
+      }
     );
 
     # To modify the sourceDestCheck attribute of a network interface
     # This example command modifies the sourceDestCheck attribute of the
     # specified network interface.
     $ec2->ModifyNetworkInterfaceAttribute(
-      'NetworkInterfaceId' => 'eni-686ea200',
-      'SourceDestCheck'    => {
-        'Value' => 0
+      {
+        'SourceDestCheck' => {
+          'Value' => 0
+        },
+        'NetworkInterfaceId' => 'eni-686ea200'
       }
     );
 
@@ -122,7 +130,7 @@ Indicates whether source/destination checking is enabled. A value of
 C<true> means checking is enabled, and C<false> means checking is
 disabled. This value must be C<false> for a NAT instance to perform
 NAT. For more information, see NAT Instances
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html)
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
 

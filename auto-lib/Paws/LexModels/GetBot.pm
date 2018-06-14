@@ -36,27 +36,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $AbortStatement          = $GetBotResponse->AbortStatement;
-    my $Checksum                = $GetBotResponse->Checksum;
-    my $ChildDirected           = $GetBotResponse->ChildDirected;
     my $ClarificationPrompt     = $GetBotResponse->ClarificationPrompt;
-    my $CreatedDate             = $GetBotResponse->CreatedDate;
-    my $Description             = $GetBotResponse->Description;
-    my $DetectSentiment         = $GetBotResponse->DetectSentiment;
-    my $FailureReason           = $GetBotResponse->FailureReason;
-    my $IdleSessionTTLInSeconds = $GetBotResponse->IdleSessionTTLInSeconds;
-    my $Intents                 = $GetBotResponse->Intents;
-    my $LastUpdatedDate         = $GetBotResponse->LastUpdatedDate;
-    my $Locale                  = $GetBotResponse->Locale;
-    my $Name                    = $GetBotResponse->Name;
     my $Status                  = $GetBotResponse->Status;
-    my $Version                 = $GetBotResponse->Version;
+    my $ChildDirected           = $GetBotResponse->ChildDirected;
+    my $Locale                  = $GetBotResponse->Locale;
+    my $AbortStatement          = $GetBotResponse->AbortStatement;
+    my $LastUpdatedDate         = $GetBotResponse->LastUpdatedDate;
     my $VoiceId                 = $GetBotResponse->VoiceId;
+    my $CreatedDate             = $GetBotResponse->CreatedDate;
+    my $Version                 = $GetBotResponse->Version;
+    my $FailureReason           = $GetBotResponse->FailureReason;
+    my $Intents                 = $GetBotResponse->Intents;
+    my $IdleSessionTTLInSeconds = $GetBotResponse->IdleSessionTTLInSeconds;
+    my $Description             = $GetBotResponse->Description;
+    my $Name                    = $GetBotResponse->Name;
+    my $Checksum                = $GetBotResponse->Checksum;
 
     # Returns a L<Paws::LexModels::GetBotResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/models.lex/GetBot>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/lex/>
 
 =head1 ATTRIBUTES
 

@@ -33,14 +33,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To retrieve a list of Lambda function versions
     # This operation retrieves a Lambda function versions
     my $ListVersionsByFunctionResponse = $lambda->ListVersionsByFunction(
-      'FunctionName' => 'myFunction',
-      'Marker'       => '',
-      'MaxItems'     => 123
+      {
+        'MaxItems'     => 123,
+        'FunctionName' => 'myFunction',
+        'Marker'       => ''
+      }
     );
 
     # Results:
-    my $NextMarker = $ListVersionsByFunctionResponse->NextMarker;
     my $Versions   = $ListVersionsByFunctionResponse->Versions;
+    my $NextMarker = $ListVersionsByFunctionResponse->NextMarker;
 
     # Returns a L<Paws::Lambda::ListVersionsByFunctionResponse> object.
 
@@ -52,42 +54,30 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 B<REQUIRED> FunctionName => Str
 
-The name of the Lambda function.
-
-B<Name formats>
-
-=over
-
-=item *
-
-B<Function name> - C<MyFunction>.
-
-=item *
-
-B<Function ARN> -
-C<arn:aws:lambda:us-west-2:123456789012:function:MyFunction>.
-
-=item *
-
-B<Partial ARN> - C<123456789012:function:MyFunction>.
-
-=back
-
-The length constraint applies only to the full ARN. If you specify only
-the function name, it is limited to 64 characters in length.
+Function name whose versions to list. You can specify a function name
+(for example, C<Thumbnail>) or you can specify Amazon Resource Name
+(ARN) of the function (for example,
+C<arn:aws:lambda:us-west-2:account-id:function:ThumbNail>). AWS Lambda
+also allows you to specify a partial ARN (for example,
+C<account-id:Thumbnail>). Note that the length constraint applies only
+to the ARN. If you specify only the function name, it is limited to 64
+characters in length.
 
 
 
 =head2 Marker => Str
 
-Specify the pagination token that's returned by a previous request to
-retrieve the next page of results.
+Optional string. An opaque pagination token returned from a previous
+C<ListVersionsByFunction> operation. If present, indicates where to
+continue the listing.
 
 
 
 =head2 MaxItems => Int
 
-The maximum number of versions to return.
+Optional integer. Specifies the maximum number of AWS Lambda function
+versions to return in response. This parameter value must be greater
+than 0.
 
 
 

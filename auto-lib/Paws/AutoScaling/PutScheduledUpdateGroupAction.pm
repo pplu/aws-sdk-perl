@@ -39,13 +39,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example adds the specified scheduled action to the specified Auto
     # Scaling group.
     $autoscaling->PutScheduledUpdateGroupAction(
-      'AutoScalingGroupName' => 'my-auto-scaling-group',
-      'DesiredCapacity'      => 4,
-      'EndTime'              => '2014-05-12T08:00:00Z',
-      'MaxSize'              => 6,
-      'MinSize'              => 2,
-      'ScheduledActionName'  => 'my-scheduled-action',
-      'StartTime'            => '2014-05-12T08:00:00Z'
+      {
+        'ScheduledActionName'  => 'my-scheduled-action',
+        'MaxSize'              => 6,
+        'MinSize'              => 2,
+        'StartTime'            => '2014-05-12T08:00:00Z',
+        'EndTime'              => '2014-05-12T08:00:00Z',
+        'DesiredCapacity'      => 4,
+        'AutoScalingGroupName' => 'my-auto-scaling-group'
+      }
     );
 
 
@@ -63,40 +65,34 @@ The name of the Auto Scaling group.
 
 =head2 DesiredCapacity => Int
 
-The number of EC2 instances that should be running in the Auto Scaling
-group.
+The number of EC2 instances that should be running in the group.
 
 
 
 =head2 EndTime => Str
 
-The date and time for the recurring schedule to end. Amazon EC2 Auto
-Scaling does not perform the action after this time.
+The time for the recurring schedule to end. Auto Scaling does not
+perform the action after this time.
 
 
 
 =head2 MaxSize => Int
 
-The maximum number of instances in the Auto Scaling group.
+The maximum size for the Auto Scaling group.
 
 
 
 =head2 MinSize => Int
 
-The minimum number of instances in the Auto Scaling group.
+The minimum size for the Auto Scaling group.
 
 
 
 =head2 Recurrence => Str
 
-The recurring schedule for this action, in Unix cron syntax format.
-This format consists of five fields separated by white spaces: [Minute]
-[Hour] [Day_of_Month] [Month_of_Year] [Day_of_Week]. The value must be
-in quotes (for example, C<"30 0 1 1,6,12 *">). For more information
-about this format, see Crontab (http://crontab.org).
-
-When C<StartTime> and C<EndTime> are specified with C<Recurrence>, they
-form the boundaries of when the recurring action starts and stops.
+The recurring schedule for this action, in Unix cron syntax format. For
+more information, see Cron (http://en.wikipedia.org/wiki/Cron) in
+Wikipedia.
 
 
 
@@ -108,22 +104,21 @@ The name of this scaling action.
 
 =head2 StartTime => Str
 
-The date and time for this action to start, in YYYY-MM-DDThh:mm:ssZ
-format in UTC/GMT only and in quotes (for example,
-C<"2019-06-01T00:00:00Z">).
+The time for this action to start, in "YYYY-MM-DDThh:mm:ssZ" format in
+UTC/GMT only (for example, C<2014-06-01T00:00:00Z>).
 
-If you specify C<Recurrence> and C<StartTime>, Amazon EC2 Auto Scaling
-performs the action at this time, and then performs the action based on
-the specified recurrence.
+If you specify C<Recurrence> and C<StartTime>, Auto Scaling performs
+the action at this time, and then performs the action based on the
+specified recurrence.
 
-If you try to schedule your action in the past, Amazon EC2 Auto Scaling
-returns an error message.
+If you try to schedule your action in the past, Auto Scaling returns an
+error message.
 
 
 
 =head2 Time => Str
 
-This parameter is no longer used.
+This parameter is deprecated.
 
 
 

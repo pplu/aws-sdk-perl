@@ -33,8 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example resets all parameters for the specified DB parameter group to
     # their default values.
     my $DBParameterGroupNameMessage = $rds->ResetDBParameterGroup(
-      'DBParameterGroupName' => 'mydbparametergroup',
-      'ResetAllParameters'   => 1
+      {
+        'DBParameterGroupName' => 'mydbparametergroup',
+        'ResetAllParameters'   => 1
+      }
     );
 
 
@@ -54,7 +56,7 @@ Constraints:
 
 =item *
 
-Must match the name of an existing C<DBParameterGroup>.
+Must match the name of an existing DBParameterGroup.
 
 =back
 
@@ -93,9 +95,10 @@ Valid Values (for Apply method): C<pending-reboot>
 
 =head2 ResetAllParameters => Bool
 
-A value that indicates whether to reset all parameters in the DB
-parameter group to default values. By default, all parameters in the DB
-parameter group are reset to default values.
+Specifies whether (C<true>) or not (C<false>) to reset all parameters
+in the DB parameter group to default values.
+
+Default: C<true>
 
 
 

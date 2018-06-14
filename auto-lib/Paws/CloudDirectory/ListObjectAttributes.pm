@@ -48,8 +48,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Attributes = $ListObjectAttributesResponse->Attributes;
     my $NextToken  = $ListObjectAttributesResponse->NextToken;
+    my $Attributes = $ListObjectAttributesResponse->Attributes;
 
     # Returns a L<Paws::CloudDirectory::ListObjectAttributesResponse> object.
 

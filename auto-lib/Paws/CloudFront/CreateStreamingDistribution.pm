@@ -6,7 +6,7 @@ package Paws::CloudFront::CreateStreamingDistribution;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateStreamingDistribution');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2019-03-26/streaming-distribution');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2017-10-30/streaming-distribution');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::CreateStreamingDistributionResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
@@ -21,11 +21,11 @@ Paws::CloudFront::CreateStreamingDistribution - Arguments for method CreateStrea
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateStreamingDistribution2019_03_26 on the
+This class represents the parameters used for calling the method CreateStreamingDistribution2017_10_30 on the
 L<Amazon CloudFront|Paws::CloudFront> service. Use the attributes of this class
-as arguments to method CreateStreamingDistribution2019_03_26.
+as arguments to method CreateStreamingDistribution2017_10_30.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateStreamingDistribution2019_03_26.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateStreamingDistribution2017_10_30.
 
 =head1 SYNOPSIS
 
@@ -34,18 +34,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $cloudfront->CreateStreamingDistribution(
       StreamingDistributionConfig => {
         CallerReference => 'Mystring',
-        Comment         => 'Mystring',
-        Enabled         => 1,
         S3Origin        => {
-          DomainName           => 'Mystring',
           OriginAccessIdentity => 'Mystring',
+          DomainName           => 'Mystring',
 
         },
         TrustedSigners => {
-          Enabled  => 1,
           Quantity => 1,
+          Enabled  => 1,
           Items    => [ 'Mystring', ... ],    # OPTIONAL
         },
+        Enabled => 1,
+        Comment => 'Mystring',
         Aliases => {
           Quantity => 1,
           Items    => [ 'Mystring', ... ],    # OPTIONAL
@@ -63,10 +63,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $ETag     = $CreateStreamingDistributionResult->ETag;
-    my $Location = $CreateStreamingDistributionResult->Location;
+    my $ETag = $CreateStreamingDistributionResult->ETag;
     my $StreamingDistribution =
       $CreateStreamingDistributionResult->StreamingDistribution;
+    my $Location = $CreateStreamingDistributionResult->Location;
 
     # Returns a L<Paws::CloudFront::CreateStreamingDistributionResult> object.
 
@@ -85,7 +85,7 @@ The streaming distribution's configuration information.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method CreateStreamingDistribution2019_03_26 in L<Paws::CloudFront>
+This class forms part of L<Paws>, documenting arguments for method CreateStreamingDistribution2017_10_30 in L<Paws::CloudFront>
 
 =head1 BUGS and CONTRIBUTIONS
 

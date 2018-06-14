@@ -31,33 +31,33 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $GetReservedInstancesExchangeQuoteResult =
       $ec2->GetReservedInstancesExchangeQuote(
-      ReservedInstanceIds  => [ 'MyReservationId', ... ],
-      DryRun               => 1,                            # OPTIONAL
+      ReservedInstanceIds  => [ 'MyString', ... ],
+      DryRun               => 1,                     # OPTIONAL
       TargetConfigurations => [
         {
-          OfferingId    => 'MyReservedInstancesOfferingId',
-          InstanceCount => 1,                                 # OPTIONAL
+          OfferingId    => 'MyString',
+          InstanceCount => 1,                        # OPTIONAL
         },
         ...
-      ],                                                      # OPTIONAL
+      ],                                             # OPTIONAL
       );
 
     # Results:
-    my $CurrencyCode = $GetReservedInstancesExchangeQuoteResult->CurrencyCode;
+    my $TargetConfigurationValueRollup =
+      $GetReservedInstancesExchangeQuoteResult->TargetConfigurationValueRollup;
     my $IsValidExchange =
       $GetReservedInstancesExchangeQuoteResult->IsValidExchange;
+    my $ReservedInstanceValueSet =
+      $GetReservedInstancesExchangeQuoteResult->ReservedInstanceValueSet;
+    my $ReservedInstanceValueRollup =
+      $GetReservedInstancesExchangeQuoteResult->ReservedInstanceValueRollup;
+    my $TargetConfigurationValueSet =
+      $GetReservedInstancesExchangeQuoteResult->TargetConfigurationValueSet;
+    my $CurrencyCode = $GetReservedInstancesExchangeQuoteResult->CurrencyCode;
     my $OutputReservedInstancesWillExpireAt =
       $GetReservedInstancesExchangeQuoteResult
       ->OutputReservedInstancesWillExpireAt;
     my $PaymentDue = $GetReservedInstancesExchangeQuoteResult->PaymentDue;
-    my $ReservedInstanceValueRollup =
-      $GetReservedInstancesExchangeQuoteResult->ReservedInstanceValueRollup;
-    my $ReservedInstanceValueSet =
-      $GetReservedInstancesExchangeQuoteResult->ReservedInstanceValueSet;
-    my $TargetConfigurationValueRollup =
-      $GetReservedInstancesExchangeQuoteResult->TargetConfigurationValueRollup;
-    my $TargetConfigurationValueSet =
-      $GetReservedInstancesExchangeQuoteResult->TargetConfigurationValueSet;
     my $ValidationFailureReason =
       $GetReservedInstancesExchangeQuoteResult->ValidationFailureReason;
 

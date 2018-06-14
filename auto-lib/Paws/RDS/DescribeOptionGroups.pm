@@ -36,8 +36,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example lists information for all option groups for the specified DB
     # engine.
     my $OptionGroups = $rds->DescribeOptionGroups(
-      'EngineName'         => 'mysql',
-      'MajorEngineVersion' => 5.6
+      {
+        'MajorEngineVersion' => 5.6,
+        'EngineName'         => 'mysql'
+      }
     );
 
 
@@ -56,7 +58,7 @@ with a specific database engine.
 
 =head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
-This parameter isn't currently supported.
+This parameter is not currently supported.
 
 
 
@@ -81,8 +83,8 @@ specified by C<MaxRecords>.
 
 The maximum number of records to include in the response. If more
 records exist than the specified C<MaxRecords> value, a pagination
-token called a marker is included in the response so that you can
-retrieve the remaining results.
+token called a marker is included in the response so that the remaining
+results can be retrieved.
 
 Default: 100
 
@@ -92,7 +94,7 @@ Constraints: Minimum 20, maximum 100.
 
 =head2 OptionGroupName => Str
 
-The name of the option group to describe. Can't be supplied together
+The name of the option group to describe. Cannot be supplied together
 with EngineName or MajorEngineVersion.
 
 

@@ -28,20 +28,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
 =head1 SYNOPSIS
 
-    my $application-autoscaling = Paws->service('ApplicationAutoScaling');
+    my $autoscaling = Paws->service('ApplicationAutoScaling');
    # To deregister a scalable target
    # This example deregisters a scalable target for an Amazon ECS service called
    # web-app that is running in the default cluster.
     my $DeregisterScalableTargetResponse =
-      $application -autoscaling->DeregisterScalableTarget(
-      'ResourceId'        => 'service/default/web-app',
-      'ScalableDimension' => 'ecs:service:DesiredCount',
-      'ServiceNamespace'  => 'ecs'
+      $autoscaling->DeregisterScalableTarget(
+      {
+        'ResourceId'        => 'service/default/web-app',
+        'ServiceNamespace'  => 'ecs',
+        'ScalableDimension' => 'ecs:service:DesiredCount'
+      }
       );
 
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/application-autoscaling/DeregisterScalableTarget>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling/DeregisterScalableTarget>
 
 =head1 ATTRIBUTES
 
@@ -61,8 +63,8 @@ C<service/default/sample-webapp>.
 
 =item *
 
-Spot Fleet request - The resource type is C<spot-fleet-request> and the
-unique identifier is the Spot Fleet request ID. Example:
+Spot fleet request - The resource type is C<spot-fleet-request> and the
+unique identifier is the Spot fleet request ID. Example:
 C<spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE>.
 
 =item *
@@ -79,12 +81,12 @@ identifier is the fleet name. Example: C<fleet/sample-fleet>.
 =item *
 
 DynamoDB table - The resource type is C<table> and the unique
-identifier is the table name. Example: C<table/my-table>.
+identifier is the resource ID. Example: C<table/my-table>.
 
 =item *
 
 DynamoDB global secondary index - The resource type is C<index> and the
-unique identifier is the index name. Example:
+unique identifier is the resource ID. Example:
 C<table/my-table/index/my-table-index>.
 
 =item *
@@ -94,30 +96,9 @@ identifier is the cluster name. Example: C<cluster:my-db-cluster>.
 
 =item *
 
-Amazon SageMaker endpoint variant - The resource type is C<variant> and
-the unique identifier is the resource ID. Example:
+Amazon SageMaker endpoint variants - The resource type is C<variant>
+and the unique identifier is the resource ID. Example:
 C<endpoint/my-end-point/variant/KMeansClustering>.
-
-=item *
-
-Custom resources are not supported with a resource type. This parameter
-must specify the C<OutputValue> from the CloudFormation template stack
-used to access the resources. The unique identifier is defined by the
-service provider. More information is available in our GitHub
-repository (https://github.com/aws/aws-auto-scaling-custom-resource).
-
-=item *
-
-Amazon Comprehend document classification endpoint - The resource type
-and unique identifier are specified using the endpoint ARN. Example:
-C<arn:aws:comprehend:us-west-2:123456789012:document-classifier-endpoint/EXAMPLE>.
-
-=item *
-
-Lambda provisioned concurrency - The resource type is C<function> and
-the unique identifier is the function name with a function version or
-alias name suffix that is not C<$LATEST>. Example:
-C<function:my-function:prod> or C<function:my-function:1>.
 
 =back
 
@@ -138,7 +119,7 @@ C<ecs:service:DesiredCount> - The desired task count of an ECS service.
 =item *
 
 C<ec2:spot-fleet-request:TargetCapacity> - The target capacity of a
-Spot Fleet request.
+Spot fleet request.
 
 =item *
 
@@ -173,44 +154,26 @@ for a DynamoDB global secondary index.
 =item *
 
 C<rds:cluster:ReadReplicaCount> - The count of Aurora Replicas in an
-Aurora DB cluster. Available for Aurora MySQL-compatible edition and
-Aurora PostgreSQL-compatible edition.
+Aurora DB cluster. Available for Aurora MySQL-compatible edition.
 
 =item *
 
 C<sagemaker:variant:DesiredInstanceCount> - The number of EC2 instances
 for an Amazon SageMaker model endpoint variant.
 
-=item *
-
-C<custom-resource:ResourceType:Property> - The scalable dimension for a
-custom resource provided by your own application or service.
-
-=item *
-
-C<comprehend:document-classifier-endpoint:DesiredInferenceUnits> - The
-number of inference units for an Amazon Comprehend document
-classification endpoint.
-
-=item *
-
-C<lambda:function:ProvisionedConcurrency> - The provisioned concurrency
-for a Lambda function.
-
 =back
 
 
-Valid values are: C<"ecs:service:DesiredCount">, C<"ec2:spot-fleet-request:TargetCapacity">, C<"elasticmapreduce:instancegroup:InstanceCount">, C<"appstream:fleet:DesiredCapacity">, C<"dynamodb:table:ReadCapacityUnits">, C<"dynamodb:table:WriteCapacityUnits">, C<"dynamodb:index:ReadCapacityUnits">, C<"dynamodb:index:WriteCapacityUnits">, C<"rds:cluster:ReadReplicaCount">, C<"sagemaker:variant:DesiredInstanceCount">, C<"custom-resource:ResourceType:Property">, C<"comprehend:document-classifier-endpoint:DesiredInferenceUnits">, C<"lambda:function:ProvisionedConcurrency">
+Valid values are: C<"ecs:service:DesiredCount">, C<"ec2:spot-fleet-request:TargetCapacity">, C<"elasticmapreduce:instancegroup:InstanceCount">, C<"appstream:fleet:DesiredCapacity">, C<"dynamodb:table:ReadCapacityUnits">, C<"dynamodb:table:WriteCapacityUnits">, C<"dynamodb:index:ReadCapacityUnits">, C<"dynamodb:index:WriteCapacityUnits">, C<"rds:cluster:ReadReplicaCount">, C<"sagemaker:variant:DesiredInstanceCount">
 
 =head2 B<REQUIRED> ServiceNamespace => Str
 
-The namespace of the AWS service that provides the resource or
-C<custom-resource> for a resource provided by your own application or
-service. For more information, see AWS Service Namespaces
+The namespace of the AWS service. For more information, see AWS Service
+Namespaces
 (http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
 in the I<Amazon Web Services General Reference>.
 
-Valid values are: C<"ecs">, C<"elasticmapreduce">, C<"ec2">, C<"appstream">, C<"dynamodb">, C<"rds">, C<"sagemaker">, C<"custom-resource">, C<"comprehend">, C<"lambda">
+Valid values are: C<"ecs">, C<"elasticmapreduce">, C<"ec2">, C<"appstream">, C<"dynamodb">, C<"rds">, C<"sagemaker">
 
 
 =head1 SEE ALSO

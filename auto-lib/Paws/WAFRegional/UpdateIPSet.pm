@@ -33,18 +33,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example deletes an IPSetDescriptor object in an IP match set
     # with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.
     my $UpdateIPSetResponse = $waf -regional->UpdateIPSet(
-      'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
-      'IPSetId'     => 'example1ds3t-46da-4fdb-b8d5-abc321j569j5',
-      'Updates'     => [
+      {
+        'Updates' => [
 
-        {
-          'Action'          => 'DELETE',
-          'IPSetDescriptor' => {
-            'Type'  => 'IPV4',
-            'Value' => '192.0.2.44/32'
+          {
+            'Action'          => 'DELETE',
+            'IPSetDescriptor' => {
+              'Value' => '192.0.2.44/32',
+              'Type'  => 'IPV4'
+            }
           }
-        }
-      ]
+        ],
+        'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
+        'IPSetId'     => 'example1ds3t-46da-4fdb-b8d5-abc321j569j5'
+      }
     );
 
     # Results:
@@ -89,7 +91,6 @@ IPSetDescriptor: Contains C<Type> and C<Value>
 
 =back
 
-You can insert a maximum of 1000 addresses in a single request.
 
 
 

@@ -34,25 +34,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $guardduty = Paws->service('GuardDuty');
     my $UpdateFilterResponse = $guardduty->UpdateFilter(
-      DetectorId      => 'MyDetectorId',
-      FilterName      => 'MyString',
+      DetectorId      => 'My__string',
+      FilterName      => 'My__string',
       Action          => 'NOOP',                   # OPTIONAL
       Description     => 'MyFilterDescription',    # OPTIONAL
       FindingCriteria => {
         Criterion => {
-          'MyString' => {
-            Eq     => [ 'MyString', ... ],         # OPTIONAL
-            Equals => [ 'MyString', ... ],         # OPTIONAL
-            GreaterThan        => 1,                      # OPTIONAL
-            GreaterThanOrEqual => 1,                      # OPTIONAL
-            Gt                 => 1,                      # OPTIONAL
-            Gte                => 1,                      # OPTIONAL
-            LessThan           => 1,                      # OPTIONAL
-            LessThanOrEqual    => 1,                      # OPTIONAL
-            Lt                 => 1,                      # OPTIONAL
-            Lte                => 1,                      # OPTIONAL
-            Neq                => [ 'MyString', ... ],    # OPTIONAL
-            NotEquals          => [ 'MyString', ... ],    # OPTIONAL
+          'My__string' => {
+            Gte => 1,                              # OPTIONAL
+            Lte => 1,                              # OPTIONAL
+            Neq => [ 'My__string', ... ],          # OPTIONAL
+            Eq  => [ 'My__string', ... ],          # OPTIONAL
+            Gt  => 1,                              # OPTIONAL
+            Lt  => 1,                              # OPTIONAL
           },
         },    # OPTIONAL
       },    # OPTIONAL
@@ -65,7 +59,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::GuardDuty::UpdateFilterResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/guardduty/UpdateFilter>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
 
 =head1 ATTRIBUTES
 

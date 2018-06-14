@@ -39,9 +39,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $NextToken = $ListDatasetsResponse->NextToken;
     my $Count     = $ListDatasetsResponse->Count;
     my $Datasets  = $ListDatasetsResponse->Datasets;
-    my $NextToken = $ListDatasetsResponse->NextToken;
 
     # Returns a L<Paws::CognitoSync::ListDatasetsResponse> object.
 

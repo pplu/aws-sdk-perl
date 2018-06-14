@@ -33,23 +33,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     $opsworks->SetLoadBasedAutoScaling(
       LayerId     => 'MyString',
       DownScaling => {
-        Alarms             => [ 'MyString', ... ],  # OPTIONAL
-        CpuThreshold       => 1,                    # OPTIONAL
         IgnoreMetricsTime  => 1,                    # min: 1, max: 100; OPTIONAL
+        ThresholdsWaitTime => 1,                    # min: 1, max: 100; OPTIONAL
+        Alarms             => [ 'MyString', ... ],  # OPTIONAL
+        MemoryThreshold    => 1,                    # OPTIONAL
+        CpuThreshold       => 1,                    # OPTIONAL
         InstanceCount      => 1,                    # OPTIONAL
         LoadThreshold      => 1,                    # OPTIONAL
-        MemoryThreshold    => 1,                    # OPTIONAL
-        ThresholdsWaitTime => 1,                    # min: 1, max: 100; OPTIONAL
       },    # OPTIONAL
       Enable    => 1,    # OPTIONAL
       UpScaling => {
-        Alarms             => [ 'MyString', ... ],  # OPTIONAL
-        CpuThreshold       => 1,                    # OPTIONAL
         IgnoreMetricsTime  => 1,                    # min: 1, max: 100; OPTIONAL
+        ThresholdsWaitTime => 1,                    # min: 1, max: 100; OPTIONAL
+        Alarms             => [ 'MyString', ... ],  # OPTIONAL
+        MemoryThreshold    => 1,                    # OPTIONAL
+        CpuThreshold       => 1,                    # OPTIONAL
         InstanceCount      => 1,                    # OPTIONAL
         LoadThreshold      => 1,                    # OPTIONAL
-        MemoryThreshold    => 1,                    # OPTIONAL
-        ThresholdsWaitTime => 1,                    # min: 1, max: 100; OPTIONAL
       },    # OPTIONAL
     );
 

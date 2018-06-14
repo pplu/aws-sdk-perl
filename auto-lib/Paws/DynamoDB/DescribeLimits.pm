@@ -32,14 +32,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeLimitsOutput = $dynamodb->DescribeLimits();
 
     # Results:
-    my $AccountMaxReadCapacityUnits =
-      $DescribeLimitsOutput->AccountMaxReadCapacityUnits;
-    my $AccountMaxWriteCapacityUnits =
-      $DescribeLimitsOutput->AccountMaxWriteCapacityUnits;
-    my $TableMaxReadCapacityUnits =
-      $DescribeLimitsOutput->TableMaxReadCapacityUnits;
     my $TableMaxWriteCapacityUnits =
       $DescribeLimitsOutput->TableMaxWriteCapacityUnits;
+    my $AccountMaxReadCapacityUnits =
+      $DescribeLimitsOutput->AccountMaxReadCapacityUnits;
+    my $TableMaxReadCapacityUnits =
+      $DescribeLimitsOutput->TableMaxReadCapacityUnits;
+    my $AccountMaxWriteCapacityUnits =
+      $DescribeLimitsOutput->AccountMaxWriteCapacityUnits;
 
     # Returns a L<Paws::DynamoDB::DescribeLimitsOutput> object.
 

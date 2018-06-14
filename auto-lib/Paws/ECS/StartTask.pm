@@ -3,14 +3,10 @@ package Paws::ECS::StartTask;
   use Moose;
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
   has ContainerInstances => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'containerInstances' , required => 1);
-  has EnableECSManagedTags => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableECSManagedTags' );
   has Group => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'group' );
   has NetworkConfiguration => (is => 'ro', isa => 'Paws::ECS::NetworkConfiguration', traits => ['NameInRequest'], request_name => 'networkConfiguration' );
   has Overrides => (is => 'ro', isa => 'Paws::ECS::TaskOverride', traits => ['NameInRequest'], request_name => 'overrides' );
-  has PropagateTags => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'propagateTags' );
-  has ReferenceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'referenceId' );
   has StartedBy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startedBy' );
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has TaskDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskDefinition' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -41,68 +37,41 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ContainerInstances   => [ 'MyString', ... ],
       TaskDefinition       => 'MyString',
       Cluster              => 'MyString',            # OPTIONAL
-      EnableECSManagedTags => 1,                     # OPTIONAL
       Group                => 'MyString',            # OPTIONAL
       NetworkConfiguration => {
-        AwsvpcConfiguration => {
-          Subnets => [ 'MyString', ... ],
-          AssignPublicIp => 'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
-          SecurityGroups => [ 'MyString', ... ],
+        awsvpcConfiguration => {
+          subnets        => [ 'MyString', ... ],
+          securityGroups => [ 'MyString', ... ],
+          assignPublicIp => 'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       Overrides => {
-        ContainerOverrides => [
+        executionRoleArn   => 'MyString',
+        taskRoleArn        => 'MyString',
+        containerOverrides => [
           {
-            Command     => [ 'MyString', ... ],
-            Cpu         => 1,                     # OPTIONAL
-            Environment => [
+            cpu         => 1,                     # OPTIONAL
+            name        => 'MyString',
+            memory      => 1,                     # OPTIONAL
+            command     => [ 'MyString', ... ],
+            environment => [
               {
-                Name  => 'MyString',
-                Value => 'MyString',
+                value => 'MyString',
+                name  => 'MyString',
               },
               ...
             ],                                    # OPTIONAL
-            Memory               => 1,            # OPTIONAL
-            MemoryReservation    => 1,            # OPTIONAL
-            Name                 => 'MyString',
-            ResourceRequirements => [
-              {
-                Type  => 'GPU',        # values: GPU, InferenceAccelerator
-                Value => 'MyString',
-
-              },
-              ...
-            ],                         # OPTIONAL
+            memoryReservation => 1,               # OPTIONAL
           },
           ...
-        ],                             # OPTIONAL
-        Cpu                           => 'MyString',
-        ExecutionRoleArn              => 'MyString',
-        InferenceAcceleratorOverrides => [
-          {
-            DeviceName => 'MyString',
-            DeviceType => 'MyString',
-          },
-          ...
-        ],                             # OPTIONAL
-        Memory      => 'MyString',
-        TaskRoleArn => 'MyString',
+        ],                                        # OPTIONAL
       },    # OPTIONAL
-      PropagateTags => 'TASK_DEFINITION',    # OPTIONAL
-      ReferenceId   => 'MyString',           # OPTIONAL
-      StartedBy     => 'MyString',           # OPTIONAL
-      Tags          => [
-        {
-          Key   => 'MyTagKey',               # min: 1, max: 128; OPTIONAL
-          Value => 'MyTagValue',             # max: 256; OPTIONAL
-        },
-        ...
-      ],                                     # OPTIONAL
+      StartedBy => 'MyString',    # OPTIONAL
     );
 
     # Results:
-    my $Failures = $StartTaskResponse->Failures;
     my $Tasks    = $StartTaskResponse->Tasks;
+    my $Failures = $StartTaskResponse->Failures;
 
     # Returns a L<Paws::ECS::StartTaskResponse> object.
 
@@ -128,15 +97,6 @@ up to 10 container instances.
 
 
 
-=head2 EnableECSManagedTags => Bool
-
-Specifies whether to enable Amazon ECS managed tags for the task. For
-more information, see Tagging Your Amazon ECS Resources
-(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html)
-in the I<Amazon Elastic Container Service Developer Guide>.
-
-
-
 =head2 Group => Str
 
 The name of the task group to associate with the task. The default
@@ -148,7 +108,7 @@ family:my-family-name).
 =head2 NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>
 
 The VPC subnet and security group configuration for tasks that receive
-their own elastic network interface by using the C<awsvpc> networking
+their own Elastic Network Interface by using the C<awsvpc> networking
 mode.
 
 
@@ -168,23 +128,9 @@ includes the JSON formatting characters of the override structure.
 
 
 
-=head2 PropagateTags => Str
-
-Specifies whether to propagate the tags from the task definition or the
-service to the task. If no value is specified, the tags are not
-propagated.
-
-Valid values are: C<"TASK_DEFINITION">, C<"SERVICE">
-
-=head2 ReferenceId => Str
-
-The reference ID to use for the task.
-
-
-
 =head2 StartedBy => Str
 
-An optional tag specified when a task is started. For example, if you
+An optional tag specified when a task is started. For example if you
 automatically trigger a task to run a batch process job, you could
 apply a unique identifier for that job to your task with the
 C<startedBy> parameter. You can then identify which tasks belong to
@@ -194,58 +140,6 @@ numbers, hyphens, and underscores are allowed.
 
 If a task is started by an Amazon ECS service, then the C<startedBy>
 parameter contains the deployment ID of the service that starts it.
-
-
-
-=head2 Tags => ArrayRef[L<Paws::ECS::Tag>]
-
-The metadata that you apply to the task to help you categorize and
-organize them. Each tag consists of a key and an optional value, both
-of which you define.
-
-The following basic restrictions apply to tags:
-
-=over
-
-=item *
-
-Maximum number of tags per resource - 50
-
-=item *
-
-For each resource, each tag key must be unique, and each tag key can
-have only one value.
-
-=item *
-
-Maximum key length - 128 Unicode characters in UTF-8
-
-=item *
-
-Maximum value length - 256 Unicode characters in UTF-8
-
-=item *
-
-If your tagging schema is used across multiple services and resources,
-remember that other services may have restrictions on allowed
-characters. Generally allowed characters are: letters, numbers, and
-spaces representable in UTF-8, and the following characters: + - = . _
-: / @.
-
-=item *
-
-Tag keys and values are case-sensitive.
-
-=item *
-
-Do not use C<aws:>, C<AWS:>, or any upper or lowercase combination of
-such as a prefix for either keys or values as it is reserved for AWS
-use. You cannot edit or delete tag keys or values with this prefix.
-Tags with this prefix do not count against your tags per resource
-limit.
-
-=back
-
 
 
 

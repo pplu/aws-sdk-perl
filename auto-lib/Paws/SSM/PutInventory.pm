@@ -34,19 +34,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           CaptureTime   => 'MyInventoryItemCaptureTime',
           SchemaVersion => 'MyInventoryItemSchemaVersion',
-          TypeName      => 'MyInventoryItemTypeName',        # min: 1, max: 100
-          Content       => [
+          TypeName      => 'MyInventoryItemTypeName',       # min: 1, max: 100
+          ContentHash   => 'MyInventoryItemContentHash',    # max: 256; OPTIONAL
+          Context       => {
+            'MyAttributeName' =>
+              'MyAttributeValue',    # key: min: 1, max: 64, value: max: 4096
+          },    # max: 50; OPTIONAL
+          Content => [
             {
               'MyAttributeName' =>
                 'MyAttributeValue',    # key: min: 1, max: 64, value: max: 4096
             },
             ...                        # max: 50
           ],                           # max: 10000; OPTIONAL
-          ContentHash => 'MyInventoryItemContentHash',    # max: 256; OPTIONAL
-          Context     => {
-            'MyAttributeName' =>
-              'MyAttributeValue',    # key: min: 1, max: 64, value: max: 4096
-          },    # max: 50; OPTIONAL
         },
         ...
       ],
@@ -66,7 +66,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 
 =head2 B<REQUIRED> InstanceId => Str
 
-An instance ID where you want to add or update inventory items.
+One or more instance IDs where you want to add or update inventory
+items.
 
 
 

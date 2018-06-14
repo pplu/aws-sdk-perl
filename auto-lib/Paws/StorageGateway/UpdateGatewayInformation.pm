@@ -1,7 +1,6 @@
 
 package Paws::StorageGateway::UpdateGatewayInformation;
   use Moose;
-  has CloudWatchLogGroupARN => (is => 'ro', isa => 'Str');
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
   has GatewayName => (is => 'ro', isa => 'Str');
   has GatewayTimezone => (is => 'ro', isa => 'Str');
@@ -35,15 +34,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # zone.
     my $UpdateGatewayInformationOutput =
       $storagegateway->UpdateGatewayInformation(
-      'GatewayARN' =>
-        'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B',
-      'GatewayName'     => 'MyGateway2',
-      'GatewayTimezone' => 'GMT-12:00'
+      {
+        'GatewayTimezone' => 'GMT-12:00',
+        'GatewayName'     => 'MyGateway2',
+        'GatewayARN' =>
+          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B'
+      }
       );
 
     # Results:
-    my $GatewayARN  = $UpdateGatewayInformationOutput->GatewayARN;
     my $GatewayName = $UpdateGatewayInformationOutput->GatewayName;
+    my $GatewayARN  = $UpdateGatewayInformationOutput->GatewayARN;
 
     # Returns a L<Paws::StorageGateway::UpdateGatewayInformationOutput> object.
 
@@ -51,16 +52,6 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/storagegateway/UpdateGatewayInformation>
 
 =head1 ATTRIBUTES
-
-
-=head2 CloudWatchLogGroupARN => Str
-
-The Amazon Resource Name (ARN) of the Amazon CloudWatch log group that
-you want to use to monitor and log events in the gateway.
-
-For more information, see What Is Amazon CloudWatch Logs?
-(https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html).
-
 
 
 =head2 B<REQUIRED> GatewayARN => Str
@@ -77,7 +68,7 @@ For more information, see What Is Amazon CloudWatch Logs?
 
 =head2 GatewayTimezone => Str
 
-A value that indicates the time zone of the gateway.
+
 
 
 

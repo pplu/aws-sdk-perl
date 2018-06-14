@@ -6,7 +6,6 @@ package Paws::SQS::SendMessage;
   has MessageBody => (is => 'ro', isa => 'Str', required => 1);
   has MessageDeduplicationId => (is => 'ro', isa => 'Str');
   has MessageGroupId => (is => 'ro', isa => 'Str');
-  has MessageSystemAttributes => (is => 'ro', isa => 'Paws::SQS::MessageBodySystemAttributeMap', traits => ['NameInRequest'], request_name => 'MessageSystemAttribute' );
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -46,26 +45,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           StringValue      => 'MyString',
         },
       },    # OPTIONAL
-      MessageDeduplicationId  => 'MyString',    # OPTIONAL
-      MessageGroupId          => 'MyString',    # OPTIONAL
-      MessageSystemAttributes => {
-        'AWSTraceHeader' => {
-          DataType         => 'MyString',
-          BinaryListValues => [ 'BlobBinary', ... ],    # OPTIONAL
-          BinaryValue      => 'BlobBinary',
-          StringListValues => [ 'MyString', ... ],      # OPTIONAL
-          StringValue      => 'MyString',
-        },    # key: values: AWSTraceHeader
-      },    # OPTIONAL
+      MessageDeduplicationId => 'MyString',    # OPTIONAL
+      MessageGroupId         => 'MyString',    # OPTIONAL
     );
 
     # Results:
     my $MD5OfMessageAttributes = $SendMessageResult->MD5OfMessageAttributes;
+    my $SequenceNumber         = $SendMessageResult->SequenceNumber;
     my $MD5OfMessageBody       = $SendMessageResult->MD5OfMessageBody;
-    my $MD5OfMessageSystemAttributes =
-      $SendMessageResult->MD5OfMessageSystemAttributes;
-    my $MessageId      = $SendMessageResult->MessageId;
-    my $SequenceNumber = $SendMessageResult->SequenceNumber;
+    my $MessageId              = $SendMessageResult->MessageId;
 
     # Returns a L<Paws::SQS::SendMessageResult> object.
 
@@ -91,8 +79,8 @@ You can set this parameter only on a queue level.
 =head2 MessageAttributes => L<Paws::SQS::MessageBodyAttributeMap>
 
 Each message attribute consists of a C<Name>, C<Type>, and C<Value>.
-For more information, see Amazon SQS Message Attributes
-(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html)
+For more information, see Message Attribute Items and Validation
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html#message-attributes-items-validation)
 in the I<Amazon Simple Queue Service Developer Guide>.
 
 
@@ -122,7 +110,7 @@ particular C<MessageDeduplicationId> is sent successfully, any messages
 sent with the same C<MessageDeduplicationId> are accepted successfully
 but aren't delivered during the 5-minute deduplication interval. For
 more information, see Exactly-Once Processing
-(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
 in the I<Amazon Simple Queue Service Developer Guide>.
 
 =over
@@ -172,15 +160,12 @@ delivered.
 
 =back
 
-The C<MessageDeduplicationId> is available to the consumer of the
+The C<MessageDeduplicationId> is available to the recipient of the
 message (this can be useful for troubleshooting delivery issues).
 
 If a message is sent successfully but the acknowledgement is lost and
 the message is resent with the same C<MessageDeduplicationId> after the
 deduplication interval, Amazon SQS can't detect duplicate messages.
-
-Amazon SQS continues to keep track of the message deduplication ID even
-after the message is received and deleted.
 
 The length of C<MessageDeduplicationId> is 128 characters.
 C<MessageDeduplicationId> can contain alphanumeric characters (C<a-z>,
@@ -189,7 +174,7 @@ C<A-Z>, C<0-9>) and punctuation
 
 For best practices of using C<MessageDeduplicationId>, see Using the
 MessageDeduplicationId Property
-(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagededuplicationid-property.html)
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queue-recommendations.html#using-messagededuplicationid-property)
 in the I<Amazon Simple Queue Service Developer Guide>.
 
 
@@ -203,8 +188,8 @@ group. Messages that belong to the same message group are processed in
 a FIFO manner (however, messages in different message groups might be
 processed out of order). To interleave multiple ordered streams within
 a single queue, use C<MessageGroupId> values (for example, session data
-for multiple users). In this scenario, multiple consumers can process
-the queue, but the session data of each user is processed in a FIFO
+for multiple users). In this scenario, multiple readers can process the
+queue, but the session data of each user is processed in a FIFO
 fashion.
 
 =over
@@ -222,13 +207,13 @@ sent. The caller can't specify a C<MessageGroupId>.
 
 =back
 
-The length of C<MessageGroupId> is 128 characters. Valid values:
+The length of C<MessageGroupId> is 128 characters. Valid values are
 alphanumeric characters and punctuation
 C<(!"#$%&'()*+,-./:;E<lt>=E<gt>?@[\]^_`{|}~)>.
 
 For best practices of using C<MessageGroupId>, see Using the
 MessageGroupId Property
-(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagegroupid-property.html)
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queue-recommendations.html#using-messagegroupid-property)
 in the I<Amazon Simple Queue Service Developer Guide>.
 
 C<MessageGroupId> is required for FIFO queues. You can't use it for
@@ -236,34 +221,11 @@ Standard queues.
 
 
 
-=head2 MessageSystemAttributes => L<Paws::SQS::MessageBodySystemAttributeMap>
-
-The message system attribute to send. Each message system attribute
-consists of a C<Name>, C<Type>, and C<Value>.
-
-=over
-
-=item *
-
-Currently, the only supported message system attribute is
-C<AWSTraceHeader>. Its type must be C<String> and its value must be a
-correctly formatted AWS X-Ray trace string.
-
-=item *
-
-The size of a message system attribute doesn't count towards the total
-size of a message.
-
-=back
-
-
-
-
 =head2 B<REQUIRED> QueueUrl => Str
 
 The URL of the Amazon SQS queue to which a message is sent.
 
-Queue URLs and names are case-sensitive.
+Queue URLs are case-sensitive.
 
 
 

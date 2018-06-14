@@ -35,24 +35,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Checksum          = $CreateSlotTypeVersionResponse->Checksum;
-    my $CreatedDate       = $CreateSlotTypeVersionResponse->CreatedDate;
-    my $Description       = $CreateSlotTypeVersionResponse->Description;
-    my $EnumerationValues = $CreateSlotTypeVersionResponse->EnumerationValues;
-    my $LastUpdatedDate   = $CreateSlotTypeVersionResponse->LastUpdatedDate;
-    my $Name              = $CreateSlotTypeVersionResponse->Name;
-    my $ParentSlotTypeSignature =
-      $CreateSlotTypeVersionResponse->ParentSlotTypeSignature;
-    my $SlotTypeConfigurations =
-      $CreateSlotTypeVersionResponse->SlotTypeConfigurations;
     my $ValueSelectionStrategy =
       $CreateSlotTypeVersionResponse->ValueSelectionStrategy;
-    my $Version = $CreateSlotTypeVersionResponse->Version;
+    my $LastUpdatedDate   = $CreateSlotTypeVersionResponse->LastUpdatedDate;
+    my $CreatedDate       = $CreateSlotTypeVersionResponse->CreatedDate;
+    my $Version           = $CreateSlotTypeVersionResponse->Version;
+    my $EnumerationValues = $CreateSlotTypeVersionResponse->EnumerationValues;
+    my $Description       = $CreateSlotTypeVersionResponse->Description;
+    my $Name              = $CreateSlotTypeVersionResponse->Name;
+    my $Checksum          = $CreateSlotTypeVersionResponse->Checksum;
 
     # Returns a L<Paws::LexModels::CreateSlotTypeVersionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/models.lex/CreateSlotTypeVersion>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/lex/>
 
 =head1 ATTRIBUTES
 

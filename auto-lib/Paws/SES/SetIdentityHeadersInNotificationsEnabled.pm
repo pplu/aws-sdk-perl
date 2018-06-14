@@ -34,9 +34,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # headers in the Amazon SNS bounce notifications for an identity:
     my $SetIdentityHeadersInNotificationsEnabledResponse =
       $email->SetIdentityHeadersInNotificationsEnabled(
-      'Enabled'          => 1,
-      'Identity'         => 'user@example.com',
-      'NotificationType' => 'Bounce'
+      {
+        'NotificationType' => 'Bounce',
+        'Identity'         => 'user@example.com',
+        'Enabled'          => 1
+      }
       );
 
 

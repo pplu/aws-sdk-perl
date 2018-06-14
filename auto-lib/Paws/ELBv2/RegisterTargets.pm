@@ -32,18 +32,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example registers the specified instances with the specified target
     # group.
     my $RegisterTargetsOutput = $elasticloadbalancing->RegisterTargets(
-      'TargetGroupArn' =>
+      {
+        'TargetGroupArn' =>
 'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067',
-      'Targets' => [
+        'Targets' => [
 
-        {
-          'Id' => 'i-80c8dd94'
-        },
+          {
+            'Id' => 'i-80c8dd94'
+          },
 
-        {
-          'Id' => 'i-ceddcd4d'
-        }
-      ]
+          {
+            'Id' => 'i-ceddcd4d'
+          }
+        ]
+      }
     );
 
     # To register targets with a target group using port overrides
@@ -51,20 +53,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # group using multiple ports. This enables you to register ECS containers on
     # the same instance as targets in the target group.
     my $RegisterTargetsOutput = $elasticloadbalancing->RegisterTargets(
-      'TargetGroupArn' =>
+      {
+        'TargetGroupArn' =>
 'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-new-targets/3bb63f11dfb0faf9',
-      'Targets' => [
+        'Targets' => [
 
-        {
-          'Id'   => 'i-80c8dd94',
-          'Port' => 80
-        },
+          {
+            'Id'   => 'i-80c8dd94',
+            'Port' => 80
+          },
 
-        {
-          'Id'   => 'i-80c8dd94',
-          'Port' => 766
-        }
-      ]
+          {
+            'Id'   => 'i-80c8dd94',
+            'Port' => 766
+          }
+        ]
+      }
     );
 
 
@@ -83,10 +87,6 @@ The Amazon Resource Name (ARN) of the target group.
 =head2 B<REQUIRED> Targets => ArrayRef[L<Paws::ELBv2::TargetDescription>]
 
 The targets.
-
-To register a target by instance ID, specify the instance ID. To
-register a target by IP address, specify the IP address. To register a
-Lambda function, specify the ARN of the Lambda function.
 
 
 

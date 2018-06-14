@@ -2,7 +2,6 @@
 package Paws::IoT::CreateThingGroup;
   use Moose;
   has ParentGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'parentGroupName');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Tag]', traits => ['NameInRequest'], request_name => 'tags');
   has ThingGroupName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingGroupName', required => 1);
   has ThingGroupProperties => (is => 'ro', isa => 'Paws::IoT::ThingGroupProperties', traits => ['NameInRequest'], request_name => 'thingGroupProperties');
 
@@ -32,32 +31,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $iot = Paws->service('IoT');
     my $CreateThingGroupResponse = $iot->CreateThingGroup(
-      ThingGroupName  => 'MyThingGroupName',
-      ParentGroupName => 'MyThingGroupName',    # OPTIONAL
-      Tags            => [
-        {
-          Key   => 'MyTagKey',                  # OPTIONAL
-          Value => 'MyTagValue',                # OPTIONAL
-        },
-        ...
-      ],                                        # OPTIONAL
+      ThingGroupName       => 'MyThingGroupName',
+      ParentGroupName      => 'MyThingGroupName',    # OPTIONAL
       ThingGroupProperties => {
-        AttributePayload => {
-          Attributes => {
+        thingGroupDescription =>
+          'MyThingGroupDescription',                 # max: 2028; OPTIONAL
+        attributePayload => {
+          attributes => {
             'MyAttributeName' =>
-              'MyAttributeValue',               # key: max: 128, value: max: 800
+              'MyAttributeValue',    # key: max: 128, value: max: 800
           },    # OPTIONAL
-          Merge => 1,    # OPTIONAL
+          merge => 1,    # OPTIONAL
         },    # OPTIONAL
-        ThingGroupDescription =>
-          'MyThingGroupDescription',    # max: 2028; OPTIONAL
       },    # OPTIONAL
     );
 
     # Results:
+    my $ThingGroupName = $CreateThingGroupResponse->ThingGroupName;
     my $ThingGroupArn  = $CreateThingGroupResponse->ThingGroupArn;
     my $ThingGroupId   = $CreateThingGroupResponse->ThingGroupId;
-    my $ThingGroupName = $CreateThingGroupResponse->ThingGroupName;
 
     # Returns a L<Paws::IoT::CreateThingGroupResponse> object.
 
@@ -70,12 +62,6 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head2 ParentGroupName => Str
 
 The name of the parent thing group.
-
-
-
-=head2 Tags => ArrayRef[L<Paws::IoT::Tag>]
-
-Metadata which can be used to manage the thing group.
 
 
 

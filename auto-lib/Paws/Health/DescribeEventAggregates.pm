@@ -33,56 +33,52 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeEventAggregatesResponse = $health->DescribeEventAggregates(
       AggregateField => 'eventTypeCategory',
       Filter         => {
-        AvailabilityZones => [
-          'MyavailabilityZone', ...    # min: 6, max: 18
-        ],                             # OPTIONAL
-        EndTimes => [
-          {
-            From => '1970-01-01T01:00:00',    # OPTIONAL
-            To   => '1970-01-01T01:00:00',    # OPTIONAL
-          },
-          ...
-        ],                                    # min: 1, max: 10; OPTIONAL
-        EntityArns => [
-          'MyentityArn', ...                  # max: 1600
-        ],                                    # min: 1, max: 100; OPTIONAL
-        EntityValues => [
-          'MyentityValue', ...                # max: 256
-        ],                                    # min: 1, max: 100; OPTIONAL
-        EventArns => [
-          'MyeventArn', ...                   # max: 1600
-        ],                                    # min: 1, max: 10; OPTIONAL
-        EventStatusCodes => [
-          'open', ...                         # values: open, closed, upcoming
-        ],                                    # min: 1, max: 6; OPTIONAL
-        EventTypeCategories => [
-          'issue',
-          ... # values: issue, accountNotification, scheduledChange, investigationmin: 3, max: 255
-        ],    # min: 1, max: 10; OPTIONAL
-        EventTypeCodes => [
+        eventTypeCodes => [
           'MyeventType', ...    # min: 3, max: 100
         ],                      # min: 1, max: 10; OPTIONAL
-        LastUpdatedTimes => [
+        eventArns => [
+          'MyeventArn', ...     # max: 1600
+        ],                      # min: 1, max: 10; OPTIONAL
+        endTimes => [
           {
-            From => '1970-01-01T01:00:00',    # OPTIONAL
-            To   => '1970-01-01T01:00:00',    # OPTIONAL
+            to   => '1970-01-01T01:00:00',    # OPTIONAL
+            from => '1970-01-01T01:00:00',    # OPTIONAL
           },
           ...
         ],                                    # min: 1, max: 10; OPTIONAL
-        Regions => [
-          'Myregion', ...                     # min: 2, max: 25
+        eventStatusCodes => [
+          'open', ...                         # values: open, closed, upcoming
+        ],                                    # min: 1, max: 6; OPTIONAL
+        regions => [ 'Myregion', ... ],       # min: 1, max: 10; OPTIONAL
+        availabilityZones => [ 'MyavailabilityZone', ... ],    # OPTIONAL
+        entityValues => [
+          'MyentityValue', ...                                 # max: 256
+        ],    # min: 1, max: 100; OPTIONAL
+        eventTypeCategories => [
+          'issue',
+          ... # values: issue, accountNotification, scheduledChangemin: 3, max: 255
+        ],    # min: 1, max: 10; OPTIONAL
+        entityArns => [
+          'MyentityArn', ...    # max: 1600
+        ],                      # min: 1, max: 100; OPTIONAL
+        startTimes => [
+          {
+            to   => '1970-01-01T01:00:00',    # OPTIONAL
+            from => '1970-01-01T01:00:00',    # OPTIONAL
+          },
+          ...
         ],                                    # min: 1, max: 10; OPTIONAL
-        Services => [
+        lastUpdatedTimes => [
+          {
+            to   => '1970-01-01T01:00:00',    # OPTIONAL
+            from => '1970-01-01T01:00:00',    # OPTIONAL
+          },
+          ...
+        ],                                    # min: 1, max: 10; OPTIONAL
+        services => [
           'Myservice', ...                    # min: 2, max: 30
         ],                                    # min: 1, max: 10; OPTIONAL
-        StartTimes => [
-          {
-            From => '1970-01-01T01:00:00',    # OPTIONAL
-            To   => '1970-01-01T01:00:00',    # OPTIONAL
-          },
-          ...
-        ],                                    # min: 1, max: 10; OPTIONAL
-        Tags => [
+        tags => [
           {
             'MytagKey' => 'MytagValue',       # key: max: 127, value: max: 255
           },
@@ -94,8 +90,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $EventAggregates = $DescribeEventAggregatesResponse->EventAggregates;
     my $NextToken       = $DescribeEventAggregatesResponse->NextToken;
+    my $EventAggregates = $DescribeEventAggregatesResponse->EventAggregates;
 
     # Returns a L<Paws::Health::DescribeEventAggregatesResponse> object.
 

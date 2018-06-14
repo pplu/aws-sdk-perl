@@ -30,31 +30,30 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
 =head1 SYNOPSIS
 
-    my $autoscaling-plans = Paws->service('AutoScalingPlans');
-    my $DescribeScalingPlansResponse =
-      $autoscaling -plans->DescribeScalingPlans(
+    my $autoscaling = Paws->service('AutoScalingPlans');
+    my $DescribeScalingPlansResponse = $autoscaling->DescribeScalingPlans(
       ApplicationSources => [
         {
-          CloudFormationStackARN => 'MyXmlString',    # OPTIONAL
-          TagFilters             => [
+          TagFilters => [
             {
-              Key    => 'MyXmlStringMaxLen128',    # min: 1, max: 128; OPTIONAL
               Values => [
-                'MyXmlStringMaxLen256', ...        # min: 1, max: 256
-              ],                                   # OPTIONAL
+                'MyXmlStringMaxLen256', ...    # min: 1, max: 256
+              ],                               # OPTIONAL
+              Key => 'MyXmlStringMaxLen128',   # min: 1, max: 128; OPTIONAL
             },
             ...
-          ],                                       # OPTIONAL
+          ],                                   # OPTIONAL
+          CloudFormationStackARN => 'MyXmlString',    # OPTIONAL
         },
         ...
-      ],                                           # OPTIONAL
-      MaxResults       => 1,                       # OPTIONAL
-      NextToken        => 'MyNextToken',           # OPTIONAL
+      ],                                              # OPTIONAL
+      MaxResults       => 1,                          # OPTIONAL
+      NextToken        => 'MyNextToken',              # OPTIONAL
       ScalingPlanNames => [
-        'MyScalingPlanName', ...                   # min: 1, max: 128
-      ],                                           # OPTIONAL
-      ScalingPlanVersion => 1,                     # OPTIONAL
-      );
+        'MyScalingPlanName', ...                      # min: 1, max: 128
+      ],                                              # OPTIONAL
+      ScalingPlanVersion => 1,                        # OPTIONAL
+    );
 
     # Results:
     my $NextToken    = $DescribeScalingPlansResponse->NextToken;
@@ -63,7 +62,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::AutoScalingPlans::DescribeScalingPlansResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling-plans/DescribeScalingPlans>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling/DescribeScalingPlans>
 
 =head1 ATTRIBUTES
 
@@ -97,8 +96,8 @@ sources, you cannot specify scaling plan names.
 
 =head2 ScalingPlanVersion => Int
 
-The version number of the scaling plan. If you specify a scaling plan
-version, you must also specify a scaling plan name.
+The version of the scaling plan. If you specify a scaling plan version,
+you must also specify a scaling plan name.
 
 
 

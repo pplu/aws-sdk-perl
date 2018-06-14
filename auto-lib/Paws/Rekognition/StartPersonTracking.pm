@@ -34,15 +34,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Video => {
         S3Object => {
           Bucket  => 'MyS3Bucket',           # min: 3, max: 255; OPTIONAL
-          Name    => 'MyS3ObjectName',       # min: 1, max: 1024; OPTIONAL
           Version => 'MyS3ObjectVersion',    # min: 1, max: 1024; OPTIONAL
+          Name    => 'MyS3ObjectName',       # min: 1, max: 1024; OPTIONAL
         },    # OPTIONAL
       },
       ClientRequestToken  => 'MyClientRequestToken',    # OPTIONAL
       JobTag              => 'MyJobTag',                # OPTIONAL
       NotificationChannel => {
-        RoleArn     => 'MyRoleArn',
         SNSTopicArn => 'MySNSTopicArn',
+        RoleArn     => 'MyRoleArn',
 
       },                                                # OPTIONAL
     );

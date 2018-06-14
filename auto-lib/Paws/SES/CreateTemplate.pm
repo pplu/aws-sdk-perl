@@ -30,8 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateTemplateResponse = $email->CreateTemplate(
       Template => {
         TemplateName => 'MyTemplateName',
-        HtmlPart     => 'MyHtmlPart',       # OPTIONAL
         SubjectPart  => 'MySubjectPart',    # OPTIONAL
+        HtmlPart     => 'MyHtmlPart',       # OPTIONAL
         TextPart     => 'MyTextPart',       # OPTIONAL
       },
 

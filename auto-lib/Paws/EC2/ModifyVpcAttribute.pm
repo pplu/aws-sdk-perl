@@ -35,10 +35,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # is true, the Amazon DNS server resolves DNS hostnames for instances in the
     # VPC to their corresponding IP addresses; otherwise, it does not.
     $ec2->ModifyVpcAttribute(
-      'EnableDnsSupport' => {
-        'Value' => 0
-      },
-      'VpcId' => 'vpc-a01106c2'
+      {
+        'VpcId'            => 'vpc-a01106c2',
+        'EnableDnsSupport' => {
+          'Value' => 0
+        }
+      }
     );
 
     # To modify the enableDnsHostnames attribute
@@ -47,10 +49,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # attribute is true, instances in the VPC get DNS hostnames; otherwise, they
     # do not.
     $ec2->ModifyVpcAttribute(
-      'EnableDnsHostnames' => {
-        'Value' => 0
-      },
-      'VpcId' => 'vpc-a01106c2'
+      {
+        'VpcId'              => 'vpc-a01106c2',
+        'EnableDnsHostnames' => {
+          'Value' => 0
+        }
+      }
     );
 
 
@@ -77,7 +81,7 @@ only enable DNS hostnames if you've enabled DNS support.
 Indicates whether the DNS resolution is supported for the VPC. If
 enabled, queries to the Amazon provided DNS server at the
 169.254.169.253 IP address, or the reserved IP address at the base of
-the VPC network range "plus two" succeed. If disabled, the Amazon
+the VPC network range "plus two" will succeed. If disabled, the Amazon
 provided DNS service in the VPC that resolves public DNS hostnames to
 IP addresses is not enabled.
 

@@ -36,34 +36,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Arn               = $GetGroupVersionResponse->Arn;
     my $CreationTimestamp = $GetGroupVersionResponse->CreationTimestamp;
+    my $Version           = $GetGroupVersionResponse->Version;
     my $Definition        = $GetGroupVersionResponse->Definition;
     my $Id                = $GetGroupVersionResponse->Id;
-    my $Version           = $GetGroupVersionResponse->Version;
+    my $Arn               = $GetGroupVersionResponse->Arn;
 
     # Returns a L<Paws::Greengrass::GetGroupVersionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/greengrass/GetGroupVersion>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> GroupId => Str
 
-The ID of the Greengrass group.
+The ID of the AWS Greengrass group.
 
 
 
 =head2 B<REQUIRED> GroupVersionId => Str
 
-The ID of the group version. This value maps to the ''Version''
-property of the corresponding ''VersionInformation'' object, which is
-returned by ''ListGroupVersions'' requests. If the version is the last
-one that was associated with a group, the value also maps to the
-''LatestVersion'' property of the corresponding ''GroupInformation''
-object.
+The ID of the group version.
 
 
 

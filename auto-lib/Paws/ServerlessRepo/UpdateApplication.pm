@@ -45,19 +45,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ApplicationId     = $UpdateApplicationResponse->ApplicationId;
-    my $Author            = $UpdateApplicationResponse->Author;
-    my $CreationTime      = $UpdateApplicationResponse->CreationTime;
-    my $Description       = $UpdateApplicationResponse->Description;
-    my $HomePageUrl       = $UpdateApplicationResponse->HomePageUrl;
-    my $IsVerifiedAuthor  = $UpdateApplicationResponse->IsVerifiedAuthor;
-    my $Labels            = $UpdateApplicationResponse->Labels;
-    my $LicenseUrl        = $UpdateApplicationResponse->LicenseUrl;
-    my $Name              = $UpdateApplicationResponse->Name;
-    my $ReadmeUrl         = $UpdateApplicationResponse->ReadmeUrl;
-    my $SpdxLicenseId     = $UpdateApplicationResponse->SpdxLicenseId;
-    my $VerifiedAuthorUrl = $UpdateApplicationResponse->VerifiedAuthorUrl;
-    my $Version           = $UpdateApplicationResponse->Version;
+    my $CreationTime  = $UpdateApplicationResponse->CreationTime;
+    my $HomePageUrl   = $UpdateApplicationResponse->HomePageUrl;
+    my $SpdxLicenseId = $UpdateApplicationResponse->SpdxLicenseId;
+    my $ApplicationId = $UpdateApplicationResponse->ApplicationId;
+    my $Version       = $UpdateApplicationResponse->Version;
+    my $Labels        = $UpdateApplicationResponse->Labels;
+    my $LicenseUrl    = $UpdateApplicationResponse->LicenseUrl;
+    my $ReadmeUrl     = $UpdateApplicationResponse->ReadmeUrl;
+    my $Description   = $UpdateApplicationResponse->Description;
+    my $Name          = $UpdateApplicationResponse->Name;
+    my $Author        = $UpdateApplicationResponse->Author;
 
     # Returns a L<Paws::ServerlessRepo::UpdateApplicationResponse> object.
 
@@ -69,7 +67,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ser
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-The Amazon Resource Name (ARN) of the application.
+The ID of the application to get.
 
 
 
@@ -77,7 +75,7 @@ The Amazon Resource Name (ARN) of the application.
 
 The name of the author publishing the app.
 
-Minimum length=1. Maximum length=127.
+Min Length=1. Max Length=127.
 
 Pattern "^[a-z0-9](([a-z0-9]|-(?!-))*[a-z0-9])?$";
 
@@ -87,7 +85,7 @@ Pattern "^[a-z0-9](([a-z0-9]|-(?!-))*[a-z0-9])?$";
 
 The description of the application.
 
-Minimum length=1. Maximum length=256
+Min Length=1. Max Length=256
 
 
 
@@ -102,7 +100,7 @@ location of your GitHub repository for the application.
 
 Labels to improve discovery of apps in search results.
 
-Minimum length=1. Maximum length=127. Maximum number of labels: 10
+Min Length=1. Max Length=127. Maximum number of labels: 10
 
 Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
 
@@ -110,19 +108,19 @@ Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
 
 =head2 ReadmeBody => Str
 
-A text readme file in Markdown language that contains a more detailed
-description of the application and how it works.
+A raw text Readme file that contains a more detailed description of the
+application and how it works in markdown language.
 
-Maximum size 5 MB
+Max size 5 MB
 
 
 
 =head2 ReadmeUrl => Str
 
-A link to the readme file in Markdown language that contains a more
-detailed description of the application and how it works.
+A link to the Readme file that contains a more detailed description of
+the application and how it works in markdown language.
 
-Maximum size 5 MB
+Max size 5 MB
 
 
 

@@ -34,20 +34,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Arn               = $GetDeviceDefinitionResponse->Arn;
     my $CreationTimestamp = $GetDeviceDefinitionResponse->CreationTimestamp;
+    my $LatestVersionArn  = $GetDeviceDefinitionResponse->LatestVersionArn;
     my $Id                = $GetDeviceDefinitionResponse->Id;
     my $LastUpdatedTimestamp =
       $GetDeviceDefinitionResponse->LastUpdatedTimestamp;
-    my $LatestVersion    = $GetDeviceDefinitionResponse->LatestVersion;
-    my $LatestVersionArn = $GetDeviceDefinitionResponse->LatestVersionArn;
-    my $Name             = $GetDeviceDefinitionResponse->Name;
-    my $Tags             = $GetDeviceDefinitionResponse->Tags;
+    my $Arn           = $GetDeviceDefinitionResponse->Arn;
+    my $Name          = $GetDeviceDefinitionResponse->Name;
+    my $LatestVersion = $GetDeviceDefinitionResponse->LatestVersion;
 
     # Returns a L<Paws::Greengrass::GetDeviceDefinitionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/greengrass/GetDeviceDefinition>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>
 
 =head1 ATTRIBUTES
 

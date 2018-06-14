@@ -3,9 +3,7 @@ package Paws::ES::UpdateElasticsearchDomainConfig;
   use Moose;
   has AccessPolicies => (is => 'ro', isa => 'Str');
   has AdvancedOptions => (is => 'ro', isa => 'Paws::ES::AdvancedOptions');
-  has AdvancedSecurityOptions => (is => 'ro', isa => 'Paws::ES::AdvancedSecurityOptionsInput');
   has CognitoOptions => (is => 'ro', isa => 'Paws::ES::CognitoOptions');
-  has DomainEndpointOptions => (is => 'ro', isa => 'Paws::ES::DomainEndpointOptions');
   has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DomainName', required => 1);
   has EBSOptions => (is => 'ro', isa => 'Paws::ES::EBSOptions');
   has ElasticsearchClusterConfig => (is => 'ro', isa => 'Paws::ES::ElasticsearchClusterConfig');
@@ -40,64 +38,43 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $es = Paws->service('ES');
     my $UpdateElasticsearchDomainConfigResponse =
       $es->UpdateElasticsearchDomainConfig(
-      DomainName              => 'MyDomainName',
-      AccessPolicies          => 'MyPolicyDocument',               # OPTIONAL
-      AdvancedOptions         => { 'MyString' => 'MyString', },    # OPTIONAL
-      AdvancedSecurityOptions => {
-        Enabled                     => 1,                          # OPTIONAL
-        InternalUserDatabaseEnabled => 1,                          # OPTIONAL
-        MasterUserOptions           => {
-          MasterUserARN      => 'MyARN',         # OPTIONAL
-          MasterUserName     => 'MyUsername',    # min: 1; OPTIONAL
-          MasterUserPassword => 'MyPassword',    # min: 8; OPTIONAL
-        },    # OPTIONAL
-      },    # OPTIONAL
-      CognitoOptions => {
-        Enabled        => 1,                     # OPTIONAL
-        IdentityPoolId => 'MyIdentityPoolId',    # min: 1, max: 55; OPTIONAL
-        RoleArn        => 'MyRoleArn',           # min: 20, max: 2048; OPTIONAL
+      DomainName      => 'MyDomainName',
+      AccessPolicies  => 'MyPolicyDocument',               # OPTIONAL
+      AdvancedOptions => { 'MyString' => 'MyString', },    # OPTIONAL
+      CognitoOptions  => {
         UserPoolId     => 'MyUserPoolId',        # min: 1, max: 55; OPTIONAL
-      },    # OPTIONAL
-      DomainEndpointOptions => {
-        EnforceHTTPS      => 1,                             # OPTIONAL
-        TLSSecurityPolicy => 'Policy-Min-TLS-1-0-2019-07'
-        , # values: Policy-Min-TLS-1-0-2019-07, Policy-Min-TLS-1-2-2019-07; OPTIONAL
+        Enabled        => 1,                     # OPTIONAL
+        RoleArn        => 'MyRoleArn',           # min: 20, max: 2048; OPTIONAL
+        IdentityPoolId => 'MyIdentityPoolId',    # min: 1, max: 55; OPTIONAL
       },    # OPTIONAL
       EBSOptions => {
-        EBSEnabled => 1,             # OPTIONAL
         Iops       => 1,             # OPTIONAL
-        VolumeSize => 1,             # OPTIONAL
         VolumeType => 'standard',    # values: standard, gp2, io1; OPTIONAL
+        VolumeSize => 1,             # OPTIONAL
+        EBSEnabled => 1,             # OPTIONAL
       },    # OPTIONAL
       ElasticsearchClusterConfig => {
-        DedicatedMasterCount   => 1,                          # OPTIONAL
+        DedicatedMasterType => 'm3.medium.elasticsearch'
+        , # values: m3.medium.elasticsearch, m3.large.elasticsearch, m3.xlarge.elasticsearch, m3.2xlarge.elasticsearch, m4.large.elasticsearch, m4.xlarge.elasticsearch, m4.2xlarge.elasticsearch, m4.4xlarge.elasticsearch, m4.10xlarge.elasticsearch, t2.micro.elasticsearch, t2.small.elasticsearch, t2.medium.elasticsearch, r3.large.elasticsearch, r3.xlarge.elasticsearch, r3.2xlarge.elasticsearch, r3.4xlarge.elasticsearch, r3.8xlarge.elasticsearch, i2.xlarge.elasticsearch, i2.2xlarge.elasticsearch, d2.xlarge.elasticsearch, d2.2xlarge.elasticsearch, d2.4xlarge.elasticsearch, d2.8xlarge.elasticsearch, c4.large.elasticsearch, c4.xlarge.elasticsearch, c4.2xlarge.elasticsearch, c4.4xlarge.elasticsearch, c4.8xlarge.elasticsearch, r4.large.elasticsearch, r4.xlarge.elasticsearch, r4.2xlarge.elasticsearch, r4.4xlarge.elasticsearch, r4.8xlarge.elasticsearch, r4.16xlarge.elasticsearch, i3.large.elasticsearch, i3.xlarge.elasticsearch, i3.2xlarge.elasticsearch, i3.4xlarge.elasticsearch, i3.8xlarge.elasticsearch, i3.16xlarge.elasticsearch; OPTIONAL
         DedicatedMasterEnabled => 1,                          # OPTIONAL
-        DedicatedMasterType    => 'm3.medium.elasticsearch'
-        , # values: m3.medium.elasticsearch, m3.large.elasticsearch, m3.xlarge.elasticsearch, m3.2xlarge.elasticsearch, m4.large.elasticsearch, m4.xlarge.elasticsearch, m4.2xlarge.elasticsearch, m4.4xlarge.elasticsearch, m4.10xlarge.elasticsearch, m5.large.elasticsearch, m5.xlarge.elasticsearch, m5.2xlarge.elasticsearch, m5.4xlarge.elasticsearch, m5.12xlarge.elasticsearch, r5.large.elasticsearch, r5.xlarge.elasticsearch, r5.2xlarge.elasticsearch, r5.4xlarge.elasticsearch, r5.12xlarge.elasticsearch, c5.large.elasticsearch, c5.xlarge.elasticsearch, c5.2xlarge.elasticsearch, c5.4xlarge.elasticsearch, c5.9xlarge.elasticsearch, c5.18xlarge.elasticsearch, ultrawarm1.medium.elasticsearch, ultrawarm1.large.elasticsearch, t2.micro.elasticsearch, t2.small.elasticsearch, t2.medium.elasticsearch, r3.large.elasticsearch, r3.xlarge.elasticsearch, r3.2xlarge.elasticsearch, r3.4xlarge.elasticsearch, r3.8xlarge.elasticsearch, i2.xlarge.elasticsearch, i2.2xlarge.elasticsearch, d2.xlarge.elasticsearch, d2.2xlarge.elasticsearch, d2.4xlarge.elasticsearch, d2.8xlarge.elasticsearch, c4.large.elasticsearch, c4.xlarge.elasticsearch, c4.2xlarge.elasticsearch, c4.4xlarge.elasticsearch, c4.8xlarge.elasticsearch, r4.large.elasticsearch, r4.xlarge.elasticsearch, r4.2xlarge.elasticsearch, r4.4xlarge.elasticsearch, r4.8xlarge.elasticsearch, r4.16xlarge.elasticsearch, i3.large.elasticsearch, i3.xlarge.elasticsearch, i3.2xlarge.elasticsearch, i3.4xlarge.elasticsearch, i3.8xlarge.elasticsearch, i3.16xlarge.elasticsearch; OPTIONAL
-        InstanceCount => 1,                          # OPTIONAL
-        InstanceType  => 'm3.medium.elasticsearch'
-        , # values: m3.medium.elasticsearch, m3.large.elasticsearch, m3.xlarge.elasticsearch, m3.2xlarge.elasticsearch, m4.large.elasticsearch, m4.xlarge.elasticsearch, m4.2xlarge.elasticsearch, m4.4xlarge.elasticsearch, m4.10xlarge.elasticsearch, m5.large.elasticsearch, m5.xlarge.elasticsearch, m5.2xlarge.elasticsearch, m5.4xlarge.elasticsearch, m5.12xlarge.elasticsearch, r5.large.elasticsearch, r5.xlarge.elasticsearch, r5.2xlarge.elasticsearch, r5.4xlarge.elasticsearch, r5.12xlarge.elasticsearch, c5.large.elasticsearch, c5.xlarge.elasticsearch, c5.2xlarge.elasticsearch, c5.4xlarge.elasticsearch, c5.9xlarge.elasticsearch, c5.18xlarge.elasticsearch, ultrawarm1.medium.elasticsearch, ultrawarm1.large.elasticsearch, t2.micro.elasticsearch, t2.small.elasticsearch, t2.medium.elasticsearch, r3.large.elasticsearch, r3.xlarge.elasticsearch, r3.2xlarge.elasticsearch, r3.4xlarge.elasticsearch, r3.8xlarge.elasticsearch, i2.xlarge.elasticsearch, i2.2xlarge.elasticsearch, d2.xlarge.elasticsearch, d2.2xlarge.elasticsearch, d2.4xlarge.elasticsearch, d2.8xlarge.elasticsearch, c4.large.elasticsearch, c4.xlarge.elasticsearch, c4.2xlarge.elasticsearch, c4.4xlarge.elasticsearch, c4.8xlarge.elasticsearch, r4.large.elasticsearch, r4.xlarge.elasticsearch, r4.2xlarge.elasticsearch, r4.4xlarge.elasticsearch, r4.8xlarge.elasticsearch, r4.16xlarge.elasticsearch, i3.large.elasticsearch, i3.xlarge.elasticsearch, i3.2xlarge.elasticsearch, i3.4xlarge.elasticsearch, i3.8xlarge.elasticsearch, i3.16xlarge.elasticsearch; OPTIONAL
-        WarmCount   => 1,                                  # OPTIONAL
-        WarmEnabled => 1,                                  # OPTIONAL
-        WarmType    => 'ultrawarm1.medium.elasticsearch'
-        , # values: ultrawarm1.medium.elasticsearch, ultrawarm1.large.elasticsearch; OPTIONAL
-        ZoneAwarenessConfig => {
-          AvailabilityZoneCount => 1,    # OPTIONAL
-        },    # OPTIONAL
+        InstanceType           => 'm3.medium.elasticsearch'
+        , # values: m3.medium.elasticsearch, m3.large.elasticsearch, m3.xlarge.elasticsearch, m3.2xlarge.elasticsearch, m4.large.elasticsearch, m4.xlarge.elasticsearch, m4.2xlarge.elasticsearch, m4.4xlarge.elasticsearch, m4.10xlarge.elasticsearch, t2.micro.elasticsearch, t2.small.elasticsearch, t2.medium.elasticsearch, r3.large.elasticsearch, r3.xlarge.elasticsearch, r3.2xlarge.elasticsearch, r3.4xlarge.elasticsearch, r3.8xlarge.elasticsearch, i2.xlarge.elasticsearch, i2.2xlarge.elasticsearch, d2.xlarge.elasticsearch, d2.2xlarge.elasticsearch, d2.4xlarge.elasticsearch, d2.8xlarge.elasticsearch, c4.large.elasticsearch, c4.xlarge.elasticsearch, c4.2xlarge.elasticsearch, c4.4xlarge.elasticsearch, c4.8xlarge.elasticsearch, r4.large.elasticsearch, r4.xlarge.elasticsearch, r4.2xlarge.elasticsearch, r4.4xlarge.elasticsearch, r4.8xlarge.elasticsearch, r4.16xlarge.elasticsearch, i3.large.elasticsearch, i3.xlarge.elasticsearch, i3.2xlarge.elasticsearch, i3.4xlarge.elasticsearch, i3.8xlarge.elasticsearch, i3.16xlarge.elasticsearch; OPTIONAL
+        DedicatedMasterCount => 1,    # OPTIONAL
         ZoneAwarenessEnabled => 1,    # OPTIONAL
+        InstanceCount        => 1,    # OPTIONAL
       },    # OPTIONAL
       LogPublishingOptions => {
         'INDEX_SLOW_LOGS' => {
-          CloudWatchLogsLogGroupArn => 'MyCloudWatchLogsLogGroupArn', # OPTIONAL
           Enabled                   => 1,                             # OPTIONAL
-        }, # key: values: INDEX_SLOW_LOGS, SEARCH_SLOW_LOGS, ES_APPLICATION_LOGS
+          CloudWatchLogsLogGroupArn => 'MyCloudWatchLogsLogGroupArn', # OPTIONAL
+        },    # key: values: INDEX_SLOW_LOGS, SEARCH_SLOW_LOGS
       },    # OPTIONAL
       SnapshotOptions => {
         AutomatedSnapshotStartHour => 1,    # OPTIONAL
       },    # OPTIONAL
       VPCOptions => {
-        SecurityGroupIds => [ 'MyString', ... ],    # OPTIONAL
         SubnetIds        => [ 'MyString', ... ],    # OPTIONAL
+        SecurityGroupIds => [ 'MyString', ... ],    # OPTIONAL
       },    # OPTIONAL
       );
 
@@ -107,7 +84,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::ES::UpdateElasticsearchDomainConfigResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/es/UpdateElasticsearchDomainConfig>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/elasticsearch-service/>
 
 =head1 ATTRIBUTES
 
@@ -129,25 +106,12 @@ for more information.
 
 
 
-=head2 AdvancedSecurityOptions => L<Paws::ES::AdvancedSecurityOptionsInput>
-
-Specifies advanced security options.
-
-
-
 =head2 CognitoOptions => L<Paws::ES::CognitoOptions>
 
 Options to specify the Cognito user and identity pools for Kibana
 authentication. For more information, see Amazon Cognito Authentication
 for Kibana
 (http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-cognito-auth.html).
-
-
-
-=head2 DomainEndpointOptions => L<Paws::ES::DomainEndpointOptions>
-
-Options to specify configuration that will be applied to the domain
-endpoint.
 
 
 

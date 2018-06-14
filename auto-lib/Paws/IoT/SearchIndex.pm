@@ -41,9 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken   = $SearchIndexResponse->NextToken;
-    my $ThingGroups = $SearchIndexResponse->ThingGroups;
-    my $Things      = $SearchIndexResponse->Things;
+    my $nextToken = $SearchIndexResponse->nextToken;
+    my $things    = $SearchIndexResponse->things;
 
     # Returns a L<Paws::IoT::SearchIndexResponse> object.
 
@@ -67,7 +66,7 @@ The maximum number of results to return at one time.
 
 =head2 NextToken => Str
 
-The token used to get the next set of results, or C<null> if there are
+The token used to get the next set of results, or B<null> if there are
 no additional results.
 
 

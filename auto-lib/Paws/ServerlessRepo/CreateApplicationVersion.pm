@@ -3,7 +3,6 @@ package Paws::ServerlessRepo::CreateApplicationVersion;
   use Moose;
   has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'applicationId', required => 1);
   has SemanticVersion => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'semanticVersion', required => 1);
-  has SourceCodeArchiveUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceCodeArchiveUrl');
   has SourceCodeUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceCodeUrl');
   has TemplateBody => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'templateBody');
   has TemplateUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'templateUrl');
@@ -35,28 +34,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $serverlessrepo = Paws->service('ServerlessRepo');
     my $CreateApplicationVersionResponse =
       $serverlessrepo->CreateApplicationVersion(
-      ApplicationId        => 'My__string',
-      SemanticVersion      => 'My__string',
-      SourceCodeArchiveUrl => 'My__string',    # OPTIONAL
-      SourceCodeUrl        => 'My__string',    # OPTIONAL
-      TemplateBody         => 'My__string',    # OPTIONAL
-      TemplateUrl          => 'My__string',    # OPTIONAL
+      ApplicationId   => 'My__string',
+      SemanticVersion => 'My__string',
+      SourceCodeUrl   => 'My__string',    # OPTIONAL
+      TemplateBody    => 'My__string',    # OPTIONAL
+      TemplateUrl     => 'My__string',    # OPTIONAL
       );
 
     # Results:
-    my $ApplicationId = $CreateApplicationVersionResponse->ApplicationId;
-    my $CreationTime  = $CreateApplicationVersionResponse->CreationTime;
+    my $CreationTime    = $CreateApplicationVersionResponse->CreationTime;
+    my $ApplicationId   = $CreateApplicationVersionResponse->ApplicationId;
+    my $SourceCodeUrl   = $CreateApplicationVersionResponse->SourceCodeUrl;
+    my $SemanticVersion = $CreateApplicationVersionResponse->SemanticVersion;
     my $ParameterDefinitions =
       $CreateApplicationVersionResponse->ParameterDefinitions;
-    my $RequiredCapabilities =
-      $CreateApplicationVersionResponse->RequiredCapabilities;
-    my $ResourcesSupported =
-      $CreateApplicationVersionResponse->ResourcesSupported;
-    my $SemanticVersion = $CreateApplicationVersionResponse->SemanticVersion;
-    my $SourceCodeArchiveUrl =
-      $CreateApplicationVersionResponse->SourceCodeArchiveUrl;
-    my $SourceCodeUrl = $CreateApplicationVersionResponse->SourceCodeUrl;
-    my $TemplateUrl   = $CreateApplicationVersionResponse->TemplateUrl;
+    my $TemplateUrl = $CreateApplicationVersionResponse->TemplateUrl;
 
    # Returns a L<Paws::ServerlessRepo::CreateApplicationVersionResponse> object.
 
@@ -68,7 +60,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ser
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-The Amazon Resource Name (ARN) of the application.
+The ID of the application to get.
 
 
 
@@ -78,19 +70,9 @@ The semantic version of the new version.
 
 
 
-=head2 SourceCodeArchiveUrl => Str
-
-A link to the S3 object that contains the ZIP archive of the source
-code for this version of your application.
-
-Maximum size 50 MB
-
-
-
 =head2 SourceCodeUrl => Str
 
-A link to a public repository for the source code of your application,
-for example the URL of a specific GitHub commit.
+A link to a public repository for the source code of your application.
 
 
 

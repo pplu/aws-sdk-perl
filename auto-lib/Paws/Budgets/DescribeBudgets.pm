@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Budgets   = $DescribeBudgetsResponse->Budgets;
     my $NextToken = $DescribeBudgetsResponse->NextToken;
+    my $Budgets   = $DescribeBudgetsResponse->Budgets;
 
     # Returns a L<Paws::Budgets::DescribeBudgetsResponse> object.
 

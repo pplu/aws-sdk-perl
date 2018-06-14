@@ -35,19 +35,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ApplicationId     = $GetApplicationResponse->ApplicationId;
-    my $Author            = $GetApplicationResponse->Author;
-    my $CreationTime      = $GetApplicationResponse->CreationTime;
-    my $Description       = $GetApplicationResponse->Description;
-    my $HomePageUrl       = $GetApplicationResponse->HomePageUrl;
-    my $IsVerifiedAuthor  = $GetApplicationResponse->IsVerifiedAuthor;
-    my $Labels            = $GetApplicationResponse->Labels;
-    my $LicenseUrl        = $GetApplicationResponse->LicenseUrl;
-    my $Name              = $GetApplicationResponse->Name;
-    my $ReadmeUrl         = $GetApplicationResponse->ReadmeUrl;
-    my $SpdxLicenseId     = $GetApplicationResponse->SpdxLicenseId;
-    my $VerifiedAuthorUrl = $GetApplicationResponse->VerifiedAuthorUrl;
-    my $Version           = $GetApplicationResponse->Version;
+    my $CreationTime  = $GetApplicationResponse->CreationTime;
+    my $HomePageUrl   = $GetApplicationResponse->HomePageUrl;
+    my $SpdxLicenseId = $GetApplicationResponse->SpdxLicenseId;
+    my $ApplicationId = $GetApplicationResponse->ApplicationId;
+    my $Version       = $GetApplicationResponse->Version;
+    my $Labels        = $GetApplicationResponse->Labels;
+    my $LicenseUrl    = $GetApplicationResponse->LicenseUrl;
+    my $ReadmeUrl     = $GetApplicationResponse->ReadmeUrl;
+    my $Description   = $GetApplicationResponse->Description;
+    my $Name          = $GetApplicationResponse->Name;
+    my $Author        = $GetApplicationResponse->Author;
 
     # Returns a L<Paws::ServerlessRepo::GetApplicationResponse> object.
 
@@ -59,7 +57,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ser
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-The Amazon Resource Name (ARN) of the application.
+The ID of the application to get.
 
 
 

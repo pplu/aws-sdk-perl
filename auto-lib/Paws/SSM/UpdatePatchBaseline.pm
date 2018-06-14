@@ -10,7 +10,6 @@ package Paws::SSM::UpdatePatchBaseline;
   has GlobalFilters => (is => 'ro', isa => 'Paws::SSM::PatchFilterGroup');
   has Name => (is => 'ro', isa => 'Str');
   has RejectedPatches => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has RejectedPatchesAction => (is => 'ro', isa => 'Str');
   has Replace => (is => 'ro', isa => 'Bool');
   has Sources => (is => 'ro', isa => 'ArrayRef[Paws::SSM::PatchSource]');
 
@@ -46,25 +45,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             PatchFilterGroup => {
               PatchFilters => [
                 {
-                  Key => 'PATCH_SET'
-                  , # values: PATCH_SET, PRODUCT, PRODUCT_FAMILY, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID, SECTION, PRIORITY, SEVERITY
                   Values => [
                     'MyPatchFilterValue', ...    # min: 1, max: 64
                   ],                             # min: 1, max: 20
+                  Key => 'PRODUCT'
+                  , # values: PRODUCT, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID, SECTION, PRIORITY, SEVERITY
 
                 },
                 ...
-              ],                                 # max: 4
+              ],    # max: 4
 
             },
-            ApproveAfterDays => 1,                   # max: 100; OPTIONAL
-            ApproveUntilDate => 'MyPatchStringDate', # min: 1, max: 10; OPTIONAL
-            ComplianceLevel  => 'CRITICAL'
+            ApproveAfterDays  => 1,           # max: 100
+            EnableNonSecurity => 1,           # OPTIONAL
+            ComplianceLevel   => 'CRITICAL'
             , # values: CRITICAL, HIGH, MEDIUM, LOW, INFORMATIONAL, UNSPECIFIED; OPTIONAL
-            EnableNonSecurity => 1,    # OPTIONAL
           },
           ...
-        ],                             # max: 10
+        ],    # max: 10
 
       },    # OPTIONAL
       ApprovedPatches => [
@@ -76,30 +74,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       GlobalFilters                    => {
         PatchFilters => [
           {
-            Key => 'PATCH_SET'
-            , # values: PATCH_SET, PRODUCT, PRODUCT_FAMILY, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID, SECTION, PRIORITY, SEVERITY
             Values => [
               'MyPatchFilterValue', ...    # min: 1, max: 64
             ],                             # min: 1, max: 20
+            Key => 'PRODUCT'
+            , # values: PRODUCT, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID, SECTION, PRIORITY, SEVERITY
 
           },
           ...
-        ],                                 # max: 4
+        ],    # max: 4
 
       },    # OPTIONAL
       Name            => 'MyBaselineName',    # OPTIONAL
       RejectedPatches => [
         'MyPatchId', ...                      # min: 1, max: 100
       ],                                      # OPTIONAL
-      RejectedPatchesAction => 'ALLOW_AS_DEPENDENCY',    # OPTIONAL
-      Replace               => 1,                        # OPTIONAL
-      Sources               => [
+      Replace => 1,                           # OPTIONAL
+      Sources => [
         {
-          Configuration => 'MyPatchSourceConfiguration',    # min: 1, max: 1024
+          Products => [
+            'MyPatchSourceProduct', ...       # min: 1, max: 128
+          ],                                  # min: 1, max: 20
+          Configuration => 'MyPatchSourceConfiguration',    # min: 1, max: 512
           Name          => 'MyPatchSourceName',
-          Products      => [
-            'MyPatchSourceProduct', ...                     # min: 1, max: 128
-          ],                                                # min: 1, max: 20
 
         },
         ...
@@ -107,23 +104,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ApprovalRules   = $UpdatePatchBaselineResult->ApprovalRules;
+    my $GlobalFilters   = $UpdatePatchBaselineResult->GlobalFilters;
     my $ApprovedPatches = $UpdatePatchBaselineResult->ApprovedPatches;
-    my $ApprovedPatchesComplianceLevel =
-      $UpdatePatchBaselineResult->ApprovedPatchesComplianceLevel;
+    my $RejectedPatches = $UpdatePatchBaselineResult->RejectedPatches;
+    my $Sources         = $UpdatePatchBaselineResult->Sources;
+    my $ModifiedDate    = $UpdatePatchBaselineResult->ModifiedDate;
+    my $CreatedDate     = $UpdatePatchBaselineResult->CreatedDate;
     my $ApprovedPatchesEnableNonSecurity =
       $UpdatePatchBaselineResult->ApprovedPatchesEnableNonSecurity;
+    my $ApprovalRules = $UpdatePatchBaselineResult->ApprovalRules;
+    my $ApprovedPatchesComplianceLevel =
+      $UpdatePatchBaselineResult->ApprovedPatchesComplianceLevel;
     my $BaselineId      = $UpdatePatchBaselineResult->BaselineId;
-    my $CreatedDate     = $UpdatePatchBaselineResult->CreatedDate;
-    my $Description     = $UpdatePatchBaselineResult->Description;
-    my $GlobalFilters   = $UpdatePatchBaselineResult->GlobalFilters;
-    my $ModifiedDate    = $UpdatePatchBaselineResult->ModifiedDate;
-    my $Name            = $UpdatePatchBaselineResult->Name;
     my $OperatingSystem = $UpdatePatchBaselineResult->OperatingSystem;
-    my $RejectedPatches = $UpdatePatchBaselineResult->RejectedPatches;
-    my $RejectedPatchesAction =
-      $UpdatePatchBaselineResult->RejectedPatchesAction;
-    my $Sources = $UpdatePatchBaselineResult->Sources;
+    my $Description     = $UpdatePatchBaselineResult->Description;
+    my $Name            = $UpdatePatchBaselineResult->Name;
 
     # Returns a L<Paws::SSM::UpdatePatchBaselineResult> object.
 
@@ -146,7 +141,7 @@ A list of explicitly approved patches for the baseline.
 For information about accepted formats for lists of approved patches
 and rejected patches, see Package Name Formats for Approved and
 Rejected Patch Lists
-(https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
 in the I<AWS Systems Manager User Guide>.
 
 
@@ -179,7 +174,7 @@ A description of the patch baseline.
 
 =head2 GlobalFilters => L<Paws::SSM::PatchFilterGroup>
 
-A set of global filters used to include patches in the baseline.
+A set of global filters used to exclude patches from the baseline.
 
 
 
@@ -196,38 +191,10 @@ A list of explicitly rejected patches for the baseline.
 For information about accepted formats for lists of approved patches
 and rejected patches, see Package Name Formats for Approved and
 Rejected Patch Lists
-(https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
 in the I<AWS Systems Manager User Guide>.
 
 
-
-=head2 RejectedPatchesAction => Str
-
-The action for Patch Manager to take on patches included in the
-RejectedPackages list.
-
-=over
-
-=item *
-
-B<ALLOW_AS_DEPENDENCY>: A package in the Rejected patches list is
-installed only if it is a dependency of another package. It is
-considered compliant with the patch baseline, and its status is
-reported as I<InstalledOther>. This is the default action if no option
-is specified.
-
-=item *
-
-B<BLOCK>: Packages in the RejectedPatches list, and packages that
-include them as dependencies, are not installed under any
-circumstances. If a package was installed before it was added to the
-Rejected patches list, it is considered non-compliant with the patch
-baseline, and its status is reported as I<InstalledRejected>.
-
-=back
-
-
-Valid values are: C<"ALLOW_AS_DEPENDENCY">, C<"BLOCK">
 
 =head2 Replace => Bool
 

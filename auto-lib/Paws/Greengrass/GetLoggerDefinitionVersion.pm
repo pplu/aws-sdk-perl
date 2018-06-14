@@ -3,7 +3,6 @@ package Paws::Greengrass::GetLoggerDefinitionVersion;
   use Moose;
   has LoggerDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'LoggerDefinitionId', required => 1);
   has LoggerDefinitionVersionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'LoggerDefinitionVersionId', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'NextToken');
 
   use MooseX::ClassAttribute;
 
@@ -34,21 +33,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $greengrass->GetLoggerDefinitionVersion(
       LoggerDefinitionId        => 'My__string',
       LoggerDefinitionVersionId => 'My__string',
-      NextToken                 => 'My__string',    # OPTIONAL
+
       );
 
     # Results:
-    my $Arn = $GetLoggerDefinitionVersionResponse->Arn;
     my $CreationTimestamp =
       $GetLoggerDefinitionVersionResponse->CreationTimestamp;
+    my $Version    = $GetLoggerDefinitionVersionResponse->Version;
     my $Definition = $GetLoggerDefinitionVersionResponse->Definition;
     my $Id         = $GetLoggerDefinitionVersionResponse->Id;
-    my $Version    = $GetLoggerDefinitionVersionResponse->Version;
+    my $Arn        = $GetLoggerDefinitionVersionResponse->Arn;
 
     # Returns a L<Paws::Greengrass::GetLoggerDefinitionVersionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/greengrass/GetLoggerDefinitionVersion>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>
 
 =head1 ATTRIBUTES
 
@@ -61,19 +60,7 @@ The ID of the logger definition.
 
 =head2 B<REQUIRED> LoggerDefinitionVersionId => Str
 
-The ID of the logger definition version. This value maps to the
-''Version'' property of the corresponding ''VersionInformation''
-object, which is returned by ''ListLoggerDefinitionVersions'' requests.
-If the version is the last one that was associated with a logger
-definition, the value also maps to the ''LatestVersion'' property of
-the corresponding ''DefinitionInformation'' object.
-
-
-
-=head2 NextToken => Str
-
-The token for the next set of results, or ''null'' if there are no
-additional results.
+The ID of the logger definition version.
 
 
 

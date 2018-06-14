@@ -36,19 +36,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # that your AWS resource received between the time period 2016-09-27T15:50Z
     # to 2016-09-27T15:50Z.
     my $GetSampledRequestsResponse = $waf->GetSampledRequests(
-      'MaxItems'   => 100,
-      'RuleId'     => 'WAFRule-1-Example',
-      'TimeWindow' => {
-        'EndTime'   => '2016-09-27T15:50Z',
-        'StartTime' => '2016-09-27T15:50Z'
-      },
-      'WebAclId' => 'createwebacl-1472061481310'
+      {
+        'TimeWindow' => {
+          'StartTime' => '2016-09-27T15:50Z',
+          'EndTime'   => '2016-09-27T15:50Z'
+        },
+        'WebAclId' => 'createwebacl-1472061481310',
+        'RuleId'   => 'WAFRule-1-Example',
+        'MaxItems' => 100
+      }
     );
 
     # Results:
-    my $PopulationSize  = $GetSampledRequestsResponse->PopulationSize;
-    my $SampledRequests = $GetSampledRequestsResponse->SampledRequests;
     my $TimeWindow      = $GetSampledRequestsResponse->TimeWindow;
+    my $SampledRequests = $GetSampledRequestsResponse->SampledRequests;
+    my $PopulationSize  = $GetSampledRequestsResponse->PopulationSize;
 
     # Returns a L<Paws::WAF::GetSampledRequestsResponse> object.
 

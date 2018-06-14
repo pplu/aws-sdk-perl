@@ -4,7 +4,6 @@ package Paws::CostExplorer::GetReservationCoverage;
   has Filter => (is => 'ro', isa => 'Paws::CostExplorer::Expression');
   has Granularity => (is => 'ro', isa => 'Str');
   has GroupBy => (is => 'ro', isa => 'ArrayRef[Paws::CostExplorer::GroupDefinition]');
-  has Metrics => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has NextPageToken => (is => 'ro', isa => 'Str');
   has TimePeriod => (is => 'ro', isa => 'Paws::CostExplorer::DateInterval', required => 1);
 
@@ -34,44 +33,39 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ce = Paws->service('CostExplorer');
     my $GetReservationCoverageResponse = $ce->GetReservationCoverage(
       TimePeriod => {
-        End   => 'MyYearMonthDay',
         Start => 'MyYearMonthDay',
+        End   => 'MyYearMonthDay',
 
       },
       Filter => {
-        And            => [ <Expression>, ... ],    # OPTIONAL
-        CostCategories => {
-          Key    => 'MyCostCategoryName',           # min: 1, max: 255; OPTIONAL
-          Values => [ 'MyValue', ... ],             # OPTIONAL
-        },    # OPTIONAL
+        Or         => [ <Expression>, ... ],    # OPTIONAL
+        Not        => <Expression>,
         Dimensions => {
+          Values => [ 'MyValue', ... ],         # OPTIONAL
           Key => 'AZ'
-          , # values: AZ, INSTANCE_TYPE, LINKED_ACCOUNT, OPERATION, PURCHASE_TYPE, REGION, SERVICE, USAGE_TYPE, USAGE_TYPE_GROUP, RECORD_TYPE, OPERATING_SYSTEM, TENANCY, SCOPE, PLATFORM, SUBSCRIPTION_ID, LEGAL_ENTITY_NAME, DEPLOYMENT_OPTION, DATABASE_ENGINE, CACHE_ENGINE, INSTANCE_TYPE_FAMILY, BILLING_ENTITY, RESERVATION_ID, RESOURCE_ID, RIGHTSIZING_TYPE, SAVINGS_PLANS_TYPE, SAVINGS_PLAN_ARN, PAYMENT_OPTION; OPTIONAL
-          Values => [ 'MyValue', ... ],    # OPTIONAL
+          , # values: AZ, INSTANCE_TYPE, LINKED_ACCOUNT, OPERATION, PURCHASE_TYPE, REGION, SERVICE, USAGE_TYPE, USAGE_TYPE_GROUP, RECORD_TYPE, OPERATING_SYSTEM, TENANCY, SCOPE, PLATFORM, SUBSCRIPTION_ID, LEGAL_ENTITY_NAME, DEPLOYMENT_OPTION, DATABASE_ENGINE, CACHE_ENGINE, INSTANCE_TYPE_FAMILY; OPTIONAL
         },    # OPTIONAL
-        Not  => <Expression>,
-        Or   => [ <Expression>, ... ],    # OPTIONAL
+        And => [ <Expression>, ... ],    # OPTIONAL
         Tags => {
-          Key    => 'MyTagKey',            # OPTIONAL
           Values => [ 'MyValue', ... ],    # OPTIONAL
+          Key => 'MyTagKey',               # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       Granularity => 'DAILY',    # OPTIONAL
       GroupBy     => [
         {
-          Key => 'MyGroupDefinitionKey',    # OPTIONAL
-          Type => 'DIMENSION', # values: DIMENSION, TAG, COST_CATEGORY; OPTIONAL
+          Type => 'DIMENSION',               # values: DIMENSION, TAG; OPTIONAL
+          Key  => 'MyGroupDefinitionKey',    # OPTIONAL
         },
         ...
-      ],                       # OPTIONAL
-      Metrics       => [ 'MyMetricName', ... ],    # OPTIONAL
-      NextPageToken => 'MyNextPageToken',          # OPTIONAL
+      ],                                     # OPTIONAL
+      NextPageToken => 'MyNextPageToken',    # OPTIONAL
     );
 
     # Results:
-    my $CoveragesByTime = $GetReservationCoverageResponse->CoveragesByTime;
-    my $NextPageToken   = $GetReservationCoverageResponse->NextPageToken;
     my $Total           = $GetReservationCoverageResponse->Total;
+    my $NextPageToken   = $GetReservationCoverageResponse->NextPageToken;
+    my $CoveragesByTime = $GetReservationCoverageResponse->CoveragesByTime;
 
     # Returns a L<Paws::CostExplorer::GetReservationCoverageResponse> object.
 
@@ -138,14 +132,11 @@ TENANCY
 
 =back
 
-C<GetReservationCoverage> uses the same Expression
+C<GetReservationCoverage> uses the same C< Expression
 (http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html)
-object as the other operations, but only C<AND> is supported among each
-dimension. You can nest only one level deep. If there are multiple
+> object as the other operations, but only C<AND> is supported among
+each dimension. You can nest only one level deep. If there are multiple
 values for a dimension, they are OR'd together.
-
-If you don't provide a C<SERVICE> filter, Cost Explorer defaults to
-EC2.
 
 
 
@@ -158,10 +149,7 @@ If C<GroupBy> is set, C<Granularity> can't be set. If C<Granularity>
 isn't set, the response object doesn't include C<Granularity>, either
 C<MONTHLY> or C<DAILY>.
 
-The C<GetReservationCoverage> operation supports only C<DAILY> and
-C<MONTHLY> granularities.
-
-Valid values are: C<"DAILY">, C<"MONTHLY">, C<"HOURLY">
+Valid values are: C<"DAILY">, C<"MONTHLY">
 
 =head2 GroupBy => ArrayRef[L<Paws::CostExplorer::GroupDefinition>]
 
@@ -207,19 +195,14 @@ REGION
 
 =item *
 
+TAG
+
+=item *
+
 TENANCY
 
 =back
 
-
-
-
-=head2 Metrics => ArrayRef[Str|Undef]
-
-The measurement that you want your reservation coverage reported in.
-
-Valid values are C<Hour>, C<Unit>, and C<Cost>. You can use multiple
-values in a request.
 
 
 
@@ -233,8 +216,8 @@ maximum page size.
 
 =head2 B<REQUIRED> TimePeriod => L<Paws::CostExplorer::DateInterval>
 
-The start and end dates of the period that you want to retrieve data
-about reservation coverage for. You can retrieve data for a maximum of
+The start and end dates of the period for which you want to retrieve
+data about reservation coverage. You can retrieve data for a maximum of
 13 months: the last 12 months and the current month. The start date is
 inclusive, but the end date is exclusive. For example, if C<start> is
 C<2017-01-01> and C<end> is C<2017-05-01>, then the cost and usage data

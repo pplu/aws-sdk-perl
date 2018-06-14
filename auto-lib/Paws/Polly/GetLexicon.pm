@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $GetLexiconOutput = $polly->GetLexicon( 'Name' => '' );
 
     # Results:
-    my $Lexicon           = $GetLexiconOutput->Lexicon;
     my $LexiconAttributes = $GetLexiconOutput->LexiconAttributes;
+    my $Lexicon           = $GetLexiconOutput->Lexicon;
 
     # Returns a L<Paws::Polly::GetLexiconOutput> object.
 

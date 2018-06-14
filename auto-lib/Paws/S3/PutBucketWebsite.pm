@@ -2,7 +2,6 @@
 package Paws::S3::PutBucketWebsite;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
-  has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
   has WebsiteConfiguration => (is => 'ro', isa => 'Paws::S3::WebsiteConfiguration', required => 1);
 
@@ -37,37 +36,36 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Bucket               => 'MyBucketName',
       WebsiteConfiguration => {
         ErrorDocument => {
-          Key => 'MyObjectKey',    # min: 1
-
-        },    # OPTIONAL
-        IndexDocument => {
-          Suffix => 'MySuffix',
+          Key => 'MyObjectKey',    # min: 1,
 
         },    # OPTIONAL
         RedirectAllRequestsTo => {
-          HostName => 'MyHostName',    # OPTIONAL
-          Protocol => 'http',          # values: http, https; OPTIONAL
+          HostName => 'MyHostName',
+          Protocol => 'http',         # values: http, https; OPTIONAL
         },    # OPTIONAL
         RoutingRules => [
           {
             Redirect => {
-              HostName         => 'MyHostName',            # OPTIONAL
               HttpRedirectCode => 'MyHttpRedirectCode',    # OPTIONAL
+              ReplaceKeyWith   => 'MyReplaceKeyWith',      # OPTIONAL
+              HostName         => 'MyHostName',
               Protocol => 'http',    # values: http, https; OPTIONAL
               ReplaceKeyPrefixWith => 'MyReplaceKeyPrefixWith',    # OPTIONAL
-              ReplaceKeyWith       => 'MyReplaceKeyWith',          # OPTIONAL
             },
             Condition => {
+              KeyPrefixEquals => 'MyKeyPrefixEquals',              # OPTIONAL
               HttpErrorCodeReturnedEquals =>
                 'MyHttpErrorCodeReturnedEquals',                   # OPTIONAL
-              KeyPrefixEquals => 'MyKeyPrefixEquals',              # OPTIONAL
             },    # OPTIONAL
           },
           ...
         ],        # OPTIONAL
+        IndexDocument => {
+          Suffix => 'MySuffix',
+
+        },        # OPTIONAL
       },
-      ContentLength => 1,                 # OPTIONAL
-      ContentMD5    => 'MyContentMD5',    # OPTIONAL
+      ContentMD5 => 'MyContentMD5',    # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -78,28 +76,19 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-The bucket name.
 
-
-
-=head2 ContentLength => Int
-
-Size of the body in bytes.
 
 
 
 =head2 ContentMD5 => Str
 
-The base64-encoded 128-bit MD5 digest of the data. You must use this
-header as a message integrity check to verify that the request body was
-not corrupted in transit. For more information, see RFC 1864
-(http://www.ietf.org/rfc/rfc1864.txt).
+
 
 
 
 =head2 B<REQUIRED> WebsiteConfiguration => L<Paws::S3::WebsiteConfiguration>
 
-Container for the request.
+
 
 
 

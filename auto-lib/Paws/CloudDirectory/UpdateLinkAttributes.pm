@@ -33,22 +33,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateLinkAttributesResponse = $clouddirectory->UpdateLinkAttributes(
       AttributeUpdates => [
         {
-          AttributeAction => {
-            AttributeActionType =>
-              'CREATE_OR_UPDATE',   # values: CREATE_OR_UPDATE, DELETE; OPTIONAL
-            AttributeUpdateValue => {
-              BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
-              BooleanValue  => 1,                             # OPTIONAL
-              DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
-              NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
-              StringValue   => 'MyStringAttributeValue',      # OPTIONAL
-            },    # OPTIONAL
-          },    # OPTIONAL
           AttributeKey => {
             FacetName => 'MyFacetName',        # min: 1, max: 64
-            Name      => 'MyAttributeName',    # min: 1, max: 230
             SchemaArn => 'MyArn',
+            Name      => 'MyAttributeName',    # min: 1, max: 64
 
+          },    # OPTIONAL
+          AttributeAction => {
+            AttributeUpdateValue => {
+              NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
+              BooleanValue  => 1,                             # OPTIONAL
+              StringValue   => 'MyStringAttributeValue',      # OPTIONAL
+              DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
+              BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
+            },    # OPTIONAL
+            AttributeActionType =>
+              'CREATE_OR_UPDATE',   # values: CREATE_OR_UPDATE, DELETE; OPTIONAL
           },    # OPTIONAL
         },
         ...
@@ -57,22 +57,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       TypedLinkSpecifier => {
         IdentityAttributeValues => [
           {
-            AttributeName => 'MyAttributeName',    # min: 1, max: 230
+            AttributeName => 'MyAttributeName',    # min: 1, max: 64
             Value         => {
-              BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
-              BooleanValue  => 1,                             # OPTIONAL
-              DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
               NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
+              BooleanValue  => 1,                             # OPTIONAL
               StringValue   => 'MyStringAttributeValue',      # OPTIONAL
+              DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
+              BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
             },    # OPTIONAL
 
           },
           ...
         ],
-        SourceObjectReference => {
+        TargetObjectReference => {
           Selector => 'MySelectorObjectReference',    # OPTIONAL
         },
-        TargetObjectReference => {
+        SourceObjectReference => {
           Selector => 'MySelectorObjectReference',    # OPTIONAL
         },
         TypedLinkFacet => {
@@ -86,7 +86,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clouddirectory/UpdateLinkAttributes>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/directory-service/>
 
 =head1 ATTRIBUTES
 
@@ -101,8 +101,8 @@ The attributes update structure.
 
 The Amazon Resource Name (ARN) that is associated with the Directory
 where the updated typed link resides. For more information, see arns or
-Typed Links
-(https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink).
+Typed link
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
 
 
 

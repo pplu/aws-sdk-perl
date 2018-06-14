@@ -1,7 +1,6 @@
 
 package Paws::ELBv2::ModifyTargetGroup;
   use Moose;
-  has HealthCheckEnabled => (is => 'ro', isa => 'Bool');
   has HealthCheckIntervalSeconds => (is => 'ro', isa => 'Int');
   has HealthCheckPath => (is => 'ro', isa => 'Str');
   has HealthCheckPort => (is => 'ro', isa => 'Str');
@@ -40,10 +39,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example changes the configuration of the health checks used to
     # evaluate the health of the targets for the specified target group.
     my $ModifyTargetGroupOutput = $elasticloadbalancing->ModifyTargetGroup(
-      'HealthCheckPort'     => 443,
-      'HealthCheckProtocol' => 'HTTPS',
-      'TargetGroupArn' =>
-'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-https-targets/2453ed029918f21f'
+      {
+        'TargetGroupArn' =>
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-https-targets/2453ed029918f21f',
+        'HealthCheckPort'     => 443,
+        'HealthCheckProtocol' => 'HTTPS'
+      }
     );
 
     # Results:
@@ -57,20 +58,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 =head1 ATTRIBUTES
 
 
-=head2 HealthCheckEnabled => Bool
-
-Indicates whether health checks are enabled.
-
-
-
 =head2 HealthCheckIntervalSeconds => Int
 
 The approximate amount of time, in seconds, between health checks of an
 individual target. For Application Load Balancers, the range is 5 to
 300 seconds. For Network Load Balancers, the supported values are 10 or
 30 seconds.
-
-With Network Load Balancers, you can't modify this setting.
 
 
 
@@ -91,20 +84,15 @@ targets.
 =head2 HealthCheckProtocol => Str
 
 The protocol the load balancer uses when performing health checks on
-targets. The TCP protocol is supported for health checks only if the
-protocol of the target group is TCP, TLS, UDP, or TCP_UDP. The TLS,
-UDP, and TCP_UDP protocols are not supported for health checks.
+targets. The TCP protocol is supported only if the protocol of the
+target group is TCP.
 
-With Network Load Balancers, you can't modify this setting.
-
-Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">, C<"UDP">, C<"TCP_UDP">
+Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">
 
 =head2 HealthCheckTimeoutSeconds => Int
 
 [HTTP/HTTPS health checks] The amount of time, in seconds, during which
 no response means a failed health check.
-
-With Network Load Balancers, you can't modify this setting.
 
 
 
@@ -119,8 +107,6 @@ considering an unhealthy target healthy.
 
 [HTTP/HTTPS health checks] The HTTP codes to use when checking for a
 successful response from a target.
-
-With Network Load Balancers, you can't modify this setting.
 
 
 

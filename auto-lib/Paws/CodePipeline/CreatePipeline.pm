@@ -2,7 +2,6 @@
 package Paws::CodePipeline::CreatePipeline;
   use Moose;
   has Pipeline => (is => 'ro', isa => 'Paws::CodePipeline::PipelineDeclaration', traits => ['NameInRequest'], request_name => 'pipeline' , required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
@@ -30,93 +29,72 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $codepipeline = Paws->service('CodePipeline');
     my $CreatePipelineOutput = $codepipeline->CreatePipeline(
       Pipeline => {
-        Name    => 'MyPipelineName',    # min: 1, max: 100
-        RoleArn => 'MyRoleArn',         # max: 1024
-        Stages  => [
+        roleArn => 'MyRoleArn',    # max: 1024
+        stages  => [
           {
-            Actions => [
+            actions => [
               {
-                ActionTypeId => {
-                  Category => 'Source'
+                name         => 'MyActionName',    # min: 1, max: 100
+                actionTypeId => {
+                  provider => 'MyActionProvider',    # min: 1, max: 25
+                  owner    => 'AWS',          # values: AWS, ThirdParty, Custom
+                  version  => 'MyVersion',    # min: 1, max: 9
+                  category => 'Source'
                   ,    # values: Source, Build, Deploy, Test, Invoke, Approval
-                  Owner => 'AWS',    # values: AWS, ThirdParty, Custom
-                  Provider => 'MyActionProvider',    # min: 1, max: 25
-                  Version  => 'MyVersion',           # min: 1, max: 9
 
                 },
-                Name          => 'MyActionName',     # min: 1, max: 100
-                Configuration => {
-                  'MyActionConfigurationKey' => 'MyActionConfigurationValue'
-                  ,    # key: min: 1, max: 50, value: min: 1, max: 1000
-                },    # OPTIONAL
-                InputArtifacts => [
+                outputArtifacts => [
                   {
-                    Name => 'MyArtifactName',    # min: 1, max: 100
+                    name => 'MyArtifactName',    # min: 1, max: 100
 
                   },
                   ...
                 ],                               # OPTIONAL
-                Namespace => 'MyActionNamespace',   # min: 1, max: 100; OPTIONAL
-                OutputArtifacts => [
+                inputArtifacts => [
                   {
-                    Name => 'MyArtifactName',       # min: 1, max: 100
+                    name => 'MyArtifactName',    # min: 1, max: 100
 
                   },
                   ...
-                ],                                  # OPTIONAL
-                Region   => 'MyAWSRegionName',      # min: 4, max: 30; OPTIONAL
-                RoleArn  => 'MyRoleArn',            # max: 1024
-                RunOrder => 1,                      # min: 1, max: 999; OPTIONAL
+                ],                               # OPTIONAL
+                roleArn       => 'MyRoleArn',    # max: 1024
+                runOrder      => 1,              # min: 1, max: 999; OPTIONAL
+                configuration => {
+                  'MyActionConfigurationKey' => 'MyActionConfigurationValue'
+                  ,    # key: min: 1, max: 50, value: min: 1, max: 1000
+                },    # OPTIONAL
               },
               ...
             ],
-            Name     => 'MyStageName',              # min: 1, max: 100
-            Blockers => [
+            name     => 'MyStageName',    # min: 1, max: 100
+            blockers => [
               {
-                Name => 'MyBlockerName',            # min: 1, max: 100
-                Type => 'Schedule',                 # values: Schedule
+                name => 'MyBlockerName',    # min: 1, max: 100
+                type => 'Schedule',         # values: Schedule
 
               },
               ...
-            ],                                      # OPTIONAL
+            ],                              # OPTIONAL
           },
           ...
         ],
-        ArtifactStore => {
-          Location      => 'MyArtifactStoreLocation',    # min: 3, max: 63
-          Type          => 'S3',                         # values: S3
-          EncryptionKey => {
-            Id   => 'MyEncryptionKeyId',                 # min: 1, max: 100
-            Type => 'KMS',                               # values: KMS
+        name          => 'MyPipelineName',    # min: 1, max: 100
+        artifactStore => {
+          location      => 'MyArtifactStoreLocation',    # min: 3, max: 63
+          type          => 'S3',                         # values: S3
+          encryptionKey => {
+            id   => 'MyEncryptionKeyId',                 # min: 1, max: 100
+            type => 'KMS',                               # values: KMS
 
           },    # OPTIONAL
-        },    # OPTIONAL
-        ArtifactStores => {
-          'MyAWSRegionName' => {
-            Location      => 'MyArtifactStoreLocation',    # min: 3, max: 63
-            Type          => 'S3',                         # values: S3
-            EncryptionKey => {
-              Id   => 'MyEncryptionKeyId',                 # min: 1, max: 100
-              Type => 'KMS',                               # values: KMS
-
-            },    # OPTIONAL
-          },    # key: min: 4, max: 30; OPTIONAL, value: OPTIONAL
-        },    # OPTIONAL
-        Version => 1,    # min: 1; OPTIONAL
-      },
-      Tags => [
-        {
-          Key   => 'MyTagKey',      # min: 1, max: 128
-          Value => 'MyTagValue',    # max: 256
-
         },
-        ...
-      ],                            # OPTIONAL
+        version => 1,    # min: 1, ; OPTIONAL
+      },
+
     );
 
     # Results:
     my $Pipeline = $CreatePipelineOutput->Pipeline;
-    my $Tags     = $CreatePipelineOutput->Tags;
 
     # Returns a L<Paws::CodePipeline::CreatePipelineOutput> object.
 
@@ -130,12 +108,6 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 Represents the structure of actions and stages to be performed in the
 pipeline.
-
-
-
-=head2 Tags => ArrayRef[L<Paws::CodePipeline::Tag>]
-
-The tags for the pipeline.
 
 
 

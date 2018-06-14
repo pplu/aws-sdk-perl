@@ -35,21 +35,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $CreationDate = $DescribeThingRegistrationTaskResponse->CreationDate;
-    my $FailureCount = $DescribeThingRegistrationTaskResponse->FailureCount;
+    my $InputFileKey = $DescribeThingRegistrationTaskResponse->InputFileKey;
+    my $Status       = $DescribeThingRegistrationTaskResponse->Status;
     my $InputFileBucket =
       $DescribeThingRegistrationTaskResponse->InputFileBucket;
-    my $InputFileKey = $DescribeThingRegistrationTaskResponse->InputFileKey;
-    my $LastModifiedDate =
-      $DescribeThingRegistrationTaskResponse->LastModifiedDate;
-    my $Message = $DescribeThingRegistrationTaskResponse->Message;
+    my $SuccessCount = $DescribeThingRegistrationTaskResponse->SuccessCount;
+    my $FailureCount = $DescribeThingRegistrationTaskResponse->FailureCount;
     my $PercentageProgress =
       $DescribeThingRegistrationTaskResponse->PercentageProgress;
     my $RoleArn      = $DescribeThingRegistrationTaskResponse->RoleArn;
-    my $Status       = $DescribeThingRegistrationTaskResponse->Status;
-    my $SuccessCount = $DescribeThingRegistrationTaskResponse->SuccessCount;
-    my $TaskId       = $DescribeThingRegistrationTaskResponse->TaskId;
     my $TemplateBody = $DescribeThingRegistrationTaskResponse->TemplateBody;
+    my $LastModifiedDate =
+      $DescribeThingRegistrationTaskResponse->LastModifiedDate;
+    my $TaskId       = $DescribeThingRegistrationTaskResponse->TaskId;
+    my $CreationDate = $DescribeThingRegistrationTaskResponse->CreationDate;
+    my $Message      = $DescribeThingRegistrationTaskResponse->Message;
 
     # Returns a L<Paws::IoT::DescribeThingRegistrationTaskResponse> object.
 

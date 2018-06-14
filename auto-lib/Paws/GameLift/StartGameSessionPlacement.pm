@@ -58,9 +58,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       PlayerLatencies => [
         {
           LatencyInMilliseconds => 1.0,            # OPTIONAL
-          PlayerId => 'MyNonZeroAndMaxString',     # min: 1, max: 1024; OPTIONAL
           RegionIdentifier =>
             'MyNonZeroAndMaxString',               # min: 1, max: 1024; OPTIONAL
+          PlayerId => 'MyNonZeroAndMaxString',     # min: 1, max: 1024; OPTIONAL
         },
         ...
       ],                                           # OPTIONAL
@@ -73,7 +73,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::GameLift::StartGameSessionPlacementOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gamelift/StartGameSessionPlacement>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01>
 
 =head1 ATTRIBUTES
 
@@ -90,7 +90,7 @@ Set of custom properties for a game session, formatted as key:value
 pairs. These properties are passed to a game server process in the
 GameSession object with a request to start a new game session (see
 Start a Game Session
-(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
+(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 
 
 
@@ -100,35 +100,34 @@ Set of custom game session properties, formatted as a single string
 value. This data is passed to a game server process in the GameSession
 object with a request to start a new game session (see Start a Game
 Session
-(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
+(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 
 
 
 =head2 GameSessionName => Str
 
-A descriptive label that is associated with a game session. Session
-names do not need to be unique.
+Descriptive label that is associated with a game session. Session names
+do not need to be unique.
 
 
 
 =head2 B<REQUIRED> GameSessionQueueName => Str
 
-Name of the queue to use to place the new game session. You can use
-either the qieue name or ARN value.
+Name of the queue to use to place the new game session.
 
 
 
 =head2 B<REQUIRED> MaximumPlayerSessionCount => Int
 
-The maximum number of players that can be connected simultaneously to
-the game session.
+Maximum number of players that can be connected simultaneously to the
+game session.
 
 
 
 =head2 B<REQUIRED> PlacementId => Str
 
-A unique identifier to assign to the new game session placement. This
-value is developer-defined. The value must be unique across all Regions
+Unique identifier to assign to the new game session placement. This
+value is developer-defined. The value must be unique across all regions
 and cannot be reused unless you are resubmitting a canceled or
 timed-out placement request.
 
@@ -137,7 +136,7 @@ timed-out placement request.
 =head2 PlayerLatencies => ArrayRef[L<Paws::GameLift::PlayerLatency>]
 
 Set of values, expressed in milliseconds, indicating the amount of
-latency that a player experiences when connected to AWS Regions. This
+latency that a player experiences when connected to AWS regions. This
 information is used to try to place the new game session where it can
 offer the best possible gameplay experience for the players.
 

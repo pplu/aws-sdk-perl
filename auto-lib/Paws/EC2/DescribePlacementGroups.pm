@@ -3,7 +3,6 @@ package Paws::EC2::DescribePlacementGroups;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
-  has GroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'GroupId' );
   has GroupNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'groupName' );
 
   use MooseX::ClassAttribute;
@@ -34,15 +33,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',    # OPTIONAL
-          Values => [
-            'MyString', ...        # OPTIONAL
-          ],                       # OPTIONAL
+          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name => 'MyString',
         },
         ...
-      ],                           # OPTIONAL
-      GroupIds   => [ 'MyPlacementGroupId',   ... ],    # OPTIONAL
-      GroupNames => [ 'MyPlacementGroupName', ... ],    # OPTIONAL
+      ],                                    # OPTIONAL
+      GroupNames => [ 'MyString', ... ],    # OPTIONAL
     );
 
     # Results:
@@ -67,7 +63,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-The filters.
+One or more filters.
 
 =over
 
@@ -83,22 +79,16 @@ C<state> - The state of the placement group (C<pending> | C<available>
 =item *
 
 C<strategy> - The strategy of the placement group (C<cluster> |
-C<spread> | C<partition>).
+C<spread>).
 
 =back
 
 
 
 
-=head2 GroupIds => ArrayRef[Str|Undef]
-
-The IDs of the placement groups.
-
-
-
 =head2 GroupNames => ArrayRef[Str|Undef]
 
-The names of the placement groups.
+One or more placement group names.
 
 Default: Describes all your placement groups, or only those otherwise
 specified.

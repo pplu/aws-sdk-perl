@@ -37,11 +37,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $HealthChecks = $ListHealthChecksResponse->HealthChecks;
     my $IsTruncated  = $ListHealthChecksResponse->IsTruncated;
-    my $Marker       = $ListHealthChecksResponse->Marker;
     my $MaxItems     = $ListHealthChecksResponse->MaxItems;
+    my $HealthChecks = $ListHealthChecksResponse->HealthChecks;
     my $NextMarker   = $ListHealthChecksResponse->NextMarker;
+    my $Marker       = $ListHealthChecksResponse->Marker;
 
     # Returns a L<Paws::Route53::ListHealthChecksResponse> object.
 
@@ -71,7 +71,7 @@ there are no more health checks to get.
 The maximum number of health checks that you want C<ListHealthChecks>
 to return in response to the current request. Amazon Route 53 returns a
 maximum of 100 items. If you set C<MaxItems> to a value greater than
-100, Route 53 returns only the first 100 health checks.
+100, Amazon Route 53 returns only the first 100 health checks.
 
 
 

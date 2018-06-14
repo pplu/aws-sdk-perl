@@ -53,11 +53,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $Metadata = $GetReservationPurchaseRecommendationResponse->Metadata;
-    my $NextPageToken =
-      $GetReservationPurchaseRecommendationResponse->NextPageToken;
     my $Recommendations =
       $GetReservationPurchaseRecommendationResponse->Recommendations;
+    my $NextPageToken =
+      $GetReservationPurchaseRecommendationResponse->NextPageToken;
+    my $Metadata = $GetReservationPurchaseRecommendationResponse->Metadata;
 
 # Returns a L<Paws::CostExplorer::GetReservationPurchaseRecommendationResponse> object.
 
@@ -75,14 +75,11 @@ The account ID that is associated with the recommendation.
 
 =head2 AccountScope => Str
 
-The account scope that you want recommendations for. C<PAYER> means
-that AWS includes the master account and any member accounts when it
-calculates its recommendations. C<LINKED> means that AWS includes only
-member accounts when it calculates its recommendations.
+The account scope that you want recommendations for. The only valid
+value is C<Payer>. This means that AWS includes the master account and
+any member accounts when it calculates its recommendations.
 
-Valid values are C<PAYER> and C<LINKED>.
-
-Valid values are: C<"PAYER">, C<"LINKED">
+Valid values are: C<"PAYER">
 
 =head2 LookbackPeriodInDays => Str
 
@@ -109,7 +106,7 @@ response object.
 
 The reservation purchase option that you want recommendations for.
 
-Valid values are: C<"NO_UPFRONT">, C<"PARTIAL_UPFRONT">, C<"ALL_UPFRONT">, C<"LIGHT_UTILIZATION">, C<"MEDIUM_UTILIZATION">, C<"HEAVY_UTILIZATION">
+Valid values are: C<"NO_UPFRONT">, C<"PARTIAL_UPFRONT">, C<"ALL_UPFRONT">
 
 =head2 B<REQUIRED> Service => Str
 
@@ -120,8 +117,7 @@ The specific service that you want recommendations for.
 =head2 ServiceSpecification => L<Paws::CostExplorer::ServiceSpecification>
 
 The hardware specifications for the service instances that you want
-recommendations for, such as standard or convertible Amazon EC2
-instances.
+recommendations for, such as standard or convertible EC2 instances.
 
 
 

@@ -32,8 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following command adds an IAM user named Bob to the IAM group named
     # Admins:
     $iam->AddUserToGroup(
-      'GroupName' => 'Admins',
-      'UserName'  => 'Bob'
+      {
+        'UserName'  => 'Bob',
+        'GroupName' => 'Admins'
+      }
     );
 
 
@@ -47,7 +49,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam
 
 The name of the group to update.
 
-This parameter allows (through its regex pattern
+This parameter allows (per its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
 also include any of the following characters: _+=,.@-
@@ -58,7 +60,7 @@ also include any of the following characters: _+=,.@-
 
 The name of the user to add.
 
-This parameter allows (through its regex pattern
+This parameter allows (per its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
 also include any of the following characters: _+=,.@-

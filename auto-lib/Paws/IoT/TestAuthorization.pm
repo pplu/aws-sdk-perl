@@ -36,9 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $TestAuthorizationResponse = $iot->TestAuthorization(
       AuthInfos => [
         {
-          ActionType =>
+          resources => [ 'MyResource', ... ],    # OPTIONAL
+          actionType =>
             'PUBLISH',  # values: PUBLISH, SUBSCRIBE, RECEIVE, CONNECT; OPTIONAL
-          Resources => [ 'MyResource', ... ],    # OPTIONAL
         },
         ...
       ],

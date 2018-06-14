@@ -31,29 +31,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     $monitoring->PutMetricData(
       MetricData => [
         {
-          MetricName => 'MyMetricName',    # min: 1, max: 255
-          Counts     => [ 1, ... ],        # OPTIONAL
-          Dimensions => [
+          MetricName        => 'MyMetricName',    # min: 1, max: 255
+          StorageResolution => 1,                 # min: 1, ; OPTIONAL
+          Value             => 1,                 # OPTIONAL
+          Dimensions        => [
             {
-              Name  => 'MyDimensionName',     # min: 1, max: 255
-              Value => 'MyDimensionValue',    # min: 1, max: 255
+              Value => 'MyDimensionValue',        # min: 1, max: 255
+              Name  => 'MyDimensionName',         # min: 1, max: 255
 
             },
             ...
-          ],                                  # max: 10; OPTIONAL
+          ],                                      # max: 10; OPTIONAL
           StatisticValues => {
-            Maximum     => 1,
-            Minimum     => 1,
-            SampleCount => 1,
-            Sum         => 1,
+            Maximum     => 1,                     # OPTIONAL
+            SampleCount => 1,                     # OPTIONAL
+            Sum         => 1,                     # OPTIONAL
+            Minimum     => 1,                     # OPTIONAL
 
-          },                                  # OPTIONAL
-          StorageResolution => 1,                        # min: 1; OPTIONAL
-          Timestamp         => '1970-01-01T01:00:00',    # OPTIONAL
-          Unit              => 'Seconds'
+          },    # OPTIONAL
+          Timestamp => '1970-01-01T01:00:00',    # OPTIONAL
+          Unit      => 'Seconds'
           , # values: Seconds, Microseconds, Milliseconds, Bytes, Kilobytes, Megabytes, Gigabytes, Terabytes, Bits, Kilobits, Megabits, Gigabits, Terabits, Percent, Count, Bytes/Second, Kilobytes/Second, Megabytes/Second, Gigabytes/Second, Terabytes/Second, Bits/Second, Kilobits/Second, Megabits/Second, Gigabits/Second, Terabits/Second, Count/Second, None; OPTIONAL
-          Value  => 1,
-          Values => [ 1, ... ],    # OPTIONAL
         },
         ...
       ],
@@ -69,8 +67,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mon
 
 =head2 B<REQUIRED> MetricData => ArrayRef[L<Paws::CloudWatch::MetricDatum>]
 
-The data for the metric. The array can include no more than 20 metrics
-per call.
+The data for the metric.
 
 
 
@@ -78,8 +75,8 @@ per call.
 
 The namespace for the metric data.
 
-To avoid conflicts with AWS service namespaces, you should not specify
-a namespace that begins with C<AWS/>
+You cannot specify a namespace that begins with "AWS/". Namespaces that
+begin with "AWS/" are reserved for use by Amazon Web Services products.
 
 
 

@@ -37,24 +37,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # named my-template:
     my $ConfigurationSettingsDescription =
       $elasticbeanstalk->UpdateConfigurationTemplate(
-      'ApplicationName' => 'my-app',
-      'OptionsToRemove' => [
+      {
+        'TemplateName'    => 'my-template',
+        'ApplicationName' => 'my-app',
+        'OptionsToRemove' => [
 
-        {
-          'Namespace'  => 'aws:elasticbeanstalk:healthreporting:system',
-          'OptionName' => 'ConfigDocument'
-        }
-      ],
-      'TemplateName' => 'my-template'
+          {
+            'Namespace'  => 'aws:elasticbeanstalk:healthreporting:system',
+            'OptionName' => 'ConfigDocument'
+          }
+        ]
+      }
       );
 
     # Results:
-    my $ApplicationName = $ConfigurationSettingsDescription->ApplicationName;
+    my $TemplateName    = $ConfigurationSettingsDescription->TemplateName;
     my $DateCreated     = $ConfigurationSettingsDescription->DateCreated;
-    my $DateUpdated     = $ConfigurationSettingsDescription->DateUpdated;
+    my $ApplicationName = $ConfigurationSettingsDescription->ApplicationName;
     my $SolutionStackName =
       $ConfigurationSettingsDescription->SolutionStackName;
-    my $TemplateName = $ConfigurationSettingsDescription->TemplateName;
+    my $DateUpdated = $ConfigurationSettingsDescription->DateUpdated;
 
  # Returns a L<Paws::ElasticBeanstalk::ConfigurationSettingsDescription> object.
 

@@ -33,9 +33,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # The following example sets the position of a receipt rule in a receipt rule
    # set:
     my $SetReceiptRulePositionResponse = $email->SetReceiptRulePosition(
-      'After'       => 'PutRuleAfterThisRule',
-      'RuleName'    => 'RuleToReposition',
-      'RuleSetName' => 'MyRuleSet'
+      {
+        'RuleName'    => 'RuleToReposition',
+        'RuleSetName' => 'MyRuleSet',
+        'After'       => 'PutRuleAfterThisRule'
+      }
     );
 
 

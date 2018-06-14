@@ -51,23 +51,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $AuthType              = $Authorizer->AuthType;
-    my $AuthorizerCredentials = $Authorizer->AuthorizerCredentials;
-    my $AuthorizerResultTtlInSeconds =
-      $Authorizer->AuthorizerResultTtlInSeconds;
-    my $AuthorizerUri  = $Authorizer->AuthorizerUri;
-    my $Id             = $Authorizer->Id;
-    my $IdentitySource = $Authorizer->IdentitySource;
+    my $AuthType      = $Authorizer->AuthType;
+    my $Id            = $Authorizer->Id;
+    my $ProviderARNs  = $Authorizer->ProviderARNs;
+    my $AuthorizerUri = $Authorizer->AuthorizerUri;
     my $IdentityValidationExpression =
       $Authorizer->IdentityValidationExpression;
-    my $Name         = $Authorizer->Name;
-    my $ProviderARNs = $Authorizer->ProviderARNs;
-    my $Type         = $Authorizer->Type;
+    my $Type = $Authorizer->Type;
+    my $AuthorizerResultTtlInSeconds =
+      $Authorizer->AuthorizerResultTtlInSeconds;
+    my $AuthorizerCredentials = $Authorizer->AuthorizerCredentials;
+    my $IdentitySource        = $Authorizer->IdentitySource;
+    my $Name                  = $Authorizer->Name;
 
     # Returns a L<Paws::ApiGateway::Authorizer> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/CreateAuthorizer>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>
 
 =head1 ATTRIBUTES
 
@@ -108,7 +108,7 @@ C</2015-03-31/functions/[FunctionARN]/invocations>.
 
 =head2 AuthType => Str
 
-Optional customer-defined field, used in OpenAPI imports and exports
+Optional customer-defined field, used in Swagger imports and exports
 without functional impact.
 
 
@@ -149,13 +149,12 @@ property is optional.
 =head2 IdentityValidationExpression => Str
 
 A validation expression for the incoming identity token. For C<TOKEN>
-authorizers, this value is a regular expression. For
-C<COGNITO_USER_POOLS> authorizers, API Gateway will match the C<aud>
-field of the incoming token from the client against the specified
-regular expression. It will invoke the authorizer's Lambda function
-when there is a match. Otherwise, it will return a 401 Unauthorized
-response without calling the Lambda function. The validation expression
-does not apply to the C<REQUEST> authorizer.
+authorizers, this value is a regular expression. API Gateway will match
+the C<aud> field of the incoming token from the client against the
+specified regular expression. It will invoke the authorizer's Lambda
+function when there is a match. Otherwise, it will return a 401
+Unauthorized response without calling the Lambda function. The
+validation expression does not apply to the C<REQUEST> authorizer.
 
 
 

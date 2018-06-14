@@ -41,14 +41,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Body               = $ExportResponse->Body;
-    my $ContentDisposition = $ExportResponse->ContentDisposition;
     my $ContentType        = $ExportResponse->ContentType;
+    my $ContentDisposition = $ExportResponse->ContentDisposition;
+    my $Body               = $ExportResponse->Body;
 
     # Returns a L<Paws::ApiGateway::ExportResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/GetExport>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>
 
 =head1 ATTRIBUTES
 
@@ -57,15 +57,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 
 The content-type of the export, for example C<application/json>.
 Currently C<application/json> and C<application/yaml> are supported for
-C<exportType> ofC<oas30> and C<swagger>. This should be specified in
-the C<Accept> header for direct API requests.
+C<exportType> of C<swagger>. This should be specified in the C<Accept>
+header for direct API requests.
 
 
 
 =head2 B<REQUIRED> ExportType => Str
 
-[Required] The type of export. Acceptable values are 'oas30' for
-OpenAPI 3.0.x and 'swagger' for Swagger/OpenAPI 2.0.
+[Required] The type of export. Currently only 'swagger' is supported.
 
 
 
@@ -73,13 +72,12 @@ OpenAPI 3.0.x and 'swagger' for Swagger/OpenAPI 2.0.
 
 A key-value map of query string parameters that specify properties of
 the export, depending on the requested C<exportType>. For C<exportType>
-C<oas30> and C<swagger>, any combination of the following parameters
-are supported: C<extensions='integrations'> or
-C<extensions='apigateway'> will export the API with
-x-amazon-apigateway-integration extensions. C<extensions='authorizers'>
-will export the API with x-amazon-apigateway-authorizer extensions.
-C<postman> will export the API with Postman extensions, allowing for
-import to the Postman tool
+C<swagger>, any combination of the following parameters are supported:
+C<integrations> will export the API with
+x-amazon-apigateway-integration extensions. C<authorizers> will export
+the API with x-amazon-apigateway-authorizer extensions. C<postman> will
+export the API with Postman extensions, allowing for import to the
+Postman tool
 
 
 

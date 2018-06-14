@@ -7,7 +7,6 @@ package Paws::DS::ConnectDirectory;
   has Password => (is => 'ro', isa => 'Str', required => 1);
   has ShortName => (is => 'ro', isa => 'Str');
   has Size => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DS::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -35,10 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ds = Paws->service('DS');
     my $ConnectDirectoryResult = $ds->ConnectDirectory(
       ConnectSettings => {
-        CustomerDnsIps   => [ 'MyIpAddr', ... ],
-        CustomerUserName => 'MyUserName',            # min: 1
         SubnetIds        => [ 'MySubnetId', ... ],
         VpcId            => 'MyVpcId',
+        CustomerUserName => 'MyUserName',            # min: 1,
+        CustomerDnsIps   => [ 'MyIpAddr', ... ],
 
       },
       Name        => 'MyDirectoryName',
@@ -46,14 +45,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Size        => 'Small',
       Description => 'MyDescription',                # OPTIONAL
       ShortName   => 'MyDirectoryShortName',         # OPTIONAL
-      Tags        => [
-        {
-          Key   => 'MyTagKey',                       # min: 1, max: 128
-          Value => 'MyTagValue',                     # max: 256
-
-        },
-        ...
-      ],                                             # OPTIONAL
     );
 
     # Results:
@@ -76,13 +67,13 @@ for the operation.
 
 =head2 Description => Str
 
-A description for the directory.
+A textual description for the directory.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-The fully qualified name of the on-premises directory, such as
+The fully-qualified name of the on-premises directory, such as
 C<corp.example.com>.
 
 
@@ -104,12 +95,6 @@ The NetBIOS name of the on-premises directory, such as C<CORP>.
 The size of the directory.
 
 Valid values are: C<"Small">, C<"Large">
-
-=head2 Tags => ArrayRef[L<Paws::DS::Tag>]
-
-The tags to be assigned to AD Connector.
-
-
 
 
 =head1 SEE ALSO

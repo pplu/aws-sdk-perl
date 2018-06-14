@@ -32,15 +32,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example enables deletion protection for the specified load balancer.
     my $ModifyLoadBalancerAttributesOutput =
       $elasticloadbalancing->ModifyLoadBalancerAttributes(
-      'Attributes' => [
+      {
+        'LoadBalancerArn' =>
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188',
+        'Attributes' => [
 
-        {
-          'Key'   => 'deletion_protection.enabled',
-          'Value' => 'true'
-        }
-      ],
-      'LoadBalancerArn' =>
-'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188'
+          {
+            'Value' => 'true',
+            'Key'   => 'deletion_protection.enabled'
+          }
+        ]
+      }
       );
 
     # Results:
@@ -52,15 +54,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # balancer.
     my $ModifyLoadBalancerAttributesOutput =
       $elasticloadbalancing->ModifyLoadBalancerAttributes(
-      'Attributes' => [
+      {
+        'LoadBalancerArn' =>
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188',
+        'Attributes' => [
 
-        {
-          'Key'   => 'idle_timeout.timeout_seconds',
-          'Value' => 30
-        }
-      ],
-      'LoadBalancerArn' =>
-'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188'
+          {
+            'Value' => 30,
+            'Key'   => 'idle_timeout.timeout_seconds'
+          }
+        ]
+      }
       );
 
     # Results:
@@ -74,25 +78,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # service.
     my $ModifyLoadBalancerAttributesOutput =
       $elasticloadbalancing->ModifyLoadBalancerAttributes(
-      'Attributes' => [
+      {
+        'LoadBalancerArn' =>
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188',
+        'Attributes' => [
 
-        {
-          'Key'   => 'access_logs.s3.enabled',
-          'Value' => 'true'
-        },
+          {
+            'Value' => 'true',
+            'Key'   => 'access_logs.s3.enabled'
+          },
 
-        {
-          'Key'   => 'access_logs.s3.bucket',
-          'Value' => 'my-loadbalancer-logs'
-        },
+          {
+            'Value' => 'my-loadbalancer-logs',
+            'Key'   => 'access_logs.s3.bucket'
+          },
 
-        {
-          'Key'   => 'access_logs.s3.prefix',
-          'Value' => 'myapp'
-        }
-      ],
-      'LoadBalancerArn' =>
-'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188'
+          {
+            'Value' => 'myapp',
+            'Key'   => 'access_logs.s3.prefix'
+          }
+        ]
+      }
       );
 
     # Results:

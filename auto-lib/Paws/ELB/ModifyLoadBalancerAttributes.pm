@@ -33,39 +33,43 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # balancer.
     my $ModifyLoadBalancerAttributesOutput =
       $elasticloadbalancing->ModifyLoadBalancerAttributes(
-      'LoadBalancerAttributes' => {
-        'CrossZoneLoadBalancing' => {
-          'Enabled' => 1
+      {
+        'LoadBalancerName'       => 'my-load-balancer',
+        'LoadBalancerAttributes' => {
+          'CrossZoneLoadBalancing' => {
+            'Enabled' => 1
+          }
         }
-      },
-      'LoadBalancerName' => 'my-load-balancer'
+      }
       );
 
     # Results:
-    my $LoadBalancerAttributes =
-      $ModifyLoadBalancerAttributesOutput->LoadBalancerAttributes;
     my $LoadBalancerName =
       $ModifyLoadBalancerAttributesOutput->LoadBalancerName;
+    my $LoadBalancerAttributes =
+      $ModifyLoadBalancerAttributesOutput->LoadBalancerAttributes;
 
     # Returns a L<Paws::ELB::ModifyLoadBalancerAttributesOutput> object.
     # To enable connection draining
     # This example enables connection draining for the specified load balancer.
     my $ModifyLoadBalancerAttributesOutput =
       $elasticloadbalancing->ModifyLoadBalancerAttributes(
-      'LoadBalancerAttributes' => {
-        'ConnectionDraining' => {
-          'Enabled' => 1,
-          'Timeout' => 300
+      {
+        'LoadBalancerName'       => 'my-load-balancer',
+        'LoadBalancerAttributes' => {
+          'ConnectionDraining' => {
+            'Enabled' => 1,
+            'Timeout' => 300
+          }
         }
-      },
-      'LoadBalancerName' => 'my-load-balancer'
+      }
       );
 
     # Results:
-    my $LoadBalancerAttributes =
-      $ModifyLoadBalancerAttributesOutput->LoadBalancerAttributes;
     my $LoadBalancerName =
       $ModifyLoadBalancerAttributesOutput->LoadBalancerName;
+    my $LoadBalancerAttributes =
+      $ModifyLoadBalancerAttributesOutput->LoadBalancerAttributes;
 
     # Returns a L<Paws::ELB::ModifyLoadBalancerAttributesOutput> object.
 

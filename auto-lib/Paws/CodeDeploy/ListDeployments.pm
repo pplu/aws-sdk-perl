@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ListDeploymentsOutput = $codedeploy->ListDeployments(
       ApplicationName => 'MyApplicationName',    # OPTIONAL
       CreateTimeRange => {
-        End   => '1970-01-01T01:00:00',          # OPTIONAL
-        Start => '1970-01-01T01:00:00',          # OPTIONAL
+        end   => '1970-01-01T01:00:00',          # OPTIONAL
+        start => '1970-01-01T01:00:00',          # OPTIONAL
       },    # OPTIONAL
       DeploymentGroupName => 'MyDeploymentGroupName',    # OPTIONAL
       IncludeOnlyStatuses => [
@@ -46,8 +46,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Deployments = $ListDeploymentsOutput->Deployments;
     my $NextToken   = $ListDeploymentsOutput->NextToken;
+    my $Deployments = $ListDeploymentsOutput->Deployments;
 
     # Returns a L<Paws::CodeDeploy::ListDeploymentsOutput> object.
 
@@ -59,12 +59,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 ApplicationName => Str
 
-The name of an AWS CodeDeploy application associated with the IAM user
-or AWS account.
-
-If C<applicationName> is specified, then C<deploymentGroupName> must be
-specified. If it is not specified, then C<deploymentGroupName> must not
-be specified.
+The name of an AWS CodeDeploy application associated with the
+applicable IAM user or AWS account.
 
 
 
@@ -77,11 +73,7 @@ deployments.
 
 =head2 DeploymentGroupName => Str
 
-The name of a deployment group for the specified application.
-
-If C<deploymentGroupName> is specified, then C<applicationName> must be
-specified. If it is not specified, then C<applicationName> must not be
-specified.
+The name of an existing deployment group for the specified application.
 
 
 

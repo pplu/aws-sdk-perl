@@ -31,8 +31,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To change the password for your IAM user
     # The following command changes the password for the current IAM user.
     $iam->ChangePassword(
-      'NewPassword' => ']35d/{pB9Fo9wJ',
-      'OldPassword' => '3s0K_;xh4~8XXI'
+      {
+        'OldPassword' => '3s0K_;xh4~8XXI',
+        'NewPassword' => ']35d/{pB9Fo9wJ'
+      }
     );
 
 
@@ -49,13 +51,13 @@ password policy, if one exists.
 
 The regex pattern (http://wikipedia.org/wiki/regex) that is used to
 validate this parameter is a string of characters. That string can
-include almost any printable ASCII character from the space (C<\u0020>)
-through the end of the ASCII character range (C<\u00FF>). You can also
-include the tab (C<\u0009>), line feed (C<\u000A>), and carriage return
-(C<\u000D>) characters. Any of these characters are valid in a
-password. However, many tools, such as the AWS Management Console,
-might restrict the ability to type certain characters because they have
-special meaning within that tool.
+include almost any printable ASCII character from the space (\u0020)
+through the end of the ASCII character range (\u00FF). You can also
+include the tab (\u0009), line feed (\u000A), and carriage return
+(\u000D) characters. Any of these characters are valid in a password.
+However, many tools, such as the AWS Management Console, might restrict
+the ability to type certain characters because they have special
+meaning within that tool.
 
 
 

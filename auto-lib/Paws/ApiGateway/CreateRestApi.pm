@@ -9,7 +9,6 @@ package Paws::ApiGateway::CreateRestApi;
   has MinimumCompressionSize => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'minimumCompressionSize');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
   has Policy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'policy');
-  has Tags => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'tags');
   has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version');
 
   use MooseX::ClassAttribute;
@@ -44,35 +43,32 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CloneFrom             => 'MyString',             # OPTIONAL
       Description           => 'MyString',             # OPTIONAL
       EndpointConfiguration => {
-        Types => [
-          'REGIONAL', ...    # values: REGIONAL, EDGE, PRIVATE
-        ],                   # OPTIONAL
-        VpcEndpointIds => [ 'MyString', ... ],
+        types => [
+          'REGIONAL', ...                              # values: REGIONAL, EDGE
+        ],                                             # OPTIONAL
       },    # OPTIONAL
-      MinimumCompressionSize => 1,                                # OPTIONAL
-      Policy                 => 'MyString',                       # OPTIONAL
-      Tags                   => { 'MyString' => 'MyString', },    # OPTIONAL
-      Version                => 'MyString',                       # OPTIONAL
+      MinimumCompressionSize => 1,             # OPTIONAL
+      Policy                 => 'MyString',    # OPTIONAL
+      Version                => 'MyString',    # OPTIONAL
     );
 
     # Results:
-    my $ApiKeySource           = $RestApi->ApiKeySource;
-    my $BinaryMediaTypes       = $RestApi->BinaryMediaTypes;
-    my $CreatedDate            = $RestApi->CreatedDate;
-    my $Description            = $RestApi->Description;
-    my $EndpointConfiguration  = $RestApi->EndpointConfiguration;
     my $Id                     = $RestApi->Id;
-    my $MinimumCompressionSize = $RestApi->MinimumCompressionSize;
-    my $Name                   = $RestApi->Name;
-    my $Policy                 = $RestApi->Policy;
-    my $Tags                   = $RestApi->Tags;
+    my $BinaryMediaTypes       = $RestApi->BinaryMediaTypes;
+    my $ApiKeySource           = $RestApi->ApiKeySource;
+    my $EndpointConfiguration  = $RestApi->EndpointConfiguration;
+    my $CreatedDate            = $RestApi->CreatedDate;
     my $Version                = $RestApi->Version;
+    my $MinimumCompressionSize = $RestApi->MinimumCompressionSize;
+    my $Policy                 = $RestApi->Policy;
     my $Warnings               = $RestApi->Warnings;
+    my $Description            = $RestApi->Description;
+    my $Name                   = $RestApi->Name;
 
     # Returns a L<Paws::ApiGateway::RestApi> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/CreateRestApi>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>
 
 =head1 ATTRIBUTES
 
@@ -142,14 +138,6 @@ compression for any payload size.
 
 A stringified JSON policy document that applies to this RestApi
 regardless of the caller and Method configuration.
-
-
-
-=head2 Tags => L<Paws::ApiGateway::MapOfStringToString>
-
-The key-value map of strings. The valid character set is
-[a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not
-start with C<aws:>. The tag value can be up to 256 characters.
 
 
 

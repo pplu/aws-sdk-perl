@@ -34,23 +34,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CurrentApplicationVersionId => 1,
       Output                      => {
         DestinationSchema => {
-          RecordFormatType => 'JSON',    # values: JSON, CSV
-
+          RecordFormatType => 'JSON',    # values: JSON, CSV; OPTIONAL
         },
         Name                  => 'MyInAppStreamName',    # min: 1, max: 32
         KinesisFirehoseOutput => {
-          ResourceARN => 'MyResourceARN',                # min: 1, max: 2048
           RoleARN     => 'MyRoleARN',                    # min: 1, max: 2048
+          ResourceARN => 'MyResourceARN',                # min: 1, max: 2048
 
         },    # OPTIONAL
         KinesisStreamsOutput => {
-          ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
           RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
+          ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
 
         },    # OPTIONAL
         LambdaOutput => {
-          ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
           RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
+          ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
 
         },    # OPTIONAL
       },
@@ -73,11 +72,9 @@ configuration.
 =head2 B<REQUIRED> CurrentApplicationVersionId => Int
 
 Version of the application to which you want to add the output
-configuration. You can use the DescribeApplication
-(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html)
-operation to get the current application version. If the version
-specified is not the current version, the
-C<ConcurrentModificationException> is returned.
+configuration. You can use the DescribeApplication operation to get the
+current application version. If the version specified is not the
+current version, the C<ConcurrentModificationException> is returned.
 
 
 
@@ -86,7 +83,7 @@ C<ConcurrentModificationException> is returned.
 An array of objects, each describing one output configuration. In the
 output configuration, you specify the name of an in-application stream,
 a destination (that is, an Amazon Kinesis stream, an Amazon Kinesis
-Firehose delivery stream, or an AWS Lambda function), and record the
+Firehose delivery stream, or an Amazon Lambda function), and record the
 formation to use when writing to the destination.
 
 

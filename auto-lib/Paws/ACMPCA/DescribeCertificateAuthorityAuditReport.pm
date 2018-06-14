@@ -36,12 +36,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $AuditReportStatus =
-      $DescribeCertificateAuthorityAuditReportResponse->AuditReportStatus;
+    my $S3Key     = $DescribeCertificateAuthorityAuditReportResponse->S3Key;
     my $CreatedAt = $DescribeCertificateAuthorityAuditReportResponse->CreatedAt;
     my $S3BucketName =
       $DescribeCertificateAuthorityAuditReportResponse->S3BucketName;
-    my $S3Key = $DescribeCertificateAuthorityAuditReportResponse->S3Key;
+    my $AuditReportStatus =
+      $DescribeCertificateAuthorityAuditReportResponse->AuditReportStatus;
 
 # Returns a L<Paws::ACMPCA::DescribeCertificateAuthorityAuditReportResponse> object.
 
@@ -54,7 +54,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/acm
 =head2 B<REQUIRED> AuditReportId => Str
 
 The report ID returned by calling the
-CreateCertificateAuthorityAuditReport action.
+CreateCertificateAuthorityAuditReport function.
 
 
 
@@ -63,7 +63,7 @@ CreateCertificateAuthorityAuditReport action.
 The Amazon Resource Name (ARN) of the private CA. This must be of the
 form:
 
-C<arn:aws:acm-pca:I<region>:I<account>:certificate-authority/I<12345678-1234-1234-1234-123456789012>
+C<arn:aws:acm:I<region>:I<account>:certificate-authority/I<12345678-1234-1234-1234-123456789012>
 >.
 
 

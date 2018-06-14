@@ -32,12 +32,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $workspaces->ModifyWorkspaceProperties(
       WorkspaceId         => 'MyWorkspaceId',
       WorkspaceProperties => {
-        ComputeTypeName => 'VALUE'
-        , # values: VALUE, STANDARD, PERFORMANCE, POWER, GRAPHICS, POWERPRO, GRAPHICSPRO; OPTIONAL
-        RootVolumeSizeGib => 1,    # OPTIONAL
-        RunningMode => 'AUTO_STOP',    # values: AUTO_STOP, ALWAYS_ON; OPTIONAL
-        RunningModeAutoStopTimeoutInMinutes => 1,    # OPTIONAL
+        RootVolumeSizeGib => 1,        # OPTIONAL
+        ComputeTypeName   => 'VALUE'
+        ,    # values: VALUE, STANDARD, PERFORMANCE, POWER, GRAPHICS; OPTIONAL
         UserVolumeSizeGib                   => 1,    # OPTIONAL
+        RunningModeAutoStopTimeoutInMinutes => 1,    # OPTIONAL
+        RunningMode => 'AUTO_STOP',    # values: AUTO_STOP, ALWAYS_ON; OPTIONAL
       },
 
       );
@@ -50,7 +50,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 
 =head2 B<REQUIRED> WorkspaceId => Str
 
-The identifier of the WorkSpace.
+The ID of the WorkSpace.
 
 
 

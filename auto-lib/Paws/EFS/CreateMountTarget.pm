@@ -34,18 +34,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create a new mount target
     # This operation creates a new mount target for an EFS file system.
     my $MountTargetDescription = $elasticfilesystem->CreateMountTarget(
-      'FileSystemId' => 'fs-01234567',
-      'SubnetId'     => 'subnet-1234abcd'
+      {
+        'SubnetId'     => 'subnet-1234abcd',
+        'FileSystemId' => 'fs-01234567'
+      }
     );
 
     # Results:
-    my $FileSystemId       = $MountTargetDescription->FileSystemId;
-    my $IpAddress          = $MountTargetDescription->IpAddress;
     my $LifeCycleState     = $MountTargetDescription->LifeCycleState;
-    my $MountTargetId      = $MountTargetDescription->MountTargetId;
-    my $NetworkInterfaceId = $MountTargetDescription->NetworkInterfaceId;
-    my $OwnerId            = $MountTargetDescription->OwnerId;
     my $SubnetId           = $MountTargetDescription->SubnetId;
+    my $NetworkInterfaceId = $MountTargetDescription->NetworkInterfaceId;
+    my $IpAddress          = $MountTargetDescription->IpAddress;
+    my $FileSystemId       = $MountTargetDescription->FileSystemId;
+    my $OwnerId            = $MountTargetDescription->OwnerId;
+    my $MountTargetId      = $MountTargetDescription->MountTargetId;
 
     # Returns a L<Paws::EFS::MountTargetDescription> object.
 
@@ -57,7 +59,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 =head2 B<REQUIRED> FileSystemId => Str
 
-The ID of the file system for which to create the mount target.
+ID of the file system for which to create the mount target.
 
 
 
@@ -76,7 +78,7 @@ must be for the same VPC as subnet specified.
 
 =head2 B<REQUIRED> SubnetId => Str
 
-The ID of the subnet to add the mount target in.
+ID of the subnet to add the mount target in.
 
 
 

@@ -41,11 +41,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # availability zone settings.
     my $ReservedDBInstancesOfferingMessage =
       $rds->DescribeReservedDBInstancesOfferings(
-      'DBInstanceClass'    => 'db.t2.micro',
-      'Duration'           => '1y',
-      'MultiAZ'            => 0,
-      'OfferingType'       => 'No Upfront',
-      'ProductDescription' => 'mysql'
+      {
+        'OfferingType'       => 'No Upfront',
+        'ProductDescription' => 'mysql',
+        'MultiAZ'            => 0,
+        'Duration'           => '1y',
+        'DBInstanceClass'    => 'db.t2.micro'
+      }
       );
 
 
@@ -73,7 +75,7 @@ Valid Values: C<1 | 3 | 31536000 | 94608000>
 
 =head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
-This parameter isn't currently supported.
+This parameter is not currently supported.
 
 
 
@@ -89,8 +91,8 @@ marker, up to the value specified by C<MaxRecords>.
 
 The maximum number of records to include in the response. If more than
 the C<MaxRecords> value is available, a pagination token called a
-marker is included in the response so you can retrieve the remaining
-results.
+marker is included in the response so that the following results can be
+retrieved.
 
 Default: 100
 
@@ -100,8 +102,8 @@ Constraints: Minimum 20, maximum 100.
 
 =head2 MultiAZ => Bool
 
-A value that indicates whether to show only those reservations that
-support Multi-AZ.
+The Multi-AZ filter value. Specify this parameter to show only the
+available offerings matching the specified Multi-AZ parameter.
 
 
 

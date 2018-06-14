@@ -36,19 +36,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',    # OPTIONAL
-          Values => [
-            'MyString', ...        # OPTIONAL
-          ],                       # OPTIONAL
+          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name => 'MyString',
         },
         ...
-      ],                           # OPTIONAL
-      GroupIds => [
-        'MyString', ...            # OPTIONAL
-      ],                           # OPTIONAL
-      GroupNames => [ 'MySecurityGroupName', ... ],    # OPTIONAL
-      MaxResults => 1,                                 # OPTIONAL
-      NextToken  => 'MyString',                        # OPTIONAL
+      ],                                    # OPTIONAL
+      GroupIds   => [ 'MyString', ... ],    # OPTIONAL
+      GroupNames => [ 'MyString', ... ],    # OPTIONAL
+      MaxResults => 1,                      # OPTIONAL
+      NextToken  => 'MyString',             # OPTIONAL
     );
 
     # Results:
@@ -74,9 +70,9 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-The filters. If using multiple filters for rules, the results include
-security groups for which any combination of rules - not necessarily a
-single rule - match all filters.
+One or more filters. If using multiple filters for rules, the results
+include security groups for which any combination of rules - not
+necessarily a single rule - match all filters.
 
 =over
 
@@ -188,17 +184,11 @@ C<owner-id> - The AWS account ID of the owner of the security group.
 
 =item *
 
-C<tag>:E<lt>keyE<gt> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value as
-the filter value. For example, to find all resources that have a tag
-with the key C<Owner> and the value C<TeamA>, specify C<tag:Owner> for
-the filter name and C<TeamA> for the filter value.
+C<tag-key> - The key of a tag assigned to the security group.
 
 =item *
 
-C<tag-key> - The key of a tag assigned to the resource. Use this filter
-to find all resources assigned a tag with a specific key, regardless of
-the tag value.
+C<tag-value> - The value of a tag assigned to the security group.
 
 =item *
 
@@ -212,7 +202,7 @@ created.
 
 =head2 GroupIds => ArrayRef[Str|Undef]
 
-The IDs of the security groups. Required for security groups in a
+One or more security group IDs. Required for security groups in a
 nondefault VPC.
 
 Default: Describes all your security groups.
@@ -221,7 +211,7 @@ Default: Describes all your security groups.
 
 =head2 GroupNames => ArrayRef[Str|Undef]
 
-[EC2-Classic and default VPC only] The names of the security groups.
+[EC2-Classic and default VPC only] One or more security group names.
 You can specify either the security group name or the security group
 ID. For security groups in a nondefault VPC, use the C<group-name>
 filter to describe security groups by name.

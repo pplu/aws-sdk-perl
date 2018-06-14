@@ -38,7 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $Membership = $CreateEnvironmentMembershipResult->Membership;
+    my $membership = $CreateEnvironmentMembershipResult->membership;
 
     # Returns a L<Paws::Cloud9::CreateEnvironmentMembershipResult> object.
 

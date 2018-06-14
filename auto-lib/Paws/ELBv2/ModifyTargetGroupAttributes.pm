@@ -33,15 +33,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # for the specified target group.
     my $ModifyTargetGroupAttributesOutput =
       $elasticloadbalancing->ModifyTargetGroupAttributes(
-      'Attributes' => [
+      {
+        'TargetGroupArn' =>
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067',
+        'Attributes' => [
 
-        {
-          'Key'   => 'deregistration_delay.timeout_seconds',
-          'Value' => 600
-        }
-      ],
-      'TargetGroupArn' =>
-'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067'
+          {
+            'Value' => 600,
+            'Key'   => 'deregistration_delay.timeout_seconds'
+          }
+        ]
+      }
       );
 
     # Results:

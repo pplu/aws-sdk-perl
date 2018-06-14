@@ -35,21 +35,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Description    = $GetMaintenanceWindowTaskResult->Description;
     my $LoggingInfo    = $GetMaintenanceWindowTaskResult->LoggingInfo;
-    my $MaxConcurrency = $GetMaintenanceWindowTaskResult->MaxConcurrency;
-    my $MaxErrors      = $GetMaintenanceWindowTaskResult->MaxErrors;
-    my $Name           = $GetMaintenanceWindowTaskResult->Name;
-    my $Priority       = $GetMaintenanceWindowTaskResult->Priority;
     my $ServiceRoleArn = $GetMaintenanceWindowTaskResult->ServiceRoleArn;
-    my $Targets        = $GetMaintenanceWindowTaskResult->Targets;
     my $TaskArn        = $GetMaintenanceWindowTaskResult->TaskArn;
+    my $WindowId       = $GetMaintenanceWindowTaskResult->WindowId;
+    my $TaskParameters = $GetMaintenanceWindowTaskResult->TaskParameters;
+    my $WindowTaskId   = $GetMaintenanceWindowTaskResult->WindowTaskId;
+    my $TaskType       = $GetMaintenanceWindowTaskResult->TaskType;
+    my $MaxErrors      = $GetMaintenanceWindowTaskResult->MaxErrors;
+    my $Targets        = $GetMaintenanceWindowTaskResult->Targets;
+    my $Priority       = $GetMaintenanceWindowTaskResult->Priority;
     my $TaskInvocationParameters =
       $GetMaintenanceWindowTaskResult->TaskInvocationParameters;
-    my $TaskParameters = $GetMaintenanceWindowTaskResult->TaskParameters;
-    my $TaskType       = $GetMaintenanceWindowTaskResult->TaskType;
-    my $WindowId       = $GetMaintenanceWindowTaskResult->WindowId;
-    my $WindowTaskId   = $GetMaintenanceWindowTaskResult->WindowTaskId;
+    my $Description    = $GetMaintenanceWindowTaskResult->Description;
+    my $Name           = $GetMaintenanceWindowTaskResult->Name;
+    my $MaxConcurrency = $GetMaintenanceWindowTaskResult->MaxConcurrency;
 
     # Returns a L<Paws::SSM::GetMaintenanceWindowTaskResult> object.
 
@@ -61,13 +61,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 
 =head2 B<REQUIRED> WindowId => Str
 
-The maintenance window ID that includes the task to retrieve.
+The Maintenance Window ID that includes the task to retrieve.
 
 
 
 =head2 B<REQUIRED> WindowTaskId => Str
 
-The maintenance window task ID to retrieve.
+The Maintenance Window task ID to retrieve.
 
 
 

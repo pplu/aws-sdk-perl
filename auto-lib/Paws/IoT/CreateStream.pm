@@ -5,7 +5,6 @@ package Paws::IoT::CreateStream;
   has Files => (is => 'ro', isa => 'ArrayRef[Paws::IoT::StreamFile]', traits => ['NameInRequest'], request_name => 'files', required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn', required => 1);
   has StreamId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'streamId', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Tag]', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -35,11 +34,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateStreamResponse = $iot->CreateStream(
       Files => [
         {
-          FileId     => 1,    # max: 255; OPTIONAL
-          S3Location => {
-            Bucket  => 'MyS3Bucket',     # min: 1; OPTIONAL
-            Key     => 'MyS3Key',        # min: 1; OPTIONAL
-            Version => 'MyS3Version',    # OPTIONAL
+          fileId     => 1,    # max: 255; OPTIONAL
+          s3Location => {
+            key     => 'MyS3Key',        # min: 1,
+            bucket  => 'MyS3Bucket',     # min: 1,
+            version => 'MyS3Version',    # OPTIONAL
           },    # OPTIONAL
         },
         ...
@@ -47,20 +46,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RoleArn     => 'MyRoleArn',
       StreamId    => 'MyStreamId',
       Description => 'MyStreamDescription',    # OPTIONAL
-      Tags        => [
-        {
-          Key   => 'MyTagKey',                 # OPTIONAL
-          Value => 'MyTagValue',               # OPTIONAL
-        },
-        ...
-      ],                                       # OPTIONAL
     );
 
     # Results:
-    my $Description   = $CreateStreamResponse->Description;
-    my $StreamArn     = $CreateStreamResponse->StreamArn;
-    my $StreamId      = $CreateStreamResponse->StreamId;
     my $StreamVersion = $CreateStreamResponse->StreamVersion;
+    my $StreamId      = $CreateStreamResponse->StreamId;
+    my $StreamArn     = $CreateStreamResponse->StreamArn;
+    my $Description   = $CreateStreamResponse->Description;
 
     # Returns a L<Paws::IoT::CreateStreamResponse> object.
 
@@ -92,12 +84,6 @@ your S3 files.
 =head2 B<REQUIRED> StreamId => Str
 
 The stream ID.
-
-
-
-=head2 Tags => ArrayRef[L<Paws::IoT::Tag>]
-
-Metadata which can be used to manage streams.
 
 
 

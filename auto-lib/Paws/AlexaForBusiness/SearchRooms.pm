@@ -33,24 +33,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SearchRoomsResponse = $a4b->SearchRooms(
       Filters => [
         {
-          Key    => 'MyFilterKey',    # min: 1, max: 500
           Values => [
-            'MyFilterValue', ...      # min: 1, max: 500
-          ],                          # max: 50
+            'MyFilterValue', ...    # min: 1, max: 500
+          ],                        # max: 5
+          Key => 'MyFilterKey',     # min: 1, max: 500
 
         },
         ...
-      ],                              # OPTIONAL
-      MaxResults   => 1,              # OPTIONAL
-      NextToken    => 'MyNextToken',  # OPTIONAL
+      ],                            # OPTIONAL
+      MaxResults   => 1,                # OPTIONAL
+      NextToken    => 'MyNextToken',    # OPTIONAL
       SortCriteria => [
         {
-          Key   => 'MySortKey',       # min: 1, max: 500
-          Value => 'ASC',             # values: ASC, DESC
+          Key   => 'MySortKey',         # min: 1, max: 500
+          Value => 'ASC',               # values: ASC, DESC
 
         },
         ...
-      ],                              # OPTIONAL
+      ],                                # OPTIONAL
     );
 
     # Results:
@@ -61,7 +61,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::AlexaForBusiness::SearchRoomsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/a4b/SearchRooms>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
 
 =head1 ATTRIBUTES
 

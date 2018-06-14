@@ -38,9 +38,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ProjectRole         = $UpdateTeamMemberResult->ProjectRole;
-    my $RemoteAccessAllowed = $UpdateTeamMemberResult->RemoteAccessAllowed;
-    my $UserArn             = $UpdateTeamMemberResult->UserArn;
+    my $remoteAccessAllowed = $UpdateTeamMemberResult->remoteAccessAllowed;
+    my $userArn             = $UpdateTeamMemberResult->userArn;
+    my $projectRole         = $UpdateTeamMemberResult->projectRole;
 
     # Returns a L<Paws::CodeStar::UpdateTeamMemberResult> object.
 

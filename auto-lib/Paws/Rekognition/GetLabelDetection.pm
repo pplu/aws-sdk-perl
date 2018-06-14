@@ -38,12 +38,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $JobStatus         = $GetLabelDetectionResponse->JobStatus;
-    my $LabelModelVersion = $GetLabelDetectionResponse->LabelModelVersion;
-    my $Labels            = $GetLabelDetectionResponse->Labels;
-    my $NextToken         = $GetLabelDetectionResponse->NextToken;
-    my $StatusMessage     = $GetLabelDetectionResponse->StatusMessage;
-    my $VideoMetadata     = $GetLabelDetectionResponse->VideoMetadata;
+    my $Labels        = $GetLabelDetectionResponse->Labels;
+    my $NextToken     = $GetLabelDetectionResponse->NextToken;
+    my $VideoMetadata = $GetLabelDetectionResponse->VideoMetadata;
+    my $JobStatus     = $GetLabelDetectionResponse->JobStatus;
+    my $StatusMessage = $GetLabelDetectionResponse->StatusMessage;
 
     # Returns a L<Paws::Rekognition::GetLabelDetectionResponse> object.
 
@@ -72,9 +71,9 @@ value you can specify is 1000. If you specify a value greater than
 =head2 NextToken => Str
 
 If the previous response was incomplete (because there are more labels
-to retrieve), Amazon Rekognition Video returns a pagination token in
-the response. You can use this pagination token to retrieve the next
-set of labels.
+to retrieve), Rekognition Video returns a pagination token in the
+response. You can use this pagination token to retrieve the next set of
+labels.
 
 
 

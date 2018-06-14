@@ -32,9 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ListPlatformVersionsResult = $elasticbeanstalk->ListPlatformVersions(
       Filters => [
         {
-          Operator => 'MyPlatformFilterOperator',          # OPTIONAL
           Type     => 'MyPlatformFilterType',              # OPTIONAL
           Values   => [ 'MyPlatformFilterValue', ... ],    # OPTIONAL
+          Operator => 'MyPlatformFilterOperator',          # OPTIONAL
         },
         ...
       ],                                                   # OPTIONAL

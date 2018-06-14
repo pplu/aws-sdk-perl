@@ -34,22 +34,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AccountId       => 'MyAccountId',
       BudgetName      => 'MyBudgetName',
       NewNotification => {
+        NotificationType => 'ACTUAL',    # values: ACTUAL, FORECASTED
+        Threshold        => 1,           # min: 0.1, max: 1000000000
         ComparisonOperator =>
           'GREATER_THAN',    # values: GREATER_THAN, LESS_THAN, EQUAL_TO
-        NotificationType  => 'ACTUAL',    # values: ACTUAL, FORECASTED
-        Threshold         => 1,           # max: 1000000000
-        NotificationState => 'OK',        # values: OK, ALARM; OPTIONAL
         ThresholdType =>
-          'PERCENTAGE',    # values: PERCENTAGE, ABSOLUTE_VALUE; OPTIONAL
+          'PERCENTAGE',      # values: PERCENTAGE, ABSOLUTE_VALUE; OPTIONAL
       },
       OldNotification => {
+        NotificationType => 'ACTUAL',    # values: ACTUAL, FORECASTED
+        Threshold        => 1,           # min: 0.1, max: 1000000000
         ComparisonOperator =>
           'GREATER_THAN',    # values: GREATER_THAN, LESS_THAN, EQUAL_TO
-        NotificationType  => 'ACTUAL',    # values: ACTUAL, FORECASTED
-        Threshold         => 1,           # max: 1000000000
-        NotificationState => 'OK',        # values: OK, ALARM; OPTIONAL
         ThresholdType =>
-          'PERCENTAGE',    # values: PERCENTAGE, ABSOLUTE_VALUE; OPTIONAL
+          'PERCENTAGE',      # values: PERCENTAGE, ABSOLUTE_VALUE; OPTIONAL
       },
 
     );
@@ -81,7 +79,7 @@ The updated notification to be associated with a budget.
 
 =head2 B<REQUIRED> OldNotification => L<Paws::Budgets::Notification>
 
-The previous notification that is associated with a budget.
+The previous notification associated with a budget.
 
 
 

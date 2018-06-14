@@ -31,10 +31,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SendMessageBatchResult = $sqs->SendMessageBatch(
       Entries => [
         {
-          Id                => 'MyString',
-          MessageBody       => 'MyString',
-          DelaySeconds      => 1,            # OPTIONAL
-          MessageAttributes => {
+          MessageBody            => 'MyString',
+          Id                     => 'MyString',
+          MessageDeduplicationId => 'MyString',
+          DelaySeconds           => 1,            # OPTIONAL
+          MessageGroupId         => 'MyString',
+          MessageAttributes      => {
             'MyString' => {
               DataType         => 'MyString',
               BinaryListValues => [ 'BlobBinary', ... ],    # OPTIONAL
@@ -42,17 +44,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               StringListValues => [ 'MyString', ... ],      # OPTIONAL
               StringValue      => 'MyString',
             },
-          },    # OPTIONAL
-          MessageDeduplicationId  => 'MyString',
-          MessageGroupId          => 'MyString',
-          MessageSystemAttributes => {
-            'AWSTraceHeader' => {
-              DataType         => 'MyString',
-              BinaryListValues => [ 'BlobBinary', ... ],    # OPTIONAL
-              BinaryValue      => 'BlobBinary',
-              StringListValues => [ 'MyString', ... ],      # OPTIONAL
-              StringValue      => 'MyString',
-            },    # key: values: AWSTraceHeader
           },    # OPTIONAL
         },
         ...
@@ -62,8 +53,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Failed     = $SendMessageBatchResult->Failed;
     my $Successful = $SendMessageBatchResult->Successful;
+    my $Failed     = $SendMessageBatchResult->Failed;
 
     # Returns a L<Paws::SQS::SendMessageBatchResult> object.
 
@@ -83,7 +74,7 @@ A list of SendMessageBatchRequestEntry items.
 
 The URL of the Amazon SQS queue to which batched messages are sent.
 
-Queue URLs and names are case-sensitive.
+Queue URLs are case-sensitive.
 
 
 

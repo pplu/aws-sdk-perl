@@ -44,8 +44,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Marker    = $DescribeSnapshotsListMessage->Marker;
     my $Snapshots = $DescribeSnapshotsListMessage->Snapshots;
+    my $Marker    = $DescribeSnapshotsListMessage->Marker;
 
     # Returns a L<Paws::ElastiCache::DescribeSnapshotsListMessage> object.
 

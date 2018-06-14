@@ -107,7 +107,7 @@ Out.
 =head2 ExpiresAfter => Str
 
   If this time is reached and the command has not already started
-running, it will not run. Calculated based on the ExpiresAfter user
+executing, it will not run. Calculated based on the ExpiresAfter user
 input provided as part of the SendCommand API.
 
 
@@ -118,11 +118,11 @@ input provided as part of the SendCommand API.
 
 =head2 MaxConcurrency => Str
 
-  The maximum number of instances that are allowed to run the command at
-the same time. You can specify a number of instances, such as 10, or a
-percentage of instances, such as 10%. The default value is 50. For more
-information about how to use MaxConcurrency, see Running Commands Using
-Systems Manager Run Command
+  The maximum number of instances that are allowed to execute the command
+at the same time. You can specify a number of instances, such as 10, or
+a percentage of instances, such as 10%. The default value is 50. For
+more information about how to use MaxConcurrency, see Executing
+Commands Using Systems Manager Run Command
 (http://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html)
 in the I<AWS Systems Manager User Guide>.
 
@@ -132,7 +132,7 @@ in the I<AWS Systems Manager User Guide>.
   The maximum number of errors allowed before the system stops sending
 the command to additional targets. You can specify a number of errors,
 such as 10, or a percentage or errors, such as 10%. The default value
-is 0. For more information about how to use MaxErrors, see Running
+is 0. For more information about how to use MaxErrors, see Executing
 Commands Using Systems Manager Run Command
 (http://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html)
 in the I<AWS Systems Manager User Guide>.
@@ -165,7 +165,7 @@ Amazon S3 bucket region.
 
 =head2 Parameters => L<Paws::SSM::Parameters>
 
-  The parameter values to be inserted in the document when running the
+  The parameter values to be inserted in the document when executing the
 command.
 
 
@@ -209,8 +209,8 @@ not reached a final state on all instances.
 
 =item *
 
-Success: The command successfully ran on all invocations. This is a
-terminal state.
+Success: The command successfully executed on all invocations. This is
+a terminal state.
 
 =item *
 
@@ -242,7 +242,7 @@ terminal state.
 
 Rate Exceeded: The number of instances targeted by the command exceeded
 the account limit for pending invocations. The system has canceled the
-command before running it on any instance. This is a terminal state.
+command before executing it on any instance. This is a terminal state.
 
 =back
 

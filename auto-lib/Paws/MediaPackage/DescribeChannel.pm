@@ -34,11 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Arn         = $DescribeChannelResponse->Arn;
-    my $Description = $DescribeChannelResponse->Description;
-    my $HlsIngest   = $DescribeChannelResponse->HlsIngest;
     my $Id          = $DescribeChannelResponse->Id;
-    my $Tags        = $DescribeChannelResponse->Tags;
+    my $Arn         = $DescribeChannelResponse->Arn;
+    my $HlsIngest   = $DescribeChannelResponse->HlsIngest;
+    my $Description = $DescribeChannelResponse->Description;
 
     # Returns a L<Paws::MediaPackage::DescribeChannelResponse> object.
 

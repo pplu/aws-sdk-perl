@@ -33,8 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example associates the specified route table with the subnet for the
     # specified route table association.
     my $ReplaceRouteTableAssociationResult = $ec2->ReplaceRouteTableAssociation(
-      'AssociationId' => 'rtbassoc-781d0d1a',
-      'RouteTableId'  => 'rtb-22574640'
+      {
+        'AssociationId' => 'rtbassoc-781d0d1a',
+        'RouteTableId'  => 'rtb-22574640'
+      }
     );
 
     # Results:

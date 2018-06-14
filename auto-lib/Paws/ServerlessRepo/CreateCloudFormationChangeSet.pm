@@ -2,18 +2,9 @@
 package Paws::ServerlessRepo::CreateCloudFormationChangeSet;
   use Moose;
   has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'applicationId', required => 1);
-  has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'capabilities');
-  has ChangeSetName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'changeSetName');
-  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has NotificationArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'notificationArns');
   has ParameterOverrides => (is => 'ro', isa => 'ArrayRef[Paws::ServerlessRepo::ParameterValue]', traits => ['NameInRequest'], request_name => 'parameterOverrides');
-  has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'resourceTypes');
-  has RollbackConfiguration => (is => 'ro', isa => 'Paws::ServerlessRepo::RollbackConfiguration', traits => ['NameInRequest'], request_name => 'rollbackConfiguration');
   has SemanticVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'semanticVersion');
-  has StackName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stackName', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ServerlessRepo::Tag]', traits => ['NameInRequest'], request_name => 'tags');
-  has TemplateId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'templateId');
+  has StackName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stackName');
 
   use MooseX::ClassAttribute;
 
@@ -43,50 +34,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateCloudFormationChangeSetResponse =
       $serverlessrepo->CreateCloudFormationChangeSet(
       ApplicationId      => 'My__string',
-      StackName          => 'My__string',
-      Capabilities       => [ 'My__string', ... ],    # OPTIONAL
-      ChangeSetName      => 'My__string',             # OPTIONAL
-      ClientToken        => 'My__string',             # OPTIONAL
-      Description        => 'My__string',             # OPTIONAL
-      NotificationArns   => [ 'My__string', ... ],    # OPTIONAL
       ParameterOverrides => [
         {
+          Value => 'My__string',
           Name  => 'My__string',
-          Value => 'My__string',
 
         },
         ...
-      ],                                              # OPTIONAL
-      ResourceTypes         => [ 'My__string', ... ], # OPTIONAL
-      RollbackConfiguration => {
-        MonitoringTimeInMinutes => 1,                 # OPTIONAL
-        RollbackTriggers        => [
-          {
-            Arn  => 'My__string',
-            Type => 'My__string',
-
-          },
-          ...
-        ],                                            # OPTIONAL
-      },    # OPTIONAL
+      ],    # OPTIONAL
       SemanticVersion => 'My__string',    # OPTIONAL
-      Tags            => [
-        {
-          Key   => 'My__string',
-          Value => 'My__string',
-
-        },
-        ...
-      ],                                  # OPTIONAL
-      TemplateId => 'My__string',         # OPTIONAL
+      StackName       => 'My__string',    # OPTIONAL
       );
 
     # Results:
     my $ApplicationId = $CreateCloudFormationChangeSetResponse->ApplicationId;
-    my $ChangeSetId   = $CreateCloudFormationChangeSetResponse->ChangeSetId;
+    my $StackId       = $CreateCloudFormationChangeSetResponse->StackId;
     my $SemanticVersion =
       $CreateCloudFormationChangeSetResponse->SemanticVersion;
-    my $StackId = $CreateCloudFormationChangeSetResponse->StackId;
+    my $ChangeSetId = $CreateCloudFormationChangeSetResponse->ChangeSetId;
 
 # Returns a L<Paws::ServerlessRepo::CreateCloudFormationChangeSetResponse> object.
 
@@ -98,116 +63,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ser
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-The Amazon Resource Name (ARN) of the application.
-
-
-
-=head2 Capabilities => ArrayRef[Str|Undef]
-
-A list of values that you must specify before you can deploy certain
-applications. Some applications might include resources that can affect
-permissions in your AWS account, for example, by creating new AWS
-Identity and Access Management (IAM) users. For those applications, you
-must explicitly acknowledge their capabilities by specifying this
-parameter.
-
-The only valid values are CAPABILITY_IAM, CAPABILITY_NAMED_IAM,
-CAPABILITY_RESOURCE_POLICY, and CAPABILITY_AUTO_EXPAND.
-
-The following resources require you to specify CAPABILITY_IAM or
-CAPABILITY_NAMED_IAM: AWS::IAM::Group
-(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html),
-AWS::IAM::InstanceProfile
-(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html),
-AWS::IAM::Policy
-(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html),
-and AWS::IAM::Role
-(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html).
-If the application contains IAM resources, you can specify either
-CAPABILITY_IAM or CAPABILITY_NAMED_IAM. If the application contains IAM
-resources with custom names, you must specify CAPABILITY_NAMED_IAM.
-
-The following resources require you to specify
-CAPABILITY_RESOURCE_POLICY: AWS::Lambda::Permission
-(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-permission.html),
-AWS::IAM:Policy
-(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html),
-AWS::ApplicationAutoScaling::ScalingPolicy
-(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalingpolicy.html),
-AWS::S3::BucketPolicy
-(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-policy.html),
-AWS::SQS::QueuePolicy
-(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sqs-policy.html),
-and AWS::SNS:TopicPolicy
-(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-policy.html).
-
-Applications that contain one or more nested applications require you
-to specify CAPABILITY_AUTO_EXPAND.
-
-If your application template contains any of the above resources, we
-recommend that you review all permissions associated with the
-application before deploying. If you don't specify this parameter for
-an application that requires capabilities, the call will fail.
-
-
-
-=head2 ChangeSetName => Str
-
-This property corresponds to the parameter of the same name for the
-I<AWS CloudFormation CreateChangeSet
-(https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet)
-> API.
-
-
-
-=head2 ClientToken => Str
-
-This property corresponds to the parameter of the same name for the
-I<AWS CloudFormation CreateChangeSet
-(https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet)
-> API.
-
-
-
-=head2 Description => Str
-
-This property corresponds to the parameter of the same name for the
-I<AWS CloudFormation CreateChangeSet
-(https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet)
-> API.
-
-
-
-=head2 NotificationArns => ArrayRef[Str|Undef]
-
-This property corresponds to the parameter of the same name for the
-I<AWS CloudFormation CreateChangeSet
-(https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet)
-> API.
+The ID of the application to get.
 
 
 
 =head2 ParameterOverrides => ArrayRef[L<Paws::ServerlessRepo::ParameterValue>]
 
 A list of parameter values for the parameters of the application.
-
-
-
-=head2 ResourceTypes => ArrayRef[Str|Undef]
-
-This property corresponds to the parameter of the same name for the
-I<AWS CloudFormation CreateChangeSet
-(https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet)
-> API.
-
-
-
-=head2 RollbackConfiguration => L<Paws::ServerlessRepo::RollbackConfiguration>
-
-This property corresponds to the parameter of the same name for the
-I<AWS CloudFormation CreateChangeSet
-(https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet)
-> API.
 
 
 
@@ -219,30 +81,17 @@ https://semver.org/ (https://semver.org/)
 
 
 
-=head2 B<REQUIRED> StackName => Str
+=head2 StackName => Str
 
-This property corresponds to the parameter of the same name for the
-I<AWS CloudFormation CreateChangeSet
-(https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet)
-> API.
+The name or the unique ID of the stack for which you are creating a
+change set. AWS CloudFormation generates the change set by comparing
+this stack's information with the information that you submit, such as
+a modified template or different parameter input values.
 
-
-
-=head2 Tags => ArrayRef[L<Paws::ServerlessRepo::Tag>]
-
-This property corresponds to the parameter of the same name for the
-I<AWS CloudFormation CreateChangeSet
-(https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet)
-> API.
-
-
-
-=head2 TemplateId => Str
-
-The UUID returned by CreateCloudFormationTemplate.
+Constraints: Minimum length of 1.
 
 Pattern:
-[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}
+([a-zA-Z][-a-zA-Z0-9]*)|(arn:\b(aws|aws-us-gov|aws-cn)\b:[-a-zA-Z0-9:/._+]*)
 
 
 

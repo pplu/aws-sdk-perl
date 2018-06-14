@@ -35,15 +35,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Enabled              = $AdminGetUserResponse->Enabled;
+    my $UserStatus           = $AdminGetUserResponse->UserStatus;
+    my $UserMFASettingList   = $AdminGetUserResponse->UserMFASettingList;
     my $MFAOptions           = $AdminGetUserResponse->MFAOptions;
+    my $Enabled              = $AdminGetUserResponse->Enabled;
     my $PreferredMfaSetting  = $AdminGetUserResponse->PreferredMfaSetting;
+    my $Username             = $AdminGetUserResponse->Username;
     my $UserAttributes       = $AdminGetUserResponse->UserAttributes;
     my $UserCreateDate       = $AdminGetUserResponse->UserCreateDate;
     my $UserLastModifiedDate = $AdminGetUserResponse->UserLastModifiedDate;
-    my $UserMFASettingList   = $AdminGetUserResponse->UserMFASettingList;
-    my $UserStatus           = $AdminGetUserResponse->UserStatus;
-    my $Username             = $AdminGetUserResponse->Username;
 
     # Returns a L<Paws::CognitoIdp::AdminGetUserResponse> object.
 

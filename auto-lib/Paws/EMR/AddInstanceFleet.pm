@@ -34,14 +34,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         InstanceFleetType   => 'MASTER',    # values: MASTER, CORE, TASK
         InstanceTypeConfigs => [
           {
-            InstanceType => 'MyInstanceType',          # min: 1, max: 256
-            BidPrice     => 'MyXmlStringMaxLen256',    # max: 256
-            BidPriceAsPercentageOfOnDemandPrice => 1,  # OPTIONAL
-            Configurations                      => [
+            InstanceType     => 'MyInstanceType',          # min: 1, max: 256
+            BidPrice         => 'MyXmlStringMaxLen256',    # max: 256
+            WeightedCapacity => 1,
+            Configurations   => [
               {
+                Properties     => { 'MyString' => 'MyString', },    # OPTIONAL
                 Classification => 'MyString',
                 Configurations => <ConfigurationList>,
-                Properties     => { 'MyString' => 'MyString', },    # OPTIONAL
               },
               ...
             ],                                                      # OPTIONAL
@@ -49,8 +49,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               EbsBlockDeviceConfigs => [
                 {
                   VolumeSpecification => {
-                    SizeInGB   => 1,
                     VolumeType => 'MyString',
+                    SizeInGB   => 1,
                     Iops       => 1,
                   },
                   VolumesPerInstance => 1,
@@ -59,30 +59,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ],                                                    # OPTIONAL
               EbsOptimized => 1,                                    # OPTIONAL
             },    # OPTIONAL
-            WeightedCapacity => 1,    # OPTIONAL
+            BidPriceAsPercentageOfOnDemandPrice => 1,    # OPTIONAL
           },
           ...
-        ],                            # OPTIONAL
+        ],                                               # OPTIONAL
         LaunchSpecifications => {
           SpotSpecification => {
-            TimeoutAction => 'SWITCH_TO_ON_DEMAND'
+            TimeoutDurationMinutes => 1,
+            TimeoutAction          => 'SWITCH_TO_ON_DEMAND'
             ,    # values: SWITCH_TO_ON_DEMAND, TERMINATE_CLUSTER
-            TimeoutDurationMinutes => 1,    # OPTIONAL
-            BlockDurationMinutes   => 1,    # OPTIONAL
+            BlockDurationMinutes => 1,
           },
 
         },    # OPTIONAL
+        TargetSpotCapacity     => 1,
+        TargetOnDemandCapacity => 1,
         Name                   => 'MyXmlStringMaxLen256',    # max: 256
-        TargetOnDemandCapacity => 1,                         # OPTIONAL
-        TargetSpotCapacity     => 1,                         # OPTIONAL
       },
 
     );
 
     # Results:
-    my $ClusterArn      = $AddInstanceFleetOutput->ClusterArn;
-    my $ClusterId       = $AddInstanceFleetOutput->ClusterId;
     my $InstanceFleetId = $AddInstanceFleetOutput->InstanceFleetId;
+    my $ClusterId       = $AddInstanceFleetOutput->ClusterId;
 
     # Returns a L<Paws::EMR::AddInstanceFleetOutput> object.
 

@@ -4,7 +4,6 @@ package Paws::ElasticBeanstalk::CreateApplication;
   has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str');
   has ResourceLifecycleConfig => (is => 'ro', isa => 'Paws::ElasticBeanstalk::ApplicationResourceLifecycleConfig');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -33,8 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create a new application
     # The following operation creates a new application named my-app:
     my $ApplicationDescriptionMessage = $elasticbeanstalk->CreateApplication(
-      'ApplicationName' => 'my-app',
-      'Description'     => 'my application'
+      {
+        'ApplicationName' => 'my-app',
+        'Description'     => 'my application'
+      }
     );
 
     # Results:
@@ -68,15 +69,6 @@ Describes the application.
 
 Specify an application resource lifecycle configuration to prevent your
 application from accumulating too many versions.
-
-
-
-=head2 Tags => ArrayRef[L<Paws::ElasticBeanstalk::Tag>]
-
-Specifies the tags applied to the application.
-
-Elastic Beanstalk applies these tags only to the application.
-Environments that you create in the application don't inherit the tags.
 
 
 

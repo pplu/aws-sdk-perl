@@ -5,21 +5,14 @@ package Paws::RDS::CreateDBCluster;
   has BacktrackWindow => (is => 'ro', isa => 'Int');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has CharacterSetName => (is => 'ro', isa => 'Str');
-  has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
   has DatabaseName => (is => 'ro', isa => 'Str');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
-  has DeletionProtection => (is => 'ro', isa => 'Bool');
-  has Domain => (is => 'ro', isa => 'Str');
-  has DomainIAMRoleName => (is => 'ro', isa => 'Str');
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has EnableHttpEndpoint => (is => 'ro', isa => 'Bool');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
-  has EngineMode => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
-  has GlobalClusterIdentifier => (is => 'ro', isa => 'Str');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
@@ -29,7 +22,6 @@ package Paws::RDS::CreateDBCluster;
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has PreSignedUrl => (is => 'ro', isa => 'Str');
   has ReplicationSourceIdentifier => (is => 'ro', isa => 'Str');
-  has ScalingConfiguration => (is => 'ro', isa => 'Paws::RDS::ScalingConfiguration');
   has StorageEncrypted => (is => 'ro', isa => 'Bool');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -61,17 +53,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create a DB cluster
     # This example creates a DB cluster.
     my $CreateDBClusterResult = $rds->CreateDBCluster(
-      'AvailabilityZones'           => ['us-east-1a'],
-      'BackupRetentionPeriod'       => 1,
-      'DBClusterIdentifier'         => 'mydbcluster',
-      'DBClusterParameterGroupName' => 'mydbclusterparametergroup',
-      'DatabaseName'                => 'myauroradb',
-      'Engine'                      => 'aurora',
-      'EngineVersion'               => '5.6.10a',
-      'MasterUserPassword'          => 'mypassword',
-      'MasterUsername'              => 'myuser',
-      'Port'                        => 3306,
-      'StorageEncrypted'            => 1
+      {
+        'StorageEncrypted'            => 1,
+        'MasterUserPassword'          => 'mypassword',
+        'EngineVersion'               => '5.6.10a',
+        'Engine'                      => 'aurora',
+        'AvailabilityZones'           => ['us-east-1a'],
+        'Port'                        => 3306,
+        'DBClusterParameterGroupName' => 'mydbclusterparametergroup',
+        'DBClusterIdentifier'         => 'mydbcluster',
+        'MasterUsername'              => 'myuser',
+        'DatabaseName'                => 'myauroradb',
+        'BackupRetentionPeriod'       => 1
+      }
     );
 
 
@@ -83,11 +77,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 AvailabilityZones => ArrayRef[Str|Undef]
 
-A list of Availability Zones (AZs) where instances in the DB cluster
-can be created. For information on AWS Regions and Availability Zones,
-see Choosing the Regions and Availability Zones
-(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.RegionsAndAvailabilityZones.html)
-in the I<Amazon Aurora User Guide>.
+A list of EC2 Availability Zones that instances in the DB cluster can
+be created in. For information on AWS Regions and Availability Zones,
+see Regions and Availability Zones
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 
 
 
@@ -114,7 +107,8 @@ hours).
 
 =head2 BackupRetentionPeriod => Int
 
-The number of days for which automated backups are retained.
+The number of days for which automated backups are retained. You must
+specify a minimum value of 1.
 
 Default: 1
 
@@ -138,17 +132,10 @@ the specified CharacterSet.
 
 
 
-=head2 CopyTagsToSnapshot => Bool
-
-A value that indicates whether to copy all tags from the DB cluster to
-snapshots of the DB cluster. The default is not to copy them.
-
-
-
 =head2 DatabaseName => Str
 
-The name for your database of up to 64 alphanumeric characters. If you
-do not provide a name, Amazon RDS doesn't create a database in the DB
+The name for your database of up to 64 alpha-numeric characters. If you
+do not provide a name, Amazon RDS will not create a database in the DB
 cluster you are creating.
 
 
@@ -172,7 +159,7 @@ First character must be a letter.
 
 =item *
 
-Can't end with a hyphen or contain two consecutive hyphens.
+Cannot end with a hyphen or contain two consecutive hyphens.
 
 =back
 
@@ -183,8 +170,7 @@ Example: C<my-cluster1>
 =head2 DBClusterParameterGroupName => Str
 
 The name of the DB cluster parameter group to associate with this DB
-cluster. If you do not specify a value, then the default DB cluster
-parameter group for the specified DB engine and version is used.
+cluster. If this argument is omitted, C<default.aurora5.6> is used.
 
 Constraints:
 
@@ -192,8 +178,8 @@ Constraints:
 
 =item *
 
-If supplied, must match the name of an existing DB cluster parameter
-group.
+If supplied, must match the name of an existing
+DBClusterParameterGroup.
 
 =back
 
@@ -211,71 +197,19 @@ Example: C<mySubnetgroup>
 
 
 
-=head2 DeletionProtection => Bool
-
-A value that indicates whether the DB cluster has deletion protection
-enabled. The database can't be deleted when deletion protection is
-enabled. By default, deletion protection is disabled.
-
-
-
-=head2 Domain => Str
-
-The Active Directory directory ID to create the DB cluster in.
-
-For Amazon Aurora DB clusters, Amazon RDS can use Kerberos
-Authentication to authenticate users that connect to the DB cluster.
-For more information, see Using Kerberos Authentication for Aurora
-MySQL
-(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurmysql-kerberos.html)
-in the I<Amazon Aurora User Guide>.
-
-
-
-=head2 DomainIAMRoleName => Str
-
-Specify the name of the IAM role to be used when making API calls to
-the Directory Service.
-
-
-
 =head2 EnableCloudwatchLogsExports => ArrayRef[Str|Undef]
 
 The list of log types that need to be enabled for exporting to
-CloudWatch Logs. The values in the list depend on the DB engine being
-used. For more information, see Publishing Database Logs to Amazon
-CloudWatch Logs
-(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
-in the I<Amazon Aurora User Guide>.
-
-
-
-=head2 EnableHttpEndpoint => Bool
-
-A value that indicates whether to enable the HTTP endpoint for an
-Aurora Serverless DB cluster. By default, the HTTP endpoint is
-disabled.
-
-When enabled, the HTTP endpoint provides a connectionless web service
-API for running SQL queries on the Aurora Serverless DB cluster. You
-can also query your database from inside the RDS console with the query
-editor.
-
-For more information, see Using the Data API for Aurora Serverless
-(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html)
-in the I<Amazon Aurora User Guide>.
+CloudWatch Logs.
 
 
 
 =head2 EnableIAMDatabaseAuthentication => Bool
 
-A value that indicates whether to enable mapping of AWS Identity and
-Access Management (IAM) accounts to database accounts. By default,
-mapping is disabled.
+True to enable mapping of AWS Identity and Access Management (IAM)
+accounts to database accounts, and otherwise false.
 
-For more information, see IAM Database Authentication
-(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html)
-in the I<Amazon Aurora User Guide.>
+Default: C<false>
 
 
 
@@ -289,79 +223,17 @@ C<aurora-postgresql>
 
 
 
-=head2 EngineMode => Str
-
-The DB engine mode of the DB cluster, either C<provisioned>,
-C<serverless>, C<parallelquery>, C<global>, or C<multimaster>.
-
-Limitations and requirements apply to some DB engine modes. For more
-information, see the following sections in the I<Amazon Aurora User
-Guide>:
-
-=over
-
-=item *
-
-Limitations of Aurora Serverless
-(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html#aurora-serverless.limitations)
-
-=item *
-
-Limitations of Parallel Query
-(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-mysql-parallel-query.html#aurora-mysql-parallel-query-limitations)
-
-=item *
-
-Requirements for Aurora Global Databases
-(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html#aurora-global-database.limitations)
-
-=item *
-
-Limitations of Multi-Master Clusters
-(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html#aurora-multi-master-limitations)
-
-=back
-
-
-
-
 =head2 EngineVersion => Str
 
 The version number of the database engine to use.
 
-To list all of the available engine versions for C<aurora> (for MySQL
-5.6-compatible Aurora), use the following command:
-
-C<aws rds describe-db-engine-versions --engine aurora --query
-"DBEngineVersions[].EngineVersion">
-
-To list all of the available engine versions for C<aurora-mysql> (for
-MySQL 5.7-compatible Aurora), use the following command:
-
-C<aws rds describe-db-engine-versions --engine aurora-mysql --query
-"DBEngineVersions[].EngineVersion">
-
-To list all of the available engine versions for C<aurora-postgresql>,
-use the following command:
-
-C<aws rds describe-db-engine-versions --engine aurora-postgresql
---query "DBEngineVersions[].EngineVersion">
-
 B<Aurora MySQL>
 
-Example: C<5.6.10a>, C<5.6.mysql_aurora.1.19.2>, C<5.7.12>,
-C<5.7.mysql_aurora.2.04.5>
+Example: C<5.6.10a>, C<5.7.12>
 
 B<Aurora PostgreSQL>
 
-Example: C<9.6.3>, C<10.7>
-
-
-
-=head2 GlobalClusterIdentifier => Str
-
-The global cluster ID of an Aurora cluster that becomes the primary
-cluster in the new global database cluster.
+Example: C<9.6.3>
 
 
 
@@ -375,7 +247,7 @@ account that owns the KMS encryption key used to encrypt the new DB
 cluster, then you can use the KMS key alias instead of the ARN for the
 KMS encryption key.
 
-If an encryption key isn't specified in C<KmsKeyId>:
+If an encryption key is not specified in C<KmsKeyId>:
 
 =over
 
@@ -387,8 +259,8 @@ Otherwise, Amazon RDS will use your default encryption key.
 
 =item *
 
-If the C<StorageEncrypted> parameter is enabled and
-C<ReplicationSourceIdentifier> isn't specified, then Amazon RDS will
+If the C<StorageEncrypted> parameter is true and
+C<ReplicationSourceIdentifier> is not specified, then Amazon RDS will
 use your default encryption key.
 
 =back
@@ -421,7 +293,7 @@ First character must be a letter.
 
 =item *
 
-Can't be a reserved word for the chosen database engine.
+Cannot be a reserved word for the chosen database engine.
 
 =back
 
@@ -466,9 +338,9 @@ parameter.
 
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region. To see the time blocks available,
-see Adjusting the Preferred DB Cluster Maintenance Window
-(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
-in the I<Amazon Aurora User Guide.>
+see Adjusting the Preferred Maintenance Window
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
+in the I<Amazon RDS User Guide.>
 
 Constraints:
 
@@ -504,10 +376,10 @@ Format: C<ddd:hh24:mi-ddd:hh24:mi>
 
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region, occurring on a random day of the
-week. To see the time blocks available, see Adjusting the Preferred DB
-Cluster Maintenance Window
-(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
-in the I<Amazon Aurora User Guide.>
+week. To see the time blocks available, see Adjusting the Preferred
+Maintenance Window
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
+in the I<Amazon RDS User Guide.>
 
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
 
@@ -558,15 +430,9 @@ Example: C<arn:aws:rds:us-west-2:123456789012:cluster:aurora-cluster1>.
 To learn how to generate a Signature Version 4 signed request, see
 Authenticating Requests: Using Query Parameters (AWS Signature Version
 4)
-(https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
+(http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
 and Signature Version 4 Signing Process
-(https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
-
-If you are using an AWS SDK tool or the AWS CLI, you can specify
-C<SourceRegion> (or C<--source-region> for the AWS CLI) instead of
-specifying C<PreSignedUrl> manually. Specifying C<SourceRegion>
-autogenerates a pre-signed URL that is a valid request for the
-operation that can be executed in the source AWS Region.
+(http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
 
 
@@ -577,22 +443,15 @@ if this DB cluster is created as a Read Replica.
 
 
 
-=head2 ScalingConfiguration => L<Paws::RDS::ScalingConfiguration>
-
-For DB clusters in C<serverless> DB engine mode, the scaling properties
-of the DB cluster.
-
-
-
 =head2 StorageEncrypted => Bool
 
-A value that indicates whether the DB cluster is encrypted.
+Specifies whether the DB cluster is encrypted.
 
 
 
 =head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
-Tags to assign to the DB cluster.
+
 
 
 

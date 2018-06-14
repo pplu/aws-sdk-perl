@@ -34,8 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To retrieve a list of Lambda functions
     # This operation retrieves a Lambda functions
     my $ListFunctionsResponse = $lambda->ListFunctions(
-      'Marker'   => '',
-      'MaxItems' => 123
+      {
+        'MaxItems' => 123,
+        'Marker'   => ''
+      }
     );
 
     # Results:
@@ -52,30 +54,44 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 FunctionVersion => Str
 
-Set to C<ALL> to include entries for all published versions of each
-function.
+Optional string. If not specified, only the unqualified functions ARNs
+(Amazon Resource Names) will be returned.
+
+Valid value:
+
+C<ALL>: Will return all versions, including C<$LATEST> which will have
+fully qualified ARNs (Amazon Resource Names).
 
 Valid values are: C<"ALL">
 
 =head2 Marker => Str
 
-Specify the pagination token that's returned by a previous request to
-retrieve the next page of results.
+Optional string. An opaque pagination token returned from a previous
+C<ListFunctions> operation. If present, indicates where to continue the
+listing.
 
 
 
 =head2 MasterRegion => Str
 
-For Lambda@Edge functions, the AWS Region of the master function. For
-example, C<us-east-1> filters the list of functions to only include
-Lambda@Edge functions replicated from a master function in US East (N.
-Virginia). If specified, you must set C<FunctionVersion> to C<ALL>.
+Optional string. If not specified, will return only regular function
+versions (i.e., non-replicated versions).
+
+Valid values are:
+
+The region from which the functions are replicated. For example, if you
+specify C<us-east-1>, only functions replicated from that region will
+be returned.
+
+C<ALL>: Will return all functions from any region. If specified, you
+also must specify a valid FunctionVersion parameter.
 
 
 
 =head2 MaxItems => Int
 
-The maximum number of functions to return.
+Optional integer. Specifies the maximum number of AWS Lambda functions
+to return in response. This parameter value must be greater than 0.
 
 
 

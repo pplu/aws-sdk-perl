@@ -30,33 +30,39 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # To describe upload buffer of gateway
    # Returns information about the upload buffer of a gateway including disk IDs
    # and the amount of upload buffer space allocated/used.
-    my $DescribeUploadBufferOutput =
-      $storagegateway->DescribeUploadBuffer( 'GatewayARN' =>
-        'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B' );
+    my $DescribeUploadBufferOutput = $storagegateway->DescribeUploadBuffer(
+      {
+        'GatewayARN' =>
+          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B'
+      }
+    );
 
     # Results:
-    my $DiskIds    = $DescribeUploadBufferOutput->DiskIds;
-    my $GatewayARN = $DescribeUploadBufferOutput->GatewayARN;
     my $UploadBufferAllocatedInBytes =
       $DescribeUploadBufferOutput->UploadBufferAllocatedInBytes;
+    my $DiskIds = $DescribeUploadBufferOutput->DiskIds;
     my $UploadBufferUsedInBytes =
       $DescribeUploadBufferOutput->UploadBufferUsedInBytes;
+    my $GatewayARN = $DescribeUploadBufferOutput->GatewayARN;
 
    # Returns a L<Paws::StorageGateway::DescribeUploadBufferOutput> object.
    # To describe upload buffer of a gateway
    # Returns information about the upload buffer of a gateway including disk IDs
    # and the amount of upload buffer space allocated and used.
-    my $DescribeUploadBufferOutput =
-      $storagegateway->DescribeUploadBuffer( 'GatewayARN' =>
-        'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B' );
+    my $DescribeUploadBufferOutput = $storagegateway->DescribeUploadBuffer(
+      {
+        'GatewayARN' =>
+          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B'
+      }
+    );
 
     # Results:
-    my $DiskIds    = $DescribeUploadBufferOutput->DiskIds;
-    my $GatewayARN = $DescribeUploadBufferOutput->GatewayARN;
     my $UploadBufferAllocatedInBytes =
       $DescribeUploadBufferOutput->UploadBufferAllocatedInBytes;
+    my $DiskIds = $DescribeUploadBufferOutput->DiskIds;
     my $UploadBufferUsedInBytes =
       $DescribeUploadBufferOutput->UploadBufferUsedInBytes;
+    my $GatewayARN = $DescribeUploadBufferOutput->GatewayARN;
 
     # Returns a L<Paws::StorageGateway::DescribeUploadBufferOutput> object.
 

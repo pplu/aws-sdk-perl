@@ -6,7 +6,6 @@ package Paws::CloudTrail::UpdateTrail;
   has EnableLogFileValidation => (is => 'ro', isa => 'Bool');
   has IncludeGlobalServiceEvents => (is => 'ro', isa => 'Bool');
   has IsMultiRegionTrail => (is => 'ro', isa => 'Bool');
-  has IsOrganizationTrail => (is => 'ro', isa => 'Bool');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has S3BucketName => (is => 'ro', isa => 'Str');
@@ -44,7 +43,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EnableLogFileValidation    => 1,             # OPTIONAL
       IncludeGlobalServiceEvents => 1,             # OPTIONAL
       IsMultiRegionTrail         => 1,             # OPTIONAL
-      IsOrganizationTrail        => 1,             # OPTIONAL
       KmsKeyId                   => 'MyString',    # OPTIONAL
       S3BucketName               => 'MyString',    # OPTIONAL
       S3KeyPrefix                => 'MyString',    # OPTIONAL
@@ -52,22 +50,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CloudWatchLogsLogGroupArn =
-      $UpdateTrailResponse->CloudWatchLogsLogGroupArn;
-    my $CloudWatchLogsRoleArn = $UpdateTrailResponse->CloudWatchLogsRoleArn;
     my $IncludeGlobalServiceEvents =
       $UpdateTrailResponse->IncludeGlobalServiceEvents;
-    my $IsMultiRegionTrail  = $UpdateTrailResponse->IsMultiRegionTrail;
-    my $IsOrganizationTrail = $UpdateTrailResponse->IsOrganizationTrail;
-    my $KmsKeyId            = $UpdateTrailResponse->KmsKeyId;
+    my $CloudWatchLogsRoleArn = $UpdateTrailResponse->CloudWatchLogsRoleArn;
+    my $SnsTopicName          = $UpdateTrailResponse->SnsTopicName;
     my $LogFileValidationEnabled =
       $UpdateTrailResponse->LogFileValidationEnabled;
-    my $Name         = $UpdateTrailResponse->Name;
+    my $IsMultiRegionTrail = $UpdateTrailResponse->IsMultiRegionTrail;
+    my $KmsKeyId           = $UpdateTrailResponse->KmsKeyId;
+    my $TrailARN           = $UpdateTrailResponse->TrailARN;
+    my $S3KeyPrefix        = $UpdateTrailResponse->S3KeyPrefix;
+    my $CloudWatchLogsLogGroupArn =
+      $UpdateTrailResponse->CloudWatchLogsLogGroupArn;
     my $S3BucketName = $UpdateTrailResponse->S3BucketName;
-    my $S3KeyPrefix  = $UpdateTrailResponse->S3KeyPrefix;
     my $SnsTopicARN  = $UpdateTrailResponse->SnsTopicARN;
-    my $SnsTopicName = $UpdateTrailResponse->SnsTopicName;
-    my $TrailARN     = $UpdateTrailResponse->TrailARN;
+    my $Name         = $UpdateTrailResponse->Name;
 
     # Returns a L<Paws::CloudTrail::UpdateTrailResponse> object.
 
@@ -124,22 +121,7 @@ current region and this value is set to true, shadow trails
 (replications of the trail) will be created in the other regions. If
 the trail exists in all regions and this value is set to false, the
 trail will remain in the region where it was created, and its shadow
-trails in other regions will be deleted. As a best practice, consider
-using trails that log events in all regions.
-
-
-
-=head2 IsOrganizationTrail => Bool
-
-Specifies whether the trail is applied to all accounts in an
-organization in AWS Organizations, or only for the current AWS account.
-The default is false, and cannot be true unless the call is made on
-behalf of an AWS account that is the master account for an organization
-in AWS Organizations. If the trail is not an organization trail and
-this is set to true, the trail will be created in all AWS accounts that
-belong to the organization. If the trail is an organization trail and
-this is set to false, the trail will remain in the current AWS account
-but be deleted from all member accounts in the organization.
+trails in other regions will be deleted.
 
 
 
@@ -160,11 +142,11 @@ alias/MyAliasName
 
 =item *
 
-arn:aws:kms:us-east-2:123456789012:alias/MyAliasName
+arn:aws:kms:us-east-1:123456789012:alias/MyAliasName
 
 =item *
 
-arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012
+arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
 
 =item *
 
@@ -208,7 +190,7 @@ Not be in IP address format (for example, 192.168.5.4)
 
 If C<Name> is a trail ARN, it must be in the format:
 
-C<arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail>
+C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>
 
 
 
@@ -216,7 +198,7 @@ C<arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail>
 
 Specifies the name of the Amazon S3 bucket designated for publishing
 log files. See Amazon S3 Bucket Naming Requirements
-(https://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html).
+(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html).
 
 
 
@@ -225,7 +207,7 @@ log files. See Amazon S3 Bucket Naming Requirements
 Specifies the Amazon S3 key prefix that comes after the name of the
 bucket you have designated for log file delivery. For more information,
 see Finding Your CloudTrail Log Files
-(https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html).
+(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html).
 The maximum length is 200 characters.
 
 

@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ClientIDList   = $GetOpenIDConnectProviderResponse->ClientIDList;
     my $CreateDate     = $GetOpenIDConnectProviderResponse->CreateDate;
+    my $ClientIDList   = $GetOpenIDConnectProviderResponse->ClientIDList;
     my $ThumbprintList = $GetOpenIDConnectProviderResponse->ThumbprintList;
     my $Url            = $GetOpenIDConnectProviderResponse->Url;
 
@@ -54,7 +54,7 @@ resource ARNs by using the ListOpenIDConnectProviders operation.
 
 For more information about ARNs, see Amazon Resource Names (ARNs) and
 AWS Service Namespaces
-(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 in the I<AWS General Reference>.
 
 

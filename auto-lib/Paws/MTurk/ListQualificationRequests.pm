@@ -37,10 +37,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $NextToken  = $ListQualificationRequestsResponse->NextToken;
-    my $NumResults = $ListQualificationRequestsResponse->NumResults;
+    my $NextToken = $ListQualificationRequestsResponse->NextToken;
     my $QualificationRequests =
       $ListQualificationRequestsResponse->QualificationRequests;
+    my $NumResults = $ListQualificationRequestsResponse->NumResults;
 
     # Returns a L<Paws::MTurk::ListQualificationRequestsResponse> object.
 

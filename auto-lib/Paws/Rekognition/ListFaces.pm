@@ -32,8 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To list the faces in a collection
     # This operation lists the faces in a Rekognition collection.
     my $ListFacesResponse = $rekognition->ListFaces(
-      'CollectionId' => 'myphotos',
-      'MaxResults'   => 20
+      {
+        'CollectionId' => 'myphotos',
+        'MaxResults'   => 20
+      }
     );
 
     # Results:

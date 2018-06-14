@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ActionTypes = $ListActionTypesOutput->ActionTypes;
     my $NextToken   = $ListActionTypesOutput->NextToken;
+    my $ActionTypes = $ListActionTypesOutput->ActionTypes;
 
     # Returns a L<Paws::CodePipeline::ListActionTypesOutput> object.
 

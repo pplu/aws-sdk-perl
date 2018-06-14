@@ -41,8 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EventCategories => [ 'MyString', ... ],      # OPTIONAL
       Filters         => [
         {
-          Name   => 'MyString',
           Values => [ 'MyString', ... ],
+          Name   => 'MyString',
 
         },
         ...

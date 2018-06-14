@@ -41,23 +41,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ApiKeySource           = $RestApi->ApiKeySource;
-    my $BinaryMediaTypes       = $RestApi->BinaryMediaTypes;
-    my $CreatedDate            = $RestApi->CreatedDate;
-    my $Description            = $RestApi->Description;
-    my $EndpointConfiguration  = $RestApi->EndpointConfiguration;
     my $Id                     = $RestApi->Id;
-    my $MinimumCompressionSize = $RestApi->MinimumCompressionSize;
-    my $Name                   = $RestApi->Name;
-    my $Policy                 = $RestApi->Policy;
-    my $Tags                   = $RestApi->Tags;
+    my $BinaryMediaTypes       = $RestApi->BinaryMediaTypes;
+    my $ApiKeySource           = $RestApi->ApiKeySource;
+    my $EndpointConfiguration  = $RestApi->EndpointConfiguration;
+    my $CreatedDate            = $RestApi->CreatedDate;
     my $Version                = $RestApi->Version;
+    my $MinimumCompressionSize = $RestApi->MinimumCompressionSize;
+    my $Policy                 = $RestApi->Policy;
     my $Warnings               = $RestApi->Warnings;
+    my $Description            = $RestApi->Description;
+    my $Name                   = $RestApi->Name;
 
     # Returns a L<Paws::ApiGateway::RestApi> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/PutRestApi>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>
 
 =head1 ATTRIBUTES
 
@@ -65,7 +64,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head2 B<REQUIRED> Body => Str
 
 [Required] The PUT request body containing external API definitions.
-Currently, only OpenAPI definition JSON/YAML files are supported. The
+Currently, only Swagger definition JSON files are supported. The
 maximum size of the API definition file is 2MB.
 
 
@@ -91,7 +90,7 @@ Custom header parameters as part of the request. For example, to
 exclude DocumentationParts from an imported API, set
 C<ignore=documentation> as a C<parameters> value, as in the AWS CLI
 command of C<aws apigateway import-rest-api --parameters
-ignore=documentation --body 'file:///path/to/imported-api-body.json'>.
+ignore=documentation --body 'file:///path/to/imported-api-body.json>.
 
 
 

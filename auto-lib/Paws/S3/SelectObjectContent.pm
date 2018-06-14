@@ -8,7 +8,6 @@ package Paws::S3::SelectObjectContent;
   has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
   has OutputSerialization => (is => 'ro', isa => 'Paws::S3::OutputSerialization', required => 1);
   has RequestProgress => (is => 'ro', isa => 'Paws::S3::RequestProgress');
-  has ScanRange => (is => 'ro', isa => 'Paws::S3::ScanRange');
   has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-algorithm', traits => ['ParamInHeader']);
   has SSECustomerKey => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-key', traits => ['ParamInHeader']);
   has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-key-MD5', traits => ['ParamInHeader']);
@@ -45,31 +44,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Expression         => 'MyExpression',
       ExpressionType     => 'SQL',
       InputSerialization => {
-        CSV => {
-          AllowQuotedRecordDelimiter => 1,                     # OPTIONAL
-          Comments                   => 'MyComments',          # OPTIONAL
-          FieldDelimiter             => 'MyFieldDelimiter',    # OPTIONAL
-          FileHeaderInfo => 'USE',    # values: USE, IGNORE, NONE; OPTIONAL
+        CompressionType => 'NONE',    # values: NONE, GZIP; OPTIONAL
+        CSV             => {
           QuoteCharacter       => 'MyQuoteCharacter',          # OPTIONAL
           QuoteEscapeCharacter => 'MyQuoteEscapeCharacter',    # OPTIONAL
-          RecordDelimiter      => 'MyRecordDelimiter',         # OPTIONAL
+          Comments             => 'MyComments',                # OPTIONAL
+          FileHeaderInfo => 'USE',    # values: USE, IGNORE, NONE; OPTIONAL
+          RecordDelimiter => 'MyRecordDelimiter',    # OPTIONAL
+          FieldDelimiter  => 'MyFieldDelimiter',     # OPTIONAL
         },    # OPTIONAL
-        CompressionType => 'NONE',    # values: NONE, GZIP, BZIP2; OPTIONAL
-        JSON            => {
-          Type => 'DOCUMENT',         # values: DOCUMENT, LINES; OPTIONAL
-        },    # OPTIONAL
-        Parquet => {
-
+        JSON => {
+          Type => 'DOCUMENT',    # values: DOCUMENT, LINES; OPTIONAL
         },    # OPTIONAL
       },
       Key                 => 'MyObjectKey',
       OutputSerialization => {
         CSV => {
-          FieldDelimiter       => 'MyFieldDelimiter',          # OPTIONAL
           QuoteCharacter       => 'MyQuoteCharacter',          # OPTIONAL
           QuoteEscapeCharacter => 'MyQuoteEscapeCharacter',    # OPTIONAL
+          RecordDelimiter      => 'MyRecordDelimiter',         # OPTIONAL
+          FieldDelimiter       => 'MyFieldDelimiter',          # OPTIONAL
           QuoteFields => 'ALWAYS',    # values: ALWAYS, ASNEEDED; OPTIONAL
-          RecordDelimiter => 'MyRecordDelimiter',    # OPTIONAL
         },    # OPTIONAL
         JSON => {
           RecordDelimiter => 'MyRecordDelimiter',    # OPTIONAL
@@ -81,10 +76,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SSECustomerAlgorithm => 'MySSECustomerAlgorithm',    # OPTIONAL
       SSECustomerKey       => 'MySSECustomerKey',          # OPTIONAL
       SSECustomerKeyMD5    => 'MySSECustomerKeyMD5',       # OPTIONAL
-      ScanRange            => {
-        End   => 1,                                        # OPTIONAL
-        Start => 1,                                        # OPTIONAL
-      },    # OPTIONAL
     );
 
     # Results:
@@ -100,7 +91,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-The S3 bucket.
+The S3 Bucket.
 
 
 
@@ -112,7 +103,7 @@ The expression that is used to query the object.
 
 =head2 B<REQUIRED> ExpressionType => Str
 
-The type of the provided expression (for example, SQL).
+The type of the provided expression (e.g., SQL).
 
 Valid values are: C<"SQL">
 
@@ -124,7 +115,7 @@ Describes the format of the data in the object that is being queried.
 
 =head2 B<REQUIRED> Key => Str
 
-The object key.
+The Object Key.
 
 
 
@@ -141,58 +132,25 @@ Specifies if periodic request progress information should be enabled.
 
 
 
-=head2 ScanRange => L<Paws::S3::ScanRange>
-
-Specifies the byte range of the object to get the records from. A
-record is processed when its first byte is contained by the range. This
-parameter is optional, but when specified, it must not be empty. See
-RFC 2616, Section 14.35.1 about how to specify the start and end of the
-range.
-
-C<ScanRange>may be used in the following ways:
-
-=over
-
-=item *
-
-C<E<lt>scanrangeE<gt>E<lt>startE<gt>50E<lt>/startE<gt>E<lt>endE<gt>100E<lt>/endE<gt>E<lt>/scanrangeE<gt>>
-- process only the records starting between the bytes 50 and 100
-(inclusive, counting from zero)
-
-=item *
-
-C<E<lt>scanrangeE<gt>E<lt>startE<gt>50E<lt>/startE<gt>E<lt>/scanrangeE<gt>>
-- process only the records starting after the byte 50
-
-=item *
-
-C<E<lt>scanrangeE<gt>E<lt>endE<gt>50E<lt>/endE<gt>E<lt>/scanrangeE<gt>>
-- process only the records within the last 50 bytes of the file.
-
-=back
-
-
-
-
 =head2 SSECustomerAlgorithm => Str
 
-The SSE Algorithm used to encrypt the object. For more information, see
-Server-Side Encryption (Using Customer-Provided Encryption Keys
+The SSE Algorithm used to encrypt the object. For more information, go
+to Server-Side Encryption (Using Customer-Provided Encryption Keys
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html).
 
 
 
 =head2 SSECustomerKey => Str
 
-The SSE Customer Key. For more information, see Server-Side Encryption
-(Using Customer-Provided Encryption Keys
+The SSE Customer Key. For more information, go to Server-Side
+Encryption (Using Customer-Provided Encryption Keys
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html).
 
 
 
 =head2 SSECustomerKeyMD5 => Str
 
-The SSE Customer Key MD5. For more information, see Server-Side
+The SSE Customer Key MD5. For more information, go to Server-Side
 Encryption (Using Customer-Provided Encryption Keys
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html).
 

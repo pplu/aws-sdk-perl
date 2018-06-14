@@ -31,14 +31,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $pinpoint = Paws->service('Pinpoint');
     my $UpdateApnsVoipChannelResponse = $pinpoint->UpdateApnsVoipChannel(
       APNSVoipChannelRequest => {
-        BundleId                    => 'My__string',    # OPTIONAL
-        Certificate                 => 'My__string',    # OPTIONAL
+        TokenKeyId                  => 'My__string',    # OPTIONAL
         DefaultAuthenticationMethod => 'My__string',    # OPTIONAL
+        Certificate                 => 'My__string',    # OPTIONAL
         Enabled                     => 1,               # OPTIONAL
         PrivateKey                  => 'My__string',    # OPTIONAL
+        BundleId                    => 'My__string',    # OPTIONAL
         TeamId                      => 'My__string',    # OPTIONAL
         TokenKey                    => 'My__string',    # OPTIONAL
-        TokenKeyId                  => 'My__string',    # OPTIONAL
       },
       ApplicationId => 'My__string',
 
@@ -51,7 +51,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::Pinpoint::UpdateApnsVoipChannelResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pinpoint/UpdateApnsVoipChannel>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
 
 =head1 ATTRIBUTES
 
@@ -64,8 +64,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pin
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-The unique identifier for the application. This identifier is displayed
-as the B<Project ID> on the Amazon Pinpoint console.
+
 
 
 

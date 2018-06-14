@@ -37,36 +37,36 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RestApiId       => 'MyString',
       PatchOperations => [
         {
-          From => 'MyString',
-          Op =>
+          from  => 'MyString',
+          value => 'MyString',
+          path  => 'MyString',
+          op =>
             'add',    # values: add, remove, replace, move, copy, test; OPTIONAL
-          Path  => 'MyString',
-          Value => 'MyString',
         },
         ...
       ],              # OPTIONAL
     );
 
     # Results:
-    my $CacheKeyParameters   = $Integration->CacheKeyParameters;
-    my $CacheNamespace       = $Integration->CacheNamespace;
-    my $ConnectionId         = $Integration->ConnectionId;
-    my $ConnectionType       = $Integration->ConnectionType;
-    my $ContentHandling      = $Integration->ContentHandling;
-    my $Credentials          = $Integration->Credentials;
     my $HttpMethod           = $Integration->HttpMethod;
-    my $IntegrationResponses = $Integration->IntegrationResponses;
-    my $PassthroughBehavior  = $Integration->PassthroughBehavior;
-    my $RequestParameters    = $Integration->RequestParameters;
+    my $Credentials          = $Integration->Credentials;
+    my $ContentHandling      = $Integration->ContentHandling;
     my $RequestTemplates     = $Integration->RequestTemplates;
-    my $TimeoutInMillis      = $Integration->TimeoutInMillis;
+    my $IntegrationResponses = $Integration->IntegrationResponses;
+    my $ConnectionType       = $Integration->ConnectionType;
+    my $ConnectionId         = $Integration->ConnectionId;
     my $Type                 = $Integration->Type;
+    my $RequestParameters    = $Integration->RequestParameters;
+    my $CacheKeyParameters   = $Integration->CacheKeyParameters;
+    my $TimeoutInMillis      = $Integration->TimeoutInMillis;
+    my $PassthroughBehavior  = $Integration->PassthroughBehavior;
+    my $CacheNamespace       = $Integration->CacheNamespace;
     my $Uri                  = $Integration->Uri;
 
     # Returns a L<Paws::ApiGateway::Integration> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/UpdateIntegration>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>
 
 =head1 ATTRIBUTES
 

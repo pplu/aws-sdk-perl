@@ -25,11 +25,6 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::CancelCommand', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub CancelMaintenanceWindowExecution {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SSM::CancelMaintenanceWindowExecution', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
   sub CreateActivation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::CreateActivation', @_);
@@ -53,11 +48,6 @@ package Paws::SSM;
   sub CreateMaintenanceWindow {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::CreateMaintenanceWindow', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreateOpsItem {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SSM::CreateOpsItem', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreatePatchBaseline {
@@ -145,16 +135,6 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::DescribeAssociation', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub DescribeAssociationExecutions {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SSM::DescribeAssociationExecutions', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeAssociationExecutionTargets {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SSM::DescribeAssociationExecutionTargets', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
   sub DescribeAutomationExecutions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::DescribeAutomationExecutions', @_);
@@ -240,16 +220,6 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::DescribeMaintenanceWindows', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub DescribeMaintenanceWindowSchedule {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SSM::DescribeMaintenanceWindowSchedule', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeMaintenanceWindowsForTarget {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SSM::DescribeMaintenanceWindowsForTarget', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
   sub DescribeMaintenanceWindowTargets {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::DescribeMaintenanceWindowTargets', @_);
@@ -258,11 +228,6 @@ package Paws::SSM;
   sub DescribeMaintenanceWindowTasks {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::DescribeMaintenanceWindowTasks', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeOpsItems {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SSM::DescribeOpsItems', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeParameters {
@@ -285,34 +250,14 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::DescribePatchGroupState', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub DescribePatchProperties {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SSM::DescribePatchProperties', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeSessions {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SSM::DescribeSessions', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
   sub GetAutomationExecution {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::GetAutomationExecution', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub GetCalendarState {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SSM::GetCalendarState', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
   sub GetCommandInvocation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::GetCommandInvocation', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetConnectionStatus {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SSM::GetConnectionStatus', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetDefaultPatchBaseline {
@@ -365,16 +310,6 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::GetMaintenanceWindowTask', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub GetOpsItem {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SSM::GetOpsItem', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetOpsSummary {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SSM::GetOpsSummary', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
   sub GetParameter {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::GetParameter', @_);
@@ -403,16 +338,6 @@ package Paws::SSM;
   sub GetPatchBaselineForPatchGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::GetPatchBaselineForPatchGroup', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetServiceSetting {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SSM::GetServiceSetting', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub LabelParameterVersion {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SSM::LabelParameterVersion', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListAssociations {
@@ -520,16 +445,6 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::RemoveTagsFromResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub ResetServiceSetting {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SSM::ResetServiceSetting', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ResumeSession {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SSM::ResumeSession', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
   sub SendAutomationSignal {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::SendAutomationSignal', @_);
@@ -540,29 +455,14 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::SendCommand', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub StartAssociationsOnce {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SSM::StartAssociationsOnce', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
   sub StartAutomationExecution {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::StartAutomationExecution', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub StartSession {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SSM::StartSession', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
   sub StopAutomationExecution {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::StopAutomationExecution', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub TerminateSession {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SSM::TerminateSession', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateAssociation {
@@ -605,24 +505,9 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::UpdateManagedInstanceRole', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub UpdateOpsItem {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SSM::UpdateOpsItem', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
   sub UpdatePatchBaseline {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::UpdatePatchBaseline', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateResourceDataSync {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SSM::UpdateResourceDataSync', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateServiceSetting {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SSM::UpdateServiceSetting', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -645,190 +530,6 @@ package Paws::SSM;
         $result = $self->DescribeActivations(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'ActivationList') foreach (@{ $result->ActivationList });
-    }
-
-    return undef
-  }
-  sub DescribeAllAssociationExecutions {
-    my $self = shift;
-
-    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
-    my $result = $self->DescribeAssociationExecutions(@_);
-    my $next_result = $result;
-
-    if (not defined $callback) {
-      while ($next_result->NextToken) {
-        $next_result = $self->DescribeAssociationExecutions(@_, NextToken => $next_result->NextToken);
-        push @{ $result->AssociationExecutions }, @{ $next_result->AssociationExecutions };
-      }
-      return $result;
-    } else {
-      while ($result->NextToken) {
-        $callback->($_ => 'AssociationExecutions') foreach (@{ $result->AssociationExecutions });
-        $result = $self->DescribeAssociationExecutions(@_, NextToken => $result->NextToken);
-      }
-      $callback->($_ => 'AssociationExecutions') foreach (@{ $result->AssociationExecutions });
-    }
-
-    return undef
-  }
-  sub DescribeAllAssociationExecutionTargets {
-    my $self = shift;
-
-    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
-    my $result = $self->DescribeAssociationExecutionTargets(@_);
-    my $next_result = $result;
-
-    if (not defined $callback) {
-      while ($next_result->NextToken) {
-        $next_result = $self->DescribeAssociationExecutionTargets(@_, NextToken => $next_result->NextToken);
-        push @{ $result->AssociationExecutionTargets }, @{ $next_result->AssociationExecutionTargets };
-      }
-      return $result;
-    } else {
-      while ($result->NextToken) {
-        $callback->($_ => 'AssociationExecutionTargets') foreach (@{ $result->AssociationExecutionTargets });
-        $result = $self->DescribeAssociationExecutionTargets(@_, NextToken => $result->NextToken);
-      }
-      $callback->($_ => 'AssociationExecutionTargets') foreach (@{ $result->AssociationExecutionTargets });
-    }
-
-    return undef
-  }
-  sub DescribeAllAutomationExecutions {
-    my $self = shift;
-
-    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
-    my $result = $self->DescribeAutomationExecutions(@_);
-    my $next_result = $result;
-
-    if (not defined $callback) {
-      while ($next_result->NextToken) {
-        $next_result = $self->DescribeAutomationExecutions(@_, NextToken => $next_result->NextToken);
-        push @{ $result->AutomationExecutionMetadataList }, @{ $next_result->AutomationExecutionMetadataList };
-      }
-      return $result;
-    } else {
-      while ($result->NextToken) {
-        $callback->($_ => 'AutomationExecutionMetadataList') foreach (@{ $result->AutomationExecutionMetadataList });
-        $result = $self->DescribeAutomationExecutions(@_, NextToken => $result->NextToken);
-      }
-      $callback->($_ => 'AutomationExecutionMetadataList') foreach (@{ $result->AutomationExecutionMetadataList });
-    }
-
-    return undef
-  }
-  sub DescribeAllAutomationStepExecutions {
-    my $self = shift;
-
-    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
-    my $result = $self->DescribeAutomationStepExecutions(@_);
-    my $next_result = $result;
-
-    if (not defined $callback) {
-      while ($next_result->NextToken) {
-        $next_result = $self->DescribeAutomationStepExecutions(@_, NextToken => $next_result->NextToken);
-        push @{ $result->StepExecutions }, @{ $next_result->StepExecutions };
-      }
-      return $result;
-    } else {
-      while ($result->NextToken) {
-        $callback->($_ => 'StepExecutions') foreach (@{ $result->StepExecutions });
-        $result = $self->DescribeAutomationStepExecutions(@_, NextToken => $result->NextToken);
-      }
-      $callback->($_ => 'StepExecutions') foreach (@{ $result->StepExecutions });
-    }
-
-    return undef
-  }
-  sub DescribeAllAvailablePatches {
-    my $self = shift;
-
-    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
-    my $result = $self->DescribeAvailablePatches(@_);
-    my $next_result = $result;
-
-    if (not defined $callback) {
-      while ($next_result->NextToken) {
-        $next_result = $self->DescribeAvailablePatches(@_, NextToken => $next_result->NextToken);
-        push @{ $result->Patches }, @{ $next_result->Patches };
-      }
-      return $result;
-    } else {
-      while ($result->NextToken) {
-        $callback->($_ => 'Patches') foreach (@{ $result->Patches });
-        $result = $self->DescribeAvailablePatches(@_, NextToken => $result->NextToken);
-      }
-      $callback->($_ => 'Patches') foreach (@{ $result->Patches });
-    }
-
-    return undef
-  }
-  sub DescribeAllEffectiveInstanceAssociations {
-    my $self = shift;
-
-    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
-    my $result = $self->DescribeEffectiveInstanceAssociations(@_);
-    my $next_result = $result;
-
-    if (not defined $callback) {
-      while ($next_result->NextToken) {
-        $next_result = $self->DescribeEffectiveInstanceAssociations(@_, NextToken => $next_result->NextToken);
-        push @{ $result->Associations }, @{ $next_result->Associations };
-      }
-      return $result;
-    } else {
-      while ($result->NextToken) {
-        $callback->($_ => 'Associations') foreach (@{ $result->Associations });
-        $result = $self->DescribeEffectiveInstanceAssociations(@_, NextToken => $result->NextToken);
-      }
-      $callback->($_ => 'Associations') foreach (@{ $result->Associations });
-    }
-
-    return undef
-  }
-  sub DescribeAllEffectivePatchesForPatchBaseline {
-    my $self = shift;
-
-    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
-    my $result = $self->DescribeEffectivePatchesForPatchBaseline(@_);
-    my $next_result = $result;
-
-    if (not defined $callback) {
-      while ($next_result->NextToken) {
-        $next_result = $self->DescribeEffectivePatchesForPatchBaseline(@_, NextToken => $next_result->NextToken);
-        push @{ $result->EffectivePatches }, @{ $next_result->EffectivePatches };
-      }
-      return $result;
-    } else {
-      while ($result->NextToken) {
-        $callback->($_ => 'EffectivePatches') foreach (@{ $result->EffectivePatches });
-        $result = $self->DescribeEffectivePatchesForPatchBaseline(@_, NextToken => $result->NextToken);
-      }
-      $callback->($_ => 'EffectivePatches') foreach (@{ $result->EffectivePatches });
-    }
-
-    return undef
-  }
-  sub DescribeAllInstanceAssociationsStatus {
-    my $self = shift;
-
-    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
-    my $result = $self->DescribeInstanceAssociationsStatus(@_);
-    my $next_result = $result;
-
-    if (not defined $callback) {
-      while ($next_result->NextToken) {
-        $next_result = $self->DescribeInstanceAssociationsStatus(@_, NextToken => $next_result->NextToken);
-        push @{ $result->InstanceAssociationStatusInfos }, @{ $next_result->InstanceAssociationStatusInfos };
-      }
-      return $result;
-    } else {
-      while ($result->NextToken) {
-        $callback->($_ => 'InstanceAssociationStatusInfos') foreach (@{ $result->InstanceAssociationStatusInfos });
-        $result = $self->DescribeInstanceAssociationsStatus(@_, NextToken => $result->NextToken);
-      }
-      $callback->($_ => 'InstanceAssociationStatusInfos') foreach (@{ $result->InstanceAssociationStatusInfos });
     }
 
     return undef
@@ -856,282 +557,6 @@ package Paws::SSM;
 
     return undef
   }
-  sub DescribeAllInstancePatches {
-    my $self = shift;
-
-    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
-    my $result = $self->DescribeInstancePatches(@_);
-    my $next_result = $result;
-
-    if (not defined $callback) {
-      while ($next_result->NextToken) {
-        $next_result = $self->DescribeInstancePatches(@_, NextToken => $next_result->NextToken);
-        push @{ $result->Patches }, @{ $next_result->Patches };
-      }
-      return $result;
-    } else {
-      while ($result->NextToken) {
-        $callback->($_ => 'Patches') foreach (@{ $result->Patches });
-        $result = $self->DescribeInstancePatches(@_, NextToken => $result->NextToken);
-      }
-      $callback->($_ => 'Patches') foreach (@{ $result->Patches });
-    }
-
-    return undef
-  }
-  sub DescribeAllInstancePatchStates {
-    my $self = shift;
-
-    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
-    my $result = $self->DescribeInstancePatchStates(@_);
-    my $next_result = $result;
-
-    if (not defined $callback) {
-      while ($next_result->NextToken) {
-        $next_result = $self->DescribeInstancePatchStates(@_, NextToken => $next_result->NextToken);
-        push @{ $result->InstancePatchStates }, @{ $next_result->InstancePatchStates };
-      }
-      return $result;
-    } else {
-      while ($result->NextToken) {
-        $callback->($_ => 'InstancePatchStates') foreach (@{ $result->InstancePatchStates });
-        $result = $self->DescribeInstancePatchStates(@_, NextToken => $result->NextToken);
-      }
-      $callback->($_ => 'InstancePatchStates') foreach (@{ $result->InstancePatchStates });
-    }
-
-    return undef
-  }
-  sub DescribeAllInstancePatchStatesForPatchGroup {
-    my $self = shift;
-
-    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
-    my $result = $self->DescribeInstancePatchStatesForPatchGroup(@_);
-    my $next_result = $result;
-
-    if (not defined $callback) {
-      while ($next_result->NextToken) {
-        $next_result = $self->DescribeInstancePatchStatesForPatchGroup(@_, NextToken => $next_result->NextToken);
-        push @{ $result->InstancePatchStates }, @{ $next_result->InstancePatchStates };
-      }
-      return $result;
-    } else {
-      while ($result->NextToken) {
-        $callback->($_ => 'InstancePatchStates') foreach (@{ $result->InstancePatchStates });
-        $result = $self->DescribeInstancePatchStatesForPatchGroup(@_, NextToken => $result->NextToken);
-      }
-      $callback->($_ => 'InstancePatchStates') foreach (@{ $result->InstancePatchStates });
-    }
-
-    return undef
-  }
-  sub DescribeAllInventoryDeletions {
-    my $self = shift;
-
-    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
-    my $result = $self->DescribeInventoryDeletions(@_);
-    my $next_result = $result;
-
-    if (not defined $callback) {
-      while ($next_result->NextToken) {
-        $next_result = $self->DescribeInventoryDeletions(@_, NextToken => $next_result->NextToken);
-        push @{ $result->InventoryDeletions }, @{ $next_result->InventoryDeletions };
-      }
-      return $result;
-    } else {
-      while ($result->NextToken) {
-        $callback->($_ => 'InventoryDeletions') foreach (@{ $result->InventoryDeletions });
-        $result = $self->DescribeInventoryDeletions(@_, NextToken => $result->NextToken);
-      }
-      $callback->($_ => 'InventoryDeletions') foreach (@{ $result->InventoryDeletions });
-    }
-
-    return undef
-  }
-  sub DescribeAllMaintenanceWindowExecutions {
-    my $self = shift;
-
-    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
-    my $result = $self->DescribeMaintenanceWindowExecutions(@_);
-    my $next_result = $result;
-
-    if (not defined $callback) {
-      while ($next_result->NextToken) {
-        $next_result = $self->DescribeMaintenanceWindowExecutions(@_, NextToken => $next_result->NextToken);
-        push @{ $result->WindowExecutions }, @{ $next_result->WindowExecutions };
-      }
-      return $result;
-    } else {
-      while ($result->NextToken) {
-        $callback->($_ => 'WindowExecutions') foreach (@{ $result->WindowExecutions });
-        $result = $self->DescribeMaintenanceWindowExecutions(@_, NextToken => $result->NextToken);
-      }
-      $callback->($_ => 'WindowExecutions') foreach (@{ $result->WindowExecutions });
-    }
-
-    return undef
-  }
-  sub DescribeAllMaintenanceWindowExecutionTaskInvocations {
-    my $self = shift;
-
-    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
-    my $result = $self->DescribeMaintenanceWindowExecutionTaskInvocations(@_);
-    my $next_result = $result;
-
-    if (not defined $callback) {
-      while ($next_result->NextToken) {
-        $next_result = $self->DescribeMaintenanceWindowExecutionTaskInvocations(@_, NextToken => $next_result->NextToken);
-        push @{ $result->WindowExecutionTaskInvocationIdentities }, @{ $next_result->WindowExecutionTaskInvocationIdentities };
-      }
-      return $result;
-    } else {
-      while ($result->NextToken) {
-        $callback->($_ => 'WindowExecutionTaskInvocationIdentities') foreach (@{ $result->WindowExecutionTaskInvocationIdentities });
-        $result = $self->DescribeMaintenanceWindowExecutionTaskInvocations(@_, NextToken => $result->NextToken);
-      }
-      $callback->($_ => 'WindowExecutionTaskInvocationIdentities') foreach (@{ $result->WindowExecutionTaskInvocationIdentities });
-    }
-
-    return undef
-  }
-  sub DescribeAllMaintenanceWindowExecutionTasks {
-    my $self = shift;
-
-    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
-    my $result = $self->DescribeMaintenanceWindowExecutionTasks(@_);
-    my $next_result = $result;
-
-    if (not defined $callback) {
-      while ($next_result->NextToken) {
-        $next_result = $self->DescribeMaintenanceWindowExecutionTasks(@_, NextToken => $next_result->NextToken);
-        push @{ $result->WindowExecutionTaskIdentities }, @{ $next_result->WindowExecutionTaskIdentities };
-      }
-      return $result;
-    } else {
-      while ($result->NextToken) {
-        $callback->($_ => 'WindowExecutionTaskIdentities') foreach (@{ $result->WindowExecutionTaskIdentities });
-        $result = $self->DescribeMaintenanceWindowExecutionTasks(@_, NextToken => $result->NextToken);
-      }
-      $callback->($_ => 'WindowExecutionTaskIdentities') foreach (@{ $result->WindowExecutionTaskIdentities });
-    }
-
-    return undef
-  }
-  sub DescribeAllMaintenanceWindows {
-    my $self = shift;
-
-    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
-    my $result = $self->DescribeMaintenanceWindows(@_);
-    my $next_result = $result;
-
-    if (not defined $callback) {
-      while ($next_result->NextToken) {
-        $next_result = $self->DescribeMaintenanceWindows(@_, NextToken => $next_result->NextToken);
-        push @{ $result->WindowIdentities }, @{ $next_result->WindowIdentities };
-      }
-      return $result;
-    } else {
-      while ($result->NextToken) {
-        $callback->($_ => 'WindowIdentities') foreach (@{ $result->WindowIdentities });
-        $result = $self->DescribeMaintenanceWindows(@_, NextToken => $result->NextToken);
-      }
-      $callback->($_ => 'WindowIdentities') foreach (@{ $result->WindowIdentities });
-    }
-
-    return undef
-  }
-  sub DescribeAllMaintenanceWindowSchedule {
-    my $self = shift;
-
-    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
-    my $result = $self->DescribeMaintenanceWindowSchedule(@_);
-    my $next_result = $result;
-
-    if (not defined $callback) {
-      while ($next_result->NextToken) {
-        $next_result = $self->DescribeMaintenanceWindowSchedule(@_, NextToken => $next_result->NextToken);
-        push @{ $result->ScheduledWindowExecutions }, @{ $next_result->ScheduledWindowExecutions };
-      }
-      return $result;
-    } else {
-      while ($result->NextToken) {
-        $callback->($_ => 'ScheduledWindowExecutions') foreach (@{ $result->ScheduledWindowExecutions });
-        $result = $self->DescribeMaintenanceWindowSchedule(@_, NextToken => $result->NextToken);
-      }
-      $callback->($_ => 'ScheduledWindowExecutions') foreach (@{ $result->ScheduledWindowExecutions });
-    }
-
-    return undef
-  }
-  sub DescribeAllMaintenanceWindowsForTarget {
-    my $self = shift;
-
-    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
-    my $result = $self->DescribeMaintenanceWindowsForTarget(@_);
-    my $next_result = $result;
-
-    if (not defined $callback) {
-      while ($next_result->NextToken) {
-        $next_result = $self->DescribeMaintenanceWindowsForTarget(@_, NextToken => $next_result->NextToken);
-        push @{ $result->WindowIdentities }, @{ $next_result->WindowIdentities };
-      }
-      return $result;
-    } else {
-      while ($result->NextToken) {
-        $callback->($_ => 'WindowIdentities') foreach (@{ $result->WindowIdentities });
-        $result = $self->DescribeMaintenanceWindowsForTarget(@_, NextToken => $result->NextToken);
-      }
-      $callback->($_ => 'WindowIdentities') foreach (@{ $result->WindowIdentities });
-    }
-
-    return undef
-  }
-  sub DescribeAllMaintenanceWindowTargets {
-    my $self = shift;
-
-    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
-    my $result = $self->DescribeMaintenanceWindowTargets(@_);
-    my $next_result = $result;
-
-    if (not defined $callback) {
-      while ($next_result->NextToken) {
-        $next_result = $self->DescribeMaintenanceWindowTargets(@_, NextToken => $next_result->NextToken);
-        push @{ $result->Targets }, @{ $next_result->Targets };
-      }
-      return $result;
-    } else {
-      while ($result->NextToken) {
-        $callback->($_ => 'Targets') foreach (@{ $result->Targets });
-        $result = $self->DescribeMaintenanceWindowTargets(@_, NextToken => $result->NextToken);
-      }
-      $callback->($_ => 'Targets') foreach (@{ $result->Targets });
-    }
-
-    return undef
-  }
-  sub DescribeAllMaintenanceWindowTasks {
-    my $self = shift;
-
-    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
-    my $result = $self->DescribeMaintenanceWindowTasks(@_);
-    my $next_result = $result;
-
-    if (not defined $callback) {
-      while ($next_result->NextToken) {
-        $next_result = $self->DescribeMaintenanceWindowTasks(@_, NextToken => $next_result->NextToken);
-        push @{ $result->Tasks }, @{ $next_result->Tasks };
-      }
-      return $result;
-    } else {
-      while ($result->NextToken) {
-        $callback->($_ => 'Tasks') foreach (@{ $result->Tasks });
-        $result = $self->DescribeMaintenanceWindowTasks(@_, NextToken => $result->NextToken);
-      }
-      $callback->($_ => 'Tasks') foreach (@{ $result->Tasks });
-    }
-
-    return undef
-  }
   sub DescribeAllParameters {
     my $self = shift;
 
@@ -1151,121 +576,6 @@ package Paws::SSM;
         $result = $self->DescribeParameters(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'Parameters') foreach (@{ $result->Parameters });
-    }
-
-    return undef
-  }
-  sub DescribeAllPatchBaselines {
-    my $self = shift;
-
-    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
-    my $result = $self->DescribePatchBaselines(@_);
-    my $next_result = $result;
-
-    if (not defined $callback) {
-      while ($next_result->NextToken) {
-        $next_result = $self->DescribePatchBaselines(@_, NextToken => $next_result->NextToken);
-        push @{ $result->BaselineIdentities }, @{ $next_result->BaselineIdentities };
-      }
-      return $result;
-    } else {
-      while ($result->NextToken) {
-        $callback->($_ => 'BaselineIdentities') foreach (@{ $result->BaselineIdentities });
-        $result = $self->DescribePatchBaselines(@_, NextToken => $result->NextToken);
-      }
-      $callback->($_ => 'BaselineIdentities') foreach (@{ $result->BaselineIdentities });
-    }
-
-    return undef
-  }
-  sub DescribeAllPatchGroups {
-    my $self = shift;
-
-    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
-    my $result = $self->DescribePatchGroups(@_);
-    my $next_result = $result;
-
-    if (not defined $callback) {
-      while ($next_result->NextToken) {
-        $next_result = $self->DescribePatchGroups(@_, NextToken => $next_result->NextToken);
-        push @{ $result->Mappings }, @{ $next_result->Mappings };
-      }
-      return $result;
-    } else {
-      while ($result->NextToken) {
-        $callback->($_ => 'Mappings') foreach (@{ $result->Mappings });
-        $result = $self->DescribePatchGroups(@_, NextToken => $result->NextToken);
-      }
-      $callback->($_ => 'Mappings') foreach (@{ $result->Mappings });
-    }
-
-    return undef
-  }
-  sub DescribeAllSessions {
-    my $self = shift;
-
-    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
-    my $result = $self->DescribeSessions(@_);
-    my $next_result = $result;
-
-    if (not defined $callback) {
-      while ($next_result->NextToken) {
-        $next_result = $self->DescribeSessions(@_, NextToken => $next_result->NextToken);
-        push @{ $result->Sessions }, @{ $next_result->Sessions };
-      }
-      return $result;
-    } else {
-      while ($result->NextToken) {
-        $callback->($_ => 'Sessions') foreach (@{ $result->Sessions });
-        $result = $self->DescribeSessions(@_, NextToken => $result->NextToken);
-      }
-      $callback->($_ => 'Sessions') foreach (@{ $result->Sessions });
-    }
-
-    return undef
-  }
-  sub GetAllInventory {
-    my $self = shift;
-
-    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
-    my $result = $self->GetInventory(@_);
-    my $next_result = $result;
-
-    if (not defined $callback) {
-      while ($next_result->NextToken) {
-        $next_result = $self->GetInventory(@_, NextToken => $next_result->NextToken);
-        push @{ $result->Entities }, @{ $next_result->Entities };
-      }
-      return $result;
-    } else {
-      while ($result->NextToken) {
-        $callback->($_ => 'Entities') foreach (@{ $result->Entities });
-        $result = $self->GetInventory(@_, NextToken => $result->NextToken);
-      }
-      $callback->($_ => 'Entities') foreach (@{ $result->Entities });
-    }
-
-    return undef
-  }
-  sub GetAllInventorySchema {
-    my $self = shift;
-
-    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
-    my $result = $self->GetInventorySchema(@_);
-    my $next_result = $result;
-
-    if (not defined $callback) {
-      while ($next_result->NextToken) {
-        $next_result = $self->GetInventorySchema(@_, NextToken => $next_result->NextToken);
-        push @{ $result->Schemas }, @{ $next_result->Schemas };
-      }
-      return $result;
-    } else {
-      while ($result->NextToken) {
-        $callback->($_ => 'Schemas') foreach (@{ $result->Schemas });
-        $result = $self->GetInventorySchema(@_, NextToken => $result->NextToken);
-      }
-      $callback->($_ => 'Schemas') foreach (@{ $result->Schemas });
     }
 
     return undef
@@ -1339,29 +649,6 @@ package Paws::SSM;
 
     return undef
   }
-  sub ListAllAssociationVersions {
-    my $self = shift;
-
-    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
-    my $result = $self->ListAssociationVersions(@_);
-    my $next_result = $result;
-
-    if (not defined $callback) {
-      while ($next_result->NextToken) {
-        $next_result = $self->ListAssociationVersions(@_, NextToken => $next_result->NextToken);
-        push @{ $result->AssociationVersions }, @{ $next_result->AssociationVersions };
-      }
-      return $result;
-    } else {
-      while ($result->NextToken) {
-        $callback->($_ => 'AssociationVersions') foreach (@{ $result->AssociationVersions });
-        $result = $self->ListAssociationVersions(@_, NextToken => $result->NextToken);
-      }
-      $callback->($_ => 'AssociationVersions') foreach (@{ $result->AssociationVersions });
-    }
-
-    return undef
-  }
   sub ListAllCommandInvocations {
     my $self = shift;
 
@@ -1408,52 +695,6 @@ package Paws::SSM;
 
     return undef
   }
-  sub ListAllComplianceItems {
-    my $self = shift;
-
-    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
-    my $result = $self->ListComplianceItems(@_);
-    my $next_result = $result;
-
-    if (not defined $callback) {
-      while ($next_result->NextToken) {
-        $next_result = $self->ListComplianceItems(@_, NextToken => $next_result->NextToken);
-        push @{ $result->ComplianceItems }, @{ $next_result->ComplianceItems };
-      }
-      return $result;
-    } else {
-      while ($result->NextToken) {
-        $callback->($_ => 'ComplianceItems') foreach (@{ $result->ComplianceItems });
-        $result = $self->ListComplianceItems(@_, NextToken => $result->NextToken);
-      }
-      $callback->($_ => 'ComplianceItems') foreach (@{ $result->ComplianceItems });
-    }
-
-    return undef
-  }
-  sub ListAllComplianceSummaries {
-    my $self = shift;
-
-    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
-    my $result = $self->ListComplianceSummaries(@_);
-    my $next_result = $result;
-
-    if (not defined $callback) {
-      while ($next_result->NextToken) {
-        $next_result = $self->ListComplianceSummaries(@_, NextToken => $next_result->NextToken);
-        push @{ $result->ComplianceSummaryItems }, @{ $next_result->ComplianceSummaryItems };
-      }
-      return $result;
-    } else {
-      while ($result->NextToken) {
-        $callback->($_ => 'ComplianceSummaryItems') foreach (@{ $result->ComplianceSummaryItems });
-        $result = $self->ListComplianceSummaries(@_, NextToken => $result->NextToken);
-      }
-      $callback->($_ => 'ComplianceSummaryItems') foreach (@{ $result->ComplianceSummaryItems });
-    }
-
-    return undef
-  }
   sub ListAllDocuments {
     my $self = shift;
 
@@ -1477,78 +718,9 @@ package Paws::SSM;
 
     return undef
   }
-  sub ListAllDocumentVersions {
-    my $self = shift;
-
-    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
-    my $result = $self->ListDocumentVersions(@_);
-    my $next_result = $result;
-
-    if (not defined $callback) {
-      while ($next_result->NextToken) {
-        $next_result = $self->ListDocumentVersions(@_, NextToken => $next_result->NextToken);
-        push @{ $result->DocumentVersions }, @{ $next_result->DocumentVersions };
-      }
-      return $result;
-    } else {
-      while ($result->NextToken) {
-        $callback->($_ => 'DocumentVersions') foreach (@{ $result->DocumentVersions });
-        $result = $self->ListDocumentVersions(@_, NextToken => $result->NextToken);
-      }
-      $callback->($_ => 'DocumentVersions') foreach (@{ $result->DocumentVersions });
-    }
-
-    return undef
-  }
-  sub ListAllResourceComplianceSummaries {
-    my $self = shift;
-
-    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
-    my $result = $self->ListResourceComplianceSummaries(@_);
-    my $next_result = $result;
-
-    if (not defined $callback) {
-      while ($next_result->NextToken) {
-        $next_result = $self->ListResourceComplianceSummaries(@_, NextToken => $next_result->NextToken);
-        push @{ $result->ResourceComplianceSummaryItems }, @{ $next_result->ResourceComplianceSummaryItems };
-      }
-      return $result;
-    } else {
-      while ($result->NextToken) {
-        $callback->($_ => 'ResourceComplianceSummaryItems') foreach (@{ $result->ResourceComplianceSummaryItems });
-        $result = $self->ListResourceComplianceSummaries(@_, NextToken => $result->NextToken);
-      }
-      $callback->($_ => 'ResourceComplianceSummaryItems') foreach (@{ $result->ResourceComplianceSummaryItems });
-    }
-
-    return undef
-  }
-  sub ListAllResourceDataSync {
-    my $self = shift;
-
-    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
-    my $result = $self->ListResourceDataSync(@_);
-    my $next_result = $result;
-
-    if (not defined $callback) {
-      while ($next_result->NextToken) {
-        $next_result = $self->ListResourceDataSync(@_, NextToken => $next_result->NextToken);
-        push @{ $result->ResourceDataSyncItems }, @{ $next_result->ResourceDataSyncItems };
-      }
-      return $result;
-    } else {
-      while ($result->NextToken) {
-        $callback->($_ => 'ResourceDataSyncItems') foreach (@{ $result->ResourceDataSyncItems });
-        $result = $self->ListResourceDataSync(@_, NextToken => $result->NextToken);
-      }
-      $callback->($_ => 'ResourceDataSyncItems') foreach (@{ $result->ResourceDataSyncItems });
-    }
-
-    return undef
-  }
 
 
-  sub operations { qw/AddTagsToResource CancelCommand CancelMaintenanceWindowExecution CreateActivation CreateAssociation CreateAssociationBatch CreateDocument CreateMaintenanceWindow CreateOpsItem CreatePatchBaseline CreateResourceDataSync DeleteActivation DeleteAssociation DeleteDocument DeleteInventory DeleteMaintenanceWindow DeleteParameter DeleteParameters DeletePatchBaseline DeleteResourceDataSync DeregisterManagedInstance DeregisterPatchBaselineForPatchGroup DeregisterTargetFromMaintenanceWindow DeregisterTaskFromMaintenanceWindow DescribeActivations DescribeAssociation DescribeAssociationExecutions DescribeAssociationExecutionTargets DescribeAutomationExecutions DescribeAutomationStepExecutions DescribeAvailablePatches DescribeDocument DescribeDocumentPermission DescribeEffectiveInstanceAssociations DescribeEffectivePatchesForPatchBaseline DescribeInstanceAssociationsStatus DescribeInstanceInformation DescribeInstancePatches DescribeInstancePatchStates DescribeInstancePatchStatesForPatchGroup DescribeInventoryDeletions DescribeMaintenanceWindowExecutions DescribeMaintenanceWindowExecutionTaskInvocations DescribeMaintenanceWindowExecutionTasks DescribeMaintenanceWindows DescribeMaintenanceWindowSchedule DescribeMaintenanceWindowsForTarget DescribeMaintenanceWindowTargets DescribeMaintenanceWindowTasks DescribeOpsItems DescribeParameters DescribePatchBaselines DescribePatchGroups DescribePatchGroupState DescribePatchProperties DescribeSessions GetAutomationExecution GetCalendarState GetCommandInvocation GetConnectionStatus GetDefaultPatchBaseline GetDeployablePatchSnapshotForInstance GetDocument GetInventory GetInventorySchema GetMaintenanceWindow GetMaintenanceWindowExecution GetMaintenanceWindowExecutionTask GetMaintenanceWindowExecutionTaskInvocation GetMaintenanceWindowTask GetOpsItem GetOpsSummary GetParameter GetParameterHistory GetParameters GetParametersByPath GetPatchBaseline GetPatchBaselineForPatchGroup GetServiceSetting LabelParameterVersion ListAssociations ListAssociationVersions ListCommandInvocations ListCommands ListComplianceItems ListComplianceSummaries ListDocuments ListDocumentVersions ListInventoryEntries ListResourceComplianceSummaries ListResourceDataSync ListTagsForResource ModifyDocumentPermission PutComplianceItems PutInventory PutParameter RegisterDefaultPatchBaseline RegisterPatchBaselineForPatchGroup RegisterTargetWithMaintenanceWindow RegisterTaskWithMaintenanceWindow RemoveTagsFromResource ResetServiceSetting ResumeSession SendAutomationSignal SendCommand StartAssociationsOnce StartAutomationExecution StartSession StopAutomationExecution TerminateSession UpdateAssociation UpdateAssociationStatus UpdateDocument UpdateDocumentDefaultVersion UpdateMaintenanceWindow UpdateMaintenanceWindowTarget UpdateMaintenanceWindowTask UpdateManagedInstanceRole UpdateOpsItem UpdatePatchBaseline UpdateResourceDataSync UpdateServiceSetting / }
+  sub operations { qw/AddTagsToResource CancelCommand CreateActivation CreateAssociation CreateAssociationBatch CreateDocument CreateMaintenanceWindow CreatePatchBaseline CreateResourceDataSync DeleteActivation DeleteAssociation DeleteDocument DeleteInventory DeleteMaintenanceWindow DeleteParameter DeleteParameters DeletePatchBaseline DeleteResourceDataSync DeregisterManagedInstance DeregisterPatchBaselineForPatchGroup DeregisterTargetFromMaintenanceWindow DeregisterTaskFromMaintenanceWindow DescribeActivations DescribeAssociation DescribeAutomationExecutions DescribeAutomationStepExecutions DescribeAvailablePatches DescribeDocument DescribeDocumentPermission DescribeEffectiveInstanceAssociations DescribeEffectivePatchesForPatchBaseline DescribeInstanceAssociationsStatus DescribeInstanceInformation DescribeInstancePatches DescribeInstancePatchStates DescribeInstancePatchStatesForPatchGroup DescribeInventoryDeletions DescribeMaintenanceWindowExecutions DescribeMaintenanceWindowExecutionTaskInvocations DescribeMaintenanceWindowExecutionTasks DescribeMaintenanceWindows DescribeMaintenanceWindowTargets DescribeMaintenanceWindowTasks DescribeParameters DescribePatchBaselines DescribePatchGroups DescribePatchGroupState GetAutomationExecution GetCommandInvocation GetDefaultPatchBaseline GetDeployablePatchSnapshotForInstance GetDocument GetInventory GetInventorySchema GetMaintenanceWindow GetMaintenanceWindowExecution GetMaintenanceWindowExecutionTask GetMaintenanceWindowExecutionTaskInvocation GetMaintenanceWindowTask GetParameter GetParameterHistory GetParameters GetParametersByPath GetPatchBaseline GetPatchBaselineForPatchGroup ListAssociations ListAssociationVersions ListCommandInvocations ListCommands ListComplianceItems ListComplianceSummaries ListDocuments ListDocumentVersions ListInventoryEntries ListResourceComplianceSummaries ListResourceDataSync ListTagsForResource ModifyDocumentPermission PutComplianceItems PutInventory PutParameter RegisterDefaultPatchBaseline RegisterPatchBaselineForPatchGroup RegisterTargetWithMaintenanceWindow RegisterTaskWithMaintenanceWindow RemoveTagsFromResource SendAutomationSignal SendCommand StartAutomationExecution StopAutomationExecution UpdateAssociation UpdateAssociationStatus UpdateDocument UpdateDocumentDefaultVersion UpdateMaintenanceWindow UpdateMaintenanceWindowTarget UpdateMaintenanceWindowTask UpdateManagedInstanceRole UpdatePatchBaseline / }
 
 1;
 
@@ -1591,7 +763,7 @@ This reference is intended to be used with the AWS Systems Manager User
 Guide (http://docs.aws.amazon.com/systems-manager/latest/userguide/).
 
 To get started, verify prerequisites and configure managed instances.
-For more information, see Setting Up AWS Systems Manager
+For more information, see Systems Manager Prerequisites
 (http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html)
 in the I<AWS Systems Manager User Guide>.
 
@@ -1625,7 +797,7 @@ Returns: a L<Paws::SSM::AddTagsToResourceResult> instance
 
 Adds or overwrites one or more tags for the specified resource. Tags
 are metadata that you can assign to your documents, managed instances,
-maintenance windows, Parameter Store parameters, and patch baselines.
+Maintenance Windows, Parameter Store parameters, and patch baselines.
 Tags enable you to categorize your resources in different ways, for
 example, by purpose, owner, or environment. Each tag consists of a key
 and an optional value, both of which you define. For example, you could
@@ -1668,24 +840,6 @@ guarantee that the command will be terminated and the underlying
 process stopped.
 
 
-=head2 CancelMaintenanceWindowExecution
-
-=over
-
-=item WindowExecutionId => Str
-
-
-=back
-
-Each argument is described in detail in: L<Paws::SSM::CancelMaintenanceWindowExecution>
-
-Returns: a L<Paws::SSM::CancelMaintenanceWindowExecutionResult> instance
-
-Stops a maintenance window execution that is already in progress and
-cancels any tasks in the window that have not already starting running.
-(Tasks already in progress will continue to completion.)
-
-
 =head2 CreateActivation
 
 =over
@@ -1700,8 +854,6 @@ cancels any tasks in the window that have not already starting running.
 
 =item [RegistrationLimit => Int]
 
-=item [Tags => ArrayRef[L<Paws::SSM::Tag>]]
-
 
 =back
 
@@ -1709,20 +861,12 @@ Each argument is described in detail in: L<Paws::SSM::CreateActivation>
 
 Returns: a L<Paws::SSM::CreateActivationResult> instance
 
-Generates an activation code and activation ID you can use to register
-your on-premises server or virtual machine (VM) with Systems Manager.
-Registering these machines with Systems Manager makes it possible to
-manage them using Systems Manager capabilities. You use the activation
-code and ID when installing SSM Agent on machines in your hybrid
-environment. For more information about requirements for managing
-on-premises instances and VMs using Systems Manager, see Setting Up AWS
-Systems Manager for Hybrid Environments
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-managedinstances.html)
-in the I<AWS Systems Manager User Guide>.
-
-On-premises servers or VMs that are registered with Systems Manager and
-Amazon EC2 instances that you manage with Systems Manager are all
-called I<managed instances>.
+Registers your on-premises server or virtual machine with Amazon EC2 so
+that you can manage these resources using Run Command. An on-premises
+server or virtual machine that has been registered with EC2 is called a
+managed instance. For more information about activations, see Setting
+Up Systems Manager in Hybrid Environments
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-managedinstances.html).
 
 
 =head2 CreateAssociation
@@ -1733,17 +877,9 @@ called I<managed instances>.
 
 =item [AssociationName => Str]
 
-=item [AutomationTargetParameterName => Str]
-
-=item [ComplianceSeverity => Str]
-
 =item [DocumentVersion => Str]
 
 =item [InstanceId => Str]
-
-=item [MaxConcurrency => Str]
-
-=item [MaxErrors => Str]
 
 =item [OutputLocation => L<Paws::SSM::InstanceAssociationOutputLocation>]
 
@@ -1764,11 +900,11 @@ Associates the specified Systems Manager document with the specified
 instances or targets.
 
 When you associate a document with one or more instances using instance
-IDs or tags, SSM Agent running on the instance processes the document
-and configures the instance as specified.
+IDs or tags, the SSM Agent running on the instance processes the
+document and configures the instance as specified.
 
 If you associate a document with an instance that already has an
-associated document, the system returns the AssociationAlreadyExists
+associated document, the system throws the AssociationAlreadyExists
 exception.
 
 
@@ -1789,11 +925,11 @@ Associates the specified Systems Manager document with the specified
 instances or targets.
 
 When you associate a document with one or more instances using instance
-IDs or tags, SSM Agent running on the instance processes the document
-and configures the instance as specified.
+IDs or tags, the SSM Agent running on the instance processes the
+document and configures the instance as specified.
 
 If you associate a document with an instance that already has an
-associated document, the system returns the AssociationAlreadyExists
+associated document, the system throws the AssociationAlreadyExists
 exception.
 
 
@@ -1805,19 +941,11 @@ exception.
 
 =item Name => Str
 
-=item [Attachments => ArrayRef[L<Paws::SSM::AttachmentsSource>]]
-
 =item [DocumentFormat => Str]
 
 =item [DocumentType => Str]
 
-=item [Requires => ArrayRef[L<Paws::SSM::DocumentRequires>]]
-
-=item [Tags => ArrayRef[L<Paws::SSM::Tag>]]
-
 =item [TargetType => Str]
-
-=item [VersionName => Str]
 
 
 =back
@@ -1850,14 +978,6 @@ it with one or more running instances.
 
 =item [Description => Str]
 
-=item [EndDate => Str]
-
-=item [ScheduleTimezone => Str]
-
-=item [StartDate => Str]
-
-=item [Tags => ArrayRef[L<Paws::SSM::Tag>]]
-
 
 =back
 
@@ -1865,60 +985,7 @@ Each argument is described in detail in: L<Paws::SSM::CreateMaintenanceWindow>
 
 Returns: a L<Paws::SSM::CreateMaintenanceWindowResult> instance
 
-Creates a new maintenance window.
-
-The value you specify for C<Duration> determines the specific end time
-for the maintenance window based on the time it begins. No maintenance
-window tasks are permitted to start after the resulting endtime minus
-the number of hours you specify for C<Cutoff>. For example, if the
-maintenance window starts at 3 PM, the duration is three hours, and the
-value you specify for C<Cutoff> is one hour, no maintenance window
-tasks can start after 5 PM.
-
-
-=head2 CreateOpsItem
-
-=over
-
-=item Description => Str
-
-=item Source => Str
-
-=item Title => Str
-
-=item [Category => Str]
-
-=item [Notifications => ArrayRef[L<Paws::SSM::OpsItemNotification>]]
-
-=item [OperationalData => L<Paws::SSM::OpsItemOperationalData>]
-
-=item [Priority => Int]
-
-=item [RelatedOpsItems => ArrayRef[L<Paws::SSM::RelatedOpsItem>]]
-
-=item [Severity => Str]
-
-=item [Tags => ArrayRef[L<Paws::SSM::Tag>]]
-
-
-=back
-
-Each argument is described in detail in: L<Paws::SSM::CreateOpsItem>
-
-Returns: a L<Paws::SSM::CreateOpsItemResponse> instance
-
-Creates a new OpsItem. You must have permission in AWS Identity and
-Access Management (IAM) to create a new OpsItem. For more information,
-see Getting Started with OpsCenter
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html)
-in the I<AWS Systems Manager User Guide>.
-
-Operations engineers and IT professionals use OpsCenter to view,
-investigate, and remediate operational issues impacting the performance
-and health of their AWS resources. For more information, see AWS
-Systems Manager OpsCenter
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html)
-in the I<AWS Systems Manager User Guide>.
+Creates a new Maintenance Window.
 
 
 =head2 CreatePatchBaseline
@@ -1945,11 +1012,7 @@ in the I<AWS Systems Manager User Guide>.
 
 =item [RejectedPatches => ArrayRef[Str|Undef]]
 
-=item [RejectedPatchesAction => Str]
-
 =item [Sources => ArrayRef[L<Paws::SSM::PatchSource>]]
-
-=item [Tags => ArrayRef[L<Paws::SSM::Tag>]]
 
 
 =back
@@ -1969,13 +1032,9 @@ each supported operating system type, see PatchFilter
 
 =over
 
+=item S3Destination => L<Paws::SSM::ResourceDataSyncS3Destination>
+
 =item SyncName => Str
-
-=item [S3Destination => L<Paws::SSM::ResourceDataSyncS3Destination>]
-
-=item [SyncSource => L<Paws::SSM::ResourceDataSyncSource>]
-
-=item [SyncType => Str]
 
 
 =back
@@ -1984,36 +1043,20 @@ Each argument is described in detail in: L<Paws::SSM::CreateResourceDataSync>
 
 Returns: a L<Paws::SSM::CreateResourceDataSyncResult> instance
 
-A resource data sync helps you view data from multiple sources in a
-single location. Systems Manager offers two types of resource data
-sync: C<SyncToDestination> and C<SyncFromSource>.
-
-You can configure Systems Manager Inventory to use the
-C<SyncToDestination> type to synchronize Inventory data from multiple
-AWS Regions to a single Amazon S3 bucket. For more information, see
-Configuring Resource Data Sync for Inventory
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-datasync.html)
-in the I<AWS Systems Manager User Guide>.
-
-You can configure Systems Manager Explorer to use the C<SyncFromSource>
-type to synchronize operational work items (OpsItems) and operational
-data (OpsData) from multiple AWS Regions to a single Amazon S3 bucket.
-This type can synchronize OpsItems and OpsData from multiple AWS
-accounts and Regions or C<EntireOrganization> by using AWS
-Organizations. For more information, see Setting Up Explorer to Display
-Data from Multiple Accounts and Regions
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/Explorer-resource-data-sync.html)
-in the I<AWS Systems Manager User Guide>.
-
-A resource data sync is an asynchronous operation that returns
-immediately. After a successful initial sync is completed, the system
-continuously syncs data. To check the status of a sync, use the
+Creates a resource data sync configuration to a single bucket in Amazon
+S3. This is an asynchronous operation that returns immediately. After a
+successful initial sync is completed, the system continuously syncs
+data to the Amazon S3 bucket. To check the status of the sync, use the
 ListResourceDataSync.
 
 By default, data is not encrypted in Amazon S3. We strongly recommend
 that you enable encryption in Amazon S3 to ensure secure data storage.
 We also recommend that you secure access to the Amazon S3 bucket by
-creating a restrictive bucket policy.
+creating a restrictive bucket policy. To view an example of a
+restrictive Amazon S3 bucket policy for Resource Data Sync, see Create
+a Resource Data Sync for Inventory
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-datasync-create.html)
+in the I<AWS Systems Manager User Guide>.
 
 
 =head2 DeleteActivation
@@ -2069,12 +1112,6 @@ instance.
 
 =item Name => Str
 
-=item [DocumentVersion => Str]
-
-=item [Force => Bool]
-
-=item [VersionName => Str]
-
 
 =back
 
@@ -2127,7 +1164,7 @@ Each argument is described in detail in: L<Paws::SSM::DeleteMaintenanceWindow>
 
 Returns: a L<Paws::SSM::DeleteMaintenanceWindowResult> instance
 
-Deletes a maintenance window.
+Deletes a Maintenance Window.
 
 
 =head2 DeleteParameter
@@ -2159,7 +1196,8 @@ Each argument is described in detail in: L<Paws::SSM::DeleteParameters>
 
 Returns: a L<Paws::SSM::DeleteParametersResult> instance
 
-Delete a list of parameters.
+Delete a list of parameters. This API is used to delete parameters by
+using the Amazon EC2 console.
 
 
 =head2 DeletePatchBaseline
@@ -2184,8 +1222,6 @@ Deletes a patch baseline.
 
 =item SyncName => Str
 
-=item [SyncType => Str]
-
 
 =back
 
@@ -2194,8 +1230,9 @@ Each argument is described in detail in: L<Paws::SSM::DeleteResourceDataSync>
 Returns: a L<Paws::SSM::DeleteResourceDataSyncResult> instance
 
 Deletes a Resource Data Sync configuration. After the configuration is
-deleted, changes to data on managed instances are no longer synced to
-or from the target. Deleting a sync configuration does not delete data.
+deleted, changes to inventory data on managed instances are no longer
+synced with the target Amazon S3 bucket. Deleting a sync configuration
+does not delete data in the target Amazon S3 bucket.
 
 
 =head2 DeregisterManagedInstance
@@ -2252,7 +1289,7 @@ Each argument is described in detail in: L<Paws::SSM::DeregisterTargetFromMainte
 
 Returns: a L<Paws::SSM::DeregisterTargetFromMaintenanceWindowResult> instance
 
-Removes a target from a maintenance window.
+Removes a target from a Maintenance Window.
 
 
 =head2 DeregisterTaskFromMaintenanceWindow
@@ -2270,7 +1307,7 @@ Each argument is described in detail in: L<Paws::SSM::DeregisterTaskFromMaintena
 
 Returns: a L<Paws::SSM::DeregisterTaskFromMaintenanceWindowResult> instance
 
-Removes a task from a maintenance window.
+Removes a task from a Maintenance Window.
 
 
 =head2 DescribeActivations
@@ -2290,10 +1327,10 @@ Each argument is described in detail in: L<Paws::SSM::DescribeActivations>
 
 Returns: a L<Paws::SSM::DescribeActivationsResult> instance
 
-Describes details about the activation, such as the date and time the
-activation was created, its expiration date, the IAM role assigned to
-the instances in the activation, and the number of instances registered
-by using this activation.
+Details about the activation, including: the date and time the
+activation was created, the expiration date, the IAM role assigned to
+the instances in the activation, and the number of instances activated
+by this registration.
 
 
 =head2 DescribeAssociation
@@ -2321,54 +1358,6 @@ must retrieve the association by using the association ID. If you
 created the association by specifying an instance ID and a Systems
 Manager document, then you retrieve the association by specifying the
 document name and the instance ID.
-
-
-=head2 DescribeAssociationExecutions
-
-=over
-
-=item AssociationId => Str
-
-=item [Filters => ArrayRef[L<Paws::SSM::AssociationExecutionFilter>]]
-
-=item [MaxResults => Int]
-
-=item [NextToken => Str]
-
-
-=back
-
-Each argument is described in detail in: L<Paws::SSM::DescribeAssociationExecutions>
-
-Returns: a L<Paws::SSM::DescribeAssociationExecutionsResult> instance
-
-Use this API action to view all executions for a specific association
-ID.
-
-
-=head2 DescribeAssociationExecutionTargets
-
-=over
-
-=item AssociationId => Str
-
-=item ExecutionId => Str
-
-=item [Filters => ArrayRef[L<Paws::SSM::AssociationExecutionTargetsFilter>]]
-
-=item [MaxResults => Int]
-
-=item [NextToken => Str]
-
-
-=back
-
-Each argument is described in detail in: L<Paws::SSM::DescribeAssociationExecutionTargets>
-
-Returns: a L<Paws::SSM::DescribeAssociationExecutionTargetsResult> instance
-
-Use this API action to view information about a specific execution of a
-specific association.
 
 
 =head2 DescribeAutomationExecutions
@@ -2433,7 +1422,7 @@ Each argument is described in detail in: L<Paws::SSM::DescribeAvailablePatches>
 
 Returns: a L<Paws::SSM::DescribeAvailablePatchesResult> instance
 
-Lists all patches eligible to be included in a patch baseline.
+Lists all patches that could possibly be included in a patch baseline.
 
 
 =head2 DescribeDocument
@@ -2443,8 +1432,6 @@ Lists all patches eligible to be included in a patch baseline.
 =item Name => Str
 
 =item [DocumentVersion => Str]
-
-=item [VersionName => Str]
 
 
 =back
@@ -2566,10 +1553,6 @@ instance IDs, it returns information for all your instances. If you
 specify an instance ID that is not valid or an instance that you do not
 own, you receive an error.
 
-The IamRole field for this API action is the Amazon Identity and Access
-Management (IAM) role assigned to on-premises instances. This call does
-not return the IAM role for Amazon EC2 instances.
-
 
 =head2 DescribeInstancePatches
 
@@ -2676,9 +1659,9 @@ Each argument is described in detail in: L<Paws::SSM::DescribeMaintenanceWindowE
 
 Returns: a L<Paws::SSM::DescribeMaintenanceWindowExecutionsResult> instance
 
-Lists the executions of a maintenance window. This includes information
-about when the maintenance window was scheduled to be active, and
-information about tasks registered and run with the maintenance window.
+Lists the executions of a Maintenance Window. This includes information
+about when the Maintenance Window was scheduled to be active, and
+information about tasks registered and run with the Maintenance Window.
 
 
 =head2 DescribeMaintenanceWindowExecutionTaskInvocations
@@ -2703,7 +1686,7 @@ Each argument is described in detail in: L<Paws::SSM::DescribeMaintenanceWindowE
 Returns: a L<Paws::SSM::DescribeMaintenanceWindowExecutionTaskInvocationsResult> instance
 
 Retrieves the individual task executions (one per target) for a
-particular task run as part of a maintenance window execution.
+particular task executed as part of a Maintenance Window execution.
 
 
 =head2 DescribeMaintenanceWindowExecutionTasks
@@ -2725,8 +1708,8 @@ Each argument is described in detail in: L<Paws::SSM::DescribeMaintenanceWindowE
 
 Returns: a L<Paws::SSM::DescribeMaintenanceWindowExecutionTasksResult> instance
 
-For a given maintenance window execution, lists the tasks that were
-run.
+For a given Maintenance Window execution, lists the tasks that were
+executed.
 
 
 =head2 DescribeMaintenanceWindows
@@ -2746,57 +1729,7 @@ Each argument is described in detail in: L<Paws::SSM::DescribeMaintenanceWindows
 
 Returns: a L<Paws::SSM::DescribeMaintenanceWindowsResult> instance
 
-Retrieves the maintenance windows in an AWS account.
-
-
-=head2 DescribeMaintenanceWindowSchedule
-
-=over
-
-=item [Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>]]
-
-=item [MaxResults => Int]
-
-=item [NextToken => Str]
-
-=item [ResourceType => Str]
-
-=item [Targets => ArrayRef[L<Paws::SSM::Target>]]
-
-=item [WindowId => Str]
-
-
-=back
-
-Each argument is described in detail in: L<Paws::SSM::DescribeMaintenanceWindowSchedule>
-
-Returns: a L<Paws::SSM::DescribeMaintenanceWindowScheduleResult> instance
-
-Retrieves information about upcoming executions of a maintenance
-window.
-
-
-=head2 DescribeMaintenanceWindowsForTarget
-
-=over
-
-=item ResourceType => Str
-
-=item Targets => ArrayRef[L<Paws::SSM::Target>]
-
-=item [MaxResults => Int]
-
-=item [NextToken => Str]
-
-
-=back
-
-Each argument is described in detail in: L<Paws::SSM::DescribeMaintenanceWindowsForTarget>
-
-Returns: a L<Paws::SSM::DescribeMaintenanceWindowsForTargetResult> instance
-
-Retrieves information about the maintenance window targets or tasks
-that an instance is associated with.
+Retrieves the Maintenance Windows in an AWS account.
 
 
 =head2 DescribeMaintenanceWindowTargets
@@ -2818,7 +1751,7 @@ Each argument is described in detail in: L<Paws::SSM::DescribeMaintenanceWindowT
 
 Returns: a L<Paws::SSM::DescribeMaintenanceWindowTargetsResult> instance
 
-Lists the targets registered with the maintenance window.
+Lists the targets registered with the Maintenance Window.
 
 
 =head2 DescribeMaintenanceWindowTasks
@@ -2840,38 +1773,7 @@ Each argument is described in detail in: L<Paws::SSM::DescribeMaintenanceWindowT
 
 Returns: a L<Paws::SSM::DescribeMaintenanceWindowTasksResult> instance
 
-Lists the tasks in a maintenance window.
-
-
-=head2 DescribeOpsItems
-
-=over
-
-=item [MaxResults => Int]
-
-=item [NextToken => Str]
-
-=item [OpsItemFilters => ArrayRef[L<Paws::SSM::OpsItemFilter>]]
-
-
-=back
-
-Each argument is described in detail in: L<Paws::SSM::DescribeOpsItems>
-
-Returns: a L<Paws::SSM::DescribeOpsItemsResponse> instance
-
-Query a set of OpsItems. You must have permission in AWS Identity and
-Access Management (IAM) to query a list of OpsItems. For more
-information, see Getting Started with OpsCenter
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html)
-in the I<AWS Systems Manager User Guide>.
-
-Operations engineers and IT professionals use OpsCenter to view,
-investigate, and remediate operational issues impacting the performance
-and health of their AWS resources. For more information, see AWS
-Systems Manager OpsCenter
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html)
-in the I<AWS Systems Manager User Guide>.
+Lists the tasks in a Maintenance Window.
 
 
 =head2 DescribeParameters
@@ -2961,95 +1863,6 @@ Returns: a L<Paws::SSM::DescribePatchGroupStateResult> instance
 Returns high-level aggregated patch compliance state for a patch group.
 
 
-=head2 DescribePatchProperties
-
-=over
-
-=item OperatingSystem => Str
-
-=item Property => Str
-
-=item [MaxResults => Int]
-
-=item [NextToken => Str]
-
-=item [PatchSet => Str]
-
-
-=back
-
-Each argument is described in detail in: L<Paws::SSM::DescribePatchProperties>
-
-Returns: a L<Paws::SSM::DescribePatchPropertiesResult> instance
-
-Lists the properties of available patches organized by product, product
-family, classification, severity, and other properties of available
-patches. You can use the reported properties in the filters you specify
-in requests for actions such as CreatePatchBaseline,
-UpdatePatchBaseline, DescribeAvailablePatches, and
-DescribePatchBaselines.
-
-The following section lists the properties that can be used in filters
-for each major operating system type:
-
-=over
-
-=item WINDOWS
-
-Valid properties: PRODUCT, PRODUCT_FAMILY, CLASSIFICATION,
-MSRC_SEVERITY
-
-=item AMAZON_LINUX
-
-Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
-
-=item AMAZON_LINUX_2
-
-Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
-
-=item UBUNTU
-
-Valid properties: PRODUCT, PRIORITY
-
-=item REDHAT_ENTERPRISE_LINUX
-
-Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
-
-=item SUSE
-
-Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
-
-=item CENTOS
-
-Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
-
-=back
-
-
-
-=head2 DescribeSessions
-
-=over
-
-=item State => Str
-
-=item [Filters => ArrayRef[L<Paws::SSM::SessionFilter>]]
-
-=item [MaxResults => Int]
-
-=item [NextToken => Str]
-
-
-=back
-
-Each argument is described in detail in: L<Paws::SSM::DescribeSessions>
-
-Returns: a L<Paws::SSM::DescribeSessionsResponse> instance
-
-Retrieves a list of all active sessions (both connected and
-disconnected) or terminated sessions from the past 30 days.
-
-
 =head2 GetAutomationExecution
 
 =over
@@ -3064,33 +1877,6 @@ Each argument is described in detail in: L<Paws::SSM::GetAutomationExecution>
 Returns: a L<Paws::SSM::GetAutomationExecutionResult> instance
 
 Get detailed information about a particular Automation execution.
-
-
-=head2 GetCalendarState
-
-=over
-
-=item CalendarNames => ArrayRef[Str|Undef]
-
-=item [AtTime => Str]
-
-
-=back
-
-Each argument is described in detail in: L<Paws::SSM::GetCalendarState>
-
-Returns: a L<Paws::SSM::GetCalendarStateResponse> instance
-
-Gets the state of the AWS Systems Manager Change Calendar at an
-optional, specified time. If you specify a time, C<GetCalendarState>
-returns the state of the calendar at a specific time, and returns the
-next time that the Change Calendar state will transition. If you do not
-specify a time, C<GetCalendarState> assumes the current time. Change
-Calendar entries have two possible states: C<OPEN> or C<CLOSED>. For
-more information about Systems Manager Change Calendar, see AWS Systems
-Manager Change Calendar
-(https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-change-calendar.html)
-in the I<AWS Systems Manager User Guide>.
 
 
 =head2 GetCommandInvocation
@@ -3112,24 +1898,6 @@ Returns: a L<Paws::SSM::GetCommandInvocationResult> instance
 
 Returns detailed information about command execution for an invocation
 or plugin.
-
-
-=head2 GetConnectionStatus
-
-=over
-
-=item Target => Str
-
-
-=back
-
-Each argument is described in detail in: L<Paws::SSM::GetConnectionStatus>
-
-Returns: a L<Paws::SSM::GetConnectionStatusResponse> instance
-
-Retrieves the Session Manager connection status for an instance to
-determine whether it is connected and ready to receive Session Manager
-connections.
 
 
 =head2 GetDefaultPatchBaseline
@@ -3182,8 +1950,6 @@ Manager document.
 =item [DocumentFormat => Str]
 
 =item [DocumentVersion => Str]
-
-=item [VersionName => Str]
 
 
 =back
@@ -3257,7 +2023,7 @@ Each argument is described in detail in: L<Paws::SSM::GetMaintenanceWindow>
 
 Returns: a L<Paws::SSM::GetMaintenanceWindowResult> instance
 
-Retrieves a maintenance window.
+Retrieves a Maintenance Window.
 
 
 =head2 GetMaintenanceWindowExecution
@@ -3273,7 +2039,8 @@ Each argument is described in detail in: L<Paws::SSM::GetMaintenanceWindowExecut
 
 Returns: a L<Paws::SSM::GetMaintenanceWindowExecutionResult> instance
 
-Retrieves details about a specific a maintenance window execution.
+Retrieves details about a specific task executed as part of a
+Maintenance Window execution.
 
 
 =head2 GetMaintenanceWindowExecutionTask
@@ -3291,8 +2058,8 @@ Each argument is described in detail in: L<Paws::SSM::GetMaintenanceWindowExecut
 
 Returns: a L<Paws::SSM::GetMaintenanceWindowExecutionTaskResult> instance
 
-Retrieves the details about a specific task run as part of a
-maintenance window execution.
+Retrieves the details about a specific task executed as part of a
+Maintenance Window execution.
 
 
 =head2 GetMaintenanceWindowExecutionTaskInvocation
@@ -3312,8 +2079,9 @@ Each argument is described in detail in: L<Paws::SSM::GetMaintenanceWindowExecut
 
 Returns: a L<Paws::SSM::GetMaintenanceWindowExecutionTaskInvocationResult> instance
 
-Retrieves information about a specific task running on a specific
-target.
+Retrieves a task invocation. A task invocation is a specific task
+executing on a specific target. Maintenance Windows report status for
+all invocations.
 
 
 =head2 GetMaintenanceWindowTask
@@ -3331,61 +2099,7 @@ Each argument is described in detail in: L<Paws::SSM::GetMaintenanceWindowTask>
 
 Returns: a L<Paws::SSM::GetMaintenanceWindowTaskResult> instance
 
-Lists the tasks in a maintenance window.
-
-
-=head2 GetOpsItem
-
-=over
-
-=item OpsItemId => Str
-
-
-=back
-
-Each argument is described in detail in: L<Paws::SSM::GetOpsItem>
-
-Returns: a L<Paws::SSM::GetOpsItemResponse> instance
-
-Get information about an OpsItem by using the ID. You must have
-permission in AWS Identity and Access Management (IAM) to view
-information about an OpsItem. For more information, see Getting Started
-with OpsCenter
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html)
-in the I<AWS Systems Manager User Guide>.
-
-Operations engineers and IT professionals use OpsCenter to view,
-investigate, and remediate operational issues impacting the performance
-and health of their AWS resources. For more information, see AWS
-Systems Manager OpsCenter
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html)
-in the I<AWS Systems Manager User Guide>.
-
-
-=head2 GetOpsSummary
-
-=over
-
-=item [Aggregators => ArrayRef[L<Paws::SSM::OpsAggregator>]]
-
-=item [Filters => ArrayRef[L<Paws::SSM::OpsFilter>]]
-
-=item [MaxResults => Int]
-
-=item [NextToken => Str]
-
-=item [ResultAttributes => ArrayRef[L<Paws::SSM::OpsResultAttribute>]]
-
-=item [SyncName => Str]
-
-
-=back
-
-Each argument is described in detail in: L<Paws::SSM::GetOpsSummary>
-
-Returns: a L<Paws::SSM::GetOpsSummaryResult> instance
-
-View a summary of OpsItems based on specified filters and aggregators.
+Lists the tasks in a Maintenance Window.
 
 
 =head2 GetParameter
@@ -3471,8 +2185,10 @@ Each argument is described in detail in: L<Paws::SSM::GetParametersByPath>
 
 Returns: a L<Paws::SSM::GetParametersByPathResult> instance
 
-Retrieve information about one or more parameters in a specific
-hierarchy.
+Retrieve parameters in a specific hierarchy. For more information, see
+Working with Systems Manager Parameters
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-working.html)
+in the I<AWS Systems Manager User Guide>.
 
 Request results are returned on a best-effort basis. If you specify
 C<MaxResults> in the request, the response includes information up to
@@ -3482,6 +2198,8 @@ internal limit while processing the results, it stops the operation and
 returns the matching values up to that point and a C<NextToken>. You
 can specify the C<NextToken> in a subsequent call to get the next set
 of results.
+
+This API action doesn't support filtering by tags.
 
 
 =head2 GetPatchBaseline
@@ -3519,110 +2237,6 @@ Retrieves the patch baseline that should be used for the specified
 patch group.
 
 
-=head2 GetServiceSetting
-
-=over
-
-=item SettingId => Str
-
-
-=back
-
-Each argument is described in detail in: L<Paws::SSM::GetServiceSetting>
-
-Returns: a L<Paws::SSM::GetServiceSettingResult> instance
-
-C<ServiceSetting> is an account-level setting for an AWS service. This
-setting defines how a user interacts with or uses a service or a
-feature of a service. For example, if an AWS service charges money to
-the account based on feature or service usage, then the AWS service
-team might create a default setting of "false". This means the user
-can't use this feature unless they change the setting to "true" and
-intentionally opt in for a paid feature.
-
-Services map a C<SettingId> object to a setting value. AWS services
-teams define the default value for a C<SettingId>. You can't create a
-new C<SettingId>, but you can overwrite the default value if you have
-the C<ssm:UpdateServiceSetting> permission for the setting. Use the
-UpdateServiceSetting API action to change the default setting. Or use
-the ResetServiceSetting to change the value back to the original value
-defined by the AWS service team.
-
-Query the current service setting for the account.
-
-
-=head2 LabelParameterVersion
-
-=over
-
-=item Labels => ArrayRef[Str|Undef]
-
-=item Name => Str
-
-=item [ParameterVersion => Int]
-
-
-=back
-
-Each argument is described in detail in: L<Paws::SSM::LabelParameterVersion>
-
-Returns: a L<Paws::SSM::LabelParameterVersionResult> instance
-
-A parameter label is a user-defined alias to help you manage different
-versions of a parameter. When you modify a parameter, Systems Manager
-automatically saves a new version and increments the version number by
-one. A label can help you remember the purpose of a parameter when
-there are multiple versions.
-
-Parameter labels have the following requirements and restrictions.
-
-=over
-
-=item *
-
-A version of a parameter can have a maximum of 10 labels.
-
-=item *
-
-You can't attach the same label to different versions of the same
-parameter. For example, if version 1 has the label Production, then you
-can't attach Production to version 2.
-
-=item *
-
-You can move a label from one version of a parameter to another.
-
-=item *
-
-You can't create a label when you create a new parameter. You must
-attach a label to a specific version of a parameter.
-
-=item *
-
-You can't delete a parameter label. If you no longer want to use a
-parameter label, then you must move it to a different version of a
-parameter.
-
-=item *
-
-A label can have a maximum of 100 characters.
-
-=item *
-
-Labels can contain letters (case sensitive), numbers, periods (.),
-hyphens (-), or underscores (_).
-
-=item *
-
-Labels can't begin with a number, "aws," or "ssm" (not case sensitive).
-If a label fails to meet these requirements, then the label is not
-associated with a parameter and the system displays it in the list of
-InvalidLabels.
-
-=back
-
-
-
 =head2 ListAssociations
 
 =over
@@ -3640,9 +2254,8 @@ Each argument is described in detail in: L<Paws::SSM::ListAssociations>
 
 Returns: a L<Paws::SSM::ListAssociationsResult> instance
 
-Returns all State Manager associations in the current AWS account and
-Region. You can limit the results to a specific State Manager
-association document or instance by specifying a filter.
+Lists the associations for the specified Systems Manager document or
+instance.
 
 
 =head2 ListAssociationVersions
@@ -3690,7 +2303,7 @@ Returns: a L<Paws::SSM::ListCommandInvocationsResult> instance
 
 An invocation is copy of a command sent to a specific instance. A
 command can apply to one or more instances. A command invocation
-applies to one instance. For example, if a user runs SendCommand
+applies to one instance. For example, if a user executes SendCommand
 against three instances, then a command invocation is created for each
 requested instance ID. ListCommandInvocations provide status about
 command execution.
@@ -3789,9 +2402,7 @@ Each argument is described in detail in: L<Paws::SSM::ListDocuments>
 
 Returns: a L<Paws::SSM::ListDocumentsResult> instance
 
-Returns all Systems Manager (SSM) documents in the current AWS account
-and Region. You can limit the results of this request by using a
-filter.
+Describes one or more of your Systems Manager documents.
 
 
 =head2 ListDocumentVersions
@@ -3869,8 +2480,6 @@ specify.
 
 =item [NextToken => Str]
 
-=item [SyncType => Str]
-
 
 =back
 
@@ -3921,8 +2530,6 @@ Returns a list of the tags assigned to the specified resource.
 =item [AccountIdsToAdd => ArrayRef[Str|Undef]]
 
 =item [AccountIdsToRemove => ArrayRef[Str|Undef]]
-
-=item [SharedDocumentVersion => Str]
 
 
 =back
@@ -4078,12 +2685,6 @@ inventory item, if it does exist.
 
 =item [Overwrite => Bool]
 
-=item [Policies => Str]
-
-=item [Tags => ArrayRef[L<Paws::SSM::Tag>]]
-
-=item [Tier => Str]
-
 
 =back
 
@@ -4107,13 +2708,7 @@ Each argument is described in detail in: L<Paws::SSM::RegisterDefaultPatchBaseli
 
 Returns: a L<Paws::SSM::RegisterDefaultPatchBaselineResult> instance
 
-Defines the default patch baseline for the relevant operating system.
-
-To reset the AWS predefined patch baseline as the default, specify the
-full patch baseline ARN as the baseline ID value. For example, for
-CentOS, specify
-C<arn:aws:ssm:us-east-2:733109147000:patchbaseline/pb-0574b43a65ea646ed>
-instead of C<pb-0574b43a65ea646ed>.
+Defines the default patch baseline.
 
 
 =head2 RegisterPatchBaselineForPatchGroup
@@ -4159,7 +2754,7 @@ Each argument is described in detail in: L<Paws::SSM::RegisterTargetWithMaintena
 
 Returns: a L<Paws::SSM::RegisterTargetWithMaintenanceWindowResult> instance
 
-Registers a target with a maintenance window.
+Registers a target with a Maintenance Window.
 
 
 =head2 RegisterTaskWithMaintenanceWindow
@@ -4169,6 +2764,8 @@ Registers a target with a maintenance window.
 =item MaxConcurrency => Str
 
 =item MaxErrors => Str
+
+=item ServiceRoleArn => Str
 
 =item Targets => ArrayRef[L<Paws::SSM::Target>]
 
@@ -4188,8 +2785,6 @@ Registers a target with a maintenance window.
 
 =item [Priority => Int]
 
-=item [ServiceRoleArn => Str]
-
 =item [TaskInvocationParameters => L<Paws::SSM::MaintenanceWindowTaskInvocationParameters>]
 
 =item [TaskParameters => L<Paws::SSM::MaintenanceWindowTaskParameters>]
@@ -4201,7 +2796,7 @@ Each argument is described in detail in: L<Paws::SSM::RegisterTaskWithMaintenanc
 
 Returns: a L<Paws::SSM::RegisterTaskWithMaintenanceWindowResult> instance
 
-Adds a new task to a maintenance window.
+Adds a new task to a Maintenance Window.
 
 
 =head2 RemoveTagsFromResource
@@ -4221,61 +2816,7 @@ Each argument is described in detail in: L<Paws::SSM::RemoveTagsFromResource>
 
 Returns: a L<Paws::SSM::RemoveTagsFromResourceResult> instance
 
-Removes tag keys from the specified resource.
-
-
-=head2 ResetServiceSetting
-
-=over
-
-=item SettingId => Str
-
-
-=back
-
-Each argument is described in detail in: L<Paws::SSM::ResetServiceSetting>
-
-Returns: a L<Paws::SSM::ResetServiceSettingResult> instance
-
-C<ServiceSetting> is an account-level setting for an AWS service. This
-setting defines how a user interacts with or uses a service or a
-feature of a service. For example, if an AWS service charges money to
-the account based on feature or service usage, then the AWS service
-team might create a default setting of "false". This means the user
-can't use this feature unless they change the setting to "true" and
-intentionally opt in for a paid feature.
-
-Services map a C<SettingId> object to a setting value. AWS services
-teams define the default value for a C<SettingId>. You can't create a
-new C<SettingId>, but you can overwrite the default value if you have
-the C<ssm:UpdateServiceSetting> permission for the setting. Use the
-GetServiceSetting API action to view the current value. Use the
-UpdateServiceSetting API action to change the default setting.
-
-Reset the service setting for the account to the default value as
-provisioned by the AWS service team.
-
-
-=head2 ResumeSession
-
-=over
-
-=item SessionId => Str
-
-
-=back
-
-Each argument is described in detail in: L<Paws::SSM::ResumeSession>
-
-Returns: a L<Paws::SSM::ResumeSessionResponse> instance
-
-Reconnects a session to an instance after it has been disconnected.
-Connections can be resumed for disconnected sessions, but not
-terminated sessions.
-
-This command is primarily for use by client machines to automatically
-reconnect during intermittent network issues. It is not intended for
-any other use.
+Removes all tags from the specified resource.
 
 
 =head2 SendAutomationSignal
@@ -4344,24 +2885,7 @@ Each argument is described in detail in: L<Paws::SSM::SendCommand>
 
 Returns: a L<Paws::SSM::SendCommandResult> instance
 
-Runs commands on one or more managed instances.
-
-
-=head2 StartAssociationsOnce
-
-=over
-
-=item AssociationIds => ArrayRef[Str|Undef]
-
-
-=back
-
-Each argument is described in detail in: L<Paws::SSM::StartAssociationsOnce>
-
-Returns: a L<Paws::SSM::StartAssociationsOnceResult> instance
-
-Use this API action to run an association immediately and only one
-time. This action can be helpful when troubleshooting associations.
+Executes commands on one or more managed instances.
 
 
 =head2 StartAutomationExecution
@@ -4382,12 +2906,6 @@ time. This action can be helpful when troubleshooting associations.
 
 =item [Parameters => L<Paws::SSM::AutomationParameterMap>]
 
-=item [Tags => ArrayRef[L<Paws::SSM::Tag>]]
-
-=item [TargetLocations => ArrayRef[L<Paws::SSM::TargetLocation>]]
-
-=item [TargetMaps => ArrayRef[L<Paws::SSM::TargetMap>]]
-
 =item [TargetParameterName => Str]
 
 =item [Targets => ArrayRef[L<Paws::SSM::Target>]]
@@ -4400,38 +2918,6 @@ Each argument is described in detail in: L<Paws::SSM::StartAutomationExecution>
 Returns: a L<Paws::SSM::StartAutomationExecutionResult> instance
 
 Initiates execution of an Automation document.
-
-
-=head2 StartSession
-
-=over
-
-=item Target => Str
-
-=item [DocumentName => Str]
-
-=item [Parameters => L<Paws::SSM::SessionManagerParameters>]
-
-
-=back
-
-Each argument is described in detail in: L<Paws::SSM::StartSession>
-
-Returns: a L<Paws::SSM::StartSessionResponse> instance
-
-Initiates a connection to a target (for example, an instance) for a
-Session Manager session. Returns a URL and token that can be used to
-open a WebSocket connection for sending input and receiving outputs.
-
-AWS CLI usage: C<start-session> is an interactive command that requires
-the Session Manager plugin to be installed on the client machine making
-the call. For information, see Install the Session Manager Plugin for
-the AWS CLI
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html)
-in the I<AWS Systems Manager User Guide>.
-
-AWS Tools for PowerShell usage: Start-SSMSession is not currently
-supported by AWS Tools for PowerShell on Windows local machines.
 
 
 =head2 StopAutomationExecution
@@ -4449,25 +2935,7 @@ Each argument is described in detail in: L<Paws::SSM::StopAutomationExecution>
 
 Returns: a L<Paws::SSM::StopAutomationExecutionResult> instance
 
-Stop an Automation that is currently running.
-
-
-=head2 TerminateSession
-
-=over
-
-=item SessionId => Str
-
-
-=back
-
-Each argument is described in detail in: L<Paws::SSM::TerminateSession>
-
-Returns: a L<Paws::SSM::TerminateSessionResponse> instance
-
-Permanently ends a session and closes the data connection between the
-Session Manager client and SSM Agent on the instance. A terminated
-session cannot be resumed.
+Stop an Automation that is currently executing.
 
 
 =head2 UpdateAssociation
@@ -4480,15 +2948,7 @@ session cannot be resumed.
 
 =item [AssociationVersion => Str]
 
-=item [AutomationTargetParameterName => Str]
-
-=item [ComplianceSeverity => Str]
-
 =item [DocumentVersion => Str]
-
-=item [MaxConcurrency => Str]
-
-=item [MaxErrors => Str]
 
 =item [Name => Str]
 
@@ -4510,17 +2970,6 @@ Returns: a L<Paws::SSM::UpdateAssociationResult> instance
 Updates an association. You can update the association name and
 version, the document version, schedule, parameters, and Amazon S3
 output.
-
-In order to call this API action, your IAM user account, group, or role
-must be configured with permission to call the DescribeAssociation API
-action. If you don't have permission to call DescribeAssociation, then
-you receive the following error: C<An error occurred
-(AccessDeniedException) when calling the UpdateAssociation operation:
-User: E<lt>user_arnE<gt> is not authorized to perform:
-ssm:DescribeAssociation on resource: E<lt>resource_arnE<gt>>
-
-When you update an association, the association immediately runs
-against the specified targets.
 
 
 =head2 UpdateAssociationStatus
@@ -4552,15 +3001,11 @@ specified instance.
 
 =item Name => Str
 
-=item [Attachments => ArrayRef[L<Paws::SSM::AttachmentsSource>]]
-
 =item [DocumentFormat => Str]
 
 =item [DocumentVersion => Str]
 
 =item [TargetType => Str]
-
-=item [VersionName => Str]
 
 
 =back
@@ -4569,7 +3014,7 @@ Each argument is described in detail in: L<Paws::SSM::UpdateDocument>
 
 Returns: a L<Paws::SSM::UpdateDocumentResult> instance
 
-Updates one or more values for an SSM document.
+The document you want to update.
 
 
 =head2 UpdateDocumentDefaultVersion
@@ -4606,17 +3051,11 @@ Set the default version of a document.
 
 =item [Enabled => Bool]
 
-=item [EndDate => Str]
-
 =item [Name => Str]
 
 =item [Replace => Bool]
 
 =item [Schedule => Str]
-
-=item [ScheduleTimezone => Str]
-
-=item [StartDate => Str]
 
 
 =back
@@ -4625,16 +3064,8 @@ Each argument is described in detail in: L<Paws::SSM::UpdateMaintenanceWindow>
 
 Returns: a L<Paws::SSM::UpdateMaintenanceWindowResult> instance
 
-Updates an existing maintenance window. Only specified parameters are
+Updates an existing Maintenance Window. Only specified parameters are
 modified.
-
-The value you specify for C<Duration> determines the specific end time
-for the maintenance window based on the time it begins. No maintenance
-window tasks are permitted to start after the resulting endtime minus
-the number of hours you specify for C<Cutoff>. For example, if the
-maintenance window starts at 3 PM, the duration is three hours, and the
-value you specify for C<Cutoff> is one hour, no maintenance window
-tasks can start after 5 PM.
 
 
 =head2 UpdateMaintenanceWindowTarget
@@ -4662,38 +3093,21 @@ Each argument is described in detail in: L<Paws::SSM::UpdateMaintenanceWindowTar
 
 Returns: a L<Paws::SSM::UpdateMaintenanceWindowTargetResult> instance
 
-Modifies the target of an existing maintenance window. You can change
-the following:
+Modifies the target of an existing Maintenance Window. You can't change
+the target type, but you can change the following:
 
-=over
+The target from being an ID target to a Tag target, or a Tag target to
+an ID target.
 
-=item *
+IDs for an ID target.
 
-Name
+Tags for a Tag target.
 
-=item *
+Owner.
 
-Description
+Name.
 
-=item *
-
-Owner
-
-=item *
-
-IDs for an ID target
-
-=item *
-
-Tags for a Tag target
-
-=item *
-
-From any supported tag type to another. The three supported tag types
-are ID target, Tag target, and resource group. For more information,
-see Target.
-
-=back
+Description.
 
 If a parameter is null, then the corresponding field is not modified.
 
@@ -4737,7 +3151,7 @@ Each argument is described in detail in: L<Paws::SSM::UpdateMaintenanceWindowTas
 
 Returns: a L<Paws::SSM::UpdateMaintenanceWindowTaskResult> instance
 
-Modifies a task assigned to a maintenance window. You can't change the
+Modifies a task assigned to a Maintenance Window. You can't change the
 task type, but you can change the following values:
 
 =over
@@ -4791,54 +3205,7 @@ Each argument is described in detail in: L<Paws::SSM::UpdateManagedInstanceRole>
 Returns: a L<Paws::SSM::UpdateManagedInstanceRoleResult> instance
 
 Assigns or changes an Amazon Identity and Access Management (IAM) role
-for the managed instance.
-
-
-=head2 UpdateOpsItem
-
-=over
-
-=item OpsItemId => Str
-
-=item [Category => Str]
-
-=item [Description => Str]
-
-=item [Notifications => ArrayRef[L<Paws::SSM::OpsItemNotification>]]
-
-=item [OperationalData => L<Paws::SSM::OpsItemOperationalData>]
-
-=item [OperationalDataToDelete => ArrayRef[Str|Undef]]
-
-=item [Priority => Int]
-
-=item [RelatedOpsItems => ArrayRef[L<Paws::SSM::RelatedOpsItem>]]
-
-=item [Severity => Str]
-
-=item [Status => Str]
-
-=item [Title => Str]
-
-
-=back
-
-Each argument is described in detail in: L<Paws::SSM::UpdateOpsItem>
-
-Returns: a L<Paws::SSM::UpdateOpsItemResponse> instance
-
-Edit or change an OpsItem. You must have permission in AWS Identity and
-Access Management (IAM) to update an OpsItem. For more information, see
-Getting Started with OpsCenter
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html)
-in the I<AWS Systems Manager User Guide>.
-
-Operations engineers and IT professionals use OpsCenter to view,
-investigate, and remediate operational issues impacting the performance
-and health of their AWS resources. For more information, see AWS
-Systems Manager OpsCenter
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html)
-in the I<AWS Systems Manager User Guide>.
+to the managed instance.
 
 
 =head2 UpdatePatchBaseline
@@ -4863,8 +3230,6 @@ in the I<AWS Systems Manager User Guide>.
 
 =item [RejectedPatches => ArrayRef[Str|Undef]]
 
-=item [RejectedPatchesAction => Str]
-
 =item [Replace => Bool]
 
 =item [Sources => ArrayRef[L<Paws::SSM::PatchSource>]]
@@ -4882,66 +3247,6 @@ request are left unchanged.
 For information about valid key and value pairs in C<PatchFilters> for
 each supported operating system type, see PatchFilter
 (http://docs.aws.amazon.com/systems-manager/latest/APIReference/API_PatchFilter.html).
-
-
-=head2 UpdateResourceDataSync
-
-=over
-
-=item SyncName => Str
-
-=item SyncSource => L<Paws::SSM::ResourceDataSyncSource>
-
-=item SyncType => Str
-
-
-=back
-
-Each argument is described in detail in: L<Paws::SSM::UpdateResourceDataSync>
-
-Returns: a L<Paws::SSM::UpdateResourceDataSyncResult> instance
-
-Update a resource data sync. After you create a resource data sync for
-a Region, you can't change the account options for that sync. For
-example, if you create a sync in the us-east-2 (Ohio) Region and you
-choose the Include only the current account option, you can't edit that
-sync later and choose the Include all accounts from my AWS
-Organizations configuration option. Instead, you must delete the first
-resource data sync, and create a new one.
-
-
-=head2 UpdateServiceSetting
-
-=over
-
-=item SettingId => Str
-
-=item SettingValue => Str
-
-
-=back
-
-Each argument is described in detail in: L<Paws::SSM::UpdateServiceSetting>
-
-Returns: a L<Paws::SSM::UpdateServiceSettingResult> instance
-
-C<ServiceSetting> is an account-level setting for an AWS service. This
-setting defines how a user interacts with or uses a service or a
-feature of a service. For example, if an AWS service charges money to
-the account based on feature or service usage, then the AWS service
-team might create a default setting of "false". This means the user
-can't use this feature unless they change the setting to "true" and
-intentionally opt in for a paid feature.
-
-Services map a C<SettingId> object to a setting value. AWS services
-teams define the default value for a C<SettingId>. You can't create a
-new C<SettingId>, but you can overwrite the default value if you have
-the C<ssm:UpdateServiceSetting> permission for the setting. Use the
-GetServiceSetting API action to view the current value. Or, use the
-ResetServiceSetting to change the value back to the original value
-defined by the AWS service team.
-
-Update the service setting for the account.
 
 
 
@@ -4962,102 +3267,6 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::DescribeActivationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllAssociationExecutions(sub { },AssociationId => Str, [Filters => ArrayRef[L<Paws::SSM::AssociationExecutionFilter>], MaxResults => Int, NextToken => Str])
-
-=head2 DescribeAllAssociationExecutions(AssociationId => Str, [Filters => ArrayRef[L<Paws::SSM::AssociationExecutionFilter>], MaxResults => Int, NextToken => Str])
-
-
-If passed a sub as first parameter, it will call the sub for each element found in :
-
- - AssociationExecutions, passing the object as the first parameter, and the string 'AssociationExecutions' as the second parameter 
-
-If not, it will return a a L<Paws::SSM::DescribeAssociationExecutionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
-
-
-=head2 DescribeAllAssociationExecutionTargets(sub { },AssociationId => Str, ExecutionId => Str, [Filters => ArrayRef[L<Paws::SSM::AssociationExecutionTargetsFilter>], MaxResults => Int, NextToken => Str])
-
-=head2 DescribeAllAssociationExecutionTargets(AssociationId => Str, ExecutionId => Str, [Filters => ArrayRef[L<Paws::SSM::AssociationExecutionTargetsFilter>], MaxResults => Int, NextToken => Str])
-
-
-If passed a sub as first parameter, it will call the sub for each element found in :
-
- - AssociationExecutionTargets, passing the object as the first parameter, and the string 'AssociationExecutionTargets' as the second parameter 
-
-If not, it will return a a L<Paws::SSM::DescribeAssociationExecutionTargetsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
-
-
-=head2 DescribeAllAutomationExecutions(sub { },[Filters => ArrayRef[L<Paws::SSM::AutomationExecutionFilter>], MaxResults => Int, NextToken => Str])
-
-=head2 DescribeAllAutomationExecutions([Filters => ArrayRef[L<Paws::SSM::AutomationExecutionFilter>], MaxResults => Int, NextToken => Str])
-
-
-If passed a sub as first parameter, it will call the sub for each element found in :
-
- - AutomationExecutionMetadataList, passing the object as the first parameter, and the string 'AutomationExecutionMetadataList' as the second parameter 
-
-If not, it will return a a L<Paws::SSM::DescribeAutomationExecutionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
-
-
-=head2 DescribeAllAutomationStepExecutions(sub { },AutomationExecutionId => Str, [Filters => ArrayRef[L<Paws::SSM::StepExecutionFilter>], MaxResults => Int, NextToken => Str, ReverseOrder => Bool])
-
-=head2 DescribeAllAutomationStepExecutions(AutomationExecutionId => Str, [Filters => ArrayRef[L<Paws::SSM::StepExecutionFilter>], MaxResults => Int, NextToken => Str, ReverseOrder => Bool])
-
-
-If passed a sub as first parameter, it will call the sub for each element found in :
-
- - StepExecutions, passing the object as the first parameter, and the string 'StepExecutions' as the second parameter 
-
-If not, it will return a a L<Paws::SSM::DescribeAutomationStepExecutionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
-
-
-=head2 DescribeAllAvailablePatches(sub { },[Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str])
-
-=head2 DescribeAllAvailablePatches([Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str])
-
-
-If passed a sub as first parameter, it will call the sub for each element found in :
-
- - Patches, passing the object as the first parameter, and the string 'Patches' as the second parameter 
-
-If not, it will return a a L<Paws::SSM::DescribeAvailablePatchesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
-
-
-=head2 DescribeAllEffectiveInstanceAssociations(sub { },InstanceId => Str, [MaxResults => Int, NextToken => Str])
-
-=head2 DescribeAllEffectiveInstanceAssociations(InstanceId => Str, [MaxResults => Int, NextToken => Str])
-
-
-If passed a sub as first parameter, it will call the sub for each element found in :
-
- - Associations, passing the object as the first parameter, and the string 'Associations' as the second parameter 
-
-If not, it will return a a L<Paws::SSM::DescribeEffectiveInstanceAssociationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
-
-
-=head2 DescribeAllEffectivePatchesForPatchBaseline(sub { },BaselineId => Str, [MaxResults => Int, NextToken => Str])
-
-=head2 DescribeAllEffectivePatchesForPatchBaseline(BaselineId => Str, [MaxResults => Int, NextToken => Str])
-
-
-If passed a sub as first parameter, it will call the sub for each element found in :
-
- - EffectivePatches, passing the object as the first parameter, and the string 'EffectivePatches' as the second parameter 
-
-If not, it will return a a L<Paws::SSM::DescribeEffectivePatchesForPatchBaselineResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
-
-
-=head2 DescribeAllInstanceAssociationsStatus(sub { },InstanceId => Str, [MaxResults => Int, NextToken => Str])
-
-=head2 DescribeAllInstanceAssociationsStatus(InstanceId => Str, [MaxResults => Int, NextToken => Str])
-
-
-If passed a sub as first parameter, it will call the sub for each element found in :
-
- - InstanceAssociationStatusInfos, passing the object as the first parameter, and the string 'InstanceAssociationStatusInfos' as the second parameter 
-
-If not, it will return a a L<Paws::SSM::DescribeInstanceAssociationsStatusResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
-
-
 =head2 DescribeAllInstanceInformation(sub { },[Filters => ArrayRef[L<Paws::SSM::InstanceInformationStringFilter>], InstanceInformationFilterList => ArrayRef[L<Paws::SSM::InstanceInformationFilter>], MaxResults => Int, NextToken => Str])
 
 =head2 DescribeAllInstanceInformation([Filters => ArrayRef[L<Paws::SSM::InstanceInformationStringFilter>], InstanceInformationFilterList => ArrayRef[L<Paws::SSM::InstanceInformationFilter>], MaxResults => Int, NextToken => Str])
@@ -5070,150 +3279,6 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::DescribeInstanceInformationResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllInstancePatches(sub { },InstanceId => Str, [Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str])
-
-=head2 DescribeAllInstancePatches(InstanceId => Str, [Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str])
-
-
-If passed a sub as first parameter, it will call the sub for each element found in :
-
- - Patches, passing the object as the first parameter, and the string 'Patches' as the second parameter 
-
-If not, it will return a a L<Paws::SSM::DescribeInstancePatchesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
-
-
-=head2 DescribeAllInstancePatchStates(sub { },InstanceIds => ArrayRef[Str|Undef], [MaxResults => Int, NextToken => Str])
-
-=head2 DescribeAllInstancePatchStates(InstanceIds => ArrayRef[Str|Undef], [MaxResults => Int, NextToken => Str])
-
-
-If passed a sub as first parameter, it will call the sub for each element found in :
-
- - InstancePatchStates, passing the object as the first parameter, and the string 'InstancePatchStates' as the second parameter 
-
-If not, it will return a a L<Paws::SSM::DescribeInstancePatchStatesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
-
-
-=head2 DescribeAllInstancePatchStatesForPatchGroup(sub { },PatchGroup => Str, [Filters => ArrayRef[L<Paws::SSM::InstancePatchStateFilter>], MaxResults => Int, NextToken => Str])
-
-=head2 DescribeAllInstancePatchStatesForPatchGroup(PatchGroup => Str, [Filters => ArrayRef[L<Paws::SSM::InstancePatchStateFilter>], MaxResults => Int, NextToken => Str])
-
-
-If passed a sub as first parameter, it will call the sub for each element found in :
-
- - InstancePatchStates, passing the object as the first parameter, and the string 'InstancePatchStates' as the second parameter 
-
-If not, it will return a a L<Paws::SSM::DescribeInstancePatchStatesForPatchGroupResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
-
-
-=head2 DescribeAllInventoryDeletions(sub { },[DeletionId => Str, MaxResults => Int, NextToken => Str])
-
-=head2 DescribeAllInventoryDeletions([DeletionId => Str, MaxResults => Int, NextToken => Str])
-
-
-If passed a sub as first parameter, it will call the sub for each element found in :
-
- - InventoryDeletions, passing the object as the first parameter, and the string 'InventoryDeletions' as the second parameter 
-
-If not, it will return a a L<Paws::SSM::DescribeInventoryDeletionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
-
-
-=head2 DescribeAllMaintenanceWindowExecutions(sub { },WindowId => Str, [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
-
-=head2 DescribeAllMaintenanceWindowExecutions(WindowId => Str, [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
-
-
-If passed a sub as first parameter, it will call the sub for each element found in :
-
- - WindowExecutions, passing the object as the first parameter, and the string 'WindowExecutions' as the second parameter 
-
-If not, it will return a a L<Paws::SSM::DescribeMaintenanceWindowExecutionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
-
-
-=head2 DescribeAllMaintenanceWindowExecutionTaskInvocations(sub { },TaskId => Str, WindowExecutionId => Str, [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
-
-=head2 DescribeAllMaintenanceWindowExecutionTaskInvocations(TaskId => Str, WindowExecutionId => Str, [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
-
-
-If passed a sub as first parameter, it will call the sub for each element found in :
-
- - WindowExecutionTaskInvocationIdentities, passing the object as the first parameter, and the string 'WindowExecutionTaskInvocationIdentities' as the second parameter 
-
-If not, it will return a a L<Paws::SSM::DescribeMaintenanceWindowExecutionTaskInvocationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
-
-
-=head2 DescribeAllMaintenanceWindowExecutionTasks(sub { },WindowExecutionId => Str, [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
-
-=head2 DescribeAllMaintenanceWindowExecutionTasks(WindowExecutionId => Str, [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
-
-
-If passed a sub as first parameter, it will call the sub for each element found in :
-
- - WindowExecutionTaskIdentities, passing the object as the first parameter, and the string 'WindowExecutionTaskIdentities' as the second parameter 
-
-If not, it will return a a L<Paws::SSM::DescribeMaintenanceWindowExecutionTasksResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
-
-
-=head2 DescribeAllMaintenanceWindows(sub { },[Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
-
-=head2 DescribeAllMaintenanceWindows([Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
-
-
-If passed a sub as first parameter, it will call the sub for each element found in :
-
- - WindowIdentities, passing the object as the first parameter, and the string 'WindowIdentities' as the second parameter 
-
-If not, it will return a a L<Paws::SSM::DescribeMaintenanceWindowsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
-
-
-=head2 DescribeAllMaintenanceWindowSchedule(sub { },[Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str, ResourceType => Str, Targets => ArrayRef[L<Paws::SSM::Target>], WindowId => Str])
-
-=head2 DescribeAllMaintenanceWindowSchedule([Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str, ResourceType => Str, Targets => ArrayRef[L<Paws::SSM::Target>], WindowId => Str])
-
-
-If passed a sub as first parameter, it will call the sub for each element found in :
-
- - ScheduledWindowExecutions, passing the object as the first parameter, and the string 'ScheduledWindowExecutions' as the second parameter 
-
-If not, it will return a a L<Paws::SSM::DescribeMaintenanceWindowScheduleResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
-
-
-=head2 DescribeAllMaintenanceWindowsForTarget(sub { },ResourceType => Str, Targets => ArrayRef[L<Paws::SSM::Target>], [MaxResults => Int, NextToken => Str])
-
-=head2 DescribeAllMaintenanceWindowsForTarget(ResourceType => Str, Targets => ArrayRef[L<Paws::SSM::Target>], [MaxResults => Int, NextToken => Str])
-
-
-If passed a sub as first parameter, it will call the sub for each element found in :
-
- - WindowIdentities, passing the object as the first parameter, and the string 'WindowIdentities' as the second parameter 
-
-If not, it will return a a L<Paws::SSM::DescribeMaintenanceWindowsForTargetResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
-
-
-=head2 DescribeAllMaintenanceWindowTargets(sub { },WindowId => Str, [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
-
-=head2 DescribeAllMaintenanceWindowTargets(WindowId => Str, [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
-
-
-If passed a sub as first parameter, it will call the sub for each element found in :
-
- - Targets, passing the object as the first parameter, and the string 'Targets' as the second parameter 
-
-If not, it will return a a L<Paws::SSM::DescribeMaintenanceWindowTargetsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
-
-
-=head2 DescribeAllMaintenanceWindowTasks(sub { },WindowId => Str, [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
-
-=head2 DescribeAllMaintenanceWindowTasks(WindowId => Str, [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
-
-
-If passed a sub as first parameter, it will call the sub for each element found in :
-
- - Tasks, passing the object as the first parameter, and the string 'Tasks' as the second parameter 
-
-If not, it will return a a L<Paws::SSM::DescribeMaintenanceWindowTasksResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
-
-
 =head2 DescribeAllParameters(sub { },[Filters => ArrayRef[L<Paws::SSM::ParametersFilter>], MaxResults => Int, NextToken => Str, ParameterFilters => ArrayRef[L<Paws::SSM::ParameterStringFilter>]])
 
 =head2 DescribeAllParameters([Filters => ArrayRef[L<Paws::SSM::ParametersFilter>], MaxResults => Int, NextToken => Str, ParameterFilters => ArrayRef[L<Paws::SSM::ParameterStringFilter>]])
@@ -5224,66 +3289,6 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Parameters, passing the object as the first parameter, and the string 'Parameters' as the second parameter 
 
 If not, it will return a a L<Paws::SSM::DescribeParametersResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
-
-
-=head2 DescribeAllPatchBaselines(sub { },[Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str])
-
-=head2 DescribeAllPatchBaselines([Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str])
-
-
-If passed a sub as first parameter, it will call the sub for each element found in :
-
- - BaselineIdentities, passing the object as the first parameter, and the string 'BaselineIdentities' as the second parameter 
-
-If not, it will return a a L<Paws::SSM::DescribePatchBaselinesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
-
-
-=head2 DescribeAllPatchGroups(sub { },[Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str])
-
-=head2 DescribeAllPatchGroups([Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str])
-
-
-If passed a sub as first parameter, it will call the sub for each element found in :
-
- - Mappings, passing the object as the first parameter, and the string 'Mappings' as the second parameter 
-
-If not, it will return a a L<Paws::SSM::DescribePatchGroupsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
-
-
-=head2 DescribeAllSessions(sub { },State => Str, [Filters => ArrayRef[L<Paws::SSM::SessionFilter>], MaxResults => Int, NextToken => Str])
-
-=head2 DescribeAllSessions(State => Str, [Filters => ArrayRef[L<Paws::SSM::SessionFilter>], MaxResults => Int, NextToken => Str])
-
-
-If passed a sub as first parameter, it will call the sub for each element found in :
-
- - Sessions, passing the object as the first parameter, and the string 'Sessions' as the second parameter 
-
-If not, it will return a a L<Paws::SSM::DescribeSessionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
-
-
-=head2 GetAllInventory(sub { },[Aggregators => ArrayRef[L<Paws::SSM::InventoryAggregator>], Filters => ArrayRef[L<Paws::SSM::InventoryFilter>], MaxResults => Int, NextToken => Str, ResultAttributes => ArrayRef[L<Paws::SSM::ResultAttribute>]])
-
-=head2 GetAllInventory([Aggregators => ArrayRef[L<Paws::SSM::InventoryAggregator>], Filters => ArrayRef[L<Paws::SSM::InventoryFilter>], MaxResults => Int, NextToken => Str, ResultAttributes => ArrayRef[L<Paws::SSM::ResultAttribute>]])
-
-
-If passed a sub as first parameter, it will call the sub for each element found in :
-
- - Entities, passing the object as the first parameter, and the string 'Entities' as the second parameter 
-
-If not, it will return a a L<Paws::SSM::GetInventoryResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
-
-
-=head2 GetAllInventorySchema(sub { },[Aggregator => Bool, MaxResults => Int, NextToken => Str, SubType => Bool, TypeName => Str])
-
-=head2 GetAllInventorySchema([Aggregator => Bool, MaxResults => Int, NextToken => Str, SubType => Bool, TypeName => Str])
-
-
-If passed a sub as first parameter, it will call the sub for each element found in :
-
- - Schemas, passing the object as the first parameter, and the string 'Schemas' as the second parameter 
-
-If not, it will return a a L<Paws::SSM::GetInventorySchemaResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 GetAllParameterHistory(sub { },Name => Str, [MaxResults => Int, NextToken => Str, WithDecryption => Bool])
@@ -5322,18 +3327,6 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::ListAssociationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllAssociationVersions(sub { },AssociationId => Str, [MaxResults => Int, NextToken => Str])
-
-=head2 ListAllAssociationVersions(AssociationId => Str, [MaxResults => Int, NextToken => Str])
-
-
-If passed a sub as first parameter, it will call the sub for each element found in :
-
- - AssociationVersions, passing the object as the first parameter, and the string 'AssociationVersions' as the second parameter 
-
-If not, it will return a a L<Paws::SSM::ListAssociationVersionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
-
-
 =head2 ListAllCommandInvocations(sub { },[CommandId => Str, Details => Bool, Filters => ArrayRef[L<Paws::SSM::CommandFilter>], InstanceId => Str, MaxResults => Int, NextToken => Str])
 
 =head2 ListAllCommandInvocations([CommandId => Str, Details => Bool, Filters => ArrayRef[L<Paws::SSM::CommandFilter>], InstanceId => Str, MaxResults => Int, NextToken => Str])
@@ -5358,30 +3351,6 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::ListCommandsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllComplianceItems(sub { },[Filters => ArrayRef[L<Paws::SSM::ComplianceStringFilter>], MaxResults => Int, NextToken => Str, ResourceIds => ArrayRef[Str|Undef], ResourceTypes => ArrayRef[Str|Undef]])
-
-=head2 ListAllComplianceItems([Filters => ArrayRef[L<Paws::SSM::ComplianceStringFilter>], MaxResults => Int, NextToken => Str, ResourceIds => ArrayRef[Str|Undef], ResourceTypes => ArrayRef[Str|Undef]])
-
-
-If passed a sub as first parameter, it will call the sub for each element found in :
-
- - ComplianceItems, passing the object as the first parameter, and the string 'ComplianceItems' as the second parameter 
-
-If not, it will return a a L<Paws::SSM::ListComplianceItemsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
-
-
-=head2 ListAllComplianceSummaries(sub { },[Filters => ArrayRef[L<Paws::SSM::ComplianceStringFilter>], MaxResults => Int, NextToken => Str])
-
-=head2 ListAllComplianceSummaries([Filters => ArrayRef[L<Paws::SSM::ComplianceStringFilter>], MaxResults => Int, NextToken => Str])
-
-
-If passed a sub as first parameter, it will call the sub for each element found in :
-
- - ComplianceSummaryItems, passing the object as the first parameter, and the string 'ComplianceSummaryItems' as the second parameter 
-
-If not, it will return a a L<Paws::SSM::ListComplianceSummariesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
-
-
 =head2 ListAllDocuments(sub { },[DocumentFilterList => ArrayRef[L<Paws::SSM::DocumentFilter>], Filters => ArrayRef[L<Paws::SSM::DocumentKeyValuesFilter>], MaxResults => Int, NextToken => Str])
 
 =head2 ListAllDocuments([DocumentFilterList => ArrayRef[L<Paws::SSM::DocumentFilter>], Filters => ArrayRef[L<Paws::SSM::DocumentKeyValuesFilter>], MaxResults => Int, NextToken => Str])
@@ -5392,42 +3361,6 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - DocumentIdentifiers, passing the object as the first parameter, and the string 'DocumentIdentifiers' as the second parameter 
 
 If not, it will return a a L<Paws::SSM::ListDocumentsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
-
-
-=head2 ListAllDocumentVersions(sub { },Name => Str, [MaxResults => Int, NextToken => Str])
-
-=head2 ListAllDocumentVersions(Name => Str, [MaxResults => Int, NextToken => Str])
-
-
-If passed a sub as first parameter, it will call the sub for each element found in :
-
- - DocumentVersions, passing the object as the first parameter, and the string 'DocumentVersions' as the second parameter 
-
-If not, it will return a a L<Paws::SSM::ListDocumentVersionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
-
-
-=head2 ListAllResourceComplianceSummaries(sub { },[Filters => ArrayRef[L<Paws::SSM::ComplianceStringFilter>], MaxResults => Int, NextToken => Str])
-
-=head2 ListAllResourceComplianceSummaries([Filters => ArrayRef[L<Paws::SSM::ComplianceStringFilter>], MaxResults => Int, NextToken => Str])
-
-
-If passed a sub as first parameter, it will call the sub for each element found in :
-
- - ResourceComplianceSummaryItems, passing the object as the first parameter, and the string 'ResourceComplianceSummaryItems' as the second parameter 
-
-If not, it will return a a L<Paws::SSM::ListResourceComplianceSummariesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
-
-
-=head2 ListAllResourceDataSync(sub { },[MaxResults => Int, NextToken => Str, SyncType => Str])
-
-=head2 ListAllResourceDataSync([MaxResults => Int, NextToken => Str, SyncType => Str])
-
-
-If passed a sub as first parameter, it will call the sub for each element found in :
-
- - ResourceDataSyncItems, passing the object as the first parameter, and the string 'ResourceDataSyncItems' as the second parameter 
-
-If not, it will return a a L<Paws::SSM::ListResourceDataSyncResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

@@ -33,10 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Created         = $GetPipelineStateOutput->Created;
-    my $PipelineName    = $GetPipelineStateOutput->PipelineName;
-    my $PipelineVersion = $GetPipelineStateOutput->PipelineVersion;
     my $StageStates     = $GetPipelineStateOutput->StageStates;
+    my $PipelineName    = $GetPipelineStateOutput->PipelineName;
+    my $Created         = $GetPipelineStateOutput->Created;
+    my $PipelineVersion = $GetPipelineStateOutput->PipelineVersion;
     my $Updated         = $GetPipelineStateOutput->Updated;
 
     # Returns a L<Paws::CodePipeline::GetPipelineStateOutput> object.

@@ -34,23 +34,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Arn           = $DescribeOriginEndpointResponse->Arn;
-    my $Authorization = $DescribeOriginEndpointResponse->Authorization;
-    my $ChannelId     = $DescribeOriginEndpointResponse->ChannelId;
-    my $CmafPackage   = $DescribeOriginEndpointResponse->CmafPackage;
-    my $DashPackage   = $DescribeOriginEndpointResponse->DashPackage;
-    my $Description   = $DescribeOriginEndpointResponse->Description;
-    my $HlsPackage    = $DescribeOriginEndpointResponse->HlsPackage;
-    my $Id            = $DescribeOriginEndpointResponse->Id;
-    my $ManifestName  = $DescribeOriginEndpointResponse->ManifestName;
-    my $MssPackage    = $DescribeOriginEndpointResponse->MssPackage;
-    my $Origination   = $DescribeOriginEndpointResponse->Origination;
+    my $MssPackage = $DescribeOriginEndpointResponse->MssPackage;
+    my $Id         = $DescribeOriginEndpointResponse->Id;
     my $StartoverWindowSeconds =
       $DescribeOriginEndpointResponse->StartoverWindowSeconds;
-    my $Tags             = $DescribeOriginEndpointResponse->Tags;
+    my $DashPackage      = $DescribeOriginEndpointResponse->DashPackage;
+    my $CmafPackage      = $DescribeOriginEndpointResponse->CmafPackage;
+    my $ManifestName     = $DescribeOriginEndpointResponse->ManifestName;
     my $TimeDelaySeconds = $DescribeOriginEndpointResponse->TimeDelaySeconds;
-    my $Url              = $DescribeOriginEndpointResponse->Url;
     my $Whitelist        = $DescribeOriginEndpointResponse->Whitelist;
+    my $ChannelId        = $DescribeOriginEndpointResponse->ChannelId;
+    my $HlsPackage       = $DescribeOriginEndpointResponse->HlsPackage;
+    my $Arn              = $DescribeOriginEndpointResponse->Arn;
+    my $Url              = $DescribeOriginEndpointResponse->Url;
+    my $Description      = $DescribeOriginEndpointResponse->Description;
 
     # Returns a L<Paws::MediaPackage::DescribeOriginEndpointResponse> object.
 

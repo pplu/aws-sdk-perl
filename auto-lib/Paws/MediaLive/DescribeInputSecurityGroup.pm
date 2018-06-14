@@ -35,12 +35,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $Arn            = $DescribeInputSecurityGroupResponse->Arn;
-    my $Id             = $DescribeInputSecurityGroupResponse->Id;
-    my $Inputs         = $DescribeInputSecurityGroupResponse->Inputs;
-    my $State          = $DescribeInputSecurityGroupResponse->State;
-    my $Tags           = $DescribeInputSecurityGroupResponse->Tags;
     my $WhitelistRules = $DescribeInputSecurityGroupResponse->WhitelistRules;
+    my $Inputs         = $DescribeInputSecurityGroupResponse->Inputs;
+    my $Id             = $DescribeInputSecurityGroupResponse->Id;
+    my $Arn            = $DescribeInputSecurityGroupResponse->Arn;
+    my $State          = $DescribeInputSecurityGroupResponse->State;
 
     # Returns a L<Paws::MediaLive::DescribeInputSecurityGroupResponse> object.
 

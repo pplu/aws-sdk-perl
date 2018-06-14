@@ -26,62 +26,38 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
 =head1 SYNOPSIS
 
-    my $api.sagemaker = Paws->service('SageMaker');
-    my $DescribeTrainingJobResponse = $api . sagemaker->DescribeTrainingJob(
+    my $sagemaker = Paws->service('SageMaker');
+    my $DescribeTrainingJobResponse = $sagemaker->DescribeTrainingJob(
       TrainingJobName => 'MyTrainingJobName',
 
     );
 
     # Results:
+    my $TuningJobArn      = $DescribeTrainingJobResponse->TuningJobArn;
+    my $TrainingEndTime   = $DescribeTrainingJobResponse->TrainingEndTime;
+    my $ResourceConfig    = $DescribeTrainingJobResponse->ResourceConfig;
+    my $OutputDataConfig  = $DescribeTrainingJobResponse->OutputDataConfig;
+    my $RoleArn           = $DescribeTrainingJobResponse->RoleArn;
+    my $TrainingJobStatus = $DescribeTrainingJobResponse->TrainingJobStatus;
+    my $FailureReason     = $DescribeTrainingJobResponse->FailureReason;
     my $AlgorithmSpecification =
       $DescribeTrainingJobResponse->AlgorithmSpecification;
-    my $AutoMLJobArn = $DescribeTrainingJobResponse->AutoMLJobArn;
-    my $BillableTimeInSeconds =
-      $DescribeTrainingJobResponse->BillableTimeInSeconds;
-    my $CheckpointConfig = $DescribeTrainingJobResponse->CheckpointConfig;
-    my $CreationTime     = $DescribeTrainingJobResponse->CreationTime;
-    my $DebugHookConfig  = $DescribeTrainingJobResponse->DebugHookConfig;
-    my $DebugRuleConfigurations =
-      $DescribeTrainingJobResponse->DebugRuleConfigurations;
-    my $DebugRuleEvaluationStatuses =
-      $DescribeTrainingJobResponse->DebugRuleEvaluationStatuses;
-    my $EnableInterContainerTrafficEncryption =
-      $DescribeTrainingJobResponse->EnableInterContainerTrafficEncryption;
-    my $EnableManagedSpotTraining =
-      $DescribeTrainingJobResponse->EnableManagedSpotTraining;
-    my $EnableNetworkIsolation =
-      $DescribeTrainingJobResponse->EnableNetworkIsolation;
-    my $ExperimentConfig    = $DescribeTrainingJobResponse->ExperimentConfig;
-    my $FailureReason       = $DescribeTrainingJobResponse->FailureReason;
-    my $FinalMetricDataList = $DescribeTrainingJobResponse->FinalMetricDataList;
-    my $HyperParameters     = $DescribeTrainingJobResponse->HyperParameters;
-    my $InputDataConfig     = $DescribeTrainingJobResponse->InputDataConfig;
-    my $LabelingJobArn      = $DescribeTrainingJobResponse->LabelingJobArn;
-    my $LastModifiedTime    = $DescribeTrainingJobResponse->LastModifiedTime;
-    my $ModelArtifacts      = $DescribeTrainingJobResponse->ModelArtifacts;
-    my $OutputDataConfig    = $DescribeTrainingJobResponse->OutputDataConfig;
-    my $ResourceConfig      = $DescribeTrainingJobResponse->ResourceConfig;
-    my $RoleArn             = $DescribeTrainingJobResponse->RoleArn;
-    my $SecondaryStatus     = $DescribeTrainingJobResponse->SecondaryStatus;
-    my $SecondaryStatusTransitions =
-      $DescribeTrainingJobResponse->SecondaryStatusTransitions;
-    my $StoppingCondition = $DescribeTrainingJobResponse->StoppingCondition;
-    my $TensorBoardOutputConfig =
-      $DescribeTrainingJobResponse->TensorBoardOutputConfig;
-    my $TrainingEndTime   = $DescribeTrainingJobResponse->TrainingEndTime;
-    my $TrainingJobArn    = $DescribeTrainingJobResponse->TrainingJobArn;
-    my $TrainingJobName   = $DescribeTrainingJobResponse->TrainingJobName;
-    my $TrainingJobStatus = $DescribeTrainingJobResponse->TrainingJobStatus;
     my $TrainingStartTime = $DescribeTrainingJobResponse->TrainingStartTime;
-    my $TrainingTimeInSeconds =
-      $DescribeTrainingJobResponse->TrainingTimeInSeconds;
-    my $TuningJobArn = $DescribeTrainingJobResponse->TuningJobArn;
-    my $VpcConfig    = $DescribeTrainingJobResponse->VpcConfig;
+    my $InputDataConfig   = $DescribeTrainingJobResponse->InputDataConfig;
+    my $CreationTime      = $DescribeTrainingJobResponse->CreationTime;
+    my $TrainingJobArn    = $DescribeTrainingJobResponse->TrainingJobArn;
+    my $ModelArtifacts    = $DescribeTrainingJobResponse->ModelArtifacts;
+    my $SecondaryStatus   = $DescribeTrainingJobResponse->SecondaryStatus;
+    my $HyperParameters   = $DescribeTrainingJobResponse->HyperParameters;
+    my $StoppingCondition = $DescribeTrainingJobResponse->StoppingCondition;
+    my $LastModifiedTime  = $DescribeTrainingJobResponse->LastModifiedTime;
+    my $TrainingJobName   = $DescribeTrainingJobResponse->TrainingJobName;
+    my $VpcConfig         = $DescribeTrainingJobResponse->VpcConfig;
 
     # Returns a L<Paws::SageMaker::DescribeTrainingJobResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.sagemaker/DescribeTrainingJob>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sagemaker/DescribeTrainingJob>
 
 =head1 ATTRIBUTES
 

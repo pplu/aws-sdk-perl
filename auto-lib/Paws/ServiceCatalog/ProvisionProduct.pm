@@ -8,7 +8,6 @@ package Paws::ServiceCatalog::ProvisionProduct;
   has ProvisionedProductName => (is => 'ro', isa => 'Str', required => 1);
   has ProvisioningArtifactId => (is => 'ro', isa => 'Str', required => 1);
   has ProvisioningParameters => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::ProvisioningParameter]');
-  has ProvisioningPreferences => (is => 'ro', isa => 'Paws::ServiceCatalog::ProvisioningPreferences');
   has ProvisionToken => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::Tag]');
 
@@ -53,22 +52,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                   # OPTIONAL
-      ProvisioningPreferences => {
-        StackSetAccounts              => [ 'MyAccountId', ... ],    # OPTIONAL
-        StackSetFailureToleranceCount => 1,                         # OPTIONAL
-        StackSetFailureTolerancePercentage => 1,    # max: 100; OPTIONAL
-        StackSetMaxConcurrencyCount        => 1,    # min: 1; OPTIONAL
-        StackSetMaxConcurrencyPercentage   => 1,    # min: 1, max: 100; OPTIONAL
-        StackSetRegions => [ 'MyRegion', ... ],     # OPTIONAL
-      },    # OPTIONAL
       Tags => [
         {
-          Key   => 'MyTagKey',      # min: 1, max: 128
-          Value => 'MyTagValue',    # min: 1, max: 256
+          Key   => 'MyTagKey',             # min: 1, max: 128
+          Value => 'MyTagValue',           # min: 1, max: 256
 
         },
         ...
-      ],                            # OPTIONAL
+      ],                                   # OPTIONAL
     );
 
     # Results:
@@ -144,13 +135,6 @@ The identifier of the provisioning artifact.
 
 Parameters specified by the administrator that are required for
 provisioning the product.
-
-
-
-=head2 ProvisioningPreferences => L<Paws::ServiceCatalog::ProvisioningPreferences>
-
-An object that contains information about the provisioning preferences
-for a stack set.
 
 
 

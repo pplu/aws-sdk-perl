@@ -40,15 +40,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $CreatedDate   = $StartImportResponse->CreatedDate;
     my $ImportId      = $StartImportResponse->ImportId;
-    my $ImportStatus  = $StartImportResponse->ImportStatus;
     my $MergeStrategy = $StartImportResponse->MergeStrategy;
-    my $Name          = $StartImportResponse->Name;
     my $ResourceType  = $StartImportResponse->ResourceType;
+    my $ImportStatus  = $StartImportResponse->ImportStatus;
+    my $Name          = $StartImportResponse->Name;
 
     # Returns a L<Paws::LexModels::StartImportResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/models.lex/StartImport>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/lex/>
 
 =head1 ATTRIBUTES
 

@@ -41,21 +41,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           , # values: DoesNotExist, MessageTooLarge, ExceededQuota, ContentRejected, Undefined, TemporaryFailure; OPTIONAL
           RecipientArn       => 'MyAmazonResourceName',    # OPTIONAL
           RecipientDsnFields => {
+            Status => 'MyDsnStatus',
             Action =>
               'failed',  # values: failed, delayed, delivered, relayed, expanded
-            Status          => 'MyDsnStatus',
-            DiagnosticCode  => 'MyDiagnosticCode',    # OPTIONAL
             ExtensionFields => [
               {
-                Name  => 'MyExtensionFieldName',
                 Value => 'MyExtensionFieldValue',
+                Name  => 'MyExtensionFieldName',
 
               },
               ...
-            ],                                        # OPTIONAL
-            FinalRecipient  => 'MyAddress',
-            LastAttemptDate => '1970-01-01T01:00:00',    # OPTIONAL
+            ],           # OPTIONAL
             RemoteMta       => 'MyRemoteMta',            # OPTIONAL
+            DiagnosticCode  => 'MyDiagnosticCode',       # OPTIONAL
+            LastAttemptDate => '1970-01-01T01:00:00',    # OPTIONAL
+            FinalRecipient  => 'MyAddress',
           },    # OPTIONAL
         },
         ...
@@ -65,15 +65,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Explanation       => 'MyExplanation',           # OPTIONAL
       MessageDsn        => {
         ReportingMta    => 'MyReportingMta',
-        ArrivalDate     => '1970-01-01T01:00:00',     # OPTIONAL
         ExtensionFields => [
           {
-            Name  => 'MyExtensionFieldName',
             Value => 'MyExtensionFieldValue',
+            Name  => 'MyExtensionFieldName',
 
           },
           ...
         ],                                            # OPTIONAL
+        ArrivalDate => '1970-01-01T01:00:00',         # OPTIONAL
       },    # OPTIONAL
     );
 
@@ -111,7 +111,7 @@ the identity that is associated with the sending authorization policy
 that permits you to use the address in the "From" header of the bounce.
 For more information about sending authorization, see the Amazon SES
 Developer Guide
-(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 
 
 

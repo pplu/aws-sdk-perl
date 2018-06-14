@@ -37,8 +37,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # This example associates the specified Elastic IP address with the specified
    # instance in a VPC.
     my $AssociateAddressResult = $ec2->AssociateAddress(
-      'AllocationId' => 'eipalloc-64d5890a',
-      'InstanceId'   => 'i-0b263919b6498b123'
+      {
+        'InstanceId'   => 'i-0b263919b6498b123',
+        'AllocationId' => 'eipalloc-64d5890a'
+      }
     );
 
     # Results:
@@ -49,8 +51,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # This example associates the specified Elastic IP address with the specified
    # network interface.
     my $AssociateAddressResult = $ec2->AssociateAddress(
-      'AllocationId'       => 'eipalloc-64d5890a',
-      'NetworkInterfaceId' => 'eni-1a2b3c4d'
+      {
+        'NetworkInterfaceId' => 'eni-1a2b3c4d',
+        'AllocationId'       => 'eipalloc-64d5890a'
+      }
     );
 
     # Results:
@@ -61,8 +65,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example associates an Elastic IP address with an instance in
     # EC2-Classic.
     my $AssociateAddressResult = $ec2->AssociateAddress(
-      'InstanceId' => 'i-07ffe74c7330ebf53',
-      'PublicIp'   => '198.51.100.0'
+      {
+        'InstanceId' => 'i-07ffe74c7330ebf53',
+        'PublicIp'   => '198.51.100.0'
+      }
     );
 
 
@@ -113,9 +119,6 @@ exactly one network interface is attached.
 [EC2-VPC] The ID of the network interface. If the instance has more
 than one network interface, you must specify a network interface ID.
 
-For EC2-VPC, you can specify either the instance ID or the network
-interface ID, but not both.
-
 
 
 =head2 PrivateIpAddress => Str
@@ -128,8 +131,7 @@ Elastic IP address is associated with the primary private IP address.
 
 =head2 PublicIp => Str
 
-The Elastic IP address to associate with the instance. This is required
-for EC2-Classic.
+The Elastic IP address. This is required for EC2-Classic.
 
 
 

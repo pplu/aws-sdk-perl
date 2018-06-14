@@ -32,8 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example creates an alias for the specified customer master
     # key (CMK).
     $kms->CreateAlias(
-      'AliasName'   => 'alias/ExampleAlias',
-      'TargetKeyId' => '1234abcd-12ab-34cd-56ef-1234567890ab'
+      {
+        'AliasName'   => 'alias/ExampleAlias',
+        'TargetKeyId' => '1234abcd-12ab-34cd-56ef-1234567890ab'
+      }
     );
 
 
@@ -45,21 +47,35 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms
 
 =head2 B<REQUIRED> AliasName => Str
 
-Specifies the alias name. This value must begin with C<alias/> followed
-by a name, such as C<alias/ExampleAlias>. The alias name cannot begin
-with C<alias/aws/>. The C<alias/aws/> prefix is reserved for AWS
-managed CMKs.
+String that contains the display name. The name must start with the
+word "alias" followed by a forward slash (alias/). Aliases that begin
+with "alias/AWS" are reserved.
 
 
 
 =head2 B<REQUIRED> TargetKeyId => Str
 
-Identifies the CMK to which the alias refers. Specify the key ID or the
-Amazon Resource Name (ARN) of the CMK. You cannot specify another
-alias. For help finding the key ID and ARN, see Finding the Key ID and
-ARN
-(https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html#find-cmk-id-arn)
-in the I<AWS Key Management Service Developer Guide>.
+Identifies the CMK for which you are creating the alias. This value
+cannot be an alias.
+
+Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+
+For example:
+
+=over
+
+=item *
+
+Key ID: C<1234abcd-12ab-34cd-56ef-1234567890ab>
+
+=item *
+
+Key ARN:
+C<arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab>
+
+=back
+
+To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
 
 
 

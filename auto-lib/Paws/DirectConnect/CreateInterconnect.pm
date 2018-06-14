@@ -5,8 +5,6 @@ package Paws::DirectConnect::CreateInterconnect;
   has InterconnectName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'interconnectName' , required => 1);
   has LagId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagId' );
   has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location' , required => 1);
-  has ProviderName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'providerName' );
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
@@ -37,31 +35,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InterconnectName => 'MyInterconnectName',
       Location         => 'MyLocationCode',
       LagId            => 'MyLagId',              # OPTIONAL
-      ProviderName     => 'MyProviderName',       # OPTIONAL
-      Tags             => [
-        {
-          Key   => 'MyTagKey',                    # min: 1, max: 128
-          Value => 'MyTagValue',                  # max: 256; OPTIONAL
-        },
-        ...
-      ],                                          # OPTIONAL
     );
 
     # Results:
-    my $AwsDevice            = $Interconnect->AwsDevice;
-    my $AwsDeviceV2          = $Interconnect->AwsDeviceV2;
-    my $Bandwidth            = $Interconnect->Bandwidth;
-    my $HasLogicalRedundancy = $Interconnect->HasLogicalRedundancy;
-    my $InterconnectId       = $Interconnect->InterconnectId;
-    my $InterconnectName     = $Interconnect->InterconnectName;
-    my $InterconnectState    = $Interconnect->InterconnectState;
-    my $JumboFrameCapable    = $Interconnect->JumboFrameCapable;
-    my $LagId                = $Interconnect->LagId;
-    my $LoaIssueTime         = $Interconnect->LoaIssueTime;
-    my $Location             = $Interconnect->Location;
-    my $ProviderName         = $Interconnect->ProviderName;
-    my $Region               = $Interconnect->Region;
-    my $Tags                 = $Interconnect->Tags;
+    my $InterconnectState = $Interconnect->InterconnectState;
+    my $Bandwidth         = $Interconnect->Bandwidth;
+    my $InterconnectId    = $Interconnect->InterconnectId;
+    my $AwsDevice         = $Interconnect->AwsDevice;
+    my $LagId             = $Interconnect->LagId;
+    my $LoaIssueTime      = $Interconnect->LoaIssueTime;
+    my $Location          = $Interconnect->Location;
+    my $InterconnectName  = $Interconnect->InterconnectName;
+    my $Region            = $Interconnect->Region;
 
     # Returns a L<Paws::DirectConnect::Interconnect> object.
 
@@ -73,7 +58,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =head2 B<REQUIRED> Bandwidth => Str
 
-The port bandwidth, in Gbps. The possible values are 1 and 10.
+The port bandwidth
+
+Example: 1Gbps
+
+Default: None
+
+Available values: 1Gbps,10Gbps
 
 
 
@@ -81,29 +72,25 @@ The port bandwidth, in Gbps. The possible values are 1 and 10.
 
 The name of the interconnect.
 
+Example: "I<1G Interconnect to AWS>"
+
+Default: None
+
 
 
 =head2 LagId => Str
 
-The ID of the LAG.
+
 
 
 
 =head2 B<REQUIRED> Location => Str
 
-The location of the interconnect.
+Where the interconnect is located
 
+Example: EqSV5
 
-
-=head2 ProviderName => Str
-
-The name of the service provider associated with the interconnect.
-
-
-
-=head2 Tags => ArrayRef[L<Paws::DirectConnect::Tag>]
-
-The tags to associate with the interconnect.
+Default: None
 
 
 

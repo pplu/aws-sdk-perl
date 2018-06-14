@@ -32,9 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $GetCallerIdentityResponse = $sts->GetCallerIdentity();
 
     # Results:
-    my $Account = $GetCallerIdentityResponse->Account;
-    my $Arn     = $GetCallerIdentityResponse->Arn;
     my $UserId  = $GetCallerIdentityResponse->UserId;
+    my $Arn     = $GetCallerIdentityResponse->Arn;
+    my $Account = $GetCallerIdentityResponse->Account;
 
     # Returns a L<Paws::STS::GetCallerIdentityResponse> object.
     # To get details about a calling user federated with AssumeRole
@@ -44,9 +44,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $GetCallerIdentityResponse = $sts->GetCallerIdentity();
 
     # Results:
-    my $Account = $GetCallerIdentityResponse->Account;
-    my $Arn     = $GetCallerIdentityResponse->Arn;
     my $UserId  = $GetCallerIdentityResponse->UserId;
+    my $Arn     = $GetCallerIdentityResponse->Arn;
+    my $Account = $GetCallerIdentityResponse->Account;
 
     # Returns a L<Paws::STS::GetCallerIdentityResponse> object.
     # To get details about a calling user federated with GetFederationToken
@@ -56,9 +56,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $GetCallerIdentityResponse = $sts->GetCallerIdentity();
 
     # Results:
-    my $Account = $GetCallerIdentityResponse->Account;
-    my $Arn     = $GetCallerIdentityResponse->Arn;
     my $UserId  = $GetCallerIdentityResponse->UserId;
+    my $Arn     = $GetCallerIdentityResponse->Arn;
+    my $Account = $GetCallerIdentityResponse->Account;
 
     # Returns a L<Paws::STS::GetCallerIdentityResponse> object.
 

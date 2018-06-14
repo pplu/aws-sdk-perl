@@ -32,8 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following command deletes one access key (access key ID and secret
     # access key) assigned to the IAM user named Bob.
     $iam->DeleteAccessKey(
-      'AccessKeyId' => 'AKIDPMS9RO4H3FEXAMPLE',
-      'UserName'    => 'Bob'
+      {
+        'UserName'    => 'Bob',
+        'AccessKeyId' => 'AKIDPMS9RO4H3FEXAMPLE'
+      }
     );
 
 
@@ -48,7 +50,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam
 The access key ID for the access key ID and secret access key you want
 to delete.
 
-This parameter allows (through its regex pattern
+This parameter allows (per its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters that can
 consist of any upper or lowercased letter or digit.
 
@@ -58,7 +60,7 @@ consist of any upper or lowercased letter or digit.
 
 The name of the user whose access key pair you want to delete.
 
-This parameter allows (through its regex pattern
+This parameter allows (per its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
 also include any of the following characters: _+=,.@-

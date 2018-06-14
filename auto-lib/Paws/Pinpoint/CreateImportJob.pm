@@ -32,14 +32,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateImportJobResponse = $pinpoint->CreateImportJob(
       ApplicationId    => 'My__string',
       ImportJobRequest => {
-        Format            => 'CSV',          # values: CSV, JSON
-        RoleArn           => 'My__string',
-        S3Url             => 'My__string',
-        DefineSegment     => 1,              # OPTIONAL
-        ExternalId        => 'My__string',
-        RegisterEndpoints => 1,              # OPTIONAL
+        Format            => 'CSV',          # values: CSV, JSON; OPTIONAL
         SegmentId         => 'My__string',
+        RegisterEndpoints => 1,              # OPTIONAL
+        ExternalId        => 'My__string',
+        S3Url             => 'My__string',
+        RoleArn           => 'My__string',
         SegmentName       => 'My__string',
+        DefineSegment     => 1,              # OPTIONAL
       },
 
     );
@@ -50,15 +50,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::Pinpoint::CreateImportJobResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pinpoint/CreateImportJob>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-The unique identifier for the application. This identifier is displayed
-as the B<Project ID> on the Amazon Pinpoint console.
+
 
 
 

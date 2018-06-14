@@ -48,8 +48,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $Metadata       = $InitiateDocumentVersionUploadResponse->Metadata;
     my $UploadMetadata = $InitiateDocumentVersionUploadResponse->UploadMetadata;
+    my $Metadata       = $InitiateDocumentVersionUploadResponse->Metadata;
 
     # Returns a L<Paws::WorkDocs::InitiateDocumentVersionUploadResponse> object.
 

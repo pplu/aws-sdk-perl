@@ -7,7 +7,6 @@ package Paws::KinesisAnalytics::CreateApplication;
   has CloudWatchLoggingOptions => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::CloudWatchLoggingOption]');
   has Inputs => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::Input]');
   has Outputs => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::Output]');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -39,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ApplicationDescription   => 'MyApplicationDescription',    # OPTIONAL
       CloudWatchLoggingOptions => [
         {
-          LogStreamARN => 'MyLogStreamARN',    # min: 1, max: 2048
           RoleARN      => 'MyRoleARN',         # min: 1, max: 2048
+          LogStreamARN => 'MyLogStreamARN',    # min: 1, max: 2048
 
         },
         ...
@@ -50,8 +49,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           InputSchema => {
             RecordColumns => [
               {
+                SqlType => 'MyRecordColumnSqlType',    # min: 1,
                 Name    => 'MyRecordColumnName',
-                SqlType => 'MyRecordColumnSqlType',    # min: 1
                 Mapping => 'MyRecordColumnMapping',    # OPTIONAL
               },
               ...
@@ -60,38 +59,38 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               RecordFormatType  => 'JSON',             # values: JSON, CSV
               MappingParameters => {
                 CSVMappingParameters => {
-                  RecordColumnDelimiter => 'MyRecordColumnDelimiter',   # min: 1
-                  RecordRowDelimiter    => 'MyRecordRowDelimiter',      # min: 1
+                  RecordRowDelimiter    => 'MyRecordRowDelimiter',     # min: 1,
+                  RecordColumnDelimiter => 'MyRecordColumnDelimiter',  # min: 1,
 
                 },    # OPTIONAL
                 JSONMappingParameters => {
-                  RecordRowPath => 'MyRecordRowPath',    # min: 1
+                  RecordRowPath => 'MyRecordRowPath',    # min: 1,
 
                 },    # OPTIONAL
               },    # OPTIONAL
             },
             RecordEncoding => 'MyRecordEncoding',    # OPTIONAL
           },
-          NamePrefix       => 'MyInAppStreamName',    # min: 1, max: 32
-          InputParallelism => {
-            Count => 1,    # min: 1, max: 64; OPTIONAL
+          NamePrefix           => 'MyInAppStreamName',    # min: 1, max: 32
+          KinesisFirehoseInput => {
+            RoleARN     => 'MyRoleARN',                   # min: 1, max: 2048
+            ResourceARN => 'MyResourceARN',               # min: 1, max: 2048
+
           },    # OPTIONAL
           InputProcessingConfiguration => {
             InputLambdaProcessor => {
-              ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
               RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
+              ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
 
             },
 
           },    # OPTIONAL
-          KinesisFirehoseInput => {
-            ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
-            RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
-
+          InputParallelism => {
+            Count => 1,    # min: 1, max: 64; OPTIONAL
           },    # OPTIONAL
           KinesisStreamsInput => {
-            ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
             RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
+            ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
 
           },    # OPTIONAL
         },
@@ -101,34 +100,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           DestinationSchema => {
             RecordFormatType => 'JSON',    # values: JSON, CSV
-
           },
           Name                  => 'MyInAppStreamName',    # min: 1, max: 32
           KinesisFirehoseOutput => {
-            ResourceARN => 'MyResourceARN',                # min: 1, max: 2048
             RoleARN     => 'MyRoleARN',                    # min: 1, max: 2048
+            ResourceARN => 'MyResourceARN',                # min: 1, max: 2048
 
           },    # OPTIONAL
           KinesisStreamsOutput => {
-            ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
             RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
+            ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
 
           },    # OPTIONAL
           LambdaOutput => {
-            ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
             RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
+            ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
 
           },    # OPTIONAL
         },
         ...
       ],        # OPTIONAL
-      Tags => [
-        {
-          Key   => 'MyTagKey',      # min: 1, max: 128
-          Value => 'MyTagValue',    # max: 256; OPTIONAL
-        },
-        ...
-      ],                            # OPTIONAL
     );
 
     # Results:
@@ -150,7 +141,7 @@ data from one in-application stream, generates a running average of the
 number of advertisement clicks by vendor, and insert resulting rows in
 another in-application stream using pumps. For more information about
 the typical pattern, see Application Code
-(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-app-code.html).
+(http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-app-code.html).
 
 You can provide such series of SQL statements, where output of one
 statement can be used as the input for the next statement. You store
@@ -182,7 +173,7 @@ C<sample-app>).
 Use this parameter to configure a CloudWatch log stream to monitor
 application configuration errors. For more information, see Working
 with Amazon CloudWatch Logs
-(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html).
+(http://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html).
 
 
 
@@ -214,8 +205,8 @@ You can configure application output to write data from any of the
 in-application streams to up to three destinations.
 
 These destinations can be Amazon Kinesis streams, Amazon Kinesis
-Firehose delivery streams, AWS Lambda destinations, or any combination
-of the three.
+Firehose delivery streams, Amazon Lambda destinations, or any
+combination of the three.
 
 In the configuration, you specify the in-application stream name, the
 destination stream or Lambda function Amazon Resource Name (ARN), and
@@ -228,17 +219,6 @@ Lambda function ARN. For stream destinations, you provide the format of
 data in the stream (for example, JSON, CSV). You also must provide an
 IAM role that Amazon Kinesis Analytics can assume to write to the
 stream or Lambda function on your behalf.
-
-
-
-=head2 Tags => ArrayRef[L<Paws::KinesisAnalytics::Tag>]
-
-A list of one or more tags to assign to the application. A tag is a
-key-value pair that identifies an application. Note that the maximum
-number of application tags includes system tags. The maximum number of
-user-defined application tags is 50. For more information, see Using
-Tagging
-(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-tagging.html).
 
 
 

@@ -40,9 +40,9 @@ Configurations for sending notifications.
 
 =head2 NotificationArn => Str
 
-  An Amazon Resource Name (ARN) for an Amazon Simple Notification Service
-(Amazon SNS) topic. Run Command pushes notifications about command
-status changes to this topic.
+  An Amazon Resource Name (ARN) for a Simple Notification Service (SNS)
+topic. Run Command pushes notifications about command status changes to
+this topic.
 
 
 =head2 NotificationEvents => ArrayRef[Str|Undef]
@@ -50,8 +50,8 @@ status changes to this topic.
   The different events for which you can receive notifications. These
 events include the following: All (events), InProgress, Success,
 TimedOut, Cancelled, Failed. To learn more about these events, see
-Configuring Amazon SNS Notifications for AWS Systems Manager
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-sns-notifications.html)
+Configuring Amazon SNS Notifications for Run Command
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/rc-sns-notifications.html)
 in the I<AWS Systems Manager User Guide>.
 
 

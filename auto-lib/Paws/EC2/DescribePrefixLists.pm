@@ -35,16 +35,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',    # OPTIONAL
-          Values => [
-            'MyString', ...        # OPTIONAL
-          ],                       # OPTIONAL
+          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name => 'MyString',
         },
         ...
-      ],                           # OPTIONAL
-      MaxResults    => 1,                                    # OPTIONAL
-      NextToken     => 'MyString',                           # OPTIONAL
-      PrefixListIds => [ 'MyPrefixListResourceId', ... ],    # OPTIONAL
+      ],                                    # OPTIONAL
+      MaxResults    => 1,                   # OPTIONAL
+      NextToken     => 'MyString',          # OPTIONAL
+      PrefixListIds => [ 'MyString', ... ], # OPTIONAL
     );
 
     # Results:
@@ -89,15 +87,19 @@ C<prefix-list-name>: The name of a prefix list.
 
 =head2 MaxResults => Int
 
-The maximum number of results to return with a single call. To retrieve
-the remaining results, make another call with the returned C<nextToken>
-value.
+The maximum number of items to return for this request. The request
+returns a token that you can specify in a subsequent call to get the
+next set of results.
+
+Constraint: If the value specified is greater than 1000, we return only
+1000 items.
 
 
 
 =head2 NextToken => Str
 
-The token for the next page of results.
+The token for the next set of items to return. (You received this token
+from a prior call.)
 
 
 

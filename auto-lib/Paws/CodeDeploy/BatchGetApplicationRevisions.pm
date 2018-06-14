@@ -33,26 +33,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ApplicationName => 'MyApplicationName',
       Revisions       => [
         {
-          AppSpecContent => {
-            Content => 'MyRawStringContent',    # OPTIONAL
-            Sha256  => 'MyRawStringSha256',     # OPTIONAL
+          gitHubLocation => {
+            repository => 'MyRepository',    # OPTIONAL
+            commitId   => 'MyCommitId',      # OPTIONAL
           },    # OPTIONAL
-          GitHubLocation => {
-            CommitId   => 'MyCommitId',      # OPTIONAL
-            Repository => 'MyRepository',    # OPTIONAL
+          string => {
+            content => 'MyRawStringContent',    # OPTIONAL
+            sha256  => 'MyRawStringSha256',     # OPTIONAL
           },    # OPTIONAL
-          RevisionType =>
-            'S3',    # values: S3, GitHub, String, AppSpecContent; OPTIONAL
-          S3Location => {
-            Bucket => 'MyS3Bucket',    # OPTIONAL
-            BundleType => 'tar',   # values: tar, tgz, zip, YAML, JSON; OPTIONAL
-            ETag    => 'MyETag',         # OPTIONAL
-            Key     => 'MyS3Key',        # OPTIONAL
-            Version => 'MyVersionId',    # OPTIONAL
-          },    # OPTIONAL
-          String => {
-            Content => 'MyRawStringContent',    # OPTIONAL
-            Sha256  => 'MyRawStringSha256',     # OPTIONAL
+          revisionType => 'S3',    # values: S3, GitHub, String; OPTIONAL
+          s3Location   => {
+            eTag    => 'MyETag',         # OPTIONAL
+            key     => 'MyS3Key',        # OPTIONAL
+            version => 'MyVersionId',    # OPTIONAL
+            bundleType => 'tar',   # values: tar, tgz, zip, YAML, JSON; OPTIONAL
+            bucket => 'MyS3Bucket',    # OPTIONAL
           },    # OPTIONAL
         },
         ...
@@ -61,9 +56,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $Revisions       = $BatchGetApplicationRevisionsOutput->Revisions;
     my $ApplicationName = $BatchGetApplicationRevisionsOutput->ApplicationName;
     my $ErrorMessage    = $BatchGetApplicationRevisionsOutput->ErrorMessage;
-    my $Revisions       = $BatchGetApplicationRevisionsOutput->Revisions;
 
     # Returns a L<Paws::CodeDeploy::BatchGetApplicationRevisionsOutput> object.
 
@@ -82,9 +77,8 @@ information.
 
 =head2 B<REQUIRED> Revisions => ArrayRef[L<Paws::CodeDeploy::RevisionLocation>]
 
-An array of C<RevisionLocation> objects that specify information to get
-about the application revisions, including type and location. The
-maximum number of C<RevisionLocation> objects you can specify is 25.
+Information to get about the application revisions, including type and
+location.
 
 
 

@@ -55,16 +55,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AvailabilityZone    => 'MyString',            # OPTIONAL
       BlockDeviceMappings => [
         {
-          DeviceName => 'MyString',
-          Ebs        => {
-            DeleteOnTermination => 1,               # OPTIONAL
-            Iops                => 1,               # OPTIONAL
-            SnapshotId          => 'MyString',
-            VolumeSize          => 1,               # OPTIONAL
-            VolumeType => 'gp2',    # values: gp2, io1, standard; OPTIONAL
-          },    # OPTIONAL
-          NoDevice    => 'MyString',
+          DeviceName  => 'MyString',
           VirtualName => 'MyString',
+          NoDevice    => 'MyString',
+          Ebs         => {
+            SnapshotId => 'MyString',
+            Iops       => 1,            # OPTIONAL
+            VolumeType => 'gp2',        # values: gp2, io1, standard; OPTIONAL
+            VolumeSize => 1,            # OPTIONAL
+            DeleteOnTermination => 1,   # OPTIONAL
+          },    # OPTIONAL
         },
         ...
       ],        # OPTIONAL
@@ -122,7 +122,7 @@ DescribeAgentVersions. AgentVersion cannot be set to Chef 12.2.
 A custom AMI ID to be used to create the instance. The AMI should be
 based on one of the supported operating systems. For more information,
 see Using Custom AMIs
-(https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
 
 If you specify a custom AMI, you must set C<Os> to C<Custom>.
 
@@ -134,7 +134,7 @@ The instance architecture. The default option is C<x86_64>. Instance
 types do not necessarily support both architectures. For a list of the
 architectures that are supported by the different instance types, see
 Instance Families and Types
-(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html).
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html).
 
 Valid values are: C<"x86_64">, C<"i386">
 
@@ -148,7 +148,7 @@ Valid values are: C<"load">, C<"timer">
 =head2 AvailabilityZone => Str
 
 The instance Availability Zone. For more information, see Regions and
-Endpoints (https://docs.aws.amazon.com/general/latest/gr/rande.html).
+Endpoints (http://docs.aws.amazon.com/general/latest/gr/rande.html).
 
 
 
@@ -156,7 +156,7 @@ Endpoints (https://docs.aws.amazon.com/general/latest/gr/rande.html).
 
 An array of C<BlockDeviceMapping> objects that specify the instance's
 block devices. For more information, see Block Device Mapping
-(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html).
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html).
 Note that block device mappings are not supported for custom AMIs.
 
 
@@ -193,7 +193,7 @@ The instance type, such as C<t2.micro>. For a list of supported
 instance types, open the stack in the console, choose B<Instances>, and
 choose B<+ Instance>. The B<Size> list contains the currently supported
 types. For more information, see Instance Families and Types
-(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html).
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html).
 The parameter values that you use to specify the various types are in
 the B<API Name> column of the B<Available Instance Types> table.
 
@@ -215,9 +215,9 @@ following.
 =item *
 
 A supported Linux operating system: An Amazon Linux version, such as
-C<Amazon Linux 2018.03>, C<Amazon Linux 2017.09>, C<Amazon Linux
-2017.03>, C<Amazon Linux 2016.09>, C<Amazon Linux 2016.03>, C<Amazon
-Linux 2015.09>, or C<Amazon Linux 2015.03>.
+C<Amazon Linux 2017.09>, C<Amazon Linux 2017.03>, C<Amazon Linux
+2016.09>, C<Amazon Linux 2016.03>, C<Amazon Linux 2015.09>, or C<Amazon
+Linux 2015.03>.
 
 =item *
 
@@ -245,19 +245,19 @@ A custom AMI: C<Custom>.
 
 =back
 
-For more information about the supported operating systems, see AWS
+For more information on the supported operating systems, see AWS
 OpsWorks Stacks Operating Systems
-(https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
 
 The default option is the current Amazon Linux version. If you set this
 parameter to C<Custom>, you must use the CreateInstance action's AmiId
 parameter to specify the custom AMI that you want to use. Block device
 mappings are not supported if the value is C<Custom>. For more
-information about supported operating systems, see Operating Systems
-(https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html)For
-more information about how to use custom AMIs with AWS OpsWorks Stacks,
+information on the supported operating systems, see Operating Systems
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html)For
+more information on how to use custom AMIs with AWS OpsWorks Stacks,
 see Using Custom AMIs
-(https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
 
 
 
@@ -265,7 +265,7 @@ see Using Custom AMIs
 
 The instance root device type. For more information, see Storage for
 the Root Device
-(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device).
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device).
 
 Valid values are: C<"ebs">, C<"instance-store">
 
@@ -302,7 +302,7 @@ dedicated hosts, see Dedicated Hosts Overview
 (http://aws.amazon.com/ec2/dedicated-hosts/) and Amazon EC2 Dedicated
 Hosts (http://aws.amazon.com/ec2/dedicated-hosts/). For more
 information about dedicated instances, see Dedicated Instances
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/dedicated-instance.html)
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/dedicated-instance.html)
 and Amazon EC2 Dedicated Instances
 (http://aws.amazon.com/ec2/purchasing-options/dedicated-instances/).
 

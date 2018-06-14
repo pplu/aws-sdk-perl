@@ -35,23 +35,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $AwsDevice            = $Connection->AwsDevice;
-    my $AwsDeviceV2          = $Connection->AwsDeviceV2;
-    my $Bandwidth            = $Connection->Bandwidth;
-    my $ConnectionId         = $Connection->ConnectionId;
-    my $ConnectionName       = $Connection->ConnectionName;
-    my $ConnectionState      = $Connection->ConnectionState;
-    my $HasLogicalRedundancy = $Connection->HasLogicalRedundancy;
-    my $JumboFrameCapable    = $Connection->JumboFrameCapable;
-    my $LagId                = $Connection->LagId;
-    my $LoaIssueTime         = $Connection->LoaIssueTime;
-    my $Location             = $Connection->Location;
-    my $OwnerAccount         = $Connection->OwnerAccount;
-    my $PartnerName          = $Connection->PartnerName;
-    my $ProviderName         = $Connection->ProviderName;
-    my $Region               = $Connection->Region;
-    my $Tags                 = $Connection->Tags;
-    my $Vlan                 = $Connection->Vlan;
+    my $ConnectionState = $Connection->ConnectionState;
+    my $ConnectionName  = $Connection->ConnectionName;
+    my $Vlan            = $Connection->Vlan;
+    my $ConnectionId    = $Connection->ConnectionId;
+    my $Bandwidth       = $Connection->Bandwidth;
+    my $PartnerName     = $Connection->PartnerName;
+    my $AwsDevice       = $Connection->AwsDevice;
+    my $OwnerAccount    = $Connection->OwnerAccount;
+    my $LagId           = $Connection->LagId;
+    my $LoaIssueTime    = $Connection->LoaIssueTime;
+    my $Location        = $Connection->Location;
+    my $Region          = $Connection->Region;
 
     # Returns a L<Paws::DirectConnect::Connection> object.
 
@@ -65,11 +60,19 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 The ID of the connection.
 
+Example: dxcon-abc123
+
+Default: None
+
 
 
 =head2 B<REQUIRED> LagId => Str
 
 The ID of the LAG with which to associate the connection.
+
+Example: dxlag-abc123
+
+Default: None
 
 
 

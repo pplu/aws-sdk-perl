@@ -2,7 +2,6 @@
 package Paws::S3::RestoreObject;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
-  has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
   has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
   has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
   has RestoreRequest => (is => 'ro', isa => 'Paws::S3::RestoreRequest');
@@ -38,27 +37,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $RestoreObjectOutput = $s3->RestoreObject(
       Bucket         => 'MyBucketName',
       Key            => 'MyObjectKey',
-      ContentMD5     => 'MyContentMD5',    # OPTIONAL
-      RequestPayer   => 'requester',       # OPTIONAL
+      RequestPayer   => 'requester',      # OPTIONAL
       RestoreRequest => {
-        Days                 => 1,                  # OPTIONAL
-        Description          => 'MyDescription',    # OPTIONAL
-        GlacierJobParameters => {
-          Tier => 'Standard',    # values: Standard, Bulk, Expedited
-
-        },    # OPTIONAL
         OutputLocation => {
           S3 => {
-            BucketName        => 'MyBucketName',
-            Prefix            => 'MyLocationPrefix',
+            BucketName => 'MyBucketName',
+            Prefix     => 'MyLocationPrefix',
+            Encryption => {
+              EncryptionType => 'AES256',           # values: AES256, aws:kms
+              KMSContext     => 'MyKMSContext',     # OPTIONAL
+              KMSKeyId       => 'MySSEKMSKeyId',    # OPTIONAL
+            },    # OPTIONAL
+            StorageClass => 'STANDARD'
+            , # values: STANDARD, REDUCED_REDUNDANCY, STANDARD_IA, ONEZONE_IA; OPTIONAL
             AccessControlList => [
               {
                 Grantee => {
                   Type => 'CanonicalUser'
                   ,    # values: CanonicalUser, AmazonCustomerByEmail, Group
                   DisplayName  => 'MyDisplayName',     # OPTIONAL
-                  EmailAddress => 'MyEmailAddress',    # OPTIONAL
                   ID           => 'MyID',              # OPTIONAL
+                  EmailAddress => 'MyEmailAddress',    # OPTIONAL
                   URI          => 'MyURI',             # OPTIONAL
                 },    # OPTIONAL
                 Permission => 'FULL_CONTROL'
@@ -66,19 +65,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },
               ...
             ],    # OPTIONAL
-            CannedACL => 'private'
-            , # values: private, public-read, public-read-write, authenticated-read, aws-exec-read, bucket-owner-read, bucket-owner-full-control; OPTIONAL
-            Encryption => {
-              EncryptionType => 'AES256',           # values: AES256, aws:kms
-              KMSContext     => 'MyKMSContext',     # OPTIONAL
-              KMSKeyId       => 'MySSEKMSKeyId',    # OPTIONAL
-            },    # OPTIONAL
-            StorageClass => 'STANDARD'
-            , # values: STANDARD, REDUCED_REDUNDANCY, STANDARD_IA, ONEZONE_IA, INTELLIGENT_TIERING, GLACIER, DEEP_ARCHIVE; OPTIONAL
             Tagging => {
               TagSet => [
                 {
-                  Key   => 'MyObjectKey',    # min: 1
+                  Key   => 'MyObjectKey',    # min: 1,
                   Value => 'MyValue',
 
                 },
@@ -86,59 +76,63 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ],
 
             },    # OPTIONAL
+            CannedACL => 'private'
+            , # values: private, public-read, public-read-write, authenticated-read, aws-exec-read, bucket-owner-read, bucket-owner-full-control; OPTIONAL
             UserMetadata => [
               {
-                Name  => 'MyMetadataKey',      # OPTIONAL
                 Value => 'MyMetadataValue',    # OPTIONAL
+                Name  => 'MyMetadataKey',      # OPTIONAL
               },
               ...
             ],                                 # OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
+        Type             => 'SELECT',    # values: SELECT; OPTIONAL
         SelectParameters => {
-          Expression         => 'MyExpression',
-          ExpressionType     => 'SQL',            # values: SQL
-          InputSerialization => {
+          OutputSerialization => {
             CSV => {
-              AllowQuotedRecordDelimiter => 1,                     # OPTIONAL
-              Comments                   => 'MyComments',          # OPTIONAL
-              FieldDelimiter             => 'MyFieldDelimiter',    # OPTIONAL
-              FileHeaderInfo => 'USE',    # values: USE, IGNORE, NONE; OPTIONAL
               QuoteCharacter       => 'MyQuoteCharacter',          # OPTIONAL
               QuoteEscapeCharacter => 'MyQuoteEscapeCharacter',    # OPTIONAL
               RecordDelimiter      => 'MyRecordDelimiter',         # OPTIONAL
-            },    # OPTIONAL
-            CompressionType => 'NONE',    # values: NONE, GZIP, BZIP2; OPTIONAL
-            JSON            => {
-              Type => 'DOCUMENT',         # values: DOCUMENT, LINES; OPTIONAL
-            },    # OPTIONAL
-            Parquet => {
-
-            },    # OPTIONAL
-          },
-          OutputSerialization => {
-            CSV => {
               FieldDelimiter       => 'MyFieldDelimiter',          # OPTIONAL
-              QuoteCharacter       => 'MyQuoteCharacter',          # OPTIONAL
-              QuoteEscapeCharacter => 'MyQuoteEscapeCharacter',    # OPTIONAL
               QuoteFields => 'ALWAYS',    # values: ALWAYS, ASNEEDED; OPTIONAL
-              RecordDelimiter => 'MyRecordDelimiter',    # OPTIONAL
             },    # OPTIONAL
             JSON => {
               RecordDelimiter => 'MyRecordDelimiter',    # OPTIONAL
             },    # OPTIONAL
           },
+          InputSerialization => {
+            CompressionType => 'NONE',    # values: NONE, GZIP; OPTIONAL
+            CSV             => {
+              QuoteCharacter       => 'MyQuoteCharacter',          # OPTIONAL
+              QuoteEscapeCharacter => 'MyQuoteEscapeCharacter',    # OPTIONAL
+              Comments             => 'MyComments',                # OPTIONAL
+              FileHeaderInfo => 'USE',    # values: USE, IGNORE, NONE; OPTIONAL
+              RecordDelimiter => 'MyRecordDelimiter',    # OPTIONAL
+              FieldDelimiter  => 'MyFieldDelimiter',     # OPTIONAL
+            },    # OPTIONAL
+            JSON => {
+              Type => 'DOCUMENT',    # values: DOCUMENT, LINES; OPTIONAL
+            },    # OPTIONAL
+          },
+          Expression     => 'MyExpression',
+          ExpressionType => 'SQL',            # values: SQL
 
         },    # OPTIONAL
-        Tier => 'Standard',    # values: Standard, Bulk, Expedited
-        Type => 'SELECT',      # values: SELECT; OPTIONAL
+        Days => 1,             # OPTIONAL
+        Tier => 'Standard',    # values: Standard, Bulk, Expedited; OPTIONAL
+        GlacierJobParameters => {
+          Tier => 'Standard',    # values: Standard, Bulk, Expedited; OPTIONAL
+
+        },    # OPTIONAL
+        Description => 'MyDescription',    # OPTIONAL
       },    # OPTIONAL
       VersionId => 'MyObjectVersionId',    # OPTIONAL
     );
 
     # Results:
-    my $RequestCharged    = $RestoreObjectOutput->RequestCharged;
     my $RestoreOutputPath = $RestoreObjectOutput->RestoreOutputPath;
+    my $RequestCharged    = $RestoreObjectOutput->RequestCharged;
 
     # Returns a L<Paws::S3::RestoreObjectOutput> object.
 
@@ -150,28 +144,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-The bucket name or containing the object to restore.
-
-When using this API with an access point, you must direct requests to
-the access point hostname. The access point hostname takes the form
-I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
-When using this operation using an access point through the AWS SDKs,
-you provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see Using Access Points
-(https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html)
-in the I<Amazon Simple Storage Service Developer Guide>.
-
-
-
-=head2 ContentMD5 => Str
-
 
 
 
 
 =head2 B<REQUIRED> Key => Str
 
-Object key for which the operation was initiated.
+
 
 
 
@@ -189,7 +168,7 @@ Valid values are: C<"requester">
 
 =head2 VersionId => Str
 
-VersionId used to reference a specific version of the object.
+
 
 
 

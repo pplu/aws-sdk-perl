@@ -1,7 +1,6 @@
 
 package Paws::CognitoIdp::CreateUserPool;
   use Moose;
-  has AccountRecoverySetting => (is => 'ro', isa => 'Paws::CognitoIdp::AccountRecoverySettingType');
   has AdminCreateUserConfig => (is => 'ro', isa => 'Paws::CognitoIdp::AdminCreateUserConfigType');
   has AliasAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has AutoVerifiedAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -18,7 +17,6 @@ package Paws::CognitoIdp::CreateUserPool;
   has SmsConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::SmsConfigurationType');
   has SmsVerificationMessage => (is => 'ro', isa => 'Str');
   has UsernameAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has UsernameConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::UsernameConfigurationType');
   has UserPoolAddOns => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolAddOnsType');
   has UserPoolTags => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolTagsType');
   has VerificationMessageTemplate => (is => 'ro', isa => 'Paws::CognitoIdp::VerificationMessageTemplateType');
@@ -48,21 +46,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $cognito-idp = Paws->service('CognitoIdp');
     my $CreateUserPoolResponse = $cognito -idp->CreateUserPool(
-      PoolName               => 'MyUserPoolNameType',
-      AccountRecoverySetting => {
-        RecoveryMechanisms => [
-          {
-            Name => 'verified_email'
-            ,    # values: verified_email, verified_phone_number, admin_only
-            Priority => 1,    # min: 1, max: 2
-
-          },
-          ...
-        ],                    # min: 1, max: 2; OPTIONAL
-      },    # OPTIONAL
+      PoolName              => 'MyUserPoolNameType',
       AdminCreateUserConfig => {
-        AllowAdminCreateUserOnly => 1,    # OPTIONAL
-        InviteMessageTemplate    => {
+        UnusedAccountValidityDays => 1,    # max: 365; OPTIONAL
+        AllowAdminCreateUserOnly  => 1,    # OPTIONAL
+        InviteMessageTemplate     => {
           EmailMessage =>
             'MyEmailVerificationMessageType',    # min: 6, max: 20000; OPTIONAL
           EmailSubject =>
@@ -70,7 +58,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           SMSMessage =>
             'MySmsVerificationMessageType',      # min: 6, max: 140; OPTIONAL
         },    # OPTIONAL
-        UnusedAccountValidityDays => 1,    # max: 365; OPTIONAL
       },    # OPTIONAL
       AliasAttributes => [
         'phone_number', ...    # values: phone_number, email, preferred_username
@@ -79,62 +66,57 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'phone_number', ...    # values: phone_number, email
       ],                       # OPTIONAL
       DeviceConfiguration => {
-        ChallengeRequiredOnNewDevice     => 1,    # OPTIONAL
         DeviceOnlyRememberedOnUserPrompt => 1,    # OPTIONAL
+        ChallengeRequiredOnNewDevice     => 1,    # OPTIONAL
       },    # OPTIONAL
       EmailConfiguration => {
-        ConfigurationSet => 'MySESConfigurationSet', # min: 1, max: 64; OPTIONAL
-        EmailSendingAccount =>
-          'COGNITO_DEFAULT',    # values: COGNITO_DEFAULT, DEVELOPER; OPTIONAL
-        From                => 'MyStringType',          # OPTIONAL
-        ReplyToEmailAddress => 'MyEmailAddressType',    # OPTIONAL
         SourceArn => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
+        ReplyToEmailAddress => 'MyEmailAddressType',    # OPTIONAL
       },    # OPTIONAL
       EmailVerificationMessage => 'MyEmailVerificationMessageType',   # OPTIONAL
       EmailVerificationSubject => 'MyEmailVerificationSubjectType',   # OPTIONAL
       LambdaConfig             => {
-        CreateAuthChallenge => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
-        CustomMessage       => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
-        DefineAuthChallenge => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
-        PostAuthentication  => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
-        PostConfirmation    => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
-        PreAuthentication   => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
-        PreSignUp           => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
-        PreTokenGeneration  => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
-        UserMigration       => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
+        PreAuthentication => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
         VerifyAuthChallengeResponse =>
-          'MyArnType',                         # min: 20, max: 2048; OPTIONAL
+          'MyArnType',                       # min: 20, max: 2048; OPTIONAL
+        PostAuthentication  => 'MyArnType',  # min: 20, max: 2048; OPTIONAL
+        PreSignUp           => 'MyArnType',  # min: 20, max: 2048; OPTIONAL
+        PreTokenGeneration  => 'MyArnType',  # min: 20, max: 2048; OPTIONAL
+        PostConfirmation    => 'MyArnType',  # min: 20, max: 2048; OPTIONAL
+        DefineAuthChallenge => 'MyArnType',  # min: 20, max: 2048; OPTIONAL
+        CreateAuthChallenge => 'MyArnType',  # min: 20, max: 2048; OPTIONAL
+        UserMigration       => 'MyArnType',  # min: 20, max: 2048; OPTIONAL
+        CustomMessage       => 'MyArnType',  # min: 20, max: 2048; OPTIONAL
       },    # OPTIONAL
       MfaConfiguration => 'OFF',    # OPTIONAL
       Policies         => {
         PasswordPolicy => {
-          MinimumLength                 => 1,    # min: 6, max: 99; OPTIONAL
-          RequireLowercase              => 1,    # OPTIONAL
-          RequireNumbers                => 1,    # OPTIONAL
-          RequireSymbols                => 1,    # OPTIONAL
-          RequireUppercase              => 1,    # OPTIONAL
-          TemporaryPasswordValidityDays => 1,    # max: 365; OPTIONAL
+          RequireNumbers   => 1,    # OPTIONAL
+          RequireSymbols   => 1,    # OPTIONAL
+          MinimumLength    => 1,    # min: 6, max: 99; OPTIONAL
+          RequireUppercase => 1,    # OPTIONAL
+          RequireLowercase => 1,    # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       Schema => [
         {
+          DeveloperOnlyAttribute => 1,    # OPTIONAL
           AttributeDataType =>
             'String',    # values: String, Number, DateTime, Boolean; OPTIONAL
-          DeveloperOnlyAttribute => 1,    # OPTIONAL
-          Mutable                => 1,    # OPTIONAL
-          Name => 'MyCustomAttributeNameType',    # min: 1, max: 20; OPTIONAL
-          NumberAttributeConstraints => {
-            MaxValue => 'MyStringType',           # OPTIONAL
-            MinValue => 'MyStringType',           # OPTIONAL
-          },    # OPTIONAL
+          Mutable                    => 1,    # OPTIONAL
           Required                   => 1,    # OPTIONAL
-          StringAttributeConstraints => {
-            MaxLength => 'MyStringType',      # OPTIONAL
-            MinLength => 'MyStringType',      # OPTIONAL
+          NumberAttributeConstraints => {
+            MaxValue => 'MyStringType',       # OPTIONAL
+            MinValue => 'MyStringType',       # OPTIONAL
           },    # OPTIONAL
+          StringAttributeConstraints => {
+            MaxLength => 'MyStringType',    # OPTIONAL
+            MinLength => 'MyStringType',    # OPTIONAL
+          },    # OPTIONAL
+          Name => 'MyCustomAttributeNameType',    # min: 1, max: 20; OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],                                          # OPTIONAL
       SmsAuthenticationMessage => 'MySmsVerificationMessageType',    # OPTIONAL
       SmsConfiguration         => {
         SnsCallerArn => 'MyArnType',       # min: 20, max: 2048; OPTIONAL
@@ -146,29 +128,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
       },    # OPTIONAL
       UserPoolTags => {
-        'MyTagKeysType' =>
-          'MyTagValueType',    # key: min: 1, max: 128, value: max: 256
+        'MyStringType' => 'MyStringType',    # key: OPTIONAL, value: OPTIONAL
       },    # OPTIONAL
       UsernameAttributes => [
         'phone_number', ...    # values: phone_number, email
       ],                       # OPTIONAL
-      UsernameConfiguration => {
-        CaseSensitive => 1,
-
-      },                       # OPTIONAL
       VerificationMessageTemplate => {
-        DefaultEmailOption => 'CONFIRM_WITH_LINK'
-        ,    # values: CONFIRM_WITH_LINK, CONFIRM_WITH_CODE; OPTIONAL
         EmailMessage =>
           'MyEmailVerificationMessageType',    # min: 6, max: 20000; OPTIONAL
         EmailMessageByLink =>
           'MyEmailVerificationMessageByLinkType', # min: 6, max: 20000; OPTIONAL
+        SmsMessage =>
+          'MySmsVerificationMessageType',         # min: 6, max: 140; OPTIONAL
+        DefaultEmailOption => 'CONFIRM_WITH_LINK'
+        ,    # values: CONFIRM_WITH_LINK, CONFIRM_WITH_CODE; OPTIONAL
         EmailSubject =>
-          'MyEmailVerificationSubjectType',       # min: 1, max: 140; OPTIONAL
+          'MyEmailVerificationSubjectType',    # min: 1, max: 140; OPTIONAL
         EmailSubjectByLink =>
           'MyEmailVerificationSubjectByLinkType',   # min: 1, max: 140; OPTIONAL
-        SmsMessage =>
-          'MySmsVerificationMessageType',           # min: 6, max: 140; OPTIONAL
       },    # OPTIONAL
     );
 
@@ -181,22 +158,6 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cognito-idp/CreateUserPool>
 
 =head1 ATTRIBUTES
-
-
-=head2 AccountRecoverySetting => L<Paws::CognitoIdp::AccountRecoverySettingType>
-
-Use this setting to define which verified available method a user can
-use to recover their password when they call C<ForgotPassword>. It
-allows you to define a preferred method when a user has more than one
-method available. With this setting, SMS does not qualify for a valid
-password recovery mechanism if the user also has SMS MFA enabled. In
-the absence of this setting, Cognito uses the legacy behavior to
-determine the recovery method where SMS is preferred over email.
-
-Starting February 1, 2020, the value of C<AccountRecoverySetting> will
-default to C<verified_email> first and C<verified_phone_number> as the
-second option for newly created user pools if no value is provided.
-
 
 
 =head2 AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>
@@ -311,16 +272,6 @@ usernames when a user signs up.
 
 
 
-=head2 UsernameConfiguration => L<Paws::CognitoIdp::UsernameConfigurationType>
-
-You can choose to set case sensitivity on the username input for the
-selected sign-in option. For example, when this is set to C<False>,
-users will be able to sign in using either "username" or "Username".
-This configuration is immutable once it has been set. For more
-information, see .
-
-
-
 =head2 UserPoolAddOns => L<Paws::CognitoIdp::UserPoolAddOnsType>
 
 Used to enable advanced security risk detection. Set the key
@@ -330,9 +281,9 @@ C<AdvancedSecurityMode> to the value "AUDIT".
 
 =head2 UserPoolTags => L<Paws::CognitoIdp::UserPoolTagsType>
 
-The tag keys and values to assign to the user pool. A tag is a label
-that you can use to categorize and manage user pools in different ways,
-such as by purpose, owner, environment, or other criteria.
+The cost allocation tags for the user pool. For more information, see
+Adding Cost Allocation Tags to Your User Pool
+(http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html)
 
 
 

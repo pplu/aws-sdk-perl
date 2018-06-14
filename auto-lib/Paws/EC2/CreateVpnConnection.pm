@@ -4,9 +4,8 @@ package Paws::EC2::CreateVpnConnection;
   has CustomerGatewayId => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Options => (is => 'ro', isa => 'Paws::EC2::VpnConnectionOptionsSpecification', traits => ['NameInRequest'], request_name => 'options' );
-  has TransitGatewayId => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str', required => 1);
-  has VpnGatewayId => (is => 'ro', isa => 'Str');
+  has VpnGatewayId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,49 +32,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $CreateVpnConnectionResult = $ec2->CreateVpnConnection(
-      CustomerGatewayId => 'MyCustomerGatewayId',
+      CustomerGatewayId => 'MyString',
       Type              => 'MyString',
-      DryRun            => 1,                       # OPTIONAL
+      VpnGatewayId      => 'MyString',
+      DryRun            => 1,            # OPTIONAL
       Options           => {
-        EnableAcceleration => 1,
-        StaticRoutesOnly   => 1,
-        TunnelOptions      => [
+        StaticRoutesOnly => 1,
+        TunnelOptions    => [
           {
-            DPDTimeoutSeconds => 1,                                   # OPTIONAL
-            IKEVersions       => [ { Value => 'MyString', }, ... ],   # OPTIONAL
-            Phase1DHGroupNumbers => [
-              {
-                Value => 1,                                           # OPTIONAL
-              },
-              ...
-            ],                                                        # OPTIONAL
-            Phase1EncryptionAlgorithms => [ { Value => 'MyString', }, ... ]
-            ,                                                         # OPTIONAL
-            Phase1IntegrityAlgorithms => [ { Value => 'MyString', }, ... ]
-            ,                                                         # OPTIONAL
-            Phase1LifetimeSeconds => 1,                               # OPTIONAL
-            Phase2DHGroupNumbers  => [
-              {
-                Value => 1,                                           # OPTIONAL
-              },
-              ...
-            ],                                                        # OPTIONAL
-            Phase2EncryptionAlgorithms => [ { Value => 'MyString', }, ... ]
-            ,                                                         # OPTIONAL
-            Phase2IntegrityAlgorithms => [ { Value => 'MyString', }, ... ]
-            ,                                                         # OPTIONAL
-            Phase2LifetimeSeconds  => 1,                              # OPTIONAL
-            PreSharedKey           => 'MyString',
-            RekeyFuzzPercentage    => 1,                              # OPTIONAL
-            RekeyMarginTimeSeconds => 1,                              # OPTIONAL
-            ReplayWindowSize       => 1,                              # OPTIONAL
-            TunnelInsideCidr       => 'MyString',
+            TunnelInsideCidr => 'MyString',
+            PreSharedKey     => 'MyString',
           },
           ...
-        ],                                                            # OPTIONAL
+        ],                               # OPTIONAL
       },    # OPTIONAL
-      TransitGatewayId => 'MyTransitGatewayId',    # OPTIONAL
-      VpnGatewayId     => 'MyVpnGatewayId',        # OPTIONAL
     );
 
     # Results:
@@ -110,23 +80,15 @@ The options for the VPN connection.
 
 
 
-=head2 TransitGatewayId => Str
-
-The ID of the transit gateway. If you specify a transit gateway, you
-cannot specify a virtual private gateway.
-
-
-
 =head2 B<REQUIRED> Type => Str
 
 The type of VPN connection (C<ipsec.1>).
 
 
 
-=head2 VpnGatewayId => Str
+=head2 B<REQUIRED> VpnGatewayId => Str
 
-The ID of the virtual private gateway. If you specify a virtual private
-gateway, you cannot specify a transit gateway.
+The ID of the virtual private gateway.
 
 
 

@@ -36,11 +36,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description => 'MyStreamDescription',    # OPTIONAL
       Files       => [
         {
-          FileId     => 1,                     # max: 255; OPTIONAL
-          S3Location => {
-            Bucket  => 'MyS3Bucket',           # min: 1; OPTIONAL
-            Key     => 'MyS3Key',              # min: 1; OPTIONAL
-            Version => 'MyS3Version',          # OPTIONAL
+          fileId     => 1,                     # max: 255; OPTIONAL
+          s3Location => {
+            key     => 'MyS3Key',              # min: 1,
+            bucket  => 'MyS3Bucket',           # min: 1,
+            version => 'MyS3Version',          # OPTIONAL
           },    # OPTIONAL
         },
         ...
@@ -49,10 +49,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Description   = $UpdateStreamResponse->Description;
-    my $StreamArn     = $UpdateStreamResponse->StreamArn;
-    my $StreamId      = $UpdateStreamResponse->StreamId;
     my $StreamVersion = $UpdateStreamResponse->StreamVersion;
+    my $StreamId      = $UpdateStreamResponse->StreamId;
+    my $StreamArn     = $UpdateStreamResponse->StreamArn;
+    my $Description   = $UpdateStreamResponse->Description;
 
     # Returns a L<Paws::IoT::UpdateStreamResponse> object.
 

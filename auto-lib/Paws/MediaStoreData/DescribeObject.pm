@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CacheControl  = $DescribeObjectResponse->CacheControl;
     my $ContentLength = $DescribeObjectResponse->ContentLength;
+    my $CacheControl  = $DescribeObjectResponse->CacheControl;
     my $ContentType   = $DescribeObjectResponse->ContentType;
     my $ETag          = $DescribeObjectResponse->ETag;
     my $LastModified  = $DescribeObjectResponse->LastModified;
@@ -43,7 +43,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::MediaStoreData::DescribeObjectResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/data.mediastore/DescribeObject>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/mediastore/>
 
 =head1 ATTRIBUTES
 

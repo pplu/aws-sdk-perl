@@ -63,45 +63,45 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CacheKeyParameters   = $Integration->CacheKeyParameters;
-    my $CacheNamespace       = $Integration->CacheNamespace;
-    my $ConnectionId         = $Integration->ConnectionId;
-    my $ConnectionType       = $Integration->ConnectionType;
-    my $ContentHandling      = $Integration->ContentHandling;
-    my $Credentials          = $Integration->Credentials;
     my $HttpMethod           = $Integration->HttpMethod;
-    my $IntegrationResponses = $Integration->IntegrationResponses;
-    my $PassthroughBehavior  = $Integration->PassthroughBehavior;
-    my $RequestParameters    = $Integration->RequestParameters;
+    my $Credentials          = $Integration->Credentials;
+    my $ContentHandling      = $Integration->ContentHandling;
     my $RequestTemplates     = $Integration->RequestTemplates;
-    my $TimeoutInMillis      = $Integration->TimeoutInMillis;
+    my $IntegrationResponses = $Integration->IntegrationResponses;
+    my $ConnectionType       = $Integration->ConnectionType;
+    my $ConnectionId         = $Integration->ConnectionId;
     my $Type                 = $Integration->Type;
+    my $RequestParameters    = $Integration->RequestParameters;
+    my $CacheKeyParameters   = $Integration->CacheKeyParameters;
+    my $TimeoutInMillis      = $Integration->TimeoutInMillis;
+    my $PassthroughBehavior  = $Integration->PassthroughBehavior;
+    my $CacheNamespace       = $Integration->CacheNamespace;
     my $Uri                  = $Integration->Uri;
 
     # Returns a L<Paws::ApiGateway::Integration> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/PutIntegration>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>
 
 =head1 ATTRIBUTES
 
 
 =head2 CacheKeyParameters => ArrayRef[Str|Undef]
 
-An API-specific tag group of related cached parameters.
+Specifies a put integration input's cache key parameters.
 
 
 
 =head2 CacheNamespace => Str
 
-A list of request parameters whose values are to be cached.
+Specifies a put integration input's cache namespace.
 
 
 
 =head2 ConnectionId => Str
 
 The (C<id>
-(https://docs.aws.amazon.com/apigateway/api-reference/resource/vpc-link/#id))
+(http://docs.aws.amazon.com/apigateway/api-reference/resource/vpc-link/#id))
 of the VpcLink used for the integration when C<connectionType=VPC_LINK>
 and undefined, otherwise.
 
@@ -138,8 +138,8 @@ Base64-encoded string.
 
 If this property is not defined, the request payload will be passed
 through from the method request to integration request without
-modification, provided that the C<passthroughBehavior> is configured to
-support payload pass-through.
+modification, provided that the C<passthroughBehaviors> is configured
+to support payload pass-through.
 
 Valid values are: C<"CONVERT_TO_BINARY">, C<"CONVERT_TO_TEXT">
 
@@ -273,7 +273,7 @@ AWS service path-based API. The ensuing C<service_api> refers to the
 path to an AWS service resource, including the region of the integrated
 AWS service, if applicable. For example, for integration with the S3
 API of C<GetObject
-(https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html)>,
+(http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html)>,
 the C<uri> can be either
 C<arn:aws:apigateway:us-west-2:s3:action/GetObject&Bucket={bucket}&Key={key}>
 or C<arn:aws:apigateway:us-west-2:s3:path/{bucket}/{key}>

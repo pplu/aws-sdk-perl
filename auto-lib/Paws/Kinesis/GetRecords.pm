@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $MillisBehindLatest = $GetRecordsOutput->MillisBehindLatest;
     my $NextShardIterator  = $GetRecordsOutput->NextShardIterator;
+    my $MillisBehindLatest = $GetRecordsOutput->MillisBehindLatest;
     my $Records            = $GetRecordsOutput->Records;
 
     # Returns a L<Paws::Kinesis::GetRecordsOutput> object.

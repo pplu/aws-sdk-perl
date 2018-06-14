@@ -32,8 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example deletes a sending authorization policy for an
     # identity:
     my $DeleteIdentityPolicyResponse = $email->DeleteIdentityPolicy(
-      'Identity'   => 'user@example.com',
-      'PolicyName' => 'MyPolicy'
+      {
+        'Identity'   => 'user@example.com',
+        'PolicyName' => 'MyPolicy'
+      }
     );
 
 

@@ -38,12 +38,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CreatedTimestamp      = $UpdateUserProfileResult->CreatedTimestamp;
-    my $DisplayName           = $UpdateUserProfileResult->DisplayName;
-    my $EmailAddress          = $UpdateUserProfileResult->EmailAddress;
-    my $LastModifiedTimestamp = $UpdateUserProfileResult->LastModifiedTimestamp;
-    my $SshPublicKey          = $UpdateUserProfileResult->SshPublicKey;
     my $UserArn               = $UpdateUserProfileResult->UserArn;
+    my $SshPublicKey          = $UpdateUserProfileResult->SshPublicKey;
+    my $DisplayName           = $UpdateUserProfileResult->DisplayName;
+    my $LastModifiedTimestamp = $UpdateUserProfileResult->LastModifiedTimestamp;
+    my $EmailAddress          = $UpdateUserProfileResult->EmailAddress;
+    my $CreatedTimestamp      = $UpdateUserProfileResult->CreatedTimestamp;
 
     # Returns a L<Paws::CodeStar::UpdateUserProfileResult> object.
 

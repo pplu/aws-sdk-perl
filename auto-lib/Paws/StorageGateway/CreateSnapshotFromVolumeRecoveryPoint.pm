@@ -2,7 +2,6 @@
 package Paws::StorageGateway::CreateSnapshotFromVolumeRecoveryPoint;
   use Moose;
   has SnapshotDescription => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::Tag]');
   has VolumeARN => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -33,17 +32,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Initiates a snapshot of a gateway from a volume recovery point.
     my $CreateSnapshotFromVolumeRecoveryPointOutput =
       $storagegateway->CreateSnapshotFromVolumeRecoveryPoint(
-      'SnapshotDescription' =>
-        'My root volume snapshot as of 2017-06-30T10:10:10.000Z',
-      'VolumeARN' =>
-'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABB'
+      {
+        'VolumeARN' =>
+'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABB',
+        'SnapshotDescription' =>
+          'My root volume snapshot as of 2017-06-30T10:10:10.000Z'
+      }
       );
 
     # Results:
     my $SnapshotId = $CreateSnapshotFromVolumeRecoveryPointOutput->SnapshotId;
-    my $VolumeARN  = $CreateSnapshotFromVolumeRecoveryPointOutput->VolumeARN;
     my $VolumeRecoveryPointTime =
       $CreateSnapshotFromVolumeRecoveryPointOutput->VolumeRecoveryPointTime;
+    my $VolumeARN = $CreateSnapshotFromVolumeRecoveryPointOutput->VolumeARN;
 
 # Returns a L<Paws::StorageGateway::CreateSnapshotFromVolumeRecoveryPointOutput> object.
 
@@ -55,30 +56,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sto
 
 =head2 B<REQUIRED> SnapshotDescription => Str
 
-Textual description of the snapshot that appears in the Amazon EC2
-console, Elastic Block Store snapshots panel in the B<Description>
-field, and in the AWS Storage Gateway snapshot B<Details> pane,
-B<Description> field
 
-
-
-=head2 Tags => ArrayRef[L<Paws::StorageGateway::Tag>]
-
-A list of up to 50 tags that can be assigned to a snapshot. Each tag is
-a key-value pair.
-
-Valid characters for key and value are letters, spaces, and numbers
-representable in UTF-8 format, and the following special characters: +
-- = . _ : / @. The maximum length of a tag's key is 128 characters, and
-the maximum length for a tag's value is 256.
 
 
 
 =head2 B<REQUIRED> VolumeARN => Str
 
-The Amazon Resource Name (ARN) of the iSCSI volume target. Use the
-DescribeStorediSCSIVolumes operation to return to retrieve the
-TargetARN for specified VolumeARN.
+
 
 
 

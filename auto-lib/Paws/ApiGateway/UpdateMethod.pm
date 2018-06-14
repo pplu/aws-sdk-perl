@@ -37,33 +37,33 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RestApiId       => 'MyString',
       PatchOperations => [
         {
-          From => 'MyString',
-          Op =>
+          from  => 'MyString',
+          value => 'MyString',
+          path  => 'MyString',
+          op =>
             'add',    # values: add, remove, replace, move, copy, test; OPTIONAL
-          Path  => 'MyString',
-          Value => 'MyString',
         },
         ...
       ],              # OPTIONAL
     );
 
     # Results:
-    my $ApiKeyRequired      = $Method->ApiKeyRequired;
-    my $AuthorizationScopes = $Method->AuthorizationScopes;
-    my $AuthorizationType   = $Method->AuthorizationType;
-    my $AuthorizerId        = $Method->AuthorizerId;
     my $HttpMethod          = $Method->HttpMethod;
+    my $AuthorizationScopes = $Method->AuthorizationScopes;
     my $MethodIntegration   = $Method->MethodIntegration;
-    my $MethodResponses     = $Method->MethodResponses;
     my $OperationName       = $Method->OperationName;
-    my $RequestModels       = $Method->RequestModels;
-    my $RequestParameters   = $Method->RequestParameters;
     my $RequestValidatorId  = $Method->RequestValidatorId;
+    my $AuthorizerId        = $Method->AuthorizerId;
+    my $MethodResponses     = $Method->MethodResponses;
+    my $RequestParameters   = $Method->RequestParameters;
+    my $RequestModels       = $Method->RequestModels;
+    my $AuthorizationType   = $Method->AuthorizationType;
+    my $ApiKeyRequired      = $Method->ApiKeyRequired;
 
     # Returns a L<Paws::ApiGateway::Method> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/UpdateMethod>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>
 
 =head1 ATTRIBUTES
 

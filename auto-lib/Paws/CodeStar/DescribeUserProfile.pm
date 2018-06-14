@@ -33,13 +33,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CreatedTimestamp = $DescribeUserProfileResult->CreatedTimestamp;
-    my $DisplayName      = $DescribeUserProfileResult->DisplayName;
-    my $EmailAddress     = $DescribeUserProfileResult->EmailAddress;
+    my $UserArn      = $DescribeUserProfileResult->UserArn;
+    my $SshPublicKey = $DescribeUserProfileResult->SshPublicKey;
+    my $DisplayName  = $DescribeUserProfileResult->DisplayName;
     my $LastModifiedTimestamp =
       $DescribeUserProfileResult->LastModifiedTimestamp;
-    my $SshPublicKey = $DescribeUserProfileResult->SshPublicKey;
-    my $UserArn      = $DescribeUserProfileResult->UserArn;
+    my $EmailAddress     = $DescribeUserProfileResult->EmailAddress;
+    my $CreatedTimestamp = $DescribeUserProfileResult->CreatedTimestamp;
 
     # Returns a L<Paws::CodeStar::DescribeUserProfileResult> object.
 

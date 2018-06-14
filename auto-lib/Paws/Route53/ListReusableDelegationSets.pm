@@ -40,9 +40,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $DelegationSets = $ListReusableDelegationSetsResponse->DelegationSets;
     my $IsTruncated    = $ListReusableDelegationSetsResponse->IsTruncated;
-    my $Marker         = $ListReusableDelegationSetsResponse->Marker;
     my $MaxItems       = $ListReusableDelegationSetsResponse->MaxItems;
     my $NextMarker     = $ListReusableDelegationSetsResponse->NextMarker;
+    my $Marker         = $ListReusableDelegationSetsResponse->Marker;
 
     # Returns a L<Paws::Route53::ListReusableDelegationSetsResponse> object.
 

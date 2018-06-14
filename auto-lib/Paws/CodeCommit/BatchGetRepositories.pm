@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Repositories = $BatchGetRepositoriesOutput->Repositories;
     my $RepositoriesNotFound =
       $BatchGetRepositoriesOutput->RepositoriesNotFound;
+    my $Repositories = $BatchGetRepositoriesOutput->Repositories;
 
     # Returns a L<Paws::CodeCommit::BatchGetRepositoriesOutput> object.
 

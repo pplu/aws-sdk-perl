@@ -33,22 +33,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeHostReservationsResult = $ec2->DescribeHostReservations(
       Filter => [
         {
-          Name   => 'MyString',    # OPTIONAL
-          Values => [
-            'MyString', ...        # OPTIONAL
-          ],                       # OPTIONAL
+          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name => 'MyString',
         },
         ...
-      ],                           # OPTIONAL
-      HostReservationIdSet => [ 'MyHostReservationId', ... ],    # OPTIONAL
-      MaxResults           => 1,                                 # OPTIONAL
-      NextToken            => 'MyString',                        # OPTIONAL
+      ],                                    # OPTIONAL
+      HostReservationIdSet => [ 'MyString', ... ],    # OPTIONAL
+      MaxResults           => 1,                      # OPTIONAL
+      NextToken            => 'MyString',             # OPTIONAL
     );
 
     # Results:
+    my $NextToken = $DescribeHostReservationsResult->NextToken;
     my $HostReservationSet =
       $DescribeHostReservationsResult->HostReservationSet;
-    my $NextToken = $DescribeHostReservationsResult->NextToken;
 
     # Returns a L<Paws::EC2::DescribeHostReservationsResult> object.
 
@@ -60,13 +58,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 Filter => ArrayRef[L<Paws::EC2::Filter>]
 
-The filters.
+One or more filters.
 
 =over
 
 =item *
 
-C<instance-family> - The instance family (for example, C<m4>).
+C<instance-family> - The instance family (e.g., C<m4>).
 
 =item *
 
@@ -78,20 +76,6 @@ C<PartialUpfront> | C<AllUpfront>).
 C<state> - The state of the reservation (C<payment-pending> |
 C<payment-failed> | C<active> | C<retired>).
 
-=item *
-
-C<tag>:E<lt>keyE<gt> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value as
-the filter value. For example, to find all resources that have a tag
-with the key C<Owner> and the value C<TeamA>, specify C<tag:Owner> for
-the filter name and C<TeamA> for the filter value.
-
-=item *
-
-C<tag-key> - The key of a tag assigned to the resource. Use this filter
-to find all resources assigned a tag with a specific key, regardless of
-the tag value.
-
 =back
 
 
@@ -99,7 +83,7 @@ the tag value.
 
 =head2 HostReservationIdSet => ArrayRef[Str|Undef]
 
-The host reservation IDs.
+One or more host reservation IDs.
 
 
 
@@ -107,8 +91,8 @@ The host reservation IDs.
 
 The maximum number of results to return for the request in a single
 page. The remaining results can be seen by sending another request with
-the returned C<nextToken> value. This value can be between 5 and 500.
-If C<maxResults> is given a larger value than 500, you receive an
+the returned C<nextToken> value. This value can be between 5 and 500;
+if C<maxResults> is given a larger value than 500, you will receive an
 error.
 
 

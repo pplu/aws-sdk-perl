@@ -2,13 +2,8 @@
 package Paws::RDS::RestoreDBClusterToPointInTime;
   use Moose;
   has BacktrackWindow => (is => 'ro', isa => 'Int');
-  has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
-  has DeletionProtection => (is => 'ro', isa => 'Bool');
-  has Domain => (is => 'ro', isa => 'Str');
-  has DomainIAMRoleName => (is => 'ro', isa => 'Str');
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has KmsKeyId => (is => 'ro', isa => 'Str');
@@ -50,9 +45,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # in time from the source DB cluster.
     my $RestoreDBClusterToPointInTimeResult =
       $rds->RestoreDBClusterToPointInTime(
-      'DBClusterIdentifier'       => 'sample-restored-cluster1',
-      'RestoreToTime'             => '2016-09-13T18:45:00Z',
-      'SourceDBClusterIdentifier' => 'sample-cluster1'
+      {
+        'SourceDBClusterIdentifier' => 'sample-cluster1',
+        'RestoreToTime'             => '2016-09-13T18:45:00Z',
+        'DBClusterIdentifier'       => 'sample-restored-cluster1'
+      }
       );
 
 
@@ -83,14 +80,6 @@ hours).
 
 
 
-=head2 CopyTagsToSnapshot => Bool
-
-A value that indicates whether to copy all tags from the restored DB
-cluster to snapshots of the restored DB cluster. The default is not to
-copy them.
-
-
-
 =head2 B<REQUIRED> DBClusterIdentifier => Str
 
 The name of the new DB cluster to be created.
@@ -109,39 +98,7 @@ First character must be a letter
 
 =item *
 
-Can't end with a hyphen or contain two consecutive hyphens
-
-=back
-
-
-
-
-=head2 DBClusterParameterGroupName => Str
-
-The name of the DB cluster parameter group to associate with this DB
-cluster. If this argument is omitted, the default DB cluster parameter
-group for the specified engine is used.
-
-Constraints:
-
-=over
-
-=item *
-
-If supplied, must match the name of an existing DB cluster parameter
-group.
-
-=item *
-
-Must be 1 to 255 letters, numbers, or hyphens.
-
-=item *
-
-First character must be a letter.
-
-=item *
-
-Can't end with a hyphen or contain two consecutive hyphens.
+Cannot end with a hyphen or contain two consecutive hyphens
 
 =back
 
@@ -159,55 +116,19 @@ Example: C<mySubnetgroup>
 
 
 
-=head2 DeletionProtection => Bool
-
-A value that indicates whether the DB cluster has deletion protection
-enabled. The database can't be deleted when deletion protection is
-enabled. By default, deletion protection is disabled.
-
-
-
-=head2 Domain => Str
-
-Specify the Active Directory directory ID to restore the DB cluster in.
-The domain must be created prior to this operation.
-
-For Amazon Aurora DB clusters, Amazon RDS can use Kerberos
-Authentication to authenticate users that connect to the DB cluster.
-For more information, see Using Kerberos Authentication for Aurora
-MySQL
-(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurmysql-kerberos.html)
-in the I<Amazon Aurora User Guide>.
-
-
-
-=head2 DomainIAMRoleName => Str
-
-Specify the name of the IAM role to be used when making API calls to
-the Directory Service.
-
-
-
 =head2 EnableCloudwatchLogsExports => ArrayRef[Str|Undef]
 
 The list of logs that the restored DB cluster is to export to
-CloudWatch Logs. The values in the list depend on the DB engine being
-used. For more information, see Publishing Database Logs to Amazon
-CloudWatch Logs
-(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
-in the I<Amazon Aurora User Guide>.
+CloudWatch Logs.
 
 
 
 =head2 EnableIAMDatabaseAuthentication => Bool
 
-A value that indicates whether to enable mapping of AWS Identity and
-Access Management (IAM) accounts to database accounts. By default,
-mapping is disabled.
+True to enable mapping of AWS Identity and Access Management (IAM)
+accounts to database accounts, and otherwise false.
 
-For more information, see IAM Database Authentication
-(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html)
-in the I<Amazon Aurora User Guide.>
+Default: C<false>
 
 
 
@@ -227,8 +148,8 @@ a KMS key that is different than the KMS key used to encrypt the source
 DB cluster. The new DB cluster is encrypted with the KMS key identified
 by the C<KmsKeyId> parameter.
 
-If you don't specify a value for the C<KmsKeyId> parameter, then the
-following occurs:
+If you do not specify a value for the C<KmsKeyId> parameter, then the
+following will occur:
 
 =over
 
@@ -240,12 +161,12 @@ cluster.
 
 =item *
 
-If the DB cluster isn't encrypted, then the restored DB cluster isn't
+If the DB cluster is not encrypted, then the restored DB cluster is not
 encrypted.
 
 =back
 
-If C<DBClusterIdentifier> refers to a DB cluster that isn't encrypted,
+If C<DBClusterIdentifier> refers to a DB cluster that is not encrypted,
 then the restore request is rejected.
 
 
@@ -283,17 +204,16 @@ Must be before the latest restorable time for the DB instance
 
 =item *
 
-Must be specified if C<UseLatestRestorableTime> parameter isn't
+Must be specified if C<UseLatestRestorableTime> parameter is not
 provided
 
 =item *
 
-Can't be specified if the C<UseLatestRestorableTime> parameter is
-enabled
+Cannot be specified if C<UseLatestRestorableTime> parameter is true
 
 =item *
 
-Can't be specified if the C<RestoreType> parameter is C<copy-on-write>
+Cannot be specified if C<RestoreType> parameter is C<copy-on-write>
 
 =back
 
@@ -353,11 +273,12 @@ Must match the identifier of an existing DBCluster.
 
 =head2 UseLatestRestorableTime => Bool
 
-A value that indicates whether to restore the DB cluster to the latest
-restorable backup time. By default, the DB cluster isn't restored to
-the latest restorable backup time.
+A value that is set to C<true> to restore the DB cluster to the latest
+restorable backup time, and C<false> otherwise.
 
-Constraints: Can't be specified if C<RestoreToTime> parameter is
+Default: C<false>
+
+Constraints: Cannot be specified if C<RestoreToTime> parameter is
 provided.
 
 

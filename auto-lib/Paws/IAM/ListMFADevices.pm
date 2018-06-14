@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $IsTruncated = $ListMFADevicesResponse->IsTruncated;
-    my $MFADevices  = $ListMFADevicesResponse->MFADevices;
     my $Marker      = $ListMFADevicesResponse->Marker;
+    my $MFADevices  = $ListMFADevicesResponse->MFADevices;
 
     # Returns a L<Paws::IAM::ListMFADevicesResponse> object.
 
@@ -59,15 +59,16 @@ indicate where the next call should start.
 
 =head2 MaxItems => Int
 
-Use this only when paginating results to indicate the maximum number of
-items you want in the response. If additional items exist beyond the
-maximum you specify, the C<IsTruncated> response element is C<true>.
+(Optional) Use this only when paginating results to indicate the
+maximum number of items you want in the response. If additional items
+exist beyond the maximum you specify, the C<IsTruncated> response
+element is C<true>.
 
-If you do not include this parameter, the number of items defaults to
-100. Note that IAM might return fewer results, even when there are more
-results available. In that case, the C<IsTruncated> response element
-returns C<true>, and C<Marker> contains a value to include in the
-subsequent call that tells the service where to continue from.
+If you do not include this parameter, it defaults to 100. Note that IAM
+might return fewer results, even when there are more results available.
+In that case, the C<IsTruncated> response element returns C<true> and
+C<Marker> contains a value to include in the subsequent call that tells
+the service where to continue from.
 
 
 
@@ -75,7 +76,7 @@ subsequent call that tells the service where to continue from.
 
 The name of the user whose MFA devices you want to list.
 
-This parameter allows (through its regex pattern
+This parameter allows (per its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
 also include any of the following characters: _+=,.@-

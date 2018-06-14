@@ -33,15 +33,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CreationDate = $DescribeStateMachineOutput->CreationDate;
-    my $Definition   = $DescribeStateMachineOutput->Definition;
-    my $LoggingConfiguration =
-      $DescribeStateMachineOutput->LoggingConfiguration;
-    my $Name            = $DescribeStateMachineOutput->Name;
+    my $Definition      = $DescribeStateMachineOutput->Definition;
     my $RoleArn         = $DescribeStateMachineOutput->RoleArn;
-    my $StateMachineArn = $DescribeStateMachineOutput->StateMachineArn;
     my $Status          = $DescribeStateMachineOutput->Status;
-    my $Type            = $DescribeStateMachineOutput->Type;
+    my $CreationDate    = $DescribeStateMachineOutput->CreationDate;
+    my $StateMachineArn = $DescribeStateMachineOutput->StateMachineArn;
+    my $Name            = $DescribeStateMachineOutput->Name;
 
     # Returns a L<Paws::StepFunctions::DescribeStateMachineOutput> object.
 

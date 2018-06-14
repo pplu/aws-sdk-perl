@@ -33,42 +33,38 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ce = Paws->service('CostExplorer');
     my $GetReservationUtilizationResponse = $ce->GetReservationUtilization(
       TimePeriod => {
-        End   => 'MyYearMonthDay',
         Start => 'MyYearMonthDay',
+        End   => 'MyYearMonthDay',
 
       },
       Filter => {
-        And            => [ <Expression>, ... ],    # OPTIONAL
-        CostCategories => {
-          Key    => 'MyCostCategoryName',           # min: 1, max: 255; OPTIONAL
-          Values => [ 'MyValue', ... ],             # OPTIONAL
-        },    # OPTIONAL
+        Or         => [ <Expression>, ... ],    # OPTIONAL
+        Not        => <Expression>,
         Dimensions => {
+          Values => [ 'MyValue', ... ],         # OPTIONAL
           Key => 'AZ'
-          , # values: AZ, INSTANCE_TYPE, LINKED_ACCOUNT, OPERATION, PURCHASE_TYPE, REGION, SERVICE, USAGE_TYPE, USAGE_TYPE_GROUP, RECORD_TYPE, OPERATING_SYSTEM, TENANCY, SCOPE, PLATFORM, SUBSCRIPTION_ID, LEGAL_ENTITY_NAME, DEPLOYMENT_OPTION, DATABASE_ENGINE, CACHE_ENGINE, INSTANCE_TYPE_FAMILY, BILLING_ENTITY, RESERVATION_ID, RESOURCE_ID, RIGHTSIZING_TYPE, SAVINGS_PLANS_TYPE, SAVINGS_PLAN_ARN, PAYMENT_OPTION; OPTIONAL
-          Values => [ 'MyValue', ... ],    # OPTIONAL
+          , # values: AZ, INSTANCE_TYPE, LINKED_ACCOUNT, OPERATION, PURCHASE_TYPE, REGION, SERVICE, USAGE_TYPE, USAGE_TYPE_GROUP, RECORD_TYPE, OPERATING_SYSTEM, TENANCY, SCOPE, PLATFORM, SUBSCRIPTION_ID, LEGAL_ENTITY_NAME, DEPLOYMENT_OPTION, DATABASE_ENGINE, CACHE_ENGINE, INSTANCE_TYPE_FAMILY; OPTIONAL
         },    # OPTIONAL
-        Not  => <Expression>,
-        Or   => [ <Expression>, ... ],    # OPTIONAL
+        And => [ <Expression>, ... ],    # OPTIONAL
         Tags => {
-          Key    => 'MyTagKey',            # OPTIONAL
           Values => [ 'MyValue', ... ],    # OPTIONAL
+          Key => 'MyTagKey',               # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       Granularity => 'DAILY',    # OPTIONAL
       GroupBy     => [
         {
-          Key => 'MyGroupDefinitionKey',    # OPTIONAL
-          Type => 'DIMENSION', # values: DIMENSION, TAG, COST_CATEGORY; OPTIONAL
+          Type => 'DIMENSION',               # values: DIMENSION, TAG; OPTIONAL
+          Key  => 'MyGroupDefinitionKey',    # OPTIONAL
         },
         ...
-      ],                       # OPTIONAL
+      ],                                     # OPTIONAL
       NextPageToken => 'MyNextPageToken',    # OPTIONAL
     );
 
     # Results:
-    my $NextPageToken = $GetReservationUtilizationResponse->NextPageToken;
     my $Total         = $GetReservationUtilizationResponse->Total;
+    my $NextPageToken = $GetReservationUtilizationResponse->NextPageToken;
     my $UtilizationsByTime =
       $GetReservationUtilizationResponse->UtilizationsByTime;
 
@@ -94,6 +90,10 @@ AZ
 =item *
 
 CACHE_ENGINE
+
+=item *
+
+DATABASE_ENGINE
 
 =item *
 
@@ -133,11 +133,11 @@ TENANCY
 
 =back
 
-C<GetReservationUtilization> uses the same Expression
+C<GetReservationUtilization> uses the same C< Expression
 (http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html)
-object as the other operations, but only C<AND> is supported among each
-dimension, and nesting is supported up to only one level deep. If there
-are multiple values for a dimension, they are OR'd together.
+> object as the other operations, but only C<AND> is supported among
+each dimension, and nesting is supported up to only one level deep. If
+there are multiple values for a dimension, they are OR'd together.
 
 
 
@@ -148,10 +148,7 @@ isn't set, the response object doesn't include C<Granularity>, either
 C<MONTHLY> or C<DAILY>. If both C<GroupBy> and C<Granularity> aren't
 set, C<GetReservationUtilization> defaults to C<DAILY>.
 
-The C<GetReservationUtilization> operation supports only C<DAILY> and
-C<MONTHLY> granularities.
-
-Valid values are: C<"DAILY">, C<"MONTHLY">, C<"HOURLY">
+Valid values are: C<"DAILY">, C<"MONTHLY">
 
 =head2 GroupBy => ArrayRef[L<Paws::CostExplorer::GroupDefinition>]
 
@@ -169,11 +166,12 @@ maximum page size.
 
 =head2 B<REQUIRED> TimePeriod => L<Paws::CostExplorer::DateInterval>
 
-Sets the start and end dates for retrieving RI utilization. The start
-date is inclusive, but the end date is exclusive. For example, if
-C<start> is C<2017-01-01> and C<end> is C<2017-05-01>, then the cost
-and usage data is retrieved from C<2017-01-01> up to and including
-C<2017-04-30> but not including C<2017-05-01>.
+Sets the start and end dates for retrieving Reserved Instance (RI)
+utilization. The start date is inclusive, but the end date is
+exclusive. For example, if C<start> is C<2017-01-01> and C<end> is
+C<2017-05-01>, then the cost and usage data is retrieved from
+C<2017-01-01> up to and including C<2017-04-30> but not including
+C<2017-05-01>.
 
 
 

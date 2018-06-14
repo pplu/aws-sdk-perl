@@ -45,12 +45,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $ResponseCode = $TestDNSAnswerResponse->ResponseCode;
+    my $RecordName   = $TestDNSAnswerResponse->RecordName;
+    my $RecordType   = $TestDNSAnswerResponse->RecordType;
     my $Nameserver   = $TestDNSAnswerResponse->Nameserver;
     my $Protocol     = $TestDNSAnswerResponse->Protocol;
     my $RecordData   = $TestDNSAnswerResponse->RecordData;
-    my $RecordName   = $TestDNSAnswerResponse->RecordName;
-    my $RecordType   = $TestDNSAnswerResponse->RecordType;
-    my $ResponseCode = $TestDNSAnswerResponse->ResponseCode;
 
     # Returns a L<Paws::Route53::TestDNSAnswerResponse> object.
 
@@ -78,22 +78,6 @@ specify C<192.0.2.44> for C<edns0clientsubnetip> and C<24> for
 C<edns0clientsubnetmask>, the checking tool will simulate a request
 from 192.0.2.0/24. The default value is 24 bits for IPv4 addresses and
 64 bits for IPv6 addresses.
-
-The range of valid values depends on whether C<edns0clientsubnetip> is
-an IPv4 or an IPv6 address:
-
-=over
-
-=item *
-
-B<IPv4>: Specify a value between 0 and 32
-
-=item *
-
-B<IPv6>: Specify a value between 0 and 128
-
-=back
-
 
 
 

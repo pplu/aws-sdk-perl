@@ -31,19 +31,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To add tags to a load balancer
     # This example adds two tags to the specified load balancer.
     my $AddTagsOutput = $elasticloadbalancing->AddTags(
-      'LoadBalancerNames' => ['my-load-balancer'],
-      'Tags'              => [
+      {
+        'LoadBalancerNames' => ['my-load-balancer'],
+        'Tags'              => [
 
-        {
-          'Key'   => 'project',
-          'Value' => 'lima'
-        },
+          {
+            'Value' => 'lima',
+            'Key'   => 'project'
+          },
 
-        {
-          'Key'   => 'department',
-          'Value' => 'digital-media'
-        }
-      ]
+          {
+            'Value' => 'digital-media',
+            'Key'   => 'department'
+          }
+        ]
+      }
     );
 
 

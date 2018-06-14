@@ -32,8 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example attaches the specified load balancer to the specified Auto
     # Scaling group.
     my $AttachLoadBalancersResultType = $autoscaling->AttachLoadBalancers(
-      'AutoScalingGroupName' => 'my-auto-scaling-group',
-      'LoadBalancerNames'    => ['my-load-balancer']
+      {
+        'LoadBalancerNames'    => ['my-load-balancer'],
+        'AutoScalingGroupName' => 'my-auto-scaling-group'
+      }
     );
 
 

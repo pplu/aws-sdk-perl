@@ -32,22 +32,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # configured time zone, and the state (whether the gateway is running or
     # not).
     my $DescribeGatewayInformationOutput =
-      $storagegateway->DescribeGatewayInformation( 'GatewayARN' =>
-        'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B' );
+      $storagegateway->DescribeGatewayInformation(
+      {
+        'GatewayARN' =>
+          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B'
+      }
+      );
 
     # Results:
-    my $GatewayARN  = $DescribeGatewayInformationOutput->GatewayARN;
-    my $GatewayId   = $DescribeGatewayInformationOutput->GatewayId;
-    my $GatewayName = $DescribeGatewayInformationOutput->GatewayName;
-    my $GatewayNetworkInterfaces =
-      $DescribeGatewayInformationOutput->GatewayNetworkInterfaces;
-    my $GatewayState    = $DescribeGatewayInformationOutput->GatewayState;
     my $GatewayTimezone = $DescribeGatewayInformationOutput->GatewayTimezone;
     my $GatewayType     = $DescribeGatewayInformationOutput->GatewayType;
-    my $LastSoftwareUpdate =
-      $DescribeGatewayInformationOutput->LastSoftwareUpdate;
+    my $GatewayState    = $DescribeGatewayInformationOutput->GatewayState;
     my $NextUpdateAvailabilityDate =
       $DescribeGatewayInformationOutput->NextUpdateAvailabilityDate;
+    my $LastSoftwareUpdate =
+      $DescribeGatewayInformationOutput->LastSoftwareUpdate;
+    my $GatewayName = $DescribeGatewayInformationOutput->GatewayName;
+    my $GatewayId   = $DescribeGatewayInformationOutput->GatewayId;
+    my $GatewayARN  = $DescribeGatewayInformationOutput->GatewayARN;
+    my $GatewayNetworkInterfaces =
+      $DescribeGatewayInformationOutput->GatewayNetworkInterfaces;
 
    # Returns a L<Paws::StorageGateway::DescribeGatewayInformationOutput> object.
 

@@ -32,16 +32,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RepositoryName => 'MyRepositoryName',
       Triggers       => [
         {
-          DestinationArn => 'MyArn',
-          Events         => [
+          destinationArn => 'MyArn',
+          name           => 'MyRepositoryTriggerName',
+          events         => [
             'all',
             ... # values: all, updateReference, createReference, deleteReference
           ],
-          Name     => 'MyRepositoryTriggerName',
-          Branches => [
-            'MyBranchName', ...    # min: 1, max: 256
-          ],                       # OPTIONAL
-          CustomData => 'MyRepositoryTriggerCustomData',    # OPTIONAL
+          customData => 'MyRepositoryTriggerCustomData',    # OPTIONAL
+          branches   => [
+            'MyBranchName', ...                             # min: 1, max: 256
+          ],                                                # OPTIONAL
         },
         ...
       ],
@@ -49,9 +49,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $FailedExecutions = $TestRepositoryTriggersOutput->FailedExecutions;
     my $SuccessfulExecutions =
       $TestRepositoryTriggersOutput->SuccessfulExecutions;
+    my $FailedExecutions = $TestRepositoryTriggersOutput->FailedExecutions;
 
     # Returns a L<Paws::CodeCommit::TestRepositoryTriggersOutput> object.
 

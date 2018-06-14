@@ -31,15 +31,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns your gateway's weekly maintenance start time including the day and
     # time of the week.
     my $DescribeMaintenanceStartTimeOutput =
-      $storagegateway->DescribeMaintenanceStartTime( 'GatewayARN' =>
-        'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B' );
+      $storagegateway->DescribeMaintenanceStartTime(
+      {
+        'GatewayARN' =>
+          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B'
+      }
+      );
 
     # Results:
-    my $DayOfWeek    = $DescribeMaintenanceStartTimeOutput->DayOfWeek;
-    my $GatewayARN   = $DescribeMaintenanceStartTimeOutput->GatewayARN;
-    my $HourOfDay    = $DescribeMaintenanceStartTimeOutput->HourOfDay;
     my $MinuteOfHour = $DescribeMaintenanceStartTimeOutput->MinuteOfHour;
     my $Timezone     = $DescribeMaintenanceStartTimeOutput->Timezone;
+    my $HourOfDay    = $DescribeMaintenanceStartTimeOutput->HourOfDay;
+    my $GatewayARN   = $DescribeMaintenanceStartTimeOutput->GatewayARN;
+    my $DayOfWeek    = $DescribeMaintenanceStartTimeOutput->DayOfWeek;
 
  # Returns a L<Paws::StorageGateway::DescribeMaintenanceStartTimeOutput> object.
 

@@ -24,15 +24,11 @@ package Paws::S3::CopyObject;
   has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
   has Metadata => (is => 'ro', isa => 'Paws::S3::Metadata', header_prefix => 'x-amz-meta-', traits => ['ParamInHeaders']);
   has MetadataDirective => (is => 'ro', isa => 'Str', header_name => 'x-amz-metadata-directive', traits => ['ParamInHeader']);
-  has ObjectLockLegalHoldStatus => (is => 'ro', isa => 'Str', header_name => 'x-amz-object-lock-legal-hold', traits => ['ParamInHeader']);
-  has ObjectLockMode => (is => 'ro', isa => 'Str', header_name => 'x-amz-object-lock-mode', traits => ['ParamInHeader']);
-  has ObjectLockRetainUntilDate => (is => 'ro', isa => 'Str', header_name => 'x-amz-object-lock-retain-until-date', traits => ['ParamInHeader']);
   has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
   has ServerSideEncryption => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption', traits => ['ParamInHeader']);
   has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-algorithm', traits => ['ParamInHeader']);
   has SSECustomerKey => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-key', traits => ['ParamInHeader']);
   has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-key-MD5', traits => ['ParamInHeader']);
-  has SSEKMSEncryptionContext => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-context', traits => ['ParamInHeader']);
   has SSEKMSKeyId => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-aws-kms-key-id', traits => ['ParamInHeader']);
   has StorageClass => (is => 'ro', isa => 'Str', header_name => 'x-amz-storage-class', traits => ['ParamInHeader']);
   has Tagging => (is => 'ro', isa => 'Str', header_name => 'x-amz-tagging', traits => ['ParamInHeader']);
@@ -91,33 +87,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       GrantWriteACP               => 'MyGrantWriteACP',               # OPTIONAL
       Metadata          => { 'MyMetadataKey' => 'MyMetadataValue', }, # OPTIONAL
       MetadataDirective => 'COPY',                                    # OPTIONAL
-      ObjectLockLegalHoldStatus => 'ON',                              # OPTIONAL
-      ObjectLockMode            => 'GOVERNANCE',                      # OPTIONAL
-      ObjectLockRetainUntilDate => '1970-01-01T01:00:00',             # OPTIONAL
-      RequestPayer              => 'requester',                       # OPTIONAL
-      SSECustomerAlgorithm      => 'MySSECustomerAlgorithm',          # OPTIONAL
-      SSECustomerKey            => 'MySSECustomerKey',                # OPTIONAL
-      SSECustomerKeyMD5         => 'MySSECustomerKeyMD5',             # OPTIONAL
-      SSEKMSEncryptionContext   => 'MySSEKMSEncryptionContext',       # OPTIONAL
-      SSEKMSKeyId               => 'MySSEKMSKeyId',                   # OPTIONAL
-      ServerSideEncryption      => 'AES256',                          # OPTIONAL
-      StorageClass              => 'STANDARD',                        # OPTIONAL
-      Tagging                   => 'MyTaggingHeader',                 # OPTIONAL
-      TaggingDirective          => 'COPY',                            # OPTIONAL
-      WebsiteRedirectLocation   => 'MyWebsiteRedirectLocation',       # OPTIONAL
+      RequestPayer      => 'requester',                               # OPTIONAL
+      SSECustomerAlgorithm    => 'MySSECustomerAlgorithm',            # OPTIONAL
+      SSECustomerKey          => 'MySSECustomerKey',                  # OPTIONAL
+      SSECustomerKeyMD5       => 'MySSECustomerKeyMD5',               # OPTIONAL
+      SSEKMSKeyId             => 'MySSEKMSKeyId',                     # OPTIONAL
+      ServerSideEncryption    => 'AES256',                            # OPTIONAL
+      StorageClass            => 'STANDARD',                          # OPTIONAL
+      Tagging                 => 'MyTaggingHeader',                   # OPTIONAL
+      TaggingDirective        => 'COPY',                              # OPTIONAL
+      WebsiteRedirectLocation => 'MyWebsiteRedirectLocation',         # OPTIONAL
     );
 
     # Results:
-    my $CopyObjectResult        = $CopyObjectOutput->CopyObjectResult;
-    my $CopySourceVersionId     = $CopyObjectOutput->CopySourceVersionId;
-    my $Expiration              = $CopyObjectOutput->Expiration;
-    my $RequestCharged          = $CopyObjectOutput->RequestCharged;
-    my $SSECustomerAlgorithm    = $CopyObjectOutput->SSECustomerAlgorithm;
-    my $SSECustomerKeyMD5       = $CopyObjectOutput->SSECustomerKeyMD5;
-    my $SSEKMSEncryptionContext = $CopyObjectOutput->SSEKMSEncryptionContext;
-    my $SSEKMSKeyId             = $CopyObjectOutput->SSEKMSKeyId;
-    my $ServerSideEncryption    = $CopyObjectOutput->ServerSideEncryption;
-    my $VersionId               = $CopyObjectOutput->VersionId;
+    my $Expiration           = $CopyObjectOutput->Expiration;
+    my $SSEKMSKeyId          = $CopyObjectOutput->SSEKMSKeyId;
+    my $RequestCharged       = $CopyObjectOutput->RequestCharged;
+    my $CopyObjectResult     = $CopyObjectOutput->CopyObjectResult;
+    my $ServerSideEncryption = $CopyObjectOutput->ServerSideEncryption;
+    my $SSECustomerAlgorithm = $CopyObjectOutput->SSECustomerAlgorithm;
+    my $SSECustomerKeyMD5    = $CopyObjectOutput->SSECustomerKeyMD5;
+    my $CopySourceVersionId  = $CopyObjectOutput->CopySourceVersionId;
+    my $VersionId            = $CopyObjectOutput->VersionId;
 
     # Returns a L<Paws::S3::CopyObjectOutput> object.
 
@@ -135,7 +126,7 @@ Valid values are: C<"private">, C<"public-read">, C<"public-read-write">, C<"aut
 
 =head2 B<REQUIRED> Bucket => Str
 
-The name of the destination bucket.
+
 
 
 
@@ -205,8 +196,8 @@ Copies the object if it hasn't been modified since the specified time.
 
 =head2 CopySourceSSECustomerAlgorithm => Str
 
-Specifies the algorithm to use when decrypting the source object (for
-example, AES256).
+Specifies the algorithm to use when decrypting the source object (e.g.,
+AES256).
 
 
 
@@ -222,7 +213,7 @@ must be one that was used when the source object was created.
 
 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 1321. Amazon S3 uses this header for a message integrity check to
-ensure that the encryption key was transmitted without error.
+ensure the encryption key was transmitted without error.
 
 
 
@@ -259,7 +250,7 @@ Allows grantee to write the ACL for the applicable object.
 
 =head2 B<REQUIRED> Key => Str
 
-The key of the destination object.
+
 
 
 
@@ -276,25 +267,6 @@ replaced with metadata provided in the request.
 
 Valid values are: C<"COPY">, C<"REPLACE">
 
-=head2 ObjectLockLegalHoldStatus => Str
-
-Specifies whether you want to apply a Legal Hold to the copied object.
-
-Valid values are: C<"ON">, C<"OFF">
-
-=head2 ObjectLockMode => Str
-
-The Object Lock mode that you want to apply to the copied object.
-
-Valid values are: C<"GOVERNANCE">, C<"COMPLIANCE">
-
-=head2 ObjectLockRetainUntilDate => Str
-
-The date and time when you want the copied object's Object Lock to
-expire.
-
-
-
 =head2 RequestPayer => Str
 
 
@@ -303,15 +275,15 @@ Valid values are: C<"requester">
 
 =head2 ServerSideEncryption => Str
 
-The server-side encryption algorithm used when storing this object in
-Amazon S3 (for example, AES256, aws:kms).
+The Server-side encryption algorithm used when storing this object in
+S3 (e.g., AES256, aws:kms).
 
 Valid values are: C<"AES256">, C<"aws:kms">
 
 =head2 SSECustomerAlgorithm => Str
 
-Specifies the algorithm to use to when encrypting the object (for
-example, AES256).
+Specifies the algorithm to use to when encrypting the object (e.g.,
+AES256).
 
 
 
@@ -319,9 +291,9 @@ example, AES256).
 
 Specifies the customer-provided encryption key for Amazon S3 to use in
 encrypting data. This value is used to store the object and then it is
-discarded; Amazon S3 does not store the encryption key. The key must be
+discarded; Amazon does not store the encryption key. The key must be
 appropriate for use with the algorithm specified in the
-C<x-amz-server-side-encryption-customer-algorithm> header.
+x-amz-server-side-encryption-customer-algorithm header.
 
 
 
@@ -329,15 +301,7 @@ C<x-amz-server-side-encryption-customer-algorithm> header.
 
 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 1321. Amazon S3 uses this header for a message integrity check to
-ensure that the encryption key was transmitted without error.
-
-
-
-=head2 SSEKMSEncryptionContext => Str
-
-Specifies the AWS KMS Encryption Context to use for object encryption.
-The value of this header is a base64-encoded UTF-8 string holding JSON
-with the encryption context key-value pairs.
+ensure the encryption key was transmitted without error.
 
 
 
@@ -345,11 +309,9 @@ with the encryption context key-value pairs.
 
 Specifies the AWS KMS key ID to use for object encryption. All GET and
 PUT requests for an object protected by AWS KMS will fail if not made
-via SSL or using SigV4. For information about configuring using any of
-the officially supported AWS SDKs and AWS CLI, see Specifying the
-Signature Version in Request Authentication
-(https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signature-version)
-in the I<Amazon S3 Developer Guide>.
+via SSL or using SigV4. Documentation on configuring any of the
+officially supported AWS SDKs and CLI can be found at
+http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signature-version
 
 
 
@@ -357,13 +319,13 @@ in the I<Amazon S3 Developer Guide>.
 
 The type of storage to use for the object. Defaults to 'STANDARD'.
 
-Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"ONEZONE_IA">, C<"INTELLIGENT_TIERING">, C<"GLACIER">, C<"DEEP_ARCHIVE">
+Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"ONEZONE_IA">
 
 =head2 Tagging => Str
 
 The tag-set for the object destination object this value must be used
-in conjunction with the C<TaggingDirective>. The tag-set must be
-encoded as URL Query parameters.
+in conjunction with the TaggingDirective. The tag-set must be encoded
+as URL Query parameters
 
 
 

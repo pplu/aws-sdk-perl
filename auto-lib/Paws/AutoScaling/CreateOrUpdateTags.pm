@@ -30,24 +30,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create or update tags for an Auto Scaling group
     # This example adds two tags to the specified Auto Scaling group.
     $autoscaling->CreateOrUpdateTags(
-      'Tags' => [
+      {
+        'Tags' => [
 
-        {
-          'Key'               => 'Role',
-          'PropagateAtLaunch' => 1,
-          'ResourceId'        => 'my-auto-scaling-group',
-          'ResourceType'      => 'auto-scaling-group',
-          'Value'             => 'WebServer'
-        },
+          {
+            'ResourceId'        => 'my-auto-scaling-group',
+            'Value'             => 'WebServer',
+            'ResourceType'      => 'auto-scaling-group',
+            'PropagateAtLaunch' => 1,
+            'Key'               => 'Role'
+          },
 
-        {
-          'Key'               => 'Dept',
-          'PropagateAtLaunch' => 1,
-          'ResourceId'        => 'my-auto-scaling-group',
-          'ResourceType'      => 'auto-scaling-group',
-          'Value'             => 'Research'
-        }
-      ]
+          {
+            'ResourceId'        => 'my-auto-scaling-group',
+            'Value'             => 'Research',
+            'ResourceType'      => 'auto-scaling-group',
+            'PropagateAtLaunch' => 1,
+            'Key'               => 'Dept'
+          }
+        ]
+      }
     );
 
 

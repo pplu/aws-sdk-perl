@@ -7,7 +7,6 @@ package Paws::StorageGateway::ActivateGateway;
   has GatewayTimezone => (is => 'ro', isa => 'Str', required => 1);
   has GatewayType => (is => 'ro', isa => 'Str');
   has MediumChangerType => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::Tag]');
   has TapeDriveType => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -37,13 +36,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To activate the gateway
     # Activates the gateway you previously deployed on your host.
     my $ActivateGatewayOutput = $storagegateway->ActivateGateway(
-      'ActivationKey'     => '29AV1-3OFV9-VVIUB-NKT0I-LRO6V',
-      'GatewayName'       => 'My_Gateway',
-      'GatewayRegion'     => 'us-east-1',
-      'GatewayTimezone'   => 'GMT-12:00',
-      'GatewayType'       => 'STORED',
-      'MediumChangerType' => 'AWS-Gateway-VTL',
-      'TapeDriveType'     => 'IBM-ULT3580-TD5'
+      {
+        'GatewayTimezone'   => 'GMT-12:00',
+        'TapeDriveType'     => 'IBM-ULT3580-TD5',
+        'GatewayRegion'     => 'us-east-1',
+        'GatewayType'       => 'STORED',
+        'GatewayName'       => 'My_Gateway',
+        'MediumChangerType' => 'AWS-Gateway-VTL',
+        'ActivationKey'     => '29AV1-3OFV9-VVIUB-NKT0I-LRO6V'
+      }
     );
 
     # Results:
@@ -82,17 +83,18 @@ The name you configured for your gateway.
 
 =head2 B<REQUIRED> GatewayRegion => Str
 
-A value that indicates the AWS Region where you want to store your
-data. The gateway AWS Region specified must be the same AWS Region as
-the AWS Region in your C<Host> header in the request. For more
-information about available AWS Regions and endpoints for AWS Storage
-Gateway, see Regions and Endpoints
-(https://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region) in
+A value that indicates the region where you want to store your data.
+The gateway region specified must be the same region as the region in
+your C<Host> header in the request. For more information about
+available regions and endpoints for AWS Storage Gateway, see Regions
+and Endpoints
+(http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region) in
 the I<Amazon Web Services Glossary>.
 
-Valid Values: See AWS Storage Gateway Regions and Endpoints
-(https://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region) in
-the AWS General Reference.
+Valid Values: "us-east-1", "us-east-2", "us-west-1", "us-west-2",
+"ca-central-1", "eu-west-1", "eu-central-1", "eu-west-2", "eu-west-3",
+"ap-northeast-1", "ap-northeast-2", "ap-southeast-1", "ap-southeast-2",
+"ap-south-1", "sa-east-1"
 
 
 
@@ -110,7 +112,7 @@ for scheduling snapshots and your gateway's maintenance schedule.
 
 A value that defines the type of gateway to activate. The type
 specified is critical to all later functions of the gateway and cannot
-be changed after activation. The default value is C<CACHED>.
+be changed after activation. The default value is C<STORED>.
 
 Valid Values: "STORED", "CACHED", "VTL", "FILE_S3"
 
@@ -122,18 +124,6 @@ The value that indicates the type of medium changer to use for tape
 gateway. This field is optional.
 
 Valid Values: "STK-L700", "AWS-Gateway-VTL"
-
-
-
-=head2 Tags => ArrayRef[L<Paws::StorageGateway::Tag>]
-
-A list of up to 50 tags that you can assign to the gateway. Each tag is
-a key-value pair.
-
-Valid characters for key and value are letters, spaces, and numbers
-that can be represented in UTF-8 format, and the following special
-characters: + - = . _ : / @. The maximum length of a tag's key is 128
-characters, and the maximum length for a tag's value is 256 characters.
 
 
 

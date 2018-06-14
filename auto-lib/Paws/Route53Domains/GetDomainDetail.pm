@@ -33,27 +33,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $AbuseContactEmail = $GetDomainDetailResponse->AbuseContactEmail;
-    my $AbuseContactPhone = $GetDomainDetailResponse->AbuseContactPhone;
-    my $AdminContact      = $GetDomainDetailResponse->AdminContact;
-    my $AdminPrivacy      = $GetDomainDetailResponse->AdminPrivacy;
     my $AutoRenew         = $GetDomainDetailResponse->AutoRenew;
-    my $CreationDate      = $GetDomainDetailResponse->CreationDate;
-    my $DnsSec            = $GetDomainDetailResponse->DnsSec;
-    my $DomainName        = $GetDomainDetailResponse->DomainName;
+    my $StatusList        = $GetDomainDetailResponse->StatusList;
+    my $Reseller          = $GetDomainDetailResponse->Reseller;
     my $ExpirationDate    = $GetDomainDetailResponse->ExpirationDate;
-    my $Nameservers       = $GetDomainDetailResponse->Nameservers;
-    my $RegistrantContact = $GetDomainDetailResponse->RegistrantContact;
+    my $AbuseContactEmail = $GetDomainDetailResponse->AbuseContactEmail;
+    my $AdminPrivacy      = $GetDomainDetailResponse->AdminPrivacy;
+    my $CreationDate      = $GetDomainDetailResponse->CreationDate;
+    my $AdminContact      = $GetDomainDetailResponse->AdminContact;
     my $RegistrantPrivacy = $GetDomainDetailResponse->RegistrantPrivacy;
     my $RegistrarName     = $GetDomainDetailResponse->RegistrarName;
-    my $RegistrarUrl      = $GetDomainDetailResponse->RegistrarUrl;
-    my $RegistryDomainId  = $GetDomainDetailResponse->RegistryDomainId;
-    my $Reseller          = $GetDomainDetailResponse->Reseller;
-    my $StatusList        = $GetDomainDetailResponse->StatusList;
-    my $TechContact       = $GetDomainDetailResponse->TechContact;
     my $TechPrivacy       = $GetDomainDetailResponse->TechPrivacy;
+    my $DnsSec            = $GetDomainDetailResponse->DnsSec;
+    my $AbuseContactPhone = $GetDomainDetailResponse->AbuseContactPhone;
     my $UpdatedDate       = $GetDomainDetailResponse->UpdatedDate;
+    my $RegistrarUrl      = $GetDomainDetailResponse->RegistrarUrl;
+    my $TechContact       = $GetDomainDetailResponse->TechContact;
     my $WhoIsServer       = $GetDomainDetailResponse->WhoIsServer;
+    my $RegistryDomainId  = $GetDomainDetailResponse->RegistryDomainId;
+    my $Nameservers       = $GetDomainDetailResponse->Nameservers;
+    my $DomainName        = $GetDomainDetailResponse->DomainName;
+    my $RegistrantContact = $GetDomainDetailResponse->RegistrantContact;
 
     # Returns a L<Paws::Route53Domains::GetDomainDetailResponse> object.
 

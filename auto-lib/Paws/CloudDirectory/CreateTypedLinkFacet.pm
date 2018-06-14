@@ -33,34 +33,34 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Facet => {
         Attributes => [
           {
-            Name => 'MyAttributeName',    # min: 1, max: 230
             RequiredBehavior =>
               'REQUIRED_ALWAYS',    # values: REQUIRED_ALWAYS, NOT_REQUIRED
-            Type => 'STRING'
-            ,    # values: STRING, BINARY, BOOLEAN, NUMBER, DATETIME, VARIANT
-            DefaultValue => {
-              BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
-              BooleanValue  => 1,                             # OPTIONAL
-              DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
-              NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
-              StringValue   => 'MyStringAttributeValue',      # OPTIONAL
-            },    # OPTIONAL
-            IsImmutable => 1,    # OPTIONAL
-            Rules       => {
+            Type =>
+              'STRING',    # values: STRING, BINARY, BOOLEAN, NUMBER, DATETIME
+            Name  => 'MyAttributeName',    # min: 1, max: 64
+            Rules => {
               'MyRuleKey' => {
-                Parameters =>
-                  { 'MyRuleParameterKey' => 'MyRuleParameterValue', }
-                ,                # OPTIONAL
                 Type => 'BINARY_LENGTH'
                 , # values: BINARY_LENGTH, NUMBER_COMPARISON, STRING_FROM_SET, STRING_LENGTH; OPTIONAL
+                Parameters =>
+                  { 'MyRuleParameterKey' => 'MyRuleParameterValue', }
+                ,    # OPTIONAL
               },    # key: min: 1, max: 64
+            },    # OPTIONAL
+            IsImmutable  => 1,    # OPTIONAL
+            DefaultValue => {
+              NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
+              BooleanValue  => 1,                             # OPTIONAL
+              StringValue   => 'MyStringAttributeValue',      # OPTIONAL
+              DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
+              BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
             },    # OPTIONAL
           },
           ...
         ],
         IdentityAttributeOrder => [
           'MyAttributeName',
-          ...     # min: 1, max: 230
+          ...     # min: 1, max: 64
         ],
         Name => 'MyTypedLinkName',
 

@@ -33,37 +33,33 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DomainName      => 'MyString',
       PatchOperations => [
         {
-          From => 'MyString',
-          Op =>
+          from  => 'MyString',
+          value => 'MyString',
+          path  => 'MyString',
+          op =>
             'add',    # values: add, remove, replace, move, copy, test; OPTIONAL
-          Path  => 'MyString',
-          Value => 'MyString',
         },
         ...
       ],              # OPTIONAL
     );
 
     # Results:
-    my $CertificateArn           = $DomainName->CertificateArn;
-    my $CertificateName          = $DomainName->CertificateName;
     my $CertificateUploadDate    = $DomainName->CertificateUploadDate;
-    my $DistributionDomainName   = $DomainName->DistributionDomainName;
+    my $CertificateName          = $DomainName->CertificateName;
+    my $RegionalHostedZoneId     = $DomainName->RegionalHostedZoneId;
+    my $CertificateArn           = $DomainName->CertificateArn;
     my $DistributionHostedZoneId = $DomainName->DistributionHostedZoneId;
-    my $DomainName               = $DomainName->DomainName;
-    my $DomainNameStatus         = $DomainName->DomainNameStatus;
-    my $DomainNameStatusMessage  = $DomainName->DomainNameStatusMessage;
+    my $DistributionDomainName   = $DomainName->DistributionDomainName;
     my $EndpointConfiguration    = $DomainName->EndpointConfiguration;
+    my $RegionalDomainName       = $DomainName->RegionalDomainName;
     my $RegionalCertificateArn   = $DomainName->RegionalCertificateArn;
     my $RegionalCertificateName  = $DomainName->RegionalCertificateName;
-    my $RegionalDomainName       = $DomainName->RegionalDomainName;
-    my $RegionalHostedZoneId     = $DomainName->RegionalHostedZoneId;
-    my $SecurityPolicy           = $DomainName->SecurityPolicy;
-    my $Tags                     = $DomainName->Tags;
+    my $DomainName               = $DomainName->DomainName;
 
     # Returns a L<Paws::ApiGateway::DomainName> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/UpdateDomainName>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>
 
 =head1 ATTRIBUTES
 

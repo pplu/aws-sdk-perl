@@ -3,7 +3,6 @@ package Paws::S3::PutBucketLogging;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has BucketLoggingStatus => (is => 'ro', isa => 'Paws::S3::BucketLoggingStatus', required => 1);
-  has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
 
   use MooseX::ClassAttribute;
@@ -45,8 +44,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Type => 'CanonicalUser'
                 ,    # values: CanonicalUser, AmazonCustomerByEmail, Group
                 DisplayName  => 'MyDisplayName',     # OPTIONAL
-                EmailAddress => 'MyEmailAddress',    # OPTIONAL
                 ID           => 'MyID',              # OPTIONAL
+                EmailAddress => 'MyEmailAddress',    # OPTIONAL
                 URI          => 'MyURI',             # OPTIONAL
               },    # OPTIONAL
               Permission =>
@@ -56,8 +55,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ],                       # OPTIONAL
         },    # OPTIONAL
       },
-      ContentLength => 1,                 # OPTIONAL
-      ContentMD5    => 'MyContentMD5',    # OPTIONAL
+      ContentMD5 => 'MyContentMD5',    # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -68,25 +66,19 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-The name of the bucket for which to set the logging parameters.
+
 
 
 
 =head2 B<REQUIRED> BucketLoggingStatus => L<Paws::S3::BucketLoggingStatus>
 
-Container for logging status information.
 
-
-
-=head2 ContentLength => Int
-
-Size of the body in bytes.
 
 
 
 =head2 ContentMD5 => Str
 
-The MD5 hash of the C<PutBucketLogging> request body.
+
 
 
 

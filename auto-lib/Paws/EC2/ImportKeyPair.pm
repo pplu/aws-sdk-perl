@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $KeyFingerprint = $ImportKeyPairResult->KeyFingerprint;
     my $KeyName        = $ImportKeyPairResult->KeyName;
+    my $KeyFingerprint = $ImportKeyPairResult->KeyFingerprint;
 
     # Returns a L<Paws::EC2::ImportKeyPairResult> object.
 

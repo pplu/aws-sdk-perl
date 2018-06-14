@@ -32,10 +32,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ProductCode  => 'MyProductCode',
       UsageRecords => [
         {
-          CustomerIdentifier => 'MyCustomerIdentifier',    # min: 1, max: 255
           Dimension          => 'MyUsageDimension',        # min: 1, max: 255
+          Quantity           => 1,                         # max: 1000000
           Timestamp          => '1970-01-01T01:00:00',
-          Quantity => 1,    # max: 2147483647; OPTIONAL
+          CustomerIdentifier => 'MyCustomerIdentifier',    # min: 1, max: 255
+
         },
         ...
       ],
@@ -43,13 +44,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Results            = $BatchMeterUsageResult->Results;
     my $UnprocessedRecords = $BatchMeterUsageResult->UnprocessedRecords;
+    my $Results            = $BatchMeterUsageResult->Results;
 
     # Returns a L<Paws::MarketplaceMetering::BatchMeterUsageResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/metering.marketplace/BatchMeterUsage>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/marketplacemetering/latest/APIReference/Welcome.html>
 
 =head1 ATTRIBUTES
 

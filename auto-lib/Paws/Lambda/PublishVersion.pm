@@ -34,25 +34,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To publish a version of a Lambda function
     # This operation publishes a version of a Lambda function
     my $FunctionConfiguration = $lambda->PublishVersion(
-      'CodeSha256'   => '',
-      'Description'  => '',
-      'FunctionName' => 'myFunction'
+      {
+        'FunctionName' => 'myFunction',
+        'Description'  => '',
+        'CodeSha256'   => ''
+      }
     );
 
     # Results:
-    my $CodeSha256   = $FunctionConfiguration->CodeSha256;
-    my $CodeSize     = $FunctionConfiguration->CodeSize;
-    my $Description  = $FunctionConfiguration->Description;
-    my $FunctionArn  = $FunctionConfiguration->FunctionArn;
-    my $FunctionName = $FunctionConfiguration->FunctionName;
-    my $Handler      = $FunctionConfiguration->Handler;
-    my $LastModified = $FunctionConfiguration->LastModified;
-    my $MemorySize   = $FunctionConfiguration->MemorySize;
     my $Role         = $FunctionConfiguration->Role;
     my $Runtime      = $FunctionConfiguration->Runtime;
-    my $Timeout      = $FunctionConfiguration->Timeout;
+    my $FunctionName = $FunctionConfiguration->FunctionName;
+    my $CodeSize     = $FunctionConfiguration->CodeSize;
     my $Version      = $FunctionConfiguration->Version;
+    my $Handler      = $FunctionConfiguration->Handler;
+    my $MemorySize   = $FunctionConfiguration->MemorySize;
     my $VpcConfig    = $FunctionConfiguration->VpcConfig;
+    my $FunctionArn  = $FunctionConfiguration->FunctionArn;
+    my $Timeout      = $FunctionConfiguration->Timeout;
+    my $Description  = $FunctionConfiguration->Description;
+    my $CodeSha256   = $FunctionConfiguration->CodeSha256;
+    my $LastModified = $FunctionConfiguration->LastModified;
 
     # Returns a L<Paws::Lambda::FunctionConfiguration> object.
 
@@ -64,54 +66,42 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 CodeSha256 => Str
 
-Only publish a version if the hash value matches the value that's
-specified. Use this option to avoid publishing a version if the
-function code has changed since you last updated it. You can get the
-hash for the version that you uploaded from the output of
-UpdateFunctionCode.
+The SHA256 hash of the deployment package you want to publish. This
+provides validation on the code you are publishing. If you provide this
+parameter, the value must match the SHA256 of the $LATEST version for
+the publication to succeed. You can use the B<DryRun> parameter of
+UpdateFunctionCode to verify the hash value that will be returned
+before publishing your new version.
 
 
 
 =head2 Description => Str
 
-A description for the version to override the description in the
-function configuration.
+The description for the version you are publishing. If not provided,
+AWS Lambda copies the description from the $LATEST version.
 
 
 
 =head2 B<REQUIRED> FunctionName => Str
 
-The name of the Lambda function.
-
-B<Name formats>
-
-=over
-
-=item *
-
-B<Function name> - C<MyFunction>.
-
-=item *
-
-B<Function ARN> -
-C<arn:aws:lambda:us-west-2:123456789012:function:MyFunction>.
-
-=item *
-
-B<Partial ARN> - C<123456789012:function:MyFunction>.
-
-=back
-
-The length constraint applies only to the full ARN. If you specify only
-the function name, it is limited to 64 characters in length.
+The Lambda function name. You can specify a function name (for example,
+C<Thumbnail>) or you can specify Amazon Resource Name (ARN) of the
+function (for example,
+C<arn:aws:lambda:us-west-2:account-id:function:ThumbNail>). AWS Lambda
+also allows you to specify a partial ARN (for example,
+C<account-id:Thumbnail>). Note that the length constraint applies only
+to the ARN. If you specify only the function name, it is limited to 64
+characters in length.
 
 
 
 =head2 RevisionId => Str
 
-Only update the function if the revision ID matches the ID that's
-specified. Use this option to avoid publishing a version if the
-function configuration has changed since you last updated it.
+An optional value you can use to ensure you are updating the latest
+update of the function version or alias. If the C<RevisionID> you pass
+doesn't match the latest C<RevisionId> of the function or alias, it
+will fail with an error message, advising you to retrieve the latest
+function version or alias C<RevisionID> using either or .
 
 
 

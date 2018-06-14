@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       VerificationCertificate => 'MyCertificatePem',
       AllowAutoRegistration   => 1,                    # OPTIONAL
       RegistrationConfig      => {
-        RoleArn      => 'MyRoleArn',         # min: 20, max: 2048; OPTIONAL
-        TemplateBody => 'MyTemplateBody',    # OPTIONAL
+        roleArn      => 'MyRoleArn',         # min: 20, max: 2048; OPTIONAL
+        templateBody => 'MyTemplateBody',    # OPTIONAL
       },    # OPTIONAL
       SetAsActive => 1,    # OPTIONAL
     );

@@ -50,15 +50,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $AudioStream       = $PostContentResponse->AudioStream;
     my $ContentType       = $PostContentResponse->ContentType;
     my $DialogState       = $PostContentResponse->DialogState;
-    my $InputTranscript   = $PostContentResponse->InputTranscript;
-    my $IntentName        = $PostContentResponse->IntentName;
-    my $Message           = $PostContentResponse->Message;
     my $MessageFormat     = $PostContentResponse->MessageFormat;
-    my $SentimentResponse = $PostContentResponse->SentimentResponse;
-    my $SessionAttributes = $PostContentResponse->SessionAttributes;
-    my $SessionId         = $PostContentResponse->SessionId;
-    my $SlotToElicit      = $PostContentResponse->SlotToElicit;
     my $Slots             = $PostContentResponse->Slots;
+    my $IntentName        = $PostContentResponse->IntentName;
+    my $InputTranscript   = $PostContentResponse->InputTranscript;
+    my $Message           = $PostContentResponse->Message;
+    my $SlotToElicit      = $PostContentResponse->SlotToElicit;
+    my $SessionAttributes = $PostContentResponse->SessionAttributes;
 
     # Returns a L<Paws::LexRuntime::PostContentResponse> object.
 
@@ -89,13 +87,6 @@ response. Amazon Lex uses Amazon Polly to generate the speech (using
 the configuration you specified in the C<Accept> header). For example,
 if you specify C<audio/mpeg> as the value, Amazon Lex returns speech in
 the MPEG format.
-
-=item *
-
-If the value is C<audio/pcm>, the speech returned is C<audio/pcm> in
-16-bit, little endian format.
-
-=item *
 
 The following are the accepted values:
 
@@ -225,7 +216,7 @@ The namespace C<x-amz-lex:> is reserved for special attributes. Don't
 create any request attributes with the prefix C<x-amz-lex:>.
 
 For more information, see Setting Request Attributes
-(https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-request-attribs).
+(http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-request-attribs).
 
 
 
@@ -239,7 +230,7 @@ with string keys and values. The total size of the C<sessionAttributes>
 and C<requestAttributes> headers is limited to 12 KB.
 
 For more information, see Setting Session Attributes
-(https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-session-attribs).
+(http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-session-attribs).
 
 
 

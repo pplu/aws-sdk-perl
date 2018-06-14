@@ -41,8 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MultipartUpload => {
         Parts => [
           {
-            ETag       => 'MyETag',    # OPTIONAL
             PartNumber => 1,           # OPTIONAL
+            ETag       => 'MyETag',    # OPTIONAL
           },
           ...
         ],                             # OPTIONAL
@@ -51,15 +51,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Bucket         = $CompleteMultipartUploadOutput->Bucket;
-    my $ETag           = $CompleteMultipartUploadOutput->ETag;
     my $Expiration     = $CompleteMultipartUploadOutput->Expiration;
-    my $Key            = $CompleteMultipartUploadOutput->Key;
-    my $Location       = $CompleteMultipartUploadOutput->Location;
-    my $RequestCharged = $CompleteMultipartUploadOutput->RequestCharged;
+    my $Bucket         = $CompleteMultipartUploadOutput->Bucket;
     my $SSEKMSKeyId    = $CompleteMultipartUploadOutput->SSEKMSKeyId;
+    my $RequestCharged = $CompleteMultipartUploadOutput->RequestCharged;
     my $ServerSideEncryption =
       $CompleteMultipartUploadOutput->ServerSideEncryption;
+    my $ETag      = $CompleteMultipartUploadOutput->ETag;
+    my $Location  = $CompleteMultipartUploadOutput->Location;
+    my $Key       = $CompleteMultipartUploadOutput->Key;
     my $VersionId = $CompleteMultipartUploadOutput->VersionId;
 
     # Returns a L<Paws::S3::CompleteMultipartUploadOutput> object.
@@ -72,19 +72,19 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-Name of the bucket to which the multipart upload was initiated.
+
 
 
 
 =head2 B<REQUIRED> Key => Str
 
-Object key for which the multipart upload was initiated.
+
 
 
 
 =head2 MultipartUpload => L<Paws::S3::CompletedMultipartUpload>
 
-The container for the multipart upload request information.
+
 
 
 
@@ -96,7 +96,7 @@ Valid values are: C<"requester">
 
 =head2 B<REQUIRED> UploadId => Str
 
-ID for the initiated multipart upload.
+
 
 
 

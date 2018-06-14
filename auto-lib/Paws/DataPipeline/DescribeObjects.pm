@@ -41,8 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $HasMoreResults  = $DescribeObjectsOutput->HasMoreResults;
-    my $Marker          = $DescribeObjectsOutput->Marker;
     my $PipelineObjects = $DescribeObjectsOutput->PipelineObjects;
+    my $Marker          = $DescribeObjectsOutput->Marker;
 
     # Returns a L<Paws::DataPipeline::DescribeObjectsOutput> object.
 

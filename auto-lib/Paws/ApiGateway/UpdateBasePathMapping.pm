@@ -35,25 +35,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DomainName      => 'MyString',
       PatchOperations => [
         {
-          From => 'MyString',
-          Op =>
+          from  => 'MyString',
+          value => 'MyString',
+          path  => 'MyString',
+          op =>
             'add',    # values: add, remove, replace, move, copy, test; OPTIONAL
-          Path  => 'MyString',
-          Value => 'MyString',
         },
         ...
       ],              # OPTIONAL
     );
 
     # Results:
-    my $BasePath  = $BasePathMapping->BasePath;
     my $RestApiId = $BasePathMapping->RestApiId;
     my $Stage     = $BasePathMapping->Stage;
+    my $BasePath  = $BasePathMapping->BasePath;
 
     # Returns a L<Paws::ApiGateway::BasePathMapping> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/UpdateBasePathMapping>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>
 
 =head1 ATTRIBUTES
 
@@ -61,8 +61,6 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head2 B<REQUIRED> BasePath => Str
 
 [Required] The base path of the BasePathMapping resource to change.
-
-To specify an empty base path, set this parameter to C<'(none)'>.
 
 
 

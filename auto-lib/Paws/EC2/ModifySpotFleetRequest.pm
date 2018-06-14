@@ -2,7 +2,6 @@
 package Paws::EC2::ModifySpotFleetRequest;
   use Moose;
   has ExcessCapacityTerminationPolicy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'excessCapacityTerminationPolicy' );
-  has OnDemandTargetCapacity => (is => 'ro', isa => 'Int');
   has SpotFleetRequestId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'spotFleetRequestId' , required => 1);
   has TargetCapacity => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'targetCapacity' );
 
@@ -34,8 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example increases the target capacity of the specified Spot fleet
     # request.
     my $ModifySpotFleetRequestResponse = $ec2->ModifySpotFleetRequest(
-      'SpotFleetRequestId' => 'sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE',
-      'TargetCapacity'     => 20
+      {
+        'TargetCapacity'     => 20,
+        'SpotFleetRequestId' => 'sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE'
+      }
     );
 
     # Results:
@@ -46,9 +47,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example decreases the target capacity of the specified Spot fleet
     # request without terminating any Spot Instances as a result.
     my $ModifySpotFleetRequestResponse = $ec2->ModifySpotFleetRequest(
-      'ExcessCapacityTerminationPolicy' => 'NoTermination ',
-      'SpotFleetRequestId' => 'sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE',
-      'TargetCapacity'     => 10
+      {
+        'TargetCapacity'                  => 10,
+        'ExcessCapacityTerminationPolicy' => 'NoTermination ',
+        'SpotFleetRequestId' => 'sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE'
+      }
     );
 
     # Results:
@@ -69,12 +72,6 @@ target capacity of the Spot Fleet request is decreased below the
 current size of the Spot Fleet.
 
 Valid values are: C<"noTermination">, C<"default">
-
-=head2 OnDemandTargetCapacity => Int
-
-The number of On-Demand Instances in the fleet.
-
-
 
 =head2 B<REQUIRED> SpotFleetRequestId => Str
 

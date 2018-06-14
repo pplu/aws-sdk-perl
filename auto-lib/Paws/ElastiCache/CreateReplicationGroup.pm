@@ -11,7 +11,6 @@ package Paws::ElastiCache::CreateReplicationGroup;
   has CacheSubnetGroupName => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
   has NodeGroupConfiguration => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::NodeGroupConfiguration]');
   has NotificationTopicArn => (is => 'ro', isa => 'Str');
   has NumCacheClusters => (is => 'ro', isa => 'Int');
@@ -68,10 +67,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CacheSubnetGroupName        => 'MyString',             # OPTIONAL
       Engine                      => 'MyString',             # OPTIONAL
       EngineVersion               => 'MyString',             # OPTIONAL
-      KmsKeyId                    => 'MyString',             # OPTIONAL
       NodeGroupConfiguration      => [
         {
-          NodeGroupId => 'MyAllowedNodeGroupId',    # min: 1, max: 4; OPTIONAL
           PrimaryAvailabilityZone  => 'MyString',
           ReplicaAvailabilityZones => [ 'MyString', ... ],    # OPTIONAL
           ReplicaCount             => 1,                      # OPTIONAL
@@ -122,8 +119,8 @@ replication group is created. To enable encryption at rest on a
 replication group you must set C<AtRestEncryptionEnabled> to C<true>
 when you create the replication group.
 
-B<Required:> Only available when creating a replication group in an
-Amazon VPC using redis version C<3.2.6>, C<4.x> or later.
+This parameter is valid only if the C<Engine> parameter is C<redis> and
+the cluster is being created in an Amazon VPC.
 
 Default: C<false>
 
@@ -134,11 +131,20 @@ Default: C<false>
 B<Reserved parameter.> The password used to access a password protected
 server.
 
-C<AuthToken> can be specified only on replication groups where
-C<TransitEncryptionEnabled> is C<true>.
+This parameter is valid only if:
 
-For HIPAA compliance, you must specify C<TransitEncryptionEnabled> as
-C<true>, an C<AuthToken>, and a C<CacheSubnetGroup>.
+=over
+
+=item *
+
+The parameter C<TransitEncryptionEnabled> was set to C<true> when the
+cluster was created.
+
+=item *
+
+The line C<requirepass> was added to the database configuration file.
+
+=back
 
 Password constraints:
 
@@ -155,9 +161,7 @@ length.
 
 =item *
 
-The only permitted printable special characters are !, &, #, $, ^,
-E<lt>, E<gt>, and -. Other printable special characters cannot be used
-in the AUTH token.
+Cannot contain any of the following characters: '/', '"', or '@'.
 
 =back
 
@@ -190,7 +194,7 @@ Redis versions earlier than 2.8.6.
 
 =item *
 
-Redis (cluster mode disabled): T1 node types.
+Redis (cluster mode disabled): T1 and T2 cache node types.
 
 =item *
 
@@ -228,15 +232,14 @@ General purpose:
 
 Current generation:
 
-B<M5 node types:> C<cache.m5.large>, C<cache.m5.xlarge>,
-C<cache.m5.2xlarge>, C<cache.m5.4xlarge>, C<cache.m5.12xlarge>,
-C<cache.m5.24xlarge>
+B<T2 node types:> C<cache.t2.micro>, C<cache.t2.small>,
+C<cache.t2.medium>
+
+B<M3 node types:> C<cache.m3.medium>, C<cache.m3.large>,
+C<cache.m3.xlarge>, C<cache.m3.2xlarge>
 
 B<M4 node types:> C<cache.m4.large>, C<cache.m4.xlarge>,
 C<cache.m4.2xlarge>, C<cache.m4.4xlarge>, C<cache.m4.10xlarge>
-
-B<T2 node types:> C<cache.t2.micro>, C<cache.t2.small>,
-C<cache.t2.medium>
 
 =item *
 
@@ -246,9 +249,6 @@ B<T1 node types:> C<cache.t1.micro>
 
 B<M1 node types:> C<cache.m1.small>, C<cache.m1.medium>,
 C<cache.m1.large>, C<cache.m1.xlarge>
-
-B<M3 node types:> C<cache.m3.medium>, C<cache.m3.large>,
-C<cache.m3.xlarge>, C<cache.m3.2xlarge>
 
 =back
 
@@ -276,13 +276,8 @@ Memory optimized:
 
 Current generation:
 
-B<R5 node types:> C<cache.r5.large>, C<cache.r5.xlarge>,
-C<cache.r5.2xlarge>, C<cache.r5.4xlarge>, C<cache.r5.12xlarge>,
-C<cache.r5.24xlarge>
-
-B<R4 node types:> C<cache.r4.large>, C<cache.r4.xlarge>,
-C<cache.r4.2xlarge>, C<cache.r4.4xlarge>, C<cache.r4.8xlarge>,
-C<cache.r4.16xlarge>
+B<R3 node types:> C<cache.r3.large>, C<cache.r3.xlarge>,
+C<cache.r3.2xlarge>, C<cache.r3.4xlarge>, C<cache.r3.8xlarge>
 
 =item *
 
@@ -291,38 +286,43 @@ Previous generation: (not recommended)
 B<M2 node types:> C<cache.m2.xlarge>, C<cache.m2.2xlarge>,
 C<cache.m2.4xlarge>
 
-B<R3 node types:> C<cache.r3.large>, C<cache.r3.xlarge>,
-C<cache.r3.2xlarge>, C<cache.r3.4xlarge>, C<cache.r3.8xlarge>
-
 =back
 
 =back
 
-B<Additional node type info>
+B<Notes:>
 
 =over
 
 =item *
 
-All current generation instance types are created in Amazon VPC by
-default.
+All T2 instances are created in an Amazon Virtual Private Cloud (Amazon
+VPC).
 
 =item *
 
-Redis append-only files (AOF) are not supported for T1 or T2 instances.
+Redis (cluster mode disabled): Redis backup/restore is not supported on
+T1 and T2 instances.
 
 =item *
 
-Redis Multi-AZ with automatic failover is not supported on T1
+Redis (cluster mode enabled): Backup/restore is not supported on T1
 instances.
 
 =item *
 
-Redis configuration variables C<appendonly> and C<appendfsync> are not
-supported on Redis version 2.8.22 and later.
+Redis Append-only files (AOF) functionality is not supported for T1 or
+T2 instances.
 
 =back
 
+For a complete listing of node types and specifications, see Amazon
+ElastiCache Product Features and Details
+(http://aws.amazon.com/elasticache/details) and either Cache Node
+Type-Specific Parameters for Memcached
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific)
+or Cache Node Type-Specific Parameters for Redis
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific).
 
 
 
@@ -331,10 +331,6 @@ supported on Redis version 2.8.22 and later.
 The name of the parameter group to associate with this replication
 group. If this argument is omitted, the default cache parameter group
 for the specified engine is used.
-
-If you are restoring to an engine version that is different than the
-original, you must specify the default version of that version. For
-example, C<CacheParameterGroupName=default.redis4.0>.
 
 If you are running Redis version 3.2.4 or later, only one node group
 (shard), and want to use a default parameter group, we recommend that
@@ -372,7 +368,7 @@ group.
 If you're going to launch your cluster in an Amazon VPC, you need to
 create a subnet group before you start creating a cluster. For more
 information, see Subnets and Subnet Groups
-(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SubnetGroups.html).
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SubnetGroups.html).
 
 
 
@@ -391,7 +387,7 @@ use the C<DescribeCacheEngineVersions> operation.
 
 B<Important:> You can upgrade to a newer engine version (see Selecting
 a Cache Engine and Version
-(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SelectEngine.html#VersionManagement))
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SelectEngine.html#VersionManagement))
 in the I<ElastiCache User Guide>, but you cannot downgrade to an
 earlier engine version. If you want to use an earlier engine version,
 you must delete the existing cluster or replication group and create it
@@ -399,25 +395,16 @@ anew with the earlier engine version.
 
 
 
-=head2 KmsKeyId => Str
-
-The ID of the KMS key used to encrypt the disk on the cluster.
-
-
-
 =head2 NodeGroupConfiguration => ArrayRef[L<Paws::ElastiCache::NodeGroupConfiguration>]
 
 A list of node group (shard) configuration options. Each node group
-(shard) configuration has the following members:
-C<PrimaryAvailabilityZone>, C<ReplicaAvailabilityZones>,
-C<ReplicaCount>, and C<Slots>.
+(shard) configuration has the following: Slots,
+PrimaryAvailabilityZone, ReplicaAvailabilityZones, ReplicaCount.
 
 If you're creating a Redis (cluster mode disabled) or a Redis (cluster
 mode enabled) replication group, you can use this parameter to
 individually configure each node group (shard), or you can omit this
-parameter. However, when seeding a Redis (cluster mode enabled) cluster
-from a S3 rdb file, you must configure each node group (shard) using
-this parameter because you must specify the slots for each node group.
+parameter.
 
 
 
@@ -442,8 +429,8 @@ must be at least 2. If C<AutomaticFailoverEnabled> is C<false> you can
 omit this parameter (it will default to 1), or you can explicitly set
 it to a value between 2 and 6.
 
-The maximum permitted value for C<NumCacheClusters> is 6 (1 primary
-plus 5 replicas).
+The maximum permitted value for C<NumCacheClusters> is 6 (primary plus
+5 replicas).
 
 
 
@@ -570,7 +557,7 @@ Constraints:
 
 =item *
 
-A name must contain from 1 to 40 alphanumeric characters or hyphens.
+A name must contain from 1 to 20 alphanumeric characters or hyphens.
 
 =item *
 
@@ -643,11 +630,9 @@ an appropriate time range.
 
 =head2 Tags => ArrayRef[L<Paws::ElastiCache::Tag>]
 
-A list of cost allocation tags to be added to this resource. Tags are
-comma-separated key,value pairs (e.g. Key=C<myKey>,
-Value=C<myKeyValue>. You can include multiple tags as shown following:
-Key=C<myKey>, Value=C<myKeyValue> Key=C<mySecondKey>,
-Value=C<mySecondKeyValue>.
+A list of cost allocation tags to be added to this resource. A tag is a
+key-value pair. A tag key does not have to be accompanied by a tag
+value.
 
 
 
@@ -661,19 +646,13 @@ must set C<TransitEncryptionEnabled> to C<true> when you create a
 cluster.
 
 This parameter is valid only if the C<Engine> parameter is C<redis>,
-the C<EngineVersion> parameter is C<3.2.6>, C<4.x> or later, and the
-cluster is being created in an Amazon VPC.
+the C<EngineVersion> parameter is C<3.2.4> or later, and the cluster is
+being created in an Amazon VPC.
 
 If you enable in-transit encryption, you must also specify a value for
 C<CacheSubnetGroup>.
 
-B<Required:> Only available when creating a replication group in an
-Amazon VPC using redis version C<3.2.6>, C<4.x> or later.
-
 Default: C<false>
-
-For HIPAA compliance, you must specify C<TransitEncryptionEnabled> as
-C<true>, an C<AuthToken>, and a C<CacheSubnetGroup>.
 
 
 

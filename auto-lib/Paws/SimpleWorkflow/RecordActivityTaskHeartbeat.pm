@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CancelRequested = $ActivityTaskStatus->CancelRequested;
+    my $cancelRequested = $ActivityTaskStatus->cancelRequested;
 
     # Returns a L<Paws::SimpleWorkflow::ActivityTaskStatus> object.
 

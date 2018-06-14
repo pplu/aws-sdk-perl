@@ -45,21 +45,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $NextToken = $ListReviewPolicyResultsForHITResponse->NextToken;
+    my $HITReviewPolicy =
+      $ListReviewPolicyResultsForHITResponse->HITReviewPolicy;
     my $AssignmentReviewPolicy =
       $ListReviewPolicyResultsForHITResponse->AssignmentReviewPolicy;
     my $AssignmentReviewReport =
       $ListReviewPolicyResultsForHITResponse->AssignmentReviewReport;
     my $HITId = $ListReviewPolicyResultsForHITResponse->HITId;
-    my $HITReviewPolicy =
-      $ListReviewPolicyResultsForHITResponse->HITReviewPolicy;
     my $HITReviewReport =
       $ListReviewPolicyResultsForHITResponse->HITReviewReport;
-    my $NextToken = $ListReviewPolicyResultsForHITResponse->NextToken;
 
     # Returns a L<Paws::MTurk::ListReviewPolicyResultsForHITResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mturk-requester/ListReviewPolicyResultsForHIT>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/mturk/>
 
 =head1 ATTRIBUTES
 

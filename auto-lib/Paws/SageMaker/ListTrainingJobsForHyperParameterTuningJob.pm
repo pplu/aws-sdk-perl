@@ -31,9 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
 =head1 SYNOPSIS
 
-    my $api.sagemaker = Paws->service('SageMaker');
+    my $sagemaker = Paws->service('SageMaker');
     my $ListTrainingJobsForHyperParameterTuningJobResponse =
-      $api . sagemaker->ListTrainingJobsForHyperParameterTuningJob(
+      $sagemaker->ListTrainingJobsForHyperParameterTuningJob(
       HyperParameterTuningJobName => 'MyHyperParameterTuningJobName',
       MaxResults                  => 1,                               # OPTIONAL
       NextToken                   => 'MyNextToken',                   # OPTIONAL
@@ -51,7 +51,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 # Returns a L<Paws::SageMaker::ListTrainingJobsForHyperParameterTuningJobResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.sagemaker/ListTrainingJobsForHyperParameterTuningJob>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24>
 
 =head1 ATTRIBUTES
 
@@ -64,7 +64,7 @@ The name of the tuning job whose training jobs you want to list.
 
 =head2 MaxResults => Int
 
-The maximum number of training jobs to return. The default value is 10.
+The maximum number of training jobs to return.
 
 
 
@@ -80,9 +80,6 @@ training jobs, use the token in the next request.
 =head2 SortBy => Str
 
 The field to sort results by. The default is C<Name>.
-
-If the value of this field is C<FinalObjectiveMetricValue>, any
-training jobs that did not return an objective metric are not listed.
 
 Valid values are: C<"Name">, C<"CreationTime">, C<"Status">, C<"FinalObjectiveMetricValue">
 

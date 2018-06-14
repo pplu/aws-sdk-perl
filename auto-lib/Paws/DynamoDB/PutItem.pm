@@ -39,19 +39,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To add an item to a table
     # This example adds a new item to the Music table.
     my $PutItemOutput = $dynamodb->PutItem(
-      'Item' => {
-        'AlbumTitle' => {
-          'S' => 'Somewhat Famous'
+      {
+        'Item' => {
+          'SongTitle' => {
+            'S' => 'Call Me Today'
+          },
+          'AlbumTitle' => {
+            'S' => 'Somewhat Famous'
+          },
+          'Artist' => {
+            'S' => 'No One You Know'
+          }
         },
-        'Artist' => {
-          'S' => 'No One You Know'
-        },
-        'SongTitle' => {
-          'S' => 'Call Me Today'
-        }
-      },
-      'ReturnConsumedCapacity' => 'TOTAL',
-      'TableName'              => 'Music'
+        'ReturnConsumedCapacity' => 'TOTAL',
+        'TableName'              => 'Music'
+      }
     );
 
     # Results:
@@ -69,7 +71,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dyn
 
 This is a legacy parameter. Use C<ConditionExpression> instead. For
 more information, see ConditionalOperator
-(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html)
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 Valid values are: C<"AND">, C<"OR">
@@ -101,9 +103,9 @@ Logical operators: C<AND | OR | NOT>
 
 =back
 
-For more information on condition expressions, see Condition
-Expressions
-(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+For more information on condition expressions, see Specifying
+Conditions
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 
@@ -112,7 +114,7 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 This is a legacy parameter. Use C<ConditionExpression> instead. For
 more information, see Expected
-(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html)
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 
@@ -155,7 +157,7 @@ C<Percentile>
 The name of this attribute conflicts with a reserved word, so it cannot
 be used directly in an expression. (For the complete list of reserved
 words, see Reserved Words
-(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
 in the I<Amazon DynamoDB Developer Guide>). To work around this, you
 could specify the following for C<ExpressionAttributeNames>:
 
@@ -181,9 +183,9 @@ C<#P = :val>
 Tokens that begin with the B<:> character are I<expression attribute
 values>, which are placeholders for the actual value at runtime.
 
-For more information on expression attribute names, see Specifying Item
+For more information on expression attribute names, see Accessing Item
 Attributes
-(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 
@@ -208,9 +210,9 @@ You could then use these values in an expression, such as this:
 
 C<ProductStatus IN (:avail, :back, :disc)>
 
-For more information on expression attribute values, see Condition
-Expressions
-(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+For more information on expression attribute values, see Specifying
+Conditions
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 
@@ -231,7 +233,7 @@ data types for those attributes must match those of the schema in the
 table's attribute definition.
 
 For more information about primary keys, see Primary Key
-(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.CoreComponents.html#HowItWorks.CoreComponents.PrimaryKey)
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey)
 in the I<Amazon DynamoDB Developer Guide>.
 
 Each element in the C<Item> map is an C<AttributeValue> object.

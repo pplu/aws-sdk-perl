@@ -33,16 +33,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $HapgArn              = $DescribeHapgResponse->HapgArn;
-    my $HapgSerial           = $DescribeHapgResponse->HapgSerial;
+    my $State                = $DescribeHapgResponse->State;
+    my $Label                = $DescribeHapgResponse->Label;
     my $HsmsLastActionFailed = $DescribeHapgResponse->HsmsLastActionFailed;
-    my $HsmsPendingDeletion  = $DescribeHapgResponse->HsmsPendingDeletion;
     my $HsmsPendingRegistration =
       $DescribeHapgResponse->HsmsPendingRegistration;
-    my $Label                 = $DescribeHapgResponse->Label;
-    my $LastModifiedTimestamp = $DescribeHapgResponse->LastModifiedTimestamp;
+    my $HapgArn               = $DescribeHapgResponse->HapgArn;
+    my $HsmsPendingDeletion   = $DescribeHapgResponse->HsmsPendingDeletion;
     my $PartitionSerialList   = $DescribeHapgResponse->PartitionSerialList;
-    my $State                 = $DescribeHapgResponse->State;
+    my $HapgSerial            = $DescribeHapgResponse->HapgSerial;
+    my $LastModifiedTimestamp = $DescribeHapgResponse->LastModifiedTimestamp;
 
     # Returns a L<Paws::CloudHSM::DescribeHapgResponse> object.
 

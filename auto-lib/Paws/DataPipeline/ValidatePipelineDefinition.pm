@@ -35,39 +35,39 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       PipelineId      => 'Myid',
       PipelineObjects => [
         {
-          Fields => [
+          id     => 'Myid',    # min: 1, max: 1024
+          name   => 'Myid',    # min: 1, max: 1024
+          fields => [
             {
-              Key         => 'MyfieldNameString',     # min: 1, max: 256
-              RefValue    => 'MyfieldNameString',     # min: 1, max: 256
-              StringValue => 'MyfieldStringValue',    # max: 10240; OPTIONAL
+              key         => 'MyfieldNameString',     # min: 1, max: 256
+              refValue    => 'MyfieldNameString',     # min: 1, max: 256
+              stringValue => 'MyfieldStringValue',    # max: 10240; OPTIONAL
             },
             ...
           ],
-          Id   => 'Myid',                             # min: 1, max: 1024
-          Name => 'Myid',                             # min: 1, max: 1024
 
         },
         ...
       ],
       ParameterObjects => [
         {
-          Attributes => [
+          id         => 'MyfieldNameString',          # min: 1, max: 256
+          attributes => [
             {
-              Key         => 'MyattributeNameString',     # min: 1, max: 256
-              StringValue => 'MyattributeValueString',    # max: 10240
+              key         => 'MyattributeNameString',     # min: 1, max: 256
+              stringValue => 'MyattributeValueString',    # max: 10240
 
             },
             ...
           ],
-          Id => 'MyfieldNameString',                      # min: 1, max: 256
 
         },
         ...
       ],                                                  # OPTIONAL
       ParameterValues => [
         {
-          Id          => 'MyfieldNameString',             # min: 1, max: 256
-          StringValue => 'MyfieldStringValue',            # max: 10240; OPTIONAL
+          id          => 'MyfieldNameString',             # min: 1, max: 256
+          stringValue => 'MyfieldStringValue',            # max: 10240; OPTIONAL
 
         },
         ...
@@ -75,10 +75,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $Errored          = $ValidatePipelineDefinitionOutput->Errored;
-    my $ValidationErrors = $ValidatePipelineDefinitionOutput->ValidationErrors;
     my $ValidationWarnings =
       $ValidatePipelineDefinitionOutput->ValidationWarnings;
+    my $Errored          = $ValidatePipelineDefinitionOutput->Errored;
+    my $ValidationErrors = $ValidatePipelineDefinitionOutput->ValidationErrors;
 
     # Returns a L<Paws::DataPipeline::ValidatePipelineDefinitionOutput> object.
 

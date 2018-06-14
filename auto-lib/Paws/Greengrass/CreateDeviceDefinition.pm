@@ -4,7 +4,6 @@ package Paws::Greengrass::CreateDeviceDefinition;
   has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
   has InitialVersion => (is => 'ro', isa => 'Paws::Greengrass::DeviceDefinitionVersion');
   has Name => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'Paws::Greengrass::Tags', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -36,32 +35,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InitialVersion  => {
         Devices => [
           {
+            SyncShadow     => 1,              # OPTIONAL
+            ThingArn       => 'My__string',
             CertificateArn => 'My__string',
             Id             => 'My__string',
-            ThingArn       => 'My__string',
-            SyncShadow     => 1,              # OPTIONAL
           },
           ...
         ],                                    # OPTIONAL
       },    # OPTIONAL
-      Name => 'My__string',                         # OPTIONAL
-      Tags => { 'My__string' => 'My__string', },    # OPTIONAL
+      Name => 'My__string',    # OPTIONAL
     );
 
     # Results:
-    my $Arn               = $CreateDeviceDefinitionResponse->Arn;
     my $CreationTimestamp = $CreateDeviceDefinitionResponse->CreationTimestamp;
+    my $LatestVersionArn  = $CreateDeviceDefinitionResponse->LatestVersionArn;
     my $Id                = $CreateDeviceDefinitionResponse->Id;
     my $LastUpdatedTimestamp =
       $CreateDeviceDefinitionResponse->LastUpdatedTimestamp;
-    my $LatestVersion    = $CreateDeviceDefinitionResponse->LatestVersion;
-    my $LatestVersionArn = $CreateDeviceDefinitionResponse->LatestVersionArn;
-    my $Name             = $CreateDeviceDefinitionResponse->Name;
+    my $Arn           = $CreateDeviceDefinitionResponse->Arn;
+    my $Name          = $CreateDeviceDefinitionResponse->Name;
+    my $LatestVersion = $CreateDeviceDefinitionResponse->LatestVersion;
 
     # Returns a L<Paws::Greengrass::CreateDeviceDefinitionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/greengrass/CreateDeviceDefinition>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>
 
 =head1 ATTRIBUTES
 
@@ -81,12 +79,6 @@ Information about the initial version of the device definition.
 =head2 Name => Str
 
 The name of the device definition.
-
-
-
-=head2 Tags => L<Paws::Greengrass::Tags>
-
-Tag(s) to add to the new resource.
 
 
 

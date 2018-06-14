@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ConfigurationType => 'SERVER',
       Filters           => [
         {
-          Condition => 'MyCondition',
-          Name      => 'MyString',
-          Values    => [ 'MyFilterValue', ... ],
+          name      => 'MyString',
+          values    => [ 'MyFilterValue', ... ],
+          condition => 'MyCondition',
 
         },
         ...
@@ -46,8 +46,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       NextToken  => 'MyNextToken',    # OPTIONAL
       OrderBy    => [
         {
-          FieldName => 'MyString',
-          SortOrder => 'ASC',         # values: ASC, DESC; OPTIONAL
+          fieldName => 'MyString',
+          sortOrder => 'ASC',         # values: ASC, DESC; OPTIONAL
         },
         ...
       ],                              # OPTIONAL
@@ -79,9 +79,8 @@ I<key>-I<value> format. For example:
 C<{"key": "serverType", "value": "webServer"}>
 
 For a complete list of filter options and guidance about using them
-with this action, see Using the ListConfigurations Action
-(https://docs.aws.amazon.com/application-discovery/latest/userguide/discovery-api-queries.html#ListConfigurations)
-in the I<AWS Application Discovery Service User Guide>.
+with this action, see Querying Discovered Configuration Items
+(http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations).
 
 
 
@@ -106,8 +105,7 @@ next set of 10.
 Certain filter criteria return output that can be sorted in ascending
 or descending order. For a list of output characteristics for each
 filter, see Using the ListConfigurations Action
-(https://docs.aws.amazon.com/application-discovery/latest/userguide/discovery-api-queries.html#ListConfigurations)
-in the I<AWS Application Discovery Service User Guide>.
+(http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations).
 
 
 

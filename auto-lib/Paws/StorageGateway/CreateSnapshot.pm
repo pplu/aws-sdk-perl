@@ -2,7 +2,6 @@
 package Paws::StorageGateway::CreateSnapshot;
   use Moose;
   has SnapshotDescription => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::Tag]');
   has VolumeARN => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -32,9 +31,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create a snapshot of a gateway volume
     # Initiates an ad-hoc snapshot of a gateway volume.
     my $CreateSnapshotOutput = $storagegateway->CreateSnapshot(
-      'SnapshotDescription' => 'My root volume snapshot as of 10/03/2017',
-      'VolumeARN' =>
-'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABB'
+      {
+        'VolumeARN' =>
+'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABB',
+        'SnapshotDescription' => 'My root volume snapshot as of 10/03/2017'
+      }
     );
 
     # Results:
@@ -55,18 +56,6 @@ Textual description of the snapshot that appears in the Amazon EC2
 console, Elastic Block Store snapshots panel in the B<Description>
 field, and in the AWS Storage Gateway snapshot B<Details> pane,
 B<Description> field
-
-
-
-=head2 Tags => ArrayRef[L<Paws::StorageGateway::Tag>]
-
-A list of up to 50 tags that can be assigned to a snapshot. Each tag is
-a key-value pair.
-
-Valid characters for key and value are letters, spaces, and numbers
-representable in UTF-8 format, and the following special characters: +
-- = . _ : / @. The maximum length of a tag's key is 128 characters, and
-the maximum length for a tag's value is 256.
 
 
 

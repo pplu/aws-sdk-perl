@@ -32,16 +32,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $health = Paws->service('Health');
     my $DescribeEventTypesResponse = $health->DescribeEventTypes(
       Filter => {
-        EventTypeCategories => [
-          'issue',
-          ... # values: issue, accountNotification, scheduledChange, investigationmin: 3, max: 255
-        ],    # min: 1, max: 10; OPTIONAL
-        EventTypeCodes => [
+        eventTypeCodes => [
           'MyeventTypeCode', ...    # min: 3, max: 100
         ],                          # min: 1, max: 10; OPTIONAL
-        Services => [
-          'Myservice', ...          # min: 2, max: 30
-        ],                          # min: 1, max: 10; OPTIONAL
+        eventTypeCategories => [
+          'issue',
+          ... # values: issue, accountNotification, scheduledChangemin: 3, max: 255
+        ],    # min: 1, max: 10; OPTIONAL
+        services => [
+          'Myservice', ...    # min: 2, max: 30
+        ],                    # min: 1, max: 10; OPTIONAL
       },    # OPTIONAL
       Locale     => 'Mylocale',       # OPTIONAL
       MaxResults => 1,                # OPTIONAL
@@ -49,8 +49,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $EventTypes = $DescribeEventTypesResponse->EventTypes;
     my $NextToken  = $DescribeEventTypesResponse->NextToken;
+    my $EventTypes = $DescribeEventTypesResponse->EventTypes;
 
     # Returns a L<Paws::Health::DescribeEventTypesResponse> object.
 

@@ -33,8 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example cancels the specified Spot fleet request and terminates its
     # associated Spot Instances.
     my $CancelSpotFleetRequestsResponse = $ec2->CancelSpotFleetRequests(
-      'SpotFleetRequestIds' => ['sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE'],
-      'TerminateInstances'  => 1
+      {
+        'TerminateInstances'  => 1,
+        'SpotFleetRequestIds' => ['sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE']
+      }
     );
 
     # Results:
@@ -46,8 +48,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example cancels the specified Spot fleet request without terminating
     # its associated Spot Instances.
     my $CancelSpotFleetRequestsResponse = $ec2->CancelSpotFleetRequests(
-      'SpotFleetRequestIds' => ['sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE'],
-      'TerminateInstances'  => 0
+      {
+        'TerminateInstances'  => 0,
+        'SpotFleetRequestIds' => ['sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE']
+      }
     );
 
     # Results:

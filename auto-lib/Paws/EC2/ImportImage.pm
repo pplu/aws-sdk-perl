@@ -7,10 +7,7 @@ package Paws::EC2::ImportImage;
   has Description => (is => 'ro', isa => 'Str');
   has DiskContainers => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ImageDiskContainer]', traits => ['NameInRequest'], request_name => 'DiskContainer' );
   has DryRun => (is => 'ro', isa => 'Bool');
-  has Encrypted => (is => 'ro', isa => 'Bool');
   has Hypervisor => (is => 'ro', isa => 'Str');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has LicenseSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ImportImageLicenseConfigurationRequest]');
   has LicenseType => (is => 'ro', isa => 'Str');
   has Platform => (is => 'ro', isa => 'Str');
   has RoleName => (is => 'ro', isa => 'Str');
@@ -42,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ImportImageResult = $ec2->ImportImage(
       Architecture => 'MyString',    # OPTIONAL
       ClientData   => {
-        Comment     => 'MyString',
         UploadEnd   => '1970-01-01T01:00:00',    # OPTIONAL
+        Comment     => 'MyString',
         UploadSize  => 1,                        # OPTIONAL
         UploadStart => '1970-01-01T01:00:00',    # OPTIONAL
       },    # OPTIONAL
@@ -51,44 +48,37 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description    => 'MyString',    # OPTIONAL
       DiskContainers => [
         {
-          Description => 'MyString',
-          DeviceName  => 'MyString',
-          Format      => 'MyString',
-          SnapshotId  => 'MySnapshotId',    # OPTIONAL
-          Url         => 'MyString',
-          UserBucket  => {
-            S3Bucket => 'MyString',
+          SnapshotId => 'MyString',
+          Format     => 'MyString',
+          UserBucket => {
             S3Key    => 'MyString',
-          },                                # OPTIONAL
+            S3Bucket => 'MyString',
+          },                           # OPTIONAL
+          DeviceName  => 'MyString',
+          Url         => 'MyString',
+          Description => 'MyString',
         },
         ...
-      ],                                    # OPTIONAL
-      DryRun     => 1,                      # OPTIONAL
-      Encrypted  => 1,                      # OPTIONAL
-      Hypervisor => 'MyString',             # OPTIONAL
-      KmsKeyId   => 'MyKmsKeyId',           # OPTIONAL
-      LicenseSpecifications =>
-        [ { LicenseConfigurationArn => 'MyString', }, ... ],    # OPTIONAL
-      LicenseType => 'MyString',                                # OPTIONAL
-      Platform    => 'MyString',                                # OPTIONAL
-      RoleName    => 'MyString',                                # OPTIONAL
+      ],                               # OPTIONAL
+      DryRun      => 1,                # OPTIONAL
+      Hypervisor  => 'MyString',       # OPTIONAL
+      LicenseType => 'MyString',       # OPTIONAL
+      Platform    => 'MyString',       # OPTIONAL
+      RoleName    => 'MyString',       # OPTIONAL
     );
 
     # Results:
-    my $Architecture          = $ImportImageResult->Architecture;
-    my $Description           = $ImportImageResult->Description;
-    my $Encrypted             = $ImportImageResult->Encrypted;
-    my $Hypervisor            = $ImportImageResult->Hypervisor;
-    my $ImageId               = $ImportImageResult->ImageId;
-    my $ImportTaskId          = $ImportImageResult->ImportTaskId;
-    my $KmsKeyId              = $ImportImageResult->KmsKeyId;
-    my $LicenseSpecifications = $ImportImageResult->LicenseSpecifications;
-    my $LicenseType           = $ImportImageResult->LicenseType;
-    my $Platform              = $ImportImageResult->Platform;
-    my $Progress              = $ImportImageResult->Progress;
-    my $SnapshotDetails       = $ImportImageResult->SnapshotDetails;
-    my $Status                = $ImportImageResult->Status;
-    my $StatusMessage         = $ImportImageResult->StatusMessage;
+    my $ImageId         = $ImportImageResult->ImageId;
+    my $Platform        = $ImportImageResult->Platform;
+    my $ImportTaskId    = $ImportImageResult->ImportTaskId;
+    my $Status          = $ImportImageResult->Status;
+    my $LicenseType     = $ImportImageResult->LicenseType;
+    my $Hypervisor      = $ImportImageResult->Hypervisor;
+    my $Progress        = $ImportImageResult->Progress;
+    my $StatusMessage   = $ImportImageResult->StatusMessage;
+    my $SnapshotDetails = $ImportImageResult->SnapshotDetails;
+    my $Architecture    = $ImportImageResult->Architecture;
+    my $Description     = $ImportImageResult->Description;
 
     # Returns a L<Paws::EC2::ImportImageResult> object.
 
@@ -102,7 +92,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 The architecture of the virtual machine.
 
-Valid values: C<i386> | C<x86_64> | C<arm64>
+Valid values: C<i386> | C<x86_64>
 
 
 
@@ -139,17 +129,6 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 Encrypted => Bool
-
-Specifies whether the destination AMI of the imported image should be
-encrypted. The default CMK for EBS is used unless you specify a
-non-default AWS Key Management Service (AWS KMS) CMK using C<KmsKeyId>.
-For more information, see Amazon EBS Encryption
-(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
-
-
-
 =head2 Hypervisor => Str
 
 The target hypervisor platform.
@@ -158,77 +137,18 @@ Valid values: C<xen>
 
 
 
-=head2 KmsKeyId => Str
-
-An identifier for the symmetric AWS Key Management Service (AWS KMS)
-customer master key (CMK) to use when creating the encrypted AMI. This
-parameter is only required if you want to use a non-default CMK; if
-this parameter is not specified, the default CMK for EBS is used. If a
-C<KmsKeyId> is specified, the C<Encrypted> flag must also be set.
-
-The CMK identifier may be provided in any of the following formats:
-
-=over
-
-=item *
-
-Key ID
-
-=item *
-
-Key alias. The alias ARN contains the C<arn:aws:kms> namespace,
-followed by the Region of the CMK, the AWS account ID of the CMK owner,
-the C<alias> namespace, and then the CMK alias. For example,
-arn:aws:kms:I<us-east-1>:I<012345678910>:alias/I<ExampleAlias>.
-
-=item *
-
-ARN using key ID. The ID ARN contains the C<arn:aws:kms> namespace,
-followed by the Region of the CMK, the AWS account ID of the CMK owner,
-the C<key> namespace, and then the CMK ID. For example,
-arn:aws:kms:I<us-east-1>:I<012345678910>:key/I<abcd1234-a123-456a-a12b-a123b4cd56ef>.
-
-=item *
-
-ARN using key alias. The alias ARN contains the C<arn:aws:kms>
-namespace, followed by the Region of the CMK, the AWS account ID of the
-CMK owner, the C<alias> namespace, and then the CMK alias. For example,
-arn:aws:kms:I<us-east-1>:I<012345678910>:alias/I<ExampleAlias>.
-
-=back
-
-AWS parses C<KmsKeyId> asynchronously, meaning that the action you call
-may appear to complete even though you provided an invalid identifier.
-This action will eventually report failure.
-
-The specified CMK must exist in the Region that the AMI is being copied
-to.
-
-Amazon EBS does not support asymmetric CMKs.
-
-
-
-=head2 LicenseSpecifications => ArrayRef[L<Paws::EC2::ImportImageLicenseConfigurationRequest>]
-
-The ARNs of the license configurations.
-
-
-
 =head2 LicenseType => Str
 
 The license type to be used for the Amazon Machine Image (AMI) after
 importing.
 
-By default, we detect the source-system operating system (OS) and apply
-the appropriate license. Specify C<AWS> to replace the source-system
-license with an AWS license, if appropriate. Specify C<BYOL> to retain
-the source-system license, if appropriate.
-
-To use C<BYOL>, you must have existing licenses with rights to use
-these licenses in a third party cloud, such as AWS. For more
+B<Note:> You may only use BYOL if you have existing licenses with
+rights to use these licenses in a third party cloud like AWS. For more
 information, see Prerequisites
-(https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html#prerequisites-image)
+(http://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html#prerequisites-image)
 in the VM Import/Export User Guide.
+
+Valid values: C<AWS> | C<BYOL>
 
 
 

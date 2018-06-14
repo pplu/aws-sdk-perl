@@ -33,8 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # This example resets the create volume permissions for snapshot
    # ``snap-1234567890abcdef0``. If the command succeeds, no output is returned.
     $ec2->ResetSnapshotAttribute(
-      'Attribute'  => 'createVolumePermission',
-      'SnapshotId' => 'snap-1234567890abcdef0'
+      {
+        'SnapshotId' => 'snap-1234567890abcdef0',
+        'Attribute'  => 'createVolumePermission'
+      }
     );
 
 

@@ -33,10 +33,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following command adds a permissions policy to the role named
     # Test-Role.
     $iam->PutRolePolicy(
-      'PolicyDocument' =>
+      {
+        'RoleName' => 'S3Access',
+        'PolicyDocument' =>
 '{"Version":"2012-10-17","Statement":{"Effect":"Allow","Action":"s3:*","Resource":"*"}}',
-      'PolicyName' => 'S3AccessPolicy',
-      'RoleName'   => 'S3Access'
+        'PolicyName' => 'S3AccessPolicy'
+      }
     );
 
 
@@ -50,11 +52,6 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam
 
 The policy document.
 
-You must provide policies in JSON format in IAM. However, for AWS
-CloudFormation templates formatted in YAML, you can provide the policy
-in JSON or YAML format. AWS CloudFormation always converts a YAML
-policy to JSON format before submitting it to IAM.
-
 The regex pattern (http://wikipedia.org/wiki/regex) used to validate
 this parameter is a string of characters consisting of the following:
 
@@ -62,18 +59,18 @@ this parameter is a string of characters consisting of the following:
 
 =item *
 
-Any printable ASCII character ranging from the space character
-(C<\u0020>) through the end of the ASCII character range
+Any printable ASCII character ranging from the space character (\u0020)
+through the end of the ASCII character range
 
 =item *
 
 The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through C<\u00FF>)
+character set (through \u00FF)
 
 =item *
 
-The special characters tab (C<\u0009>), line feed (C<\u000A>), and
-carriage return (C<\u000D>)
+The special characters tab (\u0009), line feed (\u000A), and carriage
+return (\u000D)
 
 =back
 
@@ -84,7 +81,7 @@ carriage return (C<\u000D>)
 
 The name of the policy document.
 
-This parameter allows (through its regex pattern
+This parameter allows (per its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
 also include any of the following characters: _+=,.@-
@@ -95,7 +92,7 @@ also include any of the following characters: _+=,.@-
 
 The name of the role to associate the policy with.
 
-This parameter allows (through its regex pattern
+This parameter allows (per its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
 also include any of the following characters: _+=,.@-

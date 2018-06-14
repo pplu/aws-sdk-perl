@@ -35,21 +35,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',    # OPTIONAL
-          Values => [
-            'MyString', ...        # OPTIONAL
-          ],                       # OPTIONAL
+          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name => 'MyString',
         },
         ...
-      ],                           # OPTIONAL
-      InstanceIds => [ 'MyInstanceId', ... ],    # OPTIONAL
-      MaxResults  => 1,                          # OPTIONAL
-      NextToken   => 'MyString',                 # OPTIONAL
+      ],                                    # OPTIONAL
+      InstanceIds => [ 'MyString', ... ],   # OPTIONAL
+      MaxResults  => 1,                     # OPTIONAL
+      NextToken   => 'MyString',            # OPTIONAL
     );
 
     # Results:
-    my $NextToken    = $DescribeInstancesResult->NextToken;
     my $Reservations = $DescribeInstancesResult->Reservations;
+    my $NextToken    = $DescribeInstancesResult->NextToken;
 
     # Returns a L<Paws::EC2::DescribeInstancesResult> object.
 
@@ -70,7 +68,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-The filters.
+One or more filters.
 
 =over
 
@@ -81,8 +79,7 @@ Dedicated Host (C<default> | C<host>).
 
 =item *
 
-C<architecture> - The instance architecture (C<i386> | C<x86_64> |
-C<arm64>).
+C<architecture> - The instance architecture (C<i386> | C<x86_64>).
 
 =item *
 
@@ -133,12 +130,6 @@ EC2-Classic only.
 
 =item *
 
-C<hibernation-options.configured> - A Boolean that indicates whether
-the instance is enabled for hibernation. A value of C<true> means that
-the instance is enabled for hibernation.
-
-=item *
-
 C<host-id> - The ID of the Dedicated Host on which the instance is
 running, if applicable.
 
@@ -167,9 +158,9 @@ Scheduled Instance (C<spot> | C<scheduled>).
 =item *
 
 C<instance-state-code> - The state of the instance, as a 16-bit
-unsigned integer. The high byte is used for internal purposes and
-should be ignored. The low byte is set based on the state represented.
-The valid values are: 0 (pending), 16 (running), 32 (shutting-down), 48
+unsigned integer. The high byte is an opaque internal value and should
+be ignored. The low byte is set based on the state represented. The
+valid values are: 0 (pending), 16 (running), 32 (shutting-down), 48
 (terminated), 64 (stopping), and 80 (stopped).
 
 =item *
@@ -212,21 +203,6 @@ for the instance in the launch group (for example, 0, 1, 2, and so on).
 =item *
 
 C<launch-time> - The time when the instance was launched.
-
-=item *
-
-C<metadata-options.http-tokens> - The metadata request authorization
-state (C<optional> | C<required>)
-
-=item *
-
-C<metadata-options.http-put-response-hop-limit> - The http metadata
-request put response hop limit (integer, possible values C<1> to C<64>)
-
-=item *
-
-C<metadata-options.http-endpoint> - Enable or disable metadata access
-on http endpoint (C<enabled> | C<disabled>)
 
 =item *
 
@@ -399,13 +375,8 @@ instance.
 
 =item *
 
-C<placement-partition-number> - The partition in which the instance is
-located.
-
-=item *
-
-C<platform> - The platform. To list only Windows instances, use
-C<windows>.
+C<platform> - The platform. Use C<windows> if you have Windows
+instances; otherwise, leave blank.
 
 =item *
 
@@ -487,17 +458,26 @@ C<subnet-id> - The ID of the subnet for the instance.
 
 =item *
 
-C<tag>:E<lt>keyE<gt> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value as
-the filter value. For example, to find all resources that have a tag
-with the key C<Owner> and the value C<TeamA>, specify C<tag:Owner> for
-the filter name and C<TeamA> for the filter value.
+C<tag>:I<key>=I<value> - The key/value combination of a tag assigned to
+the resource. Specify the key of the tag in the filter name and the
+value of the tag in the filter value. For example, for the tag
+Purpose=X, specify C<tag:Purpose> for the filter name and C<X> for the
+filter value.
 
 =item *
 
-C<tag-key> - The key of a tag assigned to the resource. Use this filter
-to find all resources that have a tag with a specific key, regardless
-of the tag value.
+C<tag-key> - The key of a tag assigned to the resource. This filter is
+independent of the C<tag-value> filter. For example, if you use both
+the filter "tag-key=Purpose" and the filter "tag-value=X", you get any
+resources assigned both the tag key Purpose (regardless of what the
+tag's value is), and the tag value X (regardless of the tag's key). If
+you want to list only resources where Purpose is X, see the
+C<tag>:I<key>=I<value> filter.
+
+=item *
+
+C<tag-value> - The value of a tag assigned to the resource. This filter
+is independent of the C<tag-key> filter.
 
 =item *
 
@@ -520,7 +500,7 @@ C<vpc-id> - The ID of the VPC that the instance is running in.
 
 =head2 InstanceIds => ArrayRef[Str|Undef]
 
-The instance IDs.
+One or more instance IDs.
 
 Default: Describes all your instances.
 

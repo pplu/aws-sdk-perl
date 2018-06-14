@@ -9,7 +9,6 @@ package Paws::EC2::CopySnapshot;
   has PresignedUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'presignedUrl' );
   has SourceRegion => (is => 'ro', isa => 'Str', required => 1);
   has SourceSnapshotId => (is => 'ro', isa => 'Str', required => 1);
-  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
 
   use MooseX::ClassAttribute;
 
@@ -40,10 +39,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # ``snap-066877671789bd71b`` from the ``us-west-2`` region to the
    # ``us-east-1`` region and adds a short description to identify the snapshot.
     my $CopySnapshotResult = $ec2->CopySnapshot(
-      'Description'       => 'This is my copied snapshot.',
-      'DestinationRegion' => 'us-east-1',
-      'SourceRegion'      => 'us-west-2',
-      'SourceSnapshotId'  => 'snap-066877671789bd71b'
+      {
+        'SourceSnapshotId'  => 'snap-066877671789bd71b',
+        'DestinationRegion' => 'us-east-1',
+        'Description'       => 'This is my copied snapshot.',
+        'SourceRegion'      => 'us-west-2'
+      }
     );
 
     # Results:
@@ -65,15 +66,15 @@ A description for the EBS snapshot.
 
 =head2 DestinationRegion => Str
 
-The destination Region to use in the C<PresignedUrl> parameter of a
+The destination region to use in the C<PresignedUrl> parameter of a
 snapshot copy operation. This parameter is only valid for specifying
-the destination Region in a C<PresignedUrl> parameter, where it is
+the destination region in a C<PresignedUrl> parameter, where it is
 required.
 
-The snapshot copy is sent to the regional endpoint that you sent the
-HTTP request to (for example, C<ec2.us-east-1.amazonaws.com>). With the
-AWS CLI, this is specified using the C<--region> parameter or the
-default Region in your AWS configuration file.
+C<CopySnapshot> sends the snapshot copy to the regional endpoint that
+you send the HTTP request to, such as C<ec2.us-east-1.amazonaws.com>
+(in the AWS CLI, this is specified with the C<--region> parameter or
+the default region in your AWS configuration file).
 
 
 
@@ -88,51 +89,56 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Encrypted => Bool
 
-To encrypt a copy of an unencrypted snapshot if encryption by default
-is not enabled, enable encryption using this parameter. Otherwise, omit
-this parameter. Encrypted snapshots are encrypted, even if you omit
-this parameter and encryption by default is not enabled. You cannot set
-this parameter to false. For more information, see Amazon EBS
-Encryption
-(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
+Specifies whether the destination snapshot should be encrypted. You can
+encrypt a copy of an unencrypted snapshot using this flag, but you
+cannot use it to create an unencrypted copy from an encrypted snapshot.
+Your default CMK for EBS is used unless a non-default AWS Key
+Management Service (AWS KMS) CMK is specified with C<KmsKeyId>. For
+more information, see Amazon EBS Encryption
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
 =head2 KmsKeyId => Str
 
-The identifier of the AWS Key Management Service (AWS KMS) customer
-master key (CMK) to use for Amazon EBS encryption. If this parameter is
-not specified, your AWS managed CMK for EBS is used. If C<KmsKeyId> is
-specified, the encrypted state must be C<true>.
+An identifier for the AWS Key Management Service (AWS KMS) customer
+master key (CMK) to use when creating the encrypted volume. This
+parameter is only required if you want to use a non-default CMK; if
+this parameter is not specified, the default CMK for EBS is used. If a
+C<KmsKeyId> is specified, the C<Encrypted> flag must also be set.
 
-You can specify the CMK using any of the following:
+The CMK identifier may be provided in any of the following formats:
 
 =over
 
 =item *
 
-Key ID. For example, key/1234abcd-12ab-34cd-56ef-1234567890ab.
+Key ID
 
 =item *
 
-Key alias. For example, alias/ExampleAlias.
+Key alias
 
 =item *
 
-Key ARN. For example,
+ARN using key ID. The ID ARN contains the C<arn:aws:kms> namespace,
+followed by the region of the CMK, the AWS account ID of the CMK owner,
+the C<key> namespace, and then the CMK ID. For example,
 arn:aws:kms:I<us-east-1>:I<012345678910>:key/I<abcd1234-a123-456a-a12b-a123b4cd56ef>.
 
 =item *
 
-Alias ARN. For example,
+ARN using key alias. The alias ARN contains the C<arn:aws:kms>
+namespace, followed by the region of the CMK, the AWS account ID of the
+CMK owner, the C<alias> namespace, and then the CMK alias. For example,
 arn:aws:kms:I<us-east-1>:I<012345678910>:alias/I<ExampleAlias>.
 
 =back
 
-AWS authenticates the CMK asynchronously. Therefore, if you specify an
-ID, alias, or ARN that is not valid, the action can appear to complete,
-but eventually fails.
+AWS parses C<KmsKeyId> asynchronously, meaning that the action you call
+may appear to complete even though you provided an invalid identifier.
+The action will eventually fail.
 
 
 
@@ -141,7 +147,7 @@ but eventually fails.
 When you copy an encrypted source snapshot using the Amazon EC2 Query
 API, you must supply a pre-signed URL. This parameter is optional for
 unencrypted snapshots. For more information, see Query Requests
-(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html).
+(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html).
 
 The C<PresignedUrl> should use the snapshot source endpoint, the
 C<CopySnapshot> action, and include the C<SourceRegion>,
@@ -150,7 +156,7 @@ C<PresignedUrl> must be signed using AWS Signature Version 4. Because
 EBS snapshots are stored in Amazon S3, the signing algorithm for this
 parameter uses the same logic that is described in Authenticating
 Requests by Using Query Parameters (AWS Signature Version 4)
-(https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
+(http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
 in the I<Amazon Simple Storage Service API Reference>. An invalid or
 improperly signed C<PresignedUrl> will cause the copy operation to fail
 asynchronously, and the snapshot will move to an C<error> state.
@@ -159,19 +165,13 @@ asynchronously, and the snapshot will move to an C<error> state.
 
 =head2 B<REQUIRED> SourceRegion => Str
 
-The ID of the Region that contains the snapshot to be copied.
+The ID of the region that contains the snapshot to be copied.
 
 
 
 =head2 B<REQUIRED> SourceSnapshotId => Str
 
 The ID of the EBS snapshot to copy.
-
-
-
-=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
-
-The tags to apply to the new snapshot.
 
 
 

@@ -26,9 +26,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
 =head1 SYNOPSIS
 
-    my $api.sagemaker = Paws->service('SageMaker');
+    my $sagemaker = Paws->service('SageMaker');
     my $DescribeNotebookInstanceLifecycleConfigOutput =
-      $api . sagemaker->DescribeNotebookInstanceLifecycleConfig(
+      $sagemaker->DescribeNotebookInstanceLifecycleConfig(
       NotebookInstanceLifecycleConfigName =>
         'MyNotebookInstanceLifecycleConfigName',
 
@@ -37,21 +37,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $CreationTime =
       $DescribeNotebookInstanceLifecycleConfigOutput->CreationTime;
+    my $OnCreate = $DescribeNotebookInstanceLifecycleConfigOutput->OnCreate;
     my $LastModifiedTime =
       $DescribeNotebookInstanceLifecycleConfigOutput->LastModifiedTime;
-    my $NotebookInstanceLifecycleConfigArn =
-      $DescribeNotebookInstanceLifecycleConfigOutput
-      ->NotebookInstanceLifecycleConfigArn;
+    my $OnStart = $DescribeNotebookInstanceLifecycleConfigOutput->OnStart;
     my $NotebookInstanceLifecycleConfigName =
       $DescribeNotebookInstanceLifecycleConfigOutput
       ->NotebookInstanceLifecycleConfigName;
-    my $OnCreate = $DescribeNotebookInstanceLifecycleConfigOutput->OnCreate;
-    my $OnStart  = $DescribeNotebookInstanceLifecycleConfigOutput->OnStart;
+    my $NotebookInstanceLifecycleConfigArn =
+      $DescribeNotebookInstanceLifecycleConfigOutput
+      ->NotebookInstanceLifecycleConfigArn;
 
 # Returns a L<Paws::SageMaker::DescribeNotebookInstanceLifecycleConfigOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.sagemaker/DescribeNotebookInstanceLifecycleConfig>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sagemaker/DescribeNotebookInstanceLifecycleConfig>
 
 =head1 ATTRIBUTES
 

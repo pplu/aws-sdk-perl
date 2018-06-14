@@ -31,56 +31,45 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateBudgetResponse = $budgets->UpdateBudget(
       AccountId => 'MyAccountId',
       NewBudget => {
-        BudgetName => 'MyBudgetName',    # min: 1, max: 100
-        BudgetType => 'USAGE'
-        , # values: USAGE, COST, RI_UTILIZATION, RI_COVERAGE, SAVINGS_PLANS_UTILIZATION, SAVINGS_PLANS_COVERAGE
-        TimeUnit    => 'DAILY',    # values: DAILY, MONTHLY, QUARTERLY, ANNUALLY
+        TimeUnit => 'DAILY',    # values: DAILY, MONTHLY, QUARTERLY, ANNUALLY
+        BudgetName => 'MyBudgetName',    # max: 100
+        BudgetType =>
+          'USAGE',    # values: USAGE, COST, RI_UTILIZATION, RI_COVERAGE
         BudgetLimit => {
-          Amount => 'MyNumericValue',    # min: 1, max: 2147483647
-          Unit   => 'MyUnitValue',       # min: 1, max: 2147483647
+          Amount => 'MyNumericValue',
+          Unit   => 'MyUnitValue',      # min: 1,
 
+        },
+        CostFilters => { 'MyGenericString' => [ 'MyGenericString', ... ], }
+        ,                               # OPTIONAL
+        TimePeriod => {
+          Start => '1970-01-01T01:00:00',    # OPTIONAL
+          End   => '1970-01-01T01:00:00',    # OPTIONAL
         },    # OPTIONAL
         CalculatedSpend => {
           ActualSpend => {
-            Amount => 'MyNumericValue',    # min: 1, max: 2147483647
-            Unit   => 'MyUnitValue',       # min: 1, max: 2147483647
+            Amount => 'MyNumericValue',
+            Unit   => 'MyUnitValue',      # min: 1,
 
-          },    # OPTIONAL
+          },
           ForecastedSpend => {
-            Amount => 'MyNumericValue',    # min: 1, max: 2147483647
-            Unit   => 'MyUnitValue',       # min: 1, max: 2147483647
+            Amount => 'MyNumericValue',
+            Unit   => 'MyUnitValue',      # min: 1,
 
-          },    # OPTIONAL
-        },    # OPTIONAL
-        CostFilters => {
-          'MyGenericString' => [
-            'MyGenericString', ...    # max: 2147483647
-          ],                          # key: max: 2147483647
+          },
         },    # OPTIONAL
         CostTypes => {
-          IncludeCredit            => 1,    # OPTIONAL
+          IncludeUpfront           => 1,    # OPTIONAL
+          IncludeSupport           => 1,    # OPTIONAL
+          IncludeTax               => 1,    # OPTIONAL
           IncludeDiscount          => 1,    # OPTIONAL
+          IncludeCredit            => 1,    # OPTIONAL
+          UseAmortized             => 1,    # OPTIONAL
+          IncludeSubscription      => 1,    # OPTIONAL
+          UseBlended               => 1,    # OPTIONAL
           IncludeOtherSubscription => 1,    # OPTIONAL
           IncludeRecurring         => 1,    # OPTIONAL
           IncludeRefund            => 1,    # OPTIONAL
-          IncludeSubscription      => 1,    # OPTIONAL
-          IncludeSupport           => 1,    # OPTIONAL
-          IncludeTax               => 1,    # OPTIONAL
-          IncludeUpfront           => 1,    # OPTIONAL
-          UseAmortized             => 1,    # OPTIONAL
-          UseBlended               => 1,    # OPTIONAL
-        },    # OPTIONAL
-        LastUpdatedTime     => '1970-01-01T01:00:00',    # OPTIONAL
-        PlannedBudgetLimits => {
-          'MyGenericString' => {
-            Amount => 'MyNumericValue',    # min: 1, max: 2147483647
-            Unit   => 'MyUnitValue',       # min: 1, max: 2147483647
-
-          },    # key: max: 2147483647, value: OPTIONAL
-        },    # OPTIONAL
-        TimePeriod => {
-          End   => '1970-01-01T01:00:00',    # OPTIONAL
-          Start => '1970-01-01T01:00:00',    # OPTIONAL
         },    # OPTIONAL
       },
 

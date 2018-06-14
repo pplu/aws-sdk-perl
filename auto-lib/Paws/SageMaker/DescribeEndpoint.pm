@@ -26,27 +26,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
 =head1 SYNOPSIS
 
-    my $api.sagemaker = Paws->service('SageMaker');
-    my $DescribeEndpointOutput = $api . sagemaker->DescribeEndpoint(
+    my $sagemaker = Paws->service('SageMaker');
+    my $DescribeEndpointOutput = $sagemaker->DescribeEndpoint(
       EndpointName => 'MyEndpointName',
 
     );
 
     # Results:
     my $CreationTime       = $DescribeEndpointOutput->CreationTime;
-    my $DataCaptureConfig  = $DescribeEndpointOutput->DataCaptureConfig;
-    my $EndpointArn        = $DescribeEndpointOutput->EndpointArn;
-    my $EndpointConfigName = $DescribeEndpointOutput->EndpointConfigName;
     my $EndpointName       = $DescribeEndpointOutput->EndpointName;
-    my $EndpointStatus     = $DescribeEndpointOutput->EndpointStatus;
+    my $EndpointConfigName = $DescribeEndpointOutput->EndpointConfigName;
     my $FailureReason      = $DescribeEndpointOutput->FailureReason;
+    my $EndpointArn        = $DescribeEndpointOutput->EndpointArn;
     my $LastModifiedTime   = $DescribeEndpointOutput->LastModifiedTime;
     my $ProductionVariants = $DescribeEndpointOutput->ProductionVariants;
+    my $EndpointStatus     = $DescribeEndpointOutput->EndpointStatus;
 
     # Returns a L<Paws::SageMaker::DescribeEndpointOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.sagemaker/DescribeEndpoint>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sagemaker/DescribeEndpoint>
 
 =head1 ATTRIBUTES
 

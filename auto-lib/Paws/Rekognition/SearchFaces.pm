@@ -34,15 +34,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This operation searches for matching faces in the collection the supplied
     # face belongs to.
     my $SearchFacesResponse = $rekognition->SearchFaces(
-      'CollectionId'       => 'myphotos',
-      'FaceId'             => '70008e50-75e4-55d0-8e80-363fb73b3a14',
-      'FaceMatchThreshold' => 90,
-      'MaxFaces'           => 10
+      {
+        'FaceId'             => '70008e50-75e4-55d0-8e80-363fb73b3a14',
+        'CollectionId'       => 'myphotos',
+        'MaxFaces'           => 10,
+        'FaceMatchThreshold' => 90
+      }
     );
 
     # Results:
-    my $FaceMatches    = $SearchFacesResponse->FaceMatches;
     my $SearchedFaceId = $SearchFacesResponse->SearchedFaceId;
+    my $FaceMatches    = $SearchFacesResponse->FaceMatches;
 
     # Returns a L<Paws::Rekognition::SearchFacesResponse> object.
 
@@ -68,7 +70,7 @@ ID of a face to find matches for in the collection.
 
 Optional value specifying the minimum confidence in the face match to
 return. For example, don't return any matches where confidence in
-matches is less than 70%. The default value is 80%.
+matches is less than 70%.
 
 
 

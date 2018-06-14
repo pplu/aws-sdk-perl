@@ -33,9 +33,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example adds the specified notification to the specified Auto Scaling
     # group.
     $autoscaling->PutNotificationConfiguration(
-      'AutoScalingGroupName' => 'my-auto-scaling-group',
-      'NotificationTypes'    => ['autoscaling:TEST_NOTIFICATION'],
-      'TopicARN' => 'arn:aws:sns:us-west-2:123456789012:my-sns-topic'
+      {
+        'NotificationTypes' => ['autoscaling:TEST_NOTIFICATION'],
+        'TopicARN' => 'arn:aws:sns:us-west-2:123456789012:my-sns-topic',
+        'AutoScalingGroupName' => 'my-auto-scaling-group'
+      }
     );
 
 
@@ -53,16 +55,16 @@ The name of the Auto Scaling group.
 
 =head2 B<REQUIRED> NotificationTypes => ArrayRef[Str|Undef]
 
-The type of event that causes the notification to be sent. For more
-information about notification types supported by Amazon EC2 Auto
-Scaling, see DescribeAutoScalingNotificationTypes.
+The type of event that will cause the notification to be sent. For
+details about notification types supported by Auto Scaling, see
+DescribeAutoScalingNotificationTypes.
 
 
 
 =head2 B<REQUIRED> TopicARN => Str
 
 The Amazon Resource Name (ARN) of the Amazon Simple Notification
-Service (Amazon SNS) topic.
+Service (SNS) topic.
 
 
 

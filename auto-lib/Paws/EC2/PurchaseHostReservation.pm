@@ -32,18 +32,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $PurchaseHostReservationResult = $ec2->PurchaseHostReservation(
-      HostIdSet    => [ 'MyDedicatedHostId', ... ],
-      OfferingId   => 'MyOfferingId',
-      ClientToken  => 'MyString',                     # OPTIONAL
-      CurrencyCode => 'USD',                          # OPTIONAL
-      LimitPrice   => 'MyString',                     # OPTIONAL
+      HostIdSet    => [ 'MyString', ... ],
+      OfferingId   => 'MyString',
+      ClientToken  => 'MyString',            # OPTIONAL
+      CurrencyCode => 'USD',                 # OPTIONAL
+      LimitPrice   => 'MyString',            # OPTIONAL
     );
 
     # Results:
-    my $ClientToken       = $PurchaseHostReservationResult->ClientToken;
-    my $CurrencyCode      = $PurchaseHostReservationResult->CurrencyCode;
-    my $Purchase          = $PurchaseHostReservationResult->Purchase;
     my $TotalHourlyPrice  = $PurchaseHostReservationResult->TotalHourlyPrice;
+    my $Purchase          = $PurchaseHostReservationResult->Purchase;
+    my $CurrencyCode      = $PurchaseHostReservationResult->CurrencyCode;
+    my $ClientToken       = $PurchaseHostReservationResult->ClientToken;
     my $TotalUpfrontPrice = $PurchaseHostReservationResult->TotalUpfrontPrice;
 
     # Returns a L<Paws::EC2::PurchaseHostReservationResult> object.
@@ -56,10 +56,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 ClientToken => Str
 
-Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see How to Ensure
-Idempotency
-(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+Unique, case-sensitive identifier you provide to ensure idempotency of
+the request. For more information, see How to Ensure Idempotency
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -73,8 +73,8 @@ Valid values are: C<"USD">
 
 =head2 B<REQUIRED> HostIdSet => ArrayRef[Str|Undef]
 
-The IDs of the Dedicated Hosts with which the reservation will be
-associated.
+The ID/s of the Dedicated Host/s that the reservation will be
+associated with.
 
 
 
@@ -83,10 +83,10 @@ associated.
 The specified limit is checked against the total upfront cost of the
 reservation (calculated as the offering's upfront cost multiplied by
 the host count). If the total upfront cost is greater than the
-specified price limit, the request fails. This is used to ensure that
-the purchase does not exceed the expected upfront cost of the purchase.
-At this time, the only supported currency is C<USD>. For example, to
-indicate a limit price of USD 100, specify 100.00.
+specified price limit, the request will fail. This is used to ensure
+that the purchase does not exceed the expected upfront cost of the
+purchase. At this time, the only supported currency is C<USD>. For
+example, to indicate a limit price of USD 100, specify 100.00.
 
 
 

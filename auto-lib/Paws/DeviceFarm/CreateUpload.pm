@@ -34,10 +34,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example creates a new Appium Python test package upload
     # inside an existing project.
     my $CreateUploadResult = $devicefarm->CreateUpload(
-      'Name' => 'MyAppiumPythonUpload',
-      'ProjectArn' =>
+      {
+        'ProjectArn' =>
 'arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456',
-      'Type' => 'APPIUM_PYTHON_TEST_PACKAGE'
+        'Name' => 'MyAppiumPythonUpload',
+        'Type' => 'APPIUM_PYTHON_TEST_PACKAGE'
+      }
     );
 
     # Results:
@@ -53,17 +55,17 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dev
 
 =head2 ContentType => Str
 
-The upload's content type (for example, C<application/octet-stream>).
+The upload's content type (for example, "application/octet-stream").
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-The upload's file name. The name should not contain any forward slashes
-(C</>). If you are uploading an iOS app, the file name must end with
-the C<.ipa> extension. If you are uploading an Android app, the file
-name must end with the C<.apk> extension. For all others, the file name
-must end with the C<.zip> file extension.
+The upload's file name. The name should not contain the '/' character.
+If uploading an iOS app, the file name needs to end with the C<.ipa>
+extension. If uploading an Android app, the file name needs to end with
+the C<.apk> extension. For all others, the file name must end with the
+C<.zip> file extension.
 
 
 
@@ -83,138 +85,78 @@ Must be one of the following values:
 
 =item *
 
-ANDROID_APP
+ANDROID_APP: An Android upload.
 
 =item *
 
-IOS_APP
+IOS_APP: An iOS upload.
 
 =item *
 
-WEB_APP
+WEB_APP: A web appliction upload.
 
 =item *
 
-EXTERNAL_DATA
+EXTERNAL_DATA: An external data upload.
 
 =item *
 
-APPIUM_JAVA_JUNIT_TEST_PACKAGE
+APPIUM_JAVA_JUNIT_TEST_PACKAGE: An Appium Java JUnit test package
+upload.
 
 =item *
 
-APPIUM_JAVA_TESTNG_TEST_PACKAGE
+APPIUM_JAVA_TESTNG_TEST_PACKAGE: An Appium Java TestNG test package
+upload.
 
 =item *
 
-APPIUM_PYTHON_TEST_PACKAGE
+APPIUM_PYTHON_TEST_PACKAGE: An Appium Python test package upload.
 
 =item *
 
-APPIUM_NODE_TEST_PACKAGE
+APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE: An Appium Java JUnit test package
+upload.
 
 =item *
 
-APPIUM_RUBY_TEST_PACKAGE
+APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE: An Appium Java TestNG test package
+upload.
 
 =item *
 
-APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE
+APPIUM_WEB_PYTHON_TEST_PACKAGE: An Appium Python test package upload.
 
 =item *
 
-APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE
+CALABASH_TEST_PACKAGE: A Calabash test package upload.
 
 =item *
 
-APPIUM_WEB_PYTHON_TEST_PACKAGE
+INSTRUMENTATION_TEST_PACKAGE: An instrumentation upload.
 
 =item *
 
-APPIUM_WEB_NODE_TEST_PACKAGE
+UIAUTOMATION_TEST_PACKAGE: A uiautomation test package upload.
 
 =item *
 
-APPIUM_WEB_RUBY_TEST_PACKAGE
+UIAUTOMATOR_TEST_PACKAGE: A uiautomator test package upload.
 
 =item *
 
-CALABASH_TEST_PACKAGE
+XCTEST_TEST_PACKAGE: An XCode test package upload.
 
 =item *
 
-INSTRUMENTATION_TEST_PACKAGE
-
-=item *
-
-UIAUTOMATION_TEST_PACKAGE
-
-=item *
-
-UIAUTOMATOR_TEST_PACKAGE
-
-=item *
-
-XCTEST_TEST_PACKAGE
-
-=item *
-
-XCTEST_UI_TEST_PACKAGE
-
-=item *
-
-APPIUM_JAVA_JUNIT_TEST_SPEC
-
-=item *
-
-APPIUM_JAVA_TESTNG_TEST_SPEC
-
-=item *
-
-APPIUM_PYTHON_TEST_SPEC
-
-=item *
-
-APPIUM_NODE_TEST_SPEC
-
-=item *
-
-APPIUM_RUBY_TEST_SPEC
-
-=item *
-
-APPIUM_WEB_JAVA_JUNIT_TEST_SPEC
-
-=item *
-
-APPIUM_WEB_JAVA_TESTNG_TEST_SPEC
-
-=item *
-
-APPIUM_WEB_PYTHON_TEST_SPEC
-
-=item *
-
-APPIUM_WEB_NODE_TEST_SPEC
-
-=item *
-
-APPIUM_WEB_RUBY_TEST_SPEC
-
-=item *
-
-INSTRUMENTATION_TEST_SPEC
-
-=item *
-
-XCTEST_UI_TEST_SPEC
+XCTEST_UI_TEST_PACKAGE: An XCode UI test package upload.
 
 =back
 
-If you call C<CreateUpload> with C<WEB_APP> specified, AWS Device Farm
-throws an C<ArgumentException> error.
+B<Note> If you call C<CreateUpload> with C<WEB_APP> specified, AWS
+Device Farm throws an C<ArgumentException> error.
 
-Valid values are: C<"ANDROID_APP">, C<"IOS_APP">, C<"WEB_APP">, C<"EXTERNAL_DATA">, C<"APPIUM_JAVA_JUNIT_TEST_PACKAGE">, C<"APPIUM_JAVA_TESTNG_TEST_PACKAGE">, C<"APPIUM_PYTHON_TEST_PACKAGE">, C<"APPIUM_NODE_TEST_PACKAGE">, C<"APPIUM_RUBY_TEST_PACKAGE">, C<"APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE">, C<"APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE">, C<"APPIUM_WEB_PYTHON_TEST_PACKAGE">, C<"APPIUM_WEB_NODE_TEST_PACKAGE">, C<"APPIUM_WEB_RUBY_TEST_PACKAGE">, C<"CALABASH_TEST_PACKAGE">, C<"INSTRUMENTATION_TEST_PACKAGE">, C<"UIAUTOMATION_TEST_PACKAGE">, C<"UIAUTOMATOR_TEST_PACKAGE">, C<"XCTEST_TEST_PACKAGE">, C<"XCTEST_UI_TEST_PACKAGE">, C<"APPIUM_JAVA_JUNIT_TEST_SPEC">, C<"APPIUM_JAVA_TESTNG_TEST_SPEC">, C<"APPIUM_PYTHON_TEST_SPEC">, C<"APPIUM_NODE_TEST_SPEC">, C<"APPIUM_RUBY_TEST_SPEC">, C<"APPIUM_WEB_JAVA_JUNIT_TEST_SPEC">, C<"APPIUM_WEB_JAVA_TESTNG_TEST_SPEC">, C<"APPIUM_WEB_PYTHON_TEST_SPEC">, C<"APPIUM_WEB_NODE_TEST_SPEC">, C<"APPIUM_WEB_RUBY_TEST_SPEC">, C<"INSTRUMENTATION_TEST_SPEC">, C<"XCTEST_UI_TEST_SPEC">
+Valid values are: C<"ANDROID_APP">, C<"IOS_APP">, C<"WEB_APP">, C<"EXTERNAL_DATA">, C<"APPIUM_JAVA_JUNIT_TEST_PACKAGE">, C<"APPIUM_JAVA_TESTNG_TEST_PACKAGE">, C<"APPIUM_PYTHON_TEST_PACKAGE">, C<"APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE">, C<"APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE">, C<"APPIUM_WEB_PYTHON_TEST_PACKAGE">, C<"CALABASH_TEST_PACKAGE">, C<"INSTRUMENTATION_TEST_PACKAGE">, C<"UIAUTOMATION_TEST_PACKAGE">, C<"UIAUTOMATOR_TEST_PACKAGE">, C<"XCTEST_TEST_PACKAGE">, C<"XCTEST_UI_TEST_PACKAGE">
 
 
 =head1 SEE ALSO

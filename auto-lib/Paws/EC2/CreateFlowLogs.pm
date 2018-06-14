@@ -55,6 +55,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ClientToken  = $CreateFlowLogsResult->ClientToken;
     my $FlowLogIds   = $CreateFlowLogsResult->FlowLogIds;
     my $Unsuccessful = $CreateFlowLogsResult->Unsuccessful;
+    my $FlowLogIds   = $CreateFlowLogsResult->FlowLogIds;
 
     # Returns a L<Paws::EC2::CreateFlowLogsResult> object.
 

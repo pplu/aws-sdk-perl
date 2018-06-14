@@ -36,27 +36,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AmznClientToken          => 'My__string',    # OPTIONAL
       Subscriptions            => [
         {
-          Id      => 'My__string',
           Source  => 'My__string',
-          Subject => 'My__string',
           Target  => 'My__string',
-
+          Subject => 'My__string',
+          Id      => 'My__string',
         },
         ...
       ],                                           # OPTIONAL
       );
 
     # Results:
-    my $Arn = $CreateSubscriptionDefinitionVersionResponse->Arn;
     my $CreationTimestamp =
       $CreateSubscriptionDefinitionVersionResponse->CreationTimestamp;
-    my $Id      = $CreateSubscriptionDefinitionVersionResponse->Id;
     my $Version = $CreateSubscriptionDefinitionVersionResponse->Version;
+    my $Id      = $CreateSubscriptionDefinitionVersionResponse->Id;
+    my $Arn     = $CreateSubscriptionDefinitionVersionResponse->Arn;
 
 # Returns a L<Paws::Greengrass::CreateSubscriptionDefinitionVersionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/greengrass/CreateSubscriptionDefinitionVersion>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>
 
 =head1 ATTRIBUTES
 

@@ -34,9 +34,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # specified listener.
     my $SetLoadBalancerPoliciesOfListenerOutput =
       $elasticloadbalancing->SetLoadBalancerPoliciesOfListener(
-      'LoadBalancerName' => 'my-load-balancer',
-      'LoadBalancerPort' => 80,
-      'PolicyNames'      => ['my-SSLNegotiation-policy']
+      {
+        'PolicyNames'      => ['my-SSLNegotiation-policy'],
+        'LoadBalancerName' => 'my-load-balancer',
+        'LoadBalancerPort' => 80
+      }
       );
 
 

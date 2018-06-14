@@ -35,25 +35,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
  # To list the parts of an archive that have been uploaded in a multipart upload
  # The example lists all the parts of a multipart upload.
     my $ListPartsOutput = $glacier->ListParts(
-      'AccountId' => '-',
-      'UploadId' =>
+      {
+        'UploadId' =>
 'OW2fM5iVylEpFEMM9_HpKowRapC3vn5sSL39_396UW9zLFUWVrnRHaPjUJddQ5OxSHVXjYtrN47NBZ-khxOjyEXAMPLE',
-      'VaultName' => 'examplevault'
+        'AccountId' => '-',
+        'VaultName' => 'examplevault'
+      }
     );
 
     # Results:
+    my $VaultARN           = $ListPartsOutput->VaultARN;
+    my $Parts              = $ListPartsOutput->Parts;
     my $ArchiveDescription = $ListPartsOutput->ArchiveDescription;
     my $CreationDate       = $ListPartsOutput->CreationDate;
-    my $Marker             = $ListPartsOutput->Marker;
     my $MultipartUploadId  = $ListPartsOutput->MultipartUploadId;
+    my $Marker             = $ListPartsOutput->Marker;
     my $PartSizeInBytes    = $ListPartsOutput->PartSizeInBytes;
-    my $Parts              = $ListPartsOutput->Parts;
-    my $VaultARN           = $ListPartsOutput->VaultARN;
 
     # Returns a L<Paws::Glacier::ListPartsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glacier/ListParts>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/glacier/>
 
 =head1 ATTRIBUTES
 
@@ -62,7 +64,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gla
 
 The C<AccountId> value is the AWS account ID of the account that owns
 the vault. You can either specify an AWS account ID or optionally a
-single 'C<->' (hyphen), in which case Amazon S3 Glacier uses the AWS
+single 'C<->' (hyphen), in which case Amazon Glacier uses the AWS
 account ID associated with the credentials used to sign the request. If
 you use an account ID, do not include any hyphens ('-') in the ID.
 
@@ -70,7 +72,7 @@ you use an account ID, do not include any hyphens ('-') in the ID.
 
 =head2 Limit => Str
 
-The maximum number of parts to be returned. The default limit is 50.
+The maximum number of parts to be returned. The default limit is 1000.
 The number of parts returned might be fewer than the specified limit,
 but the number of returned parts never exceeds the limit.
 
