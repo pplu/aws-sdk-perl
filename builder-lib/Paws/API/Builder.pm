@@ -202,14 +202,14 @@ package Paws::API::Builder {
   has documentation_file => (is => 'ro', lazy => 1, default => sub {
     my $file = shift->api_file;
     $file =~ s/\/service-2\./\/documentation-1./;
-    if (not -e $file) {
-      die "documentation-1.json missing for the service, run 'make docu-links'."; 
-    }
     return Path::Class::File->new($file);
   });
 
   has documentation_struct => (is => 'ro', lazy => 1, default => sub {
     my $self = shift;
+    if (not -e $self->documentation_file) {
+      die "documentation-1.json missing for the service, run 'make docu-links'.";
+    }
     return $self->_load_json_file($self->documentation_file)->{ documentation };
   });
 
