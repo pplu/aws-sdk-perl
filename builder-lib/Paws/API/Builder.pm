@@ -771,7 +771,7 @@ package Paws::API::Builder {
 
       if ($out_shape && %{ $ex->{ output } || {} }) {
         $example_str .= "# Results:\n";
-        $example_str .= "my \$$_ = \$${out_shape_name}->$_;\n" for keys( %{$ex->{ output }});
+        $example_str .= "my \$$_ = \$${out_shape_name}->$_;\n" for sort keys( %{$ex->{ output }});
         $example_str .= "\n# Returns a L<" . $self->api . "::$out_shape_name> object.\n";
       }
     }
