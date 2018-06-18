@@ -696,14 +696,14 @@ package Paws::API::Builder {
                            $_ => [ $self->get_example_code($sub_shape, $cache, $depth+1)] } 
                      (@{ $shape->{ required } }) );
 
-      my $req_struct_str = join("\n", map { "$_  => $struct{$_}[0], " . ($struct{$_}[1] ? "# $struct{$_}[1]" : "") } (keys %struct));
+      my $req_struct_str = join("\n", map { "$_  => $struct{$_}[0], " . ($struct{$_}[1] ? "# $struct{$_}[1]" : "") } (sort keys %struct));
 
 
       # Followed by optional:
       %struct = ( map { my $sub_shape = $shape->{ members }{$_}{ shape };
                            $_ => [ $self->get_example_code( $sub_shape, $cache, $depth+1, 1 ) ] } 
                      (@{ $self->optional_params_in_shape( $shape, $cache )} ) );
-      my $opt_struct_str = join("\n", map { "$_   => $struct{$_}[0], " . ($struct{$_}[1] ? "# $struct{$_}[1]" : "") } (keys %struct));
+      my $opt_struct_str = join("\n", map { "$_   => $struct{$_}[0], " . ($struct{$_}[1] ? "# $struct{$_}[1]" : "") } (sort keys %struct));
 
 
       $example_str = "{\n" 
@@ -789,7 +789,7 @@ package Paws::API::Builder {
     return '' if !%{ $out_shape->{members} };
     $example_str .= "\n\n# Results:\n";
     $example_str .= "my \$$_ = \$$out_shape_name->$_;\n"
-      for (keys %{ $out_shape->{members} });
+      for (sort keys %{ $out_shape->{members} });
     $example_str .= "\n# Returns a L<" . $self->api . "::$out_shape_name> object.\n";
     return $example_str;
   }
@@ -815,7 +815,7 @@ package Paws::API::Builder {
         . join(",\n", (map { $self->dump_perl($_, $depth+1, %args, is_key => 1)
                              . ' => '
                              . $self->dump_perl($val->{$_}, $depth+1, %args, no_quote => 1) }
-                                 (keys %$val) ))
+                                 (sort keys %$val) ))
         . "\n}";
 
     } else {
