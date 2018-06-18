@@ -1,3 +1,6 @@
+0.39
+ - API updates for any service up to the date of release
+
 0.38 19 Jun 2018
  - Fix test suite so that credentials_process tests don't need extra modules (#251, #248)
  - API updates for any service up to the date of release
