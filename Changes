@@ -1,5 +1,5 @@
 0.38
- - Fix test suite so that credentials_process tests don't need extra modules 
+ - Fix test suite so that credentials_process tests don't need extra modules (#251, #248)
 
 0.37 13 Jun 2018
  - Big refactor of all result handling for all services
