@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $IsDefaultVersion = $CreatePolicyVersionResponse->IsDefaultVersion;
-    my $PolicyDocument   = $CreatePolicyVersionResponse->PolicyDocument;
     my $PolicyArn        = $CreatePolicyVersionResponse->PolicyArn;
+    my $PolicyDocument   = $CreatePolicyVersionResponse->PolicyDocument;
     my $PolicyVersionId  = $CreatePolicyVersionResponse->PolicyVersionId;
 
     # Returns a L<Paws::IoT::CreatePolicyVersionResponse> object.

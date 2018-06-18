@@ -32,8 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ClusterId     => 'MyClusterId',
       InstanceFleet => {
         InstanceFleetId        => 'MyInstanceFleetId',
-        TargetSpotCapacity     => 1,                     # OPTIONAL
         TargetOnDemandCapacity => 1,                     # OPTIONAL
+        TargetSpotCapacity     => 1,                     # OPTIONAL
       },
 
     );

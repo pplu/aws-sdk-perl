@@ -37,9 +37,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $policyText     = $GetRepositoryPolicyResponse->policyText;
     my $registryId     = $GetRepositoryPolicyResponse->registryId;
     my $repositoryName = $GetRepositoryPolicyResponse->repositoryName;
-    my $policyText     = $GetRepositoryPolicyResponse->policyText;
 
     # Returns a L<Paws::ECR::GetRepositoryPolicyResponse> object.
 

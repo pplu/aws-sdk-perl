@@ -36,14 +36,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # virtual tapes.
     my $DescribeTapesOutput = $storagegateway->DescribeTapes(
       {
+        'GatewayARN' =>
+          'arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B',
+        'Limit'    => 2,
+        'Marker'   => 1,
         'TapeARNs' => [
           'arn:aws:storagegateway:us-east-1:999999999999:tape/TEST04A2A1',
           'arn:aws:storagegateway:us-east-1:999999999999:tape/TEST05A2A0'
-        ],
-        'Limit'  => 2,
-        'Marker' => 1,
-        'GatewayARN' =>
-          'arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B'
+        ]
       }
     );
 

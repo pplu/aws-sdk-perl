@@ -48,10 +48,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $ApplicationId = $CreateCloudFormationChangeSetResponse->ApplicationId;
+    my $ChangeSetId   = $CreateCloudFormationChangeSetResponse->ChangeSetId;
     my $SemanticVersion =
       $CreateCloudFormationChangeSetResponse->SemanticVersion;
-    my $ChangeSetId = $CreateCloudFormationChangeSetResponse->ChangeSetId;
-    my $StackId     = $CreateCloudFormationChangeSetResponse->StackId;
+    my $StackId = $CreateCloudFormationChangeSetResponse->StackId;
 
 # Returns a L<Paws::ServerlessRepo::CreateCloudFormationChangeSetResponse> object.
 

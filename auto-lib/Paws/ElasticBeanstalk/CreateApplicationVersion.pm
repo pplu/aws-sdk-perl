@@ -40,15 +40,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ApplicationVersionDescriptionMessage =
       $elasticbeanstalk->CreateApplicationVersion(
       {
-        'SourceBundle' => {
+        'ApplicationName'       => 'my-app',
+        'AutoCreateApplication' => true,
+        'Description'           => 'my-app-v1',
+        'Process'               => true,
+        'SourceBundle'          => {
           'S3Bucket' => 'my-bucket',
           'S3Key'    => 'sample.war'
         },
-        'AutoCreateApplication' => true,
-        'Description'           => 'my-app-v1',
-        'ApplicationName'       => 'my-app',
-        'VersionLabel'          => 'v1',
-        'Process'               => true
+        'VersionLabel' => 'v1'
       }
       );
 

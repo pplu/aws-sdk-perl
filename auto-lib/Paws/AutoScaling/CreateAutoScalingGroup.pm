@@ -50,11 +50,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example creates an Auto Scaling group.
     $autoscaling->CreateAutoScalingGroup(
       {
-        'MinSize'                 => 1,
-        'VPCZoneIdentifier'       => 'subnet-4176792c',
-        'MaxSize'                 => 3,
+        'AutoScalingGroupName'    => 'my-auto-scaling-group',
         'LaunchConfigurationName' => 'my-launch-config',
-        'AutoScalingGroupName'    => 'my-auto-scaling-group'
+        'MaxSize'                 => 3,
+        'MinSize'                 => 1,
+        'VPCZoneIdentifier'       => 'subnet-4176792c'
       }
     );
 
@@ -64,12 +64,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     $autoscaling->CreateAutoScalingGroup(
       {
         'AutoScalingGroupName'    => 'my-auto-scaling-group',
-        'LaunchConfigurationName' => 'my-launch-config',
-        'HealthCheckType'         => 'ELB',
-        'MaxSize'                 => 3,
-        'HealthCheckGracePeriod'  => 120,
-        'LoadBalancerNames'       => ['my-load-balancer'],
         'AvailabilityZones'       => ['us-west-2c'],
+        'HealthCheckGracePeriod'  => 120,
+        'HealthCheckType'         => 'ELB',
+        'LaunchConfigurationName' => 'my-launch-config',
+        'LoadBalancerNames'       => ['my-load-balancer'],
+        'MaxSize'                 => 3,
         'MinSize'                 => 1
       }
     );
@@ -79,16 +79,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # target group.
     $autoscaling->CreateAutoScalingGroup(
       {
-        'TargetGroupARNs' => [
+        'AutoScalingGroupName'    => 'my-auto-scaling-group',
+        'HealthCheckGracePeriod'  => 120,
+        'HealthCheckType'         => 'ELB',
+        'LaunchConfigurationName' => 'my-launch-config',
+        'MaxSize'                 => 3,
+        'MinSize'                 => 1,
+        'TargetGroupARNs'         => [
 'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067'
         ],
-        'HealthCheckGracePeriod'  => 120,
-        'MinSize'                 => 1,
-        'AutoScalingGroupName'    => 'my-auto-scaling-group',
-        'LaunchConfigurationName' => 'my-launch-config',
-        'VPCZoneIdentifier'       => 'subnet-4176792c, subnet-65ea5f08',
-        'HealthCheckType'         => 'ELB',
-        'MaxSize'                 => 3
+        'VPCZoneIdentifier' => 'subnet-4176792c, subnet-65ea5f08'
       }
     );
 

@@ -38,19 +38,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           CertificateArn => 'My__string',
           Id             => 'My__string',
-          ThingArn       => 'My__string',
           SyncShadow     => 1,               # OPTIONAL
+          ThingArn       => 'My__string',
         },
         ...
       ],                                     # OPTIONAL
       );
 
     # Results:
-    my $Id      = $CreateDeviceDefinitionVersionResponse->Id;
-    my $Version = $CreateDeviceDefinitionVersionResponse->Version;
+    my $Arn = $CreateDeviceDefinitionVersionResponse->Arn;
     my $CreationTimestamp =
       $CreateDeviceDefinitionVersionResponse->CreationTimestamp;
-    my $Arn = $CreateDeviceDefinitionVersionResponse->Arn;
+    my $Id      = $CreateDeviceDefinitionVersionResponse->Id;
+    my $Version = $CreateDeviceDefinitionVersionResponse->Version;
 
   # Returns a L<Paws::Greengrass::CreateDeviceDefinitionVersionResponse> object.
 

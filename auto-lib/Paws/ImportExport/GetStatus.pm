@@ -34,22 +34,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Signature             = $GetStatusOutput->Signature;
-    my $ErrorCount            = $GetStatusOutput->ErrorCount;
-    my $SignatureFileContents = $GetStatusOutput->SignatureFileContents;
-    my $ProgressCode          = $GetStatusOutput->ProgressCode;
-    my $LogBucket             = $GetStatusOutput->LogBucket;
-    my $JobType               = $GetStatusOutput->JobType;
-    my $LogKey                = $GetStatusOutput->LogKey;
     my $ArtifactList          = $GetStatusOutput->ArtifactList;
-    my $LocationCode          = $GetStatusOutput->LocationCode;
-    my $TrackingNumber        = $GetStatusOutput->TrackingNumber;
-    my $CurrentManifest       = $GetStatusOutput->CurrentManifest;
-    my $CreationDate          = $GetStatusOutput->CreationDate;
-    my $LocationMessage       = $GetStatusOutput->LocationMessage;
     my $Carrier               = $GetStatusOutput->Carrier;
-    my $ProgressMessage       = $GetStatusOutput->ProgressMessage;
+    my $CreationDate          = $GetStatusOutput->CreationDate;
+    my $CurrentManifest       = $GetStatusOutput->CurrentManifest;
+    my $ErrorCount            = $GetStatusOutput->ErrorCount;
     my $JobId                 = $GetStatusOutput->JobId;
+    my $JobType               = $GetStatusOutput->JobType;
+    my $LocationCode          = $GetStatusOutput->LocationCode;
+    my $LocationMessage       = $GetStatusOutput->LocationMessage;
+    my $LogBucket             = $GetStatusOutput->LogBucket;
+    my $LogKey                = $GetStatusOutput->LogKey;
+    my $ProgressCode          = $GetStatusOutput->ProgressCode;
+    my $ProgressMessage       = $GetStatusOutput->ProgressMessage;
+    my $Signature             = $GetStatusOutput->Signature;
+    my $SignatureFileContents = $GetStatusOutput->SignatureFileContents;
+    my $TrackingNumber        = $GetStatusOutput->TrackingNumber;
 
     # Returns a L<Paws::ImportExport::GetStatusOutput> object.
 

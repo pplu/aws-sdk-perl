@@ -41,8 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken    = $ListJobTemplatesResponse->NextToken;
     my $JobTemplates = $ListJobTemplatesResponse->JobTemplates;
+    my $NextToken    = $ListJobTemplatesResponse->NextToken;
 
     # Returns a L<Paws::MediaConvert::ListJobTemplatesResponse> object.
 

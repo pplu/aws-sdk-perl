@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $RetrieveEnvironmentInfoResultMessage =
       $elasticbeanstalk->RetrieveEnvironmentInfo(
       {
-        'InfoType'        => 'tail',
-        'EnvironmentName' => 'my-env'
+        'EnvironmentName' => 'my-env',
+        'InfoType'        => 'tail'
       }
       );
 

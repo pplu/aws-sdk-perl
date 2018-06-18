@@ -42,7 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $replicationJobId = $CreateReplicationJobResponse->replicationJobId;
+    my $ReplicationJobId = $CreateReplicationJobResponse->ReplicationJobId;
 
     # Returns a L<Paws::SMS::CreateReplicationJobResponse> object.
 

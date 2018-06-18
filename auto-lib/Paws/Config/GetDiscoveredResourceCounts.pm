@@ -39,10 +39,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $NextToken      = $GetDiscoveredResourceCountsResponse->NextToken;
     my $ResourceCounts = $GetDiscoveredResourceCountsResponse->ResourceCounts;
     my $TotalDiscoveredResources =
       $GetDiscoveredResourceCountsResponse->TotalDiscoveredResources;
-    my $NextToken = $GetDiscoveredResourceCountsResponse->NextToken;
 
     # Returns a L<Paws::Config::GetDiscoveredResourceCountsResponse> object.
 

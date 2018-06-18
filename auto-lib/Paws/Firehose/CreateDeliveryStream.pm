@@ -38,85 +38,45 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DeliveryStreamName                    => 'MyDeliveryStreamName',
       DeliveryStreamType                    => 'DirectPut',           # OPTIONAL
       ElasticsearchDestinationConfiguration => {
-        RoleARN         => 'MyRoleARN',    # min: 1, max: 512
+        DomainARN       => 'MyElasticsearchDomainARN',    # min: 1, max: 512
+        IndexName       => 'MyElasticsearchIndexName',    # min: 1, max: 80
+        RoleARN         => 'MyRoleARN',                   # min: 1, max: 512
         S3Configuration => {
-          RoleARN                 => 'MyRoleARN',      # min: 1, max: 512
-          BucketARN               => 'MyBucketARN',    # min: 1, max: 2048
-          EncryptionConfiguration => {
-            NoEncryptionConfig =>
-              'NoEncryption',    # values: NoEncryption; OPTIONAL
-            KMSEncryptionConfig => {
-              AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512
-
-            },    # OPTIONAL
-          },    # OPTIONAL
+          BucketARN      => 'MyBucketARN',                # min: 1, max: 2048
+          RoleARN        => 'MyRoleARN',                  # min: 1, max: 512
           BufferingHints => {
             IntervalInSeconds => 1,    # min: 60, max: 900; OPTIONAL
             SizeInMBs         => 1,    # min: 1, max: 128; OPTIONAL
           },    # OPTIONAL
           CloudWatchLoggingOptions => {
-            LogStreamName => 'MyLogStreamName',    # OPTIONAL
-            LogGroupName  => 'MyLogGroupName',     # OPTIONAL
             Enabled       => 1,                    # OPTIONAL
+            LogGroupName  => 'MyLogGroupName',     # OPTIONAL
+            LogStreamName => 'MyLogStreamName',    # OPTIONAL
           },    # OPTIONAL
-          Prefix => 'MyPrefix',    # OPTIONAL
           CompressionFormat =>
             'UNCOMPRESSED',  # values: UNCOMPRESSED, GZIP, ZIP, Snappy; OPTIONAL
+          EncryptionConfiguration => {
+            KMSEncryptionConfig => {
+              AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512
+
+            },    # OPTIONAL
+            NoEncryptionConfig =>
+              'NoEncryption',    # values: NoEncryption; OPTIONAL
+          },    # OPTIONAL
+          Prefix => 'MyPrefix',    # OPTIONAL
         },
-        TypeName  => 'MyElasticsearchTypeName',     # min: 1, max: 100
-        IndexName => 'MyElasticsearchIndexName',    # min: 1, max: 80
-        DomainARN => 'MyElasticsearchDomainARN',    # min: 1, max: 512
-        CloudWatchLoggingOptions => {
-          LogStreamName => 'MyLogStreamName',       # OPTIONAL
-          LogGroupName  => 'MyLogGroupName',        # OPTIONAL
-          Enabled       => 1,                       # OPTIONAL
-        },    # OPTIONAL
+        TypeName       => 'MyElasticsearchTypeName',    # min: 1, max: 100
         BufferingHints => {
           IntervalInSeconds => 1,    # min: 60, max: 900; OPTIONAL
           SizeInMBs         => 1,    # min: 1, max: 100; OPTIONAL
         },    # OPTIONAL
-        S3BackupMode => 'FailedDocumentsOnly'
-        ,     # values: FailedDocumentsOnly, AllDocuments; OPTIONAL
-        ProcessingConfiguration => {
-          Enabled    => 1,    # OPTIONAL
-          Processors => [
-            {
-              Type       => 'Lambda',    # values: Lambda
-              Parameters => [
-                {
-                  ParameterName => 'LambdaArn'
-                  , # values: LambdaArn, NumberOfRetries, RoleArn, BufferSizeInMBs, BufferIntervalInSeconds
-                  ParameterValue =>
-                    'MyProcessorParameterValue',    # min: 1, max: 512
-
-                },
-                ...
-              ],                                    # OPTIONAL
-            },
-            ...
-          ],                                        # OPTIONAL
+        CloudWatchLoggingOptions => {
+          Enabled       => 1,                    # OPTIONAL
+          LogGroupName  => 'MyLogGroupName',     # OPTIONAL
+          LogStreamName => 'MyLogStreamName',    # OPTIONAL
         },    # OPTIONAL
         IndexRotationPeriod => 'NoRotation'
         ,     # values: NoRotation, OneHour, OneDay, OneWeek, OneMonth; OPTIONAL
-        RetryOptions => {
-          DurationInSeconds => 1,    # max: 7200; OPTIONAL
-        },    # OPTIONAL
-      },    # OPTIONAL
-      ExtendedS3DestinationConfiguration => {
-        RoleARN                  => 'MyRoleARN',      # min: 1, max: 512
-        BucketARN                => 'MyBucketARN',    # min: 1, max: 2048
-        CloudWatchLoggingOptions => {
-          LogStreamName => 'MyLogStreamName',         # OPTIONAL
-          LogGroupName  => 'MyLogGroupName',          # OPTIONAL
-          Enabled       => 1,                         # OPTIONAL
-        },    # OPTIONAL
-        BufferingHints => {
-          IntervalInSeconds => 1,    # min: 60, max: 900; OPTIONAL
-          SizeInMBs         => 1,    # min: 1, max: 128; OPTIONAL
-        },    # OPTIONAL
-        Prefix => 'MyPrefix',    # OPTIONAL
-        CompressionFormat =>
-          'UNCOMPRESSED',    # values: UNCOMPRESSED, GZIP, ZIP, Snappy; OPTIONAL
         ProcessingConfiguration => {
           Enabled    => 1,    # OPTIONAL
           Processors => [
@@ -136,155 +96,174 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ...
           ],                                        # OPTIONAL
         },    # OPTIONAL
+        RetryOptions => {
+          DurationInSeconds => 1,    # max: 7200; OPTIONAL
+        },    # OPTIONAL
+        S3BackupMode => 'FailedDocumentsOnly'
+        ,     # values: FailedDocumentsOnly, AllDocuments; OPTIONAL
+      },    # OPTIONAL
+      ExtendedS3DestinationConfiguration => {
+        BucketARN      => 'MyBucketARN',    # min: 1, max: 2048
+        RoleARN        => 'MyRoleARN',      # min: 1, max: 512
+        BufferingHints => {
+          IntervalInSeconds => 1,           # min: 60, max: 900; OPTIONAL
+          SizeInMBs         => 1,           # min: 1, max: 128; OPTIONAL
+        },    # OPTIONAL
+        CloudWatchLoggingOptions => {
+          Enabled       => 1,                    # OPTIONAL
+          LogGroupName  => 'MyLogGroupName',     # OPTIONAL
+          LogStreamName => 'MyLogStreamName',    # OPTIONAL
+        },    # OPTIONAL
+        CompressionFormat =>
+          'UNCOMPRESSED',    # values: UNCOMPRESSED, GZIP, ZIP, Snappy; OPTIONAL
         DataFormatConversionConfiguration => {
+          Enabled                  => 1,    # OPTIONAL
+          InputFormatConfiguration => {
+            Deserializer => {
+              HiveJsonSerDe => {
+                TimestampFormats => [ 'MyNonEmptyString', ... ],    # OPTIONAL
+              },    # OPTIONAL
+              OpenXJsonSerDe => {
+                CaseInsensitive         => 1,    # OPTIONAL
+                ColumnToJsonKeyMappings => {
+                  'MyNonEmptyStringWithoutWhitespace' => 'MyNonEmptyString',
+                },                               # OPTIONAL
+                ConvertDotsInJsonKeysToUnderscores => 1,    # OPTIONAL
+              },    # OPTIONAL
+            },    # OPTIONAL
+          },    # OPTIONAL
           OutputFormatConfiguration => {
             Serializer => {
               OrcSerDe => {
-                BlockSizeBytes     => 1,    # min: 67108864, ; OPTIONAL
-                StripeSizeBytes    => 1,    # min: 8388608, ; OPTIONAL
-                RowIndexStride     => 1,    # min: 1000, ; OPTIONAL
-                PaddingTolerance   => 1,    # max: 1; OPTIONAL
-                BloomFilterColumns => [
-                  'MyNonEmptyStringWithoutWhitespace', ...    # OPTIONAL
-                ],                                            # OPTIONAL
-                BloomFilterFalsePositiveProbability => 1,     # max: 1; OPTIONAL
-                EnablePadding                       => 1,     # OPTIONAL
+                BlockSizeBytes => 1,    # min: 67108864, ; OPTIONAL
+                BloomFilterColumns =>
+                  [ 'MyNonEmptyStringWithoutWhitespace', ... ],    # OPTIONAL
+                BloomFilterFalsePositiveProbability => 1,    # max: 1; OPTIONAL
                 Compression => 'NONE',    # values: NONE, ZLIB, SNAPPY; OPTIONAL
                 DictionaryKeyThreshold => 1,    # max: 1; OPTIONAL
-                FormatVersion => 'V0_11',       # values: V0_11, V0_12; OPTIONAL
+                EnablePadding          => 1,    # OPTIONAL
+                FormatVersion    => 'V0_11',    # values: V0_11, V0_12; OPTIONAL
+                PaddingTolerance => 1,          # max: 1; OPTIONAL
+                RowIndexStride   => 1,          # min: 1000, ; OPTIONAL
+                StripeSizeBytes  => 1,          # min: 8388608, ; OPTIONAL
               },    # OPTIONAL
               ParquetSerDe => {
+                BlockSizeBytes => 1,    # min: 67108864, ; OPTIONAL
                 Compression =>
                   'UNCOMPRESSED', # values: UNCOMPRESSED, GZIP, SNAPPY; OPTIONAL
-                PageSizeBytes               => 1,    # min: 65536, ; OPTIONAL
-                EnableDictionaryCompression => 1,    # OPTIONAL
-                BlockSizeBytes              => 1,    # min: 67108864, ; OPTIONAL
-                MaxPaddingBytes             => 1,    # OPTIONAL
-                WriterVersion               => 'V1', # values: V1, V2; OPTIONAL
+                EnableDictionaryCompression => 1,     # OPTIONAL
+                MaxPaddingBytes             => 1,     # OPTIONAL
+                PageSizeBytes               => 1,     # min: 65536, ; OPTIONAL
+                WriterVersion               => 'V1',  # values: V1, V2; OPTIONAL
               },    # OPTIONAL
             },    # OPTIONAL
           },    # OPTIONAL
           SchemaConfiguration => {
-            VersionId    => 'MyNonEmptyStringWithoutWhitespace',    # OPTIONAL
-            Region       => 'MyNonEmptyStringWithoutWhitespace',    # OPTIONAL
-            DatabaseName => 'MyNonEmptyStringWithoutWhitespace',    # OPTIONAL
-            TableName    => 'MyNonEmptyStringWithoutWhitespace',    # OPTIONAL
-            RoleARN      => 'MyNonEmptyStringWithoutWhitespace',    # OPTIONAL
-            CatalogId    => 'MyNonEmptyStringWithoutWhitespace',    # OPTIONAL
+            CatalogId    => 'MyNonEmptyStringWithoutWhitespace',
+            DatabaseName => 'MyNonEmptyStringWithoutWhitespace',
+            Region       => 'MyNonEmptyStringWithoutWhitespace',
+            RoleARN      => 'MyNonEmptyStringWithoutWhitespace',
+            TableName    => 'MyNonEmptyStringWithoutWhitespace',
+            VersionId    => 'MyNonEmptyStringWithoutWhitespace',
           },    # OPTIONAL
-          InputFormatConfiguration => {
-            Deserializer => {
-              OpenXJsonSerDe => {
-                CaseInsensitive         => 1,    # OPTIONAL
-                ColumnToJsonKeyMappings => {
-                  'MyNonEmptyStringWithoutWhitespace' =>
-                    'MyNonEmptyString',          # key: OPTIONAL
-                },    # OPTIONAL
-                ConvertDotsInJsonKeysToUnderscores => 1,    # OPTIONAL
-              },    # OPTIONAL
-              HiveJsonSerDe => {
-                TimestampFormats => [ 'MyNonEmptyString', ... ],    # OPTIONAL
-              },    # OPTIONAL
-            },    # OPTIONAL
-          },    # OPTIONAL
-          Enabled => 1,    # OPTIONAL
         },    # OPTIONAL
-        S3BackupConfiguration => {
-          RoleARN                 => 'MyRoleARN',      # min: 1, max: 512
-          BucketARN               => 'MyBucketARN',    # min: 1, max: 2048
-          EncryptionConfiguration => {
-            NoEncryptionConfig =>
-              'NoEncryption',    # values: NoEncryption; OPTIONAL
-            KMSEncryptionConfig => {
-              AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512
-
-            },    # OPTIONAL
-          },    # OPTIONAL
-          BufferingHints => {
-            IntervalInSeconds => 1,    # min: 60, max: 900; OPTIONAL
-            SizeInMBs         => 1,    # min: 1, max: 128; OPTIONAL
-          },    # OPTIONAL
-          CloudWatchLoggingOptions => {
-            LogStreamName => 'MyLogStreamName',    # OPTIONAL
-            LogGroupName  => 'MyLogGroupName',     # OPTIONAL
-            Enabled       => 1,                    # OPTIONAL
-          },    # OPTIONAL
-          Prefix => 'MyPrefix',    # OPTIONAL
-          CompressionFormat =>
-            'UNCOMPRESSED',  # values: UNCOMPRESSED, GZIP, ZIP, Snappy; OPTIONAL
-        },
         EncryptionConfiguration => {
-          NoEncryptionConfig => 'NoEncryption', # values: NoEncryption; OPTIONAL
           KMSEncryptionConfig => {
             AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512
 
           },    # OPTIONAL
+          NoEncryptionConfig => 'NoEncryption', # values: NoEncryption; OPTIONAL
         },    # OPTIONAL
-        S3BackupMode => 'Disabled',    # values: Disabled, Enabled; OPTIONAL
-      },    # OPTIONAL
-      KinesisStreamSourceConfiguration => {
-        RoleARN          => 'MyRoleARN',             # min: 1, max: 512
-        KinesisStreamARN => 'MyKinesisStreamARN',    # min: 1, max: 512
+        Prefix                  => 'MyPrefix',    # OPTIONAL
+        ProcessingConfiguration => {
+          Enabled    => 1,                        # OPTIONAL
+          Processors => [
+            {
+              Type       => 'Lambda',             # values: Lambda
+              Parameters => [
+                {
+                  ParameterName => 'LambdaArn'
+                  , # values: LambdaArn, NumberOfRetries, RoleArn, BufferSizeInMBs, BufferIntervalInSeconds
+                  ParameterValue =>
+                    'MyProcessorParameterValue',    # min: 1, max: 512
 
-      },    # OPTIONAL
-      RedshiftDestinationConfiguration => {
-        S3Configuration => {
-          RoleARN                 => 'MyRoleARN',      # min: 1, max: 512
-          BucketARN               => 'MyBucketARN',    # min: 1, max: 2048
+                },
+                ...
+              ],                                    # OPTIONAL
+            },
+            ...
+          ],                                        # OPTIONAL
+        },    # OPTIONAL
+        S3BackupConfiguration => {
+          BucketARN      => 'MyBucketARN',    # min: 1, max: 2048
+          RoleARN        => 'MyRoleARN',      # min: 1, max: 512
+          BufferingHints => {
+            IntervalInSeconds => 1,           # min: 60, max: 900; OPTIONAL
+            SizeInMBs         => 1,           # min: 1, max: 128; OPTIONAL
+          },    # OPTIONAL
+          CloudWatchLoggingOptions => {
+            Enabled       => 1,                    # OPTIONAL
+            LogGroupName  => 'MyLogGroupName',     # OPTIONAL
+            LogStreamName => 'MyLogStreamName',    # OPTIONAL
+          },    # OPTIONAL
+          CompressionFormat =>
+            'UNCOMPRESSED',  # values: UNCOMPRESSED, GZIP, ZIP, Snappy; OPTIONAL
           EncryptionConfiguration => {
-            NoEncryptionConfig =>
-              'NoEncryption',    # values: NoEncryption; OPTIONAL
             KMSEncryptionConfig => {
               AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512
 
             },    # OPTIONAL
-          },    # OPTIONAL
-          BufferingHints => {
-            IntervalInSeconds => 1,    # min: 60, max: 900; OPTIONAL
-            SizeInMBs         => 1,    # min: 1, max: 128; OPTIONAL
-          },    # OPTIONAL
-          CloudWatchLoggingOptions => {
-            LogStreamName => 'MyLogStreamName',    # OPTIONAL
-            LogGroupName  => 'MyLogGroupName',     # OPTIONAL
-            Enabled       => 1,                    # OPTIONAL
+            NoEncryptionConfig =>
+              'NoEncryption',    # values: NoEncryption; OPTIONAL
           },    # OPTIONAL
           Prefix => 'MyPrefix',    # OPTIONAL
-          CompressionFormat =>
-            'UNCOMPRESSED',  # values: UNCOMPRESSED, GZIP, ZIP, Snappy; OPTIONAL
         },
-        Password    => 'MyPassword',    # min: 6,
-        RoleARN     => 'MyRoleARN',     # min: 1, max: 512
-        Username    => 'MyUsername',    # min: 1,
-        CopyCommand => {
+        S3BackupMode => 'Disabled',    # values: Disabled, Enabled; OPTIONAL
+      },    # OPTIONAL
+      KinesisStreamSourceConfiguration => {
+        KinesisStreamARN => 'MyKinesisStreamARN',    # min: 1, max: 512
+        RoleARN          => 'MyRoleARN',             # min: 1, max: 512
+
+      },    # OPTIONAL
+      RedshiftDestinationConfiguration => {
+        ClusterJDBCURL => 'MyClusterJDBCURL',    # min: 1,
+        CopyCommand    => {
           DataTableName    => 'MyDataTableName',       # min: 1,
           CopyOptions      => 'MyCopyOptions',         # OPTIONAL
           DataTableColumns => 'MyDataTableColumns',    # OPTIONAL
         },
-        ClusterJDBCURL        => 'MyClusterJDBCURL',    # min: 1,
-        S3BackupConfiguration => {
-          RoleARN                 => 'MyRoleARN',       # min: 1, max: 512
-          BucketARN               => 'MyBucketARN',     # min: 1, max: 2048
-          EncryptionConfiguration => {
-            NoEncryptionConfig =>
-              'NoEncryption',    # values: NoEncryption; OPTIONAL
-            KMSEncryptionConfig => {
-              AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512
-
-            },    # OPTIONAL
-          },    # OPTIONAL
+        Password        => 'MyPassword',               # min: 6,
+        RoleARN         => 'MyRoleARN',                # min: 1, max: 512
+        S3Configuration => {
+          BucketARN      => 'MyBucketARN',             # min: 1, max: 2048
+          RoleARN        => 'MyRoleARN',               # min: 1, max: 512
           BufferingHints => {
             IntervalInSeconds => 1,    # min: 60, max: 900; OPTIONAL
             SizeInMBs         => 1,    # min: 1, max: 128; OPTIONAL
           },    # OPTIONAL
           CloudWatchLoggingOptions => {
-            LogStreamName => 'MyLogStreamName',    # OPTIONAL
-            LogGroupName  => 'MyLogGroupName',     # OPTIONAL
             Enabled       => 1,                    # OPTIONAL
+            LogGroupName  => 'MyLogGroupName',     # OPTIONAL
+            LogStreamName => 'MyLogStreamName',    # OPTIONAL
           },    # OPTIONAL
-          Prefix => 'MyPrefix',    # OPTIONAL
           CompressionFormat =>
             'UNCOMPRESSED',  # values: UNCOMPRESSED, GZIP, ZIP, Snappy; OPTIONAL
+          EncryptionConfiguration => {
+            KMSEncryptionConfig => {
+              AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512
+
+            },    # OPTIONAL
+            NoEncryptionConfig =>
+              'NoEncryption',    # values: NoEncryption; OPTIONAL
+          },    # OPTIONAL
+          Prefix => 'MyPrefix',    # OPTIONAL
         },
+        Username                 => 'MyUsername',    # min: 1,
+        CloudWatchLoggingOptions => {
+          Enabled       => 1,                        # OPTIONAL
+          LogGroupName  => 'MyLogGroupName',         # OPTIONAL
+          LogStreamName => 'MyLogStreamName',        # OPTIONAL
+        },    # OPTIONAL
         ProcessingConfiguration => {
           Enabled    => 1,    # OPTIONAL
           Processors => [
@@ -307,71 +286,94 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         RetryOptions => {
           DurationInSeconds => 1,    # max: 7200; OPTIONAL
         },    # OPTIONAL
-        S3BackupMode => 'Disabled',    # values: Disabled, Enabled; OPTIONAL
-        CloudWatchLoggingOptions => {
-          LogStreamName => 'MyLogStreamName',    # OPTIONAL
-          LogGroupName  => 'MyLogGroupName',     # OPTIONAL
-          Enabled       => 1,                    # OPTIONAL
-        },    # OPTIONAL
-      },    # OPTIONAL
-      S3DestinationConfiguration => {
-        RoleARN                 => 'MyRoleARN',      # min: 1, max: 512
-        BucketARN               => 'MyBucketARN',    # min: 1, max: 2048
-        EncryptionConfiguration => {
-          NoEncryptionConfig => 'NoEncryption', # values: NoEncryption; OPTIONAL
-          KMSEncryptionConfig => {
-            AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512
-
+        S3BackupConfiguration => {
+          BucketARN      => 'MyBucketARN',    # min: 1, max: 2048
+          RoleARN        => 'MyRoleARN',      # min: 1, max: 512
+          BufferingHints => {
+            IntervalInSeconds => 1,           # min: 60, max: 900; OPTIONAL
+            SizeInMBs         => 1,           # min: 1, max: 128; OPTIONAL
           },    # OPTIONAL
-        },    # OPTIONAL
-        BufferingHints => {
-          IntervalInSeconds => 1,    # min: 60, max: 900; OPTIONAL
-          SizeInMBs         => 1,    # min: 1, max: 128; OPTIONAL
-        },    # OPTIONAL
-        CloudWatchLoggingOptions => {
-          LogStreamName => 'MyLogStreamName',    # OPTIONAL
-          LogGroupName  => 'MyLogGroupName',     # OPTIONAL
-          Enabled       => 1,                    # OPTIONAL
-        },    # OPTIONAL
-        Prefix => 'MyPrefix',    # OPTIONAL
-        CompressionFormat =>
-          'UNCOMPRESSED',    # values: UNCOMPRESSED, GZIP, ZIP, Snappy; OPTIONAL
-      },    # OPTIONAL
-      SplunkDestinationConfiguration => {
-        HECEndpoint     => 'MyHECEndpoint',
-        S3Configuration => {
-          RoleARN                 => 'MyRoleARN',      # min: 1, max: 512
-          BucketARN               => 'MyBucketARN',    # min: 1, max: 2048
+          CloudWatchLoggingOptions => {
+            Enabled       => 1,                    # OPTIONAL
+            LogGroupName  => 'MyLogGroupName',     # OPTIONAL
+            LogStreamName => 'MyLogStreamName',    # OPTIONAL
+          },    # OPTIONAL
+          CompressionFormat =>
+            'UNCOMPRESSED',  # values: UNCOMPRESSED, GZIP, ZIP, Snappy; OPTIONAL
           EncryptionConfiguration => {
-            NoEncryptionConfig =>
-              'NoEncryption',    # values: NoEncryption; OPTIONAL
             KMSEncryptionConfig => {
               AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512
 
             },    # OPTIONAL
-          },    # OPTIONAL
-          BufferingHints => {
-            IntervalInSeconds => 1,    # min: 60, max: 900; OPTIONAL
-            SizeInMBs         => 1,    # min: 1, max: 128; OPTIONAL
-          },    # OPTIONAL
-          CloudWatchLoggingOptions => {
-            LogStreamName => 'MyLogStreamName',    # OPTIONAL
-            LogGroupName  => 'MyLogGroupName',     # OPTIONAL
-            Enabled       => 1,                    # OPTIONAL
+            NoEncryptionConfig =>
+              'NoEncryption',    # values: NoEncryption; OPTIONAL
           },    # OPTIONAL
           Prefix => 'MyPrefix',    # OPTIONAL
+        },
+        S3BackupMode => 'Disabled',    # values: Disabled, Enabled; OPTIONAL
+      },    # OPTIONAL
+      S3DestinationConfiguration => {
+        BucketARN      => 'MyBucketARN',    # min: 1, max: 2048
+        RoleARN        => 'MyRoleARN',      # min: 1, max: 512
+        BufferingHints => {
+          IntervalInSeconds => 1,           # min: 60, max: 900; OPTIONAL
+          SizeInMBs         => 1,           # min: 1, max: 128; OPTIONAL
+        },    # OPTIONAL
+        CloudWatchLoggingOptions => {
+          Enabled       => 1,                    # OPTIONAL
+          LogGroupName  => 'MyLogGroupName',     # OPTIONAL
+          LogStreamName => 'MyLogStreamName',    # OPTIONAL
+        },    # OPTIONAL
+        CompressionFormat =>
+          'UNCOMPRESSED',    # values: UNCOMPRESSED, GZIP, ZIP, Snappy; OPTIONAL
+        EncryptionConfiguration => {
+          KMSEncryptionConfig => {
+            AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512
+
+          },    # OPTIONAL
+          NoEncryptionConfig => 'NoEncryption', # values: NoEncryption; OPTIONAL
+        },    # OPTIONAL
+        Prefix => 'MyPrefix',    # OPTIONAL
+      },    # OPTIONAL
+      SplunkDestinationConfiguration => {
+        HECEndpoint     => 'MyHECEndpoint',
+        HECEndpointType => 'Raw',             # values: Raw, Event
+        HECToken        => 'MyHECToken',
+        S3Configuration => {
+          BucketARN      => 'MyBucketARN',    # min: 1, max: 2048
+          RoleARN        => 'MyRoleARN',      # min: 1, max: 512
+          BufferingHints => {
+            IntervalInSeconds => 1,           # min: 60, max: 900; OPTIONAL
+            SizeInMBs         => 1,           # min: 1, max: 128; OPTIONAL
+          },    # OPTIONAL
+          CloudWatchLoggingOptions => {
+            Enabled       => 1,                    # OPTIONAL
+            LogGroupName  => 'MyLogGroupName',     # OPTIONAL
+            LogStreamName => 'MyLogStreamName',    # OPTIONAL
+          },    # OPTIONAL
           CompressionFormat =>
             'UNCOMPRESSED',  # values: UNCOMPRESSED, GZIP, ZIP, Snappy; OPTIONAL
+          EncryptionConfiguration => {
+            KMSEncryptionConfig => {
+              AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512
+
+            },    # OPTIONAL
+            NoEncryptionConfig =>
+              'NoEncryption',    # values: NoEncryption; OPTIONAL
+          },    # OPTIONAL
+          Prefix => 'MyPrefix',    # OPTIONAL
         },
-        HECToken        => 'MyHECToken',
-        HECEndpointType => 'Raw',          # values: Raw, Event
-        S3BackupMode =>
-          'FailedEventsOnly',    # values: FailedEventsOnly, AllEvents; OPTIONAL
-        ProcessingConfiguration => {
-          Enabled    => 1,       # OPTIONAL
+        CloudWatchLoggingOptions => {
+          Enabled       => 1,                    # OPTIONAL
+          LogGroupName  => 'MyLogGroupName',     # OPTIONAL
+          LogStreamName => 'MyLogStreamName',    # OPTIONAL
+        },    # OPTIONAL
+        HECAcknowledgmentTimeoutInSeconds => 1,   # min: 180, max: 600; OPTIONAL
+        ProcessingConfiguration           => {
+          Enabled    => 1,                        # OPTIONAL
           Processors => [
             {
-              Type       => 'Lambda',    # values: Lambda
+              Type       => 'Lambda',             # values: Lambda
               Parameters => [
                 {
                   ParameterName => 'LambdaArn'
@@ -389,12 +391,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         RetryOptions => {
           DurationInSeconds => 1,    # max: 7200; OPTIONAL
         },    # OPTIONAL
-        HECAcknowledgmentTimeoutInSeconds => 1,   # min: 180, max: 600; OPTIONAL
-        CloudWatchLoggingOptions          => {
-          LogStreamName => 'MyLogStreamName',     # OPTIONAL
-          LogGroupName  => 'MyLogGroupName',      # OPTIONAL
-          Enabled       => 1,                     # OPTIONAL
-        },    # OPTIONAL
+        S3BackupMode =>
+          'FailedEventsOnly',    # values: FailedEventsOnly, AllEvents; OPTIONAL
       },    # OPTIONAL
     );
 

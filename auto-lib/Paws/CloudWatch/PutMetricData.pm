@@ -31,27 +31,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     $monitoring->PutMetricData(
       MetricData => [
         {
-          MetricName        => 'MyMetricName',           # min: 1, max: 255
-          Value             => 1,
-          StorageResolution => 1,                        # min: 1, ; OPTIONAL
-          Timestamp         => '1970-01-01T01:00:00',    # OPTIONAL
-          StatisticValues   => {
-            Maximum     => 1,
-            SampleCount => 1,
-            Sum         => 1,
-            Minimum     => 1,
-
-          },                                             # OPTIONAL
+          MetricName => 'MyMetricName',    # min: 1, max: 255
           Dimensions => [
             {
-              Name  => 'MyDimensionName',                # min: 1, max: 255
-              Value => 'MyDimensionValue',               # min: 1, max: 255
+              Name  => 'MyDimensionName',     # min: 1, max: 255
+              Value => 'MyDimensionValue',    # min: 1, max: 255
 
             },
             ...
-          ],                                             # max: 10; OPTIONAL
-          Unit => 'Seconds'
+          ],                                  # max: 10; OPTIONAL
+          StatisticValues => {
+            Maximum     => 1,
+            Minimum     => 1,
+            SampleCount => 1,
+            Sum         => 1,
+
+          },                                  # OPTIONAL
+          StorageResolution => 1,                        # min: 1, ; OPTIONAL
+          Timestamp         => '1970-01-01T01:00:00',    # OPTIONAL
+          Unit              => 'Seconds'
           , # values: Seconds, Microseconds, Milliseconds, Bytes, Kilobytes, Megabytes, Gigabytes, Terabytes, Bits, Kilobits, Megabits, Gigabits, Terabits, Percent, Count, Bytes/Second, Kilobytes/Second, Megabytes/Second, Gigabytes/Second, Terabytes/Second, Bits/Second, Kilobits/Second, Megabits/Second, Gigabits/Second, Terabits/Second, Count/Second, None; OPTIONAL
+          Value => 1,
         },
         ...
       ],

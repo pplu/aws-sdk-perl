@@ -31,31 +31,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateJobResponse = $glue->UpdateJob(
       JobName   => 'MyNameString',
       JobUpdate => {
-        LogUri               => 'MyUriString',    # OPTIONAL
-        NotificationProperty => {
-          NotifyDelayAfter => 1,                  # min: 1, ; OPTIONAL
-        },    # OPTIONAL
-        DefaultArguments => {
-          'MyGenericString' =>
-            'MyGenericString',    # key: OPTIONAL, value: OPTIONAL
+        AllocatedCapacity => 1,    # OPTIONAL
+        Command           => {
+          Name           => 'MyGenericString',
+          ScriptLocation => 'MyScriptLocationString',    # OPTIONAL
         },    # OPTIONAL
         Connections => {
-          Connections => [
-            'MyGenericString', ...    # OPTIONAL
-          ],                          # OPTIONAL
+          Connections => [ 'MyGenericString', ... ],    # OPTIONAL
         },    # OPTIONAL
-        Command => {
-          ScriptLocation => 'MyScriptLocationString',    # OPTIONAL
-          Name           => 'MyGenericString',           # OPTIONAL
-        },    # OPTIONAL
-        Timeout           => 1,                        # min: 1, ; OPTIONAL
-        AllocatedCapacity => 1,                        # OPTIONAL
+        DefaultArguments => { 'MyGenericString' => 'MyGenericString', }
+        ,     # OPTIONAL
         Description       => 'MyDescriptionString',    # max: 2048; OPTIONAL
         ExecutionProperty => {
           MaxConcurrentRuns => 1,                      # OPTIONAL
         },    # OPTIONAL
-        Role       => 'MyRoleString',    # OPTIONAL
-        MaxRetries => 1,                 # OPTIONAL
+        LogUri               => 'MyUriString',    # OPTIONAL
+        MaxRetries           => 1,                # OPTIONAL
+        NotificationProperty => {
+          NotifyDelayAfter => 1,                  # min: 1, ; OPTIONAL
+        },    # OPTIONAL
+        Role    => 'MyRoleString',    # OPTIONAL
+        Timeout => 1,                 # min: 1, ; OPTIONAL
       },
 
     );

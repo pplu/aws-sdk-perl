@@ -36,21 +36,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $status                  = $GetBotResponse->status;
-    my $voiceId                 = $GetBotResponse->voiceId;
-    my $lastUpdatedDate         = $GetBotResponse->lastUpdatedDate;
-    my $description             = $GetBotResponse->description;
-    my $version                 = $GetBotResponse->version;
-    my $childDirected           = $GetBotResponse->childDirected;
-    my $name                    = $GetBotResponse->name;
-    my $failureReason           = $GetBotResponse->failureReason;
-    my $intents                 = $GetBotResponse->intents;
-    my $locale                  = $GetBotResponse->locale;
-    my $createdDate             = $GetBotResponse->createdDate;
-    my $abortStatement          = $GetBotResponse->abortStatement;
-    my $checksum                = $GetBotResponse->checksum;
-    my $idleSessionTTLInSeconds = $GetBotResponse->idleSessionTTLInSeconds;
-    my $clarificationPrompt     = $GetBotResponse->clarificationPrompt;
+    my $AbortStatement          = $GetBotResponse->AbortStatement;
+    my $Checksum                = $GetBotResponse->Checksum;
+    my $ChildDirected           = $GetBotResponse->ChildDirected;
+    my $ClarificationPrompt     = $GetBotResponse->ClarificationPrompt;
+    my $CreatedDate             = $GetBotResponse->CreatedDate;
+    my $Description             = $GetBotResponse->Description;
+    my $FailureReason           = $GetBotResponse->FailureReason;
+    my $IdleSessionTTLInSeconds = $GetBotResponse->IdleSessionTTLInSeconds;
+    my $Intents                 = $GetBotResponse->Intents;
+    my $LastUpdatedDate         = $GetBotResponse->LastUpdatedDate;
+    my $Locale                  = $GetBotResponse->Locale;
+    my $Name                    = $GetBotResponse->Name;
+    my $Status                  = $GetBotResponse->Status;
+    my $Version                 = $GetBotResponse->Version;
+    my $VoiceId                 = $GetBotResponse->VoiceId;
 
     # Returns a L<Paws::LexModels::GetBotResponse> object.
 

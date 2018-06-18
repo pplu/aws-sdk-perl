@@ -44,8 +44,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken    = $ListAssociationsResult->NextToken;
     my $Associations = $ListAssociationsResult->Associations;
+    my $NextToken    = $ListAssociationsResult->NextToken;
 
     # Returns a L<Paws::SSM::ListAssociationsResult> object.
 

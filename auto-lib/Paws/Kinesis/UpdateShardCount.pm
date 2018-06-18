@@ -37,9 +37,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $CurrentShardCount = $UpdateShardCountOutput->CurrentShardCount;
     my $StreamName        = $UpdateShardCountOutput->StreamName;
     my $TargetShardCount  = $UpdateShardCountOutput->TargetShardCount;
-    my $CurrentShardCount = $UpdateShardCountOutput->CurrentShardCount;
 
     # Returns a L<Paws::Kinesis::UpdateShardCountOutput> object.
 

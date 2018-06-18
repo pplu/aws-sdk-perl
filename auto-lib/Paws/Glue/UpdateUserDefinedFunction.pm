@@ -33,7 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateUserDefinedFunctionResponse = $glue->UpdateUserDefinedFunction(
       DatabaseName  => 'MyNameString',
       FunctionInput => {
+        ClassName    => 'MyNameString',    # min: 1, max: 255
+        FunctionName => 'MyNameString',    # min: 1, max: 255
         OwnerName    => 'MyNameString',    # min: 1, max: 255
+        OwnerType    => 'USER',            # values: USER, ROLE, GROUP; OPTIONAL
         ResourceUris => [
           {
             ResourceType => 'JAR',      # values: JAR, FILE, ARCHIVE; OPTIONAL
@@ -41,9 +44,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],                              # max: 1000; OPTIONAL
-        ClassName    => 'MyNameString', # min: 1, max: 255
-        OwnerType    => 'USER',         # values: USER, ROLE, GROUP; OPTIONAL
-        FunctionName => 'MyNameString', # min: 1, max: 255
       },
       FunctionName => 'MyNameString',
       CatalogId    => 'MyCatalogIdString',    # OPTIONAL

@@ -34,12 +34,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The example adds two tags to a my-vault.
     $glacier->AddTagsToVault(
       {
-        'VaultName' => 'my-vault',
+        'Tags' => {
+          'Examplekey1' => 'examplevalue1',
+          'Examplekey2' => 'examplevalue2'
+        },
         'AccountId' => '-',
-        'Tags'      => {
-          'Examplekey2' => 'examplevalue2',
-          'Examplekey1' => 'examplevalue1'
-        }
+        'VaultName' => 'my-vault'
       }
     );
 

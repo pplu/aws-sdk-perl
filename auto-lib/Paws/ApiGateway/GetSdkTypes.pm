@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Position = $SdkTypes->Position;
     my $Items    = $SdkTypes->Items;
+    my $Position = $SdkTypes->Position;
 
     # Returns a L<Paws::ApiGateway::SdkTypes> object.
 

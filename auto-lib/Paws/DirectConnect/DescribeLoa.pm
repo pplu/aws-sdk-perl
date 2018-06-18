@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $LoaContentType = $Loa->LoaContentType;
     my $LoaContent     = $Loa->LoaContent;
+    my $LoaContentType = $Loa->LoaContentType;
 
     # Returns a L<Paws::DirectConnect::Loa> object.
 

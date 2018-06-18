@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateOpenIDConnectProviderResponse = $iam->CreateOpenIDConnectProvider(
       {
         'ClientIDList'   => ['my-application-id'],
-        'Url'            => 'https://server.example.com',
-        'ThumbprintList' => ['3768084dfb3d2b68b7897bf5f565da8efEXAMPLE']
+        'ThumbprintList' => ['3768084dfb3d2b68b7897bf5f565da8efEXAMPLE'],
+        'Url'            => 'https://server.example.com'
       }
     );
 

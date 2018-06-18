@@ -34,15 +34,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ParameterGroupName => 'MyString',
       Parameters         => [
         {
-          Description          => 'MyString',
-          ParameterName        => 'MyString',
-          Source               => 'MyString',
-          IsModifiable         => 1,         # OPTIONAL
-          ApplyType            => 'static',  # values: static, dynamic; OPTIONAL
-          MinimumEngineVersion => 'MyString',
-          DataType             => 'MyString',
-          ParameterValue       => 'MyString',
           AllowedValues        => 'MyString',
+          ApplyType            => 'static',  # values: static, dynamic; OPTIONAL
+          DataType             => 'MyString',
+          Description          => 'MyString',
+          IsModifiable         => 1,         # OPTIONAL
+          MinimumEngineVersion => 'MyString',
+          ParameterName        => 'MyString',
+          ParameterValue       => 'MyString',
+          Source               => 'MyString',
         },
         ...
       ],                                     # OPTIONAL

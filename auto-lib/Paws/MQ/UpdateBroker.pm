@@ -32,14 +32,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateBrokerResponse = $mq->UpdateBroker(
       BrokerId      => 'My__string',
       Configuration => {
-        Revision => 1,              # OPTIONAL
         Id       => 'My__string',
+        Revision => 1,              # OPTIONAL
       },    # OPTIONAL
     );
 
     # Results:
-    my $Configuration = $UpdateBrokerResponse->Configuration;
     my $BrokerId      = $UpdateBrokerResponse->BrokerId;
+    my $Configuration = $UpdateBrokerResponse->Configuration;
 
     # Returns a L<Paws::MQ::UpdateBrokerResponse> object.
 

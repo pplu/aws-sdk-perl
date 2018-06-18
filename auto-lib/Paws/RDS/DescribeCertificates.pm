@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # identifier.
     my $CertificateMessage = $rds->DescribeCertificates(
       {
-        'MaxRecords'            => 20,
-        'CertificateIdentifier' => 'rds-ca-2015'
+        'CertificateIdentifier' => 'rds-ca-2015',
+        'MaxRecords'            => 20
       }
     );
 

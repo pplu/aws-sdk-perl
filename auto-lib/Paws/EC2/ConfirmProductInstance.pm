@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # with the specified instance.
     my $ConfirmProductInstanceResult = $ec2->ConfirmProductInstance(
       {
-        'ProductCode' => '774F4FF8',
-        'InstanceId'  => 'i-1234567890abcdef0'
+        'InstanceId'  => 'i-1234567890abcdef0',
+        'ProductCode' => '774F4FF8'
       }
     );
 

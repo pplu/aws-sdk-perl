@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ExportIds => [ 'MyConfigurationsExportId', ... ],    # OPTIONAL
       Filters => [
         {
-          values    => [ 'MyFilterValue', ... ],
-          name      => 'MyFilterName',
           condition => 'MyCondition',
+          name      => 'MyFilterName',
+          values    => [ 'MyFilterValue', ... ],
 
         },
         ...
@@ -46,8 +46,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken   = $DescribeExportTasksResponse->NextToken;
     my $ExportsInfo = $DescribeExportTasksResponse->ExportsInfo;
+    my $NextToken   = $DescribeExportTasksResponse->NextToken;
 
     # Returns a L<Paws::Discovery::DescribeExportTasksResponse> object.
 

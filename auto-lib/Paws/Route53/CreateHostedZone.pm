@@ -50,8 +50,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $DelegationSet = $CreateHostedZoneResponse->DelegationSet;
     my $ChangeInfo    = $CreateHostedZoneResponse->ChangeInfo;
+    my $DelegationSet = $CreateHostedZoneResponse->DelegationSet;
     my $HostedZone    = $CreateHostedZoneResponse->HostedZone;
     my $Location      = $CreateHostedZoneResponse->Location;
     my $VPC           = $CreateHostedZoneResponse->VPC;

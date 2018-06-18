@@ -53,9 +53,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       NotificationARNs => [ 'MyNotificationARN', ... ],    # OPTIONAL
       Parameters       => [
         {
-          ResolvedValue    => 'MyParameterValue',          # OPTIONAL
           ParameterKey     => 'MyParameterKey',            # OPTIONAL
           ParameterValue   => 'MyParameterValue',          # OPTIONAL
+          ResolvedValue    => 'MyParameterValue',          # OPTIONAL
           UsePreviousValue => 1,                           # OPTIONAL
         },
         ...
@@ -68,8 +68,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         MonitoringTimeInMinutes => 1,                      # max: 180; OPTIONAL
         RollbackTriggers        => [
           {
-            Type => 'MyType',
             Arn  => 'MyArn',
+            Type => 'MyType',
 
           },
           ...
@@ -77,8 +77,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       Tags => [
         {
-          Value => 'MyTagValue',    # min: 1, max: 256
           Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # min: 1, max: 256
 
         },
         ...

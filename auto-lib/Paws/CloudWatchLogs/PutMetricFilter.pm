@@ -36,9 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       LogGroupName          => 'MyLogGroupName',
       MetricTransformations => [
         {
+          metricName      => 'MyMetricName',         # max: 255
           metricNamespace => 'MyMetricNamespace',    # max: 255
           metricValue     => 'MyMetricValue',        # max: 100
-          metricName      => 'MyMetricName',         # max: 255
           defaultValue    => 1,                      # OPTIONAL
         },
         ...

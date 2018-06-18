@@ -33,24 +33,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SearchUsersResponse = $a4b->SearchUsers(
       Filters => [
         {
+          Key    => 'MyFilterKey',    # min: 1, max: 500
           Values => [
-            'MyFilterValue', ...    # min: 1, max: 500
-          ],                        # max: 5
-          Key => 'MyFilterKey',     # min: 1, max: 500
+            'MyFilterValue', ...      # min: 1, max: 500
+          ],                          # max: 5
 
         },
         ...
-      ],                            # OPTIONAL
-      MaxResults   => 1,                # OPTIONAL
-      NextToken    => 'MyNextToken',    # OPTIONAL
+      ],                              # OPTIONAL
+      MaxResults   => 1,              # OPTIONAL
+      NextToken    => 'MyNextToken',  # OPTIONAL
       SortCriteria => [
         {
-          Value => 'ASC',               # values: ASC, DESC
-          Key   => 'MySortKey',         # min: 1, max: 500
+          Key   => 'MySortKey',       # min: 1, max: 500
+          Value => 'ASC',             # values: ASC, DESC
 
         },
         ...
-      ],                                # OPTIONAL
+      ],                              # OPTIONAL
     );
 
     # Results:

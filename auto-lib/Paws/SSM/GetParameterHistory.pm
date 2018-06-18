@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Parameters = $GetParameterHistoryResult->Parameters;
     my $NextToken  = $GetParameterHistoryResult->NextToken;
+    my $Parameters = $GetParameterHistoryResult->Parameters;
 
     # Returns a L<Paws::SSM::GetParameterHistoryResult> object.
 

@@ -29,8 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeDRTAccessResponse = $shield->DescribeDRTAccess();
 
     # Results:
-    my $RoleArn       = $DescribeDRTAccessResponse->RoleArn;
     my $LogBucketList = $DescribeDRTAccessResponse->LogBucketList;
+    my $RoleArn       = $DescribeDRTAccessResponse->RoleArn;
 
     # Returns a L<Paws::Shield::DescribeDRTAccessResponse> object.
 

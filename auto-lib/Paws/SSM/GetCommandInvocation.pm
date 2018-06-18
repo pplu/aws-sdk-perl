@@ -36,27 +36,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $StandardErrorUrl = $GetCommandInvocationResult->StandardErrorUrl;
+    my $CommandId       = $GetCommandInvocationResult->CommandId;
+    my $Comment         = $GetCommandInvocationResult->Comment;
+    my $DocumentName    = $GetCommandInvocationResult->DocumentName;
+    my $DocumentVersion = $GetCommandInvocationResult->DocumentVersion;
     my $ExecutionElapsedTime =
       $GetCommandInvocationResult->ExecutionElapsedTime;
-    my $ExecutionStartDateTime =
-      $GetCommandInvocationResult->ExecutionStartDateTime;
-    my $DocumentVersion = $GetCommandInvocationResult->DocumentVersion;
     my $ExecutionEndDateTime =
       $GetCommandInvocationResult->ExecutionEndDateTime;
+    my $ExecutionStartDateTime =
+      $GetCommandInvocationResult->ExecutionStartDateTime;
+    my $InstanceId   = $GetCommandInvocationResult->InstanceId;
+    my $PluginName   = $GetCommandInvocationResult->PluginName;
     my $ResponseCode = $GetCommandInvocationResult->ResponseCode;
     my $StandardErrorContent =
       $GetCommandInvocationResult->StandardErrorContent;
-    my $CommandId         = $GetCommandInvocationResult->CommandId;
-    my $StatusDetails     = $GetCommandInvocationResult->StatusDetails;
-    my $Status            = $GetCommandInvocationResult->Status;
-    my $DocumentName      = $GetCommandInvocationResult->DocumentName;
-    my $PluginName        = $GetCommandInvocationResult->PluginName;
-    my $StandardOutputUrl = $GetCommandInvocationResult->StandardOutputUrl;
-    my $InstanceId        = $GetCommandInvocationResult->InstanceId;
+    my $StandardErrorUrl = $GetCommandInvocationResult->StandardErrorUrl;
     my $StandardOutputContent =
       $GetCommandInvocationResult->StandardOutputContent;
-    my $Comment = $GetCommandInvocationResult->Comment;
+    my $StandardOutputUrl = $GetCommandInvocationResult->StandardOutputUrl;
+    my $Status            = $GetCommandInvocationResult->Status;
+    my $StatusDetails     = $GetCommandInvocationResult->StatusDetails;
 
     # Returns a L<Paws::SSM::GetCommandInvocationResult> object.
 

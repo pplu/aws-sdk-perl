@@ -35,33 +35,33 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateFieldLevelEncryptionProfileResult =
       $cloudfront->UpdateFieldLevelEncryptionProfile(
       FieldLevelEncryptionProfileConfig => {
+        CallerReference    => 'Mystring',
         EncryptionEntities => {
           Quantity => 1,
           Items    => [
             {
-              PublicKeyId   => 'Mystring',
               FieldPatterns => {
                 Quantity => 1,
                 Items    => [ 'Mystring', ... ],    # OPTIONAL
               },
-              ProviderId => 'Mystring',
+              ProviderId  => 'Mystring',
+              PublicKeyId => 'Mystring',
 
             },
             ...
           ],                                        # OPTIONAL
         },
-        CallerReference => 'Mystring',
-        Name            => 'Mystring',
-        Comment         => 'Mystring',
+        Name    => 'Mystring',
+        Comment => 'Mystring',
       },
       Id      => 'Mystring',
       IfMatch => 'Mystring',                        # OPTIONAL
       );
 
     # Results:
+    my $ETag = $UpdateFieldLevelEncryptionProfileResult->ETag;
     my $FieldLevelEncryptionProfile =
       $UpdateFieldLevelEncryptionProfileResult->FieldLevelEncryptionProfile;
-    my $ETag = $UpdateFieldLevelEncryptionProfileResult->ETag;
 
 # Returns a L<Paws::CloudFront::UpdateFieldLevelEncryptionProfileResult> object.
 

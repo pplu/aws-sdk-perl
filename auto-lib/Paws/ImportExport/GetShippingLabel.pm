@@ -54,8 +54,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Warning          = $GetShippingLabelOutput->Warning;
     my $ShippingLabelURL = $GetShippingLabelOutput->ShippingLabelURL;
+    my $Warning          = $GetShippingLabelOutput->Warning;
 
     # Returns a L<Paws::ImportExport::GetShippingLabelOutput> object.
 

@@ -40,27 +40,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Name                  => 'My__string',
             ResourceDataContainer => {
               LocalDeviceResourceData => {
-                SourcePath        => 'My__string',
                 GroupOwnerSetting => {
                   AutoAddGroupOwner => 1,              # OPTIONAL
                   GroupOwner        => 'My__string',
                 },    # OPTIONAL
+                SourcePath => 'My__string',
+              },    # OPTIONAL
+              LocalVolumeResourceData => {
+                DestinationPath   => 'My__string',
+                GroupOwnerSetting => {
+                  AutoAddGroupOwner => 1,              # OPTIONAL
+                  GroupOwner        => 'My__string',
+                },    # OPTIONAL
+                SourcePath => 'My__string',
               },    # OPTIONAL
               S3MachineLearningModelResourceData => {
                 DestinationPath => 'My__string',
                 S3Uri           => 'My__string',
               },    # OPTIONAL
-              LocalVolumeResourceData => {
-                GroupOwnerSetting => {
-                  AutoAddGroupOwner => 1,              # OPTIONAL
-                  GroupOwner        => 'My__string',
-                },    # OPTIONAL
-                SourcePath      => 'My__string',
-                DestinationPath => 'My__string',
-              },    # OPTIONAL
               SageMakerMachineLearningModelResourceData => {
-                SageMakerJobArn => 'My__string',
                 DestinationPath => 'My__string',
+                SageMakerJobArn => 'My__string',
               },    # OPTIONAL
             },    # OPTIONAL
           },
@@ -71,15 +71,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $Arn              = $CreateResourceDefinitionResponse->Arn;
-    my $LatestVersionArn = $CreateResourceDefinitionResponse->LatestVersionArn;
-    my $LatestVersion    = $CreateResourceDefinitionResponse->LatestVersion;
-    my $Name             = $CreateResourceDefinitionResponse->Name;
+    my $Arn = $CreateResourceDefinitionResponse->Arn;
     my $CreationTimestamp =
       $CreateResourceDefinitionResponse->CreationTimestamp;
+    my $Id = $CreateResourceDefinitionResponse->Id;
     my $LastUpdatedTimestamp =
       $CreateResourceDefinitionResponse->LastUpdatedTimestamp;
-    my $Id = $CreateResourceDefinitionResponse->Id;
+    my $LatestVersion    = $CreateResourceDefinitionResponse->LatestVersion;
+    my $LatestVersionArn = $CreateResourceDefinitionResponse->LatestVersionArn;
+    my $Name             = $CreateResourceDefinitionResponse->Name;
 
     # Returns a L<Paws::Greengrass::CreateResourceDefinitionResponse> object.
 

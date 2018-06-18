@@ -41,11 +41,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $ArtifactList          = $CreateJobOutput->ArtifactList;
-    my $JobType               = $CreateJobOutput->JobType;
-    my $WarningMessage        = $CreateJobOutput->WarningMessage;
     my $JobId                 = $CreateJobOutput->JobId;
-    my $SignatureFileContents = $CreateJobOutput->SignatureFileContents;
+    my $JobType               = $CreateJobOutput->JobType;
     my $Signature             = $CreateJobOutput->Signature;
+    my $SignatureFileContents = $CreateJobOutput->SignatureFileContents;
+    my $WarningMessage        = $CreateJobOutput->WarningMessage;
 
     # Returns a L<Paws::ImportExport::CreateJobOutput> object.
 

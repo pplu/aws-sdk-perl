@@ -36,11 +36,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $DocumentType    = $GetDocumentResult->DocumentType;
-    my $Name            = $GetDocumentResult->Name;
     my $Content         = $GetDocumentResult->Content;
-    my $DocumentVersion = $GetDocumentResult->DocumentVersion;
     my $DocumentFormat  = $GetDocumentResult->DocumentFormat;
+    my $DocumentType    = $GetDocumentResult->DocumentType;
+    my $DocumentVersion = $GetDocumentResult->DocumentVersion;
+    my $Name            = $GetDocumentResult->Name;
 
     # Returns a L<Paws::SSM::GetDocumentResult> object.
 

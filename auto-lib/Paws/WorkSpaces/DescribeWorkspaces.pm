@@ -42,8 +42,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Workspaces = $DescribeWorkspacesResult->Workspaces;
     my $NextToken  = $DescribeWorkspacesResult->NextToken;
+    my $Workspaces = $DescribeWorkspacesResult->Workspaces;
 
     # Returns a L<Paws::WorkSpaces::DescribeWorkspacesResult> object.
 

@@ -43,9 +43,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $Marker = $DescribeEndpointTypesResponse->Marker;
     my $SupportedEndpointTypes =
       $DescribeEndpointTypesResponse->SupportedEndpointTypes;
-    my $Marker = $DescribeEndpointTypesResponse->Marker;
 
     # Returns a L<Paws::DMS::DescribeEndpointTypesResponse> object.
 

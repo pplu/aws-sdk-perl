@@ -38,9 +38,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NumResults    = $ListBonusPaymentsResponse->NumResults;
-    my $NextToken     = $ListBonusPaymentsResponse->NextToken;
     my $BonusPayments = $ListBonusPaymentsResponse->BonusPayments;
+    my $NextToken     = $ListBonusPaymentsResponse->NextToken;
+    my $NumResults    = $ListBonusPaymentsResponse->NumResults;
 
     # Returns a L<Paws::MTurk::ListBonusPaymentsResponse> object.
 

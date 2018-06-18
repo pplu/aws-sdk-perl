@@ -42,9 +42,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $nextToken = $ListAssessmentRunAgentsResponse->nextToken;
     my $assessmentRunAgents =
       $ListAssessmentRunAgentsResponse->assessmentRunAgents;
+    my $nextToken = $ListAssessmentRunAgentsResponse->nextToken;
 
     # Returns a L<Paws::Inspector::ListAssessmentRunAgentsResponse> object.
 

@@ -33,10 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $MaxNumberOfAutoScalingGroups =
       $DescribeAccountLimitsAnswer->MaxNumberOfAutoScalingGroups;
-    my $NumberOfAutoScalingGroups =
-      $DescribeAccountLimitsAnswer->NumberOfAutoScalingGroups;
     my $MaxNumberOfLaunchConfigurations =
       $DescribeAccountLimitsAnswer->MaxNumberOfLaunchConfigurations;
+    my $NumberOfAutoScalingGroups =
+      $DescribeAccountLimitsAnswer->NumberOfAutoScalingGroups;
     my $NumberOfLaunchConfigurations =
       $DescribeAccountLimitsAnswer->NumberOfLaunchConfigurations;
 

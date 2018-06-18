@@ -35,10 +35,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InitialVersion  => {
         Cores => [
           {
+            CertificateArn => 'My__string',
+            Id             => 'My__string',
             SyncShadow     => 1,              # OPTIONAL
             ThingArn       => 'My__string',
-            Id             => 'My__string',
-            CertificateArn => 'My__string',
           },
           ...
         ],                                    # OPTIONAL
@@ -47,14 +47,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Id = $CreateCoreDefinitionResponse->Id;
+    my $Arn               = $CreateCoreDefinitionResponse->Arn;
+    my $CreationTimestamp = $CreateCoreDefinitionResponse->CreationTimestamp;
+    my $Id                = $CreateCoreDefinitionResponse->Id;
     my $LastUpdatedTimestamp =
       $CreateCoreDefinitionResponse->LastUpdatedTimestamp;
-    my $LatestVersion     = $CreateCoreDefinitionResponse->LatestVersion;
-    my $CreationTimestamp = $CreateCoreDefinitionResponse->CreationTimestamp;
-    my $Name              = $CreateCoreDefinitionResponse->Name;
-    my $Arn               = $CreateCoreDefinitionResponse->Arn;
-    my $LatestVersionArn  = $CreateCoreDefinitionResponse->LatestVersionArn;
+    my $LatestVersion    = $CreateCoreDefinitionResponse->LatestVersion;
+    my $LatestVersionArn = $CreateCoreDefinitionResponse->LatestVersionArn;
+    my $Name             = $CreateCoreDefinitionResponse->Name;
 
     # Returns a L<Paws::Greengrass::CreateCoreDefinitionResponse> object.
 

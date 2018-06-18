@@ -35,21 +35,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $TaskArn      = $GetMaintenanceWindowTaskResult->TaskArn;
-    my $WindowTaskId = $GetMaintenanceWindowTaskResult->WindowTaskId;
-    my $Description  = $GetMaintenanceWindowTaskResult->Description;
-    my $WindowId     = $GetMaintenanceWindowTaskResult->WindowId;
-    my $TaskType     = $GetMaintenanceWindowTaskResult->TaskType;
-    my $LoggingInfo  = $GetMaintenanceWindowTaskResult->LoggingInfo;
-    my $TaskInvocationParameters =
-      $GetMaintenanceWindowTaskResult->TaskInvocationParameters;
-    my $TaskParameters = $GetMaintenanceWindowTaskResult->TaskParameters;
-    my $Priority       = $GetMaintenanceWindowTaskResult->Priority;
-    my $ServiceRoleArn = $GetMaintenanceWindowTaskResult->ServiceRoleArn;
+    my $Description    = $GetMaintenanceWindowTaskResult->Description;
+    my $LoggingInfo    = $GetMaintenanceWindowTaskResult->LoggingInfo;
     my $MaxConcurrency = $GetMaintenanceWindowTaskResult->MaxConcurrency;
     my $MaxErrors      = $GetMaintenanceWindowTaskResult->MaxErrors;
     my $Name           = $GetMaintenanceWindowTaskResult->Name;
+    my $Priority       = $GetMaintenanceWindowTaskResult->Priority;
+    my $ServiceRoleArn = $GetMaintenanceWindowTaskResult->ServiceRoleArn;
     my $Targets        = $GetMaintenanceWindowTaskResult->Targets;
+    my $TaskArn        = $GetMaintenanceWindowTaskResult->TaskArn;
+    my $TaskInvocationParameters =
+      $GetMaintenanceWindowTaskResult->TaskInvocationParameters;
+    my $TaskParameters = $GetMaintenanceWindowTaskResult->TaskParameters;
+    my $TaskType       = $GetMaintenanceWindowTaskResult->TaskType;
+    my $WindowId       = $GetMaintenanceWindowTaskResult->WindowId;
+    my $WindowTaskId   = $GetMaintenanceWindowTaskResult->WindowTaskId;
 
     # Returns a L<Paws::SSM::GetMaintenanceWindowTaskResult> object.
 

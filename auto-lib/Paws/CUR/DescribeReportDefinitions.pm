@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $NextToken = $DescribeReportDefinitionsResponse->NextToken;
     my $ReportDefinitions =
       $DescribeReportDefinitionsResponse->ReportDefinitions;
-    my $NextToken = $DescribeReportDefinitionsResponse->NextToken;
 
     # Returns a L<Paws::CUR::DescribeReportDefinitionsResponse> object.
 

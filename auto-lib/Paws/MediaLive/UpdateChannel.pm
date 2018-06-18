@@ -39,414 +39,410 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ChannelId    => 'My__string',
       Destinations => [
         {
+          Id       => 'My__string',
           Settings => [
             {
-              StreamName    => 'My__string',
-              Username      => 'My__string',
               PasswordParam => 'My__string',
+              StreamName    => 'My__string',
               Url           => 'My__string',
+              Username      => 'My__string',
             },
             ...
           ],    # OPTIONAL
-          Id => 'My__string',
         },
         ...
       ],        # OPTIONAL
       EncoderSettings => {
-        VideoDescriptions => [
-          {
-            Name => 'My__string',
-            ScalingBehavior =>
-              'DEFAULT',    # values: DEFAULT, STRETCH_TO_OUTPUT; OPTIONAL
-            Height        => 1,    # OPTIONAL
-            CodecSettings => {
-              H264Settings => {
-                MinIInterval => 1,    # max: 30; OPTIONAL
-                NumRefFrames => 1,    # min: 1, max: 6; OPTIONAL
-                ParControl => 'INITIALIZE_FROM_SOURCE'
-                ,    # values: INITIALIZE_FROM_SOURCE, SPECIFIED; OPTIONAL
-                EntropyEncoding    => 'CABAC',  # values: CABAC, CAVLC; OPTIONAL
-                FramerateNumerator => 1,        # OPTIONAL
-                Syntax        => 'DEFAULT',  # values: DEFAULT, RP2027; OPTIONAL
-                Bitrate       => 1,          # min: 1000, ; OPTIONAL
-                GopNumBFrames => 1,          # max: 7; OPTIONAL
-                GopClosedCadence => 1,       # OPTIONAL
-                TimecodeInsertion =>
-                  'DISABLED',    # values: DISABLED, PIC_TIMING_SEI; OPTIONAL
-                GopSize => 1,    # OPTIONAL
-                ScanType =>
-                  'INTERLACED',    # values: INTERLACED, PROGRESSIVE; OPTIONAL
-                Softness        => 1,           # max: 128; OPTIONAL
-                RateControlMode => 'CBR',       # values: CBR, VBR; OPTIONAL
-                Profile         => 'BASELINE'
-                , # values: BASELINE, HIGH, HIGH_10BIT, HIGH_422, HIGH_422_10BIT, MAIN; OPTIONAL
-                AfdSignaling => 'AUTO',    # values: AUTO, FIXED, NONE; OPTIONAL
-                GopSizeUnits => 'FRAMES',  # values: FRAMES, SECONDS; OPTIONAL
-                FlickerAq => 'DISABLED',   # values: DISABLED, ENABLED; OPTIONAL
-                SceneChangeDetect =>
-                  'DISABLED',              # values: DISABLED, ENABLED; OPTIONAL
-                MaxBitrate => 1,               # min: 1000, ; OPTIONAL
-                Level      => 'H264_LEVEL_1'
-                , # values: H264_LEVEL_1, H264_LEVEL_1_1, H264_LEVEL_1_2, H264_LEVEL_1_3, H264_LEVEL_2, H264_LEVEL_2_1, H264_LEVEL_2_2, H264_LEVEL_3, H264_LEVEL_3_1, H264_LEVEL_3_2, H264_LEVEL_4, H264_LEVEL_4_1, H264_LEVEL_4_2, H264_LEVEL_5, H264_LEVEL_5_1, H264_LEVEL_5_2, H264_LEVEL_AUTO; OPTIONAL
-                FramerateDenominator => 1,    # OPTIONAL
-                LookAheadRateControl =>
-                  'HIGH',    # values: HIGH, LOW, MEDIUM; OPTIONAL
-                GopBReference =>
-                  'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
-                BufFillPct       => 1,                      # max: 100; OPTIONAL
-                ParDenominator   => 1,                      # min: 1, ; OPTIONAL
-                FramerateControl => 'INITIALIZE_FROM_SOURCE'
-                ,    # values: INITIALIZE_FROM_SOURCE, SPECIFIED; OPTIONAL
-                Slices        => 1,           # min: 1, max: 32; OPTIONAL
-                BufSize       => 1,           # OPTIONAL
-                ColorMetadata => 'IGNORE',    # values: IGNORE, INSERT; OPTIONAL
-                SpatialAq => 'DISABLED',   # values: DISABLED, ENABLED; OPTIONAL
-                AdaptiveQuantization => 'HIGH'
-                ,    # values: HIGH, HIGHER, LOW, MAX, MEDIUM, OFF; OPTIONAL
-                FixedAfd => 'AFD_0000'
-                , # values: AFD_0000, AFD_0010, AFD_0011, AFD_0100, AFD_1000, AFD_1001, AFD_1010, AFD_1011, AFD_1101, AFD_1110, AFD_1111; OPTIONAL
-                ParNumerator => 1,    # OPTIONAL
-                TemporalAq => 'DISABLED',  # values: DISABLED, ENABLED; OPTIONAL
-              },    # OPTIONAL
-            },    # OPTIONAL
-            RespondToAfd =>
-              'NONE',    # values: NONE, PASSTHROUGH, RESPOND; OPTIONAL
-            Width     => 1,    # OPTIONAL
-            Sharpness => 1,    # max: 100; OPTIONAL
-          },
-          ...
-        ],
         AudioDescriptions => [
           {
-            Name                       => 'My__string',
             AudioSelectorName          => 'My__string',
-            StreamName                 => 'My__string',
+            Name                       => 'My__string',
             AudioNormalizationSettings => {
+              Algorithm =>
+                'ITU_1770_1',    # values: ITU_1770_1, ITU_1770_2; OPTIONAL
               AlgorithmControl =>
                 'CORRECT_AUDIO',    # values: CORRECT_AUDIO; OPTIONAL
-              Algorithm =>
-                'ITU_1770_1',       # values: ITU_1770_1, ITU_1770_2; OPTIONAL
               TargetLkfs => 1,      # OPTIONAL
             },    # OPTIONAL
-            LanguageCodeControl =>
-              'FOLLOW_INPUT',   # values: FOLLOW_INPUT, USE_CONFIGURED; OPTIONAL
             AudioType => 'CLEAN_EFFECTS'
             , # values: CLEAN_EFFECTS, HEARING_IMPAIRED, UNDEFINED, VISUAL_IMPAIRED_COMMENTARY; OPTIONAL
             AudioTypeControl =>
               'FOLLOW_INPUT',   # values: FOLLOW_INPUT, USE_CONFIGURED; OPTIONAL
-            LanguageCode  => 'My__stringMin3Max3',    # min: 3, max: 3; OPTIONAL
-            RemixSettings => {
-              ChannelMappings => [
-                {
-                  OutputChannel      => 1,            # max: 7; OPTIONAL
-                  InputChannelLevels => [
-                    {
-                      Gain         => 1,              # min: -60, max: 6
-                      InputChannel => 1,              # max: 15
-
-                    },
-                    ...
-                  ],
-
-                },
-                ...
-              ],
-              ChannelsIn  => 1,    # min: 1, max: 16; OPTIONAL
-              ChannelsOut => 1,    # min: 1, max: 8; OPTIONAL
-            },    # OPTIONAL
             CodecSettings => {
-              Eac3Settings => {
-                LtRtCenterMixLevel => 1,             # OPTIONAL
-                DrcRf              => 'FILM_LIGHT'
-                , # values: FILM_LIGHT, FILM_STANDARD, MUSIC_LIGHT, MUSIC_STANDARD, NONE, SPEECH; OPTIONAL
-                Dialnorm           => 1,             # min: 1, max: 31; OPTIONAL
-                LoRoCenterMixLevel => 1,             # OPTIONAL
-                MetadataControl    => 'FOLLOW_INPUT'
-                ,    # values: FOLLOW_INPUT, USE_CONFIGURED; OPTIONAL
-                LtRtSurroundMixLevel => 1,             # OPTIONAL
-                BitstreamMode        => 'COMMENTARY'
-                , # values: COMMENTARY, COMPLETE_MAIN, EMERGENCY, HEARING_IMPAIRED, VISUALLY_IMPAIRED; OPTIONAL
-                Bitrate  => 1,             # OPTIONAL
-                DcFilter => 'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
-                CodingMode => 'CODING_MODE_1_0'
-                , # values: CODING_MODE_1_0, CODING_MODE_2_0, CODING_MODE_3_2; OPTIONAL
-                LfeControl => 'LFE',         # values: LFE, NO_LFE; OPTIONAL
-                DrcLine    => 'FILM_LIGHT'
-                , # values: FILM_LIGHT, FILM_STANDARD, MUSIC_LIGHT, MUSIC_STANDARD, NONE, SPEECH; OPTIONAL
-                SurroundMode => 'DISABLED'
-                ,    # values: DISABLED, ENABLED, NOT_INDICATED; OPTIONAL
-                LoRoSurroundMixLevel => 1,                 # OPTIONAL
-                PassthroughControl   => 'NO_PASSTHROUGH'
-                ,    # values: NO_PASSTHROUGH, WHEN_POSSIBLE; OPTIONAL
-                StereoDownmix =>
-                  'DPL2',  # values: DPL2, LO_RO, LT_RT, NOT_INDICATED; OPTIONAL
-                PhaseControl =>
-                  'NO_SHIFT',    # values: NO_SHIFT, SHIFT_90_DEGREES; OPTIONAL
-                AttenuationControl =>
-                  'ATTENUATE_3_DB',    # values: ATTENUATE_3_DB, NONE; OPTIONAL
-                LfeFilter => 'DISABLED',   # values: DISABLED, ENABLED; OPTIONAL
-                SurroundExMode => 'DISABLED'
-                ,    # values: DISABLED, ENABLED, NOT_INDICATED; OPTIONAL
-              },    # OPTIONAL
               AacSettings => {
-                InputType => 'BROADCASTER_MIXED_AD'
-                ,    # values: BROADCASTER_MIXED_AD, NORMAL; OPTIONAL
-                RawFormat => 'LATM_LOAS',    # values: LATM_LOAS, NONE; OPTIONAL
-                VbrQuality =>
-                  'HIGH', # values: HIGH, LOW, MEDIUM_HIGH, MEDIUM_LOW; OPTIONAL
-                Profile         => 'HEV1',    # values: HEV1, HEV2, LC; OPTIONAL
-                RateControlMode => 'CBR',     # values: CBR, VBR; OPTIONAL
+                Bitrate    => 1,                  # OPTIONAL
                 CodingMode => 'AD_RECEIVER_MIX'
                 , # values: AD_RECEIVER_MIX, CODING_MODE_1_0, CODING_MODE_1_1, CODING_MODE_2_0, CODING_MODE_5_1; OPTIONAL
-                Bitrate    => 1,          # OPTIONAL
-                SampleRate => 1,          # OPTIONAL
-                Spec       => 'MPEG2',    # values: MPEG2, MPEG4; OPTIONAL
-              },    # OPTIONAL
-              PassThroughSettings => {
-
-              },    # OPTIONAL
-              Mp2Settings => {
-                CodingMode => 'CODING_MODE_1_0'
-                ,    # values: CODING_MODE_1_0, CODING_MODE_2_0; OPTIONAL
-                Bitrate    => 1,    # OPTIONAL
-                SampleRate => 1,    # OPTIONAL
+                InputType => 'BROADCASTER_MIXED_AD'
+                ,    # values: BROADCASTER_MIXED_AD, NORMAL; OPTIONAL
+                Profile         => 'HEV1',    # values: HEV1, HEV2, LC; OPTIONAL
+                RateControlMode => 'CBR',     # values: CBR, VBR; OPTIONAL
+                RawFormat  => 'LATM_LOAS',   # values: LATM_LOAS, NONE; OPTIONAL
+                SampleRate => 1,             # OPTIONAL
+                Spec       => 'MPEG2',       # values: MPEG2, MPEG4; OPTIONAL
+                VbrQuality =>
+                  'HIGH', # values: HIGH, LOW, MEDIUM_HIGH, MEDIUM_LOW; OPTIONAL
               },    # OPTIONAL
               Ac3Settings => {
-                Dialnorm        => 1,               # min: 1, max: 31; OPTIONAL
-                MetadataControl => 'FOLLOW_INPUT'
-                ,    # values: FOLLOW_INPUT, USE_CONFIGURED; OPTIONAL
                 Bitrate       => 1,             # OPTIONAL
                 BitstreamMode => 'COMMENTARY'
                 , # values: COMMENTARY, COMPLETE_MAIN, DIALOGUE, EMERGENCY, HEARING_IMPAIRED, MUSIC_AND_EFFECTS, VISUALLY_IMPAIRED, VOICE_OVER; OPTIONAL
                 CodingMode => 'CODING_MODE_1_0'
                 , # values: CODING_MODE_1_0, CODING_MODE_1_1, CODING_MODE_2_0, CODING_MODE_3_2_LFE; OPTIONAL
-                LfeFilter => 'DISABLED',   # values: DISABLED, ENABLED; OPTIONAL
+                Dialnorm => 1,    # min: 1, max: 31; OPTIONAL
                 DrcProfile =>
                   'FILM_STANDARD',    # values: FILM_STANDARD, NONE; OPTIONAL
+                LfeFilter => 'DISABLED',   # values: DISABLED, ENABLED; OPTIONAL
+                MetadataControl => 'FOLLOW_INPUT'
+                ,    # values: FOLLOW_INPUT, USE_CONFIGURED; OPTIONAL
+              },    # OPTIONAL
+              Eac3Settings => {
+                AttenuationControl =>
+                  'ATTENUATE_3_DB',    # values: ATTENUATE_3_DB, NONE; OPTIONAL
+                Bitrate       => 1,             # OPTIONAL
+                BitstreamMode => 'COMMENTARY'
+                , # values: COMMENTARY, COMPLETE_MAIN, EMERGENCY, HEARING_IMPAIRED, VISUALLY_IMPAIRED; OPTIONAL
+                CodingMode => 'CODING_MODE_1_0'
+                , # values: CODING_MODE_1_0, CODING_MODE_2_0, CODING_MODE_3_2; OPTIONAL
+                DcFilter => 'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
+                Dialnorm => 1,             # min: 1, max: 31; OPTIONAL
+                DrcLine  => 'FILM_LIGHT'
+                , # values: FILM_LIGHT, FILM_STANDARD, MUSIC_LIGHT, MUSIC_STANDARD, NONE, SPEECH; OPTIONAL
+                DrcRf => 'FILM_LIGHT'
+                , # values: FILM_LIGHT, FILM_STANDARD, MUSIC_LIGHT, MUSIC_STANDARD, NONE, SPEECH; OPTIONAL
+                LfeControl => 'LFE',       # values: LFE, NO_LFE; OPTIONAL
+                LfeFilter  => 'DISABLED',  # values: DISABLED, ENABLED; OPTIONAL
+                LoRoCenterMixLevel   => 1,               # OPTIONAL
+                LoRoSurroundMixLevel => 1,               # OPTIONAL
+                LtRtCenterMixLevel   => 1,               # OPTIONAL
+                LtRtSurroundMixLevel => 1,               # OPTIONAL
+                MetadataControl      => 'FOLLOW_INPUT'
+                ,    # values: FOLLOW_INPUT, USE_CONFIGURED; OPTIONAL
+                PassthroughControl => 'NO_PASSTHROUGH'
+                ,    # values: NO_PASSTHROUGH, WHEN_POSSIBLE; OPTIONAL
+                PhaseControl =>
+                  'NO_SHIFT',    # values: NO_SHIFT, SHIFT_90_DEGREES; OPTIONAL
+                StereoDownmix =>
+                  'DPL2',  # values: DPL2, LO_RO, LT_RT, NOT_INDICATED; OPTIONAL
+                SurroundExMode => 'DISABLED'
+                ,          # values: DISABLED, ENABLED, NOT_INDICATED; OPTIONAL
+                SurroundMode => 'DISABLED'
+                ,          # values: DISABLED, ENABLED, NOT_INDICATED; OPTIONAL
+              },    # OPTIONAL
+              Mp2Settings => {
+                Bitrate    => 1,                  # OPTIONAL
+                CodingMode => 'CODING_MODE_1_0'
+                ,    # values: CODING_MODE_1_0, CODING_MODE_2_0; OPTIONAL
+                SampleRate => 1,    # OPTIONAL
+              },    # OPTIONAL
+              PassThroughSettings => {
+
               },    # OPTIONAL
             },    # OPTIONAL
+            LanguageCode => 'My__stringMin3Max3',    # min: 3, max: 3; OPTIONAL
+            LanguageCodeControl =>
+              'FOLLOW_INPUT',   # values: FOLLOW_INPUT, USE_CONFIGURED; OPTIONAL
+            RemixSettings => {
+              ChannelMappings => [
+                {
+                  InputChannelLevels => [
+                    {
+                      Gain         => 1,    # min: -60, max: 6
+                      InputChannel => 1,    # max: 15
+
+                    },
+                    ...
+                  ],
+                  OutputChannel => 1,       # max: 7; OPTIONAL
+
+                },
+                ...
+              ],
+              ChannelsIn  => 1,             # min: 1, max: 16; OPTIONAL
+              ChannelsOut => 1,             # min: 1, max: 8; OPTIONAL
+            },    # OPTIONAL
+            StreamName => 'My__string',
           },
           ...
         ],
         OutputGroups => [
           {
+            OutputGroupSettings => {
+              ArchiveGroupSettings => {
+                Destination => { DestinationRefId => 'My__string', },
+                RolloverInterval => 1,    # min: 1, ; OPTIONAL
+              },    # OPTIONAL
+              HlsGroupSettings => {
+                Destination => { DestinationRefId => 'My__string', },
+                AdMarkers   => [
+                  'ADOBE', ...    # values: ADOBE, ELEMENTAL, ELEMENTAL_SCTE35
+                ],                # OPTIONAL
+                BaseUrlContent          => 'My__string',
+                BaseUrlManifest         => 'My__string',
+                CaptionLanguageMappings => [
+                  {
+                    CaptionChannel => 1,    # min: 1, max: 4
+                    LanguageCode =>
+                      'My__stringMin3Max3',    # min: 3, max: 3; OPTIONAL
+                    LanguageDescription =>
+                      'My__stringMin1',        # min: 1, ; OPTIONAL
+
+                  },
+                  ...
+                ],                             # OPTIONAL
+                CaptionLanguageSetting =>
+                  'INSERT',    # values: INSERT, NONE, OMIT; OPTIONAL
+                ClientCache => 'DISABLED', # values: DISABLED, ENABLED; OPTIONAL
+                CodecSpecification =>
+                  'RFC_4281',    # values: RFC_4281, RFC_6381; OPTIONAL
+                ConstantIv =>
+                  'My__stringMin32Max32',    # min: 32, max: 32; OPTIONAL
+                DirectoryStructure => 'SINGLE_DIRECTORY'
+                ,  # values: SINGLE_DIRECTORY, SUBDIRECTORY_PER_STREAM; OPTIONAL
+                EncryptionType =>
+                  'AES128',    # values: AES128, SAMPLE_AES; OPTIONAL
+                HlsCdnSettings => {
+                  HlsAkamaiSettings => {
+                    ConnectionRetryInterval => 1,    # OPTIONAL
+                    FilecacheDuration       => 1,    # max: 600; OPTIONAL
+                    HttpTransferMode =>
+                      'CHUNKED',    # values: CHUNKED, NON_CHUNKED; OPTIONAL
+                    NumRetries   => 1,              # OPTIONAL
+                    RestartDelay => 1,              # max: 15
+                    Salt         => 'My__string',
+                    Token        => 'My__string',
+                  },    # OPTIONAL
+                  HlsBasicPutSettings => {
+                    ConnectionRetryInterval => 1,    # OPTIONAL
+                    FilecacheDuration       => 1,    # max: 600; OPTIONAL
+                    NumRetries              => 1,    # OPTIONAL
+                    RestartDelay            => 1,    # max: 15
+                  },    # OPTIONAL
+                  HlsMediaStoreSettings => {
+                    ConnectionRetryInterval => 1,    # OPTIONAL
+                    FilecacheDuration       => 1,    # max: 600; OPTIONAL
+                    MediaStoreStorageClass =>
+                      'TEMPORAL',    # values: TEMPORAL; OPTIONAL
+                    NumRetries   => 1,    # OPTIONAL
+                    RestartDelay => 1,    # max: 15
+                  },    # OPTIONAL
+                  HlsWebdavSettings => {
+                    ConnectionRetryInterval => 1,    # OPTIONAL
+                    FilecacheDuration       => 1,    # max: 600; OPTIONAL
+                    HttpTransferMode =>
+                      'CHUNKED',    # values: CHUNKED, NON_CHUNKED; OPTIONAL
+                    NumRetries   => 1,    # OPTIONAL
+                    RestartDelay => 1,    # max: 15
+                  },    # OPTIONAL
+                },    # OPTIONAL
+                IndexNSegments => 1,    # min: 3, ; OPTIONAL
+                InputLossAction =>
+                  'EMIT_OUTPUT',   # values: EMIT_OUTPUT, PAUSE_OUTPUT; OPTIONAL
+                IvInManifest => 'EXCLUDE',  # values: EXCLUDE, INCLUDE; OPTIONAL
+                IvSource     => 'EXPLICIT'
+                ,    # values: EXPLICIT, FOLLOWS_SEGMENT_NUMBER; OPTIONAL
+                KeepSegments        => 1,              # min: 1, ; OPTIONAL
+                KeyFormat           => 'My__string',
+                KeyFormatVersions   => 'My__string',
+                KeyProviderSettings => {
+                  StaticKeySettings => {
+                    StaticKeyValue =>
+                      'My__stringMin32Max32',    # min: 32, max: 32; OPTIONAL
+                    KeyProviderServer => {
+                      Uri           => 'My__string',
+                      PasswordParam => 'My__string',
+                      Username      => 'My__string',
+                    },                           # OPTIONAL
+                  },    # OPTIONAL
+                },    # OPTIONAL
+                ManifestCompression => 'GZIP',    # values: GZIP, NONE; OPTIONAL
+                ManifestDurationFormat =>
+                  'FLOATING_POINT',  # values: FLOATING_POINT, INTEGER; OPTIONAL
+                MinSegmentLength => 1,         # OPTIONAL
+                Mode             => 'LIVE',    # values: LIVE, VOD; OPTIONAL
+                OutputSelection => 'MANIFESTS_AND_SEGMENTS'
+                ,    # values: MANIFESTS_AND_SEGMENTS, SEGMENTS_ONLY; OPTIONAL
+                ProgramDateTime =>
+                  'EXCLUDE',    # values: EXCLUDE, INCLUDE; OPTIONAL
+                ProgramDateTimePeriod => 1,    # max: 3600; OPTIONAL
+                SegmentLength         => 1,    # min: 1, ; OPTIONAL
+                SegmentationMode => 'USE_INPUT_SEGMENTATION'
+                , # values: USE_INPUT_SEGMENTATION, USE_SEGMENT_DURATION; OPTIONAL
+                SegmentsPerSubdirectory => 1,    # min: 1, ; OPTIONAL
+                StreamInfResolution =>
+                  'EXCLUDE',    # values: EXCLUDE, INCLUDE; OPTIONAL
+                TimedMetadataId3Frame =>
+                  'NONE',       # values: NONE, PRIV, TDRL; OPTIONAL
+                TimedMetadataId3Period     => 1,                  # OPTIONAL
+                TimestampDeltaMilliseconds => 1,                  # OPTIONAL
+                TsFileMode                 => 'SEGMENTED_FILES'
+                ,    # values: SEGMENTED_FILES, SINGLE_FILE; OPTIONAL
+              },    # OPTIONAL
+              MsSmoothGroupSettings => {
+                Destination        => { DestinationRefId => 'My__string', },
+                AcquisitionPointId => 'My__string',
+                AudioOnlyTimecodeControl => 'PASSTHROUGH'
+                ,    # values: PASSTHROUGH, USE_CONFIGURED_CLOCK; OPTIONAL
+                CertificateMode => 'SELF_SIGNED'
+                ,    # values: SELF_SIGNED, VERIFY_AUTHENTICITY; OPTIONAL
+                ConnectionRetryInterval => 1,              # OPTIONAL
+                EventId                 => 'My__string',
+                EventIdMode             => 'NO_EVENT_ID'
+                , # values: NO_EVENT_ID, USE_CONFIGURED, USE_TIMESTAMP; OPTIONAL
+                EventStopBehavior => 'NONE',  # values: NONE, SEND_EOS; OPTIONAL
+                FilecacheDuration => 1,       # OPTIONAL
+                FragmentLength    => 1,       # min: 1, ; OPTIONAL
+                InputLossAction =>
+                  'EMIT_OUTPUT',   # values: EMIT_OUTPUT, PAUSE_OUTPUT; OPTIONAL
+                NumRetries       => 1,                         # OPTIONAL
+                RestartDelay     => 1,                         # OPTIONAL
+                SegmentationMode => 'USE_INPUT_SEGMENTATION'
+                , # values: USE_INPUT_SEGMENTATION, USE_SEGMENT_DURATION; OPTIONAL
+                SendDelayMs     => 1,         # max: 10000; OPTIONAL
+                SparseTrackType => 'NONE',    # values: NONE, SCTE_35; OPTIONAL
+                StreamManifestBehavior =>
+                  'DO_NOT_SEND',    # values: DO_NOT_SEND, SEND; OPTIONAL
+                TimestampOffset     => 'My__string',
+                TimestampOffsetMode => 'USE_CONFIGURED_OFFSET'
+                , # values: USE_CONFIGURED_OFFSET, USE_EVENT_START_DATE; OPTIONAL
+              },    # OPTIONAL
+              RtmpGroupSettings => {
+                AuthenticationScheme =>
+                  'AKAMAI',    # values: AKAMAI, COMMON; OPTIONAL
+                CacheFullBehavior => 'DISCONNECT_IMMEDIATELY'
+                ,    # values: DISCONNECT_IMMEDIATELY, WAIT_FOR_SERVER; OPTIONAL
+                CacheLength => 1,      # min: 30, ; OPTIONAL
+                CaptionData => 'ALL'
+                ,    # values: ALL, FIELD1_608, FIELD1_AND_FIELD2_608; OPTIONAL
+                RestartDelay => 1,    # OPTIONAL
+              },    # OPTIONAL
+              UdpGroupSettings => {
+                InputLossAction => 'DROP_PROGRAM'
+                ,    # values: DROP_PROGRAM, DROP_TS, EMIT_PROGRAM; OPTIONAL
+                TimedMetadataId3Frame =>
+                  'NONE',    # values: NONE, PRIV, TDRL; OPTIONAL
+                TimedMetadataId3Period => 1,    # OPTIONAL
+              },    # OPTIONAL
+            },
             Outputs => [
               {
                 OutputSettings => {
-                  MsSmoothOutputSettings => { NameModifier => 'My__string', }
-                  ,    # OPTIONAL
                   ArchiveOutputSettings => {
                     ContainerSettings => {
                       M2tsSettings => {
-                        NullPacketBitrate => 1,              # OPTIONAL
-                        KlvDataPids       => 'My__string',
-                        DvbNitSettings    => {
-                          NetworkId => 1,                    # max: 65536
-                          NetworkName =>
-                            'My__stringMin1Max256',          # min: 1, max: 256
-                          RepInterval => 1,    # min: 25, max: 10000; OPTIONAL
-                        },    # OPTIONAL
-                        PcrPid => 'My__string',
-                        Klv => 'NONE',    # values: NONE, PASSTHROUGH; OPTIONAL
                         AbsentInputAudioBehavior =>
                           'DROP',    # values: DROP, ENCODE_SILENCE; OPTIONAL
-                        VideoPid          => 'My__string',
-                        DvbTeletextPid    => 'My__string',
-                        FragmentTime      => 1,              # OPTIONAL
-                        AudioFramesPerPes => 1,              # OPTIONAL
-                        AudioStreamType => 'ATSC', # values: ATSC, DVB; OPTIONAL
-                        SegmentationStyle => 'MAINTAIN_CADENCE'
-                        ,    # values: MAINTAIN_CADENCE, RESET_CADENCE; OPTIONAL
-                        EbpLookaheadMs => 1,    # max: 10000; OPTIONAL
-                        PcrPeriod      => 1,    # max: 500; OPTIONAL
-                        Bitrate        => 1,    # OPTIONAL
                         Arib =>
                           'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
-                        DvbSdtSettings => {
-                          RepInterval => 1,    # min: 25, max: 2000; OPTIONAL
-                          ServiceName =>
-                            'My__stringMin1Max256',    # min: 1, max: 256
-                          ServiceProviderName =>
-                            'My__stringMin1Max256',    # min: 1, max: 256
-                          OutputSdt => 'SDT_FOLLOW'
-                          , # values: SDT_FOLLOW, SDT_FOLLOW_IF_PRESENT, SDT_MANUAL, SDT_NONE; OPTIONAL
-                        },    # OPTIONAL
-                        SegmentationMarkers => 'EBP'
-                        , # values: EBP, EBP_LEGACY, NONE, PSI_SEGSTART, RAI_ADAPT, RAI_SEGSTART; OPTIONAL
-                        DvbSubPids       => 'My__string',
-                        SegmentationTime => 1,              # OPTIONAL
-                        EtvSignalPid     => 'My__string',
-                        AribCaptionsPid  => 'My__string',
-                        AudioPids        => 'My__string',
-                        EsRateInPes =>
-                          'EXCLUDE',    # values: EXCLUDE, INCLUDE; OPTIONAL
-                        TimedMetadataPid => 'My__string',
-                        ProgramNum       => 1,            # max: 65535; OPTIONAL
-                        AudioBufferModel =>
-                          'ATSC',    # values: ATSC, DVB; OPTIONAL
-                        PmtPid         => 'My__string',
-                        EtvPlatformPid => 'My__string',
-                        EbpPlacement   => 'VIDEO_AND_AUDIO_PIDS'
-                        ,    # values: VIDEO_AND_AUDIO_PIDS, VIDEO_PID; OPTIONAL
-                        PmtInterval       => 1,    # max: 1000; OPTIONAL
-                        TransportStreamId => 1,    # max: 65535; OPTIONAL
-                        BufferModel =>
-                          'MULTIPLEX',    # values: MULTIPLEX, NONE; OPTIONAL
-                        Ebif => 'NONE',   # values: NONE, PASSTHROUGH; OPTIONAL
+                        AribCaptionsPid => 'My__string',
                         AribCaptionsPidControl =>
                           'AUTO',    # values: AUTO, USE_CONFIGURED; OPTIONAL
-                        EcmPid                => 'My__string',
-                        TimedMetadataBehavior => 'NO_PASSTHROUGH'
-                        ,    # values: NO_PASSTHROUGH, PASSTHROUGH; OPTIONAL
+                        AudioBufferModel =>
+                          'ATSC',    # values: ATSC, DVB; OPTIONAL
+                        AudioFramesPerPes => 1,              # OPTIONAL
+                        AudioPids         => 'My__string',
+                        AudioStreamType => 'ATSC', # values: ATSC, DVB; OPTIONAL
+                        Bitrate         => 1,      # OPTIONAL
+                        BufferModel =>
+                          'MULTIPLEX',    # values: MULTIPLEX, NONE; OPTIONAL
                         CcDescriptor =>
-                          'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
-                        EbpAudioInterval => 'VIDEO_AND_FIXED_INTERVALS'
-                        , # values: VIDEO_AND_FIXED_INTERVALS, VIDEO_INTERVAL; OPTIONAL
-                        RateMode => 'CBR',    # values: CBR, VBR; OPTIONAL
-                        Scte35Control =>
-                          'NONE',    # values: NONE, PASSTHROUGH; OPTIONAL
-                        PcrControl => 'CONFIGURED_PCR_PERIOD'
-                        , # values: CONFIGURED_PCR_PERIOD, PCR_EVERY_PES_PACKET; OPTIONAL
-                        Scte27Pids     => 'My__string',
-                        Scte35Pid      => 'My__string',
-                        PatInterval    => 1,              # max: 1000; OPTIONAL
+                          'DISABLED',     # values: DISABLED, ENABLED; OPTIONAL
+                        DvbNitSettings => {
+                          NetworkId => 1,    # max: 65536
+                          NetworkName =>
+                            'My__stringMin1Max256', # min: 1, max: 256; OPTIONAL
+                          RepInterval => 1,    # min: 25, max: 10000; OPTIONAL
+                        },    # OPTIONAL
+                        DvbSdtSettings => {
+                          OutputSdt => 'SDT_FOLLOW'
+                          , # values: SDT_FOLLOW, SDT_FOLLOW_IF_PRESENT, SDT_MANUAL, SDT_NONE; OPTIONAL
+                          RepInterval => 1,    # min: 25, max: 2000; OPTIONAL
+                          ServiceName =>
+                            'My__stringMin1Max256', # min: 1, max: 256; OPTIONAL
+                          ServiceProviderName =>
+                            'My__stringMin1Max256', # min: 1, max: 256; OPTIONAL
+                        },    # OPTIONAL
+                        DvbSubPids     => 'My__string',
                         DvbTdtSettings => {
                           RepInterval => 1,    # min: 1000, max: 30000; OPTIONAL
                         },    # OPTIONAL
+                        DvbTeletextPid => 'My__string',
+                        Ebif => 'NONE',    # values: NONE, PASSTHROUGH; OPTIONAL
+                        EbpAudioInterval => 'VIDEO_AND_FIXED_INTERVALS'
+                        , # values: VIDEO_AND_FIXED_INTERVALS, VIDEO_INTERVAL; OPTIONAL
+                        EbpLookaheadMs => 1,    # max: 10000; OPTIONAL
+                        EbpPlacement => 'VIDEO_AND_AUDIO_PIDS'
+                        ,    # values: VIDEO_AND_AUDIO_PIDS, VIDEO_PID; OPTIONAL
+                        EcmPid => 'My__string',
+                        EsRateInPes =>
+                          'EXCLUDE',    # values: EXCLUDE, INCLUDE; OPTIONAL
+                        EtvPlatformPid => 'My__string',
+                        EtvSignalPid   => 'My__string',
+                        FragmentTime   => 1,              # OPTIONAL
+                        Klv => 'NONE',    # values: NONE, PASSTHROUGH; OPTIONAL
+                        KlvDataPids       => 'My__string',
+                        NullPacketBitrate => 1,            # OPTIONAL
+                        PatInterval       => 1,            # max: 1000; OPTIONAL
+                        PcrControl => 'CONFIGURED_PCR_PERIOD'
+                        , # values: CONFIGURED_PCR_PERIOD, PCR_EVERY_PES_PACKET; OPTIONAL
+                        PcrPeriod   => 1,           # max: 500; OPTIONAL
+                        PcrPid      => 'My__string',
+                        PmtInterval => 1,           # max: 1000; OPTIONAL
+                        PmtPid      => 'My__string',
+                        ProgramNum  => 1,           # max: 65535; OPTIONAL
+                        RateMode    => 'CBR',       # values: CBR, VBR; OPTIONAL
+                        Scte27Pids  => 'My__string',
+                        Scte35Control =>
+                          'NONE',    # values: NONE, PASSTHROUGH; OPTIONAL
+                        Scte35Pid           => 'My__string',
+                        SegmentationMarkers => 'EBP'
+                        , # values: EBP, EBP_LEGACY, NONE, PSI_SEGSTART, RAI_ADAPT, RAI_SEGSTART; OPTIONAL
+                        SegmentationStyle => 'MAINTAIN_CADENCE'
+                        ,    # values: MAINTAIN_CADENCE, RESET_CADENCE; OPTIONAL
+                        SegmentationTime      => 1,                 # OPTIONAL
+                        TimedMetadataBehavior => 'NO_PASSTHROUGH'
+                        ,    # values: NO_PASSTHROUGH, PASSTHROUGH; OPTIONAL
+                        TimedMetadataPid  => 'My__string',
+                        TransportStreamId => 1,           # max: 65535; OPTIONAL
+                        VideoPid          => 'My__string',
                       },    # OPTIONAL
                     },
-                    NameModifier => 'My__string',
                     Extension    => 'My__string',
-                  },    # OPTIONAL
-                  RtmpOutputSettings => {
-                    Destination => { DestinationRefId => 'My__string', },
-                    ConnectionRetryInterval => 1,           # min: 1, ; OPTIONAL
-                    NumRetries              => 1,           # OPTIONAL
-                    CertificateMode         => 'SELF_SIGNED'
-                    ,    # values: SELF_SIGNED, VERIFY_AUTHENTICITY; OPTIONAL
-                  },    # OPTIONAL
-                  UdpOutputSettings => {
-                    ContainerSettings => {
-                      M2tsSettings => {
-                        NullPacketBitrate => 1,              # OPTIONAL
-                        KlvDataPids       => 'My__string',
-                        DvbNitSettings    => {
-                          NetworkId => 1,                    # max: 65536
-                          NetworkName =>
-                            'My__stringMin1Max256',          # min: 1, max: 256
-                          RepInterval => 1,    # min: 25, max: 10000; OPTIONAL
-                        },    # OPTIONAL
-                        PcrPid => 'My__string',
-                        Klv => 'NONE',    # values: NONE, PASSTHROUGH; OPTIONAL
-                        AbsentInputAudioBehavior =>
-                          'DROP',    # values: DROP, ENCODE_SILENCE; OPTIONAL
-                        VideoPid          => 'My__string',
-                        DvbTeletextPid    => 'My__string',
-                        FragmentTime      => 1,              # OPTIONAL
-                        AudioFramesPerPes => 1,              # OPTIONAL
-                        AudioStreamType => 'ATSC', # values: ATSC, DVB; OPTIONAL
-                        SegmentationStyle => 'MAINTAIN_CADENCE'
-                        ,    # values: MAINTAIN_CADENCE, RESET_CADENCE; OPTIONAL
-                        EbpLookaheadMs => 1,    # max: 10000; OPTIONAL
-                        PcrPeriod      => 1,    # max: 500; OPTIONAL
-                        Bitrate        => 1,    # OPTIONAL
-                        Arib =>
-                          'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
-                        DvbSdtSettings => {
-                          RepInterval => 1,    # min: 25, max: 2000; OPTIONAL
-                          ServiceName =>
-                            'My__stringMin1Max256',    # min: 1, max: 256
-                          ServiceProviderName =>
-                            'My__stringMin1Max256',    # min: 1, max: 256
-                          OutputSdt => 'SDT_FOLLOW'
-                          , # values: SDT_FOLLOW, SDT_FOLLOW_IF_PRESENT, SDT_MANUAL, SDT_NONE; OPTIONAL
-                        },    # OPTIONAL
-                        SegmentationMarkers => 'EBP'
-                        , # values: EBP, EBP_LEGACY, NONE, PSI_SEGSTART, RAI_ADAPT, RAI_SEGSTART; OPTIONAL
-                        DvbSubPids       => 'My__string',
-                        SegmentationTime => 1,              # OPTIONAL
-                        EtvSignalPid     => 'My__string',
-                        AribCaptionsPid  => 'My__string',
-                        AudioPids        => 'My__string',
-                        EsRateInPes =>
-                          'EXCLUDE',    # values: EXCLUDE, INCLUDE; OPTIONAL
-                        TimedMetadataPid => 'My__string',
-                        ProgramNum       => 1,            # max: 65535; OPTIONAL
-                        AudioBufferModel =>
-                          'ATSC',    # values: ATSC, DVB; OPTIONAL
-                        PmtPid         => 'My__string',
-                        EtvPlatformPid => 'My__string',
-                        EbpPlacement   => 'VIDEO_AND_AUDIO_PIDS'
-                        ,    # values: VIDEO_AND_AUDIO_PIDS, VIDEO_PID; OPTIONAL
-                        PmtInterval       => 1,    # max: 1000; OPTIONAL
-                        TransportStreamId => 1,    # max: 65535; OPTIONAL
-                        BufferModel =>
-                          'MULTIPLEX',    # values: MULTIPLEX, NONE; OPTIONAL
-                        Ebif => 'NONE',   # values: NONE, PASSTHROUGH; OPTIONAL
-                        AribCaptionsPidControl =>
-                          'AUTO',    # values: AUTO, USE_CONFIGURED; OPTIONAL
-                        EcmPid                => 'My__string',
-                        TimedMetadataBehavior => 'NO_PASSTHROUGH'
-                        ,    # values: NO_PASSTHROUGH, PASSTHROUGH; OPTIONAL
-                        CcDescriptor =>
-                          'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
-                        EbpAudioInterval => 'VIDEO_AND_FIXED_INTERVALS'
-                        , # values: VIDEO_AND_FIXED_INTERVALS, VIDEO_INTERVAL; OPTIONAL
-                        RateMode => 'CBR',    # values: CBR, VBR; OPTIONAL
-                        Scte35Control =>
-                          'NONE',    # values: NONE, PASSTHROUGH; OPTIONAL
-                        PcrControl => 'CONFIGURED_PCR_PERIOD'
-                        , # values: CONFIGURED_PCR_PERIOD, PCR_EVERY_PES_PACKET; OPTIONAL
-                        Scte27Pids     => 'My__string',
-                        Scte35Pid      => 'My__string',
-                        PatInterval    => 1,              # max: 1000; OPTIONAL
-                        DvbTdtSettings => {
-                          RepInterval => 1,    # min: 1000, max: 30000; OPTIONAL
-                        },    # OPTIONAL
-                      },    # OPTIONAL
-                    },
-                    Destination       => { DestinationRefId => 'My__string', },
-                    FecOutputSettings => {
-                      RowLength => 1,    # min: 1, max: 20; OPTIONAL
-                      IncludeFec =>
-                        'COLUMN',    # values: COLUMN, COLUMN_AND_ROW; OPTIONAL
-                      ColumnDepth => 1,    # min: 4, max: 20; OPTIONAL
-                    },    # OPTIONAL
-                    BufferMsec => 1,    # max: 10000; OPTIONAL
+                    NameModifier => 'My__string',
                   },    # OPTIONAL
                   HlsOutputSettings => {
                     HlsSettings => {
                       AudioOnlyHlsSettings => {
+                        AudioGroupId   => 'My__string',
                         AudioOnlyImage => {
                           Uri           => 'My__string',
                           PasswordParam => 'My__string',
                           Username      => 'My__string',
                         },    # OPTIONAL
-                        AudioGroupId   => 'My__string',
                         AudioTrackType => 'ALTERNATE_AUDIO_AUTO_SELECT'
                         , # values: ALTERNATE_AUDIO_AUTO_SELECT, ALTERNATE_AUDIO_AUTO_SELECT_DEFAULT, ALTERNATE_AUDIO_NOT_AUTO_SELECT, AUDIO_ONLY_VARIANT_STREAM; OPTIONAL
                       },    # OPTIONAL
                       StandardHlsSettings => {
                         M3u8Settings => {
-                          PcrPid            => 'My__string',
-                          VideoPid          => 'My__string',
-                          AudioFramesPerPes => 1,           # OPTIONAL
-                          PcrPeriod         => 1,           # max: 500; OPTIONAL
-                          ProgramNum => 1,              # max: 65535; OPTIONAL
-                          AudioPids  => 'My__string',
-                          TimedMetadataPid => 'My__string',
-                          TransportStreamId => 1,       # max: 65535; OPTIONAL
-                          PmtPid      => 'My__string',
-                          PmtInterval => 1,              # max: 1000; OPTIONAL
-                          EcmPid      => 'My__string',
-                          Scte35Behavior => 'NO_PASSTHROUGH'
-                          ,    # values: NO_PASSTHROUGH, PASSTHROUGH; OPTIONAL
-                          TimedMetadataBehavior => 'NO_PASSTHROUGH'
-                          ,    # values: NO_PASSTHROUGH, PASSTHROUGH; OPTIONAL
+                          AudioFramesPerPes => 1,              # OPTIONAL
+                          AudioPids         => 'My__string',
+                          EcmPid            => 'My__string',
+                          PatInterval => 1,    # max: 1000; OPTIONAL
                           PcrControl => 'CONFIGURED_PCR_PERIOD'
                           , # values: CONFIGURED_PCR_PERIOD, PCR_EVERY_PES_PACKET; OPTIONAL
-                          Scte35Pid   => 'My__string',
-                          PatInterval => 1,              # max: 1000; OPTIONAL
+                          PcrPeriod   => 1,              # max: 500; OPTIONAL
+                          PcrPid      => 'My__string',
+                          PmtInterval => 1,              # max: 1000; OPTIONAL
+                          PmtPid      => 'My__string',
+                          ProgramNum  => 1,              # max: 65535; OPTIONAL
+                          Scte35Behavior => 'NO_PASSTHROUGH'
+                          ,    # values: NO_PASSTHROUGH, PASSTHROUGH; OPTIONAL
+                          Scte35Pid             => 'My__string',
+                          TimedMetadataBehavior => 'NO_PASSTHROUGH'
+                          ,    # values: NO_PASSTHROUGH, PASSTHROUGH; OPTIONAL
+                          TimedMetadataPid => 'My__string',
+                          TransportStreamId => 1,    # max: 65535; OPTIONAL
+                          VideoPid => 'My__string',
                         },
                         AudioRenditionSets => 'My__string',
                       },    # OPTIONAL
@@ -454,171 +450,114 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     NameModifier    => 'My__stringMin1',    # min: 1, ; OPTIONAL
                     SegmentModifier => 'My__string',
                   },    # OPTIONAL
+                  MsSmoothOutputSettings => { NameModifier => 'My__string', }
+                  ,     # OPTIONAL
+                  RtmpOutputSettings => {
+                    Destination     => { DestinationRefId => 'My__string', },
+                    CertificateMode => 'SELF_SIGNED'
+                    ,    # values: SELF_SIGNED, VERIFY_AUTHENTICITY; OPTIONAL
+                    ConnectionRetryInterval => 1,    # min: 1, ; OPTIONAL
+                    NumRetries              => 1,    # OPTIONAL
+                  },    # OPTIONAL
+                  UdpOutputSettings => {
+                    ContainerSettings => {
+                      M2tsSettings => {
+                        AbsentInputAudioBehavior =>
+                          'DROP',    # values: DROP, ENCODE_SILENCE; OPTIONAL
+                        Arib =>
+                          'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
+                        AribCaptionsPid => 'My__string',
+                        AribCaptionsPidControl =>
+                          'AUTO',    # values: AUTO, USE_CONFIGURED; OPTIONAL
+                        AudioBufferModel =>
+                          'ATSC',    # values: ATSC, DVB; OPTIONAL
+                        AudioFramesPerPes => 1,              # OPTIONAL
+                        AudioPids         => 'My__string',
+                        AudioStreamType => 'ATSC', # values: ATSC, DVB; OPTIONAL
+                        Bitrate         => 1,      # OPTIONAL
+                        BufferModel =>
+                          'MULTIPLEX',    # values: MULTIPLEX, NONE; OPTIONAL
+                        CcDescriptor =>
+                          'DISABLED',     # values: DISABLED, ENABLED; OPTIONAL
+                        DvbNitSettings => {
+                          NetworkId => 1,    # max: 65536
+                          NetworkName =>
+                            'My__stringMin1Max256', # min: 1, max: 256; OPTIONAL
+                          RepInterval => 1,    # min: 25, max: 10000; OPTIONAL
+                        },    # OPTIONAL
+                        DvbSdtSettings => {
+                          OutputSdt => 'SDT_FOLLOW'
+                          , # values: SDT_FOLLOW, SDT_FOLLOW_IF_PRESENT, SDT_MANUAL, SDT_NONE; OPTIONAL
+                          RepInterval => 1,    # min: 25, max: 2000; OPTIONAL
+                          ServiceName =>
+                            'My__stringMin1Max256', # min: 1, max: 256; OPTIONAL
+                          ServiceProviderName =>
+                            'My__stringMin1Max256', # min: 1, max: 256; OPTIONAL
+                        },    # OPTIONAL
+                        DvbSubPids     => 'My__string',
+                        DvbTdtSettings => {
+                          RepInterval => 1,    # min: 1000, max: 30000; OPTIONAL
+                        },    # OPTIONAL
+                        DvbTeletextPid => 'My__string',
+                        Ebif => 'NONE',    # values: NONE, PASSTHROUGH; OPTIONAL
+                        EbpAudioInterval => 'VIDEO_AND_FIXED_INTERVALS'
+                        , # values: VIDEO_AND_FIXED_INTERVALS, VIDEO_INTERVAL; OPTIONAL
+                        EbpLookaheadMs => 1,    # max: 10000; OPTIONAL
+                        EbpPlacement => 'VIDEO_AND_AUDIO_PIDS'
+                        ,    # values: VIDEO_AND_AUDIO_PIDS, VIDEO_PID; OPTIONAL
+                        EcmPid => 'My__string',
+                        EsRateInPes =>
+                          'EXCLUDE',    # values: EXCLUDE, INCLUDE; OPTIONAL
+                        EtvPlatformPid => 'My__string',
+                        EtvSignalPid   => 'My__string',
+                        FragmentTime   => 1,              # OPTIONAL
+                        Klv => 'NONE',    # values: NONE, PASSTHROUGH; OPTIONAL
+                        KlvDataPids       => 'My__string',
+                        NullPacketBitrate => 1,            # OPTIONAL
+                        PatInterval       => 1,            # max: 1000; OPTIONAL
+                        PcrControl => 'CONFIGURED_PCR_PERIOD'
+                        , # values: CONFIGURED_PCR_PERIOD, PCR_EVERY_PES_PACKET; OPTIONAL
+                        PcrPeriod   => 1,           # max: 500; OPTIONAL
+                        PcrPid      => 'My__string',
+                        PmtInterval => 1,           # max: 1000; OPTIONAL
+                        PmtPid      => 'My__string',
+                        ProgramNum  => 1,           # max: 65535; OPTIONAL
+                        RateMode    => 'CBR',       # values: CBR, VBR; OPTIONAL
+                        Scte27Pids  => 'My__string',
+                        Scte35Control =>
+                          'NONE',    # values: NONE, PASSTHROUGH; OPTIONAL
+                        Scte35Pid           => 'My__string',
+                        SegmentationMarkers => 'EBP'
+                        , # values: EBP, EBP_LEGACY, NONE, PSI_SEGSTART, RAI_ADAPT, RAI_SEGSTART; OPTIONAL
+                        SegmentationStyle => 'MAINTAIN_CADENCE'
+                        ,    # values: MAINTAIN_CADENCE, RESET_CADENCE; OPTIONAL
+                        SegmentationTime      => 1,                 # OPTIONAL
+                        TimedMetadataBehavior => 'NO_PASSTHROUGH'
+                        ,    # values: NO_PASSTHROUGH, PASSTHROUGH; OPTIONAL
+                        TimedMetadataPid  => 'My__string',
+                        TransportStreamId => 1,           # max: 65535; OPTIONAL
+                        VideoPid          => 'My__string',
+                      },    # OPTIONAL
+                    },
+                    Destination => { DestinationRefId => 'My__string', },
+                    BufferMsec        => 1,    # max: 10000; OPTIONAL
+                    FecOutputSettings => {
+                      ColumnDepth => 1,        # min: 4, max: 20; OPTIONAL
+                      IncludeFec =>
+                        'COLUMN',    # values: COLUMN, COLUMN_AND_ROW; OPTIONAL
+                      RowLength => 1,    # min: 1, max: 20; OPTIONAL
+                    },    # OPTIONAL
+                  },    # OPTIONAL
                 },
+                AudioDescriptionNames   => [ 'My__string', ... ],    # OPTIONAL
+                CaptionDescriptionNames => [ 'My__string', ... ],    # OPTIONAL
                 OutputName =>
                   'My__stringMin1Max255',    # min: 1, max: 255; OPTIONAL
-                VideoDescriptionName    => 'My__string',
-                CaptionDescriptionNames => [ 'My__string', ... ],    # OPTIONAL
-                AudioDescriptionNames   => [ 'My__string', ... ],    # OPTIONAL
+                VideoDescriptionName => 'My__string',
               },
               ...
             ],
-            OutputGroupSettings => {
-              UdpGroupSettings => {
-                TimedMetadataId3Period => 1,                         # OPTIONAL
-                InputLossAction        => 'DROP_PROGRAM'
-                ,    # values: DROP_PROGRAM, DROP_TS, EMIT_PROGRAM; OPTIONAL
-                TimedMetadataId3Frame =>
-                  'NONE',    # values: NONE, PRIV, TDRL; OPTIONAL
-              },    # OPTIONAL
-              HlsGroupSettings => {
-                Destination => { DestinationRefId => 'My__string', },
-                SegmentsPerSubdirectory => 1,              # min: 1, ; OPTIONAL
-                BaseUrlManifest         => 'My__string',
-                OutputSelection => 'MANIFESTS_AND_SEGMENTS'
-                ,    # values: MANIFESTS_AND_SEGMENTS, SEGMENTS_ONLY; OPTIONAL
-                ConstantIv => 'My__stringMin32Max32',    # min: 32, max: 32
-                TimestampDeltaMilliseconds => 1,              # OPTIONAL
-                BaseUrlContent             => 'My__string',
-                TimedMetadataId3Period     => 1,              # OPTIONAL
-                CaptionLanguageMappings    => [
-                  {
-                    LanguageDescription =>
-                      'My__stringMin1',    # min: 1, ; OPTIONAL
-                    CaptionChannel => 1,   # min: 1, max: 4
-                    LanguageCode =>
-                      'My__stringMin3Max3',    # min: 3, max: 3; OPTIONAL
-
-                  },
-                  ...
-                ],                             # OPTIONAL
-                StreamInfResolution =>
-                  'EXCLUDE',    # values: EXCLUDE, INCLUDE; OPTIONAL
-                Mode => 'LIVE', # values: LIVE, VOD; OPTIONAL
-                CaptionLanguageSetting =>
-                  'INSERT',     # values: INSERT, NONE, OMIT; OPTIONAL
-                MinSegmentLength => 1,           # OPTIONAL
-                IvSource         => 'EXPLICIT'
-                ,    # values: EXPLICIT, FOLLOWS_SEGMENT_NUMBER; OPTIONAL
-                KeyFormatVersions => 'My__string',
-                CodecSpecification =>
-                  'RFC_4281',    # values: RFC_4281, RFC_6381; OPTIONAL
-                ProgramDateTimePeriod => 1,    # max: 3600; OPTIONAL
-                SegmentLength         => 1,    # min: 1, ; OPTIONAL
-                AdMarkers             => [
-                  'ADOBE', ...    # values: ADOBE, ELEMENTAL, ELEMENTAL_SCTE35
-                ],                # OPTIONAL
-                EncryptionType =>
-                  'AES128',       # values: AES128, SAMPLE_AES; OPTIONAL
-                SegmentationMode => 'USE_INPUT_SEGMENTATION'
-                , # values: USE_INPUT_SEGMENTATION, USE_SEGMENT_DURATION; OPTIONAL
-                TimedMetadataId3Frame =>
-                  'NONE',    # values: NONE, PRIV, TDRL; OPTIONAL
-                HlsCdnSettings => {
-                  HlsBasicPutSettings => {
-                    FilecacheDuration       => 1,    # max: 600; OPTIONAL
-                    ConnectionRetryInterval => 1,    # OPTIONAL
-                    NumRetries              => 1,    # OPTIONAL
-                    RestartDelay            => 1,    # max: 15
-                  },    # OPTIONAL
-                  HlsAkamaiSettings => {
-                    HttpTransferMode =>
-                      'CHUNKED',    # values: CHUNKED, NON_CHUNKED; OPTIONAL
-                    FilecacheDuration       => 1,           # max: 600; OPTIONAL
-                    ConnectionRetryInterval => 1,           # OPTIONAL
-                    NumRetries              => 1,           # OPTIONAL
-                    Salt                    => 'My__string',
-                    RestartDelay            => 1,           # max: 15
-                    Token                   => 'My__string',
-                  },    # OPTIONAL
-                  HlsMediaStoreSettings => {
-                    FilecacheDuration       => 1,    # max: 600; OPTIONAL
-                    NumRetries              => 1,    # OPTIONAL
-                    ConnectionRetryInterval => 1,    # OPTIONAL
-                    MediaStoreStorageClass =>
-                      'TEMPORAL',    # values: TEMPORAL; OPTIONAL
-                    RestartDelay => 1,    # max: 15
-                  },    # OPTIONAL
-                  HlsWebdavSettings => {
-                    ConnectionRetryInterval => 1,    # OPTIONAL
-                    NumRetries              => 1,    # OPTIONAL
-                    HttpTransferMode =>
-                      'CHUNKED',    # values: CHUNKED, NON_CHUNKED; OPTIONAL
-                    FilecacheDuration => 1,    # max: 600; OPTIONAL
-                    RestartDelay      => 1,    # max: 15
-                  },    # OPTIONAL
-                },    # OPTIONAL
-                ManifestCompression => 'GZIP',    # values: GZIP, NONE; OPTIONAL
-                KeepSegments        => 1,         # min: 1, ; OPTIONAL
-                ManifestDurationFormat =>
-                  'FLOATING_POINT',  # values: FLOATING_POINT, INTEGER; OPTIONAL
-                DirectoryStructure => 'SINGLE_DIRECTORY'
-                ,  # values: SINGLE_DIRECTORY, SUBDIRECTORY_PER_STREAM; OPTIONAL
-                IndexNSegments => 1,    # min: 3, ; OPTIONAL
-                IvInManifest => 'EXCLUDE',  # values: EXCLUDE, INCLUDE; OPTIONAL
-                ClientCache => 'DISABLED', # values: DISABLED, ENABLED; OPTIONAL
-                InputLossAction =>
-                  'EMIT_OUTPUT',   # values: EMIT_OUTPUT, PAUSE_OUTPUT; OPTIONAL
-                TsFileMode => 'SEGMENTED_FILES'
-                ,    # values: SEGMENTED_FILES, SINGLE_FILE; OPTIONAL
-                KeyProviderSettings => {
-                  StaticKeySettings => {
-                    StaticKeyValue => 'My__stringMin32Max32', # min: 32, max: 32
-                    KeyProviderServer => {
-                      Uri           => 'My__string',
-                      PasswordParam => 'My__string',
-                      Username      => 'My__string',
-                    },                                        # OPTIONAL
-                  },    # OPTIONAL
-                },    # OPTIONAL
-                ProgramDateTime =>
-                  'EXCLUDE',    # values: EXCLUDE, INCLUDE; OPTIONAL
-                KeyFormat => 'My__string',
-              },    # OPTIONAL
-              MsSmoothGroupSettings => {
-                Destination => { DestinationRefId => 'My__string', },
-                SparseTrackType => 'NONE',    # values: NONE, SCTE_35; OPTIONAL
-                EventId                 => 'My__string',
-                FilecacheDuration       => 1,             # OPTIONAL
-                SendDelayMs             => 1,             # max: 10000; OPTIONAL
-                FragmentLength          => 1,             # min: 1, ; OPTIONAL
-                ConnectionRetryInterval => 1,             # OPTIONAL
-                AcquisitionPointId      => 'My__string',
-                NumRetries              => 1,             # OPTIONAL
-                CertificateMode         => 'SELF_SIGNED'
-                ,    # values: SELF_SIGNED, VERIFY_AUTHENTICITY; OPTIONAL
-                StreamManifestBehavior =>
-                  'DO_NOT_SEND',    # values: DO_NOT_SEND, SEND; OPTIONAL
-                EventIdMode => 'NO_EVENT_ID'
-                , # values: NO_EVENT_ID, USE_CONFIGURED, USE_TIMESTAMP; OPTIONAL
-                TimestampOffset          => 'My__string',
-                AudioOnlyTimecodeControl => 'PASSTHROUGH'
-                ,    # values: PASSTHROUGH, USE_CONFIGURED_CLOCK; OPTIONAL
-                TimestampOffsetMode => 'USE_CONFIGURED_OFFSET'
-                , # values: USE_CONFIGURED_OFFSET, USE_EVENT_START_DATE; OPTIONAL
-                SegmentationMode => 'USE_INPUT_SEGMENTATION'
-                , # values: USE_INPUT_SEGMENTATION, USE_SEGMENT_DURATION; OPTIONAL
-                EventStopBehavior => 'NONE',  # values: NONE, SEND_EOS; OPTIONAL
-                RestartDelay      => 1,       # OPTIONAL
-                InputLossAction =>
-                  'EMIT_OUTPUT',   # values: EMIT_OUTPUT, PAUSE_OUTPUT; OPTIONAL
-              },    # OPTIONAL
-              RtmpGroupSettings => {
-                CacheLength  => 1,    # min: 30, ; OPTIONAL
-                RestartDelay => 1,    # OPTIONAL
-                CacheFullBehavior => 'DISCONNECT_IMMEDIATELY'
-                ,    # values: DISCONNECT_IMMEDIATELY, WAIT_FOR_SERVER; OPTIONAL
-                CaptionData => 'ALL'
-                ,    # values: ALL, FIELD1_608, FIELD1_AND_FIELD2_608; OPTIONAL
-                AuthenticationScheme =>
-                  'AKAMAI',    # values: AKAMAI, COMMON; OPTIONAL
-              },    # OPTIONAL
-              ArchiveGroupSettings => {
-                Destination => { DestinationRefId => 'My__string', },
-                RolloverInterval => 1,    # min: 1, ; OPTIONAL
-              },    # OPTIONAL
-            },
-            Name => 'My__stringMax32',    # max: 32; OPTIONAL
+            Name => 'My__stringMax32',       # max: 32; OPTIONAL
           },
           ...
         ],
@@ -626,31 +565,79 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Source => 'EMBEDDED',    # values: EMBEDDED, SYSTEMCLOCK, ZEROBASED
           SyncThreshold => 1,      # min: 1, max: 1000000; OPTIONAL
         },
-        BlackoutSlate => {
-          NetworkEndBlackoutImage => {
+        VideoDescriptions => [
+          {
+            Name          => 'My__string',
+            CodecSettings => {
+              H264Settings => {
+                AdaptiveQuantization => 'HIGH'
+                ,    # values: HIGH, HIGHER, LOW, MAX, MEDIUM, OFF; OPTIONAL
+                AfdSignaling  => 'AUTO',   # values: AUTO, FIXED, NONE; OPTIONAL
+                Bitrate       => 1,        # min: 1000, ; OPTIONAL
+                BufFillPct    => 1,        # max: 100; OPTIONAL
+                BufSize       => 1,        # OPTIONAL
+                ColorMetadata => 'IGNORE', # values: IGNORE, INSERT; OPTIONAL
+                EntropyEncoding => 'CABAC',     # values: CABAC, CAVLC; OPTIONAL
+                FixedAfd        => 'AFD_0000'
+                , # values: AFD_0000, AFD_0010, AFD_0011, AFD_0100, AFD_1000, AFD_1001, AFD_1010, AFD_1011, AFD_1101, AFD_1110, AFD_1111; OPTIONAL
+                FlickerAq => 'DISABLED',   # values: DISABLED, ENABLED; OPTIONAL
+                FramerateControl => 'INITIALIZE_FROM_SOURCE'
+                ,    # values: INITIALIZE_FROM_SOURCE, SPECIFIED; OPTIONAL
+                FramerateDenominator => 1,    # OPTIONAL
+                FramerateNumerator   => 1,    # OPTIONAL
+                GopBReference =>
+                  'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
+                GopClosedCadence => 1,    # OPTIONAL
+                GopNumBFrames    => 1,    # max: 7; OPTIONAL
+                GopSize          => 1,    # OPTIONAL
+                GopSizeUnits => 'FRAMES', # values: FRAMES, SECONDS; OPTIONAL
+                Level => 'H264_LEVEL_1'
+                , # values: H264_LEVEL_1, H264_LEVEL_1_1, H264_LEVEL_1_2, H264_LEVEL_1_3, H264_LEVEL_2, H264_LEVEL_2_1, H264_LEVEL_2_2, H264_LEVEL_3, H264_LEVEL_3_1, H264_LEVEL_3_2, H264_LEVEL_4, H264_LEVEL_4_1, H264_LEVEL_4_2, H264_LEVEL_5, H264_LEVEL_5_1, H264_LEVEL_5_2, H264_LEVEL_AUTO; OPTIONAL
+                LookAheadRateControl =>
+                  'HIGH',    # values: HIGH, LOW, MEDIUM; OPTIONAL
+                MaxBitrate   => 1,    # min: 1000, ; OPTIONAL
+                MinIInterval => 1,    # max: 30; OPTIONAL
+                NumRefFrames => 1,    # min: 1, max: 6; OPTIONAL
+                ParControl => 'INITIALIZE_FROM_SOURCE'
+                ,    # values: INITIALIZE_FROM_SOURCE, SPECIFIED; OPTIONAL
+                ParDenominator => 1,           # min: 1, ; OPTIONAL
+                ParNumerator   => 1,           # OPTIONAL
+                Profile        => 'BASELINE'
+                , # values: BASELINE, HIGH, HIGH_10BIT, HIGH_422, HIGH_422_10BIT, MAIN; OPTIONAL
+                RateControlMode => 'CBR',    # values: CBR, VBR; OPTIONAL
+                ScanType =>
+                  'INTERLACED',    # values: INTERLACED, PROGRESSIVE; OPTIONAL
+                SceneChangeDetect =>
+                  'DISABLED',      # values: DISABLED, ENABLED; OPTIONAL
+                Slices     => 1,           # min: 1, max: 32; OPTIONAL
+                Softness   => 1,           # max: 128; OPTIONAL
+                SpatialAq  => 'DISABLED',  # values: DISABLED, ENABLED; OPTIONAL
+                Syntax     => 'DEFAULT',   # values: DEFAULT, RP2027; OPTIONAL
+                TemporalAq => 'DISABLED',  # values: DISABLED, ENABLED; OPTIONAL
+                TimecodeInsertion =>
+                  'DISABLED',    # values: DISABLED, PIC_TIMING_SEI; OPTIONAL
+              },    # OPTIONAL
+            },    # OPTIONAL
+            Height => 1,    # OPTIONAL
+            RespondToAfd =>
+              'NONE',       # values: NONE, PASSTHROUGH, RESPOND; OPTIONAL
+            ScalingBehavior =>
+              'DEFAULT',    # values: DEFAULT, STRETCH_TO_OUTPUT; OPTIONAL
+            Sharpness => 1, # max: 100; OPTIONAL
+            Width     => 1, # OPTIONAL
+          },
+          ...
+        ],
+        AvailBlanking => {
+          AvailBlankingImage => {
             Uri           => 'My__string',
             PasswordParam => 'My__string',
             Username      => 'My__string',
-          },                       # OPTIONAL
-          NetworkEndBlackout =>
-            'DISABLED',            # values: DISABLED, ENABLED; OPTIONAL
-          State => 'DISABLED',     # values: DISABLED, ENABLED; OPTIONAL
-          BlackoutSlateImage => {
-            Uri           => 'My__string',
-            PasswordParam => 'My__string',
-            Username      => 'My__string',
-          },                       # OPTIONAL
-          NetworkId => 'My__stringMin34Max34',    # min: 34, max: 34; OPTIONAL
+          },    # OPTIONAL
+          State => 'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
         },    # OPTIONAL
         AvailConfiguration => {
           AvailSettings => {
-            Scte35TimeSignalApos => {
-              NoRegionalBlackoutFlag =>
-                'FOLLOW',    # values: FOLLOW, IGNORE; OPTIONAL
-              AdAvailOffset => 1,    # min: -1000, max: 1000; OPTIONAL
-              WebDeliveryAllowedFlag =>
-                'FOLLOW',            # values: FOLLOW, IGNORE; OPTIONAL
-            },    # OPTIONAL
             Scte35SpliceInsert => {
               AdAvailOffset => 1,    # min: -1000, max: 1000; OPTIONAL
               NoRegionalBlackoutFlag =>
@@ -658,226 +645,241 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               WebDeliveryAllowedFlag =>
                 'FOLLOW',            # values: FOLLOW, IGNORE; OPTIONAL
             },    # OPTIONAL
+            Scte35TimeSignalApos => {
+              AdAvailOffset => 1,    # min: -1000, max: 1000; OPTIONAL
+              NoRegionalBlackoutFlag =>
+                'FOLLOW',            # values: FOLLOW, IGNORE; OPTIONAL
+              WebDeliveryAllowedFlag =>
+                'FOLLOW',            # values: FOLLOW, IGNORE; OPTIONAL
+            },    # OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
-        AvailBlanking => {
-          State => 'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
-          AvailBlankingImage => {
+        BlackoutSlate => {
+          BlackoutSlateImage => {
             Uri           => 'My__string',
             PasswordParam => 'My__string',
             Username      => 'My__string',
-          },                      # OPTIONAL
-        },    # OPTIONAL
-        GlobalConfiguration => {
-          InitialAudioGain => 1,    # min: -60, max: 60; OPTIONAL
-          SupportLowFramerateInputs =>
-            'DISABLED',             # values: DISABLED, ENABLED; OPTIONAL
-          InputEndAction =>
-            'NONE',    # values: NONE, SWITCH_AND_LOOP_INPUTS; OPTIONAL
-          InputLossBehavior => {
-            BlackFrameMsec  => 1,    # max: 1000000; OPTIONAL
-            RepeatFrameMsec => 1,    # max: 1000000; OPTIONAL
-            InputLossImageColor =>
-              'My__stringMin6Max6',    # min: 6, max: 6; OPTIONAL
-            InputLossImageType  => 'COLOR',    # values: COLOR, SLATE; OPTIONAL
-            InputLossImageSlate => {
-              Uri           => 'My__string',
-              PasswordParam => 'My__string',
-              Username      => 'My__string',
-            },                                 # OPTIONAL
           },    # OPTIONAL
-          OutputTimingSource =>
-            'INPUT_CLOCK',    # values: INPUT_CLOCK, SYSTEM_CLOCK; OPTIONAL
+          NetworkEndBlackout =>
+            'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
+          NetworkEndBlackoutImage => {
+            Uri           => 'My__string',
+            PasswordParam => 'My__string',
+            Username      => 'My__string',
+          },               # OPTIONAL
+          NetworkId => 'My__stringMin34Max34',    # min: 34, max: 34; OPTIONAL
+          State => 'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
         },    # OPTIONAL
         CaptionDescriptions => [
           {
-            Name                => 'My__string',
             CaptionSelectorName => 'My__string',
-            LanguageCode        => 'My__string',
+            Name                => 'My__string',
             DestinationSettings => {
-              TeletextDestinationSettings => {
+              AribDestinationSettings => {
 
               },    # OPTIONAL
               BurnInDestinationSettings => {
+                Alignment =>
+                  'CENTERED',    # values: CENTERED, LEFT, SMART; OPTIONAL
                 BackgroundColor =>
-                  'BLACK',    # values: BLACK, NONE, WHITE; OPTIONAL
-                YPosition     => 1,        # OPTIONAL
-                ShadowOpacity => 1,        # max: 255; OPTIONAL
-                OutlineColor  => 'BLACK'
-                ,    # values: BLACK, BLUE, GREEN, RED, WHITE, YELLOW; OPTIONAL
-                FontSize      => 'My__string',
-                ShadowXOffset => 1,              # OPTIONAL
-                FontColor     => 'BLACK'
-                ,    # values: BLACK, BLUE, GREEN, RED, WHITE, YELLOW; OPTIONAL
-                XPosition => 1,    # OPTIONAL
-                TeletextGridControl =>
-                  'FIXED',         # values: FIXED, SCALED; OPTIONAL
-                Font => {
+                  'BLACK',       # values: BLACK, NONE, WHITE; OPTIONAL
+                BackgroundOpacity => 1,    # max: 255; OPTIONAL
+                Font              => {
                   Uri           => 'My__string',
                   PasswordParam => 'My__string',
                   Username      => 'My__string',
-                },                 # OPTIONAL
-                FontOpacity   => 1,       # max: 255; OPTIONAL
-                ShadowYOffset => 1,       # OPTIONAL
+                },                         # OPTIONAL
+                FontColor => 'BLACK'
+                ,    # values: BLACK, BLUE, GREEN, RED, WHITE, YELLOW; OPTIONAL
+                FontOpacity    => 1,              # max: 255; OPTIONAL
+                FontResolution => 1,              # min: 96, max: 600; OPTIONAL
+                FontSize       => 'My__string',
+                OutlineColor   => 'BLACK'
+                ,    # values: BLACK, BLUE, GREEN, RED, WHITE, YELLOW; OPTIONAL
+                OutlineSize   => 1,       # max: 10; OPTIONAL
                 ShadowColor   => 'BLACK', # values: BLACK, NONE, WHITE; OPTIONAL
-                FontResolution    => 1,   # min: 96, max: 600; OPTIONAL
-                BackgroundOpacity => 1,   # max: 255; OPTIONAL
-                OutlineSize       => 1,   # max: 10; OPTIONAL
+                ShadowOpacity => 1,       # max: 255; OPTIONAL
+                ShadowXOffset => 1,       # OPTIONAL
+                ShadowYOffset => 1,       # OPTIONAL
+                TeletextGridControl =>
+                  'FIXED',                # values: FIXED, SCALED; OPTIONAL
+                XPosition => 1,           # OPTIONAL
+                YPosition => 1,           # OPTIONAL
+              },    # OPTIONAL
+              DvbSubDestinationSettings => {
                 Alignment =>
                   'CENTERED',    # values: CENTERED, LEFT, SMART; OPTIONAL
+                BackgroundColor =>
+                  'BLACK',       # values: BLACK, NONE, WHITE; OPTIONAL
+                BackgroundOpacity => 1,    # max: 255; OPTIONAL
+                Font              => {
+                  Uri           => 'My__string',
+                  PasswordParam => 'My__string',
+                  Username      => 'My__string',
+                },                         # OPTIONAL
+                FontColor => 'BLACK'
+                ,    # values: BLACK, BLUE, GREEN, RED, WHITE, YELLOW; OPTIONAL
+                FontOpacity    => 1,              # max: 255; OPTIONAL
+                FontResolution => 1,              # min: 96, max: 600; OPTIONAL
+                FontSize       => 'My__string',
+                OutlineColor   => 'BLACK'
+                ,    # values: BLACK, BLUE, GREEN, RED, WHITE, YELLOW; OPTIONAL
+                OutlineSize   => 1,       # max: 10; OPTIONAL
+                ShadowColor   => 'BLACK', # values: BLACK, NONE, WHITE; OPTIONAL
+                ShadowOpacity => 1,       # max: 255; OPTIONAL
+                ShadowXOffset => 1,       # OPTIONAL
+                ShadowYOffset => 1,       # OPTIONAL
+                TeletextGridControl =>
+                  'FIXED',                # values: FIXED, SCALED; OPTIONAL
+                XPosition => 1,           # OPTIONAL
+                YPosition => 1,           # OPTIONAL
               },    # OPTIONAL
               EmbeddedDestinationSettings => {
 
               },    # OPTIONAL
-              WebvttDestinationSettings => {
+              EmbeddedPlusScte20DestinationSettings => {
 
               },    # OPTIONAL
-              EmbeddedPlusScte20DestinationSettings => {
+              RtmpCaptionInfoDestinationSettings => {
+
+              },    # OPTIONAL
+              Scte20PlusEmbeddedDestinationSettings => {
+
+              },    # OPTIONAL
+              Scte27DestinationSettings => {
+
+              },    # OPTIONAL
+              SmpteTtDestinationSettings => {
+
+              },    # OPTIONAL
+              TeletextDestinationSettings => {
 
               },    # OPTIONAL
               TtmlDestinationSettings => {
                 StyleControl =>
                   'PASSTHROUGH', # values: PASSTHROUGH, USE_CONFIGURED; OPTIONAL
               },    # OPTIONAL
-              DvbSubDestinationSettings => {
-                FontOpacity   => 1,       # max: 255; OPTIONAL
-                ShadowYOffset => 1,       # OPTIONAL
-                ShadowColor   => 'BLACK', # values: BLACK, NONE, WHITE; OPTIONAL
-                FontResolution    => 1,   # min: 96, max: 600; OPTIONAL
-                BackgroundOpacity => 1,   # max: 255; OPTIONAL
-                OutlineSize       => 1,   # max: 10; OPTIONAL
-                Alignment =>
-                  'CENTERED',    # values: CENTERED, LEFT, SMART; OPTIONAL
-                BackgroundColor =>
-                  'BLACK',       # values: BLACK, NONE, WHITE; OPTIONAL
-                YPosition     => 1,              # OPTIONAL
-                ShadowOpacity => 1,              # max: 255; OPTIONAL
-                FontSize      => 'My__string',
-                OutlineColor  => 'BLACK'
-                ,    # values: BLACK, BLUE, GREEN, RED, WHITE, YELLOW; OPTIONAL
-                ShadowXOffset => 1,        # OPTIONAL
-                FontColor     => 'BLACK'
-                ,    # values: BLACK, BLUE, GREEN, RED, WHITE, YELLOW; OPTIONAL
-                XPosition => 1,    # OPTIONAL
-                TeletextGridControl =>
-                  'FIXED',         # values: FIXED, SCALED; OPTIONAL
-                Font => {
-                  Uri           => 'My__string',
-                  PasswordParam => 'My__string',
-                  Username      => 'My__string',
-                },                 # OPTIONAL
-              },    # OPTIONAL
-              AribDestinationSettings => {
-
-              },    # OPTIONAL
-              SmpteTtDestinationSettings => {
-
-              },    # OPTIONAL
-              Scte20PlusEmbeddedDestinationSettings => {
-
-              },    # OPTIONAL
-              RtmpCaptionInfoDestinationSettings => {
-
-              },    # OPTIONAL
-              Scte27DestinationSettings => {
+              WebvttDestinationSettings => {
 
               },    # OPTIONAL
             },    # OPTIONAL
+            LanguageCode        => 'My__string',
             LanguageDescription => 'My__string',
           },
           ...
         ],        # OPTIONAL
+        GlobalConfiguration => {
+          InitialAudioGain => 1,    # min: -60, max: 60; OPTIONAL
+          InputEndAction =>
+            'NONE',    # values: NONE, SWITCH_AND_LOOP_INPUTS; OPTIONAL
+          InputLossBehavior => {
+            BlackFrameMsec => 1,    # max: 1000000; OPTIONAL
+            InputLossImageColor =>
+              'My__stringMin6Max6',    # min: 6, max: 6; OPTIONAL
+            InputLossImageSlate => {
+              Uri           => 'My__string',
+              PasswordParam => 'My__string',
+              Username      => 'My__string',
+            },                         # OPTIONAL
+            InputLossImageType => 'COLOR',    # values: COLOR, SLATE; OPTIONAL
+            RepeatFrameMsec    => 1,          # max: 1000000; OPTIONAL
+          },    # OPTIONAL
+          OutputTimingSource =>
+            'INPUT_CLOCK',    # values: INPUT_CLOCK, SYSTEM_CLOCK; OPTIONAL
+          SupportLowFramerateInputs =>
+            'DISABLED',       # values: DISABLED, ENABLED; OPTIONAL
+        },    # OPTIONAL
       },    # OPTIONAL
       InputAttachments => [
         {
           InputId       => 'My__string',
           InputSettings => {
-            VideoSelector => {
-              ColorSpace =>
-                'FOLLOW',    # values: FOLLOW, REC_601, REC_709; OPTIONAL
-              SelectorSettings => {
-                VideoSelectorProgramId => {
-                  ProgramId => 1,    # max: 65536
-                },    # OPTIONAL
-                VideoSelectorPid => {
-                  Pid => 1,    # max: 8191
-                },    # OPTIONAL
-              },    # OPTIONAL
-              ColorSpaceUsage => 'FALLBACK', # values: FALLBACK, FORCE; OPTIONAL
-            },    # OPTIONAL
-            FilterStrength       => 1,    # min: 1, max: 5; OPTIONAL
-            NetworkInputSettings => {
-              ServerValidation => 'CHECK_CRYPTOGRAPHY_AND_VALIDATE_NAME'
-              , # values: CHECK_CRYPTOGRAPHY_AND_VALIDATE_NAME, CHECK_CRYPTOGRAPHY_ONLY; OPTIONAL
-              HlsInputSettings => {
-                BufferSegments => 1,    # OPTIONAL
-                Bandwidth      => 1,    # OPTIONAL
-                Retries        => 1,    # OPTIONAL
-                RetryInterval  => 1,    # OPTIONAL
-              },    # OPTIONAL
-            },    # OPTIONAL
-            CaptionSelectors => [
-              {
-                Name             => 'My__string',
-                LanguageCode     => 'My__string',
-                SelectorSettings => {
-                  Scte27SourceSettings => {
-                    Pid => 1,    # min: 1, ; OPTIONAL
-                  },    # OPTIONAL
-                  AribSourceSettings => {
-
-                  },    # OPTIONAL
-                  Scte20SourceSettings => {
-                    Source608ChannelNumber => 1,    # min: 1, max: 4
-                    Convert608To708 =>
-                      'DISABLED',    # values: DISABLED, UPCONVERT; OPTIONAL
-                  },    # OPTIONAL
-                  TeletextSourceSettings => { PageNumber => 'My__string', }
-                  ,     # OPTIONAL
-                  EmbeddedSourceSettings => {
-                    Source608TrackNumber => 1,    # min: 1, max: 5; OPTIONAL
-                    Scte20Detection => 'AUTO',    # values: AUTO, OFF; OPTIONAL
-                    Convert608To708 =>
-                      'DISABLED',    # values: DISABLED, UPCONVERT; OPTIONAL
-                    Source608ChannelNumber => 1,    # min: 1, max: 4
-                  },    # OPTIONAL
-                  DvbSubSourceSettings => {
-                    Pid => 1,    # min: 1, ; OPTIONAL
-                  },    # OPTIONAL
-                },    # OPTIONAL
-              },
-              ...
-            ],        # OPTIONAL
-            DenoiseFilter => 'DISABLED',   # values: DISABLED, ENABLED; OPTIONAL
-            DeblockFilter => 'DISABLED',   # values: DISABLED, ENABLED; OPTIONAL
-            InputFilter    => 'AUTO', # values: AUTO, DISABLED, FORCED; OPTIONAL
             AudioSelectors => [
               {
                 Name             => 'My__string',
                 SelectorSettings => {
-                  AudioPidSelection => {
-                    Pid => 1,         # max: 8191
-
-                  },    # OPTIONAL
                   AudioLanguageSelection => {
                     LanguageCode => 'My__string',
                     LanguageSelectionPolicy =>
                       'LOOSE',    # values: LOOSE, STRICT; OPTIONAL
                   },    # OPTIONAL
+                  AudioPidSelection => {
+                    Pid => 1,    # max: 8191
+
+                  },    # OPTIONAL
                 },    # OPTIONAL
               },
               ...
             ],        # OPTIONAL
+            CaptionSelectors => [
+              {
+                Name             => 'My__string',
+                LanguageCode     => 'My__string',
+                SelectorSettings => {
+                  AribSourceSettings => {
+
+                  },    # OPTIONAL
+                  DvbSubSourceSettings => {
+                    Pid => 1,    # min: 1, ; OPTIONAL
+                  },    # OPTIONAL
+                  EmbeddedSourceSettings => {
+                    Convert608To708 =>
+                      'DISABLED',    # values: DISABLED, UPCONVERT; OPTIONAL
+                    Scte20Detection => 'AUTO',    # values: AUTO, OFF; OPTIONAL
+                    Source608ChannelNumber => 1,  # min: 1, max: 4
+                    Source608TrackNumber   => 1,  # min: 1, max: 5; OPTIONAL
+                  },    # OPTIONAL
+                  Scte20SourceSettings => {
+                    Convert608To708 =>
+                      'DISABLED',    # values: DISABLED, UPCONVERT; OPTIONAL
+                    Source608ChannelNumber => 1,    # min: 1, max: 4
+                  },    # OPTIONAL
+                  Scte27SourceSettings => {
+                    Pid => 1,    # min: 1, ; OPTIONAL
+                  },    # OPTIONAL
+                  TeletextSourceSettings => { PageNumber => 'My__string', }
+                  ,     # OPTIONAL
+                },    # OPTIONAL
+              },
+              ...
+            ],        # OPTIONAL
+            DeblockFilter  => 'DISABLED',  # values: DISABLED, ENABLED; OPTIONAL
+            DenoiseFilter  => 'DISABLED',  # values: DISABLED, ENABLED; OPTIONAL
+            FilterStrength => 1,           # min: 1, max: 5; OPTIONAL
+            InputFilter => 'AUTO',    # values: AUTO, DISABLED, FORCED; OPTIONAL
+            NetworkInputSettings => {
+              HlsInputSettings => {
+                Bandwidth      => 1,    # OPTIONAL
+                BufferSegments => 1,    # OPTIONAL
+                Retries        => 1,    # OPTIONAL
+                RetryInterval  => 1,    # OPTIONAL
+              },    # OPTIONAL
+              ServerValidation => 'CHECK_CRYPTOGRAPHY_AND_VALIDATE_NAME'
+              , # values: CHECK_CRYPTOGRAPHY_AND_VALIDATE_NAME, CHECK_CRYPTOGRAPHY_ONLY; OPTIONAL
+            },    # OPTIONAL
             SourceEndBehavior => 'CONTINUE',  # values: CONTINUE, LOOP; OPTIONAL
+            VideoSelector     => {
+              ColorSpace =>
+                'FOLLOW',    # values: FOLLOW, REC_601, REC_709; OPTIONAL
+              ColorSpaceUsage => 'FALLBACK', # values: FALLBACK, FORCE; OPTIONAL
+              SelectorSettings => {
+                VideoSelectorPid => {
+                  Pid => 1,                  # max: 8191
+                },    # OPTIONAL
+                VideoSelectorProgramId => {
+                  ProgramId => 1,    # max: 65536
+                },    # OPTIONAL
+              },    # OPTIONAL
+            },    # OPTIONAL
           },    # OPTIONAL
         },
         ...
       ],        # OPTIONAL
       InputSpecification => {
+        Codec          => 'MPEG2',        # values: MPEG2, AVC, HEVC; OPTIONAL
         MaximumBitrate => 'MAX_10_MBPS'
-        ,       # values: MAX_10_MBPS, MAX_20_MBPS, MAX_50_MBPS; OPTIONAL
-        Codec      => 'MPEG2',    # values: MPEG2, AVC, HEVC; OPTIONAL
-        Resolution => 'SD',       # values: SD, HD, UHD; OPTIONAL
+        ,    # values: MAX_10_MBPS, MAX_20_MBPS, MAX_50_MBPS; OPTIONAL
+        Resolution => 'SD',    # values: SD, HD, UHD; OPTIONAL
       },    # OPTIONAL
       LogLevel => 'ERROR',         # OPTIONAL
       Name     => 'My__string',    # OPTIONAL

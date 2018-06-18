@@ -34,17 +34,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name            => 'MyNonZeroAndMaxString',    # OPTIONAL
       OperatingSystem => 'WINDOWS_2012',             # OPTIONAL
       StorageLocation => {
-        RoleArn => 'MyNonEmptyString',               # min: 1, ; OPTIONAL
         Bucket  => 'MyNonEmptyString',               # min: 1, ; OPTIONAL
         Key     => 'MyNonEmptyString',               # min: 1, ; OPTIONAL
+        RoleArn => 'MyNonEmptyString',               # min: 1, ; OPTIONAL
       },    # OPTIONAL
       Version => 'MyNonZeroAndMaxString',    # OPTIONAL
     );
 
     # Results:
-    my $UploadCredentials = $CreateBuildOutput->UploadCredentials;
-    my $StorageLocation   = $CreateBuildOutput->StorageLocation;
     my $Build             = $CreateBuildOutput->Build;
+    my $StorageLocation   = $CreateBuildOutput->StorageLocation;
+    my $UploadCredentials = $CreateBuildOutput->UploadCredentials;
 
     # Returns a L<Paws::GameLift::CreateBuildOutput> object.
 

@@ -36,12 +36,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AmznClientToken      => 'My__string',    # OPTIONAL
       Functions            => [
         {
-          Id                    => 'My__string',
           FunctionArn           => 'My__string',
           FunctionConfiguration => {
-            Pinned      => 1,                  # OPTIONAL
-            ExecArgs    => 'My__string',
-            Environment => {
+            EncodingType => 'binary',          # values: binary, json; OPTIONAL
+            Environment  => {
+              AccessSysfs            => 1,     # OPTIONAL
               ResourceAccessPolicies => [
                 {
                   Permission => 'ro',           # values: ro, rw; OPTIONAL
@@ -50,22 +49,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ...
               ],                                # OPTIONAL
               Variables => { 'My__string' => 'My__string', },    # OPTIONAL
-              AccessSysfs => 1,                                  # OPTIONAL
             },    # OPTIONAL
-            MemorySize   => 1,              # OPTIONAL
-            EncodingType => 'binary',       # values: binary, json; OPTIONAL
-            Executable   => 'My__string',
-            Timeout      => 1,              # OPTIONAL
+            ExecArgs   => 'My__string',
+            Executable => 'My__string',
+            MemorySize => 1,              # OPTIONAL
+            Pinned     => 1,              # OPTIONAL
+            Timeout    => 1,              # OPTIONAL
           },    # OPTIONAL
+          Id => 'My__string',
         },
         ...
       ],        # OPTIONAL
       );
 
     # Results:
+    my $Arn = $CreateFunctionDefinitionVersionResponse->Arn;
     my $CreationTimestamp =
       $CreateFunctionDefinitionVersionResponse->CreationTimestamp;
-    my $Arn     = $CreateFunctionDefinitionVersionResponse->Arn;
     my $Id      = $CreateFunctionDefinitionVersionResponse->Id;
     my $Version = $CreateFunctionDefinitionVersionResponse->Version;
 

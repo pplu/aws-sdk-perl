@@ -39,22 +39,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Description      = $FunctionConfiguration->Description;
-    my $CodeSize         = $FunctionConfiguration->CodeSize;
-    my $Role             = $FunctionConfiguration->Role;
-    my $LastModified     = $FunctionConfiguration->LastModified;
-    my $Runtime          = $FunctionConfiguration->Runtime;
-    my $Handler          = $FunctionConfiguration->Handler;
-    my $Version          = $FunctionConfiguration->Version;
-    my $FunctionName     = $FunctionConfiguration->FunctionName;
     my $CodeSha256       = $FunctionConfiguration->CodeSha256;
-    my $VpcConfig        = $FunctionConfiguration->VpcConfig;
-    my $Timeout          = $FunctionConfiguration->Timeout;
-    my $KMSKeyArn        = $FunctionConfiguration->KMSKeyArn;
-    my $MemorySize       = $FunctionConfiguration->MemorySize;
-    my $Environment      = $FunctionConfiguration->Environment;
+    my $CodeSize         = $FunctionConfiguration->CodeSize;
     my $DeadLetterConfig = $FunctionConfiguration->DeadLetterConfig;
+    my $Description      = $FunctionConfiguration->Description;
+    my $Environment      = $FunctionConfiguration->Environment;
     my $FunctionArn      = $FunctionConfiguration->FunctionArn;
+    my $FunctionName     = $FunctionConfiguration->FunctionName;
+    my $Handler          = $FunctionConfiguration->Handler;
+    my $KMSKeyArn        = $FunctionConfiguration->KMSKeyArn;
+    my $LastModified     = $FunctionConfiguration->LastModified;
+    my $MemorySize       = $FunctionConfiguration->MemorySize;
+    my $Role             = $FunctionConfiguration->Role;
+    my $Runtime          = $FunctionConfiguration->Runtime;
+    my $Timeout          = $FunctionConfiguration->Timeout;
+    my $Version          = $FunctionConfiguration->Version;
+    my $VpcConfig        = $FunctionConfiguration->VpcConfig;
 
     # Returns a L<Paws::Lambda::FunctionConfiguration> object.
 

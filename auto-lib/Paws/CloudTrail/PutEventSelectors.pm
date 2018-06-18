@@ -31,8 +31,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $PutEventSelectorsResponse = $cloudtrail->PutEventSelectors(
       EventSelectors => [
         {
-          ReadWriteType =>
-            'ReadOnly',    # values: ReadOnly, WriteOnly, All; OPTIONAL
           DataResources => [
             {
               Type   => 'MyString',    # OPTIONAL
@@ -43,6 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ...
           ],                           # OPTIONAL
           IncludeManagementEvents => 1,    # OPTIONAL
+          ReadWriteType =>
+            'ReadOnly',    # values: ReadOnly, WriteOnly, All; OPTIONAL
         },
         ...
       ],
@@ -51,8 +51,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $TrailARN       = $PutEventSelectorsResponse->TrailARN;
     my $EventSelectors = $PutEventSelectorsResponse->EventSelectors;
+    my $TrailARN       = $PutEventSelectorsResponse->TrailARN;
 
     # Returns a L<Paws::CloudTrail::PutEventSelectorsResponse> object.
 

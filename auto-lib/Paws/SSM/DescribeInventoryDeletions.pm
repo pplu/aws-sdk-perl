@@ -36,9 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken = $DescribeInventoryDeletionsResult->NextToken;
     my $InventoryDeletions =
       $DescribeInventoryDeletionsResult->InventoryDeletions;
+    my $NextToken = $DescribeInventoryDeletionsResult->NextToken;
 
     # Returns a L<Paws::SSM::DescribeInventoryDeletionsResult> object.
 

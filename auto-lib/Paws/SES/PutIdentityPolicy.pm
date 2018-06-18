@@ -33,10 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example adds a sending authorization policy to an identity:
     my $PutIdentityPolicyResponse = $email->PutIdentityPolicy(
       {
+        'Identity' => 'example.com',
         'Policy' =>
 '{"Version":"2008-10-17","Statement":[{"Sid":"stmt1469123904194","Effect":"Allow","Principal":{"AWS":"arn:aws:iam::123456789012:root"},"Action":["ses:SendEmail","ses:SendRawEmail"],"Resource":"arn:aws:ses:us-east-1:EXAMPLE65304:identity/example.com"}]}',
-        'PolicyName' => 'MyPolicy',
-        'Identity'   => 'example.com'
+        'PolicyName' => 'MyPolicy'
       }
     );
 

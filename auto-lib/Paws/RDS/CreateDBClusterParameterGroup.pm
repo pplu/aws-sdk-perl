@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateDBClusterParameterGroupResult =
       $rds->CreateDBClusterParameterGroup(
       {
-        'DBParameterGroupFamily'      => 'aurora5.6',
         'DBClusterParameterGroupName' => 'mydbclusterparametergroup',
+        'DBParameterGroupFamily'      => 'aurora5.6',
         'Description'                 => 'My DB cluster parameter group'
       }
       );

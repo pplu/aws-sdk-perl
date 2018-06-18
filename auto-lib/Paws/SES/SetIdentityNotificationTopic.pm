@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SetIdentityNotificationTopicResponse =
       $email->SetIdentityNotificationTopic(
       {
-        'NotificationType' => 'Bounce',
         'Identity'         => 'user@example.com',
+        'NotificationType' => 'Bounce',
         'SnsTopic'         => 'arn:aws:sns:us-west-2:111122223333:MyTopic'
       }
       );

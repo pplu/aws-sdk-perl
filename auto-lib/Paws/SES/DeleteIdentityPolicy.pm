@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # identity:
     my $DeleteIdentityPolicyResponse = $email->DeleteIdentityPolicy(
       {
-        'PolicyName' => 'MyPolicy',
-        'Identity'   => 'user@example.com'
+        'Identity'   => 'user@example.com',
+        'PolicyName' => 'MyPolicy'
       }
     );
 

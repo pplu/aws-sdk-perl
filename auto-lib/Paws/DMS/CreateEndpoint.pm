@@ -58,38 +58,38 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ExtraConnectionAttributes => 'MyString',    # OPTIONAL
       KmsKeyId                  => 'MyString',    # OPTIONAL
       MongoDbSettings           => {
-        ServerName => 'MyString',
         AuthMechanism =>
           'default',    # values: default, mongodb_cr, scram_sha_1; OPTIONAL
-        KmsKeyId          => 'MyString',
-        Password          => 'MySecretString',  # OPTIONAL
         AuthSource        => 'MyString',
-        ExtractDocId      => 'MyString',
-        Username          => 'MyString',
-        NestingLevel      => 'none',            # values: none, one; OPTIONAL
         AuthType          => 'no',              # values: no, password; OPTIONAL
-        DocsToInvestigate => 'MyString',
         DatabaseName      => 'MyString',
+        DocsToInvestigate => 'MyString',
+        ExtractDocId      => 'MyString',
+        KmsKeyId          => 'MyString',
+        NestingLevel      => 'none',            # values: none, one; OPTIONAL
+        Password          => 'MySecretString',  # OPTIONAL
         Port              => 1,                 # OPTIONAL
+        ServerName        => 'MyString',
+        Username          => 'MyString',
       },    # OPTIONAL
       Password   => 'MySecretString',    # OPTIONAL
       Port       => 1,                   # OPTIONAL
       S3Settings => {
-        CsvDelimiter            => 'MyString',
-        ServiceAccessRoleArn    => 'MyString',
-        CompressionType         => 'none',       # values: none, gzip; OPTIONAL
         BucketFolder            => 'MyString',
         BucketName              => 'MyString',
+        CompressionType         => 'none',       # values: none, gzip; OPTIONAL
+        CsvDelimiter            => 'MyString',
         CsvRowDelimiter         => 'MyString',
         ExternalTableDefinition => 'MyString',
+        ServiceAccessRoleArn    => 'MyString',
       },    # OPTIONAL
       ServerName           => 'MyString',    # OPTIONAL
       ServiceAccessRoleArn => 'MyString',    # OPTIONAL
       SslMode              => 'none',        # OPTIONAL
       Tags                 => [
         {
-          Value => 'MyString',
           Key   => 'MyString',
+          Value => 'MyString',
         },
         ...
       ],                                     # OPTIONAL

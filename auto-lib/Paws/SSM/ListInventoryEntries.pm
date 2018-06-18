@@ -50,10 +50,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $CaptureTime   = $ListInventoryEntriesResult->CaptureTime;
     my $Entries       = $ListInventoryEntriesResult->Entries;
-    my $TypeName      = $ListInventoryEntriesResult->TypeName;
-    my $NextToken     = $ListInventoryEntriesResult->NextToken;
     my $InstanceId    = $ListInventoryEntriesResult->InstanceId;
+    my $NextToken     = $ListInventoryEntriesResult->NextToken;
     my $SchemaVersion = $ListInventoryEntriesResult->SchemaVersion;
+    my $TypeName      = $ListInventoryEntriesResult->TypeName;
 
     # Returns a L<Paws::SSM::ListInventoryEntriesResult> object.
 

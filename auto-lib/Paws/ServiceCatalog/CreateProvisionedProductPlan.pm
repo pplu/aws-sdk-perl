@@ -60,8 +60,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],                                           # OPTIONAL
       Tags => [
         {
-          Value => 'MyTagValue',                   # min: 1, max: 256
           Key   => 'MyTagKey',                     # min: 1, max: 128
+          Value => 'MyTagValue',                   # min: 1, max: 256
 
         },
         ...
@@ -69,14 +69,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $ProvisionedProductName =
-      $CreateProvisionedProductPlanOutput->ProvisionedProductName;
-    my $ProvisioningArtifactId =
-      $CreateProvisionedProductPlanOutput->ProvisioningArtifactId;
     my $PlanId   = $CreateProvisionedProductPlanOutput->PlanId;
     my $PlanName = $CreateProvisionedProductPlanOutput->PlanName;
     my $ProvisionProductId =
       $CreateProvisionedProductPlanOutput->ProvisionProductId;
+    my $ProvisionedProductName =
+      $CreateProvisionedProductPlanOutput->ProvisionedProductName;
+    my $ProvisioningArtifactId =
+      $CreateProvisionedProductPlanOutput->ProvisioningArtifactId;
 
  # Returns a L<Paws::ServiceCatalog::CreateProvisionedProductPlanOutput> object.
 

@@ -36,9 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextMarker        = $ListFileSharesOutput->NextMarker;
     my $FileShareInfoList = $ListFileSharesOutput->FileShareInfoList;
     my $Marker            = $ListFileSharesOutput->Marker;
+    my $NextMarker        = $ListFileSharesOutput->NextMarker;
 
     # Returns a L<Paws::StorageGateway::ListFileSharesOutput> object.
 

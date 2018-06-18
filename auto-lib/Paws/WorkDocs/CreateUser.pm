@@ -45,8 +45,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EmailAddress        => 'MyEmailAddressType',            # OPTIONAL
       OrganizationId      => 'MyIdType',                      # OPTIONAL
       StorageRule         => {
+        StorageAllocatedInBytes => 1,                         # OPTIONAL
         StorageType => 'UNLIMITED',    # values: UNLIMITED, QUOTA; OPTIONAL
-        StorageAllocatedInBytes => 1,  # OPTIONAL
       },    # OPTIONAL
       TimeZoneId => 'MyTimeZoneIdType',    # OPTIONAL
     );

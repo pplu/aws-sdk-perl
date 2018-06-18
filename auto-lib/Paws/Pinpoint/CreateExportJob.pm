@@ -32,9 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateExportJobResponse = $pinpoint->CreateExportJob(
       ApplicationId    => 'My__string',
       ExportJobRequest => {
+        RoleArn     => 'My__string',
         S3UrlPrefix => 'My__string',
         SegmentId   => 'My__string',
-        RoleArn     => 'My__string',
       },
 
     );

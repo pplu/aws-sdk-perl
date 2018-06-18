@@ -31,11 +31,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateResourceDataSyncResult = $ssm->CreateResourceDataSync(
       S3Destination => {
         BucketName => 'MyResourceDataSyncS3BucketName',    # min: 1, max: 2048
-        SyncFormat => 'JsonSerDe',                         # values: JsonSerDe
         Region     => 'MyResourceDataSyncS3Region',        # min: 1, max: 64
-        Prefix => 'MyResourceDataSyncS3Prefix',    # min: 1, max: 256; OPTIONAL
+        SyncFormat => 'JsonSerDe',                         # values: JsonSerDe
         AWSKMSKeyARN =>
-          'MyResourceDataSyncAWSKMSKeyARN',        # min: 1, max: 512; OPTIONAL
+          'MyResourceDataSyncAWSKMSKeyARN',    # min: 1, max: 512; OPTIONAL
+        Prefix => 'MyResourceDataSyncS3Prefix',    # min: 1, max: 256; OPTIONAL
       },
       SyncName => 'MyResourceDataSyncName',
 

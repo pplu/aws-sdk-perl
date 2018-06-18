@@ -32,27 +32,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           Name            => 'MyDocumentName',
           AssociationName => 'MyAssociationName',    # OPTIONAL
-          Targets         => [
+          DocumentVersion => 'MyDocumentVersion',    # OPTIONAL
+          InstanceId      => 'MyInstanceId',         # OPTIONAL
+          OutputLocation  => {
+            S3Location => {
+              OutputS3BucketName =>
+                'MyS3BucketName',                    # min: 3, max: 63; OPTIONAL
+              OutputS3KeyPrefix => 'MyS3KeyPrefix',  # max: 500; OPTIONAL
+              OutputS3Region    => 'MyS3Region',     # min: 3, max: 20; OPTIONAL
+            },    # OPTIONAL
+          },    # OPTIONAL
+          Parameters => { 'MyParameterName' => [ 'MyParameterValue', ... ], }
+          ,     # OPTIONAL
+          ScheduleExpression =>
+            'MyScheduleExpression',    # min: 1, max: 256; OPTIONAL
+          Targets => [
             {
               Key => 'MyTargetKey',                 # min: 1, max: 128; OPTIONAL
               Values => [ 'MyTargetValue', ... ],   # max: 50; OPTIONAL
             },
             ...
           ],                                        # max: 5; OPTIONAL
-          ScheduleExpression =>
-            'MyScheduleExpression',                 # min: 1, max: 256; OPTIONAL
-          DocumentVersion => 'MyDocumentVersion',   # OPTIONAL
-          InstanceId      => 'MyInstanceId',        # OPTIONAL
-          OutputLocation  => {
-            S3Location => {
-              OutputS3KeyPrefix => 'MyS3KeyPrefix',    # max: 500; OPTIONAL
-              OutputS3BucketName =>
-                'MyS3BucketName',    # min: 3, max: 63; OPTIONAL
-              OutputS3Region => 'MyS3Region',    # min: 3, max: 20; OPTIONAL
-            },    # OPTIONAL
-          },    # OPTIONAL
-          Parameters => { 'MyParameterName' => [ 'MyParameterValue', ... ], }
-          ,     # OPTIONAL
         },
         ...
       ],

@@ -37,34 +37,34 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateOTAUpdateResponse = $iot->CreateOTAUpdate(
       Files => [
         {
-          fileName    => 'MyFileName',    # OPTIONAL
+          attributes => { 'MyKey' => 'MyValue', },    # OPTIONAL
           codeSigning => {
             awsSignerJobId    => 'MySigningJobId',    # OPTIONAL
             customCodeSigning => {
-              hashAlgorithm      => 'MyHashAlgorithm',         # OPTIONAL
-              signatureAlgorithm => 'MySignatureAlgorithm',    # OPTIONAL
-              signature          => {
-                inlineDocument => 'BlobSignature',             # OPTIONAL
-                stream         => {
-                  streamId => 'MyStreamId',    # min: 1, max: 128; OPTIONAL
-                  fileId   => 1,               # max: 255; OPTIONAL
-                },    # OPTIONAL
-              },    # OPTIONAL
               certificateChain => {
-                inlineDocument  => 'MyInlineDocument',     # OPTIONAL
                 certificateName => 'MyCertificateName',    # OPTIONAL
+                inlineDocument  => 'MyInlineDocument',     # OPTIONAL
                 stream          => {
-                  streamId => 'MyStreamId',    # min: 1, max: 128; OPTIONAL
                   fileId   => 1,               # max: 255; OPTIONAL
+                  streamId => 'MyStreamId',    # min: 1, max: 128; OPTIONAL
                 },    # OPTIONAL
               },    # OPTIONAL
+              hashAlgorithm => 'MyHashAlgorithm',    # OPTIONAL
+              signature     => {
+                inlineDocument => 'BlobSignature',    # OPTIONAL
+                stream         => {
+                  fileId   => 1,               # max: 255; OPTIONAL
+                  streamId => 'MyStreamId',    # min: 1, max: 128; OPTIONAL
+                },    # OPTIONAL
+              },    # OPTIONAL
+              signatureAlgorithm => 'MySignatureAlgorithm',    # OPTIONAL
             },    # OPTIONAL
           },    # OPTIONAL
+          fileName   => 'MyFileName',    # OPTIONAL
           fileSource => {
-            streamId => 'MyStreamId',    # min: 1, max: 128; OPTIONAL
             fileId   => 1,               # max: 255; OPTIONAL
+            streamId => 'MyStreamId',    # min: 1, max: 128; OPTIONAL
           },    # OPTIONAL
-          attributes => { 'MyKey' => 'MyValue', },    # OPTIONAL
           fileVersion => 'MyOTAUpdateFileVersion',    # OPTIONAL
         },
         ...
@@ -78,11 +78,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $OtaUpdateId     = $CreateOTAUpdateResponse->OtaUpdateId;
-    my $OtaUpdateStatus = $CreateOTAUpdateResponse->OtaUpdateStatus;
     my $AwsIotJobArn    = $CreateOTAUpdateResponse->AwsIotJobArn;
     my $AwsIotJobId     = $CreateOTAUpdateResponse->AwsIotJobId;
     my $OtaUpdateArn    = $CreateOTAUpdateResponse->OtaUpdateArn;
+    my $OtaUpdateId     = $CreateOTAUpdateResponse->OtaUpdateId;
+    my $OtaUpdateStatus = $CreateOTAUpdateResponse->OtaUpdateStatus;
 
     # Returns a L<Paws::IoT::CreateOTAUpdateResponse> object.
 

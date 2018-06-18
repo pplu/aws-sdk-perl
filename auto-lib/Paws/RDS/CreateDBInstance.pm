@@ -74,9 +74,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateDBInstanceResult = $rds->CreateDBInstance(
       {
         'AllocatedStorage'     => 5,
-        'Engine'               => 'MySQL',
         'DBInstanceClass'      => 'db.t2.micro',
         'DBInstanceIdentifier' => 'mymysqlinstance',
+        'Engine'               => 'MySQL',
         'MasterUserPassword'   => 'MyPassword',
         'MasterUsername'       => 'MyUser'
       }

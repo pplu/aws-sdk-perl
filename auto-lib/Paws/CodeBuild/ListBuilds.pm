@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken = $ListBuildsOutput->NextToken;
     my $Ids       = $ListBuildsOutput->Ids;
+    my $NextToken = $ListBuildsOutput->NextToken;
 
     # Returns a L<Paws::CodeBuild::ListBuildsOutput> object.
 

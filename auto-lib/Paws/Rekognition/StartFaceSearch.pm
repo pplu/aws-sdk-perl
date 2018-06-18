@@ -36,17 +36,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CollectionId => 'MyCollectionId',
       Video        => {
         S3Object => {
-          Version => 'MyS3ObjectVersion',    # min: 1, max: 1024; OPTIONAL
-          Name    => 'MyS3ObjectName',       # min: 1, max: 1024; OPTIONAL
           Bucket  => 'MyS3Bucket',           # min: 3, max: 255; OPTIONAL
+          Name    => 'MyS3ObjectName',       # min: 1, max: 1024; OPTIONAL
+          Version => 'MyS3ObjectVersion',    # min: 1, max: 1024; OPTIONAL
         },    # OPTIONAL
       },
       ClientRequestToken  => 'MyClientRequestToken',    # OPTIONAL
       FaceMatchThreshold  => 1.0,                       # OPTIONAL
       JobTag              => 'MyJobTag',                # OPTIONAL
       NotificationChannel => {
-        SNSTopicArn => 'MySNSTopicArn',
         RoleArn     => 'MyRoleArn',
+        SNSTopicArn => 'MySNSTopicArn',
 
       },                                                # OPTIONAL
     );

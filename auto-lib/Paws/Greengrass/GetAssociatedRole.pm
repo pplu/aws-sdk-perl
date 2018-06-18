@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $RoleArn      = $GetAssociatedRoleResponse->RoleArn;
     my $AssociatedAt = $GetAssociatedRoleResponse->AssociatedAt;
+    my $RoleArn      = $GetAssociatedRoleResponse->RoleArn;
 
     # Returns a L<Paws::Greengrass::GetAssociatedRoleResponse> object.
 

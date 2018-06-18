@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Destination = $PutDestinationResponse->Destination;
+    my $destination = $PutDestinationResponse->destination;
 
     # Returns a L<Paws::CloudWatchLogs::PutDestinationResponse> object.
 

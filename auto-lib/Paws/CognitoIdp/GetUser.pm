@@ -34,10 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $MFAOptions          = $GetUserResponse->MFAOptions;
-    my $Username            = $GetUserResponse->Username;
-    my $UserAttributes      = $GetUserResponse->UserAttributes;
     my $PreferredMfaSetting = $GetUserResponse->PreferredMfaSetting;
+    my $UserAttributes      = $GetUserResponse->UserAttributes;
     my $UserMFASettingList  = $GetUserResponse->UserMFASettingList;
+    my $Username            = $GetUserResponse->Username;
 
     # Returns a L<Paws::CognitoIdp::GetUserResponse> object.
 

@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $NextToken = $DescribePendingAggregationRequestsResponse->NextToken;
     my $PendingAggregationRequests =
       $DescribePendingAggregationRequestsResponse->PendingAggregationRequests;
-    my $NextToken = $DescribePendingAggregationRequestsResponse->NextToken;
 
  # Returns a L<Paws::Config::DescribePendingAggregationRequestsResponse> object.
 

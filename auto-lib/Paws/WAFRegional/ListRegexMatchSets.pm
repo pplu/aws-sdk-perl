@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $RegexMatchSets = $ListRegexMatchSetsResponse->RegexMatchSets;
     my $NextMarker     = $ListRegexMatchSetsResponse->NextMarker;
+    my $RegexMatchSets = $ListRegexMatchSetsResponse->RegexMatchSets;
 
     # Returns a L<Paws::WAFRegional::ListRegexMatchSetsResponse> object.
 

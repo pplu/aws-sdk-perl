@@ -33,32 +33,32 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateFieldLevelEncryptionProfileResult =
       $cloudfront->CreateFieldLevelEncryptionProfile(
       FieldLevelEncryptionProfileConfig => {
-        Name               => 'Mystring',
         CallerReference    => 'Mystring',
         EncryptionEntities => {
           Quantity => 1,
           Items    => [
             {
-              ProviderId    => 'Mystring',
               FieldPatterns => {
                 Quantity => 1,
                 Items    => [ 'Mystring', ... ],    # OPTIONAL
               },
+              ProviderId  => 'Mystring',
               PublicKeyId => 'Mystring',
 
             },
             ...
           ],                                        # OPTIONAL
         },
+        Name    => 'Mystring',
         Comment => 'Mystring',
       },
 
       );
 
     # Results:
+    my $ETag = $CreateFieldLevelEncryptionProfileResult->ETag;
     my $FieldLevelEncryptionProfile =
       $CreateFieldLevelEncryptionProfileResult->FieldLevelEncryptionProfile;
-    my $ETag     = $CreateFieldLevelEncryptionProfileResult->ETag;
     my $Location = $CreateFieldLevelEncryptionProfileResult->Location;
 
 # Returns a L<Paws::CloudFront::CreateFieldLevelEncryptionProfileResult> object.

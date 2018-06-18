@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Marker            = $CacheSubnetGroupMessage->Marker;
     my $CacheSubnetGroups = $CacheSubnetGroupMessage->CacheSubnetGroups;
+    my $Marker            = $CacheSubnetGroupMessage->Marker;
 
     # Returns a L<Paws::ElastiCache::CacheSubnetGroupMessage> object.
 

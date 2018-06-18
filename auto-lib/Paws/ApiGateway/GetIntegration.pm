@@ -38,20 +38,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Type                 = $Integration->Type;
-    my $TimeoutInMillis      = $Integration->TimeoutInMillis;
-    my $RequestTemplates     = $Integration->RequestTemplates;
-    my $RequestParameters    = $Integration->RequestParameters;
     my $CacheKeyParameters   = $Integration->CacheKeyParameters;
-    my $ConnectionId         = $Integration->ConnectionId;
-    my $PassthroughBehavior  = $Integration->PassthroughBehavior;
     my $CacheNamespace       = $Integration->CacheNamespace;
-    my $IntegrationResponses = $Integration->IntegrationResponses;
-    my $Uri                  = $Integration->Uri;
+    my $ConnectionId         = $Integration->ConnectionId;
+    my $ConnectionType       = $Integration->ConnectionType;
+    my $ContentHandling      = $Integration->ContentHandling;
     my $Credentials          = $Integration->Credentials;
     my $HttpMethod           = $Integration->HttpMethod;
-    my $ContentHandling      = $Integration->ContentHandling;
-    my $ConnectionType       = $Integration->ConnectionType;
+    my $IntegrationResponses = $Integration->IntegrationResponses;
+    my $PassthroughBehavior  = $Integration->PassthroughBehavior;
+    my $RequestParameters    = $Integration->RequestParameters;
+    my $RequestTemplates     = $Integration->RequestTemplates;
+    my $TimeoutInMillis      = $Integration->TimeoutInMillis;
+    my $Type                 = $Integration->Type;
+    my $Uri                  = $Integration->Uri;
 
     # Returns a L<Paws::ApiGateway::Integration> object.
 

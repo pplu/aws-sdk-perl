@@ -48,8 +48,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $cases     = $DescribeCasesResponse->cases;
-    my $nextToken = $DescribeCasesResponse->nextToken;
+    my $Cases     = $DescribeCasesResponse->Cases;
+    my $NextToken = $DescribeCasesResponse->NextToken;
 
     # Returns a L<Paws::Support::DescribeCasesResponse> object.
 

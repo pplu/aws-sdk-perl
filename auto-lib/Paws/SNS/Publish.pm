@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MessageAttributes => {
         'MyString' => {
           DataType    => 'MyString',
-          StringValue => 'MyString',
           BinaryValue => 'BlobBinary',    # OPTIONAL
+          StringValue => 'MyString',
         },
       },    # OPTIONAL
       MessageStructure => 'MymessageStructure',    # OPTIONAL

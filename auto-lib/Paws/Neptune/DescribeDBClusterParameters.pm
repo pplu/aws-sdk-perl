@@ -47,8 +47,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Parameters = $DBClusterParameterGroupDetails->Parameters;
     my $Marker     = $DBClusterParameterGroupDetails->Marker;
+    my $Parameters = $DBClusterParameterGroupDetails->Parameters;
 
     # Returns a L<Paws::Neptune::DBClusterParameterGroupDetails> object.
 

@@ -35,19 +35,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # specified gateway.
     my $DescribeVTLDevicesOutput = $storagegateway->DescribeVTLDevices(
       {
-        'Marker' => 1,
         'GatewayARN' =>
           'arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B',
+        'Limit'         => 123,
+        'Marker'        => 1,
         'VTLDeviceARNs' => [
 
-        ],
-        'Limit' => 123
+        ]
       }
     );
 
     # Results:
-    my $Marker     = $DescribeVTLDevicesOutput->Marker;
     my $GatewayARN = $DescribeVTLDevicesOutput->GatewayARN;
+    my $Marker     = $DescribeVTLDevicesOutput->Marker;
     my $VTLDevices = $DescribeVTLDevicesOutput->VTLDevices;
 
     # Returns a L<Paws::StorageGateway::DescribeVTLDevicesOutput> object.

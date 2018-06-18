@@ -37,28 +37,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Selector => 'MySelectorObjectReference',    # OPTIONAL
       },
       SchemaFacet => {
-        SchemaArn => 'MyArn',
         FacetName => 'MyFacetName',                 # min: 1, max: 64; OPTIONAL
+        SchemaArn => 'MyArn',
       },
       ObjectAttributeList => [
         {
-          Value => {
-            StringValue   => 'MyStringAttributeValue',      # OPTIONAL
-            BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
-            NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
-            BooleanValue  => 1,                             # OPTIONAL
-            DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
-          },
           Key => {
-            FacetName => 'MyFacetName',        # min: 1, max: 64; OPTIONAL
-            Name      => 'MyAttributeName',    # min: 1, max: 64
+            FacetName => 'MyFacetName',             # min: 1, max: 64; OPTIONAL
+            Name      => 'MyAttributeName',         # min: 1, max: 64
             SchemaArn => 'MyArn',
 
+          },
+          Value => {
+            BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
+            BooleanValue  => 1,                             # OPTIONAL
+            DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
+            NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
+            StringValue   => 'MyStringAttributeValue',      # OPTIONAL
           },
 
         },
         ...
-      ],                                       # OPTIONAL
+      ],                                                    # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

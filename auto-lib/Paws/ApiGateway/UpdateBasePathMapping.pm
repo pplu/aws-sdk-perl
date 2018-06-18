@@ -35,11 +35,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DomainName      => 'MyString',
       PatchOperations => [
         {
-          value => 'MyString',
-          path  => 'MyString',
-          from  => 'MyString',
+          from => 'MyString',
           op =>
             'add',    # values: add, remove, replace, move, copy, test; OPTIONAL
+          path  => 'MyString',
+          value => 'MyString',
         },
         ...
       ],              # OPTIONAL

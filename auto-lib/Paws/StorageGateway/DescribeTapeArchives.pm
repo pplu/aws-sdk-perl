@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # (VTS).
     my $DescribeTapeArchivesOutput = $storagegateway->DescribeTapeArchives(
       {
-        'Marker'   => 1,
         'Limit'    => 123,
+        'Marker'   => 1,
         'TapeARNs' => [
           'arn:aws:storagegateway:us-east-1:999999999999:tape/AM08A1AD',
           'arn:aws:storagegateway:us-east-1:999999999999:tape/AMZN01A2A4'

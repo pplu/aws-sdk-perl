@@ -35,21 +35,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $Message      = $DescribeThingRegistrationTaskResponse->Message;
-    my $Status       = $DescribeThingRegistrationTaskResponse->Status;
+    my $CreationDate = $DescribeThingRegistrationTaskResponse->CreationDate;
+    my $FailureCount = $DescribeThingRegistrationTaskResponse->FailureCount;
+    my $InputFileBucket =
+      $DescribeThingRegistrationTaskResponse->InputFileBucket;
     my $InputFileKey = $DescribeThingRegistrationTaskResponse->InputFileKey;
     my $LastModifiedDate =
       $DescribeThingRegistrationTaskResponse->LastModifiedDate;
-    my $InputFileBucket =
-      $DescribeThingRegistrationTaskResponse->InputFileBucket;
-    my $RoleArn      = $DescribeThingRegistrationTaskResponse->RoleArn;
-    my $TaskId       = $DescribeThingRegistrationTaskResponse->TaskId;
-    my $FailureCount = $DescribeThingRegistrationTaskResponse->FailureCount;
-    my $TemplateBody = $DescribeThingRegistrationTaskResponse->TemplateBody;
-    my $SuccessCount = $DescribeThingRegistrationTaskResponse->SuccessCount;
-    my $CreationDate = $DescribeThingRegistrationTaskResponse->CreationDate;
+    my $Message = $DescribeThingRegistrationTaskResponse->Message;
     my $PercentageProgress =
       $DescribeThingRegistrationTaskResponse->PercentageProgress;
+    my $RoleArn      = $DescribeThingRegistrationTaskResponse->RoleArn;
+    my $Status       = $DescribeThingRegistrationTaskResponse->Status;
+    my $SuccessCount = $DescribeThingRegistrationTaskResponse->SuccessCount;
+    my $TaskId       = $DescribeThingRegistrationTaskResponse->TaskId;
+    my $TemplateBody = $DescribeThingRegistrationTaskResponse->TemplateBody;
 
     # Returns a L<Paws::IoT::DescribeThingRegistrationTaskResponse> object.
 

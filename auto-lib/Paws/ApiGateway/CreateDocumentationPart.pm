@@ -34,10 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Location => {
         type => 'API'
         , # values: API, AUTHORIZER, MODEL, RESOURCE, METHOD, PATH_PARAMETER, QUERY_PARAMETER, REQUEST_HEADER, REQUEST_BODY, RESPONSE, RESPONSE_HEADER, RESPONSE_BODY
-        name       => 'MyString',                                 # OPTIONAL
-        statusCode => 'MyDocumentationPartLocationStatusCode',    # OPTIONAL
-        path       => 'MyString',                                 # OPTIONAL
         method     => 'MyString',                                 # OPTIONAL
+        name       => 'MyString',                                 # OPTIONAL
+        path       => 'MyString',                                 # OPTIONAL
+        statusCode => 'MyDocumentationPartLocationStatusCode',    # OPTIONAL
       },
       Properties => 'MyString',
       RestApiId  => 'MyString',

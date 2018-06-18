@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example terminates a job with the specified job ID.
     my $TerminateJobResponse = $batch->TerminateJob(
       {
-        'Reason' => 'Terminating job.',
-        'JobId'  => '61e743ed-35e4-48da-b2de-5c8333821c84'
+        'JobId'  => '61e743ed-35e4-48da-b2de-5c8333821c84',
+        'Reason' => 'Terminating job.'
       }
     );
 

@@ -43,9 +43,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],    # OPTIONAL
       Description => 'MyString',    # OPTIONAL
       Quota       => {
-        period => 'DAY',            # values: DAY, WEEK, MONTH; OPTIONAL
         limit  => 1,                # OPTIONAL
         offset => 1,                # OPTIONAL
+        period => 'DAY',            # values: DAY, WEEK, MONTH; OPTIONAL
       },    # OPTIONAL
       Throttle => {
         burstLimit => 1,    # OPTIONAL
@@ -54,13 +54,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Id          = $UsagePlan->Id;
-    my $Throttle    = $UsagePlan->Throttle;
+    my $ApiStages   = $UsagePlan->ApiStages;
     my $Description = $UsagePlan->Description;
+    my $Id          = $UsagePlan->Id;
     my $Name        = $UsagePlan->Name;
     my $ProductCode = $UsagePlan->ProductCode;
     my $Quota       = $UsagePlan->Quota;
-    my $ApiStages   = $UsagePlan->ApiStages;
+    my $Throttle    = $UsagePlan->Throttle;
 
     # Returns a L<Paws::ApiGateway::UsagePlan> object.
 

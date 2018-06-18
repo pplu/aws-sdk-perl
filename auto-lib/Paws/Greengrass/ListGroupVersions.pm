@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Versions  = $ListGroupVersionsResponse->Versions;
     my $NextToken = $ListGroupVersionsResponse->NextToken;
+    my $Versions  = $ListGroupVersionsResponse->Versions;
 
     # Returns a L<Paws::Greengrass::ListGroupVersionsResponse> object.
 

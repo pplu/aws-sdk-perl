@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # their default values.
     my $DBParameterGroupNameMessage = $rds->ResetDBParameterGroup(
       {
-        'ResetAllParameters'   => true,
-        'DBParameterGroupName' => 'mydbparametergroup'
+        'DBParameterGroupName' => 'mydbparametergroup',
+        'ResetAllParameters'   => true
       }
     );
 

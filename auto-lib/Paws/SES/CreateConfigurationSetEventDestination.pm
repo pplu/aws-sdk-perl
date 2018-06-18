@@ -32,21 +32,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $email->CreateConfigurationSetEventDestination(
       ConfigurationSetName => 'MyConfigurationSetName',
       EventDestination     => {
-        Name               => 'MyEventDestinationName',
         MatchingEventTypes => [
           'send',
           ... # values: send, reject, bounce, complaint, delivery, open, click, renderingFailure
         ],
-        Enabled        => 1,    # OPTIONAL
-        SNSDestination => {
-          TopicARN => 'MyAmazonResourceName',
-
-        },                      # OPTIONAL
-        KinesisFirehoseDestination => {
-          IAMRoleARN        => 'MyAmazonResourceName',
-          DeliveryStreamARN => 'MyAmazonResourceName',
-
-        },                      # OPTIONAL
+        Name                  => 'MyEventDestinationName',
         CloudWatchDestination => {
           DimensionConfigurations => [
             {
@@ -60,6 +50,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ],
 
         },    # OPTIONAL
+        Enabled                    => 1,    # OPTIONAL
+        KinesisFirehoseDestination => {
+          DeliveryStreamARN => 'MyAmazonResourceName',
+          IAMRoleARN        => 'MyAmazonResourceName',
+
+        },                                  # OPTIONAL
+        SNSDestination => {
+          TopicARN => 'MyAmazonResourceName',
+
+        },                                  # OPTIONAL
       },
 
       );

@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $rds->ApplyPendingMaintenanceAction(
       {
         'ApplyAction' => 'system-update',
+        'OptInType'   => 'immediate',
         'ResourceIdentifier' =>
-          'arn:aws:rds:us-east-1:992648334831:db:mymysqlinstance',
-        'OptInType' => 'immediate'
+          'arn:aws:rds:us-east-1:992648334831:db:mymysqlinstance'
       }
       );
 

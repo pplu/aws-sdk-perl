@@ -39,16 +39,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'AccountId' => '-',
         'JobId' =>
 'zbxcm3Z_3z5UkoroF7SuZKrxgGoDc3RloGduS7Eg-RO47Yc6FxsdGBgf_Q2DK5Ejh18CnTS5XW4_XqlNHS61dsO4CnMW',
-        'VaultName' => 'my-vaul',
-        'Range'     => ''
+        'Range'     => '',
+        'VaultName' => 'my-vaul'
       }
     );
 
     # Results:
-    my $body         = $GetJobOutputOutput->body;
-    my $status       = $GetJobOutputOutput->status;
-    my $contentType  = $GetJobOutputOutput->contentType;
     my $acceptRanges = $GetJobOutputOutput->acceptRanges;
+    my $body         = $GetJobOutputOutput->body;
+    my $contentType  = $GetJobOutputOutput->contentType;
+    my $status       = $GetJobOutputOutput->status;
 
     # Returns a L<Paws::Glacier::GetJobOutputOutput> object.
 

@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $CreatedAt   = $GetDetectorResponse->CreatedAt;
+    my $ServiceRole = $GetDetectorResponse->ServiceRole;
     my $Status      = $GetDetectorResponse->Status;
     my $UpdatedAt   = $GetDetectorResponse->UpdatedAt;
-    my $ServiceRole = $GetDetectorResponse->ServiceRole;
 
     # Returns a L<Paws::GuardDuty::GetDetectorResponse> object.
 

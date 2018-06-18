@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken   = $ListGraphqlApisResponse->NextToken;
     my $GraphqlApis = $ListGraphqlApisResponse->GraphqlApis;
+    my $NextToken   = $ListGraphqlApisResponse->NextToken;
 
     # Returns a L<Paws::AppSync::ListGraphqlApisResponse> object.
 

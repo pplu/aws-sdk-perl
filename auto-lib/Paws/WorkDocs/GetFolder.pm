@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Metadata       = $GetFolderResponse->Metadata;
     my $CustomMetadata = $GetFolderResponse->CustomMetadata;
+    my $Metadata       = $GetFolderResponse->Metadata;
 
     # Returns a L<Paws::WorkDocs::GetFolderResponse> object.
 

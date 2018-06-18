@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $pipelineExecution = $GetPipelineExecutionOutput->pipelineExecution;
+    my $PipelineExecution = $GetPipelineExecutionOutput->PipelineExecution;
 
     # Returns a L<Paws::CodePipeline::GetPipelineExecutionOutput> object.
 

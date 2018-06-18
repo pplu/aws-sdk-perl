@@ -37,62 +37,62 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Container => 'MyPresetContainer',
       Name      => 'MyName',
       Audio     => {
-        Channels     => 'MyAudioChannels',    # OPTIONAL
-        CodecOptions => {
-          BitDepth => 'MyAudioBitDepth',        # OPTIONAL
-          Profile  => 'MyAudioCodecProfile',    # OPTIONAL
-          BitOrder => 'MyAudioBitOrder',        # OPTIONAL
-          Signed   => 'MyAudioSigned',          # OPTIONAL
-        },    # OPTIONAL
         AudioPackingMode => 'MyAudioPackingMode',    # OPTIONAL
         BitRate          => 'MyAudioBitRate',        # OPTIONAL
-        SampleRate       => 'MyAudioSampleRate',     # OPTIONAL
+        Channels         => 'MyAudioChannels',       # OPTIONAL
         Codec            => 'MyAudioCodec',          # OPTIONAL
+        CodecOptions     => {
+          BitDepth => 'MyAudioBitDepth',             # OPTIONAL
+          BitOrder => 'MyAudioBitOrder',             # OPTIONAL
+          Profile  => 'MyAudioCodecProfile',         # OPTIONAL
+          Signed   => 'MyAudioSigned',               # OPTIONAL
+        },    # OPTIONAL
+        SampleRate => 'MyAudioSampleRate',    # OPTIONAL
       },    # OPTIONAL
       Description => 'MyDescription',    # OPTIONAL
       Thumbnails  => {
         AspectRatio   => 'MyAspectRatio',            # OPTIONAL
         Format        => 'MyJpgOrPng',               # OPTIONAL
+        Interval      => 'MyDigits',                 # OPTIONAL
+        MaxHeight     => 'MyDigitsOrAuto',           # OPTIONAL
         MaxWidth      => 'MyDigitsOrAuto',           # OPTIONAL
         PaddingPolicy => 'MyPaddingPolicy',          # OPTIONAL
-        MaxHeight     => 'MyDigitsOrAuto',           # OPTIONAL
-        Interval      => 'MyDigits',                 # OPTIONAL
         Resolution    => 'MyThumbnailResolution',    # OPTIONAL
         SizingPolicy  => 'MySizingPolicy',           # OPTIONAL
       },    # OPTIONAL
       Video => {
-        MaxFrameRate => 'MyMaxFrameRate',    # OPTIONAL
         AspectRatio  => 'MyAspectRatio',     # OPTIONAL
-        MaxWidth     => 'MyDigitsOrAuto',    # OPTIONAL
-        FixedGOP     => 'MyFixedGOP',        # OPTIONAL
+        BitRate      => 'MyVideoBitRate',    # OPTIONAL
         Codec        => 'MyVideoCodec',      # OPTIONAL
-        FrameRate    => 'MyFrameRate',       # OPTIONAL
         CodecOptions => {
           'MyCodecOption' =>
             'MyCodecOption',    # key: min: 1, max: 255, value: min: 1, max: 255
         },    # max: 30; OPTIONAL
-        BitRate    => 'MyVideoBitRate',    # OPTIONAL
-        Watermarks => [
+        DisplayAspectRatio => 'MyAspectRatio',         # OPTIONAL
+        FixedGOP           => 'MyFixedGOP',            # OPTIONAL
+        FrameRate          => 'MyFrameRate',           # OPTIONAL
+        KeyframesMaxDist   => 'MyKeyframesMaxDist',    # OPTIONAL
+        MaxFrameRate       => 'MyMaxFrameRate',        # OPTIONAL
+        MaxHeight          => 'MyDigitsOrAuto',        # OPTIONAL
+        MaxWidth           => 'MyDigitsOrAuto',        # OPTIONAL
+        PaddingPolicy      => 'MyPaddingPolicy',       # OPTIONAL
+        Resolution         => 'MyResolution',          # OPTIONAL
+        SizingPolicy       => 'MySizingPolicy',        # OPTIONAL
+        Watermarks         => [
           {
-            Opacity        => 'MyOpacity',           # OPTIONAL
-            Target         => 'MyTarget',            # OPTIONAL
-            MaxWidth       => 'MyPixelsOrPercent',   # OPTIONAL
-            VerticalOffset => 'MyPixelsOrPercent',   # OPTIONAL
-            Id             => 'MyPresetWatermarkId', # min: 1, max: 40; OPTIONAL
-            VerticalAlign  => 'MyVerticalAlign',     # OPTIONAL
-            SizingPolicy     => 'MyWatermarkSizingPolicy',    # OPTIONAL
-            MaxHeight        => 'MyPixelsOrPercent',          # OPTIONAL
-            HorizontalAlign  => 'MyHorizontalAlign',          # OPTIONAL
-            HorizontalOffset => 'MyPixelsOrPercent',          # OPTIONAL
+            HorizontalAlign  => 'MyHorizontalAlign',    # OPTIONAL
+            HorizontalOffset => 'MyPixelsOrPercent',    # OPTIONAL
+            Id        => 'MyPresetWatermarkId',    # min: 1, max: 40; OPTIONAL
+            MaxHeight => 'MyPixelsOrPercent',      # OPTIONAL
+            MaxWidth  => 'MyPixelsOrPercent',      # OPTIONAL
+            Opacity   => 'MyOpacity',              # OPTIONAL
+            SizingPolicy   => 'MyWatermarkSizingPolicy',    # OPTIONAL
+            Target         => 'MyTarget',                   # OPTIONAL
+            VerticalAlign  => 'MyVerticalAlign',            # OPTIONAL
+            VerticalOffset => 'MyPixelsOrPercent',          # OPTIONAL
           },
           ...
-        ],                                                    # OPTIONAL
-        MaxHeight          => 'MyDigitsOrAuto',               # OPTIONAL
-        PaddingPolicy      => 'MyPaddingPolicy',              # OPTIONAL
-        DisplayAspectRatio => 'MyAspectRatio',                # OPTIONAL
-        Resolution         => 'MyResolution',                 # OPTIONAL
-        SizingPolicy       => 'MySizingPolicy',               # OPTIONAL
-        KeyframesMaxDist   => 'MyKeyframesMaxDist',           # OPTIONAL
+        ],                                                  # OPTIONAL
       },    # OPTIONAL
     );
 

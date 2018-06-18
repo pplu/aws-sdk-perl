@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $NextToken = $ListPlaybackConfigurationsResponse->NextToken;
     my $Items     = $ListPlaybackConfigurationsResponse->Items;
+    my $NextToken = $ListPlaybackConfigurationsResponse->NextToken;
 
     # Returns a L<Paws::MediaTailor::ListPlaybackConfigurationsResponse> object.
 

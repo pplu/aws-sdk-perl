@@ -33,21 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateFieldLevelEncryptionConfigResult =
       $cloudfront->CreateFieldLevelEncryptionConfig(
       FieldLevelEncryptionConfig => {
-        CallerReference       => 'Mystring',
-        QueryArgProfileConfig => {
-          ForwardWhenQueryArgProfileIsUnknown => 1,
-          QueryArgProfiles                    => {
-            Quantity => 1,
-            Items    => [
-              {
-                QueryArg  => 'Mystring',
-                ProfileId => 'Mystring',
-
-              },
-              ...
-            ],    # OPTIONAL
-          },    # OPTIONAL
-        },    # OPTIONAL
+        CallerReference          => 'Mystring',
         Comment                  => 'Mystring',
         ContentTypeProfileConfig => {
           ForwardWhenContentTypeIsUnknown => 1,
@@ -55,12 +41,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Quantity => 1,
             Items    => [
               {
-                Format      => 'URLEncoded',    # values: URLEncoded
                 ContentType => 'Mystring',
+                Format      => 'URLEncoded',    # values: URLEncoded
                 ProfileId   => 'Mystring',
               },
               ...
             ],                                  # OPTIONAL
+          },    # OPTIONAL
+        },    # OPTIONAL
+        QueryArgProfileConfig => {
+          ForwardWhenQueryArgProfileIsUnknown => 1,
+          QueryArgProfiles                    => {
+            Quantity => 1,
+            Items    => [
+              {
+                ProfileId => 'Mystring',
+                QueryArg  => 'Mystring',
+
+              },
+              ...
+            ],    # OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
       },

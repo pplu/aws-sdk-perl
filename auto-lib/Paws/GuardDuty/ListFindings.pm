@@ -37,20 +37,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       FindingCriteria => {
         Criterion => {
           'My__string' => {
+            Eq  => [ 'My__string', ... ],    # OPTIONAL
             Gt  => 1,                        # OPTIONAL
-            Lte => 1,                        # OPTIONAL
-            Neq => [ 'My__string', ... ],    # OPTIONAL
             Gte => 1,                        # OPTIONAL
             Lt  => 1,                        # OPTIONAL
-            Eq  => [ 'My__string', ... ],    # OPTIONAL
+            Lte => 1,                        # OPTIONAL
+            Neq => [ 'My__string', ... ],    # OPTIONAL
           },
         },    # OPTIONAL
       },    # OPTIONAL
       MaxResults   => 1,                # OPTIONAL
       NextToken    => 'MyNextToken',    # OPTIONAL
       SortCriteria => {
-        OrderBy       => 'ASC',          # values: ASC, DESC; OPTIONAL
         AttributeName => 'My__string',
+        OrderBy       => 'ASC',          # values: ASC, DESC; OPTIONAL
       },    # OPTIONAL
     );
 

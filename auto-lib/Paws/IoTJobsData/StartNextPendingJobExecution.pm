@@ -39,7 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $execution = $StartNextPendingJobExecutionResponse->execution;
+    my $Execution = $StartNextPendingJobExecutionResponse->Execution;
 
   # Returns a L<Paws::IoTJobsData::StartNextPendingJobExecutionResponse> object.
 

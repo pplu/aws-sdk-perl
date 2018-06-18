@@ -35,24 +35,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example launches the specified Scheduled Instance in a VPC.
     my $RunScheduledInstancesResult = $ec2->RunScheduledInstances(
       {
+        'InstanceCount'       => 1,
         'LaunchSpecification' => {
-          'NetworkInterfaces' => [
-
-            {
-              'SubnetId'                 => 'subnet-12345678',
-              'AssociatePublicIpAddress' => true,
-              'DeviceIndex'              => 0,
-              'Groups'                   => ['sg-12345678']
-            }
-          ],
           'IamInstanceProfile' => {
             'Name' => 'my-iam-role'
           },
-          'InstanceType' => 'c4.large',
-          'ImageId'      => 'ami-12345678',
-          'KeyName'      => 'my-key-pair'
+          'ImageId'           => 'ami-12345678',
+          'InstanceType'      => 'c4.large',
+          'KeyName'           => 'my-key-pair',
+          'NetworkInterfaces' => [
+
+            {
+              'AssociatePublicIpAddress' => true,
+              'DeviceIndex'              => 0,
+              'Groups'                   => ['sg-12345678'],
+              'SubnetId'                 => 'subnet-12345678'
+            }
+          ]
         },
-        'InstanceCount'       => 1,
         'ScheduledInstanceId' => 'sci-1234-1234-1234-1234-123456789012'
       }
     );
@@ -66,19 +66,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $RunScheduledInstancesResult = $ec2->RunScheduledInstances(
       {
         'InstanceCount'       => 1,
-        'ScheduledInstanceId' => 'sci-1234-1234-1234-1234-123456789012',
         'LaunchSpecification' => {
-          'SecurityGroupIds' => ['sg-12345678'],
-          'Placement'        => {
-            'AvailabilityZone' => 'us-west-2b'
-          },
-          'KeyName'            => 'my-key-pair',
-          'ImageId'            => 'ami-12345678',
           'IamInstanceProfile' => {
             'Name' => 'my-iam-role'
           },
-          'InstanceType' => 'c4.large'
-        }
+          'ImageId'      => 'ami-12345678',
+          'InstanceType' => 'c4.large',
+          'KeyName'      => 'my-key-pair',
+          'Placement'    => {
+            'AvailabilityZone' => 'us-west-2b'
+          },
+          'SecurityGroupIds' => ['sg-12345678']
+        },
+        'ScheduledInstanceId' => 'sci-1234-1234-1234-1234-123456789012'
       }
     );
 

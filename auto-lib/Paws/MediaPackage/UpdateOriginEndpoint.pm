@@ -52,40 +52,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
         HlsManifests => [
           {
-            Id           => 'My__string',
-            ManifestName => 'My__string',
-            PlaylistType => 'NONE',         # values: NONE, EVENT, VOD; OPTIONAL
-            PlaylistWindowSeconds => 1,     # OPTIONAL
+            Id => 'My__string',
             AdMarkers =>
               'NONE',    # values: NONE, SCTE35_ENHANCED, PASSTHROUGH; OPTIONAL
+            IncludeIframeOnlyStream => 1,              # OPTIONAL
+            ManifestName            => 'My__string',
+            PlaylistType => 'NONE',    # values: NONE, EVENT, VOD; OPTIONAL
+            PlaylistWindowSeconds          => 1,    # OPTIONAL
             ProgramDateTimeIntervalSeconds => 1,    # OPTIONAL
-            IncludeIframeOnlyStream        => 1,    # OPTIONAL
           },
           ...
         ],                                          # OPTIONAL
         SegmentDurationSeconds => 1,                # OPTIONAL
+        SegmentPrefix          => 'My__string',
         StreamSelection        => {
-          MinVideoBitsPerSecond => 1,               # OPTIONAL
           MaxVideoBitsPerSecond => 1,               # OPTIONAL
+          MinVideoBitsPerSecond => 1,               # OPTIONAL
           StreamOrder           => 'ORIGINAL'
           , # values: ORIGINAL, VIDEO_BITRATE_ASCENDING, VIDEO_BITRATE_DESCENDING; OPTIONAL
         },    # OPTIONAL
-        SegmentPrefix => 'My__string',
       },    # OPTIONAL
       DashPackage => {
-        Profile => 'NONE',    # values: NONE, HBBTV_1_5; OPTIONAL
-        SuggestedPresentationDelaySeconds => 1,    # OPTIONAL
-        MinBufferTimeSeconds              => 1,    # OPTIONAL
-        MinUpdatePeriodSeconds            => 1,    # OPTIONAL
-        ManifestWindowSeconds             => 1,    # OPTIONAL
-        StreamSelection                   => {
-          MinVideoBitsPerSecond => 1,              # OPTIONAL
-          MaxVideoBitsPerSecond => 1,              # OPTIONAL
-          StreamOrder           => 'ORIGINAL'
-          , # values: ORIGINAL, VIDEO_BITRATE_ASCENDING, VIDEO_BITRATE_DESCENDING; OPTIONAL
-        },    # OPTIONAL
-        SegmentDurationSeconds => 1,    # OPTIONAL
-        Encryption             => {
+        Encryption => {
           SpekeKeyProvider => {
             ResourceId => 'My__string',
             RoleArn    => 'My__string',
@@ -95,12 +83,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           KeyRotationIntervalSeconds => 1,    # OPTIONAL
         },    # OPTIONAL
+        ManifestWindowSeconds  => 1,         # OPTIONAL
+        MinBufferTimeSeconds   => 1,         # OPTIONAL
+        MinUpdatePeriodSeconds => 1,         # OPTIONAL
+        Profile                => 'NONE',    # values: NONE, HBBTV_1_5; OPTIONAL
+        SegmentDurationSeconds => 1,         # OPTIONAL
+        StreamSelection        => {
+          MaxVideoBitsPerSecond => 1,           # OPTIONAL
+          MinVideoBitsPerSecond => 1,           # OPTIONAL
+          StreamOrder           => 'ORIGINAL'
+          , # values: ORIGINAL, VIDEO_BITRATE_ASCENDING, VIDEO_BITRATE_DESCENDING; OPTIONAL
+        },    # OPTIONAL
+        SuggestedPresentationDelaySeconds => 1,    # OPTIONAL
       },    # OPTIONAL
       Description => 'My__string',    # OPTIONAL
       HlsPackage  => {
-        ProgramDateTimeIntervalSeconds => 1,    # OPTIONAL
-        IncludeIframeOnlyStream        => 1,    # OPTIONAL
-        PlaylistWindowSeconds          => 1,    # OPTIONAL
         AdMarkers =>
           'NONE',    # values: NONE, SCTE35_ENHANCED, PASSTHROUGH; OPTIONAL
         Encryption => {
@@ -111,20 +108,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Url        => 'My__string',
 
           },
-          EncryptionMethod => 'AES_128', # values: AES_128, SAMPLE_AES; OPTIONAL
-          RepeatExtXKey    => 1,         # OPTIONAL
-          KeyRotationIntervalSeconds   => 1,              # OPTIONAL
           ConstantInitializationVector => 'My__string',
+          EncryptionMethod => 'AES_128', # values: AES_128, SAMPLE_AES; OPTIONAL
+          KeyRotationIntervalSeconds => 1,    # OPTIONAL
+          RepeatExtXKey              => 1,    # OPTIONAL
         },    # OPTIONAL
-        PlaylistType           => 'NONE',   # values: NONE, EVENT, VOD; OPTIONAL
-        UseAudioRenditionGroup => 1,        # OPTIONAL
-        SegmentDurationSeconds => 1,        # OPTIONAL
-        StreamSelection        => {
-          MinVideoBitsPerSecond => 1,           # OPTIONAL
+        IncludeIframeOnlyStream => 1,       # OPTIONAL
+        PlaylistType            => 'NONE',  # values: NONE, EVENT, VOD; OPTIONAL
+        PlaylistWindowSeconds   => 1,       # OPTIONAL
+        ProgramDateTimeIntervalSeconds => 1,    # OPTIONAL
+        SegmentDurationSeconds         => 1,    # OPTIONAL
+        StreamSelection                => {
           MaxVideoBitsPerSecond => 1,           # OPTIONAL
+          MinVideoBitsPerSecond => 1,           # OPTIONAL
           StreamOrder           => 'ORIGINAL'
           , # values: ORIGINAL, VIDEO_BITRATE_ASCENDING, VIDEO_BITRATE_DESCENDING; OPTIONAL
         },    # OPTIONAL
+        UseAudioRenditionGroup => 1,    # OPTIONAL
       },    # OPTIONAL
       ManifestName => 'My__string',    # OPTIONAL
       MssPackage   => {
@@ -138,14 +138,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
 
         },                             # OPTIONAL
+        ManifestWindowSeconds  => 1,   # OPTIONAL
         SegmentDurationSeconds => 1,   # OPTIONAL
         StreamSelection        => {
-          MinVideoBitsPerSecond => 1,           # OPTIONAL
           MaxVideoBitsPerSecond => 1,           # OPTIONAL
+          MinVideoBitsPerSecond => 1,           # OPTIONAL
           StreamOrder           => 'ORIGINAL'
           , # values: ORIGINAL, VIDEO_BITRATE_ASCENDING, VIDEO_BITRATE_DESCENDING; OPTIONAL
         },    # OPTIONAL
-        ManifestWindowSeconds => 1,    # OPTIONAL
       },    # OPTIONAL
       StartoverWindowSeconds => 1,                        # OPTIONAL
       TimeDelaySeconds       => 1,                        # OPTIONAL
@@ -153,20 +153,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ManifestName     = $UpdateOriginEndpointResponse->ManifestName;
-    my $Arn              = $UpdateOriginEndpointResponse->Arn;
-    my $Id               = $UpdateOriginEndpointResponse->Id;
-    my $Url              = $UpdateOriginEndpointResponse->Url;
-    my $TimeDelaySeconds = $UpdateOriginEndpointResponse->TimeDelaySeconds;
+    my $Arn          = $UpdateOriginEndpointResponse->Arn;
+    my $ChannelId    = $UpdateOriginEndpointResponse->ChannelId;
+    my $CmafPackage  = $UpdateOriginEndpointResponse->CmafPackage;
+    my $DashPackage  = $UpdateOriginEndpointResponse->DashPackage;
+    my $Description  = $UpdateOriginEndpointResponse->Description;
+    my $HlsPackage   = $UpdateOriginEndpointResponse->HlsPackage;
+    my $Id           = $UpdateOriginEndpointResponse->Id;
+    my $ManifestName = $UpdateOriginEndpointResponse->ManifestName;
+    my $MssPackage   = $UpdateOriginEndpointResponse->MssPackage;
     my $StartoverWindowSeconds =
       $UpdateOriginEndpointResponse->StartoverWindowSeconds;
-    my $DashPackage = $UpdateOriginEndpointResponse->DashPackage;
-    my $HlsPackage  = $UpdateOriginEndpointResponse->HlsPackage;
-    my $CmafPackage = $UpdateOriginEndpointResponse->CmafPackage;
-    my $ChannelId   = $UpdateOriginEndpointResponse->ChannelId;
-    my $Description = $UpdateOriginEndpointResponse->Description;
-    my $MssPackage  = $UpdateOriginEndpointResponse->MssPackage;
-    my $Whitelist   = $UpdateOriginEndpointResponse->Whitelist;
+    my $TimeDelaySeconds = $UpdateOriginEndpointResponse->TimeDelaySeconds;
+    my $Url              = $UpdateOriginEndpointResponse->Url;
+    my $Whitelist        = $UpdateOriginEndpointResponse->Whitelist;
 
     # Returns a L<Paws::MediaPackage::UpdateOriginEndpointResponse> object.
 

@@ -37,10 +37,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $ETag = $GetFieldLevelEncryptionProfileConfigResult->ETag;
     my $FieldLevelEncryptionProfileConfig =
       $GetFieldLevelEncryptionProfileConfigResult
       ->FieldLevelEncryptionProfileConfig;
-    my $ETag = $GetFieldLevelEncryptionProfileConfigResult->ETag;
 
 # Returns a L<Paws::CloudFront::GetFieldLevelEncryptionProfileConfigResult> object.
 

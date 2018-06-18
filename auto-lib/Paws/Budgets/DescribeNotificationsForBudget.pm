@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $Notifications = $DescribeNotificationsForBudgetResponse->Notifications;
     my $NextToken     = $DescribeNotificationsForBudgetResponse->NextToken;
+    my $Notifications = $DescribeNotificationsForBudgetResponse->Notifications;
 
     # Returns a L<Paws::Budgets::DescribeNotificationsForBudgetResponse> object.
 

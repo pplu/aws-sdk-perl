@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'DhcpConfigurations' => [
 
           {
-            'Values' => [ '10.2.5.1', '10.2.5.2' ],
-            'Key'    => 'domain-name-servers'
+            'Key'    => 'domain-name-servers',
+            'Values' => [ '10.2.5.1', '10.2.5.2' ]
           }
         ]
       }

@@ -52,12 +52,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MaxConcurrency     => 'MyMaxConcurrency',         # OPTIONAL
       MaxErrors          => 'MyMaxErrors',              # OPTIONAL
       NotificationConfig => {
-        NotificationArn => 'MyNotificationArn',         # OPTIONAL
-        NotificationType   => 'Command', # values: Command, Invocation; OPTIONAL
+        NotificationArn    => 'MyNotificationArn',      # OPTIONAL
         NotificationEvents => [
           'All',
           ...    # values: All, InProgress, Success, TimedOut, Cancelled, Failed
         ],       # OPTIONAL
+        NotificationType => 'Command',   # values: Command, Invocation; OPTIONAL
       },    # OPTIONAL
       OutputS3BucketName => 'MyS3BucketName',    # OPTIONAL
       OutputS3KeyPrefix  => 'MyS3KeyPrefix',     # OPTIONAL
@@ -67,8 +67,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ServiceRoleArn => 'MyServiceRole',         # OPTIONAL
       Targets        => [
         {
-          Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
           Key => 'MyTargetKey',                  # min: 1, max: 128; OPTIONAL
+          Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
         },
         ...
       ],                                         # OPTIONAL

@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ReplicationJobList = $GetReplicationJobsResponse->ReplicationJobList;
     my $NextToken          = $GetReplicationJobsResponse->NextToken;
+    my $ReplicationJobList = $GetReplicationJobsResponse->ReplicationJobList;
 
     # Returns a L<Paws::SMS::GetReplicationJobsResponse> object.
 

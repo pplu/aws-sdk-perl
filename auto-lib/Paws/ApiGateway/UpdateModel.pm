@@ -38,19 +38,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           from => 'MyString',
           op =>
             'add',    # values: add, remove, replace, move, copy, test; OPTIONAL
-          value => 'MyString',
           path  => 'MyString',
+          value => 'MyString',
         },
         ...
       ],              # OPTIONAL
     );
 
     # Results:
-    my $Schema      = $Model->Schema;
+    my $ContentType = $Model->ContentType;
     my $Description = $Model->Description;
     my $Id          = $Model->Id;
-    my $ContentType = $Model->ContentType;
     my $Name        = $Model->Name;
+    my $Schema      = $Model->Schema;
 
     # Returns a L<Paws::ApiGateway::Model> object.
 

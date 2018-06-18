@@ -51,20 +51,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'Color' => 'MyString',       # key: values: Color
       },    # OPTIONAL
       ChefConfiguration => {
-        ManageBerkshelf  => 1,            # OPTIONAL
         BerkshelfVersion => 'MyString',
+        ManageBerkshelf  => 1,            # OPTIONAL
       },    # OPTIONAL
       ConfigurationManager => {
         Name    => 'MyString',
         Version => 'MyString',
       },    # OPTIONAL
       CustomCookbooksSource => {
+        Password => 'MyString',
         Revision => 'MyString',
         SshKey   => 'MyString',
-        Username => 'MyString',
-        Password => 'MyString',
-        Url      => 'MyString',
         Type     => 'git',        # values: git, svn, archive, s3; OPTIONAL
+        Url      => 'MyString',
+        Username => 'MyString',
       },    # OPTIONAL
       CustomJson                => 'MyString',    # OPTIONAL
       DefaultAvailabilityZone   => 'MyString',    # OPTIONAL

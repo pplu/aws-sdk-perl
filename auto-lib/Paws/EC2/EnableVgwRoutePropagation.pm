@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # static routes to the specified route table.
     $ec2->EnableVgwRoutePropagation(
       {
-        'RouteTableId' => 'rtb-22574640',
-        'GatewayId'    => 'vgw-9a4cacf3'
+        'GatewayId'    => 'vgw-9a4cacf3',
+        'RouteTableId' => 'rtb-22574640'
       }
     );
 

@@ -33,21 +33,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ClientCertificateId => 'MyString',
       PatchOperations     => [
         {
-          path  => 'MyString',
-          value => 'MyString',
+          from => 'MyString',
           op =>
             'add',    # values: add, remove, replace, move, copy, test; OPTIONAL
-          from => 'MyString',
+          path  => 'MyString',
+          value => 'MyString',
         },
         ...
       ],              # OPTIONAL
     );
 
     # Results:
-    my $CreatedDate           = $ClientCertificate->CreatedDate;
-    my $ExpirationDate        = $ClientCertificate->ExpirationDate;
     my $ClientCertificateId   = $ClientCertificate->ClientCertificateId;
+    my $CreatedDate           = $ClientCertificate->CreatedDate;
     my $Description           = $ClientCertificate->Description;
+    my $ExpirationDate        = $ClientCertificate->ExpirationDate;
     my $PemEncodedCertificate = $ClientCertificate->PemEncodedCertificate;
 
     # Returns a L<Paws::ApiGateway::ClientCertificate> object.

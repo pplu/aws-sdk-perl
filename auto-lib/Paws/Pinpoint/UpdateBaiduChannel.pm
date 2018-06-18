@@ -32,9 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateBaiduChannelResponse = $pinpoint->UpdateBaiduChannel(
       ApplicationId       => 'My__string',
       BaiduChannelRequest => {
-        SecretKey => 'My__string',
-        Enabled   => 1,              # OPTIONAL
         ApiKey    => 'My__string',
+        Enabled   => 1,              # OPTIONAL
+        SecretKey => 'My__string',
       },
 
     );

@@ -38,9 +38,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $DatastoreArn    = $CreateDatastoreResponse->DatastoreArn;
     my $DatastoreName   = $CreateDatastoreResponse->DatastoreName;
     my $RetentionPeriod = $CreateDatastoreResponse->RetentionPeriod;
-    my $DatastoreArn    = $CreateDatastoreResponse->DatastoreArn;
 
     # Returns a L<Paws::IoTAnalytics::CreateDatastoreResponse> object.
 

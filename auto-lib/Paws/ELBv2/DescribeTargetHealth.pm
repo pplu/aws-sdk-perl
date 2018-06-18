@@ -51,15 +51,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeTargetHealthOutput =
       $elasticloadbalancing->DescribeTargetHealth(
       {
+        'TargetGroupArn' =>
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067',
         'Targets' => [
 
           {
-            'Port' => 80,
-            'Id'   => 'i-0f76fade'
+            'Id'   => 'i-0f76fade',
+            'Port' => 80
           }
-        ],
-        'TargetGroupArn' =>
-'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067'
+        ]
       }
       );
 

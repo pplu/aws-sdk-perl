@@ -33,10 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $elastictranscoder->UpdatePipelineNotifications(
       Id            => 'MyId',
       Notifications => {
-        Error       => 'MySnsTopic',    # OPTIONAL
-        Warning     => 'MySnsTopic',    # OPTIONAL
         Completed   => 'MySnsTopic',    # OPTIONAL
+        Error       => 'MySnsTopic',    # OPTIONAL
         Progressing => 'MySnsTopic',    # OPTIONAL
+        Warning     => 'MySnsTopic',    # OPTIONAL
       },
 
       );

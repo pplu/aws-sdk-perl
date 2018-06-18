@@ -32,8 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InstanceNames => [ 'MyInstanceName', ... ],
       Tags          => [
         {
-          Value => 'MyValue',    # OPTIONAL
           Key   => 'MyKey',      # OPTIONAL
+          Value => 'MyValue',    # OPTIONAL
         },
         ...
       ],

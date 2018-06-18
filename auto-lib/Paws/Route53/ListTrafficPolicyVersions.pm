@@ -39,11 +39,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $IsTruncated     = $ListTrafficPolicyVersionsResponse->IsTruncated;
+    my $MaxItems        = $ListTrafficPolicyVersionsResponse->MaxItems;
+    my $TrafficPolicies = $ListTrafficPolicyVersionsResponse->TrafficPolicies;
     my $TrafficPolicyVersionMarker =
       $ListTrafficPolicyVersionsResponse->TrafficPolicyVersionMarker;
-    my $MaxItems        = $ListTrafficPolicyVersionsResponse->MaxItems;
-    my $IsTruncated     = $ListTrafficPolicyVersionsResponse->IsTruncated;
-    my $TrafficPolicies = $ListTrafficPolicyVersionsResponse->TrafficPolicies;
 
     # Returns a L<Paws::Route53::ListTrafficPolicyVersionsResponse> object.
 

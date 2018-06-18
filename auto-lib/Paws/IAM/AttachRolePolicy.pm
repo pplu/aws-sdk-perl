@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # to the IAM role named ReadOnlyRole.
     $iam->AttachRolePolicy(
       {
-        'RoleName'  => 'ReadOnlyRole',
-        'PolicyArn' => 'arn:aws:iam::aws:policy/ReadOnlyAccess'
+        'PolicyArn' => 'arn:aws:iam::aws:policy/ReadOnlyAccess',
+        'RoleName'  => 'ReadOnlyRole'
       }
     );
 

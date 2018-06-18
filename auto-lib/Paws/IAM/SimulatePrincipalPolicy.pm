@@ -66,9 +66,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $EvaluationResults = $SimulatePolicyResponse->EvaluationResults;
     my $IsTruncated       = $SimulatePolicyResponse->IsTruncated;
     my $Marker            = $SimulatePolicyResponse->Marker;
-    my $EvaluationResults = $SimulatePolicyResponse->EvaluationResults;
 
     # Returns a L<Paws::IAM::SimulatePolicyResponse> object.
 

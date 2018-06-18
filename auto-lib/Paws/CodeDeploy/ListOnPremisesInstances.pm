@@ -44,8 +44,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken     = $ListOnPremisesInstancesOutput->NextToken;
     my $InstanceNames = $ListOnPremisesInstancesOutput->InstanceNames;
+    my $NextToken     = $ListOnPremisesInstancesOutput->NextToken;
 
     # Returns a L<Paws::CodeDeploy::ListOnPremisesInstancesOutput> object.
 

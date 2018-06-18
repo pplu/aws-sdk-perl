@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $HIT        = $GetAssignmentResponse->HIT;
     my $Assignment = $GetAssignmentResponse->Assignment;
+    my $HIT        = $GetAssignmentResponse->HIT;
 
     # Returns a L<Paws::MTurk::GetAssignmentResponse> object.
 

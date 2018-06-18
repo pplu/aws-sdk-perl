@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The example lists jobs for the vault named my-vault.
     my $ListJobsOutput = $glacier->ListJobs(
       {
-        'VaultName' => 'my-vault',
-        'AccountId' => '-'
+        'AccountId' => '-',
+        'VaultName' => 'my-vault'
       }
     );
 

@@ -46,8 +46,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         useCallerCredentials => 1,            # OPTIONAL
       },    # OPTIONAL
       ElasticsearchConfig => {
-        endpoint  => 'MyString',
         awsRegion => 'MyString',
+        endpoint  => 'MyString',
 
       },    # OPTIONAL
       LambdaConfig => {

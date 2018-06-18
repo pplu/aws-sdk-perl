@@ -43,21 +43,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Replace          => 1,                                   # OPTIONAL
       Targets          => [
         {
-          Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
           Key => 'MyTargetKey',                  # min: 1, max: 128; OPTIONAL
+          Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
         },
         ...
       ],                                         # OPTIONAL
       );
 
     # Results:
+    my $Description = $UpdateMaintenanceWindowTargetResult->Description;
+    my $Name        = $UpdateMaintenanceWindowTargetResult->Name;
     my $OwnerInformation =
       $UpdateMaintenanceWindowTargetResult->OwnerInformation;
-    my $WindowId       = $UpdateMaintenanceWindowTargetResult->WindowId;
-    my $Description    = $UpdateMaintenanceWindowTargetResult->Description;
-    my $Name           = $UpdateMaintenanceWindowTargetResult->Name;
-    my $WindowTargetId = $UpdateMaintenanceWindowTargetResult->WindowTargetId;
     my $Targets        = $UpdateMaintenanceWindowTargetResult->Targets;
+    my $WindowId       = $UpdateMaintenanceWindowTargetResult->WindowId;
+    my $WindowTargetId = $UpdateMaintenanceWindowTargetResult->WindowTargetId;
 
     # Returns a L<Paws::SSM::UpdateMaintenanceWindowTargetResult> object.
 

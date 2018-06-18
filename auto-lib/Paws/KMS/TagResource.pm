@@ -32,8 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       KeyId => 'MyKeyIdType',
       Tags  => [
         {
-          TagValue => 'MyTagValueType',    # max: 256
           TagKey   => 'MyTagKeyType',      # min: 1, max: 128
+          TagValue => 'MyTagValueType',    # max: 256
 
         },
         ...

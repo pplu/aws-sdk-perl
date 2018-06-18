@@ -33,15 +33,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # your default region, using the container instance UUID as an identifier.
     my $DescribeContainerInstancesResponse = $ecs->DescribeContainerInstances(
       {
-        'ContainerInstances' => ['f2756532-8f13-4d53-87c9-aed50dc94cd7'],
-        'Cluster'            => 'default'
+        'Cluster'            => 'default',
+        'ContainerInstances' => ['f2756532-8f13-4d53-87c9-aed50dc94cd7']
       }
     );
 
     # Results:
-    my $failures = $DescribeContainerInstancesResponse->failures;
     my $containerInstances =
       $DescribeContainerInstancesResponse->containerInstances;
+    my $failures = $DescribeContainerInstancesResponse->failures;
 
     # Returns a L<Paws::ECS::DescribeContainerInstancesResponse> object.
 

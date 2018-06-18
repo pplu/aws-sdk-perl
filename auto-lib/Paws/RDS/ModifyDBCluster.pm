@@ -45,12 +45,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example changes the specified settings for the specified DB cluster.
     my $ModifyDBClusterResult = $rds->ModifyDBCluster(
       {
-        'NewDBClusterIdentifier'     => 'mynewdbcluster',
-        'PreferredBackupWindow'      => '04:00-04:30',
-        'PreferredMaintenanceWindow' => 'Tue:05:00-Tue:05:30',
+        'ApplyImmediately'           => true,
         'DBClusterIdentifier'        => 'mydbcluster',
         'MasterUserPassword'         => 'mynewpassword',
-        'ApplyImmediately'           => true
+        'NewDBClusterIdentifier'     => 'mynewdbcluster',
+        'PreferredBackupWindow'      => '04:00-04:30',
+        'PreferredMaintenanceWindow' => 'Tue:05:00-Tue:05:30'
       }
     );
 

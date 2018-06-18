@@ -33,6 +33,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ApplicationId       => 'My__string',
       WriteSegmentRequest => {
         Dimensions => {
+          Attributes => {
+            'My__string' => {
+              AttributeType =>
+                'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+              Values => [ 'My__string', ... ],    # OPTIONAL
+            },
+          },    # OPTIONAL
           Behavior => {
             Recency => {
               Duration =>
@@ -41,12 +48,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },    # OPTIONAL
           },    # OPTIONAL
           Demographic => {
-            Platform => {
-              DimensionType =>
-                'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-              Values => [ 'My__string', ... ],    # OPTIONAL
-            },    # OPTIONAL
-            Model => {
+            AppVersion => {
               DimensionType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
               Values => [ 'My__string', ... ],    # OPTIONAL
@@ -66,7 +68,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
               Values => [ 'My__string', ... ],    # OPTIONAL
             },    # OPTIONAL
-            AppVersion => {
+            Model => {
+              DimensionType =>
+                'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+              Values => [ 'My__string', ... ],    # OPTIONAL
+            },    # OPTIONAL
+            Platform => {
+              DimensionType =>
+                'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+              Values => [ 'My__string', ... ],    # OPTIONAL
+            },    # OPTIONAL
+          },    # OPTIONAL
+          Location => {
+            Country => {
               DimensionType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
               Values => [ 'My__string', ... ],    # OPTIONAL
@@ -78,20 +92,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
               Values => [ 'My__string', ... ],    # OPTIONAL
             },
-          },    # OPTIONAL
-          Attributes => {
-            'My__string' => {
-              AttributeType =>
-                'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-              Values => [ 'My__string', ... ],    # OPTIONAL
-            },
-          },    # OPTIONAL
-          Location => {
-            Country => {
-              DimensionType =>
-                'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-              Values => [ 'My__string', ... ],    # OPTIONAL
-            },    # OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
         Name => 'My__string',

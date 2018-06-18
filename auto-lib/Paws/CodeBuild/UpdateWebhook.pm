@@ -36,7 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Webhook = $UpdateWebhookOutput->Webhook;
+    my $webhook = $UpdateWebhookOutput->webhook;
 
     # Returns a L<Paws::CodeBuild::UpdateWebhookOutput> object.
 

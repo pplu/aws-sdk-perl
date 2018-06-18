@@ -36,14 +36,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $CreatedDate     = $ApiKey->CreatedDate;
-    my $Description     = $ApiKey->Description;
-    my $LastUpdatedDate = $ApiKey->LastUpdatedDate;
-    my $Value           = $ApiKey->Value;
-    my $Name            = $ApiKey->Name;
-    my $Enabled         = $ApiKey->Enabled;
-    my $StageKeys       = $ApiKey->StageKeys;
-    my $Id              = $ApiKey->Id;
     my $CustomerId      = $ApiKey->CustomerId;
+    my $Description     = $ApiKey->Description;
+    my $Enabled         = $ApiKey->Enabled;
+    my $Id              = $ApiKey->Id;
+    my $LastUpdatedDate = $ApiKey->LastUpdatedDate;
+    my $Name            = $ApiKey->Name;
+    my $StageKeys       = $ApiKey->StageKeys;
+    my $Value           = $ApiKey->Value;
 
     # Returns a L<Paws::ApiGateway::ApiKey> object.
 

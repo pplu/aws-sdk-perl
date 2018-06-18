@@ -36,9 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $RecordLifecycleActionHeartbeatAnswer =
       $autoscaling->RecordLifecycleActionHeartbeat(
       {
+        'AutoScalingGroupName' => 'my-auto-scaling-group',
         'LifecycleActionToken' => 'bcd2f1b8-9a78-44d3-8a7a-4dd07d7cf635',
-        'LifecycleHookName'    => 'my-lifecycle-hook',
-        'AutoScalingGroupName' => 'my-auto-scaling-group'
+        'LifecycleHookName'    => 'my-lifecycle-hook'
       }
       );
 

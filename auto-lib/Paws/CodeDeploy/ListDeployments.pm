@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ListDeploymentsOutput = $codedeploy->ListDeployments(
       ApplicationName => 'MyApplicationName',    # OPTIONAL
       CreateTimeRange => {
-        start => '1970-01-01T01:00:00',          # OPTIONAL
         end   => '1970-01-01T01:00:00',          # OPTIONAL
+        start => '1970-01-01T01:00:00',          # OPTIONAL
       },    # OPTIONAL
       DeploymentGroupName => 'MyDeploymentGroupName',    # OPTIONAL
       IncludeOnlyStatuses => [
@@ -46,8 +46,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken   = $ListDeploymentsOutput->NextToken;
     my $Deployments = $ListDeploymentsOutput->Deployments;
+    my $NextToken   = $ListDeploymentsOutput->NextToken;
 
     # Returns a L<Paws::CodeDeploy::ListDeploymentsOutput> object.
 

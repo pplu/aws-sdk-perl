@@ -49,8 +49,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # SUBMITTED job status.
     my $ListJobsResponse = $batch->ListJobs(
       {
-        'JobStatus' => 'SUBMITTED',
-        'JobQueue'  => 'HighPriority'
+        'JobQueue'  => 'HighPriority',
+        'JobStatus' => 'SUBMITTED'
       }
     );
 

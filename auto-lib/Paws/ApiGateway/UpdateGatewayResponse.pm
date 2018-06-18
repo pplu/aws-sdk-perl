@@ -35,22 +35,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RestApiId       => 'MyString',
       PatchOperations => [
         {
-          path  => 'MyString',
-          value => 'MyString',
-          from  => 'MyString',
+          from => 'MyString',
           op =>
             'add',    # values: add, remove, replace, move, copy, test; OPTIONAL
+          path  => 'MyString',
+          value => 'MyString',
         },
         ...
       ],              # OPTIONAL
     );
 
     # Results:
-    my $StatusCode         = $GatewayResponse->StatusCode;
-    my $ResponseParameters = $GatewayResponse->ResponseParameters;
-    my $ResponseType       = $GatewayResponse->ResponseType;
     my $DefaultResponse    = $GatewayResponse->DefaultResponse;
+    my $ResponseParameters = $GatewayResponse->ResponseParameters;
     my $ResponseTemplates  = $GatewayResponse->ResponseTemplates;
+    my $ResponseType       = $GatewayResponse->ResponseType;
+    my $StatusCode         = $GatewayResponse->StatusCode;
 
     # Returns a L<Paws::ApiGateway::GatewayResponse> object.
 

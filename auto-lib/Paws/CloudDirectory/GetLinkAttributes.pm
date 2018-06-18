@@ -37,30 +37,30 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],
       DirectoryArn       => 'MyArn',
       TypedLinkSpecifier => {
-        TypedLinkFacet => {
-          TypedLinkName => 'MyTypedLinkName',
-          SchemaArn     => 'MyArn',
-
-        },
-        SourceObjectReference => {
-          Selector => 'MySelectorObjectReference',    # OPTIONAL
-        },
         IdentityAttributeValues => [
           {
-            Value => {
+            AttributeName => 'MyAttributeName',    # min: 1, max: 64
+            Value         => {
+              BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
               BooleanValue  => 1,                             # OPTIONAL
               DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
-              StringValue   => 'MyStringAttributeValue',      # OPTIONAL
               NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
-              BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
+              StringValue   => 'MyStringAttributeValue',      # OPTIONAL
             },
-            AttributeName => 'MyAttributeName',               # min: 1, max: 64
 
           },
           ...
         ],
+        SourceObjectReference => {
+          Selector => 'MySelectorObjectReference',            # OPTIONAL
+        },
         TargetObjectReference => {
           Selector => 'MySelectorObjectReference',            # OPTIONAL
+        },
+        TypedLinkFacet => {
+          SchemaArn     => 'MyArn',
+          TypedLinkName => 'MyTypedLinkName',
+
         },
 
       },

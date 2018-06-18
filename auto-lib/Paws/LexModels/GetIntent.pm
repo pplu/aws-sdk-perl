@@ -36,21 +36,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CreatedDate           = $GetIntentResponse->CreatedDate;
-    my $SampleUtterances      = $GetIntentResponse->SampleUtterances;
-    my $ConfirmationPrompt    = $GetIntentResponse->ConfirmationPrompt;
-    my $FollowUpPrompt        = $GetIntentResponse->FollowUpPrompt;
-    my $ConclusionStatement   = $GetIntentResponse->ConclusionStatement;
     my $Checksum              = $GetIntentResponse->Checksum;
-    my $LastUpdatedDate       = $GetIntentResponse->LastUpdatedDate;
-    my $RejectionStatement    = $GetIntentResponse->RejectionStatement;
+    my $ConclusionStatement   = $GetIntentResponse->ConclusionStatement;
+    my $ConfirmationPrompt    = $GetIntentResponse->ConfirmationPrompt;
+    my $CreatedDate           = $GetIntentResponse->CreatedDate;
     my $Description           = $GetIntentResponse->Description;
-    my $Version               = $GetIntentResponse->Version;
+    my $DialogCodeHook        = $GetIntentResponse->DialogCodeHook;
+    my $FollowUpPrompt        = $GetIntentResponse->FollowUpPrompt;
     my $FulfillmentActivity   = $GetIntentResponse->FulfillmentActivity;
+    my $LastUpdatedDate       = $GetIntentResponse->LastUpdatedDate;
     my $Name                  = $GetIntentResponse->Name;
     my $ParentIntentSignature = $GetIntentResponse->ParentIntentSignature;
+    my $RejectionStatement    = $GetIntentResponse->RejectionStatement;
+    my $SampleUtterances      = $GetIntentResponse->SampleUtterances;
     my $Slots                 = $GetIntentResponse->Slots;
-    my $DialogCodeHook        = $GetIntentResponse->DialogCodeHook;
+    my $Version               = $GetIntentResponse->Version;
 
     # Returns a L<Paws::LexModels::GetIntentResponse> object.
 

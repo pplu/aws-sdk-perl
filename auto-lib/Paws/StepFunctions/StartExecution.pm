@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $StartDate    = $StartExecutionOutput->StartDate;
     my $ExecutionArn = $StartExecutionOutput->ExecutionArn;
+    my $StartDate    = $StartExecutionOutput->StartDate;
 
     # Returns a L<Paws::StepFunctions::StartExecutionOutput> object.
 

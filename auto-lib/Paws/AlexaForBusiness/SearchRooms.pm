@@ -54,8 +54,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Rooms      = $SearchRoomsResponse->Rooms;
     my $NextToken  = $SearchRoomsResponse->NextToken;
+    my $Rooms      = $SearchRoomsResponse->Rooms;
     my $TotalCount = $SearchRoomsResponse->TotalCount;
 
     # Returns a L<Paws::AlexaForBusiness::SearchRoomsResponse> object.

@@ -36,21 +36,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AmznClientToken          => 'My__string',    # OPTIONAL
       Subscriptions            => [
         {
-          Target  => 'My__string',
-          Subject => 'My__string',
-          Source  => 'My__string',
           Id      => 'My__string',
+          Source  => 'My__string',
+          Subject => 'My__string',
+          Target  => 'My__string',
         },
         ...
       ],                                           # OPTIONAL
       );
 
     # Results:
-    my $Version = $CreateSubscriptionDefinitionVersionResponse->Version;
-    my $Id      = $CreateSubscriptionDefinitionVersionResponse->Id;
-    my $Arn     = $CreateSubscriptionDefinitionVersionResponse->Arn;
+    my $Arn = $CreateSubscriptionDefinitionVersionResponse->Arn;
     my $CreationTimestamp =
       $CreateSubscriptionDefinitionVersionResponse->CreationTimestamp;
+    my $Id      = $CreateSubscriptionDefinitionVersionResponse->Id;
+    my $Version = $CreateSubscriptionDefinitionVersionResponse->Version;
 
 # Returns a L<Paws::Greengrass::CreateSubscriptionDefinitionVersionResponse> object.
 

@@ -41,7 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Canceled = $ReportTaskProgressOutput->Canceled;
+    my $canceled = $ReportTaskProgressOutput->canceled;
 
     # Returns a L<Paws::DataPipeline::ReportTaskProgressOutput> object.
 

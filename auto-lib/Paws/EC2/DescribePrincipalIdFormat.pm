@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Principals = $DescribePrincipalIdFormatResult->Principals;
     my $NextToken  = $DescribePrincipalIdFormatResult->NextToken;
+    my $Principals = $DescribePrincipalIdFormatResult->Principals;
 
     # Returns a L<Paws::EC2::DescribePrincipalIdFormatResult> object.
 

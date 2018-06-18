@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $VolumeARN  = $CreateSnapshotOutput->VolumeARN;
     my $SnapshotId = $CreateSnapshotOutput->SnapshotId;
+    my $VolumeARN  = $CreateSnapshotOutput->VolumeARN;
 
     # Returns a L<Paws::StorageGateway::CreateSnapshotOutput> object.
 

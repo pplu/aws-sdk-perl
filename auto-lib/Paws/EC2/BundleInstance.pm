@@ -33,11 +33,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InstanceId => 'MyString',
       Storage    => {
         S3 => {
-          UploadPolicySignature => 'MyString',
-          Prefix                => 'MyString',
           AWSAccessKeyId        => 'MyString',
           Bucket                => 'MyString',
+          Prefix                => 'MyString',
           UploadPolicy          => 'BlobBlob',    # OPTIONAL
+          UploadPolicySignature => 'MyString',
         },    # OPTIONAL
       },
       DryRun => 1,    # OPTIONAL

@@ -39,22 +39,44 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Key            => 'MyObjectKey',
       RequestPayer   => 'requester',      # OPTIONAL
       RestoreRequest => {
-        Type => 'SELECT',      # values: SELECT; OPTIONAL
-        Tier => 'Standard',    # values: Standard, Bulk, Expedited; OPTIONAL
+        Days                 => 1,                  # OPTIONAL
+        Description          => 'MyDescription',    # OPTIONAL
         GlacierJobParameters => {
-          Tier => 'Standard',    # values: Standard, Bulk, Expedited; OPTIONAL
+          Tier => 'Standard',    # values: Standard, Bulk, Expedited
 
         },    # OPTIONAL
-        Days           => 1,                  # OPTIONAL
-        Description    => 'MyDescription',    # OPTIONAL
         OutputLocation => {
           S3 => {
-            BucketName => 'MyBucketName',
-            Prefix     => 'MyLocationPrefix',
-            Tagging    => {
+            BucketName        => 'MyBucketName',
+            Prefix            => 'MyLocationPrefix',
+            AccessControlList => [
+              {
+                Grantee => {
+                  Type => 'CanonicalUser'
+                  ,    # values: CanonicalUser, AmazonCustomerByEmail, Group
+                  DisplayName  => 'MyDisplayName',     # OPTIONAL
+                  EmailAddress => 'MyEmailAddress',    # OPTIONAL
+                  ID           => 'MyID',              # OPTIONAL
+                  URI          => 'MyURI',             # OPTIONAL
+                },    # OPTIONAL
+                Permission => 'FULL_CONTROL'
+                , # values: FULL_CONTROL, WRITE, WRITE_ACP, READ, READ_ACP; OPTIONAL
+              },
+              ...
+            ],    # OPTIONAL
+            CannedACL => 'private'
+            , # values: private, public-read, public-read-write, authenticated-read, aws-exec-read, bucket-owner-read, bucket-owner-full-control; OPTIONAL
+            Encryption => {
+              EncryptionType => 'AES256',           # values: AES256, aws:kms
+              KMSContext     => 'MyKMSContext',     # OPTIONAL
+              KMSKeyId       => 'MySSEKMSKeyId',    # OPTIONAL
+            },    # OPTIONAL
+            StorageClass => 'STANDARD'
+            , # values: STANDARD, REDUCED_REDUNDANCY, STANDARD_IA, ONEZONE_IA; OPTIONAL
+            Tagging => {
               TagSet => [
                 {
-                  Key   => 'MyObjectKey',     # min: 1,
+                  Key   => 'MyObjectKey',    # min: 1,
                   Value => 'MyValue',
 
                 },
@@ -62,13 +84,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ],
 
             },    # OPTIONAL
-            Encryption => {
-              EncryptionType => 'AES256',           # values: AES256, aws:kms
-              KMSContext     => 'MyKMSContext',     # OPTIONAL
-              KMSKeyId       => 'MySSEKMSKeyId',    # OPTIONAL
-            },    # OPTIONAL
-            CannedACL => 'private'
-            , # values: private, public-read, public-read-write, authenticated-read, aws-exec-read, bucket-owner-read, bucket-owner-full-control; OPTIONAL
             UserMetadata => [
               {
                 Name  => 'MyMetadataKey',      # OPTIONAL
@@ -76,56 +91,41 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },
               ...
             ],                                 # OPTIONAL
-            AccessControlList => [
-              {
-                Grantee => {
-                  Type => 'CanonicalUser'
-                  ,    # values: CanonicalUser, AmazonCustomerByEmail, Group
-                  URI          => 'MyURI',             # OPTIONAL
-                  DisplayName  => 'MyDisplayName',     # OPTIONAL
-                  EmailAddress => 'MyEmailAddress',    # OPTIONAL
-                  ID           => 'MyID',              # OPTIONAL
-                },    # OPTIONAL
-                Permission => 'FULL_CONTROL'
-                , # values: FULL_CONTROL, WRITE, WRITE_ACP, READ, READ_ACP; OPTIONAL
-              },
-              ...
-            ],    # OPTIONAL
-            StorageClass => 'STANDARD'
-            , # values: STANDARD, REDUCED_REDUNDANCY, STANDARD_IA, ONEZONE_IA; OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
         SelectParameters => {
           Expression         => 'MyExpression',
           ExpressionType     => 'SQL',            # values: SQL
           InputSerialization => {
-            JSON => {
-              Type => 'DOCUMENT',    # values: DOCUMENT, LINES; OPTIONAL
+            CSV => {
+              Comments       => 'MyComments',          # OPTIONAL
+              FieldDelimiter => 'MyFieldDelimiter',    # OPTIONAL
+              FileHeaderInfo => 'USE',    # values: USE, IGNORE, NONE; OPTIONAL
+              QuoteCharacter       => 'MyQuoteCharacter',          # OPTIONAL
+              QuoteEscapeCharacter => 'MyQuoteEscapeCharacter',    # OPTIONAL
+              RecordDelimiter      => 'MyRecordDelimiter',         # OPTIONAL
             },    # OPTIONAL
             CompressionType => 'NONE',    # values: NONE, GZIP; OPTIONAL
-            CSV             => {
-              Comments             => 'MyComments',                # OPTIONAL
-              FieldDelimiter       => 'MyFieldDelimiter',          # OPTIONAL
-              QuoteEscapeCharacter => 'MyQuoteEscapeCharacter',    # OPTIONAL
-              QuoteCharacter       => 'MyQuoteCharacter',          # OPTIONAL
-              RecordDelimiter      => 'MyRecordDelimiter',         # OPTIONAL
-              FileHeaderInfo => 'USE',    # values: USE, IGNORE, NONE; OPTIONAL
+            JSON            => {
+              Type => 'DOCUMENT',         # values: DOCUMENT, LINES; OPTIONAL
             },    # OPTIONAL
           },
           OutputSerialization => {
-            JSON => {
-              RecordDelimiter => 'MyRecordDelimiter',    # OPTIONAL
-            },    # OPTIONAL
             CSV => {
               FieldDelimiter       => 'MyFieldDelimiter',          # OPTIONAL
-              QuoteEscapeCharacter => 'MyQuoteEscapeCharacter',    # OPTIONAL
-              RecordDelimiter      => 'MyRecordDelimiter',         # OPTIONAL
               QuoteCharacter       => 'MyQuoteCharacter',          # OPTIONAL
+              QuoteEscapeCharacter => 'MyQuoteEscapeCharacter',    # OPTIONAL
               QuoteFields => 'ALWAYS',    # values: ALWAYS, ASNEEDED; OPTIONAL
+              RecordDelimiter => 'MyRecordDelimiter',    # OPTIONAL
+            },    # OPTIONAL
+            JSON => {
+              RecordDelimiter => 'MyRecordDelimiter',    # OPTIONAL
             },    # OPTIONAL
           },
 
         },    # OPTIONAL
+        Tier => 'Standard',    # values: Standard, Bulk, Expedited
+        Type => 'SELECT',      # values: SELECT; OPTIONAL
       },    # OPTIONAL
       VersionId => 'MyObjectVersionId',    # OPTIONAL
     );

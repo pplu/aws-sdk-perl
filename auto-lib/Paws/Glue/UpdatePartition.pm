@@ -34,20 +34,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdatePartitionResponse = $glue->UpdatePartition(
       DatabaseName   => 'MyNameString',
       PartitionInput => {
-        LastAnalyzedTime  => '1970-01-01T01:00:00',    # OPTIONAL
+        LastAccessTime   => '1970-01-01T01:00:00',    # OPTIONAL
+        LastAnalyzedTime => '1970-01-01T01:00:00',    # OPTIONAL
+        Parameters       => {
+          'MyKeyString' =>
+            'MyParametersMapValue',  # key: min: 1, max: 255, value: max: 512000
+        },    # OPTIONAL
         StorageDescriptor => {
-          Parameters => {
-            'MyKeyString' => 'MyParametersMapValue'
-            ,    # key: min: 1, max: 255, value: max: 512000
-          },    # OPTIONAL
-          SerdeInfo => {
-            Parameters => {
-              'MyKeyString' => 'MyParametersMapValue'
-              ,    # key: min: 1, max: 255, value: max: 512000
-            },    # OPTIONAL
-            Name                 => 'MyNameString',    # min: 1, max: 255
-            SerializationLibrary => 'MyNameString',    # min: 1, max: 255
-          },    # OPTIONAL
+          BucketColumns => [
+            'MyNameString', ...    # min: 1, max: 255
+          ],                       # OPTIONAL
           Columns => [
             {
               Name    => 'MyNameString',          # min: 1, max: 255
@@ -56,43 +52,47 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },
             ...
           ],                                      # OPTIONAL
-          SortColumns => [
-            {
-              Column    => 'MyNameString',        # min: 1, max: 255
-              SortOrder => 1,                     # max: 1
-
-            },
-            ...
-          ],                                      # OPTIONAL
-          StoredAsSubDirectories => 1,            # OPTIONAL
-          SkewedInfo             => {
-            SkewedColumnValueLocationMaps =>
-              { 'MyColumnValuesString' => 'MyColumnValuesString', },  # OPTIONAL
-            SkewedColumnValues => [ 'MyColumnValuesString', ... ],    # OPTIONAL
+          Compressed      => 1,                   # OPTIONAL
+          InputFormat     => 'MyFormatString',    # max: 128; OPTIONAL
+          Location        => 'MyLocationString',  # max: 2056; OPTIONAL
+          NumberOfBuckets => 1,                   # OPTIONAL
+          OutputFormat    => 'MyFormatString',    # max: 128; OPTIONAL
+          Parameters      => {
+            'MyKeyString' => 'MyParametersMapValue'
+            ,    # key: min: 1, max: 255, value: max: 512000
+          },    # OPTIONAL
+          SerdeInfo => {
+            Name       => 'MyNameString',    # min: 1, max: 255
+            Parameters => {
+              'MyKeyString' => 'MyParametersMapValue'
+              ,    # key: min: 1, max: 255, value: max: 512000
+            },    # OPTIONAL
+            SerializationLibrary => 'MyNameString',    # min: 1, max: 255
+          },    # OPTIONAL
+          SkewedInfo => {
             SkewedColumnNames => [
               'MyNameString', ...    # min: 1, max: 255
             ],                       # OPTIONAL
+            SkewedColumnValueLocationMaps =>
+              { 'MyColumnValuesString' => 'MyColumnValuesString', },  # OPTIONAL
+            SkewedColumnValues => [ 'MyColumnValuesString', ... ],    # OPTIONAL
           },    # OPTIONAL
-          Location      => 'MyLocationString',    # max: 2056; OPTIONAL
-          OutputFormat  => 'MyFormatString',      # max: 128; OPTIONAL
-          Compressed    => 1,                     # OPTIONAL
-          InputFormat   => 'MyFormatString',      # max: 128; OPTIONAL
-          BucketColumns => [
-            'MyNameString', ...                   # min: 1, max: 255
-          ],                                      # OPTIONAL
-          NumberOfBuckets => 1,                   # OPTIONAL
+          SortColumns => [
+            {
+              Column    => 'MyNameString',    # min: 1, max: 255
+              SortOrder => 1,                 # max: 1
+
+            },
+            ...
+          ],                                  # OPTIONAL
+          StoredAsSubDirectories => 1,        # OPTIONAL
         },    # OPTIONAL
         Values => [
           'MyValueString', ...    # max: 1024
         ],                        # OPTIONAL
-        LastAccessTime => '1970-01-01T01:00:00',    # OPTIONAL
-        Parameters     => {
-          'MyKeyString' =>
-            'MyParametersMapValue',  # key: min: 1, max: 255, value: max: 512000
-        },    # OPTIONAL
       },
       PartitionValueList => [
-        'MyValueString', ...    # max: 1024
+        'MyValueString', ...      # max: 1024
       ],
       TableName => 'MyNameString',
       CatalogId => 'MyCatalogIdString',    # OPTIONAL

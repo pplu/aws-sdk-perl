@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ResourceType => 'healthcheck',
       AddTags      => [
         {
-          Value => 'MyTagValue',    # max: 256; OPTIONAL
           Key   => 'MyTagKey',      # max: 128; OPTIONAL
+          Value => 'MyTagValue',    # max: 256; OPTIONAL
         },
         ...
       ],                            # OPTIONAL

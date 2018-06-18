@@ -44,8 +44,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken = $ListMetricsOutput->NextToken;
     my $Metrics   = $ListMetricsOutput->Metrics;
+    my $NextToken = $ListMetricsOutput->NextToken;
 
     # Returns a L<Paws::CloudWatch::ListMetricsOutput> object.
 

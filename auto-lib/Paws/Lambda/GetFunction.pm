@@ -33,14 +33,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This operation retrieves a Lambda function's event source mapping
     my $GetFunctionResponse = $lambda->GetFunction(
       {
-        'Qualifier'    => 1,
-        'FunctionName' => 'myFunction'
+        'FunctionName' => 'myFunction',
+        'Qualifier'    => 1
       }
     );
 
     # Results:
-    my $Configuration = $GetFunctionResponse->Configuration;
     my $Code          = $GetFunctionResponse->Code;
+    my $Configuration = $GetFunctionResponse->Configuration;
 
     # Returns a L<Paws::Lambda::GetFunctionResponse> object.
 

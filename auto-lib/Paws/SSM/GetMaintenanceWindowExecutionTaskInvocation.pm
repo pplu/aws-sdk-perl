@@ -38,27 +38,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $TaskType = $GetMaintenanceWindowExecutionTaskInvocationResult->TaskType;
+    my $EndTime = $GetMaintenanceWindowExecutionTaskInvocationResult->EndTime;
+    my $ExecutionId =
+      $GetMaintenanceWindowExecutionTaskInvocationResult->ExecutionId;
     my $InvocationId =
       $GetMaintenanceWindowExecutionTaskInvocationResult->InvocationId;
     my $OwnerInformation =
       $GetMaintenanceWindowExecutionTaskInvocationResult->OwnerInformation;
-    my $WindowExecutionId =
-      $GetMaintenanceWindowExecutionTaskInvocationResult->WindowExecutionId;
-    my $Status = $GetMaintenanceWindowExecutionTaskInvocationResult->Status;
-    my $TaskExecutionId =
-      $GetMaintenanceWindowExecutionTaskInvocationResult->TaskExecutionId;
-    my $WindowTargetId =
-      $GetMaintenanceWindowExecutionTaskInvocationResult->WindowTargetId;
-    my $EndTime = $GetMaintenanceWindowExecutionTaskInvocationResult->EndTime;
-    my $StatusDetails =
-      $GetMaintenanceWindowExecutionTaskInvocationResult->StatusDetails;
-    my $StartTime =
-      $GetMaintenanceWindowExecutionTaskInvocationResult->StartTime;
-    my $ExecutionId =
-      $GetMaintenanceWindowExecutionTaskInvocationResult->ExecutionId;
     my $Parameters =
       $GetMaintenanceWindowExecutionTaskInvocationResult->Parameters;
+    my $StartTime =
+      $GetMaintenanceWindowExecutionTaskInvocationResult->StartTime;
+    my $Status = $GetMaintenanceWindowExecutionTaskInvocationResult->Status;
+    my $StatusDetails =
+      $GetMaintenanceWindowExecutionTaskInvocationResult->StatusDetails;
+    my $TaskExecutionId =
+      $GetMaintenanceWindowExecutionTaskInvocationResult->TaskExecutionId;
+    my $TaskType = $GetMaintenanceWindowExecutionTaskInvocationResult->TaskType;
+    my $WindowExecutionId =
+      $GetMaintenanceWindowExecutionTaskInvocationResult->WindowExecutionId;
+    my $WindowTargetId =
+      $GetMaintenanceWindowExecutionTaskInvocationResult->WindowTargetId;
 
 # Returns a L<Paws::SSM::GetMaintenanceWindowExecutionTaskInvocationResult> object.
 

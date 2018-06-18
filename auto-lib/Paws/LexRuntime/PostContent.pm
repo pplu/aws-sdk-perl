@@ -47,16 +47,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ContentType       = $PostContentResponse->ContentType;
-    my $Slots             = $PostContentResponse->Slots;
-    my $SessionAttributes = $PostContentResponse->SessionAttributes;
-    my $DialogState       = $PostContentResponse->DialogState;
-    my $MessageFormat     = $PostContentResponse->MessageFormat;
-    my $InputTranscript   = $PostContentResponse->InputTranscript;
-    my $AudioStream       = $PostContentResponse->AudioStream;
-    my $SlotToElicit      = $PostContentResponse->SlotToElicit;
-    my $Message           = $PostContentResponse->Message;
-    my $IntentName        = $PostContentResponse->IntentName;
+    my $audioStream       = $PostContentResponse->audioStream;
+    my $contentType       = $PostContentResponse->contentType;
+    my $dialogState       = $PostContentResponse->dialogState;
+    my $inputTranscript   = $PostContentResponse->inputTranscript;
+    my $intentName        = $PostContentResponse->intentName;
+    my $message           = $PostContentResponse->message;
+    my $messageFormat     = $PostContentResponse->messageFormat;
+    my $sessionAttributes = $PostContentResponse->sessionAttributes;
+    my $slotToElicit      = $PostContentResponse->slotToElicit;
+    my $slots             = $PostContentResponse->slots;
 
     # Returns a L<Paws::LexRuntime::PostContentResponse> object.
 

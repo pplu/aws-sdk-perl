@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # specified network ACL association.
     my $ReplaceNetworkAclAssociationResult = $ec2->ReplaceNetworkAclAssociation(
       {
-        'NetworkAclId'  => 'acl-5fb85d36',
-        'AssociationId' => 'aclassoc-e5b95c8c'
+        'AssociationId' => 'aclassoc-e5b95c8c',
+        'NetworkAclId'  => 'acl-5fb85d36'
       }
     );
 

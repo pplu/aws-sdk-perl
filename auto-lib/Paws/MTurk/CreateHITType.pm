@@ -42,11 +42,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Keywords                    => 'MyString',           # OPTIONAL
       QualificationRequirements   => [
         {
-          QualificationTypeId => 'MyString',
-          Comparator          => 'LessThan'
+          Comparator => 'LessThan'
           , # values: LessThan, LessThanOrEqualTo, GreaterThan, GreaterThanOrEqualTo, EqualTo, NotEqualTo, Exists, DoesNotExist, In, NotIn
-          ActionsGuarded => 'Accept'
+          QualificationTypeId => 'MyString',
+          ActionsGuarded      => 'Accept'
           , # values: Accept, PreviewAndAccept, DiscoverPreviewAndAccept; OPTIONAL
+          IntegerValues => [ 1, ... ],    # OPTIONAL
           LocaleValues => [
             {
               Country     => 'MyCountryParameters',    # min: 2, max: 2
@@ -55,7 +56,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ...
           ],                                           # OPTIONAL
           RequiredToPreview => 1,                      # OPTIONAL
-          IntegerValues => [ 1, ... ],                 # OPTIONAL
         },
         ...
       ],                                               # OPTIONAL

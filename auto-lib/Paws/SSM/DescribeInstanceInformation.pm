@@ -33,33 +33,33 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeInstanceInformationResult = $ssm->DescribeInstanceInformation(
       Filters => [
         {
+          Key    => 'MyInstanceInformationStringFilterKey',    # min: 1,
           Values => [
-            'MyInstanceInformationFilterValue', ...    # min: 1,
-          ],                                           # min: 1, max: 100
-          Key => 'MyInstanceInformationStringFilterKey',    # min: 1,
+            'MyInstanceInformationFilterValue', ...            # min: 1,
+          ],    # min: 1, max: 100
 
         },
         ...
-      ],                                                    # OPTIONAL
+      ],        # OPTIONAL
       InstanceInformationFilterList => [
         {
-          valueSet => [
-            'MyInstanceInformationFilterValue', ...         # min: 1,
-          ],                                                # min: 1, max: 100
           key => 'InstanceIds'
           , # values: InstanceIds, AgentVersion, PingStatus, PlatformTypes, ActivationIds, IamRole, ResourceType, AssociationStatus
+          valueSet => [
+            'MyInstanceInformationFilterValue', ...    # min: 1,
+          ],                                           # min: 1, max: 100
 
         },
         ...
-      ],    # OPTIONAL
-      MaxResults => 1,                # OPTIONAL
-      NextToken  => 'MyNextToken',    # OPTIONAL
+      ],                                               # OPTIONAL
+      MaxResults => 1,                                 # OPTIONAL
+      NextToken  => 'MyNextToken',                     # OPTIONAL
     );
 
     # Results:
-    my $NextToken = $DescribeInstanceInformationResult->NextToken;
     my $InstanceInformationList =
       $DescribeInstanceInformationResult->InstanceInformationList;
+    my $NextToken = $DescribeInstanceInformationResult->NextToken;
 
     # Returns a L<Paws::SSM::DescribeInstanceInformationResult> object.
 

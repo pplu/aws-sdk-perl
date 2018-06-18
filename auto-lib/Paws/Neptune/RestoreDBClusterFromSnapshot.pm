@@ -53,8 +53,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Port                            => 1,                      # OPTIONAL
       Tags                            => [
         {
-          Value => 'MyString',
           Key   => 'MyString',
+          Value => 'MyString',
         },
         ...
       ],                                                         # OPTIONAL

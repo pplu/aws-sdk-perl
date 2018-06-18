@@ -37,9 +37,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Subscriptions => [
           {
             Id      => 'My__string',
-            Target  => 'My__string',
             Source  => 'My__string',
             Subject => 'My__string',
+            Target  => 'My__string',
           },
           ...
         ],                                # OPTIONAL
@@ -48,16 +48,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $Arn = $CreateSubscriptionDefinitionResponse->Arn;
+    my $CreationTimestamp =
+      $CreateSubscriptionDefinitionResponse->CreationTimestamp;
     my $Id = $CreateSubscriptionDefinitionResponse->Id;
     my $LastUpdatedTimestamp =
       $CreateSubscriptionDefinitionResponse->LastUpdatedTimestamp;
     my $LatestVersion = $CreateSubscriptionDefinitionResponse->LatestVersion;
-    my $Name          = $CreateSubscriptionDefinitionResponse->Name;
-    my $CreationTimestamp =
-      $CreateSubscriptionDefinitionResponse->CreationTimestamp;
-    my $Arn = $CreateSubscriptionDefinitionResponse->Arn;
     my $LatestVersionArn =
       $CreateSubscriptionDefinitionResponse->LatestVersionArn;
+    my $Name = $CreateSubscriptionDefinitionResponse->Name;
 
    # Returns a L<Paws::Greengrass::CreateSubscriptionDefinitionResponse> object.
 

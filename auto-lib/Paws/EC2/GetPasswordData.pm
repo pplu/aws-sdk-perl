@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Timestamp    = $GetPasswordDataResult->Timestamp;
     my $InstanceId   = $GetPasswordDataResult->InstanceId;
     my $PasswordData = $GetPasswordDataResult->PasswordData;
+    my $Timestamp    = $GetPasswordDataResult->Timestamp;
 
     # Returns a L<Paws::EC2::GetPasswordDataResult> object.
 

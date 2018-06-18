@@ -36,19 +36,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To assume a role
     my $AssumeRoleResponse = $sts->AssumeRole(
       {
-        'RoleArn' => 'arn:aws:iam::123456789012:role/demo',
+        'DurationSeconds' => 3600,
+        'ExternalId'      => '123ABC',
         'Policy' =>
 '{"Version":"2012-10-17","Statement":[{"Sid":"Stmt1","Effect":"Allow","Action":"s3:*","Resource":"*"}]}',
-        'ExternalId'      => '123ABC',
-        'DurationSeconds' => 3600,
+        'RoleArn'         => 'arn:aws:iam::123456789012:role/demo',
         'RoleSessionName' => 'Bob'
       }
     );
 
     # Results:
-    my $PackedPolicySize = $AssumeRoleResponse->PackedPolicySize;
     my $AssumedRoleUser  = $AssumeRoleResponse->AssumedRoleUser;
     my $Credentials      = $AssumeRoleResponse->Credentials;
+    my $PackedPolicySize = $AssumeRoleResponse->PackedPolicySize;
 
     # Returns a L<Paws::STS::AssumeRoleResponse> object.
 

@@ -46,22 +46,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $RoleArn       = $CreateDevEndpointResponse->RoleArn;
-    my $Status        = $CreateDevEndpointResponse->Status;
-    my $FailureReason = $CreateDevEndpointResponse->FailureReason;
-    my $EndpointName  = $CreateDevEndpointResponse->EndpointName;
-    my $ZeppelinRemoteSparkInterpreterPort =
-      $CreateDevEndpointResponse->ZeppelinRemoteSparkInterpreterPort;
-    my $ExtraJarsS3Path  = $CreateDevEndpointResponse->ExtraJarsS3Path;
     my $AvailabilityZone = $CreateDevEndpointResponse->AvailabilityZone;
-    my $SubnetId         = $CreateDevEndpointResponse->SubnetId;
-    my $VpcId            = $CreateDevEndpointResponse->VpcId;
+    my $CreatedTimestamp = $CreateDevEndpointResponse->CreatedTimestamp;
+    my $EndpointName     = $CreateDevEndpointResponse->EndpointName;
+    my $ExtraJarsS3Path  = $CreateDevEndpointResponse->ExtraJarsS3Path;
     my $ExtraPythonLibsS3Path =
       $CreateDevEndpointResponse->ExtraPythonLibsS3Path;
-    my $CreatedTimestamp    = $CreateDevEndpointResponse->CreatedTimestamp;
-    my $SecurityGroupIds    = $CreateDevEndpointResponse->SecurityGroupIds;
-    my $YarnEndpointAddress = $CreateDevEndpointResponse->YarnEndpointAddress;
+    my $FailureReason       = $CreateDevEndpointResponse->FailureReason;
     my $NumberOfNodes       = $CreateDevEndpointResponse->NumberOfNodes;
+    my $RoleArn             = $CreateDevEndpointResponse->RoleArn;
+    my $SecurityGroupIds    = $CreateDevEndpointResponse->SecurityGroupIds;
+    my $Status              = $CreateDevEndpointResponse->Status;
+    my $SubnetId            = $CreateDevEndpointResponse->SubnetId;
+    my $VpcId               = $CreateDevEndpointResponse->VpcId;
+    my $YarnEndpointAddress = $CreateDevEndpointResponse->YarnEndpointAddress;
+    my $ZeppelinRemoteSparkInterpreterPort =
+      $CreateDevEndpointResponse->ZeppelinRemoteSparkInterpreterPort;
 
     # Returns a L<Paws::Glue::CreateDevEndpointResponse> object.
 

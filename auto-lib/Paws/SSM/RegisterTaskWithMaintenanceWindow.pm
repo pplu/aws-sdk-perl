@@ -47,8 +47,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ServiceRoleArn => 'MyServiceRole',
       Targets        => [
         {
-          Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
           Key => 'MyTargetKey',                  # min: 1, max: 128; OPTIONAL
+          Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
         },
         ...
       ],
@@ -58,53 +58,53 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ClientToken => 'MyClientToken',                     # OPTIONAL
       Description => 'MyMaintenanceWindowDescription',    # OPTIONAL
       LoggingInfo => {
-        S3Region     => 'MyS3Region',                     # min: 3, max: 20
         S3BucketName => 'MyS3BucketName',                 # min: 3, max: 63
+        S3Region     => 'MyS3Region',                     # min: 3, max: 20
         S3KeyPrefix  => 'MyS3KeyPrefix',                  # max: 500; OPTIONAL
       },    # OPTIONAL
       Name                     => 'MyMaintenanceWindowName',    # OPTIONAL
       Priority                 => 1,                            # OPTIONAL
       TaskInvocationParameters => {
+        Automation => {
+          DocumentVersion => 'MyDocumentVersion',               # OPTIONAL
+          Parameters      => {
+            'MyAutomationParameterKey' => [
+              'MyAutomationParameterValue', ...    # min: 1, max: 512
+            ],    # key: min: 1, max: 30, value: max: 10
+          },    # min: 1, max: 200; OPTIONAL
+        },    # OPTIONAL
         Lambda => {
-          Payload => 'BlobMaintenanceWindowLambdaPayload', # max: 4096; OPTIONAL
           ClientContext => 'MyMaintenanceWindowLambdaClientContext'
           ,    # min: 1, max: 8000; OPTIONAL
+          Payload => 'BlobMaintenanceWindowLambdaPayload', # max: 4096; OPTIONAL
           Qualifier =>
             'MyMaintenanceWindowLambdaQualifier',   # min: 1, max: 128; OPTIONAL
         },    # OPTIONAL
         RunCommand => {
-          Comment            => 'MyComment',         # max: 100; OPTIONAL
-          OutputS3BucketName => 'MyS3BucketName',    # min: 3, max: 63
-          DocumentHash       => 'MyDocumentHash',    # max: 256; OPTIONAL
+          Comment          => 'MyComment',      # max: 100; OPTIONAL
+          DocumentHash     => 'MyDocumentHash', # max: 256; OPTIONAL
+          DocumentHashType => 'Sha256',         # values: Sha256, Sha1; OPTIONAL
           NotificationConfig => {
+            NotificationArn    => 'MyNotificationArn',    # OPTIONAL
             NotificationEvents => [
               'All',
               ... # values: All, InProgress, Success, TimedOut, Cancelled, Failed
             ],    # OPTIONAL
             NotificationType =>
               'Command',    # values: Command, Invocation; OPTIONAL
-            NotificationArn => 'MyNotificationArn',    # OPTIONAL
           },    # OPTIONAL
-          TimeoutSeconds => 1,    # min: 30, max: 2592000; OPTIONAL
-          OutputS3KeyPrefix => 'MyS3KeyPrefix', # max: 500; OPTIONAL
-          DocumentHashType  => 'Sha256',        # values: Sha256, Sha1; OPTIONAL
+          OutputS3BucketName => 'MyS3BucketName',    # min: 3, max: 63
+          OutputS3KeyPrefix  => 'MyS3KeyPrefix',     # max: 500; OPTIONAL
           Parameters => { 'MyParameterName' => [ 'MyParameterValue', ... ], }
-          ,                                     # OPTIONAL
+          ,                                          # OPTIONAL
           ServiceRoleArn => 'MyServiceRole',
+          TimeoutSeconds => 1,                 # min: 30, max: 2592000; OPTIONAL
         },    # OPTIONAL
         StepFunctions => {
           Input =>
             'MyMaintenanceWindowStepFunctionsInput',    # max: 4096; OPTIONAL
           Name =>
             'MyMaintenanceWindowStepFunctionsName',  # min: 1, max: 80; OPTIONAL
-        },    # OPTIONAL
-        Automation => {
-          DocumentVersion => 'MyDocumentVersion',    # OPTIONAL
-          Parameters      => {
-            'MyAutomationParameterKey' => [
-              'MyAutomationParameterValue', ...      # min: 1, max: 512
-            ],    # key: min: 1, max: 30, value: max: 10
-          },    # min: 1, max: 200; OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       TaskParameters => {

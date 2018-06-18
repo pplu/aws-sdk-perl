@@ -32,10 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Attributes => [
         {
           name     => 'MyString',
-          value    => 'MyString',
           targetId => 'MyString',
           targetType =>
             'container-instance',    # values: container-instance; OPTIONAL
+          value => 'MyString',
         },
         ...
       ],

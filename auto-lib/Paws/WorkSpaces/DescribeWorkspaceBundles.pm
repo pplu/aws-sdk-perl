@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken = $DescribeWorkspaceBundlesResult->NextToken;
     my $Bundles   = $DescribeWorkspaceBundlesResult->Bundles;
+    my $NextToken = $DescribeWorkspaceBundlesResult->NextToken;
 
     # Returns a L<Paws::WorkSpaces::DescribeWorkspaceBundlesResult> object.
 

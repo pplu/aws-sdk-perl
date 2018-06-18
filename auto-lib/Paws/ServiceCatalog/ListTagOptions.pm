@@ -40,8 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $TagOptionDetails = $ListTagOptionsOutput->TagOptionDetails;
     my $PageToken        = $ListTagOptionsOutput->PageToken;
+    my $TagOptionDetails = $ListTagOptionsOutput->TagOptionDetails;
 
     # Returns a L<Paws::ServiceCatalog::ListTagOptionsOutput> object.
 

@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       HsmClientCertificateIdentifier => 'MyString',
       Tags                           => [
         {
-          Value => 'MyString',
           Key   => 'MyString',
+          Value => 'MyString',
         },
         ...
       ],    # OPTIONAL

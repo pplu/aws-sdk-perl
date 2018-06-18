@@ -41,22 +41,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name         => 'MyNameString',
       Role         => 'MyRole',
       Targets      => {
-        S3Targets => [
-          {
-            Exclusions => [
-              'MyPath', ...    # OPTIONAL
-            ],                 # OPTIONAL
-            Path => 'MyPath',  # OPTIONAL
-          },
-          ...
-        ],                     # OPTIONAL
         JdbcTargets => [
           {
-            Path           => 'MyPath',              # OPTIONAL
             ConnectionName => 'MyConnectionName',    # OPTIONAL
             Exclusions     => [
               'MyPath', ...                          # OPTIONAL
             ],                                       # OPTIONAL
+            Path => 'MyPath',                        # OPTIONAL
+          },
+          ...
+        ],                                           # OPTIONAL
+        S3Targets => [
+          {
+            Exclusions => [
+              'MyPath', ...                          # OPTIONAL
+            ],                                       # OPTIONAL
+            Path => 'MyPath',                        # OPTIONAL
           },
           ...
         ],                                           # OPTIONAL
@@ -68,9 +68,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description        => 'MyDescriptionString',       # OPTIONAL
       Schedule           => 'MyCronExpression',          # OPTIONAL
       SchemaChangePolicy => {
-        UpdateBehavior => 'LOG',    # values: LOG, UPDATE_IN_DATABASE; OPTIONAL
         DeleteBehavior => 'LOG'
         ,   # values: LOG, DELETE_FROM_DATABASE, DEPRECATE_IN_DATABASE; OPTIONAL
+        UpdateBehavior => 'LOG',    # values: LOG, UPDATE_IN_DATABASE; OPTIONAL
       },    # OPTIONAL
       TablePrefix => 'MyTablePrefix',    # OPTIONAL
     );

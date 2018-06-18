@@ -32,18 +32,47 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateApplicationResponse = $kinesisanalytics->UpdateApplication(
       ApplicationName   => 'MyApplicationName',
       ApplicationUpdate => {
+        ApplicationCodeUpdate => 'MyApplicationCode',    # max: 51200; OPTIONAL
+        CloudWatchLoggingOptionUpdates => [
+          {
+            CloudWatchLoggingOptionId => 'MyId',         # min: 1, max: 50
+            LogStreamARNUpdate =>
+              'MyLogStreamARN',    # min: 1, max: 2048; OPTIONAL
+            RoleARNUpdate => 'MyRoleARN',    # min: 1, max: 2048; OPTIONAL
+          },
+          ...
+        ],                                   # OPTIONAL
         InputUpdates => [
           {
-            InputId          => 'MyId',              # min: 1, max: 50
-            NamePrefixUpdate => 'MyInAppStreamName', # min: 1, max: 32; OPTIONAL
+            InputId                => 'MyId',    # min: 1, max: 50
+            InputParallelismUpdate => {
+              CountUpdate => 1,                  # min: 1, max: 64; OPTIONAL
+            },    # OPTIONAL
+            InputProcessingConfigurationUpdate => {
+              InputLambdaProcessorUpdate => {
+                ResourceARNUpdate =>
+                  'MyResourceARN',    # min: 1, max: 2048; OPTIONAL
+                RoleARNUpdate => 'MyRoleARN',    # min: 1, max: 2048; OPTIONAL
+              },
+
+            },    # OPTIONAL
             InputSchemaUpdate => {
-              RecordFormatUpdate => {
-                RecordFormatType  => 'JSON',    # values: JSON, CSV; OPTIONAL
+              RecordColumnUpdates => [
+                {
+                  Name    => 'MyRecordColumnName',
+                  SqlType => 'MyRecordColumnSqlType',    # min: 1,
+                  Mapping => 'MyRecordColumnMapping',    # OPTIONAL
+                },
+                ...
+              ],    # min: 1, max: 1000; OPTIONAL
+              RecordEncodingUpdate => 'MyRecordEncoding',    # OPTIONAL
+              RecordFormatUpdate   => {
+                RecordFormatType  => 'JSON',                 # values: JSON, CSV
                 MappingParameters => {
                   CSVMappingParameters => {
-                    RecordRowDelimiter => 'MyRecordRowDelimiter',    # min: 1,
                     RecordColumnDelimiter =>
-                      'MyRecordColumnDelimiter',                     # min: 1,
+                      'MyRecordColumnDelimiter',             # min: 1,
+                    RecordRowDelimiter => 'MyRecordRowDelimiter',    # min: 1,
 
                   },    # OPTIONAL
                   JSONMappingParameters => {
@@ -51,69 +80,50 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                   },    # OPTIONAL
                 },    # OPTIONAL
-              },
-              RecordEncodingUpdate => 'MyRecordEncoding',    # OPTIONAL
-              RecordColumnUpdates  => [
-                {
-                  Name    => 'MyRecordColumnName',
-                  SqlType => 'MyRecordColumnSqlType',        # min: 1,
-                  Mapping => 'MyRecordColumnMapping',        # OPTIONAL
-                },
-                ...
-              ],                                             # min: 1, max: 1000
-            },    # OPTIONAL
-            InputProcessingConfigurationUpdate => {
-              InputLambdaProcessorUpdate => {
-                RoleARNUpdate => 'MyRoleARN',    # min: 1, max: 2048; OPTIONAL
-                ResourceARNUpdate =>
-                  'MyResourceARN',               # min: 1, max: 2048; OPTIONAL
-              },
-
-            },    # OPTIONAL
-            KinesisStreamsInputUpdate => {
-              RoleARNUpdate => 'MyRoleARN',    # min: 1, max: 2048; OPTIONAL
-              ResourceARNUpdate =>
-                'MyResourceARN',               # min: 1, max: 2048; OPTIONAL
+              },    # OPTIONAL
             },    # OPTIONAL
             KinesisFirehoseInputUpdate => {
               ResourceARNUpdate =>
                 'MyResourceARN',    # min: 1, max: 2048; OPTIONAL
               RoleARNUpdate => 'MyRoleARN',    # min: 1, max: 2048; OPTIONAL
             },    # OPTIONAL
-            InputParallelismUpdate => {
-              CountUpdate => 1,    # min: 1, max: 64; OPTIONAL
+            KinesisStreamsInputUpdate => {
+              ResourceARNUpdate =>
+                'MyResourceARN',    # min: 1, max: 2048; OPTIONAL
+              RoleARNUpdate => 'MyRoleARN',    # min: 1, max: 2048; OPTIONAL
             },    # OPTIONAL
+            NamePrefixUpdate => 'MyInAppStreamName', # min: 1, max: 32; OPTIONAL
           },
           ...
-        ],        # OPTIONAL
+        ],                                           # OPTIONAL
         OutputUpdates => [
           {
-            OutputId                    => 'MyId',    # min: 1, max: 50
-            KinesisFirehoseOutputUpdate => {
-              RoleARNUpdate => 'MyRoleARN',    # min: 1, max: 2048; OPTIONAL
-              ResourceARNUpdate =>
-                'MyResourceARN',               # min: 1, max: 2048; OPTIONAL
+            OutputId                => 'MyId',       # min: 1, max: 50
+            DestinationSchemaUpdate => {
+              RecordFormatType => 'JSON',            # values: JSON, CSV
             },    # OPTIONAL
-            LambdaOutputUpdate => {
-              RoleARNUpdate => 'MyRoleARN',    # min: 1, max: 2048; OPTIONAL
+            KinesisFirehoseOutputUpdate => {
               ResourceARNUpdate =>
-                'MyResourceARN',               # min: 1, max: 2048; OPTIONAL
+                'MyResourceARN',    # min: 1, max: 2048; OPTIONAL
+              RoleARNUpdate => 'MyRoleARN',    # min: 1, max: 2048; OPTIONAL
             },    # OPTIONAL
             KinesisStreamsOutputUpdate => {
-              RoleARNUpdate => 'MyRoleARN',    # min: 1, max: 2048; OPTIONAL
               ResourceARNUpdate =>
-                'MyResourceARN',               # min: 1, max: 2048; OPTIONAL
+                'MyResourceARN',    # min: 1, max: 2048; OPTIONAL
+              RoleARNUpdate => 'MyRoleARN',    # min: 1, max: 2048; OPTIONAL
+            },    # OPTIONAL
+            LambdaOutputUpdate => {
+              ResourceARNUpdate =>
+                'MyResourceARN',    # min: 1, max: 2048; OPTIONAL
+              RoleARNUpdate => 'MyRoleARN',    # min: 1, max: 2048; OPTIONAL
             },    # OPTIONAL
             NameUpdate => 'MyInAppStreamName',    # min: 1, max: 32; OPTIONAL
-            DestinationSchemaUpdate => {
-              RecordFormatType => 'JSON',         # values: JSON, CSV; OPTIONAL
-            },    # OPTIONAL
           },
           ...
-        ],        # OPTIONAL
+        ],                                        # OPTIONAL
         ReferenceDataSourceUpdates => [
           {
-            ReferenceId           => 'MyId',    # min: 1, max: 50
+            ReferenceId           => 'MyId',      # min: 1, max: 50
             ReferenceSchemaUpdate => {
               RecordColumns => [
                 {
@@ -122,14 +132,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   Mapping => 'MyRecordColumnMapping',    # OPTIONAL
                 },
                 ...
-              ],                                         # min: 1, max: 1000
+              ],    # min: 1, max: 1000; OPTIONAL
               RecordFormat => {
-                RecordFormatType  => 'JSON',    # values: JSON, CSV; OPTIONAL
+                RecordFormatType  => 'JSON',    # values: JSON, CSV
                 MappingParameters => {
                   CSVMappingParameters => {
-                    RecordRowDelimiter => 'MyRecordRowDelimiter',    # min: 1,
                     RecordColumnDelimiter =>
-                      'MyRecordColumnDelimiter',                     # min: 1,
+                      'MyRecordColumnDelimiter',    # min: 1,
+                    RecordRowDelimiter => 'MyRecordRowDelimiter',    # min: 1,
 
                   },    # OPTIONAL
                   JSONMappingParameters => {
@@ -137,29 +147,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                   },    # OPTIONAL
                 },    # OPTIONAL
-              },
+              },    # OPTIONAL
               RecordEncoding => 'MyRecordEncoding',    # OPTIONAL
             },    # OPTIONAL
-            TableNameUpdate => 'MyInAppTableName',   # min: 1, max: 32; OPTIONAL
             S3ReferenceDataSourceUpdate => {
               BucketARNUpdate => 'MyBucketARN',    # min: 1, max: 2048; OPTIONAL
+              FileKeyUpdate   => 'MyFileKey',      # min: 1, max: 1024; OPTIONAL
               ReferenceRoleARNUpdate =>
                 'MyRoleARN',                       # min: 1, max: 2048; OPTIONAL
-              FileKeyUpdate => 'MyFileKey',        # min: 1, max: 1024; OPTIONAL
             },    # OPTIONAL
+            TableNameUpdate => 'MyInAppTableName',   # min: 1, max: 32; OPTIONAL
           },
           ...
-        ],        # OPTIONAL
-        ApplicationCodeUpdate => 'MyApplicationCode',    # max: 51200; OPTIONAL
-        CloudWatchLoggingOptionUpdates => [
-          {
-            CloudWatchLoggingOptionId => 'MyId',         # min: 1, max: 50
-            RoleARNUpdate => 'MyRoleARN',    # min: 1, max: 2048; OPTIONAL
-            LogStreamARNUpdate =>
-              'MyLogStreamARN',              # min: 1, max: 2048; OPTIONAL
-          },
-          ...
-        ],                                   # OPTIONAL
+        ],                                           # OPTIONAL
       },
       CurrentApplicationVersionId => 1,
 

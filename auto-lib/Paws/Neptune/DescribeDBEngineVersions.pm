@@ -42,8 +42,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EngineVersion          => 'MyString',    # OPTIONAL
       Filters                => [
         {
-          Values => [ 'MyString', ... ],
           Name   => 'MyString',
+          Values => [ 'MyString', ... ],
 
         },
         ...
@@ -55,8 +55,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Marker           = $DBEngineVersionMessage->Marker;
     my $DBEngineVersions = $DBEngineVersionMessage->DBEngineVersions;
+    my $Marker           = $DBEngineVersionMessage->Marker;
 
     # Returns a L<Paws::Neptune::DBEngineVersionMessage> object.
 

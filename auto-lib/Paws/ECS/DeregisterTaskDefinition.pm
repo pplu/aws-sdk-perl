@@ -33,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $taskDefinition = $DeregisterTaskDefinitionResponse->taskDefinition;
+    my $TaskDefinition = $DeregisterTaskDefinitionResponse->TaskDefinition;
 
     # Returns a L<Paws::ECS::DeregisterTaskDefinitionResponse> object.
 

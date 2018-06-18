@@ -51,16 +51,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $SSEKMSKeyId    = $CompleteMultipartUploadOutput->SSEKMSKeyId;
+    my $Bucket         = $CompleteMultipartUploadOutput->Bucket;
     my $ETag           = $CompleteMultipartUploadOutput->ETag;
     my $Expiration     = $CompleteMultipartUploadOutput->Expiration;
+    my $Key            = $CompleteMultipartUploadOutput->Key;
+    my $Location       = $CompleteMultipartUploadOutput->Location;
     my $RequestCharged = $CompleteMultipartUploadOutput->RequestCharged;
+    my $SSEKMSKeyId    = $CompleteMultipartUploadOutput->SSEKMSKeyId;
     my $ServerSideEncryption =
       $CompleteMultipartUploadOutput->ServerSideEncryption;
     my $VersionId = $CompleteMultipartUploadOutput->VersionId;
-    my $Bucket    = $CompleteMultipartUploadOutput->Bucket;
-    my $Key       = $CompleteMultipartUploadOutput->Key;
-    my $Location  = $CompleteMultipartUploadOutput->Location;
 
     # Returns a L<Paws::S3::CompleteMultipartUploadOutput> object.
 

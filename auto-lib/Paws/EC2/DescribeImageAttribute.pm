@@ -36,14 +36,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $SriovNetSupport     = $ImageAttribute->SriovNetSupport;
-    my $LaunchPermissions   = $ImageAttribute->LaunchPermissions;
-    my $RamdiskId           = $ImageAttribute->RamdiskId;
-    my $ProductCodes        = $ImageAttribute->ProductCodes;
-    my $ImageId             = $ImageAttribute->ImageId;
     my $BlockDeviceMappings = $ImageAttribute->BlockDeviceMappings;
-    my $KernelId            = $ImageAttribute->KernelId;
     my $Description         = $ImageAttribute->Description;
+    my $ImageId             = $ImageAttribute->ImageId;
+    my $KernelId            = $ImageAttribute->KernelId;
+    my $LaunchPermissions   = $ImageAttribute->LaunchPermissions;
+    my $ProductCodes        = $ImageAttribute->ProductCodes;
+    my $RamdiskId           = $ImageAttribute->RamdiskId;
+    my $SriovNetSupport     = $ImageAttribute->SriovNetSupport;
 
     # Returns a L<Paws::EC2::ImageAttribute> object.
 

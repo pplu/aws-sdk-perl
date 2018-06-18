@@ -42,10 +42,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Features          = $Account->Features;
-    my $ThrottleSettings  = $Account->ThrottleSettings;
-    my $CloudwatchRoleArn = $Account->CloudwatchRoleArn;
-    my $ApiKeyVersion     = $Account->ApiKeyVersion;
+    my $apiKeyVersion     = $Account->apiKeyVersion;
+    my $cloudwatchRoleArn = $Account->cloudwatchRoleArn;
+    my $features          = $Account->features;
+    my $throttleSettings  = $Account->throttleSettings;
 
     # Returns a L<Paws::ApiGateway::Account> object.
 

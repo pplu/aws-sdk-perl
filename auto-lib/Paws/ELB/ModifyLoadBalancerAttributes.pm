@@ -44,10 +44,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $LoadBalancerName =
-      $ModifyLoadBalancerAttributesOutput->LoadBalancerName;
     my $LoadBalancerAttributes =
       $ModifyLoadBalancerAttributesOutput->LoadBalancerAttributes;
+    my $LoadBalancerName =
+      $ModifyLoadBalancerAttributesOutput->LoadBalancerName;
 
     # Returns a L<Paws::ELB::ModifyLoadBalancerAttributesOutput> object.
     # To enable connection draining

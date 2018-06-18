@@ -34,20 +34,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DeploymentConfigName => 'MyDeploymentConfigName',
       ComputePlatform      => 'Server',                   # OPTIONAL
       MinimumHealthyHosts  => {
-        value => 1,               # OPTIONAL
         type  => 'HOST_COUNT',    # values: HOST_COUNT, FLEET_PERCENT; OPTIONAL
+        value => 1,               # OPTIONAL
       },    # OPTIONAL
       TrafficRoutingConfig => {
+        timeBasedCanary => {
+          canaryInterval   => 1,    # OPTIONAL
+          canaryPercentage => 1,    # OPTIONAL
+        },    # OPTIONAL
         timeBasedLinear => {
           linearInterval   => 1,    # OPTIONAL
           linearPercentage => 1,    # OPTIONAL
         },    # OPTIONAL
         type => 'TimeBasedCanary'
         ,     # values: TimeBasedCanary, TimeBasedLinear, AllAtOnce; OPTIONAL
-        timeBasedCanary => {
-          canaryPercentage => 1,    # OPTIONAL
-          canaryInterval   => 1,    # OPTIONAL
-        },    # OPTIONAL
       },    # OPTIONAL
     );
 

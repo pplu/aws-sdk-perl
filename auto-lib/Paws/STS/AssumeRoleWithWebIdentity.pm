@@ -35,23 +35,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To assume a role as an OpenID Connect-federated user
     my $AssumeRoleWithWebIdentityResponse = $sts->AssumeRoleWithWebIdentity(
       {
-        'RoleArn' => 'arn:aws:iam::123456789012:role/FederatedWebIdentityRole',
-        'WebIdentityToken' =>
-'Atza%7CIQEBLjAsAhRFiXuWpUXuRvQ9PZL3GMFcYevydwIUFAHZwXZXXXXXXXXJnrulxKDHwy87oGKPznh0D6bEQZTSCzyoCtL_8S07pLpr0zMbn6w1lfVZKNTBdDansFBmtGnIsIapjI6xKR02Yc_2bQ8LZbUXSGm6Ry6_BG7PrtLZtj_dfCTj92xNGed-CrKqjG7nPBjNIL016GGvuS5gSvPRUxWES3VYfm1wl7WTI7jn-Pcb6M-buCgHhFOzTQxod27L9CqnOLio7N3gZAGpsp6n1-AJBOCJckcyXe2c6uD0srOJeZlKUm2eTDVMf8IehDVI0r1QOnTV6KzzAI3OY87Vd_cVMQ',
-        'RoleSessionName' => 'app1',
         'DurationSeconds' => 3600,
-        'ProviderId'      => 'www.amazon.com'
+        'ProviderId'      => 'www.amazon.com',
+        'RoleArn' => 'arn:aws:iam::123456789012:role/FederatedWebIdentityRole',
+        'RoleSessionName' => 'app1',
+        'WebIdentityToken' =>
+'Atza%7CIQEBLjAsAhRFiXuWpUXuRvQ9PZL3GMFcYevydwIUFAHZwXZXXXXXXXXJnrulxKDHwy87oGKPznh0D6bEQZTSCzyoCtL_8S07pLpr0zMbn6w1lfVZKNTBdDansFBmtGnIsIapjI6xKR02Yc_2bQ8LZbUXSGm6Ry6_BG7PrtLZtj_dfCTj92xNGed-CrKqjG7nPBjNIL016GGvuS5gSvPRUxWES3VYfm1wl7WTI7jn-Pcb6M-buCgHhFOzTQxod27L9CqnOLio7N3gZAGpsp6n1-AJBOCJckcyXe2c6uD0srOJeZlKUm2eTDVMf8IehDVI0r1QOnTV6KzzAI3OY87Vd_cVMQ'
       }
     );
 
     # Results:
-    my $Provider         = $AssumeRoleWithWebIdentityResponse->Provider;
-    my $PackedPolicySize = $AssumeRoleWithWebIdentityResponse->PackedPolicySize;
+    my $AssumedRoleUser  = $AssumeRoleWithWebIdentityResponse->AssumedRoleUser;
     my $Audience         = $AssumeRoleWithWebIdentityResponse->Audience;
+    my $Credentials      = $AssumeRoleWithWebIdentityResponse->Credentials;
+    my $PackedPolicySize = $AssumeRoleWithWebIdentityResponse->PackedPolicySize;
+    my $Provider         = $AssumeRoleWithWebIdentityResponse->Provider;
     my $SubjectFromWebIdentityToken =
       $AssumeRoleWithWebIdentityResponse->SubjectFromWebIdentityToken;
-    my $Credentials     = $AssumeRoleWithWebIdentityResponse->Credentials;
-    my $AssumedRoleUser = $AssumeRoleWithWebIdentityResponse->AssumedRoleUser;
 
     # Returns a L<Paws::STS::AssumeRoleWithWebIdentityResponse> object.
 

@@ -39,15 +39,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateGrantResponse = $kms->CreateGrant(
       {
         'GranteePrincipal' => 'arn:aws:iam::111122223333:role/ExampleRole',
-        'Operations'       => [ 'Encrypt', 'Decrypt' ],
         'KeyId' =>
-'arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab'
+'arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab',
+        'Operations' => [ 'Encrypt', 'Decrypt' ]
       }
     );
 
     # Results:
-    my $GrantToken = $CreateGrantResponse->GrantToken;
     my $GrantId    = $CreateGrantResponse->GrantId;
+    my $GrantToken = $CreateGrantResponse->GrantToken;
 
     # Returns a L<Paws::KMS::CreateGrantResponse> object.
 

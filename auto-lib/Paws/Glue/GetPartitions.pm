@@ -41,8 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MaxResults   => 1,                      # OPTIONAL
       NextToken    => 'MyToken',              # OPTIONAL
       Segment      => {
-        TotalSegments => 1,                   # min: 1, max: 10
         SegmentNumber => 1,
+        TotalSegments => 1,                   # min: 1, max: 10
 
       },    # OPTIONAL
     );

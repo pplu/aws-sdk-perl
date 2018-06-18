@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $GetDimensionValuesResponse = $ce->GetDimensionValues(
       Dimension  => 'AZ',
       TimePeriod => {
-        Start => 'MyYearMonthDay',
         End   => 'MyYearMonthDay',
+        Start => 'MyYearMonthDay',
 
       },
       Context       => 'COST_AND_USAGE',     # OPTIONAL
@@ -45,9 +45,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $DimensionValues = $GetDimensionValuesResponse->DimensionValues;
+    my $NextPageToken   = $GetDimensionValuesResponse->NextPageToken;
     my $ReturnSize      = $GetDimensionValuesResponse->ReturnSize;
     my $TotalSize       = $GetDimensionValuesResponse->TotalSize;
-    my $NextPageToken   = $GetDimensionValuesResponse->NextPageToken;
 
     # Returns a L<Paws::CostExplorer::GetDimensionValuesResponse> object.
 

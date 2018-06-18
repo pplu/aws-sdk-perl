@@ -47,8 +47,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Info => {
           'MyProvisioningArtifactInfoKey' => 'MyProvisioningArtifactInfoValue',
         },    # min: 1, max: 100
-        Name        => 'MyProvisioningArtifactName',           # OPTIONAL
         Description => 'MyProvisioningArtifactDescription',    # OPTIONAL
+        Name        => 'MyProvisioningArtifactName',           # OPTIONAL
         Type        => 'CLOUD_FORMATION_TEMPLATE'
         , # values: CLOUD_FORMATION_TEMPLATE, MARKETPLACE_AMI, MARKETPLACE_CAR; OPTIONAL
       },
@@ -60,8 +60,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SupportUrl         => 'MySupportUrl',                     # OPTIONAL
       Tags               => [
         {
-          Value => 'MyTagValue',    # min: 1, max: 256
           Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # min: 1, max: 256
 
         },
         ...

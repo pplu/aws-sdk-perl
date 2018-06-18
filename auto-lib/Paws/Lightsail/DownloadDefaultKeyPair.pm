@@ -29,8 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DownloadDefaultKeyPairResult = $lightsail->DownloadDefaultKeyPair();
 
     # Results:
-    my $PublicKeyBase64  = $DownloadDefaultKeyPairResult->PublicKeyBase64;
     my $PrivateKeyBase64 = $DownloadDefaultKeyPairResult->PrivateKeyBase64;
+    my $PublicKeyBase64  = $DownloadDefaultKeyPairResult->PublicKeyBase64;
 
     # Returns a L<Paws::Lightsail::DownloadDefaultKeyPairResult> object.
 

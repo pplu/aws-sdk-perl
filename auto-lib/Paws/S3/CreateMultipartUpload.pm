@@ -79,15 +79,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $AbortRuleId = $CreateMultipartUploadOutput->AbortRuleId;
-    my $Bucket      = $CreateMultipartUploadOutput->Bucket;
-    my $Key         = $CreateMultipartUploadOutput->Key;
-    my $SSEKMSKeyId = $CreateMultipartUploadOutput->SSEKMSKeyId;
+    my $AbortDate      = $CreateMultipartUploadOutput->AbortDate;
+    my $AbortRuleId    = $CreateMultipartUploadOutput->AbortRuleId;
+    my $Bucket         = $CreateMultipartUploadOutput->Bucket;
+    my $Key            = $CreateMultipartUploadOutput->Key;
+    my $RequestCharged = $CreateMultipartUploadOutput->RequestCharged;
     my $SSECustomerAlgorithm =
       $CreateMultipartUploadOutput->SSECustomerAlgorithm;
     my $SSECustomerKeyMD5 = $CreateMultipartUploadOutput->SSECustomerKeyMD5;
-    my $AbortDate         = $CreateMultipartUploadOutput->AbortDate;
-    my $RequestCharged    = $CreateMultipartUploadOutput->RequestCharged;
+    my $SSEKMSKeyId       = $CreateMultipartUploadOutput->SSEKMSKeyId;
     my $ServerSideEncryption =
       $CreateMultipartUploadOutput->ServerSideEncryption;
     my $UploadId = $CreateMultipartUploadOutput->UploadId;

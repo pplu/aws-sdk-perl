@@ -41,8 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $PullRequestEvents = $DescribePullRequestEventsOutput->PullRequestEvents;
     my $NextToken         = $DescribePullRequestEventsOutput->NextToken;
+    my $PullRequestEvents = $DescribePullRequestEventsOutput->PullRequestEvents;
 
     # Returns a L<Paws::CodeCommit::DescribePullRequestEventsOutput> object.
 

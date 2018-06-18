@@ -38,7 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $reprocessingId = $StartPipelineReprocessingResponse->reprocessingId;
+    my $ReprocessingId = $StartPipelineReprocessingResponse->ReprocessingId;
 
     # Returns a L<Paws::IoTAnalytics::StartPipelineReprocessingResponse> object.
 

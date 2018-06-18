@@ -38,11 +38,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'Keys' => [
 
               {
-                'SongTitle' => {
-                  'S' => 'Call Me Today'
-                },
                 'Artist' => {
                   'S' => 'No One You Know'
+                },
+                'SongTitle' => {
+                  'S' => 'Call Me Today'
                 }
               },
 

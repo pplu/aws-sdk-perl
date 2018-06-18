@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $TagList   = $ListTagsResponse->TagList;
     my $NextToken = $ListTagsResponse->NextToken;
+    my $TagList   = $ListTagsResponse->TagList;
 
     # Returns a L<Paws::CloudHSMv2::ListTagsResponse> object.
 

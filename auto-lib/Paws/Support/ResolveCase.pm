@@ -32,8 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $InitialCaseStatus = $ResolveCaseResponse->InitialCaseStatus;
     my $FinalCaseStatus   = $ResolveCaseResponse->FinalCaseStatus;
+    my $InitialCaseStatus = $ResolveCaseResponse->InitialCaseStatus;
 
     # Returns a L<Paws::Support::ResolveCaseResponse> object.
 

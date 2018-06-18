@@ -33,20 +33,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       FleetId                         => 'MyFleetId',
       InboundPermissionAuthorizations => [
         {
-          ToPort   => 1,                    # min: 1, max: 60000
-          Protocol => 'TCP',                # values: TCP, UDP
           FromPort => 1,                    # min: 1, max: 60000
           IpRange  => 'MyNonBlankString',
+          Protocol => 'TCP',                # values: TCP, UDP
+          ToPort   => 1,                    # min: 1, max: 60000
 
         },
         ...
       ],                                    # OPTIONAL
       InboundPermissionRevocations => [
         {
-          ToPort   => 1,                    # min: 1, max: 60000
-          Protocol => 'TCP',                # values: TCP, UDP
           FromPort => 1,                    # min: 1, max: 60000
           IpRange  => 'MyNonBlankString',
+          Protocol => 'TCP',                # values: TCP, UDP
+          ToPort   => 1,                    # min: 1, max: 60000
 
         },
         ...

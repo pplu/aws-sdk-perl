@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $NumResults = $ListWorkersWithQualificationTypeResponse->NumResults;
     my $NextToken  = $ListWorkersWithQualificationTypeResponse->NextToken;
+    my $NumResults = $ListWorkersWithQualificationTypeResponse->NumResults;
     my $Qualifications =
       $ListWorkersWithQualificationTypeResponse->Qualifications;
 

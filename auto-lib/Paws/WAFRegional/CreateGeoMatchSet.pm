@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $GeoMatchSet = $CreateGeoMatchSetResponse->GeoMatchSet;
     my $ChangeToken = $CreateGeoMatchSetResponse->ChangeToken;
+    my $GeoMatchSet = $CreateGeoMatchSetResponse->GeoMatchSet;
 
     # Returns a L<Paws::WAFRegional::CreateGeoMatchSetResponse> object.
 

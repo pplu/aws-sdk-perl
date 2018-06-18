@@ -38,9 +38,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $Location = $CreateQueryLoggingConfigResponse->Location;
     my $QueryLoggingConfig =
       $CreateQueryLoggingConfigResponse->QueryLoggingConfig;
-    my $Location = $CreateQueryLoggingConfigResponse->Location;
 
     # Returns a L<Paws::Route53::CreateQueryLoggingConfigResponse> object.
 

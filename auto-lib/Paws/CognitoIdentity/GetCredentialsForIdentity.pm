@@ -40,8 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $IdentityId  = $GetCredentialsForIdentityResponse->IdentityId;
     my $Credentials = $GetCredentialsForIdentityResponse->Credentials;
+    my $IdentityId  = $GetCredentialsForIdentityResponse->IdentityId;
 
  # Returns a L<Paws::CognitoIdentity::GetCredentialsForIdentityResponse> object.
 

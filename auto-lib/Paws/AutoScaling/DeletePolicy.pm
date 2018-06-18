@@ -32,8 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example deletes the specified Auto Scaling policy.
     $autoscaling->DeletePolicy(
       {
-        'PolicyName'           => 'ScaleIn',
-        'AutoScalingGroupName' => 'my-auto-scaling-group'
+        'AutoScalingGroupName' => 'my-auto-scaling-group',
+        'PolicyName'           => 'ScaleIn'
       }
     );
 

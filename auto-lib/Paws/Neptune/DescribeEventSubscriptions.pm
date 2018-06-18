@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $EventSubscriptionsMessage = $rds->DescribeEventSubscriptions(
       Filters => [
         {
-          Values => [ 'MyString', ... ],
           Name   => 'MyString',
+          Values => [ 'MyString', ... ],
 
         },
         ...
@@ -45,9 +45,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Marker = $EventSubscriptionsMessage->Marker;
     my $EventSubscriptionsList =
       $EventSubscriptionsMessage->EventSubscriptionsList;
+    my $Marker = $EventSubscriptionsMessage->Marker;
 
     # Returns a L<Paws::Neptune::EventSubscriptionsMessage> object.
 

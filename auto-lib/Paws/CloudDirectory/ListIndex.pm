@@ -43,31 +43,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       NextToken             => 'MyNextToken',       # OPTIONAL
       RangesOnIndexedValues => [
         {
+          AttributeKey => {
+            FacetName => 'MyFacetName',             # min: 1, max: 64
+            Name      => 'MyAttributeName',         # min: 1, max: 64
+            SchemaArn => 'MyArn',
+
+          },    # OPTIONAL
           Range => {
-            StartMode => 'FIRST'
-            , # values: FIRST, LAST, LAST_BEFORE_MISSING_VALUES, INCLUSIVE, EXCLUSIVE
             EndMode => 'FIRST'
             , # values: FIRST, LAST, LAST_BEFORE_MISSING_VALUES, INCLUSIVE, EXCLUSIVE
+            StartMode => 'FIRST'
+            , # values: FIRST, LAST, LAST_BEFORE_MISSING_VALUES, INCLUSIVE, EXCLUSIVE
             EndValue => {
-              DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
-              BooleanValue  => 1,                             # OPTIONAL
               BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
+              BooleanValue  => 1,                             # OPTIONAL
+              DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
               NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
               StringValue   => 'MyStringAttributeValue',      # OPTIONAL
             },    # OPTIONAL
             StartValue => {
-              DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
-              BooleanValue  => 1,                             # OPTIONAL
               BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
+              BooleanValue  => 1,                             # OPTIONAL
+              DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
               NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
               StringValue   => 'MyStringAttributeValue',      # OPTIONAL
             },    # OPTIONAL
-          },    # OPTIONAL
-          AttributeKey => {
-            FacetName => 'MyFacetName',        # min: 1, max: 64
-            SchemaArn => 'MyArn',
-            Name      => 'MyAttributeName',    # min: 1, max: 64
-
           },    # OPTIONAL
         },
         ...
@@ -75,8 +75,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken        = $ListIndexResponse->NextToken;
     my $IndexAttachments = $ListIndexResponse->IndexAttachments;
+    my $NextToken        = $ListIndexResponse->NextToken;
 
     # Returns a L<Paws::CloudDirectory::ListIndexResponse> object.
 

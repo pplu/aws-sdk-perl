@@ -41,8 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ScalingPolicies = $DescribeScalingPoliciesResponse->ScalingPolicies;
     my $NextToken       = $DescribeScalingPoliciesResponse->NextToken;
+    my $ScalingPolicies = $DescribeScalingPoliciesResponse->ScalingPolicies;
 
 # Returns a L<Paws::ApplicationAutoScaling::DescribeScalingPoliciesResponse> object.
 

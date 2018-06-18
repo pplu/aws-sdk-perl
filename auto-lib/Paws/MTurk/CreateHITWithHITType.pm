@@ -43,7 +43,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         PolicyName => 'MyString',
         Parameters => [
           {
-            Values     => [ 'MyString', ... ],    # OPTIONAL
             Key        => 'MyString',
             MapEntries => [
               {
@@ -52,6 +51,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },
               ...
             ],                                    # OPTIONAL
+            Values => [ 'MyString', ... ],        # OPTIONAL
           },
           ...
         ],                                        # OPTIONAL
@@ -69,7 +69,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         PolicyName => 'MyString',
         Parameters => [
           {
-            Values     => [ 'MyString', ... ],    # OPTIONAL
             Key        => 'MyString',
             MapEntries => [
               {
@@ -78,6 +77,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },
               ...
             ],                                    # OPTIONAL
+            Values => [ 'MyString', ... ],        # OPTIONAL
           },
           ...
         ],                                        # OPTIONAL

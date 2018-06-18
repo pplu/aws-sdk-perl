@@ -52,9 +52,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'MyScopeType', ...                     # min: 1, max: 256
       ],                                       # OPTIONAL
       AnalyticsConfiguration => {
+        ApplicationId  => 'MyHexStringType',
         ExternalId     => 'MyStringType',
         RoleArn        => 'MyArnType',         # min: 20, max: 2048
-        ApplicationId  => 'MyHexStringType',
         UserDataShared => 1,
       },    # OPTIONAL
       CallbackURLs => [

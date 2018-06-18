@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Suggest = $SuggestResponse->Suggest;
     my $Status  = $SuggestResponse->Status;
+    my $Suggest = $SuggestResponse->Suggest;
 
     # Returns a L<Paws::CloudSearchDomain::SuggestResponse> object.
 

@@ -40,9 +40,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         revisionSummary => 'MyRevisionSummary',    # min: 1, max: 2048; OPTIONAL
       },    # OPTIONAL
       ExecutionDetails => {
-        summary => 'MyExecutionSummary',    # min: 1, max: 2048; OPTIONAL
         externalExecutionId => 'MyExecutionId',    # min: 1, max: 1500; OPTIONAL
         percentComplete     => 1,                  # max: 100; OPTIONAL
+        summary => 'MyExecutionSummary',           # min: 1, max: 2048; OPTIONAL
       },    # OPTIONAL
     );
 

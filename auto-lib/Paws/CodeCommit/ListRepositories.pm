@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Repositories = $ListRepositoriesOutput->Repositories;
     my $NextToken    = $ListRepositoriesOutput->NextToken;
+    my $Repositories = $ListRepositoriesOutput->Repositories;
 
     # Returns a L<Paws::CodeCommit::ListRepositoriesOutput> object.
 

@@ -48,18 +48,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RoleARN         => 'MyRoleARN',        # OPTIONAL
       S3Configuration => {
         BucketARN => 'MyBucketARN',          # min: 1, max: 2048
-        RoleARN   => 'MyRoleARN',            # min: 1, max: 2048
         FileKey   => 'MyFileKey',            # min: 1, max: 1024
+        RoleARN   => 'MyRoleARN',            # min: 1, max: 2048
 
       },    # OPTIONAL
     );
 
     # Results:
-    my $ProcessedInputRecords =
-      $DiscoverInputSchemaResponse->ProcessedInputRecords;
     my $InputSchema        = $DiscoverInputSchemaResponse->InputSchema;
     my $ParsedInputRecords = $DiscoverInputSchemaResponse->ParsedInputRecords;
-    my $RawInputRecords    = $DiscoverInputSchemaResponse->RawInputRecords;
+    my $ProcessedInputRecords =
+      $DiscoverInputSchemaResponse->ProcessedInputRecords;
+    my $RawInputRecords = $DiscoverInputSchemaResponse->RawInputRecords;
 
     # Returns a L<Paws::KinesisAnalytics::DiscoverInputSchemaResponse> object.
 

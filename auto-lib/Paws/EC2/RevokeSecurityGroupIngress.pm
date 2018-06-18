@@ -44,31 +44,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       GroupName     => 'MyString',    # OPTIONAL
       IpPermissions => [
         {
-          FromPort => 1,
-          IpRanges => [
+          FromPort   => 1,
+          IpProtocol => 'MyString',
+          IpRanges   => [
             {
-              Description => 'MyString',
               CidrIp      => 'MyString',
-            },
-            ...
-          ],                          # OPTIONAL
-          UserIdGroupPairs => [
-            {
-              Description            => 'MyString',
-              PeeringStatus          => 'MyString',
-              GroupName              => 'MyString',
-              VpcPeeringConnectionId => 'MyString',
-              UserId                 => 'MyString',
-              GroupId                => 'MyString',
-              VpcId                  => 'MyString',
-            },
-            ...
-          ],                          # OPTIONAL
-          ToPort        => 1,
-          PrefixListIds => [
-            {
-              Description  => 'MyString',
-              PrefixListId => 'MyString',
+              Description => 'MyString',
             },
             ...
           ],                          # OPTIONAL
@@ -79,10 +60,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },
             ...
           ],                          # OPTIONAL
-          IpProtocol => 'MyString',
+          PrefixListIds => [
+            {
+              Description  => 'MyString',
+              PrefixListId => 'MyString',
+            },
+            ...
+          ],                          # OPTIONAL
+          ToPort           => 1,
+          UserIdGroupPairs => [
+            {
+              Description            => 'MyString',
+              GroupId                => 'MyString',
+              GroupName              => 'MyString',
+              PeeringStatus          => 'MyString',
+              UserId                 => 'MyString',
+              VpcId                  => 'MyString',
+              VpcPeeringConnectionId => 'MyString',
+            },
+            ...
+          ],    # OPTIONAL
         },
         ...
-      ],                              # OPTIONAL
+      ],        # OPTIONAL
       IpProtocol                 => 'MyString',    # OPTIONAL
       SourceSecurityGroupName    => 'MyString',    # OPTIONAL
       SourceSecurityGroupOwnerId => 'MyString',    # OPTIONAL

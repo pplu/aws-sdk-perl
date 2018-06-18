@@ -42,8 +42,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DayOfWeek    = $DescribeMaintenanceStartTimeOutput->DayOfWeek;
     my $GatewayARN   = $DescribeMaintenanceStartTimeOutput->GatewayARN;
     my $HourOfDay    = $DescribeMaintenanceStartTimeOutput->HourOfDay;
-    my $Timezone     = $DescribeMaintenanceStartTimeOutput->Timezone;
     my $MinuteOfHour = $DescribeMaintenanceStartTimeOutput->MinuteOfHour;
+    my $Timezone     = $DescribeMaintenanceStartTimeOutput->Timezone;
 
  # Returns a L<Paws::StorageGateway::DescribeMaintenanceStartTimeOutput> object.
 

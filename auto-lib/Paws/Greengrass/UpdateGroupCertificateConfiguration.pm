@@ -39,10 +39,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CertificateAuthorityExpiryInMilliseconds =
       $UpdateGroupCertificateConfigurationResponse
       ->CertificateAuthorityExpiryInMilliseconds;
-    my $GroupId = $UpdateGroupCertificateConfigurationResponse->GroupId;
     my $CertificateExpiryInMilliseconds =
       $UpdateGroupCertificateConfigurationResponse
       ->CertificateExpiryInMilliseconds;
+    my $GroupId = $UpdateGroupCertificateConfigurationResponse->GroupId;
 
 # Returns a L<Paws::Greengrass::UpdateGroupCertificateConfigurationResponse> object.
 

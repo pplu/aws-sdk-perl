@@ -35,12 +35,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CurrentApplicationVersionId => 1,
       ReferenceDataSource         => {
         ReferenceSchema => {
+          RecordColumns => [
+            {
+              Name    => 'MyRecordColumnName',
+              SqlType => 'MyRecordColumnSqlType',    # min: 1,
+              Mapping => 'MyRecordColumnMapping',    # OPTIONAL
+            },
+            ...
+          ],                                         # min: 1, max: 1000
           RecordFormat => {
-            RecordFormatType  => 'JSON',    # values: JSON, CSV
+            RecordFormatType  => 'JSON',             # values: JSON, CSV
             MappingParameters => {
               CSVMappingParameters => {
-                RecordRowDelimiter    => 'MyRecordRowDelimiter',       # min: 1,
                 RecordColumnDelimiter => 'MyRecordColumnDelimiter',    # min: 1,
+                RecordRowDelimiter    => 'MyRecordRowDelimiter',       # min: 1,
 
               },    # OPTIONAL
               JSONMappingParameters => {
@@ -49,21 +57,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
             },    # OPTIONAL
           },
-          RecordColumns => [
-            {
-              SqlType => 'MyRecordColumnSqlType',    # min: 1,
-              Name    => 'MyRecordColumnName',
-              Mapping => 'MyRecordColumnMapping',    # OPTIONAL
-            },
-            ...
-          ],                                         # min: 1, max: 1000
-          RecordEncoding => 'MyRecordEncoding',      # OPTIONAL
+          RecordEncoding => 'MyRecordEncoding',    # OPTIONAL
         },
         TableName             => 'MyInAppTableName',    # min: 1, max: 32
         S3ReferenceDataSource => {
+          BucketARN        => 'MyBucketARN',            # min: 1, max: 2048
           FileKey          => 'MyFileKey',              # min: 1, max: 1024
           ReferenceRoleARN => 'MyRoleARN',              # min: 1, max: 2048
-          BucketARN        => 'MyBucketARN',            # min: 1, max: 2048
 
         },    # OPTIONAL
       },

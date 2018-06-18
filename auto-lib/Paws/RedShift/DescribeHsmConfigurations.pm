@@ -40,8 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Marker            = $HsmConfigurationMessage->Marker;
     my $HsmConfigurations = $HsmConfigurationMessage->HsmConfigurations;
+    my $Marker            = $HsmConfigurationMessage->Marker;
 
     # Returns a L<Paws::RedShift::HsmConfigurationMessage> object.
 

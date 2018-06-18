@@ -33,24 +33,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $InputDataLocationS3 = $GetBatchPredictionOutput->InputDataLocationS3;
-    my $LogUri              = $GetBatchPredictionOutput->LogUri;
-    my $Name                = $GetBatchPredictionOutput->Name;
-    my $Status              = $GetBatchPredictionOutput->Status;
-    my $TotalRecordCount    = $GetBatchPredictionOutput->TotalRecordCount;
-    my $StartedAt           = $GetBatchPredictionOutput->StartedAt;
-    my $InvalidRecordCount  = $GetBatchPredictionOutput->InvalidRecordCount;
-    my $MLModelId           = $GetBatchPredictionOutput->MLModelId;
-    my $ComputeTime         = $GetBatchPredictionOutput->ComputeTime;
-    my $CreatedByIamUser    = $GetBatchPredictionOutput->CreatedByIamUser;
-    my $LastUpdatedAt       = $GetBatchPredictionOutput->LastUpdatedAt;
     my $BatchPredictionDataSourceId =
       $GetBatchPredictionOutput->BatchPredictionDataSourceId;
-    my $BatchPredictionId = $GetBatchPredictionOutput->BatchPredictionId;
-    my $Message           = $GetBatchPredictionOutput->Message;
-    my $CreatedAt         = $GetBatchPredictionOutput->CreatedAt;
-    my $FinishedAt        = $GetBatchPredictionOutput->FinishedAt;
-    my $OutputUri         = $GetBatchPredictionOutput->OutputUri;
+    my $BatchPredictionId   = $GetBatchPredictionOutput->BatchPredictionId;
+    my $ComputeTime         = $GetBatchPredictionOutput->ComputeTime;
+    my $CreatedAt           = $GetBatchPredictionOutput->CreatedAt;
+    my $CreatedByIamUser    = $GetBatchPredictionOutput->CreatedByIamUser;
+    my $FinishedAt          = $GetBatchPredictionOutput->FinishedAt;
+    my $InputDataLocationS3 = $GetBatchPredictionOutput->InputDataLocationS3;
+    my $InvalidRecordCount  = $GetBatchPredictionOutput->InvalidRecordCount;
+    my $LastUpdatedAt       = $GetBatchPredictionOutput->LastUpdatedAt;
+    my $LogUri              = $GetBatchPredictionOutput->LogUri;
+    my $MLModelId           = $GetBatchPredictionOutput->MLModelId;
+    my $Message             = $GetBatchPredictionOutput->Message;
+    my $Name                = $GetBatchPredictionOutput->Name;
+    my $OutputUri           = $GetBatchPredictionOutput->OutputUri;
+    my $StartedAt           = $GetBatchPredictionOutput->StartedAt;
+    my $Status              = $GetBatchPredictionOutput->Status;
+    my $TotalRecordCount    = $GetBatchPredictionOutput->TotalRecordCount;
 
     # Returns a L<Paws::MachineLearning::GetBatchPredictionOutput> object.
 

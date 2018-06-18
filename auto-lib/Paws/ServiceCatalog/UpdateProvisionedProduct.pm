@@ -46,8 +46,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ProvisioningParameters => [
         {
           Key              => 'MyParameterKey',    # min: 1, max: 1000; OPTIONAL
-          Value            => 'MyParameterValue',  # max: 4096; OPTIONAL
           UsePreviousValue => 1,                   # OPTIONAL
+          Value            => 'MyParameterValue',  # max: 4096; OPTIONAL
         },
         ...
       ],                                           # OPTIONAL

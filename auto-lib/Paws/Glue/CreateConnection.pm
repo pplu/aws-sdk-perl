@@ -30,25 +30,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $glue = Paws->service('Glue');
     my $CreateConnectionResponse = $glue->CreateConnection(
       ConnectionInput => {
-        Name                 => 'MyNameString',    # min: 1, max: 255
         ConnectionProperties => {
           'HOST' => 'MyValueString'
           , # key: values: HOST, PORT, USERNAME, PASSWORD, JDBC_DRIVER_JAR_URI, JDBC_DRIVER_CLASS_NAME, JDBC_ENGINE, JDBC_ENGINE_VERSION, CONFIG_FILES, INSTANCE_ID, JDBC_CONNECTION_URL, value: max: 1024
         },    # max: 100
-        ConnectionType                 => 'JDBC',    # values: JDBC, SFTP
+        ConnectionType => 'JDBC',                   # values: JDBC, SFTP
+        Name           => 'MyNameString',           # min: 1, max: 255
+        Description    => 'MyDescriptionString',    # max: 2048; OPTIONAL
+        MatchCriteria  => [
+          'MyNameString', ...                       # min: 1, max: 255
+        ],                                          # max: 10; OPTIONAL
         PhysicalConnectionRequirements => {
+          AvailabilityZone    => 'MyNameString',    # min: 1, max: 255
           SecurityGroupIdList => [
-            'MyNameString', ...                      # min: 1, max: 255
-          ],                                         # max: 50; OPTIONAL
-          AvailabilityZone => 'MyNameString',        # min: 1, max: 255
-          SubnetId         => 'MyNameString',        # min: 1, max: 255
+            'MyNameString', ...                     # min: 1, max: 255
+          ],                                        # max: 50; OPTIONAL
+          SubnetId => 'MyNameString',               # min: 1, max: 255
         },    # OPTIONAL
-        MatchCriteria => [
-          'MyNameString', ...    # min: 1, max: 255
-        ],                       # max: 10; OPTIONAL
-        Description => 'MyDescriptionString',    # max: 2048; OPTIONAL
       },
-      CatalogId => 'MyCatalogIdString',          # OPTIONAL
+      CatalogId => 'MyCatalogIdString',    # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

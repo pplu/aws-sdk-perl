@@ -47,11 +47,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Log     = $TestInvokeMethodResponse->Log;
-    my $Status  = $TestInvokeMethodResponse->Status;
-    my $Latency = $TestInvokeMethodResponse->Latency;
     my $Body    = $TestInvokeMethodResponse->Body;
     my $Headers = $TestInvokeMethodResponse->Headers;
+    my $Latency = $TestInvokeMethodResponse->Latency;
+    my $Log     = $TestInvokeMethodResponse->Log;
+    my $Status  = $TestInvokeMethodResponse->Status;
 
     # Returns a L<Paws::ApiGateway::TestInvokeMethodResponse> object.
 

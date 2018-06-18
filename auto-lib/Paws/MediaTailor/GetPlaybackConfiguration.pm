@@ -35,18 +35,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $VideoContentSourceUrl =
-      $GetPlaybackConfigurationResponse->VideoContentSourceUrl;
-    my $SessionInitializationEndpointPrefix =
-      $GetPlaybackConfigurationResponse->SessionInitializationEndpointPrefix;
-    my $SlateAdUrl = $GetPlaybackConfigurationResponse->SlateAdUrl;
-    my $PlaybackEndpointPrefix =
-      $GetPlaybackConfigurationResponse->PlaybackEndpointPrefix;
+    my $AdDecisionServerUrl =
+      $GetPlaybackConfigurationResponse->AdDecisionServerUrl;
     my $CdnConfiguration = $GetPlaybackConfigurationResponse->CdnConfiguration;
     my $HlsConfiguration = $GetPlaybackConfigurationResponse->HlsConfiguration;
     my $Name             = $GetPlaybackConfigurationResponse->Name;
-    my $AdDecisionServerUrl =
-      $GetPlaybackConfigurationResponse->AdDecisionServerUrl;
+    my $PlaybackEndpointPrefix =
+      $GetPlaybackConfigurationResponse->PlaybackEndpointPrefix;
+    my $SessionInitializationEndpointPrefix =
+      $GetPlaybackConfigurationResponse->SessionInitializationEndpointPrefix;
+    my $SlateAdUrl = $GetPlaybackConfigurationResponse->SlateAdUrl;
+    my $VideoContentSourceUrl =
+      $GetPlaybackConfigurationResponse->VideoContentSourceUrl;
 
     # Returns a L<Paws::MediaTailor::GetPlaybackConfigurationResponse> object.
 

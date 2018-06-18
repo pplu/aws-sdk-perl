@@ -33,9 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $MLModelId = $CreateRealtimeEndpointOutput->MLModelId;
     my $RealtimeEndpointInfo =
       $CreateRealtimeEndpointOutput->RealtimeEndpointInfo;
-    my $MLModelId = $CreateRealtimeEndpointOutput->MLModelId;
 
     # Returns a L<Paws::MachineLearning::CreateRealtimeEndpointOutput> object.
 

@@ -37,17 +37,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             AttributeActionType =>
               'CREATE_OR_UPDATE',   # values: CREATE_OR_UPDATE, DELETE; OPTIONAL
             AttributeUpdateValue => {
-              DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
-              BooleanValue  => 1,                             # OPTIONAL
-              NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
               BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
+              BooleanValue  => 1,                             # OPTIONAL
+              DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
+              NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
               StringValue   => 'MyStringAttributeValue',      # OPTIONAL
             },    # OPTIONAL
           },    # OPTIONAL
           AttributeKey => {
+            FacetName => 'MyFacetName',        # min: 1, max: 64
             Name      => 'MyAttributeName',    # min: 1, max: 64
             SchemaArn => 'MyArn',
-            FacetName => 'MyFacetName',        # min: 1, max: 64
 
           },    # OPTIONAL
         },
@@ -55,31 +55,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],
       DirectoryArn       => 'MyArn',
       TypedLinkSpecifier => {
-        SourceObjectReference => {
-          Selector => 'MySelectorObjectReference',    # OPTIONAL
-        },
-        TypedLinkFacet => {
-          TypedLinkName => 'MyTypedLinkName',
-          SchemaArn     => 'MyArn',
-
-        },
-        TargetObjectReference => {
-          Selector => 'MySelectorObjectReference',    # OPTIONAL
-        },
         IdentityAttributeValues => [
           {
-            AttributeName => 'MyAttributeName',       # min: 1, max: 64
+            AttributeName => 'MyAttributeName',    # min: 1, max: 64
             Value         => {
-              DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
-              BooleanValue  => 1,                             # OPTIONAL
-              NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
               BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
+              BooleanValue  => 1,                             # OPTIONAL
+              DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
+              NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
               StringValue   => 'MyStringAttributeValue',      # OPTIONAL
             },    # OPTIONAL
 
           },
           ...
         ],
+        SourceObjectReference => {
+          Selector => 'MySelectorObjectReference',    # OPTIONAL
+        },
+        TargetObjectReference => {
+          Selector => 'MySelectorObjectReference',    # OPTIONAL
+        },
+        TypedLinkFacet => {
+          SchemaArn     => 'MyArn',
+          TypedLinkName => 'MyTypedLinkName',
+
+        },
 
       },
 

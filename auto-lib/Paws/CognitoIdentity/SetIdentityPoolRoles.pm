@@ -42,15 +42,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           RulesConfiguration => {
             Rules => [
               {
-                RoleARN => 'MyARNString',    # min: 20, max: 2048
-                Claim   => 'MyClaimName',    # min: 1, max: 64
+                Claim => 'MyClaimName',    # min: 1, max: 64
                 MatchType =>
                   'Equals',    # values: Equals, Contains, StartsWith, NotEqual
-                Value => 'MyClaimValue',    # min: 1, max: 128
+                RoleARN => 'MyARNString',     # min: 20, max: 2048
+                Value   => 'MyClaimValue',    # min: 1, max: 128
 
               },
               ...
-            ],                              # min: 1, max: 25
+            ],                                # min: 1, max: 25
 
           },    # OPTIONAL
         },    # key: min: 1, max: 128

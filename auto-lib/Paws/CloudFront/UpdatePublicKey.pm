@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdatePublicKeyResult = $cloudfront->UpdatePublicKey(
       Id              => 'Mystring',
       PublicKeyConfig => {
+        CallerReference => 'Mystring',
         EncodedKey      => 'Mystring',
         Name            => 'Mystring',
-        CallerReference => 'Mystring',
         Comment         => 'Mystring',
       },
       IfMatch => 'Mystring',    # OPTIONAL

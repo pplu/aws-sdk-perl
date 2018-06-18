@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken   = $ListFunctionDefinitionsResponse->NextToken;
     my $Definitions = $ListFunctionDefinitionsResponse->Definitions;
+    my $NextToken   = $ListFunctionDefinitionsResponse->NextToken;
 
     # Returns a L<Paws::Greengrass::ListFunctionDefinitionsResponse> object.
 

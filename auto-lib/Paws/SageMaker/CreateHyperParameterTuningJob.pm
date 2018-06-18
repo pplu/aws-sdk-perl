@@ -38,75 +38,46 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Type       => 'Maximize',        # values: Maximize, Minimize
 
         },
-        Strategy       => 'Bayesian',      # values: Bayesian
-        ResourceLimits => {
-          MaxParallelTrainingJobs => 1,    # min: 1,
-          MaxNumberOfTrainingJobs => 1,    # min: 1,
-
-        },
         ParameterRanges => {
-          IntegerParameterRanges => [
-            {
-              MinValue => 'MyParameterValue',    # max: 256
-              MaxValue => 'MyParameterValue',    # max: 256
-              Name     => 'MyParameterKey',      # max: 256
-
-            },
-            ...
-          ],                                     # max: 20; OPTIONAL
           CategoricalParameterRanges => [
             {
-              Name   => 'MyParameterKey',        # max: 256
+              Name   => 'MyParameterKey',    # max: 256
               Values => [
-                'MyParameterValue', ...          # max: 256
-              ],                                 # min: 1, max: 20
+                'MyParameterValue', ...      # max: 256
+              ],                             # min: 1, max: 20
+
+            },
+            ...
+          ],                                 # max: 20; OPTIONAL
+          ContinuousParameterRanges => [
+            {
+              MaxValue => 'MyParameterValue',    # max: 256
+              MinValue => 'MyParameterValue',    # max: 256
+              Name     => 'MyParameterKey',      # max: 256
 
             },
             ...
           ],                                     # max: 20; OPTIONAL
-          ContinuousParameterRanges => [
+          IntegerParameterRanges => [
             {
+              MaxValue => 'MyParameterValue',    # max: 256
               MinValue => 'MyParameterValue',    # max: 256
               Name     => 'MyParameterKey',      # max: 256
-              MaxValue => 'MyParameterValue',    # max: 256
 
             },
             ...
           ],                                     # max: 20; OPTIONAL
         },
+        ResourceLimits => {
+          MaxNumberOfTrainingJobs => 1,          # min: 1,
+          MaxParallelTrainingJobs => 1,          # min: 1,
+
+        },
+        Strategy => 'Bayesian',                  # values: Bayesian
 
       },
       HyperParameterTuningJobName => 'MyHyperParameterTuningJobName',
       TrainingJobDefinition       => {
-        ResourceConfig => {
-          InstanceCount  => 1,                   # min: 1,
-          VolumeSizeInGB => 1,                   # min: 1,
-          InstanceType   => 'ml.m4.xlarge'
-          , # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge
-          VolumeKmsKeyId => 'MyKmsKeyId',    # max: 2048; OPTIONAL
-        },
-        InputDataConfig => [
-          {
-            ChannelName => 'MyChannelName',    # min: 1, max: 64
-            DataSource  => {
-              S3DataSource => {
-                S3Uri      => 'MyS3Uri',        # max: 1024
-                S3DataType => 'ManifestFile',   # values: ManifestFile, S3Prefix
-                S3DataDistributionType => 'FullyReplicated'
-                ,    # values: FullyReplicated, ShardedByS3Key; OPTIONAL
-              },
-
-            },
-            RecordWrapperType => 'None',    # values: None, RecordIO; OPTIONAL
-            ContentType     => 'MyContentType',   # max: 256; OPTIONAL
-            CompressionType => 'None',            # values: None, Gzip; OPTIONAL
-          },
-          ...
-        ],                                        # min: 1, max: 8
-        StoppingCondition => {
-          MaxRuntimeInSeconds => 1,               # min: 1, ; OPTIONAL
-        },
-        RoleArn                => 'MyRoleArn',    # min: 20, max: 2048
         AlgorithmSpecification => {
           TrainingImage     => 'MyAlgorithmImage',    # max: 255
           TrainingInputMode => 'Pipe',                # values: Pipe, File
@@ -119,13 +90,42 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ...
           ],                                          # max: 20; OPTIONAL
         },
+        InputDataConfig => [
+          {
+            ChannelName => 'MyChannelName',           # min: 1, max: 64
+            DataSource  => {
+              S3DataSource => {
+                S3DataType => 'ManifestFile',   # values: ManifestFile, S3Prefix
+                S3Uri      => 'MyS3Uri',        # max: 1024
+                S3DataDistributionType => 'FullyReplicated'
+                ,    # values: FullyReplicated, ShardedByS3Key; OPTIONAL
+              },
+
+            },
+            CompressionType => 'None',            # values: None, Gzip; OPTIONAL
+            ContentType     => 'MyContentType',   # max: 256; OPTIONAL
+            RecordWrapperType => 'None',    # values: None, RecordIO; OPTIONAL
+          },
+          ...
+        ],                                  # min: 1, max: 8
         OutputDataConfig => {
-          S3OutputPath => 'MyS3Uri',                  # max: 1024
-          KmsKeyId     => 'MyKmsKeyId',               # max: 2048; OPTIONAL
+          S3OutputPath => 'MyS3Uri',        # max: 1024
+          KmsKeyId     => 'MyKmsKeyId',     # max: 2048; OPTIONAL
+        },
+        ResourceConfig => {
+          InstanceCount => 1,               # min: 1,
+          InstanceType  => 'ml.m4.xlarge'
+          , # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge
+          VolumeSizeInGB => 1,               # min: 1,
+          VolumeKmsKeyId => 'MyKmsKeyId',    # max: 2048; OPTIONAL
+        },
+        RoleArn           => 'MyRoleArn',    # min: 20, max: 2048
+        StoppingCondition => {
+          MaxRuntimeInSeconds => 1,          # min: 1, ; OPTIONAL
         },
         StaticHyperParameters => {
           'MyParameterKey' =>
-            'MyParameterValue',    # key: max: 256, value: max: 256
+            'MyParameterValue',              # key: max: 256, value: max: 256
         },    # max: 100; OPTIONAL
         VpcConfig => {
           SecurityGroupIds => [

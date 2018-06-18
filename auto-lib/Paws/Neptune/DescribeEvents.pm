@@ -55,8 +55,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Marker = $EventsMessage->Marker;
     my $Events = $EventsMessage->Events;
+    my $Marker = $EventsMessage->Marker;
 
     # Returns a L<Paws::Neptune::EventsMessage> object.
 

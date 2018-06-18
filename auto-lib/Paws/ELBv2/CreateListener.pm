@@ -73,19 +73,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               'arn:aws:iam::123456789012:server-certificate/my-server-cert'
           }
         ],
-        'LoadBalancerArn' =>
-'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188',
         'DefaultActions' => [
 
           {
-            'Type' => 'forward',
             'TargetGroupArn' =>
-'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067'
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067',
+            'Type' => 'forward'
           }
         ],
+        'LoadBalancerArn' =>
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188',
         'Port'      => 443,
-        'SslPolicy' => 'ELBSecurityPolicy-2015-05',
-        'Protocol'  => 'HTTPS'
+        'Protocol'  => 'HTTPS',
+        'SslPolicy' => 'ELBSecurityPolicy-2015-05'
       }
     );
 

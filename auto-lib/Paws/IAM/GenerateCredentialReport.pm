@@ -29,8 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $GenerateCredentialReportResponse = $iam->GenerateCredentialReport();
 
     # Results:
-    my $State       = $GenerateCredentialReportResponse->State;
     my $Description = $GenerateCredentialReportResponse->Description;
+    my $State       = $GenerateCredentialReportResponse->State;
 
     # Returns a L<Paws::IAM::GenerateCredentialReportResponse> object.
 

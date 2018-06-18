@@ -40,11 +40,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $GetItemOutput = $dynamodb->GetItem(
       {
         'Key' => {
-          'SongTitle' => {
-            'S' => 'Happy Day'
-          },
           'Artist' => {
             'S' => 'Acme Band'
+          },
+          'SongTitle' => {
+            'S' => 'Happy Day'
           }
         },
         'TableName' => 'Music'

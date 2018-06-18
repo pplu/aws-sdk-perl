@@ -45,10 +45,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $TableStatistics = $DescribeTableStatisticsResponse->TableStatistics;
-    my $Marker          = $DescribeTableStatisticsResponse->Marker;
+    my $Marker = $DescribeTableStatisticsResponse->Marker;
     my $ReplicationTaskArn =
       $DescribeTableStatisticsResponse->ReplicationTaskArn;
+    my $TableStatistics = $DescribeTableStatisticsResponse->TableStatistics;
 
     # Returns a L<Paws::DMS::DescribeTableStatisticsResponse> object.
 

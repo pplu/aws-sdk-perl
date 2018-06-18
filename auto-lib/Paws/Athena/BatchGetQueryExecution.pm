@@ -33,9 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $QueryExecutions = $BatchGetQueryExecutionOutput->QueryExecutions;
     my $UnprocessedQueryExecutionIds =
       $BatchGetQueryExecutionOutput->UnprocessedQueryExecutionIds;
-    my $QueryExecutions = $BatchGetQueryExecutionOutput->QueryExecutions;
 
     # Returns a L<Paws::Athena::BatchGetQueryExecutionOutput> object.
 

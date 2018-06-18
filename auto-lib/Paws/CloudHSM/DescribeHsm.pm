@@ -34,27 +34,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $AvailabilityZone      = $DescribeHsmResponse->AvailabilityZone;
+    my $EniId                 = $DescribeHsmResponse->EniId;
+    my $EniIp                 = $DescribeHsmResponse->EniIp;
+    my $HsmArn                = $DescribeHsmResponse->HsmArn;
+    my $HsmType               = $DescribeHsmResponse->HsmType;
+    my $IamRoleArn            = $DescribeHsmResponse->IamRoleArn;
+    my $Partitions            = $DescribeHsmResponse->Partitions;
+    my $SerialNumber          = $DescribeHsmResponse->SerialNumber;
     my $ServerCertLastUpdated = $DescribeHsmResponse->ServerCertLastUpdated;
     my $ServerCertUri         = $DescribeHsmResponse->ServerCertUri;
-    my $AvailabilityZone      = $DescribeHsmResponse->AvailabilityZone;
-    my $Partitions            = $DescribeHsmResponse->Partitions;
-    my $HsmType               = $DescribeHsmResponse->HsmType;
-    my $HsmArn                = $DescribeHsmResponse->HsmArn;
-    my $Status                = $DescribeHsmResponse->Status;
-    my $SubscriptionType      = $DescribeHsmResponse->SubscriptionType;
-    my $StatusDetails         = $DescribeHsmResponse->StatusDetails;
-    my $SerialNumber          = $DescribeHsmResponse->SerialNumber;
-    my $SshPublicKey          = $DescribeHsmResponse->SshPublicKey;
-    my $EniId                 = $DescribeHsmResponse->EniId;
-    my $SshKeyLastUpdated     = $DescribeHsmResponse->SshKeyLastUpdated;
-    my $EniIp                 = $DescribeHsmResponse->EniIp;
-    my $VendorName            = $DescribeHsmResponse->VendorName;
-    my $VpcId                 = $DescribeHsmResponse->VpcId;
-    my $IamRoleArn            = $DescribeHsmResponse->IamRoleArn;
-    my $SubnetId              = $DescribeHsmResponse->SubnetId;
     my $SoftwareVersion       = $DescribeHsmResponse->SoftwareVersion;
+    my $SshKeyLastUpdated     = $DescribeHsmResponse->SshKeyLastUpdated;
+    my $SshPublicKey          = $DescribeHsmResponse->SshPublicKey;
+    my $Status                = $DescribeHsmResponse->Status;
+    my $StatusDetails         = $DescribeHsmResponse->StatusDetails;
+    my $SubnetId              = $DescribeHsmResponse->SubnetId;
     my $SubscriptionEndDate   = $DescribeHsmResponse->SubscriptionEndDate;
     my $SubscriptionStartDate = $DescribeHsmResponse->SubscriptionStartDate;
+    my $SubscriptionType      = $DescribeHsmResponse->SubscriptionType;
+    my $VendorName            = $DescribeHsmResponse->VendorName;
+    my $VpcId                 = $DescribeHsmResponse->VpcId;
 
     # Returns a L<Paws::CloudHSM::DescribeHsmResponse> object.
 

@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $elasticloadbalancing->SetLoadBalancerPoliciesForBackendServer(
       {
         'InstancePort'     => 80,
-        'PolicyNames'      => ['my-ProxyProtocol-policy'],
-        'LoadBalancerName' => 'my-load-balancer'
+        'LoadBalancerName' => 'my-load-balancer',
+        'PolicyNames'      => ['my-ProxyProtocol-policy']
       }
       );
 

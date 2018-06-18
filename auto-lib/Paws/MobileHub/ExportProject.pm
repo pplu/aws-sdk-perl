@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $DownloadUrl = $ExportProjectResult->DownloadUrl;
     my $ShareUrl    = $ExportProjectResult->ShareUrl;
     my $SnapshotId  = $ExportProjectResult->SnapshotId;
-    my $DownloadUrl = $ExportProjectResult->DownloadUrl;
 
     # Returns a L<Paws::MobileHub::ExportProjectResult> object.
 

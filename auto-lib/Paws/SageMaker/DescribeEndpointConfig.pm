@@ -33,11 +33,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ProductionVariants = $DescribeEndpointConfigOutput->ProductionVariants;
-    my $EndpointConfigName = $DescribeEndpointConfigOutput->EndpointConfigName;
     my $CreationTime       = $DescribeEndpointConfigOutput->CreationTime;
-    my $KmsKeyId           = $DescribeEndpointConfigOutput->KmsKeyId;
     my $EndpointConfigArn  = $DescribeEndpointConfigOutput->EndpointConfigArn;
+    my $EndpointConfigName = $DescribeEndpointConfigOutput->EndpointConfigName;
+    my $KmsKeyId           = $DescribeEndpointConfigOutput->KmsKeyId;
+    my $ProductionVariants = $DescribeEndpointConfigOutput->ProductionVariants;
 
     # Returns a L<Paws::SageMaker::DescribeEndpointConfigOutput> object.
 

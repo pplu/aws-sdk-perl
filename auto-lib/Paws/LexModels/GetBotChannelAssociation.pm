@@ -39,15 +39,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $BotConfiguration = $GetBotChannelAssociationResponse->BotConfiguration;
-    my $FailureReason    = $GetBotChannelAssociationResponse->FailureReason;
-    my $BotName          = $GetBotChannelAssociationResponse->BotName;
-    my $Status           = $GetBotChannelAssociationResponse->Status;
-    my $Description      = $GetBotChannelAssociationResponse->Description;
-    my $Type             = $GetBotChannelAssociationResponse->Type;
-    my $CreatedDate      = $GetBotChannelAssociationResponse->CreatedDate;
     my $BotAlias         = $GetBotChannelAssociationResponse->BotAlias;
+    my $BotConfiguration = $GetBotChannelAssociationResponse->BotConfiguration;
+    my $BotName          = $GetBotChannelAssociationResponse->BotName;
+    my $CreatedDate      = $GetBotChannelAssociationResponse->CreatedDate;
+    my $Description      = $GetBotChannelAssociationResponse->Description;
+    my $FailureReason    = $GetBotChannelAssociationResponse->FailureReason;
     my $Name             = $GetBotChannelAssociationResponse->Name;
+    my $Status           = $GetBotChannelAssociationResponse->Status;
+    my $Type             = $GetBotChannelAssociationResponse->Type;
 
     # Returns a L<Paws::LexModels::GetBotChannelAssociationResponse> object.
 

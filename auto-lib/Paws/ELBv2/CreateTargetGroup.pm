@@ -45,10 +45,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # check configuration.
     my $CreateTargetGroupOutput = $elasticloadbalancing->CreateTargetGroup(
       {
-        'Protocol' => 'HTTP',
+        'Name'     => 'my-targets',
         'Port'     => 80,
-        'VpcId'    => 'vpc-3ac0fb5f',
-        'Name'     => 'my-targets'
+        'Protocol' => 'HTTP',
+        'VpcId'    => 'vpc-3ac0fb5f'
       }
     );
 

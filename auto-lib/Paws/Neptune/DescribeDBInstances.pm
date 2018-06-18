@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DBInstanceIdentifier => 'MyString',    # OPTIONAL
       Filters              => [
         {
-          Values => [ 'MyString', ... ],
           Name   => 'MyString',
+          Values => [ 'MyString', ... ],
 
         },
         ...
@@ -45,8 +45,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Marker      = $DBInstanceMessage->Marker;
     my $DBInstances = $DBInstanceMessage->DBInstances;
+    my $Marker      = $DBInstanceMessage->Marker;
 
     # Returns a L<Paws::Neptune::DBInstanceMessage> object.
 

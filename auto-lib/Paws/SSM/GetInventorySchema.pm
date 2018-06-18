@@ -40,8 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Schemas   = $GetInventorySchemaResult->Schemas;
     my $NextToken = $GetInventorySchemaResult->NextToken;
+    my $Schemas   = $GetInventorySchemaResult->Schemas;
 
     # Returns a L<Paws::SSM::GetInventorySchemaResult> object.
 

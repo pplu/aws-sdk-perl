@@ -41,8 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EndTime => '1970-01-01T01:00:00',
       GroupBy => {
         Group      => 'MyString',
-        Limit      => 1,                      # min: 1, max: 10; OPTIONAL
         Dimensions => [ 'MyString', ... ],    # min: 1, max: 10; OPTIONAL
+        Limit      => 1,                      # min: 1, max: 10; OPTIONAL
       },
       Identifier  => 'MyString',
       Metric      => 'MyString',
@@ -53,18 +53,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       NextToken   => 'MyString',                       # OPTIONAL
       PartitionBy => {
         Group      => 'MyString',
-        Limit      => 1,                      # min: 1, max: 10; OPTIONAL
         Dimensions => [ 'MyString', ... ],    # min: 1, max: 10; OPTIONAL
+        Limit      => 1,                      # min: 1, max: 10; OPTIONAL
       },    # OPTIONAL
       PeriodInSeconds => 1,    # OPTIONAL
     );
 
     # Results:
+    my $AlignedEndTime   = $DescribeDimensionKeysResponse->AlignedEndTime;
+    my $AlignedStartTime = $DescribeDimensionKeysResponse->AlignedStartTime;
+    my $Keys             = $DescribeDimensionKeysResponse->Keys;
     my $NextToken        = $DescribeDimensionKeysResponse->NextToken;
     my $PartitionKeys    = $DescribeDimensionKeysResponse->PartitionKeys;
-    my $Keys             = $DescribeDimensionKeysResponse->Keys;
-    my $AlignedStartTime = $DescribeDimensionKeysResponse->AlignedStartTime;
-    my $AlignedEndTime   = $DescribeDimensionKeysResponse->AlignedEndTime;
 
  # Returns a L<Paws::PerformanceInsights::DescribeDimensionKeysResponse> object.
 

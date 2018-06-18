@@ -36,15 +36,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # part size of 1 MiB (1024 x 1024 bytes) per file.
     my $InitiateMultipartUploadOutput = $glacier->InitiateMultipartUpload(
       {
-        'VaultName' => 'my-vault',
         'AccountId' => '-',
-        'PartSize'  => 1048576
+        'PartSize'  => 1048576,
+        'VaultName' => 'my-vault'
       }
     );
 
     # Results:
-    my $uploadId = $InitiateMultipartUploadOutput->uploadId;
     my $location = $InitiateMultipartUploadOutput->location;
+    my $uploadId = $InitiateMultipartUploadOutput->uploadId;
 
     # Returns a L<Paws::Glacier::InitiateMultipartUploadOutput> object.
 

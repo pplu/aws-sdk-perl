@@ -29,15 +29,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $codepipeline = Paws->service('CodePipeline');
     my $PutWebhookOutput = $codepipeline->PutWebhook(
       Webhook => {
-        targetPipeline => 'MyPipelineName',    # min: 1, max: 100
-        filters        => [
-          {
-            jsonPath    => 'MyJsonPath',       # min: 1, max: 150
-            matchEquals => 'MyMatchEquals',    # min: 1, max: 150; OPTIONAL
-          },
-          ...
-        ],                                     # max: 5
-        targetAction => 'MyActionName',        # min: 1, max: 100
         authentication =>
           'GITHUB_HMAC',    # values: GITHUB_HMAC, IP, UNAUTHENTICATED
         authenticationConfiguration => {
@@ -46,7 +37,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           SecretToken => 'MyWebhookAuthConfigurationSecretToken'
           ,                 # min: 1, max: 100; OPTIONAL
         },
-        name => 'MyWebhookName',    # min: 1, max: 100
+        filters => [
+          {
+            jsonPath    => 'MyJsonPath',       # min: 1, max: 150
+            matchEquals => 'MyMatchEquals',    # min: 1, max: 150; OPTIONAL
+          },
+          ...
+        ],                                     # max: 5
+        name           => 'MyWebhookName',     # min: 1, max: 100
+        targetAction   => 'MyActionName',      # min: 1, max: 100
+        targetPipeline => 'MyPipelineName',    # min: 1, max: 100
 
       },
 

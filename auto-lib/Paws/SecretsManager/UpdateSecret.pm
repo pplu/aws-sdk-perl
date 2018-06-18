@@ -42,9 +42,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $ARN       = $UpdateSecretResponse->ARN;
     my $Name      = $UpdateSecretResponse->Name;
     my $VersionId = $UpdateSecretResponse->VersionId;
-    my $ARN       = $UpdateSecretResponse->ARN;
 
     # Returns a L<Paws::SecretsManager::UpdateSecretResponse> object.
 

@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DetectorId     => 'My__string',
       AccountDetails => [
         {
-          Email     => 'MyEmail',
           AccountId => 'MyAccountId',
+          Email     => 'MyEmail',
 
         },
         ...

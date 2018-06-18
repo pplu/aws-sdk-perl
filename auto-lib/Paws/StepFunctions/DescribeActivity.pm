@@ -33,9 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $activityArn  = $DescribeActivityOutput->activityArn;
-    my $creationDate = $DescribeActivityOutput->creationDate;
-    my $name         = $DescribeActivityOutput->name;
+    my $ActivityArn  = $DescribeActivityOutput->ActivityArn;
+    my $CreationDate = $DescribeActivityOutput->CreationDate;
+    my $Name         = $DescribeActivityOutput->Name;
 
     # Returns a L<Paws::StepFunctions::DescribeActivityOutput> object.
 

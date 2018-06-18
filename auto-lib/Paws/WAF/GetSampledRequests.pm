@@ -37,20 +37,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # to 2016-09-27T15:50Z.
     my $GetSampledRequestsResponse = $waf->GetSampledRequests(
       {
-        'RuleId'     => 'WAFRule-1-Example',
-        'WebAclId'   => 'createwebacl-1472061481310',
         'MaxItems'   => 100,
+        'RuleId'     => 'WAFRule-1-Example',
         'TimeWindow' => {
-          'StartTime' => '2016-09-27T15:50Z',
-          'EndTime'   => '2016-09-27T15:50Z'
-        }
+          'EndTime'   => '2016-09-27T15:50Z',
+          'StartTime' => '2016-09-27T15:50Z'
+        },
+        'WebAclId' => 'createwebacl-1472061481310'
       }
     );
 
     # Results:
+    my $PopulationSize  = $GetSampledRequestsResponse->PopulationSize;
     my $SampledRequests = $GetSampledRequestsResponse->SampledRequests;
     my $TimeWindow      = $GetSampledRequestsResponse->TimeWindow;
-    my $PopulationSize  = $GetSampledRequestsResponse->PopulationSize;
 
     # Returns a L<Paws::WAF::GetSampledRequestsResponse> object.
 

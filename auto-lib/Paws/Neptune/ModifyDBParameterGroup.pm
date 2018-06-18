@@ -32,17 +32,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DBParameterGroupName => 'MyString',
       Parameters           => [
         {
-          ParameterValue       => 'MyString',
-          AllowedValues        => 'MyString',
-          MinimumEngineVersion => 'MyString',
-          DataType             => 'MyString',
+          AllowedValues => 'MyString',
           ApplyMethod =>
             'immediate',    # values: immediate, pending-reboot; OPTIONAL
-          IsModifiable  => 1,            # OPTIONAL
-          ApplyType     => 'MyString',
-          Source        => 'MyString',
-          ParameterName => 'MyString',
-          Description   => 'MyString',
+          ApplyType            => 'MyString',
+          DataType             => 'MyString',
+          Description          => 'MyString',
+          IsModifiable         => 1,            # OPTIONAL
+          MinimumEngineVersion => 'MyString',
+          ParameterName        => 'MyString',
+          ParameterValue       => 'MyString',
+          Source               => 'MyString',
         },
         ...
       ],

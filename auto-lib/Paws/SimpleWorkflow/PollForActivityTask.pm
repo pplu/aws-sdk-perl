@@ -39,12 +39,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ActivityType      = $ActivityTask->ActivityType;
-    my $TaskToken         = $ActivityTask->TaskToken;
-    my $Input             = $ActivityTask->Input;
     my $ActivityId        = $ActivityTask->ActivityId;
-    my $WorkflowExecution = $ActivityTask->WorkflowExecution;
+    my $ActivityType      = $ActivityTask->ActivityType;
+    my $Input             = $ActivityTask->Input;
     my $StartedEventId    = $ActivityTask->StartedEventId;
+    my $TaskToken         = $ActivityTask->TaskToken;
+    my $WorkflowExecution = $ActivityTask->WorkflowExecution;
 
     # Returns a L<Paws::SimpleWorkflow::ActivityTask> object.
 

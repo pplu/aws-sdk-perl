@@ -34,17 +34,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RegexMatchSetId => 'MyResourceId',
       Updates         => [
         {
+          Action          => 'INSERT',    # values: INSERT, DELETE
           RegexMatchTuple => {
-            RegexPatternSetId  => 'MyResourceId',    # min: 1, max: 128
-            TextTransformation => 'NONE'
-            , # values: NONE, COMPRESS_WHITE_SPACE, HTML_ENTITY_DECODE, LOWERCASE, CMD_LINE, URL_DECODE
             FieldToMatch => {
               Type => 'URI',   # values: URI, QUERY_STRING, HEADER, METHOD, BODY
               Data => 'MyMatchFieldData',    # OPTIONAL
             },
+            RegexPatternSetId  => 'MyResourceId',    # min: 1, max: 128
+            TextTransformation => 'NONE'
+            , # values: NONE, COMPRESS_WHITE_SPACE, HTML_ENTITY_DECODE, LOWERCASE, CMD_LINE, URL_DECODE
 
           },
-          Action => 'INSERT',                # values: INSERT, DELETE
 
         },
         ...

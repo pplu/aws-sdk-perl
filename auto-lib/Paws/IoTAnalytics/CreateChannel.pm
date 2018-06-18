@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $ChannelArn      = $CreateChannelResponse->ChannelArn;
-    my $RetentionPeriod = $CreateChannelResponse->RetentionPeriod;
     my $ChannelName     = $CreateChannelResponse->ChannelName;
+    my $RetentionPeriod = $CreateChannelResponse->RetentionPeriod;
 
     # Returns a L<Paws::IoTAnalytics::CreateChannelResponse> object.
 

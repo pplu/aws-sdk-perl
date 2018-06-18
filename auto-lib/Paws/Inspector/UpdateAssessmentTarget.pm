@@ -34,11 +34,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # assessment target.
     $inspector->UpdateAssessmentTarget(
       {
-        'ResourceGroupArn' =>
-          'arn:aws:inspector:us-west-2:123456789012:resourcegroup/0-yNbgL5Pt',
         'AssessmentTargetArn' =>
           'arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX',
-        'AssessmentTargetName' => 'Example'
+        'AssessmentTargetName' => 'Example',
+        'ResourceGroupArn' =>
+          'arn:aws:inspector:us-west-2:123456789012:resourcegroup/0-yNbgL5Pt'
       }
     );
 

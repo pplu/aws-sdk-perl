@@ -32,9 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $PipelineIdList = $ListPipelinesOutput->PipelineIdList;
-    my $Marker         = $ListPipelinesOutput->Marker;
     my $HasMoreResults = $ListPipelinesOutput->HasMoreResults;
+    my $Marker         = $ListPipelinesOutput->Marker;
+    my $PipelineIdList = $ListPipelinesOutput->PipelineIdList;
 
     # Returns a L<Paws::DataPipeline::ListPipelinesOutput> object.
 

@@ -40,8 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Marker              = $ClusterSubnetGroupMessage->Marker;
     my $ClusterSubnetGroups = $ClusterSubnetGroupMessage->ClusterSubnetGroups;
+    my $Marker              = $ClusterSubnetGroupMessage->Marker;
 
     # Returns a L<Paws::RedShift::ClusterSubnetGroupMessage> object.
 

@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       {
         'AutoScalingGroupName'  => 'my-auto-scaling-group',
         'LifecycleActionResult' => 'CONTINUE',
-        'LifecycleHookName'     => 'my-lifecycle-hook',
-        'LifecycleActionToken'  => 'bcd2f1b8-9a78-44d3-8a7a-4dd07d7cf635'
+        'LifecycleActionToken'  => 'bcd2f1b8-9a78-44d3-8a7a-4dd07d7cf635',
+        'LifecycleHookName'     => 'my-lifecycle-hook'
       }
     );
 

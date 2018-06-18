@@ -32,17 +32,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ListHandshakesForOrganizationResponse =
       $organizations->ListHandshakesForOrganization(
       Filter => {
-        ParentHandshakeId => 'MyHandshakeId',    # OPTIONAL
-        ActionType        => 'INVITE'
+        ActionType => 'INVITE'
         , # values: INVITE, ENABLE_ALL_FEATURES, APPROVE_ALL_FEATURES, ADD_ORGANIZATIONS_SERVICE_LINKED_ROLE; OPTIONAL
+        ParentHandshakeId => 'MyHandshakeId',    # OPTIONAL
       },    # OPTIONAL
       MaxResults => 1,                # OPTIONAL
       NextToken  => 'MyNextToken',    # OPTIONAL
       );
 
     # Results:
-    my $NextToken  = $ListHandshakesForOrganizationResponse->NextToken;
     my $Handshakes = $ListHandshakesForOrganizationResponse->Handshakes;
+    my $NextToken  = $ListHandshakesForOrganizationResponse->NextToken;
 
 # Returns a L<Paws::Organizations::ListHandshakesForOrganizationResponse> object.
 

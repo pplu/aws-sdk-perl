@@ -36,9 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $Marker = $ReservedNodeOfferingsMessage->Marker;
     my $ReservedNodeOfferings =
       $ReservedNodeOfferingsMessage->ReservedNodeOfferings;
-    my $Marker = $ReservedNodeOfferingsMessage->Marker;
 
     # Returns a L<Paws::RedShift::ReservedNodeOfferingsMessage> object.
 

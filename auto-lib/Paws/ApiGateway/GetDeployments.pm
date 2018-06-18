@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Position = $Deployments->Position;
     my $Items    = $Deployments->Items;
+    my $Position = $Deployments->Position;
 
     # Returns a L<Paws::ApiGateway::Deployments> object.
 

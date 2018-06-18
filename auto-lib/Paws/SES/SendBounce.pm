@@ -36,16 +36,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       BounceSender             => 'MyAddress',
       BouncedRecipientInfoList => [
         {
-          Recipient    => 'MyAddress',
-          RecipientArn => 'MyAmazonResourceName',    # OPTIONAL
-          BounceType   => 'DoesNotExist'
+          Recipient  => 'MyAddress',
+          BounceType => 'DoesNotExist'
           , # values: DoesNotExist, MessageTooLarge, ExceededQuota, ContentRejected, Undefined, TemporaryFailure; OPTIONAL
+          RecipientArn       => 'MyAmazonResourceName',    # OPTIONAL
           RecipientDsnFields => {
-            Status => 'MyDsnStatus',
             Action =>
               'failed',  # values: failed, delayed, delivered, relayed, expanded
+            Status          => 'MyDsnStatus',
             DiagnosticCode  => 'MyDiagnosticCode',    # OPTIONAL
-            RemoteMta       => 'MyRemoteMta',         # OPTIONAL
             ExtensionFields => [
               {
                 Name  => 'MyExtensionFieldName',
@@ -56,6 +55,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ],                                        # OPTIONAL
             FinalRecipient  => 'MyAddress',
             LastAttemptDate => '1970-01-01T01:00:00',    # OPTIONAL
+            RemoteMta       => 'MyRemoteMta',            # OPTIONAL
           },    # OPTIONAL
         },
         ...
@@ -65,6 +65,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Explanation       => 'MyExplanation',           # OPTIONAL
       MessageDsn        => {
         ReportingMta    => 'MyReportingMta',
+        ArrivalDate     => '1970-01-01T01:00:00',     # OPTIONAL
         ExtensionFields => [
           {
             Name  => 'MyExtensionFieldName',
@@ -73,7 +74,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],                                            # OPTIONAL
-        ArrivalDate => '1970-01-01T01:00:00',         # OPTIONAL
       },    # OPTIONAL
     );
 

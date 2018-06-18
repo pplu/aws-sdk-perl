@@ -38,320 +38,320 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateJobResponse = $elastictranscoder->CreateJob(
       PipelineId => 'MyId',
       Input      => {
+        AspectRatio        => 'MyAspectRatio',     # OPTIONAL
+        Container          => 'MyJobContainer',    # OPTIONAL
+        DetectedProperties => {
+          DurationMillis => 1,                     # OPTIONAL
+          FileSize       => 1,                     # OPTIONAL
+          FrameRate      => 'MyFloatString',       # OPTIONAL
+          Height         => 1,                     # OPTIONAL
+          Width          => 1,                     # OPTIONAL
+        },    # OPTIONAL
+        Encryption => {
+          InitializationVector => 'MyZeroTo255String',      # max: 255; OPTIONAL
+          Key                  => 'MyBase64EncodedString',  # OPTIONAL
+          KeyMd5               => 'MyBase64EncodedString',  # OPTIONAL
+          Mode                 => 'MyEncryptionMode',       # OPTIONAL
+        },    # OPTIONAL
+        FrameRate     => 'MyFrameRate',    # OPTIONAL
         InputCaptions => {
           CaptionSources => [
             {
-              Label      => 'MyName',          # min: 1, max: 40; OPTIONAL
-              Key        => 'MyLongKey',       # min: 1, max: 1024; OPTIONAL
-              Language   => 'MyKey',           # min: 1, max: 255; OPTIONAL
-              TimeOffset => 'MyTimeOffset',    # OPTIONAL
               Encryption => {
-                Mode => 'MyEncryptionMode',    # OPTIONAL
                 InitializationVector =>
-                  'MyZeroTo255String',         # max: 255; OPTIONAL
+                  'MyZeroTo255String',     # max: 255; OPTIONAL
                 Key    => 'MyBase64EncodedString',    # OPTIONAL
                 KeyMd5 => 'MyBase64EncodedString',    # OPTIONAL
+                Mode   => 'MyEncryptionMode',         # OPTIONAL
               },    # OPTIONAL
+              Key        => 'MyLongKey',       # min: 1, max: 1024; OPTIONAL
+              Label      => 'MyName',          # min: 1, max: 40; OPTIONAL
+              Language   => 'MyKey',           # min: 1, max: 255; OPTIONAL
+              TimeOffset => 'MyTimeOffset',    # OPTIONAL
             },
             ...
-          ],        # max: 20; OPTIONAL
+          ],                                   # max: 20; OPTIONAL
           MergePolicy => 'MyCaptionMergePolicy',    # OPTIONAL
         },    # OPTIONAL
-        TimeSpan => {
-          StartTime => 'MyTime',    # OPTIONAL
-          Duration  => 'MyTime',    # OPTIONAL
-        },    # OPTIONAL
-        Container          => 'MyJobContainer',    # OPTIONAL
-        Key                => 'MyLongKey',         # min: 1, max: 1024; OPTIONAL
-        FrameRate          => 'MyFrameRate',       # OPTIONAL
-        AspectRatio        => 'MyAspectRatio',     # OPTIONAL
-        DetectedProperties => {
-          FileSize       => 1,                     # OPTIONAL
-          FrameRate      => 'MyFloatString',       # OPTIONAL
-          DurationMillis => 1,                     # OPTIONAL
-          Width          => 1,                     # OPTIONAL
-          Height         => 1,                     # OPTIONAL
-        },    # OPTIONAL
-        Encryption => {
-          Mode                 => 'MyEncryptionMode',       # OPTIONAL
-          InitializationVector => 'MyZeroTo255String',      # max: 255; OPTIONAL
-          Key                  => 'MyBase64EncodedString',  # OPTIONAL
-          KeyMd5               => 'MyBase64EncodedString',  # OPTIONAL
-        },    # OPTIONAL
-        Resolution => 'MyResolution',    # OPTIONAL
         Interlaced => 'MyInterlaced',    # OPTIONAL
+        Key        => 'MyLongKey',       # min: 1, max: 1024; OPTIONAL
+        Resolution => 'MyResolution',    # OPTIONAL
+        TimeSpan   => {
+          Duration  => 'MyTime',         # OPTIONAL
+          StartTime => 'MyTime',         # OPTIONAL
+        },    # OPTIONAL
       },    # OPTIONAL
       Inputs => [
         {
-          InputCaptions => {
-            CaptionSources => [
-              {
-                Label      => 'MyName',          # min: 1, max: 40; OPTIONAL
-                Key        => 'MyLongKey',       # min: 1, max: 1024; OPTIONAL
-                Language   => 'MyKey',           # min: 1, max: 255; OPTIONAL
-                TimeOffset => 'MyTimeOffset',    # OPTIONAL
-                Encryption => {
-                  Mode => 'MyEncryptionMode',    # OPTIONAL
-                  InitializationVector =>
-                    'MyZeroTo255String',         # max: 255; OPTIONAL
-                  Key    => 'MyBase64EncodedString',    # OPTIONAL
-                  KeyMd5 => 'MyBase64EncodedString',    # OPTIONAL
-                },    # OPTIONAL
-              },
-              ...
-            ],        # max: 20; OPTIONAL
-            MergePolicy => 'MyCaptionMergePolicy',    # OPTIONAL
-          },    # OPTIONAL
-          TimeSpan => {
-            StartTime => 'MyTime',    # OPTIONAL
-            Duration  => 'MyTime',    # OPTIONAL
-          },    # OPTIONAL
-          Container          => 'MyJobContainer',  # OPTIONAL
-          Key                => 'MyLongKey',       # min: 1, max: 1024; OPTIONAL
-          FrameRate          => 'MyFrameRate',     # OPTIONAL
-          AspectRatio        => 'MyAspectRatio',   # OPTIONAL
+          AspectRatio        => 'MyAspectRatio',     # OPTIONAL
+          Container          => 'MyJobContainer',    # OPTIONAL
           DetectedProperties => {
-            FileSize       => 1,                   # OPTIONAL
-            FrameRate      => 'MyFloatString',     # OPTIONAL
-            DurationMillis => 1,                   # OPTIONAL
-            Width          => 1,                   # OPTIONAL
-            Height         => 1,                   # OPTIONAL
+            DurationMillis => 1,                     # OPTIONAL
+            FileSize       => 1,                     # OPTIONAL
+            FrameRate      => 'MyFloatString',       # OPTIONAL
+            Height         => 1,                     # OPTIONAL
+            Width          => 1,                     # OPTIONAL
           },    # OPTIONAL
           Encryption => {
-            Mode                 => 'MyEncryptionMode',     # OPTIONAL
             InitializationVector => 'MyZeroTo255String',    # max: 255; OPTIONAL
             Key    => 'MyBase64EncodedString',              # OPTIONAL
             KeyMd5 => 'MyBase64EncodedString',              # OPTIONAL
+            Mode   => 'MyEncryptionMode',                   # OPTIONAL
           },    # OPTIONAL
-          Resolution => 'MyResolution',    # OPTIONAL
+          FrameRate     => 'MyFrameRate',    # OPTIONAL
+          InputCaptions => {
+            CaptionSources => [
+              {
+                Encryption => {
+                  InitializationVector =>
+                    'MyZeroTo255String',     # max: 255; OPTIONAL
+                  Key    => 'MyBase64EncodedString',    # OPTIONAL
+                  KeyMd5 => 'MyBase64EncodedString',    # OPTIONAL
+                  Mode   => 'MyEncryptionMode',         # OPTIONAL
+                },    # OPTIONAL
+                Key        => 'MyLongKey',       # min: 1, max: 1024; OPTIONAL
+                Label      => 'MyName',          # min: 1, max: 40; OPTIONAL
+                Language   => 'MyKey',           # min: 1, max: 255; OPTIONAL
+                TimeOffset => 'MyTimeOffset',    # OPTIONAL
+              },
+              ...
+            ],                                   # max: 20; OPTIONAL
+            MergePolicy => 'MyCaptionMergePolicy',    # OPTIONAL
+          },    # OPTIONAL
           Interlaced => 'MyInterlaced',    # OPTIONAL
+          Key        => 'MyLongKey',       # min: 1, max: 1024; OPTIONAL
+          Resolution => 'MyResolution',    # OPTIONAL
+          TimeSpan   => {
+            Duration  => 'MyTime',         # OPTIONAL
+            StartTime => 'MyTime',         # OPTIONAL
+          },    # OPTIONAL
         },
         ...
-      ],                                   # OPTIONAL
+      ],        # OPTIONAL
       Output => {
-        ThumbnailPattern => 'MyThumbnailPattern',   # OPTIONAL
-        Rotate           => 'MyRotate',             # OPTIONAL
-        Key              => 'MyKey',                # min: 1, max: 255; OPTIONAL
-        ThumbnailEncryption => {
-          Mode                 => 'MyEncryptionMode',       # OPTIONAL
-          InitializationVector => 'MyZeroTo255String',      # max: 255; OPTIONAL
-          Key                  => 'MyBase64EncodedString',  # OPTIONAL
-          KeyMd5               => 'MyBase64EncodedString',  # OPTIONAL
-        },    # OPTIONAL
         AlbumArt => {
           Artwork => [
             {
-              Encryption => {
-                Mode => 'MyEncryptionMode',    # OPTIONAL
+              AlbumArtFormat => 'MyJpgOrPng',    # OPTIONAL
+              Encryption     => {
                 InitializationVector =>
-                  'MyZeroTo255String',         # max: 255; OPTIONAL
+                  'MyZeroTo255String',           # max: 255; OPTIONAL
                 Key    => 'MyBase64EncodedString',    # OPTIONAL
                 KeyMd5 => 'MyBase64EncodedString',    # OPTIONAL
+                Mode   => 'MyEncryptionMode',         # OPTIONAL
               },    # OPTIONAL
-              SizingPolicy   => 'MySizingPolicy',  # OPTIONAL
-              MaxHeight      => 'MyDigitsOrAuto',  # OPTIONAL
-              PaddingPolicy  => 'MyPaddingPolicy', # OPTIONAL
-              AlbumArtFormat => 'MyJpgOrPng',      # OPTIONAL
-              MaxWidth       => 'MyDigitsOrAuto',  # OPTIONAL
-              InputKey       => 'MyWatermarkKey',  # min: 1, max: 1024; OPTIONAL
+              InputKey      => 'MyWatermarkKey',   # min: 1, max: 1024; OPTIONAL
+              MaxHeight     => 'MyDigitsOrAuto',   # OPTIONAL
+              MaxWidth      => 'MyDigitsOrAuto',   # OPTIONAL
+              PaddingPolicy => 'MyPaddingPolicy',  # OPTIONAL
+              SizingPolicy  => 'MySizingPolicy',   # OPTIONAL
             },
             ...
           ],                                       # OPTIONAL
           MergePolicy => 'MyMergePolicy',          # OPTIONAL
         },    # OPTIONAL
-        Watermarks => [
-          {
-            PresetWatermarkId =>
-              'MyPresetWatermarkId',    # min: 1, max: 40; OPTIONAL
-            Encryption => {
-              Mode                 => 'MyEncryptionMode',   # OPTIONAL
-              InitializationVector => 'MyZeroTo255String',  # max: 255; OPTIONAL
-              Key    => 'MyBase64EncodedString',            # OPTIONAL
-              KeyMd5 => 'MyBase64EncodedString',            # OPTIONAL
-            },    # OPTIONAL
-            InputKey => 'MyWatermarkKey',    # min: 1, max: 1024; OPTIONAL
-          },
-          ...
-        ],                                   # OPTIONAL
         Captions => {
-          MergePolicy    => 'MyCaptionMergePolicy',    # OPTIONAL
-          CaptionSources => [
-            {
-              Label      => 'MyName',          # min: 1, max: 40; OPTIONAL
-              Key        => 'MyLongKey',       # min: 1, max: 1024; OPTIONAL
-              Language   => 'MyKey',           # min: 1, max: 255; OPTIONAL
-              TimeOffset => 'MyTimeOffset',    # OPTIONAL
-              Encryption => {
-                Mode => 'MyEncryptionMode',    # OPTIONAL
-                InitializationVector =>
-                  'MyZeroTo255String',         # max: 255; OPTIONAL
-                Key    => 'MyBase64EncodedString',    # OPTIONAL
-                KeyMd5 => 'MyBase64EncodedString',    # OPTIONAL
-              },    # OPTIONAL
-            },
-            ...
-          ],        # max: 20; OPTIONAL
           CaptionFormats => [
             {
-              Format     => 'MyCaptionFormatFormat',     # OPTIONAL
-              Pattern    => 'MyCaptionFormatPattern',    # OPTIONAL
               Encryption => {
-                Mode => 'MyEncryptionMode',              # OPTIONAL
                 InitializationVector =>
-                  'MyZeroTo255String',                   # max: 255; OPTIONAL
-                Key    => 'MyBase64EncodedString',       # OPTIONAL
-                KeyMd5 => 'MyBase64EncodedString',       # OPTIONAL
+                  'MyZeroTo255String',    # max: 255; OPTIONAL
+                Key    => 'MyBase64EncodedString',    # OPTIONAL
+                KeyMd5 => 'MyBase64EncodedString',    # OPTIONAL
+                Mode   => 'MyEncryptionMode',         # OPTIONAL
               },    # OPTIONAL
+              Format  => 'MyCaptionFormatFormat',     # OPTIONAL
+              Pattern => 'MyCaptionFormatPattern',    # OPTIONAL
             },
             ...
-          ],        # max: 4; OPTIONAL
+          ],                                          # max: 4; OPTIONAL
+          CaptionSources => [
+            {
+              Encryption => {
+                InitializationVector =>
+                  'MyZeroTo255String',                # max: 255; OPTIONAL
+                Key    => 'MyBase64EncodedString',    # OPTIONAL
+                KeyMd5 => 'MyBase64EncodedString',    # OPTIONAL
+                Mode   => 'MyEncryptionMode',         # OPTIONAL
+              },    # OPTIONAL
+              Key        => 'MyLongKey',       # min: 1, max: 1024; OPTIONAL
+              Label      => 'MyName',          # min: 1, max: 40; OPTIONAL
+              Language   => 'MyKey',           # min: 1, max: 255; OPTIONAL
+              TimeOffset => 'MyTimeOffset',    # OPTIONAL
+            },
+            ...
+          ],                                   # max: 20; OPTIONAL
+          MergePolicy => 'MyCaptionMergePolicy',    # OPTIONAL
         },    # OPTIONAL
-        PresetId   => 'MyId',
-        Encryption => {
-          Mode                 => 'MyEncryptionMode',       # OPTIONAL
-          InitializationVector => 'MyZeroTo255String',      # max: 255; OPTIONAL
-          Key                  => 'MyBase64EncodedString',  # OPTIONAL
-          KeyMd5               => 'MyBase64EncodedString',  # OPTIONAL
-        },    # OPTIONAL
-        SegmentDuration => 'MyFloatString',    # OPTIONAL
-        Composition     => [
+        Composition => [
           {
             TimeSpan => {
-              StartTime => 'MyTime',           # OPTIONAL
-              Duration  => 'MyTime',           # OPTIONAL
+              Duration  => 'MyTime',    # OPTIONAL
+              StartTime => 'MyTime',    # OPTIONAL
             },    # OPTIONAL
           },
           ...
         ],        # OPTIONAL
+        Encryption => {
+          InitializationVector => 'MyZeroTo255String',      # max: 255; OPTIONAL
+          Key                  => 'MyBase64EncodedString',  # OPTIONAL
+          KeyMd5               => 'MyBase64EncodedString',  # OPTIONAL
+          Mode                 => 'MyEncryptionMode',       # OPTIONAL
+        },    # OPTIONAL
+        Key                 => 'MyKey',            # min: 1, max: 255; OPTIONAL
+        PresetId            => 'MyId',
+        Rotate              => 'MyRotate',         # OPTIONAL
+        SegmentDuration     => 'MyFloatString',    # OPTIONAL
+        ThumbnailEncryption => {
+          InitializationVector => 'MyZeroTo255String',      # max: 255; OPTIONAL
+          Key                  => 'MyBase64EncodedString',  # OPTIONAL
+          KeyMd5               => 'MyBase64EncodedString',  # OPTIONAL
+          Mode                 => 'MyEncryptionMode',       # OPTIONAL
+        },    # OPTIONAL
+        ThumbnailPattern => 'MyThumbnailPattern',    # OPTIONAL
+        Watermarks       => [
+          {
+            Encryption => {
+              InitializationVector => 'MyZeroTo255String',  # max: 255; OPTIONAL
+              Key    => 'MyBase64EncodedString',            # OPTIONAL
+              KeyMd5 => 'MyBase64EncodedString',            # OPTIONAL
+              Mode   => 'MyEncryptionMode',                 # OPTIONAL
+            },    # OPTIONAL
+            InputKey => 'MyWatermarkKey',    # min: 1, max: 1024; OPTIONAL
+            PresetWatermarkId =>
+              'MyPresetWatermarkId',         # min: 1, max: 40; OPTIONAL
+          },
+          ...
+        ],                                   # OPTIONAL
       },    # OPTIONAL
       OutputKeyPrefix => 'MyKey',    # OPTIONAL
       Outputs         => [
         {
-          ThumbnailPattern => 'MyThumbnailPattern', # OPTIONAL
-          Rotate           => 'MyRotate',           # OPTIONAL
-          Key              => 'MyKey',              # min: 1, max: 255; OPTIONAL
-          ThumbnailEncryption => {
-            Mode                 => 'MyEncryptionMode',     # OPTIONAL
-            InitializationVector => 'MyZeroTo255String',    # max: 255; OPTIONAL
-            Key    => 'MyBase64EncodedString',              # OPTIONAL
-            KeyMd5 => 'MyBase64EncodedString',              # OPTIONAL
-          },    # OPTIONAL
           AlbumArt => {
             Artwork => [
               {
-                Encryption => {
-                  Mode => 'MyEncryptionMode',    # OPTIONAL
+                AlbumArtFormat => 'MyJpgOrPng',    # OPTIONAL
+                Encryption     => {
                   InitializationVector =>
-                    'MyZeroTo255String',         # max: 255; OPTIONAL
+                    'MyZeroTo255String',           # max: 255; OPTIONAL
                   Key    => 'MyBase64EncodedString',    # OPTIONAL
                   KeyMd5 => 'MyBase64EncodedString',    # OPTIONAL
+                  Mode   => 'MyEncryptionMode',         # OPTIONAL
                 },    # OPTIONAL
-                SizingPolicy   => 'MySizingPolicy',     # OPTIONAL
-                MaxHeight      => 'MyDigitsOrAuto',     # OPTIONAL
-                PaddingPolicy  => 'MyPaddingPolicy',    # OPTIONAL
-                AlbumArtFormat => 'MyJpgOrPng',         # OPTIONAL
-                MaxWidth       => 'MyDigitsOrAuto',     # OPTIONAL
-                InputKey => 'MyWatermarkKey',    # min: 1, max: 1024; OPTIONAL
+                InputKey  => 'MyWatermarkKey',    # min: 1, max: 1024; OPTIONAL
+                MaxHeight => 'MyDigitsOrAuto',    # OPTIONAL
+                MaxWidth  => 'MyDigitsOrAuto',    # OPTIONAL
+                PaddingPolicy => 'MyPaddingPolicy',    # OPTIONAL
+                SizingPolicy  => 'MySizingPolicy',     # OPTIONAL
               },
               ...
-            ],                                   # OPTIONAL
-            MergePolicy => 'MyMergePolicy',      # OPTIONAL
+            ],                                         # OPTIONAL
+            MergePolicy => 'MyMergePolicy',            # OPTIONAL
           },    # OPTIONAL
-          Watermarks => [
-            {
-              PresetWatermarkId =>
-                'MyPresetWatermarkId',    # min: 1, max: 40; OPTIONAL
-              Encryption => {
-                Mode => 'MyEncryptionMode',    # OPTIONAL
-                InitializationVector =>
-                  'MyZeroTo255String',         # max: 255; OPTIONAL
-                Key    => 'MyBase64EncodedString',    # OPTIONAL
-                KeyMd5 => 'MyBase64EncodedString',    # OPTIONAL
-              },    # OPTIONAL
-              InputKey => 'MyWatermarkKey',    # min: 1, max: 1024; OPTIONAL
-            },
-            ...
-          ],                                   # OPTIONAL
           Captions => {
-            MergePolicy    => 'MyCaptionMergePolicy',    # OPTIONAL
-            CaptionSources => [
-              {
-                Label      => 'MyName',          # min: 1, max: 40; OPTIONAL
-                Key        => 'MyLongKey',       # min: 1, max: 1024; OPTIONAL
-                Language   => 'MyKey',           # min: 1, max: 255; OPTIONAL
-                TimeOffset => 'MyTimeOffset',    # OPTIONAL
-                Encryption => {
-                  Mode => 'MyEncryptionMode',    # OPTIONAL
-                  InitializationVector =>
-                    'MyZeroTo255String',         # max: 255; OPTIONAL
-                  Key    => 'MyBase64EncodedString',    # OPTIONAL
-                  KeyMd5 => 'MyBase64EncodedString',    # OPTIONAL
-                },    # OPTIONAL
-              },
-              ...
-            ],        # max: 20; OPTIONAL
             CaptionFormats => [
               {
-                Format     => 'MyCaptionFormatFormat',     # OPTIONAL
-                Pattern    => 'MyCaptionFormatPattern',    # OPTIONAL
                 Encryption => {
-                  Mode => 'MyEncryptionMode',              # OPTIONAL
                   InitializationVector =>
-                    'MyZeroTo255String',                   # max: 255; OPTIONAL
-                  Key    => 'MyBase64EncodedString',       # OPTIONAL
-                  KeyMd5 => 'MyBase64EncodedString',       # OPTIONAL
+                    'MyZeroTo255String',    # max: 255; OPTIONAL
+                  Key    => 'MyBase64EncodedString',    # OPTIONAL
+                  KeyMd5 => 'MyBase64EncodedString',    # OPTIONAL
+                  Mode   => 'MyEncryptionMode',         # OPTIONAL
                 },    # OPTIONAL
+                Format  => 'MyCaptionFormatFormat',     # OPTIONAL
+                Pattern => 'MyCaptionFormatPattern',    # OPTIONAL
               },
               ...
-            ],        # max: 4; OPTIONAL
+            ],                                          # max: 4; OPTIONAL
+            CaptionSources => [
+              {
+                Encryption => {
+                  InitializationVector =>
+                    'MyZeroTo255String',                # max: 255; OPTIONAL
+                  Key    => 'MyBase64EncodedString',    # OPTIONAL
+                  KeyMd5 => 'MyBase64EncodedString',    # OPTIONAL
+                  Mode   => 'MyEncryptionMode',         # OPTIONAL
+                },    # OPTIONAL
+                Key        => 'MyLongKey',       # min: 1, max: 1024; OPTIONAL
+                Label      => 'MyName',          # min: 1, max: 40; OPTIONAL
+                Language   => 'MyKey',           # min: 1, max: 255; OPTIONAL
+                TimeOffset => 'MyTimeOffset',    # OPTIONAL
+              },
+              ...
+            ],                                   # max: 20; OPTIONAL
+            MergePolicy => 'MyCaptionMergePolicy',    # OPTIONAL
           },    # OPTIONAL
-          PresetId   => 'MyId',
-          Encryption => {
-            Mode                 => 'MyEncryptionMode',     # OPTIONAL
-            InitializationVector => 'MyZeroTo255String',    # max: 255; OPTIONAL
-            Key    => 'MyBase64EncodedString',              # OPTIONAL
-            KeyMd5 => 'MyBase64EncodedString',              # OPTIONAL
-          },    # OPTIONAL
-          SegmentDuration => 'MyFloatString',    # OPTIONAL
-          Composition     => [
+          Composition => [
             {
               TimeSpan => {
-                StartTime => 'MyTime',           # OPTIONAL
-                Duration  => 'MyTime',           # OPTIONAL
+                Duration  => 'MyTime',    # OPTIONAL
+                StartTime => 'MyTime',    # OPTIONAL
               },    # OPTIONAL
             },
             ...
           ],        # OPTIONAL
+          Encryption => {
+            InitializationVector => 'MyZeroTo255String',    # max: 255; OPTIONAL
+            Key    => 'MyBase64EncodedString',              # OPTIONAL
+            KeyMd5 => 'MyBase64EncodedString',              # OPTIONAL
+            Mode   => 'MyEncryptionMode',                   # OPTIONAL
+          },    # OPTIONAL
+          Key                 => 'MyKey',           # min: 1, max: 255; OPTIONAL
+          PresetId            => 'MyId',
+          Rotate              => 'MyRotate',        # OPTIONAL
+          SegmentDuration     => 'MyFloatString',   # OPTIONAL
+          ThumbnailEncryption => {
+            InitializationVector => 'MyZeroTo255String',    # max: 255; OPTIONAL
+            Key    => 'MyBase64EncodedString',              # OPTIONAL
+            KeyMd5 => 'MyBase64EncodedString',              # OPTIONAL
+            Mode   => 'MyEncryptionMode',                   # OPTIONAL
+          },    # OPTIONAL
+          ThumbnailPattern => 'MyThumbnailPattern',    # OPTIONAL
+          Watermarks       => [
+            {
+              Encryption => {
+                InitializationVector =>
+                  'MyZeroTo255String',                 # max: 255; OPTIONAL
+                Key    => 'MyBase64EncodedString',     # OPTIONAL
+                KeyMd5 => 'MyBase64EncodedString',     # OPTIONAL
+                Mode   => 'MyEncryptionMode',          # OPTIONAL
+              },    # OPTIONAL
+              InputKey => 'MyWatermarkKey',    # min: 1, max: 1024; OPTIONAL
+              PresetWatermarkId =>
+                'MyPresetWatermarkId',         # min: 1, max: 40; OPTIONAL
+            },
+            ...
+          ],                                   # OPTIONAL
         },
         ...
-      ],            # OPTIONAL
+      ],                                       # OPTIONAL
       Playlists => [
         {
+          Format               => 'MyPlaylistFormat',    # OPTIONAL
+          HlsContentProtection => {
+            InitializationVector => 'MyZeroTo255String',    # max: 255; OPTIONAL
+            Key              => 'MyBase64EncodedString',    # OPTIONAL
+            KeyMd5           => 'MyBase64EncodedString',    # OPTIONAL
+            KeyStoragePolicy => 'MyKeyStoragePolicy',       # OPTIONAL
+            LicenseAcquisitionUrl => 'MyZeroTo512String',   # max: 512; OPTIONAL
+            Method => 'MyHlsContentProtectionMethod',       # OPTIONAL
+          },    # OPTIONAL
+          Name       => 'MyFilename',    # min: 1, max: 255; OPTIONAL
           OutputKeys => [
-            'MyKey', ...    # min: 1, max: 255; OPTIONAL
-          ],                # max: 30; OPTIONAL
+            'MyKey', ...                 # min: 1, max: 255; OPTIONAL
+          ],                             # max: 30; OPTIONAL
           PlayReadyDrm => {
+            Format => 'MyPlayReadyDrmFormatString',    # OPTIONAL
+            InitializationVector => 'MyZeroTo255String',    # max: 255; OPTIONAL
+            Key    => 'MyNonEmptyBase64EncodedString',      # OPTIONAL
+            KeyId  => 'MyKeyIdGuid',                        # OPTIONAL
+            KeyMd5 => 'MyNonEmptyBase64EncodedString',      # OPTIONAL
             LicenseAcquisitionUrl =>
               'MyOneTo512String',    # min: 1, max: 512; OPTIONAL
-            Format => 'MyPlayReadyDrmFormatString',       # OPTIONAL
-            KeyMd5 => 'MyNonEmptyBase64EncodedString',    # OPTIONAL
-            Key    => 'MyNonEmptyBase64EncodedString',    # OPTIONAL
-            InitializationVector => 'MyZeroTo255String',  # max: 255; OPTIONAL
-            KeyId                => 'MyKeyIdGuid',        # OPTIONAL
           },    # OPTIONAL
-          HlsContentProtection => {
-            Method => 'MyHlsContentProtectionMethod',    # OPTIONAL
-            InitializationVector => 'MyZeroTo255String', # max: 255; OPTIONAL
-            Key    => 'MyBase64EncodedString',           # OPTIONAL
-            KeyMd5 => 'MyBase64EncodedString',           # OPTIONAL
-            LicenseAcquisitionUrl => 'MyZeroTo512String',   # max: 512; OPTIONAL
-            KeyStoragePolicy      => 'MyKeyStoragePolicy',  # OPTIONAL
-          },    # OPTIONAL
-          Name   => 'MyFilename',          # min: 1, max: 255; OPTIONAL
-          Format => 'MyPlaylistFormat',    # OPTIONAL
         },
         ...
-      ],                                   # OPTIONAL
+      ],        # OPTIONAL
       UserMetadata => { 'MyString' => 'MyString', },    # OPTIONAL
     );
 

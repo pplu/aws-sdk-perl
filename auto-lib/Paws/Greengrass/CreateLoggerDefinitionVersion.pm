@@ -36,21 +36,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AmznClientToken    => 'My__string',    # OPTIONAL
       Loggers            => [
         {
-          Id => 'My__string',
           Component =>
             'GreengrassSystem',    # values: GreengrassSystem, Lambda; OPTIONAL
-          Type => 'FileSystem',    # values: FileSystem, AWSCloudWatch; OPTIONAL
+          Id => 'My__string',
           Level => 'DEBUG',  # values: DEBUG, INFO, WARN, ERROR, FATAL; OPTIONAL
           Space => 1,        # OPTIONAL
+          Type => 'FileSystem',    # values: FileSystem, AWSCloudWatch; OPTIONAL
         },
         ...
-      ],                     # OPTIONAL
+      ],                           # OPTIONAL
       );
 
     # Results:
+    my $Arn = $CreateLoggerDefinitionVersionResponse->Arn;
     my $CreationTimestamp =
       $CreateLoggerDefinitionVersionResponse->CreationTimestamp;
-    my $Arn     = $CreateLoggerDefinitionVersionResponse->Arn;
     my $Id      = $CreateLoggerDefinitionVersionResponse->Id;
     my $Version = $CreateLoggerDefinitionVersionResponse->Version;
 

@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example adds the specified attribute for the specified DB snapshot.
     my $ModifyDBSnapshotAttributeResult = $rds->ModifyDBSnapshotAttribute(
       {
-        'ValuesToAdd'          => ['all'],
+        'AttributeName'        => 'restore',
         'DBSnapshotIdentifier' => 'mydbsnapshot',
-        'AttributeName'        => 'restore'
+        'ValuesToAdd'          => ['all']
       }
     );
 

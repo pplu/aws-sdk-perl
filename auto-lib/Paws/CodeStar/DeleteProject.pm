@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $StackId    = $DeleteProjectResult->StackId;
     my $ProjectArn = $DeleteProjectResult->ProjectArn;
+    my $StackId    = $DeleteProjectResult->StackId;
 
     # Returns a L<Paws::CodeStar::DeleteProjectResult> object.
 

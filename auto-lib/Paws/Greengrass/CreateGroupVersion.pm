@@ -47,8 +47,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CreationTimestamp = $CreateGroupVersionResponse->CreationTimestamp;
     my $Arn               = $CreateGroupVersionResponse->Arn;
+    my $CreationTimestamp = $CreateGroupVersionResponse->CreationTimestamp;
     my $Id                = $CreateGroupVersionResponse->Id;
     my $Version           = $CreateGroupVersionResponse->Version;
 

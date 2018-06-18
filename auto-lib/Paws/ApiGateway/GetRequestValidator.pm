@@ -36,11 +36,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ValidateRequestBody = $RequestValidator->ValidateRequestBody;
     my $Id                  = $RequestValidator->Id;
+    my $Name                = $RequestValidator->Name;
+    my $ValidateRequestBody = $RequestValidator->ValidateRequestBody;
     my $ValidateRequestParameters =
       $RequestValidator->ValidateRequestParameters;
-    my $Name = $RequestValidator->Name;
 
     # Returns a L<Paws::ApiGateway::RequestValidator> object.
 

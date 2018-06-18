@@ -41,9 +41,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ...
       ],    # OPTIONAL
       Expected => {
+        Exists => 1,            # OPTIONAL
         Name   => 'MyString',
         Value  => 'MyString',
-        Exists => 1,            # OPTIONAL
       },    # OPTIONAL
     );
 

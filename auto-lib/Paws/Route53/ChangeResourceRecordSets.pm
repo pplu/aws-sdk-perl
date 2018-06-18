@@ -35,18 +35,30 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ChangeBatch => {
         Changes => [
           {
+            Action            => 'CREATE',    # values: CREATE, DELETE, UPSERT
             ResourceRecordSet => {
-              Name => 'MyDNSName',    # max: 1024
+              Name => 'MyDNSName',            # max: 1024
               Type => 'SOA'
               , # values: SOA, A, TXT, NS, CNAME, MX, NAPTR, PTR, SRV, SPF, AAAA, CAA
+              AliasTarget => {
+                DNSName              => 'MyDNSName',       # max: 1024
+                EvaluateTargetHealth => 1,
+                HostedZoneId         => 'MyResourceId',    # max: 32
+
+              },    # OPTIONAL
+              Failover    => 'PRIMARY',   # values: PRIMARY, SECONDARY; OPTIONAL
               GeoLocation => {
+                ContinentCode =>
+                  'MyGeoLocationContinentCode',    # min: 2, max: 2; OPTIONAL
+                CountryCode =>
+                  'MyGeoLocationCountryCode',      # min: 1, max: 2; OPTIONAL
                 SubdivisionCode =>
                   'MyGeoLocationSubdivisionCode',    # min: 1, max: 3; OPTIONAL
-                CountryCode =>
-                  'MyGeoLocationCountryCode',        # min: 1, max: 2; OPTIONAL
-                ContinentCode =>
-                  'MyGeoLocationContinentCode',      # min: 2, max: 2; OPTIONAL
               },    # OPTIONAL
+              HealthCheckId    => 'MyHealthCheckId',    # max: 64; OPTIONAL
+              MultiValueAnswer => 1,                    # OPTIONAL
+              Region           => 'us-east-1'
+              , # values: us-east-1, us-east-2, us-west-1, us-west-2, ca-central-1, eu-west-1, eu-west-2, eu-west-3, eu-central-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, ap-northeast-2, ap-northeast-3, sa-east-1, cn-north-1, cn-northwest-1, ap-south-1min: 1, max: 64; OPTIONAL
               ResourceRecords => [
                 {
                   Value => 'MyRData',    # max: 4000
@@ -54,30 +66,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 },
                 ...
               ],                         # min: 1, ; OPTIONAL
-              Weight      => 1,          # max: 255; OPTIONAL
-              AliasTarget => {
-                DNSName              => 'MyDNSName',       # max: 1024
-                EvaluateTargetHealth => 1,
-                HostedZoneId         => 'MyResourceId',    # max: 32
-
-              },    # OPTIONAL
-              TTL    => 1,            # max: 2147483647; OPTIONAL
-              Region => 'us-east-1'
-              , # values: us-east-1, us-east-2, us-west-1, us-west-2, ca-central-1, eu-west-1, eu-west-2, eu-west-3, eu-central-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, ap-northeast-2, ap-northeast-3, sa-east-1, cn-north-1, cn-northwest-1, ap-south-1min: 1, max: 64; OPTIONAL
-              Failover => 'PRIMARY',    # values: PRIMARY, SECONDARY; OPTIONAL
-              MultiValueAnswer => 1,                    # OPTIONAL
-              HealthCheckId    => 'MyHealthCheckId',    # max: 64; OPTIONAL
               SetIdentifier =>
                 'MyResourceRecordSetIdentifier',    # min: 1, max: 128; OPTIONAL
+              TTL => 1,                             # max: 2147483647; OPTIONAL
               TrafficPolicyInstanceId =>
                 'MyTrafficPolicyInstanceId',        # min: 1, max: 36; OPTIONAL
+              Weight => 1,                          # max: 255; OPTIONAL
             },
-            Action => 'CREATE',    # values: CREATE, DELETE, UPSERT
 
           },
           ...
-        ],                         # min: 1,
-        Comment => 'MyResourceDescription',    # max: 256; OPTIONAL
+        ],                                          # min: 1,
+        Comment => 'MyResourceDescription',         # max: 256; OPTIONAL
       },
       HostedZoneId => 'MyResourceId',
 

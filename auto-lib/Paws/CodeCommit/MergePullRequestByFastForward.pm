@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $PullRequest = $MergePullRequestByFastForwardOutput->PullRequest;
+    my $pullRequest = $MergePullRequestByFastForwardOutput->pullRequest;
 
     # Returns a L<Paws::CodeCommit::MergePullRequestByFastForwardOutput> object.
 

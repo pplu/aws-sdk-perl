@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextPageToken = $ListPortfolioAccessOutput->NextPageToken;
     my $AccountIds    = $ListPortfolioAccessOutput->AccountIds;
+    my $NextPageToken = $ListPortfolioAccessOutput->NextPageToken;
 
     # Returns a L<Paws::ServiceCatalog::ListPortfolioAccessOutput> object.
 

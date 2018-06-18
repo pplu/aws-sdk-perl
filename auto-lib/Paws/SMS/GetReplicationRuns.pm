@@ -36,9 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ReplicationRunList = $GetReplicationRunsResponse->ReplicationRunList;
-    my $NextToken          = $GetReplicationRunsResponse->NextToken;
-    my $ReplicationJob     = $GetReplicationRunsResponse->ReplicationJob;
+    my $nextToken          = $GetReplicationRunsResponse->nextToken;
+    my $replicationJob     = $GetReplicationRunsResponse->replicationJob;
+    my $replicationRunList = $GetReplicationRunsResponse->replicationRunList;
 
     # Returns a L<Paws::SMS::GetReplicationRunsResponse> object.
 

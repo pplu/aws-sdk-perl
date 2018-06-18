@@ -40,19 +40,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ConfigurationSettingsDescription =
       $elasticbeanstalk->CreateConfigurationTemplate(
       {
+        'ApplicationName' => 'my-app',
         'EnvironmentId'   => 'e-rpqsewtp2j',
-        'TemplateName'    => 'my-app-v1',
-        'ApplicationName' => 'my-app'
+        'TemplateName'    => 'my-app-v1'
       }
       );
 
     # Results:
     my $ApplicationName = $ConfigurationSettingsDescription->ApplicationName;
-    my $TemplateName    = $ConfigurationSettingsDescription->TemplateName;
     my $DateCreated     = $ConfigurationSettingsDescription->DateCreated;
     my $DateUpdated     = $ConfigurationSettingsDescription->DateUpdated;
     my $SolutionStackName =
       $ConfigurationSettingsDescription->SolutionStackName;
+    my $TemplateName = $ConfigurationSettingsDescription->TemplateName;
 
  # Returns a L<Paws::ElasticBeanstalk::ConfigurationSettingsDescription> object.
 

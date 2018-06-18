@@ -33,20 +33,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $pinpoint->UpdateApplicationSettings(
       ApplicationId                   => 'My__string',
       WriteApplicationSettingsRequest => {
-        QuietTime => {
-          Start => 'My__string',
-          End   => 'My__string',
-        },    # OPTIONAL
         CampaignHook => {
-          WebUrl             => 'My__string',
           LambdaFunctionName => 'My__string',
-          Mode => 'DELIVERY',    # values: DELIVERY, FILTER; OPTIONAL
+          Mode   => 'DELIVERY',     # values: DELIVERY, FILTER; OPTIONAL
+          WebUrl => 'My__string',
         },    # OPTIONAL
         Limits => {
-          Total             => 1,    # OPTIONAL
           Daily             => 1,    # OPTIONAL
           MaximumDuration   => 1,    # OPTIONAL
           MessagesPerSecond => 1,    # OPTIONAL
+          Total             => 1,    # OPTIONAL
+        },    # OPTIONAL
+        QuietTime => {
+          End   => 'My__string',
+          Start => 'My__string',
         },    # OPTIONAL
       },
 

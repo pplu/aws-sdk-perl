@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken       = $DescribeFleetAttributesOutput->NextToken;
     my $FleetAttributes = $DescribeFleetAttributesOutput->FleetAttributes;
+    my $NextToken       = $DescribeFleetAttributesOutput->NextToken;
 
     # Returns a L<Paws::GameLift::DescribeFleetAttributesOutput> object.
 

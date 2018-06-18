@@ -45,16 +45,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $DatasetExists = $ListRecordsResponse->DatasetExists;
+    my $Count = $ListRecordsResponse->Count;
     my $DatasetDeletedAfterRequestedSyncCount =
       $ListRecordsResponse->DatasetDeletedAfterRequestedSyncCount;
-    my $Records            = $ListRecordsResponse->Records;
-    my $SyncSessionToken   = $ListRecordsResponse->SyncSessionToken;
-    my $NextToken          = $ListRecordsResponse->NextToken;
-    my $Count              = $ListRecordsResponse->Count;
+    my $DatasetExists      = $ListRecordsResponse->DatasetExists;
+    my $DatasetSyncCount   = $ListRecordsResponse->DatasetSyncCount;
     my $LastModifiedBy     = $ListRecordsResponse->LastModifiedBy;
     my $MergedDatasetNames = $ListRecordsResponse->MergedDatasetNames;
-    my $DatasetSyncCount   = $ListRecordsResponse->DatasetSyncCount;
+    my $NextToken          = $ListRecordsResponse->NextToken;
+    my $Records            = $ListRecordsResponse->Records;
+    my $SyncSessionToken   = $ListRecordsResponse->SyncSessionToken;
 
     # Returns a L<Paws::CognitoSync::ListRecordsResponse> object.
 

@@ -31,9 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ssm = Paws->service('SSM');
     my $UpdateAssociationStatusResult = $ssm->UpdateAssociationStatus(
       AssociationStatus => {
-        Name    => 'Pending',               # values: Pending, Success, Failed
         Date    => '1970-01-01T01:00:00',
         Message => 'MyStatusMessage',       # min: 1, max: 1024
+        Name    => 'Pending',               # values: Pending, Success, Failed
         AdditionalInfo => 'MyStatusAdditionalInfo',    # max: 1024; OPTIONAL
       },
       InstanceId => 'MyInstanceId',

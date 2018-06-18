@@ -50,10 +50,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # interface.
     $ec2->ModifyNetworkInterfaceAttribute(
       {
-        'NetworkInterfaceId' => 'eni-686ea200',
-        'Description'        => {
+        'Description' => {
           'Value' => 'My description'
-        }
+        },
+        'NetworkInterfaceId' => 'eni-686ea200'
       }
     );
 
@@ -62,8 +62,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # network interface.
     $ec2->ModifyNetworkInterfaceAttribute(
       {
-        'NetworkInterfaceId' => 'eni-686ea200',
-        'Groups'             => [ 'sg-903004f8', 'sg-1a2b3c4d' ]
+        'Groups'             => [ 'sg-903004f8', 'sg-1a2b3c4d' ],
+        'NetworkInterfaceId' => 'eni-686ea200'
       }
     );
 

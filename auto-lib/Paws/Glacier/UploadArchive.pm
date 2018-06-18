@@ -36,18 +36,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The example adds an archive to a vault.
     my $ArchiveCreationOutput = $glacier->UploadArchive(
       {
-        'ArchiveDescription' => '',
         'AccountId'          => '-',
+        'ArchiveDescription' => '',
         'Body'               => 'example-data-to-upload',
-        'VaultName'          => 'my-vault',
-        'Checksum'           => ''
+        'Checksum'           => '',
+        'VaultName'          => 'my-vault'
       }
     );
 
     # Results:
-    my $location  = $ArchiveCreationOutput->location;
     my $archiveId = $ArchiveCreationOutput->archiveId;
     my $checksum  = $ArchiveCreationOutput->checksum;
+    my $location  = $ArchiveCreationOutput->location;
 
     # Returns a L<Paws::Glacier::ArchiveCreationOutput> object.
 

@@ -36,9 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $DeliveryStreamNames = $ListDeliveryStreamsOutput->DeliveryStreamNames;
     my $HasMoreDeliveryStreams =
       $ListDeliveryStreamsOutput->HasMoreDeliveryStreams;
-    my $DeliveryStreamNames = $ListDeliveryStreamsOutput->DeliveryStreamNames;
 
     # Returns a L<Paws::Firehose::ListDeliveryStreamsOutput> object.
 

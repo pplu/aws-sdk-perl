@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $InvalidParameters = $DeleteParametersResult->InvalidParameters;
     my $DeletedParameters = $DeleteParametersResult->DeletedParameters;
+    my $InvalidParameters = $DeleteParametersResult->InvalidParameters;
 
     # Returns a L<Paws::SSM::DeleteParametersResult> object.
 

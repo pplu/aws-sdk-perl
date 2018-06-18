@@ -31,29 +31,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $GetApplicationRevisionOutput = $codedeploy->GetApplicationRevision(
       ApplicationName => 'MyApplicationName',
       Revision        => {
-        string => {
-          sha256  => 'MyRawStringSha256',     # OPTIONAL
-          content => 'MyRawStringContent',    # OPTIONAL
+        gitHubLocation => {
+          commitId   => 'MyCommitId',      # OPTIONAL
+          repository => 'MyRepository',    # OPTIONAL
         },    # OPTIONAL
         revisionType => 'S3',    # values: S3, GitHub, String; OPTIONAL
         s3Location   => {
-          eTag       => 'MyETag',  # OPTIONAL
+          bucket => 'MyS3Bucket',    # OPTIONAL
           bundleType => 'tar',     # values: tar, tgz, zip, YAML, JSON; OPTIONAL
+          eTag       => 'MyETag',  # OPTIONAL
+          key        => 'MyS3Key', # OPTIONAL
           version => 'MyVersionId',    # OPTIONAL
-          key     => 'MyS3Key',        # OPTIONAL
-          bucket  => 'MyS3Bucket',     # OPTIONAL
         },    # OPTIONAL
-        gitHubLocation => {
-          repository => 'MyRepository',    # OPTIONAL
-          commitId   => 'MyCommitId',      # OPTIONAL
+        string => {
+          content => 'MyRawStringContent',    # OPTIONAL
+          sha256  => 'MyRawStringSha256',     # OPTIONAL
         },    # OPTIONAL
       },
 
     );
 
     # Results:
-    my $Revision        = $GetApplicationRevisionOutput->Revision;
     my $ApplicationName = $GetApplicationRevisionOutput->ApplicationName;
+    my $Revision        = $GetApplicationRevisionOutput->Revision;
     my $RevisionInfo    = $GetApplicationRevisionOutput->RevisionInfo;
 
     # Returns a L<Paws::CodeDeploy::GetApplicationRevisionOutput> object.

@@ -38,10 +38,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $CloudFunctionConfiguration =
       $NotificationConfigurationDeprecated->CloudFunctionConfiguration;
-    my $TopicConfiguration =
-      $NotificationConfigurationDeprecated->TopicConfiguration;
     my $QueueConfiguration =
       $NotificationConfigurationDeprecated->QueueConfiguration;
+    my $TopicConfiguration =
+      $NotificationConfigurationDeprecated->TopicConfiguration;
 
     # Returns a L<Paws::S3::NotificationConfigurationDeprecated> object.
 

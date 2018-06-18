@@ -38,11 +38,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $StatusMessage = $GetCelebrityRecognitionResponse->StatusMessage;
-    my $VideoMetadata = $GetCelebrityRecognitionResponse->VideoMetadata;
+    my $Celebrities   = $GetCelebrityRecognitionResponse->Celebrities;
     my $JobStatus     = $GetCelebrityRecognitionResponse->JobStatus;
     my $NextToken     = $GetCelebrityRecognitionResponse->NextToken;
-    my $Celebrities   = $GetCelebrityRecognitionResponse->Celebrities;
+    my $StatusMessage = $GetCelebrityRecognitionResponse->StatusMessage;
+    my $VideoMetadata = $GetCelebrityRecognitionResponse->VideoMetadata;
 
     # Returns a L<Paws::Rekognition::GetCelebrityRecognitionResponse> object.
 

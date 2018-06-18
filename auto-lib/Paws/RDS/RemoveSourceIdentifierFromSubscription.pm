@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $RemoveSourceIdentifierFromSubscriptionResult =
       $rds->RemoveSourceIdentifierFromSubscription(
       {
-        'SubscriptionName' => 'myeventsubscription',
-        'SourceIdentifier' => 'mymysqlinstance'
+        'SourceIdentifier' => 'mymysqlinstance',
+        'SubscriptionName' => 'myeventsubscription'
       }
       );
 

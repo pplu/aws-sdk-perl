@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'AutoEnableIO' => {
           'Value' => true
         },
-        'VolumeId' => 'vol-1234567890abcdef0',
-        'DryRun'   => true
+        'DryRun'   => true,
+        'VolumeId' => 'vol-1234567890abcdef0'
       }
     );
 

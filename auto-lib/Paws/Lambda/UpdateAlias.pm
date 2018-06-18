@@ -37,18 +37,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This operation updates a Lambda function alias
     my $AliasConfiguration = $lambda->UpdateAlias(
       {
-        'Name'            => 'functionAlias',
         'Description'     => '',
         'FunctionName'    => 'myFunction',
-        'FunctionVersion' => 1
+        'FunctionVersion' => 1,
+        'Name'            => 'functionAlias'
       }
     );
 
     # Results:
-    my $Name            = $AliasConfiguration->Name;
     my $AliasArn        = $AliasConfiguration->AliasArn;
     my $Description     = $AliasConfiguration->Description;
     my $FunctionVersion = $AliasConfiguration->FunctionVersion;
+    my $Name            = $AliasConfiguration->Name;
 
     # Returns a L<Paws::Lambda::AliasConfiguration> object.
 

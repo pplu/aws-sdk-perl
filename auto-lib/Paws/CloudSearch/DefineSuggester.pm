@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Suggester  => {
         DocumentSuggesterOptions => {
           SourceField    => 'MyFieldName',   # min: 1, max: 64
-          SortExpression => 'MyString',      # OPTIONAL
           FuzzyMatching  => 'none',          # values: none, low, high; OPTIONAL
+          SortExpression => 'MyString',      # OPTIONAL
         },
         SuggesterName => 'MyStandardName',    # min: 1, max: 64
 

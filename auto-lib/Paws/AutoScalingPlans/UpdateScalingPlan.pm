@@ -34,34 +34,38 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ScalingPlanName    => 'MyScalingPlanName',
       ScalingPlanVersion => 1,
       ApplicationSource  => {
-        TagFilters => [
+        CloudFormationStackARN => 'MyXmlString',    # OPTIONAL
+        TagFilters             => [
           {
+            Key    => 'MyXmlStringMaxLen128',       # min: 1, max: 128; OPTIONAL
             Values => [
-              'MyXmlStringMaxLen256', ...    # min: 1, max: 256
-            ],                               # OPTIONAL
-            Key => 'MyXmlStringMaxLen128',   # min: 1, max: 128; OPTIONAL
+              'MyXmlStringMaxLen256', ...           # min: 1, max: 256
+            ],                                      # OPTIONAL
           },
           ...
-        ],                                   # OPTIONAL
-        CloudFormationStackARN => 'MyXmlString',    # OPTIONAL
+        ],                                          # OPTIONAL
       },    # OPTIONAL
       ScalingInstructions => [
         {
-          MinCapacity                  => 1,
-          MaxCapacity                  => 1,
+          MaxCapacity => 1,
+          MinCapacity => 1,
+          ResourceId  => 'MyResourceIdMaxLen1600',    # min: 1, max: 1600
+          ScalableDimension => 'autoscaling:autoScalingGroup:DesiredCapacity'
+          , # values: autoscaling:autoScalingGroup:DesiredCapacity, ecs:service:DesiredCount, ec2:spot-fleet-request:TargetCapacity, rds:cluster:ReadReplicaCount, dynamodb:table:ReadCapacityUnits, dynamodb:table:WriteCapacityUnits, dynamodb:index:ReadCapacityUnits, dynamodb:index:WriteCapacityUnits
+          ServiceNamespace =>
+            'autoscaling',    # values: autoscaling, ecs, ec2, rds, dynamodb
           TargetTrackingConfigurations => [
             {
               TargetValue                          => 1,
-              ScaleInCooldown                      => 1,    # OPTIONAL
               CustomizedScalingMetricSpecification => {
-                Namespace => 'MyMetricNamespace',
-                Statistic => 'Average'
-                ,    # values: Average, Minimum, Maximum, SampleCount, Sum
                 MetricName => 'MyMetricName',
+                Namespace  => 'MyMetricNamespace',
+                Statistic  => 'Average'
+                ,    # values: Average, Minimum, Maximum, SampleCount, Sum
                 Dimensions => [
                   {
-                    Value => 'MyMetricDimensionValue',
                     Name  => 'MyMetricDimensionName',
+                    Value => 'MyMetricDimensionValue',
 
                   },
                   ...
@@ -76,19 +80,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ResourceLabel =>
                   'MyResourceLabel',    # min: 1, max: 1023; OPTIONAL
               },    # OPTIONAL
+              ScaleInCooldown  => 1,    # OPTIONAL
               ScaleOutCooldown => 1,    # OPTIONAL
             },
             ...
           ],
-          ServiceNamespace =>
-            'autoscaling',    # values: autoscaling, ecs, ec2, rds, dynamodb
-          ResourceId => 'MyResourceIdMaxLen1600',    # min: 1, max: 1600
-          ScalableDimension => 'autoscaling:autoScalingGroup:DesiredCapacity'
-          , # values: autoscaling:autoScalingGroup:DesiredCapacity, ecs:service:DesiredCount, ec2:spot-fleet-request:TargetCapacity, rds:cluster:ReadReplicaCount, dynamodb:table:ReadCapacityUnits, dynamodb:table:WriteCapacityUnits, dynamodb:index:ReadCapacityUnits, dynamodb:index:WriteCapacityUnits
 
         },
         ...
-      ],    # OPTIONAL
+      ],                                # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

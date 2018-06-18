@@ -37,9 +37,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $Available = $CheckDNSAvailabilityResultMessage->Available;
     my $FullyQualifiedCNAME =
       $CheckDNSAvailabilityResultMessage->FullyQualifiedCNAME;
-    my $Available = $CheckDNSAvailabilityResultMessage->Available;
 
 # Returns a L<Paws::ElasticBeanstalk::CheckDNSAvailabilityResultMessage> object.
 

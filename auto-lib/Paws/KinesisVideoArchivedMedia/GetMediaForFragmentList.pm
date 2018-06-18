@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Payload     = $GetMediaForFragmentListOutput->Payload;
     my $ContentType = $GetMediaForFragmentListOutput->ContentType;
+    my $Payload     = $GetMediaForFragmentListOutput->Payload;
 
 # Returns a L<Paws::KinesisVideoArchivedMedia::GetMediaForFragmentListOutput> object.
 

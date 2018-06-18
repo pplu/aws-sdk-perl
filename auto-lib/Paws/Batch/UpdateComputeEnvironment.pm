@@ -42,10 +42,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $computeEnvironmentName =
-      $UpdateComputeEnvironmentResponse->computeEnvironmentName;
     my $computeEnvironmentArn =
       $UpdateComputeEnvironmentResponse->computeEnvironmentArn;
+    my $computeEnvironmentName =
+      $UpdateComputeEnvironmentResponse->computeEnvironmentName;
 
     # Returns a L<Paws::Batch::UpdateComputeEnvironmentResponse> object.
 

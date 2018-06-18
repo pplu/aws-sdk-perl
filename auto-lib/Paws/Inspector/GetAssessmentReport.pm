@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Url    = $GetAssessmentReportResponse->Url;
     my $Status = $GetAssessmentReportResponse->Status;
+    my $Url    = $GetAssessmentReportResponse->Url;
 
     # Returns a L<Paws::Inspector::GetAssessmentReportResponse> object.
 

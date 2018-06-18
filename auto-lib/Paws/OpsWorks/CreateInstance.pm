@@ -55,15 +55,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AvailabilityZone    => 'MyString',            # OPTIONAL
       BlockDeviceMappings => [
         {
-          NoDevice => 'MyString',
-          Ebs      => {
-            VolumeSize          => 1,               # OPTIONAL
+          DeviceName => 'MyString',
+          Ebs        => {
             DeleteOnTermination => 1,               # OPTIONAL
-            SnapshotId          => 'MyString',
             Iops                => 1,               # OPTIONAL
+            SnapshotId          => 'MyString',
+            VolumeSize          => 1,               # OPTIONAL
             VolumeType => 'gp2',    # values: gp2, io1, standard; OPTIONAL
           },    # OPTIONAL
-          DeviceName  => 'MyString',
+          NoDevice    => 'MyString',
           VirtualName => 'MyString',
         },
         ...

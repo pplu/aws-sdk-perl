@@ -57,30 +57,30 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ExternalTableDefinition   => 'MyString',    # OPTIONAL
       ExtraConnectionAttributes => 'MyString',    # OPTIONAL
       MongoDbSettings           => {
-        KmsKeyId   => 'MyString',
-        ServerName => 'MyString',
         AuthMechanism =>
           'default',    # values: default, mongodb_cr, scram_sha_1; OPTIONAL
-        ExtractDocId      => 'MyString',
-        Password          => 'MySecretString',  # OPTIONAL
         AuthSource        => 'MyString',
-        Username          => 'MyString',
-        DocsToInvestigate => 'MyString',
-        NestingLevel      => 'none',            # values: none, one; OPTIONAL
         AuthType          => 'no',              # values: no, password; OPTIONAL
         DatabaseName      => 'MyString',
+        DocsToInvestigate => 'MyString',
+        ExtractDocId      => 'MyString',
+        KmsKeyId          => 'MyString',
+        NestingLevel      => 'none',            # values: none, one; OPTIONAL
+        Password          => 'MySecretString',  # OPTIONAL
         Port              => 1,                 # OPTIONAL
+        ServerName        => 'MyString',
+        Username          => 'MyString',
       },    # OPTIONAL
       Password   => 'MySecretString',    # OPTIONAL
       Port       => 1,                   # OPTIONAL
       S3Settings => {
-        ExternalTableDefinition => 'MyString',
-        CsvRowDelimiter         => 'MyString',
-        BucketName              => 'MyString',
         BucketFolder            => 'MyString',
+        BucketName              => 'MyString',
         CompressionType         => 'none',       # values: none, gzip; OPTIONAL
-        ServiceAccessRoleArn    => 'MyString',
         CsvDelimiter            => 'MyString',
+        CsvRowDelimiter         => 'MyString',
+        ExternalTableDefinition => 'MyString',
+        ServiceAccessRoleArn    => 'MyString',
       },    # OPTIONAL
       ServerName           => 'MyString',    # OPTIONAL
       ServiceAccessRoleArn => 'MyString',    # OPTIONAL

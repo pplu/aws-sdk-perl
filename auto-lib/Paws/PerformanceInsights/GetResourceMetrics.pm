@@ -57,11 +57,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken        = $GetResourceMetricsResponse->NextToken;
-    my $MetricList       = $GetResourceMetricsResponse->MetricList;
-    my $Identifier       = $GetResourceMetricsResponse->Identifier;
-    my $AlignedStartTime = $GetResourceMetricsResponse->AlignedStartTime;
     my $AlignedEndTime   = $GetResourceMetricsResponse->AlignedEndTime;
+    my $AlignedStartTime = $GetResourceMetricsResponse->AlignedStartTime;
+    my $Identifier       = $GetResourceMetricsResponse->Identifier;
+    my $MetricList       = $GetResourceMetricsResponse->MetricList;
+    my $NextToken        = $GetResourceMetricsResponse->NextToken;
 
     # Returns a L<Paws::PerformanceInsights::GetResourceMetricsResponse> object.
 

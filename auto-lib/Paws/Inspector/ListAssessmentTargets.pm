@@ -38,9 +38,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $nextToken = $ListAssessmentTargetsResponse->nextToken;
     my $assessmentTargetArns =
       $ListAssessmentTargetsResponse->assessmentTargetArns;
+    my $nextToken = $ListAssessmentTargetsResponse->nextToken;
 
     # Returns a L<Paws::Inspector::ListAssessmentTargetsResponse> object.
 

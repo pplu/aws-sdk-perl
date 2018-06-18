@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken = $ListAssociatedStacksResult->NextToken;
     my $Names     = $ListAssociatedStacksResult->Names;
+    my $NextToken = $ListAssociatedStacksResult->NextToken;
 
     # Returns a L<Paws::AppStream::ListAssociatedStacksResult> object.
 

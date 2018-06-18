@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $NextPageCount = $GetOperationsForResourceResult->NextPageCount;
-    my $Operations    = $GetOperationsForResourceResult->Operations;
     my $NextPageToken = $GetOperationsForResourceResult->NextPageToken;
+    my $Operations    = $GetOperationsForResourceResult->Operations;
 
     # Returns a L<Paws::Lightsail::GetOperationsForResourceResult> object.
 

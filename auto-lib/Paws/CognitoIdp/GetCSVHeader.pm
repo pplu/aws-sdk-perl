@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $UserPoolId = $GetCSVHeaderResponse->UserPoolId;
     my $CSVHeader  = $GetCSVHeaderResponse->CSVHeader;
+    my $UserPoolId = $GetCSVHeaderResponse->UserPoolId;
 
     # Returns a L<Paws::CognitoIdp::GetCSVHeaderResponse> object.
 

@@ -37,13 +37,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # The example uploads the first 1 MiB (1024 x 1024 bytes) part of an archive.
     my $UploadMultipartPartOutput = $glacier->UploadMultipartPart(
       {
-        'Checksum'  => 'c06f7cd4baacb087002a99a5f48bf953',
-        'VaultName' => 'examplevault',
-        'Body'      => 'part1',
-        'Range'     => 'bytes 0-1048575/*',
         'AccountId' => '-',
+        'Body'      => 'part1',
+        'Checksum'  => 'c06f7cd4baacb087002a99a5f48bf953',
+        'Range'     => 'bytes 0-1048575/*',
         'UploadId' =>
-'19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR7vgFuJV6NtcV5zpsJ'
+'19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR7vgFuJV6NtcV5zpsJ',
+        'VaultName' => 'examplevault'
       }
     );
 

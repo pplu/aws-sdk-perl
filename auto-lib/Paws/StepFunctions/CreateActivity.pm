@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CreationDate = $CreateActivityOutput->CreationDate;
     my $ActivityArn  = $CreateActivityOutput->ActivityArn;
+    my $CreationDate = $CreateActivityOutput->CreationDate;
 
     # Returns a L<Paws::StepFunctions::CreateActivityOutput> object.
 

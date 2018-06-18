@@ -33,24 +33,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateGroupResponse = $greengrass->CreateGroup(
       AmznClientToken => 'My__string',    # OPTIONAL
       InitialVersion  => {
-        DeviceDefinitionVersionArn       => 'My__string',
         CoreDefinitionVersionArn         => 'My__string',
-        ResourceDefinitionVersionArn     => 'My__string',
-        LoggerDefinitionVersionArn       => 'My__string',
-        SubscriptionDefinitionVersionArn => 'My__string',
+        DeviceDefinitionVersionArn       => 'My__string',
         FunctionDefinitionVersionArn     => 'My__string',
+        LoggerDefinitionVersionArn       => 'My__string',
+        ResourceDefinitionVersionArn     => 'My__string',
+        SubscriptionDefinitionVersionArn => 'My__string',
       },                                  # OPTIONAL
       Name => 'My__string',               # OPTIONAL
     );
 
     # Results:
-    my $LastUpdatedTimestamp = $CreateGroupResponse->LastUpdatedTimestamp;
-    my $Id                   = $CreateGroupResponse->Id;
-    my $LatestVersionArn     = $CreateGroupResponse->LatestVersionArn;
     my $Arn                  = $CreateGroupResponse->Arn;
     my $CreationTimestamp    = $CreateGroupResponse->CreationTimestamp;
-    my $Name                 = $CreateGroupResponse->Name;
+    my $Id                   = $CreateGroupResponse->Id;
+    my $LastUpdatedTimestamp = $CreateGroupResponse->LastUpdatedTimestamp;
     my $LatestVersion        = $CreateGroupResponse->LatestVersion;
+    my $LatestVersionArn     = $CreateGroupResponse->LatestVersionArn;
+    my $Name                 = $CreateGroupResponse->Name;
 
     # Returns a L<Paws::Greengrass::CreateGroupResponse> object.
 

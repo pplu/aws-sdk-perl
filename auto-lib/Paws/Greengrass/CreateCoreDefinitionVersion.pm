@@ -36,21 +36,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AmznClientToken  => 'My__string',    # OPTIONAL
       Cores            => [
         {
+          CertificateArn => 'My__string',
+          Id             => 'My__string',
           SyncShadow     => 1,              # OPTIONAL
           ThingArn       => 'My__string',
-          Id             => 'My__string',
-          CertificateArn => 'My__string',
         },
         ...
       ],                                    # OPTIONAL
       );
 
     # Results:
-    my $Id      = $CreateCoreDefinitionVersionResponse->Id;
-    my $Version = $CreateCoreDefinitionVersionResponse->Version;
+    my $Arn = $CreateCoreDefinitionVersionResponse->Arn;
     my $CreationTimestamp =
       $CreateCoreDefinitionVersionResponse->CreationTimestamp;
-    my $Arn = $CreateCoreDefinitionVersionResponse->Arn;
+    my $Id      = $CreateCoreDefinitionVersionResponse->Id;
+    my $Version = $CreateCoreDefinitionVersionResponse->Version;
 
     # Returns a L<Paws::Greengrass::CreateCoreDefinitionVersionResponse> object.
 

@@ -43,8 +43,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken = $ListJobsResponse->NextToken;
     my $Jobs      = $ListJobsResponse->Jobs;
+    my $NextToken = $ListJobsResponse->NextToken;
 
     # Returns a L<Paws::IoT::ListJobsResponse> object.
 

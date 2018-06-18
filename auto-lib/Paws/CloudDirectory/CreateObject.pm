@@ -44,25 +44,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       LinkName            => 'MyLinkName',    # OPTIONAL
       ObjectAttributeList => [
         {
+          Key => {
+            FacetName => 'MyFacetName',        # min: 1, max: 64; OPTIONAL
+            Name      => 'MyAttributeName',    # min: 1, max: 64
+            SchemaArn => 'MyArn',
+
+          },
           Value => {
-            DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
-            BooleanValue  => 1,                             # OPTIONAL
             BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
+            BooleanValue  => 1,                             # OPTIONAL
+            DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
             NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
             StringValue   => 'MyStringAttributeValue',      # OPTIONAL
-          },
-          Key => {
-            SchemaArn => 'MyArn',
-            Name      => 'MyAttributeName',    # min: 1, max: 64
-            FacetName => 'MyFacetName',        # min: 1, max: 64; OPTIONAL
-
           },
 
         },
         ...
-      ],                                       # OPTIONAL
+      ],                                                    # OPTIONAL
       ParentReference => {
-        Selector => 'MySelectorObjectReference',    # OPTIONAL
+        Selector => 'MySelectorObjectReference',            # OPTIONAL
       },    # OPTIONAL
     );
 

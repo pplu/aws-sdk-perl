@@ -33,26 +33,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ResourceConfig    = $DescribeTrainingJobResponse->ResourceConfig;
-    my $LastModifiedTime  = $DescribeTrainingJobResponse->LastModifiedTime;
-    my $CreationTime      = $DescribeTrainingJobResponse->CreationTime;
-    my $TrainingJobName   = $DescribeTrainingJobResponse->TrainingJobName;
-    my $InputDataConfig   = $DescribeTrainingJobResponse->InputDataConfig;
-    my $TrainingJobArn    = $DescribeTrainingJobResponse->TrainingJobArn;
-    my $TrainingEndTime   = $DescribeTrainingJobResponse->TrainingEndTime;
-    my $FailureReason     = $DescribeTrainingJobResponse->FailureReason;
-    my $VpcConfig         = $DescribeTrainingJobResponse->VpcConfig;
-    my $HyperParameters   = $DescribeTrainingJobResponse->HyperParameters;
-    my $TrainingStartTime = $DescribeTrainingJobResponse->TrainingStartTime;
-    my $StoppingCondition = $DescribeTrainingJobResponse->StoppingCondition;
     my $AlgorithmSpecification =
       $DescribeTrainingJobResponse->AlgorithmSpecification;
-    my $OutputDataConfig  = $DescribeTrainingJobResponse->OutputDataConfig;
-    my $TrainingJobStatus = $DescribeTrainingJobResponse->TrainingJobStatus;
+    my $CreationTime      = $DescribeTrainingJobResponse->CreationTime;
+    my $FailureReason     = $DescribeTrainingJobResponse->FailureReason;
+    my $HyperParameters   = $DescribeTrainingJobResponse->HyperParameters;
+    my $InputDataConfig   = $DescribeTrainingJobResponse->InputDataConfig;
+    my $LastModifiedTime  = $DescribeTrainingJobResponse->LastModifiedTime;
     my $ModelArtifacts    = $DescribeTrainingJobResponse->ModelArtifacts;
-    my $SecondaryStatus   = $DescribeTrainingJobResponse->SecondaryStatus;
+    my $OutputDataConfig  = $DescribeTrainingJobResponse->OutputDataConfig;
+    my $ResourceConfig    = $DescribeTrainingJobResponse->ResourceConfig;
     my $RoleArn           = $DescribeTrainingJobResponse->RoleArn;
+    my $SecondaryStatus   = $DescribeTrainingJobResponse->SecondaryStatus;
+    my $StoppingCondition = $DescribeTrainingJobResponse->StoppingCondition;
+    my $TrainingEndTime   = $DescribeTrainingJobResponse->TrainingEndTime;
+    my $TrainingJobArn    = $DescribeTrainingJobResponse->TrainingJobArn;
+    my $TrainingJobName   = $DescribeTrainingJobResponse->TrainingJobName;
+    my $TrainingJobStatus = $DescribeTrainingJobResponse->TrainingJobStatus;
+    my $TrainingStartTime = $DescribeTrainingJobResponse->TrainingStartTime;
     my $TuningJobArn      = $DescribeTrainingJobResponse->TuningJobArn;
+    my $VpcConfig         = $DescribeTrainingJobResponse->VpcConfig;
 
     # Returns a L<Paws::SageMaker::DescribeTrainingJobResponse> object.
 

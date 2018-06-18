@@ -40,8 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $InstanceType = $InstanceAttribute->InstanceType;
     my $InstanceId   = $InstanceAttribute->InstanceId;
+    my $InstanceType = $InstanceAttribute->InstanceType;
 
     # Returns a L<Paws::EC2::InstanceAttribute> object.
     # To describe the disableApiTermination attribute
@@ -50,14 +50,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $InstanceAttribute = $ec2->DescribeInstanceAttribute(
       {
-        'InstanceId' => 'i-1234567890abcdef0',
-        'Attribute'  => 'disableApiTermination'
+        'Attribute'  => 'disableApiTermination',
+        'InstanceId' => 'i-1234567890abcdef0'
       }
     );
 
     # Results:
-    my $InstanceId            = $InstanceAttribute->InstanceId;
     my $DisableApiTermination = $InstanceAttribute->DisableApiTermination;
+    my $InstanceId            = $InstanceAttribute->InstanceId;
 
     # Returns a L<Paws::EC2::InstanceAttribute> object.
     # To describe the block device mapping for an instance
@@ -66,14 +66,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $InstanceAttribute = $ec2->DescribeInstanceAttribute(
       {
-        'InstanceId' => 'i-1234567890abcdef0',
-        'Attribute'  => 'blockDeviceMapping'
+        'Attribute'  => 'blockDeviceMapping',
+        'InstanceId' => 'i-1234567890abcdef0'
       }
     );
 
     # Results:
-    my $InstanceId          = $InstanceAttribute->InstanceId;
     my $BlockDeviceMappings = $InstanceAttribute->BlockDeviceMappings;
+    my $InstanceId          = $InstanceAttribute->InstanceId;
 
     # Returns a L<Paws::EC2::InstanceAttribute> object.
 

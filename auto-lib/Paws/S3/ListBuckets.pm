@@ -32,8 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ListBucketsOutput = $s3->ListBuckets();
 
     # Results:
-    my $Owner   = $ListBucketsOutput->Owner;
     my $Buckets = $ListBucketsOutput->Buckets;
+    my $Owner   = $ListBucketsOutput->Owner;
 
     # Returns a L<Paws::S3::ListBucketsOutput> object.
 

@@ -33,9 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Bob.
     my $UploadSigningCertificateResponse = $iam->UploadSigningCertificate(
       {
-        'UserName' => 'Bob',
         'CertificateBody' =>
-'-----BEGIN CERTIFICATE-----<certificate-body>-----END CERTIFICATE-----'
+'-----BEGIN CERTIFICATE-----<certificate-body>-----END CERTIFICATE-----',
+        'UserName' => 'Bob'
       }
     );
 
