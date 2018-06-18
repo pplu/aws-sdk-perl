@@ -39,7 +39,8 @@ Information about a message.
 
 =head2 B<REQUIRED> MessageId => Str
 
-  The ID you wish to assign to the message.
+  The ID you wish to assign to the message. Each "messageId" must be
+unique within each batch sent.
 
 
 =head2 B<REQUIRED> Payload => Str

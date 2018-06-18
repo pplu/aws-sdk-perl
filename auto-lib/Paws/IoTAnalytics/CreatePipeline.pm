@@ -3,6 +3,7 @@ package Paws::IoTAnalytics::CreatePipeline;
   use Moose;
   has PipelineActivities => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::PipelineActivity]', traits => ['NameInRequest'], request_name => 'pipelineActivities', required => 1);
   has PipelineName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineName', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::Tag]', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -99,12 +100,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ...
       ],
       PipelineName => 'MyPipelineName',
+      Tags         => [
+        {
+          key   => 'MyTagKey',      # min: 1, max: 256
+          value => 'MyTagValue',    # min: 1, max: 256
 
+        },
+        ...
+      ],                            # OPTIONAL
     );
 
     # Results:
-    my $pipelineArn  = $CreatePipelineResponse->pipelineArn;
-    my $pipelineName = $CreatePipelineResponse->pipelineName;
+    my $PipelineArn  = $CreatePipelineResponse->PipelineArn;
+    my $PipelineName = $CreatePipelineResponse->PipelineName;
 
     # Returns a L<Paws::IoTAnalytics::CreatePipelineResponse> object.
 
@@ -129,6 +137,12 @@ performing mathematical transformations to normalize device data.
 =head2 B<REQUIRED> PipelineName => Str
 
 The name of the pipeline.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::IoTAnalytics::Tag>]
+
+Metadata which can be used to manage the pipeline.
 
 
 

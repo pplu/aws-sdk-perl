@@ -3,6 +3,7 @@ package Paws::IoTAnalytics::CreateDataset;
   use Moose;
   has Actions => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::DatasetAction]', traits => ['NameInRequest'], request_name => 'actions', required => 1);
   has DatasetName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'datasetName', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::Tag]', traits => ['NameInRequest'], request_name => 'tags');
   has Triggers => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::DatasetTrigger]', traits => ['NameInRequest'], request_name => 'triggers');
 
   use MooseX::ClassAttribute;
@@ -42,7 +43,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ...
       ],
       DatasetName => 'MyDatasetName',
-      Triggers    => [
+      Tags        => [
+        {
+          key   => 'MyTagKey',                     # min: 1, max: 256
+          value => 'MyTagValue',                   # min: 1, max: 256
+
+        },
+        ...
+      ],                                           # OPTIONAL
+      Triggers => [
         {
           schedule => {
             expression => 'MyScheduleExpression',    # OPTIONAL
@@ -74,6 +83,12 @@ supported at this time.
 =head2 B<REQUIRED> DatasetName => Str
 
 The name of the data set.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::IoTAnalytics::Tag>]
+
+Metadata which can be used to manage the data set.
 
 
 
