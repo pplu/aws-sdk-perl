@@ -36,6 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $CloudWatchOutputConfig =
+      $GetCommandInvocationResult->CloudWatchOutputConfig;
     my $CommandId       = $GetCommandInvocationResult->CommandId;
     my $Comment         = $GetCommandInvocationResult->Comment;
     my $DocumentName    = $GetCommandInvocationResult->DocumentName;

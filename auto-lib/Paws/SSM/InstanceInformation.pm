@@ -62,7 +62,7 @@ registered.
 
 =head2 AgentVersion => Str
 
-  The version of the SSM Agent running on your Linux instance.
+  The version of SSM Agent running on your Linux instance.
 
 
 =head2 AssociationOverview => L<Paws::SSM::InstanceAggregatedAssociationOverview>
@@ -82,8 +82,9 @@ registered.
 
 =head2 IamRole => Str
 
-  The Amazon Identity and Access Management (IAM) role assigned to EC2
-instances or managed instances.
+  The Amazon Identity and Access Management (IAM) role assigned to the
+on-premises Systems Manager managed instances. This call does not
+return the IAM role for Amazon EC2 instances.
 
 
 =head2 InstanceId => Str
@@ -98,7 +99,7 @@ instances or managed instances.
 
 =head2 IsLatestVersion => Bool
 
-  Indicates whether latest version of the SSM Agent is running on your
+  Indicates whether latest version of SSM Agent is running on your
 instance. Some older versions of Windows Server use the EC2Config
 service to process SSM requests. For this reason, this field does not
 indicate whether or not the latest version is installed on Windows
@@ -127,7 +128,7 @@ managed instances.
 
 =head2 PingStatus => Str
 
-  Connection status of the SSM Agent.
+  Connection status of SSM Agent.
 
 
 =head2 PlatformName => Str

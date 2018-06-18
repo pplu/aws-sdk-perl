@@ -42,7 +42,9 @@ Defines an approval rule for a patch baseline.
 =head2 B<REQUIRED> ApproveAfterDays => Int
 
   The number of days after the release date of each patch matched by the
-rule the patch is marked as approved in the patch baseline.
+rule that the patch is marked as approved in the patch baseline. For
+example, a value of C<7> means that patches are approved seven days
+after they are released.
 
 
 =head2 ComplianceLevel => Str

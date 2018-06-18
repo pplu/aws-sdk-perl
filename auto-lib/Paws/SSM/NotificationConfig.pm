@@ -50,8 +50,8 @@ this topic.
   The different events for which you can receive notifications. These
 events include the following: All (events), InProgress, Success,
 TimedOut, Cancelled, Failed. To learn more about these events, see
-Setting Up Events and Notifications
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-commands.html)
+Configuring Amazon SNS Notifications for Run Command
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/rc-sns-notifications.html)
 in the I<AWS Systems Manager User Guide>.
 
 

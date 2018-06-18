@@ -764,7 +764,8 @@ Guide (http://docs.aws.amazon.com/systems-manager/latest/userguide/).
 
 To get started, verify prerequisites and configure managed instances.
 For more information, see Systems Manager Prerequisites
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html).
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html)
+in the I<AWS Systems Manager User Guide>.
 
 For information about other API actions you can perform on Amazon EC2
 instances, see the Amazon EC2 API Reference
@@ -1052,9 +1053,10 @@ By default, data is not encrypted in Amazon S3. We strongly recommend
 that you enable encryption in Amazon S3 to ensure secure data storage.
 We also recommend that you secure access to the Amazon S3 bucket by
 creating a restrictive bucket policy. To view an example of a
-restrictive Amazon S3 bucket policy for Resource Data Sync, see
-Configuring Resource Data Sync for Inventory
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-configuring.html#sysman-inventory-datasync).
+restrictive Amazon S3 bucket policy for Resource Data Sync, see Create
+a Resource Data Sync for Inventory
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-datasync-create.html)
+in the I<AWS Systems Manager User Guide>.
 
 
 =head2 DeleteActivation
@@ -1249,7 +1251,7 @@ Returns: a L<Paws::SSM::DeregisterManagedInstanceResult> instance
 Removes the server or virtual machine from the list of registered
 servers. You can reregister the instance again at any time. If you
 don't plan to use Run Command on the server, we suggest uninstalling
-the SSM Agent first.
+SSM Agent first.
 
 
 =head2 DeregisterPatchBaselineForPatchGroup
@@ -2115,7 +2117,8 @@ Each argument is described in detail in: L<Paws::SSM::GetParameter>
 
 Returns: a L<Paws::SSM::GetParameterResult> instance
 
-Get information about a parameter by using the parameter name.
+Get information about a parameter by using the parameter name. Don't
+confuse this API action with the GetParameters API action.
 
 
 =head2 GetParameterHistory
@@ -2155,7 +2158,8 @@ Each argument is described in detail in: L<Paws::SSM::GetParameters>
 
 Returns: a L<Paws::SSM::GetParametersResult> instance
 
-Get details of a parameter.
+Get details of a parameter. Don't confuse this API action with the
+GetParameter API action.
 
 
 =head2 GetParametersByPath
@@ -2183,7 +2187,8 @@ Returns: a L<Paws::SSM::GetParametersByPathResult> instance
 
 Retrieve parameters in a specific hierarchy. For more information, see
 Working with Systems Manager Parameters
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-working.html).
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-working.html)
+in the I<AWS Systems Manager User Guide>.
 
 Request results are returned on a best-effort basis. If you specify
 C<MaxResults> in the request, the response includes information up to
@@ -2840,6 +2845,8 @@ behavior or status of the execution.
 =over
 
 =item DocumentName => Str
+
+=item [CloudWatchOutputConfig => L<Paws::SSM::CloudWatchOutputConfig>]
 
 =item [Comment => Str]
 
