@@ -132,9 +132,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               TargetLkfs => 1,  # OPTIONAL
             },    # OPTIONAL
             AudioSourceName => 'My__string',
-            AudioType       => 1,              # max: 255; OPTIONAL
+            AudioType       => 1,              # max: 255
             AudioTypeControl =>
               'FOLLOW_INPUT',   # values: FOLLOW_INPUT, USE_CONFIGURED; OPTIONAL
+            CustomLanguageCode =>
+              'My__stringMin3Max3PatternAZaZ3',    # min: 3, max: 3; OPTIONAL
             LanguageCode => 'ENG'
             , # values: ENG, SPA, FRA, DEU, GER, ZHO, ARA, HIN, JPN, RUS, POR, ITA, URD, VIE, KOR, PAN, ABK, AAR, AFR, AKA, SQI, AMH, ARG, HYE, ASM, AVA, AVE, AYM, AZE, BAM, BAK, EUS, BEL, BEN, BIH, BIS, BOS, BRE, BUL, MYA, CAT, KHM, CHA, CHE, NYA, CHU, CHV, COR, COS, CRE, HRV, CES, DAN, DIV, NLD, DZO, ENM, EPO, EST, EWE, FAO, FIJ, FIN, FRM, FUL, GLA, GLG, LUG, KAT, ELL, GRN, GUJ, HAT, HAU, HEB, HER, HMO, HUN, ISL, IDO, IBO, IND, INA, ILE, IKU, IPK, GLE, JAV, KAL, KAN, KAU, KAS, KAZ, KIK, KIN, KIR, KOM, KON, KUA, KUR, LAO, LAT, LAV, LIM, LIN, LIT, LUB, LTZ, MKD, MLG, MSA, MAL, MLT, GLV, MRI, MAR, MAH, MON, NAU, NAV, NDE, NBL, NDO, NEP, SME, NOR, NOB, NNO, OCI, OJI, ORI, ORM, OSS, PLI, FAS, POL, PUS, QUE, QAA, RON, ROH, RUN, SMO, SAG, SAN, SRD, SRB, SNA, III, SND, SIN, SLK, SLV, SOM, SOT, SUN, SWA, SSW, SWE, TGL, TAH, TGK, TAM, TAT, TEL, THA, BOD, TIR, TON, TSO, TSN, TUR, TUK, TWI, UIG, UKR, UZB, VEN, VOL, WLN, CYM, FRY, WOL, XHO, YID, YOR, ZHA, ZUL, ORJ, QPC, TNG; OPTIONAL
             LanguageCodeControl =>
@@ -167,21 +169,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               , # values: BURN_IN, DVB_SUB, EMBEDDED, SCC, SRT, TELETEXT, TTML, WEBVTT
               BurninDestinationSettings => {
                 Alignment   => 'CENTERED',    # values: CENTERED, LEFT
-                FontOpacity => 1,             # max: 255; OPTIONAL
+                FontOpacity => 1,             # max: 255
                 OutlineColor =>
                   'BLACK',    # values: BLACK, WHITE, YELLOW, RED, GREEN, BLUE
                 OutlineSize => 1,    # max: 10
                 BackgroundColor =>
                   'NONE',            # values: NONE, BLACK, WHITE; OPTIONAL
-                BackgroundOpacity => 1,        # max: 255; OPTIONAL
+                BackgroundOpacity => 1,        # max: 255
                 FontColor         => 'WHITE'
                 ,    # values: WHITE, BLACK, YELLOW, RED, GREEN, BLUE; OPTIONAL
                 FontResolution => 1,      # min: 96, max: 600; OPTIONAL
                 FontSize       => 1,      # max: 96; OPTIONAL
                 ShadowColor    => 'NONE', # values: NONE, BLACK, WHITE; OPTIONAL
-                ShadowOpacity  => 1,      # max: 255; OPTIONAL
-                ShadowXOffset  => 1,      # min: -2147483648, max: 2147483647
-                ShadowYOffset  => 1,      # min: -2147483648, max: 2147483647
+                ShadowOpacity  => 1,      # max: 255
+                ShadowXOffset =>
+                  1,    # min: -2147483648, max: 2147483647; OPTIONAL
+                ShadowYOffset =>
+                  1,    # min: -2147483648, max: 2147483647; OPTIONAL
                 TeletextSpacing =>
                   'FIXED_GRID',    # values: FIXED_GRID, PROPORTIONAL; OPTIONAL
                 XPosition => 1,    # max: 2147483647; OPTIONAL
@@ -189,21 +193,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
               DvbSubDestinationSettings => {
                 Alignment   => 'CENTERED',    # values: CENTERED, LEFT
-                FontOpacity => 1,             # max: 255; OPTIONAL
+                FontOpacity => 1,             # max: 255
                 OutlineColor =>
                   'BLACK',    # values: BLACK, WHITE, YELLOW, RED, GREEN, BLUE
                 OutlineSize => 1,    # max: 10
                 BackgroundColor =>
                   'NONE',            # values: NONE, BLACK, WHITE; OPTIONAL
-                BackgroundOpacity => 1,        # max: 255; OPTIONAL
+                BackgroundOpacity => 1,        # max: 255
                 FontColor         => 'WHITE'
                 ,    # values: WHITE, BLACK, YELLOW, RED, GREEN, BLUE; OPTIONAL
                 FontResolution => 1,      # min: 96, max: 600; OPTIONAL
                 FontSize       => 1,      # max: 96; OPTIONAL
                 ShadowColor    => 'NONE', # values: NONE, BLACK, WHITE; OPTIONAL
-                ShadowOpacity  => 1,      # max: 255; OPTIONAL
-                ShadowXOffset  => 1,      # min: -2147483648, max: 2147483647
-                ShadowYOffset  => 1,      # min: -2147483648, max: 2147483647
+                ShadowOpacity  => 1,      # max: 255
+                ShadowXOffset =>
+                  1,    # min: -2147483648, max: 2147483647; OPTIONAL
+                ShadowYOffset =>
+                  1,    # min: -2147483648, max: 2147483647; OPTIONAL
                 TeletextSpacing =>
                   'FIXED_GRID',    # values: FIXED_GRID, PROPORTIONAL; OPTIONAL
                 XPosition => 1,    # max: 2147483647; OPTIONAL
@@ -222,6 +228,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
               },    # OPTIONAL
             },
+            CustomLanguageCode =>
+              'My__stringMin3Max3PatternAZaZ3',    # min: 3, max: 3; OPTIONAL
             LanguageCode => 'ENG'
             , # values: ENG, SPA, FRA, DEU, GER, ZHO, ARA, HIN, JPN, RUS, POR, ITA, URD, VIE, KOR, PAN, ABK, AAR, AFR, AKA, SQI, AMH, ARG, HYE, ASM, AVA, AVE, AYM, AZE, BAM, BAK, EUS, BEL, BEN, BIH, BIS, BOS, BRE, BUL, MYA, CAT, KHM, CHA, CHE, NYA, CHU, CHV, COR, COS, CRE, HRV, CES, DAN, DIV, NLD, DZO, ENM, EPO, EST, EWE, FAO, FIJ, FIN, FRM, FUL, GLA, GLG, LUG, KAT, ELL, GRN, GUJ, HAT, HAU, HEB, HER, HMO, HUN, ISL, IDO, IBO, IND, INA, ILE, IKU, IPK, GLE, JAV, KAL, KAN, KAU, KAS, KAZ, KIK, KIN, KIR, KOM, KON, KUA, KUR, LAO, LAT, LAV, LIM, LIN, LIT, LUB, LTZ, MKD, MLG, MSA, MAL, MLT, GLV, MRI, MAR, MAH, MON, NAU, NAV, NDE, NBL, NDO, NEP, SME, NOR, NOB, NNO, OCI, OJI, ORI, ORM, OSS, PLI, FAS, POL, PUS, QUE, QAA, RON, ROH, RUN, SMO, SAG, SAN, SRD, SRB, SNA, III, SND, SIN, SLK, SLV, SOM, SOT, SUN, SWA, SSW, SWE, TGL, TAH, TGK, TAM, TAT, TEL, THA, BOD, TIR, TON, TSO, TSN, TUR, TUK, TWI, UIG, UKR, UZB, VEN, VOL, WLN, CYM, FRY, WOL, XHO, YID, YOR, ZHA, ZUL, ORJ, QPC, TNG; OPTIONAL
             LanguageDescription => 'My__string',
@@ -244,7 +252,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Bitrate        => 1,           # max: 2147483647; OPTIONAL
             BufferModel    => 'MULTIPLEX', # values: MULTIPLEX, NONE; OPTIONAL
             DvbNitSettings => {
-              NetworkId => 1,              # max: 65535
+              NetworkId => 1,              # max: 65535; OPTIONAL
               NetworkName =>
                 'My__stringMin1Max256',    # min: 1, max: 256; OPTIONAL
               NitInterval => 1,            # min: 25, max: 10000
@@ -284,7 +292,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             PmtInterval        => 1,        # max: 1000; OPTIONAL
             PmtPid             => 1,        # min: 32, max: 8182; OPTIONAL
             PrivateMetadataPid => 1,        # min: 32, max: 8182; OPTIONAL
-            ProgramNumber      => 1,        # max: 65535
+            ProgramNumber      => 1,        # max: 65535; OPTIONAL
             RateMode           => 'VBR',    # values: VBR, CBR; OPTIONAL
             Scte35Pid          => 1,        # min: 32, max: 8182; OPTIONAL
             Scte35Source => 'PASSTHROUGH', # values: PASSTHROUGH, NONE; OPTIONAL
@@ -294,7 +302,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ,    # values: MAINTAIN_CADENCE, RESET_CADENCE; OPTIONAL
             SegmentationTime  => 1,    # OPTIONAL
             TimedMetadataPid  => 1,    # min: 32, max: 8182; OPTIONAL
-            TransportStreamId => 1,    # max: 65535
+            TransportStreamId => 1,    # max: 65535; OPTIONAL
             VideoPid          => 1,    # min: 32, max: 8182; OPTIONAL
           },    # OPTIONAL
           M3u8Settings => {
@@ -310,13 +318,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             PmtInterval        => 1,    # max: 1000; OPTIONAL
             PmtPid             => 1,    # min: 32, max: 8182; OPTIONAL
             PrivateMetadataPid => 1,    # min: 32, max: 8182; OPTIONAL
-            ProgramNumber      => 1,    # max: 65535
+            ProgramNumber      => 1,    # max: 65535; OPTIONAL
             Scte35Pid          => 1,    # min: 32, max: 8182; OPTIONAL
             Scte35Source => 'PASSTHROUGH', # values: PASSTHROUGH, NONE; OPTIONAL
             TimedMetadata =>
               'PASSTHROUGH',               # values: PASSTHROUGH, NONE; OPTIONAL
             TimedMetadataPid  => 1,        # min: 32, max: 8182; OPTIONAL
-            TransportStreamId => 1,        # max: 65535
+            TransportStreamId => 1,        # max: 65535; OPTIONAL
             VideoPid          => 1,        # min: 32, max: 8182; OPTIONAL
           },    # OPTIONAL
           MovSettings => {
@@ -517,20 +525,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           AntiAlias     => 'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
           ColorMetadata => 'IGNORE',      # values: IGNORE, INSERT; OPTIONAL
           Crop          => {
-            Height => 1,                  # min: -2147483648, max: 2147483647
-            Width  => 1,                  # min: -2147483648, max: 2147483647
-            X      => 1,                  # min: -2147483648, max: 2147483647
-            Y      => 1,                  # min: -2147483648, max: 2147483647
+            Height => 1,    # min: -2147483648, max: 2147483647; OPTIONAL
+            Width  => 1,    # min: -2147483648, max: 2147483647; OPTIONAL
+            X      => 1,    # min: -2147483648, max: 2147483647; OPTIONAL
+            Y      => 1,    # min: -2147483648, max: 2147483647; OPTIONAL
 
           },    # OPTIONAL
           DropFrameTimecode => 'DISABLED', # values: DISABLED, ENABLED; OPTIONAL
           FixedAfd          => 1,          # max: 15; OPTIONAL
           Height            => 1,          # min: 32, max: 2160; OPTIONAL
           Position          => {
-            Height => 1,                   # min: -2147483648, max: 2147483647
-            Width  => 1,                   # min: -2147483648, max: 2147483647
-            X      => 1,                   # min: -2147483648, max: 2147483647
-            Y      => 1,                   # min: -2147483648, max: 2147483647
+            Height => 1,    # min: -2147483648, max: 2147483647; OPTIONAL
+            Width  => 1,    # min: -2147483648, max: 2147483647; OPTIONAL
+            X      => 1,    # min: -2147483648, max: 2147483647; OPTIONAL
+            Y      => 1,    # min: -2147483648, max: 2147483647; OPTIONAL
 
           },    # OPTIONAL
           RespondToAfd => 'NONE', # values: NONE, RESPOND, PASSTHROUGH; OPTIONAL
@@ -546,8 +554,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               , # values: NONE, FORCE_601, FORCE_709, FORCE_HDR10, FORCE_HLG_2020; OPTIONAL
               Contrast      => 1,    # min: 1, max: 100; OPTIONAL
               Hdr10Metadata => {
-                MaxContentLightLevel      => 1,    # max: 65535
-                MaxFrameAverageLightLevel => 1,    # max: 65535
+                MaxContentLightLevel      => 1,    # max: 65535; OPTIONAL
+                MaxFrameAverageLightLevel => 1,    # max: 65535; OPTIONAL
                 BluePrimaryX              => 1,    # max: 50000; OPTIONAL
                 BluePrimaryY              => 1,    # max: 50000; OPTIONAL
                 GreenPrimaryX             => 1,    # max: 50000; OPTIONAL
@@ -575,16 +583,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 {
                   ImageInserterInput =>
                     'My__stringMin14PatternS3BmpBMPPngPNGTgaTGA',    # min: 14,
-                  ImageX   => 1,    # min: -2147483648, max: 2147483647
-                  ImageY   => 1,    # min: -2147483648, max: 2147483647
-                  Layer    => 1,    # max: 99
-                  Opacity  => 1,    # max: 100; OPTIONAL
-                  Duration => 1,    # min: -2147483648, max: 2147483647
-                  FadeIn   => 1,    # min: -2147483648, max: 2147483647
-                  FadeOut  => 1,    # min: -2147483648, max: 2147483647
-                  Height   => 1,    # min: -2147483648, max: 2147483647
+                  ImageX   => 1,   # min: -2147483648, max: 2147483647; OPTIONAL
+                  ImageY   => 1,   # min: -2147483648, max: 2147483647; OPTIONAL
+                  Layer    => 1,   # max: 99
+                  Opacity  => 1,   # max: 100; OPTIONAL
+                  Duration => 1,   # min: -2147483648, max: 2147483647; OPTIONAL
+                  FadeIn   => 1,   # min: -2147483648, max: 2147483647; OPTIONAL
+                  FadeOut  => 1,   # min: -2147483648, max: 2147483647; OPTIONAL
+                  Height   => 1,   # min: -2147483648, max: 2147483647; OPTIONAL
                   StartTime => 'My__stringPattern01D20305D205D',    # OPTIONAL
-                  Width => 1,    # min: -2147483648, max: 2147483647
+                  Width => 1,    # min: -2147483648, max: 2147483647; OPTIONAL
                 },
                 ...
               ],

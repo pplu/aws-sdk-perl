@@ -45,7 +45,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 =head1 DESCRIPTION
 
 Required when you set (Type) under
-(OutputGroups)E<gt>(OutputGroupSettings) to CMAF_GROUP_SETTINGS.
+(OutputGroups)E<gt>(OutputGroupSettings) to CMAF_GROUP_SETTINGS. Each
+output in a CMAF Output Group may only contain a single video, audio,
+or caption output.
 
 =head1 ATTRIBUTES
 
