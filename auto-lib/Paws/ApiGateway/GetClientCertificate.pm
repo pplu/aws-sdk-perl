@@ -34,10 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CreatedDate           = $ClientCertificate->CreatedDate;
-    my $ExpirationDate        = $ClientCertificate->ExpirationDate;
     my $ClientCertificateId   = $ClientCertificate->ClientCertificateId;
+    my $CreatedDate           = $ClientCertificate->CreatedDate;
     my $Description           = $ClientCertificate->Description;
+    my $ExpirationDate        = $ClientCertificate->ExpirationDate;
     my $PemEncodedCertificate = $ClientCertificate->PemEncodedCertificate;
 
     # Returns a L<Paws::ApiGateway::ClientCertificate> object.

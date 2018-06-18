@@ -34,28 +34,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         CloudFormationStackARN => 'MyXmlString',    # OPTIONAL
         TagFilters             => [
           {
+            Key    => 'MyXmlStringMaxLen128',       # min: 1, max: 128; OPTIONAL
             Values => [
               'MyXmlStringMaxLen256', ...           # min: 1, max: 256
             ],                                      # OPTIONAL
-            Key => 'MyXmlStringMaxLen128',          # min: 1, max: 128; OPTIONAL
           },
           ...
         ],                                          # OPTIONAL
       },
       ScalingInstructions => [
         {
-          MinCapacity => 1,
           MaxCapacity => 1,
+          MinCapacity => 1,
+          ResourceId  => 'MyResourceIdMaxLen1600',    # min: 1, max: 1600
+          ScalableDimension => 'autoscaling:autoScalingGroup:DesiredCapacity'
+          , # values: autoscaling:autoScalingGroup:DesiredCapacity, ecs:service:DesiredCount, ec2:spot-fleet-request:TargetCapacity, rds:cluster:ReadReplicaCount, dynamodb:table:ReadCapacityUnits, dynamodb:table:WriteCapacityUnits, dynamodb:index:ReadCapacityUnits, dynamodb:index:WriteCapacityUnits
           ServiceNamespace =>
             'autoscaling',    # values: autoscaling, ecs, ec2, rds, dynamodb
           TargetTrackingConfigurations => [
             {
               TargetValue                          => 1,
               CustomizedScalingMetricSpecification => {
-                Namespace => 'MyMetricNamespace',
-                Statistic => 'Average'
-                ,    # values: Average, Minimum, Maximum, SampleCount, Sum
                 MetricName => 'MyMetricName',
+                Namespace  => 'MyMetricNamespace',
+                Statistic  => 'Average'
+                ,    # values: Average, Minimum, Maximum, SampleCount, Sum
                 Dimensions => [
                   {
                     Name  => 'MyMetricDimensionName',
@@ -68,20 +71,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
               DisableScaleIn                       => 1,    # OPTIONAL
               EstimatedInstanceWarmup              => 1,    # OPTIONAL
-              ScaleInCooldown                      => 1,    # OPTIONAL
               PredefinedScalingMetricSpecification => {
                 PredefinedScalingMetricType => 'ASGAverageCPUUtilization'
                 , # values: ASGAverageCPUUtilization, ASGAverageNetworkIn, ASGAverageNetworkOut, DynamoDBReadCapacityUtilization, DynamoDBWriteCapacityUtilization, ECSServiceAverageCPUUtilization, ECSServiceAverageMemoryUtilization, ALBRequestCountPerTarget, RDSReaderAverageCPUUtilization, RDSReaderAverageDatabaseConnections, EC2SpotFleetRequestAverageCPUUtilization, EC2SpotFleetRequestAverageNetworkIn, EC2SpotFleetRequestAverageNetworkOut
                 ResourceLabel =>
                   'MyResourceLabel',    # min: 1, max: 1023; OPTIONAL
               },    # OPTIONAL
+              ScaleInCooldown  => 1,    # OPTIONAL
               ScaleOutCooldown => 1,    # OPTIONAL
             },
             ...
           ],
-          ResourceId => 'MyResourceIdMaxLen1600',    # min: 1, max: 1600
-          ScalableDimension => 'autoscaling:autoScalingGroup:DesiredCapacity'
-          , # values: autoscaling:autoScalingGroup:DesiredCapacity, ecs:service:DesiredCount, ec2:spot-fleet-request:TargetCapacity, rds:cluster:ReadReplicaCount, dynamodb:table:ReadCapacityUnits, dynamodb:table:WriteCapacityUnits, dynamodb:index:ReadCapacityUnits, dynamodb:index:WriteCapacityUnits
 
         },
         ...

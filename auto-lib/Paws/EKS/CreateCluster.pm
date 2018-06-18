@@ -44,7 +44,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $cluster = $CreateClusterResponse->cluster;
+    my $Cluster = $CreateClusterResponse->Cluster;
 
     # Returns a L<Paws::EKS::CreateClusterResponse> object.
 

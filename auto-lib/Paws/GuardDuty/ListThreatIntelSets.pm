@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ThreatIntelSetIds = $ListThreatIntelSetsResponse->ThreatIntelSetIds;
     my $NextToken         = $ListThreatIntelSetsResponse->NextToken;
+    my $ThreatIntelSetIds = $ListThreatIntelSetsResponse->ThreatIntelSetIds;
 
     # Returns a L<Paws::GuardDuty::ListThreatIntelSetsResponse> object.
 

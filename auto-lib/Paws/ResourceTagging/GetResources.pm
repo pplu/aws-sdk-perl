@@ -39,14 +39,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ResourcesPerPage => 1,                         # OPTIONAL
       TagFilters       => [
         {
+          Key    => 'MyTagKey',    # min: 1, max: 128; OPTIONAL
           Values => [
-            'MyTagValue', ...                        # max: 256
-          ],                                         # max: 20; OPTIONAL
-          Key => 'MyTagKey',    # min: 1, max: 128; OPTIONAL
+            'MyTagValue', ...      # max: 256
+          ],                       # max: 20; OPTIONAL
         },
         ...
-      ],                        # OPTIONAL
-      TagsPerPage => 1,         # OPTIONAL
+      ],                           # OPTIONAL
+      TagsPerPage => 1,            # OPTIONAL
     );
 
     # Results:

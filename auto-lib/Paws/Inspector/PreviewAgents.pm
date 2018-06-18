@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # specified assessment target.
     my $PreviewAgentsResponse = $inspector->PreviewAgents(
       {
+        'MaxResults' => 123,
         'PreviewAgentsArn' =>
-          'arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq',
-        'MaxResults' => 123
+          'arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq'
       }
     );
 

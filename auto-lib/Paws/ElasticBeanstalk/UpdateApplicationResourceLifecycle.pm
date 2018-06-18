@@ -41,8 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           MaxCountRule => {
             Enabled            => 1,
-            MaxCount           => 1,    # OPTIONAL
             DeleteSourceFromS3 => 1,
+            MaxCount           => 1,    # OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
       },

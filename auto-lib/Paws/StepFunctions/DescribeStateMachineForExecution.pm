@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $RoleArn    = $DescribeStateMachineForExecutionOutput->RoleArn;
     my $Definition = $DescribeStateMachineForExecutionOutput->Definition;
     my $Name       = $DescribeStateMachineForExecutionOutput->Name;
+    my $RoleArn    = $DescribeStateMachineForExecutionOutput->RoleArn;
     my $StateMachineArn =
       $DescribeStateMachineForExecutionOutput->StateMachineArn;
     my $UpdateDate = $DescribeStateMachineForExecutionOutput->UpdateDate;

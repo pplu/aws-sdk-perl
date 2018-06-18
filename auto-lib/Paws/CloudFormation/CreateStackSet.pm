@@ -48,16 +48,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Parameters         => [
         {
           ParameterKey     => 'MyParameterKey',        # OPTIONAL
+          ParameterValue   => 'MyParameterValue',      # OPTIONAL
           ResolvedValue    => 'MyParameterValue',      # OPTIONAL
           UsePreviousValue => 1,                       # OPTIONAL
-          ParameterValue   => 'MyParameterValue',      # OPTIONAL
         },
         ...
       ],                                               # OPTIONAL
       Tags => [
         {
-          Value => 'MyTagValue',                       # min: 1, max: 256
           Key   => 'MyTagKey',                         # min: 1, max: 128
+          Value => 'MyTagValue',                       # min: 1, max: 256
 
         },
         ...

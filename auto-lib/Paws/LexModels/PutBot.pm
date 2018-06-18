@@ -46,34 +46,34 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AbortStatement => {
         messages => [
           {
+            content => 'MyContentString',    # min: 1, max: 1000
             contentType => 'PlainText', # values: PlainText, SSML, CustomPayload
-            content     => 'MyContentString',    # min: 1, max: 1000
-            groupNumber => 1,                    # min: 1, max: 5; OPTIONAL
+            groupNumber => 1,           # min: 1, max: 5; OPTIONAL
           },
           ...
-        ],                                       # min: 1, max: 15
-        responseCard => 'MyResponseCard',        # min: 1, max: 50000; OPTIONAL
+        ],                              # min: 1, max: 15
+        responseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
       },    # OPTIONAL
       Checksum            => 'MyString',    # OPTIONAL
       ClarificationPrompt => {
-        messages => [
+        maxAttempts => 1,                   # min: 1, max: 5
+        messages    => [
           {
+            content => 'MyContentString',    # min: 1, max: 1000
             contentType => 'PlainText', # values: PlainText, SSML, CustomPayload
-            content     => 'MyContentString',    # min: 1, max: 1000
-            groupNumber => 1,                    # min: 1, max: 5; OPTIONAL
+            groupNumber => 1,           # min: 1, max: 5; OPTIONAL
           },
           ...
-        ],                                       # min: 1, max: 15
-        maxAttempts  => 1,                       # min: 1, max: 5
-        responseCard => 'MyResponseCard',        # min: 1, max: 50000; OPTIONAL
+        ],                              # min: 1, max: 15
+        responseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
       },    # OPTIONAL
       CreateVersion           => 1,                  # OPTIONAL
       Description             => 'MyDescription',    # OPTIONAL
       IdleSessionTTLInSeconds => 1,                  # OPTIONAL
       Intents                 => [
         {
-          intentVersion => 'MyVersion',              # min: 1, max: 64
           intentName    => 'MyIntentName',           # min: 1, max: 100
+          intentVersion => 'MyVersion',              # min: 1, max: 64
 
         },
         ...
@@ -83,22 +83,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $IdleSessionTTLInSeconds = $PutBotResponse->IdleSessionTTLInSeconds;
-    my $CreateVersion           = $PutBotResponse->CreateVersion;
-    my $Description             = $PutBotResponse->Description;
-    my $LastUpdatedDate         = $PutBotResponse->LastUpdatedDate;
-    my $ClarificationPrompt     = $PutBotResponse->ClarificationPrompt;
-    my $Name                    = $PutBotResponse->Name;
-    my $Locale                  = $PutBotResponse->Locale;
     my $AbortStatement          = $PutBotResponse->AbortStatement;
-    my $CreatedDate             = $PutBotResponse->CreatedDate;
-    my $VoiceId                 = $PutBotResponse->VoiceId;
-    my $ChildDirected           = $PutBotResponse->ChildDirected;
-    my $Version                 = $PutBotResponse->Version;
-    my $Intents                 = $PutBotResponse->Intents;
     my $Checksum                = $PutBotResponse->Checksum;
-    my $Status                  = $PutBotResponse->Status;
+    my $ChildDirected           = $PutBotResponse->ChildDirected;
+    my $ClarificationPrompt     = $PutBotResponse->ClarificationPrompt;
+    my $CreateVersion           = $PutBotResponse->CreateVersion;
+    my $CreatedDate             = $PutBotResponse->CreatedDate;
+    my $Description             = $PutBotResponse->Description;
     my $FailureReason           = $PutBotResponse->FailureReason;
+    my $IdleSessionTTLInSeconds = $PutBotResponse->IdleSessionTTLInSeconds;
+    my $Intents                 = $PutBotResponse->Intents;
+    my $LastUpdatedDate         = $PutBotResponse->LastUpdatedDate;
+    my $Locale                  = $PutBotResponse->Locale;
+    my $Name                    = $PutBotResponse->Name;
+    my $Status                  = $PutBotResponse->Status;
+    my $Version                 = $PutBotResponse->Version;
+    my $VoiceId                 = $PutBotResponse->VoiceId;
 
     # Returns a L<Paws::LexModels::PutBotResponse> object.
 

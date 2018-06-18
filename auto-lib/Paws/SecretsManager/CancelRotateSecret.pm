@@ -33,9 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $ARN       = $CancelRotateSecretResponse->ARN;
     my $Name      = $CancelRotateSecretResponse->Name;
     my $VersionId = $CancelRotateSecretResponse->VersionId;
-    my $ARN       = $CancelRotateSecretResponse->ARN;
 
     # Returns a L<Paws::SecretsManager::CancelRotateSecretResponse> object.
 

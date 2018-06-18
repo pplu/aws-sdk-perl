@@ -50,8 +50,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $TrainingJobSummaries = $ListTrainingJobsResponse->TrainingJobSummaries;
     my $NextToken            = $ListTrainingJobsResponse->NextToken;
+    my $TrainingJobSummaries = $ListTrainingJobsResponse->TrainingJobSummaries;
 
     # Returns a L<Paws::SageMaker::ListTrainingJobsResponse> object.
 

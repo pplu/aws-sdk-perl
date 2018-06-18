@@ -35,24 +35,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # ID webacl-1472061481310.
     my $UpdateWebACLResponse = $waf -regional->UpdateWebACL(
       {
+        'ChangeToken'   => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
+        'DefaultAction' => {
+          'Type' => 'ALLOW'
+        },
         'Updates' => [
 
           {
             'Action'        => 'DELETE',
             'ActivatedRule' => {
-              'Priority' => 1,
-              'RuleId'   => 'WAFRule-1-Example',
-              'Action'   => {
+              'Action' => {
                 'Type' => 'ALLOW'
-              }
+              },
+              'Priority' => 1,
+              'RuleId'   => 'WAFRule-1-Example'
             }
           }
         ],
-        'ChangeToken'   => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
-        'WebACLId'      => 'webacl-1472061481310',
-        'DefaultAction' => {
-          'Type' => 'ALLOW'
-        }
+        'WebACLId' => 'webacl-1472061481310'
       }
     );
 

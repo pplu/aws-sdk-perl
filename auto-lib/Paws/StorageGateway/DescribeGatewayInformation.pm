@@ -40,16 +40,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $GatewayId    = $DescribeGatewayInformationOutput->GatewayId;
-    my $GatewayARN   = $DescribeGatewayInformationOutput->GatewayARN;
-    my $GatewayType  = $DescribeGatewayInformationOutput->GatewayType;
-    my $GatewayState = $DescribeGatewayInformationOutput->GatewayState;
-    my $LastSoftwareUpdate =
-      $DescribeGatewayInformationOutput->LastSoftwareUpdate;
-    my $GatewayTimezone = $DescribeGatewayInformationOutput->GatewayTimezone;
+    my $GatewayARN  = $DescribeGatewayInformationOutput->GatewayARN;
+    my $GatewayId   = $DescribeGatewayInformationOutput->GatewayId;
+    my $GatewayName = $DescribeGatewayInformationOutput->GatewayName;
     my $GatewayNetworkInterfaces =
       $DescribeGatewayInformationOutput->GatewayNetworkInterfaces;
-    my $GatewayName = $DescribeGatewayInformationOutput->GatewayName;
+    my $GatewayState    = $DescribeGatewayInformationOutput->GatewayState;
+    my $GatewayTimezone = $DescribeGatewayInformationOutput->GatewayTimezone;
+    my $GatewayType     = $DescribeGatewayInformationOutput->GatewayType;
+    my $LastSoftwareUpdate =
+      $DescribeGatewayInformationOutput->LastSoftwareUpdate;
     my $NextUpdateAvailabilityDate =
       $DescribeGatewayInformationOutput->NextUpdateAvailabilityDate;
 

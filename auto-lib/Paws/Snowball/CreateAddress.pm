@@ -36,14 +36,14 @@ my $CreateAddressResult = $snowball->CreateAddress(
 {
 'Address' => 
 {
+'City' => 'Seattle',
+'Company' => 'My Company's Name',
+'Country' => 'USA',
 'Name' => 'My Name',
 'PhoneNumber' => '425-555-5555',
-'Country' => 'USA',
-'StateOrProvince' => 'WA',
-'City' => 'Seattle',
-'Street1' => '123 Main Street',
 'PostalCode' => 98101,
-'Company' => 'My Company's Name'
+'StateOrProvince' => 'WA',
+'Street1' => '123 Main Street'
 }
 }
 );

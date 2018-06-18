@@ -33,11 +33,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     $iotanalytics->UpdateDataset(
       Actions => [
         {
+          actionName  => 'MyDatasetActionName',    # min: 1, max: 128; OPTIONAL
           queryAction => {
             sqlQuery => 'MySqlQuery',
 
-          },    # OPTIONAL
-          actionName => 'MyDatasetActionName',    # min: 1, max: 128; OPTIONAL
+          },                                       # OPTIONAL
         },
         ...
       ],

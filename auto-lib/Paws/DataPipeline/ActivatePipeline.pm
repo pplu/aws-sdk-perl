@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       PipelineId      => 'Myid',
       ParameterValues => [
         {
-          stringValue => 'MyfieldStringValue',    # max: 10240
           id          => 'MyfieldNameString',     # min: 1, max: 256
+          stringValue => 'MyfieldStringValue',    # max: 10240
 
         },
         ...

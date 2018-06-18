@@ -34,28 +34,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $TrainingJobStatusCounters =
-      $DescribeHyperParameterTuningJobResponse->TrainingJobStatusCounters;
-    my $FailureReason = $DescribeHyperParameterTuningJobResponse->FailureReason;
-    my $ObjectiveStatusCounters =
-      $DescribeHyperParameterTuningJobResponse->ObjectiveStatusCounters;
     my $BestTrainingJob =
       $DescribeHyperParameterTuningJobResponse->BestTrainingJob;
-    my $HyperParameterTuningJobName =
-      $DescribeHyperParameterTuningJobResponse->HyperParameterTuningJobName;
-    my $HyperParameterTuningJobArn =
-      $DescribeHyperParameterTuningJobResponse->HyperParameterTuningJobArn;
-    my $LastModifiedTime =
-      $DescribeHyperParameterTuningJobResponse->LastModifiedTime;
-    my $HyperParameterTuningJobConfig =
-      $DescribeHyperParameterTuningJobResponse->HyperParameterTuningJobConfig;
+    my $CreationTime  = $DescribeHyperParameterTuningJobResponse->CreationTime;
+    my $FailureReason = $DescribeHyperParameterTuningJobResponse->FailureReason;
     my $HyperParameterTuningEndTime =
       $DescribeHyperParameterTuningJobResponse->HyperParameterTuningEndTime;
-    my $TrainingJobDefinition =
-      $DescribeHyperParameterTuningJobResponse->TrainingJobDefinition;
-    my $CreationTime = $DescribeHyperParameterTuningJobResponse->CreationTime;
+    my $HyperParameterTuningJobArn =
+      $DescribeHyperParameterTuningJobResponse->HyperParameterTuningJobArn;
+    my $HyperParameterTuningJobConfig =
+      $DescribeHyperParameterTuningJobResponse->HyperParameterTuningJobConfig;
+    my $HyperParameterTuningJobName =
+      $DescribeHyperParameterTuningJobResponse->HyperParameterTuningJobName;
     my $HyperParameterTuningJobStatus =
       $DescribeHyperParameterTuningJobResponse->HyperParameterTuningJobStatus;
+    my $LastModifiedTime =
+      $DescribeHyperParameterTuningJobResponse->LastModifiedTime;
+    my $ObjectiveStatusCounters =
+      $DescribeHyperParameterTuningJobResponse->ObjectiveStatusCounters;
+    my $TrainingJobDefinition =
+      $DescribeHyperParameterTuningJobResponse->TrainingJobDefinition;
+    my $TrainingJobStatusCounters =
+      $DescribeHyperParameterTuningJobResponse->TrainingJobStatusCounters;
 
  # Returns a L<Paws::SageMaker::DescribeHyperParameterTuningJobResponse> object.
 

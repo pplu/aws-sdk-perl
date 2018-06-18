@@ -53,8 +53,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # to that container instance.
     my $ListTasksResponse = $ecs->ListTasks(
       {
-        'ContainerInstance' => 'f6bbb147-5370-4ace-8c73-c7181ded911f',
-        'Cluster'           => 'default'
+        'Cluster'           => 'default',
+        'ContainerInstance' => 'f6bbb147-5370-4ace-8c73-c7181ded911f'
       }
     );
 

@@ -33,15 +33,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example creates a rule named WAFByteHeaderRule.
     my $CreateRuleResponse = $waf->CreateRule(
       {
-        'MetricName'  => 'WAFByteHeaderRule',
         'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
+        'MetricName'  => 'WAFByteHeaderRule',
         'Name'        => 'WAFByteHeaderRule'
       }
     );
 
     # Results:
-    my $Rule        = $CreateRuleResponse->Rule;
     my $ChangeToken = $CreateRuleResponse->ChangeToken;
+    my $Rule        = $CreateRuleResponse->Rule;
 
     # Returns a L<Paws::WAF::CreateRuleResponse> object.
 

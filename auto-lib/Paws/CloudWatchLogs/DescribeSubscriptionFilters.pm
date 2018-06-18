@@ -39,9 +39,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $NextToken = $DescribeSubscriptionFiltersResponse->NextToken;
     my $SubscriptionFilters =
       $DescribeSubscriptionFiltersResponse->SubscriptionFilters;
-    my $NextToken = $DescribeSubscriptionFiltersResponse->NextToken;
 
 # Returns a L<Paws::CloudWatchLogs::DescribeSubscriptionFiltersResponse> object.
 

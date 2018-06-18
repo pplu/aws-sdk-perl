@@ -42,11 +42,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $LastEvaluatedTime = $DescribeFleetHistoryResult->LastEvaluatedTime;
-    my $StartTime         = $DescribeFleetHistoryResult->StartTime;
     my $FleetId           = $DescribeFleetHistoryResult->FleetId;
-    my $NextToken         = $DescribeFleetHistoryResult->NextToken;
     my $HistoryRecords    = $DescribeFleetHistoryResult->HistoryRecords;
+    my $LastEvaluatedTime = $DescribeFleetHistoryResult->LastEvaluatedTime;
+    my $NextToken         = $DescribeFleetHistoryResult->NextToken;
+    my $StartTime         = $DescribeFleetHistoryResult->StartTime;
 
     # Returns a L<Paws::EC2::DescribeFleetHistoryResult> object.
 

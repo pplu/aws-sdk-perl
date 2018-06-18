@@ -33,7 +33,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ApplicationName             => 'MyApplicationName',
       CurrentApplicationVersionId => 1,
       Input                       => {
-        NamePrefix  => 'MyInAppStreamName',    # min: 1, max: 32
         InputSchema => {
           RecordColumns => [
             {
@@ -47,8 +46,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             RecordFormatType  => 'JSON',             # values: JSON, CSV
             MappingParameters => {
               CSVMappingParameters => {
-                RecordRowDelimiter    => 'MyRecordRowDelimiter',       # min: 1,
                 RecordColumnDelimiter => 'MyRecordColumnDelimiter',    # min: 1,
+                RecordRowDelimiter    => 'MyRecordRowDelimiter',       # min: 1,
 
               },    # OPTIONAL
               JSONMappingParameters => {
@@ -59,25 +58,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           RecordEncoding => 'MyRecordEncoding',    # OPTIONAL
         },
-        KinesisFirehoseInput => {
-          ResourceARN => 'MyResourceARN',          # min: 1, max: 2048
-          RoleARN     => 'MyRoleARN',              # min: 1, max: 2048
-
-        },    # OPTIONAL
-        KinesisStreamsInput => {
-          RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
-          ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
-
-        },    # OPTIONAL
+        NamePrefix       => 'MyInAppStreamName',    # min: 1, max: 32
         InputParallelism => {
-          Count => 1,    # min: 1, max: 64; OPTIONAL
+          Count => 1,                               # min: 1, max: 64; OPTIONAL
         },    # OPTIONAL
         InputProcessingConfiguration => {
           InputLambdaProcessor => {
-            RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
             ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
+            RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
 
           },
+
+        },    # OPTIONAL
+        KinesisFirehoseInput => {
+          ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
+          RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
+
+        },    # OPTIONAL
+        KinesisStreamsInput => {
+          ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
+          RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
 
         },    # OPTIONAL
       },

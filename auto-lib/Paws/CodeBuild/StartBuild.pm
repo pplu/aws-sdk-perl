@@ -48,12 +48,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $StartBuildOutput = $codebuild->StartBuild(
       ProjectName       => 'MyNonEmptyString',
       ArtifactsOverride => {
-        type => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
-        namespaceType => 'NONE',        # values: NONE, BUILD_ID; OPTIONAL
-        name          => 'MyString',    # OPTIONAL
-        path          => 'MyString',    # OPTIONAL
-        location      => 'MyString',    # OPTIONAL
-        packaging     => 'NONE',        # values: NONE, ZIP; OPTIONAL
+        type     => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
+        location => 'MyString',        # OPTIONAL
+        name     => 'MyString',        # OPTIONAL
+        namespaceType => 'NONE',       # values: NONE, BUILD_ID; OPTIONAL
+        packaging     => 'NONE',       # values: NONE, ZIP; OPTIONAL
+        path          => 'MyString',   # OPTIONAL
       },    # OPTIONAL
       BuildspecOverride => 'MyString',    # OPTIONAL
       CacheOverride     => {
@@ -65,8 +65,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EnvironmentTypeOverride      => 'WINDOWS_CONTAINER',       # OPTIONAL
       EnvironmentVariablesOverride => [
         {
-          value => 'MyString',                                   # OPTIONAL
           name  => 'MyNonEmptyString',                           # min: 1,
+          value => 'MyString',                                   # OPTIONAL
           type => 'PLAINTEXT',    # values: PLAINTEXT, PARAMETER_STORE; OPTIONAL
         },
         ...

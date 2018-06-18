@@ -36,9 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $elasticloadbalancing->SetLoadBalancerListenerSSLCertificate(
       {
         'LoadBalancerName' => 'my-load-balancer',
+        'LoadBalancerPort' => 443,
         'SSLCertificateId' =>
-          'arn:aws:iam::123456789012:server-certificate/new-server-cert',
-        'LoadBalancerPort' => 443
+          'arn:aws:iam::123456789012:server-certificate/new-server-cert'
       }
       );
 

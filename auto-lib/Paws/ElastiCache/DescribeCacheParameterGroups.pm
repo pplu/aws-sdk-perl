@@ -37,9 +37,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $Marker = $CacheParameterGroupsMessage->Marker;
     my $CacheParameterGroups =
       $CacheParameterGroupsMessage->CacheParameterGroups;
+    my $Marker = $CacheParameterGroupsMessage->Marker;
 
     # Returns a L<Paws::ElastiCache::CacheParameterGroupsMessage> object.
 

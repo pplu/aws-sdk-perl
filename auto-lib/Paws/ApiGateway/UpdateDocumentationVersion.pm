@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RestApiId            => 'MyString',
       PatchOperations      => [
         {
+          from => 'MyString',
           op =>
             'add',    # values: add, remove, replace, move, copy, test; OPTIONAL
-          from  => 'MyString',
           path  => 'MyString',
           value => 'MyString',
         },
@@ -46,9 +46,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $CreatedDate = $DocumentationVersion->CreatedDate;
     my $Description = $DocumentationVersion->Description;
     my $Version     = $DocumentationVersion->Version;
-    my $CreatedDate = $DocumentationVersion->CreatedDate;
 
     # Returns a L<Paws::ApiGateway::DocumentationVersion> object.
 

@@ -30,8 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $GetLoggingOptionsResponse = $iot->GetLoggingOptions();
 
     # Results:
-    my $RoleArn  = $GetLoggingOptionsResponse->RoleArn;
     my $LogLevel = $GetLoggingOptionsResponse->LogLevel;
+    my $RoleArn  = $GetLoggingOptionsResponse->RoleArn;
 
     # Returns a L<Paws::IoT::GetLoggingOptionsResponse> object.
 

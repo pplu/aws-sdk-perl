@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $RoomName            = $ResolveRoomResponse->RoomName;
     my $RoomArn             = $ResolveRoomResponse->RoomArn;
+    my $RoomName            = $ResolveRoomResponse->RoomName;
     my $RoomSkillParameters = $ResolveRoomResponse->RoomSkillParameters;
 
     # Returns a L<Paws::AlexaForBusiness::ResolveRoomResponse> object.

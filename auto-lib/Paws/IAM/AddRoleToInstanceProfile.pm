@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # named Webserver:
     $iam->AddRoleToInstanceProfile(
       {
-        'RoleName'            => 'S3Access',
-        'InstanceProfileName' => 'Webserver'
+        'InstanceProfileName' => 'Webserver',
+        'RoleName'            => 'S3Access'
       }
     );
 

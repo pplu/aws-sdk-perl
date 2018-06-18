@@ -41,9 +41,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $PublicKey = $CreatePublicKeyResult->PublicKey;
-    my $Location  = $CreatePublicKeyResult->Location;
     my $ETag      = $CreatePublicKeyResult->ETag;
+    my $Location  = $CreatePublicKeyResult->Location;
+    my $PublicKey = $CreatePublicKeyResult->PublicKey;
 
     # Returns a L<Paws::CloudFront::CreatePublicKeyResult> object.
 

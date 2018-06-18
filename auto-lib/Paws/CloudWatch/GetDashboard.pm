@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $DashboardBody = $GetDashboardOutput->DashboardBody;
     my $DashboardArn  = $GetDashboardOutput->DashboardArn;
+    my $DashboardBody = $GetDashboardOutput->DashboardBody;
     my $DashboardName = $GetDashboardOutput->DashboardName;
 
     # Returns a L<Paws::CloudWatch::GetDashboardOutput> object.

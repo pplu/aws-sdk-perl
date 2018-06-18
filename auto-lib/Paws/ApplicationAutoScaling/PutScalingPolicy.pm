@@ -39,22 +39,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # the service by 200%, with a cool down period of 60 seconds.
     my $PutScalingPolicyResponse = $autoscaling->PutScalingPolicy(
       {
+        'PolicyName'                     => 'web-app-cpu-gt-75',
+        'PolicyType'                     => 'StepScaling',
+        'ResourceId'                     => 'service/default/web-app',
+        'ScalableDimension'              => 'ecs:service:DesiredCount',
+        'ServiceNamespace'               => 'ecs',
         'StepScalingPolicyConfiguration' => {
+          'AdjustmentType'  => 'PercentChangeInCapacity',
+          'Cooldown'        => 60,
           'StepAdjustments' => [
 
             {
               'MetricIntervalLowerBound' => 0,
               'ScalingAdjustment'        => 200
             }
-          ],
-          'AdjustmentType' => 'PercentChangeInCapacity',
-          'Cooldown'       => 60
-        },
-        'PolicyType'        => 'StepScaling',
-        'ServiceNamespace'  => 'ecs',
-        'PolicyName'        => 'web-app-cpu-gt-75',
-        'ResourceId'        => 'service/default/web-app',
-        'ScalableDimension' => 'ecs:service:DesiredCount'
+          ]
+        }
       }
     );
 
@@ -69,22 +69,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $PutScalingPolicyResponse = $autoscaling->PutScalingPolicy(
       {
-        'PolicyName'        => 'fleet-cpu-gt-75',
-        'ScalableDimension' => 'ec2:spot-fleet-request:TargetCapacity',
+        'PolicyName' => 'fleet-cpu-gt-75',
+        'PolicyType' => 'StepScaling',
         'ResourceId' =>
           'spot-fleet-request/sfr-45e69d8a-be48-4539-bbf3-3464e99c50c3',
-        'ServiceNamespace'               => 'ec2',
-        'PolicyType'                     => 'StepScaling',
+        'ScalableDimension' => 'ec2:spot-fleet-request:TargetCapacity',
+        'ServiceNamespace'  => 'ec2',
         'StepScalingPolicyConfiguration' => {
+          'AdjustmentType'  => 'PercentChangeInCapacity',
+          'Cooldown'        => 180,
           'StepAdjustments' => [
 
             {
               'MetricIntervalLowerBound' => 0,
               'ScalingAdjustment'        => 200
             }
-          ],
-          'AdjustmentType' => 'PercentChangeInCapacity',
-          'Cooldown'       => 180
+          ]
         }
       }
     );

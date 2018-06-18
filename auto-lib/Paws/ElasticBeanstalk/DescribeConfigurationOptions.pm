@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ConfigurationOptionsDescription =
       $elasticbeanstalk->DescribeConfigurationOptions(
       {
-        'EnvironmentName' => 'my-env',
-        'ApplicationName' => 'my-app'
+        'ApplicationName' => 'my-app',
+        'EnvironmentName' => 'my-env'
       }
       );
 

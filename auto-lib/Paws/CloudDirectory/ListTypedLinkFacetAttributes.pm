@@ -40,8 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $NextToken  = $ListTypedLinkFacetAttributesResponse->NextToken;
     my $Attributes = $ListTypedLinkFacetAttributesResponse->Attributes;
+    my $NextToken  = $ListTypedLinkFacetAttributesResponse->NextToken;
 
 # Returns a L<Paws::CloudDirectory::ListTypedLinkFacetAttributesResponse> object.
 

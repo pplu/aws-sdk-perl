@@ -34,18 +34,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Name                  = $DeleteChannelResponse->Name;
-    my $InputAttachments      = $DeleteChannelResponse->InputAttachments;
     my $Arn                   = $DeleteChannelResponse->Arn;
-    my $Id                    = $DeleteChannelResponse->Id;
-    my $PipelinesRunningCount = $DeleteChannelResponse->PipelinesRunningCount;
-    my $LogLevel              = $DeleteChannelResponse->LogLevel;
+    my $Destinations          = $DeleteChannelResponse->Destinations;
     my $EgressEndpoints       = $DeleteChannelResponse->EgressEndpoints;
     my $EncoderSettings       = $DeleteChannelResponse->EncoderSettings;
-    my $Destinations          = $DeleteChannelResponse->Destinations;
+    my $Id                    = $DeleteChannelResponse->Id;
+    my $InputAttachments      = $DeleteChannelResponse->InputAttachments;
     my $InputSpecification    = $DeleteChannelResponse->InputSpecification;
-    my $State                 = $DeleteChannelResponse->State;
+    my $LogLevel              = $DeleteChannelResponse->LogLevel;
+    my $Name                  = $DeleteChannelResponse->Name;
+    my $PipelinesRunningCount = $DeleteChannelResponse->PipelinesRunningCount;
     my $RoleArn               = $DeleteChannelResponse->RoleArn;
+    my $State                 = $DeleteChannelResponse->State;
 
     # Returns a L<Paws::MediaLive::DeleteChannelResponse> object.
 

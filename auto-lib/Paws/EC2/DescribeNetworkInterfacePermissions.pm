@@ -34,24 +34,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $ec2->DescribeNetworkInterfacePermissions(
       Filters => [
         {
-          Values => [
-            'MyString', ...    # OPTIONAL
-          ],                   # OPTIONAL
-          Name => 'MyString',  # OPTIONAL
+          Name   => 'MyString',
+          Values => [ 'MyString', ... ],    # OPTIONAL
         },
         ...
-      ],                       # OPTIONAL
-      MaxResults                    => 1,    # OPTIONAL
-      NetworkInterfacePermissionIds => [
-        'MyString', ...                      # OPTIONAL
-      ],                                     # OPTIONAL
-      NextToken => 'MyString',               # OPTIONAL
+      ],                                    # OPTIONAL
+      MaxResults                    => 1,                      # OPTIONAL
+      NetworkInterfacePermissionIds => [ 'MyString', ... ],    # OPTIONAL
+      NextToken                     => 'MyString',             # OPTIONAL
       );
 
     # Results:
-    my $NextToken = $DescribeNetworkInterfacePermissionsResult->NextToken;
     my $NetworkInterfacePermissions =
       $DescribeNetworkInterfacePermissionsResult->NetworkInterfacePermissions;
+    my $NextToken = $DescribeNetworkInterfacePermissionsResult->NextToken;
 
     # Returns a L<Paws::EC2::DescribeNetworkInterfacePermissionsResult> object.
 

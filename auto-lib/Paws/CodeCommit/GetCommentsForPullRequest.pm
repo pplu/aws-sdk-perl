@@ -43,9 +43,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $NextToken = $GetCommentsForPullRequestOutput->NextToken;
     my $CommentsForPullRequestData =
       $GetCommentsForPullRequestOutput->CommentsForPullRequestData;
+    my $NextToken = $GetCommentsForPullRequestOutput->NextToken;
 
     # Returns a L<Paws::CodeCommit::GetCommentsForPullRequestOutput> object.
 

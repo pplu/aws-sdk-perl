@@ -62,8 +62,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $UserConfirmed       = $SignUpResponse->UserConfirmed;
     my $CodeDeliveryDetails = $SignUpResponse->CodeDeliveryDetails;
+    my $UserConfirmed       = $SignUpResponse->UserConfirmed;
     my $UserSub             = $SignUpResponse->UserSub;
 
     # Returns a L<Paws::CognitoIdp::SignUpResponse> object.

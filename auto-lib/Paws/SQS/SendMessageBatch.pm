@@ -31,22 +31,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SendMessageBatchResult = $sqs->SendMessageBatch(
       Entries => [
         {
-          Id                     => 'MyString',
-          MessageBody            => 'MyString',
-          MessageGroupId         => 'MyString',
-          DelaySeconds           => 1,            # OPTIONAL
-          MessageDeduplicationId => 'MyString',
-          MessageAttributes      => {
+          Id                => 'MyString',
+          MessageBody       => 'MyString',
+          DelaySeconds      => 1,            # OPTIONAL
+          MessageAttributes => {
             'MyString' => {
               DataType         => 'MyString',
+              BinaryListValues => [
+                'BlobBinary', ...            # OPTIONAL
+              ],                             # OPTIONAL
+              BinaryValue      => 'BlobBinary',           # OPTIONAL
               StringListValues => [ 'MyString', ... ],    # OPTIONAL
               StringValue      => 'MyString',
-              BinaryValue      => 'BlobBinary',           # OPTIONAL
-              BinaryListValues => [
-                'BlobBinary', ...                         # OPTIONAL
-              ],                                          # OPTIONAL
             },
           },    # OPTIONAL
+          MessageDeduplicationId => 'MyString',
+          MessageGroupId         => 'MyString',
         },
         ...
       ],

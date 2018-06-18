@@ -49,8 +49,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $JobStatus = $StartTopicsDetectionJobResponse->JobStatus;
     my $JobId     = $StartTopicsDetectionJobResponse->JobId;
+    my $JobStatus = $StartTopicsDetectionJobResponse->JobStatus;
 
     # Returns a L<Paws::Comprehend::StartTopicsDetectionJobResponse> object.
 

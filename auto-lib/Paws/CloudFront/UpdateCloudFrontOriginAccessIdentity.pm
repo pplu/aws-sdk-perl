@@ -44,10 +44,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $ETag = $UpdateCloudFrontOriginAccessIdentityResult->ETag;
     my $CloudFrontOriginAccessIdentity =
       $UpdateCloudFrontOriginAccessIdentityResult
       ->CloudFrontOriginAccessIdentity;
+    my $ETag = $UpdateCloudFrontOriginAccessIdentityResult->ETag;
 
 # Returns a L<Paws::CloudFront::UpdateCloudFrontOriginAccessIdentityResult> object.
 

@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # subnet.
     my $AssociateRouteTableResult = $ec2->AssociateRouteTable(
       {
-        'SubnetId'     => 'subnet-9d4a7b6',
-        'RouteTableId' => 'rtb-22574640'
+        'RouteTableId' => 'rtb-22574640',
+        'SubnetId'     => 'subnet-9d4a7b6'
       }
     );
 

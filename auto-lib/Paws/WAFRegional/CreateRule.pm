@@ -40,8 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Rule        = $CreateRuleResponse->Rule;
     my $ChangeToken = $CreateRuleResponse->ChangeToken;
+    my $Rule        = $CreateRuleResponse->Rule;
 
     # Returns a L<Paws::WAFRegional::CreateRuleResponse> object.
 

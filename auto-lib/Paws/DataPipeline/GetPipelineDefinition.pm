@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $PipelineObjects  = $GetPipelineDefinitionOutput->PipelineObjects;
-    my $ParameterValues  = $GetPipelineDefinitionOutput->ParameterValues;
     my $ParameterObjects = $GetPipelineDefinitionOutput->ParameterObjects;
+    my $ParameterValues  = $GetPipelineDefinitionOutput->ParameterValues;
+    my $PipelineObjects  = $GetPipelineDefinitionOutput->PipelineObjects;
 
     # Returns a L<Paws::DataPipeline::GetPipelineDefinitionOutput> object.
 

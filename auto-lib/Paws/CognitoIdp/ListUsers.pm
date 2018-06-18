@@ -42,8 +42,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Users           = $ListUsersResponse->Users;
     my $PaginationToken = $ListUsersResponse->PaginationToken;
+    my $Users           = $ListUsersResponse->Users;
 
     # Returns a L<Paws::CognitoIdp::ListUsersResponse> object.
 

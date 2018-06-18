@@ -33,30 +33,30 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SearchDevicesResponse = $a4b->SearchDevices(
       Filters => [
         {
+          Key    => 'MyFilterKey',    # min: 1, max: 500
           Values => [
-            'MyFilterValue', ...    # min: 1, max: 500
-          ],                        # max: 5
-          Key => 'MyFilterKey',     # min: 1, max: 500
+            'MyFilterValue', ...      # min: 1, max: 500
+          ],                          # max: 5
 
         },
         ...
-      ],                            # OPTIONAL
-      MaxResults   => 1,                # OPTIONAL
-      NextToken    => 'MyNextToken',    # OPTIONAL
+      ],                              # OPTIONAL
+      MaxResults   => 1,              # OPTIONAL
+      NextToken    => 'MyNextToken',  # OPTIONAL
       SortCriteria => [
         {
-          Key   => 'MySortKey',         # min: 1, max: 500
-          Value => 'ASC',               # values: ASC, DESC
+          Key   => 'MySortKey',       # min: 1, max: 500
+          Value => 'ASC',             # values: ASC, DESC
 
         },
         ...
-      ],                                # OPTIONAL
+      ],                              # OPTIONAL
     );
 
     # Results:
-    my $TotalCount = $SearchDevicesResponse->TotalCount;
-    my $NextToken  = $SearchDevicesResponse->NextToken;
     my $Devices    = $SearchDevicesResponse->Devices;
+    my $NextToken  = $SearchDevicesResponse->NextToken;
+    my $TotalCount = $SearchDevicesResponse->TotalCount;
 
     # Returns a L<Paws::AlexaForBusiness::SearchDevicesResponse> object.
 

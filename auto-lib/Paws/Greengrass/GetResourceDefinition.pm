@@ -34,14 +34,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Id = $GetResourceDefinitionResponse->Id;
+    my $Arn               = $GetResourceDefinitionResponse->Arn;
+    my $CreationTimestamp = $GetResourceDefinitionResponse->CreationTimestamp;
+    my $Id                = $GetResourceDefinitionResponse->Id;
     my $LastUpdatedTimestamp =
       $GetResourceDefinitionResponse->LastUpdatedTimestamp;
-    my $Name              = $GetResourceDefinitionResponse->Name;
-    my $CreationTimestamp = $GetResourceDefinitionResponse->CreationTimestamp;
-    my $LatestVersion     = $GetResourceDefinitionResponse->LatestVersion;
-    my $LatestVersionArn  = $GetResourceDefinitionResponse->LatestVersionArn;
-    my $Arn               = $GetResourceDefinitionResponse->Arn;
+    my $LatestVersion    = $GetResourceDefinitionResponse->LatestVersion;
+    my $LatestVersionArn = $GetResourceDefinitionResponse->LatestVersionArn;
+    my $Name             = $GetResourceDefinitionResponse->Name;
 
     # Returns a L<Paws::Greengrass::GetResourceDefinitionResponse> object.
 

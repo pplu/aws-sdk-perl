@@ -40,11 +40,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $IsTruncated  = $ListEntitiesForPolicyResponse->IsTruncated;
     my $Marker       = $ListEntitiesForPolicyResponse->Marker;
-    my $PolicyUsers  = $ListEntitiesForPolicyResponse->PolicyUsers;
     my $PolicyGroups = $ListEntitiesForPolicyResponse->PolicyGroups;
     my $PolicyRoles  = $ListEntitiesForPolicyResponse->PolicyRoles;
-    my $IsTruncated  = $ListEntitiesForPolicyResponse->IsTruncated;
+    my $PolicyUsers  = $ListEntitiesForPolicyResponse->PolicyUsers;
 
     # Returns a L<Paws::IAM::ListEntitiesForPolicyResponse> object.
 

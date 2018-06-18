@@ -46,21 +46,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # launches the instances in EC2-Classic in the specified Availability Zone.
     my $RequestSpotInstancesResult = $ec2->RequestSpotInstances(
       {
-        'Type'                => 'one-time',
         'InstanceCount'       => 5,
-        'SpotPrice'           => 0.03,
         'LaunchSpecification' => {
           'IamInstanceProfile' => {
             'Arn' => 'arn:aws:iam::123456789012:instance-profile/my-iam-role'
           },
-          'InstanceType' => 'm3.medium',
           'ImageId'      => 'ami-1a2b3c4d',
+          'InstanceType' => 'm3.medium',
           'KeyName'      => 'my-key-pair',
           'Placement'    => {
             'AvailabilityZone' => 'us-west-2a'
           },
           'SecurityGroupIds' => ['sg-1a2b3c4d']
-        }
+        },
+        'SpotPrice' => 0.03,
+        'Type'      => 'one-time'
       }
     );
 
@@ -71,18 +71,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # receive a public IP address by default.
     my $RequestSpotInstancesResult = $ec2->RequestSpotInstances(
       {
+        'InstanceCount'       => 5,
         'LaunchSpecification' => {
-          'ImageId'            => 'ami-1a2b3c4d',
-          'InstanceType'       => 'm3.medium',
           'IamInstanceProfile' => {
             'Arn' => 'arn:aws:iam::123456789012:instance-profile/my-iam-role'
           },
-          'SubnetId'         => 'subnet-1a2b3c4d',
-          'SecurityGroupIds' => ['sg-1a2b3c4d']
+          'ImageId'          => 'ami-1a2b3c4d',
+          'InstanceType'     => 'm3.medium',
+          'SecurityGroupIds' => ['sg-1a2b3c4d'],
+          'SubnetId'         => 'subnet-1a2b3c4d'
         },
-        'InstanceCount' => 5,
-        'SpotPrice'     => 0.050,
-        'Type'          => 'one-time'
+        'SpotPrice' => 0.050,
+        'Type'      => 'one-time'
       }
     );
 

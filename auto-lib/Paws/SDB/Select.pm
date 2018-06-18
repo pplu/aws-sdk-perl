@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken = $SelectResult->NextToken;
     my $Items     = $SelectResult->Items;
+    my $NextToken = $SelectResult->NextToken;
 
     # Returns a L<Paws::SDB::SelectResult> object.
 

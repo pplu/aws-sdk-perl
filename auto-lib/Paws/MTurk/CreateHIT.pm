@@ -52,14 +52,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         PolicyName => 'MyString',
         Parameters => [
           {
+            Key        => 'MyString',
             MapEntries => [
               {
+                Key    => 'MyString',
                 Values => [ 'MyString', ... ],    # OPTIONAL
-                Key => 'MyString',
               },
               ...
             ],                                    # OPTIONAL
-            Key    => 'MyString',
             Values => [ 'MyString', ... ],        # OPTIONAL
           },
           ...
@@ -79,14 +79,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         PolicyName => 'MyString',
         Parameters => [
           {
+            Key        => 'MyString',
             MapEntries => [
               {
+                Key    => 'MyString',
                 Values => [ 'MyString', ... ],       # OPTIONAL
-                Key => 'MyString',
               },
               ...
             ],                                       # OPTIONAL
-            Key    => 'MyString',
             Values => [ 'MyString', ... ],           # OPTIONAL
           },
           ...
@@ -101,6 +101,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           QualificationTypeId => 'MyString',
           ActionsGuarded      => 'Accept'
           , # values: Accept, PreviewAndAccept, DiscoverPreviewAndAccept; OPTIONAL
+          IntegerValues => [ 1, ... ],    # OPTIONAL
           LocaleValues => [
             {
               Country     => 'MyCountryParameters',    # min: 2, max: 2
@@ -108,7 +109,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },
             ...
           ],                                           # OPTIONAL
-          IntegerValues => [ 1, ... ],                 # OPTIONAL
           RequiredToPreview => 1,                      # OPTIONAL
         },
         ...

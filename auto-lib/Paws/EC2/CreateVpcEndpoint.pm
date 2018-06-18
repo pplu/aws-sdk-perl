@@ -50,8 +50,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $VpcEndpoint = $CreateVpcEndpointResult->VpcEndpoint;
     my $ClientToken = $CreateVpcEndpointResult->ClientToken;
+    my $VpcEndpoint = $CreateVpcEndpointResult->VpcEndpoint;
 
     # Returns a L<Paws::EC2::CreateVpcEndpointResult> object.
 

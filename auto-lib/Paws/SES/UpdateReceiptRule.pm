@@ -32,8 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example updates a receipt rule to use an Amazon S3 action:
     my $UpdateReceiptRuleResponse = $email->UpdateReceiptRule(
       {
-        'RuleSetName' => 'MyRuleSet',
-        'Rule'        => {
+        'Rule' => {
           'Actions' => [
 
             {
@@ -43,11 +42,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               }
             }
           ],
-          'Name'        => 'MyRule',
           'Enabled'     => true,
-          'TlsPolicy'   => 'Optional',
-          'ScanEnabled' => true
-        }
+          'Name'        => 'MyRule',
+          'ScanEnabled' => true,
+          'TlsPolicy'   => 'Optional'
+        },
+        'RuleSetName' => 'MyRuleSet'
       }
     );
 

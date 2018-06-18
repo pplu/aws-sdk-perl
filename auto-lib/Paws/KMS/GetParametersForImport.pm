@@ -42,8 +42,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $ImportToken       = $GetParametersForImportResponse->ImportToken;
-    my $ParametersValidTo = $GetParametersForImportResponse->ParametersValidTo;
     my $KeyId             = $GetParametersForImportResponse->KeyId;
+    my $ParametersValidTo = $GetParametersForImportResponse->ParametersValidTo;
     my $PublicKey         = $GetParametersForImportResponse->PublicKey;
 
     # Returns a L<Paws::KMS::GetParametersForImportResponse> object.

@@ -31,13 +31,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     $opsworks->SetTimeBasedAutoScaling(
       InstanceId          => 'MyString',
       AutoScalingSchedule => {
-        Sunday    => { 'MyHour' => 'MySwitch', },    # OPTIONAL
-        Monday    => { 'MyHour' => 'MySwitch', },    # OPTIONAL
-        Thursday  => { 'MyHour' => 'MySwitch', },    # OPTIONAL
-        Wednesday => { 'MyHour' => 'MySwitch', },    # OPTIONAL
         Friday    => { 'MyHour' => 'MySwitch', },    # OPTIONAL
+        Monday    => { 'MyHour' => 'MySwitch', },    # OPTIONAL
         Saturday  => { 'MyHour' => 'MySwitch', },    # OPTIONAL
+        Sunday    => { 'MyHour' => 'MySwitch', },    # OPTIONAL
+        Thursday  => { 'MyHour' => 'MySwitch', },    # OPTIONAL
         Tuesday   => { 'MyHour' => 'MySwitch', },    # OPTIONAL
+        Wednesday => { 'MyHour' => 'MySwitch', },    # OPTIONAL
       },    # OPTIONAL
     );
 

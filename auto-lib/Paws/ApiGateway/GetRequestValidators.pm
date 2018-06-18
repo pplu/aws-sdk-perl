@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Position = $RequestValidators->Position;
     my $Items    = $RequestValidators->Items;
+    my $Position = $RequestValidators->Position;
 
     # Returns a L<Paws::ApiGateway::RequestValidators> object.
 

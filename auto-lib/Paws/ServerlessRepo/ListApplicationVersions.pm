@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $Versions  = $ListApplicationVersionsResponse->Versions;
     my $NextToken = $ListApplicationVersionsResponse->NextToken;
+    my $Versions  = $ListApplicationVersionsResponse->Versions;
 
     # Returns a L<Paws::ServerlessRepo::ListApplicationVersionsResponse> object.
 

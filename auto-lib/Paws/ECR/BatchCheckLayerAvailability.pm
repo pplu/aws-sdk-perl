@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Layers   = $BatchCheckLayerAvailabilityResponse->Layers;
     my $Failures = $BatchCheckLayerAvailabilityResponse->Failures;
+    my $Layers   = $BatchCheckLayerAvailabilityResponse->Layers;
 
     # Returns a L<Paws::ECR::BatchCheckLayerAvailabilityResponse> object.
 

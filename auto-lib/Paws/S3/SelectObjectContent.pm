@@ -44,27 +44,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Expression         => 'MyExpression',
       ExpressionType     => 'SQL',
       InputSerialization => {
+        CSV => {
+          Comments       => 'MyComments',          # OPTIONAL
+          FieldDelimiter => 'MyFieldDelimiter',    # OPTIONAL
+          FileHeaderInfo => 'USE',    # values: USE, IGNORE, NONE; OPTIONAL
+          QuoteCharacter       => 'MyQuoteCharacter',          # OPTIONAL
+          QuoteEscapeCharacter => 'MyQuoteEscapeCharacter',    # OPTIONAL
+          RecordDelimiter      => 'MyRecordDelimiter',         # OPTIONAL
+        },    # OPTIONAL
         CompressionType => 'NONE',    # values: NONE, GZIP; OPTIONAL
         JSON            => {
           Type => 'DOCUMENT',         # values: DOCUMENT, LINES; OPTIONAL
-        },    # OPTIONAL
-        CSV => {
-          FileHeaderInfo => 'USE',    # values: USE, IGNORE, NONE; OPTIONAL
-          RecordDelimiter      => 'MyRecordDelimiter',         # OPTIONAL
-          QuoteCharacter       => 'MyQuoteCharacter',          # OPTIONAL
-          QuoteEscapeCharacter => 'MyQuoteEscapeCharacter',    # OPTIONAL
-          Comments             => 'MyComments',                # OPTIONAL
-          FieldDelimiter       => 'MyFieldDelimiter',          # OPTIONAL
         },    # OPTIONAL
       },
       Key                 => 'MyObjectKey',
       OutputSerialization => {
         CSV => {
-          QuoteFields => 'ALWAYS',    # values: ALWAYS, ASNEEDED; OPTIONAL
-          RecordDelimiter      => 'MyRecordDelimiter',         # OPTIONAL
+          FieldDelimiter       => 'MyFieldDelimiter',          # OPTIONAL
           QuoteCharacter       => 'MyQuoteCharacter',          # OPTIONAL
           QuoteEscapeCharacter => 'MyQuoteEscapeCharacter',    # OPTIONAL
-          FieldDelimiter       => 'MyFieldDelimiter',          # OPTIONAL
+          QuoteFields => 'ALWAYS',    # values: ALWAYS, ASNEEDED; OPTIONAL
+          RecordDelimiter => 'MyRecordDelimiter',    # OPTIONAL
         },    # OPTIONAL
         JSON => {
           RecordDelimiter => 'MyRecordDelimiter',    # OPTIONAL

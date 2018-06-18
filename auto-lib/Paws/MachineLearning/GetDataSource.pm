@@ -34,26 +34,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $LastUpdatedAt     = $GetDataSourceOutput->LastUpdatedAt;
     my $ComputeStatistics = $GetDataSourceOutput->ComputeStatistics;
-    my $RoleARN           = $GetDataSourceOutput->RoleARN;
-    my $NumberOfFiles     = $GetDataSourceOutput->NumberOfFiles;
-    my $CreatedAt         = $GetDataSourceOutput->CreatedAt;
-    my $Message           = $GetDataSourceOutput->Message;
-    my $FinishedAt        = $GetDataSourceOutput->FinishedAt;
-    my $DataSourceSchema  = $GetDataSourceOutput->DataSourceSchema;
-    my $DataRearrangement = $GetDataSourceOutput->DataRearrangement;
-    my $Name              = $GetDataSourceOutput->Name;
-    my $LogUri            = $GetDataSourceOutput->LogUri;
-    my $DataSourceId      = $GetDataSourceOutput->DataSourceId;
-    my $DataSizeInBytes   = $GetDataSourceOutput->DataSizeInBytes;
-    my $RedshiftMetadata  = $GetDataSourceOutput->RedshiftMetadata;
-    my $Status            = $GetDataSourceOutput->Status;
-    my $RDSMetadata       = $GetDataSourceOutput->RDSMetadata;
-    my $StartedAt         = $GetDataSourceOutput->StartedAt;
-    my $DataLocationS3    = $GetDataSourceOutput->DataLocationS3;
     my $ComputeTime       = $GetDataSourceOutput->ComputeTime;
+    my $CreatedAt         = $GetDataSourceOutput->CreatedAt;
     my $CreatedByIamUser  = $GetDataSourceOutput->CreatedByIamUser;
+    my $DataLocationS3    = $GetDataSourceOutput->DataLocationS3;
+    my $DataRearrangement = $GetDataSourceOutput->DataRearrangement;
+    my $DataSizeInBytes   = $GetDataSourceOutput->DataSizeInBytes;
+    my $DataSourceId      = $GetDataSourceOutput->DataSourceId;
+    my $DataSourceSchema  = $GetDataSourceOutput->DataSourceSchema;
+    my $FinishedAt        = $GetDataSourceOutput->FinishedAt;
+    my $LastUpdatedAt     = $GetDataSourceOutput->LastUpdatedAt;
+    my $LogUri            = $GetDataSourceOutput->LogUri;
+    my $Message           = $GetDataSourceOutput->Message;
+    my $Name              = $GetDataSourceOutput->Name;
+    my $NumberOfFiles     = $GetDataSourceOutput->NumberOfFiles;
+    my $RDSMetadata       = $GetDataSourceOutput->RDSMetadata;
+    my $RedshiftMetadata  = $GetDataSourceOutput->RedshiftMetadata;
+    my $RoleARN           = $GetDataSourceOutput->RoleARN;
+    my $StartedAt         = $GetDataSourceOutput->StartedAt;
+    my $Status            = $GetDataSourceOutput->Status;
 
     # Returns a L<Paws::MachineLearning::GetDataSourceOutput> object.
 

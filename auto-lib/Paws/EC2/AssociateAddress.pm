@@ -52,8 +52,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # network interface.
     my $AssociateAddressResult = $ec2->AssociateAddress(
       {
-        'NetworkInterfaceId' => 'eni-1a2b3c4d',
-        'AllocationId'       => 'eipalloc-64d5890a'
+        'AllocationId'       => 'eipalloc-64d5890a',
+        'NetworkInterfaceId' => 'eni-1a2b3c4d'
       }
     );
 
@@ -66,8 +66,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # EC2-Classic.
     my $AssociateAddressResult = $ec2->AssociateAddress(
       {
-        'PublicIp'   => '198.51.100.0',
-        'InstanceId' => 'i-07ffe74c7330ebf53'
+        'InstanceId' => 'i-07ffe74c7330ebf53',
+        'PublicIp'   => '198.51.100.0'
       }
     );
 

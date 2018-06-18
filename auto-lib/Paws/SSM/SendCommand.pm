@@ -1,6 +1,7 @@
 
 package Paws::SSM::SendCommand;
   use Moose;
+  has CloudWatchOutputConfig => (is => 'ro', isa => 'Paws::SSM::CloudWatchOutputConfig');
   has Comment => (is => 'ro', isa => 'Str');
   has DocumentHash => (is => 'ro', isa => 'Str');
   has DocumentHashType => (is => 'ro', isa => 'Str');
@@ -43,7 +44,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ssm = Paws->service('SSM');
     my $SendCommandResult = $ssm->SendCommand(
-      DocumentName       => 'MyDocumentARN',
+      DocumentName           => 'MyDocumentARN',
+      CloudWatchOutputConfig => {
+        CloudWatchLogGroupName =>
+          'MyCloudWatchLogGroupName',    # min: 1, max: 512; OPTIONAL
+        CloudWatchOutputEnabled => 1,    # OPTIONAL
+      },    # OPTIONAL
       Comment            => 'MyComment',                # OPTIONAL
       DocumentHash       => 'MyDocumentHash',           # OPTIONAL
       DocumentHashType   => 'Sha256',                   # OPTIONAL
@@ -52,12 +58,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MaxConcurrency     => 'MyMaxConcurrency',         # OPTIONAL
       MaxErrors          => 'MyMaxErrors',              # OPTIONAL
       NotificationConfig => {
-        NotificationArn => 'MyNotificationArn',         # OPTIONAL
-        NotificationType   => 'Command', # values: Command, Invocation; OPTIONAL
+        NotificationArn    => 'MyNotificationArn',      # OPTIONAL
         NotificationEvents => [
           'All',
           ...    # values: All, InProgress, Success, TimedOut, Cancelled, Failed
         ],       # OPTIONAL
+        NotificationType => 'Command',   # values: Command, Invocation; OPTIONAL
       },    # OPTIONAL
       OutputS3BucketName => 'MyS3BucketName',    # OPTIONAL
       OutputS3KeyPrefix  => 'MyS3KeyPrefix',     # OPTIONAL
@@ -67,8 +73,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ServiceRoleArn => 'MyServiceRole',         # OPTIONAL
       Targets        => [
         {
-          Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
           Key => 'MyTargetKey',                  # min: 1, max: 128; OPTIONAL
+          Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
         },
         ...
       ],                                         # OPTIONAL
@@ -84,6 +90,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm/SendCommand>
 
 =head1 ATTRIBUTES
+
+
+=head2 CloudWatchOutputConfig => L<Paws::SSM::CloudWatchOutputConfig>
+
+Enables Systems Manager to send Run Command output to Amazon CloudWatch
+Logs.
+
 
 
 =head2 Comment => Str
@@ -120,7 +133,16 @@ be a public document or a custom document.
 =head2 DocumentVersion => Str
 
 The SSM document version to use in the request. You can specify
-Default, Latest, or a specific version number.
+$DEFAULT, $LATEST, or a specific version number. If you execute
+commands by using the AWS CLI, then you must escape the first two
+options by using a backslash. If you specify a version number, then you
+don't need to use the backslash. For example:
+
+--document-version "\$DEFAULT"
+
+--document-version "\$LATEST"
+
+--document-version "3"
 
 
 
@@ -131,7 +153,8 @@ maximum of 50 IDs. If you prefer not to list individual instance IDs,
 you can instead send commands to a fleet of instances using the Targets
 parameter, which accepts EC2 tags. For more information about how to
 use Targets, see Sending Commands to a Fleet
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html).
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html)
+in the I<AWS Systems Manager User Guide>.
 
 
 
@@ -141,7 +164,8 @@ use Targets, see Sending Commands to a Fleet
 the command at the same time. You can specify a number such as 10 or a
 percentage such as 10%. The default value is 50. For more information
 about how to use MaxConcurrency, see Using Concurrency Controls
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-velocity.html).
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-velocity)
+in the I<AWS Systems Manager User Guide>.
 
 
 
@@ -153,7 +177,8 @@ systems stops sending the command to additional targets. You can
 specify a number like 10 or a percentage like 10%. The default value is
 0. For more information about how to use MaxErrors, see Using Error
 Controls
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-maxerrors.html).
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-maxerrors)
+in the I<AWS Systems Manager User Guide>.
 
 
 
@@ -204,7 +229,8 @@ The IAM role that Systems Manager uses to send notifications.
 Key,Value combination that you specify. Targets is required if you
 don't provide one or more instance IDs in the call. For more
 information about how to use Targets, see Sending Commands to a Fleet
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html).
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html)
+in the I<AWS Systems Manager User Guide>.
 
 
 

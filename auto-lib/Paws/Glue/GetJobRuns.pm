@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken = $GetJobRunsResponse->NextToken;
     my $JobRuns   = $GetJobRunsResponse->JobRuns;
+    my $NextToken = $GetJobRunsResponse->NextToken;
 
     # Returns a L<Paws::Glue::GetJobRunsResponse> object.
 

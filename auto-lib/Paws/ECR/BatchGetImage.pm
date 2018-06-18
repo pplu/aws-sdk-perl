@@ -35,19 +35,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # ID from the repository named ubuntu in the current account.
     my $BatchGetImageResponse = $ecr->BatchGetImage(
       {
-        'RepositoryName' => 'ubuntu',
-        'ImageIds'       => [
+        'ImageIds' => [
 
           {
             'ImageTag' => 'precise'
           }
-        ]
+        ],
+        'RepositoryName' => 'ubuntu'
       }
     );
 
     # Results:
-    my $images   = $BatchGetImageResponse->images;
     my $failures = $BatchGetImageResponse->failures;
+    my $images   = $BatchGetImageResponse->images;
 
     # Returns a L<Paws::ECR::BatchGetImageResponse> object.
 

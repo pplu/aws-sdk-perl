@@ -35,17 +35,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           {
             'Key'               => 'Role',
-            'ResourceType'      => 'auto-scaling-group',
-            'ResourceId'        => 'my-auto-scaling-group',
             'PropagateAtLaunch' => true,
+            'ResourceId'        => 'my-auto-scaling-group',
+            'ResourceType'      => 'auto-scaling-group',
             'Value'             => 'WebServer'
           },
 
           {
             'Key'               => 'Dept',
-            'ResourceType'      => 'auto-scaling-group',
-            'ResourceId'        => 'my-auto-scaling-group',
             'PropagateAtLaunch' => true,
+            'ResourceId'        => 'my-auto-scaling-group',
+            'ResourceType'      => 'auto-scaling-group',
             'Value'             => 'Research'
           }
         ]

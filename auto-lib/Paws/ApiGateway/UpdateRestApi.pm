@@ -36,25 +36,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           from => 'MyString',
           op =>
             'add',    # values: add, remove, replace, move, copy, test; OPTIONAL
-          value => 'MyString',
           path  => 'MyString',
+          value => 'MyString',
         },
         ...
       ],              # OPTIONAL
     );
 
     # Results:
-    my $Version                = $RestApi->Version;
     my $ApiKeySource           = $RestApi->ApiKeySource;
+    my $BinaryMediaTypes       = $RestApi->BinaryMediaTypes;
+    my $CreatedDate            = $RestApi->CreatedDate;
     my $Description            = $RestApi->Description;
     my $EndpointConfiguration  = $RestApi->EndpointConfiguration;
-    my $CreatedDate            = $RestApi->CreatedDate;
-    my $Policy                 = $RestApi->Policy;
-    my $Warnings               = $RestApi->Warnings;
     my $Id                     = $RestApi->Id;
-    my $Name                   = $RestApi->Name;
-    my $BinaryMediaTypes       = $RestApi->BinaryMediaTypes;
     my $MinimumCompressionSize = $RestApi->MinimumCompressionSize;
+    my $Name                   = $RestApi->Name;
+    my $Policy                 = $RestApi->Policy;
+    my $Version                = $RestApi->Version;
+    my $Warnings               = $RestApi->Warnings;
 
     # Returns a L<Paws::ApiGateway::RestApi> object.
 

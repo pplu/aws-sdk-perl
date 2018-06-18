@@ -45,13 +45,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $HITReviewPolicy =
-      $ListReviewPolicyResultsForHITResponse->HITReviewPolicy;
-    my $HITId = $ListReviewPolicyResultsForHITResponse->HITId;
     my $AssignmentReviewPolicy =
       $ListReviewPolicyResultsForHITResponse->AssignmentReviewPolicy;
     my $AssignmentReviewReport =
       $ListReviewPolicyResultsForHITResponse->AssignmentReviewReport;
+    my $HITId = $ListReviewPolicyResultsForHITResponse->HITId;
+    my $HITReviewPolicy =
+      $ListReviewPolicyResultsForHITResponse->HITReviewPolicy;
     my $HITReviewReport =
       $ListReviewPolicyResultsForHITResponse->HITReviewReport;
     my $NextToken = $ListReviewPolicyResultsForHITResponse->NextToken;

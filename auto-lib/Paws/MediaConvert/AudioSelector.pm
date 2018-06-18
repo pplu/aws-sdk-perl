@@ -1,5 +1,6 @@
 package Paws::MediaConvert::AudioSelector;
   use Moose;
+  has CustomLanguageCode => (is => 'ro', isa => 'Str', request_name => 'customLanguageCode', traits => ['NameInRequest']);
   has DefaultSelection => (is => 'ro', isa => 'Str', request_name => 'defaultSelection', traits => ['NameInRequest']);
   has ExternalAudioFileInput => (is => 'ro', isa => 'Str', request_name => 'externalAudioFileInput', traits => ['NameInRequest']);
   has LanguageCode => (is => 'ro', isa => 'Str', request_name => 'languageCode', traits => ['NameInRequest']);
@@ -28,20 +29,26 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConvert::AudioSelector object:
 
-  $service_obj->Method(Att1 => { DefaultSelection => $value, ..., Tracks => $value  });
+  $service_obj->Method(Att1 => { CustomLanguageCode => $value, ..., Tracks => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConvert::AudioSelector object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->DefaultSelection
+  $result->Att1->CustomLanguageCode
 
 =head1 DESCRIPTION
 
 Selector for Audio
 
 =head1 ATTRIBUTES
+
+
+=head2 CustomLanguageCode => Str
+
+  Selects a specific language code from within an audio source, using the
+ISO 639-2 or ISO 639-3 three-letter language code
 
 
 =head2 DefaultSelection => Str

@@ -34,29 +34,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $ImportSnapshotResult = $ec2->ImportSnapshot(
       ClientData => {
-        UploadSize  => 1,                        # OPTIONAL
         Comment     => 'MyString',               # OPTIONAL
         UploadEnd   => '1970-01-01T01:00:00',    # OPTIONAL
+        UploadSize  => 1,                        # OPTIONAL
         UploadStart => '1970-01-01T01:00:00',    # OPTIONAL
       },    # OPTIONAL
       ClientToken   => 'MyString',    # OPTIONAL
       Description   => 'MyString',    # OPTIONAL
       DiskContainer => {
         Description => 'MyString',    # OPTIONAL
+        Format      => 'MyString',    # OPTIONAL
+        Url         => 'MyString',    # OPTIONAL
         UserBucket  => {
           S3Bucket => 'MyString',     # OPTIONAL
           S3Key    => 'MyString',     # OPTIONAL
         },    # OPTIONAL
-        Format => 'MyString',    # OPTIONAL
-        Url    => 'MyString',    # OPTIONAL
       },    # OPTIONAL
       DryRun   => 1,             # OPTIONAL
       RoleName => 'MyString',    # OPTIONAL
     );
 
     # Results:
-    my $ImportTaskId       = $ImportSnapshotResult->ImportTaskId;
     my $Description        = $ImportSnapshotResult->Description;
+    my $ImportTaskId       = $ImportSnapshotResult->ImportTaskId;
     my $SnapshotTaskDetail = $ImportSnapshotResult->SnapshotTaskDetail;
 
     # Returns a L<Paws::EC2::ImportSnapshotResult> object.

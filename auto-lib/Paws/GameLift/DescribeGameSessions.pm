@@ -42,8 +42,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken    = $DescribeGameSessionsOutput->NextToken;
     my $GameSessions = $DescribeGameSessionsOutput->GameSessions;
+    my $NextToken    = $DescribeGameSessionsOutput->NextToken;
 
     # Returns a L<Paws::GameLift::DescribeGameSessionsOutput> object.
 

@@ -29,7 +29,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $PeerVpcResult = $lightsail->PeerVpc();
 
     # Results:
-    my $Operation = $PeerVpcResult->Operation;
+    my $operation = $PeerVpcResult->operation;
 
     # Returns a L<Paws::Lightsail::PeerVpcResult> object.
 

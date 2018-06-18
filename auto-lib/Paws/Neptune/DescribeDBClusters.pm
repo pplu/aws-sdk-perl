@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DBClusterIdentifier => 'MyString',    # OPTIONAL
       Filters             => [
         {
-          Values => [ 'MyString', ... ],
           Name   => 'MyString',
+          Values => [ 'MyString', ... ],
 
         },
         ...
@@ -45,8 +45,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Marker     = $DBClusterMessage->Marker;
     my $DBClusters = $DBClusterMessage->DBClusters;
+    my $Marker     = $DBClusterMessage->Marker;
 
     # Returns a L<Paws::Neptune::DBClusterMessage> object.
 

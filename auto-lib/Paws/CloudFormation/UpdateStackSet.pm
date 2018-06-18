@@ -51,18 +51,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ExecutionRoleName    => 'MyExecutionRoleName',     # OPTIONAL
       OperationId          => 'MyClientRequestToken',    # OPTIONAL
       OperationPreferences => {
-        RegionOrder                => [ 'MyRegion', ... ],  # OPTIONAL
-        FailureTolerancePercentage => 1,                    # max: 100; OPTIONAL
-        FailureToleranceCount      => 1,                    # OPTIONAL
-        MaxConcurrentCount         => 1,                    # min: 1, ; OPTIONAL
-        MaxConcurrentPercentage => 1,    # min: 1, max: 100; OPTIONAL
+        FailureToleranceCount      => 1,    # OPTIONAL
+        FailureTolerancePercentage => 1,    # max: 100; OPTIONAL
+        MaxConcurrentCount         => 1,    # min: 1, ; OPTIONAL
+        MaxConcurrentPercentage    => 1,    # min: 1, max: 100; OPTIONAL
+        RegionOrder => [ 'MyRegion', ... ], # OPTIONAL
       },    # OPTIONAL
       Parameters => [
         {
-          ResolvedValue    => 'MyParameterValue',    # OPTIONAL
           ParameterKey     => 'MyParameterKey',      # OPTIONAL
-          UsePreviousValue => 1,                     # OPTIONAL
           ParameterValue   => 'MyParameterValue',    # OPTIONAL
+          ResolvedValue    => 'MyParameterValue',    # OPTIONAL
+          UsePreviousValue => 1,                     # OPTIONAL
         },
         ...
       ],                                             # OPTIONAL

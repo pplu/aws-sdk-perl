@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $matches = $TestMetricFilterResponse->matches;
+    my $Matches = $TestMetricFilterResponse->Matches;
 
     # Returns a L<Paws::CloudWatchLogs::TestMetricFilterResponse> object.
 

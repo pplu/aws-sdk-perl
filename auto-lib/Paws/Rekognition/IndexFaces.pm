@@ -35,23 +35,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Rekognition collection.
     my $IndexFacesResponse = $rekognition->IndexFaces(
       {
+        'CollectionId'        => 'myphotos',
         'DetectionAttributes' => [
 
         ],
         'ExternalImageId' => 'myphotoid',
-        'CollectionId'    => 'myphotos',
         'Image'           => {
           'S3Object' => {
-            'Name'   => 'myphoto',
-            'Bucket' => 'mybucket'
+            'Bucket' => 'mybucket',
+            'Name'   => 'myphoto'
           }
         }
       }
     );
 
     # Results:
-    my $OrientationCorrection = $IndexFacesResponse->OrientationCorrection;
     my $FaceRecords           = $IndexFacesResponse->FaceRecords;
+    my $OrientationCorrection = $IndexFacesResponse->OrientationCorrection;
 
     # Returns a L<Paws::Rekognition::IndexFacesResponse> object.
 

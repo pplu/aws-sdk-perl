@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Notification => {
         ComparisonOperator =>
           'GREATER_THAN',    # values: GREATER_THAN, LESS_THAN, EQUAL_TO
-        Threshold        => 1,           # min: 0.1, max: 1000000000
         NotificationType => 'ACTUAL',    # values: ACTUAL, FORECASTED
+        Threshold        => 1,           # min: 0.1, max: 1000000000
         ThresholdType =>
           'PERCENTAGE',    # values: PERCENTAGE, ABSOLUTE_VALUE; OPTIONAL
       },

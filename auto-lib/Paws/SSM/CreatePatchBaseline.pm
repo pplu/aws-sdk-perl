@@ -42,27 +42,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ApprovalRules => {
         PatchRules => [
           {
+            ApproveAfterDays => 1,    # max: 100
             PatchFilterGroup => {
               PatchFilters => [
                 {
+                  Key => 'PRODUCT'
+                  , # values: PRODUCT, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID, SECTION, PRIORITY, SEVERITY
                   Values => [
                     'MyPatchFilterValue', ...    # min: 1, max: 64
                   ],                             # min: 1, max: 20
-                  Key => 'PRODUCT'
-                  , # values: PRODUCT, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID, SECTION, PRIORITY, SEVERITY
 
                 },
                 ...
-              ],    # max: 4
+              ],                                 # max: 4
 
             },
-            ApproveAfterDays  => 1,           # max: 100
-            EnableNonSecurity => 1,           # OPTIONAL
-            ComplianceLevel   => 'CRITICAL'
+            ComplianceLevel => 'CRITICAL'
             , # values: CRITICAL, HIGH, MEDIUM, LOW, INFORMATIONAL, UNSPECIFIED; OPTIONAL
+            EnableNonSecurity => 1,    # OPTIONAL
           },
           ...
-        ],    # max: 10
+        ],                             # max: 10
 
       },    # OPTIONAL
       ApprovedPatches => [
@@ -75,15 +75,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       GlobalFilters                    => {
         PatchFilters => [
           {
+            Key => 'PRODUCT'
+            , # values: PRODUCT, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID, SECTION, PRIORITY, SEVERITY
             Values => [
               'MyPatchFilterValue', ...    # min: 1, max: 64
             ],                             # min: 1, max: 20
-            Key => 'PRODUCT'
-            , # values: PRODUCT, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID, SECTION, PRIORITY, SEVERITY
 
           },
           ...
-        ],    # max: 4
+        ],                                 # max: 4
 
       },    # OPTIONAL
       OperatingSystem => 'WINDOWS',    # OPTIONAL
@@ -92,8 +92,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],                               # OPTIONAL
       Sources => [
         {
-          Name          => 'MyPatchSourceName',
           Configuration => 'MyPatchSourceConfiguration',    # min: 1, max: 512
+          Name          => 'MyPatchSourceName',
           Products      => [
             'MyPatchSourceProduct', ...                     # min: 1, max: 128
           ],                                                # min: 1, max: 20

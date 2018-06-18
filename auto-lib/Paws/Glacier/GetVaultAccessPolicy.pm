@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # example-vault.
     my $GetVaultAccessPolicyOutput = $glacier->GetVaultAccessPolicy(
       {
-        'VaultName' => 'example-vault',
-        'AccountId' => '-'
+        'AccountId' => '-',
+        'VaultName' => 'example-vault'
       }
     );
 

@@ -51,9 +51,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $AuthenticationResult =
       $RespondToAuthChallengeResponse->AuthenticationResult;
     my $ChallengeName = $RespondToAuthChallengeResponse->ChallengeName;
-    my $Session       = $RespondToAuthChallengeResponse->Session;
     my $ChallengeParameters =
       $RespondToAuthChallengeResponse->ChallengeParameters;
+    my $Session = $RespondToAuthChallengeResponse->Session;
 
     # Returns a L<Paws::CognitoIdp::RespondToAuthChallengeResponse> object.
 

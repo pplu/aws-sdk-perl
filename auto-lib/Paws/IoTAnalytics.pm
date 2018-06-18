@@ -124,6 +124,11 @@ package Paws::IoTAnalytics;
     my $call_object = $self->new_with_coercions('Paws::IoTAnalytics::ListPipelines', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoTAnalytics::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutLoggingOptions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoTAnalytics::PutLoggingOptions', @_);
@@ -142,6 +147,16 @@ package Paws::IoTAnalytics;
   sub StartPipelineReprocessing {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoTAnalytics::StartPipelineReprocessing', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoTAnalytics::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoTAnalytics::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateChannel {
@@ -167,7 +182,7 @@ package Paws::IoTAnalytics;
   
 
 
-  sub operations { qw/BatchPutMessage CancelPipelineReprocessing CreateChannel CreateDataset CreateDatasetContent CreateDatastore CreatePipeline DeleteChannel DeleteDataset DeleteDatasetContent DeleteDatastore DeletePipeline DescribeChannel DescribeDataset DescribeDatastore DescribeLoggingOptions DescribePipeline GetDatasetContent ListChannels ListDatasets ListDatastores ListPipelines PutLoggingOptions RunPipelineActivity SampleChannelData StartPipelineReprocessing UpdateChannel UpdateDataset UpdateDatastore UpdatePipeline / }
+  sub operations { qw/BatchPutMessage CancelPipelineReprocessing CreateChannel CreateDataset CreateDatasetContent CreateDatastore CreatePipeline DeleteChannel DeleteDataset DeleteDatasetContent DeleteDatastore DeletePipeline DescribeChannel DescribeDataset DescribeDatastore DescribeLoggingOptions DescribePipeline GetDatasetContent ListChannels ListDatasets ListDatastores ListPipelines ListTagsForResource PutLoggingOptions RunPipelineActivity SampleChannelData StartPipelineReprocessing TagResource UntagResource UpdateChannel UpdateDataset UpdateDatastore UpdatePipeline / }
 
 1;
 
@@ -195,33 +210,31 @@ Paws::IoTAnalytics - Perl Interface to AWS AWS IoT Analytics
 
 =head1 DESCRIPTION
 
-AWS IoT Analytics provides advanced data analysis for AWS IoT. It
-allows you to collect large amounts of device data, process messages,
-store them, and then query the data and run sophisticated analytics to
-make accurate decisions in your IoT applications and machine learning
-use cases. AWS IoT Analytics enables advanced data exploration through
-integration with Jupyter Notebooks and data visualization through
-integration with Amazon QuickSight.
+AWS IoT Analytics allows you to collect large amounts of device data,
+process messages, and store them. You can then query the data and run
+sophisticated analytics on it. AWS IoT Analytics enables advanced data
+exploration through integration with Jupyter Notebooks and data
+visualization through integration with Amazon QuickSight.
 
 Traditional analytics and business intelligence tools are designed to
 process structured data. IoT data often comes from devices that record
-noisy processes (such as temperature, motion, or sound). As a result,
+noisy processes (such as temperature, motion, or sound). As a result
 the data from these devices can have significant gaps, corrupted
 messages, and false readings that must be cleaned up before analysis
 can occur. Also, IoT data is often only meaningful in the context of
 other data from external sources.
 
-AWS IoT Analytics automates each of the steps required to analyze data
-from IoT devices. AWS IoT Analytics filters, transforms, and enriches
-IoT data before storing it in a time-series data store for analysis.
-You can set up the service to collect only the data you need from your
-devices, apply mathematical transforms to process the data, and enrich
-the data with device-specific metadata such as device type and location
-before storing it. Then, you can analyze your data by running queries
-using the built-in SQL query engine, or perform more complex analytics
-and machine learning inference. AWS IoT Analytics includes models for
-common IoT use cases so you can answer questions like which devices are
-about to fail or which customers are at risk of abandoning their
+AWS IoT Analytics automates the steps required to analyze data from IoT
+devices. AWS IoT Analytics filters, transforms, and enriches IoT data
+before storing it in a time-series data store for analysis. You can set
+up the service to collect only the data you need from your devices,
+apply mathematical transforms to process the data, and enrich the data
+with device-specific metadata such as device type and location before
+storing it. Then, you can analyze your data by running queries using
+the built-in SQL query engine, or perform more complex analytics and
+machine learning inference. AWS IoT Analytics includes pre-built models
+for common IoT use cases so you can answer questions like which devices
+are about to fail or which customers are at risk of abandoning their
 wearable devices.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iotanalytics-2017-11-27>
@@ -273,6 +286,8 @@ Cancels the reprocessing of data through the pipeline.
 
 =item [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>]
 
+=item [Tags => ArrayRef[L<Paws::IoTAnalytics::Tag>]]
+
 
 =back
 
@@ -292,6 +307,8 @@ pipeline.
 =item Actions => ArrayRef[L<Paws::IoTAnalytics::DatasetAction>]
 
 =item DatasetName => Str
+
+=item [Tags => ArrayRef[L<Paws::IoTAnalytics::Tag>]]
 
 =item [Triggers => ArrayRef[L<Paws::IoTAnalytics::DatasetTrigger>]]
 
@@ -333,6 +350,8 @@ Creates the content of a data set by applying an SQL action.
 
 =item [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>]
 
+=item [Tags => ArrayRef[L<Paws::IoTAnalytics::Tag>]]
+
 
 =back
 
@@ -350,6 +369,8 @@ Creates a data store, which is a repository for messages.
 =item PipelineActivities => ArrayRef[L<Paws::IoTAnalytics::PipelineActivity>]
 
 =item PipelineName => Str
+
+=item [Tags => ArrayRef[L<Paws::IoTAnalytics::Tag>]]
 
 
 =back
@@ -617,6 +638,22 @@ Returns: a L<Paws::IoTAnalytics::ListPipelinesResponse> instance
 Retrieves a list of pipelines.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoTAnalytics::ListTagsForResource>
+
+Returns: a L<Paws::IoTAnalytics::ListTagsForResourceResponse> instance
+
+Lists the tags (metadata) which you have assigned to the resource.
+
+
 =head2 PutLoggingOptions
 
 =over
@@ -631,6 +668,12 @@ Each argument is described in detail in: L<Paws::IoTAnalytics::PutLoggingOptions
 Returns: nothing
 
 Sets or updates the AWS IoT Analytics logging options.
+
+Note that if you update the value of any C<loggingOptions> field, it
+takes up to one minute for the change to take effect. Also, if you
+change the policy attached to the role you specified in the roleArn
+field (for example, to correct an invalid policy) it takes up to 5
+minutes for that change to take effect.
 
 
 =head2 RunPipelineActivity
@@ -693,6 +736,43 @@ Each argument is described in detail in: L<Paws::IoTAnalytics::StartPipelineRepr
 Returns: a L<Paws::IoTAnalytics::StartPipelineReprocessingResponse> instance
 
 Starts the reprocessing of raw message data through the pipeline.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => ArrayRef[L<Paws::IoTAnalytics::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoTAnalytics::TagResource>
+
+Returns: a L<Paws::IoTAnalytics::TagResourceResponse> instance
+
+Adds to or modifies the tags of the given resource. Tags are metadata
+which can be used to manage a resource.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoTAnalytics::UntagResource>
+
+Returns: a L<Paws::IoTAnalytics::UntagResourceResponse> instance
+
+Removes the given tags (metadata) from the resource.
 
 
 =head2 UpdateChannel

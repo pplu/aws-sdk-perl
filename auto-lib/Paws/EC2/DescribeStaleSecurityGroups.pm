@@ -38,9 +38,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $NextToken = $DescribeStaleSecurityGroupsResult->NextToken;
     my $StaleSecurityGroupSet =
       $DescribeStaleSecurityGroupsResult->StaleSecurityGroupSet;
-    my $NextToken = $DescribeStaleSecurityGroupsResult->NextToken;
 
     # Returns a L<Paws::EC2::DescribeStaleSecurityGroupsResult> object.
 

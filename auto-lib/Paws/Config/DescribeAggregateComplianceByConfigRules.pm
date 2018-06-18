@@ -34,22 +34,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $config->DescribeAggregateComplianceByConfigRules(
       ConfigurationAggregatorName => 'MyConfigurationAggregatorName',
       Filters                     => {
-        ConfigRuleName => 'MyConfigRuleName',    # min: 1, max: 64; OPTIONAL
-        AwsRegion      => 'MyAwsRegion',         # min: 1, max: 64; OPTIONAL
+        AccountId      => 'MyAccountId',    # OPTIONAL
+        AwsRegion      => 'MyAwsRegion',    # min: 1, max: 64; OPTIONAL
         ComplianceType => 'COMPLIANT'
         , # values: COMPLIANT, NON_COMPLIANT, NOT_APPLICABLE, INSUFFICIENT_DATA; OPTIONAL
-        AccountId => 'MyAccountId',    # OPTIONAL
+        ConfigRuleName => 'MyConfigRuleName',    # min: 1, max: 64; OPTIONAL
       },    # OPTIONAL
       Limit     => 1,                # OPTIONAL
       NextToken => 'MyNextToken',    # OPTIONAL
       );
 
     # Results:
-    my $NextToken =
-      $DescribeAggregateComplianceByConfigRulesResponse->NextToken;
     my $AggregateComplianceByConfigRules =
       $DescribeAggregateComplianceByConfigRulesResponse
       ->AggregateComplianceByConfigRules;
+    my $NextToken =
+      $DescribeAggregateComplianceByConfigRulesResponse->NextToken;
 
 # Returns a L<Paws::Config::DescribeAggregateComplianceByConfigRulesResponse> object.
 

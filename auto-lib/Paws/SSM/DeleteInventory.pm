@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $DeletionSummary = $DeleteInventoryResult->DeletionSummary;
     my $DeletionId      = $DeleteInventoryResult->DeletionId;
+    my $DeletionSummary = $DeleteInventoryResult->DeletionSummary;
     my $TypeName        = $DeleteInventoryResult->TypeName;
 
     # Returns a L<Paws::SSM::DeleteInventoryResult> object.

@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # named Admins:
     $iam->DeleteGroupPolicy(
       {
-        'PolicyName' => 'ExamplePolicy',
-        'GroupName'  => 'Admins'
+        'GroupName'  => 'Admins',
+        'PolicyName' => 'ExamplePolicy'
       }
     );
 

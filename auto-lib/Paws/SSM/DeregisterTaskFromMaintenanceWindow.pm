@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $WindowTaskId = $DeregisterTaskFromMaintenanceWindowResult->WindowTaskId;
     my $WindowId     = $DeregisterTaskFromMaintenanceWindowResult->WindowId;
+    my $WindowTaskId = $DeregisterTaskFromMaintenanceWindowResult->WindowTaskId;
 
     # Returns a L<Paws::SSM::DeregisterTaskFromMaintenanceWindowResult> object.
 

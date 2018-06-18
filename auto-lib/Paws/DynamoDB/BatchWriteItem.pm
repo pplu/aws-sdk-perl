@@ -43,11 +43,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   'AlbumTitle' => {
                     'S' => 'Somewhat Famous'
                   },
-                  'SongTitle' => {
-                    'S' => 'Call Me Today'
-                  },
                   'Artist' => {
                     'S' => 'No One You Know'
+                  },
+                  'SongTitle' => {
+                    'S' => 'Call Me Today'
                   }
                 }
               }
@@ -59,11 +59,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   'AlbumTitle' => {
                     'S' => 'Songs About Life'
                   },
-                  'SongTitle' => {
-                    'S' => 'Happy Day'
-                  },
                   'Artist' => {
                     'S' => 'Acme Band'
+                  },
+                  'SongTitle' => {
+                    'S' => 'Happy Day'
                   }
                 }
               }
@@ -75,11 +75,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   'AlbumTitle' => {
                     'S' => 'Blue Sky Blues'
                   },
-                  'SongTitle' => {
-                    'S' => 'Scared of My Shadow'
-                  },
                   'Artist' => {
                     'S' => 'No One You Know'
+                  },
+                  'SongTitle' => {
+                    'S' => 'Scared of My Shadow'
                   }
                 }
               }

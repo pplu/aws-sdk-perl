@@ -57,8 +57,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ReplicaSettings = $UpdateGlobalTableSettingsOutput->ReplicaSettings;
     my $GlobalTableName = $UpdateGlobalTableSettingsOutput->GlobalTableName;
+    my $ReplicaSettings = $UpdateGlobalTableSettingsOutput->ReplicaSettings;
 
     # Returns a L<Paws::DynamoDB::UpdateGlobalTableSettingsOutput> object.
 

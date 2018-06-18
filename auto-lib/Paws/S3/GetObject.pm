@@ -71,34 +71,34 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $SSEKMSKeyId             = $GetObjectOutput->SSEKMSKeyId;
-    my $Body                    = $GetObjectOutput->Body;
-    my $ContentRange            = $GetObjectOutput->ContentRange;
-    my $DeleteMarker            = $GetObjectOutput->DeleteMarker;
-    my $ServerSideEncryption    = $GetObjectOutput->ServerSideEncryption;
-    my $SSECustomerKeyMD5       = $GetObjectOutput->SSECustomerKeyMD5;
-    my $ReplicationStatus       = $GetObjectOutput->ReplicationStatus;
-    my $ETag                    = $GetObjectOutput->ETag;
-    my $ContentType             = $GetObjectOutput->ContentType;
-    my $Restore                 = $GetObjectOutput->Restore;
-    my $VersionId               = $GetObjectOutput->VersionId;
-    my $TagCount                = $GetObjectOutput->TagCount;
-    my $Expires                 = $GetObjectOutput->Expires;
-    my $WebsiteRedirectLocation = $GetObjectOutput->WebsiteRedirectLocation;
-    my $StorageClass            = $GetObjectOutput->StorageClass;
-    my $ContentEncoding         = $GetObjectOutput->ContentEncoding;
     my $AcceptRanges            = $GetObjectOutput->AcceptRanges;
-    my $ContentLanguage         = $GetObjectOutput->ContentLanguage;
-    my $SSECustomerAlgorithm    = $GetObjectOutput->SSECustomerAlgorithm;
-    my $Metadata                = $GetObjectOutput->Metadata;
-    my $Expiration              = $GetObjectOutput->Expiration;
-    my $RequestCharged          = $GetObjectOutput->RequestCharged;
-    my $ContentLength           = $GetObjectOutput->ContentLength;
-    my $ContentDisposition      = $GetObjectOutput->ContentDisposition;
+    my $Body                    = $GetObjectOutput->Body;
     my $CacheControl            = $GetObjectOutput->CacheControl;
+    my $ContentDisposition      = $GetObjectOutput->ContentDisposition;
+    my $ContentEncoding         = $GetObjectOutput->ContentEncoding;
+    my $ContentLanguage         = $GetObjectOutput->ContentLanguage;
+    my $ContentLength           = $GetObjectOutput->ContentLength;
+    my $ContentRange            = $GetObjectOutput->ContentRange;
+    my $ContentType             = $GetObjectOutput->ContentType;
+    my $DeleteMarker            = $GetObjectOutput->DeleteMarker;
+    my $ETag                    = $GetObjectOutput->ETag;
+    my $Expiration              = $GetObjectOutput->Expiration;
+    my $Expires                 = $GetObjectOutput->Expires;
     my $LastModified            = $GetObjectOutput->LastModified;
+    my $Metadata                = $GetObjectOutput->Metadata;
     my $MissingMeta             = $GetObjectOutput->MissingMeta;
     my $PartsCount              = $GetObjectOutput->PartsCount;
+    my $ReplicationStatus       = $GetObjectOutput->ReplicationStatus;
+    my $RequestCharged          = $GetObjectOutput->RequestCharged;
+    my $Restore                 = $GetObjectOutput->Restore;
+    my $SSECustomerAlgorithm    = $GetObjectOutput->SSECustomerAlgorithm;
+    my $SSECustomerKeyMD5       = $GetObjectOutput->SSECustomerKeyMD5;
+    my $SSEKMSKeyId             = $GetObjectOutput->SSEKMSKeyId;
+    my $ServerSideEncryption    = $GetObjectOutput->ServerSideEncryption;
+    my $StorageClass            = $GetObjectOutput->StorageClass;
+    my $TagCount                = $GetObjectOutput->TagCount;
+    my $VersionId               = $GetObjectOutput->VersionId;
+    my $WebsiteRedirectLocation = $GetObjectOutput->WebsiteRedirectLocation;
 
     # Returns a L<Paws::S3::GetObjectOutput> object.
 

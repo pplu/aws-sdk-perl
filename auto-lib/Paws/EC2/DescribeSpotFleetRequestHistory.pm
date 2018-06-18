@@ -44,12 +44,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $StartTime = $DescribeSpotFleetRequestHistoryResponse->StartTime;
-    my $NextToken = $DescribeSpotFleetRequestHistoryResponse->NextToken;
     my $HistoryRecords =
       $DescribeSpotFleetRequestHistoryResponse->HistoryRecords;
+    my $NextToken = $DescribeSpotFleetRequestHistoryResponse->NextToken;
     my $SpotFleetRequestId =
       $DescribeSpotFleetRequestHistoryResponse->SpotFleetRequestId;
+    my $StartTime = $DescribeSpotFleetRequestHistoryResponse->StartTime;
 
     # Returns a L<Paws::EC2::DescribeSpotFleetRequestHistoryResponse> object.
 

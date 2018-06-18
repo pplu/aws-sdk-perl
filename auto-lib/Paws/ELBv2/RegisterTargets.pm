@@ -54,20 +54,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # the same instance as targets in the target group.
     my $RegisterTargetsOutput = $elasticloadbalancing->RegisterTargets(
       {
+        'TargetGroupArn' =>
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-new-targets/3bb63f11dfb0faf9',
         'Targets' => [
 
           {
-            'Port' => 80,
-            'Id'   => 'i-80c8dd94'
+            'Id'   => 'i-80c8dd94',
+            'Port' => 80
           },
 
           {
             'Id'   => 'i-80c8dd94',
             'Port' => 766
           }
-        ],
-        'TargetGroupArn' =>
-'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-new-targets/3bb63f11dfb0faf9'
+        ]
       }
     );
 

@@ -34,19 +34,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # XssMatchSet with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.
     my $UpdateXssMatchSetResponse = $waf -regional->UpdateXssMatchSet(
       {
-        'Updates' => [
+        'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
+        'Updates'     => [
 
           {
+            'Action'        => 'DELETE',
             'XssMatchTuple' => {
-              'TextTransformation' => 'URL_DECODE',
-              'FieldToMatch'       => {
+              'FieldToMatch' => {
                 'Type' => 'QUERY_STRING'
-              }
-            },
-            'Action' => 'DELETE'
+              },
+              'TextTransformation' => 'URL_DECODE'
+            }
           }
         ],
-        'ChangeToken'   => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
         'XssMatchSetId' => 'example1ds3t-46da-4fdb-b8d5-abc321j569j5'
       }
     );

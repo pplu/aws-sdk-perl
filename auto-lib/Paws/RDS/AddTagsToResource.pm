@@ -32,15 +32,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example adds a tag to an option group.
     $rds->AddTagsToResource(
       {
+        'ResourceName' =>
+          'arn:aws:rds:us-east-1:992648334831:og:mymysqloptiongroup',
         'Tags' => [
 
           {
             'Key'   => 'Staging',
             'Value' => 'LocationDB'
           }
-        ],
-        'ResourceName' =>
-          'arn:aws:rds:us-east-1:992648334831:og:mymysqloptiongroup'
+        ]
       }
     );
 

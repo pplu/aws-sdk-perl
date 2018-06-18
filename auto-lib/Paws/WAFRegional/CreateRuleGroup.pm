@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $RuleGroup   = $CreateRuleGroupResponse->RuleGroup;
     my $ChangeToken = $CreateRuleGroupResponse->ChangeToken;
+    my $RuleGroup   = $CreateRuleGroupResponse->RuleGroup;
 
     # Returns a L<Paws::WAFRegional::CreateRuleGroupResponse> object.
 

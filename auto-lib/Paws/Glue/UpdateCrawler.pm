@@ -47,28 +47,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Role               => 'MyRole',                          # OPTIONAL
       Schedule           => 'MyCronExpression',                # OPTIONAL
       SchemaChangePolicy => {
-        UpdateBehavior => 'LOG',    # values: LOG, UPDATE_IN_DATABASE; OPTIONAL
         DeleteBehavior => 'LOG'
         ,   # values: LOG, DELETE_FROM_DATABASE, DEPRECATE_IN_DATABASE; OPTIONAL
+        UpdateBehavior => 'LOG',    # values: LOG, UPDATE_IN_DATABASE; OPTIONAL
       },    # OPTIONAL
       TablePrefix => 'MyTablePrefix',    # OPTIONAL
       Targets     => {
         JdbcTargets => [
           {
-            Exclusions => [
-              'MyPath', ...              # OPTIONAL
-            ],                           # OPTIONAL
             ConnectionName => 'MyConnectionName',    # OPTIONAL
-            Path           => 'MyPath',              # OPTIONAL
+            Exclusions     => [
+              'MyPath', ...                          # OPTIONAL
+            ],                                       # OPTIONAL
+            Path => 'MyPath',                        # OPTIONAL
           },
           ...
         ],                                           # OPTIONAL
         S3Targets => [
           {
-            Path       => 'MyPath',                  # OPTIONAL
             Exclusions => [
               'MyPath', ...                          # OPTIONAL
             ],                                       # OPTIONAL
+            Path => 'MyPath',                        # OPTIONAL
           },
           ...
         ],                                           # OPTIONAL

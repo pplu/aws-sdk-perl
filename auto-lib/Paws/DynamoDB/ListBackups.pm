@@ -40,8 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $LastEvaluatedBackupArn = $ListBackupsOutput->LastEvaluatedBackupArn;
     my $BackupSummaries        = $ListBackupsOutput->BackupSummaries;
+    my $LastEvaluatedBackupArn = $ListBackupsOutput->LastEvaluatedBackupArn;
 
     # Returns a L<Paws::DynamoDB::ListBackupsOutput> object.
 
@@ -53,7 +53,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dyn
 
 =head2 ExclusiveStartBackupArn => Str
 
-C<LastEvaluatedBackupARN> returned by the previous ListBackups call.
+C<LastEvaluatedBackupArn> is the ARN of the backup last evaluated when
+the current page of results was returned, inclusive of the current page
+of results. This value may be specified as the
+C<ExclusiveStartBackupArn> of a new C<ListBackups> operation in order
+to fetch the next page of results.
 
 
 

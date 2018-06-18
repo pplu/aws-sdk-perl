@@ -43,8 +43,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Marker           = $DescribeDocumentVersionsResponse->Marker;
     my $DocumentVersions = $DescribeDocumentVersionsResponse->DocumentVersions;
+    my $Marker           = $DescribeDocumentVersionsResponse->Marker;
 
     # Returns a L<Paws::WorkDocs::DescribeDocumentVersionsResponse> object.
 

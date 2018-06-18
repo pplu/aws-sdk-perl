@@ -45,8 +45,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $UserActivities = $DescribeActivitiesResponse->UserActivities;
     my $Marker         = $DescribeActivitiesResponse->Marker;
+    my $UserActivities = $DescribeActivitiesResponse->UserActivities;
 
     # Returns a L<Paws::WorkDocs::DescribeActivitiesResponse> object.
 

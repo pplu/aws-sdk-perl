@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ResultList = $BatchDetectEntitiesResponse->ResultList;
     my $ErrorList  = $BatchDetectEntitiesResponse->ErrorList;
+    my $ResultList = $BatchDetectEntitiesResponse->ResultList;
 
     # Returns a L<Paws::Comprehend::BatchDetectEntitiesResponse> object.
 

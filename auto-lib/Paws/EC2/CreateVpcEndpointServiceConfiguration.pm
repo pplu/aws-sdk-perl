@@ -39,9 +39,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $ClientToken = $CreateVpcEndpointServiceConfigurationResult->ClientToken;
     my $ServiceConfiguration =
       $CreateVpcEndpointServiceConfigurationResult->ServiceConfiguration;
-    my $ClientToken = $CreateVpcEndpointServiceConfigurationResult->ClientToken;
 
    # Returns a L<Paws::EC2::CreateVpcEndpointServiceConfigurationResult> object.
 

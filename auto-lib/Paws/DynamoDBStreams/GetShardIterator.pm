@@ -36,10 +36,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $GetShardIteratorOutput = $streams
       . dynamodb->GetShardIterator(
       {
+        'ShardId'           => '00000001414576573621-f55eea83',
         'ShardIteratorType' => 'TRIM_HORIZON',
         'StreamArn' =>
-'arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T20:51:10.252',
-        'ShardId' => '00000001414576573621-f55eea83'
+'arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T20:51:10.252'
       }
       );
 

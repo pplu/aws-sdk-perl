@@ -30,26 +30,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateWorkspacesResult = $workspaces->CreateWorkspaces(
       Workspaces => [
         {
+          BundleId                    => 'MyBundleId',
           DirectoryId                 => 'MyDirectoryId',
           UserName                    => 'MyUserName',      # min: 1, max: 63
-          BundleId                    => 'MyBundleId',
           RootVolumeEncryptionEnabled => 1,                 # OPTIONAL
-          UserVolumeEncryptionEnabled => 1,                 # OPTIONAL
-          VolumeEncryptionKey => 'MyVolumeEncryptionKey',   # OPTIONAL
-          Tags                => [
+          Tags                        => [
             {
               Key   => 'MyTagKey',                          # min: 1, max: 127
               Value => 'MyTagValue',                        # max: 255; OPTIONAL
             },
             ...
           ],                                                # OPTIONAL
-          WorkspaceProperties => {
+          UserVolumeEncryptionEnabled => 1,                          # OPTIONAL
+          VolumeEncryptionKey         => 'MyVolumeEncryptionKey',    # OPTIONAL
+          WorkspaceProperties         => {
             ComputeTypeName => 'VALUE'
             ,  # values: VALUE, STANDARD, PERFORMANCE, POWER, GRAPHICS; OPTIONAL
-            UserVolumeSizeGib => 1,    # OPTIONAL
+            RootVolumeSizeGib => 1,    # OPTIONAL
             RunningMode => 'AUTO_STOP', # values: AUTO_STOP, ALWAYS_ON; OPTIONAL
-            RootVolumeSizeGib                   => 1,    # OPTIONAL
             RunningModeAutoStopTimeoutInMinutes => 1,    # OPTIONAL
+            UserVolumeSizeGib                   => 1,    # OPTIONAL
           },    # OPTIONAL
         },
         ...

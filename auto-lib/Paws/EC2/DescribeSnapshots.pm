@@ -52,14 +52,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # in the ``pending`` status.
     my $DescribeSnapshotsResult = $ec2->DescribeSnapshots(
       {
-        'OwnerIds' => [012345678910],
-        'Filters'  => [
+        'Filters' => [
 
           {
             'Name'   => 'status',
             'Values' => ['pending']
           }
-        ]
+        ],
+        'OwnerIds' => [012345678910]
       }
     );
 

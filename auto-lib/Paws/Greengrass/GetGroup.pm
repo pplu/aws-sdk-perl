@@ -34,13 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $LatestVersionArn     = $GetGroupResponse->LatestVersionArn;
     my $Arn                  = $GetGroupResponse->Arn;
     my $CreationTimestamp    = $GetGroupResponse->CreationTimestamp;
-    my $Name                 = $GetGroupResponse->Name;
-    my $LatestVersion        = $GetGroupResponse->LatestVersion;
-    my $LastUpdatedTimestamp = $GetGroupResponse->LastUpdatedTimestamp;
     my $Id                   = $GetGroupResponse->Id;
+    my $LastUpdatedTimestamp = $GetGroupResponse->LastUpdatedTimestamp;
+    my $LatestVersion        = $GetGroupResponse->LatestVersion;
+    my $LatestVersionArn     = $GetGroupResponse->LatestVersionArn;
+    my $Name                 = $GetGroupResponse->Name;
 
     # Returns a L<Paws::Greengrass::GetGroupResponse> object.
 

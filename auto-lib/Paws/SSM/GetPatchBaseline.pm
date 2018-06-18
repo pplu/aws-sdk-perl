@@ -33,22 +33,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ApprovedPatchesEnableNonSecurity =
-      $GetPatchBaselineResult->ApprovedPatchesEnableNonSecurity;
-    my $ApprovalRules = $GetPatchBaselineResult->ApprovalRules;
-    my $GlobalFilters = $GetPatchBaselineResult->GlobalFilters;
-    my $Description   = $GetPatchBaselineResult->Description;
+    my $ApprovalRules   = $GetPatchBaselineResult->ApprovalRules;
+    my $ApprovedPatches = $GetPatchBaselineResult->ApprovedPatches;
     my $ApprovedPatchesComplianceLevel =
       $GetPatchBaselineResult->ApprovedPatchesComplianceLevel;
-    my $PatchGroups     = $GetPatchBaselineResult->PatchGroups;
+    my $ApprovedPatchesEnableNonSecurity =
+      $GetPatchBaselineResult->ApprovedPatchesEnableNonSecurity;
+    my $BaselineId      = $GetPatchBaselineResult->BaselineId;
     my $CreatedDate     = $GetPatchBaselineResult->CreatedDate;
-    my $RejectedPatches = $GetPatchBaselineResult->RejectedPatches;
-    my $Sources         = $GetPatchBaselineResult->Sources;
-    my $OperatingSystem = $GetPatchBaselineResult->OperatingSystem;
+    my $Description     = $GetPatchBaselineResult->Description;
+    my $GlobalFilters   = $GetPatchBaselineResult->GlobalFilters;
     my $ModifiedDate    = $GetPatchBaselineResult->ModifiedDate;
     my $Name            = $GetPatchBaselineResult->Name;
-    my $BaselineId      = $GetPatchBaselineResult->BaselineId;
-    my $ApprovedPatches = $GetPatchBaselineResult->ApprovedPatches;
+    my $OperatingSystem = $GetPatchBaselineResult->OperatingSystem;
+    my $PatchGroups     = $GetPatchBaselineResult->PatchGroups;
+    my $RejectedPatches = $GetPatchBaselineResult->RejectedPatches;
+    my $Sources         = $GetPatchBaselineResult->Sources;
 
     # Returns a L<Paws::SSM::GetPatchBaselineResult> object.
 

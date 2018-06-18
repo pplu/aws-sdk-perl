@@ -43,12 +43,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextRecordName = $ListResourceRecordSetsResponse->NextRecordName;
-    my $IsTruncated    = $ListResourceRecordSetsResponse->IsTruncated;
-    my $NextRecordType = $ListResourceRecordSetsResponse->NextRecordType;
+    my $IsTruncated = $ListResourceRecordSetsResponse->IsTruncated;
+    my $MaxItems    = $ListResourceRecordSetsResponse->MaxItems;
     my $NextRecordIdentifier =
       $ListResourceRecordSetsResponse->NextRecordIdentifier;
-    my $MaxItems = $ListResourceRecordSetsResponse->MaxItems;
+    my $NextRecordName = $ListResourceRecordSetsResponse->NextRecordName;
+    my $NextRecordType = $ListResourceRecordSetsResponse->NextRecordType;
     my $ResourceRecordSets =
       $ListResourceRecordSetsResponse->ResourceRecordSets;
 

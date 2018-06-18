@@ -52,17 +52,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $CommonPrefixes        = $ListObjectsV2Output->CommonPrefixes;
-    my $Name                  = $ListObjectsV2Output->Name;
-    my $StartAfter            = $ListObjectsV2Output->StartAfter;
-    my $Delimiter             = $ListObjectsV2Output->Delimiter;
-    my $IsTruncated           = $ListObjectsV2Output->IsTruncated;
-    my $NextContinuationToken = $ListObjectsV2Output->NextContinuationToken;
-    my $Prefix                = $ListObjectsV2Output->Prefix;
-    my $EncodingType          = $ListObjectsV2Output->EncodingType;
-    my $MaxKeys               = $ListObjectsV2Output->MaxKeys;
     my $Contents              = $ListObjectsV2Output->Contents;
     my $ContinuationToken     = $ListObjectsV2Output->ContinuationToken;
+    my $Delimiter             = $ListObjectsV2Output->Delimiter;
+    my $EncodingType          = $ListObjectsV2Output->EncodingType;
+    my $IsTruncated           = $ListObjectsV2Output->IsTruncated;
     my $KeyCount              = $ListObjectsV2Output->KeyCount;
+    my $MaxKeys               = $ListObjectsV2Output->MaxKeys;
+    my $Name                  = $ListObjectsV2Output->Name;
+    my $NextContinuationToken = $ListObjectsV2Output->NextContinuationToken;
+    my $Prefix                = $ListObjectsV2Output->Prefix;
+    my $StartAfter            = $ListObjectsV2Output->StartAfter;
 
     # Returns a L<Paws::S3::ListObjectsV2Output> object.
 

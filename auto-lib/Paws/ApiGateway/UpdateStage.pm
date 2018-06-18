@@ -35,32 +35,32 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       StageName       => 'MyString',
       PatchOperations => [
         {
-          path  => 'MyString',
-          value => 'MyString',
-          from  => 'MyString',
+          from => 'MyString',
           op =>
             'add',    # values: add, remove, replace, move, copy, test; OPTIONAL
+          path  => 'MyString',
+          value => 'MyString',
         },
         ...
       ],              # OPTIONAL
     );
 
     # Results:
-    my $Variables            = $Stage->Variables;
-    my $CacheClusterStatus   = $Stage->CacheClusterStatus;
-    my $StageName            = $Stage->StageName;
-    my $CacheClusterEnabled  = $Stage->CacheClusterEnabled;
     my $AccessLogSettings    = $Stage->AccessLogSettings;
-    my $MethodSettings       = $Stage->MethodSettings;
-    my $Tags                 = $Stage->Tags;
-    my $ClientCertificateId  = $Stage->ClientCertificateId;
-    my $Description          = $Stage->Description;
-    my $DeploymentId         = $Stage->DeploymentId;
-    my $LastUpdatedDate      = $Stage->LastUpdatedDate;
-    my $DocumentationVersion = $Stage->DocumentationVersion;
-    my $CreatedDate          = $Stage->CreatedDate;
-    my $CanarySettings       = $Stage->CanarySettings;
+    my $CacheClusterEnabled  = $Stage->CacheClusterEnabled;
     my $CacheClusterSize     = $Stage->CacheClusterSize;
+    my $CacheClusterStatus   = $Stage->CacheClusterStatus;
+    my $CanarySettings       = $Stage->CanarySettings;
+    my $ClientCertificateId  = $Stage->ClientCertificateId;
+    my $CreatedDate          = $Stage->CreatedDate;
+    my $DeploymentId         = $Stage->DeploymentId;
+    my $Description          = $Stage->Description;
+    my $DocumentationVersion = $Stage->DocumentationVersion;
+    my $LastUpdatedDate      = $Stage->LastUpdatedDate;
+    my $MethodSettings       = $Stage->MethodSettings;
+    my $StageName            = $Stage->StageName;
+    my $Tags                 = $Stage->Tags;
+    my $Variables            = $Stage->Variables;
 
     # Returns a L<Paws::ApiGateway::Stage> object.
 

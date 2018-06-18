@@ -40,31 +40,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Group                => 'MyString',            # OPTIONAL
       NetworkConfiguration => {
         awsvpcConfiguration => {
-          subnets        => [ 'MyString', ... ],
-          securityGroups => [ 'MyString', ... ],
+          subnets => [ 'MyString', ... ],
           assignPublicIp => 'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
+          securityGroups => [ 'MyString', ... ],
         },    # OPTIONAL
       },    # OPTIONAL
       Overrides => {
-        taskRoleArn        => 'MyString',
-        executionRoleArn   => 'MyString',
         containerOverrides => [
           {
-            memoryReservation => 1,                     # OPTIONAL
-            command           => [ 'MyString', ... ],
-            environment       => [
+            command     => [ 'MyString', ... ],
+            cpu         => 1,                     # OPTIONAL
+            environment => [
               {
-                value => 'MyString',
                 name  => 'MyString',
+                value => 'MyString',
               },
               ...
-            ],                                          # OPTIONAL
-            name   => 'MyString',
-            memory => 1,                                # OPTIONAL
-            cpu    => 1,                                # OPTIONAL
+            ],                                    # OPTIONAL
+            memory            => 1,               # OPTIONAL
+            memoryReservation => 1,               # OPTIONAL
+            name              => 'MyString',
           },
           ...
-        ],                                              # OPTIONAL
+        ],                                        # OPTIONAL
+        executionRoleArn => 'MyString',
+        taskRoleArn      => 'MyString',
       },    # OPTIONAL
       StartedBy => 'MyString',    # OPTIONAL
     );

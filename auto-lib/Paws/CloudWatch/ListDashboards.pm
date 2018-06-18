@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken        = $ListDashboardsOutput->NextToken;
     my $DashboardEntries = $ListDashboardsOutput->DashboardEntries;
+    my $NextToken        = $ListDashboardsOutput->NextToken;
 
     # Returns a L<Paws::CloudWatch::ListDashboardsOutput> object.
 

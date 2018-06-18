@@ -42,22 +42,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       StorageConnectors => [
         {
           ConnectorType => 'HOMEFOLDERS',    # values: HOMEFOLDERS, GOOGLE_DRIVE
+          Domains       => [
+            'MyDomain', ...                  # max: 64
+          ],                                 # max: 10; OPTIONAL
           ResourceIdentifier => 'MyResourceIdentifier',    # min: 1, ; OPTIONAL
-          Domains            => [
-            'MyDomain', ...                                # max: 64
-          ],                                               # max: 10; OPTIONAL
         },
         ...
       ],                                                   # OPTIONAL
       UserSettings => [
         {
-          Permission => 'ENABLED',    # values: ENABLED, DISABLED
           Action => 'CLIPBOARD_COPY_FROM_LOCAL_DEVICE'
           , # values: CLIPBOARD_COPY_FROM_LOCAL_DEVICE, CLIPBOARD_COPY_TO_LOCAL_DEVICE, FILE_UPLOAD, FILE_DOWNLOAD, PRINTING_TO_LOCAL_DEVICE
+          Permission => 'ENABLED',    # values: ENABLED, DISABLED
 
         },
         ...
-      ],    # OPTIONAL
+      ],                              # OPTIONAL
     );
 
     # Results:

@@ -40,9 +40,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ShardId        = $PutRecordOutput->ShardId;
-    my $SequenceNumber = $PutRecordOutput->SequenceNumber;
     my $EncryptionType = $PutRecordOutput->EncryptionType;
+    my $SequenceNumber = $PutRecordOutput->SequenceNumber;
+    my $ShardId        = $PutRecordOutput->ShardId;
 
     # Returns a L<Paws::Kinesis::PutRecordOutput> object.
 

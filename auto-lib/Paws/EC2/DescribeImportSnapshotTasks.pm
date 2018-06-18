@@ -35,24 +35,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Values => [
-            'MyString', ...    # OPTIONAL
-          ],                   # OPTIONAL
-          Name => 'MyString',  # OPTIONAL
+          Name   => 'MyString',
+          Values => [ 'MyString', ... ],    # OPTIONAL
         },
         ...
-      ],                       # OPTIONAL
-      ImportTaskIds => [
-        'MyString', ...        # OPTIONAL
-      ],                       # OPTIONAL
-      MaxResults => 1,             # OPTIONAL
-      NextToken  => 'MyString',    # OPTIONAL
+      ],                                    # OPTIONAL
+      ImportTaskIds => [ 'MyString', ... ], # OPTIONAL
+      MaxResults    => 1,                   # OPTIONAL
+      NextToken     => 'MyString',          # OPTIONAL
     );
 
     # Results:
-    my $NextToken = $DescribeImportSnapshotTasksResult->NextToken;
     my $ImportSnapshotTasks =
       $DescribeImportSnapshotTasksResult->ImportSnapshotTasks;
+    my $NextToken = $DescribeImportSnapshotTasksResult->NextToken;
 
     # Returns a L<Paws::EC2::DescribeImportSnapshotTasksResult> object.
 

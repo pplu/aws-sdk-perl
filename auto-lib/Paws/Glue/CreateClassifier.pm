@@ -32,13 +32,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateClassifierResponse = $glue->CreateClassifier(
       GrokClassifier => {
         Classification => 'MyClassification',
-        Name           => 'MyNameString',        # min: 1, max: 255
         GrokPattern    => 'MyGrokPattern',       # min: 1, max: 2048
+        Name           => 'MyNameString',        # min: 1, max: 255
         CustomPatterns => 'MyCustomPatterns',    # max: 16000; OPTIONAL
       },    # OPTIONAL
       JsonClassifier => {
-        Name     => 'MyNameString',    # min: 1, max: 255
         JsonPath => 'MyJsonPath',
+        Name     => 'MyNameString',    # min: 1, max: 255
 
       },    # OPTIONAL
       XMLClassifier => {

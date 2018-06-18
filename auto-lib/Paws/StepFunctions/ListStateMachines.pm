@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $StateMachines = $ListStateMachinesOutput->StateMachines;
     my $NextToken     = $ListStateMachinesOutput->NextToken;
+    my $StateMachines = $ListStateMachinesOutput->StateMachines;
 
     # Returns a L<Paws::StepFunctions::ListStateMachinesOutput> object.
 

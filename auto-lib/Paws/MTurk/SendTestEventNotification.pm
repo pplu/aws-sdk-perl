@@ -31,13 +31,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SendTestEventNotificationResponse =
       $mturk -requester->SendTestEventNotification(
       Notification => {
-        Version     => 'MyString',
         Destination => 'MyString',
-        Transport   => 'Email',      # values: Email, SQS, SNS
         EventTypes  => [
           'AssignmentAccepted',
           ... # values: AssignmentAccepted, AssignmentAbandoned, AssignmentReturned, AssignmentSubmitted, AssignmentRejected, AssignmentApproved, HITCreated, HITExpired, HITReviewable, HITExtended, HITDisposed, Ping
         ],
+        Transport => 'Email',      # values: Email, SQS, SNS
+        Version   => 'MyString',
 
       },
       TestEventType => 'AssignmentAccepted',

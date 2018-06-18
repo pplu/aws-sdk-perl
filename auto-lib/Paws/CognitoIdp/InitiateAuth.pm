@@ -50,10 +50,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ChallengeParameters  = $InitiateAuthResponse->ChallengeParameters;
-    my $Session              = $InitiateAuthResponse->Session;
     my $AuthenticationResult = $InitiateAuthResponse->AuthenticationResult;
     my $ChallengeName        = $InitiateAuthResponse->ChallengeName;
+    my $ChallengeParameters  = $InitiateAuthResponse->ChallengeParameters;
+    my $Session              = $InitiateAuthResponse->Session;
 
     # Returns a L<Paws::CognitoIdp::InitiateAuthResponse> object.
 

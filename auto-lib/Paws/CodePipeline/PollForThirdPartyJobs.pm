@@ -32,9 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ActionTypeId => {
         category =>
           'Source',    # values: Source, Build, Deploy, Test, Invoke, Approval
-        version  => 'MyVersion',           # min: 1, max: 9
         owner    => 'AWS',                 # values: AWS, ThirdParty, Custom
         provider => 'MyActionProvider',    # min: 1, max: 25
+        version  => 'MyVersion',           # min: 1, max: 9
 
       },
       MaxBatchSize => 1,                   # OPTIONAL

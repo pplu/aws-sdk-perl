@@ -35,13 +35,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # an existing project.
     my $CreateDevicePoolResult = $devicefarm->CreateDevicePool(
       {
+        'Description' => 'My Android devices',
+        'Name'        => 'MyDevicePool',
+        'ProjectArn' =>
+'arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456',
         'Rules' => [
 
-        ],
-        'Name'        => 'MyDevicePool',
-        'Description' => 'My Android devices',
-        'ProjectArn' =>
-'arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456'
+        ]
       }
     );
 

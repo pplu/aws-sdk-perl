@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $NextToken = $ListStackResourcesOutput->NextToken;
     my $StackResourceSummaries =
       $ListStackResourcesOutput->StackResourceSummaries;
-    my $NextToken = $ListStackResourcesOutput->NextToken;
 
     # Returns a L<Paws::CloudFormation::ListStackResourcesOutput> object.
 

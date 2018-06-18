@@ -71,8 +71,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       BackupRetentionPeriod             => 1,             # OPTIONAL
       CACertificateIdentifier           => 'MyString',    # OPTIONAL
       CloudwatchLogsExportConfiguration => {
-        EnableLogTypes  => [ 'MyString', ... ],           # OPTIONAL
         DisableLogTypes => [ 'MyString', ... ],           # OPTIONAL
+        EnableLogTypes  => [ 'MyString', ... ],           # OPTIONAL
       },    # OPTIONAL
       CopyTagsToSnapshot              => 1,                      # OPTIONAL
       DBInstanceClass                 => 'MyString',             # OPTIONAL

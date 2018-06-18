@@ -39,9 +39,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $ChangeToken = $CreateSqlInjectionMatchSetResponse->ChangeToken;
     my $SqlInjectionMatchSet =
       $CreateSqlInjectionMatchSetResponse->SqlInjectionMatchSet;
-    my $ChangeToken = $CreateSqlInjectionMatchSetResponse->ChangeToken;
 
     # Returns a L<Paws::WAF::CreateSqlInjectionMatchSetResponse> object.
 

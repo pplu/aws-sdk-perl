@@ -38,23 +38,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             FunctionArn           => 'My__string',
             FunctionConfiguration => {
-              Timeout      => 1,              # OPTIONAL
-              EncodingType => 'binary',       # values: binary, json; OPTIONAL
-              Executable   => 'My__string',
+              EncodingType => 'binary',    # values: binary, json; OPTIONAL
               Environment  => {
-                AccessSysfs => 1,                                  # OPTIONAL
-                Variables => { 'My__string' => 'My__string', },    # OPTIONAL
+                AccessSysfs            => 1,    # OPTIONAL
                 ResourceAccessPolicies => [
                   {
-                    ResourceId => 'My__string',
                     Permission => 'ro',           # values: ro, rw; OPTIONAL
+                    ResourceId => 'My__string',
                   },
                   ...
                 ],                                # OPTIONAL
+                Variables => { 'My__string' => 'My__string', },    # OPTIONAL
               },    # OPTIONAL
+              ExecArgs   => 'My__string',
+              Executable => 'My__string',
               MemorySize => 1,              # OPTIONAL
               Pinned     => 1,              # OPTIONAL
-              ExecArgs   => 'My__string',
+              Timeout    => 1,              # OPTIONAL
             },    # OPTIONAL
             Id => 'My__string',
           },
@@ -65,15 +65,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $LastUpdatedTimestamp =
-      $CreateFunctionDefinitionResponse->LastUpdatedTimestamp;
-    my $Id               = $CreateFunctionDefinitionResponse->Id;
-    my $LatestVersionArn = $CreateFunctionDefinitionResponse->LatestVersionArn;
-    my $Arn              = $CreateFunctionDefinitionResponse->Arn;
+    my $Arn = $CreateFunctionDefinitionResponse->Arn;
     my $CreationTimestamp =
       $CreateFunctionDefinitionResponse->CreationTimestamp;
-    my $Name          = $CreateFunctionDefinitionResponse->Name;
-    my $LatestVersion = $CreateFunctionDefinitionResponse->LatestVersion;
+    my $Id = $CreateFunctionDefinitionResponse->Id;
+    my $LastUpdatedTimestamp =
+      $CreateFunctionDefinitionResponse->LastUpdatedTimestamp;
+    my $LatestVersion    = $CreateFunctionDefinitionResponse->LatestVersion;
+    my $LatestVersionArn = $CreateFunctionDefinitionResponse->LatestVersionArn;
+    my $Name             = $CreateFunctionDefinitionResponse->Name;
 
     # Returns a L<Paws::Greengrass::CreateFunctionDefinitionResponse> object.
 

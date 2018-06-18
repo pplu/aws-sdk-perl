@@ -33,10 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # volume.
     my $AddCacheOutput = $storagegateway->AddCache(
       {
-        'GatewayARN' =>
-          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B',
         'DiskIds' =>
-          [ 'pci-0000:03:00.0-scsi-0:0:0:0', 'pci-0000:03:00.0-scsi-0:0:1:0' ]
+          [ 'pci-0000:03:00.0-scsi-0:0:0:0', 'pci-0000:03:00.0-scsi-0:0:1:0' ],
+        'GatewayARN' =>
+          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B'
       }
     );
 

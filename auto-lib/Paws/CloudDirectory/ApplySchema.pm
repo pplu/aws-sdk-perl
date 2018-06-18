@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $DirectoryArn     = $ApplySchemaResponse->DirectoryArn;
     my $AppliedSchemaArn = $ApplySchemaResponse->AppliedSchemaArn;
+    my $DirectoryArn     = $ApplySchemaResponse->DirectoryArn;
 
     # Returns a L<Paws::CloudDirectory::ApplySchemaResponse> object.
 

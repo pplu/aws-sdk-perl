@@ -42,8 +42,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Successful = $ChangeMessageVisibilityBatchResult->Successful;
     my $Failed     = $ChangeMessageVisibilityBatchResult->Failed;
+    my $Successful = $ChangeMessageVisibilityBatchResult->Successful;
 
     # Returns a L<Paws::SQS::ChangeMessageVisibilityBatchResult> object.
 

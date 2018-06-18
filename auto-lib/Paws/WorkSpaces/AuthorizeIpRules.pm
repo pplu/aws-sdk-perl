@@ -32,8 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       GroupId   => 'MyIpGroupId',
       UserRules => [
         {
-          ruleDesc => 'MyIpRuleDesc',    # OPTIONAL
           ipRule   => 'MyIpRule',        # OPTIONAL
+          ruleDesc => 'MyIpRuleDesc',    # OPTIONAL
         },
         ...
       ],

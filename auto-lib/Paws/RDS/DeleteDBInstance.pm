@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example deletes the specified DB instance.
     my $DeleteDBInstanceResult = $rds->DeleteDBInstance(
       {
-        'SkipFinalSnapshot'    => true,
-        'DBInstanceIdentifier' => 'mymysqlinstance'
+        'DBInstanceIdentifier' => 'mymysqlinstance',
+        'SkipFinalSnapshot'    => true
       }
     );
 

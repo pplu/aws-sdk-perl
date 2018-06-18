@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ClientRequestToken = $CreateProjectResult->ClientRequestToken;
     my $Arn                = $CreateProjectResult->Arn;
+    my $ClientRequestToken = $CreateProjectResult->ClientRequestToken;
     my $Id                 = $CreateProjectResult->Id;
     my $ProjectTemplateId  = $CreateProjectResult->ProjectTemplateId;
 

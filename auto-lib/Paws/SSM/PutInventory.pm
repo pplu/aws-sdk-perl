@@ -32,9 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InstanceId => 'MyInstanceId',
       Items      => [
         {
-          TypeName      => 'MyInventoryItemTypeName',        # min: 1, max: 100
           CaptureTime   => 'MyInventoryItemCaptureTime',
           SchemaVersion => 'MyInventoryItemSchemaVersion',
+          TypeName      => 'MyInventoryItemTypeName',        # min: 1, max: 100
           Content       => [
             {
               'MyAttributeName' =>

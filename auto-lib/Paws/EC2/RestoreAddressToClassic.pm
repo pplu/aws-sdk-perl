@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Status   = $RestoreAddressToClassicResult->Status;
     my $PublicIp = $RestoreAddressToClassicResult->PublicIp;
+    my $Status   = $RestoreAddressToClassicResult->Status;
 
     # Returns a L<Paws::EC2::RestoreAddressToClassicResult> object.
 

@@ -33,19 +33,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateThingResponse = $iot->CreateThing(
       ThingName        => 'MyThingName',
       AttributePayload => {
-        merge      => 1,    # OPTIONAL
         attributes => {
           'MyAttributeName' =>
             'MyAttributeValue',    # key: max: 128, value: max: 800
         },    # OPTIONAL
+        merge => 1,    # OPTIONAL
       },    # OPTIONAL
       ThingTypeName => 'MyThingTypeName',    # OPTIONAL
     );
 
     # Results:
-    my $ThingName = $CreateThingResponse->ThingName;
-    my $ThingId   = $CreateThingResponse->ThingId;
     my $ThingArn  = $CreateThingResponse->ThingArn;
+    my $ThingId   = $CreateThingResponse->ThingId;
+    my $ThingName = $CreateThingResponse->ThingName;
 
     # Returns a L<Paws::IoT::CreateThingResponse> object.
 

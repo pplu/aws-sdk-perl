@@ -34,12 +34,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $GetPlanResponse = $glue->GetPlan(
       Mapping => [
         {
+          SourcePath  => 'MySchemaPathString',    # OPTIONAL
+          SourceTable => 'MyTableName',           # OPTIONAL
           SourceType  => 'MyFieldType',           # OPTIONAL
+          TargetPath  => 'MySchemaPathString',    # OPTIONAL
           TargetTable => 'MyTableName',           # OPTIONAL
           TargetType  => 'MyFieldType',           # OPTIONAL
-          TargetPath  => 'MySchemaPathString',    # OPTIONAL
-          SourceTable => 'MyTableName',           # OPTIONAL
-          SourcePath  => 'MySchemaPathString',    # OPTIONAL
         },
         ...
       ],
@@ -52,16 +52,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Location => {
         Jdbc => [
           {
-            Value => 'MyCodeGenArgValue',
             Name  => 'MyCodeGenArgName',
+            Value => 'MyCodeGenArgValue',
             Param => 1,                           # OPTIONAL
           },
           ...
         ],                                        # max: 50; OPTIONAL
         S3 => [
           {
-            Value => 'MyCodeGenArgValue',
             Name  => 'MyCodeGenArgName',
+            Value => 'MyCodeGenArgValue',
             Param => 1,                           # OPTIONAL
           },
           ...
@@ -78,8 +78,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ScalaCode    = $GetPlanResponse->ScalaCode;
     my $PythonScript = $GetPlanResponse->PythonScript;
+    my $ScalaCode    = $GetPlanResponse->ScalaCode;
 
     # Returns a L<Paws::Glue::GetPlanResponse> object.
 

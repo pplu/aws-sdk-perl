@@ -46,12 +46,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $Authorization = $TestInvokeAuthorizerResponse->Authorization;
-    my $Latency       = $TestInvokeAuthorizerResponse->Latency;
-    my $PrincipalId   = $TestInvokeAuthorizerResponse->PrincipalId;
     my $Claims        = $TestInvokeAuthorizerResponse->Claims;
+    my $ClientStatus  = $TestInvokeAuthorizerResponse->ClientStatus;
+    my $Latency       = $TestInvokeAuthorizerResponse->Latency;
     my $Log           = $TestInvokeAuthorizerResponse->Log;
     my $Policy        = $TestInvokeAuthorizerResponse->Policy;
-    my $ClientStatus  = $TestInvokeAuthorizerResponse->ClientStatus;
+    my $PrincipalId   = $TestInvokeAuthorizerResponse->PrincipalId;
 
     # Returns a L<Paws::ApiGateway::TestInvokeAuthorizerResponse> object.
 

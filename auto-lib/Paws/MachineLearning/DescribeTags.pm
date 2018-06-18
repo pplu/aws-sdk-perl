@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ResourceType = $DescribeTagsOutput->ResourceType;
     my $ResourceId   = $DescribeTagsOutput->ResourceId;
+    my $ResourceType = $DescribeTagsOutput->ResourceType;
     my $Tags         = $DescribeTagsOutput->Tags;
 
     # Returns a L<Paws::MachineLearning::DescribeTagsOutput> object.

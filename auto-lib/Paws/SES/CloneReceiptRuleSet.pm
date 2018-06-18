@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # one:
     my $CloneReceiptRuleSetResponse = $email->CloneReceiptRuleSet(
       {
-        'RuleSetName'         => 'RuleSetToCreate',
-        'OriginalRuleSetName' => 'RuleSetToClone'
+        'OriginalRuleSetName' => 'RuleSetToClone',
+        'RuleSetName'         => 'RuleSetToCreate'
       }
     );
 

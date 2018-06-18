@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $NextMarker     = $ListActivatedRulesInRuleGroupResponse->NextMarker;
     my $ActivatedRules = $ListActivatedRulesInRuleGroupResponse->ActivatedRules;
+    my $NextMarker     = $ListActivatedRulesInRuleGroupResponse->NextMarker;
 
  # Returns a L<Paws::WAFRegional::ListActivatedRulesInRuleGroupResponse> object.
 

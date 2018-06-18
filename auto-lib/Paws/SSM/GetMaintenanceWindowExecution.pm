@@ -34,13 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $StartTime = $GetMaintenanceWindowExecutionResult->StartTime;
-    my $Status    = $GetMaintenanceWindowExecutionResult->Status;
+    my $EndTime       = $GetMaintenanceWindowExecutionResult->EndTime;
+    my $StartTime     = $GetMaintenanceWindowExecutionResult->StartTime;
+    my $Status        = $GetMaintenanceWindowExecutionResult->Status;
+    my $StatusDetails = $GetMaintenanceWindowExecutionResult->StatusDetails;
+    my $TaskIds       = $GetMaintenanceWindowExecutionResult->TaskIds;
     my $WindowExecutionId =
       $GetMaintenanceWindowExecutionResult->WindowExecutionId;
-    my $StatusDetails = $GetMaintenanceWindowExecutionResult->StatusDetails;
-    my $EndTime       = $GetMaintenanceWindowExecutionResult->EndTime;
-    my $TaskIds       = $GetMaintenanceWindowExecutionResult->TaskIds;
 
     # Returns a L<Paws::SSM::GetMaintenanceWindowExecutionResult> object.
 

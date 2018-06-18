@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $sagemaker = Paws->service('SageMaker');
     my $CreateTrainingJobResponse = $sagemaker->CreateTrainingJob(
       AlgorithmSpecification => {
-        TrainingInputMode => 'Pipe',                # values: Pipe, File
         TrainingImage     => 'MyAlgorithmImage',    # max: 255
+        TrainingInputMode => 'Pipe',                # values: Pipe, File
 
       },
       InputDataConfig => [
@@ -54,9 +54,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },
 
           },
-          CompressionType   => 'None',    # values: None, Gzip; OPTIONAL
+          CompressionType => 'None',             # values: None, Gzip; OPTIONAL
+          ContentType     => 'MyContentType',    # max: 256; OPTIONAL
           RecordWrapperType => 'None',    # values: None, RecordIO; OPTIONAL
-          ContentType => 'MyContentType', # max: 256; OPTIONAL
         },
         ...
       ],
@@ -65,10 +65,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         KmsKeyId     => 'MyKmsKeyId',     # max: 2048; OPTIONAL
       },
       ResourceConfig => {
-        VolumeSizeInGB => 1,               # min: 1,
-        InstanceCount  => 1,               # min: 1,
-        InstanceType   => 'ml.m4.xlarge'
+        InstanceCount => 1,               # min: 1,
+        InstanceType  => 'ml.m4.xlarge'
         , # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge
+        VolumeSizeInGB => 1,               # min: 1,
         VolumeKmsKeyId => 'MyKmsKeyId',    # max: 2048; OPTIONAL
       },
       RoleArn           => 'MyRoleArn',
@@ -88,12 +88,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ...
       ],                            # OPTIONAL
       VpcConfig => {
-        Subnets => [
-          'MySubnetId', ...         # max: 32
-        ],                          # min: 1, max: 16
         SecurityGroupIds => [
           'MySecurityGroupId', ...    # max: 32
         ],                            # min: 1, max: 5
+        Subnets => [
+          'MySubnetId', ...           # max: 32
+        ],                            # min: 1, max: 16
 
       },    # OPTIONAL
     );

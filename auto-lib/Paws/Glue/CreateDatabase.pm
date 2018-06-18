@@ -30,15 +30,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $glue = Paws->service('Glue');
     my $CreateDatabaseResponse = $glue->CreateDatabase(
       DatabaseInput => {
-        Name        => 'MyNameString',    # min: 1, max: 255
-        LocationUri => 'MyURI',           # min: 1, max: 1024; OPTIONAL
+        Name        => 'MyNameString',           # min: 1, max: 255
+        Description => 'MyDescriptionString',    # max: 2048; OPTIONAL
+        LocationUri => 'MyURI',                  # min: 1, max: 1024; OPTIONAL
         Parameters  => {
           'MyKeyString' =>
             'MyParametersMapValue',  # key: min: 1, max: 255, value: max: 512000
         },    # OPTIONAL
-        Description => 'MyDescriptionString',    # max: 2048; OPTIONAL
       },
-      CatalogId => 'MyCatalogIdString',          # OPTIONAL
+      CatalogId => 'MyCatalogIdString',    # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

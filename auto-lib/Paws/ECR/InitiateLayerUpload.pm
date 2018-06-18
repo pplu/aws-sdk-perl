@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $UploadId = $InitiateLayerUploadResponse->UploadId;
     my $PartSize = $InitiateLayerUploadResponse->PartSize;
+    my $UploadId = $InitiateLayerUploadResponse->UploadId;
 
     # Returns a L<Paws::ECR::InitiateLayerUploadResponse> object.
 

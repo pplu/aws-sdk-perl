@@ -36,11 +36,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'issue',
           ... # values: issue, accountNotification, scheduledChangemin: 3, max: 255
         ],    # min: 1, max: 10; OPTIONAL
-        services => [
-          'Myservice', ...    # min: 2, max: 30
-        ],                    # min: 1, max: 10; OPTIONAL
         eventTypeCodes => [
           'MyeventTypeCode', ...    # min: 3, max: 100
+        ],                          # min: 1, max: 10; OPTIONAL
+        services => [
+          'Myservice', ...          # min: 2, max: 30
         ],                          # min: 1, max: 10; OPTIONAL
       },    # OPTIONAL
       Locale     => 'Mylocale',       # OPTIONAL

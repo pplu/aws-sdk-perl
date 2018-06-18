@@ -48,10 +48,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description           => 'MyNonZeroAndMaxString',    # OPTIONAL
       EC2InboundPermissions => [
         {
-          IpRange  => 'MyNonBlankString',
           FromPort => 1,                                   # min: 1, max: 60000
-          ToPort   => 1,                                   # min: 1, max: 60000
+          IpRange  => 'MyNonBlankString',
           Protocol => 'TCP',                               # values: TCP, UDP
+          ToPort   => 1,                                   # min: 1, max: 60000
 
         },
         ...
@@ -71,13 +71,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         PolicyPeriodInMinutes     => 1,                             # OPTIONAL
       },    # OPTIONAL
       RuntimeConfiguration => {
+        GameSessionActivationTimeoutSeconds => 1,   # min: 1, max: 600; OPTIONAL
         MaxConcurrentGameSessionActivations =>
           1,    # min: 1, max: 2147483647; OPTIONAL
-        GameSessionActivationTimeoutSeconds => 1,   # min: 1, max: 600; OPTIONAL
-        ServerProcesses                     => [
+        ServerProcesses => [
           {
-            LaunchPath           => 'MyNonZeroAndMaxString', # min: 1, max: 1024
             ConcurrentExecutions => 1,                       # min: 1,
+            LaunchPath           => 'MyNonZeroAndMaxString', # min: 1, max: 1024
             Parameters           => 'MyNonZeroAndMaxString', # min: 1, max: 1024
           },
           ...

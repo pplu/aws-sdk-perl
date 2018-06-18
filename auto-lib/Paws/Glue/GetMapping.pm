@@ -31,23 +31,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $glue = Paws->service('Glue');
     my $GetMappingResponse = $glue->GetMapping(
       Source => {
-        TableName    => 'MyNameString',    # min: 1, max: 255
         DatabaseName => 'MyNameString',    # min: 1, max: 255
+        TableName    => 'MyNameString',    # min: 1, max: 255
 
       },
       Location => {
         Jdbc => [
           {
-            Value => 'MyCodeGenArgValue',
             Name  => 'MyCodeGenArgName',
+            Value => 'MyCodeGenArgValue',
             Param => 1,                     # OPTIONAL
           },
           ...
         ],                                  # max: 50; OPTIONAL
         S3 => [
           {
-            Value => 'MyCodeGenArgValue',
             Name  => 'MyCodeGenArgName',
+            Value => 'MyCodeGenArgValue',
             Param => 1,                     # OPTIONAL
           },
           ...
@@ -55,8 +55,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       Sinks => [
         {
-          TableName    => 'MyNameString',    # min: 1, max: 255
           DatabaseName => 'MyNameString',    # min: 1, max: 255
+          TableName    => 'MyNameString',    # min: 1, max: 255
 
         },
         ...

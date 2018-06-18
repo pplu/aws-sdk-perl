@@ -3,7 +3,7 @@ package Paws::MediaConvert::CmafEncryptionSettings;
   has ConstantInitializationVector => (is => 'ro', isa => 'Str', request_name => 'constantInitializationVector', traits => ['NameInRequest']);
   has EncryptionMethod => (is => 'ro', isa => 'Str', request_name => 'encryptionMethod', traits => ['NameInRequest']);
   has InitializationVectorInManifest => (is => 'ro', isa => 'Str', request_name => 'initializationVectorInManifest', traits => ['NameInRequest']);
-  has StaticKeyProvider => (is => 'ro', isa => 'Paws::MediaConvert::StaticKeyProvider', request_name => 'staticKeyProvider', traits => ['NameInRequest'], required => 1);
+  has StaticKeyProvider => (is => 'ro', isa => 'Paws::MediaConvert::StaticKeyProvider', request_name => 'staticKeyProvider', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
 1;
 
@@ -57,7 +57,7 @@ will follow the segment number by default.
   
 
 
-=head2 B<REQUIRED> StaticKeyProvider => L<Paws::MediaConvert::StaticKeyProvider>
+=head2 StaticKeyProvider => L<Paws::MediaConvert::StaticKeyProvider>
 
   
 

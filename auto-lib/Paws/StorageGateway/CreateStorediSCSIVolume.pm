@@ -37,20 +37,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateStorediSCSIVolumeOutput =
       $storagegateway->CreateStorediSCSIVolume(
       {
-        'DiskId'               => 'pci-0000:03:00.0-scsi-0:0:0:0',
-        'TargetName'           => 'my-volume',
-        'NetworkInterfaceId'   => '10.1.1.1',
-        'PreserveExistingData' => true,
+        'DiskId' => 'pci-0000:03:00.0-scsi-0:0:0:0',
         'GatewayARN' =>
           'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B',
-        'SnapshotId' => 'snap-f47b7b94'
+        'NetworkInterfaceId'   => '10.1.1.1',
+        'PreserveExistingData' => true,
+        'SnapshotId'           => 'snap-f47b7b94',
+        'TargetName'           => 'my-volume'
       }
       );
 
     # Results:
     my $TargetARN         = $CreateStorediSCSIVolumeOutput->TargetARN;
-    my $VolumeSizeInBytes = $CreateStorediSCSIVolumeOutput->VolumeSizeInBytes;
     my $VolumeARN         = $CreateStorediSCSIVolumeOutput->VolumeARN;
+    my $VolumeSizeInBytes = $CreateStorediSCSIVolumeOutput->VolumeSizeInBytes;
 
     # Returns a L<Paws::StorageGateway::CreateStorediSCSIVolumeOutput> object.
 

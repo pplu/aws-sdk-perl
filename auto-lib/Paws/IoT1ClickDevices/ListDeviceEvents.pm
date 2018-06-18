@@ -41,8 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken = $ListDeviceEventsResponse->NextToken;
     my $Events    = $ListDeviceEventsResponse->Events;
+    my $NextToken = $ListDeviceEventsResponse->NextToken;
 
     # Returns a L<Paws::IoT1ClickDevices::ListDeviceEventsResponse> object.
 

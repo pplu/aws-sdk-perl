@@ -35,18 +35,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This operation creates a new mount target for an EFS file system.
     my $MountTargetDescription = $elasticfilesystem->CreateMountTarget(
       {
-        'SubnetId'     => 'subnet-1234abcd',
-        'FileSystemId' => 'fs-01234567'
+        'FileSystemId' => 'fs-01234567',
+        'SubnetId'     => 'subnet-1234abcd'
       }
     );
 
     # Results:
-    my $MountTargetId      = $MountTargetDescription->MountTargetId;
-    my $OwnerId            = $MountTargetDescription->OwnerId;
     my $FileSystemId       = $MountTargetDescription->FileSystemId;
-    my $NetworkInterfaceId = $MountTargetDescription->NetworkInterfaceId;
     my $IpAddress          = $MountTargetDescription->IpAddress;
     my $LifeCycleState     = $MountTargetDescription->LifeCycleState;
+    my $MountTargetId      = $MountTargetDescription->MountTargetId;
+    my $NetworkInterfaceId = $MountTargetDescription->NetworkInterfaceId;
+    my $OwnerId            = $MountTargetDescription->OwnerId;
     my $SubnetId           = $MountTargetDescription->SubnetId;
 
     # Returns a L<Paws::EFS::MountTargetDescription> object.

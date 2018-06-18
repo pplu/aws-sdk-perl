@@ -44,8 +44,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextBackwardToken = $GetLogEventsResponse->NextBackwardToken;
     my $Events            = $GetLogEventsResponse->Events;
+    my $NextBackwardToken = $GetLogEventsResponse->NextBackwardToken;
     my $NextForwardToken  = $GetLogEventsResponse->NextForwardToken;
 
     # Returns a L<Paws::CloudWatchLogs::GetLogEventsResponse> object.

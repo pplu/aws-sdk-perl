@@ -36,12 +36,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Bucket                 => 'MyBucketName',
       Id                     => 'MyInventoryId',
       InventoryConfiguration => {
-        IsEnabled   => 1,
         Destination => {
           S3BucketDestination => {
-            Format     => 'CSV',            # values: CSV, ORC
             Bucket     => 'MyBucketName',
-            Prefix     => 'MyPrefix',       # OPTIONAL
+            Format     => 'CSV',            # values: CSV, ORC
+            AccountId  => 'MyAccountId',    # OPTIONAL
             Encryption => {
               SSEKMS => {
                 KeyId => 'MySSEKMSKeyId',
@@ -51,24 +50,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
               },                            # OPTIONAL
             },    # OPTIONAL
-            AccountId => 'MyAccountId',    # OPTIONAL
+            Prefix => 'MyPrefix',    # OPTIONAL
           },
 
         },
-        Id       => 'MyInventoryId',
-        Schedule => {
-          Frequency => 'Daily',            # values: Daily, Weekly
+        Id                     => 'MyInventoryId',
+        IncludedObjectVersions => 'All',             # values: All, Current
+        IsEnabled              => 1,
+        Schedule               => {
+          Frequency => 'Daily',                      # values: Daily, Weekly
 
         },
-        IncludedObjectVersions => 'All',    # values: All, Current
-        OptionalFields         => [
+        Filter => {
+          Prefix => 'MyPrefix',                      # OPTIONAL
+
+        },    # OPTIONAL
+        OptionalFields => [
           'Size',
           ... # values: Size, LastModifiedDate, StorageClass, ETag, IsMultipartUploaded, ReplicationStatus, EncryptionStatus
         ],    # OPTIONAL
-        Filter => {
-          Prefix => 'MyPrefix',    # OPTIONAL
-
-        },    # OPTIONAL
       },
 
     );

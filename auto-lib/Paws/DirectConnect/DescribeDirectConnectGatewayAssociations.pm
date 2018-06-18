@@ -39,10 +39,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $NextToken = $DescribeDirectConnectGatewayAssociationsResult->NextToken;
     my $DirectConnectGatewayAssociations =
       $DescribeDirectConnectGatewayAssociationsResult
       ->DirectConnectGatewayAssociations;
+    my $NextToken = $DescribeDirectConnectGatewayAssociationsResult->NextToken;
 
 # Returns a L<Paws::DirectConnect::DescribeDirectConnectGatewayAssociationsResult> object.
 

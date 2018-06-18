@@ -37,9 +37,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken = $ListV2LoggingLevelsResponse->NextToken;
     my $LogTargetConfigurations =
       $ListV2LoggingLevelsResponse->LogTargetConfigurations;
+    my $NextToken = $ListV2LoggingLevelsResponse->NextToken;
 
     # Returns a L<Paws::IoT::ListV2LoggingLevelsResponse> object.
 

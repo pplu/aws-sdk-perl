@@ -32,7 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $lags = $Lags->lags;
+    my $Lags = $Lags->Lags;
 
     # Returns a L<Paws::DirectConnect::Lags> object.
 

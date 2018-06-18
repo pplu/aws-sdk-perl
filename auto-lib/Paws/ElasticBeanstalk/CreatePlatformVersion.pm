@@ -41,13 +41,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EnvironmentName => 'MyEnvironmentName',    # OPTIONAL
       OptionSettings  => [
         {
-          Namespace    => 'MyOptionNamespace',    # OPTIONAL
-          ResourceName => 'MyResourceName',       # min: 1, max: 256; OPTIONAL
-          OptionName => 'MyConfigurationOptionName',     # OPTIONAL
-          Value      => 'MyConfigurationOptionValue',    # OPTIONAL
+          Namespace  => 'MyOptionNamespace',            # OPTIONAL
+          OptionName => 'MyConfigurationOptionName',    # OPTIONAL
+          ResourceName => 'MyResourceName',    # min: 1, max: 256; OPTIONAL
+          Value => 'MyConfigurationOptionValue',    # OPTIONAL
         },
         ...
-      ],                                                 # OPTIONAL
+      ],                                            # OPTIONAL
     );
 
     # Results:

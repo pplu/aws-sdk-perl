@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $IPSet       = $CreateIPSetResponse->IPSet;
     my $ChangeToken = $CreateIPSetResponse->ChangeToken;
+    my $IPSet       = $CreateIPSetResponse->IPSet;
 
     # Returns a L<Paws::WAF::CreateIPSetResponse> object.
 

@@ -33,21 +33,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Message                = $GetEvaluationOutput->Message;
-    my $CreatedAt              = $GetEvaluationOutput->CreatedAt;
-    my $Status                 = $GetEvaluationOutput->Status;
-    my $StartedAt              = $GetEvaluationOutput->StartedAt;
-    my $FinishedAt             = $GetEvaluationOutput->FinishedAt;
     my $ComputeTime            = $GetEvaluationOutput->ComputeTime;
-    my $MLModelId              = $GetEvaluationOutput->MLModelId;
+    my $CreatedAt              = $GetEvaluationOutput->CreatedAt;
     my $CreatedByIamUser       = $GetEvaluationOutput->CreatedByIamUser;
-    my $EvaluationId           = $GetEvaluationOutput->EvaluationId;
-    my $LastUpdatedAt          = $GetEvaluationOutput->LastUpdatedAt;
     my $EvaluationDataSourceId = $GetEvaluationOutput->EvaluationDataSourceId;
+    my $EvaluationId           = $GetEvaluationOutput->EvaluationId;
+    my $FinishedAt             = $GetEvaluationOutput->FinishedAt;
     my $InputDataLocationS3    = $GetEvaluationOutput->InputDataLocationS3;
+    my $LastUpdatedAt          = $GetEvaluationOutput->LastUpdatedAt;
     my $LogUri                 = $GetEvaluationOutput->LogUri;
+    my $MLModelId              = $GetEvaluationOutput->MLModelId;
+    my $Message                = $GetEvaluationOutput->Message;
     my $Name                   = $GetEvaluationOutput->Name;
     my $PerformanceMetrics     = $GetEvaluationOutput->PerformanceMetrics;
+    my $StartedAt              = $GetEvaluationOutput->StartedAt;
+    my $Status                 = $GetEvaluationOutput->Status;
 
     # Returns a L<Paws::MachineLearning::GetEvaluationOutput> object.
 

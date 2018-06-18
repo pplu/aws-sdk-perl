@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DeregisterScalableTargetResponse =
       $autoscaling->DeregisterScalableTarget(
       {
-        'ScalableDimension' => 'ecs:service:DesiredCount',
         'ResourceId'        => 'service/default/web-app',
+        'ScalableDimension' => 'ecs:service:DesiredCount',
         'ServiceNamespace'  => 'ecs'
       }
       );

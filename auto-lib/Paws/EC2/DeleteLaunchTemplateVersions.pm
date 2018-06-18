@@ -38,12 +38,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $UnsuccessfullyDeletedLaunchTemplateVersions =
-      $DeleteLaunchTemplateVersionsResult
-      ->UnsuccessfullyDeletedLaunchTemplateVersions;
     my $SuccessfullyDeletedLaunchTemplateVersions =
       $DeleteLaunchTemplateVersionsResult
       ->SuccessfullyDeletedLaunchTemplateVersions;
+    my $UnsuccessfullyDeletedLaunchTemplateVersions =
+      $DeleteLaunchTemplateVersionsResult
+      ->UnsuccessfullyDeletedLaunchTemplateVersions;
 
     # Returns a L<Paws::EC2::DeleteLaunchTemplateVersionsResult> object.
 

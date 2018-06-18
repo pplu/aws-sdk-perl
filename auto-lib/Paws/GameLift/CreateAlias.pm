@@ -32,9 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateAliasOutput = $gamelift->CreateAlias(
       Name            => 'MyNonBlankAndLengthConstraintString',
       RoutingStrategy => {
-        Type    => 'SIMPLE',        # values: SIMPLE, TERMINAL; OPTIONAL
-        Message => 'MyFreeText',    # OPTIONAL
         FleetId => 'MyFleetId',     # OPTIONAL
+        Message => 'MyFreeText',    # OPTIONAL
+        Type    => 'SIMPLE',        # values: SIMPLE, TERMINAL; OPTIONAL
       },
       Description => 'MyNonZeroAndMaxString',    # OPTIONAL
     );

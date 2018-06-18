@@ -37,11 +37,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       PrimaryContainer => {
         Image             => 'MyImage',                # max: 255
         ContainerHostname => 'MyContainerHostname',    # max: 63; OPTIONAL
-        ModelDataUrl      => 'MyUrl',                  # max: 1024; OPTIONAL
         Environment       => {
           'MyEnvironmentKey' =>
             'MyEnvironmentValue',    # key: max: 1024, value: max: 1024
         },    # max: 16; OPTIONAL
+        ModelDataUrl => 'MyUrl',    # max: 1024; OPTIONAL
       },
       Tags => [
         {
@@ -52,12 +52,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ...
       ],                            # OPTIONAL
       VpcConfig => {
-        Subnets => [
-          'MySubnetId', ...         # max: 32
-        ],                          # min: 1, max: 16
         SecurityGroupIds => [
           'MySecurityGroupId', ...    # max: 32
         ],                            # min: 1, max: 5
+        Subnets => [
+          'MySubnetId', ...           # max: 32
+        ],                            # min: 1, max: 16
 
       },    # OPTIONAL
     );

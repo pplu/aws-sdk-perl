@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $Entries   = $GetDatasetContentResponse->Entries;
-    my $Timestamp = $GetDatasetContentResponse->Timestamp;
     my $Status    = $GetDatasetContentResponse->Status;
+    my $Timestamp = $GetDatasetContentResponse->Timestamp;
 
     # Returns a L<Paws::IoTAnalytics::GetDatasetContentResponse> object.
 

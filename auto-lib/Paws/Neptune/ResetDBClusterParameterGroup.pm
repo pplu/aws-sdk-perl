@@ -33,21 +33,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DBClusterParameterGroupName => 'MyString',
       Parameters                  => [
         {
-          IsModifiable         => 1,            # OPTIONAL
-          ApplyType            => 'MyString',
-          DataType             => 'MyString',
-          MinimumEngineVersion => 'MyString',
+          AllowedValues => 'MyString',
           ApplyMethod =>
             'immediate',    # values: immediate, pending-reboot; OPTIONAL
-          AllowedValues  => 'MyString',
-          ParameterValue => 'MyString',
-          Description    => 'MyString',
-          ParameterName  => 'MyString',
-          Source         => 'MyString',
+          ApplyType            => 'MyString',
+          DataType             => 'MyString',
+          Description          => 'MyString',
+          IsModifiable         => 1,            # OPTIONAL
+          MinimumEngineVersion => 'MyString',
+          ParameterName        => 'MyString',
+          ParameterValue       => 'MyString',
+          Source               => 'MyString',
         },
         ...
-      ],                    # OPTIONAL
-      ResetAllParameters => 1,    # OPTIONAL
+      ],                                        # OPTIONAL
+      ResetAllParameters => 1,                  # OPTIONAL
     );
 
     # Results:

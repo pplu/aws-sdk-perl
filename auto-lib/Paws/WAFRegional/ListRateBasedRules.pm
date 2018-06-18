@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Rules      = $ListRateBasedRulesResponse->Rules;
     my $NextMarker = $ListRateBasedRulesResponse->NextMarker;
+    my $Rules      = $ListRateBasedRulesResponse->Rules;
 
     # Returns a L<Paws::WAFRegional::ListRateBasedRulesResponse> object.
 

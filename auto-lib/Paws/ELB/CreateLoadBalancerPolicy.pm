@@ -36,16 +36,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateLoadBalancerPolicyOutput =
       $elasticloadbalancing->CreateLoadBalancerPolicy(
       {
+        'LoadBalancerName' => 'my-load-balancer',
         'PolicyAttributes' => [
 
           {
-            'AttributeValue' => 'true',
-            'AttributeName'  => 'ProxyProtocol'
+            'AttributeName'  => 'ProxyProtocol',
+            'AttributeValue' => 'true'
           }
         ],
-        'PolicyName'       => 'my-ProxyProtocol-policy',
-        'LoadBalancerName' => 'my-load-balancer',
-        'PolicyTypeName'   => 'ProxyProtocolPolicyType'
+        'PolicyName'     => 'my-ProxyProtocol-policy',
+        'PolicyTypeName' => 'ProxyProtocolPolicyType'
       }
       );
 
@@ -55,7 +55,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $elasticloadbalancing->CreateLoadBalancerPolicy(
       {
         'LoadBalancerName' => 'my-load-balancer',
-        'PolicyTypeName'   => 'PublicKeyPolicyType',
         'PolicyAttributes' => [
 
           {
@@ -64,7 +63,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwAYUjnfyEyXr1pxjhFWBpMlggUcqoi3kl+dS74kj//c6x7ROtusUaeQCTgIUkayttRDWchuqo1pHC1u+n5xxXnBBe2ejbb2WRsKIQ5rXEeixsjFpFsojpSQKkzhVGI6mJVZBJDVKSHmswnwLBdofLhzvllpovBPTHe+o4haAWvDBALJU0pkSI1FecPHcs2hwxf14zHoXy1e2k36A64nXW43wtfx5qcVSIxtCEOjnYRg7RPvybaGfQ+v6Iaxb/+7J5kEvZhTFQId+bSiJImF1FSUT1W1xwzBZPUbcUkkXDj45vC2s3Z8E+Lk7a3uZhvsQHLZnrfuWjBWGWvZ/MhZYgEXAMPLE'
           }
         ],
-        'PolicyName' => 'my-PublicKey-policy'
+        'PolicyName'     => 'my-PublicKey-policy',
+        'PolicyTypeName' => 'PublicKeyPolicyType'
       }
       );
 
@@ -74,16 +74,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateLoadBalancerPolicyOutput =
       $elasticloadbalancing->CreateLoadBalancerPolicy(
       {
-        'PolicyTypeName'   => 'BackendServerAuthenticationPolicyType',
         'LoadBalancerName' => 'my-load-balancer',
-        'PolicyName'       => 'my-authentication-policy',
         'PolicyAttributes' => [
 
           {
-            'AttributeValue' => 'my-PublicKey-policy',
-            'AttributeName'  => 'PublicKeyPolicyName'
+            'AttributeName'  => 'PublicKeyPolicyName',
+            'AttributeValue' => 'my-PublicKey-policy'
           }
-        ]
+        ],
+        'PolicyName'     => 'my-authentication-policy',
+        'PolicyTypeName' => 'BackendServerAuthenticationPolicyType'
       }
       );
 

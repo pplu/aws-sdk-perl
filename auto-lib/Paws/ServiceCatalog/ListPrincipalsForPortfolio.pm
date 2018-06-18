@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $Principals    = $ListPrincipalsForPortfolioOutput->Principals;
     my $NextPageToken = $ListPrincipalsForPortfolioOutput->NextPageToken;
+    my $Principals    = $ListPrincipalsForPortfolioOutput->Principals;
 
    # Returns a L<Paws::ServiceCatalog::ListPrincipalsForPortfolioOutput> object.
 

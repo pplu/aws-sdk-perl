@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $Status     = $GetContactReachabilityStatusResponse->Status;
     my $DomainName = $GetContactReachabilityStatusResponse->DomainName;
+    my $Status     = $GetContactReachabilityStatusResponse->Status;
 
 # Returns a L<Paws::Route53Domains::GetContactReachabilityStatusResponse> object.
 

@@ -51,18 +51,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Type         = $Authorizer->Type;
-    my $ProviderARNs = $Authorizer->ProviderARNs;
-    my $IdentityValidationExpression =
-      $Authorizer->IdentityValidationExpression;
+    my $AuthType              = $Authorizer->AuthType;
+    my $AuthorizerCredentials = $Authorizer->AuthorizerCredentials;
     my $AuthorizerResultTtlInSeconds =
       $Authorizer->AuthorizerResultTtlInSeconds;
-    my $AuthType              = $Authorizer->AuthType;
-    my $Name                  = $Authorizer->Name;
-    my $AuthorizerUri         = $Authorizer->AuthorizerUri;
-    my $Id                    = $Authorizer->Id;
-    my $AuthorizerCredentials = $Authorizer->AuthorizerCredentials;
-    my $IdentitySource        = $Authorizer->IdentitySource;
+    my $AuthorizerUri  = $Authorizer->AuthorizerUri;
+    my $Id             = $Authorizer->Id;
+    my $IdentitySource = $Authorizer->IdentitySource;
+    my $IdentityValidationExpression =
+      $Authorizer->IdentityValidationExpression;
+    my $Name         = $Authorizer->Name;
+    my $ProviderARNs = $Authorizer->ProviderARNs;
+    my $Type         = $Authorizer->Type;
 
     # Returns a L<Paws::ApiGateway::Authorizer> object.
 

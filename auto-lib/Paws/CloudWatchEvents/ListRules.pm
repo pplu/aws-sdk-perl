@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Rules     = $ListRulesResponse->Rules;
     my $NextToken = $ListRulesResponse->NextToken;
+    my $Rules     = $ListRulesResponse->Rules;
 
     # Returns a L<Paws::CloudWatchEvents::ListRulesResponse> object.
 

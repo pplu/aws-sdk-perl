@@ -51,10 +51,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       KMSEncrypted         => 1,                               # OPTIONAL
       KMSKey               => 'MyKMSKey',                      # OPTIONAL
       NFSFileShareDefaults => {
-        GroupId       => 1,                     # max: 4294967294; OPTIONAL
         DirectoryMode => 'MyPermissionMode',    # min: 1, max: 4; OPTIONAL
-        OwnerId       => 1,                     # max: 4294967294; OPTIONAL
         FileMode      => 'MyPermissionMode',    # min: 1, max: 4; OPTIONAL
+        GroupId       => 1,                     # max: 4294967294; OPTIONAL
+        OwnerId       => 1,                     # max: 4294967294; OPTIONAL
       },    # OPTIONAL
       ObjectACL     => 'private',     # OPTIONAL
       ReadOnly      => 1,             # OPTIONAL

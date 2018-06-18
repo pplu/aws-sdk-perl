@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DataSourceId => 'MyEntityId',
       DataSpec     => {
         DataLocationS3       => 'MyS3Url',               # max: 2048
-        DataSchemaLocationS3 => 'MyS3Url',               # max: 2048
         DataRearrangement    => 'MyDataRearrangement',   # OPTIONAL
         DataSchema           => 'MyDataSchema',          # max: 131071; OPTIONAL
+        DataSchemaLocationS3 => 'MyS3Url',               # max: 2048
       },
       ComputeStatistics => 1,                            # OPTIONAL
       DataSourceName    => 'MyEntityName',               # OPTIONAL

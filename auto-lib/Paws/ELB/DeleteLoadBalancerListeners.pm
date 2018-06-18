@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DeleteLoadBalancerListenerOutput =
       $elasticloadbalancing->DeleteLoadBalancerListeners(
       {
-        'LoadBalancerPorts' => [80],
-        'LoadBalancerName'  => 'my-load-balancer'
+        'LoadBalancerName'  => 'my-load-balancer',
+        'LoadBalancerPorts' => [80]
       }
       );
 

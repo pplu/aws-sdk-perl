@@ -40,11 +40,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     $opsworks->UpdateApp(
       AppId     => 'MyString',
       AppSource => {
+        Password => 'MyString',
+        Revision => 'MyString',
+        SshKey   => 'MyString',
         Type     => 'git',        # values: git, svn, archive, s3; OPTIONAL
         Url      => 'MyString',
-        Password => 'MyString',
-        SshKey   => 'MyString',
-        Revision => 'MyString',
         Username => 'MyString',
       },    # OPTIONAL
       Attributes => {
@@ -53,9 +53,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       DataSources => [
         {
-          Type         => 'MyString',
-          DatabaseName => 'MyString',
           Arn          => 'MyString',
+          DatabaseName => 'MyString',
+          Type         => 'MyString',
         },
         ...
       ],    # OPTIONAL
@@ -64,8 +64,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EnableSsl   => 1,                      # OPTIONAL
       Environment => [
         {
-          Value  => 'MyString',
           Key    => 'MyString',
+          Value  => 'MyString',
           Secure => 1,
         },
         ...

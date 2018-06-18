@@ -35,26 +35,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This operation publishes a version of a Lambda function
     my $FunctionConfiguration = $lambda->PublishVersion(
       {
-        'FunctionName' => 'myFunction',
+        'CodeSha256'   => '',
         'Description'  => '',
-        'CodeSha256'   => ''
+        'FunctionName' => 'myFunction'
       }
     );
 
     # Results:
-    my $VpcConfig    = $FunctionConfiguration->VpcConfig;
     my $CodeSha256   = $FunctionConfiguration->CodeSha256;
     my $CodeSize     = $FunctionConfiguration->CodeSize;
-    my $Version      = $FunctionConfiguration->Version;
-    my $FunctionName = $FunctionConfiguration->FunctionName;
     my $Description  = $FunctionConfiguration->Description;
-    my $LastModified = $FunctionConfiguration->LastModified;
-    my $Role         = $FunctionConfiguration->Role;
-    my $Timeout      = $FunctionConfiguration->Timeout;
-    my $MemorySize   = $FunctionConfiguration->MemorySize;
-    my $Runtime      = $FunctionConfiguration->Runtime;
-    my $Handler      = $FunctionConfiguration->Handler;
     my $FunctionArn  = $FunctionConfiguration->FunctionArn;
+    my $FunctionName = $FunctionConfiguration->FunctionName;
+    my $Handler      = $FunctionConfiguration->Handler;
+    my $LastModified = $FunctionConfiguration->LastModified;
+    my $MemorySize   = $FunctionConfiguration->MemorySize;
+    my $Role         = $FunctionConfiguration->Role;
+    my $Runtime      = $FunctionConfiguration->Runtime;
+    my $Timeout      = $FunctionConfiguration->Timeout;
+    my $Version      = $FunctionConfiguration->Version;
+    my $VpcConfig    = $FunctionConfiguration->VpcConfig;
 
     # Returns a L<Paws::Lambda::FunctionConfiguration> object.
 

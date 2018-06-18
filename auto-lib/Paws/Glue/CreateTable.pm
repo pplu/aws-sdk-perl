@@ -32,7 +32,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateTableResponse = $glue->CreateTable(
       DatabaseName => 'MyNameString',
       TableInput   => {
-        Name          => 'MyNameString',    # min: 1, max: 255
+        Name             => 'MyNameString',           # min: 1, max: 255
+        Description      => 'MyDescriptionString',    # max: 2048; OPTIONAL
+        LastAccessTime   => '1970-01-01T01:00:00',    # OPTIONAL
+        LastAnalyzedTime => '1970-01-01T01:00:00',    # OPTIONAL
+        Owner            => 'MyNameString',           # min: 1, max: 255
+        Parameters       => {
+          'MyKeyString' =>
+            'MyParametersMapValue',  # key: min: 1, max: 255, value: max: 512000
+        },    # OPTIONAL
         PartitionKeys => [
           {
             Name    => 'MyNameString',          # min: 1, max: 255
@@ -41,37 +49,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],                                      # OPTIONAL
-        TableType  => 'MyTableTypeString',      # max: 255; OPTIONAL
-        Owner      => 'MyNameString',           # min: 1, max: 255
-        Parameters => {
-          'MyKeyString' =>
-            'MyParametersMapValue',  # key: min: 1, max: 255, value: max: 512000
-        },    # OPTIONAL
-        Description       => 'MyDescriptionString',    # max: 2048; OPTIONAL
-        LastAccessTime    => '1970-01-01T01:00:00',    # OPTIONAL
-        ViewOriginalText  => 'MyViewTextString',       # max: 409600; OPTIONAL
-        Retention         => 1,                        # OPTIONAL
-        LastAnalyzedTime  => '1970-01-01T01:00:00',    # OPTIONAL
-        ViewExpandedText  => 'MyViewTextString',       # max: 409600; OPTIONAL
+        Retention         => 1,                 # OPTIONAL
         StorageDescriptor => {
-          NumberOfBuckets => 1,                        # OPTIONAL
-          BucketColumns   => [
-            'MyNameString', ...                        # min: 1, max: 255
-          ],                                           # OPTIONAL
-          InputFormat => 'MyFormatString',             # max: 128; OPTIONAL
-          Compressed  => 1,                            # OPTIONAL
-          SkewedInfo  => {
-            SkewedColumnNames => [
-              'MyNameString', ...                      # min: 1, max: 255
-            ],                                         # OPTIONAL
-            SkewedColumnValues => [ 'MyColumnValuesString', ... ],    # OPTIONAL
-            SkewedColumnValueLocationMaps =>
-              { 'MyColumnValuesString' => 'MyColumnValuesString', },  # OPTIONAL
-          },    # OPTIONAL
-          OutputFormat           => 'MyFormatString',      # max: 128; OPTIONAL
-          Location               => 'MyLocationString',    # max: 2056; OPTIONAL
-          StoredAsSubDirectories => 1,                     # OPTIONAL
-          Columns                => [
+          BucketColumns => [
+            'MyNameString', ...                 # min: 1, max: 255
+          ],                                    # OPTIONAL
+          Columns => [
             {
               Name    => 'MyNameString',          # min: 1, max: 255
               Comment => 'MyCommentString',       # max: 255; OPTIONAL
@@ -79,29 +62,46 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },
             ...
           ],                                      # OPTIONAL
-          SortColumns => [
-            {
-              SortOrder => 1,                     # max: 1
-              Column    => 'MyNameString',        # min: 1, max: 255
-
-            },
-            ...
-          ],                                      # OPTIONAL
+          Compressed      => 1,                   # OPTIONAL
+          InputFormat     => 'MyFormatString',    # max: 128; OPTIONAL
+          Location        => 'MyLocationString',  # max: 2056; OPTIONAL
+          NumberOfBuckets => 1,                   # OPTIONAL
+          OutputFormat    => 'MyFormatString',    # max: 128; OPTIONAL
+          Parameters      => {
+            'MyKeyString' => 'MyParametersMapValue'
+            ,    # key: min: 1, max: 255, value: max: 512000
+          },    # OPTIONAL
           SerdeInfo => {
-            Name       => 'MyNameString',         # min: 1, max: 255
+            Name       => 'MyNameString',    # min: 1, max: 255
             Parameters => {
               'MyKeyString' => 'MyParametersMapValue'
               ,    # key: min: 1, max: 255, value: max: 512000
             },    # OPTIONAL
             SerializationLibrary => 'MyNameString',    # min: 1, max: 255
           },    # OPTIONAL
-          Parameters => {
-            'MyKeyString' => 'MyParametersMapValue'
-            ,    # key: min: 1, max: 255, value: max: 512000
+          SkewedInfo => {
+            SkewedColumnNames => [
+              'MyNameString', ...    # min: 1, max: 255
+            ],                       # OPTIONAL
+            SkewedColumnValueLocationMaps =>
+              { 'MyColumnValuesString' => 'MyColumnValuesString', },  # OPTIONAL
+            SkewedColumnValues => [ 'MyColumnValuesString', ... ],    # OPTIONAL
           },    # OPTIONAL
+          SortColumns => [
+            {
+              Column    => 'MyNameString',    # min: 1, max: 255
+              SortOrder => 1,                 # max: 1
+
+            },
+            ...
+          ],                                  # OPTIONAL
+          StoredAsSubDirectories => 1,        # OPTIONAL
         },    # OPTIONAL
+        TableType        => 'MyTableTypeString',    # max: 255; OPTIONAL
+        ViewExpandedText => 'MyViewTextString',     # max: 409600; OPTIONAL
+        ViewOriginalText => 'MyViewTextString',     # max: 409600; OPTIONAL
       },
-      CatalogId => 'MyCatalogIdString',    # OPTIONAL
+      CatalogId => 'MyCatalogIdString',             # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

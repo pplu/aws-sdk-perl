@@ -85,7 +85,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ... # values: s3:ReducedRedundancyLostObject, s3:ObjectCreated:*, s3:ObjectCreated:Put, s3:ObjectCreated:Post, s3:ObjectCreated:Copy, s3:ObjectCreated:CompleteMultipartUpload, s3:ObjectRemoved:*, s3:ObjectRemoved:Delete, s3:ObjectRemoved:DeleteMarkerCreated
             ],
             TopicArn => 'MyTopicArn',
-            Id       => 'MyNotificationId',    # OPTIONAL
             Filter   => {
               Key => {
                 FilterRules => [
@@ -97,9 +96,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ],                                   # OPTIONAL
               },    # OPTIONAL
             },    # OPTIONAL
+            Id => 'MyNotificationId',    # OPTIONAL
           },
           ...
-        ],        # OPTIONAL
+        ],                               # OPTIONAL
       },
 
     );

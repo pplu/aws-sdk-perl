@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           InstanceType      => 'MyInstanceType',    # min: 1, max: 256
           AutoScalingPolicy => {
             Constraints => {
-              MinCapacity => 1,
               MaxCapacity => 1,
+              MinCapacity => 1,
 
             },
             Rules => [
@@ -51,61 +51,61 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },
                   Market => 'ON_DEMAND',    # values: ON_DEMAND, SPOT; OPTIONAL
                 },
+                Name    => 'MyString',
                 Trigger => {
                   CloudWatchAlarmDefinition => {
-                    Threshold          => 1,
-                    Period             => 1,
                     ComparisonOperator => 'GREATER_THAN_OR_EQUAL'
                     , # values: GREATER_THAN_OR_EQUAL, GREATER_THAN, LESS_THAN, LESS_THAN_OR_EQUAL
                     MetricName => 'MyString',
-                    Unit       => 'NONE'
-                    , # values: NONE, SECONDS, MICRO_SECONDS, MILLI_SECONDS, BYTES, KILO_BYTES, MEGA_BYTES, GIGA_BYTES, TERA_BYTES, BITS, KILO_BITS, MEGA_BITS, GIGA_BITS, TERA_BITS, PERCENT, COUNT, BYTES_PER_SECOND, KILO_BYTES_PER_SECOND, MEGA_BYTES_PER_SECOND, GIGA_BYTES_PER_SECOND, TERA_BYTES_PER_SECOND, BITS_PER_SECOND, KILO_BITS_PER_SECOND, MEGA_BITS_PER_SECOND, GIGA_BITS_PER_SECOND, TERA_BITS_PER_SECOND, COUNT_PER_SECOND; OPTIONAL
-                    Statistic => 'SAMPLE_COUNT'
-                    , # values: SAMPLE_COUNT, AVERAGE, SUM, MINIMUM, MAXIMUM; OPTIONAL
-                    EvaluationPeriods => 1,
-                    Namespace         => 'MyString',
-                    Dimensions        => [
+                    Period     => 1,
+                    Threshold  => 1,
+                    Dimensions => [
                       {
-                        Value => 'MyString',
                         Key   => 'MyString',
+                        Value => 'MyString',
                       },
                       ...
                     ],    # OPTIONAL
+                    EvaluationPeriods => 1,
+                    Namespace         => 'MyString',
+                    Statistic         => 'SAMPLE_COUNT'
+                    , # values: SAMPLE_COUNT, AVERAGE, SUM, MINIMUM, MAXIMUM; OPTIONAL
+                    Unit => 'NONE'
+                    , # values: NONE, SECONDS, MICRO_SECONDS, MILLI_SECONDS, BYTES, KILO_BYTES, MEGA_BYTES, GIGA_BYTES, TERA_BYTES, BITS, KILO_BITS, MEGA_BITS, GIGA_BITS, TERA_BITS, PERCENT, COUNT, BYTES_PER_SECOND, KILO_BYTES_PER_SECOND, MEGA_BYTES_PER_SECOND, GIGA_BYTES_PER_SECOND, TERA_BYTES_PER_SECOND, BITS_PER_SECOND, KILO_BITS_PER_SECOND, MEGA_BITS_PER_SECOND, GIGA_BITS_PER_SECOND, TERA_BITS_PER_SECOND, COUNT_PER_SECOND; OPTIONAL
                   },
 
                 },
-                Name        => 'MyString',
                 Description => 'MyString',
               },
               ...
             ],
 
           },    # OPTIONAL
-          Market           => 'ON_DEMAND',   # values: ON_DEMAND, SPOT; OPTIONAL
+          BidPrice       => 'MyXmlStringMaxLen256',    # max: 256; OPTIONAL
+          Configurations => [
+            {
+              Classification => 'MyString',
+              Configurations => <ConfigurationList>,
+              Properties     => { 'MyString' => 'MyString', },    # OPTIONAL
+            },
+            ...
+          ],                                                      # OPTIONAL
           EbsConfiguration => {
             EbsBlockDeviceConfigs => [
               {
                 VolumeSpecification => {
-                  VolumeType => 'MyString',
                   SizeInGB   => 1,
+                  VolumeType => 'MyString',
                   Iops       => 1,
                 },
                 VolumesPerInstance => 1,
               },
               ...
-            ],                               # OPTIONAL
-            EbsOptimized => 1,               # OPTIONAL
+            ],                                                    # OPTIONAL
+            EbsOptimized => 1,                                    # OPTIONAL
           },    # OPTIONAL
-          Configurations => [
-            {
-              Properties     => { 'MyString' => 'MyString', },    # OPTIONAL
-              Configurations => <ConfigurationList>,
-              Classification => 'MyString',
-            },
-            ...
-          ],                                                      # OPTIONAL
-          Name     => 'MyXmlStringMaxLen256',    # max: 256; OPTIONAL
-          BidPrice => 'MyXmlStringMaxLen256',    # max: 256; OPTIONAL
+          Market => 'ON_DEMAND',             # values: ON_DEMAND, SPOT; OPTIONAL
+          Name   => 'MyXmlStringMaxLen256',  # max: 256; OPTIONAL
         },
         ...
       ],
@@ -114,8 +114,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $JobFlowId        = $AddInstanceGroupsOutput->JobFlowId;
     my $InstanceGroupIds = $AddInstanceGroupsOutput->InstanceGroupIds;
+    my $JobFlowId        = $AddInstanceGroupsOutput->JobFlowId;
 
     # Returns a L<Paws::EMR::AddInstanceGroupsOutput> object.
 

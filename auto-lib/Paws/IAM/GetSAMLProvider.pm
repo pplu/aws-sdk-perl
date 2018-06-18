@@ -33,9 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ValidUntil           = $GetSAMLProviderResponse->ValidUntil;
-    my $SAMLMetadataDocument = $GetSAMLProviderResponse->SAMLMetadataDocument;
     my $CreateDate           = $GetSAMLProviderResponse->CreateDate;
+    my $SAMLMetadataDocument = $GetSAMLProviderResponse->SAMLMetadataDocument;
+    my $ValidUntil           = $GetSAMLProviderResponse->ValidUntil;
 
     # Returns a L<Paws::IAM::GetSAMLProviderResponse> object.
 

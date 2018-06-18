@@ -38,9 +38,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $Marker = $TableRestoreStatusMessage->Marker;
     my $TableRestoreStatusDetails =
       $TableRestoreStatusMessage->TableRestoreStatusDetails;
-    my $Marker = $TableRestoreStatusMessage->Marker;
 
     # Returns a L<Paws::RedShift::TableRestoreStatusMessage> object.
 

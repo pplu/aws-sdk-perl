@@ -32,11 +32,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateReceiptFilterResponse = $email->CreateReceiptFilter(
       {
         'Filter' => {
-          'Name'     => 'MyFilter',
           'IpFilter' => {
             'Cidr'   => '1.2.3.4/24',
             'Policy' => 'Allow'
-          }
+          },
+          'Name' => 'MyFilter'
         }
       }
     );

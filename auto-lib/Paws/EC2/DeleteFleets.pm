@@ -36,10 +36,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $UnsuccessfulFleetDeletions =
-      $DeleteFleetsResult->UnsuccessfulFleetDeletions;
     my $SuccessfulFleetDeletions =
       $DeleteFleetsResult->SuccessfulFleetDeletions;
+    my $UnsuccessfulFleetDeletions =
+      $DeleteFleetsResult->UnsuccessfulFleetDeletions;
 
     # Returns a L<Paws::EC2::DeleteFleetsResult> object.
 

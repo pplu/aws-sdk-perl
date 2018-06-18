@@ -46,13 +46,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ApplicationName            => 'MyApplicationName',
       CurrentDeploymentGroupName => 'MyDeploymentGroupName',
       AlarmConfiguration         => {
-        enabled => 1,    # OPTIONAL
-        alarms  => [
+        alarms => [
           {
             name => 'MyAlarmName',    # OPTIONAL
           },
           ...
         ],                            # OPTIONAL
+        enabled                => 1,  # OPTIONAL
         ignorePollAlarmFailure => 1,  # OPTIONAL
       },    # OPTIONAL
       AutoRollbackConfiguration => {
@@ -64,6 +64,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       AutoScalingGroups => [ 'MyAutoScalingGroupName', ... ],    # OPTIONAL
       BlueGreenDeploymentConfiguration => {
+        deploymentReadyOption => {
+          actionOnTimeout => 'CONTINUE_DEPLOYMENT'
+          ,    # values: CONTINUE_DEPLOYMENT, STOP_DEPLOYMENT; OPTIONAL
+          waitTimeInMinutes => 1,    # OPTIONAL
+        },    # OPTIONAL
         greenFleetProvisioningOption => {
           action => 'DISCOVER_EXISTING'
           ,    # values: DISCOVER_EXISTING, COPY_AUTO_SCALING_GROUP; OPTIONAL
@@ -71,11 +76,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         terminateBlueInstancesOnDeploymentSuccess => {
           action => 'TERMINATE',    # values: TERMINATE, KEEP_ALIVE; OPTIONAL
           terminationWaitTimeInMinutes => 1,    # OPTIONAL
-        },    # OPTIONAL
-        deploymentReadyOption => {
-          actionOnTimeout => 'CONTINUE_DEPLOYMENT'
-          ,    # values: CONTINUE_DEPLOYMENT, STOP_DEPLOYMENT; OPTIONAL
-          waitTimeInMinutes => 1,    # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       DeploymentConfigName => 'MyDeploymentConfigName',    # OPTIONAL
@@ -108,15 +108,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ],                           # OPTIONAL
       },    # OPTIONAL
       LoadBalancerInfo => {
+        elbInfoList => [
+          {
+            name => 'MyELBName',    # OPTIONAL
+          },
+          ...
+        ],                          # OPTIONAL
         targetGroupInfoList => [
           {
             name => 'MyTargetGroupName',    # OPTIONAL
-          },
-          ...
-        ],                                  # OPTIONAL
-        elbInfoList => [
-          {
-            name => 'MyELBName',            # OPTIONAL
           },
           ...
         ],                                  # OPTIONAL
@@ -148,15 +148,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ServiceRoleArn        => 'MyRole',    # OPTIONAL
       TriggerConfigurations => [
         {
-          triggerName      => 'MyTriggerName',         # OPTIONAL
-          triggerTargetArn => 'MyTriggerTargetArn',    # OPTIONAL
-          triggerEvents    => [
+          triggerEvents => [
             'DeploymentStart',
             ... # values: DeploymentStart, DeploymentSuccess, DeploymentFailure, DeploymentStop, DeploymentRollback, DeploymentReady, InstanceStart, InstanceSuccess, InstanceFailure, InstanceReady
           ],    # OPTIONAL
+          triggerName      => 'MyTriggerName',         # OPTIONAL
+          triggerTargetArn => 'MyTriggerTargetArn',    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],                                               # OPTIONAL
     );
 
     # Results:

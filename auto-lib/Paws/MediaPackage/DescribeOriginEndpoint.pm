@@ -34,20 +34,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CmafPackage      = $DescribeOriginEndpointResponse->CmafPackage;
-    my $ChannelId        = $DescribeOriginEndpointResponse->ChannelId;
-    my $MssPackage       = $DescribeOriginEndpointResponse->MssPackage;
-    my $Description      = $DescribeOriginEndpointResponse->Description;
-    my $Whitelist        = $DescribeOriginEndpointResponse->Whitelist;
-    my $DashPackage      = $DescribeOriginEndpointResponse->DashPackage;
-    my $HlsPackage       = $DescribeOriginEndpointResponse->HlsPackage;
-    my $Id               = $DescribeOriginEndpointResponse->Id;
-    my $Url              = $DescribeOriginEndpointResponse->Url;
-    my $TimeDelaySeconds = $DescribeOriginEndpointResponse->TimeDelaySeconds;
+    my $Arn          = $DescribeOriginEndpointResponse->Arn;
+    my $ChannelId    = $DescribeOriginEndpointResponse->ChannelId;
+    my $CmafPackage  = $DescribeOriginEndpointResponse->CmafPackage;
+    my $DashPackage  = $DescribeOriginEndpointResponse->DashPackage;
+    my $Description  = $DescribeOriginEndpointResponse->Description;
+    my $HlsPackage   = $DescribeOriginEndpointResponse->HlsPackage;
+    my $Id           = $DescribeOriginEndpointResponse->Id;
+    my $ManifestName = $DescribeOriginEndpointResponse->ManifestName;
+    my $MssPackage   = $DescribeOriginEndpointResponse->MssPackage;
     my $StartoverWindowSeconds =
       $DescribeOriginEndpointResponse->StartoverWindowSeconds;
-    my $ManifestName = $DescribeOriginEndpointResponse->ManifestName;
-    my $Arn          = $DescribeOriginEndpointResponse->Arn;
+    my $TimeDelaySeconds = $DescribeOriginEndpointResponse->TimeDelaySeconds;
+    my $Url              = $DescribeOriginEndpointResponse->Url;
+    my $Whitelist        = $DescribeOriginEndpointResponse->Whitelist;
 
     # Returns a L<Paws::MediaPackage::DescribeOriginEndpointResponse> object.
 

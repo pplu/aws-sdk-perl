@@ -43,8 +43,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       FaceAttributes      => 'DEFAULT',                 # OPTIONAL
       JobTag              => 'MyJobTag',                # OPTIONAL
       NotificationChannel => {
-        SNSTopicArn => 'MySNSTopicArn',
         RoleArn     => 'MyRoleArn',
+        SNSTopicArn => 'MySNSTopicArn',
 
       },                                                # OPTIONAL
     );

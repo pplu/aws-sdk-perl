@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # that required Bob to change the password the next time he signs in.
     my $CreateLoginProfileResponse = $iam->CreateLoginProfile(
       {
-        'UserName'              => 'Bob',
         'Password'              => 'h]6EszR}vJ*m',
-        'PasswordResetRequired' => true
+        'PasswordResetRequired' => true,
+        'UserName'              => 'Bob'
       }
     );
 

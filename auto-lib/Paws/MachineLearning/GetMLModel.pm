@@ -34,28 +34,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $TrainingParameters = $GetMLModelOutput->TrainingParameters;
+    my $ComputeTime         = $GetMLModelOutput->ComputeTime;
+    my $CreatedAt           = $GetMLModelOutput->CreatedAt;
+    my $CreatedByIamUser    = $GetMLModelOutput->CreatedByIamUser;
+    my $EndpointInfo        = $GetMLModelOutput->EndpointInfo;
+    my $FinishedAt          = $GetMLModelOutput->FinishedAt;
+    my $InputDataLocationS3 = $GetMLModelOutput->InputDataLocationS3;
+    my $LastUpdatedAt       = $GetMLModelOutput->LastUpdatedAt;
+    my $LogUri              = $GetMLModelOutput->LogUri;
+    my $MLModelId           = $GetMLModelOutput->MLModelId;
+    my $MLModelType         = $GetMLModelOutput->MLModelType;
+    my $Message             = $GetMLModelOutput->Message;
+    my $Name                = $GetMLModelOutput->Name;
+    my $Recipe              = $GetMLModelOutput->Recipe;
+    my $Schema              = $GetMLModelOutput->Schema;
+    my $ScoreThreshold      = $GetMLModelOutput->ScoreThreshold;
     my $ScoreThresholdLastUpdatedAt =
       $GetMLModelOutput->ScoreThresholdLastUpdatedAt;
-    my $LastUpdatedAt        = $GetMLModelOutput->LastUpdatedAt;
     my $SizeInBytes          = $GetMLModelOutput->SizeInBytes;
-    my $TrainingDataSourceId = $GetMLModelOutput->TrainingDataSourceId;
-    my $MLModelType          = $GetMLModelOutput->MLModelType;
-    my $FinishedAt           = $GetMLModelOutput->FinishedAt;
-    my $Message              = $GetMLModelOutput->Message;
-    my $CreatedAt            = $GetMLModelOutput->CreatedAt;
-    my $Name                 = $GetMLModelOutput->Name;
-    my $LogUri               = $GetMLModelOutput->LogUri;
-    my $EndpointInfo         = $GetMLModelOutput->EndpointInfo;
-    my $InputDataLocationS3  = $GetMLModelOutput->InputDataLocationS3;
-    my $Recipe               = $GetMLModelOutput->Recipe;
-    my $ComputeTime          = $GetMLModelOutput->ComputeTime;
-    my $MLModelId            = $GetMLModelOutput->MLModelId;
-    my $ScoreThreshold       = $GetMLModelOutput->ScoreThreshold;
-    my $CreatedByIamUser     = $GetMLModelOutput->CreatedByIamUser;
-    my $Status               = $GetMLModelOutput->Status;
     my $StartedAt            = $GetMLModelOutput->StartedAt;
-    my $Schema               = $GetMLModelOutput->Schema;
+    my $Status               = $GetMLModelOutput->Status;
+    my $TrainingDataSourceId = $GetMLModelOutput->TrainingDataSourceId;
+    my $TrainingParameters   = $GetMLModelOutput->TrainingParameters;
 
     # Returns a L<Paws::MachineLearning::GetMLModelOutput> object.
 

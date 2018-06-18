@@ -41,12 +41,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $ExportStatus  = $GetExportResponse->ExportStatus;
-    my $Name          = $GetExportResponse->Name;
-    my $Version       = $GetExportResponse->Version;
     my $ExportType    = $GetExportResponse->ExportType;
-    my $ResourceType  = $GetExportResponse->ResourceType;
     my $FailureReason = $GetExportResponse->FailureReason;
+    my $Name          = $GetExportResponse->Name;
+    my $ResourceType  = $GetExportResponse->ResourceType;
     my $Url           = $GetExportResponse->Url;
+    my $Version       = $GetExportResponse->Version;
 
     # Returns a L<Paws::LexModels::GetExportResponse> object.
 

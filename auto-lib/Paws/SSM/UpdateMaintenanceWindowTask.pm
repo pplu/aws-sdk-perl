@@ -64,46 +64,46 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],                                         # OPTIONAL
       TaskArn                  => 'MyMaintenanceWindowTaskArn',    # OPTIONAL
       TaskInvocationParameters => {
-        Lambda => {
-          Qualifier =>
-            'MyMaintenanceWindowLambdaQualifier',   # min: 1, max: 128; OPTIONAL
-          ClientContext => 'MyMaintenanceWindowLambdaClientContext'
-          ,    # min: 1, max: 8000; OPTIONAL
-          Payload => 'BlobMaintenanceWindowLambdaPayload', # max: 4096; OPTIONAL
-        },    # OPTIONAL
-        RunCommand => {
-          TimeoutSeconds => 1,    # min: 30, max: 2592000; OPTIONAL
-          OutputS3KeyPrefix => 'MyS3KeyPrefix', # max: 500; OPTIONAL
-          DocumentHashType  => 'Sha256',        # values: Sha256, Sha1; OPTIONAL
-          NotificationConfig => {
-            NotificationType =>
-              'Command',    # values: Command, Invocation; OPTIONAL
-            NotificationEvents => [
-              'All',
-              ... # values: All, InProgress, Success, TimedOut, Cancelled, Failed
-            ],    # OPTIONAL
-            NotificationArn => 'MyNotificationArn',    # OPTIONAL
-          },    # OPTIONAL
-          Parameters => { 'MyParameterName' => [ 'MyParameterValue', ... ], }
-          ,     # OPTIONAL
-          ServiceRoleArn     => 'MyServiceRole',
-          DocumentHash       => 'MyDocumentHash',    # max: 256; OPTIONAL
-          OutputS3BucketName => 'MyS3BucketName',    # min: 3, max: 63
-          Comment            => 'MyComment',         # max: 100; OPTIONAL
-        },    # OPTIONAL
-        StepFunctions => {
-          Name =>
-            'MyMaintenanceWindowStepFunctionsName',  # min: 1, max: 80; OPTIONAL
-          Input =>
-            'MyMaintenanceWindowStepFunctionsInput',    # max: 4096; OPTIONAL
-        },    # OPTIONAL
         Automation => {
-          Parameters => {
+          DocumentVersion => 'MyDocumentVersion',                  # OPTIONAL
+          Parameters      => {
             'MyAutomationParameterKey' => [
               'MyAutomationParameterValue', ...    # min: 1, max: 512
             ],    # key: min: 1, max: 30, value: max: 10
           },    # min: 1, max: 200; OPTIONAL
-          DocumentVersion => 'MyDocumentVersion',    # OPTIONAL
+        },    # OPTIONAL
+        Lambda => {
+          ClientContext => 'MyMaintenanceWindowLambdaClientContext'
+          ,    # min: 1, max: 8000; OPTIONAL
+          Payload => 'BlobMaintenanceWindowLambdaPayload', # max: 4096; OPTIONAL
+          Qualifier =>
+            'MyMaintenanceWindowLambdaQualifier',   # min: 1, max: 128; OPTIONAL
+        },    # OPTIONAL
+        RunCommand => {
+          Comment          => 'MyComment',      # max: 100; OPTIONAL
+          DocumentHash     => 'MyDocumentHash', # max: 256; OPTIONAL
+          DocumentHashType => 'Sha256',         # values: Sha256, Sha1; OPTIONAL
+          NotificationConfig => {
+            NotificationArn    => 'MyNotificationArn',    # OPTIONAL
+            NotificationEvents => [
+              'All',
+              ... # values: All, InProgress, Success, TimedOut, Cancelled, Failed
+            ],    # OPTIONAL
+            NotificationType =>
+              'Command',    # values: Command, Invocation; OPTIONAL
+          },    # OPTIONAL
+          OutputS3BucketName => 'MyS3BucketName',    # min: 3, max: 63
+          OutputS3KeyPrefix  => 'MyS3KeyPrefix',     # max: 500; OPTIONAL
+          Parameters => { 'MyParameterName' => [ 'MyParameterValue', ... ], }
+          ,                                          # OPTIONAL
+          ServiceRoleArn => 'MyServiceRole',
+          TimeoutSeconds => 1,                 # min: 30, max: 2592000; OPTIONAL
+        },    # OPTIONAL
+        StepFunctions => {
+          Input =>
+            'MyMaintenanceWindowStepFunctionsInput',    # max: 4096; OPTIONAL
+          Name =>
+            'MyMaintenanceWindowStepFunctionsName',  # min: 1, max: 80; OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       TaskParameters => {
@@ -117,19 +117,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $Description    = $UpdateMaintenanceWindowTaskResult->Description;
-    my $WindowId       = $UpdateMaintenanceWindowTaskResult->WindowId;
-    my $WindowTaskId   = $UpdateMaintenanceWindowTaskResult->WindowTaskId;
-    my $TaskArn        = $UpdateMaintenanceWindowTaskResult->TaskArn;
-    my $Priority       = $UpdateMaintenanceWindowTaskResult->Priority;
-    my $TaskParameters = $UpdateMaintenanceWindowTaskResult->TaskParameters;
     my $LoggingInfo    = $UpdateMaintenanceWindowTaskResult->LoggingInfo;
-    my $TaskInvocationParameters =
-      $UpdateMaintenanceWindowTaskResult->TaskInvocationParameters;
     my $MaxConcurrency = $UpdateMaintenanceWindowTaskResult->MaxConcurrency;
+    my $MaxErrors      = $UpdateMaintenanceWindowTaskResult->MaxErrors;
+    my $Name           = $UpdateMaintenanceWindowTaskResult->Name;
+    my $Priority       = $UpdateMaintenanceWindowTaskResult->Priority;
     my $ServiceRoleArn = $UpdateMaintenanceWindowTaskResult->ServiceRoleArn;
     my $Targets        = $UpdateMaintenanceWindowTaskResult->Targets;
-    my $Name           = $UpdateMaintenanceWindowTaskResult->Name;
-    my $MaxErrors      = $UpdateMaintenanceWindowTaskResult->MaxErrors;
+    my $TaskArn        = $UpdateMaintenanceWindowTaskResult->TaskArn;
+    my $TaskInvocationParameters =
+      $UpdateMaintenanceWindowTaskResult->TaskInvocationParameters;
+    my $TaskParameters = $UpdateMaintenanceWindowTaskResult->TaskParameters;
+    my $WindowId       = $UpdateMaintenanceWindowTaskResult->WindowId;
+    my $WindowTaskId   = $UpdateMaintenanceWindowTaskResult->WindowTaskId;
 
     # Returns a L<Paws::SSM::UpdateMaintenanceWindowTaskResult> object.
 

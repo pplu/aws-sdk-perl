@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # up to 500 concurrent agents per AWS account.
     my $StartAssessmentRunResponse = $inspector->StartAssessmentRun(
       {
+        'AssessmentRunName' => 'examplerun',
         'AssessmentTemplateArn' =>
-'arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/0-it5r2S4T',
-        'AssessmentRunName' => 'examplerun'
+'arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/0-it5r2S4T'
       }
     );
 

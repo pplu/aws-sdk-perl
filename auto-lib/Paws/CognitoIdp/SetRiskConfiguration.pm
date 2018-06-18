@@ -36,36 +36,35 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AccountTakeoverRiskConfiguration => {
         Actions => {
           HighAction => {
-            Notify      => 1,
             EventAction => 'BLOCK'
             ,    # values: BLOCK, MFA_IF_CONFIGURED, MFA_REQUIRED, NO_ACTION
+            Notify => 1,
 
           },    # OPTIONAL
           LowAction => {
-            Notify      => 1,
             EventAction => 'BLOCK'
             ,    # values: BLOCK, MFA_IF_CONFIGURED, MFA_REQUIRED, NO_ACTION
+            Notify => 1,
 
           },    # OPTIONAL
           MediumAction => {
-            Notify      => 1,
             EventAction => 'BLOCK'
             ,    # values: BLOCK, MFA_IF_CONFIGURED, MFA_REQUIRED, NO_ACTION
+            Notify => 1,
 
           },    # OPTIONAL
         },
         NotifyConfiguration => {
-          SourceArn => 'MyArnType',    # min: 20, max: 2048
-          MfaEmail  => {
+          SourceArn  => 'MyArnType',    # min: 20, max: 2048
+          BlockEmail => {
             Subject => 'MyEmailNotificationSubjectType',    # min: 1, max: 140
             HtmlBody =>
               'MyEmailNotificationBodyType',    # min: 6, max: 20000; OPTIONAL
             TextBody =>
               'MyEmailNotificationBodyType',    # min: 6, max: 20000; OPTIONAL
           },    # OPTIONAL
-          ReplyTo    => 'MyStringType',    # OPTIONAL
-          From       => 'MyStringType',    # OPTIONAL
-          BlockEmail => {
+          From     => 'MyStringType',    # OPTIONAL
+          MfaEmail => {
             Subject => 'MyEmailNotificationSubjectType',    # min: 1, max: 140
             HtmlBody =>
               'MyEmailNotificationBodyType',    # min: 6, max: 20000; OPTIONAL
@@ -79,6 +78,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             TextBody =>
               'MyEmailNotificationBodyType',    # min: 6, max: 20000; OPTIONAL
           },    # OPTIONAL
+          ReplyTo => 'MyStringType',    # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       ClientId                                => 'MyClientIdType',    # OPTIONAL
@@ -92,10 +92,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ],                           # OPTIONAL
       },    # OPTIONAL
       RiskExceptionConfiguration => {
-        SkippedIPRangeList => [
+        BlockedIPRangeList => [
           'MyStringType', ...    # OPTIONAL
         ],                       # max: 20; OPTIONAL
-        BlockedIPRangeList => [
+        SkippedIPRangeList => [
           'MyStringType', ...    # OPTIONAL
         ],                       # max: 20; OPTIONAL
       },    # OPTIONAL

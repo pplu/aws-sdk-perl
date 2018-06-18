@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $NextToken = $ListEndpointsByPlatformApplicationResponse->NextToken;
     my $Endpoints = $ListEndpointsByPlatformApplicationResponse->Endpoints;
+    my $NextToken = $ListEndpointsByPlatformApplicationResponse->NextToken;
 
     # Returns a L<Paws::SNS::ListEndpointsByPlatformApplicationResponse> object.
 

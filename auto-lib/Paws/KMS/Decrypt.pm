@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Plaintext = $DecryptResponse->Plaintext;
     my $KeyId     = $DecryptResponse->KeyId;
+    my $Plaintext = $DecryptResponse->Plaintext;
 
     # Returns a L<Paws::KMS::DecryptResponse> object.
 

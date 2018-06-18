@@ -35,10 +35,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'Tags' => [
 
           {
-            'Value'        => 'Research',
             'Key'          => 'Dept',
+            'ResourceId'   => 'my-auto-scaling-group',
             'ResourceType' => 'auto-scaling-group',
-            'ResourceId'   => 'my-auto-scaling-group'
+            'Value'        => 'Research'
           }
         ]
       }

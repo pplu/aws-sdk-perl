@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       {
         'FunctionName'    => 'myFunction',
         'FunctionVersion' => 1,
-        'MaxItems'        => 123,
-        'Marker'          => ''
+        'Marker'          => '',
+        'MaxItems'        => 123
       }
     );
 

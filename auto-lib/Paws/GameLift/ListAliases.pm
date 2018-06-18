@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken = $ListAliasesOutput->NextToken;
     my $Aliases   = $ListAliasesOutput->Aliases;
+    my $NextToken = $ListAliasesOutput->NextToken;
 
     # Returns a L<Paws::GameLift::ListAliasesOutput> object.
 

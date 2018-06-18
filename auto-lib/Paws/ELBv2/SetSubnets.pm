@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # the specified load balancer.
     my $SetSubnetsOutput = $elasticloadbalancing->SetSubnets(
       {
-        'Subnets' => [ 'subnet-8360a9e7', 'subnet-b7d581c0' ],
         'LoadBalancerArn' =>
-'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188'
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188',
+        'Subnets' => [ 'subnet-8360a9e7', 'subnet-b7d581c0' ]
       }
     );
 

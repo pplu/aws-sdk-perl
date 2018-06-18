@@ -44,19 +44,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AccessControlPolicy => {
         Grants => [
           {
-            Permission => 'FULL_CONTROL'
-            , # values: FULL_CONTROL, WRITE, WRITE_ACP, READ, READ_ACP; OPTIONAL
             Grantee => {
               Type => 'CanonicalUser'
               ,    # values: CanonicalUser, AmazonCustomerByEmail, Group
-              URI          => 'MyURI',             # OPTIONAL
-              EmailAddress => 'MyEmailAddress',    # OPTIONAL
               DisplayName  => 'MyDisplayName',     # OPTIONAL
+              EmailAddress => 'MyEmailAddress',    # OPTIONAL
               ID           => 'MyID',              # OPTIONAL
+              URI          => 'MyURI',             # OPTIONAL
             },    # OPTIONAL
+            Permission => 'FULL_CONTROL'
+            , # values: FULL_CONTROL, WRITE, WRITE_ACP, READ, READ_ACP; OPTIONAL
           },
           ...
-        ],        # OPTIONAL
+        ],    # OPTIONAL
         Owner => {
           DisplayName => 'MyDisplayName',    # OPTIONAL
           ID          => 'MyID',             # OPTIONAL

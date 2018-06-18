@@ -36,26 +36,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Values => [
-            'MyString', ...    # OPTIONAL
-          ],                   # OPTIONAL
-          Name => 'MyString',  # OPTIONAL
+          Name   => 'MyString',
+          Values => [ 'MyString', ... ],    # OPTIONAL
         },
         ...
-      ],                       # OPTIONAL
-      FpgaImageIds => [
-        'MyString', ...        # OPTIONAL
-      ],                       # OPTIONAL
-      MaxResults => 1,                # OPTIONAL
-      NextToken  => 'MyNextToken',    # OPTIONAL
-      Owners     => [
-        'MyString', ...               # OPTIONAL
-      ],                              # OPTIONAL
+      ],                                    # OPTIONAL
+      FpgaImageIds => [ 'MyString', ... ],  # OPTIONAL
+      MaxResults   => 1,                    # OPTIONAL
+      NextToken    => 'MyNextToken',        # OPTIONAL
+      Owners       => [ 'MyString', ... ],  # OPTIONAL
     );
 
     # Results:
-    my $NextToken  = $DescribeFpgaImagesResult->NextToken;
     my $FpgaImages = $DescribeFpgaImagesResult->FpgaImages;
+    my $NextToken  = $DescribeFpgaImagesResult->NextToken;
 
     # Returns a L<Paws::EC2::DescribeFpgaImagesResult> object.
 

@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $PatchGroup      = $GetPatchBaselineForPatchGroupResult->PatchGroup;
-    my $OperatingSystem = $GetPatchBaselineForPatchGroupResult->OperatingSystem;
     my $BaselineId      = $GetPatchBaselineForPatchGroupResult->BaselineId;
+    my $OperatingSystem = $GetPatchBaselineForPatchGroupResult->OperatingSystem;
+    my $PatchGroup      = $GetPatchBaselineForPatchGroupResult->PatchGroup;
 
     # Returns a L<Paws::SSM::GetPatchBaselineForPatchGroupResult> object.
 

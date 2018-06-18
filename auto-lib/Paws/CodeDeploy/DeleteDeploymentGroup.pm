@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $hooksNotCleanedUp = $DeleteDeploymentGroupOutput->hooksNotCleanedUp;
+    my $HooksNotCleanedUp = $DeleteDeploymentGroupOutput->HooksNotCleanedUp;
 
     # Returns a L<Paws::CodeDeploy::DeleteDeploymentGroupOutput> object.
 

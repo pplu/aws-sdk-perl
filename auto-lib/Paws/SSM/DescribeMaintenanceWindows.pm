@@ -32,20 +32,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeMaintenanceWindowsResult = $ssm->DescribeMaintenanceWindows(
       Filters => [
         {
+          Key    => 'MyMaintenanceWindowFilterKey', # min: 1, max: 128; OPTIONAL
           Values => [
             'MyMaintenanceWindowFilterValue', ...    # min: 1, max: 256
           ],                                         # OPTIONAL
-          Key => 'MyMaintenanceWindowFilterKey',    # min: 1, max: 128; OPTIONAL
         },
         ...
-      ],                                            # OPTIONAL
-      MaxResults => 1,                              # OPTIONAL
-      NextToken  => 'MyNextToken',                  # OPTIONAL
+      ],                                             # OPTIONAL
+      MaxResults => 1,                               # OPTIONAL
+      NextToken  => 'MyNextToken',                   # OPTIONAL
     );
 
     # Results:
-    my $WindowIdentities = $DescribeMaintenanceWindowsResult->WindowIdentities;
     my $NextToken        = $DescribeMaintenanceWindowsResult->NextToken;
+    my $WindowIdentities = $DescribeMaintenanceWindowsResult->WindowIdentities;
 
     # Returns a L<Paws::SSM::DescribeMaintenanceWindowsResult> object.
 

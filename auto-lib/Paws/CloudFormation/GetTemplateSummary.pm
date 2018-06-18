@@ -38,14 +38,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Parameters         = $GetTemplateSummaryOutput->Parameters;
-    my $Metadata           = $GetTemplateSummaryOutput->Metadata;
-    my $Version            = $GetTemplateSummaryOutput->Version;
-    my $Description        = $GetTemplateSummaryOutput->Description;
     my $Capabilities       = $GetTemplateSummaryOutput->Capabilities;
-    my $DeclaredTransforms = $GetTemplateSummaryOutput->DeclaredTransforms;
     my $CapabilitiesReason = $GetTemplateSummaryOutput->CapabilitiesReason;
+    my $DeclaredTransforms = $GetTemplateSummaryOutput->DeclaredTransforms;
+    my $Description        = $GetTemplateSummaryOutput->Description;
+    my $Metadata           = $GetTemplateSummaryOutput->Metadata;
+    my $Parameters         = $GetTemplateSummaryOutput->Parameters;
     my $ResourceTypes      = $GetTemplateSummaryOutput->ResourceTypes;
+    my $Version            = $GetTemplateSummaryOutput->Version;
 
     # Returns a L<Paws::CloudFormation::GetTemplateSummaryOutput> object.
 

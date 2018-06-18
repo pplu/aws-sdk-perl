@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NumResults   = $ListWorkerBlocksResponse->NumResults;
     my $NextToken    = $ListWorkerBlocksResponse->NextToken;
+    my $NumResults   = $ListWorkerBlocksResponse->NumResults;
     my $WorkerBlocks = $ListWorkerBlocksResponse->WorkerBlocks;
 
     # Returns a L<Paws::MTurk::ListWorkerBlocksResponse> object.

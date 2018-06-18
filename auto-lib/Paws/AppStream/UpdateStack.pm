@@ -49,10 +49,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       StorageConnectors       => [
         {
           ConnectorType => 'HOMEFOLDERS',    # values: HOMEFOLDERS, GOOGLE_DRIVE
+          Domains       => [
+            'MyDomain', ...                  # max: 64
+          ],                                 # max: 10; OPTIONAL
           ResourceIdentifier => 'MyResourceIdentifier',    # min: 1, ; OPTIONAL
-          Domains            => [
-            'MyDomain', ...                                # max: 64
-          ],                                               # max: 10; OPTIONAL
         },
         ...
       ],                                                   # OPTIONAL

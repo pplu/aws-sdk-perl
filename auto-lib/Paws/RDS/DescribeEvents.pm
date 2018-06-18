@@ -41,10 +41,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # 10,080 minutes).
     my $EventsMessage = $rds->DescribeEvents(
       {
-        'SourceIdentifier' => 'mymysqlinstance',
-        'SourceType'       => 'db-instance',
         'Duration'         => 10080,
-        'EventCategories'  => ['backup']
+        'EventCategories'  => ['backup'],
+        'SourceIdentifier' => 'mymysqlinstance',
+        'SourceType'       => 'db-instance'
       }
     );
 

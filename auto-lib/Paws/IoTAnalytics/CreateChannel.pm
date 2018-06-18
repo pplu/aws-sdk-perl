@@ -3,6 +3,7 @@ package Paws::IoTAnalytics::CreateChannel;
   use Moose;
   has ChannelName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'channelName', required => 1);
   has RetentionPeriod => (is => 'ro', isa => 'Paws::IoTAnalytics::RetentionPeriod', traits => ['NameInRequest'], request_name => 'retentionPeriod');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::Tag]', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -35,12 +36,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         numberOfDays => 1,    # min: 1, ; OPTIONAL
         unlimited    => 1,    # OPTIONAL
       },    # OPTIONAL
+      Tags => [
+        {
+          key   => 'MyTagKey',      # min: 1, max: 256
+          value => 'MyTagValue',    # min: 1, max: 256
+
+        },
+        ...
+      ],                            # OPTIONAL
     );
 
     # Results:
     my $ChannelArn      = $CreateChannelResponse->ChannelArn;
-    my $RetentionPeriod = $CreateChannelResponse->RetentionPeriod;
     my $ChannelName     = $CreateChannelResponse->ChannelName;
+    my $RetentionPeriod = $CreateChannelResponse->RetentionPeriod;
 
     # Returns a L<Paws::IoTAnalytics::CreateChannelResponse> object.
 
@@ -59,6 +68,12 @@ The name of the channel.
 =head2 RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>
 
 How long, in days, message data is kept for the channel.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::IoTAnalytics::Tag>]
+
+Metadata which can be used to manage the channel.
 
 
 

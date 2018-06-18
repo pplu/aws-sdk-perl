@@ -41,15 +41,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # HighPriority job queue.
     my $SubmitJobResponse = $batch->SubmitJob(
       {
-        'JobName'       => 'example',
         'JobDefinition' => 'sleep60',
+        'JobName'       => 'example',
         'JobQueue'      => 'HighPriority'
       }
     );
 
     # Results:
-    my $jobName = $SubmitJobResponse->jobName;
     my $jobId   = $SubmitJobResponse->jobId;
+    my $jobName = $SubmitJobResponse->jobName;
 
     # Returns a L<Paws::Batch::SubmitJobResponse> object.
 

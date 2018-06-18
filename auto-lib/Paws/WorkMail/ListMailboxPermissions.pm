@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Permissions = $ListMailboxPermissionsResponse->Permissions;
     my $NextToken   = $ListMailboxPermissionsResponse->NextToken;
+    my $Permissions = $ListMailboxPermissionsResponse->Permissions;
 
     # Returns a L<Paws::WorkMail::ListMailboxPermissionsResponse> object.
 

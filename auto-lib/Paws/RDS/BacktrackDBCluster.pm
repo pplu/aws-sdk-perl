@@ -38,13 +38,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $DBClusterIdentifier = $DBClusterBacktrack->DBClusterIdentifier;
-    my $BacktrackTo         = $DBClusterBacktrack->BacktrackTo;
-    my $Status              = $DBClusterBacktrack->Status;
-    my $BacktrackedFrom     = $DBClusterBacktrack->BacktrackedFrom;
     my $BacktrackIdentifier = $DBClusterBacktrack->BacktrackIdentifier;
     my $BacktrackRequestCreationTime =
       $DBClusterBacktrack->BacktrackRequestCreationTime;
+    my $BacktrackTo         = $DBClusterBacktrack->BacktrackTo;
+    my $BacktrackedFrom     = $DBClusterBacktrack->BacktrackedFrom;
+    my $DBClusterIdentifier = $DBClusterBacktrack->DBClusterIdentifier;
+    my $Status              = $DBClusterBacktrack->Status;
 
     # Returns a L<Paws::RDS::DBClusterBacktrack> object.
 

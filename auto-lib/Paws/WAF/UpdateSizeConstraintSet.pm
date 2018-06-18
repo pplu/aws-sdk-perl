@@ -34,22 +34,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # constraint set with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.
     my $UpdateSizeConstraintSetResponse = $waf->UpdateSizeConstraintSet(
       {
-        'Updates' => [
+        'ChangeToken'         => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
+        'SizeConstraintSetId' => 'example1ds3t-46da-4fdb-b8d5-abc321j569j5',
+        'Updates'             => [
 
           {
             'Action'         => 'DELETE',
             'SizeConstraint' => {
-              'Size'         => 0,
-              'FieldToMatch' => {
+              'ComparisonOperator' => 'GT',
+              'FieldToMatch'       => {
                 'Type' => 'QUERY_STRING'
               },
-              'ComparisonOperator' => 'GT',
+              'Size'               => 0,
               'TextTransformation' => 'NONE'
             }
           }
-        ],
-        'ChangeToken'         => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
-        'SizeConstraintSetId' => 'example1ds3t-46da-4fdb-b8d5-abc321j569j5'
+        ]
       }
     );
 

@@ -35,20 +35,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateSizeConstraintSetResponse =
       $waf -regional->UpdateSizeConstraintSet(
       {
-        'SizeConstraintSetId' => 'example1ds3t-46da-4fdb-b8d5-abc321j569j5',
         'ChangeToken'         => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
+        'SizeConstraintSetId' => 'example1ds3t-46da-4fdb-b8d5-abc321j569j5',
         'Updates'             => [
 
           {
+            'Action'         => 'DELETE',
             'SizeConstraint' => {
-              'Size'               => 0,
               'ComparisonOperator' => 'GT',
-              'TextTransformation' => 'NONE',
               'FieldToMatch'       => {
                 'Type' => 'QUERY_STRING'
-              }
-            },
-            'Action' => 'DELETE'
+              },
+              'Size'               => 0,
+              'TextTransformation' => 'NONE'
+            }
           }
         ]
       }

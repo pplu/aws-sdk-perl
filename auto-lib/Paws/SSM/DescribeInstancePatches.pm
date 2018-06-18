@@ -46,8 +46,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Patches   = $DescribeInstancePatchesResult->Patches;
     my $NextToken = $DescribeInstancePatchesResult->NextToken;
+    my $Patches   = $DescribeInstancePatchesResult->Patches;
 
     # Returns a L<Paws::SSM::DescribeInstancePatchesResult> object.
 

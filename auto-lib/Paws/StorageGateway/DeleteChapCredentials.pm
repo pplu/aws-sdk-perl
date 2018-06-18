@@ -33,16 +33,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # a specified iSCSI target and initiator pair.
     my $DeleteChapCredentialsOutput = $storagegateway->DeleteChapCredentials(
       {
-        'TargetARN' =>
-'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume',
         'InitiatorName' =>
-          'iqn.1991-05.com.microsoft:computername.domain.example.com'
+          'iqn.1991-05.com.microsoft:computername.domain.example.com',
+        'TargetARN' =>
+'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume'
       }
     );
 
     # Results:
-    my $TargetARN     = $DeleteChapCredentialsOutput->TargetARN;
     my $InitiatorName = $DeleteChapCredentialsOutput->InitiatorName;
+    my $TargetARN     = $DeleteChapCredentialsOutput->TargetARN;
 
     # Returns a L<Paws::StorageGateway::DeleteChapCredentialsOutput> object.
 

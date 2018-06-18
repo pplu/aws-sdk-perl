@@ -37,12 +37,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $Definition = $GetCoreDefinitionVersionResponse->Definition;
+    my $Arn = $GetCoreDefinitionVersionResponse->Arn;
     my $CreationTimestamp =
       $GetCoreDefinitionVersionResponse->CreationTimestamp;
-    my $Arn     = $GetCoreDefinitionVersionResponse->Arn;
-    my $Id      = $GetCoreDefinitionVersionResponse->Id;
-    my $Version = $GetCoreDefinitionVersionResponse->Version;
+    my $Definition = $GetCoreDefinitionVersionResponse->Definition;
+    my $Id         = $GetCoreDefinitionVersionResponse->Id;
+    my $Version    = $GetCoreDefinitionVersionResponse->Version;
 
     # Returns a L<Paws::Greengrass::GetCoreDefinitionVersionResponse> object.
 

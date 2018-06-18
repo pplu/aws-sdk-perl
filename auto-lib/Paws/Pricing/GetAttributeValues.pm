@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken       = $GetAttributeValuesResponse->NextToken;
     my $AttributeValues = $GetAttributeValuesResponse->AttributeValues;
+    my $NextToken       = $GetAttributeValuesResponse->NextToken;
 
     # Returns a L<Paws::Pricing::GetAttributeValuesResponse> object.
 

@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken = $GetIntentsResponse->NextToken;
     my $Intents   = $GetIntentsResponse->Intents;
+    my $NextToken = $GetIntentsResponse->NextToken;
 
     # Returns a L<Paws::LexModels::GetIntentsResponse> object.
 

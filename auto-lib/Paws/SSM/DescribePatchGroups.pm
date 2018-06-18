@@ -32,15 +32,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribePatchGroupsResult = $ssm->DescribePatchGroups(
       Filters => [
         {
+          Key    => 'MyPatchOrchestratorFilterKey', # min: 1, max: 128; OPTIONAL
           Values => [
             'MyPatchOrchestratorFilterValue', ...    # min: 1, max: 256
           ],                                         # OPTIONAL
-          Key => 'MyPatchOrchestratorFilterKey',    # min: 1, max: 128; OPTIONAL
         },
         ...
-      ],                                            # OPTIONAL
-      MaxResults => 1,                              # OPTIONAL
-      NextToken  => 'MyNextToken',                  # OPTIONAL
+      ],                                             # OPTIONAL
+      MaxResults => 1,                               # OPTIONAL
+      NextToken  => 'MyNextToken',                   # OPTIONAL
     );
 
     # Results:

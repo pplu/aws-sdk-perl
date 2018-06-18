@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Availability Zones for the specified subnets.
     my $CreateLoadBalancerOutput = $elasticloadbalancing->CreateLoadBalancer(
       {
-        'Subnets' => [ 'subnet-b7d581c0', 'subnet-8360a9e7' ],
-        'Name'    => 'my-load-balancer'
+        'Name'    => 'my-load-balancer',
+        'Subnets' => [ 'subnet-b7d581c0', 'subnet-8360a9e7' ]
       }
     );
 
@@ -53,12 +53,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # Zones for the specified subnets.
     my $CreateLoadBalancerOutput = $elasticloadbalancing->CreateLoadBalancer(
       {
-        'Subnets'        => [ 'subnet-b7d581c0', 'subnet-8360a9e7' ],
         'Name'           => 'my-internal-load-balancer',
+        'Scheme'         => 'internal',
         'SecurityGroups' => [
 
         ],
-        'Scheme' => 'internal'
+        'Subnets' => [ 'subnet-b7d581c0', 'subnet-8360a9e7' ]
       }
     );
 

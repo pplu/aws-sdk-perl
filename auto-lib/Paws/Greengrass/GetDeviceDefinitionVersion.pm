@@ -37,10 +37,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $Arn = $GetDeviceDefinitionVersionResponse->Arn;
     my $CreationTimestamp =
       $GetDeviceDefinitionVersionResponse->CreationTimestamp;
     my $Definition = $GetDeviceDefinitionVersionResponse->Definition;
-    my $Arn        = $GetDeviceDefinitionVersionResponse->Arn;
     my $Id         = $GetDeviceDefinitionVersionResponse->Id;
     my $Version    = $GetDeviceDefinitionVersionResponse->Version;
 

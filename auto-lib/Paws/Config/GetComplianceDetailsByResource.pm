@@ -42,9 +42,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $NextToken = $GetComplianceDetailsByResourceResponse->NextToken;
     my $EvaluationResults =
       $GetComplianceDetailsByResourceResponse->EvaluationResults;
+    my $NextToken = $GetComplianceDetailsByResourceResponse->NextToken;
 
     # Returns a L<Paws::Config::GetComplianceDetailsByResourceResponse> object.
 

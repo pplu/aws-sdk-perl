@@ -40,11 +40,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $TotalUpfrontPrice = $PurchaseHostReservationResult->TotalUpfrontPrice;
-    my $Purchase          = $PurchaseHostReservationResult->Purchase;
-    my $TotalHourlyPrice  = $PurchaseHostReservationResult->TotalHourlyPrice;
     my $ClientToken       = $PurchaseHostReservationResult->ClientToken;
     my $CurrencyCode      = $PurchaseHostReservationResult->CurrencyCode;
+    my $Purchase          = $PurchaseHostReservationResult->Purchase;
+    my $TotalHourlyPrice  = $PurchaseHostReservationResult->TotalHourlyPrice;
+    my $TotalUpfrontPrice = $PurchaseHostReservationResult->TotalUpfrontPrice;
 
     # Returns a L<Paws::EC2::PurchaseHostReservationResult> object.
 

@@ -44,8 +44,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $KeyId          = $GenerateDataKeyResponse->KeyId;
     my $CiphertextBlob = $GenerateDataKeyResponse->CiphertextBlob;
+    my $KeyId          = $GenerateDataKeyResponse->KeyId;
     my $Plaintext      = $GenerateDataKeyResponse->Plaintext;
 
     # Returns a L<Paws::KMS::GenerateDataKeyResponse> object.

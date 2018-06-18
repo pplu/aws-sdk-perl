@@ -42,14 +42,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       OpenIDConnectConfig => {
         issuer   => 'MyString',
-        iatTTL   => 1,            # OPTIONAL
         authTTL  => 1,            # OPTIONAL
         clientId => 'MyString',
+        iatTTL   => 1,            # OPTIONAL
       },    # OPTIONAL
       UserPoolConfig => {
+        awsRegion        => 'MyString',
         defaultAction    => 'ALLOW',      # values: ALLOW, DENY
         userPoolId       => 'MyString',
-        awsRegion        => 'MyString',
         appIdClientRegex => 'MyString',
       },    # OPTIONAL
     );

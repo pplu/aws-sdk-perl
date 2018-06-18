@@ -49,18 +49,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             StartMode => 'FIRST'
             , # values: FIRST, LAST, LAST_BEFORE_MISSING_VALUES, INCLUSIVE, EXCLUSIVE
             EndValue => {
+              BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
               BooleanValue  => 1,                             # OPTIONAL
               DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
-              StringValue   => 'MyStringAttributeValue',      # OPTIONAL
               NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
-              BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
+              StringValue   => 'MyStringAttributeValue',      # OPTIONAL
             },    # OPTIONAL
             StartValue => {
+              BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
               BooleanValue  => 1,                             # OPTIONAL
               DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
-              StringValue   => 'MyStringAttributeValue',      # OPTIONAL
               NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
-              BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
+              StringValue   => 'MyStringAttributeValue',      # OPTIONAL
             },    # OPTIONAL
           },
           AttributeName => 'MyAttributeName',    # min: 1, max: 64; OPTIONAL
@@ -77,8 +77,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $NextToken      = $ListIncomingTypedLinksResponse->NextToken;
     my $LinkSpecifiers = $ListIncomingTypedLinksResponse->LinkSpecifiers;
+    my $NextToken      = $ListIncomingTypedLinksResponse->NextToken;
 
     # Returns a L<Paws::CloudDirectory::ListIncomingTypedLinksResponse> object.
 

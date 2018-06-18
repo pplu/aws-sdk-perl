@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken        = $DescribeDirectoryConfigsResult->NextToken;
     my $DirectoryConfigs = $DescribeDirectoryConfigsResult->DirectoryConfigs;
+    my $NextToken        = $DescribeDirectoryConfigsResult->NextToken;
 
     # Returns a L<Paws::AppStream::DescribeDirectoryConfigsResult> object.
 

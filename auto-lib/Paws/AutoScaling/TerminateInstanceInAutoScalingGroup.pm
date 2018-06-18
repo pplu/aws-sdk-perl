@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # a replacement instance after the specified instance terminates.
     my $ActivityType = $autoscaling->TerminateInstanceInAutoScalingGroup(
       {
-        'ShouldDecrementDesiredCapacity' => 0,
-        'InstanceId'                     => 'i-93633f9b'
+        'InstanceId'                     => 'i-93633f9b',
+        'ShouldDecrementDesiredCapacity' => 0
       }
     );
 

@@ -41,11 +41,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $VolumeId   = $VolumeAttachment->VolumeId;
-    my $InstanceId = $VolumeAttachment->InstanceId;
     my $AttachTime = $VolumeAttachment->AttachTime;
     my $Device     = $VolumeAttachment->Device;
+    my $InstanceId = $VolumeAttachment->InstanceId;
     my $State      = $VolumeAttachment->State;
+    my $VolumeId   = $VolumeAttachment->VolumeId;
 
     # Returns a L<Paws::EC2::VolumeAttachment> object.
 

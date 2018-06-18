@@ -33,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $vpceConfiguration = $GetVPCEConfigurationResult->vpceConfiguration;
+    my $VpceConfiguration = $GetVPCEConfigurationResult->VpceConfiguration;
 
     # Returns a L<Paws::DeviceFarm::GetVPCEConfigurationResult> object.
 

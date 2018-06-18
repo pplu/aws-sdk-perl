@@ -45,20 +45,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $PartNumberMarker     = $ListPartsOutput->PartNumberMarker;
-    my $NextPartNumberMarker = $ListPartsOutput->NextPartNumberMarker;
-    my $MaxParts             = $ListPartsOutput->MaxParts;
-    my $StorageClass         = $ListPartsOutput->StorageClass;
-    my $Owner                = $ListPartsOutput->Owner;
-    my $RequestCharged       = $ListPartsOutput->RequestCharged;
     my $AbortDate            = $ListPartsOutput->AbortDate;
-    my $UploadId             = $ListPartsOutput->UploadId;
-    my $Parts                = $ListPartsOutput->Parts;
-    my $IsTruncated          = $ListPartsOutput->IsTruncated;
     my $AbortRuleId          = $ListPartsOutput->AbortRuleId;
-    my $Initiator            = $ListPartsOutput->Initiator;
-    my $Key                  = $ListPartsOutput->Key;
     my $Bucket               = $ListPartsOutput->Bucket;
+    my $Initiator            = $ListPartsOutput->Initiator;
+    my $IsTruncated          = $ListPartsOutput->IsTruncated;
+    my $Key                  = $ListPartsOutput->Key;
+    my $MaxParts             = $ListPartsOutput->MaxParts;
+    my $NextPartNumberMarker = $ListPartsOutput->NextPartNumberMarker;
+    my $Owner                = $ListPartsOutput->Owner;
+    my $PartNumberMarker     = $ListPartsOutput->PartNumberMarker;
+    my $Parts                = $ListPartsOutput->Parts;
+    my $RequestCharged       = $ListPartsOutput->RequestCharged;
+    my $StorageClass         = $ListPartsOutput->StorageClass;
+    my $UploadId             = $ListPartsOutput->UploadId;
 
     # Returns a L<Paws::S3::ListPartsOutput> object.
 

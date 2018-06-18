@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Limit = $GetHostedZoneLimitResponse->Limit;
     my $Count = $GetHostedZoneLimitResponse->Count;
+    my $Limit = $GetHostedZoneLimitResponse->Limit;
 
     # Returns a L<Paws::Route53::GetHostedZoneLimitResponse> object.
 

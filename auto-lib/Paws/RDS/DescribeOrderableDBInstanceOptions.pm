@@ -41,11 +41,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $OrderableDBInstanceOptionsMessage =
       $rds->DescribeOrderableDBInstanceOptions(
       {
+        'DBInstanceClass' => 'db.t2.micro',
+        'Engine'          => 'mysql',
         'EngineVersion'   => '5.6.27',
         'LicenseModel'    => 'general-public-license',
-        'Engine'          => 'mysql',
-        'Vpc'             => true,
-        'DBInstanceClass' => 'db.t2.micro'
+        'Vpc'             => true
       }
       );
 

@@ -34,24 +34,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $EngineVersion      = $DescribeBrokerResponse->EngineVersion;
-    my $SubnetIds          = $DescribeBrokerResponse->SubnetIds;
-    my $EngineType         = $DescribeBrokerResponse->EngineType;
-    my $BrokerId           = $DescribeBrokerResponse->BrokerId;
-    my $BrokerInstances    = $DescribeBrokerResponse->BrokerInstances;
-    my $SecurityGroups     = $DescribeBrokerResponse->SecurityGroups;
-    my $BrokerState        = $DescribeBrokerResponse->BrokerState;
-    my $Users              = $DescribeBrokerResponse->Users;
-    my $BrokerName         = $DescribeBrokerResponse->BrokerName;
-    my $Configurations     = $DescribeBrokerResponse->Configurations;
-    my $PubliclyAccessible = $DescribeBrokerResponse->PubliclyAccessible;
     my $AutoMinorVersionUpgrade =
       $DescribeBrokerResponse->AutoMinorVersionUpgrade;
-    my $HostInstanceType = $DescribeBrokerResponse->HostInstanceType;
     my $BrokerArn        = $DescribeBrokerResponse->BrokerArn;
+    my $BrokerId         = $DescribeBrokerResponse->BrokerId;
+    my $BrokerInstances  = $DescribeBrokerResponse->BrokerInstances;
+    my $BrokerName       = $DescribeBrokerResponse->BrokerName;
+    my $BrokerState      = $DescribeBrokerResponse->BrokerState;
+    my $Configurations   = $DescribeBrokerResponse->Configurations;
     my $DeploymentMode   = $DescribeBrokerResponse->DeploymentMode;
+    my $EngineType       = $DescribeBrokerResponse->EngineType;
+    my $EngineVersion    = $DescribeBrokerResponse->EngineVersion;
+    my $HostInstanceType = $DescribeBrokerResponse->HostInstanceType;
     my $MaintenanceWindowStartTime =
       $DescribeBrokerResponse->MaintenanceWindowStartTime;
+    my $PubliclyAccessible = $DescribeBrokerResponse->PubliclyAccessible;
+    my $SecurityGroups     = $DescribeBrokerResponse->SecurityGroups;
+    my $SubnetIds          = $DescribeBrokerResponse->SubnetIds;
+    my $Users              = $DescribeBrokerResponse->Users;
 
     # Returns a L<Paws::MQ::DescribeBrokerResponse> object.
 

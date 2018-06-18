@@ -1,4 +1,8 @@
-0.37
+0.38 19 Jun 2018
+ - Fix test suite so that credentials_process tests don't need extra modules (#251, #248)
+ - API updates for any service up to the date of release
+
+0.37 13 Jun 2018
  - Big refactor of all result handling for all services
  - Support for credential_process in credential handlers
    https://docs.aws.amazon.com/cli/latest/topic/config-vars.html#sourcing-credentials-from-external-processes

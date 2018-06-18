@@ -34,13 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $RegisterEndPointsOutput =
       $elasticloadbalancing->RegisterInstancesWithLoadBalancer(
       {
-        'LoadBalancerName' => 'my-load-balancer',
-        'Instances'        => [
+        'Instances' => [
 
           {
             'InstanceId' => 'i-d6f6fae3'
           }
-        ]
+        ],
+        'LoadBalancerName' => 'my-load-balancer'
       }
       );
 

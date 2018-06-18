@@ -31,57 +31,59 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $AddInstanceFleetOutput = $elasticmapreduce->AddInstanceFleet(
       ClusterId     => 'MyXmlStringMaxLen256',
       InstanceFleet => {
-        InstanceFleetType    => 'MASTER',    # values: MASTER, CORE, TASK
-        LaunchSpecifications => {
-          SpotSpecification => {
-            TimeoutDurationMinutes => 1,                      # OPTIONAL
-            TimeoutAction          => 'SWITCH_TO_ON_DEMAND'
-            ,    # values: SWITCH_TO_ON_DEMAND, TERMINATE_CLUSTER
-            BlockDurationMinutes => 1,    # OPTIONAL
-          },
-
-        },    # OPTIONAL
-        TargetOnDemandCapacity => 1,                         # OPTIONAL
-        Name                   => 'MyXmlStringMaxLen256',    # max: 256
-        TargetSpotCapacity     => 1,                         # OPTIONAL
-        InstanceTypeConfigs    => [
+        InstanceFleetType   => 'MASTER',    # values: MASTER, CORE, TASK
+        InstanceTypeConfigs => [
           {
-            InstanceType => 'MyInstanceType',                # min: 1, max: 256
-            BidPriceAsPercentageOfOnDemandPrice => 1,        # OPTIONAL
-            BidPrice         => 'MyXmlStringMaxLen256',      # max: 256
-            WeightedCapacity => 1,                           # OPTIONAL
-            Configurations   => [
+            InstanceType => 'MyInstanceType',          # min: 1, max: 256
+            BidPrice     => 'MyXmlStringMaxLen256',    # max: 256
+            BidPriceAsPercentageOfOnDemandPrice => 1,  # OPTIONAL
+            Configurations                      => [
               {
-                Properties     => { 'MyString' => 'MyString', },    # OPTIONAL
+                Classification => 'MyString',            # OPTIONAL
                 Configurations => <ConfigurationList>,
-                Classification => 'MyString',
+                Properties     => {
+                  'MyString' => 'MyString',    # key: OPTIONAL, value: OPTIONAL
+                },    # OPTIONAL
               },
               ...
-            ],                                                      # OPTIONAL
+            ],        # OPTIONAL
             EbsConfiguration => {
               EbsBlockDeviceConfigs => [
                 {
                   VolumeSpecification => {
                     SizeInGB   => 1,
-                    VolumeType => 'MyString',
+                    VolumeType => 'MyString',    # OPTIONAL
                     Iops       => 1,
                   },
                   VolumesPerInstance => 1,
                 },
                 ...
-              ],                                                    # OPTIONAL
-              EbsOptimized => 1,                                    # OPTIONAL
+              ],                                 # OPTIONAL
+              EbsOptimized => 1,                 # OPTIONAL
             },    # OPTIONAL
+            WeightedCapacity => 1,
           },
           ...
         ],        # OPTIONAL
+        LaunchSpecifications => {
+          SpotSpecification => {
+            TimeoutAction => 'SWITCH_TO_ON_DEMAND'
+            ,     # values: SWITCH_TO_ON_DEMAND, TERMINATE_CLUSTER
+            TimeoutDurationMinutes => 1,
+            BlockDurationMinutes   => 1,
+          },
+
+        },    # OPTIONAL
+        Name                   => 'MyXmlStringMaxLen256',    # max: 256
+        TargetOnDemandCapacity => 1,
+        TargetSpotCapacity     => 1,
       },
 
     );
 
     # Results:
-    my $InstanceFleetId = $AddInstanceFleetOutput->InstanceFleetId;
     my $ClusterId       = $AddInstanceFleetOutput->ClusterId;
+    my $InstanceFleetId = $AddInstanceFleetOutput->InstanceFleetId;
 
     # Returns a L<Paws::EMR::AddInstanceFleetOutput> object.
 

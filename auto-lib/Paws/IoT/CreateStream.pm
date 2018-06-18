@@ -34,12 +34,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateStreamResponse = $iot->CreateStream(
       Files => [
         {
+          fileId     => 1,    # max: 255; OPTIONAL
           s3Location => {
-            key     => 'MyS3Key',        # min: 1,
             bucket  => 'MyS3Bucket',     # min: 1,
+            key     => 'MyS3Key',        # min: 1,
             version => 'MyS3Version',    # OPTIONAL
           },    # OPTIONAL
-          fileId => 1,    # max: 255; OPTIONAL
         },
         ...
       ],
@@ -49,10 +49,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $StreamVersion = $CreateStreamResponse->StreamVersion;
     my $Description   = $CreateStreamResponse->Description;
-    my $StreamId      = $CreateStreamResponse->StreamId;
     my $StreamArn     = $CreateStreamResponse->StreamArn;
+    my $StreamId      = $CreateStreamResponse->StreamId;
+    my $StreamVersion = $CreateStreamResponse->StreamVersion;
 
     # Returns a L<Paws::IoT::CreateStreamResponse> object.
 

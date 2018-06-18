@@ -57,8 +57,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     $autoscaling->UpdateAutoScalingGroup(
       {
         'AutoScalingGroupName' => 'my-auto-scaling-group',
-        'MinSize'              => 1,
-        'MaxSize'              => 3
+        'MaxSize'              => 3,
+        'MinSize'              => 1
       }
     );
 

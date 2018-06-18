@@ -41,8 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name                           => 'MyNonZeroAndMaxString',    # OPTIONAL
       NewGameSessionProtectionPolicy => 'NoProtection',             # OPTIONAL
       ResourceCreationLimitPolicy    => {
-        PolicyPeriodInMinutes     => 1,                             # OPTIONAL
         NewGameSessionsPerCreator => 1,                             # OPTIONAL
+        PolicyPeriodInMinutes     => 1,                             # OPTIONAL
       },    # OPTIONAL
     );
 

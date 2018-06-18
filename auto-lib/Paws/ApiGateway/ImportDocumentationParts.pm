@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Warnings = $DocumentationPartIds->Warnings;
     my $Ids      = $DocumentationPartIds->Ids;
+    my $Warnings = $DocumentationPartIds->Warnings;
 
     # Returns a L<Paws::ApiGateway::DocumentationPartIds> object.
 

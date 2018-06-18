@@ -44,8 +44,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AutoMinorVersionUpgrade => 1,               # OPTIONAL
       BrokerName              => 'My__string',    # OPTIONAL
       Configuration           => {
-        Revision => 1,                            # OPTIONAL
         Id       => 'My__string',
+        Revision => 1,                            # OPTIONAL
       },    # OPTIONAL
       CreatorRequestId           => 'My__string',         # OPTIONAL
       DeploymentMode             => 'SINGLE_INSTANCE',    # OPTIONAL
@@ -53,20 +53,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EngineVersion              => 'My__string',         # OPTIONAL
       HostInstanceType           => 'My__string',         # OPTIONAL
       MaintenanceWindowStartTime => {
-        TimeZone  => 'My__string',
         DayOfWeek => 'MONDAY'
         , # values: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY; OPTIONAL
         TimeOfDay => 'My__string',
+        TimeZone  => 'My__string',
       },    # OPTIONAL
       PubliclyAccessible => 1,                        # OPTIONAL
       SecurityGroups     => [ 'My__string', ... ],    # OPTIONAL
       SubnetIds          => [ 'My__string', ... ],    # OPTIONAL
       Users              => [
         {
-          Username      => 'My__string',
-          Password      => 'My__string',
           ConsoleAccess => 1,
           Groups        => [ 'My__string', ... ],
+          Password      => 'My__string',
+          Username      => 'My__string',
         },
         ...
       ],                                              # OPTIONAL

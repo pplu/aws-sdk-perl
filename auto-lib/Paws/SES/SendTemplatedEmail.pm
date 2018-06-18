@@ -39,9 +39,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $email = Paws->service('SES');
     my $SendTemplatedEmailResponse = $email->SendTemplatedEmail(
       Destination => {
-        ToAddresses  => [ 'MyAddress', ... ],    # OPTIONAL
         BccAddresses => [ 'MyAddress', ... ],    # OPTIONAL
         CcAddresses  => [ 'MyAddress', ... ],    # OPTIONAL
+        ToAddresses  => [ 'MyAddress', ... ],    # OPTIONAL
       },
       Source               => 'MyAddress',
       Template             => 'MyTemplateName',

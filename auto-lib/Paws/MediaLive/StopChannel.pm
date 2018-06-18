@@ -35,17 +35,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $Arn                   = $StopChannelResponse->Arn;
-    my $InputAttachments      = $StopChannelResponse->InputAttachments;
-    my $Name                  = $StopChannelResponse->Name;
-    my $Id                    = $StopChannelResponse->Id;
+    my $Destinations          = $StopChannelResponse->Destinations;
     my $EgressEndpoints       = $StopChannelResponse->EgressEndpoints;
     my $EncoderSettings       = $StopChannelResponse->EncoderSettings;
-    my $Destinations          = $StopChannelResponse->Destinations;
-    my $LogLevel              = $StopChannelResponse->LogLevel;
-    my $PipelinesRunningCount = $StopChannelResponse->PipelinesRunningCount;
-    my $State                 = $StopChannelResponse->State;
-    my $RoleArn               = $StopChannelResponse->RoleArn;
+    my $Id                    = $StopChannelResponse->Id;
+    my $InputAttachments      = $StopChannelResponse->InputAttachments;
     my $InputSpecification    = $StopChannelResponse->InputSpecification;
+    my $LogLevel              = $StopChannelResponse->LogLevel;
+    my $Name                  = $StopChannelResponse->Name;
+    my $PipelinesRunningCount = $StopChannelResponse->PipelinesRunningCount;
+    my $RoleArn               = $StopChannelResponse->RoleArn;
+    my $State                 = $StopChannelResponse->State;
 
     # Returns a L<Paws::MediaLive::StopChannelResponse> object.
 

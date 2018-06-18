@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $InvokeDeviceMethodResponse = $devices . iot1click->InvokeDeviceMethod(
       DeviceId     => 'My__string',
       DeviceMethod => {
-        MethodName => 'My__string',
         DeviceType => 'My__string',
+        MethodName => 'My__string',
       },    # OPTIONAL
       DeviceMethodParameters => 'My__string',    # OPTIONAL
     );

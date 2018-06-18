@@ -35,24 +35,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Values => [
-            'MyString', ...    # OPTIONAL
-          ],                   # OPTIONAL
-          Name => 'MyString',  # OPTIONAL
+          Name   => 'MyString',
+          Values => [ 'MyString', ... ],    # OPTIONAL
         },
         ...
-      ],                       # OPTIONAL
-      MaxResults => 1,             # OPTIONAL
-      NextToken  => 'MyString',    # OPTIONAL
-      VolumeIds  => [
-        'MyString', ...            # OPTIONAL
-      ],                           # OPTIONAL
+      ],                                    # OPTIONAL
+      MaxResults => 1,                      # OPTIONAL
+      NextToken  => 'MyString',             # OPTIONAL
+      VolumeIds  => [ 'MyString', ... ],    # OPTIONAL
     );
 
     # Results:
+    my $NextToken = $DescribeVolumesModificationsResult->NextToken;
     my $VolumesModifications =
       $DescribeVolumesModificationsResult->VolumesModifications;
-    my $NextToken = $DescribeVolumesModificationsResult->NextToken;
 
     # Returns a L<Paws::EC2::DescribeVolumesModificationsResult> object.
 

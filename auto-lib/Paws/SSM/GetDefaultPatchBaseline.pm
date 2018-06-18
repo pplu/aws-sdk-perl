@@ -32,8 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $OperatingSystem = $GetDefaultPatchBaselineResult->OperatingSystem;
     my $BaselineId      = $GetDefaultPatchBaselineResult->BaselineId;
+    my $OperatingSystem = $GetDefaultPatchBaselineResult->OperatingSystem;
 
     # Returns a L<Paws::SSM::GetDefaultPatchBaselineResult> object.
 

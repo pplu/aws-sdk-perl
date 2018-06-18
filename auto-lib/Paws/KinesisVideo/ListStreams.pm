@@ -34,14 +34,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MaxResults          => 1,                # OPTIONAL
       NextToken           => 'MyNextToken',    # OPTIONAL
       StreamNameCondition => {
-        ComparisonValue    => 'MyStreamName',    # min: 1, max: 256; OPTIONAL
         ComparisonOperator => 'BEGINS_WITH',     # values: BEGINS_WITH; OPTIONAL
+        ComparisonValue    => 'MyStreamName',    # min: 1, max: 256; OPTIONAL
       },    # OPTIONAL
     );
 
     # Results:
-    my $StreamInfoList = $ListStreamsOutput->StreamInfoList;
     my $NextToken      = $ListStreamsOutput->NextToken;
+    my $StreamInfoList = $ListStreamsOutput->StreamInfoList;
 
     # Returns a L<Paws::KinesisVideo::ListStreamsOutput> object.
 

@@ -37,12 +37,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Creates one or more virtual tapes.
     my $CreateTapesOutput = $storagegateway->CreateTapes(
       {
+        'ClientToken' => 77777,
         'GatewayARN' =>
           'arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B',
         'NumTapesToCreate'  => 3,
-        'TapeSizeInBytes'   => 107374182400,
-        'ClientToken'       => 77777,
-        'TapeBarcodePrefix' => 'TEST'
+        'TapeBarcodePrefix' => 'TEST',
+        'TapeSizeInBytes'   => 107374182400
       }
     );
 

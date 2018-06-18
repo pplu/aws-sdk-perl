@@ -43,23 +43,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $PaymentDue   = $GetReservedInstancesExchangeQuoteResult->PaymentDue;
     my $CurrencyCode = $GetReservedInstancesExchangeQuoteResult->CurrencyCode;
-    my $ReservedInstanceValueSet =
-      $GetReservedInstancesExchangeQuoteResult->ReservedInstanceValueSet;
-    my $TargetConfigurationValueSet =
-      $GetReservedInstancesExchangeQuoteResult->TargetConfigurationValueSet;
+    my $IsValidExchange =
+      $GetReservedInstancesExchangeQuoteResult->IsValidExchange;
     my $OutputReservedInstancesWillExpireAt =
       $GetReservedInstancesExchangeQuoteResult
       ->OutputReservedInstancesWillExpireAt;
+    my $PaymentDue = $GetReservedInstancesExchangeQuoteResult->PaymentDue;
     my $ReservedInstanceValueRollup =
       $GetReservedInstancesExchangeQuoteResult->ReservedInstanceValueRollup;
-    my $IsValidExchange =
-      $GetReservedInstancesExchangeQuoteResult->IsValidExchange;
-    my $ValidationFailureReason =
-      $GetReservedInstancesExchangeQuoteResult->ValidationFailureReason;
+    my $ReservedInstanceValueSet =
+      $GetReservedInstancesExchangeQuoteResult->ReservedInstanceValueSet;
     my $TargetConfigurationValueRollup =
       $GetReservedInstancesExchangeQuoteResult->TargetConfigurationValueRollup;
+    my $TargetConfigurationValueSet =
+      $GetReservedInstancesExchangeQuoteResult->TargetConfigurationValueSet;
+    my $ValidationFailureReason =
+      $GetReservedInstancesExchangeQuoteResult->ValidationFailureReason;
 
     # Returns a L<Paws::EC2::GetReservedInstancesExchangeQuoteResult> object.
 

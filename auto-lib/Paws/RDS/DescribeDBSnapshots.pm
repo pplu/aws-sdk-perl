@@ -39,10 +39,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # DB instance.
     my $DBSnapshotMessage = $rds->DescribeDBSnapshots(
       {
-        'IncludeShared'        => true,
-        'SnapshotType'         => 'manual',
+        'DBInstanceIdentifier' => 'mymysqlinstance',
         'IncludePublic'        => 0,
-        'DBInstanceIdentifier' => 'mymysqlinstance'
+        'IncludeShared'        => true,
+        'SnapshotType'         => 'manual'
       }
     );
 

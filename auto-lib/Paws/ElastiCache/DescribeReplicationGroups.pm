@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ReplicationGroups = $ReplicationGroupMessage->ReplicationGroups;
     my $Marker            = $ReplicationGroupMessage->Marker;
+    my $ReplicationGroups = $ReplicationGroupMessage->ReplicationGroups;
 
     # Returns a L<Paws::ElastiCache::ReplicationGroupMessage> object.
 

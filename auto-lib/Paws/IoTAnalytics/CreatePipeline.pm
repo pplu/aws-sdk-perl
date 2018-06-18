@@ -3,6 +3,7 @@ package Paws::IoTAnalytics::CreatePipeline;
   use Moose;
   has PipelineActivities => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::PipelineActivity]', traits => ['NameInRequest'], request_name => 'pipelineActivities', required => 1);
   has PipelineName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineName', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::Tag]', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -32,74 +33,81 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreatePipelineResponse = $iotanalytics->CreatePipeline(
       PipelineActivities => [
         {
-          deviceShadowEnrich => {
-            roleArn   => 'MyRoleArn',          # min: 20, max: 2048
-            name      => 'MyActivityName',     # min: 1, max: 128
-            attribute => 'MyAttributeName',    # min: 1, max: 256
-            thingName => 'MyAttributeName',    # min: 1, max: 256
-            next      => 'MyActivityName',     # min: 1, max: 128
-          },    # OPTIONAL
-          filter => {
-            name   => 'MyActivityName',        # min: 1, max: 128
-            filter => 'MyFilterExpression',    # min: 1, max: 256
-            next   => 'MyActivityName',        # min: 1, max: 128
-          },    # OPTIONAL
-          math => {
-            name      => 'MyActivityName',      # min: 1, max: 128
-            attribute => 'MyAttributeName',     # min: 1, max: 256
-            math      => 'MyMathExpression',    # min: 1, max: 256
-            next      => 'MyActivityName',      # min: 1, max: 128
-          },    # OPTIONAL
-          removeAttributes => {
-            name       => 'MyActivityName',    # min: 1, max: 128
-            attributes => [
-              'MyAttributeName', ...           # min: 1, max: 256
-            ],                                 # min: 1, max: 50
-            next => 'MyActivityName',          # min: 1, max: 128
-          },    # OPTIONAL
           addAttributes => {
-            name       => 'MyActivityName',    # min: 1, max: 128
             attributes => {
               'MyAttributeName' => 'MyAttributeName'
               ,    # key: min: 1, max: 256, value: min: 1, max: 256
             },    # min: 1, max: 50
+            name => 'MyActivityName',    # min: 1, max: 128
             next => 'MyActivityName',    # min: 1, max: 128
           },    # OPTIONAL
+          channel => {
+            channelName => 'MyChannelName',     # min: 1, max: 128
+            name        => 'MyActivityName',    # min: 1, max: 128
+            next        => 'MyActivityName',    # min: 1, max: 128
+          },    # OPTIONAL
+          datastore => {
+            datastoreName => 'MyDatastoreName',    # min: 1, max: 128
+            name          => 'MyActivityName',     # min: 1, max: 128
+
+          },    # OPTIONAL
           deviceRegistryEnrich => {
+            attribute => 'MyAttributeName',    # min: 1, max: 256
             name      => 'MyActivityName',     # min: 1, max: 128
             roleArn   => 'MyRoleArn',          # min: 20, max: 2048
-            attribute => 'MyAttributeName',    # min: 1, max: 256
             thingName => 'MyAttributeName',    # min: 1, max: 256
             next      => 'MyActivityName',     # min: 1, max: 128
           },    # OPTIONAL
+          deviceShadowEnrich => {
+            attribute => 'MyAttributeName',    # min: 1, max: 256
+            name      => 'MyActivityName',     # min: 1, max: 128
+            roleArn   => 'MyRoleArn',          # min: 20, max: 2048
+            thingName => 'MyAttributeName',    # min: 1, max: 256
+            next      => 'MyActivityName',     # min: 1, max: 128
+          },    # OPTIONAL
+          filter => {
+            filter => 'MyFilterExpression',    # min: 1, max: 256
+            name   => 'MyActivityName',        # min: 1, max: 128
+            next   => 'MyActivityName',        # min: 1, max: 128
+          },    # OPTIONAL
           lambda => {
-            name       => 'MyActivityName',    # min: 1, max: 128
-            lambdaName => 'MyLambdaName',      # min: 1, max: 64
             batchSize  => 1,                   # min: 1, max: 1000
+            lambdaName => 'MyLambdaName',      # min: 1, max: 64
+            name       => 'MyActivityName',    # min: 1, max: 128
             next       => 'MyActivityName',    # min: 1, max: 128
           },    # OPTIONAL
-          datastore => {
-            name          => 'MyActivityName',     # min: 1, max: 128
-            datastoreName => 'MyDatastoreName',    # min: 1, max: 128
-
+          math => {
+            attribute => 'MyAttributeName',     # min: 1, max: 256
+            math      => 'MyMathExpression',    # min: 1, max: 256
+            name      => 'MyActivityName',      # min: 1, max: 128
+            next      => 'MyActivityName',      # min: 1, max: 128
           },    # OPTIONAL
-          channel => {
-            name        => 'MyActivityName',    # min: 1, max: 128
-            channelName => 'MyChannelName',     # min: 1, max: 128
-            next        => 'MyActivityName',    # min: 1, max: 128
+          removeAttributes => {
+            attributes => [
+              'MyAttributeName', ...    # min: 1, max: 256
+            ],                          # min: 1, max: 50
+            name => 'MyActivityName',   # min: 1, max: 128
+            next => 'MyActivityName',   # min: 1, max: 128
           },    # OPTIONAL
           selectAttributes => {
-            name       => 'MyActivityName',    # min: 1, max: 128
             attributes => [
-              'MyAttributeName', ...           # min: 1, max: 256
-            ],                                 # min: 1, max: 50
-            next => 'MyActivityName',          # min: 1, max: 128
+              'MyAttributeName', ...    # min: 1, max: 256
+            ],                          # min: 1, max: 50
+            name => 'MyActivityName',   # min: 1, max: 128
+            next => 'MyActivityName',   # min: 1, max: 128
           },    # OPTIONAL
         },
         ...
       ],
       PipelineName => 'MyPipelineName',
+      Tags         => [
+        {
+          key   => 'MyTagKey',      # min: 1, max: 256
+          value => 'MyTagValue',    # min: 1, max: 256
 
+        },
+        ...
+      ],                            # OPTIONAL
     );
 
     # Results:
@@ -129,6 +137,12 @@ performing mathematical transformations to normalize device data.
 =head2 B<REQUIRED> PipelineName => Str
 
 The name of the pipeline.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::IoTAnalytics::Tag>]
+
+Metadata which can be used to manage the pipeline.
 
 
 

@@ -32,8 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SecretId => 'MySecretIdType',
       Tags     => [
         {
-          Value => 'MyTagValueType',    # max: 256; OPTIONAL
           Key   => 'MyTagKeyType',      # min: 1, max: 128; OPTIONAL
+          Value => 'MyTagValueType',    # max: 256; OPTIONAL
         },
         ...
       ],

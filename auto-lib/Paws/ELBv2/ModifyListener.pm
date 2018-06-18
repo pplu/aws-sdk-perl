@@ -58,15 +58,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # listener.
     my $ModifyListenerOutput = $elasticloadbalancing->ModifyListener(
       {
-        'ListenerArn' =>
-'arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-load-balancer/50dc6c495c0c9188/0467ef3c8400ae65',
         'Certificates' => [
 
           {
             'CertificateArn' =>
               'arn:aws:iam::123456789012:server-certificate/my-new-server-cert'
           }
-        ]
+        ],
+        'ListenerArn' =>
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-load-balancer/50dc6c495c0c9188/0467ef3c8400ae65'
       }
     );
 

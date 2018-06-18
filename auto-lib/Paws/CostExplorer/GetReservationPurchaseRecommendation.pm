@@ -53,11 +53,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $Metadata = $GetReservationPurchaseRecommendationResponse->Metadata;
     my $NextPageToken =
       $GetReservationPurchaseRecommendationResponse->NextPageToken;
     my $Recommendations =
       $GetReservationPurchaseRecommendationResponse->Recommendations;
-    my $Metadata = $GetReservationPurchaseRecommendationResponse->Metadata;
 
 # Returns a L<Paws::CostExplorer::GetReservationPurchaseRecommendationResponse> object.
 

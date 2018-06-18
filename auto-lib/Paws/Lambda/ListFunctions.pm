@@ -41,8 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextMarker = $ListFunctionsResponse->NextMarker;
     my $Functions  = $ListFunctionsResponse->Functions;
+    my $NextMarker = $ListFunctionsResponse->NextMarker;
 
     # Returns a L<Paws::Lambda::ListFunctionsResponse> object.
 

@@ -36,43 +36,43 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SchemaArn        => 'MyArn',
       AttributeUpdates => [
         {
+          Action =>
+            'CREATE_OR_UPDATE',    # values: CREATE_OR_UPDATE, DELETE; OPTIONAL
           Attribute => {
-            Name               => 'MyAttributeName',    # min: 1, max: 64
+            Name                => 'MyAttributeName',    # min: 1, max: 64
+            AttributeDefinition => {
+              Type =>
+                'STRING',    # values: STRING, BINARY, BOOLEAN, NUMBER, DATETIME
+              DefaultValue => {
+                BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
+                BooleanValue  => 1,                             # OPTIONAL
+                DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
+                NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
+                StringValue   => 'MyStringAttributeValue',      # OPTIONAL
+              },    # OPTIONAL
+              IsImmutable => 1,    # OPTIONAL
+              Rules       => {
+                'MyRuleKey' => {
+                  Parameters =>
+                    { 'MyRuleParameterKey' => 'MyRuleParameterValue', }
+                  ,                # OPTIONAL
+                  Type => 'BINARY_LENGTH'
+                  , # values: BINARY_LENGTH, NUMBER_COMPARISON, STRING_FROM_SET, STRING_LENGTH; OPTIONAL
+                },    # key: min: 1, max: 64
+              },    # OPTIONAL
+            },    # OPTIONAL
             AttributeReference => {
               TargetAttributeName => 'MyAttributeName',    # min: 1, max: 64
               TargetFacetName     => 'MyFacetName',        # min: 1, max: 64
 
             },    # OPTIONAL
-            AttributeDefinition => {
-              Type =>
-                'STRING',    # values: STRING, BINARY, BOOLEAN, NUMBER, DATETIME
-              IsImmutable => 1,    # OPTIONAL
-              Rules       => {
-                'MyRuleKey' => {
-                  Type => 'BINARY_LENGTH'
-                  , # values: BINARY_LENGTH, NUMBER_COMPARISON, STRING_FROM_SET, STRING_LENGTH; OPTIONAL
-                  Parameters =>
-                    { 'MyRuleParameterKey' => 'MyRuleParameterValue', }
-                  ,    # OPTIONAL
-                },    # key: min: 1, max: 64
-              },    # OPTIONAL
-              DefaultValue => {
-                NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
-                BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
-                StringValue   => 'MyStringAttributeValue',      # OPTIONAL
-                DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
-                BooleanValue  => 1,                             # OPTIONAL
-              },    # OPTIONAL
-            },    # OPTIONAL
             RequiredBehavior => 'REQUIRED_ALWAYS'
             ,     # values: REQUIRED_ALWAYS, NOT_REQUIRED; OPTIONAL
           },    # OPTIONAL
-          Action =>
-            'CREATE_OR_UPDATE',    # values: CREATE_OR_UPDATE, DELETE; OPTIONAL
         },
         ...
-      ],                           # OPTIONAL
-      ObjectType => 'NODE',        # OPTIONAL
+      ],        # OPTIONAL
+      ObjectType => 'NODE',    # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

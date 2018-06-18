@@ -38,28 +38,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Role  => 'MyRole',
         Rules => [
           {
-            Status      => 'Enabled',    # values: Enabled, Disabled
-            Prefix      => 'MyPrefix',
             Destination => {
               Bucket                   => 'MyBucketName',
               AccessControlTranslation => {
                 Owner => 'Destination',    # values: Destination
 
               },    # OPTIONAL
-              StorageClass => 'STANDARD'
-              , # values: STANDARD, REDUCED_REDUNDANCY, STANDARD_IA, ONEZONE_IA; OPTIONAL
               Account                 => 'MyAccountId',    # OPTIONAL
               EncryptionConfiguration => {
                 ReplicaKmsKeyID => 'MyReplicaKmsKeyID',    # OPTIONAL
               },    # OPTIONAL
+              StorageClass => 'STANDARD'
+              , # values: STANDARD, REDUCED_REDUNDANCY, STANDARD_IA, ONEZONE_IA; OPTIONAL
             },
+            Prefix                  => 'MyPrefix',
+            Status                  => 'Enabled',    # values: Enabled, Disabled
+            ID                      => 'MyID',       # OPTIONAL
             SourceSelectionCriteria => {
               SseKmsEncryptedObjects => {
-                Status => 'Enabled',    # values: Enabled, Disabled
+                Status => 'Enabled',                 # values: Enabled, Disabled
 
               },    # OPTIONAL
             },    # OPTIONAL
-            ID => 'MyID',    # OPTIONAL
           },
           ...
         ],

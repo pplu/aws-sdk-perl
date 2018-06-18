@@ -36,9 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       UserPoolId => 'MyUserPoolIdType',
       Scopes     => [
         {
-          ScopeName => 'MyResourceServerScopeNameType',    # min: 1, max: 256
           ScopeDescription =>
-            'MyResourceServerScopeDescriptionType',        # min: 1, max: 256
+            'MyResourceServerScopeDescriptionType',    # min: 1, max: 256
+          ScopeName => 'MyResourceServerScopeNameType',    # min: 1, max: 256
 
         },
         ...

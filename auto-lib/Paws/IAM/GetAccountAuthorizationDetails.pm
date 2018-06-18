@@ -40,11 +40,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $IsTruncated = $GetAccountAuthorizationDetailsResponse->IsTruncated;
     my $GroupDetailList =
       $GetAccountAuthorizationDetailsResponse->GroupDetailList;
-    my $Marker   = $GetAccountAuthorizationDetailsResponse->Marker;
-    my $Policies = $GetAccountAuthorizationDetailsResponse->Policies;
+    my $IsTruncated = $GetAccountAuthorizationDetailsResponse->IsTruncated;
+    my $Marker      = $GetAccountAuthorizationDetailsResponse->Marker;
+    my $Policies    = $GetAccountAuthorizationDetailsResponse->Policies;
     my $RoleDetailList =
       $GetAccountAuthorizationDetailsResponse->RoleDetailList;
     my $UserDetailList =

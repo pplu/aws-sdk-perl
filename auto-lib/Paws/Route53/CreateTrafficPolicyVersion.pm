@@ -40,8 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $TrafficPolicy = $CreateTrafficPolicyVersionResponse->TrafficPolicy;
     my $Location      = $CreateTrafficPolicyVersionResponse->Location;
+    my $TrafficPolicy = $CreateTrafficPolicyVersionResponse->TrafficPolicy;
 
     # Returns a L<Paws::Route53::CreateTrafficPolicyVersionResponse> object.
 

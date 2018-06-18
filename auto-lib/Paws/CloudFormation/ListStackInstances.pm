@@ -40,8 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Summaries = $ListStackInstancesOutput->Summaries;
     my $NextToken = $ListStackInstancesOutput->NextToken;
+    my $Summaries = $ListStackInstancesOutput->Summaries;
 
     # Returns a L<Paws::CloudFormation::ListStackInstancesOutput> object.
 

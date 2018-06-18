@@ -85,13 +85,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ServerSideEncryption = $PutObjectOutput->ServerSideEncryption;
-    my $SSECustomerKeyMD5    = $PutObjectOutput->SSECustomerKeyMD5;
-    my $Expiration           = $PutObjectOutput->Expiration;
     my $ETag                 = $PutObjectOutput->ETag;
+    my $Expiration           = $PutObjectOutput->Expiration;
     my $RequestCharged       = $PutObjectOutput->RequestCharged;
-    my $SSEKMSKeyId          = $PutObjectOutput->SSEKMSKeyId;
     my $SSECustomerAlgorithm = $PutObjectOutput->SSECustomerAlgorithm;
+    my $SSECustomerKeyMD5    = $PutObjectOutput->SSECustomerKeyMD5;
+    my $SSEKMSKeyId          = $PutObjectOutput->SSEKMSKeyId;
+    my $ServerSideEncryption = $PutObjectOutput->ServerSideEncryption;
     my $VersionId            = $PutObjectOutput->VersionId;
 
     # Returns a L<Paws::S3::PutObjectOutput> object.

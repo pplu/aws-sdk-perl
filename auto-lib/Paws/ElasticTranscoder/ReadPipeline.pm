@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Warnings = $ReadPipelineResponse->Warnings;
     my $Pipeline = $ReadPipelineResponse->Pipeline;
+    my $Warnings = $ReadPipelineResponse->Warnings;
 
     # Returns a L<Paws::ElasticTranscoder::ReadPipelineResponse> object.
 

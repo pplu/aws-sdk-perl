@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Scaling group.
     my $DetachLoadBalancersResultType = $autoscaling->DetachLoadBalancers(
       {
-        'LoadBalancerNames'    => ['my-load-balancer'],
-        'AutoScalingGroupName' => 'my-auto-scaling-group'
+        'AutoScalingGroupName' => 'my-auto-scaling-group',
+        'LoadBalancerNames'    => ['my-load-balancer']
       }
     );
 

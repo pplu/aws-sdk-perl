@@ -41,8 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               S3BucketDestination => {
                 Bucket          => 'MyBucketName',
                 Format          => 'CSV',            # values: CSV
-                Prefix          => 'MyPrefix',       # OPTIONAL
                 BucketAccountId => 'MyAccountId',    # OPTIONAL
+                Prefix          => 'MyPrefix',       # OPTIONAL
               },
 
             },
@@ -51,22 +51,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
         },
         Filter => {
-          Prefix => 'MyPrefix',    # OPTIONAL
-          Tag    => {
-            Value => 'MyValue',
-            Key   => 'MyObjectKey',    # min: 1,
-
-          },    # OPTIONAL
           And => {
-            Tags => [
+            Prefix => 'MyPrefix',    # OPTIONAL
+            Tags   => [
               {
-                Value => 'MyValue',
                 Key   => 'MyObjectKey',    # min: 1,
+                Value => 'MyValue',
 
               },
               ...                          # OPTIONAL
             ],                             # OPTIONAL
-            Prefix => 'MyPrefix',          # OPTIONAL
+          },    # OPTIONAL
+          Prefix => 'MyPrefix',    # OPTIONAL
+          Tag    => {
+            Key   => 'MyObjectKey',    # min: 1,
+            Value => 'MyValue',
+
           },    # OPTIONAL
         },    # OPTIONAL
       },

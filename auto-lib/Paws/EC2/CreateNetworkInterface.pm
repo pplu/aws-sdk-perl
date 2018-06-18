@@ -39,10 +39,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example creates a network interface for the specified subnet.
     my $CreateNetworkInterfaceResult = $ec2->CreateNetworkInterface(
       {
-        'PrivateIpAddress' => '10.0.2.17',
-        'SubnetId'         => 'subnet-9d4a7b6c',
+        'Description'      => 'my network interface',
         'Groups'           => ['sg-903004f8'],
-        'Description'      => 'my network interface'
+        'PrivateIpAddress' => '10.0.2.17',
+        'SubnetId'         => 'subnet-9d4a7b6c'
       }
     );
 

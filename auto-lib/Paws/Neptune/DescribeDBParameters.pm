@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DBParameterGroupName => 'MyString',
       Filters              => [
         {
-          Values => [ 'MyString', ... ],
           Name   => 'MyString',
+          Values => [ 'MyString', ... ],
 
         },
         ...
@@ -47,8 +47,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Parameters = $DBParameterGroupDetails->Parameters;
     my $Marker     = $DBParameterGroupDetails->Marker;
+    my $Parameters = $DBParameterGroupDetails->Parameters;
 
     # Returns a L<Paws::Neptune::DBParameterGroupDetails> object.
 

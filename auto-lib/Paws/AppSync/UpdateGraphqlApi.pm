@@ -49,9 +49,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         iatTTL   => 1,            # OPTIONAL
       },    # OPTIONAL
       UserPoolConfig => {
+        awsRegion        => 'MyString',
         defaultAction    => 'ALLOW',      # values: ALLOW, DENY
         userPoolId       => 'MyString',
-        awsRegion        => 'MyString',
         appIdClientRegex => 'MyString',
       },    # OPTIONAL
     );

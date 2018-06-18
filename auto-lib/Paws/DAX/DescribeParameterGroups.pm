@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ParameterGroups = $DescribeParameterGroupsResponse->ParameterGroups;
     my $NextToken       = $DescribeParameterGroupsResponse->NextToken;
+    my $ParameterGroups = $DescribeParameterGroupsResponse->ParameterGroups;
 
     # Returns a L<Paws::DAX::DescribeParameterGroupsResponse> object.
 

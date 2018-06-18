@@ -41,8 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Rule        = $CreateRateBasedRuleResponse->Rule;
     my $ChangeToken = $CreateRateBasedRuleResponse->ChangeToken;
+    my $Rule        = $CreateRateBasedRuleResponse->Rule;
 
     # Returns a L<Paws::WAF::CreateRateBasedRuleResponse> object.
 

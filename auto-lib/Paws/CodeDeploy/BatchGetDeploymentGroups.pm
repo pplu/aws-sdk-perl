@@ -37,9 +37,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ErrorMessage = $BatchGetDeploymentGroupsOutput->ErrorMessage;
     my $DeploymentGroupsInfo =
       $BatchGetDeploymentGroupsOutput->DeploymentGroupsInfo;
+    my $ErrorMessage = $BatchGetDeploymentGroupsOutput->ErrorMessage;
 
     # Returns a L<Paws::CodeDeploy::BatchGetDeploymentGroupsOutput> object.
 

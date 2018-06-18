@@ -34,36 +34,75 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       TopicRulePayload => {
         actions => [
           {
+            cloudwatchAlarm => {
+              alarmName   => 'MyAlarmName',
+              roleArn     => 'MyAwsArn',
+              stateReason => 'MyStateReason',
+              stateValue  => 'MyStateValue',
+
+            },    # OPTIONAL
+            cloudwatchMetric => {
+              metricName      => 'MyMetricName',
+              metricNamespace => 'MyMetricNamespace',
+              metricUnit      => 'MyMetricUnit',
+              metricValue     => 'MyMetricValue',
+              roleArn         => 'MyAwsArn',
+              metricTimestamp => 'MyMetricTimestamp',    # OPTIONAL
+            },    # OPTIONAL
+            dynamoDB => {
+              hashKeyField => 'MyHashKeyField',
+              hashKeyValue => 'MyHashKeyValue',
+              roleArn      => 'MyAwsArn',
+              tableName    => 'MyTableName',
+              hashKeyType => 'STRING',    # values: STRING, NUMBER; OPTIONAL
+              operation     => 'MyDynamoOperation',    # OPTIONAL
+              payloadField  => 'MyPayloadField',       # OPTIONAL
+              rangeKeyField => 'MyRangeKeyField',      # OPTIONAL
+              rangeKeyType => 'STRING',    # values: STRING, NUMBER; OPTIONAL
+              rangeKeyValue => 'MyRangeKeyValue',    # OPTIONAL
+            },    # OPTIONAL
             dynamoDBv2 => {
-              roleArn => 'MyAwsArn',
               putItem => {
                 tableName => 'MyTableName',
 
               },    # OPTIONAL
-            },    # OPTIONAL
-            cloudwatchAlarm => {
-              alarmName   => 'MyAlarmName',
-              stateReason => 'MyStateReason',
-              stateValue  => 'MyStateValue',
-              roleArn     => 'MyAwsArn',
-
-            },    # OPTIONAL
-            kinesis => {
-              streamName   => 'MyStreamName',
-              roleArn      => 'MyAwsArn',
-              partitionKey => 'MyPartitionKey',    # OPTIONAL
+              roleArn => 'MyAwsArn',
             },    # OPTIONAL
             elasticsearch => {
-              id       => 'MyElasticsearchId',
               endpoint => 'MyElasticsearchEndpoint',
+              id       => 'MyElasticsearchId',
               index    => 'MyElasticsearchIndex',
               roleArn  => 'MyAwsArn',
               type     => 'MyElasticsearchType',
 
             },    # OPTIONAL
+            firehose => {
+              deliveryStreamName => 'MyDeliveryStreamName',
+              roleArn            => 'MyAwsArn',
+              separator          => 'MyFirehoseSeparator',    # OPTIONAL
+            },    # OPTIONAL
+            iotAnalytics => {
+              channelArn  => 'MyAwsArn',
+              channelName => 'MyChannelName',    # OPTIONAL
+              roleArn     => 'MyAwsArn',
+            },    # OPTIONAL
+            kinesis => {
+              roleArn      => 'MyAwsArn',
+              streamName   => 'MyStreamName',
+              partitionKey => 'MyPartitionKey',    # OPTIONAL
+            },    # OPTIONAL
+            lambda => {
+              functionArn => 'MyFunctionArn',
+
+            },    # OPTIONAL
+            republish => {
+              roleArn => 'MyAwsArn',
+              topic   => 'MyTopicPattern',
+
+            },    # OPTIONAL
             s3 => {
-              key        => 'MyKey',
               bucketName => 'MyBucketName',
+              key        => 'MyKey',
               roleArn    => 'MyAwsArn',
               cannedAcl  => 'private'
               , # values: private, public-read, public-read-write, aws-exec-read, authenticated-read, bucket-owner-read, bucket-owner-full-control, log-delivery-write; OPTIONAL
@@ -73,91 +112,92 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               url   => 'MySalesforceEndpoint',    # max: 2000
 
             },    # OPTIONAL
-            republish => {
-              roleArn => 'MyAwsArn',
-              topic   => 'MyTopicPattern',
-
-            },    # OPTIONAL
-            firehose => {
-              roleArn            => 'MyAwsArn',
-              deliveryStreamName => 'MyDeliveryStreamName',
-              separator          => 'MyFirehoseSeparator',    # OPTIONAL
-            },    # OPTIONAL
-            cloudwatchMetric => {
-              metricName      => 'MyMetricName',
-              metricValue     => 'MyMetricValue',
-              metricUnit      => 'MyMetricUnit',
-              metricNamespace => 'MyMetricNamespace',
-              roleArn         => 'MyAwsArn',
-              metricTimestamp => 'MyMetricTimestamp',    # OPTIONAL
-            },    # OPTIONAL
             sns => {
               roleArn       => 'MyAwsArn',
               targetArn     => 'MyAwsArn',
               messageFormat => 'RAW',        # values: RAW, JSON; OPTIONAL
-            },    # OPTIONAL
-            lambda => {
-              functionArn => 'MyFunctionArn',
-
-            },    # OPTIONAL
-            dynamoDB => {
-              hashKeyValue  => 'MyHashKeyValue',
-              roleArn       => 'MyAwsArn',
-              tableName     => 'MyTableName',
-              hashKeyField  => 'MyHashKeyField',
-              rangeKeyField => 'MyRangeKeyField',    # OPTIONAL
-              hashKeyType  => 'STRING',    # values: STRING, NUMBER; OPTIONAL
-              rangeKeyType => 'STRING',    # values: STRING, NUMBER; OPTIONAL
-              rangeKeyValue => 'MyRangeKeyValue',      # OPTIONAL
-              operation     => 'MyDynamoOperation',    # OPTIONAL
-              payloadField  => 'MyPayloadField',       # OPTIONAL
             },    # OPTIONAL
             sqs => {
               queueUrl  => 'MyQueueUrl',
               roleArn   => 'MyAwsArn',
               useBase64 => 1,              # OPTIONAL
             },    # OPTIONAL
-            iotAnalytics => {
-              channelName => 'MyChannelName',    # OPTIONAL
-              channelArn  => 'MyAwsArn',
-              roleArn     => 'MyAwsArn',
-            },    # OPTIONAL
           },
           ...
         ],        # max: 10
-        sql          => 'MySQL',
-        ruleDisabled => 1,         # OPTIONAL
-        errorAction  => {
+        sql              => 'MySQL',
+        awsIotSqlVersion => 'MyAwsIotSqlVersion',    # OPTIONAL
+        description      => 'MyDescription',         # OPTIONAL
+        errorAction      => {
+          cloudwatchAlarm => {
+            alarmName   => 'MyAlarmName',
+            roleArn     => 'MyAwsArn',
+            stateReason => 'MyStateReason',
+            stateValue  => 'MyStateValue',
+
+          },                                         # OPTIONAL
+          cloudwatchMetric => {
+            metricName      => 'MyMetricName',
+            metricNamespace => 'MyMetricNamespace',
+            metricUnit      => 'MyMetricUnit',
+            metricValue     => 'MyMetricValue',
+            roleArn         => 'MyAwsArn',
+            metricTimestamp => 'MyMetricTimestamp',    # OPTIONAL
+          },    # OPTIONAL
+          dynamoDB => {
+            hashKeyField => 'MyHashKeyField',
+            hashKeyValue => 'MyHashKeyValue',
+            roleArn      => 'MyAwsArn',
+            tableName    => 'MyTableName',
+            hashKeyType  => 'STRING',         # values: STRING, NUMBER; OPTIONAL
+            operation     => 'MyDynamoOperation',    # OPTIONAL
+            payloadField  => 'MyPayloadField',       # OPTIONAL
+            rangeKeyField => 'MyRangeKeyField',      # OPTIONAL
+            rangeKeyType => 'STRING',    # values: STRING, NUMBER; OPTIONAL
+            rangeKeyValue => 'MyRangeKeyValue',    # OPTIONAL
+          },    # OPTIONAL
           dynamoDBv2 => {
-            roleArn => 'MyAwsArn',
             putItem => {
               tableName => 'MyTableName',
 
-            },                     # OPTIONAL
-          },    # OPTIONAL
-          cloudwatchAlarm => {
-            alarmName   => 'MyAlarmName',
-            stateReason => 'MyStateReason',
-            stateValue  => 'MyStateValue',
-            roleArn     => 'MyAwsArn',
-
-          },    # OPTIONAL
-          kinesis => {
-            streamName   => 'MyStreamName',
-            roleArn      => 'MyAwsArn',
-            partitionKey => 'MyPartitionKey',    # OPTIONAL
+            },    # OPTIONAL
+            roleArn => 'MyAwsArn',
           },    # OPTIONAL
           elasticsearch => {
-            id       => 'MyElasticsearchId',
             endpoint => 'MyElasticsearchEndpoint',
+            id       => 'MyElasticsearchId',
             index    => 'MyElasticsearchIndex',
             roleArn  => 'MyAwsArn',
             type     => 'MyElasticsearchType',
 
           },    # OPTIONAL
+          firehose => {
+            deliveryStreamName => 'MyDeliveryStreamName',
+            roleArn            => 'MyAwsArn',
+            separator          => 'MyFirehoseSeparator',    # OPTIONAL
+          },    # OPTIONAL
+          iotAnalytics => {
+            channelArn  => 'MyAwsArn',
+            channelName => 'MyChannelName',    # OPTIONAL
+            roleArn     => 'MyAwsArn',
+          },    # OPTIONAL
+          kinesis => {
+            roleArn      => 'MyAwsArn',
+            streamName   => 'MyStreamName',
+            partitionKey => 'MyPartitionKey',    # OPTIONAL
+          },    # OPTIONAL
+          lambda => {
+            functionArn => 'MyFunctionArn',
+
+          },    # OPTIONAL
+          republish => {
+            roleArn => 'MyAwsArn',
+            topic   => 'MyTopicPattern',
+
+          },    # OPTIONAL
           s3 => {
-            key        => 'MyKey',
             bucketName => 'MyBucketName',
+            key        => 'MyKey',
             roleArn    => 'MyAwsArn',
             cannedAcl  => 'private'
             , # values: private, public-read, public-read-write, aws-exec-read, authenticated-read, bucket-owner-read, bucket-owner-full-control, log-delivery-write; OPTIONAL
@@ -167,58 +207,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             url   => 'MySalesforceEndpoint',    # max: 2000
 
           },    # OPTIONAL
-          republish => {
-            roleArn => 'MyAwsArn',
-            topic   => 'MyTopicPattern',
-
-          },    # OPTIONAL
-          firehose => {
-            roleArn            => 'MyAwsArn',
-            deliveryStreamName => 'MyDeliveryStreamName',
-            separator          => 'MyFirehoseSeparator',    # OPTIONAL
-          },    # OPTIONAL
-          cloudwatchMetric => {
-            metricName      => 'MyMetricName',
-            metricValue     => 'MyMetricValue',
-            metricUnit      => 'MyMetricUnit',
-            metricNamespace => 'MyMetricNamespace',
-            roleArn         => 'MyAwsArn',
-            metricTimestamp => 'MyMetricTimestamp',    # OPTIONAL
-          },    # OPTIONAL
           sns => {
             roleArn       => 'MyAwsArn',
             targetArn     => 'MyAwsArn',
             messageFormat => 'RAW',        # values: RAW, JSON; OPTIONAL
-          },    # OPTIONAL
-          lambda => {
-            functionArn => 'MyFunctionArn',
-
-          },    # OPTIONAL
-          dynamoDB => {
-            hashKeyValue  => 'MyHashKeyValue',
-            roleArn       => 'MyAwsArn',
-            tableName     => 'MyTableName',
-            hashKeyField  => 'MyHashKeyField',
-            rangeKeyField => 'MyRangeKeyField',    # OPTIONAL
-            hashKeyType  => 'STRING',    # values: STRING, NUMBER; OPTIONAL
-            rangeKeyType => 'STRING',    # values: STRING, NUMBER; OPTIONAL
-            rangeKeyValue => 'MyRangeKeyValue',      # OPTIONAL
-            operation     => 'MyDynamoOperation',    # OPTIONAL
-            payloadField  => 'MyPayloadField',       # OPTIONAL
           },    # OPTIONAL
           sqs => {
             queueUrl  => 'MyQueueUrl',
             roleArn   => 'MyAwsArn',
             useBase64 => 1,              # OPTIONAL
           },    # OPTIONAL
-          iotAnalytics => {
-            channelName => 'MyChannelName',    # OPTIONAL
-            channelArn  => 'MyAwsArn',
-            roleArn     => 'MyAwsArn',
-          },    # OPTIONAL
         },
-        awsIotSqlVersion => 'MyAwsIotSqlVersion',    # OPTIONAL
-        description      => 'MyDescription',         # OPTIONAL
+        ruleDisabled => 1,    # OPTIONAL
       },
 
     );

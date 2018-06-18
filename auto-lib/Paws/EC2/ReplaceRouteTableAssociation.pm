@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # specified route table association.
     my $ReplaceRouteTableAssociationResult = $ec2->ReplaceRouteTableAssociation(
       {
-        'RouteTableId'  => 'rtb-22574640',
-        'AssociationId' => 'rtbassoc-781d0d1a'
+        'AssociationId' => 'rtbassoc-781d0d1a',
+        'RouteTableId'  => 'rtb-22574640'
       }
     );
 

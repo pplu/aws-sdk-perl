@@ -28,7 +28,8 @@ operation has completed before you begin other actions.
 
 A summary of the delete operation. For more information about this
 summary, see Understanding the Delete Inventory Summary
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-delete.html#sysman-inventory-delete-summary).
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-delete.html#sysman-inventory-delete-summary)
+in the I<AWS Systems Manager User Guide>.
 
 
 =head2 TypeName => Str

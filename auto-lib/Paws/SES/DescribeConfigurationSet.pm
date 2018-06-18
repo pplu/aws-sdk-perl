@@ -37,12 +37,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $TrackingOptions = $DescribeConfigurationSetResponse->TrackingOptions;
+    my $ConfigurationSet = $DescribeConfigurationSetResponse->ConfigurationSet;
     my $EventDestinations =
       $DescribeConfigurationSetResponse->EventDestinations;
     my $ReputationOptions =
       $DescribeConfigurationSetResponse->ReputationOptions;
-    my $ConfigurationSet = $DescribeConfigurationSetResponse->ConfigurationSet;
+    my $TrackingOptions = $DescribeConfigurationSetResponse->TrackingOptions;
 
     # Returns a L<Paws::SES::DescribeConfigurationSetResponse> object.
 

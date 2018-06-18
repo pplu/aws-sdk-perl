@@ -31,11 +31,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $comprehend = Paws->service('Comprehend');
     my $ListTopicsDetectionJobsResponse = $comprehend->ListTopicsDetectionJobs(
       Filter => {
+        JobName   => 'MyJobName',    # min: 1, max: 256; OPTIONAL
         JobStatus => 'SUBMITTED'
         ,    # values: SUBMITTED, IN_PROGRESS, COMPLETED, FAILED; OPTIONAL
-        JobName          => 'MyJobName',            # min: 1, max: 256; OPTIONAL
-        SubmitTimeBefore => '1970-01-01T01:00:00',  # OPTIONAL
-        SubmitTimeAfter  => '1970-01-01T01:00:00',  # OPTIONAL
+        SubmitTimeAfter  => '1970-01-01T01:00:00',    # OPTIONAL
+        SubmitTimeBefore => '1970-01-01T01:00:00',    # OPTIONAL
       },    # OPTIONAL
       MaxResults => 1,             # OPTIONAL
       NextToken  => 'MyString',    # OPTIONAL

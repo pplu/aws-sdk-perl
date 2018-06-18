@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Schemas = $DescribeSchemasResponse->Schemas;
     my $Marker  = $DescribeSchemasResponse->Marker;
+    my $Schemas = $DescribeSchemasResponse->Schemas;
 
     # Returns a L<Paws::DMS::DescribeSchemasResponse> object.
 

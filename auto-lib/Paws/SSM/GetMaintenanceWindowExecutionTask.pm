@@ -36,23 +36,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $StartTime = $GetMaintenanceWindowExecutionTaskResult->StartTime;
+    my $EndTime = $GetMaintenanceWindowExecutionTaskResult->EndTime;
     my $MaxConcurrency =
       $GetMaintenanceWindowExecutionTaskResult->MaxConcurrency;
     my $MaxErrors     = $GetMaintenanceWindowExecutionTaskResult->MaxErrors;
-    my $StatusDetails = $GetMaintenanceWindowExecutionTaskResult->StatusDetails;
-    my $EndTime       = $GetMaintenanceWindowExecutionTaskResult->EndTime;
+    my $Priority      = $GetMaintenanceWindowExecutionTaskResult->Priority;
+    my $ServiceRole   = $GetMaintenanceWindowExecutionTaskResult->ServiceRole;
+    my $StartTime     = $GetMaintenanceWindowExecutionTaskResult->StartTime;
     my $Status        = $GetMaintenanceWindowExecutionTaskResult->Status;
-    my $WindowExecutionId =
-      $GetMaintenanceWindowExecutionTaskResult->WindowExecutionId;
-    my $TaskArn     = $GetMaintenanceWindowExecutionTaskResult->TaskArn;
-    my $ServiceRole = $GetMaintenanceWindowExecutionTaskResult->ServiceRole;
+    my $StatusDetails = $GetMaintenanceWindowExecutionTaskResult->StatusDetails;
+    my $TaskArn       = $GetMaintenanceWindowExecutionTaskResult->TaskArn;
     my $TaskExecutionId =
       $GetMaintenanceWindowExecutionTaskResult->TaskExecutionId;
     my $TaskParameters =
       $GetMaintenanceWindowExecutionTaskResult->TaskParameters;
-    my $Type     = $GetMaintenanceWindowExecutionTaskResult->Type;
-    my $Priority = $GetMaintenanceWindowExecutionTaskResult->Priority;
+    my $Type = $GetMaintenanceWindowExecutionTaskResult->Type;
+    my $WindowExecutionId =
+      $GetMaintenanceWindowExecutionTaskResult->WindowExecutionId;
 
     # Returns a L<Paws::SSM::GetMaintenanceWindowExecutionTaskResult> object.
 

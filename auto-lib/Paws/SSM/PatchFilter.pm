@@ -100,6 +100,13 @@ C<WindowsServer2012R2>
 
 C<WindowsServer2016>
 
+=item *
+
+C<*>
+
+I<Use a wildcard character (*) to target all supported operating system
+versions.>
+
 =back
 
 I<Supported key:> C<CLASSIFICATION>
@@ -198,6 +205,13 @@ C<Ubuntu14.04>
 
 C<Ubuntu16.04>
 
+=item *
+
+C<*>
+
+I<Use a wildcard character (*) to target all supported operating system
+versions.>
+
 =back
 
 I<Supported key:> C<PRIORITY>
@@ -292,6 +306,13 @@ C<AmazonLinux2017.03>
 =item *
 
 C<AmazonLinux2017.09>
+
+=item *
+
+C<*>
+
+I<Use a wildcard character (*) to target all supported operating system
+versions.>
 
 =back
 
@@ -399,6 +420,13 @@ C<RedhatEnterpriseLinux7.3>
 
 C<RedhatEnterpriseLinux7.4>
 
+=item *
+
+C<*>
+
+I<Use a wildcard character (*) to target all supported operating system
+versions.>
+
 =back
 
 I<Supported key:> C<CLASSIFICATION>
@@ -504,6 +532,13 @@ C<Suse12.8>
 =item *
 
 C<Suse12.9>
+
+=item *
+
+C<*>
+
+I<Use a wildcard character (*) to target all supported operating system
+versions.>
 
 =back
 
@@ -614,6 +649,13 @@ C<CentOS7.3>
 =item *
 
 C<CentOS7.4>
+
+=item *
+
+C<*>
+
+I<Use a wildcard character (*) to target all supported operating system
+versions.>
 
 =back
 

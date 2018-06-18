@@ -33,9 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DomainName      => 'MyString',
       PatchOperations => [
         {
+          from => 'MyString',
           op =>
             'add',    # values: add, remove, replace, move, copy, test; OPTIONAL
-          from  => 'MyString',
           path  => 'MyString',
           value => 'MyString',
         },
@@ -44,17 +44,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $RegionalDomainName       = $DomainName->RegionalDomainName;
-    my $DistributionHostedZoneId = $DomainName->DistributionHostedZoneId;
-    my $DomainName               = $DomainName->DomainName;
+    my $CertificateArn           = $DomainName->CertificateArn;
+    my $CertificateName          = $DomainName->CertificateName;
     my $CertificateUploadDate    = $DomainName->CertificateUploadDate;
     my $DistributionDomainName   = $DomainName->DistributionDomainName;
-    my $CertificateName          = $DomainName->CertificateName;
-    my $CertificateArn           = $DomainName->CertificateArn;
-    my $RegionalCertificateArn   = $DomainName->RegionalCertificateArn;
-    my $RegionalHostedZoneId     = $DomainName->RegionalHostedZoneId;
-    my $RegionalCertificateName  = $DomainName->RegionalCertificateName;
+    my $DistributionHostedZoneId = $DomainName->DistributionHostedZoneId;
+    my $DomainName               = $DomainName->DomainName;
     my $EndpointConfiguration    = $DomainName->EndpointConfiguration;
+    my $RegionalCertificateArn   = $DomainName->RegionalCertificateArn;
+    my $RegionalCertificateName  = $DomainName->RegionalCertificateName;
+    my $RegionalDomainName       = $DomainName->RegionalDomainName;
+    my $RegionalHostedZoneId     = $DomainName->RegionalHostedZoneId;
 
     # Returns a L<Paws::ApiGateway::DomainName> object.
 

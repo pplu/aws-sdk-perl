@@ -39,28 +39,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $RequestSpotFleetResponse = $ec2->RequestSpotFleet(
       {
         'SpotFleetRequestConfig' => {
-          'SpotPrice'    => 0.04,
           'IamFleetRole' => 'arn:aws:iam::123456789012:role/my-spot-fleet-role',
-          'TargetCapacity'       => 2,
           'LaunchSpecifications' => [
 
             {
+              'IamInstanceProfile' => {
+                'Arn' =>
+                  'arn:aws:iam::123456789012:instance-profile/my-iam-role'
+              },
+              'ImageId'        => 'ami-1a2b3c4d',
+              'InstanceType'   => 'm3.medium',
+              'KeyName'        => 'my-key-pair',
               'SecurityGroups' => [
 
                 {
                   'GroupId' => 'sg-1a2b3c4d'
                 }
               ],
-              'SubnetId'           => 'subnet-1a2b3c4d, subnet-3c4d5e6f',
-              'IamInstanceProfile' => {
-                'Arn' =>
-                  'arn:aws:iam::123456789012:instance-profile/my-iam-role'
-              },
-              'InstanceType' => 'm3.medium',
-              'KeyName'      => 'my-key-pair',
-              'ImageId'      => 'ami-1a2b3c4d'
+              'SubnetId' => 'subnet-1a2b3c4d, subnet-3c4d5e6f'
             }
-          ]
+          ],
+          'SpotPrice'      => 0.04,
+          'TargetCapacity' => 2
         }
       }
     );
@@ -80,29 +80,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $RequestSpotFleetResponse = $ec2->RequestSpotFleet(
       {
         'SpotFleetRequestConfig' => {
-          'SpotPrice'    => 0.04,
           'IamFleetRole' => 'arn:aws:iam::123456789012:role/my-spot-fleet-role',
           'LaunchSpecifications' => [
 
             {
+              'IamInstanceProfile' => {
+                'Arn' =>
+                  'arn:aws:iam::123456789012:instance-profile/my-iam-role'
+              },
+              'ImageId'      => 'ami-1a2b3c4d',
+              'InstanceType' => 'm3.medium',
+              'KeyName'      => 'my-key-pair',
+              'Placement'    => {
+                'AvailabilityZone' => 'us-west-2a, us-west-2b'
+              },
               'SecurityGroups' => [
 
                 {
                   'GroupId' => 'sg-1a2b3c4d'
                 }
-              ],
-              'IamInstanceProfile' => {
-                'Arn' =>
-                  'arn:aws:iam::123456789012:instance-profile/my-iam-role'
-              },
-              'InstanceType' => 'm3.medium',
-              'Placement'    => {
-                'AvailabilityZone' => 'us-west-2a, us-west-2b'
-              },
-              'KeyName' => 'my-key-pair',
-              'ImageId' => 'ami-1a2b3c4d'
+              ]
             }
           ],
+          'SpotPrice'      => 0.04,
           'TargetCapacity' => 2
         }
       }
@@ -119,30 +119,30 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $RequestSpotFleetResponse = $ec2->RequestSpotFleet(
       {
         'SpotFleetRequestConfig' => {
-          'TargetCapacity'       => 2,
+          'IamFleetRole' => 'arn:aws:iam::123456789012:role/my-spot-fleet-role',
           'LaunchSpecifications' => [
 
             {
-              'KeyName'            => 'my-key-pair',
-              'ImageId'            => 'ami-1a2b3c4d',
-              'InstanceType'       => 'm3.medium',
               'IamInstanceProfile' => {
                 'Arn' =>
                   'arn:aws:iam::880185128111:instance-profile/my-iam-role'
               },
+              'ImageId'           => 'ami-1a2b3c4d',
+              'InstanceType'      => 'm3.medium',
+              'KeyName'           => 'my-key-pair',
               'NetworkInterfaces' => [
 
                 {
                   'AssociatePublicIpAddress' => true,
-                  'SubnetId'                 => 'subnet-1a2b3c4d',
+                  'DeviceIndex'              => 0,
                   'Groups'                   => ['sg-1a2b3c4d'],
-                  'DeviceIndex'              => 0
+                  'SubnetId'                 => 'subnet-1a2b3c4d'
                 }
               ]
             }
           ],
-          'IamFleetRole' => 'arn:aws:iam::123456789012:role/my-spot-fleet-role',
-          'SpotPrice'    => 0.04
+          'SpotPrice'      => 0.04,
+          'TargetCapacity' => 2
         }
       }
     );
@@ -159,19 +159,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $RequestSpotFleetResponse = $ec2->RequestSpotFleet(
       {
         'SpotFleetRequestConfig' => {
-          'TargetCapacity'       => 30,
+          'AllocationStrategy' => 'diversified',
+          'IamFleetRole' => 'arn:aws:iam::123456789012:role/my-spot-fleet-role',
           'LaunchSpecifications' => [
 
             {
-              'SubnetId'     => 'subnet-1a2b3c4d',
+              'ImageId'      => 'ami-1a2b3c4d',
               'InstanceType' => 'c4.2xlarge',
-              'ImageId'      => 'ami-1a2b3c4d'
+              'SubnetId'     => 'subnet-1a2b3c4d'
             },
 
             {
-              'SubnetId'     => 'subnet-1a2b3c4d',
               'ImageId'      => 'ami-1a2b3c4d',
-              'InstanceType' => 'm3.2xlarge'
+              'InstanceType' => 'm3.2xlarge',
+              'SubnetId'     => 'subnet-1a2b3c4d'
             },
 
             {
@@ -180,9 +181,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               'SubnetId'     => 'subnet-1a2b3c4d'
             }
           ],
-          'IamFleetRole' => 'arn:aws:iam::123456789012:role/my-spot-fleet-role',
-          'AllocationStrategy' => 'diversified',
-          'SpotPrice'          => 0.70
+          'SpotPrice'      => 0.70,
+          'TargetCapacity' => 30
         }
       }
     );

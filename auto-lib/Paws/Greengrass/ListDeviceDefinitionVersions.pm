@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $Versions  = $ListDeviceDefinitionVersionsResponse->Versions;
     my $NextToken = $ListDeviceDefinitionVersionsResponse->NextToken;
+    my $Versions  = $ListDeviceDefinitionVersionsResponse->Versions;
 
    # Returns a L<Paws::Greengrass::ListDeviceDefinitionVersionsResponse> object.
 

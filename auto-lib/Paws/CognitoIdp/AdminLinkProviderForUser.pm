@@ -32,14 +32,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $AdminLinkProviderForUserResponse =
       $cognito -idp->AdminLinkProviderForUser(
       DestinationUser => {
-        ProviderName => 'MyProviderNameType',    # min: 1, max: 32; OPTIONAL
-        ProviderAttributeValue => 'MyStringType',    # OPTIONAL
         ProviderAttributeName  => 'MyStringType',    # OPTIONAL
+        ProviderAttributeValue => 'MyStringType',    # OPTIONAL
+        ProviderName => 'MyProviderNameType',        # min: 1, max: 32; OPTIONAL
       },
       SourceUser => {
-        ProviderName => 'MyProviderNameType',        # min: 1, max: 32; OPTIONAL
-        ProviderAttributeValue => 'MyStringType',    # OPTIONAL
         ProviderAttributeName  => 'MyStringType',    # OPTIONAL
+        ProviderAttributeValue => 'MyStringType',    # OPTIONAL
+        ProviderName => 'MyProviderNameType',        # min: 1, max: 32; OPTIONAL
       },
       UserPoolId => 'MyStringType',
 

@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $FriendlyName            = $SdkType->FriendlyName;
-    my $Description             = $SdkType->Description;
     my $ConfigurationProperties = $SdkType->ConfigurationProperties;
+    my $Description             = $SdkType->Description;
+    my $FriendlyName            = $SdkType->FriendlyName;
     my $Id                      = $SdkType->Id;
 
     # Returns a L<Paws::ApiGateway::SdkType> object.

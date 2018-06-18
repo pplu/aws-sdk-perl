@@ -33,40 +33,40 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateStreamingDistributionResult =
       $cloudfront->CreateStreamingDistribution(
       StreamingDistributionConfig => {
-        S3Origin => {
-          OriginAccessIdentity => 'Mystring',
+        CallerReference => 'Mystring',
+        Comment         => 'Mystring',
+        Enabled         => 1,
+        S3Origin        => {
           DomainName           => 'Mystring',
+          OriginAccessIdentity => 'Mystring',
 
         },
-        Enabled        => 1,
-        Comment        => 'Mystring',
         TrustedSigners => {
           Enabled  => 1,
           Quantity => 1,
           Items    => [ 'Mystring', ... ],    # OPTIONAL
         },
-        CallerReference => 'Mystring',
-        PriceClass      => 'PriceClass_100'
-        ,    # values: PriceClass_100, PriceClass_200, PriceClass_All; OPTIONAL
-        Logging => {
-          Prefix  => 'Mystring',
-          Enabled => 1,
-          Bucket  => 'Mystring',
-
-        },    # OPTIONAL
         Aliases => {
           Quantity => 1,
           Items    => [ 'Mystring', ... ],    # OPTIONAL
         },    # OPTIONAL
+        Logging => {
+          Bucket  => 'Mystring',
+          Enabled => 1,
+          Prefix  => 'Mystring',
+
+        },    # OPTIONAL
+        PriceClass => 'PriceClass_100'
+        ,     # values: PriceClass_100, PriceClass_200, PriceClass_All; OPTIONAL
       },
 
       );
 
     # Results:
+    my $ETag     = $CreateStreamingDistributionResult->ETag;
+    my $Location = $CreateStreamingDistributionResult->Location;
     my $StreamingDistribution =
       $CreateStreamingDistributionResult->StreamingDistribution;
-    my $Location = $CreateStreamingDistributionResult->Location;
-    my $ETag     = $CreateStreamingDistributionResult->ETag;
 
     # Returns a L<Paws::CloudFront::CreateStreamingDistributionResult> object.
 

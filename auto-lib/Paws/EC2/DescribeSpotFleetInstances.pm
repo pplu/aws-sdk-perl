@@ -40,9 +40,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $ActiveInstances = $DescribeSpotFleetInstancesResponse->ActiveInstances;
     my $SpotFleetRequestId =
       $DescribeSpotFleetInstancesResponse->SpotFleetRequestId;
-    my $ActiveInstances = $DescribeSpotFleetInstancesResponse->ActiveInstances;
 
     # Returns a L<Paws::EC2::DescribeSpotFleetInstancesResponse> object.
 

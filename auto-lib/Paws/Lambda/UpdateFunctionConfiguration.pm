@@ -46,31 +46,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       {
         'Description'  => '',
         'FunctionName' => 'myFunction',
-        'VpcConfig'    => {
+        'Handler'      => 'index.handler',
+        'MemorySize'   => 128,
+        'Role'      => 'arn:aws:iam::123456789012:role/lambda_basic_execution',
+        'Runtime'   => 'python2.7',
+        'Timeout'   => 123,
+        'VpcConfig' => {
 
-        },
-        'Role'       => 'arn:aws:iam::123456789012:role/lambda_basic_execution',
-        'Timeout'    => 123,
-        'Runtime'    => 'python2.7',
-        'MemorySize' => 128,
-        'Handler'    => 'index.handler'
+        }
       }
     );
 
     # Results:
+    my $CodeSha256   = $FunctionConfiguration->CodeSha256;
+    my $CodeSize     = $FunctionConfiguration->CodeSize;
+    my $Description  = $FunctionConfiguration->Description;
     my $FunctionArn  = $FunctionConfiguration->FunctionArn;
+    my $FunctionName = $FunctionConfiguration->FunctionName;
     my $Handler      = $FunctionConfiguration->Handler;
-    my $Runtime      = $FunctionConfiguration->Runtime;
+    my $LastModified = $FunctionConfiguration->LastModified;
     my $MemorySize   = $FunctionConfiguration->MemorySize;
     my $Role         = $FunctionConfiguration->Role;
+    my $Runtime      = $FunctionConfiguration->Runtime;
     my $Timeout      = $FunctionConfiguration->Timeout;
-    my $LastModified = $FunctionConfiguration->LastModified;
-    my $Description  = $FunctionConfiguration->Description;
     my $Version      = $FunctionConfiguration->Version;
-    my $FunctionName = $FunctionConfiguration->FunctionName;
-    my $CodeSize     = $FunctionConfiguration->CodeSize;
     my $VpcConfig    = $FunctionConfiguration->VpcConfig;
-    my $CodeSha256   = $FunctionConfiguration->CodeSha256;
 
     # Returns a L<Paws::Lambda::FunctionConfiguration> object.
 

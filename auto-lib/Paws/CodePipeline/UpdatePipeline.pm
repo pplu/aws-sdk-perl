@@ -30,37 +30,33 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdatePipelineOutput = $codepipeline->UpdatePipeline(
       Pipeline => {
         artifactStore => {
-          type          => 'S3',                         # values: S3
           location      => 'MyArtifactStoreLocation',    # min: 3, max: 63
+          type          => 'S3',                         # values: S3
           encryptionKey => {
             id   => 'MyEncryptionKeyId',                 # min: 1, max: 100
             type => 'KMS',                               # values: KMS
 
           },    # OPTIONAL
         },
-        stages => [
+        name    => 'MyPipelineName',    # min: 1, max: 100
+        roleArn => 'MyRoleArn',         # max: 1024
+        stages  => [
           {
-            name    => 'MyStageName',    # min: 1, max: 100
             actions => [
               {
-                name         => 'MyActionName',    # min: 1, max: 100
                 actionTypeId => {
                   category => 'Source'
                   ,    # values: Source, Build, Deploy, Test, Invoke, Approval
-                  version  => 'MyVersion',           # min: 1, max: 9
-                  provider => 'MyActionProvider',    # min: 1, max: 25
                   owner => 'AWS',    # values: AWS, ThirdParty, Custom
+                  provider => 'MyActionProvider',    # min: 1, max: 25
+                  version  => 'MyVersion',           # min: 1, max: 9
 
                 },
-                outputArtifacts => [
-                  {
-                    name => 'MyArtifactName',    # min: 1, max: 100
-
-                  },
-                  ...
-                ],                               # OPTIONAL
-                runOrder       => 1,             # min: 1, max: 999; OPTIONAL
-                roleArn        => 'MyRoleArn',   # max: 1024
+                name          => 'MyActionName',     # min: 1, max: 100
+                configuration => {
+                  'MyActionConfigurationKey' => 'MyActionConfigurationValue'
+                  ,    # key: min: 1, max: 50, value: min: 1, max: 1000
+                },    # OPTIONAL
                 inputArtifacts => [
                   {
                     name => 'MyArtifactName',    # min: 1, max: 100
@@ -68,33 +64,37 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },
                   ...
                 ],                               # OPTIONAL
-                configuration => {
-                  'MyActionConfigurationKey' => 'MyActionConfigurationValue'
-                  ,    # key: min: 1, max: 50, value: min: 1, max: 1000
-                },    # OPTIONAL
+                outputArtifacts => [
+                  {
+                    name => 'MyArtifactName',    # min: 1, max: 100
+
+                  },
+                  ...
+                ],                               # OPTIONAL
+                roleArn  => 'MyRoleArn',         # max: 1024
+                runOrder => 1,                   # min: 1, max: 999; OPTIONAL
               },
               ...
             ],
+            name     => 'MyStageName',           # min: 1, max: 100
             blockers => [
               {
-                name => 'MyBlockerName',    # min: 1, max: 100
-                type => 'Schedule',         # values: Schedule
+                name => 'MyBlockerName',         # min: 1, max: 100
+                type => 'Schedule',              # values: Schedule
 
               },
               ...
-            ],                              # OPTIONAL
+            ],                                   # OPTIONAL
           },
           ...
         ],
-        roleArn => 'MyRoleArn',             # max: 1024
-        name    => 'MyPipelineName',        # min: 1, max: 100
-        version => 1,                       # min: 1, ; OPTIONAL
+        version => 1,                            # min: 1, ; OPTIONAL
       },
 
     );
 
     # Results:
-    my $Pipeline = $UpdatePipelineOutput->Pipeline;
+    my $pipeline = $UpdatePipelineOutput->pipeline;
 
     # Returns a L<Paws::CodePipeline::UpdatePipelineOutput> object.
 

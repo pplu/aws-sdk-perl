@@ -38,9 +38,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $AttachedPolicies = $ListAttachedUserPoliciesResponse->AttachedPolicies;
     my $IsTruncated      = $ListAttachedUserPoliciesResponse->IsTruncated;
     my $Marker           = $ListAttachedUserPoliciesResponse->Marker;
-    my $AttachedPolicies = $ListAttachedUserPoliciesResponse->AttachedPolicies;
 
     # Returns a L<Paws::IAM::ListAttachedUserPoliciesResponse> object.
 

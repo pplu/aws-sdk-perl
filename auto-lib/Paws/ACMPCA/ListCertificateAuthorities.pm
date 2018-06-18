@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $NextToken = $ListCertificateAuthoritiesResponse->NextToken;
     my $CertificateAuthorities =
       $ListCertificateAuthoritiesResponse->CertificateAuthorities;
+    my $NextToken = $ListCertificateAuthoritiesResponse->NextToken;
 
     # Returns a L<Paws::ACMPCA::ListCertificateAuthoritiesResponse> object.
 

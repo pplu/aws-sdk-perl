@@ -44,8 +44,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Events        = $History->Events;
-    my $NextPageToken = $History->NextPageToken;
+    my $events        = $History->events;
+    my $nextPageToken = $History->nextPageToken;
 
     # Returns a L<Paws::SimpleWorkflow::History> object.
 

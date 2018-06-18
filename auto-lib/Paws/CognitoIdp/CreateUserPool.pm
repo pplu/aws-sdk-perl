@@ -50,12 +50,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AdminCreateUserConfig => {
         AllowAdminCreateUserOnly => 1,    # OPTIONAL
         InviteMessageTemplate    => {
-          SMSMessage =>
-            'MySmsVerificationMessageType',    # min: 6, max: 140; OPTIONAL
           EmailMessage =>
             'MyEmailVerificationMessageType',    # min: 6, max: 20000; OPTIONAL
           EmailSubject =>
             'MyEmailVerificationSubjectType',    # min: 1, max: 140; OPTIONAL
+          SMSMessage =>
+            'MySmsVerificationMessageType',      # min: 6, max: 140; OPTIONAL
         },    # OPTIONAL
         UnusedAccountValidityDays => 1,    # max: 365; OPTIONAL
       },    # OPTIONAL
@@ -66,57 +66,57 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'phone_number', ...    # values: phone_number, email
       ],                       # OPTIONAL
       DeviceConfiguration => {
-        DeviceOnlyRememberedOnUserPrompt => 1,    # OPTIONAL
         ChallengeRequiredOnNewDevice     => 1,    # OPTIONAL
+        DeviceOnlyRememberedOnUserPrompt => 1,    # OPTIONAL
       },    # OPTIONAL
       EmailConfiguration => {
-        SourceArn => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
         ReplyToEmailAddress => 'MyEmailAddressType',    # OPTIONAL
+        SourceArn => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
       },    # OPTIONAL
       EmailVerificationMessage => 'MyEmailVerificationMessageType',   # OPTIONAL
       EmailVerificationSubject => 'MyEmailVerificationSubjectType',   # OPTIONAL
       LambdaConfig             => {
-        UserMigration       => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
-        PreTokenGeneration  => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
-        DefineAuthChallenge => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
         CreateAuthChallenge => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
+        CustomMessage       => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
+        DefineAuthChallenge => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
+        PostAuthentication  => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
+        PostConfirmation    => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
+        PreAuthentication   => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
+        PreSignUp           => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
+        PreTokenGeneration  => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
+        UserMigration       => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
         VerifyAuthChallengeResponse =>
           'MyArnType',                         # min: 20, max: 2048; OPTIONAL
-        PostAuthentication => 'MyArnType',     # min: 20, max: 2048; OPTIONAL
-        PostConfirmation   => 'MyArnType',     # min: 20, max: 2048; OPTIONAL
-        PreAuthentication  => 'MyArnType',     # min: 20, max: 2048; OPTIONAL
-        CustomMessage      => 'MyArnType',     # min: 20, max: 2048; OPTIONAL
-        PreSignUp          => 'MyArnType',     # min: 20, max: 2048; OPTIONAL
       },    # OPTIONAL
       MfaConfiguration => 'OFF',    # OPTIONAL
       Policies         => {
         PasswordPolicy => {
-          RequireNumbers   => 1,    # OPTIONAL
-          RequireUppercase => 1,    # OPTIONAL
-          RequireSymbols   => 1,    # OPTIONAL
-          RequireLowercase => 1,    # OPTIONAL
           MinimumLength    => 1,    # min: 6, max: 99; OPTIONAL
+          RequireLowercase => 1,    # OPTIONAL
+          RequireNumbers   => 1,    # OPTIONAL
+          RequireSymbols   => 1,    # OPTIONAL
+          RequireUppercase => 1,    # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       Schema => [
         {
           AttributeDataType =>
             'String',    # values: String, Number, DateTime, Boolean; OPTIONAL
-          NumberAttributeConstraints => {
-            MinValue => 'MyStringType',    # OPTIONAL
-            MaxValue => 'MyStringType',    # OPTIONAL
-          },    # OPTIONAL
-          StringAttributeConstraints => {
-            MinLength => 'MyStringType',    # OPTIONAL
-            MaxLength => 'MyStringType',    # OPTIONAL
-          },    # OPTIONAL
-          Mutable                => 1,    # OPTIONAL
-          Required               => 1,    # OPTIONAL
           DeveloperOnlyAttribute => 1,    # OPTIONAL
+          Mutable                => 1,    # OPTIONAL
           Name => 'MyCustomAttributeNameType',    # min: 1, max: 20; OPTIONAL
+          NumberAttributeConstraints => {
+            MaxValue => 'MyStringType',           # OPTIONAL
+            MinValue => 'MyStringType',           # OPTIONAL
+          },    # OPTIONAL
+          Required                   => 1,    # OPTIONAL
+          StringAttributeConstraints => {
+            MaxLength => 'MyStringType',      # OPTIONAL
+            MinLength => 'MyStringType',      # OPTIONAL
+          },    # OPTIONAL
         },
         ...
-      ],                                          # OPTIONAL
+      ],        # OPTIONAL
       SmsAuthenticationMessage => 'MySmsVerificationMessageType',    # OPTIONAL
       SmsConfiguration         => {
         SnsCallerArn => 'MyArnType',       # min: 20, max: 2048; OPTIONAL
@@ -134,18 +134,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'phone_number', ...    # values: phone_number, email
       ],                       # OPTIONAL
       VerificationMessageTemplate => {
-        SmsMessage =>
-          'MySmsVerificationMessageType',    # min: 6, max: 140; OPTIONAL
         DefaultEmailOption => 'CONFIRM_WITH_LINK'
         ,    # values: CONFIRM_WITH_LINK, CONFIRM_WITH_CODE; OPTIONAL
+        EmailMessage =>
+          'MyEmailVerificationMessageType',    # min: 6, max: 20000; OPTIONAL
         EmailMessageByLink =>
           'MyEmailVerificationMessageByLinkType', # min: 6, max: 20000; OPTIONAL
         EmailSubject =>
           'MyEmailVerificationSubjectType',       # min: 1, max: 140; OPTIONAL
-        EmailMessage =>
-          'MyEmailVerificationMessageType',       # min: 6, max: 20000; OPTIONAL
         EmailSubjectByLink =>
           'MyEmailVerificationSubjectByLinkType',   # min: 1, max: 140; OPTIONAL
+        SmsMessage =>
+          'MySmsVerificationMessageType',           # min: 6, max: 140; OPTIONAL
       },    # OPTIONAL
     );
 

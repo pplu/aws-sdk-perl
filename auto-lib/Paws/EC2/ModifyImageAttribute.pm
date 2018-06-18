@@ -44,15 +44,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       LaunchPermission => {
         Add => [
           {
-            UserId => 'MyString',
             Group  => 'all',                           # values: all; OPTIONAL
+            UserId => 'MyString',
           },
           ...
         ],                                             # OPTIONAL
         Remove => [
           {
-            UserId => 'MyString',
             Group  => 'all',                           # values: all; OPTIONAL
+            UserId => 'MyString',
           },
           ...
         ],                                             # OPTIONAL

@@ -44,7 +44,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       GroupName     => 'MyString',    # OPTIONAL
       IpPermissions => [
         {
+          FromPort   => 1,
           IpProtocol => 'MyString',
+          IpRanges   => [
+            {
+              CidrIp      => 'MyString',
+              Description => 'MyString',
+            },
+            ...
+          ],                          # OPTIONAL
           Ipv6Ranges => [
             {
               CidrIpv6    => 'MyString',
@@ -54,32 +62,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ],                          # OPTIONAL
           PrefixListIds => [
             {
-              PrefixListId => 'MyString',
               Description  => 'MyString',
+              PrefixListId => 'MyString',
             },
             ...
           ],                          # OPTIONAL
           ToPort           => 1,
           UserIdGroupPairs => [
             {
-              GroupId                => 'MyString',
-              UserId                 => 'MyString',
-              VpcPeeringConnectionId => 'MyString',
-              GroupName              => 'MyString',
               Description            => 'MyString',
+              GroupId                => 'MyString',
+              GroupName              => 'MyString',
               PeeringStatus          => 'MyString',
+              UserId                 => 'MyString',
               VpcId                  => 'MyString',
+              VpcPeeringConnectionId => 'MyString',
             },
             ...
           ],    # OPTIONAL
-          IpRanges => [
-            {
-              CidrIp      => 'MyString',
-              Description => 'MyString',
-            },
-            ...
-          ],    # OPTIONAL
-          FromPort => 1,
         },
         ...
       ],        # OPTIONAL

@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ProjectsNotFound = $BatchGetProjectsOutput->ProjectsNotFound;
     my $Projects         = $BatchGetProjectsOutput->Projects;
+    my $ProjectsNotFound = $BatchGetProjectsOutput->ProjectsNotFound;
 
     # Returns a L<Paws::CodeBuild::BatchGetProjectsOutput> object.
 

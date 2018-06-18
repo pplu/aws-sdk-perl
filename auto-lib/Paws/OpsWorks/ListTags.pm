@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Tags      = $ListTagsResult->Tags;
     my $NextToken = $ListTagsResult->NextToken;
+    my $Tags      = $ListTagsResult->Tags;
 
     # Returns a L<Paws::OpsWorks::ListTagsResult> object.
 

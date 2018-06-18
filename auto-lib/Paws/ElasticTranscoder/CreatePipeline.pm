@@ -41,9 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Role          => 'MyRole',
       AwsKmsKeyArn  => 'MyKeyArn',       # OPTIONAL
       ContentConfig => {
-        StorageClass => 'MyStorageClass',    # OPTIONAL
-        Bucket       => 'MyBucketName',
-        Permissions  => [
+        Bucket      => 'MyBucketName',
+        Permissions => [
           {
             Access => [ 'MyAccessControl', ... ],   # max: 30; OPTIONAL
             Grantee => 'MyGrantee',                 # min: 1, max: 255; OPTIONAL
@@ -51,18 +50,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],                                          # max: 30; OPTIONAL
+        StorageClass => 'MyStorageClass',           # OPTIONAL
       },    # OPTIONAL
       Notifications => {
-        Warning     => 'MySnsTopic',    # OPTIONAL
         Completed   => 'MySnsTopic',    # OPTIONAL
-        Progressing => 'MySnsTopic',    # OPTIONAL
         Error       => 'MySnsTopic',    # OPTIONAL
+        Progressing => 'MySnsTopic',    # OPTIONAL
+        Warning     => 'MySnsTopic',    # OPTIONAL
       },    # OPTIONAL
       OutputBucket    => 'MyBucketName',    # OPTIONAL
       ThumbnailConfig => {
-        StorageClass => 'MyStorageClass',    # OPTIONAL
-        Bucket       => 'MyBucketName',
-        Permissions  => [
+        Bucket      => 'MyBucketName',
+        Permissions => [
           {
             Access => [ 'MyAccessControl', ... ],   # max: 30; OPTIONAL
             Grantee => 'MyGrantee',                 # min: 1, max: 255; OPTIONAL
@@ -70,12 +69,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],                                          # max: 30; OPTIONAL
+        StorageClass => 'MyStorageClass',           # OPTIONAL
       },    # OPTIONAL
     );
 
     # Results:
-    my $Warnings = $CreatePipelineResponse->Warnings;
     my $Pipeline = $CreatePipelineResponse->Pipeline;
+    my $Warnings = $CreatePipelineResponse->Warnings;
 
     # Returns a L<Paws::ElasticTranscoder::CreatePipelineResponse> object.
 

@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateTableOutput = $dynamodb->UpdateTable(
       {
         'ProvisionedThroughput' => {
-          'WriteCapacityUnits' => 10,
-          'ReadCapacityUnits'  => 10
+          'ReadCapacityUnits'  => 10,
+          'WriteCapacityUnits' => 10
         },
         'TableName' => 'MusicCollection'
       }

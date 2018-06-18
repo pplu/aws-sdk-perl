@@ -53,17 +53,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $RequestParameters   = $Method->RequestParameters;
-    my $OperationName       = $Method->OperationName;
-    my $AuthorizerId        = $Method->AuthorizerId;
     my $ApiKeyRequired      = $Method->ApiKeyRequired;
-    my $AuthorizationType   = $Method->AuthorizationType;
-    my $MethodResponses     = $Method->MethodResponses;
-    my $RequestValidatorId  = $Method->RequestValidatorId;
-    my $RequestModels       = $Method->RequestModels;
     my $AuthorizationScopes = $Method->AuthorizationScopes;
+    my $AuthorizationType   = $Method->AuthorizationType;
+    my $AuthorizerId        = $Method->AuthorizerId;
     my $HttpMethod          = $Method->HttpMethod;
     my $MethodIntegration   = $Method->MethodIntegration;
+    my $MethodResponses     = $Method->MethodResponses;
+    my $OperationName       = $Method->OperationName;
+    my $RequestModels       = $Method->RequestModels;
+    my $RequestParameters   = $Method->RequestParameters;
+    my $RequestValidatorId  = $Method->RequestValidatorId;
 
     # Returns a L<Paws::ApiGateway::Method> object.
 

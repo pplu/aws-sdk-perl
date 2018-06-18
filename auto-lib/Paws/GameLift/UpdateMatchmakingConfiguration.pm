@@ -48,8 +48,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description              => 'MyNonZeroAndMaxString',        # OPTIONAL
       GameProperties           => [
         {
-          Value => 'MyGamePropertyValue',                         # max: 96
           Key   => 'MyGamePropertyKey',                           # max: 32
+          Value => 'MyGamePropertyValue',                         # max: 96
 
         },
         ...

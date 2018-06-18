@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $servicecatalog->SearchProvisionedProducts(
       AcceptLanguage    => 'MyAcceptLanguage',    # OPTIONAL
       AccessLevelFilter => {
-        Value => 'MyAccessLevelFilterValue',      # OPTIONAL
         Key => 'Account',    # values: Account, Role, User; OPTIONAL
+        Value => 'MyAccessLevelFilterValue',    # OPTIONAL
       },    # OPTIONAL
       Filters => {
         'SearchQuery' => [ 'MyProvisionedProductViewFilterValue', ... ]
@@ -51,10 +51,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $TotalResultsCount = $SearchProvisionedProductsOutput->TotalResultsCount;
-    my $NextPageToken     = $SearchProvisionedProductsOutput->NextPageToken;
+    my $NextPageToken = $SearchProvisionedProductsOutput->NextPageToken;
     my $ProvisionedProducts =
       $SearchProvisionedProductsOutput->ProvisionedProducts;
+    my $TotalResultsCount = $SearchProvisionedProductsOutput->TotalResultsCount;
 
     # Returns a L<Paws::ServiceCatalog::SearchProvisionedProductsOutput> object.
 

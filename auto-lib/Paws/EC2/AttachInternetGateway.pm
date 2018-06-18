@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example attaches the specified Internet gateway to the specified VPC.
     $ec2->AttachInternetGateway(
       {
-        'VpcId'             => 'vpc-a01106c2',
-        'InternetGatewayId' => 'igw-c0a643a9'
+        'InternetGatewayId' => 'igw-c0a643a9',
+        'VpcId'             => 'vpc-a01106c2'
       }
     );
 

@@ -42,14 +42,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $PerformanceMode      = $FileSystemDescription->PerformanceMode;
     my $CreationTime         = $FileSystemDescription->CreationTime;
-    my $LifeCycleState       = $FileSystemDescription->LifeCycleState;
     my $CreationToken        = $FileSystemDescription->CreationToken;
-    my $NumberOfMountTargets = $FileSystemDescription->NumberOfMountTargets;
-    my $SizeInBytes          = $FileSystemDescription->SizeInBytes;
-    my $OwnerId              = $FileSystemDescription->OwnerId;
     my $FileSystemId         = $FileSystemDescription->FileSystemId;
+    my $LifeCycleState       = $FileSystemDescription->LifeCycleState;
+    my $NumberOfMountTargets = $FileSystemDescription->NumberOfMountTargets;
+    my $OwnerId              = $FileSystemDescription->OwnerId;
+    my $PerformanceMode      = $FileSystemDescription->PerformanceMode;
+    my $SizeInBytes          = $FileSystemDescription->SizeInBytes;
 
     # Returns a L<Paws::EFS::FileSystemDescription> object.
 

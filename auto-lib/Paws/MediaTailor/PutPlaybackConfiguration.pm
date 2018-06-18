@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $api . mediatailor->PutPlaybackConfiguration(
       AdDecisionServerUrl => 'My__string',    # OPTIONAL
       CdnConfiguration    => {
-        ContentSegmentUrlPrefix => 'My__string',
         AdSegmentUrlPrefix      => 'My__string',
+        ContentSegmentUrlPrefix => 'My__string',
       },                                      # OPTIONAL
       Name                  => 'My__string',  # OPTIONAL
       SlateAdUrl            => 'My__string',  # OPTIONAL
@@ -45,18 +45,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $AdDecisionServerUrl =
+      $PutPlaybackConfigurationResponse->AdDecisionServerUrl;
+    my $CdnConfiguration = $PutPlaybackConfigurationResponse->CdnConfiguration;
+    my $HlsConfiguration = $PutPlaybackConfigurationResponse->HlsConfiguration;
+    my $Name             = $PutPlaybackConfigurationResponse->Name;
+    my $PlaybackEndpointPrefix =
+      $PutPlaybackConfigurationResponse->PlaybackEndpointPrefix;
     my $SessionInitializationEndpointPrefix =
       $PutPlaybackConfigurationResponse->SessionInitializationEndpointPrefix;
     my $SlateAdUrl = $PutPlaybackConfigurationResponse->SlateAdUrl;
     my $VideoContentSourceUrl =
       $PutPlaybackConfigurationResponse->VideoContentSourceUrl;
-    my $CdnConfiguration = $PutPlaybackConfigurationResponse->CdnConfiguration;
-    my $PlaybackEndpointPrefix =
-      $PutPlaybackConfigurationResponse->PlaybackEndpointPrefix;
-    my $Name             = $PutPlaybackConfigurationResponse->Name;
-    my $HlsConfiguration = $PutPlaybackConfigurationResponse->HlsConfiguration;
-    my $AdDecisionServerUrl =
-      $PutPlaybackConfigurationResponse->AdDecisionServerUrl;
 
     # Returns a L<Paws::MediaTailor::PutPlaybackConfigurationResponse> object.
 

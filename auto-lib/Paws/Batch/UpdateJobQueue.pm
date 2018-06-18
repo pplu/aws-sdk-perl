@@ -41,8 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $jobQueueName = $UpdateJobQueueResponse->jobQueueName;
     my $jobQueueArn  = $UpdateJobQueueResponse->jobQueueArn;
+    my $jobQueueName = $UpdateJobQueueResponse->jobQueueName;
 
     # Returns a L<Paws::Batch::UpdateJobQueueResponse> object.
 

@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # instance.
     my $AttachNetworkInterfaceResult = $ec2->AttachNetworkInterface(
       {
-        'InstanceId'         => 'i-1234567890abcdef0',
         'DeviceIndex'        => 1,
+        'InstanceId'         => 'i-1234567890abcdef0',
         'NetworkInterfaceId' => 'eni-e5aa89a3'
       }
     );

@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SetIdentityFeedbackForwardingEnabledResponse =
       $email->SetIdentityFeedbackForwardingEnabled(
       {
-        'Identity'          => 'user@example.com',
-        'ForwardingEnabled' => true
+        'ForwardingEnabled' => true,
+        'Identity'          => 'user@example.com'
       }
       );
 
