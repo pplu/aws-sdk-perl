@@ -397,8 +397,6 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 =over
 
-=item DesiredCount => Int
-
 =item ServiceName => Str
 
 =item TaskDefinition => Str
@@ -408,6 +406,8 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 =item [Cluster => Str]
 
 =item [DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>]
+
+=item [DesiredCount => Int]
 
 =item [HealthCheckGracePeriodSeconds => Int]
 
@@ -424,6 +424,8 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 =item [PlatformVersion => Str]
 
 =item [Role => Str]
+
+=item [SchedulingStrategy => Str]
 
 =item [ServiceRegistries => ArrayRef[L<Paws::ECS::ServiceRegistry>]]
 
@@ -465,19 +467,23 @@ load balancer are considered healthy if they are in the C<RUNNING>
 state. Tasks for services that I<do> use a load balancer are considered
 healthy if they are in the C<RUNNING> state and the container instance
 they are hosted on is reported as healthy by the load balancer. The
-default value for C<minimumHealthyPercent> is 50% in the console and
-100% for the AWS CLI, the AWS SDKs, and the APIs.
+default value for a replica service for C<minimumHealthyPercent> is 50%
+in the console and 100% for the AWS CLI, the AWS SDKs, and the APIs.
+The default value for a daemon service for C<minimumHealthyPercent> is
+0% for the AWS CLI, the AWS SDKs, and the APIs and 50% for the console.
 
 The C<maximumPercent> parameter represents an upper limit on the number
 of your service's tasks that are allowed in the C<RUNNING> or
 C<PENDING> state during a deployment, as a percentage of the
 C<desiredCount> (rounded down to the nearest integer). This parameter
 enables you to define the deployment batch size. For example, if your
-service has a C<desiredCount> of four tasks and a C<maximumPercent>
-value of 200%, the scheduler can start four new tasks before stopping
-the four older tasks (provided that the cluster resources required to
-do this are available). The default value for C<maximumPercent> is
-200%.
+replica service has a C<desiredCount> of four tasks and a
+C<maximumPercent> value of 200%, the scheduler can start four new tasks
+before stopping the four older tasks (provided that the cluster
+resources required to do this are available). The default value for a
+replica service for C<maximumPercent> is 200%. If you are using a
+daemon service type, the C<maximumPercent> should remain at 100%, which
+is the default value.
 
 When the service scheduler launches new tasks, it determines task
 placement in your cluster using the following logic:
@@ -562,6 +568,8 @@ deregister them with DeregisterContainerInstance.
 =item Service => Str
 
 =item [Cluster => Str]
+
+=item [Force => Bool]
 
 
 =back
@@ -864,6 +872,8 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
+
+=item [SchedulingStrategy => Str]
 
 
 =back
@@ -1574,9 +1584,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ECS::ListContainerInstancesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllServices(sub { },[Cluster => Str, LaunchType => Str, MaxResults => Int, NextToken => Str])
+=head2 ListAllServices(sub { },[Cluster => Str, LaunchType => Str, MaxResults => Int, NextToken => Str, SchedulingStrategy => Str])
 
-=head2 ListAllServices([Cluster => Str, LaunchType => Str, MaxResults => Int, NextToken => Str])
+=head2 ListAllServices([Cluster => Str, LaunchType => Str, MaxResults => Int, NextToken => Str, SchedulingStrategy => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

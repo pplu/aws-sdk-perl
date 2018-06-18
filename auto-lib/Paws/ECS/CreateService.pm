@@ -4,7 +4,7 @@ package Paws::ECS::CreateService;
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken' );
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
   has DeploymentConfiguration => (is => 'ro', isa => 'Paws::ECS::DeploymentConfiguration', traits => ['NameInRequest'], request_name => 'deploymentConfiguration' );
-  has DesiredCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'desiredCount' , required => 1);
+  has DesiredCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'desiredCount' );
   has HealthCheckGracePeriodSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'healthCheckGracePeriodSeconds' );
   has LaunchType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'launchType' );
   has LoadBalancers => (is => 'ro', isa => 'ArrayRef[Paws::ECS::LoadBalancer]', traits => ['NameInRequest'], request_name => 'loadBalancers' );
@@ -13,6 +13,7 @@ package Paws::ECS::CreateService;
   has PlacementStrategy => (is => 'ro', isa => 'ArrayRef[Paws::ECS::PlacementStrategy]', traits => ['NameInRequest'], request_name => 'placementStrategy' );
   has PlatformVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'platformVersion' );
   has Role => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'role' );
+  has SchedulingStrategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'schedulingStrategy' );
   has ServiceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceName' , required => 1);
   has ServiceRegistries => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ServiceRegistry]', traits => ['NameInRequest'], request_name => 'serviceRegistries' );
   has TaskDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskDefinition' , required => 1);
@@ -112,7 +113,7 @@ the deployment and the ordering of stopping and starting tasks.
 
 
 
-=head2 B<REQUIRED> DesiredCount => Int
+=head2 DesiredCount => Int
 
 The number of instantiations of the specified task definition to place
 and keep running on your cluster.
@@ -231,6 +232,39 @@ more information, see Friendly Names and Paths
 in the I<IAM User Guide>.
 
 
+
+=head2 SchedulingStrategy => Str
+
+The scheduling strategy to use for the service. For more information,
+see Services
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguideecs_services.html).
+
+There are two service scheduler strategies available:
+
+=over
+
+=item *
+
+C<REPLICA>-The replica scheduling strategy places and maintains the
+desired number of tasks across your cluster. By default, the service
+scheduler spreads tasks across Availability Zones. You can use task
+placement strategies and constraints to customize task placement
+decisions.
+
+=item *
+
+C<DAEMON>-The daemon scheduling strategy deploys exactly one task on
+each active container instance that meets all of the task placement
+constraints that you specify in your cluster. When using this strategy,
+there is no need to specify a desired number of tasks, a task placement
+strategy, or use Service Auto Scaling policies.
+
+Fargate tasks do not support the C<DAEMON> scheduling strategy.
+
+=back
+
+
+Valid values are: C<"REPLICA">, C<"DAEMON">
 
 =head2 B<REQUIRED> ServiceName => Str
 
