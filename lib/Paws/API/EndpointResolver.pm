@@ -23,12 +23,11 @@ package Paws::API::EndpointResolver;
     default => sub {
       my $self = shift;
       my $sig_region;
-   
-      # For global services:   don't specify region: we sign with the region in the credentialScope
-      #                        specify the region: we override the credentialScope (use the region specified)
+
+      # For global services:   we sign with the region in the credentialScope
       # For regional services: use the region specified for signing
-      # If endpoint is specified: use the region specified (no _endpoint_info) 
-      if (defined $self->_endpoint_info->{ credentialScope } and not defined $self->region) {
+      # If endpoint is specified: use the region specified (no _endpoint_info)
+      if (defined $self->_endpoint_info->{ credentialScope }) {
         $sig_region = $self->_endpoint_info->{ credentialScope }->{ region }
       }
       $sig_region = $self->region if (not defined $sig_region);
