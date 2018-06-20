@@ -39,9 +39,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # If the command succeeds, no output is returned.
     $ec2->ModifySnapshotAttribute(
       {
+        'Attribute'     => 'createVolumePermission',
         'OperationType' => 'remove',
         'SnapshotId'    => 'snap-1234567890abcdef0',
-        'Attribute'     => 'createVolumePermission',
         'UserIds'       => [123456789012]
       }
     );
@@ -50,10 +50,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example makes the snapshot ``snap-1234567890abcdef0`` public.
     $ec2->ModifySnapshotAttribute(
       {
-        'OperationType' => 'add',
+        'Attribute'     => 'createVolumePermission',
         'GroupNames'    => ['all'],
-        'SnapshotId'    => 'snap-1234567890abcdef0',
-        'Attribute'     => 'createVolumePermission'
+        'OperationType' => 'add',
+        'SnapshotId'    => 'snap-1234567890abcdef0'
       }
     );
 

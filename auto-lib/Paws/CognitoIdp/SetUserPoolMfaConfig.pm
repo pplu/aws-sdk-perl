@@ -34,12 +34,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       UserPoolId          => 'MyUserPoolIdType',
       MfaConfiguration    => 'OFF',                # OPTIONAL
       SmsMfaConfiguration => {
+        SmsAuthenticationMessage =>
+          'MySmsVerificationMessageType',          # min: 6, max: 140; OPTIONAL
         SmsConfiguration => {
           SnsCallerArn => 'MyArnType',             # min: 20, max: 2048
           ExternalId   => 'MyStringType',          # OPTIONAL
         },    # OPTIONAL
-        SmsAuthenticationMessage =>
-          'MySmsVerificationMessageType',    # min: 6, max: 140; OPTIONAL
       },    # OPTIONAL
       SoftwareTokenMfaConfiguration => {
         Enabled => 1,    # OPTIONAL
@@ -48,10 +48,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $MfaConfiguration = $SetUserPoolMfaConfigResponse->MfaConfiguration;
-    my $SoftwareTokenMfaConfiguration =
-      $SetUserPoolMfaConfigResponse->SoftwareTokenMfaConfiguration;
     my $SmsMfaConfiguration =
       $SetUserPoolMfaConfigResponse->SmsMfaConfiguration;
+    my $SoftwareTokenMfaConfiguration =
+      $SetUserPoolMfaConfigResponse->SoftwareTokenMfaConfiguration;
 
     # Returns a L<Paws::CognitoIdp::SetUserPoolMfaConfigResponse> object.
 

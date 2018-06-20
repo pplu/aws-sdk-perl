@@ -48,9 +48,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $TreeId   = $PutFileOutput->TreeId;
     my $BlobId   = $PutFileOutput->BlobId;
     my $CommitId = $PutFileOutput->CommitId;
+    my $TreeId   = $PutFileOutput->TreeId;
 
     # Returns a L<Paws::CodeCommit::PutFileOutput> object.
 

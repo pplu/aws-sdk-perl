@@ -33,15 +33,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Triggers       => [
         {
           destinationArn => 'MyArn',
-          name           => 'MyRepositoryTriggerName',
           events         => [
             'all',
             ... # values: all, updateReference, createReference, deleteReference
           ],
+          name     => 'MyRepositoryTriggerName',
+          branches => [
+            'MyBranchName', ...    # min: 1, max: 256
+          ],                       # OPTIONAL
           customData => 'MyRepositoryTriggerCustomData',    # OPTIONAL
-          branches   => [
-            'MyBranchName', ...                             # min: 1, max: 256
-          ],                                                # OPTIONAL
         },
         ...
       ],

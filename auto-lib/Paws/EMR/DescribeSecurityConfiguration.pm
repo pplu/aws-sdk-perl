@@ -34,11 +34,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $SecurityConfiguration =
-      $DescribeSecurityConfigurationOutput->SecurityConfiguration;
     my $CreationDateTime =
       $DescribeSecurityConfigurationOutput->CreationDateTime;
     my $Name = $DescribeSecurityConfigurationOutput->Name;
+    my $SecurityConfiguration =
+      $DescribeSecurityConfigurationOutput->SecurityConfiguration;
 
     # Returns a L<Paws::EMR::DescribeSecurityConfigurationOutput> object.
 

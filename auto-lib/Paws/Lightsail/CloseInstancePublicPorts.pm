@@ -31,9 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CloseInstancePublicPortsResult = $lightsail->CloseInstancePublicPorts(
       InstanceName => 'MyResourceName',
       PortInfo     => {
+        fromPort => 1,        # max: 65535; OPTIONAL
         protocol => 'tcp',    # values: tcp, all, udp; OPTIONAL
         toPort   => 1,        # max: 65535; OPTIONAL
-        fromPort => 1,        # max: 65535; OPTIONAL
       },
 
     );

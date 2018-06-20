@@ -42,8 +42,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],                                          # OPTIONAL
       Filters => [
         {
-          Values => [ 'MyInventoryFilterValue', ... ],    # min: 1, max: 20
           Key    => 'MyInventoryFilterKey',               # min: 1, max: 200
+          Values => [ 'MyInventoryFilterValue', ... ],    # min: 1, max: 20
           Type   => 'Equal'
           , # values: Equal, NotEqual, BeginWith, LessThan, GreaterThan; OPTIONAL
         },

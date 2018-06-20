@@ -34,13 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       HITTypeId    => 'MyEntityId',
       Active       => 1,              # OPTIONAL
       Notification => {
-        EventTypes => [
+        Destination => 'MyString',
+        EventTypes  => [
           'AssignmentAccepted',
           ... # values: AssignmentAccepted, AssignmentAbandoned, AssignmentReturned, AssignmentSubmitted, AssignmentRejected, AssignmentApproved, HITCreated, HITExpired, HITReviewable, HITExtended, HITDisposed, Ping
         ],
-        Version     => 'MyString',
-        Transport   => 'Email',      # values: Email, SQS, SNS
-        Destination => 'MyString',
+        Transport => 'Email',      # values: Email, SQS, SNS
+        Version   => 'MyString',
 
       },    # OPTIONAL
       );

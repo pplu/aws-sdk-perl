@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Owner  = $GetBucketAclOutput->Owner;
     my $Grants = $GetBucketAclOutput->Grants;
+    my $Owner  = $GetBucketAclOutput->Owner;
 
     # Returns a L<Paws::S3::GetBucketAclOutput> object.
 

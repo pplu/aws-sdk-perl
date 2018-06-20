@@ -52,8 +52,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Snapshots = $SnapshotMessage->Snapshots;
     my $Marker    = $SnapshotMessage->Marker;
+    my $Snapshots = $SnapshotMessage->Snapshots;
 
     # Returns a L<Paws::RedShift::SnapshotMessage> object.
 

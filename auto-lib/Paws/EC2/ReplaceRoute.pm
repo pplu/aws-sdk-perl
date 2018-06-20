@@ -42,8 +42,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # virtual private gateway.
     $ec2->ReplaceRoute(
       {
-        'GatewayId'            => 'vgw-9a4cacf3',
         'DestinationCidrBlock' => '10.0.0.0/16',
+        'GatewayId'            => 'vgw-9a4cacf3',
         'RouteTableId'         => 'rtb-22574640'
       }
     );

@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $TaskIds   = $ListThingRegistrationTasksResponse->TaskIds;
     my $NextToken = $ListThingRegistrationTasksResponse->NextToken;
+    my $TaskIds   = $ListThingRegistrationTasksResponse->TaskIds;
 
     # Returns a L<Paws::IoT::ListThingRegistrationTasksResponse> object.
 

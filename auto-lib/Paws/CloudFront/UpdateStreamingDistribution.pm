@@ -37,18 +37,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Id                          => 'Mystring',
       StreamingDistributionConfig => {
         CallerReference => 'Mystring',
+        Comment         => 'Mystring',
+        Enabled         => 1,
         S3Origin        => {
-          OriginAccessIdentity => 'Mystring',
           DomainName           => 'Mystring',
+          OriginAccessIdentity => 'Mystring',
 
         },
         TrustedSigners => {
-          Quantity => 1,
           Enabled  => 1,
+          Quantity => 1,
           Items    => [ 'Mystring', ... ],    # OPTIONAL
         },
-        Enabled => 1,
-        Comment => 'Mystring',
         Aliases => {
           Quantity => 1,
           Items    => [ 'Mystring', ... ],    # OPTIONAL

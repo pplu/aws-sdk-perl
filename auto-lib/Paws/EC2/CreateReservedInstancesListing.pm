@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InstanceCount  => 1,
       PriceSchedules => [
         {
-          Price        => 1,        # OPTIONAL
           CurrencyCode => 'USD',    # values: USD; OPTIONAL
+          Price        => 1,        # OPTIONAL
           Term         => 1,        # OPTIONAL
         },
         ...

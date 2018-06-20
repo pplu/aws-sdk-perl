@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $TrailARN       = $GetEventSelectorsResponse->TrailARN;
     my $EventSelectors = $GetEventSelectorsResponse->EventSelectors;
+    my $TrailARN       = $GetEventSelectorsResponse->TrailARN;
 
     # Returns a L<Paws::CloudTrail::GetEventSelectorsResponse> object.
 

@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description     => 'MyNonZeroAndMaxString',                  # OPTIONAL
       Name            => 'MyNonBlankAndLengthConstraintString',    # OPTIONAL
       RoutingStrategy => {
-        Type    => 'SIMPLE',        # values: SIMPLE, TERMINAL; OPTIONAL
-        Message => 'MyFreeText',    # OPTIONAL
         FleetId => 'MyFleetId',     # OPTIONAL
+        Message => 'MyFreeText',    # OPTIONAL
+        Type    => 'SIMPLE',        # values: SIMPLE, TERMINAL; OPTIONAL
       },    # OPTIONAL
     );
 

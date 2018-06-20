@@ -38,29 +38,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'Keys' => [
 
               {
+                'Artist' => {
+                  'S' => 'No One You Know'
+                },
                 'SongTitle' => {
                   'S' => 'Call Me Today'
-                },
-                'Artist' => {
-                  'S' => 'No One You Know'
                 }
               },
 
               {
-                'SongTitle' => {
-                  'S' => 'Happy Day'
-                },
                 'Artist' => {
                   'S' => 'Acme Band'
+                },
+                'SongTitle' => {
+                  'S' => 'Happy Day'
                 }
               },
 
               {
-                'SongTitle' => {
-                  'S' => 'Scared of My Shadow'
-                },
                 'Artist' => {
                   'S' => 'No One You Know'
+                },
+                'SongTitle' => {
+                  'S' => 'Scared of My Shadow'
                 }
               }
             ],

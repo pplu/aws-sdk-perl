@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $ResourceDetails = $ListResourcesForTagOptionOutput->ResourceDetails;
     my $PageToken       = $ListResourcesForTagOptionOutput->PageToken;
+    my $ResourceDetails = $ListResourcesForTagOptionOutput->ResourceDetails;
 
     # Returns a L<Paws::ServiceCatalog::ListResourcesForTagOptionOutput> object.
 

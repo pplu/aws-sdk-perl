@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken = $ListElasticsearchVersionsResponse->NextToken;
     my $ElasticsearchVersions =
       $ListElasticsearchVersionsResponse->ElasticsearchVersions;
+    my $NextToken = $ListElasticsearchVersionsResponse->NextToken;
 
     # Returns a L<Paws::ES::ListElasticsearchVersionsResponse> object.
 

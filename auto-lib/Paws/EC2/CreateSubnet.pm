@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # block. We recommend that you let us select an Availability Zone for you.
     my $CreateSubnetResult = $ec2->CreateSubnet(
       {
-        'VpcId'     => 'vpc-a01106c2',
-        'CidrBlock' => '10.0.1.0/24'
+        'CidrBlock' => '10.0.1.0/24',
+        'VpcId'     => 'vpc-a01106c2'
       }
     );
 

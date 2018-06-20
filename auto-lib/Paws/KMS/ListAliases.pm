@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ListAliasesResponse = $kms->ListAliases();
 
     # Results:
-    my $Truncated = $ListAliasesResponse->Truncated;
     my $Aliases   = $ListAliasesResponse->Aliases;
+    my $Truncated = $ListAliasesResponse->Truncated;
 
     # Returns a L<Paws::KMS::ListAliasesResponse> object.
 

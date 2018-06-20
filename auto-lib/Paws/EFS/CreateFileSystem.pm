@@ -36,20 +36,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # performance mode.
     my $FileSystemDescription = $elasticfilesystem->CreateFileSystem(
       {
-        'PerformanceMode' => 'generalPurpose',
-        'CreationToken'   => 'tokenstring'
+        'CreationToken'   => 'tokenstring',
+        'PerformanceMode' => 'generalPurpose'
       }
     );
 
     # Results:
-    my $NumberOfMountTargets = $FileSystemDescription->NumberOfMountTargets;
     my $CreationTime         = $FileSystemDescription->CreationTime;
-    my $FileSystemId         = $FileSystemDescription->FileSystemId;
-    my $OwnerId              = $FileSystemDescription->OwnerId;
     my $CreationToken        = $FileSystemDescription->CreationToken;
-    my $SizeInBytes          = $FileSystemDescription->SizeInBytes;
+    my $FileSystemId         = $FileSystemDescription->FileSystemId;
     my $LifeCycleState       = $FileSystemDescription->LifeCycleState;
+    my $NumberOfMountTargets = $FileSystemDescription->NumberOfMountTargets;
+    my $OwnerId              = $FileSystemDescription->OwnerId;
     my $PerformanceMode      = $FileSystemDescription->PerformanceMode;
+    my $SizeInBytes          = $FileSystemDescription->SizeInBytes;
 
     # Returns a L<Paws::EFS::FileSystemDescription> object.
 

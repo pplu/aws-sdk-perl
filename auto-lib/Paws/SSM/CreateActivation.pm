@@ -40,8 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ActivationId   = $CreateActivationResult->ActivationId;
     my $ActivationCode = $CreateActivationResult->ActivationCode;
+    my $ActivationId   = $CreateActivationResult->ActivationId;
 
     # Returns a L<Paws::SSM::CreateActivationResult> object.
 

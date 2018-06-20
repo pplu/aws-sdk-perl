@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ReferenceSchema => {
           RecordColumns => [
             {
-              SqlType => 'MyRecordColumnSqlType',    # min: 1,
               Name    => 'MyRecordColumnName',
+              SqlType => 'MyRecordColumnSqlType',    # min: 1,
               Mapping => 'MyRecordColumnMapping',    # OPTIONAL
             },
             ...
@@ -61,9 +61,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         TableName             => 'MyInAppTableName',    # min: 1, max: 32
         S3ReferenceDataSource => {
-          ReferenceRoleARN => 'MyRoleARN',              # min: 1, max: 2048
-          FileKey          => 'MyFileKey',              # min: 1, max: 1024
           BucketARN        => 'MyBucketARN',            # min: 1, max: 2048
+          FileKey          => 'MyFileKey',              # min: 1, max: 1024
+          ReferenceRoleARN => 'MyRoleARN',              # min: 1, max: 2048
 
         },    # OPTIONAL
       },

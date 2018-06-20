@@ -34,10 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Location => {
         type => 'API'
         , # values: API, AUTHORIZER, MODEL, RESOURCE, METHOD, PATH_PARAMETER, QUERY_PARAMETER, REQUEST_HEADER, REQUEST_BODY, RESPONSE, RESPONSE_HEADER, RESPONSE_BODY
-        statusCode => 'MyDocumentationPartLocationStatusCode',    # OPTIONAL
         method     => 'MyString',                                 # OPTIONAL
         name       => 'MyString',                                 # OPTIONAL
         path       => 'MyString',                                 # OPTIONAL
+        statusCode => 'MyDocumentationPartLocationStatusCode',    # OPTIONAL
       },
       Properties => 'MyString',
       RestApiId  => 'MyString',
@@ -46,8 +46,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $Id         = $DocumentationPart->Id;
-    my $Properties = $DocumentationPart->Properties;
     my $Location   = $DocumentationPart->Location;
+    my $Properties = $DocumentationPart->Properties;
 
     # Returns a L<Paws::ApiGateway::DocumentationPart> object.
 

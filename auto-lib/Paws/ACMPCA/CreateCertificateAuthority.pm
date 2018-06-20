@@ -35,25 +35,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CertificateAuthorityConfiguration => {
         KeyAlgorithm =>
           'RSA_2048',  # values: RSA_2048, RSA_4096, EC_prime256v1, EC_secp384r1
-        Subject => {
-          Pseudonym          => 'MyString128',    # max: 128; OPTIONAL
-          Surname            => 'MyString40',     # max: 40; OPTIONAL
-          OrganizationalUnit => 'MyString64',     # max: 64; OPTIONAL
-          State              => 'MyString128',    # max: 128; OPTIONAL
-          Title              => 'MyString64',     # max: 64; OPTIONAL
-          DistinguishedNameQualifier =>
-            'MyDistinguishedNameQualifierString',    # max: 64; OPTIONAL
-          Organization        => 'MyString64',             # max: 64; OPTIONAL
-          Initials            => 'MyString5',              # max: 5; OPTIONAL
-          SerialNumber        => 'MyString64',             # max: 64; OPTIONAL
-          GivenName           => 'MyString16',             # max: 16; OPTIONAL
-          Locality            => 'MyString128',            # max: 128; OPTIONAL
-          Country             => 'MyCountryCodeString',    # OPTIONAL
-          GenerationQualifier => 'MyString3',              # max: 3; OPTIONAL
-          CommonName          => 'MyString64',             # max: 64; OPTIONAL
-        },
         SigningAlgorithm => 'SHA256WITHECDSA'
         , # values: SHA256WITHECDSA, SHA384WITHECDSA, SHA512WITHECDSA, SHA256WITHRSA, SHA384WITHRSA, SHA512WITHRSA
+        Subject => {
+          CommonName => 'MyString64',             # max: 64; OPTIONAL
+          Country    => 'MyCountryCodeString',    # OPTIONAL
+          DistinguishedNameQualifier =>
+            'MyDistinguishedNameQualifierString',    # max: 64; OPTIONAL
+          GenerationQualifier => 'MyString3',        # max: 3; OPTIONAL
+          GivenName           => 'MyString16',       # max: 16; OPTIONAL
+          Initials            => 'MyString5',        # max: 5; OPTIONAL
+          Locality            => 'MyString128',      # max: 128; OPTIONAL
+          Organization        => 'MyString64',       # max: 64; OPTIONAL
+          OrganizationalUnit  => 'MyString64',       # max: 64; OPTIONAL
+          Pseudonym           => 'MyString128',      # max: 128; OPTIONAL
+          SerialNumber        => 'MyString64',       # max: 64; OPTIONAL
+          State               => 'MyString128',      # max: 128; OPTIONAL
+          Surname             => 'MyString40',       # max: 40; OPTIONAL
+          Title               => 'MyString64',       # max: 64; OPTIONAL
+        },
 
       },
       CertificateAuthorityType => 'SUBORDINATE',

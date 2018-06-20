@@ -34,25 +34,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # each face detected in the target image.
     my $CompareFacesResponse = $rekognition->CompareFaces(
       {
-        'TargetImage' => {
-          'S3Object' => {
-            'Bucket' => 'mybucket',
-            'Name'   => 'mytargetimage'
-          }
-        },
-        'SourceImage' => {
+        'SimilarityThreshold' => 90,
+        'SourceImage'         => {
           'S3Object' => {
             'Bucket' => 'mybucket',
             'Name'   => 'mysourceimage'
           }
         },
-        'SimilarityThreshold' => 90
+        'TargetImage' => {
+          'S3Object' => {
+            'Bucket' => 'mybucket',
+            'Name'   => 'mytargetimage'
+          }
+        }
       }
     );
 
     # Results:
-    my $SourceImageFace = $CompareFacesResponse->SourceImageFace;
     my $FaceMatches     = $CompareFacesResponse->FaceMatches;
+    my $SourceImageFace = $CompareFacesResponse->SourceImageFace;
 
     # Returns a L<Paws::Rekognition::CompareFacesResponse> object.
 

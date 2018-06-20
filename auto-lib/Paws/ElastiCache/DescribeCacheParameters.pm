@@ -38,10 +38,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Parameters = $CacheParameterGroupDetails->Parameters;
     my $CacheNodeTypeSpecificParameters =
       $CacheParameterGroupDetails->CacheNodeTypeSpecificParameters;
-    my $Marker = $CacheParameterGroupDetails->Marker;
+    my $Marker     = $CacheParameterGroupDetails->Marker;
+    my $Parameters = $CacheParameterGroupDetails->Parameters;
 
     # Returns a L<Paws::ElastiCache::CacheParameterGroupDetails> object.
 

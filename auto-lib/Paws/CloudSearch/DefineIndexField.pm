@@ -34,88 +34,88 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         IndexFieldName => 'MyDynamicFieldName',    # min: 1, max: 64
         IndexFieldType => 'int'
         , # values: int, double, literal, text, date, latlon, int-array, double-array, literal-array, text-array, date-array
-        DateOptions => {
-          FacetEnabled  => 1,                 # OPTIONAL
-          SortEnabled   => 1,                 # OPTIONAL
-          DefaultValue  => 'MyFieldValue',    # max: 1024; OPTIONAL
-          SearchEnabled => 1,                 # OPTIONAL
-          ReturnEnabled => 1,                 # OPTIONAL
-          SourceField   => 'MyFieldName',     # min: 1, max: 64; OPTIONAL
-        },    # OPTIONAL
-        LiteralArrayOptions => {
-          FacetEnabled  => 1,                         # OPTIONAL
-          DefaultValue  => 'MyFieldValue',            # max: 1024; OPTIONAL
-          SourceFields  => 'MyFieldNameCommaList',    # OPTIONAL
-          SearchEnabled => 1,                         # OPTIONAL
-          ReturnEnabled => 1,                         # OPTIONAL
-        },    # OPTIONAL
         DateArrayOptions => {
-          FacetEnabled  => 1,                         # OPTIONAL
           DefaultValue  => 'MyFieldValue',            # max: 1024; OPTIONAL
-          SourceFields  => 'MyFieldNameCommaList',    # OPTIONAL
-          SearchEnabled => 1,                         # OPTIONAL
-          ReturnEnabled => 1,                         # OPTIONAL
-        },    # OPTIONAL
-        IntOptions => {
-          FacetEnabled  => 1,                # OPTIONAL
-          SortEnabled   => 1,                # OPTIONAL
-          DefaultValue  => 1,                # OPTIONAL
-          SearchEnabled => 1,                # OPTIONAL
-          ReturnEnabled => 1,                # OPTIONAL
-          SourceField   => 'MyFieldName',    # min: 1, max: 64; OPTIONAL
-        },    # OPTIONAL
-        TextOptions => {
-          SortEnabled      => 1,                 # OPTIONAL
-          DefaultValue     => 'MyFieldValue',    # max: 1024; OPTIONAL
-          AnalysisScheme   => 'MyWord',          # OPTIONAL
-          ReturnEnabled    => 1,                 # OPTIONAL
-          SourceField      => 'MyFieldName',     # min: 1, max: 64; OPTIONAL
-          HighlightEnabled => 1,                 # OPTIONAL
-        },    # OPTIONAL
-        IntArrayOptions => {
           FacetEnabled  => 1,                         # OPTIONAL
-          DefaultValue  => 1,                         # OPTIONAL
-          SourceFields  => 'MyFieldNameCommaList',    # OPTIONAL
-          SearchEnabled => 1,                         # OPTIONAL
           ReturnEnabled => 1,                         # OPTIONAL
+          SearchEnabled => 1,                         # OPTIONAL
+          SourceFields  => 'MyFieldNameCommaList',    # OPTIONAL
         },    # OPTIONAL
-        LatLonOptions => {
-          FacetEnabled  => 1,                 # OPTIONAL
-          SortEnabled   => 1,                 # OPTIONAL
+        DateOptions => {
           DefaultValue  => 'MyFieldValue',    # max: 1024; OPTIONAL
-          SearchEnabled => 1,                 # OPTIONAL
+          FacetEnabled  => 1,                 # OPTIONAL
           ReturnEnabled => 1,                 # OPTIONAL
+          SearchEnabled => 1,                 # OPTIONAL
+          SortEnabled   => 1,                 # OPTIONAL
           SourceField   => 'MyFieldName',     # min: 1, max: 64; OPTIONAL
         },    # OPTIONAL
         DoubleArrayOptions => {
-          FacetEnabled  => 1,                         # OPTIONAL
           DefaultValue  => 1,                         # OPTIONAL
-          SourceFields  => 'MyFieldNameCommaList',    # OPTIONAL
-          SearchEnabled => 1,                         # OPTIONAL
+          FacetEnabled  => 1,                         # OPTIONAL
           ReturnEnabled => 1,                         # OPTIONAL
+          SearchEnabled => 1,                         # OPTIONAL
+          SourceFields  => 'MyFieldNameCommaList',    # OPTIONAL
+        },    # OPTIONAL
+        DoubleOptions => {
+          DefaultValue  => 1,                # OPTIONAL
+          FacetEnabled  => 1,                # OPTIONAL
+          ReturnEnabled => 1,                # OPTIONAL
+          SearchEnabled => 1,                # OPTIONAL
+          SortEnabled   => 1,                # OPTIONAL
+          SourceField   => 'MyFieldName',    # min: 1, max: 64; OPTIONAL
+        },    # OPTIONAL
+        IntArrayOptions => {
+          DefaultValue  => 1,                         # OPTIONAL
+          FacetEnabled  => 1,                         # OPTIONAL
+          ReturnEnabled => 1,                         # OPTIONAL
+          SearchEnabled => 1,                         # OPTIONAL
+          SourceFields  => 'MyFieldNameCommaList',    # OPTIONAL
+        },    # OPTIONAL
+        IntOptions => {
+          DefaultValue  => 1,                # OPTIONAL
+          FacetEnabled  => 1,                # OPTIONAL
+          ReturnEnabled => 1,                # OPTIONAL
+          SearchEnabled => 1,                # OPTIONAL
+          SortEnabled   => 1,                # OPTIONAL
+          SourceField   => 'MyFieldName',    # min: 1, max: 64; OPTIONAL
+        },    # OPTIONAL
+        LatLonOptions => {
+          DefaultValue  => 'MyFieldValue',    # max: 1024; OPTIONAL
+          FacetEnabled  => 1,                 # OPTIONAL
+          ReturnEnabled => 1,                 # OPTIONAL
+          SearchEnabled => 1,                 # OPTIONAL
+          SortEnabled   => 1,                 # OPTIONAL
+          SourceField   => 'MyFieldName',     # min: 1, max: 64; OPTIONAL
+        },    # OPTIONAL
+        LiteralArrayOptions => {
+          DefaultValue  => 'MyFieldValue',            # max: 1024; OPTIONAL
+          FacetEnabled  => 1,                         # OPTIONAL
+          ReturnEnabled => 1,                         # OPTIONAL
+          SearchEnabled => 1,                         # OPTIONAL
+          SourceFields  => 'MyFieldNameCommaList',    # OPTIONAL
         },    # OPTIONAL
         LiteralOptions => {
-          FacetEnabled  => 1,                 # OPTIONAL
-          SortEnabled   => 1,                 # OPTIONAL
           DefaultValue  => 'MyFieldValue',    # max: 1024; OPTIONAL
-          SearchEnabled => 1,                 # OPTIONAL
+          FacetEnabled  => 1,                 # OPTIONAL
           ReturnEnabled => 1,                 # OPTIONAL
+          SearchEnabled => 1,                 # OPTIONAL
+          SortEnabled   => 1,                 # OPTIONAL
           SourceField   => 'MyFieldName',     # min: 1, max: 64; OPTIONAL
         },    # OPTIONAL
         TextArrayOptions => {
-          DefaultValue     => 'MyFieldValue',            # max: 1024; OPTIONAL
           AnalysisScheme   => 'MyWord',                  # OPTIONAL
-          SourceFields     => 'MyFieldNameCommaList',    # OPTIONAL
-          ReturnEnabled    => 1,                         # OPTIONAL
+          DefaultValue     => 'MyFieldValue',            # max: 1024; OPTIONAL
           HighlightEnabled => 1,                         # OPTIONAL
+          ReturnEnabled    => 1,                         # OPTIONAL
+          SourceFields     => 'MyFieldNameCommaList',    # OPTIONAL
         },    # OPTIONAL
-        DoubleOptions => {
-          FacetEnabled  => 1,                # OPTIONAL
-          SortEnabled   => 1,                # OPTIONAL
-          DefaultValue  => 1,                # OPTIONAL
-          SearchEnabled => 1,                # OPTIONAL
-          ReturnEnabled => 1,                # OPTIONAL
-          SourceField   => 'MyFieldName',    # min: 1, max: 64; OPTIONAL
+        TextOptions => {
+          AnalysisScheme   => 'MyWord',          # OPTIONAL
+          DefaultValue     => 'MyFieldValue',    # max: 1024; OPTIONAL
+          HighlightEnabled => 1,                 # OPTIONAL
+          ReturnEnabled    => 1,                 # OPTIONAL
+          SortEnabled      => 1,                 # OPTIONAL
+          SourceField      => 'MyFieldName',     # min: 1, max: 64; OPTIONAL
         },    # OPTIONAL
       },
 

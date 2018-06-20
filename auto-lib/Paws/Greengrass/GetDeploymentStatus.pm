@@ -36,11 +36,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $UpdatedAt        = $GetDeploymentStatusResponse->UpdatedAt;
+    my $DeploymentStatus = $GetDeploymentStatusResponse->DeploymentStatus;
+    my $DeploymentType   = $GetDeploymentStatusResponse->DeploymentType;
     my $ErrorDetails     = $GetDeploymentStatusResponse->ErrorDetails;
     my $ErrorMessage     = $GetDeploymentStatusResponse->ErrorMessage;
-    my $DeploymentType   = $GetDeploymentStatusResponse->DeploymentType;
-    my $DeploymentStatus = $GetDeploymentStatusResponse->DeploymentStatus;
+    my $UpdatedAt        = $GetDeploymentStatusResponse->UpdatedAt;
 
     # Returns a L<Paws::Greengrass::GetDeploymentStatusResponse> object.
 

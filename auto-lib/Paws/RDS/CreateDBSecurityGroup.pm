@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example creates a DB security group.
     my $CreateDBSecurityGroupResult = $rds->CreateDBSecurityGroup(
       {
-        'DBSecurityGroupName'        => 'mydbsecuritygroup',
-        'DBSecurityGroupDescription' => 'My DB security group'
+        'DBSecurityGroupDescription' => 'My DB security group',
+        'DBSecurityGroupName'        => 'mydbsecuritygroup'
       }
     );
 

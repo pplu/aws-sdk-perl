@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken    = $ListIpRoutesResult->NextToken;
     my $IpRoutesInfo = $ListIpRoutesResult->IpRoutesInfo;
+    my $NextToken    = $ListIpRoutesResult->NextToken;
 
     # Returns a L<Paws::DS::ListIpRoutesResult> object.
 

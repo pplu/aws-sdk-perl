@@ -33,14 +33,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ProjectTemplateId  = $DescribeProjectResult->ProjectTemplateId;
-    my $Id                 = $DescribeProjectResult->Id;
-    my $ClientRequestToken = $DescribeProjectResult->ClientRequestToken;
-    my $StackId            = $DescribeProjectResult->StackId;
     my $Arn                = $DescribeProjectResult->Arn;
+    my $ClientRequestToken = $DescribeProjectResult->ClientRequestToken;
     my $CreatedTimeStamp   = $DescribeProjectResult->CreatedTimeStamp;
     my $Description        = $DescribeProjectResult->Description;
+    my $Id                 = $DescribeProjectResult->Id;
     my $Name               = $DescribeProjectResult->Name;
+    my $ProjectTemplateId  = $DescribeProjectResult->ProjectTemplateId;
+    my $StackId            = $DescribeProjectResult->StackId;
 
     # Returns a L<Paws::CodeStar::DescribeProjectResult> object.
 

@@ -42,27 +42,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ApprovalRules => {
         PatchRules => [
           {
+            ApproveAfterDays => 1,    # max: 100
             PatchFilterGroup => {
               PatchFilters => [
                 {
+                  Key => 'PRODUCT'
+                  , # values: PRODUCT, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID, SECTION, PRIORITY, SEVERITY
                   Values => [
                     'MyPatchFilterValue', ...    # min: 1, max: 64
                   ],                             # min: 1, max: 20
-                  Key => 'PRODUCT'
-                  , # values: PRODUCT, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID, SECTION, PRIORITY, SEVERITY
 
                 },
                 ...
-              ],    # max: 4
+              ],                                 # max: 4
 
             },
-            ApproveAfterDays  => 1,           # max: 100
-            EnableNonSecurity => 1,           # OPTIONAL
-            ComplianceLevel   => 'CRITICAL'
+            ComplianceLevel => 'CRITICAL'
             , # values: CRITICAL, HIGH, MEDIUM, LOW, INFORMATIONAL, UNSPECIFIED; OPTIONAL
+            EnableNonSecurity => 1,    # OPTIONAL
           },
           ...
-        ],    # max: 10
+        ],                             # max: 10
 
       },    # OPTIONAL
       ApprovedPatches => [
@@ -74,15 +74,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       GlobalFilters                    => {
         PatchFilters => [
           {
+            Key => 'PRODUCT'
+            , # values: PRODUCT, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID, SECTION, PRIORITY, SEVERITY
             Values => [
               'MyPatchFilterValue', ...    # min: 1, max: 64
             ],                             # min: 1, max: 20
-            Key => 'PRODUCT'
-            , # values: PRODUCT, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID, SECTION, PRIORITY, SEVERITY
 
           },
           ...
-        ],    # max: 4
+        ],                                 # max: 4
 
       },    # OPTIONAL
       Name            => 'MyBaselineName',    # OPTIONAL
@@ -92,11 +92,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Replace => 1,                           # OPTIONAL
       Sources => [
         {
-          Products => [
-            'MyPatchSourceProduct', ...       # min: 1, max: 128
-          ],                                  # min: 1, max: 20
           Configuration => 'MyPatchSourceConfiguration',    # min: 1, max: 512
           Name          => 'MyPatchSourceName',
+          Products      => [
+            'MyPatchSourceProduct', ...                     # min: 1, max: 128
+          ],                                                # min: 1, max: 20
 
         },
         ...
@@ -104,21 +104,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $GlobalFilters   = $UpdatePatchBaselineResult->GlobalFilters;
+    my $ApprovalRules   = $UpdatePatchBaselineResult->ApprovalRules;
     my $ApprovedPatches = $UpdatePatchBaselineResult->ApprovedPatches;
-    my $RejectedPatches = $UpdatePatchBaselineResult->RejectedPatches;
-    my $Sources         = $UpdatePatchBaselineResult->Sources;
-    my $ModifiedDate    = $UpdatePatchBaselineResult->ModifiedDate;
-    my $CreatedDate     = $UpdatePatchBaselineResult->CreatedDate;
-    my $ApprovedPatchesEnableNonSecurity =
-      $UpdatePatchBaselineResult->ApprovedPatchesEnableNonSecurity;
-    my $ApprovalRules = $UpdatePatchBaselineResult->ApprovalRules;
     my $ApprovedPatchesComplianceLevel =
       $UpdatePatchBaselineResult->ApprovedPatchesComplianceLevel;
+    my $ApprovedPatchesEnableNonSecurity =
+      $UpdatePatchBaselineResult->ApprovedPatchesEnableNonSecurity;
     my $BaselineId      = $UpdatePatchBaselineResult->BaselineId;
-    my $OperatingSystem = $UpdatePatchBaselineResult->OperatingSystem;
+    my $CreatedDate     = $UpdatePatchBaselineResult->CreatedDate;
     my $Description     = $UpdatePatchBaselineResult->Description;
+    my $GlobalFilters   = $UpdatePatchBaselineResult->GlobalFilters;
+    my $ModifiedDate    = $UpdatePatchBaselineResult->ModifiedDate;
     my $Name            = $UpdatePatchBaselineResult->Name;
+    my $OperatingSystem = $UpdatePatchBaselineResult->OperatingSystem;
+    my $RejectedPatches = $UpdatePatchBaselineResult->RejectedPatches;
+    my $Sources         = $UpdatePatchBaselineResult->Sources;
 
     # Returns a L<Paws::SSM::UpdatePatchBaselineResult> object.
 

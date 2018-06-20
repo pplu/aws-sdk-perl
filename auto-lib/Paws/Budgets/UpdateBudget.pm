@@ -31,45 +31,45 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateBudgetResponse = $budgets->UpdateBudget(
       AccountId => 'MyAccountId',
       NewBudget => {
-        TimeUnit => 'DAILY',    # values: DAILY, MONTHLY, QUARTERLY, ANNUALLY
         BudgetName => 'MyBudgetName',    # max: 100
         BudgetType =>
           'USAGE',    # values: USAGE, COST, RI_UTILIZATION, RI_COVERAGE
+        TimeUnit    => 'DAILY',    # values: DAILY, MONTHLY, QUARTERLY, ANNUALLY
         BudgetLimit => {
           Amount => 'MyNumericValue',
           Unit   => 'MyUnitValue',      # min: 1,
 
-        },
-        CostFilters => { 'MyGenericString' => [ 'MyGenericString', ... ], }
-        ,                               # OPTIONAL
-        TimePeriod => {
-          Start => '1970-01-01T01:00:00',    # OPTIONAL
-          End   => '1970-01-01T01:00:00',    # OPTIONAL
         },    # OPTIONAL
         CalculatedSpend => {
           ActualSpend => {
             Amount => 'MyNumericValue',
             Unit   => 'MyUnitValue',      # min: 1,
 
-          },
+          },    # OPTIONAL
           ForecastedSpend => {
             Amount => 'MyNumericValue',
             Unit   => 'MyUnitValue',      # min: 1,
 
-          },
+          },    # OPTIONAL
         },    # OPTIONAL
+        CostFilters => { 'MyGenericString' => [ 'MyGenericString', ... ], }
+        ,     # OPTIONAL
         CostTypes => {
-          IncludeUpfront           => 1,    # OPTIONAL
-          IncludeSupport           => 1,    # OPTIONAL
-          IncludeTax               => 1,    # OPTIONAL
-          IncludeDiscount          => 1,    # OPTIONAL
           IncludeCredit            => 1,    # OPTIONAL
-          UseAmortized             => 1,    # OPTIONAL
-          IncludeSubscription      => 1,    # OPTIONAL
-          UseBlended               => 1,    # OPTIONAL
+          IncludeDiscount          => 1,    # OPTIONAL
           IncludeOtherSubscription => 1,    # OPTIONAL
           IncludeRecurring         => 1,    # OPTIONAL
           IncludeRefund            => 1,    # OPTIONAL
+          IncludeSubscription      => 1,    # OPTIONAL
+          IncludeSupport           => 1,    # OPTIONAL
+          IncludeTax               => 1,    # OPTIONAL
+          IncludeUpfront           => 1,    # OPTIONAL
+          UseAmortized             => 1,    # OPTIONAL
+          UseBlended               => 1,    # OPTIONAL
+        },    # OPTIONAL
+        TimePeriod => {
+          End   => '1970-01-01T01:00:00',    # OPTIONAL
+          Start => '1970-01-01T01:00:00',    # OPTIONAL
         },    # OPTIONAL
       },
 

@@ -35,18 +35,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       TelemetryRecords => [
         {
           Timestamp               => '1970-01-01T01:00:00',
-          SegmentsSpilloverCount  => 1,                       # OPTIONAL
           BackendConnectionErrors => {
-            HTTPCode4XXCount       => 1,                      # OPTIONAL
-            HTTPCode5XXCount       => 1,                      # OPTIONAL
-            UnknownHostCount       => 1,                      # OPTIONAL
-            TimeoutCount           => 1,                      # OPTIONAL
-            OtherCount             => 1,                      # OPTIONAL
-            ConnectionRefusedCount => 1,                      # OPTIONAL
+            ConnectionRefusedCount => 1,    # OPTIONAL
+            HTTPCode4XXCount       => 1,    # OPTIONAL
+            HTTPCode5XXCount       => 1,    # OPTIONAL
+            OtherCount             => 1,    # OPTIONAL
+            TimeoutCount           => 1,    # OPTIONAL
+            UnknownHostCount       => 1,    # OPTIONAL
           },    # OPTIONAL
-          SegmentsRejectedCount => 1,    # OPTIONAL
-          SegmentsReceivedCount => 1,    # OPTIONAL
-          SegmentsSentCount     => 1,    # OPTIONAL
+          SegmentsReceivedCount  => 1,    # OPTIONAL
+          SegmentsRejectedCount  => 1,    # OPTIONAL
+          SegmentsSentCount      => 1,    # OPTIONAL
+          SegmentsSpilloverCount => 1,    # OPTIONAL
         },
         ...
       ],

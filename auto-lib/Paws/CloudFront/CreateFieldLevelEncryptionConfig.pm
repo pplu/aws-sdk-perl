@@ -34,6 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $cloudfront->CreateFieldLevelEncryptionConfig(
       FieldLevelEncryptionConfig => {
         CallerReference          => 'Mystring',
+        Comment                  => 'Mystring',
         ContentTypeProfileConfig => {
           ForwardWhenContentTypeIsUnknown => 1,
           ContentTypeProfiles             => {
@@ -48,15 +49,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ],                                  # OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
-        Comment               => 'Mystring',
         QueryArgProfileConfig => {
           ForwardWhenQueryArgProfileIsUnknown => 1,
           QueryArgProfiles                    => {
             Quantity => 1,
             Items    => [
               {
-                QueryArg  => 'Mystring',
                 ProfileId => 'Mystring',
+                QueryArg  => 'Mystring',
 
               },
               ...
@@ -68,10 +68,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $ETag     = $CreateFieldLevelEncryptionConfigResult->ETag;
-    my $Location = $CreateFieldLevelEncryptionConfigResult->Location;
+    my $ETag = $CreateFieldLevelEncryptionConfigResult->ETag;
     my $FieldLevelEncryption =
       $CreateFieldLevelEncryptionConfigResult->FieldLevelEncryption;
+    my $Location = $CreateFieldLevelEncryptionConfigResult->Location;
 
  # Returns a L<Paws::CloudFront::CreateFieldLevelEncryptionConfigResult> object.
 

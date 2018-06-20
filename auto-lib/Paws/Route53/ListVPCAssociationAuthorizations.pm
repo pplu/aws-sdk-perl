@@ -40,9 +40,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $HostedZoneId = $ListVPCAssociationAuthorizationsResponse->HostedZoneId;
     my $NextToken    = $ListVPCAssociationAuthorizationsResponse->NextToken;
     my $VPCs         = $ListVPCAssociationAuthorizationsResponse->VPCs;
-    my $HostedZoneId = $ListVPCAssociationAuthorizationsResponse->HostedZoneId;
 
   # Returns a L<Paws::Route53::ListVPCAssociationAuthorizationsResponse> object.
 

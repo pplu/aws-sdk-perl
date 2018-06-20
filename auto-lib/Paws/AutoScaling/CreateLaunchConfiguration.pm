@@ -48,10 +48,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example creates a launch configuration.
     $autoscaling->CreateLaunchConfiguration(
       {
+        'IamInstanceProfile'      => 'my-iam-role',
         'ImageId'                 => 'ami-12345678',
         'InstanceType'            => 'm3.medium',
         'LaunchConfigurationName' => 'my-launch-config',
-        'IamInstanceProfile'      => 'my-iam-role',
         'SecurityGroups'          => ['sg-eb2af88e']
       }
     );

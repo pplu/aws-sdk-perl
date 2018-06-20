@@ -44,8 +44,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AutoMinorVersionUpgrade => 1,               # OPTIONAL
       BrokerName              => 'My__string',    # OPTIONAL
       Configuration           => {
-        Revision => 1,                            # OPTIONAL
         Id       => 'My__string',
+        Revision => 1,                            # OPTIONAL
       },    # OPTIONAL
       CreatorRequestId           => 'My__string',         # OPTIONAL
       DeploymentMode             => 'SINGLE_INSTANCE',    # OPTIONAL
@@ -63,10 +63,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SubnetIds          => [ 'My__string', ... ],    # OPTIONAL
       Users              => [
         {
+          ConsoleAccess => 1,
           Groups        => [ 'My__string', ... ],
           Password      => 'My__string',
           Username      => 'My__string',
-          ConsoleAccess => 1,
         },
         ...
       ],                                              # OPTIONAL

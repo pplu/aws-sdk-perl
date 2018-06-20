@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # specified by the ARN of the assessment template.
     my $ListEventSubscriptionsResponse = $inspector->ListEventSubscriptions(
       {
+        'MaxResults' => 123,
         'ResourceArn' =>
-'arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/0-7sbz2Kz0',
-        'MaxResults' => 123
+'arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/0-7sbz2Kz0'
       }
     );
 

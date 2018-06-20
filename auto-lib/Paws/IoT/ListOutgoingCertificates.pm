@@ -37,9 +37,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $NextMarker = $ListOutgoingCertificatesResponse->NextMarker;
     my $OutgoingCertificates =
       $ListOutgoingCertificatesResponse->OutgoingCertificates;
-    my $NextMarker = $ListOutgoingCertificatesResponse->NextMarker;
 
     # Returns a L<Paws::IoT::ListOutgoingCertificatesResponse> object.
 

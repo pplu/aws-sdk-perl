@@ -40,12 +40,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $codebuild = Paws->service('CodeBuild');
     my $CreateProjectOutput = $codebuild->CreateProject(
       Artifacts => {
-        type      => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
-        packaging => 'NONE',            # values: NONE, ZIP; OPTIONAL
-        namespaceType => 'NONE',        # values: NONE, BUILD_ID; OPTIONAL
-        location      => 'MyString',    # OPTIONAL
-        name          => 'MyString',    # OPTIONAL
-        path          => 'MyString',    # OPTIONAL
+        type     => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
+        location => 'MyString',        # OPTIONAL
+        name     => 'MyString',        # OPTIONAL
+        namespaceType => 'NONE',       # values: NONE, BUILD_ID; OPTIONAL
+        packaging     => 'NONE',       # values: NONE, ZIP; OPTIONAL
+        path          => 'MyString',   # OPTIONAL
       },
       Environment => {
         computeType => 'BUILD_GENERAL1_SMALL'
@@ -56,8 +56,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         certificate          => 'MyString',    # OPTIONAL
         environmentVariables => [
           {
-            value => 'MyString',               # OPTIONAL
             name  => 'MyNonEmptyString',       # min: 1,
+            value => 'MyString',               # OPTIONAL
             type => 'PLAINTEXT',  # values: PLAINTEXT, PARAMETER_STORE; OPTIONAL
           },
           ...
@@ -68,14 +68,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Source => {
         type => 'CODECOMMIT'
         , # values: CODECOMMIT, CODEPIPELINE, GITHUB, S3, BITBUCKET, GITHUB_ENTERPRISE
-        insecureSsl => 1,    # OPTIONAL
-        auth        => {
+        auth => {
           type     => 'OAUTH',       # values: OAUTH
           resource => 'MyString',    # OPTIONAL
         },    # OPTIONAL
         buildspec     => 'MyString',    # OPTIONAL
-        location      => 'MyString',    # OPTIONAL
         gitCloneDepth => 1,             # OPTIONAL
+        insecureSsl   => 1,             # OPTIONAL
+        location      => 'MyString',    # OPTIONAL
       },
       BadgeEnabled => 1,                # OPTIONAL
       Cache        => {
@@ -97,10 +97,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         securityGroupIds => [
           'MyNonEmptyString', ...                 # min: 1,
         ],                                        # max: 5; OPTIONAL
-        vpcId   => 'MyNonEmptyString',            # min: 1,
         subnets => [
           'MyNonEmptyString', ...                 # min: 1,
         ],                                        # max: 16; OPTIONAL
+        vpcId => 'MyNonEmptyString',              # min: 1,
       },    # OPTIONAL
     );
 

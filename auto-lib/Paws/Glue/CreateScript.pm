@@ -42,14 +42,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           Args => [
             {
-              Value => 'MyCodeGenArgValue',
               Name  => 'MyCodeGenArgName',             # OPTIONAL
+              Value => 'MyCodeGenArgValue',
               Param => 1,                              # OPTIONAL
             },
             ...
           ],                                           # max: 50
-          NodeType   => 'MyCodeGenNodeType',
           Id         => 'MyCodeGenIdentifier',         # min: 1, max: 255
+          NodeType   => 'MyCodeGenNodeType',
           LineNumber => 1,                             # OPTIONAL
         },
         ...

@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken       = $ListBrokersResponse->NextToken;
     my $BrokerSummaries = $ListBrokersResponse->BrokerSummaries;
+    my $NextToken       = $ListBrokersResponse->NextToken;
 
     # Returns a L<Paws::MQ::ListBrokersResponse> object.
 

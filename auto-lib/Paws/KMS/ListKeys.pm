@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ListKeysResponse = $kms->ListKeys();
 
     # Results:
-    my $Truncated = $ListKeysResponse->Truncated;
     my $Keys      = $ListKeysResponse->Keys;
+    my $Truncated = $ListKeysResponse->Truncated;
 
     # Returns a L<Paws::KMS::ListKeysResponse> object.
 

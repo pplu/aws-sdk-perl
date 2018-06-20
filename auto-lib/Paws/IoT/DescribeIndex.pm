@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $IndexName   = $DescribeIndexResponse->IndexName;
-    my $Schema      = $DescribeIndexResponse->Schema;
     my $IndexStatus = $DescribeIndexResponse->IndexStatus;
+    my $Schema      = $DescribeIndexResponse->Schema;
 
     # Returns a L<Paws::IoT::DescribeIndexResponse> object.
 

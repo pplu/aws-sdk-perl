@@ -35,21 +35,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       PatchGroup => 'MyPatchGroup',
       Filters    => [
         {
+          Key => 'MyInstancePatchStateFilterKey',    # min: 1, max: 200
           Type => 'Equal',    # values: Equal, NotEqual, LessThan, GreaterThan
           Values => [ 'MyInstancePatchStateFilterValue', ... ], # min: 1, max: 1
-          Key => 'MyInstancePatchStateFilterKey',    # min: 1, max: 200
 
         },
         ...
-      ],                                             # OPTIONAL
-      MaxResults => 1,                               # OPTIONAL
-      NextToken  => 'MyNextToken',                   # OPTIONAL
+      ],                                                        # OPTIONAL
+      MaxResults => 1,                                          # OPTIONAL
+      NextToken  => 'MyNextToken',                              # OPTIONAL
       );
 
     # Results:
-    my $NextToken = $DescribeInstancePatchStatesForPatchGroupResult->NextToken;
     my $InstancePatchStates =
       $DescribeInstancePatchStatesForPatchGroupResult->InstancePatchStates;
+    my $NextToken = $DescribeInstancePatchStatesForPatchGroupResult->NextToken;
 
 # Returns a L<Paws::SSM::DescribeInstancePatchStatesForPatchGroupResult> object.
 

@@ -36,9 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $RedirectAllRequestsTo = $GetBucketWebsiteOutput->RedirectAllRequestsTo;
     my $ErrorDocument         = $GetBucketWebsiteOutput->ErrorDocument;
     my $IndexDocument         = $GetBucketWebsiteOutput->IndexDocument;
+    my $RedirectAllRequestsTo = $GetBucketWebsiteOutput->RedirectAllRequestsTo;
     my $RoutingRules          = $GetBucketWebsiteOutput->RoutingRules;
 
     # Returns a L<Paws::S3::GetBucketWebsiteOutput> object.

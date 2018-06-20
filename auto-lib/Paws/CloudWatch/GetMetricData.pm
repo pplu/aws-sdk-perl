@@ -36,28 +36,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EndTime           => '1970-01-01T01:00:00',
       MetricDataQueries => [
         {
-          Id         => 'MyMetricId',       # min: 1, max: 255
-          Label      => 'MyMetricLabel',    # OPTIONAL
+          Id         => 'MyMetricId',            # min: 1, max: 255
+          Expression => 'MyMetricExpression',    # min: 1, max: 1024; OPTIONAL
+          Label      => 'MyMetricLabel',         # OPTIONAL
           MetricStat => {
-            Stat   => 'MyStat',
-            Period => 1,                    # min: 1,
             Metric => {
-              MetricName => 'MyMetricName',    # min: 1, max: 255; OPTIONAL
               Dimensions => [
                 {
-                  Value => 'MyDimensionValue',    # min: 1, max: 255
                   Name  => 'MyDimensionName',     # min: 1, max: 255
+                  Value => 'MyDimensionValue',    # min: 1, max: 255
 
                 },
                 ...
               ],                                  # max: 10; OPTIONAL
-              Namespace => 'MyNamespace',         # min: 1, max: 255; OPTIONAL
+              MetricName => 'MyMetricName',       # min: 1, max: 255; OPTIONAL
+              Namespace  => 'MyNamespace',        # min: 1, max: 255; OPTIONAL
             },
-            Unit => 'Seconds'
+            Period => 1,                          # min: 1,
+            Stat   => 'MyStat',
+            Unit   => 'Seconds'
             , # values: Seconds, Microseconds, Milliseconds, Bytes, Kilobytes, Megabytes, Gigabytes, Terabytes, Bits, Kilobits, Megabits, Gigabits, Terabits, Percent, Count, Bytes/Second, Kilobytes/Second, Megabytes/Second, Gigabytes/Second, Terabytes/Second, Bits/Second, Kilobits/Second, Megabits/Second, Gigabits/Second, Terabits/Second, Count/Second, None; OPTIONAL
           },    # OPTIONAL
-          ReturnData => 1,                       # OPTIONAL
-          Expression => 'MyMetricExpression',    # min: 1, max: 1024; OPTIONAL
+          ReturnData => 1,    # OPTIONAL
         },
         ...
       ],

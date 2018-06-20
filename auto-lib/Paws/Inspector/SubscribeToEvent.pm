@@ -34,10 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # notifications about a specified event to a specified SNS topic.
     $inspector->SubscribeToEvent(
       {
+        'Event' => 'ASSESSMENT_RUN_COMPLETED',
         'ResourceArn' =>
 'arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/0-7sbz2Kz0',
-        'TopicArn' => 'arn:aws:sns:us-west-2:123456789012:exampletopic',
-        'Event'    => 'ASSESSMENT_RUN_COMPLETED'
+        'TopicArn' => 'arn:aws:sns:us-west-2:123456789012:exampletopic'
       }
     );
 

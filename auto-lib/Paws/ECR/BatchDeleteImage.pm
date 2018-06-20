@@ -34,13 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # repository called ubuntu in the default registry for an account.
     my $BatchDeleteImageResponse = $ecr->BatchDeleteImage(
       {
-        'RepositoryName' => 'ubuntu',
-        'ImageIds'       => [
+        'ImageIds' => [
 
           {
             'ImageTag' => 'precise'
           }
-        ]
+        ],
+        'RepositoryName' => 'ubuntu'
       }
     );
 

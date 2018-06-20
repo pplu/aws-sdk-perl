@@ -41,8 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       ExecutionDetails => {
         externalExecutionId => 'MyExecutionId',    # min: 1, max: 1500; OPTIONAL
-        summary         => 'MyExecutionSummary',   # min: 1, max: 2048; OPTIONAL
-        percentComplete => 1,                      # max: 100; OPTIONAL
+        percentComplete     => 1,                  # max: 100; OPTIONAL
+        summary => 'MyExecutionSummary',           # min: 1, max: 2048; OPTIONAL
       },    # OPTIONAL
     );
 

@@ -40,20 +40,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Values => [ 'My__string', ... ],    # OPTIONAL
             },
           },    # OPTIONAL
-          UserAttributes => {
-            'My__string' => {
-              AttributeType =>
-                'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-              Values => [ 'My__string', ... ],    # OPTIONAL
-            },
+          Behavior => {
+            Recency => {
+              Duration =>
+                'HR_24',    # values: HR_24, DAY_7, DAY_14, DAY_30; OPTIONAL
+              RecencyType => 'ACTIVE',    # values: ACTIVE, INACTIVE; OPTIONAL
+            },    # OPTIONAL
           },    # OPTIONAL
           Demographic => {
-            Platform => {
+            AppVersion => {
               DimensionType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
               Values => [ 'My__string', ... ],    # OPTIONAL
             },    # OPTIONAL
-            Model => {
+            Channel => {
               DimensionType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
               Values => [ 'My__string', ... ],    # OPTIONAL
@@ -68,12 +68,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
               Values => [ 'My__string', ... ],    # OPTIONAL
             },    # OPTIONAL
-            AppVersion => {
+            Model => {
               DimensionType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
               Values => [ 'My__string', ... ],    # OPTIONAL
             },    # OPTIONAL
-            Channel => {
+            Platform => {
               DimensionType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
               Values => [ 'My__string', ... ],    # OPTIONAL
@@ -86,12 +86,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Values => [ 'My__string', ... ],    # OPTIONAL
             },    # OPTIONAL
           },    # OPTIONAL
-          Behavior => {
-            Recency => {
-              Duration =>
-                'HR_24',    # values: HR_24, DAY_7, DAY_14, DAY_30; OPTIONAL
-              RecencyType => 'ACTIVE',    # values: ACTIVE, INACTIVE; OPTIONAL
-            },    # OPTIONAL
+          UserAttributes => {
+            'My__string' => {
+              AttributeType =>
+                'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+              Values => [ 'My__string', ... ],    # OPTIONAL
+            },
           },    # OPTIONAL
         },    # OPTIONAL
         Name => 'My__string',

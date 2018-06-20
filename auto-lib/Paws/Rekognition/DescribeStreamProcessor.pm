@@ -34,17 +34,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $CreationTimestamp = $DescribeStreamProcessorResponse->CreationTimestamp;
-    my $Settings          = $DescribeStreamProcessorResponse->Settings;
-    my $Status            = $DescribeStreamProcessorResponse->Status;
-    my $StreamProcessorArn =
-      $DescribeStreamProcessorResponse->StreamProcessorArn;
-    my $RoleArn       = $DescribeStreamProcessorResponse->RoleArn;
-    my $Output        = $DescribeStreamProcessorResponse->Output;
-    my $Input         = $DescribeStreamProcessorResponse->Input;
-    my $Name          = $DescribeStreamProcessorResponse->Name;
-    my $StatusMessage = $DescribeStreamProcessorResponse->StatusMessage;
+    my $Input             = $DescribeStreamProcessorResponse->Input;
     my $LastUpdateTimestamp =
       $DescribeStreamProcessorResponse->LastUpdateTimestamp;
+    my $Name          = $DescribeStreamProcessorResponse->Name;
+    my $Output        = $DescribeStreamProcessorResponse->Output;
+    my $RoleArn       = $DescribeStreamProcessorResponse->RoleArn;
+    my $Settings      = $DescribeStreamProcessorResponse->Settings;
+    my $Status        = $DescribeStreamProcessorResponse->Status;
+    my $StatusMessage = $DescribeStreamProcessorResponse->StatusMessage;
+    my $StreamProcessorArn =
+      $DescribeStreamProcessorResponse->StreamProcessorArn;
 
     # Returns a L<Paws::Rekognition::DescribeStreamProcessorResponse> object.
 

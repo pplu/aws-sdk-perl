@@ -36,21 +36,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $SampleUtterances      = $GetIntentResponse->SampleUtterances;
-    my $RejectionStatement    = $GetIntentResponse->RejectionStatement;
-    my $ParentIntentSignature = $GetIntentResponse->ParentIntentSignature;
-    my $FulfillmentActivity   = $GetIntentResponse->FulfillmentActivity;
-    my $DialogCodeHook        = $GetIntentResponse->DialogCodeHook;
-    my $LastUpdatedDate       = $GetIntentResponse->LastUpdatedDate;
-    my $ConclusionStatement   = $GetIntentResponse->ConclusionStatement;
-    my $Slots                 = $GetIntentResponse->Slots;
-    my $CreatedDate           = $GetIntentResponse->CreatedDate;
-    my $Version               = $GetIntentResponse->Version;
-    my $FollowUpPrompt        = $GetIntentResponse->FollowUpPrompt;
-    my $ConfirmationPrompt    = $GetIntentResponse->ConfirmationPrompt;
-    my $Description           = $GetIntentResponse->Description;
-    my $Name                  = $GetIntentResponse->Name;
     my $Checksum              = $GetIntentResponse->Checksum;
+    my $ConclusionStatement   = $GetIntentResponse->ConclusionStatement;
+    my $ConfirmationPrompt    = $GetIntentResponse->ConfirmationPrompt;
+    my $CreatedDate           = $GetIntentResponse->CreatedDate;
+    my $Description           = $GetIntentResponse->Description;
+    my $DialogCodeHook        = $GetIntentResponse->DialogCodeHook;
+    my $FollowUpPrompt        = $GetIntentResponse->FollowUpPrompt;
+    my $FulfillmentActivity   = $GetIntentResponse->FulfillmentActivity;
+    my $LastUpdatedDate       = $GetIntentResponse->LastUpdatedDate;
+    my $Name                  = $GetIntentResponse->Name;
+    my $ParentIntentSignature = $GetIntentResponse->ParentIntentSignature;
+    my $RejectionStatement    = $GetIntentResponse->RejectionStatement;
+    my $SampleUtterances      = $GetIntentResponse->SampleUtterances;
+    my $Slots                 = $GetIntentResponse->Slots;
+    my $Version               = $GetIntentResponse->Version;
 
     # Returns a L<Paws::LexModels::GetIntentResponse> object.
 

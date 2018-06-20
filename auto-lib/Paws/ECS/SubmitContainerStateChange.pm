@@ -39,10 +39,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ExitCode        => 1,             # OPTIONAL
       NetworkBindings => [
         {
-          protocol      => 'tcp',        # values: tcp, udp; OPTIONAL
           bindIP        => 'MyString',
-          hostPort      => 1,
           containerPort => 1,
+          hostPort      => 1,
+          protocol      => 'tcp',        # values: tcp, udp; OPTIONAL
         },
         ...
       ],                                 # OPTIONAL

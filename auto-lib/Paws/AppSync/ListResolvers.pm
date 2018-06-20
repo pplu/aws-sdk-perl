@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Resolvers = $ListResolversResponse->Resolvers;
     my $NextToken = $ListResolversResponse->NextToken;
+    my $Resolvers = $ListResolversResponse->Resolvers;
 
     # Returns a L<Paws::AppSync::ListResolversResponse> object.
 

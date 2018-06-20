@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # a specific project.
     my $ListDevicePoolsResult = $devicefarm->ListDevicePools(
       {
-        'Type' => 'PRIVATE',
         'Arn' =>
-'arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456'
+'arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456',
+        'Type' => 'PRIVATE'
       }
     );
 

@@ -42,13 +42,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $CreationTime    = $CreateApplicationVersionResponse->CreationTime;
-    my $ApplicationId   = $CreateApplicationVersionResponse->ApplicationId;
-    my $SourceCodeUrl   = $CreateApplicationVersionResponse->SourceCodeUrl;
-    my $SemanticVersion = $CreateApplicationVersionResponse->SemanticVersion;
+    my $ApplicationId = $CreateApplicationVersionResponse->ApplicationId;
+    my $CreationTime  = $CreateApplicationVersionResponse->CreationTime;
     my $ParameterDefinitions =
       $CreateApplicationVersionResponse->ParameterDefinitions;
-    my $TemplateUrl = $CreateApplicationVersionResponse->TemplateUrl;
+    my $SemanticVersion = $CreateApplicationVersionResponse->SemanticVersion;
+    my $SourceCodeUrl   = $CreateApplicationVersionResponse->SourceCodeUrl;
+    my $TemplateUrl     = $CreateApplicationVersionResponse->TemplateUrl;
 
    # Returns a L<Paws::ServerlessRepo::CreateApplicationVersionResponse> object.
 

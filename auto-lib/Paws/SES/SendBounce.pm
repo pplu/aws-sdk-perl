@@ -41,21 +41,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           , # values: DoesNotExist, MessageTooLarge, ExceededQuota, ContentRejected, Undefined, TemporaryFailure; OPTIONAL
           RecipientArn       => 'MyAmazonResourceName',    # OPTIONAL
           RecipientDsnFields => {
-            Status => 'MyDsnStatus',
             Action =>
               'failed',  # values: failed, delayed, delivered, relayed, expanded
+            Status          => 'MyDsnStatus',
+            DiagnosticCode  => 'MyDiagnosticCode',    # OPTIONAL
             ExtensionFields => [
               {
-                Value => 'MyExtensionFieldValue',
                 Name  => 'MyExtensionFieldName',
+                Value => 'MyExtensionFieldValue',
 
               },
               ...
-            ],           # OPTIONAL
-            RemoteMta       => 'MyRemoteMta',            # OPTIONAL
-            DiagnosticCode  => 'MyDiagnosticCode',       # OPTIONAL
-            LastAttemptDate => '1970-01-01T01:00:00',    # OPTIONAL
+            ],                                        # OPTIONAL
             FinalRecipient  => 'MyAddress',
+            LastAttemptDate => '1970-01-01T01:00:00',    # OPTIONAL
+            RemoteMta       => 'MyRemoteMta',            # OPTIONAL
           },    # OPTIONAL
         },
         ...
@@ -65,15 +65,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Explanation       => 'MyExplanation',           # OPTIONAL
       MessageDsn        => {
         ReportingMta    => 'MyReportingMta',
+        ArrivalDate     => '1970-01-01T01:00:00',     # OPTIONAL
         ExtensionFields => [
           {
-            Value => 'MyExtensionFieldValue',
             Name  => 'MyExtensionFieldName',
+            Value => 'MyExtensionFieldValue',
 
           },
           ...
         ],                                            # OPTIONAL
-        ArrivalDate => '1970-01-01T01:00:00',         # OPTIONAL
       },    # OPTIONAL
     );
 

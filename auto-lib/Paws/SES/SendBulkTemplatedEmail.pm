@@ -42,13 +42,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           Destination => {
             BccAddresses => [ 'MyAddress', ... ],    # OPTIONAL
-            ToAddresses  => [ 'MyAddress', ... ],    # OPTIONAL
             CcAddresses  => [ 'MyAddress', ... ],    # OPTIONAL
+            ToAddresses  => [ 'MyAddress', ... ],    # OPTIONAL
           },
           ReplacementTags => [
             {
-              Value => 'MyMessageTagValue',
               Name  => 'MyMessageTagName',
+              Value => 'MyMessageTagValue',
 
             },
             ...
@@ -62,8 +62,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ConfigurationSetName => 'MyConfigurationSetName',    # OPTIONAL
       DefaultTags          => [
         {
-          Value => 'MyMessageTagValue',
           Name  => 'MyMessageTagName',
+          Value => 'MyMessageTagValue',
 
         },
         ...

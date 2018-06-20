@@ -54,20 +54,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example creates a DB instance read replica.
     my $CreateDBInstanceReadReplicaResult = $rds->CreateDBInstanceReadReplica(
       {
-        'DBInstanceIdentifier'       => 'mydbreadreplica',
         'AvailabilityZone'           => 'us-east-1a',
+        'CopyTagsToSnapshot'         => true,
+        'DBInstanceClass'            => 'db.t2.micro',
+        'DBInstanceIdentifier'       => 'mydbreadreplica',
+        'PubliclyAccessible'         => true,
         'SourceDBInstanceIdentifier' => 'mymysqlinstance',
         'StorageType'                => 'gp2',
-        'CopyTagsToSnapshot'         => 1,
-        'PubliclyAccessible'         => 1,
         'Tags'                       => [
 
           {
-            'Value' => 'mydbreadreplicavalue',
-            'Key'   => 'mydbreadreplicakey'
+            'Key'   => 'mydbreadreplicakey',
+            'Value' => 'mydbreadreplicavalue'
           }
-        ],
-        'DBInstanceClass' => 'db.t2.micro'
+        ]
       }
     );
 

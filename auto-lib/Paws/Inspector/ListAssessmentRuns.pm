@@ -35,16 +35,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # are specified by the ARNs of the assessment templates.
     my $ListAssessmentRunsResponse = $inspector->ListAssessmentRuns(
       {
-        'MaxResults'             => 123,
         'AssessmentTemplateArns' => [
 'arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-4r1V2mAw'
-        ]
+        ],
+        'MaxResults' => 123
       }
     );
 
     # Results:
-    my $nextToken         = $ListAssessmentRunsResponse->nextToken;
     my $assessmentRunArns = $ListAssessmentRunsResponse->assessmentRunArns;
+    my $nextToken         = $ListAssessmentRunsResponse->nextToken;
 
     # Returns a L<Paws::Inspector::ListAssessmentRunsResponse> object.
 

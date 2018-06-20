@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CopyDBParameterGroupResult = $rds->CopyDBParameterGroup(
       {
         'SourceDBParameterGroupIdentifier'  => 'mymysqlparametergroup',
-        'TargetDBParameterGroupIdentifier'  => 'mymysqlparametergroup-copy',
-        'TargetDBParameterGroupDescription' => 'My MySQL parameter group copy'
+        'TargetDBParameterGroupDescription' => 'My MySQL parameter group copy',
+        'TargetDBParameterGroupIdentifier'  => 'mymysqlparametergroup-copy'
       }
     );
 

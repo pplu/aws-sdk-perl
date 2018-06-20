@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $RoleAliasArn = $CreateRoleAliasResponse->RoleAliasArn;
     my $RoleAlias    = $CreateRoleAliasResponse->RoleAlias;
+    my $RoleAliasArn = $CreateRoleAliasResponse->RoleAliasArn;
 
     # Returns a L<Paws::IoT::CreateRoleAliasResponse> object.
 

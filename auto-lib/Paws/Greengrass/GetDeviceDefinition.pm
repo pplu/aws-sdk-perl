@@ -34,14 +34,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $Arn               = $GetDeviceDefinitionResponse->Arn;
     my $CreationTimestamp = $GetDeviceDefinitionResponse->CreationTimestamp;
-    my $LatestVersionArn  = $GetDeviceDefinitionResponse->LatestVersionArn;
     my $Id                = $GetDeviceDefinitionResponse->Id;
     my $LastUpdatedTimestamp =
       $GetDeviceDefinitionResponse->LastUpdatedTimestamp;
-    my $Arn           = $GetDeviceDefinitionResponse->Arn;
-    my $Name          = $GetDeviceDefinitionResponse->Name;
-    my $LatestVersion = $GetDeviceDefinitionResponse->LatestVersion;
+    my $LatestVersion    = $GetDeviceDefinitionResponse->LatestVersion;
+    my $LatestVersionArn = $GetDeviceDefinitionResponse->LatestVersionArn;
+    my $Name             = $GetDeviceDefinitionResponse->Name;
 
     # Returns a L<Paws::Greengrass::GetDeviceDefinitionResponse> object.
 

@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example creates an option group.
     my $CreateOptionGroupResult = $rds->CreateOptionGroup(
       {
+        'EngineName'             => 'MySQL',
         'MajorEngineVersion'     => 5.6,
         'OptionGroupDescription' => 'My MySQL 5.6 option group',
-        'EngineName'             => 'MySQL',
         'OptionGroupName'        => 'mymysqloptiongroup'
       }
     );

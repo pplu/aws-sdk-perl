@@ -40,18 +40,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $GatewayTimezone = $DescribeGatewayInformationOutput->GatewayTimezone;
-    my $GatewayType     = $DescribeGatewayInformationOutput->GatewayType;
-    my $GatewayState    = $DescribeGatewayInformationOutput->GatewayState;
-    my $NextUpdateAvailabilityDate =
-      $DescribeGatewayInformationOutput->NextUpdateAvailabilityDate;
-    my $LastSoftwareUpdate =
-      $DescribeGatewayInformationOutput->LastSoftwareUpdate;
-    my $GatewayName = $DescribeGatewayInformationOutput->GatewayName;
-    my $GatewayId   = $DescribeGatewayInformationOutput->GatewayId;
     my $GatewayARN  = $DescribeGatewayInformationOutput->GatewayARN;
+    my $GatewayId   = $DescribeGatewayInformationOutput->GatewayId;
+    my $GatewayName = $DescribeGatewayInformationOutput->GatewayName;
     my $GatewayNetworkInterfaces =
       $DescribeGatewayInformationOutput->GatewayNetworkInterfaces;
+    my $GatewayState    = $DescribeGatewayInformationOutput->GatewayState;
+    my $GatewayTimezone = $DescribeGatewayInformationOutput->GatewayTimezone;
+    my $GatewayType     = $DescribeGatewayInformationOutput->GatewayType;
+    my $LastSoftwareUpdate =
+      $DescribeGatewayInformationOutput->LastSoftwareUpdate;
+    my $NextUpdateAvailabilityDate =
+      $DescribeGatewayInformationOutput->NextUpdateAvailabilityDate;
 
    # Returns a L<Paws::StorageGateway::DescribeGatewayInformationOutput> object.
 

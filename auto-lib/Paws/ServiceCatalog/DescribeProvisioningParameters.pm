@@ -43,9 +43,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $DescribeProvisioningParametersOutput->ConstraintSummaries;
     my $ProvisioningArtifactParameters =
       $DescribeProvisioningParametersOutput->ProvisioningArtifactParameters;
+    my $TagOptions = $DescribeProvisioningParametersOutput->TagOptions;
     my $UsageInstructions =
       $DescribeProvisioningParametersOutput->UsageInstructions;
-    my $TagOptions = $DescribeProvisioningParametersOutput->TagOptions;
 
 # Returns a L<Paws::ServiceCatalog::DescribeProvisioningParametersOutput> object.
 

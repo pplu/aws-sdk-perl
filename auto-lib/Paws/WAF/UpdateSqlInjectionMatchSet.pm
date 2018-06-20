@@ -35,7 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
     my $UpdateSqlInjectionMatchSetResponse = $waf->UpdateSqlInjectionMatchSet(
       {
-        'Updates' => [
+        'ChangeToken'            => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
+        'SqlInjectionMatchSetId' => 'example1ds3t-46da-4fdb-b8d5-abc321j569j5',
+        'Updates'                => [
 
           {
             'Action'                 => 'DELETE',
@@ -46,9 +48,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               'TextTransformation' => 'URL_DECODE'
             }
           }
-        ],
-        'ChangeToken'            => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
-        'SqlInjectionMatchSetId' => 'example1ds3t-46da-4fdb-b8d5-abc321j569j5'
+        ]
       }
     );
 

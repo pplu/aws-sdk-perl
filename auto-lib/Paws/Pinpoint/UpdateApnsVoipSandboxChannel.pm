@@ -32,14 +32,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateApnsVoipSandboxChannelResponse =
       $pinpoint->UpdateApnsVoipSandboxChannel(
       APNSVoipSandboxChannelRequest => {
-        TokenKeyId                  => 'My__string',    # OPTIONAL
-        DefaultAuthenticationMethod => 'My__string',    # OPTIONAL
+        BundleId                    => 'My__string',    # OPTIONAL
         Certificate                 => 'My__string',    # OPTIONAL
+        DefaultAuthenticationMethod => 'My__string',    # OPTIONAL
         Enabled                     => 1,               # OPTIONAL
         PrivateKey                  => 'My__string',    # OPTIONAL
-        BundleId                    => 'My__string',    # OPTIONAL
         TeamId                      => 'My__string',    # OPTIONAL
         TokenKey                    => 'My__string',    # OPTIONAL
+        TokenKeyId                  => 'My__string',    # OPTIONAL
       },
       ApplicationId => 'My__string',
 

@@ -49,23 +49,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ContextData => {
         HttpHeaders => [
           {
-            headerValue => 'MyStringType',    # OPTIONAL
             headerName  => 'MyStringType',    # OPTIONAL
+            headerValue => 'MyStringType',    # OPTIONAL
           },
           ...
         ],
         IpAddress   => 'MyStringType',        # OPTIONAL
-        ServerPath  => 'MyStringType',        # OPTIONAL
         ServerName  => 'MyStringType',        # OPTIONAL
+        ServerPath  => 'MyStringType',        # OPTIONAL
         EncodedData => 'MyStringType',        # OPTIONAL
       },    # OPTIONAL
     );
 
     # Results:
-    my $Session              = $AdminInitiateAuthResponse->Session;
     my $AuthenticationResult = $AdminInitiateAuthResponse->AuthenticationResult;
-    my $ChallengeParameters  = $AdminInitiateAuthResponse->ChallengeParameters;
     my $ChallengeName        = $AdminInitiateAuthResponse->ChallengeName;
+    my $ChallengeParameters  = $AdminInitiateAuthResponse->ChallengeParameters;
+    my $Session              = $AdminInitiateAuthResponse->Session;
 
     # Returns a L<Paws::CognitoIdp::AdminInitiateAuthResponse> object.
 

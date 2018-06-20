@@ -33,9 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example updates the specified project with a new name.
     my $UpdateProjectResult = $devicefarm->UpdateProject(
       {
-        'Name' => 'NewName',
         'Arn' =>
-'arn:aws:devicefarm:us-west-2:183774035805:project:8f75187d-101e-4625-accc-12345EXAMPLE'
+'arn:aws:devicefarm:us-west-2:183774035805:project:8f75187d-101e-4625-accc-12345EXAMPLE',
+        'Name' => 'NewName'
       }
     );
 

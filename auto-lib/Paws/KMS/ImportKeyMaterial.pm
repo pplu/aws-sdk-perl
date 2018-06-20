@@ -35,10 +35,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example imports key material into the specified CMK.
     my $ImportKeyMaterialResponse = $kms->ImportKeyMaterial(
       {
-        'KeyId'                => '1234abcd-12ab-34cd-56ef-1234567890ab',
-        'ImportToken'          => '<binary data>',
         'EncryptedKeyMaterial' => '<binary data>',
-        'ExpirationModel'      => 'KEY_MATERIAL_DOES_NOT_EXPIRE'
+        'ExpirationModel'      => 'KEY_MATERIAL_DOES_NOT_EXPIRE',
+        'ImportToken'          => '<binary data>',
+        'KeyId'                => '1234abcd-12ab-34cd-56ef-1234567890ab'
       }
     );
 

@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken        = $ListInstanceProfilesResult->NextToken;
     my $InstanceProfiles = $ListInstanceProfilesResult->InstanceProfiles;
+    my $NextToken        = $ListInstanceProfilesResult->NextToken;
 
     # Returns a L<Paws::DeviceFarm::ListInstanceProfilesResult> object.
 

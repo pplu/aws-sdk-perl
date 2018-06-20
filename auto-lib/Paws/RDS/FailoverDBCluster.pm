@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # specified DB instance.
     my $FailoverDBClusterResult = $rds->FailoverDBCluster(
       {
-        'TargetDBInstanceIdentifier' => 'myaurorareplica',
-        'DBClusterIdentifier'        => 'myaurorainstance-cluster'
+        'DBClusterIdentifier'        => 'myaurorainstance-cluster',
+        'TargetDBInstanceIdentifier' => 'myaurorareplica'
       }
     );
 

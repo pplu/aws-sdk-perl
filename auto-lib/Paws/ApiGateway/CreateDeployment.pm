@@ -40,9 +40,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CacheClusterEnabled => 1,            # OPTIONAL
       CacheClusterSize    => '0.5',        # OPTIONAL
       CanarySettings      => {
-        useStageCache          => 1,                                # OPTIONAL
-        stageVariableOverrides => { 'MyString' => 'MyString', },    # OPTIONAL
         percentTraffic         => 1,                                # OPTIONAL
+        stageVariableOverrides => { 'MyString' => 'MyString', },    # OPTIONAL
+        useStageCache          => 1,                                # OPTIONAL
       },    # OPTIONAL
       Description      => 'MyString',                       # OPTIONAL
       StageDescription => 'MyString',                       # OPTIONAL
@@ -51,10 +51,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CreatedDate = $Deployment->CreatedDate;
-    my $Id          = $Deployment->Id;
     my $ApiSummary  = $Deployment->ApiSummary;
+    my $CreatedDate = $Deployment->CreatedDate;
     my $Description = $Deployment->Description;
+    my $Id          = $Deployment->Id;
 
     # Returns a L<Paws::ApiGateway::Deployment> object.
 

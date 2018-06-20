@@ -37,32 +37,32 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Resources => [
           {
             Id                    => 'My__string',
+            Name                  => 'My__string',
             ResourceDataContainer => {
+              LocalDeviceResourceData => {
+                GroupOwnerSetting => {
+                  AutoAddGroupOwner => 1,              # OPTIONAL
+                  GroupOwner        => 'My__string',
+                },    # OPTIONAL
+                SourcePath => 'My__string',
+              },    # OPTIONAL
               LocalVolumeResourceData => {
                 DestinationPath   => 'My__string',
-                SourcePath        => 'My__string',
                 GroupOwnerSetting => {
-                  GroupOwner        => 'My__string',
                   AutoAddGroupOwner => 1,              # OPTIONAL
-                },    # OPTIONAL
-              },    # OPTIONAL
-              SageMakerMachineLearningModelResourceData => {
-                DestinationPath => 'My__string',
-                SageMakerJobArn => 'My__string',
-              },    # OPTIONAL
-              LocalDeviceResourceData => {
-                SourcePath        => 'My__string',
-                GroupOwnerSetting => {
                   GroupOwner        => 'My__string',
-                  AutoAddGroupOwner => 1,              # OPTIONAL
                 },    # OPTIONAL
+                SourcePath => 'My__string',
               },    # OPTIONAL
               S3MachineLearningModelResourceData => {
                 DestinationPath => 'My__string',
                 S3Uri           => 'My__string',
               },    # OPTIONAL
+              SageMakerMachineLearningModelResourceData => {
+                DestinationPath => 'My__string',
+                SageMakerJobArn => 'My__string',
+              },    # OPTIONAL
             },    # OPTIONAL
-            Name => 'My__string',
           },
           ...
         ],        # OPTIONAL
@@ -71,15 +71,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $Arn = $CreateResourceDefinitionResponse->Arn;
     my $CreationTimestamp =
       $CreateResourceDefinitionResponse->CreationTimestamp;
-    my $LatestVersionArn = $CreateResourceDefinitionResponse->LatestVersionArn;
-    my $Id               = $CreateResourceDefinitionResponse->Id;
+    my $Id = $CreateResourceDefinitionResponse->Id;
     my $LastUpdatedTimestamp =
       $CreateResourceDefinitionResponse->LastUpdatedTimestamp;
-    my $Arn           = $CreateResourceDefinitionResponse->Arn;
-    my $Name          = $CreateResourceDefinitionResponse->Name;
-    my $LatestVersion = $CreateResourceDefinitionResponse->LatestVersion;
+    my $LatestVersion    = $CreateResourceDefinitionResponse->LatestVersion;
+    my $LatestVersionArn = $CreateResourceDefinitionResponse->LatestVersionArn;
+    my $Name             = $CreateResourceDefinitionResponse->Name;
 
     # Returns a L<Paws::Greengrass::CreateResourceDefinitionResponse> object.
 

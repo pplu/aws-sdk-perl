@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $autoscaling->DeregisterScalableTarget(
       {
         'ResourceId'        => 'service/default/web-app',
-        'ServiceNamespace'  => 'ecs',
-        'ScalableDimension' => 'ecs:service:DesiredCount'
+        'ScalableDimension' => 'ecs:service:DesiredCount',
+        'ServiceNamespace'  => 'ecs'
       }
       );
 

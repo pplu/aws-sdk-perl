@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $DomainInfo    = $DomainDetail->DomainInfo;
     my $Configuration = $DomainDetail->Configuration;
+    my $DomainInfo    = $DomainDetail->DomainInfo;
 
     # Returns a L<Paws::SimpleWorkflow::DomainDetail> object.
 

@@ -33,20 +33,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       FleetId                         => 'MyFleetId',
       InboundPermissionAuthorizations => [
         {
-          ToPort   => 1,                    # min: 1, max: 60000
-          IpRange  => 'MyNonBlankString',
           FromPort => 1,                    # min: 1, max: 60000
+          IpRange  => 'MyNonBlankString',
           Protocol => 'TCP',                # values: TCP, UDP
+          ToPort   => 1,                    # min: 1, max: 60000
 
         },
         ...
       ],                                    # OPTIONAL
       InboundPermissionRevocations => [
         {
-          ToPort   => 1,                    # min: 1, max: 60000
-          IpRange  => 'MyNonBlankString',
           FromPort => 1,                    # min: 1, max: 60000
+          IpRange  => 'MyNonBlankString',
           Protocol => 'TCP',                # values: TCP, UDP
+          ToPort   => 1,                    # min: 1, max: 60000
 
         },
         ...
@@ -59,7 +59,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::GameLift::UpdateFleetPortSettingsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gamelift/UpdateFleetPortSettings>
 
 =head1 ATTRIBUTES
 

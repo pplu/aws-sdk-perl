@@ -48,12 +48,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $StartBuildOutput = $codebuild->StartBuild(
       ProjectName       => 'MyNonEmptyString',
       ArtifactsOverride => {
-        type      => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
-        packaging => 'NONE',            # values: NONE, ZIP; OPTIONAL
-        namespaceType => 'NONE',        # values: NONE, BUILD_ID; OPTIONAL
-        location      => 'MyString',    # OPTIONAL
-        name          => 'MyString',    # OPTIONAL
-        path          => 'MyString',    # OPTIONAL
+        type     => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
+        location => 'MyString',        # OPTIONAL
+        name     => 'MyString',        # OPTIONAL
+        namespaceType => 'NONE',       # values: NONE, BUILD_ID; OPTIONAL
+        packaging     => 'NONE',       # values: NONE, ZIP; OPTIONAL
+        path          => 'MyString',   # OPTIONAL
       },    # OPTIONAL
       BuildspecOverride => 'MyString',    # OPTIONAL
       CacheOverride     => {
@@ -65,8 +65,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EnvironmentTypeOverride      => 'WINDOWS_CONTAINER',       # OPTIONAL
       EnvironmentVariablesOverride => [
         {
-          value => 'MyString',                                   # OPTIONAL
           name  => 'MyNonEmptyString',                           # min: 1,
+          value => 'MyString',                                   # OPTIONAL
           type => 'PLAINTEXT',    # values: PLAINTEXT, PARAMETER_STORE; OPTIONAL
         },
         ...
@@ -88,7 +88,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $build = $StartBuildOutput->build;
+    my $Build = $StartBuildOutput->Build;
 
     # Returns a L<Paws::CodeBuild::StartBuildOutput> object.
 

@@ -36,23 +36,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $TaskArn = $GetMaintenanceWindowExecutionTaskResult->TaskArn;
-    my $Status  = $GetMaintenanceWindowExecutionTaskResult->Status;
-    my $TaskParameters =
-      $GetMaintenanceWindowExecutionTaskResult->TaskParameters;
-    my $ServiceRole   = $GetMaintenanceWindowExecutionTaskResult->ServiceRole;
-    my $StatusDetails = $GetMaintenanceWindowExecutionTaskResult->StatusDetails;
-    my $MaxErrors     = $GetMaintenanceWindowExecutionTaskResult->MaxErrors;
-    my $Type          = $GetMaintenanceWindowExecutionTaskResult->Type;
-    my $TaskExecutionId =
-      $GetMaintenanceWindowExecutionTaskResult->TaskExecutionId;
-    my $WindowExecutionId =
-      $GetMaintenanceWindowExecutionTaskResult->WindowExecutionId;
-    my $EndTime   = $GetMaintenanceWindowExecutionTaskResult->EndTime;
-    my $StartTime = $GetMaintenanceWindowExecutionTaskResult->StartTime;
-    my $Priority  = $GetMaintenanceWindowExecutionTaskResult->Priority;
+    my $EndTime = $GetMaintenanceWindowExecutionTaskResult->EndTime;
     my $MaxConcurrency =
       $GetMaintenanceWindowExecutionTaskResult->MaxConcurrency;
+    my $MaxErrors     = $GetMaintenanceWindowExecutionTaskResult->MaxErrors;
+    my $Priority      = $GetMaintenanceWindowExecutionTaskResult->Priority;
+    my $ServiceRole   = $GetMaintenanceWindowExecutionTaskResult->ServiceRole;
+    my $StartTime     = $GetMaintenanceWindowExecutionTaskResult->StartTime;
+    my $Status        = $GetMaintenanceWindowExecutionTaskResult->Status;
+    my $StatusDetails = $GetMaintenanceWindowExecutionTaskResult->StatusDetails;
+    my $TaskArn       = $GetMaintenanceWindowExecutionTaskResult->TaskArn;
+    my $TaskExecutionId =
+      $GetMaintenanceWindowExecutionTaskResult->TaskExecutionId;
+    my $TaskParameters =
+      $GetMaintenanceWindowExecutionTaskResult->TaskParameters;
+    my $Type = $GetMaintenanceWindowExecutionTaskResult->Type;
+    my $WindowExecutionId =
+      $GetMaintenanceWindowExecutionTaskResult->WindowExecutionId;
 
     # Returns a L<Paws::SSM::GetMaintenanceWindowExecutionTaskResult> object.
 

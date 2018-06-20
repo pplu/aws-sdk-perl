@@ -39,9 +39,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $NextToken = $DescribeConfigurationAggregatorsResponse->NextToken;
     my $ConfigurationAggregators =
       $DescribeConfigurationAggregatorsResponse->ConfigurationAggregators;
+    my $NextToken = $DescribeConfigurationAggregatorsResponse->NextToken;
 
    # Returns a L<Paws::Config::DescribeConfigurationAggregatorsResponse> object.
 

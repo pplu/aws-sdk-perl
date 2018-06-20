@@ -35,11 +35,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       UsagePlanId     => 'MyString',
       PatchOperations => [
         {
-          from  => 'MyString',
-          value => 'MyString',
-          path  => 'MyString',
+          from => 'MyString',
           op =>
             'add',    # values: add, remove, replace, move, copy, test; OPTIONAL
+          path  => 'MyString',
+          value => 'MyString',
         },
         ...
       ],              # OPTIONAL
@@ -49,8 +49,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $EndDate     = $Usage->EndDate;
     my $Items       = $Usage->Items;
     my $Position    = $Usage->Position;
-    my $UsagePlanId = $Usage->UsagePlanId;
     my $StartDate   = $Usage->StartDate;
+    my $UsagePlanId = $Usage->UsagePlanId;
 
     # Returns a L<Paws::ApiGateway::Usage> object.
 

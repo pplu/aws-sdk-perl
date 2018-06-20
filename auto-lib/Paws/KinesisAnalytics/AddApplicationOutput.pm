@@ -38,18 +38,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         Name                  => 'MyInAppStreamName',    # min: 1, max: 32
         KinesisFirehoseOutput => {
-          RoleARN     => 'MyRoleARN',                    # min: 1, max: 2048
           ResourceARN => 'MyResourceARN',                # min: 1, max: 2048
+          RoleARN     => 'MyRoleARN',                    # min: 1, max: 2048
 
         },    # OPTIONAL
         KinesisStreamsOutput => {
-          RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
           ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
+          RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
 
         },    # OPTIONAL
         LambdaOutput => {
-          RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
           ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
+          RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
 
         },    # OPTIONAL
       },

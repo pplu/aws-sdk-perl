@@ -32,8 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ce = Paws->service('CostExplorer');
     my $GetTagsResponse = $ce->GetTags(
       TimePeriod => {
-        Start => 'MyYearMonthDay',
         End   => 'MyYearMonthDay',
+        Start => 'MyYearMonthDay',
 
       },
       NextPageToken => 'MyNextPageToken',    # OPTIONAL
@@ -42,10 +42,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ReturnSize    = $GetTagsResponse->ReturnSize;
     my $NextPageToken = $GetTagsResponse->NextPageToken;
-    my $TotalSize     = $GetTagsResponse->TotalSize;
+    my $ReturnSize    = $GetTagsResponse->ReturnSize;
     my $Tags          = $GetTagsResponse->Tags;
+    my $TotalSize     = $GetTagsResponse->TotalSize;
 
     # Returns a L<Paws::CostExplorer::GetTagsResponse> object.
 

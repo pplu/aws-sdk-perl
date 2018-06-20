@@ -36,34 +36,34 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateCustomActionTypeOutput = $codepipeline->CreateCustomActionType(
       Category             => 'Source',
       InputArtifactDetails => {
-        minimumCount => 1,    # max: 5
         maximumCount => 1,    # max: 5
+        minimumCount => 1,    # max: 5
 
       },
       OutputArtifactDetails => {
-        minimumCount => 1,    # max: 5
         maximumCount => 1,    # max: 5
+        minimumCount => 1,    # max: 5
 
       },
       Provider                => 'MyActionProvider',
       Version                 => 'MyVersion',
       ConfigurationProperties => [
         {
-          key       => 1,
-          required  => 1,
-          name      => 'MyActionConfigurationKey',    # min: 1, max: 50
-          secret    => 1,
-          queryable => 1,
+          key      => 1,
+          name     => 'MyActionConfigurationKey',    # min: 1, max: 50
+          required => 1,
+          secret   => 1,
           description => 'MyDescription',    # min: 1, max: 160; OPTIONAL
+          queryable   => 1,
           type => 'String',    # values: String, Number, Boolean; OPTIONAL
         },
         ...
       ],                       # OPTIONAL
       Settings => {
-        executionUrlTemplate => 'MyUrlTemplate',   # min: 1, max: 2048; OPTIONAL
         entityUrlTemplate    => 'MyUrlTemplate',   # min: 1, max: 2048; OPTIONAL
+        executionUrlTemplate => 'MyUrlTemplate',   # min: 1, max: 2048; OPTIONAL
+        revisionUrlTemplate  => 'MyUrlTemplate',   # min: 1, max: 2048; OPTIONAL
         thirdPartyConfigurationUrl => 'MyUrl',     # min: 1, max: 2048; OPTIONAL
-        revisionUrlTemplate => 'MyUrlTemplate',    # min: 1, max: 2048; OPTIONAL
       },    # OPTIONAL
     );
 

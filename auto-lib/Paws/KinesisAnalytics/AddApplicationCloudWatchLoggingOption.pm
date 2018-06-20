@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $kinesisanalytics->AddApplicationCloudWatchLoggingOption(
       ApplicationName         => 'MyApplicationName',
       CloudWatchLoggingOption => {
-        RoleARN      => 'MyRoleARN',         # min: 1, max: 2048
         LogStreamARN => 'MyLogStreamARN',    # min: 1, max: 2048
+        RoleARN      => 'MyRoleARN',         # min: 1, max: 2048
 
       },
       CurrentApplicationVersionId => 1,

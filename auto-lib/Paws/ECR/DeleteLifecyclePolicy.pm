@@ -34,11 +34,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $RegistryId = $DeleteLifecyclePolicyResponse->RegistryId;
+    my $LastEvaluatedAt = $DeleteLifecyclePolicyResponse->LastEvaluatedAt;
     my $LifecyclePolicyText =
       $DeleteLifecyclePolicyResponse->LifecyclePolicyText;
-    my $LastEvaluatedAt = $DeleteLifecyclePolicyResponse->LastEvaluatedAt;
-    my $RepositoryName  = $DeleteLifecyclePolicyResponse->RepositoryName;
+    my $RegistryId     = $DeleteLifecyclePolicyResponse->RegistryId;
+    my $RepositoryName = $DeleteLifecyclePolicyResponse->RepositoryName;
 
     # Returns a L<Paws::ECR::DeleteLifecyclePolicyResponse> object.
 

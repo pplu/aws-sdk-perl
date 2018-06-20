@@ -1,12 +1,3 @@
 #!/usr/bin/env perl
 
-use JSON::MaybeXS;
-
-print encode_json({
-  AccessKeyId => time,
-  SecretAccessKey => 'PCSecretKey',
-  SessionToken => 'PCSessionToken',
-  # A timestamp very in the past
-  Expiration => "2000-01-01T00:00:00Z",
-  Version => 1,
-});
+print '{"AccessKeyId":"' . time . '","SecretAccessKey":"PCSecretKey","SessionToken":"PCSessionToken","Version":1,"Expiration":"2000-01-01T00:00:00Z"}';

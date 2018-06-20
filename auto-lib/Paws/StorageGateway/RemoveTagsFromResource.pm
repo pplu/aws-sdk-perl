@@ -33,9 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # the specified resource.
     my $RemoveTagsFromResourceOutput = $storagegateway->RemoveTagsFromResource(
       {
-        'TagKeys' => [ 'Dev Gatgeway Region', 'East Coast' ],
         'ResourceARN' =>
-          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-11A2222B'
+          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-11A2222B',
+        'TagKeys' => [ 'Dev Gatgeway Region', 'East Coast' ]
       }
     );
 

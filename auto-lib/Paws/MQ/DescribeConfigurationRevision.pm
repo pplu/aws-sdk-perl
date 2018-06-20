@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $ConfigurationId =
       $DescribeConfigurationRevisionResponse->ConfigurationId;
-    my $Description = $DescribeConfigurationRevisionResponse->Description;
     my $Data        = $DescribeConfigurationRevisionResponse->Data;
+    my $Description = $DescribeConfigurationRevisionResponse->Description;
 
     # Returns a L<Paws::MQ::DescribeConfigurationRevisionResponse> object.
 

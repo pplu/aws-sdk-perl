@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         FragmentSelectorType =>
           'PRODUCER_TIMESTAMP',   # values: PRODUCER_TIMESTAMP, SERVER_TIMESTAMP
         TimestampRange => {
-          StartTimestamp => '1970-01-01T01:00:00',
           EndTimestamp   => '1970-01-01T01:00:00',
+          StartTimestamp => '1970-01-01T01:00:00',
 
         },
 
@@ -48,8 +48,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken = $ListFragmentsOutput->NextToken;
     my $Fragments = $ListFragmentsOutput->Fragments;
+    my $NextToken = $ListFragmentsOutput->NextToken;
 
     # Returns a L<Paws::KinesisVideoArchivedMedia::ListFragmentsOutput> object.
 

@@ -41,8 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MultipartUpload => {
         Parts => [
           {
-            PartNumber => 1,           # OPTIONAL
             ETag       => 'MyETag',    # OPTIONAL
+            PartNumber => 1,           # OPTIONAL
           },
           ...
         ],                             # OPTIONAL
@@ -51,15 +51,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Expiration     = $CompleteMultipartUploadOutput->Expiration;
     my $Bucket         = $CompleteMultipartUploadOutput->Bucket;
-    my $SSEKMSKeyId    = $CompleteMultipartUploadOutput->SSEKMSKeyId;
+    my $ETag           = $CompleteMultipartUploadOutput->ETag;
+    my $Expiration     = $CompleteMultipartUploadOutput->Expiration;
+    my $Key            = $CompleteMultipartUploadOutput->Key;
+    my $Location       = $CompleteMultipartUploadOutput->Location;
     my $RequestCharged = $CompleteMultipartUploadOutput->RequestCharged;
+    my $SSEKMSKeyId    = $CompleteMultipartUploadOutput->SSEKMSKeyId;
     my $ServerSideEncryption =
       $CompleteMultipartUploadOutput->ServerSideEncryption;
-    my $ETag      = $CompleteMultipartUploadOutput->ETag;
-    my $Location  = $CompleteMultipartUploadOutput->Location;
-    my $Key       = $CompleteMultipartUploadOutput->Key;
     my $VersionId = $CompleteMultipartUploadOutput->VersionId;
 
     # Returns a L<Paws::S3::CompleteMultipartUploadOutput> object.

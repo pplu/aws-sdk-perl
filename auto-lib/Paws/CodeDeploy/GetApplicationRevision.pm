@@ -32,29 +32,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ApplicationName => 'MyApplicationName',
       Revision        => {
         gitHubLocation => {
-          repository => 'MyRepository',    # OPTIONAL
           commitId   => 'MyCommitId',      # OPTIONAL
+          repository => 'MyRepository',    # OPTIONAL
+        },    # OPTIONAL
+        revisionType => 'S3',    # values: S3, GitHub, String; OPTIONAL
+        s3Location   => {
+          bucket => 'MyS3Bucket',    # OPTIONAL
+          bundleType => 'tar',     # values: tar, tgz, zip, YAML, JSON; OPTIONAL
+          eTag       => 'MyETag',  # OPTIONAL
+          key        => 'MyS3Key', # OPTIONAL
+          version => 'MyVersionId',    # OPTIONAL
         },    # OPTIONAL
         string => {
           content => 'MyRawStringContent',    # OPTIONAL
           sha256  => 'MyRawStringSha256',     # OPTIONAL
-        },    # OPTIONAL
-        revisionType => 'S3',    # values: S3, GitHub, String; OPTIONAL
-        s3Location   => {
-          eTag    => 'MyETag',         # OPTIONAL
-          key     => 'MyS3Key',        # OPTIONAL
-          version => 'MyVersionId',    # OPTIONAL
-          bundleType => 'tar',    # values: tar, tgz, zip, YAML, JSON; OPTIONAL
-          bucket => 'MyS3Bucket', # OPTIONAL
         },    # OPTIONAL
       },
 
     );
 
     # Results:
-    my $RevisionInfo    = $GetApplicationRevisionOutput->RevisionInfo;
     my $ApplicationName = $GetApplicationRevisionOutput->ApplicationName;
     my $Revision        = $GetApplicationRevisionOutput->Revision;
+    my $RevisionInfo    = $GetApplicationRevisionOutput->RevisionInfo;
 
     # Returns a L<Paws::CodeDeploy::GetApplicationRevisionOutput> object.
 

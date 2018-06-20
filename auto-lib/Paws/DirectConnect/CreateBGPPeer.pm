@@ -30,11 +30,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $directconnect = Paws->service('DirectConnect');
     my $CreateBGPPeerResponse = $directconnect->CreateBGPPeer(
       NewBGPPeer => {
-        asn             => 1,                     # OPTIONAL
+        addressFamily   => 'ipv4',                # values: ipv4, ipv6; OPTIONAL
         amazonAddress   => 'MyAmazonAddress',     # OPTIONAL
+        asn             => 1,                     # OPTIONAL
         authKey         => 'MyBGPAuthKey',        # OPTIONAL
         customerAddress => 'MyCustomerAddress',   # OPTIONAL
-        addressFamily   => 'ipv4',                # values: ipv4, ipv6; OPTIONAL
       },    # OPTIONAL
       VirtualInterfaceId => 'MyVirtualInterfaceId',    # OPTIONAL
     );

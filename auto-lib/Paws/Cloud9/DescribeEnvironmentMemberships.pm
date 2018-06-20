@@ -43,8 +43,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $NextToken   = $DescribeEnvironmentMembershipsResult->NextToken;
     my $Memberships = $DescribeEnvironmentMembershipsResult->Memberships;
+    my $NextToken   = $DescribeEnvironmentMembershipsResult->NextToken;
 
     # Returns a L<Paws::Cloud9::DescribeEnvironmentMembershipsResult> object.
 

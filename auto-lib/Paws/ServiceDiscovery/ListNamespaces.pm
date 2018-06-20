@@ -32,10 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ListNamespacesResponse = $servicediscovery->ListNamespaces(
       Filters => [
         {
+          Name   => 'TYPE',    # values: TYPE
           Values => [
             'MyFilterValue', ...    # min: 1, max: 255
           ],
-          Name      => 'TYPE',      # values: TYPE
           Condition => 'EQ',        # values: EQ, IN, BETWEEN; OPTIONAL
         },
         ...
@@ -45,8 +45,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken  = $ListNamespacesResponse->NextToken;
     my $Namespaces = $ListNamespacesResponse->Namespaces;
+    my $NextToken  = $ListNamespacesResponse->NextToken;
 
     # Returns a L<Paws::ServiceDiscovery::ListNamespacesResponse> object.
 

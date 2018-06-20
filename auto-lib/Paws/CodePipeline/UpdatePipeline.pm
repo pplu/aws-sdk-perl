@@ -29,56 +29,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $codepipeline = Paws->service('CodePipeline');
     my $UpdatePipelineOutput = $codepipeline->UpdatePipeline(
       Pipeline => {
-        roleArn => 'MyRoleArn',    # max: 1024
-        stages  => [
-          {
-            actions => [
-              {
-                name         => 'MyActionName',    # min: 1, max: 100
-                actionTypeId => {
-                  provider => 'MyActionProvider',    # min: 1, max: 25
-                  owner    => 'AWS',          # values: AWS, ThirdParty, Custom
-                  version  => 'MyVersion',    # min: 1, max: 9
-                  category => 'Source'
-                  ,    # values: Source, Build, Deploy, Test, Invoke, Approval
-
-                },
-                outputArtifacts => [
-                  {
-                    name => 'MyArtifactName',    # min: 1, max: 100
-
-                  },
-                  ...
-                ],                               # OPTIONAL
-                inputArtifacts => [
-                  {
-                    name => 'MyArtifactName',    # min: 1, max: 100
-
-                  },
-                  ...
-                ],                               # OPTIONAL
-                roleArn       => 'MyRoleArn',    # max: 1024
-                runOrder      => 1,              # min: 1, max: 999; OPTIONAL
-                configuration => {
-                  'MyActionConfigurationKey' => 'MyActionConfigurationValue'
-                  ,    # key: min: 1, max: 50, value: min: 1, max: 1000
-                },    # OPTIONAL
-              },
-              ...
-            ],
-            name     => 'MyStageName',    # min: 1, max: 100
-            blockers => [
-              {
-                name => 'MyBlockerName',    # min: 1, max: 100
-                type => 'Schedule',         # values: Schedule
-
-              },
-              ...
-            ],                              # OPTIONAL
-          },
-          ...
-        ],
-        name          => 'MyPipelineName',    # min: 1, max: 100
         artifactStore => {
           location      => 'MyArtifactStoreLocation',    # min: 3, max: 63
           type          => 'S3',                         # values: S3
@@ -88,13 +38,63 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },    # OPTIONAL
         },
-        version => 1,    # min: 1, ; OPTIONAL
+        name    => 'MyPipelineName',    # min: 1, max: 100
+        roleArn => 'MyRoleArn',         # max: 1024
+        stages  => [
+          {
+            actions => [
+              {
+                actionTypeId => {
+                  category => 'Source'
+                  ,    # values: Source, Build, Deploy, Test, Invoke, Approval
+                  owner => 'AWS',    # values: AWS, ThirdParty, Custom
+                  provider => 'MyActionProvider',    # min: 1, max: 25
+                  version  => 'MyVersion',           # min: 1, max: 9
+
+                },
+                name          => 'MyActionName',     # min: 1, max: 100
+                configuration => {
+                  'MyActionConfigurationKey' => 'MyActionConfigurationValue'
+                  ,    # key: min: 1, max: 50, value: min: 1, max: 1000
+                },    # OPTIONAL
+                inputArtifacts => [
+                  {
+                    name => 'MyArtifactName',    # min: 1, max: 100
+
+                  },
+                  ...
+                ],                               # OPTIONAL
+                outputArtifacts => [
+                  {
+                    name => 'MyArtifactName',    # min: 1, max: 100
+
+                  },
+                  ...
+                ],                               # OPTIONAL
+                roleArn  => 'MyRoleArn',         # max: 1024
+                runOrder => 1,                   # min: 1, max: 999; OPTIONAL
+              },
+              ...
+            ],
+            name     => 'MyStageName',           # min: 1, max: 100
+            blockers => [
+              {
+                name => 'MyBlockerName',         # min: 1, max: 100
+                type => 'Schedule',              # values: Schedule
+
+              },
+              ...
+            ],                                   # OPTIONAL
+          },
+          ...
+        ],
+        version => 1,                            # min: 1, ; OPTIONAL
       },
 
     );
 
     # Results:
-    my $Pipeline = $UpdatePipelineOutput->Pipeline;
+    my $pipeline = $UpdatePipelineOutput->pipeline;
 
     # Returns a L<Paws::CodePipeline::UpdatePipelineOutput> object.
 

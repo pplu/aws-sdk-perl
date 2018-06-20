@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following command changes the name of the IAM group Test to Test-1.
     $iam->UpdateGroup(
       {
-        'NewGroupName' => 'Test-1',
-        'GroupName'    => 'Test'
+        'GroupName'    => 'Test',
+        'NewGroupName' => 'Test-1'
       }
     );
 

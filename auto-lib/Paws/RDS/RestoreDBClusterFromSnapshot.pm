@@ -46,9 +46,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # cluster snapshot.
     my $RestoreDBClusterFromSnapshotResult = $rds->RestoreDBClusterFromSnapshot(
       {
+        'DBClusterIdentifier' => 'restored-cluster1',
         'Engine'              => 'aurora',
-        'SnapshotIdentifier'  => 'sample-cluster-snapshot1',
-        'DBClusterIdentifier' => 'restored-cluster1'
+        'SnapshotIdentifier'  => 'sample-cluster-snapshot1'
       }
     );
 

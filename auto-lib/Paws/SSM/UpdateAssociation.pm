@@ -44,8 +44,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       OutputLocation     => {
         S3Location => {
           OutputS3BucketName => 'MyS3BucketName',    # min: 3, max: 63; OPTIONAL
-          OutputS3Region     => 'MyS3Region',        # min: 3, max: 20; OPTIONAL
           OutputS3KeyPrefix  => 'MyS3KeyPrefix',     # max: 500; OPTIONAL
+          OutputS3Region     => 'MyS3Region',        # min: 3, max: 20; OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       Parameters => { 'MyParameterName' => [ 'MyParameterValue', ... ], }
@@ -53,8 +53,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ScheduleExpression => 'MyScheduleExpression',    # OPTIONAL
       Targets            => [
         {
-          Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
           Key => 'MyTargetKey',                  # min: 1, max: 128; OPTIONAL
+          Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
         },
         ...
       ],                                         # OPTIONAL

@@ -75,8 +75,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Port                            => 1,                      # OPTIONAL
       ProcessorFeatures               => [
         {
-          Value => 'MyString',
           Name  => 'MyString',
+          Value => 'MyString',
         },
         ...
       ],                                                         # OPTIONAL

@@ -59,16 +59,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ManageBerkshelf  => 1,            # OPTIONAL
       },    # OPTIONAL
       ConfigurationManager => {
-        Version => 'MyString',
         Name    => 'MyString',
+        Version => 'MyString',
       },    # OPTIONAL
       CustomCookbooksSource => {
-        Revision => 'MyString',
-        Type     => 'git',        # values: git, svn, archive, s3; OPTIONAL
         Password => 'MyString',
-        Username => 'MyString',
+        Revision => 'MyString',
         SshKey   => 'MyString',
+        Type     => 'git',        # values: git, svn, archive, s3; OPTIONAL
         Url      => 'MyString',
+        Username => 'MyString',
       },    # OPTIONAL
       CustomJson                => 'MyString',    # OPTIONAL
       DefaultAvailabilityZone   => 'MyString',    # OPTIONAL

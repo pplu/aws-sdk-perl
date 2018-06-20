@@ -35,18 +35,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # for a specified iSCSI target.
     my $UpdateChapCredentialsOutput = $storagegateway->UpdateChapCredentials(
       {
-        'TargetARN' =>
-'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume',
-        'SecretToAuthenticateTarget'    => 222222222222,
-        'SecretToAuthenticateInitiator' => 111111111111,
         'InitiatorName' =>
-          'iqn.1991-05.com.microsoft:computername.domain.example.com'
+          'iqn.1991-05.com.microsoft:computername.domain.example.com',
+        'SecretToAuthenticateInitiator' => 111111111111,
+        'SecretToAuthenticateTarget'    => 222222222222,
+        'TargetARN' =>
+'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume'
       }
     );
 
     # Results:
-    my $TargetARN     = $UpdateChapCredentialsOutput->TargetARN;
     my $InitiatorName = $UpdateChapCredentialsOutput->InitiatorName;
+    my $TargetARN     = $UpdateChapCredentialsOutput->TargetARN;
 
     # Returns a L<Paws::StorageGateway::UpdateChapCredentialsOutput> object.
 

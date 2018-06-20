@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # This example sets the health status of the specified instance to Unhealthy.
     $autoscaling->SetInstanceHealth(
       {
-        'InstanceId'   => 'i-93633f9b',
-        'HealthStatus' => 'Unhealthy'
+        'HealthStatus' => 'Unhealthy',
+        'InstanceId'   => 'i-93633f9b'
       }
     );
 

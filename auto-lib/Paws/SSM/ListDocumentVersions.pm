@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken        = $ListDocumentVersionsResult->NextToken;
     my $DocumentVersions = $ListDocumentVersionsResult->DocumentVersions;
+    my $NextToken        = $ListDocumentVersionsResult->NextToken;
 
     # Returns a L<Paws::SSM::ListDocumentVersionsResult> object.
 

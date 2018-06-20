@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Roots     = $ListRootsResponse->Roots;
     my $NextToken = $ListRootsResponse->NextToken;
+    my $Roots     = $ListRootsResponse->Roots;
 
     # Returns a L<Paws::Organizations::ListRootsResponse> object.
 

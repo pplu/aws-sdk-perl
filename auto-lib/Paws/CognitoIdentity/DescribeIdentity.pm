@@ -33,10 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $LastModifiedDate = $IdentityDescription->LastModifiedDate;
-    my $Logins           = $IdentityDescription->Logins;
     my $CreationDate     = $IdentityDescription->CreationDate;
     my $IdentityId       = $IdentityDescription->IdentityId;
+    my $LastModifiedDate = $IdentityDescription->LastModifiedDate;
+    my $Logins           = $IdentityDescription->Logins;
 
     # Returns a L<Paws::CognitoIdentity::IdentityDescription> object.
 

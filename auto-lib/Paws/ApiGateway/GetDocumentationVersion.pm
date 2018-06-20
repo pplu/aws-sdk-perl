@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $CreatedDate = $DocumentationVersion->CreatedDate;
-    my $Version     = $DocumentationVersion->Version;
     my $Description = $DocumentationVersion->Description;
+    my $Version     = $DocumentationVersion->Version;
 
     # Returns a L<Paws::ApiGateway::DocumentationVersion> object.
 

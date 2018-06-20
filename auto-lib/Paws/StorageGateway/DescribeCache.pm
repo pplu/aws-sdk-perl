@@ -37,13 +37,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $DiskIds               = $DescribeCacheOutput->DiskIds;
-    my $CacheMissPercentage   = $DescribeCacheOutput->CacheMissPercentage;
-    my $GatewayARN            = $DescribeCacheOutput->GatewayARN;
-    my $CacheHitPercentage    = $DescribeCacheOutput->CacheHitPercentage;
-    my $CacheDirtyPercentage  = $DescribeCacheOutput->CacheDirtyPercentage;
     my $CacheAllocatedInBytes = $DescribeCacheOutput->CacheAllocatedInBytes;
+    my $CacheDirtyPercentage  = $DescribeCacheOutput->CacheDirtyPercentage;
+    my $CacheHitPercentage    = $DescribeCacheOutput->CacheHitPercentage;
+    my $CacheMissPercentage   = $DescribeCacheOutput->CacheMissPercentage;
     my $CacheUsedPercentage   = $DescribeCacheOutput->CacheUsedPercentage;
+    my $DiskIds               = $DescribeCacheOutput->DiskIds;
+    my $GatewayARN            = $DescribeCacheOutput->GatewayARN;
 
     # Returns a L<Paws::StorageGateway::DescribeCacheOutput> object.
 

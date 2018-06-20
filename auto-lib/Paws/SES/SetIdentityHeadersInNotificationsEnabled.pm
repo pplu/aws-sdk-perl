@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SetIdentityHeadersInNotificationsEnabledResponse =
       $email->SetIdentityHeadersInNotificationsEnabled(
       {
-        'NotificationType' => 'Bounce',
+        'Enabled'          => true,
         'Identity'         => 'user@example.com',
-        'Enabled'          => 1
+        'NotificationType' => 'Bounce'
       }
       );
 

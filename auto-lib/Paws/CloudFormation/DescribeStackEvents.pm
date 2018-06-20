@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $StackEvents = $DescribeStackEventsOutput->StackEvents;
     my $NextToken   = $DescribeStackEventsOutput->NextToken;
+    my $StackEvents = $DescribeStackEventsOutput->StackEvents;
 
     # Returns a L<Paws::CloudFormation::DescribeStackEventsOutput> object.
 

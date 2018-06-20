@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'Tags' => [
 
           {
-            'Value' => 'example',
-            'Key'   => 'Example'
+            'Key'   => 'Example',
+            'Value' => 'example'
           }
         ]
       }

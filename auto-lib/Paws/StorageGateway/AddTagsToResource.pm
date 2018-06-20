@@ -32,15 +32,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Adds one or more tags to the specified resource.
     my $AddTagsToResourceOutput = $storagegateway->AddTagsToResource(
       {
+        'ResourceARN' =>
+          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-11A2222B',
         'Tags' => [
 
           {
-            'Value' => 'East Coast',
-            'Key'   => 'Dev Gatgeway Region'
+            'Key'   => 'Dev Gatgeway Region',
+            'Value' => 'East Coast'
           }
-        ],
-        'ResourceARN' =>
-          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-11A2222B'
+        ]
       }
     );
 

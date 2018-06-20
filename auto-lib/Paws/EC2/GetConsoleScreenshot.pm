@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $InstanceId = $GetConsoleScreenshotResult->InstanceId;
     my $ImageData  = $GetConsoleScreenshotResult->ImageData;
+    my $InstanceId = $GetConsoleScreenshotResult->InstanceId;
 
     # Returns a L<Paws::EC2::GetConsoleScreenshotResult> object.
 

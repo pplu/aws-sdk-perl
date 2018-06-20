@@ -44,9 +44,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $NextToken = $DescribeComplianceByResourceResponse->NextToken;
     my $ComplianceByResources =
       $DescribeComplianceByResourceResponse->ComplianceByResources;
+    my $NextToken = $DescribeComplianceByResourceResponse->NextToken;
 
     # Returns a L<Paws::Config::DescribeComplianceByResourceResponse> object.
 

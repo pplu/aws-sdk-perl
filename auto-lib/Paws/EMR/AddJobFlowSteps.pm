@@ -33,7 +33,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Steps     => [
         {
           HadoopJarStep => {
-            Jar        => 'MyXmlString',    # max: 10280
+            Jar  => 'MyXmlString',    # max: 10280
+            Args => [
+              'MyXmlString', ...      # max: 10280
+            ],                        # OPTIONAL
+            MainClass  => 'MyXmlString',    # max: 10280
             Properties => [
               {
                 Key   => 'MyXmlString',     # max: 10280
@@ -41,10 +45,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },
               ...
             ],                              # OPTIONAL
-            Args => [
-              'MyXmlString', ...            # max: 10280
-            ],                              # OPTIONAL
-            MainClass => 'MyXmlString',     # max: 10280
           },
           Name            => 'MyXmlStringMaxLen256',    # max: 256
           ActionOnFailure => 'TERMINATE_JOB_FLOW'

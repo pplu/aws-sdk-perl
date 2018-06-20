@@ -50,21 +50,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $IncludeGlobalServiceEvents =
-      $UpdateTrailResponse->IncludeGlobalServiceEvents;
-    my $CloudWatchLogsRoleArn = $UpdateTrailResponse->CloudWatchLogsRoleArn;
-    my $SnsTopicName          = $UpdateTrailResponse->SnsTopicName;
-    my $LogFileValidationEnabled =
-      $UpdateTrailResponse->LogFileValidationEnabled;
-    my $IsMultiRegionTrail = $UpdateTrailResponse->IsMultiRegionTrail;
-    my $KmsKeyId           = $UpdateTrailResponse->KmsKeyId;
-    my $TrailARN           = $UpdateTrailResponse->TrailARN;
-    my $S3KeyPrefix        = $UpdateTrailResponse->S3KeyPrefix;
     my $CloudWatchLogsLogGroupArn =
       $UpdateTrailResponse->CloudWatchLogsLogGroupArn;
-    my $S3BucketName = $UpdateTrailResponse->S3BucketName;
-    my $SnsTopicARN  = $UpdateTrailResponse->SnsTopicARN;
+    my $CloudWatchLogsRoleArn = $UpdateTrailResponse->CloudWatchLogsRoleArn;
+    my $IncludeGlobalServiceEvents =
+      $UpdateTrailResponse->IncludeGlobalServiceEvents;
+    my $IsMultiRegionTrail = $UpdateTrailResponse->IsMultiRegionTrail;
+    my $KmsKeyId           = $UpdateTrailResponse->KmsKeyId;
+    my $LogFileValidationEnabled =
+      $UpdateTrailResponse->LogFileValidationEnabled;
     my $Name         = $UpdateTrailResponse->Name;
+    my $S3BucketName = $UpdateTrailResponse->S3BucketName;
+    my $S3KeyPrefix  = $UpdateTrailResponse->S3KeyPrefix;
+    my $SnsTopicARN  = $UpdateTrailResponse->SnsTopicARN;
+    my $SnsTopicName = $UpdateTrailResponse->SnsTopicName;
+    my $TrailARN     = $UpdateTrailResponse->TrailARN;
 
     # Returns a L<Paws::CloudTrail::UpdateTrailResponse> object.
 

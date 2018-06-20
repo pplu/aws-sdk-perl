@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken = $DescribeFleetsResult->NextToken;
     my $Fleets    = $DescribeFleetsResult->Fleets;
+    my $NextToken = $DescribeFleetsResult->NextToken;
 
     # Returns a L<Paws::AppStream::DescribeFleetsResult> object.
 

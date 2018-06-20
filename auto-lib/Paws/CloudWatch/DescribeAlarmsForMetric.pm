@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Namespace  => 'MyNamespace',
       Dimensions => [
         {
-          Value => 'MyDimensionValue',    # min: 1, max: 255
           Name  => 'MyDimensionName',     # min: 1, max: 255
+          Value => 'MyDimensionValue',    # min: 1, max: 255
 
         },
         ...

@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This operation deletes a Lambda function
     $lambda->DeleteFunction(
       {
-        'Qualifier'    => 1,
-        'FunctionName' => 'myFunction'
+        'FunctionName' => 'myFunction',
+        'Qualifier'    => 1
       }
     );
 

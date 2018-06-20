@@ -45,13 +45,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $StartedEventId         = $DecisionTask->StartedEventId;
-    my $WorkflowType           = $DecisionTask->WorkflowType;
-    my $NextPageToken          = $DecisionTask->NextPageToken;
     my $Events                 = $DecisionTask->Events;
+    my $NextPageToken          = $DecisionTask->NextPageToken;
     my $PreviousStartedEventId = $DecisionTask->PreviousStartedEventId;
-    my $WorkflowExecution      = $DecisionTask->WorkflowExecution;
+    my $StartedEventId         = $DecisionTask->StartedEventId;
     my $TaskToken              = $DecisionTask->TaskToken;
+    my $WorkflowExecution      = $DecisionTask->WorkflowExecution;
+    my $WorkflowType           = $DecisionTask->WorkflowType;
 
     # Returns a L<Paws::SimpleWorkflow::DecisionTask> object.
 

@@ -35,22 +35,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RestApiId          => 'MyString',
       PatchOperations    => [
         {
-          from  => 'MyString',
-          value => 'MyString',
-          path  => 'MyString',
+          from => 'MyString',
           op =>
             'add',    # values: add, remove, replace, move, copy, test; OPTIONAL
+          path  => 'MyString',
+          value => 'MyString',
         },
         ...
       ],              # OPTIONAL
     );
 
     # Results:
+    my $Id                  = $RequestValidator->Id;
+    my $Name                = $RequestValidator->Name;
     my $ValidateRequestBody = $RequestValidator->ValidateRequestBody;
     my $ValidateRequestParameters =
       $RequestValidator->ValidateRequestParameters;
-    my $Id   = $RequestValidator->Id;
-    my $Name = $RequestValidator->Name;
 
     # Returns a L<Paws::ApiGateway::RequestValidator> object.
 

@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Scaling group.
     $autoscaling->SuspendProcesses(
       {
-        'ScalingProcesses'     => ['AlarmNotification'],
-        'AutoScalingGroupName' => 'my-auto-scaling-group'
+        'AutoScalingGroupName' => 'my-auto-scaling-group',
+        'ScalingProcesses'     => ['AlarmNotification']
       }
     );
 

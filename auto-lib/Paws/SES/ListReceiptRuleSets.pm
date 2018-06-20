@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $RuleSets  = $ListReceiptRuleSetsResponse->RuleSets;
     my $NextToken = $ListReceiptRuleSetsResponse->NextToken;
+    my $RuleSets  = $ListReceiptRuleSetsResponse->RuleSets;
 
     # Returns a L<Paws::SES::ListReceiptRuleSetsResponse> object.
 

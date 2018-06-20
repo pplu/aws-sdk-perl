@@ -1,5 +1,6 @@
 package Paws::MediaConvert::CaptionDescriptionPreset;
   use Moose;
+  has CustomLanguageCode => (is => 'ro', isa => 'Str', request_name => 'customLanguageCode', traits => ['NameInRequest']);
   has DestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::CaptionDestinationSettings', request_name => 'destinationSettings', traits => ['NameInRequest'], required => 1);
   has LanguageCode => (is => 'ro', isa => 'Str', request_name => 'languageCode', traits => ['NameInRequest']);
   has LanguageDescription => (is => 'ro', isa => 'Str', request_name => 'languageDescription', traits => ['NameInRequest']);
@@ -22,20 +23,26 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConvert::CaptionDescriptionPreset object:
 
-  $service_obj->Method(Att1 => { DestinationSettings => $value, ..., LanguageDescription => $value  });
+  $service_obj->Method(Att1 => { CustomLanguageCode => $value, ..., LanguageDescription => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConvert::CaptionDescriptionPreset object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->DestinationSettings
+  $result->Att1->CustomLanguageCode
 
 =head1 DESCRIPTION
 
 Caption Description for preset
 
 =head1 ATTRIBUTES
+
+
+=head2 CustomLanguageCode => Str
+
+  Indicates the language of the caption output track, using the ISO 639-2
+or ISO 639-3 three-letter language code
 
 
 =head2 B<REQUIRED> DestinationSettings => L<Paws::MediaConvert::CaptionDestinationSettings>

@@ -59,31 +59,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ReplicationStatus       = $HeadObjectOutput->ReplicationStatus;
+    my $AcceptRanges            = $HeadObjectOutput->AcceptRanges;
+    my $CacheControl            = $HeadObjectOutput->CacheControl;
+    my $ContentDisposition      = $HeadObjectOutput->ContentDisposition;
+    my $ContentEncoding         = $HeadObjectOutput->ContentEncoding;
+    my $ContentLanguage         = $HeadObjectOutput->ContentLanguage;
     my $ContentLength           = $HeadObjectOutput->ContentLength;
     my $ContentType             = $HeadObjectOutput->ContentType;
-    my $SSEKMSKeyId             = $HeadObjectOutput->SSEKMSKeyId;
-    my $Metadata                = $HeadObjectOutput->Metadata;
-    my $RequestCharged          = $HeadObjectOutput->RequestCharged;
-    my $WebsiteRedirectLocation = $HeadObjectOutput->WebsiteRedirectLocation;
-    my $Restore                 = $HeadObjectOutput->Restore;
+    my $DeleteMarker            = $HeadObjectOutput->DeleteMarker;
     my $ETag                    = $HeadObjectOutput->ETag;
-    my $ContentLanguage         = $HeadObjectOutput->ContentLanguage;
-    my $Expires                 = $HeadObjectOutput->Expires;
-    my $VersionId               = $HeadObjectOutput->VersionId;
-    my $LastModified            = $HeadObjectOutput->LastModified;
     my $Expiration              = $HeadObjectOutput->Expiration;
+    my $Expires                 = $HeadObjectOutput->Expires;
+    my $LastModified            = $HeadObjectOutput->LastModified;
+    my $Metadata                = $HeadObjectOutput->Metadata;
     my $MissingMeta             = $HeadObjectOutput->MissingMeta;
     my $PartsCount              = $HeadObjectOutput->PartsCount;
-    my $AcceptRanges            = $HeadObjectOutput->AcceptRanges;
-    my $DeleteMarker            = $HeadObjectOutput->DeleteMarker;
-    my $ServerSideEncryption    = $HeadObjectOutput->ServerSideEncryption;
-    my $SSECustomerKeyMD5       = $HeadObjectOutput->SSECustomerKeyMD5;
+    my $ReplicationStatus       = $HeadObjectOutput->ReplicationStatus;
+    my $RequestCharged          = $HeadObjectOutput->RequestCharged;
+    my $Restore                 = $HeadObjectOutput->Restore;
     my $SSECustomerAlgorithm    = $HeadObjectOutput->SSECustomerAlgorithm;
-    my $CacheControl            = $HeadObjectOutput->CacheControl;
-    my $ContentEncoding         = $HeadObjectOutput->ContentEncoding;
+    my $SSECustomerKeyMD5       = $HeadObjectOutput->SSECustomerKeyMD5;
+    my $SSEKMSKeyId             = $HeadObjectOutput->SSEKMSKeyId;
+    my $ServerSideEncryption    = $HeadObjectOutput->ServerSideEncryption;
     my $StorageClass            = $HeadObjectOutput->StorageClass;
-    my $ContentDisposition      = $HeadObjectOutput->ContentDisposition;
+    my $VersionId               = $HeadObjectOutput->VersionId;
+    my $WebsiteRedirectLocation = $HeadObjectOutput->WebsiteRedirectLocation;
 
     # Returns a L<Paws::S3::HeadObjectOutput> object.
 

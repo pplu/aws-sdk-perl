@@ -34,8 +34,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ThingGroupName       => 'MyThingGroupName',
       ParentGroupName      => 'MyThingGroupName',    # OPTIONAL
       ThingGroupProperties => {
-        thingGroupDescription =>
-          'MyThingGroupDescription',                 # max: 2028; OPTIONAL
         attributePayload => {
           attributes => {
             'MyAttributeName' =>
@@ -43,13 +41,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           merge => 1,    # OPTIONAL
         },    # OPTIONAL
+        thingGroupDescription =>
+          'MyThingGroupDescription',    # max: 2028; OPTIONAL
       },    # OPTIONAL
     );
 
     # Results:
-    my $ThingGroupName = $CreateThingGroupResponse->ThingGroupName;
     my $ThingGroupArn  = $CreateThingGroupResponse->ThingGroupArn;
     my $ThingGroupId   = $CreateThingGroupResponse->ThingGroupId;
+    my $ThingGroupName = $CreateThingGroupResponse->ThingGroupName;
 
     # Returns a L<Paws::IoT::CreateThingGroupResponse> object.
 

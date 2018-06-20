@@ -1,6 +1,7 @@
 package Paws::MediaConvert::HlsCaptionLanguageMapping;
   use Moose;
   has CaptionChannel => (is => 'ro', isa => 'Int', request_name => 'captionChannel', traits => ['NameInRequest']);
+  has CustomLanguageCode => (is => 'ro', isa => 'Str', request_name => 'customLanguageCode', traits => ['NameInRequest']);
   has LanguageCode => (is => 'ro', isa => 'Str', request_name => 'languageCode', traits => ['NameInRequest']);
   has LanguageDescription => (is => 'ro', isa => 'Str', request_name => 'languageDescription', traits => ['NameInRequest']);
 1;
@@ -41,6 +42,12 @@ Caption Language Mapping
 =head2 CaptionChannel => Int
 
   Caption channel.
+
+
+=head2 CustomLanguageCode => Str
+
+  Specify the language for this caption channel, using the ISO 639-2 or
+ISO 639-3 three-letter language code
 
 
 =head2 LanguageCode => Str

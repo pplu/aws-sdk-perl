@@ -36,10 +36,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # VPC to their corresponding IP addresses; otherwise, it does not.
     $ec2->ModifyVpcAttribute(
       {
-        'VpcId'            => 'vpc-a01106c2',
         'EnableDnsSupport' => {
           'Value' => 0
-        }
+        },
+        'VpcId' => 'vpc-a01106c2'
       }
     );
 
@@ -50,10 +50,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # do not.
     $ec2->ModifyVpcAttribute(
       {
-        'VpcId'              => 'vpc-a01106c2',
         'EnableDnsHostnames' => {
           'Value' => 0
-        }
+        },
+        'VpcId' => 'vpc-a01106c2'
       }
     );
 

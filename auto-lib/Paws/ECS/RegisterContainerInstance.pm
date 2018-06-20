@@ -38,9 +38,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           name     => 'MyString',
           targetId => 'MyString',
-          value    => 'MyString',
           targetType =>
             'container-instance',    # values: container-instance; OPTIONAL
+          value => 'MyString',
         },
         ...
       ],                             # OPTIONAL
@@ -50,19 +50,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InstanceIdentityDocumentSignature => 'MyString',    # OPTIONAL
       TotalResources                    => [
         {
+          doubleValue    => 1,                            # OPTIONAL
+          integerValue   => 1,                            # OPTIONAL
           longValue      => 1,                            # OPTIONAL
           name           => 'MyString',
-          type           => 'MyString',
-          integerValue   => 1,                            # OPTIONAL
-          doubleValue    => 1,                            # OPTIONAL
           stringSetValue => [ 'MyString', ... ],          # OPTIONAL
+          type           => 'MyString',
         },
         ...
       ],                                                  # OPTIONAL
       VersionInfo => {
+        agentHash     => 'MyString',
         agentVersion  => 'MyString',
         dockerVersion => 'MyString',
-        agentHash     => 'MyString',
       },                                                  # OPTIONAL
     );
 

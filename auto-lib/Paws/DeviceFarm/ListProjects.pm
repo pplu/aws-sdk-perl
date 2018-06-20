@@ -33,10 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Device Farm.
     my $ListProjectsResult = $devicefarm->ListProjects(
       {
-        'NextToken' =>
-          'RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE',
         'Arn' =>
-'arn:aws:devicefarm:us-west-2:123456789101:project:7ad300ed-8183-41a7-bf94-12345EXAMPLE'
+'arn:aws:devicefarm:us-west-2:123456789101:project:7ad300ed-8183-41a7-bf94-12345EXAMPLE',
+        'NextToken' =>
+          'RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE'
       }
     );
 

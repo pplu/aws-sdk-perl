@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateRuleResponse = $waf->CreateRule(
       {
         'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
-        'Name'        => 'WAFByteHeaderRule',
-        'MetricName'  => 'WAFByteHeaderRule'
+        'MetricName'  => 'WAFByteHeaderRule',
+        'Name'        => 'WAFByteHeaderRule'
       }
     );
 

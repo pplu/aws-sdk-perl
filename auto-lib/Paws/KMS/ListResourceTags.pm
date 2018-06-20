@@ -36,9 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Truncated  = $ListResourceTagsResponse->Truncated;
-    my $Tags       = $ListResourceTagsResponse->Tags;
     my $NextMarker = $ListResourceTagsResponse->NextMarker;
+    my $Tags       = $ListResourceTagsResponse->Tags;
+    my $Truncated  = $ListResourceTagsResponse->Truncated;
 
     # Returns a L<Paws::KMS::ListResourceTagsResponse> object.
 

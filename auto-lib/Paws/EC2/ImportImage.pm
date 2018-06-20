@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ImportImageResult = $ec2->ImportImage(
       Architecture => 'MyString',    # OPTIONAL
       ClientData   => {
-        UploadEnd   => '1970-01-01T01:00:00',    # OPTIONAL
         Comment     => 'MyString',
+        UploadEnd   => '1970-01-01T01:00:00',    # OPTIONAL
         UploadSize  => 1,                        # OPTIONAL
         UploadStart => '1970-01-01T01:00:00',    # OPTIONAL
       },    # OPTIONAL
@@ -48,15 +48,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description    => 'MyString',    # OPTIONAL
       DiskContainers => [
         {
-          SnapshotId => 'MyString',
-          Format     => 'MyString',
-          UserBucket => {
-            S3Key    => 'MyString',
-            S3Bucket => 'MyString',
-          },                           # OPTIONAL
-          DeviceName  => 'MyString',
-          Url         => 'MyString',
           Description => 'MyString',
+          DeviceName  => 'MyString',
+          Format      => 'MyString',
+          SnapshotId  => 'MyString',
+          Url         => 'MyString',
+          UserBucket  => {
+            S3Bucket => 'MyString',
+            S3Key    => 'MyString',
+          },                           # OPTIONAL
         },
         ...
       ],                               # OPTIONAL
@@ -68,17 +68,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ImageId         = $ImportImageResult->ImageId;
-    my $Platform        = $ImportImageResult->Platform;
-    my $ImportTaskId    = $ImportImageResult->ImportTaskId;
-    my $Status          = $ImportImageResult->Status;
-    my $LicenseType     = $ImportImageResult->LicenseType;
-    my $Hypervisor      = $ImportImageResult->Hypervisor;
-    my $Progress        = $ImportImageResult->Progress;
-    my $StatusMessage   = $ImportImageResult->StatusMessage;
-    my $SnapshotDetails = $ImportImageResult->SnapshotDetails;
     my $Architecture    = $ImportImageResult->Architecture;
     my $Description     = $ImportImageResult->Description;
+    my $Hypervisor      = $ImportImageResult->Hypervisor;
+    my $ImageId         = $ImportImageResult->ImageId;
+    my $ImportTaskId    = $ImportImageResult->ImportTaskId;
+    my $LicenseType     = $ImportImageResult->LicenseType;
+    my $Platform        = $ImportImageResult->Platform;
+    my $Progress        = $ImportImageResult->Progress;
+    my $SnapshotDetails = $ImportImageResult->SnapshotDetails;
+    my $Status          = $ImportImageResult->Status;
+    my $StatusMessage   = $ImportImageResult->StatusMessage;
 
     # Returns a L<Paws::EC2::ImportImageResult> object.
 

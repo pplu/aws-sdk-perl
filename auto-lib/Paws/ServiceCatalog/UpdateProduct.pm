@@ -61,8 +61,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Tags              = $UpdateProductOutput->Tags;
     my $ProductViewDetail = $UpdateProductOutput->ProductViewDetail;
+    my $Tags              = $UpdateProductOutput->Tags;
 
     # Returns a L<Paws::ServiceCatalog::UpdateProductOutput> object.
 

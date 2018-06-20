@@ -38,11 +38,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $ReservationName =
+      $PurchaseReservedElasticsearchInstanceOfferingResponse->ReservationName;
     my $ReservedElasticsearchInstanceId =
       $PurchaseReservedElasticsearchInstanceOfferingResponse
       ->ReservedElasticsearchInstanceId;
-    my $ReservationName =
-      $PurchaseReservedElasticsearchInstanceOfferingResponse->ReservationName;
 
 # Returns a L<Paws::ES::PurchaseReservedElasticsearchInstanceOfferingResponse> object.
 

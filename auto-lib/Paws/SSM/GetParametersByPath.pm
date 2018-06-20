@@ -39,10 +39,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ParameterFilters => [
         {
           Key    => 'MyParameterStringFilterKey',    # min: 1, max: 132
+          Option => 'MyParameterStringQueryOption',  # min: 1, max: 10; OPTIONAL
           Values => [
             'MyParameterStringFilterValue', ...      # min: 1, max: 1024
           ],                                         # min: 1, max: 50; OPTIONAL
-          Option => 'MyParameterStringQueryOption',  # min: 1, max: 10; OPTIONAL
         },
         ...
       ],                                             # OPTIONAL
@@ -51,8 +51,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Parameters = $GetParametersByPathResult->Parameters;
     my $NextToken  = $GetParametersByPathResult->NextToken;
+    my $Parameters = $GetParametersByPathResult->Parameters;
 
     # Returns a L<Paws::SSM::GetParametersByPathResult> object.
 

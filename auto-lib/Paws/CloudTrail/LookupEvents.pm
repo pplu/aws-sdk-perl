@@ -48,8 +48,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken = $LookupEventsResponse->NextToken;
     my $Events    = $LookupEventsResponse->Events;
+    my $NextToken = $LookupEventsResponse->NextToken;
 
     # Returns a L<Paws::CloudTrail::LookupEventsResponse> object.
 

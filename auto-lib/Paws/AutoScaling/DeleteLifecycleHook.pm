@@ -32,8 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example deletes the specified lifecycle hook.
     my $DeleteLifecycleHookAnswer = $autoscaling->DeleteLifecycleHook(
       {
-        'LifecycleHookName'    => 'my-lifecycle-hook',
-        'AutoScalingGroupName' => 'my-auto-scaling-group'
+        'AutoScalingGroupName' => 'my-auto-scaling-group',
+        'LifecycleHookName'    => 'my-lifecycle-hook'
       }
     );
 

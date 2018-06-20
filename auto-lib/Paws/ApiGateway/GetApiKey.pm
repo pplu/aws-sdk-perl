@@ -35,15 +35,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Value           = $ApiKey->Value;
-    my $Id              = $ApiKey->Id;
-    my $Enabled         = $ApiKey->Enabled;
-    my $LastUpdatedDate = $ApiKey->LastUpdatedDate;
     my $CreatedDate     = $ApiKey->CreatedDate;
     my $CustomerId      = $ApiKey->CustomerId;
     my $Description     = $ApiKey->Description;
+    my $Enabled         = $ApiKey->Enabled;
+    my $Id              = $ApiKey->Id;
+    my $LastUpdatedDate = $ApiKey->LastUpdatedDate;
     my $Name            = $ApiKey->Name;
     my $StageKeys       = $ApiKey->StageKeys;
+    my $Value           = $ApiKey->Value;
 
     # Returns a L<Paws::ApiGateway::ApiKey> object.
 

@@ -38,19 +38,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Synthesizes plain text or SSML into a file of human-like speech.
     my $SynthesizeSpeechOutput = $polly->SynthesizeSpeech(
       {
-        'VoiceId'      => 'Joanna',
-        'TextType'     => 'text',
+        'LexiconNames' => ['example'],
         'OutputFormat' => 'mp3',
         'SampleRate'   => 8000,
-        'LexiconNames' => ['example'],
-        'Text'         => 'All Gaul is divided into three parts'
+        'Text'         => 'All Gaul is divided into three parts',
+        'TextType'     => 'text',
+        'VoiceId'      => 'Joanna'
       }
     );
 
     # Results:
     my $AudioStream       = $SynthesizeSpeechOutput->AudioStream;
-    my $RequestCharacters = $SynthesizeSpeechOutput->RequestCharacters;
     my $ContentType       = $SynthesizeSpeechOutput->ContentType;
+    my $RequestCharacters = $SynthesizeSpeechOutput->RequestCharacters;
 
     # Returns a L<Paws::Polly::SynthesizeSpeechOutput> object.
 

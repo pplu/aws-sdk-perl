@@ -31,8 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $greengrass->GetServiceRoleForAccount();
 
     # Results:
-    my $RoleArn      = $GetServiceRoleForAccountResponse->RoleArn;
     my $AssociatedAt = $GetServiceRoleForAccountResponse->AssociatedAt;
+    my $RoleArn      = $GetServiceRoleForAccountResponse->RoleArn;
 
     # Returns a L<Paws::Greengrass::GetServiceRoleForAccountResponse> object.
 

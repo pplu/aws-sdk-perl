@@ -40,8 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # amazon-ecs-sample task definition.
     my $UpdateServiceResponse = $ecs->UpdateService(
       {
-        'TaskDefinition' => 'amazon-ecs-sample',
-        'Service'        => 'my-http-service'
+        'Service'        => 'my-http-service',
+        'TaskDefinition' => 'amazon-ecs-sample'
       }
     );
 

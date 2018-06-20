@@ -31,8 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $InviteAccountToOrganizationResponse =
       $organizations->InviteAccountToOrganization(
       Target => {
-        Type => 'ACCOUNT',               # values: ACCOUNT, ORGANIZATION, EMAIL
         Id   => 'MyHandshakePartyId',    # min: 1, max: 64
+        Type => 'ACCOUNT',               # values: ACCOUNT, ORGANIZATION, EMAIL
 
       },
       Notes => 'MyHandshakeNotes',       # OPTIONAL

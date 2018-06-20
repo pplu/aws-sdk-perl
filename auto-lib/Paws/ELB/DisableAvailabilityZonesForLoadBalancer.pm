@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $RemoveAvailabilityZonesOutput =
       $elasticloadbalancing->DisableAvailabilityZonesForLoadBalancer(
       {
-        'LoadBalancerName'  => 'my-load-balancer',
-        'AvailabilityZones' => ['us-west-2a']
+        'AvailabilityZones' => ['us-west-2a'],
+        'LoadBalancerName'  => 'my-load-balancer'
       }
       );
 

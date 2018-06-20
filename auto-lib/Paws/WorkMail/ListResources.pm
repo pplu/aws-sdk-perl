@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Resources = $ListResourcesResponse->Resources;
     my $NextToken = $ListResourcesResponse->NextToken;
+    my $Resources = $ListResourcesResponse->Resources;
 
     # Returns a L<Paws::WorkMail::ListResourcesResponse> object.
 

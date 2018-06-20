@@ -50,16 +50,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         maximumPerMinute => 1,    # min: 1, max: 1000; OPTIONAL
       },    # OPTIONAL
       PresignedUrlConfig => {
-        roleArn      => 'MyRoleArn',    # min: 20, max: 2048; OPTIONAL
         expiresInSec => 1,              # min: 60, max: 3600; OPTIONAL
+        roleArn      => 'MyRoleArn',    # min: 20, max: 2048; OPTIONAL
       },    # OPTIONAL
       TargetSelection => 'CONTINUOUS',    # OPTIONAL
     );
 
     # Results:
     my $Description = $CreateJobResponse->Description;
-    my $JobId       = $CreateJobResponse->JobId;
     my $JobArn      = $CreateJobResponse->JobArn;
+    my $JobId       = $CreateJobResponse->JobId;
 
     # Returns a L<Paws::IoT::CreateJobResponse> object.
 

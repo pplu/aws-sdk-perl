@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken  = $ListFacetNamesResponse->NextToken;
     my $FacetNames = $ListFacetNamesResponse->FacetNames;
+    my $NextToken  = $ListFacetNamesResponse->NextToken;
 
     # Returns a L<Paws::CloudDirectory::ListFacetNamesResponse> object.
 

@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $NextToken           = $BatchGetTracesResult->NextToken;
-    my $UnprocessedTraceIds = $BatchGetTracesResult->UnprocessedTraceIds;
     my $Traces              = $BatchGetTracesResult->Traces;
+    my $UnprocessedTraceIds = $BatchGetTracesResult->UnprocessedTraceIds;
 
     # Returns a L<Paws::XRay::BatchGetTracesResult> object.
 

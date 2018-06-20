@@ -36,10 +36,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Type  = $UsagePlanKey->Type;
-    my $Value = $UsagePlanKey->Value;
     my $Id    = $UsagePlanKey->Id;
     my $Name  = $UsagePlanKey->Name;
+    my $Type  = $UsagePlanKey->Type;
+    my $Value = $UsagePlanKey->Value;
 
     # Returns a L<Paws::ApiGateway::UsagePlanKey> object.
 

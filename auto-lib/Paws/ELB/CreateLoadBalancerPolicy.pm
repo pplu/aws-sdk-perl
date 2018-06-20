@@ -37,7 +37,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $elasticloadbalancing->CreateLoadBalancerPolicy(
       {
         'LoadBalancerName' => 'my-load-balancer',
-        'PolicyTypeName'   => 'ProxyProtocolPolicyType',
         'PolicyAttributes' => [
 
           {
@@ -45,7 +44,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'AttributeValue' => 'true'
           }
         ],
-        'PolicyName' => 'my-ProxyProtocol-policy'
+        'PolicyName'     => 'my-ProxyProtocol-policy',
+        'PolicyTypeName' => 'ProxyProtocolPolicyType'
       }
       );
 
@@ -55,7 +55,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $elasticloadbalancing->CreateLoadBalancerPolicy(
       {
         'LoadBalancerName' => 'my-load-balancer',
-        'PolicyTypeName'   => 'PublicKeyPolicyType',
         'PolicyAttributes' => [
 
           {
@@ -64,7 +63,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwAYUjnfyEyXr1pxjhFWBpMlggUcqoi3kl+dS74kj//c6x7ROtusUaeQCTgIUkayttRDWchuqo1pHC1u+n5xxXnBBe2ejbb2WRsKIQ5rXEeixsjFpFsojpSQKkzhVGI6mJVZBJDVKSHmswnwLBdofLhzvllpovBPTHe+o4haAWvDBALJU0pkSI1FecPHcs2hwxf14zHoXy1e2k36A64nXW43wtfx5qcVSIxtCEOjnYRg7RPvybaGfQ+v6Iaxb/+7J5kEvZhTFQId+bSiJImF1FSUT1W1xwzBZPUbcUkkXDj45vC2s3Z8E+Lk7a3uZhvsQHLZnrfuWjBWGWvZ/MhZYgEXAMPLE'
           }
         ],
-        'PolicyName' => 'my-PublicKey-policy'
+        'PolicyName'     => 'my-PublicKey-policy',
+        'PolicyTypeName' => 'PublicKeyPolicyType'
       }
       );
 
@@ -75,7 +75,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $elasticloadbalancing->CreateLoadBalancerPolicy(
       {
         'LoadBalancerName' => 'my-load-balancer',
-        'PolicyTypeName'   => 'BackendServerAuthenticationPolicyType',
         'PolicyAttributes' => [
 
           {
@@ -83,7 +82,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'AttributeValue' => 'my-PublicKey-policy'
           }
         ],
-        'PolicyName' => 'my-authentication-policy'
+        'PolicyName'     => 'my-authentication-policy',
+        'PolicyTypeName' => 'BackendServerAuthenticationPolicyType'
       }
       );
 

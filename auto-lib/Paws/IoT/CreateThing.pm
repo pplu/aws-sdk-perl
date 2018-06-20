@@ -43,8 +43,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ThingId   = $CreateThingResponse->ThingId;
     my $ThingArn  = $CreateThingResponse->ThingArn;
+    my $ThingId   = $CreateThingResponse->ThingId;
     my $ThingName = $CreateThingResponse->ThingName;
 
     # Returns a L<Paws::IoT::CreateThingResponse> object.

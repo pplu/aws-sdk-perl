@@ -52,8 +52,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Truncated = $WorkflowExecutionCount->Truncated;
     my $Count     = $WorkflowExecutionCount->Count;
+    my $Truncated = $WorkflowExecutionCount->Truncated;
 
     # Returns a L<Paws::SimpleWorkflow::WorkflowExecutionCount> object.
 

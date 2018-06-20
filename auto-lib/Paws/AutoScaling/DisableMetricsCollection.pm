@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # for the specified Auto Scaling group.
     $autoscaling->DisableMetricsCollection(
       {
-        'Metrics'              => ['GroupDesiredCapacity'],
-        'AutoScalingGroupName' => 'my-auto-scaling-group'
+        'AutoScalingGroupName' => 'my-auto-scaling-group',
+        'Metrics'              => ['GroupDesiredCapacity']
       }
     );
 

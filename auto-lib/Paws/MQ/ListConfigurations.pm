@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $Configurations = $ListConfigurationsResponse->Configurations;
-    my $NextToken      = $ListConfigurationsResponse->NextToken;
     my $MaxResults     = $ListConfigurationsResponse->MaxResults;
+    my $NextToken      = $ListConfigurationsResponse->NextToken;
 
     # Returns a L<Paws::MQ::ListConfigurationsResponse> object.
 

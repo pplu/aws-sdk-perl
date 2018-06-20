@@ -41,7 +41,7 @@ ID3 insertion (Id3Insertion) objects.
 
 =head2 B<REQUIRED> Id3Insertions => ArrayRef[L<Paws::MediaConvert::Id3Insertion>]
 
-  
+  Id3Insertions contains the array of Id3Insertion instances.
 
 
 

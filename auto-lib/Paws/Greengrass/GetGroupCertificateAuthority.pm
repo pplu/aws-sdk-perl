@@ -37,12 +37,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $PemEncodedCertificate =
-      $GetGroupCertificateAuthorityResponse->PemEncodedCertificate;
     my $GroupCertificateAuthorityArn =
       $GetGroupCertificateAuthorityResponse->GroupCertificateAuthorityArn;
     my $GroupCertificateAuthorityId =
       $GetGroupCertificateAuthorityResponse->GroupCertificateAuthorityId;
+    my $PemEncodedCertificate =
+      $GetGroupCertificateAuthorityResponse->PemEncodedCertificate;
 
    # Returns a L<Paws::Greengrass::GetGroupCertificateAuthorityResponse> object.
 

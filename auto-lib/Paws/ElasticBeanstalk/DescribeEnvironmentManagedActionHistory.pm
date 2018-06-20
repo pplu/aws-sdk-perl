@@ -39,9 +39,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $NextToken = $DescribeEnvironmentManagedActionHistoryResult->NextToken;
     my $ManagedActionHistoryItems =
       $DescribeEnvironmentManagedActionHistoryResult->ManagedActionHistoryItems;
+    my $NextToken = $DescribeEnvironmentManagedActionHistoryResult->NextToken;
 
 # Returns a L<Paws::ElasticBeanstalk::DescribeEnvironmentManagedActionHistoryResult> object.
 

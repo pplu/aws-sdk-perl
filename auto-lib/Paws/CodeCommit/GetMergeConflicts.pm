@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Mergeable           = $GetMergeConflictsOutput->Mergeable;
     my $DestinationCommitId = $GetMergeConflictsOutput->DestinationCommitId;
+    my $Mergeable           = $GetMergeConflictsOutput->Mergeable;
     my $SourceCommitId      = $GetMergeConflictsOutput->SourceCommitId;
 
     # Returns a L<Paws::CodeCommit::GetMergeConflictsOutput> object.

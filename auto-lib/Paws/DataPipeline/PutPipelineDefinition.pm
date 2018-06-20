@@ -34,8 +34,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       PipelineId      => 'Myid',
       PipelineObjects => [
         {
-          id     => 'Myid',    # min: 1, max: 1024
-          name   => 'Myid',    # min: 1, max: 1024
           fields => [
             {
               key         => 'MyfieldNameString',     # min: 1, max: 256
@@ -44,13 +42,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },
             ...
           ],
+          id   => 'Myid',                             # min: 1, max: 1024
+          name => 'Myid',                             # min: 1, max: 1024
 
         },
         ...
       ],
       ParameterObjects => [
         {
-          id         => 'MyfieldNameString',          # min: 1, max: 256
           attributes => [
             {
               key         => 'MyattributeNameString',     # min: 1, max: 256
@@ -59,6 +58,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },
             ...
           ],
+          id => 'MyfieldNameString',                      # min: 1, max: 256
 
         },
         ...
@@ -74,9 +74,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ValidationWarnings = $PutPipelineDefinitionOutput->ValidationWarnings;
     my $Errored            = $PutPipelineDefinitionOutput->Errored;
     my $ValidationErrors   = $PutPipelineDefinitionOutput->ValidationErrors;
+    my $ValidationWarnings = $PutPipelineDefinitionOutput->ValidationWarnings;
 
     # Returns a L<Paws::DataPipeline::PutPipelineDefinitionOutput> object.
 

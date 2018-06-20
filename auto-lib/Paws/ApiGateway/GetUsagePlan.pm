@@ -34,13 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Throttle    = $UsagePlan->Throttle;
     my $ApiStages   = $UsagePlan->ApiStages;
+    my $Description = $UsagePlan->Description;
     my $Id          = $UsagePlan->Id;
+    my $Name        = $UsagePlan->Name;
     my $ProductCode = $UsagePlan->ProductCode;
     my $Quota       = $UsagePlan->Quota;
-    my $Description = $UsagePlan->Description;
-    my $Name        = $UsagePlan->Name;
+    my $Throttle    = $UsagePlan->Throttle;
 
     # Returns a L<Paws::ApiGateway::UsagePlan> object.
 

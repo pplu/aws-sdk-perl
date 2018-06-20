@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # group.
     $autoscaling->SetDesiredCapacity(
       {
+        'AutoScalingGroupName' => 'my-auto-scaling-group',
         'DesiredCapacity'      => 2,
-        'HonorCooldown'        => 1,
-        'AutoScalingGroupName' => 'my-auto-scaling-group'
+        'HonorCooldown'        => true
       }
     );
 

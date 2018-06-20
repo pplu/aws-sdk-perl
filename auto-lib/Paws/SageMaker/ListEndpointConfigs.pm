@@ -44,8 +44,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken       = $ListEndpointConfigsOutput->NextToken;
     my $EndpointConfigs = $ListEndpointConfigsOutput->EndpointConfigs;
+    my $NextToken       = $ListEndpointConfigsOutput->NextToken;
 
     # Returns a L<Paws::SageMaker::ListEndpointConfigsOutput> object.
 

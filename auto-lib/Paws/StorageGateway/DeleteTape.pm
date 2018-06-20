@@ -32,10 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example deletes the specified virtual tape.
     my $DeleteTapeOutput = $storagegateway->DeleteTape(
       {
-        'TapeARN' =>
-          'arn:aws:storagegateway:us-east-1:204469490176:tape/TEST05A2A0',
         'GatewayARN' =>
-          'arn:aws:storagegateway:us-east-1:204469490176:gateway/sgw-12A3456B'
+          'arn:aws:storagegateway:us-east-1:204469490176:gateway/sgw-12A3456B',
+        'TapeARN' =>
+          'arn:aws:storagegateway:us-east-1:204469490176:tape/TEST05A2A0'
       }
     );
 

@@ -45,16 +45,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $NextToken = $ListReviewPolicyResultsForHITResponse->NextToken;
-    my $HITReviewPolicy =
-      $ListReviewPolicyResultsForHITResponse->HITReviewPolicy;
     my $AssignmentReviewPolicy =
       $ListReviewPolicyResultsForHITResponse->AssignmentReviewPolicy;
     my $AssignmentReviewReport =
       $ListReviewPolicyResultsForHITResponse->AssignmentReviewReport;
     my $HITId = $ListReviewPolicyResultsForHITResponse->HITId;
+    my $HITReviewPolicy =
+      $ListReviewPolicyResultsForHITResponse->HITReviewPolicy;
     my $HITReviewReport =
       $ListReviewPolicyResultsForHITResponse->HITReviewReport;
+    my $NextToken = $ListReviewPolicyResultsForHITResponse->NextToken;
 
     # Returns a L<Paws::MTurk::ListReviewPolicyResultsForHITResponse> object.
 

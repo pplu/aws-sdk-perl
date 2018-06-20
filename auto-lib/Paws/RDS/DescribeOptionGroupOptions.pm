@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # specified DB engine.
     my $OptionGroupOptionsMessage = $rds->DescribeOptionGroupOptions(
       {
-        'MajorEngineVersion' => 5.6,
-        'EngineName'         => 'mysql'
+        'EngineName'         => 'mysql',
+        'MajorEngineVersion' => 5.6
       }
     );
 

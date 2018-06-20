@@ -37,11 +37,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example creates an event notification subscription.
     my $CreateEventSubscriptionResult = $rds->CreateEventSubscription(
       {
+        'Enabled'         => true,
         'EventCategories' => ['availability'],
-        'SourceIds'       => ['mymysqlinstance'],
-        'SourceType'      => 'db-instance',
         'SnsTopicArn' => 'arn:aws:sns:us-east-1:992648334831:MyDemoSNSTopic',
-        'Enabled'     => 1,
+        'SourceIds'   => ['mymysqlinstance'],
+        'SourceType'  => 'db-instance',
         'SubscriptionName' => 'mymysqleventsubscription'
       }
     );

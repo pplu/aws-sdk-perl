@@ -33,9 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           name     => 'MyString',
           targetId => 'MyString',
-          value    => 'MyString',
           targetType =>
             'container-instance',    # values: container-instance; OPTIONAL
+          value => 'MyString',
         },
         ...
       ],

@@ -33,11 +33,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $VpcId = $DisassociateVpcCidrBlockResult->VpcId;
-    my $Ipv6CidrBlockAssociation =
-      $DisassociateVpcCidrBlockResult->Ipv6CidrBlockAssociation;
     my $CidrBlockAssociation =
       $DisassociateVpcCidrBlockResult->CidrBlockAssociation;
+    my $Ipv6CidrBlockAssociation =
+      $DisassociateVpcCidrBlockResult->Ipv6CidrBlockAssociation;
+    my $VpcId = $DisassociateVpcCidrBlockResult->VpcId;
 
     # Returns a L<Paws::EC2::DisassociateVpcCidrBlockResult> object.
 

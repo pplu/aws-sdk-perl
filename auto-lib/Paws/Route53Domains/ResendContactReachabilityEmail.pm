@@ -33,10 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $IsAlreadyVerified =
-      $ResendContactReachabilityEmailResponse->IsAlreadyVerified;
     my $DomainName   = $ResendContactReachabilityEmailResponse->DomainName;
     my $EmailAddress = $ResendContactReachabilityEmailResponse->EmailAddress;
+    my $IsAlreadyVerified =
+      $ResendContactReachabilityEmailResponse->IsAlreadyVerified;
 
 # Returns a L<Paws::Route53Domains::ResendContactReachabilityEmailResponse> object.
 

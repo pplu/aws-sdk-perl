@@ -41,8 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Owner          = $GetObjectAclOutput->Owner;
     my $Grants         = $GetObjectAclOutput->Grants;
+    my $Owner          = $GetObjectAclOutput->Owner;
     my $RequestCharged = $GetObjectAclOutput->RequestCharged;
 
     # Returns a L<Paws::S3::GetObjectAclOutput> object.

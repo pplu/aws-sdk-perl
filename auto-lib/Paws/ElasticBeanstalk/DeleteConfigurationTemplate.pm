@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # for an application named my-app:
     $elasticbeanstalk->DeleteConfigurationTemplate(
       {
-        'TemplateName'    => 'my-template',
-        'ApplicationName' => 'my-app'
+        'ApplicationName' => 'my-app',
+        'TemplateName'    => 'my-template'
       }
     );
 

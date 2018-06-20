@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $RequestCharged = $GetObjectTorrentOutput->RequestCharged;
     my $Body           = $GetObjectTorrentOutput->Body;
+    my $RequestCharged = $GetObjectTorrentOutput->RequestCharged;
 
     # Returns a L<Paws::S3::GetObjectTorrentOutput> object.
 

@@ -31,9 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $AdminDisableProviderForUserResponse =
       $cognito -idp->AdminDisableProviderForUser(
       User => {
-        ProviderAttributeName => 'MyStringType',    # OPTIONAL
-        ProviderName => 'MyProviderNameType',       # min: 1, max: 32; OPTIONAL
-        ProviderAttributeValue => 'MyStringType',   # OPTIONAL
+        ProviderAttributeName  => 'MyStringType',    # OPTIONAL
+        ProviderAttributeValue => 'MyStringType',    # OPTIONAL
+        ProviderName => 'MyProviderNameType',        # min: 1, max: 32; OPTIONAL
       },
       UserPoolId => 'MyStringType',
 

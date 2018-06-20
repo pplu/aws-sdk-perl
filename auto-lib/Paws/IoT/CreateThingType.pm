@@ -32,16 +32,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateThingTypeResponse = $iot->CreateThingType(
       ThingTypeName       => 'MyThingTypeName',
       ThingTypeProperties => {
-        thingTypeDescription => 'MyThingTypeDescription',  # max: 2028; OPTIONAL
         searchableAttributes => [
-          'MyAttributeName', ...                           # max: 128
-        ],                                                 # OPTIONAL
+          'MyAttributeName', ...    # max: 128
+        ],                          # OPTIONAL
+        thingTypeDescription => 'MyThingTypeDescription',  # max: 2028; OPTIONAL
       },    # OPTIONAL
     );
 
     # Results:
-    my $ThingTypeId   = $CreateThingTypeResponse->ThingTypeId;
     my $ThingTypeArn  = $CreateThingTypeResponse->ThingTypeArn;
+    my $ThingTypeId   = $CreateThingTypeResponse->ThingTypeId;
     my $ThingTypeName = $CreateThingTypeResponse->ThingTypeName;
 
     # Returns a L<Paws::IoT::CreateThingTypeResponse> object.

@@ -44,33 +44,33 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This operation updates a Lambda function's configuration
     my $FunctionConfiguration = $lambda->UpdateFunctionConfiguration(
       {
-        'Role'    => 'arn:aws:iam::123456789012:role/lambda_basic_execution',
-        'Runtime' => 'python2.7',
+        'Description'  => '',
         'FunctionName' => 'myFunction',
         'Handler'      => 'index.handler',
         'MemorySize'   => 128,
-        'VpcConfig'    => {
+        'Role'      => 'arn:aws:iam::123456789012:role/lambda_basic_execution',
+        'Runtime'   => 'python2.7',
+        'Timeout'   => 123,
+        'VpcConfig' => {
 
-        },
-        'Description' => '',
-        'Timeout'     => 123
+        }
       }
     );
 
     # Results:
+    my $CodeSha256   = $FunctionConfiguration->CodeSha256;
+    my $CodeSize     = $FunctionConfiguration->CodeSize;
+    my $Description  = $FunctionConfiguration->Description;
+    my $FunctionArn  = $FunctionConfiguration->FunctionArn;
+    my $FunctionName = $FunctionConfiguration->FunctionName;
+    my $Handler      = $FunctionConfiguration->Handler;
+    my $LastModified = $FunctionConfiguration->LastModified;
+    my $MemorySize   = $FunctionConfiguration->MemorySize;
     my $Role         = $FunctionConfiguration->Role;
     my $Runtime      = $FunctionConfiguration->Runtime;
-    my $FunctionName = $FunctionConfiguration->FunctionName;
-    my $CodeSize     = $FunctionConfiguration->CodeSize;
-    my $Version      = $FunctionConfiguration->Version;
-    my $Handler      = $FunctionConfiguration->Handler;
-    my $MemorySize   = $FunctionConfiguration->MemorySize;
-    my $VpcConfig    = $FunctionConfiguration->VpcConfig;
-    my $FunctionArn  = $FunctionConfiguration->FunctionArn;
     my $Timeout      = $FunctionConfiguration->Timeout;
-    my $Description  = $FunctionConfiguration->Description;
-    my $CodeSha256   = $FunctionConfiguration->CodeSha256;
-    my $LastModified = $FunctionConfiguration->LastModified;
+    my $Version      = $FunctionConfiguration->Version;
+    my $VpcConfig    = $FunctionConfiguration->VpcConfig;
 
     # Returns a L<Paws::Lambda::FunctionConfiguration> object.
 

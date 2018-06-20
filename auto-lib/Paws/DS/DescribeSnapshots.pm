@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Snapshots = $DescribeSnapshotsResult->Snapshots;
     my $NextToken = $DescribeSnapshotsResult->NextToken;
+    my $Snapshots = $DescribeSnapshotsResult->Snapshots;
 
     # Returns a L<Paws::DS::DescribeSnapshotsResult> object.
 

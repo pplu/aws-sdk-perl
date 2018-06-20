@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # specified network interface.
     $ec2->AssignPrivateIpAddresses(
       {
-        'PrivateIpAddresses' => ['10.0.0.82'],
-        'NetworkInterfaceId' => 'eni-e5aa89a3'
+        'NetworkInterfaceId' => 'eni-e5aa89a3',
+        'PrivateIpAddresses' => ['10.0.0.82']
       }
     );
 
@@ -47,8 +47,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 # network interface is associated with.
     $ec2->AssignPrivateIpAddresses(
       {
-        'SecondaryPrivateIpAddressCount' => 2,
-        'NetworkInterfaceId'             => 'eni-e5aa89a3'
+        'NetworkInterfaceId'             => 'eni-e5aa89a3',
+        'SecondaryPrivateIpAddressCount' => 2
       }
     );
 

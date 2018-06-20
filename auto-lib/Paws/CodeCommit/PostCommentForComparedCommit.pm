@@ -40,19 +40,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       BeforeCommitId     => 'MyCommitId',              # OPTIONAL
       ClientRequestToken => 'MyClientRequestToken',    # OPTIONAL
       Location           => {
+        filePath            => 'MyPath',    # OPTIONAL
         filePosition        => 1,           # OPTIONAL
         relativeFileVersion => 'BEFORE',    # values: BEFORE, AFTER; OPTIONAL
-        filePath            => 'MyPath',    # OPTIONAL
       },    # OPTIONAL
       );
 
     # Results:
-    my $BeforeCommitId = $PostCommentForComparedCommitOutput->BeforeCommitId;
     my $AfterBlobId    = $PostCommentForComparedCommitOutput->AfterBlobId;
     my $AfterCommitId  = $PostCommentForComparedCommitOutput->AfterCommitId;
     my $BeforeBlobId   = $PostCommentForComparedCommitOutput->BeforeBlobId;
-    my $Location       = $PostCommentForComparedCommitOutput->Location;
+    my $BeforeCommitId = $PostCommentForComparedCommitOutput->BeforeCommitId;
     my $Comment        = $PostCommentForComparedCommitOutput->Comment;
+    my $Location       = $PostCommentForComparedCommitOutput->Location;
     my $RepositoryName = $PostCommentForComparedCommitOutput->RepositoryName;
 
     # Returns a L<Paws::CodeCommit::PostCommentForComparedCommitOutput> object.

@@ -33,28 +33,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This operation retrieves a Lambda function's event source mapping
     my $FunctionConfiguration = $lambda->GetFunctionConfiguration(
       {
-        'Qualifier'    => 1,
-        'FunctionName' => 'myFunction'
+        'FunctionName' => 'myFunction',
+        'Qualifier'    => 1
       }
     );
 
     # Results:
+    my $CodeSha256       = $FunctionConfiguration->CodeSha256;
+    my $CodeSize         = $FunctionConfiguration->CodeSize;
+    my $DeadLetterConfig = $FunctionConfiguration->DeadLetterConfig;
+    my $Description      = $FunctionConfiguration->Description;
+    my $Environment      = $FunctionConfiguration->Environment;
+    my $FunctionArn      = $FunctionConfiguration->FunctionArn;
     my $FunctionName     = $FunctionConfiguration->FunctionName;
     my $Handler          = $FunctionConfiguration->Handler;
-    my $DeadLetterConfig = $FunctionConfiguration->DeadLetterConfig;
+    my $KMSKeyArn        = $FunctionConfiguration->KMSKeyArn;
     my $LastModified     = $FunctionConfiguration->LastModified;
-    my $Environment      = $FunctionConfiguration->Environment;
+    my $MemorySize       = $FunctionConfiguration->MemorySize;
     my $Role             = $FunctionConfiguration->Role;
     my $Runtime          = $FunctionConfiguration->Runtime;
-    my $CodeSize         = $FunctionConfiguration->CodeSize;
-    my $KMSKeyArn        = $FunctionConfiguration->KMSKeyArn;
-    my $Version          = $FunctionConfiguration->Version;
-    my $MemorySize       = $FunctionConfiguration->MemorySize;
-    my $FunctionArn      = $FunctionConfiguration->FunctionArn;
-    my $VpcConfig        = $FunctionConfiguration->VpcConfig;
-    my $Description      = $FunctionConfiguration->Description;
     my $Timeout          = $FunctionConfiguration->Timeout;
-    my $CodeSha256       = $FunctionConfiguration->CodeSha256;
+    my $Version          = $FunctionConfiguration->Version;
+    my $VpcConfig        = $FunctionConfiguration->VpcConfig;
 
     # Returns a L<Paws::Lambda::FunctionConfiguration> object.
 

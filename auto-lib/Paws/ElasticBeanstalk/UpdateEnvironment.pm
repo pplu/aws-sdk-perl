@@ -49,17 +49,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Tier              = $EnvironmentDescription->Tier;
-    my $DateCreated       = $EnvironmentDescription->DateCreated;
-    my $EnvironmentName   = $EnvironmentDescription->EnvironmentName;
-    my $Status            = $EnvironmentDescription->Status;
+    my $ApplicationName   = $EnvironmentDescription->ApplicationName;
     my $CNAME             = $EnvironmentDescription->CNAME;
+    my $DateCreated       = $EnvironmentDescription->DateCreated;
+    my $DateUpdated       = $EnvironmentDescription->DateUpdated;
     my $EndpointURL       = $EnvironmentDescription->EndpointURL;
     my $EnvironmentId     = $EnvironmentDescription->EnvironmentId;
-    my $ApplicationName   = $EnvironmentDescription->ApplicationName;
+    my $EnvironmentName   = $EnvironmentDescription->EnvironmentName;
     my $Health            = $EnvironmentDescription->Health;
     my $SolutionStackName = $EnvironmentDescription->SolutionStackName;
-    my $DateUpdated       = $EnvironmentDescription->DateUpdated;
+    my $Status            = $EnvironmentDescription->Status;
+    my $Tier              = $EnvironmentDescription->Tier;
     my $VersionLabel      = $EnvironmentDescription->VersionLabel;
 
     # Returns a L<Paws::ElasticBeanstalk::EnvironmentDescription> object.
@@ -68,50 +68,50 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # aws:elb:loadbalancer namespace:
     my $EnvironmentDescription = $elasticbeanstalk->UpdateEnvironment(
       {
-        'OptionSettings' => [
+        'EnvironmentName' => 'my-env',
+        'OptionSettings'  => [
 
           {
-            'Value'      => 15,
             'Namespace'  => 'aws:elb:healthcheck',
-            'OptionName' => 'Interval'
+            'OptionName' => 'Interval',
+            'Value'      => 15
           },
 
           {
-            'Value'      => 8,
             'Namespace'  => 'aws:elb:healthcheck',
-            'OptionName' => 'Timeout'
+            'OptionName' => 'Timeout',
+            'Value'      => 8
           },
 
           {
-            'Value'      => 2,
             'Namespace'  => 'aws:elb:healthcheck',
-            'OptionName' => 'HealthyThreshold'
+            'OptionName' => 'HealthyThreshold',
+            'Value'      => 2
           },
 
           {
-            'Value'      => 3,
             'Namespace'  => 'aws:elb:healthcheck',
-            'OptionName' => 'UnhealthyThreshold'
+            'OptionName' => 'UnhealthyThreshold',
+            'Value'      => 3
           }
-        ],
-        'EnvironmentName' => 'my-env'
+        ]
       }
     );
 
     # Results:
-    my $Tier            = $EnvironmentDescription->Tier;
-    my $DateCreated     = $EnvironmentDescription->DateCreated;
-    my $EnvironmentName = $EnvironmentDescription->EnvironmentName;
-    my $Status          = $EnvironmentDescription->Status;
-    my $CNAME           = $EnvironmentDescription->CNAME;
     my $AbortableOperationInProgress =
       $EnvironmentDescription->AbortableOperationInProgress;
+    my $ApplicationName   = $EnvironmentDescription->ApplicationName;
+    my $CNAME             = $EnvironmentDescription->CNAME;
+    my $DateCreated       = $EnvironmentDescription->DateCreated;
+    my $DateUpdated       = $EnvironmentDescription->DateUpdated;
     my $EndpointURL       = $EnvironmentDescription->EndpointURL;
     my $EnvironmentId     = $EnvironmentDescription->EnvironmentId;
+    my $EnvironmentName   = $EnvironmentDescription->EnvironmentName;
     my $Health            = $EnvironmentDescription->Health;
-    my $ApplicationName   = $EnvironmentDescription->ApplicationName;
     my $SolutionStackName = $EnvironmentDescription->SolutionStackName;
-    my $DateUpdated       = $EnvironmentDescription->DateUpdated;
+    my $Status            = $EnvironmentDescription->Status;
+    my $Tier              = $EnvironmentDescription->Tier;
     my $VersionLabel      = $EnvironmentDescription->VersionLabel;
 
     # Returns a L<Paws::ElasticBeanstalk::EnvironmentDescription> object.

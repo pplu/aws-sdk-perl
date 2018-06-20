@@ -43,21 +43,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $TargetConfigurationValueRollup =
-      $GetReservedInstancesExchangeQuoteResult->TargetConfigurationValueRollup;
+    my $CurrencyCode = $GetReservedInstancesExchangeQuoteResult->CurrencyCode;
     my $IsValidExchange =
       $GetReservedInstancesExchangeQuoteResult->IsValidExchange;
-    my $ReservedInstanceValueSet =
-      $GetReservedInstancesExchangeQuoteResult->ReservedInstanceValueSet;
-    my $ReservedInstanceValueRollup =
-      $GetReservedInstancesExchangeQuoteResult->ReservedInstanceValueRollup;
-    my $TargetConfigurationValueSet =
-      $GetReservedInstancesExchangeQuoteResult->TargetConfigurationValueSet;
-    my $CurrencyCode = $GetReservedInstancesExchangeQuoteResult->CurrencyCode;
     my $OutputReservedInstancesWillExpireAt =
       $GetReservedInstancesExchangeQuoteResult
       ->OutputReservedInstancesWillExpireAt;
     my $PaymentDue = $GetReservedInstancesExchangeQuoteResult->PaymentDue;
+    my $ReservedInstanceValueRollup =
+      $GetReservedInstancesExchangeQuoteResult->ReservedInstanceValueRollup;
+    my $ReservedInstanceValueSet =
+      $GetReservedInstancesExchangeQuoteResult->ReservedInstanceValueSet;
+    my $TargetConfigurationValueRollup =
+      $GetReservedInstancesExchangeQuoteResult->TargetConfigurationValueRollup;
+    my $TargetConfigurationValueSet =
+      $GetReservedInstancesExchangeQuoteResult->TargetConfigurationValueSet;
     my $ValidationFailureReason =
       $GetReservedInstancesExchangeQuoteResult->ValidationFailureReason;
 

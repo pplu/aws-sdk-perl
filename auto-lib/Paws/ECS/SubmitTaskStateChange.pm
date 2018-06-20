@@ -47,19 +47,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Cluster    => 'MyString',    # OPTIONAL
       Containers => [
         {
-          reason          => 'MyString',
           containerName   => 'MyString',
-          status          => 'MyString',
           exitCode        => 1,            # OPTIONAL
           networkBindings => [
             {
-              protocol      => 'tcp',        # values: tcp, udp; OPTIONAL
               bindIP        => 'MyString',
-              hostPort      => 1,            # OPTIONAL
               containerPort => 1,            # OPTIONAL
+              hostPort      => 1,            # OPTIONAL
+              protocol      => 'tcp',        # values: tcp, udp; OPTIONAL
             },
             ...
           ],                                 # OPTIONAL
+          reason => 'MyString',
+          status => 'MyString',
         },
         ...
       ],                                     # OPTIONAL

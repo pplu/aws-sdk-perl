@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeLoadBalancerPoliciesOutput =
       $elasticloadbalancing->DescribeLoadBalancerPolicies(
       {
-        'PolicyNames'      => ['my-authentication-policy'],
-        'LoadBalancerName' => 'my-load-balancer'
+        'LoadBalancerName' => 'my-load-balancer',
+        'PolicyNames'      => ['my-authentication-policy']
       }
       );
 

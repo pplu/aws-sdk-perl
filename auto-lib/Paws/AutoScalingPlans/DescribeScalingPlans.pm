@@ -34,25 +34,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeScalingPlansResponse = $autoscaling->DescribeScalingPlans(
       ApplicationSources => [
         {
-          TagFilters => [
+          CloudFormationStackARN => 'MyXmlString',    # OPTIONAL
+          TagFilters             => [
             {
+              Key    => 'MyXmlStringMaxLen128',    # min: 1, max: 128; OPTIONAL
               Values => [
-                'MyXmlStringMaxLen256', ...    # min: 1, max: 256
-              ],                               # OPTIONAL
-              Key => 'MyXmlStringMaxLen128',   # min: 1, max: 128; OPTIONAL
+                'MyXmlStringMaxLen256', ...        # min: 1, max: 256
+              ],                                   # OPTIONAL
             },
             ...
-          ],                                   # OPTIONAL
-          CloudFormationStackARN => 'MyXmlString',    # OPTIONAL
+          ],                                       # OPTIONAL
         },
         ...
-      ],                                              # OPTIONAL
-      MaxResults       => 1,                          # OPTIONAL
-      NextToken        => 'MyNextToken',              # OPTIONAL
+      ],                                           # OPTIONAL
+      MaxResults       => 1,                       # OPTIONAL
+      NextToken        => 'MyNextToken',           # OPTIONAL
       ScalingPlanNames => [
-        'MyScalingPlanName', ...                      # min: 1, max: 128
-      ],                                              # OPTIONAL
-      ScalingPlanVersion => 1,                        # OPTIONAL
+        'MyScalingPlanName', ...                   # min: 1, max: 128
+      ],                                           # OPTIONAL
+      ScalingPlanVersion => 1,                     # OPTIONAL
     );
 
     # Results:

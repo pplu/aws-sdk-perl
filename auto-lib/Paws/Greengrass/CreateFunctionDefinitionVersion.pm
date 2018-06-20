@@ -36,38 +36,38 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AmznClientToken      => 'My__string',    # OPTIONAL
       Functions            => [
         {
+          FunctionArn           => 'My__string',
           FunctionConfiguration => {
-            ExecArgs    => 'My__string',
-            Executable  => 'My__string',
-            Environment => {
+            EncodingType => 'binary',          # values: binary, json; OPTIONAL
+            Environment  => {
+              AccessSysfs            => 1,     # OPTIONAL
               ResourceAccessPolicies => [
                 {
-                  ResourceId => 'My__string',
                   Permission => 'ro',           # values: ro, rw; OPTIONAL
+                  ResourceId => 'My__string',
                 },
                 ...
               ],                                # OPTIONAL
               Variables => { 'My__string' => 'My__string', },    # OPTIONAL
-              AccessSysfs => 1,                                  # OPTIONAL
             },    # OPTIONAL
-            MemorySize   => 1,           # OPTIONAL
-            EncodingType => 'binary',    # values: binary, json; OPTIONAL
-            Pinned       => 1,           # OPTIONAL
-            Timeout      => 1,           # OPTIONAL
+            ExecArgs   => 'My__string',
+            Executable => 'My__string',
+            MemorySize => 1,              # OPTIONAL
+            Pinned     => 1,              # OPTIONAL
+            Timeout    => 1,              # OPTIONAL
           },    # OPTIONAL
-          Id          => 'My__string',
-          FunctionArn => 'My__string',
+          Id => 'My__string',
         },
         ...
       ],        # OPTIONAL
       );
 
     # Results:
+    my $Arn = $CreateFunctionDefinitionVersionResponse->Arn;
     my $CreationTimestamp =
       $CreateFunctionDefinitionVersionResponse->CreationTimestamp;
-    my $Version = $CreateFunctionDefinitionVersionResponse->Version;
     my $Id      = $CreateFunctionDefinitionVersionResponse->Id;
-    my $Arn     = $CreateFunctionDefinitionVersionResponse->Arn;
+    my $Version = $CreateFunctionDefinitionVersionResponse->Version;
 
 # Returns a L<Paws::Greengrass::CreateFunctionDefinitionVersionResponse> object.
 

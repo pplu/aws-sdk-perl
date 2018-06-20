@@ -39,11 +39,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $IsTruncated = $ListHostedZonesResponse->IsTruncated;
-    my $MaxItems    = $ListHostedZonesResponse->MaxItems;
     my $HostedZones = $ListHostedZonesResponse->HostedZones;
-    my $NextMarker  = $ListHostedZonesResponse->NextMarker;
+    my $IsTruncated = $ListHostedZonesResponse->IsTruncated;
     my $Marker      = $ListHostedZonesResponse->Marker;
+    my $MaxItems    = $ListHostedZonesResponse->MaxItems;
+    my $NextMarker  = $ListHostedZonesResponse->NextMarker;
 
     # Returns a L<Paws::Route53::ListHostedZonesResponse> object.
 

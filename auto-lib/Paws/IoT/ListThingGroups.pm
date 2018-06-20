@@ -41,8 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ThingGroups = $ListThingGroupsResponse->ThingGroups;
     my $NextToken   = $ListThingGroupsResponse->NextToken;
+    my $ThingGroups = $ListThingGroupsResponse->ThingGroups;
 
     # Returns a L<Paws::IoT::ListThingGroupsResponse> object.
 

@@ -37,9 +37,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'AccountId'               => '-',
         'VaultName'               => 'examplevault',
         'VaultNotificationConfig' => {
-          'SNSTopic' => 'arn:aws:sns:us-west-2:012345678901:mytopic',
           'Events' =>
-            [ 'ArchiveRetrievalCompleted', 'InventoryRetrievalCompleted' ]
+            [ 'ArchiveRetrievalCompleted', 'InventoryRetrievalCompleted' ],
+          'SNSTopic' => 'arn:aws:sns:us-west-2:012345678901:mytopic'
         }
       }
     );

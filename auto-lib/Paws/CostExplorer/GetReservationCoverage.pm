@@ -33,29 +33,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ce = Paws->service('CostExplorer');
     my $GetReservationCoverageResponse = $ce->GetReservationCoverage(
       TimePeriod => {
-        Start => 'MyYearMonthDay',
         End   => 'MyYearMonthDay',
+        Start => 'MyYearMonthDay',
 
       },
       Filter => {
-        Or         => [ <Expression>, ... ],    # OPTIONAL
-        Not        => <Expression>,
+        And => [ <Expression>, ... ],    # OPTIONAL
         Dimensions => {
-          Values => [ 'MyValue', ... ],         # OPTIONAL
           Key => 'AZ'
           , # values: AZ, INSTANCE_TYPE, LINKED_ACCOUNT, OPERATION, PURCHASE_TYPE, REGION, SERVICE, USAGE_TYPE, USAGE_TYPE_GROUP, RECORD_TYPE, OPERATING_SYSTEM, TENANCY, SCOPE, PLATFORM, SUBSCRIPTION_ID, LEGAL_ENTITY_NAME, DEPLOYMENT_OPTION, DATABASE_ENGINE, CACHE_ENGINE, INSTANCE_TYPE_FAMILY; OPTIONAL
-        },    # OPTIONAL
-        And => [ <Expression>, ... ],    # OPTIONAL
-        Tags => {
           Values => [ 'MyValue', ... ],    # OPTIONAL
+        },    # OPTIONAL
+        Not  => <Expression>,
+        Or   => [ <Expression>, ... ],    # OPTIONAL
+        Tags => {
           Key => 'MyTagKey',               # OPTIONAL
+          Values => [ 'MyValue', ... ],    # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       Granularity => 'DAILY',    # OPTIONAL
       GroupBy     => [
         {
-          Type => 'DIMENSION',               # values: DIMENSION, TAG; OPTIONAL
           Key  => 'MyGroupDefinitionKey',    # OPTIONAL
+          Type => 'DIMENSION',               # values: DIMENSION, TAG; OPTIONAL
         },
         ...
       ],                                     # OPTIONAL
@@ -63,9 +63,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Total           = $GetReservationCoverageResponse->Total;
-    my $NextPageToken   = $GetReservationCoverageResponse->NextPageToken;
     my $CoveragesByTime = $GetReservationCoverageResponse->CoveragesByTime;
+    my $NextPageToken   = $GetReservationCoverageResponse->NextPageToken;
+    my $Total           = $GetReservationCoverageResponse->Total;
 
     # Returns a L<Paws::CostExplorer::GetReservationCoverageResponse> object.
 

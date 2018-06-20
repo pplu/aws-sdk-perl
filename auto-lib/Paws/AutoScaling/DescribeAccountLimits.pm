@@ -31,14 +31,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeAccountLimitsAnswer = $autoscaling->DescribeAccountLimits();
 
     # Results:
-    my $NumberOfAutoScalingGroups =
-      $DescribeAccountLimitsAnswer->NumberOfAutoScalingGroups;
     my $MaxNumberOfAutoScalingGroups =
       $DescribeAccountLimitsAnswer->MaxNumberOfAutoScalingGroups;
-    my $NumberOfLaunchConfigurations =
-      $DescribeAccountLimitsAnswer->NumberOfLaunchConfigurations;
     my $MaxNumberOfLaunchConfigurations =
       $DescribeAccountLimitsAnswer->MaxNumberOfLaunchConfigurations;
+    my $NumberOfAutoScalingGroups =
+      $DescribeAccountLimitsAnswer->NumberOfAutoScalingGroups;
+    my $NumberOfLaunchConfigurations =
+      $DescribeAccountLimitsAnswer->NumberOfLaunchConfigurations;
 
     # Returns a L<Paws::AutoScaling::DescribeAccountLimitsAnswer> object.
 

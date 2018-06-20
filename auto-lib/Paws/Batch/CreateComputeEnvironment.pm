@@ -39,35 +39,35 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateComputeEnvironmentResponse = $batch->CreateComputeEnvironment(
       {
         'ComputeEnvironmentName' => 'C4OnDemand',
-        'Type'                   => 'MANAGED',
         'ComputeResources'       => {
-          'Ec2KeyPair'       => 'id_rsa',
-          'DesiredvCpus'     => 48,
-          'SecurityGroupIds' => ['sg-cf5093b2'],
-          'Tags'             => {
-            'Name' => 'Batch Instance - C4OnDemand'
-          },
+          'DesiredvCpus'  => 48,
+          'Ec2KeyPair'    => 'id_rsa',
           'InstanceRole'  => 'ecsInstanceRole',
           'InstanceTypes' => [
             'c4.large', 'c4.xlarge', 'c4.2xlarge', 'c4.4xlarge',
             'c4.8xlarge'
           ],
-          'MaxvCpus' => 128,
-          'Type'     => 'EC2',
+          'MaxvCpus'         => 128,
+          'MinvCpus'         => 0,
+          'SecurityGroupIds' => ['sg-cf5093b2'],
           'Subnets' =>
             [ 'subnet-220c0e0a', 'subnet-1a95556d', 'subnet-978f6dce' ],
-          'MinvCpus' => 0
+          'Tags' => {
+            'Name' => 'Batch Instance - C4OnDemand'
+          },
+          'Type' => 'EC2'
         },
+        'ServiceRole' => 'arn:aws:iam::012345678910:role/AWSBatchServiceRole',
         'State'       => 'ENABLED',
-        'ServiceRole' => 'arn:aws:iam::012345678910:role/AWSBatchServiceRole'
+        'Type'        => 'MANAGED'
       }
     );
 
     # Results:
-    my $computeEnvironmentName =
-      $CreateComputeEnvironmentResponse->computeEnvironmentName;
     my $computeEnvironmentArn =
       $CreateComputeEnvironmentResponse->computeEnvironmentArn;
+    my $computeEnvironmentName =
+      $CreateComputeEnvironmentResponse->computeEnvironmentName;
 
     # Returns a L<Paws::Batch::CreateComputeEnvironmentResponse> object.
     # To create a managed EC2 Spot compute environment
@@ -78,35 +78,35 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateComputeEnvironmentResponse = $batch->CreateComputeEnvironment(
       {
         'ComputeEnvironmentName' => 'M4Spot',
-        'Type'                   => 'MANAGED',
         'ComputeResources'       => {
-          'Ec2KeyPair'       => 'id_rsa',
           'BidPercentage'    => 20,
           'DesiredvCpus'     => 4,
+          'Ec2KeyPair'       => 'id_rsa',
+          'InstanceRole'     => 'ecsInstanceRole',
+          'InstanceTypes'    => ['m4'],
+          'MaxvCpus'         => 128,
+          'MinvCpus'         => 0,
           'SecurityGroupIds' => ['sg-cf5093b2'],
-          'Tags'             => {
-            'Name' => 'Batch Instance - M4Spot'
-          },
-          'InstanceRole'  => 'ecsInstanceRole',
-          'InstanceTypes' => ['m4'],
-          'MaxvCpus'      => 128,
           'SpotIamFleetRole' =>
             'arn:aws:iam::012345678910:role/aws-ec2-spot-fleet-role',
-          'Type' => 'SPOT',
           'Subnets' =>
             [ 'subnet-220c0e0a', 'subnet-1a95556d', 'subnet-978f6dce' ],
-          'MinvCpus' => 0
+          'Tags' => {
+            'Name' => 'Batch Instance - M4Spot'
+          },
+          'Type' => 'SPOT'
         },
+        'ServiceRole' => 'arn:aws:iam::012345678910:role/AWSBatchServiceRole',
         'State'       => 'ENABLED',
-        'ServiceRole' => 'arn:aws:iam::012345678910:role/AWSBatchServiceRole'
+        'Type'        => 'MANAGED'
       }
     );
 
     # Results:
-    my $computeEnvironmentName =
-      $CreateComputeEnvironmentResponse->computeEnvironmentName;
     my $computeEnvironmentArn =
       $CreateComputeEnvironmentResponse->computeEnvironmentArn;
+    my $computeEnvironmentName =
+      $CreateComputeEnvironmentResponse->computeEnvironmentName;
 
     # Returns a L<Paws::Batch::CreateComputeEnvironmentResponse> object.
 

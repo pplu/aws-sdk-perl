@@ -37,16 +37,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $CreationTime =
       $DescribeNotebookInstanceLifecycleConfigOutput->CreationTime;
-    my $OnCreate = $DescribeNotebookInstanceLifecycleConfigOutput->OnCreate;
     my $LastModifiedTime =
       $DescribeNotebookInstanceLifecycleConfigOutput->LastModifiedTime;
-    my $OnStart = $DescribeNotebookInstanceLifecycleConfigOutput->OnStart;
-    my $NotebookInstanceLifecycleConfigName =
-      $DescribeNotebookInstanceLifecycleConfigOutput
-      ->NotebookInstanceLifecycleConfigName;
     my $NotebookInstanceLifecycleConfigArn =
       $DescribeNotebookInstanceLifecycleConfigOutput
       ->NotebookInstanceLifecycleConfigArn;
+    my $NotebookInstanceLifecycleConfigName =
+      $DescribeNotebookInstanceLifecycleConfigOutput
+      ->NotebookInstanceLifecycleConfigName;
+    my $OnCreate = $DescribeNotebookInstanceLifecycleConfigOutput->OnCreate;
+    my $OnStart  = $DescribeNotebookInstanceLifecycleConfigOutput->OnStart;
 
 # Returns a L<Paws::SageMaker::DescribeNotebookInstanceLifecycleConfigOutput> object.
 

@@ -46,14 +46,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ApplicationName            => 'MyApplicationName',
       CurrentDeploymentGroupName => 'MyDeploymentGroupName',
       AlarmConfiguration         => {
-        ignorePollAlarmFailure => 1,    # OPTIONAL
-        alarms                 => [
+        alarms => [
           {
-            name => 'MyAlarmName',      # OPTIONAL
+            name => 'MyAlarmName',    # OPTIONAL
           },
           ...
-        ],                              # OPTIONAL
-        enabled => 1,                   # OPTIONAL
+        ],                            # OPTIONAL
+        enabled                => 1,  # OPTIONAL
+        ignorePollAlarmFailure => 1,  # OPTIONAL
       },    # OPTIONAL
       AutoRollbackConfiguration => {
         enabled => 1,    # OPTIONAL
@@ -64,10 +64,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       AutoScalingGroups => [ 'MyAutoScalingGroupName', ... ],    # OPTIONAL
       BlueGreenDeploymentConfiguration => {
-        terminateBlueInstancesOnDeploymentSuccess => {
-          terminationWaitTimeInMinutes => 1,                     # OPTIONAL
-          action => 'TERMINATE',    # values: TERMINATE, KEEP_ALIVE; OPTIONAL
-        },    # OPTIONAL
         deploymentReadyOption => {
           actionOnTimeout => 'CONTINUE_DEPLOYMENT'
           ,    # values: CONTINUE_DEPLOYMENT, STOP_DEPLOYMENT; OPTIONAL
@@ -76,6 +72,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         greenFleetProvisioningOption => {
           action => 'DISCOVER_EXISTING'
           ,    # values: DISCOVER_EXISTING, COPY_AUTO_SCALING_GROUP; OPTIONAL
+        },    # OPTIONAL
+        terminateBlueInstancesOnDeploymentSuccess => {
+          action => 'TERMINATE',    # values: TERMINATE, KEEP_ALIVE; OPTIONAL
+          terminationWaitTimeInMinutes => 1,    # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       DeploymentConfigName => 'MyDeploymentConfigName',    # OPTIONAL
@@ -86,9 +86,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       Ec2TagFilters => [
         {
+          Key => 'MyKey',    # OPTIONAL
           Type =>
             'KEY_ONLY',  # values: KEY_ONLY, VALUE_ONLY, KEY_AND_VALUE; OPTIONAL
-          Key   => 'MyKey',      # OPTIONAL
           Value => 'MyValue',    # OPTIONAL
         },
         ...
@@ -97,9 +97,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ec2TagSetList => [
           [
             {
+              Key  => 'MyKey',     # OPTIONAL
               Type => 'KEY_ONLY'
               ,    # values: KEY_ONLY, VALUE_ONLY, KEY_AND_VALUE; OPTIONAL
-              Key   => 'MyKey',      # OPTIONAL
               Value => 'MyValue',    # OPTIONAL
             },
             ...
@@ -124,9 +124,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       NewDeploymentGroupName       => 'MyDeploymentGroupName',    # OPTIONAL
       OnPremisesInstanceTagFilters => [
         {
+          Key => 'MyKey',                                         # OPTIONAL
           Type =>
             'KEY_ONLY',  # values: KEY_ONLY, VALUE_ONLY, KEY_AND_VALUE; OPTIONAL
-          Key   => 'MyKey',      # OPTIONAL
           Value => 'MyValue',    # OPTIONAL
         },
         ...
@@ -135,9 +135,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         onPremisesTagSetList => [
           [
             {
+              Key  => 'MyKey',     # OPTIONAL
               Type => 'KEY_ONLY'
               ,    # values: KEY_ONLY, VALUE_ONLY, KEY_AND_VALUE; OPTIONAL
-              Key   => 'MyKey',      # OPTIONAL
               Value => 'MyValue',    # OPTIONAL
             },
             ...

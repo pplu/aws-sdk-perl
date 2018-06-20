@@ -32,10 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ProductCode  => 'MyProductCode',
       UsageRecords => [
         {
+          CustomerIdentifier => 'MyCustomerIdentifier',    # min: 1, max: 255
           Dimension          => 'MyUsageDimension',        # min: 1, max: 255
           Quantity           => 1,                         # max: 1000000
           Timestamp          => '1970-01-01T01:00:00',
-          CustomerIdentifier => 'MyCustomerIdentifier',    # min: 1, max: 255
 
         },
         ...
@@ -44,8 +44,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $UnprocessedRecords = $BatchMeterUsageResult->UnprocessedRecords;
     my $Results            = $BatchMeterUsageResult->Results;
+    my $UnprocessedRecords = $BatchMeterUsageResult->UnprocessedRecords;
 
     # Returns a L<Paws::MarketplaceMetering::BatchMeterUsageResult> object.
 

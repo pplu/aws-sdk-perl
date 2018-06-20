@@ -33,13 +33,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $RoleArn            = $DescribeRuleResponse->RoleArn;
-    my $ScheduleExpression = $DescribeRuleResponse->ScheduleExpression;
     my $Arn                = $DescribeRuleResponse->Arn;
     my $Description        = $DescribeRuleResponse->Description;
-    my $State              = $DescribeRuleResponse->State;
-    my $Name               = $DescribeRuleResponse->Name;
     my $EventPattern       = $DescribeRuleResponse->EventPattern;
+    my $Name               = $DescribeRuleResponse->Name;
+    my $RoleArn            = $DescribeRuleResponse->RoleArn;
+    my $ScheduleExpression = $DescribeRuleResponse->ScheduleExpression;
+    my $State              = $DescribeRuleResponse->State;
 
     # Returns a L<Paws::CloudWatchEvents::DescribeRuleResponse> object.
 

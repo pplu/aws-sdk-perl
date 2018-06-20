@@ -36,32 +36,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       LifecycleConfiguration => {
         Rules => [
           {
-            Status => 'Enabled',     # values: Enabled, Disabled
-            Prefix => 'MyPrefix',    # OPTIONAL
-            NoncurrentVersionTransitions => [
-              {
-                NoncurrentDays => 1,          # OPTIONAL
-                StorageClass   => 'GLACIER'
-                ,    # values: GLACIER, STANDARD_IA, ONEZONE_IA; OPTIONAL
-              },
-              ...
-            ],       # OPTIONAL
-            ID                             => 'MyID',    # OPTIONAL
+            Status => 'Enabled',    # values: Enabled, Disabled
             AbortIncompleteMultipartUpload => {
-              DaysAfterInitiation => 1,                  # OPTIONAL
+              DaysAfterInitiation => 1,    # OPTIONAL
             },    # OPTIONAL
-            NoncurrentVersionExpiration => {
-              NoncurrentDays => 1,    # OPTIONAL
+            Expiration => {
+              Date                      => '1970-01-01T01:00:00',    # OPTIONAL
+              Days                      => 1,                        # OPTIONAL
+              ExpiredObjectDeleteMarker => 1,                        # OPTIONAL
             },    # OPTIONAL
             Filter => {
-              Tag => {
-                Key   => 'MyObjectKey',    # min: 1,
-                Value => 'MyValue',
-
-              },
-              Prefix => 'MyPrefix',        # OPTIONAL
-              And    => {
-                Prefix => 'MyPrefix',      # OPTIONAL
+              And => {
+                Prefix => 'MyPrefix',    # OPTIONAL
                 Tags   => [
                   {
                     Key   => 'MyObjectKey',    # min: 1,
@@ -71,21 +57,35 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   ...
                 ],                             # OPTIONAL
               },    # OPTIONAL
+              Prefix => 'MyPrefix',    # OPTIONAL
+              Tag    => {
+                Key   => 'MyObjectKey',    # min: 1,
+                Value => 'MyValue',
+
+              },
             },    # OPTIONAL
-            Expiration => {
-              Date                      => '1970-01-01T01:00:00',    # OPTIONAL
-              Days                      => 1,                        # OPTIONAL
-              ExpiredObjectDeleteMarker => 1,                        # OPTIONAL
+            ID                          => 'MyID',    # OPTIONAL
+            NoncurrentVersionExpiration => {
+              NoncurrentDays => 1,                    # OPTIONAL
             },    # OPTIONAL
+            NoncurrentVersionTransitions => [
+              {
+                NoncurrentDays => 1,          # OPTIONAL
+                StorageClass   => 'GLACIER'
+                ,    # values: GLACIER, STANDARD_IA, ONEZONE_IA; OPTIONAL
+              },
+              ...
+            ],       # OPTIONAL
+            Prefix      => 'MyPrefix',    # OPTIONAL
             Transitions => [
               {
                 Date         => '1970-01-01T01:00:00',    # OPTIONAL
+                Days         => 1,                        # OPTIONAL
                 StorageClass => 'GLACIER'
                 ,    # values: GLACIER, STANDARD_IA, ONEZONE_IA; OPTIONAL
-                Days => 1,    # OPTIONAL
               },
               ...
-            ],                # OPTIONAL
+            ],       # OPTIONAL
           },
           ...
         ],

@@ -35,11 +35,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # is returned.
     $ec2->ModifyVolumeAttribute(
       {
-        'DryRun'       => 1,
-        'VolumeId'     => 'vol-1234567890abcdef0',
         'AutoEnableIO' => {
-          'Value' => 1
-        }
+          'Value' => true
+        },
+        'DryRun'   => true,
+        'VolumeId' => 'vol-1234567890abcdef0'
       }
     );
 

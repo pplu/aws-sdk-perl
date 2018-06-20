@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $IsTruncated = $ListMFADevicesResponse->IsTruncated;
-    my $Marker      = $ListMFADevicesResponse->Marker;
     my $MFADevices  = $ListMFADevicesResponse->MFADevices;
+    my $Marker      = $ListMFADevicesResponse->Marker;
 
     # Returns a L<Paws::IAM::ListMFADevicesResponse> object.
 

@@ -47,9 +47,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RequestId => 'My__string',         # OPTIONAL
       Sources   => [
         {
-          Username      => 'My__string',    # OPTIONAL
           PasswordParam => 'My__string',    # OPTIONAL
           Url           => 'My__string',    # OPTIONAL
+          Username      => 'My__string',    # OPTIONAL
         },
         ...
       ],                                    # OPTIONAL

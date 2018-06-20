@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
+          Name   => 'MyString',
           Values => [ 'MyString', ... ],    # OPTIONAL
-          Name => 'MyString',
         },
         ...
       ],                                    # OPTIONAL
@@ -50,8 +50,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken       = $DescribeLaunchTemplatesResult->NextToken;
     my $LaunchTemplates = $DescribeLaunchTemplatesResult->LaunchTemplates;
+    my $NextToken       = $DescribeLaunchTemplatesResult->NextToken;
 
     # Returns a L<Paws::EC2::DescribeLaunchTemplatesResult> object.
 

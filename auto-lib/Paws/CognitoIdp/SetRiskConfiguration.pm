@@ -35,50 +35,50 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       UserPoolId                       => 'MyUserPoolIdType',
       AccountTakeoverRiskConfiguration => {
         Actions => {
-          LowAction => {
-            Notify      => 1,
+          HighAction => {
             EventAction => 'BLOCK'
             ,    # values: BLOCK, MFA_IF_CONFIGURED, MFA_REQUIRED, NO_ACTION
+            Notify => 1,
 
           },    # OPTIONAL
-          HighAction => {
-            Notify      => 1,
+          LowAction => {
             EventAction => 'BLOCK'
             ,    # values: BLOCK, MFA_IF_CONFIGURED, MFA_REQUIRED, NO_ACTION
+            Notify => 1,
 
           },    # OPTIONAL
           MediumAction => {
-            Notify      => 1,
             EventAction => 'BLOCK'
             ,    # values: BLOCK, MFA_IF_CONFIGURED, MFA_REQUIRED, NO_ACTION
+            Notify => 1,
 
           },    # OPTIONAL
         },
         NotifyConfiguration => {
-          SourceArn     => 'MyArnType',       # min: 20, max: 2048
-          ReplyTo       => 'MyStringType',    # OPTIONAL
-          NoActionEmail => {
-            Subject => 'MyEmailNotificationSubjectType',    # min: 1, max: 140
-            TextBody =>
-              'MyEmailNotificationBodyType',    # min: 6, max: 20000; OPTIONAL
-            HtmlBody =>
-              'MyEmailNotificationBodyType',    # min: 6, max: 20000; OPTIONAL
-          },    # OPTIONAL
-          MfaEmail => {
-            Subject => 'MyEmailNotificationSubjectType',    # min: 1, max: 140
-            TextBody =>
-              'MyEmailNotificationBodyType',    # min: 6, max: 20000; OPTIONAL
-            HtmlBody =>
-              'MyEmailNotificationBodyType',    # min: 6, max: 20000; OPTIONAL
-          },    # OPTIONAL
-          From       => 'MyStringType',    # OPTIONAL
+          SourceArn  => 'MyArnType',    # min: 20, max: 2048
           BlockEmail => {
             Subject => 'MyEmailNotificationSubjectType',    # min: 1, max: 140
-            TextBody =>
-              'MyEmailNotificationBodyType',    # min: 6, max: 20000; OPTIONAL
             HtmlBody =>
               'MyEmailNotificationBodyType',    # min: 6, max: 20000; OPTIONAL
+            TextBody =>
+              'MyEmailNotificationBodyType',    # min: 6, max: 20000; OPTIONAL
           },    # OPTIONAL
+          From     => 'MyStringType',    # OPTIONAL
+          MfaEmail => {
+            Subject => 'MyEmailNotificationSubjectType',    # min: 1, max: 140
+            HtmlBody =>
+              'MyEmailNotificationBodyType',    # min: 6, max: 20000; OPTIONAL
+            TextBody =>
+              'MyEmailNotificationBodyType',    # min: 6, max: 20000; OPTIONAL
+          },    # OPTIONAL
+          NoActionEmail => {
+            Subject => 'MyEmailNotificationSubjectType',    # min: 1, max: 140
+            HtmlBody =>
+              'MyEmailNotificationBodyType',    # min: 6, max: 20000; OPTIONAL
+            TextBody =>
+              'MyEmailNotificationBodyType',    # min: 6, max: 20000; OPTIONAL
+          },    # OPTIONAL
+          ReplyTo => 'MyStringType',    # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       ClientId                                => 'MyClientIdType',    # OPTIONAL

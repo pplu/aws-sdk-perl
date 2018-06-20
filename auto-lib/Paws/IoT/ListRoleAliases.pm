@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $RoleAliases = $ListRoleAliasesResponse->RoleAliases;
     my $NextMarker  = $ListRoleAliasesResponse->NextMarker;
+    my $RoleAliases = $ListRoleAliasesResponse->RoleAliases;
 
     # Returns a L<Paws::IoT::ListRoleAliasesResponse> object.
 

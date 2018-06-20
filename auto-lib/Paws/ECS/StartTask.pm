@@ -40,38 +40,38 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Group                => 'MyString',            # OPTIONAL
       NetworkConfiguration => {
         awsvpcConfiguration => {
-          subnets        => [ 'MyString', ... ],
-          securityGroups => [ 'MyString', ... ],
+          subnets => [ 'MyString', ... ],
           assignPublicIp => 'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
+          securityGroups => [ 'MyString', ... ],
         },    # OPTIONAL
       },    # OPTIONAL
       Overrides => {
-        executionRoleArn   => 'MyString',
-        taskRoleArn        => 'MyString',
         containerOverrides => [
           {
-            cpu         => 1,                     # OPTIONAL
-            name        => 'MyString',
-            memory      => 1,                     # OPTIONAL
             command     => [ 'MyString', ... ],
+            cpu         => 1,                     # OPTIONAL
             environment => [
               {
-                value => 'MyString',
                 name  => 'MyString',
+                value => 'MyString',
               },
               ...
             ],                                    # OPTIONAL
+            memory            => 1,               # OPTIONAL
             memoryReservation => 1,               # OPTIONAL
+            name              => 'MyString',
           },
           ...
         ],                                        # OPTIONAL
+        executionRoleArn => 'MyString',
+        taskRoleArn      => 'MyString',
       },    # OPTIONAL
       StartedBy => 'MyString',    # OPTIONAL
     );
 
     # Results:
-    my $Tasks    = $StartTaskResponse->Tasks;
     my $Failures = $StartTaskResponse->Failures;
+    my $Tasks    = $StartTaskResponse->Tasks;
 
     # Returns a L<Paws::ECS::StartTaskResponse> object.
 

@@ -32,9 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateAliasOutput = $gamelift->CreateAlias(
       Name            => 'MyNonBlankAndLengthConstraintString',
       RoutingStrategy => {
-        Type    => 'SIMPLE',        # values: SIMPLE, TERMINAL; OPTIONAL
-        Message => 'MyFreeText',    # OPTIONAL
         FleetId => 'MyFleetId',     # OPTIONAL
+        Message => 'MyFreeText',    # OPTIONAL
+        Type    => 'SIMPLE',        # values: SIMPLE, TERMINAL; OPTIONAL
       },
       Description => 'MyNonZeroAndMaxString',    # OPTIONAL
     );
@@ -45,7 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::GameLift::CreateAliasOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gamelift/CreateAlias>
 
 =head1 ATTRIBUTES
 

@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Projects  = $ListProjectsOutput->Projects;
     my $NextToken = $ListProjectsOutput->NextToken;
+    my $Projects  = $ListProjectsOutput->Projects;
 
     # Returns a L<Paws::CodeBuild::ListProjectsOutput> object.
 

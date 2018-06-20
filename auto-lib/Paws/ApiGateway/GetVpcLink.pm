@@ -34,12 +34,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $TargetArns    = $VpcLink->TargetArns;
-    my $Id            = $VpcLink->Id;
-    my $Status        = $VpcLink->Status;
     my $Description   = $VpcLink->Description;
+    my $Id            = $VpcLink->Id;
     my $Name          = $VpcLink->Name;
+    my $Status        = $VpcLink->Status;
     my $StatusMessage = $VpcLink->StatusMessage;
+    my $TargetArns    = $VpcLink->TargetArns;
 
     # Returns a L<Paws::ApiGateway::VpcLink> object.
 

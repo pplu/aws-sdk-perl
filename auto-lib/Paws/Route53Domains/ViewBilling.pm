@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextPageMarker = $ViewBillingResponse->NextPageMarker;
     my $BillingRecords = $ViewBillingResponse->BillingRecords;
+    my $NextPageMarker = $ViewBillingResponse->NextPageMarker;
 
     # Returns a L<Paws::Route53Domains::ViewBillingResponse> object.
 

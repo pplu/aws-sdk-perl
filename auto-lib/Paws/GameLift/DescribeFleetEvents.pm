@@ -40,8 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken = $DescribeFleetEventsOutput->NextToken;
     my $Events    = $DescribeFleetEventsOutput->Events;
+    my $NextToken = $DescribeFleetEventsOutput->NextToken;
 
     # Returns a L<Paws::GameLift::DescribeFleetEventsOutput> object.
 

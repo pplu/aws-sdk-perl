@@ -35,10 +35,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $Definition = $DescribeStateMachineForExecutionOutput->Definition;
+    my $Name       = $DescribeStateMachineForExecutionOutput->Name;
     my $RoleArn    = $DescribeStateMachineForExecutionOutput->RoleArn;
     my $StateMachineArn =
       $DescribeStateMachineForExecutionOutput->StateMachineArn;
-    my $Name       = $DescribeStateMachineForExecutionOutput->Name;
     my $UpdateDate = $DescribeStateMachineForExecutionOutput->UpdateDate;
 
 # Returns a L<Paws::StepFunctions::DescribeStateMachineForExecutionOutput> object.

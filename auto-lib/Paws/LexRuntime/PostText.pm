@@ -43,14 +43,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $responseCard      = $PostTextResponse->responseCard;
-    my $sessionAttributes = $PostTextResponse->sessionAttributes;
-    my $dialogState       = $PostTextResponse->dialogState;
-    my $slotToElicit      = $PostTextResponse->slotToElicit;
-    my $message           = $PostTextResponse->message;
-    my $intentName        = $PostTextResponse->intentName;
-    my $slots             = $PostTextResponse->slots;
-    my $messageFormat     = $PostTextResponse->messageFormat;
+    my $DialogState       = $PostTextResponse->DialogState;
+    my $IntentName        = $PostTextResponse->IntentName;
+    my $Message           = $PostTextResponse->Message;
+    my $MessageFormat     = $PostTextResponse->MessageFormat;
+    my $ResponseCard      = $PostTextResponse->ResponseCard;
+    my $SessionAttributes = $PostTextResponse->SessionAttributes;
+    my $SlotToElicit      = $PostTextResponse->SlotToElicit;
+    my $Slots             = $PostTextResponse->Slots;
 
     # Returns a L<Paws::LexRuntime::PostTextResponse> object.
 

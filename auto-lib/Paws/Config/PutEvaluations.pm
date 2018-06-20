@@ -33,13 +33,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ResultToken => 'MyString',
       Evaluations => [
         {
+          ComplianceResourceId => 'MyBaseResourceId',    # min: 1, max: 768
           ComplianceResourceType =>
-            'MyStringWithCharLimit256',    # min: 1, max: 256
+            'MyStringWithCharLimit256',                  # min: 1, max: 256
           ComplianceType => 'COMPLIANT'
           , # values: COMPLIANT, NON_COMPLIANT, NOT_APPLICABLE, INSUFFICIENT_DATA
-          OrderingTimestamp    => '1970-01-01T01:00:00',
-          ComplianceResourceId => 'MyBaseResourceId',         # min: 1, max: 768
-          Annotation           => 'MyStringWithCharLimit256', # min: 1, max: 256
+          OrderingTimestamp => '1970-01-01T01:00:00',
+          Annotation        => 'MyStringWithCharLimit256',    # min: 1, max: 256
         },
         ...
       ],                                                      # OPTIONAL

@@ -69,8 +69,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextPageToken  = $WorkflowExecutionInfos->NextPageToken;
     my $ExecutionInfos = $WorkflowExecutionInfos->ExecutionInfos;
+    my $NextPageToken  = $WorkflowExecutionInfos->NextPageToken;
 
     # Returns a L<Paws::SimpleWorkflow::WorkflowExecutionInfos> object.
 

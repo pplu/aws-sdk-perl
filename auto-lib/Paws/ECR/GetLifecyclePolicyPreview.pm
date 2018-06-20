@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       ImageIds => [
         {
-          imageTag    => 'MyImageTag',       # OPTIONAL
           imageDigest => 'MyImageDigest',    # OPTIONAL
+          imageTag    => 'MyImageTag',       # OPTIONAL
         },
         ...
       ],                                     # OPTIONAL
@@ -50,14 +50,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $RegistryId     = $GetLifecyclePolicyPreviewResponse->RegistryId;
-    my $PreviewResults = $GetLifecyclePolicyPreviewResponse->PreviewResults;
-    my $NextToken      = $GetLifecyclePolicyPreviewResponse->NextToken;
-    my $Status         = $GetLifecyclePolicyPreviewResponse->Status;
     my $LifecyclePolicyText =
       $GetLifecyclePolicyPreviewResponse->LifecyclePolicyText;
-    my $Summary        = $GetLifecyclePolicyPreviewResponse->Summary;
+    my $NextToken      = $GetLifecyclePolicyPreviewResponse->NextToken;
+    my $PreviewResults = $GetLifecyclePolicyPreviewResponse->PreviewResults;
+    my $RegistryId     = $GetLifecyclePolicyPreviewResponse->RegistryId;
     my $RepositoryName = $GetLifecyclePolicyPreviewResponse->RepositoryName;
+    my $Status         = $GetLifecyclePolicyPreviewResponse->Status;
+    my $Summary        = $GetLifecyclePolicyPreviewResponse->Summary;
 
     # Returns a L<Paws::ECR::GetLifecyclePolicyPreviewResponse> object.
 
