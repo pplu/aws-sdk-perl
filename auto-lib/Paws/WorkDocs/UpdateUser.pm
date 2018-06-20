@@ -43,8 +43,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       GrantPoweruserPrivileges => 'TRUE',                          # OPTIONAL
       Locale                   => 'en',                            # OPTIONAL
       StorageRule              => {
+        StorageAllocatedInBytes => 1,                              # OPTIONAL
         StorageType => 'UNLIMITED',    # values: UNLIMITED, QUOTA; OPTIONAL
-        StorageAllocatedInBytes => 1,  # OPTIONAL
       },    # OPTIONAL
       Surname    => 'MyUserAttributeValueType',    # OPTIONAL
       TimeZoneId => 'MyTimeZoneIdType',            # OPTIONAL

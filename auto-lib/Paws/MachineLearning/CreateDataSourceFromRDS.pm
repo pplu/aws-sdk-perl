@@ -35,27 +35,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $machinelearning->CreateDataSourceFromRDS(
       DataSourceId => 'MyEntityId',
       RDSData      => {
+        DatabaseCredentials => {
+          Password => 'MyRDSDatabasePassword',    # min: 8, max: 128
+          Username => 'MyRDSDatabaseUsername',    # min: 1, max: 128
+
+        },
         DatabaseInformation => {
           DatabaseName       => 'MyRDSDatabaseName',          # min: 1, max: 64
           InstanceIdentifier => 'MyRDSInstanceIdentifier',    # min: 1, max: 63
 
         },
-        DatabaseCredentials => {
-          Password => 'MyRDSDatabasePassword',                # min: 8, max: 128
-          Username => 'MyRDSDatabaseUsername',                # min: 1, max: 128
-
-        },
-        SecurityGroupIds => [
+        ResourceRole      => 'MyEDPResourceRole',             # min: 1, max: 64
+        S3StagingLocation => 'MyS3Url',                       # max: 2048
+        SecurityGroupIds  => [
           'MyEDPSecurityGroupId', ...                         # min: 1, max: 255
         ],
         SelectSqlQuery    => 'MyRDSSelectSqlQuery',    # min: 1, max: 16777216
-        SubnetId          => 'MyEDPSubnetId',          # min: 1, max: 255
-        S3StagingLocation => 'MyS3Url',                # max: 2048
         ServiceRole       => 'MyEDPServiceRole',       # min: 1, max: 64
-        ResourceRole      => 'MyEDPResourceRole',      # min: 1, max: 64
+        SubnetId          => 'MyEDPSubnetId',          # min: 1, max: 255
         DataRearrangement => 'MyDataRearrangement',    # OPTIONAL
-        DataSchemaUri     => 'MyS3Url',                # max: 2048
         DataSchema        => 'MyDataSchema',           # max: 131071; OPTIONAL
+        DataSchemaUri     => 'MyS3Url',                # max: 2048
       },
       RoleARN           => 'MyRoleARN',
       ComputeStatistics => 1,                          # OPTIONAL

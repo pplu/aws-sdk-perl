@@ -32,28 +32,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $elasticbeanstalk->UpdateApplicationResourceLifecycle(
       ApplicationName         => 'MyApplicationName',
       ResourceLifecycleConfig => {
+        ServiceRole            => 'MyString',    # OPTIONAL
         VersionLifecycleConfig => {
           MaxAgeRule => {
             Enabled            => 1,
-            MaxAgeInDays       => 1,    # OPTIONAL
             DeleteSourceFromS3 => 1,
+            MaxAgeInDays       => 1,             # OPTIONAL
           },    # OPTIONAL
           MaxCountRule => {
             Enabled            => 1,
-            MaxCount           => 1,    # OPTIONAL
             DeleteSourceFromS3 => 1,
+            MaxCount           => 1,    # OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
-        ServiceRole => 'MyString',    # OPTIONAL
       },
 
       );
 
     # Results:
-    my $ResourceLifecycleConfig =
-      $ApplicationResourceLifecycleDescriptionMessage->ResourceLifecycleConfig;
     my $ApplicationName =
       $ApplicationResourceLifecycleDescriptionMessage->ApplicationName;
+    my $ResourceLifecycleConfig =
+      $ApplicationResourceLifecycleDescriptionMessage->ResourceLifecycleConfig;
 
 # Returns a L<Paws::ElasticBeanstalk::ApplicationResourceLifecycleDescriptionMessage> object.
 

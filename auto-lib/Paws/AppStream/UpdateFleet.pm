@@ -63,12 +63,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InstanceType                => 'MyString',    # OPTIONAL
       MaxUserDurationInSeconds    => 1,             # OPTIONAL
       VpcConfig                   => {
-        SubnetIds => [
-          'MyString', ...                           # min: 1,
-        ],                                          # OPTIONAL
         SecurityGroupIds => [
           'MyString', ...                           # min: 1,
         ],                                          # max: 5; OPTIONAL
+        SubnetIds => [
+          'MyString', ...                           # min: 1,
+        ],                                          # OPTIONAL
       },    # OPTIONAL
     );
 

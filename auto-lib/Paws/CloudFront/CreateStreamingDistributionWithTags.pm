@@ -35,18 +35,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       StreamingDistributionConfigWithTags => {
         StreamingDistributionConfig => {
           CallerReference => 'Mystring',
+          Comment         => 'Mystring',
+          Enabled         => 1,
           S3Origin        => {
-            OriginAccessIdentity => 'Mystring',
             DomainName           => 'Mystring',
+            OriginAccessIdentity => 'Mystring',
 
           },
           TrustedSigners => {
-            Quantity => 1,
             Enabled  => 1,
+            Quantity => 1,
             Items    => [ 'Mystring', ... ],    # OPTIONAL
           },
-          Enabled => 1,
-          Comment => 'Mystring',
           Aliases => {
             Quantity => 1,
             Items    => [ 'Mystring', ... ],    # OPTIONAL
@@ -75,10 +75,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $ETag = $CreateStreamingDistributionWithTagsResult->ETag;
+    my $ETag     = $CreateStreamingDistributionWithTagsResult->ETag;
+    my $Location = $CreateStreamingDistributionWithTagsResult->Location;
     my $StreamingDistribution =
       $CreateStreamingDistributionWithTagsResult->StreamingDistribution;
-    my $Location = $CreateStreamingDistributionWithTagsResult->Location;
 
 # Returns a L<Paws::CloudFront::CreateStreamingDistributionWithTagsResult> object.
 

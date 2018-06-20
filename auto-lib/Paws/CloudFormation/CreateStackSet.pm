@@ -47,10 +47,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ExecutionRoleName  => 'MyExecutionRoleName',     # OPTIONAL
       Parameters         => [
         {
-          UsePreviousValue => 1,                       # OPTIONAL
           ParameterKey     => 'MyParameterKey',        # OPTIONAL
           ParameterValue   => 'MyParameterValue',      # OPTIONAL
           ResolvedValue    => 'MyParameterValue',      # OPTIONAL
+          UsePreviousValue => 1,                       # OPTIONAL
         },
         ...
       ],                                               # OPTIONAL

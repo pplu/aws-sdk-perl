@@ -54,17 +54,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example creates a DB cluster.
     my $CreateDBClusterResult = $rds->CreateDBCluster(
       {
-        'StorageEncrypted'            => 1,
-        'MasterUserPassword'          => 'mypassword',
-        'EngineVersion'               => '5.6.10a',
-        'Engine'                      => 'aurora',
         'AvailabilityZones'           => ['us-east-1a'],
-        'Port'                        => 3306,
-        'DBClusterParameterGroupName' => 'mydbclusterparametergroup',
+        'BackupRetentionPeriod'       => 1,
         'DBClusterIdentifier'         => 'mydbcluster',
-        'MasterUsername'              => 'myuser',
+        'DBClusterParameterGroupName' => 'mydbclusterparametergroup',
         'DatabaseName'                => 'myauroradb',
-        'BackupRetentionPeriod'       => 1
+        'Engine'                      => 'aurora',
+        'EngineVersion'               => '5.6.10a',
+        'MasterUserPassword'          => 'mypassword',
+        'MasterUsername'              => 'myuser',
+        'Port'                        => 3306,
+        'StorageEncrypted'            => true
       }
     );
 

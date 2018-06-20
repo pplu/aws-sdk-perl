@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     $sdb->PutAttributes(
       Attributes => [
         {
-          Value   => 'MyString',
           Name    => 'MyString',
+          Value   => 'MyString',
           Replace => 1,            # OPTIONAL
         },
         ...
@@ -42,9 +42,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DomainName => 'MyString',
       ItemName   => 'MyString',
       Expected   => {
-        Value  => 'MyString',
         Exists => 1,               # OPTIONAL
         Name   => 'MyString',
+        Value  => 'MyString',
       },    # OPTIONAL
     );
 

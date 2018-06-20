@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ApplicationDescription   => 'MyApplicationDescription',    # OPTIONAL
       CloudWatchLoggingOptions => [
         {
-          RoleARN      => 'MyRoleARN',         # min: 1, max: 2048
           LogStreamARN => 'MyLogStreamARN',    # min: 1, max: 2048
+          RoleARN      => 'MyRoleARN',         # min: 1, max: 2048
 
         },
         ...
@@ -49,8 +49,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           InputSchema => {
             RecordColumns => [
               {
-                SqlType => 'MyRecordColumnSqlType',    # min: 1,
                 Name    => 'MyRecordColumnName',
+                SqlType => 'MyRecordColumnSqlType',    # min: 1,
                 Mapping => 'MyRecordColumnMapping',    # OPTIONAL
               },
               ...
@@ -59,8 +59,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               RecordFormatType  => 'JSON',             # values: JSON, CSV
               MappingParameters => {
                 CSVMappingParameters => {
-                  RecordRowDelimiter    => 'MyRecordRowDelimiter',     # min: 1,
                   RecordColumnDelimiter => 'MyRecordColumnDelimiter',  # min: 1,
+                  RecordRowDelimiter    => 'MyRecordRowDelimiter',     # min: 1,
 
                 },    # OPTIONAL
                 JSONMappingParameters => {
@@ -71,26 +71,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },
             RecordEncoding => 'MyRecordEncoding',    # OPTIONAL
           },
-          NamePrefix           => 'MyInAppStreamName',    # min: 1, max: 32
-          KinesisFirehoseInput => {
-            RoleARN     => 'MyRoleARN',                   # min: 1, max: 2048
-            ResourceARN => 'MyResourceARN',               # min: 1, max: 2048
-
+          NamePrefix       => 'MyInAppStreamName',    # min: 1, max: 32
+          InputParallelism => {
+            Count => 1,    # min: 1, max: 64; OPTIONAL
           },    # OPTIONAL
           InputProcessingConfiguration => {
             InputLambdaProcessor => {
-              RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
               ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
+              RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
 
             },
 
           },    # OPTIONAL
-          InputParallelism => {
-            Count => 1,    # min: 1, max: 64; OPTIONAL
+          KinesisFirehoseInput => {
+            ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
+            RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
+
           },    # OPTIONAL
           KinesisStreamsInput => {
-            RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
             ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
+            RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
 
           },    # OPTIONAL
         },
@@ -103,18 +103,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           Name                  => 'MyInAppStreamName',    # min: 1, max: 32
           KinesisFirehoseOutput => {
-            RoleARN     => 'MyRoleARN',                    # min: 1, max: 2048
             ResourceARN => 'MyResourceARN',                # min: 1, max: 2048
+            RoleARN     => 'MyRoleARN',                    # min: 1, max: 2048
 
           },    # OPTIONAL
           KinesisStreamsOutput => {
-            RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
             ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
+            RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
 
           },    # OPTIONAL
           LambdaOutput => {
-            RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
             ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
+            RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
 
           },    # OPTIONAL
         },

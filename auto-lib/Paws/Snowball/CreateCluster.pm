@@ -42,17 +42,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # cluster does not ship until these five node jobs have been created.
     my $CreateClusterResult = $snowball->CreateCluster(
       {
-        'ShippingOption' => 'SECOND_DAY',
+        'AddressId'   => 'ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b',
+        'Description' => 'MyCluster',
+        'JobType'     => 'LOCAL_USE',
         'KmsKeyARN' =>
 'arn:aws:kms:us-east-1:123456789012:key/abcd1234-12ab-34cd-56ef-123456123456',
         'Notification' => {
-          'NotifyAll'         => 0,
           'JobStatesToNotify' => [
 
-          ]
+          ],
+          'NotifyAll' => 0
         },
-        'AddressId' => 'ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b',
-        'JobType'   => 'LOCAL_USE',
         'Resources' => {
           'S3Resources' => [
 
@@ -65,8 +65,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ]
         },
         'RoleARN' => 'arn:aws:iam::123456789012:role/snowball-import-S3-role',
-        'SnowballType' => 'EDGE',
-        'Description'  => 'MyCluster'
+        'ShippingOption' => 'SECOND_DAY',
+        'SnowballType'   => 'EDGE'
       }
     );
 

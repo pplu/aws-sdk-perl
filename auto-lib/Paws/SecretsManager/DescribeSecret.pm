@@ -33,19 +33,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $VersionIdsToStages = $DescribeSecretResponse->VersionIdsToStages;
-    my $LastRotatedDate    = $DescribeSecretResponse->LastRotatedDate;
-    my $DeletedDate        = $DescribeSecretResponse->DeletedDate;
-    my $RotationEnabled    = $DescribeSecretResponse->RotationEnabled;
-    my $KmsKeyId           = $DescribeSecretResponse->KmsKeyId;
     my $ARN                = $DescribeSecretResponse->ARN;
+    my $DeletedDate        = $DescribeSecretResponse->DeletedDate;
+    my $Description        = $DescribeSecretResponse->Description;
+    my $KmsKeyId           = $DescribeSecretResponse->KmsKeyId;
+    my $LastAccessedDate   = $DescribeSecretResponse->LastAccessedDate;
+    my $LastChangedDate    = $DescribeSecretResponse->LastChangedDate;
+    my $LastRotatedDate    = $DescribeSecretResponse->LastRotatedDate;
+    my $Name               = $DescribeSecretResponse->Name;
+    my $RotationEnabled    = $DescribeSecretResponse->RotationEnabled;
+    my $RotationLambdaARN  = $DescribeSecretResponse->RotationLambdaARN;
     my $RotationRules      = $DescribeSecretResponse->RotationRules;
     my $Tags               = $DescribeSecretResponse->Tags;
-    my $LastChangedDate    = $DescribeSecretResponse->LastChangedDate;
-    my $RotationLambdaARN  = $DescribeSecretResponse->RotationLambdaARN;
-    my $LastAccessedDate   = $DescribeSecretResponse->LastAccessedDate;
-    my $Name               = $DescribeSecretResponse->Name;
-    my $Description        = $DescribeSecretResponse->Description;
+    my $VersionIdsToStages = $DescribeSecretResponse->VersionIdsToStages;
 
     # Returns a L<Paws::SecretsManager::DescribeSecretResponse> object.
 

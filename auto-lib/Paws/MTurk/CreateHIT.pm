@@ -52,15 +52,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         PolicyName => 'MyString',
         Parameters => [
           {
-            Values     => [ 'MyString', ... ],    # OPTIONAL
             Key        => 'MyString',
             MapEntries => [
               {
+                Key    => 'MyString',
                 Values => [ 'MyString', ... ],    # OPTIONAL
-                Key => 'MyString',
               },
               ...
             ],                                    # OPTIONAL
+            Values => [ 'MyString', ... ],        # OPTIONAL
           },
           ...
         ],                                        # OPTIONAL
@@ -69,8 +69,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       HITLayoutId                => 'MyEntityId',    # OPTIONAL
       HITLayoutParameters        => [
         {
-          Value => 'MyString',
           Name  => 'MyString',
+          Value => 'MyString',
 
         },
         ...
@@ -79,15 +79,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         PolicyName => 'MyString',
         Parameters => [
           {
-            Values     => [ 'MyString', ... ],       # OPTIONAL
             Key        => 'MyString',
             MapEntries => [
               {
+                Key    => 'MyString',
                 Values => [ 'MyString', ... ],       # OPTIONAL
-                Key => 'MyString',
               },
               ...
             ],                                       # OPTIONAL
+            Values => [ 'MyString', ... ],           # OPTIONAL
           },
           ...
         ],                                           # OPTIONAL
@@ -99,7 +99,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Comparator => 'LessThan'
           , # values: LessThan, LessThanOrEqualTo, GreaterThan, GreaterThanOrEqualTo, EqualTo, NotEqualTo, Exists, DoesNotExist, In, NotIn
           QualificationTypeId => 'MyString',
-          RequiredToPreview   => 1,            # OPTIONAL
           ActionsGuarded      => 'Accept'
           , # values: Accept, PreviewAndAccept, DiscoverPreviewAndAccept; OPTIONAL
           IntegerValues => [ 1, ... ],    # OPTIONAL
@@ -110,6 +109,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },
             ...
           ],                                           # OPTIONAL
+          RequiredToPreview => 1,                      # OPTIONAL
         },
         ...
       ],                                               # OPTIONAL

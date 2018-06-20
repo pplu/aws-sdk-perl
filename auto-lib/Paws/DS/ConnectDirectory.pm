@@ -34,10 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ds = Paws->service('DS');
     my $ConnectDirectoryResult = $ds->ConnectDirectory(
       ConnectSettings => {
+        CustomerDnsIps   => [ 'MyIpAddr', ... ],
+        CustomerUserName => 'MyUserName',            # min: 1,
         SubnetIds        => [ 'MySubnetId', ... ],
         VpcId            => 'MyVpcId',
-        CustomerUserName => 'MyUserName',            # min: 1,
-        CustomerDnsIps   => [ 'MyIpAddr', ... ],
 
       },
       Name        => 'MyDirectoryName',

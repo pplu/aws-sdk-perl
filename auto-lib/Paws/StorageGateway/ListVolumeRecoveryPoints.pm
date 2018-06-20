@@ -39,9 +39,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $GatewayARN = $ListVolumeRecoveryPointsOutput->GatewayARN;
     my $VolumeRecoveryPointInfos =
       $ListVolumeRecoveryPointsOutput->VolumeRecoveryPointInfos;
-    my $GatewayARN = $ListVolumeRecoveryPointsOutput->GatewayARN;
 
     # Returns a L<Paws::StorageGateway::ListVolumeRecoveryPointsOutput> object.
 

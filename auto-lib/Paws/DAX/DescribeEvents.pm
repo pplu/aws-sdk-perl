@@ -44,8 +44,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken = $DescribeEventsResponse->NextToken;
     my $Events    = $DescribeEventsResponse->Events;
+    my $NextToken = $DescribeEventsResponse->NextToken;
 
     # Returns a L<Paws::DAX::DescribeEventsResponse> object.
 

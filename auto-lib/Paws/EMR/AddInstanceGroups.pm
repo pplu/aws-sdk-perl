@@ -31,63 +31,62 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $AddInstanceGroupsOutput = $elasticmapreduce->AddInstanceGroups(
       InstanceGroups => [
         {
-          InstanceType      => 'MyInstanceType',    # min: 1, max: 256
-          InstanceRole      => 'MASTER',            # values: MASTER, CORE, TASK
           InstanceCount     => 1,
+          InstanceRole      => 'MASTER',            # values: MASTER, CORE, TASK
+          InstanceType      => 'MyInstanceType',    # min: 1, max: 256
           AutoScalingPolicy => {
-            Rules => [
-              {
-                Trigger => {
-                  CloudWatchAlarmDefinition => {
-                    Threshold          => 1,
-                    MetricName         => 'MyString',
-                    Period             => 1,
-                    ComparisonOperator => 'GREATER_THAN_OR_EQUAL'
-                    , # values: GREATER_THAN_OR_EQUAL, GREATER_THAN, LESS_THAN, LESS_THAN_OR_EQUAL
-                    EvaluationPeriods => 1,
-                    Statistic         => 'SAMPLE_COUNT'
-                    , # values: SAMPLE_COUNT, AVERAGE, SUM, MINIMUM, MAXIMUM; OPTIONAL
-                    Dimensions => [
-                      {
-                        Value => 'MyString',
-                        Key   => 'MyString',
-                      },
-                      ...
-                    ],    # OPTIONAL
-                    Namespace => 'MyString',
-                    Unit      => 'NONE'
-                    , # values: NONE, SECONDS, MICRO_SECONDS, MILLI_SECONDS, BYTES, KILO_BYTES, MEGA_BYTES, GIGA_BYTES, TERA_BYTES, BITS, KILO_BITS, MEGA_BITS, GIGA_BITS, TERA_BITS, PERCENT, COUNT, BYTES_PER_SECOND, KILO_BYTES_PER_SECOND, MEGA_BYTES_PER_SECOND, GIGA_BYTES_PER_SECOND, TERA_BYTES_PER_SECOND, BITS_PER_SECOND, KILO_BITS_PER_SECOND, MEGA_BITS_PER_SECOND, GIGA_BITS_PER_SECOND, TERA_BITS_PER_SECOND, COUNT_PER_SECOND; OPTIONAL
-                  },
-
-                },
-                Action => {
-                  SimpleScalingPolicyConfiguration => {
-                    ScalingAdjustment => 1,
-                    CoolDown          => 1,
-                    AdjustmentType    => 'CHANGE_IN_CAPACITY'
-                    , # values: CHANGE_IN_CAPACITY, PERCENT_CHANGE_IN_CAPACITY, EXACT_CAPACITY; OPTIONAL
-                  },
-                  Market => 'ON_DEMAND',    # values: ON_DEMAND, SPOT; OPTIONAL
-                },
-                Name        => 'MyString',
-                Description => 'MyString',
-              },
-              ...
-            ],
             Constraints => {
               MaxCapacity => 1,
               MinCapacity => 1,
 
             },
+            Rules => [
+              {
+                Action => {
+                  SimpleScalingPolicyConfiguration => {
+                    ScalingAdjustment => 1,
+                    AdjustmentType    => 'CHANGE_IN_CAPACITY'
+                    , # values: CHANGE_IN_CAPACITY, PERCENT_CHANGE_IN_CAPACITY, EXACT_CAPACITY; OPTIONAL
+                    CoolDown => 1,
+                  },
+                  Market => 'ON_DEMAND',    # values: ON_DEMAND, SPOT; OPTIONAL
+                },
+                Name    => 'MyString',
+                Trigger => {
+                  CloudWatchAlarmDefinition => {
+                    ComparisonOperator => 'GREATER_THAN_OR_EQUAL'
+                    , # values: GREATER_THAN_OR_EQUAL, GREATER_THAN, LESS_THAN, LESS_THAN_OR_EQUAL
+                    MetricName => 'MyString',
+                    Period     => 1,
+                    Threshold  => 1,
+                    Dimensions => [
+                      {
+                        Key   => 'MyString',
+                        Value => 'MyString',
+                      },
+                      ...
+                    ],    # OPTIONAL
+                    EvaluationPeriods => 1,
+                    Namespace         => 'MyString',
+                    Statistic         => 'SAMPLE_COUNT'
+                    , # values: SAMPLE_COUNT, AVERAGE, SUM, MINIMUM, MAXIMUM; OPTIONAL
+                    Unit => 'NONE'
+                    , # values: NONE, SECONDS, MICRO_SECONDS, MILLI_SECONDS, BYTES, KILO_BYTES, MEGA_BYTES, GIGA_BYTES, TERA_BYTES, BITS, KILO_BITS, MEGA_BITS, GIGA_BITS, TERA_BITS, PERCENT, COUNT, BYTES_PER_SECOND, KILO_BYTES_PER_SECOND, MEGA_BYTES_PER_SECOND, GIGA_BYTES_PER_SECOND, TERA_BYTES_PER_SECOND, BITS_PER_SECOND, KILO_BITS_PER_SECOND, MEGA_BITS_PER_SECOND, GIGA_BITS_PER_SECOND, TERA_BITS_PER_SECOND, COUNT_PER_SECOND; OPTIONAL
+                  },
+
+                },
+                Description => 'MyString',
+              },
+              ...
+            ],
 
           },    # OPTIONAL
-          Market => 'ON_DEMAND',    # values: ON_DEMAND, SPOT; OPTIONAL
           BidPrice       => 'MyXmlStringMaxLen256',    # max: 256; OPTIONAL
           Configurations => [
             {
-              Properties     => { 'MyString' => 'MyString', },    # OPTIONAL
               Classification => 'MyString',
               Configurations => <ConfigurationList>,
+              Properties     => { 'MyString' => 'MyString', },    # OPTIONAL
             },
             ...
           ],                                                      # OPTIONAL
@@ -95,8 +94,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             EbsBlockDeviceConfigs => [
               {
                 VolumeSpecification => {
-                  VolumeType => 'MyString',
                   SizeInGB   => 1,
+                  VolumeType => 'MyString',
                   Iops       => 1,
                 },
                 VolumesPerInstance => 1,
@@ -105,7 +104,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ],                                                    # OPTIONAL
             EbsOptimized => 1,                                    # OPTIONAL
           },    # OPTIONAL
-          Name => 'MyXmlStringMaxLen256',    # max: 256; OPTIONAL
+          Market => 'ON_DEMAND',             # values: ON_DEMAND, SPOT; OPTIONAL
+          Name   => 'MyXmlStringMaxLen256',  # max: 256; OPTIONAL
         },
         ...
       ],

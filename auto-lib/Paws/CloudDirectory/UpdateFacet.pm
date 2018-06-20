@@ -39,28 +39,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Action =>
             'CREATE_OR_UPDATE',    # values: CREATE_OR_UPDATE, DELETE; OPTIONAL
           Attribute => {
-            Name             => 'MyAttributeName',    # min: 1, max: 64
-            RequiredBehavior => 'REQUIRED_ALWAYS'
-            ,    # values: REQUIRED_ALWAYS, NOT_REQUIRED; OPTIONAL
+            Name                => 'MyAttributeName',    # min: 1, max: 64
             AttributeDefinition => {
               Type =>
                 'STRING',    # values: STRING, BINARY, BOOLEAN, NUMBER, DATETIME
-              Rules => {
+              DefaultValue => {
+                BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
+                BooleanValue  => 1,                             # OPTIONAL
+                DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
+                NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
+                StringValue   => 'MyStringAttributeValue',      # OPTIONAL
+              },    # OPTIONAL
+              IsImmutable => 1,    # OPTIONAL
+              Rules       => {
                 'MyRuleKey' => {
                   Parameters =>
                     { 'MyRuleParameterKey' => 'MyRuleParameterValue', }
-                  ,          # OPTIONAL
+                  ,                # OPTIONAL
                   Type => 'BINARY_LENGTH'
                   , # values: BINARY_LENGTH, NUMBER_COMPARISON, STRING_FROM_SET, STRING_LENGTH; OPTIONAL
                 },    # key: min: 1, max: 64
-              },    # OPTIONAL
-              IsImmutable  => 1,    # OPTIONAL
-              DefaultValue => {
-                NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
-                BooleanValue  => 1,                             # OPTIONAL
-                StringValue   => 'MyStringAttributeValue',      # OPTIONAL
-                DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
-                BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
               },    # OPTIONAL
             },    # OPTIONAL
             AttributeReference => {
@@ -68,6 +66,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               TargetFacetName     => 'MyFacetName',        # min: 1, max: 64
 
             },    # OPTIONAL
+            RequiredBehavior => 'REQUIRED_ALWAYS'
+            ,     # values: REQUIRED_ALWAYS, NOT_REQUIRED; OPTIONAL
           },    # OPTIONAL
         },
         ...

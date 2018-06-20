@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # its outside interface.
     my $CreateCustomerGatewayResult = $ec2->CreateCustomerGateway(
       {
-        'Type'     => 'ipsec.1',
+        'BgpAsn'   => 65534,
         'PublicIp' => '12.1.2.3',
-        'BgpAsn'   => 65534
+        'Type'     => 'ipsec.1'
       }
     );
 

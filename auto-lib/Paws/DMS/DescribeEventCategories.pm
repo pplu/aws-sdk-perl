@@ -31,8 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeEventCategoriesResponse = $dms->DescribeEventCategories(
       Filters => [
         {
-          Values => [ 'MyString', ... ],
           Name   => 'MyString',
+          Values => [ 'MyString', ... ],
 
         },
         ...

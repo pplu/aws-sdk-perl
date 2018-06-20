@@ -42,8 +42,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $Principals = $DescribeResourcePermissionsResponse->Principals;
     my $Marker     = $DescribeResourcePermissionsResponse->Marker;
+    my $Principals = $DescribeResourcePermissionsResponse->Principals;
 
     # Returns a L<Paws::WorkDocs::DescribeResourcePermissionsResponse> object.
 

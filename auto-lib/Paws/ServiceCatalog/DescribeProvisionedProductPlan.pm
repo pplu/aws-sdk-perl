@@ -40,10 +40,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $NextPageToken = $DescribeProvisionedProductPlanOutput->NextPageToken;
-    my $ResourceChanges =
-      $DescribeProvisionedProductPlanOutput->ResourceChanges;
     my $ProvisionedProductPlanDetails =
       $DescribeProvisionedProductPlanOutput->ProvisionedProductPlanDetails;
+    my $ResourceChanges =
+      $DescribeProvisionedProductPlanOutput->ResourceChanges;
 
 # Returns a L<Paws::ServiceCatalog::DescribeProvisionedProductPlanOutput> object.
 

@@ -46,8 +46,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'Filters' => [
 
           {
-            'Values' => ['vpc'],
-            'Name'   => 'domain'
+            'Name'   => 'domain',
+            'Values' => ['vpc']
           }
         ]
       }
@@ -65,8 +65,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'Filters' => [
 
           {
-            'Values' => ['standard'],
-            'Name'   => 'domain'
+            'Name'   => 'domain',
+            'Values' => ['standard']
           }
         ]
       }

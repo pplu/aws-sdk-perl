@@ -33,9 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $PutActionRevisionOutput = $codepipeline->PutActionRevision(
       ActionName     => 'MyActionName',
       ActionRevision => {
-        revisionId       => 'MyRevision',                    # min: 1, max: 1500
-        revisionChangeId => 'MyRevisionChangeIdentifier',    # min: 1, max: 100
         created          => '1970-01-01T01:00:00',
+        revisionChangeId => 'MyRevisionChangeIdentifier',    # min: 1, max: 100
+        revisionId       => 'MyRevision',                    # min: 1, max: 1500
 
       },
       PipelineName => 'MyPipelineName',

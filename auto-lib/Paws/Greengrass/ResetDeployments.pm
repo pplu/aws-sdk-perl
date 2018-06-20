@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $DeploymentId  = $ResetDeploymentsResponse->DeploymentId;
     my $DeploymentArn = $ResetDeploymentsResponse->DeploymentArn;
+    my $DeploymentId  = $ResetDeploymentsResponse->DeploymentId;
 
     # Returns a L<Paws::Greengrass::ResetDeploymentsResponse> object.
 

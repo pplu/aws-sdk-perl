@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # and secret access key) for the IAM user named Bob.
     $iam->UpdateAccessKey(
       {
-        'UserName'    => 'Bob',
         'AccessKeyId' => 'AKIAIOSFODNN7EXAMPLE',
-        'Status'      => 'Inactive'
+        'Status'      => 'Inactive',
+        'UserName'    => 'Bob'
       }
     );
 

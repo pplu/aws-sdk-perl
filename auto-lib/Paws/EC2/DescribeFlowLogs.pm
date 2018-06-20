@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeFlowLogsResult = $ec2->DescribeFlowLogs(
       Filter => [
         {
+          Name   => 'MyString',
           Values => [ 'MyString', ... ],    # OPTIONAL
-          Name => 'MyString',
         },
         ...
       ],                                    # OPTIONAL
@@ -44,8 +44,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken = $DescribeFlowLogsResult->NextToken;
     my $FlowLogs  = $DescribeFlowLogsResult->FlowLogs;
+    my $NextToken = $DescribeFlowLogsResult->NextToken;
 
     # Returns a L<Paws::EC2::DescribeFlowLogsResult> object.
 

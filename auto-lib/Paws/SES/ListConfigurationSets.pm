@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken         = $ListConfigurationSetsResponse->NextToken;
     my $ConfigurationSets = $ListConfigurationSetsResponse->ConfigurationSets;
+    my $NextToken         = $ListConfigurationSetsResponse->NextToken;
 
     # Returns a L<Paws::SES::ListConfigurationSetsResponse> object.
 

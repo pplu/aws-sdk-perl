@@ -39,16 +39,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Query      => {
         selectors => [
           {
-            operator => {
+            fieldName => 'Mystring',    # max: 1024
+            operator  => {
+              type   => 'EQ',    # values: EQ, REF_EQ, LE, GE, BETWEEN; OPTIONAL
               values => [
                 'Mystring', ...    # max: 1024
               ],                   # OPTIONAL
-              type => 'EQ',    # values: EQ, REF_EQ, LE, GE, BETWEEN; OPTIONAL
             },    # OPTIONAL
-            fieldName => 'Mystring',    # max: 1024
           },
           ...
-        ],                              # OPTIONAL
+        ],        # OPTIONAL
       },    # OPTIONAL
     );
 

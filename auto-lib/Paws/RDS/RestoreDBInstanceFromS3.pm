@@ -103,8 +103,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       PreferredMaintenanceWindow      => 'MyString',             # OPTIONAL
       ProcessorFeatures               => [
         {
-          Value => 'MyString',
           Name  => 'MyString',
+          Value => 'MyString',
         },
         ...
       ],                                                         # OPTIONAL

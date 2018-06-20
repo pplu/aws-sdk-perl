@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $InstanceAttribute = $ec2->DescribeInstanceAttribute(
       {
-        'InstanceId' => 'i-1234567890abcdef0',
-        'Attribute'  => 'instanceType'
+        'Attribute'  => 'instanceType',
+        'InstanceId' => 'i-1234567890abcdef0'
       }
     );
 
@@ -50,8 +50,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $InstanceAttribute = $ec2->DescribeInstanceAttribute(
       {
-        'InstanceId' => 'i-1234567890abcdef0',
-        'Attribute'  => 'disableApiTermination'
+        'Attribute'  => 'disableApiTermination',
+        'InstanceId' => 'i-1234567890abcdef0'
       }
     );
 
@@ -66,14 +66,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $InstanceAttribute = $ec2->DescribeInstanceAttribute(
       {
-        'InstanceId' => 'i-1234567890abcdef0',
-        'Attribute'  => 'blockDeviceMapping'
+        'Attribute'  => 'blockDeviceMapping',
+        'InstanceId' => 'i-1234567890abcdef0'
       }
     );
 
     # Results:
-    my $InstanceId          = $InstanceAttribute->InstanceId;
     my $BlockDeviceMappings = $InstanceAttribute->BlockDeviceMappings;
+    my $InstanceId          = $InstanceAttribute->InstanceId;
 
     # Returns a L<Paws::EC2::InstanceAttribute> object.
 

@@ -38,27 +38,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $WindowTargetId =
-      $GetMaintenanceWindowExecutionTaskInvocationResult->WindowTargetId;
+    my $EndTime = $GetMaintenanceWindowExecutionTaskInvocationResult->EndTime;
+    my $ExecutionId =
+      $GetMaintenanceWindowExecutionTaskInvocationResult->ExecutionId;
+    my $InvocationId =
+      $GetMaintenanceWindowExecutionTaskInvocationResult->InvocationId;
+    my $OwnerInformation =
+      $GetMaintenanceWindowExecutionTaskInvocationResult->OwnerInformation;
+    my $Parameters =
+      $GetMaintenanceWindowExecutionTaskInvocationResult->Parameters;
+    my $StartTime =
+      $GetMaintenanceWindowExecutionTaskInvocationResult->StartTime;
     my $Status = $GetMaintenanceWindowExecutionTaskInvocationResult->Status;
     my $StatusDetails =
       $GetMaintenanceWindowExecutionTaskInvocationResult->StatusDetails;
-    my $TaskType = $GetMaintenanceWindowExecutionTaskInvocationResult->TaskType;
-    my $InvocationId =
-      $GetMaintenanceWindowExecutionTaskInvocationResult->InvocationId;
-    my $Parameters =
-      $GetMaintenanceWindowExecutionTaskInvocationResult->Parameters;
-    my $ExecutionId =
-      $GetMaintenanceWindowExecutionTaskInvocationResult->ExecutionId;
     my $TaskExecutionId =
       $GetMaintenanceWindowExecutionTaskInvocationResult->TaskExecutionId;
+    my $TaskType = $GetMaintenanceWindowExecutionTaskInvocationResult->TaskType;
     my $WindowExecutionId =
       $GetMaintenanceWindowExecutionTaskInvocationResult->WindowExecutionId;
-    my $EndTime = $GetMaintenanceWindowExecutionTaskInvocationResult->EndTime;
-    my $StartTime =
-      $GetMaintenanceWindowExecutionTaskInvocationResult->StartTime;
-    my $OwnerInformation =
-      $GetMaintenanceWindowExecutionTaskInvocationResult->OwnerInformation;
+    my $WindowTargetId =
+      $GetMaintenanceWindowExecutionTaskInvocationResult->WindowTargetId;
 
 # Returns a L<Paws::SSM::GetMaintenanceWindowExecutionTaskInvocationResult> object.
 

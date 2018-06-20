@@ -46,8 +46,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $GrantToken = $CreateGrantResponse->GrantToken;
     my $GrantId    = $CreateGrantResponse->GrantId;
+    my $GrantToken = $CreateGrantResponse->GrantToken;
 
     # Returns a L<Paws::KMS::CreateGrantResponse> object.
 

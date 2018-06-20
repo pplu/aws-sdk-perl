@@ -100,14 +100,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Expiration           = $CopyObjectOutput->Expiration;
-    my $SSEKMSKeyId          = $CopyObjectOutput->SSEKMSKeyId;
-    my $RequestCharged       = $CopyObjectOutput->RequestCharged;
     my $CopyObjectResult     = $CopyObjectOutput->CopyObjectResult;
-    my $ServerSideEncryption = $CopyObjectOutput->ServerSideEncryption;
+    my $CopySourceVersionId  = $CopyObjectOutput->CopySourceVersionId;
+    my $Expiration           = $CopyObjectOutput->Expiration;
+    my $RequestCharged       = $CopyObjectOutput->RequestCharged;
     my $SSECustomerAlgorithm = $CopyObjectOutput->SSECustomerAlgorithm;
     my $SSECustomerKeyMD5    = $CopyObjectOutput->SSECustomerKeyMD5;
-    my $CopySourceVersionId  = $CopyObjectOutput->CopySourceVersionId;
+    my $SSEKMSKeyId          = $CopyObjectOutput->SSEKMSKeyId;
+    my $ServerSideEncryption = $CopyObjectOutput->ServerSideEncryption;
     my $VersionId            = $CopyObjectOutput->VersionId;
 
     # Returns a L<Paws::S3::CopyObjectOutput> object.

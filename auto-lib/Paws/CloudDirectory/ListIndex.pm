@@ -45,8 +45,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           AttributeKey => {
             FacetName => 'MyFacetName',             # min: 1, max: 64
-            SchemaArn => 'MyArn',
             Name      => 'MyAttributeName',         # min: 1, max: 64
+            SchemaArn => 'MyArn',
 
           },    # OPTIONAL
           Range => {
@@ -55,18 +55,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             StartMode => 'FIRST'
             , # values: FIRST, LAST, LAST_BEFORE_MISSING_VALUES, INCLUSIVE, EXCLUSIVE
             EndValue => {
-              NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
-              BooleanValue  => 1,                             # OPTIONAL
-              StringValue   => 'MyStringAttributeValue',      # OPTIONAL
-              DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
               BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
+              BooleanValue  => 1,                             # OPTIONAL
+              DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
+              NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
+              StringValue   => 'MyStringAttributeValue',      # OPTIONAL
             },    # OPTIONAL
             StartValue => {
-              NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
-              BooleanValue  => 1,                             # OPTIONAL
-              StringValue   => 'MyStringAttributeValue',      # OPTIONAL
-              DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
               BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
+              BooleanValue  => 1,                             # OPTIONAL
+              DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
+              NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
+              StringValue   => 'MyStringAttributeValue',      # OPTIONAL
             },    # OPTIONAL
           },    # OPTIONAL
         },
@@ -75,8 +75,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken        = $ListIndexResponse->NextToken;
     my $IndexAttachments = $ListIndexResponse->IndexAttachments;
+    my $NextToken        = $ListIndexResponse->NextToken;
 
     # Returns a L<Paws::CloudDirectory::ListIndexResponse> object.
 

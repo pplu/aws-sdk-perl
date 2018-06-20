@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example purchases a specific device slot offering.
     my $PurchaseOfferingResult = $devicefarm->PurchaseOffering(
       {
-        'Quantity'   => 1,
-        'OfferingId' => 'D68B3C05-1BA6-4360-BC69-12345EXAMPLE'
+        'OfferingId' => 'D68B3C05-1BA6-4360-BC69-12345EXAMPLE',
+        'Quantity'   => 1
       }
     );
 

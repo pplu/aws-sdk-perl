@@ -45,12 +45,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ResponseCode = $TestDNSAnswerResponse->ResponseCode;
-    my $RecordName   = $TestDNSAnswerResponse->RecordName;
-    my $RecordType   = $TestDNSAnswerResponse->RecordType;
     my $Nameserver   = $TestDNSAnswerResponse->Nameserver;
     my $Protocol     = $TestDNSAnswerResponse->Protocol;
     my $RecordData   = $TestDNSAnswerResponse->RecordData;
+    my $RecordName   = $TestDNSAnswerResponse->RecordName;
+    my $RecordType   = $TestDNSAnswerResponse->RecordType;
+    my $ResponseCode = $TestDNSAnswerResponse->ResponseCode;
 
     # Returns a L<Paws::Route53::TestDNSAnswerResponse> object.
 

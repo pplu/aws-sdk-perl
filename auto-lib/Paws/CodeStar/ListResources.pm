@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Resources = $ListResourcesResult->Resources;
     my $NextToken = $ListResourcesResult->NextToken;
+    my $Resources = $ListResourcesResult->Resources;
 
     # Returns a L<Paws::CodeStar::ListResourcesResult> object.
 

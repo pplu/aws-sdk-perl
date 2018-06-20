@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $UserPoolClients = $ListUserPoolClientsResponse->UserPoolClients;
     my $NextToken       = $ListUserPoolClientsResponse->NextToken;
+    my $UserPoolClients = $ListUserPoolClientsResponse->UserPoolClients;
 
     # Returns a L<Paws::CognitoIdp::ListUserPoolClientsResponse> object.
 

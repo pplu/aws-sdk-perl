@@ -41,9 +41,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $Attachment = $DescribeNetworkInterfaceAttributeResult->Attachment;
     my $NetworkInterfaceId =
       $DescribeNetworkInterfaceAttributeResult->NetworkInterfaceId;
-    my $Attachment = $DescribeNetworkInterfaceAttributeResult->Attachment;
 
     # Returns a L<Paws::EC2::DescribeNetworkInterfaceAttributeResult> object.
     # To describe the description attribute of a network interface
@@ -58,9 +58,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $Description = $DescribeNetworkInterfaceAttributeResult->Description;
     my $NetworkInterfaceId =
       $DescribeNetworkInterfaceAttributeResult->NetworkInterfaceId;
-    my $Description = $DescribeNetworkInterfaceAttributeResult->Description;
 
     # Returns a L<Paws::EC2::DescribeNetworkInterfaceAttributeResult> object.
     # To describe the groupSet attribute of a network interface
@@ -92,10 +92,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $SourceDestCheck =
-      $DescribeNetworkInterfaceAttributeResult->SourceDestCheck;
     my $NetworkInterfaceId =
       $DescribeNetworkInterfaceAttributeResult->NetworkInterfaceId;
+    my $SourceDestCheck =
+      $DescribeNetworkInterfaceAttributeResult->SourceDestCheck;
 
     # Returns a L<Paws::EC2::DescribeNetworkInterfaceAttributeResult> object.
 

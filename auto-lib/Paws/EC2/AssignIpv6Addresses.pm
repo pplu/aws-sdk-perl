@@ -36,9 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NetworkInterfaceId = $AssignIpv6AddressesResult->NetworkInterfaceId;
     my $AssignedIpv6Addresses =
       $AssignIpv6AddressesResult->AssignedIpv6Addresses;
+    my $NetworkInterfaceId = $AssignIpv6AddressesResult->NetworkInterfaceId;
 
     # Returns a L<Paws::EC2::AssignIpv6AddressesResult> object.
 

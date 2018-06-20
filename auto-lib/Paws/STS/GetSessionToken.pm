@@ -32,8 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To get temporary credentials for an IAM user or an AWS account
     my $GetSessionTokenResponse = $sts->GetSessionToken(
       {
-        'SerialNumber'    => 'YourMFASerialNumber',
         'DurationSeconds' => 3600,
+        'SerialNumber'    => 'YourMFASerialNumber',
         'TokenCode'       => 123456
       }
     );

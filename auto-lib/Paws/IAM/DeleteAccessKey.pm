@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # access key) assigned to the IAM user named Bob.
     $iam->DeleteAccessKey(
       {
-        'UserName'    => 'Bob',
-        'AccessKeyId' => 'AKIDPMS9RO4H3FEXAMPLE'
+        'AccessKeyId' => 'AKIDPMS9RO4H3FEXAMPLE',
+        'UserName'    => 'Bob'
       }
     );
 

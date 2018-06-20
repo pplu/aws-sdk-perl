@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ProductCode        = $ResolveCustomerResult->ProductCode;
     my $CustomerIdentifier = $ResolveCustomerResult->CustomerIdentifier;
+    my $ProductCode        = $ResolveCustomerResult->ProductCode;
 
     # Returns a L<Paws::MarketplaceMetering::ResolveCustomerResult> object.
 

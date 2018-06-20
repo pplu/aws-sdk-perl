@@ -33,15 +33,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # parameter group.
     my $DBParameterGroupNameMessage = $rds->ModifyDBParameterGroup(
       {
-        'Parameters' => [
+        'DBParameterGroupName' => 'mymysqlparametergroup',
+        'Parameters'           => [
 
           {
-            'ParameterName'  => 'time_zone',
             'ApplyMethod'    => 'immediate',
+            'ParameterName'  => 'time_zone',
             'ParameterValue' => 'America/Phoenix'
           }
-        ],
-        'DBParameterGroupName' => 'mymysqlparametergroup'
+        ]
       }
     );
 

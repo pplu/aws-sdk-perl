@@ -29,32 +29,32 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $fms = Paws->service('FMS');
     my $PutPolicyResponse = $fms->PutPolicy(
       Policy => {
+        ExcludeResourceTags       => 1,
+        PolicyName                => 'MyResourceName',    # min: 1, max: 128
         RemediationEnabled        => 1,
         ResourceType              => 'MyResourceType',    # min: 1, max: 128
-        PolicyName                => 'MyResourceName',    # min: 1, max: 128
         SecurityServicePolicyData => {
           Type => 'WAF',                                  # values: WAF
           ManagedServiceData =>
             'MyManagedServiceData',    # min: 1, max: 1024; OPTIONAL
         },
-        ExcludeResourceTags => 1,
-        PolicyId            => 'MyPolicyId',    # min: 36, max: 36; OPTIONAL
+        PolicyId => 'MyPolicyId',      # min: 36, max: 36; OPTIONAL
         PolicyUpdateToken =>
-          'MyPolicyUpdateToken',                # min: 1, max: 1024; OPTIONAL
+          'MyPolicyUpdateToken',       # min: 1, max: 1024; OPTIONAL
         ResourceTags => [
           {
-            Key   => 'MyTagKey',                # min: 1, max: 128
-            Value => 'MyTagValue',              # max: 256; OPTIONAL
+            Key   => 'MyTagKey',       # min: 1, max: 128
+            Value => 'MyTagValue',     # max: 256; OPTIONAL
           },
           ...
-        ],                                      # max: 8; OPTIONAL
+        ],                             # max: 8; OPTIONAL
       },
 
     );
 
     # Results:
-    my $PolicyArn = $PutPolicyResponse->PolicyArn;
     my $Policy    = $PutPolicyResponse->Policy;
+    my $PolicyArn = $PutPolicyResponse->PolicyArn;
 
     # Returns a L<Paws::FMS::PutPolicyResponse> object.
 

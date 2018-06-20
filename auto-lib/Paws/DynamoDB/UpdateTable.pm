@@ -36,11 +36,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # table.
     my $UpdateTableOutput = $dynamodb->UpdateTable(
       {
-        'TableName'             => 'MusicCollection',
         'ProvisionedThroughput' => {
           'ReadCapacityUnits'  => 10,
           'WriteCapacityUnits' => 10
-        }
+        },
+        'TableName' => 'MusicCollection'
       }
     );
 

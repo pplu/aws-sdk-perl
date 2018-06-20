@@ -43,14 +43,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $StatusCode   = $GlacierJobDescription->StatusCode;
-    my $Completed    = $GlacierJobDescription->Completed;
-    my $VaultARN     = $GlacierJobDescription->VaultARN;
-    my $CreationDate = $GlacierJobDescription->CreationDate;
     my $Action       = $GlacierJobDescription->Action;
+    my $Completed    = $GlacierJobDescription->Completed;
+    my $CreationDate = $GlacierJobDescription->CreationDate;
     my $InventoryRetrievalParameters =
       $GlacierJobDescription->InventoryRetrievalParameters;
-    my $JobId = $GlacierJobDescription->JobId;
+    my $JobId      = $GlacierJobDescription->JobId;
+    my $StatusCode = $GlacierJobDescription->StatusCode;
+    my $VaultARN   = $GlacierJobDescription->VaultARN;
 
     # Returns a L<Paws::Glacier::GlacierJobDescription> object.
 

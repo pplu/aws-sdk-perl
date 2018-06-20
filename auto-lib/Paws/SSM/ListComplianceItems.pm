@@ -34,27 +34,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ListComplianceItemsResult = $ssm->ListComplianceItems(
       Filters => [
         {
+          Key  => 'MyComplianceStringFilterKey',    # min: 1, max: 200; OPTIONAL
           Type => 'EQUAL'
           , # values: EQUAL, NOT_EQUAL, BEGIN_WITH, LESS_THAN, GREATER_THAN; OPTIONAL
           Values => [ 'MyComplianceFilterValue', ... ]
           ,    # min: 1, max: 20; OPTIONAL
-          Key => 'MyComplianceStringFilterKey',    # min: 1, max: 200; OPTIONAL
         },
         ...
-      ],                                           # OPTIONAL
-      MaxResults  => 1,                            # OPTIONAL
-      NextToken   => 'MyNextToken',                # OPTIONAL
+      ],       # OPTIONAL
+      MaxResults  => 1,                # OPTIONAL
+      NextToken   => 'MyNextToken',    # OPTIONAL
       ResourceIds => [
-        'MyComplianceResourceId', ...              # min: 1, max: 100
-      ],                                           # OPTIONAL
+        'MyComplianceResourceId', ...    # min: 1, max: 100
+      ],                                 # OPTIONAL
       ResourceTypes => [
-        'MyComplianceResourceType', ...            # min: 1, max: 50
-      ],                                           # OPTIONAL
+        'MyComplianceResourceType', ...    # min: 1, max: 50
+      ],                                   # OPTIONAL
     );
 
     # Results:
-    my $NextToken       = $ListComplianceItemsResult->NextToken;
     my $ComplianceItems = $ListComplianceItemsResult->ComplianceItems;
+    my $NextToken       = $ListComplianceItemsResult->NextToken;
 
     # Returns a L<Paws::SSM::ListComplianceItemsResult> object.
 

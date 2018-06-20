@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ServerName       => 'MyServerName',
       EngineAttributes => [
         {
-          Value => 'MyEngineAttributeValue',    # OPTIONAL
           Name  => 'MyEngineAttributeName',     # OPTIONAL
+          Value => 'MyEngineAttributeValue',    # OPTIONAL
         },
         ...
       ],                                        # OPTIONAL

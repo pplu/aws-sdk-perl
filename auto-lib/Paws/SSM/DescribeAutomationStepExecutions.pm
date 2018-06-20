@@ -36,18 +36,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AutomationExecutionId => 'MyAutomationExecutionId',
       Filters               => [
         {
+          Key => 'StartTimeBefore'
+          , # values: StartTimeBefore, StartTimeAfter, StepExecutionStatus, StepExecutionId, StepName, Action
           Values => [
             'MyStepExecutionFilterValue', ...    # min: 1, max: 150
           ],                                     # min: 1, max: 10
-          Key => 'StartTimeBefore'
-          , # values: StartTimeBefore, StartTimeAfter, StepExecutionStatus, StepExecutionId, StepName, Action
 
         },
         ...
-      ],    # OPTIONAL
-      MaxResults   => 1,                # OPTIONAL
-      NextToken    => 'MyNextToken',    # OPTIONAL
-      ReverseOrder => 1,                # OPTIONAL
+      ],                                         # OPTIONAL
+      MaxResults   => 1,                         # OPTIONAL
+      NextToken    => 'MyNextToken',             # OPTIONAL
+      ReverseOrder => 1,                         # OPTIONAL
       );
 
     # Results:

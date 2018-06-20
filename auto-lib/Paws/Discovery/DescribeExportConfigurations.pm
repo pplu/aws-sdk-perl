@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $NextToken   = $DescribeExportConfigurationsResponse->NextToken;
     my $ExportsInfo = $DescribeExportConfigurationsResponse->ExportsInfo;
+    my $NextToken   = $DescribeExportConfigurationsResponse->NextToken;
 
     # Returns a L<Paws::Discovery::DescribeExportConfigurationsResponse> object.
 

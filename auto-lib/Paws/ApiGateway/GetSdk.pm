@@ -39,9 +39,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ContentType        = $SdkResponse->ContentType;
-    my $ContentDisposition = $SdkResponse->ContentDisposition;
     my $Body               = $SdkResponse->Body;
+    my $ContentDisposition = $SdkResponse->ContentDisposition;
+    my $ContentType        = $SdkResponse->ContentType;
 
     # Returns a L<Paws::ApiGateway::SdkResponse> object.
 

@@ -31,8 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $PutRecordsOutput = $kinesis->PutRecords(
       Records => [
         {
-          PartitionKey    => 'MyPartitionKey',    # min: 1, max: 256
           Data            => 'BlobData',          # max: 1048576
+          PartitionKey    => 'MyPartitionKey',    # min: 1, max: 256
           ExplicitHashKey => 'MyHashKey',         # OPTIONAL
         },
         ...
@@ -43,8 +43,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $EncryptionType    = $PutRecordsOutput->EncryptionType;
-    my $Records           = $PutRecordsOutput->Records;
     my $FailedRecordCount = $PutRecordsOutput->FailedRecordCount;
+    my $Records           = $PutRecordsOutput->Records;
 
     # Returns a L<Paws::Kinesis::PutRecordsOutput> object.
 

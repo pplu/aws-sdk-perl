@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # gateway.
     my $CreateNatGatewayResult = $ec2->CreateNatGateway(
       {
-        'SubnetId'     => 'subnet-1a2b3c4d',
-        'AllocationId' => 'eipalloc-37fc1a52'
+        'AllocationId' => 'eipalloc-37fc1a52',
+        'SubnetId'     => 'subnet-1a2b3c4d'
       }
     );
 

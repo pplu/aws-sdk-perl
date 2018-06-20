@@ -36,21 +36,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ClarificationPrompt     = $GetBotResponse->ClarificationPrompt;
-    my $Status                  = $GetBotResponse->Status;
-    my $ChildDirected           = $GetBotResponse->ChildDirected;
-    my $Locale                  = $GetBotResponse->Locale;
     my $AbortStatement          = $GetBotResponse->AbortStatement;
-    my $LastUpdatedDate         = $GetBotResponse->LastUpdatedDate;
-    my $VoiceId                 = $GetBotResponse->VoiceId;
-    my $CreatedDate             = $GetBotResponse->CreatedDate;
-    my $Version                 = $GetBotResponse->Version;
-    my $FailureReason           = $GetBotResponse->FailureReason;
-    my $Intents                 = $GetBotResponse->Intents;
-    my $IdleSessionTTLInSeconds = $GetBotResponse->IdleSessionTTLInSeconds;
-    my $Description             = $GetBotResponse->Description;
-    my $Name                    = $GetBotResponse->Name;
     my $Checksum                = $GetBotResponse->Checksum;
+    my $ChildDirected           = $GetBotResponse->ChildDirected;
+    my $ClarificationPrompt     = $GetBotResponse->ClarificationPrompt;
+    my $CreatedDate             = $GetBotResponse->CreatedDate;
+    my $Description             = $GetBotResponse->Description;
+    my $FailureReason           = $GetBotResponse->FailureReason;
+    my $IdleSessionTTLInSeconds = $GetBotResponse->IdleSessionTTLInSeconds;
+    my $Intents                 = $GetBotResponse->Intents;
+    my $LastUpdatedDate         = $GetBotResponse->LastUpdatedDate;
+    my $Locale                  = $GetBotResponse->Locale;
+    my $Name                    = $GetBotResponse->Name;
+    my $Status                  = $GetBotResponse->Status;
+    my $Version                 = $GetBotResponse->Version;
+    my $VoiceId                 = $GetBotResponse->VoiceId;
 
     # Returns a L<Paws::LexModels::GetBotResponse> object.
 

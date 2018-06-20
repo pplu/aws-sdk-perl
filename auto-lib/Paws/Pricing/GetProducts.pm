@@ -48,8 +48,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken     = $GetProductsResponse->NextToken;
     my $FormatVersion = $GetProductsResponse->FormatVersion;
+    my $NextToken     = $GetProductsResponse->NextToken;
     my $PriceList     = $GetProductsResponse->PriceList;
 
     # Returns a L<Paws::Pricing::GetProductsResponse> object.

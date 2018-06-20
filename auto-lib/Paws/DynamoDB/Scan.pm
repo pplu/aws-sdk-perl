@@ -48,26 +48,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # and song title are returned.
     my $ScanOutput = $dynamodb->Scan(
       {
+        'ExpressionAttributeNames' => {
+          'AT' => 'AlbumTitle',
+          'ST' => 'SongTitle'
+        },
         'ExpressionAttributeValues' => {
           ':a' => {
             'S' => 'No One You Know'
           }
         },
-        'FilterExpression'         => 'Artist = :a',
-        'TableName'                => 'Music',
-        'ExpressionAttributeNames' => {
-          'ST' => 'SongTitle',
-          'AT' => 'AlbumTitle'
-        },
-        'ProjectionExpression' => '#ST, #AT'
+        'FilterExpression'     => 'Artist = :a',
+        'ProjectionExpression' => '#ST, #AT',
+        'TableName'            => 'Music'
       }
     );
 
     # Results:
-    my $ScannedCount     = $ScanOutput->ScannedCount;
-    my $Items            = $ScanOutput->Items;
     my $ConsumedCapacity = $ScanOutput->ConsumedCapacity;
     my $Count            = $ScanOutput->Count;
+    my $Items            = $ScanOutput->Items;
+    my $ScannedCount     = $ScanOutput->ScannedCount;
 
     # Returns a L<Paws::DynamoDB::ScanOutput> object.
 

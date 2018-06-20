@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken = $ListChildrenResponse->NextToken;
     my $Children  = $ListChildrenResponse->Children;
+    my $NextToken = $ListChildrenResponse->NextToken;
 
     # Returns a L<Paws::Organizations::ListChildrenResponse> object.
 

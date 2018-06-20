@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $Max24HourSend   = $GetSendQuotaResponse->Max24HourSend;
-    my $SentLast24Hours = $GetSendQuotaResponse->SentLast24Hours;
     my $MaxSendRate     = $GetSendQuotaResponse->MaxSendRate;
+    my $SentLast24Hours = $GetSendQuotaResponse->SentLast24Hours;
 
     # Returns a L<Paws::SES::GetSendQuotaResponse> object.
 

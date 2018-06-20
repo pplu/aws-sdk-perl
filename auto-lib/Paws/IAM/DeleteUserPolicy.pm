@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # the IAM user named Juan:
     $iam->DeleteUserPolicy(
       {
-        'UserName'   => 'Juan',
-        'PolicyName' => 'ExamplePolicy'
+        'PolicyName' => 'ExamplePolicy',
+        'UserName'   => 'Juan'
       }
     );
 

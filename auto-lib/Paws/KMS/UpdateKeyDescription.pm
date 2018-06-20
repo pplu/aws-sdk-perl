@@ -32,9 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example updates the description of the specified CMK.
     $kms->UpdateKeyDescription(
       {
-        'KeyId' => '1234abcd-12ab-34cd-56ef-1234567890ab',
         'Description' =>
-          'Example description that indicates the intended use of this CMK.'
+          'Example description that indicates the intended use of this CMK.',
+        'KeyId' => '1234abcd-12ab-34cd-56ef-1234567890ab'
       }
     );
 

@@ -53,8 +53,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ProvisioningParameters => [
         {
           Key              => 'MyParameterKey',    # min: 1, max: 1000; OPTIONAL
-          Value            => 'MyParameterValue',  # max: 4096; OPTIONAL
           UsePreviousValue => 1,                   # OPTIONAL
+          Value            => 'MyParameterValue',  # max: 4096; OPTIONAL
         },
         ...
       ],                                           # OPTIONAL
@@ -69,14 +69,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $ProvisioningArtifactId =
-      $CreateProvisionedProductPlanOutput->ProvisioningArtifactId;
-    my $ProvisionedProductName =
-      $CreateProvisionedProductPlanOutput->ProvisionedProductName;
+    my $PlanId   = $CreateProvisionedProductPlanOutput->PlanId;
     my $PlanName = $CreateProvisionedProductPlanOutput->PlanName;
     my $ProvisionProductId =
       $CreateProvisionedProductPlanOutput->ProvisionProductId;
-    my $PlanId = $CreateProvisionedProductPlanOutput->PlanId;
+    my $ProvisionedProductName =
+      $CreateProvisionedProductPlanOutput->ProvisionedProductName;
+    my $ProvisioningArtifactId =
+      $CreateProvisionedProductPlanOutput->ProvisioningArtifactId;
 
  # Returns a L<Paws::ServiceCatalog::CreateProvisionedProductPlanOutput> object.
 

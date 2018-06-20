@@ -36,21 +36,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
  # The example lists all the parts of a multipart upload.
     my $ListPartsOutput = $glacier->ListParts(
       {
+        'AccountId' => '-',
         'UploadId' =>
 'OW2fM5iVylEpFEMM9_HpKowRapC3vn5sSL39_396UW9zLFUWVrnRHaPjUJddQ5OxSHVXjYtrN47NBZ-khxOjyEXAMPLE',
-        'AccountId' => '-',
         'VaultName' => 'examplevault'
       }
     );
 
     # Results:
-    my $VaultARN           = $ListPartsOutput->VaultARN;
-    my $Parts              = $ListPartsOutput->Parts;
     my $ArchiveDescription = $ListPartsOutput->ArchiveDescription;
     my $CreationDate       = $ListPartsOutput->CreationDate;
-    my $MultipartUploadId  = $ListPartsOutput->MultipartUploadId;
     my $Marker             = $ListPartsOutput->Marker;
+    my $MultipartUploadId  = $ListPartsOutput->MultipartUploadId;
     my $PartSizeInBytes    = $ListPartsOutput->PartSizeInBytes;
+    my $Parts              = $ListPartsOutput->Parts;
+    my $VaultARN           = $ListPartsOutput->VaultARN;
 
     # Returns a L<Paws::Glacier::ListPartsOutput> object.
 

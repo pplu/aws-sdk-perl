@@ -33,10 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $PrivateKeyBase64 = $CreateKeyPairResult->PrivateKeyBase64;
     my $KeyPair          = $CreateKeyPairResult->KeyPair;
-    my $PublicKeyBase64  = $CreateKeyPairResult->PublicKeyBase64;
     my $Operation        = $CreateKeyPairResult->Operation;
+    my $PrivateKeyBase64 = $CreateKeyPairResult->PrivateKeyBase64;
+    my $PublicKeyBase64  = $CreateKeyPairResult->PublicKeyBase64;
 
     # Returns a L<Paws::Lightsail::CreateKeyPairResult> object.
 

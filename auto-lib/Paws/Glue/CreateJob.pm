@@ -40,8 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $glue = Paws->service('Glue');
     my $CreateJobResponse = $glue->CreateJob(
       Command => {
-        ScriptLocation => 'MyScriptLocationString',    # OPTIONAL
         Name           => 'MyGenericString',           # OPTIONAL
+        ScriptLocation => 'MyScriptLocationString',    # OPTIONAL
       },
       Name              => 'MyNameString',
       Role              => 'MyRoleString',

@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Marker   = $ListGatewaysOutput->Marker;
     my $Gateways = $ListGatewaysOutput->Gateways;
+    my $Marker   = $ListGatewaysOutput->Marker;
 
     # Returns a L<Paws::StorageGateway::ListGatewaysOutput> object.
 

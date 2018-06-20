@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeEventSubscriptionsResponse = $dms->DescribeEventSubscriptions(
       Filters => [
         {
-          Values => [ 'MyString', ... ],
           Name   => 'MyString',
+          Values => [ 'MyString', ... ],
 
         },
         ...

@@ -69,14 +69,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # DB instance.
     my $ModifyDBInstanceResult = $rds->ModifyDBInstance(
       {
-        'MasterUserPassword'         => 'mynewpassword',
-        'DBInstanceIdentifier'       => 'mymysqlinstance',
-        'ApplyImmediately'           => 1,
-        'PreferredBackupWindow'      => '04:00-04:30',
         'AllocatedStorage'           => 10,
-        'PreferredMaintenanceWindow' => 'Tue:05:00-Tue:05:30',
+        'ApplyImmediately'           => true,
         'BackupRetentionPeriod'      => 1,
-        'DBInstanceClass'            => 'db.t2.small'
+        'DBInstanceClass'            => 'db.t2.small',
+        'DBInstanceIdentifier'       => 'mymysqlinstance',
+        'MasterUserPassword'         => 'mynewpassword',
+        'PreferredBackupWindow'      => '04:00-04:30',
+        'PreferredMaintenanceWindow' => 'Tue:05:00-Tue:05:30'
       }
     );
 

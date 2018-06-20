@@ -32,17 +32,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ListOperationsResponse = $servicediscovery->ListOperations(
       Filters => [
         {
+          Name => 'NAMESPACE_ID'
+          ,    # values: NAMESPACE_ID, SERVICE_ID, STATUS, TYPE, UPDATE_DATE
           Values => [
             'MyFilterValue', ...    # min: 1, max: 255
           ],
-          Name => 'NAMESPACE_ID'
-          ,    # values: NAMESPACE_ID, SERVICE_ID, STATUS, TYPE, UPDATE_DATE
-          Condition => 'EQ',    # values: EQ, IN, BETWEEN; OPTIONAL
+          Condition => 'EQ',        # values: EQ, IN, BETWEEN; OPTIONAL
         },
         ...
-      ],                        # OPTIONAL
-      MaxResults => 1,                # OPTIONAL
-      NextToken  => 'MyNextToken',    # OPTIONAL
+      ],                            # OPTIONAL
+      MaxResults => 1,              # OPTIONAL
+      NextToken  => 'MyNextToken',  # OPTIONAL
     );
 
     # Results:

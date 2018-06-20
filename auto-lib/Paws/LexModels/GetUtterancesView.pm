@@ -40,8 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Utterances = $GetUtterancesViewResponse->Utterances;
     my $BotName    = $GetUtterancesViewResponse->BotName;
+    my $Utterances = $GetUtterancesViewResponse->Utterances;
 
     # Returns a L<Paws::LexModels::GetUtterancesViewResponse> object.
 

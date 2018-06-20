@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken  = $ListBundlesResult->NextToken;
     my $BundleList = $ListBundlesResult->BundleList;
+    my $NextToken  = $ListBundlesResult->NextToken;
 
     # Returns a L<Paws::MobileHub::ListBundlesResult> object.
 

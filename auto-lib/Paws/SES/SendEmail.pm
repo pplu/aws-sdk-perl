@@ -39,16 +39,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example sends a formatted email:
     my $SendEmailResponse = $email->SendEmail(
       {
-        'SourceArn'        => '',
-        'ReturnPathArn'    => '',
-        'ReplyToAddresses' => [
+        'Destination' => {
+          'BccAddresses' => [
 
-        ],
+          ],
+          'CcAddresses' => ['recipient3@example.com'],
+          'ToAddresses' =>
+            [ 'recipient1@example.com', 'recipient2@example.com' ]
+        },
         'Message' => {
-          'Subject' => {
-            'Charset' => 'UTF-8',
-            'Data'    => 'Test email'
-          },
           'Body' => {
             'Html' => {
               'Charset' => 'UTF-8',
@@ -59,18 +58,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               'Charset' => 'UTF-8',
               'Data'    => 'This is the message body in text format.'
             }
+          },
+          'Subject' => {
+            'Charset' => 'UTF-8',
+            'Data'    => 'Test email'
           }
         },
-        'Source'      => 'sender@example.com',
-        'Destination' => {
-          'CcAddresses'  => ['recipient3@example.com'],
-          'BccAddresses' => [
+        'ReplyToAddresses' => [
 
-          ],
-          'ToAddresses' =>
-            [ 'recipient1@example.com', 'recipient2@example.com' ]
-        },
-        'ReturnPath' => ''
+        ],
+        'ReturnPath'    => '',
+        'ReturnPathArn' => '',
+        'Source'        => 'sender@example.com',
+        'SourceArn'     => ''
       }
     );
 

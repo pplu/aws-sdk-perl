@@ -36,11 +36,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ResponseType       = $GatewayResponse->ResponseType;
-    my $StatusCode         = $GatewayResponse->StatusCode;
     my $DefaultResponse    = $GatewayResponse->DefaultResponse;
     my $ResponseParameters = $GatewayResponse->ResponseParameters;
     my $ResponseTemplates  = $GatewayResponse->ResponseTemplates;
+    my $ResponseType       = $GatewayResponse->ResponseType;
+    my $StatusCode         = $GatewayResponse->StatusCode;
 
     # Returns a L<Paws::ApiGateway::GatewayResponse> object.
 

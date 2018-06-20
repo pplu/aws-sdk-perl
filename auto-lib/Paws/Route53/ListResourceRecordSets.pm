@@ -43,14 +43,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextRecordName = $ListResourceRecordSetsResponse->NextRecordName;
-    my $IsTruncated    = $ListResourceRecordSetsResponse->IsTruncated;
-    my $MaxItems       = $ListResourceRecordSetsResponse->MaxItems;
-    my $ResourceRecordSets =
-      $ListResourceRecordSetsResponse->ResourceRecordSets;
+    my $IsTruncated = $ListResourceRecordSetsResponse->IsTruncated;
+    my $MaxItems    = $ListResourceRecordSetsResponse->MaxItems;
     my $NextRecordIdentifier =
       $ListResourceRecordSetsResponse->NextRecordIdentifier;
+    my $NextRecordName = $ListResourceRecordSetsResponse->NextRecordName;
     my $NextRecordType = $ListResourceRecordSetsResponse->NextRecordType;
+    my $ResourceRecordSets =
+      $ListResourceRecordSetsResponse->ResourceRecordSets;
 
     # Returns a L<Paws::Route53::ListResourceRecordSetsResponse> object.
 

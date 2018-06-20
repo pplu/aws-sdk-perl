@@ -35,24 +35,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This operation updates a Lambda function event source mapping
     my $EventSourceMappingConfiguration = $lambda->UpdateEventSourceMapping(
       {
-        'FunctionName' => 'myFunction',
-        'Enabled'      => 1,
         'BatchSize'    => 123,
+        'Enabled'      => true,
+        'FunctionName' => 'myFunction',
         'UUID'         => '1234xCy789012'
       }
     );
 
     # Results:
+    my $BatchSize      = $EventSourceMappingConfiguration->BatchSize;
+    my $EventSourceArn = $EventSourceMappingConfiguration->EventSourceArn;
+    my $FunctionArn    = $EventSourceMappingConfiguration->FunctionArn;
+    my $LastModified   = $EventSourceMappingConfiguration->LastModified;
     my $LastProcessingResult =
       $EventSourceMappingConfiguration->LastProcessingResult;
-    my $EventSourceArn = $EventSourceMappingConfiguration->EventSourceArn;
-    my $State          = $EventSourceMappingConfiguration->State;
+    my $State = $EventSourceMappingConfiguration->State;
     my $StateTransitionReason =
       $EventSourceMappingConfiguration->StateTransitionReason;
-    my $BatchSize    = $EventSourceMappingConfiguration->BatchSize;
-    my $FunctionArn  = $EventSourceMappingConfiguration->FunctionArn;
-    my $UUID         = $EventSourceMappingConfiguration->UUID;
-    my $LastModified = $EventSourceMappingConfiguration->LastModified;
+    my $UUID = $EventSourceMappingConfiguration->UUID;
 
     # Returns a L<Paws::Lambda::EventSourceMappingConfiguration> object.
 

@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example enables data collection for the specified Auto Scaling group.
     $autoscaling->EnableMetricsCollection(
       {
-        'Granularity'          => '1Minute',
-        'AutoScalingGroupName' => 'my-auto-scaling-group'
+        'AutoScalingGroupName' => 'my-auto-scaling-group',
+        'Granularity'          => '1Minute'
       }
     );
 

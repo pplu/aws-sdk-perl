@@ -50,10 +50,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example creates an Auto Scaling group.
     $autoscaling->CreateAutoScalingGroup(
       {
+        'AutoScalingGroupName'    => 'my-auto-scaling-group',
+        'LaunchConfigurationName' => 'my-launch-config',
         'MaxSize'                 => 3,
         'MinSize'                 => 1,
-        'LaunchConfigurationName' => 'my-launch-config',
-        'AutoScalingGroupName'    => 'my-auto-scaling-group',
         'VPCZoneIdentifier'       => 'subnet-4176792c'
       }
     );
@@ -63,14 +63,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Classic Load Balancer.
     $autoscaling->CreateAutoScalingGroup(
       {
-        'MaxSize'                 => 3,
-        'MinSize'                 => 1,
-        'LoadBalancerNames'       => ['my-load-balancer'],
-        'AvailabilityZones'       => ['us-west-2c'],
-        'LaunchConfigurationName' => 'my-launch-config',
-        'HealthCheckGracePeriod'  => 120,
         'AutoScalingGroupName'    => 'my-auto-scaling-group',
-        'HealthCheckType'         => 'ELB'
+        'AvailabilityZones'       => ['us-west-2c'],
+        'HealthCheckGracePeriod'  => 120,
+        'HealthCheckType'         => 'ELB',
+        'LaunchConfigurationName' => 'my-launch-config',
+        'LoadBalancerNames'       => ['my-load-balancer'],
+        'MaxSize'                 => 3,
+        'MinSize'                 => 1
       }
     );
 
@@ -79,12 +79,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # target group.
     $autoscaling->CreateAutoScalingGroup(
       {
+        'AutoScalingGroupName'    => 'my-auto-scaling-group',
+        'HealthCheckGracePeriod'  => 120,
+        'HealthCheckType'         => 'ELB',
+        'LaunchConfigurationName' => 'my-launch-config',
         'MaxSize'                 => 3,
         'MinSize'                 => 1,
-        'LaunchConfigurationName' => 'my-launch-config',
-        'HealthCheckGracePeriod'  => 120,
-        'AutoScalingGroupName'    => 'my-auto-scaling-group',
-        'HealthCheckType'         => 'ELB',
         'TargetGroupARNs'         => [
 'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067'
         ],

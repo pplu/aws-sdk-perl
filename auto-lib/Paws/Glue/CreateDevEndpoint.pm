@@ -46,22 +46,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $EndpointName = $CreateDevEndpointResponse->EndpointName;
-    my $Status       = $CreateDevEndpointResponse->Status;
-    my $ZeppelinRemoteSparkInterpreterPort =
-      $CreateDevEndpointResponse->ZeppelinRemoteSparkInterpreterPort;
-    my $CreatedTimestamp    = $CreateDevEndpointResponse->CreatedTimestamp;
-    my $ExtraJarsS3Path     = $CreateDevEndpointResponse->ExtraJarsS3Path;
-    my $AvailabilityZone    = $CreateDevEndpointResponse->AvailabilityZone;
-    my $VpcId               = $CreateDevEndpointResponse->VpcId;
-    my $SecurityGroupIds    = $CreateDevEndpointResponse->SecurityGroupIds;
-    my $RoleArn             = $CreateDevEndpointResponse->RoleArn;
-    my $NumberOfNodes       = $CreateDevEndpointResponse->NumberOfNodes;
-    my $FailureReason       = $CreateDevEndpointResponse->FailureReason;
-    my $YarnEndpointAddress = $CreateDevEndpointResponse->YarnEndpointAddress;
-    my $SubnetId            = $CreateDevEndpointResponse->SubnetId;
+    my $AvailabilityZone = $CreateDevEndpointResponse->AvailabilityZone;
+    my $CreatedTimestamp = $CreateDevEndpointResponse->CreatedTimestamp;
+    my $EndpointName     = $CreateDevEndpointResponse->EndpointName;
+    my $ExtraJarsS3Path  = $CreateDevEndpointResponse->ExtraJarsS3Path;
     my $ExtraPythonLibsS3Path =
       $CreateDevEndpointResponse->ExtraPythonLibsS3Path;
+    my $FailureReason       = $CreateDevEndpointResponse->FailureReason;
+    my $NumberOfNodes       = $CreateDevEndpointResponse->NumberOfNodes;
+    my $RoleArn             = $CreateDevEndpointResponse->RoleArn;
+    my $SecurityGroupIds    = $CreateDevEndpointResponse->SecurityGroupIds;
+    my $Status              = $CreateDevEndpointResponse->Status;
+    my $SubnetId            = $CreateDevEndpointResponse->SubnetId;
+    my $VpcId               = $CreateDevEndpointResponse->VpcId;
+    my $YarnEndpointAddress = $CreateDevEndpointResponse->YarnEndpointAddress;
+    my $ZeppelinRemoteSparkInterpreterPort =
+      $CreateDevEndpointResponse->ZeppelinRemoteSparkInterpreterPort;
 
     # Returns a L<Paws::Glue::CreateDevEndpointResponse> object.
 

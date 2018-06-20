@@ -34,26 +34,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $CreationTime = $DescribeNotebookInstanceOutput->CreationTime;
-    my $InstanceType = $DescribeNotebookInstanceOutput->InstanceType;
-    my $NotebookInstanceStatus =
-      $DescribeNotebookInstanceOutput->NotebookInstanceStatus;
-    my $KmsKeyId = $DescribeNotebookInstanceOutput->KmsKeyId;
-    my $RoleArn  = $DescribeNotebookInstanceOutput->RoleArn;
-    my $NotebookInstanceArn =
-      $DescribeNotebookInstanceOutput->NotebookInstanceArn;
-    my $NotebookInstanceName =
-      $DescribeNotebookInstanceOutput->NotebookInstanceName;
-    my $FailureReason    = $DescribeNotebookInstanceOutput->FailureReason;
-    my $LastModifiedTime = $DescribeNotebookInstanceOutput->LastModifiedTime;
-    my $SubnetId         = $DescribeNotebookInstanceOutput->SubnetId;
-    my $NotebookInstanceLifecycleConfigName =
-      $DescribeNotebookInstanceOutput->NotebookInstanceLifecycleConfigName;
-    my $NetworkInterfaceId =
-      $DescribeNotebookInstanceOutput->NetworkInterfaceId;
     my $DirectInternetAccess =
       $DescribeNotebookInstanceOutput->DirectInternetAccess;
-    my $Url            = $DescribeNotebookInstanceOutput->Url;
+    my $FailureReason    = $DescribeNotebookInstanceOutput->FailureReason;
+    my $InstanceType     = $DescribeNotebookInstanceOutput->InstanceType;
+    my $KmsKeyId         = $DescribeNotebookInstanceOutput->KmsKeyId;
+    my $LastModifiedTime = $DescribeNotebookInstanceOutput->LastModifiedTime;
+    my $NetworkInterfaceId =
+      $DescribeNotebookInstanceOutput->NetworkInterfaceId;
+    my $NotebookInstanceArn =
+      $DescribeNotebookInstanceOutput->NotebookInstanceArn;
+    my $NotebookInstanceLifecycleConfigName =
+      $DescribeNotebookInstanceOutput->NotebookInstanceLifecycleConfigName;
+    my $NotebookInstanceName =
+      $DescribeNotebookInstanceOutput->NotebookInstanceName;
+    my $NotebookInstanceStatus =
+      $DescribeNotebookInstanceOutput->NotebookInstanceStatus;
+    my $RoleArn        = $DescribeNotebookInstanceOutput->RoleArn;
     my $SecurityGroups = $DescribeNotebookInstanceOutput->SecurityGroups;
+    my $SubnetId       = $DescribeNotebookInstanceOutput->SubnetId;
+    my $Url            = $DescribeNotebookInstanceOutput->Url;
 
     # Returns a L<Paws::SageMaker::DescribeNotebookInstanceOutput> object.
 

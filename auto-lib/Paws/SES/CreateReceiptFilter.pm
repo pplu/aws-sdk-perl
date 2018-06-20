@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       {
         'Filter' => {
           'IpFilter' => {
-            'Policy' => 'Allow',
-            'Cidr'   => '1.2.3.4/24'
+            'Cidr'   => '1.2.3.4/24',
+            'Policy' => 'Allow'
           },
           'Name' => 'MyFilter'
         }

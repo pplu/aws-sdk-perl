@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $PaginationToken = $AdminListDevicesResponse->PaginationToken;
     my $Devices         = $AdminListDevicesResponse->Devices;
+    my $PaginationToken = $AdminListDevicesResponse->PaginationToken;
 
     # Returns a L<Paws::CognitoIdp::AdminListDevicesResponse> object.
 

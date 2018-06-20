@@ -30,11 +30,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $PutEventsResponse = $events->PutEvents(
       Entries => [
         {
+          Detail     => 'MyString',                    # OPTIONAL
+          DetailType => 'MyString',                    # OPTIONAL
           Resources  => [ 'MyEventResource', ... ],    # OPTIONAL
           Source     => 'MyString',                    # OPTIONAL
           Time       => '1970-01-01T01:00:00',         # OPTIONAL
-          Detail     => 'MyString',                    # OPTIONAL
-          DetailType => 'MyString',                    # OPTIONAL
         },
         ...
       ],

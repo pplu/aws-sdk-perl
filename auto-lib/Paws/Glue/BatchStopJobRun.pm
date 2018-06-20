@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $SuccessfulSubmissions = $BatchStopJobRunResponse->SuccessfulSubmissions;
     my $Errors                = $BatchStopJobRunResponse->Errors;
+    my $SuccessfulSubmissions = $BatchStopJobRunResponse->SuccessfulSubmissions;
 
     # Returns a L<Paws::Glue::BatchStopJobRunResponse> object.
 

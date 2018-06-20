@@ -57,30 +57,30 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ExternalTableDefinition   => 'MyString',    # OPTIONAL
       ExtraConnectionAttributes => 'MyString',    # OPTIONAL
       MongoDbSettings           => {
-        AuthSource        => 'MyString',
-        Password          => 'MySecretString',  # OPTIONAL
-        Username          => 'MyString',
-        ServerName        => 'MyString',
-        AuthType          => 'no',              # values: no, password; OPTIONAL
-        ExtractDocId      => 'MyString',
-        Port              => 1,                 # OPTIONAL
-        DocsToInvestigate => 'MyString',
-        KmsKeyId          => 'MyString',
         AuthMechanism =>
           'default',    # values: default, mongodb_cr, scram_sha_1; OPTIONAL
-        DatabaseName => 'MyString',
-        NestingLevel => 'none',       # values: none, one; OPTIONAL
+        AuthSource        => 'MyString',
+        AuthType          => 'no',              # values: no, password; OPTIONAL
+        DatabaseName      => 'MyString',
+        DocsToInvestigate => 'MyString',
+        ExtractDocId      => 'MyString',
+        KmsKeyId          => 'MyString',
+        NestingLevel      => 'none',            # values: none, one; OPTIONAL
+        Password          => 'MySecretString',  # OPTIONAL
+        Port              => 1,                 # OPTIONAL
+        ServerName        => 'MyString',
+        Username          => 'MyString',
       },    # OPTIONAL
       Password   => 'MySecretString',    # OPTIONAL
       Port       => 1,                   # OPTIONAL
       S3Settings => {
         BucketFolder            => 'MyString',
         BucketName              => 'MyString',
-        CsvDelimiter            => 'MyString',
         CompressionType         => 'none',       # values: none, gzip; OPTIONAL
+        CsvDelimiter            => 'MyString',
+        CsvRowDelimiter         => 'MyString',
         ExternalTableDefinition => 'MyString',
         ServiceAccessRoleArn    => 'MyString',
-        CsvRowDelimiter         => 'MyString',
       },    # OPTIONAL
       ServerName           => 'MyString',    # OPTIONAL
       ServiceAccessRoleArn => 'MyString',    # OPTIONAL

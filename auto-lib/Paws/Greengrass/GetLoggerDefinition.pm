@@ -34,14 +34,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $Arn               = $GetLoggerDefinitionResponse->Arn;
     my $CreationTimestamp = $GetLoggerDefinitionResponse->CreationTimestamp;
-    my $LatestVersionArn  = $GetLoggerDefinitionResponse->LatestVersionArn;
     my $Id                = $GetLoggerDefinitionResponse->Id;
     my $LastUpdatedTimestamp =
       $GetLoggerDefinitionResponse->LastUpdatedTimestamp;
-    my $Arn           = $GetLoggerDefinitionResponse->Arn;
-    my $Name          = $GetLoggerDefinitionResponse->Name;
-    my $LatestVersion = $GetLoggerDefinitionResponse->LatestVersion;
+    my $LatestVersion    = $GetLoggerDefinitionResponse->LatestVersion;
+    my $LatestVersionArn = $GetLoggerDefinitionResponse->LatestVersionArn;
+    my $Name             = $GetLoggerDefinitionResponse->Name;
 
     # Returns a L<Paws::Greengrass::GetLoggerDefinitionResponse> object.
 

@@ -34,11 +34,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $BucketName                 = $LoggingStatus->BucketName;
-    my $LastSuccessfulDeliveryTime = $LoggingStatus->LastSuccessfulDeliveryTime;
-    my $S3KeyPrefix                = $LoggingStatus->S3KeyPrefix;
-    my $LastFailureTime            = $LoggingStatus->LastFailureTime;
-    my $LoggingEnabled             = $LoggingStatus->LoggingEnabled;
     my $LastFailureMessage         = $LoggingStatus->LastFailureMessage;
+    my $LastFailureTime            = $LoggingStatus->LastFailureTime;
+    my $LastSuccessfulDeliveryTime = $LoggingStatus->LastSuccessfulDeliveryTime;
+    my $LoggingEnabled             = $LoggingStatus->LoggingEnabled;
+    my $S3KeyPrefix                = $LoggingStatus->S3KeyPrefix;
 
     # Returns a L<Paws::RedShift::LoggingStatus> object.
 

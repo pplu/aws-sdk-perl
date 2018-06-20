@@ -66,17 +66,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateServiceResponse = $ecs->CreateService(
       {
         'DesiredCount'  => 10,
-        'ServiceName'   => 'ecs-simple-service-elb',
         'LoadBalancers' => [
 
           {
-            'ContainerPort'    => 80,
             'ContainerName'    => 'simple-app',
+            'ContainerPort'    => 80,
             'LoadBalancerName' => 'EC2Contai-EcsElast-15DCDAURT3ZO2'
           }
         ],
-        'TaskDefinition' => 'console-sample-app-static',
-        'Role'           => 'ecsServiceRole'
+        'Role'           => 'ecsServiceRole',
+        'ServiceName'    => 'ecs-simple-service-elb',
+        'TaskDefinition' => 'console-sample-app-static'
       }
     );
 

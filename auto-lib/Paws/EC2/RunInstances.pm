@@ -63,26 +63,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AdditionalInfo      => 'MyString',    # OPTIONAL
       BlockDeviceMappings => [
         {
-          DeviceName  => 'MyString',
-          VirtualName => 'MyString',
-          NoDevice    => 'MyString',
-          Ebs         => {
-            SnapshotId => 'MyString',
-            Iops       => 1,
-            VolumeType =>
-              'standard',    # values: standard, io1, gp2, sc1, st1; OPTIONAL
-            VolumeSize          => 1,
-            KmsKeyId            => 'MyString',
+          DeviceName => 'MyString',
+          Ebs        => {
             DeleteOnTermination => 1,            # OPTIONAL
             Encrypted           => 1,            # OPTIONAL
+            Iops                => 1,
+            KmsKeyId            => 'MyString',
+            SnapshotId          => 'MyString',
+            VolumeSize          => 1,
+            VolumeType =>
+              'standard',    # values: standard, io1, gp2, sc1, st1; OPTIONAL
           },    # OPTIONAL
+          NoDevice    => 'MyString',
+          VirtualName => 'MyString',
         },
         ...
       ],        # OPTIONAL
       ClientToken => 'MyString',    # OPTIONAL
       CpuOptions  => {
-        ThreadsPerCore => 1,
         CoreCount      => 1,
+        ThreadsPerCore => 1,
       },                            # OPTIONAL
       CreditSpecification => {
         CpuCredits => 'MyString',
@@ -105,16 +105,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ImageId                           => 'MyString',    # OPTIONAL
       InstanceInitiatedShutdownBehavior => 'stop',        # OPTIONAL
       InstanceMarketOptions             => {
+        MarketType  => 'spot',    # values: spot; OPTIONAL
         SpotOptions => {
-          MaxPrice             => 'MyString',
-          ValidUntil           => '1970-01-01T01:00:00',    # OPTIONAL
           BlockDurationMinutes => 1,
-          SpotInstanceType =>
-            'one-time',    # values: one-time, persistent; OPTIONAL
           InstanceInterruptionBehavior =>
-            'hibernate',    # values: hibernate, stop, terminate; OPTIONAL
+            'hibernate',          # values: hibernate, stop, terminate; OPTIONAL
+          MaxPrice => 'MyString',
+          SpotInstanceType =>
+            'one-time',           # values: one-time, persistent; OPTIONAL
+          ValidUntil => '1970-01-01T01:00:00',    # OPTIONAL
         },    # OPTIONAL
-        MarketType => 'spot',    # values: spot; OPTIONAL
       },    # OPTIONAL
       InstanceType     => 't1.micro',                                 # OPTIONAL
       Ipv6AddressCount => 1,                                          # OPTIONAL
@@ -122,9 +122,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       KernelId         => 'MyString',                                 # OPTIONAL
       KeyName          => 'MyString',                                 # OPTIONAL
       LaunchTemplate   => {
+        LaunchTemplateId   => 'MyString',
         LaunchTemplateName => 'MyString',
         Version            => 'MyString',
-        LaunchTemplateId   => 'MyString',
       },                                                              # OPTIONAL
       Monitoring => {
         Enabled => 1,                                                 # OPTIONAL
@@ -132,34 +132,34 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       NetworkInterfaces => [
         {
-          Groups        => [ 'MyString', ... ],                       # OPTIONAL
-          Ipv6Addresses => [ { Ipv6Address => 'MyString', }, ... ],
+          AssociatePublicIpAddress => 1,                      # OPTIONAL
+          DeleteOnTermination      => 1,                      # OPTIONAL
+          Description              => 'MyString',
+          DeviceIndex              => 1,
+          Groups                   => [ 'MyString', ... ],    # OPTIONAL
+          Ipv6AddressCount         => 1,
+          Ipv6Addresses      => [ { Ipv6Address => 'MyString', }, ... ],
+          NetworkInterfaceId => 'MyString',
+          PrivateIpAddress   => 'MyString',
           PrivateIpAddresses => [
             {
               PrivateIpAddress => 'MyString',
-              Primary          => 1,                                  # OPTIONAL
+              Primary          => 1,                          # OPTIONAL
             },
             ...
-          ],                                                          # OPTIONAL
-          DeviceIndex                    => 1,
-          SubnetId                       => 'MyString',
-          DeleteOnTermination            => 1,                        # OPTIONAL
+          ],                                                  # OPTIONAL
           SecondaryPrivateIpAddressCount => 1,
-          PrivateIpAddress               => 'MyString',
-          AssociatePublicIpAddress       => 1,                        # OPTIONAL
-          NetworkInterfaceId             => 'MyString',
-          Ipv6AddressCount               => 1,
-          Description                    => 'MyString',
+          SubnetId                       => 'MyString',
         },
         ...
-      ],                                                              # OPTIONAL
+      ],                                                      # OPTIONAL
       Placement => {
-        Affinity     => 'MyString',
-        SpreadDomain => 'MyString',
-        Tenancy      => 'default',  # values: default, dedicated, host; OPTIONAL
-        HostId       => 'MyString',
+        Affinity         => 'MyString',
         AvailabilityZone => 'MyString',
         GroupName        => 'MyString',
+        HostId           => 'MyString',
+        SpreadDomain     => 'MyString',
+        Tenancy => 'default',    # values: default, dedicated, host; OPTIONAL
       },    # OPTIONAL
       PrivateIpAddress  => 'MyString',             # OPTIONAL
       RamdiskId         => 'MyString',             # OPTIONAL
@@ -185,9 +185,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $Groups        = $Reservation->Groups;
-    my $RequesterId   = $Reservation->RequesterId;
     my $Instances     = $Reservation->Instances;
     my $OwnerId       = $Reservation->OwnerId;
+    my $RequesterId   = $Reservation->RequesterId;
     my $ReservationId = $Reservation->ReservationId;
 
     # Returns a L<Paws::EC2::Reservation> object.

@@ -36,10 +36,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       {
         'SourceDBClusterParameterGroupIdentifier' =>
           'mydbclusterparametergroup',
-        'TargetDBClusterParameterGroupIdentifier' =>
-          'mydbclusterparametergroup-copy',
         'TargetDBClusterParameterGroupDescription' =>
-          'My DB cluster parameter group copy'
+          'My DB cluster parameter group copy',
+        'TargetDBClusterParameterGroupIdentifier' =>
+          'mydbclusterparametergroup-copy'
       }
     );
 

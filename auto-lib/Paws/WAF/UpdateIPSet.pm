@@ -34,18 +34,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.
     my $UpdateIPSetResponse = $waf->UpdateIPSet(
       {
-        'Updates' => [
+        'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
+        'IPSetId'     => 'example1ds3t-46da-4fdb-b8d5-abc321j569j5',
+        'Updates'     => [
 
           {
             'Action'          => 'DELETE',
             'IPSetDescriptor' => {
-              'Value' => '192.0.2.44/32',
-              'Type'  => 'IPV4'
+              'Type'  => 'IPV4',
+              'Value' => '192.0.2.44/32'
             }
           }
-        ],
-        'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
-        'IPSetId'     => 'example1ds3t-46da-4fdb-b8d5-abc321j569j5'
+        ]
       }
     );
 

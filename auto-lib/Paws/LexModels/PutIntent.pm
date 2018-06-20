@@ -55,7 +55,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         responseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
       },    # OPTIONAL
       ConfirmationPrompt => {
-        messages => [
+        maxAttempts => 1,    # min: 1, max: 5
+        messages    => [
           {
             content => 'MyContentString',    # min: 1, max: 1000
             contentType => 'PlainText', # values: PlainText, SSML, CustomPayload
@@ -63,19 +64,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],                              # min: 1, max: 15
-        maxAttempts  => 1,                   # min: 1, max: 5
         responseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
       },    # OPTIONAL
       CreateVersion  => 1,                  # OPTIONAL
       Description    => 'MyDescription',    # OPTIONAL
       DialogCodeHook => {
-        uri            => 'MyLambdaARN',         # min: 20, max: 2048
         messageVersion => 'MyMessageVersion',    # min: 1, max: 5
+        uri            => 'MyLambdaARN',         # min: 20, max: 2048
 
       },    # OPTIONAL
       FollowUpPrompt => {
         prompt => {
-          messages => [
+          maxAttempts => 1,    # min: 1, max: 5
+          messages    => [
             {
               content => 'MyContentString',    # min: 1, max: 1000
               contentType =>
@@ -84,7 +85,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },
             ...
           ],                    # min: 1, max: 15
-          maxAttempts  => 1,                   # min: 1, max: 5
           responseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
         },
         rejectionStatement => {
@@ -104,8 +104,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       FulfillmentActivity => {
         type     => 'ReturnIntent',    # values: ReturnIntent, CodeHook
         codeHook => {
-          uri            => 'MyLambdaARN',         # min: 20, max: 2048
           messageVersion => 'MyMessageVersion',    # min: 1, max: 5
+          uri            => 'MyLambdaARN',         # min: 20, max: 2048
 
         },
       },    # OPTIONAL
@@ -126,28 +126,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],                      # OPTIONAL
       Slots => [
         {
-          name            => 'MySlotName',       # min: 1, max: 100
-          slotConstraint  => 'Required',         # values: Required, Optional
-          priority        => 1,                  # max: 100; OPTIONAL
-          slotTypeVersion => 'MyVersion',        # min: 1, max: 64; OPTIONAL
-          description     => 'MyDescription',    # max: 200
-          slotType =>
-            'MyCustomOrBuiltinSlotTypeName',     # min: 1, max: 100; OPTIONAL
-          responseCard     => 'MyResponseCard',  # min: 1, max: 50000; OPTIONAL
+          name             => 'MySlotName',       # min: 1, max: 100
+          slotConstraint   => 'Required',         # values: Required, Optional
+          description      => 'MyDescription',    # max: 200
+          priority         => 1,                  # max: 100; OPTIONAL
+          responseCard     => 'MyResponseCard',   # min: 1, max: 50000; OPTIONAL
           sampleUtterances => [
-            'MyUtterance', ...                   # min: 1, max: 200
-          ],                                     # max: 10; OPTIONAL
+            'MyUtterance', ...                    # min: 1, max: 200
+          ],                                      # max: 10; OPTIONAL
+          slotType =>
+            'MyCustomOrBuiltinSlotTypeName',      # min: 1, max: 100; OPTIONAL
+          slotTypeVersion        => 'MyVersion',  # min: 1, max: 64; OPTIONAL
           valueElicitationPrompt => {
-            messages => [
+            maxAttempts => 1,                     # min: 1, max: 5
+            messages    => [
               {
-                content => 'MyContentString',    # min: 1, max: 1000
+                content => 'MyContentString',     # min: 1, max: 1000
                 contentType =>
                   'PlainText',    # values: PlainText, SSML, CustomPayload
                 groupNumber => 1, # min: 1, max: 5; OPTIONAL
               },
               ...
             ],                    # min: 1, max: 15
-            maxAttempts  => 1,                   # min: 1, max: 5
             responseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
           },
         },
@@ -156,22 +156,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $RejectionStatement    = $PutIntentResponse->RejectionStatement;
-    my $CreateVersion         = $PutIntentResponse->CreateVersion;
-    my $ParentIntentSignature = $PutIntentResponse->ParentIntentSignature;
-    my $ConclusionStatement   = $PutIntentResponse->ConclusionStatement;
-    my $DialogCodeHook        = $PutIntentResponse->DialogCodeHook;
     my $Checksum              = $PutIntentResponse->Checksum;
-    my $SampleUtterances      = $PutIntentResponse->SampleUtterances;
+    my $ConclusionStatement   = $PutIntentResponse->ConclusionStatement;
+    my $ConfirmationPrompt    = $PutIntentResponse->ConfirmationPrompt;
+    my $CreateVersion         = $PutIntentResponse->CreateVersion;
+    my $CreatedDate           = $PutIntentResponse->CreatedDate;
+    my $Description           = $PutIntentResponse->Description;
+    my $DialogCodeHook        = $PutIntentResponse->DialogCodeHook;
+    my $FollowUpPrompt        = $PutIntentResponse->FollowUpPrompt;
     my $FulfillmentActivity   = $PutIntentResponse->FulfillmentActivity;
     my $LastUpdatedDate       = $PutIntentResponse->LastUpdatedDate;
-    my $Slots                 = $PutIntentResponse->Slots;
-    my $CreatedDate           = $PutIntentResponse->CreatedDate;
-    my $Version               = $PutIntentResponse->Version;
-    my $FollowUpPrompt        = $PutIntentResponse->FollowUpPrompt;
-    my $ConfirmationPrompt    = $PutIntentResponse->ConfirmationPrompt;
-    my $Description           = $PutIntentResponse->Description;
     my $Name                  = $PutIntentResponse->Name;
+    my $ParentIntentSignature = $PutIntentResponse->ParentIntentSignature;
+    my $RejectionStatement    = $PutIntentResponse->RejectionStatement;
+    my $SampleUtterances      = $PutIntentResponse->SampleUtterances;
+    my $Slots                 = $PutIntentResponse->Slots;
+    my $Version               = $PutIntentResponse->Version;
 
     # Returns a L<Paws::LexModels::PutIntentResponse> object.
 

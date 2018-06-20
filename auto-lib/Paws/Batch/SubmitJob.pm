@@ -48,8 +48,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $jobName = $SubmitJobResponse->jobName;
     my $jobId   = $SubmitJobResponse->jobId;
+    my $jobName = $SubmitJobResponse->jobName;
 
     # Returns a L<Paws::Batch::SubmitJobResponse> object.
 

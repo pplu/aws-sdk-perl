@@ -36,10 +36,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Status   = $GetThreatIntelSetResponse->Status;
+    my $Format   = $GetThreatIntelSetResponse->Format;
     my $Location = $GetThreatIntelSetResponse->Location;
     my $Name     = $GetThreatIntelSetResponse->Name;
-    my $Format   = $GetThreatIntelSetResponse->Format;
+    my $Status   = $GetThreatIntelSetResponse->Status;
 
     # Returns a L<Paws::GuardDuty::GetThreatIntelSetResponse> object.
 

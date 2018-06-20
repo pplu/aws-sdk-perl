@@ -32,8 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example deletes a rule with the ID WAFRule-1-Example.
     my $DeleteRuleResponse = $waf -regional->DeleteRule(
       {
-        'RuleId'      => 'WAFRule-1-Example',
-        'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f'
+        'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
+        'RuleId'      => 'WAFRule-1-Example'
       }
     );
 

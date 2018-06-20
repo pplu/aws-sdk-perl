@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # user named Anika.
     $iam->DeleteSigningCertificate(
       {
-        'UserName'      => 'Anika',
-        'CertificateId' => 'TA7SMP42TDN5Z26OBPJE7EXAMPLE'
+        'CertificateId' => 'TA7SMP42TDN5Z26OBPJE7EXAMPLE',
+        'UserName'      => 'Anika'
       }
     );
 

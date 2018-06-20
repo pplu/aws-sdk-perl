@@ -42,8 +42,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $OrientationCorrection = $DetectFacesResponse->OrientationCorrection;
     my $FaceDetails           = $DetectFacesResponse->FaceDetails;
+    my $OrientationCorrection = $DetectFacesResponse->OrientationCorrection;
 
     # Returns a L<Paws::Rekognition::DetectFacesResponse> object.
 

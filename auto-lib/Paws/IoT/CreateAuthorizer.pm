@@ -43,8 +43,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $AuthorizerName = $CreateAuthorizerResponse->AuthorizerName;
     my $AuthorizerArn  = $CreateAuthorizerResponse->AuthorizerArn;
+    my $AuthorizerName = $CreateAuthorizerResponse->AuthorizerName;
 
     # Returns a L<Paws::IoT::CreateAuthorizerResponse> object.
 

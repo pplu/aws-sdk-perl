@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $StatusCode    = $CreateCollectionResponse->StatusCode;
     my $CollectionArn = $CreateCollectionResponse->CollectionArn;
+    my $StatusCode    = $CreateCollectionResponse->StatusCode;
 
     # Returns a L<Paws::Rekognition::CreateCollectionResponse> object.
 

@@ -40,10 +40,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $CreatedDate   = $StartImportResponse->CreatedDate;
     my $ImportId      = $StartImportResponse->ImportId;
-    my $MergeStrategy = $StartImportResponse->MergeStrategy;
-    my $ResourceType  = $StartImportResponse->ResourceType;
     my $ImportStatus  = $StartImportResponse->ImportStatus;
+    my $MergeStrategy = $StartImportResponse->MergeStrategy;
     my $Name          = $StartImportResponse->Name;
+    my $ResourceType  = $StartImportResponse->ResourceType;
 
     # Returns a L<Paws::LexModels::StartImportResponse> object.
 

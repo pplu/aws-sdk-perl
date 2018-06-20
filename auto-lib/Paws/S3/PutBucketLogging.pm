@@ -44,8 +44,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Type => 'CanonicalUser'
                 ,    # values: CanonicalUser, AmazonCustomerByEmail, Group
                 DisplayName  => 'MyDisplayName',     # OPTIONAL
-                ID           => 'MyID',              # OPTIONAL
                 EmailAddress => 'MyEmailAddress',    # OPTIONAL
+                ID           => 'MyID',              # OPTIONAL
                 URI          => 'MyURI',             # OPTIONAL
               },    # OPTIONAL
               Permission =>

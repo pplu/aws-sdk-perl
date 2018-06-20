@@ -30,8 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $opsworks = Paws->service('OpsWorks');
     my $DescribeAgentVersionsResult = $opsworks->DescribeAgentVersions(
       ConfigurationManager => {
-        Version => 'MyString',    # OPTIONAL
         Name    => 'MyString',    # OPTIONAL
+        Version => 'MyString',    # OPTIONAL
       },    # OPTIONAL
       StackId => 'MyString',    # OPTIONAL
     );

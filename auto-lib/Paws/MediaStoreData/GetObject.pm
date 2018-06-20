@@ -35,14 +35,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ContentLength = $GetObjectResponse->ContentLength;
-    my $ContentType   = $GetObjectResponse->ContentType;
-    my $ContentRange  = $GetObjectResponse->ContentRange;
-    my $StatusCode    = $GetObjectResponse->StatusCode;
-    my $CacheControl  = $GetObjectResponse->CacheControl;
-    my $ETag          = $GetObjectResponse->ETag;
     my $Body          = $GetObjectResponse->Body;
+    my $CacheControl  = $GetObjectResponse->CacheControl;
+    my $ContentLength = $GetObjectResponse->ContentLength;
+    my $ContentRange  = $GetObjectResponse->ContentRange;
+    my $ContentType   = $GetObjectResponse->ContentType;
+    my $ETag          = $GetObjectResponse->ETag;
     my $LastModified  = $GetObjectResponse->LastModified;
+    my $StatusCode    = $GetObjectResponse->StatusCode;
 
     # Returns a L<Paws::MediaStoreData::GetObjectResponse> object.
 

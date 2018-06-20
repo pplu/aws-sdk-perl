@@ -33,18 +33,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ThingName        => 'My__string',
       ConnectivityInfo => [
         {
-          Metadata    => 'My__string',
-          PortNumber  => 1,              # OPTIONAL
           HostAddress => 'My__string',
           Id          => 'My__string',
+          Metadata    => 'My__string',
+          PortNumber  => 1,              # OPTIONAL
         },
         ...
       ],                                 # OPTIONAL
     );
 
     # Results:
-    my $Version = $UpdateConnectivityInfoResponse->Version;
     my $Message = $UpdateConnectivityInfoResponse->Message;
+    my $Version = $UpdateConnectivityInfoResponse->Version;
 
     # Returns a L<Paws::Greengrass::UpdateConnectivityInfoResponse> object.
 

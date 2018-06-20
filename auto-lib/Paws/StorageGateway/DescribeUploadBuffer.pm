@@ -38,12 +38,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $DiskIds    = $DescribeUploadBufferOutput->DiskIds;
+    my $GatewayARN = $DescribeUploadBufferOutput->GatewayARN;
     my $UploadBufferAllocatedInBytes =
       $DescribeUploadBufferOutput->UploadBufferAllocatedInBytes;
-    my $DiskIds = $DescribeUploadBufferOutput->DiskIds;
     my $UploadBufferUsedInBytes =
       $DescribeUploadBufferOutput->UploadBufferUsedInBytes;
-    my $GatewayARN = $DescribeUploadBufferOutput->GatewayARN;
 
    # Returns a L<Paws::StorageGateway::DescribeUploadBufferOutput> object.
    # To describe upload buffer of a gateway
@@ -57,12 +57,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $DiskIds    = $DescribeUploadBufferOutput->DiskIds;
+    my $GatewayARN = $DescribeUploadBufferOutput->GatewayARN;
     my $UploadBufferAllocatedInBytes =
       $DescribeUploadBufferOutput->UploadBufferAllocatedInBytes;
-    my $DiskIds = $DescribeUploadBufferOutput->DiskIds;
     my $UploadBufferUsedInBytes =
       $DescribeUploadBufferOutput->UploadBufferUsedInBytes;
-    my $GatewayARN = $DescribeUploadBufferOutput->GatewayARN;
 
     # Returns a L<Paws::StorageGateway::DescribeUploadBufferOutput> object.
 

@@ -35,16 +35,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateGatewayInformationOutput =
       $storagegateway->UpdateGatewayInformation(
       {
-        'GatewayTimezone' => 'GMT-12:00',
-        'GatewayName'     => 'MyGateway2',
         'GatewayARN' =>
-          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B'
+          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B',
+        'GatewayName'     => 'MyGateway2',
+        'GatewayTimezone' => 'GMT-12:00'
       }
       );
 
     # Results:
-    my $GatewayName = $UpdateGatewayInformationOutput->GatewayName;
     my $GatewayARN  = $UpdateGatewayInformationOutput->GatewayARN;
+    my $GatewayName = $UpdateGatewayInformationOutput->GatewayName;
 
     # Returns a L<Paws::StorageGateway::UpdateGatewayInformationOutput> object.
 

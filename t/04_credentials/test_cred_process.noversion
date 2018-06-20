@@ -1,8 +1,4 @@
 #!/usr/bin/env perl
 
-use JSON::MaybeXS;
+print '{"AccessKeyId":"PCAccessKey","SecretAccessKey":"PCSecretKey"}';
 
-print encode_json({
-  AccessKeyId => 'PCAccessKey',
-  SecretAccessKey => 'PCSecretKey',
-});

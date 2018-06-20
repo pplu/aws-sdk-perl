@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # named Test-Role.
     $iam->DeleteRolePolicy(
       {
-        'RoleName'   => 'Test-Role',
-        'PolicyName' => 'ExamplePolicy'
+        'PolicyName' => 'ExamplePolicy',
+        'RoleName'   => 'Test-Role'
       }
     );
 

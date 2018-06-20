@@ -35,29 +35,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ExecutionRoleArn => 'MyRoleArn',
       ModelName        => 'MyModelName',
       PrimaryContainer => {
-        Image       => 'MyImage',    # max: 255
-        Environment => {
+        Image             => 'MyImage',                # max: 255
+        ContainerHostname => 'MyContainerHostname',    # max: 63; OPTIONAL
+        Environment       => {
           'MyEnvironmentKey' =>
             'MyEnvironmentValue',    # key: max: 1024, value: max: 1024
         },    # max: 16; OPTIONAL
-        ContainerHostname => 'MyContainerHostname',    # max: 63; OPTIONAL
-        ModelDataUrl      => 'MyUrl',                  # max: 1024; OPTIONAL
+        ModelDataUrl => 'MyUrl',    # max: 1024; OPTIONAL
       },
       Tags => [
         {
-          Key   => 'MyTagKey',                         # min: 1, max: 128
-          Value => 'MyTagValue',                       # max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
 
         },
         ...
-      ],                                               # OPTIONAL
+      ],                            # OPTIONAL
       VpcConfig => {
         SecurityGroupIds => [
-          'MySecurityGroupId', ...                     # max: 32
-        ],                                             # min: 1, max: 5
+          'MySecurityGroupId', ...    # max: 32
+        ],                            # min: 1, max: 5
         Subnets => [
-          'MySubnetId', ...                            # max: 32
-        ],                                             # min: 1, max: 16
+          'MySubnetId', ...           # max: 32
+        ],                            # min: 1, max: 16
 
       },    # OPTIONAL
     );

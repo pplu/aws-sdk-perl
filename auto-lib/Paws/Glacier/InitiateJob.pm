@@ -36,20 +36,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $InitiateJobOutput = $glacier->InitiateJob(
       {
         'AccountId'     => '-',
-        'VaultName'     => 'examplevault',
         'JobParameters' => {
+          'Description' => 'My inventory job',
+          'Format'      => 'CSV',
           'SNSTopic' =>
 'arn:aws:sns:us-west-2:111111111111:Glacier-InventoryRetrieval-topic-Example',
-          'Type'        => 'inventory-retrieval',
-          'Description' => 'My inventory job',
-          'Format'      => 'CSV'
-        }
+          'Type' => 'inventory-retrieval'
+        },
+        'VaultName' => 'examplevault'
       }
     );
 
     # Results:
-    my $location = $InitiateJobOutput->location;
     my $jobId    = $InitiateJobOutput->jobId;
+    my $location = $InitiateJobOutput->location;
 
     # Returns a L<Paws::Glacier::InitiateJobOutput> object.
 

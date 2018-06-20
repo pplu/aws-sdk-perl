@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ElasticGpuIds => [ 'MyString', ... ],    # OPTIONAL
       Filters       => [
         {
+          Name   => 'MyString',
           Values => [ 'MyString', ... ],       # OPTIONAL
-          Name => 'MyString',
         },
         ...
       ],                                       # OPTIONAL
@@ -46,9 +46,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken     = $DescribeElasticGpusResult->NextToken;
     my $ElasticGpuSet = $DescribeElasticGpusResult->ElasticGpuSet;
     my $MaxResults    = $DescribeElasticGpusResult->MaxResults;
+    my $NextToken     = $DescribeElasticGpusResult->NextToken;
 
     # Returns a L<Paws::EC2::DescribeElasticGpusResult> object.
 

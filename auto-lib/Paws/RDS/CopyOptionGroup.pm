@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example copies an option group.
     my $CopyOptionGroupResult = $rds->CopyOptionGroup(
       {
-        'TargetOptionGroupIdentifier'  => 'mymysqloptiongroup-copy',
         'SourceOptionGroupIdentifier'  => 'mymysqloptiongroup',
-        'TargetOptionGroupDescription' => 'My MySQL option group copy'
+        'TargetOptionGroupDescription' => 'My MySQL option group copy',
+        'TargetOptionGroupIdentifier'  => 'mymysqloptiongroup-copy'
       }
     );
 

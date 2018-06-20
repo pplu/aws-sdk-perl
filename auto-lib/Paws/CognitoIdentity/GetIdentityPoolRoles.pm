@@ -33,9 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $IdentityPoolId = $GetIdentityPoolRolesResponse->IdentityPoolId;
     my $RoleMappings   = $GetIdentityPoolRolesResponse->RoleMappings;
     my $Roles          = $GetIdentityPoolRolesResponse->Roles;
-    my $IdentityPoolId = $GetIdentityPoolRolesResponse->IdentityPoolId;
 
     # Returns a L<Paws::CognitoIdentity::GetIdentityPoolRolesResponse> object.
 

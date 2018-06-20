@@ -46,8 +46,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # group.
     $autoscaling->UpdateAutoScalingGroup(
       {
-        'LaunchConfigurationName' => 'new-launch-config',
-        'AutoScalingGroupName'    => 'my-auto-scaling-group'
+        'AutoScalingGroupName'    => 'my-auto-scaling-group',
+        'LaunchConfigurationName' => 'new-launch-config'
       }
     );
 
@@ -56,9 +56,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Auto Scaling group.
     $autoscaling->UpdateAutoScalingGroup(
       {
+        'AutoScalingGroupName' => 'my-auto-scaling-group',
         'MaxSize'              => 3,
-        'MinSize'              => 1,
-        'AutoScalingGroupName' => 'my-auto-scaling-group'
+        'MinSize'              => 1
       }
     );
 
@@ -67,8 +67,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # group.
     $autoscaling->UpdateAutoScalingGroup(
       {
-        'NewInstancesProtectedFromScaleIn' => 1,
-        'AutoScalingGroupName'             => 'my-auto-scaling-group'
+        'AutoScalingGroupName'             => 'my-auto-scaling-group',
+        'NewInstancesProtectedFromScaleIn' => true
       }
     );
 

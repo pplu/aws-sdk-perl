@@ -38,9 +38,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       {
         'CertificateBody' =>
 '-----BEGIN CERTIFICATE-----<a very long certificate text string>-----END CERTIFICATE-----',
+        'Path' => '/company/servercerts/',
         'PrivateKey' =>
 '-----BEGIN DSA PRIVATE KEY-----<a very long private key string>-----END DSA PRIVATE KEY-----',
-        'Path'                  => '/company/servercerts/',
         'ServerCertificateName' => 'ProdServerCert'
       }
     );

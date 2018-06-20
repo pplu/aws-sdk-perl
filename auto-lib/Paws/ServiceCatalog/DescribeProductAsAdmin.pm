@@ -34,11 +34,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $ProductViewDetail = $DescribeProductAsAdminOutput->ProductViewDetail;
     my $ProvisioningArtifactSummaries =
       $DescribeProductAsAdminOutput->ProvisioningArtifactSummaries;
-    my $Tags              = $DescribeProductAsAdminOutput->Tags;
-    my $ProductViewDetail = $DescribeProductAsAdminOutput->ProductViewDetail;
-    my $TagOptions        = $DescribeProductAsAdminOutput->TagOptions;
+    my $TagOptions = $DescribeProductAsAdminOutput->TagOptions;
+    my $Tags       = $DescribeProductAsAdminOutput->Tags;
 
     # Returns a L<Paws::ServiceCatalog::DescribeProductAsAdminOutput> object.
 

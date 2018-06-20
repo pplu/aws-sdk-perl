@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $UserName          = $GetAccessKeyLastUsedResponse->UserName;
     my $AccessKeyLastUsed = $GetAccessKeyLastUsedResponse->AccessKeyLastUsed;
+    my $UserName          = $GetAccessKeyLastUsedResponse->UserName;
 
     # Returns a L<Paws::IAM::GetAccessKeyLastUsedResponse> object.
 

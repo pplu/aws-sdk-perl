@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeVolumesResult = $ec2->DescribeVolumes();
 
     # Results:
-    my $Volumes   = $DescribeVolumesResult->Volumes;
     my $NextToken = $DescribeVolumesResult->NextToken;
+    my $Volumes   = $DescribeVolumesResult->Volumes;
 
     # Returns a L<Paws::EC2::DescribeVolumesResult> object.
     # To describe volumes that are attached to a specific instance
@@ -49,13 +49,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'Filters' => [
 
           {
-            'Values' => ['i-1234567890abcdef0'],
-            'Name'   => 'attachment.instance-id'
+            'Name'   => 'attachment.instance-id',
+            'Values' => ['i-1234567890abcdef0']
           },
 
           {
-            'Values' => ['true'],
-            'Name'   => 'attachment.delete-on-termination'
+            'Name'   => 'attachment.delete-on-termination',
+            'Values' => ['true']
           }
         ]
       }

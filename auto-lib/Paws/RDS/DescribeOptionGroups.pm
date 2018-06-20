@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # engine.
     my $OptionGroups = $rds->DescribeOptionGroups(
       {
-        'MajorEngineVersion' => 5.6,
-        'EngineName'         => 'mysql'
+        'EngineName'         => 'mysql',
+        'MajorEngineVersion' => 5.6
       }
     );
 

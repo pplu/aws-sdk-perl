@@ -32,8 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $PhoneNumbers = $ListPhoneNumbersOptedOutResponse->PhoneNumbers;
     my $NextToken    = $ListPhoneNumbersOptedOutResponse->NextToken;
+    my $PhoneNumbers = $ListPhoneNumbersOptedOutResponse->PhoneNumbers;
 
     # Returns a L<Paws::SNS::ListPhoneNumbersOptedOutResponse> object.
 

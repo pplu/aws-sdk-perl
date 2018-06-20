@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ApplicationId      => 'My__string',
       ParameterOverrides => [
         {
-          Value => 'My__string',
           Name  => 'My__string',
+          Value => 'My__string',
 
         },
         ...
@@ -48,10 +48,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $ApplicationId = $CreateCloudFormationChangeSetResponse->ApplicationId;
-    my $StackId       = $CreateCloudFormationChangeSetResponse->StackId;
+    my $ChangeSetId   = $CreateCloudFormationChangeSetResponse->ChangeSetId;
     my $SemanticVersion =
       $CreateCloudFormationChangeSetResponse->SemanticVersion;
-    my $ChangeSetId = $CreateCloudFormationChangeSetResponse->ChangeSetId;
+    my $StackId = $CreateCloudFormationChangeSetResponse->StackId;
 
 # Returns a L<Paws::ServerlessRepo::CreateCloudFormationChangeSetResponse> object.
 

@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # user named Bob to Inactive.
     $iam->UpdateSigningCertificate(
       {
-        'UserName'      => 'Bob',
+        'CertificateId' => 'TA7SMP42TDN5Z26OBPJE7EXAMPLE',
         'Status'        => 'Inactive',
-        'CertificateId' => 'TA7SMP42TDN5Z26OBPJE7EXAMPLE'
+        'UserName'      => 'Bob'
       }
     );
 

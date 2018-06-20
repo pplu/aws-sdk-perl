@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $RegistryId          = $PutLifecyclePolicyResponse->RegistryId;
     my $LifecyclePolicyText = $PutLifecyclePolicyResponse->LifecyclePolicyText;
+    my $RegistryId          = $PutLifecyclePolicyResponse->RegistryId;
     my $RepositoryName      = $PutLifecyclePolicyResponse->RepositoryName;
 
     # Returns a L<Paws::ECR::PutLifecyclePolicyResponse> object.

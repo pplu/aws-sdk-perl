@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ConfigurationType => 'SERVER',
       Filters           => [
         {
+          condition => 'MyCondition',
           name      => 'MyString',
           values    => [ 'MyFilterValue', ... ],
-          condition => 'MyCondition',
 
         },
         ...
@@ -54,8 +54,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Configurations = $ListConfigurationsResponse->Configurations;
-    my $NextToken      = $ListConfigurationsResponse->NextToken;
+    my $configurations = $ListConfigurationsResponse->configurations;
+    my $nextToken      = $ListConfigurationsResponse->nextToken;
 
     # Returns a L<Paws::Discovery::ListConfigurationsResponse> object.
 

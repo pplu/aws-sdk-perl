@@ -37,8 +37,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # forwards requests to the specified target group.
     my $CreateListenerOutput = $elasticloadbalancing->CreateListener(
       {
-        'LoadBalancerArn' =>
-'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188',
         'DefaultActions' => [
 
           {
@@ -47,8 +45,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'Type' => 'forward'
           }
         ],
-        'Protocol' => 'HTTP',
-        'Port'     => 80
+        'LoadBalancerArn' =>
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188',
+        'Port'     => 80,
+        'Protocol' => 'HTTP'
       }
     );
 
@@ -66,8 +66,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # Access Management (IAM).
     my $CreateListenerOutput = $elasticloadbalancing->CreateListener(
       {
-        'LoadBalancerArn' =>
-'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188',
         'Certificates' => [
 
           {
@@ -75,7 +73,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               'arn:aws:iam::123456789012:server-certificate/my-server-cert'
           }
         ],
-        'SslPolicy'      => 'ELBSecurityPolicy-2015-05',
         'DefaultActions' => [
 
           {
@@ -84,8 +81,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'Type' => 'forward'
           }
         ],
-        'Protocol' => 'HTTPS',
-        'Port'     => 443
+        'LoadBalancerArn' =>
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188',
+        'Port'      => 443,
+        'Protocol'  => 'HTTPS',
+        'SslPolicy' => 'ELBSecurityPolicy-2015-05'
       }
     );
 

@@ -35,29 +35,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RestApiId       => 'MyString',
       PatchOperations => [
         {
-          from  => 'MyString',
-          value => 'MyString',
-          path  => 'MyString',
+          from => 'MyString',
           op =>
             'add',    # values: add, remove, replace, move, copy, test; OPTIONAL
+          path  => 'MyString',
+          value => 'MyString',
         },
         ...
       ],              # OPTIONAL
     );
 
     # Results:
-    my $AuthType      = $Authorizer->AuthType;
-    my $Id            = $Authorizer->Id;
-    my $ProviderARNs  = $Authorizer->ProviderARNs;
-    my $AuthorizerUri = $Authorizer->AuthorizerUri;
-    my $IdentityValidationExpression =
-      $Authorizer->IdentityValidationExpression;
-    my $Type = $Authorizer->Type;
+    my $AuthType              = $Authorizer->AuthType;
+    my $AuthorizerCredentials = $Authorizer->AuthorizerCredentials;
     my $AuthorizerResultTtlInSeconds =
       $Authorizer->AuthorizerResultTtlInSeconds;
-    my $AuthorizerCredentials = $Authorizer->AuthorizerCredentials;
-    my $IdentitySource        = $Authorizer->IdentitySource;
-    my $Name                  = $Authorizer->Name;
+    my $AuthorizerUri  = $Authorizer->AuthorizerUri;
+    my $Id             = $Authorizer->Id;
+    my $IdentitySource = $Authorizer->IdentitySource;
+    my $IdentityValidationExpression =
+      $Authorizer->IdentityValidationExpression;
+    my $Name         = $Authorizer->Name;
+    my $ProviderARNs = $Authorizer->ProviderARNs;
+    my $Type         = $Authorizer->Type;
 
     # Returns a L<Paws::ApiGateway::Authorizer> object.
 

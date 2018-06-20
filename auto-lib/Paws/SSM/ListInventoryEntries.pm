@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       TypeName   => 'MyInventoryItemTypeName',
       Filters    => [
         {
-          Values => [ 'MyInventoryFilterValue', ... ],    # min: 1, max: 20
           Key    => 'MyInventoryFilterKey',               # min: 1, max: 200
+          Values => [ 'MyInventoryFilterValue', ... ],    # min: 1, max: 20
           Type   => 'Equal'
           , # values: Equal, NotEqual, BeginWith, LessThan, GreaterThan; OPTIONAL
         },
@@ -48,11 +48,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Entries       = $ListInventoryEntriesResult->Entries;
     my $CaptureTime   = $ListInventoryEntriesResult->CaptureTime;
-    my $SchemaVersion = $ListInventoryEntriesResult->SchemaVersion;
+    my $Entries       = $ListInventoryEntriesResult->Entries;
     my $InstanceId    = $ListInventoryEntriesResult->InstanceId;
     my $NextToken     = $ListInventoryEntriesResult->NextToken;
+    my $SchemaVersion = $ListInventoryEntriesResult->SchemaVersion;
     my $TypeName      = $ListInventoryEntriesResult->TypeName;
 
     # Returns a L<Paws::SSM::ListInventoryEntriesResult> object.

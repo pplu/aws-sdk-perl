@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateSpotDatafeedSubscriptionResult =
       $ec2->CreateSpotDatafeedSubscription(
       {
-        'Prefix' => 'spotdata',
-        'Bucket' => 'my-s3-bucket'
+        'Bucket' => 'my-s3-bucket',
+        'Prefix' => 'spotdata'
       }
       );
 

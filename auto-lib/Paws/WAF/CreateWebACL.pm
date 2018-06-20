@@ -38,14 +38,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'DefaultAction' => {
           'Type' => 'ALLOW'
         },
-        'Name'       => 'CreateExample',
-        'MetricName' => 'CreateExample'
+        'MetricName' => 'CreateExample',
+        'Name'       => 'CreateExample'
       }
     );
 
     # Results:
-    my $WebACL      = $CreateWebACLResponse->WebACL;
     my $ChangeToken = $CreateWebACLResponse->ChangeToken;
+    my $WebACL      = $CreateWebACLResponse->WebACL;
 
     # Returns a L<Paws::WAF::CreateWebACLResponse> object.
 

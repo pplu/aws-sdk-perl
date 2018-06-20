@@ -35,16 +35,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # face belongs to.
     my $SearchFacesResponse = $rekognition->SearchFaces(
       {
-        'FaceId'             => '70008e50-75e4-55d0-8e80-363fb73b3a14',
         'CollectionId'       => 'myphotos',
-        'MaxFaces'           => 10,
-        'FaceMatchThreshold' => 90
+        'FaceId'             => '70008e50-75e4-55d0-8e80-363fb73b3a14',
+        'FaceMatchThreshold' => 90,
+        'MaxFaces'           => 10
       }
     );
 
     # Results:
-    my $SearchedFaceId = $SearchFacesResponse->SearchedFaceId;
     my $FaceMatches    = $SearchFacesResponse->FaceMatches;
+    my $SearchedFaceId = $SearchFacesResponse->SearchedFaceId;
 
     # Returns a L<Paws::Rekognition::SearchFacesResponse> object.
 

@@ -54,9 +54,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken = $ListCertificatesResponse->NextToken;
     my $CertificateSummaryList =
       $ListCertificatesResponse->CertificateSummaryList;
+    my $NextToken = $ListCertificatesResponse->NextToken;
 
     # Returns a L<Paws::ACM::ListCertificatesResponse> object.
 

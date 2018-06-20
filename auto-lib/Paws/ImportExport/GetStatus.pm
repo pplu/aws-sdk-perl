@@ -34,22 +34,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Carrier               = $GetStatusOutput->Carrier;
-    my $Signature             = $GetStatusOutput->Signature;
-    my $TrackingNumber        = $GetStatusOutput->TrackingNumber;
-    my $CreationDate          = $GetStatusOutput->CreationDate;
-    my $LocationCode          = $GetStatusOutput->LocationCode;
-    my $ProgressMessage       = $GetStatusOutput->ProgressMessage;
-    my $JobId                 = $GetStatusOutput->JobId;
-    my $LogBucket             = $GetStatusOutput->LogBucket;
-    my $ErrorCount            = $GetStatusOutput->ErrorCount;
-    my $LocationMessage       = $GetStatusOutput->LocationMessage;
-    my $ProgressCode          = $GetStatusOutput->ProgressCode;
     my $ArtifactList          = $GetStatusOutput->ArtifactList;
-    my $SignatureFileContents = $GetStatusOutput->SignatureFileContents;
+    my $Carrier               = $GetStatusOutput->Carrier;
+    my $CreationDate          = $GetStatusOutput->CreationDate;
     my $CurrentManifest       = $GetStatusOutput->CurrentManifest;
+    my $ErrorCount            = $GetStatusOutput->ErrorCount;
+    my $JobId                 = $GetStatusOutput->JobId;
     my $JobType               = $GetStatusOutput->JobType;
+    my $LocationCode          = $GetStatusOutput->LocationCode;
+    my $LocationMessage       = $GetStatusOutput->LocationMessage;
+    my $LogBucket             = $GetStatusOutput->LogBucket;
     my $LogKey                = $GetStatusOutput->LogKey;
+    my $ProgressCode          = $GetStatusOutput->ProgressCode;
+    my $ProgressMessage       = $GetStatusOutput->ProgressMessage;
+    my $Signature             = $GetStatusOutput->Signature;
+    my $SignatureFileContents = $GetStatusOutput->SignatureFileContents;
+    my $TrackingNumber        = $GetStatusOutput->TrackingNumber;
 
     # Returns a L<Paws::ImportExport::GetStatusOutput> object.
 

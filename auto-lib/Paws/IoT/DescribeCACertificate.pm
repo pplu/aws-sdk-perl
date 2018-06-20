@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $RegistrationConfig = $DescribeCACertificateResponse->RegistrationConfig;
     my $CertificateDescription =
       $DescribeCACertificateResponse->CertificateDescription;
+    my $RegistrationConfig = $DescribeCACertificateResponse->RegistrationConfig;
 
     # Returns a L<Paws::IoT::DescribeCACertificateResponse> object.
 

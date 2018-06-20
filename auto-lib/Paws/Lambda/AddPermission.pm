@@ -41,12 +41,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # function.
     my $AddPermissionResponse = $lambda->AddPermission(
       {
-        'SourceArn'     => 'arn:aws:s3:::examplebucket/*',
-        'FunctionName'  => 'MyFunction',
         'Action'        => 'lambda:InvokeFunction',
-        'StatementId'   => 'ID-1',
+        'FunctionName'  => 'MyFunction',
+        'Principal'     => 's3.amazonaws.com',
         'SourceAccount' => 123456789012,
-        'Principal'     => 's3.amazonaws.com'
+        'SourceArn'     => 'arn:aws:s3:::examplebucket/*',
+        'StatementId'   => 'ID-1'
       }
     );
 

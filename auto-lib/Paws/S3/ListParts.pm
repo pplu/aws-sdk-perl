@@ -45,20 +45,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $IsTruncated          = $ListPartsOutput->IsTruncated;
-    my $Bucket               = $ListPartsOutput->Bucket;
-    my $AbortRuleId          = $ListPartsOutput->AbortRuleId;
-    my $RequestCharged       = $ListPartsOutput->RequestCharged;
-    my $Owner                = $ListPartsOutput->Owner;
     my $AbortDate            = $ListPartsOutput->AbortDate;
+    my $AbortRuleId          = $ListPartsOutput->AbortRuleId;
+    my $Bucket               = $ListPartsOutput->Bucket;
+    my $Initiator            = $ListPartsOutput->Initiator;
+    my $IsTruncated          = $ListPartsOutput->IsTruncated;
+    my $Key                  = $ListPartsOutput->Key;
+    my $MaxParts             = $ListPartsOutput->MaxParts;
+    my $NextPartNumberMarker = $ListPartsOutput->NextPartNumberMarker;
+    my $Owner                = $ListPartsOutput->Owner;
     my $PartNumberMarker     = $ListPartsOutput->PartNumberMarker;
     my $Parts                = $ListPartsOutput->Parts;
-    my $MaxParts             = $ListPartsOutput->MaxParts;
+    my $RequestCharged       = $ListPartsOutput->RequestCharged;
     my $StorageClass         = $ListPartsOutput->StorageClass;
-    my $Initiator            = $ListPartsOutput->Initiator;
-    my $Key                  = $ListPartsOutput->Key;
     my $UploadId             = $ListPartsOutput->UploadId;
-    my $NextPartNumberMarker = $ListPartsOutput->NextPartNumberMarker;
 
     # Returns a L<Paws::S3::ListPartsOutput> object.
 

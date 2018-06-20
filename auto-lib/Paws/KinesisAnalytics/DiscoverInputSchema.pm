@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DiscoverInputSchemaResponse = $kinesisanalytics->DiscoverInputSchema(
       InputProcessingConfiguration => {
         InputLambdaProcessor => {
-          RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
           ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
+          RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
 
         },
 
@@ -47,19 +47,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ResourceARN     => 'MyResourceARN',    # OPTIONAL
       RoleARN         => 'MyRoleARN',        # OPTIONAL
       S3Configuration => {
-        RoleARN   => 'MyRoleARN',            # min: 1, max: 2048
-        FileKey   => 'MyFileKey',            # min: 1, max: 1024
         BucketARN => 'MyBucketARN',          # min: 1, max: 2048
+        FileKey   => 'MyFileKey',            # min: 1, max: 1024
+        RoleARN   => 'MyRoleARN',            # min: 1, max: 2048
 
       },    # OPTIONAL
     );
 
     # Results:
-    my $ProcessedInputRecords =
-      $DiscoverInputSchemaResponse->ProcessedInputRecords;
-    my $RawInputRecords    = $DiscoverInputSchemaResponse->RawInputRecords;
     my $InputSchema        = $DiscoverInputSchemaResponse->InputSchema;
     my $ParsedInputRecords = $DiscoverInputSchemaResponse->ParsedInputRecords;
+    my $ProcessedInputRecords =
+      $DiscoverInputSchemaResponse->ProcessedInputRecords;
+    my $RawInputRecords = $DiscoverInputSchemaResponse->RawInputRecords;
 
     # Returns a L<Paws::KinesisAnalytics::DiscoverInputSchemaResponse> object.
 

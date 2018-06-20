@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $IsTruncated      = $ListInstanceProfilesResponse->IsTruncated;
     my $InstanceProfiles = $ListInstanceProfilesResponse->InstanceProfiles;
+    my $IsTruncated      = $ListInstanceProfilesResponse->IsTruncated;
     my $Marker           = $ListInstanceProfilesResponse->Marker;
 
     # Returns a L<Paws::IAM::ListInstanceProfilesResponse> object.

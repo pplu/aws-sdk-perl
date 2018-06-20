@@ -56,7 +56,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       Checksum            => 'MyString',    # OPTIONAL
       ClarificationPrompt => {
-        messages => [
+        maxAttempts => 1,                   # min: 1, max: 5
+        messages    => [
           {
             content => 'MyContentString',    # min: 1, max: 1000
             contentType => 'PlainText', # values: PlainText, SSML, CustomPayload
@@ -64,7 +65,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],                              # min: 1, max: 15
-        maxAttempts  => 1,                   # min: 1, max: 5
         responseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
       },    # OPTIONAL
       CreateVersion           => 1,                  # OPTIONAL
@@ -72,8 +72,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       IdleSessionTTLInSeconds => 1,                  # OPTIONAL
       Intents                 => [
         {
-          intentVersion => 'MyVersion',              # min: 1, max: 64
           intentName    => 'MyIntentName',           # min: 1, max: 100
+          intentVersion => 'MyVersion',              # min: 1, max: 64
 
         },
         ...
@@ -83,22 +83,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Status                  = $PutBotResponse->Status;
-    my $CreateVersion           = $PutBotResponse->CreateVersion;
-    my $ChildDirected           = $PutBotResponse->ChildDirected;
-    my $FailureReason           = $PutBotResponse->FailureReason;
-    my $Intents                 = $PutBotResponse->Intents;
-    my $Checksum                = $PutBotResponse->Checksum;
-    my $ClarificationPrompt     = $PutBotResponse->ClarificationPrompt;
     my $AbortStatement          = $PutBotResponse->AbortStatement;
-    my $Locale                  = $PutBotResponse->Locale;
-    my $LastUpdatedDate         = $PutBotResponse->LastUpdatedDate;
-    my $VoiceId                 = $PutBotResponse->VoiceId;
+    my $Checksum                = $PutBotResponse->Checksum;
+    my $ChildDirected           = $PutBotResponse->ChildDirected;
+    my $ClarificationPrompt     = $PutBotResponse->ClarificationPrompt;
+    my $CreateVersion           = $PutBotResponse->CreateVersion;
     my $CreatedDate             = $PutBotResponse->CreatedDate;
-    my $Version                 = $PutBotResponse->Version;
-    my $IdleSessionTTLInSeconds = $PutBotResponse->IdleSessionTTLInSeconds;
     my $Description             = $PutBotResponse->Description;
+    my $FailureReason           = $PutBotResponse->FailureReason;
+    my $IdleSessionTTLInSeconds = $PutBotResponse->IdleSessionTTLInSeconds;
+    my $Intents                 = $PutBotResponse->Intents;
+    my $LastUpdatedDate         = $PutBotResponse->LastUpdatedDate;
+    my $Locale                  = $PutBotResponse->Locale;
     my $Name                    = $PutBotResponse->Name;
+    my $Status                  = $PutBotResponse->Status;
+    my $Version                 = $PutBotResponse->Version;
+    my $VoiceId                 = $PutBotResponse->VoiceId;
 
     # Returns a L<Paws::LexModels::PutBotResponse> object.
 

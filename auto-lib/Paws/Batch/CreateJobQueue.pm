@@ -36,15 +36,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # compute environment.
     my $CreateJobQueueResponse = $batch->CreateJobQueue(
       {
-        'Priority'                => 10,
         'ComputeEnvironmentOrder' => [
 
           {
-            'Order'              => 1,
-            'ComputeEnvironment' => 'M4Spot'
+            'ComputeEnvironment' => 'M4Spot',
+            'Order'              => 1
           }
         ],
         'JobQueueName' => 'LowPriority',
+        'Priority'     => 10,
         'State'        => 'ENABLED'
       }
     );
@@ -60,20 +60,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # environment with an order of 2.
     my $CreateJobQueueResponse = $batch->CreateJobQueue(
       {
-        'Priority'                => 1,
         'ComputeEnvironmentOrder' => [
 
           {
-            'Order'              => 1,
-            'ComputeEnvironment' => 'C4OnDemand'
+            'ComputeEnvironment' => 'C4OnDemand',
+            'Order'              => 1
           },
 
           {
-            'Order'              => 2,
-            'ComputeEnvironment' => 'M4Spot'
+            'ComputeEnvironment' => 'M4Spot',
+            'Order'              => 2
           }
         ],
         'JobQueueName' => 'HighPriority',
+        'Priority'     => 1,
         'State'        => 'ENABLED'
       }
     );

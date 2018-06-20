@@ -40,15 +40,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $IsTruncated = $GetAccountAuthorizationDetailsResponse->IsTruncated;
-    my $Policies    = $GetAccountAuthorizationDetailsResponse->Policies;
     my $GroupDetailList =
       $GetAccountAuthorizationDetailsResponse->GroupDetailList;
-    my $UserDetailList =
-      $GetAccountAuthorizationDetailsResponse->UserDetailList;
-    my $Marker = $GetAccountAuthorizationDetailsResponse->Marker;
+    my $IsTruncated = $GetAccountAuthorizationDetailsResponse->IsTruncated;
+    my $Marker      = $GetAccountAuthorizationDetailsResponse->Marker;
+    my $Policies    = $GetAccountAuthorizationDetailsResponse->Policies;
     my $RoleDetailList =
       $GetAccountAuthorizationDetailsResponse->RoleDetailList;
+    my $UserDetailList =
+      $GetAccountAuthorizationDetailsResponse->UserDetailList;
 
     # Returns a L<Paws::IAM::GetAccountAuthorizationDetailsResponse> object.
 

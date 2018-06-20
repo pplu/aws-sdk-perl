@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $NextToken  = $ListTypedLinkFacetNamesResponse->NextToken;
     my $FacetNames = $ListTypedLinkFacetNamesResponse->FacetNames;
+    my $NextToken  = $ListTypedLinkFacetNamesResponse->NextToken;
 
     # Returns a L<Paws::CloudDirectory::ListTypedLinkFacetNamesResponse> object.
 

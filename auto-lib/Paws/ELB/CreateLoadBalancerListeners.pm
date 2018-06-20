@@ -34,16 +34,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateLoadBalancerListenerOutput =
       $elasticloadbalancing->CreateLoadBalancerListeners(
       {
-        'LoadBalancerName' => 'my-load-balancer',
-        'Listeners'        => [
+        'Listeners' => [
 
           {
             'InstancePort'     => 80,
-            'Protocol'         => 'HTTP',
+            'InstanceProtocol' => 'HTTP',
             'LoadBalancerPort' => 80,
-            'InstanceProtocol' => 'HTTP'
+            'Protocol'         => 'HTTP'
           }
-        ]
+        ],
+        'LoadBalancerName' => 'my-load-balancer'
       }
       );
 
@@ -53,18 +53,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateLoadBalancerListenerOutput =
       $elasticloadbalancing->CreateLoadBalancerListeners(
       {
-        'LoadBalancerName' => 'my-load-balancer',
-        'Listeners'        => [
+        'Listeners' => [
 
           {
-            'InstancePort' => 80,
-            'SSLCertificateId' =>
-              'arn:aws:iam::123456789012:server-certificate/my-server-cert',
-            'Protocol'         => 'HTTPS',
+            'InstancePort'     => 80,
+            'InstanceProtocol' => 'HTTP',
             'LoadBalancerPort' => 443,
-            'InstanceProtocol' => 'HTTP'
+            'Protocol'         => 'HTTPS',
+            'SSLCertificateId' =>
+              'arn:aws:iam::123456789012:server-certificate/my-server-cert'
           }
-        ]
+        ],
+        'LoadBalancerName' => 'my-load-balancer'
       }
       );
 

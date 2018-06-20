@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ContentLength = $DescribeObjectResponse->ContentLength;
     my $CacheControl  = $DescribeObjectResponse->CacheControl;
+    my $ContentLength = $DescribeObjectResponse->ContentLength;
     my $ContentType   = $DescribeObjectResponse->ContentType;
     my $ETag          = $DescribeObjectResponse->ETag;
     my $LastModified  = $DescribeObjectResponse->LastModified;

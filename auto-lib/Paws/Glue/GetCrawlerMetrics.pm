@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken          = $GetCrawlerMetricsResponse->NextToken;
     my $CrawlerMetricsList = $GetCrawlerMetricsResponse->CrawlerMetricsList;
+    my $NextToken          = $GetCrawlerMetricsResponse->NextToken;
 
     # Returns a L<Paws::Glue::GetCrawlerMetricsResponse> object.
 

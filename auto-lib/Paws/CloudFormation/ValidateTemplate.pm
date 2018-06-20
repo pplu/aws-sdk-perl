@@ -37,10 +37,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Parameters         = $ValidateTemplateOutput->Parameters;
+    my $Capabilities       = $ValidateTemplateOutput->Capabilities;
     my $CapabilitiesReason = $ValidateTemplateOutput->CapabilitiesReason;
     my $Description        = $ValidateTemplateOutput->Description;
-    my $Capabilities       = $ValidateTemplateOutput->Capabilities;
+    my $Parameters         = $ValidateTemplateOutput->Parameters;
 
     # Returns a L<Paws::CloudFormation::ValidateTemplateOutput> object.
 

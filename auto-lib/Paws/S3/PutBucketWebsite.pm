@@ -39,31 +39,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Key => 'MyObjectKey',    # min: 1,
 
         },    # OPTIONAL
+        IndexDocument => {
+          Suffix => 'MySuffix',
+
+        },    # OPTIONAL
         RedirectAllRequestsTo => {
-          HostName => 'MyHostName',
-          Protocol => 'http',         # values: http, https; OPTIONAL
+          HostName => 'MyHostName',    # OPTIONAL
+          Protocol => 'http',          # values: http, https; OPTIONAL
         },    # OPTIONAL
         RoutingRules => [
           {
             Redirect => {
+              HostName         => 'MyHostName',            # OPTIONAL
               HttpRedirectCode => 'MyHttpRedirectCode',    # OPTIONAL
-              ReplaceKeyWith   => 'MyReplaceKeyWith',      # OPTIONAL
-              HostName         => 'MyHostName',
               Protocol => 'http',    # values: http, https; OPTIONAL
               ReplaceKeyPrefixWith => 'MyReplaceKeyPrefixWith',    # OPTIONAL
+              ReplaceKeyWith       => 'MyReplaceKeyWith',          # OPTIONAL
             },
             Condition => {
-              KeyPrefixEquals => 'MyKeyPrefixEquals',              # OPTIONAL
               HttpErrorCodeReturnedEquals =>
                 'MyHttpErrorCodeReturnedEquals',                   # OPTIONAL
+              KeyPrefixEquals => 'MyKeyPrefixEquals',              # OPTIONAL
             },    # OPTIONAL
           },
           ...
         ],        # OPTIONAL
-        IndexDocument => {
-          Suffix => 'MySuffix',
-
-        },        # OPTIONAL
       },
       ContentMD5 => 'MyContentMD5',    # OPTIONAL
     );

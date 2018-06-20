@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $PolicyArn = $GetPolicyResponse->PolicyArn;
     my $Policy    = $GetPolicyResponse->Policy;
+    my $PolicyArn = $GetPolicyResponse->PolicyArn;
 
     # Returns a L<Paws::FMS::GetPolicyResponse> object.
 

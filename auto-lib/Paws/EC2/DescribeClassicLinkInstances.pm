@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
+          Name   => 'MyString',
           Values => [ 'MyString', ... ],    # OPTIONAL
-          Name => 'MyString',
         },
         ...
       ],                                    # OPTIONAL
@@ -46,8 +46,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken = $DescribeClassicLinkInstancesResult->NextToken;
     my $Instances = $DescribeClassicLinkInstancesResult->Instances;
+    my $NextToken = $DescribeClassicLinkInstancesResult->NextToken;
 
     # Returns a L<Paws::EC2::DescribeClassicLinkInstancesResult> object.
 

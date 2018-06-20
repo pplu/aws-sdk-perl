@@ -32,8 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $AssociateNodeResponse = $opsworks -cm->AssociateNode(
       EngineAttributes => [
         {
-          Value => 'MyEngineAttributeValue',    # OPTIONAL
           Name  => 'MyEngineAttributeName',     # OPTIONAL
+          Value => 'MyEngineAttributeValue',    # OPTIONAL
         },
         ...
       ],

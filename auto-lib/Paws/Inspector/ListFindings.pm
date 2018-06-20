@@ -43,8 +43,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $nextToken   = $ListFindingsResponse->nextToken;
     my $findingArns = $ListFindingsResponse->findingArns;
+    my $nextToken   = $ListFindingsResponse->nextToken;
 
     # Returns a L<Paws::Inspector::ListFindingsResponse> object.
 

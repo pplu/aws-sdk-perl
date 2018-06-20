@@ -29,6 +29,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $codepipeline = Paws->service('CodePipeline');
     my $PutWebhookOutput = $codepipeline->PutWebhook(
       Webhook => {
+        authentication =>
+          'GITHUB_HMAC',    # values: GITHUB_HMAC, IP, UNAUTHENTICATED
+        authenticationConfiguration => {
+          AllowedIPRange => 'MyWebhookAuthConfigurationAllowedIPRange'
+          ,                 # min: 1, max: 100; OPTIONAL
+          SecretToken => 'MyWebhookAuthConfigurationSecretToken'
+          ,                 # min: 1, max: 100; OPTIONAL
+        },
         filters => [
           {
             jsonPath    => 'MyJsonPath',       # min: 1, max: 150
@@ -36,17 +44,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],                                     # max: 5
-        authentication =>
-          'GITHUB_HMAC',    # values: GITHUB_HMAC, IP, UNAUTHENTICATED
-        targetAction                => 'MyActionName',      # min: 1, max: 100
-        targetPipeline              => 'MyPipelineName',    # min: 1, max: 100
-        name                        => 'MyWebhookName',     # min: 1, max: 100
-        authenticationConfiguration => {
-          SecretToken => 'MyWebhookAuthConfigurationSecretToken'
-          ,    # min: 1, max: 100; OPTIONAL
-          AllowedIPRange => 'MyWebhookAuthConfigurationAllowedIPRange'
-          ,    # min: 1, max: 100; OPTIONAL
-        },
+        name           => 'MyWebhookName',     # min: 1, max: 100
+        targetAction   => 'MyActionName',      # min: 1, max: 100
+        targetPipeline => 'MyPipelineName',    # min: 1, max: 100
 
       },
 
@@ -58,7 +58,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::CodePipeline::PutWebhookOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codepipeline/PutWebhook>
 
 =head1 ATTRIBUTES
 

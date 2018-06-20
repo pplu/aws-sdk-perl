@@ -43,8 +43,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $VPC          = $CreateVPCAssociationAuthorizationResponse->VPC;
     my $HostedZoneId = $CreateVPCAssociationAuthorizationResponse->HostedZoneId;
+    my $VPC          = $CreateVPCAssociationAuthorizationResponse->VPC;
 
  # Returns a L<Paws::Route53::CreateVPCAssociationAuthorizationResponse> object.
 

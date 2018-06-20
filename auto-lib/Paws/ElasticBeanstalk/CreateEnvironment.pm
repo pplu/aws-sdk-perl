@@ -44,26 +44,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # application named my-app:
     my $EnvironmentDescription = $elasticbeanstalk->CreateEnvironment(
       {
-        'EnvironmentName' => 'my-env',
         'ApplicationName' => 'my-app',
+        'CNAMEPrefix'     => 'my-app',
+        'EnvironmentName' => 'my-env',
         'SolutionStackName' =>
           '64bit Amazon Linux 2015.03 v2.0.0 running Tomcat 8 Java 8',
-        'CNAMEPrefix'  => 'my-app',
         'VersionLabel' => 'v1'
       }
     );
 
     # Results:
-    my $Tier              = $EnvironmentDescription->Tier;
-    my $DateCreated       = $EnvironmentDescription->DateCreated;
-    my $EnvironmentName   = $EnvironmentDescription->EnvironmentName;
-    my $Status            = $EnvironmentDescription->Status;
-    my $CNAME             = $EnvironmentDescription->CNAME;
-    my $EnvironmentId     = $EnvironmentDescription->EnvironmentId;
     my $ApplicationName   = $EnvironmentDescription->ApplicationName;
+    my $CNAME             = $EnvironmentDescription->CNAME;
+    my $DateCreated       = $EnvironmentDescription->DateCreated;
+    my $DateUpdated       = $EnvironmentDescription->DateUpdated;
+    my $EnvironmentId     = $EnvironmentDescription->EnvironmentId;
+    my $EnvironmentName   = $EnvironmentDescription->EnvironmentName;
     my $Health            = $EnvironmentDescription->Health;
     my $SolutionStackName = $EnvironmentDescription->SolutionStackName;
-    my $DateUpdated       = $EnvironmentDescription->DateUpdated;
+    my $Status            = $EnvironmentDescription->Status;
+    my $Tier              = $EnvironmentDescription->Tier;
     my $VersionLabel      = $EnvironmentDescription->VersionLabel;
 
     # Returns a L<Paws::ElasticBeanstalk::EnvironmentDescription> object.

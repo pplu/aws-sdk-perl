@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
+          Name   => 'MyString',
           Values => [ 'MyString', ... ],    # OPTIONAL
-          Name => 'MyString',
         },
         ...
       ],                                    # OPTIONAL
@@ -47,9 +47,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $NextToken = $DescribeInstanceCreditSpecificationsResult->NextToken;
     my $InstanceCreditSpecifications =
       $DescribeInstanceCreditSpecificationsResult->InstanceCreditSpecifications;
+    my $NextToken = $DescribeInstanceCreditSpecificationsResult->NextToken;
 
     # Returns a L<Paws::EC2::DescribeInstanceCreditSpecificationsResult> object.
 

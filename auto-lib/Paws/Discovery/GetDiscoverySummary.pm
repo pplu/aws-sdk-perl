@@ -29,13 +29,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $GetDiscoverySummaryResponse = $discovery->GetDiscoverySummary();
 
     # Results:
-    my $ServersMappedtoTags = $GetDiscoverySummaryResponse->ServersMappedtoTags;
-    my $Applications        = $GetDiscoverySummaryResponse->Applications;
+    my $AgentSummary     = $GetDiscoverySummaryResponse->AgentSummary;
+    my $Applications     = $GetDiscoverySummaryResponse->Applications;
+    my $ConnectorSummary = $GetDiscoverySummaryResponse->ConnectorSummary;
+    my $Servers          = $GetDiscoverySummaryResponse->Servers;
     my $ServersMappedToApplications =
       $GetDiscoverySummaryResponse->ServersMappedToApplications;
-    my $ConnectorSummary = $GetDiscoverySummaryResponse->ConnectorSummary;
-    my $AgentSummary     = $GetDiscoverySummaryResponse->AgentSummary;
-    my $Servers          = $GetDiscoverySummaryResponse->Servers;
+    my $ServersMappedtoTags = $GetDiscoverySummaryResponse->ServersMappedtoTags;
 
     # Returns a L<Paws::Discovery::GetDiscoverySummaryResponse> object.
 

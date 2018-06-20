@@ -37,19 +37,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name                => 'MyString',
       BlockDeviceMappings => [
         {
-          DeviceName  => 'MyString',
-          VirtualName => 'MyString',
-          NoDevice    => 'MyString',
-          Ebs         => {
-            SnapshotId => 'MyString',
-            Iops       => 1,            # OPTIONAL
-            VolumeType =>
-              'standard',    # values: standard, io1, gp2, sc1, st1; OPTIONAL
-            VolumeSize          => 1,            # OPTIONAL
-            KmsKeyId            => 'MyString',
+          DeviceName => 'MyString',
+          Ebs        => {
             DeleteOnTermination => 1,            # OPTIONAL
             Encrypted           => 1,            # OPTIONAL
+            Iops                => 1,            # OPTIONAL
+            KmsKeyId            => 'MyString',
+            SnapshotId          => 'MyString',
+            VolumeSize          => 1,            # OPTIONAL
+            VolumeType =>
+              'standard',    # values: standard, io1, gp2, sc1, st1; OPTIONAL
           },    # OPTIONAL
+          NoDevice    => 'MyString',
+          VirtualName => 'MyString',
         },
         ...
       ],        # OPTIONAL

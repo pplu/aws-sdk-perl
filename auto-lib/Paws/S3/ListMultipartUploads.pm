@@ -47,18 +47,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $IsTruncated        = $ListMultipartUploadsOutput->IsTruncated;
     my $Bucket             = $ListMultipartUploadsOutput->Bucket;
-    my $Uploads            = $ListMultipartUploadsOutput->Uploads;
+    my $CommonPrefixes     = $ListMultipartUploadsOutput->CommonPrefixes;
+    my $Delimiter          = $ListMultipartUploadsOutput->Delimiter;
+    my $EncodingType       = $ListMultipartUploadsOutput->EncodingType;
+    my $IsTruncated        = $ListMultipartUploadsOutput->IsTruncated;
     my $KeyMarker          = $ListMultipartUploadsOutput->KeyMarker;
     my $MaxUploads         = $ListMultipartUploadsOutput->MaxUploads;
     my $NextKeyMarker      = $ListMultipartUploadsOutput->NextKeyMarker;
+    my $NextUploadIdMarker = $ListMultipartUploadsOutput->NextUploadIdMarker;
     my $Prefix             = $ListMultipartUploadsOutput->Prefix;
     my $UploadIdMarker     = $ListMultipartUploadsOutput->UploadIdMarker;
-    my $NextUploadIdMarker = $ListMultipartUploadsOutput->NextUploadIdMarker;
-    my $EncodingType       = $ListMultipartUploadsOutput->EncodingType;
-    my $Delimiter          = $ListMultipartUploadsOutput->Delimiter;
-    my $CommonPrefixes     = $ListMultipartUploadsOutput->CommonPrefixes;
+    my $Uploads            = $ListMultipartUploadsOutput->Uploads;
 
     # Returns a L<Paws::S3::ListMultipartUploadsOutput> object.
 

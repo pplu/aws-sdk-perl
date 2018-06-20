@@ -32,19 +32,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeActivationsResult = $ssm->DescribeActivations(
       Filters => [
         {
-          FilterValues => [ 'MyString', ... ],    # OPTIONAL
           FilterKey => 'ActivationIds'
           ,    # values: ActivationIds, DefaultInstanceName, IamRole; OPTIONAL
+          FilterValues => [ 'MyString', ... ],    # OPTIONAL
         },
         ...
-      ],       # OPTIONAL
-      MaxResults => 1,                # OPTIONAL
-      NextToken  => 'MyNextToken',    # OPTIONAL
+      ],                                          # OPTIONAL
+      MaxResults => 1,                            # OPTIONAL
+      NextToken  => 'MyNextToken',                # OPTIONAL
     );
 
     # Results:
-    my $NextToken      = $DescribeActivationsResult->NextToken;
     my $ActivationList = $DescribeActivationsResult->ActivationList;
+    my $NextToken      = $DescribeActivationsResult->NextToken;
 
     # Returns a L<Paws::SSM::DescribeActivationsResult> object.
 

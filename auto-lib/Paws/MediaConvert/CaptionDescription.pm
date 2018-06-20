@@ -1,6 +1,7 @@
 package Paws::MediaConvert::CaptionDescription;
   use Moose;
   has CaptionSelectorName => (is => 'ro', isa => 'Str', request_name => 'captionSelectorName', traits => ['NameInRequest'], required => 1);
+  has CustomLanguageCode => (is => 'ro', isa => 'Str', request_name => 'customLanguageCode', traits => ['NameInRequest']);
   has DestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::CaptionDestinationSettings', request_name => 'destinationSettings', traits => ['NameInRequest'], required => 1);
   has LanguageCode => (is => 'ro', isa => 'Str', request_name => 'languageCode', traits => ['NameInRequest']);
   has LanguageDescription => (is => 'ro', isa => 'Str', request_name => 'languageDescription', traits => ['NameInRequest']);
@@ -45,6 +46,12 @@ Description of Caption output
 each input when generating captions. The name should be of the format
 "Caption Selector ", which denotes that the Nth Caption Selector will
 be used from each input.
+
+
+=head2 CustomLanguageCode => Str
+
+  Indicates the language of the caption output track, using the ISO 639-2
+or ISO 639-3 three-letter language code
 
 
 =head2 B<REQUIRED> DestinationSettings => L<Paws::MediaConvert::CaptionDestinationSettings>

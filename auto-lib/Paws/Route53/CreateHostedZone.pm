@@ -50,11 +50,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $VPC           = $CreateHostedZoneResponse->VPC;
+    my $ChangeInfo    = $CreateHostedZoneResponse->ChangeInfo;
+    my $DelegationSet = $CreateHostedZoneResponse->DelegationSet;
     my $HostedZone    = $CreateHostedZoneResponse->HostedZone;
     my $Location      = $CreateHostedZoneResponse->Location;
-    my $DelegationSet = $CreateHostedZoneResponse->DelegationSet;
-    my $ChangeInfo    = $CreateHostedZoneResponse->ChangeInfo;
+    my $VPC           = $CreateHostedZoneResponse->VPC;
 
     # Returns a L<Paws::Route53::CreateHostedZoneResponse> object.
 

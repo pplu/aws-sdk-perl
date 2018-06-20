@@ -41,20 +41,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],                                       # OPTIONAL
       Filters => [
         {
+          Key    => 'MyDocumentKeyValuesFilterKey', # min: 1, max: 128; OPTIONAL
           Values => [
             'MyDocumentKeyValuesFilterValue', ...    # min: 1, max: 256
           ],                                         # OPTIONAL
-          Key => 'MyDocumentKeyValuesFilterKey',    # min: 1, max: 128; OPTIONAL
         },
         ...
-      ],                                            # OPTIONAL
-      MaxResults => 1,                              # OPTIONAL
-      NextToken  => 'MyNextToken',                  # OPTIONAL
+      ],                                             # OPTIONAL
+      MaxResults => 1,                               # OPTIONAL
+      NextToken  => 'MyNextToken',                   # OPTIONAL
     );
 
     # Results:
-    my $NextToken           = $ListDocumentsResult->NextToken;
     my $DocumentIdentifiers = $ListDocumentsResult->DocumentIdentifiers;
+    my $NextToken           = $ListDocumentsResult->NextToken;
 
     # Returns a L<Paws::SSM::ListDocumentsResult> object.
 

@@ -40,8 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SendTemplatedEmailResponse = $email->SendTemplatedEmail(
       Destination => {
         BccAddresses => [ 'MyAddress', ... ],    # OPTIONAL
-        ToAddresses  => [ 'MyAddress', ... ],    # OPTIONAL
         CcAddresses  => [ 'MyAddress', ... ],    # OPTIONAL
+        ToAddresses  => [ 'MyAddress', ... ],    # OPTIONAL
       },
       Source               => 'MyAddress',
       Template             => 'MyTemplateName',
@@ -53,8 +53,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SourceArn            => 'MyAmazonResourceName',      # OPTIONAL
       Tags                 => [
         {
-          Value => 'MyMessageTagValue',
           Name  => 'MyMessageTagName',
+          Value => 'MyMessageTagValue',
 
         },
         ...

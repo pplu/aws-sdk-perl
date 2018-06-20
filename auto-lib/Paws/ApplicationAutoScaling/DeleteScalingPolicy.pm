@@ -35,10 +35,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # web-app, which is running in the default cluster.
     my $DeleteScalingPolicyResponse = $autoscaling->DeleteScalingPolicy(
       {
+        'PolicyName'        => 'web-app-cpu-lt-25',
         'ResourceId'        => 'service/default/web-app',
-        'ServiceNamespace'  => 'ecs',
         'ScalableDimension' => 'ecs:service:DesiredCount',
-        'PolicyName'        => 'web-app-cpu-lt-25'
+        'ServiceNamespace'  => 'ecs'
       }
     );
 

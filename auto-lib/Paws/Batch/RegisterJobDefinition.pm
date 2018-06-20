@@ -38,10 +38,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $RegisterJobDefinitionResponse = $batch->RegisterJobDefinition(
       {
         'ContainerProperties' => {
-          'Memory'  => 128,
-          'Vcpus'   => 1,
+          'Command' => [ 'sleep', 10 ],
           'Image'   => 'busybox',
-          'Command' => [ 'sleep', 10 ]
+          'Memory'  => 128,
+          'Vcpus'   => 1
         },
         'JobDefinitionName' => 'sleep10',
         'Type'              => 'container'
@@ -49,9 +49,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $revision          = $RegisterJobDefinitionResponse->revision;
     my $jobDefinitionArn  = $RegisterJobDefinitionResponse->jobDefinitionArn;
     my $jobDefinitionName = $RegisterJobDefinitionResponse->jobDefinitionName;
+    my $revision          = $RegisterJobDefinitionResponse->revision;
 
     # Returns a L<Paws::Batch::RegisterJobDefinitionResponse> object.
 

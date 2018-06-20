@@ -40,9 +40,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $failedItems = $DescribeAssessmentTemplatesResponse->failedItems;
     my $assessmentTemplates =
       $DescribeAssessmentTemplatesResponse->assessmentTemplates;
+    my $failedItems = $DescribeAssessmentTemplatesResponse->failedItems;
 
     # Returns a L<Paws::Inspector::DescribeAssessmentTemplatesResponse> object.
 

@@ -42,17 +42,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description    => 'MyString',       # OPTIONAL
       DryRun         => 1,                # OPTIONAL
       LoadPermission => {
-        Remove => [
+        Add => [
           {
-            UserId => 'MyString',
             Group  => 'all',              # values: all; OPTIONAL
+            UserId => 'MyString',
           },
           ...
         ],                                # OPTIONAL
-        Add => [
+        Remove => [
           {
-            UserId => 'MyString',
             Group  => 'all',              # values: all; OPTIONAL
+            UserId => 'MyString',
           },
           ...
         ],                                # OPTIONAL

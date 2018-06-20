@@ -39,9 +39,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $PublicIp     = $AllocateAddressResult->PublicIp;
-    my $Domain       = $AllocateAddressResult->Domain;
     my $AllocationId = $AllocateAddressResult->AllocationId;
+    my $Domain       = $AllocateAddressResult->Domain;
+    my $PublicIp     = $AllocateAddressResult->PublicIp;
 
     # Returns a L<Paws::EC2::AllocateAddressResult> object.
     # To allocate an Elastic IP address for EC2-Classic
@@ -50,8 +50,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $AllocateAddressResult = $ec2->AllocateAddress();
 
     # Results:
-    my $PublicIp = $AllocateAddressResult->PublicIp;
     my $Domain   = $AllocateAddressResult->Domain;
+    my $PublicIp = $AllocateAddressResult->PublicIp;
 
     # Returns a L<Paws::EC2::AllocateAddressResult> object.
 

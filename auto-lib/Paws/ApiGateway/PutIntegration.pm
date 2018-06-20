@@ -63,19 +63,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $HttpMethod           = $Integration->HttpMethod;
-    my $Credentials          = $Integration->Credentials;
-    my $ContentHandling      = $Integration->ContentHandling;
-    my $RequestTemplates     = $Integration->RequestTemplates;
-    my $IntegrationResponses = $Integration->IntegrationResponses;
-    my $ConnectionType       = $Integration->ConnectionType;
-    my $ConnectionId         = $Integration->ConnectionId;
-    my $Type                 = $Integration->Type;
-    my $RequestParameters    = $Integration->RequestParameters;
     my $CacheKeyParameters   = $Integration->CacheKeyParameters;
-    my $TimeoutInMillis      = $Integration->TimeoutInMillis;
-    my $PassthroughBehavior  = $Integration->PassthroughBehavior;
     my $CacheNamespace       = $Integration->CacheNamespace;
+    my $ConnectionId         = $Integration->ConnectionId;
+    my $ConnectionType       = $Integration->ConnectionType;
+    my $ContentHandling      = $Integration->ContentHandling;
+    my $Credentials          = $Integration->Credentials;
+    my $HttpMethod           = $Integration->HttpMethod;
+    my $IntegrationResponses = $Integration->IntegrationResponses;
+    my $PassthroughBehavior  = $Integration->PassthroughBehavior;
+    my $RequestParameters    = $Integration->RequestParameters;
+    my $RequestTemplates     = $Integration->RequestTemplates;
+    my $TimeoutInMillis      = $Integration->TimeoutInMillis;
+    my $Type                 = $Integration->Type;
     my $Uri                  = $Integration->Uri;
 
     # Returns a L<Paws::ApiGateway::Integration> object.

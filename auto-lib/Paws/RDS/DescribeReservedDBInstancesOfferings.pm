@@ -42,11 +42,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ReservedDBInstancesOfferingMessage =
       $rds->DescribeReservedDBInstancesOfferings(
       {
-        'OfferingType'       => 'No Upfront',
-        'ProductDescription' => 'mysql',
-        'MultiAZ'            => 0,
+        'DBInstanceClass'    => 'db.t2.micro',
         'Duration'           => '1y',
-        'DBInstanceClass'    => 'db.t2.micro'
+        'MultiAZ'            => 0,
+        'OfferingType'       => 'No Upfront',
+        'ProductDescription' => 'mysql'
       }
       );
 

@@ -40,8 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # of eight characters and to require one or more numbers in the password:
     $iam->UpdateAccountPasswordPolicy(
       {
-        'RequireNumbers'        => 1,
-        'MinimumPasswordLength' => 8
+        'MinimumPasswordLength' => 8,
+        'RequireNumbers'        => true
       }
     );
 

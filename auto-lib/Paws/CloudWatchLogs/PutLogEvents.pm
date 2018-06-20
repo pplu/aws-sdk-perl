@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $PutLogEventsResponse = $logs->PutLogEvents(
       LogEvents => [
         {
-          timestamp => 1,
           message   => 'MyEventMessage',    # min: 1,
+          timestamp => 1,
 
         },
         ...

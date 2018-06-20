@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Queues    = $ListQueuesResponse->Queues;
     my $NextToken = $ListQueuesResponse->NextToken;
+    my $Queues    = $ListQueuesResponse->Queues;
 
     # Returns a L<Paws::MediaConvert::ListQueuesResponse> object.
 

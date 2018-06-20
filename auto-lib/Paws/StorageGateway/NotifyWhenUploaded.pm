@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NotificationId = $NotifyWhenUploadedOutput->NotificationId;
     my $FileShareARN   = $NotifyWhenUploadedOutput->FileShareARN;
+    my $NotificationId = $NotifyWhenUploadedOutput->NotificationId;
 
     # Returns a L<Paws::StorageGateway::NotifyWhenUploadedOutput> object.
 

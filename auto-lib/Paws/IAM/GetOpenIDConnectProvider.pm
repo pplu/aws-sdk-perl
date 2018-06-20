@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CreateDate     = $GetOpenIDConnectProviderResponse->CreateDate;
     my $ClientIDList   = $GetOpenIDConnectProviderResponse->ClientIDList;
+    my $CreateDate     = $GetOpenIDConnectProviderResponse->CreateDate;
     my $ThumbprintList = $GetOpenIDConnectProviderResponse->ThumbprintList;
     my $Url            = $GetOpenIDConnectProviderResponse->Url;
 

@@ -33,26 +33,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $elasticbeanstalk = Paws->service('ElasticBeanstalk');
     my $CreatePlatformVersionResult = $elasticbeanstalk->CreatePlatformVersion(
       PlatformDefinitionBundle => {
-        S3Key    => 'MyS3Key',       # max: 1024; OPTIONAL
         S3Bucket => 'MyS3Bucket',    # max: 255; OPTIONAL
+        S3Key    => 'MyS3Key',       # max: 1024; OPTIONAL
       },
       PlatformName    => 'MyPlatformName',
       PlatformVersion => 'MyPlatformVersion',
       EnvironmentName => 'MyEnvironmentName',    # OPTIONAL
       OptionSettings  => [
         {
-          OptionName => 'MyConfigurationOptionName',     # OPTIONAL
-          Value      => 'MyConfigurationOptionValue',    # OPTIONAL
-          ResourceName => 'MyResourceName',       # min: 1, max: 256; OPTIONAL
-          Namespace    => 'MyOptionNamespace',    # OPTIONAL
+          Namespace  => 'MyOptionNamespace',            # OPTIONAL
+          OptionName => 'MyConfigurationOptionName',    # OPTIONAL
+          ResourceName => 'MyResourceName',    # min: 1, max: 256; OPTIONAL
+          Value => 'MyConfigurationOptionValue',    # OPTIONAL
         },
         ...
-      ],                                          # OPTIONAL
+      ],                                            # OPTIONAL
     );
 
     # Results:
-    my $PlatformSummary = $CreatePlatformVersionResult->PlatformSummary;
     my $Builder         = $CreatePlatformVersionResult->Builder;
+    my $PlatformSummary = $CreatePlatformVersionResult->PlatformSummary;
 
     # Returns a L<Paws::ElasticBeanstalk::CreatePlatformVersionResult> object.
 

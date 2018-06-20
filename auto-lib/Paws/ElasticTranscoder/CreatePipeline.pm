@@ -41,41 +41,41 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Role          => 'MyRole',
       AwsKmsKeyArn  => 'MyKeyArn',       # OPTIONAL
       ContentConfig => {
-        Bucket       => 'MyBucketName',
-        StorageClass => 'MyStorageClass',    # OPTIONAL
-        Permissions  => [
+        Bucket      => 'MyBucketName',
+        Permissions => [
           {
-            GranteeType => 'MyGranteeType',    # OPTIONAL
-            Grantee     => 'MyGrantee',        # min: 1, max: 255; OPTIONAL
-            Access => [ 'MyAccessControl', ... ],    # max: 30; OPTIONAL
+            Access => [ 'MyAccessControl', ... ],   # max: 30; OPTIONAL
+            Grantee => 'MyGrantee',                 # min: 1, max: 255; OPTIONAL
+            GranteeType => 'MyGranteeType',         # OPTIONAL
           },
           ...
-        ],                                           # max: 30; OPTIONAL
+        ],                                          # max: 30; OPTIONAL
+        StorageClass => 'MyStorageClass',           # OPTIONAL
       },    # OPTIONAL
       Notifications => {
         Completed   => 'MySnsTopic',    # OPTIONAL
-        Progressing => 'MySnsTopic',    # OPTIONAL
         Error       => 'MySnsTopic',    # OPTIONAL
+        Progressing => 'MySnsTopic',    # OPTIONAL
         Warning     => 'MySnsTopic',    # OPTIONAL
       },    # OPTIONAL
       OutputBucket    => 'MyBucketName',    # OPTIONAL
       ThumbnailConfig => {
-        Bucket       => 'MyBucketName',
-        StorageClass => 'MyStorageClass',    # OPTIONAL
-        Permissions  => [
+        Bucket      => 'MyBucketName',
+        Permissions => [
           {
-            GranteeType => 'MyGranteeType',    # OPTIONAL
-            Grantee     => 'MyGrantee',        # min: 1, max: 255; OPTIONAL
-            Access => [ 'MyAccessControl', ... ],    # max: 30; OPTIONAL
+            Access => [ 'MyAccessControl', ... ],   # max: 30; OPTIONAL
+            Grantee => 'MyGrantee',                 # min: 1, max: 255; OPTIONAL
+            GranteeType => 'MyGranteeType',         # OPTIONAL
           },
           ...
-        ],                                           # max: 30; OPTIONAL
+        ],                                          # max: 30; OPTIONAL
+        StorageClass => 'MyStorageClass',           # OPTIONAL
       },    # OPTIONAL
     );
 
     # Results:
-    my $Warnings = $CreatePipelineResponse->Warnings;
     my $Pipeline = $CreatePipelineResponse->Pipeline;
+    my $Warnings = $CreatePipelineResponse->Warnings;
 
     # Returns a L<Paws::ElasticTranscoder::CreatePipelineResponse> object.
 

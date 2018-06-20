@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Admins:
     $iam->AddUserToGroup(
       {
-        'UserName'  => 'Bob',
-        'GroupName' => 'Admins'
+        'GroupName' => 'Admins',
+        'UserName'  => 'Bob'
       }
     );
 

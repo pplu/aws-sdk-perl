@@ -40,8 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken      = $DescribeCommunicationsResponse->NextToken;
     my $Communications = $DescribeCommunicationsResponse->Communications;
+    my $NextToken      = $DescribeCommunicationsResponse->NextToken;
 
     # Returns a L<Paws::Support::DescribeCommunicationsResponse> object.
 

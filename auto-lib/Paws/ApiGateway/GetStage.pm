@@ -36,21 +36,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CacheClusterStatus   = $Stage->CacheClusterStatus;
-    my $CacheClusterEnabled  = $Stage->CacheClusterEnabled;
-    my $CanarySettings       = $Stage->CanarySettings;
     my $AccessLogSettings    = $Stage->AccessLogSettings;
-    my $LastUpdatedDate      = $Stage->LastUpdatedDate;
-    my $Variables            = $Stage->Variables;
-    my $CreatedDate          = $Stage->CreatedDate;
-    my $StageName            = $Stage->StageName;
-    my $ClientCertificateId  = $Stage->ClientCertificateId;
-    my $MethodSettings       = $Stage->MethodSettings;
-    my $DocumentationVersion = $Stage->DocumentationVersion;
-    my $DeploymentId         = $Stage->DeploymentId;
+    my $CacheClusterEnabled  = $Stage->CacheClusterEnabled;
     my $CacheClusterSize     = $Stage->CacheClusterSize;
-    my $Tags                 = $Stage->Tags;
+    my $CacheClusterStatus   = $Stage->CacheClusterStatus;
+    my $CanarySettings       = $Stage->CanarySettings;
+    my $ClientCertificateId  = $Stage->ClientCertificateId;
+    my $CreatedDate          = $Stage->CreatedDate;
+    my $DeploymentId         = $Stage->DeploymentId;
     my $Description          = $Stage->Description;
+    my $DocumentationVersion = $Stage->DocumentationVersion;
+    my $LastUpdatedDate      = $Stage->LastUpdatedDate;
+    my $MethodSettings       = $Stage->MethodSettings;
+    my $StageName            = $Stage->StageName;
+    my $Tags                 = $Stage->Tags;
+    my $Variables            = $Stage->Variables;
 
     # Returns a L<Paws::ApiGateway::Stage> object.
 

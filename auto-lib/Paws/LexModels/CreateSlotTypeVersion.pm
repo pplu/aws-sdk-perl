@@ -35,15 +35,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $Checksum          = $CreateSlotTypeVersionResponse->Checksum;
+    my $CreatedDate       = $CreateSlotTypeVersionResponse->CreatedDate;
+    my $Description       = $CreateSlotTypeVersionResponse->Description;
+    my $EnumerationValues = $CreateSlotTypeVersionResponse->EnumerationValues;
+    my $LastUpdatedDate   = $CreateSlotTypeVersionResponse->LastUpdatedDate;
+    my $Name              = $CreateSlotTypeVersionResponse->Name;
     my $ValueSelectionStrategy =
       $CreateSlotTypeVersionResponse->ValueSelectionStrategy;
-    my $LastUpdatedDate   = $CreateSlotTypeVersionResponse->LastUpdatedDate;
-    my $CreatedDate       = $CreateSlotTypeVersionResponse->CreatedDate;
-    my $Version           = $CreateSlotTypeVersionResponse->Version;
-    my $EnumerationValues = $CreateSlotTypeVersionResponse->EnumerationValues;
-    my $Description       = $CreateSlotTypeVersionResponse->Description;
-    my $Name              = $CreateSlotTypeVersionResponse->Name;
-    my $Checksum          = $CreateSlotTypeVersionResponse->Checksum;
+    my $Version = $CreateSlotTypeVersionResponse->Version;
 
     # Returns a L<Paws::LexModels::CreateSlotTypeVersionResponse> object.
 

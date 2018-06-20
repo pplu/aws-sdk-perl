@@ -40,17 +40,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $AllowsHostedConnections = $Lag->AllowsHostedConnections;
+    my $AwsDevice               = $Lag->AwsDevice;
     my $Connections             = $Lag->Connections;
+    my $ConnectionsBandwidth    = $Lag->ConnectionsBandwidth;
+    my $LagId                   = $Lag->LagId;
     my $LagName                 = $Lag->LagName;
     my $LagState                = $Lag->LagState;
-    my $NumberOfConnections     = $Lag->NumberOfConnections;
-    my $MinimumLinks            = $Lag->MinimumLinks;
-    my $AwsDevice               = $Lag->AwsDevice;
-    my $AllowsHostedConnections = $Lag->AllowsHostedConnections;
-    my $OwnerAccount            = $Lag->OwnerAccount;
-    my $LagId                   = $Lag->LagId;
     my $Location                = $Lag->Location;
-    my $ConnectionsBandwidth    = $Lag->ConnectionsBandwidth;
+    my $MinimumLinks            = $Lag->MinimumLinks;
+    my $NumberOfConnections     = $Lag->NumberOfConnections;
+    my $OwnerAccount            = $Lag->OwnerAccount;
     my $Region                  = $Lag->Region;
 
     # Returns a L<Paws::DirectConnect::Lag> object.

@@ -36,10 +36,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $CurrencyCode = $GetHostReservationPurchasePreviewResult->CurrencyCode;
+    my $Purchase     = $GetHostReservationPurchasePreviewResult->Purchase;
     my $TotalHourlyPrice =
       $GetHostReservationPurchasePreviewResult->TotalHourlyPrice;
-    my $Purchase     = $GetHostReservationPurchasePreviewResult->Purchase;
-    my $CurrencyCode = $GetHostReservationPurchasePreviewResult->CurrencyCode;
     my $TotalUpfrontPrice =
       $GetHostReservationPurchasePreviewResult->TotalUpfrontPrice;
 

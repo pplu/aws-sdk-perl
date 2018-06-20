@@ -31,57 +31,57 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $autoscaling = Paws->service('AutoScalingPlans');
     my $CreateScalingPlanResponse = $autoscaling->CreateScalingPlan(
       ApplicationSource => {
-        TagFilters => [
+        CloudFormationStackARN => 'MyXmlString',    # OPTIONAL
+        TagFilters             => [
           {
+            Key    => 'MyXmlStringMaxLen128',       # min: 1, max: 128; OPTIONAL
             Values => [
-              'MyXmlStringMaxLen256', ...    # min: 1, max: 256
-            ],                               # OPTIONAL
-            Key => 'MyXmlStringMaxLen128',   # min: 1, max: 128; OPTIONAL
+              'MyXmlStringMaxLen256', ...           # min: 1, max: 256
+            ],                                      # OPTIONAL
           },
           ...
-        ],                                   # OPTIONAL
-        CloudFormationStackARN => 'MyXmlString',    # OPTIONAL
+        ],                                          # OPTIONAL
       },
       ScalingInstructions => [
         {
+          MaxCapacity => 1,
+          MinCapacity => 1,
+          ResourceId  => 'MyResourceIdMaxLen1600',    # min: 1, max: 1600
+          ScalableDimension => 'autoscaling:autoScalingGroup:DesiredCapacity'
+          , # values: autoscaling:autoScalingGroup:DesiredCapacity, ecs:service:DesiredCount, ec2:spot-fleet-request:TargetCapacity, rds:cluster:ReadReplicaCount, dynamodb:table:ReadCapacityUnits, dynamodb:table:WriteCapacityUnits, dynamodb:index:ReadCapacityUnits, dynamodb:index:WriteCapacityUnits
+          ServiceNamespace =>
+            'autoscaling',    # values: autoscaling, ecs, ec2, rds, dynamodb
           TargetTrackingConfigurations => [
             {
               TargetValue                          => 1,
-              ScaleInCooldown                      => 1,    # OPTIONAL
-              EstimatedInstanceWarmup              => 1,    # OPTIONAL
-              ScaleOutCooldown                     => 1,    # OPTIONAL
-              PredefinedScalingMetricSpecification => {
-                PredefinedScalingMetricType => 'ASGAverageCPUUtilization'
-                , # values: ASGAverageCPUUtilization, ASGAverageNetworkIn, ASGAverageNetworkOut, DynamoDBReadCapacityUtilization, DynamoDBWriteCapacityUtilization, ECSServiceAverageCPUUtilization, ECSServiceAverageMemoryUtilization, ALBRequestCountPerTarget, RDSReaderAverageCPUUtilization, RDSReaderAverageDatabaseConnections, EC2SpotFleetRequestAverageCPUUtilization, EC2SpotFleetRequestAverageNetworkIn, EC2SpotFleetRequestAverageNetworkOut
-                ResourceLabel =>
-                  'MyResourceLabel',    # min: 1, max: 1023; OPTIONAL
-              },    # OPTIONAL
               CustomizedScalingMetricSpecification => {
-                Statistic => 'Average'
-                ,    # values: Average, Minimum, Maximum, SampleCount, Sum
-                Namespace  => 'MyMetricNamespace',
                 MetricName => 'MyMetricName',
+                Namespace  => 'MyMetricNamespace',
+                Statistic  => 'Average'
+                ,    # values: Average, Minimum, Maximum, SampleCount, Sum
                 Dimensions => [
                   {
-                    Value => 'MyMetricDimensionValue',
                     Name  => 'MyMetricDimensionName',
+                    Value => 'MyMetricDimensionValue',
 
                   },
                   ...
                 ],    # OPTIONAL
                 Unit => 'MyMetricUnit',    # OPTIONAL
               },    # OPTIONAL
-              DisableScaleIn => 1,    # OPTIONAL
+              DisableScaleIn                       => 1,    # OPTIONAL
+              EstimatedInstanceWarmup              => 1,    # OPTIONAL
+              PredefinedScalingMetricSpecification => {
+                PredefinedScalingMetricType => 'ASGAverageCPUUtilization'
+                , # values: ASGAverageCPUUtilization, ASGAverageNetworkIn, ASGAverageNetworkOut, DynamoDBReadCapacityUtilization, DynamoDBWriteCapacityUtilization, ECSServiceAverageCPUUtilization, ECSServiceAverageMemoryUtilization, ALBRequestCountPerTarget, RDSReaderAverageCPUUtilization, RDSReaderAverageDatabaseConnections, EC2SpotFleetRequestAverageCPUUtilization, EC2SpotFleetRequestAverageNetworkIn, EC2SpotFleetRequestAverageNetworkOut
+                ResourceLabel =>
+                  'MyResourceLabel',    # min: 1, max: 1023; OPTIONAL
+              },    # OPTIONAL
+              ScaleInCooldown  => 1,    # OPTIONAL
+              ScaleOutCooldown => 1,    # OPTIONAL
             },
             ...
           ],
-          MaxCapacity => 1,
-          ResourceId  => 'MyResourceIdMaxLen1600',    # min: 1, max: 1600
-          ScalableDimension => 'autoscaling:autoScalingGroup:DesiredCapacity'
-          , # values: autoscaling:autoScalingGroup:DesiredCapacity, ecs:service:DesiredCount, ec2:spot-fleet-request:TargetCapacity, rds:cluster:ReadReplicaCount, dynamodb:table:ReadCapacityUnits, dynamodb:table:WriteCapacityUnits, dynamodb:index:ReadCapacityUnits, dynamodb:index:WriteCapacityUnits
-          ServiceNamespace =>
-            'autoscaling',    # values: autoscaling, ecs, ec2, rds, dynamodb
-          MinCapacity => 1,
 
         },
         ...

@@ -41,32 +41,32 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'AttributeDefinitions' => [
 
           {
-            'AttributeType' => 'S',
-            'AttributeName' => 'Artist'
+            'AttributeName' => 'Artist',
+            'AttributeType' => 'S'
           },
 
           {
-            'AttributeType' => 'S',
-            'AttributeName' => 'SongTitle'
+            'AttributeName' => 'SongTitle',
+            'AttributeType' => 'S'
           }
         ],
         'KeySchema' => [
 
           {
-            'KeyType'       => 'HASH',
-            'AttributeName' => 'Artist'
+            'AttributeName' => 'Artist',
+            'KeyType'       => 'HASH'
           },
 
           {
-            'KeyType'       => 'RANGE',
-            'AttributeName' => 'SongTitle'
+            'AttributeName' => 'SongTitle',
+            'KeyType'       => 'RANGE'
           }
         ],
-        'TableName'             => 'Music',
         'ProvisionedThroughput' => {
           'ReadCapacityUnits'  => 5,
           'WriteCapacityUnits' => 5
-        }
+        },
+        'TableName' => 'Music'
       }
     );
 

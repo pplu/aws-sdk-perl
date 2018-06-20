@@ -32,8 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following command changes the password for the current IAM user.
     $iam->ChangePassword(
       {
-        'OldPassword' => '3s0K_;xh4~8XXI',
-        'NewPassword' => ']35d/{pB9Fo9wJ'
+        'NewPassword' => ']35d/{pB9Fo9wJ',
+        'OldPassword' => '3s0K_;xh4~8XXI'
       }
     );
 

@@ -36,10 +36,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # complete so that it can finish launching or terminating the instance.
     my $CompleteLifecycleActionAnswer = $autoscaling->CompleteLifecycleAction(
       {
-        'LifecycleActionToken'  => 'bcd2f1b8-9a78-44d3-8a7a-4dd07d7cf635',
+        'AutoScalingGroupName'  => 'my-auto-scaling-group',
         'LifecycleActionResult' => 'CONTINUE',
-        'LifecycleHookName'     => 'my-lifecycle-hook',
-        'AutoScalingGroupName'  => 'my-auto-scaling-group'
+        'LifecycleActionToken'  => 'bcd2f1b8-9a78-44d3-8a7a-4dd07d7cf635',
+        'LifecycleHookName'     => 'my-lifecycle-hook'
       }
     );
 

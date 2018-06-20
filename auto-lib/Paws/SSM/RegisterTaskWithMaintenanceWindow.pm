@@ -47,8 +47,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ServiceRoleArn => 'MyServiceRole',
       Targets        => [
         {
-          Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
           Key => 'MyTargetKey',                  # min: 1, max: 128; OPTIONAL
+          Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
         },
         ...
       ],
@@ -58,8 +58,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ClientToken => 'MyClientToken',                     # OPTIONAL
       Description => 'MyMaintenanceWindowDescription',    # OPTIONAL
       LoggingInfo => {
-        S3Region     => 'MyS3Region',                     # min: 3, max: 20
         S3BucketName => 'MyS3BucketName',                 # min: 3, max: 63
+        S3Region     => 'MyS3Region',                     # min: 3, max: 20
         S3KeyPrefix  => 'MyS3KeyPrefix',                  # max: 500; OPTIONAL
       },    # OPTIONAL
       Name                     => 'MyMaintenanceWindowName',    # OPTIONAL
@@ -74,31 +74,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # min: 1, max: 200; OPTIONAL
         },    # OPTIONAL
         Lambda => {
-          Qualifier =>
-            'MyMaintenanceWindowLambdaQualifier',   # min: 1, max: 128; OPTIONAL
-          Payload => 'BlobMaintenanceWindowLambdaPayload', # max: 4096; OPTIONAL
           ClientContext => 'MyMaintenanceWindowLambdaClientContext'
           ,    # min: 1, max: 8000; OPTIONAL
+          Payload => 'BlobMaintenanceWindowLambdaPayload', # max: 4096; OPTIONAL
+          Qualifier =>
+            'MyMaintenanceWindowLambdaQualifier',   # min: 1, max: 128; OPTIONAL
         },    # OPTIONAL
         RunCommand => {
-          OutputS3BucketName => 'MyS3BucketName',    # min: 3, max: 63
-          Comment            => 'MyComment',         # max: 100; OPTIONAL
-          TimeoutSeconds   => 1,           # min: 30, max: 2592000; OPTIONAL
-          DocumentHashType => 'Sha256',    # values: Sha256, Sha1; OPTIONAL
-          OutputS3KeyPrefix => 'MyS3KeyPrefix',     # max: 500; OPTIONAL
-          ServiceRoleArn    => 'MyServiceRole',
-          DocumentHash      => 'MyDocumentHash',    # max: 256; OPTIONAL
-          Parameters => { 'MyParameterName' => [ 'MyParameterValue', ... ], }
-          ,                                         # OPTIONAL
+          Comment          => 'MyComment',      # max: 100; OPTIONAL
+          DocumentHash     => 'MyDocumentHash', # max: 256; OPTIONAL
+          DocumentHashType => 'Sha256',         # values: Sha256, Sha1; OPTIONAL
           NotificationConfig => {
-            NotificationType =>
-              'Command',    # values: Command, Invocation; OPTIONAL
+            NotificationArn    => 'MyNotificationArn',    # OPTIONAL
             NotificationEvents => [
               'All',
               ... # values: All, InProgress, Success, TimedOut, Cancelled, Failed
             ],    # OPTIONAL
-            NotificationArn => 'MyNotificationArn',    # OPTIONAL
+            NotificationType =>
+              'Command',    # values: Command, Invocation; OPTIONAL
           },    # OPTIONAL
+          OutputS3BucketName => 'MyS3BucketName',    # min: 3, max: 63
+          OutputS3KeyPrefix  => 'MyS3KeyPrefix',     # max: 500; OPTIONAL
+          Parameters => { 'MyParameterName' => [ 'MyParameterValue', ... ], }
+          ,                                          # OPTIONAL
+          ServiceRoleArn => 'MyServiceRole',
+          TimeoutSeconds => 1,                 # min: 30, max: 2592000; OPTIONAL
         },    # OPTIONAL
         StepFunctions => {
           Input =>

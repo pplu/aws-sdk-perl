@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Succeeded = $BatchDeleteConnectionResponse->Succeeded;
     my $Errors    = $BatchDeleteConnectionResponse->Errors;
+    my $Succeeded = $BatchDeleteConnectionResponse->Succeeded;
 
     # Returns a L<Paws::Glue::BatchDeleteConnectionResponse> object.
 

@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $ProductViewSummary = $DescribeProductViewOutput->ProductViewSummary;
     my $ProvisioningArtifacts =
       $DescribeProductViewOutput->ProvisioningArtifacts;
-    my $ProductViewSummary = $DescribeProductViewOutput->ProductViewSummary;
 
     # Returns a L<Paws::ServiceCatalog::DescribeProductViewOutput> object.
 

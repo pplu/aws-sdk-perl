@@ -33,8 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The example sets and then enacts a data retrieval policy.
     $glacier->SetDataRetrievalPolicy(
       {
-        'AccountId' => '-',
-        'Policy'    => {
+        'Policy' => {
           'Rules' => [
 
             {
@@ -42,7 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               'Strategy'     => 'BytesPerHour'
             }
           ]
-        }
+        },
+        'AccountId' => '-'
       }
     );
 

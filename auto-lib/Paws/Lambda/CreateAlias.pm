@@ -45,12 +45,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $FunctionVersion = $AliasConfiguration->FunctionVersion;
-    my $RevisionId      = $AliasConfiguration->RevisionId;
     my $AliasArn        = $AliasConfiguration->AliasArn;
-    my $RoutingConfig   = $AliasConfiguration->RoutingConfig;
     my $Description     = $AliasConfiguration->Description;
+    my $FunctionVersion = $AliasConfiguration->FunctionVersion;
     my $Name            = $AliasConfiguration->Name;
+    my $RevisionId      = $AliasConfiguration->RevisionId;
+    my $RoutingConfig   = $AliasConfiguration->RoutingConfig;
 
     # Returns a L<Paws::Lambda::AliasConfiguration> object.
 

@@ -41,8 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $ArtifactList   = $UpdateJobOutput->ArtifactList;
-    my $WarningMessage = $UpdateJobOutput->WarningMessage;
     my $Success        = $UpdateJobOutput->Success;
+    my $WarningMessage = $UpdateJobOutput->WarningMessage;
 
     # Returns a L<Paws::ImportExport::UpdateJobOutput> object.
 

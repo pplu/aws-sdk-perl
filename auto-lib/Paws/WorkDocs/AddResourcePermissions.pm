@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $AddResourcePermissionsResponse = $workdocs->AddResourcePermissions(
       Principals => [
         {
-          Type => 'USER', # values: USER, GROUP, INVITE, ANONYMOUS, ORGANIZATION
-          Role => 'VIEWER',      # values: VIEWER, CONTRIBUTOR, OWNER, COOWNER
           Id   => 'MyIdType',    # min: 1, max: 256
+          Role => 'VIEWER',      # values: VIEWER, CONTRIBUTOR, OWNER, COOWNER
+          Type => 'USER', # values: USER, GROUP, INVITE, ANONYMOUS, ORGANIZATION
 
         },
         ...

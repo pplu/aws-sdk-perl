@@ -58,9 +58,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       PlayerLatencies => [
         {
           LatencyInMilliseconds => 1.0,            # OPTIONAL
+          PlayerId => 'MyNonZeroAndMaxString',     # min: 1, max: 1024; OPTIONAL
           RegionIdentifier =>
             'MyNonZeroAndMaxString',               # min: 1, max: 1024; OPTIONAL
-          PlayerId => 'MyNonZeroAndMaxString',     # min: 1, max: 1024; OPTIONAL
         },
         ...
       ],                                           # OPTIONAL
@@ -73,7 +73,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::GameLift::StartGameSessionPlacementOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gamelift/StartGameSessionPlacement>
 
 =head1 ATTRIBUTES
 

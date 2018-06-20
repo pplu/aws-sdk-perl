@@ -46,27 +46,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CallerArn      => 'MyResourceNameType',    # OPTIONAL
       ContextEntries => [
         {
-          ContextKeyValues => [ 'MyContextKeyValueType', ... ],    # OPTIONAL
           ContextKeyName => 'MyContextKeyNameType', # min: 5, max: 256; OPTIONAL
           ContextKeyType => 'string'
           , # values: string, stringList, numeric, numericList, boolean, booleanList, ip, ipList, binary, binaryList, date, dateList; OPTIONAL
+          ContextKeyValues => [ 'MyContextKeyValueType', ... ],    # OPTIONAL
         },
         ...
-      ],    # OPTIONAL
-      Marker       => 'MymarkerType',    # OPTIONAL
-      MaxItems     => 1,                 # OPTIONAL
+      ],                                                           # OPTIONAL
+      Marker       => 'MymarkerType',                              # OPTIONAL
+      MaxItems     => 1,                                           # OPTIONAL
       ResourceArns => [
-        'MyResourceNameType', ...        # min: 1, max: 2048
-      ],                                 # OPTIONAL
+        'MyResourceNameType', ...    # min: 1, max: 2048
+      ],                             # OPTIONAL
       ResourceHandlingOption => 'MyResourceHandlingOptionType',    # OPTIONAL
       ResourceOwner          => 'MyResourceNameType',              # OPTIONAL
       ResourcePolicy         => 'MypolicyDocumentType',            # OPTIONAL
     );
 
     # Results:
+    my $EvaluationResults = $SimulatePolicyResponse->EvaluationResults;
     my $IsTruncated       = $SimulatePolicyResponse->IsTruncated;
     my $Marker            = $SimulatePolicyResponse->Marker;
-    my $EvaluationResults = $SimulatePolicyResponse->EvaluationResults;
 
     # Returns a L<Paws::IAM::SimulatePolicyResponse> object.
 

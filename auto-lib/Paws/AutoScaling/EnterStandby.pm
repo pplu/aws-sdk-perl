@@ -33,9 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example puts the specified instance into standby mode.
     my $EnterStandbyAnswer = $autoscaling->EnterStandby(
       {
-        'ShouldDecrementDesiredCapacity' => 1,
+        'AutoScalingGroupName'           => 'my-auto-scaling-group',
         'InstanceIds'                    => ['i-93633f9b'],
-        'AutoScalingGroupName'           => 'my-auto-scaling-group'
+        'ShouldDecrementDesiredCapacity' => true
       }
     );
 

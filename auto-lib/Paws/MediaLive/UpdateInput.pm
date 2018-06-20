@@ -39,9 +39,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name                => 'My__string',                         # OPTIONAL
       Sources             => [
         {
-          Username      => 'My__string',
           PasswordParam => 'My__string',
           Url           => 'My__string',
+          Username      => 'My__string',
         },
         ...
       ],                                                           # OPTIONAL

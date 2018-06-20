@@ -37,9 +37,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $Failures = $UpdateContainerInstancesStateResponse->Failures;
     my $ContainerInstances =
       $UpdateContainerInstancesStateResponse->ContainerInstances;
+    my $Failures = $UpdateContainerInstancesStateResponse->Failures;
 
     # Returns a L<Paws::ECS::UpdateContainerInstancesStateResponse> object.
 

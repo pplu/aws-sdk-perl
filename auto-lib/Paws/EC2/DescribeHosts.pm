@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeHostsResult = $ec2->DescribeHosts(
       Filter => [
         {
+          Name   => 'MyString',
           Values => [ 'MyString', ... ],    # OPTIONAL
-          Name => 'MyString',
         },
         ...
       ],                                    # OPTIONAL
@@ -44,8 +44,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken = $DescribeHostsResult->NextToken;
     my $Hosts     = $DescribeHostsResult->Hosts;
+    my $NextToken = $DescribeHostsResult->NextToken;
 
     # Returns a L<Paws::EC2::DescribeHostsResult> object.
 

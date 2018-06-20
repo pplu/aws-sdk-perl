@@ -32,81 +32,84 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SendMessagesResponse = $pinpoint->SendMessages(
       ApplicationId  => 'My__string',
       MessageRequest => {
+        Addresses => {
+          'My__string' => {
+            BodyOverride => 'My__string',
+            ChannelType  => 'GCM'
+            , # values: GCM, APNS, APNS_SANDBOX, APNS_VOIP, APNS_VOIP_SANDBOX, ADM, SMS, EMAIL, BAIDU, CUSTOM; OPTIONAL
+            Context => { 'My__string' => 'My__string', },    # OPTIONAL
+            RawContent => 'My__string',
+            Substitutions => { 'My__string' => [ 'My__string', ... ], }
+            ,                                                # OPTIONAL
+            TitleOverride => 'My__string',
+          },
+        },    # OPTIONAL
+        Context => { 'My__string' => 'My__string', },    # OPTIONAL
         Endpoints => {
           'My__string' => {
-            TitleOverride => 'My__string',
-            BodyOverride  => 'My__string',
-            RawContent    => 'My__string',
+            BodyOverride => 'My__string',
+            Context      => { 'My__string' => 'My__string', },    # OPTIONAL
+            RawContent   => 'My__string',
             Substitutions => { 'My__string' => [ 'My__string', ... ], }
-            ,    # OPTIONAL
-            Context => { 'My__string' => 'My__string', },    # OPTIONAL
+            ,                                                     # OPTIONAL
+            TitleOverride => 'My__string',
           },
         },    # OPTIONAL
         MessageConfiguration => {
-          BaiduMessage => {
-            ImageUrl      => 'My__string',
-            IconReference => 'My__string',
-            Action => 'OPEN_APP',   # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
-            SilentPush        => 1,              # OPTIONAL
-            Body              => 'My__string',
-            SmallImageIconUrl => 'My__string',
-            Title             => 'My__string',
-            RawContent        => 'My__string',
-            Substitutions => { 'My__string' => [ 'My__string', ... ], }
-            ,                                    # OPTIONAL
-            ImageIconUrl => 'My__string',
-            Sound        => 'My__string',
-            Url          => 'My__string',
-            Data         => { 'My__string' => 'My__string', },    # OPTIONAL
-          },    # OPTIONAL
-          GCMMessage => {
-            ImageUrl      => 'My__string',
-            IconReference => 'My__string',
+          ADMMessage => {
             Action => 'OPEN_APP',   # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
             Body   => 'My__string',
-            SilentPush            => 1,              # OPTIONAL
-            RestrictedPackageName => 'My__string',
-            TimeToLive            => 1,              # OPTIONAL
-            CollapseKey           => 'My__string',
-            SmallImageIconUrl     => 'My__string',
-            Priority              => 'My__string',
-            Title                 => 'My__string',
-            RawContent            => 'My__string',
+            ConsolidationKey  => 'My__string',
+            Data              => { 'My__string' => 'My__string', },   # OPTIONAL
+            ExpiresAfter      => 'My__string',
+            IconReference     => 'My__string',
+            ImageIconUrl      => 'My__string',
+            ImageUrl          => 'My__string',
+            MD5               => 'My__string',
+            RawContent        => 'My__string',
+            SilentPush        => 1,                                   # OPTIONAL
+            SmallImageIconUrl => 'My__string',
+            Sound             => 'My__string',
             Substitutions => { 'My__string' => [ 'My__string', ... ], }
-            ,                                        # OPTIONAL
-            ImageIconUrl => 'My__string',
-            Sound        => 'My__string',
-            Url          => 'My__string',
-            Data         => { 'My__string' => 'My__string', },    # OPTIONAL
-          },    # OPTIONAL
-          SMSMessage => {
-            MessageType =>
-              'TRANSACTIONAL',    # values: TRANSACTIONAL, PROMOTIONAL; OPTIONAL
-            Body              => 'My__string',
-            OriginationNumber => 'My__string',
-            SenderId          => 'My__string',
-            Substitutions     => { 'My__string' => [ 'My__string', ... ], }
-            ,                     # OPTIONAL
+            ,                                                         # OPTIONAL
+            Title => 'My__string',
+            Url   => 'My__string',
           },    # OPTIONAL
           APNSMessage => {
+            Action => 'OPEN_APP',   # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
+            Badge  => 1,            # OPTIONAL
+            Body   => 'My__string',
+            Category   => 'My__string',
             CollapseId => 'My__string',
-            Badge      => 1,              # OPTIONAL
+            Data       => { 'My__string' => 'My__string', },    # OPTIONAL
+            MediaUrl   => 'My__string',
+            PreferredAuthenticationMethod => 'My__string',
+            Priority                      => 'My__string',
+            RawContent                    => 'My__string',
+            SilentPush                    => 1,                 # OPTIONAL
+            Sound                         => 'My__string',
+            Substitutions => { 'My__string' => [ 'My__string', ... ], }
+            ,                                                   # OPTIONAL
+            ThreadId   => 'My__string',
+            TimeToLive => 1,                                    # OPTIONAL
+            Title      => 'My__string',
+            Url        => 'My__string',
+          },    # OPTIONAL
+          BaiduMessage => {
             Action => 'OPEN_APP',   # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
             Body   => 'My__string',
-            SilentPush                    => 1,              # OPTIONAL
-            PreferredAuthenticationMethod => 'My__string',
-            TimeToLive                    => 1,              # OPTIONAL
-            Priority                      => 'My__string',
-            MediaUrl                      => 'My__string',
-            ThreadId                      => 'My__string',
-            Title                         => 'My__string',
-            RawContent                    => 'My__string',
+            Data              => { 'My__string' => 'My__string', },   # OPTIONAL
+            IconReference     => 'My__string',
+            ImageIconUrl      => 'My__string',
+            ImageUrl          => 'My__string',
+            RawContent        => 'My__string',
+            SilentPush        => 1,                                   # OPTIONAL
+            SmallImageIconUrl => 'My__string',
+            Sound             => 'My__string',
             Substitutions => { 'My__string' => [ 'My__string', ... ], }
-            ,                                                # OPTIONAL
-            Sound    => 'My__string',
-            Url      => 'My__string',
-            Category => 'My__string',
-            Data     => { 'My__string' => 'My__string', },    # OPTIONAL
+            ,                                                         # OPTIONAL
+            Title => 'My__string',
+            Url   => 'My__string',
           },    # OPTIONAL
           DefaultMessage => {
             Body          => 'My__string',
@@ -116,45 +119,42 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           DefaultPushNotificationMessage => {
             Action => 'OPEN_APP',   # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
             Body   => 'My__string',
-            SilentPush => 1,              # OPTIONAL
-            Title      => 'My__string',
+            Data       => { 'My__string' => 'My__string', },    # OPTIONAL
+            SilentPush => 1,                                    # OPTIONAL
             Substitutions => { 'My__string' => [ 'My__string', ... ], }
-            ,                             # OPTIONAL
-            Url  => 'My__string',
-            Data => { 'My__string' => 'My__string', },    # OPTIONAL
+            ,                                                   # OPTIONAL
+            Title => 'My__string',
+            Url   => 'My__string',
           },    # OPTIONAL
-          ADMMessage => {
-            ImageUrl      => 'My__string',
-            IconReference => 'My__string',
+          GCMMessage => {
             Action => 'OPEN_APP',   # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
-            MD5    => 'My__string',
             Body   => 'My__string',
-            SilentPush        => 1,              # OPTIONAL
-            SmallImageIconUrl => 'My__string',
-            ConsolidationKey  => 'My__string',
-            ExpiresAfter      => 'My__string',
-            Title             => 'My__string',
-            RawContent        => 'My__string',
-            Substitutions => { 'My__string' => [ 'My__string', ... ], }
-            ,                                    # OPTIONAL
-            ImageIconUrl => 'My__string',
-            Sound        => 'My__string',
-            Url          => 'My__string',
-            Data         => { 'My__string' => 'My__string', },    # OPTIONAL
-          },    # OPTIONAL
-        },    # OPTIONAL
-        Context => { 'My__string' => 'My__string', },    # OPTIONAL
-        Addresses => {
-          'My__string' => {
-            ChannelType => 'GCM'
-            , # values: GCM, APNS, APNS_SANDBOX, APNS_VOIP, APNS_VOIP_SANDBOX, ADM, SMS, EMAIL, BAIDU, CUSTOM; OPTIONAL
-            TitleOverride => 'My__string',
-            BodyOverride  => 'My__string',
+            CollapseKey   => 'My__string',
+            Data          => { 'My__string' => 'My__string', },    # OPTIONAL
+            IconReference => 'My__string',
+            ImageIconUrl  => 'My__string',
+            ImageUrl      => 'My__string',
+            Priority      => 'My__string',
             RawContent    => 'My__string',
+            RestrictedPackageName => 'My__string',
+            SilentPush            => 1,                            # OPTIONAL
+            SmallImageIconUrl     => 'My__string',
+            Sound                 => 'My__string',
             Substitutions => { 'My__string' => [ 'My__string', ... ], }
-            ,    # OPTIONAL
-            Context => { 'My__string' => 'My__string', },    # OPTIONAL
-          },
+            ,                                                      # OPTIONAL
+            TimeToLive => 1,                                       # OPTIONAL
+            Title      => 'My__string',
+            Url        => 'My__string',
+          },    # OPTIONAL
+          SMSMessage => {
+            Body => 'My__string',
+            MessageType =>
+              'TRANSACTIONAL',    # values: TRANSACTIONAL, PROMOTIONAL; OPTIONAL
+            OriginationNumber => 'My__string',
+            SenderId          => 'My__string',
+            Substitutions     => { 'My__string' => [ 'My__string', ... ], }
+            ,                     # OPTIONAL
+          },    # OPTIONAL
         },    # OPTIONAL
       },
 

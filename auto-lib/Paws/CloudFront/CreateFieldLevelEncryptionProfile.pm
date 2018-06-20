@@ -38,12 +38,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Quantity => 1,
           Items    => [
             {
-              PublicKeyId   => 'Mystring',
               FieldPatterns => {
                 Quantity => 1,
                 Items    => [ 'Mystring', ... ],    # OPTIONAL
               },
-              ProviderId => 'Mystring',
+              ProviderId  => 'Mystring',
+              PublicKeyId => 'Mystring',
 
             },
             ...
@@ -56,9 +56,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $ETag = $CreateFieldLevelEncryptionProfileResult->ETag;
     my $FieldLevelEncryptionProfile =
       $CreateFieldLevelEncryptionProfileResult->FieldLevelEncryptionProfile;
-    my $ETag     = $CreateFieldLevelEncryptionProfileResult->ETag;
     my $Location = $CreateFieldLevelEncryptionProfileResult->Location;
 
 # Returns a L<Paws::CloudFront::CreateFieldLevelEncryptionProfileResult> object.

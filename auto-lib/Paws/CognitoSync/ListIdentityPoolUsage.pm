@@ -35,10 +35,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken          = $ListIdentityPoolUsageResponse->NextToken;
     my $Count              = $ListIdentityPoolUsageResponse->Count;
     my $IdentityPoolUsages = $ListIdentityPoolUsageResponse->IdentityPoolUsages;
     my $MaxResults         = $ListIdentityPoolUsageResponse->MaxResults;
+    my $NextToken          = $ListIdentityPoolUsageResponse->NextToken;
 
     # Returns a L<Paws::CognitoSync::ListIdentityPoolUsageResponse> object.
 

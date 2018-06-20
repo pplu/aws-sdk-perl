@@ -38,40 +38,40 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       LifecycleConfiguration => {
         Rules => [
           {
-            Status => 'Enabled',                   # values: Enabled, Disabled
             Filter => {
-              Prefix => 'MyRuleFilterPrefix',      # OPTIONAL
-              And    => {
-                Tag => {
+              And => {
+                Prefix => 'MyRuleFilterAnd',       # OPTIONAL
+                Tag    => {
                   Key   => 'MyObjectKey',          # min: 1,
                   Value => 'MyValue',
 
                 },    # OPTIONAL
-                Prefix => 'MyRuleFilterAnd',    # OPTIONAL
               },    # OPTIONAL
+              Prefix => 'MyRuleFilterPrefix',    # OPTIONAL
             },
-            Transition => {
-              Date => '1970-01-01T01:00:00',    # OPTIONAL
-              StorageClass =>
-                'GLACIER',  # values: GLACIER, STANDARD_IA, ONEZONE_IA; OPTIONAL
-              Days => 1,    # OPTIONAL
+            Status => 'Enabled',                 # values: Enabled, Disabled
+            AbortIncompleteMultipartUpload => {
+              DaysAfterInitiation => 1,          # OPTIONAL
+            },    # OPTIONAL
+            Expiration => {
+              Date                      => '1970-01-01T01:00:00',    # OPTIONAL
+              Days                      => 1,                        # OPTIONAL
+              ExpiredObjectDeleteMarker => 1,                        # OPTIONAL
+            },    # OPTIONAL
+            ID                          => 'MyID',    # OPTIONAL
+            NoncurrentVersionExpiration => {
+              NoncurrentDays => 1,                    # OPTIONAL
             },    # OPTIONAL
             NoncurrentVersionTransition => {
               NoncurrentDays => 1,    # OPTIONAL
               StorageClass =>
                 'GLACIER',  # values: GLACIER, STANDARD_IA, ONEZONE_IA; OPTIONAL
             },    # OPTIONAL
-            ID                             => 'MyID',    # OPTIONAL
-            AbortIncompleteMultipartUpload => {
-              DaysAfterInitiation => 1,                  # OPTIONAL
-            },    # OPTIONAL
-            NoncurrentVersionExpiration => {
-              NoncurrentDays => 1,    # OPTIONAL
-            },    # OPTIONAL
-            Expiration => {
-              Date                      => '1970-01-01T01:00:00',    # OPTIONAL
-              Days                      => 1,                        # OPTIONAL
-              ExpiredObjectDeleteMarker => 1,                        # OPTIONAL
+            Transition => {
+              Date => '1970-01-01T01:00:00',    # OPTIONAL
+              Days => 1,                        # OPTIONAL
+              StorageClass =>
+                'GLACIER',  # values: GLACIER, STANDARD_IA, ONEZONE_IA; OPTIONAL
             },    # OPTIONAL
           },
           ...

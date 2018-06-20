@@ -41,13 +41,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextContinentCode   = $ListGeoLocationsResponse->NextContinentCode;
-    my $IsTruncated         = $ListGeoLocationsResponse->IsTruncated;
-    my $MaxItems            = $ListGeoLocationsResponse->MaxItems;
-    my $NextSubdivisionCode = $ListGeoLocationsResponse->NextSubdivisionCode;
     my $GeoLocationDetailsList =
       $ListGeoLocationsResponse->GeoLocationDetailsList;
-    my $NextCountryCode = $ListGeoLocationsResponse->NextCountryCode;
+    my $IsTruncated         = $ListGeoLocationsResponse->IsTruncated;
+    my $MaxItems            = $ListGeoLocationsResponse->MaxItems;
+    my $NextContinentCode   = $ListGeoLocationsResponse->NextContinentCode;
+    my $NextCountryCode     = $ListGeoLocationsResponse->NextCountryCode;
+    my $NextSubdivisionCode = $ListGeoLocationsResponse->NextSubdivisionCode;
 
     # Returns a L<Paws::Route53::ListGeoLocationsResponse> object.
 

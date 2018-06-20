@@ -34,12 +34,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         , # values: ar, bg, ca, cs, da, de, el, en, es, eu, fa, fi, fr, ga, gl, he, hi, hu, hy, id, it, ja, ko, lv, mul, nl, no, pt, ro, ru, sv, th, tr, zh-Hans, zh-Hant
         AnalysisSchemeName => 'MyStandardName',    # min: 1, max: 64
         AnalysisOptions    => {
-          JapaneseTokenizationDictionary => 'MyString',    # OPTIONAL
           AlgorithmicStemming =>
             'none',    # values: none, minimal, light, full; OPTIONAL
-          StemmingDictionary => 'MyString',    # OPTIONAL
-          Synonyms           => 'MyString',    # OPTIONAL
-          Stopwords          => 'MyString',    # OPTIONAL
+          JapaneseTokenizationDictionary => 'MyString',    # OPTIONAL
+          StemmingDictionary             => 'MyString',    # OPTIONAL
+          Stopwords                      => 'MyString',    # OPTIONAL
+          Synonyms                       => 'MyString',    # OPTIONAL
         },    # OPTIONAL
       },
       DomainName => 'MyDomainName',

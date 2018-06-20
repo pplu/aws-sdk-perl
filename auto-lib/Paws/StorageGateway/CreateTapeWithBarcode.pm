@@ -35,10 +35,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Creates a virtual tape by using your own barcode.
     my $CreateTapeWithBarcodeOutput = $storagegateway->CreateTapeWithBarcode(
       {
-        'TapeSizeInBytes' => 107374182400,
-        'TapeBarcode'     => 'TEST12345',
         'GatewayARN' =>
-          'arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B'
+          'arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B',
+        'TapeBarcode'     => 'TEST12345',
+        'TapeSizeInBytes' => 107374182400
       }
     );
 

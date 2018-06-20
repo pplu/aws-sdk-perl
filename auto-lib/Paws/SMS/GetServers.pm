@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken           = $GetServersResponse->NextToken;
     my $LastModifiedOn      = $GetServersResponse->LastModifiedOn;
+    my $NextToken           = $GetServersResponse->NextToken;
     my $ServerCatalogStatus = $GetServersResponse->ServerCatalogStatus;
     my $ServerList          = $GetServersResponse->ServerList;
 

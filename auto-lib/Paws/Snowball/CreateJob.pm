@@ -46,17 +46,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # clusterId value; the other job attributes are inherited from the cluster.
     my $CreateJobResult = $snowball->CreateJob(
       {
-        'ShippingOption' => 'SECOND_DAY',
+        'AddressId'   => 'ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b',
+        'Description' => 'My Job',
+        'JobType'     => 'IMPORT',
         'KmsKeyARN' =>
 'arn:aws:kms:us-east-1:123456789012:key/abcd1234-12ab-34cd-56ef-123456123456',
         'Notification' => {
-          'NotifyAll'         => 0,
           'JobStatesToNotify' => [
 
-          ]
+          ],
+          'NotifyAll' => 0
         },
-        'AddressId' => 'ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b',
-        'JobType'   => 'IMPORT',
         'Resources' => {
           'S3Resources' => [
 
@@ -68,10 +68,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             }
           ]
         },
-        'SnowballCapacityPreference' => 'T80',
         'RoleARN' => 'arn:aws:iam::123456789012:role/snowball-import-S3-role',
-        'SnowballType' => 'STANDARD',
-        'Description'  => 'My Job'
+        'ShippingOption'             => 'SECOND_DAY',
+        'SnowballCapacityPreference' => 'T80',
+        'SnowballType'               => 'STANDARD'
       }
     );
 

@@ -41,10 +41,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DisconnectAfterInSeconds =
       $TestInvokeAuthorizerResponse->DisconnectAfterInSeconds;
     my $IsAuthenticated = $TestInvokeAuthorizerResponse->IsAuthenticated;
+    my $PolicyDocuments = $TestInvokeAuthorizerResponse->PolicyDocuments;
     my $PrincipalId     = $TestInvokeAuthorizerResponse->PrincipalId;
     my $RefreshAfterInSeconds =
       $TestInvokeAuthorizerResponse->RefreshAfterInSeconds;
-    my $PolicyDocuments = $TestInvokeAuthorizerResponse->PolicyDocuments;
 
     # Returns a L<Paws::IoT::TestInvokeAuthorizerResponse> object.
 

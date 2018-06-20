@@ -29,8 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $GetNotificationChannelResponse = $fms->GetNotificationChannel();
 
     # Results:
-    my $SnsTopicArn = $GetNotificationChannelResponse->SnsTopicArn;
     my $SnsRoleName = $GetNotificationChannelResponse->SnsRoleName;
+    my $SnsTopicArn = $GetNotificationChannelResponse->SnsTopicArn;
 
     # Returns a L<Paws::FMS::GetNotificationChannelResponse> object.
 

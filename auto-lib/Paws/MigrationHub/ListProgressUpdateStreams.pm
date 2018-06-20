@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $NextToken = $ListProgressUpdateStreamsResult->NextToken;
     my $ProgressUpdateStreamSummaryList =
       $ListProgressUpdateStreamsResult->ProgressUpdateStreamSummaryList;
-    my $NextToken = $ListProgressUpdateStreamsResult->NextToken;
 
     # Returns a L<Paws::MigrationHub::ListProgressUpdateStreamsResult> object.
 
