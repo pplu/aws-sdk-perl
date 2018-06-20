@@ -28,7 +28,7 @@ my $paws = Paws->new(config => {
 
 my $idname = 'testid';
 my $vaultname = 'testvault';
-my $glacier = $paws->service('glacier', region => 'us-west-2');
+my $glacier = $paws->service('Glacier', region => 'us-west-2');
 
 my %md5_methods = (
   'CreateVault' => {
