@@ -162,7 +162,7 @@ my %md5_methods = (
   'PurchaseProvisionedCapacity' => {
     AccountId => $idname,
   },
-  'PurchaseProvisionedCapacity' => {
+  'RemoveTagsFromVault' => {
     TagKeys => [ 'examplekey1', 'examplekey2' ],
     AccountId => $idname,
     VaultName => $vaultname,
