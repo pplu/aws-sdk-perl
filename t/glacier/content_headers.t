@@ -170,14 +170,13 @@ my %md5_methods = (
   'SetDataRetrievalPolicy' => {
     Policy => {
       Rules => [
-
         {
           BytesPerHour => 10737418240,
           Strategy     => 'BytesPerHour'
         }
       ]
     },
-    VaultName => $vaultname,
+    AccountId => $idname,
   },
   'SetVaultAccessPolicy' => {
     AccountId => $idname,
@@ -214,8 +213,9 @@ my %md5_methods = (
   },
 );
 
+# removed: InitiateJob InitiateVaultLock
 # x-amz-glacier-version
-foreach my $method (qw/AbortMultipartUpload AbortVaultLock AddTagsToVault CompleteMultipartUpload CreateVault DeleteArchive DeleteVault DeleteVaultAccessPolicy DeleteVaultNotifications DescribeJob DescribeVault GetDataRetrievalPolicy GetJobOutput GetVaultAccessPolicy GetVaultLock GetVaultNotifications InitiateJob InitiateMultipartUpload InitiateVaultLock ListJobs ListMultipartUploads ListParts ListProvisionedCapacity ListTagsForVault ListVaults PurchaseProvisionedCapacity RemoveTagsFromVault SetDataRetrievalPolicy SetVaultAccessPolicy SetVaultNotifications UploadArchive UploadMultipartPart/) {
+foreach my $method (qw/AbortMultipartUpload AbortVaultLock AddTagsToVault CompleteMultipartUpload CreateVault DeleteArchive DeleteVault DeleteVaultAccessPolicy DeleteVaultNotifications DescribeJob DescribeVault GetDataRetrievalPolicy GetJobOutput GetVaultAccessPolicy GetVaultLock GetVaultNotifications InitiateMultipartUpload ListJobs ListMultipartUploads ListParts ListProvisionedCapacity ListTagsForVault ListVaults PurchaseProvisionedCapacity RemoveTagsFromVault SetDataRetrievalPolicy SetVaultAccessPolicy SetVaultNotifications UploadArchive UploadMultipartPart/) {
   my $response;
   eval { $response = $glacier->$method(%{ $md5_methods{$method} });
   } or do {
