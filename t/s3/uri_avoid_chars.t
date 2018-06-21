@@ -14,19 +14,13 @@ use Test::Exception;
 use URI::Escape;
 
 use Paws;
-use Paws::Net::MockCaller;
+use TestRequestCaller;
 
-my $paws = Paws->new(config => {
-  caller => Paws::Net::MockCaller->new(
-    mock_dir => 't/s3/uri_avoid_chars',
-    mock_mode => 'REPLAY',
-#    mock_mode => 'RECORD',
-  ),
-#  credentials => 'Test::CustomCredentials'
-});
+Paws->default_config->caller(TestRequestCaller->new);
+Paws->default_config->credentials('Test::CustomCredentials');
 
 my $bucketname = 'shadowcatjesstest';
-my $s3 = $paws->service('S3', region => 'us-west-2');
+my $s3 = Paws->service('S3', region => 'us-west-2');
 
 my @to_encode = ('\\',
                  '{',
