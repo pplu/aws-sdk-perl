@@ -19,7 +19,7 @@ use TestRequestCaller;
 Paws->default_config->caller(TestRequestCaller->new);
 Paws->default_config->credentials('Test::CustomCredentials');
 
-my $bucketname = 'shadowcatjesstest';
+my $bucketname = 'test-uri-paws';
 my $s3 = Paws->service('S3', region => 'us-west-2');
 
 my @to_encode = ('\\',
