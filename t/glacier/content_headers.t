@@ -188,6 +188,11 @@ my %md5_methods = (
   },
   'SetVaultNotifications' => {
     AccountId => $idname,
+    Body => 'part1',
+    Checksum => 'c06f7cd4baacb087002a99a5f48bf953',
+    Range => 'bytes 0-1048575/*',
+    UploadId =>
+'19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR7vgFuJV6NtcV5zpsJ',
     VaultName => $vaultname,
     VaultNotificationConfig => {
       Events =>
