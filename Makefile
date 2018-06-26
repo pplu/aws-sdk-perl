@@ -4,7 +4,7 @@ dist:
 	PATH=$(PATH):dzil-local/bin PERL5LIB=dzil-local/lib/perl5 dzil build
 
 test:
-	carton exec -- prove t/
+	carton exec -- prove -r -v -I lib -I auto-lib t/
 
 pod-test:
 	for i in `find auto-lib/Paws/ -name \*.pm`; do podchecker $$i; done;
