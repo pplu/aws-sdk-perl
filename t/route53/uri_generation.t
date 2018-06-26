@@ -45,8 +45,6 @@ foreach my $method (qw/CreateQueryLoggingConfig ListResourceRecordSets/) {
     warn qq[Error calling method: $@];
   };
 
-  ::Dwarn $request;
-
   # check the uri matches using the examples given in the AWS API docs for the method
   is($request->uri, $uri_expected{$method}, "Route53 $method uri matches expected behaviour.");
 }
