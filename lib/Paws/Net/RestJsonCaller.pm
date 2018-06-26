@@ -2,7 +2,7 @@ package Paws::Net::RestJsonCaller;
   use Paws;
   use Moose::Role;
   use HTTP::Request::Common;
-  use POSIX qw(strftime); 
+  use POSIX qw(strftime);
   use URI::Template;
   use JSON::MaybeXS;
   use Scalar::Util;
@@ -49,7 +49,7 @@ package Paws::Net::RestJsonCaller;
           }
         } elsif ($att_type->isa('Moose::Meta::TypeConstraint::Enum')) {
           $p{ $key } = $params->$att;
-        } elsif ($params->$att->does('Paws::API::StrToNativeMapParser')){ 
+        } elsif ($params->$att->does('Paws::API::StrToNativeMapParser')){
           $p{ $key } = { %{ $params->$att->Map }  };
         } elsif ($params->$att->does('Paws::API::StrToObjMapParser')){
           my $type = $params->$att->meta->get_attribute('Map')->type_constraint;
@@ -133,7 +133,7 @@ package Paws::Net::RestJsonCaller;
     }
     $data = ref $data ? encode_json($data) : $data;
     $request->content($data);
-    
+
     $request->method($call->_api_method);
 
     $self->sign($request);
