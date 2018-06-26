@@ -1,7 +1,7 @@
 package Paws::Net::RestJsonCaller;
   use Moose::Role;
   use HTTP::Request::Common;
-  use POSIX qw(strftime);
+  use POSIX qw(strftime); 
   use URI::Template;
   use JSON::MaybeXS;
 
@@ -47,7 +47,7 @@ package Paws::Net::RestJsonCaller;
           }
         } elsif ($att_type->isa('Moose::Meta::TypeConstraint::Enum')) {
           $p{ $key } = $params->$att;
-        } elsif ($params->$att->does('Paws::API::StrToNativeMapParser')){
+        } elsif ($params->$att->does('Paws::API::StrToNativeMapParser')){ 
           $p{ $key } = { %{ $params->$att->Map }  };
         } elsif ($params->$att->does('Paws::API::StrToObjMapParser')){
           my $type = $params->$att->meta->get_attribute('Map')->type_constraint;
@@ -112,10 +112,9 @@ package Paws::Net::RestJsonCaller;
     $request->url($url);
 
     $self->_to_header_params($request, $call);
-
+    
     if ($call->can('_stream_param')) {
       my $param_name = $call->_stream_param;
-      #TODO fix content being passed here as object, not string, see GH issue 260
       $request->content($call->$param_name);
       #$request->headers->header( 'content-length' => $request->content_length );
       #$request->headers->header( 'content-type'   => $self->content_type );
@@ -123,7 +122,7 @@ package Paws::Net::RestJsonCaller;
       my $data = $self->_to_jsoncaller_params($call);
       $request->content(encode_json($data));
     }
-
+    
     $request->method($call->_api_method);
 
     $self->sign($request);
