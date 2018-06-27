@@ -208,7 +208,7 @@ foreach my $method (qw/DeleteObjects RestoreObject PutBucketLifecycleConfigurati
   my $response;
   eval { $response = $s3->$method(%{ $md5_methods{$method} });
   } or do {
-    warn qq[Error creating object: $@];
+    diag qq[Error creating object: $@];
   };
 
  TODO: {
