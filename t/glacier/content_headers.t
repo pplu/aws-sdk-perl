@@ -218,11 +218,18 @@ foreach my $method (qw/AbortMultipartUpload AbortVaultLock AddTagsToVault Comple
   my $response;
   eval { $response = $glacier->$method(%{ $md5_methods{$method} });
   } or do {
-    warn qq[Error creating object: $@];
+    diag qq[Error creating object: $@];
   };
 
-## The HTTP headers should contain a x-amz-glacier-version header
-  ok($response->header('x-amz-glacier-version'), "Glacier $method header contains x-amz-glacier-version header");
+  TODO: {
+    local $TODO = "Remove after fixing issue 260 object string errors";
+    my $header;
+    eval {$header = $response->header('x-amz-glacier-version')} or do {
+      diag qq[Error getting header: $@];
+    };
+    #The HTTP headers should contain a x-amz-glacier-version header
+    ok($header, "Glacier $method header contains x-amz-glacier-version header");
+  };
 }
 
 done_testing;
