@@ -19,15 +19,6 @@ use TestRequestCaller;
 Paws->default_config->caller(TestRequestCaller->new);
 Paws->default_config->credentials('Test::CustomCredentials');
 
-# my $paws = Paws->new(config => {
-#   caller => Paws::Net::MockCaller->new(
-#     mock_dir => 't/s3/uri_other_chars',
-#     mock_mode => 'REPLAY',
-# #    mock_mode => 'RECORD',
-#   ),
-# #  credentials => 'Test::CustomCredentials'
-# });
-
 my $bucketname = 'test-uri-paws';
 my $s3 = Paws->service('S3', region => 'us-west-2');
 
@@ -43,7 +34,7 @@ foreach my $char (@to_encode) {
     "Body"   => 'Blub',
       );
   } or do {
-    warn qq[Error creating object: $@];
+    diag qq[Error creating object: $@];
   };
 
  TODO: {
