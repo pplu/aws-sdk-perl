@@ -1,11 +1,10 @@
 
 package Paws::Route53::ChangeTagsForResource;
   use Moose;
-  has AddTags => (is => 'ro', isa => 'ArrayRef[Paws::Route53::Tag]', request_name => 'Tag', traits => ['NameInRequest']);
-  has RemoveTagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'Key', traits => ['NameInRequest']);
+  has AddTags => (is => 'ro', isa => 'ArrayRef[Paws::Route53::Tag]', traits => ['NameInRequest'], request_name => 'Key');
+  has RemoveTagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'Tag');
   has ResourceId => (is => 'ro', isa => 'Str', uri_name => 'ResourceId', traits => ['ParamInURI'], required => 1);
   has ResourceType => (is => 'ro', isa => 'Str', uri_name => 'ResourceType', traits => ['ParamInURI'], required => 1);
-
 
   use MooseX::ClassAttribute;
 
@@ -14,8 +13,7 @@ package Paws::Route53::ChangeTagsForResource;
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::ChangeTagsForResourceResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-  class_has _top_level_element => (isa => 'Str', is => 'ro', default => 'ChangeTagsForResourceRequest');
-  class_has _top_level_namespace => (isa => 'Str', is => 'ro', default => 'https://route53.amazonaws.com/doc/2013-04-01/');  
+
 1;
 
 ### main pod documentation begin ###
@@ -112,4 +110,3 @@ The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
-
