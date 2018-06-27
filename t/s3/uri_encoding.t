@@ -43,7 +43,7 @@ foreach my $char (@to_encode) {
     "Body"   => 'Blub',
       );
   } or do {
-    warn qq[Error creating object: $@];
+    diag qq[Error creating object: $@];
   };
 
  TODO: {

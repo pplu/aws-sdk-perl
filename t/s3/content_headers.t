@@ -225,7 +225,7 @@ foreach my $method (qw/CreateBucket PutBucketAccelerateConfiguration PutBucketAc
   my $response;
   eval { $response = $s3->$method(%{ $md5_methods{$method} });
   } or do {
-    warn qq[Error creating object: $@];
+    diag qq[Error creating object: $@];
   };
 
  TODO: {
