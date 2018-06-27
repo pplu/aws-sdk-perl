@@ -222,13 +222,13 @@ foreach my $method (qw/AbortMultipartUpload AbortVaultLock AddTagsToVault Comple
   };
 
   TODO: {
-    local $TODO = "Remove after fixing issue 260 object string errors";
-    my $header;
-    eval {$header = $response->header('x-amz-glacier-version')} or do {
-      diag qq[Error getting header: $@];
-    };
-    #The HTTP headers should contain a x-amz-glacier-version header
-    ok($header, "Glacier $method header contains x-amz-glacier-version header");
+    local $TODO = "remove after fixing issue 260 object string errors.";
+  ## The HTTP headers should contain a x-amz-glacier-version header
+    if ($response) {
+      ok($response->header('x-amz-glacier-version'), "Glacier $method header contains x-amz-glacier-version header");
+    } else {
+      fail("Header doesn't exist as it is undefined.");
+    }
   };
 }
 
