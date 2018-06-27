@@ -21,15 +21,9 @@ my $route53 = Paws->service('Route53', region => 'us-west-2');
 
 my %uri_methods = (
     # Uses a given ResourceID for Hostedzone
-    ChangeTagsForResource => {
+    ListTagsForResource => {
       ResourceId   => 'SomeId',
       ResourceType => 'hostedzone',
-      AddTags      => [
-        {
-          Key   => 'SomeTag',
-          Value => '100',
-        }
-      ]
     },
   # Does not use locationName override for URI location with HostedZoneId
   CreateQueryLoggingConfig => {
@@ -44,12 +38,12 @@ my %uri_methods = (
  );
 
 my %uri_expected = (
-  ChangeTagsForResource => '/2013-04-01/tags/hostedzone/SomeId',
+  ListTagsForResource => '/2013-04-01/tags/hostedzone/SomeId',
   CreateQueryLoggingConfig => '/2013-04-01/queryloggingconfig',
   ListResourceRecordSets => '/2013-04-01/hostedzone/SomeId/rrset?maxitems=1',
  );
 
-foreach my $method (qw/ChangeTagsForResource CreateQueryLoggingConfig ListResourceRecordSets/) {
+foreach my $method (qw/ListTagsForResource CreateQueryLoggingConfig ListResourceRecordSets/) {
   my $request;
   eval {
     $request = $route53->$method( %{ $uri_methods{$method}} );
