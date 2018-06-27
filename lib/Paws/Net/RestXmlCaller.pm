@@ -190,8 +190,9 @@ package Paws::Net::RestXmlCaller;
     return $xml;
   }
 
+
   sub _to_xml_body {
-    my ($self, $call) = @_;
+    my ($self, $value) = @_;
 
     my $xml = '';
     foreach my $attribute (sort { $a->name cmp $b->name } $call->meta->get_all_attributes) {
