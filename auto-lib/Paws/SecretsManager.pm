@@ -25,6 +25,11 @@ package Paws::SecretsManager;
     my $call_object = $self->new_with_coercions('Paws::SecretsManager::CreateSecret', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteResourcePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SecretsManager::DeleteResourcePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteSecret {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SecretsManager::DeleteSecret', @_);
@@ -40,6 +45,11 @@ package Paws::SecretsManager;
     my $call_object = $self->new_with_coercions('Paws::SecretsManager::GetRandomPassword', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetResourcePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SecretsManager::GetResourcePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetSecretValue {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SecretsManager::GetSecretValue', @_);
@@ -53,6 +63,11 @@ package Paws::SecretsManager;
   sub ListSecretVersionIds {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SecretsManager::ListSecretVersionIds', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutResourcePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SecretsManager::PutResourcePolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutSecretValue {
@@ -93,7 +108,7 @@ package Paws::SecretsManager;
   
 
 
-  sub operations { qw/CancelRotateSecret CreateSecret DeleteSecret DescribeSecret GetRandomPassword GetSecretValue ListSecrets ListSecretVersionIds PutSecretValue RestoreSecret RotateSecret TagResource UntagResource UpdateSecret UpdateSecretVersionStage / }
+  sub operations { qw/CancelRotateSecret CreateSecret DeleteResourcePolicy DeleteSecret DescribeSecret GetRandomPassword GetResourcePolicy GetSecretValue ListSecrets ListSecretVersionIds PutResourcePolicy PutSecretValue RestoreSecret RotateSecret TagResource UntagResource UpdateSecret UpdateSecretVersionStage / }
 
 1;
 
@@ -424,6 +439,55 @@ response value.
 
 
 
+=head2 DeleteResourcePolicy
+
+=over
+
+=item SecretId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SecretsManager::DeleteResourcePolicy>
+
+Returns: a L<Paws::SecretsManager::DeleteResourcePolicyResponse> instance
+
+Deletes the resource-based permission policy that's attached to the
+secret.
+
+B<Minimum permissions>
+
+To run this command, you must have the following permissions:
+
+=over
+
+=item *
+
+secretsmanager:DeleteResourcePolicy
+
+=back
+
+B<Related operations>
+
+=over
+
+=item *
+
+To attach a resource policy to a secret, use PutResourcePolicy.
+
+=item *
+
+To retrieve the current resource-based policy that's attached to a
+secret, use GetResourcePolicy.
+
+=item *
+
+To list all of the currently available secrets, use ListSecrets.
+
+=back
+
+
+
 =head2 DeleteSecret
 
 =over
@@ -604,6 +668,57 @@ secretsmanager:GetRandomPassword
 
 
 
+=head2 GetResourcePolicy
+
+=over
+
+=item SecretId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SecretsManager::GetResourcePolicy>
+
+Returns: a L<Paws::SecretsManager::GetResourcePolicyResponse> instance
+
+Retrieves the JSON text of the resource-based policy document that's
+attached to the specified secret. The JSON request string input and
+response output are shown formatted with white space and line breaks
+for better readability. Submit your input as a single line JSON string.
+
+B<Minimum permissions>
+
+To run this command, you must have the following permissions:
+
+=over
+
+=item *
+
+secretsmanager:GetResourcePolicy
+
+=back
+
+B<Related operations>
+
+=over
+
+=item *
+
+To attach a resource policy to a secret, use PutResourcePolicy.
+
+=item *
+
+To delete the resource-based policy that's attached to a secret, use
+DeleteResourcePolicy.
+
+=item *
+
+To list all of the currently available secrets, use ListSecrets.
+
+=back
+
+
+
 =head2 GetSecretValue
 
 =over
@@ -763,6 +878,69 @@ B<Related operations>
 =item *
 
 To list the secrets in an account, use ListSecrets.
+
+=back
+
+
+
+=head2 PutResourcePolicy
+
+=over
+
+=item ResourcePolicy => Str
+
+=item SecretId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SecretsManager::PutResourcePolicy>
+
+Returns: a L<Paws::SecretsManager::PutResourcePolicyResponse> instance
+
+Attaches the contents of the specified resource-based permission policy
+to a secret. A resource-based policy is optional. Alternatively, you
+can use IAM identity-based policies that specify the secret's Amazon
+Resource Name (ARN) in the policy statement's C<Resources> element. You
+can also use a combination of both identity-based and resource-based
+policies. The affected users and roles receive the permissions that are
+permitted by all of the relevant policies. For more information, see
+Using Resource-Based Policies for AWS Secrets Manager
+(http://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_resource-based-policies.html).
+For the complete description of the AWS policy syntax and grammar, see
+IAM JSON Policy Reference
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html)
+in the I<IAM User Guide>.
+
+B<Minimum permissions>
+
+To run this command, you must have the following permissions:
+
+=over
+
+=item *
+
+secretsmanager:PutResourcePolicy
+
+=back
+
+B<Related operations>
+
+=over
+
+=item *
+
+To retrieve the resource policy that's attached to a secret, use
+GetResourcePolicy.
+
+=item *
+
+To delete the resource-based policy that's attached to a secret, use
+DeleteResourcePolicy.
+
+=item *
+
+To list all of the currently available secrets, use ListSecrets.
 
 =back
 
