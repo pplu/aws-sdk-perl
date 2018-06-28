@@ -45,8 +45,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ExpressionType     => 'SQL',
       InputSerialization => {
         CSV => {
-          Comments       => 'MyComments',          # OPTIONAL
-          FieldDelimiter => 'MyFieldDelimiter',    # OPTIONAL
+          AllowQuotedRecordDelimiter => 1,                     # OPTIONAL
+          Comments                   => 'MyComments',          # OPTIONAL
+          FieldDelimiter             => 'MyFieldDelimiter',    # OPTIONAL
           FileHeaderInfo => 'USE',    # values: USE, IGNORE, NONE; OPTIONAL
           QuoteCharacter       => 'MyQuoteCharacter',          # OPTIONAL
           QuoteEscapeCharacter => 'MyQuoteEscapeCharacter',    # OPTIONAL
