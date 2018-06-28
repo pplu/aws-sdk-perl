@@ -156,8 +156,8 @@ this value if you don't want the name of your S3 bucket to be public.
   Boolean value that specifies whether certificate revocation lists
 (CRLs) are enabled. You can use this value to enable certificate
 revocation for a new CA when you call the CreateCertificateAuthority
-function or for an existing CA when you call the
-UpdateCertificateAuthority function.
+operation or for an existing CA when you call the
+UpdateCertificateAuthority operation.
 
 
 =head2 ExpirationInDays => Int
@@ -171,7 +171,7 @@ UpdateCertificateAuthority function.
 value for the B<CustomCname> argument, the name of your S3 bucket is
 placed into the B<CRL Distribution Points> extension of the issued
 certificate. You can change the name of your bucket by calling the
-UpdateCertificateAuthority function. You must specify a bucket policy
+UpdateCertificateAuthority operation. You must specify a bucket policy
 that allows ACM PCA to write the CRL to your bucket.
 
 

@@ -100,10 +100,10 @@ Alphanumeric string that can be used to distinguish between calls to
 B<CreateCertificateAuthority>. Idempotency tokens time out after five
 minutes. Therefore, if you call B<CreateCertificateAuthority> multiple
 times with the same idempotency token within a five minute period, ACM
-PCA recognizes that you are requesting only one certificate and will
-issue only one. If you change the idempotency token for each call,
-however, ACM PCA recognizes that you are requesting multiple
-certificates.
+PCA recognizes that you are requesting only one certificate. As a
+result, ACM PCA issues only one. If you change the idempotency token
+for each call, however, ACM PCA recognizes that you are requesting
+multiple certificates.
 
 
 

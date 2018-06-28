@@ -7,6 +7,7 @@ package Paws::ACMPCA::CertificateAuthority;
   has LastStateChangeAt => (is => 'ro', isa => 'Str');
   has NotAfter => (is => 'ro', isa => 'Str');
   has NotBefore => (is => 'ro', isa => 'Str');
+  has RestorableUntil => (is => 'ro', isa => 'Str');
   has RevocationConfiguration => (is => 'ro', isa => 'Paws::ACMPCA::RevocationConfiguration');
   has Serial => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
@@ -46,11 +47,11 @@ Your private CA can issue and revoke X.509 digital certificates.
 Digital certificates verify that the entity named in the certificate
 B<Subject> field owns or controls the public key contained in the
 B<Subject Public Key Info> field. Call the CreateCertificateAuthority
-function to create your private CA. You must then call the
-GetCertificateAuthorityCertificate function to retrieve a private CA
+operation to create your private CA. You must then call the
+GetCertificateAuthorityCertificate operation to retrieve a private CA
 certificate signing request (CSR). Take the CSR to your on-premises CA
 and sign it with the root CA certificate or a subordinate certificate.
-Call the ImportCertificateAuthorityCertificate function to import the
+Call the ImportCertificateAuthorityCertificate operation to import the
 signed certificate into AWS Certificate Manager (ACM).
 
 =head1 ATTRIBUTES
@@ -90,6 +91,13 @@ The format is C< I<12345678-1234-1234-1234-123456789012> >.
 =head2 NotBefore => Str
 
   Date and time before which your private CA certificate is not valid.
+
+
+=head2 RestorableUntil => Str
+
+  The period during which a deleted CA can be restored. For more
+information, see the C<PermanentDeletionTimeInDays> parameter of the
+DeleteCertificateAuthorityRequest operation.
 
 
 =head2 RevocationConfiguration => L<Paws::ACMPCA::RevocationConfiguration>

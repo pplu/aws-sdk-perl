@@ -59,7 +59,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/acm
 The Amazon Resource Name (ARN) that was returned when you called
 CreateCertificateAuthority. This must be of the form:
 
-C<arn:aws:acm:I<region>:I<account>:certificate-authority/I<12345678-1234-1234-1234-123456789012>>
+C<arn:aws:acm-pca:I<region>:I<account>:certificate-authority/I<12345678-1234-1234-1234-123456789012>>
 
 
 
@@ -85,7 +85,7 @@ csr/test_cert_.csr>
 =head2 IdempotencyToken => Str
 
 Custom string that can be used to distinguish between calls to the
-B<IssueCertificate> function. Idempotency tokens time out after one
+B<IssueCertificate> operation. Idempotency tokens time out after one
 hour. Therefore, if you call B<IssueCertificate> multiple times with
 the same idempotency token within 5 minutes, ACM PCA recognizes that
 you are requesting only one certificate and will issue only one. If you
