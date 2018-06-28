@@ -44,6 +44,11 @@ package Paws::MediaLive;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::DeleteInputSecurityGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteReservation {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::DeleteReservation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeChannel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::DescribeChannel', @_);
@@ -59,6 +64,16 @@ package Paws::MediaLive;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::DescribeInputSecurityGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeOffering {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::DescribeOffering', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeReservation {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::DescribeReservation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListChannels {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::ListChannels', @_);
@@ -72,6 +87,21 @@ package Paws::MediaLive;
   sub ListInputSecurityGroups {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::ListInputSecurityGroups', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListOfferings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::ListOfferings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListReservations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::ListReservations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PurchaseOffering {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::PurchaseOffering', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StartChannel {
@@ -169,9 +199,55 @@ package Paws::MediaLive;
 
     return undef
   }
+  sub ListAllOfferings {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListOfferings(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListOfferings(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Offerings }, @{ $next_result->Offerings };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Offerings') foreach (@{ $result->Offerings });
+        $result = $self->ListOfferings(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Offerings') foreach (@{ $result->Offerings });
+    }
+
+    return undef
+  }
+  sub ListAllReservations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListReservations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListReservations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Reservations }, @{ $next_result->Reservations };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Reservations') foreach (@{ $result->Reservations });
+        $result = $self->ListReservations(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Reservations') foreach (@{ $result->Reservations });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/CreateChannel CreateInput CreateInputSecurityGroup DeleteChannel DeleteInput DeleteInputSecurityGroup DescribeChannel DescribeInput DescribeInputSecurityGroup ListChannels ListInputs ListInputSecurityGroups StartChannel StopChannel UpdateChannel UpdateInput UpdateInputSecurityGroup / }
+  sub operations { qw/CreateChannel CreateInput CreateInputSecurityGroup DeleteChannel DeleteInput DeleteInputSecurityGroup DeleteReservation DescribeChannel DescribeInput DescribeInputSecurityGroup DescribeOffering DescribeReservation ListChannels ListInputs ListInputSecurityGroups ListOfferings ListReservations PurchaseOffering StartChannel StopChannel UpdateChannel UpdateInput UpdateInputSecurityGroup / }
 
 1;
 
@@ -328,6 +404,22 @@ Returns: a L<Paws::MediaLive::DeleteInputSecurityGroupResponse> instance
 Deletes an Input Security Group
 
 
+=head2 DeleteReservation
+
+=over
+
+=item ReservationId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::DeleteReservation>
+
+Returns: a L<Paws::MediaLive::DeleteReservationResponse> instance
+
+Delete an expired reservation.
+
+
 =head2 DescribeChannel
 
 =over
@@ -374,6 +466,38 @@ Each argument is described in detail in: L<Paws::MediaLive::DescribeInputSecurit
 Returns: a L<Paws::MediaLive::DescribeInputSecurityGroupResponse> instance
 
 Produces a summary of an Input Security Group
+
+
+=head2 DescribeOffering
+
+=over
+
+=item OfferingId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::DescribeOffering>
+
+Returns: a L<Paws::MediaLive::DescribeOfferingResponse> instance
+
+Get details for an offering.
+
+
+=head2 DescribeReservation
+
+=over
+
+=item ReservationId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::DescribeReservation>
+
+Returns: a L<Paws::MediaLive::DescribeReservationResponse> instance
+
+Get details for a reservation.
 
 
 =head2 ListChannels
@@ -428,6 +552,94 @@ Each argument is described in detail in: L<Paws::MediaLive::ListInputSecurityGro
 Returns: a L<Paws::MediaLive::ListInputSecurityGroupsResponse> instance
 
 Produces a list of Input Security Groups for an account
+
+
+=head2 ListOfferings
+
+=over
+
+=item [ChannelConfiguration => Str]
+
+=item [Codec => Str]
+
+=item [MaximumBitrate => Str]
+
+=item [MaximumFramerate => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Resolution => Str]
+
+=item [ResourceType => Str]
+
+=item [SpecialFeature => Str]
+
+=item [VideoQuality => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::ListOfferings>
+
+Returns: a L<Paws::MediaLive::ListOfferingsResponse> instance
+
+List offerings available for purchase.
+
+
+=head2 ListReservations
+
+=over
+
+=item [Codec => Str]
+
+=item [MaximumBitrate => Str]
+
+=item [MaximumFramerate => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Resolution => Str]
+
+=item [ResourceType => Str]
+
+=item [SpecialFeature => Str]
+
+=item [VideoQuality => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::ListReservations>
+
+Returns: a L<Paws::MediaLive::ListReservationsResponse> instance
+
+List purchased reservations.
+
+
+=head2 PurchaseOffering
+
+=over
+
+=item OfferingId => Str
+
+=item [Count => Int]
+
+=item [Name => Str]
+
+=item [RequestId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::PurchaseOffering>
+
+Returns: a L<Paws::MediaLive::PurchaseOfferingResponse> instance
+
+Purchase an offering and create a reservation.
 
 
 =head2 StartChannel
@@ -574,6 +786,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - InputSecurityGroups, passing the object as the first parameter, and the string 'InputSecurityGroups' as the second parameter 
 
 If not, it will return a a L<Paws::MediaLive::ListInputSecurityGroupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllOfferings(sub { },[ChannelConfiguration => Str, Codec => Str, MaximumBitrate => Str, MaximumFramerate => Str, MaxResults => Int, NextToken => Str, Resolution => Str, ResourceType => Str, SpecialFeature => Str, VideoQuality => Str])
+
+=head2 ListAllOfferings([ChannelConfiguration => Str, Codec => Str, MaximumBitrate => Str, MaximumFramerate => Str, MaxResults => Int, NextToken => Str, Resolution => Str, ResourceType => Str, SpecialFeature => Str, VideoQuality => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Offerings, passing the object as the first parameter, and the string 'Offerings' as the second parameter 
+
+If not, it will return a a L<Paws::MediaLive::ListOfferingsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllReservations(sub { },[Codec => Str, MaximumBitrate => Str, MaximumFramerate => Str, MaxResults => Int, NextToken => Str, Resolution => Str, ResourceType => Str, SpecialFeature => Str, VideoQuality => Str])
+
+=head2 ListAllReservations([Codec => Str, MaximumBitrate => Str, MaximumFramerate => Str, MaxResults => Int, NextToken => Str, Resolution => Str, ResourceType => Str, SpecialFeature => Str, VideoQuality => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Reservations, passing the object as the first parameter, and the string 'Reservations' as the second parameter 
+
+If not, it will return a a L<Paws::MediaLive::ListReservationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 
