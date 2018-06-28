@@ -1,5 +1,5 @@
 
-package Paws::Comprehend::StartTopicsDetectionJobResponse;
+package Paws::Comprehend::StartSentimentDetectionJobResponse;
   use Moose;
   has JobId => (is => 'ro', isa => 'Str');
   has JobStatus => (is => 'ro', isa => 'Str');
@@ -10,20 +10,20 @@ package Paws::Comprehend::StartTopicsDetectionJobResponse;
 
 =head1 NAME
 
-Paws::Comprehend::StartTopicsDetectionJobResponse
+Paws::Comprehend::StartSentimentDetectionJobResponse
 
 =head1 ATTRIBUTES
 
 
 =head2 JobId => Str
 
-The identifier generated for the job. To get the status of the job, use
-this identifier with the C<DescribeTopicDetectionJob> operation.
+The identifier generated for the job. To get the status of a job, use
+this identifier with the operation.
 
 
 =head2 JobStatus => Str
 
-The status of the job:
+The status of the job.
 
 =over
 
@@ -42,8 +42,7 @@ available.
 
 =item *
 
-FAILED - The job did not complete. To get details, use the
-C<DescribeTopicDetectionJob> operation.
+FAILED - The job did not complete. To get details, use the operation.
 
 =back
 

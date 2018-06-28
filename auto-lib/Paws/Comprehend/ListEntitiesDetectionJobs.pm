@@ -1,14 +1,14 @@
 
-package Paws::Comprehend::ListTopicsDetectionJobs;
+package Paws::Comprehend::ListEntitiesDetectionJobs;
   use Moose;
-  has Filter => (is => 'ro', isa => 'Paws::Comprehend::TopicsDetectionJobFilter');
+  has Filter => (is => 'ro', isa => 'Paws::Comprehend::EntitiesDetectionJobFilter');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListTopicsDetectionJobs');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Comprehend::ListTopicsDetectionJobsResponse');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListEntitiesDetectionJobs');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Comprehend::ListEntitiesDetectionJobsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -16,20 +16,21 @@ package Paws::Comprehend::ListTopicsDetectionJobs;
 
 =head1 NAME
 
-Paws::Comprehend::ListTopicsDetectionJobs - Arguments for method ListTopicsDetectionJobs on L<Paws::Comprehend>
+Paws::Comprehend::ListEntitiesDetectionJobs - Arguments for method ListEntitiesDetectionJobs on L<Paws::Comprehend>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListTopicsDetectionJobs on the
+This class represents the parameters used for calling the method ListEntitiesDetectionJobs on the
 L<Amazon Comprehend|Paws::Comprehend> service. Use the attributes of this class
-as arguments to method ListTopicsDetectionJobs.
+as arguments to method ListEntitiesDetectionJobs.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListTopicsDetectionJobs.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListEntitiesDetectionJobs.
 
 =head1 SYNOPSIS
 
     my $comprehend = Paws->service('Comprehend');
-    my $ListTopicsDetectionJobsResponse = $comprehend->ListTopicsDetectionJobs(
+    my $ListEntitiesDetectionJobsResponse =
+      $comprehend->ListEntitiesDetectionJobs(
       Filter => {
         JobName   => 'MyJobName',    # min: 1, max: 256; OPTIONAL
         JobStatus => 'SUBMITTED'
@@ -39,25 +40,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       MaxResults => 1,             # OPTIONAL
       NextToken  => 'MyString',    # OPTIONAL
-    );
+      );
 
     # Results:
-    my $NextToken = $ListTopicsDetectionJobsResponse->NextToken;
-    my $TopicsDetectionJobPropertiesList =
-      $ListTopicsDetectionJobsResponse->TopicsDetectionJobPropertiesList;
+    my $EntitiesDetectionJobPropertiesList =
+      $ListEntitiesDetectionJobsResponse->EntitiesDetectionJobPropertiesList;
+    my $NextToken = $ListEntitiesDetectionJobsResponse->NextToken;
 
-    # Returns a L<Paws::Comprehend::ListTopicsDetectionJobsResponse> object.
+    # Returns a L<Paws::Comprehend::ListEntitiesDetectionJobsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/comprehend/ListTopicsDetectionJobs>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/comprehend/ListEntitiesDetectionJobs>
 
 =head1 ATTRIBUTES
 
 
-=head2 Filter => L<Paws::Comprehend::TopicsDetectionJobFilter>
+=head2 Filter => L<Paws::Comprehend::EntitiesDetectionJobFilter>
 
-Filters the jobs that are returned. Jobs can be filtered on their name,
-status, or the date and time that they were submitted. You can set only
+Filters the jobs that are returned. You can filter jobs on their name,
+status, or the date and time that they were submitted. You can only set
 one filter at a time.
 
 
@@ -78,7 +79,7 @@ Identifies the next page of results to return.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method ListTopicsDetectionJobs in L<Paws::Comprehend>
+This class forms part of L<Paws>, documenting arguments for method ListEntitiesDetectionJobs in L<Paws::Comprehend>
 
 =head1 BUGS and CONTRIBUTIONS
 

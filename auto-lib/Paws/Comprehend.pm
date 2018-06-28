@@ -35,6 +35,26 @@ package Paws::Comprehend;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::BatchDetectSentiment', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeDominantLanguageDetectionJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::DescribeDominantLanguageDetectionJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeEntitiesDetectionJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::DescribeEntitiesDetectionJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeKeyPhrasesDetectionJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::DescribeKeyPhrasesDetectionJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeSentimentDetectionJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::DescribeSentimentDetectionJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeTopicsDetectionJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::DescribeTopicsDetectionJob', @_);
@@ -60,14 +80,74 @@ package Paws::Comprehend;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::DetectSentiment', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListDominantLanguageDetectionJobs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::ListDominantLanguageDetectionJobs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListEntitiesDetectionJobs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::ListEntitiesDetectionJobs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListKeyPhrasesDetectionJobs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::ListKeyPhrasesDetectionJobs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListSentimentDetectionJobs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::ListSentimentDetectionJobs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListTopicsDetectionJobs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::ListTopicsDetectionJobs', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartDominantLanguageDetectionJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::StartDominantLanguageDetectionJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StartEntitiesDetectionJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::StartEntitiesDetectionJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StartKeyPhrasesDetectionJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::StartKeyPhrasesDetectionJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StartSentimentDetectionJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::StartSentimentDetectionJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartTopicsDetectionJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::StartTopicsDetectionJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopDominantLanguageDetectionJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::StopDominantLanguageDetectionJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopEntitiesDetectionJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::StopEntitiesDetectionJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopKeyPhrasesDetectionJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::StopKeyPhrasesDetectionJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopSentimentDetectionJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::StopSentimentDetectionJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -96,7 +176,7 @@ package Paws::Comprehend;
   }
 
 
-  sub operations { qw/BatchDetectDominantLanguage BatchDetectEntities BatchDetectKeyPhrases BatchDetectSentiment DescribeTopicsDetectionJob DetectDominantLanguage DetectEntities DetectKeyPhrases DetectSentiment ListTopicsDetectionJobs StartTopicsDetectionJob / }
+  sub operations { qw/BatchDetectDominantLanguage BatchDetectEntities BatchDetectKeyPhrases BatchDetectSentiment DescribeDominantLanguageDetectionJob DescribeEntitiesDetectionJob DescribeKeyPhrasesDetectionJob DescribeSentimentDetectionJob DescribeTopicsDetectionJob DetectDominantLanguage DetectEntities DetectKeyPhrases DetectSentiment ListDominantLanguageDetectionJobs ListEntitiesDetectionJobs ListKeyPhrasesDetectionJobs ListSentimentDetectionJobs ListTopicsDetectionJobs StartDominantLanguageDetectionJob StartEntitiesDetectionJob StartKeyPhrasesDetectionJob StartSentimentDetectionJob StartTopicsDetectionJob StopDominantLanguageDetectionJob StopEntitiesDetectionJob StopKeyPhrasesDetectionJob StopSentimentDetectionJob / }
 
 1;
 
@@ -168,8 +248,9 @@ Each argument is described in detail in: L<Paws::Comprehend::BatchDetectEntities
 
 Returns: a L<Paws::Comprehend::BatchDetectEntitiesResponse> instance
 
-Inspects the text of a batch of documents and returns information about
-them. For more information about entities, see how-entities
+Inspects the text of a batch of documents for named entities and
+returns information about them. For more information about named
+entities, see how-entities
 
 
 =head2 BatchDetectKeyPhrases
@@ -208,6 +289,74 @@ Returns: a L<Paws::Comprehend::BatchDetectSentimentResponse> instance
 Inspects a batch of documents and returns an inference of the
 prevailing sentiment, C<POSITIVE>, C<NEUTRAL>, C<MIXED>, or
 C<NEGATIVE>, in each one.
+
+
+=head2 DescribeDominantLanguageDetectionJob
+
+=over
+
+=item JobId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::DescribeDominantLanguageDetectionJob>
+
+Returns: a L<Paws::Comprehend::DescribeDominantLanguageDetectionJobResponse> instance
+
+Gets the properties associated with a dominant language detection job.
+Use this operation to get the status of a detection job.
+
+
+=head2 DescribeEntitiesDetectionJob
+
+=over
+
+=item JobId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::DescribeEntitiesDetectionJob>
+
+Returns: a L<Paws::Comprehend::DescribeEntitiesDetectionJobResponse> instance
+
+Gets the properties associated with an entities detection job. Use this
+operation to get the status of a detection job.
+
+
+=head2 DescribeKeyPhrasesDetectionJob
+
+=over
+
+=item JobId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::DescribeKeyPhrasesDetectionJob>
+
+Returns: a L<Paws::Comprehend::DescribeKeyPhrasesDetectionJobResponse> instance
+
+Gets the properties associated with a key phrases detection job. Use
+this operation to get the status of a detection job.
+
+
+=head2 DescribeSentimentDetectionJob
+
+=over
+
+=item JobId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::DescribeSentimentDetectionJob>
+
+Returns: a L<Paws::Comprehend::DescribeSentimentDetectionJobResponse> instance
+
+Gets the properties associated with a sentiment detection job. Use this
+operation to get the status of a detection job.
 
 
 =head2 DescribeTopicsDetectionJob
@@ -261,8 +410,8 @@ Each argument is described in detail in: L<Paws::Comprehend::DetectEntities>
 
 Returns: a L<Paws::Comprehend::DetectEntitiesResponse> instance
 
-Inspects text for entities, and returns information about them. For
-more information, about entities, see how-entities.
+Inspects text for named entities, and returns information about them.
+For more information, about named entities, see how-entities.
 
 
 =head2 DetectKeyPhrases
@@ -302,6 +451,87 @@ Inspects text and returns an inference of the prevailing sentiment
 (C<POSITIVE>, C<NEUTRAL>, C<MIXED>, or C<NEGATIVE>).
 
 
+=head2 ListDominantLanguageDetectionJobs
+
+=over
+
+=item [Filter => L<Paws::Comprehend::DominantLanguageDetectionJobFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::ListDominantLanguageDetectionJobs>
+
+Returns: a L<Paws::Comprehend::ListDominantLanguageDetectionJobsResponse> instance
+
+Gets a list of the dominant language detection jobs that you have
+submitted.
+
+
+=head2 ListEntitiesDetectionJobs
+
+=over
+
+=item [Filter => L<Paws::Comprehend::EntitiesDetectionJobFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::ListEntitiesDetectionJobs>
+
+Returns: a L<Paws::Comprehend::ListEntitiesDetectionJobsResponse> instance
+
+Gets a list of the entity detection jobs that you have submitted.
+
+
+=head2 ListKeyPhrasesDetectionJobs
+
+=over
+
+=item [Filter => L<Paws::Comprehend::KeyPhrasesDetectionJobFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::ListKeyPhrasesDetectionJobs>
+
+Returns: a L<Paws::Comprehend::ListKeyPhrasesDetectionJobsResponse> instance
+
+Get a list of key phrase detection jobs that you have submitted.
+
+
+=head2 ListSentimentDetectionJobs
+
+=over
+
+=item [Filter => L<Paws::Comprehend::SentimentDetectionJobFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::ListSentimentDetectionJobs>
+
+Returns: a L<Paws::Comprehend::ListSentimentDetectionJobsResponse> instance
+
+Gets a list of sentiment detection jobs that you have submitted.
+
+
 =head2 ListTopicsDetectionJobs
 
 =over
@@ -320,6 +550,112 @@ Each argument is described in detail in: L<Paws::Comprehend::ListTopicsDetection
 Returns: a L<Paws::Comprehend::ListTopicsDetectionJobsResponse> instance
 
 Gets a list of the topic detection jobs that you have submitted.
+
+
+=head2 StartDominantLanguageDetectionJob
+
+=over
+
+=item DataAccessRoleArn => Str
+
+=item InputDataConfig => L<Paws::Comprehend::InputDataConfig>
+
+=item OutputDataConfig => L<Paws::Comprehend::OutputDataConfig>
+
+=item [ClientRequestToken => Str]
+
+=item [JobName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::StartDominantLanguageDetectionJob>
+
+Returns: a L<Paws::Comprehend::StartDominantLanguageDetectionJobResponse> instance
+
+Starts an asynchronous dominant language detection job for a collection
+of documents. Use the operation to track the status of a job.
+
+
+=head2 StartEntitiesDetectionJob
+
+=over
+
+=item DataAccessRoleArn => Str
+
+=item InputDataConfig => L<Paws::Comprehend::InputDataConfig>
+
+=item LanguageCode => Str
+
+=item OutputDataConfig => L<Paws::Comprehend::OutputDataConfig>
+
+=item [ClientRequestToken => Str]
+
+=item [JobName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::StartEntitiesDetectionJob>
+
+Returns: a L<Paws::Comprehend::StartEntitiesDetectionJobResponse> instance
+
+Starts an asynchronous entity detection job for a collection of
+documents. Use the operation to track the status of a job.
+
+
+=head2 StartKeyPhrasesDetectionJob
+
+=over
+
+=item DataAccessRoleArn => Str
+
+=item InputDataConfig => L<Paws::Comprehend::InputDataConfig>
+
+=item LanguageCode => Str
+
+=item OutputDataConfig => L<Paws::Comprehend::OutputDataConfig>
+
+=item [ClientRequestToken => Str]
+
+=item [JobName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::StartKeyPhrasesDetectionJob>
+
+Returns: a L<Paws::Comprehend::StartKeyPhrasesDetectionJobResponse> instance
+
+Starts an asynchronous key phrase detection job for a collection of
+documents. Use the operation to track the status of a job.
+
+
+=head2 StartSentimentDetectionJob
+
+=over
+
+=item DataAccessRoleArn => Str
+
+=item InputDataConfig => L<Paws::Comprehend::InputDataConfig>
+
+=item LanguageCode => Str
+
+=item OutputDataConfig => L<Paws::Comprehend::OutputDataConfig>
+
+=item [ClientRequestToken => Str]
+
+=item [JobName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::StartSentimentDetectionJob>
+
+Returns: a L<Paws::Comprehend::StartSentimentDetectionJobResponse> instance
+
+Starts an asynchronous sentiment detection job for a collection of
+documents. use the operation to track the status of a job.
 
 
 =head2 StartTopicsDetectionJob
@@ -347,6 +683,110 @@ Returns: a L<Paws::Comprehend::StartTopicsDetectionJobResponse> instance
 
 Starts an asynchronous topic detection job. Use the
 C<DescribeTopicDetectionJob> operation to track the status of a job.
+
+
+=head2 StopDominantLanguageDetectionJob
+
+=over
+
+=item JobId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::StopDominantLanguageDetectionJob>
+
+Returns: a L<Paws::Comprehend::StopDominantLanguageDetectionJobResponse> instance
+
+Stops a dominant language detection job in progress.
+
+If the job state is C<IN_PROGRESS> the job will be marked for
+termination and put into the C<STOPPING> state.
+
+If the job is in the C<COMPLETED> or C<FAILED> state when you call the
+C<StopDominantLanguageDetectionJob> operation, the operation will
+return a 400 Internal Request Exception.
+
+When a job is stopped, any document that has already been processed
+will be written to the output location.
+
+
+=head2 StopEntitiesDetectionJob
+
+=over
+
+=item JobId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::StopEntitiesDetectionJob>
+
+Returns: a L<Paws::Comprehend::StopEntitiesDetectionJobResponse> instance
+
+Stops an entities detection job in progress.
+
+If the job state is C<IN_PROGRESS> the job will be marked for
+termination and put into the C<STOPPING> state.
+
+If the job is in the C<COMPLETED> or C<FAILED> state when you call the
+C<StopDominantLanguageDetectionJob> operation, the operation will
+return a 400 Internal Request Exception.
+
+When a job is stopped, any document that has already been processed
+will be written to the output location.
+
+
+=head2 StopKeyPhrasesDetectionJob
+
+=over
+
+=item JobId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::StopKeyPhrasesDetectionJob>
+
+Returns: a L<Paws::Comprehend::StopKeyPhrasesDetectionJobResponse> instance
+
+Stops a key phrases detection job in progress.
+
+If the job state is C<IN_PROGRESS> the job will be marked for
+termination and put into the C<STOPPING> state.
+
+If the job is in the C<COMPLETED> or C<FAILED> state when you call the
+C<StopDominantLanguageDetectionJob> operation, the operation will
+return a 400 Internal Request Exception.
+
+When a job is stopped, any document that has already been processed
+will be written to the output location.
+
+
+=head2 StopSentimentDetectionJob
+
+=over
+
+=item JobId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::StopSentimentDetectionJob>
+
+Returns: a L<Paws::Comprehend::StopSentimentDetectionJobResponse> instance
+
+Stops a sentiment detection job in progress.
+
+If the job state is C<IN_PROGRESS> the job will be marked for
+termination and put into the C<STOPPING> state.
+
+If the job is in the C<COMPLETED> or C<FAILED> state when you call the
+C<StopDominantLanguageDetectionJob> operation, the operation will
+return a 400 Internal Request Exception.
+
+When a job is stopped, any document that has already been processed
+will be written to the output location.
 
 
 

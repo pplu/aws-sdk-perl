@@ -1,17 +1,16 @@
 
-package Paws::Comprehend::StartTopicsDetectionJob;
+package Paws::Comprehend::StartDominantLanguageDetectionJob;
   use Moose;
   has ClientRequestToken => (is => 'ro', isa => 'Str');
   has DataAccessRoleArn => (is => 'ro', isa => 'Str', required => 1);
   has InputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::InputDataConfig', required => 1);
   has JobName => (is => 'ro', isa => 'Str');
-  has NumberOfTopics => (is => 'ro', isa => 'Int');
   has OutputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::OutputDataConfig', required => 1);
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartTopicsDetectionJob');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Comprehend::StartTopicsDetectionJobResponse');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartDominantLanguageDetectionJob');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Comprehend::StartDominantLanguageDetectionJobResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -19,20 +18,21 @@ package Paws::Comprehend::StartTopicsDetectionJob;
 
 =head1 NAME
 
-Paws::Comprehend::StartTopicsDetectionJob - Arguments for method StartTopicsDetectionJob on L<Paws::Comprehend>
+Paws::Comprehend::StartDominantLanguageDetectionJob - Arguments for method StartDominantLanguageDetectionJob on L<Paws::Comprehend>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method StartTopicsDetectionJob on the
+This class represents the parameters used for calling the method StartDominantLanguageDetectionJob on the
 L<Amazon Comprehend|Paws::Comprehend> service. Use the attributes of this class
-as arguments to method StartTopicsDetectionJob.
+as arguments to method StartDominantLanguageDetectionJob.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StartTopicsDetectionJob.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StartDominantLanguageDetectionJob.
 
 =head1 SYNOPSIS
 
     my $comprehend = Paws->service('Comprehend');
-    my $StartTopicsDetectionJobResponse = $comprehend->StartTopicsDetectionJob(
+    my $StartDominantLanguageDetectionJobResponse =
+      $comprehend->StartDominantLanguageDetectionJob(
       DataAccessRoleArn => 'MyIamRoleArn',
       InputDataConfig   => {
         S3Uri       => 'MyS3Uri',           # max: 1024
@@ -45,17 +45,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },
       ClientRequestToken => 'MyClientRequestTokenString',    # OPTIONAL
       JobName            => 'MyJobName',                     # OPTIONAL
-      NumberOfTopics     => 1,                               # OPTIONAL
-    );
+      );
 
     # Results:
-    my $JobId     = $StartTopicsDetectionJobResponse->JobId;
-    my $JobStatus = $StartTopicsDetectionJobResponse->JobStatus;
+    my $JobId     = $StartDominantLanguageDetectionJobResponse->JobId;
+    my $JobStatus = $StartDominantLanguageDetectionJobResponse->JobStatus;
 
-    # Returns a L<Paws::Comprehend::StartTopicsDetectionJobResponse> object.
+# Returns a L<Paws::Comprehend::StartDominantLanguageDetectionJobResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/comprehend/StartTopicsDetectionJob>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/comprehend/StartDominantLanguageDetectionJob>
 
 =head1 ATTRIBUTES
 
@@ -69,9 +68,8 @@ request token, Amazon Comprehend generates one.
 
 =head2 B<REQUIRED> DataAccessRoleArn => Str
 
-The Amazon Resource Name (ARN) of the AWS Identity and Access
-Management (IAM) role that grants Amazon Comprehend read access to your
-input data.
+The Amazon Resource Name (ARN) of the AWS Identity and Management (IAM)
+role that grants Amazon Comprehend read access to your input data.
 
 
 
@@ -83,29 +81,20 @@ Specifies the format and location of the input data for the job.
 
 =head2 JobName => Str
 
-The identifier of the job.
-
-
-
-=head2 NumberOfTopics => Int
-
-The number of topics to detect.
+An identifier for the job.
 
 
 
 =head2 B<REQUIRED> OutputDataConfig => L<Paws::Comprehend::OutputDataConfig>
 
-Specifies where to send the output files. The output is a compressed
-archive with two files, C<topic-terms.csv> that lists the terms
-associated with each topic, and C<doc-topics.csv> that lists the
-documents associated with each topic
+Specifies where to send the output files.
 
 
 
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method StartTopicsDetectionJob in L<Paws::Comprehend>
+This class forms part of L<Paws>, documenting arguments for method StartDominantLanguageDetectionJob in L<Paws::Comprehend>
 
 =head1 BUGS and CONTRIBUTIONS
 

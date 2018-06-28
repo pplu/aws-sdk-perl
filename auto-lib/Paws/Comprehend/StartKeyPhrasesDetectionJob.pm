@@ -1,17 +1,17 @@
 
-package Paws::Comprehend::StartTopicsDetectionJob;
+package Paws::Comprehend::StartKeyPhrasesDetectionJob;
   use Moose;
   has ClientRequestToken => (is => 'ro', isa => 'Str');
   has DataAccessRoleArn => (is => 'ro', isa => 'Str', required => 1);
   has InputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::InputDataConfig', required => 1);
   has JobName => (is => 'ro', isa => 'Str');
-  has NumberOfTopics => (is => 'ro', isa => 'Int');
+  has LanguageCode => (is => 'ro', isa => 'Str', required => 1);
   has OutputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::OutputDataConfig', required => 1);
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartTopicsDetectionJob');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Comprehend::StartTopicsDetectionJobResponse');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartKeyPhrasesDetectionJob');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Comprehend::StartKeyPhrasesDetectionJobResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -19,59 +19,59 @@ package Paws::Comprehend::StartTopicsDetectionJob;
 
 =head1 NAME
 
-Paws::Comprehend::StartTopicsDetectionJob - Arguments for method StartTopicsDetectionJob on L<Paws::Comprehend>
+Paws::Comprehend::StartKeyPhrasesDetectionJob - Arguments for method StartKeyPhrasesDetectionJob on L<Paws::Comprehend>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method StartTopicsDetectionJob on the
+This class represents the parameters used for calling the method StartKeyPhrasesDetectionJob on the
 L<Amazon Comprehend|Paws::Comprehend> service. Use the attributes of this class
-as arguments to method StartTopicsDetectionJob.
+as arguments to method StartKeyPhrasesDetectionJob.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StartTopicsDetectionJob.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StartKeyPhrasesDetectionJob.
 
 =head1 SYNOPSIS
 
     my $comprehend = Paws->service('Comprehend');
-    my $StartTopicsDetectionJobResponse = $comprehend->StartTopicsDetectionJob(
+    my $StartKeyPhrasesDetectionJobResponse =
+      $comprehend->StartKeyPhrasesDetectionJob(
       DataAccessRoleArn => 'MyIamRoleArn',
       InputDataConfig   => {
         S3Uri       => 'MyS3Uri',           # max: 1024
         InputFormat => 'ONE_DOC_PER_FILE'
         ,    # values: ONE_DOC_PER_FILE, ONE_DOC_PER_LINE; OPTIONAL
       },
+      LanguageCode     => 'en',
       OutputDataConfig => {
         S3Uri => 'MyS3Uri',    # max: 1024
 
       },
       ClientRequestToken => 'MyClientRequestTokenString',    # OPTIONAL
       JobName            => 'MyJobName',                     # OPTIONAL
-      NumberOfTopics     => 1,                               # OPTIONAL
-    );
+      );
 
     # Results:
-    my $JobId     = $StartTopicsDetectionJobResponse->JobId;
-    my $JobStatus = $StartTopicsDetectionJobResponse->JobStatus;
+    my $JobId     = $StartKeyPhrasesDetectionJobResponse->JobId;
+    my $JobStatus = $StartKeyPhrasesDetectionJobResponse->JobStatus;
 
-    # Returns a L<Paws::Comprehend::StartTopicsDetectionJobResponse> object.
+    # Returns a L<Paws::Comprehend::StartKeyPhrasesDetectionJobResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/comprehend/StartTopicsDetectionJob>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/comprehend/StartKeyPhrasesDetectionJob>
 
 =head1 ATTRIBUTES
 
 
 =head2 ClientRequestToken => Str
 
-A unique identifier for the request. If you do not set the client
+A unique identifier for the request. If you don't set the client
 request token, Amazon Comprehend generates one.
 
 
 
 =head2 B<REQUIRED> DataAccessRoleArn => Str
 
-The Amazon Resource Name (ARN) of the AWS Identity and Access
-Management (IAM) role that grants Amazon Comprehend read access to your
-input data.
+The Amazon Resource Name (ARN) of the AWS Identity and Management (IAM)
+role that grants Amazon Comprehend read access to your input data.
 
 
 
@@ -87,25 +87,23 @@ The identifier of the job.
 
 
 
-=head2 NumberOfTopics => Int
+=head2 B<REQUIRED> LanguageCode => Str
 
-The number of topics to detect.
+The language of the input documents. You can specify English ("en") or
+Spanish ("es"). All documents must be in the same language.
 
-
+Valid values are: C<"en">, C<"es">
 
 =head2 B<REQUIRED> OutputDataConfig => L<Paws::Comprehend::OutputDataConfig>
 
-Specifies where to send the output files. The output is a compressed
-archive with two files, C<topic-terms.csv> that lists the terms
-associated with each topic, and C<doc-topics.csv> that lists the
-documents associated with each topic
+Specifies where to send the output files.
 
 
 
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method StartTopicsDetectionJob in L<Paws::Comprehend>
+This class forms part of L<Paws>, documenting arguments for method StartKeyPhrasesDetectionJob in L<Paws::Comprehend>
 
 =head1 BUGS and CONTRIBUTIONS
 
