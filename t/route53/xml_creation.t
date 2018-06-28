@@ -40,6 +40,17 @@ my %xml_methods = (
        ],
     }
    },
+  ChangeTagsForResource => {
+     ResourceId   => 'SomeId',
+     ResourceType => 'hostedzone',
+     AddTags => [
+       {
+         Key   => 'Cost Center',
+         Value => '80432',
+       }
+     ],
+     RemoveTagKeys => ['Owner'],
+   },
   CreateHostedZone => {
     CallerReference => 'MyThing',
     Name => 'MyDNSName',
@@ -56,11 +67,12 @@ my %xml_methods = (
 
 my %xml_results = (
   ChangeResourceRecordSets => '<?xml version="1.0" encoding="UTF-8"?><ChangeResourceRecordSetsRequest xmlns="https://route53.amazonaws.com/doc/2013-04-01/"><ChangeBatch><Changes><Change><Action>CREATE</Action><ResourceRecordSet><Type>A</Type><TTL>200</TTL><ResourceRecord><Value>127.0.0.1</Value></ResourceRecord><Name>MyResourceSet</Name></ResourceRecordSet></Change></Changes></ChangeBatch></ChangeResourceRecordSetsRequest>',
+  ChangeTagsForResource => '<?xml version="1.0" encoding="UTF-8"?><ChangeTagsForResourceRequest xmlns="https://route53.amazonaws.com/doc/2013-04-01/"><RemoveTagKeys><Key>Owner</Key></RemoveTagKeys><AddTags><Tag><Key>Cost Center</Key><Value>80432</Value></Tag></AddTags></ChangeTagsForResourceRequest>',
   CreateHostedZone => '<?xml version="1.0" encoding="UTF-8"?><CreateHostedZoneRequest xmlns="https://route53.amazonaws.com/doc/2013-04-01/"><CallerReference>MyThing</CallerReference><Name>MyDNSName</Name><VPC><VPCId>Something</VPCId><VPCRegion>us-west-2</VPCRegion></VPC></CreateHostedZoneRequest>',
   CreateQueryLoggingConfig => '<?xml version="1.0" encoding="UTF-8"?><CreateQueryLoggingConfigRequest xmlns="https://route53.amazonaws.com/doc/2013-04-01/"><CloudWatchLogsLogGroupArn>MyCloudWatchLogsLogGroupArn</CloudWatchLogsLogGroupArn><HostedZoneId>myZoneId</HostedZoneId></CreateQueryLoggingConfigRequest>',
- );
+);
 
-foreach my $method (qw/ChangeResourceRecordSets CreateHostedZone CreateQueryLoggingConfig/) {
+foreach my $method (qw/ChangeResourceRecordSets ChangeTagsForResource CreateHostedZone CreateQueryLoggingConfig/) {
   my $request;
   eval {
     $request = $route53->$method( %{ $xml_methods{$method}} );
@@ -70,8 +82,11 @@ foreach my $method (qw/ChangeResourceRecordSets CreateHostedZone CreateQueryLogg
 
  TODO: {
     local $TODO = 'Remove when the XML creation has been fixed';
-    is($request->content, $xml_results{$method}, "$method XML is ok");
+    if ($request) {
+      is($request->content, $xml_results{$method}, "$method XML is ok");
+    } else {
+      fail("Request for $method is undefined.")
+    }
   };
 }
 done_testing;
-
