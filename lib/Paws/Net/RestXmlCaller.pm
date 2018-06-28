@@ -187,12 +187,11 @@ package Paws::Net::RestXmlCaller;
       next if (not $attribute->has_value($value));
       $xml .= $self->_attribute_to_xml($attribute, $attribute->get_value($value));
     }
-    return $xml;
+    return $xml; 
   }
 
-
   sub _to_xml_body {
-    my ($self, $value) = @_;
+    my ($self, $call) = @_;
 
     my $xml = '';
     foreach my $attribute (sort { $a->name cmp $b->name } $call->meta->get_all_attributes) {
