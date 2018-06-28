@@ -70,7 +70,7 @@ template.
 
 =head2 B<REQUIRED> DurationInSeconds => Int
 
-  The duration in seconds specified for this assessment tempate. The
+  The duration in seconds specified for this assessment template. The
 default value is 3600 seconds (one hour). The maximum value is 86400
 seconds (one day).
 
@@ -79,7 +79,7 @@ seconds (one day).
 
   The Amazon Resource Name (ARN) of the most recent assessment run
 associated with this assessment template. This value exists only when
-the value of assessmentRunCount is greater than zero.
+the value of assessmentRunCount is greaterpa than zero.
 
 
 =head2 B<REQUIRED> Name => Str
