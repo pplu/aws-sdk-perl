@@ -1553,6 +1553,10 @@ instance IDs, it returns information for all your instances. If you
 specify an instance ID that is not valid or an instance that you do not
 own, you receive an error.
 
+The IamRole field for this API action is the Amazon Identity and Access
+Management (IAM) role assigned to on-premises instances. This call does
+not return the IAM role for Amazon EC2 instances.
+
 
 =head2 DescribeInstancePatches
 
