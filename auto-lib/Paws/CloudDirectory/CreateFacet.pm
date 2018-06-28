@@ -2,8 +2,9 @@
 package Paws::CloudDirectory::CreateFacet;
   use Moose;
   has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::FacetAttribute]');
+  has FacetStyle => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
-  has ObjectType => (is => 'ro', isa => 'Str', required => 1);
+  has ObjectType => (is => 'ro', isa => 'Str');
   has SchemaArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
 
   use MooseX::ClassAttribute;
@@ -33,14 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $clouddirectory = Paws->service('CloudDirectory');
     my $CreateFacetResponse = $clouddirectory->CreateFacet(
       Name       => 'MyFacetName',
-      ObjectType => 'NODE',
       SchemaArn  => 'MyArn',
       Attributes => [
         {
           Name                => 'MyAttributeName',    # min: 1, max: 64
           AttributeDefinition => {
-            Type =>
-              'STRING',    # values: STRING, BINARY, BOOLEAN, NUMBER, DATETIME
+            Type => 'STRING'
+            ,    # values: STRING, BINARY, BOOLEAN, NUMBER, DATETIME, VARIANT
             DefaultValue => {
               BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
               BooleanValue  => 1,                             # OPTIONAL
@@ -69,6 +69,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                       # OPTIONAL
+      FacetStyle => 'STATIC',  # OPTIONAL
+      ObjectType => 'NODE',    # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -83,13 +85,22 @@ The attributes that are associated with the Facet.
 
 
 
+=head2 FacetStyle => Str
+
+There are two different styles that you can define on any given facet,
+C<Static> and C<Dynamic>. For static facets, all attributes must be
+defined in the schema. For dynamic facets, attributes can be defined
+during data plane operations.
+
+Valid values are: C<"STATIC">, C<"DYNAMIC">
+
 =head2 B<REQUIRED> Name => Str
 
 The name of the Facet, which is unique for a given schema.
 
 
 
-=head2 B<REQUIRED> ObjectType => Str
+=head2 ObjectType => Str
 
 Specifies whether a given object created from this facet is of type
 node, leaf node, policy or index.

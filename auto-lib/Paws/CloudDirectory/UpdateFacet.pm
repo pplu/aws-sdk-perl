@@ -41,8 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Attribute => {
             Name                => 'MyAttributeName',    # min: 1, max: 64
             AttributeDefinition => {
-              Type =>
-                'STRING',    # values: STRING, BINARY, BOOLEAN, NUMBER, DATETIME
+              Type => 'STRING'
+              ,    # values: STRING, BINARY, BOOLEAN, NUMBER, DATETIME, VARIANT
               DefaultValue => {
                 BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
                 BooleanValue  => 1,                             # OPTIONAL

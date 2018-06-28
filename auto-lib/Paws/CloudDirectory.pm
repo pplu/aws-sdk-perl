@@ -2,7 +2,7 @@ package Paws::CloudDirectory;
   use Moose;
   sub service { 'clouddirectory' }
   sub signing_name { 'clouddirectory' }
-  sub version { '2016-05-10' }
+  sub version { '2017-01-11' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
   has retry => (is => 'ro', isa => 'HashRef', default => sub {
@@ -217,6 +217,11 @@ package Paws::CloudDirectory;
   sub ListIndex {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudDirectory::ListIndex', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListManagedSchemaArns {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudDirectory::ListManagedSchemaArns', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListObjectAttributes {
@@ -710,7 +715,7 @@ package Paws::CloudDirectory;
   }
 
 
-  sub operations { qw/AddFacetToObject ApplySchema AttachObject AttachPolicy AttachToIndex AttachTypedLink BatchRead BatchWrite CreateDirectory CreateFacet CreateIndex CreateObject CreateSchema CreateTypedLinkFacet DeleteDirectory DeleteFacet DeleteObject DeleteSchema DeleteTypedLinkFacet DetachFromIndex DetachObject DetachPolicy DetachTypedLink DisableDirectory EnableDirectory GetAppliedSchemaVersion GetDirectory GetFacet GetLinkAttributes GetObjectAttributes GetObjectInformation GetSchemaAsJson GetTypedLinkFacetInformation ListAppliedSchemaArns ListAttachedIndices ListDevelopmentSchemaArns ListDirectories ListFacetAttributes ListFacetNames ListIncomingTypedLinks ListIndex ListObjectAttributes ListObjectChildren ListObjectParentPaths ListObjectParents ListObjectPolicies ListOutgoingTypedLinks ListPolicyAttachments ListPublishedSchemaArns ListTagsForResource ListTypedLinkFacetAttributes ListTypedLinkFacetNames LookupPolicy PublishSchema PutSchemaFromJson RemoveFacetFromObject TagResource UntagResource UpdateFacet UpdateLinkAttributes UpdateObjectAttributes UpdateSchema UpdateTypedLinkFacet UpgradeAppliedSchema UpgradePublishedSchema / }
+  sub operations { qw/AddFacetToObject ApplySchema AttachObject AttachPolicy AttachToIndex AttachTypedLink BatchRead BatchWrite CreateDirectory CreateFacet CreateIndex CreateObject CreateSchema CreateTypedLinkFacet DeleteDirectory DeleteFacet DeleteObject DeleteSchema DeleteTypedLinkFacet DetachFromIndex DetachObject DetachPolicy DetachTypedLink DisableDirectory EnableDirectory GetAppliedSchemaVersion GetDirectory GetFacet GetLinkAttributes GetObjectAttributes GetObjectInformation GetSchemaAsJson GetTypedLinkFacetInformation ListAppliedSchemaArns ListAttachedIndices ListDevelopmentSchemaArns ListDirectories ListFacetAttributes ListFacetNames ListIncomingTypedLinks ListIndex ListManagedSchemaArns ListObjectAttributes ListObjectChildren ListObjectParentPaths ListObjectParents ListObjectPolicies ListOutgoingTypedLinks ListPolicyAttachments ListPublishedSchemaArns ListTagsForResource ListTypedLinkFacetAttributes ListTypedLinkFacetNames LookupPolicy PublishSchema PutSchemaFromJson RemoveFacetFromObject TagResource UntagResource UpdateFacet UpdateLinkAttributes UpdateObjectAttributes UpdateSchema UpdateTypedLinkFacet UpgradeAppliedSchema UpgradePublishedSchema / }
 
 1;
 
@@ -965,11 +970,13 @@ A directory cannot be created without a schema.
 
 =item Name => Str
 
-=item ObjectType => Str
-
 =item SchemaArn => Str
 
 =item [Attributes => ArrayRef[L<Paws::CloudDirectory::FacetAttribute>]]
+
+=item [FacetStyle => Str]
+
+=item [ObjectType => Str]
 
 
 =back
@@ -1644,6 +1651,28 @@ Each argument is described in detail in: L<Paws::CloudDirectory::ListIndex>
 Returns: a L<Paws::CloudDirectory::ListIndexResponse> instance
 
 Lists objects attached to the specified index.
+
+
+=head2 ListManagedSchemaArns
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SchemaArn => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudDirectory::ListManagedSchemaArns>
+
+Returns: a L<Paws::CloudDirectory::ListManagedSchemaArnsResponse> instance
+
+Lists the major version families of each managed schema. If a major
+version ARN is provided as SchemaArn, the minor version revisions in
+that family are listed instead.
 
 
 =head2 ListObjectAttributes

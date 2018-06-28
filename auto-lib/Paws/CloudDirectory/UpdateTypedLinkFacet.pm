@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Name => 'MyAttributeName',        # min: 1, max: 64
             RequiredBehavior =>
               'REQUIRED_ALWAYS',    # values: REQUIRED_ALWAYS, NOT_REQUIRED
-            Type =>
-              'STRING',    # values: STRING, BINARY, BOOLEAN, NUMBER, DATETIME
+            Type => 'STRING'
+            ,    # values: STRING, BINARY, BOOLEAN, NUMBER, DATETIME, VARIANT
             DefaultValue => {
               BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
               BooleanValue  => 1,                             # OPTIONAL
