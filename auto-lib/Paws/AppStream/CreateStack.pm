@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $appstream2 = Paws->service('AppStream');
     my $CreateStackResult = $appstream2->CreateStack(
-      Name              => 'MyString',
+      Name              => 'MyName',
       Description       => 'MyDescription',    # OPTIONAL
       DisplayName       => 'MyDisplayName',    # OPTIONAL
       FeedbackURL       => 'MyFeedbackURL',    # OPTIONAL

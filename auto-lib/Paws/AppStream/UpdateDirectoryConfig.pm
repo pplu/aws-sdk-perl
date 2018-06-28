@@ -54,7 +54,7 @@ For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
 
 =head2 B<REQUIRED> DirectoryName => Str
 
-The name of the directory configuration.
+The name of the Directory Config object.
 
 
 
