@@ -38,6 +38,7 @@ package Paws::RDS::DBInstance;
   has PendingModifiedValues => (is => 'ro', isa => 'Paws::RDS::PendingModifiedValues');
   has PerformanceInsightsEnabled => (is => 'ro', isa => 'Bool');
   has PerformanceInsightsKMSKeyId => (is => 'ro', isa => 'Str');
+  has PerformanceInsightsRetentionPeriod => (is => 'ro', isa => 'Int');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has ProcessorFeatures => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ProcessorFeature]', request_name => 'ProcessorFeature', traits => ['NameInRequest']);
@@ -345,6 +346,12 @@ otherwise false.
   The AWS KMS key identifier for encryption of Performance Insights data.
 The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier,
 or the KMS key alias for the KMS encryption key.
+
+
+=head2 PerformanceInsightsRetentionPeriod => Int
+
+  The amount of time, in days, to retain Performance Insights data. Valid
+values are 7 or 731 (2 years).
 
 
 =head2 PreferredBackupWindow => Str

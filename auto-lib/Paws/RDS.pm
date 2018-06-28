@@ -1631,6 +1631,8 @@ in the I<Amazon RDS User Guide.>
 
 =item [PerformanceInsightsKMSKeyId => Str]
 
+=item [PerformanceInsightsRetentionPeriod => Int]
+
 =item [Port => Int]
 
 =item [PreferredBackupWindow => Str]
@@ -1704,6 +1706,8 @@ Creates a new DB instance.
 =item [OptionGroupName => Str]
 
 =item [PerformanceInsightsKMSKeyId => Str]
+
+=item [PerformanceInsightsRetentionPeriod => Int]
 
 =item [Port => Int]
 
@@ -3238,6 +3242,8 @@ private, use the DescribeDBClusterSnapshotAttributes API action.
 
 =item [PerformanceInsightsKMSKeyId => Str]
 
+=item [PerformanceInsightsRetentionPeriod => Int]
+
 =item [PreferredBackupWindow => Str]
 
 =item [PreferredMaintenanceWindow => Str]
@@ -4015,6 +4021,8 @@ Aurora, use RestoreDBClusterFromSnapshot.
 =item [OptionGroupName => Str]
 
 =item [PerformanceInsightsKMSKeyId => Str]
+
+=item [PerformanceInsightsRetentionPeriod => Int]
 
 =item [Port => Int]
 

@@ -27,6 +27,7 @@ package Paws::RDS::RestoreDBInstanceFromS3;
   has MultiAZ => (is => 'ro', isa => 'Bool');
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has PerformanceInsightsKMSKeyId => (is => 'ro', isa => 'Str');
+  has PerformanceInsightsRetentionPeriod => (is => 'ro', isa => 'Int');
   has Port => (is => 'ro', isa => 'Int');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
@@ -68,59 +69,60 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $rds = Paws->service('RDS');
     my $RestoreDBInstanceFromS3Result = $rds->RestoreDBInstanceFromS3(
-      DBInstanceClass                 => 'MyString',
-      DBInstanceIdentifier            => 'MyString',
-      Engine                          => 'MyString',
-      S3BucketName                    => 'MyString',
-      S3IngestionRoleArn              => 'MyString',
-      SourceEngine                    => 'MyString',
-      SourceEngineVersion             => 'MyString',
-      AllocatedStorage                => 1,                      # OPTIONAL
-      AutoMinorVersionUpgrade         => 1,                      # OPTIONAL
-      AvailabilityZone                => 'MyString',             # OPTIONAL
-      BackupRetentionPeriod           => 1,                      # OPTIONAL
-      CopyTagsToSnapshot              => 1,                      # OPTIONAL
-      DBName                          => 'MyString',             # OPTIONAL
-      DBParameterGroupName            => 'MyString',             # OPTIONAL
-      DBSecurityGroups                => [ 'MyString', ... ],    # OPTIONAL
-      DBSubnetGroupName               => 'MyString',             # OPTIONAL
-      EnableCloudwatchLogsExports     => [ 'MyString', ... ],    # OPTIONAL
-      EnableIAMDatabaseAuthentication => 1,                      # OPTIONAL
-      EnablePerformanceInsights       => 1,                      # OPTIONAL
-      EngineVersion                   => 'MyString',             # OPTIONAL
-      Iops                            => 1,                      # OPTIONAL
-      KmsKeyId                        => 'MyString',             # OPTIONAL
-      LicenseModel                    => 'MyString',             # OPTIONAL
-      MasterUserPassword              => 'MyString',             # OPTIONAL
-      MasterUsername                  => 'MyString',             # OPTIONAL
-      MonitoringInterval              => 1,                      # OPTIONAL
-      MonitoringRoleArn               => 'MyString',             # OPTIONAL
-      MultiAZ                         => 1,                      # OPTIONAL
-      OptionGroupName                 => 'MyString',             # OPTIONAL
-      PerformanceInsightsKMSKeyId     => 'MyString',             # OPTIONAL
-      Port                            => 1,                      # OPTIONAL
-      PreferredBackupWindow           => 'MyString',             # OPTIONAL
-      PreferredMaintenanceWindow      => 'MyString',             # OPTIONAL
-      ProcessorFeatures               => [
+      DBInstanceClass                    => 'MyString',
+      DBInstanceIdentifier               => 'MyString',
+      Engine                             => 'MyString',
+      S3BucketName                       => 'MyString',
+      S3IngestionRoleArn                 => 'MyString',
+      SourceEngine                       => 'MyString',
+      SourceEngineVersion                => 'MyString',
+      AllocatedStorage                   => 1,                      # OPTIONAL
+      AutoMinorVersionUpgrade            => 1,                      # OPTIONAL
+      AvailabilityZone                   => 'MyString',             # OPTIONAL
+      BackupRetentionPeriod              => 1,                      # OPTIONAL
+      CopyTagsToSnapshot                 => 1,                      # OPTIONAL
+      DBName                             => 'MyString',             # OPTIONAL
+      DBParameterGroupName               => 'MyString',             # OPTIONAL
+      DBSecurityGroups                   => [ 'MyString', ... ],    # OPTIONAL
+      DBSubnetGroupName                  => 'MyString',             # OPTIONAL
+      EnableCloudwatchLogsExports        => [ 'MyString', ... ],    # OPTIONAL
+      EnableIAMDatabaseAuthentication    => 1,                      # OPTIONAL
+      EnablePerformanceInsights          => 1,                      # OPTIONAL
+      EngineVersion                      => 'MyString',             # OPTIONAL
+      Iops                               => 1,                      # OPTIONAL
+      KmsKeyId                           => 'MyString',             # OPTIONAL
+      LicenseModel                       => 'MyString',             # OPTIONAL
+      MasterUserPassword                 => 'MyString',             # OPTIONAL
+      MasterUsername                     => 'MyString',             # OPTIONAL
+      MonitoringInterval                 => 1,                      # OPTIONAL
+      MonitoringRoleArn                  => 'MyString',             # OPTIONAL
+      MultiAZ                            => 1,                      # OPTIONAL
+      OptionGroupName                    => 'MyString',             # OPTIONAL
+      PerformanceInsightsKMSKeyId        => 'MyString',             # OPTIONAL
+      PerformanceInsightsRetentionPeriod => 1,                      # OPTIONAL
+      Port                               => 1,                      # OPTIONAL
+      PreferredBackupWindow              => 'MyString',             # OPTIONAL
+      PreferredMaintenanceWindow         => 'MyString',             # OPTIONAL
+      ProcessorFeatures                  => [
         {
           Name  => 'MyString',
           Value => 'MyString',
         },
         ...
-      ],                                                         # OPTIONAL
-      PubliclyAccessible => 1,                                   # OPTIONAL
-      S3Prefix           => 'MyString',                          # OPTIONAL
-      StorageEncrypted   => 1,                                   # OPTIONAL
-      StorageType        => 'MyString',                          # OPTIONAL
+      ],                                                            # OPTIONAL
+      PubliclyAccessible => 1,                                      # OPTIONAL
+      S3Prefix           => 'MyString',                             # OPTIONAL
+      StorageEncrypted   => 1,                                      # OPTIONAL
+      StorageType        => 'MyString',                             # OPTIONAL
       Tags               => [
         {
           Key   => 'MyString',
           Value => 'MyString',
         },
         ...
-      ],                                                         # OPTIONAL
-      UseDefaultProcessorFeatures => 1,                          # OPTIONAL
-      VpcSecurityGroupIds => [ 'MyString', ... ],                # OPTIONAL
+      ],                                                            # OPTIONAL
+      UseDefaultProcessorFeatures => 1,                             # OPTIONAL
+      VpcSecurityGroupIds => [ 'MyString', ... ],                   # OPTIONAL
     );
 
     # Results:
@@ -418,6 +420,13 @@ engine is used.
 The AWS KMS key identifier for encryption of Performance Insights data.
 The KMS key ID is the Amazon Resource Name (ARN), the KMS key
 identifier, or the KMS key alias for the KMS encryption key.
+
+
+
+=head2 PerformanceInsightsRetentionPeriod => Int
+
+The amount of time, in days, to retain Performance Insights data. Valid
+values are 7 or 731 (2 years).
 
 
 
