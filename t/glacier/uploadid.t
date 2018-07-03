@@ -37,7 +37,7 @@ my $upload_output = $glacier->InitiateMultipartUpload(
  );
 
 
-ok($upload_output->UploadId, 'InitiateMultipartUpload returned an uploadId');
+ok($upload_output->UploadId, 'Glacier InitiateMultipartUpload returned an uploadId');
 
 done_testing;
 
