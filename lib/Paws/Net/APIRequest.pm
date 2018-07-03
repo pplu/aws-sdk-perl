@@ -5,7 +5,7 @@ package Paws::Net::APIRequest;
 
   has parameters => (is => 'rw', isa => 'HashRef', default => sub { {} });
   has headers    => (is => 'rw', isa => 'HTTP::Headers', default => sub { HTTP::Headers->new });
-  has content    => (is => 'rw', isa => 'Str|Undef');
+  has content    => (is => 'rw', isa => 'Str|Undef', default => '');
   has method     => (is => 'rw', isa => 'Str');
   has uri        => (is => 'rw', isa => 'Str');
   has url        => (is => 'rw', isa => 'Str');

@@ -171,7 +171,7 @@ package Paws::Net::RestXmlCaller;
         }
       }
     }
-    return $xml; 
+    return $xml;
   }
 
   sub _to_xml_body {
@@ -239,7 +239,8 @@ package Paws::Net::RestXmlCaller;
 
     if ($call->can('_stream_param')) {
       my $param_name = $call->_stream_param;
-      $request->content($call->$param_name);
+      my $content = $call->$param_name // '';
+      $request->content($content);
       $request->headers->header( 'content-length' => $request->content_length );
       #$request->headers->header( 'content-type'   => $self->content_type );
     }
