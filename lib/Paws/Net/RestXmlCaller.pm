@@ -187,7 +187,7 @@ package Paws::Net::RestXmlCaller;
       next if (not $attribute->has_value($value));
       $xml .= $self->_attribute_to_xml($attribute, $attribute->get_value($value));
     }
-    return $xml; 
+    return $xml;
   }
 
   sub _to_xml_body {
