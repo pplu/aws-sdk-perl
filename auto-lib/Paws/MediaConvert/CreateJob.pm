@@ -43,7 +43,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             AudioSelectorGroups => {
               'My__string' => {
                 AudioSelectorNames => [
-                  'My__stringMin1', ...    # min: 1,
+                  'My__stringMin1', ...    # min: 1, ; OPTIONAL
                 ],
 
               },
@@ -59,7 +59,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ,               # OPTIONAL
                 LanguageCode => 'ENG'
                 , # values: ENG, SPA, FRA, DEU, GER, ZHO, ARA, HIN, JPN, RUS, POR, ITA, URD, VIE, KOR, PAN, ABK, AAR, AFR, AKA, SQI, AMH, ARG, HYE, ASM, AVA, AVE, AYM, AZE, BAM, BAK, EUS, BEL, BEN, BIH, BIS, BOS, BRE, BUL, MYA, CAT, KHM, CHA, CHE, NYA, CHU, CHV, COR, COS, CRE, HRV, CES, DAN, DIV, NLD, DZO, ENM, EPO, EST, EWE, FAO, FIJ, FIN, FRM, FUL, GLA, GLG, LUG, KAT, ELL, GRN, GUJ, HAT, HAU, HEB, HER, HMO, HUN, ISL, IDO, IBO, IND, INA, ILE, IKU, IPK, GLE, JAV, KAL, KAN, KAU, KAS, KAZ, KIK, KIN, KIR, KOM, KON, KUA, KUR, LAO, LAT, LAV, LIM, LIN, LIT, LUB, LTZ, MKD, MLG, MSA, MAL, MLT, GLV, MRI, MAR, MAH, MON, NAU, NAV, NDE, NBL, NDO, NEP, SME, NOR, NOB, NNO, OCI, OJI, ORI, ORM, OSS, PLI, FAS, POL, PUS, QUE, QAA, RON, ROH, RUN, SMO, SAG, SAN, SRD, SRB, SNA, III, SND, SIN, SLK, SLV, SOM, SOT, SUN, SWA, SSW, SWE, TGL, TAH, TGK, TAM, TAT, TEL, THA, BOD, TIR, TON, TSO, TSN, TUR, TUK, TWI, UIG, UKR, UZB, VEN, VOL, WLN, CYM, FRY, WOL, XHO, YID, YOR, ZHA, ZUL, ORJ, QPC, TNG; OPTIONAL
-                Offset => 1,    # min: -2147483648, max: 2147483647
+                Offset => 1,    # min: -2147483648, max: 2147483647; OPTIONAL
                 Pids   => [
                   1, ...        # min: 1, max: 2147483647; OPTIONAL
                 ],              # OPTIONAL
@@ -112,7 +112,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     ,    # min: 14,
                     Convert608To708 =>
                       'UPCONVERT',    # values: UPCONVERT, DISABLED; OPTIONAL
-                    TimeDelta => 1,   # min: -2147483648, max: 2147483647
+                    TimeDelta =>
+                      1,    # min: -2147483648, max: 2147483647; OPTIONAL
                   },    # OPTIONAL
                   TeletextSourceSettings => {
                     PageNumber => 'My__stringMin3Max3Pattern1809aFAF09aEAE'
@@ -159,8 +160,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 WhitePointX               => 1,    # max: 50000; OPTIONAL
                 WhitePointY               => 1,    # max: 50000; OPTIONAL
               },    # OPTIONAL
-              Pid           => 1,    # min: 1, max: 2147483647; OPTIONAL
-              ProgramNumber => 1,    # min: -2147483648, max: 2147483647
+              Pid           => 1,  # min: 1, max: 2147483647; OPTIONAL
+              ProgramNumber => 1,  # min: -2147483648, max: 2147483647; OPTIONAL
             },    # OPTIONAL
           },
           ...
@@ -222,9 +223,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     ],
                     Url => 'My__stringPatternHttps',
 
-                  },                                     # OPTIONAL
+                  },
 
-                },    # OPTIONAL
+                },                                       # OPTIONAL
                 HbbtvCompliance =>
                   'HBBTV_1_5',    # values: HBBTV_1_5, NONE; OPTIONAL
                 MinBufferTime  => 1,              # max: 2147483647; OPTIONAL
@@ -243,9 +244,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 BaseUrl                 => 'My__string',
                 CaptionLanguageMappings => [
                   {
-                    CaptionChannel => 1,    # min: -2147483648, max: 2147483647
+                    CaptionChannel =>
+                      1,    # min: -2147483648, max: 2147483647; OPTIONAL
                     CustomLanguageCode => 'My__stringMin3Max3PatternAZaZ3'
-                    ,                       # min: 3, max: 3; OPTIONAL
+                    ,       # min: 3, max: 3; OPTIONAL
                     LanguageCode => 'ENG'
                     , # values: ENG, SPA, FRA, DEU, GER, ZHO, ARA, HIN, JPN, RUS, POR, ITA, URD, VIE, KOR, PAN, ABK, AAR, AFR, AKA, SQI, AMH, ARG, HYE, ASM, AVA, AVE, AYM, AZE, BAM, BAK, EUS, BEL, BEN, BIH, BIS, BOS, BRE, BUL, MYA, CAT, KHM, CHA, CHE, NYA, CHU, CHV, COR, COS, CRE, HRV, CES, DAN, DIV, NLD, DZO, ENM, EPO, EST, EWE, FAO, FIJ, FIN, FRM, FUL, GLA, GLG, LUG, KAT, ELL, GRN, GUJ, HAT, HAU, HEB, HER, HMO, HUN, ISL, IDO, IBO, IND, INA, ILE, IKU, IPK, GLE, JAV, KAL, KAN, KAU, KAS, KAZ, KIK, KIN, KIR, KOM, KON, KUA, KUR, LAO, LAT, LAV, LIM, LIN, LIT, LUB, LTZ, MKD, MLG, MSA, MAL, MLT, GLV, MRI, MAR, MAH, MON, NAU, NAV, NDE, NBL, NDO, NEP, SME, NOR, NOB, NNO, OCI, OJI, ORI, ORM, OSS, PLI, FAS, POL, PUS, QUE, QAA, RON, ROH, RUN, SMO, SAG, SAN, SRD, SRB, SNA, III, SND, SIN, SLK, SLV, SOM, SOT, SUN, SWA, SSW, SWE, TGL, TAH, TGK, TAM, TAT, TEL, THA, BOD, TIR, TON, TSO, TSN, TUR, TUK, TWI, UIG, UKR, UZB, VEN, VOL, WLN, CYM, FRY, WOL, XHO, YID, YOR, ZHA, ZUL, ORJ, QPC, TNG; OPTIONAL
                     LanguageDescription => 'My__string',
@@ -277,7 +279,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     ],
                     Url => 'My__stringPatternHttps',
 
-                  },                  # OPTIONAL
+                  },
                   StaticKeyProvider => {
                     StaticKeyValue => 'My__stringPatternAZaZ0932',
                     Url            => 'My__string',
@@ -302,9 +304,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   'INCLUDE',    # values: INCLUDE, EXCLUDE; OPTIONAL
                 TimedMetadataId3Frame =>
                   'NONE',       # values: NONE, PRIV, TDRL; OPTIONAL
-                TimedMetadataId3Period => 1, # min: -2147483648, max: 2147483647
+                TimedMetadataId3Period =>
+                  1,            # min: -2147483648, max: 2147483647; OPTIONAL
                 TimestampDeltaMilliseconds =>
-                  1,                         # min: -2147483648, max: 2147483647
+                  1,            # min: -2147483648, max: 2147483647; OPTIONAL
               },    # OPTIONAL
               MsSmoothGroupSettings => {
                 FragmentLength => 1,    # min: 1, max: 2147483647; OPTIONAL
@@ -320,9 +323,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     ],
                     Url => 'My__stringPatternHttps',
 
-                  },                                     # OPTIONAL
+                  },
 
-                },    # OPTIONAL
+                },                                       # OPTIONAL
                 ManifestEncoding => 'UTF8',    # values: UTF8, UTF16; OPTIONAL
               },    # OPTIONAL
             },
@@ -462,7 +465,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ],                                          # OPTIONAL
                 CaptionDescriptions => [
                   {
-                    CaptionSelectorName => 'My__stringMin1',    # min: 1,
+                    CaptionSelectorName =>
+                      'My__stringMin1',                     # min: 1, ; OPTIONAL
                     DestinationSettings => {
                       DestinationType => 'BURN_IN'
                       , # values: BURN_IN, DVB_SUB, EMBEDDED, SCC, SRT, TELETEXT, TTML, WEBVTT
@@ -481,11 +485,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         FontSize       => 1,    # max: 96; OPTIONAL
                         ShadowColor =>
                           'NONE',    # values: NONE, BLACK, WHITE; OPTIONAL
-                        ShadowOpacity => 1,  # max: 255; OPTIONAL
-                        ShadowXOffset => 1,  # min: -2147483648, max: 2147483647
-                        ShadowYOffset => 1,  # min: -2147483648, max: 2147483647
+                        ShadowOpacity => 1,    # max: 255; OPTIONAL
+                        ShadowXOffset =>
+                          1,    # min: -2147483648, max: 2147483647; OPTIONAL
+                        ShadowYOffset =>
+                          1,    # min: -2147483648, max: 2147483647; OPTIONAL
                         TeletextSpacing => 'FIXED_GRID'
-                        ,    # values: FIXED_GRID, PROPORTIONAL; OPTIONAL
+                        ,       # values: FIXED_GRID, PROPORTIONAL; OPTIONAL
                         XPosition => 1,    # max: 2147483647; OPTIONAL
                         YPosition => 1,    # max: 2147483647; OPTIONAL
                       },    # OPTIONAL
@@ -504,11 +510,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         FontSize       => 1,    # max: 96; OPTIONAL
                         ShadowColor =>
                           'NONE',    # values: NONE, BLACK, WHITE; OPTIONAL
-                        ShadowOpacity => 1,  # max: 255; OPTIONAL
-                        ShadowXOffset => 1,  # min: -2147483648, max: 2147483647
-                        ShadowYOffset => 1,  # min: -2147483648, max: 2147483647
+                        ShadowOpacity => 1,    # max: 255; OPTIONAL
+                        ShadowXOffset =>
+                          1,    # min: -2147483648, max: 2147483647; OPTIONAL
+                        ShadowYOffset =>
+                          1,    # min: -2147483648, max: 2147483647; OPTIONAL
                         TeletextSpacing => 'FIXED_GRID'
-                        ,    # values: FIXED_GRID, PROPORTIONAL; OPTIONAL
+                        ,       # values: FIXED_GRID, PROPORTIONAL; OPTIONAL
                         XPosition => 1,    # max: 2147483647; OPTIONAL
                         YPosition => 1,    # max: 2147483647; OPTIONAL
                       },    # OPTIONAL
@@ -647,7 +655,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },    # OPTIONAL
                 },    # OPTIONAL
                 Extension      => 'My__string',
-                NameModifier   => 'My__stringMin1',    # min: 1,
+                NameModifier   => 'My__stringMin1',    # min: 1, ; OPTIONAL
                 OutputSettings => {
                   HlsSettings => {
                     AudioGroupId       => 'My__string',
@@ -868,10 +876,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   AntiAlias => 'DISABLED', # values: DISABLED, ENABLED; OPTIONAL
                   ColorMetadata => 'IGNORE',  # values: IGNORE, INSERT; OPTIONAL
                   Crop          => {
-                    Height => 1,    # min: -2147483648, max: 2147483647
-                    Width  => 1,    # min: -2147483648, max: 2147483647
-                    X      => 1,    # min: -2147483648, max: 2147483647
-                    Y      => 1,    # min: -2147483648, max: 2147483647
+                    Height => 1,   # min: -2147483648, max: 2147483647; OPTIONAL
+                    Width  => 1,   # min: -2147483648, max: 2147483647; OPTIONAL
+                    X      => 1,   # min: -2147483648, max: 2147483647; OPTIONAL
+                    Y      => 1,   # min: -2147483648, max: 2147483647; OPTIONAL
 
                   },    # OPTIONAL
                   DropFrameTimecode =>
@@ -879,10 +887,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   FixedAfd => 1,   # max: 15; OPTIONAL
                   Height   => 1,   # min: 32, max: 2160; OPTIONAL
                   Position => {
-                    Height => 1,    # min: -2147483648, max: 2147483647
-                    Width  => 1,    # min: -2147483648, max: 2147483647
-                    X      => 1,    # min: -2147483648, max: 2147483647
-                    Y      => 1,    # min: -2147483648, max: 2147483647
+                    Height => 1,   # min: -2147483648, max: 2147483647; OPTIONAL
+                    Width  => 1,   # min: -2147483648, max: 2147483647; OPTIONAL
+                    X      => 1,   # min: -2147483648, max: 2147483647; OPTIONAL
+                    Y      => 1,   # min: -2147483648, max: 2147483647; OPTIONAL
 
                   },    # OPTIONAL
                   RespondToAfd =>
@@ -929,17 +937,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                           ImageInserterInput =>
                             'My__stringMin14PatternS3BmpBMPPngPNGTgaTGA'
                           ,    # min: 14,
-                          ImageX   => 1,    # min: -2147483648, max: 2147483647
-                          ImageY   => 1,    # min: -2147483648, max: 2147483647
-                          Layer    => 1,    # max: 99
-                          Opacity  => 1,    # max: 100; OPTIONAL
-                          Duration => 1,    # min: -2147483648, max: 2147483647
-                          FadeIn   => 1,    # min: -2147483648, max: 2147483647
-                          FadeOut  => 1,    # min: -2147483648, max: 2147483647
-                          Height   => 1,    # min: -2147483648, max: 2147483647
+                          ImageX =>
+                            1,    # min: -2147483648, max: 2147483647; OPTIONAL
+                          ImageY =>
+                            1,    # min: -2147483648, max: 2147483647; OPTIONAL
+                          Layer   => 1,    # max: 99
+                          Opacity => 1,    # max: 100; OPTIONAL
+                          Duration =>
+                            1,    # min: -2147483648, max: 2147483647; OPTIONAL
+                          FadeIn =>
+                            1,    # min: -2147483648, max: 2147483647; OPTIONAL
+                          FadeOut =>
+                            1,    # min: -2147483648, max: 2147483647; OPTIONAL
+                          Height =>
+                            1,    # min: -2147483648, max: 2147483647; OPTIONAL
                           StartTime =>
                             'My__stringPattern01D20305D205D',    # OPTIONAL
-                          Width => 1,    # min: -2147483648, max: 2147483647
+                          Width =>
+                            1,    # min: -2147483648, max: 2147483647; OPTIONAL
                         },
                         ...
                       ],
