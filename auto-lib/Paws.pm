@@ -414,6 +414,8 @@ L<Paws::Lightsail>
 
 L<Paws::MachineLearning>
 
+L<Paws::Macie>
+
 L<Paws::MarketplaceCommerceAnalytics>
 
 L<Paws::MarketplaceEntitlement>
