@@ -95,6 +95,7 @@ package Paws::API::ServiceToClass;
     lightsail => 'Lightsail',
     logs => 'CloudWatchLogs',
     machinelearning => 'MachineLearning',
+    macie => 'Macie',
     marketplacecommerceanalytics => 'MarketplaceCommerceAnalytics',
    'marketplace-entitlement' => 'MarketplaceEntitlement',
     mediaconvert => 'MediaConvert',
