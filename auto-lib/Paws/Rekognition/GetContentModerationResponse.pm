@@ -30,9 +30,9 @@ The detected moderation labels and the time(s) they were detected.
 
 =head2 NextToken => Str
 
-If the response is truncated, Rekognition Video returns this token that
-you can use in the subsequent request to retrieve the next set of
-moderation labels.
+If the response is truncated, Amazon Rekognition Video returns this
+token that you can use in the subsequent request to retrieve the next
+set of moderation labels.
 
 
 =head2 StatusMessage => Str

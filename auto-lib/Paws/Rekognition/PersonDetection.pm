@@ -35,7 +35,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 Details and tracking information for a single time a person is tracked
 in a video. Amazon Rekognition operations that track persons return an
 array of C<PersonDetection> objects with elements for each time a
-person is tracked in a video. For more information, see .
+person is tracked in a video.
+
+For more information, see API_GetPersonTracking in the Amazon
+Rekognition Developer Guide.
 
 =head1 ATTRIBUTES
 

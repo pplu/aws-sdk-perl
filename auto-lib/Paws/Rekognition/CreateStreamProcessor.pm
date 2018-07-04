@@ -82,8 +82,8 @@ status of the stream processor by calling . C<Name> is idempotent.
 
 =head2 B<REQUIRED> Output => L<Paws::Rekognition::StreamProcessorOutput>
 
-Kinesis data stream stream to which Rekognition Video puts the analysis
-results. If you are using the AWS CLI, the parameter name is
+Kinesis data stream stream to which Amazon Rekognition Video puts the
+analysis results. If you are using the AWS CLI, the parameter name is
 C<StreamProcessorOutput>.
 
 

@@ -52,11 +52,11 @@ A C<FaceDetail> object contains either the default facial attributes or
 all facial attributes. The default attributes are C<BoundingBox>,
 C<Confidence>, C<Landmarks>, C<Pose>, and C<Quality>.
 
-is the only Rekognition Video stored video operation that can return a
-C<FaceDetail> object with all attributes. To specify which attributes
-to return, use the C<FaceAttributes> input parameter for . The
-following Rekognition Video operations return only the default
-attributes. The corresponding Start operations don't have a
+is the only Amazon Rekognition Video stored video operation that can
+return a C<FaceDetail> object with all attributes. To specify which
+attributes to return, use the C<FaceAttributes> input parameter for .
+The following Amazon Rekognition Video operations return only the
+default attributes. The corresponding Start operations don't have a
 C<FaceAttributes> input parameter.
 
 =over
@@ -75,10 +75,10 @@ GetFaceSearch
 
 =back
 
-The Rekognition Image and operations can return all facial attributes.
-To specify which attributes to return, use the C<Attributes> input
-parameter for C<DetectFaces>. For C<IndexFaces>, use the
-C<DetectAttributes> input parameter.
+The Amazon Rekognition Image and operations can return all facial
+attributes. To specify which attributes to return, use the
+C<Attributes> input parameter for C<DetectFaces>. For C<IndexFaces>,
+use the C<DetectAttributes> input parameter.
 
 =head1 ATTRIBUTES
 

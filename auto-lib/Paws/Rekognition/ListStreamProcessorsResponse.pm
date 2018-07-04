@@ -17,9 +17,9 @@ Paws::Rekognition::ListStreamProcessorsResponse
 
 =head2 NextToken => Str
 
-If the response is truncated, Rekognition Video returns this token that
-you can use in the subsequent request to retrieve the next set of
-stream processors.
+If the response is truncated, Amazon Rekognition Video returns this
+token that you can use in the subsequent request to retrieve the next
+set of stream processors.
 
 
 =head2 StreamProcessors => ArrayRef[L<Paws::Rekognition::StreamProcessor>]

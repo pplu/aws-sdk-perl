@@ -89,8 +89,8 @@ confidence level lower than this specified value.
 
 =head2 NotificationChannel => L<Paws::Rekognition::NotificationChannel>
 
-The Amazon SNS topic ARN that you want Rekognition Video to publish the
-completion status of the content moderation analysis to.
+The Amazon SNS topic ARN that you want Amazon Rekognition Video to
+publish the completion status of the content moderation analysis to.
 
 
 
