@@ -229,7 +229,7 @@ All services get auto-generated POD documentation. perldoc a file to take a look
 CLI utility
 ================
 Paws comes with a command-line utility to exercise the SDK. Just like Paws is the namespace
-for the SDK, "paws" (in /bin) is the cli utility. It's quite rudimentary, but think of it as
+for the SDK, "paws" (in /script) is the cli utility. It's quite rudimentary, but think of it as
 a quick way to try out calling services. Just call:
 
 ```

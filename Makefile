@@ -33,7 +33,7 @@ copy-tests:
 	cp botocore/tests/unit/response_parsing/xml/responses/* t/10_responses/
 	rm t/10_responses/cloudfront-*
 	rm t/10_responses/*.json
-	./bin/xml2yaml.sh
+	./script/xml2yaml.sh
 
 numbers:
 	echo "Number of services" ; ls auto-lib/Paws/*.pm | wc -l
