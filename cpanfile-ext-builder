@@ -8,7 +8,12 @@ requires 'Carp::Always';
 requires 'File::Slurper';
 requires 'Data::Compare';
 requires 'Path::Class';
+requires 'Mojo::UserAgent';
+requires 'Data::Munge';
+requires 'Perl::Tidy';
 requires 'File::ShareDir';
+requires 'Future::Utils';
+requires 'Mojo::Promise::Role::Futurify';
 
 on develop => sub {
   requires 'Dist::Zilla';
