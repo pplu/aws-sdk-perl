@@ -25,8 +25,6 @@ gen-classes:
 	mkdir auto-lib/Paws/DeleteMe
 	rm -r auto-lib/Paws/*
 	./builder-bin/gen_classes.pl --paws_pm --classes
-	# TODO: Migrate to using generate-paws-classes
-	# perl -I builder-lib builder-bin/generate-paws-classes --withpaws --dir botocore/botocore/data
 
 docu-links:
 	./builder-bin/gen_classes.pl --docu_links
