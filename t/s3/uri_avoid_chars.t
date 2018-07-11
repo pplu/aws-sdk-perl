@@ -43,16 +43,12 @@ my @to_encode = ('\\',
 foreach my $char (@to_encode) {
   my $response;
 
-  TODO: {
-     local $TODO = 'Remove when URI encoding is sorted';
-     dies_ok { $response = $s3->PutObject(
-                   "Key"    => "test$char",
-                   "Bucket" => $bucketname,
-                   "Body"   => 'Blub',
-                   );
-     };
+  dies_ok { $response = $s3->PutObject(
+                "Key"    => "test$char",
+                "Bucket" => $bucketname,
+                "Body"   => 'Blub',
+                );
   };
-
 }
 
 done_testing;
