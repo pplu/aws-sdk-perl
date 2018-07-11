@@ -2,7 +2,7 @@ package Paws::API::Builder {
   use Moose;
 
   #ABSTRACT: Build Paws Service classes from botocore definition files
-  our $VERSION = '0.02';
+  our $VERSION = '0.03';
 
   use Data::Compare;
   use Data::Dumper;
