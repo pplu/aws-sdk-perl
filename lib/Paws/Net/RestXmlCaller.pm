@@ -80,6 +80,14 @@ package Paws::Net::RestXmlCaller;
     {
       if ($attribute->does('Paws::API::Attribute::Trait::ParamInURI')) {
         my $att_name = $attribute->name;
+        my $non_print = join('',  map { chr($_) } (128..255) );
+        if ($call->$att_name =~ /[{^}`\[\]><#%'"~|\\$non_print]/) {
+          return Paws::Exception->throw(
+            message => "Found unacceptable content in $att_name parameter",
+            code => 'InvalidInput',
+            request_id => '',
+           );
+        }
         if ($uri_attrib_is_greedy{$att_name}) {
             $vars->{ $attribute->uri_name } =  uri_escape_utf8($call->$att_name, q[^A-Za-z0-9\-\._~/]);
             $uri_template =~ s{$att_name\+}{\+$att_name}g;
