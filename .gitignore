@@ -21,3 +21,5 @@ cpanfile.snapshot
 
 # Emacs save files:
 *~
+cpanfile
+dist.ini

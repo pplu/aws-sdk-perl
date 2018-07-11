@@ -25,6 +25,8 @@ gen-classes:
 	mkdir auto-lib/Paws/DeleteMe
 	rm -r auto-lib/Paws/*
 	./builder-bin/gen_classes.pl --paws_pm --classes
+	# TODO: Migrate to using generate-paws-classes
+	# perl -I builder-lib builder-bin/generate-paws-classes --withpaws --dir botocore/botocore/data
 
 docu-links:
 	./builder-bin/gen_classes.pl --docu_links
@@ -52,3 +54,15 @@ run_dynamo_local:
 
 run_minio_local:
 	( mkdir /tmp/minio_data && wget -O /tmp/minio_data/minio https://dl.minio.io/server/minio/release/linux-amd64/minio && chmod +x /tmp/minio_data/minio ) ; /tmp/minio_data/minio server /tmp/minio_data/
+
+dist: dist-builder dist-paws
+
+dist-builder:
+	cp cpanfile-ext-builder cpanfile
+	cp dist.ini-ext-builder dist.ini
+	carton exec dzil build
+
+dist-paws:
+	cp cpanfile-paws cpanfile
+	cp dist.ini-paws dist.ini
+	carton exec dzil build

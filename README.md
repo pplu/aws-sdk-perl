@@ -125,7 +125,7 @@ This will allow the following two commands to function.
 
 To generate the API for a given API call:
 ```
-./gen_classes.pl botocore/botocore/data/SERVICE/DATE/service-2.json
+perl -I builder-lib builder-bin/generate-paws-classes --file botocore/botocore/data/SERVICE/DATE/service-2.json
 ```
 
 This will generate file(s) in auto-lib.

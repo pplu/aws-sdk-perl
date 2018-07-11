@@ -1,6 +1,8 @@
 package Paws::API::Builder {
   use Moose;
 
+  our $VERSION = '0.02';
+
   use Data::Compare;
   use Data::Dumper;
   use Data::Printer;
@@ -129,9 +131,23 @@ package Paws::API::Builder {
   });
 
   has retry_file => (is => 'ro', lazy => 1, default => sub {
-    my $file = shift->api_file;
-    $file =~ s|/[^/]*?/[^/]*?/service-2\.|/_retry.|;
-    return $file;
+    my $self = shift;
+    {
+      my $file = $self->api_file;
+      $file = "$file";
+      # AWS SDK retry files are two dir levels beneath service-2.json
+      if ($file =~ s|/[^/]*?/[^/]*?/service-2\.|/_retry.|) {
+        return $file if (-e $file);
+      }
+    }
+    {
+      my $file = $self->api_file;
+      $file = "$file";
+      # Try with a local _retry.json file in the same dir as service-2.json
+      $file =~ s|/service-2\.|/_retry.|;
+      return $file if (-e $file);
+    }
+    die "Can't find a retry file";
   });
   has retry_struct => (is => 'ro', lazy => 1, default => sub {
     my $self = shift;
@@ -269,8 +285,24 @@ package Paws::API::Builder {
     },
   );
 
-  has endpoints_file => (is => 'ro', isa => 'Str', default => sub {
-    'botocore/botocore/data/_endpoints.json';
+  has endpoints_file => (is => 'ro', lazy => 1, default => sub {
+    my $self = shift;
+    {
+      my $file = $self->api_file;
+      $file = "$file";
+      # AWS SDK endpoints files are two dir levels beneath service-2.json
+      if ($file =~ s|/[^/]*?/[^/]*?/service-2\.|/_endpoints.|) {
+        return $file if (-e $file);
+      }
+    }
+    {
+      my $file = $self->api_file;
+      $file = "$file";
+      # Try with a local _endpoints.json file in the same dir as service-2.json
+      $file =~ s|/service-2\.|/_endpoints.|;
+      return $file if (-e $file);
+    }
+    die "Can't find an endpoints file";
   });
 
   has service_endpoint_rules => (is => 'ro', lazy => 1, default => sub {
@@ -497,6 +529,7 @@ package Paws::API::Builder {
   }
 
   use autodie;
+  use Path::Class::File;
   sub save_class {
     my ($self, $class_name, $content) = @_;
     return if (not defined $class_name);
@@ -510,9 +543,11 @@ package Paws::API::Builder {
     }
     pop @class_parts;
     eval { mkdir "auto-lib/" . ( join '/', @class_parts ) };
-    open my $file, ">", $class_file_name;
-    print $file $content;
-    close $file;
+
+    my $file = Path::Class::File->new($class_file_name);
+    $file->dir->mkpath;
+    $file->open('w');
+    $file->spew($content);
   }
 
   sub register_enum {
