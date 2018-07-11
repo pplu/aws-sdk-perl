@@ -6,7 +6,6 @@ use warnings;
 use Getopt::Long;
 use Data::Printer;
 use Data::Dumper;
-use Cwd;
 use JSON::MaybeXS;
 use File::Slurper 'read_binary';
 use Module::Runtime qw/require_module/;
@@ -81,10 +80,7 @@ sub get_builder {
   my $class_maker = "Paws::API::Builder::${type}";
   require_module $class_maker;
 
-  my $c = $class_maker->new(api_file => $file, api => $api, template_path => [
-                                getcwd() . "/templates/${type}",
-                                getcwd() . '/templates/default',
-                            ]);
+  my $c = $class_maker->new(api_file => $file, api => $api);
   return $c;
 }
 

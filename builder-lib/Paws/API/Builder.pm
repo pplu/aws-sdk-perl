@@ -16,6 +16,8 @@ package Paws::API::Builder {
   use Text::Wrap;
   use Data::Munge;
   use Perl::Tidy;
+  use File::ShareDir;
+  use Cwd;
 
   use v5.10;
 
@@ -23,6 +25,13 @@ package Paws::API::Builder {
   use Paws::API::ServiceToClass;
 
   has api => (is => 'ro', required => 1);
+
+  # Sometimes we have to know if we're a json, xml builder...
+  has api_type => (is => 'ro', lazy => 1, default => sub {
+    my $self = shift;
+    my @namespaces = split /::/, $self->meta->name;
+    return $namespaces[-1];
+  });
 
   sub service_name {
     my $self = shift;
@@ -45,7 +54,18 @@ package Paws::API::Builder {
     return Paws::API::ServiceToClass::service_to_class($service_dir);
   });
 
-  has template_path => (is => 'ro', required => 1);
+  has template_path => (is => 'ro', lazy => 1, default => sub {
+    my $self = shift;
+    my $dir = eval { File::ShareDir::dist_dir('Paws-API-Builder') };
+    $dir = getcwd if ($@);
+
+    my $type = $self->api_type;
+
+    return [
+      "$dir/templates/${type}",
+      "$dir/templates/default",
+    ];
+  });
 
   has service_url_overrides => (is => 'ro', isa => 'HashRef', default => sub { {
     mq => 'https://aws.amazon.com/documentation/amazon-mq/',

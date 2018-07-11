@@ -8,6 +8,7 @@ requires 'Carp::Always';
 requires 'File::Slurper';
 requires 'Data::Compare';
 requires 'Path::Class';
+requires 'File::ShareDir';
 
 on develop => sub {
   requires 'Dist::Zilla';
@@ -17,6 +18,7 @@ on develop => sub {
   requires 'Dist::Zilla::Plugin::UploadToCPAN';
   requires 'Dist::Zilla::Plugin::RunExtraTests';
   requires 'Dist::Zilla::Plugin::Test::Compile';
+  requires 'Dist::Zilla::Plugin::ShareDir';
 };
 
 on 'test' => sub {

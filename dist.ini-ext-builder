@@ -17,7 +17,10 @@ prefix=bin
 
 [Git::GatherDir / Templates]
 root=templates
-prefix=templates
+prefix=share/templates
+
+[ShareDir]
+dir = share
 
 [ExecDir]
 dir = bin
