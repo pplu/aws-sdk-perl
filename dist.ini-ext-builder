@@ -15,6 +15,10 @@ prefix=lib
 root=builder-bin
 prefix=bin
 
+[Git::GatherDir / Templates]
+root=templates
+prefix=templates
+
 [ExecDir]
 dir = bin
 
