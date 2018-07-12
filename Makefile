@@ -29,12 +29,6 @@ gen-classes:
 docu-links:
 	./builder-bin/gen_classes.pl --docu_links
 
-copy-tests:
-	cp botocore/tests/unit/response_parsing/xml/responses/* t/10_responses/
-	rm t/10_responses/cloudfront-*
-	rm t/10_responses/*.json
-	./script/xml2yaml.sh
-
 numbers:
 	echo "Number of services" ; ls auto-lib/Paws/*.pm | wc -l
 	echo "Number of methods" ; grep "sub [A-Z]" auto-lib/Paws/*.pm | wc -l
