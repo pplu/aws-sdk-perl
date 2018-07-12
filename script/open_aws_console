@@ -1,4 +1,4 @@
-#!/usr/bin/env perl
+#!perl
 
 use Paws;
 use v5.10;
