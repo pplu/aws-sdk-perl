@@ -163,7 +163,14 @@ carton install installs all dependencies in all sections (after all, we're in de
 Packaging
 ============
 
-Packaging is managed with Dist::Zilla. running dzil build will make a tar.gz suitable for uploading to CPAN
+Packaging is managed with Dist::Zilla. To install Dist::Zilla and the necessary plugins, run:
+
+```
+cpanm Dist::Zilla
+dzil authordeps --missing | cpanm
+```
+
+After this, running dzil build will make a tar.gz suitable for uploading to CPAN.
 
 Trying it out
 ============
