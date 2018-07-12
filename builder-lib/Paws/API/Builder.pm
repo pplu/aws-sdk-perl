@@ -724,7 +724,10 @@ package Paws::API::Builder {
 
     if (exists $shape->{ max } || exists $shape->{ min } ) {
       if( $shape->{ min } ) {
-        $comment_str .= 'min: '. $shape->{ min } . ', ';
+        $comment_str .= 'min: '. $shape->{ min };
+      }
+      if ($shape->{ min } and $shape->{ max }) {
+        $comment_str .= ', ';
       }
       if( $shape->{ max } ) {
         $comment_str .= 'max: '. $shape->{ max };
