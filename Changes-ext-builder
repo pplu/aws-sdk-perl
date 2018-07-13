@@ -1,3 +1,8 @@
+0.04 2018-07-13
+ - Move generation of Paws.pm to a template. The CPAN toolset was
+   detecting Paws.pm as part of this dist because the code of Paws.pm
+   was inlined inside of the builders
+
 0.03 2018-07-12
  - Update to generate APIs conforming to Paws 0.37+ Object protocol
 
