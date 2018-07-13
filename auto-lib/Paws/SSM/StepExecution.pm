@@ -6,7 +6,10 @@ package Paws::SSM::StepExecution;
   has FailureDetails => (is => 'ro', isa => 'Paws::SSM::FailureDetails');
   has FailureMessage => (is => 'ro', isa => 'Str');
   has Inputs => (is => 'ro', isa => 'Paws::SSM::NormalStringMap');
+  has IsCritical => (is => 'ro', isa => 'Bool');
+  has IsEnd => (is => 'ro', isa => 'Bool');
   has MaxAttempts => (is => 'ro', isa => 'Int');
+  has NextStep => (is => 'ro', isa => 'Str');
   has OnFailure => (is => 'ro', isa => 'Str');
   has Outputs => (is => 'ro', isa => 'Paws::SSM::AutomationParameterMap');
   has OverriddenParameters => (is => 'ro', isa => 'Paws::SSM::AutomationParameterMap');
@@ -16,6 +19,7 @@ package Paws::SSM::StepExecution;
   has StepName => (is => 'ro', isa => 'Str');
   has StepStatus => (is => 'ro', isa => 'Str');
   has TimeoutSeconds => (is => 'ro', isa => 'Int');
+  has ValidNextSteps => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
 ### main pod documentation begin ###
@@ -35,7 +39,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::StepExecution object:
 
-  $service_obj->Method(Att1 => { Action => $value, ..., TimeoutSeconds => $value  });
+  $service_obj->Method(Att1 => { Action => $value, ..., ValidNextSteps => $value  });
 
 =head3 Results returned from an API call
 
@@ -85,10 +89,30 @@ If the step is in Pending status, this field is not populated.
   Fully-resolved values passed into the step before execution.
 
 
+=head2 IsCritical => Bool
+
+  Enable this option to designate a step as critical for the successful
+completion of the Automation. If a step with this designation fails,
+then Automation reports the final status of the Automation as Failed.
+
+
+=head2 IsEnd => Bool
+
+  Enable this option to stop an Automation execution at the end of a
+specific step. The Automation execution stops if the step execution
+failed or succeeded.
+
+
 =head2 MaxAttempts => Int
 
   The maximum number of tries to run the action of the step. The default
 value is 1.
+
+
+=head2 NextStep => Str
+
+  Specifies which step in an Automation to process next after
+successfully completing a step.
 
 
 =head2 OnFailure => Str
@@ -135,6 +159,19 @@ InProgress, Success, Cancelled, Failed, and TimedOut.
 =head2 TimeoutSeconds => Int
 
   The timeout seconds of the step.
+
+
+=head2 ValidNextSteps => ArrayRef[Str|Undef]
+
+  ValidNextSteps offer different strategies for managing an Automation
+workflow when a step finishes. Automation dynamically processes
+ValidNextSteps when a step is completed. For example, you can specify
+C<Abort> to stop the Automation when a step fails or C<Continue> to
+ignore the failure of the current step and allow Automation to continue
+processing the next step. You can also specify C<step:I<step_name> > to
+jump to a designated step after a step succeeds. The result of the
+current step dynamically determines the ValidNextSteps. If a step
+finishes and no ValidNextStep is designated, then the Automation stops.
 
 
 

@@ -135,6 +135,16 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::DescribeAssociation', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeAssociationExecutions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::DescribeAssociationExecutions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeAssociationExecutionTargets {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::DescribeAssociationExecutionTargets', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeAutomationExecutions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::DescribeAutomationExecutions', @_);
@@ -455,6 +465,11 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::SendCommand', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartAssociationsOnce {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::StartAssociationsOnce', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartAutomationExecution {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::StartAutomationExecution', @_);
@@ -720,7 +735,7 @@ package Paws::SSM;
   }
 
 
-  sub operations { qw/AddTagsToResource CancelCommand CreateActivation CreateAssociation CreateAssociationBatch CreateDocument CreateMaintenanceWindow CreatePatchBaseline CreateResourceDataSync DeleteActivation DeleteAssociation DeleteDocument DeleteInventory DeleteMaintenanceWindow DeleteParameter DeleteParameters DeletePatchBaseline DeleteResourceDataSync DeregisterManagedInstance DeregisterPatchBaselineForPatchGroup DeregisterTargetFromMaintenanceWindow DeregisterTaskFromMaintenanceWindow DescribeActivations DescribeAssociation DescribeAutomationExecutions DescribeAutomationStepExecutions DescribeAvailablePatches DescribeDocument DescribeDocumentPermission DescribeEffectiveInstanceAssociations DescribeEffectivePatchesForPatchBaseline DescribeInstanceAssociationsStatus DescribeInstanceInformation DescribeInstancePatches DescribeInstancePatchStates DescribeInstancePatchStatesForPatchGroup DescribeInventoryDeletions DescribeMaintenanceWindowExecutions DescribeMaintenanceWindowExecutionTaskInvocations DescribeMaintenanceWindowExecutionTasks DescribeMaintenanceWindows DescribeMaintenanceWindowTargets DescribeMaintenanceWindowTasks DescribeParameters DescribePatchBaselines DescribePatchGroups DescribePatchGroupState GetAutomationExecution GetCommandInvocation GetDefaultPatchBaseline GetDeployablePatchSnapshotForInstance GetDocument GetInventory GetInventorySchema GetMaintenanceWindow GetMaintenanceWindowExecution GetMaintenanceWindowExecutionTask GetMaintenanceWindowExecutionTaskInvocation GetMaintenanceWindowTask GetParameter GetParameterHistory GetParameters GetParametersByPath GetPatchBaseline GetPatchBaselineForPatchGroup ListAssociations ListAssociationVersions ListCommandInvocations ListCommands ListComplianceItems ListComplianceSummaries ListDocuments ListDocumentVersions ListInventoryEntries ListResourceComplianceSummaries ListResourceDataSync ListTagsForResource ModifyDocumentPermission PutComplianceItems PutInventory PutParameter RegisterDefaultPatchBaseline RegisterPatchBaselineForPatchGroup RegisterTargetWithMaintenanceWindow RegisterTaskWithMaintenanceWindow RemoveTagsFromResource SendAutomationSignal SendCommand StartAutomationExecution StopAutomationExecution UpdateAssociation UpdateAssociationStatus UpdateDocument UpdateDocumentDefaultVersion UpdateMaintenanceWindow UpdateMaintenanceWindowTarget UpdateMaintenanceWindowTask UpdateManagedInstanceRole UpdatePatchBaseline / }
+  sub operations { qw/AddTagsToResource CancelCommand CreateActivation CreateAssociation CreateAssociationBatch CreateDocument CreateMaintenanceWindow CreatePatchBaseline CreateResourceDataSync DeleteActivation DeleteAssociation DeleteDocument DeleteInventory DeleteMaintenanceWindow DeleteParameter DeleteParameters DeletePatchBaseline DeleteResourceDataSync DeregisterManagedInstance DeregisterPatchBaselineForPatchGroup DeregisterTargetFromMaintenanceWindow DeregisterTaskFromMaintenanceWindow DescribeActivations DescribeAssociation DescribeAssociationExecutions DescribeAssociationExecutionTargets DescribeAutomationExecutions DescribeAutomationStepExecutions DescribeAvailablePatches DescribeDocument DescribeDocumentPermission DescribeEffectiveInstanceAssociations DescribeEffectivePatchesForPatchBaseline DescribeInstanceAssociationsStatus DescribeInstanceInformation DescribeInstancePatches DescribeInstancePatchStates DescribeInstancePatchStatesForPatchGroup DescribeInventoryDeletions DescribeMaintenanceWindowExecutions DescribeMaintenanceWindowExecutionTaskInvocations DescribeMaintenanceWindowExecutionTasks DescribeMaintenanceWindows DescribeMaintenanceWindowTargets DescribeMaintenanceWindowTasks DescribeParameters DescribePatchBaselines DescribePatchGroups DescribePatchGroupState GetAutomationExecution GetCommandInvocation GetDefaultPatchBaseline GetDeployablePatchSnapshotForInstance GetDocument GetInventory GetInventorySchema GetMaintenanceWindow GetMaintenanceWindowExecution GetMaintenanceWindowExecutionTask GetMaintenanceWindowExecutionTaskInvocation GetMaintenanceWindowTask GetParameter GetParameterHistory GetParameters GetParametersByPath GetPatchBaseline GetPatchBaselineForPatchGroup ListAssociations ListAssociationVersions ListCommandInvocations ListCommands ListComplianceItems ListComplianceSummaries ListDocuments ListDocumentVersions ListInventoryEntries ListResourceComplianceSummaries ListResourceDataSync ListTagsForResource ModifyDocumentPermission PutComplianceItems PutInventory PutParameter RegisterDefaultPatchBaseline RegisterPatchBaselineForPatchGroup RegisterTargetWithMaintenanceWindow RegisterTaskWithMaintenanceWindow RemoveTagsFromResource SendAutomationSignal SendCommand StartAssociationsOnce StartAutomationExecution StopAutomationExecution UpdateAssociation UpdateAssociationStatus UpdateDocument UpdateDocumentDefaultVersion UpdateMaintenanceWindow UpdateMaintenanceWindowTarget UpdateMaintenanceWindowTask UpdateManagedInstanceRole UpdatePatchBaseline / }
 
 1;
 
@@ -1358,6 +1373,54 @@ must retrieve the association by using the association ID. If you
 created the association by specifying an instance ID and a Systems
 Manager document, then you retrieve the association by specifying the
 document name and the instance ID.
+
+
+=head2 DescribeAssociationExecutions
+
+=over
+
+=item AssociationId => Str
+
+=item [Filters => ArrayRef[L<Paws::SSM::AssociationExecutionFilter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::DescribeAssociationExecutions>
+
+Returns: a L<Paws::SSM::DescribeAssociationExecutionsResult> instance
+
+Use this API action to view all executions for a specific association
+ID.
+
+
+=head2 DescribeAssociationExecutionTargets
+
+=over
+
+=item AssociationId => Str
+
+=item ExecutionId => Str
+
+=item [Filters => ArrayRef[L<Paws::SSM::AssociationExecutionTargetsFilter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::DescribeAssociationExecutionTargets>
+
+Returns: a L<Paws::SSM::DescribeAssociationExecutionTargetsResult> instance
+
+Use this API action to view information about a specific execution of a
+specific association.
 
 
 =head2 DescribeAutomationExecutions
@@ -2890,6 +2953,23 @@ Each argument is described in detail in: L<Paws::SSM::SendCommand>
 Returns: a L<Paws::SSM::SendCommandResult> instance
 
 Executes commands on one or more managed instances.
+
+
+=head2 StartAssociationsOnce
+
+=over
+
+=item AssociationIds => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::StartAssociationsOnce>
+
+Returns: a L<Paws::SSM::StartAssociationsOnceResult> instance
+
+Use this API action to execute an association immediately and only one
+time. This action can be helpful when troubleshooting associations.
 
 
 =head2 StartAutomationExecution
