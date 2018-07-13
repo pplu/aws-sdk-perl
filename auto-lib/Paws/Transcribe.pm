@@ -224,6 +224,8 @@ criteria are specified, returns the entire list of vocabularies.
 
 =item [MediaSampleRateHertz => Int]
 
+=item [OutputBucketName => Str]
+
 =item [Settings => L<Paws::Transcribe::Settings>]
 
 
@@ -253,7 +255,9 @@ Each argument is described in detail in: L<Paws::Transcribe::UpdateVocabulary>
 
 Returns: a L<Paws::Transcribe::UpdateVocabularyResponse> instance
 
-Updates an existing vocabulary with new values.
+Updates an existing vocabulary with new values. The C<UpdateVocabulary>
+operation overwrites all of the existing information with the values
+that you provide in the request.
 
 
 

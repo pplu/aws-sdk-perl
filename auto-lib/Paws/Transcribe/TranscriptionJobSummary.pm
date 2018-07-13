@@ -4,6 +4,7 @@ package Paws::Transcribe::TranscriptionJobSummary;
   has CreationTime => (is => 'ro', isa => 'Str');
   has FailureReason => (is => 'ro', isa => 'Str');
   has LanguageCode => (is => 'ro', isa => 'Str');
+  has OutputLocationType => (is => 'ro', isa => 'Str');
   has TranscriptionJobName => (is => 'ro', isa => 'Str');
   has TranscriptionJobStatus => (is => 'ro', isa => 'Str');
 1;
@@ -43,18 +44,18 @@ Provides a summary of information about a transcription job.
 
 =head2 CompletionTime => Str
 
-  Timestamp of the date and time that the job completed.
+  A timestamp that shows when the job was completed.
 
 
 =head2 CreationTime => Str
 
-  Timestamp of the date and time that the job was created.
+  A timestamp that shows when the job was created.
 
 
 =head2 FailureReason => Str
 
-  If the C<TranscriptionJobStatus> field is C<FAILED>, this field
-contains a description of the error.
+  If the C<TranscriptionJobStatus> field is C<FAILED>, a description of
+the error.
 
 
 =head2 LanguageCode => Str
@@ -62,9 +63,22 @@ contains a description of the error.
   The language code for the input speech.
 
 
+=head2 OutputLocationType => Str
+
+  Indicates the location of the output of the transcription job.
+
+If the value is C<CUSTOMER_BUCKET> then the location is the S3 bucket
+specified in the C<outputBucketName> field when the transcription job
+was started with the C<StartTranscriptionJob> operation.
+
+If the value is C<SERVICE_BUCKET> then the output is stored by Amazon
+Transcribe and can be retrieved using the URI in the
+C<GetTranscriptionJob> response's C<TranscriptFileUri> field.
+
+
 =head2 TranscriptionJobName => Str
 
-  The name assigned to the transcription job when it was created.
+  The name of the transcription job.
 
 
 =head2 TranscriptionJobStatus => Str
