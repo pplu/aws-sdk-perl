@@ -48,7 +48,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam
 =head2 B<REQUIRED> SSHPublicKeyBody => Str
 
 The SSH public key. The public key must be encoded in ssh-rsa format or
-PEM format.
+PEM format. The miminum bit-length of the public key is 2048 bits. For
+example, you can generate a 2048-bit key, and the resulting PEM file is
+1679 bytes long.
 
 The regex pattern (http://wikipedia.org/wiki/regex) used to validate
 this parameter is a string of characters consisting of the following:

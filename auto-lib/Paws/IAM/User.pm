@@ -4,6 +4,7 @@ package Paws::IAM::User;
   has CreateDate => (is => 'ro', isa => 'Str', required => 1);
   has PasswordLastUsed => (is => 'ro', isa => 'Str');
   has Path => (is => 'ro', isa => 'Str', required => 1);
+  has PermissionsBoundary => (is => 'ro', isa => 'Paws::IAM::AttachedPermissionsBoundary');
   has UserId => (is => 'ro', isa => 'Str', required => 1);
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 1;
@@ -115,6 +116,17 @@ This value is returned only in the GetUser and ListUsers operations.
 Identifiers
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<Using IAM> guide.
+
+
+=head2 PermissionsBoundary => L<Paws::IAM::AttachedPermissionsBoundary>
+
+  The ARN of the policy used to set the permissions boundary for the
+user.
+
+For more information about permissions boundaries, see Permissions
+Boundaries for IAM Identities
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html)
+in the I<IAM User Guide>.
 
 
 =head2 B<REQUIRED> UserId => Str

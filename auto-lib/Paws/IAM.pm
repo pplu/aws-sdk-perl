@@ -215,6 +215,11 @@ package Paws::IAM;
     my $call_object = $self->new_with_coercions('Paws::IAM::DeleteRole', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteRolePermissionsBoundary {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::DeleteRolePermissionsBoundary', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteRolePolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::DeleteRolePolicy', @_);
@@ -253,6 +258,11 @@ package Paws::IAM;
   sub DeleteUser {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::DeleteUser', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteUserPermissionsBoundary {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::DeleteUserPermissionsBoundary', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteUserPolicy {
@@ -530,9 +540,19 @@ package Paws::IAM;
     my $call_object = $self->new_with_coercions('Paws::IAM::PutGroupPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutRolePermissionsBoundary {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::PutRolePermissionsBoundary', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutRolePolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::PutRolePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutUserPermissionsBoundary {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::PutUserPermissionsBoundary', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutUserPolicy {
@@ -1281,7 +1301,7 @@ package Paws::IAM;
   }
 
 
-  sub operations { qw/AddClientIDToOpenIDConnectProvider AddRoleToInstanceProfile AddUserToGroup AttachGroupPolicy AttachRolePolicy AttachUserPolicy ChangePassword CreateAccessKey CreateAccountAlias CreateGroup CreateInstanceProfile CreateLoginProfile CreateOpenIDConnectProvider CreatePolicy CreatePolicyVersion CreateRole CreateSAMLProvider CreateServiceLinkedRole CreateServiceSpecificCredential CreateUser CreateVirtualMFADevice DeactivateMFADevice DeleteAccessKey DeleteAccountAlias DeleteAccountPasswordPolicy DeleteGroup DeleteGroupPolicy DeleteInstanceProfile DeleteLoginProfile DeleteOpenIDConnectProvider DeletePolicy DeletePolicyVersion DeleteRole DeleteRolePolicy DeleteSAMLProvider DeleteServerCertificate DeleteServiceLinkedRole DeleteServiceSpecificCredential DeleteSigningCertificate DeleteSSHPublicKey DeleteUser DeleteUserPolicy DeleteVirtualMFADevice DetachGroupPolicy DetachRolePolicy DetachUserPolicy EnableMFADevice GenerateCredentialReport GetAccessKeyLastUsed GetAccountAuthorizationDetails GetAccountPasswordPolicy GetAccountSummary GetContextKeysForCustomPolicy GetContextKeysForPrincipalPolicy GetCredentialReport GetGroup GetGroupPolicy GetInstanceProfile GetLoginProfile GetOpenIDConnectProvider GetPolicy GetPolicyVersion GetRole GetRolePolicy GetSAMLProvider GetServerCertificate GetServiceLinkedRoleDeletionStatus GetSSHPublicKey GetUser GetUserPolicy ListAccessKeys ListAccountAliases ListAttachedGroupPolicies ListAttachedRolePolicies ListAttachedUserPolicies ListEntitiesForPolicy ListGroupPolicies ListGroups ListGroupsForUser ListInstanceProfiles ListInstanceProfilesForRole ListMFADevices ListOpenIDConnectProviders ListPolicies ListPolicyVersions ListRolePolicies ListRoles ListSAMLProviders ListServerCertificates ListServiceSpecificCredentials ListSigningCertificates ListSSHPublicKeys ListUserPolicies ListUsers ListVirtualMFADevices PutGroupPolicy PutRolePolicy PutUserPolicy RemoveClientIDFromOpenIDConnectProvider RemoveRoleFromInstanceProfile RemoveUserFromGroup ResetServiceSpecificCredential ResyncMFADevice SetDefaultPolicyVersion SimulateCustomPolicy SimulatePrincipalPolicy UpdateAccessKey UpdateAccountPasswordPolicy UpdateAssumeRolePolicy UpdateGroup UpdateLoginProfile UpdateOpenIDConnectProviderThumbprint UpdateRole UpdateRoleDescription UpdateSAMLProvider UpdateServerCertificate UpdateServiceSpecificCredential UpdateSigningCertificate UpdateSSHPublicKey UpdateUser UploadServerCertificate UploadSigningCertificate UploadSSHPublicKey / }
+  sub operations { qw/AddClientIDToOpenIDConnectProvider AddRoleToInstanceProfile AddUserToGroup AttachGroupPolicy AttachRolePolicy AttachUserPolicy ChangePassword CreateAccessKey CreateAccountAlias CreateGroup CreateInstanceProfile CreateLoginProfile CreateOpenIDConnectProvider CreatePolicy CreatePolicyVersion CreateRole CreateSAMLProvider CreateServiceLinkedRole CreateServiceSpecificCredential CreateUser CreateVirtualMFADevice DeactivateMFADevice DeleteAccessKey DeleteAccountAlias DeleteAccountPasswordPolicy DeleteGroup DeleteGroupPolicy DeleteInstanceProfile DeleteLoginProfile DeleteOpenIDConnectProvider DeletePolicy DeletePolicyVersion DeleteRole DeleteRolePermissionsBoundary DeleteRolePolicy DeleteSAMLProvider DeleteServerCertificate DeleteServiceLinkedRole DeleteServiceSpecificCredential DeleteSigningCertificate DeleteSSHPublicKey DeleteUser DeleteUserPermissionsBoundary DeleteUserPolicy DeleteVirtualMFADevice DetachGroupPolicy DetachRolePolicy DetachUserPolicy EnableMFADevice GenerateCredentialReport GetAccessKeyLastUsed GetAccountAuthorizationDetails GetAccountPasswordPolicy GetAccountSummary GetContextKeysForCustomPolicy GetContextKeysForPrincipalPolicy GetCredentialReport GetGroup GetGroupPolicy GetInstanceProfile GetLoginProfile GetOpenIDConnectProvider GetPolicy GetPolicyVersion GetRole GetRolePolicy GetSAMLProvider GetServerCertificate GetServiceLinkedRoleDeletionStatus GetSSHPublicKey GetUser GetUserPolicy ListAccessKeys ListAccountAliases ListAttachedGroupPolicies ListAttachedRolePolicies ListAttachedUserPolicies ListEntitiesForPolicy ListGroupPolicies ListGroups ListGroupsForUser ListInstanceProfiles ListInstanceProfilesForRole ListMFADevices ListOpenIDConnectProviders ListPolicies ListPolicyVersions ListRolePolicies ListRoles ListSAMLProviders ListServerCertificates ListServiceSpecificCredentials ListSigningCertificates ListSSHPublicKeys ListUserPolicies ListUsers ListVirtualMFADevices PutGroupPolicy PutRolePermissionsBoundary PutRolePolicy PutUserPermissionsBoundary PutUserPolicy RemoveClientIDFromOpenIDConnectProvider RemoveRoleFromInstanceProfile RemoveUserFromGroup ResetServiceSpecificCredential ResyncMFADevice SetDefaultPolicyVersion SimulateCustomPolicy SimulatePrincipalPolicy UpdateAccessKey UpdateAccountPasswordPolicy UpdateAssumeRolePolicy UpdateGroup UpdateLoginProfile UpdateOpenIDConnectProviderThumbprint UpdateRole UpdateRoleDescription UpdateSAMLProvider UpdateServerCertificate UpdateServiceSpecificCredential UpdateSigningCertificate UpdateSSHPublicKey UpdateUser UploadServerCertificate UploadSigningCertificate UploadSSHPublicKey / }
 
 1;
 
@@ -1831,6 +1851,8 @@ in the I<IAM User Guide>.
 
 =item [Path => Str]
 
+=item [PermissionsBoundary => Str]
+
 
 =back
 
@@ -1965,6 +1987,8 @@ in the I<IAM User Guide>.
 =item UserName => Str
 
 =item [Path => Str]
+
+=item [PermissionsBoundary => Str]
 
 
 =back
@@ -2317,6 +2341,26 @@ that is associated with a running instance will break any applications
 running on the instance.
 
 
+=head2 DeleteRolePermissionsBoundary
+
+=over
+
+=item RoleName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IAM::DeleteRolePermissionsBoundary>
+
+Returns: nothing
+
+Deletes the permissions boundary for the specified IAM role.
+
+Deleting the permissions boundary for a role might increase its
+permissions by allowing anyone who assumes the role to perform all the
+actions granted in its permissions policies.
+
+
 =head2 DeleteRolePolicy
 
 =over
@@ -2519,6 +2563,26 @@ Returns: nothing
 
 Deletes the specified IAM user. The user must not belong to any groups
 or have any access keys, signing certificates, or attached policies.
+
+
+=head2 DeleteUserPermissionsBoundary
+
+=over
+
+=item UserName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IAM::DeleteUserPermissionsBoundary>
+
+Returns: nothing
+
+Deletes the permissions boundary for the specified IAM user.
+
+Deleting the permissions boundary for a user might increase its
+permissions by allowing the user to perform all the actions granted in
+its permissions policies.
 
 
 =head2 DeleteUserPolicy
@@ -3433,6 +3497,8 @@ specified path prefix), the operation returns an empty list.
 
 =item [PathPrefix => Str]
 
+=item [PolicyUsageFilter => Str]
+
 
 =back
 
@@ -3635,6 +3701,8 @@ objects defined in the AWS account.
 =item [OnlyAttached => Bool]
 
 =item [PathPrefix => Str]
+
+=item [PolicyUsageFilter => Str]
 
 =item [Scope => Str]
 
@@ -4008,6 +4076,38 @@ the Query API with IAM, go to Making Query Requests
 in the I<IAM User Guide>.
 
 
+=head2 PutRolePermissionsBoundary
+
+=over
+
+=item PermissionsBoundary => Str
+
+=item RoleName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IAM::PutRolePermissionsBoundary>
+
+Returns: nothing
+
+Adds or updates the policy that is specified as the IAM role's
+permissions boundary. You can use an AWS managed policy or a customer
+managed policy to set the boundary for a role. Use the boundary to
+control the maximum permissions that the role can have. Setting a
+permissions boundary is an advanced feature that can affect the
+permissions for the role.
+
+You cannot set the boundary for a service-linked role.
+
+Policies used as permissions boundaries do not provide permissions. You
+must also attach a permissions policy to the role. To learn how the
+effective permissions for a role are evaluated, see IAM JSON Policy
+Evaluation Logic
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html)
+in the IAM User Guide.
+
+
 =head2 PutRolePolicy
 
 =over
@@ -4053,6 +4153,36 @@ GET when calling C<PutRolePolicy>. For general information about using
 the Query API with IAM, go to Making Query Requests
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_UsingQueryAPI.html)
 in the I<IAM User Guide>.
+
+
+=head2 PutUserPermissionsBoundary
+
+=over
+
+=item PermissionsBoundary => Str
+
+=item UserName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IAM::PutUserPermissionsBoundary>
+
+Returns: nothing
+
+Adds or updates the policy that is specified as the IAM user's
+permissions boundary. You can use an AWS managed policy or a customer
+managed policy to set the boundary for a user. Use the boundary to
+control the maximum permissions that the user can have. Setting a
+permissions boundary is an advanced feature that can affect the
+permissions for the user.
+
+Policies that are used as permissions boundaries do not provide
+permissions. You must also attach a permissions policy to the user. To
+learn how the effective permissions for a user are evaluated, see IAM
+JSON Policy Evaluation Logic
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html)
+in the IAM User Guide.
 
 
 =head2 PutUserPolicy
@@ -4686,8 +4816,8 @@ Returns: nothing
 Sets the status of a service-specific credential to C<Active> or
 C<Inactive>. Service-specific credentials that are inactive cannot be
 used for authentication to the service. This operation can be used to
-disable a userE<rsquo>s service-specific credential as part of a
-credential rotation work flow.
+disable a user's service-specific credential as part of a credential
+rotation work flow.
 
 
 =head2 UpdateSigningCertificate
@@ -4999,9 +5129,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::IAM::ListAttachedUserPoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllEntitiesForPolicy(sub { },PolicyArn => Str, [EntityFilter => Str, Marker => Str, MaxItems => Int, PathPrefix => Str])
+=head2 ListAllEntitiesForPolicy(sub { },PolicyArn => Str, [EntityFilter => Str, Marker => Str, MaxItems => Int, PathPrefix => Str, PolicyUsageFilter => Str])
 
-=head2 ListAllEntitiesForPolicy(PolicyArn => Str, [EntityFilter => Str, Marker => Str, MaxItems => Int, PathPrefix => Str])
+=head2 ListAllEntitiesForPolicy(PolicyArn => Str, [EntityFilter => Str, Marker => Str, MaxItems => Int, PathPrefix => Str, PolicyUsageFilter => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5087,9 +5217,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::IAM::ListMFADevicesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllPolicies(sub { },[Marker => Str, MaxItems => Int, OnlyAttached => Bool, PathPrefix => Str, Scope => Str])
+=head2 ListAllPolicies(sub { },[Marker => Str, MaxItems => Int, OnlyAttached => Bool, PathPrefix => Str, PolicyUsageFilter => Str, Scope => Str])
 
-=head2 ListAllPolicies([Marker => Str, MaxItems => Int, OnlyAttached => Bool, PathPrefix => Str, Scope => Str])
+=head2 ListAllPolicies([Marker => Str, MaxItems => Int, OnlyAttached => Bool, PathPrefix => Str, PolicyUsageFilter => Str, Scope => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
