@@ -18,4 +18,6 @@ matrix:
     - perl: 5.8
 sudo: false
 before_install:
+  - cp cpanfile-paws cpanfile
+  - cp dist.ini-paws dist.ini
   - eval $(curl https://travis-perl.github.io/init) --auto
