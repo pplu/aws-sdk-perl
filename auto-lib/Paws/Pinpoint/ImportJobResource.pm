@@ -38,7 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::I
 
 =head1 DESCRIPTION
 
-This class has no description
+Import job resource
 
 =head1 ATTRIBUTES
 

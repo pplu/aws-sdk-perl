@@ -87,6 +87,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
               Values => [ 'My__string', ... ],    # OPTIONAL
             },    # OPTIONAL
+            GPSPoint => {
+              Coordinates => {
+                Latitude  => 1,    # OPTIONAL
+                Longitude => 1,    # OPTIONAL
+              },    # OPTIONAL
+              RangeInKilometers => 1,    # OPTIONAL
+            },    # OPTIONAL
+          },    # OPTIONAL
+          Metrics => {
+            'My__string' => {
+              ComparisonOperator => 'My__string',
+              Value              => 1,              # OPTIONAL
+            },
           },    # OPTIONAL
           UserAttributes => {
             'My__string' => {
@@ -95,8 +108,104 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Values => [ 'My__string', ... ],    # OPTIONAL
             },
           },    # OPTIONAL
+        },
+        Name          => 'My__string',
+        SegmentGroups => {
+          Groups => [
+            {
+              Dimensions => [
+                {
+                  Attributes => {
+                    'My__string' => {
+                      AttributeType =>
+                        'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+                      Values => [ 'My__string', ... ],    # OPTIONAL
+                    },
+                  },    # OPTIONAL
+                  Behavior => {
+                    Recency => {
+                      Duration => 'HR_24'
+                      ,    # values: HR_24, DAY_7, DAY_14, DAY_30; OPTIONAL
+                      RecencyType =>
+                        'ACTIVE',    # values: ACTIVE, INACTIVE; OPTIONAL
+                    },    # OPTIONAL
+                  },    # OPTIONAL
+                  Demographic => {
+                    AppVersion => {
+                      DimensionType =>
+                        'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+                      Values => [ 'My__string', ... ],    # OPTIONAL
+                    },    # OPTIONAL
+                    Channel => {
+                      DimensionType =>
+                        'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+                      Values => [ 'My__string', ... ],    # OPTIONAL
+                    },    # OPTIONAL
+                    DeviceType => {
+                      DimensionType =>
+                        'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+                      Values => [ 'My__string', ... ],    # OPTIONAL
+                    },    # OPTIONAL
+                    Make => {
+                      DimensionType =>
+                        'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+                      Values => [ 'My__string', ... ],    # OPTIONAL
+                    },    # OPTIONAL
+                    Model => {
+                      DimensionType =>
+                        'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+                      Values => [ 'My__string', ... ],    # OPTIONAL
+                    },    # OPTIONAL
+                    Platform => {
+                      DimensionType =>
+                        'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+                      Values => [ 'My__string', ... ],    # OPTIONAL
+                    },    # OPTIONAL
+                  },    # OPTIONAL
+                  Location => {
+                    Country => {
+                      DimensionType =>
+                        'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+                      Values => [ 'My__string', ... ],    # OPTIONAL
+                    },    # OPTIONAL
+                    GPSPoint => {
+                      Coordinates => {
+                        Latitude  => 1,    # OPTIONAL
+                        Longitude => 1,    # OPTIONAL
+                      },    # OPTIONAL
+                      RangeInKilometers => 1,    # OPTIONAL
+                    },    # OPTIONAL
+                  },    # OPTIONAL
+                  Metrics => {
+                    'My__string' => {
+                      ComparisonOperator => 'My__string',
+                      Value              => 1,              # OPTIONAL
+                    },
+                  },    # OPTIONAL
+                  UserAttributes => {
+                    'My__string' => {
+                      AttributeType =>
+                        'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+                      Values => [ 'My__string', ... ],    # OPTIONAL
+                    },
+                  },    # OPTIONAL
+                },
+                ...
+              ],        # OPTIONAL
+              SourceSegments => [
+                {
+                  Id      => 'My__string',
+                  Version => 1,              # OPTIONAL
+                },
+                ...
+              ],                             # OPTIONAL
+              SourceType => 'ALL',           # values: ALL, ANY; OPTIONAL
+              Type       => 'ALL',           # values: ALL, ANY, NONE; OPTIONAL
+            },
+            ...
+          ],                                 # OPTIONAL
+          Include => 'ALL',                  # values: ALL, ANY, NONE; OPTIONAL
         },    # OPTIONAL
-        Name => 'My__string',
       },
 
     );
@@ -114,13 +223,13 @@ For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-
+The unique ID of your Amazon Pinpoint application.
 
 
 
 =head2 B<REQUIRED> SegmentId => Str
 
-
+The unique ID of the segment.
 
 
 

@@ -51,13 +51,13 @@ For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-ApplicationId
+The unique ID of your Amazon Pinpoint application.
 
 
 
 =head2 B<REQUIRED> WriteEventStream => L<Paws::Pinpoint::WriteEventStream>
 
-EventStream to write.
+
 
 
 

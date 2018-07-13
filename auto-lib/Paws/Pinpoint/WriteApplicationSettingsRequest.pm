@@ -1,6 +1,7 @@
 package Paws::Pinpoint::WriteApplicationSettingsRequest;
   use Moose;
   has CampaignHook => (is => 'ro', isa => 'Paws::Pinpoint::CampaignHook');
+  has CloudWatchMetricsEnabled => (is => 'ro', isa => 'Bool');
   has Limits => (is => 'ro', isa => 'Paws::Pinpoint::CampaignLimits');
   has QuietTime => (is => 'ro', isa => 'Paws::Pinpoint::QuietTime');
 1;
@@ -41,6 +42,11 @@ Creating application setting request
 =head2 CampaignHook => L<Paws::Pinpoint::CampaignHook>
 
   Default campaign hook information.
+
+
+=head2 CloudWatchMetricsEnabled => Bool
+
+  The CloudWatchMetrics settings for the app.
 
 
 =head2 Limits => L<Paws::Pinpoint::CampaignLimits>

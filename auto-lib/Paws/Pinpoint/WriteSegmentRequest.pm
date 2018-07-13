@@ -2,6 +2,7 @@ package Paws::Pinpoint::WriteSegmentRequest;
   use Moose;
   has Dimensions => (is => 'ro', isa => 'Paws::Pinpoint::SegmentDimensions');
   has Name => (is => 'ro', isa => 'Str');
+  has SegmentGroups => (is => 'ro', isa => 'Paws::Pinpoint::SegmentGroupList');
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +22,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Pinpoint::WriteSegmentRequest object:
 
-  $service_obj->Method(Att1 => { Dimensions => $value, ..., Name => $value  });
+  $service_obj->Method(Att1 => { Dimensions => $value, ..., SegmentGroups => $value  });
 
 =head3 Results returned from an API call
 
@@ -45,6 +46,12 @@ Segment definition.
 =head2 Name => Str
 
   The name of segment
+
+
+=head2 SegmentGroups => L<Paws::Pinpoint::SegmentGroupList>
+
+  Segment definition groups. We currently only support one. If specified
+Dimensions must be empty.
 
 
 

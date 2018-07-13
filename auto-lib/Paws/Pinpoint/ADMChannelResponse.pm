@@ -62,10 +62,7 @@ Amazon Device Messaging channel definition.
 
 =head2 HasCredential => Bool
 
-  Indicates whether the channel is configured with ADM credentials.
-Amazon Pinpoint uses your credentials to authenticate push
-notifications with ADM. Provide your credentials by setting the
-ClientId and ClientSecret attributes.
+  Not used. Retained for backwards compatibility.
 
 
 =head2 Id => Str

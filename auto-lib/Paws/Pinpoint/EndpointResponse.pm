@@ -105,9 +105,7 @@ for a campaign.
 
 =head2 EndpointStatus => Str
 
-  The endpoint status. Can be either ACTIVE or INACTIVE. Will be set to
-INACTIVE if a delivery fails. Will be set to ACTIVE if the address is
-updated.
+  Unused.
 
 
 =head2 Id => Str

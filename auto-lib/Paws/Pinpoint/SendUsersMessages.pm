@@ -86,8 +86,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Sound             => 'My__string',
             Substitutions => { 'My__string' => [ 'My__string', ... ], }
             ,                                                         # OPTIONAL
-            Title => 'My__string',
-            Url   => 'My__string',
+            TimeToLive => 1,                                          # OPTIONAL
+            Title      => 'My__string',
+            Url        => 'My__string',
           },    # OPTIONAL
           DefaultMessage => {
             Body          => 'My__string',
@@ -125,7 +126,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Url        => 'My__string',
           },    # OPTIONAL
           SMSMessage => {
-            Body => 'My__string',
+            Body    => 'My__string',
+            Keyword => 'My__string',
             MessageType =>
               'TRANSACTIONAL',    # values: TRANSACTIONAL, PROMOTIONAL; OPTIONAL
             OriginationNumber => 'My__string',
@@ -162,7 +164,7 @@ For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-
+The unique ID of your Amazon Pinpoint application.
 
 
 

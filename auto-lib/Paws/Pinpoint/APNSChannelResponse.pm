@@ -69,12 +69,7 @@ Apple Distribution Push Notification Service channel definition.
 
 =head2 HasCredential => Bool
 
-  Indicates whether the channel is configured with APNs credentials.
-Amazon Pinpoint uses your credentials to authenticate push
-notifications with APNs. To use APNs token authentication, set the
-BundleId, TeamId, TokenKey, and TokenKeyId attributes. To use
-certificate authentication, set the Certificate and PrivateKey
-attributes.
+  Not used. Retained for backwards compatibility.
 
 
 =head2 HasTokenKey => Bool

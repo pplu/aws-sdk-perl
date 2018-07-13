@@ -40,20 +40,23 @@ Send message request.
 
 =head2 Context => L<Paws::Pinpoint::MapOf__string>
 
-  A map of custom attributes to attributes to be attached to the message.
-This payload is added to the push notification's 'data.pinpoint' object
-or added to the email/sms delivery receipt event attributes.
+  A map of custom attribute-value pairs. Amazon Pinpoint adds these
+attributes to the data.pinpoint object in the body of the push
+notification payload. Amazon Pinpoint also provides these attributes in
+the events that it generates for users-messages deliveries.
 
 
 =head2 MessageConfiguration => L<Paws::Pinpoint::DirectMessageConfiguration>
 
-  Message configuration.
+  Message definitions for the default message and any messages that are
+tailored for specific channels.
 
 
 =head2 Users => L<Paws::Pinpoint::MapOfEndpointSendConfiguration>
 
-  A map of destination endpoints, with the EndpointId as the key Endpoint
-Message Configuration as the value.
+  A map that associates user IDs with EndpointSendConfiguration objects.
+Within an EndpointSendConfiguration object, you can tailor the message
+for a user by specifying message overrides or substitutions.
 
 
 

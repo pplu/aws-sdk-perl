@@ -32,9 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateExportJobResponse = $pinpoint->CreateExportJob(
       ApplicationId    => 'My__string',
       ExportJobRequest => {
-        RoleArn     => 'My__string',
-        S3UrlPrefix => 'My__string',
-        SegmentId   => 'My__string',
+        RoleArn        => 'My__string',
+        S3UrlPrefix    => 'My__string',
+        SegmentId      => 'My__string',
+        SegmentVersion => 1,              # OPTIONAL
       },
 
     );
@@ -52,7 +53,7 @@ For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-
+The unique ID of your Amazon Pinpoint application.
 
 
 

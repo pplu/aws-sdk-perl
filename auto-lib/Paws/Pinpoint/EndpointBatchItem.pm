@@ -49,8 +49,12 @@ Endpoint update request
 
 =head2 Address => Str
 
-  The address or token of the endpoint as provided by your push provider
-(e.g. DeviceToken or RegistrationId).
+  The destination for messages that you send to this endpoint. The
+address varies by channel. For mobile push channels, use the token
+provided by the push notification service, such as the APNs device
+token or the FCM registration token. For the SMS channel, use a phone
+number in E.164 format, such as +1206XXX5550100. For the email channel,
+use an email address.
 
 
 =head2 Attributes => L<Paws::Pinpoint::MapOfListOf__string>
@@ -83,9 +87,7 @@ APNS_VOIP_SANDBOX | ADM | SMS | EMAIL | BAIDU
 
 =head2 EndpointStatus => Str
 
-  The endpoint status. Can be either ACTIVE or INACTIVE. Will be set to
-INACTIVE if a delivery fails. Will be set to ACTIVE if the address is
-updated.
+  Unused.
 
 
 =head2 Id => Str

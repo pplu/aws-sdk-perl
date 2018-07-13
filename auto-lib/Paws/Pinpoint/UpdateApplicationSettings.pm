@@ -38,11 +38,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Mode   => 'DELIVERY',     # values: DELIVERY, FILTER; OPTIONAL
           WebUrl => 'My__string',
         },    # OPTIONAL
-        Limits => {
-          Daily             => 1,    # OPTIONAL
-          MaximumDuration   => 1,    # OPTIONAL
-          MessagesPerSecond => 1,    # OPTIONAL
-          Total             => 1,    # OPTIONAL
+        CloudWatchMetricsEnabled => 1,    # OPTIONAL
+        Limits                   => {
+          Daily             => 1,         # OPTIONAL
+          MaximumDuration   => 1,         # OPTIONAL
+          MessagesPerSecond => 1,         # OPTIONAL
+          Total             => 1,         # OPTIONAL
         },    # OPTIONAL
         QuietTime => {
           End   => 'My__string',
@@ -66,7 +67,7 @@ For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-
+The unique ID of your Amazon Pinpoint application.
 
 
 

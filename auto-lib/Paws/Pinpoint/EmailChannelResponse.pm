@@ -10,6 +10,7 @@ package Paws::Pinpoint::EmailChannelResponse;
   has IsArchived => (is => 'ro', isa => 'Bool');
   has LastModifiedBy => (is => 'ro', isa => 'Str');
   has LastModifiedDate => (is => 'ro', isa => 'Str');
+  has MessagesPerSecond => (is => 'ro', isa => 'Int');
   has Platform => (is => 'ro', isa => 'Str');
   has RoleArn => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Int');
@@ -70,7 +71,7 @@ Email Channel Response.
 
 =head2 HasCredential => Bool
 
-  If the channel is registered with a credential for authentication.
+  Not used. Retained for backwards compatibility.
 
 
 =head2 Id => Str
@@ -96,6 +97,11 @@ Email Channel Response.
 =head2 LastModifiedDate => Str
 
   Last date this was updated
+
+
+=head2 MessagesPerSecond => Int
+
+  Messages per second that can be sent
 
 
 =head2 Platform => Str

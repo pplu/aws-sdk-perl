@@ -68,10 +68,7 @@ Google Cloud Messaging channel definition
 
 =head2 HasCredential => Bool
 
-  Indicates whether the channel is configured with FCM or GCM
-credentials. Amazon Pinpoint uses your credentials to authenticate push
-notifications with FCM or GCM. Provide your credentials by setting the
-ApiKey attribute.
+  Not used. Retained for backwards compatibility.
 
 
 =head2 Id => Str

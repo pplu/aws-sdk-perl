@@ -11,6 +11,7 @@ package Paws::Pinpoint::BaiduMessage;
   has SmallImageIconUrl => (is => 'ro', isa => 'Str');
   has Sound => (is => 'ro', isa => 'Str');
   has Substitutions => (is => 'ro', isa => 'Paws::Pinpoint::MapOfListOf__string');
+  has TimeToLive => (is => 'ro', isa => 'Int');
   has Title => (is => 'ro', isa => 'Str');
   has Url => (is => 'ro', isa => 'Str');
 1;
@@ -118,6 +119,13 @@ app. Android sound files must reside in /res/raw/
 
   Default message substitutions. Can be overridden by individual address
 substitutions.
+
+
+=head2 TimeToLive => Int
+
+  This parameter specifies how long (in seconds) the message should be
+kept in Baidu storage if the device is offline. The and the default
+value and the maximum time to live supported is 7 days (604800 seconds)
 
 
 =head2 Title => Str

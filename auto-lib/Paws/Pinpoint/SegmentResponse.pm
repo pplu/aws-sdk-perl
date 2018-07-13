@@ -7,6 +7,7 @@ package Paws::Pinpoint::SegmentResponse;
   has ImportDefinition => (is => 'ro', isa => 'Paws::Pinpoint::SegmentImportResource');
   has LastModifiedDate => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+  has SegmentGroups => (is => 'ro', isa => 'Paws::Pinpoint::SegmentGroupList');
   has SegmentType => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Int');
 1;
@@ -77,6 +78,12 @@ Segment definition.
 =head2 Name => Str
 
   The name of segment
+
+
+=head2 SegmentGroups => L<Paws::Pinpoint::SegmentGroupList>
+
+  Segment definition groups. We currently only support one. If specified
+Dimensions must be empty.
 
 
 =head2 SegmentType => Str

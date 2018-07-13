@@ -1,6 +1,7 @@
 package Paws::Pinpoint::MessageResult;
   use Moose;
   has DeliveryStatus => (is => 'ro', isa => 'Str');
+  has MessageId => (is => 'ro', isa => 'Str');
   has StatusCode => (is => 'ro', isa => 'Int');
   has StatusMessage => (is => 'ro', isa => 'Str');
   has UpdatedToken => (is => 'ro', isa => 'Str');
@@ -42,6 +43,11 @@ The result from sending a message to an address.
 =head2 DeliveryStatus => Str
 
   Delivery status of message.
+
+
+=head2 MessageId => Str
+
+  Unique message identifier associated with the message that was sent.
 
 
 =head2 StatusCode => Int

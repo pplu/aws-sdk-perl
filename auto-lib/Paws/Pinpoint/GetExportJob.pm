@@ -48,13 +48,13 @@ For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-
+The unique ID of your Amazon Pinpoint application.
 
 
 
 =head2 B<REQUIRED> JobId => Str
 
-
+The unique ID of the job.
 
 
 
