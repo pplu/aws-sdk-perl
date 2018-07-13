@@ -960,8 +960,9 @@ Each argument is described in detail in: L<Paws::Glue::CreateCrawler>
 Returns: a L<Paws::Glue::CreateCrawlerResponse> instance
 
 Creates a new crawler with specified targets, role, configuration, and
-optional schedule. At least one crawl target must be specified, in
-either the I<s3Targets> or the I<jdbcTargets> field.
+optional schedule. At least one crawl target must be specified, in the
+I<s3Targets> field, the I<jdbcTargets> field, or the I<DynamoDBTargets>
+field.
 
 
 =head2 CreateDatabase
@@ -1982,7 +1983,9 @@ Each argument is described in detail in: L<Paws::Glue::StartCrawler>
 Returns: a L<Paws::Glue::StartCrawlerResponse> instance
 
 Starts a crawl using the specified crawler, regardless of what is
-scheduled. If the crawler is already running, does nothing.
+scheduled. If the crawler is already running, returns a
+CrawlerRunningException
+(https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-exceptions.html#aws-glue-api-exceptions-CrawlerRunningException).
 
 
 =head2 StartCrawlerSchedule

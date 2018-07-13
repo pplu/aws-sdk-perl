@@ -50,6 +50,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },
       Language => 'PYTHON',                       # OPTIONAL
       Location => {
+        DynamoDB => [
+          {
+            Name  => 'MyCodeGenArgName',
+            Value => 'MyCodeGenArgValue',
+            Param => 1,                           # OPTIONAL
+          },
+          ...
+        ],                                        # max: 50; OPTIONAL
         Jdbc => [
           {
             Name  => 'MyCodeGenArgName',
