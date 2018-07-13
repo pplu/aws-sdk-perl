@@ -5,6 +5,7 @@ package Paws::CodeBuild::ProjectSource;
   has GitCloneDepth => (is => 'ro', isa => 'Int', request_name => 'gitCloneDepth', traits => ['NameInRequest']);
   has InsecureSsl => (is => 'ro', isa => 'Bool', request_name => 'insecureSsl', traits => ['NameInRequest']);
   has Location => (is => 'ro', isa => 'Str', request_name => 'location', traits => ['NameInRequest']);
+  has ReportBuildStatus => (is => 'ro', isa => 'Bool', request_name => 'reportBuildStatus', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
 1;
 
@@ -131,6 +132,14 @@ value to C<OAUTH>.
 
 =back
 
+
+
+=head2 ReportBuildStatus => Bool
+
+  Set to true to report the status of a build's start and finish to your
+source provider. This option is only valid when your source provider is
+GitHub. If this is set and you use a different source provider, an
+invalidInputException is thrown.
 
 
 =head2 B<REQUIRED> Type => Str

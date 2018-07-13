@@ -356,6 +356,8 @@ Gets information about build projects.
 
 =item Name => Str
 
+=item ServiceRole => Str
+
 =item Source => L<Paws::CodeBuild::ProjectSource>
 
 =item [BadgeEnabled => Bool]
@@ -365,8 +367,6 @@ Gets information about build projects.
 =item [Description => Str]
 
 =item [EncryptionKey => Str]
-
-=item [ServiceRole => Str]
 
 =item [Tags => ArrayRef[L<Paws::CodeBuild::Tag>]]
 
@@ -570,6 +570,8 @@ representing a single build project.
 =item [InsecureSslOverride => Bool]
 
 =item [PrivilegedModeOverride => Bool]
+
+=item [ReportBuildStatusOverride => Bool]
 
 =item [ServiceRoleOverride => Str]
 

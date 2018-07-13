@@ -8,7 +8,7 @@ package Paws::CodeBuild::CreateProject;
   has EncryptionKey => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'encryptionKey' );
   has Environment => (is => 'ro', isa => 'Paws::CodeBuild::ProjectEnvironment', traits => ['NameInRequest'], request_name => 'environment' , required => 1);
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
-  has ServiceRole => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceRole' );
+  has ServiceRole => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceRole' , required => 1);
   has Source => (is => 'ro', isa => 'Paws::CodeBuild::ProjectSource', traits => ['NameInRequest'], request_name => 'source' , required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has TimeoutInMinutes => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'timeoutInMinutes' );
@@ -64,27 +64,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ],                        # OPTIONAL
         privilegedMode => 1,      # OPTIONAL
       },
-      Name   => 'MyProjectName',
-      Source => {
+      Name        => 'MyProjectName',
+      ServiceRole => 'MyNonEmptyString',
+      Source      => {
         type => 'CODECOMMIT'
         , # values: CODECOMMIT, CODEPIPELINE, GITHUB, S3, BITBUCKET, GITHUB_ENTERPRISE
         auth => {
           type     => 'OAUTH',       # values: OAUTH
           resource => 'MyString',    # OPTIONAL
         },    # OPTIONAL
-        buildspec     => 'MyString',    # OPTIONAL
-        gitCloneDepth => 1,             # OPTIONAL
-        insecureSsl   => 1,             # OPTIONAL
-        location      => 'MyString',    # OPTIONAL
+        buildspec         => 'MyString',    # OPTIONAL
+        gitCloneDepth     => 1,             # OPTIONAL
+        insecureSsl       => 1,             # OPTIONAL
+        location          => 'MyString',    # OPTIONAL
+        reportBuildStatus => 1,             # OPTIONAL
       },
-      BadgeEnabled => 1,                # OPTIONAL
+      BadgeEnabled => 1,                    # OPTIONAL
       Cache        => {
-        type     => 'NO_CACHE',         # values: NO_CACHE, S3
-        location => 'MyString',         # OPTIONAL
+        type     => 'NO_CACHE',             # values: NO_CACHE, S3
+        location => 'MyString',             # OPTIONAL
       },    # OPTIONAL
       Description   => 'MyProjectDescription',    # OPTIONAL
       EncryptionKey => 'MyNonEmptyString',        # OPTIONAL
-      ServiceRole   => 'MyNonEmptyString',        # OPTIONAL
       Tags          => [
         {
           key   => 'MyKeyInput',                  # min: 1, max: 127; OPTIONAL
@@ -163,7 +164,7 @@ The name of the build project.
 
 
 
-=head2 ServiceRole => Str
+=head2 B<REQUIRED> ServiceRole => Str
 
 The ARN of the AWS Identity and Access Management (IAM) role that
 enables AWS CodeBuild to interact with dependent AWS services on behalf

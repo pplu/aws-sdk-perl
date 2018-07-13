@@ -80,10 +80,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           type     => 'OAUTH',       # values: OAUTH
           resource => 'MyString',    # OPTIONAL
         },    # OPTIONAL
-        buildspec     => 'MyString',    # OPTIONAL
-        gitCloneDepth => 1,             # OPTIONAL
-        insecureSsl   => 1,
-        location      => 'MyString',    # OPTIONAL
+        buildspec         => 'MyString',    # OPTIONAL
+        gitCloneDepth     => 1,             # OPTIONAL
+        insecureSsl       => 1,
+        location          => 'MyString',    # OPTIONAL
+        reportBuildStatus => 1,
       },    # OPTIONAL
       Tags => [
         {
