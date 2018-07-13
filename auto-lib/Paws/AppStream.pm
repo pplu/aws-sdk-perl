@@ -596,7 +596,11 @@ in the account are described.
 
 =over
 
+=item [MaxResults => Int]
+
 =item [Names => ArrayRef[Str|Undef]]
+
+=item [NextToken => Str]
 
 
 =back

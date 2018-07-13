@@ -1,7 +1,9 @@
 
 package Paws::AppStream::DescribeImages;
   use Moose;
+  has MaxResults => (is => 'ro', isa => 'Int');
   has Names => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has NextToken => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -28,13 +30,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $appstream2 = Paws->service('AppStream');
     my $DescribeImagesResult = $appstream2->DescribeImages(
-      Names => [
+      MaxResults => 1,    # OPTIONAL
+      Names      => [
         'MyString', ...    # min: 1,
       ],                   # OPTIONAL
+      NextToken => 'MyString',    # OPTIONAL
     );
 
     # Results:
-    my $Images = $DescribeImagesResult->Images;
+    my $Images    = $DescribeImagesResult->Images;
+    my $NextToken = $DescribeImagesResult->NextToken;
 
     # Returns a L<Paws::AppStream::DescribeImagesResult> object.
 
@@ -44,9 +49,22 @@ For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
 =head1 ATTRIBUTES
 
 
+=head2 MaxResults => Int
+
+The maximum size of each results page.
+
+
+
 =head2 Names => ArrayRef[Str|Undef]
 
 The names of the images to describe.
+
+
+
+=head2 NextToken => Str
+
+The pagination token to use to retrieve the next page of results. If
+this value is empty, only the first page is retrieved.
 
 
 

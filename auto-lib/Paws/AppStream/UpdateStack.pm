@@ -39,7 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name               => 'MyString',
       AttributesToDelete => [
         'STORAGE_CONNECTORS',
-        ... # values: STORAGE_CONNECTORS, STORAGE_CONNECTOR_HOMEFOLDERS, STORAGE_CONNECTOR_GOOGLE_DRIVE, REDIRECT_URL, FEEDBACK_URL, THEME_NAME, USER_SETTINGS
+        ... # values: STORAGE_CONNECTORS, STORAGE_CONNECTOR_HOMEFOLDERS, STORAGE_CONNECTOR_GOOGLE_DRIVE, STORAGE_CONNECTOR_ONE_DRIVE, REDIRECT_URL, FEEDBACK_URL, THEME_NAME, USER_SETTINGS
       ],    # OPTIONAL
       DeleteStorageConnectors => 1,                  # OPTIONAL
       Description             => 'MyDescription',    # OPTIONAL
@@ -48,10 +48,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RedirectURL             => 'MyRedirectURL',    # OPTIONAL
       StorageConnectors       => [
         {
-          ConnectorType => 'HOMEFOLDERS',    # values: HOMEFOLDERS, GOOGLE_DRIVE
-          Domains       => [
-            'MyDomain', ...                  # max: 64
-          ],                                 # max: 10; OPTIONAL
+          ConnectorType =>
+            'HOMEFOLDERS',    # values: HOMEFOLDERS, GOOGLE_DRIVE, ONE_DRIVE
+          Domains => [
+            'MyDomain', ...    # max: 64
+          ],                   # max: 10; OPTIONAL
           ResourceIdentifier => 'MyResourceIdentifier',    # min: 1, ; OPTIONAL
         },
         ...
