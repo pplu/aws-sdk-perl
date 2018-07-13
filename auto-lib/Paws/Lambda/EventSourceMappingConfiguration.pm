@@ -31,14 +31,14 @@ receives an event with all the retrieved records.
 
 =head2 EventSourceArn => Str
 
-The Amazon Resource Name (ARN) of the Amazon Kinesis stream that is the
-source of events.
+The Amazon Resource Name (ARN) of the Amazon Kinesis or DynamoDB stream
+or the SQS queue that is the source of events.
 
 
 =head2 FunctionArn => Str
 
 The Lambda function to invoke when AWS Lambda detects an event on the
-stream.
+poll-based source.
 
 
 =head2 LastModified => Str

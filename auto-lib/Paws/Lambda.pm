@@ -368,11 +368,11 @@ for the lambda:CreateAlias action.
 
 =item FunctionName => Str
 
-=item StartingPosition => Str
-
 =item [BatchSize => Int]
 
 =item [Enabled => Bool]
+
+=item [StartingPosition => Str]
 
 =item [StartingPositionTimestamp => Str]
 
@@ -383,20 +383,23 @@ Each argument is described in detail in: L<Paws::Lambda::CreateEventSourceMappin
 
 Returns: a L<Paws::Lambda::EventSourceMappingConfiguration> instance
 
-Identifies a stream as an event source for a Lambda function. It can be
-either an Amazon Kinesis stream or an Amazon DynamoDB stream. AWS
-Lambda invokes the specified function when records are posted to the
-stream.
+Identifies a poll-based event source for a Lambda function. It can be
+either an Amazon Kinesis or DynamoDB stream, or an Amazon SQS queue.
+AWS Lambda invokes the specified function when records are posted to
+the event source.
 
-This association between a stream source and a Lambda function is
+This association between a poll-based source and a Lambda function is
 called the event source mapping.
 
-You provide mapping information (for example, which stream to read from
-and which Lambda function to invoke) in the request body.
+You provide mapping information (for example, which stream or SQS queue
+to read from and which Lambda function to invoke) in the request body.
 
-Each event source, such as an Amazon Kinesis or a DynamoDB stream, can
-be associated with multiple AWS Lambda functions. A given Lambda
-function can be associated with multiple AWS event sources.
+Amazon Kinesis or DynamoDB stream event sources can be associated with
+multiple AWS Lambda functions and a given Lambda function can be
+associated with multiple AWS event sources. For Amazon SQS, you can
+configure multiple queues as event sources for a single Lambda
+function, but an SQS queue can be mapped only to a single Lambda
+function.
 
 If you are using versioning, you can specify a specific function
 version or an alias via the function name parameter. For more

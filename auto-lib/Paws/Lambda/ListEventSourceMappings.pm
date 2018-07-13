@@ -53,8 +53,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 EventSourceArn => Str
 
-The Amazon Resource Name (ARN) of the Amazon Kinesis stream. (This
-parameter is optional.)
+The Amazon Resource Name (ARN) of the Amazon Kinesis or DynamoDB
+stream, or an SQS queue. (This parameter is optional.)
 
 
 
