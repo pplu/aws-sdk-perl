@@ -61,22 +61,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ],                                 # OPTIONAL
               EbsOptimized => 1,                 # OPTIONAL
             },    # OPTIONAL
-            WeightedCapacity => 1,
+            WeightedCapacity => 1,    # OPTIONAL
           },
           ...
-        ],        # OPTIONAL
+        ],                            # OPTIONAL
         LaunchSpecifications => {
           SpotSpecification => {
             TimeoutAction => 'SWITCH_TO_ON_DEMAND'
-            ,     # values: SWITCH_TO_ON_DEMAND, TERMINATE_CLUSTER
-            TimeoutDurationMinutes => 1,
-            BlockDurationMinutes   => 1,
+            ,    # values: SWITCH_TO_ON_DEMAND, TERMINATE_CLUSTER
+            TimeoutDurationMinutes => 1,    # OPTIONAL
+            BlockDurationMinutes   => 1,    # OPTIONAL
           },
 
         },    # OPTIONAL
         Name                   => 'MyXmlStringMaxLen256',    # max: 256
-        TargetOnDemandCapacity => 1,
-        TargetSpotCapacity     => 1,
+        TargetOnDemandCapacity => 1,                         # OPTIONAL
+        TargetSpotCapacity     => 1,                         # OPTIONAL
       },
 
     );

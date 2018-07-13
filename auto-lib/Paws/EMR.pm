@@ -553,8 +553,7 @@ Each argument is described in detail in: L<Paws::EMR::DescribeCluster>
 Returns: a L<Paws::EMR::DescribeClusterOutput> instance
 
 Provides cluster-level details including status, hardware and software
-configuration, VPC settings, and so on. For information about the
-cluster steps, see ListSteps.
+configuration, VPC settings, and so on.
 
 
 =head2 DescribeJobFlows
