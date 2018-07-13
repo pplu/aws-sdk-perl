@@ -61,11 +61,10 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Iops => Int
 
-Target IOPS rate of the volume to be modified.
+The target IOPS rate of the volume.
 
-Only valid for Provisioned IOPS SSD (C<io1>) volumes. For more
-information about C<io1> IOPS configuration, see
-http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html#EBSVolumeTypes_piops
+This is only valid for Provisioned IOPS SSD (C<io1>) volumes. For more
+information, see Provisioned IOPS SSD (io1) Volumes
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html#EBSVolumeTypes_piops).
 
 Default: If no IOPS value is specified, the existing value is retained.
@@ -74,10 +73,10 @@ Default: If no IOPS value is specified, the existing value is retained.
 
 =head2 Size => Int
 
-Target size in GiB of the volume to be modified. Target volume size
-must be greater than or equal to than the existing size of the volume.
-For information about available EBS volume sizes, see
-http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html
+The target size of the volume, in GiB. The target volume size must be
+greater than or equal to than the existing size of the volume. For
+information about available EBS volume sizes, see Amazon EBS Volume
+Types
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html).
 
 Default: If no size is specified, the existing size is retained.
@@ -92,10 +91,7 @@ The ID of the volume.
 
 =head2 VolumeType => Str
 
-Target EBS volume type of the volume to be modified
-
-The API does not support modifications for volume type C<standard>. You
-also cannot change the type of a volume to C<standard>.
+The target EBS volume type of the volume.
 
 Default: If no type is specified, the existing type is retained.
 

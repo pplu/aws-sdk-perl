@@ -154,7 +154,13 @@ C<SpotInstanceInterruptionBehavior> inside this structure.
 
 =head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
 
-The tags for an EC2 Fleet resource.
+The key-value pair for tagging the EC2 Fleet request on creation. The
+value for C<ResourceType> must be C<fleet>, otherwise the fleet request
+fails. To tag instances at launch, specify the tags in the launch
+template
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template).
+For information about tagging after launch, see Tagging Your Resources
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-resources).
 
 
 

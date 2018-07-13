@@ -35,14 +35,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
+      ],                           # OPTIONAL
       OfferingClass        => 'standard',             # OPTIONAL
       OfferingType         => 'Heavy Utilization',    # OPTIONAL
-      ReservedInstancesIds => [ 'MyString', ... ],    # OPTIONAL
+      ReservedInstancesIds => [
+        'MyString', ...                               # OPTIONAL
+      ],                                              # OPTIONAL
     );
 
     # Results:
@@ -139,18 +143,9 @@ filter value.
 
 =item *
 
-C<tag-key> - The key of a tag assigned to the resource. This filter is
-independent of the C<tag-value> filter. For example, if you use both
-the filter "tag-key=Purpose" and the filter "tag-value=X", you get any
-resources assigned both the tag key Purpose (regardless of what the
-tag's value is), and the tag value X (regardless of what the tag's key
-is). If you want to list only resources where Purpose is X, see the
-C<tag>:I<key>=I<value> filter.
-
-=item *
-
-C<tag-value> - The value of a tag assigned to the resource. This filter
-is independent of the C<tag-key> filter.
+C<tag-key> - The key of a tag assigned to the resource. Use this filter
+to find all resources assigned a tag with a specific key, regardless of
+the tag value.
 
 =item *
 

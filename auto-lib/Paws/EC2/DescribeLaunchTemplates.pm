@@ -36,17 +36,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
-      LaunchTemplateIds => [ 'MyString', ... ],    # OPTIONAL
+      ],                           # OPTIONAL
+      LaunchTemplateIds => [
+        'MyString', ...            # OPTIONAL
+      ],                           # OPTIONAL
       LaunchTemplateNames => [
-        'MyLaunchTemplateName', ...                # min: 3, max: 128
-      ],                                           # OPTIONAL
-      MaxResults => 1,                             # OPTIONAL
-      NextToken  => 'MyString',                    # OPTIONAL
+        'MyLaunchTemplateName', ...    # min: 3, max: 128
+      ],                               # OPTIONAL
+      MaxResults => 1,                 # OPTIONAL
+      NextToken  => 'MyString',        # OPTIONAL
     );
 
     # Results:
@@ -94,13 +98,9 @@ filter value.
 
 =item *
 
-C<tag-key> - The key of a tag assigned to the resource. This filter is
-independent of the C<tag-value> filter. For example, if you use both
-the filter "tag-key=Purpose" and the filter "tag-value=X", you get any
-resources assigned both the tag key Purpose (regardless of what the
-tag's value is), and the tag value X (regardless of the tag's key). If
-you want to list only resources where Purpose is X, see the
-C<tag>:I<key>=I<value> filter.
+C<tag-key> - The key of a tag assigned to the resource. Use this filter
+to find all resources assigned a tag with a specific key, regardless of
+the tag value.
 
 =back
 

@@ -68,8 +68,9 @@ The Availability Zone for the Dedicated Hosts.
 
 =head2 ClientToken => Str
 
-Unique, case-sensitive identifier you provide to ensure idempotency of
-the request. For more information, see How to Ensure Idempotency
+Unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request. For more information, see How to Ensure
+Idempotency
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -77,16 +78,16 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =head2 B<REQUIRED> InstanceType => Str
 
-Specify the instance type that you want your Dedicated Hosts to be
-configured for. When you specify the instance type, that is the only
-instance type that you can launch onto that host.
+Specify the instance type for which to configure your Dedicated Hosts.
+When you specify the instance type, that is the only instance type that
+you can launch onto that host.
 
 
 
 =head2 B<REQUIRED> Quantity => Int
 
-The number of Dedicated Hosts you want to allocate to your account with
-these parameters.
+The number of Dedicated Hosts to allocate to your account with these
+parameters.
 
 
 

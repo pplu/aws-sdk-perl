@@ -1,7 +1,7 @@
 package Paws::EC2::PrivateIpAddressSpecification;
   use Moose;
   has Primary => (is => 'ro', isa => 'Bool', request_name => 'primary', traits => ['NameInRequest']);
-  has PrivateIpAddress => (is => 'ro', isa => 'Str', request_name => 'privateIpAddress', traits => ['NameInRequest'], required => 1);
+  has PrivateIpAddress => (is => 'ro', isa => 'Str', request_name => 'privateIpAddress', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +43,7 @@ This class has no description
 address. Only one IPv4 address can be designated as primary.
 
 
-=head2 B<REQUIRED> PrivateIpAddress => Str
+=head2 PrivateIpAddress => Str
 
   The private IPv4 addresses.
 

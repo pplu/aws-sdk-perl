@@ -1871,9 +1871,9 @@ Each argument is described in detail in: L<Paws::EC2::AllocateHosts>
 
 Returns: a L<Paws::EC2::AllocateHostsResult> instance
 
-Allocates a Dedicated Host to your account. At minimum you need to
-specify the instance size type, Availability Zone, and quantity of
-hosts you want to allocate.
+Allocates a Dedicated Host to your account. At a minimum, specify the
+instance size type, Availability Zone, and quantity of hosts to
+allocate.
 
 
 =head2 AssignIpv6Addresses
@@ -2260,9 +2260,6 @@ product. For example, you can't detach a volume from a Windows instance
 and attach it to a Linux instance.
 
 =back
-
-For an overview of the AWS Marketplace, see Introducing AWS Marketplace
-(https://aws.amazon.com/marketplace/help/200900000).
 
 For more information about EBS volumes, see Attaching Amazon EBS
 Volumes
@@ -2714,7 +2711,7 @@ To copy an encrypted snapshot that has been shared from another
 account, you must have permissions for the CMK used to encrypt the
 snapshot.
 
-Snapshots created by the CopySnapshot action have an arbitrary volume
+Snapshots created by copying another snapshot have an arbitrary volume
 ID that should not be used for any purpose.
 
 For more information, see Copying an Amazon EBS Snapshot
@@ -3658,7 +3655,8 @@ snapshots always remain protected.
 
 You can tag your snapshots during creation. For more information, see
 Tagging Your Amazon EC2 Resources
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html).
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) in
+the I<Amazon Elastic Compute Cloud User Guide>.
 
 For more information, see Amazon Elastic Block Store
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html) and
@@ -3824,7 +3822,8 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 You can tag your volumes during creation. For more information, see
 Tagging Your Amazon EC2 Resources
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html).
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) in
+the I<Amazon Elastic Compute Cloud User Guide>.
 
 For more information, see Creating an Amazon EBS Volume
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-volume.html)
@@ -4208,9 +4207,9 @@ Returns: a L<Paws::EC2::DeleteFleetsResult> instance
 
 Deletes the specified EC2 Fleet.
 
-After you delete an EC2 Fleet, the EC2 Fleet launches no new instances.
-You must specify whether the EC2 Fleet should also terminate its
-instances. If you terminate the instances, the EC2 Fleet enters the
+After you delete an EC2 Fleet, it launches no new instances. You must
+specify whether an EC2 Fleet should also terminate its instances. If
+you terminate the instances, the EC2 Fleet enters the
 C<deleted_terminating> state. Otherwise, the EC2 Fleet enters the
 C<deleted_running> state, and the instances continue to run until they
 are interrupted or you terminate them manually.
@@ -4639,7 +4638,7 @@ Returns: nothing
 Deletes the specified EBS volume. The volume must be in the
 C<available> state (not attached to an instance).
 
-The volume may remain in the C<deleting> state for several minutes.
+The volume can remain in the C<deleting> state for several minutes.
 
 For more information, see Deleting an Amazon EBS Volume
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-volume.html)
@@ -5252,7 +5251,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeFleets>
 
 Returns: a L<Paws::EC2::DescribeFleetsResult> instance
 
-Describes the specified EC2 Fleet.
+Describes one or more of your EC2 Fleet.
 
 
 =head2 DescribeFlowLogs
@@ -6074,7 +6073,8 @@ Describes available AWS services in a prefix list format, which
 includes the prefix list name and prefix list ID of the service and the
 IP address range for the service. A prefix list ID is required for
 creating an outbound security group rule that allows traffic from a VPC
-to access an AWS service through a gateway VPC endpoint.
+to access an AWS service through a gateway VPC endpoint. Currently, the
+services that support this action are Amazon S3 and Amazon DynamoDB.
 
 
 =head2 DescribePrincipalIdFormat
@@ -6898,7 +6898,8 @@ modification to an EBS volume. For information about CloudWatch Events,
 see the Amazon CloudWatch Events User Guide
 (http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/). For more
 information, see Monitoring Volume Modifications"
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#monitoring_mods).
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#monitoring_mods)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 DescribeVolumeStatus
@@ -6941,8 +6942,10 @@ all checks pass, the overall status of the volume is C<ok>. If the
 check fails, the overall status is C<impaired>. If the status is
 C<insufficient-data>, then the checks may still be taking place on your
 volume at the time. We recommend that you retry the request. For more
-information on volume status, see Monitoring the Status of Your Volumes
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-volume-status.html).
+information about volume status, see Monitoring the Status of Your
+Volumes
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-volume-status.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 I<Events>: Reflect the cause of a volume status and may require you to
 take action. For example, if your volume returns an C<impaired> status,
@@ -8462,7 +8465,7 @@ Encrypted snapshots and snapshots with AWS Marketplace product codes
 cannot be made public. Snapshots encrypted with your default CMK cannot
 be shared with other accounts.
 
-For more information on modifying snapshot permissions, see Sharing
+For more information about modifying snapshot permissions, see Sharing
 Snapshots
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
@@ -8587,12 +8590,10 @@ changes using either method, see Monitoring Volume Modifications
 
 With previous-generation instance types, resizing an EBS volume may
 require detaching and reattaching the volume or stopping and restarting
-the instance. For more information about modifying an EBS volume
-running Linux, see Modifying the Size, IOPS, or Type of an EBS Volume
-on Linux
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html).
-For more information about modifying an EBS volume running Windows, see
-Modifying the Size, IOPS, or Type of an EBS Volume on Windows
+the instance. For more information, see Modifying the Size, IOPS, or
+Type of an EBS Volume on Linux
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html)
+and Modifying the Size, IOPS, or Type of an EBS Volume on Windows
 (http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html).
 
 If you reach the maximum volume modification rate per volume limit, you
@@ -9594,7 +9595,7 @@ Returns: nothing
 
 Resets permission settings for the specified snapshot.
 
-For more information on modifying snapshot permissions, see Sharing
+For more information about modifying snapshot permissions, see Sharing
 Snapshots
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.

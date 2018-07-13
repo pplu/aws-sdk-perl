@@ -36,15 +36,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
-      GroupIds   => [ 'MyString', ... ],    # OPTIONAL
-      GroupNames => [ 'MyString', ... ],    # OPTIONAL
-      MaxResults => 1,                      # OPTIONAL
-      NextToken  => 'MyString',             # OPTIONAL
+      ],                           # OPTIONAL
+      GroupIds => [
+        'MyString', ...            # OPTIONAL
+      ],                           # OPTIONAL
+      GroupNames => [
+        'MyString', ...            # OPTIONAL
+      ],                           # OPTIONAL
+      MaxResults => 1,             # OPTIONAL
+      NextToken  => 'MyString',    # OPTIONAL
     );
 
     # Results:
@@ -184,11 +190,9 @@ C<owner-id> - The AWS account ID of the owner of the security group.
 
 =item *
 
-C<tag-key> - The key of a tag assigned to the security group.
-
-=item *
-
-C<tag-value> - The value of a tag assigned to the security group.
+C<tag-key> - The key of a tag assigned to the resource. Use this filter
+to find all resources assigned a tag with a specific key, regardless of
+the tag value.
 
 =item *
 

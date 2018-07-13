@@ -33,14 +33,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeHostsResult = $ec2->DescribeHosts(
       Filter => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
-      HostIds    => [ 'MyString', ... ],    # OPTIONAL
-      MaxResults => 1,                      # OPTIONAL
-      NextToken  => 'MyString',             # OPTIONAL
+      ],                           # OPTIONAL
+      HostIds => [
+        'MyString', ...            # OPTIONAL
+      ],                           # OPTIONAL
+      MaxResults => 1,             # OPTIONAL
+      NextToken  => 'MyString',    # OPTIONAL
     );
 
     # Results:
@@ -90,6 +94,12 @@ configured to support.
 C<state> - The allocation state of the Dedicated Host (C<available> |
 C<under-assessment> | C<permanent-failure> | C<released> |
 C<released-permanent-failure>).
+
+=item *
+
+C<tag-key> - The key of a tag assigned to the resource. Use this filter
+to find all resources assigned a tag with a specific key, regardless of
+the tag value.
 
 =back
 

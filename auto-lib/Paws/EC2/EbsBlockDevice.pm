@@ -81,7 +81,7 @@ or C<standard> volumes.
   Identifier (key ID, key alias, ID ARN, or alias ARN) for a user-managed
 CMK under which the EBS volume is encrypted.
 
-Note: This parameter is only supported on C<BlockDeviceMapping> objects
+This parameter is only supported on C<BlockDeviceMapping> objects
 called by RunInstances
 (http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RunInstances.html),
 RequestSpotFleet

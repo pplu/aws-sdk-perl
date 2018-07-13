@@ -53,8 +53,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],                                # OPTIONAL
+        CpuOptions => {
+          CoreCount      => 1,            # OPTIONAL
+          ThreadsPerCore => 1,            # OPTIONAL
+        },    # OPTIONAL
         CreditSpecification => {
-          CpuCredits => 'MyString',       # OPTIONAL
+          CpuCredits => 'MyString',    # OPTIONAL
 
         },    # OPTIONAL
         DisableApiTermination    => 1,    # OPTIONAL
@@ -112,8 +116,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             PrivateIpAddress   => 'MyString',          # OPTIONAL
             PrivateIpAddresses => [
               {
-                PrivateIpAddress => 'MyString',        # OPTIONAL
                 Primary          => 1,                 # OPTIONAL
+                PrivateIpAddress => 'MyString',        # OPTIONAL
               },
               ...
             ],                                         # OPTIONAL

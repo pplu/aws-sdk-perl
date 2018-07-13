@@ -81,7 +81,7 @@ C<resource-id> - The resource ID.
 =item *
 
 C<resource-type> - The resource type (C<customer-gateway> |
-C<dhcp-options> | C<elastic-ip> | C<fpga-image> | C<image> |
+C<dhcp-options> | C<elastic-ip> | C<fleet> | C<fpga-image> | C<image> |
 C<instance> | C<internet-gateway> | C<launch-template> | C<natgateway>
 | C<network-acl> | C<network-interface> | C<reserved-instances> |
 C<route-table> | C<security-group> | C<snapshot> |

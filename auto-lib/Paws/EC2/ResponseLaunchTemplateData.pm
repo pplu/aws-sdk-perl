@@ -1,6 +1,7 @@
 package Paws::EC2::ResponseLaunchTemplateData;
   use Moose;
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LaunchTemplateBlockDeviceMapping]', request_name => 'blockDeviceMappingSet', traits => ['NameInRequest']);
+  has CpuOptions => (is => 'ro', isa => 'Paws::EC2::LaunchTemplateCpuOptions', request_name => 'cpuOptions', traits => ['NameInRequest']);
   has CreditSpecification => (is => 'ro', isa => 'Paws::EC2::CreditSpecification', request_name => 'creditSpecification', traits => ['NameInRequest']);
   has DisableApiTermination => (is => 'ro', isa => 'Bool', request_name => 'disableApiTermination', traits => ['NameInRequest']);
   has EbsOptimized => (is => 'ro', isa => 'Bool', request_name => 'ebsOptimized', traits => ['NameInRequest']);
@@ -58,6 +59,14 @@ This class has no description
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::LaunchTemplateBlockDeviceMapping>]
 
   The block device mappings.
+
+
+=head2 CpuOptions => L<Paws::EC2::LaunchTemplateCpuOptions>
+
+  The CPU options for the instance. For more information, see Optimizing
+CPU Options
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 CreditSpecification => L<Paws::EC2::CreditSpecification>

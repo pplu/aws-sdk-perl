@@ -143,8 +143,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           PrivateIpAddress   => 'MyString',
           PrivateIpAddresses => [
             {
-              PrivateIpAddress => 'MyString',
               Primary          => 1,                          # OPTIONAL
+              PrivateIpAddress => 'MyString',
             },
             ...
           ],                                                  # OPTIONAL
@@ -476,9 +476,10 @@ Default: Amazon EC2 uses the default security group.
 
 =head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
 
-The tags to apply to the resources during launch. You can tag instances
-and volumes. The specified tags are applied to all instances or volumes
-that are created during launch.
+The tags to apply to the resources during launch. You can only tag
+instances and volumes on launch. The specified tags are applied to all
+instances or volumes that are created during launch. To tag a resource
+after it has been created, see CreateTags.
 
 
 
