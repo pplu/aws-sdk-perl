@@ -3,6 +3,7 @@ package Paws::DMS::ModifyEndpoint;
   use Moose;
   has CertificateArn => (is => 'ro', isa => 'Str');
   has DatabaseName => (is => 'ro', isa => 'Str');
+  has DmsTransferSettings => (is => 'ro', isa => 'Paws::DMS::DmsTransferSettings');
   has DynamoDbSettings => (is => 'ro', isa => 'Paws::DMS::DynamoDbSettings');
   has EndpointArn => (is => 'ro', isa => 'Str', required => 1);
   has EndpointIdentifier => (is => 'ro', isa => 'Str');
@@ -44,13 +45,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $dms = Paws->service('DMS');
     my $ModifyEndpointResponse = $dms->ModifyEndpoint(
-      EndpointArn      => 'MyString',
-      CertificateArn   => 'MyString',    # OPTIONAL
-      DatabaseName     => 'MyString',    # OPTIONAL
+      EndpointArn         => 'MyString',
+      CertificateArn      => 'MyString',    # OPTIONAL
+      DatabaseName        => 'MyString',    # OPTIONAL
+      DmsTransferSettings => {
+        BucketName           => 'MyString',
+        ServiceAccessRoleArn => 'MyString',
+      },                                    # OPTIONAL
       DynamoDbSettings => {
         ServiceAccessRoleArn => 'MyString',
 
-      },                                 # OPTIONAL
+      },                                    # OPTIONAL
       EndpointIdentifier        => 'MyString',    # OPTIONAL
       EndpointType              => 'source',      # OPTIONAL
       EngineName                => 'MyString',    # OPTIONAL
@@ -109,6 +114,41 @@ connection.
 =head2 DatabaseName => Str
 
 The name of the endpoint database.
+
+
+
+=head2 DmsTransferSettings => L<Paws::DMS::DmsTransferSettings>
+
+The settings in JSON format for the DMS Transfer type source endpoint.
+
+Attributes include:
+
+=over
+
+=item *
+
+serviceAccessRoleArn - The IAM role that has permission to access the
+Amazon S3 bucket.
+
+=item *
+
+BucketName - The name of the S3 bucket to use.
+
+=item *
+
+compressionType - An optional parameter to use GZIP to compress the
+target files. Set to NONE (the default) or do not use to leave the
+files uncompressed.
+
+=back
+
+Shorthand syntax: ServiceAccessRoleArn=string
+,BucketName=string,CompressionType=string
+
+JSON syntax:
+
+{ "ServiceAccessRoleArn": "string", "BucketName": "string",
+"CompressionType": "none"|"gzip" }
 
 
 

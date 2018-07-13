@@ -14,6 +14,7 @@ package Paws::DMS::TableStatistics;
   has ValidationFailedRecords => (is => 'ro', isa => 'Int');
   has ValidationPendingRecords => (is => 'ro', isa => 'Int');
   has ValidationState => (is => 'ro', isa => 'Str');
+  has ValidationStateDetails => (is => 'ro', isa => 'Str');
   has ValidationSuspendedRecords => (is => 'ro', isa => 'Int');
 1;
 
@@ -172,6 +173,11 @@ error.
 
 =back
 
+
+
+=head2 ValidationStateDetails => Str
+
+  Additional details about the state of validation.
 
 
 =head2 ValidationSuspendedRecords => Int

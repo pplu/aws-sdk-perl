@@ -2,6 +2,7 @@ package Paws::DMS::Endpoint;
   use Moose;
   has CertificateArn => (is => 'ro', isa => 'Str');
   has DatabaseName => (is => 'ro', isa => 'Str');
+  has DmsTransferSettings => (is => 'ro', isa => 'Paws::DMS::DmsTransferSettings');
   has DynamoDbSettings => (is => 'ro', isa => 'Paws::DMS::DynamoDbSettings');
   has EndpointArn => (is => 'ro', isa => 'Str');
   has EndpointIdentifier => (is => 'ro', isa => 'Str');
@@ -63,6 +64,40 @@ This class has no description
 =head2 DatabaseName => Str
 
   The name of the database at the endpoint.
+
+
+=head2 DmsTransferSettings => L<Paws::DMS::DmsTransferSettings>
+
+  The settings in JSON format for the DMS Transfer type source endpoint.
+
+Attributes include:
+
+=over
+
+=item *
+
+serviceAccessRoleArn - The IAM role that has permission to access the
+Amazon S3 bucket.
+
+=item *
+
+bucketName - The name of the S3 bucket to use.
+
+=item *
+
+compressionType - An optional parameter to use GZIP to compress the
+target files. Set to NONE (the default) or do not use to leave the
+files uncompressed.
+
+=back
+
+Shorthand syntax: ServiceAccessRoleArn=string
+,BucketName=string,CompressionType=string
+
+JSON syntax:
+
+{ "ServiceAccessRoleArn": "string", "BucketName": "string",
+"CompressionType": "none"|"gzip" }
 
 
 =head2 DynamoDbSettings => L<Paws::DMS::DynamoDbSettings>

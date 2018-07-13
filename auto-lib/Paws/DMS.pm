@@ -620,6 +620,8 @@ for DMS.
 
 =item [DatabaseName => Str]
 
+=item [DmsTransferSettings => L<Paws::DMS::DmsTransferSettings>]
+
 =item [DynamoDbSettings => L<Paws::DMS::DynamoDbSettings>]
 
 =item [ExternalTableDefinition => Str]
@@ -1324,6 +1326,8 @@ Lists all tags for an AWS DMS resource.
 
 =item [DatabaseName => Str]
 
+=item [DmsTransferSettings => L<Paws::DMS::DmsTransferSettings>]
+
 =item [DynamoDbSettings => L<Paws::DMS::DynamoDbSettings>]
 
 =item [EndpointIdentifier => Str]
@@ -1530,6 +1534,8 @@ operation.
 =item ReplicationTaskArn => Str
 
 =item TablesToReload => ArrayRef[L<Paws::DMS::TableToReload>]
+
+=item [ReloadOption => Str]
 
 
 =back
