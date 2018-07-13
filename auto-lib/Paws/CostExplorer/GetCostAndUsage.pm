@@ -117,8 +117,8 @@ blended and unblended rates, see Why does the "blended" annotation
 appear on some line items in my bill?
 (https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/).
 
-Valid values are C<BlendedCost>, C<UnblendedCost>, and
-C<UsageQuantity>.
+Valid values are C<AmortizedCost>, C<BlendedCost>, C<UnblendedCost>,
+and C<UsageQuantity>.
 
 If you return the C<UsageQuantity> metric, the service aggregates all
 usage numbers without taking into account the units. For example, if

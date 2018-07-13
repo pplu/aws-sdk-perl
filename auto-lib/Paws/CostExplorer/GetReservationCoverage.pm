@@ -138,6 +138,9 @@ C<GetReservationCoverage> uses the same C< Expression
 each dimension. You can nest only one level deep. If there are multiple
 values for a dimension, they are OR'd together.
 
+If you don't provide a C<SERVICE> filter, Cost Explorer defaults to
+EC2.
+
 
 
 =head2 Granularity => Str
