@@ -43,6 +43,7 @@ package Paws::API::ServiceToClass;
     devicefarm => 'DeviceFarm',
     discovery => 'Discovery',
     directconnect => 'DirectConnect',
+    dlm => 'DLM',
     dms => 'DMS',
     ds => 'DS',
     dynamodb => 'DynamoDB',

@@ -320,6 +320,8 @@ L<Paws::DirectConnect>
 
 L<Paws::Discovery>
 
+L<Paws::DLM>
+
 L<Paws::DMS>
 
 L<Paws::DS>
