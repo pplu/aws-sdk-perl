@@ -145,9 +145,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ser
 
 =over
 
-=item [Author => Str]
+=item Author => Str
 
-=item [Description => Str]
+=item Description => Str
+
+=item Name => Str
 
 =item [HomePageUrl => Str]
 
@@ -156,8 +158,6 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ser
 =item [LicenseBody => Str]
 
 =item [LicenseUrl => Str]
-
-=item [Name => Str]
 
 =item [ReadmeBody => Str]
 
@@ -214,11 +214,11 @@ Creates an application version.
 
 =item ApplicationId => Str
 
+=item StackName => Str
+
 =item [ParameterOverrides => ArrayRef[L<Paws::ServerlessRepo::ParameterValue>]]
 
 =item [SemanticVersion => Str]
-
-=item [StackName => Str]
 
 
 =back
@@ -227,7 +227,7 @@ Each argument is described in detail in: L<Paws::ServerlessRepo::CreateCloudForm
 
 Returns: a L<Paws::ServerlessRepo::CreateCloudFormationChangeSetResponse> instance
 
-Creates an AWS CloudFormation ChangeSet for the given application.
+Creates an AWS CloudFormation change set for the given application.
 
 
 =head2 DeleteApplication
@@ -277,7 +277,7 @@ Each argument is described in detail in: L<Paws::ServerlessRepo::GetApplicationP
 
 Returns: a L<Paws::ServerlessRepo::GetApplicationPolicyResponse> instance
 
-Gets the policy for the specified application.
+Retrieves the policy for the application.
 
 
 =head2 ListApplications
@@ -324,7 +324,7 @@ Lists versions for the specified application.
 
 =item ApplicationId => Str
 
-=item [Statements => ArrayRef[L<Paws::ServerlessRepo::ApplicationPolicyStatement>]]
+=item Statements => ArrayRef[L<Paws::ServerlessRepo::ApplicationPolicyStatement>]
 
 
 =back
@@ -333,7 +333,10 @@ Each argument is described in detail in: L<Paws::ServerlessRepo::PutApplicationP
 
 Returns: a L<Paws::ServerlessRepo::PutApplicationPolicyResponse> instance
 
-Puts the policy for the specified application.
+Sets the permission policy for an application. See Application
+Permissions
+(https://docs.aws.amazon.com/serverlessrepo/latest/devguide/access-control-resource-based.html#application-permissions)
+for the list of supported actions that can be used with this operation.
 
 
 =head2 UpdateApplication

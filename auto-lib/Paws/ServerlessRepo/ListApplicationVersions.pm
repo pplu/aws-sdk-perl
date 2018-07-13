@@ -51,7 +51,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ser
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-The ID of the application to get.
+The Amazon Resource Name (ARN) of the application.
 
 
 

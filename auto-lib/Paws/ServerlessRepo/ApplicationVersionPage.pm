@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServerlessR
 
 =head1 DESCRIPTION
 
-List of version summaries for the application.
+A list of version summaries for the application.
 
 =head1 ATTRIBUTES
 
@@ -44,7 +44,7 @@ List of version summaries for the application.
 
 =head2 B<REQUIRED> Versions => ArrayRef[L<Paws::ServerlessRepo::VersionSummary>]
 
-  Array of version summaries for the application.
+  An array of version summaries for the application.
 
 
 

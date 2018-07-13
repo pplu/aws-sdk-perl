@@ -4,7 +4,7 @@ package Paws::ServerlessRepo::CreateCloudFormationChangeSet;
   has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'applicationId', required => 1);
   has ParameterOverrides => (is => 'ro', isa => 'ArrayRef[Paws::ServerlessRepo::ParameterValue]', traits => ['NameInRequest'], request_name => 'parameterOverrides');
   has SemanticVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'semanticVersion');
-  has StackName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stackName');
+  has StackName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stackName', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -34,6 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateCloudFormationChangeSetResponse =
       $serverlessrepo->CreateCloudFormationChangeSet(
       ApplicationId      => 'My__string',
+      StackName          => 'My__string',
       ParameterOverrides => [
         {
           Name  => 'My__string',
@@ -43,7 +44,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ...
       ],    # OPTIONAL
       SemanticVersion => 'My__string',    # OPTIONAL
-      StackName       => 'My__string',    # OPTIONAL
       );
 
     # Results:
@@ -63,7 +63,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ser
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-The ID of the application to get.
+The Amazon Resource Name (ARN) of the application.
 
 
 
@@ -81,7 +81,7 @@ https://semver.org/ (https://semver.org/)
 
 
 
-=head2 StackName => Str
+=head2 B<REQUIRED> StackName => Str
 
 The name or the unique ID of the stack for which you are creating a
 change set. AWS CloudFormation generates the change set by comparing

@@ -48,12 +48,12 @@ Application version details.
 
 =head2 B<REQUIRED> CreationTime => Str
 
-  The date/time this resource was created.
+  The date and time this resource was created.
 
 
 =head2 B<REQUIRED> ParameterDefinitions => ArrayRef[L<Paws::ServerlessRepo::ParameterDefinition>]
 
-  Array of parameter types supported by the application.
+  An array of parameter types supported by the application.
 
 
 =head2 B<REQUIRED> SemanticVersion => Str

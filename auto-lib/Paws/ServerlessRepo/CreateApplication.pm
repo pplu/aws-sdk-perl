@@ -1,13 +1,13 @@
 
 package Paws::ServerlessRepo::CreateApplication;
   use Moose;
-  has Author => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'author');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has Author => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'author', required => 1);
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description', required => 1);
   has HomePageUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'homePageUrl');
   has Labels => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'labels');
   has LicenseBody => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'licenseBody');
   has LicenseUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'licenseUrl');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
   has ReadmeBody => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'readmeBody');
   has ReadmeUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'readmeUrl');
   has SemanticVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'semanticVersion');
@@ -42,13 +42,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $serverlessrepo = Paws->service('ServerlessRepo');
     my $CreateApplicationResponse = $serverlessrepo->CreateApplication(
-      Author          => 'My__string',             # OPTIONAL
-      Description     => 'My__string',             # OPTIONAL
+      Author          => 'My__string',
+      Description     => 'My__string',
+      Name            => 'My__string',
       HomePageUrl     => 'My__string',             # OPTIONAL
       Labels          => [ 'My__string', ... ],    # OPTIONAL
       LicenseBody     => 'My__string',             # OPTIONAL
       LicenseUrl      => 'My__string',             # OPTIONAL
-      Name            => 'My__string',             # OPTIONAL
       ReadmeBody      => 'My__string',             # OPTIONAL
       ReadmeUrl       => 'My__string',             # OPTIONAL
       SemanticVersion => 'My__string',             # OPTIONAL
@@ -79,21 +79,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ser
 =head1 ATTRIBUTES
 
 
-=head2 Author => Str
+=head2 B<REQUIRED> Author => Str
 
 The name of the author publishing the app.
 
-Min Length=1. Max Length=127.
+Minimum length=1. Maximum length=127.
 
 Pattern "^[a-z0-9](([a-z0-9]|-(?!-))*[a-z0-9])?$";
 
 
 
-=head2 Description => Str
+=head2 B<REQUIRED> Description => Str
 
 The description of the application.
 
-Min Length=1. Max Length=256
+Minimum length=1. Maximum length=256
 
 
 
@@ -108,7 +108,7 @@ location of your GitHub repository for the application.
 
 Labels to improve discovery of apps in search results.
 
-Min Length=1. Max Length=127. Maximum number of labels: 10
+Minimum length=1. Maximum length=127. Maximum number of labels: 10
 
 Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
 
@@ -116,27 +116,34 @@ Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
 
 =head2 LicenseBody => Str
 
-A raw text file that contains the license of the app that matches the
-spdxLicenseID of your application.
+A local text file that contains the license of the app that matches the
+spdxLicenseID value of your application. The file is of the format
+file://E<lt>pathE<gt>/E<lt>filenameE<gt>.
 
-Max size 5 MB
+Maximum size 5 MB
+
+Note: Only one of licenseBody and licenseUrl can be specified,
+otherwise an error will result.
 
 
 
 =head2 LicenseUrl => Str
 
-A link to a license file of the app that matches the spdxLicenseID of
-your application.
+A link to the S3 object that contains the license of the app that
+matches the spdxLicenseID value of your application.
 
-Max size 5 MB
+Maximum size 5 MB
+
+Note: Only one of licenseBody and licenseUrl can be specified,
+otherwise an error will result.
 
 
 
-=head2 Name => Str
+=head2 B<REQUIRED> Name => Str
 
-The name of the application you want to publish.
+The name of the application that you want to publish.
 
-Min Length=1. Max Length=140
+Minimum length=1. Maximum length=140
 
 Pattern: "[a-zA-Z0-9\\-]+";
 
@@ -144,19 +151,26 @@ Pattern: "[a-zA-Z0-9\\-]+";
 
 =head2 ReadmeBody => Str
 
-A raw text Readme file that contains a more detailed description of the
-application and how it works in markdown language.
+A local text readme file in Markdown language that contains a more
+detailed description of the application and how it works. The file is
+of the format file://E<lt>pathE<gt>/E<lt>filenameE<gt>.
 
-Max size 5 MB
+Maximum size 5 MB
+
+Note: Only one of readmeBody and readmeUrl can be specified, otherwise
+an error will result.
 
 
 
 =head2 ReadmeUrl => Str
 
-A link to the Readme file that contains a more detailed description of
-the application and how it works in markdown language.
+A link to the S3 object in Markdown language that contains a more
+detailed description of the application and how it works.
 
-Max size 5 MB
+Maximum size 5 MB
+
+Note: Only one of readmeBody and readmeUrl can be specified, otherwise
+an error will result.
 
 
 
@@ -183,13 +197,21 @@ A valid identifier from https://spdx.org/licenses/
 
 =head2 TemplateBody => Str
 
-The raw packaged AWS SAM template of your application.
+The local raw packaged AWS SAM template file of your application. The
+file is of the format file://E<lt>pathE<gt>/E<lt>filenameE<gt>.
+
+Note: Only one of templateBody and templateUrl can be specified,
+otherwise an error will result.
 
 
 
 =head2 TemplateUrl => Str
 
-A link to the packaged AWS SAM template of your application.
+A link to the S3 object cotaining the packaged AWS SAM template of your
+application.
+
+Note: Only one of templateBody and templateUrl can be specified,
+otherwise an error will result.
 
 
 

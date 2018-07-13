@@ -40,17 +40,9 @@ Policy statement applied to the application.
 
 =head2 B<REQUIRED> Actions => ArrayRef[Str|Undef]
 
-  A list of supported actions:
-
-GetApplication
-
-CreateCloudFormationChangeSet
-
-ListApplicationVersions
-
-SearchApplications
-
-Deploy (Note: This action enables all other actions above.)
+  See Application Permissions
+(https://docs.aws.amazon.com/serverlessrepo/latest/devguide/access-control-resource-based.html#application-permissions)
+for the list of supported actions.
 
 
 =head2 B<REQUIRED> Principals => ArrayRef[Str|Undef]

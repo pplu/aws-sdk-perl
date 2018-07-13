@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServerlessR
 
 =head1 DESCRIPTION
 
-Create application ChangeSet request.
+Create an application change set request.
 
 =head1 ATTRIBUTES
 
