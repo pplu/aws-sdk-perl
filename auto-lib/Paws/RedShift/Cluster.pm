@@ -26,6 +26,7 @@ package Paws::RedShift::Cluster;
   has ModifyStatus => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int');
+  has PendingActions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has PendingModifiedValues => (is => 'ro', isa => 'Paws::RedShift::PendingModifiedValues');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
@@ -299,6 +300,11 @@ the database that is specified in the B<DBName> parameter.
 =head2 NumberOfNodes => Int
 
   The number of compute nodes in the cluster.
+
+
+=head2 PendingActions => ArrayRef[Str|Undef]
+
+  Cluster operations that are waiting to be started.
 
 
 =head2 PendingModifiedValues => L<Paws::RedShift::PendingModifiedValues>
