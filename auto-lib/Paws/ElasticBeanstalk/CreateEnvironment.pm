@@ -153,6 +153,10 @@ This is an alternative to specifying a template name. If specified, AWS
 Elastic Beanstalk sets the configuration values to the default values
 associated with the specified solution stack.
 
+For a list of current solution stacks, see Elastic Beanstalk Supported
+Platforms
+(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.platforms.html).
+
 
 
 =head2 Tags => ArrayRef[L<Paws::ElasticBeanstalk::Tag>]

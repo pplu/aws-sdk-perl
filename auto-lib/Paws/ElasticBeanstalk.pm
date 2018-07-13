@@ -1017,8 +1017,9 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeInsta
 
 Returns: a L<Paws::ElasticBeanstalk::DescribeInstancesHealthResult> instance
 
-Retrives detailed information about the health of instances in your AWS
-Elastic Beanstalk. This operation requires enhanced health reporting
+Retrieves detailed information about the health of instances in your
+AWS Elastic Beanstalk. This operation requires enhanced health
+reporting
 (http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced.html).
 
 
