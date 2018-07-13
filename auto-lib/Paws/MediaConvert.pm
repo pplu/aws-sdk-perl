@@ -99,6 +99,21 @@ package Paws::MediaConvert;
     my $call_object = $self->new_with_coercions('Paws::MediaConvert::ListQueues', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaConvert::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaConvert::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaConvert::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateJobTemplate {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaConvert::UpdateJobTemplate', @_);
@@ -117,7 +132,7 @@ package Paws::MediaConvert;
   
 
 
-  sub operations { qw/CancelJob CreateJob CreateJobTemplate CreatePreset CreateQueue DeleteJobTemplate DeletePreset DeleteQueue DescribeEndpoints GetJob GetJobTemplate GetPreset GetQueue ListJobs ListJobTemplates ListPresets ListQueues UpdateJobTemplate UpdatePreset UpdateQueue / }
+  sub operations { qw/CancelJob CreateJob CreateJobTemplate CreatePreset CreateQueue DeleteJobTemplate DeletePreset DeleteQueue DescribeEndpoints GetJob GetJobTemplate GetPreset GetQueue ListJobs ListJobTemplates ListPresets ListQueues ListTagsForResource TagResource UntagResource UpdateJobTemplate UpdatePreset UpdateQueue / }
 
 1;
 
@@ -211,6 +226,8 @@ http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 
 =item [Queue => Str]
 
+=item [Tags => L<Paws::MediaConvert::__mapOf__string>]
+
 
 =back
 
@@ -235,6 +252,8 @@ http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 
 =item [Description => Str]
 
+=item [Tags => L<Paws::MediaConvert::__mapOf__string>]
+
 
 =back
 
@@ -253,6 +272,8 @@ Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 =item Name => Str
 
 =item [Description => Str]
+
+=item [Tags => L<Paws::MediaConvert::__mapOf__string>]
 
 
 =back
@@ -500,6 +521,62 @@ Returns: a L<Paws::MediaConvert::ListQueuesResponse> instance
 Retrieve a JSON array of up to twenty of your queues. This will return
 the queues themselves, not just a list of them. To retrieve the next
 twenty queues, use the nextToken string returned with the array.
+
+
+=head2 ListTagsForResource
+
+=over
+
+=item Arn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaConvert::ListTagsForResource>
+
+Returns: a L<Paws::MediaConvert::ListTagsForResourceResponse> instance
+
+Retrieve the tags for a MediaConvert resource.
+
+
+=head2 TagResource
+
+=over
+
+=item Arn => Str
+
+=item Tags => L<Paws::MediaConvert::__mapOf__string>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaConvert::TagResource>
+
+Returns: a L<Paws::MediaConvert::TagResourceResponse> instance
+
+Tag a MediaConvert queue, preset, or job template. For information
+about these resource types, see the User Guide at
+http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
+
+
+=head2 UntagResource
+
+=over
+
+=item [Arn => Str]
+
+=item [TagKeys => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaConvert::UntagResource>
+
+Returns: a L<Paws::MediaConvert::UntagResourceResponse> instance
+
+Untag a MediaConvert queue, preset, or job template. For information
+about these resource types, see the User Guide at
+http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 
 
 =head2 UpdateJobTemplate

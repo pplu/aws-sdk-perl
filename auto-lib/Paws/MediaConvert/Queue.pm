@@ -5,7 +5,9 @@ package Paws::MediaConvert::Queue;
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has LastUpdated => (is => 'ro', isa => 'Str', request_name => 'lastUpdated', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  has ProgressingJobsCount => (is => 'ro', isa => 'Int', request_name => 'progressingJobsCount', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  has SubmittedJobsCount => (is => 'ro', isa => 'Int', request_name => 'submittedJobsCount', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
 1;
 
@@ -71,9 +73,19 @@ priority.
 account.
 
 
+=head2 ProgressingJobsCount => Int
+
+  Estimated number of jobs in PROGRESSING status.
+
+
 =head2 Status => Str
 
   
+
+
+=head2 SubmittedJobsCount => Int
+
+  Estimated number of jobs in SUBMITTED status.
 
 
 =head2 Type => Str

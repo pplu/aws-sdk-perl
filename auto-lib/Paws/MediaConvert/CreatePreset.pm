@@ -5,6 +5,7 @@ package Paws::MediaConvert::CreatePreset;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
   has Settings => (is => 'ro', isa => 'Paws::MediaConvert::PresetSettings', traits => ['NameInRequest'], request_name => 'settings', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::MediaConvert::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -180,8 +181,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 FontSize       => 1,      # max: 96; OPTIONAL
                 ShadowColor    => 'NONE', # values: NONE, BLACK, WHITE; OPTIONAL
                 ShadowOpacity  => 1,      # max: 255; OPTIONAL
-                ShadowXOffset  => 1,      # min: -2147483648, max: 2147483647
-                ShadowYOffset  => 1,      # min: -2147483648, max: 2147483647
+                ShadowXOffset =>
+                  1,    # min: -2147483648, max: 2147483647; OPTIONAL
+                ShadowYOffset =>
+                  1,    # min: -2147483648, max: 2147483647; OPTIONAL
                 TeletextSpacing =>
                   'FIXED_GRID',    # values: FIXED_GRID, PROPORTIONAL; OPTIONAL
                 XPosition => 1,    # max: 2147483647; OPTIONAL
@@ -202,8 +205,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 FontSize       => 1,      # max: 96; OPTIONAL
                 ShadowColor    => 'NONE', # values: NONE, BLACK, WHITE; OPTIONAL
                 ShadowOpacity  => 1,      # max: 255; OPTIONAL
-                ShadowXOffset  => 1,      # min: -2147483648, max: 2147483647
-                ShadowYOffset  => 1,      # min: -2147483648, max: 2147483647
+                ShadowXOffset =>
+                  1,    # min: -2147483648, max: 2147483647; OPTIONAL
+                ShadowYOffset =>
+                  1,    # min: -2147483648, max: 2147483647; OPTIONAL
                 TeletextSpacing =>
                   'FIXED_GRID',    # values: FIXED_GRID, PROPORTIONAL; OPTIONAL
                 XPosition => 1,    # max: 2147483647; OPTIONAL
@@ -246,20 +251,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Bitrate        => 1,           # max: 2147483647; OPTIONAL
             BufferModel    => 'MULTIPLEX', # values: MULTIPLEX, NONE; OPTIONAL
             DvbNitSettings => {
-              NetworkId => 1,              # max: 65535
-              NetworkName =>
-                'My__stringMin1Max256',    # min: 1, max: 256; OPTIONAL
-              NitInterval => 1,            # min: 25, max: 10000
+              NetworkId   => 1,                         # max: 65535; OPTIONAL
+              NetworkName => 'My__stringMin1Max256',    # min: 1, max: 256
+              NitInterval => 1,                         # min: 25, max: 10000
 
             },    # OPTIONAL
             DvbSdtSettings => {
               OutputSdt => 'SDT_FOLLOW'
               , # values: SDT_FOLLOW, SDT_FOLLOW_IF_PRESENT, SDT_MANUAL, SDT_NONE; OPTIONAL
               SdtInterval => 1,    # min: 25, max: 2000; OPTIONAL
-              ServiceName =>
-                'My__stringMin1Max256',    # min: 1, max: 256; OPTIONAL
-              ServiceProviderName =>
-                'My__stringMin1Max256',    # min: 1, max: 256; OPTIONAL
+              ServiceName         => 'My__stringMin1Max256',  # min: 1, max: 256
+              ServiceProviderName => 'My__stringMin1Max256',  # min: 1, max: 256
             },    # OPTIONAL
             DvbSubPids => [
               1, ...    # min: 32, max: 8182; OPTIONAL
@@ -286,7 +288,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             PmtInterval        => 1,        # max: 1000; OPTIONAL
             PmtPid             => 1,        # min: 32, max: 8182; OPTIONAL
             PrivateMetadataPid => 1,        # min: 32, max: 8182; OPTIONAL
-            ProgramNumber      => 1,        # max: 65535
+            ProgramNumber      => 1,        # max: 65535; OPTIONAL
             RateMode           => 'VBR',    # values: VBR, CBR; OPTIONAL
             Scte35Pid          => 1,        # min: 32, max: 8182; OPTIONAL
             Scte35Source => 'PASSTHROUGH', # values: PASSTHROUGH, NONE; OPTIONAL
@@ -296,7 +298,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ,    # values: MAINTAIN_CADENCE, RESET_CADENCE; OPTIONAL
             SegmentationTime  => 1,    # OPTIONAL
             TimedMetadataPid  => 1,    # min: 32, max: 8182; OPTIONAL
-            TransportStreamId => 1,    # max: 65535
+            TransportStreamId => 1,    # max: 65535; OPTIONAL
             VideoPid          => 1,    # min: 32, max: 8182; OPTIONAL
           },    # OPTIONAL
           M3u8Settings => {
@@ -312,13 +314,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             PmtInterval        => 1,    # max: 1000; OPTIONAL
             PmtPid             => 1,    # min: 32, max: 8182; OPTIONAL
             PrivateMetadataPid => 1,    # min: 32, max: 8182; OPTIONAL
-            ProgramNumber      => 1,    # max: 65535
+            ProgramNumber      => 1,    # max: 65535; OPTIONAL
             Scte35Pid          => 1,    # min: 32, max: 8182; OPTIONAL
             Scte35Source => 'PASSTHROUGH', # values: PASSTHROUGH, NONE; OPTIONAL
             TimedMetadata =>
               'PASSTHROUGH',               # values: PASSTHROUGH, NONE; OPTIONAL
             TimedMetadataPid  => 1,        # min: 32, max: 8182; OPTIONAL
-            TransportStreamId => 1,        # max: 65535
+            TransportStreamId => 1,        # max: 65535; OPTIONAL
             VideoPid          => 1,        # min: 32, max: 8182; OPTIONAL
           },    # OPTIONAL
           MovSettings => {
@@ -519,20 +521,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           AntiAlias     => 'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
           ColorMetadata => 'IGNORE',      # values: IGNORE, INSERT; OPTIONAL
           Crop          => {
-            Height => 1,                  # min: -2147483648, max: 2147483647
-            Width  => 1,                  # min: -2147483648, max: 2147483647
-            X      => 1,                  # min: -2147483648, max: 2147483647
-            Y      => 1,                  # min: -2147483648, max: 2147483647
+            Height => 1,    # min: -2147483648, max: 2147483647; OPTIONAL
+            Width  => 1,    # min: -2147483648, max: 2147483647; OPTIONAL
+            X      => 1,    # min: -2147483648, max: 2147483647; OPTIONAL
+            Y      => 1,    # min: -2147483648, max: 2147483647; OPTIONAL
 
           },    # OPTIONAL
           DropFrameTimecode => 'DISABLED', # values: DISABLED, ENABLED; OPTIONAL
           FixedAfd          => 1,          # max: 15; OPTIONAL
           Height            => 1,          # min: 32, max: 2160; OPTIONAL
           Position          => {
-            Height => 1,                   # min: -2147483648, max: 2147483647
-            Width  => 1,                   # min: -2147483648, max: 2147483647
-            X      => 1,                   # min: -2147483648, max: 2147483647
-            Y      => 1,                   # min: -2147483648, max: 2147483647
+            Height => 1,    # min: -2147483648, max: 2147483647; OPTIONAL
+            Width  => 1,    # min: -2147483648, max: 2147483647; OPTIONAL
+            X      => 1,    # min: -2147483648, max: 2147483647; OPTIONAL
+            Y      => 1,    # min: -2147483648, max: 2147483647; OPTIONAL
 
           },    # OPTIONAL
           RespondToAfd => 'NONE', # values: NONE, RESPOND, PASSTHROUGH; OPTIONAL
@@ -548,8 +550,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               , # values: NONE, FORCE_601, FORCE_709, FORCE_HDR10, FORCE_HLG_2020; OPTIONAL
               Contrast      => 1,    # min: 1, max: 100; OPTIONAL
               Hdr10Metadata => {
-                MaxContentLightLevel      => 1,    # max: 65535
-                MaxFrameAverageLightLevel => 1,    # max: 65535
+                MaxContentLightLevel      => 1,    # max: 65535; OPTIONAL
+                MaxFrameAverageLightLevel => 1,    # max: 65535; OPTIONAL
                 BluePrimaryX              => 1,    # max: 50000; OPTIONAL
                 BluePrimaryY              => 1,    # max: 50000; OPTIONAL
                 GreenPrimaryX             => 1,    # max: 50000; OPTIONAL
@@ -577,16 +579,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 {
                   ImageInserterInput =>
                     'My__stringMin14PatternS3BmpBMPPngPNGTgaTGA',    # min: 14,
-                  ImageX   => 1,    # min: -2147483648, max: 2147483647
-                  ImageY   => 1,    # min: -2147483648, max: 2147483647
-                  Layer    => 1,    # max: 99
-                  Opacity  => 1,    # max: 100; OPTIONAL
-                  Duration => 1,    # min: -2147483648, max: 2147483647
-                  FadeIn   => 1,    # min: -2147483648, max: 2147483647
-                  FadeOut  => 1,    # min: -2147483648, max: 2147483647
-                  Height   => 1,    # min: -2147483648, max: 2147483647
+                  ImageX   => 1,   # min: -2147483648, max: 2147483647; OPTIONAL
+                  ImageY   => 1,   # min: -2147483648, max: 2147483647; OPTIONAL
+                  Layer    => 1,   # max: 99
+                  Opacity  => 1,   # max: 100; OPTIONAL
+                  Duration => 1,   # min: -2147483648, max: 2147483647; OPTIONAL
+                  FadeIn   => 1,   # min: -2147483648, max: 2147483647; OPTIONAL
+                  FadeOut  => 1,   # min: -2147483648, max: 2147483647; OPTIONAL
+                  Height   => 1,   # min: -2147483648, max: 2147483647; OPTIONAL
                   StartTime => 'My__stringPattern01D20305D205D',    # OPTIONAL
-                  Width => 1,    # min: -2147483648, max: 2147483647
+                  Width => 1,    # min: -2147483648, max: 2147483647; OPTIONAL
                 },
                 ...
               ],
@@ -614,8 +616,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Width => 1,    # min: 32, max: 4096; OPTIONAL
         },    # OPTIONAL
       },
-      Category    => 'My__string',    # OPTIONAL
-      Description => 'My__string',    # OPTIONAL
+      Category    => 'My__string',                         # OPTIONAL
+      Description => 'My__string',                         # OPTIONAL
+      Tags        => { 'My__string' => 'My__string', },    # OPTIONAL
     );
 
     # Results:
@@ -650,6 +653,13 @@ The name of the preset you are creating.
 =head2 B<REQUIRED> Settings => L<Paws::MediaConvert::PresetSettings>
 
 
+
+
+
+=head2 Tags => L<Paws::MediaConvert::__mapOf__string>
+
+The tags that you want to add to the resource. You can tag resources
+with a key-value pair or with only a key.
 
 
 

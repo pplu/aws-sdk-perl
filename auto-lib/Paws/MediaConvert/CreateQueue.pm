@@ -3,6 +3,7 @@ package Paws::MediaConvert::CreateQueue;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::MediaConvert::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -31,7 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $mediaconvert = Paws->service('MediaConvert');
     my $CreateQueueResponse = $mediaconvert->CreateQueue(
       Name        => 'My__string',
-      Description => 'My__string',    # OPTIONAL
+      Description => 'My__string',                         # OPTIONAL
+      Tags        => { 'My__string' => 'My__string', },    # OPTIONAL
     );
 
     # Results:
@@ -54,6 +56,13 @@ Optional. A description of the queue you are creating.
 =head2 B<REQUIRED> Name => Str
 
 The name of the queue you are creating.
+
+
+
+=head2 Tags => L<Paws::MediaConvert::__mapOf__string>
+
+The tags that you want to add to the resource. You can tag resources
+with a key-value pair or with only a key.
 
 
 
