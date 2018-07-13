@@ -56,11 +56,13 @@ run_minio_local:
 dist: dist-builder dist-paws
 
 dist-builder:
+	cp Changes-ext-builder Changes
 	cp cpanfile-ext-builder cpanfile
 	cp dist.ini-ext-builder dist.ini
 	carton exec dzil build
 
 dist-paws:
+	cp Changes-paws Changes
 	cp cpanfile-paws cpanfile
 	cp dist.ini-paws dist.ini
 	carton exec dzil build

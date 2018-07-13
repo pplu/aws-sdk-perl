@@ -19,6 +19,9 @@ prefix=bin
 root=templates
 prefix=share/templates
 
+[GatherFile / Changes]
+filename=Changes
+
 [ShareDir]
 dir = share
 
