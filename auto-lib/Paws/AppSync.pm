@@ -225,6 +225,8 @@ executing your API.
 
 =item [ElasticsearchConfig => L<Paws::AppSync::ElasticsearchDataSourceConfig>]
 
+=item [HttpConfig => L<Paws::AppSync::HttpDataSourceConfig>]
+
 =item [LambdaConfig => L<Paws::AppSync::LambdaDataSourceConfig>]
 
 =item [ServiceRoleArn => Str]
@@ -674,6 +676,8 @@ Updates an API key.
 =item [DynamodbConfig => L<Paws::AppSync::DynamodbDataSourceConfig>]
 
 =item [ElasticsearchConfig => L<Paws::AppSync::ElasticsearchDataSourceConfig>]
+
+=item [HttpConfig => L<Paws::AppSync::HttpDataSourceConfig>]
 
 =item [LambdaConfig => L<Paws::AppSync::LambdaDataSourceConfig>]
 

@@ -5,6 +5,7 @@ package Paws::AppSync::UpdateDataSource;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has DynamodbConfig => (is => 'ro', isa => 'Paws::AppSync::DynamodbDataSourceConfig', traits => ['NameInRequest'], request_name => 'dynamodbConfig');
   has ElasticsearchConfig => (is => 'ro', isa => 'Paws::AppSync::ElasticsearchDataSourceConfig', traits => ['NameInRequest'], request_name => 'elasticsearchConfig');
+  has HttpConfig => (is => 'ro', isa => 'Paws::AppSync::HttpDataSourceConfig', traits => ['NameInRequest'], request_name => 'httpConfig');
   has LambdaConfig => (is => 'ro', isa => 'Paws::AppSync::LambdaDataSourceConfig', traits => ['NameInRequest'], request_name => 'lambdaConfig');
   has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
   has ServiceRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceRoleArn');
@@ -50,11 +51,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         endpoint  => 'MyString',
 
       },    # OPTIONAL
+      HttpConfig => { endpoint => 'MyString', },    # OPTIONAL
       LambdaConfig => {
         lambdaFunctionArn => 'MyString',
 
-      },    # OPTIONAL
-      ServiceRoleArn => 'MyString',    # OPTIONAL
+      },                                            # OPTIONAL
+      ServiceRoleArn => 'MyString',                 # OPTIONAL
     );
 
     # Results:
@@ -92,6 +94,12 @@ The new Elasticsearch configuration.
 
 
 
+=head2 HttpConfig => L<Paws::AppSync::HttpDataSourceConfig>
+
+The new http endpoint configuration
+
+
+
 =head2 LambdaConfig => L<Paws::AppSync::LambdaDataSourceConfig>
 
 The new Lambda configuration.
@@ -114,7 +122,7 @@ The new service role ARN for the data source.
 
 The new data source type.
 
-Valid values are: C<"AWS_LAMBDA">, C<"AMAZON_DYNAMODB">, C<"AMAZON_ELASTICSEARCH">, C<"NONE">
+Valid values are: C<"AWS_LAMBDA">, C<"AMAZON_DYNAMODB">, C<"AMAZON_ELASTICSEARCH">, C<"NONE">, C<"HTTP">
 
 
 =head1 SEE ALSO
