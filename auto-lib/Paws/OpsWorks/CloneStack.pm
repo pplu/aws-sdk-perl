@@ -182,8 +182,8 @@ string should be in the following format:
 
 C<"{\"key1\": \"value1\", \"key2\": \"value2\",...}">
 
-For more information on custom JSON, see Use Custom JSON to Modify the
-Stack Configuration Attributes
+For more information about custom JSON, see Use Custom JSON to Modify
+the Stack Configuration Attributes
 (http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html)
 
 
@@ -244,14 +244,14 @@ SQL Server Web>.
 =item *
 
 A custom AMI: C<Custom>. You specify the custom AMI you want to use
-when you create instances. For more information on how to use custom
+when you create instances. For more information about how to use custom
 AMIs with OpsWorks, see Using Custom AMIs
 (http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
 
 =back
 
 The default option is the parent stack's operating system. For more
-information on the supported operating systems, see AWS OpsWorks Stacks
+information about supported operating systems, see AWS OpsWorks Stacks
 Operating Systems
 (http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
 
@@ -478,10 +478,10 @@ You must specify a value for C<DefaultSubnetId>.
 
 =back
 
-For more information on how to use AWS OpsWorks Stacks with a VPC, see
-Running a Stack in a VPC
+For more information about how to use AWS OpsWorks Stacks with a VPC,
+see Running a Stack in a VPC
 (http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html).
-For more information on default VPC and EC2 Classic, see Supported
+For more information about default VPC and EC2 Classic, see Supported
 Platforms
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html).
 

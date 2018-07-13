@@ -201,17 +201,17 @@ Standard>, or C<Microsoft Windows Server 2012 R2 with SQL Server Web>.
 
 =back
 
-For more information on the supported operating systems, see AWS
+For more information about supported operating systems, see AWS
 OpsWorks Stacks Operating Systems
 (http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
 
 The default option is the current Amazon Linux version. If you set this
 parameter to C<Custom>, you must use the AmiId parameter to specify the
-custom AMI that you want to use. For more information on the supported
+custom AMI that you want to use. For more information about supported
 operating systems, see Operating Systems
 (http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
-For more information on how to use custom AMIs with OpsWorks, see Using
-Custom AMIs
+For more information about how to use custom AMIs with OpsWorks, see
+Using Custom AMIs
 (http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
 
 You can specify a different Linux operating system for the updated

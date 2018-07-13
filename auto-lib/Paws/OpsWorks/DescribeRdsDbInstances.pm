@@ -52,8 +52,8 @@ An array containing the ARNs of the instances to be described.
 
 =head2 B<REQUIRED> StackId => Str
 
-The stack ID that the instances are registered with. The operation
-returns descriptions of all registered Amazon RDS instances.
+The ID of the stack with which the instances are registered. The
+operation returns descriptions of all registered Amazon RDS instances.
 
 
 
