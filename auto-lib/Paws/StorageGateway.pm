@@ -60,6 +60,11 @@ package Paws::StorageGateway;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::CreateNFSFileShare', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateSMBFileShare {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::CreateSMBFileShare', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateSnapshot {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::CreateSnapshot', @_);
@@ -160,6 +165,16 @@ package Paws::StorageGateway;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::DescribeNFSFileShares', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeSMBFileShares {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::DescribeSMBFileShares', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeSMBSettings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::DescribeSMBSettings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeSnapshotSchedule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::DescribeSnapshotSchedule', @_);
@@ -203,6 +218,11 @@ package Paws::StorageGateway;
   sub DisableGateway {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::DisableGateway', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub JoinDomain {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::JoinDomain', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListFileShares {
@@ -280,6 +300,11 @@ package Paws::StorageGateway;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::SetLocalConsolePassword', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub SetSMBGuestPassword {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::SetSMBGuestPassword', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ShutdownGateway {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::ShutdownGateway', @_);
@@ -318,6 +343,11 @@ package Paws::StorageGateway;
   sub UpdateNFSFileShare {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::UpdateNFSFileShare', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateSMBFileShare {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::UpdateSMBFileShare', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateSnapshotSchedule {
@@ -471,7 +501,7 @@ package Paws::StorageGateway;
   }
 
 
-  sub operations { qw/ActivateGateway AddCache AddTagsToResource AddUploadBuffer AddWorkingStorage CancelArchival CancelRetrieval CreateCachediSCSIVolume CreateNFSFileShare CreateSnapshot CreateSnapshotFromVolumeRecoveryPoint CreateStorediSCSIVolume CreateTapes CreateTapeWithBarcode DeleteBandwidthRateLimit DeleteChapCredentials DeleteFileShare DeleteGateway DeleteSnapshotSchedule DeleteTape DeleteTapeArchive DeleteVolume DescribeBandwidthRateLimit DescribeCache DescribeCachediSCSIVolumes DescribeChapCredentials DescribeGatewayInformation DescribeMaintenanceStartTime DescribeNFSFileShares DescribeSnapshotSchedule DescribeStorediSCSIVolumes DescribeTapeArchives DescribeTapeRecoveryPoints DescribeTapes DescribeUploadBuffer DescribeVTLDevices DescribeWorkingStorage DisableGateway ListFileShares ListGateways ListLocalDisks ListTagsForResource ListTapes ListVolumeInitiators ListVolumeRecoveryPoints ListVolumes NotifyWhenUploaded RefreshCache RemoveTagsFromResource ResetCache RetrieveTapeArchive RetrieveTapeRecoveryPoint SetLocalConsolePassword ShutdownGateway StartGateway UpdateBandwidthRateLimit UpdateChapCredentials UpdateGatewayInformation UpdateGatewaySoftwareNow UpdateMaintenanceStartTime UpdateNFSFileShare UpdateSnapshotSchedule UpdateVTLDeviceType / }
+  sub operations { qw/ActivateGateway AddCache AddTagsToResource AddUploadBuffer AddWorkingStorage CancelArchival CancelRetrieval CreateCachediSCSIVolume CreateNFSFileShare CreateSMBFileShare CreateSnapshot CreateSnapshotFromVolumeRecoveryPoint CreateStorediSCSIVolume CreateTapes CreateTapeWithBarcode DeleteBandwidthRateLimit DeleteChapCredentials DeleteFileShare DeleteGateway DeleteSnapshotSchedule DeleteTape DeleteTapeArchive DeleteVolume DescribeBandwidthRateLimit DescribeCache DescribeCachediSCSIVolumes DescribeChapCredentials DescribeGatewayInformation DescribeMaintenanceStartTime DescribeNFSFileShares DescribeSMBFileShares DescribeSMBSettings DescribeSnapshotSchedule DescribeStorediSCSIVolumes DescribeTapeArchives DescribeTapeRecoveryPoints DescribeTapes DescribeUploadBuffer DescribeVTLDevices DescribeWorkingStorage DisableGateway JoinDomain ListFileShares ListGateways ListLocalDisks ListTagsForResource ListTapes ListVolumeInitiators ListVolumeRecoveryPoints ListVolumes NotifyWhenUploaded RefreshCache RemoveTagsFromResource ResetCache RetrieveTapeArchive RetrieveTapeRecoveryPoint SetLocalConsolePassword SetSMBGuestPassword ShutdownGateway StartGateway UpdateBandwidthRateLimit UpdateChapCredentials UpdateGatewayInformation UpdateGatewaySoftwareNow UpdateMaintenanceStartTime UpdateNFSFileShare UpdateSMBFileShare UpdateSnapshotSchedule UpdateVTLDeviceType / }
 
 1;
 
@@ -878,10 +908,66 @@ Each argument is described in detail in: L<Paws::StorageGateway::CreateNFSFileSh
 
 Returns: a L<Paws::StorageGateway::CreateNFSFileShareOutput> instance
 
-Creates a file share on an existing file gateway. In Storage Gateway, a
-file share is a file system mount point backed by Amazon S3 cloud
-storage. Storage Gateway exposes file shares using a Network File
-System (NFS) interface. This operation is only supported in the file
+Creates a Network File System (NFS) file share on an existing file
+gateway. In Storage Gateway, a file share is a file system mount point
+backed by Amazon S3 cloud storage. Storage Gateway exposes file shares
+using a NFS interface. This operation is only supported in the file
+gateway type.
+
+File gateway requires AWS Security Token Service (AWS STS) to be
+activated to enable you create a file share. Make sure AWS STS is
+activated in the region you are creating your file gateway in. If AWS
+STS is not activated in the region, activate it. For information about
+how to activate AWS STS, see Activating and Deactivating AWS STS in an
+AWS Region in the AWS Identity and Access Management User Guide.
+
+File gateway does not support creating hard or symbolic links on a file
+share.
+
+
+=head2 CreateSMBFileShare
+
+=over
+
+=item ClientToken => Str
+
+=item GatewayARN => Str
+
+=item LocationARN => Str
+
+=item Role => Str
+
+=item [Authentication => Str]
+
+=item [DefaultStorageClass => Str]
+
+=item [GuessMIMETypeEnabled => Bool]
+
+=item [InvalidUserList => ArrayRef[Str|Undef]]
+
+=item [KMSEncrypted => Bool]
+
+=item [KMSKey => Str]
+
+=item [ObjectACL => Str]
+
+=item [ReadOnly => Bool]
+
+=item [RequesterPays => Bool]
+
+=item [ValidUserList => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::StorageGateway::CreateSMBFileShare>
+
+Returns: a L<Paws::StorageGateway::CreateSMBFileShareOutput> instance
+
+Creates a Server Message Block (SMB) file share on an existing file
+gateway. In Storage Gateway, a file share is a file system mount point
+backed by Amazon S3 cloud storage. Storage Gateway expose file shares
+using a SMB interface. This operation is only supported in the file
 gateway type.
 
 File gateway requires AWS Security Token Service (AWS STS) to be
@@ -1403,8 +1489,45 @@ Each argument is described in detail in: L<Paws::StorageGateway::DescribeNFSFile
 
 Returns: a L<Paws::StorageGateway::DescribeNFSFileSharesOutput> instance
 
-Gets a description for one or more file shares from a file gateway.
-This operation is only supported in the file gateway type.
+Gets a description for one or more Network File System (NFS) file
+shares from a file gateway. This operation is only supported in the
+file gateway type.
+
+
+=head2 DescribeSMBFileShares
+
+=over
+
+=item FileShareARNList => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::StorageGateway::DescribeSMBFileShares>
+
+Returns: a L<Paws::StorageGateway::DescribeSMBFileSharesOutput> instance
+
+Gets a description for one or more Server Message Block (SMB) file
+shares from a file gateway. This operation is only supported in the
+file gateway type.
+
+
+=head2 DescribeSMBSettings
+
+=over
+
+=item GatewayARN => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::StorageGateway::DescribeSMBSettings>
+
+Returns: a L<Paws::StorageGateway::DescribeSMBSettingsOutput> instance
+
+Gets a description of a Server Message Block (SMB) file share settings
+from a file gateway. This operation is only supported in the file
+gateway type.
 
 
 =head2 DescribeSnapshotSchedule
@@ -1617,6 +1740,30 @@ Use this operation for a tape gateway that is not reachable or not
 functioning. This operation is only supported in the tape gateway type.
 
 Once a gateway is disabled it cannot be enabled.
+
+
+=head2 JoinDomain
+
+=over
+
+=item DomainName => Str
+
+=item GatewayARN => Str
+
+=item Password => Str
+
+=item UserName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::StorageGateway::JoinDomain>
+
+Returns: a L<Paws::StorageGateway::JoinDomainOutput> instance
+
+Adds a file gateway to an Active Directory domain. This operation is
+only supported in the file gateway type that supports the SMB file
+protocol.
 
 
 =head2 ListFileShares
@@ -1996,6 +2143,26 @@ credentials. We recommend that you set a new password. You don't need
 to know the default password to set a new password.
 
 
+=head2 SetSMBGuestPassword
+
+=over
+
+=item GatewayARN => Str
+
+=item Password => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::StorageGateway::SetSMBGuestPassword>
+
+Returns: a L<Paws::StorageGateway::SetSMBGuestPasswordOutput> instance
+
+Sets the password for the guest user E<ldquo>smbguestE<rdquo>.
+"smbguest" is the user when the Authentication method for the file
+share is E<ldquo>GuestAccessE<rdquo>.
+
+
 =head2 ShutdownGateway
 
 =over
@@ -2236,8 +2403,8 @@ Each argument is described in detail in: L<Paws::StorageGateway::UpdateNFSFileSh
 
 Returns: a L<Paws::StorageGateway::UpdateNFSFileShareOutput> instance
 
-Updates a file share. This operation is only supported in the file
-gateway type.
+Updates a Network File System (NFS) file share. This operation is only
+supported in the file gateway type.
 
 To leave a file share field unchanged, set the corresponding input
 field to null.
@@ -2270,6 +2437,55 @@ Write status of your file share
 
 To leave a file share field unchanged, set the corresponding input
 field to null. This operation is only supported in file gateways.
+
+
+=head2 UpdateSMBFileShare
+
+=over
+
+=item FileShareARN => Str
+
+=item [DefaultStorageClass => Str]
+
+=item [GuessMIMETypeEnabled => Bool]
+
+=item [InvalidUserList => ArrayRef[Str|Undef]]
+
+=item [KMSEncrypted => Bool]
+
+=item [KMSKey => Str]
+
+=item [ObjectACL => Str]
+
+=item [ReadOnly => Bool]
+
+=item [RequesterPays => Bool]
+
+=item [ValidUserList => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::StorageGateway::UpdateSMBFileShare>
+
+Returns: a L<Paws::StorageGateway::UpdateSMBFileShareOutput> instance
+
+Updates a Server Message Block (SMB) file share. This operation is only
+supported in the file gateway type.
+
+To leave a file share field unchanged, set the corresponding input
+field to null. This operation is only supported in the file gateway
+type.
+
+File gateway requires AWS Security Token Service (AWS STS) to be
+activated to enable you create a file share. Make sure AWS STS is
+activated in the region you are creating your file gateway in. If AWS
+STS is not activated in the region, activate it. For information about
+how to activate AWS STS, see Activating and Deactivating AWS STS in an
+AWS Region in the AWS Identity and Access Management User Guide.
+
+File gateway does not support creating hard or symbolic links on a file
+share.
 
 
 =head2 UpdateSnapshotSchedule

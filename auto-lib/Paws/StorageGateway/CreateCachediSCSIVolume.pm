@@ -64,7 +64,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sto
 
 =head2 B<REQUIRED> ClientToken => Str
 
-
+A unique identifier that you use to retry a request. If you retry a
+request, use the same C<ClientToken> you specified in the initial
+request.
 
 
 
@@ -91,13 +93,23 @@ Optional.
 
 =head2 B<REQUIRED> NetworkInterfaceId => Str
 
+The network interface of the gateway on which to expose the iSCSI
+target. Only IPv4 addresses are accepted. Use
+DescribeGatewayInformation to get a list of the network interfaces
+available on a gateway.
 
+Valid Values: A valid IP address.
 
 
 
 =head2 SnapshotId => Str
 
-
+The snapshot ID (e.g. "snap-1122aabb") of the snapshot to restore as
+the new cached volume. Specify this field if you want to create the
+iSCSI storage volume from a snapshot otherwise do not include this
+field. To list snapshots for your account use DescribeSnapshots
+(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html)
+in the I<Amazon Elastic Compute Cloud API Reference>.
 
 
 
@@ -112,13 +124,17 @@ be equal to or larger than the size of the existing volume, in bytes.
 
 =head2 B<REQUIRED> TargetName => Str
 
-
+The name of the iSCSI target used by initiators to connect to the
+target and as a suffix for the target ARN. For example, specifying
+C<TargetName> as I<myvolume> results in the target ARN of
+arn:aws:storagegateway:us-east-2:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume.
+The target name must be unique across all volumes of a gateway.
 
 
 
 =head2 B<REQUIRED> VolumeSizeInBytes => Int
 
-
+The size of the volume in bytes.
 
 
 

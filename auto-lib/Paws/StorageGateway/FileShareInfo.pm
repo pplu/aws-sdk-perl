@@ -3,6 +3,7 @@ package Paws::StorageGateway::FileShareInfo;
   has FileShareARN => (is => 'ro', isa => 'Str');
   has FileShareId => (is => 'ro', isa => 'Str');
   has FileShareStatus => (is => 'ro', isa => 'Str');
+  has FileShareType => (is => 'ro', isa => 'Str');
   has GatewayARN => (is => 'ro', isa => 'Str');
 1;
 
@@ -50,6 +51,11 @@ Describes a file share.
 
 
 =head2 FileShareStatus => Str
+
+  
+
+
+=head2 FileShareType => Str
 
   
 
