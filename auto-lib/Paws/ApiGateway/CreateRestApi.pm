@@ -44,8 +44,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description           => 'MyString',             # OPTIONAL
       EndpointConfiguration => {
         types => [
-          'REGIONAL', ...                              # values: REGIONAL, EDGE
-        ],                                             # OPTIONAL
+          'REGIONAL', ...    # values: REGIONAL, EDGE, PRIVATE
+        ],                   # OPTIONAL
       },    # OPTIONAL
       MinimumCompressionSize => 1,             # OPTIONAL
       Policy                 => 'MyString',    # OPTIONAL

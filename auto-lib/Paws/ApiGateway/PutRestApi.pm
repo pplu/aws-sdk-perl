@@ -90,7 +90,7 @@ Custom header parameters as part of the request. For example, to
 exclude DocumentationParts from an imported API, set
 C<ignore=documentation> as a C<parameters> value, as in the AWS CLI
 command of C<aws apigateway import-rest-api --parameters
-ignore=documentation --body 'file:///path/to/imported-api-body.json>.
+ignore=documentation --body 'file:///path/to/imported-api-body.json'>.
 
 
 

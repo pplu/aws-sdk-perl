@@ -83,8 +83,9 @@ To exclude DocumentationParts from the import, set C<parameters> as
 C<ignore=documentation>.
 
 To configure the endpoint type, set C<parameters> as
-C<endpointConfigurationTypes=EDGE>
-orC<endpointConfigurationTypes=REGIONAL>. The default endpoint type is
+C<endpointConfigurationTypes=EDGE>,
+C<endpointConfigurationTypes=REGIONAL>, or
+C<endpointConfigurationTypes=PRIVATE>. The default endpoint type is
 C<EDGE>.
 
 To handle imported C<basePath>, set C<parameters> as
@@ -93,12 +94,12 @@ C<basePath=ignore>, C<basePath=prepend> or C<basePath=split>.
 For example, the AWS CLI command to exclude documentation from the
 imported API is:
 
- aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json
+ aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json'
 
 The AWS CLI command to set the regional endpoint on the imported API
 is:
 
- aws apigateway import-rest-api --parameters endpointConfigurationTypes=REGIONAL --body 'file:///path/to/imported-api-body.json
+ aws apigateway import-rest-api --parameters endpointConfigurationTypes=REGIONAL --body 'file:///path/to/imported-api-body.json'
 
 
 

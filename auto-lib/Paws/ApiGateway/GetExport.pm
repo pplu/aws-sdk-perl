@@ -73,11 +73,11 @@ header for direct API requests.
 A key-value map of query string parameters that specify properties of
 the export, depending on the requested C<exportType>. For C<exportType>
 C<swagger>, any combination of the following parameters are supported:
-C<integrations> will export the API with
-x-amazon-apigateway-integration extensions. C<authorizers> will export
-the API with x-amazon-apigateway-authorizer extensions. C<postman> will
-export the API with Postman extensions, allowing for import to the
-Postman tool
+C<extensions='integrations'> or C<extensions='apigateway'> will export
+the API with x-amazon-apigateway-integration extensions.
+C<extensions='authorizers'> will export the API with
+x-amazon-apigateway-authorizer extensions. C<postman> will export the
+API with Postman extensions, allowing for import to the Postman tool
 
 
 

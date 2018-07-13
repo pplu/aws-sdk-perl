@@ -45,7 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CertificatePrivateKey => 'MyString',    # OPTIONAL
       EndpointConfiguration => {
         types => [
-          'REGIONAL', ...                     # values: REGIONAL, EDGE
+          'REGIONAL', ...                     # values: REGIONAL, EDGE, PRIVATE
         ],                                    # OPTIONAL
       },    # OPTIONAL
       RegionalCertificateArn  => 'MyString',    # OPTIONAL

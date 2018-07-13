@@ -36,11 +36,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name      => 'MyString',
       ApiStages => [
         {
-          apiId => 'MyString',
-          stage => 'MyString',
+          apiId    => 'MyString',
+          stage    => 'MyString',
+          throttle => {
+            'MyString' => {
+              burstLimit => 1,    # OPTIONAL
+              rateLimit  => 1,    # OPTIONAL
+            },
+          },    # OPTIONAL
         },
         ...
-      ],    # OPTIONAL
+      ],        # OPTIONAL
       Description => 'MyString',    # OPTIONAL
       Quota       => {
         limit  => 1,                # OPTIONAL
