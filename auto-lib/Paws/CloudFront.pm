@@ -108,11 +108,6 @@ package Paws::CloudFront;
     my $call_object = $self->new_with_coercions('Paws::CloudFront::DeletePublicKey', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub DeleteServiceLinkedRole {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::DeleteServiceLinkedRole', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
   sub DeleteStreamingDistribution {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudFront::DeleteStreamingDistribution', @_);
@@ -363,7 +358,7 @@ package Paws::CloudFront;
   }
 
 
-  sub operations { qw/CreateCloudFrontOriginAccessIdentity CreateDistribution CreateDistributionWithTags CreateFieldLevelEncryptionConfig CreateFieldLevelEncryptionProfile CreateInvalidation CreatePublicKey CreateStreamingDistribution CreateStreamingDistributionWithTags DeleteCloudFrontOriginAccessIdentity DeleteDistribution DeleteFieldLevelEncryptionConfig DeleteFieldLevelEncryptionProfile DeletePublicKey DeleteServiceLinkedRole DeleteStreamingDistribution GetCloudFrontOriginAccessIdentity GetCloudFrontOriginAccessIdentityConfig GetDistribution GetDistributionConfig GetFieldLevelEncryption GetFieldLevelEncryptionConfig GetFieldLevelEncryptionProfile GetFieldLevelEncryptionProfileConfig GetInvalidation GetPublicKey GetPublicKeyConfig GetStreamingDistribution GetStreamingDistributionConfig ListCloudFrontOriginAccessIdentities ListDistributions ListDistributionsByWebACLId ListFieldLevelEncryptionConfigs ListFieldLevelEncryptionProfiles ListInvalidations ListPublicKeys ListStreamingDistributions ListTagsForResource TagResource UntagResource UpdateCloudFrontOriginAccessIdentity UpdateDistribution UpdateFieldLevelEncryptionConfig UpdateFieldLevelEncryptionProfile UpdatePublicKey UpdateStreamingDistribution / }
+  sub operations { qw/CreateCloudFrontOriginAccessIdentity CreateDistribution CreateDistributionWithTags CreateFieldLevelEncryptionConfig CreateFieldLevelEncryptionProfile CreateInvalidation CreatePublicKey CreateStreamingDistribution CreateStreamingDistributionWithTags DeleteCloudFrontOriginAccessIdentity DeleteDistribution DeleteFieldLevelEncryptionConfig DeleteFieldLevelEncryptionProfile DeletePublicKey DeleteStreamingDistribution GetCloudFrontOriginAccessIdentity GetCloudFrontOriginAccessIdentityConfig GetDistribution GetDistributionConfig GetFieldLevelEncryption GetFieldLevelEncryptionConfig GetFieldLevelEncryptionProfile GetFieldLevelEncryptionProfileConfig GetInvalidation GetPublicKey GetPublicKeyConfig GetStreamingDistribution GetStreamingDistributionConfig ListCloudFrontOriginAccessIdentities ListDistributions ListDistributionsByWebACLId ListFieldLevelEncryptionConfigs ListFieldLevelEncryptionProfiles ListInvalidations ListPublicKeys ListStreamingDistributions ListTagsForResource TagResource UntagResource UpdateCloudFrontOriginAccessIdentity UpdateDistribution UpdateFieldLevelEncryptionConfig UpdateFieldLevelEncryptionProfile UpdatePublicKey UpdateStreamingDistribution / }
 
 1;
 
@@ -677,22 +672,6 @@ Each argument is described in detail in: L<Paws::CloudFront::DeletePublicKey>
 Returns: nothing
 
 Remove a public key you previously added to CloudFront.
-
-
-=head2 DeleteServiceLinkedRole
-
-=over
-
-=item RoleName => Str
-
-
-=back
-
-Each argument is described in detail in: L<Paws::CloudFront::DeleteServiceLinkedRole>
-
-Returns: nothing
-
-
 
 
 =head2 DeleteStreamingDistribution
