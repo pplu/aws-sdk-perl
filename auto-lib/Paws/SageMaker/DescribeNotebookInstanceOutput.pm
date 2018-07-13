@@ -94,7 +94,7 @@ Name of the Amazon SageMaker notebook instance.
 
 The status of the notebook instance.
 
-Valid values are: C<"Pending">, C<"InService">, C<"Stopping">, C<"Stopped">, C<"Failed">, C<"Deleting">
+Valid values are: C<"Pending">, C<"InService">, C<"Stopping">, C<"Stopped">, C<"Failed">, C<"Deleting">, C<"Updating">
 =head2 RoleArn => Str
 
 Amazon Resource Name (ARN) of the IAM role associated with the

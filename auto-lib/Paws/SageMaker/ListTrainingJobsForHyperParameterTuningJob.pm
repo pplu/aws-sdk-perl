@@ -64,7 +64,7 @@ The name of the tuning job whose training jobs you want to list.
 
 =head2 MaxResults => Int
 
-The maximum number of training jobs to return.
+The maximum number of training jobs to return. The default value is 10.
 
 
 
@@ -80,6 +80,9 @@ training jobs, use the token in the next request.
 =head2 SortBy => Str
 
 The field to sort results by. The default is C<Name>.
+
+If the value of this field is C<FinalObjectiveMetricValue>, any
+training jobs that did not return an objective metric are not listed.
 
 Valid values are: C<"Name">, C<"CreationTime">, C<"Status">, C<"FinalObjectiveMetricValue">
 

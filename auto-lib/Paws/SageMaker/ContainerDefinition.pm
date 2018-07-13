@@ -56,8 +56,10 @@ to 1024. We support up to 16 entries in the map.
   The Amazon EC2 Container Registry (Amazon ECR) path where inference
 code is stored. If you are using your own custom algorithm instead of
 an algorithm provided by Amazon SageMaker, the inference code must meet
-Amazon SageMaker requirements. For more information, see Using Your Own
-Algorithms with Amazon SageMaker
+Amazon SageMaker requirements. Amazon SageMaker supports both
+C<registry/repository[:tag]> and C<registry/repository[@digest]> image
+path formats. For more information, see Using Your Own Algorithms with
+Amazon SageMaker
 (http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html)
 
 
@@ -66,6 +68,15 @@ Algorithms with Amazon SageMaker
   The S3 path where the model artifacts, which result from model
 training, are stored. This path must point to a single gzip compressed
 tar archive (.tar.gz suffix).
+
+If you provide a value for this parameter, Amazon SageMaker uses AWS
+Security Token Service to download model artifacts from the S3 path you
+provide. AWS STS is activated in your IAM user account by default. If
+you previously deactivated AWS STS for a region, you need to reactivate
+AWS STS for that region. For more information, see Activating and
+Deactivating AWS STS i an AWS Region
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)
+in the I<AWS Identity and Access Management User Guide>.
 
 
 

@@ -25,8 +25,9 @@ request.
 
 =head2 B<REQUIRED> TrainingJobSummaries => ArrayRef[L<Paws::SageMaker::HyperParameterTrainingJobSummary>]
 
-A list of objects that describe the training jobs that the
-C<ListTrainingJobsForHyperParameterTuningJob> request returned.
+A list of TrainingJobSummary objects that describe the training jobs
+that the C<ListTrainingJobsForHyperParameterTuningJob> request
+returned.
 
 
 =head2 _request_id => Str

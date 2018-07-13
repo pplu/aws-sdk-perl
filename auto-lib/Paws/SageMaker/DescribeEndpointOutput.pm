@@ -58,8 +58,8 @@ A timestamp that shows when the endpoint was last modified.
 
 =head2 ProductionVariants => ArrayRef[L<Paws::SageMaker::ProductionVariantSummary>]
 
-An array of ProductionVariant objects, one for each model hosted behind
-this endpoint.
+An array of ProductionVariantSummary objects, one for each model hosted
+behind this endpoint.
 
 
 =head2 _request_id => Str

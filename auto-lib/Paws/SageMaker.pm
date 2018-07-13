@@ -458,6 +458,16 @@ For an example, see Exercise 1: Using the K-Means Algorithm Provided by
 Amazon SageMaker
 (http://docs.aws.amazon.com/sagemaker/latest/dg/ex1.html).
 
+If any of the models hosted at this endpoint get model data from an
+Amazon S3 location, Amazon SageMaker uses AWS Security Token Service to
+download model artifacts from the S3 path you provided. AWS STS is
+activated in your IAM user account by default. If you previously
+deactivated AWS STS for a region, you need to reactivate AWS STS for
+that region. For more information, see Activating and Deactivating AWS
+STS i an AWS Region
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)
+in the I<AWS Identity and Access Management User Guide>.
+
 
 =head2 CreateEndpointConfig
 
@@ -1122,8 +1132,8 @@ Each argument is described in detail in: L<Paws::SageMaker::ListHyperParameterTu
 
 Returns: a L<Paws::SageMaker::ListHyperParameterTuningJobsResponse> instance
 
-Gets a list of objects that describe the hyperparameter tuning jobs
-launched in your account.
+Gets a list of HyperParameterTuningJobSummary objects that describe the
+hyperparameter tuning jobs launched in your account.
 
 
 =head2 ListModels
@@ -1185,7 +1195,8 @@ Each argument is described in detail in: L<Paws::SageMaker::ListNotebookInstance
 
 Returns: a L<Paws::SageMaker::ListNotebookInstanceLifecycleConfigsOutput> instance
 
-Lists notebook instance lifestyle configurations created with the API.
+Lists notebook instance lifestyle configurations created with the
+CreateNotebookInstanceLifecycleConfig API.
 
 
 =head2 ListNotebookInstances
@@ -1302,8 +1313,8 @@ Each argument is described in detail in: L<Paws::SageMaker::ListTrainingJobsForH
 
 Returns: a L<Paws::SageMaker::ListTrainingJobsForHyperParameterTuningJobResponse> instance
 
-Gets a list of objects that describe the training jobs that a
-hyperparameter tuning job launched.
+Gets a list of TrainingJobSummary objects that describe the training
+jobs that a hyperparameter tuning job launched.
 
 
 =head2 StartNotebookInstance
@@ -1428,6 +1439,9 @@ DescribeEndpoint
 (http://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html)
 API.
 
+You cannot update an endpoint with the current C<EndpointConfig>. To
+update an endpoint, you must create a new C<EndpointConfig>.
+
 
 =head2 UpdateEndpointWeightsAndCapacities
 
@@ -1495,7 +1509,7 @@ Each argument is described in detail in: L<Paws::SageMaker::UpdateNotebookInstan
 Returns: a L<Paws::SageMaker::UpdateNotebookInstanceLifecycleConfigOutput> instance
 
 Updates a notebook instance lifecycle configuration created with the
-API.
+CreateNotebookInstanceLifecycleConfig API.
 
 
 

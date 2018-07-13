@@ -49,7 +49,8 @@ as its objective metric to choose the best training job.
 
   A regular expression that searches the output of a training job and
 gets the value of the metric. For more information about using regular
-expressions to define metrics, see hpo-define-metrics.
+expressions to define metrics, see
+automatic-model-tuning-define-metrics.
 
 
 

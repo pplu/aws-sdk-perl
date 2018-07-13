@@ -111,9 +111,9 @@ in the I<AWS Billing and Cost Management User Guide>.
 
 =head2 VpcConfig => L<Paws::SageMaker::VpcConfig>
 
-A object that specifies the VPC that you want your model to connect to.
-Control access to and from your model container by configuring the VPC.
-For more information, see host-vpc.
+A VpcConfig object that specifies the VPC that you want your model to
+connect to. Control access to and from your model container by
+configuring the VPC. For more information, see host-vpc.
 
 
 

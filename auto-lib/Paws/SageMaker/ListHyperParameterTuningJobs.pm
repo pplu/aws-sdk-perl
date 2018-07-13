@@ -93,7 +93,7 @@ specified time.
 
 =head2 MaxResults => Int
 
-The maximum number of tuning jobs to return.
+The maximum number of tuning jobs to return. The default value is 10.
 
 
 

@@ -179,8 +179,8 @@ job if the training job was launched by a hyperparameter tuning job.
 
 =head2 VpcConfig => L<Paws::SageMaker::VpcConfig>
 
-A object that specifies the VPC that this training job has access to.
-For more information, see train-vpc.
+A VpcConfig object that specifies the VPC that this training job has
+access to. For more information, see train-vpc.
 
 
 =head2 _request_id => Str

@@ -161,9 +161,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sag
 
 =head2 B<REQUIRED> HyperParameterTuningJobConfig => L<Paws::SageMaker::HyperParameterTuningJobConfig>
 
-The object that describes the tuning job, including the search
-strategy, metric used to evaluate training jobs, ranges of parameters
-to search, and resource limits for the tuning job.
+The HyperParameterTuningJobConfig object that describes the tuning job,
+including the search strategy, metric used to evaluate training jobs,
+ranges of parameters to search, and resource limits for the tuning job.
 
 
 
@@ -188,10 +188,10 @@ in the I<AWS Billing and Cost Management User Guide>.
 
 =head2 B<REQUIRED> TrainingJobDefinition => L<Paws::SageMaker::HyperParameterTrainingJobDefinition>
 
-The object that describes the training jobs that this tuning job
-launches, including static hyperparameters, input data configuration,
-output data configuration, resource configuration, and stopping
-condition.
+The HyperParameterTrainingJobDefinition object that describes the
+training jobs that this tuning job launches, including static
+hyperparameters, input data configuration, output data configuration,
+resource configuration, and stopping condition.
 
 
 

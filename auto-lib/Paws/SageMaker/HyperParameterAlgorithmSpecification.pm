@@ -41,7 +41,8 @@ hyperparameter tuning job launches and the metrics to monitor.
 
 =head2 MetricDefinitions => ArrayRef[L<Paws::SageMaker::MetricDefinition>]
 
-  An array of objects that specify the metrics that the algorithm emits.
+  An array of MetricDefinition objects that specify the metrics that the
+algorithm emits.
 
 
 =head2 B<REQUIRED> TrainingImage => Str

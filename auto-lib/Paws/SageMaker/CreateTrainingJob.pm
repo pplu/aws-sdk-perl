@@ -226,9 +226,9 @@ Region in an AWS account. It appears in the Amazon SageMaker console.
 
 =head2 VpcConfig => L<Paws::SageMaker::VpcConfig>
 
-A object that specifies the VPC that you want your training job to
-connect to. Control access to and from your training container by
-configuring the VPC. For more information, see train-vpc
+A VpcConfig object that specifies the VPC that you want your training
+job to connect to. Control access to and from your training container
+by configuring the VPC. For more information, see train-vpc
 
 
 

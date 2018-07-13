@@ -49,8 +49,8 @@ in production.
 
 =head2 VpcConfig => L<Paws::SageMaker::VpcConfig>
 
-A object that specifies the VPC that this model has access to. For more
-information, see host-vpc
+A VpcConfig object that specifies the VPC that this model has access
+to. For more information, see host-vpc
 
 
 =head2 _request_id => Str

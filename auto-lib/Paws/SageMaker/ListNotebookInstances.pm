@@ -144,7 +144,7 @@ Valid values are: C<"Ascending">, C<"Descending">
 A filter that returns only notebook instances with the specified
 status.
 
-Valid values are: C<"Pending">, C<"InService">, C<"Stopping">, C<"Stopped">, C<"Failed">, C<"Deleting">
+Valid values are: C<"Pending">, C<"InService">, C<"Stopping">, C<"Stopped">, C<"Failed">, C<"Deleting">, C<"Updating">
 
 
 =head1 SEE ALSO
