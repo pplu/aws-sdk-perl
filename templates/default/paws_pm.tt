@@ -391,6 +391,12 @@ Some services, like the MachineLearning predictor API want you to specify a cust
   my $predictor = Paws->service('ML', endpoint => $model->EndpointInfo->EndpointUrl, region => 'eu-west-1');
   $predictor->...
 
+=head2 Using VPC Endpoints
+
+If you are going to consume a service behind a VPC Endpoint, you can use the C<endpoint> and the C<region> attributes to configure Paws appropiately
+
+  my $svc = $paws->service('...', endpoint => ‘https://endpointaddress’, region => ‘eu-west-1’);
+
 =head1 Pluggability
 
 =head2 Credential Provider Pluggability
