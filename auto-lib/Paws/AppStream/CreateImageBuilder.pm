@@ -6,7 +6,8 @@ package Paws::AppStream::CreateImageBuilder;
   has DisplayName => (is => 'ro', isa => 'Str');
   has DomainJoinInfo => (is => 'ro', isa => 'Paws::AppStream::DomainJoinInfo');
   has EnableDefaultInternetAccess => (is => 'ro', isa => 'Bool');
-  has ImageName => (is => 'ro', isa => 'Str', required => 1);
+  has ImageArn => (is => 'ro', isa => 'Str');
+  has ImageName => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has VpcConfig => (is => 'ro', isa => 'Paws::AppStream::VpcConfig');
@@ -36,7 +37,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $appstream2 = Paws->service('AppStream');
     my $CreateImageBuilderResult = $appstream2->CreateImageBuilder(
-      ImageName             => 'MyString',
       InstanceType          => 'MyString',
       Name                  => 'MyName',
       AppstreamAgentVersion => 'MyAppstreamAgentVersion',    # OPTIONAL
@@ -47,14 +47,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         OrganizationalUnitDistinguishedName =>
           'MyOrganizationalUnitDistinguishedName',    # max: 2000; OPTIONAL
       },    # OPTIONAL
-      EnableDefaultInternetAccess => 1,    # OPTIONAL
+      EnableDefaultInternetAccess => 1,             # OPTIONAL
+      ImageArn                    => 'MyArn',       # OPTIONAL
+      ImageName                   => 'MyString',    # OPTIONAL
       VpcConfig                   => {
         SecurityGroupIds => [
-          'MyString', ...                  # min: 1
-        ],                                 # max: 5; OPTIONAL
+          'MyString', ...                           # min: 1
+        ],                                          # max: 5; OPTIONAL
         SubnetIds => [
-          'MyString', ...                  # min: 1
-        ],                                 # OPTIONAL
+          'MyString', ...                           # min: 1
+        ],                                          # OPTIONAL
       },    # OPTIONAL
     );
 
@@ -100,7 +102,13 @@ Enables or disables default internet access for the image builder.
 
 
 
-=head2 B<REQUIRED> ImageName => Str
+=head2 ImageArn => Str
+
+The ARN of the public, private, or shared image to use.
+
+
+
+=head2 ImageName => Str
 
 The name of the image used to create the builder.
 

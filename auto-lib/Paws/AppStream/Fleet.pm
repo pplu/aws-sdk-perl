@@ -10,7 +10,8 @@ package Paws::AppStream::Fleet;
   has EnableDefaultInternetAccess => (is => 'ro', isa => 'Bool');
   has FleetErrors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::FleetError]');
   has FleetType => (is => 'ro', isa => 'Str');
-  has ImageName => (is => 'ro', isa => 'Str', required => 1);
+  has ImageArn => (is => 'ro', isa => 'Str');
+  has ImageName => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
   has MaxUserDurationInSeconds => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str', required => 1);
@@ -122,7 +123,12 @@ streaming apps.
 
 
 
-=head2 B<REQUIRED> ImageName => Str
+=head2 ImageArn => Str
+
+  The ARN for the public, private, or shared image.
+
+
+=head2 ImageName => Str
 
   The name of the image used to create the fleet.
 

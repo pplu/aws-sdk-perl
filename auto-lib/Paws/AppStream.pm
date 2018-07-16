@@ -75,6 +75,11 @@ package Paws::AppStream;
     my $call_object = $self->new_with_coercions('Paws::AppStream::DeleteImageBuilder', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteImagePermissions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppStream::DeleteImagePermissions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteStack {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppStream::DeleteStack', @_);
@@ -93,6 +98,11 @@ package Paws::AppStream;
   sub DescribeImageBuilders {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppStream::DescribeImageBuilders', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeImagePermissions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppStream::DescribeImagePermissions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeImages {
@@ -175,6 +185,11 @@ package Paws::AppStream;
     my $call_object = $self->new_with_coercions('Paws::AppStream::UpdateFleet', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateImagePermissions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppStream::UpdateImagePermissions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateStack {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppStream::UpdateStack', @_);
@@ -183,7 +198,7 @@ package Paws::AppStream;
   
 
 
-  sub operations { qw/AssociateFleet CopyImage CreateDirectoryConfig CreateFleet CreateImageBuilder CreateImageBuilderStreamingURL CreateStack CreateStreamingURL DeleteDirectoryConfig DeleteFleet DeleteImage DeleteImageBuilder DeleteStack DescribeDirectoryConfigs DescribeFleets DescribeImageBuilders DescribeImages DescribeSessions DescribeStacks DisassociateFleet ExpireSession ListAssociatedFleets ListAssociatedStacks ListTagsForResource StartFleet StartImageBuilder StopFleet StopImageBuilder TagResource UntagResource UpdateDirectoryConfig UpdateFleet UpdateStack / }
+  sub operations { qw/AssociateFleet CopyImage CreateDirectoryConfig CreateFleet CreateImageBuilder CreateImageBuilderStreamingURL CreateStack CreateStreamingURL DeleteDirectoryConfig DeleteFleet DeleteImage DeleteImageBuilder DeleteImagePermissions DeleteStack DescribeDirectoryConfigs DescribeFleets DescribeImageBuilders DescribeImagePermissions DescribeImages DescribeSessions DescribeStacks DisassociateFleet ExpireSession ListAssociatedFleets ListAssociatedStacks ListTagsForResource StartFleet StartImageBuilder StopFleet StopImageBuilder TagResource UntagResource UpdateDirectoryConfig UpdateFleet UpdateImagePermissions UpdateStack / }
 
 1;
 
@@ -291,8 +306,6 @@ Active Directory domain.
 
 =item ComputeCapacity => L<Paws::AppStream::ComputeCapacity>
 
-=item ImageName => Str
-
 =item InstanceType => Str
 
 =item Name => Str
@@ -308,6 +321,10 @@ Active Directory domain.
 =item [EnableDefaultInternetAccess => Bool]
 
 =item [FleetType => Str]
+
+=item [ImageArn => Str]
+
+=item [ImageName => Str]
 
 =item [MaxUserDurationInSeconds => Int]
 
@@ -328,8 +345,6 @@ specified image.
 
 =over
 
-=item ImageName => Str
-
 =item InstanceType => Str
 
 =item Name => Str
@@ -343,6 +358,10 @@ specified image.
 =item [DomainJoinInfo => L<Paws::AppStream::DomainJoinInfo>]
 
 =item [EnableDefaultInternetAccess => Bool]
+
+=item [ImageArn => Str]
+
+=item [ImageName => Str]
 
 =item [VpcConfig => L<Paws::AppStream::VpcConfig>]
 
@@ -504,6 +523,26 @@ Returns: a L<Paws::AppStream::DeleteImageBuilderResult> instance
 Deletes the specified image builder and releases the capacity.
 
 
+=head2 DeleteImagePermissions
+
+=over
+
+=item Name => Str
+
+=item SharedAccountId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppStream::DeleteImagePermissions>
+
+Returns: a L<Paws::AppStream::DeleteImagePermissionsResult> instance
+
+Deletes permissions for the specified private image. After you delete
+permissions for an image, AWS accounts to which you previously granted
+these permissions can no longer use the image.
+
+
 =head2 DeleteStack
 
 =over
@@ -592,15 +631,42 @@ if the image builder names are provided. Otherwise, all image builders
 in the account are described.
 
 
+=head2 DescribeImagePermissions
+
+=over
+
+=item Name => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SharedAwsAccountIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppStream::DescribeImagePermissions>
+
+Returns: a L<Paws::AppStream::DescribeImagePermissionsResult> instance
+
+Retrieves a list that describes the permissions for a private image
+that you own.
+
+
 =head2 DescribeImages
 
 =over
+
+=item [Arns => ArrayRef[Str|Undef]]
 
 =item [MaxResults => Int]
 
 =item [Names => ArrayRef[Str|Undef]]
 
 =item [NextToken => Str]
+
+=item [Type => Str]
 
 
 =back
@@ -904,8 +970,6 @@ an Active Directory domain.
 
 =over
 
-=item Name => Str
-
 =item [AttributesToDelete => ArrayRef[Str|Undef]]
 
 =item [ComputeCapacity => L<Paws::AppStream::ComputeCapacity>]
@@ -922,11 +986,15 @@ an Active Directory domain.
 
 =item [EnableDefaultInternetAccess => Bool]
 
+=item [ImageArn => Str]
+
 =item [ImageName => Str]
 
 =item [InstanceType => Str]
 
 =item [MaxUserDurationInSeconds => Int]
+
+=item [Name => Str]
 
 =item [VpcConfig => L<Paws::AppStream::VpcConfig>]
 
@@ -943,6 +1011,26 @@ If the fleet is in the C<STOPPED> state, you can update any attribute
 except the fleet name. If the fleet is in the C<RUNNING> state, you can
 update the C<DisplayName> and C<ComputeCapacity> attributes. If the
 fleet is in the C<STARTING> or C<STOPPING> state, you can't update it.
+
+
+=head2 UpdateImagePermissions
+
+=over
+
+=item ImagePermissions => L<Paws::AppStream::ImagePermissions>
+
+=item Name => Str
+
+=item SharedAccountId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppStream::UpdateImagePermissions>
+
+Returns: a L<Paws::AppStream::UpdateImagePermissionsResult> instance
+
+Adds or updates permissions for the specified private image.
 
 
 =head2 UpdateStack

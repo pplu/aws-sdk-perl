@@ -8,6 +8,7 @@ package Paws::AppStream::Image;
   has Description => (is => 'ro', isa => 'Str');
   has DisplayName => (is => 'ro', isa => 'Str');
   has ImageBuilderSupported => (is => 'ro', isa => 'Bool');
+  has ImagePermissions => (is => 'ro', isa => 'Paws::AppStream::ImagePermissions');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Platform => (is => 'ro', isa => 'Str');
   has PublicBaseImageReleasedDate => (is => 'ro', isa => 'Str');
@@ -88,6 +89,12 @@ launched from this image.
 =head2 ImageBuilderSupported => Bool
 
   Indicates whether an image builder can be launched from this image.
+
+
+=head2 ImagePermissions => L<Paws::AppStream::ImagePermissions>
+
+  The permissions to provide to the destination AWS account for the
+specified image.
 
 
 =head2 B<REQUIRED> Name => Str
