@@ -33,52 +33,52 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeEventAggregatesResponse = $health->DescribeEventAggregates(
       AggregateField => 'eventTypeCategory',
       Filter         => {
-        availabilityZones => [ 'MyavailabilityZone', ... ],    # OPTIONAL
-        endTimes => [
+        AvailabilityZones => [ 'MyavailabilityZone', ... ],    # OPTIONAL
+        EndTimes => [
           {
-            from => '1970-01-01T01:00:00',                     # OPTIONAL
-            to   => '1970-01-01T01:00:00',                     # OPTIONAL
+            From => '1970-01-01T01:00:00',                     # OPTIONAL
+            To   => '1970-01-01T01:00:00',                     # OPTIONAL
           },
           ...
         ],    # min: 1, max: 10; OPTIONAL
-        entityArns => [
+        EntityArns => [
           'MyentityArn', ...    # max: 1600
         ],                      # min: 1, max: 100; OPTIONAL
-        entityValues => [
+        EntityValues => [
           'MyentityValue', ...    # max: 256
         ],                        # min: 1, max: 100; OPTIONAL
-        eventArns => [
+        EventArns => [
           'MyeventArn', ...       # max: 1600
         ],                        # min: 1, max: 10; OPTIONAL
-        eventStatusCodes => [
+        EventStatusCodes => [
           'open', ...             # values: open, closed, upcoming
         ],                        # min: 1, max: 6; OPTIONAL
-        eventTypeCategories => [
+        EventTypeCategories => [
           'issue',
           ... # values: issue, accountNotification, scheduledChangemin: 3, max: 255
         ],    # min: 1, max: 10; OPTIONAL
-        eventTypeCodes => [
+        EventTypeCodes => [
           'MyeventType', ...    # min: 3, max: 100
         ],                      # min: 1, max: 10; OPTIONAL
-        lastUpdatedTimes => [
+        LastUpdatedTimes => [
           {
-            from => '1970-01-01T01:00:00',    # OPTIONAL
-            to   => '1970-01-01T01:00:00',    # OPTIONAL
+            From => '1970-01-01T01:00:00',    # OPTIONAL
+            To   => '1970-01-01T01:00:00',    # OPTIONAL
           },
           ...
         ],                                    # min: 1, max: 10; OPTIONAL
-        regions => [ 'Myregion', ... ],       # min: 1, max: 10; OPTIONAL
-        services => [
+        Regions => [ 'Myregion', ... ],       # min: 1, max: 10; OPTIONAL
+        Services => [
           'Myservice', ...                    # min: 2, max: 30
         ],                                    # min: 1, max: 10; OPTIONAL
-        startTimes => [
+        StartTimes => [
           {
-            from => '1970-01-01T01:00:00',    # OPTIONAL
-            to   => '1970-01-01T01:00:00',    # OPTIONAL
+            From => '1970-01-01T01:00:00',    # OPTIONAL
+            To   => '1970-01-01T01:00:00',    # OPTIONAL
           },
           ...
         ],                                    # min: 1, max: 10; OPTIONAL
-        tags => [
+        Tags => [
           {
             'MytagKey' => 'MytagValue',       # key: max: 127, value: max: 255
           },

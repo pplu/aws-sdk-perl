@@ -40,68 +40,68 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $codebuild = Paws->service('CodeBuild');
     my $CreateProjectOutput = $codebuild->CreateProject(
       Artifacts => {
-        type     => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
-        location => 'MyString',        # OPTIONAL
-        name     => 'MyString',        # OPTIONAL
-        namespaceType => 'NONE',       # values: NONE, BUILD_ID; OPTIONAL
-        packaging     => 'NONE',       # values: NONE, ZIP; OPTIONAL
-        path          => 'MyString',   # OPTIONAL
+        Type     => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
+        Location => 'MyString',        # OPTIONAL
+        Name     => 'MyString',        # OPTIONAL
+        NamespaceType => 'NONE',       # values: NONE, BUILD_ID; OPTIONAL
+        Packaging     => 'NONE',       # values: NONE, ZIP; OPTIONAL
+        Path          => 'MyString',   # OPTIONAL
       },
       Environment => {
-        computeType => 'BUILD_GENERAL1_SMALL'
+        ComputeType => 'BUILD_GENERAL1_SMALL'
         , # values: BUILD_GENERAL1_SMALL, BUILD_GENERAL1_MEDIUM, BUILD_GENERAL1_LARGE
-        image => 'MyNonEmptyString',    # min: 1
-        type =>
+        Image => 'MyNonEmptyString',    # min: 1
+        Type =>
           'WINDOWS_CONTAINER',    # values: WINDOWS_CONTAINER, LINUX_CONTAINER
-        certificate          => 'MyString',    # OPTIONAL
-        environmentVariables => [
+        Certificate          => 'MyString',    # OPTIONAL
+        EnvironmentVariables => [
           {
-            name  => 'MyNonEmptyString',       # min: 1
-            value => 'MyString',               # OPTIONAL
-            type => 'PLAINTEXT',  # values: PLAINTEXT, PARAMETER_STORE; OPTIONAL
+            Name  => 'MyNonEmptyString',       # min: 1
+            Value => 'MyString',               # OPTIONAL
+            Type => 'PLAINTEXT',  # values: PLAINTEXT, PARAMETER_STORE; OPTIONAL
           },
           ...
         ],                        # OPTIONAL
-        privilegedMode => 1,      # OPTIONAL
+        PrivilegedMode => 1,      # OPTIONAL
       },
       Name        => 'MyProjectName',
       ServiceRole => 'MyNonEmptyString',
       Source      => {
-        type => 'CODECOMMIT'
+        Type => 'CODECOMMIT'
         , # values: CODECOMMIT, CODEPIPELINE, GITHUB, S3, BITBUCKET, GITHUB_ENTERPRISE
-        auth => {
-          type     => 'OAUTH',       # values: OAUTH
-          resource => 'MyString',    # OPTIONAL
+        Auth => {
+          Type     => 'OAUTH',       # values: OAUTH
+          Resource => 'MyString',    # OPTIONAL
         },    # OPTIONAL
-        buildspec         => 'MyString',    # OPTIONAL
-        gitCloneDepth     => 1,             # OPTIONAL
-        insecureSsl       => 1,             # OPTIONAL
-        location          => 'MyString',    # OPTIONAL
-        reportBuildStatus => 1,             # OPTIONAL
+        Buildspec         => 'MyString',    # OPTIONAL
+        GitCloneDepth     => 1,             # OPTIONAL
+        InsecureSsl       => 1,             # OPTIONAL
+        Location          => 'MyString',    # OPTIONAL
+        ReportBuildStatus => 1,             # OPTIONAL
       },
       BadgeEnabled => 1,                    # OPTIONAL
       Cache        => {
-        type     => 'NO_CACHE',             # values: NO_CACHE, S3
-        location => 'MyString',             # OPTIONAL
+        Type     => 'NO_CACHE',             # values: NO_CACHE, S3
+        Location => 'MyString',             # OPTIONAL
       },    # OPTIONAL
       Description   => 'MyProjectDescription',    # OPTIONAL
       EncryptionKey => 'MyNonEmptyString',        # OPTIONAL
       Tags          => [
         {
-          key   => 'MyKeyInput',                  # min: 1, max: 127; OPTIONAL
-          value => 'MyValueInput',                # min: 1, max: 255; OPTIONAL
+          Key   => 'MyKeyInput',                  # min: 1, max: 127; OPTIONAL
+          Value => 'MyValueInput',                # min: 1, max: 255; OPTIONAL
         },
         ...
       ],                                          # OPTIONAL
       TimeoutInMinutes => 1,                      # OPTIONAL
       VpcConfig        => {
-        securityGroupIds => [
+        SecurityGroupIds => [
           'MyNonEmptyString', ...                 # min: 1
         ],                                        # max: 5; OPTIONAL
-        subnets => [
+        Subnets => [
           'MyNonEmptyString', ...                 # min: 1
         ],                                        # max: 16; OPTIONAL
-        vpcId => 'MyNonEmptyString',              # min: 1
+        VpcId => 'MyNonEmptyString',              # min: 1
       },    # OPTIONAL
     );
 

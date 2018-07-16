@@ -36,10 +36,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $adds     = $UploadDocumentsResponse->adds;
-    my $deletes  = $UploadDocumentsResponse->deletes;
-    my $status   = $UploadDocumentsResponse->status;
-    my $warnings = $UploadDocumentsResponse->warnings;
+    my $Adds     = $UploadDocumentsResponse->Adds;
+    my $Deletes  = $UploadDocumentsResponse->Deletes;
+    my $Status   = $UploadDocumentsResponse->Status;
+    my $Warnings = $UploadDocumentsResponse->Warnings;
 
     # Returns a L<Paws::CloudSearchDomain::UploadDocumentsResponse> object.
 

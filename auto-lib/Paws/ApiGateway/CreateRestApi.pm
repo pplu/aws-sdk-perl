@@ -43,7 +43,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CloneFrom             => 'MyString',             # OPTIONAL
       Description           => 'MyString',             # OPTIONAL
       EndpointConfiguration => {
-        types => [
+        Types => [
           'REGIONAL', ...    # values: REGIONAL, EDGE, PRIVATE
         ],                   # OPTIONAL
       },    # OPTIONAL

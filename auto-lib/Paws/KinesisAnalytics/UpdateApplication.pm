@@ -99,7 +99,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             OutputId                => 'MyId',       # min: 1, max: 50
             DestinationSchemaUpdate => {
-              RecordFormatType => 'JSON',            # values: JSON, CSV
+              RecordFormatType => 'JSON',    # values: JSON, CSV; OPTIONAL
             },    # OPTIONAL
             KinesisFirehoseOutputUpdate => {
               ResourceARNUpdate =>

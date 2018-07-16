@@ -33,9 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     $iotanalytics->UpdateDataset(
       Actions => [
         {
-          actionName  => 'MyDatasetActionName',    # min: 1, max: 128; OPTIONAL
-          queryAction => {
-            sqlQuery => 'MySqlQuery',
+          ActionName  => 'MyDatasetActionName',    # min: 1, max: 128; OPTIONAL
+          QueryAction => {
+            SqlQuery => 'MySqlQuery',
 
           },                                       # OPTIONAL
         },
@@ -44,8 +44,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DatasetName => 'MyDatasetName',
       Triggers    => [
         {
-          schedule => {
-            expression => 'MyScheduleExpression',    # OPTIONAL
+          Schedule => {
+            Expression => 'MyScheduleExpression',    # OPTIONAL
           },    # OPTIONAL
         },
         ...

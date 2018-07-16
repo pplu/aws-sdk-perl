@@ -31,7 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $TestMetricFilterResponse = $logs->TestMetricFilter(
       FilterPattern    => 'MyFilterPattern',
       LogEventMessages => [
-        'MyEventMessage', ...    # min: 1,
+        'MyEventMessage', ...    # min: 1
       ],
 
     );

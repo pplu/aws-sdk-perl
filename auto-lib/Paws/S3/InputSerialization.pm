@@ -40,7 +40,7 @@ Describes the serialization format of the object.
 
 =head2 CompressionType => Str
 
-  Specifies object's compression format. Valid values: NONE, GZIP.
+  Specifies object's compression format. Valid values: NONE, GZIP, BZIP2.
 Default Value: NONE.
 
 

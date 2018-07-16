@@ -48,7 +48,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $dataSetRequestId = $StartSupportDataExportResult->dataSetRequestId;
+    my $DataSetRequestId = $StartSupportDataExportResult->DataSetRequestId;
 
 # Returns a L<Paws::MarketplaceCommerceAnalytics::StartSupportDataExportResult> object.
 

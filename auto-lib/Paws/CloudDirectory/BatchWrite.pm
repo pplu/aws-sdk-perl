@@ -66,7 +66,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ChildReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
             },
-            LinkName        => 'MyLinkName',              # min: 1, max: 64
+            LinkName        => 'MyLinkName',    # min: 1, max: 64; OPTIONAL
             ParentReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
             },
@@ -130,9 +130,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ...
             ],
             BatchReferenceName => 'MyBatchReferenceName',    # OPTIONAL
-            LinkName           => 'MyLinkName',              # min: 1, max: 64
-            ParentReference    => {
-              Selector => 'MySelectorObjectReference',       # OPTIONAL
+            LinkName        => 'MyLinkName',    # min: 1, max: 64; OPTIONAL
+            ParentReference => {
+              Selector => 'MySelectorObjectReference',    # OPTIONAL
             },
           },    # OPTIONAL
           CreateObject => {
@@ -163,9 +163,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ...
             ],
             BatchReferenceName => 'MyBatchReferenceName',    # OPTIONAL
-            LinkName           => 'MyLinkName',              # min: 1, max: 64
-            ParentReference    => {
-              Selector => 'MySelectorObjectReference',       # OPTIONAL
+            LinkName        => 'MyLinkName',    # min: 1, max: 64; OPTIONAL
+            ParentReference => {
+              Selector => 'MySelectorObjectReference',    # OPTIONAL
             },
           },    # OPTIONAL
           DeleteObject => {
@@ -184,7 +184,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },    # OPTIONAL
           DetachObject => {
-            LinkName        => 'MyLinkName',    # min: 1, max: 64
+            LinkName        => 'MyLinkName',    # min: 1, max: 64; OPTIONAL
             ParentReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
             },

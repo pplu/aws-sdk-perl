@@ -31,8 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $appstream2 = Paws->service('AppStream');
     my $UpdateImagePermissionsResult = $appstream2->UpdateImagePermissions(
       ImagePermissions => {
-        allowFleet        => 1,    # OPTIONAL
-        allowImageBuilder => 1,    # OPTIONAL
+        AllowFleet        => 1,    # OPTIONAL
+        AllowImageBuilder => 1,    # OPTIONAL
       },
       Name            => 'MyName',
       SharedAccountId => 'MyAwsAccountId',

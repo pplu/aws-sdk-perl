@@ -33,14 +33,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           DataResources => [
             {
-              Type   => 'MyString',    # OPTIONAL
-              Values => [
-                'MyString', ...        # OPTIONAL
-              ],                       # OPTIONAL
+              Type   => 'MyString',
+              Values => [ 'MyString', ... ],    # OPTIONAL
             },
             ...
-          ],                           # OPTIONAL
-          IncludeManagementEvents => 1,    # OPTIONAL
+          ],                                    # OPTIONAL
+          IncludeManagementEvents => 1,         # OPTIONAL
           ReadWriteType =>
             'ReadOnly',    # values: ReadOnly, WriteOnly, All; OPTIONAL
         },

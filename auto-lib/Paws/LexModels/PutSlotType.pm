@@ -40,8 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description       => 'MyDescription',    # OPTIONAL
       EnumerationValues => [
         {
-          value    => 'MyValue',               # min: 1, max: 140
-          synonyms => [
+          Value    => 'MyValue',               # min: 1, max: 140
+          Synonyms => [
             'MyValue', ...                     # min: 1, max: 140
           ],                                   # OPTIONAL
         },

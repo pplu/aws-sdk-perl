@@ -45,7 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'MyDurationInSecondsOptional',        # OPTIONAL
       DefaultLambdaRole => 'MyArn',           # OPTIONAL
       DefaultTaskList   => {
-        name => 'MyName',                     # min: 1, max: 256
+        Name => 'MyName',                     # min: 1, max: 256
 
       },    # OPTIONAL
       DefaultTaskPriority => 'MyTaskPriority',    # OPTIONAL

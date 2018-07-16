@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ListDocumentsResult = $ssm->ListDocuments(
       DocumentFilterList => [
         {
-          key => 'Name',    # values: Name, Owner, PlatformTypes, DocumentType
-          value => 'MyDocumentFilterValue',    # min: 1
+          Key => 'Name',    # values: Name, Owner, PlatformTypes, DocumentType
+          Value => 'MyDocumentFilterValue',    # min: 1
 
         },
         ...

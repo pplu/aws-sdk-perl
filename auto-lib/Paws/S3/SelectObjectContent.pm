@@ -53,7 +53,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           QuoteEscapeCharacter => 'MyQuoteEscapeCharacter',    # OPTIONAL
           RecordDelimiter      => 'MyRecordDelimiter',         # OPTIONAL
         },    # OPTIONAL
-        CompressionType => 'NONE',    # values: NONE, GZIP; OPTIONAL
+        CompressionType => 'NONE',    # values: NONE, GZIP, BZIP2; OPTIONAL
         JSON            => {
           Type => 'DOCUMENT',         # values: DOCUMENT, LINES; OPTIONAL
         },    # OPTIONAL
@@ -137,7 +137,7 @@ Specifies if periodic request progress information should be enabled.
 
 The SSE Algorithm used to encrypt the object. For more information, go
 to Server-Side Encryption (Using Customer-Provided Encryption Keys
-(https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html).
+(http://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html).
 
 
 
@@ -145,7 +145,7 @@ to Server-Side Encryption (Using Customer-Provided Encryption Keys
 
 The SSE Customer Key. For more information, go to Server-Side
 Encryption (Using Customer-Provided Encryption Keys
-(https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html).
+(http://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html).
 
 
 
@@ -153,7 +153,7 @@ Encryption (Using Customer-Provided Encryption Keys
 
 The SSE Customer Key MD5. For more information, go to Server-Side
 Encryption (Using Customer-Provided Encryption Keys
-(https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html).
+(http://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html).
 
 
 

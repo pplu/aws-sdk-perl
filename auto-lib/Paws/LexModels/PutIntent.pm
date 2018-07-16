@@ -44,111 +44,111 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name                => 'MyIntentName',
       Checksum            => 'MyString',       # OPTIONAL
       ConclusionStatement => {
-        messages => [
+        Messages => [
           {
-            content => 'MyContentString',      # min: 1, max: 1000
-            contentType => 'PlainText', # values: PlainText, SSML, CustomPayload
-            groupNumber => 1,           # min: 1, max: 5; OPTIONAL
+            Content => 'MyContentString',      # min: 1, max: 1000
+            ContentType => 'PlainText', # values: PlainText, SSML, CustomPayload
+            GroupNumber => 1,           # min: 1, max: 5; OPTIONAL
           },
           ...
         ],                              # min: 1, max: 15
-        responseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
+        ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
       },    # OPTIONAL
       ConfirmationPrompt => {
-        maxAttempts => 1,    # min: 1, max: 5
-        messages    => [
+        MaxAttempts => 1,    # min: 1, max: 5
+        Messages    => [
           {
-            content => 'MyContentString',    # min: 1, max: 1000
-            contentType => 'PlainText', # values: PlainText, SSML, CustomPayload
-            groupNumber => 1,           # min: 1, max: 5; OPTIONAL
+            Content => 'MyContentString',    # min: 1, max: 1000
+            ContentType => 'PlainText', # values: PlainText, SSML, CustomPayload
+            GroupNumber => 1,           # min: 1, max: 5; OPTIONAL
           },
           ...
         ],                              # min: 1, max: 15
-        responseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
+        ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
       },    # OPTIONAL
       CreateVersion  => 1,                  # OPTIONAL
       Description    => 'MyDescription',    # OPTIONAL
       DialogCodeHook => {
-        messageVersion => 'MyMessageVersion',    # min: 1, max: 5
-        uri            => 'MyLambdaARN',         # min: 20, max: 2048
+        MessageVersion => 'MyMessageVersion',    # min: 1, max: 5
+        Uri            => 'MyLambdaARN',         # min: 20, max: 2048
 
       },    # OPTIONAL
       FollowUpPrompt => {
-        prompt => {
-          maxAttempts => 1,    # min: 1, max: 5
-          messages    => [
+        Prompt => {
+          MaxAttempts => 1,    # min: 1, max: 5
+          Messages    => [
             {
-              content => 'MyContentString',    # min: 1, max: 1000
-              contentType =>
+              Content => 'MyContentString',    # min: 1, max: 1000
+              ContentType =>
                 'PlainText',    # values: PlainText, SSML, CustomPayload
-              groupNumber => 1, # min: 1, max: 5; OPTIONAL
+              GroupNumber => 1, # min: 1, max: 5; OPTIONAL
             },
             ...
           ],                    # min: 1, max: 15
-          responseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
+          ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
         },
-        rejectionStatement => {
-          messages => [
+        RejectionStatement => {
+          Messages => [
             {
-              content => 'MyContentString',    # min: 1, max: 1000
-              contentType =>
+              Content => 'MyContentString',    # min: 1, max: 1000
+              ContentType =>
                 'PlainText',    # values: PlainText, SSML, CustomPayload
-              groupNumber => 1, # min: 1, max: 5; OPTIONAL
+              GroupNumber => 1, # min: 1, max: 5; OPTIONAL
             },
             ...
           ],                    # min: 1, max: 15
-          responseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
+          ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
         },
 
       },    # OPTIONAL
       FulfillmentActivity => {
-        type     => 'ReturnIntent',    # values: ReturnIntent, CodeHook
-        codeHook => {
-          messageVersion => 'MyMessageVersion',    # min: 1, max: 5
-          uri            => 'MyLambdaARN',         # min: 20, max: 2048
+        Type     => 'ReturnIntent',    # values: ReturnIntent, CodeHook
+        CodeHook => {
+          MessageVersion => 'MyMessageVersion',    # min: 1, max: 5
+          Uri            => 'MyLambdaARN',         # min: 20, max: 2048
 
         },
       },    # OPTIONAL
       ParentIntentSignature => 'MyBuiltinIntentSignature',    # OPTIONAL
       RejectionStatement    => {
-        messages => [
+        Messages => [
           {
-            content => 'MyContentString',    # min: 1, max: 1000
-            contentType => 'PlainText', # values: PlainText, SSML, CustomPayload
-            groupNumber => 1,           # min: 1, max: 5; OPTIONAL
+            Content => 'MyContentString',    # min: 1, max: 1000
+            ContentType => 'PlainText', # values: PlainText, SSML, CustomPayload
+            GroupNumber => 1,           # min: 1, max: 5; OPTIONAL
           },
           ...
         ],                              # min: 1, max: 15
-        responseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
+        ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
       },    # OPTIONAL
       SampleUtterances => [
         'MyUtterance', ...    # min: 1, max: 200
       ],                      # OPTIONAL
       Slots => [
         {
-          name             => 'MySlotName',       # min: 1, max: 100
-          slotConstraint   => 'Required',         # values: Required, Optional
-          description      => 'MyDescription',    # max: 200
-          priority         => 1,                  # max: 100; OPTIONAL
-          responseCard     => 'MyResponseCard',   # min: 1, max: 50000; OPTIONAL
-          sampleUtterances => [
+          Name             => 'MySlotName',       # min: 1, max: 100
+          SlotConstraint   => 'Required',         # values: Required, Optional
+          Description      => 'MyDescription',    # max: 200
+          Priority         => 1,                  # max: 100; OPTIONAL
+          ResponseCard     => 'MyResponseCard',   # min: 1, max: 50000; OPTIONAL
+          SampleUtterances => [
             'MyUtterance', ...                    # min: 1, max: 200
           ],                                      # max: 10; OPTIONAL
-          slotType =>
+          SlotType =>
             'MyCustomOrBuiltinSlotTypeName',      # min: 1, max: 100; OPTIONAL
-          slotTypeVersion        => 'MyVersion',  # min: 1, max: 64; OPTIONAL
-          valueElicitationPrompt => {
-            maxAttempts => 1,                     # min: 1, max: 5
-            messages    => [
+          SlotTypeVersion        => 'MyVersion',  # min: 1, max: 64; OPTIONAL
+          ValueElicitationPrompt => {
+            MaxAttempts => 1,                     # min: 1, max: 5
+            Messages    => [
               {
-                content => 'MyContentString',     # min: 1, max: 1000
-                contentType =>
+                Content => 'MyContentString',     # min: 1, max: 1000
+                ContentType =>
                   'PlainText',    # values: PlainText, SSML, CustomPayload
-                groupNumber => 1, # min: 1, max: 5; OPTIONAL
+                GroupNumber => 1, # min: 1, max: 5; OPTIONAL
               },
               ...
             ],                    # min: 1, max: 15
-            responseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
+            ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
           },
         },
         ...

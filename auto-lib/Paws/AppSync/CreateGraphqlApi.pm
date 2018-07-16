@@ -36,21 +36,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AuthenticationType => 'API_KEY',
       Name               => 'MyString',
       LogConfig          => {
-        cloudWatchLogsRoleArn => 'MyString',
-        fieldLogLevel         => 'NONE',       # values: NONE, ERROR, ALL
+        CloudWatchLogsRoleArn => 'MyString',
+        FieldLogLevel         => 'NONE',       # values: NONE, ERROR, ALL
 
       },    # OPTIONAL
       OpenIDConnectConfig => {
-        issuer   => 'MyString',
-        authTTL  => 1,            # OPTIONAL
-        clientId => 'MyString',
-        iatTTL   => 1,            # OPTIONAL
+        Issuer   => 'MyString',
+        AuthTTL  => 1,            # OPTIONAL
+        ClientId => 'MyString',
+        IatTTL   => 1,            # OPTIONAL
       },    # OPTIONAL
       UserPoolConfig => {
-        awsRegion        => 'MyString',
-        defaultAction    => 'ALLOW',      # values: ALLOW, DENY
-        userPoolId       => 'MyString',
-        appIdClientRegex => 'MyString',
+        AwsRegion        => 'MyString',
+        DefaultAction    => 'ALLOW',      # values: ALLOW, DENY
+        UserPoolId       => 'MyString',
+        AppIdClientRegex => 'MyString',
       },    # OPTIONAL
     );
 

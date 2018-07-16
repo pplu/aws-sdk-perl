@@ -42,18 +42,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Type           => 'AWS_LAMBDA',
       Description    => 'MyString',         # OPTIONAL
       DynamodbConfig => {
-        awsRegion            => 'MyString',
-        tableName            => 'MyString',
-        useCallerCredentials => 1,            # OPTIONAL
+        AwsRegion            => 'MyString',
+        TableName            => 'MyString',
+        UseCallerCredentials => 1,            # OPTIONAL
       },    # OPTIONAL
       ElasticsearchConfig => {
-        awsRegion => 'MyString',
-        endpoint  => 'MyString',
+        AwsRegion => 'MyString',
+        Endpoint  => 'MyString',
 
       },    # OPTIONAL
-      HttpConfig => { endpoint => 'MyString', },    # OPTIONAL
+      HttpConfig => { Endpoint => 'MyString', },    # OPTIONAL
       LambdaConfig => {
-        lambdaFunctionArn => 'MyString',
+        LambdaFunctionArn => 'MyString',
 
       },                                            # OPTIONAL
       ServiceRoleArn => 'MyString',                 # OPTIONAL

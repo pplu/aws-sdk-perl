@@ -32,13 +32,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $VirtualInterface = $directconnect->AllocatePrivateVirtualInterface(
       ConnectionId                         => 'MyConnectionId',
       NewPrivateVirtualInterfaceAllocation => {
-        asn                  => 1,
-        virtualInterfaceName => 'MyVirtualInterfaceName',
-        vlan                 => 1,
-        addressFamily   => 'ipv4',                # values: ipv4, ipv6; OPTIONAL
-        amazonAddress   => 'MyAmazonAddress',     # OPTIONAL
-        authKey         => 'MyBGPAuthKey',        # OPTIONAL
-        customerAddress => 'MyCustomerAddress',   # OPTIONAL
+        Asn                  => 1,
+        VirtualInterfaceName => 'MyVirtualInterfaceName',
+        Vlan                 => 1,
+        AddressFamily   => 'ipv4',                # values: ipv4, ipv6; OPTIONAL
+        AmazonAddress   => 'MyAmazonAddress',     # OPTIONAL
+        AuthKey         => 'MyBGPAuthKey',        # OPTIONAL
+        CustomerAddress => 'MyCustomerAddress',   # OPTIONAL
       },
       OwnerAccount => 'MyOwnerAccount',
 

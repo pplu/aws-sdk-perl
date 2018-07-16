@@ -33,13 +33,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateDatastoreResponse = $iotanalytics->CreateDatastore(
       DatastoreName   => 'MyDatastoreName',
       RetentionPeriod => {
-        numberOfDays => 1,    # min: 1; OPTIONAL
-        unlimited    => 1,    # OPTIONAL
+        NumberOfDays => 1,    # min: 1; OPTIONAL
+        Unlimited    => 1,    # OPTIONAL
       },    # OPTIONAL
       Tags => [
         {
-          key   => 'MyTagKey',      # min: 1, max: 256
-          value => 'MyTagValue',    # min: 1, max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 256
+          Value => 'MyTagValue',    # min: 1, max: 256
 
         },
         ...

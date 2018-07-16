@@ -35,22 +35,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $checksum            = $CreateIntentVersionResponse->checksum;
-    my $conclusionStatement = $CreateIntentVersionResponse->conclusionStatement;
-    my $confirmationPrompt  = $CreateIntentVersionResponse->confirmationPrompt;
-    my $createdDate         = $CreateIntentVersionResponse->createdDate;
-    my $description         = $CreateIntentVersionResponse->description;
-    my $dialogCodeHook      = $CreateIntentVersionResponse->dialogCodeHook;
-    my $followUpPrompt      = $CreateIntentVersionResponse->followUpPrompt;
-    my $fulfillmentActivity = $CreateIntentVersionResponse->fulfillmentActivity;
-    my $lastUpdatedDate     = $CreateIntentVersionResponse->lastUpdatedDate;
-    my $name                = $CreateIntentVersionResponse->name;
-    my $parentIntentSignature =
-      $CreateIntentVersionResponse->parentIntentSignature;
-    my $rejectionStatement = $CreateIntentVersionResponse->rejectionStatement;
-    my $sampleUtterances   = $CreateIntentVersionResponse->sampleUtterances;
-    my $slots              = $CreateIntentVersionResponse->slots;
-    my $version            = $CreateIntentVersionResponse->version;
+    my $Checksum            = $CreateIntentVersionResponse->Checksum;
+    my $ConclusionStatement = $CreateIntentVersionResponse->ConclusionStatement;
+    my $ConfirmationPrompt  = $CreateIntentVersionResponse->ConfirmationPrompt;
+    my $CreatedDate         = $CreateIntentVersionResponse->CreatedDate;
+    my $Description         = $CreateIntentVersionResponse->Description;
+    my $DialogCodeHook      = $CreateIntentVersionResponse->DialogCodeHook;
+    my $FollowUpPrompt      = $CreateIntentVersionResponse->FollowUpPrompt;
+    my $FulfillmentActivity = $CreateIntentVersionResponse->FulfillmentActivity;
+    my $LastUpdatedDate     = $CreateIntentVersionResponse->LastUpdatedDate;
+    my $Name                = $CreateIntentVersionResponse->Name;
+    my $ParentIntentSignature =
+      $CreateIntentVersionResponse->ParentIntentSignature;
+    my $RejectionStatement = $CreateIntentVersionResponse->RejectionStatement;
+    my $SampleUtterances   = $CreateIntentVersionResponse->SampleUtterances;
+    my $Slots              = $CreateIntentVersionResponse->Slots;
+    my $Version            = $CreateIntentVersionResponse->Version;
 
     # Returns a L<Paws::LexModels::CreateIntentVersionResponse> object.
 

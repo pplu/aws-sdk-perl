@@ -31,13 +31,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $AssociateS3ResourcesResult = $macie->AssociateS3Resources(
       S3Resources => [
         {
-          bucketName         => 'MyBucketName',    # max: 500
-          classificationType => {
-            continuous => 'FULL',                  # values: FULL
-            oneTime    => 'FULL',                  # values: FULL, NONE
+          BucketName         => 'MyBucketName',    # max: 500
+          ClassificationType => {
+            Continuous => 'FULL',                  # values: FULL
+            OneTime    => 'FULL',                  # values: FULL, NONE
 
           },
-          prefix => 'MyPrefix',                    # max: 10000; OPTIONAL
+          Prefix => 'MyPrefix',                    # max: 10000; OPTIONAL
         },
         ...
       ],
@@ -45,7 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $failedS3Resources = $AssociateS3ResourcesResult->failedS3Resources;
+    my $FailedS3Resources = $AssociateS3ResourcesResult->FailedS3Resources;
 
     # Returns a L<Paws::Macie::AssociateS3ResourcesResult> object.
 

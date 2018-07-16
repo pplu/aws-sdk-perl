@@ -38,20 +38,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       LifecycleConfiguration => {
         Rules => [
           {
-            Filter => {
-              And => {
-                Prefix => 'MyRuleFilterAnd',       # OPTIONAL
-                Tag    => {
-                  Key   => 'MyObjectKey',          # min: 1,
-                  Value => 'MyValue',
-
-                },    # OPTIONAL
-              },    # OPTIONAL
-              Prefix => 'MyRuleFilterPrefix',    # OPTIONAL
-            },
-            Status => 'Enabled',                 # values: Enabled, Disabled
+            Prefix => 'MyPrefix',
+            Status => 'Enabled',                   # values: Enabled, Disabled
             AbortIncompleteMultipartUpload => {
-              DaysAfterInitiation => 1,          # OPTIONAL
+              DaysAfterInitiation => 1,            # OPTIONAL
             },    # OPTIONAL
             Expiration => {
               Date                      => '1970-01-01T01:00:00',    # OPTIONAL

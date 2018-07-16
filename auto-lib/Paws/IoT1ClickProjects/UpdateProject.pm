@@ -34,17 +34,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ProjectName       => 'MyProjectName',
       Description       => 'MyDescription',    # OPTIONAL
       PlacementTemplate => {
-        defaultAttributes => {
+        DefaultAttributes => {
           'MyAttributeName' =>
             'MyAttributeDefaultValue',  # key: min: 1, max: 128, value: max: 800
         },    # OPTIONAL
-        deviceTemplates => {
+        DeviceTemplates => {
           'MyDeviceTemplateName' => {
-            callbackOverrides => {
+            CallbackOverrides => {
               'MyDeviceCallbackKey' => 'MyDeviceCallbackValue'
               ,    # key: min: 1, max: 128, value: max: 200
             },    # OPTIONAL
-            deviceType => 'MyDeviceType',    # max: 128; OPTIONAL
+            DeviceType => 'MyDeviceType',    # max: 128; OPTIONAL
           },    # key: min: 1, max: 128
         },    # OPTIONAL
       },    # OPTIONAL

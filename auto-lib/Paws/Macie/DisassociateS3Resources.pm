@@ -31,8 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DisassociateS3ResourcesResult = $macie->DisassociateS3Resources(
       AssociatedS3Resources => [
         {
-          bucketName => 'MyBucketName',    # max: 500
-          prefix     => 'MyPrefix',        # max: 10000; OPTIONAL
+          BucketName => 'MyBucketName',    # max: 500
+          Prefix     => 'MyPrefix',        # max: 10000; OPTIONAL
         },
         ...
       ],

@@ -32,16 +32,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RepositoryName => 'MyRepositoryName',
       Triggers       => [
         {
-          destinationArn => 'MyArn',
-          events         => [
+          DestinationArn => 'MyArn',
+          Events         => [
             'all',
             ... # values: all, updateReference, createReference, deleteReference
           ],
-          name     => 'MyRepositoryTriggerName',
-          branches => [
+          Name     => 'MyRepositoryTriggerName',
+          Branches => [
             'MyBranchName', ...    # min: 1, max: 256
           ],                       # OPTIONAL
-          customData => 'MyRepositoryTriggerCustomData',    # OPTIONAL
+          CustomData => 'MyRepositoryTriggerCustomData',    # OPTIONAL
         },
         ...
       ],

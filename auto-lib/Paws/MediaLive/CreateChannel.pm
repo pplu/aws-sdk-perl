@@ -192,13 +192,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                   },
                   ...
-                ],                             # OPTIONAL
+                ],                                            # OPTIONAL
                 CaptionLanguageSetting =>
                   'INSERT',    # values: INSERT, NONE, OMIT; OPTIONAL
                 ClientCache => 'DISABLED', # values: DISABLED, ENABLED; OPTIONAL
                 CodecSpecification =>
                   'RFC_4281',    # values: RFC_4281, RFC_6381; OPTIONAL
-                ConstantIv         => 'My__stringMin32Max32', # min: 32, max: 32
+                ConstantIv =>
+                  'My__stringMin32Max32',    # min: 32, max: 32; OPTIONAL
                 DirectoryStructure => 'SINGLE_DIRECTORY'
                 ,  # values: SINGLE_DIRECTORY, SUBDIRECTORY_PER_STREAM; OPTIONAL
                 EncryptionType =>
@@ -248,11 +249,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 KeyFormatVersions   => 'My__string',    # OPTIONAL
                 KeyProviderSettings => {
                   StaticKeySettings => {
-                    StaticKeyValue => 'My__stringMin32Max32', # min: 32, max: 32
+                    StaticKeyValue =>
+                      'My__stringMin32Max32',    # min: 32, max: 32; OPTIONAL
                     KeyProviderServer => {
-                      Uri           => 'My__string',          # OPTIONAL
-                      PasswordParam => 'My__string',          # OPTIONAL
-                      Username      => 'My__string',          # OPTIONAL
+                      Uri           => 'My__string',    # OPTIONAL
+                      PasswordParam => 'My__string',    # OPTIONAL
+                      Username      => 'My__string',    # OPTIONAL
                     },    # OPTIONAL
                   },    # OPTIONAL
                 },    # OPTIONAL
@@ -496,9 +498,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                           , # values: SDT_FOLLOW, SDT_FOLLOW_IF_PRESENT, SDT_MANUAL, SDT_NONE; OPTIONAL
                           RepInterval => 1,    # min: 25, max: 2000; OPTIONAL
                           ServiceName =>
-                            'My__stringMin1Max256',    # min: 1, max: 256
+                            'My__stringMin1Max256', # min: 1, max: 256; OPTIONAL
                           ServiceProviderName =>
-                            'My__stringMin1Max256',    # min: 1, max: 256
+                            'My__stringMin1Max256', # min: 1, max: 256; OPTIONAL
                         },    # OPTIONAL
                         DvbSubPids     => 'My__string',    # OPTIONAL
                         DvbTdtSettings => {
@@ -816,7 +818,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       'LOOSE',    # values: LOOSE, STRICT; OPTIONAL
                   },    # OPTIONAL
                   AudioPidSelection => {
-                    Pid => 1,    # max: 8191
+                    Pid => 1,    # max: 8191; OPTIONAL
 
                   },    # OPTIONAL
                 },    # OPTIONAL
@@ -877,7 +879,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ColorSpaceUsage => 'FALLBACK', # values: FALLBACK, FORCE; OPTIONAL
               SelectorSettings => {
                 VideoSelectorPid => {
-                  Pid => 1,                  # max: 8191
+                  Pid => 1,                  # max: 8191; OPTIONAL
                 },    # OPTIONAL
                 VideoSelectorProgramId => {
                   ProgramId => 1,    # max: 65536

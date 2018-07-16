@@ -31,8 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $AddAttachmentsToSetResponse = $support->AddAttachmentsToSet(
       Attachments => [
         {
-          data     => 'BlobData',      # OPTIONAL
-          fileName => 'MyFileName',    # OPTIONAL
+          Data     => 'BlobData',      # OPTIONAL
+          FileName => 'MyFileName',    # OPTIONAL
         },
         ...
       ],

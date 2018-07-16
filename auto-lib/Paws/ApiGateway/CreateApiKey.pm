@@ -42,8 +42,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name               => 'MyString',    # OPTIONAL
       StageKeys          => [
         {
-          restApiId => 'MyString',
-          stageName => 'MyString',
+          RestApiId => 'MyString',
+          StageName => 'MyString',
         },
         ...
       ],                                   # OPTIONAL

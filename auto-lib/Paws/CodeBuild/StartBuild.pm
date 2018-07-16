@@ -49,26 +49,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $StartBuildOutput = $codebuild->StartBuild(
       ProjectName       => 'MyNonEmptyString',
       ArtifactsOverride => {
-        type     => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
-        location => 'MyString',        # OPTIONAL
-        name     => 'MyString',        # OPTIONAL
-        namespaceType => 'NONE',       # values: NONE, BUILD_ID; OPTIONAL
-        packaging     => 'NONE',       # values: NONE, ZIP; OPTIONAL
-        path          => 'MyString',   # OPTIONAL
+        Type     => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
+        Location => 'MyString',        # OPTIONAL
+        Name     => 'MyString',        # OPTIONAL
+        NamespaceType => 'NONE',       # values: NONE, BUILD_ID; OPTIONAL
+        Packaging     => 'NONE',       # values: NONE, ZIP; OPTIONAL
+        Path          => 'MyString',   # OPTIONAL
       },    # OPTIONAL
       BuildspecOverride => 'MyString',    # OPTIONAL
       CacheOverride     => {
-        type     => 'NO_CACHE',           # values: NO_CACHE, S3
-        location => 'MyString',           # OPTIONAL
+        Type     => 'NO_CACHE',           # values: NO_CACHE, S3
+        Location => 'MyString',           # OPTIONAL
       },    # OPTIONAL
       CertificateOverride          => 'MyString',                # OPTIONAL
       ComputeTypeOverride          => 'BUILD_GENERAL1_SMALL',    # OPTIONAL
       EnvironmentTypeOverride      => 'WINDOWS_CONTAINER',       # OPTIONAL
       EnvironmentVariablesOverride => [
         {
-          name  => 'MyNonEmptyString',                           # min: 1
-          value => 'MyString',                                   # OPTIONAL
-          type => 'PLAINTEXT',    # values: PLAINTEXT, PARAMETER_STORE; OPTIONAL
+          Name  => 'MyNonEmptyString',                           # min: 1
+          Value => 'MyString',                                   # OPTIONAL
+          Type => 'PLAINTEXT',    # values: PLAINTEXT, PARAMETER_STORE; OPTIONAL
         },
         ...
       ],                          # OPTIONAL
@@ -80,8 +80,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ReportBuildStatusOverride => 1,                     # OPTIONAL
       ServiceRoleOverride       => 'MyNonEmptyString',    # OPTIONAL
       SourceAuthOverride        => {
-        type     => 'OAUTH',                              # values: OAUTH
-        resource => 'MyString',                           # OPTIONAL
+        Type     => 'OAUTH',                              # values: OAUTH
+        Resource => 'MyString',                           # OPTIONAL
       },    # OPTIONAL
       SourceLocationOverride   => 'MyString',      # OPTIONAL
       SourceTypeOverride       => 'CODECOMMIT',    # OPTIONAL

@@ -32,68 +32,68 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     $iotanalytics->UpdatePipeline(
       PipelineActivities => [
         {
-          addAttributes => {
-            attributes => {
+          AddAttributes => {
+            Attributes => {
               'MyAttributeName' => 'MyAttributeName'
               ,    # key: min: 1, max: 256, value: min: 1, max: 256
             },    # min: 1, max: 50
-            name => 'MyActivityName',    # min: 1, max: 128
-            next => 'MyActivityName',    # min: 1, max: 128
+            Name => 'MyActivityName',    # min: 1, max: 128
+            Next => 'MyActivityName',    # min: 1, max: 128
           },    # OPTIONAL
-          channel => {
-            channelName => 'MyChannelName',     # min: 1, max: 128
-            name        => 'MyActivityName',    # min: 1, max: 128
-            next        => 'MyActivityName',    # min: 1, max: 128
+          Channel => {
+            ChannelName => 'MyChannelName',     # min: 1, max: 128
+            Name        => 'MyActivityName',    # min: 1, max: 128
+            Next        => 'MyActivityName',    # min: 1, max: 128
           },    # OPTIONAL
-          datastore => {
-            datastoreName => 'MyDatastoreName',    # min: 1, max: 128
-            name          => 'MyActivityName',     # min: 1, max: 128
+          Datastore => {
+            DatastoreName => 'MyDatastoreName',    # min: 1, max: 128
+            Name          => 'MyActivityName',     # min: 1, max: 128
 
           },    # OPTIONAL
-          deviceRegistryEnrich => {
-            attribute => 'MyAttributeName',    # min: 1, max: 256
-            name      => 'MyActivityName',     # min: 1, max: 128
-            roleArn   => 'MyRoleArn',          # min: 20, max: 2048
-            thingName => 'MyAttributeName',    # min: 1, max: 256
-            next      => 'MyActivityName',     # min: 1, max: 128
+          DeviceRegistryEnrich => {
+            Attribute => 'MyAttributeName',    # min: 1, max: 256
+            Name      => 'MyActivityName',     # min: 1, max: 128
+            RoleArn   => 'MyRoleArn',          # min: 20, max: 2048
+            ThingName => 'MyAttributeName',    # min: 1, max: 256
+            Next      => 'MyActivityName',     # min: 1, max: 128
           },    # OPTIONAL
-          deviceShadowEnrich => {
-            attribute => 'MyAttributeName',    # min: 1, max: 256
-            name      => 'MyActivityName',     # min: 1, max: 128
-            roleArn   => 'MyRoleArn',          # min: 20, max: 2048
-            thingName => 'MyAttributeName',    # min: 1, max: 256
-            next      => 'MyActivityName',     # min: 1, max: 128
+          DeviceShadowEnrich => {
+            Attribute => 'MyAttributeName',    # min: 1, max: 256
+            Name      => 'MyActivityName',     # min: 1, max: 128
+            RoleArn   => 'MyRoleArn',          # min: 20, max: 2048
+            ThingName => 'MyAttributeName',    # min: 1, max: 256
+            Next      => 'MyActivityName',     # min: 1, max: 128
           },    # OPTIONAL
-          filter => {
-            filter => 'MyFilterExpression',    # min: 1, max: 256
-            name   => 'MyActivityName',        # min: 1, max: 128
-            next   => 'MyActivityName',        # min: 1, max: 128
+          Filter => {
+            Filter => 'MyFilterExpression',    # min: 1, max: 256
+            Name   => 'MyActivityName',        # min: 1, max: 128
+            Next   => 'MyActivityName',        # min: 1, max: 128
           },    # OPTIONAL
-          lambda => {
-            batchSize  => 1,                   # min: 1, max: 1000
-            lambdaName => 'MyLambdaName',      # min: 1, max: 64
-            name       => 'MyActivityName',    # min: 1, max: 128
-            next       => 'MyActivityName',    # min: 1, max: 128
+          Lambda => {
+            BatchSize  => 1,                   # min: 1, max: 1000
+            LambdaName => 'MyLambdaName',      # min: 1, max: 64
+            Name       => 'MyActivityName',    # min: 1, max: 128
+            Next       => 'MyActivityName',    # min: 1, max: 128
           },    # OPTIONAL
-          math => {
-            attribute => 'MyAttributeName',     # min: 1, max: 256
-            math      => 'MyMathExpression',    # min: 1, max: 256
-            name      => 'MyActivityName',      # min: 1, max: 128
-            next      => 'MyActivityName',      # min: 1, max: 128
+          Math => {
+            Attribute => 'MyAttributeName',     # min: 1, max: 256
+            Math      => 'MyMathExpression',    # min: 1, max: 256
+            Name      => 'MyActivityName',      # min: 1, max: 128
+            Next      => 'MyActivityName',      # min: 1, max: 128
           },    # OPTIONAL
-          removeAttributes => {
-            attributes => [
+          RemoveAttributes => {
+            Attributes => [
               'MyAttributeName', ...    # min: 1, max: 256
             ],                          # min: 1, max: 50
-            name => 'MyActivityName',   # min: 1, max: 128
-            next => 'MyActivityName',   # min: 1, max: 128
+            Name => 'MyActivityName',   # min: 1, max: 128
+            Next => 'MyActivityName',   # min: 1, max: 128
           },    # OPTIONAL
-          selectAttributes => {
-            attributes => [
+          SelectAttributes => {
+            Attributes => [
               'MyAttributeName', ...    # min: 1, max: 256
             ],                          # min: 1, max: 50
-            name => 'MyActivityName',   # min: 1, max: 128
-            next => 'MyActivityName',   # min: 1, max: 128
+            Name => 'MyActivityName',   # min: 1, max: 128
+            Next => 'MyActivityName',   # min: 1, max: 128
           },    # OPTIONAL
         },
         ...

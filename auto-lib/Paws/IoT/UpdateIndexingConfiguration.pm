@@ -30,7 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $iot = Paws->service('IoT');
     my $UpdateIndexingConfigurationResponse = $iot->UpdateIndexingConfiguration(
       ThingIndexingConfiguration => {
-        thingIndexingMode =>
+        ThingIndexingMode =>
           'OFF',    # values: OFF, REGISTRY, REGISTRY_AND_SHADOW; OPTIONAL
       },    # OPTIONAL
     );

@@ -36,11 +36,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description => 'MyStreamDescription',    # OPTIONAL
       Files       => [
         {
-          fileId     => 1,                     # max: 255; OPTIONAL
-          s3Location => {
-            bucket  => 'MyS3Bucket',           # min: 1
-            key     => 'MyS3Key',              # min: 1
-            version => 'MyS3Version',          # OPTIONAL
+          FileId     => 1,                     # max: 255; OPTIONAL
+          S3Location => {
+            Bucket  => 'MyS3Bucket',           # min: 1
+            Key     => 'MyS3Key',              # min: 1
+            Version => 'MyS3Version',          # OPTIONAL
           },    # OPTIONAL
         },
         ...

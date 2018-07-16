@@ -78,7 +78,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             SchemaFacet => {
               FacetName => 'MyFacetName',                 # min: 1, max: 64
               SchemaArn => 'MyArn',
-            },
+            },    # OPTIONAL
 
           },    # OPTIONAL
           GetObjectInformation => {
@@ -128,9 +128,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               SchemaArn     => 'MyArn',
               TypedLinkName => 'MyTypedLinkName',
 
-            },                                       # OPTIONAL
-            MaxResults => 1,                         # min: 1; OPTIONAL
-            NextToken  => 'MyNextToken',             # OPTIONAL
+            },                                         # OPTIONAL
+            MaxResults => 1,                           # min: 1; OPTIONAL
+            NextToken  => 'MyNextToken',               # OPTIONAL
           },    # OPTIONAL
           ListIndex => {
             IndexReference => {
@@ -236,9 +236,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               SchemaArn     => 'MyArn',
               TypedLinkName => 'MyTypedLinkName',
 
-            },                                       # OPTIONAL
-            MaxResults => 1,                         # min: 1; OPTIONAL
-            NextToken  => 'MyNextToken',             # OPTIONAL
+            },                                         # OPTIONAL
+            MaxResults => 1,                           # min: 1; OPTIONAL
+            NextToken  => 'MyNextToken',               # OPTIONAL
           },    # OPTIONAL
           ListPolicyAttachments => {
             PolicyReference => {

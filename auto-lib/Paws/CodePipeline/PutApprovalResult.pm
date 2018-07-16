@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ActionName   => 'MyActionName',
       PipelineName => 'MyPipelineName',
       Result       => {
-        status  => 'Approved',             # values: Approved, Rejected
-        summary => 'MyApprovalSummary',    # max: 512
+        Status  => 'Approved',             # values: Approved, Rejected
+        Summary => 'MyApprovalSummary',    # max: 512
 
       },
       StageName => 'MyStageName',

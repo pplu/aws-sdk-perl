@@ -31,11 +31,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Account = $apigateway->UpdateAccount(
       PatchOperations => [
         {
-          from => 'MyString',    # OPTIONAL
-          op =>
+          From => 'MyString',    # OPTIONAL
+          Op =>
             'add',    # values: add, remove, replace, move, copy, test; OPTIONAL
-          path  => 'MyString',    # OPTIONAL
-          value => 'MyString',    # OPTIONAL
+          Path  => 'MyString',    # OPTIONAL
+          Value => 'MyString',    # OPTIONAL
         },
         ...
       ],                          # OPTIONAL

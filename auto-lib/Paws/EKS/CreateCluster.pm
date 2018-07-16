@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateClusterResponse = $eks->CreateCluster(
       Name               => 'MyClusterName',
       ResourcesVpcConfig => {
-        subnetIds        => [ 'MyString', ... ],
-        securityGroupIds => [ 'MyString', ... ],
+        SubnetIds        => [ 'MyString', ... ],
+        SecurityGroupIds => [ 'MyString', ... ],
       },
       RoleArn            => 'MyString',
       ClientRequestToken => 'MyString',    # OPTIONAL

@@ -31,12 +31,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateS3ResourcesResult = $macie->UpdateS3Resources(
       S3ResourcesUpdate => [
         {
-          bucketName               => 'MyBucketName',    # max: 500
-          classificationTypeUpdate => {
-            continuous => 'FULL',    # values: FULL; OPTIONAL
-            oneTime    => 'FULL',    # values: FULL, NONE; OPTIONAL
+          BucketName               => 'MyBucketName',    # max: 500
+          ClassificationTypeUpdate => {
+            Continuous => 'FULL',    # values: FULL; OPTIONAL
+            OneTime    => 'FULL',    # values: FULL, NONE; OPTIONAL
           },
-          prefix => 'MyPrefix',      # max: 10000; OPTIONAL
+          Prefix => 'MyPrefix',      # max: 10000; OPTIONAL
         },
         ...
       ],

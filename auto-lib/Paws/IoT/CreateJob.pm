@@ -47,11 +47,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       DocumentSource             => 'MyJobDocumentSource',    # OPTIONAL
       JobExecutionsRolloutConfig => {
-        maximumPerMinute => 1,    # min: 1, max: 1000; OPTIONAL
+        MaximumPerMinute => 1,    # min: 1, max: 1000; OPTIONAL
       },    # OPTIONAL
       PresignedUrlConfig => {
-        expiresInSec => 1,              # min: 60, max: 3600; OPTIONAL
-        roleArn      => 'MyRoleArn',    # min: 20, max: 2048; OPTIONAL
+        ExpiresInSec => 1,              # min: 60, max: 3600; OPTIONAL
+        RoleArn      => 'MyRoleArn',    # min: 20, max: 2048; OPTIONAL
       },    # OPTIONAL
       TargetSelection => 'CONTINUOUS',    # OPTIONAL
     );

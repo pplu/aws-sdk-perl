@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       NewAutoRegistrationStatus => 'ENABLE',            # OPTIONAL
       NewStatus                 => 'ACTIVE',            # OPTIONAL
       RegistrationConfig        => {
-        roleArn      => 'MyRoleArn',         # min: 20, max: 2048; OPTIONAL
-        templateBody => 'MyTemplateBody',    # OPTIONAL
+        RoleArn      => 'MyRoleArn',         # min: 20, max: 2048; OPTIONAL
+        TemplateBody => 'MyTemplateBody',    # OPTIONAL
       },    # OPTIONAL
       RemoveAutoRegistration => 1,    # OPTIONAL
     );

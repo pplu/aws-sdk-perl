@@ -39,7 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $operations = $CreateLoadBalancerTlsCertificateResult->operations;
+    my $Operations = $CreateLoadBalancerTlsCertificateResult->Operations;
 
   # Returns a L<Paws::Lightsail::CreateLoadBalancerTlsCertificateResult> object.
 

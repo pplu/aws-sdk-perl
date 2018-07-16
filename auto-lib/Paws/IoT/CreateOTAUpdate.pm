@@ -37,35 +37,35 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateOTAUpdateResponse = $iot->CreateOTAUpdate(
       Files => [
         {
-          attributes => { 'MyKey' => 'MyValue', },    # OPTIONAL
-          codeSigning => {
-            awsSignerJobId    => 'MySigningJobId',    # OPTIONAL
-            customCodeSigning => {
-              certificateChain => {
-                certificateName => 'MyCertificateName',    # OPTIONAL
-                inlineDocument  => 'MyInlineDocument',     # OPTIONAL
-                stream          => {
-                  fileId   => 1,               # max: 255; OPTIONAL
-                  streamId => 'MyStreamId',    # min: 1, max: 128; OPTIONAL
+          Attributes => { 'MyKey' => 'MyValue', },    # OPTIONAL
+          CodeSigning => {
+            AwsSignerJobId    => 'MySigningJobId',    # OPTIONAL
+            CustomCodeSigning => {
+              CertificateChain => {
+                CertificateName => 'MyCertificateName',    # OPTIONAL
+                InlineDocument  => 'MyInlineDocument',     # OPTIONAL
+                Stream          => {
+                  FileId   => 1,               # max: 255; OPTIONAL
+                  StreamId => 'MyStreamId',    # min: 1, max: 128; OPTIONAL
                 },    # OPTIONAL
               },    # OPTIONAL
-              hashAlgorithm => 'MyHashAlgorithm',    # OPTIONAL
-              signature     => {
-                inlineDocument => 'BlobSignature',    # OPTIONAL
-                stream         => {
-                  fileId   => 1,               # max: 255; OPTIONAL
-                  streamId => 'MyStreamId',    # min: 1, max: 128; OPTIONAL
+              HashAlgorithm => 'MyHashAlgorithm',    # OPTIONAL
+              Signature     => {
+                InlineDocument => 'BlobSignature',    # OPTIONAL
+                Stream         => {
+                  FileId   => 1,               # max: 255; OPTIONAL
+                  StreamId => 'MyStreamId',    # min: 1, max: 128; OPTIONAL
                 },    # OPTIONAL
               },    # OPTIONAL
-              signatureAlgorithm => 'MySignatureAlgorithm',    # OPTIONAL
+              SignatureAlgorithm => 'MySignatureAlgorithm',    # OPTIONAL
             },    # OPTIONAL
           },    # OPTIONAL
-          fileName   => 'MyFileName',    # OPTIONAL
-          fileSource => {
-            fileId   => 1,               # max: 255; OPTIONAL
-            streamId => 'MyStreamId',    # min: 1, max: 128; OPTIONAL
+          FileName   => 'MyFileName',    # OPTIONAL
+          FileSource => {
+            FileId   => 1,               # max: 255; OPTIONAL
+            StreamId => 'MyStreamId',    # min: 1, max: 128; OPTIONAL
           },    # OPTIONAL
-          fileVersion => 'MyOTAUpdateFileVersion',    # OPTIONAL
+          FileVersion => 'MyOTAUpdateFileVersion',    # OPTIONAL
         },
         ...
       ],

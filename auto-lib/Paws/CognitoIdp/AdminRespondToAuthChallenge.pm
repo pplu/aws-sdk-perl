@@ -47,8 +47,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ContextData => {
         HttpHeaders => [
           {
-            headerName  => 'MyStringType',    # OPTIONAL
-            headerValue => 'MyStringType',    # OPTIONAL
+            HeaderName  => 'MyStringType',    # OPTIONAL
+            HeaderValue => 'MyStringType',    # OPTIONAL
           },
           ...
         ],

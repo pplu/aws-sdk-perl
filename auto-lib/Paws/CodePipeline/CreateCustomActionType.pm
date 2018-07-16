@@ -36,34 +36,34 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateCustomActionTypeOutput = $codepipeline->CreateCustomActionType(
       Category             => 'Source',
       InputArtifactDetails => {
-        maximumCount => 1,    # max: 5
-        minimumCount => 1,    # max: 5
+        MaximumCount => 1,    # max: 5
+        MinimumCount => 1,    # max: 5
 
       },
       OutputArtifactDetails => {
-        maximumCount => 1,    # max: 5
-        minimumCount => 1,    # max: 5
+        MaximumCount => 1,    # max: 5
+        MinimumCount => 1,    # max: 5
 
       },
       Provider                => 'MyActionProvider',
       Version                 => 'MyVersion',
       ConfigurationProperties => [
         {
-          key      => 1,
-          name     => 'MyActionConfigurationKey',    # min: 1, max: 50
-          required => 1,
-          secret   => 1,
-          description => 'MyDescription',    # min: 1, max: 160; OPTIONAL
-          queryable   => 1,
-          type => 'String',    # values: String, Number, Boolean; OPTIONAL
+          Key      => 1,
+          Name     => 'MyActionConfigurationKey',    # min: 1, max: 50
+          Required => 1,
+          Secret   => 1,
+          Description => 'MyDescription',    # min: 1, max: 160; OPTIONAL
+          Queryable   => 1,
+          Type => 'String',    # values: String, Number, Boolean; OPTIONAL
         },
         ...
       ],                       # OPTIONAL
       Settings => {
-        entityUrlTemplate    => 'MyUrlTemplate',   # min: 1, max: 2048; OPTIONAL
-        executionUrlTemplate => 'MyUrlTemplate',   # min: 1, max: 2048; OPTIONAL
-        revisionUrlTemplate  => 'MyUrlTemplate',   # min: 1, max: 2048; OPTIONAL
-        thirdPartyConfigurationUrl => 'MyUrl',     # min: 1, max: 2048; OPTIONAL
+        EntityUrlTemplate    => 'MyUrlTemplate',   # min: 1, max: 2048; OPTIONAL
+        ExecutionUrlTemplate => 'MyUrlTemplate',   # min: 1, max: 2048; OPTIONAL
+        RevisionUrlTemplate  => 'MyUrlTemplate',   # min: 1, max: 2048; OPTIONAL
+        ThirdPartyConfigurationUrl => 'MyUrl',     # min: 1, max: 2048; OPTIONAL
       },    # OPTIONAL
     );
 

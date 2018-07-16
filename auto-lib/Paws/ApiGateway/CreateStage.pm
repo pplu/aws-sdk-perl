@@ -44,10 +44,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CacheClusterEnabled => 1,            # OPTIONAL
       CacheClusterSize    => '0.5',        # OPTIONAL
       CanarySettings      => {
-        deploymentId           => 'MyString',
-        percentTraffic         => 1,                                # OPTIONAL
-        stageVariableOverrides => { 'MyString' => 'MyString', },    # OPTIONAL
-        useStageCache          => 1,
+        DeploymentId           => 'MyString',
+        PercentTraffic         => 1,                                # OPTIONAL
+        StageVariableOverrides => { 'MyString' => 'MyString', },    # OPTIONAL
+        UseStageCache          => 1,
       },    # OPTIONAL
       Description          => 'MyString',                       # OPTIONAL
       DocumentationVersion => 'MyString',                       # OPTIONAL

@@ -135,7 +135,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           OutputFormatConfiguration => {
             Serializer => {
               OrcSerDe => {
-                BlockSizeBytes => 1,    # min: 67108864, ; OPTIONAL
+                BlockSizeBytes => 1,    # min: 67108864; OPTIONAL
                 BloomFilterColumns =>
                   [ 'MyNonEmptyStringWithoutWhitespace', ... ],    # OPTIONAL
                 BloomFilterFalsePositiveProbability => 1,    # max: 1; OPTIONAL

@@ -36,12 +36,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name      => 'MyString',
       ApiStages => [
         {
-          apiId    => 'MyString',
-          stage    => 'MyString',
-          throttle => {
+          ApiId    => 'MyString',
+          Stage    => 'MyString',
+          Throttle => {
             'MyString' => {
-              burstLimit => 1,    # OPTIONAL
-              rateLimit  => 1,    # OPTIONAL
+              BurstLimit => 1,    # OPTIONAL
+              RateLimit  => 1,    # OPTIONAL
             },
           },    # OPTIONAL
         },
@@ -49,13 +49,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],        # OPTIONAL
       Description => 'MyString',    # OPTIONAL
       Quota       => {
-        limit  => 1,                # OPTIONAL
-        offset => 1,                # OPTIONAL
-        period => 'DAY',            # values: DAY, WEEK, MONTH; OPTIONAL
+        Limit  => 1,                # OPTIONAL
+        Offset => 1,                # OPTIONAL
+        Period => 'DAY',            # values: DAY, WEEK, MONTH; OPTIONAL
       },    # OPTIONAL
       Throttle => {
-        burstLimit => 1,    # OPTIONAL
-        rateLimit  => 1,    # OPTIONAL
+        BurstLimit => 1,    # OPTIONAL
+        RateLimit  => 1,    # OPTIONAL
       },    # OPTIONAL
     );
 

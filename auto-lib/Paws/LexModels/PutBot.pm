@@ -44,36 +44,36 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Locale         => 'en-US',
       Name           => 'MyBotName',
       AbortStatement => {
-        messages => [
+        Messages => [
           {
-            content => 'MyContentString',    # min: 1, max: 1000
-            contentType => 'PlainText', # values: PlainText, SSML, CustomPayload
-            groupNumber => 1,           # min: 1, max: 5; OPTIONAL
+            Content => 'MyContentString',    # min: 1, max: 1000
+            ContentType => 'PlainText', # values: PlainText, SSML, CustomPayload
+            GroupNumber => 1,           # min: 1, max: 5; OPTIONAL
           },
           ...
         ],                              # min: 1, max: 15
-        responseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
+        ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
       },    # OPTIONAL
       Checksum            => 'MyString',    # OPTIONAL
       ClarificationPrompt => {
-        maxAttempts => 1,                   # min: 1, max: 5
-        messages    => [
+        MaxAttempts => 1,                   # min: 1, max: 5
+        Messages    => [
           {
-            content => 'MyContentString',    # min: 1, max: 1000
-            contentType => 'PlainText', # values: PlainText, SSML, CustomPayload
-            groupNumber => 1,           # min: 1, max: 5; OPTIONAL
+            Content => 'MyContentString',    # min: 1, max: 1000
+            ContentType => 'PlainText', # values: PlainText, SSML, CustomPayload
+            GroupNumber => 1,           # min: 1, max: 5; OPTIONAL
           },
           ...
         ],                              # min: 1, max: 15
-        responseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
+        ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
       },    # OPTIONAL
       CreateVersion           => 1,                  # OPTIONAL
       Description             => 'MyDescription',    # OPTIONAL
       IdleSessionTTLInSeconds => 1,                  # OPTIONAL
       Intents                 => [
         {
-          intentName    => 'MyIntentName',           # min: 1, max: 100
-          intentVersion => 'MyVersion',              # min: 1, max: 64
+          IntentName    => 'MyIntentName',           # min: 1, max: 100
+          IntentVersion => 'MyVersion',              # min: 1, max: 64
 
         },
         ...

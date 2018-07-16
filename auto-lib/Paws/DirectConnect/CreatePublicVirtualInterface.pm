@@ -31,16 +31,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $VirtualInterface = $directconnect->CreatePublicVirtualInterface(
       ConnectionId              => 'MyConnectionId',
       NewPublicVirtualInterface => {
-        asn                  => 1,
-        virtualInterfaceName => 'MyVirtualInterfaceName',
-        vlan                 => 1,
-        addressFamily   => 'ipv4',                # values: ipv4, ipv6; OPTIONAL
-        amazonAddress   => 'MyAmazonAddress',     # OPTIONAL
-        authKey         => 'MyBGPAuthKey',        # OPTIONAL
-        customerAddress => 'MyCustomerAddress',   # OPTIONAL
-        routeFilterPrefixes => [
+        Asn                  => 1,
+        VirtualInterfaceName => 'MyVirtualInterfaceName',
+        Vlan                 => 1,
+        AddressFamily   => 'ipv4',                # values: ipv4, ipv6; OPTIONAL
+        AmazonAddress   => 'MyAmazonAddress',     # OPTIONAL
+        AuthKey         => 'MyBGPAuthKey',        # OPTIONAL
+        CustomerAddress => 'MyCustomerAddress',   # OPTIONAL
+        RouteFilterPrefixes => [
           {
-            cidr => 'MyCIDR',                     # OPTIONAL
+            Cidr => 'MyCIDR',                     # OPTIONAL
           },
           ...
         ],                                        # OPTIONAL

@@ -32,12 +32,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $apigateway = Paws->service('ApiGateway');
     my $DocumentationPart = $apigateway->CreateDocumentationPart(
       Location => {
-        type => 'API'
+        Type => 'API'
         , # values: API, AUTHORIZER, MODEL, RESOURCE, METHOD, PATH_PARAMETER, QUERY_PARAMETER, REQUEST_HEADER, REQUEST_BODY, RESPONSE, RESPONSE_HEADER, RESPONSE_BODY
-        method     => 'MyString',                                 # OPTIONAL
-        name       => 'MyString',                                 # OPTIONAL
-        path       => 'MyString',                                 # OPTIONAL
-        statusCode => 'MyDocumentationPartLocationStatusCode',    # OPTIONAL
+        Method     => 'MyString',                                 # OPTIONAL
+        Name       => 'MyString',                                 # OPTIONAL
+        Path       => 'MyString',                                 # OPTIONAL
+        StatusCode => 'MyDocumentationPartLocationStatusCode',    # OPTIONAL
       },
       Properties => 'MyString',
       RestApiId  => 'MyString',

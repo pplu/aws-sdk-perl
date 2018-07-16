@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $details = $UpdateProjectResult->details;
+    my $Details = $UpdateProjectResult->Details;
 
     # Returns a L<Paws::MobileHub::UpdateProjectResult> object.
 

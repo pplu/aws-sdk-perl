@@ -35,11 +35,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       UsagePlanId     => 'MyString',
       PatchOperations => [
         {
-          from => 'MyString',
-          op =>
+          From => 'MyString',
+          Op =>
             'add',    # values: add, remove, replace, move, copy, test; OPTIONAL
-          path  => 'MyString',
-          value => 'MyString',
+          Path  => 'MyString',
+          Value => 'MyString',
         },
         ...
       ],              # OPTIONAL
