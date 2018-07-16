@@ -929,6 +929,13 @@ package Paws::API::Builder {
     my ($calls, $results);
     $self->validate_shapes;
 
+    # These methods mutate things in the "operations" attribute (they capitalize shapes)
+    # Right now, documentation generation is reading from ->operations. We want these
+    # to do their stuff before documentation generation kicks in.
+    $self->_input_shapes;
+    $self->_output_shapes;
+    $self->_inner_shapes;
+
     foreach my $shape_name ($self->shapes) {
       $self->shape($shape_name)->{ perl_type } = $self->get_caller_class_type($shape_name);
       $self->shape($shape_name)->{ example_code } = ( $self->get_example_code($shape_name) )[0];
