@@ -22,6 +22,7 @@ package Paws::Net::Caller;
     # HTTP::Tiny derives the Host header from the URL. It's an error to set it.
     delete $headers->{Host}; 
 
+#    print STDERR Data::Dumper::Dumper($requestObj);
     my $response = $self->ua->request(
       $requestObj->method,
       $requestObj->url,
@@ -30,6 +31,7 @@ package Paws::Net::Caller;
         (defined $requestObj->content)?(content => $requestObj->content):(),
       }
     );
+    print STDERR Data::Dumper::Dumper($response);
     return Paws::Net::APIResponse->new(
       status  => $response->{status},
       content => $response->{content},
