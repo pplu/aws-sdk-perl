@@ -91,7 +91,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             TargetReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
             },
-            MaxResults => 1,                              # min: 1, ; OPTIONAL
+            MaxResults => 1,                              # min: 1; OPTIONAL
             NextToken  => 'MyNextToken',                  # OPTIONAL
           },    # OPTIONAL
           ListIncomingTypedLinks => {
@@ -128,15 +128,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               SchemaArn     => 'MyArn',
               TypedLinkName => 'MyTypedLinkName',
 
-            },                                         # OPTIONAL
-            MaxResults => 1,                           # min: 1, ; OPTIONAL
-            NextToken  => 'MyNextToken',               # OPTIONAL
+            },                                       # OPTIONAL
+            MaxResults => 1,                         # min: 1; OPTIONAL
+            NextToken  => 'MyNextToken',             # OPTIONAL
           },    # OPTIONAL
           ListIndex => {
             IndexReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
             },
-            MaxResults            => 1,                   # min: 1, ; OPTIONAL
+            MaxResults            => 1,                   # min: 1; OPTIONAL
             NextToken             => 'MyNextToken',       # OPTIONAL
             RangesOnIndexedValues => [
               {
@@ -177,29 +177,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             FacetFilter => {
               FacetName => 'MyFacetName',                 # min: 1, max: 64
               SchemaArn => 'MyArn',
-            },
-            MaxResults => 1,                              # min: 1, ; OPTIONAL
-            NextToken  => 'MyNextToken',                  # OPTIONAL
+            },    # OPTIONAL
+            MaxResults => 1,                # min: 1; OPTIONAL
+            NextToken  => 'MyNextToken',    # OPTIONAL
           },    # OPTIONAL
           ListObjectChildren => {
             ObjectReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
             },
-            MaxResults => 1,                              # min: 1, ; OPTIONAL
+            MaxResults => 1,                              # min: 1; OPTIONAL
             NextToken  => 'MyNextToken',                  # OPTIONAL
           },    # OPTIONAL
           ListObjectParentPaths => {
             ObjectReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
             },
-            MaxResults => 1,                              # min: 1, ; OPTIONAL
+            MaxResults => 1,                              # min: 1; OPTIONAL
             NextToken  => 'MyNextToken',                  # OPTIONAL
           },    # OPTIONAL
           ListObjectPolicies => {
             ObjectReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
             },
-            MaxResults => 1,                              # min: 1, ; OPTIONAL
+            MaxResults => 1,                              # min: 1; OPTIONAL
             NextToken  => 'MyNextToken',                  # OPTIONAL
           },    # OPTIONAL
           ListOutgoingTypedLinks => {
@@ -236,22 +236,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               SchemaArn     => 'MyArn',
               TypedLinkName => 'MyTypedLinkName',
 
-            },                                         # OPTIONAL
-            MaxResults => 1,                           # min: 1, ; OPTIONAL
-            NextToken  => 'MyNextToken',               # OPTIONAL
+            },                                       # OPTIONAL
+            MaxResults => 1,                         # min: 1; OPTIONAL
+            NextToken  => 'MyNextToken',             # OPTIONAL
           },    # OPTIONAL
           ListPolicyAttachments => {
             PolicyReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
             },
-            MaxResults => 1,                              # min: 1, ; OPTIONAL
+            MaxResults => 1,                              # min: 1; OPTIONAL
             NextToken  => 'MyNextToken',                  # OPTIONAL
           },    # OPTIONAL
           LookupPolicy => {
             ObjectReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
             },
-            MaxResults => 1,                              # min: 1, ; OPTIONAL
+            MaxResults => 1,                              # min: 1; OPTIONAL
             NextToken  => 'MyNextToken',                  # OPTIONAL
           },    # OPTIONAL
         },

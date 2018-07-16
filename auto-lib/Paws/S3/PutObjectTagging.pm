@@ -40,7 +40,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Tagging => {
         TagSet => [
           {
-            Key   => 'MyObjectKey',    # min: 1,
+            Key   => 'MyObjectKey',    # min: 1
             Value => 'MyValue',
 
           },

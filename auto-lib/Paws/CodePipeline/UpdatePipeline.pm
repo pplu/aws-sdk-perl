@@ -88,7 +88,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],
-        version => 1,                            # min: 1, ; OPTIONAL
+        version => 1,                            # min: 1; OPTIONAL
       },
 
     );

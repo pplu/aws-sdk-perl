@@ -33,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DesiredWeightsAndCapacities => [
         {
           VariantName          => 'MyVariantName',    # max: 63
-          DesiredInstanceCount => 1,                  # min: 1, ; OPTIONAL
+          DesiredInstanceCount => 1,                  # min: 1; OPTIONAL
           DesiredWeight        => 1.0,                # OPTIONAL
         },
         ...

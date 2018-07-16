@@ -61,7 +61,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       LogUri               => 'MyUriString',    # OPTIONAL
       MaxRetries           => 1,                # OPTIONAL
       NotificationProperty => {
-        NotifyDelayAfter => 1,                  # min: 1, ; OPTIONAL
+        NotifyDelayAfter => 1,                  # min: 1; OPTIONAL
       },    # OPTIONAL
       Timeout => 1,    # OPTIONAL
     );

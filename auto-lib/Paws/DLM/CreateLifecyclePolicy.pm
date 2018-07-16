@@ -41,7 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Schedules => [
           {
             CreateRule => {
-              Interval     => 1,                    # min: 1,
+              Interval     => 1,                    # min: 1
               IntervalUnit => 'HOURS',              # values: HOURS
               Times        => [ 'MyTime', ... ],    # max: 1; OPTIONAL
             },    # OPTIONAL

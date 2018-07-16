@@ -32,7 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     $iotanalytics->UpdateChannel(
       ChannelName     => 'MyChannelName',
       RetentionPeriod => {
-        numberOfDays => 1,    # min: 1, ; OPTIONAL
+        numberOfDays => 1,    # min: 1; OPTIONAL
         unlimited    => 1,    # OPTIONAL
       },    # OPTIONAL
     );

@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ProductCode => 'MyProductCode',
       Filter      => {
         'CUSTOMER_IDENTIFIER' => [ 'MyFilterValue', ... ]
-        ,    # key: values: CUSTOMER_IDENTIFIER, DIMENSION, value: min: 1,
+        ,    # key: values: CUSTOMER_IDENTIFIER, DIMENSION, value: min: 1
       },    # OPTIONAL
       MaxResults => 1,                     # OPTIONAL
       NextToken  => 'MyNonEmptyString',    # OPTIONAL

@@ -38,7 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Filters   => [
         {
           key => 'InvokedAfter',   # values: InvokedAfter, InvokedBefore, Status
-          value => 'MyCommandFilterValue',    # min: 1,
+          value => 'MyCommandFilterValue',    # min: 1
 
         },
         ...

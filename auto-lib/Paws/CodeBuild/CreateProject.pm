@@ -50,13 +50,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Environment => {
         computeType => 'BUILD_GENERAL1_SMALL'
         , # values: BUILD_GENERAL1_SMALL, BUILD_GENERAL1_MEDIUM, BUILD_GENERAL1_LARGE
-        image => 'MyNonEmptyString',    # min: 1,
+        image => 'MyNonEmptyString',    # min: 1
         type =>
           'WINDOWS_CONTAINER',    # values: WINDOWS_CONTAINER, LINUX_CONTAINER
         certificate          => 'MyString',    # OPTIONAL
         environmentVariables => [
           {
-            name  => 'MyNonEmptyString',       # min: 1,
+            name  => 'MyNonEmptyString',       # min: 1
             value => 'MyString',               # OPTIONAL
             type => 'PLAINTEXT',  # values: PLAINTEXT, PARAMETER_STORE; OPTIONAL
           },
@@ -96,12 +96,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       TimeoutInMinutes => 1,                      # OPTIONAL
       VpcConfig        => {
         securityGroupIds => [
-          'MyNonEmptyString', ...                 # min: 1,
+          'MyNonEmptyString', ...                 # min: 1
         ],                                        # max: 5; OPTIONAL
         subnets => [
-          'MyNonEmptyString', ...                 # min: 1,
+          'MyNonEmptyString', ...                 # min: 1
         ],                                        # max: 16; OPTIONAL
-        vpcId => 'MyNonEmptyString',              # min: 1,
+        vpcId => 'MyNonEmptyString',              # min: 1
       },    # OPTIONAL
     );
 

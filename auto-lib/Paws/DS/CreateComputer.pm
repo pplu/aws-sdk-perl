@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Password           => 'MyComputerPassword',
       ComputerAttributes => [
         {
-          Name  => 'MyAttributeName',     # min: 1, ; OPTIONAL
+          Name  => 'MyAttributeName',     # min: 1; OPTIONAL
           Value => 'MyAttributeValue',    # OPTIONAL
         },
         ...

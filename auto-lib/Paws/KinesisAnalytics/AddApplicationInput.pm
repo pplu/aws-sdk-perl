@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           RecordColumns => [
             {
               Name    => 'MyRecordColumnName',
-              SqlType => 'MyRecordColumnSqlType',    # min: 1,
+              SqlType => 'MyRecordColumnSqlType',    # min: 1
               Mapping => 'MyRecordColumnMapping',    # OPTIONAL
             },
             ...
@@ -46,12 +46,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             RecordFormatType  => 'JSON',             # values: JSON, CSV
             MappingParameters => {
               CSVMappingParameters => {
-                RecordColumnDelimiter => 'MyRecordColumnDelimiter',    # min: 1,
-                RecordRowDelimiter    => 'MyRecordRowDelimiter',       # min: 1,
+                RecordColumnDelimiter => 'MyRecordColumnDelimiter',    # min: 1
+                RecordRowDelimiter    => 'MyRecordRowDelimiter',       # min: 1
 
               },    # OPTIONAL
               JSONMappingParameters => {
-                RecordRowPath => 'MyRecordRowPath',    # min: 1,
+                RecordRowPath => 'MyRecordRowPath',    # min: 1
 
               },    # OPTIONAL
             },    # OPTIONAL

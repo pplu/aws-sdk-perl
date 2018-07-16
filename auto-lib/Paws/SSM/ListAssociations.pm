@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           key => 'InstanceId'
           , # values: InstanceId, Name, AssociationId, AssociationStatusName, LastExecutedBefore, LastExecutedAfter, AssociationName
-          value => 'MyAssociationFilterValue',    # min: 1,
+          value => 'MyAssociationFilterValue',    # min: 1
 
         },
         ...

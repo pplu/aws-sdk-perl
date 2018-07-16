@@ -36,15 +36,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Players           => [
         {
           LatencyInMs => {
-            'MyNonEmptyString' => 1,    # key: min: 1, , value: min: 1,
+            'MyNonEmptyString' => 1,    # key: min: 1, value: min: 1
           },    # OPTIONAL
           PlayerAttributes => {
             'MyNonZeroAndMaxString' => {
-              N   => 1,                          # OPTIONAL
+              N   => 1,
               S   => 'MyNonZeroAndMaxString',    # min: 1, max: 1024
               SDM => {
-                'MyNonZeroAndMaxString' =>
-                  1,    # key: min: 1, max: 1024, value: OPTIONAL
+                'MyNonZeroAndMaxString' => 1,    # key: min: 1, max: 1024
               },    # OPTIONAL
               SL => [
                 'MyNonZeroAndMaxString', ...    # min: 1, max: 1024

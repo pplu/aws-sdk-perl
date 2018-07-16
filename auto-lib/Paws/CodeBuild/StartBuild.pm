@@ -66,7 +66,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EnvironmentTypeOverride      => 'WINDOWS_CONTAINER',       # OPTIONAL
       EnvironmentVariablesOverride => [
         {
-          name  => 'MyNonEmptyString',                           # min: 1,
+          name  => 'MyNonEmptyString',                           # min: 1
           value => 'MyString',                                   # OPTIONAL
           type => 'PLAINTEXT',    # values: PLAINTEXT, PARAMETER_STORE; OPTIONAL
         },

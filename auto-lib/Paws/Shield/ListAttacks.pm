@@ -39,7 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MaxResults   => 1,            # OPTIONAL
       NextToken    => 'MyToken',    # OPTIONAL
       ResourceArns => [
-        'MyResourceArn', ...        # min: 1,
+        'MyResourceArn', ...        # min: 1
       ],                            # OPTIONAL
       StartTime => {
         FromInclusive => '1970-01-01T01:00:00',    # OPTIONAL

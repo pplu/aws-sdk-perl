@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SigningAlgorithm        => 'SHA256WITHECDSA',
       Validity                => {
         Type  => 'END_DATE',   # values: END_DATE, ABSOLUTE, DAYS, MONTHS, YEARS
-        Value => 1,            # min: 1,
+        Value => 1,            # min: 1
 
       },
       IdempotencyToken => 'MyIdempotencyToken',    # OPTIONAL

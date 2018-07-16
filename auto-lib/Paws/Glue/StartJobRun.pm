@@ -38,7 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Arguments => { 'MyGenericString' => 'MyGenericString', },    # OPTIONAL
       JobRunId  => 'MyIdString',                                   # OPTIONAL
       NotificationProperty => {
-        NotifyDelayAfter => 1,    # min: 1, ; OPTIONAL
+        NotifyDelayAfter => 1,    # min: 1; OPTIONAL
       },    # OPTIONAL
       Timeout => 1,    # OPTIONAL
     );

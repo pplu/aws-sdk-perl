@@ -33,9 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeInstanceInformationResult = $ssm->DescribeInstanceInformation(
       Filters => [
         {
-          Key    => 'MyInstanceInformationStringFilterKey',    # min: 1,
+          Key    => 'MyInstanceInformationStringFilterKey',    # min: 1
           Values => [
-            'MyInstanceInformationFilterValue', ...            # min: 1,
+            'MyInstanceInformationFilterValue', ...            # min: 1
           ],    # min: 1, max: 100
 
         },
@@ -46,7 +46,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           key => 'InstanceIds'
           , # values: InstanceIds, AgentVersion, PingStatus, PlatformTypes, ActivationIds, IamRole, ResourceType, AssociationStatus
           valueSet => [
-            'MyInstanceInformationFilterValue', ...    # min: 1,
+            'MyInstanceInformationFilterValue', ...    # min: 1
           ],                                           # min: 1, max: 100
 
         },

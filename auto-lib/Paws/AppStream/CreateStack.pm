@@ -46,7 +46,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Domains => [
             'MyDomain', ...    # max: 64
           ],                   # max: 10; OPTIONAL
-          ResourceIdentifier => 'MyResourceIdentifier',    # min: 1, ; OPTIONAL
+          ResourceIdentifier => 'MyResourceIdentifier',    # min: 1; OPTIONAL
         },
         ...
       ],                                                   # OPTIONAL

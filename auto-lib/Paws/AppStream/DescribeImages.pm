@@ -32,7 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeImagesResult = $appstream2->DescribeImages(
       MaxResults => 1,    # OPTIONAL
       Names      => [
-        'MyString', ...    # min: 1,
+        'MyString', ...    # min: 1
       ],                   # OPTIONAL
       NextToken => 'MyString',    # OPTIONAL
     );

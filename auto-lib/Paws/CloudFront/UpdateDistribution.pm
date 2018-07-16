@@ -136,7 +136,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
             },
             ...
-          ],        # min: 1, ; OPTIONAL
+          ],        # min: 1; OPTIONAL
         },
         Aliases => {
           Quantity => 1,

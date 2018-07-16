@@ -125,7 +125,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ,     # values: ITU_BS_1770_1, ITU_BS_1770_2; OPTIONAL
               AlgorithmControl =>
                 'CORRECT_AUDIO', # values: CORRECT_AUDIO, MEASURE_ONLY; OPTIONAL
-              CorrectionGateLevel => 1,        # min: -70, ; OPTIONAL
+              CorrectionGateLevel => 1,        # min: -70; OPTIONAL
               LoudnessLogging     => 'LOG',    # values: LOG, DONT_LOG; OPTIONAL
               PeakCalculation =>
                 'TRUE_PEAK',    # values: TRUE_PEAK, NONE; OPTIONAL

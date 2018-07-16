@@ -46,7 +46,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           EcsParameters => {
             TaskDefinitionArn => 'MyArn',    # min: 1, max: 1600
-            TaskCount         => 1,          # min: 1, ; OPTIONAL
+            TaskCount         => 1,          # min: 1; OPTIONAL
           },    # OPTIONAL
           Input            => 'MyTargetInput',        # max: 8192; OPTIONAL
           InputPath        => 'MyTargetInputPath',    # max: 256

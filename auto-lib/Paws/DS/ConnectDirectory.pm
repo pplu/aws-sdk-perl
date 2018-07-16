@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ConnectDirectoryResult = $ds->ConnectDirectory(
       ConnectSettings => {
         CustomerDnsIps   => [ 'MyIpAddr', ... ],
-        CustomerUserName => 'MyUserName',            # min: 1,
+        CustomerUserName => 'MyUserName',            # min: 1
         SubnetIds        => [ 'MySubnetId', ... ],
         VpcId            => 'MyVpcId',
 

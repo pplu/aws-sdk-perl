@@ -295,7 +295,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       ,     # values: ITU_BS_1770_1, ITU_BS_1770_2; OPTIONAL
                       AlgorithmControl => 'CORRECT_AUDIO'
                       ,     # values: CORRECT_AUDIO, MEASURE_ONLY; OPTIONAL
-                      CorrectionGateLevel => 1,    # min: -70, ; OPTIONAL
+                      CorrectionGateLevel => 1,    # min: -70; OPTIONAL
                       LoudnessLogging =>
                         'LOG',    # values: LOG, DONT_LOG; OPTIONAL
                       PeakCalculation =>
@@ -335,7 +335,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ],                                          # OPTIONAL
                 CaptionDescriptions => [
                   {
-                    CaptionSelectorName => 'My__stringMin1',    # min: 1,
+                    CaptionSelectorName => 'My__stringMin1',  # min: 1; OPTIONAL
                     DestinationSettings => {
                       DestinationType => 'BURN_IN'
                       , # values: BURN_IN, DVB_SUB, EMBEDDED, SCC, SRT, TELETEXT, TTML, WEBVTT
@@ -518,7 +518,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },    # OPTIONAL
                 },    # OPTIONAL
                 Extension      => 'My__string',
-                NameModifier   => 'My__stringMin1',    # min: 1,
+                NameModifier   => 'My__stringMin1',    # min: 1; OPTIONAL
                 OutputSettings => {
                   HlsSettings => {
                     AudioGroupId       => 'My__string',
@@ -799,7 +799,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         {
                           ImageInserterInput =>
                             'My__stringMin14PatternS3BmpBMPPngPNGTgaTGA'
-                          ,    # min: 14,
+                          ,    # min: 14
                           ImageX   => 1,    # min: -2147483648, max: 2147483647
                           ImageY   => 1,    # min: -2147483648, max: 2147483647
                           Layer    => 1,    # max: 99
@@ -848,14 +848,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         AdAvailOffset => 1,    # min: -1000, max: 1000; OPTIONAL
         AvailBlanking => {
           AvailBlankingImage =>
-            'My__stringMin14PatternS3BmpBMPPngPNG',    # min: 14, ; OPTIONAL
+            'My__stringMin14PatternS3BmpBMPPngPNG',    # min: 14; OPTIONAL
         },    # OPTIONAL
         Inputs => [
           {
             AudioSelectorGroups => {
               'My__string' => {
                 AudioSelectorNames => [
-                  'My__stringMin1', ...    # min: 1,
+                  'My__stringMin1', ...    # min: 1; OPTIONAL
                 ],
 
               },
@@ -921,7 +921,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   FileSourceSettings => {
                     SourceFile =>
 'My__stringMin14PatternS3SccSCCTtmlTTMLDfxpDFXPStlSTLSrtSRTSmiSMI'
-                    ,    # min: 14,
+                    ,    # min: 14
                     Convert608To708 =>
                       'UPCONVERT',    # values: UPCONVERT, DISABLED; OPTIONAL
                     TimeDelta => 1,   # min: -2147483648, max: 2147483647

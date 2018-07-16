@@ -36,7 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Bucket               => 'MyBucketName',
       WebsiteConfiguration => {
         ErrorDocument => {
-          Key => 'MyObjectKey',    # min: 1,
+          Key => 'MyObjectKey',    # min: 1
 
         },    # OPTIONAL
         IndexDocument => {

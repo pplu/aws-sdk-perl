@@ -38,7 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Filters       => [
         {
           Key => 'Status',    # values: Status, ResourceId, ResourceType
-          Value => 'MyAssociationExecutionTargetsFilterValue',    # min: 1,
+          Value => 'MyAssociationExecutionTargetsFilterValue',    # min: 1
 
         },
         ...

@@ -76,7 +76,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           1,    # min: 1, max: 2147483647; OPTIONAL
         ServerProcesses => [
           {
-            ConcurrentExecutions => 1,                       # min: 1,
+            ConcurrentExecutions => 1,                       # min: 1
             LaunchPath           => 'MyNonZeroAndMaxString', # min: 1, max: 1024
             Parameters           => 'MyNonZeroAndMaxString', # min: 1, max: 1024
           },

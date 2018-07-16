@@ -170,7 +170,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             OutputGroupSettings => {
               ArchiveGroupSettings => {
                 Destination => { DestinationRefId => 'My__string', },
-                RolloverInterval => 1,    # min: 1, ; OPTIONAL
+                RolloverInterval => 1,    # min: 1; OPTIONAL
               },    # OPTIONAL
               HlsGroupSettings => {
                 Destination => { DestinationRefId => 'My__string', },
@@ -184,8 +184,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     CaptionChannel => 1,    # min: 1, max: 4
                     LanguageCode =>
                       'My__stringMin3Max3',    # min: 3, max: 3; OPTIONAL
-                    LanguageDescription =>
-                      'My__stringMin1',        # min: 1, ; OPTIONAL
+                    LanguageDescription => 'My__stringMin1',  # min: 1; OPTIONAL
 
                   },
                   ...
@@ -234,13 +233,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     RestartDelay => 1,    # max: 15
                   },    # OPTIONAL
                 },    # OPTIONAL
-                IndexNSegments => 1,    # min: 3, ; OPTIONAL
+                IndexNSegments => 1,    # min: 3; OPTIONAL
                 InputLossAction =>
                   'EMIT_OUTPUT',   # values: EMIT_OUTPUT, PAUSE_OUTPUT; OPTIONAL
                 IvInManifest => 'EXCLUDE',  # values: EXCLUDE, INCLUDE; OPTIONAL
                 IvSource     => 'EXPLICIT'
                 ,    # values: EXPLICIT, FOLLOWS_SEGMENT_NUMBER; OPTIONAL
-                KeepSegments        => 1,              # min: 1, ; OPTIONAL
+                KeepSegments        => 1,              # min: 1; OPTIONAL
                 KeyFormat           => 'My__string',
                 KeyFormatVersions   => 'My__string',
                 KeyProviderSettings => {
@@ -263,10 +262,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ProgramDateTime =>
                   'EXCLUDE',    # values: EXCLUDE, INCLUDE; OPTIONAL
                 ProgramDateTimePeriod => 1,    # max: 3600; OPTIONAL
-                SegmentLength         => 1,    # min: 1, ; OPTIONAL
+                SegmentLength         => 1,    # min: 1; OPTIONAL
                 SegmentationMode => 'USE_INPUT_SEGMENTATION'
                 , # values: USE_INPUT_SEGMENTATION, USE_SEGMENT_DURATION; OPTIONAL
-                SegmentsPerSubdirectory => 1,    # min: 1, ; OPTIONAL
+                SegmentsPerSubdirectory => 1,    # min: 1; OPTIONAL
                 StreamInfResolution =>
                   'EXCLUDE',    # values: EXCLUDE, INCLUDE; OPTIONAL
                 TimedMetadataId3Frame =>
@@ -289,7 +288,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 , # values: NO_EVENT_ID, USE_CONFIGURED, USE_TIMESTAMP; OPTIONAL
                 EventStopBehavior => 'NONE',  # values: NONE, SEND_EOS; OPTIONAL
                 FilecacheDuration => 1,       # OPTIONAL
-                FragmentLength    => 1,       # min: 1, ; OPTIONAL
+                FragmentLength    => 1,       # min: 1; OPTIONAL
                 InputLossAction =>
                   'EMIT_OUTPUT',   # values: EMIT_OUTPUT, PAUSE_OUTPUT; OPTIONAL
                 NumRetries       => 1,                         # OPTIONAL
@@ -309,7 +308,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   'AKAMAI',    # values: AKAMAI, COMMON; OPTIONAL
                 CacheFullBehavior => 'DISCONNECT_IMMEDIATELY'
                 ,    # values: DISCONNECT_IMMEDIATELY, WAIT_FOR_SERVER; OPTIONAL
-                CacheLength => 1,      # min: 30, ; OPTIONAL
+                CacheLength => 1,      # min: 30; OPTIONAL
                 CaptionData => 'ALL'
                 ,    # values: ALL, FIELD1_608, FIELD1_AND_FIELD2_608; OPTIONAL
                 RestartDelay => 1,    # OPTIONAL
@@ -348,7 +347,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         DvbNitSettings => {
                           NetworkId => 1,    # max: 65536
                           NetworkName =>
-                            'My__stringMin1Max256',    # min: 1, max: 256
+                            'My__stringMin1Max256', # min: 1, max: 256; OPTIONAL
                           RepInterval => 1,    # min: 25, max: 10000; OPTIONAL
                         },    # OPTIONAL
                         DvbSdtSettings => {
@@ -445,7 +444,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         AudioRenditionSets => 'My__string',
                       },    # OPTIONAL
                     },
-                    NameModifier    => 'My__stringMin1',    # min: 1, ; OPTIONAL
+                    NameModifier    => 'My__stringMin1',    # min: 1; OPTIONAL
                     SegmentModifier => 'My__string',
                   },    # OPTIONAL
                   MsSmoothOutputSettings => { NameModifier => 'My__string', }
@@ -454,7 +453,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     Destination     => { DestinationRefId => 'My__string', },
                     CertificateMode => 'SELF_SIGNED'
                     ,    # values: SELF_SIGNED, VERIFY_AUTHENTICITY; OPTIONAL
-                    ConnectionRetryInterval => 1,    # min: 1, ; OPTIONAL
+                    ConnectionRetryInterval => 1,    # min: 1; OPTIONAL
                     NumRetries              => 1,    # OPTIONAL
                   },    # OPTIONAL
                   UdpOutputSettings => {
@@ -571,7 +570,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 AdaptiveQuantization => 'HIGH'
                 ,    # values: HIGH, HIGHER, LOW, MAX, MEDIUM, OFF; OPTIONAL
                 AfdSignaling  => 'AUTO',   # values: AUTO, FIXED, NONE; OPTIONAL
-                Bitrate       => 1,        # min: 1000, ; OPTIONAL
+                Bitrate       => 1,        # min: 1000; OPTIONAL
                 BufFillPct    => 1,        # max: 100; OPTIONAL
                 BufSize       => 1,        # OPTIONAL
                 ColorMetadata => 'IGNORE', # values: IGNORE, INSERT; OPTIONAL
@@ -593,12 +592,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 , # values: H264_LEVEL_1, H264_LEVEL_1_1, H264_LEVEL_1_2, H264_LEVEL_1_3, H264_LEVEL_2, H264_LEVEL_2_1, H264_LEVEL_2_2, H264_LEVEL_3, H264_LEVEL_3_1, H264_LEVEL_3_2, H264_LEVEL_4, H264_LEVEL_4_1, H264_LEVEL_4_2, H264_LEVEL_5, H264_LEVEL_5_1, H264_LEVEL_5_2, H264_LEVEL_AUTO; OPTIONAL
                 LookAheadRateControl =>
                   'HIGH',    # values: HIGH, LOW, MEDIUM; OPTIONAL
-                MaxBitrate   => 1,    # min: 1000, ; OPTIONAL
+                MaxBitrate   => 1,    # min: 1000; OPTIONAL
                 MinIInterval => 1,    # max: 30; OPTIONAL
                 NumRefFrames => 1,    # min: 1, max: 6; OPTIONAL
                 ParControl => 'INITIALIZE_FROM_SOURCE'
                 ,    # values: INITIALIZE_FROM_SOURCE, SPECIFIED; OPTIONAL
-                ParDenominator => 1,           # min: 1, ; OPTIONAL
+                ParDenominator => 1,           # min: 1; OPTIONAL
                 ParNumerator   => 1,           # OPTIONAL
                 Profile        => 'BASELINE'
                 , # values: BASELINE, HIGH, HIGH_10BIT, HIGH_422, HIGH_422_10BIT, MAIN; OPTIONAL
@@ -818,7 +817,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                   },    # OPTIONAL
                   DvbSubSourceSettings => {
-                    Pid => 1,    # min: 1, ; OPTIONAL
+                    Pid => 1,    # min: 1; OPTIONAL
                   },    # OPTIONAL
                   EmbeddedSourceSettings => {
                     Convert608To708 =>
@@ -833,7 +832,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     Source608ChannelNumber => 1,    # min: 1, max: 4
                   },    # OPTIONAL
                   Scte27SourceSettings => {
-                    Pid => 1,    # min: 1, ; OPTIONAL
+                    Pid => 1,    # min: 1; OPTIONAL
                   },    # OPTIONAL
                   TeletextSourceSettings => { PageNumber => 'My__string', }
                   ,     # OPTIONAL

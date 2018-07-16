@@ -34,23 +34,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       GlobalTableName                               => 'MyTableName',
       GlobalTableGlobalSecondaryIndexSettingsUpdate => [
         {
-          IndexName                     => 'MyIndexName',   # min: 3, max: 255
-          ProvisionedWriteCapacityUnits => 1,               # min: 1, ; OPTIONAL
+          IndexName                     => 'MyIndexName',    # min: 3, max: 255
+          ProvisionedWriteCapacityUnits => 1,                # min: 1; OPTIONAL
         },
         ...
-      ],                                                    # OPTIONAL
-      GlobalTableProvisionedWriteCapacityUnits => 1,        # OPTIONAL
+      ],                                                     # OPTIONAL
+      GlobalTableProvisionedWriteCapacityUnits => 1,         # OPTIONAL
       ReplicaSettingsUpdate                    => [
         {
           RegionName                                => 'MyRegionName',
           ReplicaGlobalSecondaryIndexSettingsUpdate => [
             {
-              IndexName => 'MyIndexName',                   # min: 3, max: 255
-              ProvisionedReadCapacityUnits => 1,            # min: 1, ; OPTIONAL
+              IndexName                    => 'MyIndexName',  # min: 3, max: 255
+              ProvisionedReadCapacityUnits => 1,              # min: 1; OPTIONAL
             },
             ...
           ],    # min: 1, max: 20; OPTIONAL
-          ReplicaProvisionedReadCapacityUnits => 1,    # min: 1, ; OPTIONAL
+          ReplicaProvisionedReadCapacityUnits => 1,    # min: 1; OPTIONAL
         },
         ...
       ],                                               # OPTIONAL

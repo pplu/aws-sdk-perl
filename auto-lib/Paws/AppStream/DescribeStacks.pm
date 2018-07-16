@@ -30,7 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $appstream2 = Paws->service('AppStream');
     my $DescribeStacksResult = $appstream2->DescribeStacks(
       Names => [
-        'MyString', ...    # min: 1,
+        'MyString', ...    # min: 1
       ],                   # OPTIONAL
       NextToken => 'MyString',    # OPTIONAL
     );

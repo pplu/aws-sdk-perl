@@ -144,16 +144,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 EnablePadding          => 1,    # OPTIONAL
                 FormatVersion    => 'V0_11',    # values: V0_11, V0_12; OPTIONAL
                 PaddingTolerance => 1,          # max: 1; OPTIONAL
-                RowIndexStride   => 1,          # min: 1000, ; OPTIONAL
-                StripeSizeBytes  => 1,          # min: 8388608, ; OPTIONAL
+                RowIndexStride   => 1,          # min: 1000; OPTIONAL
+                StripeSizeBytes  => 1,          # min: 8388608; OPTIONAL
               },    # OPTIONAL
               ParquetSerDe => {
-                BlockSizeBytes => 1,    # min: 67108864, ; OPTIONAL
+                BlockSizeBytes => 1,    # min: 67108864; OPTIONAL
                 Compression =>
                   'UNCOMPRESSED', # values: UNCOMPRESSED, GZIP, SNAPPY; OPTIONAL
                 EnableDictionaryCompression => 1,     # OPTIONAL
                 MaxPaddingBytes             => 1,     # OPTIONAL
-                PageSizeBytes               => 1,     # min: 65536, ; OPTIONAL
+                PageSizeBytes               => 1,     # min: 65536; OPTIONAL
                 WriterVersion               => 'V1',  # values: V1, V2; OPTIONAL
               },    # OPTIONAL
             },    # OPTIONAL
@@ -226,13 +226,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
       },    # OPTIONAL
       RedshiftDestinationConfiguration => {
-        ClusterJDBCURL => 'MyClusterJDBCURL',    # min: 1,
+        ClusterJDBCURL => 'MyClusterJDBCURL',    # min: 1
         CopyCommand    => {
-          DataTableName    => 'MyDataTableName',       # min: 1,
+          DataTableName    => 'MyDataTableName',       # min: 1
           CopyOptions      => 'MyCopyOptions',         # OPTIONAL
           DataTableColumns => 'MyDataTableColumns',    # OPTIONAL
         },
-        Password        => 'MyPassword',               # min: 6,
+        Password        => 'MyPassword',               # min: 6
         RoleARN         => 'MyRoleARN',                # min: 1, max: 512
         S3Configuration => {
           BucketARN      => 'MyBucketARN',             # min: 1, max: 2048
@@ -258,7 +258,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           Prefix => 'MyPrefix',    # OPTIONAL
         },
-        Username                 => 'MyUsername',    # min: 1,
+        Username                 => 'MyUsername',    # min: 1
         CloudWatchLoggingOptions => {
           Enabled       => 1,                        # OPTIONAL
           LogGroupName  => 'MyLogGroupName',         # OPTIONAL

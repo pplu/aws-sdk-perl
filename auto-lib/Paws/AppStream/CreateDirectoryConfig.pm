@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'MyOrganizationalUnitDistinguishedName', ...    # max: 2000
       ],
       ServiceAccountCredentials => {
-        AccountName     => 'MyAccountName',             # min: 1,
+        AccountName     => 'MyAccountName',             # min: 1
         AccountPassword => 'MyAccountPassword',         # min: 1, max: 127
 
       },

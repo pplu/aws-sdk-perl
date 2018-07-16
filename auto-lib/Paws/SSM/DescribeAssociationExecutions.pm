@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           Key  => 'ExecutionId',    # values: ExecutionId, Status, CreatedTime
           Type => 'EQUAL',          # values: EQUAL, LESS_THAN, GREATER_THAN
-          Value => 'MyAssociationExecutionFilterValue',    # min: 1,
+          Value => 'MyAssociationExecutionFilterValue',    # min: 1
 
         },
         ...

@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DocumentFilterList => [
         {
           key => 'Name',    # values: Name, Owner, PlatformTypes, DocumentType
-          value => 'MyDocumentFilterValue',    # min: 1,
+          value => 'MyDocumentFilterValue',    # min: 1
 
         },
         ...

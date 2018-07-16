@@ -50,10 +50,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EnableDefaultInternetAccess => 1,    # OPTIONAL
       VpcConfig                   => {
         SecurityGroupIds => [
-          'MyString', ...                  # min: 1,
+          'MyString', ...                  # min: 1
         ],                                 # max: 5; OPTIONAL
         SubnetIds => [
-          'MyString', ...                  # min: 1,
+          'MyString', ...                  # min: 1
         ],                                 # OPTIONAL
       },    # OPTIONAL
     );

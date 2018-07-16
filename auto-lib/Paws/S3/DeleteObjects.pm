@@ -38,7 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Delete => {
         Objects => [
           {
-            Key       => 'MyObjectKey',          # min: 1,
+            Key       => 'MyObjectKey',          # min: 1
             VersionId => 'MyObjectVersionId',    # OPTIONAL
           },
           ...

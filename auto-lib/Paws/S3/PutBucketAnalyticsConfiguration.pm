@@ -64,7 +64,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           Prefix => 'MyPrefix',    # OPTIONAL
           Tag    => {
-            Key   => 'MyObjectKey',    # min: 1,
+            Key   => 'MyObjectKey',    # min: 1
             Value => 'MyValue',
 
           },    # OPTIONAL

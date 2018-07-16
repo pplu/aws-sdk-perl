@@ -108,7 +108,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               , # values: private, public-read, public-read-write, aws-exec-read, authenticated-read, bucket-owner-read, bucket-owner-full-control, log-delivery-write; OPTIONAL
             },    # OPTIONAL
             salesforce => {
-              token => 'MySalesforceToken',       # min: 40,
+              token => 'MySalesforceToken',       # min: 40
               url   => 'MySalesforceEndpoint',    # max: 2000
 
             },    # OPTIONAL
@@ -203,7 +203,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             , # values: private, public-read, public-read-write, aws-exec-read, authenticated-read, bucket-owner-read, bucket-owner-full-control, log-delivery-write; OPTIONAL
           },    # OPTIONAL
           salesforce => {
-            token => 'MySalesforceToken',       # min: 40,
+            token => 'MySalesforceToken',       # min: 40
             url   => 'MySalesforceEndpoint',    # max: 2000
 
           },    # OPTIONAL
