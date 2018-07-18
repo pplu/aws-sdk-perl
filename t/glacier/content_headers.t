@@ -221,8 +221,6 @@ foreach my $method (qw/AbortMultipartUpload AbortVaultLock AddTagsToVault Comple
     diag qq[Error creating object: $@];
   };
 
-  TODO: {
-    local $TODO = "remove after fixing issue 260 object string errors.";
   ## The HTTP headers should contain a x-amz-glacier-version header
     if ($response) {
       ok($response->header('x-amz-glacier-version'), "Glacier $method header contains x-amz-glacier-version header");
@@ -230,6 +228,6 @@ foreach my $method (qw/AbortMultipartUpload AbortVaultLock AddTagsToVault Comple
       fail("Header doesn't exist as it is undefined.");
     }
   };
-}
+
 
 done_testing;
