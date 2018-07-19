@@ -1,4 +1,6 @@
 0.39
+ - Paws is now installed with Module::Builder::Tiny, which speeds
+   up installation (Grinzz)
  - API updates for any service up to the date of release
  - New API: Macie
  - New API: DLM
