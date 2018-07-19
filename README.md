@@ -258,8 +258,11 @@ This code is distributed under the Apache v2 License
 Thanks
 ================
 
-CAPSiDE (http://www.capside.com) for letting Paws be contributed in an open source model
-and giving me time to build and maintain it regularly
+CAPSiDE (https://www.capside.com) for letting Paws be contributed in an open source model
+and giving me time to build and maintain it regularly.
+
+ZipRecruiter (https://www.ziprecruiter.com/) for sponsoring development of Paws. Lots of work
+from ZipRecruiter has been done via Shadowcat Systems (https://shadow.cat/).
 
 Luis Alberto Gimenez (@agimenez) for
  - The git-fu cleaning up the "pull other sdks" code
@@ -324,7 +327,9 @@ rpcme for reporting various bugs in the SDK
 
 glenveegee for lots of work sorting out the S3 implementation
 
-Grinzz for many bugs, suggestions and fixes
+Grinzz
+ - many bugs, suggestions and fixes
+ - Installation speedup with Module::Builder::Tiny
 
 Dakkar for solving issues with parameter passing
 
