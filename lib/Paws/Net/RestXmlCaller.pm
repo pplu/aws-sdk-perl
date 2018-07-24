@@ -155,26 +155,18 @@ package Paws::Net::RestXmlCaller;
     my ($self, $attribute, $value) = @_;
     my $xml;
     my $att_name = $attribute->name;
+    my $location = $attribute->does('NameInRequest') ? $attribute->request_name : $att_name;
     if (Moose::Util::find_meta($attribute->type_constraint->name))
     {
-      if ($attribute->does('NameInRequest'))
-      {
-        my $location = $attribute->request_name;
         $xml = sprintf '<%s>%s</%s>', $location, $self->_to_xml($value), $location;
-      }
-      else
-      {
-        $xml = sprintf '<%s>%s</%s>', $att_name, $self->_to_xml($value), $att_name;
-      }
     }
     elsif ($attribute->type_constraint eq 'ArrayRef[Str|Undef]')
     {
-      my $location = $attribute->request_name;
-      $xml = "<${att_name}>" . ( join '', map { sprintf '<%s>%s</%s>', $location, $_, $location } @{ $value } ) . "</${att_name}>";
+      my $req_namen = $attribute->request_name;
+      $xml = "<${att_name}>" . ( join '', map { sprintf '<%s>%s</%s>', $req_name, $_, $req_name } @{ $value } ) . "</${att_name}>";
     }
     elsif ($attribute->type_constraint =~ m/^ArrayRef\[(.*?\:\:.*)\]/)
     {                        #assume it's an array of Paws API objects
-      my $location = $attribute->does('NameInRequest') ? $attribute->request_name : $att_name;
       $xml =  ( join '', map { sprintf '<%s>%s</%s>', $location, $self->_to_xml($_), $location } @{ $value } );
       if( !$self->flattened_arrays ) {
         $xml = sprintf( '<%s>%s</%s>', $att_name, $xml, $att_name );
@@ -182,15 +174,7 @@ package Paws::Net::RestXmlCaller;
     }
     else
     {
-      if ($attribute->does('NameInRequest'))
-      {
-        my $location = $attribute->request_name;
         $xml =  sprintf '<%s>%s</%s>', $location, $value, $location;
-      }
-      else
-      {
-        $xml = sprintf '<%s>%s</%s>', $att_name, $value, $att_name;
-      }
     }
     return $xml;
   }
@@ -218,18 +202,8 @@ package Paws::Net::RestXmlCaller;
 #          not $attribute->does('Paws::API::Attribute::Trait::ParamInBody') and
           not $attribute->type_constraint eq 'Paws::S3::Metadata'
          ) {
-        my $attribute_value = $attribute->get_value($call);
-        if ( ref $attribute_value eq 'ARRAY' ) {
-          $xml .= $self->_attribute_to_xml($attribute, $attribute_value);
-        }
-        elsif ( ref $attribute_value )
-        {
-          my $location = $attribute->does('NameInRequest') ? $attribute->request_name : $attribute->name;
-          $xml .= sprintf '<%s>%s</%s>', $location, $self->_to_xml($attribute_value, $attribute->name), $location;
-        }
-        else {
-           $xml .= $attribute_value;
-        }
+        $DB::single=1;
+        $xml .= $self->_attribute_to_xml($attribute, $attribute->get_value($call));
       }
     }
 
