@@ -153,7 +153,7 @@ package Paws::Net::RestXmlCaller;
     }
     elsif ($attribute->type_constraint eq 'ArrayRef[Str|Undef]')
     {
-      my $req_namen = $attribute->request_name;
+      my $req_name = $attribute->request_name;
       $xml = "<${att_name}>" . ( join '', map { sprintf '<%s>%s</%s>', $req_name, $_, $req_name } @{ $value } ) . "</${att_name}>";
     }
     elsif ($attribute->type_constraint =~ m/^ArrayRef\[(.*?\:\:.*)\]/)
@@ -193,7 +193,6 @@ package Paws::Net::RestXmlCaller;
 #          not $attribute->does('Paws::API::Attribute::Trait::ParamInBody') and
           not $attribute->type_constraint eq 'Paws::S3::Metadata'
          ) {
-        $DB::single=1;
         $xml .= $self->_attribute_to_xml($attribute, $attribute->get_value($call));
       }
     }
