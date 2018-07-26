@@ -326,10 +326,17 @@ package Paws::API::Builder {
       my $ret = {};
       foreach my $op ($self->operations) {
         my $operation = $self->operation($op);
-        my $sh_name = $operation->{ input }->{ shape };
+        my $input = $operation->{ input };
+        my $sh_name = $input->{ shape };
         if (defined $sh_name){
           my $shape = $self->shape($sh_name);
           $shape = $self->capitalize_shape($shape);
+          foreach my $i_key (keys %$input) {
+            next if $i_key eq 'shape';
+            warn "INPUT shape $sh_name already has a key $i_key"
+              if (exists $shape->{ $i_key });
+            $shape->{ $i_key } = $input->{ $i_key };
+          }
           $ret->{ $sh_name } = $shape
         }
       }

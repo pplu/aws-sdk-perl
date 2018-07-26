@@ -205,6 +205,15 @@ package Paws::Net::RestXmlCaller;
         $xml .= $self->_attribute_to_xml($attribute, $attribute->get_value($call));
       }
     }
+    # Extra level of top-level wrapping, if set on the call object
+    if ($call->can('_top_level_element')) {
+      $xml = sprintf('<%s xmlns="%s">%s</%s>',
+                     $call->_top_level_element,
+                     $call->_top_level_namespace,
+                     $xml,
+                     $call->_top_level_element
+                    );
+    }
 
     return undef if (not $xml);
     return $xml;
