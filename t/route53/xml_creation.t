@@ -10,6 +10,7 @@ use English qw(-no-match-vars);
 use Data::Dumper;
 use Carp;
 use Test::More;
+use Test::XML::Compare;
 
 use Paws;
 use TestRequestCaller;
@@ -68,8 +69,8 @@ my %xml_methods = (
 my %xml_results = (
   ChangeResourceRecordSets => '<ChangeResourceRecordSetsRequest xmlns="https://route53.amazonaws.com/doc/2013-04-01/"><ChangeBatch><Changes><Change><Action>CREATE</Action><ResourceRecordSet><Type>A</Type><TTL>200</TTL><ResourceRecords><ResourceRecord><Value>127.0.0.1</Value></ResourceRecord></ResourceRecords><Name>MyResourceSet</Name></ResourceRecordSet></Change></Changes></ChangeBatch></ChangeResourceRecordSetsRequest>',
   ChangeTagsForResource => '<ChangeTagsForResourceRequest xmlns="https://route53.amazonaws.com/doc/2013-04-01/"><AddTags><Tag><Key>Cost Center</Key><Value>80432</Value></Tag></AddTags><RemoveTagKeys><Key>Owner</Key></RemoveTagKeys></ChangeTagsForResourceRequest>',
-  CreateHostedZone => '<CreateHostedZoneRequest xmlns="https://route53.amazonaws.com/doc/2013-04-01/"><CallerReference>MyThing</CallerReference><Name>MyDNSName</Name><VPC><VPCId>Something</VPCId><VPCRegion>us-west-2</VPCRegion></VPC></CreateHostedZoneRequest>',
-  CreateQueryLoggingConfig => '<CreateQueryLoggingConfigRequest xmlns="https://route53.amazonaws.com/doc/2013-04-01/"><CloudWatchLogsLogGroupArn>MyCloudWatchLogsLogGroupArn</CloudWatchLogsLogGroupArn><HostedZoneId>myZoneId</HostedZoneId></CreateQueryLoggingConfigRequest>',
+  CreateHostedZone => '<CreateHostedZoneRequest xmlns="https://route53.amazonaws.com/doc/2013-04-01/"><CallerReference>MyThing</CallerReference><VPC><VPCRegion>us-west-2</VPCRegion><VPCId>Something</VPCId></VPC><Name>MyDNSName</Name></CreateHostedZoneRequest>',
+  CreateQueryLoggingConfig => '<CreateQueryLoggingConfigRequest xmlns="https://route53.amazonaws.com/doc/2013-04-01/"><HostedZoneId>myZoneId</HostedZoneId><CloudWatchLogsLogGroupArn>MyCloudWatchLogsLogGroupArn</CloudWatchLogsLogGroupArn></CreateQueryLoggingConfigRequest>',
 );
 
 foreach my $method (qw/ChangeResourceRecordSets ChangeTagsForResource CreateHostedZone CreateQueryLoggingConfig/) {
@@ -80,13 +81,10 @@ foreach my $method (qw/ChangeResourceRecordSets ChangeTagsForResource CreateHost
     warn qq[Error calling method: $@];
   };
 
- TODO: {
-    local $TODO = 'Remove when the XML creation has been fixed';
-    if ($request) {
-      is($request->content, $xml_results{$method}, "$method XML is ok");
-    } else {
-      fail("Request for $method is undefined.")
-    }
-  };
+  if ($request) {
+    is_xml_same($request->content, $xml_results{$method}, "$method XML is ok");
+  } else {
+    fail("Request for $method is undefined.")
+  }
 }
 done_testing;
