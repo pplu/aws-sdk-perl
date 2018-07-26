@@ -71,4 +71,5 @@ on 'test' => sub {
   requires 'Test::Warnings';
   requires 'Class::Unload';
   requires 'File::Slurper';
+  requires 'Test::XML::Compare';
 };

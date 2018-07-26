@@ -63,14 +63,11 @@ foreach my $method (qw/ChangeTagsForResource CreateQueryLoggingConfig ListResour
     warn qq[Error calling method: $@];
   };
 
-  TODO: {
-    local $TODO = 'Remove when the XML creation has been fixed';
-    # check the uri matches using the examples given in the AWS API docs for the method
-    if ($request) {
+  # check the uri matches using the examples given in the AWS API docs for the method
+  if ($request) {
       is($request->uri, $uri_expected{$method}, "Route53 $method uri matches expected behaviour.");
-    } else {
+  } else {
       fail("Request for $method is undefined.")
-    }
-  };
+  }
 }
 done_testing;
