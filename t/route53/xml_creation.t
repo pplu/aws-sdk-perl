@@ -10,6 +10,7 @@ use English qw(-no-match-vars);
 use Data::Dumper;
 use Carp;
 use Test::More;
+use Test::XML::Compare;
 
 use Paws;
 use TestRequestCaller;
