@@ -1,6 +1,7 @@
 package Paws::API::Caller;
   use Moose::Role;
   use Carp;
+  use Paws;
   use Paws::Net::APIRequest;
   use Paws::API::Response;
 
