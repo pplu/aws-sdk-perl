@@ -22,7 +22,7 @@ my $bucketname = 'shadowcatjesstest';
 my $s3 = Paws->service('S3', region => 'us-west-2');
 
 my %md5_methods = (
-  'PutBucketLifecycle' => {
+  'PutBucketLifecycleConfiguration' => {
     Bucket => $bucketname,
     LifecycleConfiguration => {
       Rules => [
@@ -47,14 +47,14 @@ my %md5_methods = (
  );
 
 my %xml_results = (
-  PutBucketLifecycle => '<LifecycleConfiguration><Rule><Status>Enabled</Status><Filter></Filter></Rule></LifecycleConfiguration>',
+  PutBucketLifecycleConfiguration => '<LifecycleConfiguration><Rule><Status>Enabled</Status><Filter></Filter></Rule></LifecycleConfiguration>',
   SelectObjectContent => '<SelectRequest><Expression>Select * from S3Object</Expression><ExpressionType>SQL</ExpressionType><InputSerialization></InputSerialization><OutputSerialization></OutputSerialization></SelectRequest>',
  );
 
 # content length: Length of the message (without the headers)
 # according to RFC 2616. This header is required for PUTs and
 # operations that load XML, such as logging and ACLs.
-foreach my $method (qw/PutBucketLifecycle SelectObjectContent/) {
+foreach my $method (qw/PutBucketLifecycleConfiguration SelectObjectContent/) {
   my $request;
   diag $method;
   eval { $request = $s3->$method(%{ $md5_methods{$method} });
