@@ -13,7 +13,7 @@ package Paws::Route53::ChangeTagsForResource;
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::ChangeTagsForResourceResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-  
+
 1;
 
 ### main pod documentation begin ###
@@ -110,4 +110,3 @@ The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
 Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
-
