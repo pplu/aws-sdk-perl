@@ -112,16 +112,28 @@ package Paws::Net::RestJsonCaller;
     $request->url($url);
 
     $self->_to_header_params($request, $call);
-    
+
+    my $data = '';
     if ($call->can('_stream_param')) {
       my $param_name = $call->_stream_param;
-      $request->content($call->$param_name);
+      if (ref($call->$param_name) ) {
+        $data = $self->_to_jsoncaller_params($call->$param_name);
+      } else {
+        $data = $call->$param_name;
+      }
+      my $att = $call->meta->get_attribute($param_name);
+      if($att->does('Paws::API::Attribute::Trait::NameInRequest')) {
+        $data = { $att->request_name => $data };
+      }
+        
       #$request->headers->header( 'content-length' => $request->content_length );
       #$request->headers->header( 'content-type'   => $self->content_type );
     } else {
-      my $data = $self->_to_jsoncaller_params($call);
-      $request->content(encode_json($data));
+      my $content_data = $call;
+      $data = $self->_to_jsoncaller_params($content_data);
     }
+    $data = ref $data ? encode_json($data) : $data;
+    $request->content($data);
     
     $request->method($call->_api_method);
 
