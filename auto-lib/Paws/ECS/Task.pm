@@ -64,7 +64,7 @@ Details on a task in a cluster.
 
 =head2 Attachments => ArrayRef[L<Paws::ECS::Attachment>]
 
-  The Elastic Network Adapter associated with the task if the task uses
+  The elastic network adapter associated with the task if the task uses
 the C<awsvpc> network mode.
 
 
@@ -98,9 +98,9 @@ status.
 
   The number of CPU units used by the task. It can be expressed as an
 integer using CPU units, for example C<1024>, or as a string using
-vCPUs, for example C<1 vCPU> or C<1 vcpu>, in a task definition but is
-converted to an integer indicating the CPU units when the task
-definition is registered.
+vCPUs, for example C<1 vCPU> or C<1 vcpu>, in a task definition. String
+values are converted to an integer indicating the CPU units when the
+task definition is registered.
 
 If using the EC2 launch type, this field is optional. Supported values
 are between C<128> CPU units (C<0.125> vCPUs) and C<10240> CPU units
@@ -193,8 +193,9 @@ that exist in the container image.
 
   The amount of memory (in MiB) used by the task. It can be expressed as
 an integer using MiB, for example C<1024>, or as a string using GB, for
-example C<1GB> or C<1 GB>, in a task definition but is converted to an
-integer indicating the MiB when the task definition is registered.
+example C<1GB> or C<1 GB>, in a task definition. String values are
+converted to an integer indicating the MiB when the task definition is
+registered.
 
 If using the EC2 launch type, this field is optional.
 
@@ -282,7 +283,7 @@ transitioned from the C<RUNNING> state to the C<STOPPED> state).
 
 =head2 StoppingAt => Str
 
-  The Unix time stamp for when the task will stop (transitions from the
+  The Unix time stamp for when the task stops (transitions from the
 C<RUNNING> state to C<STOPPED>).
 
 
