@@ -33,7 +33,7 @@ my %md5_methods = (
        ],
     }
   },
-  'PutBucketLifecycle' => {
+  'PutBucketLifecycleConfiguration' => {
     Bucket => $bucketname,
     LifecycleConfiguration => {
       Rules => [
@@ -204,7 +204,7 @@ my %md5_methods = (
  );
 
 # content md5
-foreach my $method (qw/DeleteObjects RestoreObject PutBucketLifecycle PutBucketTagging PutBucketCors PutObjectTagging PutBucketReplication/) {
+foreach my $method (qw/DeleteObjects RestoreObject PutBucketLifecycleConfiguration PutBucketTagging PutBucketCors PutObjectTagging PutBucketReplication/) {
   my $response;
   eval { $response = $s3->$method(%{ $md5_methods{$method} });
   } or do {
@@ -221,7 +221,7 @@ foreach my $method (qw/DeleteObjects RestoreObject PutBucketLifecycle PutBucketT
 # content length: Length of the message (without the headers)
 # according to RFC 2616. This header is required for PUTs and
 # operations that load XML, such as logging and ACLs.
-foreach my $method (qw/CreateBucket PutBucketAccelerateConfiguration PutBucketAcl PutBucketEncryption PutBucketInventoryConfiguration PutBucketLogging PutBucketMetricsConfiguration PutBucketNotification PutBucketPolicy PutBucketReplication PutBucketRequestPayment PutBucketVersioning PutBucketWebsite PutBucketLifecycle PutBucketTagging PutBucketCors PutObject PutObjectTagging DeleteObjects UploadPart/) {
+foreach my $method (qw/CreateBucket PutBucketAccelerateConfiguration PutBucketAcl PutBucketEncryption PutBucketInventoryConfiguration PutBucketLogging PutBucketMetricsConfiguration PutBucketNotification PutBucketPolicy PutBucketReplication PutBucketRequestPayment PutBucketVersioning PutBucketWebsite PutBucketLifecycleConfiguration PutBucketTagging PutBucketCors PutObject PutObjectTagging DeleteObjects UploadPart/) {
   my $response;
   eval { $response = $s3->$method(%{ $md5_methods{$method} });
   } or do {
