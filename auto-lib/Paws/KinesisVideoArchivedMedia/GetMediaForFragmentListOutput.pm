@@ -26,7 +26,9 @@ The content type of the requested media.
 
 The payload that Kinesis Video Streams returns is a sequence of chunks
 from the specified stream. For information about the chunks, see
-PutMedia. The chunks that Kinesis Video Streams returns in the
+PutMedia
+(http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/API_dataplane_PutMedia.html).
+The chunks that Kinesis Video Streams returns in the
 C<GetMediaForFragmentList> call also include the following additional
 Matroska (MKV) tags:
 
