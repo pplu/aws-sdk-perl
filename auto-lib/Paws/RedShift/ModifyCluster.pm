@@ -12,6 +12,7 @@ package Paws::RedShift::ModifyCluster;
   has EnhancedVpcRouting => (is => 'ro', isa => 'Bool');
   has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str');
   has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
+  has MaintenanceTrackName => (is => 'ro', isa => 'Str');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
   has NewClusterIdentifier => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
@@ -56,6 +57,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EnhancedVpcRouting               => 1,                      # OPTIONAL
       HsmClientCertificateIdentifier   => 'MyString',             # OPTIONAL
       HsmConfigurationIdentifier       => 'MyString',             # OPTIONAL
+      MaintenanceTrackName             => 'MyString',             # OPTIONAL
       MasterUserPassword               => 'MyString',             # OPTIONAL
       NewClusterIdentifier             => 'MyString',             # OPTIONAL
       NodeType                         => 'MyString',             # OPTIONAL
@@ -224,6 +226,17 @@ cluster uses to retrieve the data encryption keys stored in an HSM.
 Specifies the name of the HSM configuration that contains the
 information the Amazon Redshift cluster can use to retrieve and store
 keys in an HSM.
+
+
+
+=head2 MaintenanceTrackName => Str
+
+The name for the maintenance track that you want to assign for the
+cluster. This name change is asynchronous. The new track name stays in
+the C<PendingModifiedValues> for the cluster until the next maintenance
+window. When the maintenance track changes, the cluster is switched to
+the latest cluster release available for the maintenance track. At this
+point, the maintenance track name is applied.
 
 
 
