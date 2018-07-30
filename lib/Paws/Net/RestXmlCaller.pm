@@ -28,7 +28,7 @@ package Paws::Net::RestXmlCaller;
 
     my %p;
     foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
-      
+
       # e.g. S3 metadata objects, which are passed in the header
       next if $params->meta->get_attribute($att)->does('Paws::API::Attribute::Trait::ParamInHeaders');
 
@@ -120,7 +120,7 @@ package Paws::Net::RestXmlCaller;
       elsif ($attribute->does('Paws::API::Attribute::Trait::ParamInHeaders')) {
         my $map = $attribute->get_value($call)->Map;
         my $prefix = $attribute->header_prefix;
-        for my $header (keys %{$map}) { 
+        for my $header (keys %{$map}) {
           my $header_name = $prefix . $header;
           $request->headers->header( $header_name => $map->{$header} );
         }
@@ -171,7 +171,7 @@ package Paws::Net::RestXmlCaller;
         }
       }
     }
-    return $xml; 
+    return $xml;
   }
 
   sub _to_xml_body {
@@ -179,11 +179,11 @@ package Paws::Net::RestXmlCaller;
 
     my $xml = '';
     foreach my $attribute ($call->meta->get_all_attributes) {
-      if ($attribute->has_value($call) and 
+      if ($attribute->has_value($call) and
           not $attribute->does('Paws::API::Attribute::Trait::ParamInHeader') and
           not $attribute->does('Paws::API::Attribute::Trait::ParamInQuery') and
           not $attribute->does('Paws::API::Attribute::Trait::ParamInURI') and
-          not $attribute->does('Paws::API::Attribute::Trait::ParamInBody') and 
+          not $attribute->does('Paws::API::Attribute::Trait::ParamInBody') and
           not $attribute->type_constraint eq 'Paws::S3::Metadata'
          ) {
         my $attribute_value = $attribute->get_value($call);
@@ -239,7 +239,8 @@ package Paws::Net::RestXmlCaller;
 
     if ($call->can('_stream_param')) {
       my $param_name = $call->_stream_param;
-      $request->content($call->$param_name);
+      my $content = $call->$param_name // '';
+      $request->content($content);
       $request->headers->header( 'content-length' => $request->content_length );
       #$request->headers->header( 'content-type'   => $self->content_type );
     }
