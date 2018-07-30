@@ -1,5 +1,6 @@
 package Paws::CodeBuild::BuildArtifacts;
   use Moose;
+  has EncryptionDisabled => (is => 'ro', isa => 'Bool', request_name => 'encryptionDisabled', traits => ['NameInRequest']);
   has Location => (is => 'ro', isa => 'Str', request_name => 'location', traits => ['NameInRequest']);
   has Md5sum => (is => 'ro', isa => 'Str', request_name => 'md5sum', traits => ['NameInRequest']);
   has Sha256sum => (is => 'ro', isa => 'Str', request_name => 'sha256sum', traits => ['NameInRequest']);
@@ -22,20 +23,26 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeBuild::BuildArtifacts object:
 
-  $service_obj->Method(Att1 => { Location => $value, ..., Sha256sum => $value  });
+  $service_obj->Method(Att1 => { EncryptionDisabled => $value, ..., Sha256sum => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodeBuild::BuildArtifacts object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Location
+  $result->Att1->EncryptionDisabled
 
 =head1 DESCRIPTION
 
 Information about build output artifacts.
 
 =head1 ATTRIBUTES
+
+
+=head2 EncryptionDisabled => Bool
+
+  Information that tells you if encryption for build artifacts is
+disabled.
 
 
 =head2 Location => Str
