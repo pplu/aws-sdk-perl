@@ -1,6 +1,7 @@
 0.39
  - Paws is now installed with Module::Builder::Tiny, which speeds
    up installation (Grinzz)
+ - Fix failing tests when AWS_CONFIG_FILE env var is set in the test environment (stevecaldwell77)
  - API updates for any service up to the date of release
  - New API: Macie
  - New API: DLM
