@@ -47,11 +47,8 @@ foreach my $char (@to_encode) {
     diag qq[Error creating object: $@];
   };
 
- TODO: {
-     local $TODO = 'Remove when URI encoding is sorted';
 ## The URI should contain a once-encoded character:
-     is($response->url, 'https://s3-us-west-2.amazonaws.com/test-uri-paws/test' . uri_escape($char), "S3 uri char " . ord($char) . " encoded correctly");
-  };
+  is($response->url, 'https://s3-us-west-2.amazonaws.com/test-uri-paws/test' . uri_escape($char), "S3 uri char " . ord($char) . " encoded correctly");
 }
 
 # Do NOT encode the "/" in a Key name:
