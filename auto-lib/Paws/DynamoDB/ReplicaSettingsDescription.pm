@@ -2,7 +2,9 @@ package Paws::DynamoDB::ReplicaSettingsDescription;
   use Moose;
   has RegionName => (is => 'ro', isa => 'Str', required => 1);
   has ReplicaGlobalSecondaryIndexSettings => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::ReplicaGlobalSecondaryIndexSettingsDescription]');
+  has ReplicaProvisionedReadCapacityAutoScalingSettings => (is => 'ro', isa => 'Paws::DynamoDB::AutoScalingSettingsDescription');
   has ReplicaProvisionedReadCapacityUnits => (is => 'ro', isa => 'Int');
+  has ReplicaProvisionedWriteCapacityAutoScalingSettings => (is => 'ro', isa => 'Paws::DynamoDB::AutoScalingSettingsDescription');
   has ReplicaProvisionedWriteCapacityUnits => (is => 'ro', isa => 'Int');
   has ReplicaStatus => (is => 'ro', isa => 'Str');
 1;
@@ -50,6 +52,11 @@ Represents the properties of a replica.
   Replica global secondary index settings for the global table.
 
 
+=head2 ReplicaProvisionedReadCapacityAutoScalingSettings => L<Paws::DynamoDB::AutoScalingSettingsDescription>
+
+  Autoscaling settings for a global table replica's read capacity units.
+
+
 =head2 ReplicaProvisionedReadCapacityUnits => Int
 
   The maximum number of strongly consistent reads consumed per second
@@ -57,6 +64,11 @@ before DynamoDB returns a C<ThrottlingException>. For more information,
 see Specifying Read and Write Requirements
 (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput)
 in the I<Amazon DynamoDB Developer Guide>.
+
+
+=head2 ReplicaProvisionedWriteCapacityAutoScalingSettings => L<Paws::DynamoDB::AutoScalingSettingsDescription>
+
+  AutoScaling settings for a global table replica's write capacity units.
 
 
 =head2 ReplicaProvisionedWriteCapacityUnits => Int

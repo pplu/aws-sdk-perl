@@ -49,12 +49,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $StartBuildOutput = $codebuild->StartBuild(
       ProjectName       => 'MyNonEmptyString',
       ArtifactsOverride => {
-        Type     => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
-        Location => 'MyString',        # OPTIONAL
-        Name     => 'MyString',        # OPTIONAL
-        NamespaceType => 'NONE',       # values: NONE, BUILD_ID; OPTIONAL
-        Packaging     => 'NONE',       # values: NONE, ZIP; OPTIONAL
-        Path          => 'MyString',   # OPTIONAL
+        Type => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
+        EncryptionDisabled => 1,             # OPTIONAL
+        Location           => 'MyString',    # OPTIONAL
+        Name               => 'MyString',    # OPTIONAL
+        NamespaceType      => 'NONE',        # values: NONE, BUILD_ID; OPTIONAL
+        Packaging          => 'NONE',        # values: NONE, ZIP; OPTIONAL
+        Path               => 'MyString',    # OPTIONAL
       },    # OPTIONAL
       BuildspecOverride => 'MyString',    # OPTIONAL
       CacheOverride     => {

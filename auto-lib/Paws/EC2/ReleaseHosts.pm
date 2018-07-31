@@ -46,7 +46,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 B<REQUIRED> HostIds => ArrayRef[Str|Undef]
 
-The IDs of the Dedicated Hosts you want to release.
+The IDs of the Dedicated Hosts to release.
 
 
 

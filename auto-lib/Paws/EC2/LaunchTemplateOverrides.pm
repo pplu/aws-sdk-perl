@@ -2,6 +2,7 @@ package Paws::EC2::LaunchTemplateOverrides;
   use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
   has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
+  has Priority => (is => 'ro', isa => 'Num', request_name => 'priority', traits => ['NameInRequest']);
   has SpotPrice => (is => 'ro', isa => 'Str', request_name => 'spotPrice', traits => ['NameInRequest']);
   has SubnetId => (is => 'ro', isa => 'Str', request_name => 'subnetId', traits => ['NameInRequest']);
   has WeightedCapacity => (is => 'ro', isa => 'Num', request_name => 'weightedCapacity', traits => ['NameInRequest']);
@@ -48,6 +49,17 @@ This class has no description
 =head2 InstanceType => Str
 
   The instance type.
+
+
+=head2 Priority => Num
+
+  The priority for the launch template override. If
+B<OnDemandAllocationStrategy> is set to C<prioritized>, Spot Fleet uses
+priority to determine which launch template override to use first in
+fulfilling On-Demand capacity. The highest priority is launched first.
+Valid values are whole numbers starting at C<0>. The lower the number,
+the higher the priority. If no number is set, the launch template
+override has the lowest priority.
 
 
 =head2 SpotPrice => Str

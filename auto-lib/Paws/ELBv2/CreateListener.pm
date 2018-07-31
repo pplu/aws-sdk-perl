@@ -103,7 +103,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 =head2 Certificates => ArrayRef[L<Paws::ELBv2::Certificate>]
 
 [HTTPS listeners] The default SSL server certificate. You must provide
-exactly one certificate. To create a certificate list, use
+exactly one default certificate. To create a certificate list, use
 AddListenerCertificates.
 
 
@@ -111,18 +111,25 @@ AddListenerCertificates.
 =head2 B<REQUIRED> DefaultActions => ArrayRef[L<Paws::ELBv2::Action>]
 
 The actions for the default rule. The rule must include one forward
-action.
+action or one or more fixed-response actions.
 
 If the action type is C<forward>, you can specify a single target
 group. The protocol of the target group must be HTTP or HTTPS for an
 Application Load Balancer or TCP for a Network Load Balancer.
 
-If the action type is C<authenticate-oidc>, you can use an identity
-provider that is OpenID Connect (OIDC) compliant to authenticate users
-as they access your application.
+[HTTPS listener] If the action type is C<authenticate-oidc>, you can
+use an identity provider that is OpenID Connect (OIDC) compliant to
+authenticate users as they access your application.
 
-If the action type is C<authenticate-cognito>, you can use Amazon
-Cognito to authenticate users as they access your application.
+[HTTPS listener] If the action type is C<authenticate-cognito>, you can
+use Amazon Cognito to authenticate users as they access your
+application.
+
+[Application Load Balancer] If the action type is C<redirect>, you can
+redirect HTTP and HTTPS requests.
+
+[Application Load Balancer] If the action type is C<fixed-response>,
+you can return a custom HTTP response.
 
 
 

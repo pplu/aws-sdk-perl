@@ -205,8 +205,8 @@ Valid values are: C<"T50">, C<"T80">, C<"T100">, C<"NoPreference">
 
 =head2 SnowballType => Str
 
-The type of AWS Snowball appliance to use for this job. Currently, the
-only supported appliance type for cluster jobs is C<EDGE>.
+The type of AWS Snowball device to use for this job. Currently, the
+only supported device type for cluster jobs is C<EDGE>.
 
 Valid values are: C<"STANDARD">, C<"EDGE">
 

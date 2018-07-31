@@ -142,36 +142,43 @@ package Paws::Net::RestXmlCaller;
     return $str;
   }
 
+  sub _attribute_to_xml {
+    my ($self, $attribute, $value) = @_;
+    my $xml;
+    my $att_name = $attribute->name;
+    my $location = $attribute->does('NameInRequest') ? $attribute->request_name : $att_name;
+    if (Moose::Util::find_meta($attribute->type_constraint->name))
+    {
+        $xml = sprintf '<%s>%s</%s>', $location, $self->_to_xml($value), $location;
+    }
+    elsif ($attribute->type_constraint eq 'ArrayRef[Str|Undef]')
+    {
+      my $req_name = $attribute->request_name;
+      $xml = "<${att_name}>" . ( join '', map { sprintf '<%s>%s</%s>', $req_name, $_, $req_name } @{ $value } ) . "</${att_name}>";
+    }
+    elsif ($attribute->type_constraint =~ m/^ArrayRef\[(.*?\:\:.*)\]/)
+    {                        #assume it's an array of Paws API objects
+      $xml =  ( join '', map { sprintf '<%s>%s</%s>', $location, $self->_to_xml($_), $location } @{ $value } );
+      if( !$self->flattened_arrays ) {
+        $xml = sprintf( '<%s>%s</%s>', $att_name, $xml, $att_name );
+      }
+    }
+    else
+    {
+        $xml =  sprintf '<%s>%s</%s>', $location, $value, $location;
+    }
+    return $xml;
+  }
+
   sub _to_xml {
     my ($self, $value) = @_;
 
     my $xml = '';
     foreach my $attribute ($value->meta->get_all_attributes) {
-      my $att_name = $attribute->name;
       next if (not $attribute->has_value($value));
-      if (Moose::Util::find_meta($attribute->type_constraint->name)) {
-        if ($attribute->does('NameInRequest')) {
-          my $location = $attribute->request_name;
-          $xml .= sprintf '<%s>%s</%s>', $location, $self->_to_xml($attribute->get_value($value)), $location;
-        } else {
-          $xml .= sprintf '<%s>%s</%s>', $att_name, $self->_to_xml($attribute->get_value($value)), $att_name;
-        }
-      } elsif ($attribute->type_constraint eq 'ArrayRef[Str|Undef]') {
-          my $location = $attribute->request_name;
-          $xml .= "<${att_name}>" . ( join '', map { sprintf '<%s>%s</%s>', $location, $_, $location } @{ $attribute->get_value($value) } ) . "</${att_name}>";
-      } elsif ($attribute->type_constraint =~ m/^ArrayRef\[(.*?\:\:.*)\]/) { #assume it's an array of Paws API objects
-        my $location = $attribute->does('NameInRequest') ? $attribute->request_name : $att_name;
-        $xml .=  ( join '', map { sprintf '<%s>%s</%s>', $location, $self->_to_xml($_), $location } @{ $attribute->get_value($value) } );
-      } else {
-        if ($attribute->does('NameInRequest')) {
-          my $location = $attribute->request_name;
-          $xml .=  sprintf '<%s>%s</%s>', $location, $attribute->get_value($value), $location;
-        } else {
-          $xml .= sprintf '<%s>%s</%s>', $att_name, $attribute->get_value($value), $att_name;
-        }
-      }
+      $xml .= $self->_attribute_to_xml($attribute, $attribute->get_value($value));
     }
-    return $xml; 
+    return $xml;
   }
 
   sub _to_xml_body {
@@ -183,18 +190,20 @@ package Paws::Net::RestXmlCaller;
           not $attribute->does('Paws::API::Attribute::Trait::ParamInHeader') and
           not $attribute->does('Paws::API::Attribute::Trait::ParamInQuery') and
           not $attribute->does('Paws::API::Attribute::Trait::ParamInURI') and
-          not $attribute->does('Paws::API::Attribute::Trait::ParamInBody') and
+#          not $attribute->does('Paws::API::Attribute::Trait::ParamInBody') and
           not $attribute->type_constraint eq 'Paws::S3::Metadata'
          ) {
-        my $attribute_value = $attribute->get_value($call);
-        if ( ref $attribute_value ) {
-          my $location = $attribute->does('NameInRequest') ? $attribute->request_name : $attribute->name;
-          $xml .= sprintf '<%s>%s</%s>', $location, $self->_to_xml($attribute_value), $location;
-        }
-        else {
-           $xml .= $attribute_value;
-        }
+        $xml .= $self->_attribute_to_xml($attribute, $attribute->get_value($call));
       }
+    }
+    # Extra level of top-level wrapping, if set on the call object
+    if ($call->can('_top_level_element')) {
+      $xml = sprintf('<%s xmlns="%s">%s</%s>',
+                     $call->_top_level_element,
+                     $call->_top_level_namespace,
+                     $xml,
+                     $call->_top_level_element
+                    );
     }
 
     return undef if (not $xml);

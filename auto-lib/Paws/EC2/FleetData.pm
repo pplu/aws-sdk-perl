@@ -9,6 +9,7 @@ package Paws::EC2::FleetData;
   has FulfilledCapacity => (is => 'ro', isa => 'Num', request_name => 'fulfilledCapacity', traits => ['NameInRequest']);
   has FulfilledOnDemandCapacity => (is => 'ro', isa => 'Num', request_name => 'fulfilledOnDemandCapacity', traits => ['NameInRequest']);
   has LaunchTemplateConfigs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::FleetLaunchTemplateConfig]', request_name => 'launchTemplateConfigs', traits => ['NameInRequest']);
+  has OnDemandOptions => (is => 'ro', isa => 'Paws::EC2::OnDemandOptions', request_name => 'onDemandOptions', traits => ['NameInRequest']);
   has ReplaceUnhealthyInstances => (is => 'ro', isa => 'Bool', request_name => 'replaceUnhealthyInstances', traits => ['NameInRequest']);
   has SpotOptions => (is => 'ro', isa => 'Paws::EC2::SpotOptions', request_name => 'spotOptions', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
@@ -108,6 +109,11 @@ target On-Demand capacity.
 =head2 LaunchTemplateConfigs => ArrayRef[L<Paws::EC2::FleetLaunchTemplateConfig>]
 
   The launch template and overrides.
+
+
+=head2 OnDemandOptions => L<Paws::EC2::OnDemandOptions>
+
+  The allocation strategy of On-Demand Instances in an EC2 Fleet.
 
 
 =head2 ReplaceUnhealthyInstances => Bool

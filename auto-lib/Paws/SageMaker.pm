@@ -60,6 +60,11 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::CreateTrainingJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateTransformJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::CreateTransformJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteEndpoint {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::DeleteEndpoint', @_);
@@ -125,6 +130,11 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeTrainingJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeTransformJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeTransformJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListEndpointConfigs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::ListEndpointConfigs', @_);
@@ -170,6 +180,11 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::ListTrainingJobsForHyperParameterTuningJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTransformJobs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::ListTransformJobs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartNotebookInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::StartNotebookInstance', @_);
@@ -188,6 +203,11 @@ package Paws::SageMaker;
   sub StopTrainingJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::StopTrainingJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopTransformJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::StopTransformJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateEndpoint {
@@ -351,7 +371,7 @@ package Paws::SageMaker;
   }
 
 
-  sub operations { qw/AddTags CreateEndpoint CreateEndpointConfig CreateHyperParameterTuningJob CreateModel CreateNotebookInstance CreateNotebookInstanceLifecycleConfig CreatePresignedNotebookInstanceUrl CreateTrainingJob DeleteEndpoint DeleteEndpointConfig DeleteModel DeleteNotebookInstance DeleteNotebookInstanceLifecycleConfig DeleteTags DescribeEndpoint DescribeEndpointConfig DescribeHyperParameterTuningJob DescribeModel DescribeNotebookInstance DescribeNotebookInstanceLifecycleConfig DescribeTrainingJob ListEndpointConfigs ListEndpoints ListHyperParameterTuningJobs ListModels ListNotebookInstanceLifecycleConfigs ListNotebookInstances ListTags ListTrainingJobs ListTrainingJobsForHyperParameterTuningJob StartNotebookInstance StopHyperParameterTuningJob StopNotebookInstance StopTrainingJob UpdateEndpoint UpdateEndpointWeightsAndCapacities UpdateNotebookInstance UpdateNotebookInstanceLifecycleConfig / }
+  sub operations { qw/AddTags CreateEndpoint CreateEndpointConfig CreateHyperParameterTuningJob CreateModel CreateNotebookInstance CreateNotebookInstanceLifecycleConfig CreatePresignedNotebookInstanceUrl CreateTrainingJob CreateTransformJob DeleteEndpoint DeleteEndpointConfig DeleteModel DeleteNotebookInstance DeleteNotebookInstanceLifecycleConfig DeleteTags DescribeEndpoint DescribeEndpointConfig DescribeHyperParameterTuningJob DescribeModel DescribeNotebookInstance DescribeNotebookInstanceLifecycleConfig DescribeTrainingJob DescribeTransformJob ListEndpointConfigs ListEndpoints ListHyperParameterTuningJobs ListModels ListNotebookInstanceLifecycleConfigs ListNotebookInstances ListTags ListTrainingJobs ListTrainingJobsForHyperParameterTuningJob ListTransformJobs StartNotebookInstance StopHyperParameterTuningJob StopNotebookInstance StopTrainingJob StopTransformJob UpdateEndpoint UpdateEndpointWeightsAndCapacities UpdateNotebookInstance UpdateNotebookInstanceLifecycleConfig / }
 
 1;
 
@@ -811,6 +831,78 @@ For more information about Amazon SageMaker, see How It Works
 (http://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html).
 
 
+=head2 CreateTransformJob
+
+=over
+
+=item ModelName => Str
+
+=item TransformInput => L<Paws::SageMaker::TransformInput>
+
+=item TransformJobName => Str
+
+=item TransformOutput => L<Paws::SageMaker::TransformOutput>
+
+=item TransformResources => L<Paws::SageMaker::TransformResources>
+
+=item [BatchStrategy => Str]
+
+=item [Environment => L<Paws::SageMaker::TransformEnvironmentMap>]
+
+=item [MaxConcurrentTransforms => Int]
+
+=item [MaxPayloadInMB => Int]
+
+=item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::CreateTransformJob>
+
+Returns: a L<Paws::SageMaker::CreateTransformJobResponse> instance
+
+Starts a transform job. After the results are obtained, Amazon
+SageMaker saves them to an Amazon S3 location that you specify.
+
+To perform batch transformations, you create a transform job and use
+the data that you have readily available.
+
+In the request body, you provide the following:
+
+=over
+
+=item *
+
+C<TransformJobName> - Identifies the transform job. The name must be
+unique within an AWS Region in an AWS account.
+
+=item *
+
+C<ModelName> - Identifies the model to use.
+
+=item *
+
+C<TransformInput> - Describes the dataset to be transformed and the
+Amazon S3 location where it is stored.
+
+=item *
+
+C<TransformOutput> - Identifies the Amazon S3 location where you want
+Amazon SageMaker to save the results from the transform job.
+
+=item *
+
+C<TransformResources> - Identifies the ML compute instances for the
+transform job.
+
+=back
+
+For more information about how batch transformation works Amazon
+SageMaker, see How It Works
+(http://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html).
+
+
 =head2 DeleteEndpoint
 
 =over
@@ -1037,6 +1129,22 @@ Each argument is described in detail in: L<Paws::SageMaker::DescribeTrainingJob>
 Returns: a L<Paws::SageMaker::DescribeTrainingJobResponse> instance
 
 Returns information about a training job.
+
+
+=head2 DescribeTransformJob
+
+=over
+
+=item TransformJobName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::DescribeTransformJob>
+
+Returns: a L<Paws::SageMaker::DescribeTransformJobResponse> instance
+
+Returns information about a transform job.
 
 
 =head2 ListEndpointConfigs
@@ -1317,6 +1425,40 @@ Gets a list of TrainingJobSummary objects that describe the training
 jobs that a hyperparameter tuning job launched.
 
 
+=head2 ListTransformJobs
+
+=over
+
+=item [CreationTimeAfter => Str]
+
+=item [CreationTimeBefore => Str]
+
+=item [LastModifiedTimeAfter => Str]
+
+=item [LastModifiedTimeBefore => Str]
+
+=item [MaxResults => Int]
+
+=item [NameContains => Str]
+
+=item [NextToken => Str]
+
+=item [SortBy => Str]
+
+=item [SortOrder => Str]
+
+=item [StatusEquals => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::ListTransformJobs>
+
+Returns: a L<Paws::SageMaker::ListTransformJobsResponse> instance
+
+Lists transform jobs.
+
+
 =head2 StartNotebookInstance
 
 =over
@@ -1355,9 +1497,9 @@ that the tuning job launched.
 
 All model artifacts output from the training jobs are stored in Amazon
 Simple Storage Service (Amazon S3). All data that the training jobs
-write toAmazon CloudWatch Logs are still available in CloudWatch. After
-the tuning job moves to the C<Stopped> state, it releases all reserved
-resources for the tuning job.
+write to Amazon CloudWatch Logs are still available in CloudWatch.
+After the tuning job moves to the C<Stopped> state, it releases all
+reserved resources for the tuning job.
 
 
 =head2 StopNotebookInstance
@@ -1410,6 +1552,28 @@ Amazon SageMaker stops a training job to create a model.
 When it receives a C<StopTrainingJob> request, Amazon SageMaker changes
 the status of the job to C<Stopping>. After Amazon SageMaker stops the
 job, it sets the status to C<Stopped>.
+
+
+=head2 StopTransformJob
+
+=over
+
+=item TransformJobName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::StopTransformJob>
+
+Returns: nothing
+
+Stops a transform job.
+
+When Amazon SageMaker receives a C<StopTransformJob> request, the
+status of the job changes to C<Stopping>. After Amazon SageMaker stops
+the job, the status is set to C<Stopped>. When you stop a transform job
+before it is completed, Amazon SageMaker doesn't store the job's output
+in Amazon S3.
 
 
 =head2 UpdateEndpoint

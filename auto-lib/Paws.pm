@@ -691,6 +691,12 @@ Some services, like the MachineLearning predictor API want you to specify a cust
   my $predictor = Paws->service('ML', endpoint => $model->EndpointInfo->EndpointUrl, region => 'eu-west-1');
   $predictor->...
 
+=head2 Using VPC Endpoints
+
+If you are going to consume a service behind a VPC Endpoint, you can use the C<endpoint> and the C<region> attributes to configure Paws appropiately
+
+  my $svc = $paws->service('...', endpoint => 'https://endpointaddress', region => 'eu-west-1');
+
 =head1 Pluggability
 
 =head2 Credential Provider Pluggability
@@ -773,8 +779,11 @@ This code is distributed under the Apache 2 License. The full text of the licens
 =head1 CONTRIBUITIONS
 
 
-CAPSiDE (http://www.capside.com) for letting Paws be contributed in an open source model
-and giving me time to build and maintain it regularly
+CAPSiDE (https://www.capside.com) for letting Paws be contributed in an open source model
+and giving me time to build and maintain it regularly.
+
+ZipRecruiter (https://www.ziprecruiter.com/) for sponsoring development of Paws. Lots of work
+from ZipRecruiter has been done via Shadowcat Systems (https://shadow.cat/).
 
 Luis Alberto Gimenez (@agimenez) for
  - The git-fu cleaning up the "pull other sdks" code
@@ -810,7 +819,9 @@ ilmari for fixing issues with timestamps in Date and X-Amz-Date headers,
 test fixes and 5.10 support fixes, documentation issue fixes for S3,
 CloudFront and Route53, help with number stringification
 
-stevecaldwell77 for contributing support for temporary credentials in S3
+stevecaldwell77 for 
+ - contributing support for temporary credentials in S3
+ - Fixing test suite failure scenarios
 
 Ryan Olson (BeerBikesBBQ) for contributing documentation fixes
 
@@ -839,7 +850,9 @@ rpcme for reporting various bugs in the SDK
 
 glenveegee for lots of work sorting out the S3 implementation
 
-Grinzz for many bugs, suggestions and fixes
+Grinzz
+ - many bugs, suggestions and fixes
+ - Installation speedup with Module::Builder::Tiny
 
 Dakkar for solving issues with parameter passing
 

@@ -53,8 +53,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 B<REQUIRED> HostIdSet => ArrayRef[Str|Undef]
 
-The ID/s of the Dedicated Host/s that the reservation will be
-associated with.
+The IDs of the Dedicated Hosts with which the reservation is
+associated.
 
 
 

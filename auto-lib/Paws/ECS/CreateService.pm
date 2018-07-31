@@ -127,7 +127,7 @@ should ignore unhealthy Elastic Load Balancing target health checks
 after a task has first started. This is only valid if your service is
 configured to use a load balancer. If your service's tasks take a while
 to start and respond to Elastic Load Balancing health checks, you can
-specify a health check grace period of up to 1,800 seconds during which
+specify a health check grace period of up to 7,200 seconds during which
 the ECS service scheduler ignores health check status. This grace
 period can prevent the ECS service scheduler from marking tasks as
 unhealthy and stopping them before they have time to come up.
@@ -271,14 +271,14 @@ Valid values are: C<"REPLICA">, C<"DAEMON">
 The name of your service. Up to 255 letters (uppercase and lowercase),
 numbers, hyphens, and underscores are allowed. Service names must be
 unique within a cluster, but you can have similarly named services in
-multiple clusters within a region or across multiple regions.
+multiple clusters within a Region or across multiple Regions.
 
 
 
 =head2 ServiceRegistries => ArrayRef[L<Paws::ECS::ServiceRegistry>]
 
-The details of the service discovery registries you want to assign to
-this service. For more information, see Service Discovery
+The details of the service discovery registries to assign to this
+service. For more information, see Service Discovery
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html).
 
 Service discovery is supported for Fargate tasks if using platform

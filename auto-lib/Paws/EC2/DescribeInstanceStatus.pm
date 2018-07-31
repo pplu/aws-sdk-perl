@@ -36,19 +36,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',    # OPTIONAL
-          Values => [
-            'MyString', ...        # OPTIONAL
-          ],                       # OPTIONAL
+          Name   => 'MyString',
+          Values => [ 'MyString', ... ],    # OPTIONAL
         },
         ...
-      ],                           # OPTIONAL
-      IncludeAllInstances => 1,    # OPTIONAL
-      InstanceIds         => [
-        'MyString', ...            # OPTIONAL
-      ],                           # OPTIONAL
-      MaxResults => 1,             # OPTIONAL
-      NextToken  => 'MyString',    # OPTIONAL
+      ],                                    # OPTIONAL
+      IncludeAllInstances => 1,                      # OPTIONAL
+      InstanceIds         => [ 'MyString', ... ],    # OPTIONAL
+      MaxResults          => 1,                      # OPTIONAL
+      NextToken           => 'MyString',             # OPTIONAL
     );
 
     # Results:
@@ -105,9 +101,9 @@ C<event.not-before> - The earliest start time for the scheduled event
 =item *
 
 C<instance-state-code> - The code for the instance state, as a 16-bit
-unsigned integer. The high byte is an opaque internal value and should
-be ignored. The low byte is set based on the state represented. The
-valid values are 0 (pending), 16 (running), 32 (shutting-down), 48
+unsigned integer. The high byte is used for internal purposes and
+should be ignored. The low byte is set based on the state represented.
+The valid values are 0 (pending), 16 (running), 32 (shutting-down), 48
 (terminated), 64 (stopping), and 80 (stopped).
 
 =item *
