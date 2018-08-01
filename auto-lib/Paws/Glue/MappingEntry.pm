@@ -6,6 +6,7 @@ package Paws::Glue::MappingEntry;
   has TargetPath => (is => 'ro', isa => 'Str');
   has TargetTable => (is => 'ro', isa => 'Str');
   has TargetType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

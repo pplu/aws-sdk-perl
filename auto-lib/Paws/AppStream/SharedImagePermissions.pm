@@ -2,6 +2,7 @@ package Paws::AppStream::SharedImagePermissions;
   use Moose;
   has ImagePermissions => (is => 'ro', isa => 'Paws::AppStream::ImagePermissions', request_name => 'imagePermissions', traits => ['NameInRequest'], required => 1);
   has SharedAccountId => (is => 'ro', isa => 'Str', request_name => 'sharedAccountId', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::MQ::UserPendingChanges;
   has ConsoleAccess => (is => 'ro', isa => 'Bool', request_name => 'consoleAccess', traits => ['NameInRequest']);
   has Groups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'groups', traits => ['NameInRequest']);
   has PendingChange => (is => 'ro', isa => 'Str', request_name => 'pendingChange', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

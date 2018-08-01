@@ -1,6 +1,7 @@
 package Paws::IoT::ImplicitDeny;
   use Moose;
   has Policies => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Policy]', request_name => 'policies', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::STS::Credentials;
   has Expiration => (is => 'ro', isa => 'Str', required => 1);
   has SecretAccessKey => (is => 'ro', isa => 'Str', required => 1);
   has SessionToken => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

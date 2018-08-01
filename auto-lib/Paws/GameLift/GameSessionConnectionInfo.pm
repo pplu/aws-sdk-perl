@@ -4,6 +4,7 @@ package Paws::GameLift::GameSessionConnectionInfo;
   has IpAddress => (is => 'ro', isa => 'Str');
   has MatchedPlayerSessions => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::MatchedPlayerSession]');
   has Port => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

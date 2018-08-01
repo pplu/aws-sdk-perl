@@ -5,6 +5,7 @@ package Paws::ELB::Listener;
   has LoadBalancerPort => (is => 'ro', isa => 'Int', required => 1);
   has Protocol => (is => 'ro', isa => 'Str', required => 1);
   has SSLCertificateId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

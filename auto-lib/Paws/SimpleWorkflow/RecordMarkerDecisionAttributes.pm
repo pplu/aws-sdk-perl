@@ -2,6 +2,7 @@ package Paws::SimpleWorkflow::RecordMarkerDecisionAttributes;
   use Moose;
   has Details => (is => 'ro', isa => 'Str', request_name => 'details', traits => ['NameInRequest']);
   has MarkerName => (is => 'ro', isa => 'Str', request_name => 'markerName', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

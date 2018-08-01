@@ -16,6 +16,7 @@ package Paws::Glue::Crawler;
   has TablePrefix => (is => 'ro', isa => 'Str');
   has Targets => (is => 'ro', isa => 'Paws::Glue::CrawlerTargets');
   has Version => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

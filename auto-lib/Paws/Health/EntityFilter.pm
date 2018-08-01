@@ -6,6 +6,7 @@ package Paws::Health::EntityFilter;
   has LastUpdatedTimes => (is => 'ro', isa => 'ArrayRef[Paws::Health::DateTimeRange]', request_name => 'lastUpdatedTimes', traits => ['NameInRequest']);
   has StatusCodes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'statusCodes', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Health::TagSet]', request_name => 'tags', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

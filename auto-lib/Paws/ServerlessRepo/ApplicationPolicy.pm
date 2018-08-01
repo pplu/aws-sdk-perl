@@ -1,6 +1,7 @@
 package Paws::ServerlessRepo::ApplicationPolicy;
   use Moose;
   has Statements => (is => 'ro', isa => 'ArrayRef[Paws::ServerlessRepo::ApplicationPolicyStatement]', request_name => 'statements', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

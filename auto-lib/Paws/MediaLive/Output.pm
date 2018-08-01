@@ -5,6 +5,7 @@ package Paws::MediaLive::Output;
   has OutputName => (is => 'ro', isa => 'Str', request_name => 'outputName', traits => ['NameInRequest']);
   has OutputSettings => (is => 'ro', isa => 'Paws::MediaLive::OutputSettings', request_name => 'outputSettings', traits => ['NameInRequest'], required => 1);
   has VideoDescriptionName => (is => 'ro', isa => 'Str', request_name => 'videoDescriptionName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

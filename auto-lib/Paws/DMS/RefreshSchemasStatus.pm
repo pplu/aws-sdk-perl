@@ -5,6 +5,7 @@ package Paws::DMS::RefreshSchemasStatus;
   has LastRefreshDate => (is => 'ro', isa => 'Str');
   has ReplicationInstanceArn => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

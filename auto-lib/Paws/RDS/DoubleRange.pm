@@ -2,6 +2,7 @@ package Paws::RDS::DoubleRange;
   use Moose;
   has From => (is => 'ro', isa => 'Num');
   has To => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

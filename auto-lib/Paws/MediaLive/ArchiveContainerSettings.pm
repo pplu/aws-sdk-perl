@@ -1,6 +1,7 @@
 package Paws::MediaLive::ArchiveContainerSettings;
   use Moose;
   has M2tsSettings => (is => 'ro', isa => 'Paws::MediaLive::M2tsSettings', request_name => 'm2tsSettings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

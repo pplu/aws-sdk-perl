@@ -83,12 +83,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           KeyRotationIntervalSeconds => 1,    # OPTIONAL
         },    # OPTIONAL
-        ManifestWindowSeconds  => 1,    # OPTIONAL
-        MinBufferTimeSeconds   => 1,    # OPTIONAL
-        MinUpdatePeriodSeconds => 1,    # OPTIONAL
-        PeriodTriggers         => [
-          'ADS', ...                    # values: ADS
-        ],                              # OPTIONAL
+        ManifestWindowSeconds  => 1,         # OPTIONAL
+        MinBufferTimeSeconds   => 1,         # OPTIONAL
+        MinUpdatePeriodSeconds => 1,         # OPTIONAL
         Profile                => 'NONE',    # values: NONE, HBBTV_1_5; OPTIONAL
         SegmentDurationSeconds => 1,         # OPTIONAL
         StreamSelection        => {

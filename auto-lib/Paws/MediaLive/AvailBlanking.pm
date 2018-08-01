@@ -2,6 +2,7 @@ package Paws::MediaLive::AvailBlanking;
   use Moose;
   has AvailBlankingImage => (is => 'ro', isa => 'Paws::MediaLive::InputLocation', request_name => 'availBlankingImage', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

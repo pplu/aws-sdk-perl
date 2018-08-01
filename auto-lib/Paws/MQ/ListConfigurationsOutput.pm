@@ -3,6 +3,7 @@ package Paws::MQ::ListConfigurationsOutput;
   has Configurations => (is => 'ro', isa => 'ArrayRef[Paws::MQ::Configuration]', request_name => 'configurations', traits => ['NameInRequest']);
   has MaxResults => (is => 'ro', isa => 'Int', request_name => 'maxResults', traits => ['NameInRequest']);
   has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

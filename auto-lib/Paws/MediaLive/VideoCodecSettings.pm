@@ -1,6 +1,7 @@
 package Paws::MediaLive::VideoCodecSettings;
   use Moose;
   has H264Settings => (is => 'ro', isa => 'Paws::MediaLive::H264Settings', request_name => 'h264Settings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

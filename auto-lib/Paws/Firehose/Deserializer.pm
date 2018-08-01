@@ -2,6 +2,7 @@ package Paws::Firehose::Deserializer;
   use Moose;
   has HiveJsonSerDe => (is => 'ro', isa => 'Paws::Firehose::HiveJsonSerDe');
   has OpenXJsonSerDe => (is => 'ro', isa => 'Paws::Firehose::OpenXJsonSerDe');
+
 1;
 
 ### main pod documentation begin ###

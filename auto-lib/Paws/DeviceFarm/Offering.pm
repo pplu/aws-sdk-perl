@@ -5,6 +5,7 @@ package Paws::DeviceFarm::Offering;
   has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
   has RecurringCharges => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::RecurringCharge]', request_name => 'recurringCharges', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

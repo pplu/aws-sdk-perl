@@ -3,6 +3,7 @@ package Paws::WAF::RegexPatternSet;
   has Name => (is => 'ro', isa => 'Str');
   has RegexPatternSetId => (is => 'ro', isa => 'Str', required => 1);
   has RegexPatternStrings => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

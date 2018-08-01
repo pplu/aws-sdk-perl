@@ -3,6 +3,7 @@ package Paws::CodePipeline::PipelineContext;
   has Action => (is => 'ro', isa => 'Paws::CodePipeline::ActionContext', request_name => 'action', traits => ['NameInRequest']);
   has PipelineName => (is => 'ro', isa => 'Str', request_name => 'pipelineName', traits => ['NameInRequest']);
   has Stage => (is => 'ro', isa => 'Paws::CodePipeline::StageContext', request_name => 'stage', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

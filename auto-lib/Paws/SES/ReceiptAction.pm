@@ -7,6 +7,7 @@ package Paws::SES::ReceiptAction;
   has SNSAction => (is => 'ro', isa => 'Paws::SES::SNSAction');
   has StopAction => (is => 'ro', isa => 'Paws::SES::StopAction');
   has WorkmailAction => (is => 'ro', isa => 'Paws::SES::WorkmailAction');
+
 1;
 
 ### main pod documentation begin ###

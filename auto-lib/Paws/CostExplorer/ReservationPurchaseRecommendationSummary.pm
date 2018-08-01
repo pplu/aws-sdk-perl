@@ -3,6 +3,7 @@ package Paws::CostExplorer::ReservationPurchaseRecommendationSummary;
   has CurrencyCode => (is => 'ro', isa => 'Str');
   has TotalEstimatedMonthlySavingsAmount => (is => 'ro', isa => 'Str');
   has TotalEstimatedMonthlySavingsPercentage => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

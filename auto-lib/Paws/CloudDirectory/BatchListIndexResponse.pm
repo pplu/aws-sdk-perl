@@ -2,6 +2,7 @@ package Paws::CloudDirectory::BatchListIndexResponse;
   use Moose;
   has IndexAttachments => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::IndexAttachment]');
   has NextToken => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

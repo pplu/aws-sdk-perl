@@ -4,6 +4,7 @@ package Paws::Pinpoint::EmailChannelRequest;
   has FromAddress => (is => 'ro', isa => 'Str');
   has Identity => (is => 'ro', isa => 'Str');
   has RoleArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

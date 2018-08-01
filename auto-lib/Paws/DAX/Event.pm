@@ -4,6 +4,7 @@ package Paws::DAX::Event;
   has Message => (is => 'ro', isa => 'Str');
   has SourceName => (is => 'ro', isa => 'Str');
   has SourceType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

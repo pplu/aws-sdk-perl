@@ -6,6 +6,7 @@ package Paws::CloudFront::CustomOriginConfig;
   has OriginProtocolPolicy => (is => 'ro', isa => 'Str', required => 1);
   has OriginReadTimeout => (is => 'ro', isa => 'Int');
   has OriginSslProtocols => (is => 'ro', isa => 'Paws::CloudFront::OriginSslProtocols');
+
 1;
 
 ### main pod documentation begin ###

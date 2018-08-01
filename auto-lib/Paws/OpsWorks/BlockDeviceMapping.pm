@@ -4,6 +4,7 @@ package Paws::OpsWorks::BlockDeviceMapping;
   has Ebs => (is => 'ro', isa => 'Paws::OpsWorks::EbsBlockDevice');
   has NoDevice => (is => 'ro', isa => 'Str');
   has VirtualName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

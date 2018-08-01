@@ -11,6 +11,7 @@ package Paws::Firehose::ExtendedS3DestinationConfiguration;
   has RoleARN => (is => 'ro', isa => 'Str', required => 1);
   has S3BackupConfiguration => (is => 'ro', isa => 'Paws::Firehose::S3DestinationConfiguration');
   has S3BackupMode => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

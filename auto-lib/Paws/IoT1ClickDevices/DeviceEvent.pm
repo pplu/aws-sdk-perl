@@ -2,6 +2,7 @@ package Paws::IoT1ClickDevices::DeviceEvent;
   use Moose;
   has Device => (is => 'ro', isa => 'Paws::IoT1ClickDevices::Device', request_name => 'device', traits => ['NameInRequest']);
   has StdEvent => (is => 'ro', isa => 'Str', request_name => 'stdEvent', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

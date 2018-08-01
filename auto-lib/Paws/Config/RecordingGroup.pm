@@ -3,6 +3,7 @@ package Paws::Config::RecordingGroup;
   has AllSupported => (is => 'ro', isa => 'Bool', request_name => 'allSupported', traits => ['NameInRequest']);
   has IncludeGlobalResourceTypes => (is => 'ro', isa => 'Bool', request_name => 'includeGlobalResourceTypes', traits => ['NameInRequest']);
   has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'resourceTypes', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

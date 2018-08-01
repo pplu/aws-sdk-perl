@@ -15,6 +15,7 @@ package Paws::ELBv2::TargetGroup;
   has TargetType => (is => 'ro', isa => 'Str');
   has UnhealthyThresholdCount => (is => 'ro', isa => 'Int');
   has VpcId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

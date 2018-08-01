@@ -10,6 +10,7 @@ package Paws::SageMaker::HyperParameterTrainingJobSummary;
   has TrainingJobStatus => (is => 'ro', isa => 'Str', required => 1);
   has TrainingStartTime => (is => 'ro', isa => 'Str');
   has TunedHyperParameters => (is => 'ro', isa => 'Paws::SageMaker::HyperParameters', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::SMS::VmServerAddress;
   use Moose;
   has VmId => (is => 'ro', isa => 'Str', request_name => 'vmId', traits => ['NameInRequest']);
   has VmManagerId => (is => 'ro', isa => 'Str', request_name => 'vmManagerId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

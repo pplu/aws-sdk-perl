@@ -4,6 +4,7 @@ package Paws::Comprehend::DominantLanguageDetectionJobFilter;
   has JobStatus => (is => 'ro', isa => 'Str');
   has SubmitTimeAfter => (is => 'ro', isa => 'Str');
   has SubmitTimeBefore => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

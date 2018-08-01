@@ -5,6 +5,7 @@ package Paws::RedShift::ClusterSecurityGroup;
   has EC2SecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::EC2SecurityGroup]', request_name => 'EC2SecurityGroup', traits => ['NameInRequest']);
   has IPRanges => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::IPRange]', request_name => 'IPRange', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]', request_name => 'Tag', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

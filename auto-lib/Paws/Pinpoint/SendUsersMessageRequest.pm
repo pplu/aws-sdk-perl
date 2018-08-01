@@ -3,6 +3,7 @@ package Paws::Pinpoint::SendUsersMessageRequest;
   has Context => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string');
   has MessageConfiguration => (is => 'ro', isa => 'Paws::Pinpoint::DirectMessageConfiguration');
   has Users => (is => 'ro', isa => 'Paws::Pinpoint::MapOfEndpointSendConfiguration');
+
 1;
 
 ### main pod documentation begin ###

@@ -9,6 +9,7 @@ package Paws::MediaLive::AacSettings;
   has SampleRate => (is => 'ro', isa => 'Num', request_name => 'sampleRate', traits => ['NameInRequest']);
   has Spec => (is => 'ro', isa => 'Str', request_name => 'spec', traits => ['NameInRequest']);
   has VbrQuality => (is => 'ro', isa => 'Str', request_name => 'vbrQuality', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

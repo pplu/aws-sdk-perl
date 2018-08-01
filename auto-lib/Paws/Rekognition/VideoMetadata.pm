@@ -6,6 +6,7 @@ package Paws::Rekognition::VideoMetadata;
   has FrameHeight => (is => 'ro', isa => 'Int');
   has FrameRate => (is => 'ro', isa => 'Num');
   has FrameWidth => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

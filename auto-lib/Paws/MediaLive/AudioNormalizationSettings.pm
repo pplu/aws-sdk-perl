@@ -3,6 +3,7 @@ package Paws::MediaLive::AudioNormalizationSettings;
   has Algorithm => (is => 'ro', isa => 'Str', request_name => 'algorithm', traits => ['NameInRequest']);
   has AlgorithmControl => (is => 'ro', isa => 'Str', request_name => 'algorithmControl', traits => ['NameInRequest']);
   has TargetLkfs => (is => 'ro', isa => 'Num', request_name => 'targetLkfs', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

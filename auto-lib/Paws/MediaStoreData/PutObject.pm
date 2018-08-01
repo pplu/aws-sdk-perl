@@ -1,7 +1,7 @@
 
 package Paws::MediaStoreData::PutObject;
   use Moose;
-  has Body => (is => 'ro', isa => 'Str', required => 1);
+  has Body => (is => 'ro', isa => 'Str', traits => ['ParamInBody'], required => 1);
   has CacheControl => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Cache-Control');
   has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type');
   has Path => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Path', required => 1);

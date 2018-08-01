@@ -2,6 +2,7 @@ package Paws::Glue::Predicate;
   use Moose;
   has Conditions => (is => 'ro', isa => 'ArrayRef[Paws::Glue::Condition]');
   has Logical => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

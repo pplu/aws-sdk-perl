@@ -8,6 +8,7 @@ package Paws::RDS::OptionGroup;
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has Options => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Option]', request_name => 'Option', traits => ['NameInRequest']);
   has VpcId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

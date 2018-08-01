@@ -9,6 +9,7 @@ package Paws::MediaConvert::AacSettings;
   has SampleRate => (is => 'ro', isa => 'Int', request_name => 'sampleRate', traits => ['NameInRequest'], required => 1);
   has Specification => (is => 'ro', isa => 'Str', request_name => 'specification', traits => ['NameInRequest']);
   has VbrQuality => (is => 'ro', isa => 'Str', request_name => 'vbrQuality', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

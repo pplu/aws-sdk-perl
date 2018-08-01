@@ -2,6 +2,7 @@ package Paws::ECS::HostEntry;
   use Moose;
   has Hostname => (is => 'ro', isa => 'Str', request_name => 'hostname', traits => ['NameInRequest'], required => 1);
   has IpAddress => (is => 'ro', isa => 'Str', request_name => 'ipAddress', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

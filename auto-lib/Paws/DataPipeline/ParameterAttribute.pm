@@ -2,6 +2,7 @@ package Paws::DataPipeline::ParameterAttribute;
   use Moose;
   has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest'], required => 1);
   has StringValue => (is => 'ro', isa => 'Str', request_name => 'stringValue', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

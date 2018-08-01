@@ -8,6 +8,7 @@ package Paws::Route53::CloudWatchAlarmConfiguration;
   has Period => (is => 'ro', isa => 'Int', required => 1);
   has Statistic => (is => 'ro', isa => 'Str', required => 1);
   has Threshold => (is => 'ro', isa => 'Num', required => 1);
+
 1;
 
 ### main pod documentation begin ###

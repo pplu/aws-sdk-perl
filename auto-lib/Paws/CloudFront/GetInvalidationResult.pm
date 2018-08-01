@@ -1,10 +1,9 @@
 
 package Paws::CloudFront::GetInvalidationResult;
   use Moose;
-  has Invalidation => (is => 'ro', isa => 'Paws::CloudFront::Invalidation');
+  has Invalidation => (is => 'ro', isa => 'Paws::CloudFront::Invalidation', traits => ['ParamInBody']);
 
-  use MooseX::ClassAttribute;
-  class_has _payload => (is => 'ro', default => 'Invalidation');
+
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

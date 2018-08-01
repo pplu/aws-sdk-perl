@@ -1,6 +1,7 @@
 package Paws::CloudFront::Tags;
   use Moose;
   has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::Tag]', request_name => 'Tag', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::WAFRegional::RuleUpdate;
   use Moose;
   has Action => (is => 'ro', isa => 'Str', required => 1);
   has Predicate => (is => 'ro', isa => 'Paws::WAFRegional::Predicate', required => 1);
+
 1;
 
 ### main pod documentation begin ###

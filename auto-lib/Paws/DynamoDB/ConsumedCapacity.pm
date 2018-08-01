@@ -5,6 +5,7 @@ package Paws::DynamoDB::ConsumedCapacity;
   has LocalSecondaryIndexes => (is => 'ro', isa => 'Paws::DynamoDB::SecondaryIndexesCapacityMap');
   has Table => (is => 'ro', isa => 'Paws::DynamoDB::Capacity');
   has TableName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

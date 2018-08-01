@@ -4,6 +4,7 @@ package Paws::CloudHSMv2::Backup;
   has BackupState => (is => 'ro', isa => 'Str');
   has ClusterId => (is => 'ro', isa => 'Str');
   has CreateTimestamp => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

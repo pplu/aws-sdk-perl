@@ -2,6 +2,7 @@ package Paws::IoT::AuthorizerSummary;
   use Moose;
   has AuthorizerArn => (is => 'ro', isa => 'Str', request_name => 'authorizerArn', traits => ['NameInRequest']);
   has AuthorizerName => (is => 'ro', isa => 'Str', request_name => 'authorizerName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

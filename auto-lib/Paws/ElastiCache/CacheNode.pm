@@ -7,6 +7,7 @@ package Paws::ElastiCache::CacheNode;
   has Endpoint => (is => 'ro', isa => 'Paws::ElastiCache::Endpoint');
   has ParameterGroupStatus => (is => 'ro', isa => 'Str');
   has SourceCacheNodeId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

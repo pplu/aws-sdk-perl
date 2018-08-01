@@ -5,6 +5,7 @@ package Paws::GameLift::GameSessionQueue;
   has Name => (is => 'ro', isa => 'Str');
   has PlayerLatencyPolicies => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::PlayerLatencyPolicy]');
   has TimeoutInSeconds => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

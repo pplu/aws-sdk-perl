@@ -1,6 +1,7 @@
 package Paws::ACMPCA::RevocationConfiguration;
   use Moose;
   has CrlConfiguration => (is => 'ro', isa => 'Paws::ACMPCA::CrlConfiguration');
+
 1;
 
 ### main pod documentation begin ###

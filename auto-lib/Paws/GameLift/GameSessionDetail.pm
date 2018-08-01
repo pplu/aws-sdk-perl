@@ -2,6 +2,7 @@ package Paws::GameLift::GameSessionDetail;
   use Moose;
   has GameSession => (is => 'ro', isa => 'Paws::GameLift::GameSession');
   has ProtectionPolicy => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

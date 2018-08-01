@@ -2,6 +2,7 @@ package Paws::S3::StorageClassAnalysisDataExport;
   use Moose;
   has Destination => (is => 'ro', isa => 'Paws::S3::AnalyticsExportDestination', required => 1);
   has OutputSchemaVersion => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

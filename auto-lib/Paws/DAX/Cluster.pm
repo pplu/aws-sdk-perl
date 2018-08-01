@@ -16,6 +16,7 @@ package Paws::DAX::Cluster;
   has Status => (is => 'ro', isa => 'Str');
   has SubnetGroup => (is => 'ro', isa => 'Str');
   has TotalNodes => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

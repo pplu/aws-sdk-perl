@@ -3,6 +3,7 @@ package Paws::Firehose::KinesisStreamSourceDescription;
   has DeliveryStartTimestamp => (is => 'ro', isa => 'Str');
   has KinesisStreamARN => (is => 'ro', isa => 'Str');
   has RoleARN => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::CloudFront::CacheBehaviors;
   use Moose;
   has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::CacheBehavior]', request_name => 'CacheBehavior', traits => ['NameInRequest']);
   has Quantity => (is => 'ro', isa => 'Int', required => 1);
+
 1;
 
 ### main pod documentation begin ###

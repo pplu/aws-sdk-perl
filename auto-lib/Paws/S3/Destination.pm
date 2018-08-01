@@ -5,6 +5,7 @@ package Paws::S3::Destination;
   has Bucket => (is => 'ro', isa => 'Str', required => 1);
   has EncryptionConfiguration => (is => 'ro', isa => 'Paws::S3::EncryptionConfiguration');
   has StorageClass => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::ElasticTranscoder::Encryption;
   has Key => (is => 'ro', isa => 'Str');
   has KeyMd5 => (is => 'ro', isa => 'Str');
   has Mode => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::S3::SourceSelectionCriteria;
   use Moose;
   has SseKmsEncryptedObjects => (is => 'ro', isa => 'Paws::S3::SseKmsEncryptedObjects');
+
 1;
 
 ### main pod documentation begin ###

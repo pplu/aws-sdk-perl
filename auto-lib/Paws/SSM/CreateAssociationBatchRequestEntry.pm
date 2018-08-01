@@ -8,6 +8,7 @@ package Paws::SSM::CreateAssociationBatchRequestEntry;
   has Parameters => (is => 'ro', isa => 'Paws::SSM::Parameters');
   has ScheduleExpression => (is => 'ro', isa => 'Str');
   has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
+
 1;
 
 ### main pod documentation begin ###

@@ -7,6 +7,7 @@ package Paws::Organizations::Organization;
   has MasterAccountArn => (is => 'ro', isa => 'Str');
   has MasterAccountEmail => (is => 'ro', isa => 'Str');
   has MasterAccountId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

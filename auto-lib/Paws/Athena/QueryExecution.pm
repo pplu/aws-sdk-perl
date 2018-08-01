@@ -6,6 +6,7 @@ package Paws::Athena::QueryExecution;
   has ResultConfiguration => (is => 'ro', isa => 'Paws::Athena::ResultConfiguration');
   has Statistics => (is => 'ro', isa => 'Paws::Athena::QueryExecutionStatistics');
   has Status => (is => 'ro', isa => 'Paws::Athena::QueryExecutionStatus');
+
 1;
 
 ### main pod documentation begin ###

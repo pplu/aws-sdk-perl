@@ -4,6 +4,7 @@ package Paws::DataPipeline::TaskObject;
   has Objects => (is => 'ro', isa => 'Paws::DataPipeline::PipelineObjectMap', request_name => 'objects', traits => ['NameInRequest']);
   has PipelineId => (is => 'ro', isa => 'Str', request_name => 'pipelineId', traits => ['NameInRequest']);
   has TaskId => (is => 'ro', isa => 'Str', request_name => 'taskId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

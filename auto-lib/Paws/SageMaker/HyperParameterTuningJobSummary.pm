@@ -10,6 +10,7 @@ package Paws::SageMaker::HyperParameterTuningJobSummary;
   has ResourceLimits => (is => 'ro', isa => 'Paws::SageMaker::ResourceLimits');
   has Strategy => (is => 'ro', isa => 'Str', required => 1);
   has TrainingJobStatusCounters => (is => 'ro', isa => 'Paws::SageMaker::TrainingJobStatusCounters', required => 1);
+
 1;
 
 ### main pod documentation begin ###

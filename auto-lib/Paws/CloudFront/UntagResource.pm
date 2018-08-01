@@ -2,7 +2,8 @@
 package Paws::CloudFront::UntagResource;
   use Moose;
   has Resource => (is => 'ro', isa => 'Str', query_name => 'Resource', traits => ['ParamInQuery'], required => 1);
-  has TagKeys => (is => 'ro', isa => 'Paws::CloudFront::TagKeys', required => 1);
+  has TagKeys => (is => 'ro', isa => 'Paws::CloudFront::TagKeys', traits => ['ParamInBody'], required => 1);
+
 
   use MooseX::ClassAttribute;
 
@@ -12,6 +13,7 @@ package Paws::CloudFront::UntagResource;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###

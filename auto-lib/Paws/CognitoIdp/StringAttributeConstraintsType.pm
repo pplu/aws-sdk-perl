@@ -2,6 +2,7 @@ package Paws::CognitoIdp::StringAttributeConstraintsType;
   use Moose;
   has MaxLength => (is => 'ro', isa => 'Str');
   has MinLength => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

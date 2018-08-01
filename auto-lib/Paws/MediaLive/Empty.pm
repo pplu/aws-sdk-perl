@@ -1,5 +1,6 @@
 package Paws::MediaLive::Empty;
   use Moose;
+
 1;
 
 ### main pod documentation begin ###

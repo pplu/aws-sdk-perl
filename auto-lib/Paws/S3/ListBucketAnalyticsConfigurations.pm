@@ -4,6 +4,7 @@ package Paws::S3::ListBucketAnalyticsConfigurations;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has ContinuationToken => (is => 'ro', isa => 'Str', query_name => 'continuation-token', traits => ['ParamInQuery']);
 
+
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListBucketAnalyticsConfigurations');
@@ -12,6 +13,7 @@ package Paws::S3::ListBucketAnalyticsConfigurations;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::ListBucketAnalyticsConfigurationsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###

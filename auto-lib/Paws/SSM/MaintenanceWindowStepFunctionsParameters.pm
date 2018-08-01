@@ -2,6 +2,7 @@ package Paws::SSM::MaintenanceWindowStepFunctionsParameters;
   use Moose;
   has Input => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

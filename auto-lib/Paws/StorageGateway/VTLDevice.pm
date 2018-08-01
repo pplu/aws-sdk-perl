@@ -5,6 +5,7 @@ package Paws::StorageGateway::VTLDevice;
   has VTLDeviceProductIdentifier => (is => 'ro', isa => 'Str');
   has VTLDeviceType => (is => 'ro', isa => 'Str');
   has VTLDeviceVendor => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -17,6 +17,7 @@ package Paws::StorageGateway::NFSFileShareInfo;
   has RequesterPays => (is => 'ro', isa => 'Bool');
   has Role => (is => 'ro', isa => 'Str');
   has Squash => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

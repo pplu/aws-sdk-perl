@@ -2,6 +2,7 @@ package Paws::DAX::Subnet;
   use Moose;
   has SubnetAvailabilityZone => (is => 'ro', isa => 'Str');
   has SubnetIdentifier => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

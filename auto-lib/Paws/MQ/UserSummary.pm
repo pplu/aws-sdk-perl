@@ -2,6 +2,7 @@ package Paws::MQ::UserSummary;
   use Moose;
   has PendingChange => (is => 'ro', isa => 'Str', request_name => 'pendingChange', traits => ['NameInRequest']);
   has Username => (is => 'ro', isa => 'Str', request_name => 'username', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

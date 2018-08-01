@@ -2,6 +2,7 @@ package Paws::ES::LogPublishingOptionsStatus;
   use Moose;
   has Options => (is => 'ro', isa => 'Paws::ES::LogPublishingOptions');
   has Status => (is => 'ro', isa => 'Paws::ES::OptionStatus');
+
 1;
 
 ### main pod documentation begin ###

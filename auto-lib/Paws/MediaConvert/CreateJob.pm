@@ -43,7 +43,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             AudioSelectorGroups => {
               'My__string' => {
                 AudioSelectorNames => [
-                  'My__stringMin1', ...    # min: 1
+                  'My__stringMin1', ...    # min: 1; OPTIONAL
                 ],
 
               },
@@ -465,7 +465,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ],                                          # OPTIONAL
                 CaptionDescriptions => [
                   {
-                    CaptionSelectorName => 'My__stringMin1',    # min: 1
+                    CaptionSelectorName => 'My__stringMin1',  # min: 1; OPTIONAL
                     DestinationSettings => {
                       DestinationType => 'BURN_IN'
                       , # values: BURN_IN, DVB_SUB, EMBEDDED, SCC, SRT, TELETEXT, TTML, WEBVTT
@@ -654,7 +654,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },    # OPTIONAL
                 },    # OPTIONAL
                 Extension      => 'My__string',
-                NameModifier   => 'My__stringMin1',    # min: 1
+                NameModifier   => 'My__stringMin1',    # min: 1; OPTIONAL
                 OutputSettings => {
                   HlsSettings => {
                     AudioGroupId       => 'My__string',

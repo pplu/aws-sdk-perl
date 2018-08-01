@@ -3,6 +3,7 @@ package Paws::ApplicationAutoScaling::StepAdjustment;
   has MetricIntervalLowerBound => (is => 'ro', isa => 'Num');
   has MetricIntervalUpperBound => (is => 'ro', isa => 'Num');
   has ScalingAdjustment => (is => 'ro', isa => 'Int', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::CodeDeploy::TimeBasedCanary;
   use Moose;
   has CanaryInterval => (is => 'ro', isa => 'Int', request_name => 'canaryInterval', traits => ['NameInRequest']);
   has CanaryPercentage => (is => 'ro', isa => 'Int', request_name => 'canaryPercentage', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

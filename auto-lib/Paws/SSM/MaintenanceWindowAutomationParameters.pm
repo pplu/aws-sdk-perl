@@ -2,6 +2,7 @@ package Paws::SSM::MaintenanceWindowAutomationParameters;
   use Moose;
   has DocumentVersion => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'Paws::SSM::AutomationParameterMap');
+
 1;
 
 ### main pod documentation begin ###

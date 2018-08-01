@@ -2,6 +2,7 @@ package Paws::SSM::PatchGroupPatchBaselineMapping;
   use Moose;
   has BaselineIdentity => (is => 'ro', isa => 'Paws::SSM::PatchBaselineIdentity');
   has PatchGroup => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

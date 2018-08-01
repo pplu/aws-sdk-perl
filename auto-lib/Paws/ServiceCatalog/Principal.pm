@@ -2,6 +2,7 @@ package Paws::ServiceCatalog::Principal;
   use Moose;
   has PrincipalARN => (is => 'ro', isa => 'Str');
   has PrincipalType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

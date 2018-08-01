@@ -2,6 +2,7 @@ package Paws::WAF::XssMatchSetSummary;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has XssMatchSetId => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

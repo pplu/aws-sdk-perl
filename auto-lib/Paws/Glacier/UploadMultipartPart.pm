@@ -2,7 +2,7 @@
 package Paws::Glacier::UploadMultipartPart;
   use Moose;
   has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
-  has Body => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'body');
+  has Body => (is => 'ro', isa => 'Str', traits => ['ParamInBody']);
   has Checksum => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-sha256-tree-hash');
   has Range => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Range');
   has UploadId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'uploadId', required => 1);

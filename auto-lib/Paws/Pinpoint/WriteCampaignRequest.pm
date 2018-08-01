@@ -13,6 +13,7 @@ package Paws::Pinpoint::WriteCampaignRequest;
   has SegmentVersion => (is => 'ro', isa => 'Int');
   has TreatmentDescription => (is => 'ro', isa => 'Str');
   has TreatmentName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

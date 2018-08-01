@@ -2,6 +2,7 @@ package Paws::ApiGateway::MethodSnapshot;
   use Moose;
   has ApiKeyRequired => (is => 'ro', isa => 'Bool', request_name => 'apiKeyRequired', traits => ['NameInRequest']);
   has AuthorizationType => (is => 'ro', isa => 'Str', request_name => 'authorizationType', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

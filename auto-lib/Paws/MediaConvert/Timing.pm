@@ -3,6 +3,7 @@ package Paws::MediaConvert::Timing;
   has FinishTime => (is => 'ro', isa => 'Str', request_name => 'finishTime', traits => ['NameInRequest']);
   has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
   has SubmitTime => (is => 'ro', isa => 'Str', request_name => 'submitTime', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

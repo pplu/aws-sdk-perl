@@ -3,6 +3,7 @@ package Paws::Glue::Classifier;
   has GrokClassifier => (is => 'ro', isa => 'Paws::Glue::GrokClassifier');
   has JsonClassifier => (is => 'ro', isa => 'Paws::Glue::JsonClassifier');
   has XMLClassifier => (is => 'ro', isa => 'Paws::Glue::XMLClassifier');
+
 1;
 
 ### main pod documentation begin ###

@@ -8,6 +8,7 @@ package Paws::WorkSpaces::WorkspaceRequest;
   has UserVolumeEncryptionEnabled => (is => 'ro', isa => 'Bool');
   has VolumeEncryptionKey => (is => 'ro', isa => 'Str');
   has WorkspaceProperties => (is => 'ro', isa => 'Paws::WorkSpaces::WorkspaceProperties');
+
 1;
 
 ### main pod documentation begin ###

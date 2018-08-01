@@ -1,6 +1,7 @@
 package Paws::MediaConvert::OutputSettings;
   use Moose;
   has HlsSettings => (is => 'ro', isa => 'Paws::MediaConvert::HlsSettings', request_name => 'hlsSettings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

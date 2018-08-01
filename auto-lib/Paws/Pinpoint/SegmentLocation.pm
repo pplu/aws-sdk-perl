@@ -2,6 +2,7 @@ package Paws::Pinpoint::SegmentLocation;
   use Moose;
   has Country => (is => 'ro', isa => 'Paws::Pinpoint::SetDimension');
   has GPSPoint => (is => 'ro', isa => 'Paws::Pinpoint::GPSPointDimension');
+
 1;
 
 ### main pod documentation begin ###

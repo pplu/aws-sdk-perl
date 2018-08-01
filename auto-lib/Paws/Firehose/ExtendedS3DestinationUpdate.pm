@@ -11,6 +11,7 @@ package Paws::Firehose::ExtendedS3DestinationUpdate;
   has RoleARN => (is => 'ro', isa => 'Str');
   has S3BackupMode => (is => 'ro', isa => 'Str');
   has S3BackupUpdate => (is => 'ro', isa => 'Paws::Firehose::S3DestinationUpdate');
+
 1;
 
 ### main pod documentation begin ###

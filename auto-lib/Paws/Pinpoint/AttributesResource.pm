@@ -3,6 +3,7 @@ package Paws::Pinpoint::AttributesResource;
   has ApplicationId => (is => 'ro', isa => 'Str');
   has Attributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has AttributeType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

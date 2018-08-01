@@ -1,6 +1,7 @@
 package Paws::MQ::UpdateBrokerInput;
   use Moose;
   has Configuration => (is => 'ro', isa => 'Paws::MQ::ConfigurationId', request_name => 'configuration', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

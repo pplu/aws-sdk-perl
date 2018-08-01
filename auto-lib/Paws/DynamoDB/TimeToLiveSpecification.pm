@@ -2,6 +2,7 @@ package Paws::DynamoDB::TimeToLiveSpecification;
   use Moose;
   has AttributeName => (is => 'ro', isa => 'Str', required => 1);
   has Enabled => (is => 'ro', isa => 'Bool', required => 1);
+
 1;
 
 ### main pod documentation begin ###

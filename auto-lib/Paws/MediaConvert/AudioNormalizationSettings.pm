@@ -6,6 +6,7 @@ package Paws::MediaConvert::AudioNormalizationSettings;
   has LoudnessLogging => (is => 'ro', isa => 'Str', request_name => 'loudnessLogging', traits => ['NameInRequest']);
   has PeakCalculation => (is => 'ro', isa => 'Str', request_name => 'peakCalculation', traits => ['NameInRequest']);
   has TargetLkfs => (is => 'ro', isa => 'Num', request_name => 'targetLkfs', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

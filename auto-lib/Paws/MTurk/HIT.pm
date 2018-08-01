@@ -21,6 +21,7 @@ package Paws::MTurk::HIT;
   has RequesterAnnotation => (is => 'ro', isa => 'Str');
   has Reward => (is => 'ro', isa => 'Str');
   has Title => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

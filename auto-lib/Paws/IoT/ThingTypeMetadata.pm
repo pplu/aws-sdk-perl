@@ -3,6 +3,7 @@ package Paws::IoT::ThingTypeMetadata;
   has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest']);
   has Deprecated => (is => 'ro', isa => 'Bool', request_name => 'deprecated', traits => ['NameInRequest']);
   has DeprecationDate => (is => 'ro', isa => 'Str', request_name => 'deprecationDate', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::XRay::AnnotationValue;
   has BooleanValue => (is => 'ro', isa => 'Bool');
   has NumberValue => (is => 'ro', isa => 'Num');
   has StringValue => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

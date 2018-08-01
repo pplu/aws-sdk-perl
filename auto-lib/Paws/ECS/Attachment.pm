@@ -4,6 +4,7 @@ package Paws::ECS::Attachment;
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +42,7 @@ An object representing a container instance or task attachment.
 
 =head2 Details => ArrayRef[L<Paws::ECS::KeyValuePair>]
 
-  Details of the attachment. For elastic network interfaces, this
+  Details of the attachment. For Elastic Network Interfaces, this
 includes the network interface ID, the MAC address, the subnet ID, and
 the private IPv4 address.
 

@@ -5,6 +5,7 @@ package Paws::Shield::AttackProperty;
   has TopContributors => (is => 'ro', isa => 'ArrayRef[Paws::Shield::Contributor]');
   has Total => (is => 'ro', isa => 'Int');
   has Unit => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

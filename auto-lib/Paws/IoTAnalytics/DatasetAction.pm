@@ -2,6 +2,7 @@ package Paws::IoTAnalytics::DatasetAction;
   use Moose;
   has ActionName => (is => 'ro', isa => 'Str', request_name => 'actionName', traits => ['NameInRequest']);
   has QueryAction => (is => 'ro', isa => 'Paws::IoTAnalytics::SqlQueryDatasetAction', request_name => 'queryAction', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

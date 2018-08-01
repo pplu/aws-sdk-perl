@@ -3,6 +3,7 @@ package Paws::MQ::WeeklyStartTime;
   has DayOfWeek => (is => 'ro', isa => 'Str', request_name => 'dayOfWeek', traits => ['NameInRequest']);
   has TimeOfDay => (is => 'ro', isa => 'Str', request_name => 'timeOfDay', traits => ['NameInRequest']);
   has TimeZone => (is => 'ro', isa => 'Str', request_name => 'timeZone', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

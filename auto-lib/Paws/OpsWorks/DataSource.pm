@@ -3,6 +3,7 @@ package Paws::OpsWorks::DataSource;
   has Arn => (is => 'ro', isa => 'Str');
   has DatabaseName => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

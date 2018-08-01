@@ -3,6 +3,7 @@ package Paws::AlexaForBusiness::SkillSummary;
   has SkillId => (is => 'ro', isa => 'Str');
   has SkillName => (is => 'ro', isa => 'Str');
   has SupportsLinking => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

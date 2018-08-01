@@ -4,6 +4,7 @@ package Paws::AutoScaling::TargetTrackingConfiguration;
   has DisableScaleIn => (is => 'ro', isa => 'Bool');
   has PredefinedMetricSpecification => (is => 'ro', isa => 'Paws::AutoScaling::PredefinedMetricSpecification');
   has TargetValue => (is => 'ro', isa => 'Num', required => 1);
+
 1;
 
 ### main pod documentation begin ###

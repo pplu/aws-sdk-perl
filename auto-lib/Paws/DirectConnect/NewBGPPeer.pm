@@ -5,6 +5,7 @@ package Paws::DirectConnect::NewBGPPeer;
   has Asn => (is => 'ro', isa => 'Int', request_name => 'asn', traits => ['NameInRequest']);
   has AuthKey => (is => 'ro', isa => 'Str', request_name => 'authKey', traits => ['NameInRequest']);
   has CustomerAddress => (is => 'ro', isa => 'Str', request_name => 'customerAddress', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

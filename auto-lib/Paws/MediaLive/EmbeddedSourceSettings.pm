@@ -4,6 +4,7 @@ package Paws::MediaLive::EmbeddedSourceSettings;
   has Scte20Detection => (is => 'ro', isa => 'Str', request_name => 'scte20Detection', traits => ['NameInRequest']);
   has Source608ChannelNumber => (is => 'ro', isa => 'Int', request_name => 'source608ChannelNumber', traits => ['NameInRequest']);
   has Source608TrackNumber => (is => 'ro', isa => 'Int', request_name => 'source608TrackNumber', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

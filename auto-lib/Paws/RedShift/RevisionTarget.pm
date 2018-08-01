@@ -3,6 +3,7 @@ package Paws::RedShift::RevisionTarget;
   has DatabaseRevision => (is => 'ro', isa => 'Str');
   has DatabaseRevisionReleaseDate => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

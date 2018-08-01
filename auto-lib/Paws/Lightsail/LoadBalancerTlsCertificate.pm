@@ -24,6 +24,7 @@ package Paws::Lightsail::LoadBalancerTlsCertificate;
   has Subject => (is => 'ro', isa => 'Str', request_name => 'subject', traits => ['NameInRequest']);
   has SubjectAlternativeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subjectAlternativeNames', traits => ['NameInRequest']);
   has SupportCode => (is => 'ro', isa => 'Str', request_name => 'supportCode', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

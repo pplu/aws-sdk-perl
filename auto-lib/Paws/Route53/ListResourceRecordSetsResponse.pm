@@ -6,7 +6,8 @@ package Paws::Route53::ListResourceRecordSetsResponse;
   has NextRecordIdentifier => (is => 'ro', isa => 'Str');
   has NextRecordName => (is => 'ro', isa => 'Str');
   has NextRecordType => (is => 'ro', isa => 'Str');
-  has ResourceRecordSets => (is => 'ro', isa => 'ArrayRef[Paws::Route53::ResourceRecordSet]', required => 1);
+  has ResourceRecordSets => (is => 'ro', isa => 'ArrayRef[Paws::Route53::ResourceRecordSet]', request_name => 'ResourceRecordSet', traits => ['NameInRequest'], required => 1);
+
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

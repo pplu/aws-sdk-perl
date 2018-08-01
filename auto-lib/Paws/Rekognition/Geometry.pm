@@ -2,6 +2,7 @@ package Paws::Rekognition::Geometry;
   use Moose;
   has BoundingBox => (is => 'ro', isa => 'Paws::Rekognition::BoundingBox');
   has Polygon => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::Point]');
+
 1;
 
 ### main pod documentation begin ###

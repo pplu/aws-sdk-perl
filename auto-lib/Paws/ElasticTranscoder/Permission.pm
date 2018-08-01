@@ -3,6 +3,7 @@ package Paws::ElasticTranscoder::Permission;
   has Access => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Grantee => (is => 'ro', isa => 'Str');
   has GranteeType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

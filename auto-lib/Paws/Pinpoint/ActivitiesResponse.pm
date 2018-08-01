@@ -1,6 +1,7 @@
 package Paws::Pinpoint::ActivitiesResponse;
   use Moose;
   has Item => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::ActivityResponse]');
+
 1;
 
 ### main pod documentation begin ###

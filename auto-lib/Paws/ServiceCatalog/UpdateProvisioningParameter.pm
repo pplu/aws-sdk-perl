@@ -3,6 +3,7 @@ package Paws::ServiceCatalog::UpdateProvisioningParameter;
   has Key => (is => 'ro', isa => 'Str');
   has UsePreviousValue => (is => 'ro', isa => 'Bool');
   has Value => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

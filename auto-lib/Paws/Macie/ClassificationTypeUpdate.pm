@@ -2,6 +2,7 @@ package Paws::Macie::ClassificationTypeUpdate;
   use Moose;
   has Continuous => (is => 'ro', isa => 'Str', request_name => 'continuous', traits => ['NameInRequest']);
   has OneTime => (is => 'ro', isa => 'Str', request_name => 'oneTime', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -8,6 +8,7 @@ package Paws::WorkDocs::Activity;
   has ResourceMetadata => (is => 'ro', isa => 'Paws::WorkDocs::ResourceMetadata');
   has TimeStamp => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

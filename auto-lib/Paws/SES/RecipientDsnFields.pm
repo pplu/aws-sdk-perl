@@ -7,6 +7,7 @@ package Paws::SES::RecipientDsnFields;
   has LastAttemptDate => (is => 'ro', isa => 'Str');
   has RemoteMta => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

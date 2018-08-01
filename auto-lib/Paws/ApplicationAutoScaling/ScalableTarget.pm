@@ -7,6 +7,7 @@ package Paws::ApplicationAutoScaling::ScalableTarget;
   has RoleARN => (is => 'ro', isa => 'Str', required => 1);
   has ScalableDimension => (is => 'ro', isa => 'Str', required => 1);
   has ServiceNamespace => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

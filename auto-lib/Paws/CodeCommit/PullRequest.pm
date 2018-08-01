@@ -9,6 +9,7 @@ package Paws::CodeCommit::PullRequest;
   has PullRequestStatus => (is => 'ro', isa => 'Str', request_name => 'pullRequestStatus', traits => ['NameInRequest']);
   has PullRequestTargets => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::PullRequestTarget]', request_name => 'pullRequestTargets', traits => ['NameInRequest']);
   has Title => (is => 'ro', isa => 'Str', request_name => 'title', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::AppStream::VpcConfig;
   use Moose;
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

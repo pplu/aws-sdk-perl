@@ -5,6 +5,7 @@ package Paws::SageMaker::ProductionVariant;
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
   has ModelName => (is => 'ro', isa => 'Str', required => 1);
   has VariantName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

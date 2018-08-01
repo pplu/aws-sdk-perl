@@ -2,6 +2,7 @@ package Paws::CloudDirectory::IndexAttachment;
   use Moose;
   has IndexedAttributes => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::AttributeKeyAndValue]');
   has ObjectIdentifier => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

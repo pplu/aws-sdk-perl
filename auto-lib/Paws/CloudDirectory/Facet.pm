@@ -3,6 +3,7 @@ package Paws::CloudDirectory::Facet;
   has FacetStyle => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has ObjectType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

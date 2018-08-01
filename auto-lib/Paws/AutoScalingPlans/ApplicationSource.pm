@@ -2,6 +2,7 @@ package Paws::AutoScalingPlans::ApplicationSource;
   use Moose;
   has CloudFormationStackARN => (is => 'ro', isa => 'Str');
   has TagFilters => (is => 'ro', isa => 'ArrayRef[Paws::AutoScalingPlans::TagFilter]');
+
 1;
 
 ### main pod documentation begin ###

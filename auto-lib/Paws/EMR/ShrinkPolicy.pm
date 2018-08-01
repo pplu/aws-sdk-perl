@@ -2,6 +2,7 @@ package Paws::EMR::ShrinkPolicy;
   use Moose;
   has DecommissionTimeout => (is => 'ro', isa => 'Int');
   has InstanceResizePolicy => (is => 'ro', isa => 'Paws::EMR::InstanceResizePolicy');
+
 1;
 
 ### main pod documentation begin ###

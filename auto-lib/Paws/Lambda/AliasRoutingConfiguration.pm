@@ -1,6 +1,7 @@
 package Paws::Lambda::AliasRoutingConfiguration;
   use Moose;
   has AdditionalVersionWeights => (is => 'ro', isa => 'Paws::Lambda::AdditionalVersionWeights');
+
 1;
 
 ### main pod documentation begin ###

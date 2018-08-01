@@ -3,6 +3,7 @@ package Paws::SimpleWorkflow::LambdaFunctionCompletedEventAttributes;
   has Result => (is => 'ro', isa => 'Str', request_name => 'result', traits => ['NameInRequest']);
   has ScheduledEventId => (is => 'ro', isa => 'Int', request_name => 'scheduledEventId', traits => ['NameInRequest'], required => 1);
   has StartedEventId => (is => 'ro', isa => 'Int', request_name => 'startedEventId', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

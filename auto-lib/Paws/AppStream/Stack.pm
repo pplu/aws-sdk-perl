@@ -10,6 +10,7 @@ package Paws::AppStream::Stack;
   has StackErrors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::StackError]');
   has StorageConnectors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::StorageConnector]');
   has UserSettings => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::UserSetting]');
+
 1;
 
 ### main pod documentation begin ###

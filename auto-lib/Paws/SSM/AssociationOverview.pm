@@ -3,6 +3,7 @@ package Paws::SSM::AssociationOverview;
   has AssociationStatusAggregatedCount => (is => 'ro', isa => 'Paws::SSM::AssociationStatusAggregatedCount');
   has DetailedStatus => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

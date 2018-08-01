@@ -3,6 +3,7 @@ package Paws::ELBv2::TargetHealth;
   has Description => (is => 'ro', isa => 'Str');
   has Reason => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

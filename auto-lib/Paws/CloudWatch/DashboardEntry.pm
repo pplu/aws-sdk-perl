@@ -4,6 +4,7 @@ package Paws::CloudWatch::DashboardEntry;
   has DashboardName => (is => 'ro', isa => 'Str');
   has LastModified => (is => 'ro', isa => 'Str');
   has Size => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

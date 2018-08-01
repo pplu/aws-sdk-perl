@@ -2,6 +2,7 @@ package Paws::Glue::S3Target;
   use Moose;
   has Exclusions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Path => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

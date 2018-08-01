@@ -2,6 +2,7 @@ package Paws::Route53::LinkedService;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
   has ServicePrincipal => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

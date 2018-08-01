@@ -41,13 +41,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateProjectOutput = $codebuild->UpdateProject(
       Name      => 'MyNonEmptyString',
       Artifacts => {
-        Type => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
-        EncryptionDisabled => 1,             # OPTIONAL
-        Location           => 'MyString',    # OPTIONAL
-        Name               => 'MyString',    # OPTIONAL
-        NamespaceType      => 'NONE',        # values: NONE, BUILD_ID; OPTIONAL
-        Packaging          => 'NONE',        # values: NONE, ZIP; OPTIONAL
-        Path               => 'MyString',    # OPTIONAL
+        Type     => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
+        Location => 'MyString',        # OPTIONAL
+        Name     => 'MyString',        # OPTIONAL
+        NamespaceType => 'NONE',       # values: NONE, BUILD_ID; OPTIONAL
+        Packaging     => 'NONE',       # values: NONE, ZIP; OPTIONAL
+        Path          => 'MyString',   # OPTIONAL
       },    # OPTIONAL
       BadgeEnabled => 1,    # OPTIONAL
       Cache        => {
@@ -71,7 +70,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],                        # OPTIONAL
-        PrivilegedMode => 1,      # OPTIONAL
+        PrivilegedMode => 1,
       },    # OPTIONAL
       ServiceRole => 'MyNonEmptyString',    # OPTIONAL
       Source      => {
@@ -83,9 +82,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
         Buildspec         => 'MyString',    # OPTIONAL
         GitCloneDepth     => 1,             # OPTIONAL
-        InsecureSsl       => 1,             # OPTIONAL
+        InsecureSsl       => 1,
         Location          => 'MyString',    # OPTIONAL
-        ReportBuildStatus => 1,             # OPTIONAL
+        ReportBuildStatus => 1,
       },    # OPTIONAL
       Tags => [
         {

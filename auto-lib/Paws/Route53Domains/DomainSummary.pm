@@ -4,6 +4,7 @@ package Paws::Route53Domains::DomainSummary;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has Expiry => (is => 'ro', isa => 'Str');
   has TransferLock => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

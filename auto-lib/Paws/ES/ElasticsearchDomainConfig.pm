@@ -10,6 +10,7 @@ package Paws::ES::ElasticsearchDomainConfig;
   has LogPublishingOptions => (is => 'ro', isa => 'Paws::ES::LogPublishingOptionsStatus');
   has SnapshotOptions => (is => 'ro', isa => 'Paws::ES::SnapshotOptionsStatus');
   has VPCOptions => (is => 'ro', isa => 'Paws::ES::VPCDerivedInfoStatus');
+
 1;
 
 ### main pod documentation begin ###

@@ -15,7 +15,6 @@ package Paws::RedShift::RestoreFromClusterSnapshot;
   has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
   has IamRoles => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has KmsKeyId => (is => 'ro', isa => 'Str');
-  has MaintenanceTrackName => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
   has OwnerAccount => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
@@ -66,7 +65,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       HsmConfigurationIdentifier       => 'MyString',             # OPTIONAL
       IamRoles                         => [ 'MyString', ... ],    # OPTIONAL
       KmsKeyId                         => 'MyString',             # OPTIONAL
-      MaintenanceTrackName             => 'MyString',             # OPTIONAL
       NodeType                         => 'MyString',             # OPTIONAL
       OwnerAccount                     => 'MyString',             # OPTIONAL
       Port                             => 1,                      # OPTIONAL
@@ -262,18 +260,6 @@ A cluster can have up to 10 IAM roles associated at any time.
 The AWS Key Management Service (KMS) key ID of the encryption key that
 you want to use to encrypt data in the cluster that you restore from a
 shared snapshot.
-
-
-
-=head2 MaintenanceTrackName => Str
-
-The name of the maintenance track for the restored cluster. When you
-take a snapshot, the snapshot inherits the C<MaintenanceTrack> value
-from the cluster. The snapshot might be on a different track than the
-cluster that was the source for the snapshot. For example, suppose that
-you take a snapshot of a cluster that is on the current track and then
-change the cluster to be on the trailing track. In this case, the
-snapshot and the source cluster are on different tracks.
 
 
 

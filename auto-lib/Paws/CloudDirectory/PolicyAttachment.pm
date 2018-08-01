@@ -3,6 +3,7 @@ package Paws::CloudDirectory::PolicyAttachment;
   has ObjectIdentifier => (is => 'ro', isa => 'Str');
   has PolicyId => (is => 'ro', isa => 'Str');
   has PolicyType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

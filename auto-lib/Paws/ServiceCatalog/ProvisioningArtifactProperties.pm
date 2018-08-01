@@ -4,6 +4,7 @@ package Paws::ServiceCatalog::ProvisioningArtifactProperties;
   has Info => (is => 'ro', isa => 'Paws::ServiceCatalog::ProvisioningArtifactInfo', required => 1);
   has Name => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

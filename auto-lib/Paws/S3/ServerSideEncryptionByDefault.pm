@@ -2,6 +2,7 @@ package Paws::S3::ServerSideEncryptionByDefault;
   use Moose;
   has KMSMasterKeyID => (is => 'ro', isa => 'Str');
   has SSEAlgorithm => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

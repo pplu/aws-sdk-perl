@@ -2,6 +2,7 @@ package Paws::SSM::CompliantSummary;
   use Moose;
   has CompliantCount => (is => 'ro', isa => 'Int');
   has SeveritySummary => (is => 'ro', isa => 'Paws::SSM::SeveritySummary');
+
 1;
 
 ### main pod documentation begin ###

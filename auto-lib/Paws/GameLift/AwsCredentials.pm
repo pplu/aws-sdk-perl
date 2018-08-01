@@ -3,6 +3,7 @@ package Paws::GameLift::AwsCredentials;
   has AccessKeyId => (is => 'ro', isa => 'Str');
   has SecretAccessKey => (is => 'ro', isa => 'Str');
   has SessionToken => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

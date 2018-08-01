@@ -4,6 +4,7 @@ package Paws::CodeDeploy::RevisionLocation;
   has RevisionType => (is => 'ro', isa => 'Str', request_name => 'revisionType', traits => ['NameInRequest']);
   has S3Location => (is => 'ro', isa => 'Paws::CodeDeploy::S3Location', request_name => 's3Location', traits => ['NameInRequest']);
   has String => (is => 'ro', isa => 'Paws::CodeDeploy::RawString', request_name => 'string', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

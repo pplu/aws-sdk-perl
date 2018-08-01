@@ -2,6 +2,7 @@ package Paws::CostExplorer::Group;
   use Moose;
   has Keys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Metrics => (is => 'ro', isa => 'Paws::CostExplorer::Metrics');
+
 1;
 
 ### main pod documentation begin ###

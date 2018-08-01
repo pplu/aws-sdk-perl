@@ -8,6 +8,7 @@ package Paws::CloudFront::StreamingDistributionConfig;
   has PriceClass => (is => 'ro', isa => 'Str');
   has S3Origin => (is => 'ro', isa => 'Paws::CloudFront::S3Origin', required => 1);
   has TrustedSigners => (is => 'ro', isa => 'Paws::CloudFront::TrustedSigners', required => 1);
+
 1;
 
 ### main pod documentation begin ###

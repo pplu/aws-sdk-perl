@@ -6,6 +6,7 @@ package Paws::OpsWorks::Source;
   has Type => (is => 'ro', isa => 'Str');
   has Url => (is => 'ro', isa => 'Str');
   has Username => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

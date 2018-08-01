@@ -7,6 +7,7 @@ package Paws::DMS::OrderableReplicationInstance;
   has MinAllocatedStorage => (is => 'ro', isa => 'Int');
   has ReplicationInstanceClass => (is => 'ro', isa => 'Str');
   has StorageType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

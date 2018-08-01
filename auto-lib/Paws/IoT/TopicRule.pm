@@ -8,6 +8,7 @@ package Paws::IoT::TopicRule;
   has RuleDisabled => (is => 'ro', isa => 'Bool', request_name => 'ruleDisabled', traits => ['NameInRequest']);
   has RuleName => (is => 'ro', isa => 'Str', request_name => 'ruleName', traits => ['NameInRequest']);
   has Sql => (is => 'ro', isa => 'Str', request_name => 'sql', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

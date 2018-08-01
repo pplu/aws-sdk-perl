@@ -2,6 +2,7 @@ package Paws::XRay::HistogramEntry;
   use Moose;
   has Count => (is => 'ro', isa => 'Int');
   has Value => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

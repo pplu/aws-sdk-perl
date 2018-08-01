@@ -1,6 +1,7 @@
 package Paws::S3::ServerSideEncryptionRule;
   use Moose;
   has ApplyServerSideEncryptionByDefault => (is => 'ro', isa => 'Paws::S3::ServerSideEncryptionByDefault');
+
 1;
 
 ### main pod documentation begin ###

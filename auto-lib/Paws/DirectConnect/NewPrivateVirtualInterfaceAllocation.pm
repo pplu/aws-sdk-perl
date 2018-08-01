@@ -7,6 +7,7 @@ package Paws::DirectConnect::NewPrivateVirtualInterfaceAllocation;
   has CustomerAddress => (is => 'ro', isa => 'Str', request_name => 'customerAddress', traits => ['NameInRequest']);
   has VirtualInterfaceName => (is => 'ro', isa => 'Str', request_name => 'virtualInterfaceName', traits => ['NameInRequest'], required => 1);
   has Vlan => (is => 'ro', isa => 'Int', request_name => 'vlan', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

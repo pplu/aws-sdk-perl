@@ -3,6 +3,7 @@ package Paws::IoTAnalytics::LoggingOptions;
   has Enabled => (is => 'ro', isa => 'Bool', request_name => 'enabled', traits => ['NameInRequest'], required => 1);
   has Level => (is => 'ro', isa => 'Str', request_name => 'level', traits => ['NameInRequest'], required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

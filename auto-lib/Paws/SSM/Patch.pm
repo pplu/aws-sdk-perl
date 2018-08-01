@@ -13,6 +13,7 @@ package Paws::SSM::Patch;
   has ReleaseDate => (is => 'ro', isa => 'Str');
   has Title => (is => 'ro', isa => 'Str');
   has Vendor => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

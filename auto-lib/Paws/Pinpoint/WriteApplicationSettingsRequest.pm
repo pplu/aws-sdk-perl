@@ -4,6 +4,7 @@ package Paws::Pinpoint::WriteApplicationSettingsRequest;
   has CloudWatchMetricsEnabled => (is => 'ro', isa => 'Bool');
   has Limits => (is => 'ro', isa => 'Paws::Pinpoint::CampaignLimits');
   has QuietTime => (is => 'ro', isa => 'Paws::Pinpoint::QuietTime');
+
 1;
 
 ### main pod documentation begin ###

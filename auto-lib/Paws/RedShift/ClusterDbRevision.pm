@@ -4,6 +4,7 @@ package Paws::RedShift::ClusterDbRevision;
   has CurrentDatabaseRevision => (is => 'ro', isa => 'Str');
   has DatabaseRevisionReleaseDate => (is => 'ro', isa => 'Str');
   has RevisionTargets => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::RevisionTarget]', request_name => 'RevisionTarget', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

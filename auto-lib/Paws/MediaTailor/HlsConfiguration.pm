@@ -1,6 +1,7 @@
 package Paws::MediaTailor::HlsConfiguration;
   use Moose;
   has ManifestEndpointPrefix => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

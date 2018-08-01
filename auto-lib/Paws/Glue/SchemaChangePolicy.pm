@@ -2,6 +2,7 @@ package Paws::Glue::SchemaChangePolicy;
   use Moose;
   has DeleteBehavior => (is => 'ro', isa => 'Str');
   has UpdateBehavior => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

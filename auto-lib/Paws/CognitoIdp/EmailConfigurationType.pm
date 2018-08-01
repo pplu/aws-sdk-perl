@@ -2,6 +2,7 @@ package Paws::CognitoIdp::EmailConfigurationType;
   use Moose;
   has ReplyToEmailAddress => (is => 'ro', isa => 'Str');
   has SourceArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::MediaConvert::InputClipping;
   use Moose;
   has EndTimecode => (is => 'ro', isa => 'Str', request_name => 'endTimecode', traits => ['NameInRequest']);
   has StartTimecode => (is => 'ro', isa => 'Str', request_name => 'startTimecode', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

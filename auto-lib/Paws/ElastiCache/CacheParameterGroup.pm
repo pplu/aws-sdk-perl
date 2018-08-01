@@ -3,6 +3,7 @@ package Paws::ElastiCache::CacheParameterGroup;
   has CacheParameterGroupFamily => (is => 'ro', isa => 'Str');
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::CognitoIdentity::RulesConfigurationType;
   use Moose;
   has Rules => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdentity::MappingRule]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

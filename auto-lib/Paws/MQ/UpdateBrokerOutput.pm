@@ -2,6 +2,7 @@ package Paws::MQ::UpdateBrokerOutput;
   use Moose;
   has BrokerId => (is => 'ro', isa => 'Str', request_name => 'brokerId', traits => ['NameInRequest']);
   has Configuration => (is => 'ro', isa => 'Paws::MQ::ConfigurationId', request_name => 'configuration', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

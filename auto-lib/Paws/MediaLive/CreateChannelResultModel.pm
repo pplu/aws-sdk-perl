@@ -1,6 +1,7 @@
 package Paws::MediaLive::CreateChannelResultModel;
   use Moose;
   has Channel => (is => 'ro', isa => 'Paws::MediaLive::Channel', request_name => 'channel', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

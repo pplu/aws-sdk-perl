@@ -3,6 +3,7 @@ package Paws::FMS::EvaluationResult;
   has ComplianceStatus => (is => 'ro', isa => 'Str');
   has EvaluationLimitExceeded => (is => 'ro', isa => 'Bool');
   has ViolatorCount => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

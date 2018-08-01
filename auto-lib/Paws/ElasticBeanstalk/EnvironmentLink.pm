@@ -2,6 +2,7 @@ package Paws::ElasticBeanstalk::EnvironmentLink;
   use Moose;
   has EnvironmentName => (is => 'ro', isa => 'Str');
   has LinkName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

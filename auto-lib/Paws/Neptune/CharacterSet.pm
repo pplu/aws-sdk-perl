@@ -2,6 +2,7 @@ package Paws::Neptune::CharacterSet;
   use Moose;
   has CharacterSetDescription => (is => 'ro', isa => 'Str');
   has CharacterSetName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

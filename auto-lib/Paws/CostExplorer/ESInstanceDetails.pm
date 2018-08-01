@@ -5,6 +5,7 @@ package Paws::CostExplorer::ESInstanceDetails;
   has InstanceSize => (is => 'ro', isa => 'Str');
   has Region => (is => 'ro', isa => 'Str');
   has SizeFlexEligible => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Rekognition::Label;
   use Moose;
   has Confidence => (is => 'ro', isa => 'Num');
   has Name => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

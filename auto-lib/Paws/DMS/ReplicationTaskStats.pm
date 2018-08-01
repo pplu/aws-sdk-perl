@@ -6,6 +6,7 @@ package Paws::DMS::ReplicationTaskStats;
   has TablesLoaded => (is => 'ro', isa => 'Int');
   has TablesLoading => (is => 'ro', isa => 'Int');
   has TablesQueued => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

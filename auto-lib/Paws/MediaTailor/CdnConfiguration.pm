@@ -2,6 +2,7 @@ package Paws::MediaTailor::CdnConfiguration;
   use Moose;
   has AdSegmentUrlPrefix => (is => 'ro', isa => 'Str');
   has ContentSegmentUrlPrefix => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

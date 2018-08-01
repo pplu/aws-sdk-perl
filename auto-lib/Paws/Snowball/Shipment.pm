@@ -2,6 +2,7 @@ package Paws::Snowball::Shipment;
   use Moose;
   has Status => (is => 'ro', isa => 'Str');
   has TrackingNumber => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

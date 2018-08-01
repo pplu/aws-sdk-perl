@@ -2,6 +2,7 @@ package Paws::XRay::FaultStatistics;
   use Moose;
   has OtherCount => (is => 'ro', isa => 'Int');
   has TotalCount => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

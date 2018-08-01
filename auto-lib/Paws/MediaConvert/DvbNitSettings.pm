@@ -3,6 +3,7 @@ package Paws::MediaConvert::DvbNitSettings;
   has NetworkId => (is => 'ro', isa => 'Int', request_name => 'networkId', traits => ['NameInRequest'], required => 1);
   has NetworkName => (is => 'ro', isa => 'Str', request_name => 'networkName', traits => ['NameInRequest'], required => 1);
   has NitInterval => (is => 'ro', isa => 'Int', request_name => 'nitInterval', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

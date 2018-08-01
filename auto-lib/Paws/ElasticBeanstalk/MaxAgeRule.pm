@@ -3,6 +3,7 @@ package Paws::ElasticBeanstalk::MaxAgeRule;
   has DeleteSourceFromS3 => (is => 'ro', isa => 'Bool');
   has Enabled => (is => 'ro', isa => 'Bool', required => 1);
   has MaxAgeInDays => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::WAFRegional::RegexMatchSetUpdate;
   use Moose;
   has Action => (is => 'ro', isa => 'Str', required => 1);
   has RegexMatchTuple => (is => 'ro', isa => 'Paws::WAFRegional::RegexMatchTuple', required => 1);
+
 1;
 
 ### main pod documentation begin ###

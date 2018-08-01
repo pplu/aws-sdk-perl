@@ -2,6 +2,7 @@ package Paws::GameLift::PlayerLatencyPolicy;
   use Moose;
   has MaximumIndividualPlayerLatencyMilliseconds => (is => 'ro', isa => 'Int');
   has PolicyDurationSeconds => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

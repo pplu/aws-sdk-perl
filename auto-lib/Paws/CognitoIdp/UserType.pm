@@ -7,6 +7,7 @@ package Paws::CognitoIdp::UserType;
   has UserLastModifiedDate => (is => 'ro', isa => 'Str');
   has Username => (is => 'ro', isa => 'Str');
   has UserStatus => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

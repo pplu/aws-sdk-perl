@@ -7,6 +7,7 @@ package Paws::CognitoIdp::SchemaAttributeType;
   has NumberAttributeConstraints => (is => 'ro', isa => 'Paws::CognitoIdp::NumberAttributeConstraintsType');
   has Required => (is => 'ro', isa => 'Bool');
   has StringAttributeConstraints => (is => 'ro', isa => 'Paws::CognitoIdp::StringAttributeConstraintsType');
+
 1;
 
 ### main pod documentation begin ###

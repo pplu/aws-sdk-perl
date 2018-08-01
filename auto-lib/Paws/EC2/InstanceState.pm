@@ -39,8 +39,8 @@ This class has no description
 
 =head2 Code => Int
 
-  The low byte represents the state. The high byte is used for internal
-purposes and should be ignored.
+  The low byte represents the state. The high byte is an opaque internal
+value and should be ignored.
 
 =over
 

@@ -1,6 +1,7 @@
 package Paws::CostExplorer::ServiceSpecification;
   use Moose;
   has EC2Specification => (is => 'ro', isa => 'Paws::CostExplorer::EC2Specification');
+
 1;
 
 ### main pod documentation begin ###

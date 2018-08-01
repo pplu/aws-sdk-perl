@@ -2,6 +2,7 @@ package Paws::MediaLive::HlsSettings;
   use Moose;
   has AudioOnlyHlsSettings => (is => 'ro', isa => 'Paws::MediaLive::AudioOnlyHlsSettings', request_name => 'audioOnlyHlsSettings', traits => ['NameInRequest']);
   has StandardHlsSettings => (is => 'ro', isa => 'Paws::MediaLive::StandardHlsSettings', request_name => 'standardHlsSettings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

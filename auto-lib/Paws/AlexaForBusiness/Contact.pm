@@ -5,6 +5,7 @@ package Paws::AlexaForBusiness::Contact;
   has FirstName => (is => 'ro', isa => 'Str');
   has LastName => (is => 'ro', isa => 'Str');
   has PhoneNumber => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

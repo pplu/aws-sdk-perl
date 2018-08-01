@@ -3,6 +3,7 @@ package Paws::FMS::ComplianceViolator;
   has ResourceId => (is => 'ro', isa => 'Str');
   has ResourceType => (is => 'ro', isa => 'Str');
   has ViolationReason => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

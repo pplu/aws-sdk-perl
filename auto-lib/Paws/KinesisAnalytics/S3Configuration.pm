@@ -3,6 +3,7 @@ package Paws::KinesisAnalytics::S3Configuration;
   has BucketARN => (is => 'ro', isa => 'Str', required => 1);
   has FileKey => (is => 'ro', isa => 'Str', required => 1);
   has RoleARN => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

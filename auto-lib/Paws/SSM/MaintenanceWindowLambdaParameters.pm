@@ -3,6 +3,7 @@ package Paws::SSM::MaintenanceWindowLambdaParameters;
   has ClientContext => (is => 'ro', isa => 'Str');
   has Payload => (is => 'ro', isa => 'Str');
   has Qualifier => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

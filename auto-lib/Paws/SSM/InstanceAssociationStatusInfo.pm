@@ -12,6 +12,7 @@ package Paws::SSM::InstanceAssociationStatusInfo;
   has Name => (is => 'ro', isa => 'Str');
   has OutputUrl => (is => 'ro', isa => 'Paws::SSM::InstanceAssociationOutputUrl');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

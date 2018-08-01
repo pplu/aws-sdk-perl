@@ -13,6 +13,7 @@ package Paws::RedShift::ReservedNode;
   has StartTime => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
   has UsagePrice => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

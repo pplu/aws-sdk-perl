@@ -3,6 +3,7 @@ package Paws::S3::GetBucketLoggingOutput;
   use Moose;
   has LoggingEnabled => (is => 'ro', isa => 'Paws::S3::LoggingEnabled');
 
+
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

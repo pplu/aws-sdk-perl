@@ -9,6 +9,7 @@ package Paws::ElasticBeanstalk::EventDescription;
   has Severity => (is => 'ro', isa => 'Str');
   has TemplateName => (is => 'ro', isa => 'Str');
   has VersionLabel => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

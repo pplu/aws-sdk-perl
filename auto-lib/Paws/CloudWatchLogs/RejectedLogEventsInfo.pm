@@ -3,6 +3,7 @@ package Paws::CloudWatchLogs::RejectedLogEventsInfo;
   has ExpiredLogEventEndIndex => (is => 'ro', isa => 'Int', request_name => 'expiredLogEventEndIndex', traits => ['NameInRequest']);
   has TooNewLogEventStartIndex => (is => 'ro', isa => 'Int', request_name => 'tooNewLogEventStartIndex', traits => ['NameInRequest']);
   has TooOldLogEventEndIndex => (is => 'ro', isa => 'Int', request_name => 'tooOldLogEventEndIndex', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

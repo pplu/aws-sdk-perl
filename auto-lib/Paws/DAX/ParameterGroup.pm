@@ -2,6 +2,7 @@ package Paws::DAX::ParameterGroup;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
   has ParameterGroupName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

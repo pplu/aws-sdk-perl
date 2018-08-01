@@ -8,6 +8,7 @@ package Paws::CloudWatch::Datapoint;
   has Sum => (is => 'ro', isa => 'Num');
   has Timestamp => (is => 'ro', isa => 'Str');
   has Unit => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

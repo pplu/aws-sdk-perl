@@ -2,6 +2,7 @@ package Paws::SES::TemplateMetadata;
   use Moose;
   has CreatedTimestamp => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

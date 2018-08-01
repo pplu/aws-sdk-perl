@@ -19,6 +19,7 @@ package Paws::Glue::DevEndpoint;
   has VpcId => (is => 'ro', isa => 'Str');
   has YarnEndpointAddress => (is => 'ro', isa => 'Str');
   has ZeppelinRemoteSparkInterpreterPort => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

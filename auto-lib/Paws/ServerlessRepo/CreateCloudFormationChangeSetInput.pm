@@ -3,6 +3,7 @@ package Paws::ServerlessRepo::CreateCloudFormationChangeSetInput;
   has ParameterOverrides => (is => 'ro', isa => 'ArrayRef[Paws::ServerlessRepo::ParameterValue]', request_name => 'parameterOverrides', traits => ['NameInRequest']);
   has SemanticVersion => (is => 'ro', isa => 'Str', request_name => 'semanticVersion', traits => ['NameInRequest']);
   has StackName => (is => 'ro', isa => 'Str', request_name => 'stackName', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

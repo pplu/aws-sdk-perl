@@ -3,6 +3,7 @@ package Paws::MediaLive::InputDestination;
   has Ip => (is => 'ro', isa => 'Str', request_name => 'ip', traits => ['NameInRequest']);
   has Port => (is => 'ro', isa => 'Str', request_name => 'port', traits => ['NameInRequest']);
   has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

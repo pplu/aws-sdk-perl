@@ -4,6 +4,7 @@ package Paws::AutoScaling::BlockDeviceMapping;
   has Ebs => (is => 'ro', isa => 'Paws::AutoScaling::Ebs');
   has NoDevice => (is => 'ro', isa => 'Bool');
   has VirtualName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -12,6 +12,7 @@ package Paws::Neptune::DBEngineVersion;
   has SupportsLogExportsToCloudwatchLogs => (is => 'ro', isa => 'Bool');
   has SupportsReadReplica => (is => 'ro', isa => 'Bool');
   has ValidUpgradeTarget => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::UpgradeTarget]', request_name => 'UpgradeTarget', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

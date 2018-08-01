@@ -7,6 +7,7 @@ package Paws::Pinpoint::TreatmentResource;
   has State => (is => 'ro', isa => 'Paws::Pinpoint::CampaignState');
   has TreatmentDescription => (is => 'ro', isa => 'Str');
   has TreatmentName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

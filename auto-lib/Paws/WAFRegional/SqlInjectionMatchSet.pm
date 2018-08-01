@@ -3,6 +3,7 @@ package Paws::WAFRegional::SqlInjectionMatchSet;
   has Name => (is => 'ro', isa => 'Str');
   has SqlInjectionMatchSetId => (is => 'ro', isa => 'Str', required => 1);
   has SqlInjectionMatchTuples => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::SqlInjectionMatchTuple]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

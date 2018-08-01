@@ -3,6 +3,7 @@ package Paws::CloudDirectory::BatchGetObjectAttributes;
   has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has ObjectReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
   has SchemaFacet => (is => 'ro', isa => 'Paws::CloudDirectory::SchemaFacet', required => 1);
+
 1;
 
 ### main pod documentation begin ###

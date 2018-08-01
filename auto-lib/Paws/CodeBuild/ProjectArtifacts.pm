@@ -1,12 +1,12 @@
 package Paws::CodeBuild::ProjectArtifacts;
   use Moose;
-  has EncryptionDisabled => (is => 'ro', isa => 'Bool', request_name => 'encryptionDisabled', traits => ['NameInRequest']);
   has Location => (is => 'ro', isa => 'Str', request_name => 'location', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has NamespaceType => (is => 'ro', isa => 'Str', request_name => 'namespaceType', traits => ['NameInRequest']);
   has Packaging => (is => 'ro', isa => 'Str', request_name => 'packaging', traits => ['NameInRequest']);
   has Path => (is => 'ro', isa => 'Str', request_name => 'path', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###
@@ -26,28 +26,20 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeBuild::ProjectArtifacts object:
 
-  $service_obj->Method(Att1 => { EncryptionDisabled => $value, ..., Type => $value  });
+  $service_obj->Method(Att1 => { Location => $value, ..., Type => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodeBuild::ProjectArtifacts object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->EncryptionDisabled
+  $result->Att1->Location
 
 =head1 DESCRIPTION
 
 Information about the build output artifacts for the build project.
 
 =head1 ATTRIBUTES
-
-
-=head2 EncryptionDisabled => Bool
-
-  Set to true if you do not want your output artifacts encrypted. This
-option is only valid if your artifacts type is Amazon S3. If this is
-set with another artifacts type, an invalidInputException will be
-thrown.
 
 
 =head2 Location => Str

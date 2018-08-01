@@ -2,7 +2,8 @@
 package Paws::CloudFront::CreateInvalidation;
   use Moose;
   has DistributionId => (is => 'ro', isa => 'Str', uri_name => 'DistributionId', traits => ['ParamInURI'], required => 1);
-  has InvalidationBatch => (is => 'ro', isa => 'Paws::CloudFront::InvalidationBatch', required => 1);
+  has InvalidationBatch => (is => 'ro', isa => 'Paws::CloudFront::InvalidationBatch', traits => ['ParamInBody'], required => 1);
+
 
   use MooseX::ClassAttribute;
 
@@ -12,6 +13,7 @@ package Paws::CloudFront::CreateInvalidation;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::CreateInvalidationResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###

@@ -4,8 +4,9 @@ package Paws::S3::RestoreObject;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
   has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
-  has RestoreRequest => (is => 'ro', isa => 'Paws::S3::RestoreRequest');
+  has RestoreRequest => (is => 'ro', isa => 'Paws::S3::RestoreRequest', traits => ['ParamInBody']);
   has VersionId => (is => 'ro', isa => 'Str', query_name => 'versionId', traits => ['ParamInQuery']);
+
 
   use MooseX::ClassAttribute;
 
@@ -15,6 +16,7 @@ package Paws::S3::RestoreObject;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::RestoreObjectOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +44,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Days                 => 1,                  # OPTIONAL
         Description          => 'MyDescription',    # OPTIONAL
         GlacierJobParameters => {
-          Tier => 'Standard',    # values: Standard, Bulk, Expedited; OPTIONAL
+          Tier => 'Standard',    # values: Standard, Bulk, Expedited
 
         },    # OPTIONAL
         OutputLocation => {
@@ -125,7 +127,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
 
         },    # OPTIONAL
-        Tier => 'Standard',    # values: Standard, Bulk, Expedited; OPTIONAL
+        Tier => 'Standard',    # values: Standard, Bulk, Expedited
         Type => 'SELECT',      # values: SELECT; OPTIONAL
       },    # OPTIONAL
       VersionId => 'MyObjectVersionId',    # OPTIONAL

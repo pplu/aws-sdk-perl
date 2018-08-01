@@ -5,6 +5,7 @@ package Paws::CodeDeploy::S3Location;
   has ETag => (is => 'ro', isa => 'Str', request_name => 'eTag', traits => ['NameInRequest']);
   has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest']);
   has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

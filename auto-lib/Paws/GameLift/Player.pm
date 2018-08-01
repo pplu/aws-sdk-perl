@@ -4,6 +4,7 @@ package Paws::GameLift::Player;
   has PlayerAttributes => (is => 'ro', isa => 'Paws::GameLift::PlayerAttributeMap');
   has PlayerId => (is => 'ro', isa => 'Str');
   has Team => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

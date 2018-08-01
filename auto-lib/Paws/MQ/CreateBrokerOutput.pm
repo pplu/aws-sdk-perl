@@ -2,6 +2,7 @@ package Paws::MQ::CreateBrokerOutput;
   use Moose;
   has BrokerArn => (is => 'ro', isa => 'Str', request_name => 'brokerArn', traits => ['NameInRequest']);
   has BrokerId => (is => 'ro', isa => 'Str', request_name => 'brokerId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

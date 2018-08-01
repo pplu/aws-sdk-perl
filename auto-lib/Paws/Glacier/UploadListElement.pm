@@ -5,6 +5,7 @@ package Paws::Glacier::UploadListElement;
   has MultipartUploadId => (is => 'ro', isa => 'Str');
   has PartSizeInBytes => (is => 'ro', isa => 'Int');
   has VaultARN => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

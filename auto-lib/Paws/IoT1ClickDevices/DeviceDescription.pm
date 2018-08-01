@@ -5,6 +5,7 @@ package Paws::IoT1ClickDevices::DeviceDescription;
   has Enabled => (is => 'ro', isa => 'Bool', request_name => 'enabled', traits => ['NameInRequest']);
   has RemainingLife => (is => 'ro', isa => 'Num', request_name => 'remainingLife', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

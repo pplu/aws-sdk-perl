@@ -4,6 +4,7 @@ package Paws::SageMaker::NotebookInstanceLifecycleConfigSummary;
   has LastModifiedTime => (is => 'ro', isa => 'Str');
   has NotebookInstanceLifecycleConfigArn => (is => 'ro', isa => 'Str', required => 1);
   has NotebookInstanceLifecycleConfigName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

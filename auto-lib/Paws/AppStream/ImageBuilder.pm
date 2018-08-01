@@ -15,6 +15,7 @@ package Paws::AppStream::ImageBuilder;
   has State => (is => 'ro', isa => 'Str');
   has StateChangeReason => (is => 'ro', isa => 'Paws::AppStream::ImageBuilderStateChangeReason');
   has VpcConfig => (is => 'ro', isa => 'Paws::AppStream::VpcConfig');
+
 1;
 
 ### main pod documentation begin ###

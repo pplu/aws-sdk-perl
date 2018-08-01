@@ -5,6 +5,7 @@ package Paws::MTurk::BonusPayment;
   has GrantTime => (is => 'ro', isa => 'Str');
   has Reason => (is => 'ro', isa => 'Str');
   has WorkerId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

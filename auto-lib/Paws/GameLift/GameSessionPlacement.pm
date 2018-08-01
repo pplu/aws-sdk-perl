@@ -17,6 +17,7 @@ package Paws::GameLift::GameSessionPlacement;
   has Port => (is => 'ro', isa => 'Int');
   has StartTime => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

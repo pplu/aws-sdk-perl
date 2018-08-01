@@ -3,6 +3,7 @@ package Paws::Athena::UnprocessedNamedQueryId;
   has ErrorCode => (is => 'ro', isa => 'Str');
   has ErrorMessage => (is => 'ro', isa => 'Str');
   has NamedQueryId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

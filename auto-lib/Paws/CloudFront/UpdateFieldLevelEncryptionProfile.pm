@@ -1,9 +1,10 @@
 
 package Paws::CloudFront::UpdateFieldLevelEncryptionProfile;
   use Moose;
-  has FieldLevelEncryptionProfileConfig => (is => 'ro', isa => 'Paws::CloudFront::FieldLevelEncryptionProfileConfig', required => 1);
+  has FieldLevelEncryptionProfileConfig => (is => 'ro', isa => 'Paws::CloudFront::FieldLevelEncryptionProfileConfig', traits => ['ParamInBody'], required => 1);
   has Id => (is => 'ro', isa => 'Str', uri_name => 'Id', traits => ['ParamInURI'], required => 1);
   has IfMatch => (is => 'ro', isa => 'Str', header_name => 'If-Match', traits => ['ParamInHeader']);
+
 
   use MooseX::ClassAttribute;
 
@@ -13,6 +14,7 @@ package Paws::CloudFront::UpdateFieldLevelEncryptionProfile;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::UpdateFieldLevelEncryptionProfileResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###

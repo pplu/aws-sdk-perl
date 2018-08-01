@@ -4,6 +4,7 @@ package Paws::SQS::BatchResultErrorEntry;
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has Message => (is => 'ro', isa => 'Str');
   has SenderFault => (is => 'ro', isa => 'Bool', required => 1);
+
 1;
 
 ### main pod documentation begin ###

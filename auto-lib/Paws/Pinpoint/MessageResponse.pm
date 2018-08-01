@@ -4,6 +4,7 @@ package Paws::Pinpoint::MessageResponse;
   has EndpointResult => (is => 'ro', isa => 'Paws::Pinpoint::MapOfEndpointMessageResult');
   has RequestId => (is => 'ro', isa => 'Str');
   has Result => (is => 'ro', isa => 'Paws::Pinpoint::MapOfMessageResult');
+
 1;
 
 ### main pod documentation begin ###

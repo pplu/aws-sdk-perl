@@ -19,6 +19,7 @@ package Paws::AutoScaling::LaunchConfiguration;
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SpotPrice => (is => 'ro', isa => 'Str');
   has UserData => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

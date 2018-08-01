@@ -1,6 +1,7 @@
 package Paws::MediaConvert::AncillarySourceSettings;
   use Moose;
   has SourceAncillaryChannelNumber => (is => 'ro', isa => 'Int', request_name => 'sourceAncillaryChannelNumber', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

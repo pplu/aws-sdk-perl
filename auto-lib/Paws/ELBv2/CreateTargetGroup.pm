@@ -66,9 +66,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 =head2 HealthCheckIntervalSeconds => Int
 
 The approximate amount of time, in seconds, between health checks of an
-individual target. For Application Load Balancers, the range is
-5E<ndash>300 seconds. For Network Load Balancers, the supported values
-are 10 or 30 seconds. The default is 30 seconds.
+individual target. For Application Load Balancers, the range is 5 to
+300 seconds. For Network Load Balancers, the supported values are 10 or
+30 seconds. The default is 30 seconds.
 
 
 
@@ -100,7 +100,7 @@ Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">
 
 The amount of time, in seconds, during which no response from a target
 means a failed health check. For Application Load Balancers, the range
-is 2E<ndash>60 seconds and the default is 5 seconds. For Network Load
+is 2 to 60 seconds and the default is 5 seconds. For Network Load
 Balancers, this is 10 seconds for TCP and HTTPS health checks and 6
 seconds for HTTP health checks.
 
@@ -152,8 +152,8 @@ Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">
 The type of target that you must specify when registering targets with
 this target group. The possible values are C<instance> (targets are
 specified by instance ID) or C<ip> (targets are specified by IP
-address). The default is C<instance>. You can't specify targets for a
-target group using both instance IDs and IP addresses.
+address). The default is C<instance>. Note that you can't specify
+targets for a target group using both instance IDs and IP addresses.
 
 If the target type is C<ip>, specify IP addresses from the subnets of
 the virtual private cloud (VPC) for the target group, the RFC 1918

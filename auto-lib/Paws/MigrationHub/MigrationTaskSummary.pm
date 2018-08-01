@@ -6,6 +6,7 @@ package Paws::MigrationHub::MigrationTaskSummary;
   has Status => (is => 'ro', isa => 'Str');
   has StatusDetail => (is => 'ro', isa => 'Str');
   has UpdateDateTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

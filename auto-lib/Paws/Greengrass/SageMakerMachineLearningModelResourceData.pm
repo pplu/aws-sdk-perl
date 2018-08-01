@@ -2,6 +2,7 @@ package Paws::Greengrass::SageMakerMachineLearningModelResourceData;
   use Moose;
   has DestinationPath => (is => 'ro', isa => 'Str');
   has SageMakerJobArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

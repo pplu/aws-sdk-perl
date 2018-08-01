@@ -7,6 +7,7 @@ package Paws::CloudWatchEvents::Rule;
   has RoleArn => (is => 'ro', isa => 'Str');
   has ScheduleExpression => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

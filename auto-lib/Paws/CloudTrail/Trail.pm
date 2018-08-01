@@ -14,6 +14,7 @@ package Paws::CloudTrail::Trail;
   has SnsTopicARN => (is => 'ro', isa => 'Str');
   has SnsTopicName => (is => 'ro', isa => 'Str');
   has TrailARN => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

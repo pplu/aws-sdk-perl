@@ -4,6 +4,7 @@ package Paws::DeviceFarm::Radios;
   has Gps => (is => 'ro', isa => 'Bool', request_name => 'gps', traits => ['NameInRequest']);
   has Nfc => (is => 'ro', isa => 'Bool', request_name => 'nfc', traits => ['NameInRequest']);
   has Wifi => (is => 'ro', isa => 'Bool', request_name => 'wifi', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::SimpleWorkflow::CancelTimerDecisionAttributes;
   use Moose;
   has TimerId => (is => 'ro', isa => 'Str', request_name => 'timerId', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

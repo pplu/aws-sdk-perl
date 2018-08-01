@@ -2,6 +2,7 @@ package Paws::CognitoIdp::NumberAttributeConstraintsType;
   use Moose;
   has MaxValue => (is => 'ro', isa => 'Str');
   has MinValue => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

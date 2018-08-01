@@ -2,6 +2,7 @@ package Paws::MediaLive::ListChannelsResultModel;
   use Moose;
   has Channels => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::ChannelSummary]', request_name => 'channels', traits => ['NameInRequest']);
   has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

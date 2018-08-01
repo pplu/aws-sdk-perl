@@ -4,6 +4,7 @@ package Paws::Glacier::InventoryRetrievalJobInput;
   has Limit => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
   has StartDate => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

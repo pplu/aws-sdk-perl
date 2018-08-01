@@ -2,6 +2,7 @@ package Paws::Pinpoint::CampaignsResponse;
   use Moose;
   has Item => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::CampaignResponse]');
   has NextToken => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

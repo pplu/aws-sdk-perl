@@ -3,6 +3,7 @@ package Paws::DS::ConditionalForwarder;
   has DnsIpAddrs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has RemoteDomainName => (is => 'ro', isa => 'Str');
   has ReplicationScope => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

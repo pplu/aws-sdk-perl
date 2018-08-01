@@ -4,6 +4,7 @@ package Paws::ElasticBeanstalk::EnvironmentInfoDescription;
   has InfoType => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
   has SampleTimestamp => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

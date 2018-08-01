@@ -5,6 +5,7 @@ package Paws::Cloud9::EnvironmentMember;
   has Permissions => (is => 'ro', isa => 'Str', request_name => 'permissions', traits => ['NameInRequest']);
   has UserArn => (is => 'ro', isa => 'Str', request_name => 'userArn', traits => ['NameInRequest']);
   has UserId => (is => 'ro', isa => 'Str', request_name => 'userId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

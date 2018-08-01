@@ -14,6 +14,7 @@ package Paws::OpsWorks::Volume;
   has Status => (is => 'ro', isa => 'Str');
   has VolumeId => (is => 'ro', isa => 'Str');
   has VolumeType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

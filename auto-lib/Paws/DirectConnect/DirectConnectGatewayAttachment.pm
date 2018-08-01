@@ -6,6 +6,7 @@ package Paws::DirectConnect::DirectConnectGatewayAttachment;
   has VirtualInterfaceId => (is => 'ro', isa => 'Str', request_name => 'virtualInterfaceId', traits => ['NameInRequest']);
   has VirtualInterfaceOwnerAccount => (is => 'ro', isa => 'Str', request_name => 'virtualInterfaceOwnerAccount', traits => ['NameInRequest']);
   has VirtualInterfaceRegion => (is => 'ro', isa => 'Str', request_name => 'virtualInterfaceRegion', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

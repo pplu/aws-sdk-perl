@@ -4,6 +4,7 @@ package Paws::WAFRegional::SizeConstraint;
   has FieldToMatch => (is => 'ro', isa => 'Paws::WAFRegional::FieldToMatch', required => 1);
   has Size => (is => 'ro', isa => 'Int', required => 1);
   has TextTransformation => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

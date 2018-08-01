@@ -10,6 +10,7 @@ package Paws::MediaConvert::AudioSelector;
   has RemixSettings => (is => 'ro', isa => 'Paws::MediaConvert::RemixSettings', request_name => 'remixSettings', traits => ['NameInRequest']);
   has SelectorType => (is => 'ro', isa => 'Str', request_name => 'selectorType', traits => ['NameInRequest']);
   has Tracks => (is => 'ro', isa => 'ArrayRef[Int]', request_name => 'tracks', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

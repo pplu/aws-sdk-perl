@@ -8,6 +8,7 @@ package Paws::Config::ConfigurationRecorderStatus;
   has LastStopTime => (is => 'ro', isa => 'Str', request_name => 'lastStopTime', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Recording => (is => 'ro', isa => 'Bool', request_name => 'recording', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

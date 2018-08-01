@@ -4,6 +4,7 @@ package Paws::WAF::Rule;
   has Name => (is => 'ro', isa => 'Str');
   has Predicates => (is => 'ro', isa => 'ArrayRef[Paws::WAF::Predicate]', required => 1);
   has RuleId => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

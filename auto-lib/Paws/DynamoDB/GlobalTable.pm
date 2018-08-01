@@ -2,6 +2,7 @@ package Paws::DynamoDB::GlobalTable;
   use Moose;
   has GlobalTableName => (is => 'ro', isa => 'Str');
   has ReplicationGroup => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::Replica]');
+
 1;
 
 ### main pod documentation begin ###

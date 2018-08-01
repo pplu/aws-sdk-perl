@@ -2,6 +2,7 @@ package Paws::CodePipeline::WebhookAuthConfiguration;
   use Moose;
   has AllowedIPRange => (is => 'ro', isa => 'Str');
   has SecretToken => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

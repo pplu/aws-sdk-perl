@@ -14,6 +14,7 @@ package Paws::Pinpoint::SMSChannelResponse;
   has ShortCode => (is => 'ro', isa => 'Str');
   has TransactionalMessagesPerSecond => (is => 'ro', isa => 'Int');
   has Version => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

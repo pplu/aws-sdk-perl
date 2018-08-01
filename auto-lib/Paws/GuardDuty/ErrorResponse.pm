@@ -2,6 +2,7 @@ package Paws::GuardDuty::ErrorResponse;
   use Moose;
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => '__type', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

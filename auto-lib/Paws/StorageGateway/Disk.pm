@@ -7,6 +7,7 @@ package Paws::StorageGateway::Disk;
   has DiskPath => (is => 'ro', isa => 'Str');
   has DiskSizeInBytes => (is => 'ro', isa => 'Int');
   has DiskStatus => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

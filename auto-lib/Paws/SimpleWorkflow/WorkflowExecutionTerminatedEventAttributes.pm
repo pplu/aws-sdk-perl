@@ -4,6 +4,7 @@ package Paws::SimpleWorkflow::WorkflowExecutionTerminatedEventAttributes;
   has ChildPolicy => (is => 'ro', isa => 'Str', request_name => 'childPolicy', traits => ['NameInRequest'], required => 1);
   has Details => (is => 'ro', isa => 'Str', request_name => 'details', traits => ['NameInRequest']);
   has Reason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

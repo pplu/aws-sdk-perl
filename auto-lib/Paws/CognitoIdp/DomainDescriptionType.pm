@@ -7,6 +7,7 @@ package Paws::CognitoIdp::DomainDescriptionType;
   has Status => (is => 'ro', isa => 'Str');
   has UserPoolId => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

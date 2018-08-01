@@ -1,6 +1,7 @@
 package Paws::WorkDocs::ResourcePath;
   use Moose;
   has Components => (is => 'ro', isa => 'ArrayRef[Paws::WorkDocs::ResourcePathComponent]');
+
 1;
 
 ### main pod documentation begin ###

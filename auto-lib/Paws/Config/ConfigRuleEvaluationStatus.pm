@@ -11,6 +11,7 @@ package Paws::Config::ConfigRuleEvaluationStatus;
   has LastFailedInvocationTime => (is => 'ro', isa => 'Str');
   has LastSuccessfulEvaluationTime => (is => 'ro', isa => 'Str');
   has LastSuccessfulInvocationTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

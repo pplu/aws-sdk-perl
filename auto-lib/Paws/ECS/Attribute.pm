@@ -4,6 +4,7 @@ package Paws::ECS::Attribute;
   has TargetId => (is => 'ro', isa => 'Str', request_name => 'targetId', traits => ['NameInRequest']);
   has TargetType => (is => 'ro', isa => 'Str', request_name => 'targetType', traits => ['NameInRequest']);
   has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::SimpleWorkflow::ExecutionTimeFilter;
   use Moose;
   has LatestDate => (is => 'ro', isa => 'Str', request_name => 'latestDate', traits => ['NameInRequest']);
   has OldestDate => (is => 'ro', isa => 'Str', request_name => 'oldestDate', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

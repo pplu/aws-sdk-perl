@@ -6,6 +6,7 @@ package Paws::Pinpoint::SMSMessage;
   has OriginationNumber => (is => 'ro', isa => 'Str');
   has SenderId => (is => 'ro', isa => 'Str');
   has Substitutions => (is => 'ro', isa => 'Paws::Pinpoint::MapOfListOf__string');
+
 1;
 
 ### main pod documentation begin ###

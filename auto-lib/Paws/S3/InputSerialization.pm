@@ -3,6 +3,7 @@ package Paws::S3::InputSerialization;
   has CompressionType => (is => 'ro', isa => 'Str');
   has CSV => (is => 'ro', isa => 'Paws::S3::CSVInput');
   has JSON => (is => 'ro', isa => 'Paws::S3::JSONInput');
+
 1;
 
 ### main pod documentation begin ###

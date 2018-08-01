@@ -6,6 +6,7 @@ package Paws::CognitoIdp::RiskConfigurationType;
   has LastModifiedDate => (is => 'ro', isa => 'Str');
   has RiskExceptionConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::RiskExceptionConfigurationType');
   has UserPoolId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

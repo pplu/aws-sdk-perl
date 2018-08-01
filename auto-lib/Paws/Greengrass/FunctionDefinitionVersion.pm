@@ -1,6 +1,7 @@
 package Paws::Greengrass::FunctionDefinitionVersion;
   use Moose;
   has Functions => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::Function]');
+
 1;
 
 ### main pod documentation begin ###

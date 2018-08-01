@@ -2,6 +2,7 @@ package Paws::LexModels::CodeHook;
   use Moose;
   has MessageVersion => (is => 'ro', isa => 'Str', request_name => 'messageVersion', traits => ['NameInRequest'], required => 1);
   has Uri => (is => 'ro', isa => 'Str', request_name => 'uri', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

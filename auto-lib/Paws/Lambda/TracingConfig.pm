@@ -1,6 +1,7 @@
 package Paws::Lambda::TracingConfig;
   use Moose;
   has Mode => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

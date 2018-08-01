@@ -72,8 +72,8 @@ C<availability-zone> - The Availability Zone of the host.
 
 =item *
 
-C<client-token> - The idempotency token that you provided when you
-allocated the host.
+C<client-token> - The idempotency token you provided when you allocated
+the host.
 
 =item *
 
@@ -113,8 +113,8 @@ launches.
 
 The maximum number of results to return for the request in a single
 page. The remaining results can be seen by sending another request with
-the returned C<nextToken> value. This value can be between 5 and 500.
-If C<maxResults> is given a larger value than 500, you receive an
+the returned C<nextToken> value. This value can be between 5 and 500;
+if C<maxResults> is given a larger value than 500, you will receive an
 error. You cannot specify this parameter and the host IDs parameter in
 the same request.
 

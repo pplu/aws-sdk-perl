@@ -1,6 +1,7 @@
 package Paws::StepFunctions::ExecutionSucceededEventDetails;
   use Moose;
   has Output => (is => 'ro', isa => 'Str', request_name => 'output', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

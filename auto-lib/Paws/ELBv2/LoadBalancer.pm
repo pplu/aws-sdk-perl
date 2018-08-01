@@ -12,6 +12,7 @@ package Paws::ELBv2::LoadBalancer;
   has State => (is => 'ro', isa => 'Paws::ELBv2::LoadBalancerState');
   has Type => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###
@@ -90,7 +91,7 @@ The possible values are C<ipv4> (for IPv4 addresses) and C<dualstack>
   The nodes of an Internet-facing load balancer have public IP addresses.
 The DNS name of an Internet-facing load balancer is publicly resolvable
 to the public IP addresses of the nodes. Therefore, Internet-facing
-load balancers can route requests from clients over the internet.
+load balancers can route requests from clients over the Internet.
 
 The nodes of an internal load balancer have only private IP addresses.
 The DNS name of an internal load balancer is publicly resolvable to the

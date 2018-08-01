@@ -7,6 +7,7 @@ package Paws::Pinpoint::DirectMessageConfiguration;
   has DefaultPushNotificationMessage => (is => 'ro', isa => 'Paws::Pinpoint::DefaultPushNotificationMessage');
   has GCMMessage => (is => 'ro', isa => 'Paws::Pinpoint::GCMMessage');
   has SMSMessage => (is => 'ro', isa => 'Paws::Pinpoint::SMSMessage');
+
 1;
 
 ### main pod documentation begin ###

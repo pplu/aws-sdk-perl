@@ -10,6 +10,7 @@ package Paws::DynamoDB::AttributeValue;
   has NULL => (is => 'ro', isa => 'Bool');
   has S => (is => 'ro', isa => 'Str');
   has SS => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

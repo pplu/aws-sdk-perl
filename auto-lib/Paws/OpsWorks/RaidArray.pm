@@ -13,6 +13,7 @@ package Paws::OpsWorks::RaidArray;
   has Size => (is => 'ro', isa => 'Int');
   has StackId => (is => 'ro', isa => 'Str');
   has VolumeType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::Neptune::DBClusterMember;
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
   has IsClusterWriter => (is => 'ro', isa => 'Bool');
   has PromotionTier => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

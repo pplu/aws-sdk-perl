@@ -3,6 +3,7 @@ package Paws::Route53::GetQueryLoggingConfigResponse;
   use Moose;
   has QueryLoggingConfig => (is => 'ro', isa => 'Paws::Route53::QueryLoggingConfig', required => 1);
 
+
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

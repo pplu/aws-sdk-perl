@@ -3,6 +3,7 @@ package Paws::Route53::GeoLocation;
   has ContinentCode => (is => 'ro', isa => 'Str');
   has CountryCode => (is => 'ro', isa => 'Str');
   has SubdivisionCode => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

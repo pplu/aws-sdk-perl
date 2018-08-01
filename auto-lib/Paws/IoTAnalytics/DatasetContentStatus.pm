@@ -2,6 +2,7 @@ package Paws::IoTAnalytics::DatasetContentStatus;
   use Moose;
   has Reason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

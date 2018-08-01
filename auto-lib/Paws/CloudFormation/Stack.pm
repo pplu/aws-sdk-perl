@@ -21,6 +21,7 @@ package Paws::CloudFormation::Stack;
   has StackStatusReason => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Tag]');
   has TimeoutInMinutes => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

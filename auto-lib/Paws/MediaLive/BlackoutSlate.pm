@@ -5,6 +5,7 @@ package Paws::MediaLive::BlackoutSlate;
   has NetworkEndBlackoutImage => (is => 'ro', isa => 'Paws::MediaLive::InputLocation', request_name => 'networkEndBlackoutImage', traits => ['NameInRequest']);
   has NetworkId => (is => 'ro', isa => 'Str', request_name => 'networkId', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::AppSync::HttpDataSourceConfig;
   use Moose;
   has Endpoint => (is => 'ro', isa => 'Str', request_name => 'endpoint', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

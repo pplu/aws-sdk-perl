@@ -2,6 +2,7 @@ package Paws::Pinpoint::EndpointUser;
   use Moose;
   has UserAttributes => (is => 'ro', isa => 'Paws::Pinpoint::MapOfListOf__string');
   has UserId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

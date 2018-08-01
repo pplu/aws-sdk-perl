@@ -6,6 +6,7 @@ package Paws::MediaConvert::VideoCodecSettings;
   has H265Settings => (is => 'ro', isa => 'Paws::MediaConvert::H265Settings', request_name => 'h265Settings', traits => ['NameInRequest']);
   has Mpeg2Settings => (is => 'ro', isa => 'Paws::MediaConvert::Mpeg2Settings', request_name => 'mpeg2Settings', traits => ['NameInRequest']);
   has ProresSettings => (is => 'ro', isa => 'Paws::MediaConvert::ProresSettings', request_name => 'proresSettings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

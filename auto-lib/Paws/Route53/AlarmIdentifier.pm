@@ -2,6 +2,7 @@ package Paws::Route53::AlarmIdentifier;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Region => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

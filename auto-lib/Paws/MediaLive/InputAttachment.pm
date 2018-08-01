@@ -2,6 +2,7 @@ package Paws::MediaLive::InputAttachment;
   use Moose;
   has InputId => (is => 'ro', isa => 'Str', request_name => 'inputId', traits => ['NameInRequest']);
   has InputSettings => (is => 'ro', isa => 'Paws::MediaLive::InputSettings', request_name => 'inputSettings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

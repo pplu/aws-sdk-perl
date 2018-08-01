@@ -2,6 +2,7 @@ package Paws::RedShift::EventCategoriesMap;
   use Moose;
   has Events => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::EventInfoMap]', request_name => 'EventInfoMap', traits => ['NameInRequest']);
   has SourceType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

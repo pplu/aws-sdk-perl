@@ -3,6 +3,7 @@ package Paws::SES::ReputationOptions;
   has LastFreshStart => (is => 'ro', isa => 'Str');
   has ReputationMetricsEnabled => (is => 'ro', isa => 'Bool');
   has SendingEnabled => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

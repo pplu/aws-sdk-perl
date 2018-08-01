@@ -8,6 +8,7 @@ package Paws::ElasticBeanstalk::InstanceHealthSummary;
   has Severe => (is => 'ro', isa => 'Int');
   has Unknown => (is => 'ro', isa => 'Int');
   has Warning => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::CognitoIdp::AnalyticsConfigurationType;
   has ExternalId => (is => 'ro', isa => 'Str', required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', required => 1);
   has UserDataShared => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

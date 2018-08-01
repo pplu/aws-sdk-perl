@@ -4,6 +4,7 @@ package Paws::CodeDeploy::Diagnostics;
   has LogTail => (is => 'ro', isa => 'Str', request_name => 'logTail', traits => ['NameInRequest']);
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
   has ScriptName => (is => 'ro', isa => 'Str', request_name => 'scriptName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

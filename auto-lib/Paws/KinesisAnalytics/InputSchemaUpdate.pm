@@ -3,6 +3,7 @@ package Paws::KinesisAnalytics::InputSchemaUpdate;
   has RecordColumnUpdates => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::RecordColumn]');
   has RecordEncodingUpdate => (is => 'ro', isa => 'Str');
   has RecordFormatUpdate => (is => 'ro', isa => 'Paws::KinesisAnalytics::RecordFormat');
+
 1;
 
 ### main pod documentation begin ###

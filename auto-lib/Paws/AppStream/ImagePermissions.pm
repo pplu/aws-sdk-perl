@@ -2,6 +2,7 @@ package Paws::AppStream::ImagePermissions;
   use Moose;
   has AllowFleet => (is => 'ro', isa => 'Bool', request_name => 'allowFleet', traits => ['NameInRequest']);
   has AllowImageBuilder => (is => 'ro', isa => 'Bool', request_name => 'allowImageBuilder', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

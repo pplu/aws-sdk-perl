@@ -3,6 +3,7 @@ package Paws::Kinesis::PutRecordsRequestEntry;
   has Data => (is => 'ro', isa => 'Str', required => 1);
   has ExplicitHashKey => (is => 'ro', isa => 'Str');
   has PartitionKey => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

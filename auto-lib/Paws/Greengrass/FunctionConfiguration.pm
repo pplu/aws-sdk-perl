@@ -7,6 +7,7 @@ package Paws::Greengrass::FunctionConfiguration;
   has MemorySize => (is => 'ro', isa => 'Int');
   has Pinned => (is => 'ro', isa => 'Bool');
   has Timeout => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

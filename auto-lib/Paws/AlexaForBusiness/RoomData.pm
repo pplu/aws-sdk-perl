@@ -6,6 +6,7 @@ package Paws::AlexaForBusiness::RoomData;
   has ProviderCalendarId => (is => 'ro', isa => 'Str');
   has RoomArn => (is => 'ro', isa => 'Str');
   has RoomName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

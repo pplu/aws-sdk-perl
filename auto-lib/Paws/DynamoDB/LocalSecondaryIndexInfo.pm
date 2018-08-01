@@ -3,6 +3,7 @@ package Paws::DynamoDB::LocalSecondaryIndexInfo;
   has IndexName => (is => 'ro', isa => 'Str');
   has KeySchema => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::KeySchemaElement]');
   has Projection => (is => 'ro', isa => 'Paws::DynamoDB::Projection');
+
 1;
 
 ### main pod documentation begin ###

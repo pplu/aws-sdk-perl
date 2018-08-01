@@ -9,6 +9,7 @@ package Paws::Comprehend::TopicsDetectionJobProperties;
   has NumberOfTopics => (is => 'ro', isa => 'Int');
   has OutputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::OutputDataConfig');
   has SubmitTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

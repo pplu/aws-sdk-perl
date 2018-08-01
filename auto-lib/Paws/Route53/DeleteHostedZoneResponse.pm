@@ -3,6 +3,7 @@ package Paws::Route53::DeleteHostedZoneResponse;
   use Moose;
   has ChangeInfo => (is => 'ro', isa => 'Paws::Route53::ChangeInfo', required => 1);
 
+
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

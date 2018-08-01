@@ -3,6 +3,7 @@ package Paws::SSM::LoggingInfo;
   has S3BucketName => (is => 'ro', isa => 'Str', required => 1);
   has S3KeyPrefix => (is => 'ro', isa => 'Str');
   has S3Region => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

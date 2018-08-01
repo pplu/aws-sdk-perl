@@ -6,6 +6,7 @@ package Paws::IoT::CloudwatchMetricAction;
   has MetricUnit => (is => 'ro', isa => 'Str', request_name => 'metricUnit', traits => ['NameInRequest'], required => 1);
   has MetricValue => (is => 'ro', isa => 'Str', request_name => 'metricValue', traits => ['NameInRequest'], required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

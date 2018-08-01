@@ -14,6 +14,7 @@ package Paws::Neptune::PendingModifiedValues;
   has PendingCloudwatchLogsExports => (is => 'ro', isa => 'Paws::Neptune::PendingCloudwatchLogsExports');
   has Port => (is => 'ro', isa => 'Int');
   has StorageType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

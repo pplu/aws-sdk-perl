@@ -3,6 +3,7 @@ package Paws::KinesisAnalytics::S3ReferenceDataSourceUpdate;
   has BucketARNUpdate => (is => 'ro', isa => 'Str');
   has FileKeyUpdate => (is => 'ro', isa => 'Str');
   has ReferenceRoleARNUpdate => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

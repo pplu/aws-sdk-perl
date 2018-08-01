@@ -5,6 +5,7 @@ package Paws::DeviceFarm::OfferingTransaction;
   has OfferingPromotionId => (is => 'ro', isa => 'Str', request_name => 'offeringPromotionId', traits => ['NameInRequest']);
   has OfferingStatus => (is => 'ro', isa => 'Paws::DeviceFarm::OfferingStatus', request_name => 'offeringStatus', traits => ['NameInRequest']);
   has TransactionId => (is => 'ro', isa => 'Str', request_name => 'transactionId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

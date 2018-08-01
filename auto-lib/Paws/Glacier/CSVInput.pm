@@ -6,6 +6,7 @@ package Paws::Glacier::CSVInput;
   has QuoteCharacter => (is => 'ro', isa => 'Str');
   has QuoteEscapeCharacter => (is => 'ro', isa => 'Str');
   has RecordDelimiter => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

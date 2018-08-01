@@ -3,6 +3,7 @@ package Paws::MediaLive::InputSpecification;
   has Codec => (is => 'ro', isa => 'Str', request_name => 'codec', traits => ['NameInRequest']);
   has MaximumBitrate => (is => 'ro', isa => 'Str', request_name => 'maximumBitrate', traits => ['NameInRequest']);
   has Resolution => (is => 'ro', isa => 'Str', request_name => 'resolution', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

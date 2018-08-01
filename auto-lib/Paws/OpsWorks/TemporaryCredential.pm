@@ -4,6 +4,7 @@ package Paws::OpsWorks::TemporaryCredential;
   has Password => (is => 'ro', isa => 'Str');
   has Username => (is => 'ro', isa => 'Str');
   has ValidForInMinutes => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

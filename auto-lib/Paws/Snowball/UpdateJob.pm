@@ -91,7 +91,9 @@ The new or updated Notification object.
 
 =head2 Resources => L<Paws::Snowball::JobResource>
 
-The updated C<JobResource> object, or the updated JobResource object.
+The updated S3Resource object (for a single Amazon S3 bucket or key
+range), or the updated JobResource object (for multiple buckets or key
+ranges).
 
 
 

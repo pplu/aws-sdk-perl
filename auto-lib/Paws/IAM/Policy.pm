@@ -11,6 +11,7 @@ package Paws::IAM::Policy;
   has PolicyId => (is => 'ro', isa => 'Str');
   has PolicyName => (is => 'ro', isa => 'Str');
   has UpdateDate => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::S3::NotificationConfigurationDeprecated;
   has QueueConfiguration => (is => 'ro', isa => 'Paws::S3::QueueConfigurationDeprecated');
   has TopicConfiguration => (is => 'ro', isa => 'Paws::S3::TopicConfigurationDeprecated');
 
+
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

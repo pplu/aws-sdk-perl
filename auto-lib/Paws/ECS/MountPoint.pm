@@ -3,6 +3,7 @@ package Paws::ECS::MountPoint;
   has ContainerPath => (is => 'ro', isa => 'Str', request_name => 'containerPath', traits => ['NameInRequest']);
   has ReadOnly => (is => 'ro', isa => 'Bool', request_name => 'readOnly', traits => ['NameInRequest']);
   has SourceVolume => (is => 'ro', isa => 'Str', request_name => 'sourceVolume', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -9,6 +9,7 @@ package Paws::SSM::Activation;
   has IamRole => (is => 'ro', isa => 'Str');
   has RegistrationLimit => (is => 'ro', isa => 'Int');
   has RegistrationsCount => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

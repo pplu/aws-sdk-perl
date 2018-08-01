@@ -2,6 +2,7 @@ package Paws::MQ::Error;
   use Moose;
   has ErrorAttribute => (is => 'ro', isa => 'Str', request_name => 'errorAttribute', traits => ['NameInRequest']);
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

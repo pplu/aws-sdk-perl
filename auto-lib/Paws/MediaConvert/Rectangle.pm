@@ -4,6 +4,7 @@ package Paws::MediaConvert::Rectangle;
   has Width => (is => 'ro', isa => 'Int', request_name => 'width', traits => ['NameInRequest'], required => 1);
   has X => (is => 'ro', isa => 'Int', request_name => 'x', traits => ['NameInRequest'], required => 1);
   has Y => (is => 'ro', isa => 'Int', request_name => 'y', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

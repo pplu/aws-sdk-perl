@@ -3,6 +3,7 @@ package Paws::AppSync::DynamodbDataSourceConfig;
   has AwsRegion => (is => 'ro', isa => 'Str', request_name => 'awsRegion', traits => ['NameInRequest'], required => 1);
   has TableName => (is => 'ro', isa => 'Str', request_name => 'tableName', traits => ['NameInRequest'], required => 1);
   has UseCallerCredentials => (is => 'ro', isa => 'Bool', request_name => 'useCallerCredentials', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

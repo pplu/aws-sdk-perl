@@ -1,6 +1,7 @@
 package Paws::S3::AccelerateConfiguration;
   use Moose;
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

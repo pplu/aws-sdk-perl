@@ -3,6 +3,7 @@ package Paws::RedShift::ClusterParameterStatus;
   has ParameterApplyErrorDescription => (is => 'ro', isa => 'Str');
   has ParameterApplyStatus => (is => 'ro', isa => 'Str');
   has ParameterName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

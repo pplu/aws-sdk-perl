@@ -11,6 +11,7 @@ package Paws::ElasticTranscoder::Pipeline;
   has Role => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has ThumbnailConfig => (is => 'ro', isa => 'Paws::ElasticTranscoder::PipelineOutputConfig');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::Glue::PhysicalConnectionRequirements;
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has SecurityGroupIdList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SubnetId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

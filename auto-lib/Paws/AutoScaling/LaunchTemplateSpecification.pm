@@ -3,6 +3,7 @@ package Paws::AutoScaling::LaunchTemplateSpecification;
   has LaunchTemplateId => (is => 'ro', isa => 'Str');
   has LaunchTemplateName => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

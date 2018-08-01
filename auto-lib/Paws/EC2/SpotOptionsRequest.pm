@@ -2,7 +2,6 @@ package Paws::EC2::SpotOptionsRequest;
   use Moose;
   has AllocationStrategy => (is => 'ro', isa => 'Str');
   has InstanceInterruptionBehavior => (is => 'ro', isa => 'Str');
-  has InstancePoolsToUseCount => (is => 'ro', isa => 'Int');
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::SpotOptionsRequest object:
 
-  $service_obj->Method(Att1 => { AllocationStrategy => $value, ..., InstancePoolsToUseCount => $value  });
+  $service_obj->Method(Att1 => { AllocationStrategy => $value, ..., InstanceInterruptionBehavior => $value  });
 
 =head3 Results returned from an API call
 
@@ -48,15 +47,6 @@ specified by the Spot Fleet request. The default is C<lowestPrice>.
 
   The behavior when a Spot Instance is interrupted. The default is
 C<terminate>.
-
-
-=head2 InstancePoolsToUseCount => Int
-
-  The number of Spot pools across which to allocate your target Spot
-capacity. Valid only when Spot B<AllocationStrategy> is set to
-C<lowest-price>. EC2 Fleet selects the cheapest Spot pools and evenly
-allocates your target Spot capacity across the number of Spot pools
-that you specify.
 
 
 

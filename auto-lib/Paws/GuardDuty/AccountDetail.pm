@@ -2,6 +2,7 @@ package Paws::GuardDuty::AccountDetail;
   use Moose;
   has AccountId => (is => 'ro', isa => 'Str', request_name => 'accountId', traits => ['NameInRequest'], required => 1);
   has Email => (is => 'ro', isa => 'Str', request_name => 'email', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::CodeDeploy::RollbackInfo;
   has RollbackDeploymentId => (is => 'ro', isa => 'Str', request_name => 'rollbackDeploymentId', traits => ['NameInRequest']);
   has RollbackMessage => (is => 'ro', isa => 'Str', request_name => 'rollbackMessage', traits => ['NameInRequest']);
   has RollbackTriggeringDeploymentId => (is => 'ro', isa => 'Str', request_name => 'rollbackTriggeringDeploymentId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

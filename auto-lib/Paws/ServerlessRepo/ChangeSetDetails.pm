@@ -4,6 +4,7 @@ package Paws::ServerlessRepo::ChangeSetDetails;
   has ChangeSetId => (is => 'ro', isa => 'Str', request_name => 'changeSetId', traits => ['NameInRequest'], required => 1);
   has SemanticVersion => (is => 'ro', isa => 'Str', request_name => 'semanticVersion', traits => ['NameInRequest'], required => 1);
   has StackId => (is => 'ro', isa => 'Str', request_name => 'stackId', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

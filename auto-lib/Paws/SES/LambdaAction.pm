@@ -3,6 +3,7 @@ package Paws::SES::LambdaAction;
   has FunctionArn => (is => 'ro', isa => 'Str', required => 1);
   has InvocationType => (is => 'ro', isa => 'Str');
   has TopicArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

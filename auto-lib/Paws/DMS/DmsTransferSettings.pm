@@ -2,6 +2,7 @@ package Paws::DMS::DmsTransferSettings;
   use Moose;
   has BucketName => (is => 'ro', isa => 'Str');
   has ServiceAccessRoleArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

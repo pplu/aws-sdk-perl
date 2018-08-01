@@ -2,6 +2,7 @@ package Paws::ECS::LogConfiguration;
   use Moose;
   has LogDriver => (is => 'ro', isa => 'Str', request_name => 'logDriver', traits => ['NameInRequest'], required => 1);
   has Options => (is => 'ro', isa => 'Paws::ECS::LogConfigurationOptionsMap', request_name => 'options', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

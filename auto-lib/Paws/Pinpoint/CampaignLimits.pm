@@ -4,6 +4,7 @@ package Paws::Pinpoint::CampaignLimits;
   has MaximumDuration => (is => 'ro', isa => 'Int');
   has MessagesPerSecond => (is => 'ro', isa => 'Int');
   has Total => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

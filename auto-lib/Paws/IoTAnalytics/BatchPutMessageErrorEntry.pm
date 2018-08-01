@@ -3,6 +3,7 @@ package Paws::IoTAnalytics::BatchPutMessageErrorEntry;
   has ErrorCode => (is => 'ro', isa => 'Str', request_name => 'errorCode', traits => ['NameInRequest']);
   has ErrorMessage => (is => 'ro', isa => 'Str', request_name => 'errorMessage', traits => ['NameInRequest']);
   has MessageId => (is => 'ro', isa => 'Str', request_name => 'messageId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

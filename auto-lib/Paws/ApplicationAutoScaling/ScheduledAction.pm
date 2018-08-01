@@ -10,6 +10,7 @@ package Paws::ApplicationAutoScaling::ScheduledAction;
   has ScheduledActionName => (is => 'ro', isa => 'Str', required => 1);
   has ServiceNamespace => (is => 'ro', isa => 'Str', required => 1);
   has StartTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

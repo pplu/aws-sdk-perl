@@ -3,6 +3,7 @@ package Paws::MediaLive::ArchiveOutputSettings;
   has ContainerSettings => (is => 'ro', isa => 'Paws::MediaLive::ArchiveContainerSettings', request_name => 'containerSettings', traits => ['NameInRequest'], required => 1);
   has Extension => (is => 'ro', isa => 'Str', request_name => 'extension', traits => ['NameInRequest']);
   has NameModifier => (is => 'ro', isa => 'Str', request_name => 'nameModifier', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

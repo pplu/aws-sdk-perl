@@ -22,6 +22,7 @@ package Paws::DMS::ReplicationInstance;
   has ReplicationSubnetGroup => (is => 'ro', isa => 'Paws::DMS::ReplicationSubnetGroup');
   has SecondaryAvailabilityZone => (is => 'ro', isa => 'Str');
   has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::DMS::VpcSecurityGroupMembership]');
+
 1;
 
 ### main pod documentation begin ###

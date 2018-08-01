@@ -8,6 +8,7 @@ package Paws::DynamoDB::SourceTableDetails;
   has TableId => (is => 'ro', isa => 'Str', required => 1);
   has TableName => (is => 'ro', isa => 'Str', required => 1);
   has TableSizeBytes => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

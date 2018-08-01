@@ -1,5 +1,6 @@
 package Paws::IoT1ClickDevices::Attributes;
   use Moose;
+
 1;
 
 ### main pod documentation begin ###

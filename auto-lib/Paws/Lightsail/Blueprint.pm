@@ -12,6 +12,7 @@ package Paws::Lightsail::Blueprint;
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
   has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
   has VersionCode => (is => 'ro', isa => 'Str', request_name => 'versionCode', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

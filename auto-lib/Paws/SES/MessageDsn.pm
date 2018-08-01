@@ -3,6 +3,7 @@ package Paws::SES::MessageDsn;
   has ArrivalDate => (is => 'ro', isa => 'Str');
   has ExtensionFields => (is => 'ro', isa => 'ArrayRef[Paws::SES::ExtensionField]');
   has ReportingMta => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

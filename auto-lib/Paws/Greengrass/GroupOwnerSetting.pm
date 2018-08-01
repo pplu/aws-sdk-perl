@@ -2,6 +2,7 @@ package Paws::Greengrass::GroupOwnerSetting;
   use Moose;
   has AutoAddGroupOwner => (is => 'ro', isa => 'Bool');
   has GroupOwner => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

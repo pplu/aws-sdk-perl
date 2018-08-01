@@ -2,6 +2,7 @@ package Paws::Glue::TableVersion;
   use Moose;
   has Table => (is => 'ro', isa => 'Paws::Glue::Table');
   has VersionId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

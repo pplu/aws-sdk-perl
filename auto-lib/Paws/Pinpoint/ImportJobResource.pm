@@ -8,6 +8,7 @@ package Paws::Pinpoint::ImportJobResource;
   has S3Url => (is => 'ro', isa => 'Str');
   has SegmentId => (is => 'ro', isa => 'Str');
   has SegmentName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

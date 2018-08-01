@@ -1,6 +1,7 @@
 package Paws::CodePipeline::ActionContext;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

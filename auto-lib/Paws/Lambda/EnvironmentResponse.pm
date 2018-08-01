@@ -2,6 +2,7 @@ package Paws::Lambda::EnvironmentResponse;
   use Moose;
   has Error => (is => 'ro', isa => 'Paws::Lambda::EnvironmentError');
   has Variables => (is => 'ro', isa => 'Paws::Lambda::EnvironmentVariables');
+
 1;
 
 ### main pod documentation begin ###

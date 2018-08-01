@@ -5,6 +5,7 @@ package Paws::WorkSpaces::DefaultWorkspaceCreationProperties;
   has EnableInternetAccess => (is => 'ro', isa => 'Bool');
   has EnableWorkDocs => (is => 'ro', isa => 'Bool');
   has UserEnabledAsLocalAdministrator => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

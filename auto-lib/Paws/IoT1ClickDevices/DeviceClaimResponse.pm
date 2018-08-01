@@ -1,6 +1,7 @@
 package Paws::IoT1ClickDevices::DeviceClaimResponse;
   use Moose;
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

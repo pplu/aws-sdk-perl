@@ -6,6 +6,7 @@ package Paws::IAM::ServerCertificateMetadata;
   has ServerCertificateId => (is => 'ro', isa => 'Str', required => 1);
   has ServerCertificateName => (is => 'ro', isa => 'Str', required => 1);
   has UploadDate => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

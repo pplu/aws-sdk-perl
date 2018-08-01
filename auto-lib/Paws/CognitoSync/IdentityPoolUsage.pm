@@ -4,6 +4,7 @@ package Paws::CognitoSync::IdentityPoolUsage;
   has IdentityPoolId => (is => 'ro', isa => 'Str');
   has LastModifiedDate => (is => 'ro', isa => 'Str');
   has SyncSessionsCount => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

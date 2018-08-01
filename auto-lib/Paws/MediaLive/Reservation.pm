@@ -17,6 +17,7 @@ package Paws::MediaLive::Reservation;
   has Start => (is => 'ro', isa => 'Str', request_name => 'start', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
   has UsagePrice => (is => 'ro', isa => 'Num', request_name => 'usagePrice', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

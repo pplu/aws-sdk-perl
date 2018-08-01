@@ -5,6 +5,7 @@ package Paws::SES::BounceAction;
   has SmtpReplyCode => (is => 'ro', isa => 'Str', required => 1);
   has StatusCode => (is => 'ro', isa => 'Str');
   has TopicArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

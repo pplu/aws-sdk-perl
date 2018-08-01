@@ -4,6 +4,7 @@ package Paws::Budgets::Notification;
   has NotificationType => (is => 'ro', isa => 'Str', required => 1);
   has Threshold => (is => 'ro', isa => 'Num', required => 1);
   has ThresholdType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

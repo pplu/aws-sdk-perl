@@ -4,6 +4,7 @@ package Paws::EMR::InstanceGroupModifyConfig;
   has InstanceCount => (is => 'ro', isa => 'Int');
   has InstanceGroupId => (is => 'ro', isa => 'Str', required => 1);
   has ShrinkPolicy => (is => 'ro', isa => 'Paws::EMR::ShrinkPolicy');
+
 1;
 
 ### main pod documentation begin ###

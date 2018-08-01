@@ -7,6 +7,7 @@ package Paws::MediaLive::HlsAkamaiSettings;
   has RestartDelay => (is => 'ro', isa => 'Int', request_name => 'restartDelay', traits => ['NameInRequest']);
   has Salt => (is => 'ro', isa => 'Str', request_name => 'salt', traits => ['NameInRequest']);
   has Token => (is => 'ro', isa => 'Str', request_name => 'token', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

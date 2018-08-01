@@ -5,6 +5,7 @@ package Paws::DynamoDB::BackupDetails;
   has BackupName => (is => 'ro', isa => 'Str', required => 1);
   has BackupSizeBytes => (is => 'ro', isa => 'Int');
   has BackupStatus => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

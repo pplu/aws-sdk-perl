@@ -6,6 +6,7 @@ package Paws::CloudSearch::TextOptions;
   has ReturnEnabled => (is => 'ro', isa => 'Bool');
   has SortEnabled => (is => 'ro', isa => 'Bool');
   has SourceField => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

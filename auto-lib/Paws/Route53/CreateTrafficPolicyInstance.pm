@@ -7,6 +7,7 @@ package Paws::Route53::CreateTrafficPolicyInstance;
   has TrafficPolicyVersion => (is => 'ro', isa => 'Int', required => 1);
   has TTL => (is => 'ro', isa => 'Int', required => 1);
 
+
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateTrafficPolicyInstance');
@@ -14,7 +15,8 @@ package Paws::Route53::CreateTrafficPolicyInstance;
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::CreateTrafficPolicyInstanceResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-  
+  class_has _top_level_element => (isa => 'Str', is => 'ro', default => 'CreateTrafficPolicyInstanceRequest');
+  class_has _top_level_namespace => (isa => 'Str', is => 'ro', default => 'https://route53.amazonaws.com/doc/2013-04-01/');  
 1;
 
 ### main pod documentation begin ###

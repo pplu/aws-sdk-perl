@@ -3,6 +3,7 @@ package Paws::MediaConvert::Deinterlacer;
   has Algorithm => (is => 'ro', isa => 'Str', request_name => 'algorithm', traits => ['NameInRequest']);
   has Control => (is => 'ro', isa => 'Str', request_name => 'control', traits => ['NameInRequest']);
   has Mode => (is => 'ro', isa => 'Str', request_name => 'mode', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

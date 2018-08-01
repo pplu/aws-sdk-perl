@@ -4,6 +4,7 @@ package Paws::IoTAnalytics::MathActivity;
   has Math => (is => 'ro', isa => 'Str', request_name => 'math', traits => ['NameInRequest'], required => 1);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has Next => (is => 'ro', isa => 'Str', request_name => 'next', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -10,6 +10,7 @@ package Paws::AlexaForBusiness::DeviceData;
   has RoomArn => (is => 'ro', isa => 'Str');
   has RoomName => (is => 'ro', isa => 'Str');
   has SoftwareVersion => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

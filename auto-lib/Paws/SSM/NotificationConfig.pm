@@ -3,6 +3,7 @@ package Paws::SSM::NotificationConfig;
   has NotificationArn => (is => 'ro', isa => 'Str');
   has NotificationEvents => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has NotificationType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

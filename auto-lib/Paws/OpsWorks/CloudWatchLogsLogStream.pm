@@ -11,6 +11,7 @@ package Paws::OpsWorks::CloudWatchLogsLogStream;
   has LogGroupName => (is => 'ro', isa => 'Str');
   has MultiLineStartPattern => (is => 'ro', isa => 'Str');
   has TimeZone => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

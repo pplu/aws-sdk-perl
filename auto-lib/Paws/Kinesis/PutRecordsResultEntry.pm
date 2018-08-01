@@ -4,6 +4,7 @@ package Paws::Kinesis::PutRecordsResultEntry;
   has ErrorMessage => (is => 'ro', isa => 'Str');
   has SequenceNumber => (is => 'ro', isa => 'Str');
   has ShardId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

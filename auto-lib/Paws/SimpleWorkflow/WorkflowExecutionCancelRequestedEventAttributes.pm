@@ -3,6 +3,7 @@ package Paws::SimpleWorkflow::WorkflowExecutionCancelRequestedEventAttributes;
   has Cause => (is => 'ro', isa => 'Str', request_name => 'cause', traits => ['NameInRequest']);
   has ExternalInitiatedEventId => (is => 'ro', isa => 'Int', request_name => 'externalInitiatedEventId', traits => ['NameInRequest']);
   has ExternalWorkflowExecution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', request_name => 'externalWorkflowExecution', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

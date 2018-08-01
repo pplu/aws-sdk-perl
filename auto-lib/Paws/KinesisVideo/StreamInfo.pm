@@ -9,6 +9,7 @@ package Paws::KinesisVideo::StreamInfo;
   has StreamARN => (is => 'ro', isa => 'Str');
   has StreamName => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

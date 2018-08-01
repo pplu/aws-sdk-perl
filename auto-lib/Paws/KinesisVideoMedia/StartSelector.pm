@@ -4,6 +4,7 @@ package Paws::KinesisVideoMedia::StartSelector;
   has ContinuationToken => (is => 'ro', isa => 'Str');
   has StartSelectorType => (is => 'ro', isa => 'Str', required => 1);
   has StartTimestamp => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

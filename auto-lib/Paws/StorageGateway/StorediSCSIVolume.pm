@@ -12,6 +12,7 @@ package Paws::StorageGateway::StorediSCSIVolume;
   has VolumeStatus => (is => 'ro', isa => 'Str');
   has VolumeType => (is => 'ro', isa => 'Str');
   has VolumeUsedInBytes => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

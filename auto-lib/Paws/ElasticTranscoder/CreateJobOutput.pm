@@ -11,6 +11,7 @@ package Paws::ElasticTranscoder::CreateJobOutput;
   has ThumbnailEncryption => (is => 'ro', isa => 'Paws::ElasticTranscoder::Encryption');
   has ThumbnailPattern => (is => 'ro', isa => 'Str');
   has Watermarks => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::JobWatermark]');
+
 1;
 
 ### main pod documentation begin ###

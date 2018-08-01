@@ -3,7 +3,6 @@ package Paws::DynamoDB::UpdateGlobalTableSettings;
   use Moose;
   has GlobalTableGlobalSecondaryIndexSettingsUpdate => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::GlobalTableGlobalSecondaryIndexSettingsUpdate]');
   has GlobalTableName => (is => 'ro', isa => 'Str', required => 1);
-  has GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate => (is => 'ro', isa => 'Paws::DynamoDB::AutoScalingSettingsUpdate');
   has GlobalTableProvisionedWriteCapacityUnits => (is => 'ro', isa => 'Int');
   has ReplicaSettingsUpdate => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::ReplicaSettingsUpdate]');
 
@@ -35,89 +34,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       GlobalTableName                               => 'MyTableName',
       GlobalTableGlobalSecondaryIndexSettingsUpdate => [
         {
-          IndexName => 'MyIndexName',    # min: 3, max: 255
-          ProvisionedWriteCapacityAutoScalingSettingsUpdate => {
-            AutoScalingDisabled => 1,    # OPTIONAL
-            AutoScalingRoleArn =>
-              'MyAutoScalingRoleArn',    # min: 1, max: 1600; OPTIONAL
-            MaximumUnits        => 1,    # min: 1; OPTIONAL
-            MinimumUnits        => 1,    # min: 1; OPTIONAL
-            ScalingPolicyUpdate => {
-              TargetTrackingScalingPolicyConfiguration => {
-                TargetValue      => 1,
-                DisableScaleIn   => 1,    # OPTIONAL
-                ScaleInCooldown  => 1,    # OPTIONAL
-                ScaleOutCooldown => 1,    # OPTIONAL
-              },
-              PolicyName =>
-                'MyAutoScalingPolicyName',    # min: 1, max: 256; OPTIONAL
-            },    # OPTIONAL
-          },    # OPTIONAL
-          ProvisionedWriteCapacityUnits => 1,    # min: 1; OPTIONAL
+          IndexName                     => 'MyIndexName',    # min: 3, max: 255
+          ProvisionedWriteCapacityUnits => 1,                # min: 1; OPTIONAL
         },
         ...
-      ],                                         # OPTIONAL
-      GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate => {
-        AutoScalingDisabled => 1,                # OPTIONAL
-        AutoScalingRoleArn =>
-          'MyAutoScalingRoleArn',                # min: 1, max: 1600; OPTIONAL
-        MaximumUnits        => 1,                # min: 1; OPTIONAL
-        MinimumUnits        => 1,                # min: 1; OPTIONAL
-        ScalingPolicyUpdate => {
-          TargetTrackingScalingPolicyConfiguration => {
-            TargetValue      => 1,
-            DisableScaleIn   => 1,               # OPTIONAL
-            ScaleInCooldown  => 1,               # OPTIONAL
-            ScaleOutCooldown => 1,               # OPTIONAL
-          },
-          PolicyName => 'MyAutoScalingPolicyName',  # min: 1, max: 256; OPTIONAL
-        },    # OPTIONAL
-      },    # OPTIONAL
-      GlobalTableProvisionedWriteCapacityUnits => 1,    # OPTIONAL
+      ],                                                     # OPTIONAL
+      GlobalTableProvisionedWriteCapacityUnits => 1,         # OPTIONAL
       ReplicaSettingsUpdate                    => [
         {
           RegionName                                => 'MyRegionName',
           ReplicaGlobalSecondaryIndexSettingsUpdate => [
             {
-              IndexName => 'MyIndexName',               # min: 3, max: 255
-              ProvisionedReadCapacityAutoScalingSettingsUpdate => {
-                AutoScalingDisabled => 1,               # OPTIONAL
-                AutoScalingRoleArn =>
-                  'MyAutoScalingRoleArn',    # min: 1, max: 1600; OPTIONAL
-                MaximumUnits        => 1,    # min: 1; OPTIONAL
-                MinimumUnits        => 1,    # min: 1; OPTIONAL
-                ScalingPolicyUpdate => {
-                  TargetTrackingScalingPolicyConfiguration => {
-                    TargetValue      => 1,
-                    DisableScaleIn   => 1,    # OPTIONAL
-                    ScaleInCooldown  => 1,    # OPTIONAL
-                    ScaleOutCooldown => 1,    # OPTIONAL
-                  },
-                  PolicyName =>
-                    'MyAutoScalingPolicyName',    # min: 1, max: 256; OPTIONAL
-                },    # OPTIONAL
-              },    # OPTIONAL
-              ProvisionedReadCapacityUnits => 1,    # min: 1; OPTIONAL
+              IndexName                    => 'MyIndexName',  # min: 3, max: 255
+              ProvisionedReadCapacityUnits => 1,              # min: 1; OPTIONAL
             },
             ...
-          ],                                        # min: 1, max: 20; OPTIONAL
-          ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate => {
-            AutoScalingDisabled => 1,               # OPTIONAL
-            AutoScalingRoleArn =>
-              'MyAutoScalingRoleArn',    # min: 1, max: 1600; OPTIONAL
-            MaximumUnits        => 1,    # min: 1; OPTIONAL
-            MinimumUnits        => 1,    # min: 1; OPTIONAL
-            ScalingPolicyUpdate => {
-              TargetTrackingScalingPolicyConfiguration => {
-                TargetValue      => 1,
-                DisableScaleIn   => 1,    # OPTIONAL
-                ScaleInCooldown  => 1,    # OPTIONAL
-                ScaleOutCooldown => 1,    # OPTIONAL
-              },
-              PolicyName =>
-                'MyAutoScalingPolicyName',    # min: 1, max: 256; OPTIONAL
-            },    # OPTIONAL
-          },    # OPTIONAL
+          ],    # min: 1, max: 20; OPTIONAL
           ReplicaProvisionedReadCapacityUnits => 1,    # min: 1; OPTIONAL
         },
         ...
@@ -146,13 +78,6 @@ that will be modified.
 =head2 B<REQUIRED> GlobalTableName => Str
 
 The name of the global table
-
-
-
-=head2 GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate => L<Paws::DynamoDB::AutoScalingSettingsUpdate>
-
-AutoScaling settings for managing provisioned write capacity for the
-global table.
 
 
 

@@ -3,6 +3,7 @@ package Paws::MediaLive::VideoSelector;
   has ColorSpace => (is => 'ro', isa => 'Str', request_name => 'colorSpace', traits => ['NameInRequest']);
   has ColorSpaceUsage => (is => 'ro', isa => 'Str', request_name => 'colorSpaceUsage', traits => ['NameInRequest']);
   has SelectorSettings => (is => 'ro', isa => 'Paws::MediaLive::VideoSelectorSettings', request_name => 'selectorSettings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

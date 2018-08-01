@@ -1,6 +1,7 @@
 package Paws::Athena::ResultSetMetadata;
   use Moose;
   has ColumnInfo => (is => 'ro', isa => 'ArrayRef[Paws::Athena::ColumnInfo]');
+
 1;
 
 ### main pod documentation begin ###

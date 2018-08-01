@@ -4,6 +4,7 @@ package Paws::DynamoDB::GlobalSecondaryIndexInfo;
   has KeySchema => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::KeySchemaElement]');
   has Projection => (is => 'ro', isa => 'Paws::DynamoDB::Projection');
   has ProvisionedThroughput => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughput');
+
 1;
 
 ### main pod documentation begin ###

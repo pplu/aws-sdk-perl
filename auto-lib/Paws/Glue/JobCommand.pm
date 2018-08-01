@@ -2,6 +2,7 @@ package Paws::Glue::JobCommand;
   use Moose;
   has Name => (is => 'ro', isa => 'Str');
   has ScriptLocation => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

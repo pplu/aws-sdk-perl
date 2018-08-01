@@ -2,6 +2,7 @@ package Paws::CloudWatchEvents::EcsParameters;
   use Moose;
   has TaskCount => (is => 'ro', isa => 'Int');
   has TaskDefinitionArn => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

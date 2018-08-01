@@ -6,6 +6,7 @@ package Paws::Neptune::PendingMaintenanceAction;
   has Description => (is => 'ro', isa => 'Str');
   has ForcedApplyDate => (is => 'ro', isa => 'Str');
   has OptInStatus => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

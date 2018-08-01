@@ -2,6 +2,7 @@ package Paws::StepFunctions::StateEnteredEventDetails;
   use Moose;
   has Input => (is => 'ro', isa => 'Str', request_name => 'input', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

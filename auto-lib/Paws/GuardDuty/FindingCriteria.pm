@@ -1,6 +1,7 @@
 package Paws::GuardDuty::FindingCriteria;
   use Moose;
   has Criterion => (is => 'ro', isa => 'Paws::GuardDuty::__mapOfCondition', request_name => 'criterion', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

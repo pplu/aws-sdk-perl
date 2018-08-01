@@ -10,6 +10,7 @@ package Paws::SimpleWorkflow::ScheduleActivityTaskDecisionAttributes;
   has StartToCloseTimeout => (is => 'ro', isa => 'Str', request_name => 'startToCloseTimeout', traits => ['NameInRequest']);
   has TaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', request_name => 'taskList', traits => ['NameInRequest']);
   has TaskPriority => (is => 'ro', isa => 'Str', request_name => 'taskPriority', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

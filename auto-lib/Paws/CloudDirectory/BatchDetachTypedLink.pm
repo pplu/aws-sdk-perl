@@ -1,6 +1,7 @@
 package Paws::CloudDirectory::BatchDetachTypedLink;
   use Moose;
   has TypedLinkSpecifier => (is => 'ro', isa => 'Paws::CloudDirectory::TypedLinkSpecifier', required => 1);
+
 1;
 
 ### main pod documentation begin ###

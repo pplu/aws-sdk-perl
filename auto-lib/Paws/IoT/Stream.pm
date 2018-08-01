@@ -2,6 +2,7 @@ package Paws::IoT::Stream;
   use Moose;
   has FileId => (is => 'ro', isa => 'Int', request_name => 'fileId', traits => ['NameInRequest']);
   has StreamId => (is => 'ro', isa => 'Str', request_name => 'streamId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

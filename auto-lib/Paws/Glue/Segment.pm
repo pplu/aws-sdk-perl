@@ -2,6 +2,7 @@ package Paws::Glue::Segment;
   use Moose;
   has SegmentNumber => (is => 'ro', isa => 'Int', required => 1);
   has TotalSegments => (is => 'ro', isa => 'Int', required => 1);
+
 1;
 
 ### main pod documentation begin ###

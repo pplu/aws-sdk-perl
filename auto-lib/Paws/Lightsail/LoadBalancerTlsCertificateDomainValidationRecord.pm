@@ -5,6 +5,7 @@ package Paws::Lightsail::LoadBalancerTlsCertificateDomainValidationRecord;
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
   has ValidationStatus => (is => 'ro', isa => 'Str', request_name => 'validationStatus', traits => ['NameInRequest']);
   has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::MediaLive::VideoSelectorSettings;
   use Moose;
   has VideoSelectorPid => (is => 'ro', isa => 'Paws::MediaLive::VideoSelectorPid', request_name => 'videoSelectorPid', traits => ['NameInRequest']);
   has VideoSelectorProgramId => (is => 'ro', isa => 'Paws::MediaLive::VideoSelectorProgramId', request_name => 'videoSelectorProgramId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

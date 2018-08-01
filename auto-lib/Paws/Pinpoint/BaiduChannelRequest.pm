@@ -3,6 +3,7 @@ package Paws::Pinpoint::BaiduChannelRequest;
   has ApiKey => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool');
   has SecretKey => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

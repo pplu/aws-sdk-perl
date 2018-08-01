@@ -4,6 +4,7 @@ package Paws::Snowball::ClusterListEntry;
   has ClusterState => (is => 'ro', isa => 'Str');
   has CreationDate => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

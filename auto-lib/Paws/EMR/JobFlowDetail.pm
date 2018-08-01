@@ -14,6 +14,7 @@ package Paws::EMR::JobFlowDetail;
   has Steps => (is => 'ro', isa => 'ArrayRef[Paws::EMR::StepDetail]');
   has SupportedProducts => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has VisibleToAllUsers => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

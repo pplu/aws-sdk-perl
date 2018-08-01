@@ -2,6 +2,7 @@ package Paws::Pinpoint::MessageBody;
   use Moose;
   has Message => (is => 'ro', isa => 'Str');
   has RequestID => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

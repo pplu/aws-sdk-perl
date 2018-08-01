@@ -2,6 +2,7 @@ package Paws::CloudDirectory::BatchListIncomingTypedLinksResponse;
   use Moose;
   has LinkSpecifiers => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::TypedLinkSpecifier]');
   has NextToken => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

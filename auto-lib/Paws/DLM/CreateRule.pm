@@ -3,6 +3,7 @@ package Paws::DLM::CreateRule;
   has Interval => (is => 'ro', isa => 'Int', required => 1);
   has IntervalUnit => (is => 'ro', isa => 'Str', required => 1);
   has Times => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

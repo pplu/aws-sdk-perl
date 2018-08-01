@@ -1,7 +1,8 @@
 
 package Paws::CloudFront::CreateDistribution;
   use Moose;
-  has DistributionConfig => (is => 'ro', isa => 'Paws::CloudFront::DistributionConfig', required => 1);
+  has DistributionConfig => (is => 'ro', isa => 'Paws::CloudFront::DistributionConfig', traits => ['ParamInBody'], required => 1);
+
 
   use MooseX::ClassAttribute;
 
@@ -11,6 +12,7 @@ package Paws::CloudFront::CreateDistribution;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::CreateDistributionResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###

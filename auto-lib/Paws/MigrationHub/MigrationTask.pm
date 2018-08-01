@@ -5,6 +5,7 @@ package Paws::MigrationHub::MigrationTask;
   has ResourceAttributeList => (is => 'ro', isa => 'ArrayRef[Paws::MigrationHub::ResourceAttribute]');
   has Task => (is => 'ro', isa => 'Paws::MigrationHub::Task');
   has UpdateDateTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

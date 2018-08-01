@@ -5,11 +5,11 @@ package Paws::RedShift::PendingModifiedValues;
   has ClusterType => (is => 'ro', isa => 'Str');
   has ClusterVersion => (is => 'ro', isa => 'Str');
   has EnhancedVpcRouting => (is => 'ro', isa => 'Bool');
-  has MaintenanceTrackName => (is => 'ro', isa => 'Str');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###
@@ -81,12 +81,6 @@ in the Amazon Redshift Cluster Management Guide.
 If this option is C<true>, enhanced VPC routing is enabled.
 
 Default: false
-
-
-=head2 MaintenanceTrackName => Str
-
-  The name of the maintenance track that the cluster will change to
-during the next maintenance window.
 
 
 =head2 MasterUserPassword => Str

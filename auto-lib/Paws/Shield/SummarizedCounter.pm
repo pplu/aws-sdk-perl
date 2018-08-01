@@ -6,6 +6,7 @@ package Paws::Shield::SummarizedCounter;
   has Name => (is => 'ro', isa => 'Str');
   has Sum => (is => 'ro', isa => 'Num');
   has Unit => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

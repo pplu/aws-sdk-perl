@@ -3,6 +3,7 @@ package Paws::CloudDirectory::BatchDetachObject;
   has BatchReferenceName => (is => 'ro', isa => 'Str');
   has LinkName => (is => 'ro', isa => 'Str', required => 1);
   has ParentReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -8,6 +8,7 @@ package Paws::SSM::ResourceComplianceSummaryItem;
   has ResourceId => (is => 'ro', isa => 'Str');
   has ResourceType => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Greengrass::S3MachineLearningModelResourceData;
   use Moose;
   has DestinationPath => (is => 'ro', isa => 'Str');
   has S3Uri => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

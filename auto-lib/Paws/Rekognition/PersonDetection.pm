@@ -2,6 +2,7 @@ package Paws::Rekognition::PersonDetection;
   use Moose;
   has Person => (is => 'ro', isa => 'Paws::Rekognition::PersonDetail');
   has Timestamp => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

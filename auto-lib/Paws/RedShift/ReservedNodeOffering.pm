@@ -9,6 +9,7 @@ package Paws::RedShift::ReservedNodeOffering;
   has ReservedNodeOfferingId => (is => 'ro', isa => 'Str');
   has ReservedNodeOfferingType => (is => 'ro', isa => 'Str');
   has UsagePrice => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

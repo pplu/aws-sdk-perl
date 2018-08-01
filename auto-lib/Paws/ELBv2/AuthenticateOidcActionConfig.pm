@@ -11,6 +11,7 @@ package Paws::ELBv2::AuthenticateOidcActionConfig;
   has SessionTimeout => (is => 'ro', isa => 'Int');
   has TokenEndpoint => (is => 'ro', isa => 'Str', required => 1);
   has UserInfoEndpoint => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

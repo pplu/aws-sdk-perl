@@ -17,6 +17,7 @@ package Paws::StorageGateway::SMBFileShareInfo;
   has RequesterPays => (is => 'ro', isa => 'Bool');
   has Role => (is => 'ro', isa => 'Str');
   has ValidUserList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

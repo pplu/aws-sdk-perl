@@ -4,6 +4,7 @@ package Paws::MediaLive::HlsCdnSettings;
   has HlsBasicPutSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsBasicPutSettings', request_name => 'hlsBasicPutSettings', traits => ['NameInRequest']);
   has HlsMediaStoreSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsMediaStoreSettings', request_name => 'hlsMediaStoreSettings', traits => ['NameInRequest']);
   has HlsWebdavSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsWebdavSettings', request_name => 'hlsWebdavSettings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

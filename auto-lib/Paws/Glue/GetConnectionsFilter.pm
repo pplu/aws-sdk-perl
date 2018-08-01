@@ -2,6 +2,7 @@ package Paws::Glue::GetConnectionsFilter;
   use Moose;
   has ConnectionType => (is => 'ro', isa => 'Str');
   has MatchCriteria => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

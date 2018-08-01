@@ -1,5 +1,6 @@
 package Paws::MediaLive::Scte27DestinationSettings;
   use Moose;
+
 1;
 
 ### main pod documentation begin ###

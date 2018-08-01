@@ -1,6 +1,7 @@
 package Paws::CostExplorer::Coverage;
   use Moose;
   has CoverageHours => (is => 'ro', isa => 'Paws::CostExplorer::CoverageHours');
+
 1;
 
 ### main pod documentation begin ###

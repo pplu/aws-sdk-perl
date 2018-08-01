@@ -15,6 +15,7 @@ package Paws::ServiceCatalog::ProvisionedProductPlanDetails;
   has StatusMessage => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::Tag]');
   has UpdatedTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

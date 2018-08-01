@@ -1,6 +1,7 @@
 package Paws::Lambda::Environment;
   use Moose;
   has Variables => (is => 'ro', isa => 'Paws::Lambda::EnvironmentVariables');
+
 1;
 
 ### main pod documentation begin ###

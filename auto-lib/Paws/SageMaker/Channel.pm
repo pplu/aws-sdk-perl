@@ -5,6 +5,7 @@ package Paws::SageMaker::Channel;
   has ContentType => (is => 'ro', isa => 'Str');
   has DataSource => (is => 'ro', isa => 'Paws::SageMaker::DataSource', required => 1);
   has RecordWrapperType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

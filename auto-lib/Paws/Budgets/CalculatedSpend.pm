@@ -2,6 +2,7 @@ package Paws::Budgets::CalculatedSpend;
   use Moose;
   has ActualSpend => (is => 'ro', isa => 'Paws::Budgets::Spend', required => 1);
   has ForecastedSpend => (is => 'ro', isa => 'Paws::Budgets::Spend');
+
 1;
 
 ### main pod documentation begin ###

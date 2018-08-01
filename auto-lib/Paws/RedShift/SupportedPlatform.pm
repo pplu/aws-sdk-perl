@@ -1,6 +1,7 @@
 package Paws::RedShift::SupportedPlatform;
   use Moose;
   has Name => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

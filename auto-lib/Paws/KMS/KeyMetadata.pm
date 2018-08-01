@@ -13,6 +13,7 @@ package Paws::KMS::KeyMetadata;
   has KeyUsage => (is => 'ro', isa => 'Str');
   has Origin => (is => 'ro', isa => 'Str');
   has ValidTo => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

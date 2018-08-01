@@ -2,6 +2,7 @@ package Paws::KinesisAnalytics::InputLambdaProcessorDescription;
   use Moose;
   has ResourceARN => (is => 'ro', isa => 'Str');
   has RoleARN => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

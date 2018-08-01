@@ -5,6 +5,7 @@ package Paws::CognitoIdp::PasswordPolicyType;
   has RequireNumbers => (is => 'ro', isa => 'Bool');
   has RequireSymbols => (is => 'ro', isa => 'Bool');
   has RequireUppercase => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

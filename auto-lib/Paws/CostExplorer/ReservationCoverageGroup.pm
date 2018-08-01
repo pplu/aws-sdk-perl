@@ -2,6 +2,7 @@ package Paws::CostExplorer::ReservationCoverageGroup;
   use Moose;
   has Attributes => (is => 'ro', isa => 'Paws::CostExplorer::Attributes');
   has Coverage => (is => 'ro', isa => 'Paws::CostExplorer::Coverage');
+
 1;
 
 ### main pod documentation begin ###

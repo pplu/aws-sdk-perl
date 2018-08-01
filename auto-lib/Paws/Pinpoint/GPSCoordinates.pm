@@ -2,6 +2,7 @@ package Paws::Pinpoint::GPSCoordinates;
   use Moose;
   has Latitude => (is => 'ro', isa => 'Num');
   has Longitude => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

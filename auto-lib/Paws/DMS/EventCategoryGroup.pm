@@ -2,6 +2,7 @@ package Paws::DMS::EventCategoryGroup;
   use Moose;
   has EventCategories => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SourceType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

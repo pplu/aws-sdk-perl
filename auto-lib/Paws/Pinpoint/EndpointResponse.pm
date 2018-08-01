@@ -15,6 +15,7 @@ package Paws::Pinpoint::EndpointResponse;
   has OptOut => (is => 'ro', isa => 'Str');
   has RequestId => (is => 'ro', isa => 'Str');
   has User => (is => 'ro', isa => 'Paws::Pinpoint::EndpointUser');
+
 1;
 
 ### main pod documentation begin ###

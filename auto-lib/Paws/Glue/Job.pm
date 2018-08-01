@@ -14,6 +14,7 @@ package Paws::Glue::Job;
   has NotificationProperty => (is => 'ro', isa => 'Paws::Glue::NotificationProperty');
   has Role => (is => 'ro', isa => 'Str');
   has Timeout => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

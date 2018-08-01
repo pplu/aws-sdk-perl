@@ -1,6 +1,7 @@
 package Paws::MediaConvert::AudioSelectorGroup;
   use Moose;
   has AudioSelectorNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'audioSelectorNames', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

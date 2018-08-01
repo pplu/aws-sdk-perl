@@ -5,6 +5,7 @@ package Paws::SimpleWorkflow::ScheduleLambdaFunctionDecisionAttributes;
   has Input => (is => 'ro', isa => 'Str', request_name => 'input', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has StartToCloseTimeout => (is => 'ro', isa => 'Str', request_name => 'startToCloseTimeout', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

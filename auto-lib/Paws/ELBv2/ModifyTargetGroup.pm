@@ -61,9 +61,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 =head2 HealthCheckIntervalSeconds => Int
 
 The approximate amount of time, in seconds, between health checks of an
-individual target. For Application Load Balancers, the range is
-5E<ndash>300 seconds. For Network Load Balancers, the supported values
-are 10 or 30 seconds.
+individual target. For Application Load Balancers, the range is 5 to
+300 seconds. For Network Load Balancers, the supported values are 10 or
+30 seconds.
 
 
 

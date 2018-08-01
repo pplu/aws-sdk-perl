@@ -24,6 +24,7 @@ package Paws::ElastiCache::Snapshot;
   has SnapshotWindow => (is => 'ro', isa => 'Str');
   has TopicArn => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

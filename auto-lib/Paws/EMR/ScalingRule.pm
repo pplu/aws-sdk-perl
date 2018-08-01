@@ -4,6 +4,7 @@ package Paws::EMR::ScalingRule;
   has Description => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Trigger => (is => 'ro', isa => 'Paws::EMR::ScalingTrigger', required => 1);
+
 1;
 
 ### main pod documentation begin ###

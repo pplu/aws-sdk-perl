@@ -112,7 +112,7 @@ family.
 
 =head2 LaunchType => Str
 
-The launch type for services to list.
+The launch type for services you want to list.
 
 Valid values are: C<"EC2">, C<"FARGATE">
 

@@ -2,6 +2,7 @@ package Paws::ELBv2::Certificate;
   use Moose;
   has CertificateArn => (is => 'ro', isa => 'Str');
   has IsDefault => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

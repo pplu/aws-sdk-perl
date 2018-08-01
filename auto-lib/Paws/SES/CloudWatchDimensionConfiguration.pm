@@ -3,6 +3,7 @@ package Paws::SES::CloudWatchDimensionConfiguration;
   has DefaultDimensionValue => (is => 'ro', isa => 'Str', required => 1);
   has DimensionName => (is => 'ro', isa => 'Str', required => 1);
   has DimensionValueSource => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

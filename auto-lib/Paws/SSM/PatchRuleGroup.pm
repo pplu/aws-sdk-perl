@@ -1,6 +1,7 @@
 package Paws::SSM::PatchRuleGroup;
   use Moose;
   has PatchRules => (is => 'ro', isa => 'ArrayRef[Paws::SSM::PatchRule]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

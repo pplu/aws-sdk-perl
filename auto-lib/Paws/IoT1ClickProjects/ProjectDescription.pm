@@ -5,6 +5,7 @@ package Paws::IoT1ClickProjects::ProjectDescription;
   has PlacementTemplate => (is => 'ro', isa => 'Paws::IoT1ClickProjects::PlacementTemplate', request_name => 'placementTemplate', traits => ['NameInRequest']);
   has ProjectName => (is => 'ro', isa => 'Str', request_name => 'projectName', traits => ['NameInRequest'], required => 1);
   has UpdatedDate => (is => 'ro', isa => 'Str', request_name => 'updatedDate', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

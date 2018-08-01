@@ -3,6 +3,7 @@ package Paws::Lightsail::InstanceHealthSummary;
   has InstanceHealth => (is => 'ro', isa => 'Str', request_name => 'instanceHealth', traits => ['NameInRequest']);
   has InstanceHealthReason => (is => 'ro', isa => 'Str', request_name => 'instanceHealthReason', traits => ['NameInRequest']);
   has InstanceName => (is => 'ro', isa => 'Str', request_name => 'instanceName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::CognitoSync::CognitoStreams;
   has RoleArn => (is => 'ro', isa => 'Str');
   has StreamingStatus => (is => 'ro', isa => 'Str');
   has StreamName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -12,6 +12,7 @@ package Paws::RDS::DBEngineVersion;
   has SupportsLogExportsToCloudwatchLogs => (is => 'ro', isa => 'Bool');
   has SupportsReadReplica => (is => 'ro', isa => 'Bool');
   has ValidUpgradeTarget => (is => 'ro', isa => 'ArrayRef[Paws::RDS::UpgradeTarget]', request_name => 'UpgradeTarget', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::MediaLive::ListReservationsResultModel;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
   has Reservations => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::Reservation]', request_name => 'reservations', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

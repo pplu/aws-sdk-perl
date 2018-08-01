@@ -2,6 +2,7 @@ package Paws::WAF::XssMatchTuple;
   use Moose;
   has FieldToMatch => (is => 'ro', isa => 'Paws::WAF::FieldToMatch', required => 1);
   has TextTransformation => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

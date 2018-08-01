@@ -3,6 +3,7 @@ package Paws::AlexaForBusiness::DeviceEvent;
   has Timestamp => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

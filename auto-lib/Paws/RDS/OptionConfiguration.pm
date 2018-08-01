@@ -6,6 +6,7 @@ package Paws::RDS::OptionConfiguration;
   has OptionVersion => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has VpcSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'VpcSecurityGroupId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

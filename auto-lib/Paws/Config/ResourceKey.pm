@@ -2,6 +2,7 @@ package Paws::Config::ResourceKey;
   use Moose;
   has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest'], required => 1);
   has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::SageMaker::S3DataSource;
   has S3DataDistributionType => (is => 'ro', isa => 'Str');
   has S3DataType => (is => 'ro', isa => 'Str', required => 1);
   has S3Uri => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -7,6 +7,7 @@ package Paws::AppStream::Session;
   has StackName => (is => 'ro', isa => 'Str', required => 1);
   has State => (is => 'ro', isa => 'Str', required => 1);
   has UserId => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::CodePipeline::ArtifactDetails;
   use Moose;
   has MaximumCount => (is => 'ro', isa => 'Int', request_name => 'maximumCount', traits => ['NameInRequest'], required => 1);
   has MinimumCount => (is => 'ro', isa => 'Int', request_name => 'minimumCount', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::SSM::InventoryDeletionSummaryItem;
   has Count => (is => 'ro', isa => 'Int');
   has RemainingCount => (is => 'ro', isa => 'Int');
   has Version => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

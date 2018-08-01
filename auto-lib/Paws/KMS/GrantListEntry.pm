@@ -9,6 +9,7 @@ package Paws::KMS::GrantListEntry;
   has Name => (is => 'ro', isa => 'Str');
   has Operations => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has RetiringPrincipal => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

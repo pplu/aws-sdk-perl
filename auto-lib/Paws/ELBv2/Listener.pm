@@ -7,6 +7,7 @@ package Paws::ELBv2::Listener;
   has Port => (is => 'ro', isa => 'Int');
   has Protocol => (is => 'ro', isa => 'Str');
   has SslPolicy => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

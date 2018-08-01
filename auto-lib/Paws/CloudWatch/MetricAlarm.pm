@@ -25,6 +25,7 @@ package Paws::CloudWatch::MetricAlarm;
   has Threshold => (is => 'ro', isa => 'Num');
   has TreatMissingData => (is => 'ro', isa => 'Str');
   has Unit => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

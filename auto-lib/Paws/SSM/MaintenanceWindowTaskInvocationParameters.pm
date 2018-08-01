@@ -4,6 +4,7 @@ package Paws::SSM::MaintenanceWindowTaskInvocationParameters;
   has Lambda => (is => 'ro', isa => 'Paws::SSM::MaintenanceWindowLambdaParameters');
   has RunCommand => (is => 'ro', isa => 'Paws::SSM::MaintenanceWindowRunCommandParameters');
   has StepFunctions => (is => 'ro', isa => 'Paws::SSM::MaintenanceWindowStepFunctionsParameters');
+
 1;
 
 ### main pod documentation begin ###

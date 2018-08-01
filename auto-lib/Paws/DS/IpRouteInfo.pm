@@ -6,6 +6,7 @@ package Paws::DS::IpRouteInfo;
   has DirectoryId => (is => 'ro', isa => 'Str');
   has IpRouteStatusMsg => (is => 'ro', isa => 'Str');
   has IpRouteStatusReason => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

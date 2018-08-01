@@ -7,6 +7,7 @@ package Paws::Snowball::JobListEntry;
   has JobState => (is => 'ro', isa => 'Str');
   has JobType => (is => 'ro', isa => 'Str');
   has SnowballType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###
@@ -84,7 +85,7 @@ C<JID123e4567-e89b-12d3-a456-426655440000>.
 
 =head2 SnowballType => Str
 
-  The type of device used with this job.
+  The type of appliance used with this job.
 
 
 

@@ -24,7 +24,7 @@ Paws::EC2::PurchaseHostReservationResult
 Unique, case-sensitive identifier you provide to ensure idempotency of
 the request. For more information, see How to Ensure Idempotency
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon Elastic Compute Cloud User Guide>
 
 
 =head2 CurrencyCode => Str
@@ -46,8 +46,8 @@ The total hourly price of the reservation calculated per hour.
 
 =head2 TotalUpfrontPrice => Str
 
-The total amount charged to your account when you purchase the
-reservation.
+The total amount that will be charged to your account when you purchase
+the reservation.
 
 
 =head2 _request_id => Str

@@ -3,6 +3,7 @@ package Paws::KinesisAnalytics::ReferenceDataSource;
   has ReferenceSchema => (is => 'ro', isa => 'Paws::KinesisAnalytics::SourceSchema', required => 1);
   has S3ReferenceDataSource => (is => 'ro', isa => 'Paws::KinesisAnalytics::S3ReferenceDataSource');
   has TableName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

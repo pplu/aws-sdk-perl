@@ -13,6 +13,7 @@ package Paws::WorkDocs::DocumentVersionMetadata;
   has Source => (is => 'ro', isa => 'Paws::WorkDocs::DocumentSourceUrlMap');
   has Status => (is => 'ro', isa => 'Str');
   has Thumbnail => (is => 'ro', isa => 'Paws::WorkDocs::DocumentThumbnailUrlMap');
+
 1;
 
 ### main pod documentation begin ###

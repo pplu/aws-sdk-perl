@@ -11,6 +11,7 @@ package Paws::Budgets::CostTypes;
   has IncludeUpfront => (is => 'ro', isa => 'Bool');
   has UseAmortized => (is => 'ro', isa => 'Bool');
   has UseBlended => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

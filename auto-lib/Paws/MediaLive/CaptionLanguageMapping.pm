@@ -3,6 +3,7 @@ package Paws::MediaLive::CaptionLanguageMapping;
   has CaptionChannel => (is => 'ro', isa => 'Int', request_name => 'captionChannel', traits => ['NameInRequest'], required => 1);
   has LanguageCode => (is => 'ro', isa => 'Str', request_name => 'languageCode', traits => ['NameInRequest'], required => 1);
   has LanguageDescription => (is => 'ro', isa => 'Str', request_name => 'languageDescription', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

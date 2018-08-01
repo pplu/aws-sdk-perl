@@ -6,6 +6,7 @@ package Paws::CognitoIdp::VerificationMessageTemplateType;
   has EmailSubject => (is => 'ro', isa => 'Str');
   has EmailSubjectByLink => (is => 'ro', isa => 'Str');
   has SmsMessage => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

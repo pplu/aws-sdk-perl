@@ -9,6 +9,7 @@ package Paws::Kinesis::StreamDescriptionSummary;
   has StreamCreationTimestamp => (is => 'ro', isa => 'Str', required => 1);
   has StreamName => (is => 'ro', isa => 'Str', required => 1);
   has StreamStatus => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

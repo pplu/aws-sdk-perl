@@ -2,6 +2,7 @@ package Paws::Config::ResourceCount;
   use Moose;
   has Count => (is => 'ro', isa => 'Int', request_name => 'count', traits => ['NameInRequest']);
   has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

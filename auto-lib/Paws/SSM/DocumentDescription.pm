@@ -18,6 +18,7 @@ package Paws::SSM::DocumentDescription;
   has Status => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Tag]');
   has TargetType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

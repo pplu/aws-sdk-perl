@@ -1739,38 +1739,10 @@ Paws::EC2 - Perl Interface to AWS Amazon Elastic Compute Cloud
 
 Amazon Elastic Compute Cloud
 
-Amazon Elastic Compute Cloud (Amazon EC2) provides secure and resizable
-computing capacity in the AWS cloud. Using Amazon EC2 eliminates the
-need to invest in hardware up front, so you can develop and deploy
-applications faster.
-
-To learn more about Amazon EC2, Amazon EBS, and Amazon VPC, see the
-following resources:
-
-=over
-
-=item *
-
-Amazon EC2 product page (http://aws.amazon.com/ec2)
-
-=item *
-
-Amazon EC2 documentation (http://aws.amazon.com/documentation/ec2)
-
-=item *
-
-Amazon EBS product page (http://aws.amazon.com/ebs)
-
-=item *
-
-Amazon VPC product page (http://aws.amazon.com/vpc)
-
-=item *
-
-Amazon VPC documentation (http://aws.amazon.com/documentation/vpc)
-
-=back
-
+Amazon Elastic Compute Cloud (Amazon EC2) provides resizable computing
+capacity in the AWS Cloud. Using Amazon EC2 eliminates the need to
+invest in hardware up front, so you can develop and deploy applications
+faster.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15>
 
@@ -2449,6 +2421,9 @@ other instance store volumes is not preserved.
 This action is not applicable for Linux/Unix instances or Windows
 instances that are backed by Amazon EBS.
 
+For more information, see Creating an Instance Store-Backed Windows AMI
+(http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/Creating_InstanceStoreBacked_WinAMI.html).
+
 
 =head2 CancelBundleTask
 
@@ -2960,8 +2935,6 @@ instance.
 =item [DryRun => Bool]
 
 =item [ExcessCapacityTerminationPolicy => Str]
-
-=item [OnDemandOptions => L<Paws::EC2::OnDemandOptionsRequest>]
 
 =item [ReplaceUnhealthyInstances => Bool]
 
@@ -5377,16 +5350,15 @@ Each argument is described in detail in: L<Paws::EC2::DescribeHostReservationOff
 
 Returns: a L<Paws::EC2::DescribeHostReservationOfferingsResult> instance
 
-Describes the Dedicated Host reservations that are available to
+Describes the Dedicated Host Reservations that are available to
 purchase.
 
-The results describe all the Dedicated Host reservation offerings,
+The results describe all the Dedicated Host Reservation offerings,
 including offerings that may not match the instance family and region
 of your Dedicated Hosts. When purchasing an offering, ensure that the
-instance family and Region of the offering matches that of the
-Dedicated Hosts with which it is to be associated . For more
-information about supported instance types, see Dedicated Hosts
-Overview
+the instance family and region of the offering matches that of the
+Dedicated Host/s it will be associated with. For an overview of
+supported instance types, see Dedicated Hosts Overview
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -5410,8 +5382,8 @@ Each argument is described in detail in: L<Paws::EC2::DescribeHostReservations>
 
 Returns: a L<Paws::EC2::DescribeHostReservationsResult> instance
 
-Describes reservations that are associated with Dedicated Hosts in your
-account.
+Describes Dedicated Host Reservations which are associated with
+Dedicated Hosts in your account.
 
 
 =head2 DescribeHosts
@@ -5437,8 +5409,8 @@ Describes one or more of your Dedicated Hosts.
 
 The results describe only the Dedicated Hosts in the region you're
 currently using. All listed instances consume capacity on your
-Dedicated Host. Dedicated Hosts that have recently been released are
-listed with the state C<released>.
+Dedicated Host. Dedicated Hosts that have recently been released will
+be listed with the state C<released>.
 
 
 =head2 DescribeIamInstanceProfileAssociations
@@ -8086,12 +8058,13 @@ Each argument is described in detail in: L<Paws::EC2::ModifyHosts>
 Returns: a L<Paws::EC2::ModifyHostsResult> instance
 
 Modify the auto-placement setting of a Dedicated Host. When
-auto-placement is enabled, any instances that you launch with a tenancy
-of C<host> but without a specific host ID are placed onto any available
-Dedicated Host in your account that has auto-placement enabled. When
-auto-placement is disabled, you need to provide a host ID ito have the
-instance launch onto a specific host. If no host ID is provided, the
-instance is launched onto a suitable host with auto-placement enabled.
+auto-placement is enabled, AWS will place instances that you launch
+with a tenancy of C<host>, but without targeting a specific host ID,
+onto any available Dedicated Host in your account which has
+auto-placement enabled. When auto-placement is disabled, you need to
+provide a host ID if you want the instance to launch onto a specific
+host. If no host ID is provided, the instance will be launched onto a
+suitable host which has auto-placement enabled.
 
 
 =head2 ModifyIdentityIdFormat
@@ -9108,14 +9081,9 @@ Some Linux distributions, such as Red Hat Enterprise Linux (RHEL) and
 SUSE Linux Enterprise Server (SLES), use the EC2 billing product code
 associated with an AMI to verify the subscription status for package
 updates. Creating an AMI from an EBS snapshot does not maintain this
-billing code, and instances launched from such an AMI are not able to
-connect to package update infrastructure. If you purchase a Reserved
-Instance offering for one of these Linux distributions and launch
-instances using an AMI that does not contain the required billing code,
-your Reserved Instance is not applied to these instances.
-
-To create an AMI for operating systems that require a billing code, see
-CreateImage.
+billing code, and subsequent instances launched from such an AMI will
+not be able to connect to package update infrastructure. To create an
+AMI that must retain billing codes, see CreateImage.
 
 If needed, you can deregister an AMI at any time. Any modifications you
 make to an AMI backed by an instance store volume invalidates its
@@ -9221,16 +9189,16 @@ Returns: a L<Paws::EC2::ReleaseHostsResult> instance
 When you no longer want to use an On-Demand Dedicated Host it can be
 released. On-Demand billing is stopped and the host goes into
 C<released> state. The host ID of Dedicated Hosts that have been
-released can no longer be specified in another request, for example,
+released can no longer be specified in another request, e.g.,
 ModifyHosts. You must stop or terminate all instances on a host before
 it can be released.
 
-When Dedicated Hosts are released, it may take some time for them to
+When Dedicated Hosts are released, it make take some time for them to
 stop counting toward your limit and you may receive capacity errors
-when trying to allocate new Dedicated Hosts. Wait a few minutes and
-then try again.
+when trying to allocate new Dedicated hosts. Try waiting a few minutes,
+and then try again.
 
-Released hosts still appear in a DescribeHosts response.
+Released hosts will still appear in a DescribeHosts response.
 
 
 =head2 ReplaceIamInstanceProfileAssociation

@@ -3,6 +3,7 @@ package Paws::Pinpoint::CampaignHook;
   has LambdaFunctionName => (is => 'ro', isa => 'Str');
   has Mode => (is => 'ro', isa => 'Str');
   has WebUrl => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

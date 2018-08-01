@@ -7,6 +7,7 @@ package Paws::CloudWatch::MetricDatum;
   has Timestamp => (is => 'ro', isa => 'Str');
   has Unit => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

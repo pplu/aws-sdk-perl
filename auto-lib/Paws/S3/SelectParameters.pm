@@ -4,6 +4,7 @@ package Paws::S3::SelectParameters;
   has ExpressionType => (is => 'ro', isa => 'Str', required => 1);
   has InputSerialization => (is => 'ro', isa => 'Paws::S3::InputSerialization', required => 1);
   has OutputSerialization => (is => 'ro', isa => 'Paws::S3::OutputSerialization', required => 1);
+
 1;
 
 ### main pod documentation begin ###

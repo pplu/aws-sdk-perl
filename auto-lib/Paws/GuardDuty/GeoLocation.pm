@@ -2,6 +2,7 @@ package Paws::GuardDuty::GeoLocation;
   use Moose;
   has Lat => (is => 'ro', isa => 'Num', request_name => 'lat', traits => ['NameInRequest']);
   has Lon => (is => 'ro', isa => 'Num', request_name => 'lon', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

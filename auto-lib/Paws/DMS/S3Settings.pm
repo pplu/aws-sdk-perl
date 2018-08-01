@@ -7,6 +7,7 @@ package Paws::DMS::S3Settings;
   has CsvRowDelimiter => (is => 'ro', isa => 'Str');
   has ExternalTableDefinition => (is => 'ro', isa => 'Str');
   has ServiceAccessRoleArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

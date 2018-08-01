@@ -2,6 +2,7 @@ package Paws::CloudFront::KeyPairIds;
   use Moose;
   has Items => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'KeyPairId', traits => ['NameInRequest']);
   has Quantity => (is => 'ro', isa => 'Int', required => 1);
+
 1;
 
 ### main pod documentation begin ###

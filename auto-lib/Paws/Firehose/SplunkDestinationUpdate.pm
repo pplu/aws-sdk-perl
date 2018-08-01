@@ -9,6 +9,7 @@ package Paws::Firehose::SplunkDestinationUpdate;
   has RetryOptions => (is => 'ro', isa => 'Paws::Firehose::SplunkRetryOptions');
   has S3BackupMode => (is => 'ro', isa => 'Str');
   has S3Update => (is => 'ro', isa => 'Paws::Firehose::S3DestinationUpdate');
+
 1;
 
 ### main pod documentation begin ###

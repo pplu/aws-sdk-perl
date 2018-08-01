@@ -4,6 +4,7 @@ package Paws::SES::BouncedRecipientInfo;
   has Recipient => (is => 'ro', isa => 'Str', required => 1);
   has RecipientArn => (is => 'ro', isa => 'Str');
   has RecipientDsnFields => (is => 'ro', isa => 'Paws::SES::RecipientDsnFields');
+
 1;
 
 ### main pod documentation begin ###

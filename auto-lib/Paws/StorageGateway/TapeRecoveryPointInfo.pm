@@ -4,6 +4,7 @@ package Paws::StorageGateway::TapeRecoveryPointInfo;
   has TapeRecoveryPointTime => (is => 'ro', isa => 'Str');
   has TapeSizeInBytes => (is => 'ro', isa => 'Int');
   has TapeStatus => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::SES::TrackingOptions;
   use Moose;
   has CustomRedirectDomain => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

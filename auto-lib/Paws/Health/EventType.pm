@@ -3,6 +3,7 @@ package Paws::Health::EventType;
   has Category => (is => 'ro', isa => 'Str', request_name => 'category', traits => ['NameInRequest']);
   has Code => (is => 'ro', isa => 'Str', request_name => 'code', traits => ['NameInRequest']);
   has Service => (is => 'ro', isa => 'Str', request_name => 'service', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

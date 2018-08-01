@@ -2,6 +2,7 @@ package Paws::MQ::UpdateConfigurationInput;
   use Moose;
   has Data => (is => 'ro', isa => 'Str', request_name => 'data', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

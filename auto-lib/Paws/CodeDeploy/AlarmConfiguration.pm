@@ -3,6 +3,7 @@ package Paws::CodeDeploy::AlarmConfiguration;
   has Alarms => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::Alarm]', request_name => 'alarms', traits => ['NameInRequest']);
   has Enabled => (is => 'ro', isa => 'Bool', request_name => 'enabled', traits => ['NameInRequest']);
   has IgnorePollAlarmFailure => (is => 'ro', isa => 'Bool', request_name => 'ignorePollAlarmFailure', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -11,6 +11,7 @@ package Paws::XRay::TraceSummary;
   has ResponseTime => (is => 'ro', isa => 'Num');
   has ServiceIds => (is => 'ro', isa => 'ArrayRef[Paws::XRay::ServiceId]');
   has Users => (is => 'ro', isa => 'ArrayRef[Paws::XRay::TraceUser]');
+
 1;
 
 ### main pod documentation begin ###

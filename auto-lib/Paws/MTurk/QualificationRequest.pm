@@ -6,6 +6,7 @@ package Paws::MTurk::QualificationRequest;
   has SubmitTime => (is => 'ro', isa => 'Str');
   has Test => (is => 'ro', isa => 'Str');
   has WorkerId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::ResourceTagging::ResourceTagMapping;
   use Moose;
   has ResourceARN => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ResourceTagging::Tag]');
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::MediaConvert::Endpoint;
   use Moose;
   has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

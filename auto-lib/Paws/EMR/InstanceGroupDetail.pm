@@ -14,6 +14,7 @@ package Paws::EMR::InstanceGroupDetail;
   has ReadyDateTime => (is => 'ro', isa => 'Str');
   has StartDateTime => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

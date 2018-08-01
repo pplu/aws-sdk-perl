@@ -2,6 +2,7 @@ package Paws::RDS::OptionVersion;
   use Moose;
   has IsDefault => (is => 'ro', isa => 'Bool');
   has Version => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

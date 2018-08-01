@@ -5,6 +5,7 @@ package Paws::CloudWatchLogs::FilteredLogEvent;
   has LogStreamName => (is => 'ro', isa => 'Str', request_name => 'logStreamName', traits => ['NameInRequest']);
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
   has Timestamp => (is => 'ro', isa => 'Int', request_name => 'timestamp', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

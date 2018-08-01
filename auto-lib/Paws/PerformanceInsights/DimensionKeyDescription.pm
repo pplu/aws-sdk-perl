@@ -3,6 +3,7 @@ package Paws::PerformanceInsights::DimensionKeyDescription;
   has Dimensions => (is => 'ro', isa => 'Paws::PerformanceInsights::DimensionMap');
   has Partitions => (is => 'ro', isa => 'ArrayRef[Num]');
   has Total => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

@@ -8,6 +8,7 @@ package Paws::CloudSearchDomain::FieldStats;
   has Stddev => (is => 'ro', isa => 'Num', request_name => 'stddev', traits => ['NameInRequest']);
   has Sum => (is => 'ro', isa => 'Num', request_name => 'sum', traits => ['NameInRequest']);
   has SumOfSquares => (is => 'ro', isa => 'Num', request_name => 'sumOfSquares', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

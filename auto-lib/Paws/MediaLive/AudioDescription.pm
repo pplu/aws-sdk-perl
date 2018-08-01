@@ -10,6 +10,7 @@ package Paws::MediaLive::AudioDescription;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has RemixSettings => (is => 'ro', isa => 'Paws::MediaLive::RemixSettings', request_name => 'remixSettings', traits => ['NameInRequest']);
   has StreamName => (is => 'ro', isa => 'Str', request_name => 'streamName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

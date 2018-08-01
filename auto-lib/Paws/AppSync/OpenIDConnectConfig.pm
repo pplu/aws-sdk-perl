@@ -4,6 +4,7 @@ package Paws::AppSync::OpenIDConnectConfig;
   has ClientId => (is => 'ro', isa => 'Str', request_name => 'clientId', traits => ['NameInRequest']);
   has IatTTL => (is => 'ro', isa => 'Int', request_name => 'iatTTL', traits => ['NameInRequest']);
   has Issuer => (is => 'ro', isa => 'Str', request_name => 'issuer', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

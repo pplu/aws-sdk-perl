@@ -6,6 +6,7 @@ package Paws::Pinpoint::SegmentImportResource;
   has RoleArn => (is => 'ro', isa => 'Str');
   has S3Url => (is => 'ro', isa => 'Str');
   has Size => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

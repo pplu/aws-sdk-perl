@@ -8,6 +8,7 @@ package Paws::IAM::EvaluationResult;
   has MissingContextValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has OrganizationsDecisionDetail => (is => 'ro', isa => 'Paws::IAM::OrganizationsDecisionDetail');
   has ResourceSpecificResults => (is => 'ro', isa => 'ArrayRef[Paws::IAM::ResourceSpecificResult]');
+
 1;
 
 ### main pod documentation begin ###

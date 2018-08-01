@@ -13,6 +13,7 @@ package Paws::Route53::ResourceRecordSet;
   has TTL => (is => 'ro', isa => 'Int');
   has Type => (is => 'ro', isa => 'Str', required => 1);
   has Weight => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

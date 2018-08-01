@@ -14,6 +14,7 @@ package Paws::Pinpoint::NumberValidateResponse;
   has PhoneTypeCode => (is => 'ro', isa => 'Int');
   has Timezone => (is => 'ro', isa => 'Str');
   has ZipCode => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

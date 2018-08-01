@@ -1,6 +1,7 @@
 package Paws::MediaConvert::ExceptionBody;
   use Moose;
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

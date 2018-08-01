@@ -64,7 +64,7 @@ One or more filters.
 
 =item *
 
-C<instance-family> - The instance family (for example, C<m4>).
+C<instance-family> - The instance family (e.g., C<m4>).
 
 =item *
 
@@ -91,8 +91,9 @@ One or more host reservation IDs.
 
 The maximum number of results to return for the request in a single
 page. The remaining results can be seen by sending another request with
-the returned C<nextToken> value. This value can be between 5 and 500.If
-C<maxResults> is given a larger value than 500, you receive an error.
+the returned C<nextToken> value. This value can be between 5 and 500;
+if C<maxResults> is given a larger value than 500, you will receive an
+error.
 
 
 

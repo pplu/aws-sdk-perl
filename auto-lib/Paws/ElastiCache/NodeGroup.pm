@@ -5,6 +5,7 @@ package Paws::ElastiCache::NodeGroup;
   has PrimaryEndpoint => (is => 'ro', isa => 'Paws::ElastiCache::Endpoint');
   has Slots => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

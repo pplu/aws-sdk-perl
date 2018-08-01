@@ -2,6 +2,7 @@ package Paws::CodeCommit::MergeMetadata;
   use Moose;
   has IsMerged => (is => 'ro', isa => 'Bool', request_name => 'isMerged', traits => ['NameInRequest']);
   has MergedBy => (is => 'ro', isa => 'Str', request_name => 'mergedBy', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

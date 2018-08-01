@@ -8,6 +8,7 @@ package Paws::MobileHub::ProjectDetails;
   has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest']);
   has Resources => (is => 'ro', isa => 'ArrayRef[Paws::MobileHub::Resource]', request_name => 'resources', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

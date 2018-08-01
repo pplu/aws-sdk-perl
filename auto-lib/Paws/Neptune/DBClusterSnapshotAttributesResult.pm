@@ -2,6 +2,7 @@ package Paws::Neptune::DBClusterSnapshotAttributesResult;
   use Moose;
   has DBClusterSnapshotAttributes => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::DBClusterSnapshotAttribute]', request_name => 'DBClusterSnapshotAttribute', traits => ['NameInRequest']);
   has DBClusterSnapshotIdentifier => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

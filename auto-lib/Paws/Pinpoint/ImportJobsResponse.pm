@@ -2,6 +2,7 @@ package Paws::Pinpoint::ImportJobsResponse;
   use Moose;
   has Item => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::ImportJobResponse]');
   has NextToken => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

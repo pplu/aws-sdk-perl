@@ -4,6 +4,7 @@ package Paws::Greengrass::Core;
   has Id => (is => 'ro', isa => 'Str');
   has SyncShadow => (is => 'ro', isa => 'Bool');
   has ThingArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

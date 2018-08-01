@@ -4,6 +4,7 @@ package Paws::Transcribe::VocabularyInfo;
   has LastModifiedTime => (is => 'ro', isa => 'Str');
   has VocabularyName => (is => 'ro', isa => 'Str');
   has VocabularyState => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

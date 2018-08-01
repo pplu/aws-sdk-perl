@@ -4,6 +4,7 @@ package Paws::CodePipeline::ActionTypeSettings;
   has ExecutionUrlTemplate => (is => 'ro', isa => 'Str', request_name => 'executionUrlTemplate', traits => ['NameInRequest']);
   has RevisionUrlTemplate => (is => 'ro', isa => 'Str', request_name => 'revisionUrlTemplate', traits => ['NameInRequest']);
   has ThirdPartyConfigurationUrl => (is => 'ro', isa => 'Str', request_name => 'thirdPartyConfigurationUrl', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

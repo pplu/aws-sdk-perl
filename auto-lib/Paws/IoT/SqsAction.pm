@@ -3,6 +3,7 @@ package Paws::IoT::SqsAction;
   has QueueUrl => (is => 'ro', isa => 'Str', request_name => 'queueUrl', traits => ['NameInRequest'], required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
   has UseBase64 => (is => 'ro', isa => 'Bool', request_name => 'useBase64', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

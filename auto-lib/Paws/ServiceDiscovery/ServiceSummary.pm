@@ -5,6 +5,7 @@ package Paws::ServiceDiscovery::ServiceSummary;
   has Id => (is => 'ro', isa => 'Str');
   has InstanceCount => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

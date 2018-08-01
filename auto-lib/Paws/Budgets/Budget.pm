@@ -8,6 +8,7 @@ package Paws::Budgets::Budget;
   has CostTypes => (is => 'ro', isa => 'Paws::Budgets::CostTypes');
   has TimePeriod => (is => 'ro', isa => 'Paws::Budgets::TimePeriod');
   has TimeUnit => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::ELBv2::Limit;
   use Moose;
   has Max => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

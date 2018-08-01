@@ -1,6 +1,7 @@
 package Paws::Neptune::ValidDBInstanceModificationsMessage;
   use Moose;
   has Storage => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::ValidStorageOptions]', request_name => 'ValidStorageOptions', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

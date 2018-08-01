@@ -9,6 +9,7 @@ package Paws::AlexaForBusiness::Device;
   has MacAddress => (is => 'ro', isa => 'Str');
   has RoomArn => (is => 'ro', isa => 'Str');
   has SoftwareVersion => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

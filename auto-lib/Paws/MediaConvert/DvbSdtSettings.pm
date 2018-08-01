@@ -4,6 +4,7 @@ package Paws::MediaConvert::DvbSdtSettings;
   has SdtInterval => (is => 'ro', isa => 'Int', request_name => 'sdtInterval', traits => ['NameInRequest']);
   has ServiceName => (is => 'ro', isa => 'Str', request_name => 'serviceName', traits => ['NameInRequest']);
   has ServiceProviderName => (is => 'ro', isa => 'Str', request_name => 'serviceProviderName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

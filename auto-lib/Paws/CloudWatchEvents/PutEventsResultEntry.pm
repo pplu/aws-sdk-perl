@@ -3,6 +3,7 @@ package Paws::CloudWatchEvents::PutEventsResultEntry;
   has ErrorCode => (is => 'ro', isa => 'Str');
   has ErrorMessage => (is => 'ro', isa => 'Str');
   has EventId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

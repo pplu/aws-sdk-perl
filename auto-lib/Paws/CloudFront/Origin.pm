@@ -6,6 +6,7 @@ package Paws::CloudFront::Origin;
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has OriginPath => (is => 'ro', isa => 'Str');
   has S3OriginConfig => (is => 'ro', isa => 'Paws::CloudFront::S3OriginConfig');
+
 1;
 
 ### main pod documentation begin ###

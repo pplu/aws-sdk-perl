@@ -5,6 +5,7 @@ package Paws::WorkSpaces::WorkspaceProperties;
   has RunningMode => (is => 'ro', isa => 'Str');
   has RunningModeAutoStopTimeoutInMinutes => (is => 'ro', isa => 'Int');
   has UserVolumeSizeGib => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

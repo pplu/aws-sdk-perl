@@ -3,6 +3,7 @@ package Paws::Inspector::InspectorServiceAttributes;
   has AssessmentRunArn => (is => 'ro', isa => 'Str', request_name => 'assessmentRunArn', traits => ['NameInRequest']);
   has RulesPackageArn => (is => 'ro', isa => 'Str', request_name => 'rulesPackageArn', traits => ['NameInRequest']);
   has SchemaVersion => (is => 'ro', isa => 'Int', request_name => 'schemaVersion', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

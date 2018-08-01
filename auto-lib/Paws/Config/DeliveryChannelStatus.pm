@@ -4,6 +4,7 @@ package Paws::Config::DeliveryChannelStatus;
   has ConfigSnapshotDeliveryInfo => (is => 'ro', isa => 'Paws::Config::ConfigExportDeliveryInfo', request_name => 'configSnapshotDeliveryInfo', traits => ['NameInRequest']);
   has ConfigStreamDeliveryInfo => (is => 'ro', isa => 'Paws::Config::ConfigStreamDeliveryInfo', request_name => 'configStreamDeliveryInfo', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

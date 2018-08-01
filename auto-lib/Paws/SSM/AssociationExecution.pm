@@ -8,6 +8,7 @@ package Paws::SSM::AssociationExecution;
   has LastExecutionDate => (is => 'ro', isa => 'Str');
   has ResourceCountByStatus => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

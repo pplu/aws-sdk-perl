@@ -9,6 +9,7 @@ package Paws::DeviceFarm::ScheduleRunConfiguration;
   has NetworkProfileArn => (is => 'ro', isa => 'Str', request_name => 'networkProfileArn', traits => ['NameInRequest']);
   has Radios => (is => 'ro', isa => 'Paws::DeviceFarm::Radios', request_name => 'radios', traits => ['NameInRequest']);
   has VpceConfigurationArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'vpceConfigurationArns', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

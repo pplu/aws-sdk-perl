@@ -6,6 +6,7 @@ package Paws::FMS::PolicySummary;
   has RemediationEnabled => (is => 'ro', isa => 'Bool');
   has ResourceType => (is => 'ro', isa => 'Str');
   has SecurityServiceType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

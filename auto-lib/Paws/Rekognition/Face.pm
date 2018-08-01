@@ -5,6 +5,7 @@ package Paws::Rekognition::Face;
   has ExternalImageId => (is => 'ro', isa => 'Str');
   has FaceId => (is => 'ro', isa => 'Str');
   has ImageId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

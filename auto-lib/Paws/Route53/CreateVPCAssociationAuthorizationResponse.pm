@@ -4,6 +4,7 @@ package Paws::Route53::CreateVPCAssociationAuthorizationResponse;
   has HostedZoneId => (is => 'ro', isa => 'Str', required => 1);
   has VPC => (is => 'ro', isa => 'Paws::Route53::VPC', required => 1);
 
+
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

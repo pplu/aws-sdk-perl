@@ -2,6 +2,7 @@ package Paws::EMR::ScriptBootstrapActionConfig;
   use Moose;
   has Args => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Path => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

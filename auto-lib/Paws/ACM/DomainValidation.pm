@@ -6,6 +6,7 @@ package Paws::ACM::DomainValidation;
   has ValidationEmails => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ValidationMethod => (is => 'ro', isa => 'Str');
   has ValidationStatus => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

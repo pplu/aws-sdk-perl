@@ -7,6 +7,7 @@ package Paws::MediaLive::Ac3Settings;
   has DrcProfile => (is => 'ro', isa => 'Str', request_name => 'drcProfile', traits => ['NameInRequest']);
   has LfeFilter => (is => 'ro', isa => 'Str', request_name => 'lfeFilter', traits => ['NameInRequest']);
   has MetadataControl => (is => 'ro', isa => 'Str', request_name => 'metadataControl', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

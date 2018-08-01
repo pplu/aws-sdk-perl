@@ -3,6 +3,7 @@ package Paws::ApiGateway::ApiStage;
   has ApiId => (is => 'ro', isa => 'Str', request_name => 'apiId', traits => ['NameInRequest']);
   has Stage => (is => 'ro', isa => 'Str', request_name => 'stage', traits => ['NameInRequest']);
   has Throttle => (is => 'ro', isa => 'Paws::ApiGateway::MapOfApiStageThrottleSettings', request_name => 'throttle', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

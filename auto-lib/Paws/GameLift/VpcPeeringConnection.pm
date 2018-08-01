@@ -6,6 +6,7 @@ package Paws::GameLift::VpcPeeringConnection;
   has PeerVpcId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Paws::GameLift::VpcPeeringConnectionStatus');
   has VpcPeeringConnectionId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

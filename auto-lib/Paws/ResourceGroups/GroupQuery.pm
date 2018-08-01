@@ -2,6 +2,7 @@ package Paws::ResourceGroups::GroupQuery;
   use Moose;
   has GroupName => (is => 'ro', isa => 'Str', required => 1);
   has ResourceQuery => (is => 'ro', isa => 'Paws::ResourceGroups::ResourceQuery', required => 1);
+
 1;
 
 ### main pod documentation begin ###

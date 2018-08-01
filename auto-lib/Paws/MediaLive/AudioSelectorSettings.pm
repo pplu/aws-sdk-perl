@@ -2,6 +2,7 @@ package Paws::MediaLive::AudioSelectorSettings;
   use Moose;
   has AudioLanguageSelection => (is => 'ro', isa => 'Paws::MediaLive::AudioLanguageSelection', request_name => 'audioLanguageSelection', traits => ['NameInRequest']);
   has AudioPidSelection => (is => 'ro', isa => 'Paws::MediaLive::AudioPidSelection', request_name => 'audioPidSelection', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

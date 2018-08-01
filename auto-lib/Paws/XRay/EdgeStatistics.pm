@@ -5,6 +5,7 @@ package Paws::XRay::EdgeStatistics;
   has OkCount => (is => 'ro', isa => 'Int');
   has TotalCount => (is => 'ro', isa => 'Int');
   has TotalResponseTime => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

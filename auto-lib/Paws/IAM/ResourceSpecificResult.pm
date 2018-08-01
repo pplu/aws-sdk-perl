@@ -5,6 +5,7 @@ package Paws::IAM::ResourceSpecificResult;
   has EvalResourceName => (is => 'ro', isa => 'Str', required => 1);
   has MatchedStatements => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Statement]');
   has MissingContextValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

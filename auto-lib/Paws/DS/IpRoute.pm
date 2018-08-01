@@ -2,6 +2,7 @@ package Paws::DS::IpRoute;
   use Moose;
   has CidrIp => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

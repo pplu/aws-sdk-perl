@@ -2,6 +2,7 @@ package Paws::MediaLive::InputChannelLevel;
   use Moose;
   has Gain => (is => 'ro', isa => 'Int', request_name => 'gain', traits => ['NameInRequest'], required => 1);
   has InputChannel => (is => 'ro', isa => 'Int', request_name => 'inputChannel', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

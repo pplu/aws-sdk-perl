@@ -2,6 +2,7 @@ package Paws::StepFunctions::LambdaFunctionFailedEventDetails;
   use Moose;
   has Cause => (is => 'ro', isa => 'Str', request_name => 'cause', traits => ['NameInRequest']);
   has Error => (is => 'ro', isa => 'Str', request_name => 'error', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

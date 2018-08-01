@@ -4,6 +4,7 @@ package Paws::DynamoDB::ExpectedAttributeValue;
   has ComparisonOperator => (is => 'ro', isa => 'Str');
   has Exists => (is => 'ro', isa => 'Bool');
   has Value => (is => 'ro', isa => 'Paws::DynamoDB::AttributeValue');
+
 1;
 
 ### main pod documentation begin ###

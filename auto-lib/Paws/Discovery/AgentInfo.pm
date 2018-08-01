@@ -10,6 +10,7 @@ package Paws::Discovery::AgentInfo;
   has LastHealthPingTime => (is => 'ro', isa => 'Str', request_name => 'lastHealthPingTime', traits => ['NameInRequest']);
   has RegisteredTime => (is => 'ro', isa => 'Str', request_name => 'registeredTime', traits => ['NameInRequest']);
   has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

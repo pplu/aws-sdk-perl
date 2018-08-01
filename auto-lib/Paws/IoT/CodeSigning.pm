@@ -2,6 +2,7 @@ package Paws::IoT::CodeSigning;
   use Moose;
   has AwsSignerJobId => (is => 'ro', isa => 'Str', request_name => 'awsSignerJobId', traits => ['NameInRequest']);
   has CustomCodeSigning => (is => 'ro', isa => 'Paws::IoT::CustomCodeSigning', request_name => 'customCodeSigning', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

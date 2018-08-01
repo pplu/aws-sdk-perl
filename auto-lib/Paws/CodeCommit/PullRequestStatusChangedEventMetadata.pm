@@ -1,6 +1,7 @@
 package Paws::CodeCommit::PullRequestStatusChangedEventMetadata;
   use Moose;
   has PullRequestStatus => (is => 'ro', isa => 'Str', request_name => 'pullRequestStatus', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::AppStream::DirectoryConfig;
   has DirectoryName => (is => 'ro', isa => 'Str', required => 1);
   has OrganizationalUnitDistinguishedNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ServiceAccountCredentials => (is => 'ro', isa => 'Paws::AppStream::ServiceAccountCredentials');
+
 1;
 
 ### main pod documentation begin ###

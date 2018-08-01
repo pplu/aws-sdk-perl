@@ -6,6 +6,7 @@ package Paws::ElasticTranscoder::AudioParameters;
   has Codec => (is => 'ro', isa => 'Str');
   has CodecOptions => (is => 'ro', isa => 'Paws::ElasticTranscoder::AudioCodecOptions');
   has SampleRate => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

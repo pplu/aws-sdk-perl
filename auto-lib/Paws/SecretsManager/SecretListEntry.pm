@@ -13,6 +13,7 @@ package Paws::SecretsManager::SecretListEntry;
   has RotationRules => (is => 'ro', isa => 'Paws::SecretsManager::RotationRulesType');
   has SecretVersionsToStages => (is => 'ro', isa => 'Paws::SecretsManager::SecretVersionsToStagesMapType');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SecretsManager::Tag]');
+
 1;
 
 ### main pod documentation begin ###

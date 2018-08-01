@@ -9,6 +9,7 @@ package Paws::EMR::CloudWatchAlarmDefinition;
   has Statistic => (is => 'ro', isa => 'Str');
   has Threshold => (is => 'ro', isa => 'Num', required => 1);
   has Unit => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

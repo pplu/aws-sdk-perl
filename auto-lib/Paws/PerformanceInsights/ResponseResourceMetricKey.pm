@@ -2,6 +2,7 @@ package Paws::PerformanceInsights::ResponseResourceMetricKey;
   use Moose;
   has Dimensions => (is => 'ro', isa => 'Paws::PerformanceInsights::DimensionMap');
   has Metric => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

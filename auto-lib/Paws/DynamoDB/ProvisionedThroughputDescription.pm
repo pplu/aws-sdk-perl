@@ -5,6 +5,7 @@ package Paws::DynamoDB::ProvisionedThroughputDescription;
   has NumberOfDecreasesToday => (is => 'ro', isa => 'Int');
   has ReadCapacityUnits => (is => 'ro', isa => 'Int');
   has WriteCapacityUnits => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

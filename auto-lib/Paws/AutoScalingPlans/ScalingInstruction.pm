@@ -6,6 +6,7 @@ package Paws::AutoScalingPlans::ScalingInstruction;
   has ScalableDimension => (is => 'ro', isa => 'Str', required => 1);
   has ServiceNamespace => (is => 'ro', isa => 'Str', required => 1);
   has TargetTrackingConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::AutoScalingPlans::TargetTrackingConfiguration]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

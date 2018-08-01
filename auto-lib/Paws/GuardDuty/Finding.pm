@@ -15,6 +15,7 @@ package Paws::GuardDuty::Finding;
   has Title => (is => 'ro', isa => 'Str', request_name => 'title', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
   has UpdatedAt => (is => 'ro', isa => 'Str', request_name => 'updatedAt', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

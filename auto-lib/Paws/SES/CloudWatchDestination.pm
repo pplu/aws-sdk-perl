@@ -1,6 +1,7 @@
 package Paws::SES::CloudWatchDestination;
   use Moose;
   has DimensionConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::SES::CloudWatchDimensionConfiguration]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::CloudDirectory::BatchCreateObject;
   has ObjectAttributeList => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::AttributeKeyAndValue]', required => 1);
   has ParentReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference');
   has SchemaFacet => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::SchemaFacet]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

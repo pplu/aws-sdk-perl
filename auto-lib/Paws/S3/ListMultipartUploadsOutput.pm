@@ -12,7 +12,8 @@ package Paws::S3::ListMultipartUploadsOutput;
   has NextUploadIdMarker => (is => 'ro', isa => 'Str');
   has Prefix => (is => 'ro', isa => 'Str');
   has UploadIdMarker => (is => 'ro', isa => 'Str');
-  has Uploads => (is => 'ro', isa => 'ArrayRef[Paws::S3::MultipartUpload]', traits => ['NameInRequest'], request_name => 'Upload');
+  has Uploads => (is => 'ro', isa => 'ArrayRef[Paws::S3::MultipartUpload]', request_name => 'Upload', traits => ['NameInRequest']);
+
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

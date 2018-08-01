@@ -3,6 +3,7 @@ package Paws::SSM::FailureDetails;
   has Details => (is => 'ro', isa => 'Paws::SSM::AutomationParameterMap');
   has FailureStage => (is => 'ro', isa => 'Str');
   has FailureType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

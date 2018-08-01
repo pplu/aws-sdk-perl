@@ -5,6 +5,7 @@ package Paws::ELB::LoadBalancerAttributes;
   has ConnectionDraining => (is => 'ro', isa => 'Paws::ELB::ConnectionDraining');
   has ConnectionSettings => (is => 'ro', isa => 'Paws::ELB::ConnectionSettings');
   has CrossZoneLoadBalancing => (is => 'ro', isa => 'Paws::ELB::CrossZoneLoadBalancing');
+
 1;
 
 ### main pod documentation begin ###

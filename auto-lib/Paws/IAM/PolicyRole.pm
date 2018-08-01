@@ -2,6 +2,7 @@ package Paws::IAM::PolicyRole;
   use Moose;
   has RoleId => (is => 'ro', isa => 'Str');
   has RoleName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

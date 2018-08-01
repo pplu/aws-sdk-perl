@@ -4,6 +4,7 @@ package Paws::CodePipeline::StageState;
   has InboundTransitionState => (is => 'ro', isa => 'Paws::CodePipeline::TransitionState', request_name => 'inboundTransitionState', traits => ['NameInRequest']);
   has LatestExecution => (is => 'ro', isa => 'Paws::CodePipeline::StageExecution', request_name => 'latestExecution', traits => ['NameInRequest']);
   has StageName => (is => 'ro', isa => 'Str', request_name => 'stageName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

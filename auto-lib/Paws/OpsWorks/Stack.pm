@@ -22,6 +22,7 @@ package Paws::OpsWorks::Stack;
   has UseCustomCookbooks => (is => 'ro', isa => 'Bool');
   has UseOpsworksSecurityGroups => (is => 'ro', isa => 'Bool');
   has VpcId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

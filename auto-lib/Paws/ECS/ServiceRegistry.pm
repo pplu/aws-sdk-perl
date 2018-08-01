@@ -4,6 +4,7 @@ package Paws::ECS::ServiceRegistry;
   has ContainerPort => (is => 'ro', isa => 'Int', request_name => 'containerPort', traits => ['NameInRequest']);
   has Port => (is => 'ro', isa => 'Int', request_name => 'port', traits => ['NameInRequest']);
   has RegistryArn => (is => 'ro', isa => 'Str', request_name => 'registryArn', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

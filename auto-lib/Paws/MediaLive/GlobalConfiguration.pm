@@ -5,6 +5,7 @@ package Paws::MediaLive::GlobalConfiguration;
   has InputLossBehavior => (is => 'ro', isa => 'Paws::MediaLive::InputLossBehavior', request_name => 'inputLossBehavior', traits => ['NameInRequest']);
   has OutputTimingSource => (is => 'ro', isa => 'Str', request_name => 'outputTimingSource', traits => ['NameInRequest']);
   has SupportLowFramerateInputs => (is => 'ro', isa => 'Str', request_name => 'supportLowFramerateInputs', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

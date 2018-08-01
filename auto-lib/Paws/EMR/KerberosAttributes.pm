@@ -5,6 +5,7 @@ package Paws::EMR::KerberosAttributes;
   has CrossRealmTrustPrincipalPassword => (is => 'ro', isa => 'Str');
   has KdcAdminPassword => (is => 'ro', isa => 'Str', required => 1);
   has Realm => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::PerformanceInsights::MetricQuery;
   has Filter => (is => 'ro', isa => 'Paws::PerformanceInsights::MetricQueryFilterMap');
   has GroupBy => (is => 'ro', isa => 'Paws::PerformanceInsights::DimensionGroup');
   has Metric => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

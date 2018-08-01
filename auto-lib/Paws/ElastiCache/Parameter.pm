@@ -9,6 +9,7 @@ package Paws::ElastiCache::Parameter;
   has ParameterName => (is => 'ro', isa => 'Str');
   has ParameterValue => (is => 'ro', isa => 'Str');
   has Source => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

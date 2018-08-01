@@ -7,6 +7,7 @@ package Paws::CognitoSync::Dataset;
   has LastModifiedBy => (is => 'ro', isa => 'Str');
   has LastModifiedDate => (is => 'ro', isa => 'Str');
   has NumRecords => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

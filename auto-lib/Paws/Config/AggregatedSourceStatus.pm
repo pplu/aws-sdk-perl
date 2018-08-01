@@ -7,6 +7,7 @@ package Paws::Config::AggregatedSourceStatus;
   has LastUpdateTime => (is => 'ro', isa => 'Str');
   has SourceId => (is => 'ro', isa => 'Str');
   has SourceType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

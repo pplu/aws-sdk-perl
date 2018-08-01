@@ -2,6 +2,7 @@ package Paws::ELBv2::LoadBalancerAddress;
   use Moose;
   has AllocationId => (is => 'ro', isa => 'Str');
   has IpAddress => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

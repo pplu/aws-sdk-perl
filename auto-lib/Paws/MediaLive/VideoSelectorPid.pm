@@ -1,6 +1,7 @@
 package Paws::MediaLive::VideoSelectorPid;
   use Moose;
   has Pid => (is => 'ro', isa => 'Int', request_name => 'pid', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

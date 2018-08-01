@@ -5,6 +5,7 @@ package Paws::WorkDocs::ShareResult;
   has ShareId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has StatusMessage => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

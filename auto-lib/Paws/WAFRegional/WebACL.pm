@@ -5,6 +5,7 @@ package Paws::WAFRegional::WebACL;
   has Name => (is => 'ro', isa => 'Str');
   has Rules => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::ActivatedRule]', required => 1);
   has WebACLId => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

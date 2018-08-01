@@ -3,6 +3,7 @@ package Paws::Transcribe::Settings;
   has MaxSpeakerLabels => (is => 'ro', isa => 'Int');
   has ShowSpeakerLabels => (is => 'ro', isa => 'Bool');
   has VocabularyName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

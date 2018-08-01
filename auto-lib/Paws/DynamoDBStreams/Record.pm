@@ -7,6 +7,7 @@ package Paws::DynamoDBStreams::Record;
   has EventSource => (is => 'ro', isa => 'Str', request_name => 'eventSource', traits => ['NameInRequest']);
   has EventVersion => (is => 'ro', isa => 'Str', request_name => 'eventVersion', traits => ['NameInRequest']);
   has UserIdentity => (is => 'ro', isa => 'Paws::DynamoDBStreams::Identity', request_name => 'userIdentity', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

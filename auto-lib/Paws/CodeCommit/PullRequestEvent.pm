@@ -7,6 +7,7 @@ package Paws::CodeCommit::PullRequestEvent;
   has PullRequestMergedStateChangedEventMetadata => (is => 'ro', isa => 'Paws::CodeCommit::PullRequestMergedStateChangedEventMetadata', request_name => 'pullRequestMergedStateChangedEventMetadata', traits => ['NameInRequest']);
   has PullRequestSourceReferenceUpdatedEventMetadata => (is => 'ro', isa => 'Paws::CodeCommit::PullRequestSourceReferenceUpdatedEventMetadata', request_name => 'pullRequestSourceReferenceUpdatedEventMetadata', traits => ['NameInRequest']);
   has PullRequestStatusChangedEventMetadata => (is => 'ro', isa => 'Paws::CodeCommit::PullRequestStatusChangedEventMetadata', request_name => 'pullRequestStatusChangedEventMetadata', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

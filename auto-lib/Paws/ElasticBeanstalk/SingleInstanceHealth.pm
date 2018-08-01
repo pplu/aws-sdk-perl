@@ -10,6 +10,7 @@ package Paws::ElasticBeanstalk::SingleInstanceHealth;
   has InstanceType => (is => 'ro', isa => 'Str');
   has LaunchedAt => (is => 'ro', isa => 'Str');
   has System => (is => 'ro', isa => 'Paws::ElasticBeanstalk::SystemStatus');
+
 1;
 
 ### main pod documentation begin ###

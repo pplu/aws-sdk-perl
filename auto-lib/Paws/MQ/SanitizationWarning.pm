@@ -3,6 +3,7 @@ package Paws::MQ::SanitizationWarning;
   has AttributeName => (is => 'ro', isa => 'Str', request_name => 'attributeName', traits => ['NameInRequest']);
   has ElementName => (is => 'ro', isa => 'Str', request_name => 'elementName', traits => ['NameInRequest']);
   has Reason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

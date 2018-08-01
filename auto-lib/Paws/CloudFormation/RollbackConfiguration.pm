@@ -2,6 +2,7 @@ package Paws::CloudFormation::RollbackConfiguration;
   use Moose;
   has MonitoringTimeInMinutes => (is => 'ro', isa => 'Int');
   has RollbackTriggers => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::RollbackTrigger]');
+
 1;
 
 ### main pod documentation begin ###

@@ -13,6 +13,7 @@ package Paws::Snowball::ClusterMetadata;
   has RoleARN => (is => 'ro', isa => 'Str');
   has ShippingOption => (is => 'ro', isa => 'Str');
   has SnowballType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###
@@ -117,16 +118,16 @@ API action in AWS Identity and Access Management (IAM).
 =head2 ShippingOption => Str
 
   The shipping speed for each node in this cluster. This speed doesn't
-dictate how soon you'll get each Snowball Edge device, rather it
-represents how quickly each device moves to its destination while in
+dictate how soon you'll get each Snowball Edge appliance, rather it
+represents how quickly each appliance moves to its destination while in
 transit. Regional shipping speeds are as follows:
 
 =over
 
 =item *
 
-In Australia, you have access to express shipping. Typically, devices
-shipped express are delivered in about a day.
+In Australia, you have access to express shipping. Typically,
+appliances shipped express are delivered in about a day.
 
 =item *
 
@@ -149,8 +150,8 @@ In the US, you have access to one-day shipping and two-day shipping.
 
 =head2 SnowballType => Str
 
-  The type of AWS Snowball device to use for this cluster. Currently, the
-only supported device type for cluster jobs is C<EDGE>.
+  The type of AWS Snowball appliance to use for this cluster. Currently,
+the only supported appliance type for cluster jobs is C<EDGE>.
 
 
 

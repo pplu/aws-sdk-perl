@@ -4,6 +4,7 @@ package Paws::IoT::CustomCodeSigning;
   has HashAlgorithm => (is => 'ro', isa => 'Str', request_name => 'hashAlgorithm', traits => ['NameInRequest']);
   has Signature => (is => 'ro', isa => 'Paws::IoT::CodeSigningSignature', request_name => 'signature', traits => ['NameInRequest']);
   has SignatureAlgorithm => (is => 'ro', isa => 'Str', request_name => 'signatureAlgorithm', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

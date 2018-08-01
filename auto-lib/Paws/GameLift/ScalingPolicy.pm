@@ -11,6 +11,7 @@ package Paws::GameLift::ScalingPolicy;
   has Status => (is => 'ro', isa => 'Str');
   has TargetConfiguration => (is => 'ro', isa => 'Paws::GameLift::TargetConfiguration');
   has Threshold => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

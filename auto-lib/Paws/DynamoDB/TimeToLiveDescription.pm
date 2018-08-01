@@ -2,6 +2,7 @@ package Paws::DynamoDB::TimeToLiveDescription;
   use Moose;
   has AttributeName => (is => 'ro', isa => 'Str');
   has TimeToLiveStatus => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -6,6 +6,7 @@ package Paws::StorageGateway::VolumeInfo;
   has VolumeId => (is => 'ro', isa => 'Str');
   has VolumeSizeInBytes => (is => 'ro', isa => 'Int');
   has VolumeType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

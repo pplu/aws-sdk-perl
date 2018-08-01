@@ -4,6 +4,7 @@ package Paws::SimpleWorkflow::WorkflowExecutionSignaledEventAttributes;
   has ExternalWorkflowExecution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', request_name => 'externalWorkflowExecution', traits => ['NameInRequest']);
   has Input => (is => 'ro', isa => 'Str', request_name => 'input', traits => ['NameInRequest']);
   has SignalName => (is => 'ro', isa => 'Str', request_name => 'signalName', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

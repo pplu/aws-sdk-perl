@@ -3,6 +3,7 @@ package Paws::GameLift::PlayerLatency;
   has LatencyInMilliseconds => (is => 'ro', isa => 'Num');
   has PlayerId => (is => 'ro', isa => 'Str');
   has RegionIdentifier => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

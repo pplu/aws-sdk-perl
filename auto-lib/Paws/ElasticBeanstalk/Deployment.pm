@@ -4,6 +4,7 @@ package Paws::ElasticBeanstalk::Deployment;
   has DeploymentTime => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has VersionLabel => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

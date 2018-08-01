@@ -3,6 +3,7 @@ package Paws::ServiceDiscovery::HealthCheckConfig;
   has FailureThreshold => (is => 'ro', isa => 'Int');
   has ResourcePath => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

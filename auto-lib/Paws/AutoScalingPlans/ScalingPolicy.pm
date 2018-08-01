@@ -3,6 +3,7 @@ package Paws::AutoScalingPlans::ScalingPolicy;
   has PolicyName => (is => 'ro', isa => 'Str', required => 1);
   has PolicyType => (is => 'ro', isa => 'Str', required => 1);
   has TargetTrackingConfiguration => (is => 'ro', isa => 'Paws::AutoScalingPlans::TargetTrackingConfiguration');
+
 1;
 
 ### main pod documentation begin ###

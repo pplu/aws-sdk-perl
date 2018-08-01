@@ -2,6 +2,7 @@ package Paws::XRay::ValueWithServiceIds;
   use Moose;
   has AnnotationValue => (is => 'ro', isa => 'Paws::XRay::AnnotationValue');
   has ServiceIds => (is => 'ro', isa => 'ArrayRef[Paws::XRay::ServiceId]');
+
 1;
 
 ### main pod documentation begin ###

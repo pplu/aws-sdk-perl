@@ -16,6 +16,7 @@ package Paws::SSM::CommandInvocation;
   has Status => (is => 'ro', isa => 'Str');
   has StatusDetails => (is => 'ro', isa => 'Str');
   has TraceOutput => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

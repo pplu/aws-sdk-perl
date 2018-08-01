@@ -1,7 +1,7 @@
 package Paws::SMS::Connector;
   use Moose;
   has AssociatedOn => (is => 'ro', isa => 'Str', request_name => 'associatedOn', traits => ['NameInRequest']);
-  has CapabilityList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'item', request_name => 'capabilityList', traits => ['NameInRequest','NameInRequest']);
+  has CapabilityList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'capabilityList', traits => ['NameInRequest']);
   has ConnectorId => (is => 'ro', isa => 'Str', request_name => 'connectorId', traits => ['NameInRequest']);
   has IpAddress => (is => 'ro', isa => 'Str', request_name => 'ipAddress', traits => ['NameInRequest']);
   has MacAddress => (is => 'ro', isa => 'Str', request_name => 'macAddress', traits => ['NameInRequest']);
@@ -10,6 +10,7 @@ package Paws::SMS::Connector;
   has VmManagerId => (is => 'ro', isa => 'Str', request_name => 'vmManagerId', traits => ['NameInRequest']);
   has VmManagerName => (is => 'ro', isa => 'Str', request_name => 'vmManagerName', traits => ['NameInRequest']);
   has VmManagerType => (is => 'ro', isa => 'Str', request_name => 'vmManagerType', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

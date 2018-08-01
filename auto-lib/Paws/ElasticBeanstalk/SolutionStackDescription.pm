@@ -2,6 +2,7 @@ package Paws::ElasticBeanstalk::SolutionStackDescription;
   use Moose;
   has PermittedFileTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SolutionStackName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

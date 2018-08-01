@@ -1,6 +1,7 @@
 package Paws::MediaConvert::TimedMetadataInsertion;
   use Moose;
   has Id3Insertions => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::Id3Insertion]', request_name => 'id3Insertions', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

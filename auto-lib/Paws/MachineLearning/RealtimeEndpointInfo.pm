@@ -4,6 +4,7 @@ package Paws::MachineLearning::RealtimeEndpointInfo;
   has EndpointStatus => (is => 'ro', isa => 'Str');
   has EndpointUrl => (is => 'ro', isa => 'Str');
   has PeakRequestsPerSecond => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

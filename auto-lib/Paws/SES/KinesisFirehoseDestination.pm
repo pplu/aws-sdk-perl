@@ -2,6 +2,7 @@ package Paws::SES::KinesisFirehoseDestination;
   use Moose;
   has DeliveryStreamARN => (is => 'ro', isa => 'Str', required => 1);
   has IAMRoleARN => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

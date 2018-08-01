@@ -13,6 +13,7 @@ package Paws::EMR::JobFlowInstancesDetail;
   has Placement => (is => 'ro', isa => 'Paws::EMR::PlacementType');
   has SlaveInstanceType => (is => 'ro', isa => 'Str', required => 1);
   has TerminationProtected => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

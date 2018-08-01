@@ -14,6 +14,7 @@ package Paws::EMR::InstanceGroup;
   has RunningInstanceCount => (is => 'ro', isa => 'Int');
   has ShrinkPolicy => (is => 'ro', isa => 'Paws::EMR::ShrinkPolicy');
   has Status => (is => 'ro', isa => 'Paws::EMR::InstanceGroupStatus');
+
 1;
 
 ### main pod documentation begin ###

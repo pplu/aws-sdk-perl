@@ -5,6 +5,7 @@ package Paws::MarketplaceEntitlement::Entitlement;
   has ExpirationDate => (is => 'ro', isa => 'Str');
   has ProductCode => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Paws::MarketplaceEntitlement::EntitlementValue');
+
 1;
 
 ### main pod documentation begin ###

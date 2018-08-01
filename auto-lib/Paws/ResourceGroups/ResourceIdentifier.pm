@@ -2,6 +2,7 @@ package Paws::ResourceGroups::ResourceIdentifier;
   use Moose;
   has ResourceArn => (is => 'ro', isa => 'Str');
   has ResourceType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::DS::EventTopic;
   has Status => (is => 'ro', isa => 'Str');
   has TopicArn => (is => 'ro', isa => 'Str');
   has TopicName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::Discovery::AgentConfigurationStatus;
   has AgentId => (is => 'ro', isa => 'Str', request_name => 'agentId', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has OperationSucceeded => (is => 'ro', isa => 'Bool', request_name => 'operationSucceeded', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -6,6 +6,7 @@ package Paws::GuardDuty::Condition;
   has Lt => (is => 'ro', isa => 'Int', request_name => 'lt', traits => ['NameInRequest']);
   has Lte => (is => 'ro', isa => 'Int', request_name => 'lte', traits => ['NameInRequest']);
   has Neq => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'neq', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

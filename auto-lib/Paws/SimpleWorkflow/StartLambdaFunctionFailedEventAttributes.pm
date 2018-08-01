@@ -3,6 +3,7 @@ package Paws::SimpleWorkflow::StartLambdaFunctionFailedEventAttributes;
   has Cause => (is => 'ro', isa => 'Str', request_name => 'cause', traits => ['NameInRequest']);
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
   has ScheduledEventId => (is => 'ro', isa => 'Int', request_name => 'scheduledEventId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

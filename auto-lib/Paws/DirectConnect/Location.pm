@@ -2,6 +2,7 @@ package Paws::DirectConnect::Location;
   use Moose;
   has LocationCode => (is => 'ro', isa => 'Str', request_name => 'locationCode', traits => ['NameInRequest']);
   has LocationName => (is => 'ro', isa => 'Str', request_name => 'locationName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

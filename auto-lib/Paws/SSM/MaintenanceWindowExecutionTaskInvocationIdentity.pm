@@ -12,6 +12,7 @@ package Paws::SSM::MaintenanceWindowExecutionTaskInvocationIdentity;
   has TaskType => (is => 'ro', isa => 'Str');
   has WindowExecutionId => (is => 'ro', isa => 'Str');
   has WindowTargetId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

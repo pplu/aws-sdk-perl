@@ -4,6 +4,7 @@ package Paws::WAFRegional::Rule;
   has Name => (is => 'ro', isa => 'Str');
   has Predicates => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::Predicate]', required => 1);
   has RuleId => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

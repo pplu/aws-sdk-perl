@@ -2,6 +2,7 @@ package Paws::AppSync::LogConfig;
   use Moose;
   has CloudWatchLogsRoleArn => (is => 'ro', isa => 'Str', request_name => 'cloudWatchLogsRoleArn', traits => ['NameInRequest'], required => 1);
   has FieldLogLevel => (is => 'ro', isa => 'Str', request_name => 'fieldLogLevel', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

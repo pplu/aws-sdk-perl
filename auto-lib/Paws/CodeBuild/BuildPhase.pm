@@ -6,6 +6,7 @@ package Paws::CodeBuild::BuildPhase;
   has PhaseStatus => (is => 'ro', isa => 'Str', request_name => 'phaseStatus', traits => ['NameInRequest']);
   has PhaseType => (is => 'ro', isa => 'Str', request_name => 'phaseType', traits => ['NameInRequest']);
   has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::SageMaker::HyperParameterAlgorithmSpecification;
   has MetricDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::MetricDefinition]');
   has TrainingImage => (is => 'ro', isa => 'Str', required => 1);
   has TrainingInputMode => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

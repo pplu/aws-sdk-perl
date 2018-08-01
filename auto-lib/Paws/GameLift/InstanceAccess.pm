@@ -5,6 +5,7 @@ package Paws::GameLift::InstanceAccess;
   has InstanceId => (is => 'ro', isa => 'Str');
   has IpAddress => (is => 'ro', isa => 'Str');
   has OperatingSystem => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::MediaConvert::VideoPreprocessor;
   has ImageInserter => (is => 'ro', isa => 'Paws::MediaConvert::ImageInserter', request_name => 'imageInserter', traits => ['NameInRequest']);
   has NoiseReducer => (is => 'ro', isa => 'Paws::MediaConvert::NoiseReducer', request_name => 'noiseReducer', traits => ['NameInRequest']);
   has TimecodeBurnin => (is => 'ro', isa => 'Paws::MediaConvert::TimecodeBurnin', request_name => 'timecodeBurnin', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

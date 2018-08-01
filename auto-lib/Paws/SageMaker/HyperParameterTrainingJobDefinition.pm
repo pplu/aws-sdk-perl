@@ -8,6 +8,7 @@ package Paws::SageMaker::HyperParameterTrainingJobDefinition;
   has StaticHyperParameters => (is => 'ro', isa => 'Paws::SageMaker::HyperParameters');
   has StoppingCondition => (is => 'ro', isa => 'Paws::SageMaker::StoppingCondition', required => 1);
   has VpcConfig => (is => 'ro', isa => 'Paws::SageMaker::VpcConfig');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Budgets::NotificationWithSubscribers;
   use Moose;
   has Notification => (is => 'ro', isa => 'Paws::Budgets::Notification', required => 1);
   has Subscribers => (is => 'ro', isa => 'ArrayRef[Paws::Budgets::Subscriber]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

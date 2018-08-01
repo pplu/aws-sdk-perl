@@ -2,6 +2,7 @@ package Paws::KinesisVideoArchivedMedia::HLSFragmentSelector;
   use Moose;
   has FragmentSelectorType => (is => 'ro', isa => 'Str');
   has TimestampRange => (is => 'ro', isa => 'Paws::KinesisVideoArchivedMedia::HLSTimestampRange');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::EMR::SpotProvisioningSpecification;
   has BlockDurationMinutes => (is => 'ro', isa => 'Int');
   has TimeoutAction => (is => 'ro', isa => 'Str', required => 1);
   has TimeoutDurationMinutes => (is => 'ro', isa => 'Int', required => 1);
+
 1;
 
 ### main pod documentation begin ###

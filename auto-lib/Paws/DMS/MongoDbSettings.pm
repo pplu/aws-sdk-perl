@@ -12,6 +12,7 @@ package Paws::DMS::MongoDbSettings;
   has Port => (is => 'ro', isa => 'Int');
   has ServerName => (is => 'ro', isa => 'Str');
   has Username => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::CloudWatchEvents::InputTransformer;
   use Moose;
   has InputPathsMap => (is => 'ro', isa => 'Paws::CloudWatchEvents::TransformerPaths');
   has InputTemplate => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

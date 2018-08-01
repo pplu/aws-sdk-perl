@@ -5,6 +5,7 @@ package Paws::LexRuntime::GenericAttachment;
   has ImageUrl => (is => 'ro', isa => 'Str', request_name => 'imageUrl', traits => ['NameInRequest']);
   has SubTitle => (is => 'ro', isa => 'Str', request_name => 'subTitle', traits => ['NameInRequest']);
   has Title => (is => 'ro', isa => 'Str', request_name => 'title', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

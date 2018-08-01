@@ -6,6 +6,7 @@ package Paws::XRay::TelemetryRecord;
   has SegmentsSentCount => (is => 'ro', isa => 'Int');
   has SegmentsSpilloverCount => (is => 'ro', isa => 'Int');
   has Timestamp => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

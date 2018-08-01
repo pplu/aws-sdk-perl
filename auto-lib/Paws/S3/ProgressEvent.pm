@@ -1,6 +1,7 @@
 package Paws::S3::ProgressEvent;
   use Moose;
   has Details => (is => 'ro', isa => 'Paws::S3::Progress');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::IoTAnalytics::RetentionPeriod;
   use Moose;
   has NumberOfDays => (is => 'ro', isa => 'Int', request_name => 'numberOfDays', traits => ['NameInRequest']);
   has Unlimited => (is => 'ro', isa => 'Bool', request_name => 'unlimited', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

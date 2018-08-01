@@ -5,6 +5,7 @@ package Paws::SimpleWorkflow::WorkflowExecutionOpenCounts;
   has OpenDecisionTasks => (is => 'ro', isa => 'Int', request_name => 'openDecisionTasks', traits => ['NameInRequest'], required => 1);
   has OpenLambdaFunctions => (is => 'ro', isa => 'Int', request_name => 'openLambdaFunctions', traits => ['NameInRequest']);
   has OpenTimers => (is => 'ro', isa => 'Int', request_name => 'openTimers', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

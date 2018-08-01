@@ -3,6 +3,7 @@ package Paws::SSM::FailedCreateAssociation;
   has Entry => (is => 'ro', isa => 'Paws::SSM::CreateAssociationBatchRequestEntry');
   has Fault => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

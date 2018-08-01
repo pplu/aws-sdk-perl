@@ -6,6 +6,7 @@ package Paws::CodeDeploy::DeploymentOverview;
   has Ready => (is => 'ro', isa => 'Int');
   has Skipped => (is => 'ro', isa => 'Int');
   has Succeeded => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

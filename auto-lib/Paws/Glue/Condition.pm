@@ -3,6 +3,7 @@ package Paws::Glue::Condition;
   has JobName => (is => 'ro', isa => 'Str');
   has LogicalOperator => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

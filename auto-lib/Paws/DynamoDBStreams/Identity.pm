@@ -2,6 +2,7 @@ package Paws::DynamoDBStreams::Identity;
   use Moose;
   has PrincipalId => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

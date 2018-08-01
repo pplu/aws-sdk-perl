@@ -24,11 +24,11 @@ package Paws::ECS::ContainerDefinition;
   has PortMappings => (is => 'ro', isa => 'ArrayRef[Paws::ECS::PortMapping]', request_name => 'portMappings', traits => ['NameInRequest']);
   has Privileged => (is => 'ro', isa => 'Bool', request_name => 'privileged', traits => ['NameInRequest']);
   has ReadonlyRootFilesystem => (is => 'ro', isa => 'Bool', request_name => 'readonlyRootFilesystem', traits => ['NameInRequest']);
-  has RepositoryCredentials => (is => 'ro', isa => 'Paws::ECS::RepositoryCredentials', request_name => 'repositoryCredentials', traits => ['NameInRequest']);
   has Ulimits => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Ulimit]', request_name => 'ulimits', traits => ['NameInRequest']);
   has User => (is => 'ro', isa => 'Str', request_name => 'user', traits => ['NameInRequest']);
   has VolumesFrom => (is => 'ro', isa => 'ArrayRef[Paws::ECS::VolumeFrom]', request_name => 'volumesFrom', traits => ['NameInRequest']);
   has WorkingDirectory => (is => 'ro', isa => 'Str', request_name => 'workingDirectory', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###
@@ -281,8 +281,8 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
   A list of hostnames and IP address mappings to append to the
 C</etc/hosts> file on the container. If using the Fargate launch type,
-this may be used to list non-Fargate hosts to which the container can
-talk. This parameter maps to C<ExtraHosts> in the Create a container
+this may be used to list non-Fargate hosts you want the container to
+talk to. This parameter maps to C<ExtraHosts> in the Create a container
 (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
 section of the Docker Remote API
 (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
@@ -572,8 +572,7 @@ container port in the port mapping.
 After a task reaches the C<RUNNING> status, manual and automatic host
 and container port assignments are visible in the B<Network Bindings>
 section of a container description for a selected task in the Amazon
-ECS console. The assignments are also visible in the C<networkBindings>
-section DescribeTasks responses.
+ECS console, or the C<networkBindings> section DescribeTasks responses.
 
 
 =head2 Privileged => Bool
@@ -602,11 +601,6 @@ section of the Docker Remote API
 and the C<--read-only> option to C<docker run>.
 
 This parameter is not supported for Windows containers.
-
-
-=head2 RepositoryCredentials => L<Paws::ECS::RepositoryCredentials>
-
-  The private repository authentication credentials to use.
 
 
 =head2 Ulimits => ArrayRef[L<Paws::ECS::Ulimit>]

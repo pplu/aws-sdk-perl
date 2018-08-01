@@ -2,6 +2,7 @@ package Paws::RedShift::AvailabilityZone;
   use Moose;
   has Name => (is => 'ro', isa => 'Str');
   has SupportedPlatforms => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::SupportedPlatform]', request_name => 'SupportedPlatform', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

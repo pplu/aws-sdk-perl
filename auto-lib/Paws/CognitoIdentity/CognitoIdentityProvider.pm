@@ -3,6 +3,7 @@ package Paws::CognitoIdentity::CognitoIdentityProvider;
   has ClientId => (is => 'ro', isa => 'Str');
   has ProviderName => (is => 'ro', isa => 'Str');
   has ServerSideTokenCheck => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

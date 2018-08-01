@@ -2,6 +2,7 @@ package Paws::ES::LogPublishingOption;
   use Moose;
   has CloudWatchLogsLogGroupArn => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

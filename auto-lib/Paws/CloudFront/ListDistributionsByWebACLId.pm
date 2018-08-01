@@ -5,6 +5,7 @@ package Paws::CloudFront::ListDistributionsByWebACLId;
   has MaxItems => (is => 'ro', isa => 'Str', query_name => 'MaxItems', traits => ['ParamInQuery']);
   has WebACLId => (is => 'ro', isa => 'Str', uri_name => 'WebACLId', traits => ['ParamInURI'], required => 1);
 
+
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListDistributionsByWebACLId');
@@ -13,6 +14,7 @@ package Paws::CloudFront::ListDistributionsByWebACLId;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::ListDistributionsByWebACLIdResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###

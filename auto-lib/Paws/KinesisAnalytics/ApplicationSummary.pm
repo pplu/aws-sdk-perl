@@ -3,6 +3,7 @@ package Paws::KinesisAnalytics::ApplicationSummary;
   has ApplicationARN => (is => 'ro', isa => 'Str', required => 1);
   has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
   has ApplicationStatus => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

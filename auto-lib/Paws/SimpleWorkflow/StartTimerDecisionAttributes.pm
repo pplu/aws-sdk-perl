@@ -3,6 +3,7 @@ package Paws::SimpleWorkflow::StartTimerDecisionAttributes;
   has Control => (is => 'ro', isa => 'Str', request_name => 'control', traits => ['NameInRequest']);
   has StartToFireTimeout => (is => 'ro', isa => 'Str', request_name => 'startToFireTimeout', traits => ['NameInRequest'], required => 1);
   has TimerId => (is => 'ro', isa => 'Str', request_name => 'timerId', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

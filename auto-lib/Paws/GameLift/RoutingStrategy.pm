@@ -3,6 +3,7 @@ package Paws::GameLift::RoutingStrategy;
   has FleetId => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

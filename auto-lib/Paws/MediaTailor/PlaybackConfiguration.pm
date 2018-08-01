@@ -5,6 +5,7 @@ package Paws::MediaTailor::PlaybackConfiguration;
   has Name => (is => 'ro', isa => 'Str');
   has SlateAdUrl => (is => 'ro', isa => 'Str');
   has VideoContentSourceUrl => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

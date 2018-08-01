@@ -6,6 +6,7 @@ package Paws::Route53::GeoLocationDetails;
   has CountryName => (is => 'ro', isa => 'Str');
   has SubdivisionCode => (is => 'ro', isa => 'Str');
   has SubdivisionName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

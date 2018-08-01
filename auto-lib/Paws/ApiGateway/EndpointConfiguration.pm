@@ -1,6 +1,7 @@
 package Paws::ApiGateway::EndpointConfiguration;
   use Moose;
   has Types => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'types', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -16,6 +16,7 @@ package Paws::Glue::JobRun;
   has StartedOn => (is => 'ro', isa => 'Str');
   has Timeout => (is => 'ro', isa => 'Int');
   has TriggerName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

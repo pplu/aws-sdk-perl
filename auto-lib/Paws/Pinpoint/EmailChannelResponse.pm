@@ -14,6 +14,7 @@ package Paws::Pinpoint::EmailChannelResponse;
   has Platform => (is => 'ro', isa => 'Str');
   has RoleArn => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

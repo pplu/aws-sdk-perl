@@ -2,6 +2,7 @@ package Paws::MediaLive::AudioSelector;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has SelectorSettings => (is => 'ro', isa => 'Paws::MediaLive::AudioSelectorSettings', request_name => 'selectorSettings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -18,6 +18,7 @@ package Paws::Lightsail::Instance;
   has State => (is => 'ro', isa => 'Paws::Lightsail::InstanceState', request_name => 'state', traits => ['NameInRequest']);
   has SupportCode => (is => 'ro', isa => 'Str', request_name => 'supportCode', traits => ['NameInRequest']);
   has Username => (is => 'ro', isa => 'Str', request_name => 'username', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

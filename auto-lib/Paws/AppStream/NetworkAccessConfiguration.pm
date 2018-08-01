@@ -2,6 +2,7 @@ package Paws::AppStream::NetworkAccessConfiguration;
   use Moose;
   has EniId => (is => 'ro', isa => 'Str');
   has EniPrivateIpAddress => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

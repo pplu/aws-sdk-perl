@@ -2,6 +2,7 @@ package Paws::Config::AggregateComplianceCount;
   use Moose;
   has ComplianceSummary => (is => 'ro', isa => 'Paws::Config::ComplianceSummary');
   has GroupName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

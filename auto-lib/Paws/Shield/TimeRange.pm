@@ -2,6 +2,7 @@ package Paws::Shield::TimeRange;
   use Moose;
   has FromInclusive => (is => 'ro', isa => 'Str');
   has ToExclusive => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

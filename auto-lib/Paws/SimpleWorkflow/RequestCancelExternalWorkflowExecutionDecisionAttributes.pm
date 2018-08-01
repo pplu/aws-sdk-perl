@@ -3,6 +3,7 @@ package Paws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionDecisionAttr
   has Control => (is => 'ro', isa => 'Str', request_name => 'control', traits => ['NameInRequest']);
   has RunId => (is => 'ro', isa => 'Str', request_name => 'runId', traits => ['NameInRequest']);
   has WorkflowId => (is => 'ro', isa => 'Str', request_name => 'workflowId', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

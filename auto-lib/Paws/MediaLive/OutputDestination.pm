@@ -2,6 +2,7 @@ package Paws::MediaLive::OutputDestination;
   use Moose;
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
   has Settings => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::OutputDestinationSettings]', request_name => 'settings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

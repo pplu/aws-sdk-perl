@@ -2,6 +2,7 @@ package Paws::IoT::ThingTypeProperties;
   use Moose;
   has SearchableAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'searchableAttributes', traits => ['NameInRequest']);
   has ThingTypeDescription => (is => 'ro', isa => 'Str', request_name => 'thingTypeDescription', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -13,6 +13,7 @@ package Paws::MediaConvert::Job;
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has Timing => (is => 'ro', isa => 'Paws::MediaConvert::Timing', request_name => 'timing', traits => ['NameInRequest']);
   has UserMetadata => (is => 'ro', isa => 'Paws::MediaConvert::__mapOf__string', request_name => 'userMetadata', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

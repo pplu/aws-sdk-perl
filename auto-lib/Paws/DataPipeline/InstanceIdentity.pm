@@ -2,6 +2,7 @@ package Paws::DataPipeline::InstanceIdentity;
   use Moose;
   has Document => (is => 'ro', isa => 'Str', request_name => 'document', traits => ['NameInRequest']);
   has Signature => (is => 'ro', isa => 'Str', request_name => 'signature', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

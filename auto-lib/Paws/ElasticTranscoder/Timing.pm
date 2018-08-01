@@ -3,6 +3,7 @@ package Paws::ElasticTranscoder::Timing;
   has FinishTimeMillis => (is => 'ro', isa => 'Int');
   has StartTimeMillis => (is => 'ro', isa => 'Int');
   has SubmitTimeMillis => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

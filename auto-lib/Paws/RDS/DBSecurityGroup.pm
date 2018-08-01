@@ -7,6 +7,7 @@ package Paws::RDS::DBSecurityGroup;
   has IPRanges => (is => 'ro', isa => 'ArrayRef[Paws::RDS::IPRange]', request_name => 'IPRange', traits => ['NameInRequest']);
   has OwnerId => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

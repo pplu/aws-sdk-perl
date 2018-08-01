@@ -2,6 +2,7 @@ package Paws::AppSync::ElasticsearchDataSourceConfig;
   use Moose;
   has AwsRegion => (is => 'ro', isa => 'Str', request_name => 'awsRegion', traits => ['NameInRequest'], required => 1);
   has Endpoint => (is => 'ro', isa => 'Str', request_name => 'endpoint', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::Glacier::SelectParameters;
   has ExpressionType => (is => 'ro', isa => 'Str');
   has InputSerialization => (is => 'ro', isa => 'Paws::Glacier::InputSerialization');
   has OutputSerialization => (is => 'ro', isa => 'Paws::Glacier::OutputSerialization');
+
 1;
 
 ### main pod documentation begin ###

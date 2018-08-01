@@ -6,6 +6,7 @@ package Paws::CloudFormation::StackResourceSummary;
   has ResourceStatus => (is => 'ro', isa => 'Str', required => 1);
   has ResourceStatusReason => (is => 'ro', isa => 'Str');
   has ResourceType => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

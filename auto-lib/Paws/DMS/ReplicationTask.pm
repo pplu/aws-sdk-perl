@@ -17,6 +17,7 @@ package Paws::DMS::ReplicationTask;
   has StopReason => (is => 'ro', isa => 'Str');
   has TableMappings => (is => 'ro', isa => 'Str');
   has TargetEndpointArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

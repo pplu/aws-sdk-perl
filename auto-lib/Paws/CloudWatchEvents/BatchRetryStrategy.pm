@@ -1,6 +1,7 @@
 package Paws::CloudWatchEvents::BatchRetryStrategy;
   use Moose;
   has Attempts => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

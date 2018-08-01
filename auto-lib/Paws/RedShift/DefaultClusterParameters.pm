@@ -3,6 +3,7 @@ package Paws::RedShift::DefaultClusterParameters;
   has Marker => (is => 'ro', isa => 'Str');
   has ParameterGroupFamily => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Parameter]', request_name => 'Parameter', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

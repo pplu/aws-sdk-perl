@@ -3,6 +3,7 @@ package Paws::Glue::BatchStopJobRunError;
   has ErrorDetail => (is => 'ro', isa => 'Paws::Glue::ErrorDetail');
   has JobName => (is => 'ro', isa => 'Str');
   has JobRunId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

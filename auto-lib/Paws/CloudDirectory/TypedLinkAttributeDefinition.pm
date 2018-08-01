@@ -6,6 +6,7 @@ package Paws::CloudDirectory::TypedLinkAttributeDefinition;
   has RequiredBehavior => (is => 'ro', isa => 'Str', required => 1);
   has Rules => (is => 'ro', isa => 'Paws::CloudDirectory::RuleMap');
   has Type => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

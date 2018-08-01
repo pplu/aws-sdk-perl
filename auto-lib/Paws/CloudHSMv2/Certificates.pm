@@ -5,6 +5,7 @@ package Paws::CloudHSMv2::Certificates;
   has ClusterCsr => (is => 'ro', isa => 'Str');
   has HsmCertificate => (is => 'ro', isa => 'Str');
   has ManufacturerHardwareCertificate => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

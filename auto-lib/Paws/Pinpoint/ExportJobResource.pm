@@ -4,6 +4,7 @@ package Paws::Pinpoint::ExportJobResource;
   has S3UrlPrefix => (is => 'ro', isa => 'Str');
   has SegmentId => (is => 'ro', isa => 'Str');
   has SegmentVersion => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

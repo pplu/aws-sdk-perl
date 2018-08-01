@@ -4,6 +4,7 @@ package Paws::RedShift::EventInfoMap;
   has EventDescription => (is => 'ro', isa => 'Str');
   has EventId => (is => 'ro', isa => 'Str');
   has Severity => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

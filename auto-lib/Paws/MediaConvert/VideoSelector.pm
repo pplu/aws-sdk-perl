@@ -5,6 +5,7 @@ package Paws::MediaConvert::VideoSelector;
   has Hdr10Metadata => (is => 'ro', isa => 'Paws::MediaConvert::Hdr10Metadata', request_name => 'hdr10Metadata', traits => ['NameInRequest']);
   has Pid => (is => 'ro', isa => 'Int', request_name => 'pid', traits => ['NameInRequest']);
   has ProgramNumber => (is => 'ro', isa => 'Int', request_name => 'programNumber', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

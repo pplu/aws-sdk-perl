@@ -335,7 +335,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ],                                          # OPTIONAL
                 CaptionDescriptions => [
                   {
-                    CaptionSelectorName => 'My__stringMin1',    # min: 1
+                    CaptionSelectorName => 'My__stringMin1',  # min: 1; OPTIONAL
                     DestinationSettings => {
                       DestinationType => 'BURN_IN'
                       , # values: BURN_IN, DVB_SUB, EMBEDDED, SCC, SRT, TELETEXT, TTML, WEBVTT
@@ -524,7 +524,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },    # OPTIONAL
                 },    # OPTIONAL
                 Extension      => 'My__string',
-                NameModifier   => 'My__stringMin1',    # min: 1
+                NameModifier   => 'My__stringMin1',    # min: 1; OPTIONAL
                 OutputSettings => {
                   HlsSettings => {
                     AudioGroupId       => 'My__string',
@@ -868,7 +868,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             AudioSelectorGroups => {
               'My__string' => {
                 AudioSelectorNames => [
-                  'My__stringMin1', ...    # min: 1
+                  'My__stringMin1', ...    # min: 1; OPTIONAL
                 ],
 
               },
@@ -957,13 +957,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             FilterStrength => 1,        # min: -5, max: 5; OPTIONAL
             InputClippings => [
               {
-                EndTimecode   => 'My__stringPattern010920405090509092',
-                StartTimecode => 'My__stringPattern010920405090509092',
+                EndTimecode => 'My__stringPattern010920405090509092', # OPTIONAL
+                StartTimecode =>
+                  'My__stringPattern010920405090509092',              # OPTIONAL
               },
               ...
-            ],                          # OPTIONAL
-            ProgramNumber => 1,         # min: 1, max: 2147483647; OPTIONAL
-            PsiControl => 'IGNORE_PSI', # values: IGNORE_PSI, USE_PSI; OPTIONAL
+            ],                                                        # OPTIONAL
+            ProgramNumber => 1,    # min: 1, max: 2147483647; OPTIONAL
+            PsiControl => 'IGNORE_PSI',  # values: IGNORE_PSI, USE_PSI; OPTIONAL
             TimecodeSource => 'EMBEDDED'
             ,    # values: EMBEDDED, ZEROBASED, SPECIFIEDSTART; OPTIONAL
             VideoSelector => {
@@ -995,17 +996,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           DistributorId => 'My__string',
         },    # OPTIONAL
         TimecodeConfig => {
-          Anchor => 'My__stringPattern010920405090509092',
+          Anchor => 'My__stringPattern010920405090509092',    # OPTIONAL
           Source =>
             'EMBEDDED',  # values: EMBEDDED, ZEROBASED, SPECIFIEDSTART; OPTIONAL
-          Start           => 'My__stringPattern010920405090509092',
+          Start           => 'My__stringPattern010920405090509092',   # OPTIONAL
           TimestampOffset => 'My__stringPattern0940191020191209301',  # OPTIONAL
         },    # OPTIONAL
         TimedMetadataInsertion => {
           Id3Insertions => [
             {
               Id3      => 'My__stringPatternAZaZ0902',
-              Timecode => 'My__stringPattern010920405090509092',
+              Timecode => 'My__stringPattern010920405090509092',    # OPTIONAL
 
             },
             ...

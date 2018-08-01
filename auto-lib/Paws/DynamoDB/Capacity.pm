@@ -1,6 +1,7 @@
 package Paws::DynamoDB::Capacity;
   use Moose;
   has CapacityUnits => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

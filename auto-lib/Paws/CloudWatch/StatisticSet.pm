@@ -4,6 +4,7 @@ package Paws::CloudWatch::StatisticSet;
   has Minimum => (is => 'ro', isa => 'Num', required => 1);
   has SampleCount => (is => 'ro', isa => 'Num', required => 1);
   has Sum => (is => 'ro', isa => 'Num', required => 1);
+
 1;
 
 ### main pod documentation begin ###

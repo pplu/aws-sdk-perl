@@ -1,6 +1,7 @@
 package Paws::ES::DomainInfo;
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

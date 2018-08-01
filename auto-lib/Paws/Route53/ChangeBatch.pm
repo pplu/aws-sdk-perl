@@ -2,6 +2,7 @@ package Paws::Route53::ChangeBatch;
   use Moose;
   has Changes => (is => 'ro', isa => 'ArrayRef[Paws::Route53::Change]', request_name => 'Change', traits => ['NameInRequest'], required => 1);
   has Comment => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::Pinpoint::CampaignState;
   use Moose;
   has CampaignStatus => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

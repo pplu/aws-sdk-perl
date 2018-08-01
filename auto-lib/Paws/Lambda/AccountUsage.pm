@@ -2,6 +2,7 @@ package Paws::Lambda::AccountUsage;
   use Moose;
   has FunctionCount => (is => 'ro', isa => 'Int');
   has TotalCodeSize => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

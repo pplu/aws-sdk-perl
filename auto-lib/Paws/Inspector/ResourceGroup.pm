@@ -3,6 +3,7 @@ package Paws::Inspector::ResourceGroup;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest'], required => 1);
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest'], required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::ResourceGroupTag]', request_name => 'tags', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

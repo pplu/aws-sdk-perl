@@ -2,6 +2,7 @@ package Paws::EMR::AutoScalingPolicyStatus;
   use Moose;
   has State => (is => 'ro', isa => 'Str');
   has StateChangeReason => (is => 'ro', isa => 'Paws::EMR::AutoScalingPolicyStateChangeReason');
+
 1;
 
 ### main pod documentation begin ###

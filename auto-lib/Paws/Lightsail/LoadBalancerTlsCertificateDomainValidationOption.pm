@@ -2,6 +2,7 @@ package Paws::Lightsail::LoadBalancerTlsCertificateDomainValidationOption;
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', request_name => 'domainName', traits => ['NameInRequest']);
   has ValidationStatus => (is => 'ro', isa => 'Str', request_name => 'validationStatus', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

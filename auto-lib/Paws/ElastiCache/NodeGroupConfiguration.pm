@@ -4,6 +4,7 @@ package Paws::ElastiCache::NodeGroupConfiguration;
   has ReplicaAvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'AvailabilityZone', traits => ['NameInRequest']);
   has ReplicaCount => (is => 'ro', isa => 'Int');
   has Slots => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

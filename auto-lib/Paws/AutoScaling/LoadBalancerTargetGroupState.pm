@@ -2,6 +2,7 @@ package Paws::AutoScaling::LoadBalancerTargetGroupState;
   use Moose;
   has LoadBalancerTargetGroupARN => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

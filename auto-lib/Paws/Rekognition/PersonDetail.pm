@@ -3,6 +3,7 @@ package Paws::Rekognition::PersonDetail;
   has BoundingBox => (is => 'ro', isa => 'Paws::Rekognition::BoundingBox');
   has Face => (is => 'ro', isa => 'Paws::Rekognition::FaceDetail');
   has Index => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

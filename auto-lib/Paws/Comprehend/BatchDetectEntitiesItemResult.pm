@@ -2,6 +2,7 @@ package Paws::Comprehend::BatchDetectEntitiesItemResult;
   use Moose;
   has Entities => (is => 'ro', isa => 'ArrayRef[Paws::Comprehend::Entity]');
   has Index => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

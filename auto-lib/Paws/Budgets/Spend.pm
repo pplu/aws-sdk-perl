@@ -2,6 +2,7 @@ package Paws::Budgets::Spend;
   use Moose;
   has Amount => (is => 'ro', isa => 'Str', required => 1);
   has Unit => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

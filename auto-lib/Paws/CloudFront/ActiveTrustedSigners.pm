@@ -3,6 +3,7 @@ package Paws::CloudFront::ActiveTrustedSigners;
   has Enabled => (is => 'ro', isa => 'Bool', required => 1);
   has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::Signer]', request_name => 'Signer', traits => ['NameInRequest']);
   has Quantity => (is => 'ro', isa => 'Int', required => 1);
+
 1;
 
 ### main pod documentation begin ###

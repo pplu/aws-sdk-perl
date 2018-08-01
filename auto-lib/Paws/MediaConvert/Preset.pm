@@ -8,6 +8,7 @@ package Paws::MediaConvert::Preset;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has Settings => (is => 'ro', isa => 'Paws::MediaConvert::PresetSettings', request_name => 'settings', traits => ['NameInRequest'], required => 1);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

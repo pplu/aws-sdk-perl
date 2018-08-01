@@ -5,6 +5,7 @@ package Paws::WorkDocs::UserMetadata;
   has Id => (is => 'ro', isa => 'Str');
   has Surname => (is => 'ro', isa => 'Str');
   has Username => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -10,6 +10,7 @@ package Paws::DS::Trust;
   has TrustState => (is => 'ro', isa => 'Str');
   has TrustStateReason => (is => 'ro', isa => 'Str');
   has TrustType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

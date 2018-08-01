@@ -2,6 +2,7 @@ package Paws::CloudFront::QueryArgProfiles;
   use Moose;
   has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::QueryArgProfile]', request_name => 'QueryArgProfile', traits => ['NameInRequest']);
   has Quantity => (is => 'ro', isa => 'Int', required => 1);
+
 1;
 
 ### main pod documentation begin ###

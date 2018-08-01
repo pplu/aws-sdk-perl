@@ -8,6 +8,7 @@ package Paws::AutoScalingPlans::ScalingPlanResource;
   has ScalingStatusCode => (is => 'ro', isa => 'Str', required => 1);
   has ScalingStatusMessage => (is => 'ro', isa => 'Str');
   has ServiceNamespace => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

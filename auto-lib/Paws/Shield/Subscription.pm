@@ -5,6 +5,7 @@ package Paws::Shield::Subscription;
   has Limits => (is => 'ro', isa => 'ArrayRef[Paws::Shield::Limit]');
   has StartTime => (is => 'ro', isa => 'Str');
   has TimeCommitmentInSeconds => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

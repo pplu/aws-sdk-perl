@@ -2,6 +2,7 @@ package Paws::MQ::BrokerInstance;
   use Moose;
   has ConsoleURL => (is => 'ro', isa => 'Str', request_name => 'consoleURL', traits => ['NameInRequest']);
   has Endpoints => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'endpoints', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

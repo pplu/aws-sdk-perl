@@ -4,6 +4,7 @@ package Paws::ElastiCache::PendingModifiedValues;
   has CacheNodeType => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has NumCacheNodes => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

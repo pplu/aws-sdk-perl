@@ -4,6 +4,7 @@ package Paws::CostExplorer::CoverageHours;
   has OnDemandHours => (is => 'ro', isa => 'Str');
   has ReservedHours => (is => 'ro', isa => 'Str');
   has TotalRunningHours => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

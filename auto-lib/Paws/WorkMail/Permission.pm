@@ -3,6 +3,7 @@ package Paws::WorkMail::Permission;
   has GranteeId => (is => 'ro', isa => 'Str', required => 1);
   has GranteeType => (is => 'ro', isa => 'Str', required => 1);
   has PermissionValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

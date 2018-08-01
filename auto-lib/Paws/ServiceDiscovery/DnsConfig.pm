@@ -3,6 +3,7 @@ package Paws::ServiceDiscovery::DnsConfig;
   has DnsRecords => (is => 'ro', isa => 'ArrayRef[Paws::ServiceDiscovery::DnsRecord]', required => 1);
   has NamespaceId => (is => 'ro', isa => 'Str', required => 1);
   has RoutingPolicy => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

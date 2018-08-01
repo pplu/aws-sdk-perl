@@ -2,6 +2,7 @@ package Paws::Pinpoint::NumberValidateRequest;
   use Moose;
   has IsoCountryCode => (is => 'ro', isa => 'Str');
   has PhoneNumber => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

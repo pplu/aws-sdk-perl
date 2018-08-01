@@ -6,6 +6,7 @@ package Paws::Cloud9::Environment;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has OwnerArn => (is => 'ro', isa => 'Str', request_name => 'ownerArn', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

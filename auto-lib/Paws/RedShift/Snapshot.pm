@@ -15,7 +15,6 @@ package Paws::RedShift::Snapshot;
   has EnhancedVpcRouting => (is => 'ro', isa => 'Bool');
   has EstimatedSecondsToCompletion => (is => 'ro', isa => 'Int');
   has KmsKeyId => (is => 'ro', isa => 'Str');
-  has MaintenanceTrackName => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int');
@@ -30,6 +29,7 @@ package Paws::RedShift::Snapshot;
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]', request_name => 'Tag', traits => ['NameInRequest']);
   has TotalBackupSizeInMegaBytes => (is => 'ro', isa => 'Num');
   has VpcId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###
@@ -158,11 +158,6 @@ complete. Returns C<0> for a completed backup.
   The AWS Key Management Service (KMS) key ID of the encryption key that
 was used to encrypt data in the cluster from which the snapshot was
 taken.
-
-
-=head2 MaintenanceTrackName => Str
-
-  The name of the maintenance track for the snapshot.
 
 
 =head2 MasterUsername => Str

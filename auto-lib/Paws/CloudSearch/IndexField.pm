@@ -13,6 +13,7 @@ package Paws::CloudSearch::IndexField;
   has LiteralOptions => (is => 'ro', isa => 'Paws::CloudSearch::LiteralOptions');
   has TextArrayOptions => (is => 'ro', isa => 'Paws::CloudSearch::TextArrayOptions');
   has TextOptions => (is => 'ro', isa => 'Paws::CloudSearch::TextOptions');
+
 1;
 
 ### main pod documentation begin ###

@@ -19,7 +19,6 @@ package Paws::RedShift::CreateCluster;
   has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
   has IamRoles => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has KmsKeyId => (is => 'ro', isa => 'Str');
-  has MaintenanceTrackName => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str', required => 1);
   has MasterUserPassword => (is => 'ro', isa => 'Str', required => 1);
   has NodeType => (is => 'ro', isa => 'Str', required => 1);
@@ -76,7 +75,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       HsmConfigurationIdentifier       => 'MyString',             # OPTIONAL
       IamRoles                         => [ 'MyString', ... ],    # OPTIONAL
       KmsKeyId                         => 'MyString',             # OPTIONAL
-      MaintenanceTrackName             => 'MyString',             # OPTIONAL
       NumberOfNodes                    => 1,                      # OPTIONAL
       Port                             => 1,                      # OPTIONAL
       PreferredMaintenanceWindow       => 'MyString',             # OPTIONAL
@@ -376,14 +374,6 @@ A cluster can have up to 10 IAM roles associated with it at any time.
 
 The AWS Key Management Service (KMS) key ID of the encryption key that
 you want to use to encrypt data in the cluster.
-
-
-
-=head2 MaintenanceTrackName => Str
-
-An optional parameter for the name of the maintenance track for the
-cluster. If you don't provide a maintenance track name, the cluster is
-assigned to the C<current> track.
 
 
 

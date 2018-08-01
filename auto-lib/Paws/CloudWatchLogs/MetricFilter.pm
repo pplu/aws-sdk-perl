@@ -5,6 +5,7 @@ package Paws::CloudWatchLogs::MetricFilter;
   has FilterPattern => (is => 'ro', isa => 'Str', request_name => 'filterPattern', traits => ['NameInRequest']);
   has LogGroupName => (is => 'ro', isa => 'Str', request_name => 'logGroupName', traits => ['NameInRequest']);
   has MetricTransformations => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::MetricTransformation]', request_name => 'metricTransformations', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

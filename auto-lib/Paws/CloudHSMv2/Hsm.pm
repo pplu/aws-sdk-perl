@@ -8,6 +8,7 @@ package Paws::CloudHSMv2::Hsm;
   has State => (is => 'ro', isa => 'Str');
   has StateMessage => (is => 'ro', isa => 'Str');
   has SubnetId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

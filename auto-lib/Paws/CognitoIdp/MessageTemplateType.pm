@@ -3,6 +3,7 @@ package Paws::CognitoIdp::MessageTemplateType;
   has EmailMessage => (is => 'ro', isa => 'Str');
   has EmailSubject => (is => 'ro', isa => 'Str');
   has SMSMessage => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

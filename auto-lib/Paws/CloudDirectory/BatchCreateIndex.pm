@@ -5,6 +5,7 @@ package Paws::CloudDirectory::BatchCreateIndex;
   has LinkName => (is => 'ro', isa => 'Str');
   has OrderedIndexedAttributeList => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::AttributeKey]', required => 1);
   has ParentReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference');
+
 1;
 
 ### main pod documentation begin ###

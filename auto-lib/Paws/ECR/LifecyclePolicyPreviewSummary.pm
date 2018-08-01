@@ -1,6 +1,7 @@
 package Paws::ECR::LifecyclePolicyPreviewSummary;
   use Moose;
   has ExpiringImageTotalCount => (is => 'ro', isa => 'Int', request_name => 'expiringImageTotalCount', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

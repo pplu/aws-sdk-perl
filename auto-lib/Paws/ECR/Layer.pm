@@ -4,6 +4,7 @@ package Paws::ECR::Layer;
   has LayerDigest => (is => 'ro', isa => 'Str', request_name => 'layerDigest', traits => ['NameInRequest']);
   has LayerSize => (is => 'ro', isa => 'Int', request_name => 'layerSize', traits => ['NameInRequest']);
   has MediaType => (is => 'ro', isa => 'Str', request_name => 'mediaType', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

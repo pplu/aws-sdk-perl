@@ -9,6 +9,7 @@ package Paws::ElasticTranscoder::Preset;
   has Thumbnails => (is => 'ro', isa => 'Paws::ElasticTranscoder::Thumbnails');
   has Type => (is => 'ro', isa => 'Str');
   has Video => (is => 'ro', isa => 'Paws::ElasticTranscoder::VideoParameters');
+
 1;
 
 ### main pod documentation begin ###

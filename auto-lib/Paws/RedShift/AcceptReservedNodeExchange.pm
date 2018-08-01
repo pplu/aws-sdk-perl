@@ -49,16 +49,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/red
 
 =head2 B<REQUIRED> ReservedNodeId => Str
 
-A string representing the node identifier of the DC1 Reserved Node to
-be exchanged.
+A string representing the identifier of the Reserved Node to be
+exchanged.
 
 
 
 =head2 B<REQUIRED> TargetReservedNodeOfferingId => Str
 
-The unique identifier of the DC2 Reserved Node offering to be used for
-the exchange. You can obtain the value for the parameter by calling
-GetReservedNodeExchangeOfferings
+The unique identifier of the Reserved Node offering to be used for the
+exchange.
 
 
 

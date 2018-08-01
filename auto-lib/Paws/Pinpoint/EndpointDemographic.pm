@@ -8,6 +8,7 @@ package Paws::Pinpoint::EndpointDemographic;
   has Platform => (is => 'ro', isa => 'Str');
   has PlatformVersion => (is => 'ro', isa => 'Str');
   has Timezone => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

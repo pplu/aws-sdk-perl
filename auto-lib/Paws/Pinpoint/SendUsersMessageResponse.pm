@@ -3,6 +3,7 @@ package Paws::Pinpoint::SendUsersMessageResponse;
   has ApplicationId => (is => 'ro', isa => 'Str');
   has RequestId => (is => 'ro', isa => 'Str');
   has Result => (is => 'ro', isa => 'Paws::Pinpoint::MapOfMapOfEndpointMessageResult');
+
 1;
 
 ### main pod documentation begin ###

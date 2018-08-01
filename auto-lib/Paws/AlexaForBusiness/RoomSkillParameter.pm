@@ -2,6 +2,7 @@ package Paws::AlexaForBusiness::RoomSkillParameter;
   use Moose;
   has ParameterKey => (is => 'ro', isa => 'Str', required => 1);
   has ParameterValue => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

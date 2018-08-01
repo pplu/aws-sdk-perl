@@ -1,6 +1,7 @@
 package Paws::RDS::Timezone;
   use Moose;
   has TimezoneName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

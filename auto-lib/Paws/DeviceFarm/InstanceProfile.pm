@@ -6,6 +6,7 @@ package Paws::DeviceFarm::InstanceProfile;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has PackageCleanup => (is => 'ro', isa => 'Bool', request_name => 'packageCleanup', traits => ['NameInRequest']);
   has RebootAfterUse => (is => 'ro', isa => 'Bool', request_name => 'rebootAfterUse', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

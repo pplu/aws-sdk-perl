@@ -8,6 +8,7 @@ package Paws::CodeCommit::Comment;
   has Deleted => (is => 'ro', isa => 'Bool', request_name => 'deleted', traits => ['NameInRequest']);
   has InReplyTo => (is => 'ro', isa => 'Str', request_name => 'inReplyTo', traits => ['NameInRequest']);
   has LastModifiedDate => (is => 'ro', isa => 'Str', request_name => 'lastModifiedDate', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

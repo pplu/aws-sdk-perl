@@ -6,6 +6,7 @@ package Paws::Glue::XMLClassifier;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has RowTag => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

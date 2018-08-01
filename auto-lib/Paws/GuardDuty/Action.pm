@@ -5,6 +5,7 @@ package Paws::GuardDuty::Action;
   has DnsRequestAction => (is => 'ro', isa => 'Paws::GuardDuty::DnsRequestAction', request_name => 'dnsRequestAction', traits => ['NameInRequest']);
   has NetworkConnectionAction => (is => 'ro', isa => 'Paws::GuardDuty::NetworkConnectionAction', request_name => 'networkConnectionAction', traits => ['NameInRequest']);
   has PortProbeAction => (is => 'ro', isa => 'Paws::GuardDuty::PortProbeAction', request_name => 'portProbeAction', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

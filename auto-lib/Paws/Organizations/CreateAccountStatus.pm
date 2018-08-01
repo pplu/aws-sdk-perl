@@ -7,6 +7,7 @@ package Paws::Organizations::CreateAccountStatus;
   has Id => (is => 'ro', isa => 'Str');
   has RequestedTimestamp => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

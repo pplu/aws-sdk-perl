@@ -3,6 +3,7 @@ package Paws::SageMaker::DeployedImage;
   has ResolutionTime => (is => 'ro', isa => 'Str');
   has ResolvedImage => (is => 'ro', isa => 'Str');
   has SpecifiedImage => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

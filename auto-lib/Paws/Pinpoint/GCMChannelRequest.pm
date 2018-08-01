@@ -2,6 +2,7 @@ package Paws::Pinpoint::GCMChannelRequest;
   use Moose;
   has ApiKey => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

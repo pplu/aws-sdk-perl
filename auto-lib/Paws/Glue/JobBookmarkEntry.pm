@@ -5,6 +5,7 @@ package Paws::Glue::JobBookmarkEntry;
   has JobName => (is => 'ro', isa => 'Str');
   has Run => (is => 'ro', isa => 'Int');
   has Version => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

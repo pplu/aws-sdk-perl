@@ -21,6 +21,7 @@ package Paws::RDS::OrderableDBInstanceOption;
   has SupportsPerformanceInsights => (is => 'ro', isa => 'Bool');
   has SupportsStorageEncryption => (is => 'ro', isa => 'Bool');
   has Vpc => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

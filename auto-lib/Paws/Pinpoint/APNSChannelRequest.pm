@@ -8,6 +8,7 @@ package Paws::Pinpoint::APNSChannelRequest;
   has TeamId => (is => 'ro', isa => 'Str');
   has TokenKey => (is => 'ro', isa => 'Str');
   has TokenKeyId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

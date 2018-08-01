@@ -4,6 +4,7 @@ package Paws::ApiGateway::PatchOperation;
   has Op => (is => 'ro', isa => 'Str', request_name => 'op', traits => ['NameInRequest']);
   has Path => (is => 'ro', isa => 'Str', request_name => 'path', traits => ['NameInRequest']);
   has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

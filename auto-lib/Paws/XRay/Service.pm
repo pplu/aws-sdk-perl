@@ -13,6 +13,7 @@ package Paws::XRay::Service;
   has State => (is => 'ro', isa => 'Str');
   has SummaryStatistics => (is => 'ro', isa => 'Paws::XRay::ServiceStatistics');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

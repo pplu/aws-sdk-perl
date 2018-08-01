@@ -1,6 +1,7 @@
 package Paws::Pinpoint::SegmentBehaviors;
   use Moose;
   has Recency => (is => 'ro', isa => 'Paws::Pinpoint::RecencyDimension');
+
 1;
 
 ### main pod documentation begin ###

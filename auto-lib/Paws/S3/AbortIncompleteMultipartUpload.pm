@@ -1,6 +1,7 @@
 package Paws::S3::AbortIncompleteMultipartUpload;
   use Moose;
   has DaysAfterInitiation => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

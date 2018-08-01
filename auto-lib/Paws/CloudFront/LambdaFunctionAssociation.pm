@@ -2,6 +2,7 @@ package Paws::CloudFront::LambdaFunctionAssociation;
   use Moose;
   has EventType => (is => 'ro', isa => 'Str', required => 1);
   has LambdaFunctionARN => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

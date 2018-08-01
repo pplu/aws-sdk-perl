@@ -5,6 +5,7 @@ package Paws::S3::CORSRule;
   has AllowedOrigins => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'AllowedOrigin', traits => ['NameInRequest'], required => 1);
   has ExposeHeaders => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ExposeHeader', traits => ['NameInRequest']);
   has MaxAgeSeconds => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

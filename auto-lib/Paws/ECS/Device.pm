@@ -3,6 +3,7 @@ package Paws::ECS::Device;
   has ContainerPath => (is => 'ro', isa => 'Str', request_name => 'containerPath', traits => ['NameInRequest']);
   has HostPath => (is => 'ro', isa => 'Str', request_name => 'hostPath', traits => ['NameInRequest'], required => 1);
   has Permissions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'permissions', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -6,6 +6,7 @@ package Paws::WAFRegional::HTTPRequest;
   has HTTPVersion => (is => 'ro', isa => 'Str');
   has Method => (is => 'ro', isa => 'Str');
   has URI => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::Firehose::ElasticsearchRetryOptions;
   use Moose;
   has DurationInSeconds => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

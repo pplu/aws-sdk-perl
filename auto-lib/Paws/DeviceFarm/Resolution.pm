@@ -2,6 +2,7 @@ package Paws::DeviceFarm::Resolution;
   use Moose;
   has Height => (is => 'ro', isa => 'Int', request_name => 'height', traits => ['NameInRequest']);
   has Width => (is => 'ro', isa => 'Int', request_name => 'width', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

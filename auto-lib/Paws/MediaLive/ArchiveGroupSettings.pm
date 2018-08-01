@@ -2,6 +2,7 @@ package Paws::MediaLive::ArchiveGroupSettings;
   use Moose;
   has Destination => (is => 'ro', isa => 'Paws::MediaLive::OutputLocationRef', request_name => 'destination', traits => ['NameInRequest'], required => 1);
   has RolloverInterval => (is => 'ro', isa => 'Int', request_name => 'rolloverInterval', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

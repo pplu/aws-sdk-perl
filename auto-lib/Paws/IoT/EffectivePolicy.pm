@@ -3,6 +3,7 @@ package Paws::IoT::EffectivePolicy;
   has PolicyArn => (is => 'ro', isa => 'Str', request_name => 'policyArn', traits => ['NameInRequest']);
   has PolicyDocument => (is => 'ro', isa => 'Str', request_name => 'policyDocument', traits => ['NameInRequest']);
   has PolicyName => (is => 'ro', isa => 'Str', request_name => 'policyName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::S3::OutputSerialization;
   use Moose;
   has CSV => (is => 'ro', isa => 'Paws::S3::CSVOutput');
   has JSON => (is => 'ro', isa => 'Paws::S3::JSONOutput');
+
 1;
 
 ### main pod documentation begin ###

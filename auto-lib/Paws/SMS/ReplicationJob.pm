@@ -6,7 +6,7 @@ package Paws::SMS::ReplicationJob;
   has LicenseType => (is => 'ro', isa => 'Str', request_name => 'licenseType', traits => ['NameInRequest']);
   has NextReplicationRunStartTime => (is => 'ro', isa => 'Str', request_name => 'nextReplicationRunStartTime', traits => ['NameInRequest']);
   has ReplicationJobId => (is => 'ro', isa => 'Str', request_name => 'replicationJobId', traits => ['NameInRequest']);
-  has ReplicationRunList => (is => 'ro', isa => 'ArrayRef[Paws::SMS::ReplicationRun]', request_name => 'item', request_name => 'replicationRunList', traits => ['NameInRequest','NameInRequest']);
+  has ReplicationRunList => (is => 'ro', isa => 'ArrayRef[Paws::SMS::ReplicationRun]', request_name => 'replicationRunList', traits => ['NameInRequest']);
   has RoleName => (is => 'ro', isa => 'Str', request_name => 'roleName', traits => ['NameInRequest']);
   has SeedReplicationTime => (is => 'ro', isa => 'Str', request_name => 'seedReplicationTime', traits => ['NameInRequest']);
   has ServerId => (is => 'ro', isa => 'Str', request_name => 'serverId', traits => ['NameInRequest']);
@@ -14,6 +14,7 @@ package Paws::SMS::ReplicationJob;
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
   has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest']);
   has VmServer => (is => 'ro', isa => 'Paws::SMS::VmServer', request_name => 'vmServer', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

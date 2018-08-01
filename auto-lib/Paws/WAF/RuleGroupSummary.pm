@@ -2,6 +2,7 @@ package Paws::WAF::RuleGroupSummary;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has RuleGroupId => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

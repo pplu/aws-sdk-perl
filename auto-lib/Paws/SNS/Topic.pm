@@ -1,6 +1,7 @@
 package Paws::SNS::Topic;
   use Moose;
   has TopicArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

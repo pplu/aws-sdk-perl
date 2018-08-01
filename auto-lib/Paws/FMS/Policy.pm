@@ -8,6 +8,7 @@ package Paws::FMS::Policy;
   has ResourceTags => (is => 'ro', isa => 'ArrayRef[Paws::FMS::ResourceTag]');
   has ResourceType => (is => 'ro', isa => 'Str', required => 1);
   has SecurityServicePolicyData => (is => 'ro', isa => 'Paws::FMS::SecurityServicePolicyData', required => 1);
+
 1;
 
 ### main pod documentation begin ###

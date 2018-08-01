@@ -3,6 +3,7 @@ package Paws::Route53::QueryLoggingConfig;
   has CloudWatchLogsLogGroupArn => (is => 'ro', isa => 'Str', required => 1);
   has HostedZoneId => (is => 'ro', isa => 'Str', required => 1);
   has Id => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::IoT::LogTargetConfiguration;
   use Moose;
   has LogLevel => (is => 'ro', isa => 'Str', request_name => 'logLevel', traits => ['NameInRequest']);
   has LogTarget => (is => 'ro', isa => 'Paws::IoT::LogTarget', request_name => 'logTarget', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

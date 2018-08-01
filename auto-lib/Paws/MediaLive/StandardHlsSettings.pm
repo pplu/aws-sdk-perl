@@ -2,6 +2,7 @@ package Paws::MediaLive::StandardHlsSettings;
   use Moose;
   has AudioRenditionSets => (is => 'ro', isa => 'Str', request_name => 'audioRenditionSets', traits => ['NameInRequest']);
   has M3u8Settings => (is => 'ro', isa => 'Paws::MediaLive::M3u8Settings', request_name => 'm3u8Settings', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::S3::Redirect;
   has Protocol => (is => 'ro', isa => 'Str');
   has ReplaceKeyPrefixWith => (is => 'ro', isa => 'Str');
   has ReplaceKeyWith => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

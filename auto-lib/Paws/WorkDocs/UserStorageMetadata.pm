@@ -2,6 +2,7 @@ package Paws::WorkDocs::UserStorageMetadata;
   use Moose;
   has StorageRule => (is => 'ro', isa => 'Paws::WorkDocs::StorageRuleType');
   has StorageUtilizedInBytes => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

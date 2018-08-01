@@ -5,6 +5,7 @@ package Paws::SES::SendDataPoint;
   has DeliveryAttempts => (is => 'ro', isa => 'Int');
   has Rejects => (is => 'ro', isa => 'Int');
   has Timestamp => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

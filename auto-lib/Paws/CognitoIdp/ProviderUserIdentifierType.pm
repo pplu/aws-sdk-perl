@@ -3,6 +3,7 @@ package Paws::CognitoIdp::ProviderUserIdentifierType;
   has ProviderAttributeName => (is => 'ro', isa => 'Str');
   has ProviderAttributeValue => (is => 'ro', isa => 'Str');
   has ProviderName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

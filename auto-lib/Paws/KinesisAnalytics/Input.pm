@@ -6,6 +6,7 @@ package Paws::KinesisAnalytics::Input;
   has KinesisFirehoseInput => (is => 'ro', isa => 'Paws::KinesisAnalytics::KinesisFirehoseInput');
   has KinesisStreamsInput => (is => 'ro', isa => 'Paws::KinesisAnalytics::KinesisStreamsInput');
   has NamePrefix => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

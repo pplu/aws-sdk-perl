@@ -4,6 +4,7 @@ package Paws::DynamoDB::RestoreSummary;
   has RestoreInProgress => (is => 'ro', isa => 'Bool', required => 1);
   has SourceBackupArn => (is => 'ro', isa => 'Str');
   has SourceTableArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

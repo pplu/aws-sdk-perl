@@ -4,6 +4,7 @@ package Paws::StorageGateway::VolumeRecoveryPointInfo;
   has VolumeRecoveryPointTime => (is => 'ro', isa => 'Str');
   has VolumeSizeInBytes => (is => 'ro', isa => 'Int');
   has VolumeUsageInBytes => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

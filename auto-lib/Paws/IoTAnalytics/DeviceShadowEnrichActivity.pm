@@ -5,6 +5,7 @@ package Paws::IoTAnalytics::DeviceShadowEnrichActivity;
   has Next => (is => 'ro', isa => 'Str', request_name => 'next', traits => ['NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
   has ThingName => (is => 'ro', isa => 'Str', request_name => 'thingName', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

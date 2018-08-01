@@ -2,6 +2,7 @@ package Paws::Rekognition::NotificationChannel;
   use Moose;
   has RoleArn => (is => 'ro', isa => 'Str', required => 1);
   has SNSTopicArn => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

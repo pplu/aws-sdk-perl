@@ -4,6 +4,7 @@ package Paws::DeviceFarm::ExecutionConfiguration;
   has AppPackagesCleanup => (is => 'ro', isa => 'Bool', request_name => 'appPackagesCleanup', traits => ['NameInRequest']);
   has JobTimeoutMinutes => (is => 'ro', isa => 'Int', request_name => 'jobTimeoutMinutes', traits => ['NameInRequest']);
   has SkipAppResign => (is => 'ro', isa => 'Bool', request_name => 'skipAppResign', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::WorkDocs::UploadMetadata;
   use Moose;
   has SignedHeaders => (is => 'ro', isa => 'Paws::WorkDocs::SignedHeaderMap');
   has UploadUrl => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,9 @@
 
 package Paws::CloudFront::CreateInvalidationResult;
   use Moose;
-  has Invalidation => (is => 'ro', isa => 'Paws::CloudFront::Invalidation');
-  has Location => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Location');
+  has Invalidation => (is => 'ro', isa => 'Paws::CloudFront::Invalidation', traits => ['ParamInBody']);
+  has Location => (is => 'ro', isa => 'Str', header_name => 'Location', traits => ['ParamInHeader']);
+
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

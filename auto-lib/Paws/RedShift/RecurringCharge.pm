@@ -2,6 +2,7 @@ package Paws::RedShift::RecurringCharge;
   use Moose;
   has RecurringChargeAmount => (is => 'ro', isa => 'Num');
   has RecurringChargeFrequency => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

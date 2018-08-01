@@ -7,6 +7,7 @@ package Paws::Firehose::S3DestinationUpdate;
   has EncryptionConfiguration => (is => 'ro', isa => 'Paws::Firehose::EncryptionConfiguration');
   has Prefix => (is => 'ro', isa => 'Str');
   has RoleARN => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

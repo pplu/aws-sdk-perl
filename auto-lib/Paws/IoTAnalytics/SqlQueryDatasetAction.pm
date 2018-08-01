@@ -1,6 +1,7 @@
 package Paws::IoTAnalytics::SqlQueryDatasetAction;
   use Moose;
   has SqlQuery => (is => 'ro', isa => 'Str', request_name => 'sqlQuery', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

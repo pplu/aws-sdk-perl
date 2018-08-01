@@ -2,6 +2,7 @@ package Paws::CodeBuild::SourceAuth;
   use Moose;
   has Resource => (is => 'ro', isa => 'Str', request_name => 'resource', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::MediaLive::ListInputsResultModel;
   use Moose;
   has Inputs => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::Input]', request_name => 'inputs', traits => ['NameInRequest']);
   has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::MigrationHub::DiscoveredResource;
   use Moose;
   has ConfigurationId => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

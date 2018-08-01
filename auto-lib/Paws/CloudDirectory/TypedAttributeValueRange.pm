@@ -4,6 +4,7 @@ package Paws::CloudDirectory::TypedAttributeValueRange;
   has EndValue => (is => 'ro', isa => 'Paws::CloudDirectory::TypedAttributeValue');
   has StartMode => (is => 'ro', isa => 'Str', required => 1);
   has StartValue => (is => 'ro', isa => 'Paws::CloudDirectory::TypedAttributeValue');
+
 1;
 
 ### main pod documentation begin ###

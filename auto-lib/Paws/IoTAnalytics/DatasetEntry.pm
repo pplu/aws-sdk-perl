@@ -2,6 +2,7 @@ package Paws::IoTAnalytics::DatasetEntry;
   use Moose;
   has DataURI => (is => 'ro', isa => 'Str', request_name => 'dataURI', traits => ['NameInRequest']);
   has EntryName => (is => 'ro', isa => 'Str', request_name => 'entryName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

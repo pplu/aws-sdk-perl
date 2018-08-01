@@ -4,6 +4,7 @@ package Paws::DLM::Schedule;
   has Name => (is => 'ro', isa => 'Str');
   has RetainRule => (is => 'ro', isa => 'Paws::DLM::RetainRule');
   has TagsToAdd => (is => 'ro', isa => 'ArrayRef[Paws::DLM::Tag]');
+
 1;
 
 ### main pod documentation begin ###

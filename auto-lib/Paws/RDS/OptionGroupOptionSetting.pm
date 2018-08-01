@@ -6,6 +6,7 @@ package Paws::RDS::OptionGroupOptionSetting;
   has IsModifiable => (is => 'ro', isa => 'Bool');
   has SettingDescription => (is => 'ro', isa => 'Str');
   has SettingName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

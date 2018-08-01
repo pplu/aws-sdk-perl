@@ -1,6 +1,7 @@
 package Paws::SageMaker::DataSource;
   use Moose;
   has S3DataSource => (is => 'ro', isa => 'Paws::SageMaker::S3DataSource', required => 1);
+
 1;
 
 ### main pod documentation begin ###

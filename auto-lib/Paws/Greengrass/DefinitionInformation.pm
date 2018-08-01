@@ -7,6 +7,7 @@ package Paws::Greengrass::DefinitionInformation;
   has LatestVersion => (is => 'ro', isa => 'Str');
   has LatestVersionArn => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::SageMaker::HyperParameterTuningJobConfig;
   has ParameterRanges => (is => 'ro', isa => 'Paws::SageMaker::ParameterRanges', required => 1);
   has ResourceLimits => (is => 'ro', isa => 'Paws::SageMaker::ResourceLimits', required => 1);
   has Strategy => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

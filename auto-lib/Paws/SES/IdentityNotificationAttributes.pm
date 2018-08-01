@@ -7,6 +7,7 @@ package Paws::SES::IdentityNotificationAttributes;
   has HeadersInBounceNotificationsEnabled => (is => 'ro', isa => 'Bool');
   has HeadersInComplaintNotificationsEnabled => (is => 'ro', isa => 'Bool');
   has HeadersInDeliveryNotificationsEnabled => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

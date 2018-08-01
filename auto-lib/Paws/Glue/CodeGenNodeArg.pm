@@ -3,6 +3,7 @@ package Paws::Glue::CodeGenNodeArg;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Param => (is => 'ro', isa => 'Bool');
   has Value => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

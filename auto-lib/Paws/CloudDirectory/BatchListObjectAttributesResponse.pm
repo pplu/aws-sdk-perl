@@ -2,6 +2,7 @@ package Paws::CloudDirectory::BatchListObjectAttributesResponse;
   use Moose;
   has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::AttributeKeyAndValue]');
   has NextToken => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -6,6 +6,7 @@ package Paws::ES::ElasticsearchClusterConfig;
   has InstanceCount => (is => 'ro', isa => 'Int');
   has InstanceType => (is => 'ro', isa => 'Str');
   has ZoneAwarenessEnabled => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

@@ -6,6 +6,7 @@ package Paws::IoT::ThingDocument;
   has ThingId => (is => 'ro', isa => 'Str', request_name => 'thingId', traits => ['NameInRequest']);
   has ThingName => (is => 'ro', isa => 'Str', request_name => 'thingName', traits => ['NameInRequest']);
   has ThingTypeName => (is => 'ro', isa => 'Str', request_name => 'thingTypeName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

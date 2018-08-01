@@ -3,13 +3,13 @@ package Paws::SSM::ParameterHistory;
   has AllowedPattern => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has KeyId => (is => 'ro', isa => 'Str');
-  has Labels => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has LastModifiedDate => (is => 'ro', isa => 'Str');
   has LastModifiedUser => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###
@@ -60,11 +60,6 @@ a-zA-Z0-9_.-
 =head2 KeyId => Str
 
   The ID of the query key used for this parameter.
-
-
-=head2 Labels => ArrayRef[Str|Undef]
-
-  Labels assigned to the parameter version.
 
 
 =head2 LastModifiedDate => Str

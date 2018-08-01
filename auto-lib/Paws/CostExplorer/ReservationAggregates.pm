@@ -10,6 +10,7 @@ package Paws::CostExplorer::ReservationAggregates;
   has TotalPotentialRISavings => (is => 'ro', isa => 'Str');
   has UnusedHours => (is => 'ro', isa => 'Str');
   has UtilizationPercentage => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::ElastiCache::ReshardingConfiguration;
   use Moose;
   has PreferredAvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'AvailabilityZone', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::ELBv2::TagDescription;
   use Moose;
   has ResourceArn => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::Tag]');
+
 1;
 
 ### main pod documentation begin ###
