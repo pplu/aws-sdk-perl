@@ -10,7 +10,6 @@ use English qw(-no-match-vars);
 use Data::Dumper;
 use Carp;
 use Test::More;
-use Test::XML::Compare;
 
 use Paws;
 use TestRequestCaller;
@@ -67,24 +66,15 @@ my %xml_methods = (
  );
 
 my %xml_results = (
-  ChangeResourceRecordSets => '<ChangeResourceRecordSetsRequest xmlns="https://route53.amazonaws.com/doc/2013-04-01/"><ChangeBatch><Changes><Change><Action>CREATE</Action><ResourceRecordSet><Type>A</Type><TTL>200</TTL><ResourceRecords><ResourceRecord><Value>127.0.0.1</Value></ResourceRecord></ResourceRecords><Name>MyResourceSet</Name></ResourceRecordSet></Change></Changes></ChangeBatch></ChangeResourceRecordSetsRequest>',
+  ChangeResourceRecordSets => '<ChangeResourceRecordSetsRequest xmlns="https://route53.amazonaws.com/doc/2013-04-01/"><ChangeBatch><Changes><Change><Action>CREATE</Action><ResourceRecordSet><Name>MyResourceSet</Name><ResourceRecords><ResourceRecord><Value>127.0.0.1</Value></ResourceRecord></ResourceRecords><TTL>200</TTL><Type>A</Type></ResourceRecordSet></Change></Changes></ChangeBatch></ChangeResourceRecordSetsRequest>',
   ChangeTagsForResource => '<ChangeTagsForResourceRequest xmlns="https://route53.amazonaws.com/doc/2013-04-01/"><AddTags><Tag><Key>Cost Center</Key><Value>80432</Value></Tag></AddTags><RemoveTagKeys><Key>Owner</Key></RemoveTagKeys></ChangeTagsForResourceRequest>',
-  CreateHostedZone => '<CreateHostedZoneRequest xmlns="https://route53.amazonaws.com/doc/2013-04-01/"><CallerReference>MyThing</CallerReference><VPC><VPCRegion>us-west-2</VPCRegion><VPCId>Something</VPCId></VPC><Name>MyDNSName</Name></CreateHostedZoneRequest>',
-  CreateQueryLoggingConfig => '<CreateQueryLoggingConfigRequest xmlns="https://route53.amazonaws.com/doc/2013-04-01/"><HostedZoneId>myZoneId</HostedZoneId><CloudWatchLogsLogGroupArn>MyCloudWatchLogsLogGroupArn</CloudWatchLogsLogGroupArn></CreateQueryLoggingConfigRequest>',
+ CreateHostedZone => '<CreateHostedZoneRequest xmlns="https://route53.amazonaws.com/doc/2013-04-01/"><CallerReference>MyThing</CallerReference><Name>MyDNSName</Name><VPC><VPCId>Something</VPCId><VPCRegion>us-west-2</VPCRegion></VPC></CreateHostedZoneRequest>',
+ CreateQueryLoggingConfig => '<CreateQueryLoggingConfigRequest xmlns="https://route53.amazonaws.com/doc/2013-04-01/"><CloudWatchLogsLogGroupArn>MyCloudWatchLogsLogGroupArn</CloudWatchLogsLogGroupArn><HostedZoneId>myZoneId</HostedZoneId></CreateQueryLoggingConfigRequest>',
 );
 
 foreach my $method (qw/ChangeResourceRecordSets ChangeTagsForResource CreateHostedZone CreateQueryLoggingConfig/) {
-  my $request;
-  eval {
-    $request = $route53->$method( %{ $xml_methods{$method}} );
-  } or do {
-    warn qq[Error calling method: $@];
-  };
+  my $request = $route53->$method( %{ $xml_methods{$method}} );
 
-  if ($request) {
-    is_xml_same($request->content, $xml_results{$method}, "$method XML is ok");
-  } else {
-    fail("Request for $method is undefined.")
-  }
+  cmp_ok($request->content, 'eq', $xml_results{$method}, "$method XML content is generated as expected");
 }
 done_testing;
