@@ -105,7 +105,7 @@ package Paws::Net::RestXmlCaller;
              $value = $attribute->get_value($call);
           }
           else {
-            $value = MIME::Base64::encode_base64( Digest::MD5::md5( $request->content ) );
+            $value = MIME::Base64::encode_base64( Digest::MD5::md5( $request->content || '' ) );
             chomp $value;
           }
           $request->headers->header( $attribute->header_name => $value );
