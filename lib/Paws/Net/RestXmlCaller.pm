@@ -194,7 +194,7 @@ package Paws::Net::RestXmlCaller;
     my ($self, $call) = @_;
 
     my $xml = '';
-    foreach my $attribute ($call->meta->get_all_attributes) {
+    foreach my $attribute (sort { $a->name cmp $b->name } $call->meta->get_all_attributes) {
       if ($attribute->has_value($call) and
           not $attribute->does('Paws::API::Attribute::Trait::ParamInHeader') and
           not $attribute->does('Paws::API::Attribute::Trait::ParamInQuery') and
