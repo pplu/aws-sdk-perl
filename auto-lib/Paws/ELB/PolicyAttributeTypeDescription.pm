@@ -5,6 +5,7 @@ package Paws::ELB::PolicyAttributeTypeDescription;
   has Cardinality => (is => 'ro', isa => 'Str');
   has DefaultValue => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

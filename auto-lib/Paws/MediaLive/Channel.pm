@@ -1,7 +1,6 @@
 package Paws::MediaLive::Channel;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has ChannelClass => (is => 'ro', isa => 'Str', request_name => 'channelClass', traits => ['NameInRequest']);
   has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::OutputDestination]', request_name => 'destinations', traits => ['NameInRequest']);
   has EgressEndpoints => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::ChannelEgressEndpoint]', request_name => 'egressEndpoints', traits => ['NameInRequest']);
   has EncoderSettings => (is => 'ro', isa => 'Paws::MediaLive::EncoderSettings', request_name => 'encoderSettings', traits => ['NameInRequest']);
@@ -10,11 +9,10 @@ package Paws::MediaLive::Channel;
   has InputSpecification => (is => 'ro', isa => 'Paws::MediaLive::InputSpecification', request_name => 'inputSpecification', traits => ['NameInRequest']);
   has LogLevel => (is => 'ro', isa => 'Str', request_name => 'logLevel', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has PipelineDetails => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::PipelineDetail]', request_name => 'pipelineDetails', traits => ['NameInRequest']);
   has PipelinesRunningCount => (is => 'ro', isa => 'Int', request_name => 'pipelinesRunningCount', traits => ['NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', request_name => 'tags', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###
@@ -34,7 +32,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaLive::Channel object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., Tags => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., State => $value  });
 
 =head3 Results returned from an API call
 
@@ -53,12 +51,6 @@ Placeholder documentation for Channel
 =head2 Arn => Str
 
   The unique arn of the channel.
-
-
-=head2 ChannelClass => Str
-
-  The class for this channel. STANDARD for a channel with two pipelines
-or SINGLE_PIPELINE for a channel with one pipeline.
 
 
 =head2 Destinations => ArrayRef[L<Paws::MediaLive::OutputDestination>]
@@ -103,11 +95,6 @@ one destination per packager.
   The name of the channel. (user-mutable)
 
 
-=head2 PipelineDetails => ArrayRef[L<Paws::MediaLive::PipelineDetail>]
-
-  Runtime details for the pipelines of a running channel.
-
-
 =head2 PipelinesRunningCount => Int
 
   The number of currently healthy pipelines.
@@ -122,11 +109,6 @@ Channel.
 =head2 State => Str
 
   
-
-
-=head2 Tags => L<Paws::MediaLive::Tags>
-
-  A collection of key-value pairs.
 
 
 

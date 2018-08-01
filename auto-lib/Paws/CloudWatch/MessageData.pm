@@ -2,6 +2,7 @@ package Paws::CloudWatch::MessageData;
   use Moose;
   has Code => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

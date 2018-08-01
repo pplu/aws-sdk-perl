@@ -5,6 +5,7 @@ package Paws::S3::DeleteObjectTagging;
   has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
   has VersionId => (is => 'ro', isa => 'Str', query_name => 'versionId', traits => ['ParamInQuery']);
 
+
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteObjectTagging');
@@ -13,6 +14,7 @@ package Paws::S3::DeleteObjectTagging;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::DeleteObjectTaggingOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###

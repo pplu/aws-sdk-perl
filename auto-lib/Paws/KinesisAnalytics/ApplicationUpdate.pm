@@ -5,6 +5,7 @@ package Paws::KinesisAnalytics::ApplicationUpdate;
   has InputUpdates => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::InputUpdate]');
   has OutputUpdates => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::OutputUpdate]');
   has ReferenceDataSourceUpdates => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::ReferenceDataSourceUpdate]');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::ECS::AttachmentStateChange;
   use Moose;
   has AttachmentArn => (is => 'ro', isa => 'Str', request_name => 'attachmentArn', traits => ['NameInRequest'], required => 1);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -5,7 +5,7 @@ package Paws::Athena::NamedQuery;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has NamedQueryId => (is => 'ro', isa => 'Str');
   has QueryString => (is => 'ro', isa => 'Str', required => 1);
-  has WorkGroup => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Athena::NamedQuery object:
 
-  $service_obj->Method(Att1 => { Database => $value, ..., WorkGroup => $value  });
+  $service_obj->Method(Att1 => { Database => $value, ..., QueryString => $value  });
 
 =head3 Results returned from an API call
 
@@ -36,8 +36,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Athena::Nam
 
 =head1 DESCRIPTION
 
-A query, where C<QueryString> is the list of SQL query statements that
-comprise the query.
+A query, where C<QueryString> is the SQL query statements that comprise
+the query.
 
 =head1 ATTRIBUTES
 
@@ -49,12 +49,12 @@ comprise the query.
 
 =head2 Description => Str
 
-  The query description.
+  A brief description of the query.
 
 
 =head2 B<REQUIRED> Name => Str
 
-  The query name.
+  The plain-language name of the query.
 
 
 =head2 NamedQueryId => Str
@@ -65,11 +65,6 @@ comprise the query.
 =head2 B<REQUIRED> QueryString => Str
 
   The SQL query statements that comprise the query.
-
-
-=head2 WorkGroup => Str
-
-  The name of the workgroup that contains the named query.
 
 
 

@@ -7,6 +7,7 @@ package Paws::CodePipeline::ActionConfigurationProperty;
   has Required => (is => 'ro', isa => 'Bool', request_name => 'required', traits => ['NameInRequest'], required => 1);
   has Secret => (is => 'ro', isa => 'Bool', request_name => 'secret', traits => ['NameInRequest'], required => 1);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

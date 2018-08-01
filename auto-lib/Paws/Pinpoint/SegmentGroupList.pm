@@ -2,6 +2,7 @@ package Paws::Pinpoint::SegmentGroupList;
   use Moose;
   has Groups => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::SegmentGroup]');
   has Include => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

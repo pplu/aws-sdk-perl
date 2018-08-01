@@ -1,6 +1,7 @@
 package Paws::EMR::BootstrapActionDetail;
   use Moose;
   has BootstrapActionConfig => (is => 'ro', isa => 'Paws::EMR::BootstrapActionConfig');
+
 1;
 
 ### main pod documentation begin ###

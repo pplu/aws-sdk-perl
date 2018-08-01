@@ -3,6 +3,7 @@ package Paws::CognitoIdp::EventFeedbackType;
   has FeedbackDate => (is => 'ro', isa => 'Str');
   has FeedbackValue => (is => 'ro', isa => 'Str', required => 1);
   has Provider => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

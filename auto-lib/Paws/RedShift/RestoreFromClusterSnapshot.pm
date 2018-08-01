@@ -15,17 +15,13 @@ package Paws::RedShift::RestoreFromClusterSnapshot;
   has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
   has IamRoles => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has KmsKeyId => (is => 'ro', isa => 'Str');
-  has MaintenanceTrackName => (is => 'ro', isa => 'Str');
-  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has NodeType => (is => 'ro', isa => 'Str');
-  has NumberOfNodes => (is => 'ro', isa => 'Int');
   has OwnerAccount => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has SnapshotClusterIdentifier => (is => 'ro', isa => 'Str');
   has SnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has SnapshotScheduleIdentifier => (is => 'ro', isa => 'Str');
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
@@ -69,16 +65,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       HsmConfigurationIdentifier       => 'MyString',             # OPTIONAL
       IamRoles                         => [ 'MyString', ... ],    # OPTIONAL
       KmsKeyId                         => 'MyString',             # OPTIONAL
-      MaintenanceTrackName             => 'MyString',             # OPTIONAL
-      ManualSnapshotRetentionPeriod    => 1,                      # OPTIONAL
       NodeType                         => 'MyString',             # OPTIONAL
-      NumberOfNodes                    => 1,                      # OPTIONAL
       OwnerAccount                     => 'MyString',             # OPTIONAL
       Port                             => 1,                      # OPTIONAL
       PreferredMaintenanceWindow       => 'MyString',             # OPTIONAL
       PubliclyAccessible               => 1,                      # OPTIONAL
       SnapshotClusterIdentifier        => 'MyString',             # OPTIONAL
-      SnapshotScheduleIdentifier       => 'MyString',             # OPTIONAL
       VpcSecurityGroupIds              => [ 'MyString', ... ],    # OPTIONAL
       );
 
@@ -129,7 +121,7 @@ The Amazon EC2 Availability Zone in which to restore the cluster.
 
 Default: A random, system-chosen Availability Zone.
 
-Example: C<us-east-2a>
+Example: C<us-east-1a>
 
 
 
@@ -174,7 +166,7 @@ The name of the parameter group to be associated with this cluster.
 Default: The default Amazon Redshift cluster parameter group. For
 information about the default parameter group, go to Working with
 Amazon Redshift Parameter Groups
-(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html).
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html).
 
 Constraints:
 
@@ -228,7 +220,7 @@ An option that specifies whether to create the cluster with enhanced
 VPC routing enabled. To create a cluster that uses enhanced VPC
 routing, the cluster must be in a VPC. For more information, see
 Enhanced VPC Routing
-(https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html)
+(http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html)
 in the Amazon Redshift Cluster Management Guide.
 
 If this option is C<true>, enhanced VPC routing is enabled.
@@ -271,28 +263,6 @@ shared snapshot.
 
 
 
-=head2 MaintenanceTrackName => Str
-
-The name of the maintenance track for the restored cluster. When you
-take a snapshot, the snapshot inherits the C<MaintenanceTrack> value
-from the cluster. The snapshot might be on a different track than the
-cluster that was the source for the snapshot. For example, suppose that
-you take a snapshot of a cluster that is on the current track and then
-change the cluster to be on the trailing track. In this case, the
-snapshot and the source cluster are on different tracks.
-
-
-
-=head2 ManualSnapshotRetentionPeriod => Int
-
-The default number of days to retain a manual snapshot. If the value is
--1, the snapshot is retained indefinitely. This setting doesn't change
-the retention period of existing snapshots.
-
-The value must be either -1 or an integer between 1 and 3,653.
-
-
-
 =head2 NodeType => Str
 
 The node type that the restored cluster will be provisioned with.
@@ -308,14 +278,8 @@ type or dc2.large instance type. You can't restore dc1.8xlarge to
 dc2.8xlarge. First restore to a dc1.8xlareg cluster, then resize to a
 dc2.8large cluster. For more information about node types, see About
 Clusters and Nodes
-(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes)
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes)
 in the I<Amazon Redshift Cluster Management Guide>.
-
-
-
-=head2 NumberOfNodes => Int
-
-The number of nodes specified when provisioning the restored cluster.
 
 
 
@@ -347,7 +311,7 @@ Format: C<ddd:hh24:mi-ddd:hh24:mi>
 Default: The value selected for the cluster from which the snapshot was
 taken. For more information about the time blocks for each region, see
 Maintenance Windows
-(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows)
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows)
 in Amazon Redshift Cluster Management Guide.
 
 Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun
@@ -377,12 +341,6 @@ The name of the snapshot from which to create the new cluster. This
 parameter isn't case sensitive.
 
 Example: C<my-snapshot-id>
-
-
-
-=head2 SnapshotScheduleIdentifier => Str
-
-A unique identifier for the snapshot schedule.
 
 
 

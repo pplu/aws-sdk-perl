@@ -1,12 +1,11 @@
 package Paws::Polly::Voice;
   use Moose;
-  has AdditionalLanguageCodes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Gender => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
   has LanguageCode => (is => 'ro', isa => 'Str');
   has LanguageName => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
-  has SupportedEngines => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###
@@ -26,31 +25,20 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Polly::Voice object:
 
-  $service_obj->Method(Att1 => { AdditionalLanguageCodes => $value, ..., SupportedEngines => $value  });
+  $service_obj->Method(Att1 => { Gender => $value, ..., Name => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Polly::Voice object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AdditionalLanguageCodes
+  $result->Att1->Gender
 
 =head1 DESCRIPTION
 
 Description of the voice.
 
 =head1 ATTRIBUTES
-
-
-=head2 AdditionalLanguageCodes => ArrayRef[Str|Undef]
-
-  Additional codes for languages available for the specified voice in
-addition to its default language.
-
-For example, the default language for Aditi is Indian English (en-IN)
-because it was first used for that language. Since Aditi is bilingual
-and fluent in both Indian English and Hindi, this parameter would show
-the code C<hi-IN>.
 
 
 =head2 Gender => Str
@@ -78,12 +66,6 @@ calling the C<SynthesizeSpeech> operation.
 
   Name of the voice (for example, Salli, Kendra, etc.). This provides a
 human readable voice name that you might display in your application.
-
-
-=head2 SupportedEngines => ArrayRef[Str|Undef]
-
-  Specifies which engines (C<standard> or C<neural>) that are supported
-by a given voice.
 
 
 

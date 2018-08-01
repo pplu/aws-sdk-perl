@@ -3,6 +3,7 @@ package Paws::Glue::CodeGenEdge;
   has Source => (is => 'ro', isa => 'Str', required => 1);
   has Target => (is => 'ro', isa => 'Str', required => 1);
   has TargetParameter => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

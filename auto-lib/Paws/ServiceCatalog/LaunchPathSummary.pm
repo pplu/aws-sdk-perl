@@ -4,6 +4,7 @@ package Paws::ServiceCatalog::LaunchPathSummary;
   has Id => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::Tag]');
+
 1;
 
 ### main pod documentation begin ###

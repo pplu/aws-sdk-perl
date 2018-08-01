@@ -34,21 +34,6 @@ package Paws::DLM;
     my $call_object = $self->new_with_coercions('Paws::DLM::GetLifecyclePolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub ListTagsForResource {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DLM::ListTagsForResource', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub TagResource {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DLM::TagResource', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UntagResource {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DLM::UntagResource', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
   sub UpdateLifecyclePolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DLM::UpdateLifecyclePolicy', @_);
@@ -57,7 +42,7 @@ package Paws::DLM;
   
 
 
-  sub operations { qw/CreateLifecyclePolicy DeleteLifecyclePolicy GetLifecyclePolicies GetLifecyclePolicy ListTagsForResource TagResource UntagResource UpdateLifecyclePolicy / }
+  sub operations { qw/CreateLifecyclePolicy DeleteLifecyclePolicy GetLifecyclePolicies GetLifecyclePolicy UpdateLifecyclePolicy / }
 
 1;
 
@@ -85,17 +70,16 @@ Paws::DLM - Perl Interface to AWS Amazon Data Lifecycle Manager
 
 =head1 DESCRIPTION
 
-Amazon Data Lifecycle Manager
+Amazon Data Lifecyle Manager
 
-With Amazon Data Lifecycle Manager, you can manage the lifecycle of
-your AWS resources. You create lifecycle policies, which are used to
+With Amazon Data Lifecyle Manager, you can manage the lifecycle of your
+AWS resources. You create lifecycle policies, which are used to
 automate operations on the specified resources.
 
-Amazon DLM supports Amazon EBS volumes and snapshots. For information
-about using Amazon DLM with Amazon EBS, see Automating the Amazon EBS
-Snapshot Lifecycle
-(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html)
-in the I<Amazon EC2 User Guide>.
+Data Lifecycle Manager supports Amazon EBS volumes and snapshots. For
+information about using Data Lifecycle Manager with Amazon EBS, see
+Amazon Data Lifecyle Manager for Amazon EBS Snapshots
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dlm-2018-01-12>
 
@@ -113,8 +97,6 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dlm
 =item PolicyDetails => L<Paws::DLM::PolicyDetails>
 
 =item State => Str
-
-=item [Tags => L<Paws::DLM::TagMap>]
 
 
 =back
@@ -185,58 +167,6 @@ Each argument is described in detail in: L<Paws::DLM::GetLifecyclePolicy>
 Returns: a L<Paws::DLM::GetLifecyclePolicyResponse> instance
 
 Gets detailed information about the specified lifecycle policy.
-
-
-=head2 ListTagsForResource
-
-=over
-
-=item ResourceArn => Str
-
-
-=back
-
-Each argument is described in detail in: L<Paws::DLM::ListTagsForResource>
-
-Returns: a L<Paws::DLM::ListTagsForResourceResponse> instance
-
-Lists the tags for the specified resource.
-
-
-=head2 TagResource
-
-=over
-
-=item ResourceArn => Str
-
-=item Tags => L<Paws::DLM::TagMap>
-
-
-=back
-
-Each argument is described in detail in: L<Paws::DLM::TagResource>
-
-Returns: a L<Paws::DLM::TagResourceResponse> instance
-
-Adds the specified tags to the specified resource.
-
-
-=head2 UntagResource
-
-=over
-
-=item ResourceArn => Str
-
-=item TagKeys => ArrayRef[Str|Undef]
-
-
-=back
-
-Each argument is described in detail in: L<Paws::DLM::UntagResource>
-
-Returns: a L<Paws::DLM::UntagResourceResponse> instance
-
-Removes the specified tags from the specified resource.
 
 
 =head2 UpdateLifecyclePolicy

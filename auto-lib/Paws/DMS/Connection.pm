@@ -6,6 +6,7 @@ package Paws::DMS::Connection;
   has ReplicationInstanceArn => (is => 'ro', isa => 'Str');
   has ReplicationInstanceIdentifier => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

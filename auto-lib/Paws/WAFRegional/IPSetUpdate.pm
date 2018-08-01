@@ -2,6 +2,7 @@ package Paws::WAFRegional::IPSetUpdate;
   use Moose;
   has Action => (is => 'ro', isa => 'Str', required => 1);
   has IPSetDescriptor => (is => 'ro', isa => 'Paws::WAFRegional::IPSetDescriptor', required => 1);
+
 1;
 
 ### main pod documentation begin ###

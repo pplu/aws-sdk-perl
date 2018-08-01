@@ -5,6 +5,7 @@ package Paws::Glue::TriggerUpdate;
   has Name => (is => 'ro', isa => 'Str');
   has Predicate => (is => 'ro', isa => 'Paws::Glue::Predicate');
   has Schedule => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -10,6 +10,7 @@ package Paws::AppSync::Resolver;
   has ResponseMappingTemplate => (is => 'ro', isa => 'Str', request_name => 'responseMappingTemplate', traits => ['NameInRequest']);
   has SyncConfig => (is => 'ro', isa => 'Paws::AppSync::SyncConfig', request_name => 'syncConfig', traits => ['NameInRequest']);
   has TypeName => (is => 'ro', isa => 'Str', request_name => 'typeName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,8 @@
 package Paws::IoT::CodeSigningSignature;
   use Moose;
   has InlineDocument => (is => 'ro', isa => 'Str', request_name => 'inlineDocument', traits => ['NameInRequest']);
+  has Stream => (is => 'ro', isa => 'Paws::IoT::Stream', request_name => 'stream', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +22,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT::CodeSigningSignature object:
 
-  $service_obj->Method(Att1 => { InlineDocument => $value, ..., InlineDocument => $value  });
+  $service_obj->Method(Att1 => { InlineDocument => $value, ..., Stream => $value  });
 
 =head3 Results returned from an API call
 
@@ -39,6 +41,11 @@ Describes the signature for a file.
 =head2 InlineDocument => Str
 
   A base64 encoded binary representation of the code signing signature.
+
+
+=head2 Stream => L<Paws::IoT::Stream>
+
+  A stream of the code signing signature.
 
 
 

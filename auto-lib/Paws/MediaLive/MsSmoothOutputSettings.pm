@@ -2,6 +2,7 @@ package Paws::MediaLive::MsSmoothOutputSettings;
   use Moose;
   has H265PackagingType => (is => 'ro', isa => 'Str', request_name => 'h265PackagingType', traits => ['NameInRequest']);
   has NameModifier => (is => 'ro', isa => 'Str', request_name => 'nameModifier', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

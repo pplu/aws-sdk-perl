@@ -2,6 +2,7 @@ package Paws::Pinpoint::DefaultMessage;
   use Moose;
   has Body => (is => 'ro', isa => 'Str');
   has Substitutions => (is => 'ro', isa => 'Paws::Pinpoint::MapOfListOf__string');
+
 1;
 
 ### main pod documentation begin ###

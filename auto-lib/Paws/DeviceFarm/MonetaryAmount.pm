@@ -2,6 +2,7 @@ package Paws::DeviceFarm::MonetaryAmount;
   use Moose;
   has Amount => (is => 'ro', isa => 'Num', request_name => 'amount', traits => ['NameInRequest']);
   has CurrencyCode => (is => 'ro', isa => 'Str', request_name => 'currencyCode', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

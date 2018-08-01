@@ -2,6 +2,7 @@ package Paws::CloudWatchLogs::ExportTaskExecutionInfo;
   use Moose;
   has CompletionTime => (is => 'ro', isa => 'Int', request_name => 'completionTime', traits => ['NameInRequest']);
   has CreationTime => (is => 'ro', isa => 'Int', request_name => 'creationTime', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

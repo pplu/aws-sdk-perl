@@ -6,6 +6,7 @@ package Paws::WAFRegional::ActivatedRule;
   has Priority => (is => 'ro', isa => 'Int', required => 1);
   has RuleId => (is => 'ro', isa => 'Str', required => 1);
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

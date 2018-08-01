@@ -3,6 +3,7 @@ package Paws::ServiceDiscovery::ServiceChange;
   has Description => (is => 'ro', isa => 'Str');
   has DnsConfig => (is => 'ro', isa => 'Paws::ServiceDiscovery::DnsConfigChange', required => 1);
   has HealthCheckConfig => (is => 'ro', isa => 'Paws::ServiceDiscovery::HealthCheckConfig');
+
 1;
 
 ### main pod documentation begin ###

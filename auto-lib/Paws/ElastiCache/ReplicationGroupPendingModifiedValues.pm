@@ -4,6 +4,7 @@ package Paws::ElastiCache::ReplicationGroupPendingModifiedValues;
   has AutomaticFailoverStatus => (is => 'ro', isa => 'Str');
   has PrimaryClusterId => (is => 'ro', isa => 'Str');
   has Resharding => (is => 'ro', isa => 'Paws::ElastiCache::ReshardingStatus');
+
 1;
 
 ### main pod documentation begin ###

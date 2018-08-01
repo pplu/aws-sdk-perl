@@ -3,6 +3,7 @@ package Paws::IAM::ContextEntry;
   has ContextKeyName => (is => 'ro', isa => 'Str');
   has ContextKeyType => (is => 'ro', isa => 'Str');
   has ContextKeyValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

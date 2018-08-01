@@ -2,6 +2,7 @@ package Paws::MediaLive::TimecodeConfig;
   use Moose;
   has Source => (is => 'ro', isa => 'Str', request_name => 'source', traits => ['NameInRequest'], required => 1);
   has SyncThreshold => (is => 'ro', isa => 'Int', request_name => 'syncThreshold', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

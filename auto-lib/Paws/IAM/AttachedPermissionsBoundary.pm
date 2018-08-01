@@ -2,6 +2,7 @@ package Paws::IAM::AttachedPermissionsBoundary;
   use Moose;
   has PermissionsBoundaryArn => (is => 'ro', isa => 'Str');
   has PermissionsBoundaryType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

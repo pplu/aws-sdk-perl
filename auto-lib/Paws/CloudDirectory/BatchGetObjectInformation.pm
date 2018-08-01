@@ -1,6 +1,7 @@
 package Paws::CloudDirectory::BatchGetObjectInformation;
   use Moose;
   has ObjectReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
+
 1;
 
 ### main pod documentation begin ###

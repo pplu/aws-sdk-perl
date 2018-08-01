@@ -2,6 +2,7 @@ package Paws::Lightsail::LoadBalancerTlsCertificateSummary;
   use Moose;
   has IsAttached => (is => 'ro', isa => 'Bool', request_name => 'isAttached', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

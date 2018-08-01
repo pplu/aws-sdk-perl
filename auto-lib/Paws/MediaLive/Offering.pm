@@ -11,6 +11,7 @@ package Paws::MediaLive::Offering;
   has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest']);
   has ResourceSpecification => (is => 'ro', isa => 'Paws::MediaLive::ReservationResourceSpecification', request_name => 'resourceSpecification', traits => ['NameInRequest']);
   has UsagePrice => (is => 'ro', isa => 'Num', request_name => 'usagePrice', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

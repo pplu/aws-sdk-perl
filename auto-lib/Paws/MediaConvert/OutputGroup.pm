@@ -2,8 +2,9 @@ package Paws::MediaConvert::OutputGroup;
   use Moose;
   has CustomName => (is => 'ro', isa => 'Str', request_name => 'customName', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has OutputGroupSettings => (is => 'ro', isa => 'Paws::MediaConvert::OutputGroupSettings', request_name => 'outputGroupSettings', traits => ['NameInRequest']);
-  has Outputs => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::Output]', request_name => 'outputs', traits => ['NameInRequest']);
+  has OutputGroupSettings => (is => 'ro', isa => 'Paws::MediaConvert::OutputGroupSettings', request_name => 'outputGroupSettings', traits => ['NameInRequest'], required => 1);
+  has Outputs => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::Output]', request_name => 'outputs', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###
@@ -53,12 +54,12 @@ underscores.
   Name of the output group
 
 
-=head2 OutputGroupSettings => L<Paws::MediaConvert::OutputGroupSettings>
+=head2 B<REQUIRED> OutputGroupSettings => L<Paws::MediaConvert::OutputGroupSettings>
 
-  Output Group settings, including type
+  
 
 
-=head2 Outputs => ArrayRef[L<Paws::MediaConvert::Output>]
+=head2 B<REQUIRED> Outputs => ArrayRef[L<Paws::MediaConvert::Output>]
 
   This object holds groups of encoding settings, one group of settings
 per output.

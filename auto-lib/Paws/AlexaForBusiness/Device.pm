@@ -10,6 +10,7 @@ package Paws::AlexaForBusiness::Device;
   has NetworkProfileInfo => (is => 'ro', isa => 'Paws::AlexaForBusiness::DeviceNetworkProfileInfo');
   has RoomArn => (is => 'ro', isa => 'Str');
   has SoftwareVersion => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

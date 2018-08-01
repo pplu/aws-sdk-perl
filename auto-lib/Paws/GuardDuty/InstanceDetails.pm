@@ -12,6 +12,7 @@ package Paws::GuardDuty::InstanceDetails;
   has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
   has ProductCodes => (is => 'ro', isa => 'ArrayRef[Paws::GuardDuty::ProductCode]', request_name => 'productCodes', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::GuardDuty::Tag]', request_name => 'tags', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

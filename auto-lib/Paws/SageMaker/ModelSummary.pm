@@ -3,6 +3,7 @@ package Paws::SageMaker::ModelSummary;
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
   has ModelArn => (is => 'ro', isa => 'Str', required => 1);
   has ModelName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

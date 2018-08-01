@@ -6,6 +6,7 @@ package Paws::IoTJobsData::JobExecutionSummary;
   has QueuedAt => (is => 'ro', isa => 'Int', request_name => 'queuedAt', traits => ['NameInRequest']);
   has StartedAt => (is => 'ro', isa => 'Int', request_name => 'startedAt', traits => ['NameInRequest']);
   has VersionNumber => (is => 'ro', isa => 'Int', request_name => 'versionNumber', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::Greengrass::SubscriptionDefinitionVersion;
   use Moose;
   has Subscriptions => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::Subscription]');
+
 1;
 
 ### main pod documentation begin ###

@@ -7,6 +7,7 @@ package Paws::DeviceFarm::Problem;
   has Run => (is => 'ro', isa => 'Paws::DeviceFarm::ProblemDetail', request_name => 'run', traits => ['NameInRequest']);
   has Suite => (is => 'ro', isa => 'Paws::DeviceFarm::ProblemDetail', request_name => 'suite', traits => ['NameInRequest']);
   has Test => (is => 'ro', isa => 'Paws::DeviceFarm::ProblemDetail', request_name => 'test', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -9,6 +9,7 @@ package Paws::S3::ReplicationRule;
   has Priority => (is => 'ro', isa => 'Int');
   has SourceSelectionCriteria => (is => 'ro', isa => 'Paws::S3::SourceSelectionCriteria');
   has Status => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

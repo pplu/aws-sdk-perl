@@ -1,5 +1,6 @@
 package Paws::MediaLive::TeletextDestinationSettings;
   use Moose;
+
 1;
 
 ### main pod documentation begin ###

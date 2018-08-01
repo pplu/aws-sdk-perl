@@ -1,6 +1,7 @@
 package Paws::GameLift::GameSessionQueueDestination;
   use Moose;
   has DestinationArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

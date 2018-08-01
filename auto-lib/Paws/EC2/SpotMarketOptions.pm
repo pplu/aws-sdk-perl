@@ -61,10 +61,7 @@ The default is the On-Demand price.
 
 =head2 SpotInstanceType => Str
 
-  The Spot Instance request type. For RunInstances, persistent Spot
-Instance requests are only supported when
-B<InstanceInterruptionBehavior> is set to either C<hibernate> or
-C<stop>.
+  The Spot Instance request type.
 
 
 =head2 ValidUntil => Str

@@ -4,9 +4,6 @@ package Paws::Lightsail::DiskSnapshot;
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
   has FromDiskArn => (is => 'ro', isa => 'Str', request_name => 'fromDiskArn', traits => ['NameInRequest']);
   has FromDiskName => (is => 'ro', isa => 'Str', request_name => 'fromDiskName', traits => ['NameInRequest']);
-  has FromInstanceArn => (is => 'ro', isa => 'Str', request_name => 'fromInstanceArn', traits => ['NameInRequest']);
-  has FromInstanceName => (is => 'ro', isa => 'Str', request_name => 'fromInstanceName', traits => ['NameInRequest']);
-  has IsFromAutoSnapshot => (is => 'ro', isa => 'Bool', request_name => 'isFromAutoSnapshot', traits => ['NameInRequest']);
   has Location => (is => 'ro', isa => 'Paws::Lightsail::ResourceLocation', request_name => 'location', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Progress => (is => 'ro', isa => 'Str', request_name => 'progress', traits => ['NameInRequest']);
@@ -14,7 +11,7 @@ package Paws::Lightsail::DiskSnapshot;
   has SizeInGb => (is => 'ro', isa => 'Int', request_name => 'sizeInGb', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
   has SupportCode => (is => 'ro', isa => 'Str', request_name => 'supportCode', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', request_name => 'tags', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###
@@ -34,7 +31,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Lightsail::DiskSnapshot object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., Tags => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., SupportCode => $value  });
 
 =head3 Results returned from an API call
 
@@ -62,32 +59,14 @@ Describes a block storage disk snapshot.
 
 =head2 FromDiskArn => Str
 
-  The Amazon Resource Name (ARN) of the source disk from which the disk
-snapshot was created.
+  The Amazon Resource Name (ARN) of the source disk from which you are
+creating the disk snapshot.
 
 
 =head2 FromDiskName => Str
 
-  The unique name of the source disk from which the disk snapshot was
-created.
-
-
-=head2 FromInstanceArn => Str
-
-  The Amazon Resource Name (ARN) of the source instance from which the
-disk (system volume) snapshot was created.
-
-
-=head2 FromInstanceName => Str
-
-  The unique name of the source instance from which the disk (system
-volume) snapshot was created.
-
-
-=head2 IsFromAutoSnapshot => Bool
-
-  A Boolean value indicating whether the snapshot was created from an
-automatic snapshot.
+  The unique name of the source disk from which you are creating the disk
+snapshot.
 
 
 =head2 Location => L<Paws::Lightsail::ResourceLocation>
@@ -127,13 +106,6 @@ created.
 have questions about an instance or another resource in Lightsail. This
 code enables our support team to look up your Lightsail information
 more easily.
-
-
-=head2 Tags => ArrayRef[L<Paws::Lightsail::Tag>]
-
-  The tag keys and optional values for the resource. For more information
-about tags in Lightsail, see the Lightsail Dev Guide
-(https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-tags).
 
 
 

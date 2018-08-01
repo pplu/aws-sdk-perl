@@ -1,6 +1,7 @@
 package Paws::Batch::RetryStrategy;
   use Moose;
   has Attempts => (is => 'ro', isa => 'Int', request_name => 'attempts', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

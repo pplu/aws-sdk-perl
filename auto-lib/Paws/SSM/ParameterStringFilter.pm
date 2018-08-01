@@ -3,6 +3,7 @@ package Paws::SSM::ParameterStringFilter;
   has Key => (is => 'ro', isa => 'Str', required => 1);
   has Option => (is => 'ro', isa => 'Str');
   has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

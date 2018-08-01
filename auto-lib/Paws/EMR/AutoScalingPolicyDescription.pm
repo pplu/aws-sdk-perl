@@ -3,6 +3,7 @@ package Paws::EMR::AutoScalingPolicyDescription;
   has Constraints => (is => 'ro', isa => 'Paws::EMR::ScalingConstraints');
   has Rules => (is => 'ro', isa => 'ArrayRef[Paws::EMR::ScalingRule]');
   has Status => (is => 'ro', isa => 'Paws::EMR::AutoScalingPolicyStatus');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,8 +2,9 @@ package Paws::MediaConvert::StaticKeyProvider;
   use Moose;
   has KeyFormat => (is => 'ro', isa => 'Str', request_name => 'keyFormat', traits => ['NameInRequest']);
   has KeyFormatVersions => (is => 'ro', isa => 'Str', request_name => 'keyFormatVersions', traits => ['NameInRequest']);
-  has StaticKeyValue => (is => 'ro', isa => 'Str', request_name => 'staticKeyValue', traits => ['NameInRequest']);
-  has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
+  has StaticKeyValue => (is => 'ro', isa => 'Str', request_name => 'staticKeyValue', traits => ['NameInRequest'], required => 1);
+  has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###
@@ -34,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 =head1 DESCRIPTION
 
-Use these settings to set up encryption with a static key provider.
+Settings for use with a SPEKE key provider.
 
 =head1 ATTRIBUTES
 
@@ -52,13 +53,13 @@ to indicate an implicit value of 'identity'.
 value or a slash delimited list of version values (1/2/3).
 
 
-=head2 StaticKeyValue => Str
+=head2 B<REQUIRED> StaticKeyValue => Str
 
   Relates to DRM implementation. Use a 32-character hexidecimal string to
 specify Key Value (StaticKeyValue).
 
 
-=head2 Url => Str
+=head2 B<REQUIRED> Url => Str
 
   Relates to DRM implementation. The location of the license server used
 for protecting content.

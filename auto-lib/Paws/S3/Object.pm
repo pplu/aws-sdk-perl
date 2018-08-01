@@ -6,6 +6,7 @@ package Paws::S3::Object;
   has Owner => (is => 'ro', isa => 'Paws::S3::Owner');
   has Size => (is => 'ro', isa => 'Int');
   has StorageClass => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

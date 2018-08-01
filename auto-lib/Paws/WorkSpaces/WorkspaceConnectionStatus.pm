@@ -4,6 +4,7 @@ package Paws::WorkSpaces::WorkspaceConnectionStatus;
   has ConnectionStateCheckTimestamp => (is => 'ro', isa => 'Str');
   has LastKnownUserConnectionTimestamp => (is => 'ro', isa => 'Str');
   has WorkspaceId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

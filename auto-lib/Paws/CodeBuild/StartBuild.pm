@@ -14,6 +14,7 @@ package Paws::CodeBuild::StartBuild;
   has InsecureSslOverride => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'insecureSslOverride' );
   has PrivilegedModeOverride => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'privilegedModeOverride' );
   has ProjectName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectName' , required => 1);
+  has ReportBuildStatusOverride => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'reportBuildStatusOverride' );
   has ServiceRoleOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceRoleOverride' );
   has SourceAuthOverride => (is => 'ro', isa => 'Paws::CodeBuild::SourceAuth', traits => ['NameInRequest'], request_name => 'sourceAuthOverride' );
   has SourceLocationOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceLocationOverride' );
@@ -48,38 +49,39 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $StartBuildOutput = $codebuild->StartBuild(
       ProjectName       => 'MyNonEmptyString',
       ArtifactsOverride => {
-        type      => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
-        packaging => 'NONE',            # values: NONE, ZIP; OPTIONAL
-        namespaceType => 'NONE',        # values: NONE, BUILD_ID; OPTIONAL
-        location      => 'MyString',    # OPTIONAL
-        name          => 'MyString',    # OPTIONAL
-        path          => 'MyString',    # OPTIONAL
+        Type     => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
+        Location => 'MyString',        # OPTIONAL
+        Name     => 'MyString',        # OPTIONAL
+        NamespaceType => 'NONE',       # values: NONE, BUILD_ID; OPTIONAL
+        Packaging     => 'NONE',       # values: NONE, ZIP; OPTIONAL
+        Path          => 'MyString',   # OPTIONAL
       },    # OPTIONAL
       BuildspecOverride => 'MyString',    # OPTIONAL
       CacheOverride     => {
-        type     => 'NO_CACHE',           # values: NO_CACHE, S3
-        location => 'MyString',           # OPTIONAL
+        Type     => 'NO_CACHE',           # values: NO_CACHE, S3
+        Location => 'MyString',           # OPTIONAL
       },    # OPTIONAL
       CertificateOverride          => 'MyString',                # OPTIONAL
       ComputeTypeOverride          => 'BUILD_GENERAL1_SMALL',    # OPTIONAL
       EnvironmentTypeOverride      => 'WINDOWS_CONTAINER',       # OPTIONAL
       EnvironmentVariablesOverride => [
         {
-          value => 'MyString',                                   # OPTIONAL
-          name  => 'MyNonEmptyString',                           # min: 1,
-          type => 'PLAINTEXT',    # values: PLAINTEXT, PARAMETER_STORE; OPTIONAL
+          Name  => 'MyNonEmptyString',                           # min: 1
+          Value => 'MyString',                                   # OPTIONAL
+          Type => 'PLAINTEXT',    # values: PLAINTEXT, PARAMETER_STORE; OPTIONAL
         },
         ...
       ],                          # OPTIONAL
-      GitCloneDepthOverride  => 1,                     # OPTIONAL
-      IdempotencyToken       => 'MyString',            # OPTIONAL
-      ImageOverride          => 'MyNonEmptyString',    # OPTIONAL
-      InsecureSslOverride    => 1,                     # OPTIONAL
-      PrivilegedModeOverride => 1,                     # OPTIONAL
-      ServiceRoleOverride    => 'MyNonEmptyString',    # OPTIONAL
-      SourceAuthOverride     => {
-        type     => 'OAUTH',                           # values: OAUTH
-        resource => 'MyString',                        # OPTIONAL
+      GitCloneDepthOverride     => 1,                     # OPTIONAL
+      IdempotencyToken          => 'MyString',            # OPTIONAL
+      ImageOverride             => 'MyNonEmptyString',    # OPTIONAL
+      InsecureSslOverride       => 1,                     # OPTIONAL
+      PrivilegedModeOverride    => 1,                     # OPTIONAL
+      ReportBuildStatusOverride => 1,                     # OPTIONAL
+      ServiceRoleOverride       => 'MyNonEmptyString',    # OPTIONAL
+      SourceAuthOverride        => {
+        Type     => 'OAUTH',                              # values: OAUTH
+        Resource => 'MyString',                           # OPTIONAL
       },    # OPTIONAL
       SourceLocationOverride   => 'MyString',      # OPTIONAL
       SourceTypeOverride       => 'CODECOMMIT',    # OPTIONAL
@@ -88,7 +90,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $build = $StartBuildOutput->build;
+    my $Build = $StartBuildOutput->Build;
 
     # Returns a L<Paws::CodeBuild::StartBuildOutput> object.
 
@@ -190,6 +192,14 @@ Enable this flag to override privileged mode in the build project.
 =head2 B<REQUIRED> ProjectName => Str
 
 The name of the AWS CodeBuild build project to start running a build.
+
+
+
+=head2 ReportBuildStatusOverride => Bool
+
+Set to true to report to your source provider the status of a build's
+start and completion. If you use this option with a source provider
+other than GitHub, an invalidInputException is thrown.
 
 
 

@@ -3,6 +3,7 @@ package Paws::MediaLive::OutputGroup;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has OutputGroupSettings => (is => 'ro', isa => 'Paws::MediaLive::OutputGroupSettings', request_name => 'outputGroupSettings', traits => ['NameInRequest'], required => 1);
   has Outputs => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::Output]', request_name => 'outputs', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::GameLift::MatchmakingRuleSet;
   has RuleSetArn => (is => 'ro', isa => 'Str');
   has RuleSetBody => (is => 'ro', isa => 'Str', required => 1);
   has RuleSetName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

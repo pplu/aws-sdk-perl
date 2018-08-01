@@ -4,6 +4,7 @@ package Paws::Greengrass::ConnectivityInfo;
   has Id => (is => 'ro', isa => 'Str');
   has Metadata => (is => 'ro', isa => 'Str');
   has PortNumber => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

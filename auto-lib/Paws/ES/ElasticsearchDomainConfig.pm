@@ -13,6 +13,7 @@ package Paws::ES::ElasticsearchDomainConfig;
   has NodeToNodeEncryptionOptions => (is => 'ro', isa => 'Paws::ES::NodeToNodeEncryptionOptionsStatus');
   has SnapshotOptions => (is => 'ro', isa => 'Paws::ES::SnapshotOptionsStatus');
   has VPCOptions => (is => 'ro', isa => 'Paws::ES::VPCDerivedInfoStatus');
+
 1;
 
 ### main pod documentation begin ###

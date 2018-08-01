@@ -47,24 +47,34 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Role               => 'MyRole',                          # OPTIONAL
       Schedule           => 'MyCronExpression',                # OPTIONAL
       SchemaChangePolicy => {
-        UpdateBehavior => 'LOG',    # values: LOG, UPDATE_IN_DATABASE; OPTIONAL
         DeleteBehavior => 'LOG'
         ,   # values: LOG, DELETE_FROM_DATABASE, DEPRECATE_IN_DATABASE; OPTIONAL
+        UpdateBehavior => 'LOG',    # values: LOG, UPDATE_IN_DATABASE; OPTIONAL
       },    # OPTIONAL
       TablePrefix => 'MyTablePrefix',    # OPTIONAL
       Targets     => {
-        S3Targets => [
+        DynamoDBTargets => [
           {
-            Exclusions => [ 'MyPath', ... ],    # OPTIONAL
-            Path => 'MyPath',
+            Path => 'MyPath',            # OPTIONAL
           },
           ...
-        ],                                      # OPTIONAL
+        ],                               # OPTIONAL
         JdbcTargets => [
           {
-            Exclusions     => [ 'MyPath', ... ],     # OPTIONAL
-            Path           => 'MyPath',
             ConnectionName => 'MyConnectionName',    # OPTIONAL
+            Exclusions     => [
+              'MyPath', ...                          # OPTIONAL
+            ],                                       # OPTIONAL
+            Path => 'MyPath',                        # OPTIONAL
+          },
+          ...
+        ],                                           # OPTIONAL
+        S3Targets => [
+          {
+            Exclusions => [
+              'MyPath', ...                          # OPTIONAL
+            ],                                       # OPTIONAL
+            Path => 'MyPath',                        # OPTIONAL
           },
           ...
         ],                                           # OPTIONAL
@@ -80,24 +90,18 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head2 Classifiers => ArrayRef[Str|Undef]
 
 A list of custom classifiers that the user has registered. By default,
-all classifiers are included in a crawl, but these custom classifiers
-always override the default classifiers for a given classification.
+all built-in classifiers are included in a crawl, but these custom
+classifiers always override the default classifiers for a given
+classification.
 
 
 
 =head2 Configuration => Str
 
 Crawler configuration information. This versioned JSON string allows
-users to specify aspects of a Crawler's behavior.
-
-You can use this field to force partitions to inherit metadata such as
-classification, input format, output format, serde information, and
-schema from their parent table, rather than detect this information
-separately for each partition. Use the following JSON string to specify
-that behavior:
-
-Example: C<'{ "Version": 1.0, "CrawlerOutput": { "Partitions": {
-"AddOrUpdateBehavior": "InheritFromTable" } } }'>
+users to specify aspects of a crawler's behavior. For more information,
+see Configuring a Crawler
+(http://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html).
 
 
 

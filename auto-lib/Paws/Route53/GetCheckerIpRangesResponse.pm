@@ -3,6 +3,7 @@ package Paws::Route53::GetCheckerIpRangesResponse;
   use Moose;
   has CheckerIpRanges => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
+
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

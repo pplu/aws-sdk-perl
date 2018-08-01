@@ -1,7 +1,8 @@
 package Paws::Greengrass::ResourceAccessPolicy;
   use Moose;
   has Permission => (is => 'ro', isa => 'Str');
-  has ResourceId => (is => 'ro', isa => 'Str', required => 1);
+  has ResourceId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +44,7 @@ A policy used by the function to access a resource.
 one of ''rw'' (read/write) or ''ro'' (read-only).
 
 
-=head2 B<REQUIRED> ResourceId => Str
+=head2 ResourceId => Str
 
   The ID of the resource. (This ID is assigned to the resource when you
 create the resource definiton.)

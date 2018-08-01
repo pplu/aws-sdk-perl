@@ -2,6 +2,7 @@ package Paws::SageMaker::ResourceLimits;
   use Moose;
   has MaxNumberOfTrainingJobs => (is => 'ro', isa => 'Int', required => 1);
   has MaxParallelTrainingJobs => (is => 'ro', isa => 'Int', required => 1);
+
 1;
 
 ### main pod documentation begin ###

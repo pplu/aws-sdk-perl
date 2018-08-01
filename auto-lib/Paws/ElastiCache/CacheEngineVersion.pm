@@ -5,6 +5,7 @@ package Paws::ElastiCache::CacheEngineVersion;
   has CacheParameterGroupFamily => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

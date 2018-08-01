@@ -609,8 +609,6 @@ Deletes the specified pipeline.
 
 =item ChannelName => Str
 
-=item [IncludeStatistics => Bool]
-
 
 =back
 
@@ -642,8 +640,6 @@ Retrieves information about a data set.
 =over
 
 =item DatastoreName => Str
-
-=item [IncludeStatistics => Bool]
 
 
 =back

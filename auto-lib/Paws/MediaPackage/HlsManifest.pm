@@ -8,6 +8,7 @@ package Paws::MediaPackage::HlsManifest;
   has PlaylistWindowSeconds => (is => 'ro', isa => 'Int', request_name => 'playlistWindowSeconds', traits => ['NameInRequest']);
   has ProgramDateTimeIntervalSeconds => (is => 'ro', isa => 'Int', request_name => 'programDateTimeIntervalSeconds', traits => ['NameInRequest']);
   has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

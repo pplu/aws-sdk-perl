@@ -1,6 +1,7 @@
 package Paws::S3::RecordsEvent;
   use Moose;
   has Payload => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

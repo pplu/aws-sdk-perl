@@ -3,6 +3,7 @@ package Paws::SSM::InventoryDeletionSummary;
   has RemainingCount => (is => 'ro', isa => 'Int');
   has SummaryItems => (is => 'ro', isa => 'ArrayRef[Paws::SSM::InventoryDeletionSummaryItem]');
   has TotalCount => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

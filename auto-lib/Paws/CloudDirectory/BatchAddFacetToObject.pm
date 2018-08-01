@@ -3,6 +3,7 @@ package Paws::CloudDirectory::BatchAddFacetToObject;
   has ObjectAttributeList => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::AttributeKeyAndValue]', required => 1);
   has ObjectReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
   has SchemaFacet => (is => 'ro', isa => 'Paws::CloudDirectory::SchemaFacet', required => 1);
+
 1;
 
 ### main pod documentation begin ###

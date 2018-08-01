@@ -4,6 +4,7 @@ package Paws::ECS::LoadBalancer;
   has ContainerPort => (is => 'ro', isa => 'Int', request_name => 'containerPort', traits => ['NameInRequest']);
   has LoadBalancerName => (is => 'ro', isa => 'Str', request_name => 'loadBalancerName', traits => ['NameInRequest']);
   has TargetGroupArn => (is => 'ro', isa => 'Str', request_name => 'targetGroupArn', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

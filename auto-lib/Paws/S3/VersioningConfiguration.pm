@@ -2,6 +2,7 @@ package Paws::S3::VersioningConfiguration;
   use Moose;
   has MFADelete => (is => 'ro', isa => 'Str', request_name => 'MfaDelete', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

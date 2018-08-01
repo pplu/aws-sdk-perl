@@ -1,6 +1,7 @@
 package Paws::MediaLive::KeyProviderSettings;
   use Moose;
   has StaticKeySettings => (is => 'ro', isa => 'Paws::MediaLive::StaticKeySettings', request_name => 'staticKeySettings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

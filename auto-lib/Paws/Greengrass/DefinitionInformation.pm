@@ -7,7 +7,7 @@ package Paws::Greengrass::DefinitionInformation;
   has LatestVersion => (is => 'ro', isa => 'Str');
   has LatestVersionArn => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'Paws::Greengrass::Tags', request_name => 'tags', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +27,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Greengrass::DefinitionInformation object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., Tags => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., Name => $value  });
 
 =head3 Results returned from an API call
 
@@ -67,22 +67,17 @@ updated.
 
 =head2 LatestVersion => Str
 
-  The ID of the latest version associated with the definition.
+  The latest version of the definition.
 
 
 =head2 LatestVersionArn => Str
 
-  The ARN of the latest version associated with the definition.
+  The ARN of the latest version of the definition.
 
 
 =head2 Name => Str
 
   The name of the definition.
-
-
-=head2 Tags => L<Paws::Greengrass::Tags>
-
-  Tag(s) attached to the resource arn.
 
 
 

@@ -1,10 +1,11 @@
 
 package Paws::S3::ListBucketAnalyticsConfigurationsOutput;
   use Moose;
-  has AnalyticsConfigurationList => (is => 'ro', isa => 'ArrayRef[Paws::S3::AnalyticsConfiguration]', traits => ['NameInRequest'], request_name => 'AnalyticsConfiguration');
+  has AnalyticsConfigurationList => (is => 'ro', isa => 'ArrayRef[Paws::S3::AnalyticsConfiguration]', request_name => 'AnalyticsConfiguration', traits => ['NameInRequest']);
   has ContinuationToken => (is => 'ro', isa => 'Str');
   has IsTruncated => (is => 'ro', isa => 'Bool');
   has NextContinuationToken => (is => 'ro', isa => 'Str');
+
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

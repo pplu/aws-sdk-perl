@@ -4,6 +4,7 @@ package Paws::DeviceFarm::OfferingStatus;
   has Offering => (is => 'ro', isa => 'Paws::DeviceFarm::Offering', request_name => 'offering', traits => ['NameInRequest']);
   has Quantity => (is => 'ro', isa => 'Int', request_name => 'quantity', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

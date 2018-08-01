@@ -6,6 +6,7 @@ package Paws::Rekognition::TextDetection;
   has Id => (is => 'ro', isa => 'Int');
   has ParentId => (is => 'ro', isa => 'Int');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

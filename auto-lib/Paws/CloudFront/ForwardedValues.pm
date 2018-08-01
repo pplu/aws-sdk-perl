@@ -4,6 +4,7 @@ package Paws::CloudFront::ForwardedValues;
   has Headers => (is => 'ro', isa => 'Paws::CloudFront::Headers');
   has QueryString => (is => 'ro', isa => 'Bool', required => 1);
   has QueryStringCacheKeys => (is => 'ro', isa => 'Paws::CloudFront::QueryStringCacheKeys');
+
 1;
 
 ### main pod documentation begin ###

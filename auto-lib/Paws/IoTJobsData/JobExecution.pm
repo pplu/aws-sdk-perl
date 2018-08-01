@@ -11,6 +11,7 @@ package Paws::IoTJobsData::JobExecution;
   has StatusDetails => (is => 'ro', isa => 'Paws::IoTJobsData::DetailsMap', request_name => 'statusDetails', traits => ['NameInRequest']);
   has ThingName => (is => 'ro', isa => 'Str', request_name => 'thingName', traits => ['NameInRequest']);
   has VersionNumber => (is => 'ro', isa => 'Int', request_name => 'versionNumber', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

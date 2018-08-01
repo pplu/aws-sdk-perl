@@ -2,6 +2,7 @@ package Paws::CodeBuild::ProjectBadge;
   use Moose;
   has BadgeEnabled => (is => 'ro', isa => 'Bool', request_name => 'badgeEnabled', traits => ['NameInRequest']);
   has BadgeRequestUrl => (is => 'ro', isa => 'Str', request_name => 'badgeRequestUrl', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

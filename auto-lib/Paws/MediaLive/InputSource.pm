@@ -3,6 +3,7 @@ package Paws::MediaLive::InputSource;
   has PasswordParam => (is => 'ro', isa => 'Str', request_name => 'passwordParam', traits => ['NameInRequest']);
   has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
   has Username => (is => 'ro', isa => 'Str', request_name => 'username', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

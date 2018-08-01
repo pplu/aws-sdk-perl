@@ -6,6 +6,7 @@ package Paws::Inspector::AssessmentRunNotification;
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
   has SnsPublishStatusCode => (is => 'ro', isa => 'Str', request_name => 'snsPublishStatusCode', traits => ['NameInRequest']);
   has SnsTopicArn => (is => 'ro', isa => 'Str', request_name => 'snsTopicArn', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

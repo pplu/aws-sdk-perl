@@ -8,6 +8,7 @@ package Paws::Route53::ListTrafficPolicyInstancesByPolicy;
   has TrafficPolicyInstanceTypeMarker => (is => 'ro', isa => 'Str', query_name => 'trafficpolicyinstancetype', traits => ['ParamInQuery']);
   has TrafficPolicyVersion => (is => 'ro', isa => 'Int', query_name => 'version', traits => ['ParamInQuery'], required => 1);
 
+
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListTrafficPolicyInstancesByPolicy');
@@ -16,6 +17,7 @@ package Paws::Route53::ListTrafficPolicyInstancesByPolicy;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::ListTrafficPolicyInstancesByPolicyResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###

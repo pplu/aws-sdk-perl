@@ -6,6 +6,7 @@ package Paws::MediaLive::CaptionSelectorSettings;
   has Scte20SourceSettings => (is => 'ro', isa => 'Paws::MediaLive::Scte20SourceSettings', request_name => 'scte20SourceSettings', traits => ['NameInRequest']);
   has Scte27SourceSettings => (is => 'ro', isa => 'Paws::MediaLive::Scte27SourceSettings', request_name => 'scte27SourceSettings', traits => ['NameInRequest']);
   has TeletextSourceSettings => (is => 'ro', isa => 'Paws::MediaLive::TeletextSourceSettings', request_name => 'teletextSourceSettings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

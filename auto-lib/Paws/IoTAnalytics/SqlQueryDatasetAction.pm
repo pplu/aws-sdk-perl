@@ -2,6 +2,7 @@ package Paws::IoTAnalytics::SqlQueryDatasetAction;
   use Moose;
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::QueryFilter]', request_name => 'filters', traits => ['NameInRequest']);
   has SqlQuery => (is => 'ro', isa => 'Str', request_name => 'sqlQuery', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

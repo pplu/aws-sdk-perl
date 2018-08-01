@@ -2,6 +2,7 @@ package Paws::IAM::DeletionTaskFailureReasonType;
   use Moose;
   has Reason => (is => 'ro', isa => 'Str');
   has RoleUsageList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::RoleUsageType]');
+
 1;
 
 ### main pod documentation begin ###

@@ -8,6 +8,7 @@ package Paws::ELBv2::AuthenticateCognitoActionConfig;
   has UserPoolArn => (is => 'ro', isa => 'Str', required => 1);
   has UserPoolClientId => (is => 'ro', isa => 'Str', required => 1);
   has UserPoolDomain => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

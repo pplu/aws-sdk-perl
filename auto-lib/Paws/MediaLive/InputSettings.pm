@@ -9,6 +9,7 @@ package Paws::MediaLive::InputSettings;
   has NetworkInputSettings => (is => 'ro', isa => 'Paws::MediaLive::NetworkInputSettings', request_name => 'networkInputSettings', traits => ['NameInRequest']);
   has SourceEndBehavior => (is => 'ro', isa => 'Str', request_name => 'sourceEndBehavior', traits => ['NameInRequest']);
   has VideoSelector => (is => 'ro', isa => 'Paws::MediaLive::VideoSelector', request_name => 'videoSelector', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

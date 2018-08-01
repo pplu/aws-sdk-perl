@@ -4,6 +4,7 @@ package Paws::MediaLive::HlsInputSettings;
   has BufferSegments => (is => 'ro', isa => 'Int', request_name => 'bufferSegments', traits => ['NameInRequest']);
   has Retries => (is => 'ro', isa => 'Int', request_name => 'retries', traits => ['NameInRequest']);
   has RetryInterval => (is => 'ro', isa => 'Int', request_name => 'retryInterval', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -3,7 +3,8 @@ package Paws::Route53::ListVPCAssociationAuthorizationsResponse;
   use Moose;
   has HostedZoneId => (is => 'ro', isa => 'Str', required => 1);
   has NextToken => (is => 'ro', isa => 'Str');
-  has VPCs => (is => 'ro', isa => 'ArrayRef[Paws::Route53::VPC]', required => 1);
+  has VPCs => (is => 'ro', isa => 'ArrayRef[Paws::Route53::VPC]', request_name => 'VPC', traits => ['NameInRequest'], required => 1);
+
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

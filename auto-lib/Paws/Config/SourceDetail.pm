@@ -3,6 +3,7 @@ package Paws::Config::SourceDetail;
   has EventSource => (is => 'ro', isa => 'Str');
   has MaximumExecutionFrequency => (is => 'ro', isa => 'Str');
   has MessageType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::CognitoIdp::DeviceConfigurationType;
   use Moose;
   has ChallengeRequiredOnNewDevice => (is => 'ro', isa => 'Bool');
   has DeviceOnlyRememberedOnUserPrompt => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

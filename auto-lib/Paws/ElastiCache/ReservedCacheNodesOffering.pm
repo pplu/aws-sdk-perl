@@ -8,6 +8,7 @@ package Paws::ElastiCache::ReservedCacheNodesOffering;
   has RecurringCharges => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::RecurringCharge]', request_name => 'RecurringCharge', traits => ['NameInRequest']);
   has ReservedCacheNodesOfferingId => (is => 'ro', isa => 'Str');
   has UsagePrice => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::MediaConvert::Mp4Settings;
   has FreeSpaceBox => (is => 'ro', isa => 'Str', request_name => 'freeSpaceBox', traits => ['NameInRequest']);
   has MoovPlacement => (is => 'ro', isa => 'Str', request_name => 'moovPlacement', traits => ['NameInRequest']);
   has Mp4MajorBrand => (is => 'ro', isa => 'Str', request_name => 'mp4MajorBrand', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

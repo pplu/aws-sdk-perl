@@ -2,6 +2,7 @@ package Paws::Glue::Order;
   use Moose;
   has Column => (is => 'ro', isa => 'Str', required => 1);
   has SortOrder => (is => 'ro', isa => 'Int', required => 1);
+
 1;
 
 ### main pod documentation begin ###

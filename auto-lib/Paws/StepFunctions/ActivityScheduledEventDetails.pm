@@ -4,6 +4,7 @@ package Paws::StepFunctions::ActivityScheduledEventDetails;
   has Input => (is => 'ro', isa => 'Str', request_name => 'input', traits => ['NameInRequest']);
   has Resource => (is => 'ro', isa => 'Str', request_name => 'resource', traits => ['NameInRequest'], required => 1);
   has TimeoutInSeconds => (is => 'ro', isa => 'Int', request_name => 'timeoutInSeconds', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::MediaLive::HlsWebdavSettings;
   has HttpTransferMode => (is => 'ro', isa => 'Str', request_name => 'httpTransferMode', traits => ['NameInRequest']);
   has NumRetries => (is => 'ro', isa => 'Int', request_name => 'numRetries', traits => ['NameInRequest']);
   has RestartDelay => (is => 'ro', isa => 'Int', request_name => 'restartDelay', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

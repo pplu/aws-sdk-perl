@@ -3,6 +3,7 @@ package Paws::ResourceTagging::ResourceTagMapping;
   has ComplianceDetails => (is => 'ro', isa => 'Paws::ResourceTagging::ComplianceDetails');
   has ResourceARN => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ResourceTagging::Tag]');
+
 1;
 
 ### main pod documentation begin ###

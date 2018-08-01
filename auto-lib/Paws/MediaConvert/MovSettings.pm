@@ -5,6 +5,7 @@ package Paws::MediaConvert::MovSettings;
   has Mpeg2FourCCControl => (is => 'ro', isa => 'Str', request_name => 'mpeg2FourCCControl', traits => ['NameInRequest']);
   has PaddingControl => (is => 'ro', isa => 'Str', request_name => 'paddingControl', traits => ['NameInRequest']);
   has Reference => (is => 'ro', isa => 'Str', request_name => 'reference', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

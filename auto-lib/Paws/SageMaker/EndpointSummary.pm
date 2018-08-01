@@ -5,6 +5,7 @@ package Paws::SageMaker::EndpointSummary;
   has EndpointName => (is => 'ro', isa => 'Str', required => 1);
   has EndpointStatus => (is => 'ro', isa => 'Str', required => 1);
   has LastModifiedTime => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

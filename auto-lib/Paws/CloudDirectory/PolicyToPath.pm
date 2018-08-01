@@ -2,6 +2,7 @@ package Paws::CloudDirectory::PolicyToPath;
   use Moose;
   has Path => (is => 'ro', isa => 'Str');
   has Policies => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::PolicyAttachment]');
+
 1;
 
 ### main pod documentation begin ###

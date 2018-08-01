@@ -3,6 +3,7 @@ package Paws::CloudFront::FieldLevelEncryption;
   has FieldLevelEncryptionConfig => (is => 'ro', isa => 'Paws::CloudFront::FieldLevelEncryptionConfig', required => 1);
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has LastModifiedTime => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

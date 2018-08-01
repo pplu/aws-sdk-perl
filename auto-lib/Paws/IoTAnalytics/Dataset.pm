@@ -2,14 +2,12 @@ package Paws::IoTAnalytics::Dataset;
   use Moose;
   has Actions => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::DatasetAction]', request_name => 'actions', traits => ['NameInRequest']);
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has ContentDeliveryRules => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::DatasetContentDeliveryRule]', request_name => 'contentDeliveryRules', traits => ['NameInRequest']);
   has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
   has LastUpdateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdateTime', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has RetentionPeriod => (is => 'ro', isa => 'Paws::IoTAnalytics::RetentionPeriod', request_name => 'retentionPeriod', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has Triggers => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::DatasetTrigger]', request_name => 'triggers', traits => ['NameInRequest']);
-  has VersioningConfiguration => (is => 'ro', isa => 'Paws::IoTAnalytics::VersioningConfiguration', request_name => 'versioningConfiguration', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +27,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoTAnalytics::Dataset object:
 
-  $service_obj->Method(Att1 => { Actions => $value, ..., VersioningConfiguration => $value  });
+  $service_obj->Method(Att1 => { Actions => $value, ..., Triggers => $value  });
 
 =head3 Results returned from an API call
 
@@ -47,19 +45,12 @@ Information about a data set.
 
 =head2 Actions => ArrayRef[L<Paws::IoTAnalytics::DatasetAction>]
 
-  The "DatasetAction" objects that automatically create the data set
-contents.
+  The "DatasetAction" objects that create the data set.
 
 
 =head2 Arn => Str
 
   The ARN of the data set.
-
-
-=head2 ContentDeliveryRules => ArrayRef[L<Paws::IoTAnalytics::DatasetContentDeliveryRule>]
-
-  When data set contents are created they are delivered to destinations
-specified here.
 
 
 =head2 CreationTime => Str
@@ -77,11 +68,6 @@ specified here.
   The name of the data set.
 
 
-=head2 RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>
-
-  [Optional] How long, in days, message data is kept for the data set.
-
-
 =head2 Status => Str
 
   The status of the data set.
@@ -91,16 +77,6 @@ specified here.
 
   The "DatasetTrigger" objects that specify when the data set is
 automatically updated.
-
-
-=head2 VersioningConfiguration => L<Paws::IoTAnalytics::VersioningConfiguration>
-
-  [Optional] How many versions of data set contents are kept. If not
-specified or set to null, only the latest version plus the latest
-succeeded version (if they are different) are kept for the time period
-specified by the "retentionPeriod" parameter. (For more information,
-see
-https://docs.aws.amazon.com/iotanalytics/latest/userguide/getting-started.html#aws-iot-analytics-dataset-versions)
 
 
 

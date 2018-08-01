@@ -1,10 +1,9 @@
 
 package Paws::S3::GetBucketEncryptionOutput;
   use Moose;
-  has ServerSideEncryptionConfiguration => (is => 'ro', isa => 'Paws::S3::ServerSideEncryptionConfiguration');
+  has ServerSideEncryptionConfiguration => (is => 'ro', isa => 'Paws::S3::ServerSideEncryptionConfiguration', traits => ['ParamInBody']);
 
-  use MooseX::ClassAttribute;
-  class_has _payload => (is => 'ro', default => 'ServerSideEncryptionConfiguration');
+
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

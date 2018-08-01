@@ -3,6 +3,7 @@ package Paws::CloudFront::EncryptionEntity;
   has FieldPatterns => (is => 'ro', isa => 'Paws::CloudFront::FieldPatterns', required => 1);
   has ProviderId => (is => 'ro', isa => 'Str', required => 1);
   has PublicKeyId => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

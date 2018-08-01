@@ -12,6 +12,7 @@ package Paws::MTurk::Assignment;
   has RequesterFeedback => (is => 'ro', isa => 'Str');
   has SubmitTime => (is => 'ro', isa => 'Str');
   has WorkerId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

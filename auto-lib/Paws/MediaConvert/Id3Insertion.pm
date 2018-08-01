@@ -1,7 +1,8 @@
 package Paws::MediaConvert::Id3Insertion;
   use Moose;
-  has Id3 => (is => 'ro', isa => 'Str', request_name => 'id3', traits => ['NameInRequest']);
-  has Timecode => (is => 'ro', isa => 'Str', request_name => 'timecode', traits => ['NameInRequest']);
+  has Id3 => (is => 'ro', isa => 'Str', request_name => 'id3', traits => ['NameInRequest'], required => 1);
+  has Timecode => (is => 'ro', isa => 'Str', request_name => 'timecode', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###
@@ -41,12 +42,12 @@ ID3 tags in your output, create multiple instances of ID3 insertion
 =head1 ATTRIBUTES
 
 
-=head2 Id3 => Str
+=head2 B<REQUIRED> Id3 => Str
 
   Use ID3 tag (Id3) to provide a tag value in base64-encode format.
 
 
-=head2 Timecode => Str
+=head2 B<REQUIRED> Timecode => Str
 
   Provide a Timecode (TimeCode) in HH:MM:SS:FF or HH:MM:SS;FF format.
 

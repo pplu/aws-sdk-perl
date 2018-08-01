@@ -14,6 +14,7 @@ package Paws::SimpleWorkflow::Decision;
   has SignalExternalWorkflowExecutionDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::SignalExternalWorkflowExecutionDecisionAttributes', request_name => 'signalExternalWorkflowExecutionDecisionAttributes', traits => ['NameInRequest']);
   has StartChildWorkflowExecutionDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::StartChildWorkflowExecutionDecisionAttributes', request_name => 'startChildWorkflowExecutionDecisionAttributes', traits => ['NameInRequest']);
   has StartTimerDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::StartTimerDecisionAttributes', request_name => 'startTimerDecisionAttributes', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

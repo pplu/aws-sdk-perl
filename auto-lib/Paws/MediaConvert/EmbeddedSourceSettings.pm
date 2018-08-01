@@ -3,7 +3,7 @@ package Paws::MediaConvert::EmbeddedSourceSettings;
   has Convert608To708 => (is => 'ro', isa => 'Str', request_name => 'convert608To708', traits => ['NameInRequest']);
   has Source608ChannelNumber => (is => 'ro', isa => 'Int', request_name => 'source608ChannelNumber', traits => ['NameInRequest']);
   has Source608TrackNumber => (is => 'ro', isa => 'Int', request_name => 'source608TrackNumber', traits => ['NameInRequest']);
-  has TerminateCaptions => (is => 'ro', isa => 'Str', request_name => 'terminateCaptions', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConvert::EmbeddedSourceSettings object:
 
-  $service_obj->Method(Att1 => { Convert608To708 => $value, ..., TerminateCaptions => $value  });
+  $service_obj->Method(Att1 => { Convert608To708 => $value, ..., Source608TrackNumber => $value  });
 
 =head3 Results returned from an API call
 
@@ -41,11 +41,7 @@ Settings for embedded captions Source
 
 =head2 Convert608To708 => Str
 
-  Specify whether this set of input captions appears in your outputs in
-both 608 and 708 format. If you choose Upconvert (UPCONVERT),
-MediaConvert includes the captions data in two ways: it passes the 608
-data through using the 608 compatibility bytes fields of the 708
-wrapper, and it also translates the 608 data into 708.
+  
 
 
 =head2 Source608ChannelNumber => Int
@@ -59,13 +55,6 @@ to extract captions. Unused for passthrough.
   Specifies the video track index used for extracting captions. The
 system only supports one input video track, so this should always be
 set to '1'.
-
-
-=head2 TerminateCaptions => Str
-
-  By default, the service terminates any unterminated captions at the end
-of each input. If you want the caption to continue onto your next
-input, disable this setting.
 
 
 

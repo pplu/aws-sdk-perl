@@ -2,6 +2,7 @@ package Paws::S3::Filter;
   use Moose;
   has And => (is => 'ro', isa => 'Paws::S3::And');
   has Prefix => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,9 +3,9 @@ package Paws::MediaConvert::CmafEncryptionSettings;
   has ConstantInitializationVector => (is => 'ro', isa => 'Str', request_name => 'constantInitializationVector', traits => ['NameInRequest']);
   has EncryptionMethod => (is => 'ro', isa => 'Str', request_name => 'encryptionMethod', traits => ['NameInRequest']);
   has InitializationVectorInManifest => (is => 'ro', isa => 'Str', request_name => 'initializationVectorInManifest', traits => ['NameInRequest']);
-  has SpekeKeyProvider => (is => 'ro', isa => 'Paws::MediaConvert::SpekeKeyProviderCmaf', request_name => 'spekeKeyProvider', traits => ['NameInRequest']);
   has StaticKeyProvider => (is => 'ro', isa => 'Paws::MediaConvert::StaticKeyProvider', request_name => 'staticKeyProvider', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###
@@ -50,37 +50,22 @@ will follow the segment number by default.
 
 =head2 EncryptionMethod => Str
 
-  Specify the encryption scheme that you want the service to use when
-encrypting your CMAF segments. Choose AES-CBC subsample (SAMPLE-AES) or
-AES_CTR (AES-CTR).
+  
 
 
 =head2 InitializationVectorInManifest => Str
 
-  When you use DRM with CMAF outputs, choose whether the service writes
-the 128-bit encryption initialization vector in the HLS and DASH
-manifests.
-
-
-=head2 SpekeKeyProvider => L<Paws::MediaConvert::SpekeKeyProviderCmaf>
-
-  If your output group type is CMAF, use these settings when doing DRM
-encryption with a SPEKE-compliant key provider. If your output group
-type is HLS, DASH, or Microsoft Smooth, use the SpekeKeyProvider
-settings instead.
+  
 
 
 =head2 StaticKeyProvider => L<Paws::MediaConvert::StaticKeyProvider>
 
-  Use these settings to set up encryption with a static key provider.
+  
 
 
-=head2 Type => Str
+=head2 B<REQUIRED> Type => Str
 
-  Specify whether your DRM encryption key is static or from a key
-provider that follows the SPEKE standard. For more information about
-SPEKE, see
-https://docs.aws.amazon.com/speke/latest/documentation/what-is-speke.html.
+  
 
 
 

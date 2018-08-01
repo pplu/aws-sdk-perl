@@ -1,6 +1,7 @@
 package Paws::SimpleWorkflow::DomainConfiguration;
   use Moose;
   has WorkflowExecutionRetentionPeriodInDays => (is => 'ro', isa => 'Str', request_name => 'workflowExecutionRetentionPeriodInDays', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::SSM::PatchRule;
   has ComplianceLevel => (is => 'ro', isa => 'Str');
   has EnableNonSecurity => (is => 'ro', isa => 'Bool');
   has PatchFilterGroup => (is => 'ro', isa => 'Paws::SSM::PatchFilterGroup', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,8 @@
 package Paws::Pinpoint::SetDimension;
   use Moose;
   has DimensionType => (is => 'ro', isa => 'Str');
-  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###
@@ -32,24 +33,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::S
 
 =head1 DESCRIPTION
 
-Specifies the dimension type and values for a segment dimension.
+Dimension specification of a segment.
 
 =head1 ATTRIBUTES
 
 
 =head2 DimensionType => Str
 
-  The type of segment dimension to use. Valid values are: INCLUSIVE,
-endpoints that match the criteria are included in the segment; and,
-EXCLUSIVE, endpoints that match the criteria are excluded from the
-segment.
+  The type of dimension: INCLUSIVE - Endpoints that match the criteria
+are included in the segment. EXCLUSIVE - Endpoints that match the
+criteria are excluded from the segment.
 
 
-=head2 B<REQUIRED> Values => ArrayRef[Str|Undef]
+=head2 Values => ArrayRef[Str|Undef]
 
-  The criteria values to use for the segment dimension. Depending on the
-value of the DimensionType property, endpoints are included or excluded
-from the segment if their values match the criteria values.
+  The criteria values for the segment dimension. Endpoints with matching
+attribute values are included or excluded from the segment, depending
+on the setting for Type.
 
 
 

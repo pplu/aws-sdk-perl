@@ -8,6 +8,7 @@ package Paws::Glacier::S3Location;
   has StorageClass => (is => 'ro', isa => 'Str');
   has Tagging => (is => 'ro', isa => 'Paws::Glacier::Hashmap');
   has UserMetadata => (is => 'ro', isa => 'Paws::Glacier::Hashmap');
+
 1;
 
 ### main pod documentation begin ###

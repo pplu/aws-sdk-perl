@@ -1,11 +1,7 @@
 package Paws::MQ::UpdateBrokerInput;
   use Moose;
-  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool', request_name => 'autoMinorVersionUpgrade', traits => ['NameInRequest']);
   has Configuration => (is => 'ro', isa => 'Paws::MQ::ConfigurationId', request_name => 'configuration', traits => ['NameInRequest']);
-  has EngineVersion => (is => 'ro', isa => 'Str', request_name => 'engineVersion', traits => ['NameInRequest']);
-  has HostInstanceType => (is => 'ro', isa => 'Str', request_name => 'hostInstanceType', traits => ['NameInRequest']);
-  has Logs => (is => 'ro', isa => 'Paws::MQ::Logs', request_name => 'logs', traits => ['NameInRequest']);
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroups', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###
@@ -25,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MQ::UpdateBrokerInput object:
 
-  $service_obj->Method(Att1 => { AutoMinorVersionUpgrade => $value, ..., SecurityGroups => $value  });
+  $service_obj->Method(Att1 => { Configuration => $value, ..., Configuration => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::MQ::UpdateBrokerInput object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AutoMinorVersionUpgrade
+  $result->Att1->Configuration
 
 =head1 DESCRIPTION
 
@@ -41,41 +37,9 @@ Updates the broker using the specified properties.
 =head1 ATTRIBUTES
 
 
-=head2 AutoMinorVersionUpgrade => Bool
-
-  Enables automatic upgrades to new minor versions for brokers, as Apache
-releases the versions. The automatic upgrades occur during the
-maintenance window of the broker or after a manual broker reboot.
-
-
 =head2 Configuration => L<Paws::MQ::ConfigurationId>
 
   A list of information about the configuration.
-
-
-=head2 EngineVersion => Str
-
-  The version of the broker engine. For a list of supported engine
-versions, see
-https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
-
-
-=head2 HostInstanceType => Str
-
-  The host instance type of the broker to upgrade to. For a list of
-supported instance types, see
-https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html#broker-instance-types
-
-
-=head2 Logs => L<Paws::MQ::Logs>
-
-  Enables Amazon CloudWatch logging for brokers.
-
-
-=head2 SecurityGroups => ArrayRef[Str|Undef]
-
-  The list of security groups (1 minimum, 5 maximum) that authorizes
-connections to brokers.
 
 
 

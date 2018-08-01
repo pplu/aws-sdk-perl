@@ -3,6 +3,7 @@ package Paws::CloudFront::PublicKey;
   has CreatedTime => (is => 'ro', isa => 'Str', required => 1);
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has PublicKeyConfig => (is => 'ro', isa => 'Paws::CloudFront::PublicKeyConfig', required => 1);
+
 1;
 
 ### main pod documentation begin ###

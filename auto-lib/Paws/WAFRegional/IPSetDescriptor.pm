@@ -2,6 +2,7 @@ package Paws::WAFRegional::IPSetDescriptor;
   use Moose;
   has Type => (is => 'ro', isa => 'Str', required => 1);
   has Value => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

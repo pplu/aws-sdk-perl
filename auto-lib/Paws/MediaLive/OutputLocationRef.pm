@@ -1,6 +1,7 @@
 package Paws::MediaLive::OutputLocationRef;
   use Moose;
   has DestinationRefId => (is => 'ro', isa => 'Str', request_name => 'destinationRefId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

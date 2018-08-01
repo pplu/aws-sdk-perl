@@ -2,6 +2,7 @@ package Paws::CloudFront::LambdaFunctionAssociations;
   use Moose;
   has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::LambdaFunctionAssociation]', request_name => 'LambdaFunctionAssociation', traits => ['NameInRequest']);
   has Quantity => (is => 'ro', isa => 'Int', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::CognitoIdp::CompromisedCredentialsRiskConfigurationType;
   use Moose;
   has Actions => (is => 'ro', isa => 'Paws::CognitoIdp::CompromisedCredentialsActionsType', required => 1);
   has EventFilter => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

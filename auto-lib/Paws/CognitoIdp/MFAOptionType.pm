@@ -2,6 +2,7 @@ package Paws::CognitoIdp::MFAOptionType;
   use Moose;
   has AttributeName => (is => 'ro', isa => 'Str');
   has DeliveryMedium => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Rekognition::CelebrityRecognition;
   use Moose;
   has Celebrity => (is => 'ro', isa => 'Paws::Rekognition::CelebrityDetail');
   has Timestamp => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

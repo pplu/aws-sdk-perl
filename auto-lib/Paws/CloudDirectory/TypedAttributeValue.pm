@@ -5,6 +5,7 @@ package Paws::CloudDirectory::TypedAttributeValue;
   has DatetimeValue => (is => 'ro', isa => 'Str');
   has NumberValue => (is => 'ro', isa => 'Str');
   has StringValue => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

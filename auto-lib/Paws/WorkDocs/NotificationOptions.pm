@@ -2,6 +2,7 @@ package Paws::WorkDocs::NotificationOptions;
   use Moose;
   has EmailMessage => (is => 'ro', isa => 'Str');
   has SendEmail => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

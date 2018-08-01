@@ -1,6 +1,7 @@
 package Paws::CloudWatchEvents::KinesisParameters;
   use Moose;
   has PartitionKeyPath => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

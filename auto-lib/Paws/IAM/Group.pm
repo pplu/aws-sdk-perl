@@ -5,6 +5,7 @@ package Paws::IAM::Group;
   has GroupId => (is => 'ro', isa => 'Str', required => 1);
   has GroupName => (is => 'ro', isa => 'Str', required => 1);
   has Path => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

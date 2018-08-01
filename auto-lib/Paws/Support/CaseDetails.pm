@@ -12,6 +12,7 @@ package Paws::Support::CaseDetails;
   has Subject => (is => 'ro', isa => 'Str', request_name => 'subject', traits => ['NameInRequest']);
   has SubmittedBy => (is => 'ro', isa => 'Str', request_name => 'submittedBy', traits => ['NameInRequest']);
   has TimeCreated => (is => 'ro', isa => 'Str', request_name => 'timeCreated', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

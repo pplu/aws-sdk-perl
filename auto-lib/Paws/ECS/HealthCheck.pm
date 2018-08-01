@@ -5,6 +5,7 @@ package Paws::ECS::HealthCheck;
   has Retries => (is => 'ro', isa => 'Int', request_name => 'retries', traits => ['NameInRequest']);
   has StartPeriod => (is => 'ro', isa => 'Int', request_name => 'startPeriod', traits => ['NameInRequest']);
   has Timeout => (is => 'ro', isa => 'Int', request_name => 'timeout', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###
@@ -96,7 +97,7 @@ specify between 5 and 300 seconds. The default value is 30 seconds.
 
   The number of times to retry a failed health check before the container
 is considered unhealthy. You may specify between 1 and 10 retries. The
-default value is 3.
+default value is 3 retries.
 
 
 =head2 StartPeriod => Int
@@ -115,7 +116,7 @@ toward the maximum number of retries.
 
   The time period in seconds to wait for a health check to succeed before
 it is considered a failure. You may specify between 2 and 60 seconds.
-The default value is 5.
+The default value is 5 seconds.
 
 
 

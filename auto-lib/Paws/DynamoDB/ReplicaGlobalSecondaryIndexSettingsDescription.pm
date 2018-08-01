@@ -2,10 +2,9 @@ package Paws::DynamoDB::ReplicaGlobalSecondaryIndexSettingsDescription;
   use Moose;
   has IndexName => (is => 'ro', isa => 'Str', required => 1);
   has IndexStatus => (is => 'ro', isa => 'Str');
-  has ProvisionedReadCapacityAutoScalingSettings => (is => 'ro', isa => 'Paws::DynamoDB::AutoScalingSettingsDescription');
   has ProvisionedReadCapacityUnits => (is => 'ro', isa => 'Int');
-  has ProvisionedWriteCapacityAutoScalingSettings => (is => 'ro', isa => 'Paws::DynamoDB::AutoScalingSettingsDescription');
   has ProvisionedWriteCapacityUnits => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###
@@ -73,22 +72,10 @@ C<ACTIVE> - The global secondary index is ready for use.
 
 
 
-=head2 ProvisionedReadCapacityAutoScalingSettings => L<Paws::DynamoDB::AutoScalingSettingsDescription>
-
-  Auto scaling settings for a global secondary index replica's read
-capacity units.
-
-
 =head2 ProvisionedReadCapacityUnits => Int
 
   The maximum number of strongly consistent reads consumed per second
 before DynamoDB returns a C<ThrottlingException>.
-
-
-=head2 ProvisionedWriteCapacityAutoScalingSettings => L<Paws::DynamoDB::AutoScalingSettingsDescription>
-
-  Auto scaling settings for a global secondary index replica's write
-capacity units.
 
 
 =head2 ProvisionedWriteCapacityUnits => Int

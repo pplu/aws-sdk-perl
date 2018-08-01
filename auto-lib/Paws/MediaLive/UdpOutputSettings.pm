@@ -4,6 +4,7 @@ package Paws::MediaLive::UdpOutputSettings;
   has ContainerSettings => (is => 'ro', isa => 'Paws::MediaLive::UdpContainerSettings', request_name => 'containerSettings', traits => ['NameInRequest'], required => 1);
   has Destination => (is => 'ro', isa => 'Paws::MediaLive::OutputLocationRef', request_name => 'destination', traits => ['NameInRequest'], required => 1);
   has FecOutputSettings => (is => 'ro', isa => 'Paws::MediaLive::FecOutputSettings', request_name => 'fecOutputSettings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

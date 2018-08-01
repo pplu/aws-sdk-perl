@@ -1,6 +1,7 @@
 package Paws::ElastiCache::SlotMigration;
   use Moose;
   has ProgressPercentage => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

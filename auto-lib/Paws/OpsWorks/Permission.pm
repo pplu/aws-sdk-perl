@@ -5,6 +5,7 @@ package Paws::OpsWorks::Permission;
   has IamUserArn => (is => 'ro', isa => 'Str');
   has Level => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

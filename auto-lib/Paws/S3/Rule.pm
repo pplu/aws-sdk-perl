@@ -8,6 +8,7 @@ package Paws::S3::Rule;
   has Prefix => (is => 'ro', isa => 'Str', required => 1);
   has Status => (is => 'ro', isa => 'Str', required => 1);
   has Transition => (is => 'ro', isa => 'Paws::S3::Transition');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::ES::StorageType;
   has StorageSubTypeName => (is => 'ro', isa => 'Str');
   has StorageTypeLimits => (is => 'ro', isa => 'ArrayRef[Paws::ES::StorageTypeLimit]');
   has StorageTypeName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

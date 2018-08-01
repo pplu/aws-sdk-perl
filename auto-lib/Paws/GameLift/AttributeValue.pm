@@ -4,6 +4,7 @@ package Paws::GameLift::AttributeValue;
   has S => (is => 'ro', isa => 'Str');
   has SDM => (is => 'ro', isa => 'Paws::GameLift::StringDoubleMap');
   has SL => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

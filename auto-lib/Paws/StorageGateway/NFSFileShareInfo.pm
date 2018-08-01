@@ -17,7 +17,7 @@ package Paws::StorageGateway::NFSFileShareInfo;
   has RequesterPays => (is => 'ro', isa => 'Bool');
   has Role => (is => 'ro', isa => 'Str');
   has Squash => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::Tag]');
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +37,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::StorageGateway::NFSFileShareInfo object:
 
-  $service_obj->Method(Att1 => { ClientList => $value, ..., Tags => $value  });
+  $service_obj->Method(Att1 => { ClientList => $value, ..., Squash => $value  });
 
 =head3 Results returned from an API call
 
@@ -63,9 +63,9 @@ buckets. This operation is only supported in file gateways.
 =head2 DefaultStorageClass => Str
 
   The default storage class for objects put into an Amazon S3 bucket by
-the file gateway. Possible values are C<S3_STANDARD>,
-C<S3_STANDARD_IA>, or C<S3_ONEZONE_IA>. If this field is not populated,
-the default value C<S3_STANDARD> is used. Optional.
+file gateway. Possible values are S3_STANDARD, S3_STANDARD_IA or
+S3_ONEZONE_IA. If this field is not populated, the default value
+S3_STANDARD is used. Optional.
 
 
 =head2 FileShareARN => Str
@@ -90,15 +90,15 @@ the default value C<S3_STANDARD> is used. Optional.
 
 =head2 GuessMIMETypeEnabled => Bool
 
-  A value that enables guessing of the MIME type for uploaded objects
-based on file extensions. Set this value to true to enable MIME type
-guessing, and otherwise to false. The default value is true.
+  Enables guessing of the MIME type for uploaded objects based on file
+extensions. Set this value to true to enable MIME type guessing, and
+otherwise to false. The default value is true.
 
 
 =head2 KMSEncrypted => Bool
 
-  True to use Amazon S3 server side encryption with your own AWS KMS key,
-or false to use a key managed by Amazon S3. Optional.
+  True to use Amazon S3 server side encryption with your own KMS key, or
+false to use a key managed by Amazon S3. Optional.
 
 
 =head2 KMSKey => Str
@@ -128,21 +128,15 @@ or false to use a key managed by Amazon S3. Optional.
 
 =head2 ReadOnly => Bool
 
-  A value that sets the write status of a file share. This value is true
-if the write status is read-only, and otherwise false.
+  Sets the write status of a file share. This value is true if the write
+status is read-only, and otherwise false.
 
 
 =head2 RequesterPays => Bool
 
-  A value that sets who pays the cost of the request and the cost
-associated with data download from the S3 bucket. If this value is set
-to true, the requester pays the costs. Otherwise the S3 bucket owner
-pays. However, the S3 bucket owner always pays the cost of storing
-data.
-
-C<RequesterPays> is a configuration for the S3 bucket that backs the
-file share, so make sure that the configuration on the file share is
-the same as the S3 bucket configuration.
+  Sets who pays the cost of the request and the data download from the
+Amazon S3 bucket. Set this value to true if you want the requester to
+pay instead of the bucket owner, and otherwise to false.
 
 
 =head2 Role => Str
@@ -153,14 +147,6 @@ the same as the S3 bucket configuration.
 =head2 Squash => Str
 
   
-
-
-=head2 Tags => ArrayRef[L<Paws::StorageGateway::Tag>]
-
-  A list of up to 50 tags assigned to the NFS file share, sorted
-alphabetically by key name. Each tag is a key-value pair. For a gateway
-with more than 10 tags assigned, you can view all tags using the
-C<ListTagsForResource> API operation.
 
 
 

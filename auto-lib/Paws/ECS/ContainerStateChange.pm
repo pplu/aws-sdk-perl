@@ -7,6 +7,7 @@ package Paws::ECS::ContainerStateChange;
   has Reason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
   has RuntimeId => (is => 'ro', isa => 'Str', request_name => 'runtimeId', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

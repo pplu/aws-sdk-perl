@@ -18,6 +18,7 @@ package Paws::Inspector::Finding;
   has Title => (is => 'ro', isa => 'Str', request_name => 'title', traits => ['NameInRequest']);
   has UpdatedAt => (is => 'ro', isa => 'Str', request_name => 'updatedAt', traits => ['NameInRequest'], required => 1);
   has UserAttributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', request_name => 'userAttributes', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

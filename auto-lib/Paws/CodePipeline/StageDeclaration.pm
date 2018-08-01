@@ -3,6 +3,7 @@ package Paws::CodePipeline::StageDeclaration;
   has Actions => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ActionDeclaration]', request_name => 'actions', traits => ['NameInRequest'], required => 1);
   has Blockers => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::BlockerDeclaration]', request_name => 'blockers', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

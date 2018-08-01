@@ -12,6 +12,7 @@ package Paws::MediaLive::CaptionDestinationSettings;
   has TeletextDestinationSettings => (is => 'ro', isa => 'Paws::MediaLive::TeletextDestinationSettings', request_name => 'teletextDestinationSettings', traits => ['NameInRequest']);
   has TtmlDestinationSettings => (is => 'ro', isa => 'Paws::MediaLive::TtmlDestinationSettings', request_name => 'ttmlDestinationSettings', traits => ['NameInRequest']);
   has WebvttDestinationSettings => (is => 'ro', isa => 'Paws::MediaLive::WebvttDestinationSettings', request_name => 'webvttDestinationSettings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

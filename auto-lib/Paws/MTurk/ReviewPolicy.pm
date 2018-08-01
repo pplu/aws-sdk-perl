@@ -2,6 +2,7 @@ package Paws::MTurk::ReviewPolicy;
   use Moose;
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::MTurk::PolicyParameter]');
   has PolicyName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

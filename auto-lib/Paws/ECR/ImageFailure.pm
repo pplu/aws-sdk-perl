@@ -3,6 +3,7 @@ package Paws::ECR::ImageFailure;
   has FailureCode => (is => 'ro', isa => 'Str', request_name => 'failureCode', traits => ['NameInRequest']);
   has FailureReason => (is => 'ro', isa => 'Str', request_name => 'failureReason', traits => ['NameInRequest']);
   has ImageId => (is => 'ro', isa => 'Paws::ECR::ImageIdentifier', request_name => 'imageId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

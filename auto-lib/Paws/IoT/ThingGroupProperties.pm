@@ -2,6 +2,7 @@ package Paws::IoT::ThingGroupProperties;
   use Moose;
   has AttributePayload => (is => 'ro', isa => 'Paws::IoT::AttributePayload', request_name => 'attributePayload', traits => ['NameInRequest']);
   has ThingGroupDescription => (is => 'ro', isa => 'Str', request_name => 'thingGroupDescription', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

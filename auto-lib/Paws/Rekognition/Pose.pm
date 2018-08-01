@@ -3,6 +3,7 @@ package Paws::Rekognition::Pose;
   has Pitch => (is => 'ro', isa => 'Num');
   has Roll => (is => 'ro', isa => 'Num');
   has Yaw => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

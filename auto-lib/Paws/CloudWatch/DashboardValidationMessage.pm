@@ -2,6 +2,7 @@ package Paws::CloudWatch::DashboardValidationMessage;
   use Moose;
   has DataPath => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

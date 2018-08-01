@@ -2,6 +2,7 @@ package Paws::DataPipeline::ValidationError;
   use Moose;
   has Errors => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'errors', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

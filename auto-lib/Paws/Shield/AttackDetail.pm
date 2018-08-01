@@ -8,6 +8,7 @@ package Paws::Shield::AttackDetail;
   has ResourceArn => (is => 'ro', isa => 'Str');
   has StartTime => (is => 'ro', isa => 'Str');
   has SubResources => (is => 'ro', isa => 'ArrayRef[Paws::Shield::SubResourceSummary]');
+
 1;
 
 ### main pod documentation begin ###

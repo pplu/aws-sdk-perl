@@ -11,6 +11,7 @@ package Paws::CUR::ReportDefinition;
   has S3Prefix => (is => 'ro', isa => 'Str', required => 1);
   has S3Region => (is => 'ro', isa => 'Str', required => 1);
   has TimeUnit => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

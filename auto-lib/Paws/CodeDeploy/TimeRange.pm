@@ -2,6 +2,7 @@ package Paws::CodeDeploy::TimeRange;
   use Moose;
   has End => (is => 'ro', isa => 'Str', request_name => 'end', traits => ['NameInRequest']);
   has Start => (is => 'ro', isa => 'Str', request_name => 'start', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

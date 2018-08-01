@@ -1,6 +1,7 @@
 package Paws::ElastiCache::ReshardingStatus;
   use Moose;
   has SlotMigration => (is => 'ro', isa => 'Paws::ElastiCache::SlotMigration');
+
 1;
 
 ### main pod documentation begin ###

@@ -7,6 +7,7 @@ package Paws::MachineLearning::RedshiftDataSpec;
   has DataSchemaUri => (is => 'ro', isa => 'Str');
   has S3StagingLocation => (is => 'ro', isa => 'Str', required => 1);
   has SelectSqlQuery => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

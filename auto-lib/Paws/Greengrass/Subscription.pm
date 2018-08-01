@@ -1,9 +1,10 @@
 package Paws::Greengrass::Subscription;
   use Moose;
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has Source => (is => 'ro', isa => 'Str', required => 1);
-  has Subject => (is => 'ro', isa => 'Str', required => 1);
-  has Target => (is => 'ro', isa => 'Str', required => 1);
+  has Id => (is => 'ro', isa => 'Str');
+  has Source => (is => 'ro', isa => 'Str');
+  has Subject => (is => 'ro', isa => 'Str');
+  has Target => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###
@@ -39,30 +40,26 @@ Information about a subscription.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Id => Str
+=head2 Id => Str
 
-  A descriptive or arbitrary ID for the subscription. This value must be
-unique within the subscription definition version. Max length is 128
-characters with pattern ''[a-zA-Z0-9:_-]+''.
+  The id of the subscription.
 
 
-=head2 B<REQUIRED> Source => Str
+=head2 Source => Str
 
   The source of the subscription. Can be a thing ARN, a Lambda function
-ARN, a connector ARN, 'cloud' (which represents the AWS IoT cloud), or
-'GGShadowService'.
+ARN, 'cloud' (which represents the IoT cloud), or 'GGShadowService'.
 
 
-=head2 B<REQUIRED> Subject => Str
+=head2 Subject => Str
 
-  The MQTT topic used to route the message.
+  The subject of the message.
 
 
-=head2 B<REQUIRED> Target => Str
+=head2 Target => Str
 
   Where the message is sent to. Can be a thing ARN, a Lambda function
-ARN, a connector ARN, 'cloud' (which represents the AWS IoT cloud), or
-'GGShadowService'.
+ARN, 'cloud' (which represents the IoT cloud), or 'GGShadowService'.
 
 
 

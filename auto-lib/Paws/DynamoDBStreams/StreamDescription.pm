@@ -9,6 +9,7 @@ package Paws::DynamoDBStreams::StreamDescription;
   has StreamStatus => (is => 'ro', isa => 'Str');
   has StreamViewType => (is => 'ro', isa => 'Str');
   has TableName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

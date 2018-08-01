@@ -7,6 +7,7 @@ package Paws::DynamoDBStreams::StreamRecord;
   has SequenceNumber => (is => 'ro', isa => 'Str');
   has SizeBytes => (is => 'ro', isa => 'Int');
   has StreamViewType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

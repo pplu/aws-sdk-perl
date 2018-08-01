@@ -7,6 +7,7 @@ package Paws::OpsWorks::OperatingSystem;
   has ReportedVersion => (is => 'ro', isa => 'Str');
   has Supported => (is => 'ro', isa => 'Bool');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

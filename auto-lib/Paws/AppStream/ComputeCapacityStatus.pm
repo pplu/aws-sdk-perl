@@ -4,6 +4,7 @@ package Paws::AppStream::ComputeCapacityStatus;
   has Desired => (is => 'ro', isa => 'Int', required => 1);
   has InUse => (is => 'ro', isa => 'Int');
   has Running => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

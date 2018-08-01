@@ -5,6 +5,7 @@ package Paws::Route53Domains::BillingRecord;
   has InvoiceId => (is => 'ro', isa => 'Str');
   has Operation => (is => 'ro', isa => 'Str');
   has Price => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

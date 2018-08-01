@@ -7,6 +7,7 @@ package Paws::Inspector::AssessmentRunAgent;
   has AssessmentRunArn => (is => 'ro', isa => 'Str', request_name => 'assessmentRunArn', traits => ['NameInRequest'], required => 1);
   has AutoScalingGroup => (is => 'ro', isa => 'Str', request_name => 'autoScalingGroup', traits => ['NameInRequest']);
   has TelemetryMetadata => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::TelemetryMetadata]', request_name => 'telemetryMetadata', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

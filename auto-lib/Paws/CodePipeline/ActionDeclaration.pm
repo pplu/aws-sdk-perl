@@ -9,6 +9,7 @@ package Paws::CodePipeline::ActionDeclaration;
   has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
   has RunOrder => (is => 'ro', isa => 'Int', request_name => 'runOrder', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

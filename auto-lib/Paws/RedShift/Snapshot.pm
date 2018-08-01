@@ -15,9 +15,6 @@ package Paws::RedShift::Snapshot;
   has EnhancedVpcRouting => (is => 'ro', isa => 'Bool');
   has EstimatedSecondsToCompletion => (is => 'ro', isa => 'Int');
   has KmsKeyId => (is => 'ro', isa => 'Str');
-  has MaintenanceTrackName => (is => 'ro', isa => 'Str');
-  has ManualSnapshotRemainingDays => (is => 'ro', isa => 'Int');
-  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has MasterUsername => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int');
@@ -26,13 +23,13 @@ package Paws::RedShift::Snapshot;
   has RestorableNodeTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'NodeType', traits => ['NameInRequest']);
   has SnapshotCreateTime => (is => 'ro', isa => 'Str');
   has SnapshotIdentifier => (is => 'ro', isa => 'Str');
-  has SnapshotRetentionStartTime => (is => 'ro', isa => 'Str');
   has SnapshotType => (is => 'ro', isa => 'Str');
   has SourceRegion => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]', request_name => 'Tag', traits => ['NameInRequest']);
   has TotalBackupSizeInMegaBytes => (is => 'ro', isa => 'Num');
   has VpcId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###
@@ -142,7 +139,7 @@ encrypted using HSM keys.
 VPC routing enabled. To create a cluster that uses enhanced VPC
 routing, the cluster must be in a VPC. For more information, see
 Enhanced VPC Routing
-(https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html)
+(http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html)
 in the Amazon Redshift Cluster Management Guide.
 
 If this option is C<true>, enhanced VPC routing is enabled.
@@ -161,25 +158,6 @@ complete. Returns C<0> for a completed backup.
   The AWS Key Management Service (KMS) key ID of the encryption key that
 was used to encrypt data in the cluster from which the snapshot was
 taken.
-
-
-=head2 MaintenanceTrackName => Str
-
-  The name of the maintenance track for the snapshot.
-
-
-=head2 ManualSnapshotRemainingDays => Int
-
-  The number of days until a manual snapshot will pass its retention
-period.
-
-
-=head2 ManualSnapshotRetentionPeriod => Int
-
-  The number of days that a manual snapshot is retained. If the value is
--1, the manual snapshot is retained indefinitely.
-
-The value must be either -1 or an integer between 1 and 3,653.
 
 
 =head2 MasterUsername => Str
@@ -218,8 +196,8 @@ into.
 
 =head2 SnapshotCreateTime => Str
 
-  The time (in UTC format) when Amazon Redshift began the snapshot. A
-snapshot contains a copy of the cluster data as of this exact time.
+  The time (UTC) when Amazon Redshift began the snapshot. A snapshot
+contains a copy of the cluster data as of this exact time.
 
 
 =head2 SnapshotIdentifier => Str
@@ -227,16 +205,10 @@ snapshot contains a copy of the cluster data as of this exact time.
   The snapshot identifier that is provided in the request.
 
 
-=head2 SnapshotRetentionStartTime => Str
-
-  A timestamp representing the start of the retention period for the
-snapshot.
-
-
 =head2 SnapshotType => Str
 
   The snapshot type. Snapshots created using CreateClusterSnapshot and
-CopyClusterSnapshot are of type "manual".
+CopyClusterSnapshot will be of type "manual".
 
 
 =head2 SourceRegion => Str
@@ -247,7 +219,7 @@ CopyClusterSnapshot are of type "manual".
 =head2 Status => Str
 
   The snapshot status. The value of the status depends on the API
-operation used:
+operation used.
 
 =over
 

@@ -4,6 +4,7 @@ package Paws::DeviceFarm::Project;
   has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
   has DefaultJobTimeoutMinutes => (is => 'ro', isa => 'Int', request_name => 'defaultJobTimeoutMinutes', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

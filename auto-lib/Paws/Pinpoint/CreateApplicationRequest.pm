@@ -1,7 +1,7 @@
 package Paws::Pinpoint::CreateApplicationRequest;
   use Moose;
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string', request_name => 'tags', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Pinpoint::CreateApplicationRequest object:
 
-  $service_obj->Method(Att1 => { Name => $value, ..., Tags => $value  });
+  $service_obj->Method(Att1 => { Name => $value, ..., Name => $value  });
 
 =head3 Results returned from an API call
 
@@ -32,23 +32,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::C
 
 =head1 DESCRIPTION
 
-Specifies the display name of an application and the tags to associate
-with the application.
+Application Request.
 
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Name => Str
+=head2 Name => Str
 
-  The display name of the application. This name is displayed as the
-B<Project name> on the Amazon Pinpoint console.
-
-
-=head2 Tags => L<Paws::Pinpoint::MapOf__string>
-
-  A string-to-string map of key-value pairs that defines the tags to
-associate with the application. Each tag consists of a required tag key
-and an associated tag value.
+  The display name of the application. Used in the Amazon Pinpoint
+console.
 
 
 

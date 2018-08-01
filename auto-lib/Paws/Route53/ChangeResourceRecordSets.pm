@@ -4,6 +4,7 @@ package Paws::Route53::ChangeResourceRecordSets;
   has ChangeBatch => (is => 'ro', isa => 'Paws::Route53::ChangeBatch', required => 1);
   has HostedZoneId => (is => 'ro', isa => 'Str', uri_name => 'Id', traits => ['ParamInURI'], required => 1);
 
+
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ChangeResourceRecordSets');
@@ -11,7 +12,8 @@ package Paws::Route53::ChangeResourceRecordSets;
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::ChangeResourceRecordSetsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-  
+  class_has _top_level_element => (isa => 'Str', is => 'ro', default => 'ChangeResourceRecordSetsRequest');
+  class_has _top_level_namespace => (isa => 'Str', is => 'ro', default => 'https://route53.amazonaws.com/doc/2013-04-01/');  
 1;
 
 ### main pod documentation begin ###

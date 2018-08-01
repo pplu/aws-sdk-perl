@@ -3,9 +3,7 @@ package Paws::EC2::DescribeNetworkAcls;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
-  has MaxResults => (is => 'ro', isa => 'Int');
   has NetworkAclIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'NetworkAclId' );
-  has NextToken => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -33,8 +31,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     # To describe a network ACL
     # This example describes the specified network ACL.
-    my $DescribeNetworkAclsResult =
-      $ec2->DescribeNetworkAcls( 'NetworkAclIds' => ['acl-5fb85d36'] );
+    my $DescribeNetworkAclsResult = $ec2->DescribeNetworkAcls(
+      {
+        'NetworkAclIds' => ['acl-5fb85d36']
+      }
+    );
 
     # Results:
     my $NetworkAcls = $DescribeNetworkAclsResult->NetworkAcls;
@@ -88,6 +89,11 @@ C<entry.cidr> - The IPv4 CIDR range specified in the entry.
 
 =item *
 
+C<entry.egress> - Indicates whether the entry applies to egress
+traffic.
+
+=item *
+
 C<entry.icmp.code> - The ICMP code specified in the entry, if any.
 
 =item *
@@ -121,7 +127,7 @@ C<entry.rule-action> - Allows or denies the matching traffic (C<allow>
 =item *
 
 C<entry.rule-number> - The number of an entry (in other words, rule) in
-the set of ACL entries.
+the ACL's set of entries.
 
 =item *
 
@@ -129,15 +135,11 @@ C<network-acl-id> - The ID of the network ACL.
 
 =item *
 
-C<owner-id> - The ID of the AWS account that owns the network ACL.
-
-=item *
-
-C<tag>:E<lt>keyE<gt> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value as
-the filter value. For example, to find all resources that have a tag
-with the key C<Owner> and the value C<TeamA>, specify C<tag:Owner> for
-the filter name and C<TeamA> for the filter value.
+C<tag>:I<key>=I<value> - The key/value combination of a tag assigned to
+the resource. Specify the key of the tag in the filter name and the
+value of the tag in the filter value. For example, for the tag
+Purpose=X, specify C<tag:Purpose> for the filter name and C<X> for the
+filter value.
 
 =item *
 
@@ -154,25 +156,11 @@ C<vpc-id> - The ID of the VPC for the network ACL.
 
 
 
-=head2 MaxResults => Int
-
-The maximum number of results to return with a single call. To retrieve
-the remaining results, make another call with the returned C<nextToken>
-value.
-
-
-
 =head2 NetworkAclIds => ArrayRef[Str|Undef]
 
 One or more network ACL IDs.
 
 Default: Describes all your network ACLs.
-
-
-
-=head2 NextToken => Str
-
-The token for the next page of results.
 
 
 

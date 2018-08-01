@@ -2,6 +2,7 @@ package Paws::Organizations::Policy;
   use Moose;
   has Content => (is => 'ro', isa => 'Str');
   has PolicySummary => (is => 'ro', isa => 'Paws::Organizations::PolicySummary');
+
 1;
 
 ### main pod documentation begin ###

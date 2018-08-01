@@ -3,6 +3,7 @@ package Paws::ELBv2::TargetHealthDescription;
   has HealthCheckPort => (is => 'ro', isa => 'Str');
   has Target => (is => 'ro', isa => 'Paws::ELBv2::TargetDescription');
   has TargetHealth => (is => 'ro', isa => 'Paws::ELBv2::TargetHealth');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::ApiGateway::QuotaSettings;
   has Limit => (is => 'ro', isa => 'Int', request_name => 'limit', traits => ['NameInRequest']);
   has Offset => (is => 'ro', isa => 'Int', request_name => 'offset', traits => ['NameInRequest']);
   has Period => (is => 'ro', isa => 'Str', request_name => 'period', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

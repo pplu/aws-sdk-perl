@@ -7,6 +7,7 @@ package Paws::ECR::Repository;
   has RepositoryArn => (is => 'ro', isa => 'Str', request_name => 'repositoryArn', traits => ['NameInRequest']);
   has RepositoryName => (is => 'ro', isa => 'Str', request_name => 'repositoryName', traits => ['NameInRequest']);
   has RepositoryUri => (is => 'ro', isa => 'Str', request_name => 'repositoryUri', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

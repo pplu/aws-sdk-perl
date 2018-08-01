@@ -4,6 +4,7 @@ package Paws::Greengrass::FunctionConfigurationEnvironment;
   has Execution => (is => 'ro', isa => 'Paws::Greengrass::FunctionExecutionConfig');
   has ResourceAccessPolicies => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::ResourceAccessPolicy]');
   has Variables => (is => 'ro', isa => 'Paws::Greengrass::__mapOf__string');
+
 1;
 
 ### main pod documentation begin ###

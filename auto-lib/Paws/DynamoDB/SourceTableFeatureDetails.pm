@@ -5,6 +5,7 @@ package Paws::DynamoDB::SourceTableFeatureDetails;
   has SSEDescription => (is => 'ro', isa => 'Paws::DynamoDB::SSEDescription');
   has StreamDescription => (is => 'ro', isa => 'Paws::DynamoDB::StreamSpecification');
   has TimeToLiveDescription => (is => 'ro', isa => 'Paws::DynamoDB::TimeToLiveDescription');
+
 1;
 
 ### main pod documentation begin ###

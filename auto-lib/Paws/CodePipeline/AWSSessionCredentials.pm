@@ -3,6 +3,7 @@ package Paws::CodePipeline::AWSSessionCredentials;
   has AccessKeyId => (is => 'ro', isa => 'Str', request_name => 'accessKeyId', traits => ['NameInRequest'], required => 1);
   has SecretAccessKey => (is => 'ro', isa => 'Str', request_name => 'secretAccessKey', traits => ['NameInRequest'], required => 1);
   has SessionToken => (is => 'ro', isa => 'Str', request_name => 'sessionToken', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

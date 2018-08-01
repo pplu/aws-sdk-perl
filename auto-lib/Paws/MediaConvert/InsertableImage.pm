@@ -11,6 +11,7 @@ package Paws::MediaConvert::InsertableImage;
   has Opacity => (is => 'ro', isa => 'Int', request_name => 'opacity', traits => ['NameInRequest']);
   has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
   has Width => (is => 'ro', isa => 'Int', request_name => 'width', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

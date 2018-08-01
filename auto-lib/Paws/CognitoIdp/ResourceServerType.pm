@@ -4,6 +4,7 @@ package Paws::CognitoIdp::ResourceServerType;
   has Name => (is => 'ro', isa => 'Str');
   has Scopes => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::ResourceServerScopeType]');
   has UserPoolId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

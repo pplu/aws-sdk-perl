@@ -9,6 +9,7 @@ package Paws::WorkSpaces::WorkspaceBundle;
   has Owner => (is => 'ro', isa => 'Str');
   has RootStorage => (is => 'ro', isa => 'Paws::WorkSpaces::RootStorage');
   has UserStorage => (is => 'ro', isa => 'Paws::WorkSpaces::UserStorage');
+
 1;
 
 ### main pod documentation begin ###

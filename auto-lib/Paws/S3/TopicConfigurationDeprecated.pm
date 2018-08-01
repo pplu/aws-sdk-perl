@@ -4,6 +4,7 @@ package Paws::S3::TopicConfigurationDeprecated;
   has Events => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'Event', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str');
   has Topic => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::ServiceCatalog::ListTagOptionsFilters;
   has Active => (is => 'ro', isa => 'Bool');
   has Key => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::S3::LifecycleExpiration;
   has Date => (is => 'ro', isa => 'Str');
   has Days => (is => 'ro', isa => 'Int');
   has ExpiredObjectDeleteMarker => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

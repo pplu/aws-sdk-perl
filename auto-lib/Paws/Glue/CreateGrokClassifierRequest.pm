@@ -4,6 +4,7 @@ package Paws::Glue::CreateGrokClassifierRequest;
   has CustomPatterns => (is => 'ro', isa => 'Str');
   has GrokPattern => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Firehose::Processor;
   use Moose;
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::Firehose::ProcessorParameter]');
   has Type => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

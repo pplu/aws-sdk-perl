@@ -4,6 +4,7 @@ package Paws::S3::TopicConfiguration;
   has Filter => (is => 'ro', isa => 'Paws::S3::NotificationConfigurationFilter');
   has Id => (is => 'ro', isa => 'Str');
   has TopicArn => (is => 'ro', isa => 'Str', request_name => 'Topic', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

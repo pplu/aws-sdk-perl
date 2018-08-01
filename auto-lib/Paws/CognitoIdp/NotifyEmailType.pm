@@ -3,6 +3,7 @@ package Paws::CognitoIdp::NotifyEmailType;
   has HtmlBody => (is => 'ro', isa => 'Str');
   has Subject => (is => 'ro', isa => 'Str', required => 1);
   has TextBody => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -1,13 +1,11 @@
 package Paws::DynamoDB::ReplicaSettingsDescription;
   use Moose;
   has RegionName => (is => 'ro', isa => 'Str', required => 1);
-  has ReplicaBillingModeSummary => (is => 'ro', isa => 'Paws::DynamoDB::BillingModeSummary');
   has ReplicaGlobalSecondaryIndexSettings => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::ReplicaGlobalSecondaryIndexSettingsDescription]');
-  has ReplicaProvisionedReadCapacityAutoScalingSettings => (is => 'ro', isa => 'Paws::DynamoDB::AutoScalingSettingsDescription');
   has ReplicaProvisionedReadCapacityUnits => (is => 'ro', isa => 'Int');
-  has ReplicaProvisionedWriteCapacityAutoScalingSettings => (is => 'ro', isa => 'Paws::DynamoDB::AutoScalingSettingsDescription');
   has ReplicaProvisionedWriteCapacityUnits => (is => 'ro', isa => 'Int');
   has ReplicaStatus => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###
@@ -45,12 +43,7 @@ Represents the properties of a replica.
 
 =head2 B<REQUIRED> RegionName => Str
 
-  The Region name of the replica.
-
-
-=head2 ReplicaBillingModeSummary => L<Paws::DynamoDB::BillingModeSummary>
-
-  The read/write capacity mode of the replica.
+  The region name of the replica.
 
 
 =head2 ReplicaGlobalSecondaryIndexSettings => ArrayRef[L<Paws::DynamoDB::ReplicaGlobalSecondaryIndexSettingsDescription>]
@@ -58,24 +51,13 @@ Represents the properties of a replica.
   Replica global secondary index settings for the global table.
 
 
-=head2 ReplicaProvisionedReadCapacityAutoScalingSettings => L<Paws::DynamoDB::AutoScalingSettingsDescription>
-
-  Auto scaling settings for a global table replica's read capacity units.
-
-
 =head2 ReplicaProvisionedReadCapacityUnits => Int
 
   The maximum number of strongly consistent reads consumed per second
 before DynamoDB returns a C<ThrottlingException>. For more information,
 see Specifying Read and Write Requirements
-(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput)
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput)
 in the I<Amazon DynamoDB Developer Guide>.
-
-
-=head2 ReplicaProvisionedWriteCapacityAutoScalingSettings => L<Paws::DynamoDB::AutoScalingSettingsDescription>
-
-  Auto scaling settings for a global table replica's write capacity
-units.
 
 
 =head2 ReplicaProvisionedWriteCapacityUnits => Int
@@ -83,31 +65,31 @@ units.
   The maximum number of writes consumed per second before DynamoDB
 returns a C<ThrottlingException>. For more information, see Specifying
 Read and Write Requirements
-(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput)
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput)
 in the I<Amazon DynamoDB Developer Guide>.
 
 
 =head2 ReplicaStatus => Str
 
-  The current state of the Region:
+  The current state of the region:
 
 =over
 
 =item *
 
-C<CREATING> - The Region is being created.
+C<CREATING> - The region is being created.
 
 =item *
 
-C<UPDATING> - The Region is being updated.
+C<UPDATING> - The region is being updated.
 
 =item *
 
-C<DELETING> - The Region is being deleted.
+C<DELETING> - The region is being deleted.
 
 =item *
 
-C<ACTIVE> - The Region is ready for use.
+C<ACTIVE> - The region is ready for use.
 
 =back
 

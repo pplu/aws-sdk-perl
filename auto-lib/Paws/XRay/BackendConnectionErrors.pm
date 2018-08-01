@@ -6,6 +6,7 @@ package Paws::XRay::BackendConnectionErrors;
   has OtherCount => (is => 'ro', isa => 'Int');
   has TimeoutCount => (is => 'ro', isa => 'Int');
   has UnknownHostCount => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

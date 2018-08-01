@@ -6,6 +6,7 @@ package Paws::Config::ConfigExportDeliveryInfo;
   has LastStatus => (is => 'ro', isa => 'Str', request_name => 'lastStatus', traits => ['NameInRequest']);
   has LastSuccessfulTime => (is => 'ro', isa => 'Str', request_name => 'lastSuccessfulTime', traits => ['NameInRequest']);
   has NextDeliveryTime => (is => 'ro', isa => 'Str', request_name => 'nextDeliveryTime', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

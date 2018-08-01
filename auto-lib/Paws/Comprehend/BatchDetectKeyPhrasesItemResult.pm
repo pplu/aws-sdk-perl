@@ -2,6 +2,7 @@ package Paws::Comprehend::BatchDetectKeyPhrasesItemResult;
   use Moose;
   has Index => (is => 'ro', isa => 'Int');
   has KeyPhrases => (is => 'ro', isa => 'ArrayRef[Paws::Comprehend::KeyPhrase]');
+
 1;
 
 ### main pod documentation begin ###

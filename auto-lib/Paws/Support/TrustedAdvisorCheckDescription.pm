@@ -5,6 +5,7 @@ package Paws::Support::TrustedAdvisorCheckDescription;
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest'], required => 1);
   has Metadata => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'metadata', traits => ['NameInRequest'], required => 1);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

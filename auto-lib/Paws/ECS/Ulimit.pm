@@ -3,6 +3,7 @@ package Paws::ECS::Ulimit;
   has HardLimit => (is => 'ro', isa => 'Int', request_name => 'hardLimit', traits => ['NameInRequest'], required => 1);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has SoftLimit => (is => 'ro', isa => 'Int', request_name => 'softLimit', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

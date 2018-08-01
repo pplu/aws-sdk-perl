@@ -13,6 +13,7 @@ package Paws::Pinpoint::ActivityResponse;
   has TimezonesTotalCount => (is => 'ro', isa => 'Int');
   has TotalEndpointCount => (is => 'ro', isa => 'Int');
   has TreatmentId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

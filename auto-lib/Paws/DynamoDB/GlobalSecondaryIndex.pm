@@ -3,7 +3,8 @@ package Paws::DynamoDB::GlobalSecondaryIndex;
   has IndexName => (is => 'ro', isa => 'Str', required => 1);
   has KeySchema => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::KeySchemaElement]', required => 1);
   has Projection => (is => 'ro', isa => 'Paws::DynamoDB::Projection', required => 1);
-  has ProvisionedThroughput => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughput');
+  has ProvisionedThroughput => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughput', required => 1);
+
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +64,7 @@ C<RANGE> - sort key
 =back
 
 The partition key of an item is also known as its I<hash attribute>.
-The term "hash attribute" derives from DynamoDB's usage of an internal
+The term "hash attribute" derives from DynamoDB' usage of an internal
 hash function to evenly distribute data items across partitions, based
 on their partition key values.
 
@@ -80,14 +81,14 @@ the global secondary index. These are in addition to the primary key
 attributes and index key attributes, which are automatically projected.
 
 
-=head2 ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>
+=head2 B<REQUIRED> ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>
 
   Represents the provisioned throughput settings for the specified global
 secondary index.
 
 For current minimum and maximum provisioned throughput values, see
 Limits
-(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 

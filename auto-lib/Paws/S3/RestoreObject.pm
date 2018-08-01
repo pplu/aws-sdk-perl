@@ -4,8 +4,9 @@ package Paws::S3::RestoreObject;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
   has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
-  has RestoreRequest => (is => 'ro', isa => 'Paws::S3::RestoreRequest');
+  has RestoreRequest => (is => 'ro', isa => 'Paws::S3::RestoreRequest', traits => ['ParamInBody']);
   has VersionId => (is => 'ro', isa => 'Str', query_name => 'versionId', traits => ['ParamInQuery']);
+
 
   use MooseX::ClassAttribute;
 
@@ -15,6 +16,7 @@ package Paws::S3::RestoreObject;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::RestoreObjectOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###
@@ -39,25 +41,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Key            => 'MyObjectKey',
       RequestPayer   => 'requester',      # OPTIONAL
       RestoreRequest => {
+        Days                 => 1,                  # OPTIONAL
+        Description          => 'MyDescription',    # OPTIONAL
+        GlacierJobParameters => {
+          Tier => 'Standard',    # values: Standard, Bulk, Expedited
+
+        },    # OPTIONAL
         OutputLocation => {
           S3 => {
-            BucketName => 'MyBucketName',
-            Prefix     => 'MyLocationPrefix',
-            Encryption => {
-              EncryptionType => 'AES256',           # values: AES256, aws:kms
-              KMSContext     => 'MyKMSContext',     # OPTIONAL
-              KMSKeyId       => 'MySSEKMSKeyId',    # OPTIONAL
-            },    # OPTIONAL
-            StorageClass => 'STANDARD'
-            , # values: STANDARD, REDUCED_REDUNDANCY, STANDARD_IA, ONEZONE_IA; OPTIONAL
+            BucketName        => 'MyBucketName',
+            Prefix            => 'MyLocationPrefix',
             AccessControlList => [
               {
                 Grantee => {
                   Type => 'CanonicalUser'
                   ,    # values: CanonicalUser, AmazonCustomerByEmail, Group
                   DisplayName  => 'MyDisplayName',     # OPTIONAL
-                  ID           => 'MyID',              # OPTIONAL
                   EmailAddress => 'MyEmailAddress',    # OPTIONAL
+                  ID           => 'MyID',              # OPTIONAL
                   URI          => 'MyURI',             # OPTIONAL
                 },    # OPTIONAL
                 Permission => 'FULL_CONTROL'
@@ -65,10 +66,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },
               ...
             ],    # OPTIONAL
+            CannedACL => 'private'
+            , # values: private, public-read, public-read-write, authenticated-read, aws-exec-read, bucket-owner-read, bucket-owner-full-control; OPTIONAL
+            Encryption => {
+              EncryptionType => 'AES256',           # values: AES256, aws:kms
+              KMSContext     => 'MyKMSContext',     # OPTIONAL
+              KMSKeyId       => 'MySSEKMSKeyId',    # OPTIONAL
+            },    # OPTIONAL
+            StorageClass => 'STANDARD'
+            , # values: STANDARD, REDUCED_REDUNDANCY, STANDARD_IA, ONEZONE_IA; OPTIONAL
             Tagging => {
               TagSet => [
                 {
-                  Key   => 'MyObjectKey',    # min: 1,
+                  Key   => 'MyObjectKey',    # min: 1
                   Value => 'MyValue',
 
                 },
@@ -76,63 +86,56 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ],
 
             },    # OPTIONAL
-            CannedACL => 'private'
-            , # values: private, public-read, public-read-write, authenticated-read, aws-exec-read, bucket-owner-read, bucket-owner-full-control; OPTIONAL
             UserMetadata => [
               {
-                Value => 'MyMetadataValue',    # OPTIONAL
                 Name  => 'MyMetadataKey',      # OPTIONAL
+                Value => 'MyMetadataValue',    # OPTIONAL
               },
               ...
             ],                                 # OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
-        Type             => 'SELECT',    # values: SELECT; OPTIONAL
         SelectParameters => {
-          OutputSerialization => {
+          Expression         => 'MyExpression',
+          ExpressionType     => 'SQL',            # values: SQL
+          InputSerialization => {
             CSV => {
+              AllowQuotedRecordDelimiter => 1,                     # OPTIONAL
+              Comments                   => 'MyComments',          # OPTIONAL
+              FieldDelimiter             => 'MyFieldDelimiter',    # OPTIONAL
+              FileHeaderInfo => 'USE',    # values: USE, IGNORE, NONE; OPTIONAL
               QuoteCharacter       => 'MyQuoteCharacter',          # OPTIONAL
               QuoteEscapeCharacter => 'MyQuoteEscapeCharacter',    # OPTIONAL
               RecordDelimiter      => 'MyRecordDelimiter',         # OPTIONAL
-              FieldDelimiter       => 'MyFieldDelimiter',          # OPTIONAL
-              QuoteFields => 'ALWAYS',    # values: ALWAYS, ASNEEDED; OPTIONAL
             },    # OPTIONAL
-            JSON => {
-              RecordDelimiter => 'MyRecordDelimiter',    # OPTIONAL
+            CompressionType => 'NONE',    # values: NONE, GZIP, BZIP2; OPTIONAL
+            JSON            => {
+              Type => 'DOCUMENT',         # values: DOCUMENT, LINES; OPTIONAL
             },    # OPTIONAL
           },
-          InputSerialization => {
-            CompressionType => 'NONE',    # values: NONE, GZIP; OPTIONAL
-            CSV             => {
+          OutputSerialization => {
+            CSV => {
+              FieldDelimiter       => 'MyFieldDelimiter',          # OPTIONAL
               QuoteCharacter       => 'MyQuoteCharacter',          # OPTIONAL
               QuoteEscapeCharacter => 'MyQuoteEscapeCharacter',    # OPTIONAL
-              Comments             => 'MyComments',                # OPTIONAL
-              FileHeaderInfo => 'USE',    # values: USE, IGNORE, NONE; OPTIONAL
+              QuoteFields => 'ALWAYS',    # values: ALWAYS, ASNEEDED; OPTIONAL
               RecordDelimiter => 'MyRecordDelimiter',    # OPTIONAL
-              FieldDelimiter  => 'MyFieldDelimiter',     # OPTIONAL
             },    # OPTIONAL
             JSON => {
-              Type => 'DOCUMENT',    # values: DOCUMENT, LINES; OPTIONAL
+              RecordDelimiter => 'MyRecordDelimiter',    # OPTIONAL
             },    # OPTIONAL
           },
-          Expression     => 'MyExpression',
-          ExpressionType => 'SQL',            # values: SQL
 
         },    # OPTIONAL
-        Days => 1,             # OPTIONAL
-        Tier => 'Standard',    # values: Standard, Bulk, Expedited; OPTIONAL
-        GlacierJobParameters => {
-          Tier => 'Standard',    # values: Standard, Bulk, Expedited; OPTIONAL
-
-        },    # OPTIONAL
-        Description => 'MyDescription',    # OPTIONAL
+        Tier => 'Standard',    # values: Standard, Bulk, Expedited
+        Type => 'SELECT',      # values: SELECT; OPTIONAL
       },    # OPTIONAL
       VersionId => 'MyObjectVersionId',    # OPTIONAL
     );
 
     # Results:
-    my $RestoreOutputPath = $RestoreObjectOutput->RestoreOutputPath;
     my $RequestCharged    = $RestoreObjectOutput->RequestCharged;
+    my $RestoreOutputPath = $RestoreObjectOutput->RestoreOutputPath;
 
     # Returns a L<Paws::S3::RestoreObjectOutput> object.
 

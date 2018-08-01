@@ -2,6 +2,7 @@ package Paws::SimpleWorkflow::ExternalWorkflowExecutionCancelRequestedEventAttri
   use Moose;
   has InitiatedEventId => (is => 'ro', isa => 'Int', request_name => 'initiatedEventId', traits => ['NameInRequest'], required => 1);
   has WorkflowExecution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', request_name => 'workflowExecution', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

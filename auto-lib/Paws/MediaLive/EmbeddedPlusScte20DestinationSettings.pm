@@ -1,5 +1,6 @@
 package Paws::MediaLive::EmbeddedPlusScte20DestinationSettings;
   use Moose;
+
 1;
 
 ### main pod documentation begin ###

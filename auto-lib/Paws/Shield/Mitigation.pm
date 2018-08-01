@@ -1,6 +1,7 @@
 package Paws::Shield::Mitigation;
   use Moose;
   has MitigationName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

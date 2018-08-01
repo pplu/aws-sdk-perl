@@ -6,6 +6,7 @@ package Paws::CloudFront::InvalidationList;
   has MaxItems => (is => 'ro', isa => 'Int', required => 1);
   has NextMarker => (is => 'ro', isa => 'Str');
   has Quantity => (is => 'ro', isa => 'Int', required => 1);
+
 1;
 
 ### main pod documentation begin ###

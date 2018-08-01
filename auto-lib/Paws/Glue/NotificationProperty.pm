@@ -1,6 +1,7 @@
 package Paws::Glue::NotificationProperty;
   use Moose;
   has NotifyDelayAfter => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

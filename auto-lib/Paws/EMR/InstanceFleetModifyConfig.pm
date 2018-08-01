@@ -3,6 +3,7 @@ package Paws::EMR::InstanceFleetModifyConfig;
   has InstanceFleetId => (is => 'ro', isa => 'Str', required => 1);
   has TargetOnDemandCapacity => (is => 'ro', isa => 'Int');
   has TargetSpotCapacity => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

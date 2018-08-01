@@ -2,6 +2,7 @@ package Paws::Shield::SummarizedAttackVector;
   use Moose;
   has VectorCounters => (is => 'ro', isa => 'ArrayRef[Paws::Shield::SummarizedCounter]');
   has VectorType => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

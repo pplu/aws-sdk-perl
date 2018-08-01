@@ -23,6 +23,7 @@ package Paws::ES::ElasticsearchDomainStatus;
   has SnapshotOptions => (is => 'ro', isa => 'Paws::ES::SnapshotOptions');
   has UpgradeProcessing => (is => 'ro', isa => 'Bool');
   has VPCOptions => (is => 'ro', isa => 'Paws::ES::VPCDerivedInfo');
+
 1;
 
 ### main pod documentation begin ###

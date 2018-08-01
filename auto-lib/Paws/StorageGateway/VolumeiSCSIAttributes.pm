@@ -5,6 +5,7 @@ package Paws::StorageGateway::VolumeiSCSIAttributes;
   has NetworkInterfaceId => (is => 'ro', isa => 'Str');
   has NetworkInterfacePort => (is => 'ro', isa => 'Int');
   has TargetARN => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

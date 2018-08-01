@@ -1,6 +1,7 @@
 package Paws::SecretsManager::RotationRulesType;
   use Moose;
   has AutomaticallyAfterDays => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

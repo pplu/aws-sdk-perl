@@ -4,6 +4,7 @@ package Paws::SecretsManager::SecretVersionsListEntry;
   has LastAccessedDate => (is => 'ro', isa => 'Str');
   has VersionId => (is => 'ro', isa => 'Str');
   has VersionStages => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

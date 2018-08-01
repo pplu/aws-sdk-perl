@@ -10,6 +10,7 @@ package Paws::Lightsail::InstanceAccessDetails;
   has PrivateKey => (is => 'ro', isa => 'Str', request_name => 'privateKey', traits => ['NameInRequest']);
   has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest']);
   has Username => (is => 'ro', isa => 'Str', request_name => 'username', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

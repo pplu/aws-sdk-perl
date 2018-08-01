@@ -1,4 +1,3 @@
-
 package Paws::Pinpoint::NumberValidateResponse;
   use Moose;
   has Carrier => (is => 'ro', isa => 'Str');
@@ -16,7 +15,6 @@ package Paws::Pinpoint::NumberValidateResponse;
   has Timezone => (is => 'ro', isa => 'Str');
   has ZipCode => (is => 'ro', isa => 'Str');
 
-  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -25,94 +23,120 @@ package Paws::Pinpoint::NumberValidateResponse;
 
 Paws::Pinpoint::NumberValidateResponse
 
+=head1 USAGE
+
+This class represents one of two things:
+
+=head3 Arguments in a call to a service
+
+Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
+Each attribute should be used as a named argument in the calls that expect this type of object.
+
+As an example, if Att1 is expected to be a Paws::Pinpoint::NumberValidateResponse object:
+
+  $service_obj->Method(Att1 => { Carrier => $value, ..., ZipCode => $value  });
+
+=head3 Results returned from an API call
+
+Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::NumberValidateResponse object:
+
+  $result = $service_obj->Method(...);
+  $result->Att1->Carrier
+
+=head1 DESCRIPTION
+
+Phone Number Information response.
+
 =head1 ATTRIBUTES
 
 
 =head2 Carrier => Str
 
-The carrier or service provider that the phone number is currently
-registered with.
+  The carrier that the phone number is registered with.
 
 
 =head2 City => Str
 
-The name of the city where the phone number was originally registered.
+  The city where the phone number was originally registered.
 
 
 =head2 CleansedPhoneNumberE164 => Str
 
-The cleansed phone number, in E.164 format, for the location where the
-phone number was originally registered.
+  The cleansed (standardized) phone number in E.164 format.
 
 
 =head2 CleansedPhoneNumberNational => Str
 
-The cleansed phone number, in the format for the location where the
-phone number was originally registered.
+  The cleansed phone number in national format.
 
 
 =head2 Country => Str
 
-The name of the country or region where the phone number was originally
-registered.
+  The country where the phone number was originally registered.
 
 
 =head2 CountryCodeIso2 => Str
 
-The two-character code, in ISO 3166-1 alpha-2 format, for the country
-or region where the phone number was originally registered.
+  The two-character ISO country code for the country where the phone
+number was originally registered.
 
 
 =head2 CountryCodeNumeric => Str
 
-The numeric code for the country or region where the phone number was
+  The numeric country code for the country where the phone number was
 originally registered.
 
 
 =head2 County => Str
 
-The name of the county where the phone number was originally
-registered.
+  The county where the phone number was originally registered.
 
 
 =head2 OriginalCountryCodeIso2 => Str
 
-The two-character code, in ISO 3166-1 alpha-2 format, that was sent in
-the request body.
+  The two-character ISO country code that was included in the request
+body.
 
 
 =head2 OriginalPhoneNumber => Str
 
-The phone number that was sent in the request body.
+  The phone number that you included in the request body.
 
 
 =head2 PhoneType => Str
 
-The description of the phone type. Valid values are: MOBILE, LANDLINE,
-VOIP, INVALID, PREPAID, and OTHER.
+  A description of the phone type. Possible values include MOBILE,
+LANDLINE, VOIP, INVALID, and OTHER.
 
 
 =head2 PhoneTypeCode => Int
 
-The phone type, represented by an integer. Valid values are: 0
-(mobile), 1 (landline), 2 (VoIP), 3 (invalid), 4 (other), and 5
-(prepaid).
+  The phone type as an integer. Possible values include 0 (MOBILE), 1
+(LANDLINE), 2 (VOIP), 3 (INVALID), and 4 (OTHER).
 
 
 =head2 Timezone => Str
 
-The time zone for the location where the phone number was originally
+  The time zone for the location where the phone number was originally
 registered.
 
 
 =head2 ZipCode => Str
 
-The postal or ZIP code for the location where the phone number was
-originally registered.
+  The zip code for the location where the phone number was originally
+registered.
 
 
-=head2 _request_id => Str
 
+=head1 SEE ALSO
+
+This class forms part of L<Paws>, describing an object used in L<Paws::Pinpoint>
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
+
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

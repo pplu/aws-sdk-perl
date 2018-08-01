@@ -3,6 +3,7 @@ package Paws::CodeStar::TeamMember;
   has ProjectRole => (is => 'ro', isa => 'Str', request_name => 'projectRole', traits => ['NameInRequest'], required => 1);
   has RemoteAccessAllowed => (is => 'ro', isa => 'Bool', request_name => 'remoteAccessAllowed', traits => ['NameInRequest']);
   has UserArn => (is => 'ro', isa => 'Str', request_name => 'userArn', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

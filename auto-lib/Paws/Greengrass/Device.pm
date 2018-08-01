@@ -1,9 +1,10 @@
 package Paws::Greengrass::Device;
   use Moose;
-  has CertificateArn => (is => 'ro', isa => 'Str', required => 1);
-  has Id => (is => 'ro', isa => 'Str', required => 1);
+  has CertificateArn => (is => 'ro', isa => 'Str');
+  has Id => (is => 'ro', isa => 'Str');
   has SyncShadow => (is => 'ro', isa => 'Bool');
-  has ThingArn => (is => 'ro', isa => 'Str', required => 1);
+  has ThingArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###
@@ -39,16 +40,14 @@ Information about a device.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> CertificateArn => Str
+=head2 CertificateArn => Str
 
   The ARN of the certificate associated with the device.
 
 
-=head2 B<REQUIRED> Id => Str
+=head2 Id => Str
 
-  A descriptive or arbitrary ID for the device. This value must be unique
-within the device definition version. Max length is 128 characters with
-pattern ''[a-zA-Z0-9:_-]+''.
+  The ID of the device.
 
 
 =head2 SyncShadow => Bool
@@ -57,7 +56,7 @@ pattern ''[a-zA-Z0-9:_-]+''.
 the cloud.
 
 
-=head2 B<REQUIRED> ThingArn => Str
+=head2 ThingArn => Str
 
   The thing ARN of the device.
 

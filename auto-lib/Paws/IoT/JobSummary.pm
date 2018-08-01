@@ -8,6 +8,7 @@ package Paws::IoT::JobSummary;
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has TargetSelection => (is => 'ro', isa => 'Str', request_name => 'targetSelection', traits => ['NameInRequest']);
   has ThingGroupId => (is => 'ro', isa => 'Str', request_name => 'thingGroupId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

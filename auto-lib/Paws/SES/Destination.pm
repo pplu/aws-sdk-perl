@@ -3,6 +3,7 @@ package Paws::SES::Destination;
   has BccAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has CcAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ToAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

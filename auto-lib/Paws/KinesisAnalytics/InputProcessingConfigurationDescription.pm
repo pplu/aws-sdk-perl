@@ -1,6 +1,7 @@
 package Paws::KinesisAnalytics::InputProcessingConfigurationDescription;
   use Moose;
   has InputLambdaProcessorDescription => (is => 'ro', isa => 'Paws::KinesisAnalytics::InputLambdaProcessorDescription');
+
 1;
 
 ### main pod documentation begin ###

@@ -12,6 +12,7 @@ package Paws::ECS::Deployment;
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has TaskDefinition => (is => 'ro', isa => 'Str', request_name => 'taskDefinition', traits => ['NameInRequest']);
   has UpdatedAt => (is => 'ro', isa => 'Str', request_name => 'updatedAt', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###
@@ -80,7 +81,7 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 =head2 NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>
 
   The VPC subnet and security group configuration for tasks that receive
-their own elastic network interface by using the C<awsvpc> networking
+their own Elastic Network Interface by using the C<awsvpc> networking
 mode.
 
 

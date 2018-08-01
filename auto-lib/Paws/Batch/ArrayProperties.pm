@@ -1,6 +1,7 @@
 package Paws::Batch::ArrayProperties;
   use Moose;
   has Size => (is => 'ro', isa => 'Int', request_name => 'size', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

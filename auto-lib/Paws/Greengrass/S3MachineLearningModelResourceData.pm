@@ -3,6 +3,7 @@ package Paws::Greengrass::S3MachineLearningModelResourceData;
   has DestinationPath => (is => 'ro', isa => 'Str');
   has OwnerSetting => (is => 'ro', isa => 'Paws::Greengrass::ResourceDownloadOwnerSetting');
   has S3Uri => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

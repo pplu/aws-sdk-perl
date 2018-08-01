@@ -2,6 +2,7 @@ package Paws::CodePipeline::ThirdPartyJob;
   use Moose;
   has ClientId => (is => 'ro', isa => 'Str', request_name => 'clientId', traits => ['NameInRequest']);
   has JobId => (is => 'ro', isa => 'Str', request_name => 'jobId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::CloudFormation::ResourceChangeDetail;
   has ChangeSource => (is => 'ro', isa => 'Str');
   has Evaluation => (is => 'ro', isa => 'Str');
   has Target => (is => 'ro', isa => 'Paws::CloudFormation::ResourceTargetDefinition');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::ECS::Tmpfs;
   has ContainerPath => (is => 'ro', isa => 'Str', request_name => 'containerPath', traits => ['NameInRequest'], required => 1);
   has MountOptions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'mountOptions', traits => ['NameInRequest']);
   has Size => (is => 'ro', isa => 'Int', request_name => 'size', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +41,7 @@ The container path, mount options, and size of the tmpfs mount.
 
 =head2 B<REQUIRED> ContainerPath => Str
 
-  The absolute file path where the tmpfs volume is to be mounted.
+  The absolute file path where the tmpfs volume will be mounted.
 
 
 =head2 MountOptions => ArrayRef[Str|Undef]

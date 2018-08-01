@@ -8,6 +8,7 @@ package Paws::ES::ReservedElasticsearchInstanceOffering;
   has RecurringCharges => (is => 'ro', isa => 'ArrayRef[Paws::ES::RecurringCharge]');
   has ReservedElasticsearchInstanceOfferingId => (is => 'ro', isa => 'Str');
   has UsagePrice => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

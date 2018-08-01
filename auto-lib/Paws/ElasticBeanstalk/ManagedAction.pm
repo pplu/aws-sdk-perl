@@ -5,6 +5,7 @@ package Paws::ElasticBeanstalk::ManagedAction;
   has ActionType => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has WindowStartTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

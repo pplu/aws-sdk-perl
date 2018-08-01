@@ -1,6 +1,7 @@
 package Paws::SimpleWorkflow::LambdaFunctionStartedEventAttributes;
   use Moose;
   has ScheduledEventId => (is => 'ro', isa => 'Int', request_name => 'scheduledEventId', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,18 +1,19 @@
 package Paws::Pinpoint::ImportJobResponse;
   use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', required => 1);
+  has ApplicationId => (is => 'ro', isa => 'Str');
   has CompletedPieces => (is => 'ro', isa => 'Int');
   has CompletionDate => (is => 'ro', isa => 'Str');
-  has CreationDate => (is => 'ro', isa => 'Str', required => 1);
-  has Definition => (is => 'ro', isa => 'Paws::Pinpoint::ImportJobResource', required => 1);
+  has CreationDate => (is => 'ro', isa => 'Str');
+  has Definition => (is => 'ro', isa => 'Paws::Pinpoint::ImportJobResource');
   has FailedPieces => (is => 'ro', isa => 'Int');
   has Failures => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has JobStatus => (is => 'ro', isa => 'Str', required => 1);
+  has Id => (is => 'ro', isa => 'Str');
+  has JobStatus => (is => 'ro', isa => 'Str');
   has TotalFailures => (is => 'ro', isa => 'Int');
   has TotalPieces => (is => 'ro', isa => 'Int');
   has TotalProcessed => (is => 'ro', isa => 'Int');
-  has Type => (is => 'ro', isa => 'Str', required => 1);
+  has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###
@@ -43,87 +44,82 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::I
 
 =head1 DESCRIPTION
 
-Provides information about the status and settings of a job that
-imports endpoint definitions from one or more files. The files can be
-stored in an Amazon Simple Storage Service (Amazon S3) bucket or
-uploaded directly from a computer by using the Amazon Pinpoint console.
+Import job response.
 
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ApplicationId => Str
+=head2 ApplicationId => Str
 
-  The unique identifier for the application that's associated with the
-import job.
+  The unique ID of the application to which the import job applies.
 
 
 =head2 CompletedPieces => Int
 
-  The number of pieces that were processed successfully (completed) by
-the import job, as of the time of the request.
+  The number of pieces that have successfully imported as of the time of
+the request.
 
 
 =head2 CompletionDate => Str
 
-  The date, in ISO 8601 format, when the import job was completed.
+  The date the import job completed in ISO 8601 format.
 
 
-=head2 B<REQUIRED> CreationDate => Str
+=head2 CreationDate => Str
 
-  The date, in ISO 8601 format, when the import job was created.
+  The date the import job was created in ISO 8601 format.
 
 
-=head2 B<REQUIRED> Definition => L<Paws::Pinpoint::ImportJobResource>
+=head2 Definition => L<Paws::Pinpoint::ImportJobResource>
 
-  The resource settings that apply to the import job.
+  The import job settings.
 
 
 =head2 FailedPieces => Int
 
-  The number of pieces that weren't processed successfully (failed) by
-the import job, as of the time of the request.
+  The number of pieces that have failed to import as of the time of the
+request.
 
 
 =head2 Failures => ArrayRef[Str|Undef]
 
-  An array of entries, one for each of the first 100 entries that weren't
-processed successfully (failed) by the import job, if any.
+  Provides up to 100 of the first failed entries for the job, if any
+exist.
 
 
-=head2 B<REQUIRED> Id => Str
+=head2 Id => Str
 
-  The unique identifier for the import job.
+  The unique ID of the import job.
 
 
-=head2 B<REQUIRED> JobStatus => Str
+=head2 JobStatus => Str
 
-  The status of the import job. The job status is FAILED if Amazon
-Pinpoint wasn't able to process one or more pieces in the job.
+  The status of the import job. Valid values: CREATED, INITIALIZING,
+PROCESSING, COMPLETING, COMPLETED, FAILING, FAILED The job status is
+FAILED if one or more pieces failed to import.
 
 
 =head2 TotalFailures => Int
 
-  The total number of endpoint definitions that weren't processed
-successfully (failed) by the import job, typically because an error,
-such as a syntax error, occurred.
+  The number of endpoints that failed to import; for example, because of
+syntax errors.
 
 
 =head2 TotalPieces => Int
 
-  The total number of pieces that must be processed to complete the
-import job. Each piece consists of an approximately equal portion of
-the endpoint definitions that are part of the import job.
+  The total number of pieces that must be imported to finish the job.
+Each piece is an approximately equal portion of the endpoints to
+import.
 
 
 =head2 TotalProcessed => Int
 
-  The total number of endpoint definitions that were processed by the
-import job.
+  The number of endpoints that were processed by the import job.
 
 
-=head2 B<REQUIRED> Type => Str
+=head2 Type => Str
 
-  The job type. This value is IMPORT for import jobs.
+  The job type. Will be Import.
 
 
 

@@ -6,6 +6,7 @@ package Paws::StepFunctions::ExecutionListItem;
   has StateMachineArn => (is => 'ro', isa => 'Str', request_name => 'stateMachineArn', traits => ['NameInRequest'], required => 1);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
   has StopDate => (is => 'ro', isa => 'Str', request_name => 'stopDate', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

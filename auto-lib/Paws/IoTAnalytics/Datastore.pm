@@ -6,7 +6,7 @@ package Paws::IoTAnalytics::Datastore;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has RetentionPeriod => (is => 'ro', isa => 'Paws::IoTAnalytics::RetentionPeriod', request_name => 'retentionPeriod', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has Storage => (is => 'ro', isa => 'Paws::IoTAnalytics::DatastoreStorage', request_name => 'storage', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +26,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoTAnalytics::Datastore object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., Storage => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
@@ -64,8 +64,7 @@ Information about a data store.
 
 =head2 RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>
 
-  How long, in days, message data is kept for the data store. When
-"customerManagedS3" storage is selected, this parameter is ignored.
+  How long, in days, message data is kept for the data store.
 
 
 =head2 Status => Str
@@ -88,14 +87,6 @@ The data store is being deleted.
 
 =back
 
-
-
-=head2 Storage => L<Paws::IoTAnalytics::DatastoreStorage>
-
-  Where data store data is stored. You may choose one of
-"serviceManagedS3" or "customerManagedS3" storage. If not specified,
-the default is "serviceManagedS3". This cannot be changed after the
-data store is created.
 
 
 

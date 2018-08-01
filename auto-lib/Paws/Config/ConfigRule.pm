@@ -10,6 +10,7 @@ package Paws::Config::ConfigRule;
   has MaximumExecutionFrequency => (is => 'ro', isa => 'Str');
   has Scope => (is => 'ro', isa => 'Paws::Config::Scope');
   has Source => (is => 'ro', isa => 'Paws::Config::Source', required => 1);
+
 1;
 
 ### main pod documentation begin ###

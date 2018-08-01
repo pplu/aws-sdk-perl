@@ -4,6 +4,7 @@ package Paws::CodeStar::UserProfileSummary;
   has EmailAddress => (is => 'ro', isa => 'Str', request_name => 'emailAddress', traits => ['NameInRequest']);
   has SshPublicKey => (is => 'ro', isa => 'Str', request_name => 'sshPublicKey', traits => ['NameInRequest']);
   has UserArn => (is => 'ro', isa => 'Str', request_name => 'userArn', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

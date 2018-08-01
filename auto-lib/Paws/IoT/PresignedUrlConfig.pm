@@ -2,6 +2,7 @@ package Paws::IoT::PresignedUrlConfig;
   use Moose;
   has ExpiresInSec => (is => 'ro', isa => 'Int', request_name => 'expiresInSec', traits => ['NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

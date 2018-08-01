@@ -59,7 +59,7 @@ Valid values are: C<"on">, C<"off">
 
 =head2 B<REQUIRED> HostIds => ArrayRef[Str|Undef]
 
-The IDs of the Dedicated Hosts to modify.
+The host IDs of the Dedicated Hosts you want to modify.
 
 
 

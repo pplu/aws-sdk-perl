@@ -2,6 +2,7 @@ package Paws::CognitoIdp::NewDeviceMetadataType;
   use Moose;
   has DeviceGroupKey => (is => 'ro', isa => 'Str');
   has DeviceKey => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

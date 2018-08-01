@@ -3,6 +3,7 @@ package Paws::IoT::ThingGroupMetadata;
   has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest']);
   has ParentGroupName => (is => 'ro', isa => 'Str', request_name => 'parentGroupName', traits => ['NameInRequest']);
   has RootToParentThingGroups => (is => 'ro', isa => 'ArrayRef[Paws::IoT::GroupNameAndArn]', request_name => 'rootToParentThingGroups', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

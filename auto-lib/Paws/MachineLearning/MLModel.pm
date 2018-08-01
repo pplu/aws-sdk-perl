@@ -19,6 +19,7 @@ package Paws::MachineLearning::MLModel;
   has Status => (is => 'ro', isa => 'Str');
   has TrainingDataSourceId => (is => 'ro', isa => 'Str');
   has TrainingParameters => (is => 'ro', isa => 'Paws::MachineLearning::TrainingParameters');
+
 1;
 
 ### main pod documentation begin ###

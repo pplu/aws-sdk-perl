@@ -4,6 +4,7 @@ package Paws::StorageGateway::NFSFileShareDefaults;
   has FileMode => (is => 'ro', isa => 'Str');
   has GroupId => (is => 'ro', isa => 'Int');
   has OwnerId => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

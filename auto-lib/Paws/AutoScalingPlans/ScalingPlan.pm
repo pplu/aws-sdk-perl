@@ -8,6 +8,7 @@ package Paws::AutoScalingPlans::ScalingPlan;
   has StatusCode => (is => 'ro', isa => 'Str', required => 1);
   has StatusMessage => (is => 'ro', isa => 'Str');
   has StatusStartTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

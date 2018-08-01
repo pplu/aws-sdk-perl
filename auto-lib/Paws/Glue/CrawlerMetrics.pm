@@ -8,6 +8,7 @@ package Paws::Glue::CrawlerMetrics;
   has TablesDeleted => (is => 'ro', isa => 'Int');
   has TablesUpdated => (is => 'ro', isa => 'Int');
   has TimeLeftSeconds => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

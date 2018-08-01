@@ -17,6 +17,7 @@ package Paws::CloudFront::DistributionConfig;
   has Restrictions => (is => 'ro', isa => 'Paws::CloudFront::Restrictions');
   has ViewerCertificate => (is => 'ro', isa => 'Paws::CloudFront::ViewerCertificate');
   has WebACLId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

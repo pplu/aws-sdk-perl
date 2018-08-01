@@ -6,6 +6,7 @@ package Paws::ECS::TaskOverride;
   has InferenceAcceleratorOverrides => (is => 'ro', isa => 'ArrayRef[Paws::ECS::InferenceAcceleratorOverride]', request_name => 'inferenceAcceleratorOverrides', traits => ['NameInRequest']);
   has Memory => (is => 'ro', isa => 'Str', request_name => 'memory', traits => ['NameInRequest']);
   has TaskRoleArn => (is => 'ro', isa => 'Str', request_name => 'taskRoleArn', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

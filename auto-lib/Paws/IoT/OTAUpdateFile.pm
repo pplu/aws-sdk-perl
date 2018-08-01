@@ -5,6 +5,7 @@ package Paws::IoT::OTAUpdateFile;
   has FileLocation => (is => 'ro', isa => 'Paws::IoT::FileLocation', request_name => 'fileLocation', traits => ['NameInRequest']);
   has FileName => (is => 'ro', isa => 'Str', request_name => 'fileName', traits => ['NameInRequest']);
   has FileVersion => (is => 'ro', isa => 'Str', request_name => 'fileVersion', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

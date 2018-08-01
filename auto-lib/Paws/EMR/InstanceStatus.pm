@@ -3,6 +3,7 @@ package Paws::EMR::InstanceStatus;
   has State => (is => 'ro', isa => 'Str');
   has StateChangeReason => (is => 'ro', isa => 'Paws::EMR::InstanceStateChangeReason');
   has Timeline => (is => 'ro', isa => 'Paws::EMR::InstanceTimeline');
+
 1;
 
 ### main pod documentation begin ###

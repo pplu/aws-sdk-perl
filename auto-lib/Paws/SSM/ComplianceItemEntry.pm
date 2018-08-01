@@ -5,6 +5,7 @@ package Paws::SSM::ComplianceItemEntry;
   has Severity => (is => 'ro', isa => 'Str', required => 1);
   has Status => (is => 'ro', isa => 'Str', required => 1);
   has Title => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

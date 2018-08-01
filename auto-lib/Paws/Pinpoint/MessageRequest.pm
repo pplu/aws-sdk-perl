@@ -3,8 +3,8 @@ package Paws::Pinpoint::MessageRequest;
   has Addresses => (is => 'ro', isa => 'Paws::Pinpoint::MapOfAddressConfiguration');
   has Context => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string');
   has Endpoints => (is => 'ro', isa => 'Paws::Pinpoint::MapOfEndpointSendConfiguration');
-  has MessageConfiguration => (is => 'ro', isa => 'Paws::Pinpoint::DirectMessageConfiguration', required => 1);
-  has TraceId => (is => 'ro', isa => 'Str');
+  has MessageConfiguration => (is => 'ro', isa => 'Paws::Pinpoint::DirectMessageConfiguration');
+
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Pinpoint::MessageRequest object:
 
-  $service_obj->Method(Att1 => { Addresses => $value, ..., TraceId => $value  });
+  $service_obj->Method(Att1 => { Addresses => $value, ..., MessageConfiguration => $value  });
 
 =head3 Results returned from an API call
 
@@ -35,8 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::M
 
 =head1 DESCRIPTION
 
-Specifies the objects that define configuration and other settings for
-a message.
+Send message request.
 
 =head1 ATTRIBUTES
 
@@ -45,37 +44,27 @@ a message.
 
   A map of key-value pairs, where each key is an address and each value
 is an AddressConfiguration object. An address can be a push
-notification token, a phone number, or an email address. You can use an
-AddressConfiguration object to tailor the message for an address by
-specifying settings such as content overrides and message variables.
+notification token, a phone number, or an email address.
 
 
 =head2 Context => L<Paws::Pinpoint::MapOf__string>
 
-  A map of custom attributes to attach to the message. For a push
-notification, this payload is added to the data.pinpoint object. For an
-email or text message, this payload is added to email/SMS delivery
-receipt event attributes.
+  A map of custom attributes to attributes to be attached to the message.
+This payload is added to the push notification's 'data.pinpoint' object
+or added to the email/sms delivery receipt event attributes.
 
 
 =head2 Endpoints => L<Paws::Pinpoint::MapOfEndpointSendConfiguration>
 
   A map of key-value pairs, where each key is an endpoint ID and each
-value is an EndpointSendConfiguration object. You can use an
-EndpointSendConfiguration object to tailor the message for an endpoint
-by specifying settings such as content overrides and message variables.
+value is an EndpointSendConfiguration object. Within an
+EndpointSendConfiguration object, you can tailor the message for an
+endpoint by specifying message overrides or substitutions.
 
 
-=head2 B<REQUIRED> MessageConfiguration => L<Paws::Pinpoint::DirectMessageConfiguration>
+=head2 MessageConfiguration => L<Paws::Pinpoint::DirectMessageConfiguration>
 
-  The set of properties that defines the configuration settings for the
-message.
-
-
-=head2 TraceId => Str
-
-  The unique identifier for tracing the message. This identifier is
-visible to message recipients.
+  Message configuration.
 
 
 

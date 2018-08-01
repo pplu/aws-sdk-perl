@@ -10,6 +10,7 @@ package Paws::DynamoDB::BackupSummary;
   has TableArn => (is => 'ro', isa => 'Str');
   has TableId => (is => 'ro', isa => 'Str');
   has TableName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

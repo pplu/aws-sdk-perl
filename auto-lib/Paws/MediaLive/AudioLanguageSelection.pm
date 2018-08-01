@@ -2,6 +2,7 @@ package Paws::MediaLive::AudioLanguageSelection;
   use Moose;
   has LanguageCode => (is => 'ro', isa => 'Str', request_name => 'languageCode', traits => ['NameInRequest'], required => 1);
   has LanguageSelectionPolicy => (is => 'ro', isa => 'Str', request_name => 'languageSelectionPolicy', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

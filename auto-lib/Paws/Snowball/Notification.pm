@@ -3,6 +3,7 @@ package Paws::Snowball::Notification;
   has JobStatesToNotify => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has NotifyAll => (is => 'ro', isa => 'Bool');
   has SnsTopicARN => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

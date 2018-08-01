@@ -1,6 +1,7 @@
 package Paws::MediaLive::InputDestinationRequest;
   use Moose;
   has StreamName => (is => 'ro', isa => 'Str', request_name => 'streamName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

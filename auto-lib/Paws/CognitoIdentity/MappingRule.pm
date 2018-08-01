@@ -4,6 +4,7 @@ package Paws::CognitoIdentity::MappingRule;
   has MatchType => (is => 'ro', isa => 'Str', required => 1);
   has RoleARN => (is => 'ro', isa => 'Str', required => 1);
   has Value => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

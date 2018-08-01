@@ -1,9 +1,10 @@
 
 package Paws::S3::NotificationConfiguration;
   use Moose;
-  has LambdaFunctionConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::S3::LambdaFunctionConfiguration]', traits => ['NameInRequest'], request_name => 'CloudFunctionConfiguration');
-  has QueueConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::S3::QueueConfiguration]', traits => ['NameInRequest'], request_name => 'QueueConfiguration');
-  has TopicConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::S3::TopicConfiguration]', traits => ['NameInRequest'], request_name => 'TopicConfiguration');
+  has LambdaFunctionConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::S3::LambdaFunctionConfiguration]', request_name => 'CloudFunctionConfiguration', traits => ['NameInRequest']);
+  has QueueConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::S3::QueueConfiguration]', request_name => 'QueueConfiguration', traits => ['NameInRequest']);
+  has TopicConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::S3::TopicConfiguration]', request_name => 'TopicConfiguration', traits => ['NameInRequest']);
+
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

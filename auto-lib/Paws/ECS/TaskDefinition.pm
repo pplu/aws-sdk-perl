@@ -19,6 +19,7 @@ package Paws::ECS::TaskDefinition;
   has TaskDefinitionArn => (is => 'ro', isa => 'Str', request_name => 'taskDefinitionArn', traits => ['NameInRequest']);
   has TaskRoleArn => (is => 'ro', isa => 'Str', request_name => 'taskRoleArn', traits => ['NameInRequest']);
   has Volumes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Volume]', request_name => 'volumes', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

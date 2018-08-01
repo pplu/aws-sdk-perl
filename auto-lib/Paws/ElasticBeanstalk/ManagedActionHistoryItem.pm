@@ -8,6 +8,7 @@ package Paws::ElasticBeanstalk::ManagedActionHistoryItem;
   has FailureType => (is => 'ro', isa => 'Str');
   has FinishedTime => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

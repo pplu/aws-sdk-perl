@@ -7,6 +7,7 @@ package Paws::IAM::ServiceSpecificCredential;
   has ServiceUserName => (is => 'ro', isa => 'Str', required => 1);
   has Status => (is => 'ro', isa => 'Str', required => 1);
   has UserName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

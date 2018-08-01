@@ -1,7 +1,8 @@
 package Paws::Pinpoint::GPSCoordinates;
   use Moose;
-  has Latitude => (is => 'ro', isa => 'Num', required => 1);
-  has Longitude => (is => 'ro', isa => 'Num', required => 1);
+  has Latitude => (is => 'ro', isa => 'Num');
+  has Longitude => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###
@@ -32,19 +33,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::G
 
 =head1 DESCRIPTION
 
-Specifies the GPS coordinates of a location.
+GPS coordinates
 
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Latitude => Num
+=head2 Latitude => Num
 
-  The latitude coordinate of the location.
+  Latitude
 
 
-=head2 B<REQUIRED> Longitude => Num
+=head2 Longitude => Num
 
-  The longitude coordinate of the location.
+  Longitude
 
 
 

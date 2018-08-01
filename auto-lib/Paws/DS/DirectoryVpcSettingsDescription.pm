@@ -4,6 +4,7 @@ package Paws::DS::DirectoryVpcSettingsDescription;
   has SecurityGroupId => (is => 'ro', isa => 'Str');
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has VpcId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

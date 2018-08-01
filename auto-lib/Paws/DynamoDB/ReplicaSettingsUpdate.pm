@@ -2,8 +2,8 @@ package Paws::DynamoDB::ReplicaSettingsUpdate;
   use Moose;
   has RegionName => (is => 'ro', isa => 'Str', required => 1);
   has ReplicaGlobalSecondaryIndexSettingsUpdate => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::ReplicaGlobalSecondaryIndexSettingsUpdate]');
-  has ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate => (is => 'ro', isa => 'Paws::DynamoDB::AutoScalingSettingsUpdate');
   has ReplicaProvisionedReadCapacityUnits => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###
@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::R
 
 =head1 DESCRIPTION
 
-Represents the settings for a global table in a Region that will be
+Represents the settings for a global table in a region that will be
 modified.
 
 =head1 ATTRIBUTES
@@ -42,7 +42,7 @@ modified.
 
 =head2 B<REQUIRED> RegionName => Str
 
-  The Region of the replica to be added.
+  The region of the replica to be added.
 
 
 =head2 ReplicaGlobalSecondaryIndexSettingsUpdate => ArrayRef[L<Paws::DynamoDB::ReplicaGlobalSecondaryIndexSettingsUpdate>]
@@ -51,18 +51,12 @@ modified.
 that will be modified.
 
 
-=head2 ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate => L<Paws::DynamoDB::AutoScalingSettingsUpdate>
-
-  Auto scaling settings for managing a global table replica's read
-capacity units.
-
-
 =head2 ReplicaProvisionedReadCapacityUnits => Int
 
   The maximum number of strongly consistent reads consumed per second
 before DynamoDB returns a C<ThrottlingException>. For more information,
 see Specifying Read and Write Requirements
-(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput)
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput)
 in the I<Amazon DynamoDB Developer Guide>.
 
 

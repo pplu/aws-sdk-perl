@@ -1,5 +1,6 @@
 package Paws::CloudDirectory::BatchAttachPolicyResponse;
   use Moose;
+
 1;
 
 ### main pod documentation begin ###

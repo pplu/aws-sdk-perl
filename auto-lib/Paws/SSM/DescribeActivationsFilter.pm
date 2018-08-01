@@ -2,6 +2,7 @@ package Paws::SSM::DescribeActivationsFilter;
   use Moose;
   has FilterKey => (is => 'ro', isa => 'Str');
   has FilterValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

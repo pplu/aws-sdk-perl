@@ -2,6 +2,7 @@ package Paws::WorkDocs::PermissionInfo;
   use Moose;
   has Role => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::CognitoSync::IdentityUsage;
   has IdentityId => (is => 'ro', isa => 'Str');
   has IdentityPoolId => (is => 'ro', isa => 'Str');
   has LastModifiedDate => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

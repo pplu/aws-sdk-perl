@@ -6,6 +6,7 @@ package Paws::CloudWatchLogs::Destination;
   has DestinationName => (is => 'ro', isa => 'Str', request_name => 'destinationName', traits => ['NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
   has TargetArn => (is => 'ro', isa => 'Str', request_name => 'targetArn', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

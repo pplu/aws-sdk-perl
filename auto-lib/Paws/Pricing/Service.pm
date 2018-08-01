@@ -2,6 +2,7 @@ package Paws::Pricing::Service;
   use Moose;
   has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ServiceCode => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

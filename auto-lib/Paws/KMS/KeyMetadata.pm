@@ -18,6 +18,7 @@ package Paws::KMS::KeyMetadata;
   has Origin => (is => 'ro', isa => 'Str');
   has SigningAlgorithms => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ValidTo => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

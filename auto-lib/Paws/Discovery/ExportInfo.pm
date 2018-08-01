@@ -8,6 +8,7 @@ package Paws::Discovery::ExportInfo;
   has RequestedEndTime => (is => 'ro', isa => 'Str', request_name => 'requestedEndTime', traits => ['NameInRequest']);
   has RequestedStartTime => (is => 'ro', isa => 'Str', request_name => 'requestedStartTime', traits => ['NameInRequest']);
   has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::S3::LoggingEnabled;
   has TargetBucket => (is => 'ro', isa => 'Str', required => 1);
   has TargetGrants => (is => 'ro', isa => 'ArrayRef[Paws::S3::TargetGrant]', request_name => 'Grant', traits => ['NameInRequest']);
   has TargetPrefix => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

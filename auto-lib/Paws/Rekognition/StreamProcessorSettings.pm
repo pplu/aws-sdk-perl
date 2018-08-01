@@ -1,6 +1,7 @@
 package Paws::Rekognition::StreamProcessorSettings;
   use Moose;
   has FaceSearch => (is => 'ro', isa => 'Paws::Rekognition::FaceSearchSettings');
+
 1;
 
 ### main pod documentation begin ###

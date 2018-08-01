@@ -1,6 +1,7 @@
 package Paws::CloudWatchEvents::RunCommandParameters;
   use Moose;
   has RunCommandTargets => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchEvents::RunCommandTarget]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

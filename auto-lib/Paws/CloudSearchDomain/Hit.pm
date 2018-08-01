@@ -4,6 +4,7 @@ package Paws::CloudSearchDomain::Hit;
   has Fields => (is => 'ro', isa => 'Paws::CloudSearchDomain::Fields', request_name => 'fields', traits => ['NameInRequest']);
   has Highlights => (is => 'ro', isa => 'Paws::CloudSearchDomain::Highlights', request_name => 'highlights', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

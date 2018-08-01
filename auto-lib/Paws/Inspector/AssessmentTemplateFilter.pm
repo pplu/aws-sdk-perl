@@ -3,6 +3,7 @@ package Paws::Inspector::AssessmentTemplateFilter;
   has DurationRange => (is => 'ro', isa => 'Paws::Inspector::DurationRange', request_name => 'durationRange', traits => ['NameInRequest']);
   has NamePattern => (is => 'ro', isa => 'Str', request_name => 'namePattern', traits => ['NameInRequest']);
   has RulesPackageArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'rulesPackageArns', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Organizations::HandshakeFilter;
   use Moose;
   has ActionType => (is => 'ro', isa => 'Str');
   has ParentHandshakeId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

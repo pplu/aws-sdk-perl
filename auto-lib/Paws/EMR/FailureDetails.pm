@@ -3,6 +3,7 @@ package Paws::EMR::FailureDetails;
   has LogFile => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
   has Reason => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

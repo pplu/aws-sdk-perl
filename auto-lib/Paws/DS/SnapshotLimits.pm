@@ -3,6 +3,7 @@ package Paws::DS::SnapshotLimits;
   has ManualSnapshotsCurrentCount => (is => 'ro', isa => 'Int');
   has ManualSnapshotsLimit => (is => 'ro', isa => 'Int');
   has ManualSnapshotsLimitReached => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

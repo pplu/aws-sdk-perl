@@ -5,6 +5,7 @@ package Paws::MediaLive::AudioCodecSettings;
   has Eac3Settings => (is => 'ro', isa => 'Paws::MediaLive::Eac3Settings', request_name => 'eac3Settings', traits => ['NameInRequest']);
   has Mp2Settings => (is => 'ro', isa => 'Paws::MediaLive::Mp2Settings', request_name => 'mp2Settings', traits => ['NameInRequest']);
   has PassThroughSettings => (is => 'ro', isa => 'Paws::MediaLive::PassThroughSettings', request_name => 'passThroughSettings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

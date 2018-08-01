@@ -5,6 +5,7 @@ package Paws::CognitoIdp::EmailConfigurationType;
   has From => (is => 'ro', isa => 'Str');
   has ReplyToEmailAddress => (is => 'ro', isa => 'Str');
   has SourceArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::Config::ConfigStreamDeliveryInfo;
   has LastErrorMessage => (is => 'ro', isa => 'Str', request_name => 'lastErrorMessage', traits => ['NameInRequest']);
   has LastStatus => (is => 'ro', isa => 'Str', request_name => 'lastStatus', traits => ['NameInRequest']);
   has LastStatusChangeTime => (is => 'ro', isa => 'Str', request_name => 'lastStatusChangeTime', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

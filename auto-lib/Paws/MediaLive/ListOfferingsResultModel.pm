@@ -2,6 +2,7 @@ package Paws::MediaLive::ListOfferingsResultModel;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
   has Offerings => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::Offering]', request_name => 'offerings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

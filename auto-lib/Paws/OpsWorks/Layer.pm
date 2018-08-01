@@ -23,6 +23,7 @@ package Paws::OpsWorks::Layer;
   has Type => (is => 'ro', isa => 'Str');
   has UseEbsOptimizedInstances => (is => 'ro', isa => 'Bool');
   has VolumeConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::VolumeConfiguration]');
+
 1;
 
 ### main pod documentation begin ###

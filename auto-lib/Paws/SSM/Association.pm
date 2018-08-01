@@ -10,6 +10,7 @@ package Paws::SSM::Association;
   has Overview => (is => 'ro', isa => 'Paws::SSM::AssociationOverview');
   has ScheduleExpression => (is => 'ro', isa => 'Str');
   has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
+
 1;
 
 ### main pod documentation begin ###

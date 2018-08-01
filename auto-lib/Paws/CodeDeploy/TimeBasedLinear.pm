@@ -2,6 +2,7 @@ package Paws::CodeDeploy::TimeBasedLinear;
   use Moose;
   has LinearInterval => (is => 'ro', isa => 'Int', request_name => 'linearInterval', traits => ['NameInRequest']);
   has LinearPercentage => (is => 'ro', isa => 'Int', request_name => 'linearPercentage', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

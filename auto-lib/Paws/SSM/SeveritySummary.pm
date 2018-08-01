@@ -6,6 +6,7 @@ package Paws::SSM::SeveritySummary;
   has LowCount => (is => 'ro', isa => 'Int');
   has MediumCount => (is => 'ro', isa => 'Int');
   has UnspecifiedCount => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

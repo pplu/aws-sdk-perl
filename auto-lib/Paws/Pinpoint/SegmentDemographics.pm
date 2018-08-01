@@ -6,6 +6,7 @@ package Paws::Pinpoint::SegmentDemographics;
   has Make => (is => 'ro', isa => 'Paws::Pinpoint::SetDimension');
   has Model => (is => 'ro', isa => 'Paws::Pinpoint::SetDimension');
   has Platform => (is => 'ro', isa => 'Paws::Pinpoint::SetDimension');
+
 1;
 
 ### main pod documentation begin ###

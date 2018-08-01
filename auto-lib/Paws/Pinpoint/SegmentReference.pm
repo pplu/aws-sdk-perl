@@ -2,6 +2,7 @@ package Paws::Pinpoint::SegmentReference;
   use Moose;
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has Version => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

@@ -1,11 +1,12 @@
 package Paws::Pinpoint::SegmentImportResource;
   use Moose;
   has ChannelCounts => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__integer');
-  has ExternalId => (is => 'ro', isa => 'Str', required => 1);
-  has Format => (is => 'ro', isa => 'Str', required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', required => 1);
-  has S3Url => (is => 'ro', isa => 'Str', required => 1);
-  has Size => (is => 'ro', isa => 'Int', required => 1);
+  has ExternalId => (is => 'ro', isa => 'Str');
+  has Format => (is => 'ro', isa => 'Str');
+  has RoleArn => (is => 'ro', isa => 'Str');
+  has S3Url => (is => 'ro', isa => 'Str');
+  has Size => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###
@@ -36,52 +37,46 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::S
 
 =head1 DESCRIPTION
 
-Provides information about the import job that created a segment. An
-import job is a job that creates a user segment by importing endpoint
-definitions.
+Segment import definition.
 
 =head1 ATTRIBUTES
 
 
 =head2 ChannelCounts => L<Paws::Pinpoint::MapOf__integer>
 
-  The number of channel types in the endpoint definitions that were
-imported to create the segment.
+  Channel type counts
 
 
-=head2 B<REQUIRED> ExternalId => Str
+=head2 ExternalId => Str
 
-  (Deprecated) Your AWS account ID, which you assigned to an external ID
-key in an IAM trust policy. Amazon Pinpoint previously used this value
-to assume an IAM role when importing endpoint definitions, but we
-removed this requirement. We don't recommend use of external IDs for
-IAM roles that are assumed by Amazon Pinpoint.
-
-
-=head2 B<REQUIRED> Format => Str
-
-  The format of the files that were imported to create the segment. Valid
-values are: CSV, for comma-separated values format; and, JSON, for
-newline-delimited JSON format.
+  DEPRECATED. Your AWS account ID, which you assigned to the ExternalID
+key in an IAM trust policy. Used by Amazon Pinpoint to assume an IAM
+role. This requirement is removed, and external IDs are not recommended
+for IAM roles assumed by Amazon Pinpoint.
 
 
-=head2 B<REQUIRED> RoleArn => Str
+=head2 Format => Str
 
-  The Amazon Resource Name (ARN) of the AWS Identity and Access
-Management (IAM) role that authorized Amazon Pinpoint to access the
-Amazon S3 location to import endpoint definitions from.
-
-
-=head2 B<REQUIRED> S3Url => Str
-
-  The URL of the Amazon Simple Storage Service (Amazon S3) bucket that
-the endpoint definitions were imported from to create the segment.
+  The format of the endpoint files that were imported to create this
+segment. Valid values: CSV, JSON
 
 
-=head2 B<REQUIRED> Size => Int
+=head2 RoleArn => Str
 
-  The number of endpoint definitions that were imported successfully to
-create the segment.
+  The Amazon Resource Name (ARN) of an IAM role that grants Amazon
+Pinpoint access to the endpoints in Amazon S3.
+
+
+=head2 S3Url => Str
+
+  A URL that points to the Amazon S3 location from which the endpoints
+for this segment were imported.
+
+
+=head2 Size => Int
+
+  The number of endpoints that were successfully imported to create this
+segment.
 
 
 

@@ -3,6 +3,7 @@ package Paws::S3::GetBucketRequestPaymentOutput;
   use Moose;
   has Payer => (is => 'ro', isa => 'Str');
 
+
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

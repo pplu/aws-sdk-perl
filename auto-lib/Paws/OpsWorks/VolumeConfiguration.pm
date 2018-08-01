@@ -7,6 +7,7 @@ package Paws::OpsWorks::VolumeConfiguration;
   has RaidLevel => (is => 'ro', isa => 'Int');
   has Size => (is => 'ro', isa => 'Int', required => 1);
   has VolumeType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

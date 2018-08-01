@@ -6,6 +6,7 @@ package Paws::IoT::TopicRulePayload;
   has ErrorAction => (is => 'ro', isa => 'Paws::IoT::Action', request_name => 'errorAction', traits => ['NameInRequest']);
   has RuleDisabled => (is => 'ro', isa => 'Bool', request_name => 'ruleDisabled', traits => ['NameInRequest']);
   has Sql => (is => 'ro', isa => 'Str', request_name => 'sql', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

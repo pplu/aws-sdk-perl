@@ -1,6 +1,7 @@
 package Paws::MediaLive::DvbTdtSettings;
   use Moose;
   has RepInterval => (is => 'ro', isa => 'Int', request_name => 'repInterval', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

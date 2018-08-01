@@ -1,6 +1,7 @@
 package Paws::MediaLive::TtmlDestinationSettings;
   use Moose;
   has StyleControl => (is => 'ro', isa => 'Str', request_name => 'styleControl', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

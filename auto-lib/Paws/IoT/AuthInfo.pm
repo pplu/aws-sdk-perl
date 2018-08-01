@@ -2,6 +2,7 @@ package Paws::IoT::AuthInfo;
   use Moose;
   has ActionType => (is => 'ro', isa => 'Str', request_name => 'actionType', traits => ['NameInRequest']);
   has Resources => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'resources', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

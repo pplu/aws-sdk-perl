@@ -1,6 +1,7 @@
 package Paws::S3::InventoryFilter;
   use Moose;
   has Prefix => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

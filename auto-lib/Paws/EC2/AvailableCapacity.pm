@@ -39,16 +39,12 @@ This class has no description
 
 =head2 AvailableInstanceCapacity => ArrayRef[L<Paws::EC2::InstanceCapacity>]
 
-  The number of instances that can be launched onto the Dedicated Host
-depending on the host's available capacity. For Dedicated Hosts that
-support multiple instance types, this parameter represents the number
-of instances for each instance size that is supported on the host.
+  The total number of instances that the Dedicated Host supports.
 
 
 =head2 AvailableVCpus => Int
 
-  The number of vCPUs available for launching instances onto the
-Dedicated Host.
+  The number of vCPUs available on the Dedicated Host.
 
 
 

@@ -10,6 +10,7 @@ package Paws::GuardDuty::Service;
   has ResourceRole => (is => 'ro', isa => 'Str', request_name => 'resourceRole', traits => ['NameInRequest']);
   has ServiceName => (is => 'ro', isa => 'Str', request_name => 'serviceName', traits => ['NameInRequest']);
   has UserFeedback => (is => 'ro', isa => 'Str', request_name => 'userFeedback', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

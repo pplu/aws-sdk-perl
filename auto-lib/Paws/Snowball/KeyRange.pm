@@ -2,6 +2,7 @@ package Paws::Snowball::KeyRange;
   use Moose;
   has BeginMarker => (is => 'ro', isa => 'Str');
   has EndMarker => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

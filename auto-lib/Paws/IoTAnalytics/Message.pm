@@ -2,6 +2,7 @@ package Paws::IoTAnalytics::Message;
   use Moose;
   has MessageId => (is => 'ro', isa => 'Str', request_name => 'messageId', traits => ['NameInRequest'], required => 1);
   has Payload => (is => 'ro', isa => 'Str', request_name => 'payload', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###
@@ -45,9 +46,7 @@ unique within each batch sent.
 
 =head2 B<REQUIRED> Payload => Str
 
-  The payload of the message. This may be a JSON string or a
-Base64-encoded string representing binary data (in which case you must
-decode it by means of a pipeline activity).
+  The payload of the message.
 
 
 

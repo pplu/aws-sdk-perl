@@ -5,6 +5,7 @@ package Paws::XRay::Http;
   has HttpStatus => (is => 'ro', isa => 'Int');
   has HttpURL => (is => 'ro', isa => 'Str');
   has UserAgent => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -13,6 +13,7 @@ package Paws::MediaTailor::PlaybackConfiguration;
   has Tags => (is => 'ro', isa => 'Paws::MediaTailor::__mapOf__string', request_name => 'tags', traits => ['NameInRequest']);
   has TranscodeProfileName => (is => 'ro', isa => 'Str');
   has VideoContentSourceUrl => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

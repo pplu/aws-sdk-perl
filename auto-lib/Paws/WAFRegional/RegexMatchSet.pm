@@ -3,6 +3,7 @@ package Paws::WAFRegional::RegexMatchSet;
   has Name => (is => 'ro', isa => 'Str');
   has RegexMatchSetId => (is => 'ro', isa => 'Str');
   has RegexMatchTuples => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::RegexMatchTuple]');
+
 1;
 
 ### main pod documentation begin ###

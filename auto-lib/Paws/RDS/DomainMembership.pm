@@ -4,6 +4,7 @@ package Paws::RDS::DomainMembership;
   has FQDN => (is => 'ro', isa => 'Str');
   has IAMRoleName => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

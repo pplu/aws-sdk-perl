@@ -1,6 +1,7 @@
 package Paws::CloudWatchEvents::SqsParameters;
   use Moose;
   has MessageGroupId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::MediaLive::NetworkInputSettings;
   use Moose;
   has HlsInputSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsInputSettings', request_name => 'hlsInputSettings', traits => ['NameInRequest']);
   has ServerValidation => (is => 'ro', isa => 'Str', request_name => 'serverValidation', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

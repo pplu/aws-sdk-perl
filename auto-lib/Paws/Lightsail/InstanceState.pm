@@ -2,6 +2,7 @@ package Paws::Lightsail::InstanceState;
   use Moose;
   has Code => (is => 'ro', isa => 'Int', request_name => 'code', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::MediaConvert::ResourceTags;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'Paws::MediaConvert::__mapOf__string', request_name => 'tags', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

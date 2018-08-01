@@ -1,12 +1,7 @@
 package Paws::DynamoDB::ReplicaDescription;
   use Moose;
-  has GlobalSecondaryIndexes => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::ReplicaGlobalSecondaryIndexDescription]');
-  has KMSMasterKeyId => (is => 'ro', isa => 'Str');
-  has ProvisionedThroughputOverride => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughputOverride');
   has RegionName => (is => 'ro', isa => 'Str');
-  has ReplicaStatus => (is => 'ro', isa => 'Str');
-  has ReplicaStatusDescription => (is => 'ro', isa => 'Str');
-  has ReplicaStatusPercentProgress => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###
@@ -26,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DynamoDB::ReplicaDescription object:
 
-  $service_obj->Method(Att1 => { GlobalSecondaryIndexes => $value, ..., ReplicaStatusPercentProgress => $value  });
+  $service_obj->Method(Att1 => { RegionName => $value, ..., RegionName => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::ReplicaDescription object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->GlobalSecondaryIndexes
+  $result->Att1->RegionName
 
 =head1 DESCRIPTION
 
@@ -42,63 +37,9 @@ Contains the details of the replica.
 =head1 ATTRIBUTES
 
 
-=head2 GlobalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::ReplicaGlobalSecondaryIndexDescription>]
-
-  Replica-specific global secondary index settings.
-
-
-=head2 KMSMasterKeyId => Str
-
-  The AWS KMS customer master key (CMK) of the replica that will be used
-for AWS KMS encryption.
-
-
-=head2 ProvisionedThroughputOverride => L<Paws::DynamoDB::ProvisionedThroughputOverride>
-
-  Replica-specific provisioned throughput. If not described, uses the
-source table's provisioned throughput settings.
-
-
 =head2 RegionName => Str
 
-  The name of the Region.
-
-
-=head2 ReplicaStatus => Str
-
-  The current state of the replica:
-
-=over
-
-=item *
-
-C<CREATING> - The replica is being created.
-
-=item *
-
-C<UPDATING> - The replica is being updated.
-
-=item *
-
-C<DELETING> - The replica is being deleted.
-
-=item *
-
-C<ACTIVE> - The replica is ready for use.
-
-=back
-
-
-
-=head2 ReplicaStatusDescription => Str
-
-  Detailed information about the replica status.
-
-
-=head2 ReplicaStatusPercentProgress => Str
-
-  Specifies the progress of a Create, Update, or Delete action on the
-replica as a percentage.
+  The name of the region.
 
 
 

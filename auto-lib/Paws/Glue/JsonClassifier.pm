@@ -5,6 +5,7 @@ package Paws::Glue::JsonClassifier;
   has LastUpdated => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Version => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

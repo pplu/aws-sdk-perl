@@ -6,6 +6,7 @@ package Paws::DeviceFarm::DevicePool;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Rules => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Rule]', request_name => 'rules', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

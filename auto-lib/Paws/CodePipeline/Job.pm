@@ -4,6 +4,7 @@ package Paws::CodePipeline::Job;
   has Data => (is => 'ro', isa => 'Paws::CodePipeline::JobData', request_name => 'data', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
   has Nonce => (is => 'ro', isa => 'Str', request_name => 'nonce', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

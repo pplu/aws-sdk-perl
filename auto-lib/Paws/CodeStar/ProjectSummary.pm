@@ -2,6 +2,7 @@ package Paws::CodeStar::ProjectSummary;
   use Moose;
   has ProjectArn => (is => 'ro', isa => 'Str', request_name => 'projectArn', traits => ['NameInRequest']);
   has ProjectId => (is => 'ro', isa => 'Str', request_name => 'projectId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::Firehose::HiveJsonSerDe;
   use Moose;
   has TimestampFormats => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::Greengrass::LocalVolumeResourceData;
   has DestinationPath => (is => 'ro', isa => 'Str');
   has GroupOwnerSetting => (is => 'ro', isa => 'Paws::Greengrass::GroupOwnerSetting');
   has SourcePath => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

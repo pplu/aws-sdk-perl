@@ -2,6 +2,7 @@ package Paws::MTurk::ReviewReport;
   use Moose;
   has ReviewActions => (is => 'ro', isa => 'ArrayRef[Paws::MTurk::ReviewActionDetail]');
   has ReviewResults => (is => 'ro', isa => 'ArrayRef[Paws::MTurk::ReviewResultDetail]');
+
 1;
 
 ### main pod documentation begin ###

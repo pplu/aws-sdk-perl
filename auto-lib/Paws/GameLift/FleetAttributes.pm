@@ -23,6 +23,7 @@ package Paws::GameLift::FleetAttributes;
   has Status => (is => 'ro', isa => 'Str');
   has StoppedActions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has TerminationTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

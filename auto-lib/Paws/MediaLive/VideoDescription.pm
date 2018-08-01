@@ -7,6 +7,7 @@ package Paws::MediaLive::VideoDescription;
   has ScalingBehavior => (is => 'ro', isa => 'Str', request_name => 'scalingBehavior', traits => ['NameInRequest']);
   has Sharpness => (is => 'ro', isa => 'Int', request_name => 'sharpness', traits => ['NameInRequest']);
   has Width => (is => 'ro', isa => 'Int', request_name => 'width', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

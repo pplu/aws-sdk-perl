@@ -1,6 +1,7 @@
 package Paws::MediaLive::UpdateInputSecurityGroupResultModel;
   use Moose;
   has SecurityGroup => (is => 'ro', isa => 'Paws::MediaLive::InputSecurityGroup', request_name => 'securityGroup', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::MediaConvert::SccDestinationSettings;
   use Moose;
   has Framerate => (is => 'ro', isa => 'Str', request_name => 'framerate', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

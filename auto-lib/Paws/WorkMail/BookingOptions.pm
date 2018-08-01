@@ -3,6 +3,7 @@ package Paws::WorkMail::BookingOptions;
   has AutoAcceptRequests => (is => 'ro', isa => 'Bool');
   has AutoDeclineConflictingRequests => (is => 'ro', isa => 'Bool');
   has AutoDeclineRecurringRequests => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::IoT::SalesforceAction;
   use Moose;
   has Token => (is => 'ro', isa => 'Str', request_name => 'token', traits => ['NameInRequest'], required => 1);
   has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

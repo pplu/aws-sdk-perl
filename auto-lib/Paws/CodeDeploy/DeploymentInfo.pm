@@ -27,6 +27,7 @@ package Paws::CodeDeploy::DeploymentInfo;
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has TargetInstances => (is => 'ro', isa => 'Paws::CodeDeploy::TargetInstances', request_name => 'targetInstances', traits => ['NameInRequest']);
   has UpdateOutdatedInstancesOnly => (is => 'ro', isa => 'Bool', request_name => 'updateOutdatedInstancesOnly', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

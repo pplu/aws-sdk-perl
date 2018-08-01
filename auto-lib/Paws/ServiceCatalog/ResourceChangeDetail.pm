@@ -3,6 +3,7 @@ package Paws::ServiceCatalog::ResourceChangeDetail;
   has CausingEntity => (is => 'ro', isa => 'Str');
   has Evaluation => (is => 'ro', isa => 'Str');
   has Target => (is => 'ro', isa => 'Paws::ServiceCatalog::ResourceTargetDefinition');
+
 1;
 
 ### main pod documentation begin ###

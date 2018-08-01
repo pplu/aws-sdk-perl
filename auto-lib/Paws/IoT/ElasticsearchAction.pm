@@ -5,6 +5,7 @@ package Paws::IoT::ElasticsearchAction;
   has Index => (is => 'ro', isa => 'Str', request_name => 'index', traits => ['NameInRequest'], required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

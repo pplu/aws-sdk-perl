@@ -3,6 +3,7 @@ package Paws::WAF::RegexMatchTuple;
   has FieldToMatch => (is => 'ro', isa => 'Paws::WAF::FieldToMatch', required => 1);
   has RegexPatternSetId => (is => 'ro', isa => 'Str', required => 1);
   has TextTransformation => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

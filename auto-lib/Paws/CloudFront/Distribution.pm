@@ -9,6 +9,7 @@ package Paws::CloudFront::Distribution;
   has InProgressInvalidationBatches => (is => 'ro', isa => 'Int', required => 1);
   has LastModifiedTime => (is => 'ro', isa => 'Str', required => 1);
   has Status => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

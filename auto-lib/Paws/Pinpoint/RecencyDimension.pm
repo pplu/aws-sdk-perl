@@ -1,7 +1,8 @@
 package Paws::Pinpoint::RecencyDimension;
   use Moose;
-  has Duration => (is => 'ro', isa => 'Str', required => 1);
-  has RecencyType => (is => 'ro', isa => 'Str', required => 1);
+  has Duration => (is => 'ro', isa => 'Str');
+  has RecencyType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###
@@ -32,24 +33,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::R
 
 =head1 DESCRIPTION
 
-Specifies criteria for including or excluding endpoints from a segment
-based on how recently an endpoint was active.
+Define how a segment based on recency of use.
 
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Duration => Str
+=head2 Duration => Str
 
-  The duration to use when determining whether an endpoint is active or
-inactive.
+  The length of time during which users have been active or inactive with
+your app. Valid values: HR_24, DAY_7, DAY_14, DAY_30
 
 
-=head2 B<REQUIRED> RecencyType => Str
+=head2 RecencyType => Str
 
-  The type of recency dimension to use for the segment. Valid values are:
-ACTIVE, endpoints that were active within the specified duration are
-included in the segment; and, INACTIVE, endpoints that weren't active
-within the specified duration are included in the segment.
+  The recency dimension type: ACTIVE - Users who have used your app
+within the specified duration are included in the segment. INACTIVE -
+Users who have not used your app within the specified duration are
+included in the segment.
 
 
 

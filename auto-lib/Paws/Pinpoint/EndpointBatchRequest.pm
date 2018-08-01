@@ -1,6 +1,7 @@
 package Paws::Pinpoint::EndpointBatchRequest;
   use Moose;
-  has Item => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::EndpointBatchItem]', required => 1);
+  has Item => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::EndpointBatchItem]');
+
 1;
 
 ### main pod documentation begin ###
@@ -31,17 +32,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::E
 
 =head1 DESCRIPTION
 
-Specifies a batch of endpoints to create or update and the settings and
-attributes to set or change for each endpoint.
+Endpoint batch update request.
 
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Item => ArrayRef[L<Paws::Pinpoint::EndpointBatchItem>]
+=head2 Item => ArrayRef[L<Paws::Pinpoint::EndpointBatchItem>]
 
-  An array that defines the endpoints to create or update and, for each
-endpoint, the property values to set or change. An array can contain a
-maximum of 100 items.
+  List of items to update. Maximum 100 items
 
 
 

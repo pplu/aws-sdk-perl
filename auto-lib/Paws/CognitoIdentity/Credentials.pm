@@ -4,6 +4,7 @@ package Paws::CognitoIdentity::Credentials;
   has Expiration => (is => 'ro', isa => 'Str');
   has SecretKey => (is => 'ro', isa => 'Str');
   has SessionToken => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

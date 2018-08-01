@@ -3,6 +3,7 @@ package Paws::DynamoDBStreams::Stream;
   has StreamArn => (is => 'ro', isa => 'Str');
   has StreamLabel => (is => 'ro', isa => 'Str');
   has TableName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

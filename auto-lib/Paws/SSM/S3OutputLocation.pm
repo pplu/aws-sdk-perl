@@ -3,6 +3,7 @@ package Paws::SSM::S3OutputLocation;
   has OutputS3BucketName => (is => 'ro', isa => 'Str');
   has OutputS3KeyPrefix => (is => 'ro', isa => 'Str');
   has OutputS3Region => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

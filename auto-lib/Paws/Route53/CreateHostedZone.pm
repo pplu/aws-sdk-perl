@@ -7,6 +7,7 @@ package Paws::Route53::CreateHostedZone;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has VPC => (is => 'ro', isa => 'Paws::Route53::VPC');
 
+
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateHostedZone');
@@ -14,7 +15,8 @@ package Paws::Route53::CreateHostedZone;
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::CreateHostedZoneResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-  
+  class_has _top_level_element => (isa => 'Str', is => 'ro', default => 'CreateHostedZoneRequest');
+  class_has _top_level_namespace => (isa => 'Str', is => 'ro', default => 'https://route53.amazonaws.com/doc/2013-04-01/');  
 1;
 
 ### main pod documentation begin ###

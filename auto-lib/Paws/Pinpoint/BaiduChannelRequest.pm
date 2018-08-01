@@ -1,8 +1,9 @@
 package Paws::Pinpoint::BaiduChannelRequest;
   use Moose;
-  has ApiKey => (is => 'ro', isa => 'Str', required => 1);
+  has ApiKey => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool');
-  has SecretKey => (is => 'ro', isa => 'Str', required => 1);
+  has SecretKey => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###
@@ -33,27 +34,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::B
 
 =head1 DESCRIPTION
 
-Specifies the status and settings of the Baidu (Baidu Cloud Push)
-channel for an application.
+Baidu Cloud Push credentials
 
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ApiKey => Str
+=head2 ApiKey => Str
 
-  The API key that you received from the Baidu Cloud Push service to
-communicate with the service.
+  Platform credential API key from Baidu.
 
 
 =head2 Enabled => Bool
 
-  Specifies whether to enable the Baidu channel for the application.
+  If the channel is enabled for sending messages.
 
 
-=head2 B<REQUIRED> SecretKey => Str
+=head2 SecretKey => Str
 
-  The secret key that you received from the Baidu Cloud Push service to
-communicate with the service.
+  Platform credential Secret key from Baidu.
 
 
 

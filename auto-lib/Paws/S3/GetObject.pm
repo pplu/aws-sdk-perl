@@ -21,6 +21,7 @@ package Paws::S3::GetObject;
   has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-key-MD5', traits => ['ParamInHeader']);
   has VersionId => (is => 'ro', isa => 'Str', query_name => 'versionId', traits => ['ParamInQuery']);
 
+
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetObject');
@@ -29,6 +30,7 @@ package Paws::S3::GetObject;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::GetObjectOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###

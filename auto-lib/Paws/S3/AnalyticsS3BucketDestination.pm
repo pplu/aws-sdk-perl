@@ -4,6 +4,7 @@ package Paws::S3::AnalyticsS3BucketDestination;
   has BucketAccountId => (is => 'ro', isa => 'Str');
   has Format => (is => 'ro', isa => 'Str', required => 1);
   has Prefix => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

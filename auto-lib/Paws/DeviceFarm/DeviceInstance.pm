@@ -6,6 +6,7 @@ package Paws::DeviceFarm::DeviceInstance;
   has Labels => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'labels', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has Udid => (is => 'ro', isa => 'Str', request_name => 'udid', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

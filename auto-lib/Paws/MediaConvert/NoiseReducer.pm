@@ -1,9 +1,9 @@
 package Paws::MediaConvert::NoiseReducer;
   use Moose;
-  has Filter => (is => 'ro', isa => 'Str', request_name => 'filter', traits => ['NameInRequest']);
+  has Filter => (is => 'ro', isa => 'Str', request_name => 'filter', traits => ['NameInRequest'], required => 1);
   has FilterSettings => (is => 'ro', isa => 'Paws::MediaConvert::NoiseReducerFilterSettings', request_name => 'filterSettings', traits => ['NameInRequest']);
   has SpatialFilterSettings => (is => 'ro', isa => 'Paws::MediaConvert::NoiseReducerSpatialFilterSettings', request_name => 'spatialFilterSettings', traits => ['NameInRequest']);
-  has TemporalFilterSettings => (is => 'ro', isa => 'Paws::MediaConvert::NoiseReducerTemporalFilterSettings', request_name => 'temporalFilterSettings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConvert::NoiseReducer object:
 
-  $service_obj->Method(Att1 => { Filter => $value, ..., TemporalFilterSettings => $value  });
+  $service_obj->Method(Att1 => { Filter => $value, ..., SpatialFilterSettings => $value  });
 
 =head3 Results returned from an API call
 
@@ -43,30 +43,19 @@ Noise reducer filter (NoiseReducerFilter).
 =head1 ATTRIBUTES
 
 
-=head2 Filter => Str
+=head2 B<REQUIRED> Filter => Str
 
-  Use Noise reducer filter (NoiseReducerFilter) to select one of the
-following spatial image filtering functions. To use this setting, you
-must also enable Noise reducer (NoiseReducer). * Bilateral preserves
-edges while reducing noise. * Mean (softest), Gaussian, Lanczos, and
-Sharpen (sharpest) do convolution filtering. * Conserve does min/max
-noise reduction. * Spatial does frequency-domain filtering based on JND
-principles. * Temporal optimizes video quality for complex motion.
+  
 
 
 =head2 FilterSettings => L<Paws::MediaConvert::NoiseReducerFilterSettings>
 
-  Settings for a noise reducer filter
+  
 
 
 =head2 SpatialFilterSettings => L<Paws::MediaConvert::NoiseReducerSpatialFilterSettings>
 
-  Noise reducer filter settings for spatial filter.
-
-
-=head2 TemporalFilterSettings => L<Paws::MediaConvert::NoiseReducerTemporalFilterSettings>
-
-  Noise reducer filter settings for temporal filter.
+  
 
 
 

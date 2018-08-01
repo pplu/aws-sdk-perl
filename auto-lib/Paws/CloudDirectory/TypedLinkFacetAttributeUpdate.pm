@@ -2,6 +2,7 @@ package Paws::CloudDirectory::TypedLinkFacetAttributeUpdate;
   use Moose;
   has Action => (is => 'ro', isa => 'Str', required => 1);
   has Attribute => (is => 'ro', isa => 'Paws::CloudDirectory::TypedLinkAttributeDefinition', required => 1);
+
 1;
 
 ### main pod documentation begin ###

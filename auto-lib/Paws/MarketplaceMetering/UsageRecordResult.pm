@@ -3,6 +3,7 @@ package Paws::MarketplaceMetering::UsageRecordResult;
   has MeteringRecordId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has UsageRecord => (is => 'ro', isa => 'Paws::MarketplaceMetering::UsageRecord');
+
 1;
 
 ### main pod documentation begin ###

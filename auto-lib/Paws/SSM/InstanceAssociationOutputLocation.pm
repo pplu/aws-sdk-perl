@@ -1,6 +1,7 @@
 package Paws::SSM::InstanceAssociationOutputLocation;
   use Moose;
   has S3Location => (is => 'ro', isa => 'Paws::SSM::S3OutputLocation');
+
 1;
 
 ### main pod documentation begin ###

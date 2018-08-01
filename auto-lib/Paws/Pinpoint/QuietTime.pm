@@ -2,6 +2,7 @@ package Paws::Pinpoint::QuietTime;
   use Moose;
   has End => (is => 'ro', isa => 'Str');
   has Start => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

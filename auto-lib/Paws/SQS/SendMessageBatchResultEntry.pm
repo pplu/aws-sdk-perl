@@ -6,6 +6,7 @@ package Paws::SQS::SendMessageBatchResultEntry;
   has MD5OfMessageSystemAttributes => (is => 'ro', isa => 'Str');
   has MessageId => (is => 'ro', isa => 'Str', required => 1);
   has SequenceNumber => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,8 @@
 package Paws::Pinpoint::WriteEventStream;
   use Moose;
-  has DestinationStreamArn => (is => 'ro', isa => 'Str', required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', required => 1);
+  has DestinationStreamArn => (is => 'ro', isa => 'Str');
+  has RoleArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###
@@ -32,31 +33,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::W
 
 =head1 DESCRIPTION
 
-Specifies the Amazon Resource Name (ARN) of an event stream to publish
-events to and the AWS Identity and Access Management (IAM) role to use
-when publishing those events.
+Request to save an EventStream.
 
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DestinationStreamArn => Str
+=head2 DestinationStreamArn => Str
 
-  The Amazon Resource Name (ARN) of the Amazon Kinesis data stream or
-Amazon Kinesis Data Firehose delivery stream that you want to publish
-event data to.
-
-For a Kinesis data stream, the ARN format is:
-arn:aws:kinesis:region:account-id:stream/stream_name
-
-For a Kinesis Data Firehose delivery stream, the ARN format is:
-arn:aws:firehose:region:account-id:deliverystream/stream_name
+  The Amazon Resource Name (ARN) of the Amazon Kinesis stream or Firehose
+delivery stream to which you want to publish events. Firehose ARN:
+arn:aws:firehose:REGION:ACCOUNT_ID:deliverystream/STREAM_NAME Kinesis
+ARN: arn:aws:kinesis:REGION:ACCOUNT_ID:stream/STREAM_NAME
 
 
-=head2 B<REQUIRED> RoleArn => Str
+=head2 RoleArn => Str
 
-  The AWS Identity and Access Management (IAM) role that authorizes
-Amazon Pinpoint to publish event data to the stream in your AWS
-account.
+  The IAM role that authorizes Amazon Pinpoint to publish events to the
+stream in your account.
 
 
 

@@ -2,6 +2,7 @@ package Paws::Shield::Contributor;
   use Moose;
   has Name => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

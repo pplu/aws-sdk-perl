@@ -11,6 +11,7 @@ package Paws::SSM::MaintenanceWindowRunCommandParameters;
   has Parameters => (is => 'ro', isa => 'Paws::SSM::Parameters');
   has ServiceRoleArn => (is => 'ro', isa => 'Str');
   has TimeoutSeconds => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::CodeCommit::UserInfo;
   has Date => (is => 'ro', isa => 'Str', request_name => 'date', traits => ['NameInRequest']);
   has Email => (is => 'ro', isa => 'Str', request_name => 'email', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

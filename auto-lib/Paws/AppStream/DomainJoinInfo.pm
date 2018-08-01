@@ -2,6 +2,7 @@ package Paws::AppStream::DomainJoinInfo;
   use Moose;
   has DirectoryName => (is => 'ro', isa => 'Str');
   has OrganizationalUnitDistinguishedName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

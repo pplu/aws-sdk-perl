@@ -18,6 +18,7 @@ package Paws::ElastiCache::ReplicationGroup;
   has SnapshotWindow => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has TransitEncryptionEnabled => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::WorkDocs::CommentMetadata;
   has Contributor => (is => 'ro', isa => 'Paws::WorkDocs::User');
   has CreatedTimestamp => (is => 'ro', isa => 'Str');
   has RecipientId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

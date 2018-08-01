@@ -57,6 +57,7 @@ package Paws::SimpleWorkflow::HistoryEvent;
   has WorkflowExecutionStartedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionStartedEventAttributes', request_name => 'workflowExecutionStartedEventAttributes', traits => ['NameInRequest']);
   has WorkflowExecutionTerminatedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionTerminatedEventAttributes', request_name => 'workflowExecutionTerminatedEventAttributes', traits => ['NameInRequest']);
   has WorkflowExecutionTimedOutEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionTimedOutEventAttributes', request_name => 'workflowExecutionTimedOutEventAttributes', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

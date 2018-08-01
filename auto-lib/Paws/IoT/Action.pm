@@ -6,10 +6,7 @@ package Paws::IoT::Action;
   has DynamoDBv2 => (is => 'ro', isa => 'Paws::IoT::DynamoDBv2Action', request_name => 'dynamoDBv2', traits => ['NameInRequest']);
   has Elasticsearch => (is => 'ro', isa => 'Paws::IoT::ElasticsearchAction', request_name => 'elasticsearch', traits => ['NameInRequest']);
   has Firehose => (is => 'ro', isa => 'Paws::IoT::FirehoseAction', request_name => 'firehose', traits => ['NameInRequest']);
-  has Http => (is => 'ro', isa => 'Paws::IoT::HttpAction', request_name => 'http', traits => ['NameInRequest']);
   has IotAnalytics => (is => 'ro', isa => 'Paws::IoT::IotAnalyticsAction', request_name => 'iotAnalytics', traits => ['NameInRequest']);
-  has IotEvents => (is => 'ro', isa => 'Paws::IoT::IotEventsAction', request_name => 'iotEvents', traits => ['NameInRequest']);
-  has IotSiteWise => (is => 'ro', isa => 'Paws::IoT::IotSiteWiseAction', request_name => 'iotSiteWise', traits => ['NameInRequest']);
   has Kinesis => (is => 'ro', isa => 'Paws::IoT::KinesisAction', request_name => 'kinesis', traits => ['NameInRequest']);
   has Lambda => (is => 'ro', isa => 'Paws::IoT::LambdaAction', request_name => 'lambda', traits => ['NameInRequest']);
   has Republish => (is => 'ro', isa => 'Paws::IoT::RepublishAction', request_name => 'republish', traits => ['NameInRequest']);
@@ -17,7 +14,7 @@ package Paws::IoT::Action;
   has Salesforce => (is => 'ro', isa => 'Paws::IoT::SalesforceAction', request_name => 'salesforce', traits => ['NameInRequest']);
   has Sns => (is => 'ro', isa => 'Paws::IoT::SnsAction', request_name => 'sns', traits => ['NameInRequest']);
   has Sqs => (is => 'ro', isa => 'Paws::IoT::SqsAction', request_name => 'sqs', traits => ['NameInRequest']);
-  has StepFunctions => (is => 'ro', isa => 'Paws::IoT::StepFunctionsAction', request_name => 'stepFunctions', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +34,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT::Action object:
 
-  $service_obj->Method(Att1 => { CloudwatchAlarm => $value, ..., StepFunctions => $value  });
+  $service_obj->Method(Att1 => { CloudwatchAlarm => $value, ..., Sqs => $value  });
 
 =head3 Results returned from an API call
 
@@ -85,25 +82,9 @@ payload into a separate DynamoDB column.
   Write to an Amazon Kinesis Firehose stream.
 
 
-=head2 Http => L<Paws::IoT::HttpAction>
-
-  Send data to an HTTPS endpoint.
-
-
 =head2 IotAnalytics => L<Paws::IoT::IotAnalyticsAction>
 
   Sends message data to an AWS IoT Analytics channel.
-
-
-=head2 IotEvents => L<Paws::IoT::IotEventsAction>
-
-  Sends an input to an AWS IoT Events detector.
-
-
-=head2 IotSiteWise => L<Paws::IoT::IotSiteWiseAction>
-
-  Sends data from the MQTT message that triggered the rule to AWS IoT
-SiteWise asset properties.
 
 
 =head2 Kinesis => L<Paws::IoT::KinesisAction>
@@ -139,11 +120,6 @@ SiteWise asset properties.
 =head2 Sqs => L<Paws::IoT::SqsAction>
 
   Publish to an Amazon SQS queue.
-
-
-=head2 StepFunctions => L<Paws::IoT::StepFunctionsAction>
-
-  Starts execution of a Step Functions state machine.
 
 
 

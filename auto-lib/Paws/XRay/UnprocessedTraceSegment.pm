@@ -3,6 +3,7 @@ package Paws::XRay::UnprocessedTraceSegment;
   has ErrorCode => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -8,6 +8,7 @@ package Paws::IoT::StreamInfo;
   has StreamArn => (is => 'ro', isa => 'Str', request_name => 'streamArn', traits => ['NameInRequest']);
   has StreamId => (is => 'ro', isa => 'Str', request_name => 'streamId', traits => ['NameInRequest']);
   has StreamVersion => (is => 'ro', isa => 'Int', request_name => 'streamVersion', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

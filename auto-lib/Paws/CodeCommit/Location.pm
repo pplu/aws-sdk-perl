@@ -3,6 +3,7 @@ package Paws::CodeCommit::Location;
   has FilePath => (is => 'ro', isa => 'Str', request_name => 'filePath', traits => ['NameInRequest']);
   has FilePosition => (is => 'ro', isa => 'Int', request_name => 'filePosition', traits => ['NameInRequest']);
   has RelativeFileVersion => (is => 'ro', isa => 'Str', request_name => 'relativeFileVersion', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

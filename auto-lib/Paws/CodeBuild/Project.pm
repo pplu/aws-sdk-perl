@@ -23,6 +23,7 @@ package Paws::CodeBuild::Project;
   has TimeoutInMinutes => (is => 'ro', isa => 'Int', request_name => 'timeoutInMinutes', traits => ['NameInRequest']);
   has VpcConfig => (is => 'ro', isa => 'Paws::CodeBuild::VpcConfig', request_name => 'vpcConfig', traits => ['NameInRequest']);
   has Webhook => (is => 'ro', isa => 'Paws::CodeBuild::Webhook', request_name => 'webhook', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

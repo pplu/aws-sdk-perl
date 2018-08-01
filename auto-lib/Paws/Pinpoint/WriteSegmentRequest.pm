@@ -3,7 +3,7 @@ package Paws::Pinpoint::WriteSegmentRequest;
   has Dimensions => (is => 'ro', isa => 'Paws::Pinpoint::SegmentDimensions');
   has Name => (is => 'ro', isa => 'Str');
   has SegmentGroups => (is => 'ro', isa => 'Paws::Pinpoint::SegmentGroupList');
-  has Tags => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string', request_name => 'tags', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Pinpoint::WriteSegmentRequest object:
 
-  $service_obj->Method(Att1 => { Dimensions => $value, ..., Tags => $value  });
+  $service_obj->Method(Att1 => { Dimensions => $value, ..., SegmentGroups => $value  });
 
 =head3 Results returned from an API call
 
@@ -34,36 +34,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::W
 
 =head1 DESCRIPTION
 
-Specifies the configuration, dimension, and other settings for a
-segment. A WriteSegmentRequest object can include a Dimensions object
-or a SegmentGroups object, but not both.
+Segment definition.
 
 =head1 ATTRIBUTES
 
 
 =head2 Dimensions => L<Paws::Pinpoint::SegmentDimensions>
 
-  The criteria that define the dimensions for the segment.
+  The segment dimensions attributes.
 
 
 =head2 Name => Str
 
-  The name of the segment.
+  The name of segment
 
 
 =head2 SegmentGroups => L<Paws::Pinpoint::SegmentGroupList>
 
-  The segment group to use and the dimensions to apply to the group's
-base segments in order to build the segment. A segment group can
-consist of zero or more base segments. Your request can include only
-one segment group.
-
-
-=head2 Tags => L<Paws::Pinpoint::MapOf__string>
-
-  A string-to-string map of key-value pairs that defines the tags to
-associate with the segment. Each tag consists of a required tag key and
-an associated tag value.
+  Segment definition groups. We currently only support one. If specified
+Dimensions must be empty.
 
 
 

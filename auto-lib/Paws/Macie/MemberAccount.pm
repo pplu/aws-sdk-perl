@@ -1,6 +1,7 @@
 package Paws::Macie::MemberAccount;
   use Moose;
   has AccountId => (is => 'ro', isa => 'Str', request_name => 'accountId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

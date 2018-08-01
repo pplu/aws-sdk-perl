@@ -4,6 +4,7 @@ package Paws::CloudSearchDomain::Hits;
   has Found => (is => 'ro', isa => 'Int', request_name => 'found', traits => ['NameInRequest']);
   has Hit => (is => 'ro', isa => 'ArrayRef[Paws::CloudSearchDomain::Hit]', request_name => 'hit', traits => ['NameInRequest']);
   has Start => (is => 'ro', isa => 'Int', request_name => 'start', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

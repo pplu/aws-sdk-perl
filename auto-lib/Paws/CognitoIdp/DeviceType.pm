@@ -5,6 +5,7 @@ package Paws::CognitoIdp::DeviceType;
   has DeviceKey => (is => 'ro', isa => 'Str');
   has DeviceLastAuthenticatedDate => (is => 'ro', isa => 'Str');
   has DeviceLastModifiedDate => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

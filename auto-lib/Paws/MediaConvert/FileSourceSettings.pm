@@ -3,6 +3,7 @@ package Paws::MediaConvert::FileSourceSettings;
   has Convert608To708 => (is => 'ro', isa => 'Str', request_name => 'convert608To708', traits => ['NameInRequest']);
   has SourceFile => (is => 'ro', isa => 'Str', request_name => 'sourceFile', traits => ['NameInRequest']);
   has TimeDelta => (is => 'ro', isa => 'Int', request_name => 'timeDelta', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

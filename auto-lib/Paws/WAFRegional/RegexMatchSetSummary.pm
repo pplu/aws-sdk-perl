@@ -2,6 +2,7 @@ package Paws::WAFRegional::RegexMatchSetSummary;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has RegexMatchSetId => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

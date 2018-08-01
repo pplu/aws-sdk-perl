@@ -5,6 +5,7 @@ package Paws::SSM::PatchBaselineIdentity;
   has BaselineName => (is => 'ro', isa => 'Str');
   has DefaultBaseline => (is => 'ro', isa => 'Bool');
   has OperatingSystem => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

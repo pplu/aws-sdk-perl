@@ -60,12 +60,10 @@ the AMI.
 
   The virtual device name (C<ephemeral>N). Instance store volumes are
 numbered starting from 0. An instance type with 2 available instance
-store volumes can specify mappings for C<ephemeral0> and C<ephemeral1>.
-The number of available instance store volumes depends on the instance
-type. After you connect to the instance, you must mount the volume.
-
-NVMe instance store volumes are automatically enumerated and assigned a
-device name. Including them in your block device mapping has no effect.
+store volumes can specify mappings for C<ephemeral0> and
+C<ephemeral1>.The number of available instance store volumes depends on
+the instance type. After you connect to the instance, you must mount
+the volume.
 
 Constraints: For M3 instances, you must specify instance store volumes
 in the block device mapping for the instance. When you launch an M3

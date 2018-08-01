@@ -2,6 +2,7 @@ package Paws::DataPipeline::Selector;
   use Moose;
   has FieldName => (is => 'ro', isa => 'Str', request_name => 'fieldName', traits => ['NameInRequest']);
   has Operator => (is => 'ro', isa => 'Paws::DataPipeline::Operator', request_name => 'operator', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::EKS::Certificate;
   use Moose;
   has Data => (is => 'ro', isa => 'Str', request_name => 'data', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

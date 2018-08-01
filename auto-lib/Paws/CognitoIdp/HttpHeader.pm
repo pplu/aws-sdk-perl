@@ -2,6 +2,7 @@ package Paws::CognitoIdp::HttpHeader;
   use Moose;
   has HeaderName => (is => 'ro', isa => 'Str', request_name => 'headerName', traits => ['NameInRequest']);
   has HeaderValue => (is => 'ro', isa => 'Str', request_name => 'headerValue', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

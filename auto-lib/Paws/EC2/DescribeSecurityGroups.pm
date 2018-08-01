@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
+          Name   => 'MyString',
           Values => [ 'MyString', ... ],    # OPTIONAL
-          Name => 'MyString',
         },
         ...
       ],                                    # OPTIONAL
@@ -184,11 +184,9 @@ C<owner-id> - The AWS account ID of the owner of the security group.
 
 =item *
 
-C<tag-key> - The key of a tag assigned to the security group.
-
-=item *
-
-C<tag-value> - The value of a tag assigned to the security group.
+C<tag-key> - The key of a tag assigned to the resource. Use this filter
+to find all resources assigned a tag with a specific key, regardless of
+the tag value.
 
 =item *
 

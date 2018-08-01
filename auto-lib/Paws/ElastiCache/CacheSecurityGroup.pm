@@ -4,6 +4,7 @@ package Paws::ElastiCache::CacheSecurityGroup;
   has Description => (is => 'ro', isa => 'Str');
   has EC2SecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::EC2SecurityGroup]', request_name => 'EC2SecurityGroup', traits => ['NameInRequest']);
   has OwnerId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

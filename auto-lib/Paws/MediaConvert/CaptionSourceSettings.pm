@@ -4,9 +4,9 @@ package Paws::MediaConvert::CaptionSourceSettings;
   has DvbSubSourceSettings => (is => 'ro', isa => 'Paws::MediaConvert::DvbSubSourceSettings', request_name => 'dvbSubSourceSettings', traits => ['NameInRequest']);
   has EmbeddedSourceSettings => (is => 'ro', isa => 'Paws::MediaConvert::EmbeddedSourceSettings', request_name => 'embeddedSourceSettings', traits => ['NameInRequest']);
   has FileSourceSettings => (is => 'ro', isa => 'Paws::MediaConvert::FileSourceSettings', request_name => 'fileSourceSettings', traits => ['NameInRequest']);
-  has SourceType => (is => 'ro', isa => 'Str', request_name => 'sourceType', traits => ['NameInRequest']);
+  has SourceType => (is => 'ro', isa => 'Str', request_name => 'sourceType', traits => ['NameInRequest'], required => 1);
   has TeletextSourceSettings => (is => 'ro', isa => 'Paws::MediaConvert::TeletextSourceSettings', request_name => 'teletextSourceSettings', traits => ['NameInRequest']);
-  has TrackSourceSettings => (is => 'ro', isa => 'Paws::MediaConvert::TrackSourceSettings', request_name => 'trackSourceSettings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +26,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConvert::CaptionSourceSettings object:
 
-  $service_obj->Method(Att1 => { AncillarySourceSettings => $value, ..., TrackSourceSettings => $value  });
+  $service_obj->Method(Att1 => { AncillarySourceSettings => $value, ..., TeletextSourceSettings => $value  });
 
 =head3 Results returned from an API call
 
@@ -37,54 +37,40 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 =head1 DESCRIPTION
 
-If your input captions are SCC, TTML, STL, SMI, SRT, or IMSC in an xml
-file, specify the URI of the input captions source file. If your input
-captions are IMSC in an IMF package, use TrackSourceSettings instead of
-FileSoureSettings.
+Source settings (SourceSettings) contains the group of settings for
+captions in the input.
 
 =head1 ATTRIBUTES
 
 
 =head2 AncillarySourceSettings => L<Paws::MediaConvert::AncillarySourceSettings>
 
-  Settings for ancillary captions source.
+  
 
 
 =head2 DvbSubSourceSettings => L<Paws::MediaConvert::DvbSubSourceSettings>
 
-  DVB Sub Source Settings
+  
 
 
 =head2 EmbeddedSourceSettings => L<Paws::MediaConvert::EmbeddedSourceSettings>
 
-  Settings for embedded captions Source
+  
 
 
 =head2 FileSourceSettings => L<Paws::MediaConvert::FileSourceSettings>
 
-  If your input captions are SCC, SMI, SRT, STL, TTML, or IMSC 1.1 in an
-xml file, specify the URI of the input caption source file. If your
-caption source is IMSC in an IMF package, use TrackSourceSettings
-instead of FileSoureSettings.
+  
 
 
-=head2 SourceType => Str
+=head2 B<REQUIRED> SourceType => Str
 
-  Use Source (SourceType) to identify the format of your input captions.
-The service cannot auto-detect caption format.
+  
 
 
 =head2 TeletextSourceSettings => L<Paws::MediaConvert::TeletextSourceSettings>
 
-  Settings specific to Teletext caption sources, including Page number.
-
-
-=head2 TrackSourceSettings => L<Paws::MediaConvert::TrackSourceSettings>
-
-  Settings specific to caption sources that are specified by track
-number. Currently, this is only IMSC captions in an IMF package. If
-your caption source is IMSC 1.1 in a separate xml file, use
-FileSourceSettings instead of TrackSourceSettings.
+  
 
 
 

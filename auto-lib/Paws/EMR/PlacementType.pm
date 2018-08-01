@@ -2,6 +2,7 @@ package Paws::EMR::PlacementType;
   use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

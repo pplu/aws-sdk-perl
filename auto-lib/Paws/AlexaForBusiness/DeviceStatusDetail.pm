@@ -1,7 +1,7 @@
 package Paws::AlexaForBusiness::DeviceStatusDetail;
   use Moose;
   has Code => (is => 'ro', isa => 'Str');
-  has Feature => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::AlexaForBusiness::DeviceStatusDetail object:
 
-  $service_obj->Method(Att1 => { Code => $value, ..., Feature => $value  });
+  $service_obj->Method(Att1 => { Code => $value, ..., Code => $value  });
 
 =head3 Results returned from an API call
 
@@ -40,11 +40,6 @@ Details of a deviceE<rsquo>s status.
 =head2 Code => Str
 
   The device status detail code.
-
-
-=head2 Feature => Str
-
-  The list of available features on the device.
 
 
 

@@ -2,6 +2,7 @@ package Paws::CloudDirectory::BatchRemoveFacetFromObject;
   use Moose;
   has ObjectReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
   has SchemaFacet => (is => 'ro', isa => 'Paws::CloudDirectory::SchemaFacet', required => 1);
+
 1;
 
 ### main pod documentation begin ###

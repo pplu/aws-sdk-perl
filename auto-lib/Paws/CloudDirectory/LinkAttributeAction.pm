@@ -2,6 +2,7 @@ package Paws::CloudDirectory::LinkAttributeAction;
   use Moose;
   has AttributeActionType => (is => 'ro', isa => 'Str');
   has AttributeUpdateValue => (is => 'ro', isa => 'Paws::CloudDirectory::TypedAttributeValue');
+
 1;
 
 ### main pod documentation begin ###

@@ -12,6 +12,7 @@ package Paws::DeviceFarm::NetworkProfile;
   has UplinkDelayMs => (is => 'ro', isa => 'Int', request_name => 'uplinkDelayMs', traits => ['NameInRequest']);
   has UplinkJitterMs => (is => 'ro', isa => 'Int', request_name => 'uplinkJitterMs', traits => ['NameInRequest']);
   has UplinkLossPercent => (is => 'ro', isa => 'Int', request_name => 'uplinkLossPercent', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

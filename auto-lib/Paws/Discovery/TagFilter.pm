@@ -2,6 +2,7 @@ package Paws::Discovery::TagFilter;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'values', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

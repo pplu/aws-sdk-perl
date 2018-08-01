@@ -3,6 +3,7 @@ package Paws::CloudSearchDomain::SuggestModel;
   has Found => (is => 'ro', isa => 'Int', request_name => 'found', traits => ['NameInRequest']);
   has Query => (is => 'ro', isa => 'Str', request_name => 'query', traits => ['NameInRequest']);
   has Suggestions => (is => 'ro', isa => 'ArrayRef[Paws::CloudSearchDomain::SuggestionMatch]', request_name => 'suggestions', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

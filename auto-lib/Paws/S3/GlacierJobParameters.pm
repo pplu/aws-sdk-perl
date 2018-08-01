@@ -1,6 +1,7 @@
 package Paws::S3::GlacierJobParameters;
   use Moose;
   has Tier => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::EMR::ScalingAction;
   use Moose;
   has Market => (is => 'ro', isa => 'Str');
   has SimpleScalingPolicyConfiguration => (is => 'ro', isa => 'Paws::EMR::SimpleScalingPolicyConfiguration', required => 1);
+
 1;
 
 ### main pod documentation begin ###

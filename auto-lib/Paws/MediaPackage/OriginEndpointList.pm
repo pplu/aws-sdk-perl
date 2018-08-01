@@ -2,6 +2,7 @@ package Paws::MediaPackage::OriginEndpointList;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
   has OriginEndpoints => (is => 'ro', isa => 'ArrayRef[Paws::MediaPackage::OriginEndpoint]', request_name => 'originEndpoints', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

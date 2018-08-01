@@ -2,6 +2,7 @@ package Paws::IoT::JobExecutionSummaryForThing;
   use Moose;
   has JobExecutionSummary => (is => 'ro', isa => 'Paws::IoT::JobExecutionSummary', request_name => 'jobExecutionSummary', traits => ['NameInRequest']);
   has JobId => (is => 'ro', isa => 'Str', request_name => 'jobId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

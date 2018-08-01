@@ -3,6 +3,7 @@ package Paws::Glue::JdbcTarget;
   has ConnectionName => (is => 'ro', isa => 'Str');
   has Exclusions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Path => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

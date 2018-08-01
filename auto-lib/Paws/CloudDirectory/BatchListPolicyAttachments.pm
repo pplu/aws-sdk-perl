@@ -3,6 +3,7 @@ package Paws::CloudDirectory::BatchListPolicyAttachments;
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
   has PolicyReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,8 @@
 package Paws::CodeCommit::MergeMetadata;
   use Moose;
   has IsMerged => (is => 'ro', isa => 'Bool', request_name => 'isMerged', traits => ['NameInRequest']);
-  has MergeCommitId => (is => 'ro', isa => 'Str', request_name => 'mergeCommitId', traits => ['NameInRequest']);
   has MergedBy => (is => 'ro', isa => 'Str', request_name => 'mergedBy', traits => ['NameInRequest']);
-  has MergeOption => (is => 'ro', isa => 'Str', request_name => 'mergeOption', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeCommit::MergeMetadata object:
 
-  $service_obj->Method(Att1 => { IsMerged => $value, ..., MergeOption => $value  });
+  $service_obj->Method(Att1 => { IsMerged => $value, ..., MergedBy => $value  });
 
 =head3 Results returned from an API call
 
@@ -45,19 +44,9 @@ reference and a destination reference in a pull request.
   A Boolean value indicating whether the merge has been made.
 
 
-=head2 MergeCommitId => Str
-
-  The commit ID for the merge commit, if any.
-
-
 =head2 MergedBy => Str
 
   The Amazon Resource Name (ARN) of the user who merged the branches.
-
-
-=head2 MergeOption => Str
-
-  The merge strategy used in the merge.
 
 
 

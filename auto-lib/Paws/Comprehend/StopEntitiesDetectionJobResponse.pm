@@ -22,8 +22,8 @@ The identifier of the entities detection job to stop.
 
 =head2 JobStatus => Str
 
-Either C<STOP_REQUESTED> if the job is currently running, or C<STOPPED>
-if the job was previously stopped with the C<StopEntitiesDetectionJob>
+Either C<STOPPING> if the job is currently running, or C<STOPPED> if
+the job was previously stopped with the C<StopEntitiesDetectionJob>
 operation.
 
 Valid values are: C<"SUBMITTED">, C<"IN_PROGRESS">, C<"COMPLETED">, C<"FAILED">, C<"STOP_REQUESTED">, C<"STOPPED">

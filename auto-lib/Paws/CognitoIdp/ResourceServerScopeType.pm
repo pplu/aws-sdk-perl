@@ -2,6 +2,7 @@ package Paws::CognitoIdp::ResourceServerScopeType;
   use Moose;
   has ScopeDescription => (is => 'ro', isa => 'Str', required => 1);
   has ScopeName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

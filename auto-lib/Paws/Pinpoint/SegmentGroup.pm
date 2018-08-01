@@ -4,6 +4,7 @@ package Paws::Pinpoint::SegmentGroup;
   has SourceSegments => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::SegmentReference]');
   has SourceType => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

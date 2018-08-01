@@ -1,6 +1,7 @@
 package Paws::StepFunctions::ActivityStartedEventDetails;
   use Moose;
   has WorkerName => (is => 'ro', isa => 'Str', request_name => 'workerName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

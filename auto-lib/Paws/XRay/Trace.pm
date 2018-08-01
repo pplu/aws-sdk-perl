@@ -3,6 +3,7 @@ package Paws::XRay::Trace;
   has Duration => (is => 'ro', isa => 'Num');
   has Id => (is => 'ro', isa => 'Str');
   has Segments => (is => 'ro', isa => 'ArrayRef[Paws::XRay::Segment]');
+
 1;
 
 ### main pod documentation begin ###

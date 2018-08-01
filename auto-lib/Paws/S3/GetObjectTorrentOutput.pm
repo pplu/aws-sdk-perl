@@ -2,7 +2,8 @@
 package Paws::S3::GetObjectTorrentOutput;
   use Moose;
   has Body => (is => 'ro', isa => 'Str', traits => ['ParamInBody']);
-  has RequestCharged => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-charged');
+  has RequestCharged => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-charged', traits => ['ParamInHeader']);
+
 
   use MooseX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Body');

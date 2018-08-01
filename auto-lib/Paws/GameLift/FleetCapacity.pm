@@ -3,6 +3,7 @@ package Paws::GameLift::FleetCapacity;
   has FleetId => (is => 'ro', isa => 'Str');
   has InstanceCounts => (is => 'ro', isa => 'Paws::GameLift::EC2InstanceCounts');
   has InstanceType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

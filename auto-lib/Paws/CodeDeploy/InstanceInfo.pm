@@ -7,6 +7,7 @@ package Paws::CodeDeploy::InstanceInfo;
   has InstanceName => (is => 'ro', isa => 'Str', request_name => 'instanceName', traits => ['NameInRequest']);
   has RegisterTime => (is => 'ro', isa => 'Str', request_name => 'registerTime', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::Tag]', request_name => 'tags', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

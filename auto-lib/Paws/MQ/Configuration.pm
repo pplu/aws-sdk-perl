@@ -1,14 +1,13 @@
 package Paws::MQ::Configuration;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has EngineType => (is => 'ro', isa => 'Str', request_name => 'engineType', traits => ['NameInRequest']);
   has EngineVersion => (is => 'ro', isa => 'Str', request_name => 'engineVersion', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
   has LatestRevision => (is => 'ro', isa => 'Paws::MQ::ConfigurationRevision', request_name => 'latestRevision', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'Paws::MQ::__mapOf__string', request_name => 'tags', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###
@@ -28,7 +27,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MQ::Configuration object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., Tags => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., Name => $value  });
 
 =head3 Results returned from an API call
 
@@ -49,11 +48,6 @@ Returns information about all configurations.
   Required. The ARN of the configuration.
 
 
-=head2 Created => Str
-
-  Required. The date and time of the configuration revision.
-
-
 =head2 Description => Str
 
   Required. The description of the configuration.
@@ -67,9 +61,7 @@ supports only ACTIVEMQ.
 
 =head2 EngineVersion => Str
 
-  Required. The version of the broker engine. For a list of supported
-engine versions, see
-https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
+  Required. The version of the broker engine.
 
 
 =head2 Id => Str
@@ -87,11 +79,6 @@ https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
   Required. The name of the configuration. This value can contain only
 alphanumeric characters, dashes, periods, underscores, and tildes (- .
 _ ~). This value must be 1-150 characters long.
-
-
-=head2 Tags => L<Paws::MQ::__mapOf__string>
-
-  The list of all tags associated with this configuration.
 
 
 

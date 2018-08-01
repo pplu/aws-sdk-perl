@@ -3,10 +3,9 @@ package Paws::DynamoDB::ConsumedCapacity;
   has CapacityUnits => (is => 'ro', isa => 'Num');
   has GlobalSecondaryIndexes => (is => 'ro', isa => 'Paws::DynamoDB::SecondaryIndexesCapacityMap');
   has LocalSecondaryIndexes => (is => 'ro', isa => 'Paws::DynamoDB::SecondaryIndexesCapacityMap');
-  has ReadCapacityUnits => (is => 'ro', isa => 'Num');
   has Table => (is => 'ro', isa => 'Paws::DynamoDB::Capacity');
   has TableName => (is => 'ro', isa => 'Str');
-  has WriteCapacityUnits => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DynamoDB::ConsumedCapacity object:
 
-  $service_obj->Method(Att1 => { CapacityUnits => $value, ..., WriteCapacityUnits => $value  });
+  $service_obj->Method(Att1 => { CapacityUnits => $value, ..., TableName => $value  });
 
 =head3 Results returned from an API call
 
@@ -42,7 +41,7 @@ the total provisioned throughput consumed, along with statistics for
 the table and any indexes involved in the operation.
 C<ConsumedCapacity> is only returned if the request asked for it. For
 more information, see Provisioned Throughput
-(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html)
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 =head1 ATTRIBUTES
@@ -65,11 +64,6 @@ operation.
 operation.
 
 
-=head2 ReadCapacityUnits => Num
-
-  The total number of read capacity units consumed by the operation.
-
-
 =head2 Table => L<Paws::DynamoDB::Capacity>
 
   The amount of throughput consumed on the table affected by the
@@ -79,11 +73,6 @@ operation.
 =head2 TableName => Str
 
   The name of the table that was affected by the operation.
-
-
-=head2 WriteCapacityUnits => Num
-
-  The total number of write capacity units consumed by the operation.
 
 
 

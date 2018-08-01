@@ -12,6 +12,7 @@ package Paws::ElasticTranscoder::Job;
   has Status => (is => 'ro', isa => 'Str');
   has Timing => (is => 'ro', isa => 'Paws::ElasticTranscoder::Timing');
   has UserMetadata => (is => 'ro', isa => 'Paws::ElasticTranscoder::UserMetadata');
+
 1;
 
 ### main pod documentation begin ###

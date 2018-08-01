@@ -1,6 +1,7 @@
 package Paws::MediaLive::InputWhitelistRuleCidr;
   use Moose;
   has Cidr => (is => 'ro', isa => 'Str', request_name => 'cidr', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

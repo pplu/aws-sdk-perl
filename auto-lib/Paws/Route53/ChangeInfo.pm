@@ -4,6 +4,7 @@ package Paws::Route53::ChangeInfo;
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has Status => (is => 'ro', isa => 'Str', required => 1);
   has SubmittedAt => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

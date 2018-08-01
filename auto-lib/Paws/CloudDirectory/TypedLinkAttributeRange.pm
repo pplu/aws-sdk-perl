@@ -2,6 +2,7 @@ package Paws::CloudDirectory::TypedLinkAttributeRange;
   use Moose;
   has AttributeName => (is => 'ro', isa => 'Str');
   has Range => (is => 'ro', isa => 'Paws::CloudDirectory::TypedAttributeValueRange', required => 1);
+
 1;
 
 ### main pod documentation begin ###

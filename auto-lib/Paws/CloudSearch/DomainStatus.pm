@@ -13,6 +13,7 @@ package Paws::CloudSearch::DomainStatus;
   has SearchInstanceType => (is => 'ro', isa => 'Str');
   has SearchPartitionCount => (is => 'ro', isa => 'Int');
   has SearchService => (is => 'ro', isa => 'Paws::CloudSearch::ServiceEndpoint');
+
 1;
 
 ### main pod documentation begin ###

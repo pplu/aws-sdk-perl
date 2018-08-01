@@ -1,6 +1,7 @@
 package Paws::MediaConvert::AvailBlanking;
   use Moose;
   has AvailBlankingImage => (is => 'ro', isa => 'Str', request_name => 'availBlankingImage', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

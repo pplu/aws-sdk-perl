@@ -2,6 +2,7 @@ package Paws::Glue::CatalogEntry;
   use Moose;
   has DatabaseName => (is => 'ro', isa => 'Str', required => 1);
   has TableName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

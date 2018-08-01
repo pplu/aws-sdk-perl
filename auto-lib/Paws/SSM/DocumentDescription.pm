@@ -1,6 +1,5 @@
 package Paws::SSM::DocumentDescription;
   use Moose;
-  has AttachmentsInformation => (is => 'ro', isa => 'ArrayRef[Paws::SSM::AttachmentInformation]');
   has CreatedDate => (is => 'ro', isa => 'Str');
   has DefaultVersion => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
@@ -14,14 +13,12 @@ package Paws::SSM::DocumentDescription;
   has Owner => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::DocumentParameter]');
   has PlatformTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Requires => (is => 'ro', isa => 'ArrayRef[Paws::SSM::DocumentRequires]');
   has SchemaVersion => (is => 'ro', isa => 'Str');
   has Sha1 => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
-  has StatusInformation => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Tag]');
   has TargetType => (is => 'ro', isa => 'Str');
-  has VersionName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###
@@ -41,26 +38,20 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::DocumentDescription object:
 
-  $service_obj->Method(Att1 => { AttachmentsInformation => $value, ..., VersionName => $value  });
+  $service_obj->Method(Att1 => { CreatedDate => $value, ..., TargetType => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::DocumentDescription object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AttachmentsInformation
+  $result->Att1->CreatedDate
 
 =head1 DESCRIPTION
 
 Describes a Systems Manager document.
 
 =head1 ATTRIBUTES
-
-
-=head2 AttachmentsInformation => ArrayRef[L<Paws::SSM::AttachmentInformation>]
-
-  Details about the document attachments, including names, locations,
-sizes, etc.
 
 
 =head2 CreatedDate => Str
@@ -103,8 +94,7 @@ Sha1 hashes have been deprecated.
 
 =head2 HashType => Str
 
-  The hash type of the document. Valid values include C<Sha256> or
-C<Sha1>.
+  Sha256 or Sha1.
 
 Sha1 hashes have been deprecated.
 
@@ -134,13 +124,6 @@ Sha1 hashes have been deprecated.
   The list of OS platforms compatible with this Systems Manager document.
 
 
-=head2 Requires => ArrayRef[L<Paws::SSM::DocumentRequires>]
-
-  A list of SSM documents required by a document. For example, an
-C<ApplicationConfiguration> document requires an
-C<ApplicationConfigurationSchema> document.
-
-
 =head2 SchemaVersion => Str
 
   The schema version.
@@ -156,14 +139,6 @@ C<ApplicationConfigurationSchema> document.
   The status of the Systems Manager document.
 
 
-=head2 StatusInformation => Str
-
-  A message returned by AWS Systems Manager that explains the C<Status>
-value. For example, a C<Failed> status might be explained by the
-C<StatusInformation> message, "The specified S3 bucket does not exist.
-Verify that the URL of the S3 bucket is correct."
-
-
 =head2 Tags => ArrayRef[L<Paws::SSM::Tag>]
 
   The tags, or metadata, that have been applied to the document.
@@ -176,11 +151,6 @@ run on. For example, /AWS::EC2::Instance. For a list of valid resource
 types, see AWS Resource Types Reference
 (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)
 in the I<AWS CloudFormation User Guide>.
-
-
-=head2 VersionName => Str
-
-  The version of the artifact associated with the document.
 
 
 

@@ -3,6 +3,7 @@ package Paws::CodeDeploy::BlueGreenDeploymentConfiguration;
   has DeploymentReadyOption => (is => 'ro', isa => 'Paws::CodeDeploy::DeploymentReadyOption', request_name => 'deploymentReadyOption', traits => ['NameInRequest']);
   has GreenFleetProvisioningOption => (is => 'ro', isa => 'Paws::CodeDeploy::GreenFleetProvisioningOption', request_name => 'greenFleetProvisioningOption', traits => ['NameInRequest']);
   has TerminateBlueInstancesOnDeploymentSuccess => (is => 'ro', isa => 'Paws::CodeDeploy::BlueInstanceTerminationOption', request_name => 'terminateBlueInstancesOnDeploymentSuccess', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::CodePipeline::TransitionState;
   has Enabled => (is => 'ro', isa => 'Bool', request_name => 'enabled', traits => ['NameInRequest']);
   has LastChangedAt => (is => 'ro', isa => 'Str', request_name => 'lastChangedAt', traits => ['NameInRequest']);
   has LastChangedBy => (is => 'ro', isa => 'Str', request_name => 'lastChangedBy', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

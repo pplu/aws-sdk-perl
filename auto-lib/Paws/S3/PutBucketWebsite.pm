@@ -3,7 +3,8 @@ package Paws::S3::PutBucketWebsite;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
-  has WebsiteConfiguration => (is => 'ro', isa => 'Paws::S3::WebsiteConfiguration', required => 1);
+  has WebsiteConfiguration => (is => 'ro', isa => 'Paws::S3::WebsiteConfiguration', traits => ['ParamInBody'], required => 1);
+
 
   use MooseX::ClassAttribute;
 
@@ -13,6 +14,7 @@ package Paws::S3::PutBucketWebsite;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###

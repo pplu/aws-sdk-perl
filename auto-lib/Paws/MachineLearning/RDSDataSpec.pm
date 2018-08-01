@@ -11,6 +11,7 @@ package Paws::MachineLearning::RDSDataSpec;
   has SelectSqlQuery => (is => 'ro', isa => 'Str', required => 1);
   has ServiceRole => (is => 'ro', isa => 'Str', required => 1);
   has SubnetId => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

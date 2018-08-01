@@ -28,6 +28,7 @@ package Paws::S3::PutObject;
   has Tagging => (is => 'ro', isa => 'Str', header_name => 'x-amz-tagging', traits => ['ParamInHeader']);
   has WebsiteRedirectLocation => (is => 'ro', isa => 'Str', header_name => 'x-amz-website-redirect-location', traits => ['ParamInHeader']);
 
+
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutObject');
@@ -36,6 +37,7 @@ package Paws::S3::PutObject;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::PutObjectOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
   class_has _stream_param => (is => 'ro', default => 'Body');
+    
 1;
 
 ### main pod documentation begin ###

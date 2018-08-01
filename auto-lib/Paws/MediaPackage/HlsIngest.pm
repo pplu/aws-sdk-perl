@@ -1,6 +1,7 @@
 package Paws::MediaPackage::HlsIngest;
   use Moose;
   has IngestEndpoints => (is => 'ro', isa => 'ArrayRef[Paws::MediaPackage::IngestEndpoint]', request_name => 'ingestEndpoints', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

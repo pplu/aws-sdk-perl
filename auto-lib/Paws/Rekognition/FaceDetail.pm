@@ -15,6 +15,7 @@ package Paws::Rekognition::FaceDetail;
   has Quality => (is => 'ro', isa => 'Paws::Rekognition::ImageQuality');
   has Smile => (is => 'ro', isa => 'Paws::Rekognition::Smile');
   has Sunglasses => (is => 'ro', isa => 'Paws::Rekognition::Sunglasses');
+
 1;
 
 ### main pod documentation begin ###

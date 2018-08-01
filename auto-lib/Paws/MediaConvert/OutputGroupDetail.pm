@@ -1,6 +1,7 @@
 package Paws::MediaConvert::OutputGroupDetail;
   use Moose;
   has OutputDetails => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::OutputDetail]', request_name => 'outputDetails', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

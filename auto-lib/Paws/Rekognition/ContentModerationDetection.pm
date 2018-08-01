@@ -2,6 +2,7 @@ package Paws::Rekognition::ContentModerationDetection;
   use Moose;
   has ModerationLabel => (is => 'ro', isa => 'Paws::Rekognition::ModerationLabel');
   has Timestamp => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

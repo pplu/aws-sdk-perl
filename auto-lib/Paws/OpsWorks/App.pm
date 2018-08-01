@@ -14,6 +14,7 @@ package Paws::OpsWorks::App;
   has SslConfiguration => (is => 'ro', isa => 'Paws::OpsWorks::SslConfiguration');
   has StackId => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

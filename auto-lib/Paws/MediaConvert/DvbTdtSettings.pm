@@ -1,6 +1,7 @@
 package Paws::MediaConvert::DvbTdtSettings;
   use Moose;
-  has TdtInterval => (is => 'ro', isa => 'Int', request_name => 'tdtInterval', traits => ['NameInRequest']);
+  has TdtInterval => (is => 'ro', isa => 'Int', request_name => 'tdtInterval', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +38,7 @@ interval.
 =head1 ATTRIBUTES
 
 
-=head2 TdtInterval => Int
+=head2 B<REQUIRED> TdtInterval => Int
 
   The number of milliseconds between instances of this table in the
 output transport stream.

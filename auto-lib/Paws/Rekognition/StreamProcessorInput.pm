@@ -1,6 +1,7 @@
 package Paws::Rekognition::StreamProcessorInput;
   use Moose;
   has KinesisVideoStream => (is => 'ro', isa => 'Paws::Rekognition::KinesisVideoStream');
+
 1;
 
 ### main pod documentation begin ###

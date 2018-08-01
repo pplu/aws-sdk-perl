@@ -12,6 +12,7 @@ package Paws::Lightsail::Operation;
   has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has StatusChangedAt => (is => 'ro', isa => 'Str', request_name => 'statusChangedAt', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

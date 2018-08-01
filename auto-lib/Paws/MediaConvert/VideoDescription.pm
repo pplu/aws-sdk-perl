@@ -15,6 +15,7 @@ package Paws::MediaConvert::VideoDescription;
   has TimecodeInsertion => (is => 'ro', isa => 'Str', request_name => 'timecodeInsertion', traits => ['NameInRequest']);
   has VideoPreprocessors => (is => 'ro', isa => 'Paws::MediaConvert::VideoPreprocessor', request_name => 'videoPreprocessors', traits => ['NameInRequest']);
   has Width => (is => 'ro', isa => 'Int', request_name => 'width', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

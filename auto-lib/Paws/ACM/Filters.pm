@@ -3,6 +3,7 @@ package Paws::ACM::Filters;
   has ExtendedKeyUsage => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'extendedKeyUsage', traits => ['NameInRequest']);
   has KeyTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'keyTypes', traits => ['NameInRequest']);
   has KeyUsage => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'keyUsage', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

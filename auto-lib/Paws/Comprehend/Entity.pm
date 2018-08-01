@@ -5,6 +5,7 @@ package Paws::Comprehend::Entity;
   has Score => (is => 'ro', isa => 'Num');
   has Text => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

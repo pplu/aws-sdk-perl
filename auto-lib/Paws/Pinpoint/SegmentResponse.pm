@@ -1,20 +1,16 @@
-
 package Paws::Pinpoint::SegmentResponse;
   use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', required => 1);
-  has Arn => (is => 'ro', isa => 'Str', required => 1);
-  has CreationDate => (is => 'ro', isa => 'Str', required => 1);
+  has ApplicationId => (is => 'ro', isa => 'Str');
+  has CreationDate => (is => 'ro', isa => 'Str');
   has Dimensions => (is => 'ro', isa => 'Paws::Pinpoint::SegmentDimensions');
-  has Id => (is => 'ro', isa => 'Str', required => 1);
+  has Id => (is => 'ro', isa => 'Str');
   has ImportDefinition => (is => 'ro', isa => 'Paws::Pinpoint::SegmentImportResource');
   has LastModifiedDate => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has SegmentGroups => (is => 'ro', isa => 'Paws::Pinpoint::SegmentGroupList');
-  has SegmentType => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string', traits => ['NameInRequest'], request_name => 'tags');
+  has SegmentType => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Int');
 
-  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -23,94 +19,101 @@ package Paws::Pinpoint::SegmentResponse;
 
 Paws::Pinpoint::SegmentResponse
 
+=head1 USAGE
+
+This class represents one of two things:
+
+=head3 Arguments in a call to a service
+
+Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
+Each attribute should be used as a named argument in the calls that expect this type of object.
+
+As an example, if Att1 is expected to be a Paws::Pinpoint::SegmentResponse object:
+
+  $service_obj->Method(Att1 => { ApplicationId => $value, ..., Version => $value  });
+
+=head3 Results returned from an API call
+
+Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::SegmentResponse object:
+
+  $result = $service_obj->Method(...);
+  $result->Att1->ApplicationId
+
+=head1 DESCRIPTION
+
+Segment definition.
+
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ApplicationId => Str
+=head2 ApplicationId => Str
 
-The unique identifier for the application that the segment is
-associated with.
-
-
-=head2 B<REQUIRED> Arn => Str
-
-The Amazon Resource Name (ARN) of the segment.
+  The ID of the application to which the segment applies.
 
 
-=head2 B<REQUIRED> CreationDate => Str
+=head2 CreationDate => Str
 
-The date and time when the segment was created.
+  The date the segment was created in ISO 8601 format.
 
 
 =head2 Dimensions => L<Paws::Pinpoint::SegmentDimensions>
 
-The dimension settings for the segment.
+  The segment dimensions attributes.
 
 
-=head2 B<REQUIRED> Id => Str
+=head2 Id => Str
 
-The unique identifier for the segment.
+  The unique segment ID.
 
 
 =head2 ImportDefinition => L<Paws::Pinpoint::SegmentImportResource>
 
-The settings for the import job that's associated with the segment.
+  The import job settings.
 
 
 =head2 LastModifiedDate => Str
 
-The date and time when the segment was last modified.
+  The date the segment was last updated in ISO 8601 format.
 
 
 =head2 Name => Str
 
-The name of the segment.
+  The name of segment
 
 
 =head2 SegmentGroups => L<Paws::Pinpoint::SegmentGroupList>
 
-A list of one or more segment groups that apply to the segment. Each
-segment group consists of zero or more base segments and the dimensions
-that are applied to those base segments.
+  Segment definition groups. We currently only support one. If specified
+Dimensions must be empty.
 
 
-=head2 B<REQUIRED> SegmentType => Str
+=head2 SegmentType => Str
 
-The segment type. Valid values are:
-
-=over
-
-=item *
-
-DIMENSIONAL - A dynamic segment, which is a segment that uses selection
-criteria that you specify and is based on endpoint data that's reported
-by your app. Dynamic segments can change over time.
-
-=item *
-
-IMPORT - A static segment, which is a segment that uses selection
-criteria that you specify and is based on endpoint definitions that you
-import from a file. Imported segments are static; they don't change
-over time.
-
-=back
-
-
-Valid values are: C<"DIMENSIONAL">, C<"IMPORT">
-=head2 Tags => L<Paws::Pinpoint::MapOf__string>
-
-A string-to-string map of key-value pairs that identifies the tags that
-are associated with the segment. Each tag consists of a required tag
-key and an associated tag value.
+  The segment type: DIMENSIONAL - A dynamic segment built from selection
+criteria based on endpoint data reported by your app. You create this
+type of segment by using the segment builder in the Amazon Pinpoint
+console or by making a POST request to the segments resource. IMPORT -
+A static segment built from an imported set of endpoint definitions.
+You create this type of segment by importing a segment in the Amazon
+Pinpoint console or by making a POST request to the jobs/import
+resource.
 
 
 =head2 Version => Int
 
-The version number of the segment.
+  The segment version number.
 
 
-=head2 _request_id => Str
 
+=head1 SEE ALSO
+
+This class forms part of L<Paws>, describing an object used in L<Paws::Pinpoint>
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
+
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

@@ -2,6 +2,7 @@ package Paws::CognitoIdp::DeviceSecretVerifierConfigType;
   use Moose;
   has PasswordVerifier => (is => 'ro', isa => 'Str');
   has Salt => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

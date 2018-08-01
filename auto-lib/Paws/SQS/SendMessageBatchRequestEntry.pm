@@ -6,7 +6,7 @@ package Paws::SQS::SendMessageBatchRequestEntry;
   has MessageBody => (is => 'ro', isa => 'Str', required => 1);
   has MessageDeduplicationId => (is => 'ro', isa => 'Str');
   has MessageGroupId => (is => 'ro', isa => 'Str');
-  has MessageSystemAttributes => (is => 'ro', isa => 'Paws::SQS::MessageBodySystemAttributeMap', request_name => 'MessageSystemAttribute', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +26,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SQS::SendMessageBatchRequestEntry object:
 
-  $service_obj->Method(Att1 => { DelaySeconds => $value, ..., MessageSystemAttributes => $value  });
+  $service_obj->Method(Att1 => { DelaySeconds => $value, ..., MessageGroupId => $value  });
 
 =head3 Results returned from an API call
 
@@ -62,15 +62,12 @@ result.
 
 The C<Id>s of a batch request need to be unique within a request
 
-This identifier can have up to 80 characters. The following characters
-are accepted: alphanumeric characters, hyphens(-), and underscores (_).
-
 
 =head2 MessageAttributes => L<Paws::SQS::MessageBodyAttributeMap>
 
   Each message attribute consists of a C<Name>, C<Type>, and C<Value>.
-For more information, see Amazon SQS Message Attributes
-(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html)
+For more information, see Message Attribute Items and Validation
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html#message-attributes-items-validation)
 in the I<Amazon Simple Queue Service Developer Guide>.
 
 
@@ -88,7 +85,7 @@ deduplication interval. If a message with a particular
 C<MessageDeduplicationId> is sent successfully, subsequent messages
 with the same C<MessageDeduplicationId> are accepted successfully but
 aren't delivered. For more information, see Exactly-Once Processing
-(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
 in the I<Amazon Simple Queue Service Developer Guide>.
 
 =over
@@ -138,15 +135,12 @@ delivered.
 
 =back
 
-The C<MessageDeduplicationId> is available to the consumer of the
+The C<MessageDeduplicationId> is available to the recipient of the
 message (this can be useful for troubleshooting delivery issues).
 
 If a message is sent successfully but the acknowledgement is lost and
 the message is resent with the same C<MessageDeduplicationId> after the
 deduplication interval, Amazon SQS can't detect duplicate messages.
-
-Amazon SQS continues to keep track of the message deduplication ID even
-after the message is received and deleted.
 
 The length of C<MessageDeduplicationId> is 128 characters.
 C<MessageDeduplicationId> can contain alphanumeric characters (C<a-z>,
@@ -155,7 +149,7 @@ C<A-Z>, C<0-9>) and punctuation
 
 For best practices of using C<MessageDeduplicationId>, see Using the
 MessageDeduplicationId Property
-(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagededuplicationid-property.html)
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queue-recommendations.html#using-messagededuplicationid-property)
 in the I<Amazon Simple Queue Service Developer Guide>.
 
 
@@ -168,8 +162,8 @@ group. Messages that belong to the same message group are processed in
 a FIFO manner (however, messages in different message groups might be
 processed out of order). To interleave multiple ordered streams within
 a single queue, use C<MessageGroupId> values (for example, session data
-for multiple users). In this scenario, multiple consumers can process
-the queue, but the session data of each user is processed in a FIFO
+for multiple users). In this scenario, multiple readers can process the
+queue, but the session data of each user is processed in a FIFO
 fashion.
 
 =over
@@ -187,39 +181,17 @@ sent. The caller can't specify a C<MessageGroupId>.
 
 =back
 
-The length of C<MessageGroupId> is 128 characters. Valid values:
+The length of C<MessageGroupId> is 128 characters. Valid values are
 alphanumeric characters and punctuation
 C<(!"#$%&'()*+,-./:;E<lt>=E<gt>?@[\]^_`{|}~)>.
 
 For best practices of using C<MessageGroupId>, see Using the
 MessageGroupId Property
-(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagegroupid-property.html)
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queue-recommendations.html#using-messagegroupid-property)
 in the I<Amazon Simple Queue Service Developer Guide>.
 
 C<MessageGroupId> is required for FIFO queues. You can't use it for
 Standard queues.
-
-
-=head2 MessageSystemAttributes => L<Paws::SQS::MessageBodySystemAttributeMap>
-
-  The message system attribute to send Each message system attribute
-consists of a C<Name>, C<Type>, and C<Value>.
-
-=over
-
-=item *
-
-Currently, the only supported message system attribute is
-C<AWSTraceHeader>. Its type must be C<String> and its value must be a
-correctly formatted AWS X-Ray trace string.
-
-=item *
-
-The size of a message system attribute doesn't count towards the total
-size of a message.
-
-=back
-
 
 
 

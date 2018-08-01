@@ -9,6 +9,7 @@ package Paws::IAM::EvaluationResult;
   has OrganizationsDecisionDetail => (is => 'ro', isa => 'Paws::IAM::OrganizationsDecisionDetail');
   has PermissionsBoundaryDecisionDetail => (is => 'ro', isa => 'Paws::IAM::PermissionsBoundaryDecisionDetail');
   has ResourceSpecificResults => (is => 'ro', isa => 'ArrayRef[Paws::IAM::ResourceSpecificResult]');
+
 1;
 
 ### main pod documentation begin ###

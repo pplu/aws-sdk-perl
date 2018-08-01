@@ -2,6 +2,7 @@ package Paws::WAFRegional::SizeConstraintSetUpdate;
   use Moose;
   has Action => (is => 'ro', isa => 'Str', required => 1);
   has SizeConstraint => (is => 'ro', isa => 'Paws::WAFRegional::SizeConstraint', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::RedShift::ClusterIamRole;
   use Moose;
   has ApplyStatus => (is => 'ro', isa => 'Str');
   has IamRoleArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

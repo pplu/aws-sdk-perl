@@ -2,6 +2,7 @@ package Paws::EMR::EbsVolume;
   use Moose;
   has Device => (is => 'ro', isa => 'Str');
   has VolumeId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

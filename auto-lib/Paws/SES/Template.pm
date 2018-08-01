@@ -4,6 +4,7 @@ package Paws::SES::Template;
   has SubjectPart => (is => 'ro', isa => 'Str');
   has TemplateName => (is => 'ro', isa => 'Str', required => 1);
   has TextPart => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

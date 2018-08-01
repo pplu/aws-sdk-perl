@@ -4,6 +4,7 @@ package Paws::WorkMail::OrganizationSummary;
   has ErrorMessage => (is => 'ro', isa => 'Str');
   has OrganizationId => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Comprehend::DominantLanguage;
   use Moose;
   has LanguageCode => (is => 'ro', isa => 'Str');
   has Score => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

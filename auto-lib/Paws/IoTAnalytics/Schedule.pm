@@ -1,6 +1,7 @@
 package Paws::IoTAnalytics::Schedule;
   use Moose;
   has Expression => (is => 'ro', isa => 'Str', request_name => 'expression', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

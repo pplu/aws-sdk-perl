@@ -3,6 +3,7 @@ package Paws::Greengrass::SageMakerMachineLearningModelResourceData;
   has DestinationPath => (is => 'ro', isa => 'Str');
   has OwnerSetting => (is => 'ro', isa => 'Paws::Greengrass::ResourceDownloadOwnerSetting');
   has SageMakerJobArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

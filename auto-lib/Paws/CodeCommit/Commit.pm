@@ -7,6 +7,7 @@ package Paws::CodeCommit::Commit;
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
   has Parents => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'parents', traits => ['NameInRequest']);
   has TreeId => (is => 'ro', isa => 'Str', request_name => 'treeId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

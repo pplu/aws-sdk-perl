@@ -8,6 +8,7 @@ package Paws::CodeBuild::LogsLocation;
   has S3Logs => (is => 'ro', isa => 'Paws::CodeBuild::S3LogsConfig', request_name => 's3Logs', traits => ['NameInRequest']);
   has S3LogsArn => (is => 'ro', isa => 'Str', request_name => 's3LogsArn', traits => ['NameInRequest']);
   has StreamName => (is => 'ro', isa => 'Str', request_name => 'streamName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

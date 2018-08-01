@@ -4,11 +4,7 @@ package Paws::SSM::InstancePatchState;
   has FailedCount => (is => 'ro', isa => 'Int');
   has InstalledCount => (is => 'ro', isa => 'Int');
   has InstalledOtherCount => (is => 'ro', isa => 'Int');
-  has InstalledPendingRebootCount => (is => 'ro', isa => 'Int');
-  has InstalledRejectedCount => (is => 'ro', isa => 'Int');
-  has InstallOverrideList => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
-  has LastNoRebootInstallOperationTime => (is => 'ro', isa => 'Str');
   has MissingCount => (is => 'ro', isa => 'Int');
   has NotApplicableCount => (is => 'ro', isa => 'Int');
   has Operation => (is => 'ro', isa => 'Str', required => 1);
@@ -16,9 +12,8 @@ package Paws::SSM::InstancePatchState;
   has OperationStartTime => (is => 'ro', isa => 'Str', required => 1);
   has OwnerInformation => (is => 'ro', isa => 'Str');
   has PatchGroup => (is => 'ro', isa => 'Str', required => 1);
-  has RebootOption => (is => 'ro', isa => 'Str');
   has SnapshotId => (is => 'ro', isa => 'Str');
-  has UnreportedNotApplicableCount => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +33,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::InstancePatchState object:
 
-  $service_obj->Method(Att1 => { BaselineId => $value, ..., UnreportedNotApplicableCount => $value  });
+  $service_obj->Method(Att1 => { BaselineId => $value, ..., SnapshotId => $value  });
 
 =head3 Results returned from an API call
 
@@ -80,48 +75,10 @@ instance.
 installed on the instance.
 
 
-=head2 InstalledPendingRebootCount => Int
-
-  The number of patches installed by Patch Manager since the last time
-the instance was rebooted.
-
-
-=head2 InstalledRejectedCount => Int
-
-  The number of instances with patches installed that are specified in a
-RejectedPatches list. Patches with a status of I<InstalledRejected>
-were typically installed before they were added to a RejectedPatches
-list.
-
-If ALLOW_AS_DEPENDENCY is the specified option for
-RejectedPatchesAction, the value of InstalledRejectedCount will always
-be 0 (zero).
-
-
-=head2 InstallOverrideList => Str
-
-  An https URL or an Amazon S3 path-style URL to a list of patches to be
-installed. This patch installation list, which you maintain in an
-Amazon S3 bucket in YAML format and specify in the SSM document
-C<AWS-RunPatchBaseline>, overrides the patches specified by the default
-patch baseline.
-
-For more information about the C<InstallOverrideList> parameter, see
-About the SSM Document AWS-RunPatchBaseline
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-about-aws-runpatchbaseline.html)
-in the I<AWS Systems Manager User Guide>.
-
-
 =head2 B<REQUIRED> InstanceId => Str
 
   The ID of the managed instance the high-level patch compliance
 information was collected for.
-
-
-=head2 LastNoRebootInstallOperationTime => Str
-
-  The time of the last attempt to patch the instance with C<NoReboot>
-specified as the reboot option.
 
 
 =head2 MissingCount => Int
@@ -133,10 +90,7 @@ the instance but aren't currently installed.
 =head2 NotApplicableCount => Int
 
   The number of patches from the patch baseline that aren't applicable
-for the instance and therefore aren't installed on the instance. This
-number may be truncated if the list of patch names is very large. The
-number of patches beyond this limit are reported in
-C<UnreportedNotApplicableCount>.
+for the instance and hence aren't installed on the instance.
 
 
 =head2 B<REQUIRED> Operation => Str
@@ -167,43 +121,10 @@ release of the service.
   The name of the patch group the managed instance belongs to.
 
 
-=head2 RebootOption => Str
-
-  Indicates the reboot option specified in the patch baseline.
-
-Reboot options apply to C<Install> operations only. Reboots are not
-attempted for Patch Manager C<Scan> operations.
-
-=over
-
-=item *
-
-B<RebootIfNeeded>: Patch Manager tries to reboot the instance if it
-installed any patches, or if any patches are detected with a status of
-C<InstalledPendingReboot>.
-
-=item *
-
-B<NoReboot>: Patch Manager attempts to install missing packages without
-trying to reboot the system. Patches installed with this option are
-assigned a status of C<InstalledPendingReboot>. These patches might not
-be in effect until a reboot is performed.
-
-=back
-
-
-
 =head2 SnapshotId => Str
 
   The ID of the patch baseline snapshot used during the patching
 operation when this compliance data was collected.
-
-
-=head2 UnreportedNotApplicableCount => Int
-
-  The number of patches beyond the supported limit of
-C<NotApplicableCount> that are not reported by name to Systems Manager
-Inventory.
 
 
 

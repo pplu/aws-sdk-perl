@@ -5,6 +5,7 @@ package Paws::CodeDeploy::GenericRevisionInfo;
   has FirstUsedTime => (is => 'ro', isa => 'Str', request_name => 'firstUsedTime', traits => ['NameInRequest']);
   has LastUsedTime => (is => 'ro', isa => 'Str', request_name => 'lastUsedTime', traits => ['NameInRequest']);
   has RegisterTime => (is => 'ro', isa => 'Str', request_name => 'registerTime', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::GuardDuty::FindingStatistics;
   use Moose;
-  has CountBySeverity => (is => 'ro', isa => 'Paws::GuardDuty::CountBySeverity', request_name => 'countBySeverity', traits => ['NameInRequest']);
+  has CountBySeverity => (is => 'ro', isa => 'Paws::GuardDuty::__mapOfCountBySeverityFindingStatistic', request_name => 'countBySeverity', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###
@@ -31,12 +32,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-Contains information about finding statistics.
+Finding statistics object.
 
 =head1 ATTRIBUTES
 
 
-=head2 CountBySeverity => L<Paws::GuardDuty::CountBySeverity>
+=head2 CountBySeverity => L<Paws::GuardDuty::__mapOfCountBySeverityFindingStatistic>
 
   Represents a map of severity to count statistic for a set of findings
 

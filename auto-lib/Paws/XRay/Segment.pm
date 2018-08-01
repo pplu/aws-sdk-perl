@@ -2,6 +2,7 @@ package Paws::XRay::Segment;
   use Moose;
   has Document => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

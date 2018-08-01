@@ -1,8 +1,7 @@
 package Paws::DLM::RetainRule;
   use Moose;
-  has Count => (is => 'ro', isa => 'Int');
-  has Interval => (is => 'ro', isa => 'Int');
-  has IntervalUnit => (is => 'ro', isa => 'Str');
+  has Count => (is => 'ro', isa => 'Int', required => 1);
+
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DLM::RetainRule object:
 
-  $service_obj->Method(Att1 => { Count => $value, ..., IntervalUnit => $value  });
+  $service_obj->Method(Att1 => { Count => $value, ..., Count => $value  });
 
 =head3 Results returned from an API call
 
@@ -33,27 +32,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DLM::Retain
 
 =head1 DESCRIPTION
 
-Specifies the retention rule for a lifecycle policy. You can retain
-snapshots based on either a count or a time interval.
+Specifies the number of snapshots to keep for each EBS volume.
 
 =head1 ATTRIBUTES
 
 
-=head2 Count => Int
+=head2 B<REQUIRED> Count => Int
 
-  The number of snapshots to retain for each volume, up to a maximum of
+  The number of snapshots to keep for each volume, up to a maximum of
 1000.
-
-
-=head2 Interval => Int
-
-  The amount of time to retain each snapshot. The maximum is 100 years.
-This is equivalent to 1200 months, 5200 weeks, or 36500 days.
-
-
-=head2 IntervalUnit => Str
-
-  The unit of time for time-based retention.
 
 
 

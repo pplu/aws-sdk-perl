@@ -2,6 +2,7 @@ package Paws::KinesisAnalytics::CloudWatchLoggingOption;
   use Moose;
   has LogStreamARN => (is => 'ro', isa => 'Str', required => 1);
   has RoleARN => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

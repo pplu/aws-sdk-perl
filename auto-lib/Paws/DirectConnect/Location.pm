@@ -1,10 +1,8 @@
 package Paws::DirectConnect::Location;
   use Moose;
-  has AvailablePortSpeeds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'availablePortSpeeds', traits => ['NameInRequest']);
-  has AvailableProviders => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'availableProviders', traits => ['NameInRequest']);
   has LocationCode => (is => 'ro', isa => 'Str', request_name => 'locationCode', traits => ['NameInRequest']);
   has LocationName => (is => 'ro', isa => 'Str', request_name => 'locationName', traits => ['NameInRequest']);
-  has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###
@@ -24,46 +22,32 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DirectConnect::Location object:
 
-  $service_obj->Method(Att1 => { AvailablePortSpeeds => $value, ..., Region => $value  });
+  $service_obj->Method(Att1 => { LocationCode => $value, ..., LocationName => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DirectConnect::Location object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AvailablePortSpeeds
+  $result->Att1->LocationCode
 
 =head1 DESCRIPTION
 
-Information about an AWS Direct Connect location.
+An AWS Direct Connect location where connections and interconnects can
+be requested.
 
 =head1 ATTRIBUTES
 
 
-=head2 AvailablePortSpeeds => ArrayRef[Str|Undef]
-
-  The available port speeds for the location.
-
-
-=head2 AvailableProviders => ArrayRef[Str|Undef]
-
-  The name of the service provider for the location.
-
-
 =head2 LocationCode => Str
 
-  The code for the location.
+  The code used to indicate the AWS Direct Connect location.
 
 
 =head2 LocationName => Str
 
-  The name of the location. This includes the name of the colocation
-partner and the physical site of the building.
-
-
-=head2 Region => Str
-
-  The AWS Region for the location.
+  The name of the AWS Direct Connect location. The name includes the
+colocation partner name and the physical site of the lit building.
 
 
 

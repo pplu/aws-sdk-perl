@@ -6,7 +6,7 @@ package Paws::IoTAnalytics::Channel;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has RetentionPeriod => (is => 'ro', isa => 'Paws::IoTAnalytics::RetentionPeriod', request_name => 'retentionPeriod', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has Storage => (is => 'ro', isa => 'Paws::IoTAnalytics::ChannelStorage', request_name => 'storage', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +26,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoTAnalytics::Channel object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., Storage => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
@@ -71,14 +71,6 @@ unprocessed messages before publishing the data to a pipeline.
 =head2 Status => Str
 
   The status of the channel.
-
-
-=head2 Storage => L<Paws::IoTAnalytics::ChannelStorage>
-
-  Where channel data is stored. You may choose one of "serviceManagedS3"
-or "customerManagedS3" storage. If not specified, the default is
-"serviceManagedS3". This cannot be changed after creation of the
-channel.
 
 
 

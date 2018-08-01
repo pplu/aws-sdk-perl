@@ -4,6 +4,7 @@ package Paws::CloudFormation::Parameter;
   has ParameterValue => (is => 'ro', isa => 'Str');
   has ResolvedValue => (is => 'ro', isa => 'Str');
   has UsePreviousValue => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

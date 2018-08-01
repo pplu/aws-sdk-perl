@@ -1,6 +1,7 @@
 package Paws::GuardDuty::FindingCriteria;
   use Moose;
-  has Criterion => (is => 'ro', isa => 'Paws::GuardDuty::Criterion', request_name => 'criterion', traits => ['NameInRequest']);
+  has Criterion => (is => 'ro', isa => 'Paws::GuardDuty::__mapOfCondition', request_name => 'criterion', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###
@@ -31,12 +32,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-Contains information about the criteria used for querying findings.
+Represents the criteria used for querying findings.
 
 =head1 ATTRIBUTES
 
 
-=head2 Criterion => L<Paws::GuardDuty::Criterion>
+=head2 Criterion => L<Paws::GuardDuty::__mapOfCondition>
 
   Represents a map of finding properties that match specified conditions
 and values when querying findings.

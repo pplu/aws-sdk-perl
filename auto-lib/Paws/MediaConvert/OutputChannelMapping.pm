@@ -1,6 +1,7 @@
 package Paws::MediaConvert::OutputChannelMapping;
   use Moose;
-  has InputChannels => (is => 'ro', isa => 'ArrayRef[Int]', request_name => 'inputChannels', traits => ['NameInRequest']);
+  has InputChannels => (is => 'ro', isa => 'ArrayRef[Int]', request_name => 'inputChannels', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +37,7 @@ OutputChannel mapping settings.
 =head1 ATTRIBUTES
 
 
-=head2 InputChannels => ArrayRef[Int]
+=head2 B<REQUIRED> InputChannels => ArrayRef[Int]
 
   List of input channels
 

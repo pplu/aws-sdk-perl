@@ -4,6 +4,7 @@ package Paws::MachineLearning::Prediction;
   has PredictedLabel => (is => 'ro', isa => 'Str', request_name => 'predictedLabel', traits => ['NameInRequest']);
   has PredictedScores => (is => 'ro', isa => 'Paws::MachineLearning::ScoreValuePerLabelMap', request_name => 'predictedScores', traits => ['NameInRequest']);
   has PredictedValue => (is => 'ro', isa => 'Num', request_name => 'predictedValue', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

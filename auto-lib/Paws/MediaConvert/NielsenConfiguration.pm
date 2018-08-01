@@ -2,6 +2,7 @@ package Paws::MediaConvert::NielsenConfiguration;
   use Moose;
   has BreakoutCode => (is => 'ro', isa => 'Int', request_name => 'breakoutCode', traits => ['NameInRequest']);
   has DistributorId => (is => 'ro', isa => 'Str', request_name => 'distributorId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

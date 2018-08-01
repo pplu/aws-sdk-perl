@@ -2,6 +2,7 @@ package Paws::CloudDirectory::BatchListPolicyAttachmentsResponse;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
   has ObjectIdentifiers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

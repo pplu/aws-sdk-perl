@@ -1,37 +1,35 @@
 
 package Paws::S3::GetObjectOutput;
   use Moose;
-  has AcceptRanges => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'accept-ranges');
+  has AcceptRanges => (is => 'ro', isa => 'Str', header_name => 'accept-ranges', traits => ['ParamInHeader']);
   has Body => (is => 'ro', isa => 'Str', traits => ['ParamInBody']);
-  has CacheControl => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Cache-Control');
-  has ContentDisposition => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Disposition');
-  has ContentEncoding => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Encoding');
-  has ContentLanguage => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Language');
-  has ContentLength => (is => 'ro', isa => 'Int', traits => ['ParamInHeader'], header_name => 'Content-Length');
-  has ContentRange => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Range');
-  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type');
-  has DeleteMarker => (is => 'ro', isa => 'Bool', traits => ['ParamInHeader'], header_name => 'x-amz-delete-marker');
-  has ETag => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'ETag');
-  has Expiration => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-expiration');
-  has Expires => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Expires');
-  has LastModified => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Last-Modified');
-  has Metadata => (is => 'ro', isa => 'Paws::S3::Metadata', traits => ['ParamInHeaders'], header_prefix => 'x-amz-meta-');
-  has MissingMeta => (is => 'ro', isa => 'Int', traits => ['ParamInHeader'], header_name => 'x-amz-missing-meta');
-  has ObjectLockLegalHoldStatus => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-object-lock-legal-hold');
-  has ObjectLockMode => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-object-lock-mode');
-  has ObjectLockRetainUntilDate => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-object-lock-retain-until-date');
-  has PartsCount => (is => 'ro', isa => 'Int', traits => ['ParamInHeader'], header_name => 'x-amz-mp-parts-count');
-  has ReplicationStatus => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-replication-status');
-  has RequestCharged => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-charged');
-  has Restore => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-restore');
-  has ServerSideEncryption => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption');
-  has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-algorithm');
-  has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-key-MD5');
-  has SSEKMSKeyId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-aws-kms-key-id');
-  has StorageClass => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-storage-class');
-  has TagCount => (is => 'ro', isa => 'Int', traits => ['ParamInHeader'], header_name => 'x-amz-tagging-count');
-  has VersionId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-version-id');
-  has WebsiteRedirectLocation => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-website-redirect-location');
+  has CacheControl => (is => 'ro', isa => 'Str', header_name => 'Cache-Control', traits => ['ParamInHeader']);
+  has ContentDisposition => (is => 'ro', isa => 'Str', header_name => 'Content-Disposition', traits => ['ParamInHeader']);
+  has ContentEncoding => (is => 'ro', isa => 'Str', header_name => 'Content-Encoding', traits => ['ParamInHeader']);
+  has ContentLanguage => (is => 'ro', isa => 'Str', header_name => 'Content-Language', traits => ['ParamInHeader']);
+  has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
+  has ContentRange => (is => 'ro', isa => 'Str', header_name => 'Content-Range', traits => ['ParamInHeader']);
+  has ContentType => (is => 'ro', isa => 'Str', header_name => 'Content-Type', traits => ['ParamInHeader']);
+  has DeleteMarker => (is => 'ro', isa => 'Bool', header_name => 'x-amz-delete-marker', traits => ['ParamInHeader']);
+  has ETag => (is => 'ro', isa => 'Str', header_name => 'ETag', traits => ['ParamInHeader']);
+  has Expiration => (is => 'ro', isa => 'Str', header_name => 'x-amz-expiration', traits => ['ParamInHeader']);
+  has Expires => (is => 'ro', isa => 'Str', header_name => 'Expires', traits => ['ParamInHeader']);
+  has LastModified => (is => 'ro', isa => 'Str', header_name => 'Last-Modified', traits => ['ParamInHeader']);
+  has Metadata => (is => 'ro', isa => 'Paws::S3::Metadata', header_prefix => 'x-amz-meta-', traits => ['ParamInHeaders']);
+  has MissingMeta => (is => 'ro', isa => 'Int', header_name => 'x-amz-missing-meta', traits => ['ParamInHeader']);
+  has PartsCount => (is => 'ro', isa => 'Int', header_name => 'x-amz-mp-parts-count', traits => ['ParamInHeader']);
+  has ReplicationStatus => (is => 'ro', isa => 'Str', header_name => 'x-amz-replication-status', traits => ['ParamInHeader']);
+  has RequestCharged => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-charged', traits => ['ParamInHeader']);
+  has Restore => (is => 'ro', isa => 'Str', header_name => 'x-amz-restore', traits => ['ParamInHeader']);
+  has ServerSideEncryption => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption', traits => ['ParamInHeader']);
+  has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-algorithm', traits => ['ParamInHeader']);
+  has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-key-MD5', traits => ['ParamInHeader']);
+  has SSEKMSKeyId => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-aws-kms-key-id', traits => ['ParamInHeader']);
+  has StorageClass => (is => 'ro', isa => 'Str', header_name => 'x-amz-storage-class', traits => ['ParamInHeader']);
+  has TagCount => (is => 'ro', isa => 'Int', header_name => 'x-amz-tagging-count', traits => ['ParamInHeader']);
+  has VersionId => (is => 'ro', isa => 'Str', header_name => 'x-amz-version-id', traits => ['ParamInHeader']);
+  has WebsiteRedirectLocation => (is => 'ro', isa => 'Str', header_name => 'x-amz-website-redirect-location', traits => ['ParamInHeader']);
+
 
   use MooseX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Body');
@@ -49,7 +47,7 @@ Paws::S3::GetObjectOutput
 
 =head2 AcceptRanges => Str
 
-Indicates that a range of bytes was specified.
+
 
 
 
@@ -114,7 +112,7 @@ response.
 =head2 ETag => Str
 
 An ETag is an opaque identifier assigned by a web server to a specific
-version of a resource found at a URL.
+version of a resource found at a URL
 
 
 
@@ -122,7 +120,7 @@ version of a resource found at a URL.
 
 If the object expiration is configured (see PUT Bucket lifecycle), the
 response includes this header. It includes the expiry-date and rule-id
-key-value pairs providing object expiration information. The value of
+key value pairs providing object expiration information. The value of
 the rule-id is URL encoded.
 
 
@@ -148,30 +146,10 @@ A map of metadata to store with the object in S3.
 =head2 MissingMeta => Int
 
 This is set to the number of metadata entries not returned in
-C<x-amz-meta> headers. This can happen if you create metadata using an
-API like SOAP that supports more flexible metadata than the REST API.
-For example, using SOAP, you can create metadata whose values are not
-legal HTTP headers.
-
-
-
-=head2 ObjectLockLegalHoldStatus => Str
-
-Indicates whether this object has an active legal hold. This field is
-only returned if you have permission to view an object's legal hold
-status.
-
-Valid values are: C<"ON">, C<"OFF">
-
-=head2 ObjectLockMode => Str
-
-The Object Lock mode currently in place for this object.
-
-Valid values are: C<"GOVERNANCE">, C<"COMPLIANCE">
-
-=head2 ObjectLockRetainUntilDate => Str
-
-The date and time when this object's Object Lock will expire.
+x-amz-meta headers. This can happen if you create metadata using an API
+like SOAP that supports more flexible metadata than the REST API. For
+example, using SOAP, you can create metadata whose values are not legal
+HTTP headers.
 
 
 
@@ -183,8 +161,7 @@ The count of parts this object has.
 
 =head2 ReplicationStatus => Str
 
-Amazon S3 can return this if your request involves a bucket that is
-either a source or destination in a replication rule.
+
 
 Valid values are: C<"COMPLETE">, C<"PENDING">, C<"FAILED">, C<"REPLICA">
 
@@ -203,8 +180,8 @@ time of the restored object copy.
 
 =head2 ServerSideEncryption => Str
 
-The server-side encryption algorithm used when storing this object in
-Amazon S3 (for example, AES256, aws:kms).
+The Server-side encryption algorithm used when storing this object in
+S3 (e.g., AES256, aws:kms).
 
 Valid values are: C<"AES256">, C<"aws:kms">
 
@@ -219,25 +196,23 @@ encryption algorithm used.
 =head2 SSECustomerKeyMD5 => Str
 
 If server-side encryption with a customer-provided encryption key was
-requested, the response will include this header to provide round-trip
+requested, the response will include this header to provide round trip
 message integrity verification of the customer-provided encryption key.
 
 
 
 =head2 SSEKMSKeyId => Str
 
-If present, specifies the ID of the AWS Key Management Service (AWS
-KMS) symmetric customer managed customer master key (CMK) that was used
-for the object.
+If present, specifies the ID of the AWS Key Management Service (KMS)
+master encryption key that was used for the object.
 
 
 
 =head2 StorageClass => Str
 
-Provides storage class information of the object. Amazon S3 returns
-this header for all objects except for Standard storage class objects.
 
-Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"ONEZONE_IA">, C<"INTELLIGENT_TIERING">, C<"GLACIER">, C<"DEEP_ARCHIVE">
+
+Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"ONEZONE_IA">
 
 =head2 TagCount => Int
 

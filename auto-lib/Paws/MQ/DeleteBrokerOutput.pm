@@ -1,6 +1,7 @@
 package Paws::MQ::DeleteBrokerOutput;
   use Moose;
   has BrokerId => (is => 'ro', isa => 'Str', request_name => 'brokerId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

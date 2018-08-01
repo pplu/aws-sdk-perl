@@ -2,6 +2,7 @@ package Paws::LexRuntime::Button;
   use Moose;
   has Text => (is => 'ro', isa => 'Str', request_name => 'text', traits => ['NameInRequest'], required => 1);
   has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

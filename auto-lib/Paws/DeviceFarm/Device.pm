@@ -21,6 +21,7 @@ package Paws::DeviceFarm::Device;
   has RemoteAccessEnabled => (is => 'ro', isa => 'Bool', request_name => 'remoteAccessEnabled', traits => ['NameInRequest']);
   has RemoteDebugEnabled => (is => 'ro', isa => 'Bool', request_name => 'remoteDebugEnabled', traits => ['NameInRequest']);
   has Resolution => (is => 'ro', isa => 'Paws::DeviceFarm::Resolution', request_name => 'resolution', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

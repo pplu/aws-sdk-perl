@@ -8,6 +8,7 @@ package Paws::Route53::TestDNSAnswer;
   has RecordType => (is => 'ro', isa => 'Str', query_name => 'recordtype', traits => ['ParamInQuery'], required => 1);
   has ResolverIP => (is => 'ro', isa => 'Str', query_name => 'resolverip', traits => ['ParamInQuery']);
 
+
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'TestDNSAnswer');
@@ -16,6 +17,7 @@ package Paws::Route53::TestDNSAnswer;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::TestDNSAnswerResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###

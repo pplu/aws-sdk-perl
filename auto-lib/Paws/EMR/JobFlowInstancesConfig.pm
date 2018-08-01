@@ -17,6 +17,7 @@ package Paws::EMR::JobFlowInstancesConfig;
   has ServiceAccessSecurityGroup => (is => 'ro', isa => 'Str');
   has SlaveInstanceType => (is => 'ro', isa => 'Str');
   has TerminationProtected => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

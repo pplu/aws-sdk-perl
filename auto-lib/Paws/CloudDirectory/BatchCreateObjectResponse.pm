@@ -1,6 +1,7 @@
 package Paws::CloudDirectory::BatchCreateObjectResponse;
   use Moose;
   has ObjectIdentifier => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

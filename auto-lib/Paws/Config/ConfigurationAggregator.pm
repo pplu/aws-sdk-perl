@@ -6,6 +6,7 @@ package Paws::Config::ConfigurationAggregator;
   has CreationTime => (is => 'ro', isa => 'Str');
   has LastUpdatedTime => (is => 'ro', isa => 'Str');
   has OrganizationAggregationSource => (is => 'ro', isa => 'Paws::Config::OrganizationAggregationSource');
+
 1;
 
 ### main pod documentation begin ###

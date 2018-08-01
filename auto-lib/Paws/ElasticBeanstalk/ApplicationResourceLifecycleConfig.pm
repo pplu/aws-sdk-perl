@@ -2,6 +2,7 @@ package Paws::ElasticBeanstalk::ApplicationResourceLifecycleConfig;
   use Moose;
   has ServiceRole => (is => 'ro', isa => 'Str');
   has VersionLifecycleConfig => (is => 'ro', isa => 'Paws::ElasticBeanstalk::ApplicationVersionLifecycleConfig');
+
 1;
 
 ### main pod documentation begin ###

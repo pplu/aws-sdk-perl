@@ -1,6 +1,7 @@
 package Paws::MediaConvert::F4vSettings;
   use Moose;
   has MoovPlacement => (is => 'ro', isa => 'Str', request_name => 'moovPlacement', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

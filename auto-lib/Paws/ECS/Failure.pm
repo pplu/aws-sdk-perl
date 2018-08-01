@@ -3,6 +3,7 @@ package Paws::ECS::Failure;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has Detail => (is => 'ro', isa => 'Str', request_name => 'detail', traits => ['NameInRequest']);
   has Reason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

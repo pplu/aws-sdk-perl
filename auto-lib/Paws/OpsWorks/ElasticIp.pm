@@ -5,6 +5,7 @@ package Paws::OpsWorks::ElasticIp;
   has Ip => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Region => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

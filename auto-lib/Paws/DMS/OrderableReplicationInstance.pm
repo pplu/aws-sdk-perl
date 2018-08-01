@@ -9,6 +9,7 @@ package Paws::DMS::OrderableReplicationInstance;
   has ReleaseStatus => (is => 'ro', isa => 'Str');
   has ReplicationInstanceClass => (is => 'ro', isa => 'Str');
   has StorageType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

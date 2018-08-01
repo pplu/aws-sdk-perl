@@ -5,6 +5,7 @@ package Paws::CloudFront::FieldLevelEncryptionSummary;
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has LastModifiedTime => (is => 'ro', isa => 'Str', required => 1);
   has QueryArgProfileConfig => (is => 'ro', isa => 'Paws::CloudFront::QueryArgProfileConfig');
+
 1;
 
 ### main pod documentation begin ###

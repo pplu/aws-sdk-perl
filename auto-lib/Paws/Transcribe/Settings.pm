@@ -8,6 +8,7 @@ package Paws::Transcribe::Settings;
   has VocabularyFilterMethod => (is => 'ro', isa => 'Str');
   has VocabularyFilterName => (is => 'ro', isa => 'Str');
   has VocabularyName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

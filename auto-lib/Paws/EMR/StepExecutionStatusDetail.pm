@@ -5,6 +5,7 @@ package Paws::EMR::StepExecutionStatusDetail;
   has LastStateChangeReason => (is => 'ro', isa => 'Str');
   has StartDateTime => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

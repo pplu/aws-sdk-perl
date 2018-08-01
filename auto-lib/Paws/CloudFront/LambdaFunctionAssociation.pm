@@ -3,6 +3,7 @@ package Paws::CloudFront::LambdaFunctionAssociation;
   has EventType => (is => 'ro', isa => 'Str', required => 1);
   has IncludeBody => (is => 'ro', isa => 'Bool');
   has LambdaFunctionARN => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::KinesisVideoArchivedMedia::Fragment;
   has FragmentSizeInBytes => (is => 'ro', isa => 'Int');
   has ProducerTimestamp => (is => 'ro', isa => 'Str');
   has ServerTimestamp => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -13,6 +13,7 @@ package Paws::MTurk::QualificationType;
   has RetryDelayInSeconds => (is => 'ro', isa => 'Int');
   has Test => (is => 'ro', isa => 'Str');
   has TestDurationInSeconds => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

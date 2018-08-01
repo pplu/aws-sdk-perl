@@ -8,6 +8,7 @@ package Paws::MediaLive::ReservationResourceSpecification;
   has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
   has SpecialFeature => (is => 'ro', isa => 'Str', request_name => 'specialFeature', traits => ['NameInRequest']);
   has VideoQuality => (is => 'ro', isa => 'Str', request_name => 'videoQuality', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

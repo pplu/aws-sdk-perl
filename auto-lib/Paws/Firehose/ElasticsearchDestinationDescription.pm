@@ -12,6 +12,7 @@ package Paws::Firehose::ElasticsearchDestinationDescription;
   has S3BackupMode => (is => 'ro', isa => 'Str');
   has S3DestinationDescription => (is => 'ro', isa => 'Paws::Firehose::S3DestinationDescription');
   has TypeName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

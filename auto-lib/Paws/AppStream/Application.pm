@@ -7,6 +7,7 @@ package Paws::AppStream::Application;
   has LaunchPath => (is => 'ro', isa => 'Str');
   has Metadata => (is => 'ro', isa => 'Paws::AppStream::Metadata');
   has Name => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

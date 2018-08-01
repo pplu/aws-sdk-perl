@@ -8,7 +8,7 @@ package Paws::Glue::Trigger;
   has Schedule => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
-  has WorkflowName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###
@@ -28,7 +28,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Glue::Trigger object:
 
-  $service_obj->Method(Att1 => { Actions => $value, ..., WorkflowName => $value  });
+  $service_obj->Method(Att1 => { Actions => $value, ..., Type => $value  });
 
 =head3 Results returned from an API call
 
@@ -61,7 +61,7 @@ Information about a specific trigger.
 
 =head2 Name => Str
 
-  The name of the trigger.
+  Name of the trigger.
 
 
 =head2 Predicate => L<Paws::Glue::Predicate>
@@ -73,7 +73,7 @@ Information about a specific trigger.
 
   A C<cron> expression used to specify the schedule (see Time-Based
 Schedules for Jobs and Crawlers
-(https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html).
+(http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html).
 For example, to run something every day at 12:15 UTC, you would
 specify: C<cron(15 12 * * ? *)>.
 
@@ -86,11 +86,6 @@ specify: C<cron(15 12 * * ? *)>.
 =head2 Type => Str
 
   The type of trigger that this is.
-
-
-=head2 WorkflowName => Str
-
-  The name of the workflow associated with the trigger.
 
 
 

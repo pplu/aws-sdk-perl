@@ -4,6 +4,7 @@ package Paws::DMS::ReplicationPendingModifiedValues;
   has EngineVersion => (is => 'ro', isa => 'Str');
   has MultiAZ => (is => 'ro', isa => 'Bool');
   has ReplicationInstanceClass => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

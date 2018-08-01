@@ -3,6 +3,7 @@ package Paws::Inspector::Subscription;
   has EventSubscriptions => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::EventSubscription]', request_name => 'eventSubscriptions', traits => ['NameInRequest'], required => 1);
   has ResourceArn => (is => 'ro', isa => 'Str', request_name => 'resourceArn', traits => ['NameInRequest'], required => 1);
   has TopicArn => (is => 'ro', isa => 'Str', request_name => 'topicArn', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

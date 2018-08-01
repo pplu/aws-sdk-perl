@@ -7,6 +7,7 @@ package Paws::ElasticTranscoder::Artwork;
   has MaxWidth => (is => 'ro', isa => 'Str');
   has PaddingPolicy => (is => 'ro', isa => 'Str');
   has SizingPolicy => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Lightsail::DiskMap;
   use Moose;
   has NewDiskName => (is => 'ro', isa => 'Str', request_name => 'newDiskName', traits => ['NameInRequest']);
   has OriginalDiskPath => (is => 'ro', isa => 'Str', request_name => 'originalDiskPath', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

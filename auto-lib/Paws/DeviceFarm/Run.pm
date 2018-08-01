@@ -31,6 +31,7 @@ package Paws::DeviceFarm::Run;
   has TotalJobs => (is => 'ro', isa => 'Int', request_name => 'totalJobs', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
   has WebUrl => (is => 'ro', isa => 'Str', request_name => 'webUrl', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

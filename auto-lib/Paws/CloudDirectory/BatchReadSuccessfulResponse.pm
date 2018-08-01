@@ -14,6 +14,7 @@ package Paws::CloudDirectory::BatchReadSuccessfulResponse;
   has ListOutgoingTypedLinks => (is => 'ro', isa => 'Paws::CloudDirectory::BatchListOutgoingTypedLinksResponse');
   has ListPolicyAttachments => (is => 'ro', isa => 'Paws::CloudDirectory::BatchListPolicyAttachmentsResponse');
   has LookupPolicy => (is => 'ro', isa => 'Paws::CloudDirectory::BatchLookupPolicyResponse');
+
 1;
 
 ### main pod documentation begin ###

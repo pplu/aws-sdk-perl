@@ -3,6 +3,7 @@ package Paws::AlexaForBusiness::AddressBook;
   has AddressBookArn => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

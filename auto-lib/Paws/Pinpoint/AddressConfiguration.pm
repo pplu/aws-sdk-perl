@@ -6,6 +6,7 @@ package Paws::Pinpoint::AddressConfiguration;
   has RawContent => (is => 'ro', isa => 'Str');
   has Substitutions => (is => 'ro', isa => 'Paws::Pinpoint::MapOfListOf__string');
   has TitleOverride => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

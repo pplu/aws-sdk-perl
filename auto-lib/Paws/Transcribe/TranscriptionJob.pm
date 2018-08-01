@@ -13,6 +13,7 @@ package Paws::Transcribe::TranscriptionJob;
   has Transcript => (is => 'ro', isa => 'Paws::Transcribe::Transcript');
   has TranscriptionJobName => (is => 'ro', isa => 'Str');
   has TranscriptionJobStatus => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

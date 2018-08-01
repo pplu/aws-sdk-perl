@@ -6,6 +6,7 @@ package Paws::SSM::MaintenanceWindowExecution;
   has StatusDetails => (is => 'ro', isa => 'Str');
   has WindowExecutionId => (is => 'ro', isa => 'Str');
   has WindowId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

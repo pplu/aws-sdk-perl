@@ -2,6 +2,7 @@ package Paws::ApplicationAutoScaling::ScalableTargetAction;
   use Moose;
   has MaxCapacity => (is => 'ro', isa => 'Int');
   has MinCapacity => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

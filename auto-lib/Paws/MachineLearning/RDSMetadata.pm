@@ -6,6 +6,7 @@ package Paws::MachineLearning::RDSMetadata;
   has ResourceRole => (is => 'ro', isa => 'Str');
   has SelectSqlQuery => (is => 'ro', isa => 'Str');
   has ServiceRole => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

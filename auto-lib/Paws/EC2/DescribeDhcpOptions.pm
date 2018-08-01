@@ -4,8 +4,6 @@ package Paws::EC2::DescribeDhcpOptions;
   has DhcpOptionsIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'DhcpOptionsId' );
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -33,8 +31,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     # To describe a DHCP options set
     # This example describes the specified DHCP options set.
-    my $DescribeDhcpOptionsResult =
-      $ec2->DescribeDhcpOptions( 'DhcpOptionsIds' => ['dopt-d9070ebb'] );
+    my $DescribeDhcpOptionsResult = $ec2->DescribeDhcpOptions(
+      {
+        'DhcpOptionsIds' => ['dopt-d9070ebb']
+      }
+    );
 
     # Results:
     my $DhcpOptions = $DescribeDhcpOptionsResult->DhcpOptions;
@@ -72,7 +73,7 @@ One or more filters.
 
 =item *
 
-C<dhcp-options-id> - The ID of a DHCP options set.
+C<dhcp-options-id> - The ID of a set of DHCP options.
 
 =item *
 
@@ -84,15 +85,11 @@ C<value> - The value for one of the options.
 
 =item *
 
-C<owner-id> - The ID of the AWS account that owns the DHCP options set.
-
-=item *
-
-C<tag>:E<lt>keyE<gt> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value as
-the filter value. For example, to find all resources that have a tag
-with the key C<Owner> and the value C<TeamA>, specify C<tag:Owner> for
-the filter name and C<TeamA> for the filter value.
+C<tag>:I<key>=I<value> - The key/value combination of a tag assigned to
+the resource. Specify the key of the tag in the filter name and the
+value of the tag in the filter value. For example, for the tag
+Purpose=X, specify C<tag:Purpose> for the filter name and C<X> for the
+filter value.
 
 =item *
 
@@ -102,20 +99,6 @@ the tag value.
 
 =back
 
-
-
-
-=head2 MaxResults => Int
-
-The maximum number of results to return with a single call. To retrieve
-the remaining results, make another call with the returned C<nextToken>
-value.
-
-
-
-=head2 NextToken => Str
-
-The token for the next page of results.
 
 
 

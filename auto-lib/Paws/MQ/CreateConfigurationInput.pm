@@ -3,7 +3,7 @@ package Paws::MQ::CreateConfigurationInput;
   has EngineType => (is => 'ro', isa => 'Str', request_name => 'engineType', traits => ['NameInRequest']);
   has EngineVersion => (is => 'ro', isa => 'Str', request_name => 'engineVersion', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'Paws::MQ::__mapOf__string', request_name => 'tags', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MQ::CreateConfigurationInput object:
 
-  $service_obj->Method(Att1 => { EngineType => $value, ..., Tags => $value  });
+  $service_obj->Method(Att1 => { EngineType => $value, ..., Name => $value  });
 
 =head3 Results returned from an API call
 
@@ -36,6 +36,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MQ::CreateC
 
 Creates a new configuration for the specified configuration name.
 Amazon MQ uses the default configuration (the engine type and version).
+Note: If the configuration name already exists, Amazon MQ doesn't
+create a configuration.
 
 =head1 ATTRIBUTES
 
@@ -48,9 +50,8 @@ supports only ACTIVEMQ.
 
 =head2 EngineVersion => Str
 
-  Required. The version of the broker engine. For a list of supported
-engine versions, see
-https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
+  Required. The version of the broker engine. Note: Currently, Amazon MQ
+supports only 5.15.0.
 
 
 =head2 Name => Str
@@ -58,11 +59,6 @@ https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
   Required. The name of the configuration. This value can contain only
 alphanumeric characters, dashes, periods, underscores, and tildes (- .
 _ ~). This value must be 1-150 characters long.
-
-
-=head2 Tags => L<Paws::MQ::__mapOf__string>
-
-  Create tags when creating the configuration.
 
 
 

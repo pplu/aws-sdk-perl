@@ -3,6 +3,7 @@ package Paws::Macie::FailedS3Resource;
   has ErrorCode => (is => 'ro', isa => 'Str', request_name => 'errorCode', traits => ['NameInRequest']);
   has ErrorMessage => (is => 'ro', isa => 'Str', request_name => 'errorMessage', traits => ['NameInRequest']);
   has FailedItem => (is => 'ro', isa => 'Paws::Macie::S3Resource', request_name => 'failedItem', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,13 +1,10 @@
 package Paws::DLM::Schedule;
   use Moose;
-  has CopyTags => (is => 'ro', isa => 'Bool');
   has CreateRule => (is => 'ro', isa => 'Paws::DLM::CreateRule');
-  has CrossRegionCopyRules => (is => 'ro', isa => 'ArrayRef[Paws::DLM::CrossRegionCopyRule]');
-  has FastRestoreRule => (is => 'ro', isa => 'Paws::DLM::FastRestoreRule');
   has Name => (is => 'ro', isa => 'Str');
   has RetainRule => (is => 'ro', isa => 'Paws::DLM::RetainRule');
   has TagsToAdd => (is => 'ro', isa => 'ArrayRef[Paws::DLM::Tag]');
-  has VariableTags => (is => 'ro', isa => 'ArrayRef[Paws::DLM::Tag]');
+
 1;
 
 ### main pod documentation begin ###
@@ -27,41 +24,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DLM::Schedule object:
 
-  $service_obj->Method(Att1 => { CopyTags => $value, ..., VariableTags => $value  });
+  $service_obj->Method(Att1 => { CreateRule => $value, ..., TagsToAdd => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DLM::Schedule object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->CopyTags
+  $result->Att1->CreateRule
 
 =head1 DESCRIPTION
 
-Specifies a backup schedule.
+Specifies a schedule.
 
 =head1 ATTRIBUTES
 
 
-=head2 CopyTags => Bool
-
-  Copy all user-defined tags on a source volume to snapshots of the
-volume created by this policy.
-
-
 =head2 CreateRule => L<Paws::DLM::CreateRule>
 
-  The creation rule.
-
-
-=head2 CrossRegionCopyRules => ArrayRef[L<Paws::DLM::CrossRegionCopyRule>]
-
-  The rule for cross-Region snapshot copies.
-
-
-=head2 FastRestoreRule => L<Paws::DLM::FastRestoreRule>
-
-  The rule for enabling fast snapshot restore.
+  The create rule.
 
 
 =head2 Name => Str
@@ -71,22 +52,13 @@ volume created by this policy.
 
 =head2 RetainRule => L<Paws::DLM::RetainRule>
 
-  The retention rule.
+  The retain rule.
 
 
 =head2 TagsToAdd => ArrayRef[L<Paws::DLM::Tag>]
 
-  The tags to apply to policy-created resources. These user-defined tags
-are in addition to the AWS-added lifecycle tags.
-
-
-=head2 VariableTags => ArrayRef[L<Paws::DLM::Tag>]
-
-  A collection of key/value pairs with values determined dynamically when
-the policy is executed. Keys may be any valid Amazon EC2 tag key.
-Values must be in one of the two following formats: C<$(instance-id)>
-or C<$(timestamp)>. Variable tags are only valid for EBS Snapshot
-Management E<ndash> Instance policies.
+  The tags to add to policy-created resources. These tags are added in
+addition to the default lifecycle tags.
 
 
 
