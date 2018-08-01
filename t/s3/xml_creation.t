@@ -47,7 +47,7 @@ my %md5_methods = (
  );
 
 my %xml_results = (
-  PutBucketLifecycleConfiguration => '<LifecycleConfiguration><Rule><Status>Enabled</Status><Filter></Filter></Rule></LifecycleConfiguration>',
+  PutBucketLifecycleConfiguration => '<LifecycleConfiguration><Rule><Filter></Filter><Status>Enabled</Status></Rule></LifecycleConfiguration>',
   SelectObjectContent => '<SelectRequest><Expression>Select * from S3Object</Expression><ExpressionType>SQL</ExpressionType><InputSerialization></InputSerialization><OutputSerialization></OutputSerialization></SelectRequest>',
  );
 
