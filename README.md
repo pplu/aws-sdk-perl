@@ -166,8 +166,8 @@ Packaging
 Packaging is managed with Dist::Zilla. To install Dist::Zilla and the necessary plugins, run:
 
 ```
-cpanm Dist::Zilla
-dzil authordeps --missing | cpanm
+cpanm -l local -n Dist::Zilla
+dzil authordeps --missing | cpanm -l local -n
 ```
 
 After this, running dzil build will make a tar.gz suitable for uploading to CPAN.
