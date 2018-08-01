@@ -183,7 +183,7 @@ package Paws::Net::RestXmlCaller;
     my ($self, $value) = @_;
 
     my $xml = '';
-    foreach my $attribute ($value->meta->get_all_attributes) {
+    foreach my $attribute (sort { $a->name cmp $b->name } $value->meta->get_all_attributes) {
       next if (not $attribute->has_value($value));
       $xml .= $self->_attribute_to_xml($attribute, $attribute->get_value($value));
     }
