@@ -50,7 +50,7 @@ The name of the stream.
 
 =head2 B<REQUIRED> Tags => L<Paws::Kinesis::TagMap>
 
-The set of key-value pairs to use to create the tags.
+A set of up to 10 key-value pairs to use to create the tags.
 
 
 
