@@ -24,9 +24,9 @@ this request. If present, this indicates where to continue the listing.
 
 =head2 SynthesisTasks => ArrayRef[L<Paws::Polly::SynthesisTask>]
 
-SynthesisTask object that provides information from the specified task
-in the list request, including output format, creation time, task
-status, and so on.
+List of SynthesisTask objects that provides information from the
+specified task in the list request, including output format, creation
+time, task status, and so on.
 
 
 =head2 _request_id => Str

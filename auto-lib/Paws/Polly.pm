@@ -152,6 +152,8 @@ For more information, see Managing Lexicons
 
 =over
 
+=item [IncludeAdditionalLanguageCodes => Bool]
+
 =item [LanguageCode => Str]
 
 =item [NextToken => Str]
@@ -299,6 +301,8 @@ For more information, see Managing Lexicons
 
 =item VoiceId => Str
 
+=item [LanguageCode => Str]
+
 =item [LexiconNames => ArrayRef[Str|Undef]]
 
 =item [OutputS3KeyPrefix => Str]
@@ -338,6 +342,8 @@ task as well as the current status.
 
 =item VoiceId => Str
 
+=item [LanguageCode => Str]
+
 =item [LexiconNames => ArrayRef[Str|Undef]]
 
 =item [SampleRate => Str]
@@ -367,9 +373,9 @@ information, see How it Works
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 DescribeAllVoices(sub { },[LanguageCode => Str, NextToken => Str])
+=head2 DescribeAllVoices(sub { },[IncludeAdditionalLanguageCodes => Bool, LanguageCode => Str, NextToken => Str])
 
-=head2 DescribeAllVoices([LanguageCode => Str, NextToken => Str])
+=head2 DescribeAllVoices([IncludeAdditionalLanguageCodes => Bool, LanguageCode => Str, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

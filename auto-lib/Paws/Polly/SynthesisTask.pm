@@ -1,6 +1,7 @@
 package Paws::Polly::SynthesisTask;
   use Moose;
   has CreationTime => (is => 'ro', isa => 'Str');
+  has LanguageCode => (is => 'ro', isa => 'Str');
   has LexiconNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has OutputFormat => (is => 'ro', isa => 'Str');
   has OutputUri => (is => 'ro', isa => 'Str');
@@ -52,6 +53,21 @@ task.
 =head2 CreationTime => Str
 
   Timestamp for the time the synthesis task was started.
+
+
+=head2 LanguageCode => Str
+
+  Optional language code for a synthesis task. This is only necessary if
+using a bilingual voice, such as Aditi, which can be used for either
+Indian English (en-IN) or Hindi (hi-IN).
+
+If a bilingual voice is used and no language code is specified, Amazon
+Polly will use the default language of the bilingual voice. The default
+language for any voice is the one returned by the DescribeVoices
+(https://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html)
+operation for the C<LanguageCode> parameter. For example, if no
+language code is specified, Aditi will use Indian English rather than
+Hindi.
 
 
 =head2 LexiconNames => ArrayRef[Str|Undef]
