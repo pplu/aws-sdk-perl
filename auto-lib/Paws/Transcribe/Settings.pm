@@ -1,5 +1,6 @@
 package Paws::Transcribe::Settings;
   use Moose;
+  has ChannelIdentification => (is => 'ro', isa => 'Bool');
   has MaxSpeakerLabels => (is => 'ro', isa => 'Int');
   has ShowSpeakerLabels => (is => 'ro', isa => 'Bool');
   has VocabularyName => (is => 'ro', isa => 'Str');
@@ -22,20 +23,36 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Transcribe::Settings object:
 
-  $service_obj->Method(Att1 => { MaxSpeakerLabels => $value, ..., VocabularyName => $value  });
+  $service_obj->Method(Att1 => { ChannelIdentification => $value, ..., VocabularyName => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Transcribe::Settings object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->MaxSpeakerLabels
+  $result->Att1->ChannelIdentification
 
 =head1 DESCRIPTION
 
 Provides optional settings for the C<StartTranscriptionJob> operation.
 
 =head1 ATTRIBUTES
+
+
+=head2 ChannelIdentification => Bool
+
+  Instructs Amazon Transcribe to process each audio channel separately
+and then merge the transcription output of each channel into a single
+transcription.
+
+Amazon Transcribe also produces a transcription of each item detected
+on an audio channel, including the start time and end time of the item
+and alternative transcriptions of the item including the confidence
+that Amazon Transcribe has in the transcription.
+
+You can't set both C<ShowSpeakerLabels> and C<ChannelIdentification> in
+the same request. If you set both, your request returns a
+C<BadRequestException>.
 
 
 =head2 MaxSpeakerLabels => Int
@@ -49,10 +66,15 @@ to true.
 
 =head2 ShowSpeakerLabels => Bool
 
-  Determines whether the transcription job should use speaker recognition
-to identify different speakers in the input audio. If you set the
+  Determines whether the transcription job uses speaker recognition to
+identify different speakers in the input audio. Speaker recognition
+labels individual speakers in the audio file. If you set the
 C<ShowSpeakerLabels> field to true, you must also set the maximum
 number of speaker labels C<MaxSpeakerLabels> field.
+
+You can't set both C<ShowSpeakerLabels> and C<ChannelIdentification> in
+the same request. If you set both, your request returns a
+C<BadRequestException>.
 
 
 =head2 VocabularyName => Str

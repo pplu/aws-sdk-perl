@@ -43,9 +43,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MediaSampleRateHertz => 1,                          # OPTIONAL
       OutputBucketName     => 'MyOutputBucketName',       # OPTIONAL
       Settings             => {
-        MaxSpeakerLabels  => 1,                     # min: 2, max: 10; OPTIONAL
-        ShowSpeakerLabels => 1,                     # OPTIONAL
-        VocabularyName    => 'MyVocabularyName',    # min: 1, max: 200; OPTIONAL
+        ChannelIdentification => 1,    # OPTIONAL
+        MaxSpeakerLabels      => 1,    # min: 2, max: 10; OPTIONAL
+        ShowSpeakerLabels     => 1,    # OPTIONAL
+        VocabularyName => 'MyVocabularyName',    # min: 1, max: 200; OPTIONAL
       },    # OPTIONAL
     );
 
