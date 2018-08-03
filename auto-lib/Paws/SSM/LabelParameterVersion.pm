@@ -50,19 +50,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 
 =head2 B<REQUIRED> Labels => ArrayRef[Str|Undef]
 
-
+One or more labels to attach to the specified parameter version.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-
+The parameter name on which you want to attach one or more labels.
 
 
 
 =head2 ParameterVersion => Int
 
-
+The specific version of the parameter on which you want to attach one
+or more labels. If no version is specified, the system attaches the
+label to the latest version.)
 
 
 
