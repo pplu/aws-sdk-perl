@@ -1,6 +1,7 @@
 
 package Paws::ResourceGroups::ListGroupResources;
   use Moose;
+  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::ResourceGroups::ResourceFilter]');
   has GroupName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'GroupName', required => 1);
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
@@ -8,8 +9,8 @@ package Paws::ResourceGroups::ListGroupResources;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListGroupResources');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/groups/{GroupName}/resource-identifiers');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/groups/{GroupName}/resource-identifiers-list');
+  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ResourceGroups::ListGroupResourcesOutput');
 1;
 
@@ -31,9 +32,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $resource-groups = Paws->service('ResourceGroups');
     my $ListGroupResourcesOutput = $resource -groups->ListGroupResources(
-      GroupName  => 'MyGroupName',
-      MaxResults => 1,                # OPTIONAL
-      NextToken  => 'MyNextToken',    # OPTIONAL
+      GroupName => 'MyGroupName',
+      Filters   => [
+        {
+          Name   => 'resource-type',    # values: resource-type
+          Values => [
+            'MyResourceFilterValue', ...    # min: 1, max: 128
+          ],                                # min: 1, max: 5
+
+        },
+        ...
+      ],                                    # OPTIONAL
+      MaxResults => 1,                      # OPTIONAL
+      NextToken  => 'MyNextToken',          # OPTIONAL
     );
 
     # Results:
@@ -46,6 +57,24 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/resource-groups/ListGroupResources>
 
 =head1 ATTRIBUTES
+
+
+=head2 Filters => ArrayRef[L<Paws::ResourceGroups::ResourceFilter>]
+
+Filters, formatted as ResourceFilter objects, that you want to apply to
+a ListGroupResources operation.
+
+=over
+
+=item *
+
+C<resource-type> - Filter resources by their type. Specify up to five
+resource types in the format AWS::ServiceCode::ResourceType. For
+example, AWS::EC2::Instance, or AWS::S3::Bucket.
+
+=back
+
+
 
 
 =head2 B<REQUIRED> GroupName => Str
