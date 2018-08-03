@@ -67,32 +67,33 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sto
 =head2 DefaultStorageClass => Str
 
 The default storage class for objects put into an Amazon S3 bucket by
-file gateway. Possible values are S3_STANDARD, S3_STANDARD_IA or
-S3_ONEZONE_IA. If this field is not populated, the default value
-S3_STANDARD is used. Optional.
+the file gateway. Possible values are C<S3_STANDARD>,
+C<S3_STANDARD_IA>, or C<S3_ONEZONE_IA>. If this field is not populated,
+the default value C<S3_STANDARD> is used. Optional.
 
 
 
 =head2 B<REQUIRED> FileShareARN => Str
 
-The Amazon Resource Name (ARN) of the SMB file share you want to
+The Amazon Resource Name (ARN) of the SMB file share that you want to
 update.
 
 
 
 =head2 GuessMIMETypeEnabled => Bool
 
-Enables guessing of the MIME type for uploaded objects based on file
-extensions. Set this value to true to enable MIME type guessing, and
-otherwise to false. The default value is true.
+A value that enables guessing of the MIME type for uploaded objects
+based on file extensions. Set this value to true to enable MIME type
+guessing, and otherwise to false. The default value is true.
 
 
 
 =head2 InvalidUserList => ArrayRef[Str|Undef]
 
-A list of users in the Active Directory that are not allowed to access
-the file share. Can only be set if Authentication is set to
-"ActiveDirectory".
+A list of users or groups in the Active Directory that are not allowed
+to access the file share. A group must be prefixed with the @
+character. For example C<@group1>. Can only be set if Authentication is
+set to C<ActiveDirectory>.
 
 
 
@@ -105,40 +106,41 @@ or false to use a key managed by Amazon S3. Optional.
 
 =head2 KMSKey => Str
 
-The Amazon Resource Name (ARN) KMS key used for Amazon S3 server side
-encryption. This value can only be set when KMSEncrypted is true.
-Optional.
+The Amazon Resource Name (ARN) of the AWS KMS key used for Amazon S3
+server side encryption. This value can only be set when KMSEncrypted is
+true. Optional.
 
 
 
 =head2 ObjectACL => Str
 
-Sets the access control list permission for objects in the Amazon S3
-bucket that a file gateway puts objects into. The default value is
+A value that sets the access control list permission for objects in the
+S3 bucket that a file gateway puts objects into. The default value is
 "private".
 
 Valid values are: C<"private">, C<"public-read">, C<"public-read-write">, C<"authenticated-read">, C<"bucket-owner-read">, C<"bucket-owner-full-control">, C<"aws-exec-read">
 
 =head2 ReadOnly => Bool
 
-Sets the write status of a file share. This value is true if the write
-status is read-only, and otherwise false.
+A value that sets the write status of a file share. This value is true
+if the write status is read-only, and otherwise false.
 
 
 
 =head2 RequesterPays => Bool
 
-Sets who pays the cost of the request and the data download from the
-Amazon S3 bucket. Set this value to true if you want the requester to
-pay instead of the bucket owner, and otherwise to false.
+A value that sets the access control list permission for objects in the
+Amazon S3 bucket that a file gateway puts objects into. The default
+value is C<private>.
 
 
 
 =head2 ValidUserList => ArrayRef[Str|Undef]
 
-A list of users in the Active Directory that are allowed to access the
-file share. Can only be set if Authentication is set to
-"ActiveDirectory".
+A list of users or groups in the Active Directory that are allowed to
+access the file share. A group must be prefixed with the @ character.
+For example C<@group1>. Can only be set if Authentication is set to
+C<ActiveDirectory>.
 
 
 

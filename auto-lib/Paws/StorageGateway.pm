@@ -575,8 +575,8 @@ examples of requests and responses.
 
 AWS Storage Gateway Regions and Endpoints:
 (http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region)
-Provides a list of each region and endpoints available for use with AWS
-Storage Gateway.
+Provides a list of each AWS region and endpoints available for use with
+AWS Storage Gateway.
 
 =back
 
@@ -911,8 +911,8 @@ Returns: a L<Paws::StorageGateway::CreateNFSFileShareOutput> instance
 Creates a Network File System (NFS) file share on an existing file
 gateway. In Storage Gateway, a file share is a file system mount point
 backed by Amazon S3 cloud storage. Storage Gateway exposes file shares
-using a NFS interface. This operation is only supported in the file
-gateway type.
+using a NFS interface. This operation is only supported for file
+gateways.
 
 File gateway requires AWS Security Token Service (AWS STS) to be
 activated to enable you create a file share. Make sure AWS STS is
@@ -967,17 +967,19 @@ Returns: a L<Paws::StorageGateway::CreateSMBFileShareOutput> instance
 Creates a Server Message Block (SMB) file share on an existing file
 gateway. In Storage Gateway, a file share is a file system mount point
 backed by Amazon S3 cloud storage. Storage Gateway expose file shares
-using a SMB interface. This operation is only supported in the file
-gateway type.
+using a SMB interface. This operation is only supported for file
+gateways.
 
-File gateway requires AWS Security Token Service (AWS STS) to be
-activated to enable you create a file share. Make sure AWS STS is
-activated in the region you are creating your file gateway in. If AWS
-STS is not activated in the region, activate it. For information about
-how to activate AWS STS, see Activating and Deactivating AWS STS in an
-AWS Region in the AWS Identity and Access Management User Guide.
+File gateways require AWS Security Token Service (AWS STS) to be
+activated to enable you to create a file share. Make sure that AWS STS
+is activated in the AWS Region you are creating your file gateway in.
+If AWS STS is not activated in this AWS Region, activate it. For
+information about how to activate AWS STS, see Activating and
+Deactivating AWS STS in an AWS Region
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)
+in the I<AWS Identity and Access Management User Guide.>
 
-File gateway does not support creating hard or symbolic links on a file
+File gateways don't support creating hard or symbolic links on a file
 share.
 
 
@@ -1076,6 +1078,10 @@ information, in I<Amazon Elastic Compute Cloud API Reference>.
 =item PreserveExistingData => Bool
 
 =item TargetName => Str
+
+=item [KMSEncrypted => Bool]
+
+=item [KMSKey => Str]
 
 =item [SnapshotId => Str]
 
@@ -1224,7 +1230,7 @@ Each argument is described in detail in: L<Paws::StorageGateway::DeleteFileShare
 Returns: a L<Paws::StorageGateway::DeleteFileShareOutput> instance
 
 Deletes a file share from a file gateway. This operation is only
-supported in the file gateway type.
+supported for file gateways.
 
 
 =head2 DeleteGateway
@@ -1490,8 +1496,8 @@ Each argument is described in detail in: L<Paws::StorageGateway::DescribeNFSFile
 Returns: a L<Paws::StorageGateway::DescribeNFSFileSharesOutput> instance
 
 Gets a description for one or more Network File System (NFS) file
-shares from a file gateway. This operation is only supported in the
-file gateway type.
+shares from a file gateway. This operation is only supported for file
+gateways.
 
 
 =head2 DescribeSMBFileShares
@@ -1508,8 +1514,8 @@ Each argument is described in detail in: L<Paws::StorageGateway::DescribeSMBFile
 Returns: a L<Paws::StorageGateway::DescribeSMBFileSharesOutput> instance
 
 Gets a description for one or more Server Message Block (SMB) file
-shares from a file gateway. This operation is only supported in the
-file gateway type.
+shares from a file gateway. This operation is only supported for file
+gateways.
 
 
 =head2 DescribeSMBSettings
@@ -1526,8 +1532,8 @@ Each argument is described in detail in: L<Paws::StorageGateway::DescribeSMBSett
 Returns: a L<Paws::StorageGateway::DescribeSMBSettingsOutput> instance
 
 Gets a description of a Server Message Block (SMB) file share settings
-from a file gateway. This operation is only supported in the file
-gateway type.
+from a file gateway. This operation is only supported for file
+gateways.
 
 
 =head2 DescribeSnapshotSchedule
@@ -1762,8 +1768,7 @@ Each argument is described in detail in: L<Paws::StorageGateway::JoinDomain>
 Returns: a L<Paws::StorageGateway::JoinDomainOutput> instance
 
 Adds a file gateway to an Active Directory domain. This operation is
-only supported in the file gateway type that supports the SMB file
-protocol.
+only supported for file gateways that support the SMB file protocol.
 
 
 =head2 ListFileShares
@@ -1785,7 +1790,7 @@ Returns: a L<Paws::StorageGateway::ListFileSharesOutput> instance
 
 Gets a list of the file shares for a specific file gateway, or the list
 of file shares that belong to the calling user account. This operation
-is only supported in the file gateway type.
+is only supported for file gateways.
 
 
 =head2 ListGateways
@@ -1993,7 +1998,7 @@ notification. When the upload is done, Storage Gateway sends you
 notification through an Amazon CloudWatch Event. You can configure
 CloudWatch Events to send the notification through event targets such
 as Amazon SNS or AWS Lambda function. This operation is only supported
-in the file gateway type.
+for file gateways.
 
 For more information, see Getting File Upload Notification in the
 Storage Gateway User Guide
@@ -2158,9 +2163,9 @@ Each argument is described in detail in: L<Paws::StorageGateway::SetSMBGuestPass
 
 Returns: a L<Paws::StorageGateway::SetSMBGuestPasswordOutput> instance
 
-Sets the password for the guest user E<ldquo>smbguestE<rdquo>.
-"smbguest" is the user when the Authentication method for the file
-share is E<ldquo>GuestAccessE<rdquo>.
+Sets the password for the guest user C<smbguest>. The C<smbguest> user
+is the user when the authentication method for the file share is set to
+C<GuestAccess>.
 
 
 =head2 ShutdownGateway
@@ -2470,21 +2475,21 @@ Each argument is described in detail in: L<Paws::StorageGateway::UpdateSMBFileSh
 
 Returns: a L<Paws::StorageGateway::UpdateSMBFileShareOutput> instance
 
-Updates a Server Message Block (SMB) file share. This operation is only
-supported in the file gateway type.
+Updates a Server Message Block (SMB) file share.
 
 To leave a file share field unchanged, set the corresponding input
-field to null. This operation is only supported in the file gateway
-type.
+field to null. This operation is only supported for file gateways.
 
-File gateway requires AWS Security Token Service (AWS STS) to be
-activated to enable you create a file share. Make sure AWS STS is
-activated in the region you are creating your file gateway in. If AWS
-STS is not activated in the region, activate it. For information about
-how to activate AWS STS, see Activating and Deactivating AWS STS in an
-AWS Region in the AWS Identity and Access Management User Guide.
+File gateways require AWS Security Token Service (AWS STS) to be
+activated to enable you to create a file share. Make sure that AWS STS
+is activated in the AWS Region you are creating your file gateway in.
+If AWS STS is not activated in this AWS Region, activate it. For
+information about how to activate AWS STS, see Activating and
+Deactivating AWS STS in an AWS Region
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)
+in the I<AWS Identity and Access Management User Guide.>
 
-File gateway does not support creating hard or symbolic links on a file
+File gateways don't support creating hard or symbolic links on a file
 share.
 
 

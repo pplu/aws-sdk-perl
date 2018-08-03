@@ -16,7 +16,8 @@ Paws::StorageGateway::JoinDomainOutput
 
 =head2 GatewayARN => Str
 
-The unique Amazon Resource Name of the gateway that joined the domain.
+The unique Amazon Resource Name (ARN) of the gateway that joined the
+domain.
 
 
 =head2 _request_id => Str

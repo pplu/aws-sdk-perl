@@ -54,7 +54,7 @@ is associated with.
 
 =head2 B<REQUIRED> Password => Str
 
-The password you want to set for your SMB Server.
+The password that you want to set for your SMB Server.
 
 
 
