@@ -796,6 +796,8 @@ Creates a copy of an object that is already stored in Amazon S3.
 
 =item [ACL => Str]
 
+=item [ContentLength => Int]
+
 =item [CreateBucketConfiguration => L<Paws::S3::CreateBucketConfiguration>]
 
 =item [GrantFullControl => Str]
@@ -1104,6 +1106,10 @@ isn't a null version, Amazon S3 does not remove any objects.
 =item Bucket => Str
 
 =item Delete => L<Paws::S3::Delete>
+
+=item [ContentLength => Int]
+
+=item [ContentMD5 => Str]
 
 =item [MFA => Str]
 
@@ -1857,6 +1863,8 @@ upload.
 
 =item Bucket => Str
 
+=item [ContentLength => Int]
+
 
 =back
 
@@ -1876,6 +1884,8 @@ Sets the accelerate configuration of an existing bucket.
 =item [AccessControlPolicy => L<Paws::S3::AccessControlPolicy>]
 
 =item [ACL => Str]
+
+=item [ContentLength => Int]
 
 =item [ContentMD5 => Str]
 
@@ -1909,6 +1919,8 @@ Sets the permissions on a bucket using access control lists (ACL).
 
 =item Id => Str
 
+=item [ContentLength => Int]
+
 
 =back
 
@@ -1927,6 +1939,8 @@ analytics configuration ID).
 =item Bucket => Str
 
 =item CORSConfiguration => L<Paws::S3::CORSConfiguration>
+
+=item [ContentLength => Int]
 
 =item [ContentMD5 => Str]
 
@@ -1947,6 +1961,8 @@ Sets the cors configuration for a bucket.
 =item Bucket => Str
 
 =item ServerSideEncryptionConfiguration => L<Paws::S3::ServerSideEncryptionConfiguration>
+
+=item [ContentLength => Int]
 
 =item [ContentMD5 => Str]
 
@@ -1971,6 +1987,8 @@ existing one, if present).
 
 =item InventoryConfiguration => L<Paws::S3::InventoryConfiguration>
 
+=item [ContentLength => Int]
+
 
 =back
 
@@ -1987,6 +2005,8 @@ the bucket.
 =over
 
 =item Bucket => Str
+
+=item [ContentLength => Int]
 
 =item [ContentMD5 => Str]
 
@@ -2029,6 +2049,8 @@ configuration exists, it replaces it.
 
 =item BucketLoggingStatus => L<Paws::S3::BucketLoggingStatus>
 
+=item [ContentLength => Int]
+
 =item [ContentMD5 => Str]
 
 
@@ -2053,6 +2075,8 @@ status of a bucket, you must be the bucket owner.
 
 =item MetricsConfiguration => L<Paws::S3::MetricsConfiguration>
 
+=item [ContentLength => Int]
+
 
 =back
 
@@ -2071,6 +2095,8 @@ ID) for the bucket.
 =item Bucket => Str
 
 =item NotificationConfiguration => L<Paws::S3::NotificationConfigurationDeprecated>
+
+=item [ContentLength => Int]
 
 =item [ContentMD5 => Str]
 
@@ -2112,6 +2138,8 @@ Enables notifications of specified events for a bucket.
 
 =item [ConfirmRemoveSelfBucketAccess => Bool]
 
+=item [ContentLength => Int]
+
 =item [ContentMD5 => Str]
 
 
@@ -2133,6 +2161,8 @@ one in this request completely replaces it.
 
 =item ReplicationConfiguration => L<Paws::S3::ReplicationConfiguration>
 
+=item [ContentLength => Int]
+
 =item [ContentMD5 => Str]
 
 
@@ -2153,6 +2183,8 @@ if present).
 =item Bucket => Str
 
 =item RequestPaymentConfiguration => L<Paws::S3::RequestPaymentConfiguration>
+
+=item [ContentLength => Int]
 
 =item [ContentMD5 => Str]
 
@@ -2179,6 +2211,8 @@ http://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html
 
 =item Tagging => L<Paws::S3::Tagging>
 
+=item [ContentLength => Int]
+
 =item [ContentMD5 => Str]
 
 
@@ -2198,6 +2232,8 @@ Sets the tags for a bucket.
 =item Bucket => Str
 
 =item VersioningConfiguration => L<Paws::S3::VersioningConfiguration>
+
+=item [ContentLength => Int]
 
 =item [ContentMD5 => Str]
 
@@ -2221,6 +2257,8 @@ state, you must be the bucket owner.
 =item Bucket => Str
 
 =item WebsiteConfiguration => L<Paws::S3::WebsiteConfiguration>
+
+=item [ContentLength => Int]
 
 =item [ContentMD5 => Str]
 
@@ -2312,6 +2350,8 @@ Adds an object to a bucket.
 
 =item [ACL => Str]
 
+=item [ContentLength => Int]
+
 =item [ContentMD5 => Str]
 
 =item [GrantFullControl => Str]
@@ -2349,6 +2389,8 @@ permissions for an object that already exists in a bucket
 
 =item Tagging => L<Paws::S3::Tagging>
 
+=item [ContentLength => Int]
+
 =item [ContentMD5 => Str]
 
 =item [VersionId => Str]
@@ -2370,6 +2412,8 @@ Sets the supplied tag-set to an object that already exists in a bucket
 =item Bucket => Str
 
 =item Key => Str
+
+=item [ContentMD5 => Str]
 
 =item [RequestPayer => Str]
 

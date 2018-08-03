@@ -3,6 +3,7 @@ package Paws::S3::CreateBucket;
   use Moose;
   has ACL => (is => 'ro', isa => 'Str', header_name => 'x-amz-acl', traits => ['ParamInHeader']);
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
+  has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
   has CreateBucketConfiguration => (is => 'ro', isa => 'Paws::S3::CreateBucketConfiguration', traits => ['ParamInBody']);
   has GrantFullControl => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-full-control', traits => ['ParamInHeader']);
   has GrantRead => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-read', traits => ['ParamInHeader']);
@@ -42,6 +43,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateBucketOutput = $s3->CreateBucket(
       Bucket                    => 'MyBucketName',
       ACL                       => 'private',        # OPTIONAL
+      ContentLength             => 1,                # OPTIONAL
       CreateBucketConfiguration => {
         LocationConstraint => 'EU'
         , # values: EU, eu-west-1, us-west-1, us-west-2, ap-south-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, sa-east-1, cn-north-1, eu-central-1; OPTIONAL
@@ -73,6 +75,12 @@ Valid values are: C<"private">, C<"public-read">, C<"public-read-write">, C<"aut
 =head2 B<REQUIRED> Bucket => Str
 
 
+
+
+
+=head2 ContentLength => Int
+
+Size of the body in bytes.
 
 
 

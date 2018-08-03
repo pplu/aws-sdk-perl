@@ -2,6 +2,7 @@
 package Paws::S3::RestoreObject;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
+  has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
   has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
   has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
   has RestoreRequest => (is => 'ro', isa => 'Paws::S3::RestoreRequest', traits => ['ParamInBody']);
@@ -39,12 +40,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $RestoreObjectOutput = $s3->RestoreObject(
       Bucket         => 'MyBucketName',
       Key            => 'MyObjectKey',
-      RequestPayer   => 'requester',      # OPTIONAL
+      ContentMD5     => 'MyContentMD5',    # OPTIONAL
+      RequestPayer   => 'requester',       # OPTIONAL
       RestoreRequest => {
         Days                 => 1,                  # OPTIONAL
         Description          => 'MyDescription',    # OPTIONAL
         GlacierJobParameters => {
-          Tier => 'Standard',    # values: Standard, Bulk, Expedited; OPTIONAL
+          Tier => 'Standard',    # values: Standard, Bulk, Expedited
 
         },    # OPTIONAL
         OutputLocation => {
@@ -127,7 +129,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
 
         },    # OPTIONAL
-        Tier => 'Standard',    # values: Standard, Bulk, Expedited; OPTIONAL
+        Tier => 'Standard',    # values: Standard, Bulk, Expedited
         Type => 'SELECT',      # values: SELECT; OPTIONAL
       },    # OPTIONAL
       VersionId => 'MyObjectVersionId',    # OPTIONAL
@@ -146,6 +148,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 
 =head2 B<REQUIRED> Bucket => Str
+
+
+
+
+
+=head2 ContentMD5 => Str
 
 
 

@@ -3,6 +3,7 @@ package Paws::S3::PutBucketAccelerateConfiguration;
   use Moose;
   has AccelerateConfiguration => (is => 'ro', isa => 'Paws::S3::AccelerateConfiguration', traits => ['ParamInBody'], required => 1);
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
+  has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
 
 
   use MooseX::ClassAttribute;
@@ -37,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AccelerateConfiguration => {
         Status => 'Enabled',    # values: Enabled, Suspended; OPTIONAL
       },
-      Bucket => 'MyBucketName',
-
+      Bucket        => 'MyBucketName',
+      ContentLength => 1,                # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -56,6 +57,12 @@ Specifies the Accelerate Configuration you want to set for the bucket.
 =head2 B<REQUIRED> Bucket => Str
 
 Name of the bucket for which the accelerate configuration is set.
+
+
+
+=head2 ContentLength => Int
+
+Size of the body in bytes.
 
 
 

@@ -3,6 +3,7 @@ package Paws::S3::PutBucketAnalyticsConfiguration;
   use Moose;
   has AnalyticsConfiguration => (is => 'ro', isa => 'Paws::S3::AnalyticsConfiguration', traits => ['ParamInBody'], required => 1);
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
+  has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
   has Id => (is => 'ro', isa => 'Str', query_name => 'id', traits => ['ParamInQuery'], required => 1);
 
 
@@ -61,7 +62,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Value => 'MyValue',
 
               },
-              ...
+              ...                          # OPTIONAL
             ],                             # OPTIONAL
           },    # OPTIONAL
           Prefix => 'MyPrefix',    # OPTIONAL
@@ -69,12 +70,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Key   => 'MyObjectKey',    # min: 1
             Value => 'MyValue',
 
-          },
+          },    # OPTIONAL
         },    # OPTIONAL
       },
-      Bucket => 'MyBucketName',
-      Id     => 'MyAnalyticsId',
-
+      Bucket        => 'MyBucketName',
+      Id            => 'MyAnalyticsId',
+      ContentLength => 1,                 # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -92,6 +93,12 @@ The configuration and any analyses for the analytics filter.
 =head2 B<REQUIRED> Bucket => Str
 
 The name of the bucket to which an analytics configuration is stored.
+
+
+
+=head2 ContentLength => Int
+
+Size of the body in bytes.
 
 
 
