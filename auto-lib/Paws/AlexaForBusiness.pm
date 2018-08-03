@@ -984,11 +984,8 @@ Each argument is described in detail in: L<Paws::AlexaForBusiness::ListDeviceEve
 
 Returns: a L<Paws::AlexaForBusiness::ListDeviceEventsResponse> instance
 
-Lists the Device Event history for up to 30 days. If EventType isn't
-specified in the request, this returns a list of all device events in
-reverse chronological order. If EventType is specified, this returns a
-list of device events for that EventType in reverse chronological
-order.
+Lists the device event history, including device connection status, for
+up to 30 days.
 
 
 =head2 ListSkills
@@ -1028,7 +1025,7 @@ Each argument is described in detail in: L<Paws::AlexaForBusiness::ListTags>
 
 Returns: a L<Paws::AlexaForBusiness::ListTagsResponse> instance
 
-Lists all tags for a specific resource.
+Lists all tags for the specified resource.
 
 
 =head2 PutRoomSkillParameter

@@ -7,8 +7,8 @@ package Paws::ResourceGroups::ListGroups;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListGroups');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/groups');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/groups-list');
+  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ResourceGroups::ListGroupsOutput');
 1;
 

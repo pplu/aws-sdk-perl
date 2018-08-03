@@ -329,6 +329,8 @@ by an ARN.
 
 =item GroupName => Str
 
+=item [Filters => ArrayRef[L<Paws::ResourceGroups::ResourceFilter>]]
+
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
@@ -465,9 +467,9 @@ Updates the resource query of a group.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 ListAllGroupResources(sub { },GroupName => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListAllGroupResources(sub { },GroupName => Str, [Filters => ArrayRef[L<Paws::ResourceGroups::ResourceFilter>], MaxResults => Int, NextToken => Str])
 
-=head2 ListAllGroupResources(GroupName => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListAllGroupResources(GroupName => Str, [Filters => ArrayRef[L<Paws::ResourceGroups::ResourceFilter>], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

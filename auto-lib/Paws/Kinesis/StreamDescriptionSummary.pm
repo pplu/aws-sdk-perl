@@ -1,5 +1,6 @@
 package Paws::Kinesis::StreamDescriptionSummary;
   use Moose;
+  has ConsumerCount => (is => 'ro', isa => 'Int');
   has EncryptionType => (is => 'ro', isa => 'Str');
   has EnhancedMonitoring => (is => 'ro', isa => 'ArrayRef[Paws::Kinesis::EnhancedMetrics]', required => 1);
   has KeyId => (is => 'ro', isa => 'Str');
@@ -29,20 +30,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Kinesis::StreamDescriptionSummary object:
 
-  $service_obj->Method(Att1 => { EncryptionType => $value, ..., StreamStatus => $value  });
+  $service_obj->Method(Att1 => { ConsumerCount => $value, ..., StreamStatus => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Kinesis::StreamDescriptionSummary object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->EncryptionType
+  $result->Att1->ConsumerCount
 
 =head1 DESCRIPTION
 
 Represents the output for DescribeStreamSummary
 
 =head1 ATTRIBUTES
+
+
+=head2 ConsumerCount => Int
+
+  The number of enhanced fan-out consumers registered with the stream.
 
 
 =head2 EncryptionType => Str

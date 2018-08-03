@@ -1,6 +1,7 @@
 
 package Paws::Polly::SynthesizeSpeech;
   use Moose;
+  has LanguageCode => (is => 'ro', isa => 'Str');
   has LexiconNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has OutputFormat => (is => 'ro', isa => 'Str', required => 1);
   has SampleRate => (is => 'ro', isa => 'Str');
@@ -59,6 +60,22 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pol
 
 =head1 ATTRIBUTES
 
+
+=head2 LanguageCode => Str
+
+Optional language code for the Synthesize Speech request. This is only
+necessary if using a bilingual voice, such as Aditi, which can be used
+for either Indian English (en-IN) or Hindi (hi-IN).
+
+If a bilingual voice is used and no language code is specified, Amazon
+Polly will use the default language of the bilingual voice. The default
+language for any voice is the one returned by the DescribeVoices
+(https://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html)
+operation for the C<LanguageCode> parameter. For example, if no
+language code is specified, Aditi will use Indian English rather than
+Hindi.
+
+Valid values are: C<"cy-GB">, C<"da-DK">, C<"de-DE">, C<"en-AU">, C<"en-GB">, C<"en-GB-WLS">, C<"en-IN">, C<"en-US">, C<"es-ES">, C<"es-US">, C<"fr-CA">, C<"fr-FR">, C<"is-IS">, C<"it-IT">, C<"ja-JP">, C<"hi-IN">, C<"ko-KR">, C<"nb-NO">, C<"nl-NL">, C<"pl-PL">, C<"pt-BR">, C<"pt-PT">, C<"ro-RO">, C<"ru-RU">, C<"sv-SE">, C<"tr-TR">
 
 =head2 LexiconNames => ArrayRef[Str|Undef]
 

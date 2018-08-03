@@ -92,16 +92,14 @@ If the step is in Pending status, this field is not populated.
 
 =head2 IsCritical => Bool
 
-  Enable this option to designate a step as critical for the successful
-completion of the Automation. If a step with this designation fails,
-then Automation reports the final status of the Automation as Failed.
+  The flag which can be used to help decide whether the failure of
+current step leads to the Automation failure.
 
 
 =head2 IsEnd => Bool
 
-  Enable this option to stop an Automation execution at the end of a
-specific step. The Automation execution stops if the step execution
-failed or succeeded.
+  The flag which can be used to end automation no matter whether the step
+succeeds or fails.
 
 
 =head2 MaxAttempts => Int
@@ -112,8 +110,7 @@ value is 1.
 
 =head2 NextStep => Str
 
-  Specifies which step in an Automation to process next after
-successfully completing a step.
+  The next step after the step succeeds.
 
 
 =head2 OnFailure => Str
@@ -164,15 +161,11 @@ InProgress, Success, Cancelled, Failed, and TimedOut.
 
 =head2 ValidNextSteps => ArrayRef[Str|Undef]
 
-  ValidNextSteps offer different strategies for managing an Automation
-workflow when a step finishes. Automation dynamically processes
-ValidNextSteps when a step is completed. For example, you can specify
-C<Abort> to stop the Automation when a step fails or C<Continue> to
-ignore the failure of the current step and allow Automation to continue
-processing the next step. You can also specify C<step:I<step_name> > to
-jump to a designated step after a step succeeds. The result of the
-current step dynamically determines the ValidNextSteps. If a step
-finishes and no ValidNextStep is designated, then the Automation stops.
+  Strategies used when step fails, we support Continue and Abort. Abort
+will fail the automation when the step fails. Continue will ignore the
+failure of current step and allow automation to execute the next step.
+With conditional branching, we add step:stepName to support the
+automation to go to another specific step.
 
 
 

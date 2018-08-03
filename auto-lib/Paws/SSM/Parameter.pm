@@ -1,6 +1,10 @@
 package Paws::SSM::Parameter;
   use Moose;
+  has ARN => (is => 'ro', isa => 'Str');
+  has LastModifiedDate => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+  has Selector => (is => 'ro', isa => 'Str');
+  has SourceResult => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Int');
@@ -24,14 +28,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::Parameter object:
 
-  $service_obj->Method(Att1 => { Name => $value, ..., Version => $value  });
+  $service_obj->Method(Att1 => { ARN => $value, ..., Version => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Parameter object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Name
+  $result->Att1->ARN
 
 =head1 DESCRIPTION
 
@@ -40,9 +44,36 @@ An Amazon EC2 Systems Manager parameter in Parameter Store.
 =head1 ATTRIBUTES
 
 
+=head2 ARN => Str
+
+  The Amazon Resource Name (ARN) of the parameter.
+
+
+=head2 LastModifiedDate => Str
+
+  Date the parameter was last changed or updated and the parameter
+version was created.
+
+
 =head2 Name => Str
 
   The name of the parameter.
+
+
+=head2 Selector => Str
+
+  Either the version number or the label used to retrieve the parameter
+value. Specify selectors by using one of the following formats:
+
+parameter_name:version
+
+parameter_name:label
+
+
+=head2 SourceResult => Str
+
+  Applies to parameters that reference information in other AWS services.
+SourceResult is the raw result or response from the source.
 
 
 =head2 Type => Str

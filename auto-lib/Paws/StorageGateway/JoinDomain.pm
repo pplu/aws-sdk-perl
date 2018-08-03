@@ -57,8 +57,8 @@ The name of the domain that you want the gateway to join.
 
 =head2 B<REQUIRED> GatewayARN => Str
 
-The unique Amazon Resource Name of the file gateway you want to add to
-the Active Directory domain.
+The unique Amazon Resource Name (ARN) of the file gateway you want to
+add to the Active Directory domain.
 
 
 

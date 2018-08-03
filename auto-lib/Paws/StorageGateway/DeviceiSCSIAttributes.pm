@@ -57,7 +57,7 @@ Lists iSCSI information about a VTL device.
 
 =head2 TargetARN => Str
 
-  Specifies the unique Amazon Resource Name(ARN) that encodes the iSCSI
+  Specifies the unique Amazon Resource Name (ARN) that encodes the iSCSI
 qualified name(iqn) of a tape drive or media changer target.
 
 
