@@ -42,12 +42,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
             },    # OPTIONAL
             CloudwatchMetric => {
-              MetricName      => 'MyMetricName',
-              MetricNamespace => 'MyMetricNamespace',
-              MetricUnit      => 'MyMetricUnit',
-              MetricValue     => 'MyMetricValue',
+              MetricName      => 'MyString',
+              MetricNamespace => 'MyString',
+              MetricUnit      => 'MyString',
+              MetricValue     => 'MyString',
               RoleArn         => 'MyAwsArn',
-              MetricTimestamp => 'MyMetricTimestamp',    # OPTIONAL
+              MetricTimestamp => 'MyString',
             },    # OPTIONAL
             DynamoDB => {
               HashKeyField => 'MyHashKeyField',
@@ -122,6 +122,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               RoleArn   => 'MyAwsArn',
               UseBase64 => 1,              # OPTIONAL
             },    # OPTIONAL
+            StepFunctions => {
+              RoleArn             => 'MyAwsArn',
+              StateMachineName    => 'MyStateMachineName',
+              ExecutionNamePrefix => 'MyExecutionNamePrefix',    # OPTIONAL
+            },    # OPTIONAL
           },
           ...
         ],        # max: 10
@@ -137,13 +142,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },                                         # OPTIONAL
           CloudwatchMetric => {
-            MetricName      => 'MyMetricName',
-            MetricNamespace => 'MyMetricNamespace',
-            MetricUnit      => 'MyMetricUnit',
-            MetricValue     => 'MyMetricValue',
+            MetricName      => 'MyString',
+            MetricNamespace => 'MyString',
+            MetricUnit      => 'MyString',
+            MetricValue     => 'MyString',
             RoleArn         => 'MyAwsArn',
-            MetricTimestamp => 'MyMetricTimestamp',    # OPTIONAL
-          },    # OPTIONAL
+            MetricTimestamp => 'MyString',
+          },                                         # OPTIONAL
           DynamoDB => {
             HashKeyField => 'MyHashKeyField',
             HashKeyValue => 'MyHashKeyValue',
@@ -216,6 +221,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             QueueUrl  => 'MyQueueUrl',
             RoleArn   => 'MyAwsArn',
             UseBase64 => 1,              # OPTIONAL
+          },    # OPTIONAL
+          StepFunctions => {
+            RoleArn             => 'MyAwsArn',
+            StateMachineName    => 'MyStateMachineName',
+            ExecutionNamePrefix => 'MyExecutionNamePrefix',    # OPTIONAL
           },    # OPTIONAL
         },
         RuleDisabled => 1,    # OPTIONAL

@@ -51,7 +51,7 @@ C<path-pattern>.
 If the field name is C<host-header>, you can specify a single host name
 (for example, my.example.com). A host name is case insensitive, can be
 up to 128 characters in length, and can contain any of the following
-characters. Note that you can include up to three wildcard characters.
+characters. You can include up to three wildcard characters.
 
 =over
 
@@ -74,9 +74,9 @@ A-Z, a-z, 0-9
 =back
 
 If the field name is C<path-pattern>, you can specify a single path
-pattern (for example, /img/*). A path pattern is case sensitive, can be
+pattern (for example, /img/*). A path pattern is case-sensitive, can be
 up to 128 characters in length, and can contain any of the following
-characters. Note that you can include up to three wildcard characters.
+characters. You can include up to three wildcard characters.
 
 =over
 

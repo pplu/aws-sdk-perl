@@ -81,9 +81,9 @@ different containers that make up your task.
 
 The number of CPU units used by the task. It can be expressed as an
 integer using CPU units, for example C<1024>, or as a string using
-vCPUs, for example C<1 vCPU> or C<1 vcpu>, in a task definition but
-will be converted to an integer indicating the CPU units when the task
-definition is registered.
+vCPUs, for example C<1 vCPU> or C<1 vcpu>, in a task definition. String
+values are converted to an integer indicating the CPU units when the
+task definition is registered.
 
 Task-level CPU and memory parameters are ignored for Windows
 containers. We recommend specifying container-level resources for
@@ -149,8 +149,8 @@ and lowercase), numbers, hyphens, and underscores are allowed.
 
 The amount of memory (in MiB) used by the task. It can be expressed as
 an integer using MiB, for example C<1024>, or as a string using GB, for
-example C<1GB> or C<1 GB>, in a task definition but will be converted
-to an integer indicating the MiB when the task definition is
+example C<1GB> or C<1 GB>, in a task definition. String values are
+converted to an integer indicating the MiB when the task definition is
 registered.
 
 Task-level CPU and memory parameters are ignored for Windows

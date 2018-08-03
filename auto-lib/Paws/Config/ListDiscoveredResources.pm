@@ -37,8 +37,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       IncludeDeletedResources => 1,                             # OPTIONAL
       Limit                   => 1,                             # OPTIONAL
       NextToken               => 'MyNextToken',                 # OPTIONAL
-      ResourceIds             => [ 'MyResourceId', ... ],       # OPTIONAL
-      ResourceName            => 'MyResourceName',              # OPTIONAL
+      ResourceIds             => [
+        'MyResourceId', ...    # min: 1, max: 768
+      ],                       # OPTIONAL
+      ResourceName => 'MyResourceName',    # OPTIONAL
     );
 
     # Results:

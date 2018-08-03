@@ -42,6 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $AllowsHostedConnections = $Lag->AllowsHostedConnections;
     my $AwsDevice               = $Lag->AwsDevice;
+    my $AwsDeviceV2             = $Lag->AwsDeviceV2;
     my $Connections             = $Lag->Connections;
     my $ConnectionsBandwidth    = $Lag->ConnectionsBandwidth;
     my $LagId                   = $Lag->LagId;

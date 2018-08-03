@@ -71,7 +71,7 @@ specify between 5 and 300 seconds. The default value is 30 seconds.
 
   The number of times to retry a failed health check before the container
 is considered unhealthy. You may specify between 1 and 10 retries. The
-default value is 3 retries.
+default value is 3.
 
 
 =head2 StartPeriod => Int
@@ -90,7 +90,7 @@ toward the maximum number of retries.
 
   The time period in seconds to wait for a health check to succeed before
 it is considered a failure. You may specify between 2 and 60 seconds.
-The default value is 5 seconds.
+The default value is 5.
 
 
 

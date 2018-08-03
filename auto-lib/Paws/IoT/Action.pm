@@ -14,6 +14,7 @@ package Paws::IoT::Action;
   has Salesforce => (is => 'ro', isa => 'Paws::IoT::SalesforceAction', request_name => 'salesforce', traits => ['NameInRequest']);
   has Sns => (is => 'ro', isa => 'Paws::IoT::SnsAction', request_name => 'sns', traits => ['NameInRequest']);
   has Sqs => (is => 'ro', isa => 'Paws::IoT::SqsAction', request_name => 'sqs', traits => ['NameInRequest']);
+  has StepFunctions => (is => 'ro', isa => 'Paws::IoT::StepFunctionsAction', request_name => 'stepFunctions', traits => ['NameInRequest']);
 
 1;
 
@@ -34,7 +35,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT::Action object:
 
-  $service_obj->Method(Att1 => { CloudwatchAlarm => $value, ..., Sqs => $value  });
+  $service_obj->Method(Att1 => { CloudwatchAlarm => $value, ..., StepFunctions => $value  });
 
 =head3 Results returned from an API call
 
@@ -120,6 +121,11 @@ payload into a separate DynamoDB column.
 =head2 Sqs => L<Paws::IoT::SqsAction>
 
   Publish to an Amazon SQS queue.
+
+
+=head2 StepFunctions => L<Paws::IoT::StepFunctionsAction>
+
+  Starts execution of a Step Functions state machine.
 
 
 

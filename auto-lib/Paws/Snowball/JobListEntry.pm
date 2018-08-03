@@ -85,7 +85,7 @@ C<JID123e4567-e89b-12d3-a456-426655440000>.
 
 =head2 SnowballType => Str
 
-  The type of appliance used with this job.
+  The type of device used with this job.
 
 
 

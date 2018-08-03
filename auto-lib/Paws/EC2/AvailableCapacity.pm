@@ -39,7 +39,7 @@ This class has no description
 
 =head2 AvailableInstanceCapacity => ArrayRef[L<Paws::EC2::InstanceCapacity>]
 
-  The total number of instances that the Dedicated Host supports.
+  The total number of instances supported by the Dedicated Host.
 
 
 =head2 AvailableVCpus => Int

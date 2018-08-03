@@ -6,6 +6,7 @@ package Paws::CodeBuild::Build;
   has BuildStatus => (is => 'ro', isa => 'Str', request_name => 'buildStatus', traits => ['NameInRequest']);
   has Cache => (is => 'ro', isa => 'Paws::CodeBuild::ProjectCache', request_name => 'cache', traits => ['NameInRequest']);
   has CurrentPhase => (is => 'ro', isa => 'Str', request_name => 'currentPhase', traits => ['NameInRequest']);
+  has EncryptionKey => (is => 'ro', isa => 'Str', request_name => 'encryptionKey', traits => ['NameInRequest']);
   has EndTime => (is => 'ro', isa => 'Str', request_name => 'endTime', traits => ['NameInRequest']);
   has Environment => (is => 'ro', isa => 'Paws::CodeBuild::ProjectEnvironment', request_name => 'environment', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
@@ -113,6 +114,15 @@ C<TIMED_OUT>: The build timed out.
 =head2 CurrentPhase => Str
 
   The current build phase.
+
+
+=head2 EncryptionKey => Str
+
+  The AWS Key Management Service (AWS KMS) customer master key (CMK) to
+be used for encrypting the build output artifacts.
+
+This is expressed either as the CMK's Amazon Resource Name (ARN) or, if
+specified, the CMK's alias (using the format C<alias/I<alias-name> >).
 
 
 =head2 EndTime => Str

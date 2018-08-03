@@ -19,7 +19,8 @@ Paws::IoT::ListThingRegistrationTaskReportsResponse
 
 =head2 NextToken => Str
 
-The token to retrieve the next set of results.
+The token used to get the next set of results, or B<null> if there are
+no additional results.
 
 
 =head2 ReportType => Str

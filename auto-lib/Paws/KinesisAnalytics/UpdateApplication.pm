@@ -67,7 +67,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ],                                         # min: 1, max: 1000
               RecordEncodingUpdate => 'MyRecordEncoding',    # OPTIONAL
               RecordFormatUpdate   => {
-                RecordFormatType  => 'JSON',    # values: JSON, CSV; OPTIONAL
+                RecordFormatType  => 'JSON',                 # values: JSON, CSV
                 MappingParameters => {
                   CSVMappingParameters => {
                     RecordColumnDelimiter => 'MyRecordColumnDelimiter', # min: 1
@@ -99,7 +99,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             OutputId                => 'MyId',       # min: 1, max: 50
             DestinationSchemaUpdate => {
-              RecordFormatType => 'JSON',    # values: JSON, CSV; OPTIONAL
+              RecordFormatType => 'JSON',            # values: JSON, CSV
             },    # OPTIONAL
             KinesisFirehoseOutputUpdate => {
               ResourceARNUpdate =>
@@ -133,7 +133,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ...
               ],                                         # min: 1, max: 1000
               RecordFormat => {
-                RecordFormatType  => 'JSON',    # values: JSON, CSV; OPTIONAL
+                RecordFormatType  => 'JSON',             # values: JSON, CSV
                 MappingParameters => {
                   CSVMappingParameters => {
                     RecordColumnDelimiter => 'MyRecordColumnDelimiter', # min: 1

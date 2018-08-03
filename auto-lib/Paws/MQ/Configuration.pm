@@ -1,6 +1,7 @@
 package Paws::MQ::Configuration;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has EngineType => (is => 'ro', isa => 'Str', request_name => 'engineType', traits => ['NameInRequest']);
   has EngineVersion => (is => 'ro', isa => 'Str', request_name => 'engineVersion', traits => ['NameInRequest']);
@@ -46,6 +47,11 @@ Returns information about all configurations.
 =head2 Arn => Str
 
   Required. The ARN of the configuration.
+
+
+=head2 Created => Str
+
+  Required. The date and time of the configuration revision.
 
 
 =head2 Description => Str

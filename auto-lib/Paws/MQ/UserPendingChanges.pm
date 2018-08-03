@@ -55,8 +55,7 @@ long.
 
 =head2 PendingChange => Str
 
-  Required. The type of change pending for the ActiveMQ user. Possible
-values: CREATE, UPDATE, DELETE
+  Required. The type of change pending for the ActiveMQ user.
 
 
 

@@ -4,7 +4,6 @@ package Paws::IoT::Job;
   has CompletedAt => (is => 'ro', isa => 'Str', request_name => 'completedAt', traits => ['NameInRequest']);
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has DocumentParameters => (is => 'ro', isa => 'Paws::IoT::JobDocumentParameters', request_name => 'documentParameters', traits => ['NameInRequest']);
   has ForceCanceled => (is => 'ro', isa => 'Bool', request_name => 'forceCanceled', traits => ['NameInRequest']);
   has JobArn => (is => 'ro', isa => 'Str', request_name => 'jobArn', traits => ['NameInRequest']);
   has JobExecutionsRolloutConfig => (is => 'ro', isa => 'Paws::IoT::JobExecutionsRolloutConfig', request_name => 'jobExecutionsRolloutConfig', traits => ['NameInRequest']);
@@ -69,11 +68,6 @@ The C<Job> object contains details about a job.
 =head2 Description => Str
 
   A short text description of the job.
-
-
-=head2 DocumentParameters => L<Paws::IoT::JobDocumentParameters>
-
-  The parameters specified for the job document.
 
 
 =head2 ForceCanceled => Bool

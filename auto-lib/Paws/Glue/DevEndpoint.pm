@@ -12,6 +12,7 @@ package Paws::Glue::DevEndpoint;
   has PrivateAddress => (is => 'ro', isa => 'Str');
   has PublicAddress => (is => 'ro', isa => 'Str');
   has PublicKey => (is => 'ro', isa => 'Str');
+  has PublicKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has RoleArn => (is => 'ro', isa => 'Str');
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Status => (is => 'ro', isa => 'Str');
@@ -115,7 +116,8 @@ DevEndpoint.
 
 =head2 PrivateAddress => Str
 
-  The private address used by this DevEndpoint.
+  A private DNS to access the DevEndpoint within a VPC, if the
+DevEndpoint is created within one.
 
 
 =head2 PublicAddress => Str
@@ -125,7 +127,23 @@ DevEndpoint.
 
 =head2 PublicKey => Str
 
-  The public key to be used by this DevEndpoint for authentication.
+  The public key to be used by this DevEndpoint for authentication. This
+attribute is provided for backward compatibility, as the recommended
+attribute to use is public keys.
+
+
+=head2 PublicKeys => ArrayRef[Str|Undef]
+
+  A list of public keys to be used by the DevEndpoints for
+authentication. The use of this attribute is preferred over a single
+public key because the public keys allow you to have a different
+private key per client.
+
+If you previously created an endpoint with a public key, you must
+remove that key to be able to set a list of public keys: call the
+C<UpdateDevEndpoint> API with the public key content in the
+C<deletePublicKeys> attribute, and the list of new keys in the
+C<addPublicKeys> attribute.
 
 
 =head2 RoleArn => Str

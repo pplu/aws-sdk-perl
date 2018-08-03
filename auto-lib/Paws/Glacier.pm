@@ -315,10 +315,9 @@ provisioning, data replication, hardware failure and recovery, or
 time-consuming hardware migrations.
 
 Amazon Glacier is a great storage choice when low storage cost is
-paramount, your data is rarely retrieved, and retrieval latency of
-several hours is acceptable. If your application requires fast or
-frequent access to your data, consider using Amazon S3. For more
-information, see Amazon Simple Storage Service (Amazon S3)
+paramount and your data is rarely retrieved. If your application
+requires fast or frequent access to your data, consider using Amazon
+S3. For more information, see Amazon Simple Storage Service (Amazon S3)
 (http://aws.amazon.com/s3/).
 
 You can store any kind of data in any format. There is no maximum limit
@@ -1276,7 +1275,7 @@ Jobs request.
 
 You can set a maximum limit for the number of jobs returned in the
 response by specifying the C<limit> parameter in the request. The
-default limit is 1000. The number of jobs returned might be fewer than
+default limit is 50. The number of jobs returned might be fewer than
 the limit, but the number of returned jobs never exceeds the limit.
 
 Additionally, you can filter the jobs list returned by specifying the
@@ -1318,10 +1317,10 @@ been completed or aborted. The list returned in the List Multipart
 Upload response has no guaranteed order.
 
 The List Multipart Uploads operation supports pagination. By default,
-this operation returns up to 1,000 multipart uploads in the response.
-You should always check the response for a C<marker> at which to
-continue the list; if there are no more items the C<marker> is C<null>.
-To return a list of multipart uploads that begins at a specific upload,
+this operation returns up to 50 multipart uploads in the response. You
+should always check the response for a C<marker> at which to continue
+the list; if there are no more items the C<marker> is C<null>. To
+return a list of multipart uploads that begins at a specific upload,
 set the C<marker> request parameter to the value you obtained from a
 previous List Multipart Upload request. You can also limit the number
 of uploads returned in the response by specifying the C<limit>
@@ -1377,13 +1376,13 @@ uploads. The list returned in the List Parts response is sorted by part
 range.
 
 The List Parts operation supports pagination. By default, this
-operation returns up to 1,000 uploaded parts in the response. You
-should always check the response for a C<marker> at which to continue
-the list; if there are no more items the C<marker> is C<null>. To
-return a list of parts that begins at a specific part, set the
-C<marker> request parameter to the value you obtained from a previous
-List Parts request. You can also limit the number of parts returned in
-the response by specifying the C<limit> parameter in the request.
+operation returns up to 50 uploaded parts in the response. You should
+always check the response for a C<marker> at which to continue the
+list; if there are no more items the C<marker> is C<null>. To return a
+list of parts that begins at a specific part, set the C<marker> request
+parameter to the value you obtained from a previous List Parts request.
+You can also limit the number of parts returned in the response by
+specifying the C<limit> parameter in the request.
 
 An AWS account has full permission to perform all operations (actions).
 However, AWS Identity and Access Management (IAM) users don't have any
@@ -1458,7 +1457,7 @@ Returns: a L<Paws::Glacier::ListVaultsOutput> instance
 This operation lists all vaults owned by the calling user's account.
 The list returned in the response is ASCII-sorted by vault name.
 
-By default, this operation returns up to 1,000 items. If there are more
+By default, this operation returns up to 10 items. If there are more
 vaults to list, the response C<marker> field contains the vault Amazon
 Resource Name (ARN) at which to continue the list with a new List
 Vaults request; otherwise, the C<marker> field is C<null>. To return a

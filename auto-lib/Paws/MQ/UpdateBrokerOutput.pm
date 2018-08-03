@@ -2,6 +2,7 @@ package Paws::MQ::UpdateBrokerOutput;
   use Moose;
   has BrokerId => (is => 'ro', isa => 'Str', request_name => 'brokerId', traits => ['NameInRequest']);
   has Configuration => (is => 'ro', isa => 'Paws::MQ::ConfigurationId', request_name => 'configuration', traits => ['NameInRequest']);
+  has Logs => (is => 'ro', isa => 'Paws::MQ::Logs', request_name => 'logs', traits => ['NameInRequest']);
 
 1;
 
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MQ::UpdateBrokerOutput object:
 
-  $service_obj->Method(Att1 => { BrokerId => $value, ..., Configuration => $value  });
+  $service_obj->Method(Att1 => { BrokerId => $value, ..., Logs => $value  });
 
 =head3 Results returned from an API call
 
@@ -46,6 +47,12 @@ Returns information about the updated broker.
 =head2 Configuration => L<Paws::MQ::ConfigurationId>
 
   The ID of the updated configuration.
+
+
+=head2 Logs => L<Paws::MQ::Logs>
+
+  The list of information about logs to be enabled for the specified
+broker.
 
 
 

@@ -12,6 +12,7 @@ package Paws::SageMaker::DescribeTrainingJobResponse;
   has ResourceConfig => (is => 'ro', isa => 'Paws::SageMaker::ResourceConfig', required => 1);
   has RoleArn => (is => 'ro', isa => 'Str');
   has SecondaryStatus => (is => 'ro', isa => 'Str', required => 1);
+  has SecondaryStatusTransitions => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::SecondaryStatusTransition]');
   has StoppingCondition => (is => 'ro', isa => 'Paws::SageMaker::StoppingCondition', required => 1);
   has TrainingEndTime => (is => 'ro', isa => 'Str');
   has TrainingJobArn => (is => 'ro', isa => 'Str', required => 1);
@@ -94,7 +95,72 @@ training job.
 Provides granular information about the system state. For more
 information, see C<TrainingJobStatus>.
 
-Valid values are: C<"Starting">, C<"Downloading">, C<"Training">, C<"Uploading">, C<"Stopping">, C<"Stopped">, C<"MaxRuntimeExceeded">, C<"Completed">, C<"Failed">
+=over
+
+=item *
+
+C<Starting> - starting the training job.
+
+=item *
+
+C<LaunchingMLInstances> - launching ML instances for the training job.
+
+=item *
+
+C<PreparingTrainingStack> - preparing the ML instances for the training
+job.
+
+=item *
+
+C<Downloading> - downloading the input data.
+
+=item *
+
+C<DownloadingTrainingImage> - downloading the training algorithm image.
+
+=item *
+
+C<Training> - model training is in progress.
+
+=item *
+
+C<Uploading> - uploading the trained model.
+
+=item *
+
+C<Stopping> - stopping the training job.
+
+=item *
+
+C<Stopped> - the training job has stopped.
+
+=item *
+
+C<MaxRuntimeExceeded> - the training job exceeded the specified max run
+time and has been stopped.
+
+=item *
+
+C<Completed> - the training job has completed.
+
+=item *
+
+C<Failed> - the training job has failed. The failure reason is provided
+in the C<StatusMessage>.
+
+=back
+
+The valid values for C<SecondaryStatus> are subject to change. They
+primarily provide information on the progress of the training job.
+
+Valid values are: C<"Starting">, C<"LaunchingMLInstances">, C<"PreparingTrainingStack">, C<"Downloading">, C<"DownloadingTrainingImage">, C<"Training">, C<"Uploading">, C<"Stopping">, C<"Stopped">, C<"MaxRuntimeExceeded">, C<"Completed">, C<"Failed">
+=head2 SecondaryStatusTransitions => ArrayRef[L<Paws::SageMaker::SecondaryStatusTransition>]
+
+To give an overview of the training job lifecycle,
+C<SecondaryStatusTransitions> is a log of time-ordered secondary
+statuses that a training job has transitioned.
+
+
 =head2 B<REQUIRED> StoppingCondition => L<Paws::SageMaker::StoppingCondition>
 
 The condition under which to stop the training job.

@@ -39,6 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $AwsDevice         = $Interconnect->AwsDevice;
+    my $AwsDeviceV2       = $Interconnect->AwsDeviceV2;
     my $Bandwidth         = $Interconnect->Bandwidth;
     my $InterconnectId    = $Interconnect->InterconnectId;
     my $InterconnectName  = $Interconnect->InterconnectName;

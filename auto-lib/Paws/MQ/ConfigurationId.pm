@@ -45,7 +45,7 @@ A list of information about the configuration.
 
 =head2 Revision => Int
 
-  The Universally Unique Identifier (UUID) of the request.
+  The revision number of the configuration.
 
 
 

@@ -36,8 +36,6 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MQ::CreateC
 
 Creates a new configuration for the specified configuration name.
 Amazon MQ uses the default configuration (the engine type and version).
-Note: If the configuration name already exists, Amazon MQ doesn't
-create a configuration.
 
 =head1 ATTRIBUTES
 

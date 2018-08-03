@@ -2,6 +2,7 @@ package Paws::DynamoDB::ReplicaSettingsUpdate;
   use Moose;
   has RegionName => (is => 'ro', isa => 'Str', required => 1);
   has ReplicaGlobalSecondaryIndexSettingsUpdate => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::ReplicaGlobalSecondaryIndexSettingsUpdate]');
+  has ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate => (is => 'ro', isa => 'Paws::DynamoDB::AutoScalingSettingsUpdate');
   has ReplicaProvisionedReadCapacityUnits => (is => 'ro', isa => 'Int');
 
 1;
@@ -49,6 +50,12 @@ modified.
 
   Represents the settings of a global secondary index for a global table
 that will be modified.
+
+
+=head2 ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate => L<Paws::DynamoDB::AutoScalingSettingsUpdate>
+
+  Autoscaling settings for managing a global table replica's read
+capacity units.
 
 
 =head2 ReplicaProvisionedReadCapacityUnits => Int

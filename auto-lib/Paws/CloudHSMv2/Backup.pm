@@ -3,7 +3,11 @@ package Paws::CloudHSMv2::Backup;
   has BackupId => (is => 'ro', isa => 'Str', required => 1);
   has BackupState => (is => 'ro', isa => 'Str');
   has ClusterId => (is => 'ro', isa => 'Str');
+  has CopyTimestamp => (is => 'ro', isa => 'Str');
   has CreateTimestamp => (is => 'ro', isa => 'Str');
+  has SourceBackup => (is => 'ro', isa => 'Str');
+  has SourceCluster => (is => 'ro', isa => 'Str');
+  has SourceRegion => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -24,7 +28,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CloudHSMv2::Backup object:
 
-  $service_obj->Method(Att1 => { BackupId => $value, ..., CreateTimestamp => $value  });
+  $service_obj->Method(Att1 => { BackupId => $value, ..., SourceRegion => $value  });
 
 =head3 Results returned from an API call
 
@@ -55,9 +59,29 @@ Contains information about a backup of an AWS CloudHSM cluster.
   The identifier (ID) of the cluster that was backed up.
 
 
+=head2 CopyTimestamp => Str
+
+  
+
+
 =head2 CreateTimestamp => Str
 
   The date and time when the backup was created.
+
+
+=head2 SourceBackup => Str
+
+  
+
+
+=head2 SourceCluster => Str
+
+  
+
+
+=head2 SourceRegion => Str
+
+  
 
 
 

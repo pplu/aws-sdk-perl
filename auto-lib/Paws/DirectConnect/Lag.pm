@@ -3,6 +3,7 @@ package Paws::DirectConnect::Lag;
   use Moose;
   has AllowsHostedConnections => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'allowsHostedConnections' );
   has AwsDevice => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'awsDevice' );
+  has AwsDeviceV2 => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'awsDeviceV2' );
   has Connections => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Connection]', traits => ['NameInRequest'], request_name => 'connections' );
   has ConnectionsBandwidth => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionsBandwidth' );
   has LagId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagId' );
@@ -33,6 +34,13 @@ This is intended for use by AWS Direct Connect partners only.
 
 
 =head2 AwsDevice => Str
+
+Deprecated in favor of awsDeviceV2.
+
+The AWS Direct Connection endpoint that hosts the LAG.
+
+
+=head2 AwsDeviceV2 => Str
 
 The AWS Direct Connection endpoint that hosts the LAG.
 

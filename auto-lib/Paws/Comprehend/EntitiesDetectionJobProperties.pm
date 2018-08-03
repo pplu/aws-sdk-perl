@@ -1,5 +1,6 @@
 package Paws::Comprehend::EntitiesDetectionJobProperties;
   use Moose;
+  has DataAccessRoleArn => (is => 'ro', isa => 'Str');
   has EndTime => (is => 'ro', isa => 'Str');
   has InputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::InputDataConfig');
   has JobId => (is => 'ro', isa => 'Str');
@@ -29,20 +30,26 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Comprehend::EntitiesDetectionJobProperties object:
 
-  $service_obj->Method(Att1 => { EndTime => $value, ..., SubmitTime => $value  });
+  $service_obj->Method(Att1 => { DataAccessRoleArn => $value, ..., SubmitTime => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Comprehend::EntitiesDetectionJobProperties object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->EndTime
+  $result->Att1->DataAccessRoleArn
 
 =head1 DESCRIPTION
 
 Provides information about an entities detection job.
 
 =head1 ATTRIBUTES
+
+
+=head2 DataAccessRoleArn => Str
+
+  The Amazon Resource Name (ARN) that gives Amazon Comprehend read access
+to your input data.
 
 
 =head2 EndTime => Str

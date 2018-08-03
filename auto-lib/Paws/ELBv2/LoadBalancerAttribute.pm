@@ -69,7 +69,7 @@ The value is C<true> or C<false>. The default is C<false>.
 C<access_logs.s3.bucket> - The name of the S3 bucket for the access
 logs. This attribute is required if access logs are enabled. The bucket
 must exist in the same region as the load balancer and have a bucket
-policy that grants Elastic Load Balancing permission to write to the
+policy that grants Elastic Load Balancing permissions to write to the
 bucket.
 
 =item *

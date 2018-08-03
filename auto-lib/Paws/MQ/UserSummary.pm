@@ -40,8 +40,7 @@ Returns a list of all ActiveMQ users.
 
 =head2 PendingChange => Str
 
-  The type of change pending for the ActiveMQ user. Possible values:
-CREATE, UPDATE, DELETE
+  The type of change pending for the ActiveMQ user.
 
 
 =head2 Username => Str

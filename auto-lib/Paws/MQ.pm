@@ -161,6 +161,8 @@ For the AWS API documentation, see L<https://aws.amazon.com/documentation/amazon
 
 =item [HostInstanceType => Str]
 
+=item [Logs => L<Paws::MQ::Logs>]
+
 =item [MaintenanceWindowStartTime => L<Paws::MQ::WeeklyStartTime>]
 
 =item [PubliclyAccessible => Bool]
@@ -200,8 +202,6 @@ Returns: a L<Paws::MQ::CreateConfigurationResponse> instance
 
 Creates a new configuration for the specified configuration name.
 Amazon MQ uses the default configuration (the engine type and version).
-Note: If the configuration name already exists, Amazon MQ doesn't
-create a configuration.
 
 
 =head2 CreateUser
@@ -430,6 +430,8 @@ Reboots a broker. Note: This API is asynchronous.
 =item BrokerId => Str
 
 =item [Configuration => L<Paws::MQ::ConfigurationId>]
+
+=item [Logs => L<Paws::MQ::Logs>]
 
 
 =back

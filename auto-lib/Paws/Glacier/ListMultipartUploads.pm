@@ -67,7 +67,7 @@ you use an account ID, do not include any hyphens ('-') in the ID.
 
 Specifies the maximum number of uploads returned in the response body.
 If this value is not specified, the List Uploads operation returns up
-to 1,000 uploads.
+to 50 uploads.
 
 
 

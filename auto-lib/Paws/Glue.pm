@@ -999,6 +999,8 @@ Creates a new database in a Data Catalog.
 
 =item [PublicKey => Str]
 
+=item [PublicKeys => ArrayRef[Str|Undef]]
+
 =item [SecurityGroupIds => ArrayRef[Str|Undef]]
 
 =item [SubnetId => Str]
@@ -2219,7 +2221,11 @@ Updates an existing database definition in a Data Catalog.
 
 =item EndpointName => Str
 
+=item [AddPublicKeys => ArrayRef[Str|Undef]]
+
 =item [CustomLibraries => L<Paws::Glue::DevEndpointCustomLibraries>]
+
+=item [DeletePublicKeys => ArrayRef[Str|Undef]]
 
 =item [PublicKey => Str]
 

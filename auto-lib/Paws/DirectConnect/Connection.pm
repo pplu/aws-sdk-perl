@@ -2,6 +2,7 @@
 package Paws::DirectConnect::Connection;
   use Moose;
   has AwsDevice => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'awsDevice' );
+  has AwsDeviceV2 => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'awsDeviceV2' );
   has Bandwidth => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'bandwidth' );
   has ConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionId' );
   has ConnectionName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionName' );
@@ -26,6 +27,14 @@ Paws::DirectConnect::Connection
 
 
 =head2 AwsDevice => Str
+
+Deprecated in favor of awsDeviceV2.
+
+The Direct Connection endpoint which the physical connection terminates
+on.
+
+
+=head2 AwsDeviceV2 => Str
 
 The Direct Connection endpoint which the physical connection terminates
 on.

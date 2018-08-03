@@ -10,6 +10,7 @@ package Paws::IoT::CACertificateDescription;
   has LastModifiedDate => (is => 'ro', isa => 'Str', request_name => 'lastModifiedDate', traits => ['NameInRequest']);
   has OwnedBy => (is => 'ro', isa => 'Str', request_name => 'ownedBy', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  has Validity => (is => 'ro', isa => 'Paws::IoT::CertificateValidity', request_name => 'validity', traits => ['NameInRequest']);
 
 1;
 
@@ -30,7 +31,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT::CACertificateDescription object:
 
-  $service_obj->Method(Att1 => { AutoRegistrationStatus => $value, ..., Status => $value  });
+  $service_obj->Method(Att1 => { AutoRegistrationStatus => $value, ..., Validity => $value  });
 
 =head3 Results returned from an API call
 
@@ -95,6 +96,11 @@ certificates. Valid values are "ENABLE" and "DISABLE"
 =head2 Status => Str
 
   The status of a CA certificate.
+
+
+=head2 Validity => L<Paws::IoT::CertificateValidity>
+
+  When the CA certificate is valid.
 
 
 

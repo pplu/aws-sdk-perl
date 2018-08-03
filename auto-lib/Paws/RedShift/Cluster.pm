@@ -22,6 +22,7 @@ package Paws::RedShift::Cluster;
   has HsmStatus => (is => 'ro', isa => 'Paws::RedShift::HsmStatus');
   has IamRoles => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ClusterIamRole]', request_name => 'ClusterIamRole', traits => ['NameInRequest']);
   has KmsKeyId => (is => 'ro', isa => 'Str');
+  has MaintenanceTrackName => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str');
   has ModifyStatus => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
@@ -280,6 +281,11 @@ used by the cluster to access other AWS services.
 
   The AWS Key Management Service (AWS KMS) key ID of the encryption key
 used to encrypt data in the cluster.
+
+
+=head2 MaintenanceTrackName => Str
+
+  The name of the maintenance track for the cluster.
 
 
 =head2 MasterUsername => Str

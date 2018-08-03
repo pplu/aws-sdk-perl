@@ -95,9 +95,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     ],
                     Url => 'My__stringPatternHttps',
 
-                  },
+                  },                                     # OPTIONAL
 
-                },                                       # OPTIONAL
+                },    # OPTIONAL
                 HbbtvCompliance =>
                   'HBBTV_1_5',    # values: HBBTV_1_5, NONE; OPTIONAL
                 MinBufferTime  => 1,              # max: 2147483647; OPTIONAL
@@ -151,7 +151,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     ],
                     Url => 'My__stringPatternHttps',
 
-                  },
+                  },                  # OPTIONAL
                   StaticKeyProvider => {
                     StaticKeyValue => 'My__stringPatternAZaZ0932',
                     Url            => 'My__string',
@@ -195,9 +195,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     ],
                     Url => 'My__stringPatternHttps',
 
-                  },
+                  },                                     # OPTIONAL
 
-                },                                       # OPTIONAL
+                },    # OPTIONAL
                 ManifestEncoding => 'UTF8',    # values: UTF8, UTF16; OPTIONAL
               },    # OPTIONAL
             },
@@ -337,7 +337,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ],                                          # OPTIONAL
                 CaptionDescriptions => [
                   {
-                    CaptionSelectorName => 'My__stringMin1',  # min: 1; OPTIONAL
+                    CaptionSelectorName => 'My__stringMin1',    # min: 1
                     DestinationSettings => {
                       DestinationType => 'BURN_IN'
                       , # values: BURN_IN, DVB_SUB, EMBEDDED, SCC, SRT, TELETEXT, TTML, WEBVTT
@@ -429,20 +429,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     BufferModel =>
                       'MULTIPLEX',    # values: MULTIPLEX, NONE; OPTIONAL
                     DvbNitSettings => {
-                      NetworkId => 1,    # max: 65535; OPTIONAL
-                      NetworkName =>
-                        'My__stringMin1Max256',    # min: 1, max: 256; OPTIONAL
-                      NitInterval => 1,            # min: 25, max: 10000
+                      NetworkId   => 1,                       # max: 65535
+                      NetworkName => 'My__stringMin1Max256',  # min: 1, max: 256
+                      NitInterval => 1,    # min: 25, max: 10000
 
                     },    # OPTIONAL
                     DvbSdtSettings => {
                       OutputSdt => 'SDT_FOLLOW'
                       , # values: SDT_FOLLOW, SDT_FOLLOW_IF_PRESENT, SDT_MANUAL, SDT_NONE; OPTIONAL
                       SdtInterval => 1,    # min: 25, max: 2000; OPTIONAL
-                      ServiceName =>
-                        'My__stringMin1Max256',    # min: 1, max: 256; OPTIONAL
+                      ServiceName => 'My__stringMin1Max256',  # min: 1, max: 256
                       ServiceProviderName =>
-                        'My__stringMin1Max256',    # min: 1, max: 256; OPTIONAL
+                        'My__stringMin1Max256',               # min: 1, max: 256
                     },    # OPTIONAL
                     DvbSubPids => [
                       1, ...    # min: 32, max: 8182; OPTIONAL
@@ -470,7 +468,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     PmtInterval        => 1,      # max: 1000; OPTIONAL
                     PmtPid             => 1,      # min: 32, max: 8182; OPTIONAL
                     PrivateMetadataPid => 1,      # min: 32, max: 8182; OPTIONAL
-                    ProgramNumber      => 1,      # max: 65535; OPTIONAL
+                    ProgramNumber      => 1,      # max: 65535
                     RateMode           => 'VBR',  # values: VBR, CBR; OPTIONAL
                     Scte35Pid          => 1,      # min: 32, max: 8182; OPTIONAL
                     Scte35Source =>
@@ -481,7 +479,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     ,    # values: MAINTAIN_CADENCE, RESET_CADENCE; OPTIONAL
                     SegmentationTime  => 1,    # OPTIONAL
                     TimedMetadataPid  => 1,    # min: 32, max: 8182; OPTIONAL
-                    TransportStreamId => 1,    # max: 65535; OPTIONAL
+                    TransportStreamId => 1,    # max: 65535
                     VideoPid          => 1,    # min: 32, max: 8182; OPTIONAL
                   },    # OPTIONAL
                   M3u8Settings => {
@@ -497,14 +495,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     PmtInterval        => 1,    # max: 1000; OPTIONAL
                     PmtPid             => 1,    # min: 32, max: 8182; OPTIONAL
                     PrivateMetadataPid => 1,    # min: 32, max: 8182; OPTIONAL
-                    ProgramNumber      => 1,    # max: 65535; OPTIONAL
+                    ProgramNumber      => 1,    # max: 65535
                     Scte35Pid          => 1,    # min: 32, max: 8182; OPTIONAL
                     Scte35Source =>
                       'PASSTHROUGH',    # values: PASSTHROUGH, NONE; OPTIONAL
                     TimedMetadata =>
                       'PASSTHROUGH',    # values: PASSTHROUGH, NONE; OPTIONAL
                     TimedMetadataPid  => 1,    # min: 32, max: 8182; OPTIONAL
-                    TransportStreamId => 1,    # max: 65535; OPTIONAL
+                    TransportStreamId => 1,    # max: 65535
                     VideoPid          => 1,    # min: 32, max: 8182; OPTIONAL
                   },    # OPTIONAL
                   MovSettings => {
@@ -526,7 +524,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },    # OPTIONAL
                 },    # OPTIONAL
                 Extension      => 'My__string',
-                NameModifier   => 'My__stringMin1',    # min: 1; OPTIONAL
+                NameModifier   => 'My__stringMin1',    # min: 1
                 OutputSettings => {
                   HlsSettings => {
                     AudioGroupId       => 'My__string',
@@ -778,8 +776,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       , # values: NONE, FORCE_601, FORCE_709, FORCE_HDR10, FORCE_HLG_2020; OPTIONAL
                       Contrast      => 1,    # min: 1, max: 100; OPTIONAL
                       Hdr10Metadata => {
-                        MaxContentLightLevel      => 1,   # max: 65535; OPTIONAL
-                        MaxFrameAverageLightLevel => 1,   # max: 65535; OPTIONAL
+                        MaxContentLightLevel      => 1,   # max: 65535
+                        MaxFrameAverageLightLevel => 1,   # max: 65535
                         BluePrimaryX              => 1,   # max: 50000; OPTIONAL
                         BluePrimaryY              => 1,   # max: 50000; OPTIONAL
                         GreenPrimaryX             => 1,   # max: 50000; OPTIONAL
@@ -870,7 +868,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             AudioSelectorGroups => {
               'My__string' => {
                 AudioSelectorNames => [
-                  'My__stringMin1', ...    # min: 1; OPTIONAL
+                  'My__stringMin1', ...    # min: 1
                 ],
 
               },
@@ -974,8 +972,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ,    # values: FOLLOW, REC_601, REC_709, HDR10, HLG_2020; OPTIONAL
               ColorSpaceUsage => 'FORCE',    # values: FORCE, FALLBACK; OPTIONAL
               Hdr10Metadata   => {
-                MaxContentLightLevel      => 1,    # max: 65535; OPTIONAL
-                MaxFrameAverageLightLevel => 1,    # max: 65535; OPTIONAL
+                MaxContentLightLevel      => 1,    # max: 65535
+                MaxFrameAverageLightLevel => 1,    # max: 65535
                 BluePrimaryX              => 1,    # max: 50000; OPTIONAL
                 BluePrimaryY              => 1,    # max: 50000; OPTIONAL
                 GreenPrimaryX             => 1,    # max: 50000; OPTIONAL

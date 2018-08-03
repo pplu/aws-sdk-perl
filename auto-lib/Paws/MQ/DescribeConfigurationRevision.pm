@@ -39,6 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $ConfigurationId =
       $DescribeConfigurationRevisionResponse->ConfigurationId;
+    my $Created     = $DescribeConfigurationRevisionResponse->Created;
     my $Data        = $DescribeConfigurationRevisionResponse->Data;
     my $Description = $DescribeConfigurationRevisionResponse->Description;
 

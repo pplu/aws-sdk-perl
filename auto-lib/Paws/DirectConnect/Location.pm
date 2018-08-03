@@ -2,6 +2,7 @@ package Paws::DirectConnect::Location;
   use Moose;
   has LocationCode => (is => 'ro', isa => 'Str', request_name => 'locationCode', traits => ['NameInRequest']);
   has LocationName => (is => 'ro', isa => 'Str', request_name => 'locationName', traits => ['NameInRequest']);
+  has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest']);
 
 1;
 
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DirectConnect::Location object:
 
-  $service_obj->Method(Att1 => { LocationCode => $value, ..., LocationName => $value  });
+  $service_obj->Method(Att1 => { LocationCode => $value, ..., Region => $value  });
 
 =head3 Results returned from an API call
 
@@ -48,6 +49,15 @@ be requested.
 
   The name of the AWS Direct Connect location. The name includes the
 colocation partner name and the physical site of the lit building.
+
+
+=head2 Region => Str
+
+  The AWS region where the AWS Direct connect location is located.
+
+Example: us-east-1
+
+Default: None
 
 
 

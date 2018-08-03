@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Snowball::D
 =head1 DESCRIPTION
 
 Defines the real-time status of a Snowball's data transfer while the
-appliance is at AWS. This data is only available while a job has a
+device is at AWS. This data is only available while a job has a
 C<JobState> value of C<InProgress>, for both import and export jobs.
 
 =head1 ATTRIBUTES

@@ -65,8 +65,8 @@ retrieve.
 
 =head2 B<REQUIRED> ReservedNodeId => Str
 
-A string representing the node identifier for the Reserved Node to be
-exchanged.
+A string representing the node identifier for the DC1 Reserved Node to
+be exchanged.
 
 
 

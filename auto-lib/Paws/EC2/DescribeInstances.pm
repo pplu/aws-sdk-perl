@@ -35,14 +35,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
-      InstanceIds => [ 'MyString', ... ],   # OPTIONAL
-      MaxResults  => 1,                     # OPTIONAL
-      NextToken   => 'MyString',            # OPTIONAL
+      ],                           # OPTIONAL
+      InstanceIds => [
+        'MyString', ...            # OPTIONAL
+      ],                           # OPTIONAL
+      MaxResults => 1,             # OPTIONAL
+      NextToken  => 'MyString',    # OPTIONAL
     );
 
     # Results:
@@ -158,9 +162,9 @@ Scheduled Instance (C<spot> | C<scheduled>).
 =item *
 
 C<instance-state-code> - The state of the instance, as a 16-bit
-unsigned integer. The high byte is an opaque internal value and should
-be ignored. The low byte is set based on the state represented. The
-valid values are: 0 (pending), 16 (running), 32 (shutting-down), 48
+unsigned integer. The high byte is used for internal purposes and
+should be ignored. The low byte is set based on the state represented.
+The valid values are: 0 (pending), 16 (running), 32 (shutting-down), 48
 (terminated), 64 (stopping), and 80 (stopped).
 
 =item *
@@ -458,17 +462,17 @@ C<subnet-id> - The ID of the subnet for the instance.
 
 =item *
 
-C<tag>:I<key>=I<value> - The key/value combination of a tag assigned to
-the resource. Specify the key of the tag in the filter name and the
-value of the tag in the filter value. For example, for the tag
-Purpose=X, specify C<tag:Purpose> for the filter name and C<X> for the
-filter value.
+C<tag>:E<lt>keyE<gt> - The key/value combination of a tag assigned to
+the resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key C<Owner> and the value C<TeamA>, specify C<tag:Owner> for
+the filter name and C<TeamA> for the filter value.
 
 =item *
 
 C<tag-key> - The key of a tag assigned to the resource. Use this filter
-to find all resources assigned a tag with a specific key, regardless of
-the tag value.
+to find all resources that have a tag with a specific key, regardless
+of the tag value.
 
 =item *
 

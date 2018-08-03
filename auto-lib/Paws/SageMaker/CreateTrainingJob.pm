@@ -220,7 +220,7 @@ in the I<AWS Billing and Cost Management User Guide>.
 =head2 B<REQUIRED> TrainingJobName => Str
 
 The name of the training job. The name must be unique within an AWS
-Region in an AWS account. It appears in the Amazon SageMaker console.
+Region in an AWS account.
 
 
 
