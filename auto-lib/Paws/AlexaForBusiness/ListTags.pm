@@ -49,7 +49,7 @@ For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
 
 =head2 B<REQUIRED> Arn => Str
 
-The ARN of the specific resource for which to list tags. Required.
+The ARN of the specified resource for which to list tags.
 
 
 
