@@ -369,15 +369,7 @@ package Paws::API::Builder {
     is => 'ro',
     isa => 'HashRef',
     lazy => 1,
-    default => sub {
-      my $self = shift;
-      my $ret = {};
-      foreach my $shape_name ($self->shapes) {
-        my $shape = $self->shape($shape_name);
-        $ret->{ $shape_name } = $shape if (defined $shape->{ exception });
-      }
-      return $ret;
-    },
+    builder => 'build_exception_shapes',
     traits => [ 'Hash' ],
     handles => {
       exception_shape => 'get',
@@ -385,6 +377,16 @@ package Paws::API::Builder {
       is_exception_shape => 'exists',
     }
   );
+
+  sub build_exception_shapes {
+    my $self = shift;
+    my $ret = {};
+    foreach my $shape_name ($self->shapes) {
+      my $shape = $self->shape($shape_name);
+      $ret->{ $shape_name } = $shape if (defined $shape->{ exception });
+    }
+    return $ret;
+  }
 
   sub capitalize {
     my ($self, $shape) = @_;

@@ -74,6 +74,7 @@ sub get_builder {
   # Map classes to be generated with special builders
   my $overrides = {
     'Paws::EC2'        => 'EC2',
+    'Paws::Kinesis'    => 'Kinesis',
   };
   $type = $overrides->{ $api } if (defined $overrides->{ $api });
   $type =~ s/\-//;
