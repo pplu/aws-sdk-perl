@@ -1,6 +1,7 @@
 
 package Paws::DynamoDB::ListBackups;
   use Moose;
+  has BackupType => (is => 'ro', isa => 'Str');
   has ExclusiveStartBackupArn => (is => 'ro', isa => 'Str');
   has Limit => (is => 'ro', isa => 'Int');
   has TableName => (is => 'ro', isa => 'Str');
@@ -32,6 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $dynamodb = Paws->service('DynamoDB');
     my $ListBackupsOutput = $dynamodb->ListBackups(
+      BackupType              => 'USER',                   # OPTIONAL
       ExclusiveStartBackupArn => 'MyBackupArn',            # OPTIONAL
       Limit                   => 1,                        # OPTIONAL
       TableName               => 'MyTableName',            # OPTIONAL
@@ -50,6 +52,31 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dyn
 
 =head1 ATTRIBUTES
 
+
+=head2 BackupType => Str
+
+The backups from the table specified by BackupType are listed.
+
+Where BackupType can be:
+
+=over
+
+=item *
+
+C<USER> - On demand backup created by you.
+
+=item *
+
+C<SYSTEM> - On demand backup automatically created by DynamoDB.
+
+=item *
+
+C<ALL> - All types of on demand backups (USER and SYSTEM).
+
+=back
+
+
+Valid values are: C<"USER">, C<"SYSTEM">, C<"ALL">
 
 =head2 ExclusiveStartBackupArn => Str
 

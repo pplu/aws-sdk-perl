@@ -1108,6 +1108,8 @@ value.
 
 =over
 
+=item [BackupType => Str]
+
 =item [ExclusiveStartBackupArn => Str]
 
 =item [Limit => Int]
@@ -1940,9 +1942,9 @@ in the Amazon DynamoDB Developer Guide.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 ListAllBackups(sub { },[ExclusiveStartBackupArn => Str, Limit => Int, TableName => Str, TimeRangeLowerBound => Str, TimeRangeUpperBound => Str])
+=head2 ListAllBackups(sub { },[BackupType => Str, ExclusiveStartBackupArn => Str, Limit => Int, TableName => Str, TimeRangeLowerBound => Str, TimeRangeUpperBound => Str])
 
-=head2 ListAllBackups([ExclusiveStartBackupArn => Str, Limit => Int, TableName => Str, TimeRangeLowerBound => Str, TimeRangeUpperBound => Str])
+=head2 ListAllBackups([BackupType => Str, ExclusiveStartBackupArn => Str, Limit => Int, TableName => Str, TimeRangeLowerBound => Str, TimeRangeUpperBound => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

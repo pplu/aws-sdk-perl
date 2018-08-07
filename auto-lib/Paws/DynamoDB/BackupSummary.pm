@@ -2,9 +2,11 @@ package Paws::DynamoDB::BackupSummary;
   use Moose;
   has BackupArn => (is => 'ro', isa => 'Str');
   has BackupCreationDateTime => (is => 'ro', isa => 'Str');
+  has BackupExpiryDateTime => (is => 'ro', isa => 'Str');
   has BackupName => (is => 'ro', isa => 'Str');
   has BackupSizeBytes => (is => 'ro', isa => 'Int');
   has BackupStatus => (is => 'ro', isa => 'Str');
+  has BackupType => (is => 'ro', isa => 'Str');
   has TableArn => (is => 'ro', isa => 'Str');
   has TableId => (is => 'ro', isa => 'Str');
   has TableName => (is => 'ro', isa => 'Str');
@@ -53,6 +55,13 @@ Contains details for the backup.
   Time at which the backup was created.
 
 
+=head2 BackupExpiryDateTime => Str
+
+  Time at which the automatic on demand backup created by DynamoDB will
+expire. This C<SYSTEM> on demand backup expires automatically 35 days
+after its creation.
+
+
 =head2 BackupName => Str
 
   Name of the specified backup.
@@ -67,6 +76,24 @@ Contains details for the backup.
 
   Backup can be in one of the following states: CREATING, ACTIVE,
 DELETED.
+
+
+=head2 BackupType => Str
+
+  BackupType:
+
+=over
+
+=item *
+
+C<USER> - On demand backup created by you.
+
+=item *
+
+C<SYSTEM> - On demand backup automatically created by DynamoDB.
+
+=back
+
 
 
 =head2 TableArn => Str
