@@ -16,6 +16,7 @@ package Paws::RedShift::Cluster;
   has ClusterVersion => (is => 'ro', isa => 'Str');
   has DBName => (is => 'ro', isa => 'Str');
   has ElasticIpStatus => (is => 'ro', isa => 'Paws::RedShift::ElasticIpStatus');
+  has ElasticResizeNumberOfNodeOptions => (is => 'ro', isa => 'Str');
   has Encrypted => (is => 'ro', isa => 'Bool');
   has Endpoint => (is => 'ro', isa => 'Paws::RedShift::Endpoint');
   has EnhancedVpcRouting => (is => 'ro', isa => 'Bool');
@@ -234,6 +235,12 @@ created by default.
 =head2 ElasticIpStatus => L<Paws::RedShift::ElasticIpStatus>
 
   The status of the elastic IP (EIP) address.
+
+
+=head2 ElasticResizeNumberOfNodeOptions => Str
+
+  Indicates the number of nodes the cluster can be resized to with the
+elastic resize method.
 
 
 =head2 Encrypted => Bool
