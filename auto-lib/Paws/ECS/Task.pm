@@ -149,7 +149,9 @@ C<PENDING> state).
 
 =head2 DesiredStatus => Str
 
-  The desired status of the task.
+  The desired status of the task. For more information, see Task
+Lifecycle
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_life_cycle.html).
 
 
 =head2 ExecutionStoppedAt => Str
@@ -181,7 +183,9 @@ that exist in the container image.
 
 =head2 LastStatus => Str
 
-  The last known status of the task.
+  The last known status of the task. For more information, see Task
+Lifecycle
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_life_cycle.html).
 
 
 =head2 LaunchType => Str

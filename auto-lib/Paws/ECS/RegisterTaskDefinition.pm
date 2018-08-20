@@ -45,7 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             'Command'   => [ 'sleep', 360 ],
             'Cpu'       => 10,
-            'Essential' => true,
+            'Essential' => 1,
             'Image'     => 'busybox',
             'Memory'    => 10,
             'Name'      => 'sleep'

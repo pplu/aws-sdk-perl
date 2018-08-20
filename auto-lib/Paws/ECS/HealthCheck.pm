@@ -55,9 +55,8 @@ C<[ "CMD-SHELL", "curl -f http://localhost/ || exit 1" ]>
 An exit code of 0 indicates success, and non-zero exit code indicates
 failure. For more information, see C<HealthCheck> in the Create a
 container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
-section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/).
+(https://docs.docker.com/engine/api/v1.35/#create-a-container) section
+of the Docker Remote API (https://docs.docker.com/engine/api/v1.35/).
 
 
 =head2 Interval => Int

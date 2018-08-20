@@ -54,9 +54,8 @@ C<capabilities> is supported but the C<add> parameter is not supported.
 
   Any host devices to expose to the container. This parameter maps to
 C<Devices> in the Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
-section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
+(https://docs.docker.com/engine/api/v1.35/#create-a-container) section
+of the Docker Remote API (https://docs.docker.com/engine/api/v1.35/)
 and the C<--device> option to docker run
 (https://docs.docker.com/engine/reference/run/).
 

@@ -38,7 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       {
         'Cluster'           => 'default',
         'ContainerInstance' => 'container_instance_UUID',
-        'Force'             => true
+        'Force'             => 1
       }
     );
 

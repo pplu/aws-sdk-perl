@@ -595,6 +595,10 @@ services may be cleaned up and purged from Amazon ECS record keeping,
 and DescribeServices API operations on those services return a
 C<ServiceNotFoundException> error.
 
+If you attempt to create a new service with the same name as an
+existing service in either C<ACTIVE> or C<DRAINING> status, you will
+receive an error.
+
 
 =head2 DeregisterContainerInstance
 

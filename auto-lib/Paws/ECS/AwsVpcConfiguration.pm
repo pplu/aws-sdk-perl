@@ -41,7 +41,7 @@ An object representing the networking details for a task or service.
 =head2 AssignPublicIp => Str
 
   Whether the task's elastic network interface receives a public IP
-address.
+address. The default value is C<DISABLED>.
 
 
 =head2 SecurityGroups => ArrayRef[Str|Undef]

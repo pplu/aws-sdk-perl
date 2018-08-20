@@ -50,9 +50,8 @@ page.
   The Linux capabilities for the container that have been added to the
 default configuration provided by Docker. This parameter maps to
 C<CapAdd> in the Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
-section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
+(https://docs.docker.com/engine/api/v1.35/#create-a-container) section
+of the Docker Remote API (https://docs.docker.com/engine/api/v1.35/)
 and the C<--cap-add> option to docker run
 (https://docs.docker.com/engine/reference/run/).
 
@@ -75,9 +74,8 @@ Valid values: C<"ALL" | "AUDIT_CONTROL" | "AUDIT_WRITE" |
   The Linux capabilities for the container that have been removed from
 the default configuration provided by Docker. This parameter maps to
 C<CapDrop> in the Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
-section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
+(https://docs.docker.com/engine/api/v1.35/#create-a-container) section
+of the Docker Remote API (https://docs.docker.com/engine/api/v1.35/)
 and the C<--cap-drop> option to docker run
 (https://docs.docker.com/engine/reference/run/).
 

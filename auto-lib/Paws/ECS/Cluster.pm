@@ -74,7 +74,8 @@ C<arn:aws:ecs:I<region>:I<012345678910>:cluster/I<test> >..
 
 =head2 RegisteredContainerInstancesCount => Int
 
-  The number of container instances registered into the cluster.
+  The number of container instances registered into the cluster. This
+includes container instances in both C<ACTIVE> and C<DRAINING> status.
 
 
 =head2 RunningTasksCount => Int
