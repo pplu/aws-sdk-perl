@@ -17,6 +17,7 @@ package Paws::ES::ElasticsearchDomainStatus;
   has LogPublishingOptions => (is => 'ro', isa => 'Paws::ES::LogPublishingOptions');
   has Processing => (is => 'ro', isa => 'Bool');
   has SnapshotOptions => (is => 'ro', isa => 'Paws::ES::SnapshotOptions');
+  has UpgradeProcessing => (is => 'ro', isa => 'Bool');
   has VPCOptions => (is => 'ro', isa => 'Paws::ES::VPCDerivedInfo');
 1;
 
@@ -156,6 +157,13 @@ the configuration is active.
 =head2 SnapshotOptions => L<Paws::ES::SnapshotOptions>
 
   Specifies the status of the C<SnapshotOptions>
+
+
+=head2 UpgradeProcessing => Bool
+
+  The status of an Elasticsearch domain version upgrade. C<True> if
+Amazon Elasticsearch Service is undergoing a version upgrade. C<False>
+if the configuration is active.
 
 
 =head2 VPCOptions => L<Paws::ES::VPCDerivedInfo>

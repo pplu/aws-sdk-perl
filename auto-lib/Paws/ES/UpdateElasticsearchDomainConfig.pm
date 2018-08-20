@@ -67,7 +67,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'INDEX_SLOW_LOGS' => {
           CloudWatchLogsLogGroupArn => 'MyCloudWatchLogsLogGroupArn', # OPTIONAL
           Enabled                   => 1,                             # OPTIONAL
-        },    # key: values: INDEX_SLOW_LOGS, SEARCH_SLOW_LOGS
+        }, # key: values: INDEX_SLOW_LOGS, SEARCH_SLOW_LOGS, ES_APPLICATION_LOGS
       },    # OPTIONAL
       SnapshotOptions => {
         AutomatedSnapshotStartHour => 1,    # OPTIONAL

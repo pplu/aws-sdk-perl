@@ -64,6 +64,21 @@ package Paws::ES;
     my $call_object = $self->new_with_coercions('Paws::ES::DescribeReservedElasticsearchInstances', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetCompatibleElasticsearchVersions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::GetCompatibleElasticsearchVersions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetUpgradeHistory {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::GetUpgradeHistory', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetUpgradeStatus {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::GetUpgradeStatus', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListDomainNames {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ES::ListDomainNames', @_);
@@ -97,6 +112,11 @@ package Paws::ES;
   sub UpdateElasticsearchDomainConfig {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ES::UpdateElasticsearchDomainConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpgradeElasticsearchDomain {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::UpgradeElasticsearchDomain', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -148,7 +168,7 @@ package Paws::ES;
   }
 
 
-  sub operations { qw/AddTags CreateElasticsearchDomain DeleteElasticsearchDomain DeleteElasticsearchServiceRole DescribeElasticsearchDomain DescribeElasticsearchDomainConfig DescribeElasticsearchDomains DescribeElasticsearchInstanceTypeLimits DescribeReservedElasticsearchInstanceOfferings DescribeReservedElasticsearchInstances ListDomainNames ListElasticsearchInstanceTypes ListElasticsearchVersions ListTags PurchaseReservedElasticsearchInstanceOffering RemoveTags UpdateElasticsearchDomainConfig / }
+  sub operations { qw/AddTags CreateElasticsearchDomain DeleteElasticsearchDomain DeleteElasticsearchServiceRole DescribeElasticsearchDomain DescribeElasticsearchDomainConfig DescribeElasticsearchDomains DescribeElasticsearchInstanceTypeLimits DescribeReservedElasticsearchInstanceOfferings DescribeReservedElasticsearchInstances GetCompatibleElasticsearchVersions GetUpgradeHistory GetUpgradeStatus ListDomainNames ListElasticsearchInstanceTypes ListElasticsearchVersions ListTags PurchaseReservedElasticsearchInstanceOffering RemoveTags UpdateElasticsearchDomainConfig UpgradeElasticsearchDomain / }
 
 1;
 
@@ -409,6 +429,62 @@ Returns information about reserved Elasticsearch instances for this
 account.
 
 
+=head2 GetCompatibleElasticsearchVersions
+
+=over
+
+=item [DomainName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ES::GetCompatibleElasticsearchVersions>
+
+Returns: a L<Paws::ES::GetCompatibleElasticsearchVersionsResponse> instance
+
+Returns a list of upgrade compatible Elastisearch versions. You can
+optionally pass a C< DomainName > to get all upgrade compatible
+Elasticsearch versions for that specific domain.
+
+
+=head2 GetUpgradeHistory
+
+=over
+
+=item DomainName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ES::GetUpgradeHistory>
+
+Returns: a L<Paws::ES::GetUpgradeHistoryResponse> instance
+
+Retrieves the complete history of the last 10 upgrades that were
+performed on the domain.
+
+
+=head2 GetUpgradeStatus
+
+=over
+
+=item DomainName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ES::GetUpgradeStatus>
+
+Returns: a L<Paws::ES::GetUpgradeStatusResponse> instance
+
+Retrieves the latest status of the last upgrade or upgrade eligibility
+check that was performed on the domain.
+
+
 =head2 ListDomainNames
 
 =over
@@ -554,6 +630,27 @@ Returns: a L<Paws::ES::UpdateElasticsearchDomainConfigResponse> instance
 Modifies the cluster configuration of the specified Elasticsearch
 domain, setting as setting the instance type and the number of
 instances.
+
+
+=head2 UpgradeElasticsearchDomain
+
+=over
+
+=item DomainName => Str
+
+=item TargetVersion => Str
+
+=item [PerformCheckOnly => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ES::UpgradeElasticsearchDomain>
+
+Returns: a L<Paws::ES::UpgradeElasticsearchDomainResponse> instance
+
+Allows you to either upgrade your domain or perform an Upgrade
+eligibility check to a compatible Elasticsearch version.
 
 
 
