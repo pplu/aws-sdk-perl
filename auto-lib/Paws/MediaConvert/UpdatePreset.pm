@@ -248,20 +248,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Bitrate        => 1,           # max: 2147483647; OPTIONAL
             BufferModel    => 'MULTIPLEX', # values: MULTIPLEX, NONE; OPTIONAL
             DvbNitSettings => {
-              NetworkId => 1,              # max: 65535
-              NetworkName =>
-                'My__stringMin1Max256',    # min: 1, max: 256; OPTIONAL
-              NitInterval => 1,            # min: 25, max: 10000
+              NetworkId   => 1,                         # max: 65535
+              NetworkName => 'My__stringMin1Max256',    # min: 1, max: 256
+              NitInterval => 1,                         # min: 25, max: 10000
 
             },    # OPTIONAL
             DvbSdtSettings => {
               OutputSdt => 'SDT_FOLLOW'
               , # values: SDT_FOLLOW, SDT_FOLLOW_IF_PRESENT, SDT_MANUAL, SDT_NONE; OPTIONAL
               SdtInterval => 1,    # min: 25, max: 2000; OPTIONAL
-              ServiceName =>
-                'My__stringMin1Max256',    # min: 1, max: 256; OPTIONAL
-              ServiceProviderName =>
-                'My__stringMin1Max256',    # min: 1, max: 256; OPTIONAL
+              ServiceName         => 'My__stringMin1Max256',  # min: 1, max: 256
+              ServiceProviderName => 'My__stringMin1Max256',  # min: 1, max: 256
             },    # OPTIONAL
             DvbSubPids => [
               1, ...    # min: 32, max: 8182; OPTIONAL
@@ -357,6 +354,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               , # values: AUTO, LEVEL_1, LEVEL_1_1, LEVEL_1_2, LEVEL_1_3, LEVEL_2, LEVEL_2_1, LEVEL_2_2, LEVEL_3, LEVEL_3_1, LEVEL_3_2, LEVEL_4, LEVEL_4_1, LEVEL_4_2, LEVEL_5, LEVEL_5_1, LEVEL_5_2; OPTIONAL
               CodecProfile => 'BASELINE'
               , # values: BASELINE, HIGH, HIGH_10BIT, HIGH_422, HIGH_422_10BIT, MAIN; OPTIONAL
+              DynamicSubGop => 'ADAPTIVE',  # values: ADAPTIVE, STATIC; OPTIONAL
               EntropyEncoding => 'CABAC',  # values: CABAC, CAVLC; OPTIONAL
               FieldEncoding   => 'PAFF',   # values: PAFF, FORCE_FIELD; OPTIONAL
               FlickerAdaptiveQuantization =>
@@ -385,7 +383,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ParNumerator   => 1,    # min: 1, max: 2147483647; OPTIONAL
               QualityTuningLevel => 'SINGLE_PASS'
               ,   # values: SINGLE_PASS, SINGLE_PASS_HQ, MULTI_PASS_HQ; OPTIONAL
-              RateControlMode => 'VBR',    # values: VBR, CBR; OPTIONAL
+              QvbrSettings => {
+                QvbrQualityLevel  => 1,   # min: 1, max: 10
+                MaxAverageBitrate => 1,   # min: 1000, max: 1152000000; OPTIONAL
+              },    # OPTIONAL
+              RateControlMode => 'VBR',    # values: VBR, CBR, QVBR; OPTIONAL
               RepeatPps => 'DISABLED',     # values: DISABLED, ENABLED; OPTIONAL
               SceneChangeDetect =>
                 'DISABLED',                # values: DISABLED, ENABLED; OPTIONAL
@@ -411,6 +413,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               , # values: AUTO, LEVEL_1, LEVEL_2, LEVEL_2_1, LEVEL_3, LEVEL_3_1, LEVEL_4, LEVEL_4_1, LEVEL_5, LEVEL_5_1, LEVEL_5_2, LEVEL_6, LEVEL_6_1, LEVEL_6_2; OPTIONAL
               CodecProfile => 'MAIN_MAIN'
               , # values: MAIN_MAIN, MAIN_HIGH, MAIN10_MAIN, MAIN10_HIGH, MAIN_422_8BIT_MAIN, MAIN_422_8BIT_HIGH, MAIN_422_10BIT_MAIN, MAIN_422_10BIT_HIGH; OPTIONAL
+              DynamicSubGop => 'ADAPTIVE',  # values: ADAPTIVE, STATIC; OPTIONAL
               FlickerAdaptiveQuantization =>
                 'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
               FramerateControl => 'INITIALIZE_FROM_SOURCE'
@@ -437,7 +440,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ParNumerator   => 1,    # min: 1, max: 2147483647; OPTIONAL
               QualityTuningLevel => 'SINGLE_PASS'
               ,   # values: SINGLE_PASS, SINGLE_PASS_HQ, MULTI_PASS_HQ; OPTIONAL
-              RateControlMode => 'VBR',    # values: VBR, CBR; OPTIONAL
+              QvbrSettings => {
+                QvbrQualityLevel  => 1,   # min: 1, max: 10
+                MaxAverageBitrate => 1,   # min: 1000, max: 1466400000; OPTIONAL
+              },    # OPTIONAL
+              RateControlMode => 'VBR',    # values: VBR, CBR, QVBR; OPTIONAL
               SampleAdaptiveOffsetFilterMode =>
                 'DEFAULT',    # values: DEFAULT, ADAPTIVE, OFF; OPTIONAL
               SceneChangeDetect =>
@@ -461,7 +468,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Bitrate => 1,    # min: 1000, max: 288000000; OPTIONAL
               CodecLevel =>
                 'AUTO',    # values: AUTO, LOW, MAIN, HIGH1440, HIGH; OPTIONAL
-              CodecProfile => 'MAIN',    # values: MAIN, PROFILE_422; OPTIONAL
+              CodecProfile  => 'MAIN',     # values: MAIN, PROFILE_422; OPTIONAL
+              DynamicSubGop => 'ADAPTIVE', # values: ADAPTIVE, STATIC; OPTIONAL
               FramerateControl => 'INITIALIZE_FROM_SOURCE'
               ,    # values: INITIALIZE_FROM_SOURCE, SPECIFIED; OPTIONAL
               FramerateConversionAlgorithm => 'DUPLICATE_DROP'
@@ -521,20 +529,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           AntiAlias     => 'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
           ColorMetadata => 'IGNORE',      # values: IGNORE, INSERT; OPTIONAL
           Crop          => {
-            Height => 1,                  # min: -2147483648, max: 2147483647
-            Width  => 1,                  # min: -2147483648, max: 2147483647
-            X      => 1,                  # min: -2147483648, max: 2147483647
-            Y      => 1,                  # min: -2147483648, max: 2147483647
+            Height => 1,                  # min: 2, max: 2147483647
+            Width  => 1,                  # min: 2, max: 2147483647
+            X      => 1,                  # max: 2147483647; OPTIONAL
+            Y      => 1,                  # max: 2147483647; OPTIONAL
 
           },    # OPTIONAL
           DropFrameTimecode => 'DISABLED', # values: DISABLED, ENABLED; OPTIONAL
           FixedAfd          => 1,          # max: 15; OPTIONAL
           Height            => 1,          # min: 32, max: 2160; OPTIONAL
           Position          => {
-            Height => 1,                   # min: -2147483648, max: 2147483647
-            Width  => 1,                   # min: -2147483648, max: 2147483647
-            X      => 1,                   # min: -2147483648, max: 2147483647
-            Y      => 1,                   # min: -2147483648, max: 2147483647
+            Height => 1,                   # min: 2, max: 2147483647
+            Width  => 1,                   # min: 2, max: 2147483647
+            X      => 1,                   # max: 2147483647; OPTIONAL
+            Y      => 1,                   # max: 2147483647; OPTIONAL
 
           },    # OPTIONAL
           RespondToAfd => 'NONE', # values: NONE, RESPOND, PASSTHROUGH; OPTIONAL

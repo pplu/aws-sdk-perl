@@ -41,24 +41,24 @@ Use Rectangle to identify a specific area of the video frame.
 
 =head2 B<REQUIRED> Height => Int
 
-  Height of rectangle in pixels.
+  Height of rectangle in pixels. Specify only even numbers.
 
 
 =head2 B<REQUIRED> Width => Int
 
-  Width of rectangle in pixels.
+  Width of rectangle in pixels. Specify only even numbers.
 
 
 =head2 B<REQUIRED> X => Int
 
   The distance, in pixels, between the rectangle and the left edge of the
-video frame.
+video frame. Specify only even numbers.
 
 
 =head2 B<REQUIRED> Y => Int
 
   The distance, in pixels, between the rectangle and the top edge of the
-video frame.
+video frame. Specify only even numbers.
 
 
 

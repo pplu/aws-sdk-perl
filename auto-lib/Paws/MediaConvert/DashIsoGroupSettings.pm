@@ -8,6 +8,7 @@ package Paws::MediaConvert::DashIsoGroupSettings;
   has MinBufferTime => (is => 'ro', isa => 'Int', request_name => 'minBufferTime', traits => ['NameInRequest']);
   has SegmentControl => (is => 'ro', isa => 'Str', request_name => 'segmentControl', traits => ['NameInRequest']);
   has SegmentLength => (is => 'ro', isa => 'Int', request_name => 'segmentLength', traits => ['NameInRequest'], required => 1);
+  has WriteSegmentTimelineInRepresentation => (is => 'ro', isa => 'Str', request_name => 'writeSegmentTimelineInRepresentation', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +28,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConvert::DashIsoGroupSettings object:
 
-  $service_obj->Method(Att1 => { BaseUrl => $value, ..., SegmentLength => $value  });
+  $service_obj->Method(Att1 => { BaseUrl => $value, ..., WriteSegmentTimelineInRepresentation => $value  });
 
 =head3 Results returned from an API call
 
@@ -98,6 +99,13 @@ end on the next keyframe after this number of seconds, so actual
 segment length may be longer. When Emit Single File is checked, the
 segmentation is internal to a single output file and it does not cause
 the creation of many output files as in other output types.
+
+
+=head2 WriteSegmentTimelineInRepresentation => Str
+
+  When ENABLED, segment durations are indicated in the manifest using
+SegmentTimeline and SegmentTimeline will be promoted down into
+Representation from AdaptationSet.
 
 
 

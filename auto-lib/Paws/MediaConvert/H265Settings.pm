@@ -5,6 +5,7 @@ package Paws::MediaConvert::H265Settings;
   has Bitrate => (is => 'ro', isa => 'Int', request_name => 'bitrate', traits => ['NameInRequest']);
   has CodecLevel => (is => 'ro', isa => 'Str', request_name => 'codecLevel', traits => ['NameInRequest']);
   has CodecProfile => (is => 'ro', isa => 'Str', request_name => 'codecProfile', traits => ['NameInRequest']);
+  has DynamicSubGop => (is => 'ro', isa => 'Str', request_name => 'dynamicSubGop', traits => ['NameInRequest']);
   has FlickerAdaptiveQuantization => (is => 'ro', isa => 'Str', request_name => 'flickerAdaptiveQuantization', traits => ['NameInRequest']);
   has FramerateControl => (is => 'ro', isa => 'Str', request_name => 'framerateControl', traits => ['NameInRequest']);
   has FramerateConversionAlgorithm => (is => 'ro', isa => 'Str', request_name => 'framerateConversionAlgorithm', traits => ['NameInRequest']);
@@ -25,6 +26,7 @@ package Paws::MediaConvert::H265Settings;
   has ParDenominator => (is => 'ro', isa => 'Int', request_name => 'parDenominator', traits => ['NameInRequest']);
   has ParNumerator => (is => 'ro', isa => 'Int', request_name => 'parNumerator', traits => ['NameInRequest']);
   has QualityTuningLevel => (is => 'ro', isa => 'Str', request_name => 'qualityTuningLevel', traits => ['NameInRequest']);
+  has QvbrSettings => (is => 'ro', isa => 'Paws::MediaConvert::H265QvbrSettings', request_name => 'qvbrSettings', traits => ['NameInRequest']);
   has RateControlMode => (is => 'ro', isa => 'Str', request_name => 'rateControlMode', traits => ['NameInRequest']);
   has SampleAdaptiveOffsetFilterMode => (is => 'ro', isa => 'Str', request_name => 'sampleAdaptiveOffsetFilterMode', traits => ['NameInRequest']);
   has SceneChangeDetect => (is => 'ro', isa => 'Str', request_name => 'sceneChangeDetect', traits => ['NameInRequest']);
@@ -99,6 +101,16 @@ multiple of 1000.
   
 
 
+=head2 DynamicSubGop => Str
+
+  Choose Adaptive to improve subjective video quality for high-motion
+content. This will cause the service to use fewer B-frames (which infer
+information based on other frames) for high-motion portions of the
+video and more B-frames for low-motion portions. The maximum number of
+B-frames is limited by the value you provide for the setting B frames
+between reference frames (numberBFramesBetweenReferenceFrames).
+
+
 =head2 FlickerAdaptiveQuantization => Str
 
   
@@ -168,7 +180,8 @@ megabits as 5000000.
 
 =head2 MaxBitrate => Int
 
-  Maximum bitrate in bits/second.
+  Maximum bitrate in bits/second. For example, enter five megabits per
+second as 5000000. Required when Rate control mode is QVBR.
 
 
 =head2 MinIInterval => Int
@@ -211,6 +224,14 @@ requested if using B-frames and/or interlaced encoding.
 =head2 QualityTuningLevel => Str
 
   
+
+
+=head2 QvbrSettings => L<Paws::MediaConvert::H265QvbrSettings>
+
+  Settings for quality-defined variable bitrate encoding with the H.265
+codec. Required when you set Rate control mode to QVBR. Not valid when
+you set Rate control mode to a value other than QVBR, or when you don't
+define Rate control mode.
 
 
 =head2 RateControlMode => Str
