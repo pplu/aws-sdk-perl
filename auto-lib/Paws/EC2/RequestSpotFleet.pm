@@ -133,7 +133,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               'NetworkInterfaces' => [
 
                 {
-                  'AssociatePublicIpAddress' => true,
+                  'AssociatePublicIpAddress' => 1,
                   'DeviceIndex'              => 0,
                   'Groups'                   => ['sg-1a2b3c4d'],
                   'SubnetId'                 => 'subnet-1a2b3c4d'

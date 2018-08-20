@@ -38,7 +38,7 @@ This class has no description
 
 =head2 GatewayId => Str
 
-  The ID of the virtual private gateway (VGW).
+  The ID of the virtual private gateway.
 
 
 

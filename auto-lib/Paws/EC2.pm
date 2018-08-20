@@ -1860,18 +1860,21 @@ Each argument is described in detail in: L<Paws::EC2::AllocateAddress>
 
 Returns: a L<Paws::EC2::AllocateAddressResult> instance
 
-Allocates an Elastic IP address.
+Allocates an Elastic IP address to your AWS account. After you allocate
+the Elastic IP address you can associate it with an instance or network
+interface. After you release an Elastic IP address, it is released to
+the IP address pool and can be allocated to a different AWS account.
+
+[EC2-VPC] If you release an Elastic IP address, you might be able to
+recover it. You cannot recover an Elastic IP address that you released
+after it is allocated to another AWS account. You cannot recover an
+Elastic IP address for EC2-Classic. To attempt to recover an Elastic IP
+address that you released, specify it in this operation.
 
 An Elastic IP address is for use either in the EC2-Classic platform or
 in a VPC. By default, you can allocate 5 Elastic IP addresses for
 EC2-Classic per region and 5 Elastic IP addresses for EC2-VPC per
 region.
-
-If you release an Elastic IP address for use in a VPC, you might be
-able to recover it. To recover an Elastic IP address that you released,
-specify it in the C<Address> parameter. Note that you cannot recover an
-Elastic IP address that you released after it is allocated to another
-AWS account.
 
 For more information, see Elastic IP Addresses
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
@@ -1993,7 +1996,8 @@ Each argument is described in detail in: L<Paws::EC2::AssociateAddress>
 Returns: a L<Paws::EC2::AssociateAddressResult> instance
 
 Associates an Elastic IP address with an instance or a network
-interface.
+interface. Before you can use an Elastic IP address, you must allocate
+it to your account.
 
 An Elastic IP address is for use in either the EC2-Classic platform or
 in a VPC. For more information, see Elastic IP Addresses
@@ -2097,7 +2101,7 @@ action returns an association ID, which you need in order to
 disassociate the route table from the subnet later. A route table can
 be associated with multiple subnets.
 
-For more information about route tables, see Route Tables
+For more information, see Route Tables
 (http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
@@ -2200,9 +2204,9 @@ Each argument is described in detail in: L<Paws::EC2::AttachInternetGateway>
 
 Returns: nothing
 
-Attaches an Internet gateway to a VPC, enabling connectivity between
-the Internet and the VPC. For more information about your VPC and
-Internet gateway, see the Amazon Virtual Private Cloud User Guide
+Attaches an internet gateway to a VPC, enabling connectivity between
+the internet and the VPC. For more information about your VPC and
+internet gateway, see the Amazon Virtual Private Cloud User Guide
 (http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/).
 
 
@@ -2836,12 +2840,12 @@ components of a default VPC, see Default VPC and Default Subnets
 in the I<Amazon Virtual Private Cloud User Guide>. You cannot specify
 the components of the default VPC yourself.
 
-You can create a default VPC if you deleted your previous default VPC.
-You cannot have more than one default VPC per region.
+iIf you deleted your previous default VPC, you can create a default
+VPC. You cannot have more than one default VPC per Region.
 
 If your account supports EC2-Classic, you cannot use this action to
-create a default VPC in a region that supports EC2-Classic. If you want
-a default VPC in a region that supports EC2-Classic, see "I really want
+create a default VPC in a Region that supports EC2-Classic. If you want
+a default VPC in a Region that supports EC2-Classic, see "I really want
 a default VPC for my existing EC2 account. Is that possible?" in the
 Default VPCs FAQ (http://aws.amazon.com/vpc/faqs/#Default_VPCs).
 
@@ -2875,8 +2879,8 @@ information about the options, see RFC 2132
 C<domain-name-servers> - The IP addresses of up to four domain name
 servers, or AmazonProvidedDNS. The default DHCP option set specifies
 AmazonProvidedDNS. If specifying more than one domain name server,
-specify the IP addresses in a single parameter, separated by commas. If
-you want your instance to receive a custom DNS hostname as specified in
+specify the IP addresses in a single parameter, separated by commas.
+ITo have your instance to receive a custom DNS hostname as specified in
 C<domain-name>, you must set C<domain-name-servers> to a custom DNS
 server.
 
@@ -2915,10 +2919,10 @@ supported). For more information about these node types, see RFC 2132
 
 Your VPC automatically starts out with a set of DHCP options that
 includes only a DNS server that we provide (AmazonProvidedDNS). If you
-create a set of options, and if your VPC has an Internet gateway, make
+create a set of options, and if your VPC has an internet gateway, make
 sure to set the C<domain-name-servers> option either to
 C<AmazonProvidedDNS> or to a domain name server of your choice. For
-more information about DHCP options, see DHCP Options Sets
+more information, see DHCP Options Sets
 (http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
@@ -2940,9 +2944,9 @@ Each argument is described in detail in: L<Paws::EC2::CreateEgressOnlyInternetGa
 
 Returns: a L<Paws::EC2::CreateEgressOnlyInternetGatewayResult> instance
 
-[IPv6 only] Creates an egress-only Internet gateway for your VPC. An
-egress-only Internet gateway is used to enable outbound communication
-over IPv6 from instances in your VPC to the Internet, and prevents
+[IPv6 only] Creates an egress-only internet gateway for your VPC. An
+egress-only internet gateway is used to enable outbound communication
+over IPv6 from instances in your VPC to the internet, and prevents
 hosts outside of your VPC from initiating an IPv6 connection with your
 instance.
 
@@ -2999,10 +3003,6 @@ the I<Amazon Elastic Compute Cloud User Guide>.
 
 =over
 
-=item DeliverLogsPermissionArn => Str
-
-=item LogGroupName => Str
-
 =item ResourceIds => ArrayRef[Str|Undef]
 
 =item ResourceType => Str
@@ -3011,6 +3011,16 @@ the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item [ClientToken => Str]
 
+=item [DeliverLogsPermissionArn => Str]
+
+=item [DryRun => Bool]
+
+=item [LogDestination => Str]
+
+=item [LogDestinationType => Str]
+
+=item [LogGroupName => Str]
+
 
 =back
 
@@ -3018,16 +3028,20 @@ Each argument is described in detail in: L<Paws::EC2::CreateFlowLogs>
 
 Returns: a L<Paws::EC2::CreateFlowLogsResult> instance
 
-Creates one or more flow logs to capture IP traffic for a specific
-network interface, subnet, or VPC. Flow logs are delivered to a
-specified log group in Amazon CloudWatch Logs. If you specify a VPC or
-subnet in the request, a log stream is created in CloudWatch Logs for
-each network interface in the subnet or VPC. Log streams can include
-information about accepted and rejected traffic to a network interface.
-You can view the data in your log streams using Amazon CloudWatch Logs.
+Creates one or more flow logs to capture information about IP traffic
+for a specific network interface, subnet, or VPC.
 
-In your request, you must also specify an IAM role that has permission
-to publish logs to CloudWatch Logs.
+Flow log data for a monitored network interface is recorded as flow log
+records, which are log events consisting of fields that describe the
+traffic flow. For more information, see Flow Log Records
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html#flow-log-records)
+in the I<Amazon Virtual Private Cloud User Guide>.
+
+When publishing to CloudWatch Logs, flow log records are published to a
+log group, and each network interface has a unique log stream in the
+log group. When publishing to Amazon S3, flow log records for all of
+the monitored network interfaces are published to a single log file
+object that is stored in the specified bucket.
 
 For more information, see VPC Flow Logs
 (http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html)
@@ -3147,10 +3161,10 @@ Each argument is described in detail in: L<Paws::EC2::CreateInternetGateway>
 
 Returns: a L<Paws::EC2::CreateInternetGatewayResult> instance
 
-Creates an Internet gateway for use with a VPC. After creating the
-Internet gateway, you attach it to a VPC using AttachInternetGateway.
+Creates an internet gateway for use with a VPC. After creating the
+internet gateway, you attach it to a VPC using AttachInternetGateway.
 
-For more information about your VPC and Internet gateway, see the
+For more information about your VPC and internet gateway, see the
 Amazon Virtual Private Cloud User Guide
 (http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/).
 
@@ -3293,7 +3307,7 @@ Creates a network ACL in a VPC. Network ACLs provide an optional layer
 of security (in addition to security groups) for the instances in your
 VPC.
 
-For more information about network ACLs, see Network ACLs
+For more information, see Network ACLs
 (http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
@@ -3529,9 +3543,9 @@ Returns: a L<Paws::EC2::CreateRouteResult> instance
 
 Creates a route in a route table within a VPC.
 
-You must specify one of the following targets: Internet gateway or
+You must specify one of the following targets: internet gateway or
 virtual private gateway, NAT instance, NAT gateway, VPC peering
-connection, network interface, or egress-only Internet gateway.
+connection, network interface, or egress-only internet gateway.
 
 When determining how to route traffic, we use the route with the most
 specific match. For example, traffic is destined for the IPv4 address
@@ -3578,7 +3592,7 @@ Returns: a L<Paws::EC2::CreateRouteTableResult> instance
 Creates a route table for the specified VPC. After you create a route
 table, you can add routes and associate the table with a subnet.
 
-For more information about route tables, see Route Tables
+For more information, see Route Tables
 (http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
@@ -3739,14 +3753,14 @@ Returns: a L<Paws::EC2::CreateSubnetResult> instance
 
 Creates a subnet in an existing VPC.
 
-When you create each subnet, you provide the VPC ID and the IPv4 CIDR
-block you want for the subnet. After you create a subnet, you can't
-change its CIDR block. The size of the subnet's IPv4 CIDR block can be
-the same as a VPC's IPv4 CIDR block, or a subset of a VPC's IPv4 CIDR
-block. If you create more than one subnet in a VPC, the subnets' CIDR
-blocks must not overlap. The smallest IPv4 subnet (and VPC) you can
-create uses a /28 netmask (16 IPv4 addresses), and the largest uses a
-/16 netmask (65,536 IPv4 addresses).
+When you create each subnet, you provide the VPC ID and IPv4 CIDR block
+for the subnet. After you create a subnet, you can't change its CIDR
+block. The size of the subnet's IPv4 CIDR block can be the same as a
+VPC's IPv4 CIDR block, or a subset of a VPC's IPv4 CIDR block. If you
+create more than one subnet in a VPC, the subnets' CIDR blocks must not
+overlap. The smallest IPv4 subnet (and VPC) you can create uses a /28
+netmask (16 IPv4 addresses), and the largest uses a /16 netmask (65,536
+IPv4 addresses).
 
 If you've associated an IPv6 CIDR block with your VPC, you can create a
 subnet with an IPv6 CIDR block that uses a /64 prefix length.
@@ -3878,8 +3892,8 @@ Returns: a L<Paws::EC2::CreateVpcResult> instance
 
 Creates a VPC with the specified IPv4 CIDR block. The smallest VPC you
 can create uses a /28 netmask (16 IPv4 addresses), and the largest uses
-a /16 netmask (65,536 IPv4 addresses). To help you decide how big to
-make your VPC, see Your VPC and Subnets
+a /16 netmask (65,536 IPv4 addresses). For more information about how
+large to make your VPC, see Your VPC and Subnets
 (http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
@@ -3889,9 +3903,8 @@ from Amazon's pool of IPv6 addresses. You cannot choose the IPv6 range
 for your VPC.
 
 By default, each instance you launch in the VPC has the default DHCP
-options, which includes only a default DNS server that we provide
-(AmazonProvidedDNS). For more information about DHCP options, see DHCP
-Options Sets
+options, which include only a default DNS server that we provide
+(AmazonProvidedDNS). For more information, see DHCP Options Sets
 (http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
@@ -4041,7 +4054,7 @@ Returns: a L<Paws::EC2::CreateVpcPeeringConnectionResult> instance
 Requests a VPC peering connection between two VPCs: a requester VPC
 that you own and an accepter VPC with which to create the connection.
 The accepter VPC can belong to another AWS account and can be in a
-different region to the requester VPC. The requester VPC and accepter
+different Region to the requester VPC. The requester VPC and accepter
 VPC cannot have overlapping CIDR blocks.
 
 Limitations and rules apply to a VPC peering connection. For more
@@ -4212,7 +4225,7 @@ Each argument is described in detail in: L<Paws::EC2::DeleteEgressOnlyInternetGa
 
 Returns: a L<Paws::EC2::DeleteEgressOnlyInternetGatewayResult> instance
 
-Deletes an egress-only Internet gateway.
+Deletes an egress-only internet gateway.
 
 
 =head2 DeleteFleets
@@ -4247,6 +4260,8 @@ are interrupted or you terminate them manually.
 =over
 
 =item FlowLogIds => ArrayRef[Str|Undef]
+
+=item [DryRun => Bool]
 
 
 =back
@@ -4291,7 +4306,7 @@ Each argument is described in detail in: L<Paws::EC2::DeleteInternetGateway>
 
 Returns: nothing
 
-Deletes the specified Internet gateway. You must detach the Internet
+Deletes the specified internet gateway. You must detach the internet
 gateway from the VPC before you can delete it.
 
 
@@ -5065,7 +5080,7 @@ Returns: a L<Paws::EC2::DescribeClassicLinkInstancesResult> instance
 
 Describes one or more of your linked EC2-Classic instances. This
 request only returns information about EC2-Classic instances linked to
-a VPC through ClassicLink; you cannot use this request to return
+a VPC through ClassicLink. You cannot use this request to return
 information about other instances.
 
 
@@ -5137,7 +5152,7 @@ Returns: a L<Paws::EC2::DescribeDhcpOptionsResult> instance
 
 Describes one or more of your DHCP options sets.
 
-For more information about DHCP options sets, see DHCP Options Sets
+For more information, see DHCP Options Sets
 (http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
@@ -5161,7 +5176,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeEgressOnlyInternet
 
 Returns: a L<Paws::EC2::DescribeEgressOnlyInternetGatewaysResult> instance
 
-Describes one or more of your egress-only Internet gateways.
+Describes one or more of your egress-only internet gateways.
 
 
 =head2 DescribeElasticGpus
@@ -5284,6 +5299,8 @@ Describes one or more of your EC2 Fleet.
 =head2 DescribeFlowLogs
 
 =over
+
+=item [DryRun => Bool]
 
 =item [Filter => ArrayRef[L<Paws::EC2::Filter>]]
 
@@ -5831,7 +5848,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeInternetGateways>
 
 Returns: a L<Paws::EC2::DescribeInternetGatewaysResult> instance
 
-Describes one or more of your Internet gateways.
+Describes one or more of your internet gateways.
 
 
 =head2 DescribeKeyPairs
@@ -5963,7 +5980,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeNatGateways>
 
 Returns: a L<Paws::EC2::DescribeNatGatewaysResult> instance
 
-Describes one or more of the your NAT gateways.
+Describes one or more of your NAT gateways.
 
 
 =head2 DescribeNetworkAcls
@@ -5985,7 +6002,7 @@ Returns: a L<Paws::EC2::DescribeNetworkAclsResult> instance
 
 Describes one or more of your network ACLs.
 
-For more information about network ACLs, see Network ACLs
+For more information, see Network ACLs
 (http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
@@ -6348,7 +6365,7 @@ subnet is not explicitly associated with any route table, it is
 implicitly associated with the main route table. This command does not
 return the subnet ID for implicit associations.
 
-For more information about route tables, see Route Tables
+For more information, see Route Tables
 (http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
@@ -6798,7 +6815,7 @@ Returns: a L<Paws::EC2::DescribeSubnetsResult> instance
 
 Describes one or more of your subnets.
 
-For more information about subnets, see Your VPC and Subnets
+For more information, see Your VPC and Subnets
 (http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
@@ -6833,9 +6850,9 @@ the I<Amazon Elastic Compute Cloud User Guide>.
 
 =over
 
-=item VolumeId => Str
+=item Attribute => Str
 
-=item [Attribute => Str]
+=item VolumeId => Str
 
 =item [DryRun => Bool]
 
@@ -7339,8 +7356,8 @@ Each argument is described in detail in: L<Paws::EC2::DetachInternetGateway>
 
 Returns: nothing
 
-Detaches an Internet gateway from a VPC, disabling connectivity between
-the Internet and the VPC. The VPC must not contain any running
+Detaches an internet gateway from a VPC, disabling connectivity between
+the internet and the VPC. The VPC must not contain any running
 instances with Elastic IP addresses or public IPv4 addresses.
 
 
@@ -7484,7 +7501,7 @@ Returns: a L<Paws::EC2::DisableVpcClassicLinkDnsSupportResult> instance
 Disables ClassicLink DNS support for a VPC. If disabled, DNS hostnames
 resolve to public IP addresses when addressed between a linked
 EC2-Classic instance and instances in the VPC to which it's linked. For
-more information about ClassicLink, see ClassicLink
+more information, see ClassicLink
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -7659,7 +7676,7 @@ Returns: a L<Paws::EC2::EnableVpcClassicLinkResult> instance
 Enables a VPC for ClassicLink. You can then link EC2-Classic instances
 to your ClassicLink-enabled VPC to allow communication over private IP
 addresses. You cannot enable your VPC for ClassicLink if any of your
-VPC's route tables have existing routes for address ranges within the
+VPC route tables have existing routes for address ranges within the
 C<10.0.0.0/8> IP address range, excluding local routes for VPCs in the
 C<10.0.0.0/16> and C<10.1.0.0/16> IP address ranges. For more
 information, see ClassicLink
@@ -7685,8 +7702,7 @@ enabled, the DNS hostname of a linked EC2-Classic instance resolves to
 its private IP address when addressed from an instance in the VPC to
 which it's linked. Similarly, the DNS hostname of an instance in a VPC
 resolves to its private IP address when addressed from a linked
-EC2-Classic instance. For more information about ClassicLink, see
-ClassicLink
+EC2-Classic instance. For more information, see ClassicLink
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -7712,19 +7728,21 @@ Gets the console output for the specified instance. For Linux
 instances, the instance console output displays the exact console
 output that would normally be displayed on a physical monitor attached
 to a computer. For Windows instances, the instance console output
-includes output from the EC2Config service.
-
-GetConsoleOutput returns up to 64 KB of console output shortly after
-it's generated by the instance.
+includes the last three system event log errors.
 
 By default, the console output returns buffered information that was
 posted shortly after an instance transition state (start, stop, reboot,
 or terminate). This information is available for at least one hour
-after the most recent post.
+after the most recent post. Only the most recent 64 KB of console
+output is available.
 
 You can optionally retrieve the latest serial console output at any
-time during the instance lifecycle. This option is only supported on
-C5, M5, and C<i3.metal> instances.
+time during the instance lifecycle. This option is supported on
+instance types that use the Nitro hypervisor.
+
+For more information, see Instance Console Output
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-console.html#instance-console-console-output)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 GetConsoleScreenshot
@@ -8793,6 +8811,11 @@ Modifies the permissions for your VPC endpoint service
 You can add or remove permissions for service consumers (IAM users, IAM
 roles, and AWS accounts) to connect to your endpoint service.
 
+If you grant permissions to all principals, the service is public. Any
+users who know the name of a public service can send a request to
+attach an endpoint. If the service does not require manual approval,
+attachments are automatically approved.
+
 
 =head2 ModifyVpcPeeringConnectionOptions
 
@@ -8872,7 +8895,7 @@ launch into the VPC have a tenancy of C<default>, unless you specify
 otherwise during launch. The tenancy of any existing instances in the
 VPC is not affected.
 
-For more information about Dedicated Instances, see Dedicated Instances
+For more information, see Dedicated Instances
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -9275,7 +9298,7 @@ Returns: a L<Paws::EC2::ReplaceNetworkAclAssociationResult> instance
 
 Changes which network ACL a subnet is associated with. By default when
 you create a subnet, it's automatically associated with the default
-network ACL. For more information about network ACLs, see Network ACLs
+network ACL. For more information, see Network ACLs
 (http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
@@ -9313,8 +9336,8 @@ Each argument is described in detail in: L<Paws::EC2::ReplaceNetworkAclEntry>
 
 Returns: nothing
 
-Replaces an entry (rule) in a network ACL. For more information about
-network ACLs, see Network ACLs
+Replaces an entry (rule) in a network ACL. For more information, see
+Network ACLs
 (http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
@@ -9351,11 +9374,11 @@ Each argument is described in detail in: L<Paws::EC2::ReplaceRoute>
 Returns: nothing
 
 Replaces an existing route within a route table in a VPC. You must
-provide only one of the following: Internet gateway or virtual private
+provide only one of the following: internet gateway or virtual private
 gateway, NAT instance, NAT gateway, VPC peering connection, network
-interface, or egress-only Internet gateway.
+interface, or egress-only internet gateway.
 
-For more information about route tables, see Route Tables
+For more information, see Route Tables
 (http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 

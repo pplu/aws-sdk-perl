@@ -118,11 +118,11 @@ if specifying TCP (6) or UDP (17) for the protocol.
 The IP protocol. You can specify C<all> or C<-1> to mean all protocols.
 If you specify C<all>, C<-1>, or a protocol number other than C<tcp>,
 C<udp>, or C<icmp>, traffic on all ports is allowed, regardless of any
-ports or ICMP types or codes you specify. If you specify protocol C<58>
-(ICMPv6) and specify an IPv4 CIDR block, traffic for all ICMP types and
-codes allowed, regardless of any that you specify. If you specify
-protocol C<58> (ICMPv6) and specify an IPv6 CIDR block, you must
-specify an ICMP type and code.
+ports or ICMP types or codes you that specify. If you specify protocol
+C<58> (ICMPv6) and specify an IPv4 CIDR block, traffic for all ICMP
+types and codes allowed, regardless of any that you specify. If you
+specify protocol C<58> (ICMPv6) and specify an IPv6 CIDR block, you
+must specify an ICMP type and code.
 
 
 

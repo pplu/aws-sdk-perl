@@ -116,7 +116,7 @@ TCP or UDP protocols: The range of ports the rule applies to.
 The protocol. A value of C<-1> or C<all> means all protocols. If you
 specify C<all>, C<-1>, or a protocol number other than C<6> (tcp),
 C<17> (udp), or C<1> (icmp), traffic on all ports is allowed,
-regardless of any ports or ICMP types or codes you specify. If you
+regardless of any ports or ICMP types or codes that you specify. If you
 specify protocol C<58> (ICMPv6) and specify an IPv4 CIDR block, traffic
 for all ICMP types and codes allowed, regardless of any that you
 specify. If you specify protocol C<58> (ICMPv6) and specify an IPv6

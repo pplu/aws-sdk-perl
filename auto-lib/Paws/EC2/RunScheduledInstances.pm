@@ -46,7 +46,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'NetworkInterfaces' => [
 
             {
-              'AssociatePublicIpAddress' => true,
+              'AssociatePublicIpAddress' => 1,
               'DeviceIndex'              => 0,
               'Groups'                   => ['sg-12345678'],
               'SubnetId'                 => 'subnet-12345678'

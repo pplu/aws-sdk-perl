@@ -97,6 +97,8 @@ the tag value.
 
 =item *
 
+C<vpc-id> - The ID of the VPC to which the instance is linked.
+
 C<vpc-id> - The ID of the VPC that the instance is linked to.
 
 =back
@@ -116,7 +118,7 @@ ClassicLink.
 The maximum number of results to return for the request in a single
 page. The remaining results of the initial request can be seen by
 sending another request with the returned C<NextToken> value. This
-value can be between 5 and 1000; if C<MaxResults> is given a value
+value can be between 5 and 1000. If C<MaxResults> is given a value
 larger than 1000, only 1000 results are returned. You cannot specify
 this parameter and the instance IDs parameter in the same request.
 

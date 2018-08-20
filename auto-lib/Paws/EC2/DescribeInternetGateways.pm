@@ -103,9 +103,9 @@ the tag value.
 
 =head2 InternetGatewayIds => ArrayRef[Str|Undef]
 
-One or more Internet gateway IDs.
+One or more internet gateway IDs.
 
-Default: Describes all your Internet gateways.
+Default: Describes all your internet gateways.
 
 
 

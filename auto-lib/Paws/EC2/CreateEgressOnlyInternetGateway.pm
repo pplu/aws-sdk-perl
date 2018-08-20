@@ -51,8 +51,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 ClientToken => Str
 
-Unique, case-sensitive identifier you provide to ensure the idempotency
-of the request. For more information, see How to Ensure Idempotency
+Unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request. For more information, see How to Ensure
+Idempotency
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html).
 
 
@@ -68,7 +69,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 B<REQUIRED> VpcId => Str
 
-The ID of the VPC for which to create the egress-only Internet gateway.
+The ID of the VPC for which to create the egress-only internet gateway.
 
 
 
