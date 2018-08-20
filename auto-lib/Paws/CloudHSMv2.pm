@@ -15,6 +15,11 @@ package Paws::CloudHSMv2;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
+  sub CopyBackupToRegion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudHSMv2::CopyBackupToRegion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudHSMv2::CreateCluster', @_);
@@ -137,7 +142,7 @@ package Paws::CloudHSMv2;
   }
 
 
-  sub operations { qw/CreateCluster CreateHsm DeleteCluster DeleteHsm DescribeBackups DescribeClusters InitializeCluster ListTags TagResource UntagResource / }
+  sub operations { qw/CopyBackupToRegion CreateCluster CreateHsm DeleteCluster DeleteHsm DescribeBackups DescribeClusters InitializeCluster ListTags TagResource UntagResource / }
 
 1;
 
@@ -173,6 +178,24 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 
 
 =head1 METHODS
+
+=head2 CopyBackupToRegion
+
+=over
+
+=item BackupId => Str
+
+=item DestinationRegion => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudHSMv2::CopyBackupToRegion>
+
+Returns: a L<Paws::CloudHSMv2::CopyBackupToRegionResponse> instance
+
+
+
 
 =head2 CreateCluster
 
@@ -268,6 +291,8 @@ these values. To find these values, use DescribeClusters.
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
+
+=item [SortAscending => Bool]
 
 
 =back
@@ -408,9 +433,9 @@ cluster.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 DescribeAllBackups(sub { },[Filters => L<Paws::CloudHSMv2::Filters>, MaxResults => Int, NextToken => Str])
+=head2 DescribeAllBackups(sub { },[Filters => L<Paws::CloudHSMv2::Filters>, MaxResults => Int, NextToken => Str, SortAscending => Bool])
 
-=head2 DescribeAllBackups([Filters => L<Paws::CloudHSMv2::Filters>, MaxResults => Int, NextToken => Str])
+=head2 DescribeAllBackups([Filters => L<Paws::CloudHSMv2::Filters>, MaxResults => Int, NextToken => Str, SortAscending => Bool])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
