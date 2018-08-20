@@ -36,6 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $AwsDevice       = $Connection->AwsDevice;
+    my $AwsDeviceV2     = $Connection->AwsDeviceV2;
     my $Bandwidth       = $Connection->Bandwidth;
     my $ConnectionId    = $Connection->ConnectionId;
     my $ConnectionName  = $Connection->ConnectionName;

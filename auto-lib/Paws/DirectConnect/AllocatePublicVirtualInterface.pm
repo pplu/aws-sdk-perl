@@ -56,6 +56,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $AmazonSideAsn          = $VirtualInterface->AmazonSideAsn;
     my $Asn                    = $VirtualInterface->Asn;
     my $AuthKey                = $VirtualInterface->AuthKey;
+    my $AwsDeviceV2            = $VirtualInterface->AwsDeviceV2;
     my $BgpPeers               = $VirtualInterface->BgpPeers;
     my $ConnectionId           = $VirtualInterface->ConnectionId;
     my $CustomerAddress        = $VirtualInterface->CustomerAddress;
@@ -63,6 +64,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DirectConnectGatewayId = $VirtualInterface->DirectConnectGatewayId;
     my $Location               = $VirtualInterface->Location;
     my $OwnerAccount           = $VirtualInterface->OwnerAccount;
+    my $Region                 = $VirtualInterface->Region;
     my $RouteFilterPrefixes    = $VirtualInterface->RouteFilterPrefixes;
     my $VirtualGatewayId       = $VirtualInterface->VirtualGatewayId;
     my $VirtualInterfaceId     = $VirtualInterface->VirtualInterfaceId;

@@ -6,6 +6,7 @@ package Paws::DirectConnect::VirtualInterface;
   has AmazonSideAsn => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'amazonSideAsn' );
   has Asn => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'asn' );
   has AuthKey => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authKey' );
+  has AwsDeviceV2 => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'awsDeviceV2' );
   has BgpPeers => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::BGPPeer]', traits => ['NameInRequest'], request_name => 'bgpPeers' );
   has ConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionId' );
   has CustomerAddress => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'customerAddress' );
@@ -13,6 +14,7 @@ package Paws::DirectConnect::VirtualInterface;
   has DirectConnectGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'directConnectGatewayId' );
   has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location' );
   has OwnerAccount => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ownerAccount' );
+  has Region => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'region' );
   has RouteFilterPrefixes => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::RouteFilterPrefix]', traits => ['NameInRequest'], request_name => 'routeFilterPrefixes' );
   has VirtualGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualGatewayId' );
   has VirtualInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualInterfaceId' );
@@ -58,6 +60,12 @@ connection.
 
 
 
+=head2 AwsDeviceV2 => Str
+
+The Direct Connection endpoint which the virtual interface terminates
+on.
+
+
 =head2 BgpPeers => ArrayRef[L<Paws::DirectConnect::BGPPeer>]
 
 
@@ -91,6 +99,15 @@ Information for generating the customer router configuration.
 =head2 OwnerAccount => Str
 
 The AWS account that will own the new virtual interface.
+
+
+=head2 Region => Str
+
+The AWS region where the virtual interface is located.
+
+Example: us-east-1
+
+Default: None
 
 
 =head2 RouteFilterPrefixes => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]
