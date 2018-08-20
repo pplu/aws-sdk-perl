@@ -160,9 +160,6 @@ in the I<Amazon CloudFront Developer Guide>.
 
   From this field, you can enable or disable the selected distribution.
 
-If you specify C<false> for C<Enabled> but you specify values for
-C<Bucket> and C<Prefix>, the values are automatically deleted.
-
 
 =head2 HttpVersion => Str
 
@@ -260,9 +257,10 @@ For more information about price classes, see Choosing the Price Class
 for a CloudFront Distribution
 (http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PriceClass.html)
 in the I<Amazon CloudFront Developer Guide>. For information about
-CloudFront pricing, including how price classes map to CloudFront
-regions, see Amazon CloudFront Pricing
-(https://aws.amazon.com/cloudfront/pricing/).
+CloudFront pricing, including how price classes (such as Price Class
+100) map to CloudFront regions, see Amazon CloudFront Pricing
+(https://aws.amazon.com/cloudfront/pricing/). For price class
+information, scroll down to see the table at the bottom of the page.
 
 
 =head2 Restrictions => L<Paws::CloudFront::Restrictions>

@@ -6,7 +6,7 @@ package Paws::CloudFront::CreateStreamingDistributionWithTags;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateStreamingDistributionWithTags');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2017-10-30/streaming-distribution?WithTags');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2018-06-18/streaming-distribution?WithTags');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::CreateStreamingDistributionWithTagsResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
@@ -21,11 +21,11 @@ Paws::CloudFront::CreateStreamingDistributionWithTags - Arguments for method Cre
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateStreamingDistributionWithTags2017_10_30 on the
+This class represents the parameters used for calling the method CreateStreamingDistributionWithTags2018_06_18 on the
 L<Amazon CloudFront|Paws::CloudFront> service. Use the attributes of this class
-as arguments to method CreateStreamingDistributionWithTags2017_10_30.
+as arguments to method CreateStreamingDistributionWithTags2018_06_18.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateStreamingDistributionWithTags2017_10_30.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateStreamingDistributionWithTags2018_06_18.
 
 =head1 SYNOPSIS
 
@@ -97,7 +97,7 @@ The streaming distribution's configuration information.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method CreateStreamingDistributionWithTags2017_10_30 in L<Paws::CloudFront>
+This class forms part of L<Paws>, documenting arguments for method CreateStreamingDistributionWithTags2018_06_18 in L<Paws::CloudFront>
 
 =head1 BUGS and CONTRIBUTIONS
 

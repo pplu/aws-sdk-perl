@@ -3,7 +3,7 @@ package Paws::CloudFront;
   use Moose;
   sub service { 'cloudfront' }
   sub signing_name { 'cloudfront' }
-  sub version { '2017-10-30' }
+  sub version { '2018-06-18' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
   has retry => (is => 'ro', isa => 'HashRef', default => sub {
@@ -393,7 +393,7 @@ developers who need detailed information about CloudFront API actions,
 data types, and errors. For detailed information about CloudFront
 features, see the I<Amazon CloudFront Developer Guide>.
 
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2018-06-18>
 
 
 =head1 METHODS
@@ -1229,7 +1229,8 @@ header.
 Update the XML document that was returned in the response to your
 C<GetDistributionConfig> request to include the desired changes. You
 can't change the value of C<CallerReference>. If you try to change this
-value, CloudFront returns an C<IllegalUpdate> error.
+value, CloudFront returns an C<IllegalUpdate> error. Note that you must
+strip out the ETag parameter that is returned.
 
 The new configuration replaces the existing configuration; the values
 that you specify in an C<UpdateDistribution> request are not merged

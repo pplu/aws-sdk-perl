@@ -6,7 +6,7 @@ package Paws::CloudFront::CreatePublicKey;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreatePublicKey');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2017-10-30/public-key');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2018-06-18/public-key');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::CreatePublicKeyResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
@@ -21,11 +21,11 @@ Paws::CloudFront::CreatePublicKey - Arguments for method CreatePublicKey on L<Pa
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreatePublicKey2017_10_30 on the
+This class represents the parameters used for calling the method CreatePublicKey2018_06_18 on the
 L<Amazon CloudFront|Paws::CloudFront> service. Use the attributes of this class
-as arguments to method CreatePublicKey2017_10_30.
+as arguments to method CreatePublicKey2018_06_18.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreatePublicKey2017_10_30.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreatePublicKey2018_06_18.
 
 =head1 SYNOPSIS
 
@@ -62,7 +62,7 @@ The request to add a public key to CloudFront.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method CreatePublicKey2017_10_30 in L<Paws::CloudFront>
+This class forms part of L<Paws>, documenting arguments for method CreatePublicKey2018_06_18 in L<Paws::CloudFront>
 
 =head1 BUGS and CONTRIBUTIONS
 

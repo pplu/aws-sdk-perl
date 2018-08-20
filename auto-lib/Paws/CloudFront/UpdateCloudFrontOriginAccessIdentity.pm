@@ -8,7 +8,7 @@ package Paws::CloudFront::UpdateCloudFrontOriginAccessIdentity;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateCloudFrontOriginAccessIdentity');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2017-10-30/origin-access-identity/cloudfront/{Id}/config');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2018-06-18/origin-access-identity/cloudfront/{Id}/config');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::UpdateCloudFrontOriginAccessIdentityResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
@@ -23,11 +23,11 @@ Paws::CloudFront::UpdateCloudFrontOriginAccessIdentity - Arguments for method Up
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UpdateCloudFrontOriginAccessIdentity2017_10_30 on the
+This class represents the parameters used for calling the method UpdateCloudFrontOriginAccessIdentity2018_06_18 on the
 L<Amazon CloudFront|Paws::CloudFront> service. Use the attributes of this class
-as arguments to method UpdateCloudFrontOriginAccessIdentity2017_10_30.
+as arguments to method UpdateCloudFrontOriginAccessIdentity2018_06_18.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateCloudFrontOriginAccessIdentity2017_10_30.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateCloudFrontOriginAccessIdentity2018_06_18.
 
 =head1 SYNOPSIS
 
@@ -79,7 +79,7 @@ identity's configuration. For example: C<E2QWRUHAPOMQZL>.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method UpdateCloudFrontOriginAccessIdentity2017_10_30 in L<Paws::CloudFront>
+This class forms part of L<Paws>, documenting arguments for method UpdateCloudFrontOriginAccessIdentity2018_06_18 in L<Paws::CloudFront>
 
 =head1 BUGS and CONTRIBUTIONS
 
