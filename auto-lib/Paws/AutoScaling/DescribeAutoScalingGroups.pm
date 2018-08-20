@@ -50,8 +50,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/aut
 
 =head2 AutoScalingGroupNames => ArrayRef[Str|Undef]
 
-The names of the Auto Scaling groups. If you omit this parameter, all
-Auto Scaling groups are described.
+The names of the Auto Scaling groups. You can specify up to
+C<MaxRecords> names. If you omit this parameter, all Auto Scaling
+groups are described.
 
 
 

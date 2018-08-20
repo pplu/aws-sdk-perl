@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           {
             'Key'               => 'Role',
-            'PropagateAtLaunch' => true,
+            'PropagateAtLaunch' => 1,
             'ResourceId'        => 'my-auto-scaling-group',
             'ResourceType'      => 'auto-scaling-group',
             'Value'             => 'WebServer'
@@ -43,7 +43,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           {
             'Key'               => 'Dept',
-            'PropagateAtLaunch' => true,
+            'PropagateAtLaunch' => 1,
             'ResourceId'        => 'my-auto-scaling-group',
             'ResourceType'      => 'auto-scaling-group',
             'Value'             => 'Research'

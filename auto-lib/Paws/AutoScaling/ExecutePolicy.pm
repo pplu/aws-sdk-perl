@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     $autoscaling->ExecutePolicy(
       {
         'AutoScalingGroupName' => 'my-auto-scaling-group',
-        'HonorCooldown'        => true,
+        'HonorCooldown'        => 1,
         'PolicyName'           => 'ScaleIn'
       }
     );
@@ -66,14 +66,14 @@ supported otherwise.
 
 =head2 HonorCooldown => Bool
 
-Indicates whether Auto Scaling waits for the cooldown period to
-complete before executing the policy.
+Indicates whether Amazon EC2 Auto Scaling waits for the cooldown period
+to complete before executing the policy.
 
 This parameter is not supported if the policy type is C<StepScaling>.
 
-For more information, see Auto Scaling Cooldowns
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/Cooldown.html)
-in the I<Auto Scaling User Guide>.
+For more information, see Scaling Cooldowns
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html) in
+the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 

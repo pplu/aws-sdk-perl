@@ -68,7 +68,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     $autoscaling->UpdateAutoScalingGroup(
       {
         'AutoScalingGroupName'             => 'my-auto-scaling-group',
-        'NewInstancesProtectedFromScaleIn' => true
+        'NewInstancesProtectedFromScaleIn' => 1
       }
     );
 
@@ -96,9 +96,9 @@ One or more Availability Zones for the group.
 The amount of time, in seconds, after a scaling activity completes
 before another scaling activity can start. The default is 300.
 
-For more information, see Auto Scaling Cooldowns
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/Cooldown.html)
-in the I<Auto Scaling User Guide>.
+For more information, see Scaling Cooldowns
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html) in
+the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 
@@ -112,13 +112,13 @@ the group and less than or equal to the maximum size of the group.
 
 =head2 HealthCheckGracePeriod => Int
 
-The amount of time, in seconds, that Auto Scaling waits before checking
-the health status of an EC2 instance that has come into service. The
-default is 0.
+The amount of time, in seconds, that Amazon EC2 Auto Scaling waits
+before checking the health status of an EC2 instance that has come into
+service. The default is 0.
 
 For more information, see Health Checks
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/healthcheck.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 
@@ -186,7 +186,7 @@ order that they are listed.
 
 For more information, see Controlling Which Instances Auto Scaling
 Terminates During Scale In
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/as-instance-termination.html)
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html)
 in the I<Auto Scaling User Guide>.
 
 
@@ -201,8 +201,8 @@ that the subnets' Availability Zones match the values you specify for
 C<AvailabilityZones>.
 
 For more information, see Launching Auto Scaling Instances in a VPC
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 

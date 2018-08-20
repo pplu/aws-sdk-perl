@@ -69,8 +69,8 @@ Used for groups that launch instances into a virtual private cloud
 (VPC). Specifies whether to assign a public IP address to each
 instance. For more information, see Launching Auto Scaling Instances in
 a VPC
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 If you specify this parameter, be sure to specify at least one subnet
 when you create your group.
@@ -130,12 +130,12 @@ The name or the Amazon Resource Name (ARN) of the instance profile
 associated with the IAM role for the instance.
 
 EC2 instances launched with an IAM role will automatically have AWS
-security credentials available. You can use IAM roles with Auto Scaling
-to automatically enable applications running on your EC2 instances to
-securely access other AWS resources. For more information, see Launch
-Auto Scaling Instances with an IAM Role
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/us-iam-role.html)
-in the I<Auto Scaling User Guide>.
+security credentials available. You can use IAM roles with Amazon EC2
+Auto Scaling to automatically enable applications running on your EC2
+instances to securely access other AWS resources. For more information,
+see Launch Auto Scaling Instances with an IAM Role
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/us-iam-role.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 
@@ -167,8 +167,8 @@ same request.
 
 For more information, see Create a Launch Configuration Using an EC2
 Instance
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/create-lc-with-instanceID.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/create-lc-with-instanceID.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 
@@ -227,8 +227,8 @@ If you specify this parameter, be sure to specify at least one subnet
 when you create your group.
 
 For more information, see Launching Auto Scaling Instances in a VPC
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 Valid values: C<default> | C<dedicated>
 
@@ -263,8 +263,8 @@ The maximum hourly price to be paid for any Spot Instance launched to
 fulfill the request. Spot Instances are launched when the price you
 specify exceeds the current Spot market price. For more information,
 see Launching Spot Instances in Your Auto Scaling Group
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/US-SpotInstances.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-launch-spot-instances.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 

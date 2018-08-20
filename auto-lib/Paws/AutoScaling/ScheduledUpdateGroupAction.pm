@@ -40,7 +40,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head1 DESCRIPTION
 
-Describes a scheduled update to an Auto Scaling group.
+Describes a scheduled scaling action. Used in response to
+DescribeScheduledActions.
 
 =head1 ATTRIBUTES
 
