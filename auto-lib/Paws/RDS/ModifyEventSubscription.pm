@@ -36,7 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # notification subscription.
     my $ModifyEventSubscriptionResult = $rds->ModifyEventSubscription(
       {
-        'Enabled'          => true,
+        'Enabled'          => 1,
         'EventCategories'  => [ 'deletion', 'low storage' ],
         'SourceType'       => 'db-instance',
         'SubscriptionName' => 'mymysqleventsubscription'

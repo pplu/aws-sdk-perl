@@ -357,6 +357,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::ListTagsForResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ModifyCurrentDBClusterCapacity {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::ModifyCurrentDBClusterCapacity', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ModifyDBCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::ModifyDBCluster', @_);
@@ -937,7 +942,7 @@ package Paws::RDS;
   }
 
 
-  sub operations { qw/AddRoleToDBCluster AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress BacktrackDBCluster CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateDBCluster CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateOptionGroup DeleteDBCluster DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBParameterGroup DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteOptionGroup DescribeAccountAttributes DescribeCertificates DescribeDBClusterBacktracks DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DescribeSourceRegions DescribeValidDBInstanceModifications DownloadDBLogFilePortion FailoverDBCluster ListTagsForResource ModifyDBCluster ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBSnapshot ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyOptionGroup PromoteReadReplica PromoteReadReplicaDBCluster PurchaseReservedDBInstancesOffering RebootDBInstance RemoveRoleFromDBCluster RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromS3 RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceFromS3 RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress StartDBInstance StopDBInstance / }
+  sub operations { qw/AddRoleToDBCluster AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress BacktrackDBCluster CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateDBCluster CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateOptionGroup DeleteDBCluster DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBParameterGroup DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteOptionGroup DescribeAccountAttributes DescribeCertificates DescribeDBClusterBacktracks DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DescribeSourceRegions DescribeValidDBInstanceModifications DownloadDBLogFilePortion FailoverDBCluster ListTagsForResource ModifyCurrentDBClusterCapacity ModifyDBCluster ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBSnapshot ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyOptionGroup PromoteReadReplica PromoteReadReplicaDBCluster PurchaseReservedDBInstancesOffering RebootDBInstance RemoveRoleFromDBCluster RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromS3 RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceFromS3 RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress StartDBInstance StopDBInstance / }
 
 1;
 
@@ -1446,6 +1451,8 @@ Copies the specified option group.
 
 =item [EnableIAMDatabaseAuthentication => Bool]
 
+=item [EngineMode => Str]
+
 =item [EngineVersion => Str]
 
 =item [KmsKeyId => Str]
@@ -1465,6 +1472,8 @@ Copies the specified option group.
 =item [PreSignedUrl => Str]
 
 =item [ReplicationSourceIdentifier => Str]
+
+=item [ScalingConfiguration => L<Paws::RDS::ScalingConfiguration>]
 
 =item [StorageEncrypted => Bool]
 
@@ -3052,6 +3061,51 @@ RDS Resources
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html).
 
 
+=head2 ModifyCurrentDBClusterCapacity
+
+=over
+
+=item DBClusterIdentifier => Str
+
+=item [Capacity => Int]
+
+=item [SecondsBeforeTimeout => Int]
+
+=item [TimeoutAction => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::ModifyCurrentDBClusterCapacity>
+
+Returns: a L<Paws::RDS::DBClusterCapacityInfo> instance
+
+Set the capacity of an Aurora Serverless DB cluster to a specific
+value.
+
+Aurora Serverless scales seamlessly based on the workload on the DB
+cluster. In some cases, the capacity might not scale fast enough to
+meet a sudden change in workload, such as a large number of new
+transactions. Call C<ModifyCurrentDBClusterCapacity> to set the
+capacity explicitly.
+
+After this call sets the DB cluster capacity, Aurora Serverless can
+automatically scale the DB cluster based on the cooldown period for
+scaling up and the cooldown period for scaling down.
+
+For more information about Aurora Serverless, see Using Amazon Aurora
+Serverless
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/aurora-serverless.html)
+in the I<Amazon RDS User Guide>.
+
+If you call C<ModifyCurrentDBClusterCapacity> with the default
+C<TimeoutAction>, connections that prevent Aurora Serverless from
+finding a scaling point might be dropped. For more information about
+scaling points, see Autoscaling for Aurora Serverless
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/aurora-serverless.how-it-works.html#aurora-serverless.how-it-works.auto-scaling)
+in the I<Amazon RDS User Guide>.
+
+
 =head2 ModifyDBCluster
 
 =over
@@ -3083,6 +3137,8 @@ RDS Resources
 =item [PreferredBackupWindow => Str]
 
 =item [PreferredMaintenanceWindow => Str]
+
+=item [ScalingConfiguration => L<Paws::RDS::ScalingConfiguration>]
 
 =item [VpcSecurityGroupIds => ArrayRef[Str|Undef]]
 
@@ -3778,6 +3834,8 @@ described in Migrating Data from MySQL by Using an Amazon S3 Bucket
 
 =item [EnableIAMDatabaseAuthentication => Bool]
 
+=item [EngineMode => Str]
+
 =item [EngineVersion => Str]
 
 =item [KmsKeyId => Str]
@@ -3785,6 +3843,8 @@ described in Migrating Data from MySQL by Using an Amazon S3 Bucket
 =item [OptionGroupName => Str]
 
 =item [Port => Int]
+
+=item [ScalingConfiguration => L<Paws::RDS::ScalingConfiguration>]
 
 =item [Tags => ArrayRef[L<Paws::RDS::Tag>]]
 

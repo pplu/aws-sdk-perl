@@ -1,5 +1,6 @@
 package Paws::RDS::DBClusterRole;
   use Moose;
+  has FeatureName => (is => 'ro', isa => 'Str');
   has RoleArn => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 1;
@@ -21,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::RDS::DBClusterRole object:
 
-  $service_obj->Method(Att1 => { RoleArn => $value, ..., Status => $value  });
+  $service_obj->Method(Att1 => { FeatureName => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBClusterRole object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->RoleArn
+  $result->Att1->FeatureName
 
 =head1 DESCRIPTION
 
@@ -36,6 +37,11 @@ Describes an AWS Identity and Access Management (IAM) role that is
 associated with a DB cluster.
 
 =head1 ATTRIBUTES
+
+
+=head2 FeatureName => Str
+
+  
 
 
 =head2 RoleArn => Str

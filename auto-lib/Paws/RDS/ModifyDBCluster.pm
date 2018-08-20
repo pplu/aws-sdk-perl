@@ -15,6 +15,7 @@ package Paws::RDS::ModifyDBCluster;
   has Port => (is => 'ro', isa => 'Int');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
+  has ScalingConfiguration => (is => 'ro', isa => 'Paws::RDS::ScalingConfiguration');
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
@@ -45,7 +46,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example changes the specified settings for the specified DB cluster.
     my $ModifyDBClusterResult = $rds->ModifyDBCluster(
       {
-        'ApplyImmediately'           => true,
+        'ApplyImmediately'           => 1,
         'DBClusterIdentifier'        => 'mydbcluster',
         'MasterUserPassword'         => 'mynewpassword',
         'NewDBClusterIdentifier'     => 'mynewdbcluster',
@@ -291,6 +292,13 @@ in the I<Amazon RDS User Guide.>
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
 
 Constraints: Minimum 30-minute window.
+
+
+
+=head2 ScalingConfiguration => L<Paws::RDS::ScalingConfiguration>
+
+The scaling properties of the DB cluster. You can only modify scaling
+properties for DB clusters in C<serverless> DB engine mode.
 
 
 

@@ -9,10 +9,12 @@ package Paws::RDS::RestoreDBClusterFromSnapshot;
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
+  has EngineMode => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
+  has ScalingConfiguration => (is => 'ro', isa => 'Paws::RDS::ScalingConfiguration');
   has SnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -134,7 +136,11 @@ Example: C<mySubnetgroup>
 =head2 EnableCloudwatchLogsExports => ArrayRef[Str|Undef]
 
 The list of logs that the restored DB cluster is to export to
-CloudWatch Logs.
+CloudWatch Logs. The values in the list depend on the DB engine being
+used. For more information, see Publishing Database Logs to Amazon
+CloudWatch Logs
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
+in the I<Amazon Relational Database Service User Guide>.
 
 
 
@@ -154,6 +160,13 @@ The database engine to use for the new DB cluster.
 Default: The same as source
 
 Constraint: Must be compatible with the engine of the source
+
+
+
+=head2 EngineMode => Str
+
+The DB engine mode of the DB cluster, either C<provisioned> or
+C<serverless>.
 
 
 
@@ -208,6 +221,13 @@ The port number on which the new DB cluster accepts connections.
 Constraints: Value must be C<1150-65535>
 
 Default: The same port as the original DB cluster.
+
+
+
+=head2 ScalingConfiguration => L<Paws::RDS::ScalingConfiguration>
+
+For DB clusters in C<serverless> DB engine mode, the scaling properties
+of the DB cluster.
 
 
 

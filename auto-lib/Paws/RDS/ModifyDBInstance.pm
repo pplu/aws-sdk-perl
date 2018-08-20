@@ -71,7 +71,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ModifyDBInstanceResult = $rds->ModifyDBInstance(
       {
         'AllocatedStorage'           => 10,
-        'ApplyImmediately'           => true,
+        'ApplyImmediately'           => 1,
         'BackupRetentionPeriod'      => 1,
         'DBInstanceClass'            => 'db.t2.small',
         'DBInstanceIdentifier'       => 'mymysqlinstance',

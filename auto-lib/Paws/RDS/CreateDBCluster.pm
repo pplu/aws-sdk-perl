@@ -12,6 +12,7 @@ package Paws::RDS::CreateDBCluster;
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
+  has EngineMode => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str');
@@ -22,6 +23,7 @@ package Paws::RDS::CreateDBCluster;
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has PreSignedUrl => (is => 'ro', isa => 'Str');
   has ReplicationSourceIdentifier => (is => 'ro', isa => 'Str');
+  has ScalingConfiguration => (is => 'ro', isa => 'Paws::RDS::ScalingConfiguration');
   has StorageEncrypted => (is => 'ro', isa => 'Bool');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -64,7 +66,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'MasterUserPassword'          => 'mypassword',
         'MasterUsername'              => 'myuser',
         'Port'                        => 3306,
-        'StorageEncrypted'            => true
+        'StorageEncrypted'            => 1
       }
     );
 
@@ -200,7 +202,11 @@ Example: C<mySubnetgroup>
 =head2 EnableCloudwatchLogsExports => ArrayRef[Str|Undef]
 
 The list of log types that need to be enabled for exporting to
-CloudWatch Logs.
+CloudWatch Logs. The values in the list depend on the DB engine being
+used. For more information, see Publishing Database Logs to Amazon
+CloudWatch Logs
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
+in the I<Amazon Relational Database Service User Guide>.
 
 
 
@@ -220,6 +226,13 @@ The name of the database engine to be used for this DB cluster.
 Valid Values: C<aurora> (for MySQL 5.6-compatible Aurora),
 C<aurora-mysql> (for MySQL 5.7-compatible Aurora), and
 C<aurora-postgresql>
+
+
+
+=head2 EngineMode => Str
+
+The DB engine mode of the DB cluster, either C<provisioned> or
+C<serverless>.
 
 
 
@@ -440,6 +453,13 @@ and Signature Version 4 Signing Process
 
 The Amazon Resource Name (ARN) of the source DB instance or DB cluster
 if this DB cluster is created as a Read Replica.
+
+
+
+=head2 ScalingConfiguration => L<Paws::RDS::ScalingConfiguration>
+
+For DB clusters in C<serverless> DB engine mode, the scaling properties
+of the DB cluster.
 
 
 

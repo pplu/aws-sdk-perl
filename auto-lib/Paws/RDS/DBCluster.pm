@@ -6,6 +6,7 @@ package Paws::RDS::DBCluster;
   has BacktrackConsumedChangeRecords => (is => 'ro', isa => 'Int');
   has BacktrackWindow => (is => 'ro', isa => 'Int');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
+  has Capacity => (is => 'ro', isa => 'Int');
   has CharacterSetName => (is => 'ro', isa => 'Str');
   has CloneGroupId => (is => 'ro', isa => 'Str');
   has ClusterCreateTime => (is => 'ro', isa => 'Str');
@@ -22,6 +23,7 @@ package Paws::RDS::DBCluster;
   has EnabledCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Endpoint => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
+  has EngineMode => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has HostedZoneId => (is => 'ro', isa => 'Str');
   has IAMDatabaseAuthenticationEnabled => (is => 'ro', isa => 'Bool');
@@ -36,6 +38,7 @@ package Paws::RDS::DBCluster;
   has ReaderEndpoint => (is => 'ro', isa => 'Str');
   has ReadReplicaIdentifiers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ReadReplicaIdentifier', traits => ['NameInRequest']);
   has ReplicationSourceIdentifier => (is => 'ro', isa => 'Str');
+  has ScalingConfigurationInfo => (is => 'ro', isa => 'Paws::RDS::ScalingConfigurationInfo');
   has Status => (is => 'ro', isa => 'Str');
   has StorageEncrypted => (is => 'ro', isa => 'Bool');
   has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::VpcSecurityGroupMembership]', request_name => 'VpcSecurityGroupMembership', traits => ['NameInRequest']);
@@ -115,6 +118,11 @@ enabled.
 
   Specifies the number of days for which automatic DB snapshots are
 retained.
+
+
+=head2 Capacity => Int
+
+  
 
 
 =head2 CharacterSetName => Str
@@ -198,6 +206,11 @@ point-in-time restore.
   A list of log types that this DB cluster is configured to export to
 CloudWatch Logs.
 
+Log types vary by DB engine. For information about the log types for
+each DB engine, see Amazon RDS Database Log Files
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html)
+in the I<Amazon RDS User Guide.>
+
 
 =head2 Endpoint => Str
 
@@ -209,6 +222,12 @@ cluster.
 
   Provides the name of the database engine to be used for this DB
 cluster.
+
+
+=head2 EngineMode => Str
+
+  The DB engine mode of the DB cluster, either C<provisioned> or
+C<serverless>.
 
 
 =head2 EngineVersion => Str
@@ -299,6 +318,11 @@ this DB cluster.
 
   Contains the identifier of the source DB cluster if this DB cluster is
 a Read Replica.
+
+
+=head2 ScalingConfigurationInfo => L<Paws::RDS::ScalingConfigurationInfo>
+
+  
 
 
 =head2 Status => Str

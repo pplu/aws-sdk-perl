@@ -550,7 +550,11 @@ the Directory Service.
 =head2 EnableCloudwatchLogsExports => ArrayRef[Str|Undef]
 
 The list of log types that need to be enabled for exporting to
-CloudWatch Logs.
+CloudWatch Logs. The values in the list depend on the DB engine being
+used. For more information, see Publishing Database Logs to Amazon
+CloudWatch Logs
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
+in the I<Amazon Relational Database Service User Guide>.
 
 
 
@@ -1122,27 +1126,43 @@ DNS name, which resolves to a public IP address. A value of false
 specifies an internal instance with a DNS name that resolves to a
 private IP address.
 
-Default: The default behavior varies depending on whether a VPC has
-been requested or not. The following list shows the default behavior in
-each case.
+Default: The default behavior varies depending on whether
+C<DBSubnetGroupName> is specified.
+
+If C<DBSubnetGroupName> is not specified, and C<PubliclyAccessible> is
+not specified, the following applies:
 
 =over
 
 =item *
 
-B<Default VPC:> true
+If the default VPC in the target region doesnE<rsquo>t have an Internet
+gateway attached to it, the DB instance is private.
 
 =item *
 
-B<VPC:> false
+If the default VPC in the target region has an Internet gateway
+attached to it, the DB instance is public.
 
 =back
 
-If no DB subnet group has been specified as part of the request and the
-PubliclyAccessible value has not been set, the DB instance is publicly
-accessible. If a specific DB subnet group has been specified as part of
-the request and the PubliclyAccessible value has not been set, the DB
-instance is private.
+If C<DBSubnetGroupName> is specified, and C<PubliclyAccessible> is not
+specified, the following applies:
+
+=over
+
+=item *
+
+If the subnets are part of a VPC that doesnE<rsquo>t have an Internet
+gateway attached to it, the DB instance is private.
+
+=item *
+
+If the subnets are part of a VPC that has an Internet gateway attached
+to it, the DB instance is public.
+
+=back
+
 
 
 
