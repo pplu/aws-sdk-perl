@@ -3,6 +3,7 @@ package Paws::MQ::UpdateBroker;
   use Moose;
   has BrokerId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'broker-id', required => 1);
   has Configuration => (is => 'ro', isa => 'Paws::MQ::ConfigurationId', traits => ['NameInRequest'], request_name => 'configuration');
+  has Logs => (is => 'ro', isa => 'Paws::MQ::Logs', traits => ['NameInRequest'], request_name => 'logs');
 
   use MooseX::ClassAttribute;
 
@@ -35,11 +36,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Id       => 'My__string',
         Revision => 1,              # OPTIONAL
       },    # OPTIONAL
+      Logs => {
+        Audit   => 1,    # OPTIONAL
+        General => 1,    # OPTIONAL
+      },    # OPTIONAL
     );
 
     # Results:
     my $BrokerId      = $UpdateBrokerResponse->BrokerId;
     my $Configuration = $UpdateBrokerResponse->Configuration;
+    my $Logs          = $UpdateBrokerResponse->Logs;
 
     # Returns a L<Paws::MQ::UpdateBrokerResponse> object.
 
@@ -61,6 +67,12 @@ characters, or special characters.
 =head2 Configuration => L<Paws::MQ::ConfigurationId>
 
 A list of information about the configuration.
+
+
+
+=head2 Logs => L<Paws::MQ::Logs>
+
+Enables Amazon CloudWatch logging for brokers.
 
 
 

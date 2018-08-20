@@ -7,10 +7,12 @@ package Paws::MQ::DescribeBrokerOutput;
   has BrokerName => (is => 'ro', isa => 'Str', request_name => 'brokerName', traits => ['NameInRequest']);
   has BrokerState => (is => 'ro', isa => 'Str', request_name => 'brokerState', traits => ['NameInRequest']);
   has Configurations => (is => 'ro', isa => 'Paws::MQ::Configurations', request_name => 'configurations', traits => ['NameInRequest']);
+  has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
   has DeploymentMode => (is => 'ro', isa => 'Str', request_name => 'deploymentMode', traits => ['NameInRequest']);
   has EngineType => (is => 'ro', isa => 'Str', request_name => 'engineType', traits => ['NameInRequest']);
   has EngineVersion => (is => 'ro', isa => 'Str', request_name => 'engineVersion', traits => ['NameInRequest']);
   has HostInstanceType => (is => 'ro', isa => 'Str', request_name => 'hostInstanceType', traits => ['NameInRequest']);
+  has Logs => (is => 'ro', isa => 'Paws::MQ::LogsSummary', request_name => 'logs', traits => ['NameInRequest']);
   has MaintenanceWindowStartTime => (is => 'ro', isa => 'Paws::MQ::WeeklyStartTime', request_name => 'maintenanceWindowStartTime', traits => ['NameInRequest']);
   has PubliclyAccessible => (is => 'ro', isa => 'Bool', request_name => 'publiclyAccessible', traits => ['NameInRequest']);
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroups', traits => ['NameInRequest']);
@@ -84,8 +86,7 @@ characters, or special characters.
 
 =head2 BrokerState => Str
 
-  The status of the broker. Possible values: CREATION_IN_PROGRESS,
-CREATION_FAILED, DELETION_IN_PROGRESS, RUNNING, REBOOT_IN_PROGRESS
+  The status of the broker.
 
 
 =head2 Configurations => L<Paws::MQ::Configurations>
@@ -93,13 +94,14 @@ CREATION_FAILED, DELETION_IN_PROGRESS, RUNNING, REBOOT_IN_PROGRESS
   The list of all revisions for the specified configuration.
 
 
+=head2 Created => Str
+
+  The time when the broker was created.
+
+
 =head2 DeploymentMode => Str
 
-  Required. The deployment mode of the broker. Possible values:
-SINGLE_INSTANCE, ACTIVE_STANDBY_MULTI_AZ SINGLE_INSTANCE creates a
-single-instance broker in a single Availability Zone.
-ACTIVE_STANDBY_MULTI_AZ creates an active/standby broker for high
-availability.
+  Required. The deployment mode of the broker.
 
 
 =head2 EngineType => Str
@@ -116,7 +118,13 @@ only 5.15.0.
 
 =head2 HostInstanceType => Str
 
-  The broker's instance type. Possible values: mq.t2.micro, mq.m4.large
+  The broker's instance type.
+
+
+=head2 Logs => L<Paws::MQ::LogsSummary>
+
+  The list of information about logs currently enabled and pending to be
+deployed for the specified broker.
 
 
 =head2 MaintenanceWindowStartTime => L<Paws::MQ::WeeklyStartTime>

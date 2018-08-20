@@ -35,6 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $Arn            = $DescribeConfigurationResponse->Arn;
+    my $Created        = $DescribeConfigurationResponse->Created;
     my $Description    = $DescribeConfigurationResponse->Description;
     my $EngineType     = $DescribeConfigurationResponse->EngineType;
     my $EngineVersion  = $DescribeConfigurationResponse->EngineVersion;

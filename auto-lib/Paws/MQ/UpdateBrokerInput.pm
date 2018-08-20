@@ -1,6 +1,7 @@
 package Paws::MQ::UpdateBrokerInput;
   use Moose;
   has Configuration => (is => 'ro', isa => 'Paws::MQ::ConfigurationId', request_name => 'configuration', traits => ['NameInRequest']);
+  has Logs => (is => 'ro', isa => 'Paws::MQ::Logs', request_name => 'logs', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MQ::UpdateBrokerInput object:
 
-  $service_obj->Method(Att1 => { Configuration => $value, ..., Configuration => $value  });
+  $service_obj->Method(Att1 => { Configuration => $value, ..., Logs => $value  });
 
 =head3 Results returned from an API call
 
@@ -39,6 +40,11 @@ Updates the broker using the specified properties.
 =head2 Configuration => L<Paws::MQ::ConfigurationId>
 
   A list of information about the configuration.
+
+
+=head2 Logs => L<Paws::MQ::Logs>
+
+  Enables Amazon CloudWatch logging for brokers.
 
 
 

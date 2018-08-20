@@ -2,6 +2,7 @@ package Paws::MQ::BrokerInstance;
   use Moose;
   has ConsoleURL => (is => 'ro', isa => 'Str', request_name => 'consoleURL', traits => ['NameInRequest']);
   has Endpoints => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'endpoints', traits => ['NameInRequest']);
+  has IpAddress => (is => 'ro', isa => 'Str', request_name => 'ipAddress', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +22,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MQ::BrokerInstance object:
 
-  $service_obj->Method(Att1 => { ConsoleURL => $value, ..., Endpoints => $value  });
+  $service_obj->Method(Att1 => { ConsoleURL => $value, ..., IpAddress => $value  });
 
 =head3 Results returned from an API call
 
@@ -45,6 +46,11 @@ Returns information about all brokers.
 =head2 Endpoints => ArrayRef[Str|Undef]
 
   The broker's wire-level protocol endpoints.
+
+
+=head2 IpAddress => Str
+
+  The IP address of the ENI attached to the broker.
 
 
 

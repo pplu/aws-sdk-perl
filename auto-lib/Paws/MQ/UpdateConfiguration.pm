@@ -38,6 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $Arn            = $UpdateConfigurationResponse->Arn;
+    my $Created        = $UpdateConfigurationResponse->Created;
     my $Id             = $UpdateConfigurationResponse->Id;
     my $LatestRevision = $UpdateConfigurationResponse->LatestRevision;
     my $Name           = $UpdateConfigurationResponse->Name;

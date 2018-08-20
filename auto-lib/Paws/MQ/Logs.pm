@@ -1,14 +1,14 @@
-package Paws::MQ::ConfigurationId;
+package Paws::MQ::Logs;
   use Moose;
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has Revision => (is => 'ro', isa => 'Int', request_name => 'revision', traits => ['NameInRequest']);
+  has Audit => (is => 'ro', isa => 'Bool', request_name => 'audit', traits => ['NameInRequest']);
+  has General => (is => 'ro', isa => 'Bool', request_name => 'general', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::MQ::ConfigurationId
+Paws::MQ::Logs
 
 =head1 USAGE
 
@@ -19,32 +19,34 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::MQ::ConfigurationId object:
+As an example, if Att1 is expected to be a Paws::MQ::Logs object:
 
-  $service_obj->Method(Att1 => { Id => $value, ..., Revision => $value  });
+  $service_obj->Method(Att1 => { Audit => $value, ..., General => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::MQ::ConfigurationId object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::MQ::Logs object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Id
+  $result->Att1->Audit
 
 =head1 DESCRIPTION
 
-A list of information about the configuration.
+The list of information about logs to be enabled for the specified
+broker.
 
 =head1 ATTRIBUTES
 
 
-=head2 Id => Str
+=head2 Audit => Bool
 
-  Required. The unique ID that Amazon MQ generates for the configuration.
+  Enables audit logging. Every user management action made using JMX or
+the ActiveMQ Web Console is logged.
 
 
-=head2 Revision => Int
+=head2 General => Bool
 
-  The revision number of the configuration.
+  Enables general logging.
 
 
 
