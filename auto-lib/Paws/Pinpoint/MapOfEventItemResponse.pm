@@ -1,14 +1,15 @@
-package Paws::Pinpoint::SegmentReference;
+package Paws::Pinpoint::MapOfEventItemResponse;
   use Moose;
-  has Id => (is => 'ro', isa => 'Str');
-  has Version => (is => 'ro', isa => 'Int');
+  with 'Paws::API::StrToObjMapParser';
+
+  has Map => (is => 'ro', isa => 'HashRef[Paws::Pinpoint::EventItemResponse]');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Pinpoint::SegmentReference
+Paws::Pinpoint::MapOfEventItemResponse
 
 =head1 USAGE
 
@@ -19,34 +20,26 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Pinpoint::SegmentReference object:
+As an example, if Att1 is expected to be a Paws::Pinpoint::MapOfEventItemResponse object:
 
-  $service_obj->Method(Att1 => { Id => $value, ..., Version => $value  });
+  $service_obj->Method(Att1 => { key1 => $value, ..., keyN => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::SegmentReference object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::MapOfEventItemResponse object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Id
+  $result->Att1->Map->{ key1 }
 
 =head1 DESCRIPTION
 
-Segment reference.
+This class has no description
 
 =head1 ATTRIBUTES
 
+=head2 Map => L<Paws::Pinpoint::EventItemResponse>
 
-=head2 Id => Str
-
-  A unique identifier for the segment.
-
-
-=head2 Version => Int
-
-  If specified contains a specific version of the segment included.
-
-
+Use the Map method to retrieve a HashRef to the map
 
 =head1 SEE ALSO
 

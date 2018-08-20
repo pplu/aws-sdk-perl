@@ -46,18 +46,26 @@ Segment group definition.
 
 =head2 SourceSegments => ArrayRef[L<Paws::Pinpoint::SegmentReference>]
 
-  Segments that define the source of this segment. Currently a maximum of
-1 import segment is supported.
+  The base segment that you build your segment on. The source segment
+defines the starting "universe" of endpoints. When you add dimensions
+to the segment, it filters the source segment based on the dimensions
+that you specify. You can specify more than one dimensional segment.
+You can only specify one imported segment.
 
 
 =head2 SourceType => Str
 
-  Include or exclude the source.
+  Specify how to handle multiple source segments. For example, if you
+specify three source segments, should the resulting segment be based on
+any or all of the segments? Acceptable values: ANY or ALL.
 
 
 =head2 Type => Str
 
-  How should the dimensions be applied for the result
+  Specify how to handle multiple segment dimensions. For example, if you
+specify three dimensions, should the resulting segment include
+endpoints that are matched by all, any, or none of the dimensions?
+Acceptable values: ALL, ANY, or NONE.
 
 
 

@@ -52,7 +52,7 @@ Endpoint update request
 address varies by channel. For mobile push channels, use the token
 provided by the push notification service, such as the APNs device
 token or the FCM registration token. For the SMS channel, use a phone
-number in E.164 format, such as +1206XXX5550100. For the email channel,
+number in E.164 format, such as +12065550100. For the email channel,
 use an email address.
 
 
@@ -76,12 +76,13 @@ APNS_VOIP_SANDBOX | ADM | SMS | EMAIL | BAIDU
 
 =head2 Demographic => L<Paws::Pinpoint::EndpointDemographic>
 
-  The endpoint demographic attributes.
+  Demographic attributes for the endpoint.
 
 
 =head2 EffectiveDate => Str
 
-  The last time the endpoint was updated. Provided in ISO 8601 format.
+  The date and time when the endpoint was updated, shown in ISO 8601
+format.
 
 
 =head2 EndpointStatus => Str

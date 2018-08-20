@@ -50,7 +50,7 @@ Import job request.
 
 =head2 ExternalId => Str
 
-  DEPRECATED. Your AWS account ID, which you assigned to the ExternalID
+  (Deprecated) Your AWS account ID, which you assigned to the ExternalID
 key in an IAM trust policy. Used by Amazon Pinpoint to assume an IAM
 role. This requirement is removed, and external IDs are not recommended
 for IAM roles assumed by Amazon Pinpoint.
@@ -77,11 +77,11 @@ to import.
 
 =head2 S3Url => Str
 
-  A URL that points to the location within an Amazon S3 bucket that
-contains the endpoints to import. The location can be a folder or a
-single file. The URL should follow this format:
-s3://bucket-name/folder-name/file-name Amazon Pinpoint will import
-endpoints from this location and any subfolders it contains.
+  The URL of the S3 bucket that contains the segment information to
+import. The location can be a folder or a single file. The URL should
+use the following format: s3://bucket-name/folder-name/file-name Amazon
+Pinpoint imports endpoints from this location and any subfolders it
+contains.
 
 
 =head2 SegmentId => Str

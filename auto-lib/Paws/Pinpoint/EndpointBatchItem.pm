@@ -53,7 +53,7 @@ Endpoint update request
 address varies by channel. For mobile push channels, use the token
 provided by the push notification service, such as the APNs device
 token or the FCM registration token. For the SMS channel, use a phone
-number in E.164 format, such as +1206XXX5550100. For the email channel,
+number in E.164 format, such as +12065550100. For the email channel,
 use an email address.
 
 

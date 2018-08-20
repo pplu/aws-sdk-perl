@@ -73,8 +73,7 @@ not changed. To remove the badge, set the value of this key to 0.
 
 =head2 Body => Str
 
-  The message body of the notification, the email body or the text
-message.
+  The message body of the notification.
 
 
 =head2 Category => Str

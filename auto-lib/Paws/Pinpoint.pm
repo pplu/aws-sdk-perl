@@ -274,6 +274,11 @@ package Paws::Pinpoint;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::PhoneNumberValidate', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutEvents {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::PutEvents', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutEventStream {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::PutEventStream', @_);
@@ -367,7 +372,7 @@ package Paws::Pinpoint;
   
 
 
-  sub operations { qw/CreateApp CreateCampaign CreateExportJob CreateImportJob CreateSegment DeleteAdmChannel DeleteApnsChannel DeleteApnsSandboxChannel DeleteApnsVoipChannel DeleteApnsVoipSandboxChannel DeleteApp DeleteBaiduChannel DeleteCampaign DeleteEmailChannel DeleteEndpoint DeleteEventStream DeleteGcmChannel DeleteSegment DeleteSmsChannel DeleteUserEndpoints GetAdmChannel GetApnsChannel GetApnsSandboxChannel GetApnsVoipChannel GetApnsVoipSandboxChannel GetApp GetApplicationSettings GetApps GetBaiduChannel GetCampaign GetCampaignActivities GetCampaigns GetCampaignVersion GetCampaignVersions GetChannels GetEmailChannel GetEndpoint GetEventStream GetExportJob GetExportJobs GetGcmChannel GetImportJob GetImportJobs GetSegment GetSegmentExportJobs GetSegmentImportJobs GetSegments GetSegmentVersion GetSegmentVersions GetSmsChannel GetUserEndpoints PhoneNumberValidate PutEventStream RemoveAttributes SendMessages SendUsersMessages UpdateAdmChannel UpdateApnsChannel UpdateApnsSandboxChannel UpdateApnsVoipChannel UpdateApnsVoipSandboxChannel UpdateApplicationSettings UpdateBaiduChannel UpdateCampaign UpdateEmailChannel UpdateEndpoint UpdateEndpointsBatch UpdateGcmChannel UpdateSegment UpdateSmsChannel / }
+  sub operations { qw/CreateApp CreateCampaign CreateExportJob CreateImportJob CreateSegment DeleteAdmChannel DeleteApnsChannel DeleteApnsSandboxChannel DeleteApnsVoipChannel DeleteApnsVoipSandboxChannel DeleteApp DeleteBaiduChannel DeleteCampaign DeleteEmailChannel DeleteEndpoint DeleteEventStream DeleteGcmChannel DeleteSegment DeleteSmsChannel DeleteUserEndpoints GetAdmChannel GetApnsChannel GetApnsSandboxChannel GetApnsVoipChannel GetApnsVoipSandboxChannel GetApp GetApplicationSettings GetApps GetBaiduChannel GetCampaign GetCampaignActivities GetCampaigns GetCampaignVersion GetCampaignVersions GetChannels GetEmailChannel GetEndpoint GetEventStream GetExportJob GetExportJobs GetGcmChannel GetImportJob GetImportJobs GetSegment GetSegmentExportJobs GetSegmentImportJobs GetSegments GetSegmentVersion GetSegmentVersions GetSmsChannel GetUserEndpoints PhoneNumberValidate PutEvents PutEventStream RemoveAttributes SendMessages SendUsersMessages UpdateAdmChannel UpdateApnsChannel UpdateApnsSandboxChannel UpdateApnsVoipChannel UpdateApnsVoipSandboxChannel UpdateApplicationSettings UpdateBaiduChannel UpdateCampaign UpdateEmailChannel UpdateEndpoint UpdateEndpointsBatch UpdateGcmChannel UpdateSegment UpdateSmsChannel / }
 
 1;
 
@@ -735,7 +740,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::DeleteUserEndpoints>
 
 Returns: a L<Paws::Pinpoint::DeleteUserEndpointsResponse> instance
 
-Deletes endpoints associated with an user id.
+Deletes endpoints that are associated with a User ID.
 
 
 =head2 GetAdmChannel
@@ -1299,7 +1304,8 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetUserEndpoints>
 
 Returns: a L<Paws::Pinpoint::GetUserEndpointsResponse> instance
 
-Returns information about the endpoints associated with an user id.
+Returns information about the endpoints that are associated with a User
+ID.
 
 
 =head2 PhoneNumberValidate
@@ -1316,6 +1322,25 @@ Each argument is described in detail in: L<Paws::Pinpoint::PhoneNumberValidate>
 Returns: a L<Paws::Pinpoint::PhoneNumberValidateResponse> instance
 
 Returns information about the specified phone number.
+
+
+=head2 PutEvents
+
+=over
+
+=item ApplicationId => Str
+
+=item EventsRequest => L<Paws::Pinpoint::EventsRequest>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::PutEvents>
+
+Returns: a L<Paws::Pinpoint::PutEventsResponse> instance
+
+Use to record events for endpoints. This method creates events and
+creates or updates the endpoints that those events are associated with.
 
 
 =head2 PutEventStream
@@ -1371,15 +1396,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::SendMessages>
 
 Returns: a L<Paws::Pinpoint::SendMessagesResponse> instance
 
-Use this resource to send a direct message, which is a one time message
-that you send to a limited audience without creating a campaign. You
-can send the message to up to 100 recipients. You cannot use the
-message to engage a segment. When you send the message, Amazon Pinpoint
-delivers it immediately, and you cannot schedule the delivery. To
-engage a user segment, and to schedule the message delivery, create a
-campaign instead of sending a direct message. You can send a direct
-message as a push notification to your mobile app or as an SMS message
-to SMS-enabled devices.
+Used to send a direct message.
 
 
 =head2 SendUsersMessages
@@ -1397,24 +1414,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::SendUsersMessages>
 
 Returns: a L<Paws::Pinpoint::SendUsersMessagesResponse> instance
 
-Use this resource to message a list of users. Amazon Pinpoint sends the
-message to all of the endpoints that are associated with each user. A
-user represents an individual who is assigned a unique user ID, and
-this ID is assigned to one or more endpoints. For example, if an
-individual uses your app on multiple devices, your app could assign
-that person's user ID to the endpoint for each device. With the
-users-messages resource, you specify the message recipients as user
-IDs. For each user ID, Amazon Pinpoint delivers the message to all of
-the user's endpoints. Within the body of your request, you can specify
-a default message, and you can tailor your message for different
-channels, including those for mobile push and SMS. With this resource,
-you send a direct message, which is a one time message that you send to
-a limited audience without creating a campaign. You can send the
-message to up to 100 users per request. You cannot use the message to
-engage a segment. When you send the message, Amazon Pinpoint delivers
-it immediately, and you cannot schedule the delivery. To engage a user
-segment, and to schedule the message delivery, create a campaign
-instead of using the users-messages resource.
+Used to send a message to a list of users.
 
 
 =head2 UpdateAdmChannel
@@ -1654,7 +1654,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::UpdateSegment>
 
 Returns: a L<Paws::Pinpoint::UpdateSegmentResponse> instance
 
-Use to update a segment.
+Used to update a segment.
 
 
 =head2 UpdateSmsChannel

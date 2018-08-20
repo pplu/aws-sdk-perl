@@ -50,8 +50,10 @@ Segment definition.
 
 =head2 SegmentGroups => L<Paws::Pinpoint::SegmentGroupList>
 
-  Segment definition groups. We currently only support one. If specified
-Dimensions must be empty.
+  A segment group, which consists of zero or more source segments, plus
+dimensions that are applied to those source segments. Your request can
+only include one segment group. Your request can include either a
+SegmentGroups object or a Dimensions object, but not both.
 
 
 

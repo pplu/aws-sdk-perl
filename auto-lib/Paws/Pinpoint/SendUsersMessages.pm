@@ -136,7 +136,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ,                     # OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
-        Users => {
+        TraceId => 'My__string',
+        Users   => {
           'My__string' => {
             BodyOverride => 'My__string',
             Context      => { 'My__string' => 'My__string', },    # OPTIONAL

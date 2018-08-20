@@ -47,12 +47,12 @@ Segment definition.
 
 =head2 ApplicationId => Str
 
-  The ID of the application to which the segment applies.
+  The ID of the application that the segment applies to.
 
 
 =head2 CreationDate => Str
 
-  The date the segment was created in ISO 8601 format.
+  The date and time when the segment was created.
 
 
 =head2 Dimensions => L<Paws::Pinpoint::SegmentDimensions>
@@ -72,18 +72,18 @@ Segment definition.
 
 =head2 LastModifiedDate => Str
 
-  The date the segment was last updated in ISO 8601 format.
+  The date and time when the segment was last modified.
 
 
 =head2 Name => Str
 
-  The name of segment
+  The name of the segment.
 
 
 =head2 SegmentGroups => L<Paws::Pinpoint::SegmentGroupList>
 
-  Segment definition groups. We currently only support one. If specified
-Dimensions must be empty.
+  A segment group, which consists of zero or more source segments, plus
+dimensions that are applied to those source segments.
 
 
 =head2 SegmentType => Str

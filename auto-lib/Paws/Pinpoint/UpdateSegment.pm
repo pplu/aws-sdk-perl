@@ -199,7 +199,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 },
                 ...
               ],                             # OPTIONAL
-              SourceType => 'ALL',           # values: ALL, ANY; OPTIONAL
+              SourceType => 'ALL',           # values: ALL, ANY, NONE; OPTIONAL
               Type       => 'ALL',           # values: ALL, ANY, NONE; OPTIONAL
             },
             ...

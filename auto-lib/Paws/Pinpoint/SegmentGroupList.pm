@@ -39,12 +39,15 @@ Segment group definition.
 
 =head2 Groups => ArrayRef[L<Paws::Pinpoint::SegmentGroup>]
 
-  List of dimension groups to evaluate.
+  A set of segment criteria to evaluate.
 
 
 =head2 Include => Str
 
-  How should the groups be applied for the result
+  Specify how to handle multiple segment groups. For example, if the
+segment includes three segment groups, should the resulting segment
+include endpoints that are matched by all, any, or none of the segment
+groups you created. Acceptable values: ALL, ANY, or NONE.
 
 
 

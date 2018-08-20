@@ -50,7 +50,7 @@ Export job response.
 
 =head2 ApplicationId => Str
 
-  The unique ID of the application to which the job applies.
+  The unique ID of the application associated with the export job.
 
 
 =head2 CompletedPieces => Int

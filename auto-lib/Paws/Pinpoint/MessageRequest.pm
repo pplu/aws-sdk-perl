@@ -4,6 +4,7 @@ package Paws::Pinpoint::MessageRequest;
   has Context => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string');
   has Endpoints => (is => 'ro', isa => 'Paws::Pinpoint::MapOfEndpointSendConfiguration');
   has MessageConfiguration => (is => 'ro', isa => 'Paws::Pinpoint::DirectMessageConfiguration');
+  has TraceId => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Pinpoint::MessageRequest object:
 
-  $service_obj->Method(Att1 => { Addresses => $value, ..., MessageConfiguration => $value  });
+  $service_obj->Method(Att1 => { Addresses => $value, ..., TraceId => $value  });
 
 =head3 Results returned from an API call
 
@@ -64,6 +65,12 @@ endpoint by specifying message overrides or substitutions.
 =head2 MessageConfiguration => L<Paws::Pinpoint::DirectMessageConfiguration>
 
   Message configuration.
+
+
+=head2 TraceId => Str
+
+  A unique ID that you can use to trace a message. This ID is visible to
+recipients.
 
 
 

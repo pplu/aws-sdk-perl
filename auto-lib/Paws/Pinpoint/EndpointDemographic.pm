@@ -38,7 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::E
 
 =head1 DESCRIPTION
 
-Endpoint demographic data
+Demographic information about the endpoint.
 
 =head1 ATTRIBUTES
 
@@ -57,27 +57,27 @@ value.
 
 =head2 Make => Str
 
-  The endpoint make, such as such as Apple or Samsung.
+  The manufacturer of the endpoint device, such as Apple or Samsung.
 
 
 =head2 Model => Str
 
-  The endpoint model, such as iPhone.
+  The model name or number of the endpoint device, such as iPhone.
 
 
 =head2 ModelVersion => Str
 
-  The endpoint model version.
+  The model version of the endpoint device.
 
 
 =head2 Platform => Str
 
-  The endpoint platform, such as ios or android.
+  The platform of the endpoint device, such as iOS or Android.
 
 
 =head2 PlatformVersion => Str
 
-  The endpoint platform version.
+  The platform version of the endpoint device.
 
 
 =head2 Timezone => Str

@@ -40,17 +40,19 @@ Amazon Device Messaging channel definition.
 
 =head2 ClientId => Str
 
-  Client ID as gotten from Amazon
+  The Client ID that you obtained from the Amazon App Distribution
+Portal.
 
 
 =head2 ClientSecret => Str
 
-  Client secret as gotten from Amazon
+  The Client Secret that you obtained from the Amazon App Distribution
+Portal.
 
 
 =head2 Enabled => Bool
 
-  If the channel is enabled for sending messages.
+  Indicates whether or not the channel is enabled for sending messages.
 
 
 

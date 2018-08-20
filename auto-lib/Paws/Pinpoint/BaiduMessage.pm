@@ -63,8 +63,7 @@ OPEN_APP | DEEP_LINK | URL
 
 =head2 Body => Str
 
-  The message body of the notification, the email body or the text
-message.
+  The message body of the notification.
 
 
 =head2 Data => L<Paws::Pinpoint::MapOf__string>

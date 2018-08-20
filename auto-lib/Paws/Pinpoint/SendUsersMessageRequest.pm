@@ -2,6 +2,7 @@ package Paws::Pinpoint::SendUsersMessageRequest;
   use Moose;
   has Context => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string');
   has MessageConfiguration => (is => 'ro', isa => 'Paws::Pinpoint::DirectMessageConfiguration');
+  has TraceId => (is => 'ro', isa => 'Str');
   has Users => (is => 'ro', isa => 'Paws::Pinpoint::MapOfEndpointSendConfiguration');
 1;
 
@@ -50,6 +51,12 @@ the events that it generates for users-messages deliveries.
 
   Message definitions for the default message and any messages that are
 tailored for specific channels.
+
+
+=head2 TraceId => Str
+
+  A unique ID that you can use to trace a message. This ID is visible to
+recipients.
 
 
 =head2 Users => L<Paws::Pinpoint::MapOfEndpointSendConfiguration>

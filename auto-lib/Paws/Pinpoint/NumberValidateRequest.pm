@@ -39,13 +39,15 @@ Phone Number Information request.
 
 =head2 IsoCountryCode => Str
 
-  (Optional) The two-character ISO country code for the country where the
-phone number was originally registered.
+  (Optional) The two-character ISO country code for the country or region
+where the phone number was originally registered.
 
 
 =head2 PhoneNumber => Str
 
-  The phone number to get information about.
+  The phone number to get information about. The phone number that you
+provide should include a country code. If the number doesn't include a
+valid country code, the operation might result in an error.
 
 
 
