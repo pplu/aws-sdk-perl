@@ -920,8 +920,8 @@ Associates the specified Systems Manager document with the specified
 instances or targets.
 
 When you associate a document with one or more instances using instance
-IDs or tags, the SSM Agent running on the instance processes the
-document and configures the instance as specified.
+IDs or tags, SSM Agent running on the instance processes the document
+and configures the instance as specified.
 
 If you associate a document with an instance that already has an
 associated document, the system throws the AssociationAlreadyExists
@@ -945,8 +945,8 @@ Associates the specified Systems Manager document with the specified
 instances or targets.
 
 When you associate a document with one or more instances using instance
-IDs or tags, the SSM Agent running on the instance processes the
-document and configures the instance as specified.
+IDs or tags, SSM Agent running on the instance processes the document
+and configures the instance as specified.
 
 If you associate a document with an instance that already has an
 associated document, the system throws the AssociationAlreadyExists
@@ -3066,6 +3066,8 @@ time. This action can be helpful when troubleshooting associations.
 =item [Mode => Str]
 
 =item [Parameters => L<Paws::SSM::AutomationParameterMap>]
+
+=item [TargetMaps => ArrayRef[L<Paws::SSM::TargetMap>]]
 
 =item [TargetParameterName => Str]
 

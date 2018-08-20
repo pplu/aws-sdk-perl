@@ -18,6 +18,7 @@ package Paws::SSM::AutomationExecutionMetadata;
   has ParentAutomationExecutionId => (is => 'ro', isa => 'Str');
   has ResolvedTargets => (is => 'ro', isa => 'Paws::SSM::ResolvedTargets');
   has Target => (is => 'ro', isa => 'Str');
+  has TargetMaps => (is => 'ro', isa => 'ArrayRef[Paws::SSM::TargetMap]');
   has TargetParameterName => (is => 'ro', isa => 'Str');
   has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
 1;
@@ -146,6 +147,12 @@ Automation.
 =head2 Target => Str
 
   The list of execution outputs as defined in the Automation document.
+
+
+=head2 TargetMaps => ArrayRef[L<Paws::SSM::TargetMap>]
+
+  The specified key-value mapping of document parameters to target
+resources.
 
 
 =head2 TargetParameterName => Str
