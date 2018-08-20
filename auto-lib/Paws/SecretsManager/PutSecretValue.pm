@@ -97,7 +97,7 @@ secret values.
 
 =back
 
-This value becomes the C<SecretVersionId> of the new version.
+This value becomes the C<VersionId> of the new version.
 
 
 

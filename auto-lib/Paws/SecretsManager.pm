@@ -241,10 +241,10 @@ If you cancel a rotation that is in progress, it can leave the
 C<VersionStage> labels in an unexpected state. Depending on what step
 of the rotation was in progress, you might need to remove the staging
 label C<AWSPENDING> from the partially created version, specified by
-the C<SecretVersionId> response value. You should also evaluate the
-partially rotated new version to see if it should be deleted, which you
-can do by removing all staging labels from the new version's
-C<VersionStage> field.
+the C<VersionId> response value. You should also evaluate the partially
+rotated new version to see if it should be deleted, which you can do by
+removing all staging labels from the new version's C<VersionStage>
+field.
 
 To successfully start a rotation, the staging label C<AWSPENDING> must
 be in one of the following states:
@@ -493,6 +493,8 @@ To list all of the currently available secrets, use ListSecrets.
 =over
 
 =item SecretId => Str
+
+=item [ForceDeleteWithoutRecovery => Bool]
 
 =item [RecoveryWindowInDays => Int]
 
@@ -1001,12 +1003,12 @@ C<AWSCURRENT> was removed from.
 
 =item *
 
-This operation is idempotent. If a version with a C<SecretVersionId>
-with the same value as the C<ClientRequestToken> parameter already
-exists and you specify the same secret data, the operation succeeds but
-does nothing. However, if the secret data is different, then the
-operation fails because you cannot modify an existing version; you can
-only create new ones.
+This operation is idempotent. If a version with a C<VersionId> with the
+same value as the C<ClientRequestToken> parameter already exists and
+you specify the same secret data, the operation succeeds but does
+nothing. However, if the secret data is different, then the operation
+fails because you cannot modify an existing version; you can only
+create new ones.
 
 =back
 
@@ -1163,6 +1165,14 @@ how to configure a Lambda function to rotate the secrets for your
 protected service, see Rotating Secrets in AWS Secrets Manager
 (http://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html)
 in the I<AWS Secrets Manager User Guide>.
+
+Secrets Manager schedules the next rotation when the previous one is
+complete. Secrets Manager schedules the date by adding the rotation
+interval (number of days) to the actual date of the last rotation. The
+service chooses the hour within that 24-hour date window randomly. The
+minute is also chosen somewhat randomly, but weighted towards the top
+of the hour and influenced by a variety of factors that help distribute
+load.
 
 The rotation function must end with the versions of the secret in one
 of two states:
@@ -1397,8 +1407,8 @@ Each argument is described in detail in: L<Paws::SecretsManager::UpdateSecret>
 
 Returns: a L<Paws::SecretsManager::UpdateSecretResponse> instance
 
-Modifies many of the details of a secret. If you include a
-C<ClientRequestToken> and either C<SecretString> or C<SecretBinary>
+Modifies many of the details of the specified secret. If you include a
+C<ClientRequestToken> and I<either> C<SecretString> or C<SecretBinary>
 then it also creates a new version attached to the secret.
 
 To modify the rotation configuration of a secret, use RotateSecret
@@ -1413,10 +1423,10 @@ must use either the AWS CLI or one of the AWS SDKs.
 
 =item *
 
-If a version with a C<SecretVersionId> with the same value as the
-C<ClientRequestToken> parameter already exists, the operation generates
-an error. You cannot modify an existing version, you can only create
-new ones.
+If a version with a C<VersionId> with the same value as the
+C<ClientRequestToken> parameter already exists, the operation results
+in an error. You cannot modify an existing version, you can only create
+a new version.
 
 =item *
 

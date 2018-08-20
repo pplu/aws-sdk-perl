@@ -105,7 +105,7 @@ existing version. Instead, use PutSecretValue to create a new version.
 
 =back
 
-This value becomes the C<SecretVersionId> of the new version.
+This value becomes the C<VersionId> of the new version.
 
 
 

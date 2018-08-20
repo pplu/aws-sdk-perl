@@ -69,8 +69,9 @@ The last date and time that this secret was modified in any way.
 
 =head2 LastRotatedDate => Str
 
-The last date and time that the Secrets Manager rotation process for
-this secret was invoked.
+The most recent date and time that the Secrets Manager rotation process
+was successfully completed. This value is null if the secret has never
+rotated.
 
 
 =head2 Name => Str
@@ -109,9 +110,8 @@ UntagResource.
 =head2 VersionIdsToStages => L<Paws::SecretsManager::SecretVersionsToStagesMapType>
 
 A list of all of the currently assigned C<VersionStage> staging labels
-and the C<SecretVersionId> that each is attached to. Staging labels are
-used to keep track of the different versions during the rotation
-process.
+and the C<VersionId> that each is attached to. Staging labels are used
+to keep track of the different versions during the rotation process.
 
 A version that does not have any staging labels attached is considered
 deprecated and subject to deletion. Such versions are not included in

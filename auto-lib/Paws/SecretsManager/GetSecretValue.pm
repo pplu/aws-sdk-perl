@@ -65,7 +65,7 @@ name of the secret.
 Specifies the unique identifier of the version of the secret that you
 want to retrieve. If you specify this parameter then don't specify
 C<VersionStage>. If you don't specify either a C<VersionStage> or
-C<SecretVersionId> then the default is to perform the operation on the
+C<VersionId> then the default is to perform the operation on the
 version with the C<VersionStage> value of C<AWSCURRENT>.
 
 This value is typically a UUID-type
@@ -81,8 +81,8 @@ label attached to the version.
 
 Staging labels are used to keep track of different versions during the
 rotation process. If you use this parameter then don't specify
-C<SecretVersionId>. If you don't specify either a C<VersionStage> or
-C<SecretVersionId>, then the default is to perform the operation on the
+C<VersionId>. If you don't specify either a C<VersionStage> or
+C<VersionId>, then the default is to perform the operation on the
 version with the C<VersionStage> value of C<AWSCURRENT>.
 
 

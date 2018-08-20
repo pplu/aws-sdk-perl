@@ -56,8 +56,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 labels to.
 
 If any of the staging labels are already attached to a different
-version of the secret, then they are removed from that version before
-adding them to this version.
+version of the secret, then they are automatically removed from that
+version before adding them to this version.
 
 
 

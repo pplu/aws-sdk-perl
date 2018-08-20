@@ -1,6 +1,7 @@
 
 package Paws::SecretsManager::DeleteSecret;
   use Moose;
+  has ForceDeleteWithoutRecovery => (is => 'ro', isa => 'Bool');
   has RecoveryWindowInDays => (is => 'ro', isa => 'Int');
   has SecretId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -29,8 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $secretsmanager = Paws->service('SecretsManager');
     my $DeleteSecretResponse = $secretsmanager->DeleteSecret(
-      SecretId             => 'MySecretIdType',
-      RecoveryWindowInDays => 1,                  # OPTIONAL
+      SecretId                   => 'MySecretIdType',
+      ForceDeleteWithoutRecovery => 1,                  # OPTIONAL
+      RecoveryWindowInDays       => 1,                  # OPTIONAL
     );
 
     # Results:
@@ -46,10 +48,32 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 =head1 ATTRIBUTES
 
 
+=head2 ForceDeleteWithoutRecovery => Bool
+
+(Optional) Specifies that the secret is to be deleted without any
+recovery window. You can't use both this parameter and the
+C<RecoveryWindowInDays> parameter in the same API call.
+
+An asynchronous background process performs the actual deletion, so
+there can be a short delay before the operation completes. If you write
+code to delete and then immediately recreate a secret with the same
+name, ensure that your code includes appropriate back off and retry
+logic.
+
+Use this parameter with caution. This parameter causes the operation to
+skip the normal waiting period before the permanent deletion that AWS
+would normally impose with the C<RecoveryWindowInDays> parameter. If
+you delete a secret with the C<ForceDeleteWithouRecovery> parameter,
+then you have no opportunity to recover the secret. It is permanently
+lost.
+
+
+
 =head2 RecoveryWindowInDays => Int
 
 (Optional) Specifies the number of days that Secrets Manager waits
-before it can delete the secret.
+before it can delete the secret. You can't use both this parameter and
+the C<ForceDeleteWithoutRecovery> parameter in the same API call.
 
 This value can range from 7 to 30 days. The default value is 30.
 

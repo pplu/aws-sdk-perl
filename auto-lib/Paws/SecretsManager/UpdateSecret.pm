@@ -99,39 +99,36 @@ secret value.
 
 =back
 
-This value becomes the C<SecretVersionId> of the new version.
+This value becomes the C<VersionId> of the new version.
 
 
 
 =head2 Description => Str
 
-(Optional) Specifies a user-provided description of the secret.
+(Optional) Specifies an updated user-provided description of the
+secret.
 
 
 
 =head2 KmsKeyId => Str
 
-(Optional) Specifies the ARN or alias of the AWS KMS customer master
-key (CMK) to be used to encrypt the protected text in the versions of
-this secret.
-
-If you don't specify this value, then Secrets Manager defaults to using
-the default CMK in the account (the one named C<aws/secretsmanager>).
-If a AWS KMS CMK with that name doesn't exist, then Secrets Manager
-creates it for you automatically the first time it needs to encrypt a
-version's C<Plaintext> or C<PlaintextString> fields.
+(Optional) Specifies an updated ARN or alias of the AWS KMS customer
+master key (CMK) to be used to encrypt the protected text in new
+versions of this secret.
 
 You can only use the account's default CMK to encrypt and decrypt if
 you call this operation using credentials from the same account that
 owns the secret. If the secret is in a different account, then you must
-create a custom CMK and provide the ARN in this field.
+create a custom CMK and provide the ARN of that CMK in this field. The
+user making the call must have permissions to both the secret and the
+CMK in their respective accounts.
 
 
 
 =head2 SecretBinary => Str
 
-(Optional) Specifies binary data that you want to encrypt and store in
-the new version of the secret. To use this parameter in the
+(Optional) Specifies updated binary data that you want to encrypt and
+store in the new version of the secret. To use this parameter in the
 command-line tools, we recommend that you store your binary data in a
 file and then use the appropriate technique for your tool to pass the
 contents of the file as a parameter. Either C<SecretBinary> or
@@ -144,7 +141,7 @@ This parameter is not accessible using the Secrets Manager console.
 
 =head2 B<REQUIRED> SecretId => Str
 
-Specifies the secret that you want to update or to which you want to
+Specifies the secret that you want to modify or to which you want to
 add a new version. You can specify either the Amazon Resource Name
 (ARN) or the friendly name of the secret.
 
@@ -152,8 +149,8 @@ add a new version. You can specify either the Amazon Resource Name
 
 =head2 SecretString => Str
 
-(Optional) Specifies text data that you want to encrypt and store in
-this new version of the secret. Either C<SecretBinary> or
+(Optional) Specifies updated text data that you want to encrypt and
+store in this new version of the secret. Either C<SecretBinary> or
 C<SecretString> must have a value, but not both. They cannot both be
 empty.
 
@@ -174,7 +171,12 @@ C<[{"username":"bob"},{"password":"abc123xyz456"}]>
 
 If your command-line tool or SDK requires quotation marks around the
 parameter, you should use single quotes to avoid confusion with the
-double quotes required in the JSON text.
+double quotes required in the JSON text. You can also 'escape' the
+double quote character in the embedded JSON text by prefacing each with
+a backslash. For example, the following string is surrounded by
+double-quotes. All of the embedded double quotes are escaped:
+
+C<"[{\"username\":\"bob\"},{\"password\":\"abc123xyz456\"}]">
 
 
 

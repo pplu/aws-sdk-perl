@@ -73,31 +73,8 @@ ensure uniqueness within the specified secret.
 
 Secrets Manager uses this value to prevent the accidental creation of
 duplicate versions if there are failures and retries during the
-function's processing.
-
-=over
-
-=item *
-
-If the C<ClientRequestToken> value isn't already associated with a
-version of the secret then a new version of the secret is created.
-
-=item *
-
-If a version with this value already exists and that version's
-C<SecretString> and C<SecretBinary> values are the same as the request,
-then the request is ignored (the operation is idempotent).
-
-=item *
-
-If a version with this value already exists and that version's
-C<SecretString> and C<SecretBinary> values are different from the
-request then an error occurs because you cannot modify an existing
-secret value.
-
-=back
-
-This value becomes the C<SecretVersionId> of the new version.
+function's processing. This value becomes the C<VersionId> of the new
+version.
 
 
 
