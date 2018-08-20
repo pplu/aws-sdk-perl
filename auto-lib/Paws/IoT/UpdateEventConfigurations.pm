@@ -32,7 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EventConfigurations => {
         'THING' => {
           Enabled => 1,    # OPTIONAL
-        }, # key: values: THING, THING_GROUP, THING_TYPE, THING_GROUP_MEMBERSHIP, THING_GROUP_HIERARCHY, THING_TYPE_ASSOCIATION, JOB, JOB_EXECUTION
+        }, # key: values: THING, THING_GROUP, THING_TYPE, THING_GROUP_MEMBERSHIP, THING_GROUP_HIERARCHY, THING_TYPE_ASSOCIATION, JOB, JOB_EXECUTION, POLICY, CERTIFICATE, CA_CERTIFICATE
       },    # OPTIONAL
     );
 

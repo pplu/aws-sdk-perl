@@ -3,7 +3,6 @@ package Paws::IoT::CreateJob;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has Document => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'document');
-  has DocumentParameters => (is => 'ro', isa => 'Paws::IoT::JobDocumentParameters', traits => ['NameInRequest'], request_name => 'documentParameters');
   has DocumentSource => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'documentSource');
   has JobExecutionsRolloutConfig => (is => 'ro', isa => 'Paws::IoT::JobExecutionsRolloutConfig', traits => ['NameInRequest'], request_name => 'jobExecutionsRolloutConfig');
   has JobId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'jobId', required => 1);
@@ -37,14 +36,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $iot = Paws->service('IoT');
     my $CreateJobResponse = $iot->CreateJob(
-      JobId              => 'MyJobId',
-      Targets            => [ 'MyTargetArn', ... ],
-      Description        => 'MyJobDescription',       # OPTIONAL
-      Document           => 'MyJobDocument',          # OPTIONAL
-      DocumentParameters => {
-        'MyParameterKey' =>
-          'MyParameterValue',  # key: min: 1, max: 128, value: min: 1, max: 1024
-      },    # OPTIONAL
+      JobId                      => 'MyJobId',
+      Targets                    => [ 'MyTargetArn', ... ],
+      Description                => 'MyJobDescription',       # OPTIONAL
+      Document                   => 'MyJobDocument',          # OPTIONAL
       DocumentSource             => 'MyJobDocumentSource',    # OPTIONAL
       JobExecutionsRolloutConfig => {
         MaximumPerMinute => 1,    # min: 1, max: 1000; OPTIONAL
@@ -78,12 +73,6 @@ A short text description of the job.
 =head2 Document => Str
 
 The job document.
-
-
-
-=head2 DocumentParameters => L<Paws::IoT::JobDocumentParameters>
-
-Parameters for the job document.
 
 
 
