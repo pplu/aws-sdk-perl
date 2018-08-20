@@ -188,6 +188,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dax
 
 =item [SecurityGroupIds => ArrayRef[Str|Undef]]
 
+=item [SSESpecification => L<Paws::DAX::SSESpecification>]
+
 =item [SubnetGroupName => Str]
 
 =item [Tags => ArrayRef[L<Paws::DAX::Tag>]]
