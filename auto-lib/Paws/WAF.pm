@@ -113,6 +113,11 @@ package Paws::WAF;
     my $call_object = $self->new_with_coercions('Paws::WAF::DeleteIPSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteLoggingConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAF::DeleteLoggingConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeletePermissionPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAF::DeletePermissionPolicy', @_);
@@ -186,6 +191,11 @@ package Paws::WAF;
   sub GetIPSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAF::GetIPSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetLoggingConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAF::GetLoggingConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetPermissionPolicy {
@@ -268,6 +278,11 @@ package Paws::WAF;
     my $call_object = $self->new_with_coercions('Paws::WAF::ListIPSets', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListLoggingConfigurations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAF::ListLoggingConfigurations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListRateBasedRules {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAF::ListRateBasedRules', @_);
@@ -316,6 +331,11 @@ package Paws::WAF;
   sub ListXssMatchSets {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAF::ListXssMatchSets', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutLoggingConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAF::PutLoggingConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutPermissionPolicy {
@@ -547,7 +567,7 @@ package Paws::WAF;
   }
 
 
-  sub operations { qw/CreateByteMatchSet CreateGeoMatchSet CreateIPSet CreateRateBasedRule CreateRegexMatchSet CreateRegexPatternSet CreateRule CreateRuleGroup CreateSizeConstraintSet CreateSqlInjectionMatchSet CreateWebACL CreateXssMatchSet DeleteByteMatchSet DeleteGeoMatchSet DeleteIPSet DeletePermissionPolicy DeleteRateBasedRule DeleteRegexMatchSet DeleteRegexPatternSet DeleteRule DeleteRuleGroup DeleteSizeConstraintSet DeleteSqlInjectionMatchSet DeleteWebACL DeleteXssMatchSet GetByteMatchSet GetChangeToken GetChangeTokenStatus GetGeoMatchSet GetIPSet GetPermissionPolicy GetRateBasedRule GetRateBasedRuleManagedKeys GetRegexMatchSet GetRegexPatternSet GetRule GetRuleGroup GetSampledRequests GetSizeConstraintSet GetSqlInjectionMatchSet GetWebACL GetXssMatchSet ListActivatedRulesInRuleGroup ListByteMatchSets ListGeoMatchSets ListIPSets ListRateBasedRules ListRegexMatchSets ListRegexPatternSets ListRuleGroups ListRules ListSizeConstraintSets ListSqlInjectionMatchSets ListSubscribedRuleGroups ListWebACLs ListXssMatchSets PutPermissionPolicy UpdateByteMatchSet UpdateGeoMatchSet UpdateIPSet UpdateRateBasedRule UpdateRegexMatchSet UpdateRegexPatternSet UpdateRule UpdateRuleGroup UpdateSizeConstraintSet UpdateSqlInjectionMatchSet UpdateWebACL UpdateXssMatchSet / }
+  sub operations { qw/CreateByteMatchSet CreateGeoMatchSet CreateIPSet CreateRateBasedRule CreateRegexMatchSet CreateRegexPatternSet CreateRule CreateRuleGroup CreateSizeConstraintSet CreateSqlInjectionMatchSet CreateWebACL CreateXssMatchSet DeleteByteMatchSet DeleteGeoMatchSet DeleteIPSet DeleteLoggingConfiguration DeletePermissionPolicy DeleteRateBasedRule DeleteRegexMatchSet DeleteRegexPatternSet DeleteRule DeleteRuleGroup DeleteSizeConstraintSet DeleteSqlInjectionMatchSet DeleteWebACL DeleteXssMatchSet GetByteMatchSet GetChangeToken GetChangeTokenStatus GetGeoMatchSet GetIPSet GetLoggingConfiguration GetPermissionPolicy GetRateBasedRule GetRateBasedRuleManagedKeys GetRegexMatchSet GetRegexPatternSet GetRule GetRuleGroup GetSampledRequests GetSizeConstraintSet GetSqlInjectionMatchSet GetWebACL GetXssMatchSet ListActivatedRulesInRuleGroup ListByteMatchSets ListGeoMatchSets ListIPSets ListLoggingConfigurations ListRateBasedRules ListRegexMatchSets ListRegexPatternSets ListRuleGroups ListRules ListSizeConstraintSets ListSqlInjectionMatchSets ListSubscribedRuleGroups ListWebACLs ListXssMatchSets PutLoggingConfiguration PutPermissionPolicy UpdateByteMatchSet UpdateGeoMatchSet UpdateIPSet UpdateRateBasedRule UpdateRegexMatchSet UpdateRegexPatternSet UpdateRule UpdateRuleGroup UpdateSizeConstraintSet UpdateSqlInjectionMatchSet UpdateWebACL UpdateXssMatchSet / }
 
 1;
 
@@ -1464,6 +1484,23 @@ Submit a C<DeleteIPSet> request.
 
 
 
+=head2 DeleteLoggingConfiguration
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WAF::DeleteLoggingConfiguration>
+
+Returns: a L<Paws::WAF::DeleteLoggingConfigurationResponse> instance
+
+Permanently deletes the LoggingConfiguration from the specified web
+ACL.
+
+
 =head2 DeletePermissionPolicy
 
 =over
@@ -1968,6 +2005,22 @@ Returns: a L<Paws::WAF::GetIPSetResponse> instance
 Returns the IPSet that is specified by C<IPSetId>.
 
 
+=head2 GetLoggingConfiguration
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WAF::GetLoggingConfiguration>
+
+Returns: a L<Paws::WAF::GetLoggingConfigurationResponse> instance
+
+Returns the LoggingConfiguration for the specified web ACL.
+
+
 =head2 GetPermissionPolicy
 
 =over
@@ -2263,6 +2316,24 @@ Returns: a L<Paws::WAF::ListIPSetsResponse> instance
 Returns an array of IPSetSummary objects in the response.
 
 
+=head2 ListLoggingConfigurations
+
+=over
+
+=item [Limit => Int]
+
+=item [NextMarker => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WAF::ListLoggingConfigurations>
+
+Returns: a L<Paws::WAF::ListLoggingConfigurationsResponse> instance
+
+Returns an array of LoggingConfiguration objects.
+
+
 =head2 ListRateBasedRules
 
 =over
@@ -2443,6 +2514,48 @@ Returns: a L<Paws::WAF::ListXssMatchSetsResponse> instance
 Returns an array of XssMatchSet objects.
 
 
+=head2 PutLoggingConfiguration
+
+=over
+
+=item LoggingConfiguration => L<Paws::WAF::LoggingConfiguration>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WAF::PutLoggingConfiguration>
+
+Returns: a L<Paws::WAF::PutLoggingConfigurationResponse> instance
+
+Associates a LoggingConfiguration with a specified web ACL.
+
+You can access information about all traffic that AWS WAF inspects
+using the following steps:
+
+=over
+
+=item 1.
+
+Create an Amazon Kinesis Data Firehose delivery stream. For more
+information, see Creating an Amazon Kinesis Data Firehose Delivery
+Stream
+(https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html).
+
+=item 2.
+
+Associate that delivery stream to your web ACL using a
+C<PutLoggingConfiguration> request.
+
+=back
+
+When you successfully enable logging using a C<PutLoggingConfiguration>
+request, AWS WAF will create a service linked role with the necessary
+permissions to write logs to the Amazon Kinesis Data Firehose delivery
+stream. For more information, see Logging Web ACL Traffic Information
+(http://docs.aws.amazon.com/waf/latest/developerguide/logging.html) in
+the I<AWS WAF Developer Guide>.
+
+
 =head2 PutPermissionPolicy
 
 =over
@@ -2480,8 +2593,9 @@ C<Effect> must specify C<Allow>.
 
 =item *
 
-The C<Action> in the policy must be C<waf:UpdateWebACL> and
-C<waf-regional:UpdateWebACL>. Any extra or wildcard actions in the
+The C<Action> in the policy must be C<waf:UpdateWebACL>,
+C<waf-regional:UpdateWebACL>, C<waf:GetRuleGroup> and
+C<waf-regional:GetRuleGroup> . Any extra or wildcard actions in the
 policy will be rejected.
 
 =item *
@@ -2700,9 +2814,10 @@ C<192.0.2.44/32> (for the individual IP address C<192.0.2.44>).
 
 =back
 
-AWS WAF supports /8, /16, /24, and /32 IP address ranges for IPv4, and
-/24, /32, /48, /56, /64 and /128 for IPv6. For more information about
-CIDR notation, see the Wikipedia entry Classless Inter-Domain Routing
+AWS WAF supports IPv4 address ranges: /8 and any range between /16
+through /32. AWS WAF supports IPv6 address ranges: /16, /24, /32, /48,
+/56, /64, and /128. For more information about CIDR notation, see the
+Wikipedia entry Classless Inter-Domain Routing
 (https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
 IPv6 addresses can be represented using any of the following formats:
@@ -2758,6 +2873,8 @@ When you update an C<IPSet>, you specify the IP addresses that you want
 to add and/or the IP addresses that you want to delete. If you want to
 change an IP address, you delete the existing IP address and add the
 new one.
+
+You can insert a maximum of 1000 addresses in a single request.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
@@ -3187,6 +3304,8 @@ transformations of the request body are not supported because the AWS
 resource forwards only the first C<8192> bytes of your request to AWS
 WAF.
 
+You can only specify a single type of TextTransformation.
+
 =item *
 
 A C<ComparisonOperator> used for evaluating the selected part of the
@@ -3266,14 +3385,16 @@ existing object and add a new one.
 =item *
 
 C<FieldToMatch>: The part of web requests that you want AWS WAF to
-inspect and, if you want AWS WAF to inspect a header, the name of the
-header.
+inspect and, if you want AWS WAF to inspect a header or custom query
+parameter, the name of the header or parameter.
 
 =item *
 
 C<TextTransformation>: Which text transformation, if any, to perform on
 the web request before inspecting the request for snippets of malicious
 SQL code.
+
+You can only specify a single type of TextTransformation.
 
 =back
 
@@ -3440,14 +3561,16 @@ and add a new one.
 =item *
 
 C<FieldToMatch>: The part of web requests that you want AWS WAF to
-inspect and, if you want AWS WAF to inspect a header, the name of the
-header.
+inspect and, if you want AWS WAF to inspect a header or custom query
+parameter, the name of the header or parameter.
 
 =item *
 
 C<TextTransformation>: Which text transformation, if any, to perform on
 the web request before inspecting the request for cross-site scripting
 attacks.
+
+You can only specify a single type of TextTransformation.
 
 =back
 
