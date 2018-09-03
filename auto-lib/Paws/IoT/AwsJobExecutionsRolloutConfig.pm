@@ -1,15 +1,13 @@
-package Paws::IoT::S3Location;
+package Paws::IoT::AwsJobExecutionsRolloutConfig;
   use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', request_name => 'bucket', traits => ['NameInRequest']);
-  has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest']);
-  has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
+  has MaximumPerMinute => (is => 'ro', isa => 'Int', request_name => 'maximumPerMinute', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::IoT::S3Location
+Paws::IoT::AwsJobExecutionsRolloutConfig
 
 =head1 USAGE
 
@@ -20,37 +18,27 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::IoT::S3Location object:
+As an example, if Att1 is expected to be a Paws::IoT::AwsJobExecutionsRolloutConfig object:
 
-  $service_obj->Method(Att1 => { Bucket => $value, ..., Version => $value  });
+  $service_obj->Method(Att1 => { MaximumPerMinute => $value, ..., MaximumPerMinute => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::S3Location object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::AwsJobExecutionsRolloutConfig object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Bucket
+  $result->Att1->MaximumPerMinute
 
 =head1 DESCRIPTION
 
-The S3 location.
+Configuration for the rollout of OTA updates.
 
 =head1 ATTRIBUTES
 
 
-=head2 Bucket => Str
+=head2 MaximumPerMinute => Int
 
-  The S3 bucket.
-
-
-=head2 Key => Str
-
-  The S3 key.
-
-
-=head2 Version => Str
-
-  The S3 bucket version.
+  The maximum number of OTA update job executions started per minute.
 
 
 

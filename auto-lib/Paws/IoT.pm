@@ -1488,6 +1488,8 @@ certificate, so it is important to keep it in a secure location.
 
 =item [AdditionalParameters => L<Paws::IoT::AdditionalParameterMap>]
 
+=item [AwsJobExecutionsRolloutConfig => L<Paws::IoT::AwsJobExecutionsRolloutConfig>]
+
 =item [Description => Str]
 
 =item [TargetSelection => Str]
@@ -1861,6 +1863,10 @@ Deletes a job execution.
 =over
 
 =item OtaUpdateId => Str
+
+=item [DeleteStream => Bool]
+
+=item [ForceDeleteAWSJob => Bool]
 
 
 =back
@@ -4014,6 +4020,8 @@ Updates the event configurations.
 =head2 UpdateIndexingConfiguration
 
 =over
+
+=item [ThingGroupIndexingConfiguration => L<Paws::IoT::ThingGroupIndexingConfiguration>]
 
 =item [ThingIndexingConfiguration => L<Paws::IoT::ThingIndexingConfiguration>]
 

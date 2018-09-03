@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           FileId     => 1,                     # max: 255; OPTIONAL
           S3Location => {
-            Bucket  => 'MyS3Bucket',           # min: 1
-            Key     => 'MyS3Key',              # min: 1
+            Bucket  => 'MyS3Bucket',           # min: 1; OPTIONAL
+            Key     => 'MyS3Key',              # min: 1; OPTIONAL
             Version => 'MyS3Version',          # OPTIONAL
           },    # OPTIONAL
         },

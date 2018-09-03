@@ -45,7 +45,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 
 =head2 EndpointType => Str
 
-The endpoint type.
+The endpoint type (such as C<iot:Data>, C<iot:CredentialProvider> and
+C<iot:Jobs>).
 
 
 

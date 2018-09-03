@@ -1,6 +1,6 @@
 package Paws::IoT::ThingIndexingConfiguration;
   use Moose;
-  has ThingIndexingMode => (is => 'ro', isa => 'Str', request_name => 'thingIndexingMode', traits => ['NameInRequest']);
+  has ThingIndexingMode => (is => 'ro', isa => 'Str', request_name => 'thingIndexingMode', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +36,7 @@ Thing indexing configuration.
 =head1 ATTRIBUTES
 
 
-=head2 ThingIndexingMode => Str
+=head2 B<REQUIRED> ThingIndexingMode => Str
 
   Thing indexing mode. Valid values are:
 

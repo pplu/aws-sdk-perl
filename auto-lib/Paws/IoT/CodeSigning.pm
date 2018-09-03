@@ -2,6 +2,7 @@ package Paws::IoT::CodeSigning;
   use Moose;
   has AwsSignerJobId => (is => 'ro', isa => 'Str', request_name => 'awsSignerJobId', traits => ['NameInRequest']);
   has CustomCodeSigning => (is => 'ro', isa => 'Paws::IoT::CustomCodeSigning', request_name => 'customCodeSigning', traits => ['NameInRequest']);
+  has StartSigningJobParameter => (is => 'ro', isa => 'Paws::IoT::StartSigningJobParameter', request_name => 'startSigningJobParameter', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +22,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT::CodeSigning object:
 
-  $service_obj->Method(Att1 => { AwsSignerJobId => $value, ..., CustomCodeSigning => $value  });
+  $service_obj->Method(Att1 => { AwsSignerJobId => $value, ..., StartSigningJobParameter => $value  });
 
 =head3 Results returned from an API call
 
@@ -45,6 +46,11 @@ Describes the method to use when code signing a file.
 =head2 CustomCodeSigning => L<Paws::IoT::CustomCodeSigning>
 
   A custom method for code signing a file.
+
+
+=head2 StartSigningJobParameter => L<Paws::IoT::StartSigningJobParameter>
+
+  Describes the code-signing job.
 
 
 

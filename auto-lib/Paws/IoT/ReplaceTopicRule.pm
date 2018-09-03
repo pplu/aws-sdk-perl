@@ -36,7 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             CloudwatchAlarm => {
               AlarmName   => 'MyAlarmName',
-              RoleArn     => 'MyAwsArn',        # OPTIONAL
+              RoleArn     => 'MyAwsArn',
               StateReason => 'MyStateReason',
               StateValue  => 'MyStateValue',
 
@@ -46,13 +46,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               MetricNamespace => 'MyString',
               MetricUnit      => 'MyString',
               MetricValue     => 'MyString',
-              RoleArn         => 'MyAwsArn',    # OPTIONAL
+              RoleArn         => 'MyAwsArn',
               MetricTimestamp => 'MyString',
             },    # OPTIONAL
             DynamoDB => {
               HashKeyField => 'MyHashKeyField',
               HashKeyValue => 'MyHashKeyValue',
-              RoleArn      => 'MyAwsArn',         # OPTIONAL
+              RoleArn      => 'MyAwsArn',
               TableName    => 'MyTableName',
               HashKeyType => 'STRING',    # values: STRING, NUMBER; OPTIONAL
               Operation     => 'MyDynamoOperation',    # OPTIONAL
@@ -66,28 +66,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 TableName => 'MyTableName',
 
               },    # OPTIONAL
-              RoleArn => 'MyAwsArn',    # OPTIONAL
+              RoleArn => 'MyAwsArn',
             },    # OPTIONAL
             Elasticsearch => {
               Endpoint => 'MyElasticsearchEndpoint',
               Id       => 'MyElasticsearchId',
               Index    => 'MyElasticsearchIndex',
-              RoleArn  => 'MyAwsArn',                  # OPTIONAL
+              RoleArn  => 'MyAwsArn',
               Type     => 'MyElasticsearchType',
 
             },    # OPTIONAL
             Firehose => {
               DeliveryStreamName => 'MyDeliveryStreamName',
-              RoleArn            => 'MyAwsArn',               # OPTIONAL
+              RoleArn            => 'MyAwsArn',
               Separator          => 'MyFirehoseSeparator',    # OPTIONAL
             },    # OPTIONAL
             IotAnalytics => {
-              ChannelArn  => 'MyAwsArn',         # OPTIONAL
+              ChannelArn  => 'MyAwsArn',
               ChannelName => 'MyChannelName',    # OPTIONAL
-              RoleArn     => 'MyAwsArn',         # OPTIONAL
+              RoleArn     => 'MyAwsArn',
             },    # OPTIONAL
             Kinesis => {
-              RoleArn      => 'MyAwsArn',          # OPTIONAL
+              RoleArn      => 'MyAwsArn',
               StreamName   => 'MyStreamName',
               PartitionKey => 'MyPartitionKey',    # OPTIONAL
             },    # OPTIONAL
@@ -96,14 +96,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
             },    # OPTIONAL
             Republish => {
-              RoleArn => 'MyAwsArn',         # OPTIONAL
+              RoleArn => 'MyAwsArn',
               Topic   => 'MyTopicPattern',
 
             },    # OPTIONAL
             S3 => {
               BucketName => 'MyBucketName',
               Key        => 'MyKey',
-              RoleArn    => 'MyAwsArn',       # OPTIONAL
+              RoleArn    => 'MyAwsArn',
               CannedAcl  => 'private'
               , # values: private, public-read, public-read-write, aws-exec-read, authenticated-read, bucket-owner-read, bucket-owner-full-control, log-delivery-write; OPTIONAL
             },    # OPTIONAL
@@ -113,17 +113,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
             },    # OPTIONAL
             Sns => {
-              RoleArn       => 'MyAwsArn',    # OPTIONAL
-              TargetArn     => 'MyAwsArn',    # OPTIONAL
-              MessageFormat => 'RAW',         # values: RAW, JSON; OPTIONAL
+              RoleArn       => 'MyAwsArn',
+              TargetArn     => 'MyAwsArn',
+              MessageFormat => 'RAW',        # values: RAW, JSON; OPTIONAL
             },    # OPTIONAL
             Sqs => {
               QueueUrl  => 'MyQueueUrl',
-              RoleArn   => 'MyAwsArn',     # OPTIONAL
+              RoleArn   => 'MyAwsArn',
               UseBase64 => 1,              # OPTIONAL
             },    # OPTIONAL
             StepFunctions => {
-              RoleArn             => 'MyAwsArn',                 # OPTIONAL
+              RoleArn             => 'MyAwsArn',
               StateMachineName    => 'MyStateMachineName',
               ExecutionNamePrefix => 'MyExecutionNamePrefix',    # OPTIONAL
             },    # OPTIONAL
@@ -136,23 +136,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ErrorAction      => {
           CloudwatchAlarm => {
             AlarmName   => 'MyAlarmName',
-            RoleArn     => 'MyAwsArn',               # OPTIONAL
+            RoleArn     => 'MyAwsArn',
             StateReason => 'MyStateReason',
             StateValue  => 'MyStateValue',
 
-          },    # OPTIONAL
+          },                                         # OPTIONAL
           CloudwatchMetric => {
             MetricName      => 'MyString',
             MetricNamespace => 'MyString',
             MetricUnit      => 'MyString',
             MetricValue     => 'MyString',
-            RoleArn         => 'MyAwsArn',    # OPTIONAL
+            RoleArn         => 'MyAwsArn',
             MetricTimestamp => 'MyString',
-          },    # OPTIONAL
+          },                                         # OPTIONAL
           DynamoDB => {
             HashKeyField => 'MyHashKeyField',
             HashKeyValue => 'MyHashKeyValue',
-            RoleArn      => 'MyAwsArn',       # OPTIONAL
+            RoleArn      => 'MyAwsArn',
             TableName    => 'MyTableName',
             HashKeyType  => 'STRING',         # values: STRING, NUMBER; OPTIONAL
             Operation     => 'MyDynamoOperation',    # OPTIONAL
@@ -166,28 +166,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               TableName => 'MyTableName',
 
             },    # OPTIONAL
-            RoleArn => 'MyAwsArn',    # OPTIONAL
+            RoleArn => 'MyAwsArn',
           },    # OPTIONAL
           Elasticsearch => {
             Endpoint => 'MyElasticsearchEndpoint',
             Id       => 'MyElasticsearchId',
             Index    => 'MyElasticsearchIndex',
-            RoleArn  => 'MyAwsArn',                  # OPTIONAL
+            RoleArn  => 'MyAwsArn',
             Type     => 'MyElasticsearchType',
 
           },    # OPTIONAL
           Firehose => {
             DeliveryStreamName => 'MyDeliveryStreamName',
-            RoleArn            => 'MyAwsArn',               # OPTIONAL
+            RoleArn            => 'MyAwsArn',
             Separator          => 'MyFirehoseSeparator',    # OPTIONAL
           },    # OPTIONAL
           IotAnalytics => {
-            ChannelArn  => 'MyAwsArn',         # OPTIONAL
+            ChannelArn  => 'MyAwsArn',
             ChannelName => 'MyChannelName',    # OPTIONAL
-            RoleArn     => 'MyAwsArn',         # OPTIONAL
+            RoleArn     => 'MyAwsArn',
           },    # OPTIONAL
           Kinesis => {
-            RoleArn      => 'MyAwsArn',          # OPTIONAL
+            RoleArn      => 'MyAwsArn',
             StreamName   => 'MyStreamName',
             PartitionKey => 'MyPartitionKey',    # OPTIONAL
           },    # OPTIONAL
@@ -196,14 +196,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },    # OPTIONAL
           Republish => {
-            RoleArn => 'MyAwsArn',         # OPTIONAL
+            RoleArn => 'MyAwsArn',
             Topic   => 'MyTopicPattern',
 
           },    # OPTIONAL
           S3 => {
             BucketName => 'MyBucketName',
             Key        => 'MyKey',
-            RoleArn    => 'MyAwsArn',       # OPTIONAL
+            RoleArn    => 'MyAwsArn',
             CannedAcl  => 'private'
             , # values: private, public-read, public-read-write, aws-exec-read, authenticated-read, bucket-owner-read, bucket-owner-full-control, log-delivery-write; OPTIONAL
           },    # OPTIONAL
@@ -213,17 +213,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },    # OPTIONAL
           Sns => {
-            RoleArn       => 'MyAwsArn',    # OPTIONAL
-            TargetArn     => 'MyAwsArn',    # OPTIONAL
-            MessageFormat => 'RAW',         # values: RAW, JSON; OPTIONAL
+            RoleArn       => 'MyAwsArn',
+            TargetArn     => 'MyAwsArn',
+            MessageFormat => 'RAW',        # values: RAW, JSON; OPTIONAL
           },    # OPTIONAL
           Sqs => {
             QueueUrl  => 'MyQueueUrl',
-            RoleArn   => 'MyAwsArn',     # OPTIONAL
+            RoleArn   => 'MyAwsArn',
             UseBase64 => 1,              # OPTIONAL
           },    # OPTIONAL
           StepFunctions => {
-            RoleArn             => 'MyAwsArn',                 # OPTIONAL
+            RoleArn             => 'MyAwsArn',
             StateMachineName    => 'MyStateMachineName',
             ExecutionNamePrefix => 'MyExecutionNamePrefix',    # OPTIONAL
           },    # OPTIONAL
