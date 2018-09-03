@@ -54,7 +54,8 @@ The name of the channel whose information is retrieved.
 
 =head2 IncludeStatistics => Bool
 
-If true, include statistics about the channel in the response.
+If true, additional statistical information about the channel is
+included in the response.
 
 
 

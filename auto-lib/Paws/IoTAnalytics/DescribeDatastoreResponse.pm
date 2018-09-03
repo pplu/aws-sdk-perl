@@ -23,8 +23,8 @@ Information about the data store.
 
 =head2 Statistics => L<Paws::IoTAnalytics::DatastoreStatistics>
 
-Statistics about the data store. Included if the 'includeStatistics'
-parameter is set to true in the request.
+Additional statistical information about the data store. Included if
+the 'includeStatistics' parameter is set to true in the request.
 
 
 =head2 _request_id => Str

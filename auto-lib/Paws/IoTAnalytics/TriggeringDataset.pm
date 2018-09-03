@@ -1,13 +1,13 @@
-package Paws::IoTAnalytics::DatastoreStatistics;
+package Paws::IoTAnalytics::TriggeringDataset;
   use Moose;
-  has Size => (is => 'ro', isa => 'Paws::IoTAnalytics::EstimatedResourceSize', request_name => 'size', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::IoTAnalytics::DatastoreStatistics
+Paws::IoTAnalytics::TriggeringDataset
 
 =head1 USAGE
 
@@ -18,27 +18,29 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::IoTAnalytics::DatastoreStatistics object:
+As an example, if Att1 is expected to be a Paws::IoTAnalytics::TriggeringDataset object:
 
-  $service_obj->Method(Att1 => { Size => $value, ..., Size => $value  });
+  $service_obj->Method(Att1 => { Name => $value, ..., Name => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::IoTAnalytics::DatastoreStatistics object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::IoTAnalytics::TriggeringDataset object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Size
+  $result->Att1->Name
 
 =head1 DESCRIPTION
 
-Statistical information about the data store.
+Information about the data set whose content generation will trigger
+the new data set content generation.
 
 =head1 ATTRIBUTES
 
 
-=head2 Size => L<Paws::IoTAnalytics::EstimatedResourceSize>
+=head2 B<REQUIRED> Name => Str
 
-  The estimated size of the data store.
+  The name of the data set whose content generation will trigger the new
+data set content generation.
 
 
 

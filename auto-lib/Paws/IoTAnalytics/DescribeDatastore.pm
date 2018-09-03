@@ -54,7 +54,8 @@ The name of the data store
 
 =head2 IncludeStatistics => Bool
 
-If true, include statistics about the data store in the response.
+If true, additional statistical information about the datastore is
+included in the response.
 
 
 
