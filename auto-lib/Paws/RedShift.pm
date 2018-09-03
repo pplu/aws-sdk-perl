@@ -2663,7 +2663,46 @@ Each argument is described in detail in: L<Paws::RedShift::ResizeCluster>
 
 Returns: a L<Paws::RedShift::ResizeClusterResult> instance
 
-Changes the cluster's type, node type, or number of nodes.
+Changes the size of the cluster. You can change the cluster's type, or
+change the number or type of nodes. The default behavior is to use the
+elastic resize method. With an elastic resize your cluster is avaialble
+for read and write operations more quickly than with the classic resize
+method.
+
+Elastic resize operations have the following restrictions:
+
+=over
+
+=item *
+
+You can only resize clusters of the following types:
+
+=over
+
+=item *
+
+dc2.large
+
+=item *
+
+dc2.8xlarge
+
+=item *
+
+ds2.xlarge
+
+=item *
+
+ds2.8xlarge
+
+=back
+
+=item *
+
+The type of nodes you add must match the node type for the cluster.
+
+=back
+
 
 
 =head2 RestoreFromClusterSnapshot
