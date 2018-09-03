@@ -501,6 +501,9 @@ Creates a configuration template. Templates are associated with a
 specific application and are used to deploy different versions of the
 application with the same configuration settings.
 
+Templates aren't associated with any environment. The
+C<EnvironmentName> response element is always C<null>.
+
 Related Topics
 
 =over

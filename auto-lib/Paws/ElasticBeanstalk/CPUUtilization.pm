@@ -4,6 +4,7 @@ package Paws::ElasticBeanstalk::CPUUtilization;
   has IOWait => (is => 'ro', isa => 'Num');
   has IRQ => (is => 'ro', isa => 'Num');
   has Nice => (is => 'ro', isa => 'Num');
+  has Privileged => (is => 'ro', isa => 'Num');
   has SoftIRQ => (is => 'ro', isa => 'Num');
   has System => (is => 'ro', isa => 'Num');
   has User => (is => 'ro', isa => 'Num');
@@ -50,31 +51,49 @@ last 10 seconds.
 
 =head2 IOWait => Num
 
-  Percentage of time that the CPU has spent in the C<I/O Wait> state over
+  Available on Linux environments only.
+
+Percentage of time that the CPU has spent in the C<I/O Wait> state over
 the last 10 seconds.
 
 
 =head2 IRQ => Num
 
-  Percentage of time that the CPU has spent in the C<IRQ> state over the
+  Available on Linux environments only.
+
+Percentage of time that the CPU has spent in the C<IRQ> state over the
 last 10 seconds.
 
 
 =head2 Nice => Num
 
-  Percentage of time that the CPU has spent in the C<Nice> state over the
+  Available on Linux environments only.
+
+Percentage of time that the CPU has spent in the C<Nice> state over the
 last 10 seconds.
+
+
+=head2 Privileged => Num
+
+  Available on Windows environments only.
+
+Percentage of time that the CPU has spent in the C<Privileged> state
+over the last 10 seconds.
 
 
 =head2 SoftIRQ => Num
 
-  Percentage of time that the CPU has spent in the C<SoftIRQ> state over
+  Available on Linux environments only.
+
+Percentage of time that the CPU has spent in the C<SoftIRQ> state over
 the last 10 seconds.
 
 
 =head2 System => Num
 
-  Percentage of time that the CPU has spent in the C<System> state over
+  Available on Linux environments only.
+
+Percentage of time that the CPU has spent in the C<System> state over
 the last 10 seconds.
 
 

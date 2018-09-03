@@ -41,9 +41,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $elasticbeanstalk->CreateApplicationVersion(
       {
         'ApplicationName'       => 'my-app',
-        'AutoCreateApplication' => true,
+        'AutoCreateApplication' => 1,
         'Description'           => 'my-app-v1',
-        'Process'               => true,
+        'Process'               => 1,
         'SourceBundle'          => {
           'S3Bucket' => 'my-bucket',
           'S3Key'    => 'sample.war'
