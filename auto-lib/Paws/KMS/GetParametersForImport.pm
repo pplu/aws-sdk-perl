@@ -82,8 +82,8 @@ To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
 
 =head2 B<REQUIRED> WrappingAlgorithm => Str
 
-The algorithm you will use to encrypt the key material before importing
-it with ImportKeyMaterial. For more information, see Encrypt the Key
+The algorithm you use to encrypt the key material before importing it
+with ImportKeyMaterial. For more information, see Encrypt the Key
 Material
 (http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-encrypt-key-material.html)
 in the I<AWS Key Management Service Developer Guide>.

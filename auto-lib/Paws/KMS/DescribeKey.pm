@@ -60,12 +60,17 @@ in the I<AWS Key Management Service Developer Guide>.
 
 =head2 B<REQUIRED> KeyId => Str
 
-A unique identifier for the customer master key (CMK).
+Describes the specified customer master key (CMK).
+
+If you specify a predefined AWS alias (an AWS alias with no key ID),
+KMS associates the alias with an AWS managed CMK
+(http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys)
+and returns its C<KeyId> and C<Arn> in the response.
 
 To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
-name, or alias ARN. When using an alias name, prefix it with "alias/".
-To specify a CMK in a different AWS account, you must use the key ARN
-or alias ARN.
+name, or alias ARN. When using an alias name, prefix it with
+C<"alias/">. To specify a CMK in a different AWS account, you must use
+the key ARN or alias ARN.
 
 For example:
 
