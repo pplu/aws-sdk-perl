@@ -496,6 +496,8 @@ L<Paws::SES>
 
 L<Paws::Shield>
 
+L<Paws::Signer>
+
 L<Paws::Signin>
 
 L<Paws::SimpleDB>

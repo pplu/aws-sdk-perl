@@ -137,6 +137,7 @@ package Paws::API::ServiceToClass;
     servicediscovery => 'ServiceDiscovery',
     shield => 'Shield',
     signin => 'Signin',
+    signer => 'Signer',
     simpledb => 'SimpleDB',
     sms => 'SMS',
     swf => 'SimpleWorkflow',
