@@ -1,7 +1,7 @@
 package Paws::MediaConvert::CaptionDescriptionPreset;
   use Moose;
   has CustomLanguageCode => (is => 'ro', isa => 'Str', request_name => 'customLanguageCode', traits => ['NameInRequest']);
-  has DestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::CaptionDestinationSettings', request_name => 'destinationSettings', traits => ['NameInRequest'], required => 1);
+  has DestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::CaptionDestinationSettings', request_name => 'destinationSettings', traits => ['NameInRequest']);
   has LanguageCode => (is => 'ro', isa => 'Str', request_name => 'languageCode', traits => ['NameInRequest']);
   has LanguageDescription => (is => 'ro', isa => 'Str', request_name => 'languageDescription', traits => ['NameInRequest']);
 1;
@@ -45,7 +45,7 @@ Caption Description for preset
 or ISO 639-3 three-letter language code
 
 
-=head2 B<REQUIRED> DestinationSettings => L<Paws::MediaConvert::CaptionDestinationSettings>
+=head2 DestinationSettings => L<Paws::MediaConvert::CaptionDestinationSettings>
 
   
 

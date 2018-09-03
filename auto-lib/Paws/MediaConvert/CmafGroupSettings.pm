@@ -5,13 +5,13 @@ package Paws::MediaConvert::CmafGroupSettings;
   has CodecSpecification => (is => 'ro', isa => 'Str', request_name => 'codecSpecification', traits => ['NameInRequest']);
   has Destination => (is => 'ro', isa => 'Str', request_name => 'destination', traits => ['NameInRequest']);
   has Encryption => (is => 'ro', isa => 'Paws::MediaConvert::CmafEncryptionSettings', request_name => 'encryption', traits => ['NameInRequest']);
-  has FragmentLength => (is => 'ro', isa => 'Int', request_name => 'fragmentLength', traits => ['NameInRequest'], required => 1);
+  has FragmentLength => (is => 'ro', isa => 'Int', request_name => 'fragmentLength', traits => ['NameInRequest']);
   has ManifestCompression => (is => 'ro', isa => 'Str', request_name => 'manifestCompression', traits => ['NameInRequest']);
   has ManifestDurationFormat => (is => 'ro', isa => 'Str', request_name => 'manifestDurationFormat', traits => ['NameInRequest']);
   has MinBufferTime => (is => 'ro', isa => 'Int', request_name => 'minBufferTime', traits => ['NameInRequest']);
   has MinFinalSegmentLength => (is => 'ro', isa => 'Num', request_name => 'minFinalSegmentLength', traits => ['NameInRequest']);
   has SegmentControl => (is => 'ro', isa => 'Str', request_name => 'segmentControl', traits => ['NameInRequest']);
-  has SegmentLength => (is => 'ro', isa => 'Int', request_name => 'segmentLength', traits => ['NameInRequest'], required => 1);
+  has SegmentLength => (is => 'ro', isa => 'Int', request_name => 'segmentLength', traits => ['NameInRequest']);
   has StreamInfResolution => (is => 'ro', isa => 'Str', request_name => 'streamInfResolution', traits => ['NameInRequest']);
   has WriteDashManifest => (is => 'ro', isa => 'Str', request_name => 'writeDashManifest', traits => ['NameInRequest']);
   has WriteHlsManifest => (is => 'ro', isa => 'Str', request_name => 'writeHlsManifest', traits => ['NameInRequest']);
@@ -84,7 +84,7 @@ service uses the filename of the first input file.
   DRM settings.
 
 
-=head2 B<REQUIRED> FragmentLength => Int
+=head2 FragmentLength => Int
 
   Length of fragments to generate (in seconds). Fragment length must be
 compatible with GOP size and Framerate. Note that fragments will end on
@@ -131,7 +131,7 @@ segment length to 1, your final segment is 3.5 seconds.
   
 
 
-=head2 B<REQUIRED> SegmentLength => Int
+=head2 SegmentLength => Int
 
   Use this setting to specify the length, in seconds, of each individual
 CMAF segment. This value applies to the whole package; that is, to

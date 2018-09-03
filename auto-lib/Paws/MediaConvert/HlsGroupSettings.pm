@@ -12,12 +12,12 @@ package Paws::MediaConvert::HlsGroupSettings;
   has ManifestCompression => (is => 'ro', isa => 'Str', request_name => 'manifestCompression', traits => ['NameInRequest']);
   has ManifestDurationFormat => (is => 'ro', isa => 'Str', request_name => 'manifestDurationFormat', traits => ['NameInRequest']);
   has MinFinalSegmentLength => (is => 'ro', isa => 'Num', request_name => 'minFinalSegmentLength', traits => ['NameInRequest']);
-  has MinSegmentLength => (is => 'ro', isa => 'Int', request_name => 'minSegmentLength', traits => ['NameInRequest'], required => 1);
+  has MinSegmentLength => (is => 'ro', isa => 'Int', request_name => 'minSegmentLength', traits => ['NameInRequest']);
   has OutputSelection => (is => 'ro', isa => 'Str', request_name => 'outputSelection', traits => ['NameInRequest']);
   has ProgramDateTime => (is => 'ro', isa => 'Str', request_name => 'programDateTime', traits => ['NameInRequest']);
   has ProgramDateTimePeriod => (is => 'ro', isa => 'Int', request_name => 'programDateTimePeriod', traits => ['NameInRequest']);
   has SegmentControl => (is => 'ro', isa => 'Str', request_name => 'segmentControl', traits => ['NameInRequest']);
-  has SegmentLength => (is => 'ro', isa => 'Int', request_name => 'segmentLength', traits => ['NameInRequest'], required => 1);
+  has SegmentLength => (is => 'ro', isa => 'Int', request_name => 'segmentLength', traits => ['NameInRequest']);
   has SegmentsPerSubdirectory => (is => 'ro', isa => 'Int', request_name => 'segmentsPerSubdirectory', traits => ['NameInRequest']);
   has StreamInfResolution => (is => 'ro', isa => 'Str', request_name => 'streamInfResolution', traits => ['NameInRequest']);
   has TimedMetadataId3Frame => (is => 'ro', isa => 'Str', request_name => 'timedMetadataId3Frame', traits => ['NameInRequest']);
@@ -137,7 +137,7 @@ without a minimum final segment length; when you set the minimum final
 segment length to 1, your final segment is 3.5 seconds.
 
 
-=head2 B<REQUIRED> MinSegmentLength => Int
+=head2 MinSegmentLength => Int
 
   When set, Minimum Segment Size is enforced by looking ahead and back
 within the specified range for a nearby avail and extending the segment
@@ -164,7 +164,7 @@ size if needed.
   
 
 
-=head2 B<REQUIRED> SegmentLength => Int
+=head2 SegmentLength => Int
 
   Length of MPEG-2 Transport Stream segments to create (in seconds). Note
 that segments will end on the next keyframe after this number of

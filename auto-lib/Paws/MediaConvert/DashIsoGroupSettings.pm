@@ -3,11 +3,11 @@ package Paws::MediaConvert::DashIsoGroupSettings;
   has BaseUrl => (is => 'ro', isa => 'Str', request_name => 'baseUrl', traits => ['NameInRequest']);
   has Destination => (is => 'ro', isa => 'Str', request_name => 'destination', traits => ['NameInRequest']);
   has Encryption => (is => 'ro', isa => 'Paws::MediaConvert::DashIsoEncryptionSettings', request_name => 'encryption', traits => ['NameInRequest']);
-  has FragmentLength => (is => 'ro', isa => 'Int', request_name => 'fragmentLength', traits => ['NameInRequest'], required => 1);
+  has FragmentLength => (is => 'ro', isa => 'Int', request_name => 'fragmentLength', traits => ['NameInRequest']);
   has HbbtvCompliance => (is => 'ro', isa => 'Str', request_name => 'hbbtvCompliance', traits => ['NameInRequest']);
   has MinBufferTime => (is => 'ro', isa => 'Int', request_name => 'minBufferTime', traits => ['NameInRequest']);
   has SegmentControl => (is => 'ro', isa => 'Str', request_name => 'segmentControl', traits => ['NameInRequest']);
-  has SegmentLength => (is => 'ro', isa => 'Int', request_name => 'segmentLength', traits => ['NameInRequest'], required => 1);
+  has SegmentLength => (is => 'ro', isa => 'Int', request_name => 'segmentLength', traits => ['NameInRequest']);
   has WriteSegmentTimelineInRepresentation => (is => 'ro', isa => 'Str', request_name => 'writeSegmentTimelineInRepresentation', traits => ['NameInRequest']);
 1;
 
@@ -66,7 +66,7 @@ service uses the filename of the first input file.
   DRM settings.
 
 
-=head2 B<REQUIRED> FragmentLength => Int
+=head2 FragmentLength => Int
 
   Length of fragments to generate (in seconds). Fragment length must be
 compatible with GOP size and Framerate. Note that fragments will end on
@@ -92,7 +92,7 @@ smooth playout.
   
 
 
-=head2 B<REQUIRED> SegmentLength => Int
+=head2 SegmentLength => Int
 
   Length of mpd segments to create (in seconds). Note that segments will
 end on the next keyframe after this number of seconds, so actual

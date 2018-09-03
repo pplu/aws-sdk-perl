@@ -1,7 +1,7 @@
 package Paws::MediaConvert::FileSourceSettings;
   use Moose;
   has Convert608To708 => (is => 'ro', isa => 'Str', request_name => 'convert608To708', traits => ['NameInRequest']);
-  has SourceFile => (is => 'ro', isa => 'Str', request_name => 'sourceFile', traits => ['NameInRequest'], required => 1);
+  has SourceFile => (is => 'ro', isa => 'Str', request_name => 'sourceFile', traits => ['NameInRequest']);
   has TimeDelta => (is => 'ro', isa => 'Int', request_name => 'timeDelta', traits => ['NameInRequest']);
 1;
 
@@ -43,7 +43,7 @@ Settings for File-based Captions in Source
   
 
 
-=head2 B<REQUIRED> SourceFile => Str
+=head2 SourceFile => Str
 
   External caption file used for loading captions. Accepted file
 extensions are 'scc', 'ttml', 'dfxp', 'stl', 'srt', and 'smi'.

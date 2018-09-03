@@ -4,7 +4,7 @@ package Paws::MediaConvert::CaptionSourceSettings;
   has DvbSubSourceSettings => (is => 'ro', isa => 'Paws::MediaConvert::DvbSubSourceSettings', request_name => 'dvbSubSourceSettings', traits => ['NameInRequest']);
   has EmbeddedSourceSettings => (is => 'ro', isa => 'Paws::MediaConvert::EmbeddedSourceSettings', request_name => 'embeddedSourceSettings', traits => ['NameInRequest']);
   has FileSourceSettings => (is => 'ro', isa => 'Paws::MediaConvert::FileSourceSettings', request_name => 'fileSourceSettings', traits => ['NameInRequest']);
-  has SourceType => (is => 'ro', isa => 'Str', request_name => 'sourceType', traits => ['NameInRequest'], required => 1);
+  has SourceType => (is => 'ro', isa => 'Str', request_name => 'sourceType', traits => ['NameInRequest']);
   has TeletextSourceSettings => (is => 'ro', isa => 'Paws::MediaConvert::TeletextSourceSettings', request_name => 'teletextSourceSettings', traits => ['NameInRequest']);
 1;
 
@@ -62,7 +62,7 @@ captions in the input.
   
 
 
-=head2 B<REQUIRED> SourceType => Str
+=head2 SourceType => Str
 
   
 

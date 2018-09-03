@@ -4,8 +4,8 @@ package Paws::MediaConvert::Hdr10Metadata;
   has BluePrimaryY => (is => 'ro', isa => 'Int', request_name => 'bluePrimaryY', traits => ['NameInRequest']);
   has GreenPrimaryX => (is => 'ro', isa => 'Int', request_name => 'greenPrimaryX', traits => ['NameInRequest']);
   has GreenPrimaryY => (is => 'ro', isa => 'Int', request_name => 'greenPrimaryY', traits => ['NameInRequest']);
-  has MaxContentLightLevel => (is => 'ro', isa => 'Int', request_name => 'maxContentLightLevel', traits => ['NameInRequest'], required => 1);
-  has MaxFrameAverageLightLevel => (is => 'ro', isa => 'Int', request_name => 'maxFrameAverageLightLevel', traits => ['NameInRequest'], required => 1);
+  has MaxContentLightLevel => (is => 'ro', isa => 'Int', request_name => 'maxContentLightLevel', traits => ['NameInRequest']);
+  has MaxFrameAverageLightLevel => (is => 'ro', isa => 'Int', request_name => 'maxFrameAverageLightLevel', traits => ['NameInRequest']);
   has MaxLuminance => (is => 'ro', isa => 'Int', request_name => 'maxLuminance', traits => ['NameInRequest']);
   has MinLuminance => (is => 'ro', isa => 'Int', request_name => 'minLuminance', traits => ['NameInRequest']);
   has RedPrimaryX => (is => 'ro', isa => 'Int', request_name => 'redPrimaryX', traits => ['NameInRequest']);
@@ -85,13 +85,13 @@ represents 0.00002 in CIE1931 color coordinate. Note that this setting
 is not for color correction.
 
 
-=head2 B<REQUIRED> MaxContentLightLevel => Int
+=head2 MaxContentLightLevel => Int
 
   Maximum light level among all samples in the coded video sequence, in
 units of candelas per square meter.
 
 
-=head2 B<REQUIRED> MaxFrameAverageLightLevel => Int
+=head2 MaxFrameAverageLightLevel => Int
 
   Maximum average light level of any frame in the coded video sequence,
 in units of candelas per square meter.

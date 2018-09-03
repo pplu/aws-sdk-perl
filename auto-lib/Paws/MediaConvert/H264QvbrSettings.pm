@@ -1,7 +1,7 @@
 package Paws::MediaConvert::H264QvbrSettings;
   use Moose;
   has MaxAverageBitrate => (is => 'ro', isa => 'Int', request_name => 'maxAverageBitrate', traits => ['NameInRequest']);
-  has QvbrQualityLevel => (is => 'ro', isa => 'Int', request_name => 'qvbrQualityLevel', traits => ['NameInRequest'], required => 1);
+  has QvbrQualityLevel => (is => 'ro', isa => 'Int', request_name => 'qvbrQualityLevel', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +50,7 @@ total size of the video element is less than or equal to the value you
 set multiplied by the number of seconds of encoded output.
 
 
-=head2 B<REQUIRED> QvbrQualityLevel => Int
+=head2 QvbrQualityLevel => Int
 
   Required when you use QVBR rate control mode. That is, when you specify
 qvbrSettings within h264Settings. Specify the target quality level for
