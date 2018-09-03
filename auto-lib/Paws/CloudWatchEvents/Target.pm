@@ -41,10 +41,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchE
 
 =head1 DESCRIPTION
 
-Targets are the resources to be invoked when a rule is triggered.
-Target types include EC2 instances, AWS Lambda functions, Amazon
-Kinesis streams, Amazon ECS tasks, AWS Step Functions state machines,
-Run Command, and built-in targets.
+Targets are the resources to be invoked when a rule is triggered. For a
+complete list of services and resources that can be set as a target,
+see PutTargets.
 
 =head1 ATTRIBUTES
 
@@ -56,10 +55,10 @@ Run Command, and built-in targets.
 
 =head2 BatchParameters => L<Paws::CloudWatchEvents::BatchParameters>
 
-  Contains the job definition, job name, and other parameters if the
-event target is an AWS Batch job. For more information about AWS Batch,
-see Jobs (http://docs.aws.amazon.com/batch/latest/userguide/jobs.html)
-in the I<AWS Batch User Guide>.
+  If the event target is an AWS Batch job, this contains the job
+definition, job name, and other parameters. For more information, see
+Jobs (http://docs.aws.amazon.com/batch/latest/userguide/jobs.html) in
+the I<AWS Batch User Guide>.
 
 
 =head2 EcsParameters => L<Paws::CloudWatchEvents::EcsParameters>
@@ -102,8 +101,8 @@ target.
 
 =head2 KinesisParameters => L<Paws::CloudWatchEvents::KinesisParameters>
 
-  The custom parameter you can use to control shard assignment, when the
-target is an Amazon Kinesis stream. If you do not include this
+  The custom parameter you can use to control the shard assignment, when
+the target is a Kinesis data stream. If you do not include this
 parameter, the default is to use the C<eventId> as the partition key.
 
 
@@ -123,6 +122,9 @@ Command.
 =head2 SqsParameters => L<Paws::CloudWatchEvents::SqsParameters>
 
   Contains the message group ID to use when the target is a FIFO queue.
+
+If you specify an SQS FIFO queue as a target, the queue must have
+content-based deduplication enabled.
 
 
 
