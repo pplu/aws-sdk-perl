@@ -1527,6 +1527,8 @@ Creates the user pool client.
 
 =item UserPoolId => Str
 
+=item [CustomDomainConfig => L<Paws::CognitoIdp::CustomDomainConfigType>]
+
 
 =back
 
@@ -1784,7 +1786,7 @@ Each argument is described in detail in: L<Paws::CognitoIdp::DescribeUserPoolCli
 Returns: a L<Paws::CognitoIdp::DescribeUserPoolClientResponse> instance
 
 Client method for returning the configuration information and metadata
-of the specified user pool client.
+of the specified user pool app client.
 
 
 =head2 DescribeUserPoolDomain
@@ -2671,7 +2673,9 @@ Each argument is described in detail in: L<Paws::CognitoIdp::UpdateUserPool>
 
 Returns: a L<Paws::CognitoIdp::UpdateUserPoolResponse> instance
 
-Updates the specified user pool with the specified attributes.
+Updates the specified user pool with the specified attributes. If you
+don't provide a value for an attribute, it will be set to the default
+value. You can get a list of the current user pool settings with .
 
 
 =head2 UpdateUserPoolClient
@@ -2715,8 +2719,10 @@ Each argument is described in detail in: L<Paws::CognitoIdp::UpdateUserPoolClien
 
 Returns: a L<Paws::CognitoIdp::UpdateUserPoolClientResponse> instance
 
-Allows the developer to update the specified user pool client and
-password policy.
+Updates the specified user pool app client with the specified
+attributes. If you don't provide a value for an attribute, it will be
+set to the default value. You can get a list of the current user pool
+app client settings with .
 
 
 =head2 VerifySoftwareToken
