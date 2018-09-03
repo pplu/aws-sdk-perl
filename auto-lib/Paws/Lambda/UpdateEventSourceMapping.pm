@@ -36,7 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $EventSourceMappingConfiguration = $lambda->UpdateEventSourceMapping(
       {
         'BatchSize'    => 123,
-        'Enabled'      => true,
+        'Enabled'      => 1,
         'FunctionName' => 'myFunction',
         'UUID'         => '1234xCy789012'
       }

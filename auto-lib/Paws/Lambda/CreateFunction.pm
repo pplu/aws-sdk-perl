@@ -53,7 +53,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'FunctionName' => 'MyFunction',
         'Handler'      => 'souce_file.handler_name',
         'MemorySize'   => 128,
-        'Publish'      => true,
+        'Publish'      => 1,
         'Role'      => 'arn:aws:iam::123456789012:role/service-role/role-name',
         'Runtime'   => 'nodejs4.3',
         'Timeout'   => 15,

@@ -40,7 +40,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $FunctionConfiguration = $lambda->UpdateFunctionCode(
       {
         'FunctionName'    => 'myFunction',
-        'Publish'         => true,
+        'Publish'         => 1,
         'S3Bucket'        => 'myBucket',
         'S3Key'           => 'myKey',
         'S3ObjectVersion' => 1,
