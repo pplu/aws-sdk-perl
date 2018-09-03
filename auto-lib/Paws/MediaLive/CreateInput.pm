@@ -57,7 +57,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Input = $CreateInputResponse->Input;
+    my $Destinations        = $CreateInputResponse->Destinations;
+    my $InputSecurityGroups = $CreateInputResponse->InputSecurityGroups;
+    my $Name                = $CreateInputResponse->Name;
+    my $RequestId           = $CreateInputResponse->RequestId;
+    my $Sources             = $CreateInputResponse->Sources;
+    my $Type                = $CreateInputResponse->Type;
 
     # Returns a L<Paws::MediaLive::CreateInputResponse> object.
 

@@ -14,6 +14,11 @@ package Paws::MediaLive;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
 
   
+  sub BatchUpdateSchedule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::BatchUpdateSchedule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateChannel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::CreateChannel', @_);
@@ -74,6 +79,11 @@ package Paws::MediaLive;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::DescribeReservation', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeSchedule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::DescribeSchedule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListChannels {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::ListChannels', @_);
@@ -130,6 +140,29 @@ package Paws::MediaLive;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllSchedule {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeSchedule(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeSchedule(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ScheduleActions }, @{ $next_result->ScheduleActions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ScheduleActions') foreach (@{ $result->ScheduleActions });
+        $result = $self->DescribeSchedule(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ScheduleActions') foreach (@{ $result->ScheduleActions });
+    }
+
+    return undef
+  }
   sub ListAllChannels {
     my $self = shift;
 
@@ -247,7 +280,7 @@ package Paws::MediaLive;
   }
 
 
-  sub operations { qw/CreateChannel CreateInput CreateInputSecurityGroup DeleteChannel DeleteInput DeleteInputSecurityGroup DeleteReservation DescribeChannel DescribeInput DescribeInputSecurityGroup DescribeOffering DescribeReservation ListChannels ListInputs ListInputSecurityGroups ListOfferings ListReservations PurchaseOffering StartChannel StopChannel UpdateChannel UpdateInput UpdateInputSecurityGroup / }
+  sub operations { qw/BatchUpdateSchedule CreateChannel CreateInput CreateInputSecurityGroup DeleteChannel DeleteInput DeleteInputSecurityGroup DeleteReservation DescribeChannel DescribeInput DescribeInputSecurityGroup DescribeOffering DescribeReservation DescribeSchedule ListChannels ListInputs ListInputSecurityGroups ListOfferings ListReservations PurchaseOffering StartChannel StopChannel UpdateChannel UpdateInput UpdateInputSecurityGroup / }
 
 1;
 
@@ -277,10 +310,30 @@ Paws::MediaLive - Perl Interface to AWS AWS Elemental MediaLive
 
 API for AWS Elemental MediaLive
 
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14>
+For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
 
 
 =head1 METHODS
+
+=head2 BatchUpdateSchedule
+
+=over
+
+=item ChannelId => Str
+
+=item [Creates => L<Paws::MediaLive::BatchScheduleActionCreateRequest>]
+
+=item [Deletes => L<Paws::MediaLive::BatchScheduleActionDeleteRequest>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::BatchUpdateSchedule>
+
+Returns: a L<Paws::MediaLive::BatchUpdateScheduleResponse> instance
+
+Update a channel schedule
+
 
 =head2 CreateChannel
 
@@ -498,6 +551,26 @@ Each argument is described in detail in: L<Paws::MediaLive::DescribeReservation>
 Returns: a L<Paws::MediaLive::DescribeReservationResponse> instance
 
 Get details for a reservation.
+
+
+=head2 DescribeSchedule
+
+=over
+
+=item ChannelId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::DescribeSchedule>
+
+Returns: a L<Paws::MediaLive::DescribeScheduleResponse> instance
+
+Get a channel schedule
 
 
 =head2 ListChannels
@@ -751,6 +824,18 @@ Update an Input Security Group's Whilelists.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllSchedule(sub { },ChannelId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllSchedule(ChannelId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ScheduleActions, passing the object as the first parameter, and the string 'ScheduleActions' as the second parameter 
+
+If not, it will return a a L<Paws::MediaLive::DescribeScheduleResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 =head2 ListAllChannels(sub { },[MaxResults => Int, NextToken => Str])
 
