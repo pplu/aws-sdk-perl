@@ -8,6 +8,8 @@ package Paws::CodeBuild::UpdateProject;
   has EncryptionKey => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'encryptionKey' );
   has Environment => (is => 'ro', isa => 'Paws::CodeBuild::ProjectEnvironment', traits => ['NameInRequest'], request_name => 'environment' );
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
+  has SecondaryArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectArtifacts]', traits => ['NameInRequest'], request_name => 'secondaryArtifacts' );
+  has SecondarySources => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectSource]', traits => ['NameInRequest'], request_name => 'secondarySources' );
   has ServiceRole => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceRole' );
   has Source => (is => 'ro', isa => 'Paws::CodeBuild::ProjectSource', traits => ['NameInRequest'], request_name => 'source' );
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
@@ -42,12 +44,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name      => 'MyNonEmptyString',
       Artifacts => {
         Type => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
-        EncryptionDisabled => 1,             # OPTIONAL
-        Location           => 'MyString',    # OPTIONAL
-        Name               => 'MyString',    # OPTIONAL
-        NamespaceType      => 'NONE',        # values: NONE, BUILD_ID; OPTIONAL
-        Packaging          => 'NONE',        # values: NONE, ZIP; OPTIONAL
-        Path               => 'MyString',    # OPTIONAL
+        ArtifactIdentifier   => 'MyString',   # OPTIONAL
+        EncryptionDisabled   => 1,            # OPTIONAL
+        Location             => 'MyString',   # OPTIONAL
+        Name                 => 'MyString',   # OPTIONAL
+        NamespaceType        => 'NONE',       # values: NONE, BUILD_ID; OPTIONAL
+        OverrideArtifactName => 1,            # OPTIONAL
+        Packaging            => 'NONE',       # values: NONE, ZIP; OPTIONAL
+        Path                 => 'MyString',   # OPTIONAL
       },    # OPTIONAL
       BadgeEnabled => 1,    # OPTIONAL
       Cache        => {
@@ -73,10 +77,41 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ],                        # OPTIONAL
         PrivilegedMode => 1,      # OPTIONAL
       },    # OPTIONAL
-      ServiceRole => 'MyNonEmptyString',    # OPTIONAL
+      SecondaryArtifacts => [
+        {
+          Type => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
+          ArtifactIdentifier   => 'MyString', # OPTIONAL
+          EncryptionDisabled   => 1,          # OPTIONAL
+          Location             => 'MyString', # OPTIONAL
+          Name                 => 'MyString', # OPTIONAL
+          NamespaceType        => 'NONE',     # values: NONE, BUILD_ID; OPTIONAL
+          OverrideArtifactName => 1,          # OPTIONAL
+          Packaging            => 'NONE',     # values: NONE, ZIP; OPTIONAL
+          Path                 => 'MyString', # OPTIONAL
+        },
+        ...
+      ],                                      # OPTIONAL
+      SecondarySources => [
+        {
+          Type => 'CODECOMMIT'
+          , # values: CODECOMMIT, CODEPIPELINE, GITHUB, S3, BITBUCKET, GITHUB_ENTERPRISE, NO_SOURCE
+          Auth => {
+            Type     => 'OAUTH',       # values: OAUTH
+            Resource => 'MyString',    # OPTIONAL
+          },    # OPTIONAL
+          Buildspec         => 'MyString',    # OPTIONAL
+          GitCloneDepth     => 1,             # OPTIONAL
+          InsecureSsl       => 1,             # OPTIONAL
+          Location          => 'MyString',    # OPTIONAL
+          ReportBuildStatus => 1,             # OPTIONAL
+          SourceIdentifier  => 'MyString',    # OPTIONAL
+        },
+        ...
+      ],                                      # OPTIONAL
+      ServiceRole => 'MyNonEmptyString',      # OPTIONAL
       Source      => {
         Type => 'CODECOMMIT'
-        , # values: CODECOMMIT, CODEPIPELINE, GITHUB, S3, BITBUCKET, GITHUB_ENTERPRISE
+        , # values: CODECOMMIT, CODEPIPELINE, GITHUB, S3, BITBUCKET, GITHUB_ENTERPRISE, NO_SOURCE
         Auth => {
           Type     => 'OAUTH',       # values: OAUTH
           Resource => 'MyString',    # OPTIONAL
@@ -86,6 +121,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         InsecureSsl       => 1,             # OPTIONAL
         Location          => 'MyString',    # OPTIONAL
         ReportBuildStatus => 1,             # OPTIONAL
+        SourceIdentifier  => 'MyString',    # OPTIONAL
       },    # OPTIONAL
       Tags => [
         {
@@ -166,6 +202,18 @@ project.
 The name of the build project.
 
 You cannot change a build project's name.
+
+
+
+=head2 SecondaryArtifacts => ArrayRef[L<Paws::CodeBuild::ProjectArtifacts>]
+
+An array of C<ProjectSource> objects.
+
+
+
+=head2 SecondarySources => ArrayRef[L<Paws::CodeBuild::ProjectSource>]
+
+An array of C<ProjectSource> objects.
 
 
 

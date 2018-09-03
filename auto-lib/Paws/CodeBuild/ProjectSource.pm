@@ -6,6 +6,7 @@ package Paws::CodeBuild::ProjectSource;
   has InsecureSsl => (is => 'ro', isa => 'Bool', request_name => 'insecureSsl', traits => ['NameInRequest']);
   has Location => (is => 'ro', isa => 'Str', request_name => 'location', traits => ['NameInRequest']);
   has ReportBuildStatus => (is => 'ro', isa => 'Bool', request_name => 'reportBuildStatus', traits => ['NameInRequest']);
+  has SourceIdentifier => (is => 'ro', isa => 'Str', request_name => 'sourceIdentifier', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
 1;
 
@@ -140,6 +141,11 @@ value to C<OAUTH>.
 source provider. This option is only valid when your source provider is
 GitHub. If this is set and you use a different source provider, an
 invalidInputException is thrown.
+
+
+=head2 SourceIdentifier => Str
+
+  An identifier for this project source.
 
 
 =head2 B<REQUIRED> Type => Str

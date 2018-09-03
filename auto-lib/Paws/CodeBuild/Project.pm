@@ -10,6 +10,8 @@ package Paws::CodeBuild::Project;
   has Environment => (is => 'ro', isa => 'Paws::CodeBuild::ProjectEnvironment', request_name => 'environment', traits => ['NameInRequest']);
   has LastModified => (is => 'ro', isa => 'Str', request_name => 'lastModified', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has SecondaryArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectArtifacts]', request_name => 'secondaryArtifacts', traits => ['NameInRequest']);
+  has SecondarySources => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectSource]', request_name => 'secondarySources', traits => ['NameInRequest']);
   has ServiceRole => (is => 'ro', isa => 'Str', request_name => 'serviceRole', traits => ['NameInRequest']);
   has Source => (is => 'ro', isa => 'Paws::CodeBuild::ProjectSource', request_name => 'source', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::Tag]', request_name => 'tags', traits => ['NameInRequest']);
@@ -104,6 +106,16 @@ time format.
 =head2 Name => Str
 
   The name of the build project.
+
+
+=head2 SecondaryArtifacts => ArrayRef[L<Paws::CodeBuild::ProjectArtifacts>]
+
+  An array of C<ProjectArtifacts> objects.
+
+
+=head2 SecondarySources => ArrayRef[L<Paws::CodeBuild::ProjectSource>]
+
+  An array of C<ProjectSource> objects.
 
 
 =head2 ServiceRole => Str

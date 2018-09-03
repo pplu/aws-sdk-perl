@@ -15,6 +15,9 @@ package Paws::CodeBuild::Build;
   has NetworkInterface => (is => 'ro', isa => 'Paws::CodeBuild::NetworkInterface', request_name => 'networkInterface', traits => ['NameInRequest']);
   has Phases => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::BuildPhase]', request_name => 'phases', traits => ['NameInRequest']);
   has ProjectName => (is => 'ro', isa => 'Str', request_name => 'projectName', traits => ['NameInRequest']);
+  has SecondaryArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::BuildArtifacts]', request_name => 'secondaryArtifacts', traits => ['NameInRequest']);
+  has SecondarySources => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectSource]', request_name => 'secondarySources', traits => ['NameInRequest']);
+  has SecondarySourceVersions => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectSourceVersion]', request_name => 'secondarySourceVersions', traits => ['NameInRequest']);
   has ServiceRole => (is => 'ro', isa => 'Str', request_name => 'serviceRole', traits => ['NameInRequest']);
   has Source => (is => 'ro', isa => 'Paws::CodeBuild::ProjectSource', request_name => 'source', traits => ['NameInRequest']);
   has SourceVersion => (is => 'ro', isa => 'Str', request_name => 'sourceVersion', traits => ['NameInRequest']);
@@ -183,6 +186,52 @@ information about any current build phase that is not yet complete.
 =head2 ProjectName => Str
 
   The name of the AWS CodeBuild project.
+
+
+=head2 SecondaryArtifacts => ArrayRef[L<Paws::CodeBuild::BuildArtifacts>]
+
+  An array of C<ProjectArtifacts> objects.
+
+
+=head2 SecondarySources => ArrayRef[L<Paws::CodeBuild::ProjectSource>]
+
+  An array of C<ProjectSource> objects.
+
+
+=head2 SecondarySourceVersions => ArrayRef[L<Paws::CodeBuild::ProjectSourceVersion>]
+
+  An array of C<ProjectSourceVersion> objects. Each
+C<ProjectSourceVersion> must be one of:
+
+=over
+
+=item *
+
+For AWS CodeCommit: the commit ID to use.
+
+=item *
+
+For GitHub: the commit ID, pull request ID, branch name, or tag name
+that corresponds to the version of the source code you want to build.
+If a pull request ID is specified, it must use the format
+C<pr/pull-request-ID> (for example C<pr/25>). If a branch name is
+specified, the branch's HEAD commit ID will be used. If not specified,
+the default branch's HEAD commit ID will be used.
+
+=item *
+
+For Bitbucket: the commit ID, branch name, or tag name that corresponds
+to the version of the source code you want to build. If a branch name
+is specified, the branch's HEAD commit ID will be used. If not
+specified, the default branch's HEAD commit ID will be used.
+
+=item *
+
+For Amazon Simple Storage Service (Amazon S3): the version ID of the
+object representing the build input ZIP file to use.
+
+=back
+
 
 
 =head2 ServiceRole => Str

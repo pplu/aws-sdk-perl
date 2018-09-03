@@ -368,6 +368,10 @@ Gets information about build projects.
 
 =item [EncryptionKey => Str]
 
+=item [SecondaryArtifacts => ArrayRef[L<Paws::CodeBuild::ProjectArtifacts>]]
+
+=item [SecondarySources => ArrayRef[L<Paws::CodeBuild::ProjectSource>]]
+
 =item [Tags => ArrayRef[L<Paws::CodeBuild::Tag>]]
 
 =item [TimeoutInMinutes => Int]
@@ -573,6 +577,12 @@ representing a single build project.
 
 =item [ReportBuildStatusOverride => Bool]
 
+=item [SecondaryArtifactsOverride => ArrayRef[L<Paws::CodeBuild::ProjectArtifacts>]]
+
+=item [SecondarySourcesOverride => ArrayRef[L<Paws::CodeBuild::ProjectSource>]]
+
+=item [SecondarySourcesVersionOverride => ArrayRef[L<Paws::CodeBuild::ProjectSourceVersion>]]
+
 =item [ServiceRoleOverride => Str]
 
 =item [SourceAuthOverride => L<Paws::CodeBuild::SourceAuth>]
@@ -628,6 +638,10 @@ Attempts to stop running a build.
 =item [EncryptionKey => Str]
 
 =item [Environment => L<Paws::CodeBuild::ProjectEnvironment>]
+
+=item [SecondaryArtifacts => ArrayRef[L<Paws::CodeBuild::ProjectArtifacts>]]
+
+=item [SecondarySources => ArrayRef[L<Paws::CodeBuild::ProjectSource>]]
 
 =item [ServiceRole => Str]
 

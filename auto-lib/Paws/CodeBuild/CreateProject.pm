@@ -8,6 +8,8 @@ package Paws::CodeBuild::CreateProject;
   has EncryptionKey => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'encryptionKey' );
   has Environment => (is => 'ro', isa => 'Paws::CodeBuild::ProjectEnvironment', traits => ['NameInRequest'], request_name => 'environment' , required => 1);
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
+  has SecondaryArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectArtifacts]', traits => ['NameInRequest'], request_name => 'secondaryArtifacts' );
+  has SecondarySources => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectSource]', traits => ['NameInRequest'], request_name => 'secondarySources' );
   has ServiceRole => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceRole' , required => 1);
   has Source => (is => 'ro', isa => 'Paws::CodeBuild::ProjectSource', traits => ['NameInRequest'], request_name => 'source' , required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
@@ -41,12 +43,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateProjectOutput = $codebuild->CreateProject(
       Artifacts => {
         Type => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
-        EncryptionDisabled => 1,             # OPTIONAL
-        Location           => 'MyString',    # OPTIONAL
-        Name               => 'MyString',    # OPTIONAL
-        NamespaceType      => 'NONE',        # values: NONE, BUILD_ID; OPTIONAL
-        Packaging          => 'NONE',        # values: NONE, ZIP; OPTIONAL
-        Path               => 'MyString',    # OPTIONAL
+        ArtifactIdentifier   => 'MyString',   # OPTIONAL
+        EncryptionDisabled   => 1,            # OPTIONAL
+        Location             => 'MyString',   # OPTIONAL
+        Name                 => 'MyString',   # OPTIONAL
+        NamespaceType        => 'NONE',       # values: NONE, BUILD_ID; OPTIONAL
+        OverrideArtifactName => 1,            # OPTIONAL
+        Packaging            => 'NONE',       # values: NONE, ZIP; OPTIONAL
+        Path                 => 'MyString',   # OPTIONAL
       },
       Environment => {
         ComputeType => 'BUILD_GENERAL1_SMALL'
@@ -69,7 +73,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ServiceRole => 'MyNonEmptyString',
       Source      => {
         Type => 'CODECOMMIT'
-        , # values: CODECOMMIT, CODEPIPELINE, GITHUB, S3, BITBUCKET, GITHUB_ENTERPRISE
+        , # values: CODECOMMIT, CODEPIPELINE, GITHUB, S3, BITBUCKET, GITHUB_ENTERPRISE, NO_SOURCE
         Auth => {
           Type     => 'OAUTH',       # values: OAUTH
           Resource => 'MyString',    # OPTIONAL
@@ -79,30 +83,62 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         InsecureSsl       => 1,             # OPTIONAL
         Location          => 'MyString',    # OPTIONAL
         ReportBuildStatus => 1,             # OPTIONAL
+        SourceIdentifier  => 'MyString',    # OPTIONAL
       },
       BadgeEnabled => 1,                    # OPTIONAL
       Cache        => {
         Type     => 'NO_CACHE',             # values: NO_CACHE, S3
         Location => 'MyString',             # OPTIONAL
       },    # OPTIONAL
-      Description   => 'MyProjectDescription',    # OPTIONAL
-      EncryptionKey => 'MyNonEmptyString',        # OPTIONAL
-      Tags          => [
+      Description        => 'MyProjectDescription',    # OPTIONAL
+      EncryptionKey      => 'MyNonEmptyString',        # OPTIONAL
+      SecondaryArtifacts => [
         {
-          Key   => 'MyKeyInput',                  # min: 1, max: 127; OPTIONAL
-          Value => 'MyValueInput',                # min: 1, max: 255; OPTIONAL
+          Type => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
+          ArtifactIdentifier   => 'MyString', # OPTIONAL
+          EncryptionDisabled   => 1,          # OPTIONAL
+          Location             => 'MyString', # OPTIONAL
+          Name                 => 'MyString', # OPTIONAL
+          NamespaceType        => 'NONE',     # values: NONE, BUILD_ID; OPTIONAL
+          OverrideArtifactName => 1,          # OPTIONAL
+          Packaging            => 'NONE',     # values: NONE, ZIP; OPTIONAL
+          Path                 => 'MyString', # OPTIONAL
         },
         ...
-      ],                                          # OPTIONAL
-      TimeoutInMinutes => 1,                      # OPTIONAL
+      ],                                      # OPTIONAL
+      SecondarySources => [
+        {
+          Type => 'CODECOMMIT'
+          , # values: CODECOMMIT, CODEPIPELINE, GITHUB, S3, BITBUCKET, GITHUB_ENTERPRISE, NO_SOURCE
+          Auth => {
+            Type     => 'OAUTH',       # values: OAUTH
+            Resource => 'MyString',    # OPTIONAL
+          },    # OPTIONAL
+          Buildspec         => 'MyString',    # OPTIONAL
+          GitCloneDepth     => 1,             # OPTIONAL
+          InsecureSsl       => 1,             # OPTIONAL
+          Location          => 'MyString',    # OPTIONAL
+          ReportBuildStatus => 1,             # OPTIONAL
+          SourceIdentifier  => 'MyString',    # OPTIONAL
+        },
+        ...
+      ],                                      # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MyKeyInput',              # min: 1, max: 127; OPTIONAL
+          Value => 'MyValueInput',            # min: 1, max: 255; OPTIONAL
+        },
+        ...
+      ],                                      # OPTIONAL
+      TimeoutInMinutes => 1,                  # OPTIONAL
       VpcConfig        => {
         SecurityGroupIds => [
-          'MyNonEmptyString', ...                 # min: 1
-        ],                                        # max: 5; OPTIONAL
+          'MyNonEmptyString', ...             # min: 1
+        ],                                    # max: 5; OPTIONAL
         Subnets => [
-          'MyNonEmptyString', ...                 # min: 1
-        ],                                        # max: 16; OPTIONAL
-        VpcId => 'MyNonEmptyString',              # min: 1
+          'MyNonEmptyString', ...             # min: 1
+        ],                                    # max: 16; OPTIONAL
+        VpcId => 'MyNonEmptyString',          # min: 1
       },    # OPTIONAL
     );
 
@@ -162,6 +198,18 @@ Information about the build environment for the build project.
 =head2 B<REQUIRED> Name => Str
 
 The name of the build project.
+
+
+
+=head2 SecondaryArtifacts => ArrayRef[L<Paws::CodeBuild::ProjectArtifacts>]
+
+An array of C<ProjectArtifacts> objects.
+
+
+
+=head2 SecondarySources => ArrayRef[L<Paws::CodeBuild::ProjectSource>]
+
+An array of C<ProjectSource> objects.
 
 
 
