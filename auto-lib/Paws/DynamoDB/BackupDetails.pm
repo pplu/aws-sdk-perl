@@ -55,8 +55,8 @@ backup.
 
 =head2 BackupExpiryDateTime => Str
 
-  Time at which the automatic on demand backup created by DynamoDB will
-expire. This C<SYSTEM> on demand backup expires automatically 35 days
+  Time at which the automatic on-demand backup created by DynamoDB will
+expire. This C<SYSTEM> on-demand backup expires automatically 35 days
 after its creation.
 
 
@@ -84,11 +84,11 @@ DELETED.
 
 =item *
 
-C<USER> - On demand backup created by you.
+C<USER> - On-demand backup created by you.
 
 =item *
 
-C<SYSTEM> - On demand backup automatically created by DynamoDB.
+C<SYSTEM> - On-demand backup automatically created by DynamoDB.
 
 =back
 

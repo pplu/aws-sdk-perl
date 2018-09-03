@@ -84,6 +84,10 @@ C<DISABLING> - Server-side encryption is being disabled.
 
 C<DISABLED> - Server-side encryption is disabled.
 
+=item *
+
+C<UPDATING> - Server-side encryption is being updated.
+
 =back
 
 

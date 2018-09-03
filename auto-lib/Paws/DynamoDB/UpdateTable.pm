@@ -4,6 +4,7 @@ package Paws::DynamoDB::UpdateTable;
   has AttributeDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::AttributeDefinition]');
   has GlobalSecondaryIndexUpdates => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::GlobalSecondaryIndexUpdate]');
   has ProvisionedThroughput => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughput');
+  has SSESpecification => (is => 'ro', isa => 'Paws::DynamoDB::SSESpecification');
   has StreamSpecification => (is => 'ro', isa => 'Paws::DynamoDB::StreamSpecification');
   has TableName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -96,6 +97,12 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 The new provisioned throughput settings for the specified table or
 index.
+
+
+
+=head2 SSESpecification => L<Paws::DynamoDB::SSESpecification>
+
+The new server-side encryption settings for the specified table.
 
 
 

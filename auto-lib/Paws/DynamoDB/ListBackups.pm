@@ -55,23 +55,23 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dyn
 
 =head2 BackupType => Str
 
-The backups from the table specified by BackupType are listed.
+The backups from the table specified by C<BackupType> are listed.
 
-Where BackupType can be:
+Where C<BackupType> can be:
 
 =over
 
 =item *
 
-C<USER> - On demand backup created by you.
+C<USER> - On-demand backup created by you.
 
 =item *
 
-C<SYSTEM> - On demand backup automatically created by DynamoDB.
+C<SYSTEM> - On-demand backup automatically created by DynamoDB.
 
 =item *
 
-C<ALL> - All types of on demand backups (USER and SYSTEM).
+C<ALL> - All types of on-demand backups (USER and SYSTEM).
 
 =back
 
@@ -96,7 +96,7 @@ Maximum number of backups to return at once.
 
 =head2 TableName => Str
 
-The backups from the table specified by TableName are listed.
+The backups from the table specified by C<TableName> are listed.
 
 
 

@@ -1847,6 +1847,8 @@ C<UpdateItem> operation using the C<ReturnValues> parameter.
 
 =item [ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>]
 
+=item [SSESpecification => L<Paws::DynamoDB::SSESpecification>]
+
 =item [StreamSpecification => L<Paws::DynamoDB::StreamSpecification>]
 
 
