@@ -1,6 +1,7 @@
 package Paws::Net::MojoAsyncCaller;
   use Moose;
   with 'Paws::Net::CallerRole';
+  use Paws::Net::APIResponse;
 
   use Paws::API::Retry;
   use Future;
