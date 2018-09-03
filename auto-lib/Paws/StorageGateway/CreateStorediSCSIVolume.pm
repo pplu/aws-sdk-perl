@@ -43,7 +43,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'GatewayARN' =>
           'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B',
         'NetworkInterfaceId'   => '10.1.1.1',
-        'PreserveExistingData' => true,
+        'PreserveExistingData' => 1,
         'SnapshotId'           => 'snap-f47b7b94',
         'TargetName'           => 'my-volume'
       }
