@@ -45,6 +45,11 @@ package Paws::Rekognition;
     my $call_object = $self->new_with_coercions('Paws::Rekognition::DeleteStreamProcessor', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeCollection {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Rekognition::DescribeCollection', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeStreamProcessor {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Rekognition::DescribeStreamProcessor', @_);
@@ -255,7 +260,7 @@ package Paws::Rekognition;
   }
 
 
-  sub operations { qw/CompareFaces CreateCollection CreateStreamProcessor DeleteCollection DeleteFaces DeleteStreamProcessor DescribeStreamProcessor DetectFaces DetectLabels DetectModerationLabels DetectText GetCelebrityInfo GetCelebrityRecognition GetContentModeration GetFaceDetection GetFaceSearch GetLabelDetection GetPersonTracking IndexFaces ListCollections ListFaces ListStreamProcessors RecognizeCelebrities SearchFaces SearchFacesByImage StartCelebrityRecognition StartContentModeration StartFaceDetection StartFaceSearch StartLabelDetection StartPersonTracking StartStreamProcessor StopStreamProcessor / }
+  sub operations { qw/CompareFaces CreateCollection CreateStreamProcessor DeleteCollection DeleteFaces DeleteStreamProcessor DescribeCollection DescribeStreamProcessor DetectFaces DetectLabels DetectModerationLabels DetectText GetCelebrityInfo GetCelebrityRecognition GetContentModeration GetFaceDetection GetFaceSearch GetLabelDetection GetPersonTracking IndexFaces ListCollections ListFaces ListStreamProcessors RecognizeCelebrities SearchFaces SearchFacesByImage StartCelebrityRecognition StartContentModeration StartFaceDetection StartFaceSearch StartLabelDetection StartPersonTracking StartStreamProcessor StopStreamProcessor / }
 
 1;
 
@@ -482,6 +487,22 @@ Deletes the stream processor identified by C<Name>. You assign the
 value for C<Name> when you create the stream processor with . You might
 not be able to use the same name for a stream processor for a few
 seconds after calling C<DeleteStreamProcessor>.
+
+
+=head2 DescribeCollection
+
+=over
+
+=item CollectionId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Rekognition::DescribeCollection>
+
+Returns: a L<Paws::Rekognition::DescribeCollectionResponse> instance
+
+
 
 
 =head2 DescribeStreamProcessor
@@ -1106,7 +1127,7 @@ ID assigned by the service for each face that is detected and stored,
 and an image ID assigned by the service for the input image. If you
 request all facial attributes (using the C<detectionAttributes>
 parameter, Amazon Rekognition returns detailed facial attributes such
-as facial landmarks (for example, location of eye and mount) and other
+as facial landmarks (for example, location of eye and mouth) and other
 facial attributes such gender. If you provide the same image, specify
 the same collection, and use the same external ID in the C<IndexFaces>
 operation, Amazon Rekognition doesn't save duplicate face metadata.
@@ -1345,6 +1366,8 @@ C<rekognition:SearchFacesByImage> action.
 
 =item [ClientRequestToken => Str]
 
+=item [EnablePersonTracking => Bool]
+
 =item [JobTag => Str]
 
 =item [NotificationChannel => L<Paws::Rekognition::NotificationChannel>]
@@ -1463,6 +1486,8 @@ Amazon Rekognition Developer Guide.
 
 =item [ClientRequestToken => Str]
 
+=item [EnablePersonTracking => Bool]
+
 =item [FaceMatchThreshold => Num]
 
 =item [JobTag => Str]
@@ -1489,7 +1514,7 @@ C<NotificationChannel>. To get the search results, first check that the
 status value published to the Amazon SNS topic is C<SUCCEEDED>. If so,
 call and pass the job identifier (C<JobId>) from the initial call to
 C<StartFaceSearch>. For more information, see
-collections-search-person.
+procedure-person-search-videos.
 
 
 =head2 StartLabelDetection

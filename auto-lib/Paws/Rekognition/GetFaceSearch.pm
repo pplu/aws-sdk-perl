@@ -38,11 +38,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $BillableDurationSeconds =
+      $GetFaceSearchResponse->BillableDurationSeconds;
+    my $ErrorCode     = $GetFaceSearchResponse->ErrorCode;
     my $JobStatus     = $GetFaceSearchResponse->JobStatus;
     my $NextToken     = $GetFaceSearchResponse->NextToken;
     my $Persons       = $GetFaceSearchResponse->Persons;
     my $StatusMessage = $GetFaceSearchResponse->StatusMessage;
     my $VideoMetadata = $GetFaceSearchResponse->VideoMetadata;
+    my $Warnings      = $GetFaceSearchResponse->Warnings;
 
     # Returns a L<Paws::Rekognition::GetFaceSearchResponse> object.
 

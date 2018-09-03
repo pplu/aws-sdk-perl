@@ -1,5 +1,6 @@
 package Paws::Rekognition::Face;
   use Moose;
+  has AssociationScore => (is => 'ro', isa => 'Num');
   has BoundingBox => (is => 'ro', isa => 'Paws::Rekognition::BoundingBox');
   has Confidence => (is => 'ro', isa => 'Num');
   has ExternalImageId => (is => 'ro', isa => 'Str');
@@ -24,14 +25,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Rekognition::Face object:
 
-  $service_obj->Method(Att1 => { BoundingBox => $value, ..., ImageId => $value  });
+  $service_obj->Method(Att1 => { AssociationScore => $value, ..., ImageId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition::Face object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->BoundingBox
+  $result->Att1->AssociationScore
 
 =head1 DESCRIPTION
 
@@ -39,6 +40,11 @@ Describes the face properties such as the bounding box, face ID, image
 ID of the input image, and external image ID that you assigned.
 
 =head1 ATTRIBUTES
+
+
+=head2 AssociationScore => Num
+
+  
 
 
 =head2 BoundingBox => L<Paws::Rekognition::BoundingBox>

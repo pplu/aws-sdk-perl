@@ -6,6 +6,7 @@ package Paws::Rekognition::VideoMetadata;
   has FrameHeight => (is => 'ro', isa => 'Int');
   has FrameRate => (is => 'ro', isa => 'Num');
   has FrameWidth => (is => 'ro', isa => 'Int');
+  has Rotation => (is => 'ro', isa => 'Int');
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +26,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Rekognition::VideoMetadata object:
 
-  $service_obj->Method(Att1 => { Codec => $value, ..., FrameWidth => $value  });
+  $service_obj->Method(Att1 => { Codec => $value, ..., Rotation => $value  });
 
 =head3 Results returned from an API call
 
@@ -71,6 +72,11 @@ a Amazon Rekognition video operation.
 =head2 FrameWidth => Int
 
   Horizontal pixel dimension of the video.
+
+
+=head2 Rotation => Int
+
+  
 
 
 
