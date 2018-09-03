@@ -6,6 +6,7 @@ package Paws::Glue::StartJobRun;
   has JobName => (is => 'ro', isa => 'Str', required => 1);
   has JobRunId => (is => 'ro', isa => 'Str');
   has NotificationProperty => (is => 'ro', isa => 'Paws::Glue::NotificationProperty');
+  has SecurityConfiguration => (is => 'ro', isa => 'Str');
   has Timeout => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
@@ -40,7 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       NotificationProperty => {
         NotifyDelayAfter => 1,    # min: 1; OPTIONAL
       },    # OPTIONAL
-      Timeout => 1,    # OPTIONAL
+      SecurityConfiguration => 'MyNameString',    # OPTIONAL
+      Timeout               => 1,                 # OPTIONAL
     );
 
     # Results:
@@ -102,10 +104,19 @@ Specifies configuration properties of a job run notification.
 
 
 
+=head2 SecurityConfiguration => Str
+
+The name of the SecurityConfiguration structure to be used with this
+job run.
+
+
+
 =head2 Timeout => Int
 
-The job run timeout in minutes. It overrides the timeout value of the
-job.
+The JobRun timeout in minutes. This is the maximum time that a job run
+can consume resources before it is terminated and enters C<TIMEOUT>
+status. The default is 2,880 minutes (48 hours). This overrides the
+timeout value set in the parent job.
 
 
 

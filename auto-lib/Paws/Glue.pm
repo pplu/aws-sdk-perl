@@ -90,6 +90,11 @@ package Paws::Glue;
     my $call_object = $self->new_with_coercions('Paws::Glue::CreateScript', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateSecurityConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::CreateSecurityConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateTable {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::CreateTable', @_);
@@ -138,6 +143,11 @@ package Paws::Glue;
   sub DeletePartition {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::DeletePartition', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteSecurityConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::DeleteSecurityConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteTable {
@@ -265,6 +275,16 @@ package Paws::Glue;
     my $call_object = $self->new_with_coercions('Paws::Glue::GetPlan', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetSecurityConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::GetSecurityConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetSecurityConfigurations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::GetSecurityConfigurations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetTable {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::GetTable', @_);
@@ -308,6 +328,11 @@ package Paws::Glue;
   sub ImportCatalogToGlue {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::ImportCatalogToGlue', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutDataCatalogEncryptionSettings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::PutDataCatalogEncryptionSettings', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ResetJobBookmark {
@@ -707,7 +732,7 @@ package Paws::Glue;
   }
 
 
-  sub operations { qw/BatchCreatePartition BatchDeleteConnection BatchDeletePartition BatchDeleteTable BatchDeleteTableVersion BatchGetPartition BatchStopJobRun CreateClassifier CreateConnection CreateCrawler CreateDatabase CreateDevEndpoint CreateJob CreatePartition CreateScript CreateTable CreateTrigger CreateUserDefinedFunction DeleteClassifier DeleteConnection DeleteCrawler DeleteDatabase DeleteDevEndpoint DeleteJob DeletePartition DeleteTable DeleteTableVersion DeleteTrigger DeleteUserDefinedFunction GetCatalogImportStatus GetClassifier GetClassifiers GetConnection GetConnections GetCrawler GetCrawlerMetrics GetCrawlers GetDatabase GetDatabases GetDataflowGraph GetDevEndpoint GetDevEndpoints GetJob GetJobRun GetJobRuns GetJobs GetMapping GetPartition GetPartitions GetPlan GetTable GetTables GetTableVersion GetTableVersions GetTrigger GetTriggers GetUserDefinedFunction GetUserDefinedFunctions ImportCatalogToGlue ResetJobBookmark StartCrawler StartCrawlerSchedule StartJobRun StartTrigger StopCrawler StopCrawlerSchedule StopTrigger UpdateClassifier UpdateConnection UpdateCrawler UpdateCrawlerSchedule UpdateDatabase UpdateDevEndpoint UpdateJob UpdatePartition UpdateTable UpdateTrigger UpdateUserDefinedFunction / }
+  sub operations { qw/BatchCreatePartition BatchDeleteConnection BatchDeletePartition BatchDeleteTable BatchDeleteTableVersion BatchGetPartition BatchStopJobRun CreateClassifier CreateConnection CreateCrawler CreateDatabase CreateDevEndpoint CreateJob CreatePartition CreateScript CreateSecurityConfiguration CreateTable CreateTrigger CreateUserDefinedFunction DeleteClassifier DeleteConnection DeleteCrawler DeleteDatabase DeleteDevEndpoint DeleteJob DeletePartition DeleteSecurityConfiguration DeleteTable DeleteTableVersion DeleteTrigger DeleteUserDefinedFunction GetCatalogImportStatus GetClassifier GetClassifiers GetConnection GetConnections GetCrawler GetCrawlerMetrics GetCrawlers GetDatabase GetDatabases GetDataflowGraph GetDevEndpoint GetDevEndpoints GetJob GetJobRun GetJobRuns GetJobs GetMapping GetPartition GetPartitions GetPlan GetSecurityConfiguration GetSecurityConfigurations GetTable GetTables GetTableVersion GetTableVersions GetTrigger GetTriggers GetUserDefinedFunction GetUserDefinedFunctions ImportCatalogToGlue PutDataCatalogEncryptionSettings ResetJobBookmark StartCrawler StartCrawlerSchedule StartJobRun StartTrigger StopCrawler StopCrawlerSchedule StopTrigger UpdateClassifier UpdateConnection UpdateCrawler UpdateCrawlerSchedule UpdateDatabase UpdateDevEndpoint UpdateJob UpdatePartition UpdateTable UpdateTrigger UpdateUserDefinedFunction / }
 
 1;
 
@@ -824,6 +849,17 @@ Each argument is described in detail in: L<Paws::Glue::BatchDeleteTable>
 Returns: a L<Paws::Glue::BatchDeleteTableResponse> instance
 
 Deletes multiple tables at once.
+
+After completing this operation, you will no longer have access to the
+table versions and partitions that belong to the deleted table. AWS
+Glue deletes these "orphaned" resources asynchronously in a timely
+manner, at the discretion of the service.
+
+To ensure immediate deletion of all related resources, before calling
+C<BatchDeleteTable>, use C<DeleteTableVersion> or
+C<BatchDeleteTableVersion>, and C<DeletePartition> or
+C<BatchDeletePartition>, to delete any resources that belong to the
+table.
 
 
 =head2 BatchDeleteTableVersion
@@ -944,6 +980,8 @@ Creates a connection definition in the Data Catalog.
 
 =item [Configuration => Str]
 
+=item [CrawlerSecurityConfiguration => Str]
+
 =item [Description => Str]
 
 =item [Schedule => Str]
@@ -999,6 +1037,10 @@ Creates a new database in a Data Catalog.
 
 =item [PublicKey => Str]
 
+=item [PublicKeys => ArrayRef[Str|Undef]]
+
+=item [SecurityConfiguration => Str]
+
 =item [SecurityGroupIds => ArrayRef[Str|Undef]]
 
 =item [SubnetId => Str]
@@ -1038,6 +1080,8 @@ Creates a new DevEndpoint.
 =item [MaxRetries => Int]
 
 =item [NotificationProperty => L<Paws::Glue::NotificationProperty>]
+
+=item [SecurityConfiguration => Str]
 
 =item [Timeout => Int]
 
@@ -1091,6 +1135,24 @@ Each argument is described in detail in: L<Paws::Glue::CreateScript>
 Returns: a L<Paws::Glue::CreateScriptResponse> instance
 
 Transforms a directed acyclic graph (DAG) into code.
+
+
+=head2 CreateSecurityConfiguration
+
+=over
+
+=item EncryptionConfiguration => L<Paws::Glue::EncryptionConfiguration>
+
+=item Name => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::CreateSecurityConfiguration>
+
+Returns: a L<Paws::Glue::CreateSecurityConfigurationResponse> instance
+
+Creates a new security configuration.
 
 
 =head2 CreateTable
@@ -1229,6 +1291,19 @@ Returns: a L<Paws::Glue::DeleteDatabaseResponse> instance
 
 Removes a specified Database from a Data Catalog.
 
+After completing this operation, you will no longer have access to the
+tables (and all table versions and partitions that might belong to the
+tables) and the user-defined functions in the deleted database. AWS
+Glue deletes these "orphaned" resources asynchronously in a timely
+manner, at the discretion of the service.
+
+To ensure immediate deletion of all related resources, before calling
+C<DeleteDatabase>, use C<DeleteTableVersion> or
+C<BatchDeleteTableVersion>, C<DeletePartition> or
+C<BatchDeletePartition>, C<DeleteUserDefinedFunction>, and
+C<DeleteTable> or C<BatchDeleteTable>, to delete any resources that
+belong to the database.
+
 
 =head2 DeleteDevEndpoint
 
@@ -1285,6 +1360,22 @@ Returns: a L<Paws::Glue::DeletePartitionResponse> instance
 Deletes a specified partition.
 
 
+=head2 DeleteSecurityConfiguration
+
+=over
+
+=item Name => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::DeleteSecurityConfiguration>
+
+Returns: a L<Paws::Glue::DeleteSecurityConfigurationResponse> instance
+
+Deletes a specified security configuration.
+
+
 =head2 DeleteTable
 
 =over
@@ -1303,6 +1394,17 @@ Each argument is described in detail in: L<Paws::Glue::DeleteTable>
 Returns: a L<Paws::Glue::DeleteTableResponse> instance
 
 Removes a table definition from the Data Catalog.
+
+After completing this operation, you will no longer have access to the
+table versions and partitions that belong to the deleted table. AWS
+Glue deletes these "orphaned" resources asynchronously in a timely
+manner, at the discretion of the service.
+
+To ensure immediate deletion of all related resources, before calling
+C<DeleteTable>, use C<DeleteTableVersion> or
+C<BatchDeleteTableVersion>, and C<DeletePartition> or
+C<BatchDeletePartition>, to delete any resources that belong to the
+table.
 
 
 =head2 DeleteTableVersion
@@ -1764,6 +1866,40 @@ Returns: a L<Paws::Glue::GetPlanResponse> instance
 Gets code to perform a specified mapping.
 
 
+=head2 GetSecurityConfiguration
+
+=over
+
+=item Name => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::GetSecurityConfiguration>
+
+Returns: a L<Paws::Glue::GetSecurityConfigurationResponse> instance
+
+Retrieves a specified security configuration.
+
+
+=head2 GetSecurityConfigurations
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::GetSecurityConfigurations>
+
+Returns: a L<Paws::Glue::GetSecurityConfigurationsResponse> instance
+
+Retrieves a list of all security configurations.
+
+
 =head2 GetTable
 
 =over
@@ -1953,6 +2089,26 @@ Returns: a L<Paws::Glue::ImportCatalogToGlueResponse> instance
 Imports an existing Athena Data Catalog to AWS Glue
 
 
+=head2 PutDataCatalogEncryptionSettings
+
+=over
+
+=item DataCatalogEncryptionSettings => L<Paws::Glue::DataCatalogEncryptionSettings>
+
+=item [CatalogId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::PutDataCatalogEncryptionSettings>
+
+Returns: a L<Paws::Glue::PutDataCatalogEncryptionSettingsResponse> instance
+
+Sets the security configuration for a specified catalog. Once the
+configuration has been set, the specified encryption is applied to
+every catalog write thereafter.
+
+
 =head2 ResetJobBookmark
 
 =over
@@ -2019,6 +2175,8 @@ C<SCHEDULED>.
 =item [JobRunId => Str]
 
 =item [NotificationProperty => L<Paws::Glue::NotificationProperty>]
+
+=item [SecurityConfiguration => Str]
 
 =item [Timeout => Int]
 
@@ -2150,6 +2308,8 @@ Updates a connection definition in the Data Catalog.
 
 =item [Configuration => Str]
 
+=item [CrawlerSecurityConfiguration => Str]
+
 =item [DatabaseName => Str]
 
 =item [Description => Str]
@@ -2219,7 +2379,11 @@ Updates an existing database definition in a Data Catalog.
 
 =item EndpointName => Str
 
+=item [AddPublicKeys => ArrayRef[Str|Undef]]
+
 =item [CustomLibraries => L<Paws::Glue::DevEndpointCustomLibraries>]
+
+=item [DeletePublicKeys => ArrayRef[Str|Undef]]
 
 =item [PublicKey => Str]
 

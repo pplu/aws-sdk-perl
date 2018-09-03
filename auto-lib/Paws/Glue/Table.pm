@@ -96,7 +96,7 @@ lowercase.
 
 =head2 Parameters => L<Paws::Glue::ParametersMap>
 
-  Properties associated with this table, as a list of key-value pairs.
+  These key-value pairs define properties associated with the table.
 
 
 =head2 PartitionKeys => ArrayRef[L<Paws::Glue::Column>]

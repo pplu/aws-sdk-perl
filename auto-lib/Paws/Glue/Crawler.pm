@@ -3,6 +3,7 @@ package Paws::Glue::Crawler;
   has Classifiers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Configuration => (is => 'ro', isa => 'Str');
   has CrawlElapsedTime => (is => 'ro', isa => 'Int');
+  has CrawlerSecurityConfiguration => (is => 'ro', isa => 'Str');
   has CreationTime => (is => 'ro', isa => 'Str');
   has DatabaseName => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
@@ -62,15 +63,28 @@ Catalog.
 =head2 Configuration => Str
 
   Crawler configuration information. This versioned JSON string allows
-users to specify aspects of a crawler's behavior. For more information,
-see Configuring a Crawler
-(http://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html).
+users to specify aspects of a Crawler's behavior.
+
+You can use this field to force partitions to inherit metadata such as
+classification, input format, output format, serde information, and
+schema from their parent table, rather than detect this information
+separately for each partition. Use the following JSON string to specify
+that behavior:
+
+Example: C<'{ "Version": 1.0, "CrawlerOutput": { "Partitions": {
+"AddOrUpdateBehavior": "InheritFromTable" } } }'>
 
 
 =head2 CrawlElapsedTime => Int
 
   If the crawler is running, contains the total time elapsed since the
 last crawl began.
+
+
+=head2 CrawlerSecurityConfiguration => Str
+
+  The name of the SecurityConfiguration structure to be used by this
+Crawler.
 
 
 =head2 CreationTime => Str

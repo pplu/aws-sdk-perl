@@ -46,7 +46,65 @@ Defines a connection to a data source.
 
 =head2 ConnectionProperties => L<Paws::Glue::ConnectionProperties>
 
-  A list of key-value pairs used as parameters for this connection.
+  These key-value pairs define parameters for the connection:
+
+=over
+
+=item *
+
+C<HOST> - The host URI: either the fully qualified domain name (FQDN)
+or the IPv4 address of the database host.
+
+=item *
+
+C<PORT> - The port number, between 1024 and 65535, of the port on which
+the database host is listening for database connections.
+
+=item *
+
+C<USER_NAME> - The name under which to log in to the database.
+
+=item *
+
+C<PASSWORD> - A password, if one is used, for the user name.
+
+=item *
+
+C<JDBC_DRIVER_JAR_URI> - The S3 path of the a jar file that contains
+the JDBC driver to use.
+
+=item *
+
+C<JDBC_DRIVER_CLASS_NAME> - The class name of the JDBC driver to use.
+
+=item *
+
+C<JDBC_ENGINE> - The name of the JDBC engine to use.
+
+=item *
+
+C<JDBC_ENGINE_VERSION> - The version of the JDBC engine to use.
+
+=item *
+
+C<CONFIG_FILES> - (Reserved for future use).
+
+=item *
+
+C<INSTANCE_ID> - The instance ID to use.
+
+=item *
+
+C<JDBC_CONNECTION_URL> - The URL for the JDBC connection.
+
+=item *
+
+C<JDBC_ENFORCE_SSL> - A Boolean string (true, false) specifying whether
+SSL with hostname matching will be enforced for the JDBC connection on
+the client. The default is false.
+
+=back
+
 
 
 =head2 ConnectionType => Str
