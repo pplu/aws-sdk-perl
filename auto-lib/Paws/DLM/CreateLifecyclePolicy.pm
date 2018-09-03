@@ -101,7 +101,7 @@ operations specified by the lifecycle policy.
 
 =head2 B<REQUIRED> PolicyDetails => L<Paws::DLM::PolicyDetails>
 
-The configuration of the lifecycle policy.
+The configuration details of the lifecycle policy.
 
 Target tags cannot be re-used across lifecycle policies.
 

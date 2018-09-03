@@ -73,19 +73,20 @@ Valid values are: C<"ENABLED">, C<"DISABLED">, C<"ERROR">
 
 =head2 TagsToAdd => ArrayRef[Str|Undef]
 
-The tags to add to the resources.
+The tags to add to objects created by the policy.
 
-Tags are strings in the format C<key:value>.
+Tags are strings in the format C<key=value>.
 
-These tags are added in addition to the AWS-added lifecycle tags.
+These user-defined tags are added in addition to the AWS-added
+lifecycle tags.
 
 
 
 =head2 TargetTags => ArrayRef[Str|Undef]
 
-The target tags.
+The target tag for a policy.
 
-Tags are strings in the format C<key:value>.
+Tags are strings in the format C<key=value>.
 
 
 

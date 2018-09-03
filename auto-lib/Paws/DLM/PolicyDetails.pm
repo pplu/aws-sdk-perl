@@ -45,12 +45,12 @@ Specifies the configuration of a lifecycle policy.
 
 =head2 Schedules => ArrayRef[L<Paws::DLM::Schedule>]
 
-  The schedule.
+  The schedule of policy-defined actions.
 
 
 =head2 TargetTags => ArrayRef[L<Paws::DLM::Tag>]
 
-  The target tags.
+  The single tag that identifies targeted resources for this policy.
 
 
 
