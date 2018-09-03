@@ -90,7 +90,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           {
             'ParameterKey'     => 'KeyPairName',
-            'UsePreviousValue' => true
+            'UsePreviousValue' => 1
           },
 
           {
@@ -135,7 +135,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         ],
         'TemplateURL' => 'https://s3.amazonaws.com/example/updated.template',
-        'UsePreviousTemplate' => true
+        'UsePreviousTemplate' => 1
       }
     );
 
