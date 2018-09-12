@@ -10,6 +10,7 @@ package Paws::ApiGateway::CreateStage;
   has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
   has StageName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stageName', required => 1);
   has Tags => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'tags');
+  has TracingEnabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'tracingEnabled');
   has Variables => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'variables');
 
   use MooseX::ClassAttribute;
@@ -52,6 +53,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description          => 'MyString',                       # OPTIONAL
       DocumentationVersion => 'MyString',                       # OPTIONAL
       Tags                 => { 'MyString' => 'MyString', },    # OPTIONAL
+      TracingEnabled       => 1,                                # OPTIONAL
       Variables            => { 'MyString' => 'MyString', },    # OPTIONAL
     );
 
@@ -70,6 +72,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $MethodSettings       = $Stage->MethodSettings;
     my $StageName            = $Stage->StageName;
     my $Tags                 = $Stage->Tags;
+    my $TracingEnabled       = $Stage->TracingEnabled;
     my $Variables            = $Stage->Variables;
 
     # Returns a L<Paws::ApiGateway::Stage> object.
@@ -134,6 +137,12 @@ The version of the associated API documentation.
 The key-value map of strings. The valid character set is
 [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not
 start with C<aws:>. The tag value can be up to 256 characters.
+
+
+
+=head2 TracingEnabled => Bool
+
+Specifies whether active tracing with X-ray is enabled for the Stage.
 
 
 

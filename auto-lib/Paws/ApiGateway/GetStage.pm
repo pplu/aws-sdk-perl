@@ -50,6 +50,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $MethodSettings       = $Stage->MethodSettings;
     my $StageName            = $Stage->StageName;
     my $Tags                 = $Stage->Tags;
+    my $TracingEnabled       = $Stage->TracingEnabled;
     my $Variables            = $Stage->Variables;
 
     # Returns a L<Paws::ApiGateway::Stage> object.

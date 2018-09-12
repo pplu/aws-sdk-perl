@@ -15,6 +15,7 @@ package Paws::ApiGateway::Stage;
   has MethodSettings => (is => 'ro', isa => 'Paws::ApiGateway::MapOfMethodSettings', traits => ['NameInRequest'], request_name => 'methodSettings');
   has StageName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stageName');
   has Tags => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'tags');
+  has TracingEnabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'tracingEnabled');
   has Variables => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'variables');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -102,6 +103,11 @@ Identifier (URI) of a call to API Gateway.
 
 The collection of tags. Each tag element is associated with a given
 resource.
+
+
+=head2 TracingEnabled => Bool
+
+Specifies whether active tracing with X-ray is enabled for the Stage.
 
 
 =head2 Variables => L<Paws::ApiGateway::MapOfStringToString>

@@ -1042,6 +1042,8 @@ Creates a new BasePathMapping resource.
 
 =item [StageName => Str]
 
+=item [TracingEnabled => Bool]
+
 =item [Variables => L<Paws::ApiGateway::MapOfStringToString>]
 
 
@@ -1248,6 +1250,8 @@ Creates a new RestApi resource.
 =item [DocumentationVersion => Str]
 
 =item [Tags => L<Paws::ApiGateway::MapOfStringToString>]
+
+=item [TracingEnabled => Bool]
 
 =item [Variables => L<Paws::ApiGateway::MapOfStringToString>]
 
