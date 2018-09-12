@@ -260,6 +260,11 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::DescribePatchGroupState', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeSessions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::DescribeSessions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetAutomationExecution {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::GetAutomationExecution', @_);
@@ -268,6 +273,11 @@ package Paws::SSM;
   sub GetCommandInvocation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::GetCommandInvocation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetConnectionStatus {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::GetConnectionStatus', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetDefaultPatchBaseline {
@@ -460,6 +470,11 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::RemoveTagsFromResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ResumeSession {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::ResumeSession', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub SendAutomationSignal {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::SendAutomationSignal', @_);
@@ -480,9 +495,19 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::StartAutomationExecution', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartSession {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::StartSession', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StopAutomationExecution {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::StopAutomationExecution', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TerminateSession {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::TerminateSession', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateAssociation {
@@ -740,7 +765,7 @@ package Paws::SSM;
   }
 
 
-  sub operations { qw/AddTagsToResource CancelCommand CreateActivation CreateAssociation CreateAssociationBatch CreateDocument CreateMaintenanceWindow CreatePatchBaseline CreateResourceDataSync DeleteActivation DeleteAssociation DeleteDocument DeleteInventory DeleteMaintenanceWindow DeleteParameter DeleteParameters DeletePatchBaseline DeleteResourceDataSync DeregisterManagedInstance DeregisterPatchBaselineForPatchGroup DeregisterTargetFromMaintenanceWindow DeregisterTaskFromMaintenanceWindow DescribeActivations DescribeAssociation DescribeAssociationExecutions DescribeAssociationExecutionTargets DescribeAutomationExecutions DescribeAutomationStepExecutions DescribeAvailablePatches DescribeDocument DescribeDocumentPermission DescribeEffectiveInstanceAssociations DescribeEffectivePatchesForPatchBaseline DescribeInstanceAssociationsStatus DescribeInstanceInformation DescribeInstancePatches DescribeInstancePatchStates DescribeInstancePatchStatesForPatchGroup DescribeInventoryDeletions DescribeMaintenanceWindowExecutions DescribeMaintenanceWindowExecutionTaskInvocations DescribeMaintenanceWindowExecutionTasks DescribeMaintenanceWindows DescribeMaintenanceWindowTargets DescribeMaintenanceWindowTasks DescribeParameters DescribePatchBaselines DescribePatchGroups DescribePatchGroupState GetAutomationExecution GetCommandInvocation GetDefaultPatchBaseline GetDeployablePatchSnapshotForInstance GetDocument GetInventory GetInventorySchema GetMaintenanceWindow GetMaintenanceWindowExecution GetMaintenanceWindowExecutionTask GetMaintenanceWindowExecutionTaskInvocation GetMaintenanceWindowTask GetParameter GetParameterHistory GetParameters GetParametersByPath GetPatchBaseline GetPatchBaselineForPatchGroup LabelParameterVersion ListAssociations ListAssociationVersions ListCommandInvocations ListCommands ListComplianceItems ListComplianceSummaries ListDocuments ListDocumentVersions ListInventoryEntries ListResourceComplianceSummaries ListResourceDataSync ListTagsForResource ModifyDocumentPermission PutComplianceItems PutInventory PutParameter RegisterDefaultPatchBaseline RegisterPatchBaselineForPatchGroup RegisterTargetWithMaintenanceWindow RegisterTaskWithMaintenanceWindow RemoveTagsFromResource SendAutomationSignal SendCommand StartAssociationsOnce StartAutomationExecution StopAutomationExecution UpdateAssociation UpdateAssociationStatus UpdateDocument UpdateDocumentDefaultVersion UpdateMaintenanceWindow UpdateMaintenanceWindowTarget UpdateMaintenanceWindowTask UpdateManagedInstanceRole UpdatePatchBaseline / }
+  sub operations { qw/AddTagsToResource CancelCommand CreateActivation CreateAssociation CreateAssociationBatch CreateDocument CreateMaintenanceWindow CreatePatchBaseline CreateResourceDataSync DeleteActivation DeleteAssociation DeleteDocument DeleteInventory DeleteMaintenanceWindow DeleteParameter DeleteParameters DeletePatchBaseline DeleteResourceDataSync DeregisterManagedInstance DeregisterPatchBaselineForPatchGroup DeregisterTargetFromMaintenanceWindow DeregisterTaskFromMaintenanceWindow DescribeActivations DescribeAssociation DescribeAssociationExecutions DescribeAssociationExecutionTargets DescribeAutomationExecutions DescribeAutomationStepExecutions DescribeAvailablePatches DescribeDocument DescribeDocumentPermission DescribeEffectiveInstanceAssociations DescribeEffectivePatchesForPatchBaseline DescribeInstanceAssociationsStatus DescribeInstanceInformation DescribeInstancePatches DescribeInstancePatchStates DescribeInstancePatchStatesForPatchGroup DescribeInventoryDeletions DescribeMaintenanceWindowExecutions DescribeMaintenanceWindowExecutionTaskInvocations DescribeMaintenanceWindowExecutionTasks DescribeMaintenanceWindows DescribeMaintenanceWindowTargets DescribeMaintenanceWindowTasks DescribeParameters DescribePatchBaselines DescribePatchGroups DescribePatchGroupState DescribeSessions GetAutomationExecution GetCommandInvocation GetConnectionStatus GetDefaultPatchBaseline GetDeployablePatchSnapshotForInstance GetDocument GetInventory GetInventorySchema GetMaintenanceWindow GetMaintenanceWindowExecution GetMaintenanceWindowExecutionTask GetMaintenanceWindowExecutionTaskInvocation GetMaintenanceWindowTask GetParameter GetParameterHistory GetParameters GetParametersByPath GetPatchBaseline GetPatchBaselineForPatchGroup LabelParameterVersion ListAssociations ListAssociationVersions ListCommandInvocations ListCommands ListComplianceItems ListComplianceSummaries ListDocuments ListDocumentVersions ListInventoryEntries ListResourceComplianceSummaries ListResourceDataSync ListTagsForResource ModifyDocumentPermission PutComplianceItems PutInventory PutParameter RegisterDefaultPatchBaseline RegisterPatchBaselineForPatchGroup RegisterTargetWithMaintenanceWindow RegisterTaskWithMaintenanceWindow RemoveTagsFromResource ResumeSession SendAutomationSignal SendCommand StartAssociationsOnce StartAutomationExecution StartSession StopAutomationExecution TerminateSession UpdateAssociation UpdateAssociationStatus UpdateDocument UpdateDocumentDefaultVersion UpdateMaintenanceWindow UpdateMaintenanceWindowTarget UpdateMaintenanceWindowTask UpdateManagedInstanceRole UpdatePatchBaseline / }
 
 1;
 
@@ -1935,6 +1960,29 @@ Returns: a L<Paws::SSM::DescribePatchGroupStateResult> instance
 Returns high-level aggregated patch compliance state for a patch group.
 
 
+=head2 DescribeSessions
+
+=over
+
+=item State => Str
+
+=item [Filters => ArrayRef[L<Paws::SSM::SessionFilter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::DescribeSessions>
+
+Returns: a L<Paws::SSM::DescribeSessionsResponse> instance
+
+Retrieves a list of all active sessions (both connected and
+disconnected) or terminated sessions from the past 30 days.
+
+
 =head2 GetAutomationExecution
 
 =over
@@ -1970,6 +2018,24 @@ Returns: a L<Paws::SSM::GetCommandInvocationResult> instance
 
 Returns detailed information about command execution for an invocation
 or plugin.
+
+
+=head2 GetConnectionStatus
+
+=over
+
+=item Target => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::GetConnectionStatus>
+
+Returns: a L<Paws::SSM::GetConnectionStatusResponse> instance
+
+Retrieves the Session Manager connection status for an instance to
+determine whether it is connected and ready to receive Session Manager
+connections.
 
 
 =head2 GetDefaultPatchBaseline
@@ -2963,6 +3029,28 @@ Returns: a L<Paws::SSM::RemoveTagsFromResourceResult> instance
 Removes all tags from the specified resource.
 
 
+=head2 ResumeSession
+
+=over
+
+=item SessionId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::ResumeSession>
+
+Returns: a L<Paws::SSM::ResumeSessionResponse> instance
+
+Reconnects a session to an instance after it has been disconnected.
+Connections can be resumed for disconnected sessions, but not
+terminated sessions.
+
+This command is primarily for use by client machines to automatically
+reconnect during intermittent network issues. It is not intended for
+any other use.
+
+
 =head2 SendAutomationSignal
 
 =over
@@ -3083,6 +3171,35 @@ Returns: a L<Paws::SSM::StartAutomationExecutionResult> instance
 Initiates execution of an Automation document.
 
 
+=head2 StartSession
+
+=over
+
+=item Target => Str
+
+=item [DocumentName => Str]
+
+=item [Parameters => L<Paws::SSM::SessionManagerParameters>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::StartSession>
+
+Returns: a L<Paws::SSM::StartSessionResponse> instance
+
+Initiates a connection to a target (for example, an instance) for a
+Session Manager session. Returns a URL and token that can be used to
+open a WebSocket connection for sending input and receiving outputs.
+
+AWS CLI usage: C<start-session> is an interactive command that requires
+the Session Manager plugin to be installed on the client machine making
+the call. For information, see Install the Session Manager Plugin for
+the AWS CLI
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html)
+in the I<AWS Systems Manager User Guide>.
+
+
 =head2 StopAutomationExecution
 
 =over
@@ -3099,6 +3216,24 @@ Each argument is described in detail in: L<Paws::SSM::StopAutomationExecution>
 Returns: a L<Paws::SSM::StopAutomationExecutionResult> instance
 
 Stop an Automation that is currently executing.
+
+
+=head2 TerminateSession
+
+=over
+
+=item SessionId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::TerminateSession>
+
+Returns: a L<Paws::SSM::TerminateSessionResponse> instance
+
+Permanently ends a session and closes the data connection between the
+Session Manager client and SSM Agent on the instance. A terminated
+session cannot be resumed.
 
 
 =head2 UpdateAssociation

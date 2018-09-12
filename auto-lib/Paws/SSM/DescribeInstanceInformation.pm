@@ -78,8 +78,14 @@ instances.
 
 =head2 InstanceInformationFilterList => ArrayRef[L<Paws::SSM::InstanceInformationFilter>]
 
-One or more filters. Use a filter to return a more specific list of
-instances.
+This is a legacy method. We recommend that you don't use this method.
+Instead, use the InstanceInformationFilter action. The
+C<InstanceInformationFilter> action enables you to return instance
+information by using tags that are specified as a key-value mapping.
+
+If you do use this method, then you can't use the
+C<InstanceInformationFilter> action. Using this method and the
+C<InstanceInformationFilter> action causes an exception error.
 
 
 
