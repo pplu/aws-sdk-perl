@@ -1,6 +1,7 @@
 
 package Paws::MediaConvert::CreateJob;
   use Moose;
+  has BillingTagsSource => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'billingTagsSource');
   has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientRequestToken');
   has JobTemplate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobTemplate');
   has Queue => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'queue');
@@ -46,7 +47,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             AudioSelectorGroups => {
               'My__string' => {
                 AudioSelectorNames => [
-                  'My__stringMin1', ...    # min: 1
+                  'My__stringMin1', ...    # min: 1; OPTIONAL
                 ],                         # OPTIONAL
               },
             },    # OPTIONAL
@@ -469,7 +470,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ],                                          # OPTIONAL
                 CaptionDescriptions => [
                   {
-                    CaptionSelectorName => 'My__stringMin1',    # min: 1
+                    CaptionSelectorName => 'My__stringMin1',  # min: 1; OPTIONAL
                     CustomLanguageCode => 'My__stringMin3Max3PatternAZaZ3'
                     ,    # min: 3, max: 3; OPTIONAL
                     DestinationSettings => {
@@ -658,7 +659,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },    # OPTIONAL
                 },    # OPTIONAL
                 Extension      => 'My__string',
-                NameModifier   => 'My__stringMin1',    # min: 1
+                NameModifier   => 'My__stringMin1',    # min: 1; OPTIONAL
                 OutputSettings => {
                   HlsSettings => {
                     AudioGroupId       => 'My__string',
@@ -1022,6 +1023,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ],                                                        # OPTIONAL
         },    # OPTIONAL
       },
+      BillingTagsSource  => 'QUEUE',                              # OPTIONAL
       ClientRequestToken => 'My__string',                         # OPTIONAL
       JobTemplate        => 'My__string',                         # OPTIONAL
       Queue              => 'My__string',                         # OPTIONAL
@@ -1038,6 +1040,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/med
 
 =head1 ATTRIBUTES
 
+
+=head2 BillingTagsSource => Str
+
+
+
+Valid values are: C<"QUEUE">, C<"PRESET">, C<"JOB_TEMPLATE">
 
 =head2 ClientRequestToken => Str
 

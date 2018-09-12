@@ -1,14 +1,14 @@
 
 package Paws::MediaConvert::UntagResource;
   use Moose;
-  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn');
+  has Arn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'arn', required => 1);
   has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'tagKeys');
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UntagResource');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2017-08-29/tags');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2017-08-29/tags/{arn}');
+  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaConvert::UntagResourceResponse');
 1;
 
@@ -30,7 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $mediaconvert = Paws->service('MediaConvert');
     my $UntagResourceResponse = $mediaconvert->UntagResource(
-      Arn => 'My__string',                 # OPTIONAL
+      Arn     => 'My__string',
       TagKeys => [ 'My__string', ... ],    # OPTIONAL
     );
 
@@ -40,7 +40,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/med
 =head1 ATTRIBUTES
 
 
-=head2 Arn => Str
+=head2 B<REQUIRED> Arn => Str
 
 The Amazon Resource Name (ARN) of the resource that you want to remove
 tags from. To get the ARN, send a GET request with the resource name.

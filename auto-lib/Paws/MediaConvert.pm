@@ -192,6 +192,8 @@ you can't start it again. You can't delete a running job.
 
 =item Settings => L<Paws::MediaConvert::JobSettings>
 
+=item [BillingTagsSource => Str]
+
 =item [ClientRequestToken => Str]
 
 =item [JobTemplate => Str]
@@ -340,6 +342,8 @@ Permanently delete a queue you have created.
 =over
 
 =item [MaxResults => Int]
+
+=item [Mode => Str]
 
 =item [NextToken => Str]
 
@@ -554,16 +558,16 @@ Each argument is described in detail in: L<Paws::MediaConvert::TagResource>
 
 Returns: a L<Paws::MediaConvert::TagResourceResponse> instance
 
-Tag a MediaConvert queue, preset, or job template. For information
-about these resource types, see the User Guide at
-http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
+Add tags to a MediaConvert queue, preset, or job template. For
+information about tagging, see the User Guide at
+https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html
 
 
 =head2 UntagResource
 
 =over
 
-=item [Arn => Str]
+=item Arn => Str
 
 =item [TagKeys => ArrayRef[Str|Undef]]
 
@@ -574,9 +578,9 @@ Each argument is described in detail in: L<Paws::MediaConvert::UntagResource>
 
 Returns: a L<Paws::MediaConvert::UntagResourceResponse> instance
 
-Untag a MediaConvert queue, preset, or job template. For information
-about these resource types, see the User Guide at
-http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
+Remove tags from a MediaConvert queue, preset, or job template. For
+information about tagging, see the User Guide at
+https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html
 
 
 =head2 UpdateJobTemplate
