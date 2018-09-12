@@ -91,6 +91,11 @@ package Paws::DynamoDB;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::DescribeContinuousBackups', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeEndpoints {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DynamoDB::DescribeEndpoints', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeGlobalTable {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::DescribeGlobalTable', @_);
@@ -313,7 +318,7 @@ package Paws::DynamoDB;
   }
 
 
-  sub operations { qw/BatchGetItem BatchWriteItem CreateBackup CreateGlobalTable CreateTable DeleteBackup DeleteItem DeleteTable DescribeBackup DescribeContinuousBackups DescribeGlobalTable DescribeGlobalTableSettings DescribeLimits DescribeTable DescribeTimeToLive GetItem ListBackups ListGlobalTables ListTables ListTagsOfResource PutItem Query RestoreTableFromBackup RestoreTableToPointInTime Scan TagResource UntagResource UpdateContinuousBackups UpdateGlobalTable UpdateGlobalTableSettings UpdateItem UpdateTable UpdateTimeToLive / }
+  sub operations { qw/BatchGetItem BatchWriteItem CreateBackup CreateGlobalTable CreateTable DeleteBackup DeleteItem DeleteTable DescribeBackup DescribeContinuousBackups DescribeEndpoints DescribeGlobalTable DescribeGlobalTableSettings DescribeLimits DescribeTable DescribeTimeToLive GetItem ListBackups ListGlobalTables ListTables ListTagsOfResource PutItem Query RestoreTableFromBackup RestoreTableToPointInTime Scan TagResource UntagResource UpdateContinuousBackups UpdateGlobalTable UpdateGlobalTableSettings UpdateItem UpdateTable UpdateTimeToLive / }
 
 1;
 
@@ -892,6 +897,20 @@ time. You can restore your table to any point in time during the last
 
 You can call C<DescribeContinuousBackups> at a maximum rate of 10 times
 per second.
+
+
+=head2 DescribeEndpoints
+
+
+
+
+
+
+Each argument is described in detail in: L<Paws::DynamoDB::DescribeEndpoints>
+
+Returns: a L<Paws::DynamoDB::DescribeEndpointsResponse> instance
+
+
 
 
 =head2 DescribeGlobalTable
