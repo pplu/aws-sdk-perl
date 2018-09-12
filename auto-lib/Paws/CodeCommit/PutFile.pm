@@ -62,7 +62,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 B<REQUIRED> BranchName => Str
 
-The name of the branch where you want to add or update the file.
+The name of the branch where you want to add or update the file. If
+this is an empty repository, this branch will be created.
 
 
 
@@ -114,9 +115,12 @@ commit history for your repository.
 =head2 ParentCommitId => Str
 
 The full commit ID of the head commit in the branch where you want to
-add or update the file. If the commit ID does not match the ID of the
-head commit at the time of the operation, an error will occur, and the
-file will not be added or updated.
+add or update the file. If this is an empty repository, no commit ID is
+required. If this is not an empty repository, a commit ID is required.
+
+The commit ID must match the ID of the head commit at the time of the
+operation, or an error will occur, and the file will not be added or
+updated.
 
 
 

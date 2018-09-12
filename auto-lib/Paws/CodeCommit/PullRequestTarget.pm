@@ -2,6 +2,7 @@ package Paws::CodeCommit::PullRequestTarget;
   use Moose;
   has DestinationCommit => (is => 'ro', isa => 'Str', request_name => 'destinationCommit', traits => ['NameInRequest']);
   has DestinationReference => (is => 'ro', isa => 'Str', request_name => 'destinationReference', traits => ['NameInRequest']);
+  has MergeBase => (is => 'ro', isa => 'Str', request_name => 'mergeBase', traits => ['NameInRequest']);
   has MergeMetadata => (is => 'ro', isa => 'Paws::CodeCommit::MergeMetadata', request_name => 'mergeMetadata', traits => ['NameInRequest']);
   has RepositoryName => (is => 'ro', isa => 'Str', request_name => 'repositoryName', traits => ['NameInRequest']);
   has SourceCommit => (is => 'ro', isa => 'Str', request_name => 'sourceCommit', traits => ['NameInRequest']);
@@ -51,6 +52,12 @@ the commit where the pull request was or will be merged.
 
   The branch of the repository where the pull request changes will be
 merged into. Also known as the destination branch.
+
+
+=head2 MergeBase => Str
+
+  The commit ID of the most recent commit that the source branch and the
+destination branch have in common.
 
 
 =head2 MergeMetadata => L<Paws::CodeCommit::MergeMetadata>

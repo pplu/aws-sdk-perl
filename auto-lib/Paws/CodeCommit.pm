@@ -1208,7 +1208,8 @@ Each argument is described in detail in: L<Paws::CodeCommit::PutFile>
 
 Returns: a L<Paws::CodeCommit::PutFileOutput> instance
 
-Adds or updates a file in an AWS CodeCommit repository.
+Adds or updates a file in a branch in an AWS CodeCommit repository, and
+generates a commit for the addition in the specified branch.
 
 
 =head2 PutRepositoryTriggers
