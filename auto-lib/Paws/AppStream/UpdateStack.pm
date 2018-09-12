@@ -1,6 +1,7 @@
 
 package Paws::AppStream::UpdateStack;
   use Moose;
+  has ApplicationSettings => (is => 'ro', isa => 'Paws::AppStream::ApplicationSettings');
   has AttributesToDelete => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DeleteStorageConnectors => (is => 'ro', isa => 'Bool');
   has Description => (is => 'ro', isa => 'Str');
@@ -36,7 +37,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $appstream2 = Paws->service('AppStream');
     my $UpdateStackResult = $appstream2->UpdateStack(
-      Name               => 'MyString',
+      Name                => 'MyString',
+      ApplicationSettings => {
+        Enabled       => 1,
+        SettingsGroup => 'MySettingsGroup',    # max: 100; OPTIONAL
+      },    # OPTIONAL
       AttributesToDelete => [
         'STORAGE_CONNECTORS',
         ... # values: STORAGE_CONNECTORS, STORAGE_CONNECTOR_HOMEFOLDERS, STORAGE_CONNECTOR_GOOGLE_DRIVE, STORAGE_CONNECTOR_ONE_DRIVE, REDIRECT_URL, FEEDBACK_URL, THEME_NAME, USER_SETTINGS
@@ -77,6 +82,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
 
 =head1 ATTRIBUTES
+
+
+=head2 ApplicationSettings => L<Paws::AppStream::ApplicationSettings>
+
+The persistent application settings for users of a stack. When these
+settings are enabled, changes that users make to applications and
+Windows settings are automatically saved after each session and applied
+to the next session.
+
 
 
 =head2 AttributesToDelete => ArrayRef[Str|Undef]

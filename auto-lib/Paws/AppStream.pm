@@ -403,6 +403,8 @@ Creates a URL to start an image builder streaming session.
 
 =item Name => Str
 
+=item [ApplicationSettings => L<Paws::AppStream::ApplicationSettings>]
+
 =item [Description => Str]
 
 =item [DisplayName => Str]
@@ -650,8 +652,8 @@ Each argument is described in detail in: L<Paws::AppStream::DescribeImagePermiss
 
 Returns: a L<Paws::AppStream::DescribeImagePermissionsResult> instance
 
-Retrieves a list that describes the permissions for a private image
-that you own.
+Retrieves a list that describes the permissions for shared AWS account
+IDs on a private image that you own.
 
 
 =head2 DescribeImages
@@ -676,8 +678,8 @@ Each argument is described in detail in: L<Paws::AppStream::DescribeImages>
 Returns: a L<Paws::AppStream::DescribeImagesResult> instance
 
 Retrieves a list that describes one or more specified images, if the
-image names are provided. Otherwise, all images in the account are
-described.
+image names or image ARNs are provided. Otherwise, all images in the
+account are described.
 
 
 =head2 DescribeSessions
@@ -1038,6 +1040,8 @@ Adds or updates permissions for the specified private image.
 =over
 
 =item Name => Str
+
+=item [ApplicationSettings => L<Paws::AppStream::ApplicationSettings>]
 
 =item [AttributesToDelete => ArrayRef[Str|Undef]]
 

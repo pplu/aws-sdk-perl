@@ -67,7 +67,7 @@ The maximum size of each page of results.
 
 =head2 Names => ArrayRef[Str|Undef]
 
-The names of the images to describe.
+The names of the public or private images to describe.
 
 
 
