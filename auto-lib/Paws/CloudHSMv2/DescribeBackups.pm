@@ -56,6 +56,10 @@ One or more filters to limit the items returned in the response.
 Use the C<backupIds> filter to return only the specified backups.
 Specify backups by their backup identifier (ID).
 
+Use the C<sourceBackupIds> filter to return only the backups created
+from a source backup. The C<sourceBackupID> of a source backup is
+returned by the CopyBackupToRegion operation.
+
 Use the C<clusterIds> filter to return only the backups for the
 specified clusters. Specify clusters by their cluster identifier (ID).
 

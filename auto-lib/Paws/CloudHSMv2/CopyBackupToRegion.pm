@@ -47,13 +47,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 
 =head2 B<REQUIRED> BackupId => Str
 
-
+The ID of the backup that will be copied to the destination region.
 
 
 
 =head2 B<REQUIRED> DestinationRegion => Str
 
-
+The AWS region that will contain your copied CloudHSM cluster backup.
 
 
 

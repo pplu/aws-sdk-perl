@@ -5,6 +5,7 @@ package Paws::CloudHSMv2::Backup;
   has ClusterId => (is => 'ro', isa => 'Str');
   has CopyTimestamp => (is => 'ro', isa => 'Str');
   has CreateTimestamp => (is => 'ro', isa => 'Str');
+  has DeleteTimestamp => (is => 'ro', isa => 'Str');
   has SourceBackup => (is => 'ro', isa => 'Str');
   has SourceCluster => (is => 'ro', isa => 'Str');
   has SourceRegion => (is => 'ro', isa => 'Str');
@@ -66,6 +67,11 @@ Contains information about a backup of an AWS CloudHSM cluster.
 =head2 CreateTimestamp => Str
 
   The date and time when the backup was created.
+
+
+=head2 DeleteTimestamp => Str
+
+  The date and time when the backup will be permanently deleted.
 
 
 =head2 SourceBackup => Str

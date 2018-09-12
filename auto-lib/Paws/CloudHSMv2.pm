@@ -30,6 +30,11 @@ package Paws::CloudHSMv2;
     my $call_object = $self->new_with_coercions('Paws::CloudHSMv2::CreateHsm', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteBackup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudHSMv2::DeleteBackup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudHSMv2::DeleteCluster', @_);
@@ -58,6 +63,11 @@ package Paws::CloudHSMv2;
   sub ListTags {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudHSMv2::ListTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RestoreBackup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudHSMv2::RestoreBackup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub TagResource {
@@ -142,7 +152,7 @@ package Paws::CloudHSMv2;
   }
 
 
-  sub operations { qw/CopyBackupToRegion CreateCluster CreateHsm DeleteCluster DeleteHsm DescribeBackups DescribeClusters InitializeCluster ListTags TagResource UntagResource / }
+  sub operations { qw/CopyBackupToRegion CreateCluster CreateHsm DeleteBackup DeleteCluster DeleteHsm DescribeBackups DescribeClusters InitializeCluster ListTags RestoreBackup TagResource UntagResource / }
 
 1;
 
@@ -194,7 +204,7 @@ Each argument is described in detail in: L<Paws::CloudHSMv2::CopyBackupToRegion>
 
 Returns: a L<Paws::CloudHSMv2::CopyBackupToRegionResponse> instance
 
-
+Copy an AWS CloudHSM cluster backup to a different region.
 
 
 =head2 CreateCluster
@@ -236,6 +246,24 @@ Returns: a L<Paws::CloudHSMv2::CreateHsmResponse> instance
 
 Creates a new hardware security module (HSM) in the specified AWS
 CloudHSM cluster.
+
+
+=head2 DeleteBackup
+
+=over
+
+=item BackupId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudHSMv2::DeleteBackup>
+
+Returns: a L<Paws::CloudHSMv2::DeleteBackupResponse> instance
+
+Deletes a specified AWS CloudHSM backup. A backup can be restored up to
+7 days after the DeleteBackup request. For more information on
+restoring a backup, see RestoreBackup
 
 
 =head2 DeleteCluster
@@ -387,6 +415,24 @@ a subset of tags, it includes a C<NextToken> value. Use this value in a
 subsequent C<ListTags> request to get more tags. When you receive a
 response with no C<NextToken> (or an empty or null value), that means
 there are no more tags to get.
+
+
+=head2 RestoreBackup
+
+=over
+
+=item BackupId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudHSMv2::RestoreBackup>
+
+Returns: a L<Paws::CloudHSMv2::RestoreBackupResponse> instance
+
+Restores a specified AWS CloudHSM backup that is in the
+C<PENDING_DELETION> state. For more information on deleting a backup,
+see DeleteBackup.
 
 
 =head2 TagResource
