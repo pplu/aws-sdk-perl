@@ -2388,11 +2388,15 @@ type, term, and usage price of the given DC1 reserved node.
 
 =item [ElasticIp => Str]
 
+=item [Encrypted => Bool]
+
 =item [EnhancedVpcRouting => Bool]
 
 =item [HsmClientCertificateIdentifier => Str]
 
 =item [HsmConfigurationIdentifier => Str]
+
+=item [KmsKeyId => Str]
 
 =item [MaintenanceTrackName => Str]
 

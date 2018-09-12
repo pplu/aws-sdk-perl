@@ -4,6 +4,7 @@ package Paws::RedShift::PendingModifiedValues;
   has ClusterIdentifier => (is => 'ro', isa => 'Str');
   has ClusterType => (is => 'ro', isa => 'Str');
   has ClusterVersion => (is => 'ro', isa => 'Str');
+  has EncryptionType => (is => 'ro', isa => 'Str');
   has EnhancedVpcRouting => (is => 'ro', isa => 'Bool');
   has MaintenanceTrackName => (is => 'ro', isa => 'Str');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
@@ -67,6 +68,12 @@ cluster.
 =head2 ClusterVersion => Str
 
   The pending or in-progress change of the service version.
+
+
+=head2 EncryptionType => Str
+
+  The encryption type for a cluster. Possible values are: KMS and None.
+For the China region the possible values are None, and Legacy.
 
 
 =head2 EnhancedVpcRouting => Bool

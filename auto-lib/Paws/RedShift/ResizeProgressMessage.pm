@@ -12,6 +12,7 @@ package Paws::RedShift::ResizeProgressMessage;
   has ResizeType => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has TargetClusterType => (is => 'ro', isa => 'Str');
+  has TargetEncryptionType => (is => 'ro', isa => 'Str');
   has TargetNodeType => (is => 'ro', isa => 'Str');
   has TargetNumberOfNodes => (is => 'ro', isa => 'Int');
   has TotalResizeDataInMegaBytes => (is => 'ro', isa => 'Int');
@@ -105,6 +106,14 @@ Valid Values: C<NONE> | C<IN_PROGRESS> | C<FAILED> | C<SUCCEEDED>
 The cluster type after the resize operation is complete.
 
 Valid Values: C<multi-node> | C<single-node>
+
+
+=head2 TargetEncryptionType => Str
+
+The type of encryption for the cluster after the resize is complete.
+
+Possible values are C<KMS> and C<None>. In the China region possible
+values are: C<Legacy> and C<None>.
 
 
 =head2 TargetNodeType => Str
