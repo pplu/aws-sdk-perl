@@ -1,14 +1,11 @@
 
 package Paws::Rekognition::GetContentModerationResponse;
   use Moose;
-  has BillableDurationSeconds => (is => 'ro', isa => 'Int');
-  has ErrorCode => (is => 'ro', isa => 'Str');
   has JobStatus => (is => 'ro', isa => 'Str');
   has ModerationLabels => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::ContentModerationDetection]');
   has NextToken => (is => 'ro', isa => 'Str');
   has StatusMessage => (is => 'ro', isa => 'Str');
   has VideoMetadata => (is => 'ro', isa => 'Paws::Rekognition::VideoMetadata');
-  has Warnings => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::Warning]');
 
   has _request_id => (is => 'ro', isa => 'Str');
 
@@ -19,16 +16,6 @@ package Paws::Rekognition::GetContentModerationResponse;
 Paws::Rekognition::GetContentModerationResponse
 
 =head1 ATTRIBUTES
-
-
-=head2 BillableDurationSeconds => Int
-
-
-
-
-=head2 ErrorCode => Str
-
-
 
 
 =head2 JobStatus => Str
@@ -59,11 +46,6 @@ message.
 Information about a video that Amazon Rekognition analyzed.
 C<Videometadata> is returned in every page of paginated responses from
 C<GetContentModeration>.
-
-
-=head2 Warnings => ArrayRef[L<Paws::Rekognition::Warning>]
-
-
 
 
 =head2 _request_id => Str

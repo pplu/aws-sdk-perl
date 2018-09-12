@@ -1,14 +1,11 @@
 
 package Paws::Rekognition::GetFaceDetectionResponse;
   use Moose;
-  has BillableDurationSeconds => (is => 'ro', isa => 'Int');
-  has ErrorCode => (is => 'ro', isa => 'Str');
   has Faces => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::FaceDetection]');
   has JobStatus => (is => 'ro', isa => 'Str');
   has NextToken => (is => 'ro', isa => 'Str');
   has StatusMessage => (is => 'ro', isa => 'Str');
   has VideoMetadata => (is => 'ro', isa => 'Paws::Rekognition::VideoMetadata');
-  has Warnings => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::Warning]');
 
   has _request_id => (is => 'ro', isa => 'Str');
 
@@ -19,16 +16,6 @@ package Paws::Rekognition::GetFaceDetectionResponse;
 Paws::Rekognition::GetFaceDetectionResponse
 
 =head1 ATTRIBUTES
-
-
-=head2 BillableDurationSeconds => Int
-
-
-
-
-=head2 ErrorCode => Str
-
-
 
 
 =head2 Faces => ArrayRef[L<Paws::Rekognition::FaceDetection>]
@@ -61,11 +48,6 @@ message.
 Information about a video that Amazon Rekognition Video analyzed.
 C<Videometadata> is returned in every page of paginated responses from
 a Amazon Rekognition video operation.
-
-
-=head2 Warnings => ArrayRef[L<Paws::Rekognition::Warning>]
-
-
 
 
 =head2 _request_id => Str

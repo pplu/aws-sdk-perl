@@ -502,7 +502,13 @@ Each argument is described in detail in: L<Paws::Rekognition::DescribeCollection
 
 Returns: a L<Paws::Rekognition::DescribeCollectionResponse> instance
 
+Describes the specified collection. You can use C<DescribeCollection>
+to get information, such as the number of faces indexed into a
+collection and the version of the model used by the collection for face
+detection.
 
+For more information, see Describing a Collection in the Amazon
+Rekognition Developer Guide.
 
 
 =head2 DescribeStreamProcessor
@@ -718,7 +724,7 @@ multiple lines.
 To determine whether a C<TextDetection> element is a line of text or a
 word, use the C<TextDetection> object C<Type> field.
 
-To be detected, text must be within +/- 30 degrees orientation of the
+To be detected, text must be within +/- 90 degrees orientation of the
 horizontal axis.
 
 For more information, see DetectText in the Amazon Rekognition
@@ -1104,11 +1110,14 @@ vector, and stores it in the back-end database. Amazon Rekognition uses
 feature vectors when performing face match and search operations using
 the and operations.
 
+To get the number of faces in a collection, call .
+
 If you are using version 1.0 of the face detection model, C<IndexFaces>
 indexes the 15 largest faces in the input image. Later versions of the
 face detection model index the 100 largest faces in the input image. To
-determine which version of the model you are using, check the the value
-of C<FaceModelVersion> in the response from C<IndexFaces>.
+determine which version of the model you are using, call and supply the
+collection ID. You also get the model version from the value of
+C<FaceModelVersion> in the response from C<IndexFaces>.
 
 For more information, see Model Versioning in the Amazon Rekognition
 Developer Guide.
@@ -1366,8 +1375,6 @@ C<rekognition:SearchFacesByImage> action.
 
 =item [ClientRequestToken => Str]
 
-=item [EnablePersonTracking => Bool]
-
 =item [JobTag => Str]
 
 =item [NotificationChannel => L<Paws::Rekognition::NotificationChannel>]
@@ -1485,8 +1492,6 @@ Amazon Rekognition Developer Guide.
 =item Video => L<Paws::Rekognition::Video>
 
 =item [ClientRequestToken => Str]
-
-=item [EnablePersonTracking => Bool]
 
 =item [FaceMatchThreshold => Num]
 

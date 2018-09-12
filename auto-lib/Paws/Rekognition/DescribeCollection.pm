@@ -48,7 +48,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rek
 
 =head2 B<REQUIRED> CollectionId => Str
 
-
+The ID of the collection to describe.
 
 
 

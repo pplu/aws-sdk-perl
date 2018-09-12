@@ -3,7 +3,6 @@ package Paws::Rekognition::StartFaceSearch;
   use Moose;
   has ClientRequestToken => (is => 'ro', isa => 'Str');
   has CollectionId => (is => 'ro', isa => 'Str', required => 1);
-  has EnablePersonTracking => (is => 'ro', isa => 'Bool');
   has FaceMatchThreshold => (is => 'ro', isa => 'Num');
   has JobTag => (is => 'ro', isa => 'Str');
   has NotificationChannel => (is => 'ro', isa => 'Paws::Rekognition::NotificationChannel');
@@ -42,15 +41,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Version => 'MyS3ObjectVersion',    # min: 1, max: 1024; OPTIONAL
         },    # OPTIONAL
       },
-      ClientRequestToken   => 'MyClientRequestToken',    # OPTIONAL
-      EnablePersonTracking => 1,                         # OPTIONAL
-      FaceMatchThreshold   => 1.0,                       # OPTIONAL
-      JobTag               => 'MyJobTag',                # OPTIONAL
-      NotificationChannel  => {
+      ClientRequestToken  => 'MyClientRequestToken',    # OPTIONAL
+      FaceMatchThreshold  => 1.0,                       # OPTIONAL
+      JobTag              => 'MyJobTag',                # OPTIONAL
+      NotificationChannel => {
         RoleArn     => 'MyRoleArn',
         SNSTopicArn => 'MySNSTopicArn',
 
-      },                                                 # OPTIONAL
+      },                                                # OPTIONAL
     );
 
     # Results:
@@ -76,12 +74,6 @@ being accidently started more than once.
 =head2 B<REQUIRED> CollectionId => Str
 
 ID of the collection that contains the faces you want to search for.
-
-
-
-=head2 EnablePersonTracking => Bool
-
-
 
 
 
