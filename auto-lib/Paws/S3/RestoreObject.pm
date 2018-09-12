@@ -44,7 +44,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Days                 => 1,                  # OPTIONAL
         Description          => 'MyDescription',    # OPTIONAL
         GlacierJobParameters => {
-          Tier => 'Standard',    # values: Standard, Bulk, Expedited; OPTIONAL
+          Tier => 'Standard',    # values: Standard, Bulk, Expedited
 
         },    # OPTIONAL
         OutputLocation => {
@@ -112,6 +112,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             JSON            => {
               Type => 'DOCUMENT',         # values: DOCUMENT, LINES; OPTIONAL
             },    # OPTIONAL
+            Parquet => {
+
+            },    # OPTIONAL
           },
           OutputSerialization => {
             CSV => {
@@ -127,7 +130,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
 
         },    # OPTIONAL
-        Tier => 'Standard',    # values: Standard, Bulk, Expedited; OPTIONAL
+        Tier => 'Standard',    # values: Standard, Bulk, Expedited
         Type => 'SELECT',      # values: SELECT; OPTIONAL
       },    # OPTIONAL
       VersionId => 'MyObjectVersionId',    # OPTIONAL

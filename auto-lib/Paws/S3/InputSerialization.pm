@@ -3,6 +3,7 @@ package Paws::S3::InputSerialization;
   has CompressionType => (is => 'ro', isa => 'Str');
   has CSV => (is => 'ro', isa => 'Paws::S3::CSVInput');
   has JSON => (is => 'ro', isa => 'Paws::S3::JSONInput');
+  has Parquet => (is => 'ro', isa => 'Paws::S3::ParquetInput');
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::S3::InputSerialization object:
 
-  $service_obj->Method(Att1 => { CompressionType => $value, ..., JSON => $value  });
+  $service_obj->Method(Att1 => { CompressionType => $value, ..., Parquet => $value  });
 
 =head3 Results returned from an API call
 
@@ -52,6 +53,11 @@ Default Value: NONE.
 =head2 JSON => L<Paws::S3::JSONInput>
 
   Specifies JSON as object's input serialization format.
+
+
+=head2 Parquet => L<Paws::S3::ParquetInput>
+
+  Specifies Parquet as object's input serialization format.
 
 
 

@@ -57,6 +57,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         JSON            => {
           Type => 'DOCUMENT',         # values: DOCUMENT, LINES; OPTIONAL
         },    # OPTIONAL
+        Parquet => {
+
+        },    # OPTIONAL
       },
       Key                 => 'MyObjectKey',
       OutputSerialization => {
