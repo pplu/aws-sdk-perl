@@ -40,7 +40,7 @@ logs will be exported (or not exported) to CloudWatch Logs. The values
 within these arrays depend on the DB engine being used. For more
 information, see Publishing Database Logs to Amazon CloudWatch Logs
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
-in the I<Amazon Relational Database Service User Guide>.
+in the I<Amazon RDS User Guide>.
 
 =head1 ATTRIBUTES
 

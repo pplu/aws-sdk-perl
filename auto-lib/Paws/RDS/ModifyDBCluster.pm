@@ -71,12 +71,13 @@ the DB cluster. If this parameter is set to C<false>, changes to the DB
 cluster are applied during the next maintenance window.
 
 The C<ApplyImmediately> parameter only affects the
-C<NewDBClusterIdentifier> and C<MasterUserPassword> values. If you set
-the C<ApplyImmediately> parameter value to false, then changes to the
-C<NewDBClusterIdentifier> and C<MasterUserPassword> values are applied
-during the next maintenance window. All other changes are applied
-immediately, regardless of the value of the C<ApplyImmediately>
-parameter.
+C<EnableIAMDatabaseAuthentication>, C<MasterUserPassword>, and
+C<NewDBClusterIdentifier> values. If you set the C<ApplyImmediately>
+parameter value to false, then changes to the
+C<EnableIAMDatabaseAuthentication>, C<MasterUserPassword>, and
+C<NewDBClusterIdentifier> values are applied during the next
+maintenance window. All other changes are applied immediately,
+regardless of the value of the C<ApplyImmediately> parameter.
 
 Default: C<false>
 
@@ -246,9 +247,9 @@ parameter.
 
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region. To see the time blocks available,
-see Adjusting the Preferred Maintenance Window
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
-in the I<Amazon RDS User Guide.>
+see Adjusting the Preferred DB Cluster Maintenance Window
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
+in the I<Amazon Aurora User Guide.>
 
 Constraints:
 
@@ -284,10 +285,10 @@ Format: C<ddd:hh24:mi-ddd:hh24:mi>
 
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region, occurring on a random day of the
-week. To see the time blocks available, see Adjusting the Preferred
-Maintenance Window
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
-in the I<Amazon RDS User Guide.>
+week. To see the time blocks available, see Adjusting the Preferred DB
+Cluster Maintenance Window
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
+in the I<Amazon Aurora User Guide.>
 
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
 

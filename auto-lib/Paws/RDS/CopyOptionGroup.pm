@@ -50,9 +50,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 =head2 B<REQUIRED> SourceOptionGroupIdentifier => Str
 
 The identifier or ARN for the source option group. For information
-about creating an ARN, see Constructing an RDS Amazon Resource Name
-(ARN)
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing).
+about creating an ARN, see Constructing an ARN for Amazon RDS
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing)
+in the I<Amazon RDS User Guide>.
 
 Constraints:
 

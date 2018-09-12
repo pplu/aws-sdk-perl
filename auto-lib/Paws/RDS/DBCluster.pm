@@ -208,8 +208,8 @@ CloudWatch Logs.
 
 Log types vary by DB engine. For information about the log types for
 each DB engine, see Amazon RDS Database Log Files
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html)
-in the I<Amazon RDS User Guide.>
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html)
+in the I<Amazon Aurora User Guide.>
 
 
 =head2 Endpoint => Str

@@ -384,7 +384,8 @@ instance class of the DB instance.
 to the primary instance after a failure of the existing primary
 instance. For more information, see Fault Tolerance for an Aurora DB
 Cluster
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance).
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance)
+in the I<Amazon Aurora User Guide>.
 
 
 =head2 PubliclyAccessible => Bool
@@ -398,8 +399,11 @@ private IP address.
 
 =head2 ReadReplicaDBClusterIdentifiers => ArrayRef[Str|Undef]
 
-  Contains one or more identifiers of Aurora DB clusters that are Read
-Replicas of this DB instance.
+  Contains one or more identifiers of Aurora DB clusters to which the RDS
+DB instance is replicated as a Read Replica. For example, when you
+create an Aurora Read Replica of an RDS MySQL DB instance, the Aurora
+MySQL DB cluster for the Aurora Read Replica is shown. This output does
+not contain information about cross region Aurora Read Replicas.
 
 
 =head2 ReadReplicaDBInstanceIdentifiers => ArrayRef[Str|Undef]

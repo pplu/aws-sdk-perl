@@ -183,7 +183,7 @@ Logs. The values in the list depend on the DB engine being used. For
 more information, see Publishing Database Logs to Amazon CloudWatch
 Logs
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
-in the I<Amazon Relational Database Service User Guide>.
+in the I<Amazon RDS User Guide>.
 
 
 
@@ -222,7 +222,7 @@ false.
 
 For more information, see Using Amazon Performance Insights
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html)
-in the I<Amazon Relational Database Service User Guide>.
+in the I<Amazon RDS User Guide>.
 
 
 
@@ -275,7 +275,8 @@ metrics to Amazon CloudWatch Logs. For example,
 C<arn:aws:iam:123456789012:role/emaccess>. For information on creating
 a monitoring role, go to To create an IAM role for Amazon RDS Enhanced
 Monitoring
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole)
+in the I<Amazon RDS User Guide>.
 
 If C<MonitoringInterval> is set to a value other than 0, then you must
 supply a C<MonitoringRoleArn> value.
@@ -445,8 +446,9 @@ Replica, specify a valid DB instance identifier.
 
 If the source DB instance is in a different AWS Region than the Read
 Replica, specify a valid DB instance ARN. For more information, go to
-Constructing a Amazon RDS Amazon Resource Name (ARN)
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing).
+Constructing an ARN for Amazon RDS
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing)
+in the I<Amazon RDS User Guide>.
 
 =back
 

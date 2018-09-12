@@ -159,8 +159,9 @@ valid DB snapshot identifier.
 
 If the source snapshot is in a different AWS Region than the copy,
 specify a valid DB cluster snapshot ARN. For more information, go to
-Copying a DB Snapshot or DB Cluster Snapshot
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html).
+Copying Snapshots Across AWS Regions
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_CopySnapshot.html#USER_CopySnapshot.AcrossRegions)
+in the I<Amazon Aurora User Guide.>
 
 =back
 

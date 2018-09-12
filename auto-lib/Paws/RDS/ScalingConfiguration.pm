@@ -37,8 +37,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Scalin
 Contains the scaling configuration of an Aurora Serverless DB cluster.
 
 For more information, see Using Amazon Aurora Serverless
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/aurora-serverless.html)
-in the I<Amazon RDS User Guide>.
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html)
+in the I<Amazon Aurora User Guide>.
 
 =head1 ATTRIBUTES
 

@@ -128,9 +128,9 @@ cause an outage and are applied on the next call to RebootDBInstance,
 or the next failure reboot. Review the table of parameters in Modifying
 a DB Instance and Using the Apply Immediately Parameter
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html)
-to see the impact that setting C<ApplyImmediately> to C<true> or
-C<false> has for each modified parameter and to determine when the
-changes are applied.
+in the I<Amazon RDS User Guide.> to see the impact that setting
+C<ApplyImmediately> to C<true> or C<false> has for each modified
+parameter and to determine when the changes are applied.
 
 Default: C<false>
 
@@ -343,7 +343,8 @@ The new DB subnet group for the DB instance. You can use this parameter
 to move your DB instance to a different VPC. If your DB instance is not
 in a VPC, you can also use this parameter to move your DB instance into
 a VPC. For more information, see Updating the VPC for a DB Instance
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html#USER_VPC.Non-VPC2VPC).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html#USER_VPC.Non-VPC2VPC)
+in the I<Amazon RDS User Guide.>
 
 Changing the subnet group causes an outage during the change. The
 change is applied during the next maintenance window, unless you
@@ -541,7 +542,8 @@ metrics to Amazon CloudWatch Logs. For example,
 C<arn:aws:iam:123456789012:role/emaccess>. For information on creating
 a monitoring role, go to To create an IAM role for Amazon RDS Enhanced
 Monitoring
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole)
+in the I<Amazon RDS User Guide.>
 
 If C<MonitoringInterval> is set to a value other than 0, then you must
 supply a C<MonitoringRoleArn> value.
@@ -692,7 +694,8 @@ A value that specifies the order in which an Aurora Replica is promoted
 to the primary instance after a failure of the existing primary
 instance. For more information, see Fault Tolerance for an Aurora DB
 Cluster
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance).
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance)
+in the I<Amazon Aurora User Guide>.
 
 Default: 1
 
