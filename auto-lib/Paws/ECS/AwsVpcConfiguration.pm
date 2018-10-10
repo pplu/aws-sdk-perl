@@ -56,7 +56,7 @@ All specified security groups must be from the same VPC.
 
 =head2 B<REQUIRED> Subnets => ArrayRef[Str|Undef]
 
-  The subnets associated with the task or service. There is a limit of 10
+  The subnets associated with the task or service. There is a limit of 16
 subnets able to be specified per C<AwsVpcConfiguration>.
 
 All specified subnets must be from the same VPC.

@@ -40,6 +40,32 @@ parameters that are specified in a container definition override any
 Docker health checks that exist in the container image (such as those
 specified in a parent image or from the image's Dockerfile).
 
+The following are notes about container health check support:
+
+=over
+
+=item *
+
+Container health checks require version 1.17.0 or greater of the Amazon
+ECS container agent. For more information, see Updating the Amazon ECS
+Container Agent
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html).
+
+=item *
+
+Container health checks are supported for Fargate tasks if using
+platform version version 1.1.0 or greater. For more information, see
+AWS Fargate Platform Versions
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).
+
+=item *
+
+Container health checks are not supported for tasks that are part of a
+service that is configured to use a Classic Load Balancer.
+
+=back
+
+
 =head1 ATTRIBUTES
 
 
@@ -55,8 +81,9 @@ C<[ "CMD-SHELL", "curl -f http://localhost/ || exit 1" ]>
 An exit code of 0 indicates success, and non-zero exit code indicates
 failure. For more information, see C<HealthCheck> in the Create a
 container
-(https://docs.docker.com/engine/api/v1.35/#create-a-container) section
-of the Docker Remote API (https://docs.docker.com/engine/api/v1.35/).
+(https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
+section of the Docker Remote API
+(https://docs.docker.com/engine/api/v1.35/).
 
 
 =head2 Interval => Int
