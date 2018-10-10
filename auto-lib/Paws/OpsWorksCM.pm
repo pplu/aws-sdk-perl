@@ -70,6 +70,11 @@ package Paws::OpsWorksCM;
     my $call_object = $self->new_with_coercions('Paws::OpsWorksCM::DisassociateNode', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ExportServerEngineAttribute {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::OpsWorksCM::ExportServerEngineAttribute', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RestoreServer {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::OpsWorksCM::RestoreServer', @_);
@@ -93,7 +98,7 @@ package Paws::OpsWorksCM;
   
 
 
-  sub operations { qw/AssociateNode CreateBackup CreateServer DeleteBackup DeleteServer DescribeAccountAttributes DescribeBackups DescribeEvents DescribeNodeAssociationStatus DescribeServers DisassociateNode RestoreServer StartMaintenance UpdateServer UpdateServerEngineAttributes / }
+  sub operations { qw/AssociateNode CreateBackup CreateServer DeleteBackup DeleteServer DescribeAccountAttributes DescribeBackups DescribeEvents DescribeNodeAssociationStatus DescribeServers DisassociateNode ExportServerEngineAttribute RestoreServer StartMaintenance UpdateServer UpdateServerEngineAttributes / }
 
 1;
 
@@ -587,6 +592,36 @@ C<HEALTHY> state. Otherwise, an C<InvalidStateException> is thrown. A
 C<ResourceNotFoundException> is thrown when the server does not exist.
 A C<ValidationException> is raised when parameters of the request are
 not valid.
+
+
+=head2 ExportServerEngineAttribute
+
+=over
+
+=item ExportAttributeName => Str
+
+=item ServerName => Str
+
+=item [InputAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::OpsWorksCM::ExportServerEngineAttribute>
+
+Returns: a L<Paws::OpsWorksCM::ExportServerEngineAttributeResponse> instance
+
+Exports a specified server engine attribute as a base64-encoded string.
+For example, you can export user data that you can use in EC2 to
+associate nodes with a server.
+
+This operation is synchronous.
+
+A C<ValidationException> is raised when parameters of the request are
+not valid. A C<ResourceNotFoundException> is thrown when the server
+does not exist. An C<InvalidStateException> is thrown when the server
+is in any of the following states: CREATING, TERMINATED, FAILED or
+DELETING.
 
 
 =head2 RestoreServer
