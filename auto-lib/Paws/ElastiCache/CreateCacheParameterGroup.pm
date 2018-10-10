@@ -55,7 +55,7 @@ The name of the cache parameter group family that the cache parameter
 group can be used with.
 
 Valid values are: C<memcached1.4> | C<redis2.6> | C<redis2.8> |
-C<redis3.2>
+C<redis3.2> | C<redis4.0>
 
 
 

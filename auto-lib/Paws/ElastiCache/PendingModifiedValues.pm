@@ -43,7 +43,8 @@ that are currently being applied.
 =head2 CacheNodeIdsToRemove => ArrayRef[Str|Undef]
 
   A list of cache node IDs that are being removed (or will be removed)
-from the cluster. A node ID is a numeric identifier (0001, 0002, etc.).
+from the cluster. A node ID is a 4-digit numeric identifier (0001,
+0002, etc.).
 
 
 =head2 CacheNodeType => Str

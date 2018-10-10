@@ -59,6 +59,11 @@ package Paws::ElastiCache;
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::CreateSnapshot', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DecreaseReplicaCount {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::DecreaseReplicaCount', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteCacheCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::DeleteCacheCluster', @_);
@@ -147,6 +152,11 @@ package Paws::ElastiCache;
   sub DescribeSnapshots {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::DescribeSnapshots', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub IncreaseReplicaCount {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::IncreaseReplicaCount', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListAllowedNodeTypeModifications {
@@ -493,7 +503,7 @@ package Paws::ElastiCache;
   }
 
 
-  sub operations { qw/AddTagsToResource AuthorizeCacheSecurityGroupIngress CopySnapshot CreateCacheCluster CreateCacheParameterGroup CreateCacheSecurityGroup CreateCacheSubnetGroup CreateReplicationGroup CreateSnapshot DeleteCacheCluster DeleteCacheParameterGroup DeleteCacheSecurityGroup DeleteCacheSubnetGroup DeleteReplicationGroup DeleteSnapshot DescribeCacheClusters DescribeCacheEngineVersions DescribeCacheParameterGroups DescribeCacheParameters DescribeCacheSecurityGroups DescribeCacheSubnetGroups DescribeEngineDefaultParameters DescribeEvents DescribeReplicationGroups DescribeReservedCacheNodes DescribeReservedCacheNodesOfferings DescribeSnapshots ListAllowedNodeTypeModifications ListTagsForResource ModifyCacheCluster ModifyCacheParameterGroup ModifyCacheSubnetGroup ModifyReplicationGroup ModifyReplicationGroupShardConfiguration PurchaseReservedCacheNodesOffering RebootCacheCluster RemoveTagsFromResource ResetCacheParameterGroup RevokeCacheSecurityGroupIngress TestFailover / }
+  sub operations { qw/AddTagsToResource AuthorizeCacheSecurityGroupIngress CopySnapshot CreateCacheCluster CreateCacheParameterGroup CreateCacheSecurityGroup CreateCacheSubnetGroup CreateReplicationGroup CreateSnapshot DecreaseReplicaCount DeleteCacheCluster DeleteCacheParameterGroup DeleteCacheSecurityGroup DeleteCacheSubnetGroup DeleteReplicationGroup DeleteSnapshot DescribeCacheClusters DescribeCacheEngineVersions DescribeCacheParameterGroups DescribeCacheParameters DescribeCacheSecurityGroups DescribeCacheSubnetGroups DescribeEngineDefaultParameters DescribeEvents DescribeReplicationGroups DescribeReservedCacheNodes DescribeReservedCacheNodesOfferings DescribeSnapshots IncreaseReplicaCount ListAllowedNodeTypeModifications ListTagsForResource ModifyCacheCluster ModifyCacheParameterGroup ModifyCacheSubnetGroup ModifyReplicationGroup ModifyReplicationGroupShardConfiguration PurchaseReservedCacheNodesOffering RebootCacheCluster RemoveTagsFromResource ResetCacheParameterGroup RevokeCacheSecurityGroupIngress TestFailover / }
 
 1;
 
@@ -567,7 +577,7 @@ and costs aggregated by your tags. You can apply tags that represent
 business categories (such as cost centers, application names, or
 owners) to organize your costs across multiple services. For more
 information, see Using Cost Allocation Tags in Amazon ElastiCache
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Tagging.html)
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Tagging.html)
 in the I<ElastiCache User Guide>.
 
 
@@ -623,9 +633,9 @@ it. To control access to your snapshots, use an IAM policy to control
 who has the ability to use the C<CopySnapshot> operation. For more
 information about using IAM to control the use of ElastiCache
 operations, see Exporting Snapshots
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Snapshots.Exporting.html)
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html)
 and Authentication & Access Control
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/IAM.html).
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/IAM.html).
 
 You could receive the following error messages.
 
@@ -639,7 +649,7 @@ B<Error Message:> The S3 bucket %s is outside of the region.
 
 B<Solution:> Create an Amazon S3 bucket in the same region as your
 snapshot. For more information, see Step 1: Create an Amazon S3 Bucket
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Snapshots.Exporting.html#Snapshots.Exporting.CreateBucket)
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html#Snapshots.Exporting.CreateBucket)
 in the ElastiCache User Guide.
 
 =item *
@@ -648,7 +658,7 @@ B<Error Message:> The S3 bucket %s does not exist.
 
 B<Solution:> Create an Amazon S3 bucket in the same region as your
 snapshot. For more information, see Step 1: Create an Amazon S3 Bucket
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Snapshots.Exporting.html#Snapshots.Exporting.CreateBucket)
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html#Snapshots.Exporting.CreateBucket)
 in the ElastiCache User Guide.
 
 =item *
@@ -658,7 +668,7 @@ user.
 
 B<Solution:> Create an Amazon S3 bucket in the same region as your
 snapshot. For more information, see Step 1: Create an Amazon S3 Bucket
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Snapshots.Exporting.html#Snapshots.Exporting.CreateBucket)
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html#Snapshots.Exporting.CreateBucket)
 in the ElastiCache User Guide.
 
 =item *
@@ -686,7 +696,7 @@ on the S3 Bucket.
 B<Solution:> Add List and Read permissions on the bucket. For more
 information, see Step 2: Grant ElastiCache Access to Your Amazon S3
 Bucket
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Snapshots.Exporting.html#Snapshots.Exporting.GrantAccess)
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html#Snapshots.Exporting.GrantAccess)
 in the ElastiCache User Guide.
 
 =item *
@@ -697,7 +707,7 @@ B<Error Message: > ElastiCache has not been granted WRITE permissions
 B<Solution:> Add Upload/Delete permissions on the bucket. For more
 information, see Step 2: Grant ElastiCache Access to Your Amazon S3
 Bucket
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Snapshots.Exporting.html#Snapshots.Exporting.GrantAccess)
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html#Snapshots.Exporting.GrantAccess)
 in the ElastiCache User Guide.
 
 =item *
@@ -707,7 +717,7 @@ permissions %s on the S3 Bucket.
 
 B<Solution:> Add View Permissions on the bucket. For more information,
 see Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Snapshots.Exporting.html#Snapshots.Exporting.GrantAccess)
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html#Snapshots.Exporting.GrantAccess)
 in the ElastiCache User Guide.
 
 =back
@@ -774,9 +784,8 @@ Returns: a L<Paws::ElastiCache::CreateCacheClusterResult> instance
 Creates a cluster. All nodes in the cluster run the same
 protocol-compliant cache engine software, either Memcached or Redis.
 
-Due to current limitations on Redis (cluster mode disabled), this
-operation or parameter is not supported on Redis (cluster mode enabled)
-replication groups.
+This operation is not supported for Redis (cluster mode enabled)
+clusters.
 
 
 =head2 CreateCacheParameterGroup
@@ -817,7 +826,7 @@ in the ElastiCache API Reference.
 =item *
 
 Parameters and Parameter Groups
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/ParameterGroups.html)
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.html)
 in the ElastiCache User Guide.
 
 =back
@@ -962,7 +971,7 @@ need to increase or decrease the number of node groups (console:
 shards), you can avail yourself of ElastiCache for Redis' enhanced
 backup and restore. For more information, see Restoring From a Backup
 with Cluster Resizing
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/backups-restoring.html)
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-restoring.html)
 in the I<ElastiCache User Guide>.
 
 This operation is valid for Redis only.
@@ -991,6 +1000,33 @@ moment in time.
 This operation is valid for Redis only.
 
 
+=head2 DecreaseReplicaCount
+
+=over
+
+=item ApplyImmediately => Bool
+
+=item ReplicationGroupId => Str
+
+=item [NewReplicaCount => Int]
+
+=item [ReplicaConfiguration => ArrayRef[L<Paws::ElastiCache::ConfigureShard>]]
+
+=item [ReplicasToRemove => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ElastiCache::DecreaseReplicaCount>
+
+Returns: a L<Paws::ElastiCache::DecreaseReplicaCountResult> instance
+
+Dynamically decreases the number of replics in a Redis (cluster mode
+disabled) replication group or the number of replica nodes in one or
+more node groups (shards) of a Redis (cluster mode enabled) replication
+group. This operation is performed with no cluster down time.
+
+
 =head2 DeleteCacheCluster
 
 =over
@@ -1017,9 +1053,7 @@ replica of a replication group or node group (shard) that has Multi-AZ
 mode enabled or a cluster from a Redis (cluster mode enabled)
 replication group.
 
-Due to current limitations on Redis (cluster mode disabled), this
-operation or parameter is not supported on Redis (cluster mode enabled)
-replication groups.
+This operation is not valid for Redis (cluster mode enabled) clusters.
 
 
 =head2 DeleteCacheParameterGroup
@@ -1460,6 +1494,31 @@ with a particular cache cluster.
 This operation is valid for Redis only.
 
 
+=head2 IncreaseReplicaCount
+
+=over
+
+=item ApplyImmediately => Bool
+
+=item ReplicationGroupId => Str
+
+=item [NewReplicaCount => Int]
+
+=item [ReplicaConfiguration => ArrayRef[L<Paws::ElastiCache::ConfigureShard>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ElastiCache::IncreaseReplicaCount>
+
+Returns: a L<Paws::ElastiCache::IncreaseReplicaCountResult> instance
+
+Dynamically increases the number of replics in a Redis (cluster mode
+disabled) replication group or the number of replica nodes in one or
+more node groups (shards) of a Redis (cluster mode enabled) replication
+group. This operation is performed with no cluster down time.
+
+
 =head2 ListAllowedNodeTypeModifications
 
 =over
@@ -1502,10 +1561,12 @@ C<cost allocation tag> is a key-value pair where the key is
 case-sensitive and the value is optional. You can use cost allocation
 tags to categorize and track your AWS costs.
 
+If the cluster is not in the I<available> state, C<ListTagsForResource>
+returns an error.
+
 You can have a maximum of 50 cost allocation tags on an ElastiCache
-resource. For more information, see Using Cost Allocation Tags in
-Amazon ElastiCache
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/BestPractices.html).
+resource. For more information, see Monitoring Costs with Tags
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Tagging.html).
 
 
 =head2 ModifyCacheCluster
@@ -1647,9 +1708,26 @@ Returns: a L<Paws::ElastiCache::ModifyReplicationGroupResult> instance
 
 Modifies the settings for a replication group.
 
-Due to current limitations on Redis (cluster mode disabled), this
-operation or parameter is not supported on Redis (cluster mode enabled)
-replication groups.
+For Redis (cluster mode enabled) clusters, this operation cannot be
+used to change a cluster's node type or engine version. For more
+information, see:
+
+=over
+
+=item *
+
+Scaling for Amazon ElastiCache for RedisE<mdash>Redis (cluster mode
+enabled)
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/scaling-redis-cluster-mode-enabled.html)
+in the ElastiCache User Guide
+
+=item *
+
+ModifyReplicationGroupShardConfiguration
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_ModifyReplicationGroupShardConfiguration.html)
+in the ElastiCache API Reference
+
+=back
 
 This operation is valid for Redis only.
 
@@ -1666,6 +1744,8 @@ This operation is valid for Redis only.
 
 =item [NodeGroupsToRemove => ArrayRef[Str|Undef]]
 
+=item [NodeGroupsToRetain => ArrayRef[Str|Undef]]
+
 =item [ReshardingConfiguration => ArrayRef[L<Paws::ElastiCache::ReshardingConfiguration>]]
 
 
@@ -1675,16 +1755,9 @@ Each argument is described in detail in: L<Paws::ElastiCache::ModifyReplicationG
 
 Returns: a L<Paws::ElastiCache::ModifyReplicationGroupShardConfigurationResult> instance
 
-Performs horizontal scaling on a Redis (cluster mode enabled) cluster
-with no downtime. Requires Redis engine version 3.2.10 or newer. For
-information on upgrading your engine to a newer version, see Upgrading
-Engine Versions
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/VersionManagement.html)
-in the Amazon ElastiCache User Guide.
-
-For more information on ElastiCache for Redis online horizontal
-scaling, see ElastiCache for Redis Horizontal Scaling
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/redis-cluster-resharding-online.html)
+Modifies a replication group's shards (node groups) by allowing you to
+add shards, remove shards, or rebalance the keyspaces among exisiting
+shards.
 
 
 =head2 PurchaseReservedCacheNodesOffering
@@ -1740,7 +1813,7 @@ Rebooting a cluster is currently supported on Memcached and Redis
 If you make changes to parameters that require a Redis (cluster mode
 enabled) cluster reboot for the changes to be applied, see Rebooting a
 Cluster
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Clusters.Rebooting.htm)
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.Rebooting.html)
 for an alternate process.
 
 
@@ -1892,7 +1965,7 @@ For more information see:
 =item *
 
 Viewing ElastiCache Events
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/ECEvents.Viewing.html)
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ECEvents.Viewing.html)
 in the I<ElastiCache User Guide>
 
 =item *
@@ -1906,7 +1979,7 @@ in the ElastiCache API Reference
 =back
 
 Also see, Testing Multi-AZ with Automatic Failover
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/AutoFailover.html#auto-failover-test)
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html#auto-failover-test)
 in the I<ElastiCache User Guide>.
 
 

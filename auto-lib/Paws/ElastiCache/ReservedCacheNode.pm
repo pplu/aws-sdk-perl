@@ -7,6 +7,7 @@ package Paws::ElastiCache::ReservedCacheNode;
   has OfferingType => (is => 'ro', isa => 'Str');
   has ProductDescription => (is => 'ro', isa => 'Str');
   has RecurringCharges => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::RecurringCharge]', request_name => 'RecurringCharge', traits => ['NameInRequest']);
+  has ReservationARN => (is => 'ro', isa => 'Str');
   has ReservedCacheNodeId => (is => 'ro', isa => 'Str');
   has ReservedCacheNodesOfferingId => (is => 'ro', isa => 'Str');
   has StartTime => (is => 'ro', isa => 'Str');
@@ -121,6 +122,10 @@ Current generation:
 B<R3 node types:> C<cache.r3.large>, C<cache.r3.xlarge>,
 C<cache.r3.2xlarge>, C<cache.r3.4xlarge>, C<cache.r3.8xlarge>
 
+B<R4 node types;> C<cache.r4.large>, C<cache.r4.xlarge>,
+C<cache.r4.2xlarge>, C<cache.r4.4xlarge>, C<cache.r4.8xlarge>,
+C<cache.r4.16xlarge>
+
 =item *
 
 Previous generation: (not recommended)
@@ -158,13 +163,27 @@ T2 instances.
 
 =back
 
-For a complete listing of node types and specifications, see Amazon
-ElastiCache Product Features and Details
-(http://aws.amazon.com/elasticache/details) and either Cache Node
-Type-Specific Parameters for Memcached
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific)
-or Cache Node Type-Specific Parameters for Redis
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific).
+For a complete listing of node types and specifications, see:
+
+=over
+
+=item *
+
+Amazon ElastiCache Product Features and Details
+(http://aws.amazon.com/elasticache/details)
+
+=item *
+
+Cache Node Type-Specific Parameters for Memcached
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/ParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific)
+
+=item *
+
+Cache Node Type-Specific Parameters for Redis
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific)
+
+=back
+
 
 
 =head2 Duration => Int
@@ -190,6 +209,14 @@ or Cache Node Type-Specific Parameters for Redis
 =head2 RecurringCharges => ArrayRef[L<Paws::ElastiCache::RecurringCharge>]
 
   The recurring price charged to run this reserved cache node.
+
+
+=head2 ReservationARN => Str
+
+  The Amazon Resource Name (ARN) of the reserved cache node.
+
+Example:
+C<arn:aws:elasticache:us-east-1:123456789012:reserved-instance:ri-2017-03-27-08-33-25-582>
 
 
 =head2 ReservedCacheNodeId => Str
