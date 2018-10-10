@@ -89,11 +89,6 @@ C<entry.cidr> - The IPv4 CIDR range specified in the entry.
 
 =item *
 
-C<entry.egress> - Indicates whether the entry applies to egress
-traffic.
-
-=item *
-
 C<entry.icmp.code> - The ICMP code specified in the entry, if any.
 
 =item *
@@ -127,7 +122,7 @@ C<entry.rule-action> - Allows or denies the matching traffic (C<allow>
 =item *
 
 C<entry.rule-number> - The number of an entry (in other words, rule) in
-the ACL's set of entries.
+the set of ACL entries.
 
 =item *
 

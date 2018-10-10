@@ -78,8 +78,8 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =head2 CreditSpecification => L<Paws::EC2::CreditSpecificationRequest>
 
-  The credit option for CPU usage of the instance. Valid for T2 instances
-only.
+  The credit option for CPU usage of the instance. Valid for T2 or T3
+instances only.
 
 
 =head2 DisableApiTermination => Bool

@@ -6,6 +6,7 @@ package Paws::EC2::AllocateHosts;
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken' );
   has InstanceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceType' , required => 1);
   has Quantity => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'quantity' , required => 1);
+  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
 
   use MooseX::ClassAttribute;
 
@@ -32,11 +33,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $AllocateHostsResult = $ec2->AllocateHosts(
-      AvailabilityZone => 'MyString',
-      InstanceType     => 'MyString',
-      Quantity         => 1,
-      AutoPlacement    => 'on',          # OPTIONAL
-      ClientToken      => 'MyString',    # OPTIONAL
+      AvailabilityZone  => 'MyString',
+      InstanceType      => 'MyString',
+      Quantity          => 1,
+      AutoPlacement     => 'on',          # OPTIONAL
+      ClientToken       => 'MyString',    # OPTIONAL
+      TagSpecifications => [
+        {
+          ResourceType => 'customer-gateway'
+          , # values: customer-gateway, dedicated-host, dhcp-options, image, instance, internet-gateway, network-acl, network-interface, reserved-instances, route-table, snapshot, spot-instances-request, subnet, security-group, volume, vpc, vpn-connection, vpn-gateway; OPTIONAL
+          Tags => [
+            {
+              Key   => 'MyString',
+              Value => 'MyString',
+            },
+            ...
+          ],    # OPTIONAL
+        },
+        ...
+      ],        # OPTIONAL
     );
 
     # Results:
@@ -88,6 +103,12 @@ you can launch onto that host.
 
 The number of Dedicated Hosts to allocate to your account with these
 parameters.
+
+
+
+=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+
+The tags to apply to the Dedicated Host during creation.
 
 
 

@@ -1477,6 +1477,29 @@ package Paws::EC2;
 
     return undef
   }
+  sub DescribeAllNetworkInterfaces {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeNetworkInterfaces(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeNetworkInterfaces(@_, NextToken => $next_result->NextToken);
+        push @{ $result->NetworkInterfaces }, @{ $next_result->NetworkInterfaces };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'NetworkInterfaces') foreach (@{ $result->NetworkInterfaces });
+        $result = $self->DescribeNetworkInterfaces(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'NetworkInterfaces') foreach (@{ $result->NetworkInterfaces });
+    }
+
+    return undef
+  }
   sub DescribeAllReservedInstancesModifications {
     my $self = shift;
 
@@ -1519,6 +1542,29 @@ package Paws::EC2;
         $result = $self->DescribeReservedInstancesOfferings(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'ReservedInstancesOfferings') foreach (@{ $result->ReservedInstancesOfferings });
+    }
+
+    return undef
+  }
+  sub DescribeAllRouteTables {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeRouteTables(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeRouteTables(@_, NextToken => $next_result->NextToken);
+        push @{ $result->RouteTables }, @{ $next_result->RouteTables };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'RouteTables') foreach (@{ $result->RouteTables });
+        $result = $self->DescribeRouteTables(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'RouteTables') foreach (@{ $result->RouteTables });
     }
 
     return undef
@@ -1894,6 +1940,8 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 =item [AutoPlacement => Str]
 
 =item [ClientToken => Str]
+
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
 
 
 =back
@@ -2690,6 +2738,11 @@ Initiates the copy of an AMI from the specified source region to the
 current region. You specify the destination region by using its
 endpoint when making the request.
 
+Copies of encrypted backing snapshots for the AMI are encrypted. Copies
+of unencrypted backing snapshots remain unencrypted, unless you set
+C<Encrypted> during the copy operation. You cannot create an
+unencrypted copy of an encrypted backing snapshot.
+
 For more information about the prerequisites and limits when copying an
 AMI, see Copying an AMI
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html)
@@ -2840,8 +2893,8 @@ components of a default VPC, see Default VPC and Default Subnets
 in the I<Amazon Virtual Private Cloud User Guide>. You cannot specify
 the components of the default VPC yourself.
 
-iIf you deleted your previous default VPC, you can create a default
-VPC. You cannot have more than one default VPC per Region.
+If you deleted your previous default VPC, you can create a default VPC.
+You cannot have more than one default VPC per Region.
 
 If your account supports EC2-Classic, you cannot use this action to
 create a default VPC in a Region that supports EC2-Classic. If you want
@@ -5401,9 +5454,8 @@ The results describe all the Dedicated Host reservation offerings,
 including offerings that may not match the instance family and region
 of your Dedicated Hosts. When purchasing an offering, ensure that the
 instance family and Region of the offering matches that of the
-Dedicated Hosts with which it is to be associated . For more
-information about supported instance types, see Dedicated Hosts
-Overview
+Dedicated Hosts with which it is to be associated. For more information
+about supported instance types, see Dedicated Hosts Overview
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -5706,15 +5758,20 @@ Each argument is described in detail in: L<Paws::EC2::DescribeInstanceCreditSpec
 
 Returns: a L<Paws::EC2::DescribeInstanceCreditSpecificationsResult> instance
 
-Describes the credit option for CPU usage of one or more of your T2
-instances. The credit options are C<standard> and C<unlimited>.
+Describes the credit option for CPU usage of one or more of your T2 or
+T3 instances. The credit options are C<standard> and C<unlimited>.
 
-If you do not specify an instance ID, Amazon EC2 returns only the T2
-instances with the C<unlimited> credit option. If you specify one or
-more instance IDs, Amazon EC2 returns the credit option (C<standard> or
-C<unlimited>) of those instances. If you specify an instance ID that is
-not valid, such as an instance that is not a T2 instance, an error is
-returned.
+If you do not specify an instance ID, Amazon EC2 returns T2 and T3
+instances with the C<unlimited> credit option, as well as instances
+that were previously configured as T2 or T3 with the C<unlimited>
+credit option. For example, if you resize a T2 instance, while it is
+configured as C<unlimited>, to an M4 instance, Amazon EC2 returns the
+M4 instance.
+
+If you specify one or more instance IDs, Amazon EC2 returns the credit
+option (C<standard> or C<unlimited>) of those instances. If you specify
+an instance ID that is not valid, such as an instance that is not a T2
+or T3 instance, an error is returned.
 
 Recently terminated instances might appear in the returned results.
 This interval is usually less than one hour.
@@ -5724,8 +5781,8 @@ specify instance IDs in the affected zone, or do not specify any
 instance IDs at all, the call fails. If you specify only instance IDs
 in an unaffected zone, the call works normally.
 
-For more information, see T2 Instances
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/t2-instances.html)
+For more information, see Burstable Performance Instances
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
@@ -6058,7 +6115,11 @@ Describes the permissions for your network interfaces.
 
 =item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
 
+=item [MaxResults => Int]
+
 =item [NetworkInterfaceIds => ArrayRef[Str|Undef]]
+
+=item [NextToken => Str]
 
 
 =back
@@ -6348,6 +6409,10 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 =item [DryRun => Bool]
 
 =item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
 
 =item [RouteTableIds => ArrayRef[Str|Undef]]
 
@@ -8107,7 +8172,7 @@ Modify the auto-placement setting of a Dedicated Host. When
 auto-placement is enabled, any instances that you launch with a tenancy
 of C<host> but without a specific host ID are placed onto any available
 Dedicated Host in your account that has auto-placement enabled. When
-auto-placement is disabled, you need to provide a host ID ito have the
+auto-placement is disabled, you need to provide a host ID to have the
 instance launch onto a specific host. If no host ID is provided, the
 instance is launched onto a suitable host with auto-placement enabled.
 
@@ -8327,11 +8392,11 @@ Each argument is described in detail in: L<Paws::EC2::ModifyInstanceCreditSpecif
 
 Returns: a L<Paws::EC2::ModifyInstanceCreditSpecificationResult> instance
 
-Modifies the credit option for CPU usage on a running or stopped T2
-instance. The credit options are C<standard> and C<unlimited>.
+Modifies the credit option for CPU usage on a running or stopped T2 or
+T3 instance. The credit options are C<standard> and C<unlimited>.
 
-For more information, see T2 Instances
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/t2-instances.html)
+For more information, see Burstable Performance Instances
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
@@ -9244,9 +9309,9 @@ Returns: a L<Paws::EC2::ReleaseHostsResult> instance
 When you no longer want to use an On-Demand Dedicated Host it can be
 released. On-Demand billing is stopped and the host goes into
 C<released> state. The host ID of Dedicated Hosts that have been
-released can no longer be specified in another request, for example,
-ModifyHosts. You must stop or terminate all instances on a host before
-it can be released.
+released can no longer be specified in another request, for example, to
+modify the host. You must stop or terminate all instances on a host
+before it can be released.
 
 When Dedicated Hosts are released, it may take some time for them to
 stop counting toward your limit and you may receive capacity errors
@@ -10281,6 +10346,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeNatGatewaysResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 DescribeAllNetworkInterfaces(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NetworkInterfaceIds => ArrayRef[Str|Undef], NextToken => Str])
+
+=head2 DescribeAllNetworkInterfaces([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NetworkInterfaceIds => ArrayRef[Str|Undef], NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - NetworkInterfaces, passing the object as the first parameter, and the string 'NetworkInterfaces' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeNetworkInterfacesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllReservedInstancesModifications(sub { },[Filters => ArrayRef[L<Paws::EC2::Filter>], NextToken => Str, ReservedInstancesModificationIds => ArrayRef[Str|Undef]])
 
 =head2 DescribeAllReservedInstancesModifications([Filters => ArrayRef[L<Paws::EC2::Filter>], NextToken => Str, ReservedInstancesModificationIds => ArrayRef[Str|Undef]])
@@ -10303,6 +10380,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - ReservedInstancesOfferings, passing the object as the first parameter, and the string 'ReservedInstancesOfferings' as the second parameter 
 
 If not, it will return a a L<Paws::EC2::DescribeReservedInstancesOfferingsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllRouteTables(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, RouteTableIds => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllRouteTables([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, RouteTableIds => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - RouteTables, passing the object as the first parameter, and the string 'RouteTables' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeRouteTablesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DescribeAllSecurityGroups(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], GroupIds => ArrayRef[Str|Undef], GroupNames => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])

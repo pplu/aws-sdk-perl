@@ -33,18 +33,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeHostReservationsResult = $ec2->DescribeHostReservations(
       Filter => [
         {
-          Name   => 'MyString',    # OPTIONAL
-          Values => [
-            'MyString', ...        # OPTIONAL
-          ],                       # OPTIONAL
+          Name   => 'MyString',
+          Values => [ 'MyString', ... ],    # OPTIONAL
         },
         ...
-      ],                           # OPTIONAL
-      HostReservationIdSet => [
-        'MyString', ...            # OPTIONAL
-      ],                           # OPTIONAL
-      MaxResults => 1,             # OPTIONAL
-      NextToken  => 'MyString',    # OPTIONAL
+      ],                                    # OPTIONAL
+      HostReservationIdSet => [ 'MyString', ... ],    # OPTIONAL
+      MaxResults           => 1,                      # OPTIONAL
+      NextToken            => 'MyString',             # OPTIONAL
     );
 
     # Results:
@@ -95,8 +91,9 @@ One or more host reservation IDs.
 
 The maximum number of results to return for the request in a single
 page. The remaining results can be seen by sending another request with
-the returned C<nextToken> value. This value can be between 5 and 500.If
-C<maxResults> is given a larger value than 500, you receive an error.
+the returned C<nextToken> value. This value can be between 5 and 500.
+If C<maxResults> is given a larger value than 500, you receive an
+error.
 
 
 

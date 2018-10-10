@@ -24,7 +24,7 @@ C<null> when there are no more results to return.
 
 =head2 Tags => ArrayRef[L<Paws::EC2::TagDescription>]
 
-A list of tags.
+The tags.
 
 
 =head2 _request_id => Str

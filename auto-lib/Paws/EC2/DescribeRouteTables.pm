@@ -3,6 +3,8 @@ package Paws::EC2::DescribeRouteTables;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has MaxResults => (is => 'ro', isa => 'Int');
+  has NextToken => (is => 'ro', isa => 'Str');
   has RouteTableIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'RouteTableId' );
 
   use MooseX::ClassAttribute;
@@ -163,6 +165,20 @@ C<vpc-id> - The ID of the VPC for the route table.
 
 =back
 
+
+
+
+=head2 MaxResults => Int
+
+The maximum number of results to return in a single call. To retrieve
+the remaining results, make another call with the returned B<NextToken>
+value. This value can be between 5 and 100.
+
+
+
+=head2 NextToken => Str
+
+The token to retrieve the next page of results.
 
 
 

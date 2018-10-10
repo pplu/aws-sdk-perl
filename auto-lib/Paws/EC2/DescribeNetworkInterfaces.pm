@@ -3,7 +3,9 @@ package Paws::EC2::DescribeNetworkInterfaces;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'filter' );
+  has MaxResults => (is => 'ro', isa => 'Int');
   has NetworkInterfaceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'NetworkInterfaceId' );
+  has NextToken => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -246,11 +248,25 @@ C<vpc-id> - The ID of the VPC for the network interface.
 
 
 
+=head2 MaxResults => Int
+
+The maximum number of items to return for this request. The request
+returns a token that you can specify in a subsequent call to get the
+next set of results.
+
+
+
 =head2 NetworkInterfaceIds => ArrayRef[Str|Undef]
 
 One or more network interface IDs.
 
 Default: Describes all your network interfaces.
+
+
+
+=head2 NextToken => Str
+
+The token to retrieve the next page of results.
 
 
 

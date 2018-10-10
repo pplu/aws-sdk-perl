@@ -99,7 +99,8 @@ bucket. You can also specify a subfolder in the bucket. To specify a
 subfolder in the bucket, use the following ARN format:
 C<bucket_ARN/subfolder_name/>. For example, to specify a subfolder
 named C<my-logs> in a bucket named C<my-bucket>, use the following ARN:
-C<arn:aws:s3:::my-bucket/my-logs/>.
+C<arn:aws:s3:::my-bucket/my-logs/>. You cannot use C<AWSLogs> as a
+subfolder name. This is a reserved term.
 
 
 

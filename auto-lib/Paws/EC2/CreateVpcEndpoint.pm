@@ -102,7 +102,7 @@ To use a private hosted zone, you must set the following VPC attributes
 to C<true>: C<enableDnsHostnames> and C<enableDnsSupport>. Use
 ModifyVpcAttribute to set the VPC attributes.
 
-Default: C<true>
+Default: C<false>
 
 
 

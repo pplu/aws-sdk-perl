@@ -52,8 +52,8 @@ name or a template ID.
 
 =head2 Version => Str
 
-  The version number. By default, the default version of the launch
-template is used.
+  The version number of the launch template. You must specify a version
+number.
 
 
 
