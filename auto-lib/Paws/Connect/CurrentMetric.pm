@@ -1,15 +1,14 @@
-package Paws::Connect::Attributes;
+package Paws::Connect::CurrentMetric;
   use Moose;
-  with 'Paws::API::StrToNativeMapParser';
-
-  has Map => (is => 'ro', isa => 'HashRef[Maybe[Str]]');
+  has Name => (is => 'ro', isa => 'Str');
+  has Unit => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Connect::Attributes
+Paws::Connect::CurrentMetric
 
 =head1 USAGE
 
@@ -20,26 +19,35 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Connect::Attributes object:
+As an example, if Att1 is expected to be a Paws::Connect::CurrentMetric object:
 
-  $service_obj->Method(Att1 => { key1 => $value, ..., keyN => $value  });
+  $service_obj->Method(Att1 => { Name => $value, ..., Unit => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Connect::Attributes object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Connect::CurrentMetric object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Map->{ key1 }
+  $result->Att1->Name
 
 =head1 DESCRIPTION
 
-This class has no description
+A C<CurrentMetric> object that contains the Name and Unit for the
+metric.
 
 =head1 ATTRIBUTES
 
-=head2 Map => Str
 
-Use the Map method to retrieve a HashRef to the map
+=head2 Name => Str
+
+  The name of the metric.
+
+
+=head2 Unit => Str
+
+  The unit for the metric.
+
+
 
 =head1 SEE ALSO
 

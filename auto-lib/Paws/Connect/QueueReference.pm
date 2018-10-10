@@ -1,15 +1,14 @@
-package Paws::Connect::Attributes;
+package Paws::Connect::QueueReference;
   use Moose;
-  with 'Paws::API::StrToNativeMapParser';
-
-  has Map => (is => 'ro', isa => 'HashRef[Maybe[Str]]');
+  has Arn => (is => 'ro', isa => 'Str');
+  has Id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Connect::Attributes
+Paws::Connect::QueueReference
 
 =head1 USAGE
 
@@ -20,26 +19,35 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Connect::Attributes object:
+As an example, if Att1 is expected to be a Paws::Connect::QueueReference object:
 
-  $service_obj->Method(Att1 => { key1 => $value, ..., keyN => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., Id => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Connect::Attributes object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Connect::QueueReference object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Map->{ key1 }
+  $result->Att1->Arn
 
 =head1 DESCRIPTION
 
-This class has no description
+A QueueReference object that contains the the QueueId and ARN for the
+queue resource for which metrics are returned.
 
 =head1 ATTRIBUTES
 
-=head2 Map => Str
 
-Use the Map method to retrieve a HashRef to the map
+=head2 Arn => Str
+
+  The Amazon Resource Name (ARN) of queue.
+
+
+=head2 Id => Str
+
+  The ID of the queue associated with the metrics returned.
+
+
 
 =head1 SEE ALSO
 

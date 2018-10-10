@@ -39,9 +39,19 @@ package Paws::Connect;
     my $call_object = $self->new_with_coercions('Paws::Connect::DescribeUserHierarchyStructure', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetCurrentMetricData {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Connect::GetCurrentMetricData', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetFederationToken {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Connect::GetFederationToken', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetMetricData {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Connect::GetMetricData', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListRoutingProfiles {
@@ -74,6 +84,11 @@ package Paws::Connect;
     my $call_object = $self->new_with_coercions('Paws::Connect::StopContact', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateContactAttributes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Connect::UpdateContactAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateUserHierarchy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Connect::UpdateUserHierarchy', @_);
@@ -102,7 +117,7 @@ package Paws::Connect;
   
 
 
-  sub operations { qw/CreateUser DeleteUser DescribeUser DescribeUserHierarchyGroup DescribeUserHierarchyStructure GetFederationToken ListRoutingProfiles ListSecurityProfiles ListUserHierarchyGroups ListUsers StartOutboundVoiceContact StopContact UpdateUserHierarchy UpdateUserIdentityInfo UpdateUserPhoneConfig UpdateUserRoutingProfile UpdateUserSecurityProfiles / }
+  sub operations { qw/CreateUser DeleteUser DescribeUser DescribeUserHierarchyGroup DescribeUserHierarchyStructure GetCurrentMetricData GetFederationToken GetMetricData ListRoutingProfiles ListSecurityProfiles ListUserHierarchyGroups ListUsers StartOutboundVoiceContact StopContact UpdateContactAttributes UpdateUserHierarchy UpdateUserIdentityInfo UpdateUserPhoneConfig UpdateUserRoutingProfile UpdateUserSecurityProfiles / }
 
 1;
 
@@ -135,6 +150,10 @@ usage examples for each of the Amazon Connect actions, data types,
 parameters, and errors. Amazon Connect is a cloud-based contact center
 solution that makes it easy to set up and manage a customer contact
 center and provide reliable customer engagement at any scale.
+
+There is a throttling limit placed on usage of the Amazon Connect
+operations that includes a RateLimit of 2 per second, and a BurstLimit
+of 5 per second.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/connect-2017-08-08>
 
@@ -246,6 +265,36 @@ Returns a C<HiearchyGroupStructure> object, which contains data about
 the levels in the agent hierarchy.
 
 
+=head2 GetCurrentMetricData
+
+=over
+
+=item CurrentMetrics => ArrayRef[L<Paws::Connect::CurrentMetric>]
+
+=item Filters => L<Paws::Connect::Filters>
+
+=item InstanceId => Str
+
+=item [Groupings => ArrayRef[Str|Undef]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Connect::GetCurrentMetricData>
+
+Returns: a L<Paws::Connect::GetCurrentMetricDataResponse> instance
+
+The C<GetCurrentMetricData> operation retrieves current metric data
+from your Amazon Connect instance.
+
+If you are using an IAM account, it must have permission to the
+C<connect:GetCurrentMetricData> action.
+
+
 =head2 GetFederationToken
 
 =over
@@ -260,6 +309,40 @@ Each argument is described in detail in: L<Paws::Connect::GetFederationToken>
 Returns: a L<Paws::Connect::GetFederationTokenResponse> instance
 
 Retrieves a token for federation.
+
+
+=head2 GetMetricData
+
+=over
+
+=item EndTime => Str
+
+=item Filters => L<Paws::Connect::Filters>
+
+=item HistoricalMetrics => ArrayRef[L<Paws::Connect::HistoricalMetric>]
+
+=item InstanceId => Str
+
+=item StartTime => Str
+
+=item [Groupings => ArrayRef[Str|Undef]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Connect::GetMetricData>
+
+Returns: a L<Paws::Connect::GetMetricDataResponse> instance
+
+The C<GetMetricData> operation retrieves historical metrics data from
+your Amazon Connect instance.
+
+If you are using an IAM account, it must have permission to the
+C<connect:GetMetricData> action.
 
 
 =head2 ListRoutingProfiles
@@ -376,9 +459,6 @@ Returns: a L<Paws::Connect::StartOutboundVoiceContactResponse> instance
 The C<StartOutboundVoiceContact> operation initiates a contact flow to
 place an outbound call to a customer.
 
-There is a throttling limit placed on usage of the API that includes a
-RateLimit of 2 per second, and a BurstLimit of 5 per second.
-
 If you are using an IAM account, it must have permission to the
 C<connect:StartOutboundVoiceContact> action.
 
@@ -403,6 +483,49 @@ operation.
 
 If you are using an IAM account, it must have permission to the
 C<connect:StopContact> action.
+
+
+=head2 UpdateContactAttributes
+
+=over
+
+=item Attributes => L<Paws::Connect::Attributes>
+
+=item InitialContactId => Str
+
+=item InstanceId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Connect::UpdateContactAttributes>
+
+Returns: a L<Paws::Connect::UpdateContactAttributesResponse> instance
+
+The C<UpdateContactAttributes> operation lets you programmatically
+create new, or update existing, contact attributes associated with a
+contact. You can use the operation to add or update attributes for both
+ongoing and completed contacts. For example, you can update the
+customer's name or the reason the customer called while the call is
+active, or add notes about steps that the agent took during the call
+that are displayed to the next agent that takes the call. You can also
+use the C<UpdateContactAttributes> operation to update attributes for a
+contact using data from your CRM application and save the data with the
+contact in Amazon Connect. You could also flag calls for additional
+analysis, such as legal review or identifying abusive callers.
+
+Contact attributes are available in Amazon Connect for 24 months, and
+are then deleted.
+
+I<Important:>
+
+You cannot use the operation to update attributes for contacts that
+occurred prior to the release of the API, September 12, 2018. You can
+update attributes only for contacts that started after the release of
+the API. If you attempt to update attributes for a contact that
+occurred prior to the release of the API, a 400 error is returned. This
+applies also to queued callbacks that were initiated prior to the
+release of the API but are still active in your instance.
 
 
 =head2 UpdateUserHierarchy
@@ -504,7 +627,7 @@ Each argument is described in detail in: L<Paws::Connect::UpdateUserSecurityProf
 
 Returns: nothing
 
-Update the security profiles assigned to the user.
+Updates the security profiles assigned to the user.
 
 
 

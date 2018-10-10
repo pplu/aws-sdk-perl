@@ -145,7 +145,7 @@ created.
 
 =head2 B<REQUIRED> Username => Str
 
-The user name in Amazon Connect for the user to create.
+The user name in Amazon Connect for the account to create.
 
 
 
