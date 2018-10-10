@@ -220,6 +220,11 @@ package Paws::Glue;
     my $call_object = $self->new_with_coercions('Paws::Glue::GetDatabases', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetDataCatalogEncryptionSettings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::GetDataCatalogEncryptionSettings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetDataflowGraph {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::GetDataflowGraph', @_);
@@ -732,7 +737,7 @@ package Paws::Glue;
   }
 
 
-  sub operations { qw/BatchCreatePartition BatchDeleteConnection BatchDeletePartition BatchDeleteTable BatchDeleteTableVersion BatchGetPartition BatchStopJobRun CreateClassifier CreateConnection CreateCrawler CreateDatabase CreateDevEndpoint CreateJob CreatePartition CreateScript CreateSecurityConfiguration CreateTable CreateTrigger CreateUserDefinedFunction DeleteClassifier DeleteConnection DeleteCrawler DeleteDatabase DeleteDevEndpoint DeleteJob DeletePartition DeleteSecurityConfiguration DeleteTable DeleteTableVersion DeleteTrigger DeleteUserDefinedFunction GetCatalogImportStatus GetClassifier GetClassifiers GetConnection GetConnections GetCrawler GetCrawlerMetrics GetCrawlers GetDatabase GetDatabases GetDataflowGraph GetDevEndpoint GetDevEndpoints GetJob GetJobRun GetJobRuns GetJobs GetMapping GetPartition GetPartitions GetPlan GetSecurityConfiguration GetSecurityConfigurations GetTable GetTables GetTableVersion GetTableVersions GetTrigger GetTriggers GetUserDefinedFunction GetUserDefinedFunctions ImportCatalogToGlue PutDataCatalogEncryptionSettings ResetJobBookmark StartCrawler StartCrawlerSchedule StartJobRun StartTrigger StopCrawler StopCrawlerSchedule StopTrigger UpdateClassifier UpdateConnection UpdateCrawler UpdateCrawlerSchedule UpdateDatabase UpdateDevEndpoint UpdateJob UpdatePartition UpdateTable UpdateTrigger UpdateUserDefinedFunction / }
+  sub operations { qw/BatchCreatePartition BatchDeleteConnection BatchDeletePartition BatchDeleteTable BatchDeleteTableVersion BatchGetPartition BatchStopJobRun CreateClassifier CreateConnection CreateCrawler CreateDatabase CreateDevEndpoint CreateJob CreatePartition CreateScript CreateSecurityConfiguration CreateTable CreateTrigger CreateUserDefinedFunction DeleteClassifier DeleteConnection DeleteCrawler DeleteDatabase DeleteDevEndpoint DeleteJob DeletePartition DeleteSecurityConfiguration DeleteTable DeleteTableVersion DeleteTrigger DeleteUserDefinedFunction GetCatalogImportStatus GetClassifier GetClassifiers GetConnection GetConnections GetCrawler GetCrawlerMetrics GetCrawlers GetDatabase GetDatabases GetDataCatalogEncryptionSettings GetDataflowGraph GetDevEndpoint GetDevEndpoints GetJob GetJobRun GetJobRuns GetJobs GetMapping GetPartition GetPartitions GetPlan GetSecurityConfiguration GetSecurityConfigurations GetTable GetTables GetTableVersion GetTableVersions GetTrigger GetTriggers GetUserDefinedFunction GetUserDefinedFunctions ImportCatalogToGlue PutDataCatalogEncryptionSettings ResetJobBookmark StartCrawler StartCrawlerSchedule StartJobRun StartTrigger StopCrawler StopCrawlerSchedule StopTrigger UpdateClassifier UpdateConnection UpdateCrawler UpdateCrawlerSchedule UpdateDatabase UpdateDevEndpoint UpdateJob UpdatePartition UpdateTable UpdateTrigger UpdateUserDefinedFunction / }
 
 1;
 
@@ -1646,6 +1651,22 @@ Each argument is described in detail in: L<Paws::Glue::GetDatabases>
 Returns: a L<Paws::Glue::GetDatabasesResponse> instance
 
 Retrieves all Databases defined in a given Data Catalog.
+
+
+=head2 GetDataCatalogEncryptionSettings
+
+=over
+
+=item [CatalogId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::GetDataCatalogEncryptionSettings>
+
+Returns: a L<Paws::Glue::GetDataCatalogEncryptionSettingsResponse> instance
+
+Retrieves the security configuration for a specified catalog.
 
 
 =head2 GetDataflowGraph
