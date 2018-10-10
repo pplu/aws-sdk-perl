@@ -5,6 +5,7 @@ package Paws::CodeStar::CreateProject;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
   has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id' , required => 1);
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::CodeStar::Tags', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
@@ -35,6 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name               => 'MyProjectName',
       ClientRequestToken => 'MyClientRequestToken',    # OPTIONAL
       Description        => 'MyProjectDescription',    # OPTIONAL
+      Tags               => {
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
+      },    # OPTIONAL
     );
 
     # Results:
@@ -72,6 +76,12 @@ Reserved for future use.
 =head2 B<REQUIRED> Name => Str
 
 Reserved for future use.
+
+
+
+=head2 Tags => L<Paws::CodeStar::Tags>
+
+The tags created for the project.
 
 
 

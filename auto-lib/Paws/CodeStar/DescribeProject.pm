@@ -41,6 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Name               = $DescribeProjectResult->Name;
     my $ProjectTemplateId  = $DescribeProjectResult->ProjectTemplateId;
     my $StackId            = $DescribeProjectResult->StackId;
+    my $Status             = $DescribeProjectResult->Status;
 
     # Returns a L<Paws::CodeStar::DescribeProjectResult> object.
 

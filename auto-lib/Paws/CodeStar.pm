@@ -279,6 +279,8 @@ Adds an IAM user to the team for an AWS CodeStar project.
 
 =item [Description => Str]
 
+=item [Tags => L<Paws::CodeStar::Tags>]
+
 
 =back
 
