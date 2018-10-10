@@ -275,6 +275,10 @@ Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 
 =item [Description => Str]
 
+=item [PricingPlan => Str]
+
+=item [ReservationPlanSettings => L<Paws::MediaConvert::ReservationPlanSettings>]
+
 =item [Tags => L<Paws::MediaConvert::__mapOf__string>]
 
 
@@ -636,6 +640,8 @@ Modify one of your existing presets.
 =item Name => Str
 
 =item [Description => Str]
+
+=item [ReservationPlanSettings => L<Paws::MediaConvert::ReservationPlanSettings>]
 
 =item [Status => Str]
 
