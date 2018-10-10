@@ -50,10 +50,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Logs             = $DescribeBrokerResponse->Logs;
     my $MaintenanceWindowStartTime =
       $DescribeBrokerResponse->MaintenanceWindowStartTime;
-    my $PubliclyAccessible = $DescribeBrokerResponse->PubliclyAccessible;
-    my $SecurityGroups     = $DescribeBrokerResponse->SecurityGroups;
-    my $SubnetIds          = $DescribeBrokerResponse->SubnetIds;
-    my $Users              = $DescribeBrokerResponse->Users;
+    my $PendingEngineVersion = $DescribeBrokerResponse->PendingEngineVersion;
+    my $PubliclyAccessible   = $DescribeBrokerResponse->PubliclyAccessible;
+    my $SecurityGroups       = $DescribeBrokerResponse->SecurityGroups;
+    my $SubnetIds            = $DescribeBrokerResponse->SubnetIds;
+    my $Users                = $DescribeBrokerResponse->Users;
 
     # Returns a L<Paws::MQ::DescribeBrokerResponse> object.
 

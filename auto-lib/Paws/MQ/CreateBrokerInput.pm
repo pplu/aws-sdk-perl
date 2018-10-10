@@ -93,7 +93,7 @@ supports only ACTIVEMQ.
 =head2 EngineVersion => Str
 
   Required. The version of the broker engine. Note: Currently, Amazon MQ
-supports only 5.15.0.
+supports only 5.15.6 and 5.15.0.
 
 
 =head2 HostInstanceType => Str

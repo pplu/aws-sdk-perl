@@ -15,6 +15,7 @@ package Paws::MQ::DescribeBrokerResponse;
   has HostInstanceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'hostInstanceType');
   has Logs => (is => 'ro', isa => 'Paws::MQ::LogsSummary', traits => ['NameInRequest'], request_name => 'logs');
   has MaintenanceWindowStartTime => (is => 'ro', isa => 'Paws::MQ::WeeklyStartTime', traits => ['NameInRequest'], request_name => 'maintenanceWindowStartTime');
+  has PendingEngineVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pendingEngineVersion');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'publiclyAccessible');
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'securityGroups');
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'subnetIds');
@@ -91,7 +92,7 @@ Valid values are: C<"ACTIVEMQ">
 =head2 EngineVersion => Str
 
 The version of the broker engine. Note: Currently, Amazon MQ supports
-only 5.15.0.
+only 5.15.6 and 5.15.0.
 
 
 =head2 HostInstanceType => Str
@@ -108,6 +109,11 @@ deployed for the specified broker.
 =head2 MaintenanceWindowStartTime => L<Paws::MQ::WeeklyStartTime>
 
 The parameters that determine the WeeklyStartTime.
+
+
+=head2 PendingEngineVersion => Str
+
+The version of the broker engine to upgrade to.
 
 
 =head2 PubliclyAccessible => Bool

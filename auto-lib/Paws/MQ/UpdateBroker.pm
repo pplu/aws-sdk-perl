@@ -1,8 +1,10 @@
 
 package Paws::MQ::UpdateBroker;
   use Moose;
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'autoMinorVersionUpgrade');
   has BrokerId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'broker-id', required => 1);
   has Configuration => (is => 'ro', isa => 'Paws::MQ::ConfigurationId', traits => ['NameInRequest'], request_name => 'configuration');
+  has EngineVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'engineVersion');
   has Logs => (is => 'ro', isa => 'Paws::MQ::Logs', traits => ['NameInRequest'], request_name => 'logs');
 
   use MooseX::ClassAttribute;
@@ -31,20 +33,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $mq = Paws->service('MQ');
     my $UpdateBrokerResponse = $mq->UpdateBroker(
-      BrokerId      => 'My__string',
-      Configuration => {
+      BrokerId                => 'My__string',
+      AutoMinorVersionUpgrade => 1,              # OPTIONAL
+      Configuration           => {
         Id       => 'My__string',
-        Revision => 1,              # OPTIONAL
+        Revision => 1,                           # OPTIONAL
       },    # OPTIONAL
-      Logs => {
-        Audit   => 1,    # OPTIONAL
-        General => 1,    # OPTIONAL
-      },    # OPTIONAL
+      EngineVersion => 'My__string',    # OPTIONAL
+      Logs          => {
+        Audit   => 1,
+        General => 1,
+      },                                # OPTIONAL
     );
 
     # Results:
+    my $AutoMinorVersionUpgrade =
+      $UpdateBrokerResponse->AutoMinorVersionUpgrade;
     my $BrokerId      = $UpdateBrokerResponse->BrokerId;
     my $Configuration = $UpdateBrokerResponse->Configuration;
+    my $EngineVersion = $UpdateBrokerResponse->EngineVersion;
     my $Logs          = $UpdateBrokerResponse->Logs;
 
     # Returns a L<Paws::MQ::UpdateBrokerResponse> object.
@@ -53,6 +60,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://aws.amazon.com/documentation/amazon-mq/>
 
 =head1 ATTRIBUTES
+
+
+=head2 AutoMinorVersionUpgrade => Bool
+
+Enables automatic upgrades to new minor versions for brokers, as Apache
+releases the versions. The automatic upgrades occur during the
+maintenance window of the broker or after a manual broker reboot.
+
 
 
 =head2 B<REQUIRED> BrokerId => Str
@@ -67,6 +82,13 @@ characters, or special characters.
 =head2 Configuration => L<Paws::MQ::ConfigurationId>
 
 A list of information about the configuration.
+
+
+
+=head2 EngineVersion => Str
+
+The version of the broker engine. Note: Currently, Amazon MQ supports
+only 5.15.6 and 5.15.0.
 
 
 

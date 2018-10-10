@@ -50,7 +50,8 @@ Returns information about all brokers.
 
 =head2 IpAddress => Str
 
-  The IP address of the ENI attached to the broker.
+  The IP address of the Elastic Network Interface (ENI) attached to the
+broker.
 
 
 

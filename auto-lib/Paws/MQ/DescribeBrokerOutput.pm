@@ -14,6 +14,7 @@ package Paws::MQ::DescribeBrokerOutput;
   has HostInstanceType => (is => 'ro', isa => 'Str', request_name => 'hostInstanceType', traits => ['NameInRequest']);
   has Logs => (is => 'ro', isa => 'Paws::MQ::LogsSummary', request_name => 'logs', traits => ['NameInRequest']);
   has MaintenanceWindowStartTime => (is => 'ro', isa => 'Paws::MQ::WeeklyStartTime', request_name => 'maintenanceWindowStartTime', traits => ['NameInRequest']);
+  has PendingEngineVersion => (is => 'ro', isa => 'Str', request_name => 'pendingEngineVersion', traits => ['NameInRequest']);
   has PubliclyAccessible => (is => 'ro', isa => 'Bool', request_name => 'publiclyAccessible', traits => ['NameInRequest']);
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroups', traits => ['NameInRequest']);
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subnetIds', traits => ['NameInRequest']);
@@ -49,7 +50,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MQ::Describ
 =head1 DESCRIPTION
 
 The version of the broker engine. Note: Currently, Amazon MQ supports
-only 5.15.0.
+only 5.15.6 and 5.15.0.
 
 =head1 ATTRIBUTES
 
@@ -113,7 +114,7 @@ supports only ACTIVEMQ.
 =head2 EngineVersion => Str
 
   The version of the broker engine. Note: Currently, Amazon MQ supports
-only 5.15.0.
+only 5.15.6 and 5.15.0.
 
 
 =head2 HostInstanceType => Str
@@ -130,6 +131,11 @@ deployed for the specified broker.
 =head2 MaintenanceWindowStartTime => L<Paws::MQ::WeeklyStartTime>
 
   The parameters that determine the WeeklyStartTime.
+
+
+=head2 PendingEngineVersion => Str
+
+  The version of the broker engine to upgrade to.
 
 
 =head2 PubliclyAccessible => Bool

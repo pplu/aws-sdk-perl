@@ -429,7 +429,11 @@ Reboots a broker. Note: This API is asynchronous.
 
 =item BrokerId => Str
 
+=item [AutoMinorVersionUpgrade => Bool]
+
 =item [Configuration => L<Paws::MQ::ConfigurationId>]
+
+=item [EngineVersion => Str]
 
 =item [Logs => L<Paws::MQ::Logs>]
 

@@ -49,7 +49,8 @@ the ActiveMQ Web Console is logged.
 
 =head2 AuditLogGroup => Str
 
-  Location of CloudWatch Log group where audit logs will be sent.
+  The location of the CloudWatch Logs log group where audit logs are
+sent.
 
 
 =head2 General => Bool
@@ -59,7 +60,8 @@ the ActiveMQ Web Console is logged.
 
 =head2 GeneralLogGroup => Str
 
-  Location of CloudWatch Log group where general logs will be sent.
+  The location of the CloudWatch Logs log group where general logs are
+sent.
 
 
 =head2 Pending => L<Paws::MQ::PendingLogs>
