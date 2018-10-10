@@ -83,8 +83,7 @@ created.
 =head2 Schema => Str
 
 The schema for the model. For C<application/json> models, this should
-be JSON schema draft 4
-(https://tools.ietf.org/html/draft-zyp-json-schema-04) model.
+be JSON schema draft 4 model.
 
 
 

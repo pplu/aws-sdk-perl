@@ -962,7 +962,6 @@ Returns: a L<Paws::ApiGateway::ApiKey> instance
 Create an ApiKey resource.
 
 AWS CLI
-(http://docs.aws.amazon.com/cli/latest/reference/apigateway/create-api-key.html)
 
 
 =head2 CreateAuthorizer
@@ -999,7 +998,6 @@ Returns: a L<Paws::ApiGateway::Authorizer> instance
 Adds a new Authorizer resource to an existing RestApi resource.
 
 AWS CLI
-(http://docs.aws.amazon.com/cli/latest/reference/apigateway/create-authorizer.html)
 
 
 =head2 CreateBasePathMapping
@@ -1369,7 +1367,6 @@ Returns: nothing
 Deletes an existing Authorizer resource.
 
 AWS CLI
-(http://docs.aws.amazon.com/cli/latest/reference/apigateway/delete-authorizer.html)
 
 
 =head2 DeleteBasePathMapping
@@ -1845,7 +1842,6 @@ Returns: a L<Paws::ApiGateway::Authorizer> instance
 Describe an existing Authorizer resource.
 
 AWS CLI
-(http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizer.html)
 
 
 =head2 GetAuthorizers
@@ -1868,7 +1864,6 @@ Returns: a L<Paws::ApiGateway::Authorizers> instance
 Describe an existing Authorizers resource.
 
 AWS CLI
-(http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizers.html)
 
 
 =head2 GetBasePathMapping
@@ -2958,7 +2953,9 @@ Adds or updates a tag on a given resource.
 
 =item [Body => Str]
 
-=item [Headers => L<Paws::ApiGateway::MapOfHeaderValues>]
+=item [Headers => L<Paws::ApiGateway::MapOfStringToString>]
+
+=item [MultiValueHeaders => L<Paws::ApiGateway::MapOfStringToList>]
 
 =item [PathWithQueryString => Str]
 
@@ -2975,7 +2972,6 @@ Simulate the execution of an Authorizer in your RestApi with headers,
 parameters, and an incoming request body.
 
 Enable custom authorizers
-(http://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html)
 
 
 =head2 TestInvokeMethod
@@ -2992,7 +2988,9 @@ Enable custom authorizers
 
 =item [ClientCertificateId => Str]
 
-=item [Headers => L<Paws::ApiGateway::MapOfHeaderValues>]
+=item [Headers => L<Paws::ApiGateway::MapOfStringToString>]
+
+=item [MultiValueHeaders => L<Paws::ApiGateway::MapOfStringToList>]
 
 =item [PathWithQueryString => Str]
 
@@ -3081,7 +3079,6 @@ Returns: a L<Paws::ApiGateway::Authorizer> instance
 Updates an existing Authorizer resource.
 
 AWS CLI
-(http://docs.aws.amazon.com/cli/latest/reference/apigateway/update-authorizer.html)
 
 
 =head2 UpdateBasePathMapping

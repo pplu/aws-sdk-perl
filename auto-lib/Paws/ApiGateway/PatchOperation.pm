@@ -63,8 +63,7 @@ an unsupported operation on a resource will return an error message.
 
 =head2 Path => Str
 
-  The C<op> operation's target, as identified by a JSON Pointer
-(https://tools.ietf.org/html/draft-ietf-appsawg-json-pointer-08) value
+  The C<op> operation's target, as identified by a JSON Pointer value
 that references a location within the targeted resource. For example,
 if the target resource has an updateable property of
 C<{"name":"value"}>, the path for this property is C</name>. If the
@@ -82,8 +81,7 @@ associated with it.
 C<add> or C<replace> operation. When using AWS CLI to update a property
 of a JSON value, enclose the JSON object with a pair of single quotes
 in a Linux shell, e.g., '{"a": ...}'. In a Windows shell, see Using
-JSON for Parameters
-(http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json).
+JSON for Parameters.
 
 
 

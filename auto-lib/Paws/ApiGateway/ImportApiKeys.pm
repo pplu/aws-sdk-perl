@@ -51,8 +51,7 @@ For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigat
 =head2 B<REQUIRED> Body => Str
 
 The payload of the POST request to import API keys. For the payload
-format, see API Key File Format
-(http://docs.aws.amazon.com/apigateway/latest/developerguide/api-key-file-format.html).
+format, see API Key File Format.
 
 
 

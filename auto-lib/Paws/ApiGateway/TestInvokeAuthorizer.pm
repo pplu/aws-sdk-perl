@@ -4,7 +4,8 @@ package Paws::ApiGateway::TestInvokeAuthorizer;
   has AdditionalContext => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'additionalContext');
   has AuthorizerId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'authorizer_id', required => 1);
   has Body => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'body');
-  has Headers => (is => 'ro', isa => 'Paws::ApiGateway::MapOfHeaderValues', traits => ['NameInRequest'], request_name => 'headers');
+  has Headers => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'headers');
+  has MultiValueHeaders => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToList', traits => ['NameInRequest'], request_name => 'multiValueHeaders');
   has PathWithQueryString => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pathWithQueryString');
   has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
   has StageVariables => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'stageVariables');
@@ -37,11 +38,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $TestInvokeAuthorizerResponse = $apigateway->TestInvokeAuthorizer(
       AuthorizerId        => 'MyString',
       RestApiId           => 'MyString',
-      AdditionalContext   => { 'MyString' => 'MyString', },    # OPTIONAL
-      Body                => 'MyString',                       # OPTIONAL
-      Headers             => { 'MyString' => 'MyString', },    # OPTIONAL
-      PathWithQueryString => 'MyString',                       # OPTIONAL
-      StageVariables      => { 'MyString' => 'MyString', },    # OPTIONAL
+      AdditionalContext   => { 'MyString' => 'MyString', },           # OPTIONAL
+      Body                => 'MyString',                              # OPTIONAL
+      Headers             => { 'MyString' => 'MyString', },           # OPTIONAL
+      MultiValueHeaders   => { 'MyString' => [ 'MyString', ... ], },  # OPTIONAL
+      PathWithQueryString => 'MyString',                              # OPTIONAL
+      StageVariables      => { 'MyString' => 'MyString', },           # OPTIONAL
     );
 
     # Results:
@@ -80,11 +82,19 @@ request.
 
 
 
-=head2 Headers => L<Paws::ApiGateway::MapOfHeaderValues>
+=head2 Headers => L<Paws::ApiGateway::MapOfStringToString>
 
 [Required] A key-value map of headers to simulate an incoming
 invocation request. This is where the incoming authorization token, or
 identity source, should be specified.
+
+
+
+=head2 MultiValueHeaders => L<Paws::ApiGateway::MapOfStringToList>
+
+[Optional] The headers as a map from string to list of values to
+simulate an incoming invocation request. This is where the incoming
+authorization token, or identity source, may be specified.
 
 
 

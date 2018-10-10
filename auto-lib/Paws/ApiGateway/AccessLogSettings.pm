@@ -46,9 +46,8 @@ destination ARN.
 =head2 Format => Str
 
   A single line format of the access logs of data, as specified by
-selected $context variables
-(http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-mapping-template-reference.html#context-variable-reference).
-The format must include at least C<$context.requestId>.
+selected $context variables. The format must include at least
+C<$context.requestId>.
 
 
 

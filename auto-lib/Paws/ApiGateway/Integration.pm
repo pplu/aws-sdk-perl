@@ -40,10 +40,8 @@ Specifies the integration's cache namespace.
 
 =head2 ConnectionId => Str
 
-The (C<id>
-(http://docs.aws.amazon.com/apigateway/api-reference/resource/vpc-link/#id))
-of the VpcLink used for the integration when C<connectionType=VPC_LINK>
-and undefined, otherwise.
+The (C<id>) of the VpcLink used for the integration when
+C<connectionType=VPC_LINK> and undefined, otherwise.
 
 
 =head2 ConnectionType => Str
@@ -110,10 +108,9 @@ Specifies the integration's responses.
 The successful response returns C<200 OK> status and a payload as
 follows:
 
- { "_links": { "curies": { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true }, "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.Content-Type": "'application/xml'" }, "responseTemplates": { "application/json": "$util.urlDecode(\"%3CkinesisStreams%3E#foreach($stream in $input.path('$.StreamNames'))%3Cstream%3E%3Cname%3E$stream%3C/name%3E%3C/stream%3E#end%3C/kinesisStreams%3E\")\n" }, "statusCode": "200" }
+ { "_links": { "curies": { "href": "[[AwsDocsUrlPrefix]]/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true }, "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.Content-Type": "'application/xml'" }, "responseTemplates": { "application/json": "$util.urlDecode(\"%3CkinesisStreams%3E#foreach($stream in $input.path('$.StreamNames'))%3Cstream%3E%3Cname%3E$stream%3C/name%3E%3C/stream%3E#end%3C/kinesisStreams%3E\")\n" }, "statusCode": "200" }
 
 Creating an API
-(http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html)
 
 
 =head2 PassthroughBehavior => Str
@@ -225,11 +222,11 @@ endpoint.
 =item *
 
 For C<HTTP> or C<HTTP_PROXY> integrations, the URI must be a fully
-formed, encoded HTTP(S) URL according to the RFC-3986 specification
-(https://en.wikipedia.org/wiki/Uniform_Resource_Identifier), for either
-standard integration, where C<connectionType> is not C<VPC_LINK>, or
-private integration, where C<connectionType> is C<VPC_LINK>. For a
-private HTTP integration, the URI is not used for routing.
+formed, encoded HTTP(S) URL according to the RFC-3986 specification,
+for either standard integration, where C<connectionType> is not
+C<VPC_LINK>, or private integration, where C<connectionType> is
+C<VPC_LINK>. For a private HTTP integration, the URI is not used for
+routing.
 
 =item *
 
@@ -246,9 +243,7 @@ required input parameters. Alternatively, C<path> can be used for an
 AWS service path-based API. The ensuing C<service_api> refers to the
 path to an AWS service resource, including the region of the integrated
 AWS service, if applicable. For example, for integration with the S3
-API of C<GetObject
-(http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html)>,
-the C<uri> can be either
+API of C<GetObject>, the C<uri> can be either
 C<arn:aws:apigateway:us-west-2:s3:action/GetObject&Bucket={bucket}&Key={key}>
 or C<arn:aws:apigateway:us-west-2:s3:path/{bucket}/{key}>
 
