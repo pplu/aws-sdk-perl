@@ -402,7 +402,7 @@ Paws::Pinpoint - Perl Interface to AWS Amazon Pinpoint
 
 Amazon Pinpoint
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01>
 
 
 =head1 METHODS
