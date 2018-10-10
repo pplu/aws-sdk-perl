@@ -30,6 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $AdminAccount = $GetAdminAccountResponse->AdminAccount;
+    my $RoleStatus   = $GetAdminAccountResponse->RoleStatus;
 
     # Returns a L<Paws::FMS::GetAdminAccountResponse> object.
 
