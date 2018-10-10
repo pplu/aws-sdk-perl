@@ -256,6 +256,8 @@ information.
 
 =item [LogPublishingOptions => L<Paws::ES::LogPublishingOptions>]
 
+=item [NodeToNodeEncryptionOptions => L<Paws::ES::NodeToNodeEncryptionOptions>]
+
 =item [SnapshotOptions => L<Paws::ES::SnapshotOptions>]
 
 =item [VPCOptions => L<Paws::ES::VPCOptions>]

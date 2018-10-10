@@ -10,6 +10,7 @@ package Paws::ES::CreateElasticsearchDomain;
   has ElasticsearchVersion => (is => 'ro', isa => 'Str');
   has EncryptionAtRestOptions => (is => 'ro', isa => 'Paws::ES::EncryptionAtRestOptions');
   has LogPublishingOptions => (is => 'ro', isa => 'Paws::ES::LogPublishingOptions');
+  has NodeToNodeEncryptionOptions => (is => 'ro', isa => 'Paws::ES::NodeToNodeEncryptionOptions');
   has SnapshotOptions => (is => 'ro', isa => 'Paws::ES::SnapshotOptions');
   has VPCOptions => (is => 'ro', isa => 'Paws::ES::VPCOptions');
 
@@ -74,6 +75,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           CloudWatchLogsLogGroupArn => 'MyCloudWatchLogsLogGroupArn', # OPTIONAL
           Enabled                   => 1,                             # OPTIONAL
         }, # key: values: INDEX_SLOW_LOGS, SEARCH_SLOW_LOGS, ES_APPLICATION_LOGS
+      },    # OPTIONAL
+      NodeToNodeEncryptionOptions => {
+        Enabled => 1,    # OPTIONAL
       },    # OPTIONAL
       SnapshotOptions => {
         AutomatedSnapshotStartHour => 1,    # OPTIONAL
@@ -163,6 +167,12 @@ Specifies the Encryption At Rest Options.
 
 Map of C<LogType> and C<LogPublishingOption>, each containing options
 to publish a given type of Elasticsearch log.
+
+
+
+=head2 NodeToNodeEncryptionOptions => L<Paws::ES::NodeToNodeEncryptionOptions>
+
+Specifies the NodeToNodeEncryptionOptions.
 
 
 

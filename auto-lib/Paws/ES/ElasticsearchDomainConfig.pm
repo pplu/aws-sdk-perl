@@ -8,6 +8,7 @@ package Paws::ES::ElasticsearchDomainConfig;
   has ElasticsearchVersion => (is => 'ro', isa => 'Paws::ES::ElasticsearchVersionStatus');
   has EncryptionAtRestOptions => (is => 'ro', isa => 'Paws::ES::EncryptionAtRestOptionsStatus');
   has LogPublishingOptions => (is => 'ro', isa => 'Paws::ES::LogPublishingOptionsStatus');
+  has NodeToNodeEncryptionOptions => (is => 'ro', isa => 'Paws::ES::NodeToNodeEncryptionOptionsStatus');
   has SnapshotOptions => (is => 'ro', isa => 'Paws::ES::SnapshotOptionsStatus');
   has VPCOptions => (is => 'ro', isa => 'Paws::ES::VPCDerivedInfoStatus');
 1;
@@ -89,6 +90,12 @@ domain.
 =head2 LogPublishingOptions => L<Paws::ES::LogPublishingOptionsStatus>
 
   Log publishing options for the given domain.
+
+
+=head2 NodeToNodeEncryptionOptions => L<Paws::ES::NodeToNodeEncryptionOptionsStatus>
+
+  Specifies the C<NodeToNodeEncryptionOptions> for the Elasticsearch
+domain.
 
 
 =head2 SnapshotOptions => L<Paws::ES::SnapshotOptionsStatus>

@@ -15,6 +15,7 @@ package Paws::ES::ElasticsearchDomainStatus;
   has Endpoint => (is => 'ro', isa => 'Str');
   has Endpoints => (is => 'ro', isa => 'Paws::ES::EndpointsMap');
   has LogPublishingOptions => (is => 'ro', isa => 'Paws::ES::LogPublishingOptions');
+  has NodeToNodeEncryptionOptions => (is => 'ro', isa => 'Paws::ES::NodeToNodeEncryptionOptions');
   has Processing => (is => 'ro', isa => 'Bool');
   has SnapshotOptions => (is => 'ro', isa => 'Paws::ES::SnapshotOptions');
   has UpgradeProcessing => (is => 'ro', isa => 'Bool');
@@ -145,6 +146,11 @@ C<'vpc','vpc-endpoint-h2dsd34efgyghrtguk5gt6j2foh4.us-east-1.es.amazonaws.com'>.
 =head2 LogPublishingOptions => L<Paws::ES::LogPublishingOptions>
 
   Log publishing options for the given domain.
+
+
+=head2 NodeToNodeEncryptionOptions => L<Paws::ES::NodeToNodeEncryptionOptions>
+
+  Specifies the status of the C<NodeToNodeEncryptionOptions>.
 
 
 =head2 Processing => Bool
