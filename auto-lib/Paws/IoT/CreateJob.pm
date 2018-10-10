@@ -9,6 +9,7 @@ package Paws::IoT::CreateJob;
   has PresignedUrlConfig => (is => 'ro', isa => 'Paws::IoT::PresignedUrlConfig', traits => ['NameInRequest'], request_name => 'presignedUrlConfig');
   has Targets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'targets', required => 1);
   has TargetSelection => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'targetSelection');
+  has TimeoutConfig => (is => 'ro', isa => 'Paws::IoT::TimeoutConfig', traits => ['NameInRequest'], request_name => 'timeoutConfig');
 
   use MooseX::ClassAttribute;
 
@@ -49,6 +50,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         RoleArn      => 'MyRoleArn',    # min: 20, max: 2048; OPTIONAL
       },    # OPTIONAL
       TargetSelection => 'CONTINUOUS',    # OPTIONAL
+      TimeoutConfig   => {
+        InProgressTimeoutInMinutes => 1,    # OPTIONAL
+      },    # OPTIONAL
     );
 
     # Results:
@@ -118,6 +122,16 @@ thing when the thing is added to a target group, even after the job was
 completed by all things originally in the group.
 
 Valid values are: C<"CONTINUOUS">, C<"SNAPSHOT">
+
+=head2 TimeoutConfig => L<Paws::IoT::TimeoutConfig>
+
+Specifies the amount of time each device has to finish its execution of
+the job. The timer is started when the job execution status is set to
+C<IN_PROGRESS>. If the job execution status is not set to another
+terminal state before the time expires, it will be automatically set to
+C<TIMED_OUT>.
+
+
 
 
 =head1 SEE ALSO

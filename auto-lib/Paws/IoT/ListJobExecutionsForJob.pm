@@ -73,7 +73,7 @@ The token to retrieve the next set of results.
 
 The status of the job.
 
-Valid values are: C<"QUEUED">, C<"IN_PROGRESS">, C<"SUCCEEDED">, C<"FAILED">, C<"REJECTED">, C<"REMOVED">, C<"CANCELED">
+Valid values are: C<"QUEUED">, C<"IN_PROGRESS">, C<"SUCCEEDED">, C<"FAILED">, C<"TIMED_OUT">, C<"REJECTED">, C<"REMOVED">, C<"CANCELED">
 
 
 =head1 SEE ALSO

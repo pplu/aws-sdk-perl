@@ -2,6 +2,7 @@
 package Paws::IoTJobsData::StartNextPendingJobExecution;
   use Moose;
   has StatusDetails => (is => 'ro', isa => 'Paws::IoTJobsData::DetailsMap', traits => ['NameInRequest'], request_name => 'statusDetails');
+  has StepTimeoutInMinutes => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'stepTimeoutInMinutes');
   has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName', required => 1);
 
   use MooseX::ClassAttribute;
@@ -36,6 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'MyDetailsKey' =>
           'MyDetailsValue',    # key: min: 1, max: 128, value: min: 1, max: 1024
       },    # OPTIONAL
+      StepTimeoutInMinutes => 1,    # OPTIONAL
       );
 
     # Results:
@@ -53,6 +55,20 @@ For the AWS API documentation, see L<https://aws.amazon.com/documentation/iot/>
 
 A collection of name/value pairs that describe the status of the job
 execution. If not specified, the statusDetails are unchanged.
+
+
+
+=head2 StepTimeoutInMinutes => Int
+
+Specifies the amount of time this device has to finish execution of
+this job. If the job execution status is not set to a terminal state
+before this timer expires, or before the timer is reset (by calling
+C<UpdateJobExecution>, setting the status to C<IN_PROGRESS> and
+specifying a new timeout value in field C<stepTimeoutInMinutes>) the
+job execution status will be automatically set to C<TIMED_OUT>. Note
+that setting this timeout has no effect on that job execution timeout
+which may have been specified when the job was created (C<CreateJob>
+using field C<timeoutConfig>).
 
 
 

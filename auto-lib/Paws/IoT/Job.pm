@@ -14,6 +14,7 @@ package Paws::IoT::Job;
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has Targets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'targets', traits => ['NameInRequest']);
   has TargetSelection => (is => 'ro', isa => 'Str', request_name => 'targetSelection', traits => ['NameInRequest']);
+  has TimeoutConfig => (is => 'ro', isa => 'Paws::IoT::TimeoutConfig', request_name => 'timeoutConfig', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -33,7 +34,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT::Job object:
 
-  $service_obj->Method(Att1 => { Comment => $value, ..., TargetSelection => $value  });
+  $service_obj->Method(Att1 => { Comment => $value, ..., TimeoutConfig => $value  });
 
 =head3 Results returned from an API call
 
@@ -109,8 +110,8 @@ updated.
 
 =head2 Status => Str
 
-  The status of the job, one of C<IN_PROGRESS>, C<CANCELED>, or
-C<COMPLETED>.
+  The status of the job, one of C<IN_PROGRESS>, C<CANCELED>,
+C<DELETION_IN_PROGRESS> or C<COMPLETED>.
 
 
 =head2 Targets => ArrayRef[Str|Undef]
@@ -127,6 +128,15 @@ a change is detected in a target. For example, a job will run on a
 device when the thing representing the device is added to a target
 group, even after the job was completed by all things originally in the
 group.
+
+
+=head2 TimeoutConfig => L<Paws::IoT::TimeoutConfig>
+
+  Specifies the amount of time each device has to finish its execution of
+the job. A timer is started when the job execution status is set to
+C<IN_PROGRESS>. If the job execution status is not set to another
+terminal state before the timer expires, it will be automatically set
+to C<TIMED_OUT>.
 
 
 

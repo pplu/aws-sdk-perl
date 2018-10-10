@@ -1444,6 +1444,8 @@ create-certificate-from-csr --certificate-signing-request file://@path"
 
 =item [TargetSelection => Str]
 
+=item [TimeoutConfig => L<Paws::IoT::TimeoutConfig>]
+
 
 =back
 

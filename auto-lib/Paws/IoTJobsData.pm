@@ -136,6 +136,8 @@ status.
 
 =item [StatusDetails => L<Paws::IoTJobsData::DetailsMap>]
 
+=item [StepTimeoutInMinutes => Int]
+
 
 =back
 
@@ -166,6 +168,8 @@ execution for a thing.
 =item [IncludeJobExecutionState => Bool]
 
 =item [StatusDetails => L<Paws::IoTJobsData::DetailsMap>]
+
+=item [StepTimeoutInMinutes => Int]
 
 
 =back

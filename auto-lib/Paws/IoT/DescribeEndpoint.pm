@@ -45,8 +45,41 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 
 =head2 EndpointType => Str
 
-The endpoint type (such as C<iot:Data>, C<iot:CredentialProvider> and
-C<iot:Jobs>).
+The endpoint type. Valid endpoint types include:
+
+=over
+
+=item *
+
+C<iot:Data> - Returns a VeriSign signed data endpoint.
+
+=back
+
+=over
+
+=item *
+
+C<iot:Data-ATS> - Returns an ATS signed data endpoint.
+
+=back
+
+=over
+
+=item *
+
+C<iot:CredentialProvider> - Returns an AWS IoT credentials provider API
+endpoint.
+
+=back
+
+=over
+
+=item *
+
+C<iot:Jobs> - Returns an AWS IoT device management Jobs API endpoint.
+
+=back
+
 
 
 
