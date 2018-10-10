@@ -433,8 +433,25 @@ Each argument is described in detail in: L<Paws::CloudFront::CreateDistribution>
 
 Returns: a L<Paws::CloudFront::CreateDistributionResult> instance
 
-Creates a new web distribution. Send a C<POST> request to the
-C</I<CloudFront API version>/distribution>/C<distribution ID> resource.
+Creates a new web distribution. You create a CloudFront distribution to
+tell CloudFront where you want content to be delivered from, and the
+details about how to track and manage content delivery. Send a C<POST>
+request to the C</I<CloudFront API
+version>/distribution>/C<distribution ID> resource.
+
+When you update a distribution, there are more required fields than
+when you create a distribution. When you update your distribution by
+using UpdateDistribution, follow the steps included in the
+documentation to get the current configuration and then make your
+updates. This helps to make sure that you include all of the required
+fields. To view a summary, see Required Fields for Create Distribution
+and Update Distribution
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-overview-required-fields.html)
+in the I<Amazon CloudFront Developer Guide>.
+
+If you are using Adobe Flash Media Server's RTMP protocol, you set up a
+different kind of CloudFront distribution. For more information, see
+CreateStreamingDistribution.
 
 
 =head2 CreateDistributionWithTags
@@ -1203,12 +1220,24 @@ Each argument is described in detail in: L<Paws::CloudFront::UpdateDistribution>
 
 Returns: a L<Paws::CloudFront::UpdateDistributionResult> instance
 
-Updates the configuration for a web distribution. Perform the following
-steps.
+Updates the configuration for a web distribution.
+
+When you update a distribution, there are more required fields than
+when you create a distribution. When you update your distribution by
+using this API action, follow the steps here to get the current
+configuration and then make your updates, to make sure that you include
+all of the required fields. To view a summary, see Required Fields for
+Create Distribution and Update Distribution
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-overview-required-fields.html)
+in the I<Amazon CloudFront Developer Guide>.
+
+The update process includes getting the current distribution
+configuration, updating the XML document that is returned to make your
+changes, and then submitting an C<UpdateDistribution> request to make
+the updates.
 
 For information about updating a distribution using the CloudFront
-console, see Creating or Updating a Web Distribution Using the
-CloudFront Console
+console instead, see Creating a Distribution
 (http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-creating-console.html)
 in the I<Amazon CloudFront Developer Guide>.
 
@@ -1221,24 +1250,45 @@ B<To update a web distribution using the CloudFront API>
 Submit a GetDistributionConfig request to get the current configuration
 and an C<Etag> header for the distribution.
 
-If you update the distribution again, you need to get a new C<Etag>
+If you update the distribution again, you must get a new C<Etag>
 header.
 
 =item 2.
 
 Update the XML document that was returned in the response to your
-C<GetDistributionConfig> request to include the desired changes. You
-can't change the value of C<CallerReference>. If you try to change this
-value, CloudFront returns an C<IllegalUpdate> error. Note that you must
-strip out the ETag parameter that is returned.
+C<GetDistributionConfig> request to include your changes.
+
+When you edit the XML file, be aware of the following:
+
+=over
+
+=item *
+
+You must strip out the ETag parameter that is returned.
+
+=item *
+
+Additional fields are required when you update a distribution. There
+may be fields included in the XML file for features that you haven't
+configured for your distribution. This is expected and required to
+successfully update the distribution.
+
+=item *
+
+You can't change the value of C<CallerReference>. If you try to change
+this value, CloudFront returns an C<IllegalUpdate> error.
+
+=item *
 
 The new configuration replaces the existing configuration; the values
 that you specify in an C<UpdateDistribution> request are not merged
-into the existing configuration. When you add, delete, or replace
+into your existing configuration. When you add, delete, or replace
 values in an element that allows multiple values (for example,
 C<CNAME>), you must specify all of the values that you want to appear
 in the updated distribution. In addition, you must update the
 corresponding C<Quantity> element.
+
+=back
 
 =item 3.
 
@@ -1271,17 +1321,6 @@ that the configuration was successfully updated.
 Optional: Submit a GetDistribution request to confirm that your changes
 have propagated. When propagation is complete, the value of C<Status>
 is C<Deployed>.
-
-Beginning with the 2012-05-05 version of the CloudFront API, we made
-substantial changes to the format of the XML document that you include
-in the request body when you create or update a distribution. With
-previous versions of the API, we discovered that it was too easy to
-accidentally delete one or more values for an element that accepts
-multiple values, for example, CNAMEs and trusted signers. Our changes
-for the 2012-05-05 release are intended to prevent these accidental
-deletions and to notify you when there's a mismatch between the number
-of values you say you're specifying in the C<Quantity> element and the
-number of values you're actually specifying.
 
 =back
 

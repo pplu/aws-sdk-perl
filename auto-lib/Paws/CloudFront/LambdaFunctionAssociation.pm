@@ -83,9 +83,10 @@ function doesn't execute.
 =head2 IncludeBody => Bool
 
   A flag that allows a Lambda function to have read access to the body
-content. For more information, see Accessing Body Content
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/) in
-the Amazon CloudFront Developer Guide.
+content. For more information, see Accessing the Request Body by
+Choosing the Include Body Option
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-include-body-access.html)
+in the Amazon CloudFront Developer Guide.
 
 
 =head2 B<REQUIRED> LambdaFunctionARN => Str
