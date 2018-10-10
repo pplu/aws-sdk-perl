@@ -320,10 +320,9 @@ largest face and compares it with each face detected in the target
 image.
 
 You pass the input and target images either as base64-encoded image
-bytes or as a references to images in an Amazon S3 bucket. If you use
-the Amazon CLI to call Amazon Rekognition operations, passing image
-bytes is not supported. The image must be either a PNG or JPEG
-formatted file.
+bytes or as references to images in an Amazon S3 bucket. If you use the
+AWS CLI to call Amazon Rekognition operations, passing image bytes
+isn't supported. The image must be formatted as a PNG or JPEG file.
 
 In response, the operation returns an array of face matches ordered by
 similarity score in descending order. For each face match, the response
@@ -548,19 +547,19 @@ Returns: a L<Paws::Rekognition::DetectFacesResponse> instance
 Detects faces within an image that is provided as input.
 
 C<DetectFaces> detects the 100 largest faces in the image. For each
-face detected, the operation returns face details including a bounding
-box of the face, a confidence value (that the bounding box contains a
-face), and a fixed set of attributes such as facial landmarks (for
-example, coordinates of eye and mouth), gender, presence of beard,
-sunglasses, etc.
+face detected, the operation returns face details. These details
+include a bounding box of the face, a confidence value (that the
+bounding box contains a face), and a fixed set of attributes such as
+facial landmarks (for example, coordinates of eye and mouth), gender,
+presence of beard, sunglasses, and so on.
 
 The face-detection algorithm is most effective on frontal faces. For
-non-frontal or obscured faces, the algorithm may not detect the faces
+non-frontal or obscured faces, the algorithm might not detect the faces
 or might detect faces with lower confidence.
 
 You pass the input image either as base64-encoded image bytes or as a
-reference to an image in an Amazon S3 bucket. If you use the Amazon CLI
-to call Amazon Rekognition operations, passing image bytes is not
+reference to an image in an Amazon S3 bucket. If you use the AWS CLI to
+call Amazon Rekognition operations, passing image bytes is not
 supported. The image must be either a PNG or JPEG formatted file.
 
 This is a stateless API operation. That is, the operation does not
@@ -601,14 +600,14 @@ information, see StartLabelDetection in the Amazon Rekognition
 Developer Guide.
 
 You pass the input image as base64-encoded image bytes or as a
-reference to an image in an Amazon S3 bucket. If you use the Amazon CLI
-to call Amazon Rekognition operations, passing image bytes is not
+reference to an image in an Amazon S3 bucket. If you use the AWS CLI to
+call Amazon Rekognition operations, passing image bytes is not
 supported. The image must be either a PNG or JPEG formatted file.
 
 For each object, scene, and concept the API returns one or more labels.
 Each label provides the object name, and the level of confidence that
 the image contains the object. For example, suppose the input image has
-a lighthouse, the sea, and a rock. The response will include all three
+a lighthouse, the sea, and a rock. The response includes all three
 labels, one for each object.
 
 C<{Name: lighthouse, Confidence: 98.4629}>
@@ -676,8 +675,8 @@ For information about moderation labels, see Detecting Unsafe Content
 in the Amazon Rekognition Developer Guide.
 
 You pass the input image either as base64-encoded image bytes or as a
-reference to an image in an Amazon S3 bucket. If you use the Amazon CLI
-to call Amazon Rekognition operations, passing image bytes is not
+reference to an image in an Amazon S3 bucket. If you use the AWS CLI to
+call Amazon Rekognition operations, passing image bytes is not
 supported. The image must be either a PNG or JPEG formatted file.
 
 
@@ -745,8 +744,8 @@ Each argument is described in detail in: L<Paws::Rekognition::GetCelebrityInfo>
 Returns: a L<Paws::Rekognition::GetCelebrityInfoResponse> instance
 
 Gets the name and additional information about a celebrity based on his
-or her Rekognition ID. The additional information is returned as an
-array of URLs. If there is no additional information about the
+or her Amazon Rekognition ID. The additional information is returned as
+an array of URLs. If there is no additional information about the
 celebrity, this list is empty.
 
 For more information, see Recognizing Celebrities in an Image in the
@@ -1093,6 +1092,10 @@ C<GetPersonTracking>.
 
 =item [ExternalImageId => Str]
 
+=item [MaxFaces => Int]
+
+=item [QualityFilter => Str]
+
 
 =back
 
@@ -1103,20 +1106,23 @@ Returns: a L<Paws::Rekognition::IndexFacesResponse> instance
 Detects faces in the input image and adds them to the specified
 collection.
 
-Amazon Rekognition does not save the actual faces detected. Instead,
-the underlying detection algorithm first detects the faces in the input
-image, and for each face extracts facial features into a feature
-vector, and stores it in the back-end database. Amazon Rekognition uses
-feature vectors when performing face match and search operations using
-the and operations.
+Amazon Rekognition doesn't save the actual faces that are detected.
+Instead, the underlying detection algorithm first detects the faces in
+the input image. For each face, the algorithm extracts facial features
+into a feature vector, and stores it in the backend database. Amazon
+Rekognition uses feature vectors when it performs face match and search
+operations using the and operations.
+
+For more information, see Adding Faces to a Collection in the Amazon
+Rekognition Developer Guide.
 
 To get the number of faces in a collection, call .
 
-If you are using version 1.0 of the face detection model, C<IndexFaces>
+If you're using version 1.0 of the face detection model, C<IndexFaces>
 indexes the 15 largest faces in the input image. Later versions of the
 face detection model index the 100 largest faces in the input image. To
-determine which version of the model you are using, call and supply the
-collection ID. You also get the model version from the value of
+determine which version of the model you're using, call and supply the
+collection ID. You can also get the model version from the value of
 C<FaceModelVersion> in the response from C<IndexFaces>.
 
 For more information, see Model Versioning in the Amazon Rekognition
@@ -1129,25 +1135,89 @@ ID. You can use this external image ID to create a client-side index to
 associate the faces with each image. You can then use the index to find
 all faces in an image.
 
-In response, the operation returns an array of metadata for all
-detected faces. This includes, the bounding box of the detected face,
-confidence value (indicating the bounding box contains a face), a face
-ID assigned by the service for each face that is detected and stored,
-and an image ID assigned by the service for the input image. If you
-request all facial attributes (using the C<detectionAttributes>
-parameter, Amazon Rekognition returns detailed facial attributes such
-as facial landmarks (for example, location of eye and mouth) and other
-facial attributes such gender. If you provide the same image, specify
-the same collection, and use the same external ID in the C<IndexFaces>
-operation, Amazon Rekognition doesn't save duplicate face metadata.
+You can specify the maximum number of faces to index with the
+C<MaxFaces> input parameter. This is useful when you want to index the
+largest faces in an image and don't want to index smaller faces, such
+as those belonging to people standing in the background.
 
-For more information, see Adding Faces to a Collection in the Amazon
-Rekognition Developer Guide.
+The C<QualityFilter> input parameter allows you to filter out detected
+faces that donE<rsquo>t meet the required quality bar chosen by Amazon
+Rekognition. The quality bar is based on a variety of common use cases.
+By default, C<IndexFaces> filters detected faces. You can also
+explicitly filter detected faces by specifying C<AUTO> for the value of
+C<QualityFilter>. If you do not want to filter detected faces, specify
+C<NONE>.
 
-The input image is passed either as base64-encoded image bytes or as a
-reference to an image in an Amazon S3 bucket. If you use the Amazon CLI
-to call Amazon Rekognition operations, passing image bytes is not
-supported. The image must be either a PNG or JPEG formatted file.
+To use quality filtering, you need a collection associated with version
+3 of the face model. To get the version of the face model associated
+with a collection, call .
+
+Information about faces detected in an image, but not indexed, is
+returned in an array of objects, C<UnindexedFaces>. Faces aren't
+indexed for reasons such as:
+
+=over
+
+=item *
+
+The number of faces detected exceeds the value of the C<MaxFaces>
+request parameter.
+
+=item *
+
+The face is too small compared to the image dimensions.
+
+=item *
+
+The face is too blurry.
+
+=item *
+
+The image is too dark.
+
+=item *
+
+The face has an extreme pose.
+
+=back
+
+In response, the C<IndexFaces> operation returns an array of metadata
+for all detected faces, C<FaceRecords>. This includes:
+
+=over
+
+=item *
+
+The bounding box, C<BoundingBox>, of the detected face.
+
+=item *
+
+A confidence value, C<Confidence>, which indicates the confidence that
+the bounding box contains a face.
+
+=item *
+
+A face ID, C<faceId>, assigned by the service for each face that's
+detected and stored.
+
+=item *
+
+An image ID, C<ImageId>, assigned by the service for the input image.
+
+=back
+
+If you request all facial attributes (by using the
+C<detectionAttributes> parameter), Amazon Rekognition returns detailed
+facial attributes, such as facial landmarks (for example, location of
+eye and mouth) and other facial attributes like gender. If you provide
+the same image, specify the same collection, and use the same external
+ID in the C<IndexFaces> operation, Amazon Rekognition doesn't save
+duplicate face metadata.
+
+The input image is passed either as base64-encoded image bytes, or as a
+reference to an image in an Amazon S3 bucket. If you use the AWS CLI to
+call Amazon Rekognition operations, passing image bytes isn't
+supported. The image must be formatted as a PNG or JPEG file.
 
 This operation requires permissions to perform the
 C<rekognition:IndexFaces> action.
@@ -1244,25 +1314,25 @@ Developer Guide.
 C<RecognizeCelebrities> returns the 100 largest faces in the image. It
 lists recognized celebrities in the C<CelebrityFaces> array and
 unrecognized faces in the C<UnrecognizedFaces> array.
-C<RecognizeCelebrities> doesn't return celebrities whose faces are not
-amongst the largest 100 faces in the image.
+C<RecognizeCelebrities> doesn't return celebrities whose faces aren't
+among the largest 100 faces in the image.
 
-For each celebrity recognized, the C<RecognizeCelebrities> returns a
+For each celebrity recognized, C<RecognizeCelebrities> returns a
 C<Celebrity> object. The C<Celebrity> object contains the celebrity
 name, ID, URL links to additional information, match confidence, and a
 C<ComparedFace> object that you can use to locate the celebrity's face
 on the image.
 
-Rekognition does not retain information about which images a celebrity
-has been recognized in. Your application must store this information
-and use the C<Celebrity> ID property as a unique identifier for the
-celebrity. If you don't store the celebrity name or additional
+Amazon Rekognition doesn't retain information about which images a
+celebrity has been recognized in. Your application must store this
+information and use the C<Celebrity> ID property as a unique identifier
+for the celebrity. If you don't store the celebrity name or additional
 information URLs returned by C<RecognizeCelebrities>, you will need the
 ID to identify the celebrity in a call to the operation.
 
-You pass the imput image either as base64-encoded image bytes or as a
-reference to an image in an Amazon S3 bucket. If you use the Amazon CLI
-to call Amazon Rekognition operations, passing image bytes is not
+You pass the input image either as base64-encoded image bytes or as a
+reference to an image in an Amazon S3 bucket. If you use the AWS CLI to
+call Amazon Rekognition operations, passing image bytes is not
 supported. The image must be either a PNG or JPEG formatted file.
 
 For an example, see Recognizing Celebrities in an Image in the Amazon
@@ -1347,8 +1417,8 @@ boxes in the response to make face crops, which then you can pass in to
 the C<SearchFacesByImage> operation.
 
 You pass the input image either as base64-encoded image bytes or as a
-reference to an image in an Amazon S3 bucket. If you use the Amazon CLI
-to call Amazon Rekognition operations, passing image bytes is not
+reference to an image in an Amazon S3 bucket. If you use the AWS CLI to
+call Amazon Rekognition operations, passing image bytes is not
 supported. The image must be either a PNG or JPEG formatted file.
 
 The response returns an array of faces that match, ordered by

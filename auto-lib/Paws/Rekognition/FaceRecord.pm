@@ -32,8 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 
 =head1 DESCRIPTION
 
-Object containing both the face metadata (stored in the back-end
-database) and facial attributes that are detected but aren't stored in
+Object containing both the face metadata (stored in the backend
+database), and facial attributes that are detected but aren't stored in
 the database.
 
 =head1 ATTRIBUTES
