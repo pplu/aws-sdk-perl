@@ -10,8 +10,12 @@ package Paws::DS::DirectoryDescription;
   has Edition => (is => 'ro', isa => 'Str');
   has LaunchTime => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+  has OwnerDirectoryDescription => (is => 'ro', isa => 'Paws::DS::OwnerDirectoryDescription');
   has RadiusSettings => (is => 'ro', isa => 'Paws::DS::RadiusSettings');
   has RadiusStatus => (is => 'ro', isa => 'Str');
+  has ShareMethod => (is => 'ro', isa => 'Str');
+  has ShareNotes => (is => 'ro', isa => 'Str');
+  has ShareStatus => (is => 'ro', isa => 'Str');
   has ShortName => (is => 'ro', isa => 'Str');
   has Size => (is => 'ro', isa => 'Str');
   has SsoEnabled => (is => 'ro', isa => 'Bool');
@@ -114,7 +118,13 @@ on-premises directory to which the AD Connector is connected.
 
 =head2 Name => Str
 
-  The fully-qualified name of the directory.
+  The fully qualified name of the directory.
+
+
+=head2 OwnerDirectoryDescription => L<Paws::DS::OwnerDirectoryDescription>
+
+  Describes the AWS Managed Microsoft AD directory in the directory owner
+account.
 
 
 =head2 RadiusSettings => L<Paws::DS::RadiusSettings>
@@ -126,6 +136,28 @@ server configured for this directory.
 =head2 RadiusStatus => Str
 
   The status of the RADIUS MFA server connection.
+
+
+=head2 ShareMethod => Str
+
+  The method used when sharing a directory to determine whether the
+directory should be shared within your AWS organization
+(C<ORGANIZATIONS>) or with any AWS account by sending a shared
+directory request (C<HANDSHAKE>).
+
+
+=head2 ShareNotes => Str
+
+  A directory share request that is sent by the directory owner to the
+directory consumer. The request includes a typed message to help the
+directory consumer administrator determine whether to approve or reject
+the share invitation.
+
+
+=head2 ShareStatus => Str
+
+  Current directory status of the shared AWS Managed Microsoft AD
+directory.
 
 
 =head2 ShortName => Str
@@ -140,7 +172,7 @@ server configured for this directory.
 
 =head2 SsoEnabled => Bool
 
-  Indicates if single-sign on is enabled for the directory. For more
+  Indicates if single sign-on is enabled for the directory. For more
 information, see EnableSso and DisableSso.
 
 

@@ -73,7 +73,7 @@ A textual description for the directory.
 
 =head2 B<REQUIRED> Name => Str
 
-The fully-qualified name of the on-premises directory, such as
+The fully qualified name of the on-premises directory, such as
 C<corp.example.com>.
 
 

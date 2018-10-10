@@ -65,8 +65,8 @@ AWS console C<Directory Details> page after the directory is created.
 
 =head2 Edition => Str
 
-AWS Microsoft AD is available in two editions: Standard and Enterprise.
-Enterprise is the default.
+AWS Managed Microsoft AD is available in two editions: Standard and
+Enterprise. Enterprise is the default.
 
 Valid values are: C<"Enterprise">, C<"Standard">
 

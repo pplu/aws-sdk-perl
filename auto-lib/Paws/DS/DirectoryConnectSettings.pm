@@ -48,9 +48,9 @@ in the on-premises directory.
 
 =head2 B<REQUIRED> CustomerUserName => Str
 
-  The username of an account in the on-premises directory that is used to
-connect to the directory. This account must have the following
-privileges:
+  The user name of an account in the on-premises directory that is used
+to connect to the directory. This account must have the following
+permissions:
 
 =over
 
