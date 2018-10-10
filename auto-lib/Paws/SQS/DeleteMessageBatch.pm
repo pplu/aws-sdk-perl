@@ -63,7 +63,7 @@ A list of receipt handles for the messages to be deleted.
 
 The URL of the Amazon SQS queue from which messages are deleted.
 
-Queue URLs are case-sensitive.
+Queue URLs and names are case-sensitive.
 
 
 

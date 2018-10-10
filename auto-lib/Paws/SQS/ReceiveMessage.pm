@@ -59,8 +59,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sqs
 
 =head2 AttributeNames => ArrayRef[Str|Undef]
 
-A list of attributes that need to be returned along with each message.
-These attributes include:
+A list of s that need to be returned along with each message. These
+attributes include:
 
 =over
 
@@ -104,85 +104,18 @@ C<SentTimestamp> - Returns the time the message was sent to the queue
 
 =item *
 
-C<MessageDeduplicationId> - Returns the value provided by the sender
+C<MessageDeduplicationId> - Returns the value provided by the producer
 that calls the C< SendMessage > action.
 
 =item *
 
-C<MessageGroupId> - Returns the value provided by the sender that calls
-the C< SendMessage > action. Messages with the same C<MessageGroupId>
-are returned in sequence.
+C<MessageGroupId> - Returns the value provided by the producer that
+calls the C< SendMessage > action. Messages with the same
+C<MessageGroupId> are returned in sequence.
 
 =item *
 
 C<SequenceNumber> - Returns the value provided by Amazon SQS.
-
-=back
-
-Any other valid special request parameters (such as the following) are
-ignored:
-
-=over
-
-=item *
-
-C<ApproximateNumberOfMessages>
-
-=item *
-
-C<ApproximateNumberOfMessagesDelayed>
-
-=item *
-
-C<ApproximateNumberOfMessagesNotVisible>
-
-=item *
-
-C<CreatedTimestamp>
-
-=item *
-
-C<ContentBasedDeduplication>
-
-=item *
-
-C<DelaySeconds>
-
-=item *
-
-C<FifoQueue>
-
-=item *
-
-C<LastModifiedTimestamp>
-
-=item *
-
-C<MaximumMessageSize>
-
-=item *
-
-C<MessageRetentionPeriod>
-
-=item *
-
-C<Policy>
-
-=item *
-
-C<QueueArn>,
-
-=item *
-
-C<ReceiveMessageWaitTimeSeconds>
-
-=item *
-
-C<RedrivePolicy>
-
-=item *
-
-C<VisibilityTimeout>
 
 =back
 
@@ -193,7 +126,7 @@ C<VisibilityTimeout>
 
 The maximum number of messages to return. Amazon SQS never returns more
 messages than this value (however, fewer messages might be returned).
-Valid values are 1 to 10. Default is 1.
+Valid values: 1 to 10. Default: 1.
 
 
 
@@ -240,7 +173,7 @@ starting with a prefix, for example C<bar.*>.
 
 The URL of the Amazon SQS queue from which messages are received.
 
-Queue URLs are case-sensitive.
+Queue URLs and names are case-sensitive.
 
 
 
@@ -288,10 +221,10 @@ the visibility timeout. For more information, see Visibility Timeout
 (http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
 in the I<Amazon Simple Queue Service Developer Guide>.
 
-If a caller of the C<ReceiveMessage> action is still processing
-messages when the visibility timeout expires and messages become
-visible, another worker reading from the same queue can receive the
-same messages and therefore process duplicates. Also, if a reader whose
+If a caller of the C<ReceiveMessage> action still processes messages
+when the visibility timeout expires and messages become visible,
+another worker consuming from the same queue can receive the same
+messages and therefore process duplicates. Also, if a consumer whose
 message processing time is longer than the visibility timeout tries to
 delete the processed messages, the action fails with an error.
 
@@ -322,7 +255,7 @@ C<A-Z>, C<0-9>) and punctuation
 
 For best practices of using C<ReceiveRequestAttemptId>, see Using the
 ReceiveRequestAttemptId Request Parameter
-(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queue-recommendations.html#using-receiverequestattemptid-request-parameter)
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-receiverequestattemptid-request-parameter.html)
 in the I<Amazon Simple Queue Service Developer Guide>.
 
 
