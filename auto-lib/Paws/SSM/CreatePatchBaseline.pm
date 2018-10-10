@@ -11,6 +11,7 @@ package Paws::SSM::CreatePatchBaseline;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has OperatingSystem => (is => 'ro', isa => 'Str');
   has RejectedPatches => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has RejectedPatchesAction => (is => 'ro', isa => 'Str');
   has Sources => (is => 'ro', isa => 'ArrayRef[Paws::SSM::PatchSource]');
 
   use MooseX::ClassAttribute;
@@ -90,7 +91,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RejectedPatches => [
         'MyPatchId', ...               # min: 1, max: 100
       ],                               # OPTIONAL
-      Sources => [
+      RejectedPatchesAction => 'ALLOW_AS_DEPENDENCY',    # OPTIONAL
+      Sources               => [
         {
           Configuration => 'MyPatchSourceConfiguration',    # min: 1, max: 512
           Name          => 'MyPatchSourceName',
@@ -190,6 +192,34 @@ Rejected Patch Lists
 in the I<AWS Systems Manager User Guide>.
 
 
+
+=head2 RejectedPatchesAction => Str
+
+The action for Patch Manager to take on patches included in the
+RejectedPackages list.
+
+=over
+
+=item *
+
+B<ALLOW_AS_DEPENDENCY>: A package in the Rejected patches list is
+installed only if it is a dependency of another package. It is
+considered compliant with the patch baseline, and its status is
+reported as I<InstalledOther>. This is the default action if no option
+is specified.
+
+=item *
+
+B<BLOCK>: Packages in the RejectedPatches list, and packages that
+include them as dependencies, are not installed under any
+circumstances. If a package was installed before it was added to the
+Rejected patches list, it is considered non-compliant with the patch
+baseline, and its status is reported as I<InstalledRejected>.
+
+=back
+
+
+Valid values are: C<"ALLOW_AS_DEPENDENCY">, C<"BLOCK">
 
 =head2 Sources => ArrayRef[L<Paws::SSM::PatchSource>]
 

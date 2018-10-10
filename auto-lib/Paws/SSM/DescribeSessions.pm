@@ -82,7 +82,7 @@ from a previous call.)
 =head2 B<REQUIRED> State => Str
 
 The session status to retrieve a list of sessions for. For example,
-"active".
+"Active".
 
 Valid values are: C<"Active">, C<"History">
 

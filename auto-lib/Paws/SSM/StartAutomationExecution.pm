@@ -150,7 +150,7 @@ Targets and TargetMaps cannot be specified together.
 =head2 TargetParameterName => Str
 
 The name of the parameter used as the target resource for the
-rate-controlled execution. Required if you specify Targets.
+rate-controlled execution. Required if you specify targets.
 
 
 

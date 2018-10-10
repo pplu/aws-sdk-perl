@@ -25,6 +25,11 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::CancelCommand', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CancelMaintenanceWindowExecution {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::CancelMaintenanceWindowExecution', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateActivation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::CreateActivation', @_);
@@ -228,6 +233,16 @@ package Paws::SSM;
   sub DescribeMaintenanceWindows {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::DescribeMaintenanceWindows', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeMaintenanceWindowSchedule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::DescribeMaintenanceWindowSchedule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeMaintenanceWindowsForTarget {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::DescribeMaintenanceWindowsForTarget', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeMaintenanceWindowTargets {
@@ -765,7 +780,7 @@ package Paws::SSM;
   }
 
 
-  sub operations { qw/AddTagsToResource CancelCommand CreateActivation CreateAssociation CreateAssociationBatch CreateDocument CreateMaintenanceWindow CreatePatchBaseline CreateResourceDataSync DeleteActivation DeleteAssociation DeleteDocument DeleteInventory DeleteMaintenanceWindow DeleteParameter DeleteParameters DeletePatchBaseline DeleteResourceDataSync DeregisterManagedInstance DeregisterPatchBaselineForPatchGroup DeregisterTargetFromMaintenanceWindow DeregisterTaskFromMaintenanceWindow DescribeActivations DescribeAssociation DescribeAssociationExecutions DescribeAssociationExecutionTargets DescribeAutomationExecutions DescribeAutomationStepExecutions DescribeAvailablePatches DescribeDocument DescribeDocumentPermission DescribeEffectiveInstanceAssociations DescribeEffectivePatchesForPatchBaseline DescribeInstanceAssociationsStatus DescribeInstanceInformation DescribeInstancePatches DescribeInstancePatchStates DescribeInstancePatchStatesForPatchGroup DescribeInventoryDeletions DescribeMaintenanceWindowExecutions DescribeMaintenanceWindowExecutionTaskInvocations DescribeMaintenanceWindowExecutionTasks DescribeMaintenanceWindows DescribeMaintenanceWindowTargets DescribeMaintenanceWindowTasks DescribeParameters DescribePatchBaselines DescribePatchGroups DescribePatchGroupState DescribeSessions GetAutomationExecution GetCommandInvocation GetConnectionStatus GetDefaultPatchBaseline GetDeployablePatchSnapshotForInstance GetDocument GetInventory GetInventorySchema GetMaintenanceWindow GetMaintenanceWindowExecution GetMaintenanceWindowExecutionTask GetMaintenanceWindowExecutionTaskInvocation GetMaintenanceWindowTask GetParameter GetParameterHistory GetParameters GetParametersByPath GetPatchBaseline GetPatchBaselineForPatchGroup LabelParameterVersion ListAssociations ListAssociationVersions ListCommandInvocations ListCommands ListComplianceItems ListComplianceSummaries ListDocuments ListDocumentVersions ListInventoryEntries ListResourceComplianceSummaries ListResourceDataSync ListTagsForResource ModifyDocumentPermission PutComplianceItems PutInventory PutParameter RegisterDefaultPatchBaseline RegisterPatchBaselineForPatchGroup RegisterTargetWithMaintenanceWindow RegisterTaskWithMaintenanceWindow RemoveTagsFromResource ResumeSession SendAutomationSignal SendCommand StartAssociationsOnce StartAutomationExecution StartSession StopAutomationExecution TerminateSession UpdateAssociation UpdateAssociationStatus UpdateDocument UpdateDocumentDefaultVersion UpdateMaintenanceWindow UpdateMaintenanceWindowTarget UpdateMaintenanceWindowTask UpdateManagedInstanceRole UpdatePatchBaseline / }
+  sub operations { qw/AddTagsToResource CancelCommand CancelMaintenanceWindowExecution CreateActivation CreateAssociation CreateAssociationBatch CreateDocument CreateMaintenanceWindow CreatePatchBaseline CreateResourceDataSync DeleteActivation DeleteAssociation DeleteDocument DeleteInventory DeleteMaintenanceWindow DeleteParameter DeleteParameters DeletePatchBaseline DeleteResourceDataSync DeregisterManagedInstance DeregisterPatchBaselineForPatchGroup DeregisterTargetFromMaintenanceWindow DeregisterTaskFromMaintenanceWindow DescribeActivations DescribeAssociation DescribeAssociationExecutions DescribeAssociationExecutionTargets DescribeAutomationExecutions DescribeAutomationStepExecutions DescribeAvailablePatches DescribeDocument DescribeDocumentPermission DescribeEffectiveInstanceAssociations DescribeEffectivePatchesForPatchBaseline DescribeInstanceAssociationsStatus DescribeInstanceInformation DescribeInstancePatches DescribeInstancePatchStates DescribeInstancePatchStatesForPatchGroup DescribeInventoryDeletions DescribeMaintenanceWindowExecutions DescribeMaintenanceWindowExecutionTaskInvocations DescribeMaintenanceWindowExecutionTasks DescribeMaintenanceWindows DescribeMaintenanceWindowSchedule DescribeMaintenanceWindowsForTarget DescribeMaintenanceWindowTargets DescribeMaintenanceWindowTasks DescribeParameters DescribePatchBaselines DescribePatchGroups DescribePatchGroupState DescribeSessions GetAutomationExecution GetCommandInvocation GetConnectionStatus GetDefaultPatchBaseline GetDeployablePatchSnapshotForInstance GetDocument GetInventory GetInventorySchema GetMaintenanceWindow GetMaintenanceWindowExecution GetMaintenanceWindowExecutionTask GetMaintenanceWindowExecutionTaskInvocation GetMaintenanceWindowTask GetParameter GetParameterHistory GetParameters GetParametersByPath GetPatchBaseline GetPatchBaselineForPatchGroup LabelParameterVersion ListAssociations ListAssociationVersions ListCommandInvocations ListCommands ListComplianceItems ListComplianceSummaries ListDocuments ListDocumentVersions ListInventoryEntries ListResourceComplianceSummaries ListResourceDataSync ListTagsForResource ModifyDocumentPermission PutComplianceItems PutInventory PutParameter RegisterDefaultPatchBaseline RegisterPatchBaselineForPatchGroup RegisterTargetWithMaintenanceWindow RegisterTaskWithMaintenanceWindow RemoveTagsFromResource ResumeSession SendAutomationSignal SendCommand StartAssociationsOnce StartAutomationExecution StartSession StopAutomationExecution TerminateSession UpdateAssociation UpdateAssociationStatus UpdateDocument UpdateDocumentDefaultVersion UpdateMaintenanceWindow UpdateMaintenanceWindowTarget UpdateMaintenanceWindowTask UpdateManagedInstanceRole UpdatePatchBaseline / }
 
 1;
 
@@ -883,6 +898,24 @@ Returns: a L<Paws::SSM::CancelCommandResult> instance
 Attempts to cancel the command specified by the Command ID. There is no
 guarantee that the command will be terminated and the underlying
 process stopped.
+
+
+=head2 CancelMaintenanceWindowExecution
+
+=over
+
+=item WindowExecutionId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::CancelMaintenanceWindowExecution>
+
+Returns: a L<Paws::SSM::CancelMaintenanceWindowExecutionResult> instance
+
+Stops a Maintenance Window execution that is already in progress and
+cancels any tasks in the window that have not already starting running.
+(Tasks already in progress will continue to completion.)
 
 
 =head2 CreateActivation
@@ -1023,6 +1056,12 @@ it with one or more running instances.
 
 =item [Description => Str]
 
+=item [EndDate => Str]
+
+=item [ScheduleTimezone => Str]
+
+=item [StartDate => Str]
+
 
 =back
 
@@ -1056,6 +1095,8 @@ Creates a new Maintenance Window.
 =item [OperatingSystem => Str]
 
 =item [RejectedPatches => ArrayRef[Str|Undef]]
+
+=item [RejectedPatchesAction => Str]
 
 =item [Sources => ArrayRef[L<Paws::SSM::PatchSource>]]
 
@@ -1827,6 +1868,56 @@ Each argument is described in detail in: L<Paws::SSM::DescribeMaintenanceWindows
 Returns: a L<Paws::SSM::DescribeMaintenanceWindowsResult> instance
 
 Retrieves the Maintenance Windows in an AWS account.
+
+
+=head2 DescribeMaintenanceWindowSchedule
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ResourceType => Str]
+
+=item [Targets => ArrayRef[L<Paws::SSM::Target>]]
+
+=item [WindowId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::DescribeMaintenanceWindowSchedule>
+
+Returns: a L<Paws::SSM::DescribeMaintenanceWindowScheduleResult> instance
+
+Retrieves information about upcoming executions of a Maintenance
+Window.
+
+
+=head2 DescribeMaintenanceWindowsForTarget
+
+=over
+
+=item ResourceType => Str
+
+=item Targets => ArrayRef[L<Paws::SSM::Target>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::DescribeMaintenanceWindowsForTarget>
+
+Returns: a L<Paws::SSM::DescribeMaintenanceWindowsForTargetResult> instance
+
+Retrieves information about the Maintenance Windows targets or tasks
+that an instance is associated with.
 
 
 =head2 DescribeMaintenanceWindowTargets
@@ -3349,11 +3440,17 @@ Set the default version of a document.
 
 =item [Enabled => Bool]
 
+=item [EndDate => Str]
+
 =item [Name => Str]
 
 =item [Replace => Bool]
 
 =item [Schedule => Str]
+
+=item [ScheduleTimezone => Str]
+
+=item [StartDate => Str]
 
 
 =back
@@ -3527,6 +3624,8 @@ to the managed instance.
 =item [Name => Str]
 
 =item [RejectedPatches => ArrayRef[Str|Undef]]
+
+=item [RejectedPatchesAction => Str]
 
 =item [Replace => Bool]
 

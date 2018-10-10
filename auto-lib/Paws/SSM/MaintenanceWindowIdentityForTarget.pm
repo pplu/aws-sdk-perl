@@ -1,14 +1,14 @@
-package Paws::SSM::MaintenanceWindowFilter;
+package Paws::SSM::MaintenanceWindowIdentityForTarget;
   use Moose;
-  has Key => (is => 'ro', isa => 'Str');
-  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Name => (is => 'ro', isa => 'Str');
+  has WindowId => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::SSM::MaintenanceWindowFilter
+Paws::SSM::MaintenanceWindowIdentityForTarget
 
 =head1 USAGE
 
@@ -19,32 +19,32 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::SSM::MaintenanceWindowFilter object:
+As an example, if Att1 is expected to be a Paws::SSM::MaintenanceWindowIdentityForTarget object:
 
-  $service_obj->Method(Att1 => { Key => $value, ..., Values => $value  });
+  $service_obj->Method(Att1 => { Name => $value, ..., WindowId => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::MaintenanceWindowFilter object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::MaintenanceWindowIdentityForTarget object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Key
+  $result->Att1->Name
 
 =head1 DESCRIPTION
 
-Filter used in the request. Supported filter keys are Name and Enabled.
+The Maintenance Window to which the specified target belongs.
 
 =head1 ATTRIBUTES
 
 
-=head2 Key => Str
+=head2 Name => Str
 
-  The name of the filter.
+  The name of the Maintenance Window.
 
 
-=head2 Values => ArrayRef[Str|Undef]
+=head2 WindowId => Str
 
-  The filter values.
+  The ID of the Maintenance Window.
 
 
 
