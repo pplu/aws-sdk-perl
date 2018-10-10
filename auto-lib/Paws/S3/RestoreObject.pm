@@ -44,7 +44,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Days                 => 1,                  # OPTIONAL
         Description          => 'MyDescription',    # OPTIONAL
         GlacierJobParameters => {
-          Tier => 'Standard',    # values: Standard, Bulk, Expedited
+          Tier => 'Standard',    # values: Standard, Bulk, Expedited; OPTIONAL
 
         },    # OPTIONAL
         OutputLocation => {
@@ -130,7 +130,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
 
         },    # OPTIONAL
-        Tier => 'Standard',    # values: Standard, Bulk, Expedited
+        Tier => 'Standard',    # values: Standard, Bulk, Expedited; OPTIONAL
         Type => 'SELECT',      # values: SELECT; OPTIONAL
       },    # OPTIONAL
       VersionId => 'MyObjectVersionId',    # OPTIONAL

@@ -52,12 +52,35 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               StorageClass => 'STANDARD'
               , # values: STANDARD, REDUCED_REDUNDANCY, STANDARD_IA, ONEZONE_IA; OPTIONAL
             },
-            Prefix                  => 'MyPrefix',
             Status                  => 'Enabled',    # values: Enabled, Disabled
-            ID                      => 'MyID',       # OPTIONAL
+            DeleteMarkerReplication => {
+              Status => 'Enabled',    # values: Enabled, Disabled; OPTIONAL
+            },    # OPTIONAL
+            Filter => {
+              And => {
+                Prefix => 'MyPrefix',    # OPTIONAL
+                Tags   => [
+                  {
+                    Key   => 'MyObjectKey',    # min: 1
+                    Value => 'MyValue',
+
+                  },
+                  ...
+                ],                             # OPTIONAL
+              },    # OPTIONAL
+              Prefix => 'MyPrefix',    # OPTIONAL
+              Tag    => {
+                Key   => 'MyObjectKey',    # min: 1
+                Value => 'MyValue',
+
+              },
+            },    # OPTIONAL
+            ID                      => 'MyID',        # OPTIONAL
+            Prefix                  => 'MyPrefix',    # OPTIONAL
+            Priority                => 1,             # OPTIONAL
             SourceSelectionCriteria => {
               SseKmsEncryptedObjects => {
-                Status => 'Enabled',                 # values: Enabled, Disabled
+                Status => 'Enabled',    # values: Enabled, Disabled
 
               },    # OPTIONAL
             },    # OPTIONAL

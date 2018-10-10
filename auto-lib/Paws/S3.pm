@@ -2173,7 +2173,8 @@ Each argument is described in detail in: L<Paws::S3::PutBucketReplication>
 Returns: nothing
 
 Creates a new replication configuration (or replaces an existing one,
-if present).
+if present). For more information, see Cross-Region Replication (CRR)
+in the Amazon S3 Developer Guide.
 
 
 =head2 PutBucketRequestPayment

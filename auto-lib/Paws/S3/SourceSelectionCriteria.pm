@@ -40,7 +40,8 @@ replicated.
 =head2 SseKmsEncryptedObjects => L<Paws::S3::SseKmsEncryptedObjects>
 
   Container for filter information of selection of KMS Encrypted S3
-objects.
+objects. The element is required if you include
+C<SourceSelectionCriteria> in the replication configuration.
 
 
 

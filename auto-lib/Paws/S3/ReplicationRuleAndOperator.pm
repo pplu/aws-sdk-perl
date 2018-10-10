@@ -1,13 +1,14 @@
-package Paws::S3::EncryptionConfiguration;
+package Paws::S3::ReplicationRuleAndOperator;
   use Moose;
-  has ReplicaKmsKeyID => (is => 'ro', isa => 'Str');
+  has Prefix => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::S3::Tag]', request_name => 'Tag', request_name => 'Tag', traits => ['NameInRequest','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::S3::EncryptionConfiguration
+Paws::S3::ReplicationRuleAndOperator
 
 =head1 USAGE
 
@@ -18,29 +19,32 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::S3::EncryptionConfiguration object:
+As an example, if Att1 is expected to be a Paws::S3::ReplicationRuleAndOperator object:
 
-  $service_obj->Method(Att1 => { ReplicaKmsKeyID => $value, ..., ReplicaKmsKeyID => $value  });
+  $service_obj->Method(Att1 => { Prefix => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::S3::EncryptionConfiguration object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::S3::ReplicationRuleAndOperator object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ReplicaKmsKeyID
+  $result->Att1->Prefix
 
 =head1 DESCRIPTION
 
-Container for information regarding encryption based configuration for
-replicas.
+This class has no description
 
 =head1 ATTRIBUTES
 
 
-=head2 ReplicaKmsKeyID => Str
+=head2 Prefix => Str
 
-  The ID of the AWS KMS key for the region where the destination bucket
-resides. Amazon S3 uses this key to encrypt the replica object.
+  
+
+
+=head2 Tags => ArrayRef[L<Paws::S3::Tag>]
+
+  
 
 
 

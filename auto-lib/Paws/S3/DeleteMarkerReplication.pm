@@ -1,13 +1,13 @@
-package Paws::S3::EncryptionConfiguration;
+package Paws::S3::DeleteMarkerReplication;
   use Moose;
-  has ReplicaKmsKeyID => (is => 'ro', isa => 'Str');
+  has Status => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::S3::EncryptionConfiguration
+Paws::S3::DeleteMarkerReplication
 
 =head1 USAGE
 
@@ -18,29 +18,30 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::S3::EncryptionConfiguration object:
+As an example, if Att1 is expected to be a Paws::S3::DeleteMarkerReplication object:
 
-  $service_obj->Method(Att1 => { ReplicaKmsKeyID => $value, ..., ReplicaKmsKeyID => $value  });
+  $service_obj->Method(Att1 => { Status => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::S3::EncryptionConfiguration object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::S3::DeleteMarkerReplication object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ReplicaKmsKeyID
+  $result->Att1->Status
 
 =head1 DESCRIPTION
 
-Container for information regarding encryption based configuration for
-replicas.
+Specifies whether Amazon S3 should replicate delete makers.
 
 =head1 ATTRIBUTES
 
 
-=head2 ReplicaKmsKeyID => Str
+=head2 Status => Str
 
-  The ID of the AWS KMS key for the region where the destination bucket
-resides. Amazon S3 uses this key to encrypt the replica object.
+  The status of the delete marker replication.
+
+In the current implementation, Amazon S3 does not replicate the delete
+markers. Therefore, the status must be C<Disabled>.
 
 
 
