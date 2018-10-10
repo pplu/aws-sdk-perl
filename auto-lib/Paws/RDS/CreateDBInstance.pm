@@ -14,6 +14,7 @@ package Paws::RDS::CreateDBInstance;
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
   has Domain => (is => 'ro', isa => 'Str');
   has DomainIAMRoleName => (is => 'ro', isa => 'Str');
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -531,6 +532,15 @@ Default: The default DB security group for the database engine.
 A DB subnet group to associate with this DB instance.
 
 If there is no DB subnet group, then it is a non-VPC DB instance.
+
+
+
+=head2 DeletionProtection => Bool
+
+Indicates if the DB instance should have deletion protection enabled.
+The database can't be deleted when this value is set to true. The
+default is false. For more information, see Deleting a DB Instance
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 
 
 

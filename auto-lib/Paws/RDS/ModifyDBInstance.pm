@@ -15,6 +15,7 @@ package Paws::RDS::ModifyDBInstance;
   has DBPortNumber => (is => 'ro', isa => 'Int');
   has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
   has Domain => (is => 'ro', isa => 'Str');
   has DomainIAMRoleName => (is => 'ro', isa => 'Str');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
@@ -354,6 +355,15 @@ Constraints: If supplied, must match the name of an existing
 DBSubnetGroup.
 
 Example: C<mySubnetGroup>
+
+
+
+=head2 DeletionProtection => Bool
+
+Indicates if the DB instance has deletion protection enabled. The
+database can't be deleted when this value is set to true. For more
+information, see Deleting a DB Instance
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 
 
 

@@ -9,6 +9,7 @@ package Paws::RDS::CreateDBCluster;
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
@@ -200,6 +201,14 @@ Example: C<mySubnetgroup>
 
 
 
+=head2 DeletionProtection => Bool
+
+Indicates if the DB cluster should have deletion protection enabled.
+The database can't be deleted when this value is set to true. The
+default is false.
+
+
+
 =head2 EnableCloudwatchLogsExports => ArrayRef[Str|Undef]
 
 The list of log types that need to be enabled for exporting to
@@ -232,8 +241,8 @@ C<aurora-postgresql>
 
 =head2 EngineMode => Str
 
-The DB engine mode of the DB cluster, either C<provisioned> or
-C<serverless>.
+The DB engine mode of the DB cluster, either C<provisioned>,
+C<serverless>, or C<parallelquery>.
 
 
 

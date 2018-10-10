@@ -7,6 +7,7 @@ package Paws::RDS::CreateDBInstanceReadReplica;
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has EnablePerformanceInsights => (is => 'ro', isa => 'Bool');
@@ -173,6 +174,15 @@ outside of any VPC.
 =back
 
 Example: C<mySubnetgroup>
+
+
+
+=head2 DeletionProtection => Bool
+
+Indicates if the DB instance should have deletion protection enabled.
+The database can't be deleted when this value is set to true. The
+default is false. For more information, see Deleting a DB Instance
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 
 
 

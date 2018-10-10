@@ -18,6 +18,7 @@ package Paws::RDS::DBCluster;
   has DBClusterParameterGroup => (is => 'ro', isa => 'Str');
   has DbClusterResourceId => (is => 'ro', isa => 'Str');
   has DBSubnetGroup => (is => 'ro', isa => 'Str');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
   has EarliestBacktrackTime => (is => 'ro', isa => 'Str');
   has EarliestRestorableTime => (is => 'ro', isa => 'Str');
   has EnabledCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -72,10 +73,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBClus
 
 =head1 DESCRIPTION
 
-Contains the details of an Amazon RDS DB cluster.
+Contains the details of an Amazon Aurora DB cluster.
 
-This data type is used as a response element in the DescribeDBClusters
-action.
+This data type is used as a response element in the DescribeDBClusters,
+StopDBCluster, and StartDBCluster actions.
 
 =head1 ATTRIBUTES
 
@@ -190,6 +191,12 @@ cluster, including the name, description, and subnets in the subnet
 group.
 
 
+=head2 DeletionProtection => Bool
+
+  Indicates if the DB cluster has deletion protection enabled. The
+database can't be deleted when this value is set to true.
+
+
 =head2 EarliestBacktrackTime => Str
 
   The earliest time to which a DB cluster can be backtracked.
@@ -226,8 +233,8 @@ cluster.
 
 =head2 EngineMode => Str
 
-  The DB engine mode of the DB cluster, either C<provisioned> or
-C<serverless>.
+  The DB engine mode of the DB cluster, either C<provisioned>,
+C<serverless>, or C<parallelquery>.
 
 
 =head2 EngineVersion => Str

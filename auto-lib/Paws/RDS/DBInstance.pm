@@ -18,6 +18,7 @@ package Paws::RDS::DBInstance;
   has DBParameterGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBParameterGroupStatus]', request_name => 'DBParameterGroup', traits => ['NameInRequest']);
   has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBSecurityGroupMembership]', request_name => 'DBSecurityGroup', traits => ['NameInRequest']);
   has DBSubnetGroup => (is => 'ro', isa => 'Paws::RDS::DBSubnetGroup');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
   has DomainMemberships => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DomainMembership]', request_name => 'DomainMembership', traits => ['NameInRequest']);
   has EnabledCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Endpoint => (is => 'ro', isa => 'Paws::RDS::Endpoint');
@@ -211,6 +212,14 @@ C<DBSecurityGroup.Name> and C<DBSecurityGroup.Status> subelements.
   Specifies information on the subnet group associated with the DB
 instance, including the name, description, and subnets in the subnet
 group.
+
+
+=head2 DeletionProtection => Bool
+
+  Indicates if the DB instance has deletion protection enabled. The
+database can't be deleted when this value is set to true. For more
+information, see Deleting a DB Instance
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 
 
 =head2 DomainMemberships => ArrayRef[L<Paws::RDS::DomainMembership>]

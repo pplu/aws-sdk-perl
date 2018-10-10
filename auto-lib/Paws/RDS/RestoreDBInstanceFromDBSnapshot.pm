@@ -9,6 +9,7 @@ package Paws::RDS::RestoreDBInstanceFromDBSnapshot;
   has DBName => (is => 'ro', isa => 'Str');
   has DBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
   has Domain => (is => 'ro', isa => 'Str');
   has DomainIAMRoleName => (is => 'ro', isa => 'Str');
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -61,6 +62,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DBInstanceClass                 => 'MyString',             # OPTIONAL
       DBName                          => 'MyString',             # OPTIONAL
       DBSubnetGroupName               => 'MyString',             # OPTIONAL
+      DeletionProtection              => 1,                      # OPTIONAL
       Domain                          => 'MyString',             # OPTIONAL
       DomainIAMRoleName               => 'MyString',             # OPTIONAL
       EnableCloudwatchLogsExports     => [ 'MyString', ... ],    # OPTIONAL
@@ -210,6 +212,15 @@ Constraints: If supplied, must match the name of an existing
 DBSubnetGroup.
 
 Example: C<mySubnetgroup>
+
+
+
+=head2 DeletionProtection => Bool
+
+Indicates if the DB instance should have deletion protection enabled.
+The database can't be deleted when this value is set to true. The
+default is false. For more information, see Deleting a DB Instance
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 
 
 

@@ -7,6 +7,7 @@ package Paws::RDS::ModifyDBCluster;
   has CloudwatchLogsExportConfiguration => (is => 'ro', isa => 'Paws::RDS::CloudwatchLogsExportConfiguration');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
@@ -152,6 +153,13 @@ Must match the identifier of an existing DBCluster.
 =head2 DBClusterParameterGroupName => Str
 
 The name of the DB cluster parameter group to use for the DB cluster.
+
+
+
+=head2 DeletionProtection => Bool
+
+Indicates if the DB cluster has deletion protection enabled. The
+database can't be deleted when this value is set to true.
 
 
 

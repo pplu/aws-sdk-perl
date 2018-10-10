@@ -492,9 +492,19 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::RevokeDBSecurityGroupIngress', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartDBCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::StartDBCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartDBInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::StartDBInstance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopDBCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::StopDBCluster', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StopDBInstance {
@@ -942,7 +952,7 @@ package Paws::RDS;
   }
 
 
-  sub operations { qw/AddRoleToDBCluster AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress BacktrackDBCluster CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateDBCluster CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateOptionGroup DeleteDBCluster DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBParameterGroup DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteOptionGroup DescribeAccountAttributes DescribeCertificates DescribeDBClusterBacktracks DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DescribeSourceRegions DescribeValidDBInstanceModifications DownloadDBLogFilePortion FailoverDBCluster ListTagsForResource ModifyCurrentDBClusterCapacity ModifyDBCluster ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBSnapshot ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyOptionGroup PromoteReadReplica PromoteReadReplicaDBCluster PurchaseReservedDBInstancesOffering RebootDBInstance RemoveRoleFromDBCluster RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromS3 RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceFromS3 RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress StartDBInstance StopDBInstance / }
+  sub operations { qw/AddRoleToDBCluster AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress BacktrackDBCluster CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateDBCluster CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateOptionGroup DeleteDBCluster DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBParameterGroup DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteOptionGroup DescribeAccountAttributes DescribeCertificates DescribeDBClusterBacktracks DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DescribeSourceRegions DescribeValidDBInstanceModifications DownloadDBLogFilePortion FailoverDBCluster ListTagsForResource ModifyCurrentDBClusterCapacity ModifyDBCluster ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBSnapshot ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyOptionGroup PromoteReadReplica PromoteReadReplicaDBCluster PurchaseReservedDBInstancesOffering RebootDBInstance RemoveRoleFromDBCluster RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromS3 RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceFromS3 RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress StartDBCluster StartDBInstance StopDBCluster StopDBInstance / }
 
 1;
 
@@ -1447,6 +1457,8 @@ Copies the specified option group.
 
 =item [DBSubnetGroupName => Str]
 
+=item [DeletionProtection => Bool]
+
 =item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
 
 =item [EnableIAMDatabaseAuthentication => Bool]
@@ -1608,6 +1620,8 @@ in the I<Amazon Aurora User Guide.>
 
 =item [DBSubnetGroupName => Str]
 
+=item [DeletionProtection => Bool]
+
 =item [Domain => Str]
 
 =item [DomainIAMRoleName => Str]
@@ -1695,6 +1709,8 @@ Creates a new DB instance.
 =item [DBInstanceClass => Str]
 
 =item [DBSubnetGroupName => Str]
+
+=item [DeletionProtection => Bool]
 
 =item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
 
@@ -3124,6 +3140,8 @@ in the I<Amazon Aurora User Guide>.
 
 =item [DBClusterParameterGroupName => Str]
 
+=item [DeletionProtection => Bool]
+
 =item [EnableIAMDatabaseAuthentication => Bool]
 
 =item [EngineVersion => Str]
@@ -3271,6 +3289,8 @@ private, use the DescribeDBClusterSnapshotAttributes API action.
 =item [DBSecurityGroups => ArrayRef[Str|Undef]]
 
 =item [DBSubnetGroupName => Str]
+
+=item [DeletionProtection => Bool]
 
 =item [Domain => Str]
 
@@ -3779,6 +3799,8 @@ or C<RebootDBInstance> request.
 
 =item [DBSubnetGroupName => Str]
 
+=item [DeletionProtection => Bool]
+
 =item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
 
 =item [EnableIAMDatabaseAuthentication => Bool]
@@ -3836,6 +3858,8 @@ in the I<Amazon Aurora User Guide>.
 
 =item [DBSubnetGroupName => Str]
 
+=item [DeletionProtection => Bool]
+
 =item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
 
 =item [EnableIAMDatabaseAuthentication => Bool]
@@ -3890,6 +3914,8 @@ in the I<Amazon Aurora User Guide.>
 =item [BacktrackWindow => Int]
 
 =item [DBSubnetGroupName => Str]
+
+=item [DeletionProtection => Bool]
 
 =item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
 
@@ -3956,6 +3982,8 @@ in the I<Amazon Aurora User Guide.>
 =item [DBName => Str]
 
 =item [DBSubnetGroupName => Str]
+
+=item [DeletionProtection => Bool]
 
 =item [Domain => Str]
 
@@ -4060,6 +4088,8 @@ Aurora, use RestoreDBClusterFromSnapshot.
 
 =item [DBSubnetGroupName => Str]
 
+=item [DeletionProtection => Bool]
+
 =item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
 
 =item [EnableIAMDatabaseAuthentication => Bool]
@@ -4148,6 +4178,8 @@ in the I<Amazon RDS User Guide.>
 =item [DBName => Str]
 
 =item [DBSubnetGroupName => Str]
+
+=item [DeletionProtection => Bool]
 
 =item [Domain => Str]
 
@@ -4239,6 +4271,28 @@ are one of CIDRIP, EC2SecurityGroupId for VPC, or
 EC2SecurityGroupId).
 
 
+=head2 StartDBCluster
+
+=over
+
+=item DBClusterIdentifier => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::StartDBCluster>
+
+Returns: a L<Paws::RDS::StartDBClusterResult> instance
+
+Starts an Amazon Aurora DB cluster that was stopped using the AWS
+console, the stop-db-cluster AWS CLI command, or the StopDBCluster
+action.
+
+For more information, see Stopping and Starting an Aurora Cluster
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-cluster-stop-start.html)
+in the I<Amazon Aurora User Guide.>
+
+
 =head2 StartDBInstance
 
 =over
@@ -4252,12 +4306,40 @@ Each argument is described in detail in: L<Paws::RDS::StartDBInstance>
 
 Returns: a L<Paws::RDS::StartDBInstanceResult> instance
 
-Starts a DB instance that was stopped using the AWS console, the
-stop-db-instance AWS CLI command, or the StopDBInstance action. For
-more information, see Stopping and Starting a DB instance in the AWS
-RDS user guide.
+Starts an Amazon RDS DB instance that was stopped using the AWS
+console, the stop-db-instance AWS CLI command, or the StopDBInstance
+action.
 
-This command doesn't apply to Aurora MySQL and Aurora PostgreSQL.
+For more information, see Starting an Amazon RDS DB Instance That Was
+Previously Stopped
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_StartInstance.html)
+in the I<Amazon RDS User Guide.>
+
+This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
+Aurora DB clusters, use StartDBCluster instead.
+
+
+=head2 StopDBCluster
+
+=over
+
+=item DBClusterIdentifier => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::StopDBCluster>
+
+Returns: a L<Paws::RDS::StopDBClusterResult> instance
+
+Stops an Amazon Aurora DB cluster. When you stop a DB cluster, Aurora
+retains the DB cluster's metadata, including its endpoints and DB
+parameter groups. Aurora also retains the transaction logs so you can
+do a point-in-time restore if necessary.
+
+For more information, see Stopping and Starting an Aurora Cluster
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-cluster-stop-start.html)
+in the I<Amazon Aurora User Guide.>
 
 
 =head2 StopDBInstance
@@ -4275,14 +4357,19 @@ Each argument is described in detail in: L<Paws::RDS::StopDBInstance>
 
 Returns: a L<Paws::RDS::StopDBInstanceResult> instance
 
-Stops a DB instance. When you stop a DB instance, Amazon RDS retains
-the DB instance's metadata, including its endpoint, DB parameter group,
-and option group membership. Amazon RDS also retains the transaction
-logs so you can do a point-in-time restore if necessary. For more
-information, see Stopping and Starting a DB instance in the AWS RDS
-user guide.
+Stops an Amazon RDS DB instance. When you stop a DB instance, Amazon
+RDS retains the DB instance's metadata, including its endpoint, DB
+parameter group, and option group membership. Amazon RDS also retains
+the transaction logs so you can do a point-in-time restore if
+necessary.
 
-This command doesn't apply to Aurora MySQL and Aurora PostgreSQL.
+For more information, see Stopping an Amazon RDS DB Instance
+Temporarily
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_StopInstance.html)
+in the I<Amazon RDS User Guide.>
+
+This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
+Aurora clusters, use StopDBCluster instead.
 
 
 

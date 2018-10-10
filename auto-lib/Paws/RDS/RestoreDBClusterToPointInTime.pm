@@ -4,6 +4,7 @@ package Paws::RDS::RestoreDBClusterToPointInTime;
   has BacktrackWindow => (is => 'ro', isa => 'Int');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has KmsKeyId => (is => 'ro', isa => 'Str');
@@ -113,6 +114,14 @@ Constraints: If supplied, must match the name of an existing
 DBSubnetGroup.
 
 Example: C<mySubnetgroup>
+
+
+
+=head2 DeletionProtection => Bool
+
+Indicates if the DB cluster should have deletion protection enabled.
+The database can't be deleted when this value is set to true. The
+default is false.
 
 
 

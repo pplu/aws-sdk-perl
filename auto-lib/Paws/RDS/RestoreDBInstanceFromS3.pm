@@ -12,6 +12,7 @@ package Paws::RDS::RestoreDBInstanceFromS3;
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has EnablePerformanceInsights => (is => 'ro', isa => 'Bool');
@@ -85,6 +86,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DBParameterGroupName               => 'MyString',             # OPTIONAL
       DBSecurityGroups                   => [ 'MyString', ... ],    # OPTIONAL
       DBSubnetGroupName                  => 'MyString',             # OPTIONAL
+      DeletionProtection                 => 1,                      # OPTIONAL
       EnableCloudwatchLogsExports        => [ 'MyString', ... ],    # OPTIONAL
       EnableIAMDatabaseAuthentication    => 1,                      # OPTIONAL
       EnablePerformanceInsights          => 1,                      # OPTIONAL
@@ -259,6 +261,15 @@ Default: The default DB security group for the database engine.
 =head2 DBSubnetGroupName => Str
 
 A DB subnet group to associate with this DB instance.
+
+
+
+=head2 DeletionProtection => Bool
+
+Indicates if the DB instance should have deletion protection enabled.
+The database can't be deleted when this value is set to true. The
+default is false. For more information, see Deleting a DB Instance
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 
 
 
