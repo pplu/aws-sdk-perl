@@ -80,7 +80,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::ElasticTranscoder::CreatePipelineResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elastictranscoder/CreatePipeline>
 
 =head1 ATTRIBUTES
 
@@ -90,12 +90,12 @@ For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
 The AWS Key Management Service (AWS KMS) key that you want to use with
 this pipeline.
 
-If you use either C<S3> or C<S3-AWS-KMS> as your C<Encryption:Mode>,
+If you use either C<s3> or C<s3-aws-kms> as your C<Encryption:Mode>,
 you don't need to provide a key with your job because a default key,
 known as an AWS-KMS key, is created for you automatically. You need to
 provide an AWS-KMS key only if you want to use a non-default AWS-KMS
-key, or if you are using an C<Encryption:Mode> of C<AES-PKCS7>,
-C<AES-CTR>, or C<AES-GCM>.
+key, or if you are using an C<Encryption:Mode> of C<aes-cbc-pkcs7>,
+C<aes-ctr>, or C<aes-gcm>.
 
 
 
@@ -248,7 +248,7 @@ Service Developer Guide.
 
 =item *
 
-B<Completed>: The topic ARN for the Amazon SNS topic that you want to
+B<Complete>: The topic ARN for the Amazon SNS topic that you want to
 notify when Elastic Transcoder has finished processing a job in this
 pipeline. This is the ARN that Amazon SNS returned when you created the
 topic.

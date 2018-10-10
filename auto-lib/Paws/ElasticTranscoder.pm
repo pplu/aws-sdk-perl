@@ -226,7 +226,7 @@ AWS Elastic Transcoder Service
 
 The AWS Elastic Transcoder Service.
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elastictranscoder-2012-09-25>
 
 
 =head1 METHODS
