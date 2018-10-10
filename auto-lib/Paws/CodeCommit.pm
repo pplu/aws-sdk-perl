@@ -45,6 +45,11 @@ package Paws::CodeCommit;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::DeleteCommentContent', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteFile {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::DeleteFile', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteRepository {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::DeleteRepository', @_);
@@ -88,6 +93,16 @@ package Paws::CodeCommit;
   sub GetDifferences {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::GetDifferences', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetFile {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::GetFile', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetFolder {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::GetFolder', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetMergeConflicts {
@@ -359,7 +374,7 @@ package Paws::CodeCommit;
   }
 
 
-  sub operations { qw/BatchGetRepositories CreateBranch CreatePullRequest CreateRepository DeleteBranch DeleteCommentContent DeleteRepository DescribePullRequestEvents GetBlob GetBranch GetComment GetCommentsForComparedCommit GetCommentsForPullRequest GetCommit GetDifferences GetMergeConflicts GetPullRequest GetRepository GetRepositoryTriggers ListBranches ListPullRequests ListRepositories MergePullRequestByFastForward PostCommentForComparedCommit PostCommentForPullRequest PostCommentReply PutFile PutRepositoryTriggers TestRepositoryTriggers UpdateComment UpdateDefaultBranch UpdatePullRequestDescription UpdatePullRequestStatus UpdatePullRequestTitle UpdateRepositoryDescription UpdateRepositoryName / }
+  sub operations { qw/BatchGetRepositories CreateBranch CreatePullRequest CreateRepository DeleteBranch DeleteCommentContent DeleteFile DeleteRepository DescribePullRequestEvents GetBlob GetBranch GetComment GetCommentsForComparedCommit GetCommentsForPullRequest GetCommit GetDifferences GetFile GetFolder GetMergeConflicts GetPullRequest GetRepository GetRepositoryTriggers ListBranches ListPullRequests ListRepositories MergePullRequestByFastForward PostCommentForComparedCommit PostCommentForPullRequest PostCommentReply PutFile PutRepositoryTriggers TestRepositoryTriggers UpdateComment UpdateDefaultBranch UpdatePullRequestDescription UpdatePullRequestStatus UpdatePullRequestTitle UpdateRepositoryDescription UpdateRepositoryName / }
 
 1;
 
@@ -465,6 +480,20 @@ UpdateDefaultBranch, which changes the default branch for a repository.
 Files, by calling the following:
 
 =over
+
+=item *
+
+DeleteFile, which deletes the content of a specified file from a
+specified branch.
+
+=item *
+
+GetFile, which returns the base-64 encoded content of a specified file.
+
+=item *
+
+GetFolder, which returns the contents of a specified folder or
+directory.
 
 =item *
 
@@ -741,6 +770,38 @@ Deletes the content of a comment made on a change, file, or commit in a
 repository.
 
 
+=head2 DeleteFile
+
+=over
+
+=item BranchName => Str
+
+=item FilePath => Str
+
+=item ParentCommitId => Str
+
+=item RepositoryName => Str
+
+=item [CommitMessage => Str]
+
+=item [Email => Str]
+
+=item [KeepEmptyFolders => Bool]
+
+=item [Name => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::DeleteFile>
+
+Returns: a L<Paws::CodeCommit::DeleteFileOutput> instance
+
+Deletes a specified file from a specified branch. A commit is created
+on the branch that contains the revision. The file will still exist in
+the commits prior to the commit that contains the deletion.
+
+
 =head2 DeleteRepository
 
 =over
@@ -939,6 +1000,47 @@ Returns: a L<Paws::CodeCommit::GetDifferencesOutput> instance
 Returns information about the differences in a valid commit specifier
 (such as a branch, tag, HEAD, commit ID or other fully qualified
 reference). Results can be limited to a specified path.
+
+
+=head2 GetFile
+
+=over
+
+=item FilePath => Str
+
+=item RepositoryName => Str
+
+=item [CommitSpecifier => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::GetFile>
+
+Returns: a L<Paws::CodeCommit::GetFileOutput> instance
+
+Returns the base-64 encoded contents of a specified file and its
+metadata.
+
+
+=head2 GetFolder
+
+=over
+
+=item FolderPath => Str
+
+=item RepositoryName => Str
+
+=item [CommitSpecifier => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::GetFolder>
+
+Returns: a L<Paws::CodeCommit::GetFolderOutput> instance
+
+Returns the contents of a specified folder in a repository.
 
 
 =head2 GetMergeConflicts
