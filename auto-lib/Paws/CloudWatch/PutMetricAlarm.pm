@@ -100,19 +100,18 @@ The actions to execute when this alarm transitions to the C<ALARM>
 state from any other state. Each action is specified as an Amazon
 Resource Name (ARN).
 
-Valid Values: arn:aws:automate:I<region>:ec2:stop |
-arn:aws:automate:I<region>:ec2:terminate |
-arn:aws:automate:I<region>:ec2:recover |
-arn:aws:sns:I<region>:I<account-id>:I<sns-topic-name> |
-arn:aws:autoscaling:I<region>:I<account-id>:scalingPolicy:I<policy-id>
-autoScalingGroupName/I<group-friendly-name>:policyName/I<policy-friendly-name>
+Valid Values: C<arn:aws:automate:I<region>:ec2:stop> |
+C<arn:aws:automate:I<region>:ec2:terminate> |
+C<arn:aws:automate:I<region>:ec2:recover> |
+C<arn:aws:sns:I<region>:I<account-id>:I<sns-topic-name> > |
+C<arn:aws:autoscaling:I<region>:I<account-id>:scalingPolicy:I<policy-id>autoScalingGroupName/I<group-friendly-name>:policyName/I<policy-friendly-name>>
 
 Valid Values (for use with IAM roles):
-arn:aws:swf:I<region>:{I<account-id>}:action/actions/AWS_EC2.InstanceId.Stop/1.0
+C<arn:aws:swf:I<region>:I<account-id>:action/actions/AWS_EC2.InstanceId.Stop/1.0>
 |
-arn:aws:swf:I<region>:{I<account-id>}:action/actions/AWS_EC2.InstanceId.Terminate/1.0
+C<arn:aws:swf:I<region>:I<account-id>:action/actions/AWS_EC2.InstanceId.Terminate/1.0>
 |
-arn:aws:swf:I<region>:{I<account-id>}:action/actions/AWS_EC2.InstanceId.Reboot/1.0
+C<arn:aws:swf:I<region>:I<account-id>:action/actions/AWS_EC2.InstanceId.Reboot/1.0>
 
 
 
@@ -198,19 +197,18 @@ The actions to execute when this alarm transitions to the
 C<INSUFFICIENT_DATA> state from any other state. Each action is
 specified as an Amazon Resource Name (ARN).
 
-Valid Values: arn:aws:automate:I<region>:ec2:stop |
-arn:aws:automate:I<region>:ec2:terminate |
-arn:aws:automate:I<region>:ec2:recover |
-arn:aws:sns:I<region>:I<account-id>:I<sns-topic-name> |
-arn:aws:autoscaling:I<region>:I<account-id>:scalingPolicy:I<policy-id>
-autoScalingGroupName/I<group-friendly-name>:policyName/I<policy-friendly-name>
+Valid Values: C<arn:aws:automate:I<region>:ec2:stop> |
+C<arn:aws:automate:I<region>:ec2:terminate> |
+C<arn:aws:automate:I<region>:ec2:recover> |
+C<arn:aws:sns:I<region>:I<account-id>:I<sns-topic-name> > |
+C<arn:aws:autoscaling:I<region>:I<account-id>:scalingPolicy:I<policy-id>autoScalingGroupName/I<group-friendly-name>:policyName/I<policy-friendly-name>>
 
 Valid Values (for use with IAM roles):
-arn:aws:swf:I<region>:{I<account-id>}:action/actions/AWS_EC2.InstanceId.Stop/1.0
+C<E<gt>arn:aws:swf:I<region>:I<account-id>:action/actions/AWS_EC2.InstanceId.Stop/1.0>
 |
-arn:aws:swf:I<region>:{I<account-id>}:action/actions/AWS_EC2.InstanceId.Terminate/1.0
+C<arn:aws:swf:I<region>:I<account-id>:action/actions/AWS_EC2.InstanceId.Terminate/1.0>
 |
-arn:aws:swf:I<region>:{I<account-id>}:action/actions/AWS_EC2.InstanceId.Reboot/1.0
+C<arn:aws:swf:I<region>:I<account-id>:action/actions/AWS_EC2.InstanceId.Reboot/1.0>
 
 
 
@@ -232,19 +230,18 @@ The actions to execute when this alarm transitions to an C<OK> state
 from any other state. Each action is specified as an Amazon Resource
 Name (ARN).
 
-Valid Values: arn:aws:automate:I<region>:ec2:stop |
-arn:aws:automate:I<region>:ec2:terminate |
-arn:aws:automate:I<region>:ec2:recover |
-arn:aws:sns:I<region>:I<account-id>:I<sns-topic-name> |
-arn:aws:autoscaling:I<region>:I<account-id>:scalingPolicy:I<policy-id>
-autoScalingGroupName/I<group-friendly-name>:policyName/I<policy-friendly-name>
+Valid Values: C<arn:aws:automate:I<region>:ec2:stop> |
+C<arn:aws:automate:I<region>:ec2:terminate> |
+C<arn:aws:automate:I<region>:ec2:recover> |
+C<arn:aws:sns:I<region>:I<account-id>:I<sns-topic-name> > |
+C<arn:aws:autoscaling:I<region>:I<account-id>:scalingPolicy:I<policy-id>autoScalingGroupName/I<group-friendly-name>:policyName/I<policy-friendly-name>>
 
 Valid Values (for use with IAM roles):
-arn:aws:swf:I<region>:{I<account-id>}:action/actions/AWS_EC2.InstanceId.Stop/1.0
+C<arn:aws:swf:I<region>:I<account-id>:action/actions/AWS_EC2.InstanceId.Stop/1.0>
 |
-arn:aws:swf:I<region>:{I<account-id>}:action/actions/AWS_EC2.InstanceId.Terminate/1.0
+C<arn:aws:swf:I<region>:I<account-id>:action/actions/AWS_EC2.InstanceId.Terminate/1.0>
 |
-arn:aws:swf:I<region>:{I<account-id>}:action/actions/AWS_EC2.InstanceId.Reboot/1.0
+C<arn:aws:swf:I<region>:I<account-id>:action/actions/AWS_EC2.InstanceId.Reboot/1.0>
 
 
 
