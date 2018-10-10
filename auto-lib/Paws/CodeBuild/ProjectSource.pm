@@ -174,6 +174,10 @@ C<GITHUB>: The source code is in a GitHub repository.
 
 =item *
 
+C<NO_SOURCE>: The project does not have input source code.
+
+=item *
+
 C<S3>: The source code is in an Amazon Simple Storage Service (Amazon
 S3) input bucket.
 

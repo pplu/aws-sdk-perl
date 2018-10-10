@@ -12,6 +12,7 @@ package Paws::CodeBuild::StartBuild;
   has IdempotencyToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'idempotencyToken' );
   has ImageOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'imageOverride' );
   has InsecureSslOverride => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'insecureSslOverride' );
+  has LogsConfigOverride => (is => 'ro', isa => 'Paws::CodeBuild::LogsConfig', traits => ['NameInRequest'], request_name => 'logsConfigOverride' );
   has PrivilegedModeOverride => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'privilegedModeOverride' );
   has ProjectName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectName' , required => 1);
   has ReportBuildStatusOverride => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'reportBuildStatusOverride' );
@@ -78,12 +79,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                          # OPTIONAL
-      GitCloneDepthOverride      => 1,                     # OPTIONAL
-      IdempotencyToken           => 'MyString',            # OPTIONAL
-      ImageOverride              => 'MyNonEmptyString',    # OPTIONAL
-      InsecureSslOverride        => 1,                     # OPTIONAL
-      PrivilegedModeOverride     => 1,                     # OPTIONAL
-      ReportBuildStatusOverride  => 1,                     # OPTIONAL
+      GitCloneDepthOverride => 1,                     # OPTIONAL
+      IdempotencyToken      => 'MyString',            # OPTIONAL
+      ImageOverride         => 'MyNonEmptyString',    # OPTIONAL
+      InsecureSslOverride   => 1,                     # OPTIONAL
+      LogsConfigOverride    => {
+        CloudWatchLogs => {
+          Status     => 'ENABLED',     # values: ENABLED, DISABLED
+          GroupName  => 'MyString',    # OPTIONAL
+          StreamName => 'MyString',    # OPTIONAL
+        },    # OPTIONAL
+        S3Logs => {
+          Status   => 'ENABLED',     # values: ENABLED, DISABLED
+          Location => 'MyString',    # OPTIONAL
+        },    # OPTIONAL
+      },    # OPTIONAL
+      PrivilegedModeOverride     => 1,    # OPTIONAL
+      ReportBuildStatusOverride  => 1,    # OPTIONAL
       SecondaryArtifactsOverride => [
         {
           Type => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
@@ -228,6 +240,13 @@ override applies only if the build's source is GitHub Enterprise.
 
 
 
+=head2 LogsConfigOverride => L<Paws::CodeBuild::LogsConfig>
+
+Log settings for this build that override the log settings defined in
+the build project.
+
+
+
 =head2 PrivilegedModeOverride => Bool
 
 Enable this flag to override privileged mode in the build project.
@@ -293,7 +312,7 @@ one defined in the build project.
 =head2 SourceTypeOverride => Str
 
 A source input type for this build that overrides the source input
-defined in the build project
+defined in the build project.
 
 Valid values are: C<"CODECOMMIT">, C<"CODEPIPELINE">, C<"GITHUB">, C<"S3">, C<"BITBUCKET">, C<"GITHUB_ENTERPRISE">, C<"NO_SOURCE">
 

@@ -7,6 +7,7 @@ package Paws::CodeBuild::CreateProject;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
   has EncryptionKey => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'encryptionKey' );
   has Environment => (is => 'ro', isa => 'Paws::CodeBuild::ProjectEnvironment', traits => ['NameInRequest'], request_name => 'environment' , required => 1);
+  has LogsConfig => (is => 'ro', isa => 'Paws::CodeBuild::LogsConfig', traits => ['NameInRequest'], request_name => 'logsConfig' );
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
   has SecondaryArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectArtifacts]', traits => ['NameInRequest'], request_name => 'secondaryArtifacts' );
   has SecondarySources => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectSource]', traits => ['NameInRequest'], request_name => 'secondarySources' );
@@ -90,8 +91,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Type     => 'NO_CACHE',             # values: NO_CACHE, S3
         Location => 'MyString',             # OPTIONAL
       },    # OPTIONAL
-      Description        => 'MyProjectDescription',    # OPTIONAL
-      EncryptionKey      => 'MyNonEmptyString',        # OPTIONAL
+      Description   => 'MyProjectDescription',    # OPTIONAL
+      EncryptionKey => 'MyNonEmptyString',        # OPTIONAL
+      LogsConfig    => {
+        CloudWatchLogs => {
+          Status     => 'ENABLED',                # values: ENABLED, DISABLED
+          GroupName  => 'MyString',               # OPTIONAL
+          StreamName => 'MyString',               # OPTIONAL
+        },    # OPTIONAL
+        S3Logs => {
+          Status   => 'ENABLED',     # values: ENABLED, DISABLED
+          Location => 'MyString',    # OPTIONAL
+        },    # OPTIONAL
+      },    # OPTIONAL
       SecondaryArtifacts => [
         {
           Type => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
@@ -192,6 +204,13 @@ available, the CMK's alias (using the format C<alias/I<alias-name> >).
 =head2 B<REQUIRED> Environment => L<Paws::CodeBuild::ProjectEnvironment>
 
 Information about the build environment for the build project.
+
+
+
+=head2 LogsConfig => L<Paws::CodeBuild::LogsConfig>
+
+Information about logs for the build project. Logs can be Amazon
+CloudWatch Logs, uploaded to a specified S3 bucket, or both.
 
 
 

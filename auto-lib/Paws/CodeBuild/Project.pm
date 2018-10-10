@@ -9,6 +9,7 @@ package Paws::CodeBuild::Project;
   has EncryptionKey => (is => 'ro', isa => 'Str', request_name => 'encryptionKey', traits => ['NameInRequest']);
   has Environment => (is => 'ro', isa => 'Paws::CodeBuild::ProjectEnvironment', request_name => 'environment', traits => ['NameInRequest']);
   has LastModified => (is => 'ro', isa => 'Str', request_name => 'lastModified', traits => ['NameInRequest']);
+  has LogsConfig => (is => 'ro', isa => 'Paws::CodeBuild::LogsConfig', request_name => 'logsConfig', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has SecondaryArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectArtifacts]', request_name => 'secondaryArtifacts', traits => ['NameInRequest']);
   has SecondarySources => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectSource]', request_name => 'secondarySources', traits => ['NameInRequest']);
@@ -101,6 +102,12 @@ specified, the CMK's alias (using the format C<alias/I<alias-name> >).
 
   When the build project's settings were last modified, expressed in Unix
 time format.
+
+
+=head2 LogsConfig => L<Paws::CodeBuild::LogsConfig>
+
+  Information about logs for the build project. A project can create
+Amazon CloudWatch Logs, logs in an S3 bucket, or both.
 
 
 =head2 Name => Str

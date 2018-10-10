@@ -15,6 +15,7 @@ package Paws::CodeBuild::Build;
   has NetworkInterface => (is => 'ro', isa => 'Paws::CodeBuild::NetworkInterface', request_name => 'networkInterface', traits => ['NameInRequest']);
   has Phases => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::BuildPhase]', request_name => 'phases', traits => ['NameInRequest']);
   has ProjectName => (is => 'ro', isa => 'Str', request_name => 'projectName', traits => ['NameInRequest']);
+  has ResolvedSourceVersion => (is => 'ro', isa => 'Str', request_name => 'resolvedSourceVersion', traits => ['NameInRequest']);
   has SecondaryArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::BuildArtifacts]', request_name => 'secondaryArtifacts', traits => ['NameInRequest']);
   has SecondarySources => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectSource]', request_name => 'secondarySources', traits => ['NameInRequest']);
   has SecondarySourceVersions => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectSourceVersion]', request_name => 'secondarySourceVersions', traits => ['NameInRequest']);
@@ -186,6 +187,29 @@ information about any current build phase that is not yet complete.
 =head2 ProjectName => Str
 
   The name of the AWS CodeBuild project.
+
+
+=head2 ResolvedSourceVersion => Str
+
+  An identifier for the version of this build's source code.
+
+=over
+
+=item *
+
+For AWS CodeCommit, GitHub, GitHub Enterprise, and BitBucket, the
+commit ID.
+
+=item *
+
+For AWS CodePipeline, the source revision provided by AWS CodePipeline.
+
+=item *
+
+For Amazon Simple Storage Service (Amazon S3), this does not apply.
+
+=back
+
 
 
 =head2 SecondaryArtifacts => ArrayRef[L<Paws::CodeBuild::BuildArtifacts>]

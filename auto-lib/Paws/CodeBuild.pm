@@ -368,6 +368,8 @@ Gets information about build projects.
 
 =item [EncryptionKey => Str]
 
+=item [LogsConfig => L<Paws::CodeBuild::LogsConfig>]
+
 =item [SecondaryArtifacts => ArrayRef[L<Paws::CodeBuild::ProjectArtifacts>]]
 
 =item [SecondarySources => ArrayRef[L<Paws::CodeBuild::ProjectSource>]]
@@ -573,6 +575,8 @@ representing a single build project.
 
 =item [InsecureSslOverride => Bool]
 
+=item [LogsConfigOverride => L<Paws::CodeBuild::LogsConfig>]
+
 =item [PrivilegedModeOverride => Bool]
 
 =item [ReportBuildStatusOverride => Bool]
@@ -638,6 +642,8 @@ Attempts to stop running a build.
 =item [EncryptionKey => Str]
 
 =item [Environment => L<Paws::CodeBuild::ProjectEnvironment>]
+
+=item [LogsConfig => L<Paws::CodeBuild::LogsConfig>]
 
 =item [SecondaryArtifacts => ArrayRef[L<Paws::CodeBuild::ProjectArtifacts>]]
 

@@ -7,6 +7,7 @@ package Paws::CodeBuild::UpdateProject;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
   has EncryptionKey => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'encryptionKey' );
   has Environment => (is => 'ro', isa => 'Paws::CodeBuild::ProjectEnvironment', traits => ['NameInRequest'], request_name => 'environment' );
+  has LogsConfig => (is => 'ro', isa => 'Paws::CodeBuild::LogsConfig', traits => ['NameInRequest'], request_name => 'logsConfig' );
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
   has SecondaryArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectArtifacts]', traits => ['NameInRequest'], request_name => 'secondaryArtifacts' );
   has SecondarySources => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectSource]', traits => ['NameInRequest'], request_name => 'secondarySources' );
@@ -76,6 +77,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ...
         ],                        # OPTIONAL
         PrivilegedMode => 1,      # OPTIONAL
+      },    # OPTIONAL
+      LogsConfig => {
+        CloudWatchLogs => {
+          Status     => 'ENABLED',     # values: ENABLED, DISABLED
+          GroupName  => 'MyString',    # OPTIONAL
+          StreamName => 'MyString',    # OPTIONAL
+        },    # OPTIONAL
+        S3Logs => {
+          Status   => 'ENABLED',     # values: ENABLED, DISABLED
+          Location => 'MyString',    # OPTIONAL
+        },    # OPTIONAL
       },    # OPTIONAL
       SecondaryArtifacts => [
         {
@@ -194,6 +206,13 @@ available, the CMK's alias (using the format C<alias/I<alias-name> >).
 
 Information to be changed about the build environment for the build
 project.
+
+
+
+=head2 LogsConfig => L<Paws::CodeBuild::LogsConfig>
+
+Information about logs for the build project. A project can create
+Amazon CloudWatch Logs, logs in an S3 bucket, or both.
 
 
 
