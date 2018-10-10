@@ -2,7 +2,7 @@
 package Paws::GuardDuty::GetFindings;
   use Moose;
   has DetectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'detectorId', required => 1);
-  has FindingIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'findingIds');
+  has FindingIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'findingIds', required => 1);
   has SortCriteria => (is => 'ro', isa => 'Paws::GuardDuty::SortCriteria', traits => ['NameInRequest'], request_name => 'sortCriteria');
 
   use MooseX::ClassAttribute;
@@ -32,10 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $guardduty = Paws->service('GuardDuty');
     my $GetFindingsResponse = $guardduty->GetFindings(
       DetectorId   => 'My__string',
-      FindingIds   => [ 'MyFindingId', ... ],    # OPTIONAL
+      FindingIds   => [ 'MyFindingId', ... ],
       SortCriteria => {
         AttributeName => 'My__string',
-        OrderBy       => 'ASC',                  # values: ASC, DESC; OPTIONAL
+        OrderBy       => 'ASC',          # values: ASC, DESC; OPTIONAL
       },    # OPTIONAL
     );
 
@@ -45,7 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::GuardDuty::GetFindingsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/guardduty/GetFindings>
 
 =head1 ATTRIBUTES
 
@@ -57,7 +57,7 @@ findings you want to retrieve.
 
 
 
-=head2 FindingIds => ArrayRef[Str|Undef]
+=head2 B<REQUIRED> FindingIds => ArrayRef[Str|Undef]
 
 IDs of the findings that you want to retrieve.
 

@@ -1,11 +1,12 @@
 
 package Paws::GuardDuty::CreateIPSet;
   use Moose;
-  has Activate => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'activate');
+  has Activate => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'activate', required => 1);
+  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken');
   has DetectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'detectorId', required => 1);
-  has Format => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'format');
-  has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has Format => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'format', required => 1);
+  has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location', required => 1);
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,11 +34,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $guardduty = Paws->service('GuardDuty');
     my $CreateIPSetResponse = $guardduty->CreateIPSet(
-      DetectorId => 'My__string',
-      Activate   => 1,               # OPTIONAL
-      Format     => 'TXT',           # OPTIONAL
-      Location   => 'MyLocation',    # OPTIONAL
-      Name       => 'MyName',        # OPTIONAL
+      Activate    => 1,
+      DetectorId  => 'My__string',
+      Format      => 'TXT',
+      Location    => 'MyLocation',
+      Name        => 'MyName',
+      ClientToken => 'My__stringMin0Max64',    # OPTIONAL
     );
 
     # Results:
@@ -46,15 +48,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::GuardDuty::CreateIPSetResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/guardduty/CreateIPSet>
 
 =head1 ATTRIBUTES
 
 
-=head2 Activate => Bool
+=head2 B<REQUIRED> Activate => Bool
 
 A boolean value that indicates whether GuardDuty is to start using the
 uploaded IPSet.
+
+
+
+=head2 ClientToken => Str
+
+The idempotency token for the create request.
 
 
 
@@ -64,20 +72,20 @@ The unique ID of the detector that you want to update.
 
 
 
-=head2 Format => Str
+=head2 B<REQUIRED> Format => Str
 
 The format of the file that contains the IPSet.
 
 Valid values are: C<"TXT">, C<"STIX">, C<"OTX_CSV">, C<"ALIEN_VAULT">, C<"PROOF_POINT">, C<"FIRE_EYE">
 
-=head2 Location => Str
+=head2 B<REQUIRED> Location => Str
 
 The URI of the file that contains the IPSet. For example
 (https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key)
 
 
 
-=head2 Name => Str
+=head2 B<REQUIRED> Name => Str
 
 The user friendly name to identify the IPSet. This name is displayed in
 all findings that are triggered by activity that involves IP addresses

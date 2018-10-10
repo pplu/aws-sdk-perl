@@ -2,8 +2,8 @@
 package Paws::GuardDuty::AcceptInvitation;
   use Moose;
   has DetectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'detectorId', required => 1);
-  has InvitationId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'invitationId');
-  has MasterId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'masterId');
+  has InvitationId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'invitationId', required => 1);
+  has MasterId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'masterId', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -32,12 +32,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $guardduty = Paws->service('GuardDuty');
     my $AcceptInvitationResponse = $guardduty->AcceptInvitation(
       DetectorId   => 'My__string',
-      InvitationId => 'MyInvitationId',    # OPTIONAL
-      MasterId     => 'MyMasterId',        # OPTIONAL
+      InvitationId => 'MyInvitationId',
+      MasterId     => 'MyMasterId',
+
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/guardduty/AcceptInvitation>
 
 =head1 ATTRIBUTES
 
@@ -48,14 +49,14 @@ The unique ID of the detector of the GuardDuty member account.
 
 
 
-=head2 InvitationId => Str
+=head2 B<REQUIRED> InvitationId => Str
 
 This value is used to validate the master account to the member
 account.
 
 
 
-=head2 MasterId => Str
+=head2 B<REQUIRED> MasterId => Str
 
 The account ID of the master GuardDuty account whose invitation you're
 accepting.
