@@ -95,7 +95,7 @@ The identifier of the job.
 The language of the input documents. You can specify English ("en") or
 Spanish ("es"). All documents must be in the same language.
 
-Valid values are: C<"en">, C<"es">
+Valid values are: C<"en">, C<"es">, C<"fr">, C<"de">, C<"it">, C<"pt">
 
 =head2 B<REQUIRED> OutputDataConfig => L<Paws::Comprehend::OutputDataConfig>
 
