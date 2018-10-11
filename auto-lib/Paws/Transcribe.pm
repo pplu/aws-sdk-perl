@@ -20,6 +20,11 @@ package Paws::Transcribe;
     my $call_object = $self->new_with_coercions('Paws::Transcribe::CreateVocabulary', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteTranscriptionJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Transcribe::DeleteTranscriptionJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteVocabulary {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Transcribe::DeleteVocabulary', @_);
@@ -58,7 +63,7 @@ package Paws::Transcribe;
   
 
 
-  sub operations { qw/CreateVocabulary DeleteVocabulary GetTranscriptionJob GetVocabulary ListTranscriptionJobs ListVocabularies StartTranscriptionJob UpdateVocabulary / }
+  sub operations { qw/CreateVocabulary DeleteTranscriptionJob DeleteVocabulary GetTranscriptionJob GetVocabulary ListTranscriptionJobs ListVocabularies StartTranscriptionJob UpdateVocabulary / }
 
 1;
 
@@ -112,6 +117,23 @@ Returns: a L<Paws::Transcribe::CreateVocabularyResponse> instance
 
 Creates a new custom vocabulary that you can use to change the way
 Amazon Transcribe handles transcription of an audio file.
+
+
+=head2 DeleteTranscriptionJob
+
+=over
+
+=item TranscriptionJobName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Transcribe::DeleteTranscriptionJob>
+
+Returns: nothing
+
+Deletes a previously submitted transcription job as wella s any other
+generated results such as the transcription, models, and so on.
 
 
 =head2 DeleteVocabulary
