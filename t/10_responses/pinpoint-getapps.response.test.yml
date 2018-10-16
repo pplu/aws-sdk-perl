@@ -1,0 +1,13 @@
+---
+call: GetApps
+service: Pinpoint
+tests:
+  - expected: 'Id1'
+    op: eq
+    path: Item.0.Id
+  - expected: 'Name1'
+    op: eq
+    path: Item.0.Name
+  - expected: 'NT1'
+    op: eq
+    path: NextToken

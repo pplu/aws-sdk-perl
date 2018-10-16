@@ -1,0 +1,8 @@
+---
+content: '{"NextToken": "NT1","Item": [{"Name": "Name1","Id": "Id1"}]}'
+headers:
+  content-length: 26
+  content-type: application/json
+  date: 'Thu, 28 Jan 2016 22:13:38 GMT'
+  x-amzn-requestid: 61aec99f-c60c-11e5-8ae7-e73fabb85e7a
+status: 200
