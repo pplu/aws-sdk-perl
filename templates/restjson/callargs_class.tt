@@ -23,6 +23,11 @@ package [% c.api %]::[% operation.name %];
     [%- IF (operation.output.keys.size) -%]
       [%- c.api %]::[% c.shapename_for_operation_output(op_name) -%]
     [%- ELSE -%]Paws::API::Response[% END -%]');
+
+  [%- IF (operation.http.stream_content) -%]
+  class_has _stream_content => (isa => 'Boolean', is => 'ro', default=>1);
+  [% END %]
+
 1;
 
 [% INCLUDE 'callclass_documentation.tt' %]
