@@ -2,15 +2,12 @@
 call: Scan
 service: DynamoDB
 tests:
-  - expected: 1
+  - expected: string1
     op: eq
-    path: Count
-  - expected: 1
+    path: Items.0.Map.access_token.S
+  - expected: string2
     op: eq
-    path: ScannedCount
-  - expected: 33
-    op: ==
-    path: Items.0.Map.count.N
-  - expected: e1@test.com
+    path: Items.1.Map.access_token.S
+  - expected: string3
     op: eq
-    path: Items.0.Map.email.S
+    path: LastEvaluatedKey.Map.access_token.S

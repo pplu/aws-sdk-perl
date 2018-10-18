@@ -1,4 +1,4 @@
 ---
-content: '{"Count":1,"Items":[{"count":{"N":"33"},"email":{"S":"e1@test.com"}}],"ScannedCount":1}'
+content: '{"Items":[{"access_token":{"S":"string1"}},{"access_token":{"S":"string2"}}],"LastEvaluatedKey":{"access_token":{"S":"string3"}}}'
 headers: []
 status: 200
