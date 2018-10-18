@@ -113,15 +113,25 @@ package Paws::Net::RestJsonCaller;
 
     $self->_to_header_params($request, $call);
     
-    if ($call->can('_stream_param')) {
-      my $param_name = $call->_stream_param;
-      $request->content($call->$param_name);
-      #$request->headers->header( 'content-length' => $request->content_length );
-      #$request->headers->header( 'content-type'   => $self->content_type );
+   #bug 212 JSP 10/18/2018
+   #I use the '_stream_content' here to set the content to ""
+   # for Pinpoint calls
+    if ($call->can('_stream_param') and not $call->can('_stream_content') ){
+          my $param_name = $call->_stream_param;
+         $request->content($call->$param_name);
+
     } else {
+
       my $data = $self->_to_jsoncaller_params($call);
-      $request->content(encode_json($data));
+      if ($call->can('_stream_content') and keys(%{$data}) ==0){
+          $data = "";
+      }
+      else {
+           $data = encode_json($data);
+      }
+      $request->content($data);
     }
+
     
     $request->method($call->_api_method);
 
