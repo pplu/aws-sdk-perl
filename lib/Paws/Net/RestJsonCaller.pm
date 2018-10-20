@@ -4,7 +4,7 @@ package Paws::Net::RestJsonCaller;
   use POSIX qw(strftime); 
   use URI::Template;
   use JSON::MaybeXS;
-
+  use Scalar::Util; 
   use Paws::Net::RestJsonResponse;
 
   has response_to_object => (
@@ -112,16 +112,13 @@ package Paws::Net::RestJsonCaller;
     $request->url($url);
 
     $self->_to_header_params($request, $call);
-use Data::Dumper;
     
     if ($call->can('_stream_param')) {
       my $param_name = $call->_stream_param;
       
-warn("JSP param_name=".Scalar::Util::blessed($call->$param_name));
       if (Scalar::Util::blessed($call->$param_name)){
           my $attribute = $call->$param_name;
           my $content = encode_json({%$attribute});
-          warn("JSP here content=".Dumper($content));
           $request->content($content);
           $request->headers->header('Content-Type'=>'application/json');
           $request->headers->header('Content-Length'=>length($content));
@@ -133,8 +130,6 @@ warn("JSP param_name=".Scalar::Util::blessed($call->$param_name));
       #$request->headers->header( 'content-type'   => $self->content_type );
     } else {
       my $data = $self->_to_jsoncaller_params($call);
-use Data::Dumper;
-warn("data=".Dumper($data));      
       if (keys(%{$data})){
         $request->content(encode_json($data));
       }
