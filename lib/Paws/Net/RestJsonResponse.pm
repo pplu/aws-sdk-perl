@@ -209,25 +209,18 @@ package Paws::Net::RestJsonResponse;
                      || $response->header('x-amzn-requestid');
       
     if ($returns){
-      return $self->new_from_response($call_object, $response, $request_id);
+      return $self->new_from_response($call_object->_returns, $response, $request_id);
     } else {
       return Paws::API::Response->new(
         _request_id => $request_id,
       );
     }
   }
-  #bug 212 JPS 10/18/2018
-  #changed the signature on the so I can use the
-  #'_stream_content' from the call_object to get the correct
-  #'_stream_param' for the %args
 
   sub new_from_response {
-    my ($self, $call_object, $response, $request_id) = @_;
-    
-    my $class = $call_object->_returns;
-    
-    if (not $class->can('_stream_param') and not $call_object->can("_stream_content")) {
+    my ($self, $class, $response, $request_id) = @_;
 
+    if (not $class->can('_stream_param')) {
       # Object is serialized in the body of the response
       my $unserialized_struct = $self->unserialize_response( $response );
       
@@ -245,16 +238,7 @@ package Paws::Net::RestJsonResponse;
         }
       }
 
-      if ($call_object->can("_stream_content")){
-
-        my $unserialized_struct = $self->unserialize_response( $response );
-        $args{ $call_object->_stream_param } =  $unserialized_struct;
-        return $self->new_from_result_struct($class, \%args);
-      }
-      else {
-        $args{ $class->_stream_param } = $response->content;
-        return $class->new(%args)
-      }
+      $args{ $class->_stream_param } = $response->content;
 
       return $class->new(%args);
     }
