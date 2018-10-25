@@ -32,11 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To list the access key IDs for an IAM user
     # The following command lists the access keys IDs for the IAM user named
     # Alice.
-    my $ListAccessKeysResponse = $iam->ListAccessKeys(
-      {
-        'UserName' => 'Alice'
-      }
-    );
+    my $ListAccessKeysResponse = $iam->ListAccessKeys('UserName' => 'Alice');
 
     # Results:
     my $AccessKeyMetadata = $ListAccessKeysResponse->AccessKeyMetadata;
