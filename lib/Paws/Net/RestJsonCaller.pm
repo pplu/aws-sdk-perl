@@ -1,4 +1,5 @@
 package Paws::Net::RestJsonCaller;
+  use Paws;
   use Moose::Role;
   use HTTP::Request::Common;
   use POSIX qw(strftime); 
@@ -37,10 +38,10 @@ package Paws::Net::RestJsonCaller;
         } elsif ($att_type eq 'Str') {
           # concatenate an empty string so numbers get transmitted as strings
           $p{ $key } = "" . $params->$att;
-        } elsif ($self->_is_internal_type($att_type)) {
+        } elsif (Paws->is_internal_type($att_type)) {
           $p{ $key } = $params->$att;
         } elsif ($att_type =~ m/^ArrayRef\[(.*)\]/) {
-          if ($self->_is_internal_type("$1")){
+          if (Paws->is_internal_type("$1")){
             $p{ $key } = $params->$att;
           } else {
             $p{ $key } = [ map { $self->_to_jsoncaller_params($_) } @{ $params->$att } ];

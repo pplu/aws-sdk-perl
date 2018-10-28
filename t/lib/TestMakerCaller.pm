@@ -11,7 +11,7 @@ package TestMakerCaller;
 
       my $test = { tests => [] };
 
-      my $h = Paws::API::Caller->to_hash($result);
+      my $h = Paws->to_hash($result);
       $h = Hash::Flatten::flatten($h, { HashDelimiter => '.', ArrayDelimiter => '.' });
       $test->{ tests } = [ map { { expected => $h->{ $_ }, op => 'eq', path => $_ } } keys %$h ];
 
