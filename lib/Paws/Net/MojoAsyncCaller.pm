@@ -3,6 +3,7 @@ package Paws::Net::MojoAsyncCaller;
   with 'Paws::Net::CallerRole';
 
   use Paws::API::Retry;
+  use Paws::Net::APIResponse;
   use Future;
   use Future::Mojo;
   use Mojo::UserAgent;
