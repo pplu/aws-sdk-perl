@@ -24,10 +24,10 @@ gen-paws:
 gen-classes:
 	mkdir auto-lib/Paws/DeleteMe
 	rm -r auto-lib/Paws/*
-	./builder-bin/gen_classes.pl --paws_pm --classes
+	carton exec ./builder-bin/gen_classes.pl --paws_pm --classes
 
 docu-links:
-	./builder-bin/gen_classes.pl --docu_links
+	carton exec ./builder-bin/gen_classes.pl --docu_links
 
 copy-tests:
 	cp botocore/tests/unit/response_parsing/xml/responses/* t/10_responses/
