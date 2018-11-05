@@ -29,7 +29,7 @@ my $mojo = eval {
 
 # At this point we know we have Mojo::IOLoop loaded because theabove has to
 # have loaded it
-Mojo::IOLoop->server(port => 9000, sub {
+my $id = Mojo::IOLoop->server({}, sub {
   my (undef, $stream) = @_;
   # We're a really bad HTTP server; we'll just serve a 500 before we've even
   # seen a request
@@ -46,12 +46,13 @@ Mojo::IOLoop->server(port => 9000, sub {
     }
   );
 });
+my $port = Mojo::IOLoop->acceptor($id)->port;
 
 time_between(sub {
   throws_ok {
     $mojo->service('EC2',
                    region => 'test',
-                   region_rules => [ { uri => "http://localhost:9000" } ]
+                   region_rules => [ { uri => "http://localhost:$port" } ]
                   )->DescribeInstances->get;
   } 'Paws::Exception', 'got exception';
 
