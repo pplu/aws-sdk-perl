@@ -12,8 +12,10 @@ cover:
 pull-other-sdks:
 	git submodule init
 	git submodule update
-	cd botocore && git checkout develop
-	cd botocore && git remote add boto https://github.com/boto/botocore.git
+	cd botocore && \
+	  git checkout develop
+	cd botocore && \
+	  if [ -z "`git remote -v | grep ^boto`" ]; then git remote add boto https://github.com/boto/botocore.git; fi
 
 pull-boto-develop:
 	cd botocore && git pull boto develop
