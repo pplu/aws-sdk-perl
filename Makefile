@@ -1,5 +1,5 @@
 test:
-	carton exec -- prove -v -I lib -I auto-lib t/
+	carton exec -- prove t/
 
 pod-test:
 	for i in `find auto-lib/Paws/ -name \*.pm`; do podchecker $$i; done;
