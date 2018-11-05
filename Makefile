@@ -22,7 +22,7 @@ gen-paws:
 	carton exec ./builder-bin/gen_classes.pl --paws_pm
 
 gen-classes:
-	mkdir auto-lib/Paws/DeleteMe
+	mkdir -p auto-lib/Paws/DeleteMe
 	rm -r auto-lib/Paws/*
 	carton exec ./builder-bin/gen_classes.pl --paws_pm --classes
 
