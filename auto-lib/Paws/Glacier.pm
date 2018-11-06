@@ -348,7 +348,7 @@ retrieving the job output, and deleting archives.
 =back
 
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/glacier/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/glacier/>
 
 
 =head1 METHODS
