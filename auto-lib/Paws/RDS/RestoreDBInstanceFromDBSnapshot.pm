@@ -7,6 +7,7 @@ package Paws::RDS::RestoreDBInstanceFromDBSnapshot;
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBName => (is => 'ro', isa => 'Str');
+  has DBParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
   has DeletionProtection => (is => 'ro', isa => 'Bool');
@@ -61,6 +62,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CopyTagsToSnapshot              => 1,                      # OPTIONAL
       DBInstanceClass                 => 'MyString',             # OPTIONAL
       DBName                          => 'MyString',             # OPTIONAL
+      DBParameterGroupName            => 'MyString',             # OPTIONAL
       DBSubnetGroupName               => 'MyString',             # OPTIONAL
       DeletionProtection              => 1,                      # OPTIONAL
       Domain                          => 'MyString',             # OPTIONAL
@@ -165,7 +167,7 @@ First character must be a letter
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens
+Can't end with a hyphen or contain two consecutive hyphens
 
 =back
 
@@ -179,6 +181,37 @@ The database name for the restored DB instance.
 
 This parameter doesn't apply to the MySQL, PostgreSQL, or MariaDB
 engines.
+
+
+
+=head2 DBParameterGroupName => Str
+
+The name of the DB parameter group to associate with this DB instance.
+If this argument is omitted, the default DBParameterGroup for the
+specified engine is used.
+
+Constraints:
+
+=over
+
+=item *
+
+If supplied, must match the name of an existing DBParameterGroup.
+
+=item *
+
+Must be 1 to 255 letters, numbers, or hyphens.
+
+=item *
+
+First character must be a letter.
+
+=item *
+
+Can't end with a hyphen or contain two consecutive hyphens.
+
+=back
+
 
 
 

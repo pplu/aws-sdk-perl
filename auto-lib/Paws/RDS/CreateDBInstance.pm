@@ -301,7 +301,7 @@ Must be a value from 0 to 35
 
 =item *
 
-Cannot be set to 0 if the DB instance is a source to Read Replicas
+Can't be set to 0 if the DB instance is a source to Read Replicas
 
 =back
 
@@ -367,7 +367,7 @@ First character must be a letter.
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens.
+Can't end with a hyphen or contain two consecutive hyphens.
 
 =back
 
@@ -398,7 +398,7 @@ Must contain 1 to 64 letters or numbers.
 
 =item *
 
-Cannot be a word reserved by the specified database engine
+Can't be a word reserved by the specified database engine
 
 =back
 
@@ -418,7 +418,7 @@ Must contain 1 to 64 letters or numbers.
 
 =item *
 
-Cannot be a word reserved by the specified database engine
+Can't be a word reserved by the specified database engine
 
 =back
 
@@ -443,7 +443,7 @@ letters, underscores, or digits (0-9).
 
 =item *
 
-Cannot be a word reserved by the specified database engine
+Can't be a word reserved by the specified database engine
 
 =back
 
@@ -461,7 +461,7 @@ Constraints:
 
 =item *
 
-Cannot be longer than 8 characters
+Can't be longer than 8 characters
 
 =back
 
@@ -485,7 +485,7 @@ Must contain 1 to 64 letters or numbers.
 
 =item *
 
-Cannot be a word reserved by the specified database engine
+Can't be a word reserved by the specified database engine
 
 =back
 
@@ -512,7 +512,7 @@ First character must be a letter
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens
+Can't end with a hyphen or contain two consecutive hyphens
 
 =back
 
@@ -739,9 +739,7 @@ Performance
 in the I<Amazon RDS User Guide>.
 
 Constraints: Must be a multiple between 1 and 50 of the storage amount
-for the DB instance. Must also be an integer multiple of 1000. For
-example, if the size of your DB instance is 500 GiB, then your C<Iops>
-value can be 2000, 3000, 4000, or 5000.
+for the DB instance.
 
 
 
@@ -802,7 +800,7 @@ Must be 1 to 16 letters or numbers.
 
 =item *
 
-Cannot be a reserved word for the chosen database engine.
+Can't be a reserved word for the chosen database engine.
 
 =back
 
@@ -826,7 +824,7 @@ The first character must be a letter.
 
 =item *
 
-Cannot be a reserved word for the chosen database engine.
+Can't be a reserved word for the chosen database engine.
 
 =back
 
@@ -850,7 +848,7 @@ First character must be a letter.
 
 =item *
 
-Cannot be a reserved word for the chosen database engine.
+Can't be a reserved word for the chosen database engine.
 
 =back
 
@@ -874,7 +872,7 @@ First character must be a letter.
 
 =item *
 
-Cannot be a reserved word for the chosen database engine.
+Can't be a reserved word for the chosen database engine.
 
 =back
 
@@ -898,7 +896,7 @@ First character must be a letter.
 
 =item *
 
-Cannot be a reserved word for the chosen database engine.
+Can't be a reserved word for the chosen database engine.
 
 =back
 

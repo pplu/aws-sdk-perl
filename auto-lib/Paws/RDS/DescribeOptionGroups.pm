@@ -94,7 +94,7 @@ Constraints: Minimum 20, maximum 100.
 
 =head2 OptionGroupName => Str
 
-The name of the option group to describe. Cannot be supplied together
+The name of the option group to describe. Can't be supplied together
 with EngineName or MajorEngineVersion.
 
 

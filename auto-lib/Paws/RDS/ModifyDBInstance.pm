@@ -189,7 +189,7 @@ running PostgreSQL 9.3.5
 
 =item *
 
-Cannot be set to 0 if the DB instance is a source to Read Replicas
+Can't be set to 0 if the DB instance is a source to Read Replicas
 
 =back
 
@@ -591,7 +591,7 @@ The first character must be a letter.
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens.
+Can't end with a hyphen or contain two consecutive hyphens.
 
 =back
 

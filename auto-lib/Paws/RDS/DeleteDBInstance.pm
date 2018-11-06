@@ -85,11 +85,11 @@ First character must be a letter
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens
+Can't end with a hyphen or contain two consecutive hyphens
 
 =item *
 
-Cannot be specified when deleting a Read Replica.
+Can't be specified when deleting a Read Replica.
 
 =back
 

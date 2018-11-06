@@ -6,6 +6,7 @@ package Paws::RDS::RestoreDBInstanceToPointInTime;
   has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBName => (is => 'ro', isa => 'Str');
+  has DBParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
   has DeletionProtection => (is => 'ro', isa => 'Bool');
   has Domain => (is => 'ro', isa => 'Str');
@@ -63,6 +64,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CopyTagsToSnapshot              => 1,                      # OPTIONAL
       DBInstanceClass                 => 'MyString',             # OPTIONAL
       DBName                          => 'MyString',             # OPTIONAL
+      DBParameterGroupName            => 'MyString',             # OPTIONAL
       DBSubnetGroupName               => 'MyString',             # OPTIONAL
       DeletionProtection              => 1,                      # OPTIONAL
       Domain                          => 'MyString',             # OPTIONAL
@@ -155,6 +157,37 @@ Default: The same DBInstanceClass as the original DB instance.
 The database name for the restored DB instance.
 
 This parameter is not used for the MySQL or MariaDB engines.
+
+
+
+=head2 DBParameterGroupName => Str
+
+The name of the DB parameter group to associate with this DB instance.
+If this argument is omitted, the default DBParameterGroup for the
+specified engine is used.
+
+Constraints:
+
+=over
+
+=item *
+
+If supplied, must match the name of an existing DBParameterGroup.
+
+=item *
+
+Must be 1 to 255 letters, numbers, or hyphens.
+
+=item *
+
+First character must be a letter.
+
+=item *
+
+Can't end with a hyphen or contain two consecutive hyphens.
+
+=back
+
 
 
 
@@ -375,7 +408,7 @@ Must be before the latest restorable time for the DB instance
 
 =item *
 
-Cannot be specified if UseLatestRestorableTime parameter is true
+Can't be specified if UseLatestRestorableTime parameter is true
 
 =back
 
@@ -438,7 +471,7 @@ First character must be a letter
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens
+Can't end with a hyphen or contain two consecutive hyphens
 
 =back
 
@@ -473,7 +506,7 @@ restored from the latest backup time.
 
 Default: C<false>
 
-Constraints: Cannot be specified if RestoreTime parameter is provided.
+Constraints: Can't be specified if RestoreTime parameter is provided.
 
 
 

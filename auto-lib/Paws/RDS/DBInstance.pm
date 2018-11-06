@@ -31,6 +31,7 @@ package Paws::RDS::DBInstance;
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has LatestRestorableTime => (is => 'ro', isa => 'Str');
   has LicenseModel => (is => 'ro', isa => 'Str');
+  has ListenerEndpoint => (is => 'ro', isa => 'Paws::RDS::Endpoint');
   has MasterUsername => (is => 'ro', isa => 'Str');
   has MonitoringInterval => (is => 'ro', isa => 'Int');
   has MonitoringRoleArn => (is => 'ro', isa => 'Str');
@@ -313,6 +314,11 @@ point-in-time restore.
 =head2 LicenseModel => Str
 
   License model information for this DB instance.
+
+
+=head2 ListenerEndpoint => L<Paws::RDS::Endpoint>
+
+  Specifies the listener connection endpoint for SQL Server Always On.
 
 
 =head2 MasterUsername => Str

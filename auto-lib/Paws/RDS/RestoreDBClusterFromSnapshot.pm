@@ -5,6 +5,7 @@ package Paws::RDS::RestoreDBClusterFromSnapshot;
   has BacktrackWindow => (is => 'ro', isa => 'Int');
   has DatabaseName => (is => 'ro', isa => 'Str');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
   has DeletionProtection => (is => 'ro', isa => 'Bool');
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -64,8 +65,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 AvailabilityZones => ArrayRef[Str|Undef]
 
-Provides the list of EC2 Availability Zones that instances in the
-restored DB cluster can be created in.
+Provides the list of Amazon EC2 Availability Zones that instances in
+the restored DB cluster can be created in.
 
 
 
@@ -115,7 +116,7 @@ First character must be a letter
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens
+Can't end with a hyphen or contain two consecutive hyphens
 
 =back
 
@@ -123,12 +124,44 @@ Example: C<my-snapshot-id>
 
 
 
+=head2 DBClusterParameterGroupName => Str
+
+The name of the DB cluster parameter group to associate with this DB
+cluster. If this argument is omitted, the default DB cluster parameter
+group for the specified engine is used.
+
+Constraints:
+
+=over
+
+=item *
+
+If supplied, must match the name of an existing default DB cluster
+parameter group.
+
+=item *
+
+Must be 1 to 255 letters, numbers, or hyphens.
+
+=item *
+
+First character must be a letter.
+
+=item *
+
+Can't end with a hyphen or contain two consecutive hyphens.
+
+=back
+
+
+
+
 =head2 DBSubnetGroupName => Str
 
 The name of the DB subnet group to use for the new DB cluster.
 
-Constraints: If supplied, must match the name of an existing
-DBSubnetGroup.
+Constraints: If supplied, must match the name of an existing DB subnet
+group.
 
 Example: C<mySubnetgroup>
 
@@ -144,7 +177,7 @@ default is false.
 
 =head2 EnableCloudwatchLogsExports => ArrayRef[Str|Undef]
 
-The list of logs that the restored DB cluster is to export to
+The list of logs that the restored DB cluster is to export to Amazon
 CloudWatch Logs. The values in the list depend on the DB engine being
 used. For more information, see Publishing Database Logs to Amazon
 CloudWatch Logs
@@ -196,8 +229,8 @@ account that owns the KMS encryption key used to encrypt the new DB
 cluster, then you can use the KMS key alias instead of the ARN for the
 KMS encryption key.
 
-If you do not specify a value for the C<KmsKeyId> parameter, then the
-following will occur:
+If you don't specify a value for the C<KmsKeyId> parameter, then the
+following occurs:
 
 =over
 
@@ -227,7 +260,7 @@ The name of the option group to use for the restored DB cluster.
 
 The port number on which the new DB cluster accepts connections.
 
-Constraints: Value must be C<1150-65535>
+Constraints: This value must be C<1150-65535>
 
 Default: The same port as the original DB cluster.
 

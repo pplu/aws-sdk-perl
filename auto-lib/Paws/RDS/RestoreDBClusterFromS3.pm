@@ -182,7 +182,7 @@ First character must be a letter.
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens.
+Can't end with a hyphen or contain two consecutive hyphens.
 
 =back
 
@@ -307,7 +307,7 @@ First character must be a letter.
 
 =item *
 
-Cannot be a reserved word for the chosen database engine.
+Can't be a reserved word for the chosen database engine.
 
 =back
 

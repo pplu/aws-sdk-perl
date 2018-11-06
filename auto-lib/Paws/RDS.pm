@@ -3856,6 +3856,8 @@ in the I<Amazon Aurora User Guide>.
 
 =item [DatabaseName => Str]
 
+=item [DBClusterParameterGroupName => Str]
+
 =item [DBSubnetGroupName => Str]
 
 =item [DeletionProtection => Bool]
@@ -3912,6 +3914,8 @@ in the I<Amazon Aurora User Guide.>
 =item SourceDBClusterIdentifier => Str
 
 =item [BacktrackWindow => Int]
+
+=item [DBClusterParameterGroupName => Str]
 
 =item [DBSubnetGroupName => Str]
 
@@ -3980,6 +3984,8 @@ in the I<Amazon Aurora User Guide.>
 =item [DBInstanceClass => Str]
 
 =item [DBName => Str]
+
+=item [DBParameterGroupName => Str]
 
 =item [DBSubnetGroupName => Str]
 
@@ -4176,6 +4182,8 @@ in the I<Amazon RDS User Guide.>
 =item [DBInstanceClass => Str]
 
 =item [DBName => Str]
+
+=item [DBParameterGroupName => Str]
 
 =item [DBSubnetGroupName => Str]
 

@@ -60,7 +60,7 @@ You can't delete a default DB cluster parameter group.
 
 =item *
 
-Cannot be associated with any DB clusters.
+Can't be associated with any DB clusters.
 
 =back
 
