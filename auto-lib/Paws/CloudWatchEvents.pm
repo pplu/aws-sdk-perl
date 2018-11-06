@@ -153,7 +153,7 @@ For more information about the features of Amazon CloudWatch Events,
 see the Amazon CloudWatch Events User Guide
 (http://docs.aws.amazon.com/AmazonCloudWatch/latest/events).
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/cloudwatch/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/cloudwatch/>
 
 
 =head1 METHODS
@@ -350,6 +350,8 @@ matched to rules.
 
 =item StatementId => Str
 
+=item [Condition => L<Paws::CloudWatchEvents::Condition>]
+
 
 =back
 
@@ -357,17 +359,21 @@ Each argument is described in detail in: L<Paws::CloudWatchEvents::PutPermission
 
 Returns: nothing
 
-Running C<PutPermission> permits the specified AWS account to put
-events to your account's default I<event bus>. CloudWatch Events rules
-in your account are triggered by these events arriving to your default
-event bus.
+Running C<PutPermission> permits the specified AWS account or AWS
+organization to put events to your account's default I<event bus>.
+CloudWatch Events rules in your account are triggered by these events
+arriving to your default event bus.
 
 For another account to send events to your account, that external
 account must have a CloudWatch Events rule with your account's default
 event bus as a target.
 
 To enable multiple AWS accounts to put events to your default event
-bus, run C<PutPermission> once for each of these accounts.
+bus, run C<PutPermission> once for each of these accounts. Or, if all
+the accounts are members of the same AWS organization, you can run
+C<PutPermission> once specifying C<Principal> as "*" and specifying the
+AWS organization ID in C<Condition>, to grant permissions to all
+accounts in that organization.
 
 The permission policy on the default event bus cannot exceed 10 KB in
 size.

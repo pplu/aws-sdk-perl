@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Arn             => 'MyTargetArn',    # min: 1, max: 1600
           Id              => 'MyTargetId',     # min: 1, max: 64
           BatchParameters => {
-            JobDefinition   => 'MyString',
-            JobName         => 'MyString',
+            JobDefinition   => 'MyString',     # OPTIONAL
+            JobName         => 'MyString',     # OPTIONAL
             ArrayProperties => {
               Size => 1,                       # OPTIONAL
             },    # OPTIONAL
@@ -46,26 +46,30 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           EcsParameters => {
             TaskDefinitionArn    => 'MyArn',    # min: 1, max: 1600
-            Group                => 'MyString',
+            Group                => 'MyString', # OPTIONAL
             LaunchType           => 'EC2',      # values: EC2, FARGATE; OPTIONAL
             NetworkConfiguration => {
               AwsvpcConfiguration => {
-                Subnets => [ 'MyString', ... ],
+                Subnets => [
+                  'MyString', ...               # OPTIONAL
+                ],
                 AssignPublicIp =>
                   'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
-                SecurityGroups => [ 'MyString', ... ],
+                SecurityGroups => [
+                  'MyString', ...    # OPTIONAL
+                ],
               },    # OPTIONAL
             },    # OPTIONAL
-            PlatformVersion => 'MyString',
-            TaskCount       => 1,            # min: 1; OPTIONAL
+            PlatformVersion => 'MyString',    # OPTIONAL
+            TaskCount       => 1,             # min: 1; OPTIONAL
           },    # OPTIONAL
           Input            => 'MyTargetInput',        # max: 8192; OPTIONAL
-          InputPath        => 'MyTargetInputPath',    # max: 256; OPTIONAL
+          InputPath        => 'MyTargetInputPath',    # max: 256
           InputTransformer => {
             InputTemplate => 'MyTransformerInput',    # min: 1, max: 8192
             InputPathsMap => {
-              'MyInputTransformerPathKey' => 'MyTargetInputPath'
-              ,    # key: min: 1, max: 256, value: max: 256; OPTIONAL
+              'MyInputTransformerPathKey' =>
+                'MyTargetInputPath',    # key: min: 1, max: 256, value: max: 256
             },    # max: 10; OPTIONAL
           },    # OPTIONAL
           KinesisParameters => {
