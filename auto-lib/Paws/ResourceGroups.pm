@@ -350,6 +350,8 @@ resource group.
 
 =over
 
+=item [Filters => ArrayRef[L<Paws::ResourceGroups::GroupFilter>]]
+
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
@@ -479,9 +481,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ResourceGroups::ListGroupResourcesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllGroups(sub { },[MaxResults => Int, NextToken => Str])
+=head2 ListAllGroups(sub { },[Filters => ArrayRef[L<Paws::ResourceGroups::GroupFilter>], MaxResults => Int, NextToken => Str])
 
-=head2 ListAllGroups([MaxResults => Int, NextToken => Str])
+=head2 ListAllGroups([Filters => ArrayRef[L<Paws::ResourceGroups::GroupFilter>], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
