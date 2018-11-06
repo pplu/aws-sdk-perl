@@ -32,9 +32,9 @@ set of persons.
 
 =head2 Persons => ArrayRef[L<Paws::Rekognition::PersonDetection>]
 
-An array of the persons detected in the video and the times they are
-tracked throughout the video. An array element will exist for each time
-the person is tracked.
+An array of the persons detected in the video and the time(s) their
+path was tracked throughout the video. An array element will exist for
+each time a person's path is tracked.
 
 
 =head2 StatusMessage => Str

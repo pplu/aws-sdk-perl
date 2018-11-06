@@ -640,6 +640,19 @@ parameter to limit the number of labels returned.
 If the object detected is a person, the operation doesn't provide the
 same facial details that the DetectFaces operation provides.
 
+C<DetectLabels> returns bounding boxes for instances of common object
+labels in an array of objects. An C<Instance> object contains a object,
+for the location of the label on the image. It also includes the
+confidence by which the bounding box was detected.
+
+C<DetectLabels> also returns a hierarchical taxonomy of detected
+labels. For example, a detected car might be assigned the label I<car>.
+The label I<car> has two parent labels: I<Vehicle> (its parent) and
+I<Transportation> (its grandparent). The response returns the entire
+list of ancestors for a label. Each ancestor is a unique label in the
+response. In the previous example, I<Car>, I<Vehicle>, and
+I<Transportation> are returned as unique labels in the response.
+
 This is a stateless API operation. That is, the operation does not
 persist any data.
 
@@ -1022,6 +1035,11 @@ C<GetlabelDetection> and populate the C<NextToken> request parameter
 with the token value returned from the previous call to
 C<GetLabelDetection>.
 
+C<GetLabelDetection> doesn't return a hierarchical taxonomy, or
+bounding box information, for detected labels. C<GetLabelDetection>
+returns C<null> for the C<Parents> and C<Instances> attributes of the
+object which is returned in the C<Labels> array.
+
 
 =head2 GetPersonTracking
 
@@ -1042,22 +1060,22 @@ Each argument is described in detail in: L<Paws::Rekognition::GetPersonTracking>
 
 Returns: a L<Paws::Rekognition::GetPersonTrackingResponse> instance
 
-Gets the person tracking results of a Amazon Rekognition Video analysis
+Gets the path tracking results of a Amazon Rekognition Video analysis
 started by .
 
-The person detection operation is started by a call to
+The person path tracking operation is started by a call to
 C<StartPersonTracking> which returns a job identifier (C<JobId>). When
-the person detection operation finishes, Amazon Rekognition Video
-publishes a completion status to the Amazon Simple Notification Service
-topic registered in the initial call to C<StartPersonTracking>.
+the operation finishes, Amazon Rekognition Video publishes a completion
+status to the Amazon Simple Notification Service topic registered in
+the initial call to C<StartPersonTracking>.
 
-To get the results of the person tracking operation, first check that
-the status value published to the Amazon SNS topic is C<SUCCEEDED>. If
-so, call and pass the job identifier (C<JobId>) from the initial call
-to C<StartPersonTracking>.
+To get the results of the person path tracking operation, first check
+that the status value published to the Amazon SNS topic is
+C<SUCCEEDED>. If so, call and pass the job identifier (C<JobId>) from
+the initial call to C<StartPersonTracking>.
 
 C<GetPersonTracking> returns an array, C<Persons>, of tracked persons
-and the time(s) they were tracked in the video.
+and the time(s) their paths were tracked in the video.
 
 C<GetPersonTracking> only returns the default facial attributes
 (C<BoundingBox>, C<Confidence>, C<Landmarks>, C<Pose>, and C<Quality>).
@@ -1067,9 +1085,9 @@ following response syntax are not returned.
 For more information, see FaceDetail in the Amazon Rekognition
 Developer Guide.
 
-By default, the array is sorted by the time(s) a person is tracked in
-the video. You can sort by tracked persons by specifying C<INDEX> for
-the C<SortBy> input parameter.
+By default, the array is sorted by the time(s) a person's path is
+tracked in the video. You can sort by tracked persons by specifying
+C<INDEX> for the C<SortBy> input parameter.
 
 Use the C<MaxResults> parameter to limit the number of items returned.
 If there are more results than specified in C<MaxResults>, the value of
@@ -1544,7 +1562,7 @@ of the video. C<StartFaceDetection> returns a job identifier (C<JobId>)
 that you use to get the results of the operation. When face detection
 is finished, Amazon Rekognition Video publishes a completion status to
 the Amazon Simple Notification Service topic that you specify in
-C<NotificationChannel>. To get the results of the label detection
+C<NotificationChannel>. To get the results of the face detection
 operation, first check that the status value published to the Amazon
 SNS topic is C<SUCCEEDED>. If so, call and pass the job identifier
 (C<JobId>) from the initial call to C<StartFaceDetection>.
@@ -1653,11 +1671,11 @@ Each argument is described in detail in: L<Paws::Rekognition::StartPersonTrackin
 
 Returns: a L<Paws::Rekognition::StartPersonTrackingResponse> instance
 
-Starts the asynchronous tracking of persons in a stored video.
+Starts the asynchronous tracking of a person's path in a stored video.
 
-Amazon Rekognition Video can track persons in a video stored in an
-Amazon S3 bucket. Use Video to specify the bucket name and the filename
-of the video. C<StartPersonTracking> returns a job identifier
+Amazon Rekognition Video can track the path of people in a video stored
+in an Amazon S3 bucket. Use Video to specify the bucket name and the
+filename of the video. C<StartPersonTracking> returns a job identifier
 (C<JobId>) which you use to get the results of the operation. When
 label detection is finished, Amazon Rekognition publishes a completion
 status to the Amazon Simple Notification Service topic that you specify

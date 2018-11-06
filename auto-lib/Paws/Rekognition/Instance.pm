@@ -1,14 +1,14 @@
-package Paws::Rekognition::Geometry;
+package Paws::Rekognition::Instance;
   use Moose;
   has BoundingBox => (is => 'ro', isa => 'Paws::Rekognition::BoundingBox');
-  has Polygon => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::Point]');
+  has Confidence => (is => 'ro', isa => 'Num');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Rekognition::Geometry
+Paws::Rekognition::Instance
 
 =head1 USAGE
 
@@ -19,34 +19,33 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Rekognition::Geometry object:
+As an example, if Att1 is expected to be a Paws::Rekognition::Instance object:
 
-  $service_obj->Method(Att1 => { BoundingBox => $value, ..., Polygon => $value  });
+  $service_obj->Method(Att1 => { BoundingBox => $value, ..., Confidence => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition::Geometry object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition::Instance object:
 
   $result = $service_obj->Method(...);
   $result->Att1->BoundingBox
 
 =head1 DESCRIPTION
 
-Information about where the text detected by is located on an image.
+An instance of a label detected by .
 
 =head1 ATTRIBUTES
 
 
 =head2 BoundingBox => L<Paws::Rekognition::BoundingBox>
 
-  An axis-aligned coarse representation of the detected text's location
-on the image.
+  The position of the label instance on the image.
 
 
-=head2 Polygon => ArrayRef[L<Paws::Rekognition::Point>]
+=head2 Confidence => Num
 
-  Within the bounding box, a fine-grained polygon around the detected
-text.
+  The confidence that Amazon Rekognition Image has in the accuracy of the
+bounding box.
 
 
 

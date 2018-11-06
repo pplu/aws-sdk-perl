@@ -83,7 +83,9 @@ order to return a moderated content label. Confidence represents how
 certain Amazon Rekognition is that the moderated content is correctly
 identified. 0 is the lowest confidence. 100 is the highest confidence.
 Amazon Rekognition doesn't return any moderated content labels with a
-confidence level lower than this specified value.
+confidence level lower than this specified value. If you don't specify
+C<MinConfidence>, C<GetContentModeration> returns labels with
+confidence values greater than or equal to 50 percent.
 
 
 
