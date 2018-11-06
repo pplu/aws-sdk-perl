@@ -62,7 +62,8 @@ the database host is listening for database connections.
 
 =item *
 
-C<USER_NAME> - The name under which to log in to the database.
+C<USER_NAME> - The name under which to log in to the database. The
+value string for C<USER_NAME> is "C<USERNAME>".
 
 =item *
 

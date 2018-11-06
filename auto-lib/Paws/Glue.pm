@@ -145,6 +145,11 @@ package Paws::Glue;
     my $call_object = $self->new_with_coercions('Paws::Glue::DeletePartition', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteResourcePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::DeleteResourcePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteSecurityConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::DeleteSecurityConfiguration', @_);
@@ -280,6 +285,11 @@ package Paws::Glue;
     my $call_object = $self->new_with_coercions('Paws::Glue::GetPlan', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetResourcePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::GetResourcePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetSecurityConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::GetSecurityConfiguration', @_);
@@ -338,6 +348,11 @@ package Paws::Glue;
   sub PutDataCatalogEncryptionSettings {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::PutDataCatalogEncryptionSettings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutResourcePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::PutResourcePolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ResetJobBookmark {
@@ -737,7 +752,7 @@ package Paws::Glue;
   }
 
 
-  sub operations { qw/BatchCreatePartition BatchDeleteConnection BatchDeletePartition BatchDeleteTable BatchDeleteTableVersion BatchGetPartition BatchStopJobRun CreateClassifier CreateConnection CreateCrawler CreateDatabase CreateDevEndpoint CreateJob CreatePartition CreateScript CreateSecurityConfiguration CreateTable CreateTrigger CreateUserDefinedFunction DeleteClassifier DeleteConnection DeleteCrawler DeleteDatabase DeleteDevEndpoint DeleteJob DeletePartition DeleteSecurityConfiguration DeleteTable DeleteTableVersion DeleteTrigger DeleteUserDefinedFunction GetCatalogImportStatus GetClassifier GetClassifiers GetConnection GetConnections GetCrawler GetCrawlerMetrics GetCrawlers GetDatabase GetDatabases GetDataCatalogEncryptionSettings GetDataflowGraph GetDevEndpoint GetDevEndpoints GetJob GetJobRun GetJobRuns GetJobs GetMapping GetPartition GetPartitions GetPlan GetSecurityConfiguration GetSecurityConfigurations GetTable GetTables GetTableVersion GetTableVersions GetTrigger GetTriggers GetUserDefinedFunction GetUserDefinedFunctions ImportCatalogToGlue PutDataCatalogEncryptionSettings ResetJobBookmark StartCrawler StartCrawlerSchedule StartJobRun StartTrigger StopCrawler StopCrawlerSchedule StopTrigger UpdateClassifier UpdateConnection UpdateCrawler UpdateCrawlerSchedule UpdateDatabase UpdateDevEndpoint UpdateJob UpdatePartition UpdateTable UpdateTrigger UpdateUserDefinedFunction / }
+  sub operations { qw/BatchCreatePartition BatchDeleteConnection BatchDeletePartition BatchDeleteTable BatchDeleteTableVersion BatchGetPartition BatchStopJobRun CreateClassifier CreateConnection CreateCrawler CreateDatabase CreateDevEndpoint CreateJob CreatePartition CreateScript CreateSecurityConfiguration CreateTable CreateTrigger CreateUserDefinedFunction DeleteClassifier DeleteConnection DeleteCrawler DeleteDatabase DeleteDevEndpoint DeleteJob DeletePartition DeleteResourcePolicy DeleteSecurityConfiguration DeleteTable DeleteTableVersion DeleteTrigger DeleteUserDefinedFunction GetCatalogImportStatus GetClassifier GetClassifiers GetConnection GetConnections GetCrawler GetCrawlerMetrics GetCrawlers GetDatabase GetDatabases GetDataCatalogEncryptionSettings GetDataflowGraph GetDevEndpoint GetDevEndpoints GetJob GetJobRun GetJobRuns GetJobs GetMapping GetPartition GetPartitions GetPlan GetResourcePolicy GetSecurityConfiguration GetSecurityConfigurations GetTable GetTables GetTableVersion GetTableVersions GetTrigger GetTriggers GetUserDefinedFunction GetUserDefinedFunctions ImportCatalogToGlue PutDataCatalogEncryptionSettings PutResourcePolicy ResetJobBookmark StartCrawler StartCrawlerSchedule StartJobRun StartTrigger StopCrawler StopCrawlerSchedule StopTrigger UpdateClassifier UpdateConnection UpdateCrawler UpdateCrawlerSchedule UpdateDatabase UpdateDevEndpoint UpdateJob UpdatePartition UpdateTable UpdateTrigger UpdateUserDefinedFunction / }
 
 1;
 
@@ -1365,6 +1380,22 @@ Returns: a L<Paws::Glue::DeletePartitionResponse> instance
 Deletes a specified partition.
 
 
+=head2 DeleteResourcePolicy
+
+=over
+
+=item [PolicyHashCondition => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::DeleteResourcePolicy>
+
+Returns: a L<Paws::Glue::DeleteResourcePolicyResponse> instance
+
+Deletes a specified policy.
+
+
 =head2 DeleteSecurityConfiguration
 
 =over
@@ -1700,6 +1731,11 @@ Returns: a L<Paws::Glue::GetDevEndpointResponse> instance
 
 Retrieves information about a specified DevEndpoint.
 
+When you create a development endpoint in a virtual private cloud
+(VPC), AWS Glue returns only a private IP address, and the public IP
+address field is not populated. When you create a non-VPC development
+endpoint, AWS Glue returns only a public IP address.
+
 
 =head2 GetDevEndpoints
 
@@ -1717,6 +1753,11 @@ Each argument is described in detail in: L<Paws::Glue::GetDevEndpoints>
 Returns: a L<Paws::Glue::GetDevEndpointsResponse> instance
 
 Retrieves all the DevEndpoints in this AWS account.
+
+When you create a development endpoint in a virtual private cloud
+(VPC), AWS Glue returns only a private IP address and the public IP
+address field is not populated. When you create a non-VPC development
+endpoint, AWS Glue returns only a public IP address.
 
 
 =head2 GetJob
@@ -1885,6 +1926,20 @@ Each argument is described in detail in: L<Paws::Glue::GetPlan>
 Returns: a L<Paws::Glue::GetPlanResponse> instance
 
 Gets code to perform a specified mapping.
+
+
+=head2 GetResourcePolicy
+
+
+
+
+
+
+Each argument is described in detail in: L<Paws::Glue::GetResourcePolicy>
+
+Returns: a L<Paws::Glue::GetResourcePolicyResponse> instance
+
+Retrieves a specified resource policy.
 
 
 =head2 GetSecurityConfiguration
@@ -2128,6 +2183,26 @@ Returns: a L<Paws::Glue::PutDataCatalogEncryptionSettingsResponse> instance
 Sets the security configuration for a specified catalog. Once the
 configuration has been set, the specified encryption is applied to
 every catalog write thereafter.
+
+
+=head2 PutResourcePolicy
+
+=over
+
+=item PolicyInJson => Str
+
+=item [PolicyExistsCondition => Str]
+
+=item [PolicyHashCondition => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::PutResourcePolicy>
+
+Returns: a L<Paws::Glue::PutResourcePolicyResponse> instance
+
+Sets the Data Catalog resource policy for access control.
 
 
 =head2 ResetJobBookmark

@@ -66,7 +66,8 @@ lowercase.
 
 =head2 B<REQUIRED> VersionId => Str
 
-The ID of the table version to be deleted.
+The ID of the table version to be deleted. A C<VersionID> is a string
+representation of an integer. Each version is incremented by 1.
 
 
 

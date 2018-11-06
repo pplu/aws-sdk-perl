@@ -116,13 +116,17 @@ DevEndpoint.
 
 =head2 PrivateAddress => Str
 
-  A private DNS to access the DevEndpoint within a VPC, if the
-DevEndpoint is created within one.
+  A private IP address to access the DevEndpoint within a VPC, if the
+DevEndpoint is created within one. The PrivateAddress field is present
+only when you create the DevEndpoint within your virtual private cloud
+(VPC).
 
 
 =head2 PublicAddress => Str
 
-  The public VPC address used by this DevEndpoint.
+  The public IP address used by this DevEndpoint. The PublicAddress field
+is present only when you create a non-VPC (virtual private cloud)
+DevEndpoint.
 
 
 =head2 PublicKey => Str
