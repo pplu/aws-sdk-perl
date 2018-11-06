@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
 =head1 SYNOPSIS
 
-    my $sagemaker = Paws->service('SageMaker');
-    my $CreateTransformJobResponse = $sagemaker->CreateTransformJob(
+    my $api.sagemaker = Paws->service('SageMaker');
+    my $CreateTransformJobResponse = $api . sagemaker->CreateTransformJob(
       ModelName      => 'MyModelName',
       TransformInput => {
         DataSource => {
@@ -62,9 +62,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         InstanceCount => 1,               # min: 1
         InstanceType  => 'ml.m4.xlarge'
         , # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge
-
+        VolumeKmsKeyId => 'MyKmsKeyId',    # max: 2048; OPTIONAL
       },
-      BatchStrategy => 'MultiRecord',    # OPTIONAL
+      BatchStrategy => 'MultiRecord',      # OPTIONAL
       Environment   => {
         'MyTransformEnvironmentKey' =>
           'MyTransformEnvironmentValue',    # key: max: 1024, value: max: 10240
@@ -87,17 +87,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::SageMaker::CreateTransformJobResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sagemaker/CreateTransformJob>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.sagemaker/CreateTransformJob>
 
 =head1 ATTRIBUTES
 
 
 =head2 BatchStrategy => Str
 
-Determins the number of records included in a single batch.
-C<SingleRecord> means only one record is used per batch. C<MultiRecord>
-means a batch is set to contain as many records that could possibly fit
-within the C<MaxPayloadInMB> limit.
+Determines the number of records included in a single mini-batch.
+C<SingleRecord> means only one record is used per mini-batch.
+C<MultiRecord> means a mini-batch is set to contain as many records
+that can fit within the C<MaxPayloadInMB> limit.
+
+Batch transform will automatically split your input data into whatever
+payload size is specified if you set C<SplitType> to C<Line> and
+C<BatchStrategy> to C<MultiRecord>. There's no need to split the
+dataset into smaller files or to use larger payload sizes unless the
+records in your dataset are very large.
 
 Valid values are: C<"MultiRecord">, C<"SingleRecord">
 
@@ -110,9 +116,10 @@ to 16 key and values entries in the map.
 
 =head2 MaxConcurrentTransforms => Int
 
-The maximum number of parallel requests on each instance node that can
-be launched in a transform job. The default value is C<1>. To allow
-Amazon SageMaker to determine the appropriate number for
+The maximum number of parallel requests that can be sent to each
+instance in a transform job. This is good for algorithms that implement
+multiple workers on larger instances . The default value is C<1>. To
+allow Amazon SageMaker to determine the appropriate number for
 C<MaxConcurrentTransforms>, set the value to C<0>.
 
 
@@ -121,19 +128,21 @@ C<MaxConcurrentTransforms>, set the value to C<0>.
 
 The maximum payload size allowed, in MB. A payload is the data portion
 of a record (without metadata). The value in C<MaxPayloadInMB> must be
-greater than the size of a single record.You can approximate the size
-of a record by dividing the size of your dataset by the number of
-records. The value you enter should be proportional to the number of
-records you want per batch. It is recommended to enter a slightly
-higher value to ensure the records will fit within the maximum payload
-size. The default value is C<6> MB. For an unlimited payload size, set
-the value to C<0>.
+greater or equal to the size of a single record. You can approximate
+the size of a record by dividing the size of your dataset by the number
+of records. Then multiply this value by the number of records you want
+in a mini-batch. It is recommended to enter a value slightly larger
+than this to ensure the records fit within the maximum payload size.
+The default value is C<6> MB. For an unlimited payload size, set the
+value to C<0>.
 
 
 
 =head2 B<REQUIRED> ModelName => Str
 
 The name of the model that you want to use for the transform job.
+C<ModelName> must be the name of an existing Amazon SageMaker model
+within an AWS Region in an AWS account.
 
 
 

@@ -29,8 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
 =head1 SYNOPSIS
 
-    my $sagemaker = Paws->service('SageMaker');
-    my $CreateEndpointConfigOutput = $sagemaker->CreateEndpointConfig(
+    my $api.sagemaker = Paws->service('SageMaker');
+    my $CreateEndpointConfigOutput = $api . sagemaker->CreateEndpointConfig(
       EndpointConfigName => 'MyEndpointConfigName',
       ProductionVariants => [
         {
@@ -60,7 +60,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::SageMaker::CreateEndpointConfigOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sagemaker/CreateEndpointConfig>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.sagemaker/CreateEndpointConfig>
 
 =head1 ATTRIBUTES
 

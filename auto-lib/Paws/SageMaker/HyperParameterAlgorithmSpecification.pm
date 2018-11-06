@@ -49,7 +49,9 @@ algorithm emits.
 
   The registry path of the Docker image that contains the training
 algorithm. For information about Docker registry paths for built-in
-algorithms, see sagemaker-algo-docker-registry-paths.
+algorithms, see Algorithms Provided by Amazon SageMaker: Common
+Parameters
+(http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html).
 
 
 =head2 B<REQUIRED> TrainingInputMode => Str

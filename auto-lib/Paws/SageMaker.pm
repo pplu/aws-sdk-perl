@@ -1,6 +1,6 @@
 package Paws::SageMaker;
   use Moose;
-  sub service { 'sagemaker' }
+  sub service { 'api.sagemaker' }
   sub signing_name { 'sagemaker' }
   sub version { '2017-07-24' }
   sub target_prefix { 'SageMaker' }
@@ -401,7 +401,7 @@ Paws::SageMaker - Perl Interface to AWS Amazon SageMaker Service
 
 Definition of the public APIs exposed by SageMaker
 
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.sagemaker-2017-07-24>
 
 
 =head1 METHODS
@@ -423,13 +423,22 @@ Returns: a L<Paws::SageMaker::AddTagsOutput> instance
 
 Adds or overwrites one or more tags for the specified Amazon SageMaker
 resource. You can add tags to notebook instances, training jobs,
-models, endpoint configurations, and endpoints.
+hyperparameter tuning jobs, models, endpoint configurations, and
+endpoints.
 
 Each tag consists of a key and an optional value. Tag keys must be
-unique per resource. For more information about tags, see Using Cost
-Allocation Tags
-(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
-in the I<AWS Billing and Cost Management User Guide>.
+unique per resource. For more information about tags, see For more
+information, see AWS Tagging Strategies
+(https://aws.amazon.com/answers/account-management/aws-tagging-strategies/).
+
+Tags that you add to a hyperparameter tuning job by calling this API
+are also added to any training jobs that the hyperparameter tuning job
+launches after you call this API, but not to training jobs that the
+hyperparameter tuning job launched before you called this API. To make
+sure that the tags associated with a hyperparameter tuning job are also
+added to all training jobs that the hyperparameter tuning job launches,
+add the tags when you first create the tuning job by specifying them in
+the C<Tags> parameter of CreateHyperParameterTuningJob
 
 
 =head2 CreateEndpoint
@@ -576,28 +585,33 @@ Each argument is described in detail in: L<Paws::SageMaker::CreateModel>
 Returns: a L<Paws::SageMaker::CreateModelOutput> instance
 
 Creates a model in Amazon SageMaker. In the request, you name the model
-and describe one or more containers. For each container, you specify
-the docker image containing inference code, artifacts (from prior
-training), and custom environment map that the inference code uses when
-you deploy the model into production.
+and describe a primary container. For the primary container, you
+specify the docker image containing inference code, artifacts (from
+prior training), and custom environment map that the inference code
+uses when you deploy the model for predictions.
 
-Use this API to create a model only if you want to use Amazon SageMaker
-hosting services. To host your model, you create an endpoint
-configuration with the C<CreateEndpointConfig> API, and then create an
-endpoint with the C<CreateEndpoint> API.
+Use this API to create a model if you want to use Amazon SageMaker
+hosting services or run a batch transform job.
 
-Amazon SageMaker then deploys all of the containers that you defined
-for the model in the hosting environment.
+To host your model, you create an endpoint configuration with the
+C<CreateEndpointConfig> API, and then create an endpoint with the
+C<CreateEndpoint> API. Amazon SageMaker then deploys all of the
+containers that you defined for the model in the hosting environment.
+
+To run a batch transform using your model, you start a job with the
+C<CreateTransformJob> API. Amazon SageMaker uses your model and your
+dataset to get inferences which are then saved to a specified S3
+location.
 
 In the C<CreateModel> request, you must define a container with the
 C<PrimaryContainer> parameter.
 
 In the request, you also provide an IAM role that Amazon SageMaker can
 assume to access model artifacts and docker image for deployment on ML
-compute hosting instances. In addition, you also use the IAM role to
-manage permissions the inference code needs. For example, if the
-inference code access any other AWS resources, you grant necessary
-permissions via this role.
+compute hosting instances or for batch transform jobs. In addition, you
+also use the IAM role to manage permissions the inference code needs.
+For example, if the inference code access any other AWS resources, you
+grant necessary permissions via this role.
 
 
 =head2 CreateNotebookInstance
@@ -621,6 +635,8 @@ permissions via this role.
 =item [SubnetId => Str]
 
 =item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
+
+=item [VolumeSizeInGB => Int]
 
 
 =back
@@ -716,7 +732,8 @@ If a script runs for longer than 5 minutes, it fails and the notebook
 instance is not created or started.
 
 For information about notebook instance lifestyle configurations, see
-notebook-lifecycle-config.
+Step 2.1: (Optional) Customize a Notebook Instance
+(http://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
 
 
 =head2 CreatePresignedNotebookInstanceUrl
@@ -740,14 +757,23 @@ C<Open> next to a notebook instance, Amazon SageMaker opens a new tab
 showing the Jupyter server home page from the notebook instance. The
 console uses this API to get the URL and show the page.
 
+You can restrict access to this API and to the URL that it returns to a
+list of IP addresses that you specify. To restrict access, attach an
+IAM policy that denies access to this API unless the call comes from an
+IP address in the specified list to every AWS Identity and Access
+Management user, group, or role used to access the notebook instance.
+Use the C<NotIpAddress> condition operator and the C<aws:SourceIP>
+condition context key to specify the list of IP addresses that you want
+to have access to the notebook instance. For more information, see
+Limit Access to a Notebook Instance by IP Address
+(http://docs.aws.amazon.com/https:/docs.aws.amazon.com/sagemaker/latest/dg/howitworks-access-ws.html#nbi-ip-filter).
+
 
 =head2 CreateTrainingJob
 
 =over
 
 =item AlgorithmSpecification => L<Paws::SageMaker::AlgorithmSpecification>
-
-=item InputDataConfig => ArrayRef[L<Paws::SageMaker::Channel>]
 
 =item OutputDataConfig => L<Paws::SageMaker::OutputDataConfig>
 
@@ -760,6 +786,8 @@ console uses this API to get the URL and show the page.
 =item TrainingJobName => Str
 
 =item [HyperParameters => L<Paws::SageMaker::HyperParameters>]
+
+=item [InputDataConfig => ArrayRef[L<Paws::SageMaker::Channel>]]
 
 =item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
 
@@ -862,8 +890,9 @@ Each argument is described in detail in: L<Paws::SageMaker::CreateTransformJob>
 
 Returns: a L<Paws::SageMaker::CreateTransformJobResponse> instance
 
-Starts a transform job. After the results are obtained, Amazon
-SageMaker saves them to an Amazon S3 location that you specify.
+Starts a transform job. A transform job uses a trained model to get
+inferences on a dataset and saves these results to an Amazon S3
+location that you specify.
 
 To perform batch transformations, you create a transform job and use
 the data that you have readily available.
@@ -879,7 +908,9 @@ unique within an AWS Region in an AWS account.
 
 =item *
 
-C<ModelName> - Identifies the model to use.
+C<ModelName> - Identifies the model to use. C<ModelName> must be the
+name of an existing Amazon SageMaker model in the same AWS Region and
+AWS account. For information on creating a model, see CreateModel.
 
 =item *
 
@@ -918,6 +949,11 @@ Returns: nothing
 
 Deletes an endpoint. Amazon SageMaker frees up all of the resources
 that were deployed when the endpoint was created.
+
+Amazon SageMaker retires any custom KMS key grants associated with the
+endpoint, meaning you don't need to use the RevokeGrant
+(http://docs.aws.amazon.com/kms/latest/APIReference/API_RevokeGrant.html)
+API call.
 
 
 =head2 DeleteEndpointConfig
@@ -1013,6 +1049,10 @@ Returns: a L<Paws::SageMaker::DeleteTagsOutput> instance
 Deletes the specified tags from an Amazon SageMaker resource.
 
 To list a resource's tags, use the C<ListTags> API.
+
+When you call this API to delete tags from a hyperparameter tuning job,
+the deleted tags are not removed from training jobs that the
+hyperparameter tuning job launched before you called this API.
 
 
 =head2 DescribeEndpoint
@@ -1112,7 +1152,8 @@ Returns: a L<Paws::SageMaker::DescribeNotebookInstanceLifecycleConfigOutput> ins
 Returns a description of a notebook instance lifecycle configuration.
 
 For information about notebook instance lifestyle configurations, see
-notebook-lifecycle-config.
+Step 2.1: (Optional) Customize a Notebook Instance
+(http://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
 
 
 =head2 DescribeTrainingJob
@@ -1638,9 +1679,15 @@ API.
 
 =item NotebookInstanceName => Str
 
+=item [DisassociateLifecycleConfig => Bool]
+
 =item [InstanceType => Str]
 
+=item [LifecycleConfigName => Str]
+
 =item [RoleArn => Str]
+
+=item [VolumeSizeInGB => Int]
 
 
 =back

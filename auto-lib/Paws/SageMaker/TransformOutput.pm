@@ -49,20 +49,45 @@ job.
 =head2 AssembleWith => Str
 
   Defines how to assemble the results of the transform job as a single S3
-object. You should select a format that is most convienant to you. To
+object. You should select a format that is most convenient to you. To
 concatenate the results in binary format, specify C<None>. To add a
 newline character at the end of every transformed record, specify
-C<Line>. To assemble the output in RecordIO format, specify
-C<RecordIO>. The default value is C<None>.
-
-For information about the C<RecordIO> format, see Data Format
-(http://mxnet.io/architecture/note_data_loading.html#data-format).
+C<Line>.
 
 
 =head2 KmsKeyId => Str
 
-  The AWS Key Management Service (AWS KMS) key for Amazon S3 server-side
-encryption that Amazon SageMaker uses to encrypt the transformed data.
+  The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses
+to encrypt the model artifacts at rest using Amazon S3 server-side
+encryption. The C<KmsKeyId> can be any of the following formats:
+
+=over
+
+=item *
+
+// KMS Key ID
+
+C<"1234abcd-12ab-34cd-56ef-1234567890ab">
+
+=item *
+
+// Amazon Resource Name (ARN) of a KMS Key
+
+C<"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab">
+
+=item *
+
+// KMS Key Alias
+
+C<"alias/ExampleAlias">
+
+=item *
+
+// Amazon Resource Name (ARN) of a KMS Key Alias
+
+C<"arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias">
+
+=back
 
 If you don't provide a KMS key ID, Amazon SageMaker uses the default
 KMS key for Amazon S3 for your role's account. For more information,
@@ -84,7 +109,7 @@ of the transform job. For example, C<s3://bucket-name/key-name-prefix>.
 
 For every S3 object used as input for the transform job, the
 transformed data is stored in a corresponding subfolder in the location
-under the output prefix.For example, the input data
+under the output prefix. For example, the input data
 C<s3://bucket-name/input-name-prefix/dataset01/data.csv> will have the
 transformed data stored at
 C<s3://bucket-name/key-name-prefix/dataset01/>, based on the original

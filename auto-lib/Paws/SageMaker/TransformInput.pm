@@ -43,8 +43,8 @@ job consumes it.
 =head2 CompressionType => Str
 
   Compressing data helps save on storage space. If your transform data is
-compressed, specify the compression type.and Amazon SageMaker will
-automatically decompress the data for the transform job accordingly.
+compressed, specify the compression type. Amazon SageMaker
+automatically decompresses the data for the transform job accordingly.
 The default value is C<None>.
 
 
@@ -65,7 +65,7 @@ the input data that the model can consume.
 
   The method to use to split the transform job's data into smaller
 batches. The default value is C<None>. If you don't want to split the
-data, specify (C<None>). If you want to split records on a newline
+data, specify C<None>. If you want to split records on a newline
 character boundary, specify C<Line>. To split records according to the
 RecordIO format, specify C<RecordIO>.
 

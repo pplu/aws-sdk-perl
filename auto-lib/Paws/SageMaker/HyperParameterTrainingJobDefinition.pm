@@ -105,7 +105,9 @@ intermediate results of the job.
   The VpcConfig object that specifies the VPC that you want the training
 jobs that this hyperparameter tuning job launches to connect to.
 Control access to and from your training container by configuring the
-VPC. For more information, see train-vpc.
+VPC. For more information, see Protect Training Jobs by Using an Amazon
+Virtual Private Cloud
+(http://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html).
 
 
 

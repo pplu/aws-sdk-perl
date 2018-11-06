@@ -30,10 +30,9 @@ Paws::SageMaker::DescribeTransformJobResponse
 
 =head2 BatchStrategy => Str
 
-SingleRecord means only one record was used per a batch.
-E<lt>codeE<gt>MultiRecordE<lt>/codeE<gt> means batches contained as
-many records that could possibly fit within the C<MaxPayloadInMB>
-limit.
+SingleRecord means only one record was used per a batch. C<MultiRecord>
+means batches contained as many records that could possibly fit within
+the C<MaxPayloadInMB> limit.
 
 Valid values are: C<"MultiRecord">, C<"SingleRecord">
 =head2 B<REQUIRED> CreationTime => Str

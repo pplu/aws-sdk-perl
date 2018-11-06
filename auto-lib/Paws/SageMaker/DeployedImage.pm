@@ -36,9 +36,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 Gets the Amazon EC2 Container Registry path of the docker image of the
 model that is hosted in this ProductionVariant.
 
-If you used the C<registry/repository[:tag]> form to to specify the
-image path of the primary container when you created the model hosted
-in this C<ProductionVariant>, the path resolves to a path of the form
+If you used the C<registry/repository[:tag]> form to specify the image
+path of the primary container when you created the model hosted in this
+C<ProductionVariant>, the path resolves to a path of the form
 C<registry/repository[@digest]>. A digest is a hash value that
 identifies a specific version of an image. For information about Amazon
 ECR paths, see Pulling an Image

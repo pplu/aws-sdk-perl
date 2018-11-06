@@ -10,6 +10,7 @@ package Paws::SageMaker::CreateNotebookInstance;
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SubnetId => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Tag]');
+  has VolumeSizeInGB => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
 
@@ -34,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
 =head1 SYNOPSIS
 
-    my $sagemaker = Paws->service('SageMaker');
-    my $CreateNotebookInstanceOutput = $sagemaker->CreateNotebookInstance(
+    my $api.sagemaker = Paws->service('SageMaker');
+    my $CreateNotebookInstanceOutput = $api . sagemaker->CreateNotebookInstance(
       InstanceType         => 'ml.t2.medium',
       NotebookInstanceName => 'MyNotebookInstanceName',
       RoleArn              => 'MyRoleArn',
@@ -54,6 +55,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                            # OPTIONAL
+      VolumeSizeInGB => 1,          # OPTIONAL
     );
 
     # Results:
@@ -63,7 +65,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::SageMaker::CreateNotebookInstanceOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sagemaker/CreateNotebookInstance>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.sagemaker/CreateNotebookInstance>
 
 =head1 ATTRIBUTES
 
@@ -76,9 +78,11 @@ able to access resources only in your VPC, and will not be able to
 connect to Amazon SageMaker training and endpoint services unless your
 configure a NAT Gateway in your VPC.
 
-For more information, see appendix-notebook-and-internet-access. You
-can set the value of this parameter to C<Disabled> only if you set a
-value for the C<SubnetId> parameter.
+For more information, see Notebook Instances Are Internet-Enabled by
+Default
+(http://docs.aws.amazon.com/sagemaker/latest/dg/appendix-additional-considerations.html#appendix-notebook-and-internet-access).
+You can set the value of this parameter to C<Disabled> only if you set
+a value for the C<SubnetId> parameter.
 
 Valid values are: C<"Enabled">, C<"Disabled">
 
@@ -99,8 +103,9 @@ instance.
 =head2 LifecycleConfigName => Str
 
 The name of a lifecycle configuration to associate with the notebook
-instance. For information about lifestyle configurations, see
-notebook-lifecycle-config.
+instance. For information about lifestyle configurations, see Step 2.1:
+(Optional) Customize a Notebook Instance
+(http://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
 
 
 
@@ -143,6 +148,13 @@ connectivity from your ML compute instance.
 
 A list of tags to associate with the notebook instance. You can add
 tags later by using the C<CreateTags> API.
+
+
+
+=head2 VolumeSizeInGB => Int
+
+The size, in GB, of the ML storage volume to attach to the notebook
+instance.
 
 
 

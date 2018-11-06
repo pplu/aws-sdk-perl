@@ -26,8 +26,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
 =head1 SYNOPSIS
 
-    my $sagemaker = Paws->service('SageMaker');
-    my $DescribeTrainingJobResponse = $sagemaker->DescribeTrainingJob(
+    my $api.sagemaker = Paws->service('SageMaker');
+    my $DescribeTrainingJobResponse = $api . sagemaker->DescribeTrainingJob(
       TrainingJobName => 'MyTrainingJobName',
 
     );
@@ -35,16 +35,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $AlgorithmSpecification =
       $DescribeTrainingJobResponse->AlgorithmSpecification;
-    my $CreationTime      = $DescribeTrainingJobResponse->CreationTime;
-    my $FailureReason     = $DescribeTrainingJobResponse->FailureReason;
-    my $HyperParameters   = $DescribeTrainingJobResponse->HyperParameters;
-    my $InputDataConfig   = $DescribeTrainingJobResponse->InputDataConfig;
-    my $LastModifiedTime  = $DescribeTrainingJobResponse->LastModifiedTime;
-    my $ModelArtifacts    = $DescribeTrainingJobResponse->ModelArtifacts;
-    my $OutputDataConfig  = $DescribeTrainingJobResponse->OutputDataConfig;
-    my $ResourceConfig    = $DescribeTrainingJobResponse->ResourceConfig;
-    my $RoleArn           = $DescribeTrainingJobResponse->RoleArn;
-    my $SecondaryStatus   = $DescribeTrainingJobResponse->SecondaryStatus;
+    my $CreationTime     = $DescribeTrainingJobResponse->CreationTime;
+    my $FailureReason    = $DescribeTrainingJobResponse->FailureReason;
+    my $HyperParameters  = $DescribeTrainingJobResponse->HyperParameters;
+    my $InputDataConfig  = $DescribeTrainingJobResponse->InputDataConfig;
+    my $LastModifiedTime = $DescribeTrainingJobResponse->LastModifiedTime;
+    my $ModelArtifacts   = $DescribeTrainingJobResponse->ModelArtifacts;
+    my $OutputDataConfig = $DescribeTrainingJobResponse->OutputDataConfig;
+    my $ResourceConfig   = $DescribeTrainingJobResponse->ResourceConfig;
+    my $RoleArn          = $DescribeTrainingJobResponse->RoleArn;
+    my $SecondaryStatus  = $DescribeTrainingJobResponse->SecondaryStatus;
+    my $SecondaryStatusTransitions =
+      $DescribeTrainingJobResponse->SecondaryStatusTransitions;
     my $StoppingCondition = $DescribeTrainingJobResponse->StoppingCondition;
     my $TrainingEndTime   = $DescribeTrainingJobResponse->TrainingEndTime;
     my $TrainingJobArn    = $DescribeTrainingJobResponse->TrainingJobArn;
@@ -57,7 +59,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::SageMaker::DescribeTrainingJobResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sagemaker/DescribeTrainingJob>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.sagemaker/DescribeTrainingJob>
 
 =head1 ATTRIBUTES
 

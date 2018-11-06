@@ -29,9 +29,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
 =head1 SYNOPSIS
 
-    my $sagemaker = Paws->service('SageMaker');
+    my $api.sagemaker = Paws->service('SageMaker');
     my $CreateHyperParameterTuningJobResponse =
-      $sagemaker->CreateHyperParameterTuningJob(
+      $api . sagemaker->CreateHyperParameterTuningJob(
       HyperParameterTuningJobConfig => {
         HyperParameterTuningJobObjective => {
           MetricName => 'MyMetricName',    # min: 1, max: 255
@@ -104,6 +104,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },
             CompressionType => 'None',            # values: None, Gzip; OPTIONAL
             ContentType     => 'MyContentType',   # max: 256; OPTIONAL
+            InputMode       => 'Pipe',            # values: Pipe, File
             RecordWrapperType => 'None',    # values: None, RecordIO; OPTIONAL
           },
           ...
@@ -154,7 +155,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # Returns a L<Paws::SageMaker::CreateHyperParameterTuningJobResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sagemaker/CreateHyperParameterTuningJob>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.sagemaker/CreateHyperParameterTuningJob>
 
 =head1 ATTRIBUTES
 
@@ -180,9 +181,11 @@ sensitive, and must be between 1-32 characters.
 
 An array of key-value pairs. You can use tags to categorize your AWS
 resources in different ways, for example, by purpose, owner, or
-environment. For more information, see Using Cost Allocation Tags
-(http://docs.aws.amazon.com//awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
-in the I<AWS Billing and Cost Management User Guide>.
+environment. For more information, see AWS Tagging Strategies
+(https://aws.amazon.com/answers/account-management/aws-tagging-strategies/).
+
+Tags that you specify for the tuning job are also added to all training
+jobs that the tuning job launches.
 
 
 

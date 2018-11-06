@@ -2,6 +2,7 @@ package Paws::SageMaker::TransformResources;
   use Moose;
   has InstanceCount => (is => 'ro', isa => 'Int', required => 1);
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
+  has VolumeKmsKeyId => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +22,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SageMaker::TransformResources object:
 
-  $service_obj->Method(Att1 => { InstanceCount => $value, ..., InstanceType => $value  });
+  $service_obj->Method(Att1 => { InstanceCount => $value, ..., VolumeKmsKeyId => $value  });
 
 =head3 Results returned from an API call
 
@@ -51,6 +52,31 @@ value is C<1>.
 algorithms to transform moderately sized datasets, ml.m4.xlarge or
 C<ml.m5.large> should suffice. There is no default value for
 C<InstanceType>.
+
+
+=head2 VolumeKmsKeyId => Str
+
+  The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses
+to encrypt data on the storage volume attached to the ML compute
+instance(s) that run the batch transform job. The C<VolumeKmsKeyId> can
+be any of the following formats:
+
+=over
+
+=item *
+
+// KMS Key ID
+
+C<"1234abcd-12ab-34cd-56ef-1234567890ab">
+
+=item *
+
+// Amazon Resource Name (ARN) of a KMS Key
+
+C<"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab">
+
+=back
+
 
 
 

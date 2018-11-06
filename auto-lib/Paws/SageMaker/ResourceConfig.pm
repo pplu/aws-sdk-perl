@@ -53,9 +53,27 @@ provide a value greater than 1.
 
 =head2 VolumeKmsKeyId => Str
 
-  The Amazon Resource Name (ARN) of a AWS Key Management Service key that
-Amazon SageMaker uses to encrypt data on the storage volume attached to
-the ML compute instance(s) that run the training job.
+  The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses
+to encrypt data on the storage volume attached to the ML compute
+instance(s) that run the training job. The C<VolumeKmsKeyId> can be any
+of the following formats:
+
+=over
+
+=item *
+
+// KMS Key ID
+
+C<"1234abcd-12ab-34cd-56ef-1234567890ab">
+
+=item *
+
+// Amazon Resource Name (ARN) of a KMS Key
+
+C<"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab">
+
+=back
+
 
 
 =head2 B<REQUIRED> VolumeSizeInGB => Int
