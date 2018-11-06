@@ -74,7 +74,7 @@ An AWS Elemental MediaStore asset is an object, similar to an object in
 the Amazon S3 service. Objects are the fundamental entities that are
 stored in AWS Elemental MediaStore.
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/mediastore/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/mediastore/>
 
 
 =head1 METHODS
@@ -171,7 +171,7 @@ Each argument is described in detail in: L<Paws::MediaStoreData::PutObject>
 
 Returns: a L<Paws::MediaStoreData::PutObjectResponse> instance
 
-Uploads an object to the specified path. Object sizes are limited to 10
+Uploads an object to the specified path. Object sizes are limited to 25
 MB.
 
 
