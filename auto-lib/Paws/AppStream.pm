@@ -20,6 +20,16 @@ package Paws::AppStream;
     my $call_object = $self->new_with_coercions('Paws::AppStream::AssociateFleet', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub BatchAssociateUserStack {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppStream::BatchAssociateUserStack', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub BatchDisassociateUserStack {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppStream::BatchDisassociateUserStack', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CopyImage {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppStream::CopyImage', @_);
@@ -55,6 +65,11 @@ package Paws::AppStream;
     my $call_object = $self->new_with_coercions('Paws::AppStream::CreateStreamingURL', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateUser {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppStream::CreateUser', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteDirectoryConfig {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppStream::DeleteDirectoryConfig', @_);
@@ -83,6 +98,11 @@ package Paws::AppStream;
   sub DeleteStack {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppStream::DeleteStack', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteUser {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppStream::DeleteUser', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeDirectoryConfigs {
@@ -120,9 +140,29 @@ package Paws::AppStream;
     my $call_object = $self->new_with_coercions('Paws::AppStream::DescribeStacks', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeUsers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppStream::DescribeUsers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeUserStackAssociations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppStream::DescribeUserStackAssociations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DisableUser {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppStream::DisableUser', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DisassociateFleet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppStream::DisassociateFleet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub EnableUser {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppStream::EnableUser', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ExpireSession {
@@ -198,7 +238,7 @@ package Paws::AppStream;
   
 
 
-  sub operations { qw/AssociateFleet CopyImage CreateDirectoryConfig CreateFleet CreateImageBuilder CreateImageBuilderStreamingURL CreateStack CreateStreamingURL DeleteDirectoryConfig DeleteFleet DeleteImage DeleteImageBuilder DeleteImagePermissions DeleteStack DescribeDirectoryConfigs DescribeFleets DescribeImageBuilders DescribeImagePermissions DescribeImages DescribeSessions DescribeStacks DisassociateFleet ExpireSession ListAssociatedFleets ListAssociatedStacks ListTagsForResource StartFleet StartImageBuilder StopFleet StopImageBuilder TagResource UntagResource UpdateDirectoryConfig UpdateFleet UpdateImagePermissions UpdateStack / }
+  sub operations { qw/AssociateFleet BatchAssociateUserStack BatchDisassociateUserStack CopyImage CreateDirectoryConfig CreateFleet CreateImageBuilder CreateImageBuilderStreamingURL CreateStack CreateStreamingURL CreateUser DeleteDirectoryConfig DeleteFleet DeleteImage DeleteImageBuilder DeleteImagePermissions DeleteStack DeleteUser DescribeDirectoryConfigs DescribeFleets DescribeImageBuilders DescribeImagePermissions DescribeImages DescribeSessions DescribeStacks DescribeUsers DescribeUserStackAssociations DisableUser DisassociateFleet EnableUser ExpireSession ListAssociatedFleets ListAssociatedStacks ListTagsForResource StartFleet StartImageBuilder StopFleet StopImageBuilder TagResource UntagResource UpdateDirectoryConfig UpdateFleet UpdateImagePermissions UpdateStack / }
 
 1;
 
@@ -231,7 +271,7 @@ Amazon AppStream 2.0
 You can use Amazon AppStream 2.0 to stream desktop applications to any
 device running a web browser, without rewriting them.
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/appstream2-2016-12-01>
 
 
 =head1 METHODS
@@ -252,6 +292,40 @@ Each argument is described in detail in: L<Paws::AppStream::AssociateFleet>
 Returns: a L<Paws::AppStream::AssociateFleetResult> instance
 
 Associates the specified fleet with the specified stack.
+
+
+=head2 BatchAssociateUserStack
+
+=over
+
+=item UserStackAssociations => ArrayRef[L<Paws::AppStream::UserStackAssociation>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppStream::BatchAssociateUserStack>
+
+Returns: a L<Paws::AppStream::BatchAssociateUserStackResult> instance
+
+Associates the specified users with the specified stacks. Users in a
+user pool cannot be assigned to stacks with fleets that are joined to
+an Active Directory domain.
+
+
+=head2 BatchDisassociateUserStack
+
+=over
+
+=item UserStackAssociations => ArrayRef[L<Paws::AppStream::UserStackAssociation>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppStream::BatchDisassociateUserStack>
+
+Returns: a L<Paws::AppStream::BatchDisassociateUserStackResult> instance
+
+Disassociates the specified users from the specified stacks.
 
 
 =head2 CopyImage
@@ -457,6 +531,30 @@ the specified user. A streaming URL enables application streaming to be
 tested without user setup.
 
 
+=head2 CreateUser
+
+=over
+
+=item AuthenticationType => Str
+
+=item UserName => Str
+
+=item [FirstName => Str]
+
+=item [LastName => Str]
+
+=item [MessageAction => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppStream::CreateUser>
+
+Returns: a L<Paws::AppStream::CreateUserResult> instance
+
+Creates a new user in the user pool.
+
+
 =head2 DeleteDirectoryConfig
 
 =over
@@ -562,6 +660,24 @@ Deletes the specified stack. After the stack is deleted, the
 application streaming environment provided by the stack is no longer
 available to users. Also, any reservations made for application
 streaming sessions for the stack are released.
+
+
+=head2 DeleteUser
+
+=over
+
+=item AuthenticationType => Str
+
+=item UserName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppStream::DeleteUser>
+
+Returns: a L<Paws::AppStream::DeleteUserResult> instance
+
+Deletes a user from the user pool.
 
 
 =head2 DescribeDirectoryConfigs
@@ -732,6 +848,87 @@ stack names are provided. Otherwise, all stacks in the account are
 described.
 
 
+=head2 DescribeUsers
+
+=over
+
+=item AuthenticationType => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppStream::DescribeUsers>
+
+Returns: a L<Paws::AppStream::DescribeUsersResult> instance
+
+Retrieves a list that describes one or more specified users in the user
+pool, if user names are provided. Otherwise, all users in the user pool
+are described.
+
+
+=head2 DescribeUserStackAssociations
+
+=over
+
+=item [AuthenticationType => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [StackName => Str]
+
+=item [UserName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppStream::DescribeUserStackAssociations>
+
+Returns: a L<Paws::AppStream::DescribeUserStackAssociationsResult> instance
+
+Retrieves a list that describes the UserStackAssociation objects. You
+must specify either or both of the following:
+
+=over
+
+=item *
+
+The stack name
+
+=item *
+
+The user name (email address of the user associated with the stack) and
+the authentication type for the user
+
+=back
+
+
+
+=head2 DisableUser
+
+=over
+
+=item AuthenticationType => Str
+
+=item UserName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppStream::DisableUser>
+
+Returns: a L<Paws::AppStream::DisableUserResult> instance
+
+Disables the specified user in the user pool. Users can't sign in to
+AppStream 2.0 until they are re-enabled. This action does not delete
+the user.
+
+
 =head2 DisassociateFleet
 
 =over
@@ -748,6 +945,26 @@ Each argument is described in detail in: L<Paws::AppStream::DisassociateFleet>
 Returns: a L<Paws::AppStream::DisassociateFleetResult> instance
 
 Disassociates the specified fleet from the specified stack.
+
+
+=head2 EnableUser
+
+=over
+
+=item AuthenticationType => Str
+
+=item UserName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppStream::EnableUser>
+
+Returns: a L<Paws::AppStream::EnableUserResult> instance
+
+Enables a user in the user pool. After being enabled, users can sign in
+to AppStream 2.0 and open applications from the stacks to which they
+are assigned.
 
 
 =head2 ExpireSession

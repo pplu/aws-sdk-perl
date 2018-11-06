@@ -23,8 +23,8 @@ The name of the private image.
 
 =head2 NextToken => Str
 
-The pagination token to use to retrieve the next page of results. If
-this value is empty, only the first page is retrieved.
+The pagination token to use to retrieve the next page of results for
+this operation. If there are no more pages, this value is null.
 
 
 =head2 SharedImagePermissionsList => ArrayRef[L<Paws::AppStream::SharedImagePermissions>]
