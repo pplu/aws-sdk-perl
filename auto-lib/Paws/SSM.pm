@@ -955,9 +955,15 @@ Up Systems Manager in Hybrid Environments
 
 =item [AssociationName => Str]
 
+=item [ComplianceSeverity => Str]
+
 =item [DocumentVersion => Str]
 
 =item [InstanceId => Str]
+
+=item [MaxConcurrency => Str]
+
+=item [MaxErrors => Str]
 
 =item [OutputLocation => L<Paws::SSM::InstanceAssociationOutputLocation>]
 
@@ -3337,7 +3343,13 @@ session cannot be resumed.
 
 =item [AssociationVersion => Str]
 
+=item [ComplianceSeverity => Str]
+
 =item [DocumentVersion => Str]
+
+=item [MaxConcurrency => Str]
+
+=item [MaxErrors => Str]
 
 =item [Name => Str]
 

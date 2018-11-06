@@ -45,7 +45,7 @@ The number of instances with installed patches.
 =head2 InstancesWithInstalledRejectedPatches => Int
 
 The number of instances with patches installed that are specified in a
-RejectedPatches list. Patches with a status of I<InstalledRejected>
+RejectedPatches list. Patches with a status of I<INSTALLED_REJECTED>
 were typically installed before they were added to a RejectedPatches
 list.
 
