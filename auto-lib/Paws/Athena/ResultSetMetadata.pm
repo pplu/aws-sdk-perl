@@ -39,7 +39,7 @@ table of query results.
 
 =head2 ColumnInfo => ArrayRef[L<Paws::Athena::ColumnInfo>]
 
-  Information about the columns in a query execution result.
+  Information about the columns returned in a query result metadata.
 
 
 
