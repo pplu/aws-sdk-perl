@@ -47,7 +47,9 @@ Information about a logger
 
 =head2 Id => Str
 
-  The id of the logger.
+  A descriptive or arbitrary ID for the logger. This value must be unique
+within the logger definition version. Max length is 128 characters with
+pattern ''[azAZ09:_]+''.
 
 
 =head2 Level => Str

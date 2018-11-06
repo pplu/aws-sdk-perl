@@ -50,7 +50,9 @@ Information about a Lambda function.
 
 =head2 Id => Str
 
-  The ID of the Lambda function.
+  A descriptive or arbitrary ID for the function. This value must be
+unique within the function definition version. Max length is 128
+characters with pattern ''[azAZ09:_]+''.
 
 
 

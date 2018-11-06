@@ -52,7 +52,8 @@ process. This field is optional.
 =head2 SourcePath => Str
 
   The local absolute path of the volume resource on the host. The source
-path for a volume resource type cannot start with ''/sys''.
+path for a volume resource type cannot start with ''/proc'' or
+''/sys''.
 
 
 
