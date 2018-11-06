@@ -36,7 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           Action    => 'CREATE_OR_UPDATE',    # values: CREATE_OR_UPDATE, DELETE
           Attribute => {
-            Name => 'MyAttributeName',        # min: 1, max: 64
+            Name => 'MyAttributeName',        # min: 1, max: 230
             RequiredBehavior =>
               'REQUIRED_ALWAYS',    # values: REQUIRED_ALWAYS, NOT_REQUIRED
             Type => 'STRING'
@@ -65,7 +65,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],
       IdentityAttributeOrder => [
         'MyAttributeName',
-        ...       # min: 1, max: 64
+        ...       # min: 1, max: 230
       ],
       Name      => 'MyTypedLinkName',
       SchemaArn => 'MyArn',
@@ -94,8 +94,8 @@ specified at the end. Any attributes that do not have a range specified
 are presumed to match the entire range. Filters are interpreted in the
 order of the attributes on the typed link facet, not the order in which
 they are supplied to any API calls. For more information about identity
-attributes, see Typed link
-(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
+attributes, see Typed Links
+(https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink).
 
 
 

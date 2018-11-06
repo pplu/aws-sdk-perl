@@ -43,8 +43,8 @@ information, see CreateIndex and BatchReadRequest$Operations.
 
 =head2 BatchReferenceName => Str
 
-  The batch reference name. See Batches
-(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#batches)
+  The batch reference name. See Transaction Support
+(https://docs.aws.amazon.com/clouddirectory/latest/developerguide/transaction_support.html)
 for more information.
 
 

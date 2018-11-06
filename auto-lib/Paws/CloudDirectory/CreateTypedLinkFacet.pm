@@ -33,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Facet => {
         Attributes => [
           {
-            Name => 'MyAttributeName',    # min: 1, max: 64
+            Name => 'MyAttributeName',    # min: 1, max: 230
             RequiredBehavior =>
               'REQUIRED_ALWAYS',    # values: REQUIRED_ALWAYS, NOT_REQUIRED
             Type => 'STRING'
@@ -60,7 +60,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ],
         IdentityAttributeOrder => [
           'MyAttributeName',
-          ...     # min: 1, max: 64
+          ...     # min: 1, max: 230
         ],
         Name => 'MyTypedLinkName',
 

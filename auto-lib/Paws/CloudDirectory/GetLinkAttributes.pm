@@ -33,13 +33,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $clouddirectory = Paws->service('CloudDirectory');
     my $GetLinkAttributesResponse = $clouddirectory->GetLinkAttributes(
       AttributeNames => [
-        'MyAttributeName', ...    # min: 1, max: 64
+        'MyAttributeName', ...    # min: 1, max: 230
       ],
       DirectoryArn       => 'MyArn',
       TypedLinkSpecifier => {
         IdentityAttributeValues => [
           {
-            AttributeName => 'MyAttributeName',    # min: 1, max: 64
+            AttributeName => 'MyAttributeName',    # min: 1, max: 230
             Value         => {
               BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
               BooleanValue  => 1,                             # OPTIONAL
@@ -95,8 +95,8 @@ Valid values are: C<"SERIALIZABLE">, C<"EVENTUAL">
 
 The Amazon Resource Name (ARN) that is associated with the Directory
 where the typed link resides. For more information, see arns or Typed
-link
-(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
+Links
+(https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink).
 
 
 

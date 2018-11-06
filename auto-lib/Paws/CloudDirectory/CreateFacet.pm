@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SchemaArn  => 'MyArn',
       Attributes => [
         {
-          Name                => 'MyAttributeName',    # min: 1, max: 64
+          Name                => 'MyAttributeName',    # min: 1, max: 230
           AttributeDefinition => {
             Type => 'STRING'
             ,    # values: STRING, BINARY, BOOLEAN, NUMBER, DATETIME, VARIANT
@@ -60,7 +60,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },    # OPTIONAL
           },    # OPTIONAL
           AttributeReference => {
-            TargetAttributeName => 'MyAttributeName',    # min: 1, max: 64
+            TargetAttributeName => 'MyAttributeName',    # min: 1, max: 230
             TargetFacetName     => 'MyFacetName',        # min: 1, max: 64
 
           },    # OPTIONAL
@@ -127,7 +127,7 @@ Leaf node: Cannot have children but can have multiple parents.
 
 Policy: Allows you to store a policy document and policy type. For more
 information, see Policies
-(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies).
+(https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directory.html#key_concepts_policies).
 
 =back
 

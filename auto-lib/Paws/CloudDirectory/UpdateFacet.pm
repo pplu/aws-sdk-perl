@@ -39,7 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Action =>
             'CREATE_OR_UPDATE',    # values: CREATE_OR_UPDATE, DELETE; OPTIONAL
           Attribute => {
-            Name                => 'MyAttributeName',    # min: 1, max: 64
+            Name                => 'MyAttributeName',    # min: 1, max: 230
             AttributeDefinition => {
               Type => 'STRING'
               ,    # values: STRING, BINARY, BOOLEAN, NUMBER, DATETIME, VARIANT
@@ -62,7 +62,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
             },    # OPTIONAL
             AttributeReference => {
-              TargetAttributeName => 'MyAttributeName',    # min: 1, max: 64
+              TargetAttributeName => 'MyAttributeName',    # min: 1, max: 230
               TargetFacetName     => 'MyFacetName',        # min: 1, max: 64
 
             },    # OPTIONAL

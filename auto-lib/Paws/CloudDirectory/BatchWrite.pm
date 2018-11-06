@@ -38,10 +38,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               {
                 Key => {
                   FacetName => 'MyFacetName',        # min: 1, max: 64; OPTIONAL
-                  Name      => 'MyAttributeName',    # min: 1, max: 64
+                  Name      => 'MyAttributeName',    # min: 1, max: 230
                   SchemaArn => 'MyArn',
 
-                },
+                },    # OPTIONAL
                 Value => {
                   BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
                   BooleanValue  => 1,                             # OPTIONAL
@@ -93,7 +93,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           AttachTypedLink => {
             Attributes => [
               {
-                AttributeName => 'MyAttributeName',    # min: 1, max: 64
+                AttributeName => 'MyAttributeName',    # min: 1, max: 230
                 Value         => {
                   BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
                   BooleanValue  => 1,                             # OPTIONAL
@@ -123,11 +123,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             OrderedIndexedAttributeList => [
               {
                 FacetName => 'MyFacetName',        # min: 1, max: 64; OPTIONAL
-                Name      => 'MyAttributeName',    # min: 1, max: 64
+                Name      => 'MyAttributeName',    # min: 1, max: 230
                 SchemaArn => 'MyArn',
 
               },
-              ...
+              ...                                  # OPTIONAL
             ],
             BatchReferenceName => 'MyBatchReferenceName',    # OPTIONAL
             LinkName        => 'MyLinkName',    # min: 1, max: 64; OPTIONAL
@@ -140,10 +140,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               {
                 Key => {
                   FacetName => 'MyFacetName',        # min: 1, max: 64; OPTIONAL
-                  Name      => 'MyAttributeName',    # min: 1, max: 64
+                  Name      => 'MyAttributeName',    # min: 1, max: 230
                   SchemaArn => 'MyArn',
 
-                },
+                },    # OPTIONAL
                 Value => {
                   BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
                   BooleanValue  => 1,                             # OPTIONAL
@@ -203,7 +203,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             TypedLinkSpecifier => {
               IdentityAttributeValues => [
                 {
-                  AttributeName => 'MyAttributeName',    # min: 1, max: 64
+                  AttributeName => 'MyAttributeName',    # min: 1, max: 230
                   Value         => {
                     BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
                     BooleanValue  => 1,                             # OPTIONAL
@@ -256,17 +256,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 },    # OPTIONAL
                 AttributeKey => {
                   FacetName => 'MyFacetName',        # min: 1, max: 64; OPTIONAL
-                  Name      => 'MyAttributeName',    # min: 1, max: 64
+                  Name      => 'MyAttributeName',    # min: 1, max: 230
                   SchemaArn => 'MyArn',
 
-                },
+                },    # OPTIONAL
               },
               ...
             ],
             TypedLinkSpecifier => {
               IdentityAttributeValues => [
                 {
-                  AttributeName => 'MyAttributeName',    # min: 1, max: 64
+                  AttributeName => 'MyAttributeName',    # min: 1, max: 230
                   Value         => {
                     BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
                     BooleanValue  => 1,                             # OPTIONAL
@@ -309,10 +309,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 },    # OPTIONAL
                 ObjectAttributeKey => {
                   FacetName => 'MyFacetName',        # min: 1, max: 64; OPTIONAL
-                  Name      => 'MyAttributeName',    # min: 1, max: 64
+                  Name      => 'MyAttributeName',    # min: 1, max: 230
                   SchemaArn => 'MyArn',
 
-                },
+                },    # OPTIONAL
               },
               ...
             ],

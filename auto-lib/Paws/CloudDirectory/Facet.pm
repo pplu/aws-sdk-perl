@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirect
 
 A structure that contains C<Name>, C<ARN>, C<Attributes>, C< Rules>,
 and C<ObjectTypes>. See Facets
-(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/whatarefacets.html)
+(https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_whatarefacets.html)
 for more information.
 
 =head1 ATTRIBUTES
