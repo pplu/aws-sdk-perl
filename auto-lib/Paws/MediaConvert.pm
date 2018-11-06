@@ -130,6 +130,121 @@ package Paws::MediaConvert;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllEndpoints {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeEndpoints(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeEndpoints(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Endpoints }, @{ $next_result->Endpoints };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Endpoints') foreach (@{ $result->Endpoints });
+        $result = $self->DescribeEndpoints(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Endpoints') foreach (@{ $result->Endpoints });
+    }
+
+    return undef
+  }
+  sub ListAllJobs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListJobs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListJobs(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Jobs }, @{ $next_result->Jobs };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Jobs') foreach (@{ $result->Jobs });
+        $result = $self->ListJobs(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Jobs') foreach (@{ $result->Jobs });
+    }
+
+    return undef
+  }
+  sub ListAllJobTemplates {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListJobTemplates(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListJobTemplates(@_, NextToken => $next_result->NextToken);
+        push @{ $result->JobTemplates }, @{ $next_result->JobTemplates };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'JobTemplates') foreach (@{ $result->JobTemplates });
+        $result = $self->ListJobTemplates(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'JobTemplates') foreach (@{ $result->JobTemplates });
+    }
+
+    return undef
+  }
+  sub ListAllPresets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPresets(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListPresets(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Presets }, @{ $next_result->Presets };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Presets') foreach (@{ $result->Presets });
+        $result = $self->ListPresets(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Presets') foreach (@{ $result->Presets });
+    }
+
+    return undef
+  }
+  sub ListAllQueues {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListQueues(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListQueues(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Queues }, @{ $next_result->Queues };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Queues') foreach (@{ $result->Queues });
+        $result = $self->ListQueues(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Queues') foreach (@{ $result->Queues });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CancelJob CreateJob CreateJobTemplate CreatePreset CreateQueue DeleteJobTemplate DeletePreset DeleteQueue DescribeEndpoints GetJob GetJobTemplate GetPreset GetQueue ListJobs ListJobTemplates ListPresets ListQueues ListTagsForResource TagResource UntagResource UpdateJobTemplate UpdatePreset UpdateQueue / }
@@ -660,6 +775,66 @@ Modify one of your existing queues.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllEndpoints(sub { },[MaxResults => Int, Mode => Str, NextToken => Str])
+
+=head2 DescribeAllEndpoints([MaxResults => Int, Mode => Str, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Endpoints, passing the object as the first parameter, and the string 'Endpoints' as the second parameter 
+
+If not, it will return a a L<Paws::MediaConvert::DescribeEndpointsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllJobs(sub { },[MaxResults => Int, NextToken => Str, Order => Str, Queue => Str, Status => Str])
+
+=head2 ListAllJobs([MaxResults => Int, NextToken => Str, Order => Str, Queue => Str, Status => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Jobs, passing the object as the first parameter, and the string 'Jobs' as the second parameter 
+
+If not, it will return a a L<Paws::MediaConvert::ListJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllJobTemplates(sub { },[Category => Str, ListBy => Str, MaxResults => Int, NextToken => Str, Order => Str])
+
+=head2 ListAllJobTemplates([Category => Str, ListBy => Str, MaxResults => Int, NextToken => Str, Order => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - JobTemplates, passing the object as the first parameter, and the string 'JobTemplates' as the second parameter 
+
+If not, it will return a a L<Paws::MediaConvert::ListJobTemplatesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPresets(sub { },[Category => Str, ListBy => Str, MaxResults => Int, NextToken => Str, Order => Str])
+
+=head2 ListAllPresets([Category => Str, ListBy => Str, MaxResults => Int, NextToken => Str, Order => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Presets, passing the object as the first parameter, and the string 'Presets' as the second parameter 
+
+If not, it will return a a L<Paws::MediaConvert::ListPresetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllQueues(sub { },[ListBy => Str, MaxResults => Int, NextToken => Str, Order => Str])
+
+=head2 ListAllQueues([ListBy => Str, MaxResults => Int, NextToken => Str, Order => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Queues, passing the object as the first parameter, and the string 'Queues' as the second parameter 
+
+If not, it will return a a L<Paws::MediaConvert::ListQueuesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 
