@@ -136,7 +136,7 @@ message broker allows software applications and components to
 communicate using various programming languages, operating systems, and
 formal messaging protocols.
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/amazon-mq/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/amazon-mq/>
 
 
 =head1 METHODS
