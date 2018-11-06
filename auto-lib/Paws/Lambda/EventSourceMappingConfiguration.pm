@@ -32,7 +32,7 @@ receives an event with all the retrieved records.
 =head2 EventSourceArn => Str
 
 The Amazon Resource Name (ARN) of the Amazon Kinesis or DynamoDB stream
-or the SQS queue that is the source of events.
+that is the source of events.
 
 
 =head2 FunctionArn => Str
@@ -50,6 +50,7 @@ updated.
 =head2 LastProcessingResult => Str
 
 The result of the last AWS Lambda invocation of your Lambda function.
+This value will be null if an SQS queue is the event source.
 
 
 =head2 State => Str

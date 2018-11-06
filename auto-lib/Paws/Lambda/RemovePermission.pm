@@ -50,25 +50,36 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 B<REQUIRED> FunctionName => Str
 
-Lambda function whose resource policy you want to remove a permission
-from.
+The name of the lambda function.
 
-You can specify a function name (for example, C<Thumbnail>) or you can
-specify Amazon Resource Name (ARN) of the function (for example,
-C<arn:aws:lambda:us-west-2:account-id:function:ThumbNail>). AWS Lambda
-also allows you to specify a partial ARN (for example,
-C<account-id:Thumbnail>). Note that the length constraint applies only
-to the ARN. If you specify only the function name, it is limited to 64
-characters in length.
+B<Name formats>
+
+=over
+
+=item *
+
+B<Function name> - C<MyFunction>.
+
+=item *
+
+B<Function ARN> -
+C<arn:aws:lambda:us-west-2:123456789012:function:MyFunction>.
+
+=item *
+
+B<Partial ARN> - C<123456789012:function:MyFunction>.
+
+=back
+
+The length constraint applies only to the full ARN. If you specify only
+the function name, it is limited to 64 characters in length.
 
 
 
 =head2 Qualifier => Str
 
-You can specify this optional parameter to remove permission associated
-with a specific function version or function alias. If you don't
-specify this parameter, the API removes permission associated with the
-unqualified function ARN.
+Specify a version or alias to remove permissions from a published
+version of the function.
 
 
 
@@ -78,7 +89,8 @@ An optional value you can use to ensure you are updating the latest
 update of the function version or alias. If the C<RevisionID> you pass
 doesn't match the latest C<RevisionId> of the function or alias, it
 will fail with an error message, advising you to retrieve the latest
-function version or alias C<RevisionID> using either or .
+function version or alias C<RevisionID> using either GetFunction or
+GetAlias.
 
 
 

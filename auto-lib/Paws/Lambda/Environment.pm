@@ -31,16 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::Env
 
 =head1 DESCRIPTION
 
-The parent object that contains your environment's configuration
-settings.
+A function's environment variable settings.
 
 =head1 ATTRIBUTES
 
 
 =head2 Variables => L<Paws::Lambda::EnvironmentVariables>
 
-  The key-value pairs that represent your environment's configuration
-settings.
+  Environment variable key-value pairs.
 
 
 

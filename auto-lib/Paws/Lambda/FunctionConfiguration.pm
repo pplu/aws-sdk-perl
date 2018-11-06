@@ -35,42 +35,37 @@ Paws::Lambda::FunctionConfiguration
 
 =head2 CodeSha256 => Str
 
-It is the SHA256 hash of your function deployment package.
+The SHA256 hash of the function's deployment package.
 
 
 =head2 CodeSize => Int
 
-The size, in bytes, of the function .zip file you uploaded.
+The size of the function's deployment package in bytes.
 
 
 =head2 DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>
 
-The parent object that contains the target ARN (Amazon Resource Name)
-of an Amazon SQS queue or Amazon SNS topic. For more information, see
-dlq.
+The function's dead letter queue.
 
 
 =head2 Description => Str
 
-The user-provided description.
+The function's description.
 
 
 =head2 Environment => L<Paws::Lambda::EnvironmentResponse>
 
-The parent object that contains your environment's configuration
-settings.
+The function's environment variables.
 
 
 =head2 FunctionArn => Str
 
-The Amazon Resource Name (ARN) assigned to the function.
+The function's Amazon Resource Name.
 
 
 =head2 FunctionName => Str
 
-The name of the function. Note that the length constraint applies only
-to the ARN. If you specify only the function name, it is limited to 64
-characters in length.
+The name of the function.
 
 
 =head2 Handler => Str
@@ -80,29 +75,24 @@ The function Lambda calls to begin executing your function.
 
 =head2 KMSKeyArn => Str
 
-The Amazon Resource Name (ARN) of the KMS key used to encrypt your
-function's environment variables. If empty, it means you are using the
-AWS Lambda default service key.
+The KMS key used to encrypt the function's environment variables. Only
+returned if you've configured a customer managed CMK.
 
 
 =head2 LastModified => Str
 
-The time stamp of the last time you updated the function. The time
-stamp is conveyed as a string complying with ISO-8601 in this way
-YYYY-MM-DDThh:mm:ssTZD (e.g., 1997-07-16T19:20:30+01:00). For more
-information, see Date and Time Formats
-(https://www.w3.org/TR/NOTE-datetime).
+The date and time that the function was last updated, in ISO-8601
+format (https://www.w3.org/TR/NOTE-datetime) (YYYY-MM-DDThh:mm:ssTZD).
 
 
 =head2 MasterArn => Str
 
-Returns the ARN (Amazon Resource Name) of the master function.
+The ARN of the master function.
 
 
 =head2 MemorySize => Int
 
-The memory size, in MB, you configured for the function. Must be a
-multiple of 64 MB.
+The memory allocated to the function
 
 
 =head2 RevisionId => Str
@@ -112,9 +102,7 @@ Represents the latest updated revision of the function or alias.
 
 =head2 Role => Str
 
-The Amazon Resource Name (ARN) of the IAM role that Lambda assumes when
-it executes your function to access any other Amazon Web Services (AWS)
-resources.
+The function's execution role.
 
 
 =head2 Runtime => Str
@@ -124,15 +112,13 @@ The runtime environment for the Lambda function.
 Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"nodejs8.10">, C<"java8">, C<"python2.7">, C<"python3.6">, C<"dotnetcore1.0">, C<"dotnetcore2.0">, C<"dotnetcore2.1">, C<"nodejs4.3-edge">, C<"go1.x">
 =head2 Timeout => Int
 
-The function execution time at which Lambda should terminate the
-function. Because the execution time has cost implications, we
-recommend you set this value based on your expected execution time. The
-default is 3 seconds.
+The amount of time that Lambda allows a function to run before
+terminating it.
 
 
 =head2 TracingConfig => L<Paws::Lambda::TracingConfigResponse>
 
-The parent object that contains your function's tracing settings.
+The function's AWS X-Ray tracing configuration.
 
 
 =head2 Version => Str
@@ -142,7 +128,7 @@ The version of the Lambda function.
 
 =head2 VpcConfig => L<Paws::Lambda::VpcConfigResponse>
 
-VPC configuration associated with your Lambda function.
+The function's networking configuration.
 
 
 =head2 _request_id => Str

@@ -54,13 +54,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 FunctionVersion => Str
 
-Optional string. If not specified, only the unqualified functions ARNs
-(Amazon Resource Names) will be returned.
-
-Valid value:
-
-C<ALL>: Will return all versions, including C<$LATEST> which will have
-fully qualified ARNs (Amazon Resource Names).
+Set to C<ALL> to list all published versions. If not specified, only
+the latest unpublished version ARN is returned.
 
 Valid values are: C<"ALL">
 
@@ -74,24 +69,17 @@ listing.
 
 =head2 MasterRegion => Str
 
-Optional string. If not specified, will return only regular function
-versions (i.e., non-replicated versions).
-
-Valid values are:
-
-The region from which the functions are replicated. For example, if you
-specify C<us-east-1>, only functions replicated from that region will
-be returned.
-
-C<ALL>: Will return all functions from any region. If specified, you
-also must specify a valid FunctionVersion parameter.
+Specify a region (e.g. C<us-east-2>) to only list functions that were
+created in that region, or C<ALL> to include functions replicated from
+any region. If specified, you also must specify the C<FunctionVersion>.
 
 
 
 =head2 MaxItems => Int
 
 Optional integer. Specifies the maximum number of AWS Lambda functions
-to return in response. This parameter value must be greater than 0.
+to return in response. This parameter value must be greater than 0. The
+absolute maximum of AWS Lambda functions that can be returned is 50.
 
 
 

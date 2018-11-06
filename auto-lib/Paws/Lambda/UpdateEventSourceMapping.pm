@@ -64,8 +64,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 BatchSize => Int
 
-The maximum number of stream records that can be sent to your Lambda
-function for a single invocation.
+The largest number of records that AWS Lambda will retrieve from your
+event source at the time of invoking your function. Your function
+receives an event with all the retrieved records.
 
 
 
@@ -78,24 +79,34 @@ disabled, AWS Lambda will not poll the stream.
 
 =head2 FunctionName => Str
 
-The Lambda function to which you want the stream records sent.
+The name of the lambda function.
 
-You can specify a function name (for example, C<Thumbnail>) or you can
-specify Amazon Resource Name (ARN) of the function (for example,
-C<arn:aws:lambda:us-west-2:account-id:function:ThumbNail>). AWS Lambda
-also allows you to specify a partial ARN (for example,
-C<account-id:Thumbnail>). Note that the length constraint applies only
-to the ARN. If you specify only the function name, it is limited to 64
-characters in length.
+B<Name formats>
 
-If you are using versioning, you can also provide a qualified function
-ARN (ARN that is qualified with function version or alias name as
-suffix). For more information about versioning, see AWS Lambda Function
-Versioning and Aliases
-(http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html)
+=over
 
-Note that the length constraint applies only to the ARN. If you specify
-only the function name, it is limited to 64 character in length.
+=item *
+
+B<Function name> - C<MyFunction>.
+
+=item *
+
+B<Function ARN> -
+C<arn:aws:lambda:us-west-2:123456789012:function:MyFunction>.
+
+=item *
+
+B<Version or Alias ARN> -
+C<arn:aws:lambda:us-west-2:123456789012:function:MyFunction:PROD>.
+
+=item *
+
+B<Partial ARN> - C<123456789012:function:MyFunction>.
+
+=back
+
+The length constraint applies only to the full ARN. If you specify only
+the function name, it is limited to 64 characters in length.
 
 
 
