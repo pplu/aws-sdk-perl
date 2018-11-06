@@ -67,7 +67,7 @@ Be between 3 and 128 characters
 =item *
 
 Have no adjacent periods, underscores or dashes. Names like
-C<my-_namespace> and C<my--namespace> are invalid.
+C<my-_namespace> and C<my--namespace> are not valid.
 
 =item *
 
@@ -77,7 +77,7 @@ Not be in IP address format (for example, 192.168.5.4)
 
 If you specify a trail ARN, it must be in the format:
 
-C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>
+C<arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail>
 
 
 

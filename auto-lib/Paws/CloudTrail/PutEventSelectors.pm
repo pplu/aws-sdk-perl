@@ -33,12 +33,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           DataResources => [
             {
-              Type   => 'MyString',
-              Values => [ 'MyString', ... ],    # OPTIONAL
+              Type   => 'MyString',    # OPTIONAL
+              Values => [
+                'MyString', ...        # OPTIONAL
+              ],                       # OPTIONAL
             },
             ...
-          ],                                    # OPTIONAL
-          IncludeManagementEvents => 1,         # OPTIONAL
+          ],                           # OPTIONAL
+          IncludeManagementEvents => 1,    # OPTIONAL
           ReadWriteType =>
             'ReadOnly',    # values: ReadOnly, WriteOnly, All; OPTIONAL
         },
@@ -100,7 +102,7 @@ Not be in IP address format (for example, 192.168.5.4)
 
 If you specify a trail ARN, it must be in the format:
 
-C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>
+C<arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail>
 
 
 
