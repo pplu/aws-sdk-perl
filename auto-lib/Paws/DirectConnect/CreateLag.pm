@@ -45,6 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $AwsDeviceV2             = $Lag->AwsDeviceV2;
     my $Connections             = $Lag->Connections;
     my $ConnectionsBandwidth    = $Lag->ConnectionsBandwidth;
+    my $JumboFrameCapable       = $Lag->JumboFrameCapable;
     my $LagId                   = $Lag->LagId;
     my $LagName                 = $Lag->LagName;
     my $LagState                = $Lag->LagState;
@@ -66,18 +67,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 The ID of an existing connection to migrate to the LAG.
 
-Default: None
-
 
 
 =head2 B<REQUIRED> ConnectionsBandwidth => Str
 
 The bandwidth of the individual physical connections bundled by the
-LAG.
-
-Default: None
-
-Available values: 1Gbps, 10Gbps
+LAG. The possible values are 1Gbps and 10Gbps.
 
 
 
@@ -85,19 +80,11 @@ Available values: 1Gbps, 10Gbps
 
 The name of the LAG.
 
-Example: "C<3x10G LAG to AWS>"
-
-Default: None
-
 
 
 =head2 B<REQUIRED> Location => Str
 
-The AWS Direct Connect location in which the LAG should be allocated.
-
-Example: EqSV5
-
-Default: None
+The location for the LAG.
 
 
 
@@ -105,8 +92,6 @@ Default: None
 
 The number of physical connections initially provisioned and bundled by
 the LAG.
-
-Default: None
 
 
 

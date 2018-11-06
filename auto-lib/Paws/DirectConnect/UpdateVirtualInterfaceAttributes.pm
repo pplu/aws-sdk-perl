@@ -1,12 +1,12 @@
 
-package Paws::DirectConnect::CreatePrivateVirtualInterface;
+package Paws::DirectConnect::UpdateVirtualInterfaceAttributes;
   use Moose;
-  has ConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionId' , required => 1);
-  has NewPrivateVirtualInterface => (is => 'ro', isa => 'Paws::DirectConnect::NewPrivateVirtualInterface', traits => ['NameInRequest'], request_name => 'newPrivateVirtualInterface' , required => 1);
+  has Mtu => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'mtu' );
+  has VirtualInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualInterfaceId' , required => 1);
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreatePrivateVirtualInterface');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateVirtualInterfaceAttributes');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DirectConnect::VirtualInterface');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
@@ -15,34 +15,22 @@ package Paws::DirectConnect::CreatePrivateVirtualInterface;
 
 =head1 NAME
 
-Paws::DirectConnect::CreatePrivateVirtualInterface - Arguments for method CreatePrivateVirtualInterface on L<Paws::DirectConnect>
+Paws::DirectConnect::UpdateVirtualInterfaceAttributes - Arguments for method UpdateVirtualInterfaceAttributes on L<Paws::DirectConnect>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreatePrivateVirtualInterface on the
+This class represents the parameters used for calling the method UpdateVirtualInterfaceAttributes on the
 L<AWS Direct Connect|Paws::DirectConnect> service. Use the attributes of this class
-as arguments to method CreatePrivateVirtualInterface.
+as arguments to method UpdateVirtualInterfaceAttributes.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreatePrivateVirtualInterface.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateVirtualInterfaceAttributes.
 
 =head1 SYNOPSIS
 
     my $directconnect = Paws->service('DirectConnect');
-    my $VirtualInterface = $directconnect->CreatePrivateVirtualInterface(
-      ConnectionId               => 'MyConnectionId',
-      NewPrivateVirtualInterface => {
-        Asn                  => 1,
-        VirtualInterfaceName => 'MyVirtualInterfaceName',
-        Vlan                 => 1,
-        AddressFamily   => 'ipv4',                # values: ipv4, ipv6; OPTIONAL
-        AmazonAddress   => 'MyAmazonAddress',     # OPTIONAL
-        AuthKey         => 'MyBGPAuthKey',        # OPTIONAL
-        CustomerAddress => 'MyCustomerAddress',   # OPTIONAL
-        DirectConnectGatewayId => 'MyDirectConnectGatewayId',    # OPTIONAL
-        Mtu                    => 1,                             # OPTIONAL
-        VirtualGatewayId       => 'MyVirtualGatewayId',          # OPTIONAL
-      },
-
+    my $VirtualInterface = $directconnect->UpdateVirtualInterfaceAttributes(
+      VirtualInterfaceId => 'MyVirtualInterfaceId',
+      Mtu                => 1,                        # OPTIONAL
     );
 
     # Results:
@@ -73,27 +61,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::DirectConnect::VirtualInterface> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/directconnect/CreatePrivateVirtualInterface>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/directconnect/UpdateVirtualInterfaceAttributes>
 
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ConnectionId => Str
+=head2 Mtu => Int
 
-The ID of the connection.
+The maximum transmission unit (MTU), in bytes. The supported values are
+1500 and 9001. The default value is 1500.
 
 
 
-=head2 B<REQUIRED> NewPrivateVirtualInterface => L<Paws::DirectConnect::NewPrivateVirtualInterface>
+=head2 B<REQUIRED> VirtualInterfaceId => Str
 
-Information about the private virtual interface.
+The ID of the virtual private interface.
 
 
 
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method CreatePrivateVirtualInterface in L<Paws::DirectConnect>
+This class forms part of L<Paws>, documenting arguments for method UpdateVirtualInterfaceAttributes in L<Paws::DirectConnect>
 
 =head1 BUGS and CONTRIBUTIONS
 

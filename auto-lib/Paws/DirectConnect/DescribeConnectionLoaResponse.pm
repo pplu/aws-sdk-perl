@@ -16,7 +16,7 @@ Paws::DirectConnect::DescribeConnectionLoaResponse
 
 =head2 Loa => L<Paws::DirectConnect::Loa>
 
-
+The Letter of Authorization - Connecting Facility Assignment (LOA-CFA).
 
 
 =head2 _request_id => Str

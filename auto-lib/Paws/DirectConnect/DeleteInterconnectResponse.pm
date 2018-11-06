@@ -16,6 +16,38 @@ Paws::DirectConnect::DeleteInterconnectResponse
 
 =head2 InterconnectState => Str
 
+The state of the interconnect. The following are the possible values:
+
+=over
+
+=item *
+
+C<requested>: The initial state of an interconnect. The interconnect
+stays in the requested state until the Letter of Authorization (LOA) is
+sent to the customer.
+
+=item *
+
+C<pending>: The interconnect is approved, and is being initialized.
+
+=item *
+
+C<available>: The network link is up, and the interconnect is ready for
+use.
+
+=item *
+
+C<down>: The network link is down.
+
+=item *
+
+C<deleting>: The interconnect is being deleted.
+
+=item *
+
+C<deleted>: The interconnect is deleted.
+
+=back
 
 
 Valid values are: C<"requested">, C<"pending">, C<"available">, C<"down">, C<"deleting">, C<"deleted">

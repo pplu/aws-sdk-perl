@@ -49,31 +49,22 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =head2 B<REQUIRED> ConnectionId => Str
 
-The ID of a connection, LAG, or interconnect for which to get the
-LOA-CFA information.
-
-Example: dxcon-abc123 or dxlag-abc123
-
-Default: None
+The ID of a connection, LAG, or interconnect.
 
 
 
 =head2 LoaContentType => Str
 
-A standard media type indicating the content type of the LOA-CFA
-document. Currently, the only supported value is "application/pdf".
-
-Default: application/pdf
+The standard media type for the LOA-CFA document. The only supported
+value is application/pdf.
 
 Valid values are: C<"application/pdf">
 
 =head2 ProviderName => Str
 
 The name of the service provider who establishes connectivity on your
-behalf. If you supply this parameter, the LOA-CFA lists the provider
+behalf. If you specify this parameter, the LOA-CFA lists the provider
 name alongside your company name as the requester of the cross connect.
-
-Default: None
 
 
 

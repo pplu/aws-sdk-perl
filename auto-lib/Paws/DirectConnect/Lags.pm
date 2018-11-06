@@ -16,7 +16,7 @@ Paws::DirectConnect::Lags
 
 =head2 Lags => ArrayRef[L<Paws::DirectConnect::Lag>]
 
-A list of LAGs.
+The LAGs.
 
 
 =head2 _request_id => Str

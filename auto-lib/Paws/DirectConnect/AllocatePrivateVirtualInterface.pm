@@ -39,6 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         AmazonAddress   => 'MyAmazonAddress',     # OPTIONAL
         AuthKey         => 'MyBGPAuthKey',        # OPTIONAL
         CustomerAddress => 'MyCustomerAddress',   # OPTIONAL
+        Mtu             => 1,                     # OPTIONAL
       },
       OwnerAccount => 'MyOwnerAccount',
 
@@ -56,7 +57,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CustomerAddress        = $VirtualInterface->CustomerAddress;
     my $CustomerRouterConfig   = $VirtualInterface->CustomerRouterConfig;
     my $DirectConnectGatewayId = $VirtualInterface->DirectConnectGatewayId;
+    my $JumboFrameCapable      = $VirtualInterface->JumboFrameCapable;
     my $Location               = $VirtualInterface->Location;
+    my $Mtu                    = $VirtualInterface->Mtu;
     my $OwnerAccount           = $VirtualInterface->OwnerAccount;
     my $Region                 = $VirtualInterface->Region;
     my $RouteFilterPrefixes    = $VirtualInterface->RouteFilterPrefixes;
@@ -77,27 +80,20 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =head2 B<REQUIRED> ConnectionId => Str
 
-The connection ID on which the private virtual interface is
+The ID of the connection on which the private virtual interface is
 provisioned.
-
-Default: None
 
 
 
 =head2 B<REQUIRED> NewPrivateVirtualInterfaceAllocation => L<Paws::DirectConnect::NewPrivateVirtualInterfaceAllocation>
 
-Detailed information for the private virtual interface to be
-provisioned.
-
-Default: None
+Information about the private virtual interface.
 
 
 
 =head2 B<REQUIRED> OwnerAccount => Str
 
-The AWS account that will own the new private virtual interface.
-
-Default: None
+The ID of the AWS account that owns the virtual private interface.
 
 
 

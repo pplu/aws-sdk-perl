@@ -33,30 +33,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DirectConne
 
 =head1 DESCRIPTION
 
-An AWS Direct Connect location where connections and interconnects can
-be requested.
+Information about an AWS Direct Connect location.
 
 =head1 ATTRIBUTES
 
 
 =head2 LocationCode => Str
 
-  The code used to indicate the AWS Direct Connect location.
+  The code for the location.
 
 
 =head2 LocationName => Str
 
-  The name of the AWS Direct Connect location. The name includes the
-colocation partner name and the physical site of the lit building.
+  The name of the location. This includes the name of the colocation
+partner and the physical site of the building.
 
 
 =head2 Region => Str
 
-  The AWS region where the AWS Direct connect location is located.
-
-Example: us-east-1
-
-Default: None
+  The AWS Region for the location.
 
 
 

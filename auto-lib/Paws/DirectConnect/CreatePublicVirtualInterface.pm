@@ -60,7 +60,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CustomerAddress        = $VirtualInterface->CustomerAddress;
     my $CustomerRouterConfig   = $VirtualInterface->CustomerRouterConfig;
     my $DirectConnectGatewayId = $VirtualInterface->DirectConnectGatewayId;
+    my $JumboFrameCapable      = $VirtualInterface->JumboFrameCapable;
     my $Location               = $VirtualInterface->Location;
+    my $Mtu                    = $VirtualInterface->Mtu;
     my $OwnerAccount           = $VirtualInterface->OwnerAccount;
     my $Region                 = $VirtualInterface->Region;
     my $RouteFilterPrefixes    = $VirtualInterface->RouteFilterPrefixes;
@@ -81,15 +83,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =head2 B<REQUIRED> ConnectionId => Str
 
-
+The ID of the connection.
 
 
 
 =head2 B<REQUIRED> NewPublicVirtualInterface => L<Paws::DirectConnect::NewPublicVirtualInterface>
 
-Detailed information for the public virtual interface to be created.
-
-Default: None
+Information about the public virtual interface.
 
 
 

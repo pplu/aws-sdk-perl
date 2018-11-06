@@ -16,7 +16,7 @@ Paws::DirectConnect::Interconnects
 
 =head2 Interconnects => ArrayRef[L<Paws::DirectConnect::Interconnect>]
 
-A list of interconnects.
+The interconnects.
 
 
 =head2 _request_id => Str

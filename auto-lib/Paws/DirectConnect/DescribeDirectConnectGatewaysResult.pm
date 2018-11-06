@@ -17,12 +17,12 @@ Paws::DirectConnect::DescribeDirectConnectGatewaysResult
 
 =head2 DirectConnectGateways => ArrayRef[L<Paws::DirectConnect::DirectConnectGateway>]
 
-Information about the direct connect gateways.
+The Direct Connect gateways.
 
 
 =head2 NextToken => Str
 
-
+The token to retrieve the next page.
 
 
 =head2 _request_id => Str

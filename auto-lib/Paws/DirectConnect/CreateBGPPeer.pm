@@ -52,20 +52,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =head2 NewBGPPeer => L<Paws::DirectConnect::NewBGPPeer>
 
-Detailed information for the BGP peer to be created.
-
-Default: None
+Information about the BGP peer.
 
 
 
 =head2 VirtualInterfaceId => Str
 
-The ID of the virtual interface on which the BGP peer will be
-provisioned.
-
-Example: dxvif-456abc78
-
-Default: None
+The ID of the virtual interface.
 
 
 

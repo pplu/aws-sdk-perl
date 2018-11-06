@@ -38,50 +38,51 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DirectConne
 
 =head1 DESCRIPTION
 
-A structure containing information about a new public virtual
-interface.
+Information about a public virtual interface.
 
 =head1 ATTRIBUTES
 
 
 =head2 AddressFamily => Str
 
-  
+  The address family for the BGP peer.
 
 
 =head2 AmazonAddress => Str
 
-  
+  The IP address assigned to the Amazon interface.
 
 
 =head2 B<REQUIRED> Asn => Int
 
-  
+  The autonomous system (AS) number for Border Gateway Protocol (BGP)
+configuration.
 
 
 =head2 AuthKey => Str
 
-  
+  The authentication key for BGP configuration.
 
 
 =head2 CustomerAddress => Str
 
-  
+  The IP address assigned to the customer interface.
 
 
 =head2 RouteFilterPrefixes => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]
 
-  
+  The routes to be advertised to the AWS network in this Region. Applies
+to public virtual interfaces.
 
 
 =head2 B<REQUIRED> VirtualInterfaceName => Str
 
-  
+  The name of the virtual interface assigned by the customer network.
 
 
 =head2 B<REQUIRED> Vlan => Int
 
-  
+  The ID of the VLAN.
 
 
 
