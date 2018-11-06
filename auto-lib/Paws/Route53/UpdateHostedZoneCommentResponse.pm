@@ -17,7 +17,8 @@ Paws::Route53::UpdateHostedZoneCommentResponse
 
 =head2 B<REQUIRED> HostedZone => L<Paws::Route53::HostedZone>
 
-
+A complex type that contains the response to the
+C<UpdateHostedZoneComment> request.
 
 
 

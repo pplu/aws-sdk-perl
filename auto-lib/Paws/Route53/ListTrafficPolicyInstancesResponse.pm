@@ -23,9 +23,8 @@ Paws::Route53::ListTrafficPolicyInstancesResponse
 =head2 HostedZoneIdMarker => Str
 
 If C<IsTruncated> is C<true>, C<HostedZoneIdMarker> is the ID of the
-hosted zone of the first traffic policy instance that Amazon Route 53
-will return if you submit another C<ListTrafficPolicyInstances>
-request.
+hosted zone of the first traffic policy instance that Route 53 will
+return if you submit another C<ListTrafficPolicyInstances> request.
 
 
 
@@ -51,8 +50,8 @@ to C<ListTrafficPolicyInstances> that produced the current response.
 =head2 TrafficPolicyInstanceNameMarker => Str
 
 If C<IsTruncated> is C<true>, C<TrafficPolicyInstanceNameMarker> is the
-name of the first traffic policy instance that Amazon Route 53 will
-return if you submit another C<ListTrafficPolicyInstances> request.
+name of the first traffic policy instance that Route 53 will return if
+you submit another C<ListTrafficPolicyInstances> request.
 
 
 

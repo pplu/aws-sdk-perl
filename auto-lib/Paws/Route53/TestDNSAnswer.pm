@@ -79,6 +79,22 @@ C<edns0clientsubnetmask>, the checking tool will simulate a request
 from 192.0.2.0/24. The default value is 24 bits for IPv4 addresses and
 64 bits for IPv6 addresses.
 
+The range of valid values depends on whether C<edns0clientsubnetip> is
+an IPv4 or an IPv6 address:
+
+=over
+
+=item *
+
+B<IPv4>: Specify a value between 0 and 32
+
+=item *
+
+B<IPv6>: Specify a value between 0 and 128
+
+=back
+
+
 
 
 =head2 B<REQUIRED> HostedZoneId => Str

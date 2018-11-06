@@ -107,18 +107,17 @@ C<HostedZoneConfig> and the other elements.
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the domain. For resource record types that include a domain
-name, specify a fully qualified domain name, for example,
-I<www.example.com>. The trailing dot is optional; Amazon Route 53
-assumes that the domain name is fully qualified. This means that Amazon
+The name of the domain. Specify a fully qualified domain name, for
+example, I<www.example.com>. The trailing dot is optional; Amazon Route
+53 assumes that the domain name is fully qualified. This means that
 Route 53 treats I<www.example.com> (without a trailing dot) and
 I<www.example.com.> (with a trailing dot) as identical.
 
 If you're creating a public hosted zone, this is the name you have
 registered with your DNS registrar. If your domain name is registered
-with a registrar other than Amazon Route 53, change the name servers
-for your domain to the set of C<NameServers> that C<CreateHostedZone>
-returns in C<DelegationSet>.
+with a registrar other than Route 53, change the name servers for your
+domain to the set of C<NameServers> that C<CreateHostedZone> returns in
+C<DelegationSet>.
 
 
 
