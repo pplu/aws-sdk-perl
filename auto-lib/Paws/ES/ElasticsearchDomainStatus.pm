@@ -17,6 +17,7 @@ package Paws::ES::ElasticsearchDomainStatus;
   has LogPublishingOptions => (is => 'ro', isa => 'Paws::ES::LogPublishingOptions');
   has NodeToNodeEncryptionOptions => (is => 'ro', isa => 'Paws::ES::NodeToNodeEncryptionOptions');
   has Processing => (is => 'ro', isa => 'Bool');
+  has ServiceSoftwareOptions => (is => 'ro', isa => 'Paws::ES::ServiceSoftwareOptions');
   has SnapshotOptions => (is => 'ro', isa => 'Paws::ES::SnapshotOptions');
   has UpgradeProcessing => (is => 'ro', isa => 'Bool');
   has VPCOptions => (is => 'ro', isa => 'Paws::ES::VPCDerivedInfo');
@@ -158,6 +159,11 @@ C<'vpc','vpc-endpoint-h2dsd34efgyghrtguk5gt6j2foh4.us-east-1.es.amazonaws.com'>.
   The status of the Elasticsearch domain configuration. C<True> if Amazon
 Elasticsearch Service is processing configuration changes. C<False> if
 the configuration is active.
+
+
+=head2 ServiceSoftwareOptions => L<Paws::ES::ServiceSoftwareOptions>
+
+  The current status of the Elasticsearch domain's service software.
 
 
 =head2 SnapshotOptions => L<Paws::ES::SnapshotOptions>

@@ -19,6 +19,11 @@ package Paws::ES;
     my $call_object = $self->new_with_coercions('Paws::ES::AddTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CancelElasticsearchServiceSoftwareUpdate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::CancelElasticsearchServiceSoftwareUpdate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateElasticsearchDomain {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ES::CreateElasticsearchDomain', @_);
@@ -109,6 +114,11 @@ package Paws::ES;
     my $call_object = $self->new_with_coercions('Paws::ES::RemoveTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartElasticsearchServiceSoftwareUpdate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::StartElasticsearchServiceSoftwareUpdate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateElasticsearchDomainConfig {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ES::UpdateElasticsearchDomainConfig', @_);
@@ -168,7 +178,7 @@ package Paws::ES;
   }
 
 
-  sub operations { qw/AddTags CreateElasticsearchDomain DeleteElasticsearchDomain DeleteElasticsearchServiceRole DescribeElasticsearchDomain DescribeElasticsearchDomainConfig DescribeElasticsearchDomains DescribeElasticsearchInstanceTypeLimits DescribeReservedElasticsearchInstanceOfferings DescribeReservedElasticsearchInstances GetCompatibleElasticsearchVersions GetUpgradeHistory GetUpgradeStatus ListDomainNames ListElasticsearchInstanceTypes ListElasticsearchVersions ListTags PurchaseReservedElasticsearchInstanceOffering RemoveTags UpdateElasticsearchDomainConfig UpgradeElasticsearchDomain / }
+  sub operations { qw/AddTags CancelElasticsearchServiceSoftwareUpdate CreateElasticsearchDomain DeleteElasticsearchDomain DeleteElasticsearchServiceRole DescribeElasticsearchDomain DescribeElasticsearchDomainConfig DescribeElasticsearchDomains DescribeElasticsearchInstanceTypeLimits DescribeReservedElasticsearchInstanceOfferings DescribeReservedElasticsearchInstances GetCompatibleElasticsearchVersions GetUpgradeHistory GetUpgradeStatus ListDomainNames ListElasticsearchInstanceTypes ListElasticsearchVersions ListTags PurchaseReservedElasticsearchInstanceOffering RemoveTags StartElasticsearchServiceSoftwareUpdate UpdateElasticsearchDomainConfig UpgradeElasticsearchDomain / }
 
 1;
 
@@ -207,7 +217,7 @@ For a current list of supported regions and endpoints, see Regions and
 Endpoints
 (http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticsearch-service-regions).
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/elasticsearch-service/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/elasticsearch-service/>
 
 
 =head1 METHODS
@@ -232,6 +242,24 @@ case-sensitive key value pairs. An Elasticsearch domain may have up to
 10 tags. See Tagging Amazon Elasticsearch Service Domains for more
 information.
 (http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-awsresorcetagging)
+
+
+=head2 CancelElasticsearchServiceSoftwareUpdate
+
+=over
+
+=item DomainName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ES::CancelElasticsearchServiceSoftwareUpdate>
+
+Returns: a L<Paws::ES::CancelElasticsearchServiceSoftwareUpdateResponse> instance
+
+Cancels a scheduled service software update for an Amazon ES domain.
+You can only perform this operation before the C<AutomatedUpdateDate>
+and when the C<UpdateStatus> is in the C<PENDING_UPDATE> state.
 
 
 =head2 CreateElasticsearchDomain
@@ -598,6 +626,22 @@ Returns: nothing
 
 Removes the specified set of tags from the specified Elasticsearch
 domain.
+
+
+=head2 StartElasticsearchServiceSoftwareUpdate
+
+=over
+
+=item DomainName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ES::StartElasticsearchServiceSoftwareUpdate>
+
+Returns: a L<Paws::ES::StartElasticsearchServiceSoftwareUpdateResponse> instance
+
+Schedules a service software update for an Amazon ES domain.
 
 
 =head2 UpdateElasticsearchDomainConfig
