@@ -71,7 +71,7 @@ leaving the subnet).
 
 =head2 Protocol => Str
 
-  The protocol. A value of C<-1> means all protocols.
+  The protocol number. A value of "-1" means all protocols.
 
 
 =head2 RuleAction => Str

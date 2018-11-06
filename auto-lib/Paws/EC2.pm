@@ -30,6 +30,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::AcceptVpcPeeringConnection', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AdvertiseByoipCidr {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::AdvertiseByoipCidr', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AllocateAddress {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::AllocateAddress', @_);
@@ -125,6 +130,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::CancelBundleTask', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CancelCapacityReservation {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CancelCapacityReservation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CancelConversionTask {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::CancelConversionTask', @_);
@@ -173,6 +183,11 @@ package Paws::EC2;
   sub CopySnapshot {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::CopySnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateCapacityReservation {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateCapacityReservation', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateCustomerGateway {
@@ -520,6 +535,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DeleteVpnGateway', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeprovisionByoipCidr {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeprovisionByoipCidr', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeregisterImage {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DeregisterImage', @_);
@@ -548,6 +568,16 @@ package Paws::EC2;
   sub DescribeBundleTasks {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeBundleTasks', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeByoipCidrs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeByoipCidrs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeCapacityReservations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeCapacityReservations', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeClassicLinkInstances {
@@ -748,6 +778,11 @@ package Paws::EC2;
   sub DescribePrincipalIdFormat {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribePrincipalIdFormat', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribePublicIpv4Pools {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribePublicIpv4Pools', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeRegions {
@@ -1080,6 +1115,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::ImportVolume', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ModifyCapacityReservation {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyCapacityReservation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ModifyFleet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::ModifyFleet', @_);
@@ -1113,6 +1153,11 @@ package Paws::EC2;
   sub ModifyInstanceAttribute {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::ModifyInstanceAttribute', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyInstanceCapacityReservationAttributes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyInstanceCapacityReservationAttributes', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ModifyInstanceCreditSpecification {
@@ -1208,6 +1253,11 @@ package Paws::EC2;
   sub MoveAddressToVpc {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::MoveAddressToVpc', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ProvisionByoipCidr {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ProvisionByoipCidr', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PurchaseHostReservation {
@@ -1383,6 +1433,11 @@ package Paws::EC2;
   sub UpdateSecurityGroupRuleDescriptionsIngress {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::UpdateSecurityGroupRuleDescriptionsIngress', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub WithdrawByoipCidr {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::WithdrawByoipCidr', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeAllIamInstanceProfileAssociations {
@@ -1755,7 +1810,7 @@ package Paws::EC2;
   }
 
 
-  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptVpcEndpointConnections AcceptVpcPeeringConnection AllocateAddress AllocateHosts AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyFpgaImage CopyImage CopySnapshot CreateCustomerGateway CreateDefaultSubnet CreateDefaultVpc CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFleet CreateFlowLogs CreateFpgaImage CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateLaunchTemplate CreateLaunchTemplateVersion CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreateNetworkInterfacePermission CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateVolume CreateVpc CreateVpcEndpoint CreateVpcEndpointConnectionNotification CreateVpcEndpointServiceConfiguration CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFleets DeleteFlowLogs DeleteFpgaImage DeleteInternetGateway DeleteKeyPair DeleteLaunchTemplate DeleteLaunchTemplateVersions DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeleteNetworkInterfacePermission DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteVolume DeleteVpc DeleteVpcEndpointConnectionNotifications DeleteVpcEndpoints DeleteVpcEndpointServiceConfigurations DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAggregateIdFormat DescribeAvailabilityZones DescribeBundleTasks DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeElasticGpus DescribeExportTasks DescribeFleetHistory DescribeFleetInstances DescribeFleets DescribeFlowLogs DescribeFpgaImageAttribute DescribeFpgaImages DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstanceCreditSpecifications DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeLaunchTemplates DescribeLaunchTemplateVersions DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfacePermissions DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribePrincipalIdFormat DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeVolumeAttribute DescribeVolumes DescribeVolumesModifications DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpointConnectionNotifications DescribeVpcEndpointConnections DescribeVpcEndpoints DescribeVpcEndpointServiceConfigurations DescribeVpcEndpointServicePermissions DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateVpcCidrBlock EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport GetConsoleOutput GetConsoleScreenshot GetHostReservationPurchasePreview GetLaunchTemplateData GetPasswordData GetReservedInstancesExchangeQuote ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyFleet ModifyFpgaImageAttribute ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstanceCreditSpecification ModifyInstancePlacement ModifyLaunchTemplate ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyVolume ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcEndpointConnectionNotification ModifyVpcEndpointServiceConfiguration ModifyVpcEndpointServicePermissions ModifyVpcPeeringConnectionOptions ModifyVpcTenancy MonitorInstances MoveAddressToVpc PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectVpcEndpointConnections RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetFpgaImageAttribute ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances StartInstances StopInstances TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances UpdateSecurityGroupRuleDescriptionsEgress UpdateSecurityGroupRuleDescriptionsIngress / }
+  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptVpcEndpointConnections AcceptVpcPeeringConnection AdvertiseByoipCidr AllocateAddress AllocateHosts AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelCapacityReservation CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyFpgaImage CopyImage CopySnapshot CreateCapacityReservation CreateCustomerGateway CreateDefaultSubnet CreateDefaultVpc CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFleet CreateFlowLogs CreateFpgaImage CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateLaunchTemplate CreateLaunchTemplateVersion CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreateNetworkInterfacePermission CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateVolume CreateVpc CreateVpcEndpoint CreateVpcEndpointConnectionNotification CreateVpcEndpointServiceConfiguration CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFleets DeleteFlowLogs DeleteFpgaImage DeleteInternetGateway DeleteKeyPair DeleteLaunchTemplate DeleteLaunchTemplateVersions DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeleteNetworkInterfacePermission DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteVolume DeleteVpc DeleteVpcEndpointConnectionNotifications DeleteVpcEndpoints DeleteVpcEndpointServiceConfigurations DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeprovisionByoipCidr DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAggregateIdFormat DescribeAvailabilityZones DescribeBundleTasks DescribeByoipCidrs DescribeCapacityReservations DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeElasticGpus DescribeExportTasks DescribeFleetHistory DescribeFleetInstances DescribeFleets DescribeFlowLogs DescribeFpgaImageAttribute DescribeFpgaImages DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstanceCreditSpecifications DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeLaunchTemplates DescribeLaunchTemplateVersions DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfacePermissions DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribePrincipalIdFormat DescribePublicIpv4Pools DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeVolumeAttribute DescribeVolumes DescribeVolumesModifications DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpointConnectionNotifications DescribeVpcEndpointConnections DescribeVpcEndpoints DescribeVpcEndpointServiceConfigurations DescribeVpcEndpointServicePermissions DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateVpcCidrBlock EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport GetConsoleOutput GetConsoleScreenshot GetHostReservationPurchasePreview GetLaunchTemplateData GetPasswordData GetReservedInstancesExchangeQuote ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyCapacityReservation ModifyFleet ModifyFpgaImageAttribute ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstanceCapacityReservationAttributes ModifyInstanceCreditSpecification ModifyInstancePlacement ModifyLaunchTemplate ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyVolume ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcEndpointConnectionNotification ModifyVpcEndpointServiceConfiguration ModifyVpcEndpointServicePermissions ModifyVpcPeeringConnectionOptions ModifyVpcTenancy MonitorInstances MoveAddressToVpc ProvisionByoipCidr PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectVpcEndpointConnections RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetFpgaImageAttribute ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances StartInstances StopInstances TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances UpdateSecurityGroupRuleDescriptionsEgress UpdateSecurityGroupRuleDescriptionsIngress WithdrawByoipCidr / }
 
 1;
 
@@ -1889,6 +1944,39 @@ For an inter-region VPC peering connection request, you must accept the
 VPC peering connection in the region of the accepter VPC.
 
 
+=head2 AdvertiseByoipCidr
+
+=over
+
+=item Cidr => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::AdvertiseByoipCidr>
+
+Returns: a L<Paws::EC2::AdvertiseByoipCidrResult> instance
+
+Advertises an IPv4 address range that is provisioned for use with your
+AWS resources through bring your own IP addresses (BYOIP).
+
+You can perform this operation at most once every 10 seconds, even if
+you specify different address ranges each time.
+
+We recommend that you stop advertising the BYOIP CIDR from other
+locations when you advertise it from AWS. To minimize down time, you
+can configure your AWS resources to use an address from a BYOIP CIDR
+before it is advertised, and then simultaneously stop advertising it
+from the current location and start advertising it through AWS.
+
+It can take a few minutes before traffic to the specified addresses
+starts routing to AWS because of BGP propagation delays.
+
+To stop advertising the BYOIP CIDR, use WithdrawByoipCidr.
+
+
 =head2 AllocateAddress
 
 =over
@@ -1898,6 +1986,8 @@ VPC peering connection in the region of the accepter VPC.
 =item [Domain => Str]
 
 =item [DryRun => Bool]
+
+=item [PublicIpv4Pool => Str]
 
 
 =back
@@ -1910,6 +2000,14 @@ Allocates an Elastic IP address to your AWS account. After you allocate
 the Elastic IP address you can associate it with an instance or network
 interface. After you release an Elastic IP address, it is released to
 the IP address pool and can be allocated to a different AWS account.
+
+You can allocate an Elastic IP address from an address pool owned by
+AWS or from an address pool created from a public IPv4 address range
+that you have brought to AWS for use with your AWS resources using
+bring your own IP addresses (BYOIP). For more information, see Bring
+Your Own IP Addresses (BYOIP)
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html) in
+the I<Amazon Elastic Compute Cloud User Guide>.
 
 [EC2-VPC] If you release an Elastic IP address, you might be able to
 recover it. You cannot recover an Elastic IP address that you released
@@ -2003,19 +2101,27 @@ Each argument is described in detail in: L<Paws::EC2::AssignPrivateIpAddresses>
 Returns: nothing
 
 Assigns one or more secondary private IP addresses to the specified
-network interface. You can specify one or more specific secondary IP
-addresses, or you can specify the number of secondary IP addresses to
-be automatically assigned within the subnet's CIDR block range. The
-number of secondary IP addresses that you can assign to an instance
-varies by instance type. For information about instance types, see
-Instance Types
+network interface.
+
+You can specify one or more specific secondary IP addresses, or you can
+specify the number of secondary IP addresses to be automatically
+assigned within the subnet's CIDR block range. The number of secondary
+IP addresses that you can assign to an instance varies by instance
+type. For information about instance types, see Instance Types
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html)
 in the I<Amazon Elastic Compute Cloud User Guide>. For more information
 about Elastic IP addresses, see Elastic IP Addresses
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
-AssignPrivateIpAddresses is available only in EC2-VPC.
+When you move a secondary private IP address to another network
+interface, any Elastic IP address that is associated with the IP
+address is also moved.
+
+Remapping an IP address is an asynchronous operation. When you move an
+IP address from one network interface to another, check
+C<network/interfaces/macs/mac/local-ipv4s> in the instance metadata to
+confirm that the remapping is complete.
 
 
 =head2 AssociateAddress
@@ -2521,6 +2627,32 @@ Cancels a bundling operation for an instance store-backed Windows
 instance.
 
 
+=head2 CancelCapacityReservation
+
+=over
+
+=item CapacityReservationId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::CancelCapacityReservation>
+
+Returns: a L<Paws::EC2::CancelCapacityReservationResult> instance
+
+Cancels the specified Capacity Reservation, releases the reserved
+capacity, and changes the Capacity Reservation's state to C<cancelled>.
+
+Instances running in the reserved capacity continue running until you
+stop them. Stopped instances that target the Capacity Reservation can
+no longer launch. Modify these instances to either target a different
+Capacity Reservation, launch On-Demand Instance capacity, or run in any
+open Capacity Reservation that has matching attributes and sufficient
+capacity.
+
+
 =head2 CancelConversionTask
 
 =over
@@ -2798,6 +2930,73 @@ ID that should not be used for any purpose.
 
 For more information, see Copying an Amazon EBS Snapshot
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-copy-snapshot.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
+=head2 CreateCapacityReservation
+
+=over
+
+=item AvailabilityZone => Str
+
+=item InstanceCount => Int
+
+=item InstancePlatform => Str
+
+=item InstanceType => Str
+
+=item [ClientToken => Str]
+
+=item [DryRun => Bool]
+
+=item [EbsOptimized => Bool]
+
+=item [EndDate => Str]
+
+=item [EndDateType => Str]
+
+=item [EphemeralStorage => Bool]
+
+=item [InstanceMatchCriteria => Str]
+
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
+=item [Tenancy => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::CreateCapacityReservation>
+
+Returns: a L<Paws::EC2::CreateCapacityReservationResult> instance
+
+Creates a new Capacity Reservation with the specified attributes.
+
+Capacity Reservations enable you to reserve capacity for your Amazon
+EC2 instances in a specific Availability Zone for any duration. This
+gives you the flexibility to selectively add capacity reservations and
+still get the Regional RI discounts for that usage. By creating
+Capacity Reservations, you ensure that you always have access to Amazon
+EC2 capacity when you need it, for as long as you need it. For more
+information, see Capacity Reservations
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-reservations.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
+
+Your request to create a Capacity Reservation could fail if Amazon EC2
+does not have sufficient capacity to fulfill the request. If your
+request fails due to Amazon EC2 capacity constraints, either try again
+at a later time, try in a different Availability Zone, or request a
+smaller capacity reservation. If your application is flexible across
+instance types and sizes, try to create a Capacity Reservation with
+different instance attributes.
+
+Your request could also fail if the requested quantity exceeds your
+On-Demand Instance limit for the selected instance type. If your
+request fails due to limit constraints, increase your On-Demand
+Instance limit for the required instance type and try again. For more
+information about increasing your instance limits, see Amazon EC2
+Service Limits
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
@@ -4916,6 +5115,30 @@ virtual private gateway if you plan to delete and recreate the VPN
 connection between your VPC and your network.
 
 
+=head2 DeprovisionByoipCidr
+
+=over
+
+=item Cidr => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DeprovisionByoipCidr>
+
+Returns: a L<Paws::EC2::DeprovisionByoipCidrResult> instance
+
+Releases the specified address range that you provisioned for use with
+your AWS resources through bring your own IP addresses (BYOIP) and
+deletes the corresponding address pool.
+
+Before you can release an address range, you must stop advertising it
+using WithdrawByoipCidr and you must not have any IP addresses
+allocated from its address range.
+
+
 =head2 DeregisterImage
 
 =over
@@ -5108,6 +5331,56 @@ Completed bundle tasks are listed for only a limited time. If your
 bundle task is no longer in the list, you can still register an AMI
 from it. Just use C<RegisterImage> with the Amazon S3 bucket name and
 image manifest name you provided to the bundle task.
+
+
+=head2 DescribeByoipCidrs
+
+=over
+
+=item MaxResults => Int
+
+=item [DryRun => Bool]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeByoipCidrs>
+
+Returns: a L<Paws::EC2::DescribeByoipCidrsResult> instance
+
+Describes the IP address ranges that were specified in calls to
+ProvisionByoipCidr.
+
+To describe the address pools that were created when you provisioned
+the address ranges, use DescribePublicIpv4Pools.
+
+
+=head2 DescribeCapacityReservations
+
+=over
+
+=item [CapacityReservationIds => ArrayRef[Str|Undef]]
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeCapacityReservations>
+
+Returns: a L<Paws::EC2::DescribeCapacityReservationsResult> instance
+
+Describes one or more of your Capacity Reservations. The results
+describe only the Capacity Reservations in the AWS Region that you're
+currently using.
 
 
 =head2 DescribeClassicLinkInstances
@@ -6224,6 +6497,26 @@ C<vpc-cidr-block-association> | C<vpc-endpoint> |
 C<vpc-peering-connection> | C<vpn-connection> | C<vpn-gateway>.
 
 
+=head2 DescribePublicIpv4Pools
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [PoolIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribePublicIpv4Pools>
+
+Returns: a L<Paws::EC2::DescribePublicIpv4PoolsResult> instance
+
+Describes the specified IPv4 address pools.
+
+
 =head2 DescribeRegions
 
 =over
@@ -6737,7 +7030,8 @@ specified time.
 
 Spot Fleet events are delayed by up to 30 seconds before they can be
 described. This ensures that you can query by the last evaluated time
-and not miss a recorded event.
+and not miss a recorded event. Spot Fleet events are available for 48
+hours.
 
 
 =head2 DescribeSpotFleetRequests
@@ -8094,6 +8388,35 @@ action, see VM Import Manifest
 (http://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html).
 
 
+=head2 ModifyCapacityReservation
+
+=over
+
+=item CapacityReservationId => Str
+
+=item [DryRun => Bool]
+
+=item [EndDate => Str]
+
+=item [EndDateType => Str]
+
+=item [InstanceCount => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::ModifyCapacityReservation>
+
+Returns: a L<Paws::EC2::ModifyCapacityReservationResult> instance
+
+Modifies a Capacity Reservation's capacity and the conditions under
+which it is to be released. You cannot change a Capacity Reservation's
+instance type, EBS optimization, instance store settings, platform,
+Availability Zone, or instance eligibility. If you need to modify any
+of these attributes, we recommend that you cancel the Capacity
+Reservation, and then create a new one with the required attributes.
+
+
 =head2 ModifyFleet
 
 =over
@@ -8373,6 +8696,29 @@ To modify some attributes, the instance must be stopped. For more
 information, see Modifying Attributes of a Stopped Instance
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_ChangingAttributesWhileInstanceStopped.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
+=head2 ModifyInstanceCapacityReservationAttributes
+
+=over
+
+=item CapacityReservationSpecification => L<Paws::EC2::CapacityReservationSpecification>
+
+=item InstanceId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::ModifyInstanceCapacityReservationAttributes>
+
+Returns: a L<Paws::EC2::ModifyInstanceCapacityReservationAttributesResult> instance
+
+Modifies the Capacity Reservation settings for a stopped instance. Use
+this action to configure an instance to target a specific Capacity
+Reservation, run in any C<open> Capacity Reservation with matching
+attributes, or run On-Demand Instance capacity.
 
 
 =head2 ModifyInstanceCreditSpecification
@@ -9012,6 +9358,47 @@ available for use in the EC2-Classic platform, unless you move it back
 using the RestoreAddressToClassic request. You cannot move an Elastic
 IP address that was originally allocated for use in the EC2-VPC
 platform to the EC2-Classic platform.
+
+
+=head2 ProvisionByoipCidr
+
+=over
+
+=item Cidr => Str
+
+=item [CidrAuthorizationContext => L<Paws::EC2::CidrAuthorizationContext>]
+
+=item [Description => Str]
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::ProvisionByoipCidr>
+
+Returns: a L<Paws::EC2::ProvisionByoipCidrResult> instance
+
+Provisions an address range for use with your AWS resources through
+bring your own IP addresses (BYOIP) and creates a corresponding address
+pool. After the address range is provisioned, it is ready to be
+advertised using AdvertiseByoipCidr.
+
+AWS verifies that you own the address range and are authorized to
+advertise it. You must ensure that the address range is registered to
+you and that you created an RPKI ROA to authorize Amazon ASNs 16509 and
+14618 to advertise the address range. For more information, see Bring
+Your Own IP Addresses (BYOIP)
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html) in
+the I<Amazon Elastic Compute Cloud User Guide>.
+
+Provisioning an address range is an asynchronous operation, so the call
+returns immediately, but the address range is not ready to use until
+its status changes from C<pending-provision> to C<provisioned>. To
+monitor the status of an address range, use DescribeByoipCidrs. To
+allocate an Elastic IP address from your address pool, use
+AllocateAddress with either the specific address from the address pool
+or the ID of the address pool.
 
 
 =head2 PurchaseHostReservation
@@ -9850,6 +10237,8 @@ quickly as possible. However, a small delay might occur.
 
 =item [BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]]
 
+=item [CapacityReservationSpecification => L<Paws::EC2::CapacityReservationSpecification>]
+
 =item [ClientToken => Str]
 
 =item [CpuOptions => L<Paws::EC2::CpuOptionsRequest>]
@@ -10290,6 +10679,31 @@ that did not have one previously.
 You specify the description as part of the IP permissions structure.
 You can remove a description for a security group rule by omitting the
 description parameter in the request.
+
+
+=head2 WithdrawByoipCidr
+
+=over
+
+=item Cidr => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::WithdrawByoipCidr>
+
+Returns: a L<Paws::EC2::WithdrawByoipCidrResult> instance
+
+Stops advertising an IPv4 address range that is provisioned as an
+address pool.
+
+You can perform this operation at most once every 10 seconds, even if
+you specify different address ranges each time.
+
+It can take a few minutes before traffic to the specified addresses
+stops routing to AWS because of BGP propagation delays.
 
 
 

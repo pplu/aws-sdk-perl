@@ -88,7 +88,7 @@ leaving the subnet).
 =head2 IcmpTypeCode => L<Paws::EC2::IcmpTypeCode>
 
 ICMP protocol: The ICMP or ICMPv6 type and code. Required if specifying
-the ICMP protocol, or protocol 58 (ICMPv6) with an IPv6 CIDR block.
+protocol 1 (ICMP) or protocol 58 (ICMPv6) with an IPv6 CIDR block.
 
 
 
@@ -107,20 +107,21 @@ The ID of the network ACL.
 
 =head2 PortRange => L<Paws::EC2::PortRange>
 
-TCP or UDP protocols: The range of ports the rule applies to.
+TCP or UDP protocols: The range of ports the rule applies to. Required
+if specifying protocol 6 (TCP) or 17 (UDP).
 
 
 
 =head2 B<REQUIRED> Protocol => Str
 
-The protocol. A value of C<-1> or C<all> means all protocols. If you
-specify C<all>, C<-1>, or a protocol number other than C<6> (tcp),
-C<17> (udp), or C<1> (icmp), traffic on all ports is allowed,
-regardless of any ports or ICMP types or codes that you specify. If you
-specify protocol C<58> (ICMPv6) and specify an IPv4 CIDR block, traffic
-for all ICMP types and codes allowed, regardless of any that you
-specify. If you specify protocol C<58> (ICMPv6) and specify an IPv6
-CIDR block, you must specify an ICMP type and code.
+The protocol number. A value of "-1" means all protocols. If you
+specify "-1" or a protocol number other than "6" (TCP), "17" (UDP), or
+"1" (ICMP), traffic on all ports is allowed, regardless of any ports or
+ICMP types or codes that you specify. If you specify protocol "58"
+(ICMPv6) and specify an IPv4 CIDR block, traffic for all ICMP types and
+codes allowed, regardless of any that you specify. If you specify
+protocol "58" (ICMPv6) and specify an IPv6 CIDR block, you must specify
+an ICMP type and code.
 
 
 

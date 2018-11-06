@@ -3,6 +3,8 @@ package Paws::EC2::Instance;
   has AmiLaunchIndex => (is => 'ro', isa => 'Int', request_name => 'amiLaunchIndex', traits => ['NameInRequest']);
   has Architecture => (is => 'ro', isa => 'Str', request_name => 'architecture', traits => ['NameInRequest']);
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceBlockDeviceMapping]', request_name => 'blockDeviceMapping', traits => ['NameInRequest']);
+  has CapacityReservationId => (is => 'ro', isa => 'Str', request_name => 'capacityReservationId', traits => ['NameInRequest']);
+  has CapacityReservationSpecification => (is => 'ro', isa => 'Paws::EC2::CapacityReservationSpecificationResponse', request_name => 'capacityReservationSpecification', traits => ['NameInRequest']);
   has ClientToken => (is => 'ro', isa => 'Str', request_name => 'clientToken', traits => ['NameInRequest']);
   has CpuOptions => (is => 'ro', isa => 'Paws::EC2::CpuOptions', request_name => 'cpuOptions', traits => ['NameInRequest']);
   has EbsOptimized => (is => 'ro', isa => 'Bool', request_name => 'ebsOptimized', traits => ['NameInRequest']);
@@ -89,6 +91,16 @@ launch group.
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::InstanceBlockDeviceMapping>]
 
   Any block device mapping entries for the instance.
+
+
+=head2 CapacityReservationId => Str
+
+  The ID of the Capacity Reservation.
+
+
+=head2 CapacityReservationSpecification => L<Paws::EC2::CapacityReservationSpecificationResponse>
+
+  Information about the Capacity Reservation targeting option.
 
 
 =head2 ClientToken => Str

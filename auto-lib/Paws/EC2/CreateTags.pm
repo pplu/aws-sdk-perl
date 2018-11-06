@@ -63,7 +63,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 B<REQUIRED> Resources => ArrayRef[Str|Undef]
 
-The IDs of one or more resources to tag. For example, ami-1a2b3c4d.
+The IDs of one or more resources, separated by spaces.
 
 
 

@@ -79,7 +79,7 @@ current size of the Spot Fleet.
 =head2 FulfilledCapacity => Num
 
   The number of units fulfilled by this request compared to the set
-target capacity.
+target capacity. You cannot set this value.
 
 
 =head2 B<REQUIRED> IamFleetRole => Str

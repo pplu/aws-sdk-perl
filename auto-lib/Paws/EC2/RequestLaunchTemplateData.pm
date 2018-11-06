@@ -1,6 +1,7 @@
 package Paws::EC2::RequestLaunchTemplateData;
   use Moose;
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LaunchTemplateBlockDeviceMappingRequest]', request_name => 'BlockDeviceMapping', traits => ['NameInRequest']);
+  has CapacityReservationSpecification => (is => 'ro', isa => 'Paws::EC2::LaunchTemplateCapacityReservationSpecificationRequest');
   has CpuOptions => (is => 'ro', isa => 'Paws::EC2::LaunchTemplateCpuOptionsRequest');
   has CreditSpecification => (is => 'ro', isa => 'Paws::EC2::CreditSpecificationRequest');
   has DisableApiTermination => (is => 'ro', isa => 'Bool');
@@ -66,6 +67,11 @@ volumes can be encrypted on start, and these are not created from a
 snapshot. If a snapshot is the basis for the volume, it contains data
 by definition and its encryption status cannot be changed using this
 action.
+
+
+=head2 CapacityReservationSpecification => L<Paws::EC2::LaunchTemplateCapacityReservationSpecificationRequest>
+
+  Information about the Capacity Reservation targeting option.
 
 
 =head2 CpuOptions => L<Paws::EC2::LaunchTemplateCpuOptionsRequest>
