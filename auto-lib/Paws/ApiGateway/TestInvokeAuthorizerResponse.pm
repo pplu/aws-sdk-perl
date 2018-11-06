@@ -28,8 +28,10 @@ Paws::ApiGateway::TestInvokeAuthorizerResponse
 
 =head2 Claims => L<Paws::ApiGateway::MapOfStringToString>
 
-The open identity claims, with any supported custom attributes,
-returned from the Cognito Your User Pool configured for the API.
+The open identity claims
+(https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims),
+with any supported custom attributes, returned from the Cognito Your
+User Pool configured for the API.
 
 
 =head2 ClientStatus => Int

@@ -81,7 +81,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::ApiGateway::Integration> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/PutIntegration>
 
 =head1 ATTRIBUTES
 
@@ -100,8 +100,10 @@ Specifies a put integration input's cache namespace.
 
 =head2 ConnectionId => Str
 
-The (C<id>) of the VpcLink used for the integration when
-C<connectionType=VPC_LINK> and undefined, otherwise.
+The (C<id>
+(https://docs.aws.amazon.com/apigateway/api-reference/resource/vpc-link/#id))
+of the VpcLink used for the integration when C<connectionType=VPC_LINK>
+and undefined, otherwise.
 
 
 
@@ -249,11 +251,11 @@ endpoint.
 =item *
 
 For C<HTTP> or C<HTTP_PROXY> integrations, the URI must be a fully
-formed, encoded HTTP(S) URL according to the RFC-3986 specification,
-for either standard integration, where C<connectionType> is not
-C<VPC_LINK>, or private integration, where C<connectionType> is
-C<VPC_LINK>. For a private HTTP integration, the URI is not used for
-routing.
+formed, encoded HTTP(S) URL according to the RFC-3986 specification
+(https://en.wikipedia.org/wiki/Uniform_Resource_Identifier), for either
+standard integration, where C<connectionType> is not C<VPC_LINK>, or
+private integration, where C<connectionType> is C<VPC_LINK>. For a
+private HTTP integration, the URI is not used for routing.
 
 =item *
 
@@ -270,7 +272,9 @@ required input parameters. Alternatively, C<path> can be used for an
 AWS service path-based API. The ensuing C<service_api> refers to the
 path to an AWS service resource, including the region of the integrated
 AWS service, if applicable. For example, for integration with the S3
-API of C<GetObject>, the C<uri> can be either
+API of C<GetObject
+(https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html)>,
+the C<uri> can be either
 C<arn:aws:apigateway:us-west-2:s3:action/GetObject&Bucket={bucket}&Key={key}>
 or C<arn:aws:apigateway:us-west-2:s3:path/{bucket}/{key}>
 

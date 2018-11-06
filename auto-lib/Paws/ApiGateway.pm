@@ -929,7 +929,7 @@ developers to securely connect mobile and web applications to APIs that
 run on AWS Lambda, Amazon EC2, or other publicly addressable web
 services that are hosted outside of AWS.
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/apigateway/>
 
 
 =head1 METHODS
@@ -962,6 +962,7 @@ Returns: a L<Paws::ApiGateway::ApiKey> instance
 Create an ApiKey resource.
 
 AWS CLI
+(https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-api-key.html)
 
 
 =head2 CreateAuthorizer
@@ -998,6 +999,7 @@ Returns: a L<Paws::ApiGateway::Authorizer> instance
 Adds a new Authorizer resource to an existing RestApi resource.
 
 AWS CLI
+(https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-authorizer.html)
 
 
 =head2 CreateBasePathMapping
@@ -1367,6 +1369,7 @@ Returns: nothing
 Deletes an existing Authorizer resource.
 
 AWS CLI
+(https://docs.aws.amazon.com/cli/latest/reference/apigateway/delete-authorizer.html)
 
 
 =head2 DeleteBasePathMapping
@@ -1842,6 +1845,7 @@ Returns: a L<Paws::ApiGateway::Authorizer> instance
 Describe an existing Authorizer resource.
 
 AWS CLI
+(https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizer.html)
 
 
 =head2 GetAuthorizers
@@ -1864,6 +1868,7 @@ Returns: a L<Paws::ApiGateway::Authorizers> instance
 Describe an existing Authorizers resource.
 
 AWS CLI
+(https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizers.html)
 
 
 =head2 GetBasePathMapping
@@ -2972,6 +2977,7 @@ Simulate the execution of an Authorizer in your RestApi with headers,
 parameters, and an incoming request body.
 
 Enable custom authorizers
+(https://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html)
 
 
 =head2 TestInvokeMethod
@@ -3079,6 +3085,7 @@ Returns: a L<Paws::ApiGateway::Authorizer> instance
 Updates an existing Authorizer resource.
 
 AWS CLI
+(https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-authorizer.html)
 
 
 =head2 UpdateBasePathMapping
