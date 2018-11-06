@@ -31,14 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::
 
 =head1 DESCRIPTION
 
-Returned list of deleted schedule actions.
+List of actions that have been deleted from the schedule.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ScheduleActions => ArrayRef[L<Paws::MediaLive::ScheduleAction>]
 
-  Returned list of deleted schedule actions.
+  List of actions that have been deleted from the schedule.
 
 
 

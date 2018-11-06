@@ -310,7 +310,7 @@ Paws::MediaLive - Perl Interface to AWS AWS Elemental MediaLive
 
 API for AWS Elemental MediaLive
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14>
 
 
 =head1 METHODS
@@ -697,13 +697,15 @@ List purchased reservations.
 
 =over
 
-=item OfferingId => Str
+=item Count => Int
 
-=item [Count => Int]
+=item OfferingId => Str
 
 =item [Name => Str]
 
 =item [RequestId => Str]
+
+=item [Start => Str]
 
 
 =back

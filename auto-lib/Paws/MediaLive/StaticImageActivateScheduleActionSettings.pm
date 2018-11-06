@@ -40,69 +40,83 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::
 
 =head1 DESCRIPTION
 
-Static image activate.
+Settings for the action to activate a static image.
 
 =head1 ATTRIBUTES
 
 
 =head2 Duration => Int
 
-  The duration in milliseconds for the image to remain in the video. If
-omitted or set to 0, duration is infinite and image will remain until
-explicitly deactivated.
+  The duration in milliseconds for the image to remain on the video. If
+omitted or set to 0 the duration is unlimited and the image will remain
+until it is explicitly deactivated.
 
 
 =head2 FadeIn => Int
 
-  The time in milliseconds for the image to fade in. Defaults to 0.
+  The time in milliseconds for the image to fade in. The fade-in starts
+at the start time of the overlay. Default is 0 (no fade-in).
 
 
 =head2 FadeOut => Int
 
-  The time in milliseconds for the image to fade out. Defaults to 0.
+  Applies only if a duration is specified. The time in milliseconds for
+the image to fade out. The fade-out starts when the duration time is
+hit, so it effectively extends the duration. Default is 0 (no
+fade-out).
 
 
 =head2 Height => Int
 
-  The height of the image when inserted into the video. Defaults to the
-native height of the image.
+  The height of the image when inserted into the video, in pixels. The
+overlay will be scaled up or down to the specified height. Leave blank
+to use the native height of the overlay.
 
 
 =head2 B<REQUIRED> Image => L<Paws::MediaLive::InputLocation>
 
-  The image to overlay on the video. Must be a 32 bit BMP, PNG, or TGA
-file. Must not be larger than the input video.
+  The location and filename of the image file to overlay on the video.
+The file must be a 32-bit BMP, PNG, or TGA file, and must not be larger
+(in pixels) than the input video.
 
 
 =head2 ImageX => Int
 
-  Placement of the left edge of the image on the horizontal axis in
-pixels. 0 is the left edge of the frame. Defaults to 0.
+  Placement of the left edge of the overlay relative to the left edge of
+the video frame, in pixels. 0 (the default) is the left edge of the
+frame. If the placement causes the overlay to extend beyond the right
+edge of the underlying video, then the overlay is cropped on the right.
 
 
 =head2 ImageY => Int
 
-  Placement of the top edge of the image on the vertical axis in pixels.
-0 is the top edge of the frame. Defaults to 0.
+  Placement of the top edge of the overlay relative to the top edge of
+the video frame, in pixels. 0 (the default) is the top edge of the
+frame. If the placement causes the overlay to extend beyond the bottom
+edge of the underlying video, then the overlay is cropped on the
+bottom.
 
 
 =head2 Layer => Int
 
-  The Z order of the inserted image. Images with higher layer values will
-be inserted on top of images with lower layer values. Permitted values
-are 0-7 inclusive. Defaults to 0.
+  The number of the layer, 0 to 7. There are 8 layers that can be
+overlaid on the video, each layer with a different image. The layers
+are in Z order, which means that overlays with higher values of layer
+are inserted on top of overlays with lower values of layer. Default is
+0.
 
 
 =head2 Opacity => Int
 
   Opacity of image where 0 is transparent and 100 is fully opaque.
-Defaults to 100.
+Default is 100.
 
 
 =head2 Width => Int
 
-  The width of the image when inserted into the video. Defaults to the
-native width of the image.
+  The width of the image when inserted into the video, in pixels. The
+overlay will be scaled up or down to the specified width. Leave blank
+to use the native width of the overlay.
 
 
 

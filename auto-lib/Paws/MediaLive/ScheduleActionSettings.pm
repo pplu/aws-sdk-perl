@@ -35,34 +35,34 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::
 
 =head1 DESCRIPTION
 
-Settings for a single schedule action.
+Holds the settings for a single schedule action.
 
 =head1 ATTRIBUTES
 
 
 =head2 Scte35ReturnToNetworkSettings => L<Paws::MediaLive::Scte35ReturnToNetworkScheduleActionSettings>
 
-  SCTE-35 Return to Network Settings
+  Settings for SCTE-35 return_to_network message
 
 
 =head2 Scte35SpliceInsertSettings => L<Paws::MediaLive::Scte35SpliceInsertScheduleActionSettings>
 
-  SCTE-35 Splice Insert Settings
+  Settings for SCTE-35 splice_insert message
 
 
 =head2 Scte35TimeSignalSettings => L<Paws::MediaLive::Scte35TimeSignalScheduleActionSettings>
 
-  SCTE-35 Time Signal Settings
+  Settings for SCTE-35 time_signal message
 
 
 =head2 StaticImageActivateSettings => L<Paws::MediaLive::StaticImageActivateScheduleActionSettings>
 
-  Static Image Activate
+  Settings to activate a static image overlay
 
 
 =head2 StaticImageDeactivateSettings => L<Paws::MediaLive::StaticImageDeactivateScheduleActionSettings>
 
-  Static Image Deactivate
+  Settings to deactivate a static image overlay
 
 
 

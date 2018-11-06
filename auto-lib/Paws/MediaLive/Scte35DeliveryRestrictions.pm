@@ -34,29 +34,32 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::
 
 =head1 DESCRIPTION
 
-SCTE-35 Delivery Restrictions.
+Corresponds to SCTE-35 delivery_not_restricted_flag parameter. To
+declare delivery restrictions, include this element and its four
+"restriction" flags. To declare that there are no restrictions, omit
+this element.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ArchiveAllowedFlag => Str
 
-  SCTE-35 segmentation_descriptor archive_allowed_flag.
+  Corresponds to SCTE-35 archive_allowed_flag.
 
 
 =head2 B<REQUIRED> DeviceRestrictions => Str
 
-  SCTE-35 segmentation_descriptor web_delivery_allowed_flag.
+  Corresponds to SCTE-35 device_restrictions parameter.
 
 
 =head2 B<REQUIRED> NoRegionalBlackoutFlag => Str
 
-  SCTE-35 segmentation_descriptor no_regional_blackout_flag.
+  Corresponds to SCTE-35 no_regional_blackout_flag parameter.
 
 
 =head2 B<REQUIRED> WebDeliveryAllowedFlag => Str
 
-  SCTE-35 segmentation_descriptor web_delivery_allowed_flag.
+  Corresponds to SCTE-35 web_delivery_allowed_flag parameter.
 
 
 

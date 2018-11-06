@@ -32,21 +32,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::
 
 =head1 DESCRIPTION
 
-Static image deactivate.
+Settings for the action to deactivate the image in a specific layer.
 
 =head1 ATTRIBUTES
 
 
 =head2 FadeOut => Int
 
-  The time in milliseconds for the image to fade out. Defaults to 0.
+  The time in milliseconds for the image to fade out. Default is 0 (no
+fade-out).
 
 
 =head2 Layer => Int
 
-  The Z order of the inserted image. Images with higher layer values will
-be inserted on top of images with lower layer values. Permitted values
-are 0-7 inclusive. Defaults to 0.
+  The image overlay layer to deactivate, 0 to 7. Default is 0.
 
 
 

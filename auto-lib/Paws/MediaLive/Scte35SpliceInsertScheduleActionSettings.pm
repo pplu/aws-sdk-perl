@@ -32,16 +32,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::
 
 =head1 DESCRIPTION
 
-SCTE-35 Splice Insert Settings.
+Settings for a SCTE-35 splice_insert message.
 
 =head1 ATTRIBUTES
 
 
 =head2 Duration => Int
 
-  The duration for the SCTE-35 splice_insert specified in 90KHz clock
-ticks. When duration is not specified the expectation is that a
-Scte35ReturnToNetwork action will be scheduled.
+  Optional, the duration for the splice_insert, in 90 KHz ticks. To
+convert seconds to ticks, multiple the seconds by 90,000. If you enter
+a duration, there is an expectation that the downstream system can read
+the duration and cue in at that time. If you do not enter a duration,
+the splice_insert will continue indefinitely and there is an
+expectation that you will enter a return_to_network to end the
+splice_insert at the appropriate time.
 
 
 =head2 B<REQUIRED> SpliceEventId => Int

@@ -23,7 +23,7 @@ The next token; for use in pagination.
 
 =head2 ScheduleActions => ArrayRef[L<Paws::MediaLive::ScheduleAction>]
 
-The list of schedule actions.
+The list of actions in the schedule.
 
 
 =head2 _request_id => Str

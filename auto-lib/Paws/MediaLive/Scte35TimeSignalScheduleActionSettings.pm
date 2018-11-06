@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::
 
 =head1 DESCRIPTION
 
-SCTE-35 Time Signal Settings.
+Settings for a SCTE-35 time_signal.
 
 =head1 ATTRIBUTES
 

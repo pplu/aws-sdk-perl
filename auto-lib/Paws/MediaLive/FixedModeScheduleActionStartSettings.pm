@@ -1,6 +1,6 @@
 package Paws::MediaLive::FixedModeScheduleActionStartSettings;
   use Moose;
-  has Time => (is => 'ro', isa => 'Str', request_name => 'time', traits => ['NameInRequest']);
+  has Time => (is => 'ro', isa => 'Str', request_name => 'time', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -31,14 +31,18 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::
 
 =head1 DESCRIPTION
 
-Fixed mode schedule action start settings
+Start time for the action.
 
 =head1 ATTRIBUTES
 
 
-=head2 Time => Str
+=head2 B<REQUIRED> Time => Str
 
-  Fixed timestamp action start. Conforms to ISO-8601.
+  Start time for the action to start in the channel. (Not the time for
+the action to be added to the schedule: actions are always added to the
+schedule immediately.) UTC format: yyyy-mm-ddThh:mm:ss.nnnZ. All the
+letters are digits (for example, mm might be 01) except for the two
+constants "T" for time and "Z" for "UTC format".
 
 
 

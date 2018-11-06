@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::
 
 =head1 DESCRIPTION
 
-SCTE-35 Return to Network Settings.
+Settings for a SCTE-35 return_to_network message.
 
 =head1 ATTRIBUTES
 

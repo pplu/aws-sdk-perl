@@ -31,14 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::
 
 =head1 DESCRIPTION
 
-When the schedule action starts.
+Settings to specify the start time for an action.
 
 =head1 ATTRIBUTES
 
 
 =head2 FixedModeScheduleActionStartSettings => L<Paws::MediaLive::FixedModeScheduleActionStartSettings>
 
-  Fixed timestamp action start. Conforms to ISO-8601.
+  Holds the start time for the action.
 
 
 

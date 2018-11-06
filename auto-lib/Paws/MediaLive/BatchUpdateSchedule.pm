@@ -105,8 +105,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
             },
             ScheduleActionStartSettings => {
-              FixedModeScheduleActionStartSettings => { Time => 'My__string', }
-              ,     # OPTIONAL
+              FixedModeScheduleActionStartSettings => {
+                Time => 'My__string',
+
+              },    # OPTIONAL
             },
 
           },

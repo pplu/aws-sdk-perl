@@ -38,7 +38,7 @@ A list of schedule actions to delete.
 
 =head2 B<REQUIRED> ActionNames => ArrayRef[Str|Undef]
 
-  A list of schedule actions to delete, identified by unique name.
+  A list of schedule actions to delete.
 
 
 

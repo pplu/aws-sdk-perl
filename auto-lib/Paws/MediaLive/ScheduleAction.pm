@@ -33,14 +33,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::
 
 =head1 DESCRIPTION
 
-A single schedule action.
+Contains information on a single schedule action.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ActionName => Str
 
-  The name of the action, must be unique within the schedule.
+  The name of the action, must be unique within the schedule. This name
+provides the main reference to an action once it is added to the
+schedule. A name is unique if it is no longer in the schedule. The
+schedule is automatically cleaned up to remove actions with a start
+time of more than 1 hour ago (approximately) so at that point a name
+can be reused.
 
 
 =head2 B<REQUIRED> ScheduleActionSettings => L<Paws::MediaLive::ScheduleActionSettings>
@@ -50,7 +55,7 @@ A single schedule action.
 
 =head2 B<REQUIRED> ScheduleActionStartSettings => L<Paws::MediaLive::ScheduleActionStartSettings>
 
-  When the action takes effect.
+  The time for the action to start in the channel.
 
 
 

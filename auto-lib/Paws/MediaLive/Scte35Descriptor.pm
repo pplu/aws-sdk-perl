@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::
 
 =head1 DESCRIPTION
 
-SCTE-35 Descriptor.
+Holds one set of SCTE-35 Descriptor Settings.
 
 =head1 ATTRIBUTES
 

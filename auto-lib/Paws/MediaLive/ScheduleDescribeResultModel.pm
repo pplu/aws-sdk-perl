@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::
 
 =head1 DESCRIPTION
 
-A complete schedule description.
+Results of a schedule describe.
 
 =head1 ATTRIBUTES
 
@@ -44,7 +44,7 @@ A complete schedule description.
 
 =head2 B<REQUIRED> ScheduleActions => ArrayRef[L<Paws::MediaLive::ScheduleAction>]
 
-  The list of schedule actions.
+  The list of actions in the schedule.
 
 
 

@@ -31,7 +31,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::
 
 =head1 DESCRIPTION
 
-A list of schedule actions to create.
+A list of schedule actions to create (in a request) or that have been
+created (in a response).
 
 =head1 ATTRIBUTES
 

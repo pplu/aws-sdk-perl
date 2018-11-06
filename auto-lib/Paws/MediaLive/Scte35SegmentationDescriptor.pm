@@ -41,65 +41,85 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::
 
 =head1 DESCRIPTION
 
-SCTE-35 Segmentation Descriptor.
+Corresponds to SCTE-35 segmentation_descriptor.
 
 =head1 ATTRIBUTES
 
 
 =head2 DeliveryRestrictions => L<Paws::MediaLive::Scte35DeliveryRestrictions>
 
-  SCTE-35 delivery restrictions.
+  Holds the four SCTE-35 delivery restriction parameters.
 
 
 =head2 B<REQUIRED> SegmentationCancelIndicator => Str
 
-  SCTE-35 segmentation_descriptor segmentation_event_cancel_indicator.
+  Corresponds to SCTE-35 segmentation_event_cancel_indicator.
 
 
 =head2 SegmentationDuration => Int
 
-  SCTE-35 segmentation_descriptor segmentation_duration specified in 90
-KHz clock ticks.
+  Corresponds to SCTE-35 segmentation_duration. Optional. The duration
+for the time_signal, in 90 KHz ticks. To convert seconds to ticks,
+multiple the seconds by 90,000. Enter time in 90 KHz clock ticks. If
+you do not enter a duration, the time_signal will continue until you
+insert a cancellation message.
 
 
 =head2 B<REQUIRED> SegmentationEventId => Int
 
-  SCTE-35 segmentation_descriptor segmentation_event_id.
+  Corresponds to SCTE-35 segmentation_event_id.
 
 
 =head2 SegmentationTypeId => Int
 
-  SCTE-35 segmentation_descriptor segmentation_type_id.
+  Corresponds to SCTE-35 segmentation_type_id. One of the
+segmentation_type_id values listed in the SCTE-35 specification. On the
+console, enter the ID in decimal (for example, "52"). In the CLI, API,
+or an SDK, enter the ID in hex (for example, "0x34") or decimal (for
+example, "52").
 
 
 =head2 SegmentationUpid => Str
 
-  SCTE-35 segmentation_descriptor segmentation_upid as a hex string.
+  Corresponds to SCTE-35 segmentation_upid. Enter a string containing the
+hexadecimal representation of the characters that make up the SCTE-35
+segmentation_upid value. Must contain an even number of hex characters.
+Do not include spaces between each hex pair. For example, the ASCII
+"ADS Information" becomes hex "41445320496e666f726d6174696f6e.
 
 
 =head2 SegmentationUpidType => Int
 
-  SCTE-35 segmentation_descriptor segmentation_upid_type.
+  Corresponds to SCTE-35 segmentation_upid_type. On the console, enter
+one of the types listed in the SCTE-35 specification, converted to a
+decimal. For example, "0x0C" hex from the specification is "12" in
+decimal. In the CLI, API, or an SDK, enter one of the types listed in
+the SCTE-35 specification, in either hex (for example, "0x0C" ) or in
+decimal (for example, "12").
 
 
 =head2 SegmentNum => Int
 
-  SCTE-35 segmentation_descriptor segment_num.
+  Corresponds to SCTE-35 segment_num. A value that is valid for the
+specified segmentation_type_id.
 
 
 =head2 SegmentsExpected => Int
 
-  SCTE-35 segmentation_descriptor segments_expected.
+  Corresponds to SCTE-35 segments_expected. A value that is valid for the
+specified segmentation_type_id.
 
 
 =head2 SubSegmentNum => Int
 
-  SCTE-35 segmentation_descriptor sub_segment_num.
+  Corresponds to SCTE-35 sub_segment_num. A value that is valid for the
+specified segmentation_type_id.
 
 
 =head2 SubSegmentsExpected => Int
 
-  SCTE-35 segmentation_descriptor sub_segments_expected.
+  Corresponds to SCTE-35 sub_segments_expected. A value that is valid for
+the specified segmentation_type_id.
 
 
 
