@@ -258,6 +258,8 @@ L<Paws::Batch>
 
 L<Paws::Budgets>
 
+L<Paws::Chime>
+
 L<Paws::Cloud9>
 
 L<Paws::CloudDirectory>
