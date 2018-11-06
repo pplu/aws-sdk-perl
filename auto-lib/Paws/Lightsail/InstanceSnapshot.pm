@@ -92,7 +92,7 @@ C<arn:aws:lightsail:us-east-2:123456789101:Instance/64b8404c-ccb1-430b-8daf-1234
 
 =head2 Location => L<Paws::Lightsail::ResourceLocation>
 
-  The region name and availability zone where you created the snapshot.
+  The region name and Availability Zone where you created the snapshot.
 
 
 =head2 Name => Str

@@ -100,6 +100,21 @@ package Paws::Lightsail;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::CreateLoadBalancerTlsCertificate', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateRelationalDatabase {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::CreateRelationalDatabase', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateRelationalDatabaseFromSnapshot {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::CreateRelationalDatabaseFromSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateRelationalDatabaseSnapshot {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::CreateRelationalDatabaseSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteDisk {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::DeleteDisk', @_);
@@ -143,6 +158,16 @@ package Paws::Lightsail;
   sub DeleteLoadBalancerTlsCertificate {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::DeleteLoadBalancerTlsCertificate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteRelationalDatabase {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::DeleteRelationalDatabase', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteRelationalDatabaseSnapshot {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::DeleteRelationalDatabaseSnapshot', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DetachDisk {
@@ -300,6 +325,66 @@ package Paws::Lightsail;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::GetRegions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetRelationalDatabase {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::GetRelationalDatabase', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetRelationalDatabaseBlueprints {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::GetRelationalDatabaseBlueprints', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetRelationalDatabaseBundles {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::GetRelationalDatabaseBundles', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetRelationalDatabaseEvents {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::GetRelationalDatabaseEvents', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetRelationalDatabaseLogEvents {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::GetRelationalDatabaseLogEvents', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetRelationalDatabaseLogStreams {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::GetRelationalDatabaseLogStreams', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetRelationalDatabaseMasterUserPassword {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::GetRelationalDatabaseMasterUserPassword', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetRelationalDatabaseMetricData {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::GetRelationalDatabaseMetricData', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetRelationalDatabaseParameters {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::GetRelationalDatabaseParameters', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetRelationalDatabases {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::GetRelationalDatabases', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetRelationalDatabaseSnapshot {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::GetRelationalDatabaseSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetRelationalDatabaseSnapshots {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::GetRelationalDatabaseSnapshots', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetStaticIp {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::GetStaticIp', @_);
@@ -340,6 +425,11 @@ package Paws::Lightsail;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::RebootInstance', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub RebootRelationalDatabase {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::RebootRelationalDatabase', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ReleaseStaticIp {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::ReleaseStaticIp', @_);
@@ -350,9 +440,19 @@ package Paws::Lightsail;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::StartInstance', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartRelationalDatabase {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::StartRelationalDatabase', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StopInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::StopInstance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopRelationalDatabase {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::StopRelationalDatabase', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UnpeerVpc {
@@ -368,6 +468,16 @@ package Paws::Lightsail;
   sub UpdateLoadBalancerAttribute {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::UpdateLoadBalancerAttribute', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateRelationalDatabase {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::UpdateRelationalDatabase', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateRelationalDatabaseParameters {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::UpdateRelationalDatabaseParameters', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -580,7 +690,7 @@ package Paws::Lightsail;
   }
 
 
-  sub operations { qw/AllocateStaticIp AttachDisk AttachInstancesToLoadBalancer AttachLoadBalancerTlsCertificate AttachStaticIp CloseInstancePublicPorts CreateDisk CreateDiskFromSnapshot CreateDiskSnapshot CreateDomain CreateDomainEntry CreateInstances CreateInstancesFromSnapshot CreateInstanceSnapshot CreateKeyPair CreateLoadBalancer CreateLoadBalancerTlsCertificate DeleteDisk DeleteDiskSnapshot DeleteDomain DeleteDomainEntry DeleteInstance DeleteInstanceSnapshot DeleteKeyPair DeleteLoadBalancer DeleteLoadBalancerTlsCertificate DetachDisk DetachInstancesFromLoadBalancer DetachStaticIp DownloadDefaultKeyPair GetActiveNames GetBlueprints GetBundles GetDisk GetDisks GetDiskSnapshot GetDiskSnapshots GetDomain GetDomains GetInstance GetInstanceAccessDetails GetInstanceMetricData GetInstancePortStates GetInstances GetInstanceSnapshot GetInstanceSnapshots GetInstanceState GetKeyPair GetKeyPairs GetLoadBalancer GetLoadBalancerMetricData GetLoadBalancers GetLoadBalancerTlsCertificates GetOperation GetOperations GetOperationsForResource GetRegions GetStaticIp GetStaticIps ImportKeyPair IsVpcPeered OpenInstancePublicPorts PeerVpc PutInstancePublicPorts RebootInstance ReleaseStaticIp StartInstance StopInstance UnpeerVpc UpdateDomainEntry UpdateLoadBalancerAttribute / }
+  sub operations { qw/AllocateStaticIp AttachDisk AttachInstancesToLoadBalancer AttachLoadBalancerTlsCertificate AttachStaticIp CloseInstancePublicPorts CreateDisk CreateDiskFromSnapshot CreateDiskSnapshot CreateDomain CreateDomainEntry CreateInstances CreateInstancesFromSnapshot CreateInstanceSnapshot CreateKeyPair CreateLoadBalancer CreateLoadBalancerTlsCertificate CreateRelationalDatabase CreateRelationalDatabaseFromSnapshot CreateRelationalDatabaseSnapshot DeleteDisk DeleteDiskSnapshot DeleteDomain DeleteDomainEntry DeleteInstance DeleteInstanceSnapshot DeleteKeyPair DeleteLoadBalancer DeleteLoadBalancerTlsCertificate DeleteRelationalDatabase DeleteRelationalDatabaseSnapshot DetachDisk DetachInstancesFromLoadBalancer DetachStaticIp DownloadDefaultKeyPair GetActiveNames GetBlueprints GetBundles GetDisk GetDisks GetDiskSnapshot GetDiskSnapshots GetDomain GetDomains GetInstance GetInstanceAccessDetails GetInstanceMetricData GetInstancePortStates GetInstances GetInstanceSnapshot GetInstanceSnapshots GetInstanceState GetKeyPair GetKeyPairs GetLoadBalancer GetLoadBalancerMetricData GetLoadBalancers GetLoadBalancerTlsCertificates GetOperation GetOperations GetOperationsForResource GetRegions GetRelationalDatabase GetRelationalDatabaseBlueprints GetRelationalDatabaseBundles GetRelationalDatabaseEvents GetRelationalDatabaseLogEvents GetRelationalDatabaseLogStreams GetRelationalDatabaseMasterUserPassword GetRelationalDatabaseMetricData GetRelationalDatabaseParameters GetRelationalDatabases GetRelationalDatabaseSnapshot GetRelationalDatabaseSnapshots GetStaticIp GetStaticIps ImportKeyPair IsVpcPeered OpenInstancePublicPorts PeerVpc PutInstancePublicPorts RebootInstance RebootRelationalDatabase ReleaseStaticIp StartInstance StartRelationalDatabase StopInstance StopRelationalDatabase UnpeerVpc UpdateDomainEntry UpdateLoadBalancerAttribute UpdateRelationalDatabase UpdateRelationalDatabaseParameters / }
 
 1;
 
@@ -893,7 +1003,12 @@ Each argument is described in detail in: L<Paws::Lightsail::CreateInstances>
 Returns: a L<Paws::Lightsail::CreateInstancesResult> instance
 
 Creates one or more Amazon Lightsail virtual private servers, or
-I<instances>.
+I<instances>. Create instances using active blueprints. Inactive
+blueprints are listed to support customers with existing instances but
+are not necessarily available for launch of new instances. Blueprints
+are marked inactive when they become outdated due to operating system
+updates or new application releases. Use the get blueprints operation
+to return a list of available blueprints.
 
 
 =head2 CreateInstancesFromSnapshot
@@ -958,7 +1073,7 @@ Each argument is described in detail in: L<Paws::Lightsail::CreateKeyPair>
 
 Returns: a L<Paws::Lightsail::CreateKeyPairResult> instance
 
-Creates sn SSH key pair.
+Creates an SSH key pair.
 
 
 =head2 CreateLoadBalancer
@@ -1018,6 +1133,95 @@ Creates a Lightsail load balancer TLS certificate.
 
 TLS is just an updated, more secure version of Secure Socket Layer
 (SSL).
+
+
+=head2 CreateRelationalDatabase
+
+=over
+
+=item MasterDatabaseName => Str
+
+=item MasterUsername => Str
+
+=item RelationalDatabaseBlueprintId => Str
+
+=item RelationalDatabaseBundleId => Str
+
+=item RelationalDatabaseName => Str
+
+=item [AvailabilityZone => Str]
+
+=item [MasterUserPassword => Str]
+
+=item [PreferredBackupWindow => Str]
+
+=item [PreferredMaintenanceWindow => Str]
+
+=item [PubliclyAccessible => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::CreateRelationalDatabase>
+
+Returns: a L<Paws::Lightsail::CreateRelationalDatabaseResult> instance
+
+Creates a new database in Amazon Lightsail.
+
+
+=head2 CreateRelationalDatabaseFromSnapshot
+
+=over
+
+=item RelationalDatabaseName => Str
+
+=item [AvailabilityZone => Str]
+
+=item [PubliclyAccessible => Bool]
+
+=item [RelationalDatabaseBundleId => Str]
+
+=item [RelationalDatabaseSnapshotName => Str]
+
+=item [RestoreTime => Str]
+
+=item [SourceRelationalDatabaseName => Str]
+
+=item [UseLatestRestorableTime => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::CreateRelationalDatabaseFromSnapshot>
+
+Returns: a L<Paws::Lightsail::CreateRelationalDatabaseFromSnapshotResult> instance
+
+Creates a new database from an existing database snapshot in Amazon
+Lightsail.
+
+You can create a new database from a snapshot in if something goes
+wrong with your original database, or to change it to a different plan,
+such as a high availability or standard plan.
+
+
+=head2 CreateRelationalDatabaseSnapshot
+
+=over
+
+=item RelationalDatabaseName => Str
+
+=item RelationalDatabaseSnapshotName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::CreateRelationalDatabaseSnapshot>
+
+Returns: a L<Paws::Lightsail::CreateRelationalDatabaseSnapshotResult> instance
+
+Creates a snapshot of your database in Amazon Lightsail. You can use
+snapshots for backups, to make copies of a database, and to save data
+before deleting a database.
 
 
 =head2 DeleteDisk
@@ -1185,6 +1389,42 @@ Returns: a L<Paws::Lightsail::DeleteLoadBalancerTlsCertificateResult> instance
 
 Deletes an SSL/TLS certificate associated with a Lightsail load
 balancer.
+
+
+=head2 DeleteRelationalDatabase
+
+=over
+
+=item RelationalDatabaseName => Str
+
+=item [FinalRelationalDatabaseSnapshotName => Str]
+
+=item [SkipFinalSnapshot => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::DeleteRelationalDatabase>
+
+Returns: a L<Paws::Lightsail::DeleteRelationalDatabaseResult> instance
+
+Deletes a database in Amazon Lightsail.
+
+
+=head2 DeleteRelationalDatabaseSnapshot
+
+=over
+
+=item RelationalDatabaseSnapshotName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::DeleteRelationalDatabaseSnapshot>
+
+Returns: a L<Paws::Lightsail::DeleteRelationalDatabaseSnapshotResult> instance
+
+Deletes a database snapshot in Amazon Lightsail.
 
 
 =head2 DetachDisk
@@ -1752,6 +1992,8 @@ IP).
 
 =item [IncludeAvailabilityZones => Bool]
 
+=item [IncludeRelationalDatabaseAvailabilityZones => Bool]
+
 
 =back
 
@@ -1760,8 +2002,250 @@ Each argument is described in detail in: L<Paws::Lightsail::GetRegions>
 Returns: a L<Paws::Lightsail::GetRegionsResult> instance
 
 Returns a list of all valid regions for Amazon Lightsail. Use the
-C<include availability zones> parameter to also return the availability
-zones in a region.
+C<include availability zones> parameter to also return the Availability
+Zones in a region.
+
+
+=head2 GetRelationalDatabase
+
+=over
+
+=item RelationalDatabaseName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::GetRelationalDatabase>
+
+Returns: a L<Paws::Lightsail::GetRelationalDatabaseResult> instance
+
+Returns information about a specific database in Amazon Lightsail.
+
+
+=head2 GetRelationalDatabaseBlueprints
+
+=over
+
+=item [PageToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::GetRelationalDatabaseBlueprints>
+
+Returns: a L<Paws::Lightsail::GetRelationalDatabaseBlueprintsResult> instance
+
+Returns a list of available database blueprints in Amazon Lightsail. A
+blueprint describes the major engine version of a database.
+
+You can use a blueprint ID to create a new database that runs a
+specific database engine.
+
+
+=head2 GetRelationalDatabaseBundles
+
+=over
+
+=item [PageToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::GetRelationalDatabaseBundles>
+
+Returns: a L<Paws::Lightsail::GetRelationalDatabaseBundlesResult> instance
+
+Returns the list of bundles that are available in Amazon Lightsail. A
+bundle describes the performance specifications for a database.
+
+You can use a bundle ID to create a new database with explicit
+performance specifications.
+
+
+=head2 GetRelationalDatabaseEvents
+
+=over
+
+=item RelationalDatabaseName => Str
+
+=item [DurationInMinutes => Int]
+
+=item [PageToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::GetRelationalDatabaseEvents>
+
+Returns: a L<Paws::Lightsail::GetRelationalDatabaseEventsResult> instance
+
+Returns a list of events for a specific database in Amazon Lightsail.
+
+
+=head2 GetRelationalDatabaseLogEvents
+
+=over
+
+=item LogStreamName => Str
+
+=item RelationalDatabaseName => Str
+
+=item [EndTime => Str]
+
+=item [PageToken => Str]
+
+=item [StartFromHead => Bool]
+
+=item [StartTime => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::GetRelationalDatabaseLogEvents>
+
+Returns: a L<Paws::Lightsail::GetRelationalDatabaseLogEventsResult> instance
+
+Returns a list of log events for a database in Amazon Lightsail.
+
+
+=head2 GetRelationalDatabaseLogStreams
+
+=over
+
+=item RelationalDatabaseName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::GetRelationalDatabaseLogStreams>
+
+Returns: a L<Paws::Lightsail::GetRelationalDatabaseLogStreamsResult> instance
+
+Returns a list of available log streams for a specific database in
+Amazon Lightsail.
+
+
+=head2 GetRelationalDatabaseMasterUserPassword
+
+=over
+
+=item RelationalDatabaseName => Str
+
+=item [PasswordVersion => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::GetRelationalDatabaseMasterUserPassword>
+
+Returns: a L<Paws::Lightsail::GetRelationalDatabaseMasterUserPasswordResult> instance
+
+Returns the current, previous, or pending versions of the master user
+password for a Lightsail database.
+
+
+=head2 GetRelationalDatabaseMetricData
+
+=over
+
+=item EndTime => Str
+
+=item MetricName => Str
+
+=item Period => Int
+
+=item RelationalDatabaseName => Str
+
+=item StartTime => Str
+
+=item Statistics => ArrayRef[Str|Undef]
+
+=item Unit => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::GetRelationalDatabaseMetricData>
+
+Returns: a L<Paws::Lightsail::GetRelationalDatabaseMetricDataResult> instance
+
+Returns the data points of the specified metric for a database in
+Amazon Lightsail.
+
+
+=head2 GetRelationalDatabaseParameters
+
+=over
+
+=item RelationalDatabaseName => Str
+
+=item [PageToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::GetRelationalDatabaseParameters>
+
+Returns: a L<Paws::Lightsail::GetRelationalDatabaseParametersResult> instance
+
+Returns all of the runtime parameters offered by the underlying
+database software, or engine, for a specific database in Amazon
+Lightsail.
+
+In addition to the parameter names and values, this operation returns
+other information about each parameter. This information includes
+whether changes require a reboot, whether the parameter is modifiable,
+the allowed values, and the data types.
+
+
+=head2 GetRelationalDatabases
+
+=over
+
+=item [PageToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::GetRelationalDatabases>
+
+Returns: a L<Paws::Lightsail::GetRelationalDatabasesResult> instance
+
+Returns information about all of your databases in Amazon Lightsail.
+
+
+=head2 GetRelationalDatabaseSnapshot
+
+=over
+
+=item RelationalDatabaseSnapshotName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::GetRelationalDatabaseSnapshot>
+
+Returns: a L<Paws::Lightsail::GetRelationalDatabaseSnapshotResult> instance
+
+Returns information about a specific database snapshot in Amazon
+Lightsail.
+
+
+=head2 GetRelationalDatabaseSnapshots
+
+=over
+
+=item [PageToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::GetRelationalDatabaseSnapshots>
+
+Returns: a L<Paws::Lightsail::GetRelationalDatabaseSnapshotsResult> instance
+
+Returns information about all of your database snapshots in Amazon
+Lightsail.
 
 
 =head2 GetStaticIp
@@ -1900,6 +2384,22 @@ the same IP address after restarting, create a static IP address and
 attach it to the instance.
 
 
+=head2 RebootRelationalDatabase
+
+=over
+
+=item RelationalDatabaseName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::RebootRelationalDatabase>
+
+Returns: a L<Paws::Lightsail::RebootRelationalDatabaseResult> instance
+
+Restarts a specific database in Amazon Lightsail.
+
+
 =head2 ReleaseStaticIp
 
 =over
@@ -1933,6 +2433,23 @@ Starts a specific Amazon Lightsail instance from a stopped state. To
 restart an instance, use the reboot instance operation.
 
 
+=head2 StartRelationalDatabase
+
+=over
+
+=item RelationalDatabaseName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::StartRelationalDatabase>
+
+Returns: a L<Paws::Lightsail::StartRelationalDatabaseResult> instance
+
+Starts a specific database from a stopped state in Amazon Lightsail. To
+restart a database, use the C<reboot relational database> operation.
+
+
 =head2 StopInstance
 
 =over
@@ -1949,6 +2466,25 @@ Each argument is described in detail in: L<Paws::Lightsail::StopInstance>
 Returns: a L<Paws::Lightsail::StopInstanceResult> instance
 
 Stops a specific Amazon Lightsail instance that is currently running.
+
+
+=head2 StopRelationalDatabase
+
+=over
+
+=item RelationalDatabaseName => Str
+
+=item [RelationalDatabaseSnapshotName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::StopRelationalDatabase>
+
+Returns: a L<Paws::Lightsail::StopRelationalDatabaseResult> instance
+
+Stops a specific database that is currently running in Amazon
+Lightsail.
 
 
 =head2 UnpeerVpc
@@ -2002,6 +2538,70 @@ Returns: a L<Paws::Lightsail::UpdateLoadBalancerAttributeResult> instance
 
 Updates the specified attribute for a load balancer. You can only
 update one attribute at a time.
+
+
+=head2 UpdateRelationalDatabase
+
+=over
+
+=item RelationalDatabaseName => Str
+
+=item [ApplyImmediately => Bool]
+
+=item [DisableBackupRetention => Bool]
+
+=item [EnableBackupRetention => Bool]
+
+=item [MasterUserPassword => Str]
+
+=item [PreferredBackupWindow => Str]
+
+=item [PreferredMaintenanceWindow => Str]
+
+=item [PubliclyAccessible => Bool]
+
+=item [RotateMasterUserPassword => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::UpdateRelationalDatabase>
+
+Returns: a L<Paws::Lightsail::UpdateRelationalDatabaseResult> instance
+
+Allows the update of one or more attributes of a database in Amazon
+Lightsail.
+
+Updates are applied immediately, or in cases where the updates could
+result in an outage, are applied during the database's predefined
+maintenance window.
+
+
+=head2 UpdateRelationalDatabaseParameters
+
+=over
+
+=item Parameters => ArrayRef[L<Paws::Lightsail::RelationalDatabaseParameter>]
+
+=item RelationalDatabaseName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::UpdateRelationalDatabaseParameters>
+
+Returns: a L<Paws::Lightsail::UpdateRelationalDatabaseParametersResult> instance
+
+Allows the update of one or more parameters of a database in Amazon
+Lightsail.
+
+Parameter updates don't cause outages; therefore, their application is
+not subject to the preferred maintenance window. However, there are two
+ways in which paramater updates are applied: C<dynamic> or
+C<pending-reboot>. Parameters marked with a C<dynamic> apply type are
+applied immediately. Parameters marked with a C<pending-reboot> apply
+type are applied only after the database is rebooted using the C<reboot
+relational database> operation.
 
 
 

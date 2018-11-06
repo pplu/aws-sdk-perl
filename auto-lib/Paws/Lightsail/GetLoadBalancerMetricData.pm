@@ -191,7 +191,7 @@ Valid values are: C<"ClientTLSNegotiationErrorCount">, C<"HealthyHostCount">, C<
 
 =head2 B<REQUIRED> Period => Int
 
-The time period duration for your health data request.
+The granularity, in seconds, of the returned data points.
 
 
 

@@ -73,9 +73,9 @@ An object containing information about one or more disk mappings.
 
 The Availability Zone where you want to create your instances. Use the
 following formatting: C<us-east-2a> (case sensitive). You can get a
-list of availability zones by using the get regions
+list of Availability Zones by using the get regions
 (http://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetRegions.html)
-operation. Be sure to add the C<include availability zones> parameter
+operation. Be sure to add the C<include Availability Zones> parameter
 to your request.
 
 
@@ -116,7 +116,7 @@ Depending on the machine image you choose, the command to get software
 on your instance varies. Amazon Linux and CentOS use C<yum>, Debian and
 Ubuntu use C<apt-get>, and FreeBSD uses C<pkg>. For a complete list,
 see the Dev Guide
-(http://lightsail.aws.amazon.com/ls/docs/getting-started/articles/pre-installed-apps).
+(https://lightsail.aws.amazon.com/ls/docs/getting-started/article/compare-options-choose-lightsail-instance-image).
 
 
 
