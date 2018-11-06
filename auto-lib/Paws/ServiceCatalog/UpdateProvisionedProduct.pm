@@ -96,7 +96,7 @@ default path, and required if the product has more than one path.
 
 =head2 ProductId => Str
 
-The identifier of the provisioned product.
+The identifier of the product.
 
 
 

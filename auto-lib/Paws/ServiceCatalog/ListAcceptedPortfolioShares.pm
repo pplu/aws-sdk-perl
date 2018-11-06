@@ -95,6 +95,11 @@ portfolios.
 
 =item *
 
+C<AWS_ORGANIZATIONS> - List portfolios shared by the master account of
+your organization
+
+=item *
+
 C<AWS_SERVICECATALOG> - List default portfolios
 
 =item *
@@ -104,7 +109,7 @@ C<IMPORTED> - List imported portfolios
 =back
 
 
-Valid values are: C<"IMPORTED">, C<"AWS_SERVICECATALOG">
+Valid values are: C<"IMPORTED">, C<"AWS_SERVICECATALOG">, C<"AWS_ORGANIZATIONS">
 
 
 =head1 SEE ALSO
