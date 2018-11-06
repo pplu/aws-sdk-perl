@@ -1,9 +1,11 @@
 
 package Paws::AlexaForBusiness::ListSkills;
   use Moose;
+  has EnablementType => (is => 'ro', isa => 'Str');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
   has SkillGroupArn => (is => 'ro', isa => 'Str');
+  has SkillType => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -30,9 +32,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $a4b = Paws->service('AlexaForBusiness');
     my $ListSkillsResponse = $a4b->ListSkills(
-      MaxResults    => 1,                # OPTIONAL
-      NextToken     => 'MyNextToken',    # OPTIONAL
-      SkillGroupArn => 'MyArn',          # OPTIONAL
+      EnablementType => 'ENABLED',        # OPTIONAL
+      MaxResults     => 1,                # OPTIONAL
+      NextToken      => 'MyNextToken',    # OPTIONAL
+      SkillGroupArn  => 'MyArn',          # OPTIONAL
+      SkillType      => 'PUBLIC',         # OPTIONAL
     );
 
     # Results:
@@ -46,6 +50,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/a4b
 
 =head1 ATTRIBUTES
 
+
+=head2 EnablementType => Str
+
+Whether the skill is enabled under the user's account, or if it
+requires linking to be used.
+
+Valid values are: C<"ENABLED">, C<"PENDING">
 
 =head2 MaxResults => Int
 
@@ -70,6 +81,12 @@ specified by C<MaxResults>. Required.
 The ARN of the skill group for which to list enabled skills. Required.
 
 
+
+=head2 SkillType => Str
+
+Whether the skill is publicly available or is a private skill.
+
+Valid values are: C<"PUBLIC">, C<"PRIVATE">, C<"ALL">
 
 
 =head1 SEE ALSO

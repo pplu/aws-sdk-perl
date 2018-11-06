@@ -1,14 +1,14 @@
-package Paws::AlexaForBusiness::Tag;
+package Paws::AlexaForBusiness::Category;
   use Moose;
-  has Key => (is => 'ro', isa => 'Str', required => 1);
-  has Value => (is => 'ro', isa => 'Str', required => 1);
+  has CategoryId => (is => 'ro', isa => 'Int');
+  has CategoryName => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::AlexaForBusiness::Tag
+Paws::AlexaForBusiness::Category
 
 =head1 USAGE
 
@@ -19,32 +19,34 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::AlexaForBusiness::Tag object:
+As an example, if Att1 is expected to be a Paws::AlexaForBusiness::Category object:
 
-  $service_obj->Method(Att1 => { Key => $value, ..., Value => $value  });
+  $service_obj->Method(Att1 => { CategoryId => $value, ..., CategoryName => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::AlexaForBusiness::Tag object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::AlexaForBusiness::Category object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Key
+  $result->Att1->CategoryId
 
 =head1 DESCRIPTION
 
-A key-value pair that can be associated with a resource.
+The skill store category that is shown. Alexa skills are assigned a
+specific skill category during creation, such as News, Social, and
+Sports.
 
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Key => Str
+=head2 CategoryId => Int
 
-  The key of a tag. Tag keys are case-sensitive.
+  The ID of the skill store category.
 
 
-=head2 B<REQUIRED> Value => Str
+=head2 CategoryName => Str
 
-  The value of a tag. Tag values are case-sensitive and can be null.
+  The name of the skill store category.
 
 
 

@@ -1,14 +1,14 @@
-package Paws::AlexaForBusiness::Tag;
+package Paws::AlexaForBusiness::IPDialIn;
   use Moose;
-  has Key => (is => 'ro', isa => 'Str', required => 1);
-  has Value => (is => 'ro', isa => 'Str', required => 1);
+  has CommsProtocol => (is => 'ro', isa => 'Str', required => 1);
+  has Endpoint => (is => 'ro', isa => 'Str', required => 1);
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::AlexaForBusiness::Tag
+Paws::AlexaForBusiness::IPDialIn
 
 =head1 USAGE
 
@@ -19,32 +19,32 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::AlexaForBusiness::Tag object:
+As an example, if Att1 is expected to be a Paws::AlexaForBusiness::IPDialIn object:
 
-  $service_obj->Method(Att1 => { Key => $value, ..., Value => $value  });
+  $service_obj->Method(Att1 => { CommsProtocol => $value, ..., Endpoint => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::AlexaForBusiness::Tag object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::AlexaForBusiness::IPDialIn object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Key
+  $result->Att1->CommsProtocol
 
 =head1 DESCRIPTION
 
-A key-value pair that can be associated with a resource.
+The IP endpoint and protocol for calling.
 
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Key => Str
+=head2 B<REQUIRED> CommsProtocol => Str
 
-  The key of a tag. Tag keys are case-sensitive.
+  The protocol, including SIP, SIPS, and H323.
 
 
-=head2 B<REQUIRED> Value => Str
+=head2 B<REQUIRED> Endpoint => Str
 
-  The value of a tag. Tag values are case-sensitive and can be null.
+  The IP address.
 
 
 

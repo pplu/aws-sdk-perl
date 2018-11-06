@@ -3,6 +3,7 @@ package Paws::AlexaForBusiness::UpdateProfile;
   use Moose;
   has Address => (is => 'ro', isa => 'Str');
   has DistanceUnit => (is => 'ro', isa => 'Str');
+  has IsDefault => (is => 'ro', isa => 'Bool');
   has MaxVolumeLimit => (is => 'ro', isa => 'Int');
   has ProfileArn => (is => 'ro', isa => 'Str');
   has ProfileName => (is => 'ro', isa => 'Str');
@@ -39,6 +40,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateProfileResponse = $a4b->UpdateProfile(
       Address           => 'MyAddress',        # OPTIONAL
       DistanceUnit      => 'METRIC',           # OPTIONAL
+      IsDefault         => 1,                  # OPTIONAL
       MaxVolumeLimit    => 1,                  # OPTIONAL
       PSTNEnabled       => 1,                  # OPTIONAL
       ProfileArn        => 'MyArn',            # OPTIONAL
@@ -66,6 +68,13 @@ The updated address for the room profile.
 The updated distance unit for the room profile.
 
 Valid values are: C<"METRIC">, C<"IMPERIAL">
+
+=head2 IsDefault => Bool
+
+Sets the profile as default if selected. If this is missing, no update
+is done to the default status.
+
+
 
 =head2 MaxVolumeLimit => Int
 
