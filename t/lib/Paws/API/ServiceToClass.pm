@@ -16,6 +16,7 @@ package Paws::API::ServiceToClass;
     batch => 'Batch',
     budgets => 'Budgets',
     ce => 'CostExplorer',
+    chime => 'Chime',
     cloud9 => 'Cloud9',
     clouddirectory => 'CloudDirectory',
     cloudformation => 'CloudFormation',
