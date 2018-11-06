@@ -256,7 +256,7 @@ HTTP API. For more information about Step Functions, see the I< AWS
 Step Functions Developer Guide
 (http://docs.aws.amazon.com/step-functions/latest/dg/welcome.html) >.
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/step-functions/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/step-functions/>
 
 
 =head1 METHODS

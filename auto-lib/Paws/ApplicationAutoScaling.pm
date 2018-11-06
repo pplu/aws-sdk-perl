@@ -258,7 +258,7 @@ services, use AWS Auto Scaling to create a scaling plan for your
 application. For more information, see the AWS Auto Scaling User Guide
 (http://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-aws-auto-scaling.html).
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2016-02-06>
 
 
 =head1 METHODS

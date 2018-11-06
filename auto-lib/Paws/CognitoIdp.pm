@@ -530,7 +530,7 @@ Cognito User Pools.
 
 For more information, see the Amazon Cognito Documentation.
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/cognito/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/cognito/>
 
 
 =head1 METHODS

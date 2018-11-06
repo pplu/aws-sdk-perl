@@ -455,7 +455,7 @@ Regions and Amazon SES
 the Amazon SES Developer Guide
 (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html).
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/ses/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/ses/>
 
 
 =head1 METHODS

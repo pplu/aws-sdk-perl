@@ -47,7 +47,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::MarketplaceEntitlement::GetEntitlementsResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/marketplaceentitlement/latest/APIReference/Welcome.html>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/entitlement.marketplace/GetEntitlements>
 
 =head1 ATTRIBUTES
 

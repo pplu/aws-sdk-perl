@@ -155,7 +155,7 @@ more, see the Developer Guide for Android
 and the Developer Guide for iOS
 (http://docs.aws.amazon.com/mobile/sdkforios/developerguide/cognito-sync.html).
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/cognito/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/cognito/>
 
 
 =head1 METHODS

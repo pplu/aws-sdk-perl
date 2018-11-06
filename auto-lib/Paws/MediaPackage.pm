@@ -153,7 +153,7 @@ Paws::MediaPackage - Perl Interface to AWS AWS Elemental MediaPackage
 
 AWS Elemental MediaPackage
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mediapackage-2017-10-12>
 
 
 =head1 METHODS
