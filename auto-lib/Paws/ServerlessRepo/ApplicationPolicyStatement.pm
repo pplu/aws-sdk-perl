@@ -40,9 +40,9 @@ Policy statement applied to the application.
 
 =head2 B<REQUIRED> Actions => ArrayRef[Str|Undef]
 
-  See Application Permissions
-(https://docs.aws.amazon.com/serverlessrepo/latest/devguide/access-control-resource-based.html#application-permissions)
-for the list of supported actions.
+  For the list of actions supported for this operation, see Application
+Permissions
+(https://docs.aws.amazon.com/serverlessrepo/latest/devguide/access-control-resource-based.html#application-permissions).
 
 
 =head2 B<REQUIRED> Principals => ArrayRef[Str|Undef]
