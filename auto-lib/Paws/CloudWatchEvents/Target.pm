@@ -45,6 +45,14 @@ Targets are the resources to be invoked when a rule is triggered. For a
 complete list of services and resources that can be set as a target,
 see PutTargets.
 
+If you are setting the event bus of another account as the target, and
+that account granted permission to your account through an organization
+instead of directly by the account ID, then you must specify a
+C<RoleArn> with proper permissions in the C<Target> structure. For more
+information, see Sending and Receiving Events Between AWS Accounts
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEvents-CrossAccountEventDelivery.html)
+in the I<Amazon CloudWatch Events User Guide>.
+
 =head1 ATTRIBUTES
 
 
