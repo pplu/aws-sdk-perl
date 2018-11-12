@@ -3,7 +3,7 @@ package Paws::MediaConvert::AudioCodecSettings;
   has AacSettings => (is => 'ro', isa => 'Paws::MediaConvert::AacSettings', request_name => 'aacSettings', traits => ['NameInRequest']);
   has Ac3Settings => (is => 'ro', isa => 'Paws::MediaConvert::Ac3Settings', request_name => 'ac3Settings', traits => ['NameInRequest']);
   has AiffSettings => (is => 'ro', isa => 'Paws::MediaConvert::AiffSettings', request_name => 'aiffSettings', traits => ['NameInRequest']);
-  has Codec => (is => 'ro', isa => 'Str', request_name => 'codec', traits => ['NameInRequest'], required => 1);
+  has Codec => (is => 'ro', isa => 'Str', request_name => 'codec', traits => ['NameInRequest']);
   has Eac3Settings => (is => 'ro', isa => 'Paws::MediaConvert::Eac3Settings', request_name => 'eac3Settings', traits => ['NameInRequest']);
   has Mp2Settings => (is => 'ro', isa => 'Paws::MediaConvert::Mp2Settings', request_name => 'mp2Settings', traits => ['NameInRequest']);
   has WavSettings => (is => 'ro', isa => 'Paws::MediaConvert::WavSettings', request_name => 'wavSettings', traits => ['NameInRequest']);
@@ -63,7 +63,7 @@ AiffSettings * AC3, Ac3Settings * EAC3, Eac3Settings
   
 
 
-=head2 B<REQUIRED> Codec => Str
+=head2 Codec => Str
 
   
 

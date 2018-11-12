@@ -39,9 +39,19 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::AttachPrincipalPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AttachSecurityProfile {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::AttachSecurityProfile', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AttachThingPrincipal {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::AttachThingPrincipal', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CancelAuditTask {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::CancelAuditTask', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CancelCertificateTransfer {
@@ -104,6 +114,16 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::CreateRoleAlias', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateScheduledAudit {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::CreateScheduledAudit', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateSecurityProfile {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::CreateSecurityProfile', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateStream {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::CreateStream', @_);
@@ -127,6 +147,11 @@ package Paws::IoT;
   sub CreateTopicRule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::CreateTopicRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteAccountAuditConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DeleteAccountAuditConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteAuthorizer {
@@ -179,6 +204,16 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::DeleteRoleAlias', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteScheduledAudit {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DeleteScheduledAudit', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteSecurityProfile {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DeleteSecurityProfile', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteStream {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::DeleteStream', @_);
@@ -212,6 +247,16 @@ package Paws::IoT;
   sub DeprecateThingType {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::DeprecateThingType', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeAccountAuditConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DescribeAccountAuditConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeAuditTask {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DescribeAuditTask', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeAuthorizer {
@@ -264,6 +309,16 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::DescribeRoleAlias', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeScheduledAudit {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DescribeScheduledAudit', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeSecurityProfile {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DescribeSecurityProfile', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeStream {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::DescribeStream', @_);
@@ -297,6 +352,11 @@ package Paws::IoT;
   sub DetachPrincipalPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::DetachPrincipalPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DetachSecurityProfile {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DetachSecurityProfile', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DetachThingPrincipal {
@@ -364,9 +424,24 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::GetV2LoggingOptions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListActiveViolations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::ListActiveViolations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListAttachedPolicies {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::ListAttachedPolicies', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListAuditFindings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::ListAuditFindings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListAuditTasks {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::ListAuditTasks', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListAuthorizers {
@@ -449,6 +524,21 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::ListRoleAliases', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListScheduledAudits {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::ListScheduledAudits', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListSecurityProfiles {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::ListSecurityProfiles', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListSecurityProfilesForTarget {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::ListSecurityProfilesForTarget', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListStreams {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::ListStreams', @_);
@@ -457,6 +547,11 @@ package Paws::IoT;
   sub ListTargetsForPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::ListTargetsForPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListTargetsForSecurityProfile {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::ListTargetsForSecurityProfile', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListThingGroups {
@@ -507,6 +602,11 @@ package Paws::IoT;
   sub ListV2LoggingLevels {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::ListV2LoggingLevels', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListViolationEvents {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::ListViolationEvents', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RegisterCACertificate {
@@ -569,6 +669,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::SetV2LoggingOptions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartOnDemandAuditTask {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::StartOnDemandAuditTask', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartThingRegistrationTask {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::StartThingRegistrationTask', @_);
@@ -592,6 +697,11 @@ package Paws::IoT;
   sub TransferCertificate {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::TransferCertificate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateAccountAuditConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::UpdateAccountAuditConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateAuthorizer {
@@ -624,6 +734,16 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::UpdateRoleAlias', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateScheduledAudit {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::UpdateScheduledAudit', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateSecurityProfile {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::UpdateSecurityProfile', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateStream {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::UpdateStream', @_);
@@ -642,6 +762,11 @@ package Paws::IoT;
   sub UpdateThingGroupsForThing {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::UpdateThingGroupsForThing', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ValidateSecurityProfileBehaviors {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::ValidateSecurityProfileBehaviors', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -900,7 +1025,7 @@ package Paws::IoT;
   }
 
 
-  sub operations { qw/AcceptCertificateTransfer AddThingToThingGroup AssociateTargetsWithJob AttachPolicy AttachPrincipalPolicy AttachThingPrincipal CancelCertificateTransfer CancelJob CancelJobExecution ClearDefaultAuthorizer CreateAuthorizer CreateCertificateFromCsr CreateJob CreateKeysAndCertificate CreateOTAUpdate CreatePolicy CreatePolicyVersion CreateRoleAlias CreateStream CreateThing CreateThingGroup CreateThingType CreateTopicRule DeleteAuthorizer DeleteCACertificate DeleteCertificate DeleteJob DeleteJobExecution DeleteOTAUpdate DeletePolicy DeletePolicyVersion DeleteRegistrationCode DeleteRoleAlias DeleteStream DeleteThing DeleteThingGroup DeleteThingType DeleteTopicRule DeleteV2LoggingLevel DeprecateThingType DescribeAuthorizer DescribeCACertificate DescribeCertificate DescribeDefaultAuthorizer DescribeEndpoint DescribeEventConfigurations DescribeIndex DescribeJob DescribeJobExecution DescribeRoleAlias DescribeStream DescribeThing DescribeThingGroup DescribeThingRegistrationTask DescribeThingType DetachPolicy DetachPrincipalPolicy DetachThingPrincipal DisableTopicRule EnableTopicRule GetEffectivePolicies GetIndexingConfiguration GetJobDocument GetLoggingOptions GetOTAUpdate GetPolicy GetPolicyVersion GetRegistrationCode GetTopicRule GetV2LoggingOptions ListAttachedPolicies ListAuthorizers ListCACertificates ListCertificates ListCertificatesByCA ListIndices ListJobExecutionsForJob ListJobExecutionsForThing ListJobs ListOTAUpdates ListOutgoingCertificates ListPolicies ListPolicyPrincipals ListPolicyVersions ListPrincipalPolicies ListPrincipalThings ListRoleAliases ListStreams ListTargetsForPolicy ListThingGroups ListThingGroupsForThing ListThingPrincipals ListThingRegistrationTaskReports ListThingRegistrationTasks ListThings ListThingsInThingGroup ListThingTypes ListTopicRules ListV2LoggingLevels RegisterCACertificate RegisterCertificate RegisterThing RejectCertificateTransfer RemoveThingFromThingGroup ReplaceTopicRule SearchIndex SetDefaultAuthorizer SetDefaultPolicyVersion SetLoggingOptions SetV2LoggingLevel SetV2LoggingOptions StartThingRegistrationTask StopThingRegistrationTask TestAuthorization TestInvokeAuthorizer TransferCertificate UpdateAuthorizer UpdateCACertificate UpdateCertificate UpdateEventConfigurations UpdateIndexingConfiguration UpdateRoleAlias UpdateStream UpdateThing UpdateThingGroup UpdateThingGroupsForThing / }
+  sub operations { qw/AcceptCertificateTransfer AddThingToThingGroup AssociateTargetsWithJob AttachPolicy AttachPrincipalPolicy AttachSecurityProfile AttachThingPrincipal CancelAuditTask CancelCertificateTransfer CancelJob CancelJobExecution ClearDefaultAuthorizer CreateAuthorizer CreateCertificateFromCsr CreateJob CreateKeysAndCertificate CreateOTAUpdate CreatePolicy CreatePolicyVersion CreateRoleAlias CreateScheduledAudit CreateSecurityProfile CreateStream CreateThing CreateThingGroup CreateThingType CreateTopicRule DeleteAccountAuditConfiguration DeleteAuthorizer DeleteCACertificate DeleteCertificate DeleteJob DeleteJobExecution DeleteOTAUpdate DeletePolicy DeletePolicyVersion DeleteRegistrationCode DeleteRoleAlias DeleteScheduledAudit DeleteSecurityProfile DeleteStream DeleteThing DeleteThingGroup DeleteThingType DeleteTopicRule DeleteV2LoggingLevel DeprecateThingType DescribeAccountAuditConfiguration DescribeAuditTask DescribeAuthorizer DescribeCACertificate DescribeCertificate DescribeDefaultAuthorizer DescribeEndpoint DescribeEventConfigurations DescribeIndex DescribeJob DescribeJobExecution DescribeRoleAlias DescribeScheduledAudit DescribeSecurityProfile DescribeStream DescribeThing DescribeThingGroup DescribeThingRegistrationTask DescribeThingType DetachPolicy DetachPrincipalPolicy DetachSecurityProfile DetachThingPrincipal DisableTopicRule EnableTopicRule GetEffectivePolicies GetIndexingConfiguration GetJobDocument GetLoggingOptions GetOTAUpdate GetPolicy GetPolicyVersion GetRegistrationCode GetTopicRule GetV2LoggingOptions ListActiveViolations ListAttachedPolicies ListAuditFindings ListAuditTasks ListAuthorizers ListCACertificates ListCertificates ListCertificatesByCA ListIndices ListJobExecutionsForJob ListJobExecutionsForThing ListJobs ListOTAUpdates ListOutgoingCertificates ListPolicies ListPolicyPrincipals ListPolicyVersions ListPrincipalPolicies ListPrincipalThings ListRoleAliases ListScheduledAudits ListSecurityProfiles ListSecurityProfilesForTarget ListStreams ListTargetsForPolicy ListTargetsForSecurityProfile ListThingGroups ListThingGroupsForThing ListThingPrincipals ListThingRegistrationTaskReports ListThingRegistrationTasks ListThings ListThingsInThingGroup ListThingTypes ListTopicRules ListV2LoggingLevels ListViolationEvents RegisterCACertificate RegisterCertificate RegisterThing RejectCertificateTransfer RemoveThingFromThingGroup ReplaceTopicRule SearchIndex SetDefaultAuthorizer SetDefaultPolicyVersion SetLoggingOptions SetV2LoggingLevel SetV2LoggingOptions StartOnDemandAuditTask StartThingRegistrationTask StopThingRegistrationTask TestAuthorization TestInvokeAuthorizer TransferCertificate UpdateAccountAuditConfiguration UpdateAuthorizer UpdateCACertificate UpdateCertificate UpdateEventConfigurations UpdateIndexingConfiguration UpdateRoleAlias UpdateScheduledAudit UpdateSecurityProfile UpdateStream UpdateThing UpdateThingGroup UpdateThingGroupsForThing ValidateSecurityProfileBehaviors / }
 
 1;
 
@@ -940,6 +1065,10 @@ and manage policies and credentials to authenticate devices.
 
 For more information about how AWS IoT works, see the Developer Guide
 (http://docs.aws.amazon.com/iot/latest/developerguide/aws-iot-how-it-works.html).
+
+For information about how to use the credentials provider for AWS IoT,
+see Authorizing Direct Calls to AWS Services
+(http://docs.aws.amazon.com/iot/latest/developerguide/authorizing-direct-aws.html).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28>
 
@@ -1068,6 +1197,26 @@ or other credential).
 B<Note:> This API is deprecated. Please use AttachPolicy instead.
 
 
+=head2 AttachSecurityProfile
+
+=over
+
+=item SecurityProfileName => Str
+
+=item SecurityProfileTargetArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::AttachSecurityProfile>
+
+Returns: a L<Paws::IoT::AttachSecurityProfileResponse> instance
+
+Associates a Device Defender security profile with a thing group or
+with this account. Each thing group or account can have up to five
+security profiles associated with it.
+
+
 =head2 AttachThingPrincipal
 
 =over
@@ -1084,6 +1233,24 @@ Each argument is described in detail in: L<Paws::IoT::AttachThingPrincipal>
 Returns: a L<Paws::IoT::AttachThingPrincipalResponse> instance
 
 Attaches the specified principal to the specified thing.
+
+
+=head2 CancelAuditTask
+
+=over
+
+=item TaskId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::CancelAuditTask>
+
+Returns: a L<Paws::IoT::CancelAuditTaskResponse> instance
+
+Cancels an audit that is in progress. The audit can be either scheduled
+or on-demand. If the audit is not in progress, an
+"InvalidRequestException" occurs.
 
 
 =head2 CancelCertificateTransfer
@@ -1269,8 +1436,6 @@ create-certificate-from-csr --certificate-signing-request file://@path"
 
 =item [Document => Str]
 
-=item [DocumentParameters => L<Paws::IoT::JobDocumentParameters>]
-
 =item [DocumentSource => Str]
 
 =item [JobExecutionsRolloutConfig => L<Paws::IoT::JobExecutionsRolloutConfig>]
@@ -1278,6 +1443,8 @@ create-certificate-from-csr --certificate-signing-request file://@path"
 =item [PresignedUrlConfig => L<Paws::IoT::PresignedUrlConfig>]
 
 =item [TargetSelection => Str]
+
+=item [TimeoutConfig => L<Paws::IoT::TimeoutConfig>]
 
 
 =back
@@ -1322,6 +1489,8 @@ certificate, so it is important to keep it in a secure location.
 =item Targets => ArrayRef[Str|Undef]
 
 =item [AdditionalParameters => L<Paws::IoT::AdditionalParameterMap>]
+
+=item [AwsJobExecutionsRolloutConfig => L<Paws::IoT::AwsJobExecutionsRolloutConfig>]
 
 =item [Description => Str]
 
@@ -1408,6 +1577,52 @@ Returns: a L<Paws::IoT::CreateRoleAliasResponse> instance
 Creates a role alias.
 
 
+=head2 CreateScheduledAudit
+
+=over
+
+=item Frequency => Str
+
+=item ScheduledAuditName => Str
+
+=item TargetCheckNames => ArrayRef[Str|Undef]
+
+=item [DayOfMonth => Str]
+
+=item [DayOfWeek => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::CreateScheduledAudit>
+
+Returns: a L<Paws::IoT::CreateScheduledAuditResponse> instance
+
+Creates a scheduled audit that is run at a specified time interval.
+
+
+=head2 CreateSecurityProfile
+
+=over
+
+=item Behaviors => ArrayRef[L<Paws::IoT::Behavior>]
+
+=item SecurityProfileName => Str
+
+=item [AlertTargets => L<Paws::IoT::AlertTargets>]
+
+=item [SecurityProfileDescription => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::CreateSecurityProfile>
+
+Returns: a L<Paws::IoT::CreateSecurityProfileResponse> instance
+
+Creates a Device Defender security profile.
+
+
 =head2 CreateStream
 
 =over
@@ -1456,6 +1671,10 @@ Returns: a L<Paws::IoT::CreateThingResponse> instance
 
 Creates a thing record in the registry.
 
+This is a control plane operation. See Authorization
+(http://docs.aws.amazon.com/iot/latest/developerguide/authorization.html)
+for information about authorizing control plane actions.
+
 
 =head2 CreateThingGroup
 
@@ -1475,6 +1694,10 @@ Each argument is described in detail in: L<Paws::IoT::CreateThingGroup>
 Returns: a L<Paws::IoT::CreateThingGroupResponse> instance
 
 Create a thing group.
+
+This is a control plane operation. See Authorization
+(http://docs.aws.amazon.com/iot/latest/developerguide/authorization.html)
+for information about authorizing control plane actions.
 
 
 =head2 CreateThingType
@@ -1513,6 +1736,24 @@ Returns: nothing
 Creates a rule. Creating rules is an administrator-level action. Any
 user who has permission to create rules will be able to access data
 processed by the rule.
+
+
+=head2 DeleteAccountAuditConfiguration
+
+=over
+
+=item [DeleteScheduledAudits => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::DeleteAccountAuditConfiguration>
+
+Returns: a L<Paws::IoT::DeleteAccountAuditConfigurationResponse> instance
+
+Restores the default settings for Device Defender audits for this
+account. Any configuration data you entered is deleted and all audit
+checks are reset to disabled.
 
 
 =head2 DeleteAuthorizer
@@ -1625,6 +1866,10 @@ Deletes a job execution.
 
 =item OtaUpdateId => Str
 
+=item [DeleteStream => Bool]
+
+=item [ForceDeleteAWSJob => Bool]
+
 
 =back
 
@@ -1712,6 +1957,40 @@ Each argument is described in detail in: L<Paws::IoT::DeleteRoleAlias>
 Returns: a L<Paws::IoT::DeleteRoleAliasResponse> instance
 
 Deletes a role alias
+
+
+=head2 DeleteScheduledAudit
+
+=over
+
+=item ScheduledAuditName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::DeleteScheduledAudit>
+
+Returns: a L<Paws::IoT::DeleteScheduledAuditResponse> instance
+
+Deletes a scheduled audit.
+
+
+=head2 DeleteSecurityProfile
+
+=over
+
+=item SecurityProfileName => Str
+
+=item [ExpectedVersion => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::DeleteSecurityProfile>
+
+Returns: a L<Paws::IoT::DeleteSecurityProfileResponse> instance
+
+Deletes a Device Defender security profile.
 
 
 =head2 DeleteStream
@@ -1838,6 +2117,38 @@ Returns: a L<Paws::IoT::DeprecateThingTypeResponse> instance
 
 Deprecates a thing type. You can not associate new things with
 deprecated thing type.
+
+
+=head2 DescribeAccountAuditConfiguration
+
+
+
+
+
+
+Each argument is described in detail in: L<Paws::IoT::DescribeAccountAuditConfiguration>
+
+Returns: a L<Paws::IoT::DescribeAccountAuditConfigurationResponse> instance
+
+Gets information about the Device Defender audit settings for this
+account. Settings include how audit notifications are sent and which
+audit checks are enabled or disabled.
+
+
+=head2 DescribeAuditTask
+
+=over
+
+=item TaskId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::DescribeAuditTask>
+
+Returns: a L<Paws::IoT::DescribeAuditTaskResponse> instance
+
+Gets information about a Device Defender audit.
 
 
 =head2 DescribeAuthorizer
@@ -2000,6 +2311,38 @@ Returns: a L<Paws::IoT::DescribeRoleAliasResponse> instance
 Describes a role alias.
 
 
+=head2 DescribeScheduledAudit
+
+=over
+
+=item ScheduledAuditName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::DescribeScheduledAudit>
+
+Returns: a L<Paws::IoT::DescribeScheduledAuditResponse> instance
+
+Gets information about a scheduled audit.
+
+
+=head2 DescribeSecurityProfile
+
+=over
+
+=item SecurityProfileName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::DescribeSecurityProfile>
+
+Returns: a L<Paws::IoT::DescribeSecurityProfileResponse> instance
+
+Gets information about a Device Defender security profile.
+
+
 =head2 DescribeStream
 
 =over
@@ -2118,6 +2461,25 @@ Removes the specified policy from the specified certificate.
 B<Note:> This API is deprecated. Please use DetachPolicy instead.
 
 
+=head2 DetachSecurityProfile
+
+=over
+
+=item SecurityProfileName => Str
+
+=item SecurityProfileTargetArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::DetachSecurityProfile>
+
+Returns: a L<Paws::IoT::DetachSecurityProfileResponse> instance
+
+Disassociates a Device Defender security profile from a thing group or
+from this account.
+
+
 =head2 DetachThingPrincipal
 
 =over
@@ -2233,6 +2595,9 @@ Returns: a L<Paws::IoT::GetLoggingOptionsResponse> instance
 
 Gets the logging options.
 
+NOTE: use of this command is not recommended. Use
+C<GetV2LoggingOptions> instead.
+
 
 =head2 GetOTAUpdate
 
@@ -2330,6 +2695,29 @@ Returns: a L<Paws::IoT::GetV2LoggingOptionsResponse> instance
 Gets the fine grained logging options.
 
 
+=head2 ListActiveViolations
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SecurityProfileName => Str]
+
+=item [ThingName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::ListActiveViolations>
+
+Returns: a L<Paws::IoT::ListActiveViolationsResponse> instance
+
+Lists the active violations for a given Device Defender security
+profile.
+
+
 =head2 ListAttachedPolicies
 
 =over
@@ -2350,6 +2738,63 @@ Each argument is described in detail in: L<Paws::IoT::ListAttachedPolicies>
 Returns: a L<Paws::IoT::ListAttachedPoliciesResponse> instance
 
 Lists the policies attached to the specified thing group.
+
+
+=head2 ListAuditFindings
+
+=over
+
+=item [CheckName => Str]
+
+=item [EndTime => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ResourceIdentifier => L<Paws::IoT::ResourceIdentifier>]
+
+=item [StartTime => Str]
+
+=item [TaskId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::ListAuditFindings>
+
+Returns: a L<Paws::IoT::ListAuditFindingsResponse> instance
+
+Lists the findings (results) of a Device Defender audit or of the
+audits performed during a specified time period. (Findings are retained
+for 180 days.)
+
+
+=head2 ListAuditTasks
+
+=over
+
+=item EndTime => Str
+
+=item StartTime => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [TaskStatus => Str]
+
+=item [TaskType => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::ListAuditTasks>
+
+Returns: a L<Paws::IoT::ListAuditTasksResponse> instance
+
+Lists the Device Defender audits that have been performed during a
+given time period.
 
 
 =head2 ListAuthorizers
@@ -2699,6 +3144,67 @@ Returns: a L<Paws::IoT::ListRoleAliasesResponse> instance
 Lists the role aliases registered in your account.
 
 
+=head2 ListScheduledAudits
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::ListScheduledAudits>
+
+Returns: a L<Paws::IoT::ListScheduledAuditsResponse> instance
+
+Lists all of your scheduled audits.
+
+
+=head2 ListSecurityProfiles
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::ListSecurityProfiles>
+
+Returns: a L<Paws::IoT::ListSecurityProfilesResponse> instance
+
+Lists the Device Defender security profiles you have created. You can
+use filters to list only those security profiles associated with a
+thing group or only those associated with your account.
+
+
+=head2 ListSecurityProfilesForTarget
+
+=over
+
+=item SecurityProfileTargetArn => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Recursive => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::ListSecurityProfilesForTarget>
+
+Returns: a L<Paws::IoT::ListSecurityProfilesForTargetResponse> instance
+
+Lists the Device Defender security profiles attached to a target (thing
+group).
+
+
 =head2 ListStreams
 
 =over
@@ -2737,6 +3243,27 @@ Each argument is described in detail in: L<Paws::IoT::ListTargetsForPolicy>
 Returns: a L<Paws::IoT::ListTargetsForPolicyResponse> instance
 
 List targets for the specified policy.
+
+
+=head2 ListTargetsForSecurityProfile
+
+=over
+
+=item SecurityProfileName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::ListTargetsForSecurityProfile>
+
+Returns: a L<Paws::IoT::ListTargetsForSecurityProfileResponse> instance
+
+Lists the targets (thing groups) associated with a given Device
+Defender security profile.
 
 
 =head2 ListThingGroups
@@ -2950,6 +3477,35 @@ Each argument is described in detail in: L<Paws::IoT::ListV2LoggingLevels>
 Returns: a L<Paws::IoT::ListV2LoggingLevelsResponse> instance
 
 Lists logging levels.
+
+
+=head2 ListViolationEvents
+
+=over
+
+=item EndTime => Str
+
+=item StartTime => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SecurityProfileName => Str]
+
+=item [ThingName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::ListViolationEvents>
+
+Returns: a L<Paws::IoT::ListViolationEventsResponse> instance
+
+Lists the Device Defender security profile violations discovered during
+the given time period. You can use filters to limit the results to
+those alerts issued for a particular security profile, behavior or
+thing (device).
 
 
 =head2 RegisterCACertificate
@@ -3173,6 +3729,9 @@ Returns: nothing
 
 Sets the logging options.
 
+NOTE: use of this command is not recommended. Use
+C<SetV2LoggingOptions> instead.
+
 
 =head2 SetV2LoggingLevel
 
@@ -3210,6 +3769,22 @@ Each argument is described in detail in: L<Paws::IoT::SetV2LoggingOptions>
 Returns: nothing
 
 Sets the logging options for the V2 logging service.
+
+
+=head2 StartOnDemandAuditTask
+
+=over
+
+=item TargetCheckNames => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::StartOnDemandAuditTask>
+
+Returns: a L<Paws::IoT::StartOnDemandAuditTaskResponse> instance
+
+Starts an on-demand Device Defender audit.
 
 
 =head2 StartThingRegistrationTask
@@ -3332,6 +3907,28 @@ The certificate must not have any policies attached to it. You can use
 the DetachPrincipalPolicy API to detach them.
 
 
+=head2 UpdateAccountAuditConfiguration
+
+=over
+
+=item [AuditCheckConfigurations => L<Paws::IoT::AuditCheckConfigurations>]
+
+=item [AuditNotificationTargetConfigurations => L<Paws::IoT::AuditNotificationTargetConfigurations>]
+
+=item [RoleArn => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::UpdateAccountAuditConfiguration>
+
+Returns: a L<Paws::IoT::UpdateAccountAuditConfigurationResponse> instance
+
+Configures or reconfigures the Device Defender audit settings for this
+account. Settings include how audit notifications are sent and which
+audit checks are enabled or disabled.
+
+
 =head2 UpdateAuthorizer
 
 =over
@@ -3426,6 +4023,8 @@ Updates the event configurations.
 
 =over
 
+=item [ThingGroupIndexingConfiguration => L<Paws::IoT::ThingGroupIndexingConfiguration>]
+
 =item [ThingIndexingConfiguration => L<Paws::IoT::ThingIndexingConfiguration>]
 
 
@@ -3456,6 +4055,55 @@ Each argument is described in detail in: L<Paws::IoT::UpdateRoleAlias>
 Returns: a L<Paws::IoT::UpdateRoleAliasResponse> instance
 
 Updates a role alias.
+
+
+=head2 UpdateScheduledAudit
+
+=over
+
+=item ScheduledAuditName => Str
+
+=item [DayOfMonth => Str]
+
+=item [DayOfWeek => Str]
+
+=item [Frequency => Str]
+
+=item [TargetCheckNames => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::UpdateScheduledAudit>
+
+Returns: a L<Paws::IoT::UpdateScheduledAuditResponse> instance
+
+Updates a scheduled audit, including what checks are performed and how
+often the audit takes place.
+
+
+=head2 UpdateSecurityProfile
+
+=over
+
+=item SecurityProfileName => Str
+
+=item [AlertTargets => L<Paws::IoT::AlertTargets>]
+
+=item [Behaviors => ArrayRef[L<Paws::IoT::Behavior>]]
+
+=item [ExpectedVersion => Int]
+
+=item [SecurityProfileDescription => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::UpdateSecurityProfile>
+
+Returns: a L<Paws::IoT::UpdateSecurityProfileResponse> instance
+
+Updates a Device Defender security profile.
 
 
 =head2 UpdateStream
@@ -3543,6 +4191,22 @@ Each argument is described in detail in: L<Paws::IoT::UpdateThingGroupsForThing>
 Returns: a L<Paws::IoT::UpdateThingGroupsForThingResponse> instance
 
 Updates the groups to which the thing belongs.
+
+
+=head2 ValidateSecurityProfileBehaviors
+
+=over
+
+=item Behaviors => ArrayRef[L<Paws::IoT::Behavior>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::ValidateSecurityProfileBehaviors>
+
+Returns: a L<Paws::IoT::ValidateSecurityProfileBehaviorsResponse> instance
+
+Validates a Device Defender security profile behaviors specification.
 
 
 

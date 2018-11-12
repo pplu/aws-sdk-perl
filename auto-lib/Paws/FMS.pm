@@ -60,6 +60,11 @@ package Paws::FMS;
     my $call_object = $self->new_with_coercions('Paws::FMS::ListComplianceStatus', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListMemberAccounts {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::FMS::ListMemberAccounts', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListPolicies {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::FMS::ListPolicies', @_);
@@ -78,7 +83,7 @@ package Paws::FMS;
   
 
 
-  sub operations { qw/AssociateAdminAccount DeleteNotificationChannel DeletePolicy DisassociateAdminAccount GetAdminAccount GetComplianceDetail GetNotificationChannel GetPolicy ListComplianceStatus ListPolicies PutNotificationChannel PutPolicy / }
+  sub operations { qw/AssociateAdminAccount DeleteNotificationChannel DeletePolicy DisassociateAdminAccount GetAdminAccount GetComplianceDetail GetNotificationChannel GetPolicy ListComplianceStatus ListMemberAccounts ListPolicies PutNotificationChannel PutPolicy / }
 
 1;
 
@@ -133,14 +138,14 @@ Each argument is described in detail in: L<Paws::FMS::AssociateAdminAccount>
 Returns: nothing
 
 Sets the AWS Firewall Manager administrator account. AWS Firewall
-Manager must be associated with a master account in AWS Organizations
-or associated with a member account that has the appropriate
-permissions. If the account ID that you submit is not an AWS
-Organizations master account, AWS Firewall Manager will set the
+Manager must be associated with the master account your AWS
+organization or associated with a member account that has the
+appropriate permissions. If the account ID that you submit is not an
+AWS Organizations master account, AWS Firewall Manager will set the
 appropriate permissions for the given member account.
 
 The account that you associate with AWS Firewall Manager is called the
-AWS Firewall manager administrator account.
+AWS Firewall Manager administrator account.
 
 
 =head2 DeleteNotificationChannel
@@ -279,6 +284,28 @@ Returns: a L<Paws::FMS::ListComplianceStatusResponse> instance
 Returns an array of C<PolicyComplianceStatus> objects in the response.
 Use C<PolicyComplianceStatus> to get a summary of which member accounts
 are protected by the specified policy.
+
+
+=head2 ListMemberAccounts
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::FMS::ListMemberAccounts>
+
+Returns: a L<Paws::FMS::ListMemberAccountsResponse> instance
+
+Returns a C<MemberAccounts> object that lists the member accounts in
+the administrator's AWS organization.
+
+The C<ListMemberAccounts> must be submitted by the account that is set
+as the AWS Firewall Manager administrator.
 
 
 =head2 ListPolicies

@@ -4,6 +4,7 @@ package Paws::Config::ConfigRule;
   has ConfigRuleId => (is => 'ro', isa => 'Str');
   has ConfigRuleName => (is => 'ro', isa => 'Str');
   has ConfigRuleState => (is => 'ro', isa => 'Str');
+  has CreatedBy => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has InputParameters => (is => 'ro', isa => 'Str');
   has MaximumExecutionFrequency => (is => 'ro', isa => 'Str');
@@ -94,6 +95,14 @@ AWS Config temporarily sets the state of a rule to C<DELETING> after
 you use the C<DeleteConfigRule> request to delete the rule. After AWS
 Config deletes the rule, the rule and all of its evaluations are erased
 and are no longer available.
+
+
+=head2 CreatedBy => Str
+
+  Service principal name of the service that created the rule.
+
+The field is populated only if the service linked rule is created by a
+service. The field is empty if you create your own rule.
 
 
 =head2 Description => Str

@@ -51,8 +51,8 @@ Describes an EC2 instance.
 
   The last reported health status of the instance. "Healthy" means that
 the instance is healthy and should remain in service. "Unhealthy" means
-that the instance is unhealthy and Auto Scaling should terminate and
-replace it.
+that the instance is unhealthy and Amazon EC2 Auto Scaling should
+terminate and replace it.
 
 
 =head2 B<REQUIRED> InstanceId => Str
@@ -78,8 +78,8 @@ C<Quarantined> state is not used.
 
 =head2 B<REQUIRED> ProtectedFromScaleIn => Bool
 
-  Indicates whether the instance is protected from termination by Auto
-Scaling when scaling in.
+  Indicates whether the instance is protected from termination by Amazon
+EC2 Auto Scaling when scaling in.
 
 
 

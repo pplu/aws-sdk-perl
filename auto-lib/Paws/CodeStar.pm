@@ -279,6 +279,12 @@ Adds an IAM user to the team for an AWS CodeStar project.
 
 =item [Description => Str]
 
+=item [SourceCode => ArrayRef[L<Paws::CodeStar::Code>]]
+
+=item [Tags => L<Paws::CodeStar::Tags>]
+
+=item [Toolchain => L<Paws::CodeStar::Toolchain>]
+
 
 =back
 
@@ -286,8 +292,10 @@ Each argument is described in detail in: L<Paws::CodeStar::CreateProject>
 
 Returns: a L<Paws::CodeStar::CreateProjectResult> instance
 
-Reserved for future use. To create a project, use the AWS CodeStar
-console.
+Creates a project, including project resources. This action creates a
+project based on a submitted project request. A set of source code
+files and a toolchain template file can be included with the project
+request. If these are not provided, an empty project is created.
 
 
 =head2 CreateUserProfile

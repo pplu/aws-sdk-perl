@@ -23,7 +23,7 @@ The token to request the next page of results.
 
 =head2 Versions => ArrayRef[L<Paws::ServerlessRepo::VersionSummary>]
 
-Array of version summaries for the application.
+An array of version summaries for the application.
 
 
 =head2 _request_id => Str

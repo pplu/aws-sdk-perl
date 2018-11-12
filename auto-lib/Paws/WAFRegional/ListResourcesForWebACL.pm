@@ -1,6 +1,7 @@
 
 package Paws::WAFRegional::ListResourcesForWebACL;
   use Moose;
+  has ResourceType => (is => 'ro', isa => 'Str');
   has WebACLId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -28,8 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $waf-regional = Paws->service('WAFRegional');
     my $ListResourcesForWebACLResponse = $waf -regional->ListResourcesForWebACL(
-      WebACLId => 'MyResourceId',
-
+      WebACLId     => 'MyResourceId',
+      ResourceType => 'APPLICATION_LOAD_BALANCER',    # OPTIONAL
     );
 
     # Results:
@@ -42,6 +43,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/waf
 
 =head1 ATTRIBUTES
 
+
+=head2 ResourceType => Str
+
+The type of resource to list, either and application load balancer or
+Amazon API Gateway.
+
+Valid values are: C<"APPLICATION_LOAD_BALANCER">, C<"API_GATEWAY">
 
 =head2 B<REQUIRED> WebACLId => Str
 

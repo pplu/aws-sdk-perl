@@ -29,7 +29,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $elasticache = Paws->service('ElastiCache');
     my $TestFailoverResult = $elasticache->TestFailover(
-      NodeGroupId        => 'MyString',
+      NodeGroupId        => 'MyAllowedNodeGroupId',
       ReplicationGroupId => 'MyString',
 
     );

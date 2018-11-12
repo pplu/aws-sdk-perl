@@ -50,6 +50,11 @@ package Paws::Discovery;
     my $call_object = $self->new_with_coercions('Paws::Discovery::DescribeConfigurations', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeContinuousExports {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Discovery::DescribeContinuousExports', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeExportConfigurations {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Discovery::DescribeExportConfigurations', @_);
@@ -90,6 +95,11 @@ package Paws::Discovery;
     my $call_object = $self->new_with_coercions('Paws::Discovery::ListServerNeighbors', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartContinuousExport {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Discovery::StartContinuousExport', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartDataCollectionByAgentIds {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Discovery::StartDataCollectionByAgentIds', @_);
@@ -98,6 +108,11 @@ package Paws::Discovery;
   sub StartExportTask {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Discovery::StartExportTask', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopContinuousExport {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Discovery::StopContinuousExport', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StopDataCollectionByAgentIds {
@@ -113,7 +128,7 @@ package Paws::Discovery;
   
 
 
-  sub operations { qw/AssociateConfigurationItemsToApplication CreateApplication CreateTags DeleteApplications DeleteTags DescribeAgents DescribeConfigurations DescribeExportConfigurations DescribeExportTasks DescribeTags DisassociateConfigurationItemsFromApplication ExportConfigurations GetDiscoverySummary ListConfigurations ListServerNeighbors StartDataCollectionByAgentIds StartExportTask StopDataCollectionByAgentIds UpdateApplication / }
+  sub operations { qw/AssociateConfigurationItemsToApplication CreateApplication CreateTags DeleteApplications DeleteTags DescribeAgents DescribeConfigurations DescribeContinuousExports DescribeExportConfigurations DescribeExportTasks DescribeTags DisassociateConfigurationItemsFromApplication ExportConfigurations GetDiscoverySummary ListConfigurations ListServerNeighbors StartContinuousExport StartDataCollectionByAgentIds StartExportTask StopContinuousExport StopDataCollectionByAgentIds UpdateApplication / }
 
 1;
 
@@ -335,8 +350,9 @@ Each argument is described in detail in: L<Paws::Discovery::DescribeAgents>
 
 Returns: a L<Paws::Discovery::DescribeAgentsResponse> instance
 
-Lists agents or the Connector by ID or lists all agents/Connectors
-associated with your user account if you did not specify an ID.
+Lists agents or connectors as specified by ID or other filters. All
+agents/connectors associated with your user account can be listed if
+you call C<DescribeAgents> as is without passing any parameters.
 
 
 =head2 DescribeConfigurations
@@ -352,16 +368,61 @@ Each argument is described in detail in: L<Paws::Discovery::DescribeConfiguratio
 
 Returns: a L<Paws::Discovery::DescribeConfigurationsResponse> instance
 
-Retrieves attributes for a list of configuration item IDs. All of the
-supplied IDs must be for the same asset type (server, application,
-process, or connection). Output fields are specific to the asset type
-selected. For example, the output for a I<server> configuration item
-includes a list of attributes about the server, such as host name,
-operating system, and number of network cards.
+Retrieves attributes for a list of configuration item IDs.
+
+All of the supplied IDs must be for the same asset type from one of the
+follwoing:
+
+=over
+
+=item *
+
+server
+
+=item *
+
+application
+
+=item *
+
+process
+
+=item *
+
+connection
+
+=back
+
+Output fields are specific to the asset type specified. For example,
+the output for a I<server> configuration item includes a list of
+attributes about the server, such as host name, operating system,
+number of network cards, etc.
 
 For a complete list of outputs for each asset type, see Using the
 DescribeConfigurations Action
 (http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#DescribeConfigurations).
+
+
+=head2 DescribeContinuousExports
+
+=over
+
+=item [ExportIds => ArrayRef[Str|Undef]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Discovery::DescribeContinuousExports>
+
+Returns: a L<Paws::Discovery::DescribeContinuousExportsResponse> instance
+
+Lists exports as specified by ID. All continuous exports associated
+with your user account can be listed if you call
+C<DescribeContinuousExports> as is without passing any parameters.
 
 
 =head2 DescribeExportConfigurations
@@ -381,10 +442,10 @@ Each argument is described in detail in: L<Paws::Discovery::DescribeExportConfig
 
 Returns: a L<Paws::Discovery::DescribeExportConfigurationsResponse> instance
 
-Deprecated. Use C<DescribeExportTasks> instead.
+C<DescribeExportConfigurations> is deprecated.
 
-Retrieves the status of a given export process. You can retrieve status
-from a maximum of 100 processes.
+Use instead C<DescribeExportTasks>
+(http://docs.aws.amazon.com/application-discovery/latest/APIReference/API_DescribeExportTasks.html).
 
 
 =head2 DescribeExportTasks
@@ -427,9 +488,31 @@ Each argument is described in detail in: L<Paws::Discovery::DescribeTags>
 
 Returns: a L<Paws::Discovery::DescribeTagsResponse> instance
 
-Retrieves a list of configuration items that are tagged with a specific
-tag. Or retrieves a list of all tags assigned to a specific
-configuration item.
+Retrieves a list of configuration items that have tags as specified by
+the key-value pairs, name and value, passed to the optional parameter
+C<filters>.
+
+There are three valid tag filter names:
+
+=over
+
+=item *
+
+tagKey
+
+=item *
+
+tagValue
+
+=item *
+
+configurationId
+
+=back
+
+Also, all configuration items associated with your user account that
+have tags can be listed if you call C<DescribeTags> as is without
+passing any parameters.
 
 
 =head2 DisassociateConfigurationItemsFromApplication
@@ -486,6 +569,9 @@ Returns: a L<Paws::Discovery::GetDiscoverySummaryResponse> instance
 
 Retrieves a short summary of discovered assets.
 
+This API operation takes no request parameters and is called as is at
+the command prompt as shown in the example.
+
 
 =head2 ListConfigurations
 
@@ -508,9 +594,9 @@ Each argument is described in detail in: L<Paws::Discovery::ListConfigurations>
 
 Returns: a L<Paws::Discovery::ListConfigurationsResponse> instance
 
-Retrieves a list of configuration items according to criteria that you
-specify in a filter. The filter criteria identifies the relationship
-requirements.
+Retrieves a list of configuration items as specified by the value
+passed to the required paramater C<configurationType>. Optional
+filtering may be applied to refine search results.
 
 
 =head2 ListServerNeighbors
@@ -536,6 +622,21 @@ Returns: a L<Paws::Discovery::ListServerNeighborsResponse> instance
 
 Retrieves a list of servers that are one network hop away from a
 specified server.
+
+
+=head2 StartContinuousExport
+
+
+
+
+
+
+Each argument is described in detail in: L<Paws::Discovery::StartContinuousExport>
+
+Returns: a L<Paws::Discovery::StartContinuousExportResponse> instance
+
+Start the continuous flow of agent's discovered data into Amazon
+Athena.
 
 
 =head2 StartDataCollectionByAgentIds
@@ -586,6 +687,22 @@ If you do not include an C<agentIds> filter, summary data is exported
 that includes both AWS Agentless Discovery Connector data and summary
 data from AWS Discovery Agents. Export of summary data is limited to
 two exports per day.
+
+
+=head2 StopContinuousExport
+
+=over
+
+=item ExportId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Discovery::StopContinuousExport>
+
+Returns: a L<Paws::Discovery::StopContinuousExportResponse> instance
+
+Stop the continuous flow of agent's discovered data into Amazon Athena.
 
 
 =head2 StopDataCollectionByAgentIds

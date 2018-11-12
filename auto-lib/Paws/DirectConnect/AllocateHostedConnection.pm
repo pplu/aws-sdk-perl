@@ -41,18 +41,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $AwsDevice       = $Connection->AwsDevice;
-    my $Bandwidth       = $Connection->Bandwidth;
-    my $ConnectionId    = $Connection->ConnectionId;
-    my $ConnectionName  = $Connection->ConnectionName;
-    my $ConnectionState = $Connection->ConnectionState;
-    my $LagId           = $Connection->LagId;
-    my $LoaIssueTime    = $Connection->LoaIssueTime;
-    my $Location        = $Connection->Location;
-    my $OwnerAccount    = $Connection->OwnerAccount;
-    my $PartnerName     = $Connection->PartnerName;
-    my $Region          = $Connection->Region;
-    my $Vlan            = $Connection->Vlan;
+    my $AwsDevice         = $Connection->AwsDevice;
+    my $AwsDeviceV2       = $Connection->AwsDeviceV2;
+    my $Bandwidth         = $Connection->Bandwidth;
+    my $ConnectionId      = $Connection->ConnectionId;
+    my $ConnectionName    = $Connection->ConnectionName;
+    my $ConnectionState   = $Connection->ConnectionState;
+    my $JumboFrameCapable = $Connection->JumboFrameCapable;
+    my $LagId             = $Connection->LagId;
+    my $LoaIssueTime      = $Connection->LoaIssueTime;
+    my $Location          = $Connection->Location;
+    my $OwnerAccount      = $Connection->OwnerAccount;
+    my $PartnerName       = $Connection->PartnerName;
+    my $Region            = $Connection->Region;
+    my $Vlan              = $Connection->Vlan;
 
     # Returns a L<Paws::DirectConnect::Connection> object.
 
@@ -64,55 +66,32 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =head2 B<REQUIRED> Bandwidth => Str
 
-The bandwidth of the connection.
-
-Example: C<500Mbps>
-
-Default: None
-
-Values: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, or 500Mbps
+The bandwidth of the hosted connection, in Mbps. The possible values
+are 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, and 500Mbps.
 
 
 
 =head2 B<REQUIRED> ConnectionId => Str
 
-The ID of the interconnect or LAG on which the connection will be
-provisioned.
-
-Example: dxcon-456abc78 or dxlag-abc123
-
-Default: None
+The ID of the interconnect or LAG.
 
 
 
 =head2 B<REQUIRED> ConnectionName => Str
 
-The name of the provisioned connection.
-
-Example: "C<500M Connection to AWS>"
-
-Default: None
+The name of the hosted connection.
 
 
 
 =head2 B<REQUIRED> OwnerAccount => Str
 
-The numeric account ID of the customer for whom the connection will be
-provisioned.
-
-Example: 123443215678
-
-Default: None
+The ID of the AWS account ID of the customer for the connection.
 
 
 
 =head2 B<REQUIRED> Vlan => Int
 
 The dedicated VLAN provisioned to the hosted connection.
-
-Example: 101
-
-Default: None
 
 
 

@@ -41,7 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       OperationPreferences => {
         FailureToleranceCount      => 1,    # OPTIONAL
         FailureTolerancePercentage => 1,    # max: 100; OPTIONAL
-        MaxConcurrentCount         => 1,    # min: 1, ; OPTIONAL
+        MaxConcurrentCount         => 1,    # min: 1; OPTIONAL
         MaxConcurrentPercentage    => 1,    # min: 1, max: 100; OPTIONAL
         RegionOrder => [ 'MyRegion', ... ],
       },    # OPTIONAL

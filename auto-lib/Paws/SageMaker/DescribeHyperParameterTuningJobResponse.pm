@@ -27,8 +27,8 @@ Paws::SageMaker::DescribeHyperParameterTuningJobResponse
 
 =head2 BestTrainingJob => L<Paws::SageMaker::HyperParameterTrainingJobSummary>
 
-A object that describes the training job that completed with the best
-current .
+A TrainingJobSummary object that describes the training job that
+completed with the best current HyperParameterTuningJobObjective.
 
 
 =head2 B<REQUIRED> CreationTime => Str
@@ -53,7 +53,8 @@ The Amazon Resource Name (ARN) of the tuning job.
 
 =head2 B<REQUIRED> HyperParameterTuningJobConfig => L<Paws::SageMaker::HyperParameterTuningJobConfig>
 
-The object that specifies the configuration of the tuning job.
+The HyperParameterTuningJobConfig object that specifies the
+configuration of the tuning job.
 
 
 =head2 B<REQUIRED> HyperParameterTuningJobName => Str
@@ -74,21 +75,21 @@ The date and time that the status of the tuning job was modified.
 
 =head2 B<REQUIRED> ObjectiveStatusCounters => L<Paws::SageMaker::ObjectiveStatusCounters>
 
-The object that specifies the number of training jobs, categorized by
-the status of their final objective metric, that this tuning job
-launched.
+The ObjectiveStatusCounters object that specifies the number of
+training jobs, categorized by the status of their final objective
+metric, that this tuning job launched.
 
 
 =head2 B<REQUIRED> TrainingJobDefinition => L<Paws::SageMaker::HyperParameterTrainingJobDefinition>
 
-The object that specifies the definition of the training jobs that this
-tuning job launches.
+The HyperParameterTrainingJobDefinition object that specifies the
+definition of the training jobs that this tuning job launches.
 
 
 =head2 B<REQUIRED> TrainingJobStatusCounters => L<Paws::SageMaker::TrainingJobStatusCounters>
 
-The object that specifies the number of training jobs, categorized by
-status, that this tuning job launched.
+The TrainingJobStatusCounters object that specifies the number of
+training jobs, categorized by status, that this tuning job launched.
 
 
 =head2 _request_id => Str

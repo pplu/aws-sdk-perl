@@ -5,7 +5,7 @@ package Paws::Lambda::CreateEventSourceMapping;
   has Enabled => (is => 'ro', isa => 'Bool');
   has EventSourceArn => (is => 'ro', isa => 'Str', required => 1);
   has FunctionName => (is => 'ro', isa => 'Str', required => 1);
-  has StartingPosition => (is => 'ro', isa => 'Str', required => 1);
+  has StartingPosition => (is => 'ro', isa => 'Str');
   has StartingPositionTimestamp => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -36,9 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $EventSourceMappingConfiguration = $lambda->CreateEventSourceMapping(
       EventSourceArn            => 'MyArn',
       FunctionName              => 'MyFunctionName',
-      StartingPosition          => 'TRIM_HORIZON',
       BatchSize                 => 1,                        # OPTIONAL
       Enabled                   => 1,                        # OPTIONAL
+      StartingPosition          => 'TRIM_HORIZON',           # OPTIONAL
       StartingPositionTimestamp => '1970-01-01T01:00:00',    # OPTIONAL
     );
 
@@ -66,52 +66,58 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 The largest number of records that AWS Lambda will retrieve from your
 event source at the time of invoking your function. Your function
-receives an event with all the retrieved records. The default is 100
-records.
+receives an event with all the retrieved records. The default for
+Amazon Kinesis and Amazon DynamoDB is 100 records. Both the default and
+maximum for Amazon SQS are 10 messages.
 
 
 
 =head2 Enabled => Bool
 
-Indicates whether AWS Lambda should begin polling the event source. By
-default, C<Enabled> is true.
+Set to false to disable the event source upon creation.
 
 
 
 =head2 B<REQUIRED> EventSourceArn => Str
 
-The Amazon Resource Name (ARN) of the Amazon Kinesis or the Amazon
-DynamoDB stream that is the event source. Any record added to this
-stream could cause AWS Lambda to invoke your Lambda function, it
-depends on the C<BatchSize>. AWS Lambda POSTs the Amazon Kinesis event,
-containing records, to your Lambda function as JSON.
+The Amazon Resource Name (ARN) of the event source.
 
 
 
 =head2 B<REQUIRED> FunctionName => Str
 
-The Lambda function to invoke when AWS Lambda detects an event on the
-stream.
+The name of the lambda function.
 
-You can specify the function name (for example, C<Thumbnail>) or you
-can specify Amazon Resource Name (ARN) of the function (for example,
-C<arn:aws:lambda:us-west-2:account-id:function:ThumbNail>).
+B<Name formats>
 
-If you are using versioning, you can also provide a qualified function
-ARN (ARN that is qualified with function version or alias name as
-suffix). For more information about versioning, see AWS Lambda Function
-Versioning and Aliases
-(http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html)
+=over
 
-AWS Lambda also allows you to specify only the function name with the
-account ID qualifier (for example, C<account-id:Thumbnail>).
+=item *
 
-Note that the length constraint applies only to the ARN. If you specify
-only the function name, it is limited to 64 characters in length.
+B<Function name> - C<MyFunction>.
+
+=item *
+
+B<Function ARN> -
+C<arn:aws:lambda:us-west-2:123456789012:function:MyFunction>.
+
+=item *
+
+B<Version or Alias ARN> -
+C<arn:aws:lambda:us-west-2:123456789012:function:MyFunction:PROD>.
+
+=item *
+
+B<Partial ARN> - C<123456789012:function:MyFunction>.
+
+=back
+
+The length constraint applies only to the full ARN. If you specify only
+the function name, it is limited to 64 characters in length.
 
 
 
-=head2 B<REQUIRED> StartingPosition => Str
+=head2 StartingPosition => Str
 
 The position in the DynamoDB or Kinesis stream where AWS Lambda should
 start reading. For more information, see GetShardIterator

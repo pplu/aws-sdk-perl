@@ -40,15 +40,67 @@ target based on one or more pieces of data extracted from the event.
 
 =head2 InputPathsMap => L<Paws::CloudWatchEvents::TransformerPaths>
 
-  Map of JSON paths to be extracted from the event. These are key-value
-pairs, where each value is a JSON path. You must use JSON dot notation,
-not bracket notation.
+  Map of JSON paths to be extracted from the event. You can then insert
+these in the template in C<InputTemplate> to produce the output you
+want to be sent to the target.
+
+C<InputPathsMap> is an array key-value pairs, where each value is a
+valid JSON path. You can have as many as 10 key-value pairs. You must
+use JSON dot notation, not bracket notation.
+
+The keys cannot start with "AWS."
 
 
 =head2 B<REQUIRED> InputTemplate => Str
 
-  Input template where you can use the values of the keys from
-C<InputPathsMap> to customize the data sent to the target.
+  Input template where you specify placeholders that will be filled with
+the values of the keys from C<InputPathsMap> to customize the data sent
+to the target. Enclose each C<InputPathsMaps> value in brackets:
+E<lt>I<value>E<gt> The InputTemplate must be valid JSON.
+
+If C<InputTemplate> is a JSON object (surrounded by curly braces), the
+following restrictions apply:
+
+=over
+
+=item *
+
+The placeholder cannot be used as an object key.
+
+=item *
+
+Object values cannot include quote marks.
+
+=back
+
+The following example shows the syntax for using C<InputPathsMap> and
+C<InputTemplate>.
+
+C<"InputTransformer":>
+
+C<{>
+
+C<"InputPathsMap": {"instance": "$.detail.instance","status":
+"$.detail.status"},>
+
+C<"InputTemplate": "E<lt>instanceE<gt> is in state E<lt>statusE<gt>">
+
+C<}>
+
+To have the C<InputTemplate> include quote marks within a JSON string,
+escape each quote marks with a slash, as in the following example:
+
+C<"InputTransformer":>
+
+C<{>
+
+C<"InputPathsMap": {"instance": "$.detail.instance","status":
+"$.detail.status"},>
+
+C<"InputTemplate": "E<lt>instanceE<gt> is in state
+\"E<lt>statusE<gt>\"">
+
+C<}>
 
 
 

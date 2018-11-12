@@ -78,7 +78,7 @@ The name of the log group.
 
 The prefix to match.
 
-iIf C<orderBy> is C<LastEventTime>,you cannot specify this parameter.
+If C<orderBy> is C<LastEventTime>,you cannot specify this parameter.
 
 
 

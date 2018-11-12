@@ -3,6 +3,7 @@ package Paws::Greengrass::GetFunctionDefinitionVersion;
   use Moose;
   has FunctionDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionDefinitionId', required => 1);
   has FunctionDefinitionVersionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionDefinitionVersionId', required => 1);
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'NextToken');
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $greengrass->GetFunctionDefinitionVersion(
       FunctionDefinitionId        => 'My__string',
       FunctionDefinitionVersionId => 'My__string',
-
+      NextToken                   => 'My__string',    # OPTIONAL
       );
 
     # Results:
@@ -42,12 +43,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $GetFunctionDefinitionVersionResponse->CreationTimestamp;
     my $Definition = $GetFunctionDefinitionVersionResponse->Definition;
     my $Id         = $GetFunctionDefinitionVersionResponse->Id;
+    my $NextToken  = $GetFunctionDefinitionVersionResponse->NextToken;
     my $Version    = $GetFunctionDefinitionVersionResponse->Version;
 
    # Returns a L<Paws::Greengrass::GetFunctionDefinitionVersionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/greengrass/GetFunctionDefinitionVersion>
 
 =head1 ATTRIBUTES
 
@@ -61,6 +63,13 @@ The ID of the Lambda function definition.
 =head2 B<REQUIRED> FunctionDefinitionVersionId => Str
 
 The ID of the function definition version.
+
+
+
+=head2 NextToken => Str
+
+The token for the next set of results, or ''null'' if there are no
+additional results.
 
 
 

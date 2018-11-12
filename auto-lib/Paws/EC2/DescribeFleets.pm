@@ -70,6 +70,37 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 One or more filters.
 
+=over
+
+=item *
+
+C<activity-status> - The progress of the EC2 Fleet ( C<error> |
+C<pending-fulfillment> | C<pending-termination> | C<fulfilled>).
+
+=item *
+
+C<excess-capacity-termination-policy> - Indicates whether to terminate
+running instances if the target capacity is decreased below the current
+EC2 Fleet size (C<true> | C<false>).
+
+=item *
+
+C<fleet-state> - The state of the EC2 Fleet (C<submitted> | C<active> |
+C<deleted> | C<failed> | C<deleted-running> | C<deleted-terminating> |
+C<modifying>).
+
+=item *
+
+C<replace-unhealthy-instances> - Indicates whether EC2 Fleet should
+replace unhealthy instances (C<true> | C<false>).
+
+=item *
+
+C<type> - The type of request (C<request> | C<maintain>).
+
+=back
+
+
 
 
 =head2 FleetIds => ArrayRef[Str|Undef]

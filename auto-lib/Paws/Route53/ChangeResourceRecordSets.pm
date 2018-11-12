@@ -65,7 +65,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                 },
                 ...
-              ],                         # min: 1, ; OPTIONAL
+              ],                         # min: 1; OPTIONAL
               SetIdentifier =>
                 'MyResourceRecordSetIdentifier',    # min: 1, max: 128; OPTIONAL
               TTL => 1,                             # max: 2147483647; OPTIONAL
@@ -76,7 +76,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },
           ...
-        ],                                          # min: 1,
+        ],                                          # min: 1
         Comment => 'MyResourceDescription',         # max: 256; OPTIONAL
       },
       HostedZoneId => 'MyResourceId',

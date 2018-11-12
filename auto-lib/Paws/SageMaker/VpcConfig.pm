@@ -34,7 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 Specifies a VPC that your training jobs and hosted models have access
 to. Control access to and from your training and model containers by
-configuring the VPC. For more information, see host-vpc and train-vpc.
+configuring the VPC. For more information, see Protect Endpoints by
+Using an Amazon Virtual Private Cloud
+(http://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html) and
+Protect Training Jobs by Using an Amazon Virtual Private Cloud
+(http://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html).
 
 =head1 ATTRIBUTES
 

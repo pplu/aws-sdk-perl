@@ -71,6 +71,15 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 One or more filters.
 
+=over
+
+=item *
+
+C<instance-type> - The instance type.
+
+=back
+
+
 
 
 =head2 B<REQUIRED> FleetId => Str

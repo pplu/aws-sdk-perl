@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Ge
 
 =head1 DESCRIPTION
 
-A complex type that contains information about a geo location.
+A complex type that contains information about a geographic location.
 
 =head1 ATTRIBUTES
 
@@ -55,8 +55,8 @@ C<SubdivisionCode> returns an C<InvalidInput> error.
 
 =head2 SubdivisionCode => Str
 
-  The code for the subdivision, for example, a state in the United States
-or a province in Canada.
+  The code for the subdivision. Route 53 currently supports only states
+in the United States.
 
 
 

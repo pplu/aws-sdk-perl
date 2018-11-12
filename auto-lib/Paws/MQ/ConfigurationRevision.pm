@@ -1,5 +1,6 @@
 package Paws::MQ::ConfigurationRevision;
   use Moose;
+  has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has Revision => (is => 'ro', isa => 'Int', request_name => 'revision', traits => ['NameInRequest']);
 1;
@@ -21,20 +22,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MQ::ConfigurationRevision object:
 
-  $service_obj->Method(Att1 => { Description => $value, ..., Revision => $value  });
+  $service_obj->Method(Att1 => { Created => $value, ..., Revision => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::MQ::ConfigurationRevision object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Description
+  $result->Att1->Created
 
 =head1 DESCRIPTION
 
 Returns information about the specified configuration revision.
 
 =head1 ATTRIBUTES
+
+
+=head2 Created => Str
+
+  Required. The date and time of the configuration revision.
 
 
 =head2 Description => Str
@@ -44,7 +50,7 @@ Returns information about the specified configuration revision.
 
 =head2 Revision => Int
 
-  Required. The revision of the configuration.
+  Required. The revision number of the configuration.
 
 
 

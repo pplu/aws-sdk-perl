@@ -53,7 +53,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kin
 
 =head2 ExclusiveStartShardId => Str
 
-The ID of the shard to start the list with.
+Specify this parameter to indicate that you want to list the shards
+starting with the shard whose ID immediately follows
+C<ExclusiveStartShardId>.
 
 If you don't specify this parameter, the default behavior is for
 C<ListShards> to list the shards starting with the first one in the

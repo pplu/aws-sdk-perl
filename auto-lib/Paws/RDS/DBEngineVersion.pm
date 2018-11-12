@@ -8,6 +8,7 @@ package Paws::RDS::DBEngineVersion;
   has EngineVersion => (is => 'ro', isa => 'Str');
   has ExportableLogTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SupportedCharacterSets => (is => 'ro', isa => 'ArrayRef[Paws::RDS::CharacterSet]', request_name => 'CharacterSet', traits => ['NameInRequest']);
+  has SupportedEngineModes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SupportedTimezones => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Timezone]', request_name => 'Timezone', traits => ['NameInRequest']);
   has SupportsLogExportsToCloudwatchLogs => (is => 'ro', isa => 'Bool');
   has SupportsReadReplica => (is => 'ro', isa => 'Bool');
@@ -90,6 +91,11 @@ CloudWatch Logs.
 
   A list of the character sets supported by this engine for the
 C<CharacterSetName> parameter of the C<CreateDBInstance> action.
+
+
+=head2 SupportedEngineModes => ArrayRef[Str|Undef]
+
+  A list of the supported DB engine modes.
 
 
 =head2 SupportedTimezones => ArrayRef[L<Paws::RDS::Timezone>]

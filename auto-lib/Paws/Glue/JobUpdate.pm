@@ -10,6 +10,7 @@ package Paws::Glue::JobUpdate;
   has MaxRetries => (is => 'ro', isa => 'Int');
   has NotificationProperty => (is => 'ro', isa => 'Paws::Glue::NotificationProperty');
   has Role => (is => 'ro', isa => 'Str');
+  has SecurityConfiguration => (is => 'ro', isa => 'Str');
   has Timeout => (is => 'ro', isa => 'Int');
 1;
 
@@ -116,9 +117,17 @@ allowed for this job.
   The name or ARN of the IAM role associated with this job (required).
 
 
+=head2 SecurityConfiguration => Str
+
+  The name of the SecurityConfiguration structure to be used with this
+job.
+
+
 =head2 Timeout => Int
 
-  The job timeout in minutes. The default is 2880 minutes (48 hours).
+  The job timeout in minutes. This is the maximum time that a job run can
+consume resources before it is terminated and enters C<TIMEOUT> status.
+The default is 2,880 minutes (48 hours).
 
 
 

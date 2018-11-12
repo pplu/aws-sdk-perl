@@ -48,24 +48,20 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =head2 Asn => Int
 
-
+The autonomous system (AS) number for Border Gateway Protocol (BGP)
+configuration.
 
 
 
 =head2 CustomerAddress => Str
 
-
+The IP address assigned to the customer interface.
 
 
 
 =head2 VirtualInterfaceId => Str
 
-The ID of the virtual interface from which the BGP peer will be
-deleted.
-
-Example: dxvif-456abc78
-
-Default: None
+The ID of the virtual interface.
 
 
 

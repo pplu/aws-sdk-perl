@@ -2,9 +2,11 @@ package Paws::DynamoDB::BackupDetails;
   use Moose;
   has BackupArn => (is => 'ro', isa => 'Str', required => 1);
   has BackupCreationDateTime => (is => 'ro', isa => 'Str', required => 1);
+  has BackupExpiryDateTime => (is => 'ro', isa => 'Str');
   has BackupName => (is => 'ro', isa => 'Str', required => 1);
   has BackupSizeBytes => (is => 'ro', isa => 'Int');
   has BackupStatus => (is => 'ro', isa => 'Str', required => 1);
+  has BackupType => (is => 'ro', isa => 'Str', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +26,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DynamoDB::BackupDetails object:
 
-  $service_obj->Method(Att1 => { BackupArn => $value, ..., BackupStatus => $value  });
+  $service_obj->Method(Att1 => { BackupArn => $value, ..., BackupType => $value  });
 
 =head3 Results returned from an API call
 
@@ -51,6 +53,13 @@ Contains the details of the backup created for the table.
 backup.
 
 
+=head2 BackupExpiryDateTime => Str
+
+  Time at which the automatic on-demand backup created by DynamoDB will
+expire. This C<SYSTEM> on-demand backup expires automatically 35 days
+after its creation.
+
+
 =head2 B<REQUIRED> BackupName => Str
 
   Name of the requested backup.
@@ -65,6 +74,24 @@ backup.
 
   Backup can be in one of the following states: CREATING, ACTIVE,
 DELETED.
+
+
+=head2 B<REQUIRED> BackupType => Str
+
+  BackupType:
+
+=over
+
+=item *
+
+C<USER> - On-demand backup created by you.
+
+=item *
+
+C<SYSTEM> - On-demand backup automatically created by DynamoDB.
+
+=back
+
 
 
 

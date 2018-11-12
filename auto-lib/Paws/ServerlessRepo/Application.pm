@@ -55,21 +55,21 @@ Details about the application.
 
   The name of the author publishing the app.
 
-Min Length=1. Max Length=127.
+Minimum length=1. Maximum length=127.
 
 Pattern "^[a-z0-9](([a-z0-9]|-(?!-))*[a-z0-9])?$";
 
 
 =head2 CreationTime => Str
 
-  The date/time this resource was created.
+  The date and time this resource was created.
 
 
 =head2 B<REQUIRED> Description => Str
 
   The description of the application.
 
-Min Length=1. Max Length=256
+Minimum length=1. Maximum length=256
 
 
 =head2 HomePageUrl => Str
@@ -82,34 +82,34 @@ location of your GitHub repository for the application.
 
   Labels to improve discovery of apps in search results.
 
-Min Length=1. Max Length=127. Maximum number of labels: 10
+Minimum length=1. Maximum length=127. Maximum number of labels: 10
 
 Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
 
 
 =head2 LicenseUrl => Str
 
-  A link to a license file of the app that matches the spdxLicenseID of
-your application.
+  A link to a license file of the app that matches the spdxLicenseID
+value of your application.
 
-Max size 5 MB
+Maximum size 5 MB
 
 
 =head2 B<REQUIRED> Name => Str
 
   The name of the application.
 
-Min Length=1. Max Length=140
+Minimum length=1. Maximum length=140
 
 Pattern: "[a-zA-Z0-9\\-]+";
 
 
 =head2 ReadmeUrl => Str
 
-  A link to the readme file that contains a more detailed description of
-the application and how it works in Markdown language.
+  A link to the readme file in Markdown language that contains a more
+detailed description of the application and how it works.
 
-Max size 5 MB
+Maximum size 5 MB
 
 
 =head2 SpdxLicenseId => Str

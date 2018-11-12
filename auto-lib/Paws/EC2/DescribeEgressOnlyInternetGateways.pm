@@ -63,7 +63,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 EgressOnlyInternetGatewayIds => ArrayRef[Str|Undef]
 
-One or more egress-only Internet gateway IDs.
+One or more egress-only internet gateway IDs.
 
 
 
@@ -71,8 +71,8 @@ One or more egress-only Internet gateway IDs.
 
 The maximum number of results to return for the request in a single
 page. The remaining results can be seen by sending another request with
-the returned C<NextToken> value. This value can be between 5 and 1000;
-if C<MaxResults> is given a value larger than 1000, only 1000 results
+the returned C<NextToken> value. This value can be between 5 and 1000.
+If C<MaxResults> is given a value larger than 1000, only 1000 results
 are returned.
 
 

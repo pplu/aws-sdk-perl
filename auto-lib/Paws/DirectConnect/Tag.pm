@@ -39,12 +39,12 @@ Information about a tag.
 
 =head2 B<REQUIRED> Key => Str
 
-  The key of the tag.
+  The key.
 
 
 =head2 Value => Str
 
-  The value of the tag.
+  The value.
 
 
 

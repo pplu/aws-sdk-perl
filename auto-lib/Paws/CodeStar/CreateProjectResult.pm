@@ -19,17 +19,18 @@ Paws::CodeStar::CreateProjectResult
 
 =head2 B<REQUIRED> Arn => Str
 
-Reserved for future use.
+The Amazon Resource Name (ARN) of the created project.
 
 
 =head2 ClientRequestToken => Str
 
-Reserved for future use.
+A user- or system-generated token that identifies the entity that
+requested project creation.
 
 
 =head2 B<REQUIRED> Id => Str
 
-Reserved for future use.
+The ID of the project.
 
 
 =head2 ProjectTemplateId => Str

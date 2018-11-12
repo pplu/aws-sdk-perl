@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DeleteDBClusterResult = $rds->DeleteDBCluster(
       {
         'DBClusterIdentifier' => 'mydbcluster',
-        'SkipFinalSnapshot'   => true
+        'SkipFinalSnapshot'   => 1
       }
     );
 
@@ -85,7 +85,7 @@ First character must be a letter
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens
+Can't end with a hyphen or contain two consecutive hyphens
 
 =back
 

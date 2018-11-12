@@ -33,8 +33,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudTrail:
 
 =head1 DESCRIPTION
 
-Use event selectors to specify whether you want your trail to log
-management and/or data events. When an event occurs in your account,
+Use event selectors to further specify the management and data event
+settings for your trail. By default, trails created without specific
+event selectors will be configured to log all read and write management
+events, and no data events. When an event occurs in your account,
 CloudTrail evaluates the event selector for all trails. For each trail,
 if the event matches any event selector, the trail processes and logs
 the event. If the event doesn't match any event selector, the trail
@@ -47,11 +49,16 @@ You can configure up to five event selectors for a trail.
 
 =head2 DataResources => ArrayRef[L<Paws::CloudTrail::DataResource>]
 
-  CloudTrail supports logging only data events for S3 objects. You can
-specify up to 250 S3 buckets and object prefixes for a trail.
+  CloudTrail supports data event logging for Amazon S3 objects and AWS
+Lambda functions. You can specify up to 250 resources for an individual
+event selector, but the total number of data resources cannot exceed
+250 across all event selectors in a trail. This limit does not apply if
+you configure resource logging for all data events.
 
 For more information, see Data Events
 (http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-data-events)
+and Limits in AWS CloudTrail
+(https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html)
 in the I<AWS CloudTrail User Guide>.
 
 

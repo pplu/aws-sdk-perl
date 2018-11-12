@@ -1,6 +1,7 @@
 package Paws::Pinpoint::SMSMessage;
   use Moose;
   has Body => (is => 'ro', isa => 'Str');
+  has Keyword => (is => 'ro', isa => 'Str');
   has MessageType => (is => 'ro', isa => 'Str');
   has OriginationNumber => (is => 'ro', isa => 'Str');
   has SenderId => (is => 'ro', isa => 'Str');
@@ -42,8 +43,13 @@ SMS Message.
 
 =head2 Body => Str
 
-  The message body of the notification, the email body or the text
-message.
+  The body of the SMS message.
+
+
+=head2 Keyword => Str
+
+  The SMS program name that you provided to AWS Support when you
+requested your dedicated number.
 
 
 =head2 MessageType => Str

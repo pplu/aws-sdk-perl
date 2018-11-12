@@ -56,7 +56,7 @@ state. You can view these services with ListServices.
 =head2 ClusterArn => Str
 
   The Amazon Resource Name (ARN) that identifies the cluster. The ARN
-contains the C<arn:aws:ecs> namespace, followed by the region of the
+contains the C<arn:aws:ecs> namespace, followed by the Region of the
 cluster, the AWS account ID of the cluster owner, the C<cluster>
 namespace, and then the cluster name. For example,
 C<arn:aws:ecs:I<region>:I<012345678910>:cluster/I<test> >..
@@ -74,7 +74,8 @@ C<arn:aws:ecs:I<region>:I<012345678910>:cluster/I<test> >..
 
 =head2 RegisteredContainerInstancesCount => Int
 
-  The number of container instances registered into the cluster.
+  The number of container instances registered into the cluster. This
+includes container instances in both C<ACTIVE> and C<DRAINING> status.
 
 
 =head2 RunningTasksCount => Int

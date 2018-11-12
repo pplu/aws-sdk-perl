@@ -31,7 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DeleteTagsResult = $workspaces->DeleteTags(
       ResourceId => 'MyNonEmptyString',
       TagKeys    => [
-        'MyNonEmptyString', ...    # min: 1,
+        'MyNonEmptyString', ...    # min: 1
       ],
 
     );

@@ -245,7 +245,7 @@ A custom AMI: C<Custom>.
 
 =back
 
-For more information on the supported operating systems, see AWS
+For more information about the supported operating systems, see AWS
 OpsWorks Stacks Operating Systems
 (http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
 
@@ -253,9 +253,9 @@ The default option is the current Amazon Linux version. If you set this
 parameter to C<Custom>, you must use the CreateInstance action's AmiId
 parameter to specify the custom AMI that you want to use. Block device
 mappings are not supported if the value is C<Custom>. For more
-information on the supported operating systems, see Operating Systems
+information about supported operating systems, see Operating Systems
 (http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html)For
-more information on how to use custom AMIs with AWS OpsWorks Stacks,
+more information about how to use custom AMIs with AWS OpsWorks Stacks,
 see Using Custom AMIs
 (http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
 

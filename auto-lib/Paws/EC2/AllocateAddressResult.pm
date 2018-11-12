@@ -4,6 +4,7 @@ package Paws::EC2::AllocateAddressResult;
   has AllocationId => (is => 'ro', isa => 'Str', request_name => 'allocationId', traits => ['NameInRequest',]);
   has Domain => (is => 'ro', isa => 'Str', request_name => 'domain', traits => ['NameInRequest',]);
   has PublicIp => (is => 'ro', isa => 'Str', request_name => 'publicIp', traits => ['NameInRequest',]);
+  has PublicIpv4Pool => (is => 'ro', isa => 'Str', request_name => 'publicIpv4Pool', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -32,6 +33,11 @@ Valid values are: C<"vpc">, C<"standard">
 =head2 PublicIp => Str
 
 The Elastic IP address.
+
+
+=head2 PublicIpv4Pool => Str
+
+The ID of an address pool.
 
 
 =head2 _request_id => Str

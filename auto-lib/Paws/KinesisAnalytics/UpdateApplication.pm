@@ -60,23 +60,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               RecordColumnUpdates => [
                 {
                   Name    => 'MyRecordColumnName',
-                  SqlType => 'MyRecordColumnSqlType',    # min: 1,
+                  SqlType => 'MyRecordColumnSqlType',    # min: 1
                   Mapping => 'MyRecordColumnMapping',    # OPTIONAL
                 },
                 ...
               ],    # min: 1, max: 1000; OPTIONAL
               RecordEncodingUpdate => 'MyRecordEncoding',    # OPTIONAL
               RecordFormatUpdate   => {
-                RecordFormatType  => 'JSON',                 # values: JSON, CSV
+                RecordFormatType  => 'JSON',    # values: JSON, CSV; OPTIONAL
                 MappingParameters => {
                   CSVMappingParameters => {
-                    RecordColumnDelimiter =>
-                      'MyRecordColumnDelimiter',             # min: 1,
-                    RecordRowDelimiter => 'MyRecordRowDelimiter',    # min: 1,
+                    RecordColumnDelimiter => 'MyRecordColumnDelimiter', # min: 1
+                    RecordRowDelimiter    => 'MyRecordRowDelimiter',    # min: 1
 
                   },    # OPTIONAL
                   JSONMappingParameters => {
-                    RecordRowPath => 'MyRecordRowPath',    # min: 1,
+                    RecordRowPath => 'MyRecordRowPath',    # min: 1
 
                   },    # OPTIONAL
                 },    # OPTIONAL
@@ -100,7 +99,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             OutputId                => 'MyId',       # min: 1, max: 50
             DestinationSchemaUpdate => {
-              RecordFormatType => 'JSON',            # values: JSON, CSV
+              RecordFormatType => 'JSON',    # values: JSON, CSV; OPTIONAL
             },    # OPTIONAL
             KinesisFirehoseOutputUpdate => {
               ResourceARNUpdate =>
@@ -128,22 +127,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               RecordColumns => [
                 {
                   Name    => 'MyRecordColumnName',
-                  SqlType => 'MyRecordColumnSqlType',    # min: 1,
+                  SqlType => 'MyRecordColumnSqlType',    # min: 1
                   Mapping => 'MyRecordColumnMapping',    # OPTIONAL
                 },
                 ...
               ],    # min: 1, max: 1000; OPTIONAL
               RecordFormat => {
-                RecordFormatType  => 'JSON',    # values: JSON, CSV
+                RecordFormatType  => 'JSON',    # values: JSON, CSV; OPTIONAL
                 MappingParameters => {
                   CSVMappingParameters => {
-                    RecordColumnDelimiter =>
-                      'MyRecordColumnDelimiter',    # min: 1,
-                    RecordRowDelimiter => 'MyRecordRowDelimiter',    # min: 1,
+                    RecordColumnDelimiter => 'MyRecordColumnDelimiter', # min: 1
+                    RecordRowDelimiter    => 'MyRecordRowDelimiter',    # min: 1
 
                   },    # OPTIONAL
                   JSONMappingParameters => {
-                    RecordRowPath => 'MyRecordRowPath',    # min: 1,
+                    RecordRowPath => 'MyRecordRowPath',    # min: 1
 
                   },    # OPTIONAL
                 },    # OPTIONAL

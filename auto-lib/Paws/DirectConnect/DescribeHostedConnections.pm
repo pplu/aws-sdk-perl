@@ -45,12 +45,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =head2 B<REQUIRED> ConnectionId => Str
 
-The ID of the interconnect or LAG on which the hosted connections are
-provisioned.
-
-Example: dxcon-abc123 or dxlag-abc123
-
-Default: None
+The ID of the interconnect or LAG.
 
 
 

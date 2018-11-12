@@ -38,7 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       {
         'Cluster'           => 'default',
         'ContainerInstance' => 'container_instance_UUID',
-        'Force'             => true
+        'Force'             => 1
       }
     );
 
@@ -61,7 +61,7 @@ cluster, the default cluster is assumed.
 
 The container instance ID or full ARN of the container instance to
 deregister. The ARN contains the C<arn:aws:ecs> namespace, followed by
-the region of the container instance, the AWS account ID of the
+the Region of the container instance, the AWS account ID of the
 container instance owner, the C<container-instance> namespace, and then
 the container instance ID. For example,
 C<arn:aws:ecs:I<region>:I<aws_account_id>:container-instance/I<container_instance_ID>

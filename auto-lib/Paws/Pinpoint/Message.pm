@@ -9,6 +9,7 @@ package Paws::Pinpoint::Message;
   has MediaUrl => (is => 'ro', isa => 'Str');
   has RawContent => (is => 'ro', isa => 'Str');
   has SilentPush => (is => 'ro', isa => 'Bool');
+  has TimeToLive => (is => 'ro', isa => 'Int');
   has Title => (is => 'ro', isa => 'Str');
   has Url => (is => 'ro', isa => 'Str');
 1;
@@ -41,7 +42,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::M
 
 =head1 DESCRIPTION
 
-This class has no description
+Message to send
 
 =head1 ATTRIBUTES
 
@@ -100,6 +101,16 @@ overrides the message.
 
   Indicates if the message should display on the users device. Silent
 pushes can be used for Remote Configuration and Phone Home use cases.
+
+
+=head2 TimeToLive => Int
+
+  This parameter specifies how long (in seconds) the message should be
+kept if the service is unable to deliver the notification the first
+time. If the value is 0, it treats the notification as if it expires
+immediately and does not store the notification or attempt to redeliver
+it. This value is converted to the expiration field when sent to the
+service. It only applies to APNs and GCM
 
 
 =head2 Title => Str

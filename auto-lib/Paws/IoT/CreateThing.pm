@@ -33,11 +33,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateThingResponse = $iot->CreateThing(
       ThingName        => 'MyThingName',
       AttributePayload => {
-        attributes => {
+        Attributes => {
           'MyAttributeName' =>
             'MyAttributeValue',    # key: max: 128, value: max: 800
         },    # OPTIONAL
-        merge => 1,    # OPTIONAL
+        Merge => 1,    # OPTIONAL
       },    # OPTIONAL
       ThingTypeName => 'MyThingTypeName',    # OPTIONAL
     );

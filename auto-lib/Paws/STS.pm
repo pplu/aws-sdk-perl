@@ -185,7 +185,7 @@ was made, and so on. To learn more about CloudTrail, including how to
 turn it on and find your log files, see the AWS CloudTrail User Guide
 (http://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html).
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/iam/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/iam/>
 
 
 =head1 METHODS

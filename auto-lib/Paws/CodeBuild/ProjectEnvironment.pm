@@ -93,8 +93,17 @@ your build spec by running the following build commands. (Do not run
 the following build commands if the specified build environment image
 is provided by AWS CodeBuild with Docker support.)
 
+If the operating system's base image is Ubuntu Linux:
+
 C<- nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock
---host=tcp://0.0.0.0:2375 --storage-driver=overlay& - timeout -t 15 sh
+--host=tcp://0.0.0.0:2375 --storage-driver=overlay& - timeout 15 sh -c
+"until docker info; do echo .; sleep 1; done">
+
+If the operating system's base image is Alpine Linux, add the C<-t>
+argument to C<timeout>:
+
+C<- nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock
+--host=tcp://0.0.0.0:2375 --storage-driver=overlay& - timeout 15 -t sh
 -c "until docker info; do echo .; sleep 1; done">
 
 

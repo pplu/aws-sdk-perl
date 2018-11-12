@@ -43,7 +43,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
+Deletes the replication subresource associated with the specified
+bucket.
 
+There is usually some time lag before replication configuration
+deletion is fully propagated to all the Amazon S3 systems.
+
+For more information, see Cross-Region Replication (CRR) in the Amazon
+S3 Developer Guide.
 
 
 

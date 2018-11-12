@@ -17,8 +17,8 @@ Paws::EC2::AssociateRouteTableResult
 
 =head2 AssociationId => Str
 
-The route table association ID (needed to disassociate the route
-table).
+The route table association ID. This ID is required for disassociating
+the route table.
 
 
 =head2 _request_id => Str

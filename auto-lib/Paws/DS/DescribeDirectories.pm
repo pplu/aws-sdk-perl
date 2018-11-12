@@ -68,7 +68,7 @@ operation.
 
 =head2 NextToken => Str
 
-The I<DescribeDirectoriesResult.NextToken> value from a previous call
+The C<DescribeDirectoriesResult.NextToken> value from a previous call
 to DescribeDirectories. Pass null if this is the first call.
 
 

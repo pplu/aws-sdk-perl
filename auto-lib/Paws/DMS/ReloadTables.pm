@@ -1,6 +1,7 @@
 
 package Paws::DMS::ReloadTables;
   use Moose;
+  has ReloadOption => (is => 'ro', isa => 'Str');
   has ReplicationTaskArn => (is => 'ro', isa => 'Str', required => 1);
   has TablesToReload => (is => 'ro', isa => 'ArrayRef[Paws::DMS::TableToReload]', required => 1);
 
@@ -37,7 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],
-
+      ReloadOption => 'data-reload',    # OPTIONAL
     );
 
     # Results:
@@ -51,9 +52,22 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dms
 =head1 ATTRIBUTES
 
 
+=head2 ReloadOption => Str
+
+Options for reload. Specify C<data-reload> to reload the data and
+re-validate it if validation is enabled. Specify C<validate-only> to
+re-validate the table. This option applies only when validation is
+enabled for the task.
+
+Valid values: data-reload, validate-only
+
+Default value is data-reload.
+
+Valid values are: C<"data-reload">, C<"validate-only">
+
 =head2 B<REQUIRED> ReplicationTaskArn => Str
 
-The Amazon Resource Name (ARN) of the replication instance.
+The Amazon Resource Name (ARN) of the replication task.
 
 
 

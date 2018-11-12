@@ -8,7 +8,8 @@ package Paws::AppStream::CreateFleet;
   has DomainJoinInfo => (is => 'ro', isa => 'Paws::AppStream::DomainJoinInfo');
   has EnableDefaultInternetAccess => (is => 'ro', isa => 'Bool');
   has FleetType => (is => 'ro', isa => 'Str');
-  has ImageName => (is => 'ro', isa => 'Str', required => 1);
+  has ImageArn => (is => 'ro', isa => 'Str');
+  has ImageName => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
   has MaxUserDurationInSeconds => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str', required => 1);
@@ -43,7 +44,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         DesiredInstances => 1,
 
       },
-      ImageName                  => 'MyString',
       InstanceType               => 'MyString',
       Name                       => 'MyName',
       Description                => 'MyDescription',    # OPTIONAL
@@ -56,13 +56,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       EnableDefaultInternetAccess => 1,              # OPTIONAL
       FleetType                   => 'ALWAYS_ON',    # OPTIONAL
+      ImageArn                    => 'MyArn',        # OPTIONAL
+      ImageName                   => 'MyString',     # OPTIONAL
       MaxUserDurationInSeconds    => 1,              # OPTIONAL
       VpcConfig                   => {
         SecurityGroupIds => [
-          'MyString', ...                            # min: 1,
+          'MyString', ...                            # min: 1
         ],                                           # max: 5; OPTIONAL
         SubnetIds => [
-          'MyString', ...                            # min: 1,
+          'MyString', ...                            # min: 1
         ],                                           # OPTIONAL
       },    # OPTIONAL
     );
@@ -73,7 +75,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::AppStream::CreateFleetResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/appstream2/CreateFleet>
 
 =head1 ATTRIBUTES
 
@@ -141,7 +143,13 @@ streaming apps.
 
 Valid values are: C<"ALWAYS_ON">, C<"ON_DEMAND">
 
-=head2 B<REQUIRED> ImageName => Str
+=head2 ImageArn => Str
+
+The ARN of the public, private, or shared image to use.
+
+
+
+=head2 ImageName => Str
 
 The name of the image used to create the fleet.
 

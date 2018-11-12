@@ -49,8 +49,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/aut
 
 The health status of the instance. Set to C<Healthy> if you want the
 instance to remain in service. Set to C<Unhealthy> if you want the
-instance to be out of service. Auto Scaling will terminate and replace
-the unhealthy instance.
+instance to be out of service. Amazon EC2 Auto Scaling will terminate
+and replace the unhealthy instance.
 
 
 

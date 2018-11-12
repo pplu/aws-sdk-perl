@@ -125,7 +125,7 @@ bot, it sets C<status> to C<READY>. If Amazon Lex can't build the bot,
 it sets C<status> to C<FAILED>. Amazon Lex returns the reason for the
 failure in the C<failureReason> response element.
 
-Valid values are: C<"BUILDING">, C<"READY">, C<"FAILED">, C<"NOT_BUILT">
+Valid values are: C<"BUILDING">, C<"READY">, C<"READY_BASIC_TESTING">, C<"FAILED">, C<"NOT_BUILT">
 =head2 Version => Str
 
 The version of the bot.

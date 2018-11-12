@@ -129,6 +129,15 @@ use.
 
 payment-failed-Payment failed for the purchase attempt.
 
+=item *
+
+retired-The reserved node is no longer available.
+
+=item *
+
+exchanging-The owner is exchanging the reserved node for another
+reserved node.
+
 =back
 
 

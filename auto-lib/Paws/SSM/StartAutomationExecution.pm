@@ -8,6 +8,7 @@ package Paws::SSM::StartAutomationExecution;
   has MaxErrors => (is => 'ro', isa => 'Str');
   has Mode => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'Paws::SSM::AutomationParameterMap');
+  has TargetMaps => (is => 'ro', isa => 'ArrayRef[Paws::SSM::TargetMap]');
   has TargetParameterName => (is => 'ro', isa => 'Str');
   has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
 
@@ -47,6 +48,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'MyAutomationParameterValue', ...       # min: 1, max: 512
         ],    # key: min: 1, max: 30, value: max: 10
       },    # OPTIONAL
+      TargetMaps => [
+        {
+          'MyTargetMapKey' => [
+            'MyTargetMapValue', ...    # min: 1, max: 50
+          ],                           # key: min: 1, max: 50, value: max: 25
+        },
+        ...                            # min: 1, max: 20
+      ],                               # OPTIONAL
       TargetParameterName => 'MyAutomationParameterKey',    # OPTIONAL
       Targets             => [
         {
@@ -131,10 +140,17 @@ parameters in the Automation document.
 
 
 
+=head2 TargetMaps => ArrayRef[L<Paws::SSM::TargetMap>]
+
+A key-value mapping of document parameters to target resources. Both
+Targets and TargetMaps cannot be specified together.
+
+
+
 =head2 TargetParameterName => Str
 
 The name of the parameter used as the target resource for the
-rate-controlled execution. Required if you specify Targets.
+rate-controlled execution. Required if you specify targets.
 
 
 

@@ -32,26 +32,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $health = Paws->service('Health');
     my $DescribeAffectedEntitiesResponse = $health->DescribeAffectedEntities(
       Filter => {
-        eventArns => [
+        EventArns => [
           'MyeventArn', ...    # max: 1600
         ],                     # min: 1, max: 10
-        entityArns => [
+        EntityArns => [
           'MyentityArn', ...    # max: 1600
         ],                      # min: 1, max: 100; OPTIONAL
-        entityValues => [
+        EntityValues => [
           'MyentityValue', ...    # max: 256
         ],                        # min: 1, max: 100; OPTIONAL
-        lastUpdatedTimes => [
+        LastUpdatedTimes => [
           {
-            from => '1970-01-01T01:00:00',    # OPTIONAL
-            to   => '1970-01-01T01:00:00',    # OPTIONAL
+            From => '1970-01-01T01:00:00',    # OPTIONAL
+            To   => '1970-01-01T01:00:00',    # OPTIONAL
           },
           ...
         ],                                    # min: 1, max: 10; OPTIONAL
-        statusCodes => [
+        StatusCodes => [
           'IMPAIRED', ...    # values: IMPAIRED, UNIMPAIRED, UNKNOWN
         ],                   # min: 1, max: 3; OPTIONAL
-        tags => [
+        Tags => [
           {
             'MytagKey' => 'MytagValue',    # key: max: 127, value: max: 255
           },
@@ -64,8 +64,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $entities  = $DescribeAffectedEntitiesResponse->entities;
-    my $nextToken = $DescribeAffectedEntitiesResponse->nextToken;
+    my $Entities  = $DescribeAffectedEntitiesResponse->Entities;
+    my $NextToken = $DescribeAffectedEntitiesResponse->NextToken;
 
     # Returns a L<Paws::Health::DescribeAffectedEntitiesResponse> object.
 

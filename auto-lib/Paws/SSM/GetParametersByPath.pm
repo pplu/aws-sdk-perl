@@ -88,8 +88,8 @@ You can't filter using the parameter name.
 =head2 B<REQUIRED> Path => Str
 
 The hierarchy for the parameter. Hierarchies start with a forward slash
-(/) and end with the parameter name. A hierarchy can have a maximum of
-15 levels. Here is an example of a hierarchy:
+(/) and end with the parameter name. A parameter name hierarchy can
+have a maximum of 15 levels. Here is an example of a hierarchy:
 C</Finance/Prod/IAD/WinServ2016/license33>
 
 

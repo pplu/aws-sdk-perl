@@ -4,6 +4,7 @@ package Paws::Pinpoint::SegmentDimensions;
   has Behavior => (is => 'ro', isa => 'Paws::Pinpoint::SegmentBehaviors');
   has Demographic => (is => 'ro', isa => 'Paws::Pinpoint::SegmentDemographics');
   has Location => (is => 'ro', isa => 'Paws::Pinpoint::SegmentLocation');
+  has Metrics => (is => 'ro', isa => 'Paws::Pinpoint::MapOfMetricDimension');
   has UserAttributes => (is => 'ro', isa => 'Paws::Pinpoint::MapOfAttributeDimension');
 1;
 
@@ -58,6 +59,11 @@ Segment dimensions
 =head2 Location => L<Paws::Pinpoint::SegmentLocation>
 
   The segment location attributes.
+
+
+=head2 Metrics => L<Paws::Pinpoint::MapOfMetricDimension>
+
+  Custom segment metrics.
 
 
 =head2 UserAttributes => L<Paws::Pinpoint::MapOfAttributeDimension>

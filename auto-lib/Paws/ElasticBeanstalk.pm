@@ -501,6 +501,9 @@ Creates a configuration template. Templates are associated with a
 specific application and are used to deploy different versions of the
 application with the same configuration settings.
 
+Templates aren't associated with any environment. The
+C<EnvironmentName> response element is always C<null>.
+
 Related Topics
 
 =over
@@ -1017,8 +1020,9 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeInsta
 
 Returns: a L<Paws::ElasticBeanstalk::DescribeInstancesHealthResult> instance
 
-Retrives detailed information about the health of instances in your AWS
-Elastic Beanstalk. This operation requires enhanced health reporting
+Retrieves detailed information about the health of instances in your
+AWS Elastic Beanstalk. This operation requires enhanced health
+reporting
 (http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced.html).
 
 

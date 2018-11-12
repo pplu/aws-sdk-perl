@@ -75,11 +75,14 @@ The account ID that is associated with the recommendation.
 
 =head2 AccountScope => Str
 
-The account scope that you want recommendations for. The only valid
-value is C<Payer>. This means that AWS includes the master account and
-any member accounts when it calculates its recommendations.
+The account scope that you want recommendations for. C<PAYER> means
+that AWS includes the master account and any member accounts when it
+calculates its recommendations. C<LINKED> means that AWS includes only
+member accounts when it calculates its recommendations.
 
-Valid values are: C<"PAYER">
+Valid values are C<PAYER> and C<LINKED>.
+
+Valid values are: C<"PAYER">, C<"LINKED">
 
 =head2 LookbackPeriodInDays => Str
 
@@ -106,7 +109,7 @@ response object.
 
 The reservation purchase option that you want recommendations for.
 
-Valid values are: C<"NO_UPFRONT">, C<"PARTIAL_UPFRONT">, C<"ALL_UPFRONT">
+Valid values are: C<"NO_UPFRONT">, C<"PARTIAL_UPFRONT">, C<"ALL_UPFRONT">, C<"LIGHT_UTILIZATION">, C<"MEDIUM_UTILIZATION">, C<"HEAVY_UTILIZATION">
 
 =head2 B<REQUIRED> Service => Str
 

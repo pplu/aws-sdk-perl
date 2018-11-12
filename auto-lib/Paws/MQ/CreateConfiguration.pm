@@ -38,6 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $Arn            = $CreateConfigurationResponse->Arn;
+    my $Created        = $CreateConfigurationResponse->Created;
     my $Id             = $CreateConfigurationResponse->Id;
     my $LatestRevision = $CreateConfigurationResponse->LatestRevision;
     my $Name           = $CreateConfigurationResponse->Name;
@@ -45,7 +46,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::MQ::CreateConfigurationResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/amazon-mq/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mq/CreateConfiguration>
 
 =head1 ATTRIBUTES
 
@@ -60,7 +61,7 @@ Valid values are: C<"ACTIVEMQ">
 =head2 EngineVersion => Str
 
 Required. The version of the broker engine. Note: Currently, Amazon MQ
-supports only 5.15.0.
+supports only 5.15.6 and 5.15.0.
 
 
 

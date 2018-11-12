@@ -163,7 +163,14 @@ carton install installs all dependencies in all sections (after all, we're in de
 Packaging
 ============
 
-Packaging is managed with Dist::Zilla. running dzil build will make a tar.gz suitable for uploading to CPAN
+Packaging is managed with Dist::Zilla. To install Dist::Zilla and the necessary plugins, run:
+
+```
+cpanm -l local -n Dist::Zilla
+dzil authordeps --missing | cpanm -l local -n
+```
+
+After this, running dzil build will make a tar.gz suitable for uploading to CPAN.
 
 Trying it out
 ============
@@ -229,7 +236,7 @@ All services get auto-generated POD documentation. perldoc a file to take a look
 CLI utility
 ================
 Paws comes with a command-line utility to exercise the SDK. Just like Paws is the namespace
-for the SDK, "paws" (in /bin) is the cli utility. It's quite rudimentary, but think of it as
+for the SDK, "paws" (in /script) is the cli utility. It's quite rudimentary, but think of it as
 a quick way to try out calling services. Just call:
 
 ```
@@ -258,8 +265,11 @@ This code is distributed under the Apache v2 License
 Thanks
 ================
 
-CAPSiDE (http://www.capside.com) for letting Paws be contributed in an open source model
-and giving me time to build and maintain it regularly
+CAPSiDE (https://www.capside.com) for letting Paws be contributed in an open source model
+and giving me time to build and maintain it regularly.
+
+ZipRecruiter (https://www.ziprecruiter.com/) for sponsoring development of Paws. Lots of work
+from ZipRecruiter has been done via Shadowcat Systems (https://shadow.cat/).
 
 Luis Alberto Gimenez (@agimenez) for
  - The git-fu cleaning up the "pull other sdks" code
@@ -295,7 +305,9 @@ ilmari for fixing issues with timestamps in Date and X-Amz-Date headers,
 test fixes and 5.10 support fixes, documentation issue fixes for S3,
 CloudFront and Route53, help with number stringification
 
-stevecaldwell77 for contributing support for temporary credentials in S3
+stevecaldwell77 for 
+ - contributing support for temporary credentials in S3
+ - Fixing test suite failure scenarios
 
 Ryan Olson (BeerBikesBBQ) for contributing documentation fixes
 
@@ -324,7 +336,9 @@ rpcme for reporting various bugs in the SDK
 
 glenveegee for lots of work sorting out the S3 implementation
 
-Grinzz for many bugs, suggestions and fixes
+Grinzz
+ - many bugs, suggestions and fixes
+ - Installation speedup with Module::Builder::Tiny
 
 Dakkar for solving issues with parameter passing
 

@@ -73,7 +73,7 @@ Constraints:
 
 =item *
 
-Cannot be null, empty, or blank
+Can't be null, empty, or blank
 
 =item *
 
@@ -85,7 +85,7 @@ First character must be a letter
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens
+Can't end with a hyphen or contain two consecutive hyphens
 
 =back
 

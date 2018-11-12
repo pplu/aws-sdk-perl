@@ -45,6 +45,11 @@ package Paws::Rekognition;
     my $call_object = $self->new_with_coercions('Paws::Rekognition::DeleteStreamProcessor', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeCollection {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Rekognition::DescribeCollection', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeStreamProcessor {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Rekognition::DescribeStreamProcessor', @_);
@@ -255,7 +260,7 @@ package Paws::Rekognition;
   }
 
 
-  sub operations { qw/CompareFaces CreateCollection CreateStreamProcessor DeleteCollection DeleteFaces DeleteStreamProcessor DescribeStreamProcessor DetectFaces DetectLabels DetectModerationLabels DetectText GetCelebrityInfo GetCelebrityRecognition GetContentModeration GetFaceDetection GetFaceSearch GetLabelDetection GetPersonTracking IndexFaces ListCollections ListFaces ListStreamProcessors RecognizeCelebrities SearchFaces SearchFacesByImage StartCelebrityRecognition StartContentModeration StartFaceDetection StartFaceSearch StartLabelDetection StartPersonTracking StartStreamProcessor StopStreamProcessor / }
+  sub operations { qw/CompareFaces CreateCollection CreateStreamProcessor DeleteCollection DeleteFaces DeleteStreamProcessor DescribeCollection DescribeStreamProcessor DetectFaces DetectLabels DetectModerationLabels DetectText GetCelebrityInfo GetCelebrityRecognition GetContentModeration GetFaceDetection GetFaceSearch GetLabelDetection GetPersonTracking IndexFaces ListCollections ListFaces ListStreamProcessors RecognizeCelebrities SearchFaces SearchFacesByImage StartCelebrityRecognition StartContentModeration StartFaceDetection StartFaceSearch StartLabelDetection StartPersonTracking StartStreamProcessor StopStreamProcessor / }
 
 1;
 
@@ -315,10 +320,9 @@ largest face and compares it with each face detected in the target
 image.
 
 You pass the input and target images either as base64-encoded image
-bytes or as a references to images in an Amazon S3 bucket. If you use
-the Amazon CLI to call Amazon Rekognition operations, passing image
-bytes is not supported. The image must be either a PNG or JPEG
-formatted file.
+bytes or as references to images in an Amazon S3 bucket. If you use the
+AWS CLI to call Amazon Rekognition operations, passing image bytes
+isn't supported. The image must be formatted as a PNG or JPEG file.
 
 In response, the operation returns an array of face matches ordered by
 similarity score in descending order. For each face match, the response
@@ -348,7 +352,8 @@ C<CompareFaces> returns an C<InvalidParameterException> error.
 This is a stateless API operation. That is, data returned by this
 operation doesn't persist.
 
-For an example, see faces-compare-images.
+For an example, see Comparing Faces in Images in the Amazon Rekognition
+Developer Guide.
 
 This operation requires permissions to perform the
 C<rekognition:CompareFaces> action.
@@ -405,9 +410,9 @@ Returns: a L<Paws::Rekognition::CreateStreamProcessorResponse> instance
 Creates an Amazon Rekognition stream processor that you can use to
 detect and recognize faces in a streaming video.
 
-Rekognition Video is a consumer of live video from Amazon Kinesis Video
-Streams. Rekognition Video sends analysis results to Amazon Kinesis
-Data Streams.
+Amazon Rekognition Video is a consumer of live video from Amazon
+Kinesis Video Streams. Amazon Rekognition Video sends analysis results
+to Amazon Kinesis Data Streams.
 
 You provide as input a Kinesis video stream (C<Input>) and a Kinesis
 data stream (C<Output>) stream. You also specify the face recognition
@@ -483,6 +488,28 @@ not be able to use the same name for a stream processor for a few
 seconds after calling C<DeleteStreamProcessor>.
 
 
+=head2 DescribeCollection
+
+=over
+
+=item CollectionId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Rekognition::DescribeCollection>
+
+Returns: a L<Paws::Rekognition::DescribeCollectionResponse> instance
+
+Describes the specified collection. You can use C<DescribeCollection>
+to get information, such as the number of faces indexed into a
+collection and the version of the model used by the collection for face
+detection.
+
+For more information, see Describing a Collection in the Amazon
+Rekognition Developer Guide.
+
+
 =head2 DescribeStreamProcessor
 
 =over
@@ -520,25 +547,23 @@ Returns: a L<Paws::Rekognition::DetectFacesResponse> instance
 Detects faces within an image that is provided as input.
 
 C<DetectFaces> detects the 100 largest faces in the image. For each
-face detected, the operation returns face details including a bounding
-box of the face, a confidence value (that the bounding box contains a
-face), and a fixed set of attributes such as facial landmarks (for
-example, coordinates of eye and mouth), gender, presence of beard,
-sunglasses, etc.
+face detected, the operation returns face details. These details
+include a bounding box of the face, a confidence value (that the
+bounding box contains a face), and a fixed set of attributes such as
+facial landmarks (for example, coordinates of eye and mouth), gender,
+presence of beard, sunglasses, and so on.
 
 The face-detection algorithm is most effective on frontal faces. For
-non-frontal or obscured faces, the algorithm may not detect the faces
+non-frontal or obscured faces, the algorithm might not detect the faces
 or might detect faces with lower confidence.
 
 You pass the input image either as base64-encoded image bytes or as a
-reference to an image in an Amazon S3 bucket. If you use the Amazon CLI
-to call Amazon Rekognition operations, passing image bytes is not
+reference to an image in an Amazon S3 bucket. If you use the AWS CLI to
+call Amazon Rekognition operations, passing image bytes is not
 supported. The image must be either a PNG or JPEG formatted file.
 
 This is a stateless API operation. That is, the operation does not
 persist any data.
-
-For an example, see procedure-detecting-faces-in-images.
 
 This operation requires permissions to perform the
 C<rekognition:DetectFaces> action.
@@ -564,21 +589,25 @@ Returns: a L<Paws::Rekognition::DetectLabelsResponse> instance
 Detects instances of real-world entities within an image (JPEG or PNG)
 provided as input. This includes objects like flower, tree, and table;
 events like wedding, graduation, and birthday party; and concepts like
-landscape, evening, and nature. For an example, see images-s3.
+landscape, evening, and nature.
+
+For an example, see Analyzing Images Stored in an Amazon S3 Bucket in
+the Amazon Rekognition Developer Guide.
 
 C<DetectLabels> does not support the detection of activities. However,
 activity detection is supported for label detection in videos. For more
-information, see .
+information, see StartLabelDetection in the Amazon Rekognition
+Developer Guide.
 
 You pass the input image as base64-encoded image bytes or as a
-reference to an image in an Amazon S3 bucket. If you use the Amazon CLI
-to call Amazon Rekognition operations, passing image bytes is not
+reference to an image in an Amazon S3 bucket. If you use the AWS CLI to
+call Amazon Rekognition operations, passing image bytes is not
 supported. The image must be either a PNG or JPEG formatted file.
 
 For each object, scene, and concept the API returns one or more labels.
 Each label provides the object name, and the level of confidence that
 the image contains the object. For example, suppose the input image has
-a lighthouse, the sea, and a rock. The response will include all three
+a lighthouse, the sea, and a rock. The response includes all three
 labels, one for each object.
 
 C<{Name: lighthouse, Confidence: 98.4629}>
@@ -611,6 +640,19 @@ parameter to limit the number of labels returned.
 If the object detected is a person, the operation doesn't provide the
 same facial details that the DetectFaces operation provides.
 
+C<DetectLabels> returns bounding boxes for instances of common object
+labels in an array of objects. An C<Instance> object contains a object,
+for the location of the label on the image. It also includes the
+confidence by which the bounding box was detected.
+
+C<DetectLabels> also returns a hierarchical taxonomy of detected
+labels. For example, a detected car might be assigned the label I<car>.
+The label I<car> has two parent labels: I<Vehicle> (its parent) and
+I<Transportation> (its grandparent). The response returns the entire
+list of ancestors for a label. Each ancestor is a unique label in the
+response. In the previous example, I<Car>, I<Vehicle>, and
+I<Transportation> are returned as unique labels in the response.
+
 This is a stateless API operation. That is, the operation does not
 persist any data.
 
@@ -640,12 +682,14 @@ images that contain nudity, but not images containing suggestive
 content.
 
 To filter images, use the labels returned by C<DetectModerationLabels>
-to determine which types of content are appropriate. For information
-about moderation labels, see moderation.
+to determine which types of content are appropriate.
+
+For information about moderation labels, see Detecting Unsafe Content
+in the Amazon Rekognition Developer Guide.
 
 You pass the input image either as base64-encoded image bytes or as a
-reference to an image in an Amazon S3 bucket. If you use the Amazon CLI
-to call Amazon Rekognition operations, passing image bytes is not
+reference to an image in an Amazon S3 bucket. If you use the AWS CLI to
+call Amazon Rekognition operations, passing image bytes is not
 supported. The image must be either a PNG or JPEG formatted file.
 
 
@@ -692,10 +736,11 @@ multiple lines.
 To determine whether a C<TextDetection> element is a line of text or a
 word, use the C<TextDetection> object C<Type> field.
 
-To be detected, text must be within +/- 30 degrees orientation of the
+To be detected, text must be within +/- 90 degrees orientation of the
 horizontal axis.
 
-For more information, see text-detection.
+For more information, see DetectText in the Amazon Rekognition
+Developer Guide.
 
 
 =head2 GetCelebrityInfo
@@ -712,10 +757,12 @@ Each argument is described in detail in: L<Paws::Rekognition::GetCelebrityInfo>
 Returns: a L<Paws::Rekognition::GetCelebrityInfoResponse> instance
 
 Gets the name and additional information about a celebrity based on his
-or her Rekognition ID. The additional information is returned as an
-array of URLs. If there is no additional information about the
-celebrity, this list is empty. For more information, see
-get-celebrity-info-procedure.
+or her Amazon Rekognition ID. The additional information is returned as
+an array of URLs. If there is no additional information about the
+celebrity, this list is empty.
+
+For more information, see Recognizing Celebrities in an Image in the
+Amazon Rekognition Developer Guide.
 
 This operation requires permissions to perform the
 C<rekognition:GetCelebrityInfo> action.
@@ -740,19 +787,22 @@ Each argument is described in detail in: L<Paws::Rekognition::GetCelebrityRecogn
 
 Returns: a L<Paws::Rekognition::GetCelebrityRecognitionResponse> instance
 
-Gets the celebrity recognition results for a Rekognition Video analysis
-started by .
+Gets the celebrity recognition results for a Amazon Rekognition Video
+analysis started by .
 
 Celebrity recognition in a video is an asynchronous operation. Analysis
 is started by a call to which returns a job identifier (C<JobId>). When
-the celebrity recognition operation finishes, Rekognition Video
+the celebrity recognition operation finishes, Amazon Rekognition Video
 publishes a completion status to the Amazon Simple Notification Service
 topic registered in the initial call to C<StartCelebrityRecognition>.
 To get the results of the celebrity recognition analysis, first check
 that the status value published to the Amazon SNS topic is
 C<SUCCEEDED>. If so, call C<GetCelebrityDetection> and pass the job
 identifier (C<JobId>) from the initial call to
-C<StartCelebrityDetection>. For more information, see video.
+C<StartCelebrityDetection>.
+
+For more information, see Working With Stored Videos in the Amazon
+Rekognition Developer Guide.
 
 C<GetCelebrityRecognition> returns detected celebrities and the time(s)
 they are detected in an array (C<Celebrities>) of objects. Each
@@ -762,7 +812,8 @@ object and the time, C<Timestamp>, the celebrity was detected.
 C<GetCelebrityRecognition> only returns the default facial attributes
 (C<BoundingBox>, C<Confidence>, C<Landmarks>, C<Pose>, and C<Quality>).
 The other facial attributes listed in the C<Face> object of the
-following response syntax are not returned. For more information, see .
+following response syntax are not returned. For more information, see
+FaceDetail in the Amazon Rekognition Developer Guide.
 
 By default, the C<Celebrities> array is sorted by time (milliseconds
 from the start of the video). You can also sort the array by celebrity
@@ -803,19 +854,21 @@ Each argument is described in detail in: L<Paws::Rekognition::GetContentModerati
 
 Returns: a L<Paws::Rekognition::GetContentModerationResponse> instance
 
-Gets the content moderation analysis results for a Rekognition Video
-analysis started by .
+Gets the content moderation analysis results for a Amazon Rekognition
+Video analysis started by .
 
 Content moderation analysis of a video is an asynchronous operation.
 You start analysis by calling . which returns a job identifier
-(C<JobId>). When analysis finishes, Rekognition Video publishes a
-completion status to the Amazon Simple Notification Service topic
+(C<JobId>). When analysis finishes, Amazon Rekognition Video publishes
+a completion status to the Amazon Simple Notification Service topic
 registered in the initial call to C<StartContentModeration>. To get the
 results of the content moderation analysis, first check that the status
 value published to the Amazon SNS topic is C<SUCCEEDED>. If so, call
 C<GetCelebrityDetection> and pass the job identifier (C<JobId>) from
-the initial call to C<StartCelebrityDetection>. For more information,
-see video.
+the initial call to C<StartCelebrityDetection>.
+
+For more information, see Working with Stored Videos in the Amazon
+Rekognition Devlopers Guide.
 
 C<GetContentModeration> returns detected content moderation labels, and
 the time they are detected, in an array, C<ModerationLabels>, of
@@ -836,7 +889,8 @@ and populate the C<NextToken> request parameter with the value of
 C<NextToken> returned from the previous call to
 C<GetContentModeration>.
 
-For more information, see moderation.
+For more information, see Detecting Unsafe Content in the Amazon
+Rekognition Developer Guide.
 
 
 =head2 GetFaceDetection
@@ -856,18 +910,18 @@ Each argument is described in detail in: L<Paws::Rekognition::GetFaceDetection>
 
 Returns: a L<Paws::Rekognition::GetFaceDetectionResponse> instance
 
-Gets face detection results for a Rekognition Video analysis started by
-.
+Gets face detection results for a Amazon Rekognition Video analysis
+started by .
 
-Face detection with Rekognition Video is an asynchronous operation. You
-start face detection by calling which returns a job identifier
-(C<JobId>). When the face detection operation finishes, Rekognition
-Video publishes a completion status to the Amazon Simple Notification
-Service topic registered in the initial call to C<StartFaceDetection>.
-To get the results of the face detection operation, first check that
-the status value published to the Amazon SNS topic is C<SUCCEEDED>. If
-so, call and pass the job identifier (C<JobId>) from the initial call
-to C<StartFaceDetection>.
+Face detection with Amazon Rekognition Video is an asynchronous
+operation. You start face detection by calling which returns a job
+identifier (C<JobId>). When the face detection operation finishes,
+Amazon Rekognition Video publishes a completion status to the Amazon
+Simple Notification Service topic registered in the initial call to
+C<StartFaceDetection>. To get the results of the face detection
+operation, first check that the status value published to the Amazon
+SNS topic is C<SUCCEEDED>. If so, call and pass the job identifier
+(C<JobId>) from the initial call to C<StartFaceDetection>.
 
 C<GetFaceDetection> returns an array of detected faces (C<Faces>)
 sorted by the time the faces were detected.
@@ -900,20 +954,22 @@ Each argument is described in detail in: L<Paws::Rekognition::GetFaceSearch>
 
 Returns: a L<Paws::Rekognition::GetFaceSearchResponse> instance
 
-Gets the face search results for Rekognition Video face search started
-by . The search returns faces in a collection that match the faces of
-persons detected in a video. It also includes the time(s) that faces
-are matched in the video.
+Gets the face search results for Amazon Rekognition Video face search
+started by . The search returns faces in a collection that match the
+faces of persons detected in a video. It also includes the time(s) that
+faces are matched in the video.
 
 Face search in a video is an asynchronous operation. You start face
 search by calling to which returns a job identifier (C<JobId>). When
-the search operation finishes, Rekognition Video publishes a completion
-status to the Amazon Simple Notification Service topic registered in
-the initial call to C<StartFaceSearch>. To get the search results,
-first check that the status value published to the Amazon SNS topic is
-C<SUCCEEDED>. If so, call C<GetFaceSearch> and pass the job identifier
-(C<JobId>) from the initial call to C<StartFaceSearch>. For more
-information, see collections.
+the search operation finishes, Amazon Rekognition Video publishes a
+completion status to the Amazon Simple Notification Service topic
+registered in the initial call to C<StartFaceSearch>. To get the search
+results, first check that the status value published to the Amazon SNS
+topic is C<SUCCEEDED>. If so, call C<GetFaceSearch> and pass the job
+identifier (C<JobId>) from the initial call to C<StartFaceSearch>.
+
+For more information, see Searching Faces in a Collection in the Amazon
+Rekognition Developer Guide.
 
 The search results are retured in an array, C<Persons>, of objects.
 EachC<PersonMatch> element contains details about the matching faces in
@@ -924,7 +980,8 @@ person was matched in the video.
 C<GetFaceSearch> only returns the default facial attributes
 (C<BoundingBox>, C<Confidence>, C<Landmarks>, C<Pose>, and C<Quality>).
 The other facial attributes listed in the C<Face> object of the
-following response syntax are not returned. For more information, see .
+following response syntax are not returned. For more information, see
+FaceDetail in the Amazon Rekognition Developer Guide.
 
 By default, the C<Persons> array is sorted by the time, in milliseconds
 from the start of the video, persons are matched. You can also sort by
@@ -950,7 +1007,7 @@ Each argument is described in detail in: L<Paws::Rekognition::GetLabelDetection>
 
 Returns: a L<Paws::Rekognition::GetLabelDetectionResponse> instance
 
-Gets the label detection results of a Rekognition Video analysis
+Gets the label detection results of a Amazon Rekognition Video analysis
 started by .
 
 The label detection operation is started by a call to which returns a
@@ -978,6 +1035,11 @@ C<GetlabelDetection> and populate the C<NextToken> request parameter
 with the token value returned from the previous call to
 C<GetLabelDetection>.
 
+C<GetLabelDetection> doesn't return a hierarchical taxonomy, or
+bounding box information, for detected labels. C<GetLabelDetection>
+returns C<null> for the C<Parents> and C<Instances> attributes of the
+object which is returned in the C<Labels> array.
+
 
 =head2 GetPersonTracking
 
@@ -998,31 +1060,34 @@ Each argument is described in detail in: L<Paws::Rekognition::GetPersonTracking>
 
 Returns: a L<Paws::Rekognition::GetPersonTrackingResponse> instance
 
-Gets the person tracking results of a Rekognition Video analysis
+Gets the path tracking results of a Amazon Rekognition Video analysis
 started by .
 
-The person detection operation is started by a call to
+The person path tracking operation is started by a call to
 C<StartPersonTracking> which returns a job identifier (C<JobId>). When
-the person detection operation finishes, Rekognition Video publishes a
-completion status to the Amazon Simple Notification Service topic
-registered in the initial call to C<StartPersonTracking>.
+the operation finishes, Amazon Rekognition Video publishes a completion
+status to the Amazon Simple Notification Service topic registered in
+the initial call to C<StartPersonTracking>.
 
-To get the results of the person tracking operation, first check that
-the status value published to the Amazon SNS topic is C<SUCCEEDED>. If
-so, call and pass the job identifier (C<JobId>) from the initial call
-to C<StartPersonTracking>.
+To get the results of the person path tracking operation, first check
+that the status value published to the Amazon SNS topic is
+C<SUCCEEDED>. If so, call and pass the job identifier (C<JobId>) from
+the initial call to C<StartPersonTracking>.
 
 C<GetPersonTracking> returns an array, C<Persons>, of tracked persons
-and the time(s) they were tracked in the video.
+and the time(s) their paths were tracked in the video.
 
 C<GetPersonTracking> only returns the default facial attributes
 (C<BoundingBox>, C<Confidence>, C<Landmarks>, C<Pose>, and C<Quality>).
 The other facial attributes listed in the C<Face> object of the
-following response syntax are not returned. For more information, see .
+following response syntax are not returned.
 
-By default, the array is sorted by the time(s) a person is tracked in
-the video. You can sort by tracked persons by specifying C<INDEX> for
-the C<SortBy> input parameter.
+For more information, see FaceDetail in the Amazon Rekognition
+Developer Guide.
+
+By default, the array is sorted by the time(s) a person's path is
+tracked in the video. You can sort by tracked persons by specifying
+C<INDEX> for the C<SortBy> input parameter.
 
 Use the C<MaxResults> parameter to limit the number of items returned.
 If there are more results than specified in C<MaxResults>, the value of
@@ -1045,6 +1110,10 @@ C<GetPersonTracking>.
 
 =item [ExternalImageId => Str]
 
+=item [MaxFaces => Int]
+
+=item [QualityFilter => Str]
+
 
 =back
 
@@ -1055,19 +1124,27 @@ Returns: a L<Paws::Rekognition::IndexFacesResponse> instance
 Detects faces in the input image and adds them to the specified
 collection.
 
-Amazon Rekognition does not save the actual faces detected. Instead,
-the underlying detection algorithm first detects the faces in the input
-image, and for each face extracts facial features into a feature
-vector, and stores it in the back-end database. Amazon Rekognition uses
-feature vectors when performing face match and search operations using
-the and operations.
+Amazon Rekognition doesn't save the actual faces that are detected.
+Instead, the underlying detection algorithm first detects the faces in
+the input image. For each face, the algorithm extracts facial features
+into a feature vector, and stores it in the backend database. Amazon
+Rekognition uses feature vectors when it performs face match and search
+operations using the and operations.
 
-If you are using version 1.0 of the face detection model, C<IndexFaces>
+For more information, see Adding Faces to a Collection in the Amazon
+Rekognition Developer Guide.
+
+To get the number of faces in a collection, call .
+
+If you're using version 1.0 of the face detection model, C<IndexFaces>
 indexes the 15 largest faces in the input image. Later versions of the
 face detection model index the 100 largest faces in the input image. To
-determine which version of the model you are using, check the the value
-of C<FaceModelVersion> in the response from C<IndexFaces>. For more
-information, see face-detection-model.
+determine which version of the model you're using, call and supply the
+collection ID. You can also get the model version from the value of
+C<FaceModelVersion> in the response from C<IndexFaces>.
+
+For more information, see Model Versioning in the Amazon Rekognition
+Developer Guide.
 
 If you provide the optional C<ExternalImageID> for the input image you
 provided, Amazon Rekognition associates this ID with all faces that it
@@ -1076,22 +1153,89 @@ ID. You can use this external image ID to create a client-side index to
 associate the faces with each image. You can then use the index to find
 all faces in an image.
 
-In response, the operation returns an array of metadata for all
-detected faces. This includes, the bounding box of the detected face,
-confidence value (indicating the bounding box contains a face), a face
-ID assigned by the service for each face that is detected and stored,
-and an image ID assigned by the service for the input image. If you
-request all facial attributes (using the C<detectionAttributes>
-parameter, Amazon Rekognition returns detailed facial attributes such
-as facial landmarks (for example, location of eye and mount) and other
-facial attributes such gender. If you provide the same image, specify
-the same collection, and use the same external ID in the C<IndexFaces>
-operation, Amazon Rekognition doesn't save duplicate face metadata.
+You can specify the maximum number of faces to index with the
+C<MaxFaces> input parameter. This is useful when you want to index the
+largest faces in an image and don't want to index smaller faces, such
+as those belonging to people standing in the background.
 
-The input image is passed either as base64-encoded image bytes or as a
-reference to an image in an Amazon S3 bucket. If you use the Amazon CLI
-to call Amazon Rekognition operations, passing image bytes is not
-supported. The image must be either a PNG or JPEG formatted file.
+The C<QualityFilter> input parameter allows you to filter out detected
+faces that donE<rsquo>t meet the required quality bar chosen by Amazon
+Rekognition. The quality bar is based on a variety of common use cases.
+By default, C<IndexFaces> filters detected faces. You can also
+explicitly filter detected faces by specifying C<AUTO> for the value of
+C<QualityFilter>. If you do not want to filter detected faces, specify
+C<NONE>.
+
+To use quality filtering, you need a collection associated with version
+3 of the face model. To get the version of the face model associated
+with a collection, call .
+
+Information about faces detected in an image, but not indexed, is
+returned in an array of objects, C<UnindexedFaces>. Faces aren't
+indexed for reasons such as:
+
+=over
+
+=item *
+
+The number of faces detected exceeds the value of the C<MaxFaces>
+request parameter.
+
+=item *
+
+The face is too small compared to the image dimensions.
+
+=item *
+
+The face is too blurry.
+
+=item *
+
+The image is too dark.
+
+=item *
+
+The face has an extreme pose.
+
+=back
+
+In response, the C<IndexFaces> operation returns an array of metadata
+for all detected faces, C<FaceRecords>. This includes:
+
+=over
+
+=item *
+
+The bounding box, C<BoundingBox>, of the detected face.
+
+=item *
+
+A confidence value, C<Confidence>, which indicates the confidence that
+the bounding box contains a face.
+
+=item *
+
+A face ID, C<faceId>, assigned by the service for each face that's
+detected and stored.
+
+=item *
+
+An image ID, C<ImageId>, assigned by the service for the input image.
+
+=back
+
+If you request all facial attributes (by using the
+C<detectionAttributes> parameter), Amazon Rekognition returns detailed
+facial attributes, such as facial landmarks (for example, location of
+eye and mouth) and other facial attributes like gender. If you provide
+the same image, specify the same collection, and use the same external
+ID in the C<IndexFaces> operation, Amazon Rekognition doesn't save
+duplicate face metadata.
+
+The input image is passed either as base64-encoded image bytes, or as a
+reference to an image in an Amazon S3 bucket. If you use the AWS CLI to
+call Amazon Rekognition operations, passing image bytes isn't
+supported. The image must be formatted as a PNG or JPEG file.
 
 This operation requires permissions to perform the
 C<rekognition:IndexFaces> action.
@@ -1116,7 +1260,8 @@ Returns list of collection IDs in your account. If the result is
 truncated, the response also provides a C<NextToken> that you can use
 in the subsequent request to fetch the next set of collection IDs.
 
-For an example, see list-collection-procedure.
+For an example, see Listing Collections in the Amazon Rekognition
+Developer Guide.
 
 This operation requires permissions to perform the
 C<rekognition:ListCollections> action.
@@ -1142,7 +1287,8 @@ Returns: a L<Paws::Rekognition::ListFacesResponse> instance
 Returns metadata for faces in the specified collection. This metadata
 includes information such as the bounding box coordinates, the
 confidence (that the bounding box contains a face), and face ID. For an
-example, see list-faces-in-collection-procedure.
+example, see Listing Faces in a Collection in the Amazon Rekognition
+Developer Guide.
 
 This operation requires permissions to perform the
 C<rekognition:ListFaces> action.
@@ -1180,33 +1326,35 @@ Each argument is described in detail in: L<Paws::Rekognition::RecognizeCelebriti
 Returns: a L<Paws::Rekognition::RecognizeCelebritiesResponse> instance
 
 Returns an array of celebrities recognized in the input image. For more
-information, see celebrities.
+information, see Recognizing Celebrities in the Amazon Rekognition
+Developer Guide.
 
 C<RecognizeCelebrities> returns the 100 largest faces in the image. It
 lists recognized celebrities in the C<CelebrityFaces> array and
 unrecognized faces in the C<UnrecognizedFaces> array.
-C<RecognizeCelebrities> doesn't return celebrities whose faces are not
-amongst the largest 100 faces in the image.
+C<RecognizeCelebrities> doesn't return celebrities whose faces aren't
+among the largest 100 faces in the image.
 
-For each celebrity recognized, the C<RecognizeCelebrities> returns a
+For each celebrity recognized, C<RecognizeCelebrities> returns a
 C<Celebrity> object. The C<Celebrity> object contains the celebrity
 name, ID, URL links to additional information, match confidence, and a
 C<ComparedFace> object that you can use to locate the celebrity's face
 on the image.
 
-Rekognition does not retain information about which images a celebrity
-has been recognized in. Your application must store this information
-and use the C<Celebrity> ID property as a unique identifier for the
-celebrity. If you don't store the celebrity name or additional
+Amazon Rekognition doesn't retain information about which images a
+celebrity has been recognized in. Your application must store this
+information and use the C<Celebrity> ID property as a unique identifier
+for the celebrity. If you don't store the celebrity name or additional
 information URLs returned by C<RecognizeCelebrities>, you will need the
 ID to identify the celebrity in a call to the operation.
 
-You pass the imput image either as base64-encoded image bytes or as a
-reference to an image in an Amazon S3 bucket. If you use the Amazon CLI
-to call Amazon Rekognition operations, passing image bytes is not
+You pass the input image either as base64-encoded image bytes or as a
+reference to an image in an Amazon S3 bucket. If you use the AWS CLI to
+call Amazon Rekognition operations, passing image bytes is not
 supported. The image must be either a PNG or JPEG formatted file.
 
-For an example, see celebrities-procedure-image.
+For an example, see Recognizing Celebrities in an Image in the Amazon
+Rekognition Developer Guide.
 
 This operation requires permissions to perform the
 C<rekognition:RecognizeCelebrities> operation.
@@ -1247,7 +1395,8 @@ with the metadata, the response also includes a C<confidence> value for
 each face match, indicating the confidence that the specific face
 matches the input face.
 
-For an example, see search-face-with-id-procedure.
+For an example, see Searching for a Face Using Its Face ID in the
+Amazon Rekognition Developer Guide.
 
 This operation requires permissions to perform the
 C<rekognition:SearchFaces> action.
@@ -1286,8 +1435,8 @@ boxes in the response to make face crops, which then you can pass in to
 the C<SearchFacesByImage> operation.
 
 You pass the input image either as base64-encoded image bytes or as a
-reference to an image in an Amazon S3 bucket. If you use the Amazon CLI
-to call Amazon Rekognition operations, passing image bytes is not
+reference to an image in an Amazon S3 bucket. If you use the AWS CLI to
+call Amazon Rekognition operations, passing image bytes is not
 supported. The image must be either a PNG or JPEG formatted file.
 
 The response returns an array of faces that match, ordered by
@@ -1299,7 +1448,8 @@ also returns the bounding box (and a confidence level that the bounding
 box contains a face) of the face that Amazon Rekognition used for the
 input image.
 
-For an example, see search-face-with-image-procedure.
+For an example, Searching for a Face Using an Image in the Amazon
+Rekognition Developer Guide.
 
 This operation requires permissions to perform the
 C<rekognition:SearchFacesByImage> action.
@@ -1326,17 +1476,20 @@ Returns: a L<Paws::Rekognition::StartCelebrityRecognitionResponse> instance
 
 Starts asynchronous recognition of celebrities in a stored video.
 
-Rekognition Video can detect celebrities in a video must be stored in
-an Amazon S3 bucket. Use Video to specify the bucket name and the
-filename of the video. C<StartCelebrityRecognition> returns a job
+Amazon Rekognition Video can detect celebrities in a video must be
+stored in an Amazon S3 bucket. Use Video to specify the bucket name and
+the filename of the video. C<StartCelebrityRecognition> returns a job
 identifier (C<JobId>) which you use to get the results of the analysis.
-When celebrity recognition analysis is finished, Rekognition Video
-publishes a completion status to the Amazon Simple Notification Service
-topic that you specify in C<NotificationChannel>. To get the results of
-the celebrity recognition analysis, first check that the status value
-published to the Amazon SNS topic is C<SUCCEEDED>. If so, call and pass
-the job identifier (C<JobId>) from the initial call to
-C<StartCelebrityRecognition>. For more information, see celebrities.
+When celebrity recognition analysis is finished, Amazon Rekognition
+Video publishes a completion status to the Amazon Simple Notification
+Service topic that you specify in C<NotificationChannel>. To get the
+results of the celebrity recognition analysis, first check that the
+status value published to the Amazon SNS topic is C<SUCCEEDED>. If so,
+call and pass the job identifier (C<JobId>) from the initial call to
+C<StartCelebrityRecognition>.
+
+For more information, see Recognizing Celebrities in the Amazon
+Rekognition Developer Guide.
 
 
 =head2 StartContentModeration
@@ -1363,18 +1516,21 @@ Returns: a L<Paws::Rekognition::StartContentModerationResponse> instance
 Starts asynchronous detection of explicit or suggestive adult content
 in a stored video.
 
-Rekognition Video can moderate content in a video stored in an Amazon
-S3 bucket. Use Video to specify the bucket name and the filename of the
-video. C<StartContentModeration> returns a job identifier (C<JobId>)
-which you use to get the results of the analysis. When content
-moderation analysis is finished, Rekognition Video publishes a
-completion status to the Amazon Simple Notification Service topic that
-you specify in C<NotificationChannel>.
+Amazon Rekognition Video can moderate content in a video stored in an
+Amazon S3 bucket. Use Video to specify the bucket name and the filename
+of the video. C<StartContentModeration> returns a job identifier
+(C<JobId>) which you use to get the results of the analysis. When
+content moderation analysis is finished, Amazon Rekognition Video
+publishes a completion status to the Amazon Simple Notification Service
+topic that you specify in C<NotificationChannel>.
 
 To get the results of the content moderation analysis, first check that
 the status value published to the Amazon SNS topic is C<SUCCEEDED>. If
 so, call and pass the job identifier (C<JobId>) from the initial call
-to C<StartContentModeration>. For more information, see moderation.
+to C<StartContentModeration>.
+
+For more information, see Detecting Unsafe Content in the Amazon
+Rekognition Developer Guide.
 
 
 =head2 StartFaceDetection
@@ -1400,17 +1556,19 @@ Returns: a L<Paws::Rekognition::StartFaceDetectionResponse> instance
 
 Starts asynchronous detection of faces in a stored video.
 
-Rekognition Video can detect faces in a video stored in an Amazon S3
-bucket. Use Video to specify the bucket name and the filename of the
-video. C<StartFaceDetection> returns a job identifier (C<JobId>) that
-you use to get the results of the operation. When face detection is
-finished, Rekognition Video publishes a completion status to the Amazon
-Simple Notification Service topic that you specify in
-C<NotificationChannel>. To get the results of the label detection
+Amazon Rekognition Video can detect faces in a video stored in an
+Amazon S3 bucket. Use Video to specify the bucket name and the filename
+of the video. C<StartFaceDetection> returns a job identifier (C<JobId>)
+that you use to get the results of the operation. When face detection
+is finished, Amazon Rekognition Video publishes a completion status to
+the Amazon Simple Notification Service topic that you specify in
+C<NotificationChannel>. To get the results of the face detection
 operation, first check that the status value published to the Amazon
 SNS topic is C<SUCCEEDED>. If so, call and pass the job identifier
-(C<JobId>) from the initial call to C<StartFaceDetection>. For more
-information, see faces-video.
+(C<JobId>) from the initial call to C<StartFaceDetection>.
+
+For more information, see Detecting Faces in a Stored Video in the
+Amazon Rekognition Developer Guide.
 
 
 =head2 StartFaceSearch
@@ -1443,12 +1601,13 @@ The video must be stored in an Amazon S3 bucket. Use Video to specify
 the bucket name and the filename of the video. C<StartFaceSearch>
 returns a job identifier (C<JobId>) which you use to get the search
 results once the search has completed. When searching is finished,
-Rekognition Video publishes a completion status to the Amazon Simple
-Notification Service topic that you specify in C<NotificationChannel>.
-To get the search results, first check that the status value published
-to the Amazon SNS topic is C<SUCCEEDED>. If so, call and pass the job
-identifier (C<JobId>) from the initial call to C<StartFaceSearch>. For
-more information, see collections-search-person.
+Amazon Rekognition Video publishes a completion status to the Amazon
+Simple Notification Service topic that you specify in
+C<NotificationChannel>. To get the search results, first check that the
+status value published to the Amazon SNS topic is C<SUCCEEDED>. If so,
+call and pass the job identifier (C<JobId>) from the initial call to
+C<StartFaceSearch>. For more information, see
+procedure-person-search-videos.
 
 
 =head2 StartLabelDetection
@@ -1474,18 +1633,18 @@ Returns: a L<Paws::Rekognition::StartLabelDetectionResponse> instance
 
 Starts asynchronous detection of labels in a stored video.
 
-Rekognition Video can detect labels in a video. Labels are instances of
-real-world entities. This includes objects like flower, tree, and
-table; events like wedding, graduation, and birthday party; concepts
-like landscape, evening, and nature; and activities like a person
-getting out of a car or a person skiing.
+Amazon Rekognition Video can detect labels in a video. Labels are
+instances of real-world entities. This includes objects like flower,
+tree, and table; events like wedding, graduation, and birthday party;
+concepts like landscape, evening, and nature; and activities like a
+person getting out of a car or a person skiing.
 
 The video must be stored in an Amazon S3 bucket. Use Video to specify
 the bucket name and the filename of the video. C<StartLabelDetection>
 returns a job identifier (C<JobId>) which you use to get the results of
-the operation. When label detection is finished, Rekognition Video
-publishes a completion status to the Amazon Simple Notification Service
-topic that you specify in C<NotificationChannel>.
+the operation. When label detection is finished, Amazon Rekognition
+Video publishes a completion status to the Amazon Simple Notification
+Service topic that you specify in C<NotificationChannel>.
 
 To get the results of the label detection operation, first check that
 the status value published to the Amazon SNS topic is C<SUCCEEDED>. If
@@ -1512,15 +1671,15 @@ Each argument is described in detail in: L<Paws::Rekognition::StartPersonTrackin
 
 Returns: a L<Paws::Rekognition::StartPersonTrackingResponse> instance
 
-Starts the asynchronous tracking of persons in a stored video.
+Starts the asynchronous tracking of a person's path in a stored video.
 
-Rekognition Video can track persons in a video stored in an Amazon S3
-bucket. Use Video to specify the bucket name and the filename of the
-video. C<StartPersonTracking> returns a job identifier (C<JobId>) which
-you use to get the results of the operation. When label detection is
-finished, Amazon Rekognition publishes a completion status to the
-Amazon Simple Notification Service topic that you specify in
-C<NotificationChannel>.
+Amazon Rekognition Video can track the path of people in a video stored
+in an Amazon S3 bucket. Use Video to specify the bucket name and the
+filename of the video. C<StartPersonTracking> returns a job identifier
+(C<JobId>) which you use to get the results of the operation. When
+label detection is finished, Amazon Rekognition publishes a completion
+status to the Amazon Simple Notification Service topic that you specify
+in C<NotificationChannel>.
 
 To get the results of the person detection operation, first check that
 the status value published to the Amazon SNS topic is C<SUCCEEDED>. If

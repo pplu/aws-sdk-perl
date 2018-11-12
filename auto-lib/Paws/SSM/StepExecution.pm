@@ -6,7 +6,10 @@ package Paws::SSM::StepExecution;
   has FailureDetails => (is => 'ro', isa => 'Paws::SSM::FailureDetails');
   has FailureMessage => (is => 'ro', isa => 'Str');
   has Inputs => (is => 'ro', isa => 'Paws::SSM::NormalStringMap');
+  has IsCritical => (is => 'ro', isa => 'Bool');
+  has IsEnd => (is => 'ro', isa => 'Bool');
   has MaxAttempts => (is => 'ro', isa => 'Int');
+  has NextStep => (is => 'ro', isa => 'Str');
   has OnFailure => (is => 'ro', isa => 'Str');
   has Outputs => (is => 'ro', isa => 'Paws::SSM::AutomationParameterMap');
   has OverriddenParameters => (is => 'ro', isa => 'Paws::SSM::AutomationParameterMap');
@@ -16,6 +19,7 @@ package Paws::SSM::StepExecution;
   has StepName => (is => 'ro', isa => 'Str');
   has StepStatus => (is => 'ro', isa => 'Str');
   has TimeoutSeconds => (is => 'ro', isa => 'Int');
+  has ValidNextSteps => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
 ### main pod documentation begin ###
@@ -35,7 +39,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::StepExecution object:
 
-  $service_obj->Method(Att1 => { Action => $value, ..., TimeoutSeconds => $value  });
+  $service_obj->Method(Att1 => { Action => $value, ..., ValidNextSteps => $value  });
 
 =head3 Results returned from an API call
 
@@ -85,10 +89,27 @@ If the step is in Pending status, this field is not populated.
   Fully-resolved values passed into the step before execution.
 
 
+=head2 IsCritical => Bool
+
+  The flag which can be used to help decide whether the failure of
+current step leads to the Automation failure.
+
+
+=head2 IsEnd => Bool
+
+  The flag which can be used to end automation no matter whether the step
+succeeds or fails.
+
+
 =head2 MaxAttempts => Int
 
   The maximum number of tries to run the action of the step. The default
 value is 1.
+
+
+=head2 NextStep => Str
+
+  The next step after the step succeeds.
 
 
 =head2 OnFailure => Str
@@ -135,6 +156,15 @@ InProgress, Success, Cancelled, Failed, and TimedOut.
 =head2 TimeoutSeconds => Int
 
   The timeout seconds of the step.
+
+
+=head2 ValidNextSteps => ArrayRef[Str|Undef]
+
+  Strategies used when step fails, we support Continue and Abort. Abort
+will fail the automation when the step fails. Continue will ignore the
+failure of current step and allow automation to execute the next step.
+With conditional branching, we add step:stepName to support the
+automation to go to another specific step.
 
 
 

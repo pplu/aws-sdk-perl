@@ -2,6 +2,7 @@
 package Paws::MQ::DescribeConfigurationRevisionResponse;
   use Moose;
   has ConfigurationId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'configurationId');
+  has Created => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'created');
   has Data => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'data');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
 
@@ -20,6 +21,11 @@ Paws::MQ::DescribeConfigurationRevisionResponse
 =head2 ConfigurationId => Str
 
 Required. The unique ID that Amazon MQ generates for the configuration.
+
+
+=head2 Created => Str
+
+Required. The date and time of the configuration.
 
 
 =head2 Data => Str

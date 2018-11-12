@@ -65,9 +65,11 @@ or C<app_lamp_7_0>).
 
 =head2 IsActive => Bool
 
-  A Boolean value indicating whether the blueprint is active. When you
-update your blueprints, you will inactivate old blueprints and keep the
-most recent versions active.
+  A Boolean value indicating whether the blueprint is active. Inactive
+blueprints are listed to support customers with existing instances but
+are not necessarily available for launch of new instances. Blueprints
+are marked inactive when they become outdated due to operating system
+updates or new application releases.
 
 
 =head2 LicenseUrl => Str

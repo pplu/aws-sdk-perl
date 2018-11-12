@@ -68,8 +68,7 @@ based on all IP addresses I<except> C<192.0.2.44>.
 
 =head2 B<REQUIRED> Type => Str
 
-  The type of predicate in a C<Rule>, such as C<ByteMatchSet> or
-C<IPSet>.
+  The type of predicate in a C<Rule>, such as C<ByteMatch> or C<IPSet>.
 
 
 

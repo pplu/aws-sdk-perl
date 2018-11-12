@@ -50,9 +50,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/acm
 =head2 B<REQUIRED> CertificateAuthorityArn => Str
 
 The Amazon Resource Name (ARN) that was returned when you called the
-CreateCertificateAuthority function. This must be of the form:
+CreateCertificateAuthority operation. This must be of the form:
 
-C<arn:aws:acm:I<region>:I<account>:certificate-authority/I<12345678-1234-1234-1234-123456789012>>
+C<arn:aws:acm-pca:I<region>:I<account>:certificate-authority/I<12345678-1234-1234-1234-123456789012>>
 
 
 

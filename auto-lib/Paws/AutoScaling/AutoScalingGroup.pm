@@ -97,8 +97,9 @@ before another scaling activity can start.
 
 =head2 HealthCheckGracePeriod => Int
 
-  The amount of time, in seconds, that Auto Scaling waits before checking
-the health status of an EC2 instance that has come into service.
+  The amount of time, in seconds, that Amazon EC2 Auto Scaling waits
+before checking the health status of an EC2 instance that has come into
+service.
 
 
 =head2 B<REQUIRED> HealthCheckType => Str

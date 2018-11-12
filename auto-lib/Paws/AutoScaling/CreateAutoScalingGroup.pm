@@ -118,9 +118,9 @@ optional if you specify one or more subnets.
 The amount of time, in seconds, after a scaling activity completes
 before another scaling activity can start. The default is 300.
 
-For more information, see Auto Scaling Cooldowns
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/Cooldown.html)
-in the I<Auto Scaling User Guide>.
+For more information, see Scaling Cooldowns
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html) in
+the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 
@@ -136,16 +136,16 @@ group.
 
 =head2 HealthCheckGracePeriod => Int
 
-The amount of time, in seconds, that Auto Scaling waits before checking
-the health status of an EC2 instance that has come into service. During
-this time, any health check failures for the instance are ignored. The
-default is 0.
+The amount of time, in seconds, that Amazon EC2 Auto Scaling waits
+before checking the health status of an EC2 instance that has come into
+service. During this time, any health check failures for the instance
+are ignored. The default is 0.
 
 This parameter is required if you are adding an C<ELB> health check.
 
 For more information, see Health Checks
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/healthcheck.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 
@@ -157,8 +157,8 @@ and C<ELB>.
 By default, health checks use Amazon EC2 instance status checks to
 determine the health of an instance. For more information, see Health
 Checks
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/healthcheck.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 
@@ -168,15 +168,15 @@ The ID of the instance used to create a launch configuration for the
 group. You must specify one of the following: an EC2 instance, a launch
 configuration, or a launch template.
 
-When you specify an ID of an instance, Auto Scaling creates a new
-launch configuration and associates it with the group. This launch
-configuration derives its attributes from the specified instance, with
-the exception of the block device mapping.
+When you specify an ID of an instance, Amazon EC2 Auto Scaling creates
+a new launch configuration and associates it with the group. This
+launch configuration derives its attributes from the specified
+instance, with the exception of the block device mapping.
 
 For more information, see Create an Auto Scaling Group Using an EC2
 Instance
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/create-asg-from-instance.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg-from-instance.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 
@@ -209,8 +209,8 @@ Balancer, use C<TargetGroupARNs> instead.
 
 For more information, see Using a Load Balancer With an Auto Scaling
 Group
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/create-asg-from-instance.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg-from-instance.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 
@@ -246,7 +246,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 The Amazon Resource Name (ARN) of the service-linked role that the Auto
 Scaling group uses to call other AWS services on your behalf. By
-default, Auto Scaling uses a service-linked role named
+default, Amazon EC2 Auto Scaling uses a service-linked role named
 AWSServiceRoleForAutoScaling, which it creates if it does not exist.
 
 
@@ -256,8 +256,8 @@ AWSServiceRoleForAutoScaling, which it creates if it does not exist.
 One or more tags.
 
 For more information, see Tagging Auto Scaling Groups and Instances
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/autoscaling-tagging.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-tagging.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 
@@ -275,7 +275,7 @@ listed.
 
 For more information, see Controlling Which Instances Auto Scaling
 Terminates During Scale In
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/as-instance-termination.html)
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html)
 in the I<Auto Scaling User Guide>.
 
 
@@ -290,8 +290,8 @@ that the subnets' Availability Zones match the Availability Zones
 specified.
 
 For more information, see Launching Auto Scaling Instances in a VPC
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 

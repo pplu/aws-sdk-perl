@@ -152,7 +152,7 @@ The instance IDs where the command should execute. You can specify a
 maximum of 50 IDs. If you prefer not to list individual instance IDs,
 you can instead send commands to a fleet of instances using the Targets
 parameter, which accepts EC2 tags. For more information about how to
-use Targets, see Sending Commands to a Fleet
+use targets, see Sending Commands to a Fleet
 (http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html)
 in the I<AWS Systems Manager User Guide>.
 
@@ -228,7 +228,7 @@ The IAM role that Systems Manager uses to send notifications.
 (Optional) An array of search criteria that targets instances using a
 Key,Value combination that you specify. Targets is required if you
 don't provide one or more instance IDs in the call. For more
-information about how to use Targets, see Sending Commands to a Fleet
+information about how to use targets, see Sending Commands to a Fleet
 (http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html)
 in the I<AWS Systems Manager User Guide>.
 

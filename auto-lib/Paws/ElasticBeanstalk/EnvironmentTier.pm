@@ -50,7 +50,11 @@ Describes the properties of an environment tier
 
 =head2 Version => Str
 
-  The version of this environment tier.
+  The version of this environment tier. When you don't set a value to it,
+Elastic Beanstalk uses the latest compatible worker tier version.
+
+This member is deprecated. Any specific version that you set may become
+out of date. We recommend leaving it unspecified.
 
 
 

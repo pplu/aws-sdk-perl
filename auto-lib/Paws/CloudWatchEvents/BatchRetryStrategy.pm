@@ -41,7 +41,7 @@ strategy defined in the job definition.
 =head2 Attempts => Int
 
   The number of times to attempt to retry, if the job fails. Valid values
-are 1 to 10.
+are 1E<ndash>10.
 
 
 

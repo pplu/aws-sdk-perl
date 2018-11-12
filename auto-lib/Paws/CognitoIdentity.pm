@@ -175,7 +175,7 @@ application, you will probably want to make API calls via the AWS
 Mobile SDK. To learn more, see the AWS Mobile SDK Developer Guide
 (http://docs.aws.amazon.com/mobile/index.html).
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/cognito/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/cognito/>
 
 
 =head1 METHODS

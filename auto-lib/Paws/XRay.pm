@@ -19,9 +19,34 @@ package Paws::XRay;
     my $call_object = $self->new_with_coercions('Paws::XRay::BatchGetTraces', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateSamplingRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::XRay::CreateSamplingRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteSamplingRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::XRay::DeleteSamplingRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetEncryptionConfig {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::XRay::GetEncryptionConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetSamplingRules {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::XRay::GetSamplingRules', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetSamplingStatisticSummaries {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::XRay::GetSamplingStatisticSummaries', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetSamplingTargets {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::XRay::GetSamplingTargets', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetServiceGraph {
@@ -52,6 +77,11 @@ package Paws::XRay;
   sub PutTraceSegments {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::XRay::PutTraceSegments', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateSamplingRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::XRay::UpdateSamplingRule', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -149,7 +179,7 @@ package Paws::XRay;
   }
 
 
-  sub operations { qw/BatchGetTraces GetEncryptionConfig GetServiceGraph GetTraceGraph GetTraceSummaries PutEncryptionConfig PutTelemetryRecords PutTraceSegments / }
+  sub operations { qw/BatchGetTraces CreateSamplingRule DeleteSamplingRule GetEncryptionConfig GetSamplingRules GetSamplingStatisticSummaries GetSamplingTargets GetServiceGraph GetTraceGraph GetTraceSummaries PutEncryptionConfig PutTelemetryRecords PutTraceSegments UpdateSamplingRule / }
 
 1;
 
@@ -205,6 +235,47 @@ of segment documents that originates from a single request. Use
 C<GetTraceSummaries> to get a list of trace IDs.
 
 
+=head2 CreateSamplingRule
+
+=over
+
+=item SamplingRule => L<Paws::XRay::SamplingRule>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::XRay::CreateSamplingRule>
+
+Returns: a L<Paws::XRay::CreateSamplingRuleResult> instance
+
+Creates a rule to control sampling behavior for instrumented
+applications. Services retrieve rules with GetSamplingRules, and
+evaluate each rule in ascending order of I<priority> for each request.
+If a rule matches, the service records a trace, borrowing it from the
+reservoir size. After 10 seconds, the service reports back to X-Ray
+with GetSamplingTargets to get updated versions of each in-use rule.
+The updated rule contains a trace quota that the service can use
+instead of borrowing from the reservoir.
+
+
+=head2 DeleteSamplingRule
+
+=over
+
+=item [RuleARN => Str]
+
+=item [RuleName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::XRay::DeleteSamplingRule>
+
+Returns: a L<Paws::XRay::DeleteSamplingRuleResult> instance
+
+Deletes a sampling rule.
+
+
 =head2 GetEncryptionConfig
 
 
@@ -217,6 +288,56 @@ Each argument is described in detail in: L<Paws::XRay::GetEncryptionConfig>
 Returns: a L<Paws::XRay::GetEncryptionConfigResult> instance
 
 Retrieves the current encryption configuration for X-Ray data.
+
+
+=head2 GetSamplingRules
+
+=over
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::XRay::GetSamplingRules>
+
+Returns: a L<Paws::XRay::GetSamplingRulesResult> instance
+
+Retrieves all sampling rules.
+
+
+=head2 GetSamplingStatisticSummaries
+
+=over
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::XRay::GetSamplingStatisticSummaries>
+
+Returns: a L<Paws::XRay::GetSamplingStatisticSummariesResult> instance
+
+Retrieves information about recent sampling results for all sampling
+rules.
+
+
+=head2 GetSamplingTargets
+
+=over
+
+=item SamplingStatisticsDocuments => ArrayRef[L<Paws::XRay::SamplingStatisticsDocument>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::XRay::GetSamplingTargets>
+
+Returns: a L<Paws::XRay::GetSamplingTargetsResult> instance
+
+Requests a sampling quota for rules that the service is using to sample
+requests.
 
 
 =head2 GetServiceGraph
@@ -433,6 +554,22 @@ digits.
 
 =back
 
+
+
+=head2 UpdateSamplingRule
+
+=over
+
+=item SamplingRuleUpdate => L<Paws::XRay::SamplingRuleUpdate>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::XRay::UpdateSamplingRule>
+
+Returns: a L<Paws::XRay::UpdateSamplingRuleResult> instance
+
+Modifies a sampling rule's configuration.
 
 
 

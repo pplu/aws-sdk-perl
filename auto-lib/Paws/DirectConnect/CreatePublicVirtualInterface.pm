@@ -31,16 +31,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $VirtualInterface = $directconnect->CreatePublicVirtualInterface(
       ConnectionId              => 'MyConnectionId',
       NewPublicVirtualInterface => {
-        asn                  => 1,
-        virtualInterfaceName => 'MyVirtualInterfaceName',
-        vlan                 => 1,
-        addressFamily   => 'ipv4',                # values: ipv4, ipv6; OPTIONAL
-        amazonAddress   => 'MyAmazonAddress',     # OPTIONAL
-        authKey         => 'MyBGPAuthKey',        # OPTIONAL
-        customerAddress => 'MyCustomerAddress',   # OPTIONAL
-        routeFilterPrefixes => [
+        Asn                  => 1,
+        VirtualInterfaceName => 'MyVirtualInterfaceName',
+        Vlan                 => 1,
+        AddressFamily   => 'ipv4',                # values: ipv4, ipv6; OPTIONAL
+        AmazonAddress   => 'MyAmazonAddress',     # OPTIONAL
+        AuthKey         => 'MyBGPAuthKey',        # OPTIONAL
+        CustomerAddress => 'MyCustomerAddress',   # OPTIONAL
+        RouteFilterPrefixes => [
           {
-            cidr => 'MyCIDR',                     # OPTIONAL
+            Cidr => 'MyCIDR',                     # OPTIONAL
           },
           ...
         ],                                        # OPTIONAL
@@ -54,13 +54,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $AmazonSideAsn          = $VirtualInterface->AmazonSideAsn;
     my $Asn                    = $VirtualInterface->Asn;
     my $AuthKey                = $VirtualInterface->AuthKey;
+    my $AwsDeviceV2            = $VirtualInterface->AwsDeviceV2;
     my $BgpPeers               = $VirtualInterface->BgpPeers;
     my $ConnectionId           = $VirtualInterface->ConnectionId;
     my $CustomerAddress        = $VirtualInterface->CustomerAddress;
     my $CustomerRouterConfig   = $VirtualInterface->CustomerRouterConfig;
     my $DirectConnectGatewayId = $VirtualInterface->DirectConnectGatewayId;
+    my $JumboFrameCapable      = $VirtualInterface->JumboFrameCapable;
     my $Location               = $VirtualInterface->Location;
+    my $Mtu                    = $VirtualInterface->Mtu;
     my $OwnerAccount           = $VirtualInterface->OwnerAccount;
+    my $Region                 = $VirtualInterface->Region;
     my $RouteFilterPrefixes    = $VirtualInterface->RouteFilterPrefixes;
     my $VirtualGatewayId       = $VirtualInterface->VirtualGatewayId;
     my $VirtualInterfaceId     = $VirtualInterface->VirtualInterfaceId;
@@ -79,15 +83,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =head2 B<REQUIRED> ConnectionId => Str
 
-
+The ID of the connection.
 
 
 
 =head2 B<REQUIRED> NewPublicVirtualInterface => L<Paws::DirectConnect::NewPublicVirtualInterface>
 
-Detailed information for the public virtual interface to be created.
-
-Default: None
+Information about the public virtual interface.
 
 
 

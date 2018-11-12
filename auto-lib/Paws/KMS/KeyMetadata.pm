@@ -100,7 +100,7 @@ only when C<Origin> is C<EXTERNAL>, otherwise this value is omitted.
 
 =head2 KeyManager => Str
 
-  The CMK's manager. CMKs are either customer-managed or AWS-managed. For
+  The CMK's manager. CMKs are either customer managed or AWS managed. For
 more information about the difference, see Customer Master Keys
 (http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys)
 in the I<AWS Key Management Service Developer Guide>.

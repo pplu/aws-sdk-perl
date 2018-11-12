@@ -2,6 +2,7 @@
 package Paws::StorageGateway::RefreshCacheOutput;
   use Moose;
   has FileShareARN => (is => 'ro', isa => 'Str');
+  has NotificationId => (is => 'ro', isa => 'Str');
 
   has _request_id => (is => 'ro', isa => 'Str');
 
@@ -15,6 +16,11 @@ Paws::StorageGateway::RefreshCacheOutput
 
 
 =head2 FileShareARN => Str
+
+
+
+
+=head2 NotificationId => Str
 
 
 

@@ -1,8 +1,8 @@
 package Paws::MediaConvert::SpekeKeyProvider;
   use Moose;
-  has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest'], required => 1);
-  has SystemIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'systemIds', traits => ['NameInRequest'], required => 1);
-  has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest'], required => 1);
+  has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest']);
+  has SystemIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'systemIds', traits => ['NameInRequest']);
+  has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -38,20 +38,20 @@ Settings for use with a SPEKE key provider
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ResourceId => Str
+=head2 ResourceId => Str
 
   The SPEKE-compliant server uses Resource ID (ResourceId) to identify
 content.
 
 
-=head2 B<REQUIRED> SystemIds => ArrayRef[Str|Undef]
+=head2 SystemIds => ArrayRef[Str|Undef]
 
   Relates to SPEKE implementation. DRM system identifiers. DASH output
 groups support a max of two system ids. Other group types support one
 system id.
 
 
-=head2 B<REQUIRED> Url => Str
+=head2 Url => Str
 
   Use URL (Url) to specify the SPEKE-compliant server that will provide
 keys for content.

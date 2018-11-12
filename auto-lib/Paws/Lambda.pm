@@ -312,19 +312,17 @@ Returns: a L<Paws::Lambda::AddPermissionResponse> instance
 
 Adds a permission to the resource policy associated with the specified
 AWS Lambda function. You use resource policies to grant permissions to
-event sources that use I<push> model. In a I<push> model, event sources
-(such as Amazon S3 and custom applications) invoke your Lambda
+event sources that use the I<push> model. In a I<push> model, event
+sources (such as Amazon S3 and custom applications) invoke your Lambda
 function. Each permission you add to the resource policy allows an
-event source, permission to invoke the Lambda function.
+event source permission to invoke the Lambda function.
 
-For information about the push model, see Lambda Functions
-(http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html).
-
-If you are using versioning, the permissions you add are specific to
-the Lambda function version or alias you specify in the
-C<AddPermission> request via the C<Qualifier> parameter. For more
-information about versioning, see AWS Lambda Function Versioning and
-Aliases
+Permissions apply to the Amazon Resource Name (ARN) used to invoke the
+function, which can be unqualified (the unpublished version of the
+function), or include a version or alias. If a client uses a version or
+alias to invoke a function, use the C<Qualifier> parameter to apply
+permissions to that ARN. For more information about versioning, see AWS
+Lambda Function Versioning and Aliases
 (http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
 
 This operation requires permission for the C<lambda:AddPermission>
@@ -368,11 +366,11 @@ for the lambda:CreateAlias action.
 
 =item FunctionName => Str
 
-=item StartingPosition => Str
-
 =item [BatchSize => Int]
 
 =item [Enabled => Bool]
+
+=item [StartingPosition => Str]
 
 =item [StartingPositionTimestamp => Str]
 
@@ -383,20 +381,26 @@ Each argument is described in detail in: L<Paws::Lambda::CreateEventSourceMappin
 
 Returns: a L<Paws::Lambda::EventSourceMappingConfiguration> instance
 
-Identifies a stream as an event source for a Lambda function. It can be
-either an Amazon Kinesis stream or an Amazon DynamoDB stream. AWS
-Lambda invokes the specified function when records are posted to the
-stream.
+Identifies a poll-based event source for a Lambda function. It can be
+either an Amazon Kinesis or DynamoDB stream. AWS Lambda invokes the
+specified function when records are posted to the event source.
 
-This association between a stream source and a Lambda function is
+This association between a poll-based source and a Lambda function is
 called the event source mapping.
 
-You provide mapping information (for example, which stream to read from
-and which Lambda function to invoke) in the request body.
+You provide mapping information (for example, which stream or SQS queue
+to read from and which Lambda function to invoke) in the request body.
 
-Each event source, such as an Amazon Kinesis or a DynamoDB stream, can
-be associated with multiple AWS Lambda functions. A given Lambda
-function can be associated with multiple AWS event sources.
+Amazon Kinesis or DynamoDB stream event sources can be associated with
+multiple AWS Lambda functions and a given Lambda function can be
+associated with multiple AWS event sources. For Amazon SQS, you can
+configure multiple queues as event sources for a single Lambda
+function, but an SQS queue can be mapped only to a single Lambda
+function.
+
+You can configure an SQS queue in an account separate from your Lambda
+function's account. Also the queue needs to reside in the same AWS
+region as your function.
 
 If you are using versioning, you can specify a specific function
 version or an alias via the function name parameter. For more
@@ -449,16 +453,9 @@ Each argument is described in detail in: L<Paws::Lambda::CreateFunction>
 
 Returns: a L<Paws::Lambda::FunctionConfiguration> instance
 
-Creates a new Lambda function. The function metadata is created from
-the request parameters, and the code for the function is provided by a
-.zip file in the request body. If the function name already exists, the
-operation will fail. Note that the function name is case-sensitive.
-
-If you are using versioning, you can also publish a version of the
-Lambda function you are creating using the C<Publish> parameter. For
-more information about versioning, see AWS Lambda Function Versioning
-and Aliases
-(http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
+Creates a new Lambda function. The function configuration is created
+from the request parameters, and the code for the function is provided
+by a .zip file. The function name is case-sensitive.
 
 This operation requires permission for the C<lambda:CreateFunction>
 action.
@@ -521,19 +518,9 @@ Each argument is described in detail in: L<Paws::Lambda::DeleteFunction>
 
 Returns: nothing
 
-Deletes the specified Lambda function code and configuration.
-
-If you are using the versioning feature and you don't specify a
-function version in your C<DeleteFunction> request, AWS Lambda will
-delete the function, including all its versions, and any aliases
-pointing to the function versions. To delete a specific function
-version, you must provide the function version via the C<Qualifier>
-parameter. For information about function versioning, see AWS Lambda
-Function Versioning and Aliases
-(http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
-
-When you delete a function the associated resource policy is also
-deleted. You will need to delete the event source mappings explicitly.
+Deletes a Lambda function. To delete a specific function version, use
+the C<Qualifier> parameter. Otherwise, all versions and aliases are
+deleted. Event source mappings are not deleted.
 
 This operation requires permission for the C<lambda:DeleteFunction>
 action.
@@ -553,7 +540,8 @@ Each argument is described in detail in: L<Paws::Lambda::DeleteFunctionConcurren
 Returns: nothing
 
 Removes concurrent execution limits from this function. For more
-information, see concurrent-executions.
+information, see Managing Concurrency
+(http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html).
 
 
 =head2 GetAccountSettings
@@ -567,14 +555,9 @@ Each argument is described in detail in: L<Paws::Lambda::GetAccountSettings>
 
 Returns: a L<Paws::Lambda::GetAccountSettingsResponse> instance
 
-Returns a customer's account settings.
-
-You can use this operation to retrieve Lambda limits information, such
-as code size and concurrency limits. For more information about limits,
-see AWS Lambda Limits
-(http://docs.aws.amazon.com/lambda/latest/dg/limits.html). You can also
-retrieve resource usage statistics, such as code storage usage and
-function count.
+Retrieves details about your account's limits
+(http://docs.aws.amazon.com/lambda/latest/dg/limits.html) and usage in
+a region.
 
 
 =head2 GetAlias
@@ -641,11 +624,9 @@ you can download the .zip file. Note that the URL is valid for up to 10
 minutes. The configuration information is the same information you
 provided as parameters when uploading the function.
 
-Using the optional C<Qualifier> parameter, you can specify a specific
-function version for which you want this information. If you don't
-specify this parameter, the API uses unqualified function ARN which
-return information about the C<$LATEST> version of the Lambda function.
-For more information, see AWS Lambda Function Versioning and Aliases
+Use the C<Qualifier> parameter to retrieve a published version of the
+function. Otherwise, returns the unpublished version (C<$LATEST>). For
+more information, see AWS Lambda Function Versioning and Aliases
 (http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
 
 This operation requires permission for the C<lambda:GetFunction>
@@ -701,14 +682,7 @@ Returns: a L<Paws::Lambda::GetPolicyResponse> instance
 Returns the resource policy associated with the specified Lambda
 function.
 
-If you are using the versioning feature, you can get the resource
-policy associated with the specific Lambda function version or alias by
-specifying the version or alias name using the C<Qualifier> parameter.
-For more information about versioning, see AWS Lambda Function
-Versioning and Aliases
-(http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
-
-You need permission for the C<lambda:GetPolicy action.>
+This action requires permission for the C<lambda:GetPolicy action.>
 
 
 =head2 Invoke
@@ -734,19 +708,25 @@ Each argument is described in detail in: L<Paws::Lambda::Invoke>
 
 Returns: a L<Paws::Lambda::InvocationResponse> instance
 
-Invokes a specific Lambda function. For an example, see Create the
-Lambda Function and Test It Manually
+Invokes a Lambda function. For an example, see Create the Lambda
+Function and Test It Manually
 (http://docs.aws.amazon.com/lambda/latest/dg/with-dynamodb-create-function.html#with-dbb-invoke-manually).
 
-If you are using the versioning feature, you can invoke the specific
-function version by providing function version or alias name that is
-pointing to the function version using the C<Qualifier> parameter in
-the request. If you don't provide the C<Qualifier> parameter, the
-C<$LATEST> version of the Lambda function is invoked. Invocations occur
-at least once in response to an event and functions must be idempotent
-to handle this. For information about the versioning feature, see AWS
-Lambda Function Versioning and Aliases
+Specify just a function name to invoke the latest version of the
+function. To invoke a published version, use the C<Qualifier> parameter
+to specify a version or alias
 (http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
+
+If you use the C<RequestResponse> (synchronous) invocation option, the
+function will be invoked only once. If you use the C<Event>
+(asynchronous) invocation option, the function will be invoked at least
+once in response to an event and the function must be idempotent to
+handle this.
+
+For functions with a long timeout, your client may be disconnected
+during synchronous invocation while it waits for a response. Configure
+your HTTP client, SDK, firewall, proxy, or operating system to allow
+for long connections with timeout or keep-alive settings.
 
 This operation requires permission for the C<lambda:InvokeFunction>
 action.
@@ -776,8 +756,7 @@ Each argument is described in detail in: L<Paws::Lambda::InvokeAsync>
 
 Returns: a L<Paws::Lambda::InvokeAsyncResponse> instance
 
-This API is deprecated. We recommend you use C<Invoke> API (see
-Invoke).
+For asynchronous function invocation, use Invoke.
 
 Submits an invocation request to AWS Lambda. Upon receiving the
 request, Lambda executes the specified function asynchronously. To see
@@ -840,12 +819,6 @@ C<CreateEventSourceMapping> (see CreateEventSourceMapping).
 
 For each mapping, the API returns configuration information. You can
 optionally specify filters to retrieve specific event source mappings.
-
-If you are using the versioning feature, you can get list of event
-source mappings for a specific Lambda function version or an alias as
-described in the C<FunctionName> parameter. For information about the
-versioning feature, see AWS Lambda Function Versioning and Aliases
-(http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
 
 This operation requires permission for the
 C<lambda:ListEventSourceMappings> action.
@@ -920,8 +893,8 @@ Each argument is described in detail in: L<Paws::Lambda::ListVersionsByFunction>
 
 Returns: a L<Paws::Lambda::ListVersionsByFunctionResponse> instance
 
-List all versions of a function. For information about the versioning
-feature, see AWS Lambda Function Versioning and Aliases
+Lists all versions of a function. For information about versioning, see
+AWS Lambda Function Versioning and Aliases
 (http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
 
 
@@ -974,7 +947,8 @@ limit per region. Note that Lambda automatically reserves a buffer of
 100 concurrent executions for functions without any reserved
 concurrency limit. This means if your account limit is 1000, you have a
 total of 900 available to allocate to individual functions. For more
-information, see concurrent-executions.
+information, see Managing Concurrency
+(http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html).
 
 
 =head2 RemovePermission
@@ -996,19 +970,19 @@ Each argument is described in detail in: L<Paws::Lambda::RemovePermission>
 
 Returns: nothing
 
-You can remove individual permissions from an resource policy
-associated with a Lambda function by providing a statement ID that you
-provided when you added the permission.
+Removes permissions from a function. You can remove individual
+permissions from an resource policy associated with a Lambda function
+by providing a statement ID that you provided when you added the
+permission. When you remove permissions, disable the event source
+mapping or trigger configuration first to avoid errors.
 
-If you are using versioning, the permissions you remove are specific to
-the Lambda function version or alias you specify in the
-C<AddPermission> request via the C<Qualifier> parameter. For more
-information about versioning, see AWS Lambda Function Versioning and
-Aliases
+Permissions apply to the Amazon Resource Name (ARN) used to invoke the
+function, which can be unqualified (the unpublished version of the
+function), or include a version or alias. If a client uses a version or
+alias to invoke a function, use the C<Qualifier> parameter to apply
+permissions to that ARN. For more information about versioning, see AWS
+Lambda Function Versioning and Aliases
 (http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
-
-Note that removal of a permission will cause an active event source to
-lose permission to the function.
 
 You need permission for the C<lambda:RemovePermission> action.
 
@@ -1112,12 +1086,6 @@ change the parameters of the existing mapping without losing your
 position in the stream. You can change which function will receive the
 stream records, but to change the stream itself, you must create a new
 mapping.
-
-If you are using the versioning feature, you can update the event
-source mapping to map to a specific Lambda function version or alias as
-described in the C<FunctionName> parameter. For information about the
-versioning feature, see AWS Lambda Function Versioning and Aliases
-(http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
 
 If you disable the event source mapping, AWS Lambda stops polling. If
 you enable again, it will resume polling from the time it had stopped

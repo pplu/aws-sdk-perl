@@ -5,6 +5,8 @@ package Paws::CodeBuild::ProjectSource;
   has GitCloneDepth => (is => 'ro', isa => 'Int', request_name => 'gitCloneDepth', traits => ['NameInRequest']);
   has InsecureSsl => (is => 'ro', isa => 'Bool', request_name => 'insecureSsl', traits => ['NameInRequest']);
   has Location => (is => 'ro', isa => 'Str', request_name => 'location', traits => ['NameInRequest']);
+  has ReportBuildStatus => (is => 'ro', isa => 'Bool', request_name => 'reportBuildStatus', traits => ['NameInRequest']);
+  has SourceIdentifier => (is => 'ro', isa => 'Str', request_name => 'sourceIdentifier', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
 1;
 
@@ -96,8 +98,21 @@ C<https://git-codecommit.I<region-ID>.amazonaws.com/v1/repos/I<repo-name>
 =item *
 
 For source code in an Amazon Simple Storage Service (Amazon S3) input
-bucket, the path to the ZIP file that contains the source code (for
-example, C< I<bucket-name>/I<path>/I<to>/I<object-name>.zip>)
+bucket, one of the following.
+
+=over
+
+=item *
+
+The path to the ZIP file that contains the source code (for example, C<
+I<bucket-name>/I<path>/I<to>/I<object-name>.zip>).
+
+=item *
+
+The path to the folder that contains the source code (for example, C<
+I<bucket-name>/I<path>/I<to>/I<source-code>/I<folder>/>).
+
+=back
 
 =item *
 
@@ -133,6 +148,19 @@ value to C<OAUTH>.
 
 
 
+=head2 ReportBuildStatus => Bool
+
+  Set to true to report the status of a build's start and finish to your
+source provider. This option is only valid when your source provider is
+GitHub, GitHub Enterprise, or Bitbucket. If this is set and you use a
+different source provider, an invalidInputException is thrown.
+
+
+=head2 SourceIdentifier => Str
+
+  An identifier for this project source.
+
+
 =head2 B<REQUIRED> Type => Str
 
   The type of repository that contains the source code to be built. Valid
@@ -156,6 +184,10 @@ action of a pipeline in AWS CodePipeline.
 =item *
 
 C<GITHUB>: The source code is in a GitHub repository.
+
+=item *
+
+C<NO_SOURCE>: The project does not have input source code.
 
 =item *
 

@@ -64,6 +64,11 @@ package Paws::CloudWatch;
     my $call_object = $self->new_with_coercions('Paws::CloudWatch::GetMetricStatistics', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetMetricWidgetImage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatch::GetMetricWidgetImage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListDashboards {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatch::ListDashboards', @_);
@@ -189,7 +194,7 @@ package Paws::CloudWatch;
   }
 
 
-  sub operations { qw/DeleteAlarms DeleteDashboards DescribeAlarmHistory DescribeAlarms DescribeAlarmsForMetric DisableAlarmActions EnableAlarmActions GetDashboard GetMetricData GetMetricStatistics ListDashboards ListMetrics PutDashboard PutMetricAlarm PutMetricData SetAlarmState / }
+  sub operations { qw/DeleteAlarms DeleteDashboards DescribeAlarmHistory DescribeAlarms DescribeAlarmsForMetric DisableAlarmActions EnableAlarmActions GetDashboard GetMetricData GetMetricStatistics GetMetricWidgetImage ListDashboards ListMetrics PutDashboard PutMetricAlarm PutMetricData SetAlarmState / }
 
 1;
 
@@ -234,7 +239,7 @@ can monitor your own custom metrics. With CloudWatch, you gain
 system-wide visibility into resource utilization, application
 performance, and operational health.
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/cloudwatch/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/cloudwatch/>
 
 
 =head1 METHODS
@@ -455,6 +460,42 @@ than calls to C<GetMetricStatistics>. For more information about
 pricing, see Amazon CloudWatch Pricing
 (https://aws.amazon.com/cloudwatch/pricing/).
 
+Amazon CloudWatch retains metric data as follows:
+
+=over
+
+=item *
+
+Data points with a period of less than 60 seconds are available for 3
+hours. These data points are high-resolution metrics and are available
+only for custom metrics that have been defined with a
+C<StorageResolution> of 1.
+
+=item *
+
+Data points with a period of 60 seconds (1-minute) are available for 15
+days.
+
+=item *
+
+Data points with a period of 300 seconds (5-minute) are available for
+63 days.
+
+=item *
+
+Data points with a period of 3600 seconds (1 hour) are available for
+455 days (15 months).
+
+=back
+
+Data points that are initially published with a shorter period are
+aggregated together for long-term storage. For example, if you collect
+data using a period of 1 minute, the data remains available for 15 days
+with 1-minute resolution. After 15 days, this data is still available,
+but is aggregated and retrievable only with a resolution of 5 minutes.
+After 63 days, the data is further aggregated and is available with a
+resolution of 1 hour.
+
 
 =head2 GetMetricStatistics
 
@@ -518,6 +559,9 @@ The Min and the Max values of the statistic set are equal.
 
 =back
 
+Percentile statistics are not available for metrics when any of the
+metric values are negative numbers.
+
 Amazon CloudWatch retains metric data as follows:
 
 =over
@@ -563,6 +607,49 @@ see the Amazon CloudWatch Metrics and Dimensions Reference
 in the I<Amazon CloudWatch User Guide>.
 
 
+=head2 GetMetricWidgetImage
+
+=over
+
+=item MetricWidget => Str
+
+=item [OutputFormat => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatch::GetMetricWidgetImage>
+
+Returns: a L<Paws::CloudWatch::GetMetricWidgetImageOutput> instance
+
+You can use the C<GetMetricWidgetImage> API to retrieve a snapshot
+graph of one or more Amazon CloudWatch metrics as a bitmap image. You
+can then embed this image into your services and products, such as wiki
+pages, reports, and documents. You could also retrieve images
+regularly, such as every minute, and create your own custom live
+dashboard.
+
+The graph you retrieve can include all CloudWatch metric graph
+features, including metric math and horizontal and vertical
+annotations.
+
+There is a limit of 20 transactions per second for this API. Each
+C<GetMetricWidgetImage> action has the following limits:
+
+=over
+
+=item *
+
+As many as 100 metrics in the graph.
+
+=item *
+
+Up to 100 KB uncompressed payload.
+
+=back
+
+
+
 =head2 ListDashboards
 
 =over
@@ -582,6 +669,11 @@ Returns a list of the dashboards for your account. If you include
 C<DashboardNamePrefix>, only those dashboards with names starting with
 the prefix are listed. Otherwise, all dashboards in your account are
 listed.
+
+C<ListDashboards> returns up to 1000 results on one page. If there are
+more than 1000 dashboards, you can call C<ListDashboards> again and
+include the value you received for C<NextToken> in the first call, to
+receive the next 1000 results.
 
 
 =head2 ListMetrics
@@ -604,14 +696,14 @@ Each argument is described in detail in: L<Paws::CloudWatch::ListMetrics>
 Returns: a L<Paws::CloudWatch::ListMetricsOutput> instance
 
 List the specified metrics. You can use the returned metrics with
-GetMetricStatistics to obtain statistical data.
+GetMetricData or GetMetricStatistics to obtain statistical data.
 
 Up to 500 results are returned for any one call. To retrieve additional
 results, use the returned token with subsequent calls.
 
 After you create a metric, allow up to fifteen minutes before the
 metric appears. Statistics about the metric, however, are available
-sooner using GetMetricStatistics.
+sooner using GetMetricData or GetMetricStatistics.
 
 
 =head2 PutDashboard
@@ -633,8 +725,8 @@ Creates a dashboard if it does not already exist, or updates an
 existing dashboard. If you update a dashboard, the entire contents are
 replaced with what you specify here.
 
-You can have up to 500 dashboards per account. All dashboards in your
-account are global, not region-specific.
+There is no limit to the number of dashboards in your account. All
+dashboards in your account are global, not region-specific.
 
 A simple way to create a dashboard using C<PutDashboard> is to copy an
 existing dashboard. To copy an existing dashboard using the console,
@@ -756,11 +848,12 @@ Amazon SNS notifications or Auto Scaling policies.
 If you are using temporary security credentials granted using AWS STS,
 you cannot stop or terminate an EC2 instance using alarm actions.
 
-You must create at least one stop, terminate, or reboot alarm using
-either the Amazon EC2 or CloudWatch consoles to create the
-B<EC2ActionsAccess> IAM role. After this IAM role is created, you can
-create stop, terminate, or reboot alarms using a command-line interface
-or API.
+The first time you create an alarm in the AWS Management Console, the
+CLI, or by using the PutMetricAlarm API, CloudWatch creates the
+necessary service-linked role for you. The service-linked role is
+called C<AWSServiceRoleForCloudWatchEvents>. For more information about
+service-linked roles, see AWS service-linked role
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role).
 
 
 =head2 PutMetricData
@@ -778,14 +871,23 @@ Each argument is described in detail in: L<Paws::CloudWatch::PutMetricData>
 
 Returns: nothing
 
-Publishes metric data points to Amazon CloudWatch. CloudWatch
-associates the data points with the specified metric. If the specified
-metric does not exist, CloudWatch creates the metric. When CloudWatch
-creates a metric, it can take up to fifteen minutes for the metric to
-appear in calls to ListMetrics.
+Publishes metric data to Amazon CloudWatch. CloudWatch associates the
+data with the specified metric. If the specified metric does not exist,
+CloudWatch creates the metric. When CloudWatch creates a metric, it can
+take up to fifteen minutes for the metric to appear in calls to
+ListMetrics.
+
+You can publish either individual data points in the C<Value> field, or
+arrays of values and the number of times each value occurred during the
+period by using the C<Values> and C<Counts> fields in the
+C<MetricDatum> structure. Using the C<Values> and C<Counts> method
+enables you to publish up to 150 values per metric with one
+C<PutMetricData> request, and supports retrieving percentile statistics
+on this data.
 
 Each C<PutMetricData> request is limited to 40 KB in size for HTTP POST
-requests.
+requests. You can send a payload compressed by gzip. Each request is
+also limited to no more than 20 different metrics.
 
 Although the C<Value> parameter accepts numbers of type C<Double>,
 CloudWatch rejects values that are either too small or too large.
@@ -800,11 +902,13 @@ see Publishing Metrics
 in the I<Amazon CloudWatch User Guide>.
 
 Data points with time stamps from 24 hours ago or longer can take at
-least 48 hours to become available for GetMetricStatistics from the
-time they are submitted.
+least 48 hours to become available for GetMetricData or
+GetMetricStatistics from the time they are submitted.
 
-CloudWatch needs raw data points to calculate percentile statistics. If
-you publish data using a statistic set instead, you can only retrieve
+CloudWatch needs raw data points to calculate percentile statistics.
+These raw data points could be published individually or as part of
+C<Values> and C<Counts> arrays. If you publish data using statistic
+sets in the C<StatisticValues> field instead, you can only retrieve
 percentile statistics for this data if one of the following conditions
 is true:
 
@@ -812,11 +916,13 @@ is true:
 
 =item *
 
-The SampleCount value of the statistic set is 1
+The C<SampleCount> value of the statistic set is 1 and C<Min>, C<Max>,
+and C<Sum> are all equal.
 
 =item *
 
-The Min and the Max values of the statistic set are equal
+The C<Min> and C<Max> are equal, and C<Sum> is equal to C<Min>
+multiplied by C<SampleCount>.
 
 =back
 

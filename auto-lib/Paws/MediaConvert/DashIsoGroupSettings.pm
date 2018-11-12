@@ -3,11 +3,12 @@ package Paws::MediaConvert::DashIsoGroupSettings;
   has BaseUrl => (is => 'ro', isa => 'Str', request_name => 'baseUrl', traits => ['NameInRequest']);
   has Destination => (is => 'ro', isa => 'Str', request_name => 'destination', traits => ['NameInRequest']);
   has Encryption => (is => 'ro', isa => 'Paws::MediaConvert::DashIsoEncryptionSettings', request_name => 'encryption', traits => ['NameInRequest']);
-  has FragmentLength => (is => 'ro', isa => 'Int', request_name => 'fragmentLength', traits => ['NameInRequest'], required => 1);
+  has FragmentLength => (is => 'ro', isa => 'Int', request_name => 'fragmentLength', traits => ['NameInRequest']);
   has HbbtvCompliance => (is => 'ro', isa => 'Str', request_name => 'hbbtvCompliance', traits => ['NameInRequest']);
   has MinBufferTime => (is => 'ro', isa => 'Int', request_name => 'minBufferTime', traits => ['NameInRequest']);
   has SegmentControl => (is => 'ro', isa => 'Str', request_name => 'segmentControl', traits => ['NameInRequest']);
-  has SegmentLength => (is => 'ro', isa => 'Int', request_name => 'segmentLength', traits => ['NameInRequest'], required => 1);
+  has SegmentLength => (is => 'ro', isa => 'Int', request_name => 'segmentLength', traits => ['NameInRequest']);
+  has WriteSegmentTimelineInRepresentation => (is => 'ro', isa => 'Str', request_name => 'writeSegmentTimelineInRepresentation', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +28,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConvert::DashIsoGroupSettings object:
 
-  $service_obj->Method(Att1 => { BaseUrl => $value, ..., SegmentLength => $value  });
+  $service_obj->Method(Att1 => { BaseUrl => $value, ..., WriteSegmentTimelineInRepresentation => $value  });
 
 =head3 Results returned from an API call
 
@@ -65,7 +66,7 @@ service uses the filename of the first input file.
   DRM settings.
 
 
-=head2 B<REQUIRED> FragmentLength => Int
+=head2 FragmentLength => Int
 
   Length of fragments to generate (in seconds). Fragment length must be
 compatible with GOP size and Framerate. Note that fragments will end on
@@ -91,13 +92,20 @@ smooth playout.
   
 
 
-=head2 B<REQUIRED> SegmentLength => Int
+=head2 SegmentLength => Int
 
   Length of mpd segments to create (in seconds). Note that segments will
 end on the next keyframe after this number of seconds, so actual
 segment length may be longer. When Emit Single File is checked, the
 segmentation is internal to a single output file and it does not cause
 the creation of many output files as in other output types.
+
+
+=head2 WriteSegmentTimelineInRepresentation => Str
+
+  When ENABLED, segment durations are indicated in the manifest using
+SegmentTimeline and SegmentTimeline will be promoted down into
+Representation from AdaptationSet.
 
 
 

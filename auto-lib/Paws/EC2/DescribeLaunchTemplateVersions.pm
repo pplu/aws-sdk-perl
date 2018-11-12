@@ -139,7 +139,7 @@ template ID or launch template name in the request.
 
 The maximum number of results to return in a single call. To retrieve
 the remaining results, make another call with the returned C<NextToken>
-value. This value can be between 5 and 1000.
+value. This value can be between 1 and 200.
 
 
 

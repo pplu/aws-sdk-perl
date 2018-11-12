@@ -1,7 +1,9 @@
 
 package Paws::GuardDuty::CreateDetector;
   use Moose;
-  has Enable => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enable');
+  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken');
+  has Enable => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enable', required => 1);
+  has FindingPublishingFrequency => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'findingPublishingFrequency');
 
   use MooseX::ClassAttribute;
 
@@ -29,7 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $guardduty = Paws->service('GuardDuty');
     my $CreateDetectorResponse = $guardduty->CreateDetector(
-      Enable => 1,    # OPTIONAL
+      Enable                     => 1,
+      ClientToken                => 'My__stringMin0Max64',    # OPTIONAL
+      FindingPublishingFrequency => 'FIFTEEN_MINUTES',        # OPTIONAL
     );
 
     # Results:
@@ -38,16 +42,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::GuardDuty::CreateDetectorResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/guardduty/CreateDetector>
 
 =head1 ATTRIBUTES
 
 
-=head2 Enable => Bool
+=head2 ClientToken => Str
+
+The idempotency token for the create request.
+
+
+
+=head2 B<REQUIRED> Enable => Bool
 
 A boolean value that specifies whether the detector is to be enabled.
 
 
+
+=head2 FindingPublishingFrequency => Str
+
+A enum value that specifies how frequently customer got Finding updates
+published.
+
+Valid values are: C<"FIFTEEN_MINUTES">, C<"ONE_HOUR">, C<"SIX_HOURS">
 
 
 =head1 SEE ALSO

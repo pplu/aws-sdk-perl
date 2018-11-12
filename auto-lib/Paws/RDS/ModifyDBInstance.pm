@@ -15,6 +15,7 @@ package Paws::RDS::ModifyDBInstance;
   has DBPortNumber => (is => 'ro', isa => 'Int');
   has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
   has Domain => (is => 'ro', isa => 'Str');
   has DomainIAMRoleName => (is => 'ro', isa => 'Str');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
@@ -29,6 +30,7 @@ package Paws::RDS::ModifyDBInstance;
   has NewDBInstanceIdentifier => (is => 'ro', isa => 'Str');
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has PerformanceInsightsKMSKeyId => (is => 'ro', isa => 'Str');
+  has PerformanceInsightsRetentionPeriod => (is => 'ro', isa => 'Int');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has ProcessorFeatures => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ProcessorFeature]');
@@ -70,7 +72,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ModifyDBInstanceResult = $rds->ModifyDBInstance(
       {
         'AllocatedStorage'           => 10,
-        'ApplyImmediately'           => true,
+        'ApplyImmediately'           => 1,
         'BackupRetentionPeriod'      => 1,
         'DBInstanceClass'            => 'db.t2.small',
         'DBInstanceIdentifier'       => 'mymysqlinstance',
@@ -127,9 +129,9 @@ cause an outage and are applied on the next call to RebootDBInstance,
 or the next failure reboot. Review the table of parameters in Modifying
 a DB Instance and Using the Apply Immediately Parameter
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html)
-to see the impact that setting C<ApplyImmediately> to C<true> or
-C<false> has for each modified parameter and to determine when the
-changes are applied.
+in the I<Amazon RDS User Guide.> to see the impact that setting
+C<ApplyImmediately> to C<true> or C<false> has for each modified
+parameter and to determine when the changes are applied.
 
 Default: C<false>
 
@@ -187,7 +189,7 @@ running PostgreSQL 9.3.5
 
 =item *
 
-Cannot be set to 0 if the DB instance is a source to Read Replicas
+Can't be set to 0 if the DB instance is a source to Read Replicas
 
 =back
 
@@ -342,7 +344,8 @@ The new DB subnet group for the DB instance. You can use this parameter
 to move your DB instance to a different VPC. If your DB instance is not
 in a VPC, you can also use this parameter to move your DB instance into
 a VPC. For more information, see Updating the VPC for a DB Instance
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html#USER_VPC.Non-VPC2VPC).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html#USER_VPC.Non-VPC2VPC)
+in the I<Amazon RDS User Guide.>
 
 Changing the subnet group causes an outage during the change. The
 change is applied during the next maintenance window, unless you
@@ -352,6 +355,15 @@ Constraints: If supplied, must match the name of an existing
 DBSubnetGroup.
 
 Example: C<mySubnetGroup>
+
+
+
+=head2 DeletionProtection => Bool
+
+Indicates if the DB instance has deletion protection enabled. The
+database can't be deleted when this value is set to true. For more
+information, see Deleting a DB Instance
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 
 
 
@@ -540,7 +552,8 @@ metrics to Amazon CloudWatch Logs. For example,
 C<arn:aws:iam:123456789012:role/emaccess>. For information on creating
 a monitoring role, go to To create an IAM role for Amazon RDS Enhanced
 Monitoring
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole)
+in the I<Amazon RDS User Guide.>
 
 If C<MonitoringInterval> is set to a value other than 0, then you must
 supply a C<MonitoringRoleArn> value.
@@ -578,7 +591,7 @@ The first character must be a letter.
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens.
+Can't end with a hyphen or contain two consecutive hyphens.
 
 =back
 
@@ -608,6 +621,13 @@ be removed from a DB instance once it is associated with a DB instance
 The AWS KMS key identifier for encryption of Performance Insights data.
 The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier,
 or the KMS key alias for the KMS encryption key.
+
+
+
+=head2 PerformanceInsightsRetentionPeriod => Int
+
+The amount of time, in days, to retain Performance Insights data. Valid
+values are 7 or 731 (2 years).
 
 
 
@@ -684,7 +704,8 @@ A value that specifies the order in which an Aurora Replica is promoted
 to the primary instance after a failure of the existing primary
 instance. For more information, see Fault Tolerance for an Aurora DB
 Cluster
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance).
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance)
+in the I<Amazon Aurora User Guide>.
 
 Default: 1
 

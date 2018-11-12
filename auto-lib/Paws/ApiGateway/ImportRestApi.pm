@@ -52,7 +52,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::ApiGateway::RestApi> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/ImportRestApi>
 
 =head1 ATTRIBUTES
 
@@ -60,7 +60,7 @@ For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigat
 =head2 B<REQUIRED> Body => Str
 
 [Required] The POST request body containing external API definitions.
-Currently, only Swagger definition JSON files are supported. The
+Currently, only OpenAPI definition JSON/YAML files are supported. The
 maximum size of the API definition file is 2MB.
 
 
@@ -83,8 +83,9 @@ To exclude DocumentationParts from the import, set C<parameters> as
 C<ignore=documentation>.
 
 To configure the endpoint type, set C<parameters> as
-C<endpointConfigurationTypes=EDGE>
-orC<endpointConfigurationTypes=REGIONAL>. The default endpoint type is
+C<endpointConfigurationTypes=EDGE>,
+C<endpointConfigurationTypes=REGIONAL>, or
+C<endpointConfigurationTypes=PRIVATE>. The default endpoint type is
 C<EDGE>.
 
 To handle imported C<basePath>, set C<parameters> as
@@ -93,12 +94,12 @@ C<basePath=ignore>, C<basePath=prepend> or C<basePath=split>.
 For example, the AWS CLI command to exclude documentation from the
 imported API is:
 
- aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json
+ aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json'
 
 The AWS CLI command to set the regional endpoint on the imported API
 is:
 
- aws apigateway import-rest-api --parameters endpointConfigurationTypes=REGIONAL --body 'file:///path/to/imported-api-body.json
+ aws apigateway import-rest-api --parameters endpointConfigurationTypes=REGIONAL --body 'file:///path/to/imported-api-body.json'
 
 
 

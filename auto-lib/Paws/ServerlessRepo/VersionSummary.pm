@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServerlessR
 
 =head1 DESCRIPTION
 
-Application version summary.
+An application version summary.
 
 =head1 ATTRIBUTES
 
@@ -46,7 +46,7 @@ Application version summary.
 
 =head2 B<REQUIRED> CreationTime => Str
 
-  The date/time this resource was created.
+  The date and time this resource was created.
 
 
 =head2 B<REQUIRED> SemanticVersion => Str

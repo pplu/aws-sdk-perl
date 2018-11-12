@@ -54,6 +54,14 @@ associated with one and only one DB parameter group family, and can be
 applied only to a DB instance running a database engine and engine
 version compatible with that DB parameter group family.
 
+To list all of the available parameter group families, use the
+following command:
+
+C<aws rds describe-db-engine-versions --query
+"DBEngineVersions[].DBParameterGroupFamily">
+
+The output contains duplicates.
+
 
 
 =head2 B<REQUIRED> DBParameterGroupName => Str
@@ -74,7 +82,7 @@ First character must be a letter
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens
+Can't end with a hyphen or contain two consecutive hyphens
 
 =back
 

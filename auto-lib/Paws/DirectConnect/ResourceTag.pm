@@ -32,14 +32,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DirectConne
 
 =head1 DESCRIPTION
 
-The tags associated with a Direct Connect resource.
+Information about a tag associated with an AWS Direct Connect resource.
 
 =head1 ATTRIBUTES
 
 
 =head2 ResourceArn => Str
 
-  The Amazon Resource Name (ARN) of the Direct Connect resource.
+  The Amazon Resource Name (ARN) of the resource.
 
 
 =head2 Tags => ArrayRef[L<Paws::DirectConnect::Tag>]

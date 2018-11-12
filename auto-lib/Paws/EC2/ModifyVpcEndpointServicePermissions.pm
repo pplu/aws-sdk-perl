@@ -51,8 +51,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 AddAllowedPrincipals => ArrayRef[Str|Undef]
 
-One or more Amazon Resource Names (ARNs) of principals for which to
-allow permission. Specify C<*> to allow all principals.
+The Amazon Resource Names (ARN) of one or more principals. Permissions
+are granted to the principals in this list. To grant permissions to all
+principals, specify an asterisk (*).
 
 
 
@@ -67,8 +68,8 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 RemoveAllowedPrincipals => ArrayRef[Str|Undef]
 
-One or more Amazon Resource Names (ARNs) of principals for which to
-remove permission.
+The Amazon Resource Names (ARN) of one or more principals. Permissions
+are revoked for principals in this list.
 
 
 

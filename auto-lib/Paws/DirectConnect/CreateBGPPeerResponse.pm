@@ -16,7 +16,7 @@ Paws::DirectConnect::CreateBGPPeerResponse
 
 =head2 VirtualInterface => L<Paws::DirectConnect::VirtualInterface>
 
-
+The virtual interface.
 
 
 =head2 _request_id => Str

@@ -68,7 +68,7 @@ content that the stream contains to the consumers of the stream. For
 more information about media types, see Media Types
 (http://www.iana.org/assignments/media-types/media-types.xhtml). If you
 choose to specify the C<MediaType>, see Naming Requirements
-(https://tools.sietf.org/html/rfc6838#section-4.2).
+(https://tools.ietf.org/html/rfc6838#section-4.2).
 
 To play video on the console, you must specify the correct video type.
 For example, if the video in the stream is H.264, specify C<video/h264>

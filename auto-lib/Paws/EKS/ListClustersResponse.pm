@@ -18,7 +18,7 @@ Paws::EKS::ListClustersResponse
 
 =head2 Clusters => ArrayRef[Str|Undef]
 
-A list of all of the clusters for your account in the specified region.
+A list of all of the clusters for your account in the specified Region.
 
 
 =head2 NextToken => Str

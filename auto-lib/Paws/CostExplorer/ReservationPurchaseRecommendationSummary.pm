@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CostExplore
 =head1 DESCRIPTION
 
 A summary about this recommendation, such as the currency code, the
-amount that AWS estimates you could save, and the total amount of
+amount that AWS estimates that you could save, and the total amount of
 reservation to purchase.
 
 =head1 ATTRIBUTES

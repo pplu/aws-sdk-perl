@@ -2,6 +2,7 @@ package Paws::CodeCommit::PullRequestEvent;
   use Moose;
   has ActorArn => (is => 'ro', isa => 'Str', request_name => 'actorArn', traits => ['NameInRequest']);
   has EventDate => (is => 'ro', isa => 'Str', request_name => 'eventDate', traits => ['NameInRequest']);
+  has PullRequestCreatedEventMetadata => (is => 'ro', isa => 'Paws::CodeCommit::PullRequestCreatedEventMetadata', request_name => 'pullRequestCreatedEventMetadata', traits => ['NameInRequest']);
   has PullRequestEventType => (is => 'ro', isa => 'Str', request_name => 'pullRequestEventType', traits => ['NameInRequest']);
   has PullRequestId => (is => 'ro', isa => 'Str', request_name => 'pullRequestId', traits => ['NameInRequest']);
   has PullRequestMergedStateChangedEventMetadata => (is => 'ro', isa => 'Paws::CodeCommit::PullRequestMergedStateChangedEventMetadata', request_name => 'pullRequestMergedStateChangedEventMetadata', traits => ['NameInRequest']);
@@ -52,6 +53,12 @@ commits or changing the status of a pull request.
 =head2 EventDate => Str
 
   The day and time of the pull request event, in timestamp format.
+
+
+=head2 PullRequestCreatedEventMetadata => L<Paws::CodeCommit::PullRequestCreatedEventMetadata>
+
+  Information about the source and destination branches for the pull
+request.
 
 
 =head2 PullRequestEventType => Str

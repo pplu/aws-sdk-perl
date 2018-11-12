@@ -5,6 +5,8 @@ package Paws::EFS::CreateFileSystem;
   has Encrypted => (is => 'ro', isa => 'Bool');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has PerformanceMode => (is => 'ro', isa => 'Str');
+  has ProvisionedThroughputInMibps => (is => 'ro', isa => 'Num');
+  has ThroughputMode => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -68,7 +70,7 @@ idempotent creation.
 
 =head2 Encrypted => Bool
 
-A boolean value that, if true, creates an encrypted file system. When
+A Boolean value that, if true, creates an encrypted file system. When
 creating an encrypted file system, you have the option of specifying a
 CreateFileSystemRequest$KmsKeyId for an existing AWS Key Management
 Service (AWS KMS) customer master key (CMK). If you don't specify a
@@ -79,21 +81,21 @@ used to protect the encrypted file system.
 
 =head2 KmsKeyId => Str
 
-The id of the AWS KMS CMK that will be used to protect the encrypted
-file system. This parameter is only required if you want to use a
+The ID of the AWS KMS CMK to be used to protect the encrypted file
+system. This parameter is only required if you want to use a
 non-default CMK. If this parameter is not specified, the default CMK
-for Amazon EFS is used. This id can be in one of the following formats:
+for Amazon EFS is used. This ID can be in one of the following formats:
 
 =over
 
 =item *
 
-Key ID - A unique identifier of the key. For example,
+Key ID - A unique identifier of the key, for example,
 C<1234abcd-12ab-34cd-56ef-1234567890ab>.
 
 =item *
 
-ARN - An Amazon Resource Name for the key. For example,
+ARN - An Amazon Resource Name (ARN) for the key, for example,
 C<arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab>.
 
 =item *
@@ -103,13 +105,13 @@ C<alias/projectKey1>.
 
 =item *
 
-Key alias ARN - An Amazon Resource Name for a key alias. For example,
+Key alias ARN - An ARN for a key alias, for example,
 C<arn:aws:kms:us-west-2:444455556666:alias/projectKey1>.
 
 =back
 
-Note that if the KmsKeyId is specified, the
-CreateFileSystemRequest$Encrypted parameter must be set to true.
+If KmsKeyId is specified, the CreateFileSystemRequest$Encrypted
+parameter must be set to true.
 
 
 
@@ -123,6 +125,28 @@ slightly higher latencies for most file operations. This can't be
 changed after the file system has been created.
 
 Valid values are: C<"generalPurpose">, C<"maxIO">
+
+=head2 ProvisionedThroughputInMibps => Num
+
+The throughput, measured in MiB/s, that you want to provision for a
+file system that you're creating. The limit on throughput is 1024
+MiB/s. You can get these limits increased by contacting AWS Support.
+For more information, see Amazon EFS Limits That You Can Increase
+(http://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits) in
+the I<Amazon EFS User Guide.>
+
+
+
+=head2 ThroughputMode => Str
+
+The throughput mode for the file system to be created. There are two
+throughput modes to choose from for your file system: bursting and
+provisioned. You can decrease your file system's throughput in
+Provisioned Throughput mode or change between the throughput modes as
+long as itE<rsquo>s been more than 24 hours since the last decrease or
+throughput mode change.
+
+Valid values are: C<"bursting">, C<"provisioned">
 
 
 =head1 SEE ALSO

@@ -35,12 +35,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $GetLifecyclePolicyPreviewResponse = $ecr->GetLifecyclePolicyPreview(
       RepositoryName => 'MyRepositoryName',
       Filter         => {
-        tagStatus => 'TAGGED',    # values: TAGGED, UNTAGGED; OPTIONAL
+        TagStatus => 'TAGGED',    # values: TAGGED, UNTAGGED; OPTIONAL
       },    # OPTIONAL
       ImageIds => [
         {
-          imageDigest => 'MyImageDigest',    # OPTIONAL
-          imageTag    => 'MyImageTag',       # OPTIONAL
+          ImageDigest => 'MyImageDigest',    # OPTIONAL
+          ImageTag    => 'MyImageTag',       # OPTIONAL
         },
         ...
       ],                                     # OPTIONAL

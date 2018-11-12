@@ -86,7 +86,7 @@ Default: If no value is provided, the default is 1000.
 
 =head2 NextToken => Str
 
-The token to use to retrieve the next page of results.
+The token for the next page of results.
 
 
 

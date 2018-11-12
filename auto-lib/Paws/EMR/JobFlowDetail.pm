@@ -51,11 +51,9 @@ A description of a cluster (job flow).
 
 =head2 AmiVersion => Str
 
-  Used only for version 2.x and 3.x of Amazon EMR. The version of the AMI
-used to initialize Amazon EC2 instances in the job flow. For a list of
-AMI versions supported by Amazon EMR, see AMI Versions Supported in EMR
-(http://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf#nameddest=ami-versions-supported)
-in the I<Amazon EMR Developer Guide.>
+  Applies only to Amazon EMR AMI versions 3.x and 2.x. For Amazon EMR
+releases 4.0 and later, C<ReleaseLabel> is used. To specify a custom
+AMI, use C<CustomAmiID>.
 
 
 =head2 AutoScalingRole => Str

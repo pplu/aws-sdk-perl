@@ -66,9 +66,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 Attribute => Str
 
-The snapshot attribute to modify.
-
-Only volume creation permissions may be modified at the customer level.
+The snapshot attribute to modify. Only volume creation permissions can
+be modified.
 
 Valid values are: C<"productCodes">, C<"createVolumePermission">
 

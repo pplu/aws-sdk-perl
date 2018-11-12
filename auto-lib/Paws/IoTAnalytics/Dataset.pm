@@ -5,6 +5,7 @@ package Paws::IoTAnalytics::Dataset;
   has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
   has LastUpdateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdateTime', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has RetentionPeriod => (is => 'ro', isa => 'Paws::IoTAnalytics::RetentionPeriod', request_name => 'retentionPeriod', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has Triggers => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::DatasetTrigger]', request_name => 'triggers', traits => ['NameInRequest']);
 1;
@@ -44,7 +45,8 @@ Information about a data set.
 
 =head2 Actions => ArrayRef[L<Paws::IoTAnalytics::DatasetAction>]
 
-  The "DatasetAction" objects that create the data set.
+  The "DatasetAction" objects that automatically create the data set
+contents.
 
 
 =head2 Arn => Str
@@ -65,6 +67,11 @@ Information about a data set.
 =head2 Name => Str
 
   The name of the data set.
+
+
+=head2 RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>
+
+  [Optional] How long, in days, message data is kept for the data set.
 
 
 =head2 Status => Str

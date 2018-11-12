@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $applicationId = $CreateApplicationOutput->applicationId;
+    my $ApplicationId = $CreateApplicationOutput->ApplicationId;
 
     # Returns a L<Paws::CodeDeploy::CreateApplicationOutput> object.
 

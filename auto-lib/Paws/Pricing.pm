@@ -166,7 +166,7 @@ https://api.pricing.ap-south-1.amazonaws.com
 =back
 
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/account-billing/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/account-billing/>
 
 
 =head1 METHODS

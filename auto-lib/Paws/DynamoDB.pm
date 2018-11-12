@@ -91,6 +91,11 @@ package Paws::DynamoDB;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::DescribeContinuousBackups', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeEndpoints {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DynamoDB::DescribeEndpoints', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeGlobalTable {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::DescribeGlobalTable', @_);
@@ -313,7 +318,7 @@ package Paws::DynamoDB;
   }
 
 
-  sub operations { qw/BatchGetItem BatchWriteItem CreateBackup CreateGlobalTable CreateTable DeleteBackup DeleteItem DeleteTable DescribeBackup DescribeContinuousBackups DescribeGlobalTable DescribeGlobalTableSettings DescribeLimits DescribeTable DescribeTimeToLive GetItem ListBackups ListGlobalTables ListTables ListTagsOfResource PutItem Query RestoreTableFromBackup RestoreTableToPointInTime Scan TagResource UntagResource UpdateContinuousBackups UpdateGlobalTable UpdateGlobalTableSettings UpdateItem UpdateTable UpdateTimeToLive / }
+  sub operations { qw/BatchGetItem BatchWriteItem CreateBackup CreateGlobalTable CreateTable DeleteBackup DeleteItem DeleteTable DescribeBackup DescribeContinuousBackups DescribeEndpoints DescribeGlobalTable DescribeGlobalTableSettings DescribeLimits DescribeTable DescribeTimeToLive GetItem ListBackups ListGlobalTables ListTables ListTagsOfResource PutItem Query RestoreTableFromBackup RestoreTableToPointInTime Scan TagResource UntagResource UpdateContinuousBackups UpdateGlobalTable UpdateGlobalTableSettings UpdateItem UpdateTable UpdateTimeToLive / }
 
 1;
 
@@ -894,6 +899,20 @@ You can call C<DescribeContinuousBackups> at a maximum rate of 10 times
 per second.
 
 
+=head2 DescribeEndpoints
+
+
+
+
+
+
+Each argument is described in detail in: L<Paws::DynamoDB::DescribeEndpoints>
+
+Returns: a L<Paws::DynamoDB::DescribeEndpointsResponse> instance
+
+
+
+
 =head2 DescribeGlobalTable
 
 =over
@@ -1107,6 +1126,8 @@ value.
 =head2 ListBackups
 
 =over
+
+=item [BackupType => Str]
 
 =item [ExclusiveStartBackupArn => Str]
 
@@ -1771,6 +1792,8 @@ write capacity units.
 
 =item [GlobalTableGlobalSecondaryIndexSettingsUpdate => ArrayRef[L<Paws::DynamoDB::GlobalTableGlobalSecondaryIndexSettingsUpdate>]]
 
+=item [GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate => L<Paws::DynamoDB::AutoScalingSettingsUpdate>]
+
 =item [GlobalTableProvisionedWriteCapacityUnits => Int]
 
 =item [ReplicaSettingsUpdate => ArrayRef[L<Paws::DynamoDB::ReplicaSettingsUpdate>]]
@@ -1842,6 +1865,8 @@ C<UpdateItem> operation using the C<ReturnValues> parameter.
 =item [GlobalSecondaryIndexUpdates => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndexUpdate>]]
 
 =item [ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>]
+
+=item [SSESpecification => L<Paws::DynamoDB::SSESpecification>]
 
 =item [StreamSpecification => L<Paws::DynamoDB::StreamSpecification>]
 
@@ -1938,9 +1963,9 @@ in the Amazon DynamoDB Developer Guide.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 ListAllBackups(sub { },[ExclusiveStartBackupArn => Str, Limit => Int, TableName => Str, TimeRangeLowerBound => Str, TimeRangeUpperBound => Str])
+=head2 ListAllBackups(sub { },[BackupType => Str, ExclusiveStartBackupArn => Str, Limit => Int, TableName => Str, TimeRangeLowerBound => Str, TimeRangeUpperBound => Str])
 
-=head2 ListAllBackups([ExclusiveStartBackupArn => Str, Limit => Int, TableName => Str, TimeRangeLowerBound => Str, TimeRangeUpperBound => Str])
+=head2 ListAllBackups([BackupType => Str, ExclusiveStartBackupArn => Str, Limit => Int, TableName => Str, TimeRangeLowerBound => Str, TimeRangeUpperBound => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

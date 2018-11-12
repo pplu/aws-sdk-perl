@@ -257,16 +257,21 @@ instance, image, security-group, network-interface, subnet, volume
 
 =head2 ResourceOwner => Str
 
-An AWS account ID that specifies the owner of any simulated resource
-that does not identify its owner in the resource ARN, such as an S3
-bucket or object. If C<ResourceOwner> is specified, it is also used as
-the account owner of any C<ResourcePolicy> included in the simulation.
-If the C<ResourceOwner> parameter is not specified, then the owner of
-the resources and the resource policy defaults to the account of the
-identity provided in C<CallerArn>. This parameter is required only if
-you specify a resource-based policy and account that owns the resource
-is different from the account that owns the simulated calling user
-C<CallerArn>.
+An ARN representing the AWS account ID that specifies the owner of any
+simulated resource that does not identify its owner in the resource
+ARN, such as an S3 bucket or object. If C<ResourceOwner> is specified,
+it is also used as the account owner of any C<ResourcePolicy> included
+in the simulation. If the C<ResourceOwner> parameter is not specified,
+then the owner of the resources and the resource policy defaults to the
+account of the identity provided in C<CallerArn>. This parameter is
+required only if you specify a resource-based policy and account that
+owns the resource is different from the account that owns the simulated
+calling user C<CallerArn>.
+
+The ARN for an account uses the following syntax:
+C<arn:aws:iam::I<AWS-account-ID>:root>. For example, to represent the
+account with the 112233445566 ID, use the following ARN:
+C<arn:aws:iam::112233445566-ID:root>.
 
 
 

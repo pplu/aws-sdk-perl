@@ -9,6 +9,7 @@ package Paws::CodeStar::DescribeProjectResult;
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' );
   has ProjectTemplateId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectTemplateId' );
   has StackId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stackId' );
+  has Status => (is => 'ro', isa => 'Paws::CodeStar::ProjectStatus', traits => ['NameInRequest'], request_name => 'status' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 
@@ -62,6 +63,11 @@ project.
 
 The ID of the primary stack in AWS CloudFormation used to generate
 resources for the project.
+
+
+=head2 Status => L<Paws::CodeStar::ProjectStatus>
+
+The project creation or deletion status.
 
 
 =head2 _request_id => Str

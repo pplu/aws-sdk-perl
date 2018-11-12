@@ -14,6 +14,11 @@ package Paws::RedShift;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller';
 
   
+  sub AcceptReservedNodeExchange {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::AcceptReservedNodeExchange', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AuthorizeClusterSecurityGroupIngress {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::AuthorizeClusterSecurityGroupIngress', @_);
@@ -129,6 +134,11 @@ package Paws::RedShift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::DeleteTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeClusterDbRevisions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeClusterDbRevisions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeClusterParameterGroups {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeClusterParameterGroups', @_);
@@ -157,6 +167,11 @@ package Paws::RedShift;
   sub DescribeClusterSubnetGroups {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeClusterSubnetGroups', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeClusterTracks {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeClusterTracks', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeClusterVersions {
@@ -259,9 +274,19 @@ package Paws::RedShift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::GetClusterCredentials', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetReservedNodeExchangeOfferings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::GetReservedNodeExchangeOfferings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ModifyCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::ModifyCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyClusterDbRevision {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::ModifyClusterDbRevision', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ModifyClusterIamRoles {
@@ -302,6 +327,11 @@ package Paws::RedShift;
   sub ResetClusterParameterGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::ResetClusterParameterGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ResizeCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::ResizeCluster', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RestoreFromClusterSnapshot {
@@ -677,7 +707,7 @@ package Paws::RedShift;
   }
 
 
-  sub operations { qw/AuthorizeClusterSecurityGroupIngress AuthorizeSnapshotAccess CopyClusterSnapshot CreateCluster CreateClusterParameterGroup CreateClusterSecurityGroup CreateClusterSnapshot CreateClusterSubnetGroup CreateEventSubscription CreateHsmClientCertificate CreateHsmConfiguration CreateSnapshotCopyGrant CreateTags DeleteCluster DeleteClusterParameterGroup DeleteClusterSecurityGroup DeleteClusterSnapshot DeleteClusterSubnetGroup DeleteEventSubscription DeleteHsmClientCertificate DeleteHsmConfiguration DeleteSnapshotCopyGrant DeleteTags DescribeClusterParameterGroups DescribeClusterParameters DescribeClusters DescribeClusterSecurityGroups DescribeClusterSnapshots DescribeClusterSubnetGroups DescribeClusterVersions DescribeDefaultClusterParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeHsmClientCertificates DescribeHsmConfigurations DescribeLoggingStatus DescribeOrderableClusterOptions DescribeReservedNodeOfferings DescribeReservedNodes DescribeResize DescribeSnapshotCopyGrants DescribeTableRestoreStatus DescribeTags DisableLogging DisableSnapshotCopy EnableLogging EnableSnapshotCopy GetClusterCredentials ModifyCluster ModifyClusterIamRoles ModifyClusterParameterGroup ModifyClusterSubnetGroup ModifyEventSubscription ModifySnapshotCopyRetentionPeriod PurchaseReservedNodeOffering RebootCluster ResetClusterParameterGroup RestoreFromClusterSnapshot RestoreTableFromClusterSnapshot RevokeClusterSecurityGroupIngress RevokeSnapshotAccess RotateEncryptionKey / }
+  sub operations { qw/AcceptReservedNodeExchange AuthorizeClusterSecurityGroupIngress AuthorizeSnapshotAccess CopyClusterSnapshot CreateCluster CreateClusterParameterGroup CreateClusterSecurityGroup CreateClusterSnapshot CreateClusterSubnetGroup CreateEventSubscription CreateHsmClientCertificate CreateHsmConfiguration CreateSnapshotCopyGrant CreateTags DeleteCluster DeleteClusterParameterGroup DeleteClusterSecurityGroup DeleteClusterSnapshot DeleteClusterSubnetGroup DeleteEventSubscription DeleteHsmClientCertificate DeleteHsmConfiguration DeleteSnapshotCopyGrant DeleteTags DescribeClusterDbRevisions DescribeClusterParameterGroups DescribeClusterParameters DescribeClusters DescribeClusterSecurityGroups DescribeClusterSnapshots DescribeClusterSubnetGroups DescribeClusterTracks DescribeClusterVersions DescribeDefaultClusterParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeHsmClientCertificates DescribeHsmConfigurations DescribeLoggingStatus DescribeOrderableClusterOptions DescribeReservedNodeOfferings DescribeReservedNodes DescribeResize DescribeSnapshotCopyGrants DescribeTableRestoreStatus DescribeTags DisableLogging DisableSnapshotCopy EnableLogging EnableSnapshotCopy GetClusterCredentials GetReservedNodeExchangeOfferings ModifyCluster ModifyClusterDbRevision ModifyClusterIamRoles ModifyClusterParameterGroup ModifyClusterSubnetGroup ModifyEventSubscription ModifySnapshotCopyRetentionPeriod PurchaseReservedNodeOffering RebootCluster ResetClusterParameterGroup ResizeCluster RestoreFromClusterSnapshot RestoreTableFromClusterSnapshot RevokeClusterSecurityGroupIngress RevokeSnapshotAccess RotateEncryptionKey / }
 
 1;
 
@@ -741,6 +771,26 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/red
 
 
 =head1 METHODS
+
+=head2 AcceptReservedNodeExchange
+
+=over
+
+=item ReservedNodeId => Str
+
+=item TargetReservedNodeOfferingId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::AcceptReservedNodeExchange>
+
+Returns: a L<Paws::RedShift::AcceptReservedNodeExchangeOutputMessage> instance
+
+Exchanges a DC1 Reserved Node for a DC2 Reserved Node with no changes
+to the configuration (term, payment type, or number of nodes) and no
+additional costs.
+
 
 =head2 AuthorizeClusterSecurityGroupIngress
 
@@ -892,6 +942,8 @@ in the I<Amazon Redshift Cluster Management Guide>.
 
 =item [KmsKeyId => Str]
 
+=item [MaintenanceTrackName => Str]
+
 =item [NumberOfNodes => Int]
 
 =item [Port => Int]
@@ -913,8 +965,8 @@ Returns: a L<Paws::RedShift::CreateClusterResult> instance
 
 Creates a new cluster.
 
-To create the cluster in Virtual Private Cloud (VPC), you must provide
-a cluster subnet group name. The cluster subnet group identifies the
+To create a cluster in Virtual Private Cloud (VPC), you must provide a
+cluster subnet group name. The cluster subnet group identifies the
 subnets of your VPC that Amazon Redshift uses when creating the
 cluster. For more information about managing clusters, go to Amazon
 Redshift Clusters
@@ -1414,6 +1466,26 @@ Deletes a tag or tags from a resource. You must provide the ARN of the
 resource from which you want to delete the tag or tags.
 
 
+=head2 DescribeClusterDbRevisions
+
+=over
+
+=item [ClusterIdentifier => Str]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::DescribeClusterDbRevisions>
+
+Returns: a L<Paws::RedShift::ClusterDbRevisionsMessage> instance
+
+Returns an array of C<ClusterDbRevision> objects.
+
+
 =head2 DescribeClusterParameterGroups
 
 =over
@@ -1664,6 +1736,26 @@ returned.
 If both tag keys and values are omitted from the request, subnet groups
 are returned regardless of whether they have tag keys or values
 associated with them.
+
+
+=head2 DescribeClusterTracks
+
+=over
+
+=item [MaintenanceTrackName => Str]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::DescribeClusterTracks>
+
+Returns: a L<Paws::RedShift::TrackListMessage> instance
+
+Returns a list of all the available maintenance tracks.
 
 
 =head2 DescribeClusterVersions
@@ -2255,6 +2347,27 @@ If the C<DbName> parameter is specified, the IAM policy must allow
 access to the resource C<dbname> for the specified database name.
 
 
+=head2 GetReservedNodeExchangeOfferings
+
+=over
+
+=item ReservedNodeId => Str
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::GetReservedNodeExchangeOfferings>
+
+Returns: a L<Paws::RedShift::GetReservedNodeExchangeOfferingsOutputMessage> instance
+
+Returns an array of DC2 ReservedNodeOfferings that matches the payment
+type, term, and usage price of the given DC1 reserved node.
+
+
 =head2 ModifyCluster
 
 =over
@@ -2275,11 +2388,17 @@ access to the resource C<dbname> for the specified database name.
 
 =item [ElasticIp => Str]
 
+=item [Encrypted => Bool]
+
 =item [EnhancedVpcRouting => Bool]
 
 =item [HsmClientCertificateIdentifier => Str]
 
 =item [HsmConfigurationIdentifier => Str]
+
+=item [KmsKeyId => Str]
+
+=item [MaintenanceTrackName => Str]
 
 =item [MasterUserPassword => Str]
 
@@ -2316,6 +2435,25 @@ You can also change node type and the number of nodes to scale up or
 down the cluster. When resizing a cluster, you must specify both the
 number of nodes and the node type even if one of the parameters does
 not change.
+
+
+=head2 ModifyClusterDbRevision
+
+=over
+
+=item ClusterIdentifier => Str
+
+=item RevisionTarget => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::ModifyClusterDbRevision>
+
+Returns: a L<Paws::RedShift::ModifyClusterDbRevisionResult> instance
+
+Modifies the database revision of a cluster. The database revision is a
+unique revision of the database running in a cluster.
 
 
 =head2 ModifyClusterIamRoles
@@ -2508,6 +2646,69 @@ I<ResetAllParameters> parameter. For parameter changes to take effect
 you must reboot any associated clusters.
 
 
+=head2 ResizeCluster
+
+=over
+
+=item ClusterIdentifier => Str
+
+=item NumberOfNodes => Int
+
+=item [Classic => Bool]
+
+=item [ClusterType => Str]
+
+=item [NodeType => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::ResizeCluster>
+
+Returns: a L<Paws::RedShift::ResizeClusterResult> instance
+
+Changes the size of the cluster. You can change the cluster's type, or
+change the number or type of nodes. The default behavior is to use the
+elastic resize method. With an elastic resize your cluster is avaialble
+for read and write operations more quickly than with the classic resize
+method.
+
+Elastic resize operations have the following restrictions:
+
+=over
+
+=item *
+
+You can only resize clusters of the following types:
+
+=over
+
+=item *
+
+dc2.large
+
+=item *
+
+dc2.8xlarge
+
+=item *
+
+ds2.xlarge
+
+=item *
+
+ds2.8xlarge
+
+=back
+
+=item *
+
+The type of nodes you add must match the node type for the cluster.
+
+=back
+
+
+
 =head2 RestoreFromClusterSnapshot
 
 =over
@@ -2541,6 +2742,8 @@ you must reboot any associated clusters.
 =item [IamRoles => ArrayRef[Str|Undef]]
 
 =item [KmsKeyId => Str]
+
+=item [MaintenanceTrackName => Str]
 
 =item [NodeType => Str]
 

@@ -41,9 +41,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $elasticbeanstalk->CreateApplicationVersion(
       {
         'ApplicationName'       => 'my-app',
-        'AutoCreateApplication' => true,
+        'AutoCreateApplication' => 1,
         'Description'           => 'my-app-v1',
-        'Process'               => true,
+        'Process'               => 1,
         'SourceBundle'          => {
           'S3Bucket' => 'my-bucket',
           'S3Key'    => 'sample.war'
@@ -93,10 +93,14 @@ Describes this version.
 
 =head2 Process => Bool
 
-Preprocesses and validates the environment manifest (C<env.yaml>) and
+Pre-processes and validates the environment manifest (C<env.yaml>) and
 configuration files (C<*.config> files in the C<.ebextensions> folder)
 in the source bundle. Validating configuration files can identify
 issues prior to deploying the application version to an environment.
+
+You must turn processing on for application versions that you create
+using AWS CodeBuild or AWS CodeCommit. For application versions built
+from a source bundle in Amazon S3, processing is optional.
 
 The C<Process> option validates Elastic Beanstalk configuration files.
 It doesn't validate your application's configuration files, like proxy

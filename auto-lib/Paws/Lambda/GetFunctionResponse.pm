@@ -20,18 +20,19 @@ Paws::Lambda::GetFunctionResponse
 
 =head2 Code => L<Paws::Lambda::FunctionCodeLocation>
 
-
+The function's code.
 
 
 =head2 Concurrency => L<Paws::Lambda::Concurrency>
 
 The concurrent execution limit set for this function. For more
-information, see concurrent-executions.
+information, see Managing Concurrency
+(http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html).
 
 
 =head2 Configuration => L<Paws::Lambda::FunctionConfiguration>
 
-
+The function's configuration.
 
 
 =head2 Tags => L<Paws::Lambda::Tags>

@@ -139,7 +139,7 @@ information, see Create a New Stack
 The configuration manager. When you update a stack, we recommend that
 you use the configuration manager to specify the Chef version: 12,
 11.10, or 11.4 for Linux stacks, or 12.2 for Windows stacks. The
-default value for Linux stacks is currently 11.4.
+default value for Linux stacks is currently 12.
 
 
 
@@ -157,8 +157,8 @@ to pass data to recipes. The string should be in the following format:
 
 C<"{\"key1\": \"value1\", \"key2\": \"value2\",...}">
 
-For more information on custom JSON, see Use Custom JSON to Modify the
-Stack Configuration Attributes
+For more information about custom JSON, see Use Custom JSON to Modify
+the Stack Configuration Attributes
 (http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html).
 
 
@@ -219,14 +219,14 @@ Standard>, or C<Microsoft Windows Server 2012 R2 with SQL Server Web>.
 =item *
 
 A custom AMI: C<Custom>. You specify the custom AMI you want to use
-when you create instances. For more information on how to use custom
+when you create instances. For more information about how to use custom
 AMIs with OpsWorks, see Using Custom AMIs
 (http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
 
 =back
 
 The default option is the stack's current operating system. For more
-information on the supported operating systems, see AWS OpsWorks Stacks
+information about supported operating systems, see AWS OpsWorks Stacks
 Operating Systems
 (http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
 

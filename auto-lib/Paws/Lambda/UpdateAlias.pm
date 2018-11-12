@@ -66,9 +66,29 @@ You can change the description of the alias using this parameter.
 
 =head2 B<REQUIRED> FunctionName => Str
 
-The function name for which the alias is created. Note that the length
-constraint applies only to the ARN. If you specify only the function
-name, it is limited to 64 characters in length.
+The name of the lambda function.
+
+B<Name formats>
+
+=over
+
+=item *
+
+B<Function name> - C<MyFunction>.
+
+=item *
+
+B<Function ARN> -
+C<arn:aws:lambda:us-west-2:123456789012:function:MyFunction>.
+
+=item *
+
+B<Partial ARN> - C<123456789012:function:MyFunction>.
+
+=back
+
+The length constraint applies only to the full ARN. If you specify only
+the function name, it is limited to 64 characters in length.
 
 
 
@@ -90,8 +110,9 @@ The alias name.
 An optional value you can use to ensure you are updating the latest
 update of the function version or alias. If the C<RevisionID> you pass
 doesn't match the latest C<RevisionId> of the function or alias, it
-will fail with an error message, advising you to retrieve the latest
-function version or alias C<RevisionID> using either or .
+will fail with an error message, advising you retrieve the latest
+function version or alias C<RevisionID> using either GetFunction or
+GetAlias.
 
 
 
@@ -99,7 +120,8 @@ function version or alias C<RevisionID> using either or .
 
 Specifies an additional version your alias can point to, allowing you
 to dictate what percentage of traffic will invoke each version. For
-more information, see lambda-traffic-shifting-using-aliases.
+more information, see Traffic Shifting Using Aliases
+(http://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html).
 
 
 

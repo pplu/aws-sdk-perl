@@ -450,7 +450,7 @@ Paws::MTurk - Perl Interface to AWS Amazon Mechanical Turk
 
 Amazon Mechanical Turk API Reference
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/mturk/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/mturk/>
 
 
 =head1 METHODS

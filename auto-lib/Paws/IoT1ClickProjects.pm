@@ -112,7 +112,7 @@ Paws::IoT1ClickProjects - Perl Interface to AWS AWS IoT 1-Click Projects Service
 
 The AWS IoT 1-Click Project API Reference
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/projects.iot1click-2018-05-14>
 
 
 =head1 METHODS

@@ -40,7 +40,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CostExplore
 
 =head1 DESCRIPTION
 
-The aggregated numbers for your RI usage.
+The aggregated numbers for your Reserved Instance (RI) usage.
 
 =head1 ATTRIBUTES
 
@@ -57,8 +57,8 @@ The aggregated numbers for your RI usage.
 
 =head2 NetRISavings => Str
 
-  How much you saved due to purchasing and utilizing RIs. This is
-calculated by subtracting the C<TotalAmortizedFee> from the
+  How much you saved due to purchasing and utilizing RIs. AWS calculates
+this by subtracting C<TotalAmortizedFee> from
 C<OnDemandCostOfRIHoursUsed>.
 
 

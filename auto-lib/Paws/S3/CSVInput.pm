@@ -1,5 +1,6 @@
 package Paws::S3::CSVInput;
   use Moose;
+  has AllowQuotedRecordDelimiter => (is => 'ro', isa => 'Bool');
   has Comments => (is => 'ro', isa => 'Str');
   has FieldDelimiter => (is => 'ro', isa => 'Str');
   has FileHeaderInfo => (is => 'ro', isa => 'Str');
@@ -25,20 +26,27 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::S3::CSVInput object:
 
-  $service_obj->Method(Att1 => { Comments => $value, ..., RecordDelimiter => $value  });
+  $service_obj->Method(Att1 => { AllowQuotedRecordDelimiter => $value, ..., RecordDelimiter => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::S3::CSVInput object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Comments
+  $result->Att1->AllowQuotedRecordDelimiter
 
 =head1 DESCRIPTION
 
 Describes how a CSV-formatted input object is formatted.
 
 =head1 ATTRIBUTES
+
+
+=head2 AllowQuotedRecordDelimiter => Bool
+
+  Specifies that CSV field values may contain quoted record delimiters
+and such records should be allowed. Default value is FALSE. Setting
+this value to TRUE may lower performance.
 
 
 =head2 Comments => Str

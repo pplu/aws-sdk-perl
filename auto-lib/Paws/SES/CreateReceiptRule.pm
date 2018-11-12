@@ -44,9 +44,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               }
             }
           ],
-          'Enabled'     => true,
+          'Enabled'     => 1,
           'Name'        => 'MyRule',
-          'ScanEnabled' => true,
+          'ScanEnabled' => 1,
           'TlsPolicy'   => 'Optional'
         },
         'RuleSetName' => 'MyRuleSet'

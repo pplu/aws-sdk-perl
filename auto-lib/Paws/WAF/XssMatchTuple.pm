@@ -52,10 +52,12 @@ attackers use in web requests in an effort to bypass AWS WAF. If you
 specify a transformation, AWS WAF performs the transformation on
 C<FieldToMatch> before inspecting a request for a match.
 
+You can only specify a single type of TextTransformation.
+
 B<CMD_LINE>
 
 When you're concerned that attackers are injecting an operating system
-commandline command and using unusual formatting to disguise some or
+command line command and using unusual formatting to disguise some or
 all of the command, use this option to perform the following
 transformations:
 

@@ -47,7 +47,7 @@ Name of the stream processor.
 
 =head2 Output => L<Paws::Rekognition::StreamProcessorOutput>
 
-Kinesis data stream to which Rekognition Video puts the analysis
+Kinesis data stream to which Amazon Rekognition Video puts the analysis
 results.
 
 

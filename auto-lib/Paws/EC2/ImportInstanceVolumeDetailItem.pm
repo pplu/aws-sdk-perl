@@ -1,12 +1,12 @@
 package Paws::EC2::ImportInstanceVolumeDetailItem;
   use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest'], required => 1);
-  has BytesConverted => (is => 'ro', isa => 'Int', request_name => 'bytesConverted', traits => ['NameInRequest'], required => 1);
+  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
+  has BytesConverted => (is => 'ro', isa => 'Int', request_name => 'bytesConverted', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has Image => (is => 'ro', isa => 'Paws::EC2::DiskImageDescription', request_name => 'image', traits => ['NameInRequest'], required => 1);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
+  has Image => (is => 'ro', isa => 'Paws::EC2::DiskImageDescription', request_name => 'image', traits => ['NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest']);
-  has Volume => (is => 'ro', isa => 'Paws::EC2::DiskImageVolumeDescription', request_name => 'volume', traits => ['NameInRequest'], required => 1);
+  has Volume => (is => 'ro', isa => 'Paws::EC2::DiskImageVolumeDescription', request_name => 'volume', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -42,12 +42,12 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AvailabilityZone => Str
+=head2 AvailabilityZone => Str
 
   The Availability Zone where the resulting instance will reside.
 
 
-=head2 B<REQUIRED> BytesConverted => Int
+=head2 BytesConverted => Int
 
   The number of bytes converted so far.
 
@@ -57,12 +57,12 @@ This class has no description
   A description of the task.
 
 
-=head2 B<REQUIRED> Image => L<Paws::EC2::DiskImageDescription>
+=head2 Image => L<Paws::EC2::DiskImageDescription>
 
   The image.
 
 
-=head2 B<REQUIRED> Status => Str
+=head2 Status => Str
 
   The status of the import of this particular disk image.
 
@@ -72,7 +72,7 @@ This class has no description
   The status information or errors related to the disk image.
 
 
-=head2 B<REQUIRED> Volume => L<Paws::EC2::DiskImageVolumeDescription>
+=head2 Volume => L<Paws::EC2::DiskImageVolumeDescription>
 
   The volume.
 

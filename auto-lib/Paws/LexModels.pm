@@ -461,7 +461,7 @@ Amazon Lex is an AWS service for building conversational voice and text
 interfaces. Use these actions to create, update, and delete
 conversational bots for new and existing client applications.
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/lex/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/lex/>
 
 
 =head1 METHODS

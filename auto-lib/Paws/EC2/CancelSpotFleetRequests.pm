@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CancelSpotFleetRequestsResponse = $ec2->CancelSpotFleetRequests(
       {
         'SpotFleetRequestIds' => ['sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE'],
-        'TerminateInstances'  => true
+        'TerminateInstances'  => 1
       }
     );
 

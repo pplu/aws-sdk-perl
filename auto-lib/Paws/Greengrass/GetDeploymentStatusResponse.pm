@@ -21,7 +21,8 @@ Paws::Greengrass::GetDeploymentStatusResponse
 
 =head2 DeploymentStatus => Str
 
-The status of the deployment.
+The status of the deployment: ''Pending'', ''InProgress'', ''Success'',
+or ''Failure''.
 
 
 =head2 DeploymentType => Str

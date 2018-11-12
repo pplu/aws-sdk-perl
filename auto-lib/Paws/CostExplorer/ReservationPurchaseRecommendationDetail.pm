@@ -1,5 +1,6 @@
 package Paws::CostExplorer::ReservationPurchaseRecommendationDetail;
   use Moose;
+  has AccountId => (is => 'ro', isa => 'Str');
   has AverageNormalizedUnitsUsedPerHour => (is => 'ro', isa => 'Str');
   has AverageNumberOfInstancesUsedPerHour => (is => 'ro', isa => 'Str');
   has AverageUtilization => (is => 'ro', isa => 'Str');
@@ -37,20 +38,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CostExplorer::ReservationPurchaseRecommendationDetail object:
 
-  $service_obj->Method(Att1 => { AverageNormalizedUnitsUsedPerHour => $value, ..., UpfrontCost => $value  });
+  $service_obj->Method(Att1 => { AccountId => $value, ..., UpfrontCost => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CostExplorer::ReservationPurchaseRecommendationDetail object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AverageNormalizedUnitsUsedPerHour
+  $result->Att1->AccountId
 
 =head1 DESCRIPTION
 
 Details about your recommended reservation purchase.
 
 =head1 ATTRIBUTES
+
+
+=head2 AccountId => Str
+
+  
 
 
 =head2 AverageNormalizedUnitsUsedPerHour => Str

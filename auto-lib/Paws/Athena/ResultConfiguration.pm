@@ -40,13 +40,17 @@ encryption option, if any, used for query results.
 
 =head2 EncryptionConfiguration => L<Paws::Athena::EncryptionConfiguration>
 
-  If query results are encrypted in S3, indicates the S3 encryption
-option used (for example, C<SSE-KMS> or C<CSE-KMS> and key information.
+  If query results are encrypted in Amazon S3, indicates the encryption
+option used (for example, C<SSE-KMS> or C<CSE-KMS>) and key
+information.
 
 
 =head2 B<REQUIRED> OutputLocation => Str
 
-  The location in S3 where query results are stored.
+  The location in Amazon S3 where your query results are stored, such as
+C<s3://path/to/query/bucket/>. For more information, see Queries and
+Query Result Files.
+(http://docs.aws.amazon.com/athena/latest/ug/querying.html)
 
 
 

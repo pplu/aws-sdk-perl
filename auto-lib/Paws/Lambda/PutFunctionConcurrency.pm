@@ -49,15 +49,35 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 B<REQUIRED> FunctionName => Str
 
-The name of the function you are setting concurrent execution limits
-on. For more information, see concurrent-executions.
+The name of the lambda function.
+
+B<Name formats>
+
+=over
+
+=item *
+
+B<Function name> - C<MyFunction>.
+
+=item *
+
+B<Function ARN> -
+C<arn:aws:lambda:us-west-2:123456789012:function:MyFunction>.
+
+=item *
+
+B<Partial ARN> - C<123456789012:function:MyFunction>.
+
+=back
+
+The length constraint applies only to the full ARN. If you specify only
+the function name, it is limited to 64 characters in length.
 
 
 
 =head2 B<REQUIRED> ReservedConcurrentExecutions => Int
 
-The concurrent execution limit reserved for this function. For more
-information, see concurrent-executions.
+The concurrent execution limit reserved for this function.
 
 
 

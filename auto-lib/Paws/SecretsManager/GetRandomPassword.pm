@@ -86,6 +86,13 @@ Specifies that the generated password should not include punctuation
 characters. The default if you do not include this switch parameter is
 that punctuation characters can be included.
 
+The following are the punctuation characters that I<can> be included in
+the generated password if you don't explicitly exclude them with
+C<ExcludeCharacters> or C<ExcludePunctuation>:
+
+C<! " # $ % & ' ( ) * + , - . / : ; E<lt> = E<gt> ? @ [ \ ] ^ _ ` { | }
+~>
+
 
 
 =head2 ExcludeUppercase => Bool

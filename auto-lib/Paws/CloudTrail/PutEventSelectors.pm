@@ -102,7 +102,7 @@ Not be in IP address format (for example, 192.168.5.4)
 
 If you specify a trail ARN, it must be in the format:
 
-C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>
+C<arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail>
 
 
 

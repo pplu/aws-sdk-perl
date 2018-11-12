@@ -1,6 +1,6 @@
 package Paws::MediaConvert::ImageInserter;
   use Moose;
-  has InsertableImages => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::InsertableImage]', request_name => 'insertableImages', traits => ['NameInRequest'], required => 1);
+  has InsertableImages => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::InsertableImage]', request_name => 'insertableImages', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +38,7 @@ individually. This setting is disabled by default.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> InsertableImages => ArrayRef[L<Paws::MediaConvert::InsertableImage>]
+=head2 InsertableImages => ArrayRef[L<Paws::MediaConvert::InsertableImage>]
 
   Image to insert. Must be 32 bit windows BMP, PNG, or TGA file. Must not
 be larger than the output frames.

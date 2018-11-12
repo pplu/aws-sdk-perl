@@ -52,13 +52,14 @@ Specifies summary information about a training job.
 
 =head2 FailureReason => Str
 
-  The reason that the
+  The reason that the training job failed.
 
 
 =head2 FinalHyperParameterTuningJobObjectiveMetric => L<Paws::SageMaker::FinalHyperParameterTuningJobObjectiveMetric>
 
-  The object that specifies the value of the objective metric of the
-tuning job that launched this training job.
+  The FinalHyperParameterTuningJobObjectiveMetric object that specifies
+the value of the objective metric of the tuning job that launched this
+training job.
 
 
 =head2 ObjectiveStatus => Str

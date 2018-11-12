@@ -3,6 +3,7 @@ package Paws::MediaConvert::UpdateQueue;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
+  has ReservationPlanSettings => (is => 'ro', isa => 'Paws::MediaConvert::ReservationPlanSettings', traits => ['NameInRequest'], request_name => 'reservationPlanSettings');
   has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status');
 
   use MooseX::ClassAttribute;
@@ -31,9 +32,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $mediaconvert = Paws->service('MediaConvert');
     my $UpdateQueueResponse = $mediaconvert->UpdateQueue(
-      Name        => 'My__string',
-      Description => 'My__string',    # OPTIONAL
-      Status      => 'ACTIVE',        # OPTIONAL
+      Name                    => 'My__string',
+      Description             => 'My__string',    # OPTIONAL
+      ReservationPlanSettings => {
+        Commitment    => 'ONE_YEAR',              # values: ONE_YEAR
+        RenewalType   => 'AUTO_RENEW',            # values: AUTO_RENEW, EXPIRE
+        ReservedSlots => 1,
+
+      },    # OPTIONAL
+      Status => 'ACTIVE',    # OPTIONAL
     );
 
     # Results:
@@ -55,13 +62,23 @@ The new description for the queue, if you are changing it.
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the queue you are modifying.
+The name of the queue that you are modifying.
+
+
+
+=head2 ReservationPlanSettings => L<Paws::MediaConvert::ReservationPlanSettings>
+
+Details about the pricing plan for your reserved queue. Required for
+reserved queues and not applicable to on-demand queues.
 
 
 
 =head2 Status => Str
 
-
+Pause or activate a queue by changing its status between ACTIVE and
+PAUSED. If you pause a queue, jobs in that queue won't begin. Jobs that
+are running when you pause the queue continue to run until they finish
+or result in an error.
 
 Valid values are: C<"ACTIVE">, C<"PAUSED">
 

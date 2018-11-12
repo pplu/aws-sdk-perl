@@ -33,121 +33,121 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       TaskToken => 'MyTaskToken',
       Decisions => [
         {
-          decisionType => 'ScheduleActivityTask'
+          DecisionType => 'ScheduleActivityTask'
           , # values: ScheduleActivityTask, RequestCancelActivityTask, CompleteWorkflowExecution, FailWorkflowExecution, CancelWorkflowExecution, ContinueAsNewWorkflowExecution, RecordMarker, StartTimer, CancelTimer, SignalExternalWorkflowExecution, RequestCancelExternalWorkflowExecution, StartChildWorkflowExecution, ScheduleLambdaFunction
-          cancelTimerDecisionAttributes => {
-            timerId => 'MyTimerId',    # min: 1, max: 256
+          CancelTimerDecisionAttributes => {
+            TimerId => 'MyTimerId',    # min: 1, max: 256
 
           },    # OPTIONAL
-          cancelWorkflowExecutionDecisionAttributes => {
-            details => 'MyData',    # max: 32768; OPTIONAL
+          CancelWorkflowExecutionDecisionAttributes => {
+            Details => 'MyData',    # max: 32768; OPTIONAL
           },    # OPTIONAL
-          completeWorkflowExecutionDecisionAttributes => {
-            result => 'MyData',    # max: 32768; OPTIONAL
+          CompleteWorkflowExecutionDecisionAttributes => {
+            Result => 'MyData',    # max: 32768; OPTIONAL
           },    # OPTIONAL
-          continueAsNewWorkflowExecutionDecisionAttributes => {
-            childPolicy => 'TERMINATE'
+          ContinueAsNewWorkflowExecutionDecisionAttributes => {
+            ChildPolicy => 'TERMINATE'
             ,    # values: TERMINATE, REQUEST_CANCEL, ABANDON; OPTIONAL
-            executionStartToCloseTimeout =>
+            ExecutionStartToCloseTimeout =>
               'MyDurationInSecondsOptional',    # max: 8; OPTIONAL
-            input      => 'MyData',             # max: 32768; OPTIONAL
-            lambdaRole => 'MyArn',              # min: 1, max: 1600; OPTIONAL
-            tagList    => [
+            Input      => 'MyData',             # max: 32768; OPTIONAL
+            LambdaRole => 'MyArn',              # min: 1, max: 1600; OPTIONAL
+            TagList    => [
               'MyTag', ...                      # max: 256
             ],                                  # max: 5; OPTIONAL
-            taskList => {
-              name => 'MyName',                 # min: 1, max: 256
+            TaskList => {
+              Name => 'MyName',                 # min: 1, max: 256
 
             },    # OPTIONAL
-            taskPriority => 'MyTaskPriority',    # OPTIONAL
-            taskStartToCloseTimeout =>
+            TaskPriority => 'MyTaskPriority',    # OPTIONAL
+            TaskStartToCloseTimeout =>
               'MyDurationInSecondsOptional',     # max: 8; OPTIONAL
-            workflowTypeVersion => 'MyVersion',  # min: 1, max: 64
+            WorkflowTypeVersion => 'MyVersion',  # min: 1, max: 64
           },    # OPTIONAL
-          failWorkflowExecutionDecisionAttributes => {
-            details => 'MyData',             # max: 32768; OPTIONAL
-            reason  => 'MyFailureReason',    # max: 256; OPTIONAL
+          FailWorkflowExecutionDecisionAttributes => {
+            Details => 'MyData',             # max: 32768; OPTIONAL
+            Reason  => 'MyFailureReason',    # max: 256; OPTIONAL
           },    # OPTIONAL
-          recordMarkerDecisionAttributes => {
-            markerName => 'MyMarkerName',    # min: 1, max: 256
-            details    => 'MyData',          # max: 32768; OPTIONAL
+          RecordMarkerDecisionAttributes => {
+            MarkerName => 'MyMarkerName',    # min: 1, max: 256
+            Details    => 'MyData',          # max: 32768; OPTIONAL
           },    # OPTIONAL
-          requestCancelActivityTaskDecisionAttributes => {
-            activityId => 'MyActivityId',    # min: 1, max: 256
+          RequestCancelActivityTaskDecisionAttributes => {
+            ActivityId => 'MyActivityId',    # min: 1, max: 256
 
           },    # OPTIONAL
-          requestCancelExternalWorkflowExecutionDecisionAttributes => {
-            workflowId => 'MyWorkflowId',               # min: 1, max: 256
-            control    => 'MyData',                     # max: 32768; OPTIONAL
-            runId      => 'MyWorkflowRunIdOptional',    # max: 64; OPTIONAL
+          RequestCancelExternalWorkflowExecutionDecisionAttributes => {
+            WorkflowId => 'MyWorkflowId',               # min: 1, max: 256
+            Control    => 'MyData',                     # max: 32768; OPTIONAL
+            RunId      => 'MyWorkflowRunIdOptional',    # max: 64; OPTIONAL
           },    # OPTIONAL
-          scheduleActivityTaskDecisionAttributes => {
-            activityId   => 'MyActivityId',    # min: 1, max: 256
-            activityType => {
-              name    => 'MyName',             # min: 1, max: 256
-              version => 'MyVersion',          # min: 1, max: 64
+          ScheduleActivityTaskDecisionAttributes => {
+            ActivityId   => 'MyActivityId',    # min: 1, max: 256
+            ActivityType => {
+              Name    => 'MyName',             # min: 1, max: 256
+              Version => 'MyVersion',          # min: 1, max: 64
 
             },
-            control => 'MyData',               # max: 32768; OPTIONAL
-            heartbeatTimeout =>
+            Control => 'MyData',               # max: 32768; OPTIONAL
+            HeartbeatTimeout =>
               'MyDurationInSecondsOptional',    # max: 8; OPTIONAL
-            input => 'MyData',                  # max: 32768; OPTIONAL
-            scheduleToCloseTimeout =>
+            Input => 'MyData',                  # max: 32768; OPTIONAL
+            ScheduleToCloseTimeout =>
               'MyDurationInSecondsOptional',    # max: 8; OPTIONAL
-            scheduleToStartTimeout =>
+            ScheduleToStartTimeout =>
               'MyDurationInSecondsOptional',    # max: 8; OPTIONAL
-            startToCloseTimeout =>
+            StartToCloseTimeout =>
               'MyDurationInSecondsOptional',    # max: 8; OPTIONAL
-            taskList => {
-              name => 'MyName',                 # min: 1, max: 256
+            TaskList => {
+              Name => 'MyName',                 # min: 1, max: 256
 
             },    # OPTIONAL
-            taskPriority => 'MyTaskPriority',    # OPTIONAL
+            TaskPriority => 'MyTaskPriority',    # OPTIONAL
           },    # OPTIONAL
-          scheduleLambdaFunctionDecisionAttributes => {
-            id      => 'MyFunctionId',       # min: 1, max: 256
-            name    => 'MyFunctionName',     # min: 1, max: 64
-            control => 'MyData',             # max: 32768; OPTIONAL
-            input   => 'MyFunctionInput',    # max: 32768; OPTIONAL
-            startToCloseTimeout =>
+          ScheduleLambdaFunctionDecisionAttributes => {
+            Id      => 'MyFunctionId',       # min: 1, max: 256
+            Name    => 'MyFunctionName',     # min: 1, max: 64
+            Control => 'MyData',             # max: 32768; OPTIONAL
+            Input   => 'MyFunctionInput',    # max: 32768; OPTIONAL
+            StartToCloseTimeout =>
               'MyDurationInSecondsOptional',    # max: 8; OPTIONAL
           },    # OPTIONAL
-          signalExternalWorkflowExecutionDecisionAttributes => {
-            signalName => 'MySignalName',               # min: 1, max: 256
-            workflowId => 'MyWorkflowId',               # min: 1, max: 256
-            control    => 'MyData',                     # max: 32768; OPTIONAL
-            input      => 'MyData',                     # max: 32768; OPTIONAL
-            runId      => 'MyWorkflowRunIdOptional',    # max: 64; OPTIONAL
+          SignalExternalWorkflowExecutionDecisionAttributes => {
+            SignalName => 'MySignalName',               # min: 1, max: 256
+            WorkflowId => 'MyWorkflowId',               # min: 1, max: 256
+            Control    => 'MyData',                     # max: 32768; OPTIONAL
+            Input      => 'MyData',                     # max: 32768; OPTIONAL
+            RunId      => 'MyWorkflowRunIdOptional',    # max: 64; OPTIONAL
           },    # OPTIONAL
-          startChildWorkflowExecutionDecisionAttributes => {
-            workflowId   => 'MyWorkflowId',    # min: 1, max: 256
-            workflowType => {
-              name    => 'MyName',             # min: 1, max: 256
-              version => 'MyVersion',          # min: 1, max: 64
+          StartChildWorkflowExecutionDecisionAttributes => {
+            WorkflowId   => 'MyWorkflowId',    # min: 1, max: 256
+            WorkflowType => {
+              Name    => 'MyName',             # min: 1, max: 256
+              Version => 'MyVersion',          # min: 1, max: 64
 
             },
-            childPolicy => 'TERMINATE'
+            ChildPolicy => 'TERMINATE'
             ,    # values: TERMINATE, REQUEST_CANCEL, ABANDON; OPTIONAL
-            control => 'MyData',    # max: 32768; OPTIONAL
-            executionStartToCloseTimeout =>
+            Control => 'MyData',    # max: 32768; OPTIONAL
+            ExecutionStartToCloseTimeout =>
               'MyDurationInSecondsOptional',    # max: 8; OPTIONAL
-            input      => 'MyData',             # max: 32768; OPTIONAL
-            lambdaRole => 'MyArn',              # min: 1, max: 1600; OPTIONAL
-            tagList    => [
+            Input      => 'MyData',             # max: 32768; OPTIONAL
+            LambdaRole => 'MyArn',              # min: 1, max: 1600; OPTIONAL
+            TagList    => [
               'MyTag', ...                      # max: 256
             ],                                  # max: 5; OPTIONAL
-            taskList => {
-              name => 'MyName',                 # min: 1, max: 256
+            TaskList => {
+              Name => 'MyName',                 # min: 1, max: 256
 
             },    # OPTIONAL
-            taskPriority => 'MyTaskPriority',    # OPTIONAL
-            taskStartToCloseTimeout =>
+            TaskPriority => 'MyTaskPriority',    # OPTIONAL
+            TaskStartToCloseTimeout =>
               'MyDurationInSecondsOptional',     # max: 8; OPTIONAL
           },    # OPTIONAL
-          startTimerDecisionAttributes => {
-            startToFireTimeout => 'MyDurationInSeconds',  # min: 1, max: 8
-            timerId            => 'MyTimerId',            # min: 1, max: 256
-            control            => 'MyData',               # max: 32768; OPTIONAL
+          StartTimerDecisionAttributes => {
+            StartToFireTimeout => 'MyDurationInSeconds',  # min: 1, max: 8
+            TimerId            => 'MyTimerId',            # min: 1, max: 256
+            Control            => 'MyData',               # max: 32768; OPTIONAL
           },    # OPTIONAL
         },
         ...

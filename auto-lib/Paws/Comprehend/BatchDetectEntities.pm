@@ -29,9 +29,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $comprehend = Paws->service('Comprehend');
     my $BatchDetectEntitiesResponse = $comprehend->BatchDetectEntities(
-      LanguageCode => 'MyString',
+      LanguageCode => 'en',
       TextList     => [
-        'MyString', ...    # min: 1,
+        'MyString', ...    # min: 1
       ],
 
     );
@@ -50,10 +50,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/com
 
 =head2 B<REQUIRED> LanguageCode => Str
 
-The language of the input documents. All documents must be in the same
-language.
+The language of the input documents. You can specify English ("en") or
+Spanish ("es"). All documents must be in the same language.
 
-
+Valid values are: C<"en">, C<"es">, C<"fr">, C<"de">, C<"it">, C<"pt">
 
 =head2 B<REQUIRED> TextList => ArrayRef[Str|Undef]
 

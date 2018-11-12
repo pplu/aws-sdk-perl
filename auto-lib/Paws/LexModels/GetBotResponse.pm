@@ -126,7 +126,7 @@ C<READY>. If there was a problem with building the bot, the status is
 C<FAILED> and the C<failureReason> explains why the bot did not build.
 If the bot was saved but not built, the status is C<NOT BUILT>.
 
-Valid values are: C<"BUILDING">, C<"READY">, C<"FAILED">, C<"NOT_BUILT">
+Valid values are: C<"BUILDING">, C<"READY">, C<"READY_BASIC_TESTING">, C<"FAILED">, C<"NOT_BUILT">
 =head2 Version => Str
 
 The version of the bot. For a new bot, the version is always

@@ -57,24 +57,13 @@ Describes a single backup.
 
 =head2 MaxResults => Int
 
-To receive a paginated response, use this parameter to specify the
-maximum number of results to be returned with a single call. If the
-number of available results exceeds this maximum, the response includes
-a C<NextToken> value that you can assign to the C<NextToken> request
-parameter to get the next set of results.
+This is not currently implemented for C<DescribeBackups> requests.
 
 
 
 =head2 NextToken => Str
 
-NextToken is a string that is returned in some command responses. It
-indicates that not all entries have been returned, and that you must
-run at least one more request to get remaining items. To get remaining
-results, call C<DescribeBackups> again, and assign the token from the
-previous results as the value of the C<nextToken> parameter. If there
-are no more results, the response object's C<nextToken> parameter value
-is C<null>. Setting a C<nextToken> value that was not returned in your
-previous results causes an C<InvalidNextTokenException> to occur.
+This is not currently implemented for C<DescribeBackups> requests.
 
 
 

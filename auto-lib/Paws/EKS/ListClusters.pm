@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $clusters  = $ListClustersResponse->clusters;
-    my $nextToken = $ListClustersResponse->nextToken;
+    my $Clusters  = $ListClustersResponse->Clusters;
+    my $NextToken = $ListClustersResponse->NextToken;
 
     # Returns a L<Paws::EKS::ListClustersResponse> object.
 

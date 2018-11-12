@@ -17,12 +17,12 @@ Paws::SecretsManager::UpdateSecretVersionStageResponse
 
 =head2 ARN => Str
 
-The ARN of the secret with the staging labels that were modified.
+The ARN of the secret with the staging label that was modified.
 
 
 =head2 Name => Str
 
-The friendly name of the secret with the staging labels that were
+The friendly name of the secret with the staging label that was
 modified.
 
 

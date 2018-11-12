@@ -1,8 +1,8 @@
 package Paws::MediaConvert::DvbNitSettings;
   use Moose;
-  has NetworkId => (is => 'ro', isa => 'Int', request_name => 'networkId', traits => ['NameInRequest'], required => 1);
-  has NetworkName => (is => 'ro', isa => 'Str', request_name => 'networkName', traits => ['NameInRequest'], required => 1);
-  has NitInterval => (is => 'ro', isa => 'Int', request_name => 'nitInterval', traits => ['NameInRequest'], required => 1);
+  has NetworkId => (is => 'ro', isa => 'Int', request_name => 'networkId', traits => ['NameInRequest']);
+  has NetworkName => (is => 'ro', isa => 'Str', request_name => 'networkName', traits => ['NameInRequest']);
+  has NitInterval => (is => 'ro', isa => 'Int', request_name => 'nitInterval', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -39,18 +39,18 @@ repetition interval.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> NetworkId => Int
+=head2 NetworkId => Int
 
   The numeric value placed in the Network Information Table (NIT).
 
 
-=head2 B<REQUIRED> NetworkName => Str
+=head2 NetworkName => Str
 
   The network name text placed in the network_name_descriptor inside the
 Network Information Table. Maximum length is 256 characters.
 
 
-=head2 B<REQUIRED> NitInterval => Int
+=head2 NitInterval => Int
 
   The number of milliseconds between instances of this table in the
 output transport stream.

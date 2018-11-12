@@ -76,6 +76,116 @@ The name of the catalog database where the partitions reside.
 
 An expression filtering the partitions to be returned.
 
+The expression uses SQL syntax similar to the SQL C<WHERE> filter
+clause. The SQL statement parser JSQLParser
+(http://jsqlparser.sourceforge.net/home.php) parses the expression.
+
+I<Operators>: The following are the operators that you can use in the
+C<Expression> API call:
+
+=over
+
+=item E<61>
+
+Checks if the values of the two operands are equal or not; if yes, then
+the condition becomes true.
+
+Example: Assume 'variable a' holds 10 and 'variable b' holds 20.
+
+(a = b) is not true.
+
+=item E<lt> E<gt>
+
+Checks if the values of two operands are equal or not; if the values
+are not equal, then the condition becomes true.
+
+Example: (a E<lt> E<gt> b) is true.
+
+=item E<gt>
+
+Checks if the value of the left operand is greater than the value of
+the right operand; if yes, then the condition becomes true.
+
+Example: (a E<gt> b) is not true.
+
+=item E<lt>
+
+Checks if the value of the left operand is less than the value of the
+right operand; if yes, then the condition becomes true.
+
+Example: (a E<lt> b) is true.
+
+=item E<gt>=
+
+Checks if the value of the left operand is greater than or equal to the
+value of the right operand; if yes, then the condition becomes true.
+
+Example: (a E<gt>= b) is not true.
+
+=item E<lt>=
+
+Checks if the value of the left operand is less than or equal to the
+value of the right operand; if yes, then the condition becomes true.
+
+Example: (a E<lt>= b) is true.
+
+=item AND, OR, IN, BETWEEN, LIKE, NOT, IS NULL
+
+Logical operators.
+
+=back
+
+I<Supported Partition Key Types>: The following are the the supported
+partition keys.
+
+=over
+
+=item *
+
+C<string>
+
+=item *
+
+C<date>
+
+=item *
+
+C<timestamp>
+
+=item *
+
+C<int>
+
+=item *
+
+C<bigint>
+
+=item *
+
+C<long>
+
+=item *
+
+C<tinyint>
+
+=item *
+
+C<smallint>
+
+=item *
+
+C<decimal>
+
+=back
+
+If an invalid type is encountered, an exception is thrown.
+
+The following list shows the valid operators on each type. When you
+define a crawler, the C<partitionKey> type is created as a C<STRING>,
+to be compatible with the catalog partitions.
+
+I<Sample API Call>:
+
 
 
 =head2 MaxResults => Int

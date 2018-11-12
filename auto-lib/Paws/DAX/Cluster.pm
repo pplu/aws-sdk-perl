@@ -13,6 +13,7 @@ package Paws::DAX::Cluster;
   has ParameterGroup => (is => 'ro', isa => 'Paws::DAX::ParameterGroupStatus');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::DAX::SecurityGroupMembership]');
+  has SSEDescription => (is => 'ro', isa => 'Paws::DAX::SSEDescription');
   has Status => (is => 'ro', isa => 'Str');
   has SubnetGroup => (is => 'ro', isa => 'Str');
   has TotalNodes => (is => 'ro', isa => 'Int');
@@ -128,6 +129,12 @@ within the maintenance window.
 
   A list of security groups, and the status of each, for the nodes in the
 cluster.
+
+
+=head2 SSEDescription => L<Paws::DAX::SSEDescription>
+
+  The description of the server-side encryption status on the specified
+DAX cluster.
 
 
 =head2 Status => Str

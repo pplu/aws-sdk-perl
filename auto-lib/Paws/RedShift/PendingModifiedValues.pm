@@ -4,7 +4,9 @@ package Paws::RedShift::PendingModifiedValues;
   has ClusterIdentifier => (is => 'ro', isa => 'Str');
   has ClusterType => (is => 'ro', isa => 'Str');
   has ClusterVersion => (is => 'ro', isa => 'Str');
+  has EncryptionType => (is => 'ro', isa => 'Str');
   has EnhancedVpcRouting => (is => 'ro', isa => 'Bool');
+  has MaintenanceTrackName => (is => 'ro', isa => 'Str');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int');
@@ -68,6 +70,12 @@ cluster.
   The pending or in-progress change of the service version.
 
 
+=head2 EncryptionType => Str
+
+  The encryption type for a cluster. Possible values are: KMS and None.
+For the China region the possible values are None, and Legacy.
+
+
 =head2 EnhancedVpcRouting => Bool
 
   An option that specifies whether to create the cluster with enhanced
@@ -80,6 +88,12 @@ in the Amazon Redshift Cluster Management Guide.
 If this option is C<true>, enhanced VPC routing is enabled.
 
 Default: false
+
+
+=head2 MaintenanceTrackName => Str
+
+  The name of the maintenance track that the cluster will change to
+during the next maintenance window.
 
 
 =head2 MasterUserPassword => Str

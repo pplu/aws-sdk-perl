@@ -34,16 +34,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ConfigurationAggregatorName => 'MyConfigurationAggregatorName',
       AccountAggregationSources   => [
         {
-          AccountIds    => [ 'MyAccountId', ... ],    # min: 1,
+          AccountIds    => [ 'MyAccountId', ... ],    # min: 1
           AllAwsRegions => 1,                         # OPTIONAL
-          AwsRegions    => [ 'MyString', ... ],       # min: 1, ; OPTIONAL
+          AwsRegions    => [ 'MyString', ... ],       # min: 1; OPTIONAL
         },
         ...
       ],                                              # OPTIONAL
       OrganizationAggregationSource => {
         RoleArn       => 'MyString',
         AllAwsRegions => 1,                           # OPTIONAL
-        AwsRegions    => [ 'MyString', ... ],         # min: 1, ; OPTIONAL
+        AwsRegions    => [ 'MyString', ... ],         # min: 1; OPTIONAL
       },    # OPTIONAL
       );
 

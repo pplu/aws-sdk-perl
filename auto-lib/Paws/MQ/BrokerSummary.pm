@@ -4,6 +4,7 @@ package Paws::MQ::BrokerSummary;
   has BrokerId => (is => 'ro', isa => 'Str', request_name => 'brokerId', traits => ['NameInRequest']);
   has BrokerName => (is => 'ro', isa => 'Str', request_name => 'brokerName', traits => ['NameInRequest']);
   has BrokerState => (is => 'ro', isa => 'Str', request_name => 'brokerState', traits => ['NameInRequest']);
+  has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
   has DeploymentMode => (is => 'ro', isa => 'Str', request_name => 'deploymentMode', traits => ['NameInRequest']);
   has HostInstanceType => (is => 'ro', isa => 'Str', request_name => 'hostInstanceType', traits => ['NameInRequest']);
 1;
@@ -61,22 +62,22 @@ characters, or special characters.
 
 =head2 BrokerState => Str
 
-  The status of the broker. Possible values: CREATION_IN_PROGRESS,
-CREATION_FAILED, DELETION_IN_PROGRESS, RUNNING, REBOOT_IN_PROGRESS
+  The status of the broker.
+
+
+=head2 Created => Str
+
+  The time when the broker was created.
 
 
 =head2 DeploymentMode => Str
 
-  Required. The deployment mode of the broker. Possible values:
-SINGLE_INSTANCE, ACTIVE_STANDBY_MULTI_AZ SINGLE_INSTANCE creates a
-single-instance broker in a single Availability Zone.
-ACTIVE_STANDBY_MULTI_AZ creates an active/standby broker for high
-availability.
+  Required. The deployment mode of the broker.
 
 
 =head2 HostInstanceType => Str
 
-  The broker's instance type. Possible values: mq.t2.micro, mq.m4.large
+  The broker's instance type.
 
 
 

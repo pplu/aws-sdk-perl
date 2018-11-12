@@ -36,7 +36,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::Acc
 =head1 DESCRIPTION
 
 Provides limits of code size and concurrency associated with the
-current account and region.
+current account and region. For more information or to request a limit
+increase for concurrent executions, see Lambda Limits
+(http://docs.aws.amazon.com/lambda/latest/dg/limits.html).
 
 =head1 ATTRIBUTES
 
@@ -57,11 +59,8 @@ for uploading larger files. Default limit is 50 MB.
 
 =head2 ConcurrentExecutions => Int
 
-  Number of simultaneous executions of your function per region. For more
-information or to request a limit increase for concurrent executions,
-see Lambda Function Concurrent Executions
-(http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html).
-The default limit is 1000.
+  Number of simultaneous executions of your function per region. The
+default limit is 1000.
 
 
 =head2 TotalCodeSize => Int
@@ -73,8 +72,9 @@ The default size is 75 GB.
 =head2 UnreservedConcurrentExecutions => Int
 
   The number of concurrent executions available to functions that do not
-have concurrency limits set. For more information, see
-concurrent-executions.
+have concurrency limits set. For more information, see Managing
+Concurrency
+(http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html).
 
 
 

@@ -4,11 +4,11 @@ package Paws::MediaConvert::InsertableImage;
   has FadeIn => (is => 'ro', isa => 'Int', request_name => 'fadeIn', traits => ['NameInRequest']);
   has FadeOut => (is => 'ro', isa => 'Int', request_name => 'fadeOut', traits => ['NameInRequest']);
   has Height => (is => 'ro', isa => 'Int', request_name => 'height', traits => ['NameInRequest']);
-  has ImageInserterInput => (is => 'ro', isa => 'Str', request_name => 'imageInserterInput', traits => ['NameInRequest'], required => 1);
-  has ImageX => (is => 'ro', isa => 'Int', request_name => 'imageX', traits => ['NameInRequest'], required => 1);
-  has ImageY => (is => 'ro', isa => 'Int', request_name => 'imageY', traits => ['NameInRequest'], required => 1);
-  has Layer => (is => 'ro', isa => 'Int', request_name => 'layer', traits => ['NameInRequest'], required => 1);
-  has Opacity => (is => 'ro', isa => 'Int', request_name => 'opacity', traits => ['NameInRequest'], required => 1);
+  has ImageInserterInput => (is => 'ro', isa => 'Str', request_name => 'imageInserterInput', traits => ['NameInRequest']);
+  has ImageX => (is => 'ro', isa => 'Int', request_name => 'imageX', traits => ['NameInRequest']);
+  has ImageY => (is => 'ro', isa => 'Int', request_name => 'imageY', traits => ['NameInRequest']);
+  has Layer => (is => 'ro', isa => 'Int', request_name => 'layer', traits => ['NameInRequest']);
+  has Opacity => (is => 'ro', isa => 'Int', request_name => 'opacity', traits => ['NameInRequest']);
   has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
   has Width => (is => 'ro', isa => 'Int', request_name => 'width', traits => ['NameInRequest']);
 1;
@@ -74,35 +74,35 @@ less than or equal to the video resolution height. Leave this setting
 blank to use the native height of the image.
 
 
-=head2 B<REQUIRED> ImageInserterInput => Str
+=head2 ImageInserterInput => Str
 
   Use Image location (imageInserterInput) to specify the Amazon S3
 location of the image to be inserted into the output. Use a 32 bit BMP,
 PNG, or TGA file that fits inside the video frame.
 
 
-=head2 B<REQUIRED> ImageX => Int
+=head2 ImageX => Int
 
   Use Left (ImageX) to set the distance, in pixels, between the inserted
 image and the left edge of the frame. Required for BMP, PNG and TGA
 input.
 
 
-=head2 B<REQUIRED> ImageY => Int
+=head2 ImageY => Int
 
   Use Top (ImageY) to set the distance, in pixels, between the inserted
 image and the top edge of the video frame. Required for BMP, PNG and
 TGA input.
 
 
-=head2 B<REQUIRED> Layer => Int
+=head2 Layer => Int
 
   Use Layer (Layer) to specify how overlapping inserted images appear.
 Images with higher values of layer appear on top of images with lower
 values of layer.
 
 
-=head2 B<REQUIRED> Opacity => Int
+=head2 Opacity => Int
 
   Use Opacity (Opacity) to specify how much of the underlying video shows
 through the inserted image. 0 is transparent and 100 is fully opaque.

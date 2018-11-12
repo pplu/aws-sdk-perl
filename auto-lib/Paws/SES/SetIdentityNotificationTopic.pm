@@ -51,9 +51,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ema
 
 =head2 B<REQUIRED> Identity => Str
 
-The identity for which the Amazon SNS topic will be set. You can
-specify an identity by using its name or by using its Amazon Resource
-Name (ARN). Examples: C<user@example.com>, C<example.com>,
+The identity (email address or domain) that you want to set the Amazon
+SNS topic for.
+
+You can only specify a verified identity for this parameter.
+
+You can specify an identity by using its name or by using its Amazon
+Resource Name (ARN). The following examples are all valid identities:
+C<sender@example.com>, C<example.com>,
 C<arn:aws:ses:us-east-1:123456789012:identity/example.com>.
 
 

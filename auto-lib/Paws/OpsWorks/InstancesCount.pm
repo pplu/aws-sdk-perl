@@ -127,7 +127,7 @@ Describes how many instances a stack has for each status.
 
 =head2 StopFailed => Int
 
-  
+  The number of instances with C<stop_failed> status.
 
 
 =head2 Stopped => Int

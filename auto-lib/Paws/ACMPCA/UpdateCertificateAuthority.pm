@@ -53,7 +53,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/acm
 Amazon Resource Name (ARN) of the private CA that issued the
 certificate to be revoked. This must be of the form:
 
-C<arn:aws:acm:I<region>:I<account>:certificate-authority/I<12345678-1234-1234-1234-123456789012>>
+C<arn:aws:acm-pca:I<region>:I<account>:certificate-authority/I<12345678-1234-1234-1234-123456789012>>
 
 
 
@@ -67,7 +67,7 @@ Revocation information for your private CA.
 
 Status of your private CA.
 
-Valid values are: C<"CREATING">, C<"PENDING_CERTIFICATE">, C<"ACTIVE">, C<"DISABLED">, C<"EXPIRED">, C<"FAILED">
+Valid values are: C<"CREATING">, C<"PENDING_CERTIFICATE">, C<"ACTIVE">, C<"DELETED">, C<"DISABLED">, C<"EXPIRED">, C<"FAILED">
 
 
 =head1 SEE ALSO

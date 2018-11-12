@@ -1,6 +1,7 @@
 
 package Paws::IoT::UpdateIndexingConfiguration;
   use Moose;
+  has ThingGroupIndexingConfiguration => (is => 'ro', isa => 'Paws::IoT::ThingGroupIndexingConfiguration', traits => ['NameInRequest'], request_name => 'thingGroupIndexingConfiguration');
   has ThingIndexingConfiguration => (is => 'ro', isa => 'Paws::IoT::ThingIndexingConfiguration', traits => ['NameInRequest'], request_name => 'thingIndexingConfiguration');
 
   use MooseX::ClassAttribute;
@@ -29,9 +30,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $iot = Paws->service('IoT');
     my $UpdateIndexingConfigurationResponse = $iot->UpdateIndexingConfiguration(
+      ThingGroupIndexingConfiguration => {
+        ThingGroupIndexingMode => 'OFF',    # values: OFF, ON
+
+      },    # OPTIONAL
       ThingIndexingConfiguration => {
-        thingIndexingMode =>
-          'OFF',    # values: OFF, REGISTRY, REGISTRY_AND_SHADOW; OPTIONAL
+        ThingIndexingMode => 'OFF', # values: OFF, REGISTRY, REGISTRY_AND_SHADOW
+
       },    # OPTIONAL
     );
 
@@ -39,6 +44,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot/UpdateIndexingConfiguration>
 
 =head1 ATTRIBUTES
+
+
+=head2 ThingGroupIndexingConfiguration => L<Paws::IoT::ThingGroupIndexingConfiguration>
+
+Thing group indexing configuration.
+
 
 
 =head2 ThingIndexingConfiguration => L<Paws::IoT::ThingIndexingConfiguration>

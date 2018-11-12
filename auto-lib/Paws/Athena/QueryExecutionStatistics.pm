@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Athena::Que
 =head1 DESCRIPTION
 
 The amount of data scanned during the query execution and the amount of
-time that it took to execute.
+time that it took to execute, and the type of statement that was run.
 
 =head1 ATTRIBUTES
 

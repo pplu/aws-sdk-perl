@@ -110,12 +110,12 @@ versions 4.8.0 and later, excluding 5.0.x versions.
 
 =head2 HadoopVersion => Str
 
-  The Hadoop version for the cluster. Valid inputs are "0.18"
-(deprecated), "0.20" (deprecated), "0.20.205" (deprecated), "1.0.3",
-"2.2.0", or "2.4.0". If you do not set this value, the default of 0.18
-is used, unless the AmiVersion parameter is set in the RunJobFlow call,
-in which case the default version of Hadoop for that AMI version is
-used.
+  Applies only to Amazon EMR release versions earlier than 4.0. The
+Hadoop version for the cluster. Valid inputs are "0.18" (deprecated),
+"0.20" (deprecated), "0.20.205" (deprecated), "1.0.3", "2.2.0", or
+"2.4.0". If you do not set this value, the default of 0.18 is used,
+unless the C<AmiVersion> parameter is set in the RunJobFlow call, in
+which case the default version of Hadoop for that AMI version is used.
 
 
 =head2 InstanceCount => Int

@@ -127,7 +127,8 @@ The number of I/O operations per second (IOPS) to provision for the
 volume, with a maximum ratio of 50 IOPS/GiB. Range is 100 to 32000 IOPS
 for volumes in most regions. For exceptions, see Amazon EBS Volume
 Types
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html).
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 This parameter is valid only for Provisioned IOPS SSD (io1) volumes.
 

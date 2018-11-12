@@ -44,7 +44,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =head2 InterconnectId => Str
 
-
+The ID of the interconnect.
 
 
 

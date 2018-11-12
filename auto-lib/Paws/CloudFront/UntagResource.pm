@@ -7,7 +7,7 @@ package Paws::CloudFront::UntagResource;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UntagResource');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2017-10-30/tagging?Operation=Untag');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2018-06-18/tagging?Operation=Untag');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
@@ -22,11 +22,11 @@ Paws::CloudFront::UntagResource - Arguments for method UntagResource on L<Paws::
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UntagResource2017_10_30 on the
+This class represents the parameters used for calling the method UntagResource2018_06_18 on the
 L<Amazon CloudFront|Paws::CloudFront> service. Use the attributes of this class
-as arguments to method UntagResource2017_10_30.
+as arguments to method UntagResource2018_06_18.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UntagResource2017_10_30.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UntagResource2018_06_18.
 
 =head1 SYNOPSIS
 
@@ -62,7 +62,7 @@ A complex type that contains zero or more C<Tag> key elements.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method UntagResource2017_10_30 in L<Paws::CloudFront>
+This class forms part of L<Paws>, documenting arguments for method UntagResource2018_06_18 in L<Paws::CloudFront>
 
 =head1 BUGS and CONTRIBUTIONS
 

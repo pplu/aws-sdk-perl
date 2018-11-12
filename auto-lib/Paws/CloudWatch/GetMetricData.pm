@@ -52,7 +52,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               MetricName => 'MyMetricName',       # min: 1, max: 255; OPTIONAL
               Namespace  => 'MyNamespace',        # min: 1, max: 255; OPTIONAL
             },
-            Period => 1,                          # min: 1,
+            Period => 1,                          # min: 1
             Stat   => 'MyStat',
             Unit   => 'Seconds'
             , # values: Seconds, Microseconds, Milliseconds, Bytes, Kilobytes, Megabytes, Gigabytes, Terabytes, Bits, Kilobits, Megabits, Gigabits, Terabits, Percent, Count, Bytes/Second, Kilobytes/Second, Megabytes/Second, Gigabytes/Second, Terabytes/Second, Bits/Second, Kilobits/Second, Megabits/Second, Gigabits/Second, Terabits/Second, Count/Second, None; OPTIONAL
@@ -82,6 +82,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mon
 =head2 B<REQUIRED> EndTime => Str
 
 The time stamp indicating the latest data to be returned.
+
+For better performance, specify C<StartTime> and C<EndTime> values that
+align with the value of the metric's C<Period> and sync up with the
+beginning and end of an hour. For example, if the C<Period> of a metric
+is 5 minutes, specifying 12:05 or 12:30 as C<EndTime> can get a faster
+response from CloudWatch then setting 12:07 or 12:29 as the C<EndTime>.
 
 
 
@@ -121,6 +127,13 @@ Valid values are: C<"TimestampDescending">, C<"TimestampAscending">
 =head2 B<REQUIRED> StartTime => Str
 
 The time stamp indicating the earliest data to be returned.
+
+For better performance, specify C<StartTime> and C<EndTime> values that
+align with the value of the metric's C<Period> and sync up with the
+beginning and end of an hour. For example, if the C<Period> of a metric
+is 5 minutes, specifying 12:05 or 12:30 as C<StartTime> can get a
+faster response from CloudWatch then setting 12:07 or 12:29 as the
+C<StartTime>.
 
 
 

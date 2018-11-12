@@ -46,6 +46,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreationTime  = $CreateApplicationVersionResponse->CreationTime;
     my $ParameterDefinitions =
       $CreateApplicationVersionResponse->ParameterDefinitions;
+    my $RequiredCapabilities =
+      $CreateApplicationVersionResponse->RequiredCapabilities;
+    my $ResourcesSupported =
+      $CreateApplicationVersionResponse->ResourcesSupported;
     my $SemanticVersion = $CreateApplicationVersionResponse->SemanticVersion;
     my $SourceCodeUrl   = $CreateApplicationVersionResponse->SourceCodeUrl;
     my $TemplateUrl     = $CreateApplicationVersionResponse->TemplateUrl;
@@ -60,7 +64,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ser
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-The ID of the application to get.
+The Amazon Resource Name (ARN) of the application.
 
 
 

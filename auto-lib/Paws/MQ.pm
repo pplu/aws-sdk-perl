@@ -136,7 +136,7 @@ message broker allows software applications and components to
 communicate using various programming languages, operating systems, and
 formal messaging protocols.
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/amazon-mq/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/amazon-mq/>
 
 
 =head1 METHODS
@@ -160,6 +160,8 @@ For the AWS API documentation, see L<https://aws.amazon.com/documentation/amazon
 =item [EngineVersion => Str]
 
 =item [HostInstanceType => Str]
+
+=item [Logs => L<Paws::MQ::Logs>]
 
 =item [MaintenanceWindowStartTime => L<Paws::MQ::WeeklyStartTime>]
 
@@ -200,8 +202,6 @@ Returns: a L<Paws::MQ::CreateConfigurationResponse> instance
 
 Creates a new configuration for the specified configuration name.
 Amazon MQ uses the default configuration (the engine type and version).
-Note: If the configuration name already exists, Amazon MQ doesn't
-create a configuration.
 
 
 =head2 CreateUser
@@ -429,7 +429,13 @@ Reboots a broker. Note: This API is asynchronous.
 
 =item BrokerId => Str
 
+=item [AutoMinorVersionUpgrade => Bool]
+
 =item [Configuration => L<Paws::MQ::ConfigurationId>]
+
+=item [EngineVersion => Str]
+
+=item [Logs => L<Paws::MQ::Logs>]
 
 
 =back

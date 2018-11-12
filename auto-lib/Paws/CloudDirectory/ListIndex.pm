@@ -45,7 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           AttributeKey => {
             FacetName => 'MyFacetName',             # min: 1, max: 64
-            Name      => 'MyAttributeName',         # min: 1, max: 64
+            Name      => 'MyAttributeName',         # min: 1, max: 230
             SchemaArn => 'MyArn',
 
           },    # OPTIONAL
@@ -107,9 +107,9 @@ The reference to the index to list.
 =head2 MaxResults => Int
 
 The maximum number of objects in a single page to retrieve from the
-index during a request. For more information, see AWS Directory Service
-Limits
-(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/limits.html#limits_cd).
+index during a request. For more information, see Amazon Cloud
+Directory Limits
+(http://docs.aws.amazon.com/clouddirectory/latest/developerguide/limits.html).
 
 
 

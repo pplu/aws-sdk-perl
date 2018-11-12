@@ -73,7 +73,7 @@ If you specify C<"Type": "ACCOUNT">, then you must provide the AWS
 account ID number as the C<Id>. If you specify C<"Type": "EMAIL">, then
 you must specify the email address that is associated with the account.
 
-C<--target Id=bill@example.com,Type=EMAIL>
+C<--target Id=diego@example.com,Type=EMAIL>
 
 
 

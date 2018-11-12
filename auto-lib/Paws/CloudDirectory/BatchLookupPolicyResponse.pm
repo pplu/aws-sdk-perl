@@ -47,7 +47,7 @@ Represents the output of a LookupPolicy response operation.
   Provides list of path to policies. Policies contain C<PolicyId>,
 C<ObjectIdentifier>, and C<PolicyType>. For more information, see
 Policies
-(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies).
+(https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directory.html#key_concepts_policies).
 
 
 

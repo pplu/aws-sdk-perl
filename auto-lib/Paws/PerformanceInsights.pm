@@ -77,7 +77,7 @@ and each time point decomposes overall load in relation to the
 requested dimensions, such as SQL, Wait-event, User or Host, measured
 at that time point.
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pi-2018-02-27>
 
 
 =head1 METHODS

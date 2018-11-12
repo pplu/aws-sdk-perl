@@ -42,19 +42,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Transcribe:
 =head1 DESCRIPTION
 
 Describes an asynchronous transcription job that was created with the
-C<StartTranscriptionJob> operation.
+C<StartTranscriptionJob> operation. Note that en-AU, en-UK, and fr-CA
+languages are in preview and are only available to whitelisted
+customers.
 
 =head1 ATTRIBUTES
 
 
 =head2 CompletionTime => Str
 
-  Timestamp of the date and time that the job completed.
+  A timestamp that shows when the job was completed.
 
 
 =head2 CreationTime => Str
 
-  Timestamp of the date and time that the job was created.
+  A timestamp that shows when the job was created.
 
 
 =head2 FailureReason => Str
@@ -70,7 +72,7 @@ contains information about why the job failed.
 
 =head2 Media => L<Paws::Transcribe::Media>
 
-  An object that describes the input media for a transcription job.
+  An object that describes the input media for the transcription job.
 
 
 =head2 MediaFormat => Str
@@ -85,7 +87,10 @@ contains information about why the job failed.
 
 =head2 Settings => L<Paws::Transcribe::Settings>
 
-  Optional settings for the transcription job.
+  Optional settings for the transcription job. Use these settings to turn
+on speaker recognition, to set the maximum number of speakers that
+should be identified and to specify a custom vocabulary to use when
+processing the transcription job.
 
 
 =head2 Transcript => L<Paws::Transcribe::Transcript>
@@ -95,7 +100,7 @@ contains information about why the job failed.
 
 =head2 TranscriptionJobName => Str
 
-  A name to identify the transcription job.
+  The name of the transcription job.
 
 
 =head2 TranscriptionJobStatus => Str

@@ -47,7 +47,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sqs
 A string to use for filtering the list results. Only those queues whose
 name begins with the specified string are returned.
 
-Queue names are case-sensitive.
+Queue URLs and names are case-sensitive.
 
 
 

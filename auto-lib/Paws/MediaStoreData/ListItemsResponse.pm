@@ -18,13 +18,16 @@ Paws::MediaStoreData::ListItemsResponse
 
 =head2 Items => ArrayRef[L<Paws::MediaStoreData::Item>]
 
-Metadata entries for the folders and objects at the requested path.
+The metadata entries for the folders and objects at the requested path.
 
 
 =head2 NextToken => Str
 
-The C<NextToken> used to request the next page of results using
-C<ListItems>.
+The token that can be used in a request to view the next set of
+results. For example, you submit a C<ListItems> request that matches
+2,000 items with C<MaxResults> set at 500. The service returns the
+first batch of results (up to 500) and a C<NextToken> value that can be
+used to fetch the next batch of results.
 
 
 =head2 _request_id => Str

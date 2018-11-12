@@ -9,6 +9,7 @@ package Paws::CloudDirectory::BatchReadSuccessfulResponse;
   has ListObjectAttributes => (is => 'ro', isa => 'Paws::CloudDirectory::BatchListObjectAttributesResponse');
   has ListObjectChildren => (is => 'ro', isa => 'Paws::CloudDirectory::BatchListObjectChildrenResponse');
   has ListObjectParentPaths => (is => 'ro', isa => 'Paws::CloudDirectory::BatchListObjectParentPathsResponse');
+  has ListObjectParents => (is => 'ro', isa => 'Paws::CloudDirectory::BatchListObjectParentsResponse');
   has ListObjectPolicies => (is => 'ro', isa => 'Paws::CloudDirectory::BatchListObjectPoliciesResponse');
   has ListOutgoingTypedLinks => (is => 'ro', isa => 'Paws::CloudDirectory::BatchListOutgoingTypedLinksResponse');
   has ListPolicyAttachments => (is => 'ro', isa => 'Paws::CloudDirectory::BatchListPolicyAttachmentsResponse');
@@ -72,8 +73,8 @@ Represents the output of a C<BatchRead> success response operation.
 
   Returns a paginated list of all the incoming TypedLinkSpecifier
 information for an object. It also supports filtering by typed link
-facet and identity attributes. For more information, see Typed link
-(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
+facet and identity attributes. For more information, see Typed Links
+(https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink).
 
 
 =head2 ListIndex => L<Paws::CloudDirectory::BatchListIndexResponse>
@@ -97,7 +98,12 @@ given object.
   Retrieves all available parent paths for any object type such as node,
 leaf node, policy node, and index node objects. For more information
 about objects, see Directory Structure
-(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#dirstructure).
+(https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directorystructure.html).
+
+
+=head2 ListObjectParents => L<Paws::CloudDirectory::BatchListObjectParentsResponse>
+
+  
 
 
 =head2 ListObjectPolicies => L<Paws::CloudDirectory::BatchListObjectPoliciesResponse>
@@ -109,8 +115,8 @@ about objects, see Directory Structure
 
   Returns a paginated list of all the outgoing TypedLinkSpecifier
 information for an object. It also supports filtering by typed link
-facet and identity attributes. For more information, see Typed link
-(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
+facet and identity attributes. For more information, see Typed Links
+(https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink).
 
 
 =head2 ListPolicyAttachments => L<Paws::CloudDirectory::BatchListPolicyAttachmentsResponse>
@@ -128,7 +134,7 @@ attached, it returns the C<ObjectIdentifier> for such objects. If
 policies are present, it returns C<ObjectIdentifier>, C<policyId>, and
 C<policyType>. Paths that don't lead to the root from the target object
 are ignored. For more information, see Policies
-(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies).
+(https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directory.html#key_concepts_policies).
 
 
 

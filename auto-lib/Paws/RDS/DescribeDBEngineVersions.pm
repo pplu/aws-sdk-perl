@@ -40,10 +40,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DBEngineVersionMessage = $rds->DescribeDBEngineVersions(
       {
         'DBParameterGroupFamily'     => 'mysql5.6',
-        'DefaultOnly'                => true,
+        'DefaultOnly'                => 1,
         'Engine'                     => 'mysql',
         'EngineVersion'              => 5.6,
-        'ListSupportedCharacterSets' => true
+        'ListSupportedCharacterSets' => 1
       }
     );
 

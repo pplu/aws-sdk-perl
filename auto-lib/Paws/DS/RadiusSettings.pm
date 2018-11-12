@@ -81,7 +81,7 @@ respond.
 
 =head2 SharedSecret => Str
 
-  Not currently used.
+  Required for enabling RADIUS on the directory.
 
 
 =head2 UseSameUsername => Bool

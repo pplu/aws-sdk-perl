@@ -51,7 +51,7 @@ using the C< AddPermission > action.
 
 The URL of the Amazon SQS queue from which permissions are removed.
 
-Queue URLs are case-sensitive.
+Queue URLs and names are case-sensitive.
 
 
 

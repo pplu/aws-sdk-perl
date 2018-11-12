@@ -72,9 +72,9 @@ C<CONTINUE> or C<ABANDON>.
 =head2 LifecycleActionToken => Str
 
 A universally unique identifier (UUID) that identifies a specific
-lifecycle action associated with an instance. Auto Scaling sends this
-token to the notification target you specified when you created the
-lifecycle hook.
+lifecycle action associated with an instance. Amazon EC2 Auto Scaling
+sends this token to the notification target you specified when you
+created the lifecycle hook.
 
 
 

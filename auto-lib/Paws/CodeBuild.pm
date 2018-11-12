@@ -235,9 +235,9 @@ C<CreateProject>: Creates a build project.
 =item *
 
 C<CreateWebhook>: For an existing AWS CodeBuild build project that has
-its source code stored in a GitHub repository, enables AWS CodeBuild to
-begin automatically rebuilding the source code every time a code change
-is pushed to the repository.
+its source code stored in a GitHub or Bitbucket repository, enables AWS
+CodeBuild to begin automatically rebuilding the source code every time
+a code change is pushed to the repository.
 
 =item *
 
@@ -250,9 +250,9 @@ C<DeleteProject>: Deletes a build project.
 =item *
 
 C<DeleteWebhook>: For an existing AWS CodeBuild build project that has
-its source code stored in a GitHub repository, stops AWS CodeBuild from
-automatically rebuilding the source code every time a code change is
-pushed to the repository.
+its source code stored in a GitHub or Bitbucket repository, stops AWS
+CodeBuild from automatically rebuilding the source code every time a
+code change is pushed to the repository.
 
 =item *
 
@@ -356,6 +356,8 @@ Gets information about build projects.
 
 =item Name => Str
 
+=item ServiceRole => Str
+
 =item Source => L<Paws::CodeBuild::ProjectSource>
 
 =item [BadgeEnabled => Bool]
@@ -366,7 +368,11 @@ Gets information about build projects.
 
 =item [EncryptionKey => Str]
 
-=item [ServiceRole => Str]
+=item [LogsConfig => L<Paws::CodeBuild::LogsConfig>]
+
+=item [SecondaryArtifacts => ArrayRef[L<Paws::CodeBuild::ProjectArtifacts>]]
+
+=item [SecondarySources => ArrayRef[L<Paws::CodeBuild::ProjectSource>]]
 
 =item [Tags => ArrayRef[L<Paws::CodeBuild::Tag>]]
 
@@ -400,9 +406,9 @@ Each argument is described in detail in: L<Paws::CodeBuild::CreateWebhook>
 Returns: a L<Paws::CodeBuild::CreateWebhookOutput> instance
 
 For an existing AWS CodeBuild build project that has its source code
-stored in a GitHub repository, enables AWS CodeBuild to begin
-automatically rebuilding the source code every time a code change is
-pushed to the repository.
+stored in a GitHub or Bitbucket repository, enables AWS CodeBuild to
+begin automatically rebuilding the source code every time a code change
+is pushed to the repository.
 
 If you enable webhooks for an AWS CodeBuild project, and the project is
 used as a build step in AWS CodePipeline, then two identical builds
@@ -445,9 +451,9 @@ Each argument is described in detail in: L<Paws::CodeBuild::DeleteWebhook>
 Returns: a L<Paws::CodeBuild::DeleteWebhookOutput> instance
 
 For an existing AWS CodeBuild build project that has its source code
-stored in a GitHub repository, stops AWS CodeBuild from automatically
-rebuilding the source code every time a code change is pushed to the
-repository.
+stored in a GitHub or Bitbucket repository, stops AWS CodeBuild from
+automatically rebuilding the source code every time a code change is
+pushed to the repository.
 
 
 =head2 InvalidateProjectCache
@@ -569,7 +575,17 @@ representing a single build project.
 
 =item [InsecureSslOverride => Bool]
 
+=item [LogsConfigOverride => L<Paws::CodeBuild::LogsConfig>]
+
 =item [PrivilegedModeOverride => Bool]
+
+=item [ReportBuildStatusOverride => Bool]
+
+=item [SecondaryArtifactsOverride => ArrayRef[L<Paws::CodeBuild::ProjectArtifacts>]]
+
+=item [SecondarySourcesOverride => ArrayRef[L<Paws::CodeBuild::ProjectSource>]]
+
+=item [SecondarySourcesVersionOverride => ArrayRef[L<Paws::CodeBuild::ProjectSourceVersion>]]
 
 =item [ServiceRoleOverride => Str]
 
@@ -627,6 +643,12 @@ Attempts to stop running a build.
 
 =item [Environment => L<Paws::CodeBuild::ProjectEnvironment>]
 
+=item [LogsConfig => L<Paws::CodeBuild::LogsConfig>]
+
+=item [SecondaryArtifacts => ArrayRef[L<Paws::CodeBuild::ProjectArtifacts>]]
+
+=item [SecondarySources => ArrayRef[L<Paws::CodeBuild::ProjectSource>]]
+
 =item [ServiceRole => Str]
 
 =item [Source => L<Paws::CodeBuild::ProjectSource>]
@@ -665,6 +687,9 @@ Each argument is described in detail in: L<Paws::CodeBuild::UpdateWebhook>
 Returns: a L<Paws::CodeBuild::UpdateWebhookOutput> instance
 
 Updates the webhook associated with an AWS CodeBuild build project.
+
+If you use Bitbucket for your repository then C<rotateSecret> is
+ignored.
 
 
 

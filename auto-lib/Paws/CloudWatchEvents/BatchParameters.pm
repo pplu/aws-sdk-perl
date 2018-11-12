@@ -63,7 +63,7 @@ Batch job.
 
   The retry strategy to use for failed jobs, if the target is an AWS
 Batch job. The retry strategy is the number of times to retry the
-failed job execution. Valid values are 1 to 10. When you specify a
+failed job execution. Valid values are 1E<ndash>10. When you specify a
 retry strategy here, it overrides the retry strategy defined in the job
 definition.
 

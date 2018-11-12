@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AccountId     => 'MyAccountId',
       BudgetName    => 'MyBudgetName',
       NewSubscriber => {
-        Address          => 'MySubscriberAddress',    # min: 1,
+        Address          => 'MySubscriberAddress',    # min: 1
         SubscriptionType => 'SNS',                    # values: SNS, EMAIL
 
       },
@@ -48,7 +48,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'PERCENTAGE',    # values: PERCENTAGE, ABSOLUTE_VALUE; OPTIONAL
       },
       OldSubscriber => {
-        Address          => 'MySubscriberAddress',    # min: 1,
+        Address          => 'MySubscriberAddress',    # min: 1
         SubscriptionType => 'SNS',                    # values: SNS, EMAIL
 
       },

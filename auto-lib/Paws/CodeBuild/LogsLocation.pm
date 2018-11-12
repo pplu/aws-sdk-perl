@@ -1,7 +1,10 @@
 package Paws::CodeBuild::LogsLocation;
   use Moose;
+  has CloudWatchLogs => (is => 'ro', isa => 'Paws::CodeBuild::CloudWatchLogsConfig', request_name => 'cloudWatchLogs', traits => ['NameInRequest']);
   has DeepLink => (is => 'ro', isa => 'Str', request_name => 'deepLink', traits => ['NameInRequest']);
   has GroupName => (is => 'ro', isa => 'Str', request_name => 'groupName', traits => ['NameInRequest']);
+  has S3DeepLink => (is => 'ro', isa => 'Str', request_name => 's3DeepLink', traits => ['NameInRequest']);
+  has S3Logs => (is => 'ro', isa => 'Paws::CodeBuild::S3LogsConfig', request_name => 's3Logs', traits => ['NameInRequest']);
   has StreamName => (is => 'ro', isa => 'Str', request_name => 'streamName', traits => ['NameInRequest']);
 1;
 
@@ -22,20 +25,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeBuild::LogsLocation object:
 
-  $service_obj->Method(Att1 => { DeepLink => $value, ..., StreamName => $value  });
+  $service_obj->Method(Att1 => { CloudWatchLogs => $value, ..., StreamName => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodeBuild::LogsLocation object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->DeepLink
+  $result->Att1->CloudWatchLogs
 
 =head1 DESCRIPTION
 
 Information about build logs in Amazon CloudWatch Logs.
 
 =head1 ATTRIBUTES
+
+
+=head2 CloudWatchLogs => L<Paws::CodeBuild::CloudWatchLogsConfig>
+
+  Information about Amazon CloudWatch Logs for a build project.
 
 
 =head2 DeepLink => Str
@@ -46,6 +54,16 @@ Information about build logs in Amazon CloudWatch Logs.
 =head2 GroupName => Str
 
   The name of the Amazon CloudWatch Logs group for the build logs.
+
+
+=head2 S3DeepLink => Str
+
+  The URL to an individual build log in an S3 bucket.
+
+
+=head2 S3Logs => L<Paws::CodeBuild::S3LogsConfig>
+
+  Information about S3 logs for a build project.
 
 
 =head2 StreamName => Str

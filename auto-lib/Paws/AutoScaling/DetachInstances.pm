@@ -36,7 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       {
         'AutoScalingGroupName'           => 'my-auto-scaling-group',
         'InstanceIds'                    => ['i-93633f9b'],
-        'ShouldDecrementDesiredCapacity' => true
+        'ShouldDecrementDesiredCapacity' => 1
       }
     );
 

@@ -1,6 +1,7 @@
 package Paws::DeviceFarm::Upload;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has Category => (is => 'ro', isa => 'Str', request_name => 'category', traits => ['NameInRequest']);
   has ContentType => (is => 'ro', isa => 'Str', request_name => 'contentType', traits => ['NameInRequest']);
   has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
@@ -48,6 +49,24 @@ uploaded.
 =head2 Arn => Str
 
   The upload's ARN.
+
+
+=head2 Category => Str
+
+  The upload's category. Allowed values include:
+
+=over
+
+=item *
+
+CURATED: An upload managed by AWS Device Farm.
+
+=item *
+
+PRIVATE: An upload managed by the AWS Device Farm customer.
+
+=back
+
 
 
 =head2 ContentType => Str

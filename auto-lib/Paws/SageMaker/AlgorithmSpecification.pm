@@ -38,7 +38,9 @@ request.
 
 For more information about algorithms provided by Amazon SageMaker, see
 Algorithms (http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
-For information about using your own algorithms, see your-algorithms.
+For information about using your own algorithms, see Using Your Own
+Algorithms with Amazon SageMaker
+(http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html).
 
 =head1 ATTRIBUTES
 
@@ -47,7 +49,9 @@ For information about using your own algorithms, see your-algorithms.
 
   The registry path of the Docker image that contains the training
 algorithm. For information about docker registry paths for built-in
-algorithms, see sagemaker-algo-docker-registry-paths.
+algorithms, see Algorithms Provided by Amazon SageMaker: Common
+Parameters
+(http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html).
 
 
 =head2 B<REQUIRED> TrainingInputMode => Str

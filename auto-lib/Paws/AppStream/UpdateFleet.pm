@@ -9,10 +9,11 @@ package Paws::AppStream::UpdateFleet;
   has DisplayName => (is => 'ro', isa => 'Str');
   has DomainJoinInfo => (is => 'ro', isa => 'Paws::AppStream::DomainJoinInfo');
   has EnableDefaultInternetAccess => (is => 'ro', isa => 'Bool');
+  has ImageArn => (is => 'ro', isa => 'Str');
   has ImageName => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Str');
   has MaxUserDurationInSeconds => (is => 'ro', isa => 'Int');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
+  has Name => (is => 'ro', isa => 'Str');
   has VpcConfig => (is => 'ro', isa => 'Paws::AppStream::VpcConfig');
 
   use MooseX::ClassAttribute;
@@ -40,7 +41,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $appstream2 = Paws->service('AppStream');
     my $UpdateFleetResult = $appstream2->UpdateFleet(
-      Name               => 'MyString',
       AttributesToDelete => [
         'VPC_CONFIGURATION',
         ... # values: VPC_CONFIGURATION, VPC_CONFIGURATION_SECURITY_GROUP_IDS, DOMAIN_JOIN_INFO
@@ -59,15 +59,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'MyOrganizationalUnitDistinguishedName',      # max: 2000; OPTIONAL
       },    # OPTIONAL
       EnableDefaultInternetAccess => 1,             # OPTIONAL
+      ImageArn                    => 'MyArn',       # OPTIONAL
       ImageName                   => 'MyString',    # OPTIONAL
       InstanceType                => 'MyString',    # OPTIONAL
       MaxUserDurationInSeconds    => 1,             # OPTIONAL
+      Name                        => 'MyString',    # OPTIONAL
       VpcConfig                   => {
         SecurityGroupIds => [
-          'MyString', ...                           # min: 1,
+          'MyString', ...                           # min: 1
         ],                                          # max: 5; OPTIONAL
         SubnetIds => [
-          'MyString', ...                           # min: 1,
+          'MyString', ...                           # min: 1
         ],                                          # OPTIONAL
       },    # OPTIONAL
     );
@@ -78,7 +80,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::AppStream::UpdateFleetResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/appstream2/UpdateFleet>
 
 =head1 ATTRIBUTES
 
@@ -131,6 +133,12 @@ The information needed to join a Microsoft Active Directory domain.
 =head2 EnableDefaultInternetAccess => Bool
 
 Enables or disables default internet access for the fleet.
+
+
+
+=head2 ImageArn => Str
+
+The ARN of the public, private, or shared image to use.
 
 
 
@@ -239,7 +247,7 @@ a value between 600 and 57600.
 
 
 
-=head2 B<REQUIRED> Name => Str
+=head2 Name => Str
 
 A unique name for the fleet.
 

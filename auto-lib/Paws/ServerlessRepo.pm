@@ -29,6 +29,11 @@ package Paws::ServerlessRepo;
     my $call_object = $self->new_with_coercions('Paws::ServerlessRepo::CreateCloudFormationChangeSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateCloudFormationTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServerlessRepo::CreateCloudFormationTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteApplication {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServerlessRepo::DeleteApplication', @_);
@@ -42,6 +47,11 @@ package Paws::ServerlessRepo;
   sub GetApplicationPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServerlessRepo::GetApplicationPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetCloudFormationTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServerlessRepo::GetCloudFormationTemplate', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListApplications {
@@ -67,7 +77,7 @@ package Paws::ServerlessRepo;
   
 
 
-  sub operations { qw/CreateApplication CreateApplicationVersion CreateCloudFormationChangeSet DeleteApplication GetApplication GetApplicationPolicy ListApplications ListApplicationVersions PutApplicationPolicy UpdateApplication / }
+  sub operations { qw/CreateApplication CreateApplicationVersion CreateCloudFormationChangeSet CreateCloudFormationTemplate DeleteApplication GetApplication GetApplicationPolicy GetCloudFormationTemplate ListApplications ListApplicationVersions PutApplicationPolicy UpdateApplication / }
 
 1;
 
@@ -145,9 +155,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ser
 
 =over
 
-=item [Author => Str]
+=item Author => Str
 
-=item [Description => Str]
+=item Description => Str
+
+=item Name => Str
 
 =item [HomePageUrl => Str]
 
@@ -156,8 +168,6 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ser
 =item [LicenseBody => Str]
 
 =item [LicenseUrl => Str]
-
-=item [Name => Str]
 
 =item [ReadmeBody => Str]
 
@@ -214,11 +224,29 @@ Creates an application version.
 
 =item ApplicationId => Str
 
+=item StackName => Str
+
+=item [Capabilities => ArrayRef[Str|Undef]]
+
+=item [ChangeSetName => Str]
+
+=item [ClientToken => Str]
+
+=item [Description => Str]
+
+=item [NotificationArns => ArrayRef[Str|Undef]]
+
 =item [ParameterOverrides => ArrayRef[L<Paws::ServerlessRepo::ParameterValue>]]
+
+=item [ResourceTypes => ArrayRef[Str|Undef]]
+
+=item [RollbackConfiguration => L<Paws::ServerlessRepo::RollbackConfiguration>]
 
 =item [SemanticVersion => Str]
 
-=item [StackName => Str]
+=item [Tags => ArrayRef[L<Paws::ServerlessRepo::Tag>]]
+
+=item [TemplateId => Str]
 
 
 =back
@@ -227,7 +255,25 @@ Each argument is described in detail in: L<Paws::ServerlessRepo::CreateCloudForm
 
 Returns: a L<Paws::ServerlessRepo::CreateCloudFormationChangeSetResponse> instance
 
-Creates an AWS CloudFormation ChangeSet for the given application.
+Creates an AWS CloudFormation change set for the given application.
+
+
+=head2 CreateCloudFormationTemplate
+
+=over
+
+=item ApplicationId => Str
+
+=item [SemanticVersion => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServerlessRepo::CreateCloudFormationTemplate>
+
+Returns: a L<Paws::ServerlessRepo::CreateCloudFormationTemplateResponse> instance
+
+Creates an AWS CloudFormation template.
 
 
 =head2 DeleteApplication
@@ -277,7 +323,25 @@ Each argument is described in detail in: L<Paws::ServerlessRepo::GetApplicationP
 
 Returns: a L<Paws::ServerlessRepo::GetApplicationPolicyResponse> instance
 
-Gets the policy for the specified application.
+Retrieves the policy for the application.
+
+
+=head2 GetCloudFormationTemplate
+
+=over
+
+=item ApplicationId => Str
+
+=item TemplateId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServerlessRepo::GetCloudFormationTemplate>
+
+Returns: a L<Paws::ServerlessRepo::GetCloudFormationTemplateResponse> instance
+
+Gets the specified AWS CloudFormation template.
 
 
 =head2 ListApplications
@@ -324,7 +388,7 @@ Lists versions for the specified application.
 
 =item ApplicationId => Str
 
-=item [Statements => ArrayRef[L<Paws::ServerlessRepo::ApplicationPolicyStatement>]]
+=item Statements => ArrayRef[L<Paws::ServerlessRepo::ApplicationPolicyStatement>]
 
 
 =back
@@ -333,7 +397,10 @@ Each argument is described in detail in: L<Paws::ServerlessRepo::PutApplicationP
 
 Returns: a L<Paws::ServerlessRepo::PutApplicationPolicyResponse> instance
 
-Puts the policy for the specified application.
+Sets the permission policy for an application. For the list of actions
+supported for this operation, see Application Permissions
+(https://docs.aws.amazon.com/serverlessrepo/latest/devguide/access-control-resource-based.html#application-permissions)
+.
 
 
 =head2 UpdateApplication

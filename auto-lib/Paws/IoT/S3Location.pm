@@ -1,7 +1,7 @@
 package Paws::IoT::S3Location;
   use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', request_name => 'bucket', traits => ['NameInRequest'], required => 1);
-  has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest'], required => 1);
+  has Bucket => (is => 'ro', isa => 'Str', request_name => 'bucket', traits => ['NameInRequest']);
+  has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest']);
   has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
 1;
 
@@ -33,24 +33,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::S3Loca
 
 =head1 DESCRIPTION
 
-The location in S3 the contains the files to stream.
+The S3 location.
 
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Bucket => Str
+=head2 Bucket => Str
 
-  The S3 bucket that contains the file to stream.
+  The S3 bucket.
 
 
-=head2 B<REQUIRED> Key => Str
+=head2 Key => Str
 
-  The name of the file within the S3 bucket to stream.
+  The S3 key.
 
 
 =head2 Version => Str
 
-  The file version.
+  The S3 bucket version.
 
 
 

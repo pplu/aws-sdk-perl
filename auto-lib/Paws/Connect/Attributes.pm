@@ -33,9 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Connect::At
 
 =head1 DESCRIPTION
 
-Additional attributes can be provided in the request using this field.
-This will be passed to the contact flow execution. Client can make use
-of this additional info in their contact flow.
+This class has no description
 
 =head1 ATTRIBUTES
 

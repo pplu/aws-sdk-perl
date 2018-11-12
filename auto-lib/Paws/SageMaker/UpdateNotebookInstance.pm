@@ -1,9 +1,12 @@
 
 package Paws::SageMaker::UpdateNotebookInstance;
   use Moose;
+  has DisassociateLifecycleConfig => (is => 'ro', isa => 'Bool');
   has InstanceType => (is => 'ro', isa => 'Str');
+  has LifecycleConfigName => (is => 'ro', isa => 'Str');
   has NotebookInstanceName => (is => 'ro', isa => 'Str', required => 1);
   has RoleArn => (is => 'ro', isa => 'Str');
+  has VolumeSizeInGB => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
 
@@ -28,17 +31,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
 =head1 SYNOPSIS
 
-    my $sagemaker = Paws->service('SageMaker');
-    my $UpdateNotebookInstanceOutput = $sagemaker->UpdateNotebookInstance(
-      NotebookInstanceName => 'MyNotebookInstanceName',
-      InstanceType         => 'ml.t2.medium',             # OPTIONAL
-      RoleArn              => 'MyRoleArn',                # OPTIONAL
+    my $api.sagemaker = Paws->service('SageMaker');
+    my $UpdateNotebookInstanceOutput = $api . sagemaker->UpdateNotebookInstance(
+      NotebookInstanceName        => 'MyNotebookInstanceName',
+      DisassociateLifecycleConfig => 1,                          # OPTIONAL
+      InstanceType                => 'ml.t2.medium',             # OPTIONAL
+      LifecycleConfigName => 'MyNotebookInstanceLifecycleConfigName', # OPTIONAL
+      RoleArn             => 'MyRoleArn',                             # OPTIONAL
+      VolumeSizeInGB      => 1,                                       # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sagemaker/UpdateNotebookInstance>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.sagemaker/UpdateNotebookInstance>
 
 =head1 ATTRIBUTES
+
+
+=head2 DisassociateLifecycleConfig => Bool
+
+Set to C<true> to remove the notebook instance lifecycle configuration
+currently associated with the notebook instance.
+
 
 
 =head2 InstanceType => Str
@@ -46,6 +59,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sag
 The Amazon ML compute instance type.
 
 Valid values are: C<"ml.t2.medium">, C<"ml.t2.large">, C<"ml.t2.xlarge">, C<"ml.t2.2xlarge">, C<"ml.m4.xlarge">, C<"ml.m4.2xlarge">, C<"ml.m4.4xlarge">, C<"ml.m4.10xlarge">, C<"ml.m4.16xlarge">, C<"ml.p2.xlarge">, C<"ml.p2.8xlarge">, C<"ml.p2.16xlarge">, C<"ml.p3.2xlarge">, C<"ml.p3.8xlarge">, C<"ml.p3.16xlarge">
+
+=head2 LifecycleConfigName => Str
+
+The name of a lifecycle configuration to associate with the notebook
+instance. For information about lifestyle configurations, see Step 2.1:
+(Optional) Customize a Notebook Instance
+(http://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
+
+
 
 =head2 B<REQUIRED> NotebookInstanceName => Str
 
@@ -62,6 +84,13 @@ Amazon SageMaker Roles
 
 To be able to pass this role to Amazon SageMaker, the caller of this
 API must have the C<iam:PassRole> permission.
+
+
+
+=head2 VolumeSizeInGB => Int
+
+The size, in GB, of the ML storage volume to attach to the notebook
+instance.
 
 
 

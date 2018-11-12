@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ResourceArn => 'MyResourceArn',
       Tags        => [
         {
-          key   => 'MyTagKey',      # min: 1, max: 256
-          value => 'MyTagValue',    # min: 1, max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 256
+          Value => 'MyTagValue',    # min: 1, max: 256
 
         },
         ...

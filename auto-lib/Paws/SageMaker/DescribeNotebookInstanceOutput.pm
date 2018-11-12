@@ -16,6 +16,7 @@ package Paws::SageMaker::DescribeNotebookInstanceOutput;
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SubnetId => (is => 'ro', isa => 'Str');
   has Url => (is => 'ro', isa => 'Str');
+  has VolumeSizeInGB => (is => 'ro', isa => 'Int');
 
   has _request_id => (is => 'ro', isa => 'Str');
 
@@ -41,7 +42,9 @@ notebook instance. If this value is set to I<Disabled, he notebook
 instance does not have internet access, and cannot connect to Amazon
 SageMaker training and endpoint services>.
 
-For more information, see appendix-notebook-and-internet-access.
+For more information, see Notebook Instances Are Internet-Enabled by
+Default
+(http://docs.aws.amazon.com/sagemaker/latest/dg/appendix-additional-considerations.html#appendix-notebook-and-internet-access).
 
 Valid values are: C<"Enabled">, C<"Disabled">
 =head2 FailureReason => Str
@@ -82,7 +85,8 @@ The Amazon Resource Name (ARN) of the notebook instance.
 Returns the name of a notebook instance lifecycle configuration.
 
 For information about notebook instance lifestyle configurations, see
-notebook-lifecycle-config.
+Step 2.1: (Optional) Customize a Notebook Instance
+(http://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html)
 
 
 =head2 NotebookInstanceName => Str
@@ -94,7 +98,7 @@ Name of the Amazon SageMaker notebook instance.
 
 The status of the notebook instance.
 
-Valid values are: C<"Pending">, C<"InService">, C<"Stopping">, C<"Stopped">, C<"Failed">, C<"Deleting">
+Valid values are: C<"Pending">, C<"InService">, C<"Stopping">, C<"Stopped">, C<"Failed">, C<"Deleting">, C<"Updating">
 =head2 RoleArn => Str
 
 Amazon Resource Name (ARN) of the IAM role associated with the
@@ -115,6 +119,12 @@ The ID of the VPC subnet.
 
 The URL that you use to connect to the Jupyter notebook that is running
 in your notebook instance.
+
+
+=head2 VolumeSizeInGB => Int
+
+The size, in GB, of the ML storage volume attached to the notebook
+instance.
 
 
 =head2 _request_id => Str

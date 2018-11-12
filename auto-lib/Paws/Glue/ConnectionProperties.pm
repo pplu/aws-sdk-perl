@@ -12,6 +12,7 @@ package Paws::Glue::ConnectionProperties;
   has JDBC_CONNECTION_URL => (is => 'ro', isa => 'Str');
   has JDBC_DRIVER_CLASS_NAME => (is => 'ro', isa => 'Str');
   has JDBC_DRIVER_JAR_URI => (is => 'ro', isa => 'Str');
+  has JDBC_ENFORCE_SSL => (is => 'ro', isa => 'Str');
   has JDBC_ENGINE => (is => 'ro', isa => 'Str');
   has JDBC_ENGINE_VERSION => (is => 'ro', isa => 'Str');
   has PASSWORD => (is => 'ro', isa => 'Str');
@@ -68,6 +69,9 @@ This class has no description
 
 
 =head2 JDBC_DRIVER_JAR_URI => Str
+
+
+=head2 JDBC_ENFORCE_SSL => Str
 
 
 =head2 JDBC_ENGINE => Str

@@ -41,19 +41,20 @@ Configures a hyperparameter tuning job.
 
 =head2 B<REQUIRED> HyperParameterTuningJobObjective => L<Paws::SageMaker::HyperParameterTuningJobObjective>
 
-  The object that specifies the objective metric for this tuning job.
+  The HyperParameterTuningJobObjective object that specifies the
+objective metric for this tuning job.
 
 
 =head2 B<REQUIRED> ParameterRanges => L<Paws::SageMaker::ParameterRanges>
 
-  The object that specifies the ranges of hyperparameters that this
-tuning job searches.
+  The ParameterRanges object that specifies the ranges of hyperparameters
+that this tuning job searches.
 
 
 =head2 B<REQUIRED> ResourceLimits => L<Paws::SageMaker::ResourceLimits>
 
-  The object that specifies the maximum number of training jobs and
-parallel training jobs for this tuning job.
+  The ResourceLimits object that specifies the maximum number of training
+jobs and parallel training jobs for this tuning job.
 
 
 =head2 B<REQUIRED> Strategy => Str

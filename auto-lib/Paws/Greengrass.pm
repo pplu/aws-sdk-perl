@@ -159,6 +159,11 @@ package Paws::Greengrass;
     my $call_object = $self->new_with_coercions('Paws::Greengrass::GetAssociatedRole', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetBulkDeploymentStatus {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Greengrass::GetBulkDeploymentStatus', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetConnectivityInfo {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Greengrass::GetConnectivityInfo', @_);
@@ -254,6 +259,16 @@ package Paws::Greengrass;
     my $call_object = $self->new_with_coercions('Paws::Greengrass::GetSubscriptionDefinitionVersion', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListBulkDeploymentDetailedReports {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Greengrass::ListBulkDeploymentDetailedReports', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListBulkDeployments {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Greengrass::ListBulkDeployments', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListCoreDefinitions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Greengrass::ListCoreDefinitions', @_);
@@ -339,6 +354,16 @@ package Paws::Greengrass;
     my $call_object = $self->new_with_coercions('Paws::Greengrass::ResetDeployments', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartBulkDeployment {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Greengrass::StartBulkDeployment', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopBulkDeployment {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Greengrass::StopBulkDeployment', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateConnectivityInfo {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Greengrass::UpdateConnectivityInfo', @_);
@@ -387,7 +412,7 @@ package Paws::Greengrass;
   
 
 
-  sub operations { qw/AssociateRoleToGroup AssociateServiceRoleToAccount CreateCoreDefinition CreateCoreDefinitionVersion CreateDeployment CreateDeviceDefinition CreateDeviceDefinitionVersion CreateFunctionDefinition CreateFunctionDefinitionVersion CreateGroup CreateGroupCertificateAuthority CreateGroupVersion CreateLoggerDefinition CreateLoggerDefinitionVersion CreateResourceDefinition CreateResourceDefinitionVersion CreateSoftwareUpdateJob CreateSubscriptionDefinition CreateSubscriptionDefinitionVersion DeleteCoreDefinition DeleteDeviceDefinition DeleteFunctionDefinition DeleteGroup DeleteLoggerDefinition DeleteResourceDefinition DeleteSubscriptionDefinition DisassociateRoleFromGroup DisassociateServiceRoleFromAccount GetAssociatedRole GetConnectivityInfo GetCoreDefinition GetCoreDefinitionVersion GetDeploymentStatus GetDeviceDefinition GetDeviceDefinitionVersion GetFunctionDefinition GetFunctionDefinitionVersion GetGroup GetGroupCertificateAuthority GetGroupCertificateConfiguration GetGroupVersion GetLoggerDefinition GetLoggerDefinitionVersion GetResourceDefinition GetResourceDefinitionVersion GetServiceRoleForAccount GetSubscriptionDefinition GetSubscriptionDefinitionVersion ListCoreDefinitions ListCoreDefinitionVersions ListDeployments ListDeviceDefinitions ListDeviceDefinitionVersions ListFunctionDefinitions ListFunctionDefinitionVersions ListGroupCertificateAuthorities ListGroups ListGroupVersions ListLoggerDefinitions ListLoggerDefinitionVersions ListResourceDefinitions ListResourceDefinitionVersions ListSubscriptionDefinitions ListSubscriptionDefinitionVersions ResetDeployments UpdateConnectivityInfo UpdateCoreDefinition UpdateDeviceDefinition UpdateFunctionDefinition UpdateGroup UpdateGroupCertificateConfiguration UpdateLoggerDefinition UpdateResourceDefinition UpdateSubscriptionDefinition / }
+  sub operations { qw/AssociateRoleToGroup AssociateServiceRoleToAccount CreateCoreDefinition CreateCoreDefinitionVersion CreateDeployment CreateDeviceDefinition CreateDeviceDefinitionVersion CreateFunctionDefinition CreateFunctionDefinitionVersion CreateGroup CreateGroupCertificateAuthority CreateGroupVersion CreateLoggerDefinition CreateLoggerDefinitionVersion CreateResourceDefinition CreateResourceDefinitionVersion CreateSoftwareUpdateJob CreateSubscriptionDefinition CreateSubscriptionDefinitionVersion DeleteCoreDefinition DeleteDeviceDefinition DeleteFunctionDefinition DeleteGroup DeleteLoggerDefinition DeleteResourceDefinition DeleteSubscriptionDefinition DisassociateRoleFromGroup DisassociateServiceRoleFromAccount GetAssociatedRole GetBulkDeploymentStatus GetConnectivityInfo GetCoreDefinition GetCoreDefinitionVersion GetDeploymentStatus GetDeviceDefinition GetDeviceDefinitionVersion GetFunctionDefinition GetFunctionDefinitionVersion GetGroup GetGroupCertificateAuthority GetGroupCertificateConfiguration GetGroupVersion GetLoggerDefinition GetLoggerDefinitionVersion GetResourceDefinition GetResourceDefinitionVersion GetServiceRoleForAccount GetSubscriptionDefinition GetSubscriptionDefinitionVersion ListBulkDeploymentDetailedReports ListBulkDeployments ListCoreDefinitions ListCoreDefinitionVersions ListDeployments ListDeviceDefinitions ListDeviceDefinitionVersions ListFunctionDefinitions ListFunctionDefinitionVersions ListGroupCertificateAuthorities ListGroups ListGroupVersions ListLoggerDefinitions ListLoggerDefinitionVersions ListResourceDefinitions ListResourceDefinitionVersions ListSubscriptionDefinitions ListSubscriptionDefinitionVersions ResetDeployments StartBulkDeployment StopBulkDeployment UpdateConnectivityInfo UpdateCoreDefinition UpdateDeviceDefinition UpdateFunctionDefinition UpdateGroup UpdateGroupCertificateConfiguration UpdateLoggerDefinition UpdateResourceDefinition UpdateSubscriptionDefinition / }
 
 1;
 
@@ -423,7 +448,7 @@ intermittent connectivity. AWS Greengrass minimizes the cost of
 transmitting data to the cloud by allowing you to author AWS Lambda
 functions that execute locally.
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/greengrass/>
 
 
 =head1 METHODS
@@ -534,7 +559,9 @@ Each argument is described in detail in: L<Paws::Greengrass::CreateDeployment>
 
 Returns: a L<Paws::Greengrass::CreateDeploymentResponse> instance
 
-Creates a deployment.
+Creates a deployment. ''CreateDeployment'' requests are idempotent with
+respect to the ''X-Amzn-Client-Token'' token and the request
+parameters.
 
 
 =head2 CreateDeviceDefinition
@@ -1014,6 +1041,22 @@ Returns: a L<Paws::Greengrass::GetAssociatedRoleResponse> instance
 Retrieves the role associated with a particular group.
 
 
+=head2 GetBulkDeploymentStatus
+
+=over
+
+=item BulkDeploymentId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Greengrass::GetBulkDeploymentStatus>
+
+Returns: a L<Paws::Greengrass::GetBulkDeploymentStatusResponse> instance
+
+Returns the status of a bulk deployment.
+
+
 =head2 GetConnectivityInfo
 
 =over
@@ -1106,6 +1149,8 @@ Retrieves information about a device definition.
 
 =item DeviceDefinitionVersionId => Str
 
+=item [NextToken => Str]
+
 
 =back
 
@@ -1140,6 +1185,8 @@ creation time and latest version.
 =item FunctionDefinitionId => Str
 
 =item FunctionDefinitionVersionId => Str
+
+=item [NextToken => Str]
 
 
 =back
@@ -1246,6 +1293,8 @@ Retrieves information about a logger definition.
 
 =item LoggerDefinitionVersionId => Str
 
+=item [NextToken => Str]
+
 
 =back
 
@@ -1330,6 +1379,8 @@ Retrieves information about a subscription definition.
 
 =item SubscriptionDefinitionVersionId => Str
 
+=item [NextToken => Str]
+
 
 =back
 
@@ -1338,6 +1389,45 @@ Each argument is described in detail in: L<Paws::Greengrass::GetSubscriptionDefi
 Returns: a L<Paws::Greengrass::GetSubscriptionDefinitionVersionResponse> instance
 
 Retrieves information about a subscription definition version.
+
+
+=head2 ListBulkDeploymentDetailedReports
+
+=over
+
+=item BulkDeploymentId => Str
+
+=item [MaxResults => Str]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Greengrass::ListBulkDeploymentDetailedReports>
+
+Returns: a L<Paws::Greengrass::ListBulkDeploymentDetailedReportsResponse> instance
+
+Gets a paginated list of the deployments that have been started in a
+bulk deployment operation, and their current deployment status.
+
+
+=head2 ListBulkDeployments
+
+=over
+
+=item [MaxResults => Str]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Greengrass::ListBulkDeployments>
+
+Returns: a L<Paws::Greengrass::ListBulkDeploymentsResponse> instance
+
+Returns a list of bulk deployments.
 
 
 =head2 ListCoreDefinitions
@@ -1660,6 +1750,51 @@ Each argument is described in detail in: L<Paws::Greengrass::ResetDeployments>
 Returns: a L<Paws::Greengrass::ResetDeploymentsResponse> instance
 
 Resets a group's deployments.
+
+
+=head2 StartBulkDeployment
+
+=over
+
+=item [AmznClientToken => Str]
+
+=item [ExecutionRoleArn => Str]
+
+=item [InputFileUri => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Greengrass::StartBulkDeployment>
+
+Returns: a L<Paws::Greengrass::StartBulkDeploymentResponse> instance
+
+Deploys multiple groups in one operation. This action starts the bulk
+deployment of a specified set of group versions. Each group version
+deployment will be triggered with an adaptive rate that has a fixed
+upper limit. We recommend that you include an ''X-Amzn-Client-Token''
+token in every ''StartBulkDeployment'' request. These requests are
+idempotent with respect to the token and the request parameters.
+
+
+=head2 StopBulkDeployment
+
+=over
+
+=item BulkDeploymentId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Greengrass::StopBulkDeployment>
+
+Returns: a L<Paws::Greengrass::StopBulkDeploymentResponse> instance
+
+Stops the execution of a bulk deployment. This action returns a status
+of ''Stopping'' until the deployment is stopped. You cannot start a new
+bulk deployment while a previous deployment is in the ''Stopping''
+state. This action doesn't rollback completed deployments or cancel
+pending deployments.
 
 
 =head2 UpdateConnectivityInfo

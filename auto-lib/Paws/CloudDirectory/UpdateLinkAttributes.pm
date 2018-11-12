@@ -46,7 +46,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           AttributeKey => {
             FacetName => 'MyFacetName',        # min: 1, max: 64
-            Name      => 'MyAttributeName',    # min: 1, max: 64
+            Name      => 'MyAttributeName',    # min: 1, max: 230
             SchemaArn => 'MyArn',
 
           },    # OPTIONAL
@@ -57,7 +57,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       TypedLinkSpecifier => {
         IdentityAttributeValues => [
           {
-            AttributeName => 'MyAttributeName',    # min: 1, max: 64
+            AttributeName => 'MyAttributeName',    # min: 1, max: 230
             Value         => {
               BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
               BooleanValue  => 1,                             # OPTIONAL
@@ -101,8 +101,8 @@ The attributes update structure.
 
 The Amazon Resource Name (ARN) that is associated with the Directory
 where the updated typed link resides. For more information, see arns or
-Typed link
-(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
+Typed Links
+(https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink).
 
 
 

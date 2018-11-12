@@ -6,6 +6,7 @@ package Paws::EKS::Cluster;
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
   has Endpoint => (is => 'ro', isa => 'Str', request_name => 'endpoint', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has PlatformVersion => (is => 'ro', isa => 'Str', request_name => 'platformVersion', traits => ['NameInRequest']);
   has ResourcesVpcConfig => (is => 'ro', isa => 'Paws::EKS::VpcConfigResponse', request_name => 'resourcesVpcConfig', traits => ['NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
@@ -74,6 +75,12 @@ of the request.
 =head2 Name => Str
 
   The name of the cluster.
+
+
+=head2 PlatformVersion => Str
+
+  The platform version of your Amazon EKS cluster. For more information,
+see Platform Versions in the I< I<Amazon EKS User Guide> >.
 
 
 =head2 ResourcesVpcConfig => L<Paws::EKS::VpcConfigResponse>

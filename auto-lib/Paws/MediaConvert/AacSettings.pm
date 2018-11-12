@@ -3,10 +3,10 @@ package Paws::MediaConvert::AacSettings;
   has AudioDescriptionBroadcasterMix => (is => 'ro', isa => 'Str', request_name => 'audioDescriptionBroadcasterMix', traits => ['NameInRequest']);
   has Bitrate => (is => 'ro', isa => 'Int', request_name => 'bitrate', traits => ['NameInRequest']);
   has CodecProfile => (is => 'ro', isa => 'Str', request_name => 'codecProfile', traits => ['NameInRequest']);
-  has CodingMode => (is => 'ro', isa => 'Str', request_name => 'codingMode', traits => ['NameInRequest'], required => 1);
+  has CodingMode => (is => 'ro', isa => 'Str', request_name => 'codingMode', traits => ['NameInRequest']);
   has RateControlMode => (is => 'ro', isa => 'Str', request_name => 'rateControlMode', traits => ['NameInRequest']);
   has RawFormat => (is => 'ro', isa => 'Str', request_name => 'rawFormat', traits => ['NameInRequest']);
-  has SampleRate => (is => 'ro', isa => 'Int', request_name => 'sampleRate', traits => ['NameInRequest'], required => 1);
+  has SampleRate => (is => 'ro', isa => 'Int', request_name => 'sampleRate', traits => ['NameInRequest']);
   has Specification => (is => 'ro', isa => 'Str', request_name => 'specification', traits => ['NameInRequest']);
   has VbrQuality => (is => 'ro', isa => 'Str', request_name => 'vbrQuality', traits => ['NameInRequest']);
 1;
@@ -67,7 +67,7 @@ rate control mode and profile.
   
 
 
-=head2 B<REQUIRED> CodingMode => Str
+=head2 CodingMode => Str
 
   
 
@@ -82,7 +82,7 @@ rate control mode and profile.
   
 
 
-=head2 B<REQUIRED> SampleRate => Int
+=head2 SampleRate => Int
 
   Sample rate in Hz. Valid values depend on rate control mode and
 profile.

@@ -3,7 +3,7 @@ package Paws::GuardDuty::GetFindingsStatistics;
   use Moose;
   has DetectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'detectorId', required => 1);
   has FindingCriteria => (is => 'ro', isa => 'Paws::GuardDuty::FindingCriteria', traits => ['NameInRequest'], request_name => 'findingCriteria');
-  has FindingStatisticTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'findingStatisticTypes');
+  has FindingStatisticTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'findingStatisticTypes', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -31,7 +31,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $guardduty = Paws->service('GuardDuty');
     my $GetFindingsStatisticsResponse = $guardduty->GetFindingsStatistics(
-      DetectorId      => 'My__string',
+      DetectorId            => 'My__string',
+      FindingStatisticTypes => [
+        'COUNT_BY_SEVERITY', ...    # values: COUNT_BY_SEVERITY
+      ],
       FindingCriteria => {
         Criterion => {
           'My__string' => {
@@ -44,9 +47,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
         },    # OPTIONAL
       },    # OPTIONAL
-      FindingStatisticTypes => [
-        'COUNT_BY_SEVERITY', ...    # values: COUNT_BY_SEVERITY
-      ],                            # OPTIONAL
     );
 
     # Results:
@@ -55,7 +55,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::GuardDuty::GetFindingsStatisticsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/guardduty/GetFindingsStatistics>
 
 =head1 ATTRIBUTES
 
@@ -73,7 +73,7 @@ Represents the criteria used for querying findings.
 
 
 
-=head2 FindingStatisticTypes => ArrayRef[Str|Undef]
+=head2 B<REQUIRED> FindingStatisticTypes => ArrayRef[Str|Undef]
 
 Types of finding statistics to retrieve.
 

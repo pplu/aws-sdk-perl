@@ -40,9 +40,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       BeforeCommitId     => 'MyCommitId',              # OPTIONAL
       ClientRequestToken => 'MyClientRequestToken',    # OPTIONAL
       Location           => {
-        filePath            => 'MyPath',    # OPTIONAL
-        filePosition        => 1,           # OPTIONAL
-        relativeFileVersion => 'BEFORE',    # values: BEFORE, AFTER; OPTIONAL
+        FilePath            => 'MyPath',    # OPTIONAL
+        FilePosition        => 1,           # OPTIONAL
+        RelativeFileVersion => 'BEFORE',    # values: BEFORE, AFTER; OPTIONAL
       },    # OPTIONAL
       );
 

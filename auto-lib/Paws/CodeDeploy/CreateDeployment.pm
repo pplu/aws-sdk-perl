@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateDeploymentOutput = $codedeploy->CreateDeployment(
       ApplicationName           => 'MyApplicationName',
       AutoRollbackConfiguration => {
-        enabled => 1,    # OPTIONAL
-        events  => [
+        Enabled => 1,    # OPTIONAL
+        Events  => [
           'DEPLOYMENT_FAILURE',
           ... # values: DEPLOYMENT_FAILURE, DEPLOYMENT_STOP_ON_ALARM, DEPLOYMENT_STOP_ON_REQUEST
         ],    # OPTIONAL
@@ -51,27 +51,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       FileExistsBehavior            => 'DISALLOW',                  # OPTIONAL
       IgnoreApplicationStopFailures => 1,                           # OPTIONAL
       Revision                      => {
-        gitHubLocation => {
-          commitId   => 'MyCommitId',                               # OPTIONAL
-          repository => 'MyRepository',                             # OPTIONAL
+        GitHubLocation => {
+          CommitId   => 'MyCommitId',                               # OPTIONAL
+          Repository => 'MyRepository',                             # OPTIONAL
         },    # OPTIONAL
-        revisionType => 'S3',    # values: S3, GitHub, String; OPTIONAL
-        s3Location   => {
-          bucket => 'MyS3Bucket',    # OPTIONAL
-          bundleType => 'tar',     # values: tar, tgz, zip, YAML, JSON; OPTIONAL
-          eTag       => 'MyETag',  # OPTIONAL
-          key        => 'MyS3Key', # OPTIONAL
-          version => 'MyVersionId',    # OPTIONAL
+        RevisionType => 'S3',    # values: S3, GitHub, String; OPTIONAL
+        S3Location   => {
+          Bucket => 'MyS3Bucket',    # OPTIONAL
+          BundleType => 'tar',     # values: tar, tgz, zip, YAML, JSON; OPTIONAL
+          ETag       => 'MyETag',  # OPTIONAL
+          Key        => 'MyS3Key', # OPTIONAL
+          Version => 'MyVersionId',    # OPTIONAL
         },    # OPTIONAL
-        string => {
-          content => 'MyRawStringContent',    # OPTIONAL
-          sha256  => 'MyRawStringSha256',     # OPTIONAL
+        String => {
+          Content => 'MyRawStringContent',    # OPTIONAL
+          Sha256  => 'MyRawStringSha256',     # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       TargetInstances => {
-        autoScalingGroups => [ 'MyAutoScalingGroupName', ... ],    # OPTIONAL
-        ec2TagSet => {
-          ec2TagSetList => [
+        AutoScalingGroups => [ 'MyAutoScalingGroupName', ... ],    # OPTIONAL
+        Ec2TagSet => {
+          Ec2TagSetList => [
             [
               {
                 Key  => 'MyKey',                                   # OPTIONAL
@@ -84,7 +84,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ...                        # OPTIONAL
           ],                           # OPTIONAL
         },    # OPTIONAL
-        tagFilters => [
+        TagFilters => [
           {
             Key  => 'MyKey',     # OPTIONAL
             Type => 'KEY_ONLY'

@@ -51,8 +51,7 @@ Represents the latest updated revision of the function or alias.
 =head2 RoutingConfig => L<Paws::Lambda::AliasRoutingConfiguration>
 
 Specifies an additional function versions the alias points to, allowing
-you to dictate what percentage of traffic will invoke each version. For
-more information, see lambda-traffic-shifting-using-aliases.
+you to dictate what percentage of traffic will invoke each version.
 
 
 =head2 _request_id => Str

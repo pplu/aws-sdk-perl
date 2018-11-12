@@ -69,6 +69,11 @@ package Paws::EFS;
     my $call_object = $self->new_with_coercions('Paws::EFS::ModifyMountTargetSecurityGroups', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateFileSystem {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EFS::UpdateFileSystem', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
   sub DescribeAllFileSystems {
     my $self = shift;
@@ -141,7 +146,7 @@ package Paws::EFS;
   }
 
 
-  sub operations { qw/CreateFileSystem CreateMountTarget CreateTags DeleteFileSystem DeleteMountTarget DeleteTags DescribeFileSystems DescribeMountTargets DescribeMountTargetSecurityGroups DescribeTags ModifyMountTargetSecurityGroups / }
+  sub operations { qw/CreateFileSystem CreateMountTarget CreateTags DeleteFileSystem DeleteMountTarget DeleteTags DescribeFileSystems DescribeMountTargets DescribeMountTargetSecurityGroups DescribeTags ModifyMountTargetSecurityGroups UpdateFileSystem / }
 
 1;
 
@@ -194,6 +199,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 =item [KmsKeyId => Str]
 
 =item [PerformanceMode => Str]
+
+=item [ProvisionedThroughputInMibps => Num]
+
+=item [ThroughputMode => Str]
 
 
 =back
@@ -767,6 +776,27 @@ network interface.
 
 =back
 
+
+
+=head2 UpdateFileSystem
+
+=over
+
+=item FileSystemId => Str
+
+=item [ProvisionedThroughputInMibps => Num]
+
+=item [ThroughputMode => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EFS::UpdateFileSystem>
+
+Returns: a L<Paws::EFS::FileSystemDescription> instance
+
+Updates the throughput mode or the amount of provisioned throughput of
+an existing file system.
 
 
 

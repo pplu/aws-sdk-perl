@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateClusterResponse = $eks->CreateCluster(
       Name               => 'MyClusterName',
       ResourcesVpcConfig => {
-        subnetIds        => [ 'MyString', ... ],
-        securityGroupIds => [ 'MyString', ... ],
+        SubnetIds        => [ 'MyString', ... ],
+        SecurityGroupIds => [ 'MyString', ... ],
       },
       RoleArn            => 'MyString',
       ClientRequestToken => 'MyString',    # OPTIONAL
@@ -75,7 +75,9 @@ with Kubernetes. For more information, see Cluster VPC Considerations
 (http://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html) and
 Cluster Security Group Considerations
 (http://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html)
-in the I<Amazon EKS User Guide>.
+in the I<Amazon EKS User Guide>. You must specify at least two subnets.
+You may specify up to 5 security groups, but we recommend that you use
+a dedicated security group for your cluster control plane.
 
 
 
@@ -85,7 +87,7 @@ The Amazon Resource Name (ARN) of the IAM role that provides
 permissions for Amazon EKS to make calls to other AWS API operations on
 your behalf. For more information, see Amazon EKS Service IAM Role
 (http://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html)
-in the I< I<Amazon EKS User Guide>>
+in the I< I<Amazon EKS User Guide> >.
 
 
 

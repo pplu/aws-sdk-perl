@@ -7,7 +7,7 @@ package Paws::CloudFront::DeletePublicKey;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeletePublicKey');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2017-10-30/public-key/{Id}');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2018-06-18/public-key/{Id}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
@@ -22,11 +22,11 @@ Paws::CloudFront::DeletePublicKey - Arguments for method DeletePublicKey on L<Pa
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DeletePublicKey2017_10_30 on the
+This class represents the parameters used for calling the method DeletePublicKey2018_06_18 on the
 L<Amazon CloudFront|Paws::CloudFront> service. Use the attributes of this class
-as arguments to method DeletePublicKey2017_10_30.
+as arguments to method DeletePublicKey2018_06_18.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeletePublicKey2017_10_30.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeletePublicKey2018_06_18.
 
 =head1 SYNOPSIS
 
@@ -58,7 +58,7 @@ public key identity to delete. For example: C<E2QWRUHAPOMQZL>.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method DeletePublicKey2017_10_30 in L<Paws::CloudFront>
+This class forms part of L<Paws>, documenting arguments for method DeletePublicKey2018_06_18 in L<Paws::CloudFront>
 
 =head1 BUGS and CONTRIBUTIONS
 

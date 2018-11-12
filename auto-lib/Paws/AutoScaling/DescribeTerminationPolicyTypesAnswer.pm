@@ -17,8 +17,8 @@ Paws::AutoScaling::DescribeTerminationPolicyTypesAnswer
 
 =head2 TerminationPolicyTypes => ArrayRef[Str|Undef]
 
-The termination policies supported by Auto Scaling (C<OldestInstance>,
-C<OldestLaunchConfiguration>, C<NewestInstance>,
+The termination policies supported by Amazon EC2 Auto Scaling
+(C<OldestInstance>, C<OldestLaunchConfiguration>, C<NewestInstance>,
 C<ClosestToNextInstanceHour>, and C<Default>).
 
 

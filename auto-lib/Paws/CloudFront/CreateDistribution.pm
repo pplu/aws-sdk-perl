@@ -6,7 +6,7 @@ package Paws::CloudFront::CreateDistribution;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDistribution');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2017-10-30/distribution');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2018-06-18/distribution');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::CreateDistributionResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
@@ -21,11 +21,11 @@ Paws::CloudFront::CreateDistribution - Arguments for method CreateDistribution o
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateDistribution2017_10_30 on the
+This class represents the parameters used for calling the method CreateDistribution2018_06_18 on the
 L<Amazon CloudFront|Paws::CloudFront> service. Use the attributes of this class
-as arguments to method CreateDistribution2017_10_30.
+as arguments to method CreateDistribution2018_06_18.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDistribution2017_10_30.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDistribution2018_06_18.
 
 =head1 SYNOPSIS
 
@@ -86,7 +86,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 EventType => 'viewer-request'
                 , # values: viewer-request, viewer-response, origin-request, origin-response
                 LambdaFunctionARN => 'MyLambdaFunctionARN',
-
+                IncludeBody       => 1,
               },
               ...
             ],    # OPTIONAL
@@ -134,7 +134,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
             },
             ...
-          ],        # min: 1, ; OPTIONAL
+          ],        # min: 1; OPTIONAL
         },
         Aliases => {
           Quantity => 1,
@@ -197,7 +197,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     EventType => 'viewer-request'
                     , # values: viewer-request, viewer-response, origin-request, origin-response
                     LambdaFunctionARN => 'MyLambdaFunctionARN',
-
+                    IncludeBody       => 1,
                   },
                   ...
                 ],    # OPTIONAL
@@ -278,7 +278,7 @@ The distribution's configuration information.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method CreateDistribution2017_10_30 in L<Paws::CloudFront>
+This class forms part of L<Paws>, documenting arguments for method CreateDistribution2018_06_18 in L<Paws::CloudFront>
 
 =head1 BUGS and CONTRIBUTIONS
 

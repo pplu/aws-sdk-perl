@@ -9,8 +9,10 @@ package Paws::Pinpoint::SMSChannelResponse;
   has LastModifiedBy => (is => 'ro', isa => 'Str');
   has LastModifiedDate => (is => 'ro', isa => 'Str');
   has Platform => (is => 'ro', isa => 'Str');
+  has PromotionalMessagesPerSecond => (is => 'ro', isa => 'Int');
   has SenderId => (is => 'ro', isa => 'Str');
   has ShortCode => (is => 'ro', isa => 'Str');
+  has TransactionalMessagesPerSecond => (is => 'ro', isa => 'Int');
   has Version => (is => 'ro', isa => 'Int');
 1;
 
@@ -64,7 +66,7 @@ SMS Channel Response.
 
 =head2 HasCredential => Bool
 
-  If the channel is registered with a credential for authentication.
+  Not used. Retained for backwards compatibility.
 
 
 =head2 Id => Str
@@ -92,6 +94,11 @@ SMS Channel Response.
   Platform type. Will be "SMS"
 
 
+=head2 PromotionalMessagesPerSecond => Int
+
+  Promotional messages per second that can be sent
+
+
 =head2 SenderId => Str
 
   Sender identifier of your messages.
@@ -100,6 +107,11 @@ SMS Channel Response.
 =head2 ShortCode => Str
 
   The short code registered with the phone provider.
+
+
+=head2 TransactionalMessagesPerSecond => Int
+
+  Transactional messages per second that can be sent
 
 
 =head2 Version => Int

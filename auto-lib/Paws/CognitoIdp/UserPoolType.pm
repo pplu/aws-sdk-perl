@@ -5,6 +5,7 @@ package Paws::CognitoIdp::UserPoolType;
   has Arn => (is => 'ro', isa => 'Str');
   has AutoVerifiedAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has CreationDate => (is => 'ro', isa => 'Str');
+  has CustomDomain => (is => 'ro', isa => 'Str');
   has DeviceConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::DeviceConfigurationType');
   has Domain => (is => 'ro', isa => 'Str');
   has EmailConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::EmailConfigurationType');
@@ -86,6 +87,11 @@ A container for information about the user pool.
 =head2 CreationDate => Str
 
   The date the user pool was created.
+
+
+=head2 CustomDomain => Str
+
+  
 
 
 =head2 DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>

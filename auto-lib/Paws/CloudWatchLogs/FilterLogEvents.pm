@@ -6,6 +6,7 @@ package Paws::CloudWatchLogs::FilterLogEvents;
   has Interleaved => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'interleaved' );
   has Limit => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'limit' );
   has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' , required => 1);
+  has LogStreamNamePrefix => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logStreamNamePrefix' );
   has LogStreamNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'logStreamNames' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
   has StartTime => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'startTime' );
@@ -35,16 +36,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $logs = Paws->service('CloudWatchLogs');
     my $FilterLogEventsResponse = $logs->FilterLogEvents(
-      LogGroupName   => 'MyLogGroupName',
-      EndTime        => 1,                    # OPTIONAL
-      FilterPattern  => 'MyFilterPattern',    # OPTIONAL
-      Interleaved    => 1,                    # OPTIONAL
-      Limit          => 1,                    # OPTIONAL
-      LogStreamNames => [
-        'MyLogStreamName', ...                # min: 1, max: 512
-      ],                                      # OPTIONAL
-      NextToken => 'MyNextToken',             # OPTIONAL
-      StartTime => 1,                         # OPTIONAL
+      LogGroupName        => 'MyLogGroupName',
+      EndTime             => 1,                    # OPTIONAL
+      FilterPattern       => 'MyFilterPattern',    # OPTIONAL
+      Interleaved         => 1,                    # OPTIONAL
+      Limit               => 1,                    # OPTIONAL
+      LogStreamNamePrefix => 'MyLogStreamName',    # OPTIONAL
+      LogStreamNames      => [
+        'MyLogStreamName', ...                     # min: 1, max: 512
+      ],                                           # OPTIONAL
+      NextToken => 'MyNextToken',                  # OPTIONAL
+      StartTime => 1,                              # OPTIONAL
     );
 
     # Results:
@@ -70,7 +72,11 @@ this time are not returned.
 
 =head2 FilterPattern => Str
 
-The filter pattern to use. If not provided, all the events are matched.
+The filter pattern to use. For more information, see Filter and Pattern
+Syntax
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html).
+
+If not provided, all the events are matched.
 
 
 
@@ -92,13 +98,30 @@ The maximum number of events to return. The default is 10,000 events.
 
 =head2 B<REQUIRED> LogGroupName => Str
 
-The name of the log group.
+The name of the log group to search.
+
+
+
+=head2 LogStreamNamePrefix => Str
+
+Filters the results to include only events from log streams that have
+names starting with this prefix.
+
+If you specify a value for both C<logStreamNamePrefix> and
+C<logStreamNames>, but the value for C<logStreamNamePrefix> does not
+match any log stream names specified in C<logStreamNames>, the action
+returns an C<InvalidParameterException> error.
 
 
 
 =head2 LogStreamNames => ArrayRef[Str|Undef]
 
-Optional list of log stream names.
+Filters the results to only logs from the log streams in this list.
+
+If you specify a value for both C<logStreamNamePrefix> and
+C<logStreamNames>, but the value for C<logStreamNamePrefix> does not
+match any log stream names specified in C<logStreamNames>, the action
+returns an C<InvalidParameterException> error.
 
 
 

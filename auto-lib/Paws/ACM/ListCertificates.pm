@@ -36,15 +36,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ... # values: PENDING_VALIDATION, ISSUED, INACTIVE, EXPIRED, VALIDATION_TIMED_OUT, REVOKED, FAILED
       ],    # OPTIONAL
       Includes => {
-        extendedKeyUsage => [
+        ExtendedKeyUsage => [
           'TLS_WEB_SERVER_AUTHENTICATION',
           ... # values: TLS_WEB_SERVER_AUTHENTICATION, TLS_WEB_CLIENT_AUTHENTICATION, CODE_SIGNING, EMAIL_PROTECTION, TIME_STAMPING, OCSP_SIGNING, IPSEC_END_SYSTEM, IPSEC_TUNNEL, IPSEC_USER, ANY, NONE, CUSTOM
         ],    # OPTIONAL
-        keyTypes => [
+        KeyTypes => [
           'RSA_2048',
           ... # values: RSA_2048, RSA_1024, RSA_4096, EC_prime256v1, EC_secp384r1, EC_secp521r1
         ],    # OPTIONAL
-        keyUsage => [
+        KeyUsage => [
           'DIGITAL_SIGNATURE',
           ... # values: DIGITAL_SIGNATURE, NON_REPUDIATION, KEY_ENCIPHERMENT, DATA_ENCIPHERMENT, KEY_AGREEMENT, CERTIFICATE_SIGNING, CRL_SIGNING, ENCIPHER_ONLY, DECIPHER_ONLY, ANY, CUSTOM
         ],    # OPTIONAL

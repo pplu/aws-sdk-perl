@@ -56,7 +56,7 @@ Reserved for future use.
 Specifies a list of trail ARNs whose tags will be listed. The list has
 a limit of 20 ARNs. The format of a trail ARN is:
 
-C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>
+C<arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail>
 
 
 
