@@ -4,6 +4,7 @@ package Paws::Net::MojoAsyncCaller;
   use Paws::Net::APIResponse;
 
   use Paws::API::Retry;
+  use Paws::Net::APIResponse;
   use Future;
   use Future::Mojo;
   use Mojo::UserAgent;
@@ -24,22 +25,18 @@ package Paws::Net::MojoAsyncCaller;
     ) if (not defined $tracker);
 
     $tracker->one_more_try;
-    my $f = $self->send_request($service, $call_object);
-    $f->on_fail(sub {
+    return $self->send_request($service, $call_object)->else(sub {
       my $fail = shift;
       $tracker->operation_result($fail);
 
       if ($tracker->should_retry) {
-        #my $sleep = Future::Mojo->new_timer(int($tracker->sleep_time));
-        #$sleep->on_done(sub {
+        return Future::Mojo->new_timer($tracker->sleep_time)->then(sub {
           return $self->do_call($service, $call_object, $tracker);
-        #});
-        #return $sleep;
+        });
       } else {
-        Future->fail($fail);
+        return Future->fail($fail);
       }
     });
-    return $f;
   }
 
   sub send_request {
