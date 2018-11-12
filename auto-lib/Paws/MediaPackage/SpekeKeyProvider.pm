@@ -1,5 +1,6 @@
 package Paws::MediaPackage::SpekeKeyProvider;
   use Moose;
+  has CertificateArn => (is => 'ro', isa => 'Str', request_name => 'certificateArn', traits => ['NameInRequest']);
   has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest'], required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
   has SystemIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'systemIds', traits => ['NameInRequest'], required => 1);
@@ -23,14 +24,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaPackage::SpekeKeyProvider object:
 
-  $service_obj->Method(Att1 => { ResourceId => $value, ..., Url => $value  });
+  $service_obj->Method(Att1 => { CertificateArn => $value, ..., Url => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::MediaPackage::SpekeKeyProvider object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ResourceId
+  $result->Att1->CertificateArn
 
 =head1 DESCRIPTION
 
@@ -38,6 +39,13 @@ A configuration for accessing an external Secure Packager and Encoder
 Key Exchange (SPEKE) service that will provide encryption keys.
 
 =head1 ATTRIBUTES
+
+
+=head2 CertificateArn => Str
+
+  An Amazon Resource Name (ARN) of a Certificate Manager certificate that
+MediaPackage will use for enforcing secure end-to-end data transfer
+with the key provider service.
 
 
 =head2 B<REQUIRED> ResourceId => Str
