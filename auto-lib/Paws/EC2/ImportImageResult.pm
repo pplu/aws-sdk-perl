@@ -3,9 +3,11 @@ package Paws::EC2::ImportImageResult;
   use Moose;
   has Architecture => (is => 'ro', isa => 'Str', request_name => 'architecture', traits => ['NameInRequest',]);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest',]);
+  has Encrypted => (is => 'ro', isa => 'Bool', request_name => 'encrypted', traits => ['NameInRequest',]);
   has Hypervisor => (is => 'ro', isa => 'Str', request_name => 'hypervisor', traits => ['NameInRequest',]);
   has ImageId => (is => 'ro', isa => 'Str', request_name => 'imageId', traits => ['NameInRequest',]);
   has ImportTaskId => (is => 'ro', isa => 'Str', request_name => 'importTaskId', traits => ['NameInRequest',]);
+  has KmsKeyId => (is => 'ro', isa => 'Str', request_name => 'kmsKeyId', traits => ['NameInRequest',]);
   has LicenseType => (is => 'ro', isa => 'Str', request_name => 'licenseType', traits => ['NameInRequest',]);
   has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest',]);
   has Progress => (is => 'ro', isa => 'Str', request_name => 'progress', traits => ['NameInRequest',]);
@@ -35,6 +37,11 @@ The architecture of the virtual machine.
 A description of the import task.
 
 
+=head2 Encrypted => Bool
+
+Indicates whether the AMI is encypted.
+
+
 =head2 Hypervisor => Str
 
 The target hypervisor of the import task.
@@ -48,6 +55,12 @@ The ID of the Amazon Machine Image (AMI) created by the import task.
 =head2 ImportTaskId => Str
 
 The task ID of the import image task.
+
+
+=head2 KmsKeyId => Str
+
+The identifier for the AWS Key Management Service (AWS KMS) customer
+master key (CMK) that was used to create the encrypted AMI.
 
 
 =head2 LicenseType => Str

@@ -1,7 +1,7 @@
 package Paws::EC2::SecurityGroupReference;
   use Moose;
-  has GroupId => (is => 'ro', isa => 'Str', request_name => 'groupId', traits => ['NameInRequest'], required => 1);
-  has ReferencingVpcId => (is => 'ro', isa => 'Str', request_name => 'referencingVpcId', traits => ['NameInRequest'], required => 1);
+  has GroupId => (is => 'ro', isa => 'Str', request_name => 'groupId', traits => ['NameInRequest']);
+  has ReferencingVpcId => (is => 'ro', isa => 'Str', request_name => 'referencingVpcId', traits => ['NameInRequest']);
   has VpcPeeringConnectionId => (is => 'ro', isa => 'Str', request_name => 'vpcPeeringConnectionId', traits => ['NameInRequest']);
 1;
 
@@ -38,12 +38,12 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> GroupId => Str
+=head2 GroupId => Str
 
   The ID of your security group.
 
 
-=head2 B<REQUIRED> ReferencingVpcId => Str
+=head2 ReferencingVpcId => Str
 
   The ID of the VPC with the referencing security group.
 

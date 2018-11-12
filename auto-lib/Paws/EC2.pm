@@ -8250,7 +8250,11 @@ the exchange.
 
 =item [DryRun => Bool]
 
+=item [Encrypted => Bool]
+
 =item [Hypervisor => Str]
+
+=item [KmsKeyId => Str]
 
 =item [LicenseType => Str]
 
@@ -8345,6 +8349,10 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 =item [DiskContainer => L<Paws::EC2::SnapshotDiskContainer>]
 
 =item [DryRun => Bool]
+
+=item [Encrypted => Bool]
+
+=item [KmsKeyId => Str]
 
 =item [RoleName => Str]
 
