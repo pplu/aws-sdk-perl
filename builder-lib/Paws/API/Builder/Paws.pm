@@ -35,11 +35,22 @@ package Paws::API::Builder::Paws {
     close $file;
   }
 
+  sub escape_pod {
+    my ($string) = @_;
+    my %char2names = reverse %Pod::Escapes::Name2character;
+    my $rekeys = list2re(keys %char2names);
+    $string =~ s/($rekeys)/E<$char2names{$1}>/g;
+    return $string;
+  }
+
+  has template_path => (is => 'ro', required => 1);
+
+  has pawspm_template => (is => 'ro', isa => 'Str', default => 'paws.tt');
+
   sub process_template {
     my ($self, $template, $vars) = @_;
-    my $tt = Template->new(
-      INCLUDE_PATH => './templates/default',
-    );
+    my $tt = Template->new(DEBUG => 1,INCLUDE_PATH => $self->template_path,
+        FILTERS => { escape_pod => \&escape_pod });
     my $output = '';
     $tt->process($template, $vars, \$output) || die $tt->error();
     return $output;

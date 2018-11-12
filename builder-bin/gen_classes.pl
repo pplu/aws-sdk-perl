@@ -42,7 +42,9 @@ if (not @files) {
 }
 
 if ($gen_paws_pm) {
-  my $p = Paws::API::Builder::Paws->new;
+  my $p = Paws::API::Builder::Paws->new(
+    template_path => [ getcwd() . "/templates" ]
+  );
   $p->process;
 }
 
