@@ -98,8 +98,21 @@ C<https://git-codecommit.I<region-ID>.amazonaws.com/v1/repos/I<repo-name>
 =item *
 
 For source code in an Amazon Simple Storage Service (Amazon S3) input
-bucket, the path to the ZIP file that contains the source code (for
-example, C< I<bucket-name>/I<path>/I<to>/I<object-name>.zip>)
+bucket, one of the following.
+
+=over
+
+=item *
+
+The path to the ZIP file that contains the source code (for example, C<
+I<bucket-name>/I<path>/I<to>/I<object-name>.zip>).
+
+=item *
+
+The path to the folder that contains the source code (for example, C<
+I<bucket-name>/I<path>/I<to>/I<source-code>/I<folder>/>).
+
+=back
 
 =item *
 
@@ -139,8 +152,8 @@ value to C<OAUTH>.
 
   Set to true to report the status of a build's start and finish to your
 source provider. This option is only valid when your source provider is
-GitHub. If this is set and you use a different source provider, an
-invalidInputException is thrown.
+GitHub, GitHub Enterprise, or Bitbucket. If this is set and you use a
+different source provider, an invalidInputException is thrown.
 
 
 =head2 SourceIdentifier => Str

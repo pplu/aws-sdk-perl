@@ -51,7 +51,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 A regular expression used to determine which branches in a repository
 are built when a webhook is triggered. If the name of a branch matches
 the regular expression, then it is built. If it doesn't match, then it
-is not. If branchFilter is empty, then all branches are built.
+is not. If C<branchFilter> is empty, then all branches are built.
 
 
 
@@ -63,8 +63,9 @@ The name of the AWS CodeBuild project.
 
 =head2 RotateSecret => Bool
 
-A boolean value that specifies whether the associated repository's
-secret token should be updated.
+A boolean value that specifies whether the associated GitHub
+repository's secret token should be updated. If you use Bitbucket for
+your repository then C<rotateSecret> is ignored.
 
 
 

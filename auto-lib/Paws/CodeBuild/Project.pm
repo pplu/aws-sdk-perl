@@ -159,8 +159,8 @@ completed. The default is 60 minutes.
 
 =head2 Webhook => L<Paws::CodeBuild::Webhook>
 
-  Information about a webhook in GitHub that connects repository events
-to a build project in AWS CodeBuild.
+  Information about a webhook that connects repository events to a build
+project in AWS CodeBuild.
 
 
 
