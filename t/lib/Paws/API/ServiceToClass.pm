@@ -118,6 +118,7 @@ package Paws::API::ServiceToClass;
     organizations => 'Organizations',
     pi => 'PerformanceInsights',
     pinpoint => 'Pinpoint',
+   'pinpoint-email' => 'PinpointEmail',
     pricing => 'Pricing',
     polly => 'Polly',
     pricing => 'Pricing',

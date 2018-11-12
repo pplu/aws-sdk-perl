@@ -458,6 +458,8 @@ L<Paws::PerformanceInsights>
 
 L<Paws::Pinpoint>
 
+L<Paws::PinpointEmail>
+
 L<Paws::Polly>
 
 L<Paws::Pricing>
