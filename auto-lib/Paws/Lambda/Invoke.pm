@@ -72,33 +72,62 @@ in the I<Amazon Mobile Analytics API Reference and User Guide>.
 The ClientContext JSON must be base64-encoded and has a maximum size of
 3583 bytes.
 
+C<ClientContext> information is returned only if you use the
+synchronous (C<RequestResponse>) invocation type.
+
 
 
 =head2 B<REQUIRED> FunctionName => Str
 
-The Lambda function name.
+The name of the lambda function.
 
-You can specify a function name (for example, C<Thumbnail>) or you can
-specify Amazon Resource Name (ARN) of the function (for example,
-C<arn:aws:lambda:us-west-2:account-id:function:ThumbNail>). AWS Lambda
-also allows you to specify a partial ARN (for example,
-C<account-id:Thumbnail>). Note that the length constraint applies only
-to the ARN. If you specify only the function name, it is limited to 64
-characters in length.
+B<Name formats>
+
+=over
+
+=item *
+
+B<Function name> - C<MyFunction>.
+
+=item *
+
+B<Function ARN> -
+C<arn:aws:lambda:us-west-2:123456789012:function:MyFunction>.
+
+=item *
+
+B<Partial ARN> - C<123456789012:function:MyFunction>.
+
+=back
+
+The length constraint applies only to the full ARN. If you specify only
+the function name, it is limited to 64 characters in length.
 
 
 
 =head2 InvocationType => Str
 
-By default, the C<Invoke> API assumes C<RequestResponse> invocation
-type. You can optionally request asynchronous execution by specifying
-C<Event> as the C<InvocationType>. You can also use this parameter to
-request AWS Lambda to not execute the function but do some
-verification, such as if the caller is authorized to invoke the
-function and if the inputs are valid. You request this by specifying
-C<DryRun> as the C<InvocationType>. This is useful in a cross-account
-scenario when you want to verify access to a function without running
-it.
+Choose from the following options.
+
+=over
+
+=item *
+
+C<RequestResponse> (default) - Invoke the function synchronously. Keep
+the connection open until the function returns a response or times out.
+
+=item *
+
+C<Event> - Invoke the function asynchronously. Send events that fail
+multiple times to the function's dead-letter queue (if configured).
+
+=item *
+
+C<DryRun> - Validate parameter values and verify that the user or role
+has permission to invoke the function.
+
+=back
+
 
 Valid values are: C<"Event">, C<"RequestResponse">, C<"DryRun">
 
@@ -120,14 +149,8 @@ JSON that you want to provide to your Lambda function as input.
 
 =head2 Qualifier => Str
 
-You can use this optional parameter to specify a Lambda function
-version or alias name. If you specify a function version, the API uses
-the qualified function ARN to invoke a specific Lambda function. If you
-specify an alias name, the API uses the alias ARN to invoke the Lambda
-function version to which the alias points.
-
-If you don't provide this parameter, then the API uses unqualified
-function ARN which results in invocation of the C<$LATEST> version.
+Specify a version or alias to invoke a published version of the
+function.
 
 
 

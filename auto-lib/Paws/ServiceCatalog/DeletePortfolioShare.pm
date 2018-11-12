@@ -2,7 +2,8 @@
 package Paws::ServiceCatalog::DeletePortfolioShare;
   use Moose;
   has AcceptLanguage => (is => 'ro', isa => 'Str');
-  has AccountId => (is => 'ro', isa => 'Str', required => 1);
+  has AccountId => (is => 'ro', isa => 'Str');
+  has OrganizationNode => (is => 'ro', isa => 'Paws::ServiceCatalog::OrganizationNode');
   has PortfolioId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -30,10 +31,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $servicecatalog = Paws->service('ServiceCatalog');
     my $DeletePortfolioShareOutput = $servicecatalog->DeletePortfolioShare(
-      AccountId      => 'MyAccountId',
-      PortfolioId    => 'MyId',
-      AcceptLanguage => 'MyAcceptLanguage',    # OPTIONAL
+      PortfolioId      => 'MyId',
+      AcceptLanguage   => 'MyAcceptLanguage',    # OPTIONAL
+      AccountId        => 'MyAccountId',         # OPTIONAL
+      OrganizationNode => {
+        Type => 'ORGANIZATION'
+        ,    # values: ORGANIZATION, ORGANIZATIONAL_UNIT, ACCOUNT; OPTIONAL
+        Value => 'MyOrganizationNodeValue',    # OPTIONAL
+      },    # OPTIONAL
     );
+
+    # Results:
+    my $PortfolioShareToken = $DeletePortfolioShareOutput->PortfolioShareToken;
+
+    # Returns a L<Paws::ServiceCatalog::DeletePortfolioShareOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/servicecatalog/DeletePortfolioShare>
@@ -64,9 +75,15 @@ C<zh> - Chinese
 
 
 
-=head2 B<REQUIRED> AccountId => Str
+=head2 AccountId => Str
 
 The AWS account ID.
+
+
+
+=head2 OrganizationNode => L<Paws::ServiceCatalog::OrganizationNode>
+
+The organization node to whom you are going to stop sharing.
 
 
 

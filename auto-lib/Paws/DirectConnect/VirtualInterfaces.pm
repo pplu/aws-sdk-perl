@@ -16,7 +16,7 @@ Paws::DirectConnect::VirtualInterfaces
 
 =head2 VirtualInterfaces => ArrayRef[L<Paws::DirectConnect::VirtualInterface>]
 
-A list of virtual interfaces.
+The virtual interfaces
 
 
 =head2 _request_id => Str

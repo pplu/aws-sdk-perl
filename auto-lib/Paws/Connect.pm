@@ -14,6 +14,66 @@ package Paws::Connect;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
 
   
+  sub CreateUser {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Connect::CreateUser', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteUser {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Connect::DeleteUser', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeUser {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Connect::DescribeUser', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeUserHierarchyGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Connect::DescribeUserHierarchyGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeUserHierarchyStructure {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Connect::DescribeUserHierarchyStructure', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetCurrentMetricData {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Connect::GetCurrentMetricData', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetFederationToken {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Connect::GetFederationToken', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetMetricData {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Connect::GetMetricData', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListRoutingProfiles {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Connect::ListRoutingProfiles', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListSecurityProfiles {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Connect::ListSecurityProfiles', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListUserHierarchyGroups {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Connect::ListUserHierarchyGroups', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListUsers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Connect::ListUsers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartOutboundVoiceContact {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Connect::StartOutboundVoiceContact', @_);
@@ -24,10 +84,40 @@ package Paws::Connect;
     my $call_object = $self->new_with_coercions('Paws::Connect::StopContact', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateContactAttributes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Connect::UpdateContactAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateUserHierarchy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Connect::UpdateUserHierarchy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateUserIdentityInfo {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Connect::UpdateUserIdentityInfo', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateUserPhoneConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Connect::UpdateUserPhoneConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateUserRoutingProfile {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Connect::UpdateUserRoutingProfile', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateUserSecurityProfiles {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Connect::UpdateUserSecurityProfiles', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
 
 
-  sub operations { qw/StartOutboundVoiceContact StopContact / }
+  sub operations { qw/CreateUser DeleteUser DescribeUser DescribeUserHierarchyGroup DescribeUserHierarchyStructure GetCurrentMetricData GetFederationToken GetMetricData ListRoutingProfiles ListSecurityProfiles ListUserHierarchyGroups ListUsers StartOutboundVoiceContact StopContact UpdateContactAttributes UpdateUserHierarchy UpdateUserIdentityInfo UpdateUserPhoneConfig UpdateUserRoutingProfile UpdateUserSecurityProfiles / }
 
 1;
 
@@ -61,10 +151,285 @@ parameters, and errors. Amazon Connect is a cloud-based contact center
 solution that makes it easy to set up and manage a customer contact
 center and provide reliable customer engagement at any scale.
 
+There is a throttling limit placed on usage of the Amazon Connect
+operations that includes a RateLimit of 2 per second, and a BurstLimit
+of 5 per second.
+
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/connect-2017-08-08>
 
 
 =head1 METHODS
+
+=head2 CreateUser
+
+=over
+
+=item InstanceId => Str
+
+=item PhoneConfig => L<Paws::Connect::UserPhoneConfig>
+
+=item RoutingProfileId => Str
+
+=item SecurityProfileIds => ArrayRef[Str|Undef]
+
+=item Username => Str
+
+=item [DirectoryUserId => Str]
+
+=item [HierarchyGroupId => Str]
+
+=item [IdentityInfo => L<Paws::Connect::UserIdentityInfo>]
+
+=item [Password => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Connect::CreateUser>
+
+Returns: a L<Paws::Connect::CreateUserResponse> instance
+
+Creates a new user account in your Amazon Connect instance.
+
+
+=head2 DeleteUser
+
+=over
+
+=item InstanceId => Str
+
+=item UserId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Connect::DeleteUser>
+
+Returns: nothing
+
+Deletes a user account from Amazon Connect.
+
+
+=head2 DescribeUser
+
+=over
+
+=item InstanceId => Str
+
+=item UserId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Connect::DescribeUser>
+
+Returns: a L<Paws::Connect::DescribeUserResponse> instance
+
+Returns a C<User> object that contains information about the user
+account specified by the C<UserId>.
+
+
+=head2 DescribeUserHierarchyGroup
+
+=over
+
+=item HierarchyGroupId => Str
+
+=item InstanceId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Connect::DescribeUserHierarchyGroup>
+
+Returns: a L<Paws::Connect::DescribeUserHierarchyGroupResponse> instance
+
+Returns a C<HierarchyGroup> object that includes information about a
+hierarchy group in your instance.
+
+
+=head2 DescribeUserHierarchyStructure
+
+=over
+
+=item InstanceId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Connect::DescribeUserHierarchyStructure>
+
+Returns: a L<Paws::Connect::DescribeUserHierarchyStructureResponse> instance
+
+Returns a C<HiearchyGroupStructure> object, which contains data about
+the levels in the agent hierarchy.
+
+
+=head2 GetCurrentMetricData
+
+=over
+
+=item CurrentMetrics => ArrayRef[L<Paws::Connect::CurrentMetric>]
+
+=item Filters => L<Paws::Connect::Filters>
+
+=item InstanceId => Str
+
+=item [Groupings => ArrayRef[Str|Undef]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Connect::GetCurrentMetricData>
+
+Returns: a L<Paws::Connect::GetCurrentMetricDataResponse> instance
+
+The C<GetCurrentMetricData> operation retrieves current metric data
+from your Amazon Connect instance.
+
+If you are using an IAM account, it must have permission to the
+C<connect:GetCurrentMetricData> action.
+
+
+=head2 GetFederationToken
+
+=over
+
+=item InstanceId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Connect::GetFederationToken>
+
+Returns: a L<Paws::Connect::GetFederationTokenResponse> instance
+
+Retrieves a token for federation.
+
+
+=head2 GetMetricData
+
+=over
+
+=item EndTime => Str
+
+=item Filters => L<Paws::Connect::Filters>
+
+=item HistoricalMetrics => ArrayRef[L<Paws::Connect::HistoricalMetric>]
+
+=item InstanceId => Str
+
+=item StartTime => Str
+
+=item [Groupings => ArrayRef[Str|Undef]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Connect::GetMetricData>
+
+Returns: a L<Paws::Connect::GetMetricDataResponse> instance
+
+The C<GetMetricData> operation retrieves historical metrics data from
+your Amazon Connect instance.
+
+If you are using an IAM account, it must have permission to the
+C<connect:GetMetricData> action.
+
+
+=head2 ListRoutingProfiles
+
+=over
+
+=item InstanceId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Connect::ListRoutingProfiles>
+
+Returns: a L<Paws::Connect::ListRoutingProfilesResponse> instance
+
+Returns an array of C<RoutingProfileSummary> objects that includes
+information about the routing profiles in your instance.
+
+
+=head2 ListSecurityProfiles
+
+=over
+
+=item InstanceId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Connect::ListSecurityProfiles>
+
+Returns: a L<Paws::Connect::ListSecurityProfilesResponse> instance
+
+Returns an array of SecurityProfileSummary objects that contain
+information about the security profiles in your instance, including the
+ARN, Id, and Name of the security profile.
+
+
+=head2 ListUserHierarchyGroups
+
+=over
+
+=item InstanceId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Connect::ListUserHierarchyGroups>
+
+Returns: a L<Paws::Connect::ListUserHierarchyGroupsResponse> instance
+
+Returns a C<UserHierarchyGroupSummaryList>, which is an array of
+C<HierarchyGroupSummary> objects that contain information about the
+hierarchy groups in your instance.
+
+
+=head2 ListUsers
+
+=over
+
+=item InstanceId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Connect::ListUsers>
+
+Returns: a L<Paws::Connect::ListUsersResponse> instance
+
+Returns a C<UserSummaryList>, which is an array of C<UserSummary>
+objects.
+
 
 =head2 StartOutboundVoiceContact
 
@@ -94,10 +459,7 @@ Returns: a L<Paws::Connect::StartOutboundVoiceContactResponse> instance
 The C<StartOutboundVoiceContact> operation initiates a contact flow to
 place an outbound call to a customer.
 
-There is a throttling limit placed on usage of the API that includes a
-C<RateLimit> of 2 per second, and a C<BurstLimit> of 5 per second.
-
-If you are using an IAM account, it must have permissions to the
+If you are using an IAM account, it must have permission to the
 C<connect:StartOutboundVoiceContact> action.
 
 
@@ -119,8 +481,153 @@ Returns: a L<Paws::Connect::StopContactResponse> instance
 Ends the contact initiated by the C<StartOutboundVoiceContact>
 operation.
 
-If you are using an IAM account, it must have permissions to the
-C<connect:StopContact> operation.
+If you are using an IAM account, it must have permission to the
+C<connect:StopContact> action.
+
+
+=head2 UpdateContactAttributes
+
+=over
+
+=item Attributes => L<Paws::Connect::Attributes>
+
+=item InitialContactId => Str
+
+=item InstanceId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Connect::UpdateContactAttributes>
+
+Returns: a L<Paws::Connect::UpdateContactAttributesResponse> instance
+
+The C<UpdateContactAttributes> operation lets you programmatically
+create new, or update existing, contact attributes associated with a
+contact. You can use the operation to add or update attributes for both
+ongoing and completed contacts. For example, you can update the
+customer's name or the reason the customer called while the call is
+active, or add notes about steps that the agent took during the call
+that are displayed to the next agent that takes the call. You can also
+use the C<UpdateContactAttributes> operation to update attributes for a
+contact using data from your CRM application and save the data with the
+contact in Amazon Connect. You could also flag calls for additional
+analysis, such as legal review or identifying abusive callers.
+
+Contact attributes are available in Amazon Connect for 24 months, and
+are then deleted.
+
+I<Important:>
+
+You cannot use the operation to update attributes for contacts that
+occurred prior to the release of the API, September 12, 2018. You can
+update attributes only for contacts that started after the release of
+the API. If you attempt to update attributes for a contact that
+occurred prior to the release of the API, a 400 error is returned. This
+applies also to queued callbacks that were initiated prior to the
+release of the API but are still active in your instance.
+
+
+=head2 UpdateUserHierarchy
+
+=over
+
+=item InstanceId => Str
+
+=item UserId => Str
+
+=item [HierarchyGroupId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Connect::UpdateUserHierarchy>
+
+Returns: nothing
+
+Assigns the specified hierarchy group to the user.
+
+
+=head2 UpdateUserIdentityInfo
+
+=over
+
+=item IdentityInfo => L<Paws::Connect::UserIdentityInfo>
+
+=item InstanceId => Str
+
+=item UserId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Connect::UpdateUserIdentityInfo>
+
+Returns: nothing
+
+Updates the identity information for the specified user in a
+C<UserIdentityInfo> object, including email, first name, and last name.
+
+
+=head2 UpdateUserPhoneConfig
+
+=over
+
+=item InstanceId => Str
+
+=item PhoneConfig => L<Paws::Connect::UserPhoneConfig>
+
+=item UserId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Connect::UpdateUserPhoneConfig>
+
+Returns: nothing
+
+Updates the phone configuration settings in the C<UserPhoneConfig>
+object for the specified user.
+
+
+=head2 UpdateUserRoutingProfile
+
+=over
+
+=item InstanceId => Str
+
+=item RoutingProfileId => Str
+
+=item UserId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Connect::UpdateUserRoutingProfile>
+
+Returns: nothing
+
+Assigns the specified routing profile to a user.
+
+
+=head2 UpdateUserSecurityProfiles
+
+=over
+
+=item InstanceId => Str
+
+=item SecurityProfileIds => ArrayRef[Str|Undef]
+
+=item UserId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Connect::UpdateUserSecurityProfiles>
+
+Returns: nothing
+
+Updates the security profiles assigned to the user.
 
 
 

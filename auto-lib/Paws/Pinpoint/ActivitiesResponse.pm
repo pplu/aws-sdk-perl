@@ -1,6 +1,7 @@
 package Paws::Pinpoint::ActivitiesResponse;
   use Moose;
   has Item => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::ActivityResponse]');
+  has NextToken => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Pinpoint::ActivitiesResponse object:
 
-  $service_obj->Method(Att1 => { Item => $value, ..., Item => $value  });
+  $service_obj->Method(Att1 => { Item => $value, ..., NextToken => $value  });
 
 =head3 Results returned from an API call
 
@@ -39,6 +40,12 @@ Activities for campaign.
 =head2 Item => ArrayRef[L<Paws::Pinpoint::ActivityResponse>]
 
   List of campaign activities
+
+
+=head2 NextToken => Str
+
+  The string that you use in a subsequent request to get the next page of
+results in a paginated response.
 
 
 

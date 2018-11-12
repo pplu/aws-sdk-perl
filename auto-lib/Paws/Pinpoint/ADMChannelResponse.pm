@@ -52,50 +52,48 @@ Amazon Device Messaging channel definition.
 
 =head2 CreationDate => Str
 
-  When was this segment created
+  The date and time when this channel was created.
 
 
 =head2 Enabled => Bool
 
-  If the channel is enabled for sending messages.
+  Indicates whether or not the channel is enabled for sending messages.
 
 
 =head2 HasCredential => Bool
 
-  Indicates whether the channel is configured with ADM credentials.
-Amazon Pinpoint uses your credentials to authenticate push
-notifications with ADM. Provide your credentials by setting the
-ClientId and ClientSecret attributes.
+  Not used. Retained for backwards compatibility.
 
 
 =head2 Id => Str
 
-  Channel ID. Not used, only for backwards compatibility.
+  (Deprecated) An identifier for the channel. Retained for backwards
+compatibility.
 
 
 =head2 IsArchived => Bool
 
-  Is this channel archived
+  Indicates whether or not the channel is archived.
 
 
 =head2 LastModifiedBy => Str
 
-  Who last updated this entry
+  The user who last updated this channel.
 
 
 =head2 LastModifiedDate => Str
 
-  Last date this was updated
+  The date and time when this channel was last modified.
 
 
 =head2 Platform => Str
 
-  Platform type. Will be "ADM"
+  The platform type. For this channel, the value is always "ADM."
 
 
 =head2 Version => Int
 
-  Version of channel
+  The channel version.
 
 
 

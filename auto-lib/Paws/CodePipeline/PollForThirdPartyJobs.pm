@@ -30,11 +30,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $codepipeline = Paws->service('CodePipeline');
     my $PollForThirdPartyJobsOutput = $codepipeline->PollForThirdPartyJobs(
       ActionTypeId => {
-        category =>
+        Category =>
           'Source',    # values: Source, Build, Deploy, Test, Invoke, Approval
-        owner    => 'AWS',                 # values: AWS, ThirdParty, Custom
-        provider => 'MyActionProvider',    # min: 1, max: 25
-        version  => 'MyVersion',           # min: 1, max: 9
+        Owner    => 'AWS',                 # values: AWS, ThirdParty, Custom
+        Provider => 'MyActionProvider',    # min: 1, max: 25
+        Version  => 'MyVersion',           # min: 1, max: 9
 
       },
       MaxBatchSize => 1,                   # OPTIONAL

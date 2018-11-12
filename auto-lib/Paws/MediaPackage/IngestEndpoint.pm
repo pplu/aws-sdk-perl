@@ -1,5 +1,6 @@
 package Paws::MediaPackage::IngestEndpoint;
   use Moose;
+  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
   has Password => (is => 'ro', isa => 'Str', request_name => 'password', traits => ['NameInRequest']);
   has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
   has Username => (is => 'ro', isa => 'Str', request_name => 'username', traits => ['NameInRequest']);
@@ -22,20 +23,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaPackage::IngestEndpoint object:
 
-  $service_obj->Method(Att1 => { Password => $value, ..., Username => $value  });
+  $service_obj->Method(Att1 => { Id => $value, ..., Username => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::MediaPackage::IngestEndpoint object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Password
+  $result->Att1->Id
 
 =head1 DESCRIPTION
 
 An endpoint for ingesting source content for a Channel.
 
 =head1 ATTRIBUTES
+
+
+=head2 Id => Str
+
+  The system generated unique identifier for the IngestEndpoint
 
 
 =head2 Password => Str

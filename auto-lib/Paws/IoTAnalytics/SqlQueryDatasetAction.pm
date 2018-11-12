@@ -1,5 +1,6 @@
 package Paws::IoTAnalytics::SqlQueryDatasetAction;
   use Moose;
+  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::QueryFilter]', request_name => 'filters', traits => ['NameInRequest']);
   has SqlQuery => (is => 'ro', isa => 'Str', request_name => 'sqlQuery', traits => ['NameInRequest'], required => 1);
 1;
 
@@ -20,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoTAnalytics::SqlQueryDatasetAction object:
 
-  $service_obj->Method(Att1 => { SqlQuery => $value, ..., SqlQuery => $value  });
+  $service_obj->Method(Att1 => { Filters => $value, ..., SqlQuery => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::IoTAnalytics::SqlQueryDatasetAction object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->SqlQuery
+  $result->Att1->Filters
 
 =head1 DESCRIPTION
 
@@ -36,9 +37,14 @@ The SQL query to modify the message.
 =head1 ATTRIBUTES
 
 
+=head2 Filters => ArrayRef[L<Paws::IoTAnalytics::QueryFilter>]
+
+  Pre-filters applied to message data.
+
+
 =head2 B<REQUIRED> SqlQuery => Str
 
-  An SQL query string.
+  A SQL query string.
 
 
 

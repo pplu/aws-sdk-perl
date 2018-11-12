@@ -130,7 +130,7 @@ The AWS Migration Hub API methods help to obtain server and application
 migration status and integrate your resource-specific migration tool by
 providing a programmatic interface to Migration Hub.
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/migrationhub/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/migrationhub/>
 
 
 =head1 METHODS

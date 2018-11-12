@@ -7,9 +7,12 @@ package Paws::RedShift::ResizeProgressMessage;
   has ImportTablesCompleted => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ImportTablesInProgress => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ImportTablesNotStarted => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Message => (is => 'ro', isa => 'Str');
   has ProgressInMegaBytes => (is => 'ro', isa => 'Int');
+  has ResizeType => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has TargetClusterType => (is => 'ro', isa => 'Str');
+  has TargetEncryptionType => (is => 'ro', isa => 'Str');
   has TargetNodeType => (is => 'ro', isa => 'Str');
   has TargetNumberOfNodes => (is => 'ro', isa => 'Int');
   has TotalResizeDataInMegaBytes => (is => 'ro', isa => 'Int');
@@ -69,6 +72,12 @@ The names of tables that have not been yet imported.
 Valid Values: List of table names
 
 
+=head2 Message => Str
+
+An optional string to provide additional details about the resize
+action.
+
+
 =head2 ProgressInMegaBytes => Int
 
 While the resize operation is in progress, this value shows the current
@@ -77,6 +86,12 @@ resize operation is complete, this value shows the total amount of
 data, in megabytes, on the cluster, which may be more or less than
 TotalResizeDataInMegaBytes (the estimated total amount of data before
 resize).
+
+
+=head2 ResizeType => Str
+
+An enum with possible values of ClassicResize and ElasticResize. These
+values describe the type of resize operation being performed.
 
 
 =head2 Status => Str
@@ -91,6 +106,14 @@ Valid Values: C<NONE> | C<IN_PROGRESS> | C<FAILED> | C<SUCCEEDED>
 The cluster type after the resize operation is complete.
 
 Valid Values: C<multi-node> | C<single-node>
+
+
+=head2 TargetEncryptionType => Str
+
+The type of encryption for the cluster after the resize is complete.
+
+Possible values are C<KMS> and C<None>. In the China region possible
+values are: C<Legacy> and C<None>.
 
 
 =head2 TargetNodeType => Str

@@ -47,9 +47,8 @@ applicable.
 
 =head2 Status => Str
 
-  The encryption status. After modifying encryption configuration with
-PutEncryptionConfig, the status can be C<UPDATING> for up to one hour
-before X-Ray starts encrypting data with the new key.
+  The encryption status. While the status is C<UPDATING>, X-Ray may
+encrypt data with a combination of the new and old settings.
 
 
 =head2 Type => Str

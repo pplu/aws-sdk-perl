@@ -32,9 +32,9 @@ video, that the label was detected.
 
 =head2 NextToken => Str
 
-If the response is truncated, Rekognition Video returns this token that
-you can use in the subsequent request to retrieve the next set of
-labels.
+If the response is truncated, Amazon Rekognition Video returns this
+token that you can use in the subsequent request to retrieve the next
+set of labels.
 
 
 =head2 StatusMessage => Str
@@ -45,7 +45,7 @@ message.
 
 =head2 VideoMetadata => L<Paws::Rekognition::VideoMetadata>
 
-Information about a video that Rekognition Video analyzed.
+Information about a video that Amazon Rekognition Video analyzed.
 C<Videometadata> is returned in every page of paginated responses from
 a Amazon Rekognition video operation.
 

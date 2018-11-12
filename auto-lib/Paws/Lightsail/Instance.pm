@@ -97,7 +97,7 @@ assigned to it.
 
 =head2 Location => L<Paws::Lightsail::ResourceLocation>
 
-  The region name and availability zone where the instance is located.
+  The region name and Availability Zone where the instance is located.
 
 
 =head2 Name => Str

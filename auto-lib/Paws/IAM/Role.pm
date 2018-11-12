@@ -6,6 +6,7 @@ package Paws::IAM::Role;
   has Description => (is => 'ro', isa => 'Str');
   has MaxSessionDuration => (is => 'ro', isa => 'Int');
   has Path => (is => 'ro', isa => 'Str', required => 1);
+  has PermissionsBoundary => (is => 'ro', isa => 'Paws::IAM::AttachedPermissionsBoundary');
   has RoleId => (is => 'ro', isa => 'Str', required => 1);
   has RoleName => (is => 'ro', isa => 'Str', required => 1);
 1;
@@ -83,6 +84,17 @@ C<duration-seconds> CLI parameter.
 Identifiers
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<Using IAM> guide.
+
+
+=head2 PermissionsBoundary => L<Paws::IAM::AttachedPermissionsBoundary>
+
+  The ARN of the policy used to set the permissions boundary for the
+role.
+
+For more information about permissions boundaries, see Permissions
+Boundaries for IAM Identities
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html)
+in the I<IAM User Guide>.
 
 
 =head2 B<REQUIRED> RoleId => Str

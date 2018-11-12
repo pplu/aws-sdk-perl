@@ -78,7 +78,7 @@ the same as you do through the console. For example, you specify ad
 insertion behavior and mapping information for the origin server and
 the ad decision server (ADS).
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.mediatailor-2018-04-23>
 
 
 =head1 METHODS

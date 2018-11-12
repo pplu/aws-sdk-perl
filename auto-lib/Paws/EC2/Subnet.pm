@@ -59,9 +59,8 @@ a network interface created by RunInstances) receives an IPv6 address.
 
 =head2 AvailableIpAddressCount => Int
 
-  The number of unused private IPv4 addresses in the subnet. Note that
-the IPv4 addresses for any stopped instances are considered
-unavailable.
+  The number of unused private IPv4 addresses in the subnet. The IPv4
+addresses for any stopped instances are considered unavailable.
 
 
 =head2 CidrBlock => Str

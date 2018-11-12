@@ -5,6 +5,7 @@ package Paws::IAM::CreateRole;
   has Description => (is => 'ro', isa => 'Str');
   has MaxSessionDuration => (is => 'ro', isa => 'Int');
   has Path => (is => 'ro', isa => 'Str');
+  has PermissionsBoundary => (is => 'ro', isa => 'Str');
   has RoleName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -128,6 +129,13 @@ end with forward slashes. In addition, it can contain any ASCII
 character from the ! (\u0021) through the DEL character (\u007F),
 including most punctuation characters, digits, and upper and lowercased
 letters.
+
+
+
+=head2 PermissionsBoundary => Str
+
+The ARN of the policy that is used to set the permissions boundary for
+the role.
 
 
 

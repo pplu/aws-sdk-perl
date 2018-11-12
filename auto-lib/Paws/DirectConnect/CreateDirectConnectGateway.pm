@@ -50,21 +50,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 The autonomous system number (ASN) for Border Gateway Protocol (BGP) to
 be configured on the Amazon side of the connection. The ASN must be in
-the private range of 64,512 to 65,534 or 4,200,000,000 to 4,294,967,294
-
-Example: 65200
-
-Default: 64512
+the private range of 64,512 to 65,534 or 4,200,000,000 to
+4,294,967,294. The default is 64512.
 
 
 
 =head2 B<REQUIRED> DirectConnectGatewayName => Str
 
-The name of the direct connect gateway.
-
-Example: "My direct connect gateway"
-
-Default: None
+The name of the Direct Connect gateway.
 
 
 

@@ -16,16 +16,19 @@ package Paws::RedShift::Cluster;
   has ClusterVersion => (is => 'ro', isa => 'Str');
   has DBName => (is => 'ro', isa => 'Str');
   has ElasticIpStatus => (is => 'ro', isa => 'Paws::RedShift::ElasticIpStatus');
+  has ElasticResizeNumberOfNodeOptions => (is => 'ro', isa => 'Str');
   has Encrypted => (is => 'ro', isa => 'Bool');
   has Endpoint => (is => 'ro', isa => 'Paws::RedShift::Endpoint');
   has EnhancedVpcRouting => (is => 'ro', isa => 'Bool');
   has HsmStatus => (is => 'ro', isa => 'Paws::RedShift::HsmStatus');
   has IamRoles => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ClusterIamRole]', request_name => 'ClusterIamRole', traits => ['NameInRequest']);
   has KmsKeyId => (is => 'ro', isa => 'Str');
+  has MaintenanceTrackName => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str');
   has ModifyStatus => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int');
+  has PendingActions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has PendingModifiedValues => (is => 'ro', isa => 'Paws::RedShift::PendingModifiedValues');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
@@ -234,6 +237,12 @@ created by default.
   The status of the elastic IP (EIP) address.
 
 
+=head2 ElasticResizeNumberOfNodeOptions => Str
+
+  Indicates the number of nodes the cluster can be resized to with the
+elastic resize method.
+
+
 =head2 Encrypted => Bool
 
   A Boolean value that, if C<true>, indicates that data in the cluster is
@@ -280,6 +289,11 @@ used by the cluster to access other AWS services.
 used to encrypt data in the cluster.
 
 
+=head2 MaintenanceTrackName => Str
+
+  The name of the maintenance track for the cluster.
+
+
 =head2 MasterUsername => Str
 
   The master user name for the cluster. This name is used to connect to
@@ -299,6 +313,11 @@ the database that is specified in the B<DBName> parameter.
 =head2 NumberOfNodes => Int
 
   The number of compute nodes in the cluster.
+
+
+=head2 PendingActions => ArrayRef[Str|Undef]
+
+  Cluster operations that are waiting to be started.
 
 
 =head2 PendingModifiedValues => L<Paws::RedShift::PendingModifiedValues>

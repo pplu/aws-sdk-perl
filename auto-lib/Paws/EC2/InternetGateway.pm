@@ -40,17 +40,17 @@ This class has no description
 
 =head2 Attachments => ArrayRef[L<Paws::EC2::InternetGatewayAttachment>]
 
-  Any VPCs attached to the Internet gateway.
+  Any VPCs attached to the internet gateway.
 
 
 =head2 InternetGatewayId => Str
 
-  The ID of the Internet gateway.
+  The ID of the internet gateway.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  Any tags assigned to the Internet gateway.
+  Any tags assigned to the internet gateway.
 
 
 

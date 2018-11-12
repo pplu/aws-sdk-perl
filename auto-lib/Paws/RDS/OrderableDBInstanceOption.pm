@@ -15,6 +15,7 @@ package Paws::RDS::OrderableDBInstanceOption;
   has MultiAZCapable => (is => 'ro', isa => 'Bool');
   has ReadReplicaCapable => (is => 'ro', isa => 'Bool');
   has StorageType => (is => 'ro', isa => 'Str');
+  has SupportedEngineModes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SupportsEnhancedMonitoring => (is => 'ro', isa => 'Bool');
   has SupportsIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has SupportsIops => (is => 'ro', isa => 'Bool');
@@ -133,6 +134,11 @@ a DB instance.
 =head2 StorageType => Str
 
   Indicates the storage type for a DB instance.
+
+
+=head2 SupportedEngineModes => ArrayRef[Str|Undef]
+
+  A list of the supported DB engine modes.
 
 
 =head2 SupportsEnhancedMonitoring => Bool

@@ -36,20 +36,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name      => 'MyString',
       ApiStages => [
         {
-          apiId => 'MyString',
-          stage => 'MyString',
+          ApiId    => 'MyString',
+          Stage    => 'MyString',
+          Throttle => {
+            'MyString' => {
+              BurstLimit => 1,    # OPTIONAL
+              RateLimit  => 1,    # OPTIONAL
+            },
+          },    # OPTIONAL
         },
         ...
-      ],    # OPTIONAL
+      ],        # OPTIONAL
       Description => 'MyString',    # OPTIONAL
       Quota       => {
-        limit  => 1,                # OPTIONAL
-        offset => 1,                # OPTIONAL
-        period => 'DAY',            # values: DAY, WEEK, MONTH; OPTIONAL
+        Limit  => 1,                # OPTIONAL
+        Offset => 1,                # OPTIONAL
+        Period => 'DAY',            # values: DAY, WEEK, MONTH; OPTIONAL
       },    # OPTIONAL
       Throttle => {
-        burstLimit => 1,    # OPTIONAL
-        rateLimit  => 1,    # OPTIONAL
+        BurstLimit => 1,    # OPTIONAL
+        RateLimit  => 1,    # OPTIONAL
       },    # OPTIONAL
     );
 
@@ -65,7 +71,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::ApiGateway::UsagePlan> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/CreateUsagePlan>
 
 =head1 ATTRIBUTES
 

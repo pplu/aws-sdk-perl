@@ -71,10 +71,10 @@ snapshot copy operation. This parameter is only valid for specifying
 the destination region in a C<PresignedUrl> parameter, where it is
 required.
 
-C<CopySnapshot> sends the snapshot copy to the regional endpoint that
-you send the HTTP request to, such as C<ec2.us-east-1.amazonaws.com>
-(in the AWS CLI, this is specified with the C<--region> parameter or
-the default region in your AWS configuration file).
+The snapshot copy is sent to the regional endpoint that you sent the
+HTTP request to (for example, C<ec2.us-east-1.amazonaws.com>). With the
+AWS CLI, this is specified using the C<--region> parameter or the
+default region in your AWS configuration file.
 
 
 
@@ -90,11 +90,11 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 =head2 Encrypted => Bool
 
 Specifies whether the destination snapshot should be encrypted. You can
-encrypt a copy of an unencrypted snapshot using this flag, but you
-cannot use it to create an unencrypted copy from an encrypted snapshot.
-Your default CMK for EBS is used unless a non-default AWS Key
-Management Service (AWS KMS) CMK is specified with C<KmsKeyId>. For
-more information, see Amazon EBS Encryption
+encrypt a copy of an unencrypted snapshot, but you cannot use it to
+create an unencrypted copy of an encrypted snapshot. Your default CMK
+for EBS is used unless you specify a non-default AWS Key Management
+Service (AWS KMS) CMK using C<KmsKeyId>. For more information, see
+Amazon EBS Encryption
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 

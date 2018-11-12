@@ -1,5 +1,6 @@
 package Paws::Glue::CrawlerTargets;
   use Moose;
+  has DynamoDBTargets => (is => 'ro', isa => 'ArrayRef[Paws::Glue::DynamoDBTarget]');
   has JdbcTargets => (is => 'ro', isa => 'ArrayRef[Paws::Glue::JdbcTarget]');
   has S3Targets => (is => 'ro', isa => 'ArrayRef[Paws::Glue::S3Target]');
 1;
@@ -21,20 +22,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Glue::CrawlerTargets object:
 
-  $service_obj->Method(Att1 => { JdbcTargets => $value, ..., S3Targets => $value  });
+  $service_obj->Method(Att1 => { DynamoDBTargets => $value, ..., S3Targets => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::CrawlerTargets object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->JdbcTargets
+  $result->Att1->DynamoDBTargets
 
 =head1 DESCRIPTION
 
 Specifies data stores to crawl.
 
 =head1 ATTRIBUTES
+
+
+=head2 DynamoDBTargets => ArrayRef[L<Paws::Glue::DynamoDBTarget>]
+
+  Specifies DynamoDB targets.
 
 
 =head2 JdbcTargets => ArrayRef[L<Paws::Glue::JdbcTarget>]

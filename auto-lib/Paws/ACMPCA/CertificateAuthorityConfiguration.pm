@@ -38,7 +38,7 @@ authority (CA). This includes information about the class of public key
 algorithm and the key pair that your private CA creates when it issues
 a certificate, the signature algorithm it uses used when issuing
 certificates, and its X.500 distinguished name. You must specify this
-information when you call the CreateCertificateAuthority function.
+information when you call the CreateCertificateAuthority operation.
 
 =head1 ATTRIBUTES
 

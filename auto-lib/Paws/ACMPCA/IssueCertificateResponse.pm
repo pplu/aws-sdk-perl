@@ -19,7 +19,7 @@ Paws::ACMPCA::IssueCertificateResponse
 The Amazon Resource Name (ARN) of the issued certificate and the
 certificate serial number. This is of the form:
 
-C<arn:aws:acm:I<region>:I<account>:certificate-authority/I<12345678-1234-1234-1234-123456789012>/certificate/I<286535153982981100925020015808220737245>>
+C<arn:aws:acm-pca:I<region>:I<account>:certificate-authority/I<12345678-1234-1234-1234-123456789012>/certificate/I<286535153982981100925020015808220737245>>
 
 
 =head2 _request_id => Str

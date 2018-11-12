@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 
 =head1 DESCRIPTION
 
-Identifies the bounding box around the object, face or text. The
+Identifies the bounding box around the label, face, or text. The
 C<left> (x-coordinate) and C<top> (y-coordinate) are coordinates
 representing the top and left sides of the bounding box. Note that the
 upper-left corner of the image is the origin (0,0).

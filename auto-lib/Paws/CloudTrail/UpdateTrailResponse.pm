@@ -54,7 +54,7 @@ Specifies the KMS key ID that encrypts the logs delivered by
 CloudTrail. The value is a fully specified ARN to a KMS key in the
 format:
 
-C<arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012>
+C<arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012>
 
 
 =head2 LogFileValidationEnabled => Bool
@@ -87,7 +87,7 @@ Specifies the ARN of the Amazon SNS topic that CloudTrail uses to send
 notifications when log files are delivered. The format of a topic ARN
 is:
 
-C<arn:aws:sns:us-east-1:123456789012:MyTopic>
+C<arn:aws:sns:us-east-2:123456789012:MyTopic>
 
 
 =head2 SnsTopicName => Str
@@ -100,7 +100,7 @@ This field is deprecated. Use SnsTopicARN.
 Specifies the ARN of the trail that was updated. The format of a trail
 ARN is:
 
-C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>
+C<arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail>
 
 
 =head2 _request_id => Str

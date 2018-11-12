@@ -20,6 +20,7 @@ package Paws::SSM::AutomationExecution;
   has StepExecutions => (is => 'ro', isa => 'ArrayRef[Paws::SSM::StepExecution]');
   has StepExecutionsTruncated => (is => 'ro', isa => 'Bool');
   has Target => (is => 'ro', isa => 'Str');
+  has TargetMaps => (is => 'ro', isa => 'ArrayRef[Paws::SSM::TargetMap]');
   has TargetParameterName => (is => 'ro', isa => 'Str');
   has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
 1;
@@ -164,6 +165,12 @@ step executions.
 =head2 Target => Str
 
   The target of the execution.
+
+
+=head2 TargetMaps => ArrayRef[L<Paws::SSM::TargetMap>]
+
+  The specified key-value mapping of document parameters to target
+resources.
 
 
 =head2 TargetParameterName => Str

@@ -38,7 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       OrderedIndexedAttributeList => [
         {
           FacetName => 'MyFacetName',        # min: 1, max: 64
-          Name      => 'MyAttributeName',    # min: 1, max: 64
+          Name      => 'MyAttributeName',    # min: 1, max: 230
           SchemaArn => 'MyArn',
 
         },

@@ -99,7 +99,9 @@ specified time stamp. The time stamp must be in ISO 8601 UTC format
 
 The percentile statistics. Specify values between p0.0 and p100. When
 calling C<GetMetricStatistics>, you must specify either C<Statistics>
-or C<ExtendedStatistics>, but not both.
+or C<ExtendedStatistics>, but not both. Percentile statistics are not
+available for metrics when any of the metric values are negative
+numbers.
 
 
 

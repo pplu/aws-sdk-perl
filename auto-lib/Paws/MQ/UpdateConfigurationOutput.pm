@@ -1,6 +1,7 @@
 package Paws::MQ::UpdateConfigurationOutput;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
   has LatestRevision => (is => 'ro', isa => 'Paws::MQ::ConfigurationRevision', request_name => 'latestRevision', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
@@ -43,6 +44,11 @@ Returns information about the updated configuration.
 =head2 Arn => Str
 
   Required. The Amazon Resource Name (ARN) of the configuration.
+
+
+=head2 Created => Str
+
+  Required. The date and time of the configuration.
 
 
 =head2 Id => Str

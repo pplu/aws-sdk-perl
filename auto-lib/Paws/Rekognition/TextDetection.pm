@@ -46,7 +46,8 @@ line and has a parent identifier (C<ParentId>) that identifies the line
 of text in which the word appears. The word C<Id> is also an index for
 the word within a line of words.
 
-For more information, see text-detection.
+For more information, see Detecting Text in the Amazon Rekognition
+Developer Guide.
 
 =head1 ATTRIBUTES
 

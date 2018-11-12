@@ -12,6 +12,7 @@ package Paws::RDS::RestoreDBInstanceFromS3;
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has EnablePerformanceInsights => (is => 'ro', isa => 'Bool');
@@ -27,6 +28,7 @@ package Paws::RDS::RestoreDBInstanceFromS3;
   has MultiAZ => (is => 'ro', isa => 'Bool');
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has PerformanceInsightsKMSKeyId => (is => 'ro', isa => 'Str');
+  has PerformanceInsightsRetentionPeriod => (is => 'ro', isa => 'Int');
   has Port => (is => 'ro', isa => 'Int');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
@@ -68,59 +70,61 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $rds = Paws->service('RDS');
     my $RestoreDBInstanceFromS3Result = $rds->RestoreDBInstanceFromS3(
-      DBInstanceClass                 => 'MyString',
-      DBInstanceIdentifier            => 'MyString',
-      Engine                          => 'MyString',
-      S3BucketName                    => 'MyString',
-      S3IngestionRoleArn              => 'MyString',
-      SourceEngine                    => 'MyString',
-      SourceEngineVersion             => 'MyString',
-      AllocatedStorage                => 1,                      # OPTIONAL
-      AutoMinorVersionUpgrade         => 1,                      # OPTIONAL
-      AvailabilityZone                => 'MyString',             # OPTIONAL
-      BackupRetentionPeriod           => 1,                      # OPTIONAL
-      CopyTagsToSnapshot              => 1,                      # OPTIONAL
-      DBName                          => 'MyString',             # OPTIONAL
-      DBParameterGroupName            => 'MyString',             # OPTIONAL
-      DBSecurityGroups                => [ 'MyString', ... ],    # OPTIONAL
-      DBSubnetGroupName               => 'MyString',             # OPTIONAL
-      EnableCloudwatchLogsExports     => [ 'MyString', ... ],    # OPTIONAL
-      EnableIAMDatabaseAuthentication => 1,                      # OPTIONAL
-      EnablePerformanceInsights       => 1,                      # OPTIONAL
-      EngineVersion                   => 'MyString',             # OPTIONAL
-      Iops                            => 1,                      # OPTIONAL
-      KmsKeyId                        => 'MyString',             # OPTIONAL
-      LicenseModel                    => 'MyString',             # OPTIONAL
-      MasterUserPassword              => 'MyString',             # OPTIONAL
-      MasterUsername                  => 'MyString',             # OPTIONAL
-      MonitoringInterval              => 1,                      # OPTIONAL
-      MonitoringRoleArn               => 'MyString',             # OPTIONAL
-      MultiAZ                         => 1,                      # OPTIONAL
-      OptionGroupName                 => 'MyString',             # OPTIONAL
-      PerformanceInsightsKMSKeyId     => 'MyString',             # OPTIONAL
-      Port                            => 1,                      # OPTIONAL
-      PreferredBackupWindow           => 'MyString',             # OPTIONAL
-      PreferredMaintenanceWindow      => 'MyString',             # OPTIONAL
-      ProcessorFeatures               => [
+      DBInstanceClass                    => 'MyString',
+      DBInstanceIdentifier               => 'MyString',
+      Engine                             => 'MyString',
+      S3BucketName                       => 'MyString',
+      S3IngestionRoleArn                 => 'MyString',
+      SourceEngine                       => 'MyString',
+      SourceEngineVersion                => 'MyString',
+      AllocatedStorage                   => 1,                      # OPTIONAL
+      AutoMinorVersionUpgrade            => 1,                      # OPTIONAL
+      AvailabilityZone                   => 'MyString',             # OPTIONAL
+      BackupRetentionPeriod              => 1,                      # OPTIONAL
+      CopyTagsToSnapshot                 => 1,                      # OPTIONAL
+      DBName                             => 'MyString',             # OPTIONAL
+      DBParameterGroupName               => 'MyString',             # OPTIONAL
+      DBSecurityGroups                   => [ 'MyString', ... ],    # OPTIONAL
+      DBSubnetGroupName                  => 'MyString',             # OPTIONAL
+      DeletionProtection                 => 1,                      # OPTIONAL
+      EnableCloudwatchLogsExports        => [ 'MyString', ... ],    # OPTIONAL
+      EnableIAMDatabaseAuthentication    => 1,                      # OPTIONAL
+      EnablePerformanceInsights          => 1,                      # OPTIONAL
+      EngineVersion                      => 'MyString',             # OPTIONAL
+      Iops                               => 1,                      # OPTIONAL
+      KmsKeyId                           => 'MyString',             # OPTIONAL
+      LicenseModel                       => 'MyString',             # OPTIONAL
+      MasterUserPassword                 => 'MyString',             # OPTIONAL
+      MasterUsername                     => 'MyString',             # OPTIONAL
+      MonitoringInterval                 => 1,                      # OPTIONAL
+      MonitoringRoleArn                  => 'MyString',             # OPTIONAL
+      MultiAZ                            => 1,                      # OPTIONAL
+      OptionGroupName                    => 'MyString',             # OPTIONAL
+      PerformanceInsightsKMSKeyId        => 'MyString',             # OPTIONAL
+      PerformanceInsightsRetentionPeriod => 1,                      # OPTIONAL
+      Port                               => 1,                      # OPTIONAL
+      PreferredBackupWindow              => 'MyString',             # OPTIONAL
+      PreferredMaintenanceWindow         => 'MyString',             # OPTIONAL
+      ProcessorFeatures                  => [
         {
           Name  => 'MyString',
           Value => 'MyString',
         },
         ...
-      ],                                                         # OPTIONAL
-      PubliclyAccessible => 1,                                   # OPTIONAL
-      S3Prefix           => 'MyString',                          # OPTIONAL
-      StorageEncrypted   => 1,                                   # OPTIONAL
-      StorageType        => 'MyString',                          # OPTIONAL
+      ],                                                            # OPTIONAL
+      PubliclyAccessible => 1,                                      # OPTIONAL
+      S3Prefix           => 'MyString',                             # OPTIONAL
+      StorageEncrypted   => 1,                                      # OPTIONAL
+      StorageType        => 'MyString',                             # OPTIONAL
       Tags               => [
         {
           Key   => 'MyString',
           Value => 'MyString',
         },
         ...
-      ],                                                         # OPTIONAL
-      UseDefaultProcessorFeatures => 1,                          # OPTIONAL
-      VpcSecurityGroupIds => [ 'MyString', ... ],                # OPTIONAL
+      ],                                                            # OPTIONAL
+      UseDefaultProcessorFeatures => 1,                             # OPTIONAL
+      VpcSecurityGroupIds => [ 'MyString', ... ],                   # OPTIONAL
     );
 
     # Results:
@@ -159,7 +163,8 @@ Default: C<true>
 The Availability Zone that the DB instance is created in. For
 information about AWS Regions and Availability Zones, see Regions and
 Availability Zones
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html)
+in the I<Amazon RDS User Guide.>
 
 Default: A random, system-chosen Availability Zone in the endpoint's
 AWS Region.
@@ -222,7 +227,7 @@ First character must be a letter.
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens.
+Can't end with a hyphen or contain two consecutive hyphens.
 
 =back
 
@@ -259,10 +264,23 @@ A DB subnet group to associate with this DB instance.
 
 
 
+=head2 DeletionProtection => Bool
+
+Indicates if the DB instance should have deletion protection enabled.
+The database can't be deleted when this value is set to true. The
+default is false. For more information, see Deleting a DB Instance
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
+
+
+
 =head2 EnableCloudwatchLogsExports => ArrayRef[Str|Undef]
 
 The list of logs that the restored DB instance is to export to
-CloudWatch Logs.
+CloudWatch Logs. The values in the list depend on the DB engine being
+used. For more information, see Publishing Database Logs to Amazon
+CloudWatch Logs
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
+in the I<Amazon RDS User Guide>.
 
 
 
@@ -308,7 +326,8 @@ The amount of Provisioned IOPS (input/output operations per second) to
 allocate initially for the DB instance. For information about valid
 Iops values, see see Amazon RDS Provisioned IOPS Storage to Improve
 Performance
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS)
+in the I<Amazon RDS User Guide.>
 
 
 
@@ -354,7 +373,7 @@ First character must be a letter.
 
 =item *
 
-Cannot be a reserved word for the chosen database engine.
+Can't be a reserved word for the chosen database engine.
 
 =back
 
@@ -391,7 +410,8 @@ The ARN for the IAM role that permits RDS to send enhanced monitoring
 metrics to Amazon CloudWatch Logs. For example,
 C<arn:aws:iam:123456789012:role/emaccess>. For information on creating
 a monitoring role, see Setting Up and Enabling Enhanced Monitoring
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html#USER_Monitoring.OS.Enabling).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html#USER_Monitoring.OS.Enabling)
+in the I<Amazon RDS User Guide.>
 
 If C<MonitoringInterval> is set to a value other than 0, then you must
 supply a C<MonitoringRoleArn> value.
@@ -421,6 +441,13 @@ identifier, or the KMS key alias for the KMS encryption key.
 
 
 
+=head2 PerformanceInsightsRetentionPeriod => Int
+
+The amount of time, in days, to retain Performance Insights data. Valid
+values are 7 or 731 (2 years).
+
+
+
 =head2 Port => Int
 
 The port number on which the database accepts connections.
@@ -438,7 +465,8 @@ Default: C<3306>
 The time range each day during which automated backups are created if
 automated backups are enabled. For more information, see The Backup
 Window
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow)
+in the I<Amazon RDS User Guide.>
 
 Constraints:
 
@@ -470,7 +498,8 @@ Must be at least 30 minutes.
 The time range each week during which system maintenance can occur, in
 Universal Coordinated Time (UTC). For more information, see Amazon RDS
 Maintenance Window
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#Concepts.DBMaintenance).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#Concepts.DBMaintenance)
+in the I<Amazon RDS User Guide.>
 
 Constraints:
 
@@ -510,8 +539,11 @@ instance class of the DB instance.
 
 =head2 PubliclyAccessible => Bool
 
-Specifies whether the DB instance is publicly accessible or not. For
-more information, see CreateDBInstance.
+Specifies the accessibility options for the DB instance. A value of
+true specifies an Internet-facing instance with a publicly resolvable
+DNS name, which resolves to a public IP address. A value of false
+specifies an internal instance with a DNS name that resolves to a
+private IP address. For more information, see CreateDBInstance.
 
 
 
@@ -575,7 +607,8 @@ C<standard>
 
 A list of tags to associate with this DB instance. For more
 information, see Tagging Amazon RDS Resources
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html)
+in the I<Amazon RDS User Guide.>
 
 
 

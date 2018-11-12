@@ -41,7 +41,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ops
 
 =head2 B<REQUIRED> ElasticIp => Str
 
-The address.
+The IP address for which you want to update the name.
 
 
 

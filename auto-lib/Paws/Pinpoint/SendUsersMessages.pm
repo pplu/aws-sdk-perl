@@ -86,8 +86,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Sound             => 'My__string',
             Substitutions => { 'My__string' => [ 'My__string', ... ], }
             ,                                                         # OPTIONAL
-            Title => 'My__string',
-            Url   => 'My__string',
+            TimeToLive => 1,                                          # OPTIONAL
+            Title      => 'My__string',
+            Url        => 'My__string',
           },    # OPTIONAL
           DefaultMessage => {
             Body          => 'My__string',
@@ -103,6 +104,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ,                                                   # OPTIONAL
             Title => 'My__string',
             Url   => 'My__string',
+          },    # OPTIONAL
+          EmailMessage => {
+            Body                      => 'My__string',
+            FeedbackForwardingAddress => 'My__string',
+            FromAddress               => 'My__string',
+            RawEmail                  => {
+              Data => 'Blob__blob',    # OPTIONAL
+            },    # OPTIONAL
+            ReplyToAddresses => [ 'My__string', ... ],
+            SimpleEmail      => {
+              HtmlPart => {
+                Charset => 'My__string',
+                Data    => 'My__string',
+              },    # OPTIONAL
+              Subject => {
+                Charset => 'My__string',
+                Data    => 'My__string',
+              },    # OPTIONAL
+              TextPart => {
+                Charset => 'My__string',
+                Data    => 'My__string',
+              },    # OPTIONAL
+            },    # OPTIONAL
+            Substitutions => { 'My__string' => [ 'My__string', ... ], }
+            ,     # OPTIONAL
           },    # OPTIONAL
           GCMMessage => {
             Action => 'OPEN_APP',   # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
@@ -125,7 +151,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Url        => 'My__string',
           },    # OPTIONAL
           SMSMessage => {
-            Body => 'My__string',
+            Body    => 'My__string',
+            Keyword => 'My__string',
             MessageType =>
               'TRANSACTIONAL',    # values: TRANSACTIONAL, PROMOTIONAL; OPTIONAL
             OriginationNumber => 'My__string',
@@ -134,7 +161,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ,                     # OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
-        Users => {
+        TraceId => 'My__string',
+        Users   => {
           'My__string' => {
             BodyOverride => 'My__string',
             Context      => { 'My__string' => 'My__string', },    # OPTIONAL
@@ -155,14 +183,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::Pinpoint::SendUsersMessagesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pinpoint/SendUsersMessages>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-
+The unique ID of your Amazon Pinpoint application.
 
 
 

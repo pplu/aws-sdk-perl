@@ -1,5 +1,6 @@
 package Paws::Pinpoint::EmailChannelRequest;
   use Moose;
+  has ConfigurationSet => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool');
   has FromAddress => (is => 'ro', isa => 'Str');
   has Identity => (is => 'ro', isa => 'Str');
@@ -23,20 +24,26 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Pinpoint::EmailChannelRequest object:
 
-  $service_obj->Method(Att1 => { Enabled => $value, ..., RoleArn => $value  });
+  $service_obj->Method(Att1 => { ConfigurationSet => $value, ..., RoleArn => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::EmailChannelRequest object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Enabled
+  $result->Att1->ConfigurationSet
 
 =head1 DESCRIPTION
 
 Email Channel Request
 
 =head1 ATTRIBUTES
+
+
+=head2 ConfigurationSet => Str
+
+  The configuration set that you want to use when you send email using
+the Pinpoint Email API.
 
 
 =head2 Enabled => Bool

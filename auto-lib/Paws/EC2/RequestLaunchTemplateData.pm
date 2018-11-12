@@ -1,6 +1,8 @@
 package Paws::EC2::RequestLaunchTemplateData;
   use Moose;
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LaunchTemplateBlockDeviceMappingRequest]', request_name => 'BlockDeviceMapping', traits => ['NameInRequest']);
+  has CapacityReservationSpecification => (is => 'ro', isa => 'Paws::EC2::LaunchTemplateCapacityReservationSpecificationRequest');
+  has CpuOptions => (is => 'ro', isa => 'Paws::EC2::LaunchTemplateCpuOptionsRequest');
   has CreditSpecification => (is => 'ro', isa => 'Paws::EC2::CreditSpecificationRequest');
   has DisableApiTermination => (is => 'ro', isa => 'Bool');
   has EbsOptimized => (is => 'ro', isa => 'Bool');
@@ -67,10 +69,23 @@ by definition and its encryption status cannot be changed using this
 action.
 
 
+=head2 CapacityReservationSpecification => L<Paws::EC2::LaunchTemplateCapacityReservationSpecificationRequest>
+
+  Information about the Capacity Reservation targeting option.
+
+
+=head2 CpuOptions => L<Paws::EC2::LaunchTemplateCpuOptionsRequest>
+
+  The CPU options for the instance. For more information, see Optimizing
+CPU Options
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
 =head2 CreditSpecification => L<Paws::EC2::CreditSpecificationRequest>
 
-  The credit option for CPU usage of the instance. Valid for T2 instances
-only.
+  The credit option for CPU usage of the instance. Valid for T2 or T3
+instances only.
 
 
 =head2 DisableApiTermination => Bool
@@ -186,9 +201,10 @@ specify both a security group ID and security name in the same request.
 
 =head2 TagSpecifications => ArrayRef[L<Paws::EC2::LaunchTemplateTagSpecificationRequest>]
 
-  The tags to apply to the resources during launch. You can tag instances
-and volumes. The specified tags are applied to all instances or volumes
-that are created during launch.
+  The tags to apply to the resources during launch. You can only tag
+instances and volumes on launch. The specified tags are applied to all
+instances or volumes that are created during launch. To tag a resource
+after it has been created, see CreateTags.
 
 
 =head2 UserData => Str

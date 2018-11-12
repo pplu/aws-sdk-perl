@@ -329,6 +329,8 @@ by an ARN.
 
 =item GroupName => Str
 
+=item [Filters => ArrayRef[L<Paws::ResourceGroups::ResourceFilter>]]
+
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
@@ -347,6 +349,8 @@ resource group.
 =head2 ListGroups
 
 =over
+
+=item [Filters => ArrayRef[L<Paws::ResourceGroups::GroupFilter>]]
 
 =item [MaxResults => Int]
 
@@ -465,9 +469,9 @@ Updates the resource query of a group.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 ListAllGroupResources(sub { },GroupName => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListAllGroupResources(sub { },GroupName => Str, [Filters => ArrayRef[L<Paws::ResourceGroups::ResourceFilter>], MaxResults => Int, NextToken => Str])
 
-=head2 ListAllGroupResources(GroupName => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListAllGroupResources(GroupName => Str, [Filters => ArrayRef[L<Paws::ResourceGroups::ResourceFilter>], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -477,9 +481,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ResourceGroups::ListGroupResourcesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllGroups(sub { },[MaxResults => Int, NextToken => Str])
+=head2 ListAllGroups(sub { },[Filters => ArrayRef[L<Paws::ResourceGroups::GroupFilter>], MaxResults => Int, NextToken => Str])
 
-=head2 ListAllGroups([MaxResults => Int, NextToken => Str])
+=head2 ListAllGroups([Filters => ArrayRef[L<Paws::ResourceGroups::GroupFilter>], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

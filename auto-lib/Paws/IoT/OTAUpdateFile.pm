@@ -2,8 +2,8 @@ package Paws::IoT::OTAUpdateFile;
   use Moose;
   has Attributes => (is => 'ro', isa => 'Paws::IoT::AttributesMap', request_name => 'attributes', traits => ['NameInRequest']);
   has CodeSigning => (is => 'ro', isa => 'Paws::IoT::CodeSigning', request_name => 'codeSigning', traits => ['NameInRequest']);
+  has FileLocation => (is => 'ro', isa => 'Paws::IoT::FileLocation', request_name => 'fileLocation', traits => ['NameInRequest']);
   has FileName => (is => 'ro', isa => 'Str', request_name => 'fileName', traits => ['NameInRequest']);
-  has FileSource => (is => 'ro', isa => 'Paws::IoT::Stream', request_name => 'fileSource', traits => ['NameInRequest']);
   has FileVersion => (is => 'ro', isa => 'Str', request_name => 'fileVersion', traits => ['NameInRequest']);
 1;
 
@@ -50,14 +50,14 @@ Describes a file to be associated with an OTA update.
   The code signing method of the file.
 
 
+=head2 FileLocation => L<Paws::IoT::FileLocation>
+
+  The location of the updated firmware.
+
+
 =head2 FileName => Str
 
   The name of the file.
-
-
-=head2 FileSource => L<Paws::IoT::Stream>
-
-  The source of the file.
 
 
 =head2 FileVersion => Str

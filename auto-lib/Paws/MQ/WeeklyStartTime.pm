@@ -41,8 +41,7 @@ to apply pending updates or patches to the broker.
 
 =head2 DayOfWeek => Str
 
-  Required. The day of the week. Possible values: MONDAY, TUESDAY,
-WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
+  Required. The day of the week.
 
 
 =head2 TimeOfDay => Str

@@ -39,14 +39,16 @@ jobs.
 
 =head2 B<REQUIRED> S3Uri => Str
 
-  The Amazon S3 URI where you want to write the output data. The URI must
-be in the same region as the API endpoint that you are calling.
+  When you use the C<OutputDataConfig> object with asynchronous
+operations, you specify the Amazon S3 location where you want to write
+the output data. The URI must be in the same region as the API endpoint
+that you are calling. The location is used as the prefix for the actual
+location of the output file.
 
-The service creates an output file called C<output.tar.gz>. It is a
-compressed archive that contains two files, C<topic-terms.csv> that
-lists the terms associated with each topic, and C<doc-topics.csv> that
-lists the documents associated with each topic. For more information,
-see topic-modeling.
+When the topic detection job is finished, the service creates an output
+file in a directory specific to the job. The C<S3Uri> field contains
+the location of the output file, called C<output.tar.gz>. It is a
+compressed archive that contains the ouput of the operation.
 
 
 

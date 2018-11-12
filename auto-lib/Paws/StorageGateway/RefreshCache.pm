@@ -2,6 +2,8 @@
 package Paws::StorageGateway::RefreshCache;
   use Moose;
   has FileShareARN => (is => 'ro', isa => 'Str', required => 1);
+  has FolderList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Recursive => (is => 'ro', isa => 'Bool');
 
   use MooseX::ClassAttribute;
 
@@ -29,11 +31,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $storagegateway = Paws->service('StorageGateway');
     my $RefreshCacheOutput = $storagegateway->RefreshCache(
       FileShareARN => 'MyFileShareARN',
-
+      FolderList   => [
+        'MyFolder', ...    # min: 1, max: 1024
+      ],                   # OPTIONAL
+      Recursive => 1,      # OPTIONAL
     );
 
     # Results:
-    my $FileShareARN = $RefreshCacheOutput->FileShareARN;
+    my $FileShareARN   = $RefreshCacheOutput->FileShareARN;
+    my $NotificationId = $RefreshCacheOutput->NotificationId;
 
     # Returns a L<Paws::StorageGateway::RefreshCacheOutput> object.
 
@@ -46,6 +52,24 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sto
 =head2 B<REQUIRED> FileShareARN => Str
 
 
+
+
+
+=head2 FolderList => ArrayRef[Str|Undef]
+
+
+
+
+
+=head2 Recursive => Bool
+
+A value that specifies whether to recursively refresh folders in the
+cache. The refresh includes folders that were in the cache the last
+time the gateway listed the folder's contents. If this value set to
+"true", each folder that is listed in C<FolderList> is recursively
+updated. Otherwise, subfolders listed in C<FolderList> are not
+refreshed. Only objects that are in folders listed directly under
+C<FolderList> are found and used for the update. The default is "true".
 
 
 

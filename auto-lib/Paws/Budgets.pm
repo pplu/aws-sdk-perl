@@ -167,7 +167,7 @@ For information about costs associated with the AWS Budgets API, see
 AWS Cost Management Pricing
 (https://aws.amazon.com/aws-cost-management/pricing/).
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/account-billing/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/account-billing/>
 
 
 =head1 METHODS

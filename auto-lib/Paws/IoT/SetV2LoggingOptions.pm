@@ -50,13 +50,13 @@ Valid values are: C<"DEBUG">, C<"INFO">, C<"ERROR">, C<"WARN">, C<"DISABLED">
 
 =head2 DisableAllLogs => Bool
 
-Set to true to disable all logs, otherwise set to false.
+If true all logs are disabled. The default is false.
 
 
 
 =head2 RoleArn => Str
 
-The role ARN that allows IoT to write to Cloudwatch logs.
+The ARN of the role that allows IoT to write to Cloudwatch logs.
 
 
 

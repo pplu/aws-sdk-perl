@@ -56,7 +56,7 @@ types.
 
 =head2 AllowedValues => ArrayRef[Str|Undef]
 
-  Array containing the list of values allowed for the parameter.
+  An array containing the list of values allowed for the parameter.
 
 
 =head2 ConstraintDescription => Str
@@ -69,7 +69,7 @@ when the user specifies an invalid value:
 Malformed input-Parameter MyParameter must match pattern [A-Za-z0-9]+
 
 By adding a constraint description, such as "must contain only
-uppercase and lowercase letters, and numbers," you can display the
+uppercase and lowercase letters and numbers," you can display the
 following customized error message:
 
 Malformed input-Parameter MyParameter must contain only uppercase and
@@ -90,26 +90,26 @@ parameter, you must specify a value that adheres to those constraints.
 
 =head2 MaxLength => Int
 
-  An integer value that determines the largest number of characters you
-want to allow for String types.
+  An integer value that determines the largest number of characters that
+you want to allow for String types.
 
 
 =head2 MaxValue => Int
 
-  A numeric value that determines the largest numeric value you want to
-allow for Number types.
+  A numeric value that determines the largest numeric value that you want
+to allow for Number types.
 
 
 =head2 MinLength => Int
 
-  An integer value that determines the smallest number of characters you
-want to allow for String types.
+  An integer value that determines the smallest number of characters that
+you want to allow for String types.
 
 
 =head2 MinValue => Int
 
-  A numeric value that determines the smallest numeric value you want to
-allow for Number types.
+  A numeric value that determines the smallest numeric value that you
+want to allow for Number types.
 
 
 =head2 B<REQUIRED> Name => Str
@@ -138,30 +138,30 @@ CommaDelimitedList
 
 String: A literal string.
 
-For example, users could specify "MyUserName".
+For example, users can specify "MyUserName".
 
 Number: An integer or float. AWS CloudFormation validates the parameter
-value as a number; however, when you use the parameter elsewhere in
+value as a number. However, when you use the parameter elsewhere in
 your template (for example, by using the Ref intrinsic function), the
 parameter value becomes a string.
 
-For example, users could specify "8888".
+For example, users might specify "8888".
 
 ListE<lt>NumberE<gt>: An array of integers or floats that are separated
-by commas. AWS CloudFormation validates the parameter value as numbers;
-however, when you use the parameter elsewhere in your template (for
+by commas. AWS CloudFormation validates the parameter value as numbers.
+However, when you use the parameter elsewhere in your template (for
 example, by using the Ref intrinsic function), the parameter value
 becomes a list of strings.
 
-For example, users could specify "80,20", and a Ref results in
+For example, users might specify "80,20", and then Ref results in
 ["80","20"].
 
 CommaDelimitedList: An array of literal strings that are separated by
 commas. The total number of strings should be one more than the total
 number of commas. Also, each member string is space-trimmed.
 
-For example, users could specify "test,dev,prod", and a Ref results in
-["test","dev","prod"].
+For example, users might specify "test,dev,prod", and then Ref results
+in ["test","dev","prod"].
 
 
 

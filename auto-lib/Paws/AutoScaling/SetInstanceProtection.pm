@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       {
         'AutoScalingGroupName' => 'my-auto-scaling-group',
         'InstanceIds'          => ['i-93633f9b'],
-        'ProtectedFromScaleIn' => true
+        'ProtectedFromScaleIn' => 1
       }
     );
 
@@ -70,8 +70,8 @@ One or more instance IDs.
 
 =head2 B<REQUIRED> ProtectedFromScaleIn => Bool
 
-Indicates whether the instance is protected from termination by Auto
-Scaling when scaling in.
+Indicates whether the instance is protected from termination by Amazon
+EC2 Auto Scaling when scaling in.
 
 
 

@@ -71,7 +71,8 @@ lowercase.
 
 =head2 VersionId => Str
 
-The ID value of the table version to be retrieved.
+The ID value of the table version to be retrieved. A C<VersionID> is a
+string representation of an integer. Each version is incremented by 1.
 
 
 

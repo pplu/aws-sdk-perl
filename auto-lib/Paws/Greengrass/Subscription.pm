@@ -41,7 +41,9 @@ Information about a subscription.
 
 =head2 Id => Str
 
-  The id of the subscription.
+  A descriptive or arbitrary ID for the subscription. This value must be
+unique within the subscription definition version. Max length is 128
+characters with pattern ''[azAZ09:_]+''.
 
 
 =head2 Source => Str

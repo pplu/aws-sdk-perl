@@ -31,7 +31,7 @@ corrected.
 If the input image is in .jpeg format, it might contain exchangeable
 image (Exif) metadata that includes the image's orientation. If so, and
 the Exif metadata for the input image populates the orientation field,
-the value of C<OrientationCorrection> is null and the C<FaceDetails>
+the value of C<OrientationCorrection> is null. The C<FaceDetails>
 bounding box coordinates represent face locations after Exif metadata
 is used to correct the image orientation. Images in .png format don't
 contain Exif metadata.

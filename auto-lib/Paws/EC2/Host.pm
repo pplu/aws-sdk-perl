@@ -11,6 +11,7 @@ package Paws::EC2::Host;
   has Instances => (is => 'ro', isa => 'ArrayRef[Paws::EC2::HostInstance]', request_name => 'instances', traits => ['NameInRequest']);
   has ReleaseTime => (is => 'ro', isa => 'Str', request_name => 'releaseTime', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -30,7 +31,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::Host object:
 
-  $service_obj->Method(Att1 => { AllocationTime => $value, ..., State => $value  });
+  $service_obj->Method(Att1 => { AllocationTime => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -69,8 +70,9 @@ Host.
 
 =head2 ClientToken => Str
 
-  Unique, case-sensitive identifier you provide to ensure idempotency of
-the request. For more information, see How to Ensure Idempotency
+  Unique, case-sensitive identifier that you provide to ensure
+idempotency of the request. For more information, see How to Ensure
+Idempotency
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -105,6 +107,11 @@ Host.
 =head2 State => Str
 
   The Dedicated Host's state.
+
+
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+
+  Any tags assigned to the Dedicated Host.
 
 
 

@@ -1,7 +1,7 @@
 
 package Paws::GuardDuty::DeclineInvitations;
   use Moose;
-  has AccountIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'accountIds');
+  has AccountIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'accountIds', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -29,7 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $guardduty = Paws->service('GuardDuty');
     my $DeclineInvitationsResponse = $guardduty->DeclineInvitations(
-      AccountIds => [ 'My__string', ... ],    # OPTIONAL
+      AccountIds => [ 'My__string', ... ],
+
     );
 
     # Results:
@@ -38,12 +39,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::GuardDuty::DeclineInvitationsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/guardduty/DeclineInvitations>
 
 =head1 ATTRIBUTES
 
 
-=head2 AccountIds => ArrayRef[Str|Undef]
+=head2 B<REQUIRED> AccountIds => ArrayRef[Str|Undef]
 
 A list of account IDs of the AWS accounts that sent invitations to the
 current member account that you want to decline invitations from.

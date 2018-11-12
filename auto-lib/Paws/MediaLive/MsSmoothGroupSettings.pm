@@ -147,16 +147,7 @@ are set by the RAI markers from the input streams.
 
 =head2 SendDelayMs => Int
 
-  Outputs that are "output locked" can use this delay. Assign a delay to
-the output that is "secondary". Do not assign a delay to the "primary"
-output. The delay means that the primary output will always reach the
-downstream system before the secondary, which helps ensure that the
-downstream system always uses the primary output. (If there were no
-delay, the downstream system might flip-flop between whichever output
-happens to arrive first.) If the primary fails, the downstream system
-will switch to the secondary output. When the primary is restarted, the
-downstream system will switch back to the primary (because once again
-it is always arriving first)
+  Number of milliseconds to delay the output from the second pipeline.
 
 
 =head2 SparseTrackType => Str

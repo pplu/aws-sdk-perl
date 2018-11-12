@@ -778,7 +778,7 @@ stack.
 
 B<Required Permissions>: To use this action, an IAM user must have an
 attached policy that explicitly grants permissions. For more
-information on user permissions, see Managing User Permissions
+information about user permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
@@ -1042,7 +1042,7 @@ Creates a new stack. For more information, see Create a New Stack
 
 B<Required Permissions>: To use this action, an IAM user must have an
 attached policy that explicitly grants permissions. For more
-information on user permissions, see Managing User Permissions
+information about user permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
@@ -1069,7 +1069,7 @@ Creates a new user profile.
 
 B<Required Permissions>: To use this action, an IAM user must have an
 attached policy that explicitly grants permissions. For more
-information on user permissions, see Managing User Permissions
+information about user permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
@@ -1192,7 +1192,7 @@ Deletes a user profile.
 
 B<Required Permissions>: To use this action, an IAM user must have an
 attached policy that explicitly grants permissions. For more
-information on user permissions, see Managing User Permissions
+information about user permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
@@ -1261,7 +1261,7 @@ Returns: nothing
 
 Deregister a registered Amazon EC2 or on-premises instance. This action
 removes the instance from the stack and returns it to your control.
-This action can not be used with instances that were created with AWS
+This action cannot be used with instances that were created with AWS
 OpsWorks Stacks.
 
 B<Required Permissions>: To use this action, an IAM user must have a
@@ -1359,8 +1359,8 @@ This call accepts only one resource-identifying parameter.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
-policy that explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions
+policy that explicitly grants permissions. For more information about
+user permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
@@ -1387,8 +1387,8 @@ This call accepts only one resource-identifying parameter.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
-policy that explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions
+policy that explicitly grants permissions. For more information about
+user permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
@@ -1415,8 +1415,8 @@ This call accepts only one resource-identifying parameter.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
-policy that explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions
+policy that explicitly grants permissions. For more information about
+user permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
@@ -1447,8 +1447,8 @@ maximum of one element.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack or an attached
-policy that explicitly grants permission. For more information on user
-permissions, see Managing User Permissions
+policy that explicitly grants permission. For more information about
+user permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 This call accepts only one resource-identifying parameter.
@@ -1478,8 +1478,8 @@ This call accepts only one resource-identifying parameter.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
-policy that explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions
+policy that explicitly grants permissions. For more information about
+user permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
@@ -1504,8 +1504,8 @@ This call accepts only one resource-identifying parameter.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
-policy that explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions
+policy that explicitly grants permissions. For more information about
+user permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
@@ -1532,8 +1532,8 @@ This call accepts only one resource-identifying parameter.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
-policy that explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions
+policy that explicitly grants permissions. For more information about
+user permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
@@ -1558,8 +1558,8 @@ This call accepts only one resource-identifying parameter.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
-policy that explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions
+policy that explicitly grants permissions. For more information about
+user permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
@@ -1582,8 +1582,8 @@ You must specify at least one of the parameters.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
-policy that explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions
+policy that explicitly grants permissions. For more information about
+user permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
@@ -1604,7 +1604,7 @@ Describes a user's SSH information.
 
 B<Required Permissions>: To use this action, an IAM user must have
 self-management enabled or an attached policy that explicitly grants
-permissions. For more information on user permissions, see Managing
+permissions. For more information about user permissions, see Managing
 User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
@@ -1673,8 +1673,8 @@ This call accepts only one resource-identifying parameter.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
-policy that explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions
+policy that explicitly grants permissions. For more information about
+user permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
@@ -1697,8 +1697,8 @@ Describes Amazon RDS instances.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
-policy that explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions
+policy that explicitly grants permissions. For more information about
+user permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 This call accepts only one resource-identifying parameter.
@@ -1725,8 +1725,8 @@ Describes AWS OpsWorks Stacks service errors.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
-policy that explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions
+policy that explicitly grants permissions. For more information about
+user permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 This call accepts only one resource-identifying parameter.
@@ -1749,8 +1749,8 @@ Requests a description of a stack's provisioning parameters.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack or an attached
-policy that explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions
+policy that explicitly grants permissions. For more information about
+user permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
@@ -1771,8 +1771,8 @@ Requests a description of one or more stacks.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
-policy that explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions
+policy that explicitly grants permissions. For more information about
+user permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
@@ -1795,8 +1795,8 @@ C<online>.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
-policy that explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions
+policy that explicitly grants permissions. For more information about
+user permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
@@ -1820,8 +1820,8 @@ You must specify at least one of the parameters.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
-policy that explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions
+policy that explicitly grants permissions. For more information about
+user permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
@@ -1842,7 +1842,7 @@ Describe specified users.
 
 B<Required Permissions>: To use this action, an IAM user must have an
 attached policy that explicitly grants permissions. For more
-information on user permissions, see Managing User Permissions
+information about user permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
@@ -1871,8 +1871,8 @@ This call accepts only one resource-identifying parameter.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
-policy that explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions
+policy that explicitly grants permissions. For more information about
+user permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
@@ -2401,14 +2401,14 @@ Each argument is described in detail in: L<Paws::OpsWorks::UnassignInstance>
 
 Returns: nothing
 
-Unassigns a registered instance from all of it's layers. The instance
-remains in the stack as an unassigned instance and can be assigned to
-another layer, as needed. You cannot use this action with instances
-that were created with AWS OpsWorks Stacks.
+Unassigns a registered instance from all layers that are using the
+instance. The instance remains in the stack as an unassigned instance,
+and can be assigned to another layer as needed. You cannot use this
+action with instances that were created with AWS OpsWorks Stacks.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack or an attached policy that
-explicitly grants permissions. For more information on user
+explicitly grants permissions. For more information about user
 permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
@@ -2638,7 +2638,7 @@ Updates a user's SSH public key.
 
 B<Required Permissions>: To use this action, an IAM user must have
 self-management enabled or an attached policy that explicitly grants
-permissions. For more information on user permissions, see Managing
+permissions. For more information about user permissions, see Managing
 User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
@@ -2748,7 +2748,7 @@ Updates a specified user profile.
 
 B<Required Permissions>: To use this action, an IAM user must have an
 attached policy that explicitly grants permissions. For more
-information on user permissions, see Managing User Permissions
+information about user permissions, see Managing User Permissions
 (http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 

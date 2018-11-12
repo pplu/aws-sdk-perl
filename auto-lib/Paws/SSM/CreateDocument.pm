@@ -68,7 +68,7 @@ Valid values are: C<"YAML">, C<"JSON">
 The type of document to create. Valid document types include: Policy,
 Automation, and Command.
 
-Valid values are: C<"Command">, C<"Policy">, C<"Automation">
+Valid values are: C<"Command">, C<"Policy">, C<"Automation">, C<"Session">
 
 =head2 B<REQUIRED> Name => Str
 

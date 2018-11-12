@@ -4,6 +4,7 @@ package Paws::S3::PutObjectAcl;
   has AccessControlPolicy => (is => 'ro', isa => 'Paws::S3::AccessControlPolicy');
   has ACL => (is => 'ro', isa => 'Str', header_name => 'x-amz-acl', traits => ['ParamInHeader']);
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
+  has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
   has GrantFullControl => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-full-control', traits => ['ParamInHeader']);
   has GrantRead => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-read', traits => ['ParamInHeader']);
@@ -66,6 +67,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ID          => 'MyID',             # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
+      ContentLength    => 1,                       # OPTIONAL
       ContentMD5       => 'MyContentMD5',          # OPTIONAL
       GrantFullControl => 'MyGrantFullControl',    # OPTIONAL
       GrantRead        => 'MyGrantRead',           # OPTIONAL
@@ -102,6 +104,12 @@ Valid values are: C<"private">, C<"public-read">, C<"public-read-write">, C<"aut
 =head2 B<REQUIRED> Bucket => Str
 
 
+
+
+
+=head2 ContentLength => Int
+
+Size of the body in bytes.
 
 
 

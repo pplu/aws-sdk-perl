@@ -60,7 +60,7 @@ You can't delete a default DB parameter group
 
 =item *
 
-Cannot be associated with any DB instances
+Can't be associated with any DB instances
 
 =back
 

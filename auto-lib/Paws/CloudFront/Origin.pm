@@ -65,7 +65,9 @@ instead.
 
   B<Amazon S3 origins>: The DNS name of the Amazon S3 bucket from which
 you want CloudFront to get objects for this origin, for example,
-C<myawsbucket.s3.amazonaws.com>.
+C<myawsbucket.s3.amazonaws.com>. If you set up your bucket to be
+configured as a website endpoint, enter the Amazon S3 static website
+hosting endpoint for the bucket.
 
 Constraints for Amazon S3 origins:
 

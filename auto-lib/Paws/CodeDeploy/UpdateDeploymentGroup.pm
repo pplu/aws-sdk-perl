@@ -46,43 +46,43 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ApplicationName            => 'MyApplicationName',
       CurrentDeploymentGroupName => 'MyDeploymentGroupName',
       AlarmConfiguration         => {
-        alarms => [
+        Alarms => [
           {
-            name => 'MyAlarmName',    # OPTIONAL
+            Name => 'MyAlarmName',    # OPTIONAL
           },
           ...
         ],                            # OPTIONAL
-        enabled                => 1,  # OPTIONAL
-        ignorePollAlarmFailure => 1,  # OPTIONAL
+        Enabled                => 1,  # OPTIONAL
+        IgnorePollAlarmFailure => 1,  # OPTIONAL
       },    # OPTIONAL
       AutoRollbackConfiguration => {
-        enabled => 1,    # OPTIONAL
-        events  => [
+        Enabled => 1,    # OPTIONAL
+        Events  => [
           'DEPLOYMENT_FAILURE',
           ... # values: DEPLOYMENT_FAILURE, DEPLOYMENT_STOP_ON_ALARM, DEPLOYMENT_STOP_ON_REQUEST
         ],    # OPTIONAL
       },    # OPTIONAL
       AutoScalingGroups => [ 'MyAutoScalingGroupName', ... ],    # OPTIONAL
       BlueGreenDeploymentConfiguration => {
-        deploymentReadyOption => {
-          actionOnTimeout => 'CONTINUE_DEPLOYMENT'
+        DeploymentReadyOption => {
+          ActionOnTimeout => 'CONTINUE_DEPLOYMENT'
           ,    # values: CONTINUE_DEPLOYMENT, STOP_DEPLOYMENT; OPTIONAL
-          waitTimeInMinutes => 1,    # OPTIONAL
+          WaitTimeInMinutes => 1,    # OPTIONAL
         },    # OPTIONAL
-        greenFleetProvisioningOption => {
-          action => 'DISCOVER_EXISTING'
+        GreenFleetProvisioningOption => {
+          Action => 'DISCOVER_EXISTING'
           ,    # values: DISCOVER_EXISTING, COPY_AUTO_SCALING_GROUP; OPTIONAL
         },    # OPTIONAL
-        terminateBlueInstancesOnDeploymentSuccess => {
-          action => 'TERMINATE',    # values: TERMINATE, KEEP_ALIVE; OPTIONAL
-          terminationWaitTimeInMinutes => 1,    # OPTIONAL
+        TerminateBlueInstancesOnDeploymentSuccess => {
+          Action => 'TERMINATE',    # values: TERMINATE, KEEP_ALIVE; OPTIONAL
+          TerminationWaitTimeInMinutes => 1,    # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       DeploymentConfigName => 'MyDeploymentConfigName',    # OPTIONAL
       DeploymentStyle      => {
-        deploymentOption => 'WITH_TRAFFIC_CONTROL'
+        DeploymentOption => 'WITH_TRAFFIC_CONTROL'
         ,    # values: WITH_TRAFFIC_CONTROL, WITHOUT_TRAFFIC_CONTROL; OPTIONAL
-        deploymentType => 'IN_PLACE',   # values: IN_PLACE, BLUE_GREEN; OPTIONAL
+        DeploymentType => 'IN_PLACE',   # values: IN_PLACE, BLUE_GREEN; OPTIONAL
       },    # OPTIONAL
       Ec2TagFilters => [
         {
@@ -94,7 +94,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ...
       ],                         # OPTIONAL
       Ec2TagSet => {
-        ec2TagSetList => [
+        Ec2TagSetList => [
           [
             {
               Key  => 'MyKey',     # OPTIONAL
@@ -108,15 +108,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ],                           # OPTIONAL
       },    # OPTIONAL
       LoadBalancerInfo => {
-        elbInfoList => [
+        ElbInfoList => [
           {
-            name => 'MyELBName',    # OPTIONAL
+            Name => 'MyELBName',    # OPTIONAL
           },
           ...
         ],                          # OPTIONAL
-        targetGroupInfoList => [
+        TargetGroupInfoList => [
           {
-            name => 'MyTargetGroupName',    # OPTIONAL
+            Name => 'MyTargetGroupName',    # OPTIONAL
           },
           ...
         ],                                  # OPTIONAL
@@ -132,7 +132,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ...
       ],                         # OPTIONAL
       OnPremisesTagSet => {
-        onPremisesTagSetList => [
+        OnPremisesTagSetList => [
           [
             {
               Key  => 'MyKey',     # OPTIONAL
@@ -148,12 +148,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ServiceRoleArn        => 'MyRole',    # OPTIONAL
       TriggerConfigurations => [
         {
-          triggerEvents => [
+          TriggerEvents => [
             'DeploymentStart',
             ... # values: DeploymentStart, DeploymentSuccess, DeploymentFailure, DeploymentStop, DeploymentRollback, DeploymentReady, InstanceStart, InstanceSuccess, InstanceFailure, InstanceReady
           ],    # OPTIONAL
-          triggerName      => 'MyTriggerName',         # OPTIONAL
-          triggerTargetArn => 'MyTriggerTargetArn',    # OPTIONAL
+          TriggerName      => 'MyTriggerName',         # OPTIONAL
+          TriggerTargetArn => 'MyTriggerTargetArn',    # OPTIONAL
         },
         ...
       ],                                               # OPTIONAL

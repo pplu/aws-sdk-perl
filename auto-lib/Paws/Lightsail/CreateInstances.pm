@@ -58,9 +58,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lig
 
 The Availability Zone in which to create your instance. Use the
 following format: C<us-east-2a> (case sensitive). You can get a list of
-availability zones by using the get regions
+Availability Zones by using the get regions
 (http://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetRegions.html)
-operation. Be sure to add the C<include availability zones> parameter
+operation. Be sure to add the C<include Availability Zones> parameter
 to your request.
 
 

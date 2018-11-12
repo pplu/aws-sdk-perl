@@ -142,11 +142,11 @@ alias/MyAliasName
 
 =item *
 
-arn:aws:kms:us-east-1:123456789012:alias/MyAliasName
+arn:aws:kms:us-east-2:123456789012:alias/MyAliasName
 
 =item *
 
-arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
+arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012
 
 =item *
 
@@ -190,7 +190,7 @@ Not be in IP address format (for example, 192.168.5.4)
 
 If C<Name> is a trail ARN, it must be in the format:
 
-C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>
+C<arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail>
 
 
 

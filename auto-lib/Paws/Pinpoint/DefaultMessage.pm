@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::D
 
 =head1 DESCRIPTION
 
-Default Message across push notification, email, and sms.
+The default message to use across all channels.
 
 =head1 ATTRIBUTES
 

@@ -35,8 +35,6 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MQ::CreateC
 
 Creates a new configuration for the specified configuration name.
 Amazon MQ uses the default configuration (the engine type and version).
-Note: If the configuration name already exists, Amazon MQ doesn't
-create a configuration.
 
 =head1 ATTRIBUTES
 
@@ -50,7 +48,7 @@ supports only ACTIVEMQ.
 =head2 EngineVersion => Str
 
   Required. The version of the broker engine. Note: Currently, Amazon MQ
-supports only 5.15.0.
+supports only 5.15.6 and 5.15.0.
 
 
 =head2 Name => Str

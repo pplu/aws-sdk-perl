@@ -45,14 +45,14 @@ Defines the training jobs launched by a hyperparameter tuning job.
 
 =head2 B<REQUIRED> AlgorithmSpecification => L<Paws::SageMaker::HyperParameterAlgorithmSpecification>
 
-  The object that specifies the algorithm to use for the training jobs
-that the tuning job launches.
+  The HyperParameterAlgorithmSpecification object that specifies the
+algorithm to use for the training jobs that the tuning job launches.
 
 
 =head2 B<REQUIRED> InputDataConfig => ArrayRef[L<Paws::SageMaker::Channel>]
 
-  An array of objects that specify the input for the training jobs that
-the tuning job launches.
+  An array of Channel objects that specify the input for the training
+jobs that the tuning job launches.
 
 
 =head2 B<REQUIRED> OutputDataConfig => L<Paws::SageMaker::OutputDataConfig>
@@ -102,10 +102,12 @@ intermediate results of the job.
 
 =head2 VpcConfig => L<Paws::SageMaker::VpcConfig>
 
-  The object that specifies the VPC that you want the training jobs that
-this hyperparameter tuning job launches to connect to. Control access
-to and from your training container by configuring the VPC. For more
-information, see train-vpc.
+  The VpcConfig object that specifies the VPC that you want the training
+jobs that this hyperparameter tuning job launches to connect to.
+Control access to and from your training container by configuring the
+VPC. For more information, see Protect Training Jobs by Using an Amazon
+Virtual Private Cloud
+(http://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html).
 
 
 

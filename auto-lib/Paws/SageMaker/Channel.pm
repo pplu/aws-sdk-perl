@@ -4,6 +4,7 @@ package Paws::SageMaker::Channel;
   has CompressionType => (is => 'ro', isa => 'Str');
   has ContentType => (is => 'ro', isa => 'Str');
   has DataSource => (is => 'ro', isa => 'Paws::SageMaker::DataSource', required => 1);
+  has InputMode => (is => 'ro', isa => 'Str');
   has RecordWrapperType => (is => 'ro', isa => 'Str');
 1;
 
@@ -62,6 +63,11 @@ mode, leave this field unset or set it to None.
   The location of the channel data.
 
 
+=head2 InputMode => Str
+
+  
+
+
 =head2 RecordWrapperType => Str
 
   Specify RecordIO as the value when input data is in raw format but the
@@ -69,7 +75,7 @@ training algorithm requires the RecordIO format, in which case, Amazon
 SageMaker wraps each individual S3 object in a RecordIO record. If the
 input data is already in RecordIO format, you don't need to set this
 attribute. For more information, see Create a Dataset Using RecordIO
-(https://mxnet.incubator.apache.org/how_to/recordio.html?highlight=im2rec).
+(https://mxnet.incubator.apache.org/architecture/note_data_loading.html#data-format).
 
 In FILE mode, leave this field unset or set it to None.
 

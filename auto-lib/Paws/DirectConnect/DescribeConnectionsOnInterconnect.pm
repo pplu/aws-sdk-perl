@@ -45,11 +45,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =head2 B<REQUIRED> InterconnectId => Str
 
-ID of the interconnect on which a list of connection is provisioned.
-
-Example: dxcon-abc123
-
-Default: None
+The ID of the interconnect.
 
 
 

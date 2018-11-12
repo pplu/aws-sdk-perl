@@ -4,6 +4,7 @@ package Paws::DS::Trust;
   has DirectoryId => (is => 'ro', isa => 'Str');
   has LastUpdatedDateTime => (is => 'ro', isa => 'Str');
   has RemoteDomainName => (is => 'ro', isa => 'Str');
+  has SelectiveAuth => (is => 'ro', isa => 'Str');
   has StateLastUpdatedDateTime => (is => 'ro', isa => 'Str');
   has TrustDirection => (is => 'ro', isa => 'Str');
   has TrustId => (is => 'ro', isa => 'Str');
@@ -40,8 +41,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DS::Trust o
 
 =head1 DESCRIPTION
 
-Describes a trust relationship between an Microsoft AD in the AWS cloud
-and an external domain.
+Describes a trust relationship between an AWS Managed Microsoft AD
+directory and an external domain.
 
 =head1 ATTRIBUTES
 
@@ -66,6 +67,11 @@ relationship.
 
   The Fully Qualified Domain Name (FQDN) of the external domain involved
 in the trust relationship.
+
+
+=head2 SelectiveAuth => Str
+
+  Current state of selective authentication for the trust.
 
 
 =head2 StateLastUpdatedDateTime => Str
@@ -95,7 +101,7 @@ in the trust relationship.
 
 =head2 TrustType => Str
 
-  The trust relationship type.
+  The trust relationship type. C<Forest> is the default.
 
 
 

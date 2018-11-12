@@ -32,25 +32,43 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DirectConne
 
 =head1 DESCRIPTION
 
-You can create one or more AWS Direct Connect private virtual
-interfaces linking to your virtual private gateway.
-
-Virtual private gateways can be managed using the Amazon Virtual
-Private Cloud (Amazon VPC) console or the Amazon EC2 CreateVpnGateway
-action
-(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-CreateVpnGateway.html).
+Information about a virtual private gateway for a private virtual
+interface.
 
 =head1 ATTRIBUTES
 
 
 =head2 VirtualGatewayId => Str
 
-  
+  The ID of the virtual private gateway.
 
 
 =head2 VirtualGatewayState => Str
 
-  
+  The state of the virtual private gateway. The following are the
+possible values:
+
+=over
+
+=item *
+
+C<pending>: Initial state after creating the virtual private gateway.
+
+=item *
+
+C<available>: Ready for use by a private virtual interface.
+
+=item *
+
+C<deleting>: Initial state after deleting the virtual private gateway.
+
+=item *
+
+C<deleted>: The virtual private gateway is deleted. The private virtual
+interface is unable to send traffic over this gateway.
+
+=back
+
 
 
 

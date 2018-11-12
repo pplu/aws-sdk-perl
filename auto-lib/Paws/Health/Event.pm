@@ -51,8 +51,9 @@ metadata.
 =head2 Arn => Str
 
   The unique identifier for the event. Format:
-C<arn:aws:health:I<event-region>::event/I<EVENT_TYPE_PLUS_ID> >.
-Example: C<arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331>
+C<arn:aws:health:I<event-region>::event/I<SERVICE>/I<EVENT_TYPE_CODE>/I<EVENT_TYPE_PLUS_ID>
+>. Example: C<Example:
+arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456>
 
 
 =head2 AvailabilityZone => Str
@@ -67,7 +68,8 @@ Example: C<arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331>
 
 =head2 EventTypeCategory => Str
 
-  The
+  The category of the event. Possible values are C<issue>,
+C<scheduledChange>, and C<accountNotification>.
 
 
 =head2 EventTypeCode => Str

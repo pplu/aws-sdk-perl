@@ -58,7 +58,7 @@ Constraints:
 
 =item *
 
-Must match the name of an existing DBClusterParameterGroup.
+Must match the name of an existing DB cluster parameter group.
 
 =back
 

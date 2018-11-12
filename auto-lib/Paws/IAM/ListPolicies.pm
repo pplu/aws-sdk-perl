@@ -5,6 +5,7 @@ package Paws::IAM::ListPolicies;
   has MaxItems => (is => 'ro', isa => 'Int');
   has OnlyAttached => (is => 'ro', isa => 'Bool');
   has PathPrefix => (is => 'ro', isa => 'Str');
+  has PolicyUsageFilter => (is => 'ro', isa => 'Str');
   has Scope => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -32,11 +33,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $iam = Paws->service('IAM');
     my $ListPoliciesResponse = $iam->ListPolicies(
-      Marker       => 'MymarkerType',        # OPTIONAL
-      MaxItems     => 1,                     # OPTIONAL
-      OnlyAttached => 1,                     # OPTIONAL
-      PathPrefix   => 'MypolicyPathType',    # OPTIONAL
-      Scope        => 'All',                 # OPTIONAL
+      Marker            => 'MymarkerType',         # OPTIONAL
+      MaxItems          => 1,                      # OPTIONAL
+      OnlyAttached      => 1,                      # OPTIONAL
+      PathPrefix        => 'MypolicyPathType',     # OPTIONAL
+      PolicyUsageFilter => 'PermissionsPolicy',    # OPTIONAL
+      Scope             => 'All',                  # OPTIONAL
     );
 
     # Results:
@@ -100,6 +102,19 @@ including most punctuation characters, digits, and upper and lowercased
 letters.
 
 
+
+=head2 PolicyUsageFilter => Str
+
+The policy usage method to use for filtering the results.
+
+To list only permissions policies, set C<PolicyUsageFilter> to
+C<PermissionsPolicy>. To list only the policies used to set permissions
+boundaries, set the value to C<PermissionsBoundary>.
+
+This parameter is optional. If it is not included, all policies are
+returned.
+
+Valid values are: C<"PermissionsPolicy">, C<"PermissionsBoundary">
 
 =head2 Scope => Str
 

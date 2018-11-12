@@ -90,7 +90,8 @@ to another, and your DB instance uses a nondefault option group. If
 your source DB instance uses Transparent Data Encryption for Oracle or
 Microsoft SQL Server, you must specify this option when copying across
 AWS Regions. For more information, see Option Group Considerations
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopySnapshot.Options).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopySnapshot.Options)
+in the I<Amazon RDS User Guide.>
 
 
 
@@ -206,7 +207,7 @@ Constraints:
 
 =item *
 
-Cannot be null, empty, or blank
+Can't be null, empty, or blank
 
 =item *
 
@@ -218,7 +219,7 @@ First character must be a letter
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens
+Can't end with a hyphen or contain two consecutive hyphens
 
 =back
 

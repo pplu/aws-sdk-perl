@@ -2,6 +2,7 @@
 package Paws::ACMPCA::DeleteCertificateAuthority;
   use Moose;
   has CertificateAuthorityArn => (is => 'ro', isa => 'Str', required => 1);
+  has PermanentDeletionTimeInDays => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
 
@@ -28,8 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $acm-pca = Paws->service('ACMPCA');
     $acm -pca->DeleteCertificateAuthority(
-      CertificateAuthorityArn => 'MyArn',
-
+      CertificateAuthorityArn     => 'MyArn',
+      PermanentDeletionTimeInDays => 1,         # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -41,10 +42,17 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/acm
 =head2 B<REQUIRED> CertificateAuthorityArn => Str
 
 The Amazon Resource Name (ARN) that was returned when you called
-CreateCertificateAuthority. This must be of the form:
+CreateCertificateAuthority. This must have the following form:
 
-C<arn:aws:acm:I<region>:I<account>:certificate-authority/I<12345678-1234-1234-1234-123456789012>
+C<arn:aws:acm-pca:I<region>:I<account>:certificate-authority/I<12345678-1234-1234-1234-123456789012>
 >.
+
+
+
+=head2 PermanentDeletionTimeInDays => Int
+
+The number of days to make a CA restorable after it has been deleted.
+This can be anywhere from 7 to 30 days, with 30 being the default.
 
 
 

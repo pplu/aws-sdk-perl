@@ -7,6 +7,7 @@ package Paws::IAM::ManagedPolicyDetail;
   has Description => (is => 'ro', isa => 'Str');
   has IsAttachable => (is => 'ro', isa => 'Bool');
   has Path => (is => 'ro', isa => 'Str');
+  has PermissionsBoundaryUsageCount => (is => 'ro', isa => 'Int');
   has PolicyId => (is => 'ro', isa => 'Str');
   has PolicyName => (is => 'ro', isa => 'Str');
   has PolicyVersionList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::PolicyVersion]');
@@ -102,6 +103,17 @@ role.
 For more information about paths, see IAM Identifiers
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<Using IAM> guide.
+
+
+=head2 PermissionsBoundaryUsageCount => Int
+
+  The number of entities (users and roles) for which the policy is used
+as the permissions boundary.
+
+For more information about permissions boundaries, see Permissions
+Boundaries for IAM Identities
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html)
+in the I<IAM User Guide>.
 
 
 =head2 PolicyId => Str

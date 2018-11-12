@@ -54,7 +54,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 B<REQUIRED> InternetGatewayId => Str
 
-The ID of the Internet gateway.
+The ID of the internet gateway.
 
 
 

@@ -72,7 +72,7 @@ C<corp.example.com>.
 =head2 B<REQUIRED> Password => Str
 
 The password for the directory administrator. The directory creation
-process creates a directory administrator account with the username
+process creates a directory administrator account with the user name
 C<Administrator> and this password.
 
 

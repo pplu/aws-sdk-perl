@@ -35,34 +35,35 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DirectConne
 
 =head1 DESCRIPTION
 
-A structure containing information about a new BGP peer.
+Information about a new BGP peer.
 
 =head1 ATTRIBUTES
 
 
 =head2 AddressFamily => Str
 
-  
+  The address family for the BGP peer.
 
 
 =head2 AmazonAddress => Str
 
-  
+  The IP address assigned to the Amazon interface.
 
 
 =head2 Asn => Int
 
-  
+  The autonomous system (AS) number for Border Gateway Protocol (BGP)
+configuration.
 
 
 =head2 AuthKey => Str
 
-  
+  The authentication key for BGP configuration.
 
 
 =head2 CustomerAddress => Str
 
-  
+  The IP address assigned to the customer interface.
 
 
 

@@ -12,8 +12,13 @@ package Paws::CodeBuild::StartBuild;
   has IdempotencyToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'idempotencyToken' );
   has ImageOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'imageOverride' );
   has InsecureSslOverride => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'insecureSslOverride' );
+  has LogsConfigOverride => (is => 'ro', isa => 'Paws::CodeBuild::LogsConfig', traits => ['NameInRequest'], request_name => 'logsConfigOverride' );
   has PrivilegedModeOverride => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'privilegedModeOverride' );
   has ProjectName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectName' , required => 1);
+  has ReportBuildStatusOverride => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'reportBuildStatusOverride' );
+  has SecondaryArtifactsOverride => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectArtifacts]', traits => ['NameInRequest'], request_name => 'secondaryArtifactsOverride' );
+  has SecondarySourcesOverride => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectSource]', traits => ['NameInRequest'], request_name => 'secondarySourcesOverride' );
+  has SecondarySourcesVersionOverride => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectSourceVersion]', traits => ['NameInRequest'], request_name => 'secondarySourcesVersionOverride' );
   has ServiceRoleOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceRoleOverride' );
   has SourceAuthOverride => (is => 'ro', isa => 'Paws::CodeBuild::SourceAuth', traits => ['NameInRequest'], request_name => 'sourceAuthOverride' );
   has SourceLocationOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceLocationOverride' );
@@ -48,38 +53,92 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $StartBuildOutput = $codebuild->StartBuild(
       ProjectName       => 'MyNonEmptyString',
       ArtifactsOverride => {
-        type     => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
-        location => 'MyString',        # OPTIONAL
-        name     => 'MyString',        # OPTIONAL
-        namespaceType => 'NONE',       # values: NONE, BUILD_ID; OPTIONAL
-        packaging     => 'NONE',       # values: NONE, ZIP; OPTIONAL
-        path          => 'MyString',   # OPTIONAL
+        Type => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
+        ArtifactIdentifier   => 'MyString',   # OPTIONAL
+        EncryptionDisabled   => 1,            # OPTIONAL
+        Location             => 'MyString',   # OPTIONAL
+        Name                 => 'MyString',   # OPTIONAL
+        NamespaceType        => 'NONE',       # values: NONE, BUILD_ID; OPTIONAL
+        OverrideArtifactName => 1,            # OPTIONAL
+        Packaging            => 'NONE',       # values: NONE, ZIP; OPTIONAL
+        Path                 => 'MyString',   # OPTIONAL
       },    # OPTIONAL
       BuildspecOverride => 'MyString',    # OPTIONAL
       CacheOverride     => {
-        type     => 'NO_CACHE',           # values: NO_CACHE, S3
-        location => 'MyString',           # OPTIONAL
+        Type     => 'NO_CACHE',           # values: NO_CACHE, S3
+        Location => 'MyString',           # OPTIONAL
       },    # OPTIONAL
       CertificateOverride          => 'MyString',                # OPTIONAL
       ComputeTypeOverride          => 'BUILD_GENERAL1_SMALL',    # OPTIONAL
       EnvironmentTypeOverride      => 'WINDOWS_CONTAINER',       # OPTIONAL
       EnvironmentVariablesOverride => [
         {
-          name  => 'MyNonEmptyString',                           # min: 1,
-          value => 'MyString',                                   # OPTIONAL
-          type => 'PLAINTEXT',    # values: PLAINTEXT, PARAMETER_STORE; OPTIONAL
+          Name  => 'MyNonEmptyString',                           # min: 1
+          Value => 'MyString',                                   # OPTIONAL
+          Type => 'PLAINTEXT',    # values: PLAINTEXT, PARAMETER_STORE; OPTIONAL
         },
         ...
       ],                          # OPTIONAL
-      GitCloneDepthOverride  => 1,                     # OPTIONAL
-      IdempotencyToken       => 'MyString',            # OPTIONAL
-      ImageOverride          => 'MyNonEmptyString',    # OPTIONAL
-      InsecureSslOverride    => 1,                     # OPTIONAL
-      PrivilegedModeOverride => 1,                     # OPTIONAL
-      ServiceRoleOverride    => 'MyNonEmptyString',    # OPTIONAL
-      SourceAuthOverride     => {
-        type     => 'OAUTH',                           # values: OAUTH
-        resource => 'MyString',                        # OPTIONAL
+      GitCloneDepthOverride => 1,                     # OPTIONAL
+      IdempotencyToken      => 'MyString',            # OPTIONAL
+      ImageOverride         => 'MyNonEmptyString',    # OPTIONAL
+      InsecureSslOverride   => 1,                     # OPTIONAL
+      LogsConfigOverride    => {
+        CloudWatchLogs => {
+          Status     => 'ENABLED',     # values: ENABLED, DISABLED
+          GroupName  => 'MyString',    # OPTIONAL
+          StreamName => 'MyString',    # OPTIONAL
+        },    # OPTIONAL
+        S3Logs => {
+          Status   => 'ENABLED',     # values: ENABLED, DISABLED
+          Location => 'MyString',    # OPTIONAL
+        },    # OPTIONAL
+      },    # OPTIONAL
+      PrivilegedModeOverride     => 1,    # OPTIONAL
+      ReportBuildStatusOverride  => 1,    # OPTIONAL
+      SecondaryArtifactsOverride => [
+        {
+          Type => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
+          ArtifactIdentifier   => 'MyString', # OPTIONAL
+          EncryptionDisabled   => 1,          # OPTIONAL
+          Location             => 'MyString', # OPTIONAL
+          Name                 => 'MyString', # OPTIONAL
+          NamespaceType        => 'NONE',     # values: NONE, BUILD_ID; OPTIONAL
+          OverrideArtifactName => 1,          # OPTIONAL
+          Packaging            => 'NONE',     # values: NONE, ZIP; OPTIONAL
+          Path                 => 'MyString', # OPTIONAL
+        },
+        ...
+      ],                                      # OPTIONAL
+      SecondarySourcesOverride => [
+        {
+          Type => 'CODECOMMIT'
+          , # values: CODECOMMIT, CODEPIPELINE, GITHUB, S3, BITBUCKET, GITHUB_ENTERPRISE, NO_SOURCE
+          Auth => {
+            Type     => 'OAUTH',       # values: OAUTH
+            Resource => 'MyString',    # OPTIONAL
+          },    # OPTIONAL
+          Buildspec         => 'MyString',    # OPTIONAL
+          GitCloneDepth     => 1,
+          InsecureSsl       => 1,             # OPTIONAL
+          Location          => 'MyString',    # OPTIONAL
+          ReportBuildStatus => 1,             # OPTIONAL
+          SourceIdentifier  => 'MyString',    # OPTIONAL
+        },
+        ...
+      ],                                      # OPTIONAL
+      SecondarySourcesVersionOverride => [
+        {
+          SourceIdentifier => 'MyString',     # OPTIONAL
+          SourceVersion    => 'MyString',     # OPTIONAL
+
+        },
+        ...
+      ],                                      # OPTIONAL
+      ServiceRoleOverride => 'MyNonEmptyString',    # OPTIONAL
+      SourceAuthOverride  => {
+        Type     => 'OAUTH',                        # values: OAUTH
+        Resource => 'MyString',                     # OPTIONAL
       },    # OPTIONAL
       SourceLocationOverride   => 'MyString',      # OPTIONAL
       SourceTypeOverride       => 'CODECOMMIT',    # OPTIONAL
@@ -181,6 +240,13 @@ override applies only if the build's source is GitHub Enterprise.
 
 
 
+=head2 LogsConfigOverride => L<Paws::CodeBuild::LogsConfig>
+
+Log settings for this build that override the log settings defined in
+the build project.
+
+
+
 =head2 PrivilegedModeOverride => Bool
 
 Enable this flag to override privileged mode in the build project.
@@ -190,6 +256,35 @@ Enable this flag to override privileged mode in the build project.
 =head2 B<REQUIRED> ProjectName => Str
 
 The name of the AWS CodeBuild build project to start running a build.
+
+
+
+=head2 ReportBuildStatusOverride => Bool
+
+Set to true to report to your source provider the status of a build's
+start and completion. If you use this option with a source provider
+other than GitHub, GitHub Enterprise, or Bitbucket, an
+invalidInputException is thrown.
+
+
+
+=head2 SecondaryArtifactsOverride => ArrayRef[L<Paws::CodeBuild::ProjectArtifacts>]
+
+An array of C<ProjectArtifacts> objects.
+
+
+
+=head2 SecondarySourcesOverride => ArrayRef[L<Paws::CodeBuild::ProjectSource>]
+
+An array of C<ProjectSource> objects.
+
+
+
+=head2 SecondarySourcesVersionOverride => ArrayRef[L<Paws::CodeBuild::ProjectSourceVersion>]
+
+An array of C<ProjectSourceVersion> objects that specify one or more
+versions of the project's secondary sources to be used for this build
+only.
 
 
 
@@ -218,9 +313,9 @@ one defined in the build project.
 =head2 SourceTypeOverride => Str
 
 A source input type for this build that overrides the source input
-defined in the build project
+defined in the build project.
 
-Valid values are: C<"CODECOMMIT">, C<"CODEPIPELINE">, C<"GITHUB">, C<"S3">, C<"BITBUCKET">, C<"GITHUB_ENTERPRISE">
+Valid values are: C<"CODECOMMIT">, C<"CODEPIPELINE">, C<"GITHUB">, C<"S3">, C<"BITBUCKET">, C<"GITHUB_ENTERPRISE">, C<"NO_SOURCE">
 
 =head2 SourceVersion => Str
 

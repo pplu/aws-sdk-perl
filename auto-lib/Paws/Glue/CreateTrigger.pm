@@ -39,20 +39,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Arguments => { 'MyGenericString' => 'MyGenericString', },   # OPTIONAL
           JobName              => 'MyNameString',   # min: 1, max: 255; OPTIONAL
           NotificationProperty => {
-            NotifyDelayAfter => 1,                  # min: 1, ; OPTIONAL
+            NotifyDelayAfter => 1,                  # min: 1; OPTIONAL
           },    # OPTIONAL
-          Timeout => 1,    # min: 1, ; OPTIONAL
+          SecurityConfiguration => 'MyNameString',  # min: 1, max: 255; OPTIONAL
+          Timeout               => 1,               # min: 1; OPTIONAL
         },
         ...
       ],
       Name        => 'MyNameString',
       Type        => 'SCHEDULED',
-      Description => 'MyDescriptionString',    # OPTIONAL
+      Description => 'MyDescriptionString',         # OPTIONAL
       Predicate   => {
         Conditions => [
           {
-            JobName         => 'MyNameString',    # min: 1, max: 255; OPTIONAL
-            LogicalOperator => 'EQUALS',          # values: EQUALS; OPTIONAL
+            JobName         => 'MyNameString',      # min: 1, max: 255; OPTIONAL
+            LogicalOperator => 'EQUALS',            # values: EQUALS; OPTIONAL
             State           => 'STARTING'
             , # values: STARTING, RUNNING, STOPPING, STOPPED, SUCCEEDED, FAILED, TIMEOUT; OPTIONAL
           },

@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::E
 
 =head1 DESCRIPTION
 
-Endpoint location data
+Location data for the endpoint.
 
 =head1 ATTRIBUTES
 
@@ -48,19 +48,19 @@ Endpoint location data
 
 =head2 Country => Str
 
-  Country according to ISO 3166-1 Alpha-2 codes. For example, US.
+  The two-letter code for the country or region of the endpoint.
+Specified as an ISO 3166-1 alpha-2 code, such as "US" for the United
+States.
 
 
 =head2 Latitude => Num
 
-  The latitude of the endpoint location. Rounded to one decimal (Roughly
-corresponding to a mile).
+  The latitude of the endpoint location, rounded to one decimal place.
 
 
 =head2 Longitude => Num
 
-  The longitude of the endpoint location. Rounded to one decimal (Roughly
-corresponding to a mile).
+  The longitude of the endpoint location, rounded to one decimal place.
 
 
 =head2 PostalCode => Str
@@ -70,8 +70,8 @@ corresponding to a mile).
 
 =head2 Region => Str
 
-  The region of the endpoint location. For example, corresponds to a
-state in US.
+  The region of the endpoint location. For example, in the United States,
+this corresponds to a state.
 
 
 

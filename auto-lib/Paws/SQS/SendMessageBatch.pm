@@ -76,7 +76,7 @@ A list of SendMessageBatchRequestEntry items.
 
 The URL of the Amazon SQS queue to which batched messages are sent.
 
-Queue URLs are case-sensitive.
+Queue URLs and names are case-sensitive.
 
 
 

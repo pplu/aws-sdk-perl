@@ -35,7 +35,7 @@ information about why the job failed.
 
 The language code of the vocabulary entries.
 
-Valid values are: C<"en-US">, C<"es-US">
+Valid values are: C<"en-US">, C<"es-US">, C<"en-AU">, C<"fr-CA">, C<"en-UK">
 =head2 LastModifiedTime => Str
 
 The date and time that the vocabulary was last modified.

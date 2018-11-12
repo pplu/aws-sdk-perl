@@ -1,6 +1,6 @@
 package Paws::SageMaker;
   use Moose;
-  sub service { 'sagemaker' }
+  sub service { 'api.sagemaker' }
   sub signing_name { 'sagemaker' }
   sub version { '2017-07-24' }
   sub target_prefix { 'SageMaker' }
@@ -58,6 +58,11 @@ package Paws::SageMaker;
   sub CreateTrainingJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::CreateTrainingJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateTransformJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::CreateTransformJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteEndpoint {
@@ -125,6 +130,11 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeTrainingJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeTransformJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeTransformJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListEndpointConfigs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::ListEndpointConfigs', @_);
@@ -170,6 +180,11 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::ListTrainingJobsForHyperParameterTuningJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTransformJobs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::ListTransformJobs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartNotebookInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::StartNotebookInstance', @_);
@@ -188,6 +203,11 @@ package Paws::SageMaker;
   sub StopTrainingJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::StopTrainingJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopTransformJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::StopTransformJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateEndpoint {
@@ -351,7 +371,7 @@ package Paws::SageMaker;
   }
 
 
-  sub operations { qw/AddTags CreateEndpoint CreateEndpointConfig CreateHyperParameterTuningJob CreateModel CreateNotebookInstance CreateNotebookInstanceLifecycleConfig CreatePresignedNotebookInstanceUrl CreateTrainingJob DeleteEndpoint DeleteEndpointConfig DeleteModel DeleteNotebookInstance DeleteNotebookInstanceLifecycleConfig DeleteTags DescribeEndpoint DescribeEndpointConfig DescribeHyperParameterTuningJob DescribeModel DescribeNotebookInstance DescribeNotebookInstanceLifecycleConfig DescribeTrainingJob ListEndpointConfigs ListEndpoints ListHyperParameterTuningJobs ListModels ListNotebookInstanceLifecycleConfigs ListNotebookInstances ListTags ListTrainingJobs ListTrainingJobsForHyperParameterTuningJob StartNotebookInstance StopHyperParameterTuningJob StopNotebookInstance StopTrainingJob UpdateEndpoint UpdateEndpointWeightsAndCapacities UpdateNotebookInstance UpdateNotebookInstanceLifecycleConfig / }
+  sub operations { qw/AddTags CreateEndpoint CreateEndpointConfig CreateHyperParameterTuningJob CreateModel CreateNotebookInstance CreateNotebookInstanceLifecycleConfig CreatePresignedNotebookInstanceUrl CreateTrainingJob CreateTransformJob DeleteEndpoint DeleteEndpointConfig DeleteModel DeleteNotebookInstance DeleteNotebookInstanceLifecycleConfig DeleteTags DescribeEndpoint DescribeEndpointConfig DescribeHyperParameterTuningJob DescribeModel DescribeNotebookInstance DescribeNotebookInstanceLifecycleConfig DescribeTrainingJob DescribeTransformJob ListEndpointConfigs ListEndpoints ListHyperParameterTuningJobs ListModels ListNotebookInstanceLifecycleConfigs ListNotebookInstances ListTags ListTrainingJobs ListTrainingJobsForHyperParameterTuningJob ListTransformJobs StartNotebookInstance StopHyperParameterTuningJob StopNotebookInstance StopTrainingJob StopTransformJob UpdateEndpoint UpdateEndpointWeightsAndCapacities UpdateNotebookInstance UpdateNotebookInstanceLifecycleConfig / }
 
 1;
 
@@ -381,7 +401,7 @@ Paws::SageMaker - Perl Interface to AWS Amazon SageMaker Service
 
 Definition of the public APIs exposed by SageMaker
 
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.sagemaker-2017-07-24>
 
 
 =head1 METHODS
@@ -403,13 +423,22 @@ Returns: a L<Paws::SageMaker::AddTagsOutput> instance
 
 Adds or overwrites one or more tags for the specified Amazon SageMaker
 resource. You can add tags to notebook instances, training jobs,
-models, endpoint configurations, and endpoints.
+hyperparameter tuning jobs, models, endpoint configurations, and
+endpoints.
 
 Each tag consists of a key and an optional value. Tag keys must be
-unique per resource. For more information about tags, see Using Cost
-Allocation Tags
-(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
-in the I<AWS Billing and Cost Management User Guide>.
+unique per resource. For more information about tags, see For more
+information, see AWS Tagging Strategies
+(https://aws.amazon.com/answers/account-management/aws-tagging-strategies/).
+
+Tags that you add to a hyperparameter tuning job by calling this API
+are also added to any training jobs that the hyperparameter tuning job
+launches after you call this API, but not to training jobs that the
+hyperparameter tuning job launched before you called this API. To make
+sure that the tags associated with a hyperparameter tuning job are also
+added to all training jobs that the hyperparameter tuning job launches,
+add the tags when you first create the tuning job by specifying them in
+the C<Tags> parameter of CreateHyperParameterTuningJob
 
 
 =head2 CreateEndpoint
@@ -457,6 +486,16 @@ API.
 For an example, see Exercise 1: Using the K-Means Algorithm Provided by
 Amazon SageMaker
 (http://docs.aws.amazon.com/sagemaker/latest/dg/ex1.html).
+
+If any of the models hosted at this endpoint get model data from an
+Amazon S3 location, Amazon SageMaker uses AWS Security Token Service to
+download model artifacts from the S3 path you provided. AWS STS is
+activated in your IAM user account by default. If you previously
+deactivated AWS STS for a region, you need to reactivate AWS STS for
+that region. For more information, see Activating and Deactivating AWS
+STS i an AWS Region
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)
+in the I<AWS Identity and Access Management User Guide>.
 
 
 =head2 CreateEndpointConfig
@@ -546,28 +585,33 @@ Each argument is described in detail in: L<Paws::SageMaker::CreateModel>
 Returns: a L<Paws::SageMaker::CreateModelOutput> instance
 
 Creates a model in Amazon SageMaker. In the request, you name the model
-and describe one or more containers. For each container, you specify
-the docker image containing inference code, artifacts (from prior
-training), and custom environment map that the inference code uses when
-you deploy the model into production.
+and describe a primary container. For the primary container, you
+specify the docker image containing inference code, artifacts (from
+prior training), and custom environment map that the inference code
+uses when you deploy the model for predictions.
 
-Use this API to create a model only if you want to use Amazon SageMaker
-hosting services. To host your model, you create an endpoint
-configuration with the C<CreateEndpointConfig> API, and then create an
-endpoint with the C<CreateEndpoint> API.
+Use this API to create a model if you want to use Amazon SageMaker
+hosting services or run a batch transform job.
 
-Amazon SageMaker then deploys all of the containers that you defined
-for the model in the hosting environment.
+To host your model, you create an endpoint configuration with the
+C<CreateEndpointConfig> API, and then create an endpoint with the
+C<CreateEndpoint> API. Amazon SageMaker then deploys all of the
+containers that you defined for the model in the hosting environment.
+
+To run a batch transform using your model, you start a job with the
+C<CreateTransformJob> API. Amazon SageMaker uses your model and your
+dataset to get inferences which are then saved to a specified S3
+location.
 
 In the C<CreateModel> request, you must define a container with the
 C<PrimaryContainer> parameter.
 
 In the request, you also provide an IAM role that Amazon SageMaker can
 assume to access model artifacts and docker image for deployment on ML
-compute hosting instances. In addition, you also use the IAM role to
-manage permissions the inference code needs. For example, if the
-inference code access any other AWS resources, you grant necessary
-permissions via this role.
+compute hosting instances or for batch transform jobs. In addition, you
+also use the IAM role to manage permissions the inference code needs.
+For example, if the inference code access any other AWS resources, you
+grant necessary permissions via this role.
 
 
 =head2 CreateNotebookInstance
@@ -591,6 +635,8 @@ permissions via this role.
 =item [SubnetId => Str]
 
 =item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
+
+=item [VolumeSizeInGB => Int]
 
 
 =back
@@ -686,7 +732,8 @@ If a script runs for longer than 5 minutes, it fails and the notebook
 instance is not created or started.
 
 For information about notebook instance lifestyle configurations, see
-notebook-lifecycle-config.
+Step 2.1: (Optional) Customize a Notebook Instance
+(http://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
 
 
 =head2 CreatePresignedNotebookInstanceUrl
@@ -710,14 +757,23 @@ C<Open> next to a notebook instance, Amazon SageMaker opens a new tab
 showing the Jupyter server home page from the notebook instance. The
 console uses this API to get the URL and show the page.
 
+You can restrict access to this API and to the URL that it returns to a
+list of IP addresses that you specify. To restrict access, attach an
+IAM policy that denies access to this API unless the call comes from an
+IP address in the specified list to every AWS Identity and Access
+Management user, group, or role used to access the notebook instance.
+Use the C<NotIpAddress> condition operator and the C<aws:SourceIP>
+condition context key to specify the list of IP addresses that you want
+to have access to the notebook instance. For more information, see
+Limit Access to a Notebook Instance by IP Address
+(http://docs.aws.amazon.com/https:/docs.aws.amazon.com/sagemaker/latest/dg/howitworks-access-ws.html#nbi-ip-filter).
+
 
 =head2 CreateTrainingJob
 
 =over
 
 =item AlgorithmSpecification => L<Paws::SageMaker::AlgorithmSpecification>
-
-=item InputDataConfig => ArrayRef[L<Paws::SageMaker::Channel>]
 
 =item OutputDataConfig => L<Paws::SageMaker::OutputDataConfig>
 
@@ -730,6 +786,8 @@ console uses this API to get the URL and show the page.
 =item TrainingJobName => Str
 
 =item [HyperParameters => L<Paws::SageMaker::HyperParameters>]
+
+=item [InputDataConfig => ArrayRef[L<Paws::SageMaker::Channel>]]
 
 =item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
 
@@ -801,6 +859,81 @@ For more information about Amazon SageMaker, see How It Works
 (http://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html).
 
 
+=head2 CreateTransformJob
+
+=over
+
+=item ModelName => Str
+
+=item TransformInput => L<Paws::SageMaker::TransformInput>
+
+=item TransformJobName => Str
+
+=item TransformOutput => L<Paws::SageMaker::TransformOutput>
+
+=item TransformResources => L<Paws::SageMaker::TransformResources>
+
+=item [BatchStrategy => Str]
+
+=item [Environment => L<Paws::SageMaker::TransformEnvironmentMap>]
+
+=item [MaxConcurrentTransforms => Int]
+
+=item [MaxPayloadInMB => Int]
+
+=item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::CreateTransformJob>
+
+Returns: a L<Paws::SageMaker::CreateTransformJobResponse> instance
+
+Starts a transform job. A transform job uses a trained model to get
+inferences on a dataset and saves these results to an Amazon S3
+location that you specify.
+
+To perform batch transformations, you create a transform job and use
+the data that you have readily available.
+
+In the request body, you provide the following:
+
+=over
+
+=item *
+
+C<TransformJobName> - Identifies the transform job. The name must be
+unique within an AWS Region in an AWS account.
+
+=item *
+
+C<ModelName> - Identifies the model to use. C<ModelName> must be the
+name of an existing Amazon SageMaker model in the same AWS Region and
+AWS account. For information on creating a model, see CreateModel.
+
+=item *
+
+C<TransformInput> - Describes the dataset to be transformed and the
+Amazon S3 location where it is stored.
+
+=item *
+
+C<TransformOutput> - Identifies the Amazon S3 location where you want
+Amazon SageMaker to save the results from the transform job.
+
+=item *
+
+C<TransformResources> - Identifies the ML compute instances for the
+transform job.
+
+=back
+
+For more information about how batch transformation works Amazon
+SageMaker, see How It Works
+(http://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html).
+
+
 =head2 DeleteEndpoint
 
 =over
@@ -816,6 +949,11 @@ Returns: nothing
 
 Deletes an endpoint. Amazon SageMaker frees up all of the resources
 that were deployed when the endpoint was created.
+
+Amazon SageMaker retires any custom KMS key grants associated with the
+endpoint, meaning you don't need to use the RevokeGrant
+(http://docs.aws.amazon.com/kms/latest/APIReference/API_RevokeGrant.html)
+API call.
 
 
 =head2 DeleteEndpointConfig
@@ -911,6 +1049,10 @@ Returns: a L<Paws::SageMaker::DeleteTagsOutput> instance
 Deletes the specified tags from an Amazon SageMaker resource.
 
 To list a resource's tags, use the C<ListTags> API.
+
+When you call this API to delete tags from a hyperparameter tuning job,
+the deleted tags are not removed from training jobs that the
+hyperparameter tuning job launched before you called this API.
 
 
 =head2 DescribeEndpoint
@@ -1010,7 +1152,8 @@ Returns: a L<Paws::SageMaker::DescribeNotebookInstanceLifecycleConfigOutput> ins
 Returns a description of a notebook instance lifecycle configuration.
 
 For information about notebook instance lifestyle configurations, see
-notebook-lifecycle-config.
+Step 2.1: (Optional) Customize a Notebook Instance
+(http://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
 
 
 =head2 DescribeTrainingJob
@@ -1027,6 +1170,22 @@ Each argument is described in detail in: L<Paws::SageMaker::DescribeTrainingJob>
 Returns: a L<Paws::SageMaker::DescribeTrainingJobResponse> instance
 
 Returns information about a training job.
+
+
+=head2 DescribeTransformJob
+
+=over
+
+=item TransformJobName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::DescribeTransformJob>
+
+Returns: a L<Paws::SageMaker::DescribeTransformJobResponse> instance
+
+Returns information about a transform job.
 
 
 =head2 ListEndpointConfigs
@@ -1122,8 +1281,8 @@ Each argument is described in detail in: L<Paws::SageMaker::ListHyperParameterTu
 
 Returns: a L<Paws::SageMaker::ListHyperParameterTuningJobsResponse> instance
 
-Gets a list of objects that describe the hyperparameter tuning jobs
-launched in your account.
+Gets a list of HyperParameterTuningJobSummary objects that describe the
+hyperparameter tuning jobs launched in your account.
 
 
 =head2 ListModels
@@ -1185,7 +1344,8 @@ Each argument is described in detail in: L<Paws::SageMaker::ListNotebookInstance
 
 Returns: a L<Paws::SageMaker::ListNotebookInstanceLifecycleConfigsOutput> instance
 
-Lists notebook instance lifestyle configurations created with the API.
+Lists notebook instance lifestyle configurations created with the
+CreateNotebookInstanceLifecycleConfig API.
 
 
 =head2 ListNotebookInstances
@@ -1302,8 +1462,42 @@ Each argument is described in detail in: L<Paws::SageMaker::ListTrainingJobsForH
 
 Returns: a L<Paws::SageMaker::ListTrainingJobsForHyperParameterTuningJobResponse> instance
 
-Gets a list of objects that describe the training jobs that a
-hyperparameter tuning job launched.
+Gets a list of TrainingJobSummary objects that describe the training
+jobs that a hyperparameter tuning job launched.
+
+
+=head2 ListTransformJobs
+
+=over
+
+=item [CreationTimeAfter => Str]
+
+=item [CreationTimeBefore => Str]
+
+=item [LastModifiedTimeAfter => Str]
+
+=item [LastModifiedTimeBefore => Str]
+
+=item [MaxResults => Int]
+
+=item [NameContains => Str]
+
+=item [NextToken => Str]
+
+=item [SortBy => Str]
+
+=item [SortOrder => Str]
+
+=item [StatusEquals => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::ListTransformJobs>
+
+Returns: a L<Paws::SageMaker::ListTransformJobsResponse> instance
+
+Lists transform jobs.
 
 
 =head2 StartNotebookInstance
@@ -1344,9 +1538,9 @@ that the tuning job launched.
 
 All model artifacts output from the training jobs are stored in Amazon
 Simple Storage Service (Amazon S3). All data that the training jobs
-write toAmazon CloudWatch Logs are still available in CloudWatch. After
-the tuning job moves to the C<Stopped> state, it releases all reserved
-resources for the tuning job.
+write to Amazon CloudWatch Logs are still available in CloudWatch.
+After the tuning job moves to the C<Stopped> state, it releases all
+reserved resources for the tuning job.
 
 
 =head2 StopNotebookInstance
@@ -1401,6 +1595,28 @@ the status of the job to C<Stopping>. After Amazon SageMaker stops the
 job, it sets the status to C<Stopped>.
 
 
+=head2 StopTransformJob
+
+=over
+
+=item TransformJobName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::StopTransformJob>
+
+Returns: nothing
+
+Stops a transform job.
+
+When Amazon SageMaker receives a C<StopTransformJob> request, the
+status of the job changes to C<Stopping>. After Amazon SageMaker stops
+the job, the status is set to C<Stopped>. When you stop a transform job
+before it is completed, Amazon SageMaker doesn't store the job's output
+in Amazon S3.
+
+
 =head2 UpdateEndpoint
 
 =over
@@ -1427,6 +1643,9 @@ C<InService>. To check the status of an endpoint, use the
 DescribeEndpoint
 (http://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html)
 API.
+
+You cannot update an endpoint with the current C<EndpointConfig>. To
+update an endpoint, you must create a new C<EndpointConfig>.
 
 
 =head2 UpdateEndpointWeightsAndCapacities
@@ -1460,9 +1679,15 @@ API.
 
 =item NotebookInstanceName => Str
 
+=item [DisassociateLifecycleConfig => Bool]
+
 =item [InstanceType => Str]
 
+=item [LifecycleConfigName => Str]
+
 =item [RoleArn => Str]
+
+=item [VolumeSizeInGB => Int]
 
 
 =back
@@ -1495,7 +1720,7 @@ Each argument is described in detail in: L<Paws::SageMaker::UpdateNotebookInstan
 Returns: a L<Paws::SageMaker::UpdateNotebookInstanceLifecycleConfigOutput> instance
 
 Updates a notebook instance lifecycle configuration created with the
-API.
+CreateNotebookInstanceLifecycleConfig API.
 
 
 

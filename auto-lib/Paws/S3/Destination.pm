@@ -44,11 +44,22 @@ Container for replication destination information.
 
   Container for information regarding the access control for replicas.
 
+Use only in a cross-account scenario, where source and destination
+bucket owners are not the same, when you want to change replica
+ownership to the AWS account that owns the destination bucket. If you
+don't add this element to the replication configuration, the replicas
+are owned by same AWS account that owns the source object.
+
 
 =head2 Account => Str
 
-  Account ID of the destination bucket. Currently this is only being
-verified if Access Control Translation is enabled
+  Account ID of the destination bucket. Currently Amazon S3 verifies this
+value only if Access Control Translation is enabled.
+
+In a cross-account scenario, if you tell Amazon S3 to change replica
+ownership to the AWS account that owns the destination bucket by adding
+the C<AccessControlTranslation> element, this is the account ID of the
+destination bucket owner.
 
 
 =head2 B<REQUIRED> Bucket => Str
@@ -56,11 +67,15 @@ verified if Access Control Translation is enabled
   Amazon resource name (ARN) of the bucket where you want Amazon S3 to
 store replicas of the object identified by the rule.
 
+If you have multiple rules in your replication configuration, all rules
+must specify the same bucket as the destination. A replication
+configuration can replicate objects only to one destination bucket.
+
 
 =head2 EncryptionConfiguration => L<Paws::S3::EncryptionConfiguration>
 
-  Container for information regarding encryption based configuration for
-replicas.
+  Container that provides encryption-related information. You must
+specify this element if the C<SourceSelectionCriteria> is specified.
 
 
 =head2 StorageClass => Str

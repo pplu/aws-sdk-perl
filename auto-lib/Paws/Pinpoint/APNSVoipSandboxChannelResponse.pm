@@ -69,7 +69,7 @@ Apple VoIP Developer Push Notification Service channel definition.
 
 =head2 HasCredential => Bool
 
-  If the channel is registered with a credential for authentication.
+  Not used. Retained for backwards compatibility.
 
 
 =head2 HasTokenKey => Bool

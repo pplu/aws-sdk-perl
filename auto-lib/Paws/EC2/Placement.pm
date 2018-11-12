@@ -54,8 +54,7 @@ parameter is not supported for the ImportInstance command.
 
 =head2 GroupName => Str
 
-  The name of the placement group the instance is in (for cluster compute
-instances).
+  The name of the placement group the instance is in.
 
 
 =head2 HostId => Str

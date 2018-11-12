@@ -9,6 +9,7 @@ package Paws::Glue::CreateDevEndpointResponse;
   has FailureReason => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int');
   has RoleArn => (is => 'ro', isa => 'Str');
+  has SecurityConfiguration => (is => 'ro', isa => 'Str');
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Status => (is => 'ro', isa => 'Str');
   has SubnetId => (is => 'ro', isa => 'Str');
@@ -68,6 +69,12 @@ DevEndpoint.
 =head2 RoleArn => Str
 
 The AWS ARN of the role assigned to the new DevEndpoint.
+
+
+=head2 SecurityConfiguration => Str
+
+The name of the SecurityConfiguration structure being used with this
+DevEndpoint.
 
 
 =head2 SecurityGroupIds => ArrayRef[Str|Undef]

@@ -9,7 +9,7 @@ package Paws::API::Builder::Paws {
   use Moose;
 
   sub version {
-    '0.38';
+    '0.39';
   }
 
   sub services {
@@ -58,7 +58,8 @@ package Paws::API::Builder::Paws {
 
   sub process {
     my ($self) = @_;
-    my $class = $self->process_template($self->pawspm_template,
+    my $class = $self->process_template(
+      'paws_pm.tt',
       { c => $self }
     );
     $self->save_class('Paws', $class);
@@ -77,5 +78,4 @@ package Paws::API::Builder::Paws {
     return $contributions;
   }
 }
-
 1;

@@ -49,12 +49,12 @@ Apple Distribution Push Notification Service channel definition.
 
 =head2 ApplicationId => Str
 
-  The ID of the application to which the channel applies.
+  The ID of the application that the channel applies to.
 
 
 =head2 CreationDate => Str
 
-  When was this segment created
+  The date and time when this channel was created.
 
 
 =head2 DefaultAuthenticationMethod => Str
@@ -69,12 +69,7 @@ Apple Distribution Push Notification Service channel definition.
 
 =head2 HasCredential => Bool
 
-  Indicates whether the channel is configured with APNs credentials.
-Amazon Pinpoint uses your credentials to authenticate push
-notifications with APNs. To use APNs token authentication, set the
-BundleId, TeamId, TokenKey, and TokenKeyId attributes. To use
-certificate authentication, set the Certificate and PrivateKey
-attributes.
+  Not used. Retained for backwards compatibility.
 
 
 =head2 HasTokenKey => Bool
@@ -85,32 +80,33 @@ authentication. Provide a token key by setting the TokenKey attribute.
 
 =head2 Id => Str
 
-  Channel ID. Not used. Present only for backwards compatibility.
+  (Deprecated) An identifier for the channel. Retained for backwards
+compatibility.
 
 
 =head2 IsArchived => Bool
 
-  Is this channel archived
+  Indicates whether or not the channel is archived.
 
 
 =head2 LastModifiedBy => Str
 
-  Who last updated this entry
+  The user who last updated this channel.
 
 
 =head2 LastModifiedDate => Str
 
-  Last date this was updated
+  The date and time when this channel was last modified.
 
 
 =head2 Platform => Str
 
-  The platform type. Will be APNS.
+  The platform type. For this channel, the value is always "ADM."
 
 
 =head2 Version => Int
 
-  Version of channel
+  The channel version.
 
 
 

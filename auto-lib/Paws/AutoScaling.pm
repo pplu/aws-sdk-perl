@@ -29,6 +29,16 @@ package Paws::AutoScaling;
     my $call_object = $self->new_with_coercions('Paws::AutoScaling::AttachLoadBalancerTargetGroups', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub BatchDeleteScheduledAction {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::BatchDeleteScheduledAction', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub BatchPutScheduledUpdateGroupAction {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::BatchPutScheduledUpdateGroupAction', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CompleteLifecycleAction {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AutoScaling::CompleteLifecycleAction', @_);
@@ -461,7 +471,7 @@ package Paws::AutoScaling;
   }
 
 
-  sub operations { qw/AttachInstances AttachLoadBalancers AttachLoadBalancerTargetGroups CompleteLifecycleAction CreateAutoScalingGroup CreateLaunchConfiguration CreateOrUpdateTags DeleteAutoScalingGroup DeleteLaunchConfiguration DeleteLifecycleHook DeleteNotificationConfiguration DeletePolicy DeleteScheduledAction DeleteTags DescribeAccountLimits DescribeAdjustmentTypes DescribeAutoScalingGroups DescribeAutoScalingInstances DescribeAutoScalingNotificationTypes DescribeLaunchConfigurations DescribeLifecycleHooks DescribeLifecycleHookTypes DescribeLoadBalancers DescribeLoadBalancerTargetGroups DescribeMetricCollectionTypes DescribeNotificationConfigurations DescribePolicies DescribeScalingActivities DescribeScalingProcessTypes DescribeScheduledActions DescribeTags DescribeTerminationPolicyTypes DetachInstances DetachLoadBalancers DetachLoadBalancerTargetGroups DisableMetricsCollection EnableMetricsCollection EnterStandby ExecutePolicy ExitStandby PutLifecycleHook PutNotificationConfiguration PutScalingPolicy PutScheduledUpdateGroupAction RecordLifecycleActionHeartbeat ResumeProcesses SetDesiredCapacity SetInstanceHealth SetInstanceProtection SuspendProcesses TerminateInstanceInAutoScalingGroup UpdateAutoScalingGroup / }
+  sub operations { qw/AttachInstances AttachLoadBalancers AttachLoadBalancerTargetGroups BatchDeleteScheduledAction BatchPutScheduledUpdateGroupAction CompleteLifecycleAction CreateAutoScalingGroup CreateLaunchConfiguration CreateOrUpdateTags DeleteAutoScalingGroup DeleteLaunchConfiguration DeleteLifecycleHook DeleteNotificationConfiguration DeletePolicy DeleteScheduledAction DeleteTags DescribeAccountLimits DescribeAdjustmentTypes DescribeAutoScalingGroups DescribeAutoScalingInstances DescribeAutoScalingNotificationTypes DescribeLaunchConfigurations DescribeLifecycleHooks DescribeLifecycleHookTypes DescribeLoadBalancers DescribeLoadBalancerTargetGroups DescribeMetricCollectionTypes DescribeNotificationConfigurations DescribePolicies DescribeScalingActivities DescribeScalingProcessTypes DescribeScheduledActions DescribeTags DescribeTerminationPolicyTypes DetachInstances DetachLoadBalancers DetachLoadBalancerTargetGroups DisableMetricsCollection EnableMetricsCollection EnterStandby ExecutePolicy ExitStandby PutLifecycleHook PutNotificationConfiguration PutScalingPolicy PutScheduledUpdateGroupAction RecordLifecycleActionHeartbeat ResumeProcesses SetDesiredCapacity SetInstanceHealth SetInstanceProtection SuspendProcesses TerminateInstanceInAutoScalingGroup UpdateAutoScalingGroup / }
 
 1;
 
@@ -518,10 +528,11 @@ Returns: nothing
 
 Attaches one or more EC2 instances to the specified Auto Scaling group.
 
-When you attach instances, Auto Scaling increases the desired capacity
-of the group by the number of instances being attached. If the number
-of instances being attached plus the desired capacity of the group
-exceeds the maximum size of the group, the operation fails.
+When you attach instances, Amazon EC2 Auto Scaling increases the
+desired capacity of the group by the number of instances being
+attached. If the number of instances being attached plus the desired
+capacity of the group exceeds the maximum size of the group, the
+operation fails.
 
 If there is a Classic Load Balancer attached to your Auto Scaling
 group, the instances are also registered with the load balancer. If
@@ -530,8 +541,8 @@ instances are also registered with the target groups.
 
 For more information, see Attach EC2 Instances to Your Auto Scaling
 Group
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/attach-instance-asg.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-instance-asg.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 =head2 AttachLoadBalancers
@@ -561,8 +572,8 @@ Scaling group, use DetachLoadBalancers.
 
 For more information, see Attach a Load Balancer to Your Auto Scaling
 Group
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/attach-load-balancer-asg.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-load-balancer-asg.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 =head2 AttachLoadBalancerTargetGroups
@@ -588,8 +599,47 @@ Auto Scaling group, use DetachLoadBalancerTargetGroups.
 
 For more information, see Attach a Load Balancer to Your Auto Scaling
 Group
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/attach-load-balancer-asg.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-load-balancer-asg.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
+
+
+=head2 BatchDeleteScheduledAction
+
+=over
+
+=item AutoScalingGroupName => Str
+
+=item ScheduledActionNames => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AutoScaling::BatchDeleteScheduledAction>
+
+Returns: a L<Paws::AutoScaling::BatchDeleteScheduledActionAnswer> instance
+
+Deletes one or more scheduled actions for the specified Auto Scaling
+group.
+
+
+=head2 BatchPutScheduledUpdateGroupAction
+
+=over
+
+=item AutoScalingGroupName => Str
+
+=item ScheduledUpdateGroupActions => ArrayRef[L<Paws::AutoScaling::ScheduledUpdateGroupActionRequest>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AutoScaling::BatchPutScheduledUpdateGroupAction>
+
+Returns: a L<Paws::AutoScaling::BatchPutScheduledUpdateGroupActionAnswer> instance
+
+Creates or updates one or more scheduled scaling actions for an Auto
+Scaling group. When updating a scheduled scaling action, if you leave a
+parameter unspecified, the corresponding value remains unchanged.
 
 
 =head2 CompleteLifecycleAction
@@ -624,14 +674,15 @@ Auto Scaling group:
 =item 1.
 
 (Optional) Create a Lambda function and a rule that allows CloudWatch
-Events to invoke your Lambda function when Auto Scaling launches or
-terminates instances.
+Events to invoke your Lambda function when Amazon EC2 Auto Scaling
+launches or terminates instances.
 
 =item 2.
 
 (Optional) Create a notification target and an IAM role. The target can
 be either an Amazon SQS queue or an Amazon SNS topic. The role allows
-Auto Scaling to publish lifecycle notifications to the target.
+Amazon EC2 Auto Scaling to publish lifecycle notifications to the
+target.
 
 =item 3.
 
@@ -651,8 +702,8 @@ action.>
 =back
 
 For more information, see Auto Scaling Lifecycle
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroupLifecycle.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroupLifecycle.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 =head2 CreateAutoScalingGroup
@@ -712,12 +763,12 @@ If you exceed your maximum limit of Auto Scaling groups, the call
 fails. For information about viewing this limit, see
 DescribeAccountLimits. For information about updating this limit, see
 Auto Scaling Limits
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/as-account-limits.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 For more information, see Auto Scaling Groups
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroup.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroup.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 =head2 CreateLaunchConfiguration
@@ -773,12 +824,12 @@ If you exceed your maximum limit of launch configurations, the call
 fails. For information about viewing this limit, see
 DescribeAccountLimits. For information about updating this limit, see
 Auto Scaling Limits
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/as-account-limits.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 For more information, see Launch Configurations
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/LaunchConfiguration.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchConfiguration.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 =head2 CreateOrUpdateTags
@@ -801,8 +852,8 @@ overwrites the previous tag definition, and you do not get an error
 message.
 
 For more information, see Tagging Auto Scaling Groups and Instances
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/autoscaling-tagging.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-tagging.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 =head2 DeleteAutoScalingGroup
@@ -831,8 +882,8 @@ associated action.
 
 To remove instances from the Auto Scaling group before deleting it,
 call DetachInstances with the list of instances and the option to
-decrement the desired capacity so that Auto Scaling does not launch
-replacement instances.
+decrement the desired capacity so that Amazon EC2 Auto Scaling does not
+launch replacement instances.
 
 To terminate all instances before deleting the Auto Scaling group, call
 UpdateAutoScalingGroup and set the minimum size and desired capacity of
@@ -972,8 +1023,8 @@ account.
 
 For information about requesting an increase in these limits, see Auto
 Scaling Limits
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/as-account-limits.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 =head2 DescribeAdjustmentTypes
@@ -1045,7 +1096,8 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeAutoScalin
 
 Returns: a L<Paws::AutoScaling::DescribeAutoScalingNotificationTypesAnswer> instance
 
-Describes the notification types that are supported by Auto Scaling.
+Describes the notification types that are supported by Amazon EC2 Auto
+Scaling.
 
 
 =head2 DescribeLaunchConfigurations
@@ -1100,6 +1152,21 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeLifecycleH
 Returns: a L<Paws::AutoScaling::DescribeLifecycleHookTypesAnswer> instance
 
 Describes the available types of lifecycle hooks.
+
+The following hook types are supported:
+
+=over
+
+=item *
+
+autoscaling:EC2_INSTANCE_LAUNCHING
+
+=item *
+
+autoscaling:EC2_INSTANCE_TERMINATING
+
+=back
+
 
 
 =head2 DescribeLoadBalancers
@@ -1159,7 +1226,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeMetricColl
 
 Returns: a L<Paws::AutoScaling::DescribeMetricCollectionTypesAnswer> instance
 
-Describes the available CloudWatch metrics for Auto Scaling.
+Describes the available CloudWatch metrics for Amazon EC2 Auto Scaling.
 
 Note that the C<GroupStandbyInstances> metric is not returned by
 default. You must explicitly request this metric when calling
@@ -1321,7 +1388,8 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeTerminatio
 
 Returns: a L<Paws::AutoScaling::DescribeTerminationPolicyTypesAnswer> instance
 
-Describes the termination policies supported by Auto Scaling.
+Describes the termination policies supported by Amazon EC2 Auto
+Scaling.
 
 
 =head2 DetachInstances
@@ -1347,7 +1415,8 @@ After the instances are detached, you can manage them independent of
 the Auto Scaling group.
 
 If you do not specify the option to decrement the desired capacity,
-Auto Scaling launches instances to replace the ones that are detached.
+Amazon EC2 Auto Scaling launches instances to replace the ones that are
+detached.
 
 If there is a Classic Load Balancer attached to the Auto Scaling group,
 the instances are deregistered from the load balancer. If there are
@@ -1356,8 +1425,8 @@ deregistered from the target groups.
 
 For more information, see Detach EC2 Instances from Your Auto Scaling
 Group
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/detach-instance-asg.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/detach-instance-asg.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 =head2 DetachLoadBalancers
@@ -1444,8 +1513,8 @@ Returns: nothing
 
 Enables group metrics for the specified Auto Scaling group. For more
 information, see Monitoring Your Auto Scaling Groups and Instances
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/as-instance-monitoring.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-monitoring.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 =head2 EnterStandby
@@ -1469,8 +1538,8 @@ Moves the specified instances into the standby state.
 
 For more information, see Temporarily Removing Instances from Your Auto
 Scaling Group
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/as-enter-exit-standby.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enter-exit-standby.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 =head2 ExecutePolicy
@@ -1516,8 +1585,8 @@ Moves the specified instances out of the standby state.
 
 For more information, see Temporarily Removing Instances from Your Auto
 Scaling Group
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/as-enter-exit-standby.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enter-exit-standby.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 =head2 PutLifecycleHook
@@ -1550,9 +1619,9 @@ Returns: a L<Paws::AutoScaling::PutLifecycleHookAnswer> instance
 Creates or updates a lifecycle hook for the specified Auto Scaling
 Group.
 
-A lifecycle hook tells Auto Scaling that you want to perform an action
-on an instance that is not actively in service; for example, either
-when the instance launches or before the instance terminates.
+A lifecycle hook tells Amazon EC2 Auto Scaling that you want to perform
+an action on an instance that is not actively in service; for example,
+either when the instance launches or before the instance terminates.
 
 This step is a part of the procedure for adding a lifecycle hook to an
 Auto Scaling group:
@@ -1562,14 +1631,15 @@ Auto Scaling group:
 =item 1.
 
 (Optional) Create a Lambda function and a rule that allows CloudWatch
-Events to invoke your Lambda function when Auto Scaling launches or
-terminates instances.
+Events to invoke your Lambda function when Amazon EC2 Auto Scaling
+launches or terminates instances.
 
 =item 2.
 
 (Optional) Create a notification target and an IAM role. The target can
 be either an Amazon SQS queue or an Amazon SNS topic. The role allows
-Auto Scaling to publish lifecycle notifications to the target.
+Amazon EC2 Auto Scaling to publish lifecycle notifications to the
+target.
 
 =item 3.
 
@@ -1589,8 +1659,8 @@ action.
 =back
 
 For more information, see Auto Scaling Lifecycle Hooks
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/lifecycle-hooks.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/lifecycle-hooks.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 If you exceed your maximum limit of lifecycle hooks, which by default
 is 50 per Auto Scaling group, the call fails. For information about
@@ -1624,7 +1694,7 @@ This configuration overwrites any existing configuration.
 
 For more information see Getting SNS Notifications When Your Auto
 Scaling Group Scales
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/ASGettingNotifications.html)
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/ASGettingNotifications.html)
 in the I<Auto Scaling User Guide>.
 
 
@@ -1709,8 +1779,8 @@ group. When updating a scheduled scaling action, if you leave a
 parameter unspecified, the corresponding value remains unchanged.
 
 For more information, see Scheduled Scaling
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/schedule_time.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/schedule_time.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 =head2 RecordLifecycleActionHeartbeat
@@ -1744,14 +1814,15 @@ Auto Scaling group:
 =item 1.
 
 (Optional) Create a Lambda function and a rule that allows CloudWatch
-Events to invoke your Lambda function when Auto Scaling launches or
-terminates instances.
+Events to invoke your Lambda function when Amazon EC2 Auto Scaling
+launches or terminates instances.
 
 =item 2.
 
 (Optional) Create a notification target and an IAM role. The target can
 be either an Amazon SQS queue or an Amazon SNS topic. The role allows
-Auto Scaling to publish lifecycle notifications to the target.
+Amazon EC2 Auto Scaling to publish lifecycle notifications to the
+target.
 
 =item 3.
 
@@ -1771,8 +1842,8 @@ action.
 =back
 
 For more information, see Auto Scaling Lifecycle
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroupLifecycle.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroupLifecycle.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 =head2 ResumeProcesses
@@ -1790,13 +1861,12 @@ Each argument is described in detail in: L<Paws::AutoScaling::ResumeProcesses>
 
 Returns: nothing
 
-Resumes the specified suspended Auto Scaling processes, or all
+Resumes the specified suspended automatic scaling processes, or all
 suspended process, for the specified Auto Scaling group.
 
-For more information, see Suspending and Resuming Auto Scaling
-Processes
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/as-suspend-resume-processes.html)
-in the I<Auto Scaling User Guide>.
+For more information, see Suspending and Resuming Scaling Processes
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 =head2 SetDesiredCapacity
@@ -1818,9 +1888,10 @@ Returns: nothing
 
 Sets the size of the specified Auto Scaling group.
 
-For more information about desired capacity, see What Is Auto Scaling?
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/WhatIsAutoScaling.html)
-in the I<Auto Scaling User Guide>.
+For more information about desired capacity, see What Is Amazon EC2
+Auto Scaling?
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/WhatIsAutoScaling.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 =head2 SetInstanceHealth
@@ -1843,8 +1914,8 @@ Returns: nothing
 Sets the health status of the specified instance.
 
 For more information, see Health Checks
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/healthcheck.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 =head2 SetInstanceProtection
@@ -1867,8 +1938,8 @@ Returns: a L<Paws::AutoScaling::SetInstanceProtectionAnswer> instance
 Updates the instance protection settings of the specified instances.
 
 For more information, see Instance Protection
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/as-instance-termination.html#instance-protection)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html#instance-protection)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 =head2 SuspendProcesses
@@ -1886,18 +1957,17 @@ Each argument is described in detail in: L<Paws::AutoScaling::SuspendProcesses>
 
 Returns: nothing
 
-Suspends the specified Auto Scaling processes, or all processes, for
-the specified Auto Scaling group.
+Suspends the specified automatic scaling processes, or all processes,
+for the specified Auto Scaling group.
 
 Note that if you suspend either the C<Launch> or C<Terminate> process
 types, it can prevent other process types from functioning properly.
 
 To resume processes that have been suspended, use ResumeProcesses.
 
-For more information, see Suspending and Resuming Auto Scaling
-Processes
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/as-suspend-resume-processes.html)
-in the I<Auto Scaling User Guide>.
+For more information, see Suspending and Resuming Scaling Processes
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 =head2 TerminateInstanceInAutoScalingGroup

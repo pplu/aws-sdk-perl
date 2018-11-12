@@ -10,9 +10,11 @@ package Paws::Glue::JobRun;
   has JobName => (is => 'ro', isa => 'Str');
   has JobRunState => (is => 'ro', isa => 'Str');
   has LastModifiedOn => (is => 'ro', isa => 'Str');
+  has LogGroupName => (is => 'ro', isa => 'Str');
   has NotificationProperty => (is => 'ro', isa => 'Paws::Glue::NotificationProperty');
   has PredecessorRuns => (is => 'ro', isa => 'ArrayRef[Paws::Glue::Predecessor]');
   has PreviousRunId => (is => 'ro', isa => 'Str');
+  has SecurityConfiguration => (is => 'ro', isa => 'Str');
   has StartedOn => (is => 'ro', isa => 'Str');
   has Timeout => (is => 'ro', isa => 'Int');
   has TriggerName => (is => 'ro', isa => 'Str');
@@ -119,6 +121,16 @@ topic in the developer guide.
   The last time this job run was modified.
 
 
+=head2 LogGroupName => Str
+
+  The name of the log group for secure logging, that can be server-side
+encrypted in CloudWatch using KMS. This name can be C</aws-glue/jobs/>,
+in which case the default encryption is C<NONE>. If you add a role name
+and SecurityConfiguration name (in other words,
+C</aws-glue/jobs-yourRoleName-yourSecurityConfigurationName/>), then
+that security configuration will be used to encrypt the log group.
+
+
 =head2 NotificationProperty => L<Paws::Glue::NotificationProperty>
 
   Specifies configuration properties of a job run notification.
@@ -135,6 +147,12 @@ topic in the developer guide.
 specified in the StartJobRun action.
 
 
+=head2 SecurityConfiguration => Str
+
+  The name of the SecurityConfiguration structure to be used with this
+job run.
+
+
 =head2 StartedOn => Str
 
   The date and time at which this job run was started.
@@ -142,7 +160,10 @@ specified in the StartJobRun action.
 
 =head2 Timeout => Int
 
-  The job run timeout in minutes.
+  The JobRun timeout in minutes. This is the maximum time that a job run
+can consume resources before it is terminated and enters C<TIMEOUT>
+status. The default is 2,880 minutes (48 hours). This overrides the
+timeout value set in the parent job.
 
 
 =head2 TriggerName => Str

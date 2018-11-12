@@ -117,7 +117,7 @@ that checkpoint.
 
 =head2 ReplicationTaskIdentifier => Str
 
-  The replication task identifier.
+  The user-assigned replication task identifier or name.
 
 Constraints:
 

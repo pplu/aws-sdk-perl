@@ -70,6 +70,11 @@ package Paws::OpsWorksCM;
     my $call_object = $self->new_with_coercions('Paws::OpsWorksCM::DisassociateNode', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ExportServerEngineAttribute {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::OpsWorksCM::ExportServerEngineAttribute', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RestoreServer {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::OpsWorksCM::RestoreServer', @_);
@@ -93,7 +98,7 @@ package Paws::OpsWorksCM;
   
 
 
-  sub operations { qw/AssociateNode CreateBackup CreateServer DeleteBackup DeleteServer DescribeAccountAttributes DescribeBackups DescribeEvents DescribeNodeAssociationStatus DescribeServers DisassociateNode RestoreServer StartMaintenance UpdateServer UpdateServerEngineAttributes / }
+  sub operations { qw/AssociateNode CreateBackup CreateServer DeleteBackup DeleteServer DescribeAccountAttributes DescribeBackups DescribeEvents DescribeNodeAssociationStatus DescribeServers DisassociateNode ExportServerEngineAttribute RestoreServer StartMaintenance UpdateServer UpdateServerEngineAttributes / }
 
 1;
 
@@ -124,7 +129,10 @@ Paws::OpsWorksCM - Perl Interface to AWS AWS OpsWorks for Chef Automate
 AWS OpsWorks CM
 
 AWS OpsWorks for configuration management (CM) is a service that runs
-and manages configuration management servers.
+and manages configuration management servers. You can use AWS OpsWorks
+CM to create and manage AWS OpsWorks for Chef Automate and AWS OpsWorks
+for Puppet Enterprise servers, and add or remove nodes for the servers
+to manage.
 
 B<Glossary of terms>
 
@@ -185,7 +193,31 @@ opsworks-cm.us-east-1.amazonaws.com
 
 =item *
 
+opsworks-cm.us-east-2.amazonaws.com
+
+=item *
+
+opsworks-cm.us-west-1.amazonaws.com
+
+=item *
+
 opsworks-cm.us-west-2.amazonaws.com
+
+=item *
+
+opsworks-cm.ap-northeast-1.amazonaws.com
+
+=item *
+
+opsworks-cm.ap-southeast-1.amazonaws.com
+
+=item *
+
+opsworks-cm.ap-southeast-2.amazonaws.com
+
+=item *
+
+opsworks-cm.eu-central-1.amazonaws.com
 
 =item *
 
@@ -198,7 +230,7 @@ B<Throttling limits>
 All API operations allow for five requests per second with a burst of
 10 requests per second.
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/opsworks/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/opsworks/>
 
 
 =head1 METHODS
@@ -560,6 +592,36 @@ C<HEALTHY> state. Otherwise, an C<InvalidStateException> is thrown. A
 C<ResourceNotFoundException> is thrown when the server does not exist.
 A C<ValidationException> is raised when parameters of the request are
 not valid.
+
+
+=head2 ExportServerEngineAttribute
+
+=over
+
+=item ExportAttributeName => Str
+
+=item ServerName => Str
+
+=item [InputAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::OpsWorksCM::ExportServerEngineAttribute>
+
+Returns: a L<Paws::OpsWorksCM::ExportServerEngineAttributeResponse> instance
+
+Exports a specified server engine attribute as a base64-encoded string.
+For example, you can export user data that you can use in EC2 to
+associate nodes with a server.
+
+This operation is synchronous.
+
+A C<ValidationException> is raised when parameters of the request are
+not valid. A C<ResourceNotFoundException> is thrown when the server
+does not exist. An C<InvalidStateException> is thrown when the server
+is in any of the following states: CREATING, TERMINATED, FAILED or
+DELETING.
 
 
 =head2 RestoreServer

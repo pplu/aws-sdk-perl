@@ -36,11 +36,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $RegisterContainerInstanceResponse = $ecs->RegisterContainerInstance(
       Attributes => [
         {
-          name     => 'MyString',
-          targetId => 'MyString',
-          targetType =>
+          Name     => 'MyString',
+          TargetId => 'MyString',
+          TargetType =>
             'container-instance',    # values: container-instance; OPTIONAL
-          value => 'MyString',
+          Value => 'MyString',
         },
         ...
       ],                             # OPTIONAL
@@ -50,19 +50,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InstanceIdentityDocumentSignature => 'MyString',    # OPTIONAL
       TotalResources                    => [
         {
-          doubleValue    => 1,                            # OPTIONAL
-          integerValue   => 1,                            # OPTIONAL
-          longValue      => 1,                            # OPTIONAL
-          name           => 'MyString',
-          stringSetValue => [ 'MyString', ... ],          # OPTIONAL
-          type           => 'MyString',
+          DoubleValue    => 1,                            # OPTIONAL
+          IntegerValue   => 1,                            # OPTIONAL
+          LongValue      => 1,                            # OPTIONAL
+          Name           => 'MyString',
+          StringSetValue => [ 'MyString', ... ],          # OPTIONAL
+          Type           => 'MyString',
         },
         ...
       ],                                                  # OPTIONAL
       VersionInfo => {
-        agentHash     => 'MyString',
-        agentVersion  => 'MyString',
-        dockerVersion => 'MyString',
+        AgentHash     => 'MyString',
+        AgentVersion  => 'MyString',
+        DockerVersion => 'MyString',
       },                                                  # OPTIONAL
     );
 

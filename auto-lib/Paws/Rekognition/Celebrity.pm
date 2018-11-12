@@ -53,8 +53,8 @@ on the image.
 
 =head2 MatchConfidence => Num
 
-  The confidence, in percentage, that Rekognition has that the recognized
-face is the celebrity.
+  The confidence, in percentage, that Amazon Rekognition has that the
+recognized face is the celebrity.
 
 
 =head2 Name => Str

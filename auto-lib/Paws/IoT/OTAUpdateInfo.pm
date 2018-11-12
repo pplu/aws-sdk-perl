@@ -3,6 +3,7 @@ package Paws::IoT::OTAUpdateInfo;
   has AdditionalParameters => (is => 'ro', isa => 'Paws::IoT::AdditionalParameterMap', request_name => 'additionalParameters', traits => ['NameInRequest']);
   has AwsIotJobArn => (is => 'ro', isa => 'Str', request_name => 'awsIotJobArn', traits => ['NameInRequest']);
   has AwsIotJobId => (is => 'ro', isa => 'Str', request_name => 'awsIotJobId', traits => ['NameInRequest']);
+  has AwsJobExecutionsRolloutConfig => (is => 'ro', isa => 'Paws::IoT::AwsJobExecutionsRolloutConfig', request_name => 'awsJobExecutionsRolloutConfig', traits => ['NameInRequest']);
   has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has ErrorInfo => (is => 'ro', isa => 'Paws::IoT::ErrorInfo', request_name => 'errorInfo', traits => ['NameInRequest']);
@@ -61,6 +62,11 @@ Information about an OTA update.
 =head2 AwsIotJobId => Str
 
   The AWS IoT job ID associated with the OTA update.
+
+
+=head2 AwsJobExecutionsRolloutConfig => L<Paws::IoT::AwsJobExecutionsRolloutConfig>
+
+  Configuration for the rollout of OTA updates.
 
 
 =head2 CreationDate => Str

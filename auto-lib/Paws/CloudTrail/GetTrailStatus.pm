@@ -76,7 +76,7 @@ requesting status. To get the status of a shadow trail (a replication
 of the trail in another region), you must specify its ARN. The format
 of a trail ARN is:
 
-C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>
+C<arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail>
 
 
 

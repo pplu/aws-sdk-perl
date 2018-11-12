@@ -18,13 +18,13 @@ Paws::EC2::CreateEgressOnlyInternetGatewayResult
 
 =head2 ClientToken => Str
 
-Unique, case-sensitive identifier you provide to ensure the idempotency
-of the request.
+Unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request.
 
 
 =head2 EgressOnlyInternetGateway => L<Paws::EC2::EgressOnlyInternetGateway>
 
-Information about the egress-only Internet gateway.
+Information about the egress-only internet gateway.
 
 
 =head2 _request_id => Str

@@ -56,8 +56,8 @@ The name of the Auto Scaling group.
 =head2 B<REQUIRED> NotificationTypes => ArrayRef[Str|Undef]
 
 The type of event that will cause the notification to be sent. For
-details about notification types supported by Auto Scaling, see
-DescribeAutoScalingNotificationTypes.
+details about notification types supported by Amazon EC2 Auto Scaling,
+see DescribeAutoScalingNotificationTypes.
 
 
 

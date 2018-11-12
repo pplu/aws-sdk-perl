@@ -40,7 +40,9 @@ This class has no description
 =head2 ResourceType => Str
 
   The type of resource to tag. Currently, the resource types that support
-tagging on creation are C<instance>, C<snapshot>, and C<volume>.
+tagging on creation are C<fleet>, C<dedicated-host>, C<instance>,
+C<snapshot>, and C<volume>. To tag a resource after it has been
+created, see CreateTags.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]

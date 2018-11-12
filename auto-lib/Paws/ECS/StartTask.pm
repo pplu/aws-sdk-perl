@@ -39,32 +39,32 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Cluster              => 'MyString',            # OPTIONAL
       Group                => 'MyString',            # OPTIONAL
       NetworkConfiguration => {
-        awsvpcConfiguration => {
-          subnets => [ 'MyString', ... ],
-          assignPublicIp => 'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
-          securityGroups => [ 'MyString', ... ],
+        AwsvpcConfiguration => {
+          Subnets => [ 'MyString', ... ],
+          AssignPublicIp => 'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
+          SecurityGroups => [ 'MyString', ... ],
         },    # OPTIONAL
       },    # OPTIONAL
       Overrides => {
-        containerOverrides => [
+        ContainerOverrides => [
           {
-            command     => [ 'MyString', ... ],
-            cpu         => 1,                     # OPTIONAL
-            environment => [
+            Command     => [ 'MyString', ... ],
+            Cpu         => 1,                     # OPTIONAL
+            Environment => [
               {
-                name  => 'MyString',
-                value => 'MyString',
+                Name  => 'MyString',
+                Value => 'MyString',
               },
               ...
             ],                                    # OPTIONAL
-            memory            => 1,               # OPTIONAL
-            memoryReservation => 1,               # OPTIONAL
-            name              => 'MyString',
+            Memory            => 1,               # OPTIONAL
+            MemoryReservation => 1,               # OPTIONAL
+            Name              => 'MyString',
           },
           ...
         ],                                        # OPTIONAL
-        executionRoleArn => 'MyString',
-        taskRoleArn      => 'MyString',
+        ExecutionRoleArn => 'MyString',
+        TaskRoleArn      => 'MyString',
       },    # OPTIONAL
       StartedBy => 'MyString',    # OPTIONAL
     );
@@ -108,7 +108,7 @@ family:my-family-name).
 =head2 NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>
 
 The VPC subnet and security group configuration for tasks that receive
-their own Elastic Network Interface by using the C<awsvpc> networking
+their own elastic network interface by using the C<awsvpc> networking
 mode.
 
 

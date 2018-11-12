@@ -14,6 +14,7 @@ package Paws::RDS::CreateDBInstance;
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
   has Domain => (is => 'ro', isa => 'Str');
   has DomainIAMRoleName => (is => 'ro', isa => 'Str');
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -31,6 +32,7 @@ package Paws::RDS::CreateDBInstance;
   has MultiAZ => (is => 'ro', isa => 'Bool');
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has PerformanceInsightsKMSKeyId => (is => 'ro', isa => 'Str');
+  has PerformanceInsightsRetentionPeriod => (is => 'ro', isa => 'Int');
   has Port => (is => 'ro', isa => 'Int');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
@@ -299,7 +301,7 @@ Must be a value from 0 to 35
 
 =item *
 
-Cannot be set to 0 if the DB instance is a source to Read Replicas
+Can't be set to 0 if the DB instance is a source to Read Replicas
 
 =back
 
@@ -365,7 +367,7 @@ First character must be a letter.
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens.
+Can't end with a hyphen or contain two consecutive hyphens.
 
 =back
 
@@ -396,7 +398,7 @@ Must contain 1 to 64 letters or numbers.
 
 =item *
 
-Cannot be a word reserved by the specified database engine
+Can't be a word reserved by the specified database engine
 
 =back
 
@@ -416,7 +418,7 @@ Must contain 1 to 64 letters or numbers.
 
 =item *
 
-Cannot be a word reserved by the specified database engine
+Can't be a word reserved by the specified database engine
 
 =back
 
@@ -441,7 +443,7 @@ letters, underscores, or digits (0-9).
 
 =item *
 
-Cannot be a word reserved by the specified database engine
+Can't be a word reserved by the specified database engine
 
 =back
 
@@ -459,7 +461,7 @@ Constraints:
 
 =item *
 
-Cannot be longer than 8 characters
+Can't be longer than 8 characters
 
 =back
 
@@ -483,7 +485,7 @@ Must contain 1 to 64 letters or numbers.
 
 =item *
 
-Cannot be a word reserved by the specified database engine
+Can't be a word reserved by the specified database engine
 
 =back
 
@@ -510,7 +512,7 @@ First character must be a letter
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens
+Can't end with a hyphen or contain two consecutive hyphens
 
 =back
 
@@ -533,6 +535,15 @@ If there is no DB subnet group, then it is a non-VPC DB instance.
 
 
 
+=head2 DeletionProtection => Bool
+
+Indicates if the DB instance should have deletion protection enabled.
+The database can't be deleted when this value is set to true. The
+default is false. For more information, see Deleting a DB Instance
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
+
+
+
 =head2 Domain => Str
 
 Specify the Active Directory Domain to create the instance in.
@@ -549,7 +560,11 @@ the Directory Service.
 =head2 EnableCloudwatchLogsExports => ArrayRef[Str|Undef]
 
 The list of log types that need to be enabled for exporting to
-CloudWatch Logs.
+CloudWatch Logs. The values in the list depend on the DB engine being
+used. For more information, see Publishing Database Logs to Amazon
+CloudWatch Logs
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
+in the I<Amazon Relational Database Service User Guide>.
 
 
 
@@ -720,12 +735,11 @@ The amount of Provisioned IOPS (input/output operations per second) to
 be initially allocated for the DB instance. For information about valid
 Iops values, see see Amazon RDS Provisioned IOPS Storage to Improve
 Performance
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS)
+in the I<Amazon RDS User Guide>.
 
 Constraints: Must be a multiple between 1 and 50 of the storage amount
-for the DB instance. Must also be an integer multiple of 1000. For
-example, if the size of your DB instance is 500 GiB, then your C<Iops>
-value can be 2000, 3000, 4000, or 5000.
+for the DB instance.
 
 
 
@@ -786,7 +800,7 @@ Must be 1 to 16 letters or numbers.
 
 =item *
 
-Cannot be a reserved word for the chosen database engine.
+Can't be a reserved word for the chosen database engine.
 
 =back
 
@@ -810,7 +824,7 @@ The first character must be a letter.
 
 =item *
 
-Cannot be a reserved word for the chosen database engine.
+Can't be a reserved word for the chosen database engine.
 
 =back
 
@@ -834,7 +848,7 @@ First character must be a letter.
 
 =item *
 
-Cannot be a reserved word for the chosen database engine.
+Can't be a reserved word for the chosen database engine.
 
 =back
 
@@ -858,7 +872,7 @@ First character must be a letter.
 
 =item *
 
-Cannot be a reserved word for the chosen database engine.
+Can't be a reserved word for the chosen database engine.
 
 =back
 
@@ -882,7 +896,7 @@ First character must be a letter.
 
 =item *
 
-Cannot be a reserved word for the chosen database engine.
+Can't be a reserved word for the chosen database engine.
 
 =back
 
@@ -940,7 +954,8 @@ The ARN for the IAM role that permits RDS to send enhanced monitoring
 metrics to Amazon CloudWatch Logs. For example,
 C<arn:aws:iam:123456789012:role/emaccess>. For information on creating
 a monitoring role, go to Setting Up and Enabling Enhanced Monitoring
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html#USER_Monitoring.OS.Enabling).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html#USER_Monitoring.OS.Enabling)
+in the I<Amazon RDS User Guide>.
 
 If C<MonitoringInterval> is set to a value other than 0, then you must
 supply a C<MonitoringRoleArn> value.
@@ -970,6 +985,13 @@ be removed from a DB instance once it is associated with a DB instance
 The AWS KMS key identifier for encryption of Performance Insights data.
 The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier,
 or the KMS key alias for the KMS encryption key.
+
+
+
+=head2 PerformanceInsightsRetentionPeriod => Int
+
+The amount of time, in days, to retain Performance Insights data. Valid
+values are 7 or 731 (2 years).
 
 
 
@@ -1029,7 +1051,8 @@ Type: Integer
 The daily time range during which automated backups are created if
 automated backups are enabled, using the C<BackupRetentionPeriod>
 parameter. For more information, see The Backup Window
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow)
+in the I<Amazon RDS User Guide>.
 
 B<Amazon Aurora>
 
@@ -1039,7 +1062,8 @@ managed by the DB cluster. For more information, see CreateDBCluster.
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region. To see the time blocks available,
 see Adjusting the Preferred DB Instance Maintenance Window
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow)
+in the I<Amazon RDS User Guide>.
 
 Constraints:
 
@@ -1098,7 +1122,8 @@ A value that specifies the order in which an Aurora Replica is promoted
 to the primary instance after a failure of the existing primary
 instance. For more information, see Fault Tolerance for an Aurora DB
 Cluster
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance).
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance)
+in the I<Amazon Aurora User Guide>.
 
 Default: 1
 
@@ -1114,27 +1139,43 @@ DNS name, which resolves to a public IP address. A value of false
 specifies an internal instance with a DNS name that resolves to a
 private IP address.
 
-Default: The default behavior varies depending on whether a VPC has
-been requested or not. The following list shows the default behavior in
-each case.
+Default: The default behavior varies depending on whether
+C<DBSubnetGroupName> is specified.
+
+If C<DBSubnetGroupName> is not specified, and C<PubliclyAccessible> is
+not specified, the following applies:
 
 =over
 
 =item *
 
-B<Default VPC:> true
+If the default VPC in the target region doesnE<rsquo>t have an Internet
+gateway attached to it, the DB instance is private.
 
 =item *
 
-B<VPC:> false
+If the default VPC in the target region has an Internet gateway
+attached to it, the DB instance is public.
 
 =back
 
-If no DB subnet group has been specified as part of the request and the
-PubliclyAccessible value has not been set, the DB instance is publicly
-accessible. If a specific DB subnet group has been specified as part of
-the request and the PubliclyAccessible value has not been set, the DB
-instance is private.
+If C<DBSubnetGroupName> is specified, and C<PubliclyAccessible> is not
+specified, the following applies:
+
+=over
+
+=item *
+
+If the subnets are part of a VPC that doesnE<rsquo>t have an Internet
+gateway attached to it, the DB instance is private.
+
+=item *
+
+If the subnets are part of a VPC that has an Internet gateway attached
+to it, the DB instance is public.
+
+=back
+
 
 
 

@@ -31,8 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $WorkflowExecutionDetail = $swf->DescribeWorkflowExecution(
       Domain    => 'MyDomainName',
       Execution => {
-        runId      => 'MyWorkflowRunId',    # min: 1, max: 64
-        workflowId => 'MyWorkflowId',       # min: 1, max: 256
+        RunId      => 'MyWorkflowRunId',    # min: 1, max: 64
+        WorkflowId => 'MyWorkflowId',       # min: 1, max: 256
 
       },
 

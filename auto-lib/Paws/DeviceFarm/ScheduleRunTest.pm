@@ -3,6 +3,7 @@ package Paws::DeviceFarm::ScheduleRunTest;
   has Filter => (is => 'ro', isa => 'Str', request_name => 'filter', traits => ['NameInRequest']);
   has Parameters => (is => 'ro', isa => 'Paws::DeviceFarm::TestParameters', request_name => 'parameters', traits => ['NameInRequest']);
   has TestPackageArn => (is => 'ro', isa => 'Str', request_name => 'testPackageArn', traits => ['NameInRequest']);
+  has TestSpecArn => (is => 'ro', isa => 'Str', request_name => 'testSpecArn', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
 1;
 
@@ -218,6 +219,11 @@ Running multiple tests: "com.android.abc.Test1,com.android.abc.Test2"
 =head2 TestPackageArn => Str
 
   The ARN of the uploaded test that will be run.
+
+
+=head2 TestSpecArn => Str
+
+  The ARN of the YAML-formatted test specification.
 
 
 =head2 B<REQUIRED> Type => Str

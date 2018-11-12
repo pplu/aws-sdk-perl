@@ -46,9 +46,8 @@ replicating the objects.
 
 =head2 B<REQUIRED> Rules => ArrayRef[L<Paws::S3::ReplicationRule>]
 
-  Container for information about a particular replication rule.
-Replication configuration must have at least one rule and can contain
-up to 1,000 rules.
+  Container for one or more replication rules. Replication configuration
+must have at least one rule and can contain up to 1,000 rules.
 
 
 

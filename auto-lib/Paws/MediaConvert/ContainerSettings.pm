@@ -1,6 +1,6 @@
 package Paws::MediaConvert::ContainerSettings;
   use Moose;
-  has Container => (is => 'ro', isa => 'Str', request_name => 'container', traits => ['NameInRequest'], required => 1);
+  has Container => (is => 'ro', isa => 'Str', request_name => 'container', traits => ['NameInRequest']);
   has F4vSettings => (is => 'ro', isa => 'Paws::MediaConvert::F4vSettings', request_name => 'f4vSettings', traits => ['NameInRequest']);
   has M2tsSettings => (is => 'ro', isa => 'Paws::MediaConvert::M2tsSettings', request_name => 'm2tsSettings', traits => ['NameInRequest']);
   has M3u8Settings => (is => 'ro', isa => 'Paws::MediaConvert::M3u8Settings', request_name => 'm3u8Settings', traits => ['NameInRequest']);
@@ -41,7 +41,7 @@ Container specific settings.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Container => Str
+=head2 Container => Str
 
   
 

@@ -142,16 +142,17 @@ Be registered with the authorization server.
 
 =item *
 
-Not use HTTP without TLS (i.e. use HTTPS instead of HTTP).
-
-=item *
-
 Not include a fragment component.
 
 =back
 
 See OAuth 2.0 - Redirection Endpoint
 (https://tools.ietf.org/html/rfc6749#section-3.1.2).
+
+Amazon Cognito requires HTTPS over HTTP except for http://localhost for
+testing purposes only.
+
+App callback URLs such as myapp://example are also supported.
 
 
 
@@ -179,16 +180,17 @@ Be registered with the authorization server.
 
 =item *
 
-Not use HTTP without TLS (i.e. use HTTPS instead of HTTP).
-
-=item *
-
 Not include a fragment component.
 
 =back
 
 See OAuth 2.0 - Redirection Endpoint
 (https://tools.ietf.org/html/rfc6749#section-3.1.2).
+
+Amazon Cognito requires HTTPS over HTTP except for http://localhost for
+testing purposes only.
+
+App callback URLs such as myapp://example are also supported.
 
 
 

@@ -60,21 +60,20 @@ request parameters that the C<CreateQueue> action uses:
 
 C<DelaySeconds> - The length of time, in seconds, for which the
 delivery of all messages in the queue is delayed. Valid values: An
-integer from 0 to 900 seconds (15 minutes). The default is 0 (zero).
+integer from 0 to 900 seconds (15 minutes). Default: 0.
 
 =item *
 
 C<MaximumMessageSize> - The limit of how many bytes a message can
 contain before Amazon SQS rejects it. Valid values: An integer from
-1,024 bytes (1 KiB) to 262,144 bytes (256 KiB). The default is 262,144
-(256 KiB).
+1,024 bytes (1 KiB) to 262,144 bytes (256 KiB). Default: 262,144 (256
+KiB).
 
 =item *
 
 C<MessageRetentionPeriod> - The length of time, in seconds, for which
 Amazon SQS retains a message. Valid values: An integer from 60 seconds
-(1 minute) to 1,209,600 seconds (14 days). The default is 345,600 (4
-days).
+(1 minute) to 1,209,600 seconds (14 days). Default: 345,600 (4 days).
 
 =item *
 
@@ -87,7 +86,7 @@ in the I<Amazon IAM User Guide>.
 
 C<ReceiveMessageWaitTimeSeconds> - The length of time, in seconds, for
 which a C< ReceiveMessage > action waits for a message to arrive. Valid
-values: An integer from 0 to 20 (seconds). The default is 0 (zero).
+values: An integer from 0 to 20 (seconds). Default: 0.
 
 =item *
 
@@ -109,7 +108,9 @@ C<maxReceiveCount> is exceeded.
 =item *
 
 C<maxReceiveCount> - The number of times a message is delivered to the
-source queue before being moved to the dead-letter queue.
+source queue before being moved to the dead-letter queue. When the
+C<ReceiveCount> for a message exceeds the C<maxReceiveCount> for a
+queue, Amazon SQS moves the message to the dead-letter-queue.
 
 =back
 
@@ -119,9 +120,10 @@ standard queue.
 
 =item *
 
-C<VisibilityTimeout> - The visibility timeout for the queue. Valid
-values: An integer from 0 to 43,200 (12 hours). The default is 30. For
-more information about the visibility timeout, see Visibility Timeout
+C<VisibilityTimeout> - The visibility timeout for the queue, in
+seconds. Valid values: An integer from 0 to 43,200 (12 hours). Default:
+30. For more information about the visibility timeout, see Visibility
+Timeout
 (http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
 in the I<Amazon Simple Queue Service Developer Guide>.
 
@@ -150,10 +152,10 @@ which Amazon SQS can reuse a data key
 (http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#data-keys)
 to encrypt or decrypt messages before calling AWS KMS again. An integer
 representing seconds, between 60 seconds (1 minute) and 86,400 seconds
-(24 hours). The default is 300 (5 minutes). A shorter time period
-provides better security but results in more calls to KMS which might
-incur charges after Free Tier. For more information, see How Does the
-Data Key Reuse Period Work?
+(24 hours). Default: 300 (5 minutes). A shorter time period provides
+better security but results in more calls to KMS which might incur
+charges after Free Tier. For more information, see How Does the Data
+Key Reuse Period Work?
 (http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-how-does-the-data-key-reuse-period-work).
 
 =back
@@ -232,37 +234,6 @@ delivered.
 
 =back
 
-Any other valid special request parameters (such as the following) are
-ignored:
-
-=over
-
-=item *
-
-C<ApproximateNumberOfMessages>
-
-=item *
-
-C<ApproximateNumberOfMessagesDelayed>
-
-=item *
-
-C<ApproximateNumberOfMessagesNotVisible>
-
-=item *
-
-C<CreatedTimestamp>
-
-=item *
-
-C<LastModifiedTimestamp>
-
-=item *
-
-C<QueueArn>
-
-=back
-
 
 
 
@@ -287,7 +258,7 @@ A FIFO queue name must end with the C<.fifo> suffix.
 
 =back
 
-Queue names are case-sensitive.
+Queue URLs and names are case-sensitive.
 
 
 

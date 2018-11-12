@@ -25,9 +25,9 @@ The current status of the face search job.
 Valid values are: C<"IN_PROGRESS">, C<"SUCCEEDED">, C<"FAILED">
 =head2 NextToken => Str
 
-If the response is truncated, Rekognition Video returns this token that
-you can use in the subsequent request to retrieve the next set of
-search results.
+If the response is truncated, Amazon Rekognition Video returns this
+token that you can use in the subsequent request to retrieve the next
+set of search results.
 
 
 =head2 Persons => ArrayRef[L<Paws::Rekognition::PersonMatch>]
@@ -51,7 +51,7 @@ message.
 
 Information about a video that Amazon Rekognition analyzed.
 C<Videometadata> is returned in every page of paginated responses from
-a Rekognition Video operation.
+a Amazon Rekognition Video operation.
 
 
 =head2 _request_id => Str

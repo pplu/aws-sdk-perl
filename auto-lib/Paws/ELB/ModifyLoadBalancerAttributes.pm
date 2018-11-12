@@ -36,7 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       {
         'LoadBalancerAttributes' => {
           'CrossZoneLoadBalancing' => {
-            'Enabled' => true
+            'Enabled' => 1
           }
         },
         'LoadBalancerName' => 'my-load-balancer'
@@ -57,7 +57,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       {
         'LoadBalancerAttributes' => {
           'ConnectionDraining' => {
-            'Enabled' => true,
+            'Enabled' => 1,
             'Timeout' => 300
           }
         },

@@ -47,12 +47,13 @@ reason (if applicable) for the query execution.
 
 =head2 State => Str
 
-  The state of query execution. C<SUBMITTED> indicates that the query is
-queued for execution. C<RUNNING> indicates that the query is scanning
-data and returning results. C<SUCCEEDED> indicates that the query
-completed without error. C<FAILED> indicates that the query experienced
-an error and did not complete processing. C<CANCELLED> indicates that
-user input interrupted query execution.
+  The state of query execution. C<QUEUED> state is listed but is not used
+by Athena and is reserved for future use. C<RUNNING> indicates that the
+query has been submitted to the service, and Athena will execute the
+query as soon as resources are available. C<SUCCEEDED> indicates that
+the query completed without error. C<FAILED> indicates that the query
+experienced an error and did not complete processing.C<CANCELLED>
+indicates that user input interrupted query execution.
 
 
 =head2 StateChangeReason => Str

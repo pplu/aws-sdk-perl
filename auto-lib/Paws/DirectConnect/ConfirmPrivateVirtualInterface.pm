@@ -50,33 +50,19 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =head2 DirectConnectGatewayId => Str
 
-ID of the direct connect gateway that will be attached to the virtual
-interface.
-
-A direct connect gateway can be managed via the AWS Direct Connect
-console or the CreateDirectConnectGateway action.
-
-Default: None
+The ID of the Direct Connect gateway.
 
 
 
 =head2 VirtualGatewayId => Str
 
-ID of the virtual private gateway that will be attached to the virtual
-interface.
-
-A virtual private gateway can be managed via the Amazon Virtual Private
-Cloud (VPC) console or the EC2 CreateVpnGateway
-(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-CreateVpnGateway.html)
-action.
-
-Default: None
+The ID of the virtual private gateway.
 
 
 
 =head2 B<REQUIRED> VirtualInterfaceId => Str
 
-
+The ID of the virtual interface.
 
 
 

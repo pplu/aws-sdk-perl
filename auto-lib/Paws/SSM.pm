@@ -25,6 +25,11 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::CancelCommand', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CancelMaintenanceWindowExecution {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::CancelMaintenanceWindowExecution', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateActivation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::CreateActivation', @_);
@@ -135,6 +140,16 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::DescribeAssociation', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeAssociationExecutions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::DescribeAssociationExecutions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeAssociationExecutionTargets {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::DescribeAssociationExecutionTargets', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeAutomationExecutions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::DescribeAutomationExecutions', @_);
@@ -220,6 +235,16 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::DescribeMaintenanceWindows', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeMaintenanceWindowSchedule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::DescribeMaintenanceWindowSchedule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeMaintenanceWindowsForTarget {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::DescribeMaintenanceWindowsForTarget', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeMaintenanceWindowTargets {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::DescribeMaintenanceWindowTargets', @_);
@@ -250,6 +275,11 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::DescribePatchGroupState', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeSessions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::DescribeSessions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetAutomationExecution {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::GetAutomationExecution', @_);
@@ -258,6 +288,11 @@ package Paws::SSM;
   sub GetCommandInvocation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::GetCommandInvocation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetConnectionStatus {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::GetConnectionStatus', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetDefaultPatchBaseline {
@@ -338,6 +373,11 @@ package Paws::SSM;
   sub GetPatchBaselineForPatchGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::GetPatchBaselineForPatchGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub LabelParameterVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::LabelParameterVersion', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListAssociations {
@@ -445,6 +485,11 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::RemoveTagsFromResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ResumeSession {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::ResumeSession', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub SendAutomationSignal {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::SendAutomationSignal', @_);
@@ -455,14 +500,29 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::SendCommand', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartAssociationsOnce {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::StartAssociationsOnce', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartAutomationExecution {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::StartAutomationExecution', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartSession {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::StartSession', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StopAutomationExecution {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::StopAutomationExecution', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TerminateSession {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::TerminateSession', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateAssociation {
@@ -720,7 +780,7 @@ package Paws::SSM;
   }
 
 
-  sub operations { qw/AddTagsToResource CancelCommand CreateActivation CreateAssociation CreateAssociationBatch CreateDocument CreateMaintenanceWindow CreatePatchBaseline CreateResourceDataSync DeleteActivation DeleteAssociation DeleteDocument DeleteInventory DeleteMaintenanceWindow DeleteParameter DeleteParameters DeletePatchBaseline DeleteResourceDataSync DeregisterManagedInstance DeregisterPatchBaselineForPatchGroup DeregisterTargetFromMaintenanceWindow DeregisterTaskFromMaintenanceWindow DescribeActivations DescribeAssociation DescribeAutomationExecutions DescribeAutomationStepExecutions DescribeAvailablePatches DescribeDocument DescribeDocumentPermission DescribeEffectiveInstanceAssociations DescribeEffectivePatchesForPatchBaseline DescribeInstanceAssociationsStatus DescribeInstanceInformation DescribeInstancePatches DescribeInstancePatchStates DescribeInstancePatchStatesForPatchGroup DescribeInventoryDeletions DescribeMaintenanceWindowExecutions DescribeMaintenanceWindowExecutionTaskInvocations DescribeMaintenanceWindowExecutionTasks DescribeMaintenanceWindows DescribeMaintenanceWindowTargets DescribeMaintenanceWindowTasks DescribeParameters DescribePatchBaselines DescribePatchGroups DescribePatchGroupState GetAutomationExecution GetCommandInvocation GetDefaultPatchBaseline GetDeployablePatchSnapshotForInstance GetDocument GetInventory GetInventorySchema GetMaintenanceWindow GetMaintenanceWindowExecution GetMaintenanceWindowExecutionTask GetMaintenanceWindowExecutionTaskInvocation GetMaintenanceWindowTask GetParameter GetParameterHistory GetParameters GetParametersByPath GetPatchBaseline GetPatchBaselineForPatchGroup ListAssociations ListAssociationVersions ListCommandInvocations ListCommands ListComplianceItems ListComplianceSummaries ListDocuments ListDocumentVersions ListInventoryEntries ListResourceComplianceSummaries ListResourceDataSync ListTagsForResource ModifyDocumentPermission PutComplianceItems PutInventory PutParameter RegisterDefaultPatchBaseline RegisterPatchBaselineForPatchGroup RegisterTargetWithMaintenanceWindow RegisterTaskWithMaintenanceWindow RemoveTagsFromResource SendAutomationSignal SendCommand StartAutomationExecution StopAutomationExecution UpdateAssociation UpdateAssociationStatus UpdateDocument UpdateDocumentDefaultVersion UpdateMaintenanceWindow UpdateMaintenanceWindowTarget UpdateMaintenanceWindowTask UpdateManagedInstanceRole UpdatePatchBaseline / }
+  sub operations { qw/AddTagsToResource CancelCommand CancelMaintenanceWindowExecution CreateActivation CreateAssociation CreateAssociationBatch CreateDocument CreateMaintenanceWindow CreatePatchBaseline CreateResourceDataSync DeleteActivation DeleteAssociation DeleteDocument DeleteInventory DeleteMaintenanceWindow DeleteParameter DeleteParameters DeletePatchBaseline DeleteResourceDataSync DeregisterManagedInstance DeregisterPatchBaselineForPatchGroup DeregisterTargetFromMaintenanceWindow DeregisterTaskFromMaintenanceWindow DescribeActivations DescribeAssociation DescribeAssociationExecutions DescribeAssociationExecutionTargets DescribeAutomationExecutions DescribeAutomationStepExecutions DescribeAvailablePatches DescribeDocument DescribeDocumentPermission DescribeEffectiveInstanceAssociations DescribeEffectivePatchesForPatchBaseline DescribeInstanceAssociationsStatus DescribeInstanceInformation DescribeInstancePatches DescribeInstancePatchStates DescribeInstancePatchStatesForPatchGroup DescribeInventoryDeletions DescribeMaintenanceWindowExecutions DescribeMaintenanceWindowExecutionTaskInvocations DescribeMaintenanceWindowExecutionTasks DescribeMaintenanceWindows DescribeMaintenanceWindowSchedule DescribeMaintenanceWindowsForTarget DescribeMaintenanceWindowTargets DescribeMaintenanceWindowTasks DescribeParameters DescribePatchBaselines DescribePatchGroups DescribePatchGroupState DescribeSessions GetAutomationExecution GetCommandInvocation GetConnectionStatus GetDefaultPatchBaseline GetDeployablePatchSnapshotForInstance GetDocument GetInventory GetInventorySchema GetMaintenanceWindow GetMaintenanceWindowExecution GetMaintenanceWindowExecutionTask GetMaintenanceWindowExecutionTaskInvocation GetMaintenanceWindowTask GetParameter GetParameterHistory GetParameters GetParametersByPath GetPatchBaseline GetPatchBaselineForPatchGroup LabelParameterVersion ListAssociations ListAssociationVersions ListCommandInvocations ListCommands ListComplianceItems ListComplianceSummaries ListDocuments ListDocumentVersions ListInventoryEntries ListResourceComplianceSummaries ListResourceDataSync ListTagsForResource ModifyDocumentPermission PutComplianceItems PutInventory PutParameter RegisterDefaultPatchBaseline RegisterPatchBaselineForPatchGroup RegisterTargetWithMaintenanceWindow RegisterTaskWithMaintenanceWindow RemoveTagsFromResource ResumeSession SendAutomationSignal SendCommand StartAssociationsOnce StartAutomationExecution StartSession StopAutomationExecution TerminateSession UpdateAssociation UpdateAssociationStatus UpdateDocument UpdateDocumentDefaultVersion UpdateMaintenanceWindow UpdateMaintenanceWindowTarget UpdateMaintenanceWindowTask UpdateManagedInstanceRole UpdatePatchBaseline / }
 
 1;
 
@@ -840,6 +900,24 @@ guarantee that the command will be terminated and the underlying
 process stopped.
 
 
+=head2 CancelMaintenanceWindowExecution
+
+=over
+
+=item WindowExecutionId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::CancelMaintenanceWindowExecution>
+
+Returns: a L<Paws::SSM::CancelMaintenanceWindowExecutionResult> instance
+
+Stops a Maintenance Window execution that is already in progress and
+cancels any tasks in the window that have not already starting running.
+(Tasks already in progress will continue to completion.)
+
+
 =head2 CreateActivation
 
 =over
@@ -877,9 +955,15 @@ Up Systems Manager in Hybrid Environments
 
 =item [AssociationName => Str]
 
+=item [ComplianceSeverity => Str]
+
 =item [DocumentVersion => Str]
 
 =item [InstanceId => Str]
+
+=item [MaxConcurrency => Str]
+
+=item [MaxErrors => Str]
 
 =item [OutputLocation => L<Paws::SSM::InstanceAssociationOutputLocation>]
 
@@ -900,8 +984,8 @@ Associates the specified Systems Manager document with the specified
 instances or targets.
 
 When you associate a document with one or more instances using instance
-IDs or tags, the SSM Agent running on the instance processes the
-document and configures the instance as specified.
+IDs or tags, SSM Agent running on the instance processes the document
+and configures the instance as specified.
 
 If you associate a document with an instance that already has an
 associated document, the system throws the AssociationAlreadyExists
@@ -925,8 +1009,8 @@ Associates the specified Systems Manager document with the specified
 instances or targets.
 
 When you associate a document with one or more instances using instance
-IDs or tags, the SSM Agent running on the instance processes the
-document and configures the instance as specified.
+IDs or tags, SSM Agent running on the instance processes the document
+and configures the instance as specified.
 
 If you associate a document with an instance that already has an
 associated document, the system throws the AssociationAlreadyExists
@@ -978,6 +1062,12 @@ it with one or more running instances.
 
 =item [Description => Str]
 
+=item [EndDate => Str]
+
+=item [ScheduleTimezone => Str]
+
+=item [StartDate => Str]
+
 
 =back
 
@@ -1011,6 +1101,8 @@ Creates a new Maintenance Window.
 =item [OperatingSystem => Str]
 
 =item [RejectedPatches => ArrayRef[Str|Undef]]
+
+=item [RejectedPatchesAction => Str]
 
 =item [Sources => ArrayRef[L<Paws::SSM::PatchSource>]]
 
@@ -1360,6 +1452,54 @@ Manager document, then you retrieve the association by specifying the
 document name and the instance ID.
 
 
+=head2 DescribeAssociationExecutions
+
+=over
+
+=item AssociationId => Str
+
+=item [Filters => ArrayRef[L<Paws::SSM::AssociationExecutionFilter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::DescribeAssociationExecutions>
+
+Returns: a L<Paws::SSM::DescribeAssociationExecutionsResult> instance
+
+Use this API action to view all executions for a specific association
+ID.
+
+
+=head2 DescribeAssociationExecutionTargets
+
+=over
+
+=item AssociationId => Str
+
+=item ExecutionId => Str
+
+=item [Filters => ArrayRef[L<Paws::SSM::AssociationExecutionTargetsFilter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::DescribeAssociationExecutionTargets>
+
+Returns: a L<Paws::SSM::DescribeAssociationExecutionTargetsResult> instance
+
+Use this API action to view information about a specific execution of a
+specific association.
+
+
 =head2 DescribeAutomationExecutions
 
 =over
@@ -1553,6 +1693,10 @@ instance IDs, it returns information for all your instances. If you
 specify an instance ID that is not valid or an instance that you do not
 own, you receive an error.
 
+The IamRole field for this API action is the Amazon Identity and Access
+Management (IAM) role assigned to on-premises instances. This call does
+not return the IAM role for Amazon EC2 instances.
+
 
 =head2 DescribeInstancePatches
 
@@ -1732,6 +1876,56 @@ Returns: a L<Paws::SSM::DescribeMaintenanceWindowsResult> instance
 Retrieves the Maintenance Windows in an AWS account.
 
 
+=head2 DescribeMaintenanceWindowSchedule
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ResourceType => Str]
+
+=item [Targets => ArrayRef[L<Paws::SSM::Target>]]
+
+=item [WindowId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::DescribeMaintenanceWindowSchedule>
+
+Returns: a L<Paws::SSM::DescribeMaintenanceWindowScheduleResult> instance
+
+Retrieves information about upcoming executions of a Maintenance
+Window.
+
+
+=head2 DescribeMaintenanceWindowsForTarget
+
+=over
+
+=item ResourceType => Str
+
+=item Targets => ArrayRef[L<Paws::SSM::Target>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::DescribeMaintenanceWindowsForTarget>
+
+Returns: a L<Paws::SSM::DescribeMaintenanceWindowsForTargetResult> instance
+
+Retrieves information about the Maintenance Windows targets or tasks
+that an instance is associated with.
+
+
 =head2 DescribeMaintenanceWindowTargets
 
 =over
@@ -1863,6 +2057,29 @@ Returns: a L<Paws::SSM::DescribePatchGroupStateResult> instance
 Returns high-level aggregated patch compliance state for a patch group.
 
 
+=head2 DescribeSessions
+
+=over
+
+=item State => Str
+
+=item [Filters => ArrayRef[L<Paws::SSM::SessionFilter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::DescribeSessions>
+
+Returns: a L<Paws::SSM::DescribeSessionsResponse> instance
+
+Retrieves a list of all active sessions (both connected and
+disconnected) or terminated sessions from the past 30 days.
+
+
 =head2 GetAutomationExecution
 
 =over
@@ -1898,6 +2115,24 @@ Returns: a L<Paws::SSM::GetCommandInvocationResult> instance
 
 Returns detailed information about command execution for an invocation
 or plugin.
+
+
+=head2 GetConnectionStatus
+
+=over
+
+=item Target => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::GetConnectionStatus>
+
+Returns: a L<Paws::SSM::GetConnectionStatusResponse> instance
+
+Retrieves the Session Manager connection status for an instance to
+determine whether it is connected and ready to receive Session Manager
+connections.
 
 
 =head2 GetDefaultPatchBaseline
@@ -2235,6 +2470,78 @@ Returns: a L<Paws::SSM::GetPatchBaselineForPatchGroupResult> instance
 
 Retrieves the patch baseline that should be used for the specified
 patch group.
+
+
+=head2 LabelParameterVersion
+
+=over
+
+=item Labels => ArrayRef[Str|Undef]
+
+=item Name => Str
+
+=item [ParameterVersion => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::LabelParameterVersion>
+
+Returns: a L<Paws::SSM::LabelParameterVersionResult> instance
+
+A parameter label is a user-defined alias to help you manage different
+versions of a parameter. When you modify a parameter, Systems Manager
+automatically saves a new version and increments the version number by
+one. A label can help you remember the purpose of a parameter when
+there are multiple versions.
+
+Parameter labels have the following requirements and restrictions.
+
+=over
+
+=item *
+
+A version of a parameter can have a maximum of 10 labels.
+
+=item *
+
+You can't attach the same label to different versions of the same
+parameter. For example, if version 1 has the label Production, then you
+can't attach Production to version 2.
+
+=item *
+
+You can move a label from one version of a parameter to another.
+
+=item *
+
+You can't create a label when you create a new parameter. You must
+attach a label to a specific version of a parameter.
+
+=item *
+
+You can't delete a parameter label. If you no longer want to use a
+parameter label, then you must move it to a different version of a
+parameter.
+
+=item *
+
+A label can have a maximum of 100 characters.
+
+=item *
+
+Labels can contain letters (case sensitive), numbers, periods (.),
+hyphens (-), or underscores (_).
+
+=item *
+
+Labels can't begin with a number, "aws," or "ssm" (not case sensitive).
+If a label fails to meet these requirements, then the label is not
+associated with a parameter and the system displays it in the list of
+InvalidLabels.
+
+=back
+
 
 
 =head2 ListAssociations
@@ -2765,8 +3072,6 @@ Registers a target with a Maintenance Window.
 
 =item MaxErrors => Str
 
-=item ServiceRoleArn => Str
-
 =item Targets => ArrayRef[L<Paws::SSM::Target>]
 
 =item TaskArn => Str
@@ -2784,6 +3089,8 @@ Registers a target with a Maintenance Window.
 =item [Name => Str]
 
 =item [Priority => Int]
+
+=item [ServiceRoleArn => Str]
 
 =item [TaskInvocationParameters => L<Paws::SSM::MaintenanceWindowTaskInvocationParameters>]
 
@@ -2817,6 +3124,28 @@ Each argument is described in detail in: L<Paws::SSM::RemoveTagsFromResource>
 Returns: a L<Paws::SSM::RemoveTagsFromResourceResult> instance
 
 Removes all tags from the specified resource.
+
+
+=head2 ResumeSession
+
+=over
+
+=item SessionId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::ResumeSession>
+
+Returns: a L<Paws::SSM::ResumeSessionResponse> instance
+
+Reconnects a session to an instance after it has been disconnected.
+Connections can be resumed for disconnected sessions, but not
+terminated sessions.
+
+This command is primarily for use by client machines to automatically
+reconnect during intermittent network issues. It is not intended for
+any other use.
 
 
 =head2 SendAutomationSignal
@@ -2888,6 +3217,23 @@ Returns: a L<Paws::SSM::SendCommandResult> instance
 Executes commands on one or more managed instances.
 
 
+=head2 StartAssociationsOnce
+
+=over
+
+=item AssociationIds => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::StartAssociationsOnce>
+
+Returns: a L<Paws::SSM::StartAssociationsOnceResult> instance
+
+Use this API action to execute an association immediately and only one
+time. This action can be helpful when troubleshooting associations.
+
+
 =head2 StartAutomationExecution
 
 =over
@@ -2906,6 +3252,8 @@ Executes commands on one or more managed instances.
 
 =item [Parameters => L<Paws::SSM::AutomationParameterMap>]
 
+=item [TargetMaps => ArrayRef[L<Paws::SSM::TargetMap>]]
+
 =item [TargetParameterName => Str]
 
 =item [Targets => ArrayRef[L<Paws::SSM::Target>]]
@@ -2918,6 +3266,35 @@ Each argument is described in detail in: L<Paws::SSM::StartAutomationExecution>
 Returns: a L<Paws::SSM::StartAutomationExecutionResult> instance
 
 Initiates execution of an Automation document.
+
+
+=head2 StartSession
+
+=over
+
+=item Target => Str
+
+=item [DocumentName => Str]
+
+=item [Parameters => L<Paws::SSM::SessionManagerParameters>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::StartSession>
+
+Returns: a L<Paws::SSM::StartSessionResponse> instance
+
+Initiates a connection to a target (for example, an instance) for a
+Session Manager session. Returns a URL and token that can be used to
+open a WebSocket connection for sending input and receiving outputs.
+
+AWS CLI usage: C<start-session> is an interactive command that requires
+the Session Manager plugin to be installed on the client machine making
+the call. For information, see Install the Session Manager Plugin for
+the AWS CLI
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html)
+in the I<AWS Systems Manager User Guide>.
 
 
 =head2 StopAutomationExecution
@@ -2938,6 +3315,24 @@ Returns: a L<Paws::SSM::StopAutomationExecutionResult> instance
 Stop an Automation that is currently executing.
 
 
+=head2 TerminateSession
+
+=over
+
+=item SessionId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::TerminateSession>
+
+Returns: a L<Paws::SSM::TerminateSessionResponse> instance
+
+Permanently ends a session and closes the data connection between the
+Session Manager client and SSM Agent on the instance. A terminated
+session cannot be resumed.
+
+
 =head2 UpdateAssociation
 
 =over
@@ -2948,7 +3343,13 @@ Stop an Automation that is currently executing.
 
 =item [AssociationVersion => Str]
 
+=item [ComplianceSeverity => Str]
+
 =item [DocumentVersion => Str]
+
+=item [MaxConcurrency => Str]
+
+=item [MaxErrors => Str]
 
 =item [Name => Str]
 
@@ -3051,11 +3452,17 @@ Set the default version of a document.
 
 =item [Enabled => Bool]
 
+=item [EndDate => Str]
+
 =item [Name => Str]
 
 =item [Replace => Bool]
 
 =item [Schedule => Str]
+
+=item [ScheduleTimezone => Str]
+
+=item [StartDate => Str]
 
 
 =back
@@ -3229,6 +3636,8 @@ to the managed instance.
 =item [Name => Str]
 
 =item [RejectedPatches => ArrayRef[Str|Undef]]
+
+=item [RejectedPatchesAction => Str]
 
 =item [Replace => Bool]
 

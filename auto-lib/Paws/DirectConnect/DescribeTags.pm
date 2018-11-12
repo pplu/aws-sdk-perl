@@ -45,7 +45,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =head2 B<REQUIRED> ResourceArns => ArrayRef[Str|Undef]
 
-The Amazon Resource Names (ARNs) of the Direct Connect resources.
+The Amazon Resource Names (ARNs) of the resources.
 
 
 

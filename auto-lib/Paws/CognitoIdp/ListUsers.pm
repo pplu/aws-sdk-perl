@@ -125,12 +125,12 @@ C<preferred_username>
 
 =item *
 
-C<cognito:user_status> (called B<Enabled> in the Console)
-(case-sensitive)
+C<cognito:user_status> (called B<Status> in the Console)
+(case-insensitive)
 
 =item *
 
-C<status> (case-insensitive)
+C<status (called B<Enabled> in the Console) (case-sensitive)>
 
 =item *
 

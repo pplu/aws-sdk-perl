@@ -14,6 +14,7 @@ package Paws::ECS::ContainerDefinition;
   has HealthCheck => (is => 'ro', isa => 'Paws::ECS::HealthCheck', request_name => 'healthCheck', traits => ['NameInRequest']);
   has Hostname => (is => 'ro', isa => 'Str', request_name => 'hostname', traits => ['NameInRequest']);
   has Image => (is => 'ro', isa => 'Str', request_name => 'image', traits => ['NameInRequest']);
+  has Interactive => (is => 'ro', isa => 'Bool', request_name => 'interactive', traits => ['NameInRequest']);
   has Links => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'links', traits => ['NameInRequest']);
   has LinuxParameters => (is => 'ro', isa => 'Paws::ECS::LinuxParameters', request_name => 'linuxParameters', traits => ['NameInRequest']);
   has LogConfiguration => (is => 'ro', isa => 'Paws::ECS::LogConfiguration', request_name => 'logConfiguration', traits => ['NameInRequest']);
@@ -23,7 +24,10 @@ package Paws::ECS::ContainerDefinition;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has PortMappings => (is => 'ro', isa => 'ArrayRef[Paws::ECS::PortMapping]', request_name => 'portMappings', traits => ['NameInRequest']);
   has Privileged => (is => 'ro', isa => 'Bool', request_name => 'privileged', traits => ['NameInRequest']);
+  has PseudoTerminal => (is => 'ro', isa => 'Bool', request_name => 'pseudoTerminal', traits => ['NameInRequest']);
   has ReadonlyRootFilesystem => (is => 'ro', isa => 'Bool', request_name => 'readonlyRootFilesystem', traits => ['NameInRequest']);
+  has RepositoryCredentials => (is => 'ro', isa => 'Paws::ECS::RepositoryCredentials', request_name => 'repositoryCredentials', traits => ['NameInRequest']);
+  has SystemControls => (is => 'ro', isa => 'ArrayRef[Paws::ECS::SystemControl]', request_name => 'systemControls', traits => ['NameInRequest']);
   has Ulimits => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Ulimit]', request_name => 'ulimits', traits => ['NameInRequest']);
   has User => (is => 'ro', isa => 'Str', request_name => 'user', traits => ['NameInRequest']);
   has VolumesFrom => (is => 'ro', isa => 'ArrayRef[Paws::ECS::VolumeFrom]', request_name => 'volumesFrom', traits => ['NameInRequest']);
@@ -68,10 +72,10 @@ different containers that are launched as part of a task.
 
   The command that is passed to the container. This parameter maps to
 C<Cmd> in the Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
+(https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
 section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
-and the C<COMMAND> parameter to docker run
+(https://docs.docker.com/engine/api/v1.35/) and the C<COMMAND>
+parameter to docker run
 (https://docs.docker.com/engine/reference/run/). For more information,
 see https://docs.docker.com/engine/reference/builder/#cmd
 (https://docs.docker.com/engine/reference/builder/#cmd).
@@ -81,11 +85,10 @@ see https://docs.docker.com/engine/reference/builder/#cmd
 
   The number of C<cpu> units reserved for the container. This parameter
 maps to C<CpuShares> in the Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
+(https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
 section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
-and the C<--cpu-shares> option to docker run
-(https://docs.docker.com/engine/reference/run/).
+(https://docs.docker.com/engine/api/v1.35/) and the C<--cpu-shares>
+option to docker run (https://docs.docker.com/engine/reference/run/).
 
 This field is optional for tasks using the Fargate launch type, and the
 only requirement is that the total amount of CPU reserved for all
@@ -154,9 +157,9 @@ specified amount of CPU that is described in the task definition.
   When this parameter is true, networking is disabled within the
 container. This parameter maps to C<NetworkDisabled> in the Create a
 container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
+(https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
 section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/).
+(https://docs.docker.com/engine/api/v1.35/).
 
 This parameter is not supported for Windows containers.
 
@@ -165,11 +168,10 @@ This parameter is not supported for Windows containers.
 
   A list of DNS search domains that are presented to the container. This
 parameter maps to C<DnsSearch> in the Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
+(https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
 section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
-and the C<--dns-search> option to docker run
-(https://docs.docker.com/engine/reference/run/).
+(https://docs.docker.com/engine/api/v1.35/) and the C<--dns-search>
+option to docker run (https://docs.docker.com/engine/reference/run/).
 
 This parameter is not supported for Windows containers.
 
@@ -178,11 +180,10 @@ This parameter is not supported for Windows containers.
 
   A list of DNS servers that are presented to the container. This
 parameter maps to C<Dns> in the Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
+(https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
 section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
-and the C<--dns> option to docker run
-(https://docs.docker.com/engine/reference/run/).
+(https://docs.docker.com/engine/api/v1.35/) and the C<--dns> option to
+docker run (https://docs.docker.com/engine/reference/run/).
 
 This parameter is not supported for Windows containers.
 
@@ -191,13 +192,12 @@ This parameter is not supported for Windows containers.
 
   A key/value map of labels to add to the container. This parameter maps
 to C<Labels> in the Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
+(https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
 section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
-and the C<--label> option to docker run
-(https://docs.docker.com/engine/reference/run/). This parameter
-requires version 1.18 of the Docker Remote API or greater on your
-container instance. To check the Docker Remote API version on your
+(https://docs.docker.com/engine/api/v1.35/) and the C<--label> option
+to docker run (https://docs.docker.com/engine/reference/run/). This
+parameter requires version 1.18 of the Docker Remote API or greater on
+your container instance. To check the Docker Remote API version on your
 container instance, log in to your container instance and run the
 following command: C<sudo docker version | grep "Server API version">
 
@@ -209,11 +209,10 @@ multi-level security systems. This field is not valid for containers in
 tasks using the Fargate launch type.
 
 This parameter maps to C<SecurityOpt> in the Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
+(https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
 section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
-and the C<--security-opt> option to docker run
-(https://docs.docker.com/engine/reference/run/).
+(https://docs.docker.com/engine/api/v1.35/) and the C<--security-opt>
+option to docker run (https://docs.docker.com/engine/reference/run/).
 
 The Amazon ECS container agent running on a container instance must
 register with the C<ECS_SELINUX_CAPABLE=true> or
@@ -235,12 +234,12 @@ C<command> array items instead.
 
 The entry point that is passed to the container. This parameter maps to
 C<Entrypoint> in the Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
+(https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
 section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
-and the C<--entrypoint> option to docker run
-(https://docs.docker.com/engine/reference/run/). For more information,
-see https://docs.docker.com/engine/reference/builder/#entrypoint
+(https://docs.docker.com/engine/api/v1.35/) and the C<--entrypoint>
+option to docker run (https://docs.docker.com/engine/reference/run/).
+For more information, see
+https://docs.docker.com/engine/reference/builder/#entrypoint
 (https://docs.docker.com/engine/reference/builder/#entrypoint).
 
 
@@ -248,11 +247,10 @@ see https://docs.docker.com/engine/reference/builder/#entrypoint
 
   The environment variables to pass to a container. This parameter maps
 to C<Env> in the Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
+(https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
 section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
-and the C<--env> option to docker run
-(https://docs.docker.com/engine/reference/run/).
+(https://docs.docker.com/engine/api/v1.35/) and the C<--env> option to
+docker run (https://docs.docker.com/engine/reference/run/).
 
 We do not recommend using plaintext environment variables for sensitive
 information, such as credential data.
@@ -280,13 +278,12 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
   A list of hostnames and IP address mappings to append to the
 C</etc/hosts> file on the container. If using the Fargate launch type,
-this may be used to list non-Fargate hosts you want the container to
-talk to. This parameter maps to C<ExtraHosts> in the Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
+this may be used to list non-Fargate hosts to which the container can
+talk. This parameter maps to C<ExtraHosts> in the Create a container
+(https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
 section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
-and the C<--add-host> option to docker run
-(https://docs.docker.com/engine/reference/run/).
+(https://docs.docker.com/engine/api/v1.35/) and the C<--add-host>
+option to docker run (https://docs.docker.com/engine/reference/run/).
 
 This parameter is not supported for Windows containers.
 
@@ -296,10 +293,10 @@ This parameter is not supported for Windows containers.
   The health check command and associated configuration parameters for
 the container. This parameter maps to C<HealthCheck> in the Create a
 container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
+(https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
 section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
-and the C<HEALTHCHECK> parameter of docker run
+(https://docs.docker.com/engine/api/v1.35/) and the C<HEALTHCHECK>
+parameter of docker run
 (https://docs.docker.com/engine/reference/run/).
 
 
@@ -307,11 +304,10 @@ and the C<HEALTHCHECK> parameter of docker run
 
   The hostname to use for your container. This parameter maps to
 C<Hostname> in the Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
+(https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
 section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
-and the C<--hostname> option to docker run
-(https://docs.docker.com/engine/reference/run/).
+(https://docs.docker.com/engine/api/v1.35/) and the C<--hostname>
+option to docker run (https://docs.docker.com/engine/reference/run/).
 
 The C<hostname> parameter is not supported if using the C<awsvpc>
 networkMode.
@@ -327,11 +323,10 @@ I<repository-url>/I<image>@I<digest> >. Up to 255 letters (uppercase
 and lowercase), numbers, hyphens, underscores, colons, periods, forward
 slashes, and number signs are allowed. This parameter maps to C<Image>
 in the Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
+(https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
 section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
-and the C<IMAGE> parameter of docker run
-(https://docs.docker.com/engine/reference/run/).
+(https://docs.docker.com/engine/api/v1.35/) and the C<IMAGE> parameter
+of docker run (https://docs.docker.com/engine/reference/run/).
 
 =over
 
@@ -370,6 +365,17 @@ name (for example, C<quay.io/assemblyline/ubuntu>).
 
 
 
+=head2 Interactive => Bool
+
+  When this parameter is C<true>, this allows you to deploy containerized
+applications that require C<stdin> or a C<tty> to be allocated. This
+parameter maps to C<OpenStdin> in the Create a container
+(https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
+section of the Docker Remote API
+(https://docs.docker.com/engine/api/v1.35/) and the C<--interactive>
+option to docker run (https://docs.docker.com/engine/reference/run/).
+
+
 =head2 Links => ArrayRef[Str|Undef]
 
   The C<link> parameter allows containers to communicate with each other
@@ -382,10 +388,10 @@ to
 https://docs.docker.com/engine/userguide/networking/default_network/dockerlinks/
 (https://docs.docker.com/engine/userguide/networking/default_network/dockerlinks/).
 This parameter maps to C<Links> in the Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
+(https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
 section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
-and the C<--link> option to C<docker run>
+(https://docs.docker.com/engine/api/v1.35/) and the C<--link> option to
+C<docker run>
 (https://docs.docker.com/engine/reference/commandline/run/).
 
 This parameter is not supported for Windows containers.
@@ -412,19 +418,18 @@ If using the Fargate launch type, the only supported value is
 C<awslogs>.
 
 This parameter maps to C<LogConfig> in the Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
+(https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
 section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
-and the C<--log-driver> option to docker run
-(https://docs.docker.com/engine/reference/run/). By default, containers
-use the same logging driver that the Docker daemon uses; however the
-container may use a different logging driver than the Docker daemon by
-specifying a log driver with this parameter in the container
-definition. To use a different logging driver for a container, the log
-system must be configured properly on the container instance (or on a
-different log server for remote logging options). For more information
-on the options for different supported log drivers, see Configure
-logging drivers
+(https://docs.docker.com/engine/api/v1.35/) and the C<--log-driver>
+option to docker run (https://docs.docker.com/engine/reference/run/).
+By default, containers use the same logging driver that the Docker
+daemon uses; however the container may use a different logging driver
+than the Docker daemon by specifying a log driver with this parameter
+in the container definition. To use a different logging driver for a
+container, the log system must be configured properly on the container
+instance (or on a different log server for remote logging options). For
+more information on the options for different supported log drivers,
+see Configure logging drivers
 (https://docs.docker.com/engine/admin/logging/overview/) in the Docker
 documentation.
 
@@ -453,11 +458,10 @@ in the I<Amazon Elastic Container Service Developer Guide>.
   The hard limit (in MiB) of memory to present to the container. If your
 container attempts to exceed the memory specified here, the container
 is killed. This parameter maps to C<Memory> in the Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
+(https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
 section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
-and the C<--memory> option to docker run
-(https://docs.docker.com/engine/reference/run/).
+(https://docs.docker.com/engine/api/v1.35/) and the C<--memory> option
+to docker run (https://docs.docker.com/engine/reference/run/).
 
 If your containers are part of a task using the Fargate launch type,
 this field is optional and the only requirement is that the total
@@ -486,10 +490,10 @@ consume more memory when it needs to, up to either the hard limit
 specified with the C<memory> parameter (if applicable), or all of the
 available memory on the container instance, whichever comes first. This
 parameter maps to C<MemoryReservation> in the Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
+(https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
 section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
-and the C<--memory-reservation> option to docker run
+(https://docs.docker.com/engine/api/v1.35/) and the
+C<--memory-reservation> option to docker run
 (https://docs.docker.com/engine/reference/run/).
 
 You must specify a non-zero integer for one or both of C<memory> or
@@ -517,11 +521,10 @@ your containers.
   The mount points for data volumes in your container.
 
 This parameter maps to C<Volumes> in the Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
+(https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
 section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
-and the C<--volume> option to docker run
-(https://docs.docker.com/engine/reference/run/).
+(https://docs.docker.com/engine/api/v1.35/) and the C<--volume> option
+to docker run (https://docs.docker.com/engine/reference/run/).
 
 Windows containers can mount whole directories on the same drive as
 C<$env:ProgramData>. Windows containers cannot mount directories on a
@@ -536,11 +539,10 @@ entered in the C<links> of another container to connect the containers.
 Up to 255 letters (uppercase and lowercase), numbers, hyphens, and
 underscores are allowed. This parameter maps to C<name> in the Create a
 container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
+(https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
 section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
-and the C<--name> option to docker run
-(https://docs.docker.com/engine/reference/run/).
+(https://docs.docker.com/engine/api/v1.35/) and the C<--name> option to
+docker run (https://docs.docker.com/engine/reference/run/).
 
 
 =head2 PortMappings => ArrayRef[L<Paws::ECS::PortMapping>]
@@ -558,20 +560,20 @@ C<localhost>. There is no loopback for port mappings on Windows, so you
 cannot access a container's mapped port from the host itself.
 
 This parameter maps to C<PortBindings> in the Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
+(https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
 section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
-and the C<--publish> option to docker run
-(https://docs.docker.com/engine/reference/run/). If the network mode of
-a task definition is set to C<none>, then you can't specify port
-mappings. If the network mode of a task definition is set to C<host>,
-then host ports must either be undefined or they must match the
-container port in the port mapping.
+(https://docs.docker.com/engine/api/v1.35/) and the C<--publish> option
+to docker run (https://docs.docker.com/engine/reference/run/). If the
+network mode of a task definition is set to C<none>, then you can't
+specify port mappings. If the network mode of a task definition is set
+to C<host>, then host ports must either be undefined or they must match
+the container port in the port mapping.
 
 After a task reaches the C<RUNNING> status, manual and automatic host
 and container port assignments are visible in the B<Network Bindings>
 section of a container description for a selected task in the Amazon
-ECS console, or the C<networkBindings> section DescribeTasks responses.
+ECS console. The assignments are also visible in the C<networkBindings>
+section DescribeTasks responses.
 
 
 =head2 Privileged => Bool
@@ -579,14 +581,23 @@ ECS console, or the C<networkBindings> section DescribeTasks responses.
   When this parameter is true, the container is given elevated privileges
 on the host container instance (similar to the C<root> user). This
 parameter maps to C<Privileged> in the Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
+(https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
 section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
-and the C<--privileged> option to docker run
-(https://docs.docker.com/engine/reference/run/).
+(https://docs.docker.com/engine/api/v1.35/) and the C<--privileged>
+option to docker run (https://docs.docker.com/engine/reference/run/).
 
 This parameter is not supported for Windows containers or tasks using
 the Fargate launch type.
+
+
+=head2 PseudoTerminal => Bool
+
+  When this parameter is C<true>, a TTY is allocated. This parameter maps
+to C<Tty> in the Create a container
+(https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
+section of the Docker Remote API
+(https://docs.docker.com/engine/api/v1.35/) and the C<--tty> option to
+docker run (https://docs.docker.com/engine/reference/run/).
 
 
 =head2 ReadonlyRootFilesystem => Bool
@@ -594,28 +605,48 @@ the Fargate launch type.
   When this parameter is true, the container is given read-only access to
 its root file system. This parameter maps to C<ReadonlyRootfs> in the
 Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
+(https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
 section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
-and the C<--read-only> option to C<docker run>.
+(https://docs.docker.com/engine/api/v1.35/) and the C<--read-only>
+option to docker run (https://docs.docker.com/engine/reference/run/).
 
 This parameter is not supported for Windows containers.
+
+
+=head2 RepositoryCredentials => L<Paws::ECS::RepositoryCredentials>
+
+  The private repository authentication credentials to use.
+
+
+=head2 SystemControls => ArrayRef[L<Paws::ECS::SystemControl>]
+
+  A list of namespaced kernel parameters to set in the container. This
+parameter maps to C<Sysctls> in the Create a container
+(https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
+section of the Docker Remote API
+(https://docs.docker.com/engine/api/v1.35/) and the C<--sysctl> option
+to docker run (https://docs.docker.com/engine/reference/run/).
+
+It is not recommended that you specify network-related
+C<systemControls> parameters for multiple containers in a single task
+that also uses either the C<awsvpc> or C<host> network modes. When you
+do, the container that is started last will determine which
+C<systemControls> parameters take effect.
 
 
 =head2 Ulimits => ArrayRef[L<Paws::ECS::Ulimit>]
 
   A list of C<ulimits> to set in the container. This parameter maps to
 C<Ulimits> in the Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
+(https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
 section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
-and the C<--ulimit> option to docker run
-(https://docs.docker.com/engine/reference/run/). Valid naming values
-are displayed in the Ulimit data type. This parameter requires version
-1.18 of the Docker Remote API or greater on your container instance. To
-check the Docker Remote API version on your container instance, log in
-to your container instance and run the following command: C<sudo docker
-version | grep "Server API version">
+(https://docs.docker.com/engine/api/v1.35/) and the C<--ulimit> option
+to docker run (https://docs.docker.com/engine/reference/run/). Valid
+naming values are displayed in the Ulimit data type. This parameter
+requires version 1.18 of the Docker Remote API or greater on your
+container instance. To check the Docker Remote API version on your
+container instance, log in to your container instance and run the
+following command: C<sudo docker version | grep "Server API version">
 
 This parameter is not supported for Windows containers.
 
@@ -624,11 +655,10 @@ This parameter is not supported for Windows containers.
 
   The user name to use inside the container. This parameter maps to
 C<User> in the Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
+(https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
 section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
-and the C<--user> option to docker run
-(https://docs.docker.com/engine/reference/run/).
+(https://docs.docker.com/engine/api/v1.35/) and the C<--user> option to
+docker run (https://docs.docker.com/engine/reference/run/).
 
 This parameter is not supported for Windows containers.
 
@@ -637,22 +667,20 @@ This parameter is not supported for Windows containers.
 
   Data volumes to mount from another container. This parameter maps to
 C<VolumesFrom> in the Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
+(https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
 section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
-and the C<--volumes-from> option to docker run
-(https://docs.docker.com/engine/reference/run/).
+(https://docs.docker.com/engine/api/v1.35/) and the C<--volumes-from>
+option to docker run (https://docs.docker.com/engine/reference/run/).
 
 
 =head2 WorkingDirectory => Str
 
   The working directory in which to run commands inside the container.
 This parameter maps to C<WorkingDir> in the Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
+(https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
 section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/)
-and the C<--workdir> option to docker run
-(https://docs.docker.com/engine/reference/run/).
+(https://docs.docker.com/engine/api/v1.35/) and the C<--workdir> option
+to docker run (https://docs.docker.com/engine/reference/run/).
 
 
 

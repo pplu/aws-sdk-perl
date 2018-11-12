@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         And => [ <Expression>, ... ],    # OPTIONAL
         Dimensions => {
           Key => 'AZ'
-          , # values: AZ, INSTANCE_TYPE, LINKED_ACCOUNT, OPERATION, PURCHASE_TYPE, REGION, SERVICE, USAGE_TYPE, USAGE_TYPE_GROUP, RECORD_TYPE, OPERATING_SYSTEM, TENANCY, SCOPE, PLATFORM, SUBSCRIPTION_ID, LEGAL_ENTITY_NAME, DEPLOYMENT_OPTION, DATABASE_ENGINE, CACHE_ENGINE, INSTANCE_TYPE_FAMILY; OPTIONAL
+          , # values: AZ, INSTANCE_TYPE, LINKED_ACCOUNT, OPERATION, PURCHASE_TYPE, REGION, SERVICE, USAGE_TYPE, USAGE_TYPE_GROUP, RECORD_TYPE, OPERATING_SYSTEM, TENANCY, SCOPE, PLATFORM, SUBSCRIPTION_ID, LEGAL_ENTITY_NAME, DEPLOYMENT_OPTION, DATABASE_ENGINE, CACHE_ENGINE, INSTANCE_TYPE_FAMILY, BILLING_ENTITY, RESERVATION_ID; OPTIONAL
           Values => [ 'MyValue', ... ],    # OPTIONAL
         },    # OPTIONAL
         Not  => <Expression>,
@@ -94,7 +94,7 @@ Sets the AWS cost granularity to C<MONTHLY> or C<DAILY>. If
 C<Granularity> isn't set, the response object doesn't include the
 C<Granularity>, either C<MONTHLY> or C<DAILY>.
 
-Valid values are: C<"DAILY">, C<"MONTHLY">
+Valid values are: C<"DAILY">, C<"MONTHLY">, C<"HOURLY">
 
 =head2 GroupBy => ArrayRef[L<Paws::CostExplorer::GroupDefinition>]
 
@@ -117,7 +117,8 @@ blended and unblended rates, see Why does the "blended" annotation
 appear on some line items in my bill?
 (https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/).
 
-Valid values are C<BlendedCost>, C<UnblendedCost>, and
+Valid values are C<AmortizedCost>, C<BlendedCost>, C<NetAmortizedCost>,
+C<NetUnblendedCost>, C<NormalizedUsageAmount>, C<UnblendedCost>, and
 C<UsageQuantity>.
 
 If you return the C<UsageQuantity> metric, the service aggregates all

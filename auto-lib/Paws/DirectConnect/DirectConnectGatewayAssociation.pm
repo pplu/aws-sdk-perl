@@ -36,40 +36,67 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DirectConne
 
 =head1 DESCRIPTION
 
-The association between a direct connect gateway and virtual private
-gateway.
+Information about an association between a Direct Connect gateway and a
+virtual private gateway.
 
 =head1 ATTRIBUTES
 
 
 =head2 AssociationState => Str
 
-  
+  The state of the association. The following are the possible values:
+
+=over
+
+=item *
+
+C<associating>: The initial state after calling
+CreateDirectConnectGatewayAssociation.
+
+=item *
+
+C<associated>: The Direct Connect gateway and virtual private gateway
+are successfully associated and ready to pass traffic.
+
+=item *
+
+C<disassociating>: The initial state after calling
+DeleteDirectConnectGatewayAssociation.
+
+=item *
+
+C<disassociated>: The virtual private gateway is disassociated from the
+Direct Connect gateway. Traffic flow between the Direct Connect gateway
+and virtual private gateway is stopped.
+
+=back
+
 
 
 =head2 DirectConnectGatewayId => Str
 
-  
+  The ID of the Direct Connect gateway.
 
 
 =head2 StateChangeError => Str
 
-  
+  The error message if the state of an object failed to advance.
 
 
 =head2 VirtualGatewayId => Str
 
-  
+  The ID of the virtual private gateway. Applies only to private virtual
+interfaces.
 
 
 =head2 VirtualGatewayOwnerAccount => Str
 
-  The AWS account ID of the owner of the virtual private gateway.
+  The ID of the AWS account that owns the virtual private gateway.
 
 
 =head2 VirtualGatewayRegion => Str
 
-  
+  The AWS Region where the virtual private gateway is located.
 
 
 

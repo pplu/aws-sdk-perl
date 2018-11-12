@@ -158,9 +158,9 @@ Scheduled Instance (C<spot> | C<scheduled>).
 =item *
 
 C<instance-state-code> - The state of the instance, as a 16-bit
-unsigned integer. The high byte is an opaque internal value and should
-be ignored. The low byte is set based on the state represented. The
-valid values are: 0 (pending), 16 (running), 32 (shutting-down), 48
+unsigned integer. The high byte is used for internal purposes and
+should be ignored. The low byte is set based on the state represented.
+The valid values are: 0 (pending), 16 (running), 32 (shutting-down), 48
 (terminated), 64 (stopping), and 80 (stopped).
 
 =item *
@@ -458,26 +458,17 @@ C<subnet-id> - The ID of the subnet for the instance.
 
 =item *
 
-C<tag>:I<key>=I<value> - The key/value combination of a tag assigned to
-the resource. Specify the key of the tag in the filter name and the
-value of the tag in the filter value. For example, for the tag
-Purpose=X, specify C<tag:Purpose> for the filter name and C<X> for the
-filter value.
+C<tag>:E<lt>keyE<gt> - The key/value combination of a tag assigned to
+the resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key C<Owner> and the value C<TeamA>, specify C<tag:Owner> for
+the filter name and C<TeamA> for the filter value.
 
 =item *
 
-C<tag-key> - The key of a tag assigned to the resource. This filter is
-independent of the C<tag-value> filter. For example, if you use both
-the filter "tag-key=Purpose" and the filter "tag-value=X", you get any
-resources assigned both the tag key Purpose (regardless of what the
-tag's value is), and the tag value X (regardless of the tag's key). If
-you want to list only resources where Purpose is X, see the
-C<tag>:I<key>=I<value> filter.
-
-=item *
-
-C<tag-value> - The value of a tag assigned to the resource. This filter
-is independent of the C<tag-key> filter.
+C<tag-key> - The key of a tag assigned to the resource. Use this filter
+to find all resources that have a tag with a specific key, regardless
+of the tag value.
 
 =item *
 

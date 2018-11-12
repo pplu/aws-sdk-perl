@@ -77,14 +77,15 @@ Provides summary information about a hyperparameter tuning job.
 
 =head2 B<REQUIRED> ObjectiveStatusCounters => L<Paws::SageMaker::ObjectiveStatusCounters>
 
-  The object that specifies the numbers of training jobs, categorized by
-objective metric status, that this tuning job launched.
+  The ObjectiveStatusCounters object that specifies the numbers of
+training jobs, categorized by objective metric status, that this tuning
+job launched.
 
 
 =head2 ResourceLimits => L<Paws::SageMaker::ResourceLimits>
 
-  The object that specifies the maximum number of training jobs and
-parallel training jobs allowed for this tuning job.
+  The ResourceLimits object that specifies the maximum number of training
+jobs and parallel training jobs allowed for this tuning job.
 
 
 =head2 B<REQUIRED> Strategy => Str
@@ -96,8 +97,8 @@ valid value is Bayesian.
 
 =head2 B<REQUIRED> TrainingJobStatusCounters => L<Paws::SageMaker::TrainingJobStatusCounters>
 
-  The object that specifies the numbers of training jobs, categorized by
-status, that this tuning job launched.
+  The TrainingJobStatusCounters object that specifies the numbers of
+training jobs, categorized by status, that this tuning job launched.
 
 
 

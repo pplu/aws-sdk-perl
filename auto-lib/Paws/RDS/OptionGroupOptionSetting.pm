@@ -4,6 +4,8 @@ package Paws::RDS::OptionGroupOptionSetting;
   has ApplyType => (is => 'ro', isa => 'Str');
   has DefaultValue => (is => 'ro', isa => 'Str');
   has IsModifiable => (is => 'ro', isa => 'Bool');
+  has IsRequired => (is => 'ro', isa => 'Bool');
+  has MinimumEngineVersionPerAllowedValue => (is => 'ro', isa => 'ArrayRef[Paws::RDS::MinimumEngineVersionPerAllowedValue]', request_name => 'MinimumEngineVersionPerAllowedValue', traits => ['NameInRequest']);
   has SettingDescription => (is => 'ro', isa => 'Str');
   has SettingName => (is => 'ro', isa => 'Str');
 1;
@@ -62,6 +64,18 @@ values are used with the DescribeOptionGroupOptions action.
 
   Boolean value where true indicates that this option group option can be
 changed from the default value.
+
+
+=head2 IsRequired => Bool
+
+  Boolean value where true indicates that a value must be specified for
+this option setting of the option group option.
+
+
+=head2 MinimumEngineVersionPerAllowedValue => ArrayRef[L<Paws::RDS::MinimumEngineVersionPerAllowedValue>]
+
+  The minimum DB engine version required for the corresponding allowed
+value for this option setting.
 
 
 =head2 SettingDescription => Str

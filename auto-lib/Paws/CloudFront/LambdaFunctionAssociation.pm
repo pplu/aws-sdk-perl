@@ -1,6 +1,7 @@
 package Paws::CloudFront::LambdaFunctionAssociation;
   use Moose;
   has EventType => (is => 'ro', isa => 'Str', required => 1);
+  has IncludeBody => (is => 'ro', isa => 'Bool');
   has LambdaFunctionARN => (is => 'ro', isa => 'Str', required => 1);
 1;
 
@@ -77,6 +78,15 @@ function doesn't execute.
 
 =back
 
+
+
+=head2 IncludeBody => Bool
+
+  A flag that allows a Lambda function to have read access to the body
+content. For more information, see Accessing the Request Body by
+Choosing the Include Body Option
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-include-body-access.html)
+in the Amazon CloudFront Developer Guide.
 
 
 =head2 B<REQUIRED> LambdaFunctionARN => Str

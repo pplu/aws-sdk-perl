@@ -55,7 +55,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::Glacier::ListPartsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/glacier/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glacier/ListParts>
 
 =head1 ATTRIBUTES
 
@@ -72,7 +72,7 @@ you use an account ID, do not include any hyphens ('-') in the ID.
 
 =head2 Limit => Str
 
-The maximum number of parts to be returned. The default limit is 1000.
+The maximum number of parts to be returned. The default limit is 50.
 The number of parts returned might be fewer than the specified limit,
 but the number of returned parts never exceeds the limit.
 

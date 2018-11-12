@@ -3,6 +3,7 @@ package Paws::Glue::CreateCrawler;
   use Moose;
   has Classifiers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Configuration => (is => 'ro', isa => 'Str');
+  has CrawlerSecurityConfiguration => (is => 'ro', isa => 'Str');
   has DatabaseName => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
@@ -41,32 +42,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name         => 'MyNameString',
       Role         => 'MyRole',
       Targets      => {
+        DynamoDBTargets => [ { Path => 'MyPath', }, ... ],    # OPTIONAL
         JdbcTargets => [
           {
-            ConnectionName => 'MyConnectionName',    # OPTIONAL
-            Exclusions     => [
-              'MyPath', ...                          # OPTIONAL
-            ],                                       # OPTIONAL
-            Path => 'MyPath',                        # OPTIONAL
+            ConnectionName => 'MyConnectionName',             # OPTIONAL
+            Exclusions     => [ 'MyPath', ... ],              # OPTIONAL
+            Path           => 'MyPath',
           },
           ...
-        ],                                           # OPTIONAL
+        ],                                                    # OPTIONAL
         S3Targets => [
           {
-            Exclusions => [
-              'MyPath', ...                          # OPTIONAL
-            ],                                       # OPTIONAL
-            Path => 'MyPath',                        # OPTIONAL
+            Exclusions => [ 'MyPath', ... ],                  # OPTIONAL
+            Path => 'MyPath',
           },
           ...
-        ],                                           # OPTIONAL
+        ],                                                    # OPTIONAL
       },
       Classifiers => [
-        'MyNameString', ...                          # min: 1, max: 255
-      ],                                             # OPTIONAL
-      Configuration      => 'MyCrawlerConfiguration',    # OPTIONAL
-      Description        => 'MyDescriptionString',       # OPTIONAL
-      Schedule           => 'MyCronExpression',          # OPTIONAL
+        'MyNameString', ...                                   # min: 1, max: 255
+      ],                                                      # OPTIONAL
+      Configuration => 'MyCrawlerConfiguration',              # OPTIONAL
+      CrawlerSecurityConfiguration =>
+        'MyCrawlerSecurityConfiguration',                     # OPTIONAL
+      Description        => 'MyDescriptionString',            # OPTIONAL
+      Schedule           => 'MyCronExpression',               # OPTIONAL
       SchemaChangePolicy => {
         DeleteBehavior => 'LOG'
         ,   # values: LOG, DELETE_FROM_DATABASE, DEPRECATE_IN_DATABASE; OPTIONAL
@@ -84,7 +84,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head2 Classifiers => ArrayRef[Str|Undef]
 
 A list of custom classifiers that the user has registered. By default,
-all AWS classifiers are included in a crawl, but these custom
+all built-in classifiers are included in a crawl, but these custom
 classifiers always override the default classifiers for a given
 classification.
 
@@ -93,16 +93,16 @@ classification.
 =head2 Configuration => Str
 
 Crawler configuration information. This versioned JSON string allows
-users to specify aspects of a Crawler's behavior.
+users to specify aspects of a crawler's behavior. For more information,
+see Configuring a Crawler
+(http://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html).
 
-You can use this field to force partitions to inherit metadata such as
-classification, input format, output format, serde information, and
-schema from their parent table, rather than detect this information
-separately for each partition. Use the following JSON string to specify
-that behavior:
 
-Example: C<'{ "Version": 1.0, "CrawlerOutput": { "Partitions": {
-"AddOrUpdateBehavior": "InheritFromTable" } } }'>
+
+=head2 CrawlerSecurityConfiguration => Str
+
+The name of the SecurityConfiguration structure to be used by this
+Crawler.
 
 
 

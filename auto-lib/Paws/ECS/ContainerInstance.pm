@@ -54,7 +54,7 @@ registered with a cluster.
 
   This parameter returns C<true> if the agent is connected to Amazon ECS.
 Registered instances with an agent that may be unhealthy or stopped
-return C<false>. Instances without a connected agent can't accept
+return C<false>. Only instances connected to an agent can accept
 placement requests.
 
 
@@ -66,7 +66,7 @@ requested, this value is C<NULL>.
 
 =head2 Attachments => ArrayRef[L<Paws::ECS::Attachment>]
 
-  The Elastic Network Interfaces associated with the container instance.
+  The elastic network interfaces associated with the container instance.
 
 
 =head2 Attributes => ArrayRef[L<Paws::ECS::Attribute>]
@@ -79,7 +79,7 @@ PutAttributes operation.
 =head2 ContainerInstanceArn => Str
 
   The Amazon Resource Name (ARN) of the container instance. The ARN
-contains the C<arn:aws:ecs> namespace, followed by the region of the
+contains the C<arn:aws:ecs> namespace, followed by the Region of the
 container instance, the AWS account ID of the container instance owner,
 the C<container-instance> namespace, and then the container instance
 ID. For example,

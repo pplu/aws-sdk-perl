@@ -127,6 +127,13 @@ Amazon SageMaker endpoint variants - The resource type is C<variant>
 and the unique identifier is the resource ID. Example:
 C<endpoint/my-end-point/variant/KMeansClustering>.
 
+=item *
+
+Custom resources are not supported with a resource type. This parameter
+must specify the C<OutputValue> from the CloudFormation template stack
+used to access the resources. The unique identifier is defined by the
+service provider.
+
 =back
 
 
@@ -189,19 +196,25 @@ Aurora DB cluster. Available for Aurora MySQL-compatible edition.
 C<sagemaker:variant:DesiredInstanceCount> - The number of EC2 instances
 for an Amazon SageMaker model endpoint variant.
 
+=item *
+
+C<custom-resource:ResourceType:Property> - The scalable dimension for a
+custom resource provided by your own application or service.
+
 =back
 
 
-Valid values are: C<"ecs:service:DesiredCount">, C<"ec2:spot-fleet-request:TargetCapacity">, C<"elasticmapreduce:instancegroup:InstanceCount">, C<"appstream:fleet:DesiredCapacity">, C<"dynamodb:table:ReadCapacityUnits">, C<"dynamodb:table:WriteCapacityUnits">, C<"dynamodb:index:ReadCapacityUnits">, C<"dynamodb:index:WriteCapacityUnits">, C<"rds:cluster:ReadReplicaCount">, C<"sagemaker:variant:DesiredInstanceCount">
+Valid values are: C<"ecs:service:DesiredCount">, C<"ec2:spot-fleet-request:TargetCapacity">, C<"elasticmapreduce:instancegroup:InstanceCount">, C<"appstream:fleet:DesiredCapacity">, C<"dynamodb:table:ReadCapacityUnits">, C<"dynamodb:table:WriteCapacityUnits">, C<"dynamodb:index:ReadCapacityUnits">, C<"dynamodb:index:WriteCapacityUnits">, C<"rds:cluster:ReadReplicaCount">, C<"sagemaker:variant:DesiredInstanceCount">, C<"custom-resource:ResourceType:Property">
 
 =head2 B<REQUIRED> ServiceNamespace => Str
 
-The namespace of the AWS service. For more information, see AWS Service
-Namespaces
+The namespace of the AWS service that provides the resource or
+C<custom-resource> for a resource provided by your own application or
+service. For more information, see AWS Service Namespaces
 (http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
 in the I<Amazon Web Services General Reference>.
 
-Valid values are: C<"ecs">, C<"elasticmapreduce">, C<"ec2">, C<"appstream">, C<"dynamodb">, C<"rds">, C<"sagemaker">
+Valid values are: C<"ecs">, C<"elasticmapreduce">, C<"ec2">, C<"appstream">, C<"dynamodb">, C<"rds">, C<"sagemaker">, C<"custom-resource">
 
 
 =head1 SEE ALSO

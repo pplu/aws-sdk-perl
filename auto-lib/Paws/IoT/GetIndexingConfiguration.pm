@@ -30,6 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $GetIndexingConfigurationResponse = $iot->GetIndexingConfiguration();
 
     # Results:
+    my $ThingGroupIndexingConfiguration =
+      $GetIndexingConfigurationResponse->ThingGroupIndexingConfiguration;
     my $ThingIndexingConfiguration =
       $GetIndexingConfigurationResponse->ThingIndexingConfiguration;
 

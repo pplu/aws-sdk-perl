@@ -24,7 +24,8 @@ Paws::Lambda::InvocationResponse
 
 The function version that has been executed. This value is returned
 only if the invocation type is C<RequestResponse>. For more
-information, see lambda-traffic-shifting-using-aliases.
+information, see Traffic Shifting Using Aliases
+(http://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html).
 
 
 =head2 FunctionError => Str

@@ -47,7 +47,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =head2 B<REQUIRED> VirtualInterfaceId => Str
 
-
+The ID of the virtual interface.
 
 
 

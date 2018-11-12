@@ -41,7 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         And => [ <Expression>, ... ],    # OPTIONAL
         Dimensions => {
           Key => 'AZ'
-          , # values: AZ, INSTANCE_TYPE, LINKED_ACCOUNT, OPERATION, PURCHASE_TYPE, REGION, SERVICE, USAGE_TYPE, USAGE_TYPE_GROUP, RECORD_TYPE, OPERATING_SYSTEM, TENANCY, SCOPE, PLATFORM, SUBSCRIPTION_ID, LEGAL_ENTITY_NAME, DEPLOYMENT_OPTION, DATABASE_ENGINE, CACHE_ENGINE, INSTANCE_TYPE_FAMILY; OPTIONAL
+          , # values: AZ, INSTANCE_TYPE, LINKED_ACCOUNT, OPERATION, PURCHASE_TYPE, REGION, SERVICE, USAGE_TYPE, USAGE_TYPE_GROUP, RECORD_TYPE, OPERATING_SYSTEM, TENANCY, SCOPE, PLATFORM, SUBSCRIPTION_ID, LEGAL_ENTITY_NAME, DEPLOYMENT_OPTION, DATABASE_ENGINE, CACHE_ENGINE, INSTANCE_TYPE_FAMILY, BILLING_ENTITY, RESERVATION_ID; OPTIONAL
           Values => [ 'MyValue', ... ],    # OPTIONAL
         },    # OPTIONAL
         Not  => <Expression>,
@@ -138,6 +138,9 @@ C<GetReservationCoverage> uses the same C< Expression
 each dimension. You can nest only one level deep. If there are multiple
 values for a dimension, they are OR'd together.
 
+If you don't provide a C<SERVICE> filter, Cost Explorer defaults to
+EC2.
+
 
 
 =head2 Granularity => Str
@@ -149,7 +152,7 @@ If C<GroupBy> is set, C<Granularity> can't be set. If C<Granularity>
 isn't set, the response object doesn't include C<Granularity>, either
 C<MONTHLY> or C<DAILY>.
 
-Valid values are: C<"DAILY">, C<"MONTHLY">
+Valid values are: C<"DAILY">, C<"MONTHLY">, C<"HOURLY">
 
 =head2 GroupBy => ArrayRef[L<Paws::CostExplorer::GroupDefinition>]
 

@@ -33,16 +33,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::Class
 
 =head1 DESCRIPTION
 
-Classifiers are written in Python and triggered during a crawl task.
-You can write your own classifiers to best categorize your data sources
-and specify the appropriate schemas to use for them. A classifier
-checks whether a given file is in a format it can handle, and if it is,
-the classifier creates a schema in the form of a C<StructType> object
-that matches that data format.
+Classifiers are triggered during a crawl task. A classifier checks
+whether a given file is in a format it can handle, and if it is, the
+classifier creates a schema in the form of a C<StructType> object that
+matches that data format.
 
-A classifier can be a C<grok> classifier, an XML classifier, or a JSON
-classifier, asspecified in one of the fields in the C<Classifier>
-object.
+You can use the standard classifiers that AWS Glue supplies, or you can
+write your own classifiers to best categorize your data sources and
+specify the appropriate schemas to use for them. A classifier can be a
+C<grok> classifier, an C<XML> classifier, or a C<JSON> classifier, as
+specified in one of the fields in the C<Classifier> object.
 
 =head1 ATTRIBUTES
 

@@ -91,6 +91,7 @@ IPSetDescriptor: Contains C<Type> and C<Value>
 
 =back
 
+You can insert a maximum of 1000 addresses in a single request.
 
 
 

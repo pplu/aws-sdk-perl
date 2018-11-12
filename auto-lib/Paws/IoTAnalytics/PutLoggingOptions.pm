@@ -30,9 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $iotanalytics = Paws->service('IoTAnalytics');
     $iotanalytics->PutLoggingOptions(
       LoggingOptions => {
-        enabled => 1,
-        level   => 'ERROR',        # values: ERROR
-        roleArn => 'MyRoleArn',    # min: 20, max: 2048
+        Enabled => 1,
+        Level   => 'ERROR',        # values: ERROR
+        RoleArn => 'MyRoleArn',    # min: 20, max: 2048
 
       },
 

@@ -59,8 +59,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rou
 
 =head2 B<REQUIRED> HostedZoneId => Str
 
-The ID of the hosted zone in which you want Amazon Route 53 to create
-resource record sets by using the configuration in a traffic policy.
+The ID of the hosted zone that you want Amazon Route 53 to create
+resource record sets in by using the configuration in a traffic policy.
 
 
 
@@ -68,8 +68,8 @@ resource record sets by using the configuration in a traffic policy.
 
 The domain name (such as example.com) or subdomain name (such as
 www.example.com) for which Amazon Route 53 responds to DNS queries by
-using the resource record sets that Amazon Route 53 creates for this
-traffic policy instance.
+using the resource record sets that Route 53 creates for this traffic
+policy instance.
 
 
 

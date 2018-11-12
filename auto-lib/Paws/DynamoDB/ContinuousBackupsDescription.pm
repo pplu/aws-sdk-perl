@@ -40,8 +40,8 @@ on the table.
 
 =head2 B<REQUIRED> ContinuousBackupsStatus => Str
 
-  C<ContinuousBackupsStatus> can be one of the following states :
-ENABLED, DISABLED
+  C<ContinuousBackupsStatus> can be one of the following states: ENABLED,
+DISABLED
 
 
 =head2 PointInTimeRecoveryDescription => L<Paws::DynamoDB::PointInTimeRecoveryDescription>

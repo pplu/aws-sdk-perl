@@ -29,7 +29,8 @@ my (@files) = @ARGV;
 
 # If no files specified, get the last version of each json for each service
 if (not @files) {
-  my @dirs = glob('botocore/botocore/data/*');
+  my @dirs = glob('botocore/botocore/data/*') or
+    die "Cannot find botocore data files - try: make pull-other-sdks\n";
 
   foreach my $class_dir (@dirs) {
     my @class_defs = grep { -f $_ } glob("$class_dir/*/service-2.json");
@@ -76,6 +77,7 @@ sub get_builder {
   # Map classes to be generated with special builders
   my $overrides = {
     'Paws::EC2'        => 'EC2',
+    'Paws::Kinesis'    => 'Kinesis',
   };
   $type = $overrides->{ $api } if (defined $overrides->{ $api });
   $type =~ s/\-//;

@@ -20,6 +20,11 @@ package Paws::Transcribe;
     my $call_object = $self->new_with_coercions('Paws::Transcribe::CreateVocabulary', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteTranscriptionJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Transcribe::DeleteTranscriptionJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteVocabulary {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Transcribe::DeleteVocabulary', @_);
@@ -58,7 +63,7 @@ package Paws::Transcribe;
   
 
 
-  sub operations { qw/CreateVocabulary DeleteVocabulary GetTranscriptionJob GetVocabulary ListTranscriptionJobs ListVocabularies StartTranscriptionJob UpdateVocabulary / }
+  sub operations { qw/CreateVocabulary DeleteTranscriptionJob DeleteVocabulary GetTranscriptionJob GetVocabulary ListTranscriptionJobs ListVocabularies StartTranscriptionJob UpdateVocabulary / }
 
 1;
 
@@ -111,7 +116,27 @@ Each argument is described in detail in: L<Paws::Transcribe::CreateVocabulary>
 Returns: a L<Paws::Transcribe::CreateVocabularyResponse> instance
 
 Creates a new custom vocabulary that you can use to change the way
-Amazon Transcribe handles transcription of an audio file.
+Amazon Transcribe handles transcription of an audio file. Note that
+vocabularies for en-AU, en-UK, and fr-CA languages that are in preview
+are not available. In the console, the vocabulary section will be
+greyed-out and SDK will return error message.
+
+
+=head2 DeleteTranscriptionJob
+
+=over
+
+=item TranscriptionJobName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Transcribe::DeleteTranscriptionJob>
+
+Returns: nothing
+
+Deletes a previously submitted transcription job as well as any other
+generated results such as the transcription, models, and so on.
 
 
 =head2 DeleteVocabulary
@@ -162,7 +187,10 @@ Each argument is described in detail in: L<Paws::Transcribe::GetVocabulary>
 
 Returns: a L<Paws::Transcribe::GetVocabularyResponse> instance
 
-Gets information about a vocabulary.
+Gets information about a vocabulary. Note that vocabularies for en-AU,
+en-UK, and fr-CA languages that are in preview are not available. In
+the console, the vocabulary section will be greyed-out and SDK will
+return error message.
 
 
 =head2 ListTranscriptionJobs
@@ -224,6 +252,8 @@ criteria are specified, returns the entire list of vocabularies.
 
 =item [MediaSampleRateHertz => Int]
 
+=item [OutputBucketName => Str]
+
 =item [Settings => L<Paws::Transcribe::Settings>]
 
 
@@ -233,7 +263,9 @@ Each argument is described in detail in: L<Paws::Transcribe::StartTranscriptionJ
 
 Returns: a L<Paws::Transcribe::StartTranscriptionJobResponse> instance
 
-Starts an asynchronous job to transcribe speech to text.
+Starts an asynchronous job to transcribe speech to text. Note that
+en-AU, en-UK, and fr-CA languages are in preview and are only available
+to whitelisted customers.
 
 
 =head2 UpdateVocabulary
@@ -253,7 +285,12 @@ Each argument is described in detail in: L<Paws::Transcribe::UpdateVocabulary>
 
 Returns: a L<Paws::Transcribe::UpdateVocabularyResponse> instance
 
-Updates an existing vocabulary with new values.
+Updates an existing vocabulary with new values. The C<UpdateVocabulary>
+operation overwrites all of the existing information with the values
+that you provide in the request. Note that vocabularies for en-AU,
+en-UK, and fr-CA languages that are in preview are not available. In
+the console, the vocabulary section will be greyed-out and SDK will
+return error message.
 
 
 

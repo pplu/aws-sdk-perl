@@ -31,15 +31,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Transcribe:
 
 =head1 DESCRIPTION
 
-Describes the output of a transcription job.
+Identifies the location of a transcription.
 
 =head1 ATTRIBUTES
 
 
 =head2 TranscriptFileUri => Str
 
-  The S3 location where the transcription result is stored. Use this URI
-to access the results of the transcription job.
+  The location where the transcription is stored.
+
+Use this URI to access the transcription. If you specified an S3 bucket
+in the C<OutputBucketName> field when you created the job, this is the
+URI of that bucket. If you chose to store the transcription in Amazon
+Transcribe, this is a shareable URL that provides secure access to that
+location.
 
 
 

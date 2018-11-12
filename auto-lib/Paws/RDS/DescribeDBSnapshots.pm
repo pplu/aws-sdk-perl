@@ -41,7 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       {
         'DBInstanceIdentifier' => 'mymysqlinstance',
         'IncludePublic'        => 0,
-        'IncludeShared'        => true,
+        'IncludeShared'        => 1,
         'SnapshotType'         => 'manual'
       }
     );

@@ -31,8 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     $swf->DeprecateWorkflowType(
       Domain       => 'MyDomainName',
       WorkflowType => {
-        name    => 'MyName',       # min: 1, max: 256
-        version => 'MyVersion',    # min: 1, max: 64
+        Name    => 'MyName',       # min: 1, max: 256
+        Version => 'MyVersion',    # min: 1, max: 64
 
       },
 

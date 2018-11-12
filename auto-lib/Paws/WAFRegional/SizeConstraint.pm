@@ -98,6 +98,8 @@ attackers use in web requests in an effort to bypass AWS WAF. If you
 specify a transformation, AWS WAF performs the transformation on
 C<FieldToMatch> before inspecting a request for a match.
 
+You can only specify a single type of TextTransformation.
+
 Note that if you choose C<BODY> for the value of C<Type>, you must
 choose C<NONE> for C<TextTransformation> because CloudFront forwards
 only the first 8192 bytes for inspection.

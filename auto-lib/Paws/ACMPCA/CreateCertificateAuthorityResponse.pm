@@ -19,7 +19,7 @@ Paws::ACMPCA::CreateCertificateAuthorityResponse
 If successful, the Amazon Resource Name (ARN) of the certificate
 authority (CA). This is of the form:
 
-C<arn:aws:acm:I<region>:I<account>:certificate-authority/I<12345678-1234-1234-1234-123456789012>
+C<arn:aws:acm-pca:I<region>:I<account>:certificate-authority/I<12345678-1234-1234-1234-123456789012>
 >.
 
 

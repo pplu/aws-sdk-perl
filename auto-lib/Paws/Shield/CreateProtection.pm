@@ -76,8 +76,7 @@ C<arn:aws:cloudfront::I<account-id>:distribution/I<distribution-id>>
 
 =item *
 
-For Amazon Route 53:
-C<arn:aws:route53::I<account-id>:hostedzone/I<hosted-zone-id>>
+For Amazon Route 53: C<arn:aws:route53:::hostedzone/I<hosted-zone-id>>
 
 =item *
 

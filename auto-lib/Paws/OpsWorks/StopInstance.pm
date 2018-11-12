@@ -41,7 +41,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ops
 
 =head2 Force => Bool
 
-
+Specifies whether to force an instance to stop.
 
 
 

@@ -78,7 +78,7 @@ Valid values are: C<"CPUUtilization">, C<"NetworkIn">, C<"NetworkOut">, C<"Statu
 
 =head2 B<REQUIRED> Period => Int
 
-The time period for which you are requesting data.
+The granularity, in seconds, of the returned data points.
 
 
 

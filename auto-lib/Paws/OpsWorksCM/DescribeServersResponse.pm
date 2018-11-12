@@ -17,14 +17,7 @@ Paws::OpsWorksCM::DescribeServersResponse
 
 =head2 NextToken => Str
 
-NextToken is a string that is returned in some command responses. It
-indicates that not all entries have been returned, and that you must
-run at least one more request to get remaining items. To get remaining
-results, call C<DescribeServers> again, and assign the token from the
-previous results as the value of the C<nextToken> parameter. If there
-are no more results, the response object's C<nextToken> parameter value
-is C<null>. Setting a C<nextToken> value that was not returned in your
-previous results causes an C<InvalidNextTokenException> to occur.
+This is not currently implemented for C<DescribeServers> requests.
 
 
 =head2 Servers => ArrayRef[L<Paws::OpsWorksCM::Server>]

@@ -43,14 +43,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::E
 
 =head1 DESCRIPTION
 
-This class has no description
+Export job response.
 
 =head1 ATTRIBUTES
 
 
 =head2 ApplicationId => Str
 
-  The unique ID of the application to which the job applies.
+  The unique ID of the application associated with the export job.
 
 
 =head2 CompletedPieces => Int

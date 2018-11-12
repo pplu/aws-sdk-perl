@@ -41,8 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Domain       => 'MyDomainName',
       WorkflowId   => 'MyWorkflowId',
       WorkflowType => {
-        name    => 'MyName',       # min: 1, max: 256
-        version => 'MyVersion',    # min: 1, max: 64
+        Name    => 'MyName',       # min: 1, max: 256
+        Version => 'MyVersion',    # min: 1, max: 64
 
       },
       ChildPolicy                  => 'TERMINATE',                    # OPTIONAL
@@ -53,7 +53,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'MyTag', ...                                                  # max: 256
       ],                                                              # OPTIONAL
       TaskList => {
-        name => 'MyName',    # min: 1, max: 256
+        Name => 'MyName',    # min: 1, max: 256
 
       },    # OPTIONAL
       TaskPriority            => 'MyTaskPriority',                 # OPTIONAL

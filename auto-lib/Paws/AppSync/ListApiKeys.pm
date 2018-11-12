@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $apiKeys   = $ListApiKeysResponse->apiKeys;
-    my $nextToken = $ListApiKeysResponse->nextToken;
+    my $ApiKeys   = $ListApiKeysResponse->ApiKeys;
+    my $NextToken = $ListApiKeysResponse->NextToken;
 
     # Returns a L<Paws::AppSync::ListApiKeysResponse> object.
 

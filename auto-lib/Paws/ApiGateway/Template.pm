@@ -18,7 +18,7 @@ Paws::ApiGateway::Template
 =head2 Value => Str
 
 The Apache Velocity Template Language (VTL)
-(http://velocity.apache.org/engine/devel/vtl-reference-guide.html)
+(https://velocity.apache.org/engine/devel/vtl-reference-guide.html)
 template content used for the template resource.
 
 

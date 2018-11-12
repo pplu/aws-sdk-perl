@@ -71,32 +71,7 @@ without needing to stand up or maintain your own Kubernetes control
 plane. Kubernetes is an open-source system for automating the
 deployment, scaling, and management of containerized applications.
 
-Amazon EKS runs three Kubernetes control plane instances across three
-Availability Zones to ensure high availability. Amazon EKS
-automatically detects and replaces unhealthy control plane instances,
-and it provides automated version upgrades and patching for them.
-
-Amazon EKS is also integrated with many AWS services to provide
-scalability and security for your applications, including the
-following:
-
-=over
-
-=item *
-
-Elastic Load Balancing for load distribution
-
-=item *
-
-IAM for authentication
-
-=item *
-
-Amazon VPC for isolation
-
-=back
-
-Amazon EKS runs up to date versions of the open-source Kubernetes
+Amazon EKS runs up-to-date versions of the open-source Kubernetes
 software, so you can use all the existing plugins and tooling from the
 Kubernetes community. Applications running on Amazon EKS are fully
 compatible with applications running on any standard Kubernetes
@@ -223,7 +198,7 @@ Each argument is described in detail in: L<Paws::EKS::ListClusters>
 Returns: a L<Paws::EKS::ListClustersResponse> instance
 
 Lists the Amazon EKS clusters in your AWS account in the specified
-region.
+Region.
 
 
 

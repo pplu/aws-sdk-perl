@@ -26,6 +26,7 @@ package Paws::MediaLive::H264Settings;
   has ParDenominator => (is => 'ro', isa => 'Int', request_name => 'parDenominator', traits => ['NameInRequest']);
   has ParNumerator => (is => 'ro', isa => 'Int', request_name => 'parNumerator', traits => ['NameInRequest']);
   has Profile => (is => 'ro', isa => 'Str', request_name => 'profile', traits => ['NameInRequest']);
+  has QvbrQualityLevel => (is => 'ro', isa => 'Int', request_name => 'qvbrQualityLevel', traits => ['NameInRequest']);
   has RateControlMode => (is => 'ro', isa => 'Str', request_name => 'rateControlMode', traits => ['NameInRequest']);
   has ScanType => (is => 'ro', isa => 'Str', request_name => 'scanType', traits => ['NameInRequest']);
   has SceneChangeDetect => (is => 'ro', isa => 'Str', request_name => 'sceneChangeDetect', traits => ['NameInRequest']);
@@ -189,7 +190,8 @@ usage, while high can produce better quality for certain content.
 
 =head2 MaxBitrate => Int
 
-  Maximum bitrate in bits/second (for VBR mode only).
+  Maximum bitrate in bits/second (for VBR and QVBR modes only). Required
+when rateControlMode is "qvbr".
 
 
 =head2 MinIInterval => Int
@@ -234,9 +236,20 @@ input.
   H.264 Profile.
 
 
+=head2 QvbrQualityLevel => Int
+
+  Target quality value. Applicable only to QVBR mode. 1 is the lowest
+quality and 10 is the highest and approaches lossless. Typical levels
+for content distribution are between 6 and 8.
+
+
 =head2 RateControlMode => Str
 
-  Rate control mode.
+  Rate control mode. - CBR: Constant Bit Rate - VBR: Variable Bit Rate -
+QVBR: Encoder dynamically controls the bitrate to meet the desired
+quality (specified through the qvbrQualityLevel field). The bitrate
+will not exceed the bitrate specified in the maxBitrate field and will
+not fall below the bitrate required to meet the desired quality level.
 
 
 =head2 ScanType => Str
@@ -247,7 +260,9 @@ interlaced.
 
 =head2 SceneChangeDetect => Str
 
-  Scene change detection. Inserts I-frames on scene changes when enabled.
+  Scene change detection. - On: inserts I-frames when scene change is
+detected. - Off: does not force an I-frame when scene change is
+detected.
 
 
 =head2 Slices => Int

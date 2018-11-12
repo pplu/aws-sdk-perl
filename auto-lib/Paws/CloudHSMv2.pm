@@ -15,6 +15,11 @@ package Paws::CloudHSMv2;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
+  sub CopyBackupToRegion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudHSMv2::CopyBackupToRegion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudHSMv2::CreateCluster', @_);
@@ -23,6 +28,11 @@ package Paws::CloudHSMv2;
   sub CreateHsm {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudHSMv2::CreateHsm', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteBackup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudHSMv2::DeleteBackup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteCluster {
@@ -53,6 +63,11 @@ package Paws::CloudHSMv2;
   sub ListTags {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudHSMv2::ListTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RestoreBackup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudHSMv2::RestoreBackup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub TagResource {
@@ -137,7 +152,7 @@ package Paws::CloudHSMv2;
   }
 
 
-  sub operations { qw/CreateCluster CreateHsm DeleteCluster DeleteHsm DescribeBackups DescribeClusters InitializeCluster ListTags TagResource UntagResource / }
+  sub operations { qw/CopyBackupToRegion CreateCluster CreateHsm DeleteBackup DeleteCluster DeleteHsm DescribeBackups DescribeClusters InitializeCluster ListTags RestoreBackup TagResource UntagResource / }
 
 1;
 
@@ -173,6 +188,24 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 
 
 =head1 METHODS
+
+=head2 CopyBackupToRegion
+
+=over
+
+=item BackupId => Str
+
+=item DestinationRegion => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudHSMv2::CopyBackupToRegion>
+
+Returns: a L<Paws::CloudHSMv2::CopyBackupToRegionResponse> instance
+
+Copy an AWS CloudHSM cluster backup to a different region.
+
 
 =head2 CreateCluster
 
@@ -213,6 +246,24 @@ Returns: a L<Paws::CloudHSMv2::CreateHsmResponse> instance
 
 Creates a new hardware security module (HSM) in the specified AWS
 CloudHSM cluster.
+
+
+=head2 DeleteBackup
+
+=over
+
+=item BackupId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudHSMv2::DeleteBackup>
+
+Returns: a L<Paws::CloudHSMv2::DeleteBackupResponse> instance
+
+Deletes a specified AWS CloudHSM backup. A backup can be restored up to
+7 days after the DeleteBackup request. For more information on
+restoring a backup, see RestoreBackup
 
 
 =head2 DeleteCluster
@@ -268,6 +319,8 @@ these values. To find these values, use DescribeClusters.
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
+
+=item [SortAscending => Bool]
 
 
 =back
@@ -364,6 +417,24 @@ response with no C<NextToken> (or an empty or null value), that means
 there are no more tags to get.
 
 
+=head2 RestoreBackup
+
+=over
+
+=item BackupId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudHSMv2::RestoreBackup>
+
+Returns: a L<Paws::CloudHSMv2::RestoreBackupResponse> instance
+
+Restores a specified AWS CloudHSM backup that is in the
+C<PENDING_DELETION> state. For more information on deleting a backup,
+see DeleteBackup.
+
+
 =head2 TagResource
 
 =over
@@ -408,9 +479,9 @@ cluster.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 DescribeAllBackups(sub { },[Filters => L<Paws::CloudHSMv2::Filters>, MaxResults => Int, NextToken => Str])
+=head2 DescribeAllBackups(sub { },[Filters => L<Paws::CloudHSMv2::Filters>, MaxResults => Int, NextToken => Str, SortAscending => Bool])
 
-=head2 DescribeAllBackups([Filters => L<Paws::CloudHSMv2::Filters>, MaxResults => Int, NextToken => Str])
+=head2 DescribeAllBackups([Filters => L<Paws::CloudHSMv2::Filters>, MaxResults => Int, NextToken => Str, SortAscending => Bool])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

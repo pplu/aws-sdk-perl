@@ -595,6 +595,10 @@ services may be cleaned up and purged from Amazon ECS record keeping,
 and DescribeServices API operations on those services return a
 C<ServiceNotFoundException> error.
 
+If you attempt to create a new service with the same name as an
+existing service in either C<ACTIVE> or C<DRAINING> status, you will
+receive an error.
+
 
 =head2 DeregisterContainerInstance
 
@@ -1085,7 +1089,7 @@ task definition with the C<networkMode> parameter. The available
 network modes correspond to those described in Network settings
 (https://docs.docker.com/engine/reference/run/#/network-settings) in
 the Docker run reference. If you specify the C<awsvpc> network mode,
-the task is allocated an Elastic Network Interface, and you must
+the task is allocated an elastic network interface, and you must
 specify a NetworkConfiguration when you create a service or run a task
 with the task definition. For more information, see Task Networking
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
@@ -1153,7 +1157,7 @@ Confirm the state of the resource before you run a command to modify
 it. Run the DescribeTasks command using an exponential backoff
 algorithm to ensure that you allow enough time for the previous command
 to propagate through the system. To do this, run the DescribeTasks
-command repeatedly, starting with a couple of seconds of wait time, and
+command repeatedly, starting with a couple of seconds of wait time and
 increasing gradually up to five minutes of wait time.
 
 =item *

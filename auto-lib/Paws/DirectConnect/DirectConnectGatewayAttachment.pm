@@ -36,39 +36,65 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DirectConne
 
 =head1 DESCRIPTION
 
-The association between a direct connect gateway and virtual interface.
+Information about an attachment between a Direct Connect gateway and a
+virtual interface.
 
 =head1 ATTRIBUTES
 
 
 =head2 AttachmentState => Str
 
-  
+  The state of the attachment. The following are the possible values:
+
+=over
+
+=item *
+
+C<attaching>: The initial state after a virtual interface is created
+using the Direct Connect gateway.
+
+=item *
+
+C<attached>: The Direct Connect gateway and virtual interface are
+attached and ready to pass traffic.
+
+=item *
+
+C<detaching>: The initial state after calling DeleteVirtualInterface.
+
+=item *
+
+C<detached>: The virtual interface is detached from the Direct Connect
+gateway. Traffic flow between the Direct Connect gateway and virtual
+interface is stopped.
+
+=back
+
 
 
 =head2 DirectConnectGatewayId => Str
 
-  
+  The ID of the Direct Connect gateway.
 
 
 =head2 StateChangeError => Str
 
-  
+  The error message if the state of an object failed to advance.
 
 
 =head2 VirtualInterfaceId => Str
 
-  
+  The ID of the virtual interface.
 
 
 =head2 VirtualInterfaceOwnerAccount => Str
 
-  The AWS account ID of the owner of the virtual interface.
+  The ID of the AWS account that owns the virtual interface.
 
 
 =head2 VirtualInterfaceRegion => Str
 
-  
+  The AWS Region where the virtual interface is located.
 
 
 

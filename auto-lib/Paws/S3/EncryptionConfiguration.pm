@@ -39,7 +39,8 @@ replicas.
 
 =head2 ReplicaKmsKeyID => Str
 
-  The id of the KMS key used to encrypt the replica object.
+  The ID of the AWS KMS key for the region where the destination bucket
+resides. Amazon S3 uses this key to encrypt the replica object.
 
 
 

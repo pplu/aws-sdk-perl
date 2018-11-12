@@ -5,6 +5,7 @@ package Paws::Pinpoint::DirectMessageConfiguration;
   has BaiduMessage => (is => 'ro', isa => 'Paws::Pinpoint::BaiduMessage');
   has DefaultMessage => (is => 'ro', isa => 'Paws::Pinpoint::DefaultMessage');
   has DefaultPushNotificationMessage => (is => 'ro', isa => 'Paws::Pinpoint::DefaultPushNotificationMessage');
+  has EmailMessage => (is => 'ro', isa => 'Paws::Pinpoint::EmailMessage');
   has GCMMessage => (is => 'ro', isa => 'Paws::Pinpoint::GCMMessage');
   has SMSMessage => (is => 'ro', isa => 'Paws::Pinpoint::SMSMessage');
 1;
@@ -37,7 +38,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::D
 
 =head1 DESCRIPTION
 
-The message configuration.
+Message definitions for the default message and any messages that are
+tailored for specific channels.
 
 =head1 ATTRIBUTES
 
@@ -68,6 +70,11 @@ notification message.
 =head2 DefaultPushNotificationMessage => L<Paws::Pinpoint::DefaultPushNotificationMessage>
 
   The default push notification message for all push channels.
+
+
+=head2 EmailMessage => L<Paws::Pinpoint::EmailMessage>
+
+  The message to Email channels. Overrides the default message.
 
 
 =head2 GCMMessage => L<Paws::Pinpoint::GCMMessage>

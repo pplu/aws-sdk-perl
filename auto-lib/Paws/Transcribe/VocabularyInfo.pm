@@ -34,7 +34,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Transcribe:
 
 =head1 DESCRIPTION
 
-Provides information about a custom vocabulary.
+Provides information about a custom vocabulary. Note that vocabularies
+for en-AU, en-UK, and fr-CA languages that are in preview are not
+available. In the console, the vocabulary section will be greyed-out
+and SDK will return error message.
 
 =head1 ATTRIBUTES
 

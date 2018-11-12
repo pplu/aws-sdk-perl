@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ConnectDirectoryResult = $ds->ConnectDirectory(
       ConnectSettings => {
         CustomerDnsIps   => [ 'MyIpAddr', ... ],
-        CustomerUserName => 'MyUserName',            # min: 1,
+        CustomerUserName => 'MyUserName',            # min: 1
         SubnetIds        => [ 'MySubnetId', ... ],
         VpcId            => 'MyVpcId',
 
@@ -73,7 +73,7 @@ A textual description for the directory.
 
 =head2 B<REQUIRED> Name => Str
 
-The fully-qualified name of the on-premises directory, such as
+The fully qualified name of the on-premises directory, such as
 C<corp.example.com>.
 
 

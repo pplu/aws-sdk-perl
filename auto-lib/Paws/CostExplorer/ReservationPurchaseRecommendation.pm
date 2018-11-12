@@ -51,8 +51,8 @@ organization in AWS Organizations.
 
 =head2 LookbackPeriodInDays => Str
 
-  How many days of previous usage that AWS takes into consideration when
-making this recommendation.
+  How many days of previous usage that AWS considers when making this
+recommendation.
 
 
 =head2 PaymentOption => Str

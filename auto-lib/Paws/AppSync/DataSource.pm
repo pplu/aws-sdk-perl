@@ -4,6 +4,7 @@ package Paws::AppSync::DataSource;
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has DynamodbConfig => (is => 'ro', isa => 'Paws::AppSync::DynamodbDataSourceConfig', request_name => 'dynamodbConfig', traits => ['NameInRequest']);
   has ElasticsearchConfig => (is => 'ro', isa => 'Paws::AppSync::ElasticsearchDataSourceConfig', request_name => 'elasticsearchConfig', traits => ['NameInRequest']);
+  has HttpConfig => (is => 'ro', isa => 'Paws::AppSync::HttpDataSourceConfig', request_name => 'httpConfig', traits => ['NameInRequest']);
   has LambdaConfig => (is => 'ro', isa => 'Paws::AppSync::LambdaDataSourceConfig', request_name => 'lambdaConfig', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has ServiceRoleArn => (is => 'ro', isa => 'Str', request_name => 'serviceRoleArn', traits => ['NameInRequest']);
@@ -63,6 +64,11 @@ Describes a data source.
   Amazon Elasticsearch settings.
 
 
+=head2 HttpConfig => L<Paws::AppSync::HttpDataSourceConfig>
+
+  Http endpoint settings.
+
+
 =head2 LambdaConfig => L<Paws::AppSync::LambdaDataSourceConfig>
 
   Lambda settings.
@@ -104,6 +110,10 @@ B<NONE>: There is no data source. This type is used when when you wish
 to invoke a GraphQL operation without connecting to a data source, such
 as performing data transformation with resolvers or triggering a
 subscription to be invoked from a mutation.
+
+=item *
+
+B<HTTP>: The data source is an HTTP endpoint.
 
 =back
 

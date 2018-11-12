@@ -26,6 +26,7 @@ package Paws::DeviceFarm::Run;
   has Started => (is => 'ro', isa => 'Str', request_name => 'started', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has Stopped => (is => 'ro', isa => 'Str', request_name => 'stopped', traits => ['NameInRequest']);
+  has TestSpecArn => (is => 'ro', isa => 'Str', request_name => 'testSpecArn', traits => ['NameInRequest']);
   has TotalJobs => (is => 'ro', isa => 'Int', request_name => 'totalJobs', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
   has WebUrl => (is => 'ro', isa => 'Str', request_name => 'webUrl', traits => ['NameInRequest']);
@@ -303,6 +304,11 @@ STOPPING: A stopping status.
 =head2 Stopped => Str
 
   The run's stop time.
+
+
+=head2 TestSpecArn => Str
+
+  The ARN of the YAML-formatted test specification for the run.
 
 
 =head2 TotalJobs => Int

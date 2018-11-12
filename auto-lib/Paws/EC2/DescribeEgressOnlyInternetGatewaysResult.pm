@@ -18,7 +18,7 @@ Paws::EC2::DescribeEgressOnlyInternetGatewaysResult
 
 =head2 EgressOnlyInternetGateways => ArrayRef[L<Paws::EC2::EgressOnlyInternetGateway>]
 
-Information about the egress-only Internet gateways.
+Information about the egress-only internet gateways.
 
 
 =head2 NextToken => Str

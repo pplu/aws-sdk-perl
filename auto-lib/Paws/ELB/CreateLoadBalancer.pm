@@ -191,7 +191,7 @@ The listeners.
 
 For more information, see Listeners for Your Classic Load Balancer
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
 
@@ -243,7 +243,7 @@ A list of tags to assign to the load balancer.
 For more information about tagging your load balancer, see Tag Your
 Classic Load Balancer
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/add-remove-tags.html)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
 

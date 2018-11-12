@@ -361,7 +361,7 @@ All Elastic Load Balancing operations are idempotent, which means that
 they complete at most one time. If you repeat an operation, it
 succeeds.
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2015-12-01>
 
 
 =head1 METHODS
@@ -629,7 +629,7 @@ Returns: a L<Paws::ELBv2::DeleteListenerOutput> instance
 Deletes the specified listener.
 
 Alternatively, your listener is deleted when you delete the load
-balancer it is attached to using DeleteLoadBalancer.
+balancer to which it is attached, using DeleteLoadBalancer.
 
 
 =head2 DeleteLoadBalancer
@@ -1200,7 +1200,7 @@ Returns: a L<Paws::ELBv2::SetIpAddressTypeOutput> instance
 Sets the type of IP addresses used by the subnets of the specified
 Application Load Balancer or Network Load Balancer.
 
-Note that Network Load Balancers must use C<ipv4>.
+Network Load Balancers must use C<ipv4>.
 
 
 =head2 SetRulePriorities
@@ -1242,8 +1242,7 @@ Associates the specified security groups with the specified Application
 Load Balancer. The specified security groups override the previously
 associated security groups.
 
-Note that you can't specify a security group for a Network Load
-Balancer.
+You can't specify a security group for a Network Load Balancer.
 
 
 =head2 SetSubnets
@@ -1267,7 +1266,7 @@ Enables the Availability Zone for the specified public subnets for the
 specified Application Load Balancer. The specified subnets replace the
 previously enabled subnets.
 
-Note that you can't change the subnets for a Network Load Balancer.
+You can't change the subnets for a Network Load Balancer.
 
 
 

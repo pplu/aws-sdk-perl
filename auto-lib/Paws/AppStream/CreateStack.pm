@@ -1,6 +1,7 @@
 
 package Paws::AppStream::CreateStack;
   use Moose;
+  has ApplicationSettings => (is => 'ro', isa => 'Paws::AppStream::ApplicationSettings');
   has Description => (is => 'ro', isa => 'Str');
   has DisplayName => (is => 'ro', isa => 'Str');
   has FeedbackURL => (is => 'ro', isa => 'Str');
@@ -34,18 +35,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $appstream2 = Paws->service('AppStream');
     my $CreateStackResult = $appstream2->CreateStack(
-      Name              => 'MyString',
+      Name                => 'MyName',
+      ApplicationSettings => {
+        Enabled       => 1,
+        SettingsGroup => 'MySettingsGroup',    # max: 100; OPTIONAL
+      },    # OPTIONAL
       Description       => 'MyDescription',    # OPTIONAL
       DisplayName       => 'MyDisplayName',    # OPTIONAL
       FeedbackURL       => 'MyFeedbackURL',    # OPTIONAL
       RedirectURL       => 'MyRedirectURL',    # OPTIONAL
       StorageConnectors => [
         {
-          ConnectorType => 'HOMEFOLDERS',    # values: HOMEFOLDERS, GOOGLE_DRIVE
-          Domains       => [
-            'MyDomain', ...                  # max: 64
-          ],                                 # max: 10; OPTIONAL
-          ResourceIdentifier => 'MyResourceIdentifier',    # min: 1, ; OPTIONAL
+          ConnectorType =>
+            'HOMEFOLDERS',    # values: HOMEFOLDERS, GOOGLE_DRIVE, ONE_DRIVE
+          Domains => [
+            'MyDomain', ...    # max: 64
+          ],                   # max: 10; OPTIONAL
+          ResourceIdentifier => 'MyResourceIdentifier',    # min: 1; OPTIONAL
         },
         ...
       ],                                                   # OPTIONAL
@@ -66,9 +72,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::AppStream::CreateStackResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/appstream2/CreateStack>
 
 =head1 ATTRIBUTES
+
+
+=head2 ApplicationSettings => L<Paws::AppStream::ApplicationSettings>
+
+The persistent application settings for users of a stack. When these
+settings are enabled, changes that users make to applications and
+Windows settings are automatically saved after each session and applied
+to the next session.
+
 
 
 =head2 Description => Str

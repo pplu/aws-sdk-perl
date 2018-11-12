@@ -68,8 +68,28 @@ Description of the alias.
 
 =head2 B<REQUIRED> FunctionName => Str
 
-Name of the Lambda function for which you want to create an alias. Note
-that the length constraint applies only to the ARN. If you specify only
+The name of the lambda function.
+
+B<Name formats>
+
+=over
+
+=item *
+
+B<Function name> - C<MyFunction>.
+
+=item *
+
+B<Function ARN> -
+C<arn:aws:lambda:us-west-2:123456789012:function:MyFunction>.
+
+=item *
+
+B<Partial ARN> - C<123456789012:function:MyFunction>.
+
+=back
+
+The length constraint applies only to the full ARN. If you specify only
 the function name, it is limited to 64 characters in length.
 
 
@@ -90,7 +110,8 @@ Name for the alias you are creating.
 
 Specifies an additional version your alias can point to, allowing you
 to dictate what percentage of traffic will invoke each version. For
-more information, see lambda-traffic-shifting-using-aliases.
+more information, see Traffic Shifting Using Aliases
+(http://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html).
 
 
 

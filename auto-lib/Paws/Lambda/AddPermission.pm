@@ -79,50 +79,46 @@ function. This is currently only used for Alexa Smart Home functions.
 
 =head2 B<REQUIRED> FunctionName => Str
 
-Name of the Lambda function whose resource policy you are updating by
-adding a new permission.
+The name of the lambda function.
 
-You can specify a function name (for example, C<Thumbnail>) or you can
-specify Amazon Resource Name (ARN) of the function (for example,
-C<arn:aws:lambda:us-west-2:account-id:function:ThumbNail>). AWS Lambda
-also allows you to specify partial ARN (for example,
-C<account-id:Thumbnail>). Note that the length constraint applies only
-to the ARN. If you specify only the function name, it is limited to 64
-characters in length.
+B<Name formats>
+
+=over
+
+=item *
+
+B<Function name> - C<MyFunction>.
+
+=item *
+
+B<Function ARN> -
+C<arn:aws:lambda:us-west-2:123456789012:function:MyFunction>.
+
+=item *
+
+B<Partial ARN> - C<123456789012:function:MyFunction>.
+
+=back
+
+The length constraint applies only to the full ARN. If you specify only
+the function name, it is limited to 64 characters in length.
 
 
 
 =head2 B<REQUIRED> Principal => Str
 
-The principal who is getting this permission. It can be Amazon S3
-service Principal (C<s3.amazonaws.com>) if you want Amazon S3 to invoke
-the function, an AWS account ID if you are granting cross-account
-permission, or any valid AWS service principal such as
-C<sns.amazonaws.com>. For example, you might want to allow a custom
-application in another AWS account to push events to AWS Lambda by
-invoking your function.
+The principal who is getting this permission. The principal can be an
+AWS service (e.g. C<s3.amazonaws.com> or C<sns.amazonaws.com>) for
+service triggers, or an account ID for cross-account access. If you
+specify a service as a principal, use the C<SourceArn> parameter to
+limit who can invoke the function through that service.
 
 
 
 =head2 Qualifier => Str
 
-You can use this optional query parameter to describe a qualified ARN
-using a function version or an alias name. The permission will then
-apply to the specific qualified ARN. For example, if you specify
-function version 2 as the qualifier, then permission applies only when
-request is made using qualified function ARN:
-
-C<arn:aws:lambda:aws-region:acct-id:function:function-name:2>
-
-If you specify an alias name, for example C<PROD>, then the permission
-is valid only for requests made using the alias ARN:
-
-C<arn:aws:lambda:aws-region:acct-id:function:function-name:PROD>
-
-If the qualifier is not specified, the permission is valid only when
-requests is made using unqualified function ARN.
-
-C<arn:aws:lambda:aws-region:acct-id:function:function-name>
+Specify a version or alias to add permissions to a published version of
+the function.
 
 
 
@@ -132,7 +128,8 @@ An optional value you can use to ensure you are updating the latest
 update of the function version or alias. If the C<RevisionID> you pass
 doesn't match the latest C<RevisionId> of the function or alias, it
 will fail with an error message, advising you to retrieve the latest
-function version or alias C<RevisionID> using either or .
+function version or alias C<RevisionID> using either GetFunction or
+GetAlias
 
 
 
@@ -151,14 +148,11 @@ the C<SourceArn>) owned by a specific account.
 
 =head2 SourceArn => Str
 
-This is optional; however, when granting permission to invoke your
-function, you should specify this field with the Amazon Resource Name
-(ARN) as its value. This ensures that only events generated from the
-specified source can invoke the function.
+The Amazon Resource Name of the invoker.
 
-If you add a permission without providing the source ARN, any AWS
-account that creates a mapping to your function ARN can send events to
-invoke your Lambda function.
+If you add a permission to a service principal without providing the
+source ARN, any AWS account that creates a mapping to your function ARN
+can invoke your Lambda function.
 
 
 

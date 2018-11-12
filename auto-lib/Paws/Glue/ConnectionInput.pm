@@ -43,7 +43,7 @@ A structure used to specify a connection to create or update.
 
 =head2 B<REQUIRED> ConnectionProperties => L<Paws::Glue::ConnectionProperties>
 
-  A list of key-value pairs used as parameters for this connection.
+  These key-value pairs define parameters for the connection.
 
 
 =head2 B<REQUIRED> ConnectionType => Str

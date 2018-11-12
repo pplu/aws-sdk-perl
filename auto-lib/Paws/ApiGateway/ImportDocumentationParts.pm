@@ -45,7 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::ApiGateway::DocumentationPartIds> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/ImportDocumentationParts>
 
 =head1 ATTRIBUTES
 
@@ -53,7 +53,7 @@ For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigat
 =head2 B<REQUIRED> Body => Str
 
 [Required] Raw byte array representing the to-be-imported documentation
-parts. To import from a Swagger file, this is a JSON object.
+parts. To import from an OpenAPI file, this is a JSON object.
 
 
 

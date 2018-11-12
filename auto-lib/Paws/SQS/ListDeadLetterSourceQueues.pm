@@ -47,7 +47,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sqs
 
 The URL of a dead-letter queue.
 
-Queue URLs are case-sensitive.
+Queue URLs and names are case-sensitive.
 
 
 

@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     $ec2->ModifySubnetAttribute(
       {
         'MapPublicIpOnLaunch' => {
-          'Value' => true
+          'Value' => 1
         },
         'SubnetId' => 'subnet-1a2b3c4d'
       }

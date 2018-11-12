@@ -1,6 +1,7 @@
 package Paws::MediaConvert::Job;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has BillingTagsSource => (is => 'ro', isa => 'Str', request_name => 'billingTagsSource', traits => ['NameInRequest']);
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
   has ErrorCode => (is => 'ro', isa => 'Int', request_name => 'errorCode', traits => ['NameInRequest']);
   has ErrorMessage => (is => 'ro', isa => 'Str', request_name => 'errorMessage', traits => ['NameInRequest']);
@@ -53,6 +54,11 @@ http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 =head2 Arn => Str
 
   An identifier for this resource that is unique within all of AWS.
+
+
+=head2 BillingTagsSource => Str
+
+  
 
 
 =head2 CreatedAt => Str

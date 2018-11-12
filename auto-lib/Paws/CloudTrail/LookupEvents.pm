@@ -36,7 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       LookupAttributes => [
         {
           AttributeKey => 'EventId'
-          , # values: EventId, EventName, Username, ResourceType, ResourceName, EventSource
+          , # values: EventId, EventName, ReadOnly, Username, ResourceType, ResourceName, EventSource, AccessKeyId
           AttributeValue => 'MyString',
 
         },
@@ -77,7 +77,7 @@ only one item.
 =head2 MaxResults => Int
 
 The number of events to return. Possible values are 1 through 50. The
-default is 10.
+default is 50.
 
 
 

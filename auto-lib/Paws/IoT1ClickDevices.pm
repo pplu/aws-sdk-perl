@@ -97,7 +97,7 @@ Paws::IoT1ClickDevices - Perl Interface to AWS AWS IoT 1-Click Devices Service
 
 Stub description
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/devices.iot1click-2018-05-14>
 
 
 =head1 METHODS

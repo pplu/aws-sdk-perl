@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 
 =head1 DESCRIPTION
 
-Information about where text detected by is located on an image.
+Information about where the text detected by is located on an image.
 
 =head1 ATTRIBUTES
 

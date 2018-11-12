@@ -109,6 +109,11 @@ package Paws::IoTAnalytics;
     my $call_object = $self->new_with_coercions('Paws::IoTAnalytics::ListChannels', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListDatasetContents {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoTAnalytics::ListDatasetContents', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListDatasets {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoTAnalytics::ListDatasets', @_);
@@ -182,7 +187,7 @@ package Paws::IoTAnalytics;
   
 
 
-  sub operations { qw/BatchPutMessage CancelPipelineReprocessing CreateChannel CreateDataset CreateDatasetContent CreateDatastore CreatePipeline DeleteChannel DeleteDataset DeleteDatasetContent DeleteDatastore DeletePipeline DescribeChannel DescribeDataset DescribeDatastore DescribeLoggingOptions DescribePipeline GetDatasetContent ListChannels ListDatasets ListDatastores ListPipelines ListTagsForResource PutLoggingOptions RunPipelineActivity SampleChannelData StartPipelineReprocessing TagResource UntagResource UpdateChannel UpdateDataset UpdateDatastore UpdatePipeline / }
+  sub operations { qw/BatchPutMessage CancelPipelineReprocessing CreateChannel CreateDataset CreateDatasetContent CreateDatastore CreatePipeline DeleteChannel DeleteDataset DeleteDatasetContent DeleteDatastore DeletePipeline DescribeChannel DescribeDataset DescribeDatastore DescribeLoggingOptions DescribePipeline GetDatasetContent ListChannels ListDatasetContents ListDatasets ListDatastores ListPipelines ListTagsForResource PutLoggingOptions RunPipelineActivity SampleChannelData StartPipelineReprocessing TagResource UntagResource UpdateChannel UpdateDataset UpdateDatastore UpdatePipeline / }
 
 1;
 
@@ -308,6 +313,8 @@ pipeline.
 
 =item DatasetName => Str
 
+=item [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>]
+
 =item [Tags => ArrayRef[L<Paws::IoTAnalytics::Tag>]]
 
 =item [Triggers => ArrayRef[L<Paws::IoTAnalytics::DatasetTrigger>]]
@@ -320,10 +327,11 @@ Each argument is described in detail in: L<Paws::IoTAnalytics::CreateDataset>
 Returns: a L<Paws::IoTAnalytics::CreateDatasetResponse> instance
 
 Creates a data set. A data set stores data retrieved from a data store
-by applying an SQL action.
-
-This operation creates the skeleton of a data set. To populate the data
-set, call "CreateDatasetContent".
+by applying a "queryAction" (a SQL query) or a "containerAction"
+(executing a containerized application). This operation creates the
+skeleton of a data set. The data set can be populated manually by
+calling "CreateDatasetContent" or automatically according to a
+"trigger" you specify.
 
 
 =head2 CreateDatasetContent
@@ -337,9 +345,9 @@ set, call "CreateDatasetContent".
 
 Each argument is described in detail in: L<Paws::IoTAnalytics::CreateDatasetContent>
 
-Returns: nothing
+Returns: a L<Paws::IoTAnalytics::CreateDatasetContentResponse> instance
 
-Creates the content of a data set by applying an SQL action.
+Creates the content of a data set by applying a SQL action.
 
 
 =head2 CreateDatastore
@@ -475,6 +483,8 @@ Deletes the specified pipeline.
 
 =item ChannelName => Str
 
+=item [IncludeStatistics => Bool]
+
 
 =back
 
@@ -506,6 +516,8 @@ Retrieves information about a data set.
 =over
 
 =item DatastoreName => Str
+
+=item [IncludeStatistics => Bool]
 
 
 =back
@@ -582,6 +594,26 @@ Each argument is described in detail in: L<Paws::IoTAnalytics::ListChannels>
 Returns: a L<Paws::IoTAnalytics::ListChannelsResponse> instance
 
 Retrieves a list of channels.
+
+
+=head2 ListDatasetContents
+
+=over
+
+=item DatasetName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoTAnalytics::ListDatasetContents>
+
+Returns: a L<Paws::IoTAnalytics::ListDatasetContentsResponse> instance
+
+Lists information about data set contents that have been created.
 
 
 =head2 ListDatasets
@@ -800,6 +832,8 @@ Updates the settings of a channel.
 =item Actions => ArrayRef[L<Paws::IoTAnalytics::DatasetAction>]
 
 =item DatasetName => Str
+
+=item [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>]
 
 =item [Triggers => ArrayRef[L<Paws::IoTAnalytics::DatasetTrigger>]]
 

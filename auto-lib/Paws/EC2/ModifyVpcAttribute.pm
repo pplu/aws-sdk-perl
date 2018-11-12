@@ -81,7 +81,7 @@ only enable DNS hostnames if you've enabled DNS support.
 Indicates whether the DNS resolution is supported for the VPC. If
 enabled, queries to the Amazon provided DNS server at the
 169.254.169.253 IP address, or the reserved IP address at the base of
-the VPC network range "plus two" will succeed. If disabled, the Amazon
+the VPC network range "plus two" succeed. If disabled, the Amazon
 provided DNS service in the VPC that resolves public DNS hostnames to
 IP addresses is not enabled.
 

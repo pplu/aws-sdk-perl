@@ -32,10 +32,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateEmailChannelResponse = $pinpoint->UpdateEmailChannel(
       ApplicationId       => 'My__string',
       EmailChannelRequest => {
-        Enabled     => 1,              # OPTIONAL
-        FromAddress => 'My__string',
-        Identity    => 'My__string',
-        RoleArn     => 'My__string',
+        ConfigurationSet => 'My__string',
+        Enabled          => 1,              # OPTIONAL
+        FromAddress      => 'My__string',
+        Identity         => 'My__string',
+        RoleArn          => 'My__string',
       },
 
     );
@@ -47,14 +48,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::Pinpoint::UpdateEmailChannelResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pinpoint/UpdateEmailChannel>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-
+The unique ID of your Amazon Pinpoint application.
 
 
 

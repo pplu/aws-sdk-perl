@@ -6,6 +6,8 @@ package Paws::ServiceCatalog::ProvisionedProductDetail;
   has IdempotencyToken => (is => 'ro', isa => 'Str');
   has LastRecordId => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+  has ProductId => (is => 'ro', isa => 'Str');
+  has ProvisioningArtifactId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has StatusMessage => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
@@ -75,6 +77,17 @@ product.
 =head2 Name => Str
 
   The user-friendly name of the provisioned product.
+
+
+=head2 ProductId => Str
+
+  The product identifier. For example, C<prod-abcdzk7xy33qa>.
+
+
+=head2 ProvisioningArtifactId => Str
+
+  The identifier of the provisioning artifact. For example,
+C<pa-4abcdjnxjj6ne>.
 
 
 =head2 Status => Str

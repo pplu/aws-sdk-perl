@@ -28,9 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
 =head1 SYNOPSIS
 
-    my $sagemaker = Paws->service('SageMaker');
+    my $api.sagemaker = Paws->service('SageMaker');
     my $UpdateNotebookInstanceLifecycleConfigOutput =
-      $sagemaker->UpdateNotebookInstanceLifecycleConfig(
+      $api . sagemaker->UpdateNotebookInstanceLifecycleConfig(
       NotebookInstanceLifecycleConfigName =>
         'MyNotebookInstanceLifecycleConfigName',
       OnCreate => [
@@ -50,7 +50,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sagemaker/UpdateNotebookInstanceLifecycleConfig>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.sagemaker/UpdateNotebookInstanceLifecycleConfig>
 
 =head1 ATTRIBUTES
 

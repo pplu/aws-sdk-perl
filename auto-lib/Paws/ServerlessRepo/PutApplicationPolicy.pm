@@ -2,7 +2,7 @@
 package Paws::ServerlessRepo::PutApplicationPolicy;
   use Moose;
   has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'applicationId', required => 1);
-  has Statements => (is => 'ro', isa => 'ArrayRef[Paws::ServerlessRepo::ApplicationPolicyStatement]', traits => ['NameInRequest'], request_name => 'statements');
+  has Statements => (is => 'ro', isa => 'ArrayRef[Paws::ServerlessRepo::ApplicationPolicyStatement]', traits => ['NameInRequest'], request_name => 'statements', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -38,7 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           StatementId => 'My__string',
         },
         ...
-      ],    # OPTIONAL
+      ],
+
     );
 
     # Results:
@@ -54,13 +55,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ser
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-The ID of the application to get.
+The Amazon Resource Name (ARN) of the application.
 
 
 
-=head2 Statements => ArrayRef[L<Paws::ServerlessRepo::ApplicationPolicyStatement>]
+=head2 B<REQUIRED> Statements => ArrayRef[L<Paws::ServerlessRepo::ApplicationPolicyStatement>]
 
-Array of policy statements applied to the application.
+An array of policy statements applied to the application.
 
 
 

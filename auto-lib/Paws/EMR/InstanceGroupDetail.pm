@@ -51,8 +51,12 @@ Detailed information about an instance group.
 
 =head2 BidPrice => Str
 
-  Bid price for EC2 Instances when launching nodes as Spot Instances,
-expressed in USD.
+  The maximum Spot price your are willing to pay for EC2 instances.
+
+An optional, nullable field that applies if the C<MarketType> for the
+instance group is specified as C<SPOT>. Specified in USD. If the value
+is NULL and C<SPOT> is specified, the maximum Spot price is set equal
+to the On-Demand price.
 
 
 =head2 B<REQUIRED> CreationDateTime => Str

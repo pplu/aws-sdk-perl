@@ -3,6 +3,7 @@ package Paws::DMS::CreateEndpoint;
   use Moose;
   has CertificateArn => (is => 'ro', isa => 'Str');
   has DatabaseName => (is => 'ro', isa => 'Str');
+  has DmsTransferSettings => (is => 'ro', isa => 'Paws::DMS::DmsTransferSettings');
   has DynamoDbSettings => (is => 'ro', isa => 'Paws::DMS::DynamoDbSettings');
   has EndpointIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has EndpointType => (is => 'ro', isa => 'Str', required => 1);
@@ -45,15 +46,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $dms = Paws->service('DMS');
     my $CreateEndpointResponse = $dms->CreateEndpoint(
-      EndpointIdentifier => 'MyString',
-      EndpointType       => 'source',
-      EngineName         => 'MyString',
-      CertificateArn     => 'MyString',    # OPTIONAL
-      DatabaseName       => 'MyString',    # OPTIONAL
-      DynamoDbSettings   => {
+      EndpointIdentifier  => 'MyString',
+      EndpointType        => 'source',
+      EngineName          => 'MyString',
+      CertificateArn      => 'MyString',    # OPTIONAL
+      DatabaseName        => 'MyString',    # OPTIONAL
+      DmsTransferSettings => {
+        BucketName           => 'MyString',
+        ServiceAccessRoleArn => 'MyString',
+      },                                    # OPTIONAL
+      DynamoDbSettings => {
         ServiceAccessRoleArn => 'MyString',
 
-      },                                   # OPTIONAL
+      },                                    # OPTIONAL
       ExternalTableDefinition   => 'MyString',    # OPTIONAL
       ExtraConnectionAttributes => 'MyString',    # OPTIONAL
       KmsKeyId                  => 'MyString',    # OPTIONAL
@@ -119,6 +124,41 @@ The name of the endpoint database.
 
 
 
+=head2 DmsTransferSettings => L<Paws::DMS::DmsTransferSettings>
+
+The settings in JSON format for the DMS Transfer type source endpoint.
+
+Attributes include:
+
+=over
+
+=item *
+
+serviceAccessRoleArn - The IAM role that has permission to access the
+Amazon S3 bucket.
+
+=item *
+
+bucketName - The name of the S3 bucket to use.
+
+=item *
+
+compressionType - An optional parameter to use GZIP to compress the
+target files. Set to NONE (the default) or do not use to leave the
+files uncompressed.
+
+=back
+
+Shorthand syntax: ServiceAccessRoleArn=string
+,BucketName=string,CompressionType=string
+
+JSON syntax:
+
+{ "ServiceAccessRoleArn": "string", "BucketName": "string",
+"CompressionType": "none"|"gzip" }
+
+
+
 =head2 DynamoDbSettings => L<Paws::DMS::DynamoDbSettings>
 
 Settings in JSON format for the target Amazon DynamoDB endpoint. For
@@ -179,7 +219,7 @@ different default encryption key for each AWS region.
 Settings in JSON format for the source MongoDB endpoint. For more
 information about the available settings, see the B<Configuration
 Properties When Using MongoDB as a Source for AWS Database Migration
-Service> section at Using Amazon S3 as a Target for AWS Database
+Service> section at Using MongoDB as a Target for AWS Database
 Migration Service
 (http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html).
 

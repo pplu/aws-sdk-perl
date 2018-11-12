@@ -41,14 +41,17 @@ hyperparameter tuning job launches and the metrics to monitor.
 
 =head2 MetricDefinitions => ArrayRef[L<Paws::SageMaker::MetricDefinition>]
 
-  An array of objects that specify the metrics that the algorithm emits.
+  An array of MetricDefinition objects that specify the metrics that the
+algorithm emits.
 
 
 =head2 B<REQUIRED> TrainingImage => Str
 
   The registry path of the Docker image that contains the training
 algorithm. For information about Docker registry paths for built-in
-algorithms, see sagemaker-algo-docker-registry-paths.
+algorithms, see Algorithms Provided by Amazon SageMaker: Common
+Parameters
+(http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html).
 
 
 =head2 B<REQUIRED> TrainingInputMode => Str

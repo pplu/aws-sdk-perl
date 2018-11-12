@@ -112,7 +112,7 @@ for scheduling snapshots and your gateway's maintenance schedule.
 
 A value that defines the type of gateway to activate. The type
 specified is critical to all later functions of the gateway and cannot
-be changed after activation. The default value is C<STORED>.
+be changed after activation. The default value is C<CACHED>.
 
 Valid Values: "STORED", "CACHED", "VTL", "FILE_S3"
 

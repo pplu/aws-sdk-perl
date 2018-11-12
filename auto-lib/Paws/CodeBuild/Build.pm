@@ -6,6 +6,7 @@ package Paws::CodeBuild::Build;
   has BuildStatus => (is => 'ro', isa => 'Str', request_name => 'buildStatus', traits => ['NameInRequest']);
   has Cache => (is => 'ro', isa => 'Paws::CodeBuild::ProjectCache', request_name => 'cache', traits => ['NameInRequest']);
   has CurrentPhase => (is => 'ro', isa => 'Str', request_name => 'currentPhase', traits => ['NameInRequest']);
+  has EncryptionKey => (is => 'ro', isa => 'Str', request_name => 'encryptionKey', traits => ['NameInRequest']);
   has EndTime => (is => 'ro', isa => 'Str', request_name => 'endTime', traits => ['NameInRequest']);
   has Environment => (is => 'ro', isa => 'Paws::CodeBuild::ProjectEnvironment', request_name => 'environment', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
@@ -14,6 +15,10 @@ package Paws::CodeBuild::Build;
   has NetworkInterface => (is => 'ro', isa => 'Paws::CodeBuild::NetworkInterface', request_name => 'networkInterface', traits => ['NameInRequest']);
   has Phases => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::BuildPhase]', request_name => 'phases', traits => ['NameInRequest']);
   has ProjectName => (is => 'ro', isa => 'Str', request_name => 'projectName', traits => ['NameInRequest']);
+  has ResolvedSourceVersion => (is => 'ro', isa => 'Str', request_name => 'resolvedSourceVersion', traits => ['NameInRequest']);
+  has SecondaryArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::BuildArtifacts]', request_name => 'secondaryArtifacts', traits => ['NameInRequest']);
+  has SecondarySources => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectSource]', request_name => 'secondarySources', traits => ['NameInRequest']);
+  has SecondarySourceVersions => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectSourceVersion]', request_name => 'secondarySourceVersions', traits => ['NameInRequest']);
   has ServiceRole => (is => 'ro', isa => 'Str', request_name => 'serviceRole', traits => ['NameInRequest']);
   has Source => (is => 'ro', isa => 'Paws::CodeBuild::ProjectSource', request_name => 'source', traits => ['NameInRequest']);
   has SourceVersion => (is => 'ro', isa => 'Str', request_name => 'sourceVersion', traits => ['NameInRequest']);
@@ -114,6 +119,15 @@ C<TIMED_OUT>: The build timed out.
   The current build phase.
 
 
+=head2 EncryptionKey => Str
+
+  The AWS Key Management Service (AWS KMS) customer master key (CMK) to
+be used for encrypting the build output artifacts.
+
+This is expressed either as the CMK's Amazon Resource Name (ARN) or, if
+specified, the CMK's alias (using the format C<alias/I<alias-name> >).
+
+
 =head2 EndTime => Str
 
   When the build process ended, expressed in Unix time format.
@@ -173,6 +187,75 @@ information about any current build phase that is not yet complete.
 =head2 ProjectName => Str
 
   The name of the AWS CodeBuild project.
+
+
+=head2 ResolvedSourceVersion => Str
+
+  An identifier for the version of this build's source code.
+
+=over
+
+=item *
+
+For AWS CodeCommit, GitHub, GitHub Enterprise, and BitBucket, the
+commit ID.
+
+=item *
+
+For AWS CodePipeline, the source revision provided by AWS CodePipeline.
+
+=item *
+
+For Amazon Simple Storage Service (Amazon S3), this does not apply.
+
+=back
+
+
+
+=head2 SecondaryArtifacts => ArrayRef[L<Paws::CodeBuild::BuildArtifacts>]
+
+  An array of C<ProjectArtifacts> objects.
+
+
+=head2 SecondarySources => ArrayRef[L<Paws::CodeBuild::ProjectSource>]
+
+  An array of C<ProjectSource> objects.
+
+
+=head2 SecondarySourceVersions => ArrayRef[L<Paws::CodeBuild::ProjectSourceVersion>]
+
+  An array of C<ProjectSourceVersion> objects. Each
+C<ProjectSourceVersion> must be one of:
+
+=over
+
+=item *
+
+For AWS CodeCommit: the commit ID to use.
+
+=item *
+
+For GitHub: the commit ID, pull request ID, branch name, or tag name
+that corresponds to the version of the source code you want to build.
+If a pull request ID is specified, it must use the format
+C<pr/pull-request-ID> (for example C<pr/25>). If a branch name is
+specified, the branch's HEAD commit ID will be used. If not specified,
+the default branch's HEAD commit ID will be used.
+
+=item *
+
+For Bitbucket: the commit ID, branch name, or tag name that corresponds
+to the version of the source code you want to build. If a branch name
+is specified, the branch's HEAD commit ID will be used. If not
+specified, the default branch's HEAD commit ID will be used.
+
+=item *
+
+For Amazon Simple Storage Service (Amazon S3): the version ID of the
+object representing the build input ZIP file to use.
+
+=back
+
 
 
 =head2 ServiceRole => Str

@@ -68,7 +68,8 @@ One or more filters.
 
 =item *
 
-C<instance-family> - The instance family of the offering (e.g., C<m4>).
+C<instance-family> - The instance family of the offering (for example,
+C<m4>).
 
 =item *
 
@@ -82,11 +83,11 @@ C<PartialUpfront> | C<AllUpfront>).
 
 =head2 MaxDuration => Int
 
-This is the maximum duration of the reservation you'd like to purchase,
-specified in seconds. Reservations are available in one-year and
-three-year terms. The number of seconds specified must be the number of
-seconds in a year (365x24x60x60) times one of the supported durations
-(1 or 3). For example, specify 94608000 for three years.
+This is the maximum duration of the reservation to purchase, specified
+in seconds. Reservations are available in one-year and three-year
+terms. The number of seconds specified must be the number of seconds in
+a year (365x24x60x60) times one of the supported durations (1 or 3).
+For example, specify 94608000 for three years.
 
 
 
@@ -94,8 +95,8 @@ seconds in a year (365x24x60x60) times one of the supported durations
 
 The maximum number of results to return for the request in a single
 page. The remaining results can be seen by sending another request with
-the returned C<nextToken> value. This value can be between 5 and 500;
-if C<maxResults> is given a larger value than 500, you will receive an
+the returned C<nextToken> value. This value can be between 5 and 500.
+If C<maxResults> is given a larger value than 500, you receive an
 error.
 
 

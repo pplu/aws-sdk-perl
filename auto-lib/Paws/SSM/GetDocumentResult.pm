@@ -32,7 +32,7 @@ Valid values are: C<"YAML">, C<"JSON">
 
 The document type.
 
-Valid values are: C<"Command">, C<"Policy">, C<"Automation">
+Valid values are: C<"Command">, C<"Policy">, C<"Automation">, C<"Session">
 =head2 DocumentVersion => Str
 
 The document version.

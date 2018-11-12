@@ -44,7 +44,8 @@ Specifies a version of a table.
 
 =head2 VersionId => Str
 
-  The ID value that identifies this table version.
+  The ID value that identifies this table version. A C<VersionId> is a
+string representation of an integer. Each version is incremented by 1.
 
 
 

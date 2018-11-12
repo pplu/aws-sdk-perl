@@ -44,7 +44,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =head2 ConnectionId => Str
 
-
+The ID of the connection.
 
 
 

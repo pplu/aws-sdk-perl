@@ -1,6 +1,6 @@
 package Paws::MediaConvert::ChannelMapping;
   use Moose;
-  has OutputChannels => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::OutputChannelMapping]', request_name => 'outputChannels', traits => ['NameInRequest'], required => 1);
+  has OutputChannels => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::OutputChannelMapping]', request_name => 'outputChannels', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +40,7 @@ amplification).
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> OutputChannels => ArrayRef[L<Paws::MediaConvert::OutputChannelMapping>]
+=head2 OutputChannels => ArrayRef[L<Paws::MediaConvert::OutputChannelMapping>]
 
   List of output channels
 

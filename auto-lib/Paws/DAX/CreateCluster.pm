@@ -11,6 +11,7 @@ package Paws::DAX::CreateCluster;
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has ReplicationFactor => (is => 'ro', isa => 'Int', required => 1);
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has SSESpecification => (is => 'ro', isa => 'Paws::DAX::SSESpecification');
   has SubnetGroupName => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DAX::Tag]');
 
@@ -48,9 +49,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       NotificationTopicArn       => 'MyString',             # OPTIONAL
       ParameterGroupName         => 'MyString',             # OPTIONAL
       PreferredMaintenanceWindow => 'MyString',             # OPTIONAL
-      SecurityGroupIds           => [ 'MyString', ... ],    # OPTIONAL
-      SubnetGroupName            => 'MyString',             # OPTIONAL
-      Tags                       => [
+      SSESpecification           => {
+        Enabled => 1,
+
+      },                                                    # OPTIONAL
+      SecurityGroupIds => [ 'MyString', ... ],              # OPTIONAL
+      SubnetGroupName  => 'MyString',                       # OPTIONAL
+      Tags             => [
         {
           Key   => 'MyString',
           Value => 'MyString',
@@ -204,6 +209,13 @@ cluster. (Each of the security group ID is system-generated.)
 
 If this parameter is not specified, DAX assigns the default VPC
 security group to each node.
+
+
+
+=head2 SSESpecification => L<Paws::DAX::SSESpecification>
+
+Represents the settings used to enable server-side encryption on the
+cluster.
 
 
 

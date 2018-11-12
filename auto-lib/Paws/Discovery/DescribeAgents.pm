@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AgentIds => [ 'MyAgentId', ... ],    # OPTIONAL
       Filters => [
         {
-          condition => 'MyCondition',
-          name      => 'MyString',
-          values    => [ 'MyFilterValue', ... ],
+          Condition => 'MyCondition',
+          Name      => 'MyString',
+          Values    => [ 'MyFilterValue', ... ],
 
         },
         ...

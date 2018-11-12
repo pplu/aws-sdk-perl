@@ -285,6 +285,11 @@ package Paws::DeviceFarm;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ScheduleRun', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StopJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::StopJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StopRemoteAccessSession {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::StopRemoteAccessSession', @_);
@@ -318,6 +323,11 @@ package Paws::DeviceFarm;
   sub UpdateProject {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::UpdateProject', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateUpload {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::UpdateUpload', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateVPCEConfiguration {
@@ -653,7 +663,7 @@ package Paws::DeviceFarm;
   }
 
 
-  sub operations { qw/CreateDevicePool CreateInstanceProfile CreateNetworkProfile CreateProject CreateRemoteAccessSession CreateUpload CreateVPCEConfiguration DeleteDevicePool DeleteInstanceProfile DeleteNetworkProfile DeleteProject DeleteRemoteAccessSession DeleteRun DeleteUpload DeleteVPCEConfiguration GetAccountSettings GetDevice GetDeviceInstance GetDevicePool GetDevicePoolCompatibility GetInstanceProfile GetJob GetNetworkProfile GetOfferingStatus GetProject GetRemoteAccessSession GetRun GetSuite GetTest GetUpload GetVPCEConfiguration InstallToRemoteAccessSession ListArtifacts ListDeviceInstances ListDevicePools ListDevices ListInstanceProfiles ListJobs ListNetworkProfiles ListOfferingPromotions ListOfferings ListOfferingTransactions ListProjects ListRemoteAccessSessions ListRuns ListSamples ListSuites ListTests ListUniqueProblems ListUploads ListVPCEConfigurations PurchaseOffering RenewOffering ScheduleRun StopRemoteAccessSession StopRun UpdateDeviceInstance UpdateDevicePool UpdateInstanceProfile UpdateNetworkProfile UpdateProject UpdateVPCEConfiguration / }
+  sub operations { qw/CreateDevicePool CreateInstanceProfile CreateNetworkProfile CreateProject CreateRemoteAccessSession CreateUpload CreateVPCEConfiguration DeleteDevicePool DeleteInstanceProfile DeleteNetworkProfile DeleteProject DeleteRemoteAccessSession DeleteRun DeleteUpload DeleteVPCEConfiguration GetAccountSettings GetDevice GetDeviceInstance GetDevicePool GetDevicePoolCompatibility GetInstanceProfile GetJob GetNetworkProfile GetOfferingStatus GetProject GetRemoteAccessSession GetRun GetSuite GetTest GetUpload GetVPCEConfiguration InstallToRemoteAccessSession ListArtifacts ListDeviceInstances ListDevicePools ListDevices ListInstanceProfiles ListJobs ListNetworkProfiles ListOfferingPromotions ListOfferings ListOfferingTransactions ListProjects ListRemoteAccessSessions ListRuns ListSamples ListSuites ListTests ListUniqueProblems ListUploads ListVPCEConfigurations PurchaseOffering RenewOffering ScheduleRun StopJob StopRemoteAccessSession StopRun UpdateDeviceInstance UpdateDevicePool UpdateInstanceProfile UpdateNetworkProfile UpdateProject UpdateUpload UpdateVPCEConfiguration / }
 
 1;
 
@@ -1634,6 +1644,8 @@ Gets information about unique problems.
 
 =item [NextToken => Str]
 
+=item [Type => Str]
+
 
 =back
 
@@ -1738,6 +1750,28 @@ Each argument is described in detail in: L<Paws::DeviceFarm::ScheduleRun>
 Returns: a L<Paws::DeviceFarm::ScheduleRunResult> instance
 
 Schedules a run.
+
+
+=head2 StopJob
+
+=over
+
+=item Arn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DeviceFarm::StopJob>
+
+Returns: a L<Paws::DeviceFarm::StopJobResult> instance
+
+Initiates a stop request for the current job. AWS Device Farm will
+immediately stop the job on the device where tests have not started
+executing, and you will not be billed for this device. On the device
+where tests have started executing, Setup Suite and Teardown Suite
+tests will run to completion before stopping execution on the device.
+You will be billed for Setup, Teardown, and any tests that were in
+progress or already completed.
 
 
 =head2 StopRemoteAccessSession
@@ -1905,6 +1939,28 @@ Returns: a L<Paws::DeviceFarm::UpdateProjectResult> instance
 
 Modifies the specified project name, given the project ARN and a new
 name.
+
+
+=head2 UpdateUpload
+
+=over
+
+=item Arn => Str
+
+=item [ContentType => Str]
+
+=item [EditContent => Bool]
+
+=item [Name => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DeviceFarm::UpdateUpload>
+
+Returns: a L<Paws::DeviceFarm::UpdateUploadResult> instance
+
+Update an uploaded test specification (test spec).
 
 
 =head2 UpdateVPCEConfiguration
@@ -2096,9 +2152,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::DeviceFarm::ListUniqueProblemsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllUploads(sub { },Arn => Str, [NextToken => Str])
+=head2 ListAllUploads(sub { },Arn => Str, [NextToken => Str, Type => Str])
 
-=head2 ListAllUploads(Arn => Str, [NextToken => Str])
+=head2 ListAllUploads(Arn => Str, [NextToken => Str, Type => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

@@ -57,6 +57,10 @@ classic-listeners
 
 classic-load-balancers
 
+=item *
+
+classic-registered-instances
+
 =back
 
 

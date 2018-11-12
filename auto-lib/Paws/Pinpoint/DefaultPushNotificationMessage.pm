@@ -56,8 +56,7 @@ OPEN_APP | DEEP_LINK | URL
 
 =head2 Body => Str
 
-  The message body of the notification, the email body or the text
-message.
+  The message body of the notification.
 
 
 =head2 Data => L<Paws::Pinpoint::MapOf__string>
@@ -68,8 +67,9 @@ notifications' data.pinpoint.jsonBody' object
 
 =head2 SilentPush => Bool
 
-  Indicates if the message should display on the users device. Silent
-pushes can be used for Remote Configuration and Phone Home use cases.
+  Indicates if the message should display on the recipient's device. You
+can use silent pushes for remote configuration or to deliver messages
+to in-app notification centers.
 
 
 =head2 Substitutions => L<Paws::Pinpoint::MapOfListOf__string>

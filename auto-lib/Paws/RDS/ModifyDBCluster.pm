@@ -7,6 +7,7 @@ package Paws::RDS::ModifyDBCluster;
   has CloudwatchLogsExportConfiguration => (is => 'ro', isa => 'Paws::RDS::CloudwatchLogsExportConfiguration');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
@@ -15,6 +16,7 @@ package Paws::RDS::ModifyDBCluster;
   has Port => (is => 'ro', isa => 'Int');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
+  has ScalingConfiguration => (is => 'ro', isa => 'Paws::RDS::ScalingConfiguration');
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
@@ -45,7 +47,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example changes the specified settings for the specified DB cluster.
     my $ModifyDBClusterResult = $rds->ModifyDBCluster(
       {
-        'ApplyImmediately'           => true,
+        'ApplyImmediately'           => 1,
         'DBClusterIdentifier'        => 'mydbcluster',
         'MasterUserPassword'         => 'mynewpassword',
         'NewDBClusterIdentifier'     => 'mynewdbcluster',
@@ -70,12 +72,13 @@ the DB cluster. If this parameter is set to C<false>, changes to the DB
 cluster are applied during the next maintenance window.
 
 The C<ApplyImmediately> parameter only affects the
-C<NewDBClusterIdentifier> and C<MasterUserPassword> values. If you set
-the C<ApplyImmediately> parameter value to false, then changes to the
-C<NewDBClusterIdentifier> and C<MasterUserPassword> values are applied
-during the next maintenance window. All other changes are applied
-immediately, regardless of the value of the C<ApplyImmediately>
-parameter.
+C<EnableIAMDatabaseAuthentication>, C<MasterUserPassword>, and
+C<NewDBClusterIdentifier> values. If you set the C<ApplyImmediately>
+parameter value to false, then changes to the
+C<EnableIAMDatabaseAuthentication>, C<MasterUserPassword>, and
+C<NewDBClusterIdentifier> values are applied during the next
+maintenance window. All other changes are applied immediately,
+regardless of the value of the C<ApplyImmediately> parameter.
 
 Default: C<false>
 
@@ -153,6 +156,13 @@ The name of the DB cluster parameter group to use for the DB cluster.
 
 
 
+=head2 DeletionProtection => Bool
+
+Indicates if the DB cluster has deletion protection enabled. The
+database can't be deleted when this value is set to true.
+
+
+
 =head2 EnableIAMDatabaseAuthentication => Bool
 
 True to enable mapping of AWS Identity and Access Management (IAM)
@@ -202,7 +212,7 @@ The first character must be a letter
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens
+Can't end with a hyphen or contain two consecutive hyphens
 
 =back
 
@@ -245,9 +255,9 @@ parameter.
 
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region. To see the time blocks available,
-see Adjusting the Preferred Maintenance Window
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
-in the I<Amazon RDS User Guide.>
+see Adjusting the Preferred DB Cluster Maintenance Window
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
+in the I<Amazon Aurora User Guide.>
 
 Constraints:
 
@@ -283,14 +293,21 @@ Format: C<ddd:hh24:mi-ddd:hh24:mi>
 
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region, occurring on a random day of the
-week. To see the time blocks available, see Adjusting the Preferred
-Maintenance Window
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
-in the I<Amazon RDS User Guide.>
+week. To see the time blocks available, see Adjusting the Preferred DB
+Cluster Maintenance Window
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
+in the I<Amazon Aurora User Guide.>
 
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
 
 Constraints: Minimum 30-minute window.
+
+
+
+=head2 ScalingConfiguration => L<Paws::RDS::ScalingConfiguration>
+
+The scaling properties of the DB cluster. You can only modify scaling
+properties for DB clusters in C<serverless> DB engine mode.
 
 
 

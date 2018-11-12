@@ -32,7 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeImageBuildersResult = $appstream2->DescribeImageBuilders(
       MaxResults => 1,    # OPTIONAL
       Names      => [
-        'MyString', ...    # min: 1,
+        'MyString', ...    # min: 1
       ],                   # OPTIONAL
       NextToken => 'MyString',    # OPTIONAL
     );
@@ -44,7 +44,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::AppStream::DescribeImageBuildersResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/appstream2/DescribeImageBuilders>
 
 =head1 ATTRIBUTES
 

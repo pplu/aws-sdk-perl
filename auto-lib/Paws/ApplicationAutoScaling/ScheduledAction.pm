@@ -107,6 +107,13 @@ Amazon SageMaker endpoint variants - The resource type is C<variant>
 and the unique identifier is the resource ID. Example:
 C<endpoint/my-end-point/variant/KMeansClustering>.
 
+=item *
+
+Custom resources are not supported with a resource type. This parameter
+must specify the C<OutputValue> from the CloudFormation template stack
+used to access the resources. The unique identifier is defined by the
+service provider.
+
 =back
 
 
@@ -167,6 +174,11 @@ Aurora DB cluster. Available for Aurora MySQL-compatible edition.
 C<sagemaker:variant:DesiredInstanceCount> - The number of EC2 instances
 for an Amazon SageMaker model endpoint variant.
 
+=item *
+
+C<custom-resource:ResourceType:Property> - The scalable dimension for a
+custom resource provided by your own application or service.
+
 =back
 
 
@@ -206,8 +218,9 @@ UTC.
 For rate expressions, I<value> is a positive integer and I<unit> is
 C<minute> | C<minutes> | C<hour> | C<hours> | C<day> | C<days>.
 
-For more information about cron expressions, see Cron
-(https://en.wikipedia.org/wiki/Cron).
+For more information about cron expressions, see Cron Expressions
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions)
+in the I<Amazon CloudWatch Events User Guide>.
 
 
 =head2 B<REQUIRED> ScheduledActionARN => Str
@@ -222,8 +235,9 @@ For more information about cron expressions, see Cron
 
 =head2 B<REQUIRED> ServiceNamespace => Str
 
-  The namespace of the AWS service. For more information, see AWS Service
-Namespaces
+  The namespace of the AWS service that provides the resource or
+C<custom-resource> for a resource provided by your own application or
+service. For more information, see AWS Service Namespaces
 (http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
 in the I<Amazon Web Services General Reference>.
 

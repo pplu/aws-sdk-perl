@@ -68,10 +68,7 @@ Baidu Cloud Messaging channel definition
 
 =head2 HasCredential => Bool
 
-  Indicates whether the channel is configured with Baidu Cloud Push
-credentials. Amazon Pinpoint uses your credentials to authenticate push
-notifications with Baidu Cloud Push. Provide your credentials by
-setting the ApiKey and SecretKey attributes.
+  Not used. Retained for backwards compatibility.
 
 
 =head2 Id => Str

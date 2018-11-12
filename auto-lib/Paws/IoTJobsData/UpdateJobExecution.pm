@@ -8,6 +8,7 @@ package Paws::IoTJobsData::UpdateJobExecution;
   has JobId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'jobId', required => 1);
   has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status', required => 1);
   has StatusDetails => (is => 'ro', isa => 'Paws::IoTJobsData::DetailsMap', traits => ['NameInRequest'], request_name => 'statusDetails');
+  has StepTimeoutInMinutes => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'stepTimeoutInMinutes');
   has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName', required => 1);
 
   use MooseX::ClassAttribute;
@@ -47,6 +48,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'MyDetailsKey' =>
           'MyDetailsValue',    # key: min: 1, max: 128, value: min: 1, max: 1024
       },    # OPTIONAL
+      StepTimeoutInMinutes => 1,    # OPTIONAL
     );
 
     # Results:
@@ -56,7 +58,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::IoTJobsData::UpdateJobExecutionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/iot/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/data.jobs.iot/UpdateJobExecution>
 
 =head1 ATTRIBUTES
 
@@ -105,12 +107,26 @@ The unique identifier assigned to this job when it was created.
 The new status for the job execution (IN_PROGRESS, FAILED, SUCCESS, or
 REJECTED). This must be specified on every update.
 
-Valid values are: C<"QUEUED">, C<"IN_PROGRESS">, C<"SUCCEEDED">, C<"FAILED">, C<"REJECTED">, C<"REMOVED">, C<"CANCELED">
+Valid values are: C<"QUEUED">, C<"IN_PROGRESS">, C<"SUCCEEDED">, C<"FAILED">, C<"TIMED_OUT">, C<"REJECTED">, C<"REMOVED">, C<"CANCELED">
 
 =head2 StatusDetails => L<Paws::IoTJobsData::DetailsMap>
 
 Optional. A collection of name/value pairs that describe the status of
 the job execution. If not specified, the statusDetails are unchanged.
+
+
+
+=head2 StepTimeoutInMinutes => Int
+
+Specifies the amount of time this device has to finish execution of
+this job. If the job execution status is not set to a terminal state
+before this timer expires, or before the timer is reset (by again
+calling C<UpdateJobExecution>, setting the status to C<IN_PROGRESS> and
+specifying a new timeout value in this field) the job execution status
+will be automatically set to C<TIMED_OUT>. Note that setting or
+resetting this timeout has no effect on that job execution timeout
+which may have been specified when the job was created (C<CreateJob>
+using field C<timeoutConfig>).
 
 
 

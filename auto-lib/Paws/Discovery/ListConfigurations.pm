@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ConfigurationType => 'SERVER',
       Filters           => [
         {
-          condition => 'MyCondition',
-          name      => 'MyString',
-          values    => [ 'MyFilterValue', ... ],
+          Condition => 'MyCondition',
+          Name      => 'MyString',
+          Values    => [ 'MyFilterValue', ... ],
 
         },
         ...
@@ -46,16 +46,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       NextToken  => 'MyNextToken',    # OPTIONAL
       OrderBy    => [
         {
-          fieldName => 'MyString',
-          sortOrder => 'ASC',         # values: ASC, DESC; OPTIONAL
+          FieldName => 'MyString',
+          SortOrder => 'ASC',         # values: ASC, DESC; OPTIONAL
         },
         ...
       ],                              # OPTIONAL
     );
 
     # Results:
-    my $configurations = $ListConfigurationsResponse->configurations;
-    my $nextToken      = $ListConfigurationsResponse->nextToken;
+    my $Configurations = $ListConfigurationsResponse->Configurations;
+    my $NextToken      = $ListConfigurationsResponse->NextToken;
 
     # Returns a L<Paws::Discovery::ListConfigurationsResponse> object.
 

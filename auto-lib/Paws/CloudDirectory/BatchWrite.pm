@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ObjectAttributeList => [
               {
                 Key => {
-                  FacetName => 'MyFacetName',        # min: 1, max: 64
-                  Name      => 'MyAttributeName',    # min: 1, max: 64
+                  FacetName => 'MyFacetName',        # min: 1, max: 64; OPTIONAL
+                  Name      => 'MyAttributeName',    # min: 1, max: 230
                   SchemaArn => 'MyArn',
 
                 },    # OPTIONAL
@@ -48,16 +48,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
                   NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
                   StringValue   => 'MyStringAttributeValue',      # OPTIONAL
-                },    # OPTIONAL
+                },
 
               },
               ...
             ],
             ObjectReference => {
-              Selector => 'MySelectorObjectReference',    # OPTIONAL
+              Selector => 'MySelectorObjectReference',            # OPTIONAL
             },
             SchemaFacet => {
-              FacetName => 'MyFacetName',                 # min: 1, max: 64
+              FacetName => 'MyFacetName',    # min: 1, max: 64; OPTIONAL
               SchemaArn => 'MyArn',
             },
 
@@ -66,7 +66,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ChildReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
             },
-            LinkName        => 'MyLinkName',              # min: 1, max: 64
+            LinkName        => 'MyLinkName',    # min: 1, max: 64; OPTIONAL
             ParentReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
             },
@@ -93,23 +93,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           AttachTypedLink => {
             Attributes => [
               {
-                AttributeName => 'MyAttributeName',    # min: 1, max: 64
+                AttributeName => 'MyAttributeName',    # min: 1, max: 230
                 Value         => {
                   BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
                   BooleanValue  => 1,                             # OPTIONAL
                   DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
                   NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
                   StringValue   => 'MyStringAttributeValue',      # OPTIONAL
-                },    # OPTIONAL
+                },
 
               },
               ...
             ],
             SourceObjectReference => {
-              Selector => 'MySelectorObjectReference',    # OPTIONAL
+              Selector => 'MySelectorObjectReference',            # OPTIONAL
             },
             TargetObjectReference => {
-              Selector => 'MySelectorObjectReference',    # OPTIONAL
+              Selector => 'MySelectorObjectReference',            # OPTIONAL
             },
             TypedLinkFacet => {
               SchemaArn     => 'MyArn',
@@ -122,25 +122,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             IsUnique                    => 1,
             OrderedIndexedAttributeList => [
               {
-                FacetName => 'MyFacetName',        # min: 1, max: 64
-                Name      => 'MyAttributeName',    # min: 1, max: 64
+                FacetName => 'MyFacetName',        # min: 1, max: 64; OPTIONAL
+                Name      => 'MyAttributeName',    # min: 1, max: 230
                 SchemaArn => 'MyArn',
 
               },
               ...                                  # OPTIONAL
             ],
             BatchReferenceName => 'MyBatchReferenceName',    # OPTIONAL
-            LinkName           => 'MyLinkName',              # min: 1, max: 64
-            ParentReference    => {
-              Selector => 'MySelectorObjectReference',       # OPTIONAL
+            LinkName        => 'MyLinkName',    # min: 1, max: 64; OPTIONAL
+            ParentReference => {
+              Selector => 'MySelectorObjectReference',    # OPTIONAL
             },
           },    # OPTIONAL
           CreateObject => {
             ObjectAttributeList => [
               {
                 Key => {
-                  FacetName => 'MyFacetName',        # min: 1, max: 64
-                  Name      => 'MyAttributeName',    # min: 1, max: 64
+                  FacetName => 'MyFacetName',        # min: 1, max: 64; OPTIONAL
+                  Name      => 'MyAttributeName',    # min: 1, max: 230
                   SchemaArn => 'MyArn',
 
                 },    # OPTIONAL
@@ -150,22 +150,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
                   NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
                   StringValue   => 'MyStringAttributeValue',      # OPTIONAL
-                },    # OPTIONAL
+                },
 
               },
               ...
             ],
             SchemaFacet => [
               {
-                FacetName => 'MyFacetName',    # min: 1, max: 64
+                FacetName => 'MyFacetName',    # min: 1, max: 64; OPTIONAL
                 SchemaArn => 'MyArn',
               },
               ...
             ],
             BatchReferenceName => 'MyBatchReferenceName',    # OPTIONAL
-            LinkName           => 'MyLinkName',              # min: 1, max: 64
-            ParentReference    => {
-              Selector => 'MySelectorObjectReference',       # OPTIONAL
+            LinkName        => 'MyLinkName',    # min: 1, max: 64; OPTIONAL
+            ParentReference => {
+              Selector => 'MySelectorObjectReference',    # OPTIONAL
             },
           },    # OPTIONAL
           DeleteObject => {
@@ -184,7 +184,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },    # OPTIONAL
           DetachObject => {
-            LinkName        => 'MyLinkName',    # min: 1, max: 64
+            LinkName        => 'MyLinkName',    # min: 1, max: 64; OPTIONAL
             ParentReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
             },
@@ -203,23 +203,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             TypedLinkSpecifier => {
               IdentityAttributeValues => [
                 {
-                  AttributeName => 'MyAttributeName',    # min: 1, max: 64
+                  AttributeName => 'MyAttributeName',    # min: 1, max: 230
                   Value         => {
                     BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
                     BooleanValue  => 1,                             # OPTIONAL
                     DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
                     NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
                     StringValue   => 'MyStringAttributeValue',      # OPTIONAL
-                  },    # OPTIONAL
+                  },
 
                 },
                 ...
               ],
               SourceObjectReference => {
-                Selector => 'MySelectorObjectReference',    # OPTIONAL
+                Selector => 'MySelectorObjectReference',            # OPTIONAL
               },
               TargetObjectReference => {
-                Selector => 'MySelectorObjectReference',    # OPTIONAL
+                Selector => 'MySelectorObjectReference',            # OPTIONAL
               },
               TypedLinkFacet => {
                 SchemaArn     => 'MyArn',
@@ -235,7 +235,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Selector => 'MySelectorObjectReference',    # OPTIONAL
             },
             SchemaFacet => {
-              FacetName => 'MyFacetName',                 # min: 1, max: 64
+              FacetName => 'MyFacetName',    # min: 1, max: 64; OPTIONAL
               SchemaArn => 'MyArn',
             },
 
@@ -252,11 +252,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
                     NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
                     StringValue   => 'MyStringAttributeValue',      # OPTIONAL
-                  },    # OPTIONAL
+                  },
                 },    # OPTIONAL
                 AttributeKey => {
-                  FacetName => 'MyFacetName',        # min: 1, max: 64
-                  Name      => 'MyAttributeName',    # min: 1, max: 64
+                  FacetName => 'MyFacetName',        # min: 1, max: 64; OPTIONAL
+                  Name      => 'MyAttributeName',    # min: 1, max: 230
                   SchemaArn => 'MyArn',
 
                 },    # OPTIONAL
@@ -266,23 +266,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             TypedLinkSpecifier => {
               IdentityAttributeValues => [
                 {
-                  AttributeName => 'MyAttributeName',    # min: 1, max: 64
+                  AttributeName => 'MyAttributeName',    # min: 1, max: 230
                   Value         => {
                     BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
                     BooleanValue  => 1,                             # OPTIONAL
                     DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
                     NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
                     StringValue   => 'MyStringAttributeValue',      # OPTIONAL
-                  },    # OPTIONAL
+                  },
 
                 },
                 ...
               ],
               SourceObjectReference => {
-                Selector => 'MySelectorObjectReference',    # OPTIONAL
+                Selector => 'MySelectorObjectReference',            # OPTIONAL
               },
               TargetObjectReference => {
-                Selector => 'MySelectorObjectReference',    # OPTIONAL
+                Selector => 'MySelectorObjectReference',            # OPTIONAL
               },
               TypedLinkFacet => {
                 SchemaArn     => 'MyArn',
@@ -305,11 +305,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
                     NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
                     StringValue   => 'MyStringAttributeValue',      # OPTIONAL
-                  },    # OPTIONAL
+                  },
                 },    # OPTIONAL
                 ObjectAttributeKey => {
-                  FacetName => 'MyFacetName',        # min: 1, max: 64
-                  Name      => 'MyAttributeName',    # min: 1, max: 64
+                  FacetName => 'MyFacetName',        # min: 1, max: 64; OPTIONAL
+                  Name      => 'MyAttributeName',    # min: 1, max: 230
                   SchemaArn => 'MyArn',
 
                 },    # OPTIONAL

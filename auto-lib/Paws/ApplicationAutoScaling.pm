@@ -166,14 +166,15 @@ Paws::ApplicationAutoScaling - Perl Interface to AWS Application Auto Scaling
 =head1 DESCRIPTION
 
 With Application Auto Scaling, you can configure automatic scaling for
-your scalable AWS resources. You can use Application Auto Scaling to
+your scalable resources. You can use Application Auto Scaling to
 accomplish the following tasks:
 
 =over
 
 =item *
 
-Define scaling policies to automatically scale your AWS resources
+Define scaling policies to automatically scale your AWS or custom
+resources
 
 =item *
 
@@ -189,7 +190,7 @@ View the history of your scaling events
 
 =back
 
-Application Auto Scaling can scale the following AWS resources:
+Application Auto Scaling can scale the following resources:
 
 =over
 
@@ -236,23 +237,28 @@ Auto Scaling with Aurora Replicas
 
 =item *
 
-Amazon SageMaker endpoints. For more information, see Automatically
-Scaling Amazon SageMaker Models
+Amazon SageMaker endpoint variants. For more information, see
+Automatically Scaling Amazon SageMaker Models
 (http://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling.html).
+
+=item *
+
+Custom resources provided by your own applications or services. More
+information is available in our GitHub repository
+(https://github.com/aws/aws-auto-scaling-custom-resource).
 
 =back
 
+To learn more about Application Auto Scaling, see the Application Auto
+Scaling User Guide
+(http://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html).
+
 To configure automatic scaling for multiple resources across multiple
 services, use AWS Auto Scaling to create a scaling plan for your
-application. For more information, see AWS Auto Scaling
-(http://aws.amazon.com/autoscaling).
+application. For more information, see the AWS Auto Scaling User Guide
+(http://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-aws-auto-scaling.html).
 
-For a list of supported regions, see AWS Regions and Endpoints:
-Application Auto Scaling
-(http://docs.aws.amazon.com/general/latest/gr/rande.html#as-app_region)
-in the I<AWS General Reference>.
-
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2016-02-06>
 
 
 =head1 METHODS

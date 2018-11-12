@@ -6,7 +6,9 @@ package Paws::RDS::RestoreDBInstanceToPointInTime;
   has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBName => (is => 'ro', isa => 'Str');
+  has DBParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
   has Domain => (is => 'ro', isa => 'Str');
   has DomainIAMRoleName => (is => 'ro', isa => 'Str');
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -62,7 +64,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CopyTagsToSnapshot              => 1,                      # OPTIONAL
       DBInstanceClass                 => 'MyString',             # OPTIONAL
       DBName                          => 'MyString',             # OPTIONAL
+      DBParameterGroupName            => 'MyString',             # OPTIONAL
       DBSubnetGroupName               => 'MyString',             # OPTIONAL
+      DeletionProtection              => 1,                      # OPTIONAL
       Domain                          => 'MyString',             # OPTIONAL
       DomainIAMRoleName               => 'MyString',             # OPTIONAL
       EnableCloudwatchLogsExports     => [ 'MyString', ... ],    # OPTIONAL
@@ -156,6 +160,37 @@ This parameter is not used for the MySQL or MariaDB engines.
 
 
 
+=head2 DBParameterGroupName => Str
+
+The name of the DB parameter group to associate with this DB instance.
+If this argument is omitted, the default DBParameterGroup for the
+specified engine is used.
+
+Constraints:
+
+=over
+
+=item *
+
+If supplied, must match the name of an existing DBParameterGroup.
+
+=item *
+
+Must be 1 to 255 letters, numbers, or hyphens.
+
+=item *
+
+First character must be a letter.
+
+=item *
+
+Can't end with a hyphen or contain two consecutive hyphens.
+
+=back
+
+
+
+
 =head2 DBSubnetGroupName => Str
 
 The DB subnet group name to use for the new instance.
@@ -164,6 +199,15 @@ Constraints: If supplied, must match the name of an existing
 DBSubnetGroup.
 
 Example: C<mySubnetgroup>
+
+
+
+=head2 DeletionProtection => Bool
+
+Indicates if the DB instance should have deletion protection enabled.
+The database can't be deleted when this value is set to true. The
+default is false. For more information, see Deleting a DB Instance
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 
 
 
@@ -183,7 +227,11 @@ the Directory Service.
 =head2 EnableCloudwatchLogsExports => ArrayRef[Str|Undef]
 
 The list of logs that the restored DB instance is to export to
-CloudWatch Logs.
+CloudWatch Logs. The values in the list depend on the DB engine being
+used. For more information, see Publishing Database Logs to Amazon
+CloudWatch Logs
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
+in the I<Amazon RDS User Guide>.
 
 
 
@@ -339,29 +387,7 @@ Specifies the accessibility options for the DB instance. A value of
 true specifies an Internet-facing instance with a publicly resolvable
 DNS name, which resolves to a public IP address. A value of false
 specifies an internal instance with a DNS name that resolves to a
-private IP address.
-
-Default: The default behavior varies depending on whether a VPC has
-been requested or not. The following list shows the default behavior in
-each case.
-
-=over
-
-=item *
-
-B<Default VPC:>true
-
-=item *
-
-B<VPC:>false
-
-=back
-
-If no DB subnet group has been specified as part of the request and the
-PubliclyAccessible value has not been set, the DB instance is publicly
-accessible. If a specific DB subnet group has been specified as part of
-the request and the PubliclyAccessible value has not been set, the DB
-instance is private.
+private IP address. For more information, see CreateDBInstance.
 
 
 
@@ -382,7 +408,7 @@ Must be before the latest restorable time for the DB instance
 
 =item *
 
-Cannot be specified if UseLatestRestorableTime parameter is true
+Can't be specified if UseLatestRestorableTime parameter is true
 
 =back
 
@@ -445,7 +471,7 @@ First character must be a letter
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens
+Can't end with a hyphen or contain two consecutive hyphens
 
 =back
 
@@ -480,7 +506,7 @@ restored from the latest backup time.
 
 Default: C<false>
 
-Constraints: Cannot be specified if RestoreTime parameter is provided.
+Constraints: Can't be specified if RestoreTime parameter is provided.
 
 
 

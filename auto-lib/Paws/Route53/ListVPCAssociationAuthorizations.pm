@@ -63,7 +63,7 @@ associated with the hosted zone.
 
 I<Optional>: An integer that specifies the maximum number of VPCs that
 you want Amazon Route 53 to return. If you don't specify a value for
-C<MaxResults>, Amazon Route 53 returns up to 50 VPCs per page.
+C<MaxResults>, Route 53 returns up to 50 VPCs per page.
 
 
 
