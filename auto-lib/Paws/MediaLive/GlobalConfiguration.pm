@@ -47,10 +47,13 @@ Placeholder documentation for GlobalConfiguration
 
 =head2 InputEndAction => Str
 
-  Indicates the action to take when the input completes (e.g.
-end-of-file). Options include looping on the input (via
-"switchAndLoopInputs") or transcoding black / color / slate images per
-the "Input Loss Behavior" configuration (via "none").
+  Indicates the action to take when the current input completes (e.g.
+end-of-file). When switchAndLoopInputs is configured the encoder will
+restart at the beginning of the first input. When "none" is configured
+the encoder will transcode either black, a solid color, or a user
+specified slate images per the "Input Loss Behavior" configuration
+until the next input switch occurs (which is controlled through the
+Channel Schedule API).
 
 
 =head2 InputLossBehavior => L<Paws::MediaLive::InputLossBehavior>

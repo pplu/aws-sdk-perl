@@ -1,6 +1,7 @@
 package Paws::MediaLive::ScheduleActionStartSettings;
   use Moose;
   has FixedModeScheduleActionStartSettings => (is => 'ro', isa => 'Paws::MediaLive::FixedModeScheduleActionStartSettings', request_name => 'fixedModeScheduleActionStartSettings', traits => ['NameInRequest']);
+  has FollowModeScheduleActionStartSettings => (is => 'ro', isa => 'Paws::MediaLive::FollowModeScheduleActionStartSettings', request_name => 'followModeScheduleActionStartSettings', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaLive::ScheduleActionStartSettings object:
 
-  $service_obj->Method(Att1 => { FixedModeScheduleActionStartSettings => $value, ..., FixedModeScheduleActionStartSettings => $value  });
+  $service_obj->Method(Att1 => { FixedModeScheduleActionStartSettings => $value, ..., FollowModeScheduleActionStartSettings => $value  });
 
 =head3 Results returned from an API call
 
@@ -39,6 +40,11 @@ Settings to specify the start time for an action.
 =head2 FixedModeScheduleActionStartSettings => L<Paws::MediaLive::FixedModeScheduleActionStartSettings>
 
   Holds the start time for the action.
+
+
+=head2 FollowModeScheduleActionStartSettings => L<Paws::MediaLive::FollowModeScheduleActionStartSettings>
+
+  Specifies an action to follow for scheduling this action.
 
 
 

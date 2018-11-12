@@ -1,5 +1,6 @@
 package Paws::MediaLive::InputAttachment;
   use Moose;
+  has InputAttachmentName => (is => 'ro', isa => 'Str', request_name => 'inputAttachmentName', traits => ['NameInRequest']);
   has InputId => (is => 'ro', isa => 'Str', request_name => 'inputId', traits => ['NameInRequest']);
   has InputSettings => (is => 'ro', isa => 'Paws::MediaLive::InputSettings', request_name => 'inputSettings', traits => ['NameInRequest']);
 1;
@@ -21,20 +22,26 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaLive::InputAttachment object:
 
-  $service_obj->Method(Att1 => { InputId => $value, ..., InputSettings => $value  });
+  $service_obj->Method(Att1 => { InputAttachmentName => $value, ..., InputSettings => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::InputAttachment object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->InputId
+  $result->Att1->InputAttachmentName
 
 =head1 DESCRIPTION
 
 Placeholder documentation for InputAttachment
 
 =head1 ATTRIBUTES
+
+
+=head2 InputAttachmentName => Str
+
+  User-specified name for the attachment. This is required if the user
+wants to use this input in an input switch action.
 
 
 =head2 InputId => Str

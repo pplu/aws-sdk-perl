@@ -37,6 +37,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             ActionName             => 'My__string',
             ScheduleActionSettings => {
+              InputSwitchSettings => {
+                InputAttachmentNameReference => 'My__string',
+
+              },    # OPTIONAL
               Scte35ReturnToNetworkSettings => {
                 SpliceEventId => 1,    # max: 4294967295
 
@@ -107,6 +111,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ScheduleActionStartSettings => {
               FixedModeScheduleActionStartSettings => {
                 Time => 'My__string',
+
+              },    # OPTIONAL
+              FollowModeScheduleActionStartSettings => {
+                FollowPoint         => 'END',          # values: END, START
+                ReferenceActionName => 'My__string',
 
               },    # OPTIONAL
             },

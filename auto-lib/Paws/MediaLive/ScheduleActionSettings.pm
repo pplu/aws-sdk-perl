@@ -1,5 +1,6 @@
 package Paws::MediaLive::ScheduleActionSettings;
   use Moose;
+  has InputSwitchSettings => (is => 'ro', isa => 'Paws::MediaLive::InputSwitchScheduleActionSettings', request_name => 'inputSwitchSettings', traits => ['NameInRequest']);
   has Scte35ReturnToNetworkSettings => (is => 'ro', isa => 'Paws::MediaLive::Scte35ReturnToNetworkScheduleActionSettings', request_name => 'scte35ReturnToNetworkSettings', traits => ['NameInRequest']);
   has Scte35SpliceInsertSettings => (is => 'ro', isa => 'Paws::MediaLive::Scte35SpliceInsertScheduleActionSettings', request_name => 'scte35SpliceInsertSettings', traits => ['NameInRequest']);
   has Scte35TimeSignalSettings => (is => 'ro', isa => 'Paws::MediaLive::Scte35TimeSignalScheduleActionSettings', request_name => 'scte35TimeSignalSettings', traits => ['NameInRequest']);
@@ -24,20 +25,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaLive::ScheduleActionSettings object:
 
-  $service_obj->Method(Att1 => { Scte35ReturnToNetworkSettings => $value, ..., StaticImageDeactivateSettings => $value  });
+  $service_obj->Method(Att1 => { InputSwitchSettings => $value, ..., StaticImageDeactivateSettings => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::ScheduleActionSettings object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Scte35ReturnToNetworkSettings
+  $result->Att1->InputSwitchSettings
 
 =head1 DESCRIPTION
 
 Holds the settings for a single schedule action.
 
 =head1 ATTRIBUTES
+
+
+=head2 InputSwitchSettings => L<Paws::MediaLive::InputSwitchScheduleActionSettings>
+
+  Settings to switch an input
 
 
 =head2 Scte35ReturnToNetworkSettings => L<Paws::MediaLive::Scte35ReturnToNetworkScheduleActionSettings>
