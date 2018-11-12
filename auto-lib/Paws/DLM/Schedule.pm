@@ -1,5 +1,6 @@
 package Paws::DLM::Schedule;
   use Moose;
+  has CopyTags => (is => 'ro', isa => 'Bool');
   has CreateRule => (is => 'ro', isa => 'Paws::DLM::CreateRule');
   has Name => (is => 'ro', isa => 'Str');
   has RetainRule => (is => 'ro', isa => 'Paws::DLM::RetainRule');
@@ -23,20 +24,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DLM::Schedule object:
 
-  $service_obj->Method(Att1 => { CreateRule => $value, ..., TagsToAdd => $value  });
+  $service_obj->Method(Att1 => { CopyTags => $value, ..., TagsToAdd => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DLM::Schedule object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->CreateRule
+  $result->Att1->CopyTags
 
 =head1 DESCRIPTION
 
 Specifies a schedule.
 
 =head1 ATTRIBUTES
+
+
+=head2 CopyTags => Bool
+
+  
 
 
 =head2 CreateRule => L<Paws::DLM::CreateRule>
