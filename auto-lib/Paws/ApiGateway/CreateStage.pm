@@ -74,6 +74,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Tags                 = $Stage->Tags;
     my $TracingEnabled       = $Stage->TracingEnabled;
     my $Variables            = $Stage->Variables;
+    my $WebAclArn            = $Stage->WebAclArn;
 
     # Returns a L<Paws::ApiGateway::Stage> object.
 
