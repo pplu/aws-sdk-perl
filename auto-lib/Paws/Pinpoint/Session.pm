@@ -41,7 +41,7 @@ Information about a session.
 
 =head2 Duration => Int
 
-  Session duration in millis
+  The duration of the session, in milliseconds.
 
 
 =head2 Id => Str

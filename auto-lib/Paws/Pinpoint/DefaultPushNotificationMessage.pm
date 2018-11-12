@@ -67,8 +67,9 @@ notifications' data.pinpoint.jsonBody' object
 
 =head2 SilentPush => Bool
 
-  Indicates if the message should display on the users device. Silent
-pushes can be used for Remote Configuration and Phone Home use cases.
+  Indicates if the message should display on the recipient's device. You
+can use silent pushes for remote configuration or to deliver messages
+to in-app notification centers.
 
 
 =head2 Substitutions => L<Paws::Pinpoint::MapOfListOf__string>

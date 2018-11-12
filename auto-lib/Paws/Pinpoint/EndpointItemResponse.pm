@@ -32,8 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::E
 
 =head1 DESCRIPTION
 
-The responses that are returned after you create or update an endpoint
-and record an event.
+A complex object that holds the status code and message as a result of
+processing an endpoint.
 
 =head1 ATTRIBUTES
 
@@ -46,8 +46,8 @@ issuing a response.
 
 =head2 StatusCode => Int
 
-  The status code to respond with for a particular endpoint id after
-endpoint registration
+  The status code associated with the merging of an endpoint when issuing
+a response.
 
 
 

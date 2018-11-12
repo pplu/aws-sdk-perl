@@ -44,7 +44,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::N
 
 =head1 DESCRIPTION
 
-Phone Number Information response.
+Phone Number Validate response.
 
 =head1 ATTRIBUTES
 
@@ -94,8 +94,8 @@ originally registered.
 
 =head2 OriginalCountryCodeIso2 => Str
 
-  The two-character ISO code for the country or region that you included
-in the request body.
+  The two-character code (in ISO 3166-1 alpha-2 format) for the country
+or region in the request body.
 
 
 =head2 OriginalPhoneNumber => Str

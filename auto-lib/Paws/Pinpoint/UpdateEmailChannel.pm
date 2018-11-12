@@ -32,10 +32,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateEmailChannelResponse = $pinpoint->UpdateEmailChannel(
       ApplicationId       => 'My__string',
       EmailChannelRequest => {
-        Enabled     => 1,              # OPTIONAL
-        FromAddress => 'My__string',
-        Identity    => 'My__string',
-        RoleArn     => 'My__string',
+        ConfigurationSet => 'My__string',
+        Enabled          => 1,              # OPTIONAL
+        FromAddress      => 'My__string',
+        Identity         => 'My__string',
+        RoleArn          => 'My__string',
       },
 
     );

@@ -1,13 +1,13 @@
-package Paws::Pinpoint::EventsRequest;
+package Paws::Pinpoint::RawEmail;
   use Moose;
-  has BatchItem => (is => 'ro', isa => 'Paws::Pinpoint::MapOfEventsBatch');
+  has Data => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Pinpoint::EventsRequest
+Paws::Pinpoint::RawEmail
 
 =head1 USAGE
 
@@ -18,28 +18,27 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Pinpoint::EventsRequest object:
+As an example, if Att1 is expected to be a Paws::Pinpoint::RawEmail object:
 
-  $service_obj->Method(Att1 => { BatchItem => $value, ..., BatchItem => $value  });
+  $service_obj->Method(Att1 => { Data => $value, ..., Data => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::EventsRequest object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::RawEmail object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->BatchItem
+  $result->Att1->Data
 
 =head1 DESCRIPTION
 
-A set of events to process.
+An email represented as a raw MIME message.
 
 =head1 ATTRIBUTES
 
 
-=head2 BatchItem => L<Paws::Pinpoint::MapOfEventsBatch>
+=head2 Data => Str
 
-  A batch of events to process. Each BatchItem consists of an endpoint ID
-as the key, and an EventsBatch object as the value.
+  The raw data of the email.
 
 
 

@@ -32,7 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::E
 
 =head1 DESCRIPTION
 
-The responses that are returned after you record an event.
+A complex object that holds the status code and message as a result of
+processing an event.
 
 =head1 ATTRIBUTES
 
@@ -44,7 +45,9 @@ The responses that are returned after you record an event.
 
 =head2 StatusCode => Int
 
-  The status code to respond with for a particular event id
+  The status returned in the response as a result of processing the
+event. Possible values: 400 (for invalid events) and 202 (for events
+that were accepted).
 
 
 

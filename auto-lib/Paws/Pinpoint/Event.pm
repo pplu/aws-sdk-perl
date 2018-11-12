@@ -59,12 +59,12 @@ updating.
 
 =head2 Metrics => L<Paws::Pinpoint::MapOf__double>
 
-  Event metrics
+  Custom metrics related to the event.
 
 
 =head2 Session => L<Paws::Pinpoint::Session>
 
-  The session
+  Information about the session in which the event occurred.
 
 
 =head2 Timestamp => Str

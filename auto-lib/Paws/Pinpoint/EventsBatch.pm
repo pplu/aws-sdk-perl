@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::E
 
 =head1 DESCRIPTION
 
-Events batch definition
+A batch of PublicEndpoints and Events to process.
 
 =head1 ATTRIBUTES
 
 
 =head2 Endpoint => L<Paws::Pinpoint::PublicEndpoint>
 
-  Endpoint information
+  The PublicEndpoint attached to the EndpointId from the request.
 
 
 =head2 Events => L<Paws::Pinpoint::MapOfEvent>
 
-  Events
+  An object that contains a set of events associated with the endpoint.
 
 
 

@@ -105,6 +105,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Title => 'My__string',
             Url   => 'My__string',
           },    # OPTIONAL
+          EmailMessage => {
+            Body                      => 'My__string',
+            FeedbackForwardingAddress => 'My__string',
+            FromAddress               => 'My__string',
+            RawEmail                  => {
+              Data => 'Blob__blob',    # OPTIONAL
+            },    # OPTIONAL
+            ReplyToAddresses => [ 'My__string', ... ],
+            SimpleEmail      => {
+              HtmlPart => {
+                Charset => 'My__string',
+                Data    => 'My__string',
+              },    # OPTIONAL
+              Subject => {
+                Charset => 'My__string',
+                Data    => 'My__string',
+              },    # OPTIONAL
+              TextPart => {
+                Charset => 'My__string',
+                Data    => 'My__string',
+              },    # OPTIONAL
+            },    # OPTIONAL
+            Substitutions => { 'My__string' => [ 'My__string', ... ], }
+            ,     # OPTIONAL
+          },    # OPTIONAL
           GCMMessage => {
             Action => 'OPEN_APP',   # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
             Body   => 'My__string',

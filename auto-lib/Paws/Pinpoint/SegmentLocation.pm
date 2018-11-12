@@ -39,7 +39,7 @@ Segment location dimensions
 
 =head2 Country => L<Paws::Pinpoint::SetDimension>
 
-  The country filter according to ISO 3166-1 Alpha-2 codes.
+  The country or region, in ISO 3166-1 alpha-2 format.
 
 
 =head2 GPSPoint => L<Paws::Pinpoint::GPSPointDimension>

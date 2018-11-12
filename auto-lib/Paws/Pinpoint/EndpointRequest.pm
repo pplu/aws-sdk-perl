@@ -41,7 +41,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::E
 
 =head1 DESCRIPTION
 
-Endpoint update request
+An endpoint update request.
 
 =head1 ATTRIBUTES
 

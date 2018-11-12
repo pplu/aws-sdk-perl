@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::N
 
 =head1 DESCRIPTION
 
-Phone Number Information request.
+Phone Number Validate request.
 
 =head1 ATTRIBUTES
 

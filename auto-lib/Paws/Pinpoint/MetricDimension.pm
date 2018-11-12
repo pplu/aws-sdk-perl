@@ -39,8 +39,9 @@ Custom metric dimension
 
 =head2 ComparisonOperator => Str
 
-  GREATER_THAN | LESS_THAN | GREATER_THAN_OR_EQUAL | LESS_THAN_OR_EQUAL |
-EQUAL
+  The operator that you're using to compare metric values. Possible
+values: GREATER_THAN, LESS_THAN, GREATER_THAN_OR_EQUAL,
+LESS_THAN_OR_EQUAL, or EQUAL
 
 
 =head2 Value => Num

@@ -49,7 +49,7 @@ Public endpoint attributes.
 =head2 Address => Str
 
   The unique identifier for the recipient. For example, an address could
-be a device token or an endpoint ID.
+be a device token, email address, or mobile phone number.
 
 
 =head2 Attributes => L<Paws::Pinpoint::MapOfListOf__string>
@@ -70,7 +70,8 @@ these attributes as selection criteria when you create a segment.
 
 =head2 EffectiveDate => Str
 
-  The date and time when the endpoint was last updated.
+  The date and time when the endpoint was last updated, in ISO 8601
+format.
 
 
 =head2 EndpointStatus => Str

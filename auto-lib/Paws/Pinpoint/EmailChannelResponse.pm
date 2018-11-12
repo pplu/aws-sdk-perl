@@ -1,6 +1,7 @@
 package Paws::Pinpoint::EmailChannelResponse;
   use Moose;
   has ApplicationId => (is => 'ro', isa => 'Str');
+  has ConfigurationSet => (is => 'ro', isa => 'Str');
   has CreationDate => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool');
   has FromAddress => (is => 'ro', isa => 'Str');
@@ -52,6 +53,12 @@ Email Channel Response.
 =head2 ApplicationId => Str
 
   The unique ID of the application to which the email channel belongs.
+
+
+=head2 ConfigurationSet => Str
+
+  The configuration set that you want to use when you send email using
+the Pinpoint Email API.
 
 
 =head2 CreationDate => Str

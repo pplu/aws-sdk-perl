@@ -51,9 +51,9 @@ Creating application setting request
 
 =head2 Limits => L<Paws::Pinpoint::CampaignLimits>
 
-  The default campaign limits for the app. These limits apply to each
-campaign for the app, unless the campaign overrides the default with
-limits of its own.
+  The limits that apply to each campaign in the project by default.
+Campaigns can also have their own limits, which override the settings
+at the project level.
 
 
 =head2 QuietTime => L<Paws::Pinpoint::QuietTime>
