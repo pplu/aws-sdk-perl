@@ -60,9 +60,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/waf
 
 =head2 B<REQUIRED> LoggingConfiguration => L<Paws::WAFRegional::LoggingConfiguration>
 
-The Amazon Kinesis Data Firehose delivery streams that contains the
-inspected traffic information, the redacted fields details, and the
-Amazon Resource Name (ARN) of the web ACL to monitor.
+The Amazon Kinesis Data Firehose that contains the inspected traffic
+information, the redacted fields details, and the Amazon Resource Name
+(ARN) of the web ACL to monitor.
 
 
 

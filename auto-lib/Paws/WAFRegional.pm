@@ -2283,6 +2283,8 @@ Returns an array of RegexPatternSetSummary objects.
 
 =item WebACLId => Str
 
+=item [ResourceType => Str]
+
 
 =back
 
@@ -2441,22 +2443,19 @@ using the following steps:
 
 =item 1.
 
-Create an Amazon Kinesis Data Firehose delivery stream. For more
-information, see Creating an Amazon Kinesis Data Firehose Delivery
-Stream
-(https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html).
+Create an Amazon Kinesis Data Firehose .
 
 =item 2.
 
-Associate that delivery stream to your web ACL using a
+Associate that firehose to your web ACL using a
 C<PutLoggingConfiguration> request.
 
 =back
 
 When you successfully enable logging using a C<PutLoggingConfiguration>
 request, AWS WAF will create a service linked role with the necessary
-permissions to write logs to the Amazon Kinesis Data Firehose delivery
-stream. For more information, see Logging Web ACL Traffic Information
+permissions to write logs to the Amazon Kinesis Data Firehose. For more
+information, see Logging Web ACL Traffic Information
 (http://docs.aws.amazon.com/waf/latest/developerguide/logging.html) in
 the I<AWS WAF Developer Guide>.
 

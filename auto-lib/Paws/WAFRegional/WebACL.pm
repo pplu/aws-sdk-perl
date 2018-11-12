@@ -4,6 +4,7 @@ package Paws::WAFRegional::WebACL;
   has MetricName => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Rules => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::ActivatedRule]', required => 1);
+  has WebACLArn => (is => 'ro', isa => 'Str');
   has WebACLId => (is => 'ro', isa => 'Str', required => 1);
 1;
 
@@ -73,6 +74,11 @@ name of a C<WebACL> after you create it.
 
   An array that contains the action for each C<Rule> in a C<WebACL>, the
 priority of the C<Rule>, and the ID of the C<Rule>.
+
+
+=head2 WebACLArn => Str
+
+  Tha Amazon Resource Name (ARN) of the web ACL.
 
 
 =head2 B<REQUIRED> WebACLId => Str
