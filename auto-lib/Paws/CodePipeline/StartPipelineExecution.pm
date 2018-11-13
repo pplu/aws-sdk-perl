@@ -1,6 +1,7 @@
 
 package Paws::CodePipeline::StartPipelineExecution;
   use Moose;
+  has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientRequestToken' );
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -28,8 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $codepipeline = Paws->service('CodePipeline');
     my $StartPipelineExecutionOutput = $codepipeline->StartPipelineExecution(
-      Name => 'MyPipelineName',
-
+      Name               => 'MyPipelineName',
+      ClientRequestToken => 'MyClientRequestToken',    # OPTIONAL
     );
 
     # Results:
@@ -42,6 +43,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codepipeline/StartPipelineExecution>
 
 =head1 ATTRIBUTES
+
+
+=head2 ClientRequestToken => Str
+
+The system-generated unique ID used to identify a unique execution
+request.
+
 
 
 =head2 B<REQUIRED> Name => Str

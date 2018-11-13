@@ -1068,6 +1068,8 @@ stage.
 
 =item Name => Str
 
+=item [ClientRequestToken => Str]
+
 
 =back
 

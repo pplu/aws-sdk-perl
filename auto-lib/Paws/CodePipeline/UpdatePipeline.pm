@@ -29,15 +29,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $codepipeline = Paws->service('CodePipeline');
     my $UpdatePipelineOutput = $codepipeline->UpdatePipeline(
       Pipeline => {
-        ArtifactStore => {
-          Location      => 'MyArtifactStoreLocation',    # min: 3, max: 63
-          Type          => 'S3',                         # values: S3
-          EncryptionKey => {
-            Id   => 'MyEncryptionKeyId',                 # min: 1, max: 100
-            Type => 'KMS',                               # values: KMS
-
-          },    # OPTIONAL
-        },
         Name    => 'MyPipelineName',    # min: 1, max: 100
         RoleArn => 'MyRoleArn',         # max: 1024
         Stages  => [
@@ -71,6 +62,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },
                   ...
                 ],                               # OPTIONAL
+                Region   => 'MyAWSRegionName',   # min: 4, max: 30; OPTIONAL
                 RoleArn  => 'MyRoleArn',         # max: 1024
                 RunOrder => 1,                   # min: 1, max: 999; OPTIONAL
               },
@@ -88,7 +80,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],
-        Version => 1,                            # min: 1; OPTIONAL
+        ArtifactStore => {
+          Location      => 'MyArtifactStoreLocation',    # min: 3, max: 63
+          Type          => 'S3',                         # values: S3
+          EncryptionKey => {
+            Id   => 'MyEncryptionKeyId',                 # min: 1, max: 100
+            Type => 'KMS',                               # values: KMS
+
+          },    # OPTIONAL
+        },
+        ArtifactStores => {
+          'MyAWSRegionName' => {
+            Location      => 'MyArtifactStoreLocation',    # min: 3, max: 63
+            Type          => 'S3',                         # values: S3
+            EncryptionKey => {
+              Id   => 'MyEncryptionKeyId',                 # min: 1, max: 100
+              Type => 'KMS',                               # values: KMS
+
+            },    # OPTIONAL
+          },    # key: min: 4, max: 30; OPTIONAL
+        },    # OPTIONAL
+        Version => 1,    # min: 1; OPTIONAL
       },
 
     );
