@@ -217,7 +217,7 @@ For MySQL 5.7, minor version 5.7.16 or higher
 
 =item *
 
-Aurora 5.6 or higher.
+Aurora MySQL 5.6 or higher
 
 =back
 
@@ -434,7 +434,7 @@ instance.
 =item *
 
 Can specify a DB instance that is a MySQL Read Replica only if the
-source is running MySQL 5.6.
+source is running MySQL 5.6 or later.
 
 =item *
 

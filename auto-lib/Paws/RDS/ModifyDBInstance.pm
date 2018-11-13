@@ -180,7 +180,7 @@ Must be a value from 0 to 35
 =item *
 
 Can be specified for a MySQL Read Replica only if the source is running
-MySQL 5.6
+MySQL 5.6 or later
 
 =item *
 

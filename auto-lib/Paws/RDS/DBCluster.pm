@@ -10,6 +10,7 @@ package Paws::RDS::DBCluster;
   has CharacterSetName => (is => 'ro', isa => 'Str');
   has CloneGroupId => (is => 'ro', isa => 'Str');
   has ClusterCreateTime => (is => 'ro', isa => 'Str');
+  has CustomEndpoints => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DatabaseName => (is => 'ro', isa => 'Str');
   has DBClusterArn => (is => 'ro', isa => 'Str');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str');
@@ -141,6 +142,11 @@ is associated with.
 
   Specifies the time when the DB cluster was created, in Universal
 Coordinated Time (UTC).
+
+
+=head2 CustomEndpoints => ArrayRef[Str|Undef]
+
+  Identifies all custom endpoints associated with the cluster.
 
 
 =head2 DatabaseName => Str

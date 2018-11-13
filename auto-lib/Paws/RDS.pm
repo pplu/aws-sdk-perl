@@ -92,6 +92,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::CreateDBCluster', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateDBClusterEndpoint {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::CreateDBClusterEndpoint', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateDBClusterParameterGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::CreateDBClusterParameterGroup', @_);
@@ -145,6 +150,11 @@ package Paws::RDS;
   sub DeleteDBCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::DeleteDBCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteDBClusterEndpoint {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DeleteDBClusterEndpoint', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteDBClusterParameterGroup {
@@ -205,6 +215,11 @@ package Paws::RDS;
   sub DescribeDBClusterBacktracks {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBClusterBacktracks', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeDBClusterEndpoints {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBClusterEndpoints', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeDBClusterParameterGroups {
@@ -365,6 +380,11 @@ package Paws::RDS;
   sub ModifyDBCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::ModifyDBCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyDBClusterEndpoint {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::ModifyDBClusterEndpoint', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ModifyDBClusterParameterGroup {
@@ -952,7 +972,7 @@ package Paws::RDS;
   }
 
 
-  sub operations { qw/AddRoleToDBCluster AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress BacktrackDBCluster CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateDBCluster CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateOptionGroup DeleteDBCluster DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBParameterGroup DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteOptionGroup DescribeAccountAttributes DescribeCertificates DescribeDBClusterBacktracks DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DescribeSourceRegions DescribeValidDBInstanceModifications DownloadDBLogFilePortion FailoverDBCluster ListTagsForResource ModifyCurrentDBClusterCapacity ModifyDBCluster ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBSnapshot ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyOptionGroup PromoteReadReplica PromoteReadReplicaDBCluster PurchaseReservedDBInstancesOffering RebootDBInstance RemoveRoleFromDBCluster RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromS3 RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceFromS3 RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress StartDBCluster StartDBInstance StopDBCluster StopDBInstance / }
+  sub operations { qw/AddRoleToDBCluster AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress BacktrackDBCluster CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateDBCluster CreateDBClusterEndpoint CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateOptionGroup DeleteDBCluster DeleteDBClusterEndpoint DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBParameterGroup DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteOptionGroup DescribeAccountAttributes DescribeCertificates DescribeDBClusterBacktracks DescribeDBClusterEndpoints DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DescribeSourceRegions DescribeValidDBInstanceModifications DownloadDBLogFilePortion FailoverDBCluster ListTagsForResource ModifyCurrentDBClusterCapacity ModifyDBCluster ModifyDBClusterEndpoint ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBSnapshot ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyOptionGroup PromoteReadReplica PromoteReadReplicaDBCluster PurchaseReservedDBInstancesOffering RebootDBInstance RemoveRoleFromDBCluster RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromS3 RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceFromS3 RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress StartDBCluster StartDBInstance StopDBCluster StopDBInstance / }
 
 1;
 
@@ -1513,6 +1533,31 @@ For more information on Amazon Aurora, see What Is Amazon Aurora?
 in the I<Amazon Aurora User Guide.>
 
 
+=head2 CreateDBClusterEndpoint
+
+=over
+
+=item DBClusterEndpointIdentifier => Str
+
+=item DBClusterIdentifier => Str
+
+=item EndpointType => Str
+
+=item [ExcludedMembers => ArrayRef[Str|Undef]]
+
+=item [StaticMembers => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::CreateDBClusterEndpoint>
+
+Returns: a L<Paws::RDS::DBClusterEndpoint> instance
+
+Creates a new custom endpoint and associates it with an Amazon Aurora
+DB cluster.
+
+
 =head2 CreateDBClusterParameterGroup
 
 =over
@@ -1986,6 +2031,23 @@ For more information on Amazon Aurora, see What Is Amazon Aurora?
 in the I<Amazon Aurora User Guide.>
 
 
+=head2 DeleteDBClusterEndpoint
+
+=over
+
+=item DBClusterEndpointIdentifier => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::DeleteDBClusterEndpoint>
+
+Returns: a L<Paws::RDS::DBClusterEndpoint> instance
+
+Deletes a custom endpoint and removes it from an Amazon Aurora DB
+cluster.
+
+
 =head2 DeleteDBClusterParameterGroup
 
 =over
@@ -2260,6 +2322,30 @@ Returns information about backtracks for a DB cluster.
 For more information on Amazon Aurora, see What Is Amazon Aurora?
 (http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
 in the I<Amazon Aurora User Guide.>
+
+
+=head2 DescribeDBClusterEndpoints
+
+=over
+
+=item [DBClusterEndpointIdentifier => Str]
+
+=item [DBClusterIdentifier => Str]
+
+=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::DescribeDBClusterEndpoints>
+
+Returns: a L<Paws::RDS::DBClusterEndpointMessage> instance
+
+Returns information about endpoints for an Amazon Aurora DB cluster.
 
 
 =head2 DescribeDBClusterParameterGroups
@@ -3175,6 +3261,28 @@ and the new values in the request. For more information on Amazon
 Aurora, see What Is Amazon Aurora?
 (http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
 in the I<Amazon Aurora User Guide.>
+
+
+=head2 ModifyDBClusterEndpoint
+
+=over
+
+=item DBClusterEndpointIdentifier => Str
+
+=item [EndpointType => Str]
+
+=item [ExcludedMembers => ArrayRef[Str|Undef]]
+
+=item [StaticMembers => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::ModifyDBClusterEndpoint>
+
+Returns: a L<Paws::RDS::DBClusterEndpoint> instance
+
+Modifies the properties of an endpoint in an Amazon Aurora DB cluster.
 
 
 =head2 ModifyDBClusterParameterGroup

@@ -33,7 +33,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Endpoi
 
 =head1 DESCRIPTION
 
-This data type is used as a response element in the following actions:
+This data type represents the information you need to connect to an
+Amazon RDS DB instance. This data type is used as a response element in
+the following actions:
 
 =over
 
@@ -51,6 +53,8 @@ DeleteDBInstance
 
 =back
 
+For the data structure that represents Amazon Aurora DB cluster
+endpoints, see DBClusterEndpoint.
 
 =head1 ATTRIBUTES
 
