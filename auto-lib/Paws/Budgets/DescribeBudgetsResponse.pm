@@ -22,8 +22,8 @@ A list of budgets.
 
 =head2 NextToken => Str
 
-The pagination token that indicates the next set of results that you
-can retrieve.
+The pagination token in the service response that indicates the next
+set of results that you can retrieve.
 
 
 =head2 _request_id => Str

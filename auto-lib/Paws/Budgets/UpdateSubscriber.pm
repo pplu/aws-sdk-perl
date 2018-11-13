@@ -35,20 +35,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AccountId     => 'MyAccountId',
       BudgetName    => 'MyBudgetName',
       NewSubscriber => {
-        Address          => 'MySubscriberAddress',    # min: 1
+        Address          => 'MySubscriberAddress',    # min: 1, max: 2147483647
         SubscriptionType => 'SNS',                    # values: SNS, EMAIL
 
       },
       Notification => {
         ComparisonOperator =>
           'GREATER_THAN',    # values: GREATER_THAN, LESS_THAN, EQUAL_TO
-        NotificationType => 'ACTUAL',    # values: ACTUAL, FORECASTED
-        Threshold        => 1,           # min: 0.1, max: 1000000000
+        NotificationType  => 'ACTUAL',    # values: ACTUAL, FORECASTED
+        Threshold         => 1,           # max: 1000000000
+        NotificationState => 'OK',        # values: OK, ALARM; OPTIONAL
         ThresholdType =>
           'PERCENTAGE',    # values: PERCENTAGE, ABSOLUTE_VALUE; OPTIONAL
       },
       OldSubscriber => {
-        Address          => 'MySubscriberAddress',    # min: 1
+        Address          => 'MySubscriberAddress',    # min: 1, max: 2147483647
         SubscriptionType => 'SNS',                    # values: SNS, EMAIL
 
       },
@@ -76,7 +77,7 @@ The name of the budget whose subscriber you want to update.
 
 =head2 B<REQUIRED> NewSubscriber => L<Paws::Budgets::Subscriber>
 
-The updated subscriber associated with a budget notification.
+The updated subscriber that is associated with a budget notification.
 
 
 
@@ -88,7 +89,7 @@ The notification whose subscriber you want to update.
 
 =head2 B<REQUIRED> OldSubscriber => L<Paws::Budgets::Subscriber>
 
-The previous subscriber associated with a budget notification.
+The previous subscriber that is associated with a budget notification.
 
 
 
