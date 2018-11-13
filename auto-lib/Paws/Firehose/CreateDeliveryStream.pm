@@ -9,6 +9,7 @@ package Paws::Firehose::CreateDeliveryStream;
   has RedshiftDestinationConfiguration => (is => 'ro', isa => 'Paws::Firehose::RedshiftDestinationConfiguration');
   has S3DestinationConfiguration => (is => 'ro', isa => 'Paws::Firehose::S3DestinationConfiguration');
   has SplunkDestinationConfiguration => (is => 'ro', isa => 'Paws::Firehose::SplunkDestinationConfiguration');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Firehose::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -394,6 +395,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         S3BackupMode =>
           'FailedEventsOnly',    # values: FailedEventsOnly, AllEvents; OPTIONAL
       },    # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256; OPTIONAL
+        },
+        ...
+      ],                            # OPTIONAL
     );
 
     # Results:
@@ -476,6 +484,20 @@ destination.
 =head2 SplunkDestinationConfiguration => L<Paws::Firehose::SplunkDestinationConfiguration>
 
 The destination in Splunk. You can specify only one destination.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::Firehose::Tag>]
+
+A set of tags to assign to the delivery stream. A tag is a key-value
+pair that you can define and assign to AWS resources. Tags are
+metadata. For example, you can add friendly names and descriptions or
+other types of information that can help you distinguish the delivery
+stream. For more information about tags, see Using Cost Allocation Tags
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
+in the AWS Billing and Cost Management User Guide.
+
+You can specify up to 50 tags when creating a delivery stream.
 
 
 

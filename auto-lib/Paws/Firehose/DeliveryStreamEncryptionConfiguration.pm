@@ -1,13 +1,13 @@
-package Paws::Firehose::Record;
+package Paws::Firehose::DeliveryStreamEncryptionConfiguration;
   use Moose;
-  has Data => (is => 'ro', isa => 'Str', required => 1);
+  has Status => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Firehose::Record
+Paws::Firehose::DeliveryStreamEncryptionConfiguration
 
 =head1 USAGE
 
@@ -18,28 +18,29 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Firehose::Record object:
+As an example, if Att1 is expected to be a Paws::Firehose::DeliveryStreamEncryptionConfiguration object:
 
-  $service_obj->Method(Att1 => { Data => $value, ..., Data => $value  });
+  $service_obj->Method(Att1 => { Status => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::Record object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::DeliveryStreamEncryptionConfiguration object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Data
+  $result->Att1->Status
 
 =head1 DESCRIPTION
 
-The unit of data in a delivery stream.
+Indicates the server-side encryption (SSE) status for the delivery
+stream.
 
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Data => Str
+=head2 Status => Str
 
-  The data blob, which is base64-encoded when the blob is serialized. The
-maximum size of the data blob, before base64-encoding, is 1,000 KiB.
+  For a full description of the different values of this status, see
+StartDeliveryStreamEncryption and StopDeliveryStreamEncryption.
 
 
 

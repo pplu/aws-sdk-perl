@@ -1,6 +1,7 @@
 
 package Paws::Firehose::PutRecordOutput;
   use Moose;
+  has Encrypted => (is => 'ro', isa => 'Bool');
   has RecordId => (is => 'ro', isa => 'Str', required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -12,6 +13,12 @@ package Paws::Firehose::PutRecordOutput;
 Paws::Firehose::PutRecordOutput
 
 =head1 ATTRIBUTES
+
+
+=head2 Encrypted => Bool
+
+Indicates whether server-side encryption (SSE) was enabled during this
+operation.
 
 
 =head2 B<REQUIRED> RecordId => Str

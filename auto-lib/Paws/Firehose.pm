@@ -50,6 +50,16 @@ package Paws::Firehose;
     my $call_object = $self->new_with_coercions('Paws::Firehose::PutRecordBatch', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartDeliveryStreamEncryption {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Firehose::StartDeliveryStreamEncryption', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopDeliveryStreamEncryption {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Firehose::StopDeliveryStreamEncryption', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub TagDeliveryStream {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Firehose::TagDeliveryStream', @_);
@@ -68,7 +78,7 @@ package Paws::Firehose;
   
 
 
-  sub operations { qw/CreateDeliveryStream DeleteDeliveryStream DescribeDeliveryStream ListDeliveryStreams ListTagsForDeliveryStream PutRecord PutRecordBatch TagDeliveryStream UntagDeliveryStream UpdateDestination / }
+  sub operations { qw/CreateDeliveryStream DeleteDeliveryStream DescribeDeliveryStream ListDeliveryStreams ListTagsForDeliveryStream PutRecord PutRecordBatch StartDeliveryStreamEncryption StopDeliveryStreamEncryption TagDeliveryStream UntagDeliveryStream UpdateDestination / }
 
 1;
 
@@ -127,6 +137,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/fir
 =item [S3DestinationConfiguration => L<Paws::Firehose::S3DestinationConfiguration>]
 
 =item [SplunkDestinationConfiguration => L<Paws::Firehose::SplunkDestinationConfiguration>]
+
+=item [Tags => ArrayRef[L<Paws::Firehose::Tag>]]
 
 
 =back
@@ -279,16 +291,16 @@ Each argument is described in detail in: L<Paws::Firehose::ListDeliveryStreams>
 
 Returns: a L<Paws::Firehose::ListDeliveryStreamsOutput> instance
 
-Lists your delivery streams.
+Lists your delivery streams in alphabetical order of their names.
 
 The number of delivery streams might be too large to return using a
 single call to C<ListDeliveryStreams>. You can limit the number of
 delivery streams returned, using the B<Limit> parameter. To determine
 whether there are more delivery streams to list, check the value of
 C<HasMoreDeliveryStreams> in the output. If there are more delivery
-streams to list, you can request them by specifying the name of the
-last delivery stream returned in the call in the
-C<ExclusiveStartDeliveryStreamName> parameter of a subsequent call.
+streams to list, you can request them by calling this operation again
+and setting the C<ExclusiveStartDeliveryStreamName> parameter to the
+name of the last delivery stream returned in the last call.
 
 
 =head2 ListTagsForDeliveryStream
@@ -365,6 +377,10 @@ the time they are added to a delivery stream as it tries to send the
 records to the destination. If the destination is unreachable for more
 than 24 hours, the data is no longer available.
 
+Don't concatenate two or more base64 strings to form the data fields of
+your records. Instead, concatenate the raw data, then perform base64
+encoding.
+
 
 =head2 PutRecordBatch
 
@@ -412,22 +428,25 @@ consumer application to parse individual data items when reading the
 data from the destination.
 
 The PutRecordBatch response includes a count of failed records,
-B<FailedPutCount>, and an array of responses, B<RequestResponses>. Each
-entry in the B<RequestResponses> array provides additional information
-about the processed record. It directly correlates with a record in the
-request array using the same ordering, from the top to the bottom. The
-response array always includes the same number of records as the
-request array. B<RequestResponses> includes both successfully and
-unsuccessfully processed records. Kinesis Data Firehose tries to
-process all records in each PutRecordBatch request. A single record
-failure does not stop the processing of subsequent records.
+B<FailedPutCount>, and an array of responses, B<RequestResponses>. Even
+if the PutRecordBatch call succeeds, the value of B<FailedPutCount> may
+be greater than 0, indicating that there are records for which the
+operation didn't succeed. Each entry in the B<RequestResponses> array
+provides additional information about the processed record. It directly
+correlates with a record in the request array using the same ordering,
+from the top to the bottom. The response array always includes the same
+number of records as the request array. B<RequestResponses> includes
+both successfully and unsuccessfully processed records. Kinesis Data
+Firehose tries to process all records in each PutRecordBatch request. A
+single record failure does not stop the processing of subsequent
+records.
 
 A successfully processed record includes a B<RecordId> value, which is
 unique for the record. An unsuccessfully processed record includes
 B<ErrorCode> and B<ErrorMessage> values. B<ErrorCode> reflects the type
-of error, and is one of the following values: C<ServiceUnavailable> or
-C<InternalFailure>. B<ErrorMessage> provides more detailed information
-about the error.
+of error, and is one of the following values:
+C<ServiceUnavailableException> or C<InternalFailure>. B<ErrorMessage>
+provides more detailed information about the error.
 
 If there is an internal server error or a timeout, the write might have
 completed or it might have failed. If B<FailedPutCount> is greater than
@@ -444,6 +463,78 @@ Data records sent to Kinesis Data Firehose are stored for 24 hours from
 the time they are added to a delivery stream as it attempts to send the
 records to the destination. If the destination is unreachable for more
 than 24 hours, the data is no longer available.
+
+Don't concatenate two or more base64 strings to form the data fields of
+your records. Instead, concatenate the raw data, then perform base64
+encoding.
+
+
+=head2 StartDeliveryStreamEncryption
+
+=over
+
+=item DeliveryStreamName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Firehose::StartDeliveryStreamEncryption>
+
+Returns: a L<Paws::Firehose::StartDeliveryStreamEncryptionOutput> instance
+
+Enables server-side encryption (SSE) for the delivery stream. This
+operation is asynchronous. It returns immediately. When you invoke it,
+Kinesis Firehose first sets the status of the stream to C<ENABLING>
+then to C<ENABLED>. You can continue to read and write data to your
+stream while its status is C<ENABLING> but they won't get encrypted. It
+can take up to 5 seconds after the encryption status changes to
+C<ENABLED> before all records written to the delivery stream are
+encrypted.
+
+To check the encryption state of a delivery stream, use
+DescribeDeliveryStream.
+
+You can only enable SSE for a delivery stream that uses C<DirectPut> as
+its source.
+
+The C<StartDeliveryStreamEncryption> and
+C<StopDeliveryStreamEncryption> operations have a combined limit of 25
+calls per delivery stream per 24 hours. For example, you reach the
+limit if you call C<StartDeliveryStreamEncryption> thirteen times and
+C<StopDeliveryStreamEncryption> twelve times for the same stream in a
+24-hour period.
+
+
+=head2 StopDeliveryStreamEncryption
+
+=over
+
+=item DeliveryStreamName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Firehose::StopDeliveryStreamEncryption>
+
+Returns: a L<Paws::Firehose::StopDeliveryStreamEncryptionOutput> instance
+
+Disables server-side encryption (SSE) for the delivery stream. This
+operation is asynchronous. It returns immediately. When you invoke it,
+Kinesis Firehose first sets the status of the stream to C<DISABLING>
+then to C<DISABLED>. You can continue to read and write data to your
+stream while its status is C<DISABLING>. It can take up to 5 seconds
+after the encryption status changes to C<DISABLED> before all records
+written to the delivery stream are no longer subject to encryption.
+
+To check the encryption state of a delivery stream, use
+DescribeDeliveryStream.
+
+The C<StartDeliveryStreamEncryption> and
+C<StopDeliveryStreamEncryption> operations have a combined limit of 25
+calls per delivery stream per 24 hours. For example, you reach the
+limit if you call C<StartDeliveryStreamEncryption> thirteen times and
+C<StopDeliveryStreamEncryption> twelve times for the same stream in a
+24-hour period.
 
 
 =head2 TagDeliveryStream
