@@ -59,7 +59,7 @@ package Paws::API::Builder::Paws {
   sub process {
     my ($self) = @_;
     my $class = $self->process_template(
-      'paws_pm.tt',
+      'default/paws_pm.tt',
       { c => $self }
     );
     $self->save_class('Paws', $class);
