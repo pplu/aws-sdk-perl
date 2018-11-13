@@ -8,14 +8,14 @@ use Paws::Credential;
 coerce 'Paws::Net::CallerRole',
   from 'Str',
    via {
-     my $class = $_;
+     my $class = $_; 
      Paws->load_class($class);
-     return $class->new()
+     return $class->new() 
    };
 
 coerce 'Paws::Credential',
   from 'Str',
-   via {
+   via { 
      my $class = $_;
      Paws->load_class($class);
      return $class->new();
@@ -29,21 +29,21 @@ has region => (
 
 has caller => (
   is => 'rw',
-  does => 'Paws::Net::CallerRole',
+  does => 'Paws::Net::CallerRole', 
   lazy => 1,
-  default => sub {
+  default => sub { 
     Paws->load_class('Paws::Net::Caller');
-    Paws::Net::Caller->new
+    Paws::Net::Caller->new 
   },
   coerce => 1
-);
+); 
 has credentials => (
   is => 'rw',
   does => 'Paws::Credential',
   lazy => 1,
   default => sub {
-    Paws->load_class('Paws::Credential::ProviderChain');
-    Paws::Credential::ProviderChain->new
+    Paws->load_class('Paws::Credential::ProviderChain'); 
+    Paws::Credential::ProviderChain->new 
   },
   coerce => 1
 );
@@ -197,7 +197,7 @@ sub _preload_scanclass {
       _preload_scanclass($tconst->class);
     } elsif ($tconst->isa('Moose::Meta::TypeConstraint::Parameterized') and
              $tconst->type_parameter->isa('Moose::Meta::TypeConstraint::Class')) {
-      # those attributes can also be found in parametrized
+      # those attributes can also be found in parametrized 
       # type constraints (ArrayRef[...], Hashref[...])
       _preload_scanclass($tconst->type_parameter->class);
     }
@@ -228,7 +228,7 @@ Paws is an attempt to develop an always up-to-date SDK that covers all possible 
 
 Please consider the SDK is beta quality. The intention of publishing to CPAN is having the community
 find the SDK, try it, give feedback, etc. Some services are still not working, and some heavy
-refactoring will still be done to the internals. The external interface to SDK users will try to be
+refactoring will still be done to the internals. The external interface to SDK users will try to be 
 kept stable, and changes to it should be notified via ChangeLog
 
 =head1 SUPPORTED SERVICES
@@ -557,7 +557,7 @@ Although they are seldom needed. 99% of the time you want service objects direct
 =head1 SERVICE OBJECTS
 
 Each Service Object represents the ability to call methods on a service endpoint. Those endpoints are
-either global, or bound to a region depending on the service. Also, each object can be customized
+either global, or bound to a region depending on the service. Also, each object can be customized 
 with a credential provider, that tells the object where to obtain credentials for the call (you can
 get them from the environment, from the filesystem, from the AWS Instance Profile, STS, etc.
 
@@ -644,11 +644,11 @@ The AWS APIs return nested datastructures in various formats. The SDK converts t
 Paws instances have a configuration. The configuration is basically a specification of values that will be passed to the service method each time
 it's called
 
-  # the credentials and the caller keys accept an instance or the name of a class as a
+  # the credentials and the caller keys accept an instance or the name of a class as a 
   # string (the class will be loaded and the constructor of that class will be automatically called
   my $paws1 = Paws->new(config => { credentials => MyCredProvider->new, region => 'eu-west-1' });
   my $paws2 = Paws->new(config => { caller => 'MyCustomCaller' });
-
+  
   # EC2 service with MyCredProvider in eu-west-1
   my $ec2 = $paws1->service('EC2');
 
@@ -662,12 +662,12 @@ The attributes that can be configured are:
 
 =head3 credentials
 
-Accepts a string which value is the name of a class, or an already instantiated object. If a string is passed, the class will be loaded, and the
+Accepts a string which value is the name of a class, or an already instantiated object. If a string is passed, the class will be loaded, and the 
 constructor called (without parameters). Also, the resulting instance or the already instantiated object has to have the L<Paws::Credential> role.
 
 =head3 caller
 
-Accepts a string which value is the name of a class, or an already instantiated object. If a string is passed, the class will be loaded, and the
+Accepts a string which value is the name of a class, or an already instantiated object. If a string is passed, the class will be loaded, and the 
 constructor called (without parameters). Also, the resulting instance or the already instantiated object has to have the L<Paws::Net::CallerRole> role.
 
 =head3 region
@@ -707,7 +707,7 @@ If you are going to consume a service behind a VPC Endpoint, you can use the C<e
 
 =head2 Credential Provider Pluggability
 
-Credential classes need to have the Role L<Paws::Credential> applied. This obliges them to implement access_key, secret_key and session_token methods.
+Credential classes need to have the Role L<Paws::Credential> applied. This obliges them to implement access_key, secret_key and session_token methods. 
 The obtention of this data can be customized to be retrieved whereever the developer considers useful (files, environment, other services, etc). Take
 a look at the Paws::Credential::XXXX namespace to find already implemented credential providers.
 
@@ -716,7 +716,7 @@ The credential objects' access_key, secret_key and session_token methods will be
 =head2 Caller Pluggability
 
 Caller classes need to have the Role L<Paws::Net::CallerRole> applied. This obliges them to implement the do_call method. Tests use this interface to
-mock calls and responses to the APIs (without using the network).
+mock calls and responses to the APIs (without using the network). 
 
 The caller instance is responsable for doing the network Input/Output with some type of HTTP request library, and returning the Result from the API.
 
@@ -737,7 +737,7 @@ L<Paws::Net::FurlCaller>: Uses Furl: a lightning fast HTTP client
   Paws->preload_service($service)
   Paws->preload_service($service, @methods)
 
-Paws manages a lot of objects that are loaded dynamically as needed. This causes high memory consumption if you do operations with Paws in a forked
+Paws manages a lot of objects that are loaded dynamically as needed. This causes high memory consumption if you do operations with Paws in a forked 
 environment because each child loads a separate copy of all the classes it needs to do the calls. Paws provides the preload_service operation. Call
 it with the name of the service before forking off so your server can benefit from copy on write memory sharing. The parent class will load all the
 classes needed so that child processes don't need to load them.
