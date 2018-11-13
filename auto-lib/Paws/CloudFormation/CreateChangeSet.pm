@@ -196,9 +196,7 @@ To remove all associated notification topics, specify an empty list.
 =head2 Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]
 
 A list of C<Parameter> structures that specify input parameters for the
-change set. For more information, see the Parameter
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html)
-data type.
+change set. For more information, see the Parameter data type.
 
 
 

@@ -2,6 +2,7 @@ package Paws::CloudFormation::StackSummary;
   use Moose;
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
   has DeletionTime => (is => 'ro', isa => 'Str');
+  has DriftInformation => (is => 'ro', isa => 'Paws::CloudFormation::StackDriftInformationSummary');
   has LastUpdatedTime => (is => 'ro', isa => 'Str');
   has ParentId => (is => 'ro', isa => 'Str');
   has RootId => (is => 'ro', isa => 'Str');
@@ -53,6 +54,16 @@ The StackSummary Data Type
 =head2 DeletionTime => Str
 
   The time the stack was deleted.
+
+
+=head2 DriftInformation => L<Paws::CloudFormation::StackDriftInformationSummary>
+
+  Summarizes information on whether a stack's actual configuration
+differs, or has I<drifted>, from it's expected configuration, as
+defined in the stack template and any values specified as template
+parameters. For more information, see Detecting Unregulated
+Configuration Changes to Stacks and Resources
+(http://docs.aws.amazon.com/http:/docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
 
 
 =head2 LastUpdatedTime => Str
