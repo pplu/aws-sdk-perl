@@ -68,14 +68,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/bat
 =head2 ArrayJobId => Str
 
 The job ID for an array job. Specifying an array job ID with this
-parameter lists all child jobs from within the specified array.
+parameter lists all child jobs from within the specified array. You
+must specify either a job queue or an array job ID.
 
 
 
 =head2 JobQueue => Str
 
 The name or full Amazon Resource Name (ARN) of the job queue with which
-to list jobs.
+to list jobs. You must specify either a job queue or an array job ID.
 
 
 

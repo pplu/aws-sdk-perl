@@ -125,6 +125,11 @@ C<RUNNING> state).
 
   The current status for the job.
 
+If your jobs do not progress to C<STARTING>, see Jobs Stuck in
+C<RUNNABLE> Status
+(http://docs.aws.amazon.com/batch/latest/userguide/troubleshooting.html#job_stuck_in_runnable)
+in the troubleshooting section of the I<AWS Batch User Guide>.
+
 
 =head2 StatusReason => Str
 

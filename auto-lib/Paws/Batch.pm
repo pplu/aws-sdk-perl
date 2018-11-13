@@ -196,14 +196,16 @@ Returns: a L<Paws::Batch::CreateComputeEnvironmentResponse> instance
 Creates an AWS Batch compute environment. You can create C<MANAGED> or
 C<UNMANAGED> compute environments.
 
-In a managed compute environment, AWS Batch manages the compute
-resources within the environment, based on the compute resources that
-you specify. Instances launched into a managed compute environment use
-a recent, approved version of the Amazon ECS-optimized AMI. You can
-choose to use Amazon EC2 On-Demand Instances in your managed compute
-environment, or you can use Amazon EC2 Spot Instances that only launch
-when the Spot bid price is below a specified percentage of the
-On-Demand price.
+In a managed compute environment, AWS Batch manages the capacity and
+instance types of the compute resources within the environment, based
+on the compute resource specification that you define or launch
+template
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html)
+that you specify when you create the compute environment. You can
+choose to use Amazon EC2 On-Demand Instances or Spot Instances in your
+managed compute environment. You can optionally set a maximum price so
+that Spot Instances only launch when the Spot Instance price is below a
+specified percentage of the On-Demand price.
 
 In an unmanaged compute environment, you can manage your own compute
 resources. This provides more compute resource configuration options,
@@ -219,6 +221,34 @@ instances into that Amazon ECS cluster. For more information, see
 Launching an Amazon ECS Container Instance
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
+
+AWS Batch does not upgrade the AMIs in a compute environment after it
+is created (for example, when a newer version of the Amazon
+ECS-optimized AMI is available). You are responsible for the management
+of the guest operating system (including updates and security patches)
+and any additional application software or utilities that you install
+on the compute resources. To use a new AMI for your AWS Batch jobs:
+
+=over
+
+=item 1.
+
+Create a new compute environment with the new AMI.
+
+=item 2.
+
+Add the compute environment to an existing job queue.
+
+=item 3.
+
+Remove the old compute environment from your job queue.
+
+=item 4.
+
+Delete the old compute environment.
+
+=back
+
 
 
 =head2 CreateJobQueue
@@ -416,9 +446,14 @@ Each argument is described in detail in: L<Paws::Batch::ListJobs>
 
 Returns: a L<Paws::Batch::ListJobsResponse> instance
 
-Returns a list of task jobs for a specified job queue. You can filter
-the results by job status with the C<jobStatus> parameter. If you do
-not specify a status, only C<RUNNING> jobs are returned.
+Returns a list of AWS Batch jobs. You must specify either a job queue
+to return a list of jobs in that job queue, or an array job ID to
+return a list of that job's children. You cannot specify both a job
+queue and an array job ID.
+
+You can filter the results by job status with the C<jobStatus>
+parameter. If you do not specify a status, only C<RUNNING> jobs are
+returned.
 
 
 =head2 RegisterJobDefinition

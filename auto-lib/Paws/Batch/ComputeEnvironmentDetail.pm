@@ -74,9 +74,18 @@ AWS Batch to make calls to AWS API operations on your behalf.
 =head2 State => Str
 
   The state of the compute environment. The valid values are C<ENABLED>
-or C<DISABLED>. An C<ENABLED> state indicates that you can register
-instances with the compute environment and that the associated
-instances can accept jobs.
+or C<DISABLED>.
+
+If the state is C<ENABLED>, then the AWS Batch scheduler can attempt to
+place jobs from an associated job queue on the compute resources within
+the environment. If the compute environment is managed, then it can
+scale its instances out or in automatically, based on job queue demand.
+
+If the state is C<DISABLED>, then the AWS Batch scheduler does not
+attempt to place jobs within the environment. Jobs in a C<STARTING> or
+C<RUNNING> state continue to progress normally. Managed compute
+environments in the C<DISABLED> state do not scale out; however, they
+scale in to C<minvCpus> value once instances become idle.
 
 
 =head2 Status => Str
