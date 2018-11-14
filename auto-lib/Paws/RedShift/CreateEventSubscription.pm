@@ -74,7 +74,7 @@ C<false> to create the subscription but not active it.
 Specifies the Amazon Redshift event categories to be published by the
 event notification subscription.
 
-Values: Configuration, Management, Monitoring, Security
+Values: configuration, management, monitoring, security
 
 
 

@@ -98,7 +98,8 @@ values describe the type of resize operation being performed.
 
 The status of the resize operation.
 
-Valid Values: C<NONE> | C<IN_PROGRESS> | C<FAILED> | C<SUCCEEDED>
+Valid Values: C<NONE> | C<IN_PROGRESS> | C<FAILED> | C<SUCCEEDED> |
+C<CANCELLING>
 
 
 =head2 TargetClusterType => Str

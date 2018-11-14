@@ -14,7 +14,9 @@ package Paws::RedShift::Cluster;
   has ClusterStatus => (is => 'ro', isa => 'Str');
   has ClusterSubnetGroupName => (is => 'ro', isa => 'Str');
   has ClusterVersion => (is => 'ro', isa => 'Str');
+  has DataTransferProgress => (is => 'ro', isa => 'Paws::RedShift::DataTransferProgress');
   has DBName => (is => 'ro', isa => 'Str');
+  has DeferredMaintenanceWindows => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::DeferredMaintenanceWindow]', request_name => 'DeferredMaintenanceWindow', traits => ['NameInRequest']);
   has ElasticIpStatus => (is => 'ro', isa => 'Paws::RedShift::ElasticIpStatus');
   has ElasticResizeNumberOfNodeOptions => (is => 'ro', isa => 'Str');
   has Encrypted => (is => 'ro', isa => 'Bool');
@@ -32,6 +34,7 @@ package Paws::RedShift::Cluster;
   has PendingModifiedValues => (is => 'ro', isa => 'Paws::RedShift::PendingModifiedValues');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
+  has ResizeInfo => (is => 'ro', isa => 'Paws::RedShift::ResizeInfo');
   has RestoreStatus => (is => 'ro', isa => 'Paws::RedShift::RestoreStatus');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]', request_name => 'Tag', traits => ['NameInRequest']);
   has VpcId => (is => 'ro', isa => 'Str');
@@ -150,6 +153,10 @@ C<available>
 
 =item *
 
+C<cancelling-resize>
+
+=item *
+
 C<creating>
 
 =item *
@@ -224,12 +231,22 @@ parameter is valid only when the cluster is in a VPC.
 cluster.
 
 
+=head2 DataTransferProgress => L<Paws::RedShift::DataTransferProgress>
+
+  
+
+
 =head2 DBName => Str
 
   The name of the initial database that was created when the cluster was
 created. This same name is returned for the life of the cluster. If an
 initial database was not specified, a database named C<dev>dev was
 created by default.
+
+
+=head2 DeferredMaintenanceWindows => ArrayRef[L<Paws::RedShift::DeferredMaintenanceWindow>]
+
+  Describes a group of C<DeferredMaintenanceWindow> objects.
 
 
 =head2 ElasticIpStatus => L<Paws::RedShift::ElasticIpStatus>
@@ -336,6 +353,25 @@ which system maintenance can occur.
 
   A Boolean value that, if C<true>, indicates that the cluster can be
 accessed from a public network.
+
+
+=head2 ResizeInfo => L<Paws::RedShift::ResizeInfo>
+
+  Returns the following:
+
+=over
+
+=item *
+
+AllowCancelResize: a boolean value indicating if the resize operation
+can be cancelled.
+
+=item *
+
+ResizeType: Returns ClassicResize
+
+=back
+
 
 
 =head2 RestoreStatus => L<Paws::RedShift::RestoreStatus>

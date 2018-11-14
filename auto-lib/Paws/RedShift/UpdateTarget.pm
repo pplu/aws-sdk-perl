@@ -2,6 +2,7 @@ package Paws::RedShift::UpdateTarget;
   use Moose;
   has DatabaseVersion => (is => 'ro', isa => 'Str');
   has MaintenanceTrackName => (is => 'ro', isa => 'Str');
+  has SupportedOperations => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::SupportedOperation]', request_name => 'SupportedOperation', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +22,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::RedShift::UpdateTarget object:
 
-  $service_obj->Method(Att1 => { DatabaseVersion => $value, ..., MaintenanceTrackName => $value  });
+  $service_obj->Method(Att1 => { DatabaseVersion => $value, ..., SupportedOperations => $value  });
 
 =head3 Results returned from an API call
 
@@ -45,6 +46,11 @@ A maintenance track that you can switch the current track to.
 =head2 MaintenanceTrackName => Str
 
   The name of the new maintenance track.
+
+
+=head2 SupportedOperations => ArrayRef[L<Paws::RedShift::SupportedOperation>]
+
+  A list of operations supported by the maintenance track.
 
 
 

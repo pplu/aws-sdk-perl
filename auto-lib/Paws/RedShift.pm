@@ -29,6 +29,11 @@ package Paws::RedShift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::AuthorizeSnapshotAccess', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CancelResize {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::CancelResize', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CopyClusterSnapshot {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::CopyClusterSnapshot', @_);
@@ -132,6 +137,11 @@ package Paws::RedShift;
   sub DeleteTags {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::DeleteTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeAccountAttributes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeAccountAttributes', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeClusterDbRevisions {
@@ -292,6 +302,11 @@ package Paws::RedShift;
   sub ModifyClusterIamRoles {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::ModifyClusterIamRoles', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyClusterMaintenance {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::ModifyClusterMaintenance', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ModifyClusterParameterGroup {
@@ -707,7 +722,7 @@ package Paws::RedShift;
   }
 
 
-  sub operations { qw/AcceptReservedNodeExchange AuthorizeClusterSecurityGroupIngress AuthorizeSnapshotAccess CopyClusterSnapshot CreateCluster CreateClusterParameterGroup CreateClusterSecurityGroup CreateClusterSnapshot CreateClusterSubnetGroup CreateEventSubscription CreateHsmClientCertificate CreateHsmConfiguration CreateSnapshotCopyGrant CreateTags DeleteCluster DeleteClusterParameterGroup DeleteClusterSecurityGroup DeleteClusterSnapshot DeleteClusterSubnetGroup DeleteEventSubscription DeleteHsmClientCertificate DeleteHsmConfiguration DeleteSnapshotCopyGrant DeleteTags DescribeClusterDbRevisions DescribeClusterParameterGroups DescribeClusterParameters DescribeClusters DescribeClusterSecurityGroups DescribeClusterSnapshots DescribeClusterSubnetGroups DescribeClusterTracks DescribeClusterVersions DescribeDefaultClusterParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeHsmClientCertificates DescribeHsmConfigurations DescribeLoggingStatus DescribeOrderableClusterOptions DescribeReservedNodeOfferings DescribeReservedNodes DescribeResize DescribeSnapshotCopyGrants DescribeTableRestoreStatus DescribeTags DisableLogging DisableSnapshotCopy EnableLogging EnableSnapshotCopy GetClusterCredentials GetReservedNodeExchangeOfferings ModifyCluster ModifyClusterDbRevision ModifyClusterIamRoles ModifyClusterParameterGroup ModifyClusterSubnetGroup ModifyEventSubscription ModifySnapshotCopyRetentionPeriod PurchaseReservedNodeOffering RebootCluster ResetClusterParameterGroup ResizeCluster RestoreFromClusterSnapshot RestoreTableFromClusterSnapshot RevokeClusterSecurityGroupIngress RevokeSnapshotAccess RotateEncryptionKey / }
+  sub operations { qw/AcceptReservedNodeExchange AuthorizeClusterSecurityGroupIngress AuthorizeSnapshotAccess CancelResize CopyClusterSnapshot CreateCluster CreateClusterParameterGroup CreateClusterSecurityGroup CreateClusterSnapshot CreateClusterSubnetGroup CreateEventSubscription CreateHsmClientCertificate CreateHsmConfiguration CreateSnapshotCopyGrant CreateTags DeleteCluster DeleteClusterParameterGroup DeleteClusterSecurityGroup DeleteClusterSnapshot DeleteClusterSubnetGroup DeleteEventSubscription DeleteHsmClientCertificate DeleteHsmConfiguration DeleteSnapshotCopyGrant DeleteTags DescribeAccountAttributes DescribeClusterDbRevisions DescribeClusterParameterGroups DescribeClusterParameters DescribeClusters DescribeClusterSecurityGroups DescribeClusterSnapshots DescribeClusterSubnetGroups DescribeClusterTracks DescribeClusterVersions DescribeDefaultClusterParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeHsmClientCertificates DescribeHsmConfigurations DescribeLoggingStatus DescribeOrderableClusterOptions DescribeReservedNodeOfferings DescribeReservedNodes DescribeResize DescribeSnapshotCopyGrants DescribeTableRestoreStatus DescribeTags DisableLogging DisableSnapshotCopy EnableLogging EnableSnapshotCopy GetClusterCredentials GetReservedNodeExchangeOfferings ModifyCluster ModifyClusterDbRevision ModifyClusterIamRoles ModifyClusterMaintenance ModifyClusterParameterGroup ModifyClusterSubnetGroup ModifyEventSubscription ModifySnapshotCopyRetentionPeriod PurchaseReservedNodeOffering RebootCluster ResetClusterParameterGroup ResizeCluster RestoreFromClusterSnapshot RestoreTableFromClusterSnapshot RevokeClusterSecurityGroupIngress RevokeSnapshotAccess RotateEncryptionKey / }
 
 1;
 
@@ -860,6 +875,22 @@ For more information about working with snapshots, go to Amazon
 Redshift Snapshots
 (http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html)
 in the I<Amazon Redshift Cluster Management Guide>.
+
+
+=head2 CancelResize
+
+=over
+
+=item ClusterIdentifier => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::CancelResize>
+
+Returns: a L<Paws::RedShift::ResizeProgressMessage> instance
+
+Cancels a resize operation.
 
 
 =head2 CopyClusterSnapshot
@@ -1464,6 +1495,22 @@ Returns: nothing
 
 Deletes a tag or tags from a resource. You must provide the ARN of the
 resource from which you want to delete the tag or tags.
+
+
+=head2 DescribeAccountAttributes
+
+=over
+
+=item [AttributeNames => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::DescribeAccountAttributes>
+
+Returns: a L<Paws::RedShift::AccountAttributeList> instance
+
+Returns a list of attributes attached to an account
 
 
 =head2 DescribeClusterDbRevisions
@@ -2477,6 +2524,33 @@ Modifies the list of AWS Identity and Access Management (IAM) roles
 that can be used by the cluster to access other AWS services.
 
 A cluster can have up to 10 IAM roles associated at any time.
+
+
+=head2 ModifyClusterMaintenance
+
+=over
+
+=item ClusterIdentifier => Str
+
+=item [DeferMaintenance => Bool]
+
+=item [DeferMaintenanceDuration => Int]
+
+=item [DeferMaintenanceEndTime => Str]
+
+=item [DeferMaintenanceIdentifier => Str]
+
+=item [DeferMaintenanceStartTime => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::ModifyClusterMaintenance>
+
+Returns: a L<Paws::RedShift::ModifyClusterMaintenanceResult> instance
+
+Modifies the maintenance settings of a cluster. For example, you can
+defer a maintenance window. You can also update or cancel a deferment.
 
 
 =head2 ModifyClusterParameterGroup
