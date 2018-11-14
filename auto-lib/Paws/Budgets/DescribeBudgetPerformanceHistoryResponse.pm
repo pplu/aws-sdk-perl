@@ -21,8 +21,9 @@ The history of how often the budget has gone into an C<ALARM> state.
 
 For C<DAILY> budgets, the history saves the state of the budget for the
 last 60 days. For C<MONTHLY> budgets, the history saves the state of
-the budget for the last 12 months. For C<QUARTERLY> budgets, the
-history saves the state of the budget for the last four quarters.
+the budget for the current month plus the last 12 months. For
+C<QUARTERLY> budgets, the history saves the state of the budget for the
+last four quarters.
 
 
 =head2 NextToken => Str

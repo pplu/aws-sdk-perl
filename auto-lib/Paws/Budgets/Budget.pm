@@ -83,6 +83,33 @@ coverage.
   The cost filters, such as service or region, that are applied to a
 budget.
 
+AWS Budgets supports the following services as a filter for RI budgets:
+
+=over
+
+=item *
+
+Amazon Elastic Compute Cloud - Compute
+
+=item *
+
+Amazon Redshift
+
+=item *
+
+Amazon Relational Database Service
+
+=item *
+
+Amazon ElastiCache
+
+=item *
+
+Amazon Elasticsearch Service
+
+=back
+
+
 
 =head2 CostTypes => L<Paws::Budgets::CostTypes>
 
