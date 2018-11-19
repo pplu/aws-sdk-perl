@@ -15,6 +15,7 @@ package Paws::CodeBuild::StartBuild;
   has LogsConfigOverride => (is => 'ro', isa => 'Paws::CodeBuild::LogsConfig', traits => ['NameInRequest'], request_name => 'logsConfigOverride' );
   has PrivilegedModeOverride => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'privilegedModeOverride' );
   has ProjectName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectName' , required => 1);
+  has QueuedTimeoutInMinutesOverride => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'queuedTimeoutInMinutesOverride' );
   has ReportBuildStatusOverride => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'reportBuildStatusOverride' );
   has SecondaryArtifactsOverride => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectArtifacts]', traits => ['NameInRequest'], request_name => 'secondaryArtifactsOverride' );
   has SecondarySourcesOverride => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectSource]', traits => ['NameInRequest'], request_name => 'secondarySourcesOverride' );
@@ -94,9 +95,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Location => 'MyString',    # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
-      PrivilegedModeOverride     => 1,    # OPTIONAL
-      ReportBuildStatusOverride  => 1,    # OPTIONAL
-      SecondaryArtifactsOverride => [
+      PrivilegedModeOverride         => 1,    # OPTIONAL
+      QueuedTimeoutInMinutesOverride => 1,    # OPTIONAL
+      ReportBuildStatusOverride      => 1,    # OPTIONAL
+      SecondaryArtifactsOverride     => [
         {
           Type => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
           ArtifactIdentifier   => 'MyString', # OPTIONAL
@@ -259,6 +261,13 @@ The name of the AWS CodeBuild build project to start running a build.
 
 
 
+=head2 QueuedTimeoutInMinutesOverride => Int
+
+The number of minutes a build is allowed to be queued before it times
+out.
+
+
+
 =head2 ReportBuildStatusOverride => Bool
 
 Set to true to report to your source provider the status of a build's
@@ -305,14 +314,14 @@ source is BitBucket or GitHub.
 
 =head2 SourceLocationOverride => Str
 
-A location that overrides for this build the source location for the
+A location that overrides, for this build, the source location for the
 one defined in the build project.
 
 
 
 =head2 SourceTypeOverride => Str
 
-A source input type for this build that overrides the source input
+A source input type, for this build, that overrides the source input
 defined in the build project.
 
 Valid values are: C<"CODECOMMIT">, C<"CODEPIPELINE">, C<"GITHUB">, C<"S3">, C<"BITBUCKET">, C<"GITHUB_ENTERPRISE">, C<"NO_SOURCE">
@@ -320,8 +329,7 @@ Valid values are: C<"CODECOMMIT">, C<"CODEPIPELINE">, C<"GITHUB">, C<"S3">, C<"B
 =head2 SourceVersion => Str
 
 A version of the build input to be built, for this build only. If not
-specified, the latest version will be used. If specified, must be one
-of:
+specified, the latest version is used. If specified, must be one of:
 
 =over
 
@@ -335,20 +343,20 @@ For GitHub: the commit ID, pull request ID, branch name, or tag name
 that corresponds to the version of the source code you want to build.
 If a pull request ID is specified, it must use the format
 C<pr/pull-request-ID> (for example C<pr/25>). If a branch name is
-specified, the branch's HEAD commit ID will be used. If not specified,
-the default branch's HEAD commit ID will be used.
+specified, the branch's HEAD commit ID is used. If not specified, the
+default branch's HEAD commit ID is used.
 
 =item *
 
 For Bitbucket: the commit ID, branch name, or tag name that corresponds
 to the version of the source code you want to build. If a branch name
-is specified, the branch's HEAD commit ID will be used. If not
-specified, the default branch's HEAD commit ID will be used.
+is specified, the branch's HEAD commit ID is used. If not specified,
+the default branch's HEAD commit ID is used.
 
 =item *
 
 For Amazon Simple Storage Service (Amazon S3): the version ID of the
-object representing the build input ZIP file to use.
+object that represents the build input ZIP file to use.
 
 =back
 

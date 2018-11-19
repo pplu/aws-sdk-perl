@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeBuild::
 
 =head1 DESCRIPTION
 
-Information about logs for a build project. Logs can be Amazon
+Information about logs for a build project. These can be logs in Amazon
 CloudWatch Logs, built in a specified S3 bucket, or both.
 
 =head1 ATTRIBUTES

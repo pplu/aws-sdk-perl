@@ -83,7 +83,7 @@ values include:
 
 For source code settings that are specified in the source action of a
 pipeline in AWS CodePipeline, C<location> should not be specified. If
-it is specified, AWS CodePipeline will ignore it. This is because AWS
+it is specified, AWS CodePipeline ignores it. This is because AWS
 CodePipeline uses the settings in a pipeline's source action instead of
 this value.
 
@@ -117,32 +117,30 @@ I<bucket-name>/I<path>/I<to>/I<source-code>/I<folder>/>).
 =item *
 
 For source code in a GitHub repository, the HTTPS clone URL to the
-repository that contains the source and the build spec. Also, you must
-connect your AWS account to your GitHub account. To do this, use the
-AWS CodeBuild console to begin creating a build project. When you use
-the console to connect (or reconnect) with GitHub, on the GitHub
-B<Authorize application> page that displays, for B<Organization
-access>, choose B<Request access> next to each repository you want to
-allow AWS CodeBuild to have access to. Then choose B<Authorize
-application>. (After you have connected to your GitHub account, you do
-not need to finish creating the build project, and you may then leave
-the AWS CodeBuild console.) To instruct AWS CodeBuild to then use this
-connection, in the C<source> object, set the C<auth> object's C<type>
-value to C<OAUTH>.
+repository that contains the source and the build spec. You must
+connect your AWS account to your GitHub account. Use the AWS CodeBuild
+console to start creating a build project. When you use the console to
+connect (or reconnect) with GitHub, on the GitHub B<Authorize
+application> page, for B<Organization access>, choose B<Request access>
+next to each repository you want to allow AWS CodeBuild to have access
+to, and then choose B<Authorize application>. (After you have connected
+to your GitHub account, you do not need to finish creating the build
+project. You can leave the AWS CodeBuild console.) To instruct AWS
+CodeBuild to use this connection, in the C<source> object, set the
+C<auth> object's C<type> value to C<OAUTH>.
 
 =item *
 
 For source code in a Bitbucket repository, the HTTPS clone URL to the
-repository that contains the source and the build spec. Also, you must
-connect your AWS account to your Bitbucket account. To do this, use the
-AWS CodeBuild console to begin creating a build project. When you use
-the console to connect (or reconnect) with Bitbucket, on the Bitbucket
-B<Confirm access to your account> page that displays, choose B<Grant
-access>. (After you have connected to your Bitbucket account, you do
-not need to finish creating the build project, and you may then leave
-the AWS CodeBuild console.) To instruct AWS CodeBuild to then use this
-connection, in the C<source> object, set the C<auth> object's C<type>
-value to C<OAUTH>.
+repository that contains the source and the build spec. You must
+connect your AWS account to your Bitbucket account. Use the AWS
+CodeBuild console to start creating a build project. When you use the
+console to connect (or reconnect) with Bitbucket, on the Bitbucket
+B<Confirm access to your account> page, choose B<Grant access>. (After
+you have connected to your Bitbucket account, you do not need to finish
+creating the build project. You can leave the AWS CodeBuild console.)
+To instruct AWS CodeBuild to use this connection, in the C<source>
+object, set the C<auth> object's C<type> value to C<OAUTH>.
 
 =back
 
@@ -151,7 +149,7 @@ value to C<OAUTH>.
 =head2 ReportBuildStatus => Bool
 
   Set to true to report the status of a build's start and finish to your
-source provider. This option is only valid when your source provider is
+source provider. This option is valid only when your source provider is
 GitHub, GitHub Enterprise, or Bitbucket. If this is set and you use a
 different source provider, an invalidInputException is thrown.
 

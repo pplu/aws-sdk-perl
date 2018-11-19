@@ -11,6 +11,7 @@ package Paws::CodeBuild::Project;
   has LastModified => (is => 'ro', isa => 'Str', request_name => 'lastModified', traits => ['NameInRequest']);
   has LogsConfig => (is => 'ro', isa => 'Paws::CodeBuild::LogsConfig', request_name => 'logsConfig', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has QueuedTimeoutInMinutes => (is => 'ro', isa => 'Int', request_name => 'queuedTimeoutInMinutes', traits => ['NameInRequest']);
   has SecondaryArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectArtifacts]', request_name => 'secondaryArtifacts', traits => ['NameInRequest']);
   has SecondarySources => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectSource]', request_name => 'secondarySources', traits => ['NameInRequest']);
   has ServiceRole => (is => 'ro', isa => 'Str', request_name => 'serviceRole', traits => ['NameInRequest']);
@@ -89,8 +90,9 @@ Information about a build project.
   The AWS Key Management Service (AWS KMS) customer master key (CMK) to
 be used for encrypting the build output artifacts.
 
-This is expressed either as the CMK's Amazon Resource Name (ARN) or, if
-specified, the CMK's alias (using the format C<alias/I<alias-name> >).
+This is expressed either as the Amazon Resource Name (ARN) of the CMK
+or, if specified, the CMK's alias (using the format
+C<alias/I<alias-name> >).
 
 
 =head2 Environment => L<Paws::CodeBuild::ProjectEnvironment>
@@ -106,13 +108,19 @@ time format.
 
 =head2 LogsConfig => L<Paws::CodeBuild::LogsConfig>
 
-  Information about logs for the build project. A project can create
-Amazon CloudWatch Logs, logs in an S3 bucket, or both.
+  Information about logs for the build project. A project can create logs
+in Amazon CloudWatch Logs, an S3 bucket, or both.
 
 
 =head2 Name => Str
 
   The name of the build project.
+
+
+=head2 QueuedTimeoutInMinutes => Int
+
+  The number of minutes a build is allowed to be queued before it times
+out.
 
 
 =head2 SecondaryArtifacts => ArrayRef[L<Paws::CodeBuild::ProjectArtifacts>]
@@ -154,7 +162,7 @@ completed. The default is 60 minutes.
 
 =head2 VpcConfig => L<Paws::CodeBuild::VpcConfig>
 
-  Information about the VPC configuration that AWS CodeBuild will access.
+  Information about the VPC configuration that AWS CodeBuild accesses.
 
 
 =head2 Webhook => L<Paws::CodeBuild::Webhook>

@@ -48,7 +48,7 @@ Information about the build environment of the build project.
 
 =head2 B<REQUIRED> ComputeType => Str
 
-  Information about the compute resources the build project will use.
+  Information about the compute resources the build project uses.
 Available values include:
 
 =over
@@ -86,12 +86,12 @@ build project.
 true only if the build project is be used to build Docker images, and
 the specified build environment image is not provided by AWS CodeBuild
 with Docker support. Otherwise, all associated builds that attempt to
-interact with the Docker daemon will fail. Note that you must also
-start the Docker daemon so that builds can interact with it. One way to
-do this is to initialize the Docker daemon during the install phase of
-your build spec by running the following build commands. (Do not run
-the following build commands if the specified build environment image
-is provided by AWS CodeBuild with Docker support.)
+interact with the Docker daemon fail. You must also start the Docker
+daemon so that builds can interact with it. One way to do this is to
+initialize the Docker daemon during the install phase of your build
+spec by running the following build commands. (Do not run these
+commands if the specified build environment image is provided by AWS
+CodeBuild with Docker support.)
 
 If the operating system's base image is Ubuntu Linux:
 

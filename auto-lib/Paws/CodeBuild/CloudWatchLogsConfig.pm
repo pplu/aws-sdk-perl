@@ -40,15 +40,15 @@ Information about Amazon CloudWatch Logs for a build project.
 
 =head2 GroupName => Str
 
-  The group name of the Amazon CloudWatch Logs. For more information, see
-Working with Log Groups and Log Streams
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html)
+  The group name of the logs in Amazon CloudWatch Logs. For more
+information, see Working with Log Groups and Log Streams
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html).
 
 
 =head2 B<REQUIRED> Status => Str
 
-  The current status of the Amazon CloudWatch Logs for a build project.
-Valid values are:
+  The current status of the logs in Amazon CloudWatch Logs for a build
+project. Valid values are:
 
 =over
 
@@ -69,7 +69,7 @@ project.
 
   The prefix of the stream name of the Amazon CloudWatch Logs. For more
 information, see Working with Log Groups and Log Streams
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html)
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html).
 
 
 

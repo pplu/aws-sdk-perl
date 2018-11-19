@@ -9,6 +9,7 @@ package Paws::CodeBuild::UpdateProject;
   has Environment => (is => 'ro', isa => 'Paws::CodeBuild::ProjectEnvironment', traits => ['NameInRequest'], request_name => 'environment' );
   has LogsConfig => (is => 'ro', isa => 'Paws::CodeBuild::LogsConfig', traits => ['NameInRequest'], request_name => 'logsConfig' );
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
+  has QueuedTimeoutInMinutes => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'queuedTimeoutInMinutes' );
   has SecondaryArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectArtifacts]', traits => ['NameInRequest'], request_name => 'secondaryArtifacts' );
   has SecondarySources => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectSource]', traits => ['NameInRequest'], request_name => 'secondarySources' );
   has ServiceRole => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceRole' );
@@ -89,9 +90,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Location => 'MyString',    # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
-      SecondaryArtifacts => [
+      QueuedTimeoutInMinutes => 1,    # OPTIONAL
+      SecondaryArtifacts     => [
         {
-          Type => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
+          Type => 'CODEPIPELINE',     # values: CODEPIPELINE, S3, NO_ARTIFACTS
           ArtifactIdentifier   => 'MyString', # OPTIONAL
           EncryptionDisabled   => 1,          # OPTIONAL
           Location             => 'MyString', # OPTIONAL
@@ -174,7 +176,7 @@ build project.
 
 =head2 BadgeEnabled => Bool
 
-Set this to true to generate a publicly-accessible URL for your
+Set this to true to generate a publicly accessible URL for your
 project's build badge.
 
 
@@ -197,7 +199,7 @@ A new or replacement description of the build project.
 The replacement AWS Key Management Service (AWS KMS) customer master
 key (CMK) to be used for encrypting the build output artifacts.
 
-You can specify either the CMK's Amazon Resource Name (ARN) or, if
+You can specify either the Amazon Resource Name (ARN)of the CMK or, if
 available, the CMK's alias (using the format C<alias/I<alias-name> >).
 
 
@@ -211,8 +213,8 @@ project.
 
 =head2 LogsConfig => L<Paws::CodeBuild::LogsConfig>
 
-Information about logs for the build project. A project can create
-Amazon CloudWatch Logs, logs in an S3 bucket, or both.
+Information about logs for the build project. A project can create logs
+in Amazon CloudWatch Logs, logs in an S3 bucket, or both.
 
 
 
@@ -221,6 +223,13 @@ Amazon CloudWatch Logs, logs in an S3 bucket, or both.
 The name of the build project.
 
 You cannot change a build project's name.
+
+
+
+=head2 QueuedTimeoutInMinutes => Int
+
+The number of minutes a build is allowed to be queued before it times
+out.
 
 
 

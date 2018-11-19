@@ -48,10 +48,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 BranchFilter => Str
 
-A regular expression used to determine which branches in a repository
-are built when a webhook is triggered. If the name of a branch matches
-the regular expression, then it is built. If it doesn't match, then it
-is not. If C<branchFilter> is empty, then all branches are built.
+A regular expression used to determine which repository branches are
+built when a webhook is triggered. If the name of a branch matches the
+regular expression, then it is built. If C<branchFilter> is empty, then
+all branches are built.
 
 
 
@@ -65,7 +65,7 @@ The name of the AWS CodeBuild project.
 
 A boolean value that specifies whether the associated GitHub
 repository's secret token should be updated. If you use Bitbucket for
-your repository then C<rotateSecret> is ignored.
+your repository, C<rotateSecret> is ignored.
 
 
 

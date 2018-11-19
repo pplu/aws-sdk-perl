@@ -15,6 +15,7 @@ package Paws::CodeBuild::Build;
   has NetworkInterface => (is => 'ro', isa => 'Paws::CodeBuild::NetworkInterface', request_name => 'networkInterface', traits => ['NameInRequest']);
   has Phases => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::BuildPhase]', request_name => 'phases', traits => ['NameInRequest']);
   has ProjectName => (is => 'ro', isa => 'Str', request_name => 'projectName', traits => ['NameInRequest']);
+  has QueuedTimeoutInMinutes => (is => 'ro', isa => 'Int', request_name => 'queuedTimeoutInMinutes', traits => ['NameInRequest']);
   has ResolvedSourceVersion => (is => 'ro', isa => 'Str', request_name => 'resolvedSourceVersion', traits => ['NameInRequest']);
   has SecondaryArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::BuildArtifacts]', request_name => 'secondaryArtifacts', traits => ['NameInRequest']);
   has SecondarySources => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectSource]', request_name => 'secondarySources', traits => ['NameInRequest']);
@@ -72,7 +73,7 @@ Information about a build.
 
 =head2 BuildComplete => Bool
 
-  Whether the build has finished. True if completed; otherwise, false.
+  Whether the build is complete. True if complete; otherwise, false.
 
 
 =head2 BuildStatus => Str
@@ -124,8 +125,9 @@ C<TIMED_OUT>: The build timed out.
   The AWS Key Management Service (AWS KMS) customer master key (CMK) to
 be used for encrypting the build output artifacts.
 
-This is expressed either as the CMK's Amazon Resource Name (ARN) or, if
-specified, the CMK's alias (using the format C<alias/I<alias-name> >).
+This is expressed either as the Amazon Resource Name (ARN) of the CMK
+or, if specified, the CMK's alias (using the format
+C<alias/I<alias-name> >).
 
 
 =head2 EndTime => Str
@@ -157,7 +159,7 @@ example, C<codepipeline/my-demo-pipeline>).
 =item *
 
 If an AWS Identity and Access Management (IAM) user started the build,
-the user's name (for example C<MyUserName>).
+the user's name (for example, C<MyUserName>).
 
 =item *
 
@@ -180,13 +182,19 @@ C<CodeBuild-Jenkins-Plugin>.
 
 =head2 Phases => ArrayRef[L<Paws::CodeBuild::BuildPhase>]
 
-  Information about all previous build phases that are completed and
+  Information about all previous build phases that are complete and
 information about any current build phase that is not yet complete.
 
 
 =head2 ProjectName => Str
 
   The name of the AWS CodeBuild project.
+
+
+=head2 QueuedTimeoutInMinutes => Int
+
+  The number of minutes a build is allowed to be queued before it times
+out.
 
 
 =head2 ResolvedSourceVersion => Str
@@ -238,21 +246,21 @@ For AWS CodeCommit: the commit ID to use.
 For GitHub: the commit ID, pull request ID, branch name, or tag name
 that corresponds to the version of the source code you want to build.
 If a pull request ID is specified, it must use the format
-C<pr/pull-request-ID> (for example C<pr/25>). If a branch name is
-specified, the branch's HEAD commit ID will be used. If not specified,
-the default branch's HEAD commit ID will be used.
+C<pr/pull-request-ID> (for example, C<pr/25>). If a branch name is
+specified, the branch's HEAD commit ID is used. If not specified, the
+default branch's HEAD commit ID is used.
 
 =item *
 
 For Bitbucket: the commit ID, branch name, or tag name that corresponds
 to the version of the source code you want to build. If a branch name
-is specified, the branch's HEAD commit ID will be used. If not
-specified, the default branch's HEAD commit ID will be used.
+is specified, the branch's HEAD commit ID is used. If not specified,
+the default branch's HEAD commit ID is used.
 
 =item *
 
 For Amazon Simple Storage Service (Amazon S3): the version ID of the
-object representing the build input ZIP file to use.
+object that represents the build input ZIP file to use.
 
 =back
 

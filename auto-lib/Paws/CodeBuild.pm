@@ -205,9 +205,8 @@ prepackaged build environments for the most popular programming
 languages and build tools, such as Apache Maven, Gradle, and more. You
 can also fully customize build environments in AWS CodeBuild to use
 your own build tools. AWS CodeBuild scales automatically to meet peak
-build requests, and you pay only for the build time you consume. For
-more information about AWS CodeBuild, see the I<AWS CodeBuild User
-Guide>.
+build requests. You pay only for the build time you consume. For more
+information about AWS CodeBuild, see the I<AWS CodeBuild User Guide>.
 
 AWS CodeBuild supports these operations:
 
@@ -220,13 +219,13 @@ C<BatchDeleteBuilds>: Deletes one or more builds.
 =item *
 
 C<BatchGetProjects>: Gets information about one or more build projects.
-A I<build project> defines how AWS CodeBuild will run a build. This
+A I<build project> defines how AWS CodeBuild runs a build. This
 includes information such as where to get the source code to build, the
 build environment to use, the build commands to run, and where to store
-the build output. A I<build environment> represents a combination of
+the build output. A I<build environment> is a representation of
 operating system, programming language runtime, and tools that AWS
-CodeBuild will use to run a build. Also, you can add tags to build
-projects to help manage your resources and costs.
+CodeBuild uses to run a build. You can add tags to build projects to
+help manage your resources and costs.
 
 =item *
 
@@ -236,8 +235,8 @@ C<CreateProject>: Creates a build project.
 
 C<CreateWebhook>: For an existing AWS CodeBuild build project that has
 its source code stored in a GitHub or Bitbucket repository, enables AWS
-CodeBuild to begin automatically rebuilding the source code every time
-a code change is pushed to the repository.
+CodeBuild to start rebuilding the source code every time a code change
+is pushed to the repository.
 
 =item *
 
@@ -251,8 +250,8 @@ C<DeleteProject>: Deletes a build project.
 
 C<DeleteWebhook>: For an existing AWS CodeBuild build project that has
 its source code stored in a GitHub or Bitbucket repository, stops AWS
-CodeBuild from automatically rebuilding the source code every time a
-code change is pushed to the repository.
+CodeBuild from rebuilding the source code every time a code change is
+pushed to the repository.
 
 =item *
 
@@ -370,6 +369,8 @@ Gets information about build projects.
 
 =item [LogsConfig => L<Paws::CodeBuild::LogsConfig>]
 
+=item [QueuedTimeoutInMinutes => Int]
+
 =item [SecondaryArtifacts => ArrayRef[L<Paws::CodeBuild::ProjectArtifacts>]]
 
 =item [SecondarySources => ArrayRef[L<Paws::CodeBuild::ProjectSource>]]
@@ -407,17 +408,17 @@ Returns: a L<Paws::CodeBuild::CreateWebhookOutput> instance
 
 For an existing AWS CodeBuild build project that has its source code
 stored in a GitHub or Bitbucket repository, enables AWS CodeBuild to
-begin automatically rebuilding the source code every time a code change
-is pushed to the repository.
+start rebuilding the source code every time a code change is pushed to
+the repository.
 
 If you enable webhooks for an AWS CodeBuild project, and the project is
-used as a build step in AWS CodePipeline, then two identical builds
-will be created for each commit. One build is triggered through
-webhooks, and one through AWS CodePipeline. Because billing is on a
-per-build basis, you will be billed for both builds. Therefore, if you
-are using AWS CodePipeline, we recommend that you disable webhooks in
-CodeBuild. In the AWS CodeBuild console, clear the Webhook box. For
-more information, see step 5 in Change a Build Project's Settings
+used as a build step in AWS CodePipeline, then two identical builds are
+created for each commit. One build is triggered through webhooks, and
+one through AWS CodePipeline. Because billing is on a per-build basis,
+you are billed for both builds. Therefore, if you are using AWS
+CodePipeline, we recommend that you disable webhooks in AWS CodeBuild.
+In the AWS CodeBuild console, clear the Webhook box. For more
+information, see step 5 in Change a Build Project's Settings
 (http://docs.aws.amazon.com/codebuild/latest/userguide/change-project.html#change-project-console).
 
 
@@ -452,8 +453,8 @@ Returns: a L<Paws::CodeBuild::DeleteWebhookOutput> instance
 
 For an existing AWS CodeBuild build project that has its source code
 stored in a GitHub or Bitbucket repository, stops AWS CodeBuild from
-automatically rebuilding the source code every time a code change is
-pushed to the repository.
+rebuilding the source code every time a code change is pushed to the
+repository.
 
 
 =head2 InvalidateProjectCache
@@ -579,6 +580,8 @@ representing a single build project.
 
 =item [PrivilegedModeOverride => Bool]
 
+=item [QueuedTimeoutInMinutesOverride => Int]
+
 =item [ReportBuildStatusOverride => Bool]
 
 =item [SecondaryArtifactsOverride => ArrayRef[L<Paws::CodeBuild::ProjectArtifacts>]]
@@ -645,6 +648,8 @@ Attempts to stop running a build.
 
 =item [LogsConfig => L<Paws::CodeBuild::LogsConfig>]
 
+=item [QueuedTimeoutInMinutes => Int]
+
 =item [SecondaryArtifacts => ArrayRef[L<Paws::CodeBuild::ProjectArtifacts>]]
 
 =item [SecondarySources => ArrayRef[L<Paws::CodeBuild::ProjectSource>]]
@@ -688,8 +693,7 @@ Returns: a L<Paws::CodeBuild::UpdateWebhookOutput> instance
 
 Updates the webhook associated with an AWS CodeBuild build project.
 
-If you use Bitbucket for your repository then C<rotateSecret> is
-ignored.
+If you use Bitbucket for your repository, C<rotateSecret> is ignored.
 
 
 

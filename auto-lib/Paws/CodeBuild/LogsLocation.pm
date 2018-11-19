@@ -58,7 +58,7 @@ Information about build logs in Amazon CloudWatch Logs.
 
 =head2 S3DeepLink => Str
 
-  The URL to an individual build log in an S3 bucket.
+  The URL to a build log in an S3 bucket.
 
 
 =head2 S3Logs => L<Paws::CodeBuild::S3LogsConfig>
