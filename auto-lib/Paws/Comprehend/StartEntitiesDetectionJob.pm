@@ -3,6 +3,7 @@ package Paws::Comprehend::StartEntitiesDetectionJob;
   use Moose;
   has ClientRequestToken => (is => 'ro', isa => 'Str');
   has DataAccessRoleArn => (is => 'ro', isa => 'Str', required => 1);
+  has EntityRecognizerArn => (is => 'ro', isa => 'Str');
   has InputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::InputDataConfig', required => 1);
   has JobName => (is => 'ro', isa => 'Str');
   has LanguageCode => (is => 'ro', isa => 'Str', required => 1);
@@ -45,8 +46,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         S3Uri => 'MyS3Uri',    # max: 1024
 
       },
-      ClientRequestToken => 'MyClientRequestTokenString',    # OPTIONAL
-      JobName            => 'MyJobName',                     # OPTIONAL
+      ClientRequestToken  => 'MyClientRequestTokenString',    # OPTIONAL
+      EntityRecognizerArn => 'MyEntityRecognizerArn',         # OPTIONAL
+      JobName             => 'MyJobName',                     # OPTIONAL
       );
 
     # Results:
@@ -78,6 +80,14 @@ https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permiss
 
 
 
+=head2 EntityRecognizerArn => Str
+
+The Amazon Resource Name (ARN) that identifies the specific entity
+recognizer to be used by the C<StartEntitiesDetectionJob>. This ARN is
+optional and is only used for a custom entity recognition job.
+
+
+
 =head2 B<REQUIRED> InputDataConfig => L<Paws::Comprehend::InputDataConfig>
 
 Specifies the format and location of the input data for the job.
@@ -92,8 +102,12 @@ The identifier of the job.
 
 =head2 B<REQUIRED> LanguageCode => Str
 
-The language of the input documents. You can specify English ("en") or
-Spanish ("es"). All documents must be in the same language.
+The language of the input documents. All documents must be in the same
+language. You can specify any of the languages supported by Amazon
+Comprehend: English ("en"), Spanish ("es"), French ("fr"), German
+("de"), Italian ("it"), or Portuguese ("pt"). If custom entities
+recognition is used, this parameter is ignored and the language used
+for training the model is used instead.
 
 Valid values are: C<"en">, C<"es">, C<"fr">, C<"de">, C<"it">, C<"pt">
 

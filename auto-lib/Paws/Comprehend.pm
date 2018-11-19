@@ -40,6 +40,36 @@ package Paws::Comprehend;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::BatchDetectSyntax', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateDocumentClassifier {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::CreateDocumentClassifier', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateEntityRecognizer {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::CreateEntityRecognizer', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteDocumentClassifier {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::DeleteDocumentClassifier', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteEntityRecognizer {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::DeleteEntityRecognizer', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeDocumentClassificationJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::DescribeDocumentClassificationJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeDocumentClassifier {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::DescribeDocumentClassifier', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeDominantLanguageDetectionJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::DescribeDominantLanguageDetectionJob', @_);
@@ -48,6 +78,11 @@ package Paws::Comprehend;
   sub DescribeEntitiesDetectionJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::DescribeEntitiesDetectionJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeEntityRecognizer {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::DescribeEntityRecognizer', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeKeyPhrasesDetectionJob {
@@ -90,6 +125,16 @@ package Paws::Comprehend;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::DetectSyntax', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListDocumentClassificationJobs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::ListDocumentClassificationJobs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListDocumentClassifiers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::ListDocumentClassifiers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListDominantLanguageDetectionJobs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::ListDominantLanguageDetectionJobs', @_);
@@ -98,6 +143,11 @@ package Paws::Comprehend;
   sub ListEntitiesDetectionJobs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::ListEntitiesDetectionJobs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListEntityRecognizers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::ListEntityRecognizers', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListKeyPhrasesDetectionJobs {
@@ -113,6 +163,11 @@ package Paws::Comprehend;
   sub ListTopicsDetectionJobs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::ListTopicsDetectionJobs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StartDocumentClassificationJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::StartDocumentClassificationJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StartDominantLanguageDetectionJob {
@@ -186,7 +241,7 @@ package Paws::Comprehend;
   }
 
 
-  sub operations { qw/BatchDetectDominantLanguage BatchDetectEntities BatchDetectKeyPhrases BatchDetectSentiment BatchDetectSyntax DescribeDominantLanguageDetectionJob DescribeEntitiesDetectionJob DescribeKeyPhrasesDetectionJob DescribeSentimentDetectionJob DescribeTopicsDetectionJob DetectDominantLanguage DetectEntities DetectKeyPhrases DetectSentiment DetectSyntax ListDominantLanguageDetectionJobs ListEntitiesDetectionJobs ListKeyPhrasesDetectionJobs ListSentimentDetectionJobs ListTopicsDetectionJobs StartDominantLanguageDetectionJob StartEntitiesDetectionJob StartKeyPhrasesDetectionJob StartSentimentDetectionJob StartTopicsDetectionJob StopDominantLanguageDetectionJob StopEntitiesDetectionJob StopKeyPhrasesDetectionJob StopSentimentDetectionJob / }
+  sub operations { qw/BatchDetectDominantLanguage BatchDetectEntities BatchDetectKeyPhrases BatchDetectSentiment BatchDetectSyntax CreateDocumentClassifier CreateEntityRecognizer DeleteDocumentClassifier DeleteEntityRecognizer DescribeDocumentClassificationJob DescribeDocumentClassifier DescribeDominantLanguageDetectionJob DescribeEntitiesDetectionJob DescribeEntityRecognizer DescribeKeyPhrasesDetectionJob DescribeSentimentDetectionJob DescribeTopicsDetectionJob DetectDominantLanguage DetectEntities DetectKeyPhrases DetectSentiment DetectSyntax ListDocumentClassificationJobs ListDocumentClassifiers ListDominantLanguageDetectionJobs ListEntitiesDetectionJobs ListEntityRecognizers ListKeyPhrasesDetectionJobs ListSentimentDetectionJobs ListTopicsDetectionJobs StartDocumentClassificationJob StartDominantLanguageDetectionJob StartEntitiesDetectionJob StartKeyPhrasesDetectionJob StartSentimentDetectionJob StartTopicsDetectionJob StopDominantLanguageDetectionJob StopEntitiesDetectionJob StopKeyPhrasesDetectionJob StopSentimentDetectionJob / }
 
 1;
 
@@ -321,6 +376,143 @@ speech of the words in the document and returns information about them.
 For more information, see how-syntax.
 
 
+=head2 CreateDocumentClassifier
+
+=over
+
+=item DataAccessRoleArn => Str
+
+=item DocumentClassifierName => Str
+
+=item InputDataConfig => L<Paws::Comprehend::DocumentClassifierInputDataConfig>
+
+=item LanguageCode => Str
+
+=item [ClientRequestToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::CreateDocumentClassifier>
+
+Returns: a L<Paws::Comprehend::CreateDocumentClassifierResponse> instance
+
+Creates a new document classifier that you can use to categorize
+documents. To create a classifier you provide a set of training
+documents that labeled with the categories that you want to use. After
+the classifier is trained you can use it to categorize a set of labeled
+documents into the categories.
+
+
+=head2 CreateEntityRecognizer
+
+=over
+
+=item DataAccessRoleArn => Str
+
+=item InputDataConfig => L<Paws::Comprehend::EntityRecognizerInputDataConfig>
+
+=item LanguageCode => Str
+
+=item RecognizerName => Str
+
+=item [ClientRequestToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::CreateEntityRecognizer>
+
+Returns: a L<Paws::Comprehend::CreateEntityRecognizerResponse> instance
+
+Creates an entity recognizer using submitted files. After your
+C<CreateEntityRecognizer> request is submitted, you can check job
+status using the API.
+
+
+=head2 DeleteDocumentClassifier
+
+=over
+
+=item DocumentClassifierArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::DeleteDocumentClassifier>
+
+Returns: a L<Paws::Comprehend::DeleteDocumentClassifierResponse> instance
+
+Deletes a previously created document classifier
+
+Only those classifiers that are in terminated states (IN_ERROR,
+TRAINED) will be deleted. If an active inference job is using the
+model, a C<ResourceInUseException> will be returned.
+
+This is an asynchronous action that puts the classifier into a DELETING
+state, and it is then removed by a background job. Once removed, the
+classifier disappears from your account and is no longer available for
+use.
+
+
+=head2 DeleteEntityRecognizer
+
+=over
+
+=item EntityRecognizerArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::DeleteEntityRecognizer>
+
+Returns: a L<Paws::Comprehend::DeleteEntityRecognizerResponse> instance
+
+Deletes an entity recognizer.
+
+Only those recognizers that are in terminated states (IN_ERROR,
+TRAINED) will be deleted. If an active inference job is using the
+model, a C<ResourceInUseException> will be returned.
+
+This is an asynchronous action that puts the recognizer into a DELETING
+state, and it is then removed by a background job. Once removed, the
+recognizer disappears from your account and is no longer available for
+use.
+
+
+=head2 DescribeDocumentClassificationJob
+
+=over
+
+=item JobId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::DescribeDocumentClassificationJob>
+
+Returns: a L<Paws::Comprehend::DescribeDocumentClassificationJobResponse> instance
+
+Gets the properties associated with a document classification job. Use
+this operation to get the status of a classification job.
+
+
+=head2 DescribeDocumentClassifier
+
+=over
+
+=item DocumentClassifierArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::DescribeDocumentClassifier>
+
+Returns: a L<Paws::Comprehend::DescribeDocumentClassifierResponse> instance
+
+Gets the properties associated with a document classifier.
+
+
 =head2 DescribeDominantLanguageDetectionJob
 
 =over
@@ -353,6 +545,24 @@ Returns: a L<Paws::Comprehend::DescribeEntitiesDetectionJobResponse> instance
 
 Gets the properties associated with an entities detection job. Use this
 operation to get the status of a detection job.
+
+
+=head2 DescribeEntityRecognizer
+
+=over
+
+=item EntityRecognizerArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::DescribeEntityRecognizer>
+
+Returns: a L<Paws::Comprehend::DescribeEntityRecognizerResponse> instance
+
+Provides details about an entity recognizer including status, S3
+buckets containing training data, recognizer metadata, metrics, and so
+on.
 
 
 =head2 DescribeKeyPhrasesDetectionJob
@@ -500,6 +710,47 @@ Inspects text for syntax and the part of speech of words in the
 document. For more information, how-syntax.
 
 
+=head2 ListDocumentClassificationJobs
+
+=over
+
+=item [Filter => L<Paws::Comprehend::DocumentClassificationJobFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::ListDocumentClassificationJobs>
+
+Returns: a L<Paws::Comprehend::ListDocumentClassificationJobsResponse> instance
+
+Gets a list of the documentation classification jobs that you have
+submitted.
+
+
+=head2 ListDocumentClassifiers
+
+=over
+
+=item [Filter => L<Paws::Comprehend::DocumentClassifierFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::ListDocumentClassifiers>
+
+Returns: a L<Paws::Comprehend::ListDocumentClassifiersResponse> instance
+
+Gets a list of the document classifiers that you have created.
+
+
 =head2 ListDominantLanguageDetectionJobs
 
 =over
@@ -539,6 +790,33 @@ Each argument is described in detail in: L<Paws::Comprehend::ListEntitiesDetecti
 Returns: a L<Paws::Comprehend::ListEntitiesDetectionJobsResponse> instance
 
 Gets a list of the entity detection jobs that you have submitted.
+
+
+=head2 ListEntityRecognizers
+
+=over
+
+=item [Filter => L<Paws::Comprehend::EntityRecognizerFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::ListEntityRecognizers>
+
+Returns: a L<Paws::Comprehend::ListEntityRecognizersResponse> instance
+
+Gets a list of the properties of all entity recognizers that you
+created, including recognizers currently in training. Allows you to
+filter the list of recognizers based on criteria such as status and
+submission time. This call returns up to 500 entity recognizers in the
+list, with a default number of 100 recognizers in the list.
+
+The results of this list are not in any particular order. Please get
+the list and sort locally if needed.
 
 
 =head2 ListKeyPhrasesDetectionJobs
@@ -601,6 +879,33 @@ Returns: a L<Paws::Comprehend::ListTopicsDetectionJobsResponse> instance
 Gets a list of the topic detection jobs that you have submitted.
 
 
+=head2 StartDocumentClassificationJob
+
+=over
+
+=item DataAccessRoleArn => Str
+
+=item DocumentClassifierArn => Str
+
+=item InputDataConfig => L<Paws::Comprehend::InputDataConfig>
+
+=item OutputDataConfig => L<Paws::Comprehend::OutputDataConfig>
+
+=item [ClientRequestToken => Str]
+
+=item [JobName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::StartDocumentClassificationJob>
+
+Returns: a L<Paws::Comprehend::StartDocumentClassificationJobResponse> instance
+
+Starts an asynchronous document classification job. Use the operation
+to track the progress of the job.
+
+
 =head2 StartDominantLanguageDetectionJob
 
 =over
@@ -640,6 +945,8 @@ of documents. Use the operation to track the status of a job.
 
 =item [ClientRequestToken => Str]
 
+=item [EntityRecognizerArn => Str]
+
 =item [JobName => Str]
 
 
@@ -651,6 +958,11 @@ Returns: a L<Paws::Comprehend::StartEntitiesDetectionJobResponse> instance
 
 Starts an asynchronous entity detection job for a collection of
 documents. Use the operation to track the status of a job.
+
+This API can be used for either standard entity detection or custom
+entity recognition. In order to be used for custom entity recognition,
+the optional C<EntityRecognizerArn> must be used in order to provide
+access to the recognizer being used to detect the custom entity.
 
 
 =head2 StartKeyPhrasesDetectionJob

@@ -1,5 +1,5 @@
 
-package Paws::Comprehend::StartEntitiesDetectionJobResponse;
+package Paws::Comprehend::StartDocumentClassificationJobResponse;
   use Moose;
   has JobId => (is => 'ro', isa => 'Str');
   has JobStatus => (is => 'ro', isa => 'Str');
@@ -10,26 +10,26 @@ package Paws::Comprehend::StartEntitiesDetectionJobResponse;
 
 =head1 NAME
 
-Paws::Comprehend::StartEntitiesDetectionJobResponse
+Paws::Comprehend::StartDocumentClassificationJobResponse
 
 =head1 ATTRIBUTES
 
 
 =head2 JobId => Str
 
-The identifier generated for the job. To get the status of job, use
+The identifier generated for the job. To get the status of the job, use
 this identifier with the operation.
 
 
 =head2 JobStatus => Str
 
-The status of the job.
+The status of the job:
 
 =over
 
 =item *
 
-SUBMITTED - The job has been received and is queued for processing.
+SUBMITTED - The job has been received and queued for processing.
 
 =item *
 
@@ -42,7 +42,7 @@ available.
 
 =item *
 
-FAILED - The job did not complete. To get details, use the operation.
+FAILED - The job did not complete. For details, use the operation.
 
 =item *
 
