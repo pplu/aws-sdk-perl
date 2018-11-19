@@ -553,6 +553,8 @@ model B.
 
 =item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
 
+=item [WarmStartConfig => L<Paws::SageMaker::HyperParameterTuningJobWarmStartConfig>]
+
 
 =back
 
@@ -560,7 +562,12 @@ Each argument is described in detail in: L<Paws::SageMaker::CreateHyperParameter
 
 Returns: a L<Paws::SageMaker::CreateHyperParameterTuningJobResponse> instance
 
-Starts a hyperparameter tuning job.
+Starts a hyperparameter tuning job. A hyperparameter tuning job finds
+the best version of a model by running many training jobs on your
+dataset using the algorithm you choose and values for hyperparameters
+within ranges that you specify. It then chooses the hyperparameter
+values that result in a model that performs the best, as measured by an
+objective metric that you choose.
 
 
 =head2 CreateModel
@@ -766,7 +773,7 @@ Use the C<NotIpAddress> condition operator and the C<aws:SourceIP>
 condition context key to specify the list of IP addresses that you want
 to have access to the notebook instance. For more information, see
 Limit Access to a Notebook Instance by IP Address
-(http://docs.aws.amazon.com/https:/docs.aws.amazon.com/sagemaker/latest/dg/howitworks-access-ws.html#nbi-ip-filter).
+(http://docs.aws.amazon.com/sagemaker/latest/dg/howitworks-access-ws.html#nbi-ip-filter).
 
 
 =head2 CreateTrainingJob

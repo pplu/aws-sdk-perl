@@ -52,10 +52,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $DescribeHyperParameterTuningJobResponse->LastModifiedTime;
     my $ObjectiveStatusCounters =
       $DescribeHyperParameterTuningJobResponse->ObjectiveStatusCounters;
+    my $OverallBestTrainingJob =
+      $DescribeHyperParameterTuningJobResponse->OverallBestTrainingJob;
     my $TrainingJobDefinition =
       $DescribeHyperParameterTuningJobResponse->TrainingJobDefinition;
     my $TrainingJobStatusCounters =
       $DescribeHyperParameterTuningJobResponse->TrainingJobStatusCounters;
+    my $WarmStartConfig =
+      $DescribeHyperParameterTuningJobResponse->WarmStartConfig;
 
  # Returns a L<Paws::SageMaker::DescribeHyperParameterTuningJobResponse> object.
 

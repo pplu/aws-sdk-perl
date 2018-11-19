@@ -1,6 +1,7 @@
 package Paws::SageMaker::AlgorithmSpecification;
   use Moose;
-  has TrainingImage => (is => 'ro', isa => 'Str', required => 1);
+  has MetricDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::MetricDefinition]');
+  has TrainingImage => (is => 'ro', isa => 'Str');
   has TrainingInputMode => (is => 'ro', isa => 'Str', required => 1);
 1;
 
@@ -21,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SageMaker::AlgorithmSpecification object:
 
-  $service_obj->Method(Att1 => { TrainingImage => $value, ..., TrainingInputMode => $value  });
+  $service_obj->Method(Att1 => { MetricDefinitions => $value, ..., TrainingInputMode => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::AlgorithmSpecification object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->TrainingImage
+  $result->Att1->MetricDefinitions
 
 =head1 DESCRIPTION
 
@@ -45,7 +46,14 @@ Algorithms with Amazon SageMaker
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> TrainingImage => Str
+=head2 MetricDefinitions => ArrayRef[L<Paws::SageMaker::MetricDefinition>]
+
+  A list of metric definition objects. Each object specifies the metric
+name and regular expressions used to parse algorithm logs. Amazon
+SageMaker publishes each metric to Amazon CloudWatch.
+
+
+=head2 TrainingImage => Str
 
   The registry path of the Docker image that contains the training
 algorithm. For information about docker registry paths for built-in

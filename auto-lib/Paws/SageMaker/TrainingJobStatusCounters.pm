@@ -43,7 +43,7 @@ categorized by status.
 
 =head2 Completed => Int
 
-  The number of completed training jobs launched by a hyperparameter
+  The number of completed training jobs launched by the hyperparameter
 tuning job.
 
 

@@ -4,6 +4,7 @@ package Paws::SageMaker::DescribeTrainingJobResponse;
   has AlgorithmSpecification => (is => 'ro', isa => 'Paws::SageMaker::AlgorithmSpecification', required => 1);
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
   has FailureReason => (is => 'ro', isa => 'Str');
+  has FinalMetricDataList => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::MetricData]');
   has HyperParameters => (is => 'ro', isa => 'Paws::SageMaker::HyperParameters');
   has InputDataConfig => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Channel]');
   has LastModifiedTime => (is => 'ro', isa => 'Str');
@@ -47,6 +48,13 @@ A timestamp that indicates when the training job was created.
 =head2 FailureReason => Str
 
 If the training job failed, the reason it failed.
+
+
+=head2 FinalMetricDataList => ArrayRef[L<Paws::SageMaker::MetricData>]
+
+A collection of C<MetricData> objects that specify the names, values,
+and dates and times that the training algorithm emitted to Amazon
+CloudWatch.
 
 
 =head2 HyperParameters => L<Paws::SageMaker::HyperParameters>

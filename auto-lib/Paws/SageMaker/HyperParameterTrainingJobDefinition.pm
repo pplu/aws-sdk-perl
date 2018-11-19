@@ -1,7 +1,7 @@
 package Paws::SageMaker::HyperParameterTrainingJobDefinition;
   use Moose;
   has AlgorithmSpecification => (is => 'ro', isa => 'Paws::SageMaker::HyperParameterAlgorithmSpecification', required => 1);
-  has InputDataConfig => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Channel]', required => 1);
+  has InputDataConfig => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Channel]');
   has OutputDataConfig => (is => 'ro', isa => 'Paws::SageMaker::OutputDataConfig', required => 1);
   has ResourceConfig => (is => 'ro', isa => 'Paws::SageMaker::ResourceConfig', required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', required => 1);
@@ -49,7 +49,7 @@ Defines the training jobs launched by a hyperparameter tuning job.
 algorithm to use for the training jobs that the tuning job launches.
 
 
-=head2 B<REQUIRED> InputDataConfig => ArrayRef[L<Paws::SageMaker::Channel>]
+=head2 InputDataConfig => ArrayRef[L<Paws::SageMaker::Channel>]
 
   An array of Channel objects that specify the input for the training
 jobs that the tuning job launches.

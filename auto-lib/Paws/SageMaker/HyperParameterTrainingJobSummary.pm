@@ -10,6 +10,7 @@ package Paws::SageMaker::HyperParameterTrainingJobSummary;
   has TrainingJobStatus => (is => 'ro', isa => 'Str', required => 1);
   has TrainingStartTime => (is => 'ro', isa => 'Str');
   has TunedHyperParameters => (is => 'ro', isa => 'Paws::SageMaker::HyperParameters', required => 1);
+  has TuningJobName => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +30,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SageMaker::HyperParameterTrainingJobSummary object:
 
-  $service_obj->Method(Att1 => { CreationTime => $value, ..., TunedHyperParameters => $value  });
+  $service_obj->Method(Att1 => { CreationTime => $value, ..., TuningJobName => $value  });
 
 =head3 Results returned from an API call
 
@@ -126,6 +127,11 @@ objective metric.
 =head2 B<REQUIRED> TunedHyperParameters => L<Paws::SageMaker::HyperParameters>
 
   A list of the hyperparameters for which you specified ranges to search.
+
+
+=head2 TuningJobName => Str
+
+  
 
 
 

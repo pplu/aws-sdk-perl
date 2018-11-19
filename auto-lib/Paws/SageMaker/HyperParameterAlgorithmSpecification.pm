@@ -1,7 +1,7 @@
 package Paws::SageMaker::HyperParameterAlgorithmSpecification;
   use Moose;
   has MetricDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::MetricDefinition]');
-  has TrainingImage => (is => 'ro', isa => 'Str', required => 1);
+  has TrainingImage => (is => 'ro', isa => 'Str');
   has TrainingInputMode => (is => 'ro', isa => 'Str', required => 1);
 1;
 
@@ -45,7 +45,7 @@ hyperparameter tuning job launches and the metrics to monitor.
 algorithm emits.
 
 
-=head2 B<REQUIRED> TrainingImage => Str
+=head2 TrainingImage => Str
 
   The registry path of the Docker image that contains the training
 algorithm. For information about Docker registry paths for built-in

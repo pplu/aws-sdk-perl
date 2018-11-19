@@ -35,16 +35,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $AlgorithmSpecification =
       $DescribeTrainingJobResponse->AlgorithmSpecification;
-    my $CreationTime     = $DescribeTrainingJobResponse->CreationTime;
-    my $FailureReason    = $DescribeTrainingJobResponse->FailureReason;
-    my $HyperParameters  = $DescribeTrainingJobResponse->HyperParameters;
-    my $InputDataConfig  = $DescribeTrainingJobResponse->InputDataConfig;
-    my $LastModifiedTime = $DescribeTrainingJobResponse->LastModifiedTime;
-    my $ModelArtifacts   = $DescribeTrainingJobResponse->ModelArtifacts;
-    my $OutputDataConfig = $DescribeTrainingJobResponse->OutputDataConfig;
-    my $ResourceConfig   = $DescribeTrainingJobResponse->ResourceConfig;
-    my $RoleArn          = $DescribeTrainingJobResponse->RoleArn;
-    my $SecondaryStatus  = $DescribeTrainingJobResponse->SecondaryStatus;
+    my $CreationTime        = $DescribeTrainingJobResponse->CreationTime;
+    my $FailureReason       = $DescribeTrainingJobResponse->FailureReason;
+    my $FinalMetricDataList = $DescribeTrainingJobResponse->FinalMetricDataList;
+    my $HyperParameters     = $DescribeTrainingJobResponse->HyperParameters;
+    my $InputDataConfig     = $DescribeTrainingJobResponse->InputDataConfig;
+    my $LastModifiedTime    = $DescribeTrainingJobResponse->LastModifiedTime;
+    my $ModelArtifacts      = $DescribeTrainingJobResponse->ModelArtifacts;
+    my $OutputDataConfig    = $DescribeTrainingJobResponse->OutputDataConfig;
+    my $ResourceConfig      = $DescribeTrainingJobResponse->ResourceConfig;
+    my $RoleArn             = $DescribeTrainingJobResponse->RoleArn;
+    my $SecondaryStatus     = $DescribeTrainingJobResponse->SecondaryStatus;
     my $SecondaryStatusTransitions =
       $DescribeTrainingJobResponse->SecondaryStatusTransitions;
     my $StoppingCondition = $DescribeTrainingJobResponse->StoppingCondition;

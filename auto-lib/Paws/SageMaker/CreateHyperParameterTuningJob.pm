@@ -5,6 +5,7 @@ package Paws::SageMaker::CreateHyperParameterTuningJob;
   has HyperParameterTuningJobName => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Tag]');
   has TrainingJobDefinition => (is => 'ro', isa => 'Paws::SageMaker::HyperParameterTrainingJobDefinition', required => 1);
+  has WarmStartConfig => (is => 'ro', isa => 'Paws::SageMaker::HyperParameterTuningJobWarmStartConfig');
 
   use MooseX::ClassAttribute;
 
@@ -79,20 +80,35 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       HyperParameterTuningJobName => 'MyHyperParameterTuningJobName',
       TrainingJobDefinition       => {
         AlgorithmSpecification => {
-          TrainingImage     => 'MyAlgorithmImage',    # max: 255
-          TrainingInputMode => 'Pipe',                # values: Pipe, File
+          TrainingInputMode => 'Pipe',           # values: Pipe, File
           MetricDefinitions => [
             {
-              Name  => 'MyMetricName',                # min: 1, max: 255
-              Regex => 'MyMetricRegex',               # min: 1, max: 500
+              Name  => 'MyMetricName',           # min: 1, max: 255
+              Regex => 'MyMetricRegex',          # min: 1, max: 500
 
             },
             ...
-          ],                                          # max: 20; OPTIONAL
+          ],                                     # max: 20; OPTIONAL
+          TrainingImage => 'MyAlgorithmImage',   # max: 255; OPTIONAL
+        },
+        OutputDataConfig => {
+          S3OutputPath => 'MyS3Uri',             # max: 1024
+          KmsKeyId     => 'MyKmsKeyId',          # max: 2048; OPTIONAL
+        },
+        ResourceConfig => {
+          InstanceCount => 1,                    # min: 1
+          InstanceType  => 'ml.m4.xlarge'
+          , # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge
+          VolumeSizeInGB => 1,               # min: 1
+          VolumeKmsKeyId => 'MyKmsKeyId',    # max: 2048; OPTIONAL
+        },
+        RoleArn           => 'MyRoleArn',    # min: 20, max: 2048
+        StoppingCondition => {
+          MaxRuntimeInSeconds => 1,          # min: 1; OPTIONAL
         },
         InputDataConfig => [
           {
-            ChannelName => 'MyChannelName',           # min: 1, max: 64
+            ChannelName => 'MyChannelName',    # min: 1, max: 64
             DataSource  => {
               S3DataSource => {
                 S3DataType => 'ManifestFile',   # values: ManifestFile, S3Prefix
@@ -108,25 +124,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             RecordWrapperType => 'None',    # values: None, RecordIO; OPTIONAL
           },
           ...
-        ],                                  # min: 1, max: 8
-        OutputDataConfig => {
-          S3OutputPath => 'MyS3Uri',        # max: 1024
-          KmsKeyId     => 'MyKmsKeyId',     # max: 2048; OPTIONAL
-        },
-        ResourceConfig => {
-          InstanceCount => 1,               # min: 1
-          InstanceType  => 'ml.m4.xlarge'
-          , # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge
-          VolumeSizeInGB => 1,               # min: 1
-          VolumeKmsKeyId => 'MyKmsKeyId',    # max: 2048; OPTIONAL
-        },
-        RoleArn           => 'MyRoleArn',    # min: 20, max: 2048
-        StoppingCondition => {
-          MaxRuntimeInSeconds => 1,          # min: 1; OPTIONAL
-        },
+        ],                                  # min: 1, max: 8; OPTIONAL
         StaticHyperParameters => {
           'MyParameterKey' =>
-            'MyParameterValue',              # key: max: 256, value: max: 256
+            'MyParameterValue',             # key: max: 256, value: max: 256
         },    # max: 100; OPTIONAL
         VpcConfig => {
           SecurityGroupIds => [
@@ -146,6 +147,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                            # OPTIONAL
+      WarmStartConfig => {
+        ParentHyperParameterTuningJobs => [
+          {
+            HyperParameterTuningJobName =>
+              'MyHyperParameterTuningJobName',    # min: 1, max: 32
+          },
+          ...
+        ],                                        # min: 1, max: 5
+        WarmStartType => 'IdenticalDataAndAlgorithm'
+        ,    # values: IdenticalDataAndAlgorithm, TransferLearning
+
+      },    # OPTIONAL
       );
 
     # Results:
@@ -163,8 +176,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head2 B<REQUIRED> HyperParameterTuningJobConfig => L<Paws::SageMaker::HyperParameterTuningJobConfig>
 
 The HyperParameterTuningJobConfig object that describes the tuning job,
-including the search strategy, metric used to evaluate training jobs,
-ranges of parameters to search, and resource limits for the tuning job.
+including the search strategy, the objective metric used to evaluate
+training jobs, ranges of parameters to search, and resource limits for
+the tuning job. For more information, see automatic-model-tuning
 
 
 
@@ -172,8 +186,9 @@ ranges of parameters to search, and resource limits for the tuning job.
 
 The name of the tuning job. This name is the prefix for the names of
 all training jobs that this tuning job launches. The name must be
-unique within the same AWS account and AWS Region. Names are not case
-sensitive, and must be between 1-32 characters.
+unique within the same AWS account and AWS Region. The name must have {
+} to { } characters. Valid characters are a-z, A-Z, 0-9, and : + = @ _
+% - (hyphen). The name is not case sensitive.
 
 
 
@@ -195,6 +210,27 @@ The HyperParameterTrainingJobDefinition object that describes the
 training jobs that this tuning job launches, including static
 hyperparameters, input data configuration, output data configuration,
 resource configuration, and stopping condition.
+
+
+
+=head2 WarmStartConfig => L<Paws::SageMaker::HyperParameterTuningJobWarmStartConfig>
+
+Specifies configuration for starting the hyperparameter tuning job
+using one or more previous tuning jobs as a starting point. The results
+of previous tuning jobs are used to inform which combinations of
+hyperparameters to search over in the new tuning job.
+
+All training jobs launched by the new hyperparameter tuning job are
+evaluated by using the objective metric. If you specify
+C<IDENTICAL_DATA_AND_ALGORITHM> as the C<WarmStartType> for the warm
+start configuration, the training job that performs the best in the new
+tuning job is compared to the best training jobs from the parent tuning
+jobs. From these, the training job that performs the best as measured
+by the objective metric is returned as the overall best training job.
+
+All training jobs launched by parent hyperparameter tuning jobs and the
+new hyperparameter tuning jobs count against the limit of training jobs
+for the tuning job.
 
 
 
