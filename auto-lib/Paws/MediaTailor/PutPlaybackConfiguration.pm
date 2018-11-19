@@ -5,6 +5,7 @@ package Paws::MediaTailor::PutPlaybackConfiguration;
   has CdnConfiguration => (is => 'ro', isa => 'Paws::MediaTailor::CdnConfiguration');
   has Name => (is => 'ro', isa => 'Str');
   has SlateAdUrl => (is => 'ro', isa => 'Str');
+  has TranscodeProfileName => (is => 'ro', isa => 'Str');
   has VideoContentSourceUrl => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -41,6 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },                                      # OPTIONAL
       Name                  => 'My__string',  # OPTIONAL
       SlateAdUrl            => 'My__string',  # OPTIONAL
+      TranscodeProfileName  => 'My__string',  # OPTIONAL
       VideoContentSourceUrl => 'My__string',  # OPTIONAL
       );
 
@@ -48,6 +50,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $AdDecisionServerUrl =
       $PutPlaybackConfigurationResponse->AdDecisionServerUrl;
     my $CdnConfiguration = $PutPlaybackConfigurationResponse->CdnConfiguration;
+    my $DashConfiguration =
+      $PutPlaybackConfigurationResponse->DashConfiguration;
     my $HlsConfiguration = $PutPlaybackConfigurationResponse->HlsConfiguration;
     my $Name             = $PutPlaybackConfigurationResponse->Name;
     my $PlaybackEndpointPrefix =
@@ -55,6 +59,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SessionInitializationEndpointPrefix =
       $PutPlaybackConfigurationResponse->SessionInitializationEndpointPrefix;
     my $SlateAdUrl = $PutPlaybackConfigurationResponse->SlateAdUrl;
+    my $TranscodeProfileName =
+      $PutPlaybackConfigurationResponse->TranscodeProfileName;
     my $VideoContentSourceUrl =
       $PutPlaybackConfigurationResponse->VideoContentSourceUrl;
 
@@ -99,6 +105,15 @@ non-VPAID configurations. For VPAID, the slate is required because AWS
 Elemental MediaTailor provides it in the slots that are designated for
 dynamic ad content. The slate must be a high-quality asset that
 contains both audio and video.
+
+
+
+=head2 TranscodeProfileName => Str
+
+Associate this playbackConfiguration with a custom transcode profile,
+overriding MediaTailor's dynamic transcoding defaults. Do not include
+this field if you have not setup custom profiles with the MediaTailor
+service team.
 
 
 

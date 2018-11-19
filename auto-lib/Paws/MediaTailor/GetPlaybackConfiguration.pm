@@ -38,6 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $AdDecisionServerUrl =
       $GetPlaybackConfigurationResponse->AdDecisionServerUrl;
     my $CdnConfiguration = $GetPlaybackConfigurationResponse->CdnConfiguration;
+    my $DashConfiguration =
+      $GetPlaybackConfigurationResponse->DashConfiguration;
     my $HlsConfiguration = $GetPlaybackConfigurationResponse->HlsConfiguration;
     my $Name             = $GetPlaybackConfigurationResponse->Name;
     my $PlaybackEndpointPrefix =
@@ -45,6 +47,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SessionInitializationEndpointPrefix =
       $GetPlaybackConfigurationResponse->SessionInitializationEndpointPrefix;
     my $SlateAdUrl = $GetPlaybackConfigurationResponse->SlateAdUrl;
+    my $TranscodeProfileName =
+      $GetPlaybackConfigurationResponse->TranscodeProfileName;
     my $VideoContentSourceUrl =
       $GetPlaybackConfigurationResponse->VideoContentSourceUrl;
 

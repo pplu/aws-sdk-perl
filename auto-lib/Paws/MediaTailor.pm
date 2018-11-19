@@ -150,6 +150,8 @@ retrieve the next pageful.
 
 =item [SlateAdUrl => Str]
 
+=item [TranscodeProfileName => Str]
+
 =item [VideoContentSourceUrl => Str]
 
 
