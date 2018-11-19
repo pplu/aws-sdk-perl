@@ -43,10 +43,30 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sns
 
 =head2 B<REQUIRED> AttributeName => Str
 
-The name of the attribute you want to set. Only a subset of the topic's
-attributes are mutable.
+A map of attributes with their corresponding values.
 
-Valid values: C<Policy> | C<DisplayName> | C<DeliveryPolicy>
+The following lists the names, descriptions, and values of the special
+request parameters that the C<SetTopicAttributes> action uses:
+
+=over
+
+=item *
+
+C<DeliveryPolicy> E<ndash> The policy that defines how Amazon SNS
+retries failed deliveries to HTTP/S endpoints.
+
+=item *
+
+C<DisplayName> E<ndash> The display name to use for a topic with SMS
+subscriptions.
+
+=item *
+
+C<Policy> E<ndash> The policy that defines who can access your topic.
+By default, only the topic owner can publish or subscribe to the topic.
+
+=back
+
 
 
 

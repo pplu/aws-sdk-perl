@@ -500,6 +500,8 @@ for Baidu
 
 =item Name => Str
 
+=item [Attributes => L<Paws::SNS::TopicAttributesMap>]
+
 
 =back
 

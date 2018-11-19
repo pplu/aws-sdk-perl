@@ -43,11 +43,33 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sns
 
 =head2 B<REQUIRED> AttributeName => Str
 
-The name of the attribute you want to set. Only a subset of the
-subscriptions attributes are mutable.
+A map of attributes with their corresponding values.
 
-Valid values: C<DeliveryPolicy> | C<FilterPolicy> |
-C<RawMessageDelivery>
+The following lists the names, descriptions, and values of the special
+request parameters that the C<SetTopicAttributes> action uses:
+
+=over
+
+=item *
+
+C<DeliveryPolicy> E<ndash> The policy that defines how Amazon SNS
+retries failed deliveries to HTTP/S endpoints.
+
+=item *
+
+C<FilterPolicy> E<ndash> The simple JSON object that lets your
+subscriber receive only a subset of messages, rather than receiving
+every message published to the topic.
+
+=item *
+
+C<RawMessageDelivery> E<ndash> When set to C<true>, enables raw message
+delivery to Amazon SQS or HTTP/S endpoints. This eliminates the need
+for the endpoints to process JSON formatting, which is otherwise
+created for Amazon SNS metadata.
+
+=back
+
 
 
 
