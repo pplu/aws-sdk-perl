@@ -41,7 +41,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Create
 
 =head1 DESCRIPTION
 
-Describes the association of a Systems Manager document and an
+Describes the association of a Systems Manager SSM document and an
 instance.
 
 =head1 ATTRIBUTES

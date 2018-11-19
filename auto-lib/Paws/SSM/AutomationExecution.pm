@@ -16,10 +16,12 @@ package Paws::SSM::AutomationExecution;
   has Outputs => (is => 'ro', isa => 'Paws::SSM::AutomationParameterMap');
   has Parameters => (is => 'ro', isa => 'Paws::SSM::AutomationParameterMap');
   has ParentAutomationExecutionId => (is => 'ro', isa => 'Str');
+  has ProgressCounters => (is => 'ro', isa => 'Paws::SSM::ProgressCounters');
   has ResolvedTargets => (is => 'ro', isa => 'Paws::SSM::ResolvedTargets');
   has StepExecutions => (is => 'ro', isa => 'ArrayRef[Paws::SSM::StepExecution]');
   has StepExecutionsTruncated => (is => 'ro', isa => 'Bool');
   has Target => (is => 'ro', isa => 'Str');
+  has TargetLocations => (is => 'ro', isa => 'ArrayRef[Paws::SSM::TargetLocation]');
   has TargetMaps => (is => 'ro', isa => 'ArrayRef[Paws::SSM::TargetMap]');
   has TargetParameterName => (is => 'ro', isa => 'Str');
   has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
@@ -142,6 +144,12 @@ calling StartAutomationExecution.
   The AutomationExecutionId of the parent automation.
 
 
+=head2 ProgressCounters => L<Paws::SSM::ProgressCounters>
+
+  An aggregate of step execution statuses displayed in the AWS Console
+for a multi-Region and multi-account Automation execution.
+
+
 =head2 ResolvedTargets => L<Paws::SSM::ResolvedTargets>
 
   A list of resolved targets in the rate control execution.
@@ -165,6 +173,12 @@ step executions.
 =head2 Target => Str
 
   The target of the execution.
+
+
+=head2 TargetLocations => ArrayRef[L<Paws::SSM::TargetLocation>]
+
+  The combination of AWS Regions and/or AWS accounts where you want to
+execute the Automation.
 
 
 =head2 TargetMaps => ArrayRef[L<Paws::SSM::TargetMap>]

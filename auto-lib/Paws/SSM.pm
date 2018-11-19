@@ -988,7 +988,7 @@ IDs or tags, SSM Agent running on the instance processes the document
 and configures the instance as specified.
 
 If you associate a document with an instance that already has an
-associated document, the system throws the AssociationAlreadyExists
+associated document, the system returns the AssociationAlreadyExists
 exception.
 
 
@@ -1013,7 +1013,7 @@ IDs or tags, SSM Agent running on the instance processes the document
 and configures the instance as specified.
 
 If you associate a document with an instance that already has an
-associated document, the system throws the AssociationAlreadyExists
+associated document, the system returns the AssociationAlreadyExists
 exception.
 
 
@@ -3251,6 +3251,8 @@ time. This action can be helpful when troubleshooting associations.
 =item [Mode => Str]
 
 =item [Parameters => L<Paws::SSM::AutomationParameterMap>]
+
+=item [TargetLocations => ArrayRef[L<Paws::SSM::TargetLocation>]]
 
 =item [TargetMaps => ArrayRef[L<Paws::SSM::TargetMap>]]
 

@@ -50,77 +50,75 @@ Describes a command filter.
 
 =item *
 
-InvokedAfter: A timestamp to limit your results. For example, specify
-C<2018-07-07T00:00:00Z> to see results occurring July 7, 2018, and
-later.
+B<InvokedAfter>: Specify a timestamp to limit your results. For
+example, specify C<2018-07-07T00:00:00Z> to see a list of command
+executions occurring July 7, 2018, and later.
 
 =item *
 
-InvokedBefore: A timestamp to limit your results. For example, specify
-C<2018-07-07T00:00:00Z> to see results before July 7, 2018.
+B<InvokedBefore>: Specify a timestamp to limit your results. For
+example, specify C<2018-07-07T00:00:00Z> to see a list of command
+executions from before July 7, 2018.
 
 =item *
 
-Status: Specify a valid command status to see a list of all command
+B<Status>: Specify a valid command status to see a list of all command
 executions with that status. Status values you can specify include:
 
 =over
 
 =item *
 
-Pending
+C<Pending>
 
 =item *
 
-InProgress
+C<InProgress>
 
 =item *
 
-Success
+C<Success>
 
 =item *
 
-Cancelled
+C<Cancelled>
 
 =item *
 
-Failed
+C<Failed>
 
 =item *
 
-TimedOut
+C<TimedOut>
 
 =item *
 
-Cancelling
+C<Cancelling>
 
 =back
 
 =item *
 
-DocumentName: The name of the SSM document for which you want to see
-command results.
-
-For example, specify C<AWS-RunPatchBaseline> to see command executions
-that used this SSM document to perform security patching operations on
-instances.
+B<DocumentName>: Specify name of the SSM document for which you want to
+see command execution results. For example, specify
+C<AWS-RunPatchBaseline> to see command executions that used this SSM
+document to perform security patching operations on instances.
 
 =item *
 
-ExecutionStage: An enum whose value can be either C<Executing> or
-C<Complete>.
+B<ExecutionStage>: Specify one of the following values:
 
 =over
 
 =item *
 
-Specify C<Executing> to see a list of command executions that are
-currently still running.
+C<Executing>: Returns a list of command executions that are currently
+still running.
 
 =item *
 
-Specify C<Complete> to see a list of command exeuctions that have
-already completed.
+C<Complete>: Returns a list of command executions that have already
+completed.
 
 =back
 

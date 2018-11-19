@@ -18,6 +18,8 @@ package Paws::SSM::StepExecution;
   has StepExecutionId => (is => 'ro', isa => 'Str');
   has StepName => (is => 'ro', isa => 'Str');
   has StepStatus => (is => 'ro', isa => 'Str');
+  has TargetLocation => (is => 'ro', isa => 'Paws::SSM::TargetLocation');
+  has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
   has TimeoutSeconds => (is => 'ro', isa => 'Int');
   has ValidNextSteps => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
@@ -151,6 +153,17 @@ value is 1.
 
   The execution status for this step. Valid values include: Pending,
 InProgress, Success, Cancelled, Failed, and TimedOut.
+
+
+=head2 TargetLocation => L<Paws::SSM::TargetLocation>
+
+  The combination of AWS Regions and accounts targeted by the current
+Automation execution.
+
+
+=head2 Targets => ArrayRef[L<Paws::SSM::Target>]
+
+  The targets for the step execution.
 
 
 =head2 TimeoutSeconds => Int

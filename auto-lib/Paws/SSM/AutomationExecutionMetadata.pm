@@ -2,6 +2,7 @@ package Paws::SSM::AutomationExecutionMetadata;
   use Moose;
   has AutomationExecutionId => (is => 'ro', isa => 'Str');
   has AutomationExecutionStatus => (is => 'ro', isa => 'Str');
+  has AutomationType => (is => 'ro', isa => 'Str');
   has CurrentAction => (is => 'ro', isa => 'Str');
   has CurrentStepName => (is => 'ro', isa => 'Str');
   has DocumentName => (is => 'ro', isa => 'Str');
@@ -65,6 +66,16 @@ Details about a specific Automation execution.
 
   The status of the execution. Valid values include: Running, Succeeded,
 Failed, Timed out, or Cancelled.
+
+
+=head2 AutomationType => Str
+
+  Use this filter with DescribeAutomationExecution. Specify either Local
+of CrossAccount. CrossAccount is an Automation that executes in
+multiple AWS Regions and accounts. For more information, see
+Concurrently Executing Automations in Multiple AWS Regions and Accounts
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation-multiple-accounts-and-regions.html)
+in the I<AWS Systems Manager User Guide>.
 
 
 =head2 CurrentAction => Str
