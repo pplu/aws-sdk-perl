@@ -14,6 +14,7 @@ package Paws::AutoScaling::CreateAutoScalingGroup;
   has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MaxSize => (is => 'ro', isa => 'Int', required => 1);
   has MinSize => (is => 'ro', isa => 'Int', required => 1);
+  has MixedInstancesPolicy => (is => 'ro', isa => 'Paws::AutoScaling::MixedInstancesPolicy');
   has NewInstancesProtectedFromScaleIn => (is => 'ro', isa => 'Bool');
   has PlacementGroup => (is => 'ro', isa => 'Str');
   has ServiceLinkedRoleARN => (is => 'ro', isa => 'Str');
@@ -165,13 +166,13 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 =head2 InstanceId => Str
 
 The ID of the instance used to create a launch configuration for the
-group. You must specify one of the following: an EC2 instance, a launch
-configuration, or a launch template.
+group. This parameter, a launch configuration, a launch template, or a
+mixed instances policy must be specified.
 
 When you specify an ID of an instance, Amazon EC2 Auto Scaling creates
 a new launch configuration and associates it with the group. This
 launch configuration derives its attributes from the specified
-instance, with the exception of the block device mapping.
+instance, except for the block device mapping.
 
 For more information, see Create an Auto Scaling Group Using an EC2
 Instance
@@ -182,17 +183,17 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 
 =head2 LaunchConfigurationName => Str
 
-The name of the launch configuration. You must specify one of the
-following: a launch configuration, a launch template, or an EC2
-instance.
+The name of the launch configuration. This parameter, a launch
+template, a mixed instances policy, or an EC2 instance must be
+specified.
 
 
 
 =head2 LaunchTemplate => L<Paws::AutoScaling::LaunchTemplateSpecification>
 
-The launch template to use to launch instances. You must specify one of
-the following: a launch template, a launch configuration, or an EC2
-instance.
+The launch template to use to launch instances. This parameter, a
+launch configuration, a mixed instances policy, or an EC2 instance must
+be specified.
 
 
 
@@ -226,6 +227,14 @@ The minimum size of the group.
 
 
 
+=head2 MixedInstancesPolicy => L<Paws::AutoScaling::MixedInstancesPolicy>
+
+The mixed instances policy to use to launch instances. This parameter,
+a launch template, a launch configuration, or an EC2 instance must be
+specified.
+
+
+
 =head2 NewInstancesProtectedFromScaleIn => Bool
 
 Indicates whether newly launched instances are protected from
@@ -235,8 +244,8 @@ termination by Auto Scaling when scaling in.
 
 =head2 PlacementGroup => Str
 
-The name of the placement group into which you'll launch your
-instances, if any. For more information, see Placement Groups
+The name of the placement group into which to launch your instances, if
+any. For more information, see Placement Groups
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 

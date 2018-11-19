@@ -56,7 +56,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/aut
 
 =head2 Filters => ArrayRef[L<Paws::AutoScaling::Filter>]
 
-A filter used to scope the tags to return.
+One or more filters to scope the tags to return. The maximum number of
+filters per filter type (for example, C<auto-scaling-group>) is 1000.
 
 
 

@@ -93,7 +93,7 @@ time can be up to one month in the future.
 time can be up to one month in the future.
 
 When C<StartTime> and C<EndTime> are specified with C<Recurrence>, they
-form the boundaries of when the recurring action will start and stop.
+form the boundaries of when the recurring action starts and stops.
 
 
 =head2 Time => Str

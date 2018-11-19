@@ -129,9 +129,9 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 The name or the Amazon Resource Name (ARN) of the instance profile
 associated with the IAM role for the instance.
 
-EC2 instances launched with an IAM role will automatically have AWS
-security credentials available. You can use IAM roles with Amazon EC2
-Auto Scaling to automatically enable applications running on your EC2
+EC2 instances launched with an IAM role automatically have AWS security
+credentials available. You can use IAM roles with Amazon EC2 Auto
+Scaling to automatically enable applications running on your EC2
 instances to securely access other AWS resources. For more information,
 see Launch Auto Scaling Instances with an IAM Role
 (http://docs.aws.amazon.com/autoscaling/ec2/userguide/us-iam-role.html)
@@ -155,8 +155,8 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 =head2 InstanceId => Str
 
 The ID of the instance to use to create the launch configuration. The
-new launch configuration derives attributes from the instance, with the
-exception of the block device mapping.
+new launch configuration derives attributes from the instance, except
+for the block device mapping.
 
 If you do not specify C<InstanceId>, you must specify both C<ImageId>
 and C<InstanceType>.
@@ -219,9 +219,9 @@ the scope of your AWS account.
 The tenancy of the instance. An instance with a tenancy of C<dedicated>
 runs on single-tenant hardware and can only be launched into a VPC.
 
-You must set the value of this parameter to C<dedicated> if want to
-launch Dedicated Instances into a shared tenancy VPC (VPC with instance
-placement tenancy attribute set to C<default>).
+To launch Dedicated Instances into a shared tenancy VPC (a VPC with the
+instance placement tenancy attribute set to C<default>), you must set
+the value of this parameter to C<dedicated>.
 
 If you specify this parameter, be sure to specify at least one subnet
 when you create your group.
@@ -245,8 +245,8 @@ The ID of the RAM disk associated with the AMI.
 One or more security groups with which to associate the instances.
 
 If your instances are launched in EC2-Classic, you can either specify
-security group names or the security group IDs. For more information
-about security groups for EC2-Classic, see Amazon EC2 Security Groups
+security group names or the security group IDs. For more information,
+see Amazon EC2 Security Groups
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 

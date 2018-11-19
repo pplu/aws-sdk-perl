@@ -15,6 +15,7 @@ package Paws::AutoScaling::AutoScalingGroup;
   has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MaxSize => (is => 'ro', isa => 'Int', required => 1);
   has MinSize => (is => 'ro', isa => 'Int', required => 1);
+  has MixedInstancesPolicy => (is => 'ro', isa => 'Paws::AutoScaling::MixedInstancesPolicy');
   has NewInstancesProtectedFromScaleIn => (is => 'ro', isa => 'Bool');
   has PlacementGroup => (is => 'ro', isa => 'Str');
   has ServiceLinkedRoleARN => (is => 'ro', isa => 'Str');
@@ -138,6 +139,11 @@ and C<ELB>.
   The minimum size of the group.
 
 
+=head2 MixedInstancesPolicy => L<Paws::AutoScaling::MixedInstancesPolicy>
+
+  The mixed instances policy for the group.
+
+
 =head2 NewInstancesProtectedFromScaleIn => Bool
 
   Indicates whether newly launched instances are protected from
@@ -146,8 +152,8 @@ termination by Auto Scaling when scaling in.
 
 =head2 PlacementGroup => Str
 
-  The name of the placement group into which you'll launch your
-instances, if any. For more information, see Placement Groups
+  The name of the placement group into which to launch your instances, if
+any. For more information, see Placement Groups
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 

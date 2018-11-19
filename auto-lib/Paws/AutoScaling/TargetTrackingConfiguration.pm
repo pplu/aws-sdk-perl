@@ -46,8 +46,8 @@ Represents a target tracking policy configuration.
 
 =head2 DisableScaleIn => Bool
 
-  Indicates whether scale in by the target tracking policy is disabled.
-If scale in is disabled, the target tracking policy won't remove
+  Indicates whether scaling in by the target tracking policy is disabled.
+If scaling in is disabled, the target tracking policy doesn't remove
 instances from the Auto Scaling group. Otherwise, the target tracking
 policy can remove instances from the Auto Scaling group. The default is
 disabled.

@@ -11,6 +11,7 @@ package Paws::AutoScaling::UpdateAutoScalingGroup;
   has LaunchTemplate => (is => 'ro', isa => 'Paws::AutoScaling::LaunchTemplateSpecification');
   has MaxSize => (is => 'ro', isa => 'Int');
   has MinSize => (is => 'ro', isa => 'Int');
+  has MixedInstancesPolicy => (is => 'ro', isa => 'Paws::AutoScaling::MixedInstancesPolicy');
   has NewInstancesProtectedFromScaleIn => (is => 'ro', isa => 'Bool');
   has PlacementGroup => (is => 'ro', isa => 'Str');
   has ServiceLinkedRoleARN => (is => 'ro', isa => 'Str');
@@ -131,15 +132,16 @@ and C<ELB>.
 
 =head2 LaunchConfigurationName => Str
 
-The name of the launch configuration. If you specify a launch
-configuration, you can't specify a launch template.
+The name of the launch configuration. If you specify this parameter,
+you can't specify a launch template or a mixed instances policy.
 
 
 
 =head2 LaunchTemplate => L<Paws::AutoScaling::LaunchTemplateSpecification>
 
-The launch template to use to specify the updates. If you specify a
-launch template, you can't specify a launch configuration.
+The launch template and version to use to specify the updates. If you
+specify this parameter, you can't specify a launch configuration or a
+mixed instances policy.
 
 
 
@@ -155,6 +157,14 @@ The minimum size of the Auto Scaling group.
 
 
 
+=head2 MixedInstancesPolicy => L<Paws::AutoScaling::MixedInstancesPolicy>
+
+The mixed instances policy to use to specify the updates. If you
+specify this parameter, you can't specify a launch configuration or a
+launch template.
+
+
+
 =head2 NewInstancesProtectedFromScaleIn => Bool
 
 Indicates whether newly launched instances are protected from
@@ -164,8 +174,8 @@ termination by Auto Scaling when scaling in.
 
 =head2 PlacementGroup => Str
 
-The name of the placement group into which you'll launch your
-instances, if any. For more information, see Placement Groups
+The name of the placement group into which to launch your instances, if
+any. For more information, see Placement Groups
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 

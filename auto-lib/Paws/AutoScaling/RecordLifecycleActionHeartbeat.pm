@@ -65,7 +65,8 @@ The ID of the instance.
 
 A token that uniquely identifies a specific lifecycle action associated
 with an instance. Amazon EC2 Auto Scaling sends this token to the
-notification target you specified when you created the lifecycle hook.
+notification target that you specified when you created the lifecycle
+hook.
 
 
 

@@ -55,8 +55,8 @@ or C<xvdh>).
   Suppresses a device mapping.
 
 If this parameter is true for the root device, the instance might fail
-the EC2 health check. Amazon EC2 Auto Scaling launches a replacement
-instance if the instance fails the health check.
+the EC2 health check. In that case, Amazon EC2 Auto Scaling launches a
+replacement instance.
 
 
 =head2 VirtualName => Str

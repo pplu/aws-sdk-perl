@@ -36,11 +36,11 @@ Describes the state of a target group.
 
 If you attach a target group to an existing Auto Scaling group, the
 initial state is C<Adding>. The state transitions to C<Added> after all
-Auto Scaling instances are registered with the target group. If ELB
-health checks are enabled, the state transitions to C<InService> after
-at least one Auto Scaling instance passes the health check. If EC2
-health checks are enabled instead, the target group remains in the
-C<Added> state.
+Auto Scaling instances are registered with the target group. If Elastic
+Load Balancing health checks are enabled, the state transitions to
+C<InService> after at least one Auto Scaling instance passes the health
+check. If EC2 health checks are enabled instead, the target group
+remains in the C<Added> state.
 
 =head1 ATTRIBUTES
 

@@ -118,18 +118,18 @@ Amazon EC2 Auto Scaling sends a message to the notification target.
 
 =head2 NotificationTargetARN => Str
 
-The ARN of the notification target that Amazon EC2 Auto Scaling will
-use to notify you when an instance is in the transition state for the
+The ARN of the notification target that Amazon EC2 Auto Scaling uses to
+notify you when an instance is in the transition state for the
 lifecycle hook. This target can be either an SQS queue or an SNS topic.
 If you specify an empty string, this overrides the current ARN.
 
 This operation uses the JSON format when sending notifications to an
-Amazon SQS queue, and an email key/value pair format when sending
+Amazon SQS queue, and an email key-value pair format when sending
 notifications to an Amazon SNS topic.
 
 When you specify a notification target, Amazon EC2 Auto Scaling sends
-it a test message. Test messages contains the following additional
-key/value pair: C<"Event": "autoscaling:TEST_NOTIFICATION">.
+it a test message. Test messages contain the following additional
+key-value pair: C<"Event": "autoscaling:TEST_NOTIFICATION">.
 
 
 

@@ -503,8 +503,11 @@ Amazon EC2 Auto Scaling
 
 Amazon EC2 Auto Scaling is designed to automatically launch or
 terminate EC2 instances based on user-defined policies, schedules, and
-health checks. Use this service in conjunction with the AWS Auto
-Scaling, Amazon CloudWatch, and Elastic Load Balancing services.
+health checks. Use this service with AWS Auto Scaling, Amazon
+CloudWatch, and Elastic Load Balancing.
+
+For more information, see the Amazon EC2 Auto Scaling User Guide
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01>
 
@@ -638,8 +641,8 @@ Each argument is described in detail in: L<Paws::AutoScaling::BatchPutScheduledU
 Returns: a L<Paws::AutoScaling::BatchPutScheduledUpdateGroupActionAnswer> instance
 
 Creates or updates one or more scheduled scaling actions for an Auto
-Scaling group. When updating a scheduled scaling action, if you leave a
-parameter unspecified, the corresponding value remains unchanged.
+Scaling group. If you leave a parameter unspecified when updating a
+scheduled scaling action, the corresponding value remains unchanged.
 
 
 =head2 CompleteLifecycleAction
@@ -735,6 +738,8 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 =item [LifecycleHookSpecificationList => ArrayRef[L<Paws::AutoScaling::LifecycleHookSpecification>]]
 
 =item [LoadBalancerNames => ArrayRef[Str|Undef]]
+
+=item [MixedInstancesPolicy => L<Paws::AutoScaling::MixedInstancesPolicy>]
 
 =item [NewInstancesProtectedFromScaleIn => Bool]
 
@@ -882,8 +887,8 @@ associated action.
 
 To remove instances from the Auto Scaling group before deleting it,
 call DetachInstances with the list of instances and the option to
-decrement the desired capacity so that Amazon EC2 Auto Scaling does not
-launch replacement instances.
+decrement the desired capacity. This ensures that Amazon EC2 Auto
+Scaling does not launch replacement instances.
 
 To terminate all instances before deleting the Auto Scaling group, call
 UpdateAutoScalingGroup and set the minimum size and desired capacity of
@@ -1188,8 +1193,8 @@ Returns: a L<Paws::AutoScaling::DescribeLoadBalancersResponse> instance
 
 Describes the load balancers for the specified Auto Scaling group.
 
-Note that this operation describes only Classic Load Balancers. If you
-have Application Load Balancers, use DescribeLoadBalancerTargetGroups
+This operation describes only Classic Load Balancers. If you have
+Application Load Balancers, use DescribeLoadBalancerTargetGroups
 instead.
 
 
@@ -1228,8 +1233,8 @@ Returns: a L<Paws::AutoScaling::DescribeMetricCollectionTypesAnswer> instance
 
 Describes the available CloudWatch metrics for Amazon EC2 Auto Scaling.
 
-Note that the C<GroupStandbyInstances> metric is not returned by
-default. You must explicitly request this metric when calling
+The C<GroupStandbyInstances> metric is not returned by default. You
+must explicitly request this metric when calling
 EnableMetricsCollection.
 
 
@@ -1391,6 +1396,11 @@ Returns: a L<Paws::AutoScaling::DescribeTerminationPolicyTypesAnswer> instance
 Describes the termination policies supported by Amazon EC2 Auto
 Scaling.
 
+For more information, see Controlling Which Auto Scaling Instances
+Terminate During Scale In
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
+
 
 =head2 DetachInstances
 
@@ -1447,14 +1457,13 @@ Returns: a L<Paws::AutoScaling::DetachLoadBalancersResultType> instance
 Detaches one or more Classic Load Balancers from the specified Auto
 Scaling group.
 
-Note that this operation detaches only Classic Load Balancers. If you
-have Application Load Balancers, use DetachLoadBalancerTargetGroups
-instead.
+This operation detaches only Classic Load Balancers. If you have
+Application Load Balancers, use DetachLoadBalancerTargetGroups instead.
 
 When you detach a load balancer, it enters the C<Removing> state while
 deregistering the instances in the group. When all instances are
 deregistered, then you can no longer describe the load balancer using
-DescribeLoadBalancers. Note that the instances remain running.
+DescribeLoadBalancers. The instances remain running.
 
 
 =head2 DetachLoadBalancerTargetGroups
@@ -1617,11 +1626,11 @@ Each argument is described in detail in: L<Paws::AutoScaling::PutLifecycleHook>
 Returns: a L<Paws::AutoScaling::PutLifecycleHookAnswer> instance
 
 Creates or updates a lifecycle hook for the specified Auto Scaling
-Group.
+group.
 
-A lifecycle hook tells Amazon EC2 Auto Scaling that you want to perform
-an action on an instance that is not actively in service; for example,
-either when the instance launches or before the instance terminates.
+A lifecycle hook tells Amazon EC2 Auto Scaling to perform an action on
+an instance that is not actively in service; for example, either when
+the instance launches or before the instance terminates.
 
 This step is a part of the procedure for adding a lifecycle hook to an
 Auto Scaling group:
@@ -1692,7 +1701,7 @@ delivered to an endpoint such as a web server or an email address.
 
 This configuration overwrites any existing configuration.
 
-For more information see Getting SNS Notifications When Your Auto
+For more information, see Getting SNS Notifications When Your Auto
 Scaling Group Scales
 (http://docs.aws.amazon.com/autoscaling/ec2/userguide/ASGettingNotifications.html)
 in the I<Auto Scaling User Guide>.
@@ -1734,9 +1743,9 @@ Each argument is described in detail in: L<Paws::AutoScaling::PutScalingPolicy>
 Returns: a L<Paws::AutoScaling::PolicyARNType> instance
 
 Creates or updates a policy for an Auto Scaling group. To update an
-existing policy, use the existing policy name and set the parameters
-you want to change. Any existing parameter not changed in an update to
-an existing policy is not changed in this update request.
+existing policy, use the existing policy name and set the parameters to
+change. Any existing parameter not changed in an update to an existing
+policy is not changed in this update request.
 
 If you exceed your maximum limit of step adjustments, which by default
 is 20 per region, the call fails. For information about updating this
@@ -1775,8 +1784,8 @@ Each argument is described in detail in: L<Paws::AutoScaling::PutScheduledUpdate
 Returns: nothing
 
 Creates or updates a scheduled scaling action for an Auto Scaling
-group. When updating a scheduled scaling action, if you leave a
-parameter unspecified, the corresponding value remains unchanged.
+group. If you leave a parameter unspecified when updating a scheduled
+scaling action, the corresponding value remains unchanged.
 
 For more information, see Scheduled Scaling
 (http://docs.aws.amazon.com/autoscaling/ec2/userguide/schedule_time.html)
@@ -1960,8 +1969,8 @@ Returns: nothing
 Suspends the specified automatic scaling processes, or all processes,
 for the specified Auto Scaling group.
 
-Note that if you suspend either the C<Launch> or C<Terminate> process
-types, it can prevent other process types from functioning properly.
+If you suspend either the C<Launch> or C<Terminate> process types, it
+can prevent other process types from functioning properly.
 
 To resume processes that have been suspended, use ResumeProcesses.
 
@@ -2016,6 +2025,8 @@ terminated immediately.
 
 =item [MinSize => Int]
 
+=item [MixedInstancesPolicy => L<Paws::AutoScaling::MixedInstancesPolicy>]
+
 =item [NewInstancesProtectedFromScaleIn => Bool]
 
 =item [PlacementGroup => Str]
@@ -2041,9 +2052,9 @@ affected.
 
 To update an Auto Scaling group with a launch configuration with
 C<InstanceMonitoring> set to C<false>, you must first disable the
-collection of group metrics. Otherwise, you will get an error. If you
-have previously enabled the collection of group metrics, you can
-disable it using DisableMetricsCollection.
+collection of group metrics. Otherwise, you get an error. If you have
+previously enabled the collection of group metrics, you can disable it
+using DisableMetricsCollection.
 
 Note the following:
 

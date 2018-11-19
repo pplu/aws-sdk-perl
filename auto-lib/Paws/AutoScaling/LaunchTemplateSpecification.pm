@@ -33,7 +33,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head1 DESCRIPTION
 
-Describes a launch template.
+Describes a launch template and the launch template version.
+
+The launch template that is specified must be configured for use with
+an Auto Scaling group. For more information, see Creating a Launch
+Template for an Auto Scaling group
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-template.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 =head1 ATTRIBUTES
 
