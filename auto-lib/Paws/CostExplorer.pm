@@ -20,6 +20,11 @@ package Paws::CostExplorer;
     my $call_object = $self->new_with_coercions('Paws::CostExplorer::GetCostAndUsage', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetCostForecast {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CostExplorer::GetCostForecast', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetDimensionValues {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CostExplorer::GetDimensionValues', @_);
@@ -48,7 +53,7 @@ package Paws::CostExplorer;
   
 
 
-  sub operations { qw/GetCostAndUsage GetDimensionValues GetReservationCoverage GetReservationPurchaseRecommendation GetReservationUtilization GetTags / }
+  sub operations { qw/GetCostAndUsage GetCostForecast GetDimensionValues GetReservationCoverage GetReservationPurchaseRecommendation GetReservationUtilization GetTags / }
 
 1;
 
@@ -135,6 +140,32 @@ dimensions, see the C< GetDimensionValues
 (http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetDimensionValues.html)
 > operation. Master accounts in an organization in AWS Organizations
 have access to all member accounts.
+
+
+=head2 GetCostForecast
+
+=over
+
+=item Granularity => Str
+
+=item Metric => Str
+
+=item TimePeriod => L<Paws::CostExplorer::DateInterval>
+
+=item [Filter => L<Paws::CostExplorer::Expression>]
+
+=item [PredictionIntervalLevel => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CostExplorer::GetCostForecast>
+
+Returns: a L<Paws::CostExplorer::GetCostForecastResponse> instance
+
+Retrieves a forecast for how much Amazon Web Services predicts that you
+will spend over the forecast time period that you select, based on your
+past costs.
 
 
 =head2 GetDimensionValues
