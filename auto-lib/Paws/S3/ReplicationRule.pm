@@ -38,7 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Replica
 
 =head1 DESCRIPTION
 
-Container for information about a particular replication rule.
+A container for information about a specific replication rule.
 
 =head1 ATTRIBUTES
 
@@ -50,7 +50,7 @@ Container for information about a particular replication rule.
 
 =head2 B<REQUIRED> Destination => L<Paws::S3::Destination>
 
-  Container for replication destination information.
+  A container for information about the replication destination.
 
 
 =head2 Filter => L<Paws::S3::ReplicationRuleFilter>
@@ -60,30 +60,29 @@ Container for information about a particular replication rule.
 
 =head2 ID => Str
 
-  Unique identifier for the rule. The value cannot be longer than 255
-characters.
+  A unique identifier for the rule. The maximum value is 255 characters.
 
 
 =head2 Prefix => Str
 
-  Object keyname prefix identifying one or more objects to which the rule
-applies. Maximum prefix length can be up to 1,024 characters.
+  An object keyname prefix that identifies the object or objects to which
+the rule applies. The maximum prefix length is 1,024 characters.
 
 
 =head2 Priority => Int
 
   The priority associated with the rule. If you specify multiple rules in
-a replication configuration, then Amazon S3 applies rule priority in
-the event there are conflicts (two or more rules identify the same
-object based on filter specified). The rule with higher priority takes
-precedence. For example,
+a replication configuration, Amazon S3 prioritizes the rules to prevent
+conflicts when filtering. If two or more rules identify the same object
+based on a specified filter, the rule with higher priority takes
+precedence. For example:
 
 =over
 
 =item *
 
 Same object quality prefix based filter criteria If prefixes you
-specified in multiple rules overlap.
+specified in multiple rules overlap
 
 =item *
 
@@ -92,25 +91,25 @@ rules
 
 =back
 
-For more information, see Cross-Region Replication (CRR) in the Amazon
-S3 Developer Guide.
+For more information, see Cross-Region Replication (CRR) in the
+I<Amazon S3 Developer Guide>.
 
 
 =head2 SourceSelectionCriteria => L<Paws::S3::SourceSelectionCriteria>
 
-  Container that describes additional filters in identifying source
-objects that you want to replicate. Currently, Amazon S3 supports only
-the filter that you can specify for objects created with server-side
-encryption using an AWS KMS-managed key. You can choose to enable or
-disable replication of these objects.
+  A container that describes additional filters for identifying the
+source objects that you want to replicate. You can choose to enable or
+disable the replication of these objects. Currently, Amazon S3 supports
+only the filter that you can specify for objects created with
+server-side encryption using an AWS KMS-Managed Key (SSE-KMS).
 
-if you want Amazon S3 to replicate objects created with server-side
-encryption using AWS KMS-managed keys.
+If you want Amazon S3 to replicate objects created with server-side
+encryption using AWS KMS-Managed Keys.
 
 
 =head2 B<REQUIRED> Status => Str
 
-  The rule is ignored if status is not Enabled.
+  If status isn't enabled, the rule is ignored.
 
 
 

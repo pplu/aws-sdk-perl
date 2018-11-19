@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::SSEKMS 
 
 =head1 DESCRIPTION
 
-Specifies the use of SSE-KMS to encrypt delievered Inventory reports.
+Specifies the use of SSE-KMS to encrypt delivered Inventory reports.
 
 =head1 ATTRIBUTES
 

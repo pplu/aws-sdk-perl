@@ -32,22 +32,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Replica
 
 =head1 DESCRIPTION
 
-Container for replication rules. You can add as many as 1,000 rules.
-Total replication configuration size can be up to 2 MB.
+A container for replication rules. You can add up to 1,000 rules. The
+maximum size of a replication configuration is 2 MB.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Role => Str
 
-  Amazon Resource Name (ARN) of an IAM role for Amazon S3 to assume when
-replicating the objects.
+  The Amazon Resource Name (ARN) of the AWS Identity and Access
+Management (IAM) role that Amazon S3 can assume when replicating the
+objects.
 
 
 =head2 B<REQUIRED> Rules => ArrayRef[L<Paws::S3::ReplicationRule>]
 
-  Container for one or more replication rules. Replication configuration
-must have at least one rule and can contain up to 1,000 rules.
+  A container for one or more replication rules. A replication
+configuration must have at least one rule and can contain a maximum of
+1,000 rules.
 
 
 

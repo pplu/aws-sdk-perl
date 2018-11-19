@@ -265,7 +265,7 @@ Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"O
 =head2 Tagging => Str
 
 The tag-set for the object. The tag-set must be encoded as URL Query
-parameters
+parameters. (For example, "Key1=Value1")
 
 
 

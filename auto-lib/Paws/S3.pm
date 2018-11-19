@@ -185,6 +185,11 @@ package Paws::S3;
     my $call_object = $self->new_with_coercions('Paws::S3::DeleteObjectTagging', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeletePublicAccessBlock {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::DeletePublicAccessBlock', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetBucketAccelerateConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::S3::GetBucketAccelerateConfiguration', @_);
@@ -255,6 +260,11 @@ package Paws::S3;
     my $call_object = $self->new_with_coercions('Paws::S3::GetBucketPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetBucketPolicyStatus {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::GetBucketPolicyStatus', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetBucketReplication {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::S3::GetBucketReplication', @_);
@@ -298,6 +308,11 @@ package Paws::S3;
   sub GetObjectTorrent {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::S3::GetObjectTorrent', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetPublicAccessBlock {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::GetPublicAccessBlock', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub HeadBucket {
@@ -460,6 +475,11 @@ package Paws::S3;
     my $call_object = $self->new_with_coercions('Paws::S3::PutObjectTagging', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutPublicAccessBlock {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::PutPublicAccessBlock', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RestoreObject {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::S3::RestoreObject', @_);
@@ -613,7 +633,7 @@ package Paws::S3;
   }
 
 
-  sub operations { qw/AbortMultipartUpload CompleteMultipartUpload CopyObject CreateBucket CreateMultipartUpload DeleteBucket DeleteBucketAnalyticsConfiguration DeleteBucketCors DeleteBucketEncryption DeleteBucketInventoryConfiguration DeleteBucketLifecycle DeleteBucketMetricsConfiguration DeleteBucketPolicy DeleteBucketReplication DeleteBucketTagging DeleteBucketWebsite DeleteObject DeleteObjects DeleteObjectTagging GetBucketAccelerateConfiguration GetBucketAcl GetBucketAnalyticsConfiguration GetBucketCors GetBucketEncryption GetBucketInventoryConfiguration GetBucketLifecycle GetBucketLifecycleConfiguration GetBucketLocation GetBucketLogging GetBucketMetricsConfiguration GetBucketNotification GetBucketNotificationConfiguration GetBucketPolicy GetBucketReplication GetBucketRequestPayment GetBucketTagging GetBucketVersioning GetBucketWebsite GetObject GetObjectAcl GetObjectTagging GetObjectTorrent HeadBucket HeadObject ListBucketAnalyticsConfigurations ListBucketInventoryConfigurations ListBucketMetricsConfigurations ListBuckets ListMultipartUploads ListObjects ListObjectsV2 ListObjectVersions ListParts PutBucketAccelerateConfiguration PutBucketAcl PutBucketAnalyticsConfiguration PutBucketCors PutBucketEncryption PutBucketInventoryConfiguration PutBucketLifecycle PutBucketLifecycleConfiguration PutBucketLogging PutBucketMetricsConfiguration PutBucketNotification PutBucketNotificationConfiguration PutBucketPolicy PutBucketReplication PutBucketRequestPayment PutBucketTagging PutBucketVersioning PutBucketWebsite PutObject PutObjectAcl PutObjectTagging RestoreObject SelectObjectContent UploadPart UploadPartCopy / }
+  sub operations { qw/AbortMultipartUpload CompleteMultipartUpload CopyObject CreateBucket CreateMultipartUpload DeleteBucket DeleteBucketAnalyticsConfiguration DeleteBucketCors DeleteBucketEncryption DeleteBucketInventoryConfiguration DeleteBucketLifecycle DeleteBucketMetricsConfiguration DeleteBucketPolicy DeleteBucketReplication DeleteBucketTagging DeleteBucketWebsite DeleteObject DeleteObjects DeleteObjectTagging DeletePublicAccessBlock GetBucketAccelerateConfiguration GetBucketAcl GetBucketAnalyticsConfiguration GetBucketCors GetBucketEncryption GetBucketInventoryConfiguration GetBucketLifecycle GetBucketLifecycleConfiguration GetBucketLocation GetBucketLogging GetBucketMetricsConfiguration GetBucketNotification GetBucketNotificationConfiguration GetBucketPolicy GetBucketPolicyStatus GetBucketReplication GetBucketRequestPayment GetBucketTagging GetBucketVersioning GetBucketWebsite GetObject GetObjectAcl GetObjectTagging GetObjectTorrent GetPublicAccessBlock HeadBucket HeadObject ListBucketAnalyticsConfigurations ListBucketInventoryConfigurations ListBucketMetricsConfigurations ListBuckets ListMultipartUploads ListObjects ListObjectsV2 ListObjectVersions ListParts PutBucketAccelerateConfiguration PutBucketAcl PutBucketAnalyticsConfiguration PutBucketCors PutBucketEncryption PutBucketInventoryConfiguration PutBucketLifecycle PutBucketLifecycleConfiguration PutBucketLogging PutBucketMetricsConfiguration PutBucketNotification PutBucketNotificationConfiguration PutBucketPolicy PutBucketReplication PutBucketRequestPayment PutBucketTagging PutBucketVersioning PutBucketWebsite PutObject PutObjectAcl PutObjectTagging PutPublicAccessBlock RestoreObject SelectObjectContent UploadPart UploadPartCopy / }
 
 1;
 
@@ -936,7 +956,7 @@ Each argument is described in detail in: L<Paws::S3::DeleteBucketCors>
 
 Returns: nothing
 
-Deletes the cors configuration information set for the bucket.
+Deletes the CORS configuration information set for the bucket.
 
 
 =head2 DeleteBucketEncryption
@@ -1038,7 +1058,9 @@ Each argument is described in detail in: L<Paws::S3::DeleteBucketReplication>
 
 Returns: nothing
 
-Deletes the replication configuration from the bucket.
+Deletes the replication configuration from the bucket. For information
+about replication configuration, see Cross-Region Replication (CRR) in
+the I<Amazon S3 Developer Guide>.
 
 
 =head2 DeleteBucketTagging
@@ -1146,6 +1168,22 @@ Returns: a L<Paws::S3::DeleteObjectTaggingOutput> instance
 Removes the tag-set from an existing object.
 
 
+=head2 DeletePublicAccessBlock
+
+=over
+
+=item Bucket => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::S3::DeletePublicAccessBlock>
+
+Returns: nothing
+
+Removes the Public Access Block configuration for an Amazon S3 bucket.
+
+
 =head2 GetBucketAccelerateConfiguration
 
 =over
@@ -1210,7 +1248,7 @@ Each argument is described in detail in: L<Paws::S3::GetBucketCors>
 
 Returns: a L<Paws::S3::GetBucketCorsOutput> instance
 
-Returns the cors configuration for the bucket.
+Returns the CORS configuration for the bucket.
 
 
 =head2 GetBucketEncryption
@@ -1381,6 +1419,23 @@ Returns: a L<Paws::S3::GetBucketPolicyOutput> instance
 Returns the policy of a specified bucket.
 
 
+=head2 GetBucketPolicyStatus
+
+=over
+
+=item Bucket => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::S3::GetBucketPolicyStatus>
+
+Returns: a L<Paws::S3::GetBucketPolicyStatusOutput> instance
+
+Retrieves the policy status for an Amazon S3 bucket, indicating whether
+the bucket is public.
+
+
 =head2 GetBucketReplication
 
 =over
@@ -1395,6 +1450,10 @@ Each argument is described in detail in: L<Paws::S3::GetBucketReplication>
 Returns: a L<Paws::S3::GetBucketReplicationOutput> instance
 
 Returns the replication configuration of a bucket.
+
+It can take a while to propagate the put or delete a replication
+configuration to all Amazon S3 systems. Therefore, a get request soon
+after put or delete can return a wrong result.
 
 
 =head2 GetBucketRequestPayment
@@ -1573,6 +1632,23 @@ Each argument is described in detail in: L<Paws::S3::GetObjectTorrent>
 Returns: a L<Paws::S3::GetObjectTorrentOutput> instance
 
 Return torrent files from a bucket.
+
+
+=head2 GetPublicAccessBlock
+
+=over
+
+=item Bucket => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::S3::GetPublicAccessBlock>
+
+Returns: a L<Paws::S3::GetPublicAccessBlockOutput> instance
+
+Retrieves the Public Access Block configuration for an Amazon S3
+bucket.
 
 
 =head2 HeadBucket
@@ -1951,7 +2027,7 @@ Each argument is described in detail in: L<Paws::S3::PutBucketCors>
 
 Returns: nothing
 
-Sets the cors configuration for a bucket.
+Sets the CORS configuration for a bucket.
 
 
 =head2 PutBucketEncryption
@@ -2172,9 +2248,9 @@ Each argument is described in detail in: L<Paws::S3::PutBucketReplication>
 
 Returns: nothing
 
-Creates a new replication configuration (or replaces an existing one,
-if present). For more information, see Cross-Region Replication (CRR)
-in the Amazon S3 Developer Guide.
+Creates a replication configuration or replaces an existing one. For
+more information, see Cross-Region Replication (CRR) in the I<Amazon S3
+Developer Guide>.
 
 
 =head2 PutBucketRequestPayment
@@ -2404,6 +2480,27 @@ Each argument is described in detail in: L<Paws::S3::PutObjectTagging>
 Returns: a L<Paws::S3::PutObjectTaggingOutput> instance
 
 Sets the supplied tag-set to an object that already exists in a bucket
+
+
+=head2 PutPublicAccessBlock
+
+=over
+
+=item Bucket => Str
+
+=item PublicAccessBlockConfiguration => L<Paws::S3::PublicAccessBlockConfiguration>
+
+=item [ContentMD5 => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::S3::PutPublicAccessBlock>
+
+Returns: nothing
+
+Creates or modifies the Public Access Block configuration for an Amazon
+S3 bucket.
 
 
 =head2 RestoreObject

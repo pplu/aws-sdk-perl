@@ -40,8 +40,8 @@ Specifies whether Amazon S3 should replicate delete makers.
 
   The status of the delete marker replication.
 
-In the current implementation, Amazon S3 does not replicate the delete
-markers. Therefore, the status must be C<Disabled>.
+In the current implementation, Amazon S3 doesn't replicate the delete
+markers. The status must be C<Disabled>.
 
 
 

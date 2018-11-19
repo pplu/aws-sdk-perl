@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::S3KeyFi
 
 =head1 DESCRIPTION
 
-Container for object key name prefix and suffix filtering rules.
+A container for object key name prefix and suffix filtering rules.
 
 =head1 ATTRIBUTES
 

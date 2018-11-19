@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::SourceS
 
 =head1 DESCRIPTION
 
-Container for filters that define which source objects should be
+A container for filters that define which source objects should be
 replicated.
 
 =head1 ATTRIBUTES
@@ -39,9 +39,9 @@ replicated.
 
 =head2 SseKmsEncryptedObjects => L<Paws::S3::SseKmsEncryptedObjects>
 
-  Container for filter information of selection of KMS Encrypted S3
-objects. The element is required if you include
-C<SourceSelectionCriteria> in the replication configuration.
+  A container for filter information for the selection of S3 objects
+encrypted with AWS KMS. If you include C<SourceSelectionCriteria> in
+the replication configuration, this element is required.
 
 
 

@@ -33,29 +33,29 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Replica
 
 =head1 DESCRIPTION
 
-Filter that identifies subset of objects to which the replication rule
-applies. A C<Filter> must specify exactly one C<Prefix>, C<Tag>, or an
-C<And> child element.
+A filter that identifies the subset of objects to which the replication
+rule applies. A C<Filter> must specify exactly one C<Prefix>, C<Tag>,
+or an C<And> child element.
 
 =head1 ATTRIBUTES
 
 
 =head2 And => L<Paws::S3::ReplicationRuleAndOperator>
 
-  Container for specifying rule filters. These filters determine the
-subset of objects to which the rule applies. The element is required
+  A container for specifying rule filters. The filters determine the
+subset of objects to which the rule applies. This element is required
 only if you specify more than one filter. For example:
 
 =over
 
 =item *
 
-You specify both a C<Prefix> and a C<Tag> filters. Then you wrap these
+If you specify both a C<Prefix> and a C<Tag> filter, wrap these filters
 in an C<And> tag.
 
 =item *
 
-You specify filter based on multiple tags. Then you wrap the C<Tag>
+If you specify a filter based on multiple tags, wrap the C<Tag>
 elements in an C<And> tag.
 
 =back
@@ -64,15 +64,15 @@ elements in an C<And> tag.
 
 =head2 Prefix => Str
 
-  Object keyname prefix that identifies subset of objects to which the
-rule applies.
+  An object keyname prefix that identifies the subset of objects to which
+the rule applies.
 
 
 =head2 Tag => L<Paws::S3::Tag>
 
-  Container for specifying a tag key and value.
+  A container for specifying a tag key and value.
 
-The rule applies only to objects having the tag in its tagset.
+The rule applies only to objects that have the tag in their tag set.
 
 
 

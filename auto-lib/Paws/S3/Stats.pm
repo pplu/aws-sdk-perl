@@ -40,17 +40,17 @@ This class has no description
 
 =head2 BytesProcessed => Int
 
-  Total number of uncompressed object bytes processed.
+  The total number of uncompressed object bytes processed.
 
 
 =head2 BytesReturned => Int
 
-  Total number of bytes of records payload data returned.
+  The total number of bytes of records payload data returned.
 
 
 =head2 BytesScanned => Int
 
-  Total number of object bytes scanned.
+  The total number of object bytes scanned.
 
 
 

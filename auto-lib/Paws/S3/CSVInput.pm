@@ -51,13 +51,13 @@ this value to TRUE may lower performance.
 
 =head2 Comments => Str
 
-  Single character used to indicate a row should be ignored when present
-at the start of a row.
+  The single character used to indicate a row should be ignored when
+present at the start of a row.
 
 
 =head2 FieldDelimiter => Str
 
-  Value used to separate individual fields in a record.
+  The value used to separate individual fields in a record.
 
 
 =head2 FileHeaderInfo => Str
@@ -72,13 +72,13 @@ at the start of a row.
 
 =head2 QuoteEscapeCharacter => Str
 
-  Single character used for escaping the quote character inside an
+  The single character used for escaping the quote character inside an
 already escaped value.
 
 
 =head2 RecordDelimiter => Str
 
-  Value used to separate individual records.
+  The value used to separate individual records.
 
 
 
