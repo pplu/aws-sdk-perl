@@ -151,7 +151,8 @@ Cannot end with a hyphen or contain two consecutive hyphens.
 Settings for the task, such as target metadata settings. For a complete
 list of task settings, see Task Settings for AWS Database Migration
 Service Tasks
-(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html).
+(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html)
+in the I<AWS Database Migration User Guide.>
 
 
 

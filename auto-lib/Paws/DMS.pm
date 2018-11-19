@@ -575,9 +575,9 @@ service supports homogeneous migrations such as Oracle to Oracle, as
 well as heterogeneous migrations between different database platforms,
 such as Oracle to MySQL or SQL Server to PostgreSQL.
 
-For more information about AWS DMS, see the AWS DMS user guide at What
-Is AWS Database Migration Service?
-(http://docs.aws.amazon.com/dms/latest/userguide/Welcome.html)
+For more information about AWS DMS, see What Is AWS Database Migration
+Service? (http://docs.aws.amazon.com/dms/latest/userguide/Welcome.html)
+in the I<AWS Database Migration User Guide.>
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01>
 
@@ -624,9 +624,13 @@ for DMS.
 
 =item [DynamoDbSettings => L<Paws::DMS::DynamoDbSettings>]
 
+=item [ElasticsearchSettings => L<Paws::DMS::ElasticsearchSettings>]
+
 =item [ExternalTableDefinition => Str]
 
 =item [ExtraConnectionAttributes => Str]
+
+=item [KinesisSettings => L<Paws::DMS::KinesisSettings>]
 
 =item [KmsKeyId => Str]
 
@@ -701,7 +705,7 @@ generated from all AWS DMS sources belonging to your customer account.
 For more information about AWS DMS events, see Working with Events and
 Notifications
 (http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html) in
-the AWS Database MIgration Service User Guide.
+the I<AWS Database Migration Service User Guide.>
 
 
 =head2 CreateReplicationInstance
@@ -717,6 +721,8 @@ the AWS Database MIgration Service User Guide.
 =item [AutoMinorVersionUpgrade => Bool]
 
 =item [AvailabilityZone => Str]
+
+=item [DnsNameServers => Str]
 
 =item [EngineVersion => Str]
 
@@ -1027,7 +1033,7 @@ Lists categories for all event source types, or, if specified, for a
 specified source type. You can see a list of the event categories and
 source types in Working with Events and Notifications
 (http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html) in
-the AWS Database Migration Service User Guide.
+the I<AWS Database Migration Service User Guide.>
 
 
 =head2 DescribeEvents
@@ -1062,7 +1068,8 @@ Returns: a L<Paws::DMS::DescribeEventsResponse> instance
 Lists events for a given source identifier and source type. You can
 also specify a start and end time. For more information on AWS DMS
 events, see Working with Events and Notifications
-(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html).
+(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html) in
+the I<AWS Database Migration User Guide.>
 
 
 =head2 DescribeEventSubscriptions
@@ -1330,6 +1337,8 @@ Lists all tags for an AWS DMS resource.
 
 =item [DynamoDbSettings => L<Paws::DMS::DynamoDbSettings>]
 
+=item [ElasticsearchSettings => L<Paws::DMS::ElasticsearchSettings>]
+
 =item [EndpointIdentifier => Str]
 
 =item [EndpointType => Str]
@@ -1339,6 +1348,8 @@ Lists all tags for an AWS DMS resource.
 =item [ExternalTableDefinition => Str]
 
 =item [ExtraConnectionAttributes => Str]
+
+=item [KinesisSettings => L<Paws::DMS::KinesisSettings>]
 
 =item [MongoDbSettings => L<Paws::DMS::MongoDbSettings>]
 
@@ -1482,9 +1493,9 @@ Modifies the specified replication task.
 You can't modify the task endpoints. The task must be stopped before
 you can modify it.
 
-For more information about AWS DMS tasks, see the AWS DMS user guide at
-Working with Migration Tasks
-(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html)
+For more information about AWS DMS tasks, see Working with Migration
+Tasks (http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html)
+in the I<AWS Database Migration Service User Guide>.
 
 
 =head2 RebootReplicationInstance
@@ -1588,9 +1599,9 @@ Returns: a L<Paws::DMS::StartReplicationTaskResponse> instance
 
 Starts the replication task.
 
-For more information about AWS DMS tasks, see the AWS DMS user guide at
-Working with Migration Tasks
-(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html)
+For more information about AWS DMS tasks, see Working with Migration
+Tasks (http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html)
+in the I<AWS Database Migration Service User Guide.>
 
 
 =head2 StartReplicationTaskAssessment

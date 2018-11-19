@@ -5,11 +5,13 @@ package Paws::DMS::CreateEndpoint;
   has DatabaseName => (is => 'ro', isa => 'Str');
   has DmsTransferSettings => (is => 'ro', isa => 'Paws::DMS::DmsTransferSettings');
   has DynamoDbSettings => (is => 'ro', isa => 'Paws::DMS::DynamoDbSettings');
+  has ElasticsearchSettings => (is => 'ro', isa => 'Paws::DMS::ElasticsearchSettings');
   has EndpointIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has EndpointType => (is => 'ro', isa => 'Str', required => 1);
   has EngineName => (is => 'ro', isa => 'Str', required => 1);
   has ExternalTableDefinition => (is => 'ro', isa => 'Str');
   has ExtraConnectionAttributes => (is => 'ro', isa => 'Str');
+  has KinesisSettings => (is => 'ro', isa => 'Paws::DMS::KinesisSettings');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has MongoDbSettings => (is => 'ro', isa => 'Paws::DMS::MongoDbSettings');
   has Password => (is => 'ro', isa => 'Str');
@@ -59,10 +61,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ServiceAccessRoleArn => 'MyString',
 
       },                                    # OPTIONAL
+      ElasticsearchSettings => {
+        EndpointUri             => 'MyString',
+        ServiceAccessRoleArn    => 'MyString',
+        ErrorRetryDuration      => 1,            # OPTIONAL
+        FullLoadErrorPercentage => 1,            # OPTIONAL
+      },    # OPTIONAL
       ExternalTableDefinition   => 'MyString',    # OPTIONAL
       ExtraConnectionAttributes => 'MyString',    # OPTIONAL
-      KmsKeyId                  => 'MyString',    # OPTIONAL
-      MongoDbSettings           => {
+      KinesisSettings           => {
+        MessageFormat        => 'json',           # values: json; OPTIONAL
+        ServiceAccessRoleArn => 'MyString',
+        StreamArn            => 'MyString',
+      },    # OPTIONAL
+      KmsKeyId        => 'MyString',    # OPTIONAL
+      MongoDbSettings => {
         AuthMechanism =>
           'default',    # values: default, mongodb_cr, scram_sha_1; OPTIONAL
         AuthSource        => 'MyString',
@@ -126,46 +139,56 @@ The name of the endpoint database.
 
 =head2 DmsTransferSettings => L<Paws::DMS::DmsTransferSettings>
 
-The settings in JSON format for the DMS Transfer type source endpoint.
+The settings in JSON format for the DMS transfer type of source
+endpoint.
 
-Attributes include:
+Possible attributes include the following:
 
 =over
 
 =item *
 
-serviceAccessRoleArn - The IAM role that has permission to access the
-Amazon S3 bucket.
+C<serviceAccessRoleArn> - The IAM role that has permission to access
+the Amazon S3 bucket.
 
 =item *
 
-bucketName - The name of the S3 bucket to use.
+C<bucketName> - The name of the S3 bucket to use.
 
 =item *
 
-compressionType - An optional parameter to use GZIP to compress the
-target files. Set to NONE (the default) or do not use to leave the
-files uncompressed.
+C<compressionType> - An optional parameter to use GZIP to compress the
+target files. To use GZIP, set this value to C<NONE> (the default). To
+keep the files uncompressed, don't use this value.
 
 =back
 
-Shorthand syntax: ServiceAccessRoleArn=string
-,BucketName=string,CompressionType=string
+Shorthand syntax for these attributes is as follows:
+C<ServiceAccessRoleArn=string,BucketName=string,CompressionType=string>
 
-JSON syntax:
-
-{ "ServiceAccessRoleArn": "string", "BucketName": "string",
-"CompressionType": "none"|"gzip" }
+JSON syntax for these attributes is as follows: C<{
+"ServiceAccessRoleArn": "string", "BucketName": "string",
+"CompressionType": "none"|"gzip" }>
 
 
 
 =head2 DynamoDbSettings => L<Paws::DMS::DynamoDbSettings>
 
 Settings in JSON format for the target Amazon DynamoDB endpoint. For
-more information about the available settings, see the B<Using Object
-Mapping to Migrate Data to DynamoDB> section at Using an Amazon
-DynamoDB Database as a Target for AWS Database Migration Service
-(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html).
+more information about the available settings, see Using Object Mapping
+to Migrate Data to DynamoDB
+(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html)
+in the I<AWS Database Migration Service User Guide.>
+
+
+
+=head2 ElasticsearchSettings => L<Paws::DMS::ElasticsearchSettings>
+
+Settings in JSON format for the target Elasticsearch endpoint. For more
+information about the available settings, see Extra Connection
+Attributes When Using Elasticsearch as a Target for AWS DMS
+(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Elasticsearch.html#CHAP_Target.Elasticsearch.Configuration)
+in the I<AWS Database Migration User Guide.>
 
 
 
@@ -186,9 +209,10 @@ Valid values are: C<"source">, C<"target">
 =head2 B<REQUIRED> EngineName => Str
 
 The type of engine for the endpoint. Valid values, depending on the
-EndPointType, include mysql, oracle, postgres, mariadb, aurora,
-aurora-postgresql, redshift, s3, db2, azuredb, sybase, dynamodb,
-mongodb, and sqlserver.
+C<EndPointType> value, include C<mysql>, C<oracle>, C<postgres>,
+C<mariadb>, C<aurora>, C<aurora-postgresql>, C<redshift>, C<s3>,
+C<db2>, C<azuredb>, C<sybase>, C<dynamodb>, C<mongodb>, and
+C<sqlserver>.
 
 
 
@@ -204,30 +228,40 @@ Additional attributes associated with the connection.
 
 
 
+=head2 KinesisSettings => L<Paws::DMS::KinesisSettings>
+
+Settings in JSON format for the target Amazon Kinesis Data Streams
+endpoint. For more information about the available settings, see Using
+Object Mapping to Migrate Data to a Kinesis Data Stream
+(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html#CHAP_Target.Kinesis.ObjectMapping
+) in the I<AWS Database Migration User Guide.>
+
+
+
 =head2 KmsKeyId => Str
 
-The KMS key identifier that will be used to encrypt the connection
-parameters. If you do not specify a value for the KmsKeyId parameter,
-then AWS DMS will use your default encryption key. AWS KMS creates the
-default encryption key for your AWS account. Your AWS account has a
-different default encryption key for each AWS region.
+The AWS KMS key identifier to use to encrypt the connection parameters.
+If you don't specify a value for the C<KmsKeyId> parameter, then AWS
+DMS uses your default encryption key. AWS KMS creates the default
+encryption key for your AWS account. Your AWS account has a different
+default encryption key for each AWS Region.
 
 
 
 =head2 MongoDbSettings => L<Paws::DMS::MongoDbSettings>
 
 Settings in JSON format for the source MongoDB endpoint. For more
-information about the available settings, see the B<Configuration
-Properties When Using MongoDB as a Source for AWS Database Migration
-Service> section at Using MongoDB as a Target for AWS Database
+information about the available settings, see the configuration
+properties section in Using MongoDB as a Target for AWS Database
 Migration Service
-(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html).
+(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html)
+in the I<AWS Database Migration Service User Guide.>
 
 
 
 =head2 Password => Str
 
-The password to be used to login to the endpoint database.
+The password to be used to log in to the endpoint database.
 
 
 
@@ -240,10 +274,10 @@ The port used by the endpoint database.
 =head2 S3Settings => L<Paws::DMS::S3Settings>
 
 Settings in JSON format for the target Amazon S3 endpoint. For more
-information about the available settings, see the B<Extra Connection
-Attributes> section at Using Amazon S3 as a Target for AWS Database
-Migration Service
-(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html).
+information about the available settings, see Extra Connection
+Attributes When Using Amazon S3 as a Target for AWS DMS
+(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html#CHAP_Target.S3.Configuring)
+in the I<AWS Database Migration Service User Guide.>
 
 
 
@@ -255,19 +289,16 @@ The name of the server where the endpoint database resides.
 
 =head2 ServiceAccessRoleArn => Str
 
-The Amazon Resource Name (ARN) for the service access role you want to
-use to create the endpoint.
+The Amazon Resource Name (ARN) for the service access role that you
+want to use to create the endpoint.
 
 
 
 =head2 SslMode => Str
 
-The SSL mode to use for the SSL connection.
-
-SSL mode can be one of four values: none, require, verify-ca,
-verify-full.
-
-The default value is none.
+The Secure Sockets Layer (SSL) mode to use for the SSL connection. The
+SSL mode can be one of four values: C<none>, C<require>, C<verify-ca>,
+C<verify-full>. The default value is C<none>.
 
 Valid values are: C<"none">, C<"require">, C<"verify-ca">, C<"verify-full">
 
@@ -279,7 +310,7 @@ Tags to be added to the endpoint.
 
 =head2 Username => Str
 
-The user name to be used to login to the endpoint database.
+The user name to be used to log in to the endpoint database.
 
 
 

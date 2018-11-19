@@ -5,12 +5,14 @@ package Paws::DMS::ModifyEndpoint;
   has DatabaseName => (is => 'ro', isa => 'Str');
   has DmsTransferSettings => (is => 'ro', isa => 'Paws::DMS::DmsTransferSettings');
   has DynamoDbSettings => (is => 'ro', isa => 'Paws::DMS::DynamoDbSettings');
+  has ElasticsearchSettings => (is => 'ro', isa => 'Paws::DMS::ElasticsearchSettings');
   has EndpointArn => (is => 'ro', isa => 'Str', required => 1);
   has EndpointIdentifier => (is => 'ro', isa => 'Str');
   has EndpointType => (is => 'ro', isa => 'Str');
   has EngineName => (is => 'ro', isa => 'Str');
   has ExternalTableDefinition => (is => 'ro', isa => 'Str');
   has ExtraConnectionAttributes => (is => 'ro', isa => 'Str');
+  has KinesisSettings => (is => 'ro', isa => 'Paws::DMS::KinesisSettings');
   has MongoDbSettings => (is => 'ro', isa => 'Paws::DMS::MongoDbSettings');
   has Password => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
@@ -56,12 +58,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ServiceAccessRoleArn => 'MyString',
 
       },                                    # OPTIONAL
+      ElasticsearchSettings => {
+        EndpointUri             => 'MyString',
+        ServiceAccessRoleArn    => 'MyString',
+        ErrorRetryDuration      => 1,            # OPTIONAL
+        FullLoadErrorPercentage => 1,            # OPTIONAL
+      },    # OPTIONAL
       EndpointIdentifier        => 'MyString',    # OPTIONAL
       EndpointType              => 'source',      # OPTIONAL
       EngineName                => 'MyString',    # OPTIONAL
       ExternalTableDefinition   => 'MyString',    # OPTIONAL
       ExtraConnectionAttributes => 'MyString',    # OPTIONAL
-      MongoDbSettings           => {
+      KinesisSettings           => {
+        MessageFormat        => 'json',           # values: json; OPTIONAL
+        ServiceAccessRoleArn => 'MyString',
+        StreamArn            => 'MyString',
+      },    # OPTIONAL
+      MongoDbSettings => {
         AuthMechanism =>
           'default',    # values: default, mongodb_cr, scram_sha_1; OPTIONAL
         AuthSource        => 'MyString',
@@ -119,9 +132,10 @@ The name of the endpoint database.
 
 =head2 DmsTransferSettings => L<Paws::DMS::DmsTransferSettings>
 
-The settings in JSON format for the DMS Transfer type source endpoint.
+The settings in JSON format for the DMS transfer type of source
+endpoint.
 
-Attributes include:
+Attributes include the following:
 
 =over
 
@@ -155,10 +169,20 @@ JSON syntax:
 =head2 DynamoDbSettings => L<Paws::DMS::DynamoDbSettings>
 
 Settings in JSON format for the target Amazon DynamoDB endpoint. For
-more information about the available settings, see the B<Using Object
-Mapping to Migrate Data to DynamoDB> section at Using an Amazon
-DynamoDB Database as a Target for AWS Database Migration Service
-(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html).
+more information about the available settings, see Using Object Mapping
+to Migrate Data to DynamoDB
+(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html)
+in the I<AWS Database Migration Service User Guide.>
+
+
+
+=head2 ElasticsearchSettings => L<Paws::DMS::ElasticsearchSettings>
+
+Settings in JSON format for the target Elasticsearch endpoint. For more
+information about the available settings, see Extra Connection
+Attributes When Using Elasticsearch as a Target for AWS DMS
+(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Elasticsearch.html#CHAP_Target.Elasticsearch.Configuration)
+in the I<AWS Database Migration User Guide.>
 
 
 
@@ -205,14 +229,24 @@ parameter, pass the empty string ("") as an argument.
 
 
 
+=head2 KinesisSettings => L<Paws::DMS::KinesisSettings>
+
+Settings in JSON format for the target Amazon Kinesis Data Streams
+endpoint. For more information about the available settings, see Using
+Object Mapping to Migrate Data to a Kinesis Data Stream
+(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html#CHAP_Target.Kinesis.ObjectMapping
+) in the I<AWS Database Migration User Guide.>
+
+
+
 =head2 MongoDbSettings => L<Paws::DMS::MongoDbSettings>
 
 Settings in JSON format for the source MongoDB endpoint. For more
-information about the available settings, see the B<Configuration
-Properties When Using MongoDB as a Source for AWS Database Migration
-Service> section at Using Amazon S3 as a Target for AWS Database
+information about the available settings, see the configuration
+properties section in Using MongoDB as a Target for AWS Database
 Migration Service
-(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html).
+(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html)
+in the I<AWS Database Migration Service User Guide.>
 
 
 
@@ -230,11 +264,11 @@ The port used by the endpoint database.
 
 =head2 S3Settings => L<Paws::DMS::S3Settings>
 
-Settings in JSON format for the target S3 endpoint. For more
-information about the available settings, see the B<Extra Connection
-Attributes> section at Using Amazon S3 as a Target for AWS Database
-Migration Service
-(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html).
+Settings in JSON format for the target Amazon S3 endpoint. For more
+information about the available settings, see Extra Connection
+Attributes When Using Amazon S3 as a Target for AWS DMS
+(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html#CHAP_Target.S3.Configuring)
+in the I<AWS Database Migration Service User Guide.>
 
 
 
