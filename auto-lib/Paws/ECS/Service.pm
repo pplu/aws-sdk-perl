@@ -2,9 +2,11 @@ package Paws::ECS::Service;
   use Moose;
   has ClusterArn => (is => 'ro', isa => 'Str', request_name => 'clusterArn', traits => ['NameInRequest']);
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
+  has CreatedBy => (is => 'ro', isa => 'Str', request_name => 'createdBy', traits => ['NameInRequest']);
   has DeploymentConfiguration => (is => 'ro', isa => 'Paws::ECS::DeploymentConfiguration', request_name => 'deploymentConfiguration', traits => ['NameInRequest']);
   has Deployments => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Deployment]', request_name => 'deployments', traits => ['NameInRequest']);
   has DesiredCount => (is => 'ro', isa => 'Int', request_name => 'desiredCount', traits => ['NameInRequest']);
+  has EnableECSManagedTags => (is => 'ro', isa => 'Bool', request_name => 'enableECSManagedTags', traits => ['NameInRequest']);
   has Events => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ServiceEvent]', request_name => 'events', traits => ['NameInRequest']);
   has HealthCheckGracePeriodSeconds => (is => 'ro', isa => 'Int', request_name => 'healthCheckGracePeriodSeconds', traits => ['NameInRequest']);
   has LaunchType => (is => 'ro', isa => 'Str', request_name => 'launchType', traits => ['NameInRequest']);
@@ -14,6 +16,7 @@ package Paws::ECS::Service;
   has PlacementConstraints => (is => 'ro', isa => 'ArrayRef[Paws::ECS::PlacementConstraint]', request_name => 'placementConstraints', traits => ['NameInRequest']);
   has PlacementStrategy => (is => 'ro', isa => 'ArrayRef[Paws::ECS::PlacementStrategy]', request_name => 'placementStrategy', traits => ['NameInRequest']);
   has PlatformVersion => (is => 'ro', isa => 'Str', request_name => 'platformVersion', traits => ['NameInRequest']);
+  has PropagateTags => (is => 'ro', isa => 'Str', request_name => 'propagateTags', traits => ['NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
   has RunningCount => (is => 'ro', isa => 'Int', request_name => 'runningCount', traits => ['NameInRequest']);
   has SchedulingStrategy => (is => 'ro', isa => 'Str', request_name => 'schedulingStrategy', traits => ['NameInRequest']);
@@ -21,6 +24,7 @@ package Paws::ECS::Service;
   has ServiceName => (is => 'ro', isa => 'Str', request_name => 'serviceName', traits => ['NameInRequest']);
   has ServiceRegistries => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ServiceRegistry]', request_name => 'serviceRegistries', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', request_name => 'tags', traits => ['NameInRequest']);
   has TaskDefinition => (is => 'ro', isa => 'Str', request_name => 'taskDefinition', traits => ['NameInRequest']);
 1;
 
@@ -64,7 +68,12 @@ Details on a service within a cluster
 
 =head2 CreatedAt => Str
 
-  The Unix time stamp for when the service was created.
+  The Unix timestamp for when the service was created.
+
+
+=head2 CreatedBy => Str
+
+  The principal that created the service.
 
 
 =head2 DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>
@@ -83,6 +92,15 @@ the deployment and the ordering of stopping and starting tasks.
   The desired number of instantiations of the task definition to keep
 running on the service. This value is specified when the service is
 created with CreateService, and it can be modified with UpdateService.
+
+
+=head2 EnableECSManagedTags => Bool
+
+  Specifies whether to enable Amazon ECS managed tags for the tasks in
+the service. For more information, see Tagging Your Amazon ECS
+Resources
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/Using_Tags.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 =head2 Events => ArrayRef[L<Paws::ECS::ServiceEvent>]
@@ -111,7 +129,7 @@ definition), and the container port to access from the load balancer.
 
 Services with tasks that use the C<awsvpc> network mode (for example,
 those with the Fargate launch type) only support Application Load
-Balancers and Network Load Balancers; Classic Load Balancers are not
+Balancers and Network Load Balancers. Classic Load Balancers are not
 supported. Also, when you create any target groups for these services,
 you must choose C<ip> as the target type, not C<instance>, because
 tasks that use the C<awsvpc> network mode are associated with an
@@ -149,6 +167,13 @@ information, see AWS Fargate Platform Versions
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
+=head2 PropagateTags => Str
+
+  Specifies whether to propagate the tags from the task definition or the
+service to the task. If no value is specified, the tags are not
+propagated.
+
+
 =head2 RoleArn => Str
 
   The ARN of the IAM role associated with the service that allows the
@@ -182,8 +207,9 @@ decisions.
 =item *
 
 C<DAEMON>-The daemon scheduling strategy deploys exactly one task on
-each container instance in your cluster. When using this strategy, do
-not specify a desired number of tasks or any task placement strategies.
+each container instance in your cluster. When you are using this
+strategy, do not specify a desired number of tasks or any task
+placement strategies.
 
 Fargate tasks do not support the C<DAEMON> scheduling strategy.
 
@@ -217,6 +243,15 @@ multiple clusters within a Region or across multiple Regions.
 
   The status of the service. The valid values are C<ACTIVE>, C<DRAINING>,
 or C<INACTIVE>.
+
+
+=head2 Tags => ArrayRef[L<Paws::ECS::Tag>]
+
+  The metadata that you apply to the service to help you categorize and
+organize them. Each tag consists of a key and an optional value, both
+of which you define. Tag keys can have a maximum character length of
+128 characters, and tag values can have a maximum length of 256
+characters.
 
 
 =head2 TaskDefinition => Str

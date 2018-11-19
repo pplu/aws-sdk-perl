@@ -53,9 +53,9 @@ Container Agent
 
 =item *
 
-Container health checks are supported for Fargate tasks if using
-platform version version 1.1.0 or greater. For more information, see
-AWS Fargate Platform Versions
+Container health checks are supported for Fargate tasks if you are
+using platform version 1.1.0 or greater. For more information, see AWS
+Fargate Platform Versions
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).
 
 =item *

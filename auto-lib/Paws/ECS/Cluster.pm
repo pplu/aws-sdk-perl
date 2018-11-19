@@ -8,6 +8,7 @@ package Paws::ECS::Cluster;
   has RunningTasksCount => (is => 'ro', isa => 'Int', request_name => 'runningTasksCount', traits => ['NameInRequest']);
   has Statistics => (is => 'ro', isa => 'ArrayRef[Paws::ECS::KeyValuePair]', request_name => 'statistics', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', request_name => 'tags', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +28,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ECS::Cluster object:
 
-  $service_obj->Method(Att1 => { ActiveServicesCount => $value, ..., Status => $value  });
+  $service_obj->Method(Att1 => { ActiveServicesCount => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -132,6 +133,15 @@ drainingFargateServiceCount
 C<INACTIVE>. C<ACTIVE> indicates that you can register container
 instances with the cluster and the associated instances can accept
 tasks.
+
+
+=head2 Tags => ArrayRef[L<Paws::ECS::Tag>]
+
+  The metadata that you apply to the cluster to help you categorize and
+organize them. Each tag consists of a key and an optional value, both
+of which you define. Tag keys can have a maximum character length of
+128 characters, and tag values can have a maximum length of 256
+characters.
 
 
 

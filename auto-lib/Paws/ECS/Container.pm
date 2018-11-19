@@ -57,7 +57,7 @@ A Docker container that is part of a task.
 =head2 HealthStatus => Str
 
   The health status of the container. If health checks are not configured
-for this container in its task definition, then it reports health
+for this container in its task definition, then it reports the health
 status as C<UNKNOWN>.
 
 

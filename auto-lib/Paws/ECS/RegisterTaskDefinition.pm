@@ -5,10 +5,13 @@ package Paws::ECS::RegisterTaskDefinition;
   has Cpu => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cpu' );
   has ExecutionRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'executionRoleArn' );
   has Family => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'family' , required => 1);
+  has IpcMode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ipcMode' );
   has Memory => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'memory' );
   has NetworkMode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'networkMode' );
+  has PidMode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pidMode' );
   has PlacementConstraints => (is => 'ro', isa => 'ArrayRef[Paws::ECS::TaskDefinitionPlacementConstraint]', traits => ['NameInRequest'], request_name => 'placementConstraints' );
   has RequiresCompatibilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'requiresCompatibilities' );
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has TaskRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskRoleArn' );
   has Volumes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Volume]', traits => ['NameInRequest'], request_name => 'volumes' );
 
@@ -89,13 +92,13 @@ Task-level CPU and memory parameters are ignored for Windows
 containers. We recommend specifying container-level resources for
 Windows containers.
 
-If using the EC2 launch type, this field is optional. Supported values
-are between C<128> CPU units (C<0.125> vCPUs) and C<10240> CPU units
-(C<10> vCPUs).
+If you are using the EC2 launch type, this field is optional. Supported
+values are between C<128> CPU units (C<0.125> vCPUs) and C<10240> CPU
+units (C<10> vCPUs).
 
-If using the Fargate launch type, this field is required and you must
-use one of the following values, which determines your range of
-supported values for the C<memory> parameter:
+If you are using the Fargate launch type, this field is required and
+you must use one of the following values, which determines your range
+of supported values for the C<memory> parameter:
 
 =over
 
@@ -144,6 +147,51 @@ used as a name for your task definition. Up to 255 letters (uppercase
 and lowercase), numbers, hyphens, and underscores are allowed.
 
 
+
+=head2 IpcMode => Str
+
+The IPC resource namespace to use for the containers in the task. The
+valid values are C<host>, C<task>, or C<none>. If C<host> is specified,
+then all containers within the tasks that specified the C<host> IPC
+mode on the same container instance share the same IPC resources with
+the host Amazon EC2 instance. If C<task> is specified, all containers
+within the specified task share the same IPC resources. If C<none> is
+specified, then IPC resources within the containers of a task are
+private and not shared with other containers in a task or on the
+container instance. If no value is specified, then the IPC resource
+namespace sharing depends on the Docker daemon setting on the container
+instance. For more information, see IPC settings
+(https://docs.docker.com/engine/reference/run/#ipc-settings---ipc) in
+the I<Docker run reference>.
+
+If the C<host> IPC mode is used, be aware that there is a heightened
+risk of undesired IPC namespace expose. For more information, see
+Docker security (https://docs.docker.com/engine/security/security/).
+
+If you are setting namespaced kernel parameters using C<systemControls>
+for the containers in the task, the following will apply to your IPC
+resource namespace. For more information, see System Controls
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguidetask_definition_parameters.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
+
+=over
+
+=item *
+
+For tasks that use the C<host> IPC mode, IPC namespace related
+C<systemControls> are not supported.
+
+=item *
+
+For tasks that use the C<task> IPC mode, IPC namespace related
+C<systemControls> will apply to all containers within a task.
+
+=back
+
+This parameter is not supported for Windows containers or tasks using
+the Fargate launch type.
+
+Valid values are: C<"host">, C<"task">, C<"none">
 
 =head2 Memory => Str
 
@@ -199,15 +247,15 @@ Available C<cpu> values: 4096 (4 vCPU)
 
 The Docker networking mode to use for the containers in the task. The
 valid values are C<none>, C<bridge>, C<awsvpc>, and C<host>. The
-default Docker network mode is C<bridge>. If using the Fargate launch
-type, the C<awsvpc> network mode is required. If using the EC2 launch
-type, any network mode can be used. If the network mode is set to
-C<none>, you can't specify port mappings in your container definitions,
-and the task's containers do not have external connectivity. The
-C<host> and C<awsvpc> network modes offer the highest networking
-performance for containers because they use the EC2 network stack
-instead of the virtualized network stack provided by the C<bridge>
-mode.
+default Docker network mode is C<bridge>. If you are using the Fargate
+launch type, the C<awsvpc> network mode is required. If you are using
+the EC2 launch type, any network mode can be used. If the network mode
+is set to C<none>, you cannot specify port mappings in your container
+definitions, and the tasks containers do not have external
+connectivity. The C<host> and C<awsvpc> network modes offer the highest
+networking performance for containers because they use the EC2 network
+stack instead of the virtualized network stack provided by the
+C<bridge> mode.
 
 With the C<host> and C<awsvpc> network modes, exposed container ports
 are mapped directly to the corresponding host port (for the C<host>
@@ -215,20 +263,26 @@ network mode) or the attached elastic network interface port (for the
 C<awsvpc> network mode), so you cannot take advantage of dynamic host
 port mappings.
 
-If the network mode is C<awsvpc>, the task is allocated an Elastic
-Network Interface, and you must specify a NetworkConfiguration when you
-create a service or run a task with the task definition. For more
-information, see Task Networking
+If the network mode is C<awsvpc>, the task is allocated an elastic
+network interface, and you must specify a NetworkConfiguration value
+when you create a service or run a task with the task definition. For
+more information, see Task Networking
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
-If the network mode is C<host>, you can't run multiple instantiations
+Currently, only Amazon ECS-optimized AMIs, other Amazon Linux variants
+with the C<ecs-init> package, or AWS Fargate infrastructure support the
+C<awsvpc> network mode.
+
+If the network mode is C<host>, you cannot run multiple instantiations
 of the same task on a single container instance when port mappings are
 used.
 
 Docker for Windows uses different network modes than Docker for Linux.
 When you register a task definition with Windows containers, you must
-not specify a network mode.
+not specify a network mode. If you use the console to register a task
+definition with Windows containers, you must choose the
+C<E<lt>defaultE<gt>> network mode object.
 
 For more information, see Network settings
 (https://docs.docker.com/engine/reference/run/#network-settings) in the
@@ -236,11 +290,33 @@ I<Docker run reference>.
 
 Valid values are: C<"bridge">, C<"host">, C<"awsvpc">, C<"none">
 
+=head2 PidMode => Str
+
+The process namespace to use for the containers in the task. The valid
+values are C<host> or C<task>. If C<host> is specified, then all
+containers within the tasks that specified the C<host> PID mode on the
+same container instance share the same IPC resources with the host
+Amazon EC2 instance. If C<task> is specified, all containers within the
+specified task share the same process namespace. If no value is
+specified, the default is a private namespace. For more information,
+see PID settings
+(https://docs.docker.com/engine/reference/run/#pid-settings---pid) in
+the I<Docker run reference>.
+
+If the C<host> PID mode is used, be aware that there is a heightened
+risk of undesired process namespace expose. For more information, see
+Docker security (https://docs.docker.com/engine/security/security/).
+
+This parameter is not supported for Windows containers or tasks using
+the Fargate launch type.
+
+Valid values are: C<"host">, C<"task">
+
 =head2 PlacementConstraints => ArrayRef[L<Paws::ECS::TaskDefinitionPlacementConstraint>]
 
 An array of placement constraint objects to use for the task. You can
 specify a maximum of 10 constraints per task (this limit includes
-constraints in the task definition and those specified at run time).
+constraints in the task definition and those specified at runtime).
 
 
 
@@ -248,6 +324,16 @@ constraints in the task definition and those specified at run time).
 
 The launch type required by the task. If no value is specified, it
 defaults to C<EC2>.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::ECS::Tag>]
+
+The metadata that you apply to the task definition to help you
+categorize and organize them. Each tag consists of a key and an
+optional value, both of which you define. Tag keys can have a maximum
+character length of 128 characters, and tag values can have a maximum
+length of 256 characters.
 
 
 

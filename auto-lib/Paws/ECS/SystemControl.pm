@@ -41,9 +41,28 @@ to docker run (https://docs.docker.com/engine/reference/run/).
 
 It is not recommended that you specify network-related
 C<systemControls> parameters for multiple containers in a single task
-that also uses either the C<awsvpc> or C<host> network modes. When you
-do, the container that is started last will determine which
-C<systemControls> parameters take effect.
+that also uses either the C<awsvpc> or C<host> network mode for the
+following reasons:
+
+=over
+
+=item *
+
+For tasks that use the C<awsvpc> network mode, if you set
+C<systemControls> for any container, it applies to all containers in
+the task. If you set different C<systemControls> for multiple
+containers in a single task, the container that is started last
+determines which C<systemControls> take effect.
+
+=item *
+
+For tasks that use the C<host> network mode, the C<systemControls>
+parameter applies to the container instance's kernel parameter as well
+as that of all containers of any tasks running on that container
+instance.
+
+=back
+
 
 =head1 ATTRIBUTES
 
@@ -55,7 +74,8 @@ C<systemControls> parameters take effect.
 
 =head2 Value => Str
 
-  The value for the namespaced kernel parameter specifed in C<namespace>.
+  The value for the namespaced kernel parameter specified in
+C<namespace>.
 
 
 

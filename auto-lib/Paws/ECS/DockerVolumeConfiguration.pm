@@ -35,10 +35,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Docker
 
 =head1 DESCRIPTION
 
-This parameter is specified when using Docker volumes. Docker volumes
-are only supported when using the EC2 launch type. Windows containers
-only support the use of the C<local> driver. To use bind mounts,
-specify a C<host> instead.
+This parameter is specified when you are using Docker volumes. Docker
+volumes are only supported when you are using the EC2 launch type.
+Windows containers only support the use of the C<local> driver. To use
+bind mounts, specify a C<host> instead.
 
 =head1 ATTRIBUTES
 
@@ -71,7 +71,7 @@ to C<docker volume create>
 
 =head2 DriverOpts => L<Paws::ECS::StringMap>
 
-  A map of Docker driver specific options passed through. This parameter
+  A map of Docker driver-specific options passed through. This parameter
 maps to C<DriverOpts> in the Create a volume
 (https://docs.docker.com/engine/api/v1.35/#operation/VolumeCreate)
 section of the Docker Remote API
@@ -93,7 +93,7 @@ to C<docker volume create>
 
 =head2 Scope => Str
 
-  The scope for the Docker volume which determines it's lifecycle. Docker
+  The scope for the Docker volume that determines its lifecycle. Docker
 volumes that are scoped to a C<task> are automatically provisioned when
 the task starts and destroyed when the task stops. Docker volumes that
 are scoped as C<shared> persist after the task stops.

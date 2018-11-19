@@ -44,22 +44,22 @@ For more information, see Using Data Volumes in Tasks
 
 =head2 DockerVolumeConfiguration => L<Paws::ECS::DockerVolumeConfiguration>
 
-  This parameter is specified when using Docker volumes. Docker volumes
-are only supported when using the EC2 launch type. Windows containers
-only support the use of the C<local> driver. To use bind mounts,
-specify a C<host> instead.
+  This parameter is specified when you are using Docker volumes. Docker
+volumes are only supported when you are using the EC2 launch type.
+Windows containers only support the use of the C<local> driver. To use
+bind mounts, specify a C<host> instead.
 
 
 =head2 Host => L<Paws::ECS::HostVolumeProperties>
 
-  This parameter is specified when using bind mount host volumes. Bind
-mount host volumes are supported when using either the EC2 or Fargate
-launch types. The contents of the C<host> parameter determine whether
-your bind mount host volume persists on the host container instance and
-where it is stored. If the C<host> parameter is empty, then the Docker
-daemon assigns a host path for your data volume, but the data is not
-guaranteed to persist after the containers associated with it stop
-running.
+  This parameter is specified when you are using bind mount host volumes.
+Bind mount host volumes are supported when you are using either the EC2
+or Fargate launch types. The contents of the C<host> parameter
+determine whether your bind mount host volume persists on the host
+container instance and where it is stored. If the C<host> parameter is
+empty, then the Docker daemon assigns a host path for your data volume,
+but the data is not guaranteed to persist after the containers
+associated with it stop running.
 
 Windows containers can mount whole directories on the same drive as
 C<$env:ProgramData>. Windows containers cannot mount directories on a

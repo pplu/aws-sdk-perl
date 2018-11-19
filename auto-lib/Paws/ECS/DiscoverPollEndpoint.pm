@@ -47,8 +47,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs
 
 =head2 Cluster => Str
 
-The short name or full Amazon Resource Name (ARN) of the cluster that
-the container instance belongs to.
+The short name or full Amazon Resource Name (ARN) of the cluster to
+which the container instance belongs.
 
 
 

@@ -25,6 +25,11 @@ package Paws::ECS;
     my $call_object = $self->new_with_coercions('Paws::ECS::CreateService', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteAccountSetting {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::DeleteAccountSetting', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteAttributes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::DeleteAttributes', @_);
@@ -80,6 +85,11 @@ package Paws::ECS;
     my $call_object = $self->new_with_coercions('Paws::ECS::DiscoverPollEndpoint', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListAccountSettings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::ListAccountSettings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListAttributes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::ListAttributes', @_);
@@ -100,6 +110,11 @@ package Paws::ECS;
     my $call_object = $self->new_with_coercions('Paws::ECS::ListServices', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListTaskDefinitionFamilies {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::ListTaskDefinitionFamilies', @_);
@@ -113,6 +128,11 @@ package Paws::ECS;
   sub ListTasks {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::ListTasks', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutAccountSetting {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::PutAccountSetting', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutAttributes {
@@ -153,6 +173,16 @@ package Paws::ECS;
   sub SubmitTaskStateChange {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::SubmitTaskStateChange', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateContainerAgent {
@@ -311,7 +341,7 @@ package Paws::ECS;
   }
 
 
-  sub operations { qw/CreateCluster CreateService DeleteAttributes DeleteCluster DeleteService DeregisterContainerInstance DeregisterTaskDefinition DescribeClusters DescribeContainerInstances DescribeServices DescribeTaskDefinition DescribeTasks DiscoverPollEndpoint ListAttributes ListClusters ListContainerInstances ListServices ListTaskDefinitionFamilies ListTaskDefinitions ListTasks PutAttributes RegisterContainerInstance RegisterTaskDefinition RunTask StartTask StopTask SubmitContainerStateChange SubmitTaskStateChange UpdateContainerAgent UpdateContainerInstancesState UpdateService / }
+  sub operations { qw/CreateCluster CreateService DeleteAccountSetting DeleteAttributes DeleteCluster DeleteService DeregisterContainerInstance DeregisterTaskDefinition DescribeClusters DescribeContainerInstances DescribeServices DescribeTaskDefinition DescribeTasks DiscoverPollEndpoint ListAccountSettings ListAttributes ListClusters ListContainerInstances ListServices ListTagsForResource ListTaskDefinitionFamilies ListTaskDefinitions ListTasks PutAccountSetting PutAttributes RegisterContainerInstance RegisterTaskDefinition RunTask StartTask StopTask SubmitContainerStateChange SubmitTaskStateChange TagResource UntagResource UpdateContainerAgent UpdateContainerInstancesState UpdateService / }
 
 1;
 
@@ -371,6 +401,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs
 
 =item [ClusterName => Str]
 
+=item [Tags => ArrayRef[L<Paws::ECS::Tag>]]
+
 
 =back
 
@@ -409,6 +441,8 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 =item [DesiredCount => Int]
 
+=item [EnableECSManagedTags => Bool]
+
 =item [HealthCheckGracePeriodSeconds => Int]
 
 =item [LaunchType => Str]
@@ -423,11 +457,15 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 =item [PlatformVersion => Str]
 
+=item [PropagateTags => Str]
+
 =item [Role => Str]
 
 =item [SchedulingStrategy => Str]
 
 =item [ServiceRegistries => ArrayRef[L<Paws::ECS::ServiceRegistry>]]
+
+=item [Tags => ArrayRef[L<Paws::ECS::Tag>]]
 
 
 =back
@@ -524,6 +562,27 @@ instances with the fewest number of running tasks for this service.
 
 
 
+=head2 DeleteAccountSetting
+
+=over
+
+=item Name => Str
+
+=item [PrincipalArn => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECS::DeleteAccountSetting>
+
+Returns: a L<Paws::ECS::DeleteAccountSettingResponse> instance
+
+Modifies the ARN and resource ID format of a resource for a specified
+IAM user, IAM role, or the root user for an account. You can specify
+whether the new ARN and resource ID format are disabled for new
+resources that are created.
+
+
 =head2 DeleteAttributes
 
 =over
@@ -587,17 +646,17 @@ information, see UpdateService.
 When you delete a service, if there are still running tasks that
 require cleanup, the service status moves from C<ACTIVE> to
 C<DRAINING>, and the service is no longer visible in the console or in
-ListServices API operations. After the tasks have stopped, then the
+the ListServices API operation. After the tasks have stopped, then the
 service status moves from C<DRAINING> to C<INACTIVE>. Services in the
-C<DRAINING> or C<INACTIVE> status can still be viewed with
-DescribeServices API operations. However, in the future, C<INACTIVE>
+C<DRAINING> or C<INACTIVE> status can still be viewed with the
+DescribeServices API operation. However, in the future, C<INACTIVE>
 services may be cleaned up and purged from Amazon ECS record keeping,
-and DescribeServices API operations on those services return a
+and DescribeServices calls on those services return a
 C<ServiceNotFoundException> error.
 
 If you attempt to create a new service with the same name as an
-existing service in either C<ACTIVE> or C<DRAINING> status, you will
-receive an error.
+existing service in either C<ACTIVE> or C<DRAINING> status, you receive
+an error.
 
 
 =head2 DeregisterContainerInstance
@@ -626,7 +685,7 @@ container instance before deregistration. That prevents any orphaned
 tasks from consuming resources.
 
 Deregistering a container instance removes the instance from a cluster,
-but it does not terminate the EC2 instance; if you are finished using
+but it does not terminate the EC2 instance. If you are finished using
 the instance, be sure to terminate it in the Amazon EC2 console to stop
 billing.
 
@@ -663,7 +722,7 @@ reference an C<INACTIVE> task definition (although there may be up to a
 not yet taken effect).
 
 At this time, C<INACTIVE> task definitions remain discoverable in your
-account indefinitely; however, this behavior is subject to change in
+account indefinitely. However, this behavior is subject to change in
 the future, so you should not rely on C<INACTIVE> task definitions
 persisting beyond the lifecycle of any associated tasks and services.
 
@@ -694,6 +753,8 @@ Describes one or more of your clusters.
 
 =item [Cluster => Str]
 
+=item [Include => ArrayRef[Str|Undef]]
+
 
 =back
 
@@ -714,6 +775,8 @@ instance requested.
 
 =item [Cluster => Str]
 
+=item [Include => ArrayRef[Str|Undef]]
+
 
 =back
 
@@ -729,6 +792,8 @@ Describes the specified services running in your cluster.
 =over
 
 =item TaskDefinition => Str
+
+=item [Include => ArrayRef[Str|Undef]]
 
 
 =back
@@ -753,6 +818,8 @@ or service references them.
 =item Tasks => ArrayRef[Str|Undef]
 
 =item [Cluster => Str]
+
+=item [Include => ArrayRef[Str|Undef]]
 
 
 =back
@@ -783,6 +850,33 @@ This action is only used by the Amazon ECS agent, and it is not
 intended for use outside of the agent.
 
 Returns an endpoint for the Amazon ECS agent to poll for updates.
+
+
+=head2 ListAccountSettings
+
+=over
+
+=item [EffectiveSettings => Bool]
+
+=item [MaxResults => Int]
+
+=item [Name => Str]
+
+=item [NextToken => Str]
+
+=item [PrincipalArn => Str]
+
+=item [Value => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECS::ListAccountSettings>
+
+Returns: a L<Paws::ECS::ListAccountSettingsResponse> instance
+
+Lists the account settings for an Amazon ECS resource for a specified
+principal.
 
 
 =head2 ListAttributes
@@ -889,6 +983,22 @@ Returns: a L<Paws::ECS::ListServicesResponse> instance
 Lists the services that are running in a specified cluster.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECS::ListTagsForResource>
+
+Returns: a L<Paws::ECS::ListTagsForResourceResponse> instance
+
+List the tags for an Amazon ECS resource.
+
+
 =head2 ListTaskDefinitionFamilies
 
 =over
@@ -982,6 +1092,30 @@ Recently stopped tasks might appear in the returned results. Currently,
 stopped tasks appear in the returned results for at least one hour.
 
 
+=head2 PutAccountSetting
+
+=over
+
+=item Name => Str
+
+=item Value => Str
+
+=item [PrincipalArn => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECS::PutAccountSetting>
+
+Returns: a L<Paws::ECS::PutAccountSettingResponse> instance
+
+Modifies the ARN and resource ID format of a resource for a specified
+IAM user, IAM role, or the root user for an account. You can specify
+whether the new ARN and resource ID format are enabled for new
+resources that are created. Enabling this setting is required to use
+new Amazon ECS features such as resource tagging.
+
+
 =head2 PutAttributes
 
 =over
@@ -1019,6 +1153,8 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 =item [InstanceIdentityDocumentSignature => Str]
 
+=item [Tags => ArrayRef[L<Paws::ECS::Tag>]]
+
 =item [TotalResources => ArrayRef[L<Paws::ECS::Resource>]]
 
 =item [VersionInfo => L<Paws::ECS::VersionInfo>]
@@ -1049,13 +1185,19 @@ becomes available to place containers on.
 
 =item [ExecutionRoleArn => Str]
 
+=item [IpcMode => Str]
+
 =item [Memory => Str]
 
 =item [NetworkMode => Str]
 
+=item [PidMode => Str]
+
 =item [PlacementConstraints => ArrayRef[L<Paws::ECS::TaskDefinitionPlacementConstraint>]]
 
 =item [RequiresCompatibilities => ArrayRef[Str|Undef]]
+
+=item [Tags => ArrayRef[L<Paws::ECS::Tag>]]
 
 =item [TaskRoleArn => Str]
 
@@ -1106,6 +1248,8 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 =item [Count => Int]
 
+=item [EnableECSManagedTags => Bool]
+
 =item [Group => Str]
 
 =item [LaunchType => Str]
@@ -1120,7 +1264,11 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 =item [PlatformVersion => Str]
 
+=item [PropagateTags => Str]
+
 =item [StartedBy => Str]
+
+=item [Tags => ArrayRef[L<Paws::ECS::Tag>]]
 
 
 =back
@@ -1144,8 +1292,8 @@ The Amazon ECS API follows an eventual consistency model, due to the
 distributed nature of the system supporting the API. This means that
 the result of an API command you run that affects your Amazon ECS
 resources might not be immediately visible to all subsequent commands
-you run. You should keep this in mind when you carry out an API command
-that immediately follows a previous API command.
+you run. Keep this in mind when you carry out an API command that
+immediately follows a previous API command.
 
 To manage eventual consistency, you can do the following:
 
@@ -1181,13 +1329,19 @@ gradually up to about five minutes of wait time.
 
 =item [Cluster => Str]
 
+=item [EnableECSManagedTags => Bool]
+
 =item [Group => Str]
 
 =item [NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>]
 
 =item [Overrides => L<Paws::ECS::TaskOverride>]
 
+=item [PropagateTags => Str]
+
 =item [StartedBy => Str]
+
+=item [Tags => ArrayRef[L<Paws::ECS::Tag>]]
 
 
 =back
@@ -1222,7 +1376,8 @@ Each argument is described in detail in: L<Paws::ECS::StopTask>
 
 Returns: a L<Paws::ECS::StopTaskResponse> instance
 
-Stops a running task.
+Stops a running task. Any tags associated with the task will be
+deleted.
 
 When StopTask is called on a task, the equivalent of C<docker stop> is
 issued to the containers running in the task. This results in a
@@ -1302,6 +1457,45 @@ This action is only used by the Amazon ECS agent, and it is not
 intended for use outside of the agent.
 
 Sent to acknowledge that a task changed states.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => ArrayRef[L<Paws::ECS::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECS::TagResource>
+
+Returns: a L<Paws::ECS::TagResourceResponse> instance
+
+Associates the specified tags to a resource with the specified
+C<resourceArn>. If existing tags on a resource are not specified in the
+request parameters, they are not changed. When a resource is deleted,
+the tags associated with that resource are deleted as well.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECS::UntagResource>
+
+Returns: a L<Paws::ECS::UntagResourceResponse> instance
+
+Deletes specified tags from a resource.
 
 
 =head2 UpdateContainerAgent
@@ -1400,7 +1594,7 @@ can't start until the draining tasks have stopped.
 =back
 
 Any C<PENDING> or C<RUNNING> tasks that do not belong to a service are
-not affected; you must wait for them to finish or stop them manually.
+not affected. You must wait for them to finish or stop them manually.
 
 A container instance has completed draining when it has no more
 C<RUNNING> tasks. You can verify this using ListTasks.

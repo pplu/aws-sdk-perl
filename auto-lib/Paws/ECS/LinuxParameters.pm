@@ -71,7 +71,8 @@ run (https://docs.docker.com/engine/reference/run/). This parameter
 requires version 1.25 of the Docker Remote API or greater on your
 container instance. To check the Docker Remote API version on your
 container instance, log in to your container instance and run the
-following command: C<sudo docker version | grep "Server API version">
+following command: C<sudo docker version --format
+'{{.Server.APIVersion}}'>
 
 
 =head2 SharedMemorySize => Int

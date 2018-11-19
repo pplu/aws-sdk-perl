@@ -37,9 +37,9 @@ Port mappings allow containers to access ports on the host container
 instance to send or receive traffic. Port mappings are specified as
 part of the container definition.
 
-If using containers in a task with the C<awsvpc> or C<host> network
-mode, exposed ports should be specified using C<containerPort>. The
-C<hostPort> can be left blank or it must be the same value as the
+If you are using containers in a task with the C<awsvpc> or C<host>
+network mode, exposed ports should be specified using C<containerPort>.
+The C<hostPort> can be left blank or it must be the same value as the
 C<containerPort>.
 
 After a task reaches the C<RUNNING> status, manual and automatic host
@@ -54,15 +54,15 @@ section of DescribeTasks API responses.
   The port number on the container that is bound to the user-specified or
 automatically assigned host port.
 
-If using containers in a task with the C<awsvpc> or C<host> network
-mode, exposed ports should be specified using C<containerPort>.
+If you are using containers in a task with the C<awsvpc> or C<host>
+network mode, exposed ports should be specified using C<containerPort>.
 
-If using containers in a task with the C<bridge> network mode and you
-specify a container port and not a host port, your container
-automatically receives a host port in the ephemeral port range (for
-more information, see C<hostPort>). Port mappings that are
-automatically assigned in this way do not count toward the 100 reserved
-ports limit of a container instance.
+If you are using containers in a task with the C<bridge> network mode
+and you specify a container port and not a host port, your container
+automatically receives a host port in the ephemeral port range. For
+more information, see C<hostPort>. Port mappings that are automatically
+assigned in this way do not count toward the 100 reserved ports limit
+of a container instance.
 
 
 =head2 HostPort => Int
@@ -70,24 +70,24 @@ ports limit of a container instance.
   The port number on the container instance to reserve for your
 container.
 
-If using containers in a task with the C<awsvpc> or C<host> network
-mode, the C<hostPort> can either be left blank or set to the same value
-as the C<containerPort>.
+If you are using containers in a task with the C<awsvpc> or C<host>
+network mode, the C<hostPort> can either be left blank or set to the
+same value as the C<containerPort>.
 
-If using containers in a task with the C<bridge> network mode, you can
-specify a non-reserved host port for your container port mapping, or
-you can omit the C<hostPort> (or set it to C<0>) while specifying a
-C<containerPort> and your container automatically receives a port in
-the ephemeral port range for your container instance operating system
-and Docker version.
+If you are using containers in a task with the C<bridge> network mode,
+you can specify a non-reserved host port for your container port
+mapping, or you can omit the C<hostPort> (or set it to C<0>) while
+specifying a C<containerPort> and your container automatically receives
+a port in the ephemeral port range for your container instance
+operating system and Docker version.
 
 The default ephemeral port range for Docker version 1.6.0 and later is
-listed on the instance under C</proc/sys/net/ipv4/ip_local_port_range>;
-if this kernel parameter is unavailable, the default ephemeral port
-range from 49153 through 65535 is used. You should not attempt to
-specify a host port in the ephemeral port range as these are reserved
-for automatic assignment. In general, ports below 32768 are outside of
-the ephemeral port range.
+listed on the instance under C</proc/sys/net/ipv4/ip_local_port_range>.
+If this kernel parameter is unavailable, the default ephemeral port
+range from 49153 through 65535 is used. Do not attempt to specify a
+host port in the ephemeral port range as these are reserved for
+automatic assignment. In general, ports below 32768 are outside of the
+ephemeral port range.
 
 The default ephemeral port range from 49153 through 65535 is always
 used for Docker versions before 1.6.0.

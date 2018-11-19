@@ -5,6 +5,7 @@ package Paws::ECS::CreateService;
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
   has DeploymentConfiguration => (is => 'ro', isa => 'Paws::ECS::DeploymentConfiguration', traits => ['NameInRequest'], request_name => 'deploymentConfiguration' );
   has DesiredCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'desiredCount' );
+  has EnableECSManagedTags => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableECSManagedTags' );
   has HealthCheckGracePeriodSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'healthCheckGracePeriodSeconds' );
   has LaunchType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'launchType' );
   has LoadBalancers => (is => 'ro', isa => 'ArrayRef[Paws::ECS::LoadBalancer]', traits => ['NameInRequest'], request_name => 'loadBalancers' );
@@ -12,10 +13,12 @@ package Paws::ECS::CreateService;
   has PlacementConstraints => (is => 'ro', isa => 'ArrayRef[Paws::ECS::PlacementConstraint]', traits => ['NameInRequest'], request_name => 'placementConstraints' );
   has PlacementStrategy => (is => 'ro', isa => 'ArrayRef[Paws::ECS::PlacementStrategy]', traits => ['NameInRequest'], request_name => 'placementStrategy' );
   has PlatformVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'platformVersion' );
+  has PropagateTags => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'propagateTags' );
   has Role => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'role' );
   has SchedulingStrategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'schedulingStrategy' );
   has ServiceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceName' , required => 1);
   has ServiceRegistries => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ServiceRegistry]', traits => ['NameInRequest'], request_name => 'serviceRegistries' );
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has TaskDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskDefinition' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -120,6 +123,16 @@ and keep running on your cluster.
 
 
 
+=head2 EnableECSManagedTags => Bool
+
+Specifies whether to enable Amazon ECS managed tags for the tasks
+within the service. For more information, see Tagging Your Amazon ECS
+Resources
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/Using_Tags.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
+
+
+
 =head2 HealthCheckGracePeriodSeconds => Int
 
 The period of time, in seconds, that the Amazon ECS service scheduler
@@ -163,7 +176,7 @@ registered as a target in the target group specified here.
 
 Services with tasks that use the C<awsvpc> network mode (for example,
 those with the Fargate launch type) only support Application Load
-Balancers and Network Load Balancers; Classic Load Balancers are not
+Balancers and Network Load Balancers. Classic Load Balancers are not
 supported. Also, when you create any target groups for these services,
 you must choose C<ip> as the target type, not C<instance>, because
 tasks that use the C<awsvpc> network mode are associated with an
@@ -175,7 +188,7 @@ elastic network interface, not an Amazon EC2 instance.
 
 The network configuration for the service. This parameter is required
 for task definitions that use the C<awsvpc> network mode to receive
-their own Elastic Network Interface, and it is not supported for other
+their own elastic network interface, and it is not supported for other
 network modes. For more information, see Task Networking
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
@@ -187,7 +200,7 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 An array of placement constraint objects to use for tasks in your
 service. You can specify a maximum of 10 constraints per task (this
 limit includes constraints in the task definition and those specified
-at run time).
+at runtime).
 
 
 
@@ -204,6 +217,16 @@ The platform version on which to run your service. If one is not
 specified, the latest version is used by default.
 
 
+
+=head2 PropagateTags => Str
+
+Specifies whether to propagate the tags from the task definition or the
+service to the tasks. If no value is specified, the tags are not
+propagated. Tags can only be propagated to the tasks within the service
+during service creation. To add tags to a task after service creation,
+use the TagResource API action.
+
+Valid values are: C<"TASK_DEFINITION">, C<"SERVICE">
 
 =head2 Role => Str
 
@@ -255,9 +278,9 @@ decisions.
 
 C<DAEMON>-The daemon scheduling strategy deploys exactly one task on
 each active container instance that meets all of the task placement
-constraints that you specify in your cluster. When using this strategy,
-there is no need to specify a desired number of tasks, a task placement
-strategy, or use Service Auto Scaling policies.
+constraints that you specify in your cluster. When you are using this
+strategy, there is no need to specify a desired number of tasks, a task
+placement strategy, or use Service Auto Scaling policies.
 
 Fargate tasks do not support the C<DAEMON> scheduling strategy.
 
@@ -281,10 +304,20 @@ The details of the service discovery registries to assign to this
 service. For more information, see Service Discovery
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html).
 
-Service discovery is supported for Fargate tasks if using platform
-version v1.1.0 or later. For more information, see AWS Fargate Platform
-Versions
+Service discovery is supported for Fargate tasks if you are using
+platform version v1.1.0 or later. For more information, see AWS Fargate
+Platform Versions
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).
+
+
+
+=head2 Tags => ArrayRef[L<Paws::ECS::Tag>]
+
+The metadata that you apply to the service to help you categorize and
+organize them. Each tag consists of a key and an optional value, both
+of which you define. When a service is deleted, the tags are deleted as
+well. Tag keys can have a maximum character length of 128 characters,
+and tag values can have a maximum length of 256 characters.
 
 
 

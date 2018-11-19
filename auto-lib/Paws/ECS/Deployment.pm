@@ -48,7 +48,7 @@ The details of an Amazon ECS service deployment.
 
 =head2 CreatedAt => Str
 
-  The Unix time stamp for when the service was created.
+  The Unix timestamp for when the service was created.
 
 
 =head2 DesiredCount => Int
@@ -93,10 +93,10 @@ status.
 
 =head2 Status => Str
 
-  The status of the deployment. Valid values are C<PRIMARY> (for the most
-recent deployment), C<ACTIVE> (for previous deployments that still have
-tasks running, but are being replaced with the C<PRIMARY> deployment),
-and C<INACTIVE> (for deployments that have been completely replaced).
+  The status of the deployment. Valid values are C<PRIMARY> for the most
+recent deployment, C<ACTIVE> for previous deployments that still have
+tasks running, but are being replaced with the C<PRIMARY> deployment,
+and C<INACTIVE> for deployments that have been completely replaced.
 
 
 =head2 TaskDefinition => Str
@@ -107,7 +107,7 @@ use.
 
 =head2 UpdatedAt => Str
 
-  The Unix time stamp for when the service was last updated.
+  The Unix timestamp for when the service was last updated.
 
 
 

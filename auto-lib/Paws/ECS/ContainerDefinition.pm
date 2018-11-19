@@ -27,6 +27,7 @@ package Paws::ECS::ContainerDefinition;
   has PseudoTerminal => (is => 'ro', isa => 'Bool', request_name => 'pseudoTerminal', traits => ['NameInRequest']);
   has ReadonlyRootFilesystem => (is => 'ro', isa => 'Bool', request_name => 'readonlyRootFilesystem', traits => ['NameInRequest']);
   has RepositoryCredentials => (is => 'ro', isa => 'Paws::ECS::RepositoryCredentials', request_name => 'repositoryCredentials', traits => ['NameInRequest']);
+  has Secrets => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Secret]', request_name => 'secrets', traits => ['NameInRequest']);
   has SystemControls => (is => 'ro', isa => 'ArrayRef[Paws::ECS::SystemControl]', request_name => 'systemControls', traits => ['NameInRequest']);
   has Ulimits => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Ulimit]', request_name => 'ulimits', traits => ['NameInRequest']);
   has User => (is => 'ro', isa => 'Str', request_name => 'user', traits => ['NameInRequest']);
@@ -126,7 +127,7 @@ instance uses the CPU value to calculate the relative CPU share ratios
 for running containers. For more information, see CPU share constraint
 (https://docs.docker.com/engine/reference/run/#cpu-share-constraint) in
 the Docker documentation. The minimum valid CPU share value that the
-Linux kernel allows is 2; however, the CPU parameter is not required,
+Linux kernel allows is 2. However, the CPU parameter is not required,
 and you can use CPU values below 2 in your container definitions. For
 CPU values below 2 (including null), the behavior varies based on your
 Amazon ECS container agent version:
@@ -199,7 +200,8 @@ to docker run (https://docs.docker.com/engine/reference/run/). This
 parameter requires version 1.18 of the Docker Remote API or greater on
 your container instance. To check the Docker Remote API version on your
 container instance, log in to your container instance and run the
-following command: C<sudo docker version | grep "Server API version">
+following command: C<sudo docker version --format
+'{{.Server.APIVersion}}'>
 
 
 =head2 DockerSecurityOptions => ArrayRef[Str|Undef]
@@ -277,15 +279,15 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 =head2 ExtraHosts => ArrayRef[L<Paws::ECS::HostEntry>]
 
   A list of hostnames and IP address mappings to append to the
-C</etc/hosts> file on the container. If using the Fargate launch type,
-this may be used to list non-Fargate hosts to which the container can
-talk. This parameter maps to C<ExtraHosts> in the Create a container
+C</etc/hosts> file on the container. This parameter maps to
+C<ExtraHosts> in the Create a container
 (https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
 section of the Docker Remote API
 (https://docs.docker.com/engine/api/v1.35/) and the C<--add-host>
 option to docker run (https://docs.docker.com/engine/reference/run/).
 
-This parameter is not supported for Windows containers.
+This parameter is not supported for Windows containers or tasks that
+use the C<awsvpc> network mode.
 
 
 =head2 HealthCheck => L<Paws::ECS::HealthCheck>
@@ -309,8 +311,8 @@ section of the Docker Remote API
 (https://docs.docker.com/engine/api/v1.35/) and the C<--hostname>
 option to docker run (https://docs.docker.com/engine/reference/run/).
 
-The C<hostname> parameter is not supported if using the C<awsvpc>
-networkMode.
+The C<hostname> parameter is not supported if you are using the
+C<awsvpc> network mode.
 
 
 =head2 Image => Str
@@ -414,7 +416,7 @@ This parameter is not supported for Windows containers.
 
   The log configuration specification for the container.
 
-If using the Fargate launch type, the only supported value is
+If you are using the Fargate launch type, the only supported value is
 C<awslogs>.
 
 This parameter maps to C<LogConfig> in the Create a container
@@ -423,7 +425,7 @@ section of the Docker Remote API
 (https://docs.docker.com/engine/api/v1.35/) and the C<--log-driver>
 option to docker run (https://docs.docker.com/engine/reference/run/).
 By default, containers use the same logging driver that the Docker
-daemon uses; however the container may use a different logging driver
+daemon uses. However the container may use a different logging driver
 than the Docker daemon by specifying a log driver with this parameter
 in the container definition. To use a different logging driver for a
 container, the log system must be configured properly on the container
@@ -441,8 +443,8 @@ Amazon ECS container agent.
 This parameter requires version 1.18 of the Docker Remote API or
 greater on your container instance. To check the Docker Remote API
 version on your container instance, log in to your container instance
-and run the following command: C<sudo docker version | grep "Server API
-version">
+and run the following command: C<sudo docker version --format
+'{{.Server.APIVersion}}'>
 
 The Amazon ECS container agent running on a container instance must
 register the logging drivers available on that instance with the
@@ -474,7 +476,7 @@ C<memoryReservation> in container definitions. If you specify both,
 C<memory> must be greater than C<memoryReservation>. If you specify
 C<memoryReservation>, then that value is subtracted from the available
 memory resources for the container instance on which the container is
-placed; otherwise, the value of C<memory> is used.
+placed. Otherwise, the value of C<memory> is used.
 
 The Docker daemon reserves a minimum of 4 MiB of memory for a
 container, so you should not specify fewer than 4 MiB of memory for
@@ -485,7 +487,7 @@ your containers.
 
   The soft limit (in MiB) of memory to reserve for the container. When
 system memory is under heavy contention, Docker attempts to keep the
-container memory to this soft limit; however, your container can
+container memory to this soft limit. However, your container can
 consume more memory when it needs to, up to either the hard limit
 specified with the C<memory> parameter (if applicable), or all of the
 available memory on the container instance, whichever comes first. This
@@ -501,7 +503,7 @@ C<memoryReservation> in container definitions. If you specify both,
 C<memory> must be greater than C<memoryReservation>. If you specify
 C<memoryReservation>, then that value is subtracted from the available
 memory resources for the container instance on which the container is
-placed; otherwise, the value of C<memory> is used.
+placed. Otherwise, the value of C<memory> is used.
 
 For example, if your container normally uses 128 MiB of memory, but
 occasionally bursts to 256 MiB of memory for short periods of time, you
@@ -618,6 +620,11 @@ This parameter is not supported for Windows containers.
   The private repository authentication credentials to use.
 
 
+=head2 Secrets => ArrayRef[L<Paws::ECS::Secret>]
+
+  The secrets to pass to the container.
+
+
 =head2 SystemControls => ArrayRef[L<Paws::ECS::SystemControl>]
 
   A list of namespaced kernel parameters to set in the container. This
@@ -629,9 +636,11 @@ to docker run (https://docs.docker.com/engine/reference/run/).
 
 It is not recommended that you specify network-related
 C<systemControls> parameters for multiple containers in a single task
-that also uses either the C<awsvpc> or C<host> network modes. When you
-do, the container that is started last will determine which
-C<systemControls> parameters take effect.
+that also uses either the C<awsvpc> or C<host> network modes. For tasks
+that use the C<awsvpc> network mode, the container that is started last
+determines which C<systemControls> parameters take effect. For tasks
+that use the C<host> network mode, it changes the container instance's
+namespaced kernel parameters as well as the containers.
 
 
 =head2 Ulimits => ArrayRef[L<Paws::ECS::Ulimit>]
@@ -646,7 +655,8 @@ naming values are displayed in the Ulimit data type. This parameter
 requires version 1.18 of the Docker Remote API or greater on your
 container instance. To check the Docker Remote API version on your
 container instance, log in to your container instance and run the
-following command: C<sudo docker version | grep "Server API version">
+following command: C<sudo docker version --format
+'{{.Server.APIVersion}}'>
 
 This parameter is not supported for Windows containers.
 

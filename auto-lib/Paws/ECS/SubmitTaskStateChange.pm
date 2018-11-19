@@ -103,19 +103,19 @@ Any containers associated with the state change request.
 
 =head2 ExecutionStoppedAt => Str
 
-The Unix time stamp for when the task execution stopped.
+The Unix timestamp for when the task execution stopped.
 
 
 
 =head2 PullStartedAt => Str
 
-The Unix time stamp for when the container image pull began.
+The Unix timestamp for when the container image pull began.
 
 
 
 =head2 PullStoppedAt => Str
 
-The Unix time stamp for when the container image pull completed.
+The Unix timestamp for when the container image pull completed.
 
 
 

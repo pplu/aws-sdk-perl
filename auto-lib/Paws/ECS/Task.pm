@@ -21,9 +21,11 @@ package Paws::ECS::Task;
   has PullStoppedAt => (is => 'ro', isa => 'Str', request_name => 'pullStoppedAt', traits => ['NameInRequest']);
   has StartedAt => (is => 'ro', isa => 'Str', request_name => 'startedAt', traits => ['NameInRequest']);
   has StartedBy => (is => 'ro', isa => 'Str', request_name => 'startedBy', traits => ['NameInRequest']);
+  has StopCode => (is => 'ro', isa => 'Str', request_name => 'stopCode', traits => ['NameInRequest']);
   has StoppedAt => (is => 'ro', isa => 'Str', request_name => 'stoppedAt', traits => ['NameInRequest']);
   has StoppedReason => (is => 'ro', isa => 'Str', request_name => 'stoppedReason', traits => ['NameInRequest']);
   has StoppingAt => (is => 'ro', isa => 'Str', request_name => 'stoppingAt', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', request_name => 'tags', traits => ['NameInRequest']);
   has TaskArn => (is => 'ro', isa => 'Str', request_name => 'taskArn', traits => ['NameInRequest']);
   has TaskDefinitionArn => (is => 'ro', isa => 'Str', request_name => 'taskDefinitionArn', traits => ['NameInRequest']);
   has Version => (is => 'ro', isa => 'Int', request_name => 'version', traits => ['NameInRequest']);
@@ -64,7 +66,7 @@ Details on a task in a cluster.
 
 =head2 Attachments => ArrayRef[L<Paws::ECS::Attachment>]
 
-  The elastic network adapter associated with the task if the task uses
+  The Elastic Network Adapter associated with the task if the task uses
 the C<awsvpc> network mode.
 
 
@@ -80,7 +82,7 @@ the C<awsvpc> network mode.
 
 =head2 ConnectivityAt => Str
 
-  The Unix time stamp for when the task last went into C<CONNECTED>
+  The Unix timestamp for when the task last went into C<CONNECTED>
 status.
 
 
@@ -96,19 +98,20 @@ status.
 
 =head2 Cpu => Str
 
-  The number of CPU units used by the task. It can be expressed as an
-integer using CPU units, for example C<1024>, or as a string using
-vCPUs, for example C<1 vCPU> or C<1 vcpu>, in a task definition. String
-values are converted to an integer indicating the CPU units when the
-task definition is registered.
+  The number of CPU units used by the task as expressed in a task
+definition. It can be expressed as an integer using CPU units, for
+example C<1024>. It can also be expressed as a string using vCPUs, for
+example C<1 vCPU> or C<1 vcpu>. String values are converted to an
+integer indicating the CPU units when the task definition is
+registered.
 
-If using the EC2 launch type, this field is optional. Supported values
-are between C<128> CPU units (C<0.125> vCPUs) and C<10240> CPU units
-(C<10> vCPUs).
+If you are using the EC2 launch type, this field is optional. Supported
+values are between C<128> CPU units (C<0.125> vCPUs) and C<10240> CPU
+units (C<10> vCPUs).
 
-If using the Fargate launch type, this field is required and you must
-use one of the following values, which determines your range of
-supported values for the C<memory> parameter:
+If you are using the Fargate launch type, this field is required and
+you must use one of the following values, which determines your range
+of supported values for the C<memory> parameter:
 
 =over
 
@@ -143,7 +146,7 @@ supported values for the C<memory> parameter:
 
 =head2 CreatedAt => Str
 
-  The Unix time stamp for when the task was created (the task entered the
+  The Unix timestamp for when the task was created (the task entered the
 C<PENDING> state).
 
 
@@ -156,7 +159,7 @@ Lifecycle
 
 =head2 ExecutionStoppedAt => Str
 
-  The Unix time stamp for when the task execution stopped.
+  The Unix timestamp for when the task execution stopped.
 
 
 =head2 Group => Str
@@ -195,17 +198,17 @@ Lifecycle
 
 =head2 Memory => Str
 
-  The amount of memory (in MiB) used by the task. It can be expressed as
-an integer using MiB, for example C<1024>, or as a string using GB, for
-example C<1GB> or C<1 GB>, in a task definition. String values are
-converted to an integer indicating the MiB when the task definition is
-registered.
+  The amount of memory (in MiB) used by the task as expressed in a task
+definition. It can be expressed as an integer using MiB, for example
+C<1024>. It can also be expressed as a string using GB, for example
+C<1GB> or C<1 GB>. String values are converted to an integer indicating
+the MiB when the task definition is registered.
 
-If using the EC2 launch type, this field is optional.
+If you are using the EC2 launch type, this field is optional.
 
-If using the Fargate launch type, this field is required and you must
-use one of the following values, which determines your range of
-supported values for the C<cpu> parameter:
+If you are using the Fargate launch type, this field is required and
+you must use one of the following values, which determines your range
+of supported values for the C<cpu> parameter:
 
 =over
 
@@ -253,17 +256,17 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 =head2 PullStartedAt => Str
 
-  The Unix time stamp for when the container image pull began.
+  The Unix timestamp for when the container image pull began.
 
 
 =head2 PullStoppedAt => Str
 
-  The Unix time stamp for when the container image pull completed.
+  The Unix timestamp for when the container image pull completed.
 
 
 =head2 StartedAt => Str
 
-  The Unix time stamp for when the task started (the task transitioned
+  The Unix timestamp for when the task started (the task transitioned
 from the C<PENDING> state to the C<RUNNING> state).
 
 
@@ -274,10 +277,16 @@ Amazon ECS service, then the C<startedBy> parameter contains the
 deployment ID of the service that starts it.
 
 
+=head2 StopCode => Str
+
+  The stop code indicating why a task was stopped. The C<stoppedReason>
+may contain additional details.
+
+
 =head2 StoppedAt => Str
 
-  The Unix time stamp for when the task was stopped (the task
-transitioned from the C<RUNNING> state to the C<STOPPED> state).
+  The Unix timestamp for when the task was stopped (the task transitioned
+from the C<RUNNING> state to the C<STOPPED> state).
 
 
 =head2 StoppedReason => Str
@@ -287,8 +296,17 @@ transitioned from the C<RUNNING> state to the C<STOPPED> state).
 
 =head2 StoppingAt => Str
 
-  The Unix time stamp for when the task stops (transitions from the
+  The Unix timestamp for when the task stops (transitions from the
 C<RUNNING> state to C<STOPPED>).
+
+
+=head2 Tags => ArrayRef[L<Paws::ECS::Tag>]
+
+  The metadata that you apply to the task to help you categorize and
+organize them. Each tag consists of a key and an optional value, both
+of which you define. Tag keys can have a maximum character length of
+128 characters, and tag values can have a maximum length of 256
+characters.
 
 
 =head2 TaskArn => Str

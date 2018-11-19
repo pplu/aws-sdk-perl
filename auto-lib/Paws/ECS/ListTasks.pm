@@ -90,15 +90,15 @@ container instance.
 
 The task desired status with which to filter the C<ListTasks> results.
 Specifying a C<desiredStatus> of C<STOPPED> limits the results to tasks
-that Amazon ECS has set the desired status to C<STOPPED>, which can be
+that Amazon ECS has set the desired status to C<STOPPED>. This can be
 useful for debugging tasks that are not starting properly or have died
 or finished. The default status filter is C<RUNNING>, which shows tasks
 that Amazon ECS has set the desired status to C<RUNNING>.
 
 Although you can filter results based on a desired status of
-C<PENDING>, this does not return any results because Amazon ECS never
-sets the desired status of a task to that value (only a task's
-C<lastStatus> may have a value of C<PENDING>).
+C<PENDING>, this does not return any results. Amazon ECS never sets the
+desired status of a task to that value (only a task's C<lastStatus> may
+have a value of C<PENDING>).
 
 Valid values are: C<"RUNNING">, C<"PENDING">, C<"STOPPED">
 

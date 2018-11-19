@@ -38,8 +38,14 @@ The repository credentials for private registry authentication.
 
 =head2 B<REQUIRED> CredentialsParameter => Str
 
-  The Amazon Resource Name (ARN) or name of the secret containing the
-private repository credentials.
+  The Amazon Resource Name (ARN) of the secret containing the private
+repository credentials.
+
+When you are using the Amazon ECS API, AWS CLI, or AWS SDK, if the
+secret exists in the same Region as the task that you are launching
+then you can use either the full ARN or the name of the secret. When
+you are using the AWS Management Console, you must specify the full ARN
+of the secret.
 
 
 

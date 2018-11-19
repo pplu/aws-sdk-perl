@@ -3,10 +3,13 @@ package Paws::ECS::StartTask;
   use Moose;
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
   has ContainerInstances => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'containerInstances' , required => 1);
+  has EnableECSManagedTags => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableECSManagedTags' );
   has Group => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'group' );
   has NetworkConfiguration => (is => 'ro', isa => 'Paws::ECS::NetworkConfiguration', traits => ['NameInRequest'], request_name => 'networkConfiguration' );
   has Overrides => (is => 'ro', isa => 'Paws::ECS::TaskOverride', traits => ['NameInRequest'], request_name => 'overrides' );
+  has PropagateTags => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'propagateTags' );
   has StartedBy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startedBy' );
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has TaskDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskDefinition' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -37,6 +40,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ContainerInstances   => [ 'MyString', ... ],
       TaskDefinition       => 'MyString',
       Cluster              => 'MyString',            # OPTIONAL
+      EnableECSManagedTags => 1,                     # OPTIONAL
       Group                => 'MyString',            # OPTIONAL
       NetworkConfiguration => {
         AwsvpcConfiguration => {
@@ -66,7 +70,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ExecutionRoleArn => 'MyString',
         TaskRoleArn      => 'MyString',
       },    # OPTIONAL
-      StartedBy => 'MyString',    # OPTIONAL
+      PropagateTags => 'TASK_DEFINITION',    # OPTIONAL
+      StartedBy     => 'MyString',           # OPTIONAL
+      Tags          => [
+        {
+          Key   => 'MyTagKey',               # min: 1, max: 128; OPTIONAL
+          Value => 'MyTagValue',             # max: 256; OPTIONAL
+        },
+        ...
+      ],                                     # OPTIONAL
     );
 
     # Results:
@@ -94,6 +106,15 @@ cluster is assumed.
 The container instance IDs or full ARN entries for the container
 instances on which you would like to place your task. You can specify
 up to 10 container instances.
+
+
+
+=head2 EnableECSManagedTags => Bool
+
+Specifies whether to enable Amazon ECS managed tags for the task. For
+more information, see Tagging Your Amazon ECS Resources
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/Using_Tags.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 
@@ -128,9 +149,17 @@ includes the JSON formatting characters of the override structure.
 
 
 
+=head2 PropagateTags => Str
+
+Specifies whether to propagate the tags from the task definition or the
+service to the task. If no value is specified, the tags are not
+propagated.
+
+Valid values are: C<"TASK_DEFINITION">, C<"SERVICE">
+
 =head2 StartedBy => Str
 
-An optional tag specified when a task is started. For example if you
+An optional tag specified when a task is started. For example, if you
 automatically trigger a task to run a batch process job, you could
 apply a unique identifier for that job to your task with the
 C<startedBy> parameter. You can then identify which tasks belong to
@@ -140,6 +169,16 @@ numbers, hyphens, and underscores are allowed.
 
 If a task is started by an Amazon ECS service, then the C<startedBy>
 parameter contains the deployment ID of the service that starts it.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::ECS::Tag>]
+
+The metadata that you apply to the task to help you categorize and
+organize them. Each tag consists of a key and an optional value, both
+of which you define. Tag keys can have a maximum character length of
+128 characters, and tag values can have a maximum length of 256
+characters.
 
 
 
