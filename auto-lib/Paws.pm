@@ -460,9 +460,13 @@ L<Paws::Pinpoint>
 
 L<Paws::PinpointEmail>
 
+L<Paws::PinpointSMSVoice>
+
 L<Paws::Polly>
 
 L<Paws::Pricing>
+
+L<Paws::RAM>
 
 L<Paws::RDS>
 
@@ -478,7 +482,11 @@ L<Paws::Route53>
 
 L<Paws::Route53Domains>
 
+L<Paws::Route53Resolver>
+
 L<Paws::S3>
+
+L<Paws::S3Control>
 
 L<Paws::SageMaker>
 
