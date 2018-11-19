@@ -172,6 +172,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::DeleteDBInstance', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteDBInstanceAutomatedBackup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DeleteDBInstanceAutomatedBackup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteDBParameterGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::DeleteDBParameterGroup', @_);
@@ -250,6 +255,11 @@ package Paws::RDS;
   sub DescribeDBEngineVersions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBEngineVersions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeDBInstanceAutomatedBackups {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBInstanceAutomatedBackups', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeDBInstances {
@@ -598,6 +608,29 @@ package Paws::RDS;
         $result = $self->DescribeDBEngineVersions(@_, Marker => $result->Marker);
       }
       $callback->($_ => 'DBEngineVersions') foreach (@{ $result->DBEngineVersions });
+    }
+
+    return undef
+  }
+  sub DescribeAllDBInstanceAutomatedBackups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBInstanceAutomatedBackups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBInstanceAutomatedBackups(@_, Marker => $next_result->Marker);
+        push @{ $result->DBInstanceAutomatedBackups }, @{ $next_result->DBInstanceAutomatedBackups };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'DBInstanceAutomatedBackups') foreach (@{ $result->DBInstanceAutomatedBackups });
+        $result = $self->DescribeDBInstanceAutomatedBackups(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'DBInstanceAutomatedBackups') foreach (@{ $result->DBInstanceAutomatedBackups });
     }
 
     return undef
@@ -972,7 +1005,7 @@ package Paws::RDS;
   }
 
 
-  sub operations { qw/AddRoleToDBCluster AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress BacktrackDBCluster CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateDBCluster CreateDBClusterEndpoint CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateOptionGroup DeleteDBCluster DeleteDBClusterEndpoint DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBParameterGroup DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteOptionGroup DescribeAccountAttributes DescribeCertificates DescribeDBClusterBacktracks DescribeDBClusterEndpoints DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DescribeSourceRegions DescribeValidDBInstanceModifications DownloadDBLogFilePortion FailoverDBCluster ListTagsForResource ModifyCurrentDBClusterCapacity ModifyDBCluster ModifyDBClusterEndpoint ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBSnapshot ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyOptionGroup PromoteReadReplica PromoteReadReplicaDBCluster PurchaseReservedDBInstancesOffering RebootDBInstance RemoveRoleFromDBCluster RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromS3 RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceFromS3 RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress StartDBCluster StartDBInstance StopDBCluster StopDBInstance / }
+  sub operations { qw/AddRoleToDBCluster AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress BacktrackDBCluster CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateDBCluster CreateDBClusterEndpoint CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateOptionGroup DeleteDBCluster DeleteDBClusterEndpoint DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBInstanceAutomatedBackup DeleteDBParameterGroup DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteOptionGroup DescribeAccountAttributes DescribeCertificates DescribeDBClusterBacktracks DescribeDBClusterEndpoints DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstanceAutomatedBackups DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DescribeSourceRegions DescribeValidDBInstanceModifications DownloadDBLogFilePortion FailoverDBCluster ListTagsForResource ModifyCurrentDBClusterCapacity ModifyDBCluster ModifyDBClusterEndpoint ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBSnapshot ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyOptionGroup PromoteReadReplica PromoteReadReplicaDBCluster PurchaseReservedDBInstancesOffering RebootDBInstance RemoveRoleFromDBCluster RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromS3 RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceFromS3 RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress StartDBCluster StartDBInstance StopDBCluster StopDBInstance / }
 
 1;
 
@@ -2099,6 +2132,8 @@ in the I<Amazon Aurora User Guide.>
 
 =item DBInstanceIdentifier => Str
 
+=item [DeleteAutomatedBackups => Bool]
+
 =item [FinalDBSnapshotIdentifier => Str]
 
 =item [SkipFinalSnapshot => Bool]
@@ -2148,6 +2183,23 @@ the C<DeleteDBInstance> API action to delete the final instance in the
 DB cluster.
 
 
+=head2 DeleteDBInstanceAutomatedBackup
+
+=over
+
+=item DbiResourceId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::DeleteDBInstanceAutomatedBackup>
+
+Returns: a L<Paws::RDS::DeleteDBInstanceAutomatedBackupResult> instance
+
+Deletes automated backups based on the source instance's
+C<DbiResourceId> value or the restorable instance's resource ID.
+
+
 =head2 DeleteDBParameterGroup
 
 =over
@@ -2161,7 +2213,7 @@ Each argument is described in detail in: L<Paws::RDS::DeleteDBParameterGroup>
 
 Returns: nothing
 
-Deletes a specified DBParameterGroup. The DBParameterGroup to be
+Deletes a specified DB parameter group. The DB parameter group to be
 deleted can't be associated with any DB instances.
 
 
@@ -2197,10 +2249,10 @@ Each argument is described in detail in: L<Paws::RDS::DeleteDBSnapshot>
 
 Returns: a L<Paws::RDS::DeleteDBSnapshotResult> instance
 
-Deletes a DBSnapshot. If the snapshot is being copied, the copy
+Deletes a DB snapshot. If the snapshot is being copied, the copy
 operation is terminated.
 
-The DBSnapshot must be in the C<available> state to be deleted.
+The DB snapshot must be in the C<available> state to be deleted.
 
 
 =head2 DeleteDBSubnetGroup
@@ -2528,6 +2580,37 @@ Returns: a L<Paws::RDS::DBEngineVersionMessage> instance
 Returns a list of the available DB engines.
 
 
+=head2 DescribeDBInstanceAutomatedBackups
+
+=over
+
+=item [DBInstanceIdentifier => Str]
+
+=item [DbiResourceId => Str]
+
+=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::DescribeDBInstanceAutomatedBackups>
+
+Returns: a L<Paws::RDS::DBInstanceAutomatedBackupMessage> instance
+
+Displays backups for both current and deleted instances. For example,
+use this operation to find details about automated backups for
+previously deleted instances. Current instances with retention periods
+greater than zero (0) are returned for both the
+C<DescribeDBInstanceAutomatedBackups> and C<DescribeDBInstances>
+operations.
+
+All parameters are optional.
+
+
 =head2 DescribeDBInstances
 
 =over
@@ -2685,6 +2768,8 @@ the ModifyDBSnapshotAttribute API action.
 =over
 
 =item [DBInstanceIdentifier => Str]
+
+=item [DbiResourceId => Str]
 
 =item [DBSnapshotIdentifier => Str]
 
@@ -4277,8 +4362,6 @@ in the I<Amazon RDS User Guide.>
 
 =over
 
-=item SourceDBInstanceIdentifier => Str
-
 =item TargetDBInstanceIdentifier => Str
 
 =item [AutoMinorVersionUpgrade => Bool]
@@ -4322,6 +4405,10 @@ in the I<Amazon RDS User Guide.>
 =item [PubliclyAccessible => Bool]
 
 =item [RestoreTime => Str]
+
+=item [SourceDBInstanceIdentifier => Str]
+
+=item [SourceDbiResourceId => Str]
 
 =item [StorageType => Str]
 
@@ -4426,7 +4513,7 @@ Starts an Amazon RDS DB instance that was stopped using the AWS
 console, the stop-db-instance AWS CLI command, or the StopDBInstance
 action.
 
-For more information, see Starting an Amazon RDS DB Instance That Was
+For more information, see Starting an Amazon RDS DB instance That Was
 Previously Stopped
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_StartInstance.html)
 in the I<Amazon RDS User Guide.>
@@ -4530,6 +4617,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::DBEngineVersionMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 DescribeAllDBInstanceAutomatedBackups(sub { },[DBInstanceIdentifier => Str, DbiResourceId => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllDBInstanceAutomatedBackups([DBInstanceIdentifier => Str, DbiResourceId => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DBInstanceAutomatedBackups, passing the object as the first parameter, and the string 'DBInstanceAutomatedBackups' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::DBInstanceAutomatedBackupMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllDBInstances(sub { },[DBInstanceIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
 
 =head2 DescribeAllDBInstances([DBInstanceIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
@@ -4590,9 +4689,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::DBSecurityGroupMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllDBSnapshots(sub { },[DBInstanceIdentifier => Str, DBSnapshotIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], IncludePublic => Bool, IncludeShared => Bool, Marker => Str, MaxRecords => Int, SnapshotType => Str])
+=head2 DescribeAllDBSnapshots(sub { },[DBInstanceIdentifier => Str, DbiResourceId => Str, DBSnapshotIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], IncludePublic => Bool, IncludeShared => Bool, Marker => Str, MaxRecords => Int, SnapshotType => Str])
 
-=head2 DescribeAllDBSnapshots([DBInstanceIdentifier => Str, DBSnapshotIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], IncludePublic => Bool, IncludeShared => Bool, Marker => Str, MaxRecords => Int, SnapshotType => Str])
+=head2 DescribeAllDBSnapshots([DBInstanceIdentifier => Str, DbiResourceId => Str, DBSnapshotIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], IncludePublic => Bool, IncludeShared => Bool, Marker => Str, MaxRecords => Int, SnapshotType => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

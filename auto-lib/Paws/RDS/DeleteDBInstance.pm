@@ -2,6 +2,7 @@
 package Paws::RDS::DeleteDBInstance;
   use Moose;
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  has DeleteAutomatedBackups => (is => 'ro', isa => 'Bool');
   has FinalDBSnapshotIdentifier => (is => 'ro', isa => 'Str');
   has SkipFinalSnapshot => (is => 'ro', isa => 'Bool');
 
@@ -63,13 +64,21 @@ Must match the name of an existing DB instance.
 
 
 
+=head2 DeleteAutomatedBackups => Bool
+
+A value that indicates whether to remove automated backups immediately
+after the DB instance is deleted. This parameter isn't case-sensitive.
+This parameter defaults to C<true>.
+
+
+
 =head2 FinalDBSnapshotIdentifier => Str
 
-The DBSnapshotIdentifier of the new DBSnapshot created when
-SkipFinalSnapshot is set to C<false>.
+The C<DBSnapshotIdentifier> of the new DB snapshot created when
+C<SkipFinalSnapshot> is set to C<false>.
 
-Specifying this parameter and also setting the SkipFinalShapshot
-parameter to true results in an error.
+Specifying this parameter and also setting the C<SkipFinalShapshot>
+parameter to C<true> results in an error.
 
 Constraints:
 
@@ -81,11 +90,11 @@ Must be 1 to 255 letters or numbers.
 
 =item *
 
-First character must be a letter
+First character must be a letter.
 
 =item *
 
-Can't end with a hyphen or contain two consecutive hyphens
+Can't end with a hyphen or contain two consecutive hyphens.
 
 =item *
 
@@ -98,19 +107,19 @@ Can't be specified when deleting a Read Replica.
 
 =head2 SkipFinalSnapshot => Bool
 
-Determines whether a final DB snapshot is created before the DB
-instance is deleted. If C<true> is specified, no DBSnapshot is created.
-If C<false> is specified, a DB snapshot is created before the DB
-instance is deleted.
+A value that indicates whether a final DB snapshot is created before
+the DB instance is deleted. If C<true> is specified, no DB snapshot is
+created. If C<false> is specified, a DB snapshot is created before the
+DB instance is deleted.
 
-Note that when a DB instance is in a failure state and has a status of
-'failed', 'incompatible-restore', or 'incompatible-network', it can
-only be deleted when the SkipFinalSnapshot parameter is set to "true".
+When a DB instance is in a failure state and has a status of C<failed>,
+C<incompatible-restore>, or C<incompatible-network>, you can only
+delete it when the C<SkipFinalSnapshot> parameter is set to C<true>.
 
 Specify C<true> when deleting a Read Replica.
 
-The FinalDBSnapshotIdentifier parameter must be specified if
-SkipFinalSnapshot is C<false>.
+The C<FinalDBSnapshotIdentifier> parameter must be specified if
+C<SkipFinalSnapshot> is C<false>.
 
 Default: C<false>
 

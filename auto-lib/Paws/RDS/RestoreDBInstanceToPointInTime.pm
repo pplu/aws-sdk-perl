@@ -22,7 +22,8 @@ package Paws::RDS::RestoreDBInstanceToPointInTime;
   has ProcessorFeatures => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ProcessorFeature]');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has RestoreTime => (is => 'ro', isa => 'Str');
-  has SourceDBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  has SourceDBInstanceIdentifier => (is => 'ro', isa => 'Str');
+  has SourceDbiResourceId => (is => 'ro', isa => 'Str');
   has StorageType => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
   has TargetDBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
@@ -57,7 +58,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $rds = Paws->service('RDS');
     my $RestoreDBInstanceToPointInTimeResult =
       $rds->RestoreDBInstanceToPointInTime(
-      SourceDBInstanceIdentifier      => 'MyString',
       TargetDBInstanceIdentifier      => 'MyString',
       AutoMinorVersionUpgrade         => 1,                      # OPTIONAL
       AvailabilityZone                => 'MyString',             # OPTIONAL
@@ -84,10 +84,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                                         # OPTIONAL
-      PubliclyAccessible => 1,                                   # OPTIONAL
-      RestoreTime        => '1970-01-01T01:00:00',               # OPTIONAL
-      StorageType        => 'MyString',                          # OPTIONAL
-      Tags               => [
+      PubliclyAccessible         => 1,                           # OPTIONAL
+      RestoreTime                => '1970-01-01T01:00:00',       # OPTIONAL
+      SourceDBInstanceIdentifier => 'MyString',                  # OPTIONAL
+      SourceDbiResourceId        => 'MyString',                  # OPTIONAL
+      StorageType                => 'MyString',                  # OPTIONAL
+      Tags                       => [
         {
           Key   => 'MyString',
           Value => 'MyString',
@@ -416,7 +418,7 @@ Example: C<2009-09-07T23:45:00Z>
 
 
 
-=head2 B<REQUIRED> SourceDBInstanceIdentifier => Str
+=head2 SourceDBInstanceIdentifier => Str
 
 The identifier of the source DB instance from which to restore.
 
@@ -430,6 +432,12 @@ Must match the identifier of an existing DB instance.
 
 =back
 
+
+
+
+=head2 SourceDbiResourceId => Str
+
+The resource ID of the source DB instance from which to restore.
 
 
 
