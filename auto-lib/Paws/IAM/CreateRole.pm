@@ -7,6 +7,7 @@ package Paws::IAM::CreateRole;
   has Path => (is => 'ro', isa => 'Str');
   has PermissionsBoundary => (is => 'ro', isa => 'Str');
   has RoleName => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -150,6 +151,20 @@ also include any of the following characters: _+=,.@-
 
 Role names are not distinguished by case. For example, you cannot
 create roles named both "PRODROLE" and "prodrole".
+
+
+
+=head2 Tags => ArrayRef[L<Paws::IAM::Tag>]
+
+A list of tags that you want to attach to the newly created role. Each
+tag consists of a key name and an associated value. For more
+information about tagging, see Tagging IAM Identities
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+I<IAM User Guide>.
+
+If any one of the tags is invalid or if you exceed the allowed number
+of tags per role, then the entire request fails and the role is not
+created.
 
 
 

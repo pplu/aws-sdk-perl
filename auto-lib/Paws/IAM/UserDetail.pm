@@ -6,6 +6,7 @@ package Paws::IAM::UserDetail;
   has GroupList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Path => (is => 'ro', isa => 'Str');
   has PermissionsBoundary => (is => 'ro', isa => 'Paws::IAM::AttachedPermissionsBoundary');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Tag]');
   has UserId => (is => 'ro', isa => 'Str');
   has UserName => (is => 'ro', isa => 'Str');
   has UserPolicyList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::PolicyDetail]');
@@ -86,6 +87,14 @@ For more information about permissions boundaries, see Permissions
 Boundaries for IAM Identities
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html)
 in the I<IAM User Guide>.
+
+
+=head2 Tags => ArrayRef[L<Paws::IAM::Tag>]
+
+  A list of tags that are associated with the specified user. For more
+information about tagging, see Tagging IAM Identities
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+I<IAM User Guide>.
 
 
 =head2 UserId => Str

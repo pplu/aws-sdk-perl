@@ -9,6 +9,7 @@ package Paws::IAM::Role;
   has PermissionsBoundary => (is => 'ro', isa => 'Paws::IAM::AttachedPermissionsBoundary');
   has RoleId => (is => 'ro', isa => 'Str', required => 1);
   has RoleName => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Tag]');
 1;
 
 ### main pod documentation begin ###
@@ -28,7 +29,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IAM::Role object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., RoleName => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -108,6 +109,14 @@ in the I<Using IAM> guide.
 =head2 B<REQUIRED> RoleName => Str
 
   The friendly name that identifies the role.
+
+
+=head2 Tags => ArrayRef[L<Paws::IAM::Tag>]
+
+  A list of tags that are attached to the specified role. For more
+information about tagging, see Tagging IAM Identities
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+I<IAM User Guide>.
 
 
 

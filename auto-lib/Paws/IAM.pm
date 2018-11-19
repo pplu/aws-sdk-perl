@@ -495,6 +495,11 @@ package Paws::IAM;
     my $call_object = $self->new_with_coercions('Paws::IAM::ListRoles', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListRoleTags {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::ListRoleTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListSAMLProviders {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::ListSAMLProviders', @_);
@@ -528,6 +533,11 @@ package Paws::IAM;
   sub ListUsers {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::ListUsers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListUserTags {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::ListUserTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListVirtualMFADevices {
@@ -598,6 +608,26 @@ package Paws::IAM;
   sub SimulatePrincipalPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::SimulatePrincipalPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagRole {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::TagRole', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagUser {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::TagUser', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagRole {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::UntagRole', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagUser {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::UntagUser', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateAccessKey {
@@ -1301,7 +1331,7 @@ package Paws::IAM;
   }
 
 
-  sub operations { qw/AddClientIDToOpenIDConnectProvider AddRoleToInstanceProfile AddUserToGroup AttachGroupPolicy AttachRolePolicy AttachUserPolicy ChangePassword CreateAccessKey CreateAccountAlias CreateGroup CreateInstanceProfile CreateLoginProfile CreateOpenIDConnectProvider CreatePolicy CreatePolicyVersion CreateRole CreateSAMLProvider CreateServiceLinkedRole CreateServiceSpecificCredential CreateUser CreateVirtualMFADevice DeactivateMFADevice DeleteAccessKey DeleteAccountAlias DeleteAccountPasswordPolicy DeleteGroup DeleteGroupPolicy DeleteInstanceProfile DeleteLoginProfile DeleteOpenIDConnectProvider DeletePolicy DeletePolicyVersion DeleteRole DeleteRolePermissionsBoundary DeleteRolePolicy DeleteSAMLProvider DeleteServerCertificate DeleteServiceLinkedRole DeleteServiceSpecificCredential DeleteSigningCertificate DeleteSSHPublicKey DeleteUser DeleteUserPermissionsBoundary DeleteUserPolicy DeleteVirtualMFADevice DetachGroupPolicy DetachRolePolicy DetachUserPolicy EnableMFADevice GenerateCredentialReport GetAccessKeyLastUsed GetAccountAuthorizationDetails GetAccountPasswordPolicy GetAccountSummary GetContextKeysForCustomPolicy GetContextKeysForPrincipalPolicy GetCredentialReport GetGroup GetGroupPolicy GetInstanceProfile GetLoginProfile GetOpenIDConnectProvider GetPolicy GetPolicyVersion GetRole GetRolePolicy GetSAMLProvider GetServerCertificate GetServiceLinkedRoleDeletionStatus GetSSHPublicKey GetUser GetUserPolicy ListAccessKeys ListAccountAliases ListAttachedGroupPolicies ListAttachedRolePolicies ListAttachedUserPolicies ListEntitiesForPolicy ListGroupPolicies ListGroups ListGroupsForUser ListInstanceProfiles ListInstanceProfilesForRole ListMFADevices ListOpenIDConnectProviders ListPolicies ListPolicyVersions ListRolePolicies ListRoles ListSAMLProviders ListServerCertificates ListServiceSpecificCredentials ListSigningCertificates ListSSHPublicKeys ListUserPolicies ListUsers ListVirtualMFADevices PutGroupPolicy PutRolePermissionsBoundary PutRolePolicy PutUserPermissionsBoundary PutUserPolicy RemoveClientIDFromOpenIDConnectProvider RemoveRoleFromInstanceProfile RemoveUserFromGroup ResetServiceSpecificCredential ResyncMFADevice SetDefaultPolicyVersion SimulateCustomPolicy SimulatePrincipalPolicy UpdateAccessKey UpdateAccountPasswordPolicy UpdateAssumeRolePolicy UpdateGroup UpdateLoginProfile UpdateOpenIDConnectProviderThumbprint UpdateRole UpdateRoleDescription UpdateSAMLProvider UpdateServerCertificate UpdateServiceSpecificCredential UpdateSigningCertificate UpdateSSHPublicKey UpdateUser UploadServerCertificate UploadSigningCertificate UploadSSHPublicKey / }
+  sub operations { qw/AddClientIDToOpenIDConnectProvider AddRoleToInstanceProfile AddUserToGroup AttachGroupPolicy AttachRolePolicy AttachUserPolicy ChangePassword CreateAccessKey CreateAccountAlias CreateGroup CreateInstanceProfile CreateLoginProfile CreateOpenIDConnectProvider CreatePolicy CreatePolicyVersion CreateRole CreateSAMLProvider CreateServiceLinkedRole CreateServiceSpecificCredential CreateUser CreateVirtualMFADevice DeactivateMFADevice DeleteAccessKey DeleteAccountAlias DeleteAccountPasswordPolicy DeleteGroup DeleteGroupPolicy DeleteInstanceProfile DeleteLoginProfile DeleteOpenIDConnectProvider DeletePolicy DeletePolicyVersion DeleteRole DeleteRolePermissionsBoundary DeleteRolePolicy DeleteSAMLProvider DeleteServerCertificate DeleteServiceLinkedRole DeleteServiceSpecificCredential DeleteSigningCertificate DeleteSSHPublicKey DeleteUser DeleteUserPermissionsBoundary DeleteUserPolicy DeleteVirtualMFADevice DetachGroupPolicy DetachRolePolicy DetachUserPolicy EnableMFADevice GenerateCredentialReport GetAccessKeyLastUsed GetAccountAuthorizationDetails GetAccountPasswordPolicy GetAccountSummary GetContextKeysForCustomPolicy GetContextKeysForPrincipalPolicy GetCredentialReport GetGroup GetGroupPolicy GetInstanceProfile GetLoginProfile GetOpenIDConnectProvider GetPolicy GetPolicyVersion GetRole GetRolePolicy GetSAMLProvider GetServerCertificate GetServiceLinkedRoleDeletionStatus GetSSHPublicKey GetUser GetUserPolicy ListAccessKeys ListAccountAliases ListAttachedGroupPolicies ListAttachedRolePolicies ListAttachedUserPolicies ListEntitiesForPolicy ListGroupPolicies ListGroups ListGroupsForUser ListInstanceProfiles ListInstanceProfilesForRole ListMFADevices ListOpenIDConnectProviders ListPolicies ListPolicyVersions ListRolePolicies ListRoles ListRoleTags ListSAMLProviders ListServerCertificates ListServiceSpecificCredentials ListSigningCertificates ListSSHPublicKeys ListUserPolicies ListUsers ListUserTags ListVirtualMFADevices PutGroupPolicy PutRolePermissionsBoundary PutRolePolicy PutUserPermissionsBoundary PutUserPolicy RemoveClientIDFromOpenIDConnectProvider RemoveRoleFromInstanceProfile RemoveUserFromGroup ResetServiceSpecificCredential ResyncMFADevice SetDefaultPolicyVersion SimulateCustomPolicy SimulatePrincipalPolicy TagRole TagUser UntagRole UntagUser UpdateAccessKey UpdateAccountPasswordPolicy UpdateAssumeRolePolicy UpdateGroup UpdateLoginProfile UpdateOpenIDConnectProviderThumbprint UpdateRole UpdateRoleDescription UpdateSAMLProvider UpdateServerCertificate UpdateServiceSpecificCredential UpdateSigningCertificate UpdateSSHPublicKey UpdateUser UploadServerCertificate UploadSigningCertificate UploadSSHPublicKey / }
 
 1;
 
@@ -1853,6 +1883,8 @@ in the I<IAM User Guide>.
 
 =item [PermissionsBoundary => Str]
 
+=item [Tags => ArrayRef[L<Paws::IAM::Tag>]]
+
 
 =back
 
@@ -1935,12 +1967,10 @@ deleted. This helps ensure that the service is not broken by an
 unexpectedly changed or deleted role, which could put your AWS
 resources into an unknown state. Allowing the service to control the
 role helps improve service stability and proper cleanup when a service
-and its role are no longer needed.
-
-The name of the role is generated by combining the string that you
-specify for the C<AWSServiceName> parameter with the string that you
-specify for the C<CustomSuffix> parameter. The resulting name must be
-unique in your account or the request fails.
+and its role are no longer needed. For more information, see Using
+Service-Linked Roles
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html)
+in the I<IAM User Guide>.
 
 To attach a policy to this service-linked role, you must make the
 request using the AWS service that depends on this role.
@@ -1989,6 +2019,8 @@ in the I<IAM User Guide>.
 =item [Path => Str]
 
 =item [PermissionsBoundary => Str]
+
+=item [Tags => ArrayRef[L<Paws::IAM::Tag>]]
 
 
 =back
@@ -3817,6 +3849,30 @@ You can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
 
 
+=head2 ListRoleTags
+
+=over
+
+=item RoleName => Str
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IAM::ListRoleTags>
+
+Returns: a L<Paws::IAM::ListRoleTagsResponse> instance
+
+Lists the tags that are attached to the specified role. The returned
+list of tags is sorted by tag key. For more information about tagging,
+see Tagging IAM Identities
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+I<IAM User Guide>.
+
+
 =head2 ListSAMLProviders
 
 
@@ -4009,6 +4065,30 @@ account. If there are none, the operation returns an empty list.
 
 You can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
+
+
+=head2 ListUserTags
+
+=over
+
+=item UserName => Str
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IAM::ListUserTags>
+
+Returns: a L<Paws::IAM::ListUserTagsResponse> instance
+
+Lists the tags that are attached to the specified user. The returned
+list of tags is sorted by tag key. For more information about tagging,
+see Tagging IAM Identities
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+I<IAM User Guide>.
 
 
 =head2 ListVirtualMFADevices
@@ -4488,6 +4568,189 @@ simulation, use GetContextKeysForPrincipalPolicy.
 
 If the output is long, you can use the C<MaxItems> and C<Marker>
 parameters to paginate the results.
+
+
+=head2 TagRole
+
+=over
+
+=item RoleName => Str
+
+=item Tags => ArrayRef[L<Paws::IAM::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IAM::TagRole>
+
+Returns: nothing
+
+Adds one or more tags to an IAM role. The role can be a regular role or
+a service-linked role. If a tag with the same key name already exists,
+then that tag is overwritten with the new value.
+
+A tag consists of a key name and an associated value. By assigning tags
+to your resources, you can do the following:
+
+=over
+
+=item *
+
+B<Administrative grouping and discovery> - Attach tags to resources to
+aid in organization and search. For example, you could search for all
+resources with the key name I<Project> and the value
+I<MyImportantProject>. Or search for all resources with the key name
+I<Cost Center> and the value I<41200>.
+
+=item *
+
+B<Access control> - Reference tags in IAM user-based and resource-based
+policies. You can use tags to restrict access to only an IAM user or
+role that has a specified tag attached. You can also restrict access to
+only those resources that have a certain tag attached. For examples of
+policies that show how to use tags to control access, see Control
+Access Using IAM Tags
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html) in
+the I<IAM User Guide>.
+
+=item *
+
+B<Cost allocation> - Use tags to help track which individuals and teams
+are using which AWS resources.
+
+=back
+
+=over
+
+=item *
+
+Make sure that you have no invalid tags and that you do not exceed the
+allowed number of tags per role. In either case, the entire request
+fails and I<no> tags are added to the role.
+
+=item *
+
+AWS always interprets the tag C<Value> as a single string. If you need
+to store an array, you can store comma-separated values in the string.
+However, you must interpret the value in your code.
+
+=back
+
+For more information about tagging, see Tagging IAM Identities
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+I<IAM User Guide>.
+
+
+=head2 TagUser
+
+=over
+
+=item Tags => ArrayRef[L<Paws::IAM::Tag>]
+
+=item UserName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IAM::TagUser>
+
+Returns: nothing
+
+Adds one or more tags to an IAM user. If a tag with the same key name
+already exists, then that tag is overwritten with the new value.
+
+A tag consists of a key name and an associated value. By assigning tags
+to your resources, you can do the following:
+
+=over
+
+=item *
+
+B<Administrative grouping and discovery> - Attach tags to resources to
+aid in organization and search. For example, you could search for all
+resources with the key name I<Project> and the value
+I<MyImportantProject>. Or search for all resources with the key name
+I<Cost Center> and the value I<41200>.
+
+=item *
+
+B<Access control> - Reference tags in IAM user-based and resource-based
+policies. You can use tags to restrict access to only an IAM requesting
+user or to a role that has a specified tag attached. You can also
+restrict access to only those resources that have a certain tag
+attached. For examples of policies that show how to use tags to control
+access, see Control Access Using IAM Tags
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html) in
+the I<IAM User Guide>.
+
+=item *
+
+B<Cost allocation> - Use tags to help track which individuals and teams
+are using which AWS resources.
+
+=back
+
+=over
+
+=item *
+
+Make sure that you have no invalid tags and that you do not exceed the
+allowed number of tags per role. In either case, the entire request
+fails and I<no> tags are added to the role.
+
+=item *
+
+AWS always interprets the tag C<Value> as a single string. If you need
+to store an array, you can store comma-separated values in the string.
+However, you must interpret the value in your code.
+
+=back
+
+For more information about tagging, see Tagging IAM Identities
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+I<IAM User Guide>.
+
+
+=head2 UntagRole
+
+=over
+
+=item RoleName => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IAM::UntagRole>
+
+Returns: nothing
+
+Removes the specified tags from the role. For more information about
+tagging, see Tagging IAM Identities
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+I<IAM User Guide>.
+
+
+=head2 UntagUser
+
+=over
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+=item UserName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IAM::UntagUser>
+
+Returns: nothing
+
+Removes the specified tags from the user. For more information about
+tagging, see Tagging IAM Identities
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+I<IAM User Guide>.
 
 
 =head2 UpdateAccessKey

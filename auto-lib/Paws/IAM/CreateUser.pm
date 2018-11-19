@@ -3,6 +3,7 @@ package Paws::IAM::CreateUser;
   use Moose;
   has Path => (is => 'ro', isa => 'Str');
   has PermissionsBoundary => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Tag]');
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -73,6 +74,20 @@ letters.
 
 The ARN of the policy that is used to set the permissions boundary for
 the user.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::IAM::Tag>]
+
+A list of tags that you want to attach to the newly created user. Each
+tag consists of a key name and an associated value. For more
+information about tagging, see Tagging IAM Identities
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+I<IAM User Guide>.
+
+If any one of the tags is invalid or if you exceed the allowed number
+of tags per user, then the entire request fails and the user is not
+created.
 
 
 
