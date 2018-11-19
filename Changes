@@ -8,6 +8,8 @@
  - New API: Signer
  - New API: Chime
  - New API: PinpointEmail
+ - New API: S3Control
+ - New API: PinpointSMSVoice
 
 0.38 19 Jun 2018
  - Fix test suite so that credentials_process tests don't need extra modules (#251, #248)
