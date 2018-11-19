@@ -34,8 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateGroupOutput = $resource -groups->CreateGroup(
       Name          => 'MyGroupName',
       ResourceQuery => {
-        Query => 'MyQuery',            # max: 2048
-        Type  => 'TAG_FILTERS_1_0',    # values: TAG_FILTERS_1_0
+        Query => 'MyQuery',    # max: 2048
+        Type =>
+          'TAG_FILTERS_1_0', # values: TAG_FILTERS_1_0, CLOUDFORMATION_STACK_1_0
 
       },
       Description => 'MyGroupDescription',    # OPTIONAL

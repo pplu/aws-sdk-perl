@@ -49,6 +49,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $NextToken           = $ListGroupResourcesOutput->NextToken;
+    my $QueryErrors         = $ListGroupResourcesOutput->QueryErrors;
     my $ResourceIdentifiers = $ListGroupResourcesOutput->ResourceIdentifiers;
 
     # Returns a L<Paws::ResourceGroups::ListGroupResourcesOutput> object.

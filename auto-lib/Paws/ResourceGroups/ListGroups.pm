@@ -67,9 +67,9 @@ ListGroups operation.
 
 =item *
 
-C<group-type> - Filter groups by resource type. Specify up to five
-group types in the format AWS::ServiceCode::ResourceType. For example,
-AWS::EC2::Instance, or AWS::S3::Bucket.
+C<resource-type> - Filter groups by resource type. Specify up to five
+resource types in the format AWS::ServiceCode::ResourceType. For
+example, AWS::EC2::Instance, or AWS::S3::Bucket.
 
 =back
 
