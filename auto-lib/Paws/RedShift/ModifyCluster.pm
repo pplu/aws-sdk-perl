@@ -15,6 +15,7 @@ package Paws::RedShift::ModifyCluster;
   has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has MaintenanceTrackName => (is => 'ro', isa => 'Str');
+  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
   has NewClusterIdentifier => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
@@ -62,6 +63,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       HsmConfigurationIdentifier       => 'MyString',             # OPTIONAL
       KmsKeyId                         => 'MyString',             # OPTIONAL
       MaintenanceTrackName             => 'MyString',             # OPTIONAL
+      ManualSnapshotRetentionPeriod    => 1,                      # OPTIONAL
       MasterUserPassword               => 'MyString',             # OPTIONAL
       NewClusterIdentifier             => 'MyString',             # OPTIONAL
       NodeType                         => 'MyString',             # OPTIONAL
@@ -259,6 +261,19 @@ the C<PendingModifiedValues> for the cluster until the next maintenance
 window. When the maintenance track changes, the cluster is switched to
 the latest cluster release available for the maintenance track. At this
 point, the maintenance track name is applied.
+
+
+
+=head2 ManualSnapshotRetentionPeriod => Int
+
+The default for number of days that a newly created manual snapshot is
+retained. If the value is -1, the manual snapshot is retained
+indefinitely. This value will not retroactively change the retention
+periods of existing manual snapshots
+
+The value must be either -1 or an integer between 1 and 3,653.
+
+The default value is -1.
 
 
 

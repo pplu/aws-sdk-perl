@@ -3,6 +3,7 @@ package Paws::RedShift::EnableSnapshotCopy;
   use Moose;
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DestinationRegion => (is => 'ro', isa => 'Str', required => 1);
+  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has RetentionPeriod => (is => 'ro', isa => 'Int');
   has SnapshotCopyGrantName => (is => 'ro', isa => 'Str');
 
@@ -31,10 +32,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $redshift = Paws->service('RedShift');
     my $EnableSnapshotCopyResult = $redshift->EnableSnapshotCopy(
-      ClusterIdentifier     => 'MyString',
-      DestinationRegion     => 'MyString',
-      RetentionPeriod       => 1,             # OPTIONAL
-      SnapshotCopyGrantName => 'MyString',    # OPTIONAL
+      ClusterIdentifier             => 'MyString',
+      DestinationRegion             => 'MyString',
+      ManualSnapshotRetentionPeriod => 1,             # OPTIONAL
+      RetentionPeriod               => 1,             # OPTIONAL
+      SnapshotCopyGrantName         => 'MyString',    # OPTIONAL
     );
 
     # Results:
@@ -65,6 +67,16 @@ Constraints: Must be the name of a valid region. For more information,
 see Regions and Endpoints
 (http://docs.aws.amazon.com/general/latest/gr/rande.html#redshift_region)
 in the Amazon Web Services General Reference.
+
+
+
+=head2 ManualSnapshotRetentionPeriod => Int
+
+The number of days to retain newly copied snapshots in the destination
+region after they are copied from the source region. If the value is
+-1, the manual snapshot is retained indefinitely.
+
+The value must be either -1 or an integer between 1 and 3,653.
 
 
 

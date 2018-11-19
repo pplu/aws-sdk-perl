@@ -16,6 +16,8 @@ package Paws::RedShift::Snapshot;
   has EstimatedSecondsToCompletion => (is => 'ro', isa => 'Int');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has MaintenanceTrackName => (is => 'ro', isa => 'Str');
+  has ManualSnapshotRemainingDays => (is => 'ro', isa => 'Int');
+  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has MasterUsername => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int');
@@ -24,6 +26,7 @@ package Paws::RedShift::Snapshot;
   has RestorableNodeTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'NodeType', traits => ['NameInRequest']);
   has SnapshotCreateTime => (is => 'ro', isa => 'Str');
   has SnapshotIdentifier => (is => 'ro', isa => 'Str');
+  has SnapshotRetentionStartTime => (is => 'ro', isa => 'Str');
   has SnapshotType => (is => 'ro', isa => 'Str');
   has SourceRegion => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
@@ -165,6 +168,20 @@ taken.
   The name of the maintenance track for the snapshot.
 
 
+=head2 ManualSnapshotRemainingDays => Int
+
+  The number of days until a manual snapshot will pass its retention
+period.
+
+
+=head2 ManualSnapshotRetentionPeriod => Int
+
+  The number of days that a manual snapshot is retained. If the value is
+-1, the manual snapshot is retained indefinitely.
+
+The value must be either -1 or an integer between 1 and 3,653.
+
+
 =head2 MasterUsername => Str
 
   The master user name for the cluster.
@@ -208,6 +225,12 @@ contains a copy of the cluster data as of this exact time.
 =head2 SnapshotIdentifier => Str
 
   The snapshot identifier that is provided in the request.
+
+
+=head2 SnapshotRetentionStartTime => Str
+
+  A timestamp representing the start of the retention period for the
+snapshot.
 
 
 =head2 SnapshotType => Str

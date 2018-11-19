@@ -2,6 +2,7 @@
 package Paws::RedShift::CreateClusterSnapshot;
   use Moose;
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has SnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]');
 
@@ -30,15 +31,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $redshift = Paws->service('RedShift');
     my $CreateClusterSnapshotResult = $redshift->CreateClusterSnapshot(
-      ClusterIdentifier  => 'MyString',
-      SnapshotIdentifier => 'MyString',
-      Tags               => [
+      ClusterIdentifier             => 'MyString',
+      SnapshotIdentifier            => 'MyString',
+      ManualSnapshotRetentionPeriod => 1,            # OPTIONAL
+      Tags                          => [
         {
           Key   => 'MyString',
           Value => 'MyString',
         },
         ...
-      ],    # OPTIONAL
+      ],                                             # OPTIONAL
     );
 
     # Results:
@@ -55,6 +57,17 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/red
 =head2 B<REQUIRED> ClusterIdentifier => Str
 
 The cluster identifier for which you want a snapshot.
+
+
+
+=head2 ManualSnapshotRetentionPeriod => Int
+
+The number of days that a manual snapshot is retained. If the value is
+-1, the manual snapshot is retained indefinitely.
+
+The value must be either -1 or an integer between 1 and 3,653.
+
+The default value is -1.
 
 
 

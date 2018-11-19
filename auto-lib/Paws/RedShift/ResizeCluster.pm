@@ -54,7 +54,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/red
 
 A boolean value indicating whether the resize operation is using the
 classic resize process. If you don't provide this parameter or set the
-value to C<false> the resize type is elastic.
+value to C<false>, the resize type is elastic.
 
 
 

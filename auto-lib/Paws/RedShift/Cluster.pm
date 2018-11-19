@@ -26,6 +26,7 @@ package Paws::RedShift::Cluster;
   has IamRoles => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ClusterIamRole]', request_name => 'ClusterIamRole', traits => ['NameInRequest']);
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has MaintenanceTrackName => (is => 'ro', isa => 'Str');
+  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has MasterUsername => (is => 'ro', isa => 'Str');
   has ModifyStatus => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
@@ -36,6 +37,8 @@ package Paws::RedShift::Cluster;
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has ResizeInfo => (is => 'ro', isa => 'Paws::RedShift::ResizeInfo');
   has RestoreStatus => (is => 'ro', isa => 'Paws::RedShift::RestoreStatus');
+  has SnapshotScheduleIdentifier => (is => 'ro', isa => 'Str');
+  has SnapshotScheduleState => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]', request_name => 'Tag', traits => ['NameInRequest']);
   has VpcId => (is => 'ro', isa => 'Str');
   has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::VpcSecurityGroupMembership]', request_name => 'VpcSecurityGroup', traits => ['NameInRequest']);
@@ -256,8 +259,8 @@ created by default.
 
 =head2 ElasticResizeNumberOfNodeOptions => Str
 
-  Indicates the number of nodes the cluster can be resized to with the
-elastic resize method.
+  The number of nodes that you can resize the cluster to with the elastic
+resize method.
 
 
 =head2 Encrypted => Bool
@@ -309,6 +312,15 @@ used to encrypt data in the cluster.
 =head2 MaintenanceTrackName => Str
 
   The name of the maintenance track for the cluster.
+
+
+=head2 ManualSnapshotRetentionPeriod => Int
+
+  The default number of days to retain a manual snapshot. If the value is
+-1, the snapshot is retained indefinitely. This setting does not change
+the retention period of existing snapshots.
+
+The value must be either -1 or an integer between 1 and 3,653
 
 
 =head2 MasterUsername => Str
@@ -379,6 +391,16 @@ ResizeType: Returns ClassicResize
   A value that describes the status of a cluster restore action. This
 parameter returns null if the cluster was not created by restoring a
 snapshot.
+
+
+=head2 SnapshotScheduleIdentifier => Str
+
+  A unique identifier for the cluster snapshot schedule.
+
+
+=head2 SnapshotScheduleState => Str
+
+  The current state of the cluster snapshot schedule.
 
 
 =head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]

@@ -20,6 +20,7 @@ package Paws::RedShift::CreateCluster;
   has IamRoles => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has MaintenanceTrackName => (is => 'ro', isa => 'Str');
+  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has MasterUsername => (is => 'ro', isa => 'Str', required => 1);
   has MasterUserPassword => (is => 'ro', isa => 'Str', required => 1);
   has NodeType => (is => 'ro', isa => 'Str', required => 1);
@@ -27,6 +28,7 @@ package Paws::RedShift::CreateCluster;
   has Port => (is => 'ro', isa => 'Int');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
+  has SnapshotScheduleIdentifier => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]');
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
@@ -77,10 +79,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       IamRoles                         => [ 'MyString', ... ],    # OPTIONAL
       KmsKeyId                         => 'MyString',             # OPTIONAL
       MaintenanceTrackName             => 'MyString',             # OPTIONAL
+      ManualSnapshotRetentionPeriod    => 1,                      # OPTIONAL
       NumberOfNodes                    => 1,                      # OPTIONAL
       Port                             => 1,                      # OPTIONAL
       PreferredMaintenanceWindow       => 'MyString',             # OPTIONAL
       PubliclyAccessible               => 1,                      # OPTIONAL
+      SnapshotScheduleIdentifier       => 'MyString',             # OPTIONAL
       Tags                             => [
         {
           Key   => 'MyString',
@@ -387,6 +391,16 @@ assigned to the C<current> track.
 
 
 
+=head2 ManualSnapshotRetentionPeriod => Int
+
+The default number of days to retain a manual snapshot. If the value is
+-1, the snapshot is retained indefinitely. This setting does not change
+the retention period of existing snapshots.
+
+The value must be either -1 or an integer between 1 and 3,653
+
+
+
 =head2 B<REQUIRED> MasterUsername => Str
 
 The user name associated with the master user account for the cluster
@@ -522,6 +536,12 @@ Constraints: Minimum 30-minute window.
 =head2 PubliclyAccessible => Bool
 
 If C<true>, the cluster can be accessed from a public network.
+
+
+
+=head2 SnapshotScheduleIdentifier => Str
+
+A unique identifier for the snapshot schedule.
 
 
 

@@ -9,6 +9,7 @@ package Paws::RedShift::DescribeClusterSnapshots;
   has OwnerAccount => (is => 'ro', isa => 'Str');
   has SnapshotIdentifier => (is => 'ro', isa => 'Str');
   has SnapshotType => (is => 'ro', isa => 'Str');
+  has SortingEntities => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::SnapshotSortingEntity]');
   has StartTime => (is => 'ro', isa => 'Str');
   has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has TagValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -46,9 +47,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       OwnerAccount       => 'MyString',               # OPTIONAL
       SnapshotIdentifier => 'MyString',               # OPTIONAL
       SnapshotType       => 'MyString',               # OPTIONAL
-      StartTime          => '1970-01-01T01:00:00',    # OPTIONAL
-      TagKeys            => [ 'MyString', ... ],      # OPTIONAL
-      TagValues          => [ 'MyString', ... ],      # OPTIONAL
+      SortingEntities    => [
+        {
+          Attribute =>
+            'SOURCE_TYPE',    # values: SOURCE_TYPE, TOTAL_SIZE, CREATE_TIME
+          SortOrder => 'ASC', # values: ASC, DESC; OPTIONAL
+        },
+        ...
+      ],                      # OPTIONAL
+      StartTime => '1970-01-01T01:00:00',    # OPTIONAL
+      TagKeys   => [ 'MyString', ... ],      # OPTIONAL
+      TagValues => [ 'MyString', ... ],      # OPTIONAL
     );
 
     # Results:
@@ -137,6 +146,12 @@ The type of snapshots for which you are requesting information. By
 default, snapshots of all types are returned.
 
 Valid Values: C<automated> | C<manual>
+
+
+
+=head2 SortingEntities => ArrayRef[L<Paws::RedShift::SnapshotSortingEntity>]
+
+
 
 
 

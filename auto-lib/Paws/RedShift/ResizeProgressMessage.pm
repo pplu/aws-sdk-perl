@@ -90,8 +90,8 @@ resize).
 
 =head2 ResizeType => Str
 
-An enum with possible values of ClassicResize and ElasticResize. These
-values describe the type of resize operation being performed.
+An enum with possible values of C<ClassicResize> and C<ElasticResize>.
+These values describe the type of resize operation being performed.
 
 
 =head2 Status => Str

@@ -62,8 +62,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/red
 
 =head2 B<REQUIRED> ClusterIdentifier => Str
 
-The unique identifier for the cluster whose resize operation you wish
-to cancel.
+The unique identifier for the cluster that you want to cancel a resize
+operation for.
 
 
 
