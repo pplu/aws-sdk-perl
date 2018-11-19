@@ -131,7 +131,8 @@ parameter value that was not valid and could not launch the stack.
 
 =head2 Type => Str
 
-  The type of provisioned product. The supported value is C<CFN_STACK>.
+  The type of provisioned product. The supported values are C<CFN_STACK>
+and C<CFN_STACKSET>.
 
 
 

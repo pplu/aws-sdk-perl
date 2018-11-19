@@ -2066,6 +2066,8 @@ Lists the specified TagOptions or all TagOptions.
 
 =item [ProvisioningParameters => ArrayRef[L<Paws::ServiceCatalog::ProvisioningParameter>]]
 
+=item [ProvisioningPreferences => L<Paws::ServiceCatalog::ProvisioningPreferences>]
+
 =item [Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]]
 
 
@@ -2352,6 +2354,8 @@ Updates the specified product.
 =item [ProvisioningArtifactId => Str]
 
 =item [ProvisioningParameters => ArrayRef[L<Paws::ServiceCatalog::UpdateProvisioningParameter>]]
+
+=item [ProvisioningPreferences => L<Paws::ServiceCatalog::UpdateProvisioningPreferences>]
 
 
 =back

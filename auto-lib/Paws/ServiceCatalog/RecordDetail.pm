@@ -75,7 +75,8 @@ Information about a request operation.
 
 =head2 ProvisionedProductType => Str
 
-  The type of provisioned product. The supported value is C<CFN_STACK>.
+  The type of provisioned product. The supported values are C<CFN_STACK>
+and C<CFN_STACKSET>.
 
 
 =head2 ProvisioningArtifactId => Str
