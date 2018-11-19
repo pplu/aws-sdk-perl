@@ -6,6 +6,7 @@ package Paws::DirectConnect::Lag;
   has AwsDeviceV2 => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'awsDeviceV2' );
   has Connections => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Connection]', traits => ['NameInRequest'], request_name => 'connections' );
   has ConnectionsBandwidth => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionsBandwidth' );
+  has HasLogicalRedundancy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'hasLogicalRedundancy' );
   has JumboFrameCapable => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'jumboFrameCapable' );
   has LagId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagId' );
   has LagName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagName' );
@@ -53,6 +54,12 @@ The individual bandwidth of the physical connections bundled by the
 LAG. The possible values are 1Gbps and 10Gbps.
 
 
+=head2 HasLogicalRedundancy => Str
+
+Indicates whether the LAG supports a secondary BGP peer in the same
+address family (IPv4/IPv6).
+
+Valid values are: C<"unknown">, C<"yes">, C<"no">
 =head2 JumboFrameCapable => Bool
 
 Indicates whether jumbo frames (9001 MTU) are supported.

@@ -41,6 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $AwsDeviceV2             = $Lag->AwsDeviceV2;
     my $Connections             = $Lag->Connections;
     my $ConnectionsBandwidth    = $Lag->ConnectionsBandwidth;
+    my $HasLogicalRedundancy    = $Lag->HasLogicalRedundancy;
     my $JumboFrameCapable       = $Lag->JumboFrameCapable;
     my $LagId                   = $Lag->LagId;
     my $LagName                 = $Lag->LagName;

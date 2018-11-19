@@ -4,6 +4,7 @@ package Paws::DirectConnect::Interconnect;
   has AwsDevice => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'awsDevice' );
   has AwsDeviceV2 => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'awsDeviceV2' );
   has Bandwidth => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'bandwidth' );
+  has HasLogicalRedundancy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'hasLogicalRedundancy' );
   has InterconnectId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'interconnectId' );
   has InterconnectName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'interconnectName' );
   has InterconnectState => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'interconnectState' );
@@ -41,6 +42,12 @@ terminates.
 The bandwidth of the connection.
 
 
+=head2 HasLogicalRedundancy => Str
+
+Indicates whether the interconnect supports a secondary BGP in the same
+address family (IPv4/IPv6).
+
+Valid values are: C<"unknown">, C<"yes">, C<"no">
 =head2 InterconnectId => Str
 
 The ID of the interconnect.

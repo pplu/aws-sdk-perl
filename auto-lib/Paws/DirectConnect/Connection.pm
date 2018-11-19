@@ -7,6 +7,7 @@ package Paws::DirectConnect::Connection;
   has ConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionId' );
   has ConnectionName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionName' );
   has ConnectionState => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionState' );
+  has HasLogicalRedundancy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'hasLogicalRedundancy' );
   has JumboFrameCapable => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'jumboFrameCapable' );
   has LagId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagId' );
   has LoaIssueTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'loaIssueTime' );
@@ -103,6 +104,12 @@ C<rejected> state if it is deleted by the customer.
 
 
 Valid values are: C<"ordering">, C<"requested">, C<"pending">, C<"available">, C<"down">, C<"deleting">, C<"deleted">, C<"rejected">
+=head2 HasLogicalRedundancy => Str
+
+Indicates whether the connection supports a secondary BGP peer in the
+same address family (IPv4/IPv6).
+
+Valid values are: C<"unknown">, C<"yes">, C<"no">
 =head2 JumboFrameCapable => Bool
 
 Indicates whether jumbo frames (9001 MTU) are supported.

@@ -5,6 +5,7 @@ package Paws::DirectConnect::BGPPeer;
   has Asn => (is => 'ro', isa => 'Int', request_name => 'asn', traits => ['NameInRequest']);
   has AuthKey => (is => 'ro', isa => 'Str', request_name => 'authKey', traits => ['NameInRequest']);
   has AwsDeviceV2 => (is => 'ro', isa => 'Str', request_name => 'awsDeviceV2', traits => ['NameInRequest']);
+  has BgpPeerId => (is => 'ro', isa => 'Str', request_name => 'bgpPeerId', traits => ['NameInRequest']);
   has BgpPeerState => (is => 'ro', isa => 'Str', request_name => 'bgpPeerState', traits => ['NameInRequest']);
   has BgpStatus => (is => 'ro', isa => 'Str', request_name => 'bgpStatus', traits => ['NameInRequest']);
   has CustomerAddress => (is => 'ro', isa => 'Str', request_name => 'customerAddress', traits => ['NameInRequest']);
@@ -67,6 +68,11 @@ configuration.
 =head2 AwsDeviceV2 => Str
 
   The Direct Connect endpoint on which the BGP peer terminates.
+
+
+=head2 BgpPeerId => Str
+
+  The ID of the BGP peer.
 
 
 =head2 BgpPeerState => Str
