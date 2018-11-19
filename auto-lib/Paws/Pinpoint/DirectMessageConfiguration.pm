@@ -8,6 +8,7 @@ package Paws::Pinpoint::DirectMessageConfiguration;
   has EmailMessage => (is => 'ro', isa => 'Paws::Pinpoint::EmailMessage');
   has GCMMessage => (is => 'ro', isa => 'Paws::Pinpoint::GCMMessage');
   has SMSMessage => (is => 'ro', isa => 'Paws::Pinpoint::SMSMessage');
+  has VoiceMessage => (is => 'ro', isa => 'Paws::Pinpoint::VoiceMessage');
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +28,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Pinpoint::DirectMessageConfiguration object:
 
-  $service_obj->Method(Att1 => { ADMMessage => $value, ..., SMSMessage => $value  });
+  $service_obj->Method(Att1 => { ADMMessage => $value, ..., VoiceMessage => $value  });
 
 =head3 Results returned from an API call
 
@@ -86,6 +87,11 @@ message.
 =head2 SMSMessage => L<Paws::Pinpoint::SMSMessage>
 
   The message to SMS channels. Overrides the default message.
+
+
+=head2 VoiceMessage => L<Paws::Pinpoint::VoiceMessage>
+
+  The message to Voice channels. Overrides the default message.
 
 
 

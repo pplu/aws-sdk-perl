@@ -100,7 +100,8 @@ notifications' data.pinpoint.jsonBody' object
 
 =head2 MediaUrl => Str
 
-  The URL that points to a video used in the push notification.
+  A URL that refers to the location of an image or video that you want to
+display in the push notification.
 
 
 =head2 PreferredAuthenticationMethod => Str

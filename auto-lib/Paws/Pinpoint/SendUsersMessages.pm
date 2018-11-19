@@ -160,6 +160,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Substitutions     => { 'My__string' => [ 'My__string', ... ], }
             ,                     # OPTIONAL
           },    # OPTIONAL
+          VoiceMessage => {
+            Body              => 'My__string',
+            LanguageCode      => 'My__string',
+            OriginationNumber => 'My__string',
+            Substitutions     => { 'My__string' => [ 'My__string', ... ], }
+            ,    # OPTIONAL
+            VoiceId => 'My__string',
+          },    # OPTIONAL
         },    # OPTIONAL
         TraceId => 'My__string',
         Users   => {

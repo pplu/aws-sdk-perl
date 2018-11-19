@@ -36,7 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'My__string' => {
             BodyOverride => 'My__string',
             ChannelType  => 'GCM'
-            , # values: GCM, APNS, APNS_SANDBOX, APNS_VOIP, APNS_VOIP_SANDBOX, ADM, SMS, EMAIL, BAIDU, CUSTOM; OPTIONAL
+            , # values: GCM, APNS, APNS_SANDBOX, APNS_VOIP, APNS_VOIP_SANDBOX, ADM, SMS, VOICE, EMAIL, BAIDU, CUSTOM; OPTIONAL
             Context => { 'My__string' => 'My__string', },    # OPTIONAL
             RawContent => 'My__string',
             Substitutions => { 'My__string' => [ 'My__string', ... ], }
@@ -181,6 +181,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             SenderId          => 'My__string',
             Substitutions     => { 'My__string' => [ 'My__string', ... ], }
             ,                     # OPTIONAL
+          },    # OPTIONAL
+          VoiceMessage => {
+            Body              => 'My__string',
+            LanguageCode      => 'My__string',
+            OriginationNumber => 'My__string',
+            Substitutions     => { 'My__string' => [ 'My__string', ... ], }
+            ,    # OPTIONAL
+            VoiceId => 'My__string',
           },    # OPTIONAL
         },    # OPTIONAL
         TraceId => 'My__string',

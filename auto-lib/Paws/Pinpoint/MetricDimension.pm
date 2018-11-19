@@ -46,7 +46,7 @@ LESS_THAN_OR_EQUAL, or EQUAL
 
 =head2 Value => Num
 
-  Value to be compared.
+  The value to be compared.
 
 
 

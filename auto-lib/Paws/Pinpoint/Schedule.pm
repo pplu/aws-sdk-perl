@@ -1,6 +1,7 @@
 package Paws::Pinpoint::Schedule;
   use Moose;
   has EndTime => (is => 'ro', isa => 'Str');
+  has EventFilter => (is => 'ro', isa => 'Paws::Pinpoint::CampaignEventFilter');
   has Frequency => (is => 'ro', isa => 'Str');
   has IsLocalTime => (is => 'ro', isa => 'Bool');
   has QuietTime => (is => 'ro', isa => 'Paws::Pinpoint::QuietTime');
@@ -46,10 +47,16 @@ Shcedule that defines when a campaign is run.
   The scheduled time that the campaign ends in ISO 8601 format.
 
 
+=head2 EventFilter => L<Paws::Pinpoint::CampaignEventFilter>
+
+  Defines the type of events that can trigger the campaign. Used when the
+Frequency is set to EVENT.
+
+
 =head2 Frequency => Str
 
-  How often the campaign delivers messages. Valid values: ONCE, HOURLY,
-DAILY, WEEKLY, MONTHLY
+  How often the campaign delivers messages. Valid values: ONCE HOURLY
+DAILY WEEKLY MONTHLY EVENT
 
 
 =head2 IsLocalTime => Bool
@@ -60,7 +67,19 @@ user's local time.
 
 =head2 QuietTime => L<Paws::Pinpoint::QuietTime>
 
-  The time during which the campaign sends no messages.
+  The default quiet time for the campaign. The campaign doesn't send
+messages to endpoints during the quiet time. Note: Make sure that your
+endpoints include the Demographics.Timezone attribute if you plan to
+enable a quiet time for your campaign. If your endpoints don't include
+this attribute, they'll receive the messages that you send them, even
+if quiet time is enabled. When you set up a campaign to use quiet time,
+the campaign doesn't send messages during the time range you specified,
+as long as all of the following are true: - The endpoint includes a
+valid Demographic.Timezone attribute. - The current time in the
+endpoint's time zone is later than or equal to the time specified in
+the QuietTime.Start attribute for the campaign. - The current time in
+the endpoint's time zone is earlier than or equal to the time specified
+in the QuietTime.End attribute for the campaign.
 
 
 =head2 StartTime => Str
