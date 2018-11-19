@@ -5619,7 +5619,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeFleets>
 
 Returns: a L<Paws::EC2::DescribeFleetsResult> instance
 
-Describes one or more of your EC2 Fleet.
+Describes one or more of your EC2 Fleets.
 
 
 =head2 DescribeFlowLogs

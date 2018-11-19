@@ -3,6 +3,7 @@ package Paws::EC2::FleetLaunchTemplateOverridesRequest;
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Str');
   has MaxPrice => (is => 'ro', isa => 'Str');
+  has Placement => (is => 'ro', isa => 'Paws::EC2::Placement');
   has Priority => (is => 'ro', isa => 'Num');
   has SubnetId => (is => 'ro', isa => 'Str');
   has WeightedCapacity => (is => 'ro', isa => 'Num');
@@ -55,6 +56,11 @@ This class has no description
 
   The maximum price per unit hour that you are willing to pay for a Spot
 Instance.
+
+
+=head2 Placement => L<Paws::EC2::Placement>
+
+  The location where the instance launched, if applicable.
 
 
 =head2 Priority => Num

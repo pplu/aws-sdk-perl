@@ -36,17 +36,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
-      LaunchTemplateIds => [ 'MyString', ... ],    # OPTIONAL
+      ],                           # OPTIONAL
+      LaunchTemplateIds => [
+        'MyString', ...            # OPTIONAL
+      ],                           # OPTIONAL
       LaunchTemplateNames => [
-        'MyLaunchTemplateName', ...                # min: 3, max: 128
-      ],                                           # OPTIONAL
-      MaxResults => 1,                             # OPTIONAL
-      NextToken  => 'MyString',                    # OPTIONAL
+        'MyLaunchTemplateName', ...    # min: 3, max: 128
+      ],                               # OPTIONAL
+      MaxResults => 1,                 # OPTIONAL
+      NextToken  => 'MyString',        # OPTIONAL
     );
 
     # Results:
@@ -119,7 +123,7 @@ One or more launch template names.
 
 The maximum number of results to return in a single call. To retrieve
 the remaining results, make another call with the returned C<NextToken>
-value. This value can be between 5 and 1000.
+value. This value can be between 1 and 200.
 
 
 

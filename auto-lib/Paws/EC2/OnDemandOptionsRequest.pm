@@ -1,6 +1,8 @@
 package Paws::EC2::OnDemandOptionsRequest;
   use Moose;
   has AllocationStrategy => (is => 'ro', isa => 'Str');
+  has MinTargetCapacity => (is => 'ro', isa => 'Int');
+  has SingleInstanceType => (is => 'ro', isa => 'Bool');
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +22,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::OnDemandOptionsRequest object:
 
-  $service_obj->Method(Att1 => { AllocationStrategy => $value, ..., AllocationStrategy => $value  });
+  $service_obj->Method(Att1 => { AllocationStrategy => $value, ..., SingleInstanceType => $value  });
 
 =head3 Results returned from an API call
 
@@ -44,6 +46,19 @@ price to determine the order, launching the lowest price first. If you
 specify C<prioritized>, EC2 Fleet uses the priority that you assigned
 to each launch template override, launching the highest priority first.
 If you do not specify a value, EC2 Fleet defaults to C<lowest-price>.
+
+
+=head2 MinTargetCapacity => Int
+
+  The minimum target capacity for On-Demand Instances in the fleet. If
+the minimum target capacity is not reached, the fleet launches no
+instances.
+
+
+=head2 SingleInstanceType => Bool
+
+  Indicates that the fleet uses a single instance type to launch all
+On-Demand Instances in the fleet.
 
 
 

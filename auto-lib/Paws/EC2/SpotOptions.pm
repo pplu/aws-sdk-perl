@@ -3,6 +3,8 @@ package Paws::EC2::SpotOptions;
   has AllocationStrategy => (is => 'ro', isa => 'Str', request_name => 'allocationStrategy', traits => ['NameInRequest']);
   has InstanceInterruptionBehavior => (is => 'ro', isa => 'Str', request_name => 'instanceInterruptionBehavior', traits => ['NameInRequest']);
   has InstancePoolsToUseCount => (is => 'ro', isa => 'Int', request_name => 'instancePoolsToUseCount', traits => ['NameInRequest']);
+  has MinTargetCapacity => (is => 'ro', isa => 'Int', request_name => 'minTargetCapacity', traits => ['NameInRequest']);
+  has SingleInstanceType => (is => 'ro', isa => 'Bool', request_name => 'singleInstanceType', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::SpotOptions object:
 
-  $service_obj->Method(Att1 => { AllocationStrategy => $value, ..., InstancePoolsToUseCount => $value  });
+  $service_obj->Method(Att1 => { AllocationStrategy => $value, ..., SingleInstanceType => $value  });
 
 =head3 Results returned from an API call
 
@@ -57,6 +59,19 @@ capacity. Valid only when B<AllocationStrategy> is set to
 C<lowestPrice>. EC2 Fleet selects the cheapest Spot pools and evenly
 allocates your target Spot capacity across the number of Spot pools
 that you specify.
+
+
+=head2 MinTargetCapacity => Int
+
+  The minimum target capacity for Spot Instances in the fleet. If the
+minimum target capacity is not reached, the fleet launches no
+instances.
+
+
+=head2 SingleInstanceType => Bool
+
+  Indicates that the fleet uses a single instance type to launch all Spot
+Instances in the fleet.
 
 
 
