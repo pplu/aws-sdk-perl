@@ -49,8 +49,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 
 =head2 NextToken => Str
 
-The token for the next set of results. (You received this token from a
-previous call.)
+If you received a C<NextToken> from a previous call that was paginated,
+provide this token to receive the next set of results.
 
 
 

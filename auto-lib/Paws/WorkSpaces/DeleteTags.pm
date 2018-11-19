@@ -44,7 +44,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 
 =head2 B<REQUIRED> ResourceId => Str
 
-The ID of the WorkSpace. To find this ID, use DescribeWorkspaces.
+The identifier of the WorkSpace. To find this ID, use
+DescribeWorkspaces.
 
 
 

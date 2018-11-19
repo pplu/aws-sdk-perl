@@ -22,9 +22,8 @@ Information about the directories.
 
 =head2 NextToken => Str
 
-The token to use to retrieve the next set of results, or null if there
-are no more results available. This token is valid for one day and must
-be used within that time frame.
+The token to use to retrieve the next set of results, or null if no
+more results are available.
 
 
 =head2 _request_id => Str

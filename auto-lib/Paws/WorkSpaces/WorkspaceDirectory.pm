@@ -43,8 +43,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
 =head1 DESCRIPTION
 
-Information about an AWS Directory Service directory for use with
-Amazon WorkSpaces.
+Describes an AWS Directory Service directory that is used with Amazon
+WorkSpaces.
 
 =head1 ATTRIBUTES
 

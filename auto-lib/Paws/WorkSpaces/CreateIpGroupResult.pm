@@ -16,7 +16,7 @@ Paws::WorkSpaces::CreateIpGroupResult
 
 =head2 GroupId => Str
 
-The ID of the group.
+The identifier of the group.
 
 
 =head2 _request_id => Str

@@ -48,7 +48,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 
 =head2 B<REQUIRED> GroupId => Str
 
-The ID of the group.
+The identifier of the group.
 
 
 

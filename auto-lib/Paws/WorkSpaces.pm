@@ -50,6 +50,21 @@ package Paws::WorkSpaces;
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DeleteTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteWorkspaceImage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DeleteWorkspaceImage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeAccount {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DescribeAccount', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeAccountModifications {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DescribeAccountModifications', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeIpGroups {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DescribeIpGroups', @_);
@@ -70,6 +85,11 @@ package Paws::WorkSpaces;
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DescribeWorkspaceDirectories', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeWorkspaceImages {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DescribeWorkspaceImages', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeWorkspaces {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DescribeWorkspaces', @_);
@@ -83,6 +103,21 @@ package Paws::WorkSpaces;
   sub DisassociateIpGroups {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DisassociateIpGroups', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ImportWorkspaceImage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::ImportWorkspaceImage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListAvailableManagementCidrRanges {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::ListAvailableManagementCidrRanges', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyAccount {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::ModifyAccount', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ModifyWorkspaceProperties {
@@ -202,7 +237,7 @@ package Paws::WorkSpaces;
   }
 
 
-  sub operations { qw/AssociateIpGroups AuthorizeIpRules CreateIpGroup CreateTags CreateWorkspaces DeleteIpGroup DeleteTags DescribeIpGroups DescribeTags DescribeWorkspaceBundles DescribeWorkspaceDirectories DescribeWorkspaces DescribeWorkspacesConnectionStatus DisassociateIpGroups ModifyWorkspaceProperties ModifyWorkspaceState RebootWorkspaces RebuildWorkspaces RevokeIpRules StartWorkspaces StopWorkspaces TerminateWorkspaces UpdateRulesOfIpGroup / }
+  sub operations { qw/AssociateIpGroups AuthorizeIpRules CreateIpGroup CreateTags CreateWorkspaces DeleteIpGroup DeleteTags DeleteWorkspaceImage DescribeAccount DescribeAccountModifications DescribeIpGroups DescribeTags DescribeWorkspaceBundles DescribeWorkspaceDirectories DescribeWorkspaceImages DescribeWorkspaces DescribeWorkspacesConnectionStatus DisassociateIpGroups ImportWorkspaceImage ListAvailableManagementCidrRanges ModifyAccount ModifyWorkspaceProperties ModifyWorkspaceState RebootWorkspaces RebuildWorkspaces RevokeIpRules StartWorkspaces StopWorkspaces TerminateWorkspaces UpdateRulesOfIpGroup / }
 
 1;
 
@@ -233,7 +268,7 @@ Paws::WorkSpaces - Perl Interface to AWS Amazon WorkSpaces
 Amazon WorkSpaces Service
 
 Amazon WorkSpaces enables you to provision virtual, cloud-based
-Microsoft Windows desktops for your users.
+Microsoft Windows and Amazon Linux desktops for your users.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08>
 
@@ -387,6 +422,55 @@ Returns: a L<Paws::WorkSpaces::DeleteTagsResult> instance
 Deletes the specified tags from the specified WorkSpace.
 
 
+=head2 DeleteWorkspaceImage
+
+=over
+
+=item ImageId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkSpaces::DeleteWorkspaceImage>
+
+Returns: a L<Paws::WorkSpaces::DeleteWorkspaceImageResult> instance
+
+Deletes the specified image from your account. To delete an image, you
+must first delete any bundles that are associated with the image.
+
+
+=head2 DescribeAccount
+
+
+
+
+
+
+Each argument is described in detail in: L<Paws::WorkSpaces::DescribeAccount>
+
+Returns: a L<Paws::WorkSpaces::DescribeAccountResult> instance
+
+Retrieves a list that describes the configuration of bring your own
+license (BYOL) for the specified account.
+
+
+=head2 DescribeAccountModifications
+
+=over
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkSpaces::DescribeAccountModifications>
+
+Returns: a L<Paws::WorkSpaces::DescribeAccountModificationsResult> instance
+
+Retrieves a list that describes modifications to the configuration of
+bring your own license (BYOL) for the specified account.
+
+
 =head2 DescribeIpGroups
 
 =over
@@ -440,7 +524,7 @@ Each argument is described in detail in: L<Paws::WorkSpaces::DescribeWorkspaceBu
 
 Returns: a L<Paws::WorkSpaces::DescribeWorkspaceBundlesResult> instance
 
-Describes the available WorkSpace bundles.
+Retrieves a list that describes the available WorkSpace bundles.
 
 You can filter the results using either bundle ID or owner, but not
 both.
@@ -463,6 +547,28 @@ Returns: a L<Paws::WorkSpaces::DescribeWorkspaceDirectoriesResult> instance
 
 Describes the available AWS Directory Service directories that are
 registered with Amazon WorkSpaces.
+
+
+=head2 DescribeWorkspaceImages
+
+=over
+
+=item [ImageIds => ArrayRef[Str|Undef]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkSpaces::DescribeWorkspaceImages>
+
+Returns: a L<Paws::WorkSpaces::DescribeWorkspaceImagesResult> instance
+
+Retrieves a list that describes one or more specified images, if the
+image identifiers are provided. Otherwise, all images in the account
+are described.
 
 
 =head2 DescribeWorkspaces
@@ -490,8 +596,8 @@ Returns: a L<Paws::WorkSpaces::DescribeWorkspacesResult> instance
 
 Describes the specified WorkSpaces.
 
-You can filter the results using bundle ID, directory ID, or owner, but
-you can specify only one filter at a time.
+You can filter the results by using the bundle identifier, directory
+identifier, or owner, but you can specify only one filter at a time.
 
 
 =head2 DescribeWorkspacesConnectionStatus
@@ -529,6 +635,77 @@ Returns: a L<Paws::WorkSpaces::DisassociateIpGroupsResult> instance
 
 Disassociates the specified IP access control group from the specified
 directory.
+
+
+=head2 ImportWorkspaceImage
+
+=over
+
+=item Ec2ImageId => Str
+
+=item ImageDescription => Str
+
+=item ImageName => Str
+
+=item IngestionProcess => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkSpaces::ImportWorkspaceImage>
+
+Returns: a L<Paws::WorkSpaces::ImportWorkspaceImageResult> instance
+
+Imports the specified Windows 7 or Windows 10 bring your own license
+(BYOL) image into Amazon WorkSpaces. The image must be an already
+licensed EC2 image that is in your AWS account, and you must own the
+image.
+
+
+=head2 ListAvailableManagementCidrRanges
+
+=over
+
+=item ManagementCidrRangeConstraint => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkSpaces::ListAvailableManagementCidrRanges>
+
+Returns: a L<Paws::WorkSpaces::ListAvailableManagementCidrRangesResult> instance
+
+Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks,
+that you can use for the network management interface when you enable
+bring your own license (BYOL).
+
+The management network interface is connected to a secure Amazon
+WorkSpaces management network. It is used for interactive streaming of
+the WorkSpace desktop to Amazon WorkSpaces clients, and to allow Amazon
+WorkSpaces to manage the WorkSpace.
+
+
+=head2 ModifyAccount
+
+=over
+
+=item [DedicatedTenancyManagementCidrRange => Str]
+
+=item [DedicatedTenancySupport => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkSpaces::ModifyAccount>
+
+Returns: a L<Paws::WorkSpaces::ModifyAccountResult> instance
+
+Modifies the configuration of bring your own license (BYOL) for the
+specified account.
 
 
 =head2 ModifyWorkspaceProperties

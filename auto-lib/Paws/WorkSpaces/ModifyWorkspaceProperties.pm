@@ -50,7 +50,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 
 =head2 B<REQUIRED> WorkspaceId => Str
 
-The ID of the WorkSpace.
+The identifier of the WorkSpace.
 
 
 
