@@ -65,7 +65,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 
 The language code for the language used in the input media file.
 
-Valid values are: C<"en-US">, C<"es-US">, C<"en-AU">, C<"fr-CA">, C<"en-UK">
+Valid values are: C<"en-US">, C<"es-US">, C<"en-AU">, C<"fr-CA">, C<"en-GB">, C<"de-DE">, C<"pt-BR">, C<"fr-FR">
 
 =head2 B<REQUIRED> Media => L<Paws::Transcribe::Media>
 
@@ -113,8 +113,9 @@ transcription job.
 
 =head2 B<REQUIRED> TranscriptionJobName => Str
 
-The name of the job. You can't use the strings "." or ".." in the job
-name. The name must be unique within an AWS account.
+The name of the job. Note that you can't use the strings "." or ".." by
+themselves as the job name. The name must also be unique within an AWS
+account.
 
 
 
