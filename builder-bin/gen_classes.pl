@@ -19,10 +19,13 @@ use Paws::API::ServiceToClass;
 my $gen_paws_pm    = 0;
 my $gen_classes    = 0;
 my $gen_docu_links = 0;
+my $gen_class_mapping = 0;
 
 GetOptions ("paws_pm"    => \$gen_paws_pm,
             "classes"    => \$gen_classes,
-            "docu_links" => \$gen_docu_links)
+            "docu_links" => \$gen_docu_links,
+            "class_mapping" => \$gen_class_mapping,
+           )
 or die "Error in command line arguments\n";
 
 my (@files) = @ARGV;
@@ -48,16 +51,17 @@ if ($gen_paws_pm) {
   $p->process;
 }
 
-exit 0 if (not $gen_docu_links and not $gen_classes);
+exit 0 if (not $gen_docu_links and not $gen_classes and not $gen_class_mapping);
 
 my @failures;
 foreach my $file (@files) {
-  print "Processing $file\n";
+  print "Processing $file\n" if ($gen_docu_links or $gen_classes);
   if (my ($f, $version) = ($file =~ m/data\/(.*?)\/(.*?)\/service-2.json/)){
     next if ($f eq '_retry' or $f eq '_regions');
     my $ns = Paws::API::ServiceToClass::service_to_class($f);
     eval {
       my $builder = get_builder("Paws::$ns", $file);
+      print "$f maps to $ns\n" if ($gen_class_mapping);
       $builder->write_documentation_file if ($gen_docu_links);
       $builder->process_api if ($gen_classes);
     };
