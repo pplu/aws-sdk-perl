@@ -262,7 +262,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ProgramDateTime =>
                   'EXCLUDE',    # values: EXCLUDE, INCLUDE; OPTIONAL
                 ProgramDateTimePeriod => 1,    # max: 3600; OPTIONAL
-                SegmentLength         => 1,    # min: 1; OPTIONAL
+                RedundantManifest =>
+                  'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
+                SegmentLength    => 1,                        # min: 1; OPTIONAL
                 SegmentationMode => 'USE_INPUT_SEGMENTATION'
                 , # values: USE_INPUT_SEGMENTATION, USE_SEGMENT_DURATION; OPTIONAL
                 SegmentsPerSubdirectory => 1,    # min: 1; OPTIONAL
@@ -311,7 +313,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 CacheLength => 1,      # min: 30; OPTIONAL
                 CaptionData => 'ALL'
                 ,    # values: ALL, FIELD1_608, FIELD1_AND_FIELD2_608; OPTIONAL
-                RestartDelay => 1,    # OPTIONAL
+                InputLossAction =>
+                  'EMIT_OUTPUT',   # values: EMIT_OUTPUT, PAUSE_OUTPUT; OPTIONAL
+                RestartDelay => 1, # OPTIONAL
               },    # OPTIONAL
               UdpGroupSettings => {
                 InputLossAction => 'DROP_PROGRAM'
@@ -803,7 +807,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       'LOOSE',    # values: LOOSE, STRICT; OPTIONAL
                   },    # OPTIONAL
                   AudioPidSelection => {
-                    Pid => 1,    # max: 8191; OPTIONAL
+                    Pid => 1,    # max: 8191
 
                   },    # OPTIONAL
                 },    # OPTIONAL
@@ -863,7 +867,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ColorSpaceUsage => 'FALLBACK', # values: FALLBACK, FORCE; OPTIONAL
               SelectorSettings => {
                 VideoSelectorPid => {
-                  Pid => 1,                  # max: 8191; OPTIONAL
+                  Pid => 1,                  # max: 8191
                 },    # OPTIONAL
                 VideoSelectorProgramId => {
                   ProgramId => 1,    # max: 65536

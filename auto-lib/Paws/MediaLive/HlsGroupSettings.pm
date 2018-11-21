@@ -27,6 +27,7 @@ package Paws::MediaLive::HlsGroupSettings;
   has OutputSelection => (is => 'ro', isa => 'Str', request_name => 'outputSelection', traits => ['NameInRequest']);
   has ProgramDateTime => (is => 'ro', isa => 'Str', request_name => 'programDateTime', traits => ['NameInRequest']);
   has ProgramDateTimePeriod => (is => 'ro', isa => 'Int', request_name => 'programDateTimePeriod', traits => ['NameInRequest']);
+  has RedundantManifest => (is => 'ro', isa => 'Str', request_name => 'redundantManifest', traits => ['NameInRequest']);
   has SegmentationMode => (is => 'ro', isa => 'Str', request_name => 'segmentationMode', traits => ['NameInRequest']);
   has SegmentLength => (is => 'ro', isa => 'Int', request_name => 'segmentLength', traits => ['NameInRequest']);
   has SegmentsPerSubdirectory => (is => 'ro', isa => 'Int', request_name => 'segmentsPerSubdirectory', traits => ['NameInRequest']);
@@ -253,6 +254,12 @@ using the timestampOffset.
 =head2 ProgramDateTimePeriod => Int
 
   Period of insertion of EXT-X-PROGRAM-DATE-TIME entry, in seconds.
+
+
+=head2 RedundantManifest => Str
+
+  When set to "enabled", includes the media playlists from both pipelines
+in the master manifest (.m3u8) file.
 
 
 =head2 SegmentationMode => Str
