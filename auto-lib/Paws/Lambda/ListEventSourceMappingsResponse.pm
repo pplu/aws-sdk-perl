@@ -18,12 +18,13 @@ Paws::Lambda::ListEventSourceMappingsResponse
 
 =head2 EventSourceMappings => ArrayRef[L<Paws::Lambda::EventSourceMappingConfiguration>]
 
-An array of C<EventSourceMappingConfiguration> objects.
+A list of event source mappings.
 
 
 =head2 NextMarker => Str
 
-A string, present if there are more event source mappings.
+A pagination token that's returned when the response doesn't contain
+all event source mappings.
 
 
 =head2 _request_id => Str

@@ -64,22 +64,36 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 BatchSize => Int
 
-The largest number of records that AWS Lambda will retrieve from your
-event source at the time of invoking your function. Your function
-receives an event with all the retrieved records.
+The maximum number of items to retrieve in a single batch.
+
+=over
+
+=item *
+
+B<Amazon Kinesis> - Default 100. Max 10,000.
+
+=item *
+
+B<Amazon DynamoDB Streams> - Default 100. Max 1,000.
+
+=item *
+
+B<Amazon Simple Queue Service> - Default 10. Max 10.
+
+=back
+
 
 
 
 =head2 Enabled => Bool
 
-Specifies whether AWS Lambda should actively poll the stream or not. If
-disabled, AWS Lambda will not poll the stream.
+Disables the event source mapping to pause polling and invocation.
 
 
 
 =head2 FunctionName => Str
 
-The name of the lambda function.
+The name of the Lambda function.
 
 B<Name formats>
 
@@ -106,13 +120,13 @@ B<Partial ARN> - C<123456789012:function:MyFunction>.
 =back
 
 The length constraint applies only to the full ARN. If you specify only
-the function name, it is limited to 64 characters in length.
+the function name, it's limited to 64 characters in length.
 
 
 
 =head2 B<REQUIRED> UUID => Str
 
-The event source mapping identifier.
+The identifier of the event source mapping.
 
 
 

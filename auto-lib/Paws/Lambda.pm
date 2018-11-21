@@ -381,35 +381,30 @@ Each argument is described in detail in: L<Paws::Lambda::CreateEventSourceMappin
 
 Returns: a L<Paws::Lambda::EventSourceMappingConfiguration> instance
 
-Identifies a poll-based event source for a Lambda function. It can be
-either an Amazon Kinesis or DynamoDB stream. AWS Lambda invokes the
-specified function when records are posted to the event source.
+Creates a mapping between an event source and an AWS Lambda function.
+Lambda reads items from the event source and triggers the function.
 
-This association between a poll-based source and a Lambda function is
-called the event source mapping.
+For details about each event source type, see the following topics.
 
-You provide mapping information (for example, which stream or SQS queue
-to read from and which Lambda function to invoke) in the request body.
+=over
 
-Amazon Kinesis or DynamoDB stream event sources can be associated with
-multiple AWS Lambda functions and a given Lambda function can be
-associated with multiple AWS event sources. For Amazon SQS, you can
-configure multiple queues as event sources for a single Lambda
-function, but an SQS queue can be mapped only to a single Lambda
-function.
+=item *
 
-You can configure an SQS queue in an account separate from your Lambda
-function's account. Also the queue needs to reside in the same AWS
-region as your function.
+Using AWS Lambda with Amazon Kinesis
+(http://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html)
 
-If you are using versioning, you can specify a specific function
-version or an alias via the function name parameter. For more
-information about versioning, see AWS Lambda Function Versioning and
-Aliases
-(http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
+=item *
 
-This operation requires permission for the
-C<lambda:CreateEventSourceMapping> action.
+Using AWS Lambda with Amazon SQS
+(http://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html)
+
+=item *
+
+Using AWS Lambda with Amazon DynamoDB
+(http://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html)
+
+=back
+
 
 
 =head2 CreateFunction
@@ -496,11 +491,7 @@ Each argument is described in detail in: L<Paws::Lambda::DeleteEventSourceMappin
 
 Returns: a L<Paws::Lambda::EventSourceMappingConfiguration> instance
 
-Removes an event source mapping. This means AWS Lambda will no longer
-invoke the function for events in the associated source.
-
-This operation requires permission for the
-C<lambda:DeleteEventSourceMapping> action.
+Deletes an event source mapping.
 
 
 =head2 DeleteFunction
@@ -596,11 +587,7 @@ Each argument is described in detail in: L<Paws::Lambda::GetEventSourceMapping>
 
 Returns: a L<Paws::Lambda::EventSourceMappingConfiguration> instance
 
-Returns configuration information for the specified event source
-mapping (see CreateEventSourceMapping).
-
-This operation requires permission for the
-C<lambda:GetEventSourceMapping> action.
+Returns details about an event source mapping.
 
 
 =head2 GetFunction
@@ -814,14 +801,8 @@ Each argument is described in detail in: L<Paws::Lambda::ListEventSourceMappings
 
 Returns: a L<Paws::Lambda::ListEventSourceMappingsResponse> instance
 
-Returns a list of event source mappings you created using the
-C<CreateEventSourceMapping> (see CreateEventSourceMapping).
-
-For each mapping, the API returns configuration information. You can
-optionally specify filters to retrieve specific event source mappings.
-
-This operation requires permission for the
-C<lambda:ListEventSourceMappings> action.
+Lists event source mappings. Specify an C<EventSourceArn> to only show
+event source mappings for a single event source.
 
 
 =head2 ListFunctions
@@ -1081,19 +1062,9 @@ Each argument is described in detail in: L<Paws::Lambda::UpdateEventSourceMappin
 
 Returns: a L<Paws::Lambda::EventSourceMappingConfiguration> instance
 
-You can update an event source mapping. This is useful if you want to
-change the parameters of the existing mapping without losing your
-position in the stream. You can change which function will receive the
-stream records, but to change the stream itself, you must create a new
-mapping.
-
-If you disable the event source mapping, AWS Lambda stops polling. If
-you enable again, it will resume polling from the time it had stopped
-polling, so you don't lose processing of any records. However, if you
-delete event source mapping and create it again, it will reset.
-
-This operation requires permission for the
-C<lambda:UpdateEventSourceMapping> action.
+Updates an event source mapping. You can change the function that AWS
+Lambda invokes, or pause invocation and resume later from the same
+location.
 
 
 =head2 UpdateFunctionCode

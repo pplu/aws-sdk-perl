@@ -53,14 +53,30 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 EventSourceArn => Str
 
-The Amazon Resource Name (ARN) of the Amazon Kinesis or DynamoDB
-stream. (This parameter is optional.)
+The Amazon Resource Name (ARN) of the event source.
+
+=over
+
+=item *
+
+B<Amazon Kinesis> - The ARN of the data stream or a stream consumer.
+
+=item *
+
+B<Amazon DynamoDB Streams> - The ARN of the stream.
+
+=item *
+
+B<Amazon Simple Queue Service> - The ARN of the queue.
+
+=back
+
 
 
 
 =head2 FunctionName => Str
 
-The name of the lambda function.
+The name of the Lambda function.
 
 B<Name formats>
 
@@ -87,22 +103,19 @@ B<Partial ARN> - C<123456789012:function:MyFunction>.
 =back
 
 The length constraint applies only to the full ARN. If you specify only
-the function name, it is limited to 64 characters in length.
+the function name, it's limited to 64 characters in length.
 
 
 
 =head2 Marker => Str
 
-Optional string. An opaque pagination token returned from a previous
-C<ListEventSourceMappings> operation. If present, specifies to continue
-the list from where the returning call left off.
+A pagination token returned by a previous call.
 
 
 
 =head2 MaxItems => Int
 
-Optional integer. Specifies the maximum number of event sources to
-return in response. This value must be greater than 0.
+The maximum number of event source mappings to return.
 
 
 
