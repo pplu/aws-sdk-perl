@@ -1025,11 +1025,15 @@ exception.
 
 =item Name => Str
 
+=item [Attachments => ArrayRef[L<Paws::SSM::AttachmentsSource>]]
+
 =item [DocumentFormat => Str]
 
 =item [DocumentType => Str]
 
 =item [TargetType => Str]
+
+=item [VersionName => Str]
 
 
 =back
@@ -1572,6 +1576,8 @@ Lists all patches that could possibly be included in a patch baseline.
 =item Name => Str
 
 =item [DocumentVersion => Str]
+
+=item [VersionName => Str]
 
 
 =back
@@ -2185,6 +2191,8 @@ Manager document.
 =item [DocumentFormat => Str]
 
 =item [DocumentVersion => Str]
+
+=item [VersionName => Str]
 
 
 =back
@@ -3404,11 +3412,15 @@ specified instance.
 
 =item Name => Str
 
+=item [Attachments => ArrayRef[L<Paws::SSM::AttachmentsSource>]]
+
 =item [DocumentFormat => Str]
 
 =item [DocumentVersion => Str]
 
 =item [TargetType => Str]
+
+=item [VersionName => Str]
 
 
 =back

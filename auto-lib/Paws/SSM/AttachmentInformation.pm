@@ -1,7 +1,5 @@
-package Paws::SSM::DocumentDefaultVersionDescription;
+package Paws::SSM::AttachmentInformation;
   use Moose;
-  has DefaultVersion => (is => 'ro', isa => 'Str');
-  has DefaultVersionName => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
 1;
 
@@ -9,7 +7,7 @@ package Paws::SSM::DocumentDefaultVersionDescription;
 
 =head1 NAME
 
-Paws::SSM::DocumentDefaultVersionDescription
+Paws::SSM::AttachmentInformation
 
 =head1 USAGE
 
@@ -20,37 +18,27 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::SSM::DocumentDefaultVersionDescription object:
+As an example, if Att1 is expected to be a Paws::SSM::AttachmentInformation object:
 
-  $service_obj->Method(Att1 => { DefaultVersion => $value, ..., Name => $value  });
+  $service_obj->Method(Att1 => { Name => $value, ..., Name => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::DocumentDefaultVersionDescription object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::AttachmentInformation object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->DefaultVersion
+  $result->Att1->Name
 
 =head1 DESCRIPTION
 
-A default version of a document.
+An attribute of an attachment, such as the attachment name or size.
 
 =head1 ATTRIBUTES
 
 
-=head2 DefaultVersion => Str
-
-  The default version of the document.
-
-
-=head2 DefaultVersionName => Str
-
-  The default version of the artifact associated with the document.
-
-
 =head2 Name => Str
 
-  The name of the document.
+  
 
 
 

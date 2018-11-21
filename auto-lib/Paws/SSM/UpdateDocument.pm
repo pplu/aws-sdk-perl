@@ -1,11 +1,13 @@
 
 package Paws::SSM::UpdateDocument;
   use Moose;
+  has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::SSM::AttachmentsSource]');
   has Content => (is => 'ro', isa => 'Str', required => 1);
   has DocumentFormat => (is => 'ro', isa => 'Str');
   has DocumentVersion => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has TargetType => (is => 'ro', isa => 'Str');
+  has VersionName => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -32,11 +34,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ssm = Paws->service('SSM');
     my $UpdateDocumentResult = $ssm->UpdateDocument(
-      Content         => 'MyDocumentContent',
-      Name            => 'MyDocumentName',
-      DocumentFormat  => 'YAML',                 # OPTIONAL
-      DocumentVersion => 'MyDocumentVersion',    # OPTIONAL
-      TargetType      => 'MyTargetType',         # OPTIONAL
+      Content     => 'MyDocumentContent',
+      Name        => 'MyDocumentName',
+      Attachments => [
+        {
+          Key    => 'SourceUrl',    # values: SourceUrl; OPTIONAL
+          Values => [
+            'MyAttachmentsSourceValue', ...    # min: 1, max: 1024
+          ],                                   # min: 1, max: 1; OPTIONAL
+        },
+        ...
+      ],                                       # OPTIONAL
+      DocumentFormat  => 'YAML',                     # OPTIONAL
+      DocumentVersion => 'MyDocumentVersion',        # OPTIONAL
+      TargetType      => 'MyTargetType',             # OPTIONAL
+      VersionName     => 'MyDocumentVersionName',    # OPTIONAL
     );
 
     # Results:
@@ -50,9 +62,16 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 =head1 ATTRIBUTES
 
 
+=head2 Attachments => ArrayRef[L<Paws::SSM::AttachmentsSource>]
+
+A list of key and value pairs that describe attachments to a version of
+a document.
+
+
+
 =head2 B<REQUIRED> Content => Str
 
-The content in a document that you want to update.
+A valid JSON or YAML string.
 
 
 
@@ -78,6 +97,15 @@ The name of the document that you want to update.
 =head2 TargetType => Str
 
 Specify a new target type for the document.
+
+
+
+=head2 VersionName => Str
+
+An optional field specifying the version of the artifact you are
+updating with the document. For example, "Release 12, Update 6". This
+value is unique across all versions of a document, and cannot be
+changed.
 
 
 

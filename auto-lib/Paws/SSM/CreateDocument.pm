@@ -1,11 +1,13 @@
 
 package Paws::SSM::CreateDocument;
   use Moose;
+  has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::SSM::AttachmentsSource]');
   has Content => (is => 'ro', isa => 'Str', required => 1);
   has DocumentFormat => (is => 'ro', isa => 'Str');
   has DocumentType => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has TargetType => (is => 'ro', isa => 'Str');
+  has VersionName => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -32,11 +34,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ssm = Paws->service('SSM');
     my $CreateDocumentResult = $ssm->CreateDocument(
-      Content        => 'MyDocumentContent',
-      Name           => 'MyDocumentName',
-      DocumentFormat => 'YAML',                # OPTIONAL
-      DocumentType   => 'Command',             # OPTIONAL
-      TargetType     => 'MyTargetType',        # OPTIONAL
+      Content     => 'MyDocumentContent',
+      Name        => 'MyDocumentName',
+      Attachments => [
+        {
+          Key    => 'SourceUrl',    # values: SourceUrl; OPTIONAL
+          Values => [
+            'MyAttachmentsSourceValue', ...    # min: 1, max: 1024
+          ],                                   # min: 1, max: 1; OPTIONAL
+        },
+        ...
+      ],                                       # OPTIONAL
+      DocumentFormat => 'YAML',                     # OPTIONAL
+      DocumentType   => 'Command',                  # OPTIONAL
+      TargetType     => 'MyTargetType',             # OPTIONAL
+      VersionName    => 'MyDocumentVersionName',    # OPTIONAL
     );
 
     # Results:
@@ -48,6 +60,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm/CreateDocument>
 
 =head1 ATTRIBUTES
+
+
+=head2 Attachments => ArrayRef[L<Paws::SSM::AttachmentsSource>]
+
+A list of key and value pairs that describe attachments to a version of
+a document.
+
 
 
 =head2 B<REQUIRED> Content => Str
@@ -65,10 +84,10 @@ Valid values are: C<"YAML">, C<"JSON">
 
 =head2 DocumentType => Str
 
-The type of document to create. Valid document types include: Policy,
-Automation, and Command.
+The type of document to create. Valid document types include:
+C<Command>, C<Policy>, C<Automation>, C<Session>, and C<Package>.
 
-Valid values are: C<"Command">, C<"Policy">, C<"Automation">, C<"Session">
+Valid values are: C<"Command">, C<"Policy">, C<"Automation">, C<"Session">, C<"Package">
 
 =head2 B<REQUIRED> Name => Str
 
@@ -106,6 +125,15 @@ value, the document can't run on any resources. For a list of valid
 resource types, see AWS Resource Types Reference
 (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)
 in the I<AWS CloudFormation User Guide>.
+
+
+
+=head2 VersionName => Str
+
+An optional field specifying the version of the artifact you are
+creating with the document. For example, "Release 12, Update 6". This
+value is unique across all versions of a document, and cannot be
+changed.
 
 
 
