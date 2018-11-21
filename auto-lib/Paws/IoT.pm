@@ -19,6 +19,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::AcceptCertificateTransfer', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AddThingToBillingGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::AddThingToBillingGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AddThingToThingGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::AddThingToThingGroup', @_);
@@ -79,9 +84,19 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::CreateAuthorizer', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateBillingGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::CreateBillingGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateCertificateFromCsr {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::CreateCertificateFromCsr', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateDynamicThingGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::CreateDynamicThingGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateJob {
@@ -159,6 +174,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::DeleteAuthorizer', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteBillingGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DeleteBillingGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteCACertificate {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::DeleteCACertificate', @_);
@@ -167,6 +187,11 @@ package Paws::IoT;
   sub DeleteCertificate {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::DeleteCertificate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteDynamicThingGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DeleteDynamicThingGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteJob {
@@ -262,6 +287,11 @@ package Paws::IoT;
   sub DescribeAuthorizer {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::DescribeAuthorizer', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeBillingGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DescribeBillingGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeCACertificate {
@@ -449,6 +479,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::ListAuthorizers', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListBillingGroups {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::ListBillingGroups', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListCACertificates {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::ListCACertificates', @_);
@@ -544,6 +579,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::ListStreams', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListTargetsForPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::ListTargetsForPolicy', @_);
@@ -582,6 +622,11 @@ package Paws::IoT;
   sub ListThings {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::ListThings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListThingsInBillingGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::ListThingsInBillingGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListThingsInThingGroup {
@@ -627,6 +672,11 @@ package Paws::IoT;
   sub RejectCertificateTransfer {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::RejectCertificateTransfer', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RemoveThingFromBillingGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::RemoveThingFromBillingGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RemoveThingFromThingGroup {
@@ -684,6 +734,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::StopThingRegistrationTask', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub TestAuthorization {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::TestAuthorization', @_);
@@ -699,6 +754,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::TransferCertificate', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateAccountAuditConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::UpdateAccountAuditConfiguration', @_);
@@ -707,6 +767,11 @@ package Paws::IoT;
   sub UpdateAuthorizer {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::UpdateAuthorizer', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateBillingGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::UpdateBillingGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateCACertificate {
@@ -719,6 +784,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::UpdateCertificate', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateDynamicThingGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::UpdateDynamicThingGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateEventConfigurations {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::UpdateEventConfigurations', @_);
@@ -727,6 +797,11 @@ package Paws::IoT;
   sub UpdateIndexingConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::UpdateIndexingConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::UpdateJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateRoleAlias {
@@ -1025,7 +1100,7 @@ package Paws::IoT;
   }
 
 
-  sub operations { qw/AcceptCertificateTransfer AddThingToThingGroup AssociateTargetsWithJob AttachPolicy AttachPrincipalPolicy AttachSecurityProfile AttachThingPrincipal CancelAuditTask CancelCertificateTransfer CancelJob CancelJobExecution ClearDefaultAuthorizer CreateAuthorizer CreateCertificateFromCsr CreateJob CreateKeysAndCertificate CreateOTAUpdate CreatePolicy CreatePolicyVersion CreateRoleAlias CreateScheduledAudit CreateSecurityProfile CreateStream CreateThing CreateThingGroup CreateThingType CreateTopicRule DeleteAccountAuditConfiguration DeleteAuthorizer DeleteCACertificate DeleteCertificate DeleteJob DeleteJobExecution DeleteOTAUpdate DeletePolicy DeletePolicyVersion DeleteRegistrationCode DeleteRoleAlias DeleteScheduledAudit DeleteSecurityProfile DeleteStream DeleteThing DeleteThingGroup DeleteThingType DeleteTopicRule DeleteV2LoggingLevel DeprecateThingType DescribeAccountAuditConfiguration DescribeAuditTask DescribeAuthorizer DescribeCACertificate DescribeCertificate DescribeDefaultAuthorizer DescribeEndpoint DescribeEventConfigurations DescribeIndex DescribeJob DescribeJobExecution DescribeRoleAlias DescribeScheduledAudit DescribeSecurityProfile DescribeStream DescribeThing DescribeThingGroup DescribeThingRegistrationTask DescribeThingType DetachPolicy DetachPrincipalPolicy DetachSecurityProfile DetachThingPrincipal DisableTopicRule EnableTopicRule GetEffectivePolicies GetIndexingConfiguration GetJobDocument GetLoggingOptions GetOTAUpdate GetPolicy GetPolicyVersion GetRegistrationCode GetTopicRule GetV2LoggingOptions ListActiveViolations ListAttachedPolicies ListAuditFindings ListAuditTasks ListAuthorizers ListCACertificates ListCertificates ListCertificatesByCA ListIndices ListJobExecutionsForJob ListJobExecutionsForThing ListJobs ListOTAUpdates ListOutgoingCertificates ListPolicies ListPolicyPrincipals ListPolicyVersions ListPrincipalPolicies ListPrincipalThings ListRoleAliases ListScheduledAudits ListSecurityProfiles ListSecurityProfilesForTarget ListStreams ListTargetsForPolicy ListTargetsForSecurityProfile ListThingGroups ListThingGroupsForThing ListThingPrincipals ListThingRegistrationTaskReports ListThingRegistrationTasks ListThings ListThingsInThingGroup ListThingTypes ListTopicRules ListV2LoggingLevels ListViolationEvents RegisterCACertificate RegisterCertificate RegisterThing RejectCertificateTransfer RemoveThingFromThingGroup ReplaceTopicRule SearchIndex SetDefaultAuthorizer SetDefaultPolicyVersion SetLoggingOptions SetV2LoggingLevel SetV2LoggingOptions StartOnDemandAuditTask StartThingRegistrationTask StopThingRegistrationTask TestAuthorization TestInvokeAuthorizer TransferCertificate UpdateAccountAuditConfiguration UpdateAuthorizer UpdateCACertificate UpdateCertificate UpdateEventConfigurations UpdateIndexingConfiguration UpdateRoleAlias UpdateScheduledAudit UpdateSecurityProfile UpdateStream UpdateThing UpdateThingGroup UpdateThingGroupsForThing ValidateSecurityProfileBehaviors / }
+  sub operations { qw/AcceptCertificateTransfer AddThingToBillingGroup AddThingToThingGroup AssociateTargetsWithJob AttachPolicy AttachPrincipalPolicy AttachSecurityProfile AttachThingPrincipal CancelAuditTask CancelCertificateTransfer CancelJob CancelJobExecution ClearDefaultAuthorizer CreateAuthorizer CreateBillingGroup CreateCertificateFromCsr CreateDynamicThingGroup CreateJob CreateKeysAndCertificate CreateOTAUpdate CreatePolicy CreatePolicyVersion CreateRoleAlias CreateScheduledAudit CreateSecurityProfile CreateStream CreateThing CreateThingGroup CreateThingType CreateTopicRule DeleteAccountAuditConfiguration DeleteAuthorizer DeleteBillingGroup DeleteCACertificate DeleteCertificate DeleteDynamicThingGroup DeleteJob DeleteJobExecution DeleteOTAUpdate DeletePolicy DeletePolicyVersion DeleteRegistrationCode DeleteRoleAlias DeleteScheduledAudit DeleteSecurityProfile DeleteStream DeleteThing DeleteThingGroup DeleteThingType DeleteTopicRule DeleteV2LoggingLevel DeprecateThingType DescribeAccountAuditConfiguration DescribeAuditTask DescribeAuthorizer DescribeBillingGroup DescribeCACertificate DescribeCertificate DescribeDefaultAuthorizer DescribeEndpoint DescribeEventConfigurations DescribeIndex DescribeJob DescribeJobExecution DescribeRoleAlias DescribeScheduledAudit DescribeSecurityProfile DescribeStream DescribeThing DescribeThingGroup DescribeThingRegistrationTask DescribeThingType DetachPolicy DetachPrincipalPolicy DetachSecurityProfile DetachThingPrincipal DisableTopicRule EnableTopicRule GetEffectivePolicies GetIndexingConfiguration GetJobDocument GetLoggingOptions GetOTAUpdate GetPolicy GetPolicyVersion GetRegistrationCode GetTopicRule GetV2LoggingOptions ListActiveViolations ListAttachedPolicies ListAuditFindings ListAuditTasks ListAuthorizers ListBillingGroups ListCACertificates ListCertificates ListCertificatesByCA ListIndices ListJobExecutionsForJob ListJobExecutionsForThing ListJobs ListOTAUpdates ListOutgoingCertificates ListPolicies ListPolicyPrincipals ListPolicyVersions ListPrincipalPolicies ListPrincipalThings ListRoleAliases ListScheduledAudits ListSecurityProfiles ListSecurityProfilesForTarget ListStreams ListTagsForResource ListTargetsForPolicy ListTargetsForSecurityProfile ListThingGroups ListThingGroupsForThing ListThingPrincipals ListThingRegistrationTaskReports ListThingRegistrationTasks ListThings ListThingsInBillingGroup ListThingsInThingGroup ListThingTypes ListTopicRules ListV2LoggingLevels ListViolationEvents RegisterCACertificate RegisterCertificate RegisterThing RejectCertificateTransfer RemoveThingFromBillingGroup RemoveThingFromThingGroup ReplaceTopicRule SearchIndex SetDefaultAuthorizer SetDefaultPolicyVersion SetLoggingOptions SetV2LoggingLevel SetV2LoggingOptions StartOnDemandAuditTask StartThingRegistrationTask StopThingRegistrationTask TagResource TestAuthorization TestInvokeAuthorizer TransferCertificate UntagResource UpdateAccountAuditConfiguration UpdateAuthorizer UpdateBillingGroup UpdateCACertificate UpdateCertificate UpdateDynamicThingGroup UpdateEventConfigurations UpdateIndexingConfiguration UpdateJob UpdateRoleAlias UpdateScheduledAudit UpdateSecurityProfile UpdateStream UpdateThing UpdateThingGroup UpdateThingGroupsForThing ValidateSecurityProfileBehaviors / }
 
 1;
 
@@ -1097,9 +1172,33 @@ To check for pending certificate transfers, call ListCertificates to
 enumerate your certificates.
 
 
+=head2 AddThingToBillingGroup
+
+=over
+
+=item [BillingGroupArn => Str]
+
+=item [BillingGroupName => Str]
+
+=item [ThingArn => Str]
+
+=item [ThingName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::AddThingToBillingGroup>
+
+Returns: a L<Paws::IoT::AddThingToBillingGroupResponse> instance
+
+Adds a thing to a billing group.
+
+
 =head2 AddThingToThingGroup
 
 =over
+
+=item [OverrideDynamicGroups => Bool]
 
 =item [ThingArn => Str]
 
@@ -1289,6 +1388,8 @@ certificate changes from PENDING_TRANSFER to INACTIVE.
 
 =item [Force => Bool]
 
+=item [ReasonCode => Str]
+
 
 =back
 
@@ -1361,6 +1462,26 @@ Returns: a L<Paws::IoT::CreateAuthorizerResponse> instance
 Creates an authorizer.
 
 
+=head2 CreateBillingGroup
+
+=over
+
+=item BillingGroupName => Str
+
+=item [BillingGroupProperties => L<Paws::IoT::BillingGroupProperties>]
+
+=item [Tags => ArrayRef[L<Paws::IoT::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::CreateBillingGroup>
+
+Returns: a L<Paws::IoT::CreateBillingGroupResponse> instance
+
+Creates a billing group.
+
+
 =head2 CreateCertificateFromCsr
 
 =over
@@ -1424,6 +1545,32 @@ E<gt> forfiles /p my-csr-directory /c "cmd /c aws iot
 create-certificate-from-csr --certificate-signing-request file://@path"
 
 
+=head2 CreateDynamicThingGroup
+
+=over
+
+=item QueryString => Str
+
+=item ThingGroupName => Str
+
+=item [IndexName => Str]
+
+=item [QueryVersion => Str]
+
+=item [Tags => ArrayRef[L<Paws::IoT::Tag>]]
+
+=item [ThingGroupProperties => L<Paws::IoT::ThingGroupProperties>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::CreateDynamicThingGroup>
+
+Returns: a L<Paws::IoT::CreateDynamicThingGroupResponse> instance
+
+Creates a dynamic thing group.
+
+
 =head2 CreateJob
 
 =over
@@ -1431,6 +1578,8 @@ create-certificate-from-csr --certificate-signing-request file://@path"
 =item JobId => Str
 
 =item Targets => ArrayRef[Str|Undef]
+
+=item [AbortConfig => L<Paws::IoT::AbortConfig>]
 
 =item [Description => Str]
 
@@ -1441,6 +1590,8 @@ create-certificate-from-csr --certificate-signing-request file://@path"
 =item [JobExecutionsRolloutConfig => L<Paws::IoT::JobExecutionsRolloutConfig>]
 
 =item [PresignedUrlConfig => L<Paws::IoT::PresignedUrlConfig>]
+
+=item [Tags => ArrayRef[L<Paws::IoT::Tag>]]
 
 =item [TargetSelection => Str]
 
@@ -1613,6 +1764,8 @@ Creates a scheduled audit that is run at a specified time interval.
 
 =item [SecurityProfileDescription => Str]
 
+=item [Tags => ArrayRef[L<Paws::IoT::Tag>]]
+
 
 =back
 
@@ -1660,6 +1813,8 @@ that old stream by incrementing the version by 1.
 
 =item [AttributePayload => L<Paws::IoT::AttributePayload>]
 
+=item [BillingGroupName => Str]
+
 =item [ThingTypeName => Str]
 
 
@@ -1684,6 +1839,8 @@ for information about authorizing control plane actions.
 
 =item [ParentGroupName => Str]
 
+=item [Tags => ArrayRef[L<Paws::IoT::Tag>]]
+
 =item [ThingGroupProperties => L<Paws::IoT::ThingGroupProperties>]
 
 
@@ -1705,6 +1862,8 @@ for information about authorizing control plane actions.
 =over
 
 =item ThingTypeName => Str
+
+=item [Tags => ArrayRef[L<Paws::IoT::Tag>]]
 
 =item [ThingTypeProperties => L<Paws::IoT::ThingTypeProperties>]
 
@@ -1772,6 +1931,24 @@ Returns: a L<Paws::IoT::DeleteAuthorizerResponse> instance
 Deletes an authorizer.
 
 
+=head2 DeleteBillingGroup
+
+=over
+
+=item BillingGroupName => Str
+
+=item [ExpectedVersion => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::DeleteBillingGroup>
+
+Returns: a L<Paws::IoT::DeleteBillingGroupResponse> instance
+
+Deletes the billing group.
+
+
 =head2 DeleteCACertificate
 
 =over
@@ -1809,6 +1986,24 @@ A certificate cannot be deleted if it has a policy attached to it or if
 its status is set to ACTIVE. To delete a certificate, first use the
 DetachPrincipalPolicy API to detach all policies. Next, use the
 UpdateCertificate API to set the certificate to the INACTIVE status.
+
+
+=head2 DeleteDynamicThingGroup
+
+=over
+
+=item ThingGroupName => Str
+
+=item [ExpectedVersion => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::DeleteDynamicThingGroup>
+
+Returns: a L<Paws::IoT::DeleteDynamicThingGroupResponse> instance
+
+Deletes a dynamic thing group.
 
 
 =head2 DeleteJob
@@ -2024,7 +2219,8 @@ Each argument is described in detail in: L<Paws::IoT::DeleteThing>
 
 Returns: a L<Paws::IoT::DeleteThingResponse> instance
 
-Deletes the specified thing.
+Deletes the specified thing. Returns successfully with no error if the
+deletion is successful or you specify a thing that doesn't exist.
 
 
 =head2 DeleteThingGroup
@@ -2058,7 +2254,7 @@ Each argument is described in detail in: L<Paws::IoT::DeleteThingType>
 
 Returns: a L<Paws::IoT::DeleteThingTypeResponse> instance
 
-Deletes the specified thing type . You cannot delete a thing type if it
+Deletes the specified thing type. You cannot delete a thing type if it
 has things associated with it. To delete a thing type, first mark it as
 deprecated by calling DeprecateThingType, then remove any associated
 things by calling UpdateThing to change the thing type on any
@@ -2165,6 +2361,22 @@ Each argument is described in detail in: L<Paws::IoT::DescribeAuthorizer>
 Returns: a L<Paws::IoT::DescribeAuthorizerResponse> instance
 
 Describes an authorizer.
+
+
+=head2 DescribeBillingGroup
+
+=over
+
+=item BillingGroupName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::DescribeBillingGroup>
+
+Returns: a L<Paws::IoT::DescribeBillingGroupResponse> instance
+
+Returns information about a billing group.
 
 
 =head2 DescribeCACertificate
@@ -2497,6 +2709,9 @@ Returns: a L<Paws::IoT::DetachThingPrincipalResponse> instance
 
 Detaches the specified principal from the specified thing.
 
+This call is asynchronous. It might take several seconds for the
+detachment to propagate.
+
 
 =head2 DisableTopicRule
 
@@ -2817,6 +3032,26 @@ Each argument is described in detail in: L<Paws::IoT::ListAuthorizers>
 Returns: a L<Paws::IoT::ListAuthorizersResponse> instance
 
 Lists the authorizers registered in your account.
+
+
+=head2 ListBillingGroups
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NamePrefixFilter => Str]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::ListBillingGroups>
+
+Returns: a L<Paws::IoT::ListBillingGroupsResponse> instance
+
+Lists the billing groups you have created.
 
 
 =head2 ListCACertificates
@@ -3225,6 +3460,24 @@ Returns: a L<Paws::IoT::ListStreamsResponse> instance
 Lists all of the streams in your AWS account.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::ListTagsForResource>
+
+Returns: a L<Paws::IoT::ListTagsForResourceResponse> instance
+
+Lists the tags (metadata) you have assigned to the resource.
+
+
 =head2 ListTargetsForPolicy
 
 =over
@@ -3393,6 +3646,26 @@ Lists your things. Use the B<attributeName> and B<attributeValue>
 parameters to filter your things. For example, calling C<ListThings>
 with attributeName=Color and attributeValue=Red retrieves all things in
 the registry that contain an attribute B<Color> with the value B<Red>.
+
+
+=head2 ListThingsInBillingGroup
+
+=over
+
+=item BillingGroupName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::ListThingsInBillingGroup>
+
+Returns: a L<Paws::IoT::ListThingsInBillingGroupResponse> instance
+
+Lists the things you have added to the given billing group.
 
 
 =head2 ListThingsInThingGroup
@@ -3607,6 +3880,28 @@ enumerate your certificates.
 This operation can only be called by the transfer destination. After it
 is called, the certificate will be returned to the source's account in
 the INACTIVE state.
+
+
+=head2 RemoveThingFromBillingGroup
+
+=over
+
+=item [BillingGroupArn => Str]
+
+=item [BillingGroupName => Str]
+
+=item [ThingArn => Str]
+
+=item [ThingName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::RemoveThingFromBillingGroup>
+
+Returns: a L<Paws::IoT::RemoveThingFromBillingGroupResponse> instance
+
+Removes the given thing from the billing group.
 
 
 =head2 RemoveThingFromThingGroup
@@ -3825,6 +4120,25 @@ Returns: a L<Paws::IoT::StopThingRegistrationTaskResponse> instance
 Cancels a bulk thing provisioning task.
 
 
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => ArrayRef[L<Paws::IoT::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::TagResource>
+
+Returns: a L<Paws::IoT::TagResourceResponse> instance
+
+Adds to or modifies the tags of the given resource. Tags are metadata
+which can be used to manage a resource.
+
+
 =head2 TestAuthorization
 
 =over
@@ -3907,6 +4221,24 @@ The certificate must not have any policies attached to it. You can use
 the DetachPrincipalPolicy API to detach them.
 
 
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::UntagResource>
+
+Returns: a L<Paws::IoT::UntagResourceResponse> instance
+
+Removes the given tags (metadata) from the resource.
+
+
 =head2 UpdateAccountAuditConfiguration
 
 =over
@@ -3951,6 +4283,26 @@ Each argument is described in detail in: L<Paws::IoT::UpdateAuthorizer>
 Returns: a L<Paws::IoT::UpdateAuthorizerResponse> instance
 
 Updates an authorizer.
+
+
+=head2 UpdateBillingGroup
+
+=over
+
+=item BillingGroupName => Str
+
+=item BillingGroupProperties => L<Paws::IoT::BillingGroupProperties>
+
+=item [ExpectedVersion => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::UpdateBillingGroup>
+
+Returns: a L<Paws::IoT::UpdateBillingGroupResponse> instance
+
+Updates information about the billing group.
 
 
 =head2 UpdateCACertificate
@@ -4003,6 +4355,32 @@ The ACTIVE state is required to authenticate devices connecting to AWS
 IoT using a certificate.
 
 
+=head2 UpdateDynamicThingGroup
+
+=over
+
+=item ThingGroupName => Str
+
+=item ThingGroupProperties => L<Paws::IoT::ThingGroupProperties>
+
+=item [ExpectedVersion => Int]
+
+=item [IndexName => Str]
+
+=item [QueryString => Str]
+
+=item [QueryVersion => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::UpdateDynamicThingGroup>
+
+Returns: a L<Paws::IoT::UpdateDynamicThingGroupResponse> instance
+
+Updates a dynamic thing group.
+
+
 =head2 UpdateEventConfigurations
 
 =over
@@ -4035,6 +4413,32 @@ Each argument is described in detail in: L<Paws::IoT::UpdateIndexingConfiguratio
 Returns: a L<Paws::IoT::UpdateIndexingConfigurationResponse> instance
 
 Updates the search configuration.
+
+
+=head2 UpdateJob
+
+=over
+
+=item JobId => Str
+
+=item [AbortConfig => L<Paws::IoT::AbortConfig>]
+
+=item [Description => Str]
+
+=item [JobExecutionsRolloutConfig => L<Paws::IoT::JobExecutionsRolloutConfig>]
+
+=item [PresignedUrlConfig => L<Paws::IoT::PresignedUrlConfig>]
+
+=item [TimeoutConfig => L<Paws::IoT::TimeoutConfig>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::UpdateJob>
+
+Returns: nothing
+
+Updates supported fields of the specified job.
 
 
 =head2 UpdateRoleAlias
@@ -4176,6 +4580,8 @@ Update a thing group.
 =head2 UpdateThingGroupsForThing
 
 =over
+
+=item [OverrideDynamicGroups => Bool]
 
 =item [ThingGroupsToAdd => ArrayRef[Str|Undef]]
 

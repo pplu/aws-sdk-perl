@@ -50,7 +50,11 @@ particular device.
 =head2 ApproximateSecondsBeforeTimedOut => Int
 
   The estimated number of seconds that remain before the job execution
-status will be changed to C<TIMED_OUT>.
+status will be changed to C<TIMED_OUT>. The timeout interval can be
+anywhere between 1 minute and 7 days (1 to 10080 minutes). The actual
+job execution timeout can occur up to 60 seconds later than the
+estimated duration. This value will not be included if the job
+execution has reached a terminal status.
 
 
 =head2 ExecutionNumber => Int

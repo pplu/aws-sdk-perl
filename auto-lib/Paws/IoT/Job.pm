@@ -1,5 +1,6 @@
 package Paws::IoT::Job;
   use Moose;
+  has AbortConfig => (is => 'ro', isa => 'Paws::IoT::AbortConfig', request_name => 'abortConfig', traits => ['NameInRequest']);
   has Comment => (is => 'ro', isa => 'Str', request_name => 'comment', traits => ['NameInRequest']);
   has CompletedAt => (is => 'ro', isa => 'Str', request_name => 'completedAt', traits => ['NameInRequest']);
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
@@ -11,6 +12,7 @@ package Paws::IoT::Job;
   has JobProcessDetails => (is => 'ro', isa => 'Paws::IoT::JobProcessDetails', request_name => 'jobProcessDetails', traits => ['NameInRequest']);
   has LastUpdatedAt => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedAt', traits => ['NameInRequest']);
   has PresignedUrlConfig => (is => 'ro', isa => 'Paws::IoT::PresignedUrlConfig', request_name => 'presignedUrlConfig', traits => ['NameInRequest']);
+  has ReasonCode => (is => 'ro', isa => 'Str', request_name => 'reasonCode', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has Targets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'targets', traits => ['NameInRequest']);
   has TargetSelection => (is => 'ro', isa => 'Str', request_name => 'targetSelection', traits => ['NameInRequest']);
@@ -34,20 +36,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT::Job object:
 
-  $service_obj->Method(Att1 => { Comment => $value, ..., TimeoutConfig => $value  });
+  $service_obj->Method(Att1 => { AbortConfig => $value, ..., TimeoutConfig => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::Job object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Comment
+  $result->Att1->AbortConfig
 
 =head1 DESCRIPTION
 
 The C<Job> object contains details about a job.
 
 =head1 ATTRIBUTES
+
+
+=head2 AbortConfig => L<Paws::IoT::AbortConfig>
+
+  Configuration for criteria to abort the job.
 
 
 =head2 Comment => Str
@@ -106,6 +113,11 @@ updated.
 =head2 PresignedUrlConfig => L<Paws::IoT::PresignedUrlConfig>
 
   Configuration for pre-signed S3 URLs.
+
+
+=head2 ReasonCode => Str
+
+  If the job was updated, provides the reason code for the update.
 
 
 =head2 Status => Str

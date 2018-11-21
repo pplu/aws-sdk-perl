@@ -1,12 +1,14 @@
 
 package Paws::IoT::CreateJob;
   use Moose;
+  has AbortConfig => (is => 'ro', isa => 'Paws::IoT::AbortConfig', traits => ['NameInRequest'], request_name => 'abortConfig');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has Document => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'document');
   has DocumentSource => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'documentSource');
   has JobExecutionsRolloutConfig => (is => 'ro', isa => 'Paws::IoT::JobExecutionsRolloutConfig', traits => ['NameInRequest'], request_name => 'jobExecutionsRolloutConfig');
   has JobId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'jobId', required => 1);
   has PresignedUrlConfig => (is => 'ro', isa => 'Paws::IoT::PresignedUrlConfig', traits => ['NameInRequest'], request_name => 'presignedUrlConfig');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Tag]', traits => ['NameInRequest'], request_name => 'tags');
   has Targets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'targets', required => 1);
   has TargetSelection => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'targetSelection');
   has TimeoutConfig => (is => 'ro', isa => 'Paws::IoT::TimeoutConfig', traits => ['NameInRequest'], request_name => 'timeoutConfig');
@@ -37,18 +39,47 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $iot = Paws->service('IoT');
     my $CreateJobResponse = $iot->CreateJob(
-      JobId                      => 'MyJobId',
-      Targets                    => [ 'MyTargetArn', ... ],
+      JobId       => 'MyJobId',
+      Targets     => [ 'MyTargetArn', ... ],
+      AbortConfig => {
+        CriteriaList => [
+          {
+            Action      => 'CANCEL',  # values: CANCEL
+            FailureType => 'FAILED',  # values: FAILED, REJECTED, TIMED_OUT, ALL
+            MinNumberOfExecutedThings => 1,    # min: 1
+            ThresholdPercentage       => 1,    # max: 100
+
+          },
+          ...
+        ],                                     # min: 1
+
+      },    # OPTIONAL
       Description                => 'MyJobDescription',       # OPTIONAL
       Document                   => 'MyJobDocument',          # OPTIONAL
       DocumentSource             => 'MyJobDocumentSource',    # OPTIONAL
       JobExecutionsRolloutConfig => {
-        MaximumPerMinute => 1,    # min: 1, max: 1000; OPTIONAL
+        ExponentialRate => {
+          BaseRatePerMinute    => 1,    # min: 1, max: 1000
+          IncrementFactor      => 1,    # min: 1, max: 5
+          RateIncreaseCriteria => {
+            NumberOfNotifiedThings  => 1,    # min: 1; OPTIONAL
+            NumberOfSucceededThings => 1,    # min: 1; OPTIONAL
+          },
+
+        },    # OPTIONAL
+        MaximumPerMinute => 1,    # min: 1; OPTIONAL
       },    # OPTIONAL
       PresignedUrlConfig => {
         ExpiresInSec => 1,              # min: 60, max: 3600; OPTIONAL
         RoleArn      => 'MyRoleArn',    # min: 20, max: 2048; OPTIONAL
       },    # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MyTagKey',      # OPTIONAL
+          Value => 'MyTagValue',    # OPTIONAL
+        },
+        ...
+      ],                            # OPTIONAL
       TargetSelection => 'CONTINUOUS',    # OPTIONAL
       TimeoutConfig   => {
         InProgressTimeoutInMinutes => 1,    # OPTIONAL
@@ -68,6 +99,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head1 ATTRIBUTES
 
 
+=head2 AbortConfig => L<Paws::IoT::AbortConfig>
+
+Allows you to create criteria to abort a job.
+
+
+
 =head2 Description => Str
 
 A short text description of the job.
@@ -77,6 +114,16 @@ A short text description of the job.
 =head2 Document => Str
 
 The job document.
+
+If the job document resides in an S3 bucket, you must use a placeholder
+link when specifying the document.
+
+The placeholder link is of the following form:
+
+C<${aws:iot:s3-presigned-url:https://s3.amazonaws.com/I<bucket>/I<key>}>
+
+where I<bucket> is your bucket name and I<key> is the object in the
+bucket to which you are linking.
 
 
 
@@ -103,6 +150,12 @@ for use here.
 =head2 PresignedUrlConfig => L<Paws::IoT::PresignedUrlConfig>
 
 Configuration information for pre-signed S3 URLs.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::IoT::Tag>]
+
+Metadata which can be used to manage the job.
 
 
 

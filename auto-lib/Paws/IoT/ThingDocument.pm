@@ -1,6 +1,7 @@
 package Paws::IoT::ThingDocument;
   use Moose;
   has Attributes => (is => 'ro', isa => 'Paws::IoT::Attributes', request_name => 'attributes', traits => ['NameInRequest']);
+  has Connectivity => (is => 'ro', isa => 'Paws::IoT::ThingConnectivity', request_name => 'connectivity', traits => ['NameInRequest']);
   has Shadow => (is => 'ro', isa => 'Str', request_name => 'shadow', traits => ['NameInRequest']);
   has ThingGroupNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'thingGroupNames', traits => ['NameInRequest']);
   has ThingId => (is => 'ro', isa => 'Str', request_name => 'thingId', traits => ['NameInRequest']);
@@ -44,6 +45,11 @@ The thing search index document.
 =head2 Attributes => L<Paws::IoT::Attributes>
 
   The attributes.
+
+
+=head2 Connectivity => L<Paws::IoT::ThingConnectivity>
+
+  Indicates whether or not the thing is connected to the AWS IoT service.
 
 
 =head2 Shadow => Str

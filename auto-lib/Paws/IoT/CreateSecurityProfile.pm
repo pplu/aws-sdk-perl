@@ -5,6 +5,7 @@ package Paws::IoT::CreateSecurityProfile;
   has Behaviors => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Behavior]', traits => ['NameInRequest'], request_name => 'behaviors', required => 1);
   has SecurityProfileDescription => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'securityProfileDescription');
   has SecurityProfileName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'securityProfileName', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Tag]', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -62,6 +63,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # key: values: SNS
       },    # OPTIONAL
       SecurityProfileDescription => 'MySecurityProfileDescription',   # OPTIONAL
+      Tags                       => [
+        {
+          Key   => 'MyTagKey',                                        # OPTIONAL
+          Value => 'MyTagValue',                                      # OPTIONAL
+        },
+        ...
+      ],                                                              # OPTIONAL
     );
 
     # Results:
@@ -101,6 +109,12 @@ A description of the security profile.
 =head2 B<REQUIRED> SecurityProfileName => Str
 
 The name you are giving to the security profile.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::IoT::Tag>]
+
+Metadata which can be used to manage the security profile.
 
 
 

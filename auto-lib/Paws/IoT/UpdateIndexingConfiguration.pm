@@ -36,7 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       ThingIndexingConfiguration => {
         ThingIndexingMode => 'OFF', # values: OFF, REGISTRY, REGISTRY_AND_SHADOW
-
+        ThingConnectivityIndexingMode => 'OFF',  # values: OFF, STATUS; OPTIONAL
       },    # OPTIONAL
     );
 

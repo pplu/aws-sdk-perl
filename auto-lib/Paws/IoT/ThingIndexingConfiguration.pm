@@ -1,5 +1,6 @@
 package Paws::IoT::ThingIndexingConfiguration;
   use Moose;
+  has ThingConnectivityIndexingMode => (is => 'ro', isa => 'Str', request_name => 'thingConnectivityIndexingMode', traits => ['NameInRequest']);
   has ThingIndexingMode => (is => 'ro', isa => 'Str', request_name => 'thingIndexingMode', traits => ['NameInRequest'], required => 1);
 1;
 
@@ -20,20 +21,42 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT::ThingIndexingConfiguration object:
 
-  $service_obj->Method(Att1 => { ThingIndexingMode => $value, ..., ThingIndexingMode => $value  });
+  $service_obj->Method(Att1 => { ThingConnectivityIndexingMode => $value, ..., ThingIndexingMode => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::ThingIndexingConfiguration object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ThingIndexingMode
+  $result->Att1->ThingConnectivityIndexingMode
 
 =head1 DESCRIPTION
 
-Thing indexing configuration.
+The thing indexing configuration. For more information, see Managing
+Thing Indexing
+(https://docs.aws.amazon.com/iot/latest/developerguide/managing-index.html).
 
 =head1 ATTRIBUTES
+
+
+=head2 ThingConnectivityIndexingMode => Str
+
+  Thing connectivity indexing mode. Valid values are:
+
+=over
+
+=item *
+
+STATUS E<ndash> Your thing index will contain connectivity status. In
+order to enable thing connectivity indexing, thingIndexMode must not be
+set to OFF.
+
+=item *
+
+OFF - Thing connectivity status indexing is disabled.
+
+=back
+
 
 
 =head2 B<REQUIRED> ThingIndexingMode => Str

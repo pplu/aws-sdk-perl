@@ -1,6 +1,7 @@
 
 package Paws::IoT::UpdateThingGroupsForThing;
   use Moose;
+  has OverrideDynamicGroups => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'overrideDynamicGroups');
   has ThingGroupsToAdd => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'thingGroupsToAdd');
   has ThingGroupsToRemove => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'thingGroupsToRemove');
   has ThingName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingName');
@@ -31,19 +32,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $iot = Paws->service('IoT');
     my $UpdateThingGroupsForThingResponse = $iot->UpdateThingGroupsForThing(
-      ThingGroupsToAdd => [
-        'MyThingGroupName', ...    # min: 1, max: 128
-      ],                           # OPTIONAL
+      OverrideDynamicGroups => 1,    # OPTIONAL
+      ThingGroupsToAdd      => [
+        'MyThingGroupName', ...      # min: 1, max: 128
+      ],                             # OPTIONAL
       ThingGroupsToRemove => [
-        'MyThingGroupName', ...    # min: 1, max: 128
-      ],                           # OPTIONAL
-      ThingName => 'MyThingName',  # OPTIONAL
+        'MyThingGroupName', ...      # min: 1, max: 128
+      ],                             # OPTIONAL
+      ThingName => 'MyThingName',    # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot/UpdateThingGroupsForThing>
 
 =head1 ATTRIBUTES
+
+
+=head2 OverrideDynamicGroups => Bool
+
+Override dynamic thing groups with static thing groups when 10-group
+limit is reached. If a thing belongs to 10 thing groups, and one or
+more of those groups are dynamic thing groups, adding a thing to a
+static group removes the thing from the last dynamic group.
+
 
 
 =head2 ThingGroupsToAdd => ArrayRef[Str|Undef]
