@@ -15,6 +15,11 @@ package Paws::Config;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
+  sub BatchGetAggregateResourceConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::BatchGetAggregateResourceConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub BatchGetResourceConfig {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::BatchGetResourceConfig', @_);
@@ -145,6 +150,16 @@ package Paws::Config;
     my $call_object = $self->new_with_coercions('Paws::Config::GetAggregateConfigRuleComplianceSummary', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetAggregateDiscoveredResourceCounts {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::GetAggregateDiscoveredResourceCounts', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetAggregateResourceConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::GetAggregateResourceConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetComplianceDetailsByConfigRule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::GetComplianceDetailsByConfigRule', @_);
@@ -173,6 +188,11 @@ package Paws::Config;
   sub GetResourceConfigHistory {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::GetResourceConfigHistory', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListAggregateDiscoveredResources {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::ListAggregateDiscoveredResources', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListDiscoveredResources {
@@ -394,7 +414,7 @@ package Paws::Config;
   }
 
 
-  sub operations { qw/BatchGetResourceConfig DeleteAggregationAuthorization DeleteConfigRule DeleteConfigurationAggregator DeleteConfigurationRecorder DeleteDeliveryChannel DeleteEvaluationResults DeletePendingAggregationRequest DeleteRetentionConfiguration DeliverConfigSnapshot DescribeAggregateComplianceByConfigRules DescribeAggregationAuthorizations DescribeComplianceByConfigRule DescribeComplianceByResource DescribeConfigRuleEvaluationStatus DescribeConfigRules DescribeConfigurationAggregators DescribeConfigurationAggregatorSourcesStatus DescribeConfigurationRecorders DescribeConfigurationRecorderStatus DescribeDeliveryChannels DescribeDeliveryChannelStatus DescribePendingAggregationRequests DescribeRetentionConfigurations GetAggregateComplianceDetailsByConfigRule GetAggregateConfigRuleComplianceSummary GetComplianceDetailsByConfigRule GetComplianceDetailsByResource GetComplianceSummaryByConfigRule GetComplianceSummaryByResourceType GetDiscoveredResourceCounts GetResourceConfigHistory ListDiscoveredResources PutAggregationAuthorization PutConfigRule PutConfigurationAggregator PutConfigurationRecorder PutDeliveryChannel PutEvaluations PutRetentionConfiguration StartConfigRulesEvaluation StartConfigurationRecorder StopConfigurationRecorder / }
+  sub operations { qw/BatchGetAggregateResourceConfig BatchGetResourceConfig DeleteAggregationAuthorization DeleteConfigRule DeleteConfigurationAggregator DeleteConfigurationRecorder DeleteDeliveryChannel DeleteEvaluationResults DeletePendingAggregationRequest DeleteRetentionConfiguration DeliverConfigSnapshot DescribeAggregateComplianceByConfigRules DescribeAggregationAuthorizations DescribeComplianceByConfigRule DescribeComplianceByResource DescribeConfigRuleEvaluationStatus DescribeConfigRules DescribeConfigurationAggregators DescribeConfigurationAggregatorSourcesStatus DescribeConfigurationRecorders DescribeConfigurationRecorderStatus DescribeDeliveryChannels DescribeDeliveryChannelStatus DescribePendingAggregationRequests DescribeRetentionConfigurations GetAggregateComplianceDetailsByConfigRule GetAggregateConfigRuleComplianceSummary GetAggregateDiscoveredResourceCounts GetAggregateResourceConfig GetComplianceDetailsByConfigRule GetComplianceDetailsByResource GetComplianceSummaryByConfigRule GetComplianceSummaryByResourceType GetDiscoveredResourceCounts GetResourceConfigHistory ListAggregateDiscoveredResources ListDiscoveredResources PutAggregationAuthorization PutConfigRule PutConfigurationAggregator PutConfigurationRecorder PutDeliveryChannel PutEvaluations PutRetentionConfiguration StartConfigRulesEvaluation StartConfigurationRecorder StopConfigurationRecorder / }
 
 1;
 
@@ -453,6 +473,41 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/con
 
 
 =head1 METHODS
+
+=head2 BatchGetAggregateResourceConfig
+
+=over
+
+=item ConfigurationAggregatorName => Str
+
+=item ResourceIdentifiers => ArrayRef[L<Paws::Config::AggregateResourceIdentifier>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::BatchGetAggregateResourceConfig>
+
+Returns: a L<Paws::Config::BatchGetAggregateResourceConfigResponse> instance
+
+Returns the current configuration items for resources that are present
+in your AWS Config aggregator. The operation also returns a list of
+resources that are not processed in the current request. If there are
+no unprocessed resources, the operation returns an empty
+C<unprocessedResourceIdentifiers> list.
+
+=over
+
+=item *
+
+The API does not return results for deleted resources.
+
+=item *
+
+The API does not return tags and relationships.
+
+=back
+
+
 
 =head2 BatchGetResourceConfig
 
@@ -1121,6 +1176,57 @@ The results can return an empty result page, but if you have a
 nextToken, the results are displayed on the next page.
 
 
+=head2 GetAggregateDiscoveredResourceCounts
+
+=over
+
+=item ConfigurationAggregatorName => Str
+
+=item [Filters => L<Paws::Config::ResourceCountFilters>]
+
+=item [GroupByKey => Str]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::GetAggregateDiscoveredResourceCounts>
+
+Returns: a L<Paws::Config::GetAggregateDiscoveredResourceCountsResponse> instance
+
+Returns the resource counts across accounts and regions that are
+present in your AWS Config aggregator. You can request the resource
+counts by providing filters and GroupByKey.
+
+For example, if the input contains accountID 12345678910 and region
+us-east-1 in filters, the API returns the count of resources in account
+ID 12345678910 and region us-east-1. If the input contains ACCOUNT_ID
+as a GroupByKey, the API returns resource counts for all source
+accounts that are present in your aggregator.
+
+
+=head2 GetAggregateResourceConfig
+
+=over
+
+=item ConfigurationAggregatorName => Str
+
+=item ResourceIdentifier => L<Paws::Config::AggregateResourceIdentifier>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::GetAggregateResourceConfig>
+
+Returns: a L<Paws::Config::GetAggregateResourceConfigResponse> instance
+
+Returns configuration item that is aggregated for your specific
+resource in a specific source account and region.
+
+
 =head2 GetComplianceDetailsByConfigRule
 
 =over
@@ -1333,6 +1439,41 @@ Each call to the API is limited to span a duration of seven days. It is
 likely that the number of records returned is smaller than the
 specified C<limit>. In such cases, you can make another call, using the
 C<nextToken>.
+
+
+=head2 ListAggregateDiscoveredResources
+
+=over
+
+=item ConfigurationAggregatorName => Str
+
+=item ResourceType => Str
+
+=item [Filters => L<Paws::Config::ResourceFilters>]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::ListAggregateDiscoveredResources>
+
+Returns: a L<Paws::Config::ListAggregateDiscoveredResourcesResponse> instance
+
+Accepts a resource type and returns a list of resource identifiers that
+are aggregated for a specific resource type across accounts and
+regions. A resource identifier includes the resource type, ID, (if
+available) the custom resource name, source account, and source region.
+You can narrow the results to include only resources that have specific
+resource IDs, or a resource name, or source account ID, or source
+region.
+
+For example, if the input consists of accountID 12345678910 and the
+region is us-east-1 for resource type C<AWS::EC2::Instance> then the
+API returns all the EC2 instance identifiers of accountID 12345678910
+and region us-east-1.
 
 
 =head2 ListDiscoveredResources
