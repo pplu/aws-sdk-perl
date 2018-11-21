@@ -1,6 +1,6 @@
-package Paws::CloudFront::Origins;
+package Paws::CloudFront::StatusCodes;
   use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::Origin]', request_name => 'Origin', traits => ['NameInRequest'], required => 1);
+  has Items => (is => 'ro', isa => 'ArrayRef[Int]', request_name => 'StatusCode', traits => ['NameInRequest'], required => 1);
   has Quantity => (is => 'ro', isa => 'Int', required => 1);
 1;
 
@@ -8,7 +8,7 @@ package Paws::CloudFront::Origins;
 
 =head1 NAME
 
-Paws::CloudFront::Origins
+Paws::CloudFront::StatusCodes
 
 =head1 USAGE
 
@@ -19,34 +19,34 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::CloudFront::Origins object:
+As an example, if Att1 is expected to be a Paws::CloudFront::StatusCodes object:
 
   $service_obj->Method(Att1 => { Items => $value, ..., Quantity => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront::Origins object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront::StatusCodes object:
 
   $result = $service_obj->Method(...);
   $result->Att1->Items
 
 =head1 DESCRIPTION
 
-A complex type that contains information about origins and origin
-groups for this distribution.
+A complex data type for the status codes that you specify that, when
+returned by a primary origin, trigger CloudFront to failover to a
+second origin.
 
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Items => ArrayRef[L<Paws::CloudFront::Origin>]
+=head2 B<REQUIRED> Items => ArrayRef[Int]
 
-  A complex type that contains origins or origin groups for this
-distribution.
+  The items (status codes) for an origin group.
 
 
 =head2 B<REQUIRED> Quantity => Int
 
-  The number of origins or origin groups for this distribution.
+  The number of status codes.
 
 
 

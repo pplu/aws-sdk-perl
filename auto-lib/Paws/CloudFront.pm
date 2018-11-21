@@ -3,7 +3,7 @@ package Paws::CloudFront;
   use Moose;
   sub service { 'cloudfront' }
   sub signing_name { 'cloudfront' }
-  sub version { '2018-06-18' }
+  sub version { '2018-11-05' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
   has retry => (is => 'ro', isa => 'HashRef', default => sub {
@@ -393,7 +393,7 @@ developers who need detailed information about CloudFront API actions,
 data types, and errors. For detailed information about CloudFront
 features, see the I<Amazon CloudFront Developer Guide>.
 
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2018-06-18>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2018-11-05>
 
 
 =head1 METHODS

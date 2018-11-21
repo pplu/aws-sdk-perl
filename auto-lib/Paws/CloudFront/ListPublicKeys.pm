@@ -7,7 +7,7 @@ package Paws::CloudFront::ListPublicKeys;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListPublicKeys');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2018-06-18/public-key');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2018-11-05/public-key');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::ListPublicKeysResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
@@ -22,11 +22,11 @@ Paws::CloudFront::ListPublicKeys - Arguments for method ListPublicKeys on L<Paws
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListPublicKeys2018_06_18 on the
+This class represents the parameters used for calling the method ListPublicKeys2018_11_05 on the
 L<Amazon CloudFront|Paws::CloudFront> service. Use the attributes of this class
-as arguments to method ListPublicKeys2018_06_18.
+as arguments to method ListPublicKeys2018_11_05.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListPublicKeys2018_06_18.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListPublicKeys2018_11_05.
 
 =head1 SYNOPSIS
 
@@ -66,7 +66,7 @@ The maximum number of public keys you want in the response body.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method ListPublicKeys2018_06_18 in L<Paws::CloudFront>
+This class forms part of L<Paws>, documenting arguments for method ListPublicKeys2018_11_05 in L<Paws::CloudFront>
 
 =head1 BUGS and CONTRIBUTIONS
 

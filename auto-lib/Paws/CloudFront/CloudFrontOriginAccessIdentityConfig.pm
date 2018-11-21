@@ -40,11 +40,12 @@ C</I<CloudFront API version>/CloudFront/identity ID/config> resource.
 
 =head2 B<REQUIRED> CallerReference => Str
 
-  A unique number that ensures the request can't be replayed.
+  A unique value (for example, a date-time stamp) that ensures that the
+request can't be replayed.
 
-If the C<CallerReference> is new (no matter the content of the
-C<CloudFrontOriginAccessIdentityConfig> object), a new origin access
-identity is created.
+If the value of C<CallerReference> is new (regardless of the content of
+the C<CloudFrontOriginAccessIdentityConfig> object), a new origin
+access identity is created.
 
 If the C<CallerReference> is a value already sent in a previous
 identity request, and the content of the

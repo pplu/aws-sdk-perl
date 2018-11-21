@@ -11,6 +11,7 @@ package Paws::CloudFront::DistributionConfig;
   has HttpVersion => (is => 'ro', isa => 'Str');
   has IsIPV6Enabled => (is => 'ro', isa => 'Bool');
   has Logging => (is => 'ro', isa => 'Paws::CloudFront::LoggingConfig');
+  has OriginGroups => (is => 'ro', isa => 'Paws::CloudFront::OriginGroups');
   has Origins => (is => 'ro', isa => 'Paws::CloudFront::Origins', required => 1);
   has PriceClass => (is => 'ro', isa => 'Str');
   has Restrictions => (is => 'ro', isa => 'Paws::CloudFront::Restrictions');
@@ -71,15 +72,8 @@ If the value of C<CallerReference> is new (regardless of the content of
 the C<DistributionConfig> object), CloudFront creates a new
 distribution.
 
-If C<CallerReference> is a value you already sent in a previous request
-to create a distribution, and if the content of the
-C<DistributionConfig> is identical to the original request (ignoring
-white space), CloudFront returns the same the response that it returned
-to the original request.
-
-If C<CallerReference> is a value you already sent in a previous request
-to create a distribution but the content of the C<DistributionConfig>
-is different from the original request, CloudFront returns a
+If C<CallerReference> is a value that you already sent in a previous
+request to create a distribution, CloudFront returns a
 C<DistributionAlreadyExists> error.
 
 
@@ -232,6 +226,12 @@ distribution.
 For more information about logging, see Access Logs
 (http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html)
 in the I<Amazon CloudFront Developer Guide>.
+
+
+=head2 OriginGroups => L<Paws::CloudFront::OriginGroups>
+
+  A complex type that contains information about origin groups for this
+distribution.
 
 
 =head2 B<REQUIRED> Origins => L<Paws::CloudFront::Origins>

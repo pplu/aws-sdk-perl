@@ -64,9 +64,6 @@ response from the origin and before it caches the object in the
 response. When the requested object is in the edge cache, the function
 doesn't execute.
 
-If the origin returns an HTTP status code other than HTTP 200 (OK), the
-function doesn't execute.
-
 =item *
 
 C<viewer-response>: The function executes before CloudFront returns the

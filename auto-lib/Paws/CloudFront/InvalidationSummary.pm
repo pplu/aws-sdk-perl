@@ -40,7 +40,7 @@ A summary of an invalidation request.
 
 =head2 B<REQUIRED> CreateTime => Str
 
-  
+  The time that an invalidation request was created.
 
 
 =head2 B<REQUIRED> Id => Str
