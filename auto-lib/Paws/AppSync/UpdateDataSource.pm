@@ -8,6 +8,7 @@ package Paws::AppSync::UpdateDataSource;
   has HttpConfig => (is => 'ro', isa => 'Paws::AppSync::HttpDataSourceConfig', traits => ['NameInRequest'], request_name => 'httpConfig');
   has LambdaConfig => (is => 'ro', isa => 'Paws::AppSync::LambdaDataSourceConfig', traits => ['NameInRequest'], request_name => 'lambdaConfig');
   has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
+  has RelationalDatabaseConfig => (is => 'ro', isa => 'Paws::AppSync::RelationalDatabaseDataSourceConfig', traits => ['NameInRequest'], request_name => 'relationalDatabaseConfig');
   has ServiceRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceRoleArn');
   has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type', required => 1);
 
@@ -51,12 +52,32 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Endpoint  => 'MyString',
 
       },    # OPTIONAL
-      HttpConfig => { Endpoint => 'MyString', },    # OPTIONAL
+      HttpConfig => {
+        AuthorizationConfig => {
+          AuthorizationType => 'AWS_IAM',    # values: AWS_IAM
+          AwsIamConfig      => {
+            SigningRegion      => 'MyString',
+            SigningServiceName => 'MyString',
+          },                                 # OPTIONAL
+        },    # OPTIONAL
+        Endpoint => 'MyString',
+      },    # OPTIONAL
       LambdaConfig => {
         LambdaFunctionArn => 'MyString',
 
-      },                                            # OPTIONAL
-      ServiceRoleArn => 'MyString',                 # OPTIONAL
+      },    # OPTIONAL
+      RelationalDatabaseConfig => {
+        RdsHttpEndpointConfig => {
+          AwsRegion           => 'MyString',
+          AwsSecretStoreArn   => 'MyString',
+          DatabaseName        => 'MyString',
+          DbClusterIdentifier => 'MyString',
+          Schema              => 'MyString',
+        },    # OPTIONAL
+        RelationalDatabaseSourceType =>
+          'RDS_HTTP_ENDPOINT',    # values: RDS_HTTP_ENDPOINT; OPTIONAL
+      },    # OPTIONAL
+      ServiceRoleArn => 'MyString',    # OPTIONAL
     );
 
     # Results:
@@ -84,31 +105,37 @@ The new description for the data source.
 
 =head2 DynamodbConfig => L<Paws::AppSync::DynamodbDataSourceConfig>
 
-The new DynamoDB configuration.
+The new Amazon DynamoDB configuration.
 
 
 
 =head2 ElasticsearchConfig => L<Paws::AppSync::ElasticsearchDataSourceConfig>
 
-The new Elasticsearch configuration.
+The new Elasticsearch Service configuration.
 
 
 
 =head2 HttpConfig => L<Paws::AppSync::HttpDataSourceConfig>
 
-The new http endpoint configuration
+The new HTTP endpoint configuration.
 
 
 
 =head2 LambdaConfig => L<Paws::AppSync::LambdaDataSourceConfig>
 
-The new Lambda configuration.
+The new AWS Lambda configuration.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
 The new name for the data source.
+
+
+
+=head2 RelationalDatabaseConfig => L<Paws::AppSync::RelationalDatabaseDataSourceConfig>
+
+The new relational database configuration.
 
 
 
@@ -122,7 +149,7 @@ The new service role ARN for the data source.
 
 The new data source type.
 
-Valid values are: C<"AWS_LAMBDA">, C<"AMAZON_DYNAMODB">, C<"AMAZON_ELASTICSEARCH">, C<"NONE">, C<"HTTP">
+Valid values are: C<"AWS_LAMBDA">, C<"AMAZON_DYNAMODB">, C<"AMAZON_ELASTICSEARCH">, C<"NONE">, C<"HTTP">, C<"RELATIONAL_DATABASE">
 
 
 =head1 SEE ALSO

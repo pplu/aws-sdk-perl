@@ -7,6 +7,7 @@ package Paws::AppSync::DataSource;
   has HttpConfig => (is => 'ro', isa => 'Paws::AppSync::HttpDataSourceConfig', request_name => 'httpConfig', traits => ['NameInRequest']);
   has LambdaConfig => (is => 'ro', isa => 'Paws::AppSync::LambdaDataSourceConfig', request_name => 'lambdaConfig', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has RelationalDatabaseConfig => (is => 'ro', isa => 'Paws::AppSync::RelationalDatabaseDataSourceConfig', request_name => 'relationalDatabaseConfig', traits => ['NameInRequest']);
   has ServiceRoleArn => (is => 'ro', isa => 'Str', request_name => 'serviceRoleArn', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
 1;
@@ -56,22 +57,22 @@ Describes a data source.
 
 =head2 DynamodbConfig => L<Paws::AppSync::DynamodbDataSourceConfig>
 
-  DynamoDB settings.
+  Amazon DynamoDB settings.
 
 
 =head2 ElasticsearchConfig => L<Paws::AppSync::ElasticsearchDataSourceConfig>
 
-  Amazon Elasticsearch settings.
+  Amazon Elasticsearch Service settings.
 
 
 =head2 HttpConfig => L<Paws::AppSync::HttpDataSourceConfig>
 
-  Http endpoint settings.
+  HTTP endpoint settings.
 
 
 =head2 LambdaConfig => L<Paws::AppSync::LambdaDataSourceConfig>
 
-  Lambda settings.
+  AWS Lambda settings.
 
 
 =head2 Name => Str
@@ -79,10 +80,15 @@ Describes a data source.
   The name of the data source.
 
 
+=head2 RelationalDatabaseConfig => L<Paws::AppSync::RelationalDatabaseDataSourceConfig>
+
+  Relational database settings.
+
+
 =head2 ServiceRoleArn => Str
 
-  The IAM service role ARN for the data source. The system assumes this
-role when accessing the data source.
+  The AWS IAM service role ARN for the data source. The system assumes
+this role when accessing the data source.
 
 
 =head2 Type => Str
@@ -106,14 +112,18 @@ B<AWS_LAMBDA>: The data source is an AWS Lambda function.
 
 =item *
 
-B<NONE>: There is no data source. This type is used when when you wish
-to invoke a GraphQL operation without connecting to a data source, such
-as performing data transformation with resolvers or triggering a
+B<NONE>: There is no data source. This type is used when you wish to
+invoke a GraphQL operation without connecting to a data source, such as
+performing data transformation with resolvers or triggering a
 subscription to be invoked from a mutation.
 
 =item *
 
 B<HTTP>: The data source is an HTTP endpoint.
+
+=item *
+
+B<RELATIONAL_DATABASE>: The data source is a relational database.
 
 =back
 

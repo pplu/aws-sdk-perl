@@ -1,13 +1,13 @@
-package Paws::AppSync::LambdaDataSourceConfig;
+package Paws::AppSync::PipelineConfig;
   use Moose;
-  has LambdaFunctionArn => (is => 'ro', isa => 'Str', request_name => 'lambdaFunctionArn', traits => ['NameInRequest'], required => 1);
+  has Functions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'functions', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::AppSync::LambdaDataSourceConfig
+Paws::AppSync::PipelineConfig
 
 =head1 USAGE
 
@@ -18,27 +18,27 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::AppSync::LambdaDataSourceConfig object:
+As an example, if Att1 is expected to be a Paws::AppSync::PipelineConfig object:
 
-  $service_obj->Method(Att1 => { LambdaFunctionArn => $value, ..., LambdaFunctionArn => $value  });
+  $service_obj->Method(Att1 => { Functions => $value, ..., Functions => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::AppSync::LambdaDataSourceConfig object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::AppSync::PipelineConfig object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->LambdaFunctionArn
+  $result->Att1->Functions
 
 =head1 DESCRIPTION
 
-Describes an AWS Lambda data source configuration.
+The pipeline configuration for a resolver of kind C<PIPELINE>.
 
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> LambdaFunctionArn => Str
+=head2 Functions => ArrayRef[Str|Undef]
 
-  The ARN for the Lambda function.
+  A list of C<Function> objects.
 
 
 

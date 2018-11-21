@@ -1,5 +1,6 @@
 package Paws::AppSync::HttpDataSourceConfig;
   use Moose;
+  has AuthorizationConfig => (is => 'ro', isa => 'Paws::AppSync::AuthorizationConfig', request_name => 'authorizationConfig', traits => ['NameInRequest']);
   has Endpoint => (is => 'ro', isa => 'Str', request_name => 'endpoint', traits => ['NameInRequest']);
 1;
 
@@ -20,28 +21,34 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::AppSync::HttpDataSourceConfig object:
 
-  $service_obj->Method(Att1 => { Endpoint => $value, ..., Endpoint => $value  });
+  $service_obj->Method(Att1 => { AuthorizationConfig => $value, ..., Endpoint => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::AppSync::HttpDataSourceConfig object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Endpoint
+  $result->Att1->AuthorizationConfig
 
 =head1 DESCRIPTION
 
-Describes a Http data source configuration.
+Describes an HTTP data source configuration.
 
 =head1 ATTRIBUTES
 
 
+=head2 AuthorizationConfig => L<Paws::AppSync::AuthorizationConfig>
+
+  The authorization config in case the HTTP endpoint requires
+authorization.
+
+
 =head2 Endpoint => Str
 
-  The Http url endpoint. You can either specify the domain name or ip and
-port combination and the url scheme must be http(s). If the port is not
-specified, AWS AppSync will use the default port 80 for http endpoint
-and port 443 for https endpoints.
+  The HTTP URL endpoint. You can either specify the domain name or IP,
+and port combination, and the URL scheme must be HTTP or HTTPS. If the
+port is not specified, AWS AppSync uses the default port 80 for the
+HTTP endpoint and port 443 for HTTPS endpoints.
 
 
 

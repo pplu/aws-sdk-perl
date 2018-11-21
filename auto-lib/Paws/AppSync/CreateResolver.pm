@@ -2,8 +2,10 @@
 package Paws::AppSync::CreateResolver;
   use Moose;
   has ApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'apiId', required => 1);
-  has DataSourceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'dataSourceName', required => 1);
+  has DataSourceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'dataSourceName');
   has FieldName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'fieldName', required => 1);
+  has Kind => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'kind');
+  has PipelineConfig => (is => 'ro', isa => 'Paws::AppSync::PipelineConfig', traits => ['NameInRequest'], request_name => 'pipelineConfig');
   has RequestMappingTemplate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'requestMappingTemplate', required => 1);
   has ResponseMappingTemplate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'responseMappingTemplate');
   has TypeName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'typeName', required => 1);
@@ -34,11 +36,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $appsync = Paws->service('AppSync');
     my $CreateResolverResponse = $appsync->CreateResolver(
-      ApiId                   => 'MyString',
-      DataSourceName          => 'MyResourceName',
-      FieldName               => 'MyResourceName',
-      RequestMappingTemplate  => 'MyMappingTemplate',
-      TypeName                => 'MyResourceName',
+      ApiId                  => 'MyString',
+      FieldName              => 'MyResourceName',
+      RequestMappingTemplate => 'MyMappingTemplate',
+      TypeName               => 'MyResourceName',
+      DataSourceName         => 'MyResourceName',      # OPTIONAL
+      Kind                   => 'UNIT',                # OPTIONAL
+      PipelineConfig         => {
+        Functions => [ 'MyString', ... ],              # OPTIONAL
+      },    # OPTIONAL
       ResponseMappingTemplate => 'MyMappingTemplate',    # OPTIONAL
     );
 
@@ -59,7 +65,7 @@ The ID for the GraphQL API for which the resolver is being created.
 
 
 
-=head2 B<REQUIRED> DataSourceName => Str
+=head2 DataSourceName => Str
 
 The name of the data source for which the resolver is being created.
 
@@ -68,6 +74,36 @@ The name of the data source for which the resolver is being created.
 =head2 B<REQUIRED> FieldName => Str
 
 The name of the field to attach the resolver to.
+
+
+
+=head2 Kind => Str
+
+The resolver type.
+
+=over
+
+=item *
+
+B<UNIT>: A UNIT resolver type. A UNIT resolver is the default resolver
+type. A UNIT resolver enables you to execute a GraphQL query against a
+single data source.
+
+=item *
+
+B<PIPELINE>: A PIPELINE resolver type. A PIPELINE resolver enables you
+to execute a series of C<Function> in a serial manner. You can use a
+pipeline resolver to execute a GraphQL query against multiple data
+sources.
+
+=back
+
+
+Valid values are: C<"UNIT">, C<"PIPELINE">
+
+=head2 PipelineConfig => L<Paws::AppSync::PipelineConfig>
+
+The C<PipelineConfig>.
 
 
 

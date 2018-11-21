@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppSync::Op
 
 =head1 DESCRIPTION
 
-Describes an Open Id Connect configuration.
+Describes an OpenID Connect configuration.
 
 =head1 ATTRIBUTES
 
@@ -46,10 +46,11 @@ Describes an Open Id Connect configuration.
 
 =head2 ClientId => Str
 
-  The client identifier of the Relying party at the OpenID Provider. This
-identifier is typically obtained when the Relying party is registered
-with the OpenID Provider. You can specify a regular expression so the
-AWS AppSync can validate against multiple client identifiers at a time
+  The client identifier of the Relying party at the OpenID identity
+provider. This identifier is typically obtained when the Relying party
+is registered with the OpenID identity provider. You can specify a
+regular expression so the AWS AppSync can validate against multiple
+client identifiers at a time.
 
 
 =head2 IatTTL => Int
@@ -60,8 +61,8 @@ user.
 
 =head2 B<REQUIRED> Issuer => Str
 
-  The issuer for the open id connect configuration. The issuer returned
-by discovery MUST exactly match the value of iss in the ID Token.
+  The issuer for the OpenID Connect configuration. The issuer returned by
+discovery must exactly match the value of C<iss> in the ID token.
 
 
 

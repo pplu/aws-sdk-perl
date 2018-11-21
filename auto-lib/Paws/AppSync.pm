@@ -24,6 +24,11 @@ package Paws::AppSync;
     my $call_object = $self->new_with_coercions('Paws::AppSync::CreateDataSource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateFunction {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppSync::CreateFunction', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateGraphqlApi {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppSync::CreateGraphqlApi', @_);
@@ -49,6 +54,11 @@ package Paws::AppSync;
     my $call_object = $self->new_with_coercions('Paws::AppSync::DeleteDataSource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteFunction {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppSync::DeleteFunction', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteGraphqlApi {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppSync::DeleteGraphqlApi', @_);
@@ -67,6 +77,11 @@ package Paws::AppSync;
   sub GetDataSource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppSync::GetDataSource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetFunction {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppSync::GetFunction', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetGraphqlApi {
@@ -104,6 +119,11 @@ package Paws::AppSync;
     my $call_object = $self->new_with_coercions('Paws::AppSync::ListDataSources', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListFunctions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppSync::ListFunctions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListGraphqlApis {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppSync::ListGraphqlApis', @_);
@@ -112,6 +132,11 @@ package Paws::AppSync;
   sub ListResolvers {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppSync::ListResolvers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListResolversByFunction {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppSync::ListResolversByFunction', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListTypes {
@@ -134,6 +159,11 @@ package Paws::AppSync;
     my $call_object = $self->new_with_coercions('Paws::AppSync::UpdateDataSource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateFunction {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppSync::UpdateFunction', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateGraphqlApi {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppSync::UpdateGraphqlApi', @_);
@@ -152,7 +182,7 @@ package Paws::AppSync;
   
 
 
-  sub operations { qw/CreateApiKey CreateDataSource CreateGraphqlApi CreateResolver CreateType DeleteApiKey DeleteDataSource DeleteGraphqlApi DeleteResolver DeleteType GetDataSource GetGraphqlApi GetIntrospectionSchema GetResolver GetSchemaCreationStatus GetType ListApiKeys ListDataSources ListGraphqlApis ListResolvers ListTypes StartSchemaCreation UpdateApiKey UpdateDataSource UpdateGraphqlApi UpdateResolver UpdateType / }
+  sub operations { qw/CreateApiKey CreateDataSource CreateFunction CreateGraphqlApi CreateResolver CreateType DeleteApiKey DeleteDataSource DeleteFunction DeleteGraphqlApi DeleteResolver DeleteType GetDataSource GetFunction GetGraphqlApi GetIntrospectionSchema GetResolver GetSchemaCreationStatus GetType ListApiKeys ListDataSources ListFunctions ListGraphqlApis ListResolvers ListResolversByFunction ListTypes StartSchemaCreation UpdateApiKey UpdateDataSource UpdateFunction UpdateGraphqlApi UpdateResolver UpdateType / }
 
 1;
 
@@ -229,6 +259,8 @@ executing your API.
 
 =item [LambdaConfig => L<Paws::AppSync::LambdaDataSourceConfig>]
 
+=item [RelationalDatabaseConfig => L<Paws::AppSync::RelationalDatabaseDataSourceConfig>]
+
 =item [ServiceRoleArn => Str]
 
 
@@ -239,6 +271,37 @@ Each argument is described in detail in: L<Paws::AppSync::CreateDataSource>
 Returns: a L<Paws::AppSync::CreateDataSourceResponse> instance
 
 Creates a C<DataSource> object.
+
+
+=head2 CreateFunction
+
+=over
+
+=item ApiId => Str
+
+=item DataSourceName => Str
+
+=item FunctionVersion => Str
+
+=item Name => Str
+
+=item RequestMappingTemplate => Str
+
+=item [Description => Str]
+
+=item [ResponseMappingTemplate => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppSync::CreateFunction>
+
+Returns: a L<Paws::AppSync::CreateFunctionResponse> instance
+
+Creates a C<Function> object.
+
+A function is a reusable entity. Multiple functions can be used to
+compose the resolver logic.
 
 
 =head2 CreateGraphqlApi
@@ -271,13 +334,17 @@ Creates a C<GraphqlApi> object.
 
 =item ApiId => Str
 
-=item DataSourceName => Str
-
 =item FieldName => Str
 
 =item RequestMappingTemplate => Str
 
 =item TypeName => Str
+
+=item [DataSourceName => Str]
+
+=item [Kind => Str]
+
+=item [PipelineConfig => L<Paws::AppSync::PipelineConfig>]
 
 =item [ResponseMappingTemplate => Str]
 
@@ -350,6 +417,24 @@ Returns: a L<Paws::AppSync::DeleteDataSourceResponse> instance
 Deletes a C<DataSource> object.
 
 
+=head2 DeleteFunction
+
+=over
+
+=item ApiId => Str
+
+=item FunctionId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppSync::DeleteFunction>
+
+Returns: a L<Paws::AppSync::DeleteFunctionResponse> instance
+
+Deletes a C<Function>.
+
+
 =head2 DeleteGraphqlApi
 
 =over
@@ -420,6 +505,24 @@ Each argument is described in detail in: L<Paws::AppSync::GetDataSource>
 Returns: a L<Paws::AppSync::GetDataSourceResponse> instance
 
 Retrieves a C<DataSource> object.
+
+
+=head2 GetFunction
+
+=over
+
+=item ApiId => Str
+
+=item FunctionId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppSync::GetFunction>
+
+Returns: a L<Paws::AppSync::GetFunctionResponse> instance
+
+Get a C<Function>.
 
 
 =head2 GetGraphqlApi
@@ -557,6 +660,26 @@ Returns: a L<Paws::AppSync::ListDataSourcesResponse> instance
 Lists the data sources for a given API.
 
 
+=head2 ListFunctions
+
+=over
+
+=item ApiId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppSync::ListFunctions>
+
+Returns: a L<Paws::AppSync::ListFunctionsResponse> instance
+
+List multiple functions.
+
+
 =head2 ListGraphqlApis
 
 =over
@@ -595,6 +718,28 @@ Each argument is described in detail in: L<Paws::AppSync::ListResolvers>
 Returns: a L<Paws::AppSync::ListResolversResponse> instance
 
 Lists the resolvers for a given API and type.
+
+
+=head2 ListResolversByFunction
+
+=over
+
+=item ApiId => Str
+
+=item FunctionId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppSync::ListResolversByFunction>
+
+Returns: a L<Paws::AppSync::ListResolversByFunctionResponse> instance
+
+List the resolvers that are associated with a specific function.
 
 
 =head2 ListTypes
@@ -681,6 +826,8 @@ Updates an API key.
 
 =item [LambdaConfig => L<Paws::AppSync::LambdaDataSourceConfig>]
 
+=item [RelationalDatabaseConfig => L<Paws::AppSync::RelationalDatabaseDataSourceConfig>]
+
 =item [ServiceRoleArn => Str]
 
 
@@ -691,6 +838,36 @@ Each argument is described in detail in: L<Paws::AppSync::UpdateDataSource>
 Returns: a L<Paws::AppSync::UpdateDataSourceResponse> instance
 
 Updates a C<DataSource> object.
+
+
+=head2 UpdateFunction
+
+=over
+
+=item ApiId => Str
+
+=item DataSourceName => Str
+
+=item FunctionId => Str
+
+=item FunctionVersion => Str
+
+=item Name => Str
+
+=item RequestMappingTemplate => Str
+
+=item [Description => Str]
+
+=item [ResponseMappingTemplate => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppSync::UpdateFunction>
+
+Returns: a L<Paws::AppSync::UpdateFunctionResponse> instance
+
+Updates a C<Function> object.
 
 
 =head2 UpdateGraphqlApi
@@ -725,13 +902,17 @@ Updates a C<GraphqlApi> object.
 
 =item ApiId => Str
 
-=item DataSourceName => Str
-
 =item FieldName => Str
 
 =item RequestMappingTemplate => Str
 
 =item TypeName => Str
+
+=item [DataSourceName => Str]
+
+=item [Kind => Str]
+
+=item [PipelineConfig => L<Paws::AppSync::PipelineConfig>]
 
 =item [ResponseMappingTemplate => Str]
 

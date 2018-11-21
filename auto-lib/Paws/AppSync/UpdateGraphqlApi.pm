@@ -81,7 +81,7 @@ Valid values are: C<"API_KEY">, C<"AWS_IAM">, C<"AMAZON_COGNITO_USER_POOLS">, C<
 
 =head2 LogConfig => L<Paws::AppSync::LogConfig>
 
-The Amazon CloudWatch logs configuration for the C<GraphqlApi> object.
+The Amazon CloudWatch Logs configuration for the C<GraphqlApi> object.
 
 
 
@@ -93,14 +93,13 @@ The new name for the C<GraphqlApi> object.
 
 =head2 OpenIDConnectConfig => L<Paws::AppSync::OpenIDConnectConfig>
 
-The Open Id Connect configuration configuration for the C<GraphqlApi>
-object.
+The OpenID Connect configuration for the C<GraphqlApi> object.
 
 
 
 =head2 UserPoolConfig => L<Paws::AppSync::UserPoolConfig>
 
-The new Amazon Cognito User Pool configuration for the C<GraphqlApi>
+The new Amazon Cognito user pool configuration for the C<GraphqlApi>
 object.
 
 

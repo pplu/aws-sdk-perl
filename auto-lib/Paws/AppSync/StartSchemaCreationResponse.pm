@@ -17,7 +17,7 @@ Paws::AppSync::StartSchemaCreationResponse
 
 =head2 Status => Str
 
-The current state of the schema (PROCESSING, ACTIVE, or DELETING). Once
+The current state of the schema (PROCESSING, ACTIVE, or DELETING). When
 the schema is in the ACTIVE state, you can add data.
 
 Valid values are: C<"PROCESSING">, C<"ACTIVE">, C<"DELETING">
