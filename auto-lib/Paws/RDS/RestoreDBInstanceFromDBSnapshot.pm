@@ -28,6 +28,7 @@ package Paws::RDS::RestoreDBInstanceFromDBSnapshot;
   has TdeCredentialArn => (is => 'ro', isa => 'Str');
   has TdeCredentialPassword => (is => 'ro', isa => 'Str');
   has UseDefaultProcessorFeatures => (is => 'ro', isa => 'Bool');
+  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -94,6 +95,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       TdeCredentialArn            => 'MyString',                 # OPTIONAL
       TdeCredentialPassword       => 'MyString',                 # OPTIONAL
       UseDefaultProcessorFeatures => 1,                          # OPTIONAL
+      VpcSecurityGroupIds         => [ 'MyString', ... ],        # OPTIONAL
       );
 
     # Results:
@@ -482,6 +484,15 @@ the device.
 
 A value that specifies that the DB instance class of the DB instance
 uses its default processor features.
+
+
+
+=head2 VpcSecurityGroupIds => ArrayRef[Str|Undef]
+
+A list of EC2 VPC security groups to associate with this DB instance.
+
+Default: The default EC2 VPC security group for the DB subnet group's
+VPC.
 
 
 

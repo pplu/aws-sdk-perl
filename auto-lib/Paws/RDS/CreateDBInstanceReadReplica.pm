@@ -27,6 +27,7 @@ package Paws::RDS::CreateDBInstanceReadReplica;
   has StorageType => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
   has UseDefaultProcessorFeatures => (is => 'ro', isa => 'Bool');
+  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -489,6 +490,15 @@ C<standard>
 
 A value that specifies that the DB instance class of the DB instance
 uses its default processor features.
+
+
+
+=head2 VpcSecurityGroupIds => ArrayRef[Str|Undef]
+
+A list of EC2 VPC security groups to associate with the Read Replica.
+
+Default: The default EC2 VPC security group for the DB subnet group's
+VPC.
 
 
 

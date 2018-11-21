@@ -31,6 +31,7 @@ package Paws::RDS::RestoreDBInstanceToPointInTime;
   has TdeCredentialPassword => (is => 'ro', isa => 'Str');
   has UseDefaultProcessorFeatures => (is => 'ro', isa => 'Bool');
   has UseLatestRestorableTime => (is => 'ro', isa => 'Bool');
+  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -100,6 +101,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       TdeCredentialPassword       => 'MyString',                 # OPTIONAL
       UseDefaultProcessorFeatures => 1,                          # OPTIONAL
       UseLatestRestorableTime     => 1,                          # OPTIONAL
+      VpcSecurityGroupIds         => [ 'MyString', ... ],        # OPTIONAL
       );
 
     # Results:
@@ -515,6 +517,15 @@ restored from the latest backup time.
 Default: C<false>
 
 Constraints: Can't be specified if RestoreTime parameter is provided.
+
+
+
+=head2 VpcSecurityGroupIds => ArrayRef[Str|Undef]
+
+A list of EC2 VPC security groups to associate with this DB instance.
+
+Default: The default EC2 VPC security group for the DB subnet group's
+VPC.
 
 
 

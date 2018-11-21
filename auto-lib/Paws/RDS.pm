@@ -1826,6 +1826,8 @@ Creates a new DB instance.
 
 =item [UseDefaultProcessorFeatures => Bool]
 
+=item [VpcSecurityGroupIds => ArrayRef[Str|Undef]]
+
 
 =back
 
@@ -4218,6 +4220,8 @@ in the I<Amazon Aurora User Guide.>
 
 =item [UseDefaultProcessorFeatures => Bool]
 
+=item [VpcSecurityGroupIds => ArrayRef[Str|Undef]]
+
 
 =back
 
@@ -4421,6 +4425,8 @@ in the I<Amazon RDS User Guide.>
 =item [UseDefaultProcessorFeatures => Bool]
 
 =item [UseLatestRestorableTime => Bool]
+
+=item [VpcSecurityGroupIds => ArrayRef[Str|Undef]]
 
 
 =back
