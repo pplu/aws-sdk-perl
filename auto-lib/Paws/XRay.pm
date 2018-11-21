@@ -19,9 +19,19 @@ package Paws::XRay;
     my $call_object = $self->new_with_coercions('Paws::XRay::BatchGetTraces', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::XRay::CreateGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateSamplingRule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::XRay::CreateSamplingRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::XRay::DeleteGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteSamplingRule {
@@ -32,6 +42,16 @@ package Paws::XRay;
   sub GetEncryptionConfig {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::XRay::GetEncryptionConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::XRay::GetGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetGroups {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::XRay::GetGroups', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetSamplingRules {
@@ -77,6 +97,11 @@ package Paws::XRay;
   sub PutTraceSegments {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::XRay::PutTraceSegments', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::XRay::UpdateGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateSamplingRule {
@@ -179,7 +204,7 @@ package Paws::XRay;
   }
 
 
-  sub operations { qw/BatchGetTraces CreateSamplingRule DeleteSamplingRule GetEncryptionConfig GetSamplingRules GetSamplingStatisticSummaries GetSamplingTargets GetServiceGraph GetTraceGraph GetTraceSummaries PutEncryptionConfig PutTelemetryRecords PutTraceSegments UpdateSamplingRule / }
+  sub operations { qw/BatchGetTraces CreateGroup CreateSamplingRule DeleteGroup DeleteSamplingRule GetEncryptionConfig GetGroup GetGroups GetSamplingRules GetSamplingStatisticSummaries GetSamplingTargets GetServiceGraph GetTraceGraph GetTraceSummaries PutEncryptionConfig PutTelemetryRecords PutTraceSegments UpdateGroup UpdateSamplingRule / }
 
 1;
 
@@ -235,6 +260,24 @@ of segment documents that originates from a single request. Use
 C<GetTraceSummaries> to get a list of trace IDs.
 
 
+=head2 CreateGroup
+
+=over
+
+=item GroupName => Str
+
+=item [FilterExpression => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::XRay::CreateGroup>
+
+Returns: a L<Paws::XRay::CreateGroupResult> instance
+
+Creates a group resource with a name and a filter expression.
+
+
 =head2 CreateSamplingRule
 
 =over
@@ -256,6 +299,24 @@ reservoir size. After 10 seconds, the service reports back to X-Ray
 with GetSamplingTargets to get updated versions of each in-use rule.
 The updated rule contains a trace quota that the service can use
 instead of borrowing from the reservoir.
+
+
+=head2 DeleteGroup
+
+=over
+
+=item [GroupARN => Str]
+
+=item [GroupName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::XRay::DeleteGroup>
+
+Returns: a L<Paws::XRay::DeleteGroupResult> instance
+
+Deletes a group resource.
 
 
 =head2 DeleteSamplingRule
@@ -288,6 +349,40 @@ Each argument is described in detail in: L<Paws::XRay::GetEncryptionConfig>
 Returns: a L<Paws::XRay::GetEncryptionConfigResult> instance
 
 Retrieves the current encryption configuration for X-Ray data.
+
+
+=head2 GetGroup
+
+=over
+
+=item [GroupARN => Str]
+
+=item [GroupName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::XRay::GetGroup>
+
+Returns: a L<Paws::XRay::GetGroupResult> instance
+
+Retrieves group resource details.
+
+
+=head2 GetGroups
+
+=over
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::XRay::GetGroups>
+
+Returns: a L<Paws::XRay::GetGroupsResult> instance
+
+Retrieves all active group details.
 
 
 =head2 GetSamplingRules
@@ -347,6 +442,10 @@ requests.
 =item EndTime => Str
 
 =item StartTime => Str
+
+=item [GroupARN => Str]
+
+=item [GroupName => Str]
 
 =item [NextToken => Str]
 
@@ -556,6 +655,26 @@ digits.
 
 
 
+=head2 UpdateGroup
+
+=over
+
+=item [FilterExpression => Str]
+
+=item [GroupARN => Str]
+
+=item [GroupName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::XRay::UpdateGroup>
+
+Returns: a L<Paws::XRay::UpdateGroupResult> instance
+
+Updates a group resource.
+
+
 =head2 UpdateSamplingRule
 
 =over
@@ -590,9 +709,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::XRay::BatchGetTracesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 GetAllServiceGraph(sub { },EndTime => Str, StartTime => Str, [NextToken => Str])
+=head2 GetAllServiceGraph(sub { },EndTime => Str, StartTime => Str, [GroupARN => Str, GroupName => Str, NextToken => Str])
 
-=head2 GetAllServiceGraph(EndTime => Str, StartTime => Str, [NextToken => Str])
+=head2 GetAllServiceGraph(EndTime => Str, StartTime => Str, [GroupARN => Str, GroupName => Str, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

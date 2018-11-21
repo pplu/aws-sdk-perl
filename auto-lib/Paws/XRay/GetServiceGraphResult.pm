@@ -1,6 +1,7 @@
 
 package Paws::XRay::GetServiceGraphResult;
   use Moose;
+  has ContainsOldGroupVersions => (is => 'ro', isa => 'Bool');
   has EndTime => (is => 'ro', isa => 'Str');
   has NextToken => (is => 'ro', isa => 'Str');
   has Services => (is => 'ro', isa => 'ArrayRef[Paws::XRay::Service]');
@@ -16,6 +17,13 @@ package Paws::XRay::GetServiceGraphResult;
 Paws::XRay::GetServiceGraphResult
 
 =head1 ATTRIBUTES
+
+
+=head2 ContainsOldGroupVersions => Bool
+
+A flag indicating whether or not the group's filter expression has been
+consistent, or if the returned service graph may show traces from an
+older version of the group's filter expression.
 
 
 =head2 EndTime => Str
