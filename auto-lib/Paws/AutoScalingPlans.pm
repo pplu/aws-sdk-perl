@@ -35,6 +35,11 @@ package Paws::AutoScalingPlans;
     my $call_object = $self->new_with_coercions('Paws::AutoScalingPlans::DescribeScalingPlans', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetScalingPlanResourceForecastData {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AutoScalingPlans::GetScalingPlanResourceForecastData', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateScalingPlan {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AutoScalingPlans::UpdateScalingPlan', @_);
@@ -43,7 +48,7 @@ package Paws::AutoScalingPlans;
   
 
 
-  sub operations { qw/CreateScalingPlan DeleteScalingPlan DescribeScalingPlanResources DescribeScalingPlans UpdateScalingPlan / }
+  sub operations { qw/CreateScalingPlan DeleteScalingPlan DescribeScalingPlanResources DescribeScalingPlans GetScalingPlanResourceForecastData UpdateScalingPlan / }
 
 1;
 
@@ -74,16 +79,17 @@ Paws::AutoScalingPlans - Perl Interface to AWS AWS Auto Scaling Plans
 AWS Auto Scaling
 
 Use AWS Auto Scaling to quickly discover all the scalable AWS resources
-for your application and configure dynamic scaling for your scalable
-resources.
+for your application and configure dynamic scaling and predictive
+scaling for your resources using scaling plans. Use this service in
+conjunction with the Amazon EC2 Auto Scaling, Application Auto Scaling,
+Amazon CloudWatch, and AWS CloudFormation services.
 
-To get started, create a scaling plan with a set of instructions used
-to configure dynamic scaling for the scalable resources in your
-application. AWS Auto Scaling creates target tracking scaling policies
-for the scalable resources in your scaling plan. Target tracking
-scaling policies adjust the capacity of your scalable resource as
-required to maintain resource utilization at the target value that you
-specified.
+Currently, predictive scaling is only available for Amazon EC2 Auto
+Scaling groups.
+
+For more information about AWS Auto Scaling, see the AWS Auto Scaling
+User Guide
+(http://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-aws-auto-scaling.html).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2018-01-06>
 
@@ -109,11 +115,6 @@ Returns: a L<Paws::AutoScalingPlans::CreateScalingPlanResponse> instance
 
 Creates a scaling plan.
 
-A scaling plan contains a set of instructions used to configure dynamic
-scaling for the scalable resources in your application. AWS Auto
-Scaling creates target tracking scaling policies based on the scaling
-instructions in your scaling plan.
-
 
 =head2 DeleteScalingPlan
 
@@ -131,6 +132,12 @@ Each argument is described in detail in: L<Paws::AutoScalingPlans::DeleteScaling
 Returns: a L<Paws::AutoScalingPlans::DeleteScalingPlanResponse> instance
 
 Deletes the specified scaling plan.
+
+Deleting a scaling plan deletes the underlying ScalingInstruction for
+all of the scalable resources that are covered by the plan.
+
+If the plan has launched resources or has scaling activities in
+progress, you must delete those resources separately.
 
 
 =head2 DescribeScalingPlanResources
@@ -176,7 +183,41 @@ Each argument is described in detail in: L<Paws::AutoScalingPlans::DescribeScali
 
 Returns: a L<Paws::AutoScalingPlans::DescribeScalingPlansResponse> instance
 
-Describes the specified scaling plans or all of your scaling plans.
+Describes one or more of your scaling plans.
+
+
+=head2 GetScalingPlanResourceForecastData
+
+=over
+
+=item EndTime => Str
+
+=item ForecastDataType => Str
+
+=item ResourceId => Str
+
+=item ScalableDimension => Str
+
+=item ScalingPlanName => Str
+
+=item ScalingPlanVersion => Int
+
+=item ServiceNamespace => Str
+
+=item StartTime => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AutoScalingPlans::GetScalingPlanResourceForecastData>
+
+Returns: a L<Paws::AutoScalingPlans::GetScalingPlanResourceForecastDataResponse> instance
+
+Retrieves the forecast data for a scalable resource.
+
+Capacity forecasts are represented as predicted values, or data points,
+that are calculated using historical data points from a specified
+CloudWatch load metric. Data points are available for up to 56 days.
 
 
 =head2 UpdateScalingPlan
@@ -198,7 +239,7 @@ Each argument is described in detail in: L<Paws::AutoScalingPlans::UpdateScaling
 
 Returns: a L<Paws::AutoScalingPlans::UpdateScalingPlanResponse> instance
 
-Updates the scaling plan for the specified scaling plan.
+Updates the specified scaling plan.
 
 You cannot update a scaling plan if it is in the process of being
 created, updated, or deleted.

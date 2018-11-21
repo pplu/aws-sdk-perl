@@ -85,10 +85,39 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },
             ...
           ],
+          CustomizedLoadMetricSpecification => {
+            MetricName => 'MyMetricName',
+            Namespace  => 'MyMetricNamespace',
+            Statistic =>
+              'Average',   # values: Average, Minimum, Maximum, SampleCount, Sum
+            Dimensions => [
+              {
+                Name  => 'MyMetricDimensionName',
+                Value => 'MyMetricDimensionValue',
 
+              },
+              ...
+            ],             # OPTIONAL
+            Unit => 'MyMetricUnit',    # OPTIONAL
+          },    # OPTIONAL
+          DisableDynamicScaling             => 1,    # OPTIONAL
+          PredefinedLoadMetricSpecification => {
+            PredefinedLoadMetricType => 'ASGTotalCPUUtilization'
+            , # values: ASGTotalCPUUtilization, ASGTotalNetworkIn, ASGTotalNetworkOut, ALBTargetGroupRequestCount
+            ResourceLabel => 'MyResourceLabel',    # min: 1, max: 1023; OPTIONAL
+          },    # OPTIONAL
+          PredictiveScalingMaxCapacityBehavior =>
+            'SetForecastCapacityToMaxCapacity'
+          , # values: SetForecastCapacityToMaxCapacity, SetMaxCapacityToForecastCapacity, SetMaxCapacityAboveForecastCapacity; OPTIONAL
+          PredictiveScalingMaxCapacityBuffer => 1,
+          PredictiveScalingMode              => 'ForecastAndScale'
+          ,    # values: ForecastAndScale, ForecastOnly; OPTIONAL
+          ScalingPolicyUpdateBehavior => 'KeepExternalPolicies'
+          ,    # values: KeepExternalPolicies, ReplaceExternalPolicies; OPTIONAL
+          ScheduledActionBufferTime => 1,    # OPTIONAL
         },
         ...
-      ],                                # OPTIONAL
+      ],                                     # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -117,7 +146,7 @@ The name of the scaling plan.
 
 =head2 B<REQUIRED> ScalingPlanVersion => Int
 
-The version number.
+The version number of the scaling plan.
 
 
 

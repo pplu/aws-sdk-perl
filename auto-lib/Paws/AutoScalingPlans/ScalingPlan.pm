@@ -50,7 +50,7 @@ Represents a scaling plan.
 
 =head2 CreationTime => Str
 
-  The Unix timestamp when the scaling plan was created.
+  The Unix time stamp when the scaling plan was created.
 
 
 =head2 B<REQUIRED> ScalingInstructions => ArrayRef[L<Paws::AutoScalingPlans::ScalingInstruction>]
@@ -65,7 +65,7 @@ Represents a scaling plan.
 
 =head2 B<REQUIRED> ScalingPlanVersion => Int
 
-  The version of the scaling plan.
+  The version number of the scaling plan.
 
 
 =head2 B<REQUIRED> StatusCode => Str
@@ -99,6 +99,14 @@ C<DeletionInProgress> - The scaling plan is being deleted.
 
 C<DeletionFailed> - The scaling plan could not be deleted.
 
+=item *
+
+C<UpdateInProgress> - The scaling plan is being updated.
+
+=item *
+
+C<UpdateFailed> - The scaling plan could not be updated.
+
 =back
 
 
@@ -110,7 +118,7 @@ C<DeletionFailed> - The scaling plan could not be deleted.
 
 =head2 StatusStartTime => Str
 
-  The Unix timestamp when the scaling plan entered the current status.
+  The Unix time stamp when the scaling plan entered the current status.
 
 
 
