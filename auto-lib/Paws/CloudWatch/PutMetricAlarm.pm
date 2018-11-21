@@ -12,10 +12,11 @@ package Paws::CloudWatch::PutMetricAlarm;
   has EvaluationPeriods => (is => 'ro', isa => 'Int', required => 1);
   has ExtendedStatistic => (is => 'ro', isa => 'Str');
   has InsufficientDataActions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has MetricName => (is => 'ro', isa => 'Str', required => 1);
-  has Namespace => (is => 'ro', isa => 'Str', required => 1);
+  has MetricName => (is => 'ro', isa => 'Str');
+  has Metrics => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::MetricDataQuery]');
+  has Namespace => (is => 'ro', isa => 'Str');
   has OKActions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Period => (is => 'ro', isa => 'Int', required => 1);
+  has Period => (is => 'ro', isa => 'Int');
   has Statistic => (is => 'ro', isa => 'Str');
   has Threshold => (is => 'ro', isa => 'Num', required => 1);
   has TreatMissingData => (is => 'ro', isa => 'Str');
@@ -49,9 +50,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AlarmName          => 'MyAlarmName',
       ComparisonOperator => 'GreaterThanOrEqualToThreshold',
       EvaluationPeriods  => 1,
-      MetricName         => 'MyMetricName',
-      Namespace          => 'MyNamespace',
-      Period             => 1,
       Threshold          => 1,
       ActionsEnabled     => 1,                                 # OPTIONAL
       AlarmActions       => [
@@ -73,12 +71,42 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InsufficientDataActions => [
         'MyResourceName', ...                              # min: 1, max: 1024
       ],                                                   # OPTIONAL
+      MetricName => 'MyMetricName',                        # OPTIONAL
+      Metrics    => [
+        {
+          Id         => 'MyMetricId',            # min: 1, max: 255
+          Expression => 'MyMetricExpression',    # min: 1, max: 1024; OPTIONAL
+          Label      => 'MyMetricLabel',         # OPTIONAL
+          MetricStat => {
+            Metric => {
+              Dimensions => [
+                {
+                  Name  => 'MyDimensionName',     # min: 1, max: 255
+                  Value => 'MyDimensionValue',    # min: 1, max: 255
+
+                },
+                ...
+              ],                                  # max: 10
+              MetricName => 'MyMetricName',       # min: 1, max: 255
+              Namespace  => 'MyNamespace',        # min: 1, max: 255; OPTIONAL
+            },
+            Period => 1,                          # min: 1
+            Stat   => 'MyStat',
+            Unit   => 'Seconds'
+            , # values: Seconds, Microseconds, Milliseconds, Bytes, Kilobytes, Megabytes, Gigabytes, Terabytes, Bits, Kilobits, Megabits, Gigabits, Terabits, Percent, Count, Bytes/Second, Kilobytes/Second, Megabytes/Second, Gigabytes/Second, Terabytes/Second, Bits/Second, Kilobits/Second, Megabits/Second, Gigabits/Second, Terabits/Second, Count/Second, None; OPTIONAL
+          },    # OPTIONAL
+          ReturnData => 1,    # OPTIONAL
+        },
+        ...
+      ],                      # OPTIONAL
+      Namespace => 'MyNamespace',    # OPTIONAL
       OKActions => [
-        'MyResourceName', ...                              # min: 1, max: 1024
-      ],                                                   # OPTIONAL
-      Statistic        => 'SampleCount',                   # OPTIONAL
-      TreatMissingData => 'MyTreatMissingData',            # OPTIONAL
-      Unit             => 'Seconds',                       # OPTIONAL
+        'MyResourceName', ...        # min: 1, max: 1024
+      ],                             # OPTIONAL
+      Period           => 1,                       # OPTIONAL
+      Statistic        => 'SampleCount',           # OPTIONAL
+      TreatMissingData => 'MyTreatMissingData',    # OPTIONAL
+      Unit             => 'Seconds',               # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -90,7 +118,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mon
 =head2 ActionsEnabled => Bool
 
 Indicates whether actions should be executed during any changes to the
-alarm state.
+alarm state. The default is TRUE.
 
 
 
@@ -123,7 +151,7 @@ The description for the alarm.
 
 =head2 B<REQUIRED> AlarmName => Str
 
-The name for the alarm. This name must be unique within the AWS
+The name for the alarm. This name must be unique within your AWS
 account.
 
 
@@ -149,7 +177,7 @@ in the I<Amazon CloudWatch User Guide>.
 
 =head2 Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]
 
-The dimensions for the metric associated with the alarm.
+The dimensions for the metric specified in C<MetricName>.
 
 
 
@@ -171,7 +199,7 @@ Valid Values: C<evaluate | ignore>
 =head2 B<REQUIRED> EvaluationPeriods => Int
 
 The number of periods over which data is compared to the specified
-threshold. If you are setting an alarm which requires that a number of
+threshold. If you are setting an alarm that requires that a number of
 consecutive data points be breaching to trigger the alarm, this value
 specifies that number. If you are setting an "M out of N" alarm, this
 value is the N.
@@ -184,10 +212,10 @@ seconds.
 
 =head2 ExtendedStatistic => Str
 
-The percentile statistic for the metric associated with the alarm.
-Specify a value between p0.0 and p100. When you call C<PutMetricAlarm>,
-you must specify either C<Statistic> or C<ExtendedStatistic,> but not
-both.
+The percentile statistic for the metric specified in C<MetricName>.
+Specify a value between p0.0 and p100. When you call C<PutMetricAlarm>
+and specify a C<MetricName>, you must specify either C<Statistic> or
+C<ExtendedStatistic,> but not both.
 
 
 
@@ -212,15 +240,35 @@ C<arn:aws:swf:I<region>:I<account-id>:action/actions/AWS_EC2.InstanceId.Reboot/1
 
 
 
-=head2 B<REQUIRED> MetricName => Str
+=head2 MetricName => Str
 
 The name for the metric associated with the alarm.
 
+If you are creating an alarm based on a math expression, you cannot
+specify this parameter, or any of the C<Dimensions>, C<Period>,
+C<Namespace>, C<Statistic>, or C<ExtendedStatistic> parameters.
+Instead, you specify all this information in the C<Metrics> array.
 
 
-=head2 B<REQUIRED> Namespace => Str
 
-The namespace for the metric associated with the alarm.
+=head2 Metrics => ArrayRef[L<Paws::CloudWatch::MetricDataQuery>]
+
+An array of C<MetricDataQuery> structures that enable you to create an
+alarm based on the result of a metric math expression. Each item in the
+C<Metrics> array either retrieves a metric or performs a math
+expression.
+
+If you use the C<Metrics> parameter, you cannot include the
+C<MetricName>, C<Dimensions>, C<Period>, C<Namespace>, C<Statistic>, or
+C<ExtendedStatistic> parameters of C<PutMetricAlarm> in the same
+operation. Instead, you retrieve the metrics you are using in your math
+expression as part of the C<Metrics> array.
+
+
+
+=head2 Namespace => Str
+
+The namespace for the metric associated specified in C<MetricName>.
 
 
 
@@ -233,6 +281,7 @@ Name (ARN).
 Valid Values: C<arn:aws:automate:I<region>:ec2:stop> |
 C<arn:aws:automate:I<region>:ec2:terminate> |
 C<arn:aws:automate:I<region>:ec2:recover> |
+C<arn:aws:automate:I<region>:ec2:reboot> |
 C<arn:aws:sns:I<region>:I<account-id>:I<sns-topic-name> > |
 C<arn:aws:autoscaling:I<region>:I<account-id>:scalingPolicy:I<policy-id>autoScalingGroupName/I<group-friendly-name>:policyName/I<policy-friendly-name>>
 
@@ -245,10 +294,11 @@ C<arn:aws:swf:I<region>:I<account-id>:action/actions/AWS_EC2.InstanceId.Reboot/1
 
 
 
-=head2 B<REQUIRED> Period => Int
+=head2 Period => Int
 
-The period, in seconds, over which the specified statistic is applied.
-Valid values are 10, 30, and any multiple of 60.
+The length, in seconds, used each time the metric specified in
+C<MetricName> is evaluated. Valid values are 10, 30, and any multiple
+of 60.
 
 Be sure to specify 10 or 30 only for metrics that are stored by a
 C<PutMetricData> call with a C<StorageResolution> of 1. If you specify
@@ -270,10 +320,10 @@ than 86,400 seconds.
 
 =head2 Statistic => Str
 
-The statistic for the metric associated with the alarm, other than
+The statistic for the metric specified in C<MetricName>, other than
 percentile. For percentile statistics, use C<ExtendedStatistic>. When
-you call C<PutMetricAlarm>, you must specify either C<Statistic> or
-C<ExtendedStatistic,> but not both.
+you call C<PutMetricAlarm> and specify a C<MetricName>, you must
+specify either C<Statistic> or C<ExtendedStatistic,> but not both.
 
 Valid values are: C<"SampleCount">, C<"Average">, C<"Sum">, C<"Minimum">, C<"Maximum">
 

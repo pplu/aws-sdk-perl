@@ -754,12 +754,6 @@ create the dashboard.
 
 =item EvaluationPeriods => Int
 
-=item MetricName => Str
-
-=item Namespace => Str
-
-=item Period => Int
-
 =item Threshold => Num
 
 =item [ActionsEnabled => Bool]
@@ -778,7 +772,15 @@ create the dashboard.
 
 =item [InsufficientDataActions => ArrayRef[Str|Undef]]
 
+=item [MetricName => Str]
+
+=item [Metrics => ArrayRef[L<Paws::CloudWatch::MetricDataQuery>]]
+
+=item [Namespace => Str]
+
 =item [OKActions => ArrayRef[Str|Undef]]
+
+=item [Period => Int]
 
 =item [Statistic => Str]
 
@@ -793,20 +795,19 @@ Each argument is described in detail in: L<Paws::CloudWatch::PutMetricAlarm>
 
 Returns: nothing
 
-Creates or updates an alarm and associates it with the specified
-metric. Optionally, this operation can associate one or more Amazon SNS
-resources with the alarm.
+Creates or updates an alarm and associates it with the specified metric
+or metric math expression.
 
 When this operation creates an alarm, the alarm state is immediately
-set to C<INSUFFICIENT_DATA>. The alarm is evaluated and its state is
-set appropriately. Any actions associated with the state are then
-executed.
+set to C<INSUFFICIENT_DATA>. The alarm is then evaluated and its state
+is set appropriately. Any actions associated with the new state are
+then executed.
 
 When you update an existing alarm, its state is left unchanged, but the
 update completely overwrites the previous configuration of the alarm.
 
 If you are an IAM user, you must have Amazon EC2 permissions for some
-operations:
+alarm operations:
 
 =over
 
@@ -851,8 +852,8 @@ you cannot stop or terminate an EC2 instance using alarm actions.
 The first time you create an alarm in the AWS Management Console, the
 CLI, or by using the PutMetricAlarm API, CloudWatch creates the
 necessary service-linked role for you. The service-linked role is
-called C<AWSServiceRoleForCloudWatchEvents>. For more information about
-service-linked roles, see AWS service-linked role
+called C<AWSServiceRoleForCloudWatchEvents>. For more information, see
+AWS service-linked role
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role).
 
 
@@ -871,11 +872,11 @@ Each argument is described in detail in: L<Paws::CloudWatch::PutMetricData>
 
 Returns: nothing
 
-Publishes metric data to Amazon CloudWatch. CloudWatch associates the
-data with the specified metric. If the specified metric does not exist,
-CloudWatch creates the metric. When CloudWatch creates a metric, it can
-take up to fifteen minutes for the metric to appear in calls to
-ListMetrics.
+Publishes metric data points to Amazon CloudWatch. CloudWatch
+associates the data points with the specified metric. If the specified
+metric does not exist, CloudWatch creates the metric. When CloudWatch
+creates a metric, it can take up to fifteen minutes for the metric to
+appear in calls to ListMetrics.
 
 You can publish either individual data points in the C<Value> field, or
 arrays of values and the number of times each value occurred during the
@@ -905,10 +906,8 @@ Data points with time stamps from 24 hours ago or longer can take at
 least 48 hours to become available for GetMetricData or
 GetMetricStatistics from the time they are submitted.
 
-CloudWatch needs raw data points to calculate percentile statistics.
-These raw data points could be published individually or as part of
-C<Values> and C<Counts> arrays. If you publish data using statistic
-sets in the C<StatisticValues> field instead, you can only retrieve
+CloudWatch needs raw data points to calculate percentile statistics. If
+you publish data using a statistic set instead, you can only retrieve
 percentile statistics for this data if one of the following conditions
 is true:
 

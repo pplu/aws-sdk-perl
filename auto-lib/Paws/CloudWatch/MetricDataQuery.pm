@@ -35,10 +35,34 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatch:
 
 =head1 DESCRIPTION
 
-This structure indicates the metric data to return, and whether this
-call is just retrieving a batch set of data for one metric, or is
-performing a math expression on metric data. A single C<GetMetricData>
-call can include up to 100 C<MetricDataQuery> structures.
+This structure is used in both C<GetMetricData> and C<PutMetricAlarm>.
+The supported use of this structure is different for those two
+operations.
+
+When used in C<GetMetricData>, it indicates the metric data to return,
+and whether this call is just retrieving a batch set of data for one
+metric, or is performing a math expression on metric data. A single
+C<GetMetricData> call can include up to 100 C<MetricDataQuery>
+structures.
+
+When used in C<PutMetricAlarm>, it enables you to create an alarm based
+on a metric math expression. Each C<MetricDataQuery> in the array
+specifies either a metric to retrieve, or a math expression to be
+performed on retrieved metrics. A single C<PutMetricAlarm> call can
+include up to 20 C<MetricDataQuery> structures in the array. The 20
+structures can include as many as 10 structures that contain a
+C<MetricStat> parameter to retrieve a metric, and as many as 10
+structures that contain the C<Expression> parameter to perform a math
+expression. Any expression used in a C<PutMetricAlarm> operation must
+return a single time series. For more information, see Metric Math
+Syntax and Functions
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax)
+in the I<Amazon CloudWatch User Guide>.
+
+Some of the parameters of this structure also have different uses
+whether you are using this structure in a C<GetMetricData> operation or
+a C<PutMetricAlarm> operation. These differences are explained in the
+following parameter list.
 
 =head1 ATTRIBUTES
 
@@ -46,18 +70,21 @@ call can include up to 100 C<MetricDataQuery> structures.
 =head2 Expression => Str
 
   The math expression to be performed on the returned data, if this
-structure is performing a math expression. For more information about
-metric math expressions, see Metric Math Syntax and Functions
+object is performing a math expression. This expression can use the
+C<Id> of the other metrics to refer to those metrics, and can also use
+the C<Id> of other expressions to use the result of those expressions.
+For more information about metric math expressions, see Metric Math
+Syntax and Functions
 (http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax)
 in the I<Amazon CloudWatch User Guide>.
 
-Within one MetricDataQuery structure, you must specify either
+Within each MetricDataQuery object, you must specify either
 C<Expression> or C<MetricStat> but not both.
 
 
 =head2 B<REQUIRED> Id => Str
 
-  A short name used to tie this structure to the results in the response.
+  A short name used to tie this object to the results in the response.
 This name must be unique within a single call to C<GetMetricData>. If
 you are performing math expressions on this set of data, this name
 represents that data and can serve as a variable in the mathematical
@@ -77,19 +104,24 @@ generates a default.
 =head2 MetricStat => L<Paws::CloudWatch::MetricStat>
 
   The metric to be returned, along with statistics, period, and units.
-Use this parameter only if this structure is performing a data
-retrieval and not performing a math expression on the returned data.
+Use this parameter only if this object is retrieving a metric and not
+performing a math expression on returned data.
 
-Within one MetricDataQuery structure, you must specify either
+Within one MetricDataQuery object, you must specify either
 C<Expression> or C<MetricStat> but not both.
 
 
 =head2 ReturnData => Bool
 
-  Indicates whether to return the time stamps and raw data values of this
-metric. If you are performing this call just to do math expressions and
-do not also need the raw data returned, you can specify C<False>. If
-you omit this, the default of C<True> is used.
+  When used in C<GetMetricData>, this option indicates whether to return
+the timestamps and raw data values of this metric. If you are
+performing this call just to do math expressions and do not also need
+the raw data returned, you can specify C<False>. If you omit this, the
+default of C<True> is used.
+
+When used in C<PutMetricAlarm>, specify C<True> for the one expression
+result to use as the alarm. For all other metrics and expressions in
+the same C<PutMetricAlarm> operation, specify C<ReturnData> as False.
 
 
 

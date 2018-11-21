@@ -45,7 +45,7 @@ Represents a specific metric.
 
 =head2 MetricName => Str
 
-  The name of the metric.
+  The name of the metric. This is a required field.
 
 
 =head2 Namespace => Str
