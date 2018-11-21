@@ -34,36 +34,38 @@ The face in the source image that was used for comparison.
 
 =head2 SourceImageOrientationCorrection => Str
 
-The orientation of the source image (counterclockwise direction). If
-your application displays the source image, you can use this value to
-correct image orientation. The bounding box coordinates returned in
-C<SourceImageFace> represent the location of the face before the image
-orientation is corrected.
+The value of C<SourceImageOrientationCorrection> is always null.
 
-If the source image is in .jpeg format, it might contain exchangeable
-image (Exif) metadata that includes the image's orientation. If the
-Exif metadata for the source image populates the orientation field, the
-value of C<OrientationCorrection> is null. The C<SourceImageFace>
-bounding box coordinates represent the location of the face after Exif
-metadata is used to correct the orientation. Images in .png format
-don't contain Exif metadata.
+If the input image is in .jpeg format, it might contain exchangeable
+image file format (Exif) metadata that includes the image's
+orientation. Amazon Rekognition uses this orientation information to
+perform image correction. The bounding box coordinates are translated
+to represent object locations after the orientation information in the
+Exif metadata is used to correct the image orientation. Images in .png
+format don't contain Exif metadata.
+
+Amazon Rekognition doesnE<rsquo>t perform image correction for images
+in .png format and .jpeg images without orientation information in the
+image Exif metadata. The bounding box coordinates aren't translated and
+represent the object locations before the image is rotated.
 
 Valid values are: C<"ROTATE_0">, C<"ROTATE_90">, C<"ROTATE_180">, C<"ROTATE_270">
 =head2 TargetImageOrientationCorrection => Str
 
-The orientation of the target image (in counterclockwise direction). If
-your application displays the target image, you can use this value to
-correct the orientation of the image. The bounding box coordinates
-returned in C<FaceMatches> and C<UnmatchedFaces> represent face
-locations before the image orientation is corrected.
+The value of C<TargetImageOrientationCorrection> is always null.
 
-If the target image is in .jpg format, it might contain Exif metadata
-that includes the orientation of the image. If the Exif metadata for
-the target image populates the orientation field, the value of
-C<OrientationCorrection> is null. The bounding box coordinates in
-C<FaceMatches> and C<UnmatchedFaces> represent the location of the face
-after Exif metadata is used to correct the orientation. Images in .png
+If the input image is in .jpeg format, it might contain exchangeable
+image file format (Exif) metadata that includes the image's
+orientation. Amazon Rekognition uses this orientation information to
+perform image correction. The bounding box coordinates are translated
+to represent object locations after the orientation information in the
+Exif metadata is used to correct the image orientation. Images in .png
 format don't contain Exif metadata.
+
+Amazon Rekognition doesnE<rsquo>t perform image correction for images
+in .png format and .jpeg images without orientation information in the
+image Exif metadata. The bounding box coordinates aren't translated and
+represent the object locations before the image is rotated.
 
 Valid values are: C<"ROTATE_0">, C<"ROTATE_90">, C<"ROTATE_180">, C<"ROTATE_270">
 =head2 UnmatchedFaces => ArrayRef[L<Paws::Rekognition::ComparedFace>]

@@ -380,6 +380,9 @@ application users. A user can then index faces using the C<IndexFaces>
 operation and persist results in a specific collection. Then, a user
 can search the collection for faces in the user-specific container.
 
+When you create a collection, it is associated with the latest version
+of the face model version.
+
 Collection names are case-sensitive.
 
 This operation requires permissions to perform the
@@ -558,9 +561,9 @@ non-frontal or obscured faces, the algorithm might not detect the faces
 or might detect faces with lower confidence.
 
 You pass the input image either as base64-encoded image bytes or as a
-reference to an image in an Amazon S3 bucket. If you use the AWS CLI to
-call Amazon Rekognition operations, passing image bytes is not
-supported. The image must be either a PNG or JPEG formatted file.
+reference to an image in an Amazon S3 bucket. If you use the to call
+Amazon Rekognition operations, passing image bytes is not supported.
+The image must be either a PNG or JPEG formatted file.
 
 This is a stateless API operation. That is, the operation does not
 persist any data.
@@ -1138,10 +1141,14 @@ To get the number of faces in a collection, call .
 
 If you're using version 1.0 of the face detection model, C<IndexFaces>
 indexes the 15 largest faces in the input image. Later versions of the
-face detection model index the 100 largest faces in the input image. To
-determine which version of the model you're using, call and supply the
-collection ID. You can also get the model version from the value of
-C<FaceModelVersion> in the response from C<IndexFaces>.
+face detection model index the 100 largest faces in the input image.
+
+If you're using version 4 or later of the face model, image orientation
+information is not returned in the C<OrientationCorrection> field.
+
+To determine which version of the model you're using, call and supply
+the collection ID. You can also get the model version from the value of
+C<FaceModelVersion> in the response from C<IndexFaces>
 
 For more information, see Model Versioning in the Amazon Rekognition
 Developer Guide.
