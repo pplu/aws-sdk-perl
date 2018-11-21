@@ -1579,7 +1579,7 @@ Each argument is described in detail in: L<Paws::DeviceFarm::ListSamples>
 
 Returns: a L<Paws::DeviceFarm::ListSamplesResult> instance
 
-Gets information about samples, given an AWS Device Farm project ARN
+Gets information about samples, given an AWS Device Farm job ARN.
 
 
 =head2 ListSuites

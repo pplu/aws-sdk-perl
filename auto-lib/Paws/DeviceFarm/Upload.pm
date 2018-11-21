@@ -200,6 +200,39 @@ XCTEST_TEST_PACKAGE: An XCode test package upload.
 
 XCTEST_UI_TEST_PACKAGE: An XCode UI test package upload.
 
+=item *
+
+APPIUM_JAVA_JUNIT_TEST_SPEC: An Appium Java JUnit test spec upload.
+
+=item *
+
+APPIUM_JAVA_TESTNG_TEST_SPEC: An Appium Java TestNG test spec upload.
+
+=item *
+
+APPIUM_PYTHON_TEST_SPEC: An Appium Python test spec upload.
+
+=item *
+
+APPIUM_WEB_JAVA_JUNIT_TEST_SPEC: An Appium Java JUnit test spec upload.
+
+=item *
+
+APPIUM_WEB_JAVA_TESTNG_TEST_SPEC: An Appium Java TestNG test spec
+upload.
+
+=item *
+
+APPIUM_WEB_PYTHON_TEST_SPEC: An Appium Python test spec upload.
+
+=item *
+
+INSTRUMENTATION_TEST_SPEC: An instrumentation test spec upload.
+
+=item *
+
+XCTEST_UI_TEST_SPEC: An XCode UI test spec upload.
+
 =back
 
 
