@@ -100,7 +100,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       TagSpecifications => [
         {
           ResourceType => 'customer-gateway'
-          , # values: customer-gateway, dedicated-host, dhcp-options, image, instance, internet-gateway, network-acl, network-interface, reserved-instances, route-table, snapshot, spot-instances-request, subnet, security-group, volume, vpc, vpn-connection, vpn-gateway; OPTIONAL
+          , # values: customer-gateway, dedicated-host, dhcp-options, elastic-ip, fleet, fpga-image, image, instance, internet-gateway, launch-template, natgateway, network-acl, network-interface, reserved-instances, route-table, security-group, snapshot, spot-instances-request, subnet, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway; OPTIONAL
           Tags => [
             {
               Key   => 'MyString',    # OPTIONAL
@@ -207,15 +207,16 @@ Fleet expires.
 
 =head2 Type => Str
 
-The type of request. C<instant> indicates whether the EC2 Fleet submits
-a one-time request for your desired capacity. C<request> indicates
-whether the EC2 Fleet submits ongoing requests until your desired
-capacity is fulfilled, but does not attempt to submit requests in
-alternative capacity pools if capacity is unavailable or maintain the
-capacity. C<maintain> indicates whether the EC2 Fleet submits ongoing
-requests until your desired capacity is fulfilled, and continues to
-maintain your desired capacity by replenishing interrupted Spot
-Instances. Default: C<maintain>.
+The type of the request. By default, the EC2 Fleet places an
+asynchronous request for your desired capacity, and maintains it by
+replenishing interrupted Spot Instances (C<maintain>). A value of
+C<instant> places a synchronous one-time request, and returns errors
+for any instances that could not be launched. A value of C<request>
+places an asynchronous one-time request without maintaining capacity or
+submitting requests in alternative capacity pools if capacity is
+unavailable. For more information, see EC2 Fleet Request Types
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet-configuration-strategies.html#ec2-fleet-request-type)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 Valid values are: C<"request">, C<"maintain">, C<"instant">
 
