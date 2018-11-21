@@ -179,6 +179,11 @@ package Paws::WorkDocs;
     my $call_object = $self->new_with_coercions('Paws::WorkDocs::GetFolderPath', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetResources {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkDocs::GetResources', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub InitiateDocumentVersionUpload {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkDocs::InitiateDocumentVersionUpload', @_);
@@ -289,7 +294,7 @@ package Paws::WorkDocs;
   }
 
 
-  sub operations { qw/AbortDocumentVersionUpload ActivateUser AddResourcePermissions CreateComment CreateCustomMetadata CreateFolder CreateLabels CreateNotificationSubscription CreateUser DeactivateUser DeleteComment DeleteCustomMetadata DeleteDocument DeleteFolder DeleteFolderContents DeleteLabels DeleteNotificationSubscription DeleteUser DescribeActivities DescribeComments DescribeDocumentVersions DescribeFolderContents DescribeGroups DescribeNotificationSubscriptions DescribeResourcePermissions DescribeRootFolders DescribeUsers GetCurrentUser GetDocument GetDocumentPath GetDocumentVersion GetFolder GetFolderPath InitiateDocumentVersionUpload RemoveAllResourcePermissions RemoveResourcePermission UpdateDocument UpdateDocumentVersion UpdateFolder UpdateUser / }
+  sub operations { qw/AbortDocumentVersionUpload ActivateUser AddResourcePermissions CreateComment CreateCustomMetadata CreateFolder CreateLabels CreateNotificationSubscription CreateUser DeactivateUser DeleteComment DeleteCustomMetadata DeleteDocument DeleteFolder DeleteFolderContents DeleteLabels DeleteNotificationSubscription DeleteUser DescribeActivities DescribeComments DescribeDocumentVersions DescribeFolderContents DescribeGroups DescribeNotificationSubscriptions DescribeResourcePermissions DescribeRootFolders DescribeUsers GetCurrentUser GetDocument GetDocumentPath GetDocumentVersion GetFolder GetFolderPath GetResources InitiateDocumentVersionUpload RemoveAllResourcePermissions RemoveResourcePermission UpdateDocument UpdateDocumentVersion UpdateFolder UpdateUser / }
 
 1;
 
@@ -545,12 +550,12 @@ Each argument is described in detail in: L<Paws::WorkDocs::CreateNotificationSub
 
 Returns: a L<Paws::WorkDocs::CreateNotificationSubscriptionResponse> instance
 
-Configure WorkDocs to use Amazon SNS notifications.
+Configure Amazon WorkDocs to use Amazon SNS notifications. The endpoint
+receives a confirmation message, and must confirm the subscription.
 
-The endpoint receives a confirmation message, and must confirm the
-subscription. For more information, see Confirm the Subscription
-(http://docs.aws.amazon.com/sns/latest/dg/SendMessageToHttp.html#SendMessageToHttp.confirm)
-in the I<Amazon Simple Notification Service Developer Guide>.
+For more information, see Subscribe to Notifications
+(http://docs.aws.amazon.com/workdocs/latest/developerguide/subscribe-notifications.html)
+in the I<Amazon WorkDocs Developer Guide>.
 
 
 =head2 CreateUser
@@ -767,15 +772,21 @@ Deletes the specified user from a Simple AD or Microsoft AD directory.
 
 =over
 
+=item [ActivityTypes => Str]
+
 =item [AuthenticationToken => Str]
 
 =item [EndTime => Str]
+
+=item [IncludeIndirectActivities => Bool]
 
 =item [Limit => Int]
 
 =item [Marker => Str]
 
 =item [OrganizationId => Str]
+
+=item [ResourceId => Str]
 
 =item [StartTime => Str]
 
@@ -900,7 +911,8 @@ Each argument is described in detail in: L<Paws::WorkDocs::DescribeGroups>
 
 Returns: a L<Paws::WorkDocs::DescribeGroupsResponse> instance
 
-Describes the groups specified by query.
+Describes the groups specified by the query. Groups are defined by the
+underlying Active Directory.
 
 
 =head2 DescribeNotificationSubscriptions
@@ -968,6 +980,13 @@ Describes the current user's special folders; the C<RootFolder> and the
 C<RecycleBin>. C<RootFolder> is the root of user's files and folders
 and C<RecycleBin> is the root of recycled items. This is not a valid
 action for SigV4 (administrative API) clients.
+
+This action requires an authentication token. To get an authentication
+token, register an application with Amazon WorkDocs. For more
+information, see Authentication and Access Control for User
+Applications
+(http://docs.aws.amazon.com/workdocs/latest/developerguide/wd-auth-user.html)
+in the I<Amazon WorkDocs Developer Guide>.
 
 
 =head2 DescribeUsers
@@ -1149,6 +1168,31 @@ By default, Amazon WorkDocs returns a maximum of 100 levels upwards
 from the requested folder and only includes the IDs of the parent
 folders in the path. You can limit the maximum number of levels. You
 can also request the parent folder names.
+
+
+=head2 GetResources
+
+=over
+
+=item [AuthenticationToken => Str]
+
+=item [CollectionType => Str]
+
+=item [Limit => Int]
+
+=item [Marker => Str]
+
+=item [UserId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkDocs::GetResources>
+
+Returns: a L<Paws::WorkDocs::GetResourcesResponse> instance
+
+Retrieves a collection of resources, including folders and documents.
+The only C<CollectionType> supported is C<SHARED_WITH_ME>.
 
 
 =head2 InitiateDocumentVersionUpload
