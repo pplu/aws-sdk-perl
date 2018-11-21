@@ -197,15 +197,17 @@ Creates an AWS Batch compute environment. You can create C<MANAGED> or
 C<UNMANAGED> compute environments.
 
 In a managed compute environment, AWS Batch manages the capacity and
-instance types of the compute resources within the environment, based
-on the compute resource specification that you define or launch
-template
+instance types of the compute resources within the environment. This is
+based on the compute resource specification that you define or the
+launch template
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html)
 that you specify when you create the compute environment. You can
 choose to use Amazon EC2 On-Demand Instances or Spot Instances in your
 managed compute environment. You can optionally set a maximum price so
 that Spot Instances only launch when the Spot Instance price is below a
 specified percentage of the On-Demand price.
+
+Multi-node parallel jobs are not supported on Spot Instances.
 
 In an unmanaged compute environment, you can manage your own compute
 resources. This provides more compute resource configuration options,
@@ -216,7 +218,7 @@ see Container Instance AMIs
 in the I<Amazon Elastic Container Service Developer Guide>. After you
 have created your unmanaged compute environment, you can use the
 DescribeComputeEnvironments operation to find the Amazon ECS cluster
-that is associated with it and then manually launch your container
+that is associated with it. Then, manually launch your container
 instances into that Amazon ECS cluster. For more information, see
 Launching an Amazon ECS Container Instance
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html)
@@ -437,6 +439,8 @@ Describes a list of AWS Batch jobs.
 
 =item [MaxResults => Int]
 
+=item [MultiNodeJobId => Str]
+
 =item [NextToken => Str]
 
 
@@ -446,10 +450,25 @@ Each argument is described in detail in: L<Paws::Batch::ListJobs>
 
 Returns: a L<Paws::Batch::ListJobsResponse> instance
 
-Returns a list of AWS Batch jobs. You must specify either a job queue
-to return a list of jobs in that job queue, or an array job ID to
-return a list of that job's children. You cannot specify both a job
-queue and an array job ID.
+Returns a list of AWS Batch jobs.
+
+You must specify only one of the following:
+
+=over
+
+=item *
+
+a job queue ID to return a list of jobs in that job queue
+
+=item *
+
+a multi-node parallel job ID to return a list of that job's nodes
+
+=item *
+
+an array job ID to return a list of that job's children
+
+=back
 
 You can filter the results by job status with the C<jobStatus>
 parameter. If you do not specify a status, only C<RUNNING> jobs are
@@ -465,6 +484,8 @@ returned.
 =item Type => Str
 
 =item [ContainerProperties => L<Paws::Batch::ContainerProperties>]
+
+=item [NodeProperties => L<Paws::Batch::NodeProperties>]
 
 =item [Parameters => L<Paws::Batch::ParametersMap>]
 
@@ -497,6 +518,8 @@ Registers an AWS Batch job definition.
 =item [ContainerOverrides => L<Paws::Batch::ContainerOverrides>]
 
 =item [DependsOn => ArrayRef[L<Paws::Batch::JobDependency>]]
+
+=item [NodeOverrides => L<Paws::Batch::NodeOverrides>]
 
 =item [Parameters => L<Paws::Batch::ParametersMap>]
 

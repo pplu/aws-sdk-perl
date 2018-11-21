@@ -79,13 +79,14 @@ or C<DISABLED>.
 If the state is C<ENABLED>, then the AWS Batch scheduler can attempt to
 place jobs from an associated job queue on the compute resources within
 the environment. If the compute environment is managed, then it can
-scale its instances out or in automatically, based on job queue demand.
+scale its instances out or in automatically, based on the job queue
+demand.
 
 If the state is C<DISABLED>, then the AWS Batch scheduler does not
 attempt to place jobs within the environment. Jobs in a C<STARTING> or
 C<RUNNING> state continue to progress normally. Managed compute
-environments in the C<DISABLED> state do not scale out; however, they
-scale in to C<minvCpus> value once instances become idle.
+environments in the C<DISABLED> state do not scale out. However, they
+scale in to C<minvCpus> value after instances become idle.
 
 
 =head2 Status => Str

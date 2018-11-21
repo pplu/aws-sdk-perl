@@ -9,6 +9,7 @@ package Paws::Batch::ComputeResource;
   has LaunchTemplate => (is => 'ro', isa => 'Paws::Batch::LaunchTemplateSpecification', request_name => 'launchTemplate', traits => ['NameInRequest']);
   has MaxvCpus => (is => 'ro', isa => 'Int', request_name => 'maxvCpus', traits => ['NameInRequest'], required => 1);
   has MinvCpus => (is => 'ro', isa => 'Int', request_name => 'minvCpus', traits => ['NameInRequest'], required => 1);
+  has PlacementGroup => (is => 'ro', isa => 'Str', request_name => 'placementGroup', traits => ['NameInRequest']);
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroupIds', traits => ['NameInRequest']);
   has SpotIamFleetRole => (is => 'ro', isa => 'Str', request_name => 'spotIamFleetRole', traits => ['NameInRequest']);
   has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subnets', traits => ['NameInRequest'], required => 1);
@@ -117,6 +118,19 @@ launch template name in the request, but not both.
 
   The minimum number of EC2 vCPUs that an environment should maintain
 (even if the compute environment is C<DISABLED>).
+
+
+=head2 PlacementGroup => Str
+
+  The Amazon EC2 placement group to associate with your compute
+resources. If you intend to submit multi-node parallel jobs to your
+compute environment, you should consider creating a cluster placement
+group and associate it with your compute resources. This keeps your
+multi-node parallel job on a logical grouping of instances within a
+single Availability Zone with high network flow potential. For more
+information, see Placement Groups
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
+in the I<Amazon EC2 User Guide for Linux Instances>.
 
 
 =head2 SecurityGroupIds => ArrayRef[Str|Undef]

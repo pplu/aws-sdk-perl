@@ -5,10 +5,12 @@ package Paws::Batch::ContainerDetail;
   has Environment => (is => 'ro', isa => 'ArrayRef[Paws::Batch::KeyValuePair]', request_name => 'environment', traits => ['NameInRequest']);
   has ExitCode => (is => 'ro', isa => 'Int', request_name => 'exitCode', traits => ['NameInRequest']);
   has Image => (is => 'ro', isa => 'Str', request_name => 'image', traits => ['NameInRequest']);
+  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
   has JobRoleArn => (is => 'ro', isa => 'Str', request_name => 'jobRoleArn', traits => ['NameInRequest']);
   has LogStreamName => (is => 'ro', isa => 'Str', request_name => 'logStreamName', traits => ['NameInRequest']);
   has Memory => (is => 'ro', isa => 'Int', request_name => 'memory', traits => ['NameInRequest']);
   has MountPoints => (is => 'ro', isa => 'ArrayRef[Paws::Batch::MountPoint]', request_name => 'mountPoints', traits => ['NameInRequest']);
+  has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::Batch::NetworkInterface]', request_name => 'networkInterfaces', traits => ['NameInRequest']);
   has Privileged => (is => 'ro', isa => 'Bool', request_name => 'privileged', traits => ['NameInRequest']);
   has ReadonlyRootFilesystem => (is => 'ro', isa => 'Bool', request_name => 'readonlyRootFilesystem', traits => ['NameInRequest']);
   has Reason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
@@ -83,6 +85,12 @@ service.
   The image used to start the container.
 
 
+=head2 InstanceType => Str
+
+  The instance type of the underlying host infrastructure of a multi-node
+parallel job.
+
+
 =head2 JobRoleArn => Str
 
   The Amazon Resource Name (ARN) associated with the job upon execution.
@@ -104,6 +112,11 @@ C<RUNNING> status.
 =head2 MountPoints => ArrayRef[L<Paws::Batch::MountPoint>]
 
   The mount points for data volumes in your container.
+
+
+=head2 NetworkInterfaces => ArrayRef[L<Paws::Batch::NetworkInterface>]
+
+  The network interfaces associated with the job.
 
 
 =head2 Privileged => Bool

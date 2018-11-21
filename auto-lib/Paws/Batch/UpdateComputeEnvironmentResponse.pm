@@ -23,7 +23,7 @@ The Amazon Resource Name (ARN) of the compute environment.
 
 =head2 ComputeEnvironmentName => Str
 
-The name of compute environment.
+The name of the compute environment.
 
 
 =head2 _request_id => Str

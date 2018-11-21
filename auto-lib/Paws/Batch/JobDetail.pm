@@ -9,6 +9,8 @@ package Paws::Batch::JobDetail;
   has JobId => (is => 'ro', isa => 'Str', request_name => 'jobId', traits => ['NameInRequest'], required => 1);
   has JobName => (is => 'ro', isa => 'Str', request_name => 'jobName', traits => ['NameInRequest'], required => 1);
   has JobQueue => (is => 'ro', isa => 'Str', request_name => 'jobQueue', traits => ['NameInRequest'], required => 1);
+  has NodeDetails => (is => 'ro', isa => 'Paws::Batch::NodeDetails', request_name => 'nodeDetails', traits => ['NameInRequest']);
+  has NodeProperties => (is => 'ro', isa => 'Paws::Batch::NodeProperties', request_name => 'nodeProperties', traits => ['NameInRequest']);
   has Parameters => (is => 'ro', isa => 'Paws::Batch::ParametersMap', request_name => 'parameters', traits => ['NameInRequest']);
   has RetryStrategy => (is => 'ro', isa => 'Paws::Batch::RetryStrategy', request_name => 'retryStrategy', traits => ['NameInRequest']);
   has StartedAt => (is => 'ro', isa => 'Int', request_name => 'startedAt', traits => ['NameInRequest'], required => 1);
@@ -69,7 +71,7 @@ with the job.
 
 =head2 CreatedAt => Int
 
-  The Unix time stamp (in seconds and milliseconds) for when the job was
+  The Unix timestamp (in seconds and milliseconds) for when the job was
 created. For non-array jobs and parent array jobs, this is when the job
 entered the C<SUBMITTED> state (at the time SubmitJob was called). For
 array child jobs, this is when the child job was spawned by its parent
@@ -102,6 +104,18 @@ and entered the C<PENDING> state.
 associated.
 
 
+=head2 NodeDetails => L<Paws::Batch::NodeDetails>
+
+  An object representing the details of a node that is associated with a
+multi-node parallel job.
+
+
+=head2 NodeProperties => L<Paws::Batch::NodeProperties>
+
+  An object representing the node properties of a multi-node parallel
+job.
+
+
 =head2 Parameters => L<Paws::Batch::ParametersMap>
 
   Additional parameters passed to the job that replace parameter
@@ -116,7 +130,7 @@ defaults from the job definition.
 
 =head2 B<REQUIRED> StartedAt => Int
 
-  The Unix time stamp (in seconds and milliseconds) for when the job was
+  The Unix timestamp (in seconds and milliseconds) for when the job was
 started (when the job transitioned from the C<STARTING> state to the
 C<RUNNING> state).
 
@@ -139,7 +153,7 @@ current status of the job.
 
 =head2 StoppedAt => Int
 
-  The Unix time stamp (in seconds and milliseconds) for when the job was
+  The Unix timestamp (in seconds and milliseconds) for when the job was
 stopped (when the job transitioned from the C<RUNNING> state to a
 terminal state, such as C<SUCCEEDED> or C<FAILED>).
 

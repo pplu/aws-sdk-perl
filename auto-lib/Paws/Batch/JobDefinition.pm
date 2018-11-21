@@ -3,6 +3,7 @@ package Paws::Batch::JobDefinition;
   has ContainerProperties => (is => 'ro', isa => 'Paws::Batch::ContainerProperties', request_name => 'containerProperties', traits => ['NameInRequest']);
   has JobDefinitionArn => (is => 'ro', isa => 'Str', request_name => 'jobDefinitionArn', traits => ['NameInRequest'], required => 1);
   has JobDefinitionName => (is => 'ro', isa => 'Str', request_name => 'jobDefinitionName', traits => ['NameInRequest'], required => 1);
+  has NodeProperties => (is => 'ro', isa => 'Paws::Batch::NodeProperties', request_name => 'nodeProperties', traits => ['NameInRequest']);
   has Parameters => (is => 'ro', isa => 'Paws::Batch::ParametersMap', request_name => 'parameters', traits => ['NameInRequest']);
   has RetryStrategy => (is => 'ro', isa => 'Paws::Batch::RetryStrategy', request_name => 'retryStrategy', traits => ['NameInRequest']);
   has Revision => (is => 'ro', isa => 'Int', request_name => 'revision', traits => ['NameInRequest'], required => 1);
@@ -57,6 +58,11 @@ An object representing an AWS Batch job definition.
 =head2 B<REQUIRED> JobDefinitionName => Str
 
   The name of the job definition.
+
+
+=head2 NodeProperties => L<Paws::Batch::NodeProperties>
+
+  An object with various properties specific to multi-node parallel jobs.
 
 
 =head2 Parameters => L<Paws::Batch::ParametersMap>

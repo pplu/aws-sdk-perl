@@ -5,6 +5,7 @@ package Paws::Batch::ListJobs;
   has JobQueue => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobQueue');
   has JobStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobStatus');
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
+  has MultiNodeJobId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'multiNodeJobId');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
 
   use MooseX::ClassAttribute;
@@ -68,15 +69,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/bat
 =head2 ArrayJobId => Str
 
 The job ID for an array job. Specifying an array job ID with this
-parameter lists all child jobs from within the specified array. You
-must specify either a job queue or an array job ID.
+parameter lists all child jobs from within the specified array.
 
 
 
 =head2 JobQueue => Str
 
 The name or full Amazon Resource Name (ARN) of the job queue with which
-to list jobs. You must specify either a job queue or an array job ID.
+to list jobs.
 
 
 
@@ -97,6 +97,14 @@ seen by sending another C<ListJobs> request with the returned
 C<nextToken> value. This value can be between 1 and 100. If this
 parameter is not used, then C<ListJobs> returns up to 100 results and a
 C<nextToken> value if applicable.
+
+
+
+=head2 MultiNodeJobId => Str
+
+The job ID for a multi-node parallel job. Specifying a multi-node
+parallel job ID with this parameter lists all nodes that are associated
+with the specified job.
 
 
 

@@ -2,6 +2,7 @@ package Paws::Batch::ContainerOverrides;
   use Moose;
   has Command => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'command', traits => ['NameInRequest']);
   has Environment => (is => 'ro', isa => 'ArrayRef[Paws::Batch::KeyValuePair]', request_name => 'environment', traits => ['NameInRequest']);
+  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
   has Memory => (is => 'ro', isa => 'Int', request_name => 'memory', traits => ['NameInRequest']);
   has Vcpus => (is => 'ro', isa => 'Int', request_name => 'vcpus', traits => ['NameInRequest']);
 1;
@@ -55,6 +56,12 @@ image or the job definition.
 Environment variables must not start with C<AWS_BATCH>; this naming
 convention is reserved for variables that are set by the AWS Batch
 service.
+
+
+=head2 InstanceType => Str
+
+  The instance type to use for a multi-node parallel job. This parameter
+is not valid for single-node container jobs.
 
 
 =head2 Memory => Int
