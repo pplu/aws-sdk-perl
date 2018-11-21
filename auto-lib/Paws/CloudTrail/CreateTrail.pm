@@ -6,6 +6,7 @@ package Paws::CloudTrail::CreateTrail;
   has EnableLogFileValidation => (is => 'ro', isa => 'Bool');
   has IncludeGlobalServiceEvents => (is => 'ro', isa => 'Bool');
   has IsMultiRegionTrail => (is => 'ro', isa => 'Bool');
+  has IsOrganizationTrail => (is => 'ro', isa => 'Bool');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has S3BucketName => (is => 'ro', isa => 'Str', required => 1);
@@ -44,6 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EnableLogFileValidation    => 1,             # OPTIONAL
       IncludeGlobalServiceEvents => 1,             # OPTIONAL
       IsMultiRegionTrail         => 1,             # OPTIONAL
+      IsOrganizationTrail        => 1,             # OPTIONAL
       KmsKeyId                   => 'MyString',    # OPTIONAL
       S3KeyPrefix                => 'MyString',    # OPTIONAL
       SnsTopicName               => 'MyString',    # OPTIONAL
@@ -55,8 +57,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CloudWatchLogsRoleArn = $CreateTrailResponse->CloudWatchLogsRoleArn;
     my $IncludeGlobalServiceEvents =
       $CreateTrailResponse->IncludeGlobalServiceEvents;
-    my $IsMultiRegionTrail = $CreateTrailResponse->IsMultiRegionTrail;
-    my $KmsKeyId           = $CreateTrailResponse->KmsKeyId;
+    my $IsMultiRegionTrail  = $CreateTrailResponse->IsMultiRegionTrail;
+    my $IsOrganizationTrail = $CreateTrailResponse->IsOrganizationTrail;
+    my $KmsKeyId            = $CreateTrailResponse->KmsKeyId;
     my $LogFileValidationEnabled =
       $CreateTrailResponse->LogFileValidationEnabled;
     my $Name         = $CreateTrailResponse->Name;
@@ -118,6 +121,16 @@ such as IAM to the log files.
 
 Specifies whether the trail is created in the current region or in all
 regions. The default is false.
+
+
+
+=head2 IsOrganizationTrail => Bool
+
+Specifies whether the trail is created for all accounts in an
+organization in AWS Organizations, or only for the current AWS account.
+The default is false, and cannot be true unless the call is made on
+behalf of an AWS account that is the master account for an organization
+in AWS Organizations.
 
 
 

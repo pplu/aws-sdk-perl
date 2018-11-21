@@ -5,6 +5,7 @@ package Paws::CloudTrail::CreateTrailResponse;
   has CloudWatchLogsRoleArn => (is => 'ro', isa => 'Str');
   has IncludeGlobalServiceEvents => (is => 'ro', isa => 'Bool');
   has IsMultiRegionTrail => (is => 'ro', isa => 'Bool');
+  has IsOrganizationTrail => (is => 'ro', isa => 'Bool');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has LogFileValidationEnabled => (is => 'ro', isa => 'Bool');
   has Name => (is => 'ro', isa => 'Str');
@@ -46,6 +47,11 @@ such as IAM to the log files.
 =head2 IsMultiRegionTrail => Bool
 
 Specifies whether the trail exists in one region or in all regions.
+
+
+=head2 IsOrganizationTrail => Bool
+
+Specifies whether the trail is an organization trail.
 
 
 =head2 KmsKeyId => Str

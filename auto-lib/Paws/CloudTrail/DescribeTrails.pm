@@ -48,7 +48,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 
 Specifies whether to include shadow trails in the response. A shadow
 trail is the replication in a region of a trail that was created in a
-different region. The default is true.
+different region, or in the case of an organization trail, the
+replication of an organization trail in member accounts. If you do not
+include shadow trails, organization trails in a member account and
+region replication trails will not be returned. The default is true.
 
 
 

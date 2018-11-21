@@ -211,6 +211,8 @@ region in which the trail was created (that is, from its home region).
 
 =item [IsMultiRegionTrail => Bool]
 
+=item [IsOrganizationTrail => Bool]
+
 =item [KmsKeyId => Str]
 
 =item [S3KeyPrefix => Str]
@@ -592,6 +594,8 @@ regions) of a trail enabled in all regions.
 =item [IncludeGlobalServiceEvents => Bool]
 
 =item [IsMultiRegionTrail => Bool]
+
+=item [IsOrganizationTrail => Bool]
 
 =item [KmsKeyId => Str]
 
