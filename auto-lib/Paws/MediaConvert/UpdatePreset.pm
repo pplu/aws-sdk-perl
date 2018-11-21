@@ -189,7 +189,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 YPosition => 1,    # max: 2147483647; OPTIONAL
               },    # OPTIONAL
               DestinationType => 'BURN_IN'
-              , # values: BURN_IN, DVB_SUB, EMBEDDED, SCC, SRT, TELETEXT, TTML, WEBVTT; OPTIONAL
+              , # values: BURN_IN, DVB_SUB, EMBEDDED, EMBEDDED_PLUS_SCTE20, SCTE20_PLUS_EMBEDDED, SCC, SRT, SMI, TELETEXT, TTML, WEBVTT; OPTIONAL
               DvbSubDestinationSettings => {
                 Alignment => 'CENTERED',    # values: CENTERED, LEFT; OPTIONAL
                 BackgroundColor =>
@@ -585,19 +585,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ImageInserter => {
               InsertableImages => [
                 {
-                  Duration => 1,   # min: -2147483648, max: 2147483647; OPTIONAL
-                  FadeIn   => 1,   # min: -2147483648, max: 2147483647; OPTIONAL
-                  FadeOut  => 1,   # min: -2147483648, max: 2147483647; OPTIONAL
-                  Height   => 1,   # min: -2147483648, max: 2147483647; OPTIONAL
+                  Duration => 1,    # max: 2147483647; OPTIONAL
+                  FadeIn   => 1,    # max: 2147483647; OPTIONAL
+                  FadeOut  => 1,    # max: 2147483647; OPTIONAL
+                  Height   => 1,    # max: 2147483647; OPTIONAL
                   ImageInserterInput =>
                     'My__stringMin14PatternS3BmpBMPPngPNGTgaTGA'
-                  ,                # min: 14; OPTIONAL
-                  ImageX  => 1,    # min: -2147483648, max: 2147483647; OPTIONAL
-                  ImageY  => 1,    # min: -2147483648, max: 2147483647; OPTIONAL
-                  Layer   => 1,    # max: 99; OPTIONAL
-                  Opacity => 1,    # max: 100; OPTIONAL
+                  ,                 # min: 14; OPTIONAL
+                  ImageX  => 1,     # max: 2147483647; OPTIONAL
+                  ImageY  => 1,     # max: 2147483647; OPTIONAL
+                  Layer   => 1,     # max: 99; OPTIONAL
+                  Opacity => 1,     # max: 100; OPTIONAL
                   StartTime => 'My__stringPattern01D20305D205D',    # OPTIONAL
-                  Width => 1,    # min: -2147483648, max: 2147483647; OPTIONAL
+                  Width => 1,    # max: 2147483647; OPTIONAL
                 },
                 ...
               ],                 # OPTIONAL

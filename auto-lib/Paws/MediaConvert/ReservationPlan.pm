@@ -69,7 +69,7 @@ contract period.
 
 =head2 ReservedSlots => Int
 
-  Specifies the number of reserved transcode slots (RTSs) for this queue.
+  Specifies the number of reserved transcode slots (RTS) for this queue.
 The number of RTS determines how many jobs the queue can process in
 parallel; each RTS can process one job at a time. To increase this
 number, create a replacement contract through the AWS Elemental

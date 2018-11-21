@@ -41,65 +41,68 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 =head1 DESCRIPTION
 
-Settings for Insertable Image
+Settings that specify how your overlay appears.
 
 =head1 ATTRIBUTES
 
 
 =head2 Duration => Int
 
-  Use Duration (Duration) to set the time, in milliseconds, for the image
-to remain on the output video.
+  Set the time, in milliseconds, for the image to remain on the output
+video.
 
 
 =head2 FadeIn => Int
 
-  Use Fade in (FadeIut) to set the length, in milliseconds, of the
-inserted image fade in. If you don't specify a value for Fade in, the
-image will appear abruptly at the Start time.
+  Set the length of time, in milliseconds, between the Start time that
+you specify for the image insertion and the time that the image appears
+at full opacity. Full opacity is the level that you specify for the
+opacity setting. If you don't specify a value for Fade-in, the image
+will appear abruptly at the overlay start time.
 
 
 =head2 FadeOut => Int
 
-  Use Fade out (FadeOut) to set the length, in milliseconds, of the
-inserted image fade out. If you don't specify a value for Fade out, the
-image will disappear abruptly at the end of the inserted image
-duration.
+  Specify the length of time, in milliseconds, between the end of the
+time that you have specified for the image overlay Duration and when
+the overlaid image has faded to total transparency. If you don't
+specify a value for Fade-out, the image will disappear abruptly at the
+end of the inserted image duration.
 
 
 =head2 Height => Int
 
-  Specify the Height (Height) of the inserted image. Use a value that is
-less than or equal to the video resolution height. Leave this setting
-blank to use the native height of the image.
+  Specify the height of the inserted image in pixels. If you specify a
+value that's larger than the video resolution height, the service will
+crop your overlaid image to fit. To use the native height of the image,
+keep this setting blank.
 
 
 =head2 ImageInserterInput => Str
 
   Use Image location (imageInserterInput) to specify the Amazon S3
-location of the image to be inserted into the output. Use a 32 bit BMP,
-PNG, or TGA file that fits inside the video frame.
+location of the image to be inserted into the output. Use a PNG or TGA
+file that fits inside the video frame.
 
 
 =head2 ImageX => Int
 
   Use Left (ImageX) to set the distance, in pixels, between the inserted
-image and the left edge of the frame. Required for BMP, PNG and TGA
-input.
+image and the left edge of the video frame. Required for any image
+overlay that you specify.
 
 
 =head2 ImageY => Int
 
-  Use Top (ImageY) to set the distance, in pixels, between the inserted
-image and the top edge of the video frame. Required for BMP, PNG and
-TGA input.
+  Use Top (ImageY) to set the distance, in pixels, between the overlaid
+image and the top edge of the video frame. Required for any image
+overlay that you specify.
 
 
 =head2 Layer => Int
 
-  Use Layer (Layer) to specify how overlapping inserted images appear.
-Images with higher values of layer appear on top of images with lower
-values of layer.
+  Specify how overlapping inserted images appear. Images with higher
+values for Layer appear on top of images with lower values for Layer.
 
 
 =head2 Opacity => Int
@@ -118,9 +121,10 @@ HH:MM:SS;FF) format.
 
 =head2 Width => Int
 
-  Specify the Width (Width) of the inserted image. Use a value that is
-less than or equal to the video resolution width. Leave this setting
-blank to use the native width of the image.
+  Specify the width of the inserted image in pixels. If you specify a
+value that's larger than the video resolution width, the service will
+crop your overlaid image to fit. To use the native width of the image,
+keep this setting blank.
 
 
 

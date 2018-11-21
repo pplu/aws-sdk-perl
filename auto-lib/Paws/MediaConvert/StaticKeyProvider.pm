@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 =head1 DESCRIPTION
 
-Settings for use with a SPEKE key provider.
+Use these settings to set up encryption with a static key provider.
 
 =head1 ATTRIBUTES
 

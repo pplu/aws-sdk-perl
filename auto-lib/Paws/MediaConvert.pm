@@ -14,6 +14,11 @@ package Paws::MediaConvert;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
 
   
+  sub AssociateCertificate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaConvert::AssociateCertificate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CancelJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaConvert::CancelJob', @_);
@@ -57,6 +62,11 @@ package Paws::MediaConvert;
   sub DescribeEndpoints {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaConvert::DescribeEndpoints', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DisassociateCertificate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaConvert::DisassociateCertificate', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetJob {
@@ -247,7 +257,7 @@ package Paws::MediaConvert;
   }
 
 
-  sub operations { qw/CancelJob CreateJob CreateJobTemplate CreatePreset CreateQueue DeleteJobTemplate DeletePreset DeleteQueue DescribeEndpoints GetJob GetJobTemplate GetPreset GetQueue ListJobs ListJobTemplates ListPresets ListQueues ListTagsForResource TagResource UntagResource UpdateJobTemplate UpdatePreset UpdateQueue / }
+  sub operations { qw/AssociateCertificate CancelJob CreateJob CreateJobTemplate CreatePreset CreateQueue DeleteJobTemplate DeletePreset DeleteQueue DescribeEndpoints DisassociateCertificate GetJob GetJobTemplate GetPreset GetQueue ListJobs ListJobTemplates ListPresets ListQueues ListTagsForResource TagResource UntagResource UpdateJobTemplate UpdatePreset UpdateQueue / }
 
 1;
 
@@ -281,6 +291,23 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/med
 
 
 =head1 METHODS
+
+=head2 AssociateCertificate
+
+=over
+
+=item Arn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaConvert::AssociateCertificate>
+
+Returns: a L<Paws::MediaConvert::AssociateCertificateResponse> instance
+
+Associates an AWS Certificate Manager (ACM) Amazon Resource Name (ARN)
+with AWS Elemental MediaConvert.
+
 
 =head2 CancelJob
 
@@ -475,6 +502,24 @@ Returns: a L<Paws::MediaConvert::DescribeEndpointsResponse> instance
 
 Send an request with an empty body to the regional API endpoint to get
 your account API endpoint.
+
+
+=head2 DisassociateCertificate
+
+=over
+
+=item Arn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaConvert::DisassociateCertificate>
+
+Returns: a L<Paws::MediaConvert::DisassociateCertificateResponse> instance
+
+Removes an association between the Amazon Resource Name (ARN) of an AWS
+Certificate Manager (ACM) certificate and an AWS Elemental MediaConvert
+resource.
 
 
 =head2 GetJob
