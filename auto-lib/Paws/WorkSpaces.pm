@@ -65,6 +65,11 @@ package Paws::WorkSpaces;
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DescribeAccountModifications', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeClientProperties {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DescribeClientProperties', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeIpGroups {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DescribeIpGroups', @_);
@@ -118,6 +123,11 @@ package Paws::WorkSpaces;
   sub ModifyAccount {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::ModifyAccount', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyClientProperties {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::ModifyClientProperties', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ModifyWorkspaceProperties {
@@ -237,7 +247,7 @@ package Paws::WorkSpaces;
   }
 
 
-  sub operations { qw/AssociateIpGroups AuthorizeIpRules CreateIpGroup CreateTags CreateWorkspaces DeleteIpGroup DeleteTags DeleteWorkspaceImage DescribeAccount DescribeAccountModifications DescribeIpGroups DescribeTags DescribeWorkspaceBundles DescribeWorkspaceDirectories DescribeWorkspaceImages DescribeWorkspaces DescribeWorkspacesConnectionStatus DisassociateIpGroups ImportWorkspaceImage ListAvailableManagementCidrRanges ModifyAccount ModifyWorkspaceProperties ModifyWorkspaceState RebootWorkspaces RebuildWorkspaces RevokeIpRules StartWorkspaces StopWorkspaces TerminateWorkspaces UpdateRulesOfIpGroup / }
+  sub operations { qw/AssociateIpGroups AuthorizeIpRules CreateIpGroup CreateTags CreateWorkspaces DeleteIpGroup DeleteTags DeleteWorkspaceImage DescribeAccount DescribeAccountModifications DescribeClientProperties DescribeIpGroups DescribeTags DescribeWorkspaceBundles DescribeWorkspaceDirectories DescribeWorkspaceImages DescribeWorkspaces DescribeWorkspacesConnectionStatus DisassociateIpGroups ImportWorkspaceImage ListAvailableManagementCidrRanges ModifyAccount ModifyClientProperties ModifyWorkspaceProperties ModifyWorkspaceState RebootWorkspaces RebuildWorkspaces RevokeIpRules StartWorkspaces StopWorkspaces TerminateWorkspaces UpdateRulesOfIpGroup / }
 
 1;
 
@@ -469,6 +479,23 @@ Returns: a L<Paws::WorkSpaces::DescribeAccountModificationsResult> instance
 
 Retrieves a list that describes modifications to the configuration of
 bring your own license (BYOL) for the specified account.
+
+
+=head2 DescribeClientProperties
+
+=over
+
+=item ResourceIds => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkSpaces::DescribeClientProperties>
+
+Returns: a L<Paws::WorkSpaces::DescribeClientPropertiesResult> instance
+
+Retrieves a list that describes one or more specified Amazon WorkSpaces
+clients.
 
 
 =head2 DescribeIpGroups
@@ -706,6 +733,24 @@ Returns: a L<Paws::WorkSpaces::ModifyAccountResult> instance
 
 Modifies the configuration of bring your own license (BYOL) for the
 specified account.
+
+
+=head2 ModifyClientProperties
+
+=over
+
+=item ResourceId => Str
+
+=item [ClientProperties => L<Paws::WorkSpaces::ClientProperties>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkSpaces::ModifyClientProperties>
+
+Returns: a L<Paws::WorkSpaces::ModifyClientPropertiesResult> instance
+
+Modifies the properties of the specified Amazon WorkSpaces client.
 
 
 =head2 ModifyWorkspaceProperties
