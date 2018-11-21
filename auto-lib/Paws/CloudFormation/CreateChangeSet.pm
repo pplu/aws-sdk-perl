@@ -45,8 +45,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ChangeSetName => 'MyChangeSetName',
       StackName     => 'MyStackNameOrId',
       Capabilities  => [
-        'CAPABILITY_IAM', ...    # values: CAPABILITY_IAM, CAPABILITY_NAMED_IAM
-      ],                         # OPTIONAL
+        'CAPABILITY_IAM',
+        ... # values: CAPABILITY_IAM, CAPABILITY_NAMED_IAM, CAPABILITY_AUTO_EXPAND
+      ],    # OPTIONAL
       ChangeSetType    => 'CREATE',                        # OPTIONAL
       ClientToken      => 'MyClientToken',                 # OPTIONAL
       Description      => 'MyDescription',                 # OPTIONAL

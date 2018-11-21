@@ -40,8 +40,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       StackSetName          => 'MyStackSetName',
       AdministrationRoleARN => 'MyRoleARN',        # OPTIONAL
       Capabilities          => [
-        'CAPABILITY_IAM', ...    # values: CAPABILITY_IAM, CAPABILITY_NAMED_IAM
-      ],                         # OPTIONAL
+        'CAPABILITY_IAM',
+        ... # values: CAPABILITY_IAM, CAPABILITY_NAMED_IAM, CAPABILITY_AUTO_EXPAND
+      ],    # OPTIONAL
       ClientRequestToken => 'MyClientRequestToken',    # OPTIONAL
       Description        => 'MyDescription',           # OPTIONAL
       ExecutionRoleName  => 'MyExecutionRoleName',     # OPTIONAL
