@@ -394,10 +394,10 @@ assigned to the C<current> track.
 =head2 ManualSnapshotRetentionPeriod => Int
 
 The default number of days to retain a manual snapshot. If the value is
--1, the snapshot is retained indefinitely. This setting does not change
+-1, the snapshot is retained indefinitely. This setting doesn't change
 the retention period of existing snapshots.
 
-The value must be either -1 or an integer between 1 and 3,653
+The value must be either -1 or an integer between 1 and 3,653.
 
 
 

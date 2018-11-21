@@ -64,8 +64,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/red
 
 =head2 Enabled => Bool
 
-A Boolean value; set to C<true> to activate the subscription, set to
-C<false> to create the subscription but not active it.
+A boolean value; set to C<true> to activate the subscription, and set
+to C<false> to create the subscription but not activate it.
 
 
 

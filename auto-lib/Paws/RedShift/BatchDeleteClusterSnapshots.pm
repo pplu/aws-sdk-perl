@@ -53,7 +53,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/red
 
 =head2 B<REQUIRED> Identifiers => ArrayRef[L<Paws::RedShift::DeleteClusterSnapshotMessage>]
 
-A list of indentifiers for the snapshots you want to delete.
+A list of identifiers for the snapshots that you want to delete.
 
 
 

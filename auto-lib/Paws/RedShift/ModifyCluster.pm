@@ -268,8 +268,8 @@ point, the maintenance track name is applied.
 
 The default for number of days that a newly created manual snapshot is
 retained. If the value is -1, the manual snapshot is retained
-indefinitely. This value will not retroactively change the retention
-periods of existing manual snapshots
+indefinitely. This value doesn't retroactively change the retention
+periods of existing manual snapshots.
 
 The value must be either -1 or an integer between 1 and 3,653.
 

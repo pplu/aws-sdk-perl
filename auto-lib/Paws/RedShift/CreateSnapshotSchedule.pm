@@ -77,7 +77,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/red
 =head2 ScheduleDefinitions => ArrayRef[Str|Undef]
 
 The definition of the snapshot schedule. The definition is made up of
-schedule expressions. For example, "cron(30 12 *)" or "rate(12 hours)".
+schedule expressions, for example "cron(30 12 *)" or "rate(12 hours)".
 
 
 

@@ -52,7 +52,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/red
 =head2 B<REQUIRED> ScheduleDefinitions => ArrayRef[Str|Undef]
 
 An updated list of schedule definitions. A schedule definition is made
-up of schedule expressions. For example, "cron(30 12 *)" or "rate(12
+up of schedule expressions, for example, "cron(30 12 *)" or "rate(12
 hours)".
 
 

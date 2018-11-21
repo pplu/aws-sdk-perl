@@ -57,8 +57,8 @@ cluster and the schedule.
 
 =head2 ScheduleIdentifier => Str
 
-A unique alphanumeric identifier for the schedule you want to associate
-with the cluster.
+A unique alphanumeric identifier for the schedule that you want to
+associate with the cluster.
 
 
 

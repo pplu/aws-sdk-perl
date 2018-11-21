@@ -79,7 +79,7 @@ Describes a cluster.
 
 =head2 AllowVersionUpgrade => Bool
 
-  A Boolean value that, if C<true>, indicates that major version upgrades
+  A boolean value that, if C<true>, indicates that major version upgrades
 will be applied automatically to the cluster during the maintenance
 window.
 
@@ -153,6 +153,14 @@ are configured for cross-region snapshot copy.
 =item *
 
 C<available>
+
+=item *
+
+C<available, prep-for-resize>
+
+=item *
+
+C<available, resize-cleanup>
 
 =item *
 
@@ -265,7 +273,7 @@ resize method.
 
 =head2 Encrypted => Bool
 
-  A Boolean value that, if C<true>, indicates that data in the cluster is
+  A boolean value that, if C<true>, indicates that data in the cluster is
 encrypted at rest.
 
 
@@ -317,10 +325,10 @@ used to encrypt data in the cluster.
 =head2 ManualSnapshotRetentionPeriod => Int
 
   The default number of days to retain a manual snapshot. If the value is
--1, the snapshot is retained indefinitely. This setting does not change
+-1, the snapshot is retained indefinitely. This setting doesn't change
 the retention period of existing snapshots.
 
-The value must be either -1 or an integer between 1 and 3,653
+The value must be either -1 or an integer between 1 and 3,653.
 
 
 =head2 MasterUsername => Str
@@ -363,7 +371,7 @@ which system maintenance can occur.
 
 =head2 PubliclyAccessible => Bool
 
-  A Boolean value that, if C<true>, indicates that the cluster can be
+  A boolean value that, if C<true>, indicates that the cluster can be
 accessed from a public network.
 
 

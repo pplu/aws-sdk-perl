@@ -218,8 +218,8 @@ into.
 
 =head2 SnapshotCreateTime => Str
 
-  The time (UTC) when Amazon Redshift began the snapshot. A snapshot
-contains a copy of the cluster data as of this exact time.
+  The time (in UTC format) when Amazon Redshift began the snapshot. A
+snapshot contains a copy of the cluster data as of this exact time.
 
 
 =head2 SnapshotIdentifier => Str
@@ -236,7 +236,7 @@ snapshot.
 =head2 SnapshotType => Str
 
   The snapshot type. Snapshots created using CreateClusterSnapshot and
-CopyClusterSnapshot will be of type "manual".
+CopyClusterSnapshot are of type "manual".
 
 
 =head2 SourceRegion => Str
@@ -247,7 +247,7 @@ CopyClusterSnapshot will be of type "manual".
 =head2 Status => Str
 
   The snapshot status. The value of the status depends on the API
-operation used.
+operation used:
 
 =over
 

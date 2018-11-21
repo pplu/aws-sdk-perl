@@ -881,7 +881,7 @@ many as 20 ingress rules to an Amazon Redshift security group.
 If you authorize access to an Amazon EC2 security group, specify
 I<EC2SecurityGroupName> and I<EC2SecurityGroupOwnerId>. The Amazon EC2
 security group and Amazon Redshift cluster must be in the same AWS
-region.
+Region.
 
 If you authorize access to a CIDR/IP address range, specify I<CIDRIP>.
 For an overview of CIDR blocks, see the Wikipedia article on Classless
@@ -2193,7 +2193,7 @@ Returns: a L<Paws::RedShift::OrderableClusterOptionsMessage> instance
 
 Returns a list of orderable cluster options. Before you create a new
 cluster you can use this operation to find what options are available,
-such as the EC2 Availability Zones (AZ) in the specific AWS region that
+such as the EC2 Availability Zones (AZ) in the specific AWS Region that
 you can specify, and the node types you can request. The node types
 differ by available storage, memory, CPU and price. With the cost
 involved you might want to obtain a list of cluster options in the
@@ -2865,14 +2865,14 @@ Each argument is described in detail in: L<Paws::RedShift::ModifySnapshotCopyRet
 
 Returns: a L<Paws::RedShift::ModifySnapshotCopyRetentionPeriodResult> instance
 
-Modifies the number of days to retain snapshots in the destination
-region after they are copied from the source region. By default, this
-only changes the retention period of copied automated snapshots. The
-retention periods for both new and existing copied automated snapshots
-will be updated with the new retention period. You can set the manual
-option to change only the retention periods of copied manual snapshots.
-If you set this option only newly copied manual snapshots will have the
-new retention period
+Modifies the number of days to retain snapshots in the destination AWS
+Region after they are copied from the source AWS Region. By default,
+this operation only changes the retention period of copied automated
+snapshots. The retention periods for both new and existing copied
+automated snapshots are updated with the new retention period. You can
+set the manual option to change only the retention periods of copied
+manual snapshots. If you set this option, only newly copied manual
+snapshots have the new retention period.
 
 
 =head2 ModifySnapshotSchedule
@@ -2890,8 +2890,8 @@ Each argument is described in detail in: L<Paws::RedShift::ModifySnapshotSchedul
 
 Returns: a L<Paws::RedShift::SnapshotSchedule> instance
 
-Modifies a snapshot schedule. Any schedule associate with a cluster
-will be modified asynchronously.
+Modifies a snapshot schedule. Any schedule associated with a cluster is
+modified asynchronously.
 
 
 =head2 PurchaseReservedNodeOffering
