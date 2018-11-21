@@ -466,9 +466,13 @@ L<Paws::Polly>
 
 L<Paws::Pricing>
 
+L<Paws::Quicksight>
+
 L<Paws::RAM>
 
 L<Paws::RDS>
+
+L<Paws::RDSData>
 
 L<Paws::RedShift>
 
