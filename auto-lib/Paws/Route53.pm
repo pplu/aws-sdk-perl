@@ -1,5 +1,5 @@
 package Paws::Route53;
-  warn "Paws::Route53 is not stable / supported / entirely developed";
+  warn "Paws::Route53 is not stable / supported / entirely developed" unless $ENV{'PAWS_SILENCE_UNSTABLE_WARNINGS'};
   use Moose;
   sub service { 'route53' }
   sub signing_name { 'route53' }

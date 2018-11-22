@@ -5,7 +5,7 @@ enum '[% enum_name %]', [[% FOR val IN c.enums.$enum_name %]'[% val %]',[% END %
 [%- END %]
 [%- END -%]
 package [% c.api %];
-  warn "[% c.api %] is not stable / supported / entirely developed";
+  warn "[% c.api %] is not stable / supported / entirely developed" unless $ENV{'PAWS_SILENCE_UNSTABLE_WARNINGS'};
   use Moose;
   sub service { '[% c.service %]' }
   sub signing_name { '[% c.signing_name %]' }

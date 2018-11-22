@@ -1,5 +1,5 @@
 package Paws::CloudFront;
-  warn "Paws::CloudFront is not stable / supported / entirely developed";
+  warn "Paws::CloudFront is not stable / supported / entirely developed" unless $ENV{'PAWS_SILENCE_UNSTABLE_WARNINGS'};
   use Moose;
   sub service { 'cloudfront' }
   sub signing_name { 'cloudfront' }
