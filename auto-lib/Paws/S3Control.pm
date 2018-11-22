@@ -1,5 +1,5 @@
 package Paws::S3Control;
-  warn "Paws::S3Control is not stable / supported / entirely developed";
+  warn "Paws::S3Control is not stable / supported / entirely developed" unless $ENV{'PAWS_SILENCE_UNSTABLE_WARNINGS'};
   use Moose;
   sub service { 's3-control' }
   sub signing_name { 's3' }
