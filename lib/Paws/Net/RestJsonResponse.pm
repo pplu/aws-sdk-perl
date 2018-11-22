@@ -6,7 +6,6 @@ package Paws::Net::RestJsonResponse;
 
   sub process {
     my ($self, $call_object, $response) = @_;
-
     if ($response->has_header('x-amz-crc32')) {
       require String::CRC32;
       my $crc = String::CRC32::crc32($response->content);
