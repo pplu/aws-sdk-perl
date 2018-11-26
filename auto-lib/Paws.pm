@@ -240,6 +240,8 @@ L<Paws::ACMPCA>
 
 L<Paws::AlexaForBusiness>
 
+L<Paws::Amplify>
+
 L<Paws::ApiGateway>
 
 L<Paws::ApplicationAutoScaling>
@@ -313,6 +315,8 @@ L<Paws::CostExplorer>
 L<Paws::CUR>
 
 L<Paws::DataPipeline>
+
+L<Paws::Datasync>
 
 L<Paws::DAX>
 
@@ -482,6 +486,8 @@ L<Paws::ResourceGroups>
 
 L<Paws::ResourceTagging>
 
+L<Paws::Robomaker>
+
 L<Paws::Route53>
 
 L<Paws::Route53Domains>
@@ -539,6 +545,8 @@ L<Paws::STS>
 L<Paws::Support>
 
 L<Paws::Transcribe>
+
+L<Paws::Transfer>
 
 L<Paws::Translate>
 
