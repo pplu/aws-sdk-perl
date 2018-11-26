@@ -19,7 +19,7 @@ Paws::S3::GetBucketPolicyStatusOutput
 
 =head2 PolicyStatus => L<Paws::S3::PolicyStatus>
 
-The public-policy status for this bucket.
+The policy status for the specified bucket.
 
 
 

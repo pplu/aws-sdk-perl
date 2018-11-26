@@ -31,15 +31,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::PolicyS
 
 =head1 DESCRIPTION
 
-The container element for this bucket's public-policy status.
+The container element for a bucket's policy status.
 
 =head1 ATTRIBUTES
 
 
 =head2 IsPublic => Bool
 
-  The public-policy status for this bucket. C<TRUE> indicates that this
-bucket is public. C<FALSE> indicates that the bucket is not public.
+  The policy status for this bucket. C<TRUE> indicates that this bucket
+is public. C<FALSE> indicates that the bucket is not public.
 
 
 

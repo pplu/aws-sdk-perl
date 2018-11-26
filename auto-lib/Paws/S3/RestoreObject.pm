@@ -74,7 +74,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               KMSKeyId       => 'MySSEKMSKeyId',    # OPTIONAL
             },    # OPTIONAL
             StorageClass => 'STANDARD'
-            , # values: STANDARD, REDUCED_REDUNDANCY, STANDARD_IA, ONEZONE_IA; OPTIONAL
+            , # values: STANDARD, REDUCED_REDUNDANCY, STANDARD_IA, ONEZONE_IA, INTELLIGENT_TIERING; OPTIONAL
             Tagging => {
               TagSet => [
                 {

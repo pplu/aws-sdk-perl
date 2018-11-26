@@ -51,21 +51,26 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-The name of the Amazon S3 bucket whose Public Access Block
+The name of the Amazon S3 bucket whose C<PublicAccessBlock>
 configuration you want to set.
 
 
 
 =head2 ContentMD5 => Str
 
-The MD5 hash of the C<PutPublicBlock> request body.
+The MD5 hash of the C<PutPublicAccessBlock> request body.
 
 
 
 =head2 B<REQUIRED> PublicAccessBlockConfiguration => L<Paws::S3::PublicAccessBlockConfiguration>
 
-The Public Access Block configuration that you want to apply to this
-Amazon S3 bucket.
+The C<PublicAccessBlock> configuration that you want to apply to this
+Amazon S3 bucket. You can enable the configuration options in any
+combination. For more information about when &S3; considers a bucket or
+object public, see For more information about when Amazon S3 considers
+a bucket or object public, see The Meaning of "Public"
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status)
+in the Amazon Simple Storage Service Developer Guide.
 
 
 

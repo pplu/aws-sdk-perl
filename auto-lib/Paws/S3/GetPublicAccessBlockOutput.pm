@@ -19,7 +19,7 @@ Paws::S3::GetPublicAccessBlockOutput
 
 =head2 PublicAccessBlockConfiguration => L<Paws::S3::PublicAccessBlockConfiguration>
 
-The Public Access Block configuration currently in effect for this
+The C<PublicAccessBlock> configuration currently in effect for this
 Amazon S3 bucket.
 
 

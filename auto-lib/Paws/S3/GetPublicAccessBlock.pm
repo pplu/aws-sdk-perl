@@ -49,7 +49,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-The name of the Amazon S3 bucket whose Public Access Block
+The name of the Amazon S3 bucket whose C<PublicAccessBlock>
 configuration you want to retrieve.
 
 

@@ -1181,7 +1181,8 @@ Each argument is described in detail in: L<Paws::S3::DeletePublicAccessBlock>
 
 Returns: nothing
 
-Removes the Public Access Block configuration for an Amazon S3 bucket.
+Removes the C<PublicAccessBlock> configuration from an Amazon S3
+bucket.
 
 
 =head2 GetBucketAccelerateConfiguration
@@ -1647,7 +1648,7 @@ Each argument is described in detail in: L<Paws::S3::GetPublicAccessBlock>
 
 Returns: a L<Paws::S3::GetPublicAccessBlockOutput> instance
 
-Retrieves the Public Access Block configuration for an Amazon S3
+Retrieves the C<PublicAccessBlock> configuration for an Amazon S3
 bucket.
 
 
@@ -2499,8 +2500,8 @@ Each argument is described in detail in: L<Paws::S3::PutPublicAccessBlock>
 
 Returns: nothing
 
-Creates or modifies the Public Access Block configuration for an Amazon
-S3 bucket.
+Creates or modifies the C<PublicAccessBlock> configuration for an
+Amazon S3 bucket.
 
 
 =head2 RestoreObject
