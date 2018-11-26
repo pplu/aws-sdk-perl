@@ -48,7 +48,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sno
 =head2 MaxResults => Int
 
 The maximum number of results for the list of compatible images.
-Currently, a Snowball Edge device can store 10 AMIs.
+Currently, each supported device can store 10 AMIs.
 
 
 

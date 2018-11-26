@@ -164,7 +164,7 @@ which typically takes less than a week, one way.
 
 =item *
 
-In India, Snowball Edges are delivered in one to seven days.
+In India, devices are delivered in one to seven days.
 
 =item *
 
@@ -177,10 +177,11 @@ Valid values are: C<"SECOND_DAY">, C<"NEXT_DAY">, C<"EXPRESS">, C<"STANDARD">
 
 =head2 SnowballType => Str
 
-The type of AWS Snowball device to use for this cluster. Currently, the
-only supported device type for cluster jobs is C<EDGE>.
+The type of AWS Snowball device to use for this cluster. The only
+supported device types for cluster jobs are C<EDGE>, C<EDGE_C>, and
+C<EDGE_CG>.
 
-Valid values are: C<"STANDARD">, C<"EDGE">
+Valid values are: C<"STANDARD">, C<"EDGE">, C<"EDGE_C">, C<"EDGE_CG">
 
 
 =head1 SEE ALSO

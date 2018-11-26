@@ -201,14 +201,14 @@ If your job is being created in one of the US regions, you have the
 option of specifying what size Snowball you'd like for this job. In all
 other regions, Snowballs come with 80 TB in storage capacity.
 
-Valid values are: C<"T50">, C<"T80">, C<"T100">, C<"NoPreference">
+Valid values are: C<"T50">, C<"T80">, C<"T100">, C<"T42">, C<"NoPreference">
 
 =head2 SnowballType => Str
 
-The type of AWS Snowball device to use for this job. Currently, the
-only supported device type for cluster jobs is C<EDGE>.
+The type of AWS Snowball device to use for this job. The only supported
+device types for cluster jobs are C<EDGE>, C<EDGE_C>, and C<EDGE_CG>.
 
-Valid values are: C<"STANDARD">, C<"EDGE">
+Valid values are: C<"STANDARD">, C<"EDGE">, C<"EDGE_C">, C<"EDGE_CG">
 
 
 =head1 SEE ALSO
