@@ -2,6 +2,7 @@
 package Paws::Greengrass::CreateFunctionDefinitionVersion;
   use Moose;
   has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
+  has DefaultConfig => (is => 'ro', isa => 'Paws::Greengrass::FunctionDefaultConfig');
   has FunctionDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionDefinitionId', required => 1);
   has Functions => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::Function]');
 
@@ -34,13 +35,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $greengrass->CreateFunctionDefinitionVersion(
       FunctionDefinitionId => 'My__string',
       AmznClientToken      => 'My__string',    # OPTIONAL
-      Functions            => [
+      DefaultConfig        => {
+        Execution => {
+          IsolationMode => 'GreengrassContainer'
+          ,    # values: GreengrassContainer, NoContainer; OPTIONAL
+        },    # OPTIONAL
+      },    # OPTIONAL
+      Functions => [
         {
           FunctionArn           => 'My__string',
           FunctionConfiguration => {
-            EncodingType => 'binary',          # values: binary, json; OPTIONAL
+            EncodingType => 'binary',    # values: binary, json; OPTIONAL
             Environment  => {
-              AccessSysfs            => 1,     # OPTIONAL
+              AccessSysfs => 1,          # OPTIONAL
+              Execution   => {
+                IsolationMode => 'GreengrassContainer'
+                ,    # values: GreengrassContainer, NoContainer; OPTIONAL
+                RunAs => {
+                  Gid => 1,    # OPTIONAL
+                  Uid => 1,    # OPTIONAL
+                },    # OPTIONAL
+              },    # OPTIONAL
               ResourceAccessPolicies => [
                 {
                   Permission => 'ro',           # values: ro, rw; OPTIONAL
@@ -80,6 +95,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gre
 =head2 AmznClientToken => Str
 
 A client token used to correlate requests and responses.
+
+
+
+=head2 DefaultConfig => L<Paws::Greengrass::FunctionDefaultConfig>
+
+Default configuration that will apply to all Lambda functions in this
+function definition version
 
 
 

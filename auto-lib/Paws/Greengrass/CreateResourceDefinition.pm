@@ -62,6 +62,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 DestinationPath => 'My__string',
                 SageMakerJobArn => 'My__string',
               },    # OPTIONAL
+              SecretsManagerSecretResourceData => {
+                ARN                               => 'My__string',
+                AdditionalStagingLabelsToDownload => [ 'My__string', ... ]
+                ,    # OPTIONAL
+              },    # OPTIONAL
             },    # OPTIONAL
           },
           ...

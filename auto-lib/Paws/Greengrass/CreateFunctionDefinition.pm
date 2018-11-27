@@ -34,13 +34,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $greengrass->CreateFunctionDefinition(
       AmznClientToken => 'My__string',    # OPTIONAL
       InitialVersion  => {
+        DefaultConfig => {
+          Execution => {
+            IsolationMode => 'GreengrassContainer'
+            ,    # values: GreengrassContainer, NoContainer; OPTIONAL
+          },    # OPTIONAL
+        },    # OPTIONAL
         Functions => [
           {
             FunctionArn           => 'My__string',
             FunctionConfiguration => {
               EncodingType => 'binary',    # values: binary, json; OPTIONAL
               Environment  => {
-                AccessSysfs            => 1,    # OPTIONAL
+                AccessSysfs => 1,          # OPTIONAL
+                Execution   => {
+                  IsolationMode => 'GreengrassContainer'
+                  ,    # values: GreengrassContainer, NoContainer; OPTIONAL
+                  RunAs => {
+                    Gid => 1,    # OPTIONAL
+                    Uid => 1,    # OPTIONAL
+                  },    # OPTIONAL
+                },    # OPTIONAL
                 ResourceAccessPolicies => [
                   {
                     Permission => 'ro',           # values: ro, rw; OPTIONAL

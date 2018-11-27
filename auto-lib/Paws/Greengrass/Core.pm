@@ -48,7 +48,7 @@ Information about a core.
 
   A descriptive or arbitrary ID for the core. This value must be unique
 within the core definition version. Max length is 128 characters with
-pattern ''[azAZ09:_]+''.
+pattern ''[a-zA-Z0-9:_-]+''.
 
 
 =head2 SyncShadow => Bool

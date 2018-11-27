@@ -62,7 +62,7 @@ If true, performs a best-effort only core reset.
 
 =head2 B<REQUIRED> GroupId => Str
 
-The ID of the AWS Greengrass group.
+The ID of the Greengrass group.
 
 
 

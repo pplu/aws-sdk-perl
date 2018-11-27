@@ -61,7 +61,7 @@ milliseconds.
 
 =head2 B<REQUIRED> GroupId => Str
 
-The ID of the AWS Greengrass group.
+The ID of the Greengrass group.
 
 
 

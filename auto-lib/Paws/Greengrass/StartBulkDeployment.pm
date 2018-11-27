@@ -69,8 +69,8 @@ The URI of the input file contained in the S3 bucket. The execution
 role must have ''getObject'' permissions on this bucket to access the
 input file. The input file is a JSON-serialized, line delimited file
 with UTF-8 encoding that provides a list of group and version IDs and
-the deployment type. This file must be less than 100MB. Currently,
-Greengrass; supports only ''NewDeployment'' deployment types.
+the deployment type. This file must be less than 100 MB. Currently, AWS
+IoT Greengrass supports only ''NewDeployment'' deployment types.
 
 
 

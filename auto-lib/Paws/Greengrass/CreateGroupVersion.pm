@@ -2,6 +2,7 @@
 package Paws::Greengrass::CreateGroupVersion;
   use Moose;
   has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
+  has ConnectorDefinitionVersionArn => (is => 'ro', isa => 'Str');
   has CoreDefinitionVersionArn => (is => 'ro', isa => 'Str');
   has DeviceDefinitionVersionArn => (is => 'ro', isa => 'Str');
   has FunctionDefinitionVersionArn => (is => 'ro', isa => 'Str');
@@ -38,6 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateGroupVersionResponse = $greengrass->CreateGroupVersion(
       GroupId                          => 'My__string',
       AmznClientToken                  => 'My__string',    # OPTIONAL
+      ConnectorDefinitionVersionArn    => 'My__string',    # OPTIONAL
       CoreDefinitionVersionArn         => 'My__string',    # OPTIONAL
       DeviceDefinitionVersionArn       => 'My__string',    # OPTIONAL
       FunctionDefinitionVersionArn     => 'My__string',    # OPTIONAL
@@ -66,6 +68,12 @@ A client token used to correlate requests and responses.
 
 
 
+=head2 ConnectorDefinitionVersionArn => Str
+
+The ARN of the connector definition version for this group.
+
+
+
 =head2 CoreDefinitionVersionArn => Str
 
 The ARN of the core definition version for this group.
@@ -86,7 +94,7 @@ The ARN of the function definition version for this group.
 
 =head2 B<REQUIRED> GroupId => Str
 
-The ID of the AWS Greengrass group.
+The ID of the Greengrass group.
 
 
 
@@ -98,7 +106,7 @@ The ARN of the logger definition version for this group.
 
 =head2 ResourceDefinitionVersionArn => Str
 
-The resource definition version ARN for this group.
+The ARN of the resource definition version for this group.
 
 
 

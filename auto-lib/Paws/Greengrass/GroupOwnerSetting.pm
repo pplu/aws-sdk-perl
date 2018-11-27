@@ -39,9 +39,10 @@ Group owner related settings for local resources.
 
 =head2 AutoAddGroupOwner => Bool
 
-  If true, GreenGrass automatically adds the specified Linux OS group
-owner of the resource to the Lambda process privileges. Thus the Lambda
-process will have the file access permissions of the added Linux group.
+  If true, AWS IoT Greengrass automatically adds the specified Linux OS
+group owner of the resource to the Lambda process privileges. Thus the
+Lambda process will have the file access permissions of the added Linux
+group.
 
 
 =head2 GroupOwner => Str

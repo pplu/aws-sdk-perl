@@ -33,7 +33,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass:
 
 =head1 DESCRIPTION
 
-Information about a bulk deployment.
+Information about a bulk deployment. You cannot start a new bulk
+deployment while another one is still running or in a non-terminal
+state.
 
 =head1 ATTRIBUTES
 

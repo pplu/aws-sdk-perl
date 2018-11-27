@@ -4,6 +4,7 @@ package Paws::Greengrass::ResourceDataContainer;
   has LocalVolumeResourceData => (is => 'ro', isa => 'Paws::Greengrass::LocalVolumeResourceData');
   has S3MachineLearningModelResourceData => (is => 'ro', isa => 'Paws::Greengrass::S3MachineLearningModelResourceData');
   has SageMakerMachineLearningModelResourceData => (is => 'ro', isa => 'Paws::Greengrass::SageMakerMachineLearningModelResourceData');
+  has SecretsManagerSecretResourceData => (is => 'ro', isa => 'Paws::Greengrass::SecretsManagerSecretResourceData');
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Greengrass::ResourceDataContainer object:
 
-  $service_obj->Method(Att1 => { LocalDeviceResourceData => $value, ..., SageMakerMachineLearningModelResourceData => $value  });
+  $service_obj->Method(Att1 => { LocalDeviceResourceData => $value, ..., SecretsManagerSecretResourceData => $value  });
 
 =head3 Results returned from an API call
 
@@ -38,7 +39,8 @@ A container for resource data. The container takes only one of the
 following supported resource data types: ''LocalDeviceResourceData'',
 ''LocalVolumeResourceData'',
 ''SageMakerMachineLearningModelResourceData'',
-''S3MachineLearningModelResourceData''.
+''S3MachineLearningModelResourceData'',
+''SecretsManagerSecretResourceData''.
 
 =head1 ATTRIBUTES
 
@@ -55,12 +57,18 @@ following supported resource data types: ''LocalDeviceResourceData'',
 
 =head2 S3MachineLearningModelResourceData => L<Paws::Greengrass::S3MachineLearningModelResourceData>
 
-  Attributes that define an S3 machine learning resource.
+  Attributes that define an Amazon S3 machine learning resource.
 
 
 =head2 SageMakerMachineLearningModelResourceData => L<Paws::Greengrass::SageMakerMachineLearningModelResourceData>
 
-  Attributes that define an SageMaker machine learning resource.
+  Attributes that define an Amazon SageMaker machine learning resource.
+
+
+=head2 SecretsManagerSecretResourceData => L<Paws::Greengrass::SecretsManagerSecretResourceData>
+
+  Attributes that define a secret resource, which references a secret
+from AWS Secrets Manager.
 
 
 

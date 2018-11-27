@@ -49,7 +49,7 @@ Information about a logger
 
   A descriptive or arbitrary ID for the logger. This value must be unique
 within the logger definition version. Max length is 128 characters with
-pattern ''[azAZ09:_]+''.
+pattern ''[a-zA-Z0-9:_-]+''.
 
 
 =head2 Level => Str

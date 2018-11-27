@@ -65,7 +65,9 @@ default is ''json''.
 
 =head2 MemorySize => Int
 
-  The memory size, in KB, which the function requires.
+  The memory size, in KB, which the function requires. This setting is
+not applicable and should be cleared when you run the Lambda function
+without containerization.
 
 
 =head2 Pinned => Bool
@@ -77,8 +79,8 @@ and starts when the core starts.
 =head2 Timeout => Int
 
   The allowed function execution time, after which Lambda should
-terminate the function. This timeout still applies to pinned lambdas
-for each request.
+terminate the function. This timeout still applies to pinned Lambda
+functions for each request.
 
 
 

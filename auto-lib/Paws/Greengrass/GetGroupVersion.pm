@@ -52,7 +52,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gre
 
 =head2 B<REQUIRED> GroupId => Str
 
-The ID of the AWS Greengrass group.
+The ID of the Greengrass group.
 
 
 

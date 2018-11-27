@@ -1,5 +1,6 @@
 package Paws::Greengrass::GroupVersion;
   use Moose;
+  has ConnectorDefinitionVersionArn => (is => 'ro', isa => 'Str');
   has CoreDefinitionVersionArn => (is => 'ro', isa => 'Str');
   has DeviceDefinitionVersionArn => (is => 'ro', isa => 'Str');
   has FunctionDefinitionVersionArn => (is => 'ro', isa => 'Str');
@@ -25,20 +26,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Greengrass::GroupVersion object:
 
-  $service_obj->Method(Att1 => { CoreDefinitionVersionArn => $value, ..., SubscriptionDefinitionVersionArn => $value  });
+  $service_obj->Method(Att1 => { ConnectorDefinitionVersionArn => $value, ..., SubscriptionDefinitionVersionArn => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass::GroupVersion object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->CoreDefinitionVersionArn
+  $result->Att1->ConnectorDefinitionVersionArn
 
 =head1 DESCRIPTION
 
 Information about a group version.
 
 =head1 ATTRIBUTES
+
+
+=head2 ConnectorDefinitionVersionArn => Str
+
+  The ARN of the connector definition version for this group.
 
 
 =head2 CoreDefinitionVersionArn => Str
@@ -63,7 +69,7 @@ Information about a group version.
 
 =head2 ResourceDefinitionVersionArn => Str
 
-  The resource definition version ARN for this group.
+  The ARN of the resource definition version for this group.
 
 
 =head2 SubscriptionDefinitionVersionArn => Str

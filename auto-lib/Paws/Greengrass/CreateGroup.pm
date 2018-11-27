@@ -33,6 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateGroupResponse = $greengrass->CreateGroup(
       AmznClientToken => 'My__string',    # OPTIONAL
       InitialVersion  => {
+        ConnectorDefinitionVersionArn    => 'My__string',
         CoreDefinitionVersionArn         => 'My__string',
         DeviceDefinitionVersionArn       => 'My__string',
         FunctionDefinitionVersionArn     => 'My__string',

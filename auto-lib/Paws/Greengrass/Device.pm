@@ -48,7 +48,7 @@ Information about a device.
 
   A descriptive or arbitrary ID for the device. This value must be unique
 within the device definition version. Max length is 128 characters with
-pattern ''[azAZ09:_]+''.
+pattern ''[a-zA-Z0-9:_-]+''.
 
 
 =head2 SyncShadow => Bool

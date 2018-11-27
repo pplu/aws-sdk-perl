@@ -24,6 +24,16 @@ package Paws::Greengrass;
     my $call_object = $self->new_with_coercions('Paws::Greengrass::AssociateServiceRoleToAccount', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateConnectorDefinition {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Greengrass::CreateConnectorDefinition', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateConnectorDefinitionVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Greengrass::CreateConnectorDefinitionVersion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateCoreDefinition {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Greengrass::CreateCoreDefinition', @_);
@@ -109,6 +119,11 @@ package Paws::Greengrass;
     my $call_object = $self->new_with_coercions('Paws::Greengrass::CreateSubscriptionDefinitionVersion', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteConnectorDefinition {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Greengrass::DeleteConnectorDefinition', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteCoreDefinition {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Greengrass::DeleteCoreDefinition', @_);
@@ -167,6 +182,16 @@ package Paws::Greengrass;
   sub GetConnectivityInfo {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Greengrass::GetConnectivityInfo', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetConnectorDefinition {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Greengrass::GetConnectorDefinition', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetConnectorDefinitionVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Greengrass::GetConnectorDefinitionVersion', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetCoreDefinition {
@@ -269,6 +294,16 @@ package Paws::Greengrass;
     my $call_object = $self->new_with_coercions('Paws::Greengrass::ListBulkDeployments', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListConnectorDefinitions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Greengrass::ListConnectorDefinitions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListConnectorDefinitionVersions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Greengrass::ListConnectorDefinitionVersions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListCoreDefinitions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Greengrass::ListCoreDefinitions', @_);
@@ -369,6 +404,11 @@ package Paws::Greengrass;
     my $call_object = $self->new_with_coercions('Paws::Greengrass::UpdateConnectivityInfo', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateConnectorDefinition {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Greengrass::UpdateConnectorDefinition', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateCoreDefinition {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Greengrass::UpdateCoreDefinition', @_);
@@ -412,7 +452,7 @@ package Paws::Greengrass;
   
 
 
-  sub operations { qw/AssociateRoleToGroup AssociateServiceRoleToAccount CreateCoreDefinition CreateCoreDefinitionVersion CreateDeployment CreateDeviceDefinition CreateDeviceDefinitionVersion CreateFunctionDefinition CreateFunctionDefinitionVersion CreateGroup CreateGroupCertificateAuthority CreateGroupVersion CreateLoggerDefinition CreateLoggerDefinitionVersion CreateResourceDefinition CreateResourceDefinitionVersion CreateSoftwareUpdateJob CreateSubscriptionDefinition CreateSubscriptionDefinitionVersion DeleteCoreDefinition DeleteDeviceDefinition DeleteFunctionDefinition DeleteGroup DeleteLoggerDefinition DeleteResourceDefinition DeleteSubscriptionDefinition DisassociateRoleFromGroup DisassociateServiceRoleFromAccount GetAssociatedRole GetBulkDeploymentStatus GetConnectivityInfo GetCoreDefinition GetCoreDefinitionVersion GetDeploymentStatus GetDeviceDefinition GetDeviceDefinitionVersion GetFunctionDefinition GetFunctionDefinitionVersion GetGroup GetGroupCertificateAuthority GetGroupCertificateConfiguration GetGroupVersion GetLoggerDefinition GetLoggerDefinitionVersion GetResourceDefinition GetResourceDefinitionVersion GetServiceRoleForAccount GetSubscriptionDefinition GetSubscriptionDefinitionVersion ListBulkDeploymentDetailedReports ListBulkDeployments ListCoreDefinitions ListCoreDefinitionVersions ListDeployments ListDeviceDefinitions ListDeviceDefinitionVersions ListFunctionDefinitions ListFunctionDefinitionVersions ListGroupCertificateAuthorities ListGroups ListGroupVersions ListLoggerDefinitions ListLoggerDefinitionVersions ListResourceDefinitions ListResourceDefinitionVersions ListSubscriptionDefinitions ListSubscriptionDefinitionVersions ResetDeployments StartBulkDeployment StopBulkDeployment UpdateConnectivityInfo UpdateCoreDefinition UpdateDeviceDefinition UpdateFunctionDefinition UpdateGroup UpdateGroupCertificateConfiguration UpdateLoggerDefinition UpdateResourceDefinition UpdateSubscriptionDefinition / }
+  sub operations { qw/AssociateRoleToGroup AssociateServiceRoleToAccount CreateConnectorDefinition CreateConnectorDefinitionVersion CreateCoreDefinition CreateCoreDefinitionVersion CreateDeployment CreateDeviceDefinition CreateDeviceDefinitionVersion CreateFunctionDefinition CreateFunctionDefinitionVersion CreateGroup CreateGroupCertificateAuthority CreateGroupVersion CreateLoggerDefinition CreateLoggerDefinitionVersion CreateResourceDefinition CreateResourceDefinitionVersion CreateSoftwareUpdateJob CreateSubscriptionDefinition CreateSubscriptionDefinitionVersion DeleteConnectorDefinition DeleteCoreDefinition DeleteDeviceDefinition DeleteFunctionDefinition DeleteGroup DeleteLoggerDefinition DeleteResourceDefinition DeleteSubscriptionDefinition DisassociateRoleFromGroup DisassociateServiceRoleFromAccount GetAssociatedRole GetBulkDeploymentStatus GetConnectivityInfo GetConnectorDefinition GetConnectorDefinitionVersion GetCoreDefinition GetCoreDefinitionVersion GetDeploymentStatus GetDeviceDefinition GetDeviceDefinitionVersion GetFunctionDefinition GetFunctionDefinitionVersion GetGroup GetGroupCertificateAuthority GetGroupCertificateConfiguration GetGroupVersion GetLoggerDefinition GetLoggerDefinitionVersion GetResourceDefinition GetResourceDefinitionVersion GetServiceRoleForAccount GetSubscriptionDefinition GetSubscriptionDefinitionVersion ListBulkDeploymentDetailedReports ListBulkDeployments ListConnectorDefinitions ListConnectorDefinitionVersions ListCoreDefinitions ListCoreDefinitionVersions ListDeployments ListDeviceDefinitions ListDeviceDefinitionVersions ListFunctionDefinitions ListFunctionDefinitionVersions ListGroupCertificateAuthorities ListGroups ListGroupVersions ListLoggerDefinitions ListLoggerDefinitionVersions ListResourceDefinitions ListResourceDefinitionVersions ListSubscriptionDefinitions ListSubscriptionDefinitionVersions ResetDeployments StartBulkDeployment StopBulkDeployment UpdateConnectivityInfo UpdateConnectorDefinition UpdateCoreDefinition UpdateDeviceDefinition UpdateFunctionDefinition UpdateGroup UpdateGroupCertificateConfiguration UpdateLoggerDefinition UpdateResourceDefinition UpdateSubscriptionDefinition / }
 
 1;
 
@@ -440,12 +480,12 @@ Paws::Greengrass - Perl Interface to AWS AWS Greengrass
 
 =head1 DESCRIPTION
 
-AWS Greengrass seamlessly extends AWS onto physical devices so they can
-act locally on the data they generate, while still using the cloud for
-management, analytics, and durable storage. AWS Greengrass ensures your
-devices can respond quickly to local events and operate with
-intermittent connectivity. AWS Greengrass minimizes the cost of
-transmitting data to the cloud by allowing you to author AWS Lambda
+AWS IoT Greengrass seamlessly extends AWS onto physical devices so they
+can act locally on the data they generate, while still using the cloud
+for management, analytics, and durable storage. AWS IoT Greengrass
+ensures your devices can respond quickly to local events and operate
+with intermittent connectivity. AWS IoT Greengrass minimizes the cost
+of transmitting data to the cloud by allowing you to author AWS Lambda
 functions that execute locally.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/greengrass/>
@@ -468,8 +508,8 @@ Each argument is described in detail in: L<Paws::Greengrass::AssociateRoleToGrou
 
 Returns: a L<Paws::Greengrass::AssociateRoleToGroupResponse> instance
 
-Associates a role with a group. Your AWS Greengrass core will use the
-role to access AWS cloud services. The role's permissions should allow
+Associates a role with a group. Your Greengrass core will use the role
+to access AWS cloud services. The role's permissions should allow
 Greengrass core Lambda functions to perform actions against the cloud.
 
 
@@ -486,11 +526,54 @@ Each argument is described in detail in: L<Paws::Greengrass::AssociateServiceRol
 
 Returns: a L<Paws::Greengrass::AssociateServiceRoleToAccountResponse> instance
 
-Associates a role with your account. AWS Greengrass will use the role
-to access your Lambda functions and AWS IoT resources. This is
+Associates a role with your account. AWS IoT Greengrass will use the
+role to access your Lambda functions and AWS IoT resources. This is
 necessary for deployments to succeed. The role must have at least
 minimum permissions in the policy
 ''AWSGreengrassResourceAccessRolePolicy''.
+
+
+=head2 CreateConnectorDefinition
+
+=over
+
+=item [AmznClientToken => Str]
+
+=item [InitialVersion => L<Paws::Greengrass::ConnectorDefinitionVersion>]
+
+=item [Name => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Greengrass::CreateConnectorDefinition>
+
+Returns: a L<Paws::Greengrass::CreateConnectorDefinitionResponse> instance
+
+Creates a connector definition. You may provide the initial version of
+the connector definition now or use
+''CreateConnectorDefinitionVersion'' at a later time.
+
+
+=head2 CreateConnectorDefinitionVersion
+
+=over
+
+=item ConnectorDefinitionId => Str
+
+=item [AmznClientToken => Str]
+
+=item [Connectors => ArrayRef[L<Paws::Greengrass::Connector>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Greengrass::CreateConnectorDefinitionVersion>
+
+Returns: a L<Paws::Greengrass::CreateConnectorDefinitionVersionResponse> instance
+
+Creates a version of a connector definition which has already been
+defined.
 
 
 =head2 CreateCoreDefinition
@@ -512,8 +595,7 @@ Returns: a L<Paws::Greengrass::CreateCoreDefinitionResponse> instance
 
 Creates a core definition. You may provide the initial version of the
 core definition now or use ''CreateCoreDefinitionVersion'' at a later
-time. AWS Greengrass groups must each contain exactly one AWS
-Greengrass core.
+time. Greengrass groups must each contain exactly one Greengrass core.
 
 
 =head2 CreateCoreDefinitionVersion
@@ -534,8 +616,7 @@ Each argument is described in detail in: L<Paws::Greengrass::CreateCoreDefinitio
 Returns: a L<Paws::Greengrass::CreateCoreDefinitionVersionResponse> instance
 
 Creates a version of a core definition that has already been defined.
-AWS Greengrass groups must each contain exactly one AWS Greengrass
-core.
+Greengrass groups must each contain exactly one Greengrass core.
 
 
 =head2 CreateDeployment
@@ -638,6 +719,8 @@ Lambda functions and their configurations now, or use
 
 =item [AmznClientToken => Str]
 
+=item [DefaultConfig => L<Paws::Greengrass::FunctionDefaultConfig>]
+
 =item [Functions => ArrayRef[L<Paws::Greengrass::Function>]]
 
 
@@ -669,7 +752,10 @@ Each argument is described in detail in: L<Paws::Greengrass::CreateGroup>
 Returns: a L<Paws::Greengrass::CreateGroupResponse> instance
 
 Creates a group. You may provide the initial version of the group or
-use ''CreateGroupVersion'' at a later time.
+use ''CreateGroupVersion'' at a later time. Tip: You can use the
+''gg_group_setup'' package
+(https://github.com/awslabs/aws-greengrass-group-setup) as a library or
+command-line application to create and deploy Greengrass groups.
 
 
 =head2 CreateGroupCertificateAuthority
@@ -698,6 +784,8 @@ existing CA.
 =item GroupId => Str
 
 =item [AmznClientToken => Str]
+
+=item [ConnectorDefinitionVersionArn => Str]
 
 =item [CoreDefinitionVersionArn => Str]
 
@@ -880,6 +968,22 @@ Returns: a L<Paws::Greengrass::CreateSubscriptionDefinitionVersionResponse> inst
 
 Creates a version of a subscription definition which has already been
 defined.
+
+
+=head2 DeleteConnectorDefinition
+
+=over
+
+=item ConnectorDefinitionId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Greengrass::DeleteConnectorDefinition>
+
+Returns: a L<Paws::Greengrass::DeleteConnectorDefinitionResponse> instance
+
+Deletes a connector definition.
 
 
 =head2 DeleteCoreDefinition
@@ -1071,6 +1175,45 @@ Each argument is described in detail in: L<Paws::Greengrass::GetConnectivityInfo
 Returns: a L<Paws::Greengrass::GetConnectivityInfoResponse> instance
 
 Retrieves the connectivity information for a core.
+
+
+=head2 GetConnectorDefinition
+
+=over
+
+=item ConnectorDefinitionId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Greengrass::GetConnectorDefinition>
+
+Returns: a L<Paws::Greengrass::GetConnectorDefinitionResponse> instance
+
+Retrieves information about a connector definition.
+
+
+=head2 GetConnectorDefinitionVersion
+
+=over
+
+=item ConnectorDefinitionId => Str
+
+=item ConnectorDefinitionVersionId => Str
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Greengrass::GetConnectorDefinitionVersion>
+
+Returns: a L<Paws::Greengrass::GetConnectorDefinitionVersionResponse> instance
+
+Retrieves information about a connector definition version, including
+the connectors that the version contains. Connectors are prebuilt
+modules that interact with local infrastructure, device protocols, AWS,
+and other cloud services.
 
 
 =head2 GetCoreDefinition
@@ -1428,6 +1571,47 @@ Each argument is described in detail in: L<Paws::Greengrass::ListBulkDeployments
 Returns: a L<Paws::Greengrass::ListBulkDeploymentsResponse> instance
 
 Returns a list of bulk deployments.
+
+
+=head2 ListConnectorDefinitions
+
+=over
+
+=item [MaxResults => Str]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Greengrass::ListConnectorDefinitions>
+
+Returns: a L<Paws::Greengrass::ListConnectorDefinitionsResponse> instance
+
+Retrieves a list of connector definitions.
+
+
+=head2 ListConnectorDefinitionVersions
+
+=over
+
+=item ConnectorDefinitionId => Str
+
+=item [MaxResults => Str]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Greengrass::ListConnectorDefinitionVersions>
+
+Returns: a L<Paws::Greengrass::ListConnectorDefinitionVersionsResponse> instance
+
+Lists the versions of a connector definition, which are containers for
+connectors. Connectors run on the Greengrass core and contain built-in
+integration with local infrastructure, device protocols, AWS, and other
+cloud services.
 
 
 =head2 ListCoreDefinitions
@@ -1815,6 +1999,24 @@ Returns: a L<Paws::Greengrass::UpdateConnectivityInfoResponse> instance
 Updates the connectivity information for the core. Any devices that
 belong to the group which has this core will receive this information
 in order to find the location of the core and connect to it.
+
+
+=head2 UpdateConnectorDefinition
+
+=over
+
+=item ConnectorDefinitionId => Str
+
+=item [Name => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Greengrass::UpdateConnectorDefinition>
+
+Returns: a L<Paws::Greengrass::UpdateConnectorDefinitionResponse> instance
+
+Updates a connector definition.
 
 
 =head2 UpdateCoreDefinition

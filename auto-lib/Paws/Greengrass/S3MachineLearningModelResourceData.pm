@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass:
 
 =head1 DESCRIPTION
 
-Attributes that define an S3 machine learning resource.
+Attributes that define an Amazon S3 machine learning resource.
 
 =head1 ATTRIBUTES
 

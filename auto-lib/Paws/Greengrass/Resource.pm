@@ -47,9 +47,9 @@ configuration. Max length is 128 characters with pattern
 
 =head2 Name => Str
 
-  The descriptive resource name, which is displayed on the Greengrass
-console. Max length 128 characters with pattern ''[a-zA-Z0-9:_-]+''.
-This must be unique within a Greengrass group.
+  The descriptive resource name, which is displayed on the AWS IoT
+Greengrass console. Max length 128 characters with pattern
+''[a-zA-Z0-9:_-]+''. This must be unique within a Greengrass group.
 
 
 =head2 ResourceDataContainer => L<Paws::Greengrass::ResourceDataContainer>
