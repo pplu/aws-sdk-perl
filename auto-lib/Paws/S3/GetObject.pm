@@ -71,34 +71,37 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $AcceptRanges            = $GetObjectOutput->AcceptRanges;
-    my $Body                    = $GetObjectOutput->Body;
-    my $CacheControl            = $GetObjectOutput->CacheControl;
-    my $ContentDisposition      = $GetObjectOutput->ContentDisposition;
-    my $ContentEncoding         = $GetObjectOutput->ContentEncoding;
-    my $ContentLanguage         = $GetObjectOutput->ContentLanguage;
-    my $ContentLength           = $GetObjectOutput->ContentLength;
-    my $ContentRange            = $GetObjectOutput->ContentRange;
-    my $ContentType             = $GetObjectOutput->ContentType;
-    my $DeleteMarker            = $GetObjectOutput->DeleteMarker;
-    my $ETag                    = $GetObjectOutput->ETag;
-    my $Expiration              = $GetObjectOutput->Expiration;
-    my $Expires                 = $GetObjectOutput->Expires;
-    my $LastModified            = $GetObjectOutput->LastModified;
-    my $Metadata                = $GetObjectOutput->Metadata;
-    my $MissingMeta             = $GetObjectOutput->MissingMeta;
-    my $PartsCount              = $GetObjectOutput->PartsCount;
-    my $ReplicationStatus       = $GetObjectOutput->ReplicationStatus;
-    my $RequestCharged          = $GetObjectOutput->RequestCharged;
-    my $Restore                 = $GetObjectOutput->Restore;
-    my $SSECustomerAlgorithm    = $GetObjectOutput->SSECustomerAlgorithm;
-    my $SSECustomerKeyMD5       = $GetObjectOutput->SSECustomerKeyMD5;
-    my $SSEKMSKeyId             = $GetObjectOutput->SSEKMSKeyId;
-    my $ServerSideEncryption    = $GetObjectOutput->ServerSideEncryption;
-    my $StorageClass            = $GetObjectOutput->StorageClass;
-    my $TagCount                = $GetObjectOutput->TagCount;
-    my $VersionId               = $GetObjectOutput->VersionId;
-    my $WebsiteRedirectLocation = $GetObjectOutput->WebsiteRedirectLocation;
+    my $AcceptRanges              = $GetObjectOutput->AcceptRanges;
+    my $Body                      = $GetObjectOutput->Body;
+    my $CacheControl              = $GetObjectOutput->CacheControl;
+    my $ContentDisposition        = $GetObjectOutput->ContentDisposition;
+    my $ContentEncoding           = $GetObjectOutput->ContentEncoding;
+    my $ContentLanguage           = $GetObjectOutput->ContentLanguage;
+    my $ContentLength             = $GetObjectOutput->ContentLength;
+    my $ContentRange              = $GetObjectOutput->ContentRange;
+    my $ContentType               = $GetObjectOutput->ContentType;
+    my $DeleteMarker              = $GetObjectOutput->DeleteMarker;
+    my $ETag                      = $GetObjectOutput->ETag;
+    my $Expiration                = $GetObjectOutput->Expiration;
+    my $Expires                   = $GetObjectOutput->Expires;
+    my $LastModified              = $GetObjectOutput->LastModified;
+    my $Metadata                  = $GetObjectOutput->Metadata;
+    my $MissingMeta               = $GetObjectOutput->MissingMeta;
+    my $ObjectLockLegalHoldStatus = $GetObjectOutput->ObjectLockLegalHoldStatus;
+    my $ObjectLockMode            = $GetObjectOutput->ObjectLockMode;
+    my $ObjectLockRetainUntilDate = $GetObjectOutput->ObjectLockRetainUntilDate;
+    my $PartsCount                = $GetObjectOutput->PartsCount;
+    my $ReplicationStatus         = $GetObjectOutput->ReplicationStatus;
+    my $RequestCharged            = $GetObjectOutput->RequestCharged;
+    my $Restore                   = $GetObjectOutput->Restore;
+    my $SSECustomerAlgorithm      = $GetObjectOutput->SSECustomerAlgorithm;
+    my $SSECustomerKeyMD5         = $GetObjectOutput->SSECustomerKeyMD5;
+    my $SSEKMSKeyId               = $GetObjectOutput->SSEKMSKeyId;
+    my $ServerSideEncryption      = $GetObjectOutput->ServerSideEncryption;
+    my $StorageClass              = $GetObjectOutput->StorageClass;
+    my $TagCount                  = $GetObjectOutput->TagCount;
+    my $VersionId                 = $GetObjectOutput->VersionId;
+    my $WebsiteRedirectLocation   = $GetObjectOutput->WebsiteRedirectLocation;
 
     # Returns a L<Paws::S3::GetObjectOutput> object.
 

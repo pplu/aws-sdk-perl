@@ -45,13 +45,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },    # OPTIONAL
         RedirectAllRequestsTo => {
-          HostName => 'MyHostName',    # OPTIONAL
-          Protocol => 'http',          # values: http, https; OPTIONAL
+          HostName => 'MyHostName',
+          Protocol => 'http',         # values: http, https; OPTIONAL
         },    # OPTIONAL
         RoutingRules => [
           {
             Redirect => {
-              HostName         => 'MyHostName',            # OPTIONAL
+              HostName         => 'MyHostName',
               HttpRedirectCode => 'MyHttpRedirectCode',    # OPTIONAL
               Protocol => 'http',    # values: http, https; OPTIONAL
               ReplaceKeyPrefixWith => 'MyReplaceKeyPrefixWith',    # OPTIONAL

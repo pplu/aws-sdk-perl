@@ -10,6 +10,7 @@ package Paws::S3::CreateBucket;
   has GrantReadACP => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-read-acp', traits => ['ParamInHeader']);
   has GrantWrite => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-write', traits => ['ParamInHeader']);
   has GrantWriteACP => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-write-acp', traits => ['ParamInHeader']);
+  has ObjectLockEnabledForBucket => (is => 'ro', isa => 'Bool', header_name => 'x-amz-bucket-object-lock-enabled', traits => ['ParamInHeader']);
 
   use MooseX::ClassAttribute;
 
@@ -46,11 +47,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         LocationConstraint => 'EU'
         , # values: EU, eu-west-1, us-west-1, us-west-2, ap-south-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, sa-east-1, cn-north-1, eu-central-1; OPTIONAL
       },    # OPTIONAL
-      GrantFullControl => 'MyGrantFullControl',    # OPTIONAL
-      GrantRead        => 'MyGrantRead',           # OPTIONAL
-      GrantReadACP     => 'MyGrantReadACP',        # OPTIONAL
-      GrantWrite       => 'MyGrantWrite',          # OPTIONAL
-      GrantWriteACP    => 'MyGrantWriteACP',       # OPTIONAL
+      GrantFullControl           => 'MyGrantFullControl',    # OPTIONAL
+      GrantRead                  => 'MyGrantRead',           # OPTIONAL
+      GrantReadACP               => 'MyGrantReadACP',        # OPTIONAL
+      GrantWrite                 => 'MyGrantWrite',          # OPTIONAL
+      GrantWriteACP              => 'MyGrantWriteACP',       # OPTIONAL
+      ObjectLockEnabledForBucket => 1,                       # OPTIONAL
     );
 
     # Results:
@@ -117,6 +119,13 @@ bucket.
 =head2 GrantWriteACP => Str
 
 Allows grantee to write the ACL for the applicable bucket.
+
+
+
+=head2 ObjectLockEnabledForBucket => Bool
+
+Specifies whether you want S3 Object Lock to be enabled for the new
+bucket.
 
 
 

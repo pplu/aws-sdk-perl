@@ -300,6 +300,21 @@ package Paws::S3;
     my $call_object = $self->new_with_coercions('Paws::S3::GetObjectAcl', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetObjectLegalHold {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::GetObjectLegalHold', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetObjectLockConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::GetObjectLockConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetObjectRetention {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::GetObjectRetention', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetObjectTagging {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::S3::GetObjectTagging', @_);
@@ -470,6 +485,21 @@ package Paws::S3;
     my $call_object = $self->new_with_coercions('Paws::S3::PutObjectAcl', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutObjectLegalHold {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::PutObjectLegalHold', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutObjectLockConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::PutObjectLockConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutObjectRetention {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::PutObjectRetention', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutObjectTagging {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::S3::PutObjectTagging', @_);
@@ -633,7 +663,7 @@ package Paws::S3;
   }
 
 
-  sub operations { qw/AbortMultipartUpload CompleteMultipartUpload CopyObject CreateBucket CreateMultipartUpload DeleteBucket DeleteBucketAnalyticsConfiguration DeleteBucketCors DeleteBucketEncryption DeleteBucketInventoryConfiguration DeleteBucketLifecycle DeleteBucketMetricsConfiguration DeleteBucketPolicy DeleteBucketReplication DeleteBucketTagging DeleteBucketWebsite DeleteObject DeleteObjects DeleteObjectTagging DeletePublicAccessBlock GetBucketAccelerateConfiguration GetBucketAcl GetBucketAnalyticsConfiguration GetBucketCors GetBucketEncryption GetBucketInventoryConfiguration GetBucketLifecycle GetBucketLifecycleConfiguration GetBucketLocation GetBucketLogging GetBucketMetricsConfiguration GetBucketNotification GetBucketNotificationConfiguration GetBucketPolicy GetBucketPolicyStatus GetBucketReplication GetBucketRequestPayment GetBucketTagging GetBucketVersioning GetBucketWebsite GetObject GetObjectAcl GetObjectTagging GetObjectTorrent GetPublicAccessBlock HeadBucket HeadObject ListBucketAnalyticsConfigurations ListBucketInventoryConfigurations ListBucketMetricsConfigurations ListBuckets ListMultipartUploads ListObjects ListObjectsV2 ListObjectVersions ListParts PutBucketAccelerateConfiguration PutBucketAcl PutBucketAnalyticsConfiguration PutBucketCors PutBucketEncryption PutBucketInventoryConfiguration PutBucketLifecycle PutBucketLifecycleConfiguration PutBucketLogging PutBucketMetricsConfiguration PutBucketNotification PutBucketNotificationConfiguration PutBucketPolicy PutBucketReplication PutBucketRequestPayment PutBucketTagging PutBucketVersioning PutBucketWebsite PutObject PutObjectAcl PutObjectTagging PutPublicAccessBlock RestoreObject SelectObjectContent UploadPart UploadPartCopy / }
+  sub operations { qw/AbortMultipartUpload CompleteMultipartUpload CopyObject CreateBucket CreateMultipartUpload DeleteBucket DeleteBucketAnalyticsConfiguration DeleteBucketCors DeleteBucketEncryption DeleteBucketInventoryConfiguration DeleteBucketLifecycle DeleteBucketMetricsConfiguration DeleteBucketPolicy DeleteBucketReplication DeleteBucketTagging DeleteBucketWebsite DeleteObject DeleteObjects DeleteObjectTagging DeletePublicAccessBlock GetBucketAccelerateConfiguration GetBucketAcl GetBucketAnalyticsConfiguration GetBucketCors GetBucketEncryption GetBucketInventoryConfiguration GetBucketLifecycle GetBucketLifecycleConfiguration GetBucketLocation GetBucketLogging GetBucketMetricsConfiguration GetBucketNotification GetBucketNotificationConfiguration GetBucketPolicy GetBucketPolicyStatus GetBucketReplication GetBucketRequestPayment GetBucketTagging GetBucketVersioning GetBucketWebsite GetObject GetObjectAcl GetObjectLegalHold GetObjectLockConfiguration GetObjectRetention GetObjectTagging GetObjectTorrent GetPublicAccessBlock HeadBucket HeadObject ListBucketAnalyticsConfigurations ListBucketInventoryConfigurations ListBucketMetricsConfigurations ListBuckets ListMultipartUploads ListObjects ListObjectsV2 ListObjectVersions ListParts PutBucketAccelerateConfiguration PutBucketAcl PutBucketAnalyticsConfiguration PutBucketCors PutBucketEncryption PutBucketInventoryConfiguration PutBucketLifecycle PutBucketLifecycleConfiguration PutBucketLogging PutBucketMetricsConfiguration PutBucketNotification PutBucketNotificationConfiguration PutBucketPolicy PutBucketReplication PutBucketRequestPayment PutBucketTagging PutBucketVersioning PutBucketWebsite PutObject PutObjectAcl PutObjectLegalHold PutObjectLockConfiguration PutObjectRetention PutObjectTagging PutPublicAccessBlock RestoreObject SelectObjectContent UploadPart UploadPartCopy / }
 
 1;
 
@@ -778,6 +808,12 @@ Completes a multipart upload by assembling previously uploaded parts.
 
 =item [MetadataDirective => Str]
 
+=item [ObjectLockLegalHoldStatus => Str]
+
+=item [ObjectLockMode => Str]
+
+=item [ObjectLockRetainUntilDate => Str]
+
 =item [RequestPayer => Str]
 
 =item [ServerSideEncryption => Str]
@@ -830,6 +866,8 @@ Creates a copy of an object that is already stored in Amazon S3.
 
 =item [GrantWriteACP => Str]
 
+=item [ObjectLockEnabledForBucket => Bool]
+
 
 =back
 
@@ -871,6 +909,12 @@ Creates a new bucket.
 =item [GrantWriteACP => Str]
 
 =item [Metadata => L<Paws::S3::Metadata>]
+
+=item [ObjectLockLegalHoldStatus => Str]
+
+=item [ObjectLockMode => Str]
+
+=item [ObjectLockRetainUntilDate => Str]
 
 =item [RequestPayer => Str]
 
@@ -1103,6 +1147,8 @@ This operation removes the website configuration from the bucket.
 
 =item Key => Str
 
+=item [BypassGovernanceRetention => Bool]
+
 =item [MFA => Str]
 
 =item [RequestPayer => Str]
@@ -1128,6 +1174,8 @@ isn't a null version, Amazon S3 does not remove any objects.
 =item Bucket => Str
 
 =item Delete => L<Paws::S3::Delete>
+
+=item [BypassGovernanceRetention => Bool]
 
 =item [ContentLength => Int]
 
@@ -1593,6 +1641,68 @@ Each argument is described in detail in: L<Paws::S3::GetObjectAcl>
 Returns: a L<Paws::S3::GetObjectAclOutput> instance
 
 Returns the access control list (ACL) of an object.
+
+
+=head2 GetObjectLegalHold
+
+=over
+
+=item Bucket => Str
+
+=item Key => Str
+
+=item [RequestPayer => Str]
+
+=item [VersionId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::S3::GetObjectLegalHold>
+
+Returns: a L<Paws::S3::GetObjectLegalHoldOutput> instance
+
+Gets an object's current Legal Hold status.
+
+
+=head2 GetObjectLockConfiguration
+
+=over
+
+=item Bucket => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::S3::GetObjectLockConfiguration>
+
+Returns: a L<Paws::S3::GetObjectLockConfigurationOutput> instance
+
+Gets the Object Lock configuration for a bucket. The rule specified in
+the Object Lock configuration will be applied by default to every new
+object placed in the specified bucket.
+
+
+=head2 GetObjectRetention
+
+=over
+
+=item Bucket => Str
+
+=item Key => Str
+
+=item [RequestPayer => Str]
+
+=item [VersionId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::S3::GetObjectRetention>
+
+Returns: a L<Paws::S3::GetObjectRetentionOutput> instance
+
+Retrieves an object's retention settings.
 
 
 =head2 GetObjectTagging
@@ -2388,6 +2498,12 @@ Set the website configuration for a bucket.
 
 =item [Metadata => L<Paws::S3::Metadata>]
 
+=item [ObjectLockLegalHoldStatus => Str]
+
+=item [ObjectLockMode => Str]
+
+=item [ObjectLockRetainUntilDate => Str]
+
 =item [RequestPayer => Str]
 
 =item [ServerSideEncryption => Str]
@@ -2455,6 +2571,86 @@ Returns: a L<Paws::S3::PutObjectAclOutput> instance
 
 uses the acl subresource to set the access control list (ACL)
 permissions for an object that already exists in a bucket
+
+
+=head2 PutObjectLegalHold
+
+=over
+
+=item Bucket => Str
+
+=item Key => Str
+
+=item [ContentMD5 => Str]
+
+=item [LegalHold => L<Paws::S3::ObjectLockLegalHold>]
+
+=item [RequestPayer => Str]
+
+=item [VersionId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::S3::PutObjectLegalHold>
+
+Returns: a L<Paws::S3::PutObjectLegalHoldOutput> instance
+
+Applies a Legal Hold configuration to the specified object.
+
+
+=head2 PutObjectLockConfiguration
+
+=over
+
+=item Bucket => Str
+
+=item [ContentMD5 => Str]
+
+=item [ObjectLockConfiguration => L<Paws::S3::ObjectLockConfiguration>]
+
+=item [RequestPayer => Str]
+
+=item [Token => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::S3::PutObjectLockConfiguration>
+
+Returns: a L<Paws::S3::PutObjectLockConfigurationOutput> instance
+
+Places an Object Lock configuration on the specified bucket. The rule
+specified in the Object Lock configuration will be applied by default
+to every new object placed in the specified bucket.
+
+
+=head2 PutObjectRetention
+
+=over
+
+=item Bucket => Str
+
+=item Key => Str
+
+=item [BypassGovernanceRetention => Bool]
+
+=item [ContentMD5 => Str]
+
+=item [RequestPayer => Str]
+
+=item [Retention => L<Paws::S3::ObjectLockRetention>]
+
+=item [VersionId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::S3::PutObjectRetention>
+
+Returns: a L<Paws::S3::PutObjectRetentionOutput> instance
+
+Places an Object Retention configuration on an object.
 
 
 =head2 PutObjectTagging
