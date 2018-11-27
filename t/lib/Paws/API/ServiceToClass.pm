@@ -74,6 +74,7 @@ package Paws::API::ServiceToClass;
     fms => 'FMS',
     gamelift => 'GameLift',
     glacier => 'Glacier',
+    globalaccelerator => 'GlobalAccelerator',
     glue => 'Glue',
     greengrass => 'Greengrass',
     guardduty => 'GuardDuty',

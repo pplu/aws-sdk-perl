@@ -374,6 +374,8 @@ L<Paws::GameLift>
 
 L<Paws::Glacier>
 
+L<Paws::GlobalAccelerator>
+
 L<Paws::Glue>
 
 L<Paws::Greengrass>
