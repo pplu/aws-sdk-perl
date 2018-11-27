@@ -40,7 +40,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sms
 
 =head2 B<REQUIRED> ConnectorId => Str
 
-
+The identifier of the connector.
 
 
 

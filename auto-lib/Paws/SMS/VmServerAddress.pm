@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SMS::VmServ
 
 =head1 DESCRIPTION
 
-Object representing a server's location
+Represents a VM server location.
 
 =head1 ATTRIBUTES
 
 
 =head2 VmId => Str
 
-  
+  The identifier of the VM.
 
 
 =head2 VmManagerId => Str
 
-  
+  The identifier of the VM manager.
 
 
 
