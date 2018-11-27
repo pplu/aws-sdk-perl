@@ -72,8 +72,13 @@ Volume Types
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
-Constraint: Range is 100-20000 IOPS for C<io1> volumes and 100-10000
-IOPS for C<gp2> volumes.
+Constraints: Range is 100-10,000 IOPS for C<gp2> volumes and 100 to
+64,000IOPS for C<io1> volumes in most regions. Maximum C<io1>IOPS of
+64,000 is guaranteed only on Nitro-based instances. Other instance
+families guarantee performance up to 32,000 IOPS. For more information,
+see Amazon EBS Volume Types
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 Condition: This parameter is required for requests to create C<io1>
 volumes; it is not used in requests to create C<gp2>, C<st1>, C<sc1>,

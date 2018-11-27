@@ -10,6 +10,7 @@ package Paws::EC2::CreateRoute;
   has NatGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'natGatewayId' );
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'networkInterfaceId' );
   has RouteTableId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'routeTableId' , required => 1);
+  has TransitGatewayId => (is => 'ro', isa => 'Str');
   has VpcPeeringConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'vpcPeeringConnectionId' );
 
   use MooseX::ClassAttribute;
@@ -114,6 +115,12 @@ The ID of a network interface.
 =head2 B<REQUIRED> RouteTableId => Str
 
 The ID of the route table for the route.
+
+
+
+=head2 TransitGatewayId => Str
+
+The ID of a transit gateway.
 
 
 

@@ -11,6 +11,7 @@ package Paws::EC2::Route;
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceId', traits => ['NameInRequest']);
   has Origin => (is => 'ro', isa => 'Str', request_name => 'origin', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  has TransitGatewayId => (is => 'ro', isa => 'Str', request_name => 'transitGatewayId', traits => ['NameInRequest']);
   has VpcPeeringConnectionId => (is => 'ro', isa => 'Str', request_name => 'vpcPeeringConnectionId', traits => ['NameInRequest']);
 1;
 
@@ -124,9 +125,14 @@ isn't attached to the VPC, or the specified NAT instance has been
 terminated).
 
 
+=head2 TransitGatewayId => Str
+
+  The ID of a transit gateway.
+
+
 =head2 VpcPeeringConnectionId => Str
 
-  The ID of the VPC peering connection.
+  The ID of a VPC peering connection.
 
 
 

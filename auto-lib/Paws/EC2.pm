@@ -20,6 +20,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::AcceptReservedInstancesExchangeQuote', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AcceptTransitGatewayVpcAttachment {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::AcceptTransitGatewayVpcAttachment', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AcceptVpcEndpointConnections {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::AcceptVpcEndpointConnections', @_);
@@ -78,6 +83,11 @@ package Paws::EC2;
   sub AssociateSubnetCidrBlock {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::AssociateSubnetCidrBlock', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub AssociateTransitGatewayRouteTable {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::AssociateTransitGatewayRouteTable', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub AssociateVpcCidrBlock {
@@ -330,6 +340,26 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateTransitGateway {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateTransitGateway', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateTransitGatewayRoute {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateTransitGatewayRoute', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateTransitGatewayRouteTable {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateTransitGatewayRouteTable', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateTransitGatewayVpcAttachment {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateTransitGatewayVpcAttachment', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateVolume {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateVolume', @_);
@@ -488,6 +518,26 @@ package Paws::EC2;
   sub DeleteTags {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DeleteTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteTransitGateway {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteTransitGateway', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteTransitGatewayRoute {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteTransitGatewayRoute', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteTransitGatewayRouteTable {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteTransitGatewayRouteTable', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteTransitGatewayVpcAttachment {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteTransitGatewayVpcAttachment', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteVolume {
@@ -890,6 +940,26 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeTransitGatewayAttachments {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeTransitGatewayAttachments', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeTransitGatewayRouteTables {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeTransitGatewayRouteTables', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeTransitGateways {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeTransitGateways', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeTransitGatewayVpcAttachments {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeTransitGatewayVpcAttachments', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeVolumeAttribute {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeVolumeAttribute', @_);
@@ -1000,6 +1070,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DetachVpnGateway', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DisableTransitGatewayRouteTablePropagation {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DisableTransitGatewayRouteTablePropagation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DisableVgwRoutePropagation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DisableVgwRoutePropagation', @_);
@@ -1035,9 +1110,19 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DisassociateSubnetCidrBlock', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DisassociateTransitGatewayRouteTable {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DisassociateTransitGatewayRouteTable', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DisassociateVpcCidrBlock {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DisassociateVpcCidrBlock', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub EnableTransitGatewayRouteTablePropagation {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::EnableTransitGatewayRouteTablePropagation', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub EnableVgwRoutePropagation {
@@ -1058,6 +1143,11 @@ package Paws::EC2;
   sub EnableVpcClassicLinkDnsSupport {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::EnableVpcClassicLinkDnsSupport', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ExportTransitGatewayRoutes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ExportTransitGatewayRoutes', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetConsoleOutput {
@@ -1088,6 +1178,21 @@ package Paws::EC2;
   sub GetReservedInstancesExchangeQuote {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::GetReservedInstancesExchangeQuote', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetTransitGatewayAttachmentPropagations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::GetTransitGatewayAttachmentPropagations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetTransitGatewayRouteTableAssociations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::GetTransitGatewayRouteTableAssociations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetTransitGatewayRouteTablePropagations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::GetTransitGatewayRouteTablePropagations', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ImportImage {
@@ -1200,6 +1305,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::ModifySubnetAttribute', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ModifyTransitGatewayVpcAttachment {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyTransitGatewayVpcAttachment', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ModifyVolume {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::ModifyVolume', @_);
@@ -1285,6 +1395,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::RegisterImage', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub RejectTransitGatewayVpcAttachment {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::RejectTransitGatewayVpcAttachment', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RejectVpcEndpointConnections {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::RejectVpcEndpointConnections', @_);
@@ -1328,6 +1443,11 @@ package Paws::EC2;
   sub ReplaceRouteTableAssociation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::ReplaceRouteTableAssociation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ReplaceTransitGatewayRoute {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ReplaceTransitGatewayRoute', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ReportInstanceStatus {
@@ -1393,6 +1513,11 @@ package Paws::EC2;
   sub RunScheduledInstances {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::RunScheduledInstances', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub SearchTransitGatewayRoutes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::SearchTransitGatewayRoutes', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StartInstances {
@@ -1810,7 +1935,7 @@ package Paws::EC2;
   }
 
 
-  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptVpcEndpointConnections AcceptVpcPeeringConnection AdvertiseByoipCidr AllocateAddress AllocateHosts AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelCapacityReservation CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyFpgaImage CopyImage CopySnapshot CreateCapacityReservation CreateCustomerGateway CreateDefaultSubnet CreateDefaultVpc CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFleet CreateFlowLogs CreateFpgaImage CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateLaunchTemplate CreateLaunchTemplateVersion CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreateNetworkInterfacePermission CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateVolume CreateVpc CreateVpcEndpoint CreateVpcEndpointConnectionNotification CreateVpcEndpointServiceConfiguration CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFleets DeleteFlowLogs DeleteFpgaImage DeleteInternetGateway DeleteKeyPair DeleteLaunchTemplate DeleteLaunchTemplateVersions DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeleteNetworkInterfacePermission DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteVolume DeleteVpc DeleteVpcEndpointConnectionNotifications DeleteVpcEndpoints DeleteVpcEndpointServiceConfigurations DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeprovisionByoipCidr DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAggregateIdFormat DescribeAvailabilityZones DescribeBundleTasks DescribeByoipCidrs DescribeCapacityReservations DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeElasticGpus DescribeExportTasks DescribeFleetHistory DescribeFleetInstances DescribeFleets DescribeFlowLogs DescribeFpgaImageAttribute DescribeFpgaImages DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstanceCreditSpecifications DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeLaunchTemplates DescribeLaunchTemplateVersions DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfacePermissions DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribePrincipalIdFormat DescribePublicIpv4Pools DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeVolumeAttribute DescribeVolumes DescribeVolumesModifications DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpointConnectionNotifications DescribeVpcEndpointConnections DescribeVpcEndpoints DescribeVpcEndpointServiceConfigurations DescribeVpcEndpointServicePermissions DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateVpcCidrBlock EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport GetConsoleOutput GetConsoleScreenshot GetHostReservationPurchasePreview GetLaunchTemplateData GetPasswordData GetReservedInstancesExchangeQuote ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyCapacityReservation ModifyFleet ModifyFpgaImageAttribute ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstanceCapacityReservationAttributes ModifyInstanceCreditSpecification ModifyInstancePlacement ModifyLaunchTemplate ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyVolume ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcEndpointConnectionNotification ModifyVpcEndpointServiceConfiguration ModifyVpcEndpointServicePermissions ModifyVpcPeeringConnectionOptions ModifyVpcTenancy MonitorInstances MoveAddressToVpc ProvisionByoipCidr PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectVpcEndpointConnections RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetFpgaImageAttribute ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances StartInstances StopInstances TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances UpdateSecurityGroupRuleDescriptionsEgress UpdateSecurityGroupRuleDescriptionsIngress WithdrawByoipCidr / }
+  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptTransitGatewayVpcAttachment AcceptVpcEndpointConnections AcceptVpcPeeringConnection AdvertiseByoipCidr AllocateAddress AllocateHosts AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateTransitGatewayRouteTable AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelCapacityReservation CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyFpgaImage CopyImage CopySnapshot CreateCapacityReservation CreateCustomerGateway CreateDefaultSubnet CreateDefaultVpc CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFleet CreateFlowLogs CreateFpgaImage CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateLaunchTemplate CreateLaunchTemplateVersion CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreateNetworkInterfacePermission CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateTransitGateway CreateTransitGatewayRoute CreateTransitGatewayRouteTable CreateTransitGatewayVpcAttachment CreateVolume CreateVpc CreateVpcEndpoint CreateVpcEndpointConnectionNotification CreateVpcEndpointServiceConfiguration CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFleets DeleteFlowLogs DeleteFpgaImage DeleteInternetGateway DeleteKeyPair DeleteLaunchTemplate DeleteLaunchTemplateVersions DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeleteNetworkInterfacePermission DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteTransitGateway DeleteTransitGatewayRoute DeleteTransitGatewayRouteTable DeleteTransitGatewayVpcAttachment DeleteVolume DeleteVpc DeleteVpcEndpointConnectionNotifications DeleteVpcEndpoints DeleteVpcEndpointServiceConfigurations DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeprovisionByoipCidr DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAggregateIdFormat DescribeAvailabilityZones DescribeBundleTasks DescribeByoipCidrs DescribeCapacityReservations DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeElasticGpus DescribeExportTasks DescribeFleetHistory DescribeFleetInstances DescribeFleets DescribeFlowLogs DescribeFpgaImageAttribute DescribeFpgaImages DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstanceCreditSpecifications DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeLaunchTemplates DescribeLaunchTemplateVersions DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfacePermissions DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribePrincipalIdFormat DescribePublicIpv4Pools DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeTransitGatewayAttachments DescribeTransitGatewayRouteTables DescribeTransitGateways DescribeTransitGatewayVpcAttachments DescribeVolumeAttribute DescribeVolumes DescribeVolumesModifications DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpointConnectionNotifications DescribeVpcEndpointConnections DescribeVpcEndpoints DescribeVpcEndpointServiceConfigurations DescribeVpcEndpointServicePermissions DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableTransitGatewayRouteTablePropagation DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateTransitGatewayRouteTable DisassociateVpcCidrBlock EnableTransitGatewayRouteTablePropagation EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport ExportTransitGatewayRoutes GetConsoleOutput GetConsoleScreenshot GetHostReservationPurchasePreview GetLaunchTemplateData GetPasswordData GetReservedInstancesExchangeQuote GetTransitGatewayAttachmentPropagations GetTransitGatewayRouteTableAssociations GetTransitGatewayRouteTablePropagations ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyCapacityReservation ModifyFleet ModifyFpgaImageAttribute ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstanceCapacityReservationAttributes ModifyInstanceCreditSpecification ModifyInstancePlacement ModifyLaunchTemplate ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyTransitGatewayVpcAttachment ModifyVolume ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcEndpointConnectionNotification ModifyVpcEndpointServiceConfiguration ModifyVpcEndpointServicePermissions ModifyVpcPeeringConnectionOptions ModifyVpcTenancy MonitorInstances MoveAddressToVpc ProvisionByoipCidr PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectTransitGatewayVpcAttachment RejectVpcEndpointConnections RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReplaceTransitGatewayRoute ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetFpgaImageAttribute ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances SearchTransitGatewayRoutes StartInstances StopInstances TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances UpdateSecurityGroupRuleDescriptionsEgress UpdateSecurityGroupRuleDescriptionsIngress WithdrawByoipCidr / }
 
 1;
 
@@ -1897,6 +2022,29 @@ Returns: a L<Paws::EC2::AcceptReservedInstancesExchangeQuoteResult> instance
 
 Accepts the Convertible Reserved Instance exchange quote described in
 the GetReservedInstancesExchangeQuote call.
+
+
+=head2 AcceptTransitGatewayVpcAttachment
+
+=over
+
+=item TransitGatewayAttachmentId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::AcceptTransitGatewayVpcAttachment>
+
+Returns: a L<Paws::EC2::AcceptTransitGatewayVpcAttachmentResult> instance
+
+Accepts a request to attach a VPC to a transit gateway.
+
+The VPC attachment must be in the C<pendingAcceptance> state. Use
+DescribeTransitGatewayVpcAttachments to view your pending VPC
+attachment requests. Use RejectTransitGatewayVpcAttachment to reject a
+VPC attachment request.
 
 
 =head2 AcceptVpcEndpointConnections
@@ -2278,6 +2426,27 @@ Returns: a L<Paws::EC2::AssociateSubnetCidrBlockResult> instance
 Associates a CIDR block with your subnet. You can only associate a
 single IPv6 CIDR block with your subnet. An IPv6 CIDR block must have a
 prefix length of /64.
+
+
+=head2 AssociateTransitGatewayRouteTable
+
+=over
+
+=item TransitGatewayAttachmentId => Str
+
+=item TransitGatewayRouteTableId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::AssociateTransitGatewayRouteTable>
+
+Returns: a L<Paws::EC2::AssociateTransitGatewayRouteTableResult> instance
+
+Associates the specified attachment with the specified transit gateway
+route table. You can associate only one route table with an attachment.
 
 
 =head2 AssociateVpcCidrBlock
@@ -3784,6 +3953,8 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item [NetworkInterfaceId => Str]
 
+=item [TransitGatewayId => Str]
+
 =item [VpcPeeringConnectionId => Str]
 
 
@@ -4067,6 +4238,127 @@ API Actions
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
+=head2 CreateTransitGateway
+
+=over
+
+=item [Description => Str]
+
+=item [DryRun => Bool]
+
+=item [Options => L<Paws::EC2::TransitGatewayRequestOptions>]
+
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::CreateTransitGateway>
+
+Returns: a L<Paws::EC2::CreateTransitGatewayResult> instance
+
+Creates a transit gateway.
+
+You can use a transit gateway to interconnect your virtual private
+clouds (VPC) and on-premises networks. After the transit gateway enters
+the C<available> state, you can attach your VPCs and VPN connections to
+the transit gateway.
+
+To attach your VPCs, use CreateTransitGatewayVpcAttachment.
+
+To attach a VPN connection, use CreateCustomerGateway to create a
+customer gateway and specify the ID of the customer gateway and the ID
+of the transit gateway in a call to CreateVpnConnection.
+
+When you create a transit gateway, we create a default transit gateway
+route table and use it as the default association route table and the
+default propagation route table. You can use
+CreateTransitGatewayRouteTable to create additional transit gateway
+route tables. If you disable automatic route propagation, we do not
+create a default transit gateway route table. You can use
+EnableTransitGatewayRouteTablePropagation to propagate routes from a
+resource attachment to a transit gateway route table. If you disable
+automatic associations, you can use AssociateTransitGatewayRouteTable
+to associate a resource attachment with a transit gateway route table.
+
+
+=head2 CreateTransitGatewayRoute
+
+=over
+
+=item DestinationCidrBlock => Str
+
+=item TransitGatewayRouteTableId => Str
+
+=item [Blackhole => Bool]
+
+=item [DryRun => Bool]
+
+=item [TransitGatewayAttachmentId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::CreateTransitGatewayRoute>
+
+Returns: a L<Paws::EC2::CreateTransitGatewayRouteResult> instance
+
+Creates a static route for the specified transit gateway route table.
+
+
+=head2 CreateTransitGatewayRouteTable
+
+=over
+
+=item TransitGatewayId => Str
+
+=item [DryRun => Bool]
+
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::CreateTransitGatewayRouteTable>
+
+Returns: a L<Paws::EC2::CreateTransitGatewayRouteTableResult> instance
+
+Creates a route table for the specified transit gateway.
+
+
+=head2 CreateTransitGatewayVpcAttachment
+
+=over
+
+=item SubnetIds => ArrayRef[Str|Undef]
+
+=item TransitGatewayId => Str
+
+=item VpcId => Str
+
+=item [DryRun => Bool]
+
+=item [Options => L<Paws::EC2::CreateTransitGatewayVpcAttachmentRequestOptions>]
+
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::CreateTransitGatewayVpcAttachment>
+
+Returns: a L<Paws::EC2::CreateTransitGatewayVpcAttachmentResult> instance
+
+Attaches the specified VPC to the specified transit gateway.
+
+If you attach a VPC with a CIDR range that overlaps the CIDR range of a
+VPC that is already attached, the new VPC CIDR range is not propagated
+to the default propagation route table.
+
+To send VPC traffic to an attached transit gateway, add a route to the
+VPC route table using CreateRoute.
+
+
 =head2 CreateVolume
 
 =over
@@ -4331,11 +4623,13 @@ C<failed>.
 
 =item Type => Str
 
-=item VpnGatewayId => Str
-
 =item [DryRun => Bool]
 
 =item [Options => L<Paws::EC2::VpnConnectionOptionsSpecification>]
+
+=item [TransitGatewayId => Str]
+
+=item [VpnGatewayId => Str]
 
 
 =back
@@ -4912,6 +5206,83 @@ To list the current tags, use DescribeTags. For more information about
 tags, see Tagging Your Resources
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) in
 the I<Amazon Elastic Compute Cloud User Guide>.
+
+
+=head2 DeleteTransitGateway
+
+=over
+
+=item TransitGatewayId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DeleteTransitGateway>
+
+Returns: a L<Paws::EC2::DeleteTransitGatewayResult> instance
+
+Deletes the specified transit gateway.
+
+
+=head2 DeleteTransitGatewayRoute
+
+=over
+
+=item DestinationCidrBlock => Str
+
+=item TransitGatewayRouteTableId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DeleteTransitGatewayRoute>
+
+Returns: a L<Paws::EC2::DeleteTransitGatewayRouteResult> instance
+
+Deletes the specified route from the specified transit gateway route
+table.
+
+
+=head2 DeleteTransitGatewayRouteTable
+
+=over
+
+=item TransitGatewayRouteTableId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DeleteTransitGatewayRouteTable>
+
+Returns: a L<Paws::EC2::DeleteTransitGatewayRouteTableResult> instance
+
+Deletes the specified transit gateway route table. You must
+disassociate the route table from any transit gateway route tables
+before you can delete it.
+
+
+=head2 DeleteTransitGatewayVpcAttachment
+
+=over
+
+=item TransitGatewayAttachmentId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DeleteTransitGatewayVpcAttachment>
+
+Returns: a L<Paws::EC2::DeleteTransitGatewayVpcAttachmentResult> instance
+
+Deletes the specified VPC attachment.
 
 
 =head2 DeleteVolume
@@ -5528,9 +5899,10 @@ Each argument is described in detail in: L<Paws::EC2::DescribeElasticGpus>
 
 Returns: a L<Paws::EC2::DescribeElasticGpusResult> instance
 
-Describes the Elastic GPUs associated with your instances. For more
-information about Elastic GPUs, see Amazon EC2 Elastic GPUs
-(http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-gpus.html).
+Describes the Elastic Graphics accelerator associated with your
+instances. For more information about Elastic Graphics, see Amazon
+Elastic Graphics
+(http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-graphics.html).
 
 
 =head2 DescribeExportTasks
@@ -7207,6 +7579,109 @@ For more information about tags, see Tagging Your Resources
 the I<Amazon Elastic Compute Cloud User Guide>.
 
 
+=head2 DescribeTransitGatewayAttachments
+
+=over
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [TransitGatewayAttachmentIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeTransitGatewayAttachments>
+
+Returns: a L<Paws::EC2::DescribeTransitGatewayAttachmentsResult> instance
+
+Describes one or more attachments between resources and transit
+gateways. By default, all attachments are described. Alternatively, you
+can filter the results by attachment ID, attachment state, resource ID,
+or resource owner.
+
+
+=head2 DescribeTransitGatewayRouteTables
+
+=over
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [TransitGatewayRouteTableIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeTransitGatewayRouteTables>
+
+Returns: a L<Paws::EC2::DescribeTransitGatewayRouteTablesResult> instance
+
+Describes one or more transit gateway route tables. By default, all
+transit gateway route tables are described. Alternatively, you can
+filter the results.
+
+
+=head2 DescribeTransitGateways
+
+=over
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [TransitGatewayIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeTransitGateways>
+
+Returns: a L<Paws::EC2::DescribeTransitGatewaysResult> instance
+
+Describes one or more transit gateways. By default, all transit
+gateways are described. Alternatively, you can filter the results.
+
+
+=head2 DescribeTransitGatewayVpcAttachments
+
+=over
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [TransitGatewayAttachmentIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeTransitGatewayVpcAttachments>
+
+Returns: a L<Paws::EC2::DescribeTransitGatewayVpcAttachmentsResult> instance
+
+Describes one or more VPC attachments. By default, all VPC attachments
+are described. Alternatively, you can filter the results.
+
+
 =head2 DescribeVolumeAttribute
 
 =over
@@ -7808,6 +8283,27 @@ before you can delete the VPC or attach a different VPC to the virtual
 private gateway.
 
 
+=head2 DisableTransitGatewayRouteTablePropagation
+
+=over
+
+=item TransitGatewayAttachmentId => Str
+
+=item TransitGatewayRouteTableId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DisableTransitGatewayRouteTablePropagation>
+
+Returns: a L<Paws::EC2::DisableTransitGatewayRouteTablePropagationResult> instance
+
+Disables the specified resource attachment from propagating routes to
+the specified propagation route table.
+
+
 =head2 DisableVgwRoutePropagation
 
 =over
@@ -7958,6 +8454,26 @@ gateways and resources that are associated with the CIDR block before
 you can disassociate it.
 
 
+=head2 DisassociateTransitGatewayRouteTable
+
+=over
+
+=item TransitGatewayAttachmentId => Str
+
+=item TransitGatewayRouteTableId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DisassociateTransitGatewayRouteTable>
+
+Returns: a L<Paws::EC2::DisassociateTransitGatewayRouteTableResult> instance
+
+Disassociates a resource attachment from a transit gateway route table.
+
+
 =head2 DisassociateVpcCidrBlock
 
 =over
@@ -7979,6 +8495,27 @@ disassociate it.
 
 You cannot disassociate the CIDR block with which you originally
 created the VPC (the primary CIDR block).
+
+
+=head2 EnableTransitGatewayRouteTablePropagation
+
+=over
+
+=item TransitGatewayAttachmentId => Str
+
+=item TransitGatewayRouteTableId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::EnableTransitGatewayRouteTablePropagation>
+
+Returns: a L<Paws::EC2::EnableTransitGatewayRouteTablePropagationResult> instance
+
+Enables the specified attachment to propagate routes to the specified
+propagation route table.
 
 
 =head2 EnableVgwRoutePropagation
@@ -8066,6 +8603,30 @@ resolves to its private IP address when addressed from a linked
 EC2-Classic instance. For more information, see ClassicLink
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
+=head2 ExportTransitGatewayRoutes
+
+=over
+
+=item S3Bucket => Str
+
+=item TransitGatewayRouteTableId => Str
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::ExportTransitGatewayRoutes>
+
+Returns: a L<Paws::EC2::ExportTransitGatewayRoutesResult> instance
+
+Exports routes from the specified transit gateway route table to the
+specified S3 bucket. By default, all routes are exported.
+Alternatively, you can filter by CIDR range.
 
 
 =head2 GetConsoleOutput
@@ -8234,6 +8795,81 @@ specified Convertible Reserved Instances for a new Convertible Reserved
 Instance. If the exchange cannot be performed, the reason is returned
 in the response. Use AcceptReservedInstancesExchangeQuote to perform
 the exchange.
+
+
+=head2 GetTransitGatewayAttachmentPropagations
+
+=over
+
+=item TransitGatewayAttachmentId => Str
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::GetTransitGatewayAttachmentPropagations>
+
+Returns: a L<Paws::EC2::GetTransitGatewayAttachmentPropagationsResult> instance
+
+Lists the route tables to which the specified resource attachment
+propagates routes.
+
+
+=head2 GetTransitGatewayRouteTableAssociations
+
+=over
+
+=item TransitGatewayRouteTableId => Str
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::GetTransitGatewayRouteTableAssociations>
+
+Returns: a L<Paws::EC2::GetTransitGatewayRouteTableAssociationsResult> instance
+
+Gets information about the associations for the specified transit
+gateway route table.
+
+
+=head2 GetTransitGatewayRouteTablePropagations
+
+=over
+
+=item TransitGatewayRouteTableId => Str
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::GetTransitGatewayRouteTablePropagations>
+
+Returns: a L<Paws::EC2::GetTransitGatewayRouteTablePropagationsResult> instance
+
+Gets information about the route table propagations for the specified
+transit gateway route table.
 
 
 =head2 ImportImage
@@ -9003,6 +9639,30 @@ Modifies a subnet attribute. You can only modify one attribute at a
 time.
 
 
+=head2 ModifyTransitGatewayVpcAttachment
+
+=over
+
+=item TransitGatewayAttachmentId => Str
+
+=item [AddSubnetIds => ArrayRef[Str|Undef]]
+
+=item [DryRun => Bool]
+
+=item [Options => L<Paws::EC2::ModifyTransitGatewayVpcAttachmentRequestOptions>]
+
+=item [RemoveSubnetIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::ModifyTransitGatewayVpcAttachment>
+
+Returns: a L<Paws::EC2::ModifyTransitGatewayVpcAttachmentResult> instance
+
+Modifies the specified VPC attachment.
+
+
 =head2 ModifyVolume
 
 =over
@@ -9613,6 +10273,29 @@ registration. If you make changes to an image, deregister the previous
 image and register the new image.
 
 
+=head2 RejectTransitGatewayVpcAttachment
+
+=over
+
+=item TransitGatewayAttachmentId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::RejectTransitGatewayVpcAttachment>
+
+Returns: a L<Paws::EC2::RejectTransitGatewayVpcAttachmentResult> instance
+
+Rejects a request to attach a VPC to a transit gateway.
+
+The VPC attachment must be in the C<pendingAcceptance> state. Use
+DescribeTransitGatewayVpcAttachments to view your pending VPC
+attachment requests. Use AcceptTransitGatewayVpcAttachment to accept a
+VPC attachment request.
+
+
 =head2 RejectVpcEndpointConnections
 
 =over
@@ -9831,6 +10514,8 @@ in the I<Amazon Virtual Private Cloud User Guide>.
 
 =item [NetworkInterfaceId => Str]
 
+=item [TransitGatewayId => Str]
+
 =item [VpcPeeringConnectionId => Str]
 
 
@@ -9877,6 +10562,31 @@ in the I<Amazon Virtual Private Cloud User Guide>.
 You can also use ReplaceRouteTableAssociation to change which table is
 the main route table in the VPC. You just specify the main route
 table's association ID and the route table to be the new main route
+table.
+
+
+=head2 ReplaceTransitGatewayRoute
+
+=over
+
+=item DestinationCidrBlock => Str
+
+=item TransitGatewayRouteTableId => Str
+
+=item [Blackhole => Bool]
+
+=item [DryRun => Bool]
+
+=item [TransitGatewayAttachmentId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::ReplaceTransitGatewayRoute>
+
+Returns: a L<Paws::EC2::ReplaceTransitGatewayRouteResult> instance
+
+Replaces the specified route in the specified transit gateway route
 table.
 
 
@@ -10431,6 +11141,28 @@ scheduled time period ends, you can launch it again after a few
 minutes. For more information, see Scheduled Instances
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-scheduled-instances.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
+=head2 SearchTransitGatewayRoutes
+
+=over
+
+=item Filters => ArrayRef[L<Paws::EC2::Filter>]
+
+=item TransitGatewayRouteTableId => Str
+
+=item [DryRun => Bool]
+
+=item [MaxResults => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::SearchTransitGatewayRoutes>
+
+Returns: a L<Paws::EC2::SearchTransitGatewayRoutesResult> instance
+
+Searches for routes in the specified transit gateway route table.
 
 
 =head2 StartInstances

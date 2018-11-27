@@ -126,6 +126,10 @@ C<route.nat-gateway-id> - The ID of a NAT gateway.
 
 =item *
 
+C<route.transit-gateway-id> - The ID of a transit gateway.
+
+=item *
+
 C<route.origin> - Describes how the route was created.
 C<CreateRouteTable> indicates that the route was automatically created
 when the route table was created; C<CreateRoute> indicates that the
@@ -158,6 +162,10 @@ the filter name and C<TeamA> for the filter value.
 C<tag-key> - The key of a tag assigned to the resource. Use this filter
 to find all resources assigned a tag with a specific key, regardless of
 the tag value.
+
+=item *
+
+C<transit-gateway-id> - The ID of a transit gateway.
 
 =item *
 

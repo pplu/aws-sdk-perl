@@ -43,32 +43,34 @@ This class has no description
 
 =head2 AvailabilityZone => Str
 
-  The Availability Zone in the which the Elastic GPU resides.
+  The Availability Zone in the which the Elastic Graphics accelerator
+resides.
 
 
 =head2 ElasticGpuHealth => L<Paws::EC2::ElasticGpuHealth>
 
-  The status of the Elastic GPU.
+  The status of the Elastic Graphics accelerator.
 
 
 =head2 ElasticGpuId => Str
 
-  The ID of the Elastic GPU.
+  The ID of the Elastic Graphics accelerator.
 
 
 =head2 ElasticGpuState => Str
 
-  The state of the Elastic GPU.
+  The state of the Elastic Graphics accelerator.
 
 
 =head2 ElasticGpuType => Str
 
-  The type of Elastic GPU.
+  The type of Elastic Graphics accelerator.
 
 
 =head2 InstanceId => Str
 
-  The ID of the instance to which the Elastic GPU is attached.
+  The ID of the instance to which the Elastic Graphics accelerator is
+attached.
 
 
 

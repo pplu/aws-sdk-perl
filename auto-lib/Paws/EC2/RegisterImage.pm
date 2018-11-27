@@ -90,7 +90,7 @@ The architecture of the AMI.
 Default: For Amazon EBS-backed AMIs, C<i386>. For instance store-backed
 AMIs, the architecture specified in the manifest file.
 
-Valid values are: C<"i386">, C<"x86_64">
+Valid values are: C<"i386">, C<"x86_64">, C<"arm64">
 
 =head2 BillingProducts => ArrayRef[Str|Undef]
 
