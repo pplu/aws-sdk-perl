@@ -2,6 +2,7 @@
 package Paws::IoTAnalytics::CreateDataset;
   use Moose;
   has Actions => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::DatasetAction]', traits => ['NameInRequest'], request_name => 'actions', required => 1);
+  has ContentDeliveryRules => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::DatasetContentDeliveryRule]', traits => ['NameInRequest'], request_name => 'contentDeliveryRules');
   has DatasetName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'datasetName', required => 1);
   has RetentionPeriod => (is => 'ro', isa => 'Paws::IoTAnalytics::RetentionPeriod', traits => ['NameInRequest'], request_name => 'retentionPeriod');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::Tag]', traits => ['NameInRequest'], request_name => 'tags');
@@ -77,10 +78,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],
-      DatasetName     => 'MyDatasetName',
+      DatasetName          => 'MyDatasetName',
+      ContentDeliveryRules => [
+        {
+          Destination => {
+            IotEventsDestinationConfiguration => {
+              InputName => 'MyIotEventsInputName',    # min: 1, max: 128
+              RoleArn   => 'MyRoleArn',               # min: 20, max: 2048
+
+            },    # OPTIONAL
+          },
+          EntryName => 'MyEntryName',    # OPTIONAL
+        },
+        ...
+      ],                                 # OPTIONAL
       RetentionPeriod => {
-        NumberOfDays => 1,    # min: 1; OPTIONAL
-        Unlimited    => 1,    # OPTIONAL
+        NumberOfDays => 1,               # min: 1; OPTIONAL
+        Unlimited    => 1,               # OPTIONAL
       },    # OPTIONAL
       Tags => [
         {
@@ -120,6 +134,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head2 B<REQUIRED> Actions => ArrayRef[L<Paws::IoTAnalytics::DatasetAction>]
 
 A list of actions that create the data set contents.
+
+
+
+=head2 ContentDeliveryRules => ArrayRef[L<Paws::IoTAnalytics::DatasetContentDeliveryRule>]
+
+
 
 
 

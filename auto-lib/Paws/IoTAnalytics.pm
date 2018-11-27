@@ -313,6 +313,8 @@ pipeline.
 
 =item DatasetName => Str
 
+=item [ContentDeliveryRules => ArrayRef[L<Paws::IoTAnalytics::DatasetContentDeliveryRule>]]
+
 =item [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>]
 
 =item [Tags => ArrayRef[L<Paws::IoTAnalytics::Tag>]]
@@ -832,6 +834,8 @@ Updates the settings of a channel.
 =item Actions => ArrayRef[L<Paws::IoTAnalytics::DatasetAction>]
 
 =item DatasetName => Str
+
+=item [ContentDeliveryRules => ArrayRef[L<Paws::IoTAnalytics::DatasetContentDeliveryRule>]]
 
 =item [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>]
 
