@@ -123,7 +123,7 @@ To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
 =head2 Name => Str
 
 A friendly name for identifying the grant. Use this value to prevent
-the unintended creation of duplicate grants when retrying this request.
+unintended creation of duplicate grants when retrying this request.
 
 When this value is absent, all C<CreateGrant> requests result in a new
 grant with a unique C<GrantId> even if all the supplied parameters are

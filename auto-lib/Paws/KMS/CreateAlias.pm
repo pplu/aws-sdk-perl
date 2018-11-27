@@ -47,10 +47,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms
 
 =head2 B<REQUIRED> AliasName => Str
 
-Specifies the alias name. This value must begin with C<alias/> followed
-by the alias name, such as C<alias/ExampleAlias>. The alias name cannot
-begin with C<aws/>. The C<alias/aws/> prefix is reserved for AWS
-managed CMKs.
+String that contains the display name. The name must start with the
+word "alias" followed by a forward slash (alias/). Aliases that begin
+with "alias/AWS" are reserved.
 
 
 

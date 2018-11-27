@@ -68,9 +68,9 @@ KMS associates the alias with an AWS managed CMK
 and returns its C<KeyId> and C<Arn> in the response.
 
 To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
-name, or alias ARN. When using an alias name, prefix it with
-C<"alias/">. To specify a CMK in a different AWS account, you must use
-the key ARN or alias ARN.
+name, or alias ARN. When using an alias name, prefix it with "alias/".
+To specify a CMK in a different AWS account, you must use the key ARN
+or alias ARN.
 
 For example:
 
