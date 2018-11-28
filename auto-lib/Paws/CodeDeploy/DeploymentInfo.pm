@@ -135,7 +135,7 @@ codeDeployRollback: A rollback process created the deployment.
 
 =head2 DeploymentId => Str
 
-  The deployment ID.
+  The unique ID of a deployment.
 
 
 =head2 DeploymentOverview => L<Paws::CodeDeploy::DeploymentOverview>

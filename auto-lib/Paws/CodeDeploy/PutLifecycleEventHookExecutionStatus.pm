@@ -52,7 +52,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 DeploymentId => Str
 
-The ID of the deployment. Pass this ID to a Lambda function that
+The unique ID of a deployment. Pass this ID to a Lambda function that
 validates a deployment lifecycle event.
 
 

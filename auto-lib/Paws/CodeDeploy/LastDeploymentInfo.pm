@@ -48,7 +48,7 @@ deployment group started.
 
 =head2 DeploymentId => Str
 
-  The deployment ID.
+  The unique ID of a deployment.
 
 
 =head2 EndTime => Str

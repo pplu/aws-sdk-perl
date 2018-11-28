@@ -90,7 +90,7 @@ Valid values are: C<"include">, C<"exclude">, C<"ignore">
 
 =head2 NextToken => Str
 
-An identifier returned from the previous list application revisions
+An identifier returned from the previous C<ListApplicationRevisions>
 call. It can be used to return the next set of applications in the
 list.
 
@@ -100,7 +100,7 @@ list.
 
 An Amazon S3 bucket name to limit the search for revisions.
 
-If set to null, all of the user's buckets will be searched.
+If set to null, all of the user's buckets are searched.
 
 
 

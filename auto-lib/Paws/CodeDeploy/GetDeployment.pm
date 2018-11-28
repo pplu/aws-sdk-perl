@@ -45,7 +45,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 B<REQUIRED> DeploymentId => Str
 
-A deployment ID associated with the applicable IAM user or AWS account.
+The unique ID of a deployment associated with the applicable IAM user
+or AWS account.
 
 
 

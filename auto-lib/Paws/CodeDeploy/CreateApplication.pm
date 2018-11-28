@@ -56,7 +56,7 @@ applicable IAM user or AWS account.
 The destination platform type for the deployment (C<Lambda> or
 C<Server>).
 
-Valid values are: C<"Server">, C<"Lambda">
+Valid values are: C<"Server">, C<"Lambda">, C<"ECS">
 
 
 =head1 SEE ALSO

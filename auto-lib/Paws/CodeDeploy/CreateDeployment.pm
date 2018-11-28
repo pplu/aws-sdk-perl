@@ -51,12 +51,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       FileExistsBehavior            => 'DISALLOW',                  # OPTIONAL
       IgnoreApplicationStopFailures => 1,                           # OPTIONAL
       Revision                      => {
-        GitHubLocation => {
-          CommitId   => 'MyCommitId',                               # OPTIONAL
-          Repository => 'MyRepository',                             # OPTIONAL
+        AppSpecContent => {
+          Content => 'MyRawStringContent',                          # OPTIONAL
+          Sha256  => 'MyRawStringSha256',                           # OPTIONAL
         },    # OPTIONAL
-        RevisionType => 'S3',    # values: S3, GitHub, String; OPTIONAL
-        S3Location   => {
+        GitHubLocation => {
+          CommitId   => 'MyCommitId',      # OPTIONAL
+          Repository => 'MyRepository',    # OPTIONAL
+        },    # OPTIONAL
+        RevisionType =>
+          'S3',    # values: S3, GitHub, String, AppSpecContent; OPTIONAL
+        S3Location => {
           Bucket => 'MyS3Bucket',    # OPTIONAL
           BundleType => 'tar',     # values: tar, tgz, zip, YAML, JSON; OPTIONAL
           ETag       => 'MyETag',  # OPTIONAL
@@ -81,7 +86,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },
               ...
             ],
-            ...                        # OPTIONAL
+            ...
           ],                           # OPTIONAL
         },    # OPTIONAL
         TagFilters => [
@@ -92,7 +97,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyValue',    # OPTIONAL
           },
           ...
-        ],                         # OPTIONAL
+        ],
       },    # OPTIONAL
       UpdateOutdatedInstancesOnly => 1,    # OPTIONAL
     );

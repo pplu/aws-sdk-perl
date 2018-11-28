@@ -39,7 +39,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 DeploymentId => Str
 
-The ID of the blue/green deployment for which you want to skip the
+The unique ID of a blue/green deployment for which you want to skip the
 instance termination wait time.
 
 

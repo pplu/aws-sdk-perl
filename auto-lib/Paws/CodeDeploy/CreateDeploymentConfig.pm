@@ -67,7 +67,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 The destination platform type for the deployment (C<Lambda> or
 C<Server>E<gt>).
 
-Valid values are: C<"Server">, C<"Lambda">
+Valid values are: C<"Server">, C<"Lambda">, C<"ECS">
 
 =head2 B<REQUIRED> DeploymentConfigName => Str
 

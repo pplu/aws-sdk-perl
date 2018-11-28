@@ -2,6 +2,7 @@ package Paws::CodeDeploy::LoadBalancerInfo;
   use Moose;
   has ElbInfoList => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::ELBInfo]', request_name => 'elbInfoList', traits => ['NameInRequest']);
   has TargetGroupInfoList => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TargetGroupInfo]', request_name => 'targetGroupInfoList', traits => ['NameInRequest']);
+  has TargetGroupPairInfoList => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TargetGroupPairInfo]', request_name => 'targetGroupPairInfoList', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +22,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeDeploy::LoadBalancerInfo object:
 
-  $service_obj->Method(Att1 => { ElbInfoList => $value, ..., TargetGroupInfoList => $value  });
+  $service_obj->Method(Att1 => { ElbInfoList => $value, ..., TargetGroupPairInfoList => $value  });
 
 =head3 Results returned from an API call
 
@@ -54,6 +55,12 @@ balancing in a deployment. In Elastic Load Balancing, target groups are
 used with Application Load Balancers.
 
 Adding more than one target group to the array is not supported.
+
+
+=head2 TargetGroupPairInfoList => ArrayRef[L<Paws::CodeDeploy::TargetGroupPairInfo>]
+
+  The target group pair information. This is an array of
+C<TargeGroupPairInfo> objects with a maximum size of one.
 
 
 

@@ -43,7 +43,7 @@ Information about an instance in a deployment.
 
 =head2 DeploymentId => Str
 
-  The deployment ID.
+  The unique ID of a deployment.
 
 
 =head2 InstanceId => Str

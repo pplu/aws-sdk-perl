@@ -11,6 +11,7 @@ package Paws::CodeDeploy::UpdateDeploymentGroup;
   has DeploymentStyle => (is => 'ro', isa => 'Paws::CodeDeploy::DeploymentStyle', traits => ['NameInRequest'], request_name => 'deploymentStyle' );
   has Ec2TagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::EC2TagFilter]', traits => ['NameInRequest'], request_name => 'ec2TagFilters' );
   has Ec2TagSet => (is => 'ro', isa => 'Paws::CodeDeploy::EC2TagSet', traits => ['NameInRequest'], request_name => 'ec2TagSet' );
+  has EcsServices => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::ECSService]', traits => ['NameInRequest'], request_name => 'ecsServices' );
   has LoadBalancerInfo => (is => 'ro', isa => 'Paws::CodeDeploy::LoadBalancerInfo', traits => ['NameInRequest'], request_name => 'loadBalancerInfo' );
   has NewDeploymentGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'newDeploymentGroupName' );
   has OnPremisesInstanceTagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TagFilter]', traits => ['NameInRequest'], request_name => 'onPremisesInstanceTagFilters' );
@@ -107,19 +108,43 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ...
         ],                           # OPTIONAL
       },    # OPTIONAL
+      EcsServices => [
+        {
+          ClusterName => 'MyECSClusterName',    # OPTIONAL
+          ServiceName => 'MyECSServiceName',    # OPTIONAL
+        },
+        ...
+      ],                                        # OPTIONAL
       LoadBalancerInfo => {
         ElbInfoList => [
           {
-            Name => 'MyELBName',    # OPTIONAL
+            Name => 'MyELBName',                # OPTIONAL
           },
           ...
-        ],                          # OPTIONAL
+        ],                                      # OPTIONAL
         TargetGroupInfoList => [
           {
-            Name => 'MyTargetGroupName',    # OPTIONAL
+            Name => 'MyTargetGroupName',        # OPTIONAL
           },
           ...
-        ],                                  # OPTIONAL
+        ],                                      # OPTIONAL
+        TargetGroupPairInfoList => [
+          {
+            ProdTrafficRoute => {
+              ListenerArns => [ 'MyListenerArn', ... ],    # OPTIONAL
+            },    # OPTIONAL
+            TargetGroups => [
+              {
+                Name => 'MyTargetGroupName',    # OPTIONAL
+              },
+              ...
+            ],                                  # OPTIONAL
+            TestTrafficRoute => {
+              ListenerArns => [ 'MyListenerArn', ... ],    # OPTIONAL
+            },    # OPTIONAL
+          },
+          ...
+        ],        # OPTIONAL
       },    # OPTIONAL
       NewDeploymentGroupName       => 'MyDeploymentGroupName',    # OPTIONAL
       OnPremisesInstanceTagFilters => [
@@ -239,6 +264,15 @@ tags, do not enter any tag names.
 Information about groups of tags applied to on-premises instances. The
 deployment group will include only EC2 instances identified by all the
 tag groups.
+
+
+
+=head2 EcsServices => ArrayRef[L<Paws::CodeDeploy::ECSService>]
+
+The target ECS services in the deployment group. This only applies to
+deployment groups that use the Amazon ECS compute platform. A target
+ECS service is specified as an Amazon ECS cluster and service name pair
+using the format C<E<lt>clusternameE<gt>:E<lt>servicenameE<gt>>.
 
 
 

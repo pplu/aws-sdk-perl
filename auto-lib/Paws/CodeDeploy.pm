@@ -45,6 +45,11 @@ package Paws::CodeDeploy;
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::BatchGetDeployments', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub BatchGetDeploymentTargets {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::BatchGetDeploymentTargets', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub BatchGetOnPremisesInstances {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::BatchGetOnPremisesInstances', @_);
@@ -130,6 +135,11 @@ package Paws::CodeDeploy;
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::GetDeploymentInstance', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetDeploymentTarget {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::GetDeploymentTarget', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetOnPremisesInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::GetOnPremisesInstance', @_);
@@ -163,6 +173,11 @@ package Paws::CodeDeploy;
   sub ListDeployments {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::ListDeployments', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListDeploymentTargets {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::ListDeploymentTargets', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListGitHubAccountTokenNames {
@@ -356,7 +371,7 @@ package Paws::CodeDeploy;
   }
 
 
-  sub operations { qw/AddTagsToOnPremisesInstances BatchGetApplicationRevisions BatchGetApplications BatchGetDeploymentGroups BatchGetDeploymentInstances BatchGetDeployments BatchGetOnPremisesInstances ContinueDeployment CreateApplication CreateDeployment CreateDeploymentConfig CreateDeploymentGroup DeleteApplication DeleteDeploymentConfig DeleteDeploymentGroup DeleteGitHubAccountToken DeregisterOnPremisesInstance GetApplication GetApplicationRevision GetDeployment GetDeploymentConfig GetDeploymentGroup GetDeploymentInstance GetOnPremisesInstance ListApplicationRevisions ListApplications ListDeploymentConfigs ListDeploymentGroups ListDeploymentInstances ListDeployments ListGitHubAccountTokenNames ListOnPremisesInstances PutLifecycleEventHookExecutionStatus RegisterApplicationRevision RegisterOnPremisesInstance RemoveTagsFromOnPremisesInstances SkipWaitTimeForInstanceTermination StopDeployment UpdateApplication UpdateDeploymentGroup / }
+  sub operations { qw/AddTagsToOnPremisesInstances BatchGetApplicationRevisions BatchGetApplications BatchGetDeploymentGroups BatchGetDeploymentInstances BatchGetDeployments BatchGetDeploymentTargets BatchGetOnPremisesInstances ContinueDeployment CreateApplication CreateDeployment CreateDeploymentConfig CreateDeploymentGroup DeleteApplication DeleteDeploymentConfig DeleteDeploymentGroup DeleteGitHubAccountToken DeregisterOnPremisesInstance GetApplication GetApplicationRevision GetDeployment GetDeploymentConfig GetDeploymentGroup GetDeploymentInstance GetDeploymentTarget GetOnPremisesInstance ListApplicationRevisions ListApplications ListDeploymentConfigs ListDeploymentGroups ListDeploymentInstances ListDeployments ListDeploymentTargets ListGitHubAccountTokenNames ListOnPremisesInstances PutLifecycleEventHookExecutionStatus RegisterApplicationRevision RegisterOnPremisesInstance RemoveTagsFromOnPremisesInstances SkipWaitTimeForInstanceTermination StopDeployment UpdateApplication UpdateDeploymentGroup / }
 
 1;
 
@@ -572,8 +587,12 @@ Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetDeploymentI
 
 Returns: a L<Paws::CodeDeploy::BatchGetDeploymentInstancesOutput> instance
 
-Gets information about one or more instance that are part of a
-deployment group.
+This method works, but is considered deprecated. Use
+C<BatchGetDeploymentTargets> instead.
+
+Returns an array of instances associated with a deployment. This method
+works with EC2/On-premises and AWS Lambda compute platforms. The newer
+C<BatchGetDeploymentTargets> works with all compute platforms.
 
 
 =head2 BatchGetDeployments
@@ -590,6 +609,46 @@ Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetDeployments
 Returns: a L<Paws::CodeDeploy::BatchGetDeploymentsOutput> instance
 
 Gets information about one or more deployments.
+
+
+=head2 BatchGetDeploymentTargets
+
+=over
+
+=item [DeploymentId => Str]
+
+=item [TargetIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetDeploymentTargets>
+
+Returns: a L<Paws::CodeDeploy::BatchGetDeploymentTargetsOutput> instance
+
+Returns an array of targets associated with a deployment. This method
+works with all compute types and should be used instead of the
+deprecated C<BatchGetDeploymentInstances>.
+
+The type of targets returned depends on the deployment's compute
+platform:
+
+=over
+
+=item *
+
+B<EC2/On-premises> - Information about EC2 instance targets.
+
+=item *
+
+B<AWS Lambda> - Information about Lambda functions targets.
+
+=item *
+
+B<Amazon ECS> - Information about ECS service targets.
+
+=back
+
 
 
 =head2 BatchGetOnPremisesInstances
@@ -613,6 +672,8 @@ Gets information about one or more on-premises instances.
 =over
 
 =item [DeploymentId => Str]
+
+=item [DeploymentWaitType => Str]
 
 
 =back
@@ -728,6 +789,8 @@ Creates a deployment configuration.
 =item [Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>]]
 
 =item [Ec2TagSet => L<Paws::CodeDeploy::EC2TagSet>]
+
+=item [EcsServices => ArrayRef[L<Paws::CodeDeploy::ECSService>]]
 
 =item [LoadBalancerInfo => L<Paws::CodeDeploy::LoadBalancerInfo>]
 
@@ -935,6 +998,24 @@ Returns: a L<Paws::CodeDeploy::GetDeploymentInstanceOutput> instance
 Gets information about an instance as part of a deployment.
 
 
+=head2 GetDeploymentTarget
+
+=over
+
+=item [DeploymentId => Str]
+
+=item [TargetId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeDeploy::GetDeploymentTarget>
+
+Returns: a L<Paws::CodeDeploy::GetDeploymentTargetOutput> instance
+
+Returns information about a deployment target.
+
+
 =head2 GetOnPremisesInstance
 
 =over
@@ -1051,6 +1132,11 @@ Each argument is described in detail in: L<Paws::CodeDeploy::ListDeploymentInsta
 
 Returns: a L<Paws::CodeDeploy::ListDeploymentInstancesOutput> instance
 
+The newer BatchGetDeploymentTargets should be used instead because it
+works with all compute types. C<ListDeploymentInstances> throws an
+exception if it is used with a compute platform other than
+EC2/On-premises or AWS Lambda.
+
 Lists the instance for a deployment associated with the applicable IAM
 user or AWS account.
 
@@ -1078,6 +1164,26 @@ Returns: a L<Paws::CodeDeploy::ListDeploymentsOutput> instance
 
 Lists the deployments in a deployment group for an application
 registered with the applicable IAM user or AWS account.
+
+
+=head2 ListDeploymentTargets
+
+=over
+
+=item [DeploymentId => Str]
+
+=item [NextToken => Str]
+
+=item [TargetFilters => L<Paws::CodeDeploy::TargetFilters>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeDeploy::ListDeploymentTargets>
+
+Returns: a L<Paws::CodeDeploy::ListDeploymentTargetsOutput> instance
+
+Returns an array of target IDs that are associated a deployment.
 
 
 =head2 ListGitHubAccountTokenNames
@@ -1281,6 +1387,8 @@ Changes the name of an application.
 =item [Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>]]
 
 =item [Ec2TagSet => L<Paws::CodeDeploy::EC2TagSet>]
+
+=item [EcsServices => ArrayRef[L<Paws::CodeDeploy::ECSService>]]
 
 =item [LoadBalancerInfo => L<Paws::CodeDeploy::LoadBalancerInfo>]
 
