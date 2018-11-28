@@ -142,6 +142,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::CreateEventSubscription', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateGlobalCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::CreateGlobalCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateOptionGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::CreateOptionGroup', @_);
@@ -200,6 +205,11 @@ package Paws::RDS;
   sub DeleteEventSubscription {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::DeleteEventSubscription', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteGlobalCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DeleteGlobalCluster', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteOptionGroup {
@@ -327,6 +337,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::DescribeEventSubscriptions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeGlobalClusters {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeGlobalClusters', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeOptionGroupOptions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::DescribeOptionGroupOptions', @_);
@@ -437,6 +452,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::ModifyEventSubscription', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ModifyGlobalCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::ModifyGlobalCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ModifyOptionGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::ModifyOptionGroup', @_);
@@ -460,6 +480,11 @@ package Paws::RDS;
   sub RebootDBInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::RebootDBInstance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RemoveFromGlobalCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::RemoveFromGlobalCluster', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RemoveRoleFromDBCluster {
@@ -865,6 +890,29 @@ package Paws::RDS;
 
     return undef
   }
+  sub DescribeAllGlobalClusters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeGlobalClusters(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeGlobalClusters(@_, Marker => $next_result->Marker);
+        push @{ $result->GlobalClusters }, @{ $next_result->GlobalClusters };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'GlobalClusters') foreach (@{ $result->GlobalClusters });
+        $result = $self->DescribeGlobalClusters(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'GlobalClusters') foreach (@{ $result->GlobalClusters });
+    }
+
+    return undef
+  }
   sub DescribeAllOptionGroupOptions {
     my $self = shift;
 
@@ -1005,7 +1053,7 @@ package Paws::RDS;
   }
 
 
-  sub operations { qw/AddRoleToDBCluster AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress BacktrackDBCluster CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateDBCluster CreateDBClusterEndpoint CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateOptionGroup DeleteDBCluster DeleteDBClusterEndpoint DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBInstanceAutomatedBackup DeleteDBParameterGroup DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteOptionGroup DescribeAccountAttributes DescribeCertificates DescribeDBClusterBacktracks DescribeDBClusterEndpoints DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstanceAutomatedBackups DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DescribeSourceRegions DescribeValidDBInstanceModifications DownloadDBLogFilePortion FailoverDBCluster ListTagsForResource ModifyCurrentDBClusterCapacity ModifyDBCluster ModifyDBClusterEndpoint ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBSnapshot ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyOptionGroup PromoteReadReplica PromoteReadReplicaDBCluster PurchaseReservedDBInstancesOffering RebootDBInstance RemoveRoleFromDBCluster RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromS3 RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceFromS3 RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress StartDBCluster StartDBInstance StopDBCluster StopDBInstance / }
+  sub operations { qw/AddRoleToDBCluster AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress BacktrackDBCluster CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateDBCluster CreateDBClusterEndpoint CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateGlobalCluster CreateOptionGroup DeleteDBCluster DeleteDBClusterEndpoint DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBInstanceAutomatedBackup DeleteDBParameterGroup DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteGlobalCluster DeleteOptionGroup DescribeAccountAttributes DescribeCertificates DescribeDBClusterBacktracks DescribeDBClusterEndpoints DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstanceAutomatedBackups DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeGlobalClusters DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DescribeSourceRegions DescribeValidDBInstanceModifications DownloadDBLogFilePortion FailoverDBCluster ListTagsForResource ModifyCurrentDBClusterCapacity ModifyDBCluster ModifyDBClusterEndpoint ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBSnapshot ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyGlobalCluster ModifyOptionGroup PromoteReadReplica PromoteReadReplicaDBCluster PurchaseReservedDBInstancesOffering RebootDBInstance RemoveFromGlobalCluster RemoveRoleFromDBCluster RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromS3 RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceFromS3 RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress StartDBCluster StartDBInstance StopDBCluster StopDBInstance / }
 
 1;
 
@@ -1520,6 +1568,8 @@ Copies the specified option group.
 
 =item [EngineVersion => Str]
 
+=item [GlobalClusterIdentifier => Str]
+
 =item [KmsKeyId => Str]
 
 =item [MasterUsername => Str]
@@ -2015,6 +2065,43 @@ notified of events generated from all RDS sources belonging to your
 customer account.
 
 
+=head2 CreateGlobalCluster
+
+=over
+
+=item [DatabaseName => Str]
+
+=item [DeletionProtection => Bool]
+
+=item [Engine => Str]
+
+=item [EngineVersion => Str]
+
+=item [GlobalClusterIdentifier => Str]
+
+=item [SourceDBClusterIdentifier => Str]
+
+=item [StorageEncrypted => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::CreateGlobalCluster>
+
+Returns: a L<Paws::RDS::CreateGlobalClusterResult> instance
+
+Creates an Aurora global database spread across multiple regions. The
+global database contains a single primary cluster with read-write
+capability, and a read-only secondary cluster that receives data from
+the primary cluster through high-speed replication performed by the
+Aurora storage subsystem.
+
+You can create a global database that is initially empty, and then add
+a primary cluster and a secondary cluster to it. Or you can specify an
+existing Aurora cluster during the create operation, and this cluster
+becomes the primary cluster of the global database.
+
+
 =head2 CreateOptionGroup
 
 =over
@@ -2290,6 +2377,23 @@ Each argument is described in detail in: L<Paws::RDS::DeleteEventSubscription>
 Returns: a L<Paws::RDS::DeleteEventSubscriptionResult> instance
 
 Deletes an RDS event notification subscription.
+
+
+=head2 DeleteGlobalCluster
+
+=over
+
+=item GlobalClusterIdentifier => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::DeleteGlobalCluster>
+
+Returns: a L<Paws::RDS::DeleteGlobalClusterResult> instance
+
+Deletes a global database cluster. The primary and secondary clusters
+must already be detached or destroyed first.
 
 
 =head2 DeleteOptionGroup
@@ -2960,6 +3064,33 @@ If you specify a SubscriptionName, lists the description for that
 subscription.
 
 
+=head2 DescribeGlobalClusters
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+
+=item [GlobalClusterIdentifier => Str]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::DescribeGlobalClusters>
+
+Returns: a L<Paws::RDS::GlobalClustersMessage> instance
+
+Returns information about Aurora global database clusters. This API
+supports pagination.
+
+For more information on Amazon Aurora, see What Is Amazon Aurora?
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
+in the I<Amazon Aurora User Guide.>
+
+
 =head2 DescribeOptionGroupOptions
 
 =over
@@ -3200,7 +3331,7 @@ size.
 
 =over
 
-=item [DBClusterIdentifier => Str]
+=item DBClusterIdentifier => Str
 
 =item [TargetDBInstanceIdentifier => Str]
 
@@ -3314,6 +3445,8 @@ in the I<Amazon Aurora User Guide>.
 =item [DBClusterParameterGroupName => Str]
 
 =item [DeletionProtection => Bool]
+
+=item [EnableHttpEndpoint => Bool]
 
 =item [EnableIAMDatabaseAuthentication => Bool]
 
@@ -3706,6 +3839,31 @@ topic in the I<Amazon RDS User Guide> or by using the
 B<DescribeEventCategories> action.
 
 
+=head2 ModifyGlobalCluster
+
+=over
+
+=item [DeletionProtection => Bool]
+
+=item [GlobalClusterIdentifier => Str]
+
+=item [NewGlobalClusterIdentifier => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::ModifyGlobalCluster>
+
+Returns: a L<Paws::RDS::ModifyGlobalClusterResult> instance
+
+Modify a setting for an Amazon Aurora global cluster. You can change
+one or more database configuration parameters by specifying these
+parameters and the new values in the request. For more information on
+Amazon Aurora, see What Is Amazon Aurora?
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
+in the I<Amazon Aurora User Guide.>
+
+
 =head2 ModifyOptionGroup
 
 =over
@@ -3833,6 +3991,27 @@ instance status is set to rebooting.
 For more information about rebooting, see Rebooting a DB Instance
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_RebootInstance.html)
 in the I<Amazon RDS User Guide.>
+
+
+=head2 RemoveFromGlobalCluster
+
+=over
+
+=item [DbClusterIdentifier => Str]
+
+=item [GlobalClusterIdentifier => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::RemoveFromGlobalCluster>
+
+Returns: a L<Paws::RDS::RemoveFromGlobalClusterResult> instance
+
+Detaches an Aurora secondary cluster from an Aurora global database
+cluster. The cluster becomes a standalone cluster with read-write
+capability instead of being read-only and receiving data from a primary
+cluster in a different region.
 
 
 =head2 RemoveRoleFromDBCluster
@@ -4753,6 +4932,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - EventSubscriptionsList, passing the object as the first parameter, and the string 'EventSubscriptionsList' as the second parameter 
 
 If not, it will return a a L<Paws::RDS::EventSubscriptionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllGlobalClusters(sub { },[Filters => ArrayRef[L<Paws::RDS::Filter>], GlobalClusterIdentifier => Str, Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllGlobalClusters([Filters => ArrayRef[L<Paws::RDS::Filter>], GlobalClusterIdentifier => Str, Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - GlobalClusters, passing the object as the first parameter, and the string 'GlobalClusters' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::GlobalClustersMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DescribeAllOptionGroupOptions(sub { },EngineName => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], MajorEngineVersion => Str, Marker => Str, MaxRecords => Int])

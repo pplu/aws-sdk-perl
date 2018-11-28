@@ -8,6 +8,7 @@ package Paws::RDS::ModifyDBCluster;
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has DeletionProtection => (is => 'ro', isa => 'Bool');
+  has EnableHttpEndpoint => (is => 'ro', isa => 'Bool');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
@@ -160,6 +161,27 @@ The name of the DB cluster parameter group to use for the DB cluster.
 
 Indicates if the DB cluster has deletion protection enabled. The
 database can't be deleted when this value is set to true.
+
+
+
+=head2 EnableHttpEndpoint => Bool
+
+HTTP endpoint functionality is in beta for Aurora Serverless and is
+subject to change.
+
+A value that indicates whether to enable the HTTP endpoint for an
+Aurora Serverless DB cluster. By default, the HTTP endpoint is
+disabled.
+
+When enabled, the HTTP endpoint provides a connectionless web service
+API for running SQL queries on the Aurora Serverless DB cluster. You
+can also query your database from inside the RDS console with the query
+editor.
+
+For more information about Aurora Serverless, see Using Amazon Aurora
+Serverless
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html)
+in the I<Amazon Aurora User Guide>.
 
 
 

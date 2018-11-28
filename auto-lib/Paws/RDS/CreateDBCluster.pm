@@ -15,6 +15,7 @@ package Paws::RDS::CreateDBCluster;
   has Engine => (is => 'ro', isa => 'Str', required => 1);
   has EngineMode => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
+  has GlobalClusterIdentifier => (is => 'ro', isa => 'Str');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
@@ -242,7 +243,7 @@ C<aurora-postgresql>
 =head2 EngineMode => Str
 
 The DB engine mode of the DB cluster, either C<provisioned>,
-C<serverless>, or C<parallelquery>.
+C<serverless>, C<parallelquery>, or C<global>.
 
 
 
@@ -257,6 +258,13 @@ Example: C<5.6.10a>, C<5.7.12>
 B<Aurora PostgreSQL>
 
 Example: C<9.6.3>
+
+
+
+=head2 GlobalClusterIdentifier => Str
+
+The global cluster ID of an Aurora cluster that becomes the primary
+cluster in the new global database cluster.
 
 
 

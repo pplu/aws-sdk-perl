@@ -28,6 +28,7 @@ package Paws::RDS::DBCluster;
   has EngineMode => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has HostedZoneId => (is => 'ro', isa => 'Str');
+  has HttpEndpointEnabled => (is => 'ro', isa => 'Bool');
   has IAMDatabaseAuthenticationEnabled => (is => 'ro', isa => 'Bool');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has LatestRestorableTime => (is => 'ro', isa => 'Str');
@@ -252,6 +253,25 @@ C<serverless>, or C<parallelquery>.
 
   Specifies the ID that Amazon Route 53 assigns when you create a hosted
 zone.
+
+
+=head2 HttpEndpointEnabled => Bool
+
+  HTTP endpoint functionality is in beta for Aurora Serverless and is
+subject to change.
+
+Value that is C<true> if the HTTP endpoint for an Aurora Serverless DB
+cluster is enabled and C<false> otherwise.
+
+When enabled, the HTTP endpoint provides a connectionless web service
+API for running SQL queries on the Aurora Serverless DB cluster. You
+can also query your database from inside the RDS console with the query
+editor.
+
+For more information about Aurora Serverless, see Using Amazon Aurora
+Serverless
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html)
+in the I<Amazon Aurora User Guide>.
 
 
 =head2 IAMDatabaseAuthenticationEnabled => Bool

@@ -964,8 +964,9 @@ supply a C<MonitoringRoleArn> value.
 
 =head2 MultiAZ => Bool
 
-Specifies if the DB instance is a Multi-AZ deployment. You can't set
-the AvailabilityZone parameter if the MultiAZ parameter is set to true.
+A value that specifies whether the DB instance is a Multi-AZ
+deployment. You can't set the AvailabilityZone parameter if the MultiAZ
+parameter is set to true.
 
 
 
@@ -1236,7 +1237,8 @@ supported only by Microsoft SQL Server
 
 =head2 VpcSecurityGroupIds => ArrayRef[Str|Undef]
 
-A list of EC2 VPC security groups to associate with this DB instance.
+A list of Amazon EC2 VPC security groups to associate with this DB
+instance.
 
 B<Amazon Aurora>
 
