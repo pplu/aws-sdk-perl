@@ -3,6 +3,7 @@ package Paws::Translate::TranslateText;
   use Moose;
   has SourceLanguageCode => (is => 'ro', isa => 'Str', required => 1);
   has TargetLanguageCode => (is => 'ro', isa => 'Str', required => 1);
+  has TerminologyNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Text => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -33,13 +34,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SourceLanguageCode => 'MyLanguageCodeString',
       TargetLanguageCode => 'MyLanguageCodeString',
       Text               => 'MyBoundedLengthString',
-
+      TerminologyNames   => [
+        'MyResourceName', ...    # min: 1, max: 256
+      ],                         # OPTIONAL
     );
 
     # Results:
-    my $SourceLanguageCode = $TranslateTextResponse->SourceLanguageCode;
-    my $TargetLanguageCode = $TranslateTextResponse->TargetLanguageCode;
-    my $TranslatedText     = $TranslateTextResponse->TranslatedText;
+    my $AppliedTerminologies = $TranslateTextResponse->AppliedTerminologies;
+    my $SourceLanguageCode   = $TranslateTextResponse->SourceLanguageCode;
+    my $TargetLanguageCode   = $TranslateTextResponse->TargetLanguageCode;
+    my $TranslatedText       = $TranslateTextResponse->TranslatedText;
 
     # Returns a L<Paws::Translate::TranslateTextResponse> object.
 
@@ -51,9 +55,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 
 =head2 B<REQUIRED> SourceLanguageCode => Str
 
-One of the supported language codes for the source text. If the
-C<TargetLanguageCode> is not "en", the C<SourceLanguageCode> must be
-"en".
+The language code for the language of the source text. The language
+must be a language supported by Amazon Translate.
 
 To have Amazon Translate determine the source language of your text,
 you can specify C<auto> in the C<SourceLanguageCode> field. If you
@@ -64,15 +67,23 @@ determine the source language.
 
 =head2 B<REQUIRED> TargetLanguageCode => Str
 
-One of the supported language codes for the target text. If the
-C<SourceLanguageCode> is not "en", the C<TargetLanguageCode> must be
-"en".
+The language code requested for the language of the target text. The
+language must be a language supported by Amazon Translate.
+
+
+
+=head2 TerminologyNames => ArrayRef[Str|Undef]
+
+The TerminologyNames list that is taken as input to the TranslateText
+request. This has a minimum length of 0 and a maximum length of 1.
 
 
 
 =head2 B<REQUIRED> Text => Str
 
-The text to translate.
+The text to translate. The text string can be a maximum of 5,000 bytes
+long. Depending on your character set, this may be fewer than 5,000
+characters.
 
 
 
