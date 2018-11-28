@@ -1,6 +1,6 @@
 package Paws::KinesisAnalytics::DestinationSchema;
   use Moose;
-  has RecordFormatType => (is => 'ro', isa => 'Str');
+  has RecordFormatType => (is => 'ro', isa => 'Str', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +38,7 @@ For more information, see Configuring Application Output
 =head1 ATTRIBUTES
 
 
-=head2 RecordFormatType => Str
+=head2 B<REQUIRED> RecordFormatType => Str
 
   Specifies the format of the records on the output stream.
 
