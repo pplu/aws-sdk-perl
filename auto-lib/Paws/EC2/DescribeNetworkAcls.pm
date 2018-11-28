@@ -130,6 +130,10 @@ C<network-acl-id> - The ID of the network ACL.
 
 =item *
 
+C<owner-id> - The ID of the AWS account that owns the network ACL.
+
+=item *
+
 C<tag>:E<lt>keyE<gt> - The key/value combination of a tag assigned to
 the resource. Use the tag key in the filter name and the tag value as
 the filter value. For example, to find all resources that have a tag

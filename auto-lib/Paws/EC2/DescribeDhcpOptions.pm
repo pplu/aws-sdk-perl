@@ -73,7 +73,7 @@ One or more filters.
 
 =item *
 
-C<dhcp-options-id> - The ID of a set of DHCP options.
+C<dhcp-options-id> - The ID of a DHCP options set.
 
 =item *
 
@@ -82,6 +82,10 @@ C<key> - The key for one of the options (for example, C<domain-name>).
 =item *
 
 C<value> - The value for one of the options.
+
+=item *
+
+C<owner-id> - The ID of the AWS account that owns the DHCP options set.
 
 =item *
 

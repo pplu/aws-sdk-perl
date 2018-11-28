@@ -2,12 +2,15 @@ package Paws::EC2::Subnet;
   use Moose;
   has AssignIpv6AddressOnCreation => (is => 'ro', isa => 'Bool', request_name => 'assignIpv6AddressOnCreation', traits => ['NameInRequest']);
   has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
+  has AvailabilityZoneId => (is => 'ro', isa => 'Str', request_name => 'availabilityZoneId', traits => ['NameInRequest']);
   has AvailableIpAddressCount => (is => 'ro', isa => 'Int', request_name => 'availableIpAddressCount', traits => ['NameInRequest']);
   has CidrBlock => (is => 'ro', isa => 'Str', request_name => 'cidrBlock', traits => ['NameInRequest']);
   has DefaultForAz => (is => 'ro', isa => 'Bool', request_name => 'defaultForAz', traits => ['NameInRequest']);
   has Ipv6CidrBlockAssociationSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SubnetIpv6CidrBlockAssociation]', request_name => 'ipv6CidrBlockAssociationSet', traits => ['NameInRequest']);
   has MapPublicIpOnLaunch => (is => 'ro', isa => 'Bool', request_name => 'mapPublicIpOnLaunch', traits => ['NameInRequest']);
+  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  has SubnetArn => (is => 'ro', isa => 'Str', request_name => 'subnetArn', traits => ['NameInRequest']);
   has SubnetId => (is => 'ro', isa => 'Str', request_name => 'subnetId', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
   has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
@@ -57,6 +60,11 @@ a network interface created by RunInstances) receives an IPv6 address.
   The Availability Zone of the subnet.
 
 
+=head2 AvailabilityZoneId => Str
+
+  The AZ ID of the subnet.
+
+
 =head2 AvailableIpAddressCount => Int
 
   The number of unused private IPv4 addresses in the subnet. The IPv4
@@ -84,9 +92,19 @@ addresses for any stopped instances are considered unavailable.
 IPv4 address.
 
 
+=head2 OwnerId => Str
+
+  The ID of the AWS account that owns the subnet.
+
+
 =head2 State => Str
 
   The current state of the subnet.
+
+
+=head2 SubnetArn => Str
+
+  The Amazon Resource Name (ARN) of the subnet.
 
 
 =head2 SubnetId => Str

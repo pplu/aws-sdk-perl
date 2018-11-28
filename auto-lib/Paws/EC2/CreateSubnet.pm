@@ -2,6 +2,7 @@
 package Paws::EC2::CreateSubnet;
   use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str');
+  has AvailabilityZoneId => (is => 'ro', isa => 'Str');
   has CidrBlock => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Ipv6CidrBlock => (is => 'ro', isa => 'Str');
@@ -59,6 +60,12 @@ The Availability Zone for the subnet.
 Default: AWS selects one for you. If you create more than one subnet in
 your VPC, we may not necessarily select a different zone for each
 subnet.
+
+
+
+=head2 AvailabilityZoneId => Str
+
+The AZ ID of the subnet.
 
 
 

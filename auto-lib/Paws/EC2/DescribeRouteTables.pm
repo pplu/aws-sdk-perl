@@ -88,6 +88,10 @@ have an association ID are not returned in the response.
 
 =item *
 
+C<owner-id> - The ID of the AWS account that owns the route table.
+
+=item *
+
 C<route-table-id> - The ID of the route table.
 
 =item *

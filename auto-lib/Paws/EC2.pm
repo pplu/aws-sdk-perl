@@ -4163,6 +4163,8 @@ in the I<Amazon EC2 User Guide for Linux Instances>.
 
 =item [AvailabilityZone => Str]
 
+=item [AvailabilityZoneId => Str]
+
 =item [DryRun => Bool]
 
 =item [Ipv6CidrBlock => Str]

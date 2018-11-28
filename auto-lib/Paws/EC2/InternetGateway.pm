@@ -2,6 +2,7 @@ package Paws::EC2::InternetGateway;
   use Moose;
   has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InternetGatewayAttachment]', request_name => 'attachmentSet', traits => ['NameInRequest']);
   has InternetGatewayId => (is => 'ro', isa => 'Str', request_name => 'internetGatewayId', traits => ['NameInRequest']);
+  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
 1;
 
@@ -46,6 +47,11 @@ This class has no description
 =head2 InternetGatewayId => Str
 
   The ID of the internet gateway.
+
+
+=head2 OwnerId => Str
+
+  The ID of the AWS account that owns the internet gateway.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]

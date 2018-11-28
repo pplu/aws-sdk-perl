@@ -110,6 +110,10 @@ C<isDefault> - Indicates whether the VPC is the default VPC.
 
 =item *
 
+C<owner-id> - The ID of the AWS account that owns the VPC.
+
+=item *
+
 C<state> - The state of the VPC (C<pending> | C<available>).
 
 =item *

@@ -71,8 +71,13 @@ One or more filters.
 
 =item *
 
-C<availabilityZone> - The Availability Zone for the subnet. You can
-also use C<availability-zone> as the filter name.
+C<availability-zone> - The Availability Zone for the subnet. You can
+also use C<availabilityZone> as the filter name.
+
+=item *
+
+C<availability-zone-id> - The ID of the Availability Zone for the
+subnet. You can also use C<availabilityZoneId> as the filter name.
 
 =item *
 
@@ -81,15 +86,15 @@ subnet that are available.
 
 =item *
 
-C<cidrBlock> - The IPv4 CIDR block of the subnet. The CIDR block you
+C<cidr-block> - The IPv4 CIDR block of the subnet. The CIDR block you
 specify must exactly match the subnet's CIDR block for information to
-be returned for the subnet. You can also use C<cidr> or C<cidr-block>
-as the filter names.
+be returned for the subnet. You can also use C<cidr> or C<cidrBlock> as
+the filter names.
 
 =item *
 
-C<defaultForAz> - Indicates whether this is the default subnet for the
-Availability Zone. You can also use C<default-for-az> as the filter
+C<default-for-az> - Indicates whether this is the default subnet for
+the Availability Zone. You can also use C<defaultForAz> as the filter
 name.
 
 =item *
@@ -109,7 +114,15 @@ associated with the subnet.
 
 =item *
 
+C<owner-id> - The ID of the AWS account that owns the subnet.
+
+=item *
+
 C<state> - The state of the subnet (C<pending> | C<available>).
+
+=item *
+
+C<subnet-arn> - The Amazon Resource Name (ARN) of the subnet.
 
 =item *
 
