@@ -36,6 +36,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::LoadBa
 
 Details on a load balancer that is used with a service.
 
+If the service is using the C<ECS> deployment controller, you are
+limited to one load balancer or target group.
+
+If the service is using the C<CODE_DEPLOY> deployment controller, the
+service is required to use either an Application Load Balancer or
+Network Load Balancer. When you are creating an AWS CodeDeploy
+deployment group, you specify two target groups (referred to as a
+C<targetGroupPair>). Each target group binds to a separate task set in
+the deployment. The load balancer can also have up to two listeners, a
+required listener for production traffic and an optional listener that
+allows you to test new revisions of the service before routing
+production traffic to it.
+
 Services with tasks that use the C<awsvpc> network mode (for example,
 those with the Fargate launch type) only support Application Load
 Balancers and Network Load Balancers. Classic Load Balancers are not
@@ -69,7 +82,10 @@ C<hostPort> of the port mapping.
 =head2 TargetGroupArn => Str
 
   The full Amazon Resource Name (ARN) of the Elastic Load Balancing
-target group associated with a service.
+target group or groups associated with a service. For services using
+the C<ECS> deployment controller, you are limited to one target group.
+For services using the C<CODE_DEPLOY> deployment controller, you are
+required to define two target groups for the load balancer.
 
 If your service's task definition uses the C<awsvpc> network mode
 (which is required for the Fargate launch type), you must choose C<ip>

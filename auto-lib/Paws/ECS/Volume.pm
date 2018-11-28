@@ -37,7 +37,7 @@ A data volume used in a task definition. For tasks that use a Docker
 volume, specify a C<DockerVolumeConfiguration>. For tasks that use a
 bind mount host volume, specify a C<host> and optional C<sourcePath>.
 For more information, see Using Data Volumes in Tasks
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguideusing_data_volumes.html).
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_data_volumes.html).
 
 =head1 ATTRIBUTES
 
@@ -57,8 +57,8 @@ Bind mount host volumes are supported when you are using either the EC2
 or Fargate launch types. The contents of the C<host> parameter
 determine whether your bind mount host volume persists on the host
 container instance and where it is stored. If the C<host> parameter is
-empty, then the Docker daemon assigns a host path for your data volume,
-but the data is not guaranteed to persist after the containers
+empty, then the Docker daemon assigns a host path for your data volume.
+However, the data is not guaranteed to persist after the containers
 associated with it stop running.
 
 Windows containers can mount whole directories on the same drive as

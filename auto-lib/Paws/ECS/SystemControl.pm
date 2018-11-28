@@ -69,7 +69,7 @@ instance.
 
 =head2 Namespace => Str
 
-  The namespaced kernel parameter to set a C<value> for.
+  The namespaced kernel parameter for which to set a C<value>.
 
 
 =head2 Value => Str

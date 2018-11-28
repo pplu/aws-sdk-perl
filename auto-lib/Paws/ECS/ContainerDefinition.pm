@@ -139,7 +139,7 @@ Amazon ECS container agent version:
 B<Agent versions less than or equal to 1.1.0:> Null and zero CPU values
 are passed to Docker as 0, which Docker then converts to 1,024 CPU
 shares. CPU values of 1 are passed to Docker as 1, which the Linux
-kernel converts to 2 CPU shares.
+kernel converts to two CPU shares.
 
 =item *
 

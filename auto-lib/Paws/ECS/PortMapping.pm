@@ -97,10 +97,10 @@ The default reserved ports are 22 for SSH, the Docker ports 2375 and
 host port that was previously specified in a running task is also
 reserved while the task is running (after a task stops, the host port
 is released). The current reserved ports are displayed in the
-C<remainingResources> of DescribeContainerInstances output, and a
-container instance may have up to 100 reserved ports at a time,
-including the default reserved ports (automatically assigned ports do
-not count toward the 100 reserved ports limit).
+C<remainingResources> of DescribeContainerInstances output. A container
+instance may have up to 100 reserved ports at a time, including the
+default reserved ports. Aautomatically assigned ports do not count
+toward the 100 reserved ports limit.
 
 
 =head2 Protocol => Str

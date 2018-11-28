@@ -143,7 +143,7 @@ Docker security (https://docs.docker.com/engine/security/security/).
 If you are setting namespaced kernel parameters using C<systemControls>
 for the containers in the task, the following will apply to your IPC
 resource namespace. For more information, see System Controls
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguidetask_definition_parameters.html)
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 =over
@@ -273,28 +273,28 @@ the Fargate launch type.
 =head2 PlacementConstraints => ArrayRef[L<Paws::ECS::TaskDefinitionPlacementConstraint>]
 
   An array of placement constraint objects to use for tasks. This field
-is not valid if using the Fargate launch type for your task.
+is not valid if you are using the Fargate launch type for your task.
 
 
 =head2 RequiresAttributes => ArrayRef[L<Paws::ECS::Attribute>]
 
   The container instance attributes required by your task. This field is
-not valid if using the Fargate launch type for your task.
+not valid if you are using the Fargate launch type for your task.
 
 
 =head2 RequiresCompatibilities => ArrayRef[Str|Undef]
 
-  The launch type the task is using.
+  The launch type that the task is using.
 
 
 =head2 Revision => Int
 
   The revision of the task in a particular family. The revision is a
 version number of a task definition in a family. When you register a
-task definition for the first time, the revision is C<1>. Each time you
-register a new revision of a task definition in the same family, the
-revision value always increases by one (even if you have deregistered
-previous revisions in this family).
+task definition for the first time, the revision is C<1>. Each time
+that you register a new revision of a task definition in the same
+family, the revision value always increases by one, even if you have
+deregistered previous revisions in this family.
 
 
 =head2 Status => Str

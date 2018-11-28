@@ -193,7 +193,10 @@ Lifecycle
 
 =head2 LaunchType => Str
 
-  The launch type on which your task is running.
+  The launch type on which your task is running. For more information,
+see Amazon ECS Launch Types
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 =head2 Memory => Str
@@ -248,8 +251,10 @@ Available C<cpu> values: 4096 (4 vCPU)
 
 =head2 PlatformVersion => Str
 
-  The platform version on which your task is running. For more
-information, see AWS Fargate Platform Versions
+  The platform version on which your task is running. A platform version
+is only specified for tasks using the Fargate launch type. If one is
+not specified, the C<LATEST> platform version is used by default. For
+more information, see AWS Fargate Platform Versions
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
@@ -291,7 +296,7 @@ from the C<RUNNING> state to the C<STOPPED> state).
 
 =head2 StoppedReason => Str
 
-  The reason the task was stopped.
+  The reason that the task was stopped.
 
 
 =head2 StoppingAt => Str
@@ -325,9 +330,9 @@ characters.
 change that triggers a CloudWatch event, the version counter is
 incremented. If you are replicating your Amazon ECS task state with
 CloudWatch Events, you can compare the version of a task reported by
-the Amazon ECS APIs with the version reported in CloudWatch Events for
-the task (inside the C<detail> object) to verify that the version in
-your event stream is current.
+the Amazon ECS API actionss with the version reported in CloudWatch
+Events for the task (inside the C<detail> object) to verify that the
+version in your event stream is current.
 
 
 

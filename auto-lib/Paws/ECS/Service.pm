@@ -4,6 +4,7 @@ package Paws::ECS::Service;
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
   has CreatedBy => (is => 'ro', isa => 'Str', request_name => 'createdBy', traits => ['NameInRequest']);
   has DeploymentConfiguration => (is => 'ro', isa => 'Paws::ECS::DeploymentConfiguration', request_name => 'deploymentConfiguration', traits => ['NameInRequest']);
+  has DeploymentController => (is => 'ro', isa => 'Paws::ECS::DeploymentController', request_name => 'deploymentController', traits => ['NameInRequest']);
   has Deployments => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Deployment]', request_name => 'deployments', traits => ['NameInRequest']);
   has DesiredCount => (is => 'ro', isa => 'Int', request_name => 'desiredCount', traits => ['NameInRequest']);
   has EnableECSManagedTags => (is => 'ro', isa => 'Bool', request_name => 'enableECSManagedTags', traits => ['NameInRequest']);
@@ -26,6 +27,7 @@ package Paws::ECS::Service;
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', request_name => 'tags', traits => ['NameInRequest']);
   has TaskDefinition => (is => 'ro', isa => 'Str', request_name => 'taskDefinition', traits => ['NameInRequest']);
+  has TaskSets => (is => 'ro', isa => 'ArrayRef[Paws::ECS::TaskSet]', request_name => 'taskSets', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +47,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ECS::Service object:
 
-  $service_obj->Method(Att1 => { ClusterArn => $value, ..., TaskDefinition => $value  });
+  $service_obj->Method(Att1 => { ClusterArn => $value, ..., TaskSets => $value  });
 
 =head3 Results returned from an API call
 
@@ -80,6 +82,11 @@ Details on a service within a cluster
 
   Optional deployment parameters that control how many tasks run during
 the deployment and the ordering of stopping and starting tasks.
+
+
+=head2 DeploymentController => L<Paws::ECS::DeploymentController>
+
+  The deployment controller type the service is using.
 
 
 =head2 Deployments => ArrayRef[L<Paws::ECS::Deployment>]
@@ -118,7 +125,10 @@ task has first started.
 
 =head2 LaunchType => Str
 
-  The launch type on which your service is running.
+  The launch type on which your service is running. For more information,
+see Amazon ECS Launch Types
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 =head2 LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>]
@@ -131,9 +141,9 @@ Services with tasks that use the C<awsvpc> network mode (for example,
 those with the Fargate launch type) only support Application Load
 Balancers and Network Load Balancers. Classic Load Balancers are not
 supported. Also, when you create any target groups for these services,
-you must choose C<ip> as the target type, not C<instance>, because
-tasks that use the C<awsvpc> network mode are associated with an
-elastic network interface, not an Amazon EC2 instance.
+you must choose C<ip> as the target type, not C<instance>. Tasks that
+use the C<awsvpc> network mode are associated with an elastic network
+interface, not an Amazon EC2 instance.
 
 
 =head2 NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>
@@ -161,8 +171,10 @@ placed.
 
 =head2 PlatformVersion => Str
 
-  The platform version on which your task is running. For more
-information, see AWS Fargate Platform Versions
+  The platform version on which your tasks in the service are running. A
+platform version is only specified for tasks using the Fargate launch
+type. If one is not specified, the C<LATEST> platform version is used
+by default. For more information, see AWS Fargate Platform Versions
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
@@ -190,7 +202,7 @@ Elastic Load Balancing load balancer.
 
   The scheduling strategy to use for the service. For more information,
 see Services
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguideecs_services.html).
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html).
 
 There are two service scheduler strategies available:
 
@@ -259,6 +271,14 @@ characters.
   The task definition to use for tasks in the service. This value is
 specified when the service is created with CreateService, and it can be
 modified with UpdateService.
+
+
+=head2 TaskSets => ArrayRef[L<Paws::ECS::TaskSet>]
+
+  Information about a set of Amazon ECS tasks in an AWS CodeDeploy
+deployment. An Amazon ECS task set includes details such as the desired
+number of tasks, how many tasks are running, and whether the task set
+serves production traffic.
 
 
 

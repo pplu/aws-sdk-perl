@@ -171,7 +171,7 @@ Docker security (https://docs.docker.com/engine/security/security/).
 If you are setting namespaced kernel parameters using C<systemControls>
 for the containers in the task, the following will apply to your IPC
 resource namespace. For more information, see System Controls
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguidetask_definition_parameters.html)
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 =over

@@ -4,6 +4,7 @@ package Paws::ECS::CreateService;
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken' );
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
   has DeploymentConfiguration => (is => 'ro', isa => 'Paws::ECS::DeploymentConfiguration', traits => ['NameInRequest'], request_name => 'deploymentConfiguration' );
+  has DeploymentController => (is => 'ro', isa => 'Paws::ECS::DeploymentController', traits => ['NameInRequest'], request_name => 'deploymentController' );
   has DesiredCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'desiredCount' );
   has EnableECSManagedTags => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableECSManagedTags' );
   has HealthCheckGracePeriodSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'healthCheckGracePeriodSeconds' );
@@ -116,6 +117,12 @@ the deployment and the ordering of stopping and starting tasks.
 
 
 
+=head2 DeploymentController => L<Paws::ECS::DeploymentController>
+
+The deployment controller to use for the service.
+
+
+
 =head2 DesiredCount => Int
 
 The number of instantiations of the specified task definition to place
@@ -140,8 +147,8 @@ should ignore unhealthy Elastic Load Balancing target health checks
 after a task has first started. This is only valid if your service is
 configured to use a load balancer. If your service's tasks take a while
 to start and respond to Elastic Load Balancing health checks, you can
-specify a health check grace period of up to 7,200 seconds during which
-the ECS service scheduler ignores health check status. This grace
+specify a health check grace period of up to 7,200 seconds. During that
+time, the ECS service scheduler ignores health check status. This grace
 period can prevent the ECS service scheduler from marking tasks as
 unhealthy and stopping them before they have time to come up.
 
@@ -149,17 +156,38 @@ unhealthy and stopping them before they have time to come up.
 
 =head2 LaunchType => Str
 
-The launch type on which to run your service.
+The launch type on which to run your service. For more information, see
+Amazon ECS Launch Types
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 Valid values are: C<"EC2">, C<"FARGATE">
 
 =head2 LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>]
 
 A load balancer object representing the load balancer to use with your
-service. Currently, you are limited to one load balancer or target
-group per service. After you create a service, the load balancer name
-or target group ARN, container name, and container port specified in
-the service definition are immutable.
+service.
+
+If the service is using the C<ECS> deployment controller, you are
+limited to one load balancer or target group.
+
+If the service is using the C<CODE_DEPLOY> deployment controller, the
+service is required to use either an Application Load Balancer or
+Network Load Balancer. When creating an AWS CodeDeploy deployment
+group, you specify two target groups (referred to as a
+C<targetGroupPair>). During a deployment, AWS CodeDeploy determines
+which task set in your service has the status C<PRIMARY> and associates
+one target group with it, and then associates the other target group
+with the replacement task set. The load balancer can also have up to
+two listeners: a required listener for production traffic and an
+optional listener that allows you perform validation tests with Lambda
+functions before routing production traffic to it.
+
+After you create a service using the C<ECS> deployment controller, the
+load balancer name or target group ARN, container name, and container
+port specified in the service definition are immutable. If you are
+using the C<CODE_DEPLOY> deployment controller, these values can be
+changed when updating the service.
 
 For Classic Load Balancers, this object must contain the load balancer
 name, the container name (as it appears in a container definition), and
@@ -213,8 +241,12 @@ can specify a maximum of five strategy rules per service.
 
 =head2 PlatformVersion => Str
 
-The platform version on which to run your service. If one is not
-specified, the latest version is used by default.
+The platform version on which your tasks in the service are running. A
+platform version is only specified for tasks using the Fargate launch
+type. If one is not specified, the C<LATEST> platform version is used
+by default. For more information, see AWS Fargate Platform Versions
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 
@@ -260,7 +292,7 @@ in the I<IAM User Guide>.
 
 The scheduling strategy to use for the service. For more information,
 see Services
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguideecs_services.html).
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html).
 
 There are two service scheduler strategies available:
 
@@ -272,7 +304,8 @@ C<REPLICA>-The replica scheduling strategy places and maintains the
 desired number of tasks across your cluster. By default, the service
 scheduler spreads tasks across Availability Zones. You can use task
 placement strategies and constraints to customize task placement
-decisions.
+decisions. This scheduler strategy is required if using the
+C<CODE_DEPLOY> deployment controller.
 
 =item *
 
@@ -282,7 +315,8 @@ constraints that you specify in your cluster. When you are using this
 strategy, there is no need to specify a desired number of tasks, a task
 placement strategy, or use Service Auto Scaling policies.
 
-Fargate tasks do not support the C<DAEMON> scheduling strategy.
+Tasks using the Fargate launch type or the C<CODE_DEPLOY> deploymenet
+controller do not support the C<DAEMON> scheduling strategy.
 
 =back
 

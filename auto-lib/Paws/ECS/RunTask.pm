@@ -94,7 +94,10 @@ family:my-family-name).
 
 =head2 LaunchType => Str
 
-The launch type on which to run your task.
+The launch type on which to run your task. For more information, see
+Amazon ECS Launch Types
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 Valid values are: C<"EC2">, C<"FARGATE">
 
@@ -141,8 +144,12 @@ maximum of five strategy rules per task.
 
 =head2 PlatformVersion => Str
 
-The platform version on which to run your task. If one is not
-specified, the latest version is used by default.
+The platform version the task should run. A platform version is only
+specified for tasks using the Fargate launch type. If one is not
+specified, the C<LATEST> platform version is used by default. For more
+information, see AWS Fargate Platform Versions
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 

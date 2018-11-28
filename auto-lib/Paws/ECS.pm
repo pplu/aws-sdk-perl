@@ -439,6 +439,8 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 =item [DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>]
 
+=item [DeploymentController => L<Paws::ECS::DeploymentController>]
+
 =item [DesiredCount => Int]
 
 =item [EnableECSManagedTags => Bool]
@@ -487,41 +489,55 @@ the service. For more information, see Service Load Balancing
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 You can optionally specify a deployment configuration for your service.
-During a deployment, the service scheduler uses the
-C<minimumHealthyPercent> and C<maximumPercent> parameters to determine
-the deployment strategy. The deployment is triggered by changing the
-task definition or the desired count of a service with an UpdateService
+The deployment is triggered by changing properties, such as the task
+definition or the desired count of a service, with an UpdateService
 operation.
 
-The C<minimumHealthyPercent> represents a lower limit on the number of
-your service's tasks that must remain in the C<RUNNING> state during a
-deployment, as a percentage of the C<desiredCount> (rounded up to the
-nearest integer). This parameter enables you to deploy without using
-additional cluster capacity. For example, if your service has a
-C<desiredCount> of four tasks and a C<minimumHealthyPercent> of 50%,
-the scheduler can stop two existing tasks to free up cluster capacity
-before starting two new tasks. Tasks for services that I<do not> use a
-load balancer are considered healthy if they are in the C<RUNNING>
-state. Tasks for services that I<do> use a load balancer are considered
-healthy if they are in the C<RUNNING> state and the container instance
-they are hosted on is reported as healthy by the load balancer. The
-default value for a replica service for C<minimumHealthyPercent> is 50%
-in the console and 100% for the AWS CLI, the AWS SDKs, and the APIs.
-The default value for a daemon service for C<minimumHealthyPercent> is
-0% for the AWS CLI, the AWS SDKs, and the APIs and 50% for the console.
+If a service is using the C<ECS> deployment controller, the B<minimum
+healthy percent> represents a lower limit on the number of tasks in a
+service that must remain in the C<RUNNING> state during a deployment,
+as a percentage of the desired number of tasks (rounded up to the
+nearest integer), and while any container instances are in the
+C<DRAINING> state if the service contains tasks using the EC2 launch
+type. This parameter enables you to deploy without using additional
+cluster capacity. For example, if your service has a desired number of
+four tasks and a minimum healthy percent of 50%, the scheduler may stop
+two existing tasks to free up cluster capacity before starting two new
+tasks. Tasks for services that I<do not> use a load balancer are
+considered healthy if they are in the C<RUNNING> state; tasks for
+services that I<do> use a load balancer are considered healthy if they
+are in the C<RUNNING> state and they are reported as healthy by the
+load balancer. The default value for minimum healthy percent is 100%.
 
-The C<maximumPercent> parameter represents an upper limit on the number
-of your service's tasks that are allowed in the C<RUNNING> or
-C<PENDING> state during a deployment, as a percentage of the
-C<desiredCount> (rounded down to the nearest integer). This parameter
-enables you to define the deployment batch size. For example, if your
-replica service has a C<desiredCount> of four tasks and a
-C<maximumPercent> value of 200%, the scheduler can start four new tasks
-before stopping the four older tasks (provided that the cluster
-resources required to do this are available). The default value for a
-replica service for C<maximumPercent> is 200%. If you are using a
-daemon service type, the C<maximumPercent> should remain at 100%, which
-is the default value.
+If a service is using the C<ECS> deployment controller, the B<maximum
+percent> parameter represents an upper limit on the number of tasks in
+a service that are allowed in the C<RUNNING> or C<PENDING> state during
+a deployment, as a percentage of the desired number of tasks (rounded
+down to the nearest integer), and while any container instances are in
+the C<DRAINING> state if the service contains tasks using the EC2
+launch type. This parameter enables you to define the deployment batch
+size. For example, if your service has a desired number of four tasks
+and a maximum percent value of 200%, the scheduler may start four new
+tasks before stopping the four older tasks (provided that the cluster
+resources required to do this are available). The default value for
+maximum percent is 200%.
+
+If a service is using the C<CODE_DEPLOY> deployment controller and
+tasks that use the EC2 launch type, the B<minimum healthy percent> and
+B<maximum percent> values are only used to define the lower and upper
+limit on the number of the tasks in the service that remain in the
+C<RUNNING> state while the container instances are in the C<DRAINING>
+state. If the tasks in the service use the Fargate launch type, the
+minimum healthy percent and maximum percent values are not used,
+although they are currently visible when describing your service.
+
+Tasks for services that I<do not> use a load balancer are considered
+healthy if they are in the C<RUNNING> state. Tasks for services that
+I<do> use a load balancer are considered healthy if they are in the
+C<RUNNING> state and the container instance they are hosted on is
+reported as healthy by the load balancer. The default value for a
+replica service for C<minimumHealthyPercent> is 100%. The default value
+for a daemon service for C<minimumHealthyPercent> is 0%.
 
 When the service scheduler launches new tasks, it determines task
 placement in your cluster using the following logic:
@@ -717,9 +733,9 @@ service's desired count.
 
 You cannot use an C<INACTIVE> task definition to run new tasks or
 create new services, and you cannot update an existing service to
-reference an C<INACTIVE> task definition (although there may be up to a
+reference an C<INACTIVE> task definition. However, there may be up to a
 10-minute window following deregistration where these restrictions have
-not yet taken effect).
+not yet taken effect.
 
 At this time, C<INACTIVE> task definitions remain discoverable in your
 account indefinitely. However, this behavior is subject to change in
@@ -1381,10 +1397,10 @@ deleted.
 
 When StopTask is called on a task, the equivalent of C<docker stop> is
 issued to the containers running in the task. This results in a
-C<SIGTERM> and a default 30-second timeout, after which C<SIGKILL> is
-sent and the containers are forcibly stopped. If the container handles
-the C<SIGTERM> gracefully and exits within 30 seconds from receiving
-it, no C<SIGKILL> is sent.
+C<SIGTERM> value and a default 30-second timeout, after which the
+C<SIGKILL> value is sent and the containers are forcibly stopped. If
+the container handles the C<SIGTERM> value gracefully and exits within
+30 seconds from receiving it, no C<SIGKILL> value is sent.
 
 The default 30-second timeout can be configured on the Amazon ECS
 container agent with the C<ECS_CONTAINER_STOP_TIMEOUT> variable. For
@@ -1585,10 +1601,10 @@ load balancer.
 
 The C<maximumPercent> parameter represents an upper limit on the number
 of running tasks during task replacement, which enables you to define
-the replacement batch size. For example, if C<desiredCount> of four
+the replacement batch size. For example, if C<desiredCount> is four
 tasks, a maximum of 200% starts four new tasks before stopping the four
-tasks to be drained (provided that the cluster resources required to do
-this are available). If the maximum is 100%, then replacement tasks
+tasks to be drained, provided that the cluster resources required to do
+this are available. If the maximum is 100%, then replacement tasks
 can't start until the draining tasks have stopped.
 
 =back
@@ -1632,8 +1648,20 @@ Each argument is described in detail in: L<Paws::ECS::UpdateService>
 
 Returns: a L<Paws::ECS::UpdateServiceResponse> instance
 
-Modifies the desired count, deployment configuration, network
-configuration, or task definition used in a service.
+Modifies the parameters of a service.
+
+For services using the rolling update (C<ECS>) deployment controller,
+the desired count, deployment configuration, network configuration, or
+task definition used can be updated.
+
+For services using the blue/green (C<CODE_DEPLOY>) deployment
+controller, only the desired count, deployment configuration, and
+health check grace period can be updated using this API. If the network
+configuration, platform version, or task definition need to be updated,
+a new AWS CodeDeploy deployment should be created. For more
+information, see CreateDeployment
+(https://docs.aws.amazon.com/codedeploy/latest/APIReference/API_CreateDeployment.html)
+in the I<AWS CodeDeploy API Reference>.
 
 You can add to or subtract from the number of instantiations of a task
 definition in a service by specifying the cluster that the service is
