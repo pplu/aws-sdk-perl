@@ -52,11 +52,14 @@ table.
 
 =item *
 
-C<AES256> - Server-side encryption which uses the AES256 algorithm.
+C<AES256> - Server-side encryption which uses the AES256 algorithm (not
+applicable).
 
 =item *
 
 C<KMS> - Server-side encryption which uses AWS Key Management Service.
+Key is stored in your account and is managed by AWS KMS (KMS charges
+apply).
 
 =back
 

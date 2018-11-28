@@ -1,6 +1,7 @@
 package Paws::DynamoDB::TableDescription;
   use Moose;
   has AttributeDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::AttributeDefinition]');
+  has BillingModeSummary => (is => 'ro', isa => 'Paws::DynamoDB::BillingModeSummary');
   has CreationDateTime => (is => 'ro', isa => 'Str');
   has GlobalSecondaryIndexes => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::GlobalSecondaryIndexDescription]');
   has ItemCount => (is => 'ro', isa => 'Int');
@@ -71,6 +72,11 @@ C<AttributeType> - The data type for the attribute.
 
 =back
 
+
+
+=head2 BillingModeSummary => L<Paws::DynamoDB::BillingModeSummary>
+
+  Contains the details for the read/write capacity mode.
 
 
 =head2 CreationDateTime => Str

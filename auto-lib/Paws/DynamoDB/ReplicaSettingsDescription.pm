@@ -1,6 +1,7 @@
 package Paws::DynamoDB::ReplicaSettingsDescription;
   use Moose;
   has RegionName => (is => 'ro', isa => 'Str', required => 1);
+  has ReplicaBillingModeSummary => (is => 'ro', isa => 'Paws::DynamoDB::BillingModeSummary');
   has ReplicaGlobalSecondaryIndexSettings => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::ReplicaGlobalSecondaryIndexSettingsDescription]');
   has ReplicaProvisionedReadCapacityAutoScalingSettings => (is => 'ro', isa => 'Paws::DynamoDB::AutoScalingSettingsDescription');
   has ReplicaProvisionedReadCapacityUnits => (is => 'ro', isa => 'Int');
@@ -45,6 +46,11 @@ Represents the properties of a replica.
 =head2 B<REQUIRED> RegionName => Str
 
   The region name of the replica.
+
+
+=head2 ReplicaBillingModeSummary => L<Paws::DynamoDB::BillingModeSummary>
+
+  The read/write capacity mode of the replica.
 
 
 =head2 ReplicaGlobalSecondaryIndexSettings => ArrayRef[L<Paws::DynamoDB::ReplicaGlobalSecondaryIndexSettingsDescription>]

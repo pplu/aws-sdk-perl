@@ -2,10 +2,11 @@
 package Paws::DynamoDB::CreateTable;
   use Moose;
   has AttributeDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::AttributeDefinition]', required => 1);
+  has BillingMode => (is => 'ro', isa => 'Str');
   has GlobalSecondaryIndexes => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::GlobalSecondaryIndex]');
   has KeySchema => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::KeySchemaElement]', required => 1);
   has LocalSecondaryIndexes => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::LocalSecondaryIndex]');
-  has ProvisionedThroughput => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughput', required => 1);
+  has ProvisionedThroughput => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughput');
   has SSESpecification => (is => 'ro', isa => 'Paws::DynamoDB::SSESpecification');
   has StreamSpecification => (is => 'ro', isa => 'Paws::DynamoDB::StreamSpecification');
   has TableName => (is => 'ro', isa => 'Str', required => 1);
@@ -87,6 +88,28 @@ An array of attributes that describe the key schema for the table and
 indexes.
 
 
+
+=head2 BillingMode => Str
+
+Controls how you are charged for read and write throughput and how you
+manage capacity. This setting can be changed later.
+
+=over
+
+=item *
+
+C<PROVISIONED> - Sets the billing mode to C<PROVISIONED>. We recommend
+using C<PROVISIONED> for predictable workloads.
+
+=item *
+
+C<PAY_PER_REQUEST> - Sets the billing mode to C<PAY_PER_REQUEST>. We
+recommend using C<PAY_PER_REQUEST> for unpredictable workloads.
+
+=back
+
+
+Valid values are: C<"PROVISIONED">, C<"PAY_PER_REQUEST">
 
 =head2 GlobalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndex>]
 
@@ -283,10 +306,14 @@ attributes when determining the total.
 
 
 
-=head2 B<REQUIRED> ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>
+=head2 ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>
 
 Represents the provisioned throughput settings for a specified table or
 index. The settings can be modified using the C<UpdateTable> operation.
+
+If you set BillingMode as C<PROVISIONED>, you must specify this
+property. If you set BillingMode as C<PAY_PER_REQUEST>, you cannot
+specify this property.
 
 For current minimum and maximum provisioned throughput values, see
 Limits

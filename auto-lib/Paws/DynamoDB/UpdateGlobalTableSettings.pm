@@ -1,6 +1,7 @@
 
 package Paws::DynamoDB::UpdateGlobalTableSettings;
   use Moose;
+  has GlobalTableBillingMode => (is => 'ro', isa => 'Str');
   has GlobalTableGlobalSecondaryIndexSettingsUpdate => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::GlobalTableGlobalSecondaryIndexSettingsUpdate]');
   has GlobalTableName => (is => 'ro', isa => 'Str', required => 1);
   has GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate => (is => 'ro', isa => 'Paws::DynamoDB::AutoScalingSettingsUpdate');
@@ -33,6 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $dynamodb = Paws->service('DynamoDB');
     my $UpdateGlobalTableSettingsOutput = $dynamodb->UpdateGlobalTableSettings(
       GlobalTableName                               => 'MyTableName',
+      GlobalTableBillingMode                        => 'PROVISIONED', # OPTIONAL
       GlobalTableGlobalSecondaryIndexSettingsUpdate => [
         {
           IndexName => 'MyIndexName',    # min: 3, max: 255
@@ -135,6 +137,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dyn
 
 =head1 ATTRIBUTES
 
+
+=head2 GlobalTableBillingMode => Str
+
+The billing mode of the global table. If C<GlobalTableBillingMode> is
+not specified, the global table defaults to C<PROVISIONED> capacity
+billing mode.
+
+Valid values are: C<"PROVISIONED">, C<"PAY_PER_REQUEST">
 
 =head2 GlobalTableGlobalSecondaryIndexSettingsUpdate => ArrayRef[L<Paws::DynamoDB::GlobalTableGlobalSecondaryIndexSettingsUpdate>]
 

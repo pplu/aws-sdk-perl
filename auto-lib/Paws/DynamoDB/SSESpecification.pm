@@ -41,7 +41,9 @@ Represents the settings used to enable server-side encryption.
 =head2 Enabled => Bool
 
   Indicates whether server-side encryption is enabled (true) or disabled
-(false) on the table.
+(false) on the table. If enabled (true), server-side encryption type is
+set to C<KMS>. If disabled (false) or not specified, server-side
+encryption is set to AWS owned CMK.
 
 
 =head2 KMSMasterKeyId => Str
@@ -61,12 +63,14 @@ alias/aws/dynamodb.
 
 =item *
 
-C<AES256> - Server-side encryption which uses the AES256 algorithm.
+C<AES256> - Server-side encryption which uses the AES256 algorithm (not
+applicable).
 
 =item *
 
 C<KMS> - Server-side encryption which uses AWS Key Management Service.
-(default)
+Key is stored in your account and is managed by AWS KMS (KMS charges
+apply).
 
 =back
 

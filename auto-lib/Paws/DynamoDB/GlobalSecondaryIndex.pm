@@ -3,7 +3,7 @@ package Paws::DynamoDB::GlobalSecondaryIndex;
   has IndexName => (is => 'ro', isa => 'Str', required => 1);
   has KeySchema => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::KeySchemaElement]', required => 1);
   has Projection => (is => 'ro', isa => 'Paws::DynamoDB::Projection', required => 1);
-  has ProvisionedThroughput => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughput', required => 1);
+  has ProvisionedThroughput => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughput');
 1;
 
 ### main pod documentation begin ###
@@ -80,7 +80,7 @@ the global secondary index. These are in addition to the primary key
 attributes and index key attributes, which are automatically projected.
 
 
-=head2 B<REQUIRED> ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>
+=head2 ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>
 
   Represents the provisioned throughput settings for the specified global
 secondary index.
