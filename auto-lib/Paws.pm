@@ -306,6 +306,8 @@ L<Paws::CognitoSync>
 
 L<Paws::Comprehend>
 
+L<Paws::ComprehendMedical>
+
 L<Paws::Config>
 
 L<Paws::Connect>
@@ -370,6 +372,8 @@ L<Paws::Firehose>
 
 L<Paws::FMS>
 
+L<Paws::FSX>
+
 L<Paws::GameLift>
 
 L<Paws::Glacier>
@@ -406,6 +410,8 @@ L<Paws::Kinesis>
 
 L<Paws::KinesisAnalytics>
 
+L<Paws::KinesisAnalyticsV2>
+
 L<Paws::KinesisVideo>
 
 L<Paws::KinesisVideoArchivedMedia>
@@ -431,6 +437,8 @@ L<Paws::MarketplaceCommerceAnalytics>
 L<Paws::MarketplaceEntitlement>
 
 L<Paws::MarketplaceMetering>
+
+L<Paws::MediaConnect>
 
 L<Paws::MediaConvert>
 
@@ -507,6 +515,8 @@ L<Paws::SageMakerRuntime>
 L<Paws::SDB>
 
 L<Paws::SecretsManager>
+
+L<Paws::SecurityHub>
 
 L<Paws::ServerlessRepo>
 
