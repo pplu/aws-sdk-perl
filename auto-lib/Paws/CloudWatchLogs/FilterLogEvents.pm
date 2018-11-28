@@ -65,8 +65,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/log
 =head2 EndTime => Int
 
 The end of the time range, expressed as the number of milliseconds
-after Jan 1, 1970 00:00:00 UTC. Events with a time stamp later than
-this time are not returned.
+after Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this
+time are not returned.
 
 
 
@@ -119,9 +119,8 @@ returns an C<InvalidParameterException> error.
 Filters the results to only logs from the log streams in this list.
 
 If you specify a value for both C<logStreamNamePrefix> and
-C<logStreamNames>, but the value for C<logStreamNamePrefix> does not
-match any log stream names specified in C<logStreamNames>, the action
-returns an C<InvalidParameterException> error.
+C<logStreamNames>, the action returns an C<InvalidParameterException>
+error.
 
 
 
@@ -135,7 +134,7 @@ token from a previous call.)
 =head2 StartTime => Int
 
 The start of the time range, expressed as the number of milliseconds
-after Jan 1, 1970 00:00:00 UTC. Events with a time stamp before this
+after Jan 1, 1970 00:00:00 UTC. Events with a timestamp before this
 time are not returned.
 
 

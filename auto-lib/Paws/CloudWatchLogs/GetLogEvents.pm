@@ -59,7 +59,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/log
 =head2 EndTime => Int
 
 The end of the time range, expressed as the number of milliseconds
-after Jan 1, 1970 00:00:00 UTC. Events with a time stamp equal to or
+after Jan 1, 1970 00:00:00 UTC. Events with a timestamp equal to or
 later than this time are not included.
 
 
@@ -102,8 +102,8 @@ default value is false.
 =head2 StartTime => Int
 
 The start of the time range, expressed as the number of milliseconds
-after Jan 1, 1970 00:00:00 UTC. Events with a time stamp equal to this
-time or later than this time are included. Events with a time stamp
+after Jan 1, 1970 00:00:00 UTC. Events with a timestamp equal to this
+time or later than this time are included. Events with a timestamp
 earlier than this time are not included.
 
 
