@@ -54,6 +54,11 @@ package Paws::ServerlessRepo;
     my $call_object = $self->new_with_coercions('Paws::ServerlessRepo::GetCloudFormationTemplate', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListApplicationDependencies {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServerlessRepo::ListApplicationDependencies', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListApplications {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServerlessRepo::ListApplications', @_);
@@ -77,7 +82,7 @@ package Paws::ServerlessRepo;
   
 
 
-  sub operations { qw/CreateApplication CreateApplicationVersion CreateCloudFormationChangeSet CreateCloudFormationTemplate DeleteApplication GetApplication GetApplicationPolicy GetCloudFormationTemplate ListApplications ListApplicationVersions PutApplicationPolicy UpdateApplication / }
+  sub operations { qw/CreateApplication CreateApplicationVersion CreateCloudFormationChangeSet CreateCloudFormationTemplate DeleteApplication GetApplication GetApplicationPolicy GetCloudFormationTemplate ListApplicationDependencies ListApplications ListApplicationVersions PutApplicationPolicy UpdateApplication / }
 
 1;
 
@@ -342,6 +347,29 @@ Each argument is described in detail in: L<Paws::ServerlessRepo::GetCloudFormati
 Returns: a L<Paws::ServerlessRepo::GetCloudFormationTemplateResponse> instance
 
 Gets the specified AWS CloudFormation template.
+
+
+=head2 ListApplicationDependencies
+
+=over
+
+=item ApplicationId => Str
+
+=item [MaxItems => Int]
+
+=item [NextToken => Str]
+
+=item [SemanticVersion => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServerlessRepo::ListApplicationDependencies>
+
+Returns: a L<Paws::ServerlessRepo::ListApplicationDependenciesResponse> instance
+
+Retrieves the list of applications nested in the containing
+application.
 
 
 =head2 ListApplications
