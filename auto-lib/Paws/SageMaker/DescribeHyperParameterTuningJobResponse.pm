@@ -84,11 +84,11 @@ metric, that this tuning job launched.
 
 =head2 OverallBestTrainingJob => L<Paws::SageMaker::HyperParameterTrainingJobSummary>
 
-If the hyperparameter tuning job is an incremental tuning job with a
+If the hyperparameter tuning job is an warm start tuning job with a
 C<WarmStartType> of C<IDENTICAL_DATA_AND_ALGORITHM>, this is the
 TrainingJobSummary for the training job with the best objective metric
 value of all training jobs launched by this tuning job and all parent
-jobs specified for the incremental tuning job.
+jobs specified for the warm start tuning job.
 
 
 =head2 B<REQUIRED> TrainingJobDefinition => L<Paws::SageMaker::HyperParameterTrainingJobDefinition>

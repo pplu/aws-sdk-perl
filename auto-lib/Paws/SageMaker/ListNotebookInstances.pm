@@ -1,8 +1,10 @@
 
 package Paws::SageMaker::ListNotebookInstances;
   use Moose;
+  has AdditionalCodeRepositoryEquals => (is => 'ro', isa => 'Str');
   has CreationTimeAfter => (is => 'ro', isa => 'Str');
   has CreationTimeBefore => (is => 'ro', isa => 'Str');
+  has DefaultCodeRepositoryContains => (is => 'ro', isa => 'Str');
   has LastModifiedTimeAfter => (is => 'ro', isa => 'Str');
   has LastModifiedTimeBefore => (is => 'ro', isa => 'Str');
   has MaxResults => (is => 'ro', isa => 'Int');
@@ -38,18 +40,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $api.sagemaker = Paws->service('SageMaker');
     my $ListNotebookInstancesOutput = $api . sagemaker->ListNotebookInstances(
-      CreationTimeAfter      => '1970-01-01T01:00:00',               # OPTIONAL
-      CreationTimeBefore     => '1970-01-01T01:00:00',               # OPTIONAL
-      LastModifiedTimeAfter  => '1970-01-01T01:00:00',               # OPTIONAL
-      LastModifiedTimeBefore => '1970-01-01T01:00:00',               # OPTIONAL
-      MaxResults             => 1,                                   # OPTIONAL
-      NameContains           => 'MyNotebookInstanceNameContains',    # OPTIONAL
-      NextToken              => 'MyNextToken',                       # OPTIONAL
+      AdditionalCodeRepositoryEquals => 'MyCodeRepositoryNameOrUrl',  # OPTIONAL
+      CreationTimeAfter              => '1970-01-01T01:00:00',        # OPTIONAL
+      CreationTimeBefore             => '1970-01-01T01:00:00',        # OPTIONAL
+      DefaultCodeRepositoryContains  => 'MyCodeRepositoryContains',   # OPTIONAL
+      LastModifiedTimeAfter          => '1970-01-01T01:00:00',        # OPTIONAL
+      LastModifiedTimeBefore         => '1970-01-01T01:00:00',        # OPTIONAL
+      MaxResults                     => 1,                            # OPTIONAL
+      NameContains => 'MyNotebookInstanceNameContains',               # OPTIONAL
+      NextToken    => 'MyNextToken',                                  # OPTIONAL
       NotebookInstanceLifecycleConfigNameContains =>
-        'MyNotebookInstanceLifecycleConfigName',                     # OPTIONAL
-      SortBy       => 'Name',                                        # OPTIONAL
-      SortOrder    => 'Ascending',                                   # OPTIONAL
-      StatusEquals => 'Pending',                                     # OPTIONAL
+        'MyNotebookInstanceLifecycleConfigName',                      # OPTIONAL
+      SortBy       => 'Name',                                         # OPTIONAL
+      SortOrder    => 'Ascending',                                    # OPTIONAL
+      StatusEquals => 'Pending',                                      # OPTIONAL
     );
 
     # Results:
@@ -64,6 +68,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head1 ATTRIBUTES
 
 
+=head2 AdditionalCodeRepositoryEquals => Str
+
+A filter that returns only notebook instances with associated with the
+specified git respository.
+
+
+
 =head2 CreationTimeAfter => Str
 
 A filter that returns only notebook instances that were created after
@@ -75,6 +86,15 @@ the specified time (timestamp).
 
 A filter that returns only notebook instances that were created before
 the specified time (timestamp).
+
+
+
+=head2 DefaultCodeRepositoryContains => Str
+
+A string in the name or URL of a git repository associated with this
+notebook instance. This filter returns only notebook instances
+associated with a git repository with a name that contains the
+specified string.
 
 
 

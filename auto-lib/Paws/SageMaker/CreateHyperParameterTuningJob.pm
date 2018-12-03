@@ -81,6 +81,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       TrainingJobDefinition       => {
         AlgorithmSpecification => {
           TrainingInputMode => 'Pipe',           # values: Pipe, File
+          AlgorithmName     => 'MyArnOrName',    # min: 1, max: 170; OPTIONAL
           MetricDefinitions => [
             {
               Name  => 'MyMetricName',           # min: 1, max: 255
@@ -106,13 +107,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         StoppingCondition => {
           MaxRuntimeInSeconds => 1,          # min: 1; OPTIONAL
         },
-        InputDataConfig => [
+        EnableNetworkIsolation => 1,         # OPTIONAL
+        InputDataConfig        => [
           {
             ChannelName => 'MyChannelName',    # min: 1, max: 64
             DataSource  => {
               S3DataSource => {
-                S3DataType => 'ManifestFile',   # values: ManifestFile, S3Prefix
-                S3Uri      => 'MyS3Uri',        # max: 1024
+                S3DataType => 'ManifestFile'
+                ,    # values: ManifestFile, S3Prefix, AugmentedManifestFile
+                S3Uri          => 'MyS3Uri',    # max: 1024
+                AttributeNames => [
+                  'MyAttributeName', ...        # min: 1, max: 256
+                ],                              # max: 16; OPTIONAL
                 S3DataDistributionType => 'FullyReplicated'
                 ,    # values: FullyReplicated, ShardedByS3Key; OPTIONAL
               },
@@ -122,6 +128,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ContentType     => 'MyContentType',   # max: 256; OPTIONAL
             InputMode       => 'Pipe',            # values: Pipe, File
             RecordWrapperType => 'None',    # values: None, RecordIO; OPTIONAL
+            ShuffleConfig     => {
+              Seed => 1,
+
+            },                              # OPTIONAL
           },
           ...
         ],                                  # min: 1, max: 8; OPTIONAL

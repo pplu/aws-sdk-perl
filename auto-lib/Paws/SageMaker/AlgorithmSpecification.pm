@@ -1,5 +1,6 @@
 package Paws::SageMaker::AlgorithmSpecification;
   use Moose;
+  has AlgorithmName => (is => 'ro', isa => 'Str');
   has MetricDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::MetricDefinition]');
   has TrainingImage => (is => 'ro', isa => 'Str');
   has TrainingInputMode => (is => 'ro', isa => 'Str', required => 1);
@@ -22,14 +23,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SageMaker::AlgorithmSpecification object:
 
-  $service_obj->Method(Att1 => { MetricDefinitions => $value, ..., TrainingInputMode => $value  });
+  $service_obj->Method(Att1 => { AlgorithmName => $value, ..., TrainingInputMode => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::AlgorithmSpecification object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->MetricDefinitions
+  $result->Att1->AlgorithmName
 
 =head1 DESCRIPTION
 
@@ -44,6 +45,14 @@ Algorithms with Amazon SageMaker
 (http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html).
 
 =head1 ATTRIBUTES
+
+
+=head2 AlgorithmName => Str
+
+  The name of the algorithm resource to use for the training job. This
+must be an algorithm resource that you created or subscribe to on AWS
+Marketplace. If you specify a value for this parameter, you can't
+specify a value for C<TrainingImage>.
 
 
 =head2 MetricDefinitions => ArrayRef[L<Paws::SageMaker::MetricDefinition>]

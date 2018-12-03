@@ -34,7 +34,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $AcceleratorTypes = $DescribeNotebookInstanceOutput->AcceleratorTypes;
+    my $AdditionalCodeRepositories =
+      $DescribeNotebookInstanceOutput->AdditionalCodeRepositories;
     my $CreationTime = $DescribeNotebookInstanceOutput->CreationTime;
+    my $DefaultCodeRepository =
+      $DescribeNotebookInstanceOutput->DefaultCodeRepository;
     my $DirectInternetAccess =
       $DescribeNotebookInstanceOutput->DirectInternetAccess;
     my $FailureReason    = $DescribeNotebookInstanceOutput->FailureReason;

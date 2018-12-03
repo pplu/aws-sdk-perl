@@ -1,6 +1,7 @@
 package Paws::SageMaker::HyperParameterTrainingJobDefinition;
   use Moose;
   has AlgorithmSpecification => (is => 'ro', isa => 'Paws::SageMaker::HyperParameterAlgorithmSpecification', required => 1);
+  has EnableNetworkIsolation => (is => 'ro', isa => 'Bool');
   has InputDataConfig => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Channel]');
   has OutputDataConfig => (is => 'ro', isa => 'Paws::SageMaker::OutputDataConfig', required => 1);
   has ResourceConfig => (is => 'ro', isa => 'Paws::SageMaker::ResourceConfig', required => 1);
@@ -47,6 +48,19 @@ Defines the training jobs launched by a hyperparameter tuning job.
 
   The HyperParameterAlgorithmSpecification object that specifies the
 algorithm to use for the training jobs that the tuning job launches.
+
+
+=head2 EnableNetworkIsolation => Bool
+
+  Isolates the training container. No inbound or outbound network calls
+can be made, except for calls between peers within a training cluster
+for distributed training. If network isolation is used for training
+jobs that are configured to use a VPC, Amazon SageMaker downloads and
+uploads customer data and model artifacts through the specifed VPC, but
+the training container does not have network access.
+
+The Semantic Segmentation built-in algorithm does not support network
+isolation.
 
 
 =head2 InputDataConfig => ArrayRef[L<Paws::SageMaker::Channel>]

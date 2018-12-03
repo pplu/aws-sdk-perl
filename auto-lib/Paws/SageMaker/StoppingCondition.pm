@@ -31,12 +31,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-Specifies how long model training can run. When model training reaches
-the limit, Amazon SageMaker ends the training job. Use this API to cap
-model training cost.
+Specifies how long a model training or compilation job can run. When
+the job reaches the limit, Amazon SageMaker ends the training job. Use
+this API to cap model processing cost.
 
 To stop a job, Amazon SageMaker sends the algorithm the C<SIGTERM>
-signal, which delays job termination for120 seconds. Algorithms might
+signal, which delays job termination for 120 seconds. Algorithms might
 use this 120-second window to save the model artifacts, so the results
 of training is not lost.
 
@@ -51,10 +51,10 @@ artifact. You can use it to create a model (C<CreateModel>).
 
 =head2 MaxRuntimeInSeconds => Int
 
-  The maximum length of time, in seconds, that the training job can run.
-If model training does not complete during this time, Amazon SageMaker
-ends the job. If value is not specified, default value is 1 day.
-Maximum value is 5 days.
+  The maximum length of time, in seconds, that the training or
+compilation job can run. If the job does not complete during this time,
+Amazon SageMaker ends the job. If value is not specified, default value
+is 1 day. Maximum value is 5 days.
 
 
 

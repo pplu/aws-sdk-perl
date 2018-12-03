@@ -35,11 +35,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $AlgorithmSpecification =
       $DescribeTrainingJobResponse->AlgorithmSpecification;
-    my $CreationTime        = $DescribeTrainingJobResponse->CreationTime;
+    my $CreationTime = $DescribeTrainingJobResponse->CreationTime;
+    my $EnableNetworkIsolation =
+      $DescribeTrainingJobResponse->EnableNetworkIsolation;
     my $FailureReason       = $DescribeTrainingJobResponse->FailureReason;
     my $FinalMetricDataList = $DescribeTrainingJobResponse->FinalMetricDataList;
     my $HyperParameters     = $DescribeTrainingJobResponse->HyperParameters;
     my $InputDataConfig     = $DescribeTrainingJobResponse->InputDataConfig;
+    my $LabelingJobArn      = $DescribeTrainingJobResponse->LabelingJobArn;
     my $LastModifiedTime    = $DescribeTrainingJobResponse->LastModifiedTime;
     my $ModelArtifacts      = $DescribeTrainingJobResponse->ModelArtifacts;
     my $OutputDataConfig    = $DescribeTrainingJobResponse->OutputDataConfig;

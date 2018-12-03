@@ -6,6 +6,7 @@ package Paws::SageMaker::Channel;
   has DataSource => (is => 'ro', isa => 'Paws::SageMaker::DataSource', required => 1);
   has InputMode => (is => 'ro', isa => 'Str');
   has RecordWrapperType => (is => 'ro', isa => 'Str');
+  has ShuffleConfig => (is => 'ro', isa => 'Paws::SageMaker::ShuffleConfig');
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +26,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SageMaker::Channel object:
 
-  $service_obj->Method(Att1 => { ChannelName => $value, ..., RecordWrapperType => $value  });
+  $service_obj->Method(Att1 => { ChannelName => $value, ..., ShuffleConfig => $value  });
 
 =head3 Results returned from an API call
 
@@ -82,13 +83,33 @@ To use a model for incremental training, choose C<File> input model.
 =head2 RecordWrapperType => Str
 
   Specify RecordIO as the value when input data is in raw format but the
-training algorithm requires the RecordIO format, in which case, Amazon
+training algorithm requires the RecordIO format. In this case, Amazon
 SageMaker wraps each individual S3 object in a RecordIO record. If the
 input data is already in RecordIO format, you don't need to set this
 attribute. For more information, see Create a Dataset Using RecordIO
 (https://mxnet.incubator.apache.org/architecture/note_data_loading.html#data-format).
 
-In FILE mode, leave this field unset or set it to None.
+In File mode, leave this field unset or set it to None.
+
+
+=head2 ShuffleConfig => L<Paws::SageMaker::ShuffleConfig>
+
+  A configuration for a shuffle option for input data in a channel. If
+you use C<S3Prefix> for C<S3DataType>, this shuffles the results of the
+S3 key prefix matches. If you use C<ManifestFile>, the order of the S3
+object references in the C<ManifestFile> is shuffled. If you use
+C<AugmentedManifestFile>, the order of the JSON lines in the
+C<AugmentedManifestFile> is shuffled. The shuffling order is determined
+using the C<Seed> value.
+
+For Pipe input mode, shuffling is done at the start of every epoch.
+With large datasets this ensures that the order of the training data is
+different for each epoch, it helps reduce bias and possible
+overfitting. In a multi-node training job when ShuffleConfig is
+combined with C<S3DataDistributionType> of C<ShardedByS3Key>, the data
+is shuffled across nodes so that the content sent to a particular node
+on the first epoch might be sent to a different node on the second
+epoch.
 
 
 

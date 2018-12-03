@@ -2,6 +2,7 @@
 package Paws::SageMaker::CreateTrainingJob;
   use Moose;
   has AlgorithmSpecification => (is => 'ro', isa => 'Paws::SageMaker::AlgorithmSpecification', required => 1);
+  has EnableNetworkIsolation => (is => 'ro', isa => 'Bool');
   has HyperParameters => (is => 'ro', isa => 'Paws::SageMaker::HyperParameters');
   has InputDataConfig => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Channel]');
   has OutputDataConfig => (is => 'ro', isa => 'Paws::SageMaker::OutputDataConfig', required => 1);
@@ -38,23 +39,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $api.sagemaker = Paws->service('SageMaker');
     my $CreateTrainingJobResponse = $api . sagemaker->CreateTrainingJob(
       AlgorithmSpecification => {
-        TrainingInputMode => 'Pipe',    # values: Pipe, File
+        TrainingInputMode => 'Pipe',           # values: Pipe, File
+        AlgorithmName     => 'MyArnOrName',    # min: 1, max: 170; OPTIONAL
         MetricDefinitions => [
           {
-            Name  => 'MyMetricName',     # min: 1, max: 255
-            Regex => 'MyMetricRegex',    # min: 1, max: 500
+            Name  => 'MyMetricName',           # min: 1, max: 255
+            Regex => 'MyMetricRegex',          # min: 1, max: 500
 
           },
           ...
-        ],                               # max: 20; OPTIONAL
-        TrainingImage => 'MyAlgorithmImage',    # max: 255; OPTIONAL
+        ],                                     # max: 20; OPTIONAL
+        TrainingImage => 'MyAlgorithmImage',   # max: 255; OPTIONAL
       },
       OutputDataConfig => {
-        S3OutputPath => 'MyS3Uri',              # max: 1024
-        KmsKeyId     => 'MyKmsKeyId',           # max: 2048; OPTIONAL
+        S3OutputPath => 'MyS3Uri',             # max: 1024
+        KmsKeyId     => 'MyKmsKeyId',          # max: 2048; OPTIONAL
       },
       ResourceConfig => {
-        InstanceCount => 1,                     # min: 1
+        InstanceCount => 1,                    # min: 1
         InstanceType  => 'ml.m4.xlarge'
         , # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge
         VolumeSizeInGB => 1,               # min: 1
@@ -64,8 +66,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       StoppingCondition => {
         MaxRuntimeInSeconds => 1,          # min: 1; OPTIONAL
       },
-      TrainingJobName => 'MyTrainingJobName',
-      HyperParameters => {
+      TrainingJobName        => 'MyTrainingJobName',
+      EnableNetworkIsolation => 1,                     # OPTIONAL
+      HyperParameters        => {
         'MyParameterKey' => 'MyParameterValue', # key: max: 256, value: max: 256
       },    # OPTIONAL
       InputDataConfig => [
@@ -73,8 +76,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ChannelName => 'MyChannelName',    # min: 1, max: 64
           DataSource  => {
             S3DataSource => {
-              S3DataType => 'ManifestFile',    # values: ManifestFile, S3Prefix
-              S3Uri      => 'MyS3Uri',         # max: 1024
+              S3DataType => 'ManifestFile'
+              ,    # values: ManifestFile, S3Prefix, AugmentedManifestFile
+              S3Uri          => 'MyS3Uri',    # max: 1024
+              AttributeNames => [
+                'MyAttributeName', ...        # min: 1, max: 256
+              ],                              # max: 16; OPTIONAL
               S3DataDistributionType => 'FullyReplicated'
               ,    # values: FullyReplicated, ShardedByS3Key; OPTIONAL
             },
@@ -84,6 +91,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ContentType     => 'MyContentType',    # max: 256; OPTIONAL
           InputMode       => 'Pipe',             # values: Pipe, File
           RecordWrapperType => 'None',    # values: None, RecordIO; OPTIONAL
+          ShuffleConfig     => {
+            Seed => 1,
+
+          },                              # OPTIONAL
         },
         ...
       ],                                  # OPTIONAL
@@ -126,6 +137,20 @@ Algorithms (http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
 For information about providing your own algorithms, see Using Your Own
 Algorithms with Amazon SageMaker
 (http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html).
+
+
+
+=head2 EnableNetworkIsolation => Bool
+
+Isolates the training container. No inbound or outbound network calls
+can be made, except for calls between peers within a training cluster
+for distributed training. If network isolation is used for training
+jobs that are configured to use a VPC, Amazon SageMaker downloads and
+uploads customer data and model artifacts through the specifed VPC, but
+the training container does not have network access.
+
+The Semantic Segmentation built-in algorithm does not support network
+isolation.
 
 
 
@@ -185,8 +210,8 @@ specify an instance count greater than 1.
 
 =head2 B<REQUIRED> RoleArn => Str
 
-The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can
-assume to perform tasks on your behalf.
+The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker
+assumes to perform tasks on your behalf.
 
 During model training, Amazon SageMaker needs your permission to read
 input data from an S3 bucket, download a Docker image that contains

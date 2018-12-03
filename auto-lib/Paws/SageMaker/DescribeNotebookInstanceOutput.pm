@@ -1,7 +1,10 @@
 
 package Paws::SageMaker::DescribeNotebookInstanceOutput;
   use Moose;
+  has AcceleratorTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has AdditionalCodeRepositories => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has CreationTime => (is => 'ro', isa => 'Str');
+  has DefaultCodeRepository => (is => 'ro', isa => 'Str');
   has DirectInternetAccess => (is => 'ro', isa => 'Str');
   has FailureReason => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Str');
@@ -29,10 +32,47 @@ Paws::SageMaker::DescribeNotebookInstanceOutput
 =head1 ATTRIBUTES
 
 
+=head2 AcceleratorTypes => ArrayRef[Str|Undef]
+
+A list of the Elastic Inference (EI) instance types associated with
+this notebook instance. Currently only one EI instance type can be
+associated with a notebook instance. For more information, see Using
+Elastic Inference in Amazon SageMaker
+(http://docs.aws.amazon.com/sagemaker/latest/dg/ei.html).
+
+
+=head2 AdditionalCodeRepositories => ArrayRef[Str|Undef]
+
+An array of up to 3 git repositories associated with the notebook
+instance. These can be either the names of git repositories stored as
+resources in your account, or the URL of git repositories in AWS
+CodeCommit
+(http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
+or in any other git repository. These repositories are cloned at the
+same level as the default repository of your notebook instance. For
+more information, see Associating Git Repositories with Amazon
+SageMaker Notebook Instances
+(http://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html).
+
+
 =head2 CreationTime => Str
 
 A timestamp. Use this parameter to return the time when the notebook
 instance was created
+
+
+=head2 DefaultCodeRepository => Str
+
+The git repository associated with the notebook instance as its default
+code repository. This can be either the name of a git repository stored
+as a resource in your account, or the URL of a git repository in AWS
+CodeCommit
+(http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
+or in any other git repository. When you open a notebook instance, it
+opens in the directory that contains this repository. For more
+information, see Associating Git Repositories with Amazon SageMaker
+Notebook Instances
+(http://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html).
 
 
 =head2 DirectInternetAccess => Str

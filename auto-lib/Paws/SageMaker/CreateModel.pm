@@ -1,9 +1,11 @@
 
 package Paws::SageMaker::CreateModel;
   use Moose;
+  has Containers => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::ContainerDefinition]');
+  has EnableNetworkIsolation => (is => 'ro', isa => 'Bool');
   has ExecutionRoleArn => (is => 'ro', isa => 'Str', required => 1);
   has ModelName => (is => 'ro', isa => 'Str', required => 1);
-  has PrimaryContainer => (is => 'ro', isa => 'Paws::SageMaker::ContainerDefinition', required => 1);
+  has PrimaryContainer => (is => 'ro', isa => 'Paws::SageMaker::ContainerDefinition');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Tag]');
   has VpcConfig => (is => 'ro', isa => 'Paws::SageMaker::VpcConfig');
 
@@ -34,15 +36,30 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateModelOutput = $api . sagemaker->CreateModel(
       ExecutionRoleArn => 'MyRoleArn',
       ModelName        => 'MyModelName',
-      PrimaryContainer => {
-        Image             => 'MyImage',                # max: 255
+      Containers       => [
+        {
+          ContainerHostname => 'MyContainerHostname',    # max: 63; OPTIONAL
+          Environment       => {
+            'MyEnvironmentKey' =>
+              'MyEnvironmentValue',    # key: max: 1024, value: max: 1024
+          },    # max: 16; OPTIONAL
+          Image            => 'MyImage',        # max: 255; OPTIONAL
+          ModelDataUrl     => 'MyUrl',          # max: 1024; OPTIONAL
+          ModelPackageName => 'MyArnOrName',    # min: 1, max: 170; OPTIONAL
+        },
+        ...
+      ],                                        # OPTIONAL
+      EnableNetworkIsolation => 1,              # OPTIONAL
+      PrimaryContainer       => {
         ContainerHostname => 'MyContainerHostname',    # max: 63; OPTIONAL
         Environment       => {
           'MyEnvironmentKey' =>
             'MyEnvironmentValue',    # key: max: 1024, value: max: 1024
         },    # max: 16; OPTIONAL
-        ModelDataUrl => 'MyUrl',    # max: 1024; OPTIONAL
-      },
+        Image            => 'MyImage',        # max: 255; OPTIONAL
+        ModelDataUrl     => 'MyUrl',          # max: 1024; OPTIONAL
+        ModelPackageName => 'MyArnOrName',    # min: 1, max: 170; OPTIONAL
+      },    # OPTIONAL
       Tags => [
         {
           Key   => 'MyTagKey',      # min: 1, max: 128
@@ -73,6 +90,22 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head1 ATTRIBUTES
 
 
+=head2 Containers => ArrayRef[L<Paws::SageMaker::ContainerDefinition>]
+
+Specifies the containers in the inference pipeline.
+
+
+
+=head2 EnableNetworkIsolation => Bool
+
+Isolates the model container. No inbound or outbound network calls can
+be made to or from the model container.
+
+The Semantic Segmentation built-in algorithm does not support network
+isolation.
+
+
+
 =head2 B<REQUIRED> ExecutionRoleArn => Str
 
 The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker
@@ -93,7 +126,7 @@ The name of the new model.
 
 
 
-=head2 B<REQUIRED> PrimaryContainer => L<Paws::SageMaker::ContainerDefinition>
+=head2 PrimaryContainer => L<Paws::SageMaker::ContainerDefinition>
 
 The location of the primary docker image containing inference code,
 associated artifacts, and custom environment map that the inference

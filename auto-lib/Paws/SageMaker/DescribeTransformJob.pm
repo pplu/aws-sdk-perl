@@ -33,10 +33,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $BatchStrategy = $DescribeTransformJobResponse->BatchStrategy;
-    my $CreationTime  = $DescribeTransformJobResponse->CreationTime;
-    my $Environment   = $DescribeTransformJobResponse->Environment;
-    my $FailureReason = $DescribeTransformJobResponse->FailureReason;
+    my $BatchStrategy  = $DescribeTransformJobResponse->BatchStrategy;
+    my $CreationTime   = $DescribeTransformJobResponse->CreationTime;
+    my $Environment    = $DescribeTransformJobResponse->Environment;
+    my $FailureReason  = $DescribeTransformJobResponse->FailureReason;
+    my $LabelingJobArn = $DescribeTransformJobResponse->LabelingJobArn;
     my $MaxConcurrentTransforms =
       $DescribeTransformJobResponse->MaxConcurrentTransforms;
     my $MaxPayloadInMB     = $DescribeTransformJobResponse->MaxPayloadInMB;

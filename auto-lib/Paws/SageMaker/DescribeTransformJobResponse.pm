@@ -5,6 +5,7 @@ package Paws::SageMaker::DescribeTransformJobResponse;
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
   has Environment => (is => 'ro', isa => 'Paws::SageMaker::TransformEnvironmentMap');
   has FailureReason => (is => 'ro', isa => 'Str');
+  has LabelingJobArn => (is => 'ro', isa => 'Str');
   has MaxConcurrentTransforms => (is => 'ro', isa => 'Int');
   has MaxPayloadInMB => (is => 'ro', isa => 'Int');
   has ModelName => (is => 'ro', isa => 'Str', required => 1);
@@ -48,6 +49,12 @@ A timestamp that shows when the transform Job was created.
 =head2 FailureReason => Str
 
 If the transform job failed, the reason that it failed.
+
+
+=head2 LabelingJobArn => Str
+
+The Amazon Resource Name (ARN) of the Amazon SageMaker Ground Truth
+labeling job that created the transform or training job.
 
 
 =head2 MaxConcurrentTransforms => Int

@@ -1,6 +1,8 @@
 package Paws::SageMaker::NotebookInstanceSummary;
   use Moose;
+  has AdditionalCodeRepositories => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has CreationTime => (is => 'ro', isa => 'Str');
+  has DefaultCodeRepository => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Str');
   has LastModifiedTime => (is => 'ro', isa => 'Str');
   has NotebookInstanceArn => (is => 'ro', isa => 'Str', required => 1);
@@ -27,14 +29,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SageMaker::NotebookInstanceSummary object:
 
-  $service_obj->Method(Att1 => { CreationTime => $value, ..., Url => $value  });
+  $service_obj->Method(Att1 => { AdditionalCodeRepositories => $value, ..., Url => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::NotebookInstanceSummary object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->CreationTime
+  $result->Att1->AdditionalCodeRepositories
 
 =head1 DESCRIPTION
 
@@ -43,9 +45,37 @@ Provides summary information for an Amazon SageMaker notebook instance.
 =head1 ATTRIBUTES
 
 
+=head2 AdditionalCodeRepositories => ArrayRef[Str|Undef]
+
+  An array of up to 3 git repositories associated with the notebook
+instance. These can be either the names of git repositories stored as
+resources in your account, or the URL of git repositories in AWS
+CodeCommit
+(http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
+or in any other git repository. These repositories are cloned at the
+same level as the default repository of your notebook instance. For
+more information, see Associating Git Repositories with Amazon
+SageMaker Notebook Instances
+(http://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html).
+
+
 =head2 CreationTime => Str
 
   A timestamp that shows when the notebook instance was created.
+
+
+=head2 DefaultCodeRepository => Str
+
+  The git repository associated with the notebook instance as its default
+code repository. This can be either the name of a git repository stored
+as a resource in your account, or the URL of a git repository in AWS
+CodeCommit
+(http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
+or in any other git repository. When you open a notebook instance, it
+opens in the directory that contains this repository. For more
+information, see Associating Git Repositories with Amazon SageMaker
+Notebook Instances
+(http://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html).
 
 
 =head2 InstanceType => Str

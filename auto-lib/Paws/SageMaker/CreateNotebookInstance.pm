@@ -1,6 +1,9 @@
 
 package Paws::SageMaker::CreateNotebookInstance;
   use Moose;
+  has AcceleratorTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has AdditionalCodeRepositories => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has DefaultCodeRepository => (is => 'ro', isa => 'Str');
   has DirectInternetAccess => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
   has KmsKeyId => (is => 'ro', isa => 'Str');
@@ -40,8 +43,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InstanceType         => 'ml.t2.medium',
       NotebookInstanceName => 'MyNotebookInstanceName',
       RoleArn              => 'MyRoleArn',
-      DirectInternetAccess => 'Enabled',                  # OPTIONAL
-      KmsKeyId             => 'MyKmsKeyId',               # OPTIONAL
+      AcceleratorTypes     => [
+        'ml.eia1.medium',
+        ...    # values: ml.eia1.medium, ml.eia1.large, ml.eia1.xlarge
+      ],       # OPTIONAL
+      AdditionalCodeRepositories => [
+        'MyCodeRepositoryNameOrUrl', ...    # min: 1, max: 1024
+      ],                                    # OPTIONAL
+      DefaultCodeRepository => 'MyCodeRepositoryNameOrUrl',    # OPTIONAL
+      DirectInternetAccess  => 'Enabled',                      # OPTIONAL
+      KmsKeyId              => 'MyKmsKeyId',                   # OPTIONAL
       LifecycleConfigName => 'MyNotebookInstanceLifecycleConfigName', # OPTIONAL
       SecurityGroupIds    => [
         'MySecurityGroupId', ...                                      # max: 32
@@ -70,6 +81,46 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head1 ATTRIBUTES
 
 
+=head2 AcceleratorTypes => ArrayRef[Str|Undef]
+
+A list of Elastic Inference (EI) instance types to associate with this
+notebook instance. Currently, only one instance type can be associated
+with a notebook intance. For more information, see Using Elastic
+Inference in Amazon SageMaker
+(http://docs.aws.amazon.com/sagemaker/latest/dg/ei.html).
+
+
+
+=head2 AdditionalCodeRepositories => ArrayRef[Str|Undef]
+
+An array of up to 3 git repositories to associate with the notebook
+instance. These can be either the names of git repositories stored as
+resources in your account, or the URL of git repositories in AWS
+CodeCommit
+(http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
+or in any other git repository. These repositories are cloned at the
+same level as the default repository of your notebook instance. For
+more information, see Associating Git Repositories with Amazon
+SageMaker Notebook Instances
+(http://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html).
+
+
+
+=head2 DefaultCodeRepository => Str
+
+A git repository to associate with the notebook instance as its default
+code repository. This can be either the name of a git repository stored
+as a resource in your account, or the URL of a git repository in AWS
+CodeCommit
+(http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
+or in any other git repository. When you open a notebook instance, it
+opens in the directory that contains this repository. For more
+information, see Associating Git Repositories with Amazon SageMaker
+Notebook Instances
+(http://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html).
+
+
+
 =head2 DirectInternetAccess => Str
 
 Sets whether Amazon SageMaker provides internet access to the notebook
@@ -96,10 +147,7 @@ Valid values are: C<"ml.t2.medium">, C<"ml.t2.large">, C<"ml.t2.xlarge">, C<"ml.
 
 If you provide a AWS KMS key ID, Amazon SageMaker uses it to encrypt
 data at rest on the ML storage volume that is attached to your notebook
-instance. The KMS key you provide must be enabled. For information, see
-Enabling and Disabling Keys
-(http://docs.aws.amazon.com/kms/latest/developerguide/enabling-keys.html)
-in the I<AWS Key Management Service Developer Guide>.
+instance.
 
 
 

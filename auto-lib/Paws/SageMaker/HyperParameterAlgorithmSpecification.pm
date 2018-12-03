@@ -1,5 +1,6 @@
 package Paws::SageMaker::HyperParameterAlgorithmSpecification;
   use Moose;
+  has AlgorithmName => (is => 'ro', isa => 'Str');
   has MetricDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::MetricDefinition]');
   has TrainingImage => (is => 'ro', isa => 'Str');
   has TrainingInputMode => (is => 'ro', isa => 'Str', required => 1);
@@ -22,14 +23,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SageMaker::HyperParameterAlgorithmSpecification object:
 
-  $service_obj->Method(Att1 => { MetricDefinitions => $value, ..., TrainingInputMode => $value  });
+  $service_obj->Method(Att1 => { AlgorithmName => $value, ..., TrainingInputMode => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::HyperParameterAlgorithmSpecification object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->MetricDefinitions
+  $result->Att1->AlgorithmName
 
 =head1 DESCRIPTION
 
@@ -37,6 +38,13 @@ Specifies which training algorithm to use for training jobs that a
 hyperparameter tuning job launches and the metrics to monitor.
 
 =head1 ATTRIBUTES
+
+
+=head2 AlgorithmName => Str
+
+  The name of the resource algorithm to use for the hyperparameter tuning
+job. If you specify a value for this parameter, do not specify a value
+for C<TrainingImage>.
 
 
 =head2 MetricDefinitions => ArrayRef[L<Paws::SageMaker::MetricDefinition>]
