@@ -10980,6 +10980,10 @@ quickly as possible. However, a small delay might occur.
 
 =item [ElasticGpuSpecification => ArrayRef[L<Paws::EC2::ElasticGpuSpecification>]]
 
+=item [ElasticInferenceAccelerators => ArrayRef[L<Paws::EC2::ElasticInferenceAccelerator>]]
+
+=item [HibernationOptions => L<Paws::EC2::HibernationOptionsRequest>]
+
 =item [IamInstanceProfile => L<Paws::EC2::IamInstanceProfileSpecification>]
 
 =item [ImageId => Str]
@@ -10999,6 +11003,8 @@ quickly as possible. However, a small delay might occur.
 =item [KeyName => Str]
 
 =item [LaunchTemplate => L<Paws::EC2::LaunchTemplateSpecification>]
+
+=item [LicenseSpecifications => ArrayRef[L<Paws::EC2::LicenseConfigurationRequest>]]
 
 =item [Monitoring => L<Paws::EC2::RunInstancesMonitoringEnabled>]
 
@@ -11222,6 +11228,8 @@ the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item [Force => Bool]
 
+=item [Hibernate => Bool]
+
 
 =back
 
@@ -11230,6 +11238,15 @@ Each argument is described in detail in: L<Paws::EC2::StopInstances>
 Returns: a L<Paws::EC2::StopInstancesResult> instance
 
 Stops an Amazon EBS-backed instance.
+
+You can use the Stop action to hibernate an instance if the instance is
+enabled for hibernation
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#enabling-hibernation)
+and it meets the hibernation prerequisites
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#hibernating-prerequisites).
+For more information, see Hibernate Your Instance
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html) in
+the I<Amazon Elastic Compute Cloud User Guide>.
 
 We don't charge usage for a stopped instance, or data transfer fees;
 however, your root partition Amazon EBS volume remains and continues to
@@ -11242,21 +11259,27 @@ when it was stopped. Every time you start your Linux instance, Amazon
 EC2 charges a one-minute minimum for instance usage, and thereafter
 charges per second for instance usage.
 
-You can't start or stop Spot Instances, and you can't stop instance
-store-backed instances.
+You can't start, stop, or hibernate Spot Instances, and you can't stop
+or hibernate instance store-backed instances. For information about
+using hibernation for Spot Instances, see Hibernating Interrupted Spot
+Instances
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-interruptions.html#hibernate-spot-instances)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
-When you stop an instance, we shut it down. You can restart your
-instance at any time. Before stopping an instance, make sure it is in a
-state from which it can be restarted. Stopping an instance does not
-preserve data stored in RAM.
+When you stop or hibernate an instance, we shut it down. You can
+restart your instance at any time. Before stopping or hibernating an
+instance, make sure it is in a state from which it can be restarted.
+Stopping an instance does not preserve data stored in RAM, but
+hibernating an instance does preserve data stored in RAM. If an
+instance cannot hibernate successfully, a normal shutdown occurs.
 
-Stopping an instance is different to rebooting or terminating it. For
-example, when you stop an instance, the root device and any other
-devices attached to the instance persist. When you terminate an
-instance, the root device and any other devices attached during the
-instance launch are automatically deleted. For more information about
-the differences between rebooting, stopping, and terminating instances,
-see Instance Lifecycle
+Stopping and hibernating an instance is different to rebooting or
+terminating it. For example, when you stop or hibernate an instance,
+the root device and any other devices attached to the instance persist.
+When you terminate an instance, the root device and any other devices
+attached during the instance launch are automatically deleted. For more
+information about the differences between rebooting, stopping,
+hibernating, and terminating instances, see Instance Lifecycle
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 

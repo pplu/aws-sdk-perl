@@ -11,6 +11,8 @@ package Paws::EC2::RunInstances;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has EbsOptimized => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'ebsOptimized' );
   has ElasticGpuSpecification => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ElasticGpuSpecification]');
+  has ElasticInferenceAccelerators => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ElasticInferenceAccelerator]', traits => ['NameInRequest'], request_name => 'ElasticInferenceAccelerator' );
+  has HibernationOptions => (is => 'ro', isa => 'Paws::EC2::HibernationOptionsRequest');
   has IamInstanceProfile => (is => 'ro', isa => 'Paws::EC2::IamInstanceProfileSpecification', traits => ['NameInRequest'], request_name => 'iamInstanceProfile' );
   has ImageId => (is => 'ro', isa => 'Str');
   has InstanceInitiatedShutdownBehavior => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceInitiatedShutdownBehavior' );
@@ -21,6 +23,7 @@ package Paws::EC2::RunInstances;
   has KernelId => (is => 'ro', isa => 'Str');
   has KeyName => (is => 'ro', isa => 'Str');
   has LaunchTemplate => (is => 'ro', isa => 'Paws::EC2::LaunchTemplateSpecification');
+  has LicenseSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LicenseConfigurationRequest]', traits => ['NameInRequest'], request_name => 'LicenseSpecification' );
   has MaxCount => (is => 'ro', isa => 'Int', required => 1);
   has MinCount => (is => 'ro', isa => 'Int', required => 1);
   has Monitoring => (is => 'ro', isa => 'Paws::EC2::RunInstancesMonitoringEnabled');
@@ -104,10 +107,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                            # OPTIONAL
+      ElasticInferenceAccelerators => [
+        {
+          Type => 'MyString',
+
+        },
+        ...
+      ],                            # OPTIONAL
+      HibernationOptions => {
+        Configured => 1,            # OPTIONAL
+      },    # OPTIONAL
       IamInstanceProfile => {
         Arn  => 'MyString',
         Name => 'MyString',
-      },                            # OPTIONAL
+      },    # OPTIONAL
       ImageId                           => 'MyString',    # OPTIONAL
       InstanceInitiatedShutdownBehavior => 'stop',        # OPTIONAL
       InstanceMarketOptions             => {
@@ -132,6 +145,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         LaunchTemplateName => 'MyString',
         Version            => 'MyString',
       },                                                              # OPTIONAL
+      LicenseSpecifications =>
+        [ { LicenseConfigurationArn => 'MyString', }, ... ],          # OPTIONAL
       Monitoring => {
         Enabled => 1,                                                 # OPTIONAL
 
@@ -298,6 +313,21 @@ An elastic GPU to associate with the instance.
 
 
 
+=head2 ElasticInferenceAccelerators => ArrayRef[L<Paws::EC2::ElasticInferenceAccelerator>]
+
+An elastic inference accelerator.
+
+
+
+=head2 HibernationOptions => L<Paws::EC2::HibernationOptionsRequest>
+
+Indicates whether an instance is enabled for hibernation. For more
+information, see Hibernate Your Instance
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html) in
+the I<Amazon Elastic Compute Cloud User Guide>.
+
+
+
 =head2 IamInstanceProfile => L<Paws::EC2::IamInstanceProfileSpecification>
 
 The IAM instance profile.
@@ -390,6 +420,12 @@ The launch template to use to launch the instances. Any parameters that
 you specify in RunInstances override the same parameters in the launch
 template. You can specify either the name or ID of a launch template,
 but not both.
+
+
+
+=head2 LicenseSpecifications => ArrayRef[L<Paws::EC2::LicenseConfigurationRequest>]
+
+The license configurations.
 
 
 

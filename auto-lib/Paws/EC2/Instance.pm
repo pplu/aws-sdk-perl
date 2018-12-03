@@ -9,7 +9,9 @@ package Paws::EC2::Instance;
   has CpuOptions => (is => 'ro', isa => 'Paws::EC2::CpuOptions', request_name => 'cpuOptions', traits => ['NameInRequest']);
   has EbsOptimized => (is => 'ro', isa => 'Bool', request_name => 'ebsOptimized', traits => ['NameInRequest']);
   has ElasticGpuAssociations => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ElasticGpuAssociation]', request_name => 'elasticGpuAssociationSet', traits => ['NameInRequest']);
+  has ElasticInferenceAcceleratorAssociations => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ElasticInferenceAcceleratorAssociation]', request_name => 'elasticInferenceAcceleratorAssociationSet', traits => ['NameInRequest']);
   has EnaSupport => (is => 'ro', isa => 'Bool', request_name => 'enaSupport', traits => ['NameInRequest']);
+  has HibernationOptions => (is => 'ro', isa => 'Paws::EC2::HibernationOptions', request_name => 'hibernationOptions', traits => ['NameInRequest']);
   has Hypervisor => (is => 'ro', isa => 'Str', request_name => 'hypervisor', traits => ['NameInRequest']);
   has IamInstanceProfile => (is => 'ro', isa => 'Paws::EC2::IamInstanceProfile', request_name => 'iamInstanceProfile', traits => ['NameInRequest']);
   has ImageId => (is => 'ro', isa => 'Str', request_name => 'imageId', traits => ['NameInRequest']);
@@ -19,6 +21,7 @@ package Paws::EC2::Instance;
   has KernelId => (is => 'ro', isa => 'Str', request_name => 'kernelId', traits => ['NameInRequest']);
   has KeyName => (is => 'ro', isa => 'Str', request_name => 'keyName', traits => ['NameInRequest']);
   has LaunchTime => (is => 'ro', isa => 'Str', request_name => 'launchTime', traits => ['NameInRequest']);
+  has Licenses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LicenseConfiguration]', request_name => 'licenseSet', traits => ['NameInRequest']);
   has Monitoring => (is => 'ro', isa => 'Paws::EC2::Monitoring', request_name => 'monitoring', traits => ['NameInRequest']);
   has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceNetworkInterface]', request_name => 'networkInterfaceSet', traits => ['NameInRequest']);
   has Placement => (is => 'ro', isa => 'Paws::EC2::Placement', request_name => 'placement', traits => ['NameInRequest']);
@@ -128,9 +131,19 @@ charges apply when using an EBS Optimized instance.
   The Elastic GPU associated with the instance.
 
 
+=head2 ElasticInferenceAcceleratorAssociations => ArrayRef[L<Paws::EC2::ElasticInferenceAcceleratorAssociation>]
+
+  The elastic inference accelerator associated with the instance.
+
+
 =head2 EnaSupport => Bool
 
   Specifies whether enhanced networking with ENA is enabled.
+
+
+=head2 HibernationOptions => L<Paws::EC2::HibernationOptions>
+
+  Indicates whether the instance is enabled for hibernation.
 
 
 =head2 Hypervisor => Str
@@ -177,6 +190,11 @@ associated key pair.
 =head2 LaunchTime => Str
 
   The time the instance was launched.
+
+
+=head2 Licenses => ArrayRef[L<Paws::EC2::LicenseConfiguration>]
+
+  The license configurations.
 
 
 =head2 Monitoring => L<Paws::EC2::Monitoring>

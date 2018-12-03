@@ -35,18 +35,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',    # OPTIONAL
-          Values => [
-            'MyString', ...        # OPTIONAL
-          ],                       # OPTIONAL
+          Name   => 'MyString',
+          Values => [ 'MyString', ... ],    # OPTIONAL
         },
         ...
-      ],                           # OPTIONAL
-      InstanceIds => [
-        'MyString', ...            # OPTIONAL
-      ],                           # OPTIONAL
-      MaxResults => 1,             # OPTIONAL
-      NextToken  => 'MyString',    # OPTIONAL
+      ],                                    # OPTIONAL
+      InstanceIds => [ 'MyString', ... ],   # OPTIONAL
+      MaxResults  => 1,                     # OPTIONAL
+      NextToken   => 'MyString',            # OPTIONAL
     );
 
     # Results:
@@ -131,6 +127,12 @@ EC2-Classic only.
 
 C<group-name> - The name of the security group for the instance.
 EC2-Classic only.
+
+=item *
+
+C<hibernation-options.configured> - A Boolean that indicates whether
+the instance is enabled for hibernation. A value of C<true> means that
+the instance is enabled for hibernation.
 
 =item *
 

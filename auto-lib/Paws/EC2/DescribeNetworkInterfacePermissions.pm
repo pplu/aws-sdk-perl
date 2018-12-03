@@ -34,18 +34,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $ec2->DescribeNetworkInterfacePermissions(
       Filters => [
         {
-          Name   => 'MyString',    # OPTIONAL
-          Values => [
-            'MyString', ...        # OPTIONAL
-          ],                       # OPTIONAL
+          Name   => 'MyString',
+          Values => [ 'MyString', ... ],    # OPTIONAL
         },
         ...
-      ],                           # OPTIONAL
-      MaxResults                    => 1,    # OPTIONAL
-      NetworkInterfacePermissionIds => [
-        'MyString', ...                      # OPTIONAL
-      ],                                     # OPTIONAL
-      NextToken => 'MyString',               # OPTIONAL
+      ],                                    # OPTIONAL
+      MaxResults                    => 1,                      # OPTIONAL
+      NetworkInterfacePermissionIds => [ 'MyString', ... ],    # OPTIONAL
+      NextToken                     => 'MyString',             # OPTIONAL
       );
 
     # Results:

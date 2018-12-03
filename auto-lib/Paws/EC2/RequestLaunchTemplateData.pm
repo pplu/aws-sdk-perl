@@ -7,6 +7,8 @@ package Paws::EC2::RequestLaunchTemplateData;
   has DisableApiTermination => (is => 'ro', isa => 'Bool');
   has EbsOptimized => (is => 'ro', isa => 'Bool');
   has ElasticGpuSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ElasticGpuSpecification]', request_name => 'ElasticGpuSpecification', traits => ['NameInRequest']);
+  has ElasticInferenceAccelerators => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LaunchTemplateElasticInferenceAccelerator]', request_name => 'ElasticInferenceAccelerator', traits => ['NameInRequest']);
+  has HibernationOptions => (is => 'ro', isa => 'Paws::EC2::LaunchTemplateHibernationOptionsRequest');
   has IamInstanceProfile => (is => 'ro', isa => 'Paws::EC2::LaunchTemplateIamInstanceProfileSpecificationRequest');
   has ImageId => (is => 'ro', isa => 'Str');
   has InstanceInitiatedShutdownBehavior => (is => 'ro', isa => 'Str');
@@ -14,6 +16,7 @@ package Paws::EC2::RequestLaunchTemplateData;
   has InstanceType => (is => 'ro', isa => 'Str');
   has KernelId => (is => 'ro', isa => 'Str');
   has KeyName => (is => 'ro', isa => 'Str');
+  has LicenseSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LaunchTemplateLicenseConfigurationRequest]', request_name => 'LicenseSpecification', traits => ['NameInRequest']);
   has Monitoring => (is => 'ro', isa => 'Paws::EC2::LaunchTemplatesMonitoringRequest');
   has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LaunchTemplateInstanceNetworkInterfaceSpecificationRequest]', request_name => 'NetworkInterface', traits => ['NameInRequest']);
   has Placement => (is => 'ro', isa => 'Paws::EC2::LaunchTemplatePlacementRequest');
@@ -71,7 +74,7 @@ action.
 
 =head2 CapacityReservationSpecification => L<Paws::EC2::LaunchTemplateCapacityReservationSpecificationRequest>
 
-  Information about the Capacity Reservation targeting option.
+  The Capacity Reservation targeting option.
 
 
 =head2 CpuOptions => L<Paws::EC2::LaunchTemplateCpuOptionsRequest>
@@ -107,6 +110,23 @@ Additional usage charges apply when using an EBS-optimized instance.
 =head2 ElasticGpuSpecifications => ArrayRef[L<Paws::EC2::ElasticGpuSpecification>]
 
   An elastic GPU to associate with the instance.
+
+
+=head2 ElasticInferenceAccelerators => ArrayRef[L<Paws::EC2::LaunchTemplateElasticInferenceAccelerator>]
+
+  The elastic inference accelerator for the instance.
+
+
+=head2 HibernationOptions => L<Paws::EC2::LaunchTemplateHibernationOptionsRequest>
+
+  Indicates whether an instance is enabled for hibernation. This
+parameter is valid only if the instance meets the hibernation
+prerequisites
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#hibernating-prerequisites).
+Hibernation is currently supported only for Amazon Linux. For more
+information, see Hibernate Your Instance
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html) in
+the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 IamInstanceProfile => L<Paws::EC2::LaunchTemplateIamInstanceProfileSpecificationRequest>
@@ -158,6 +178,11 @@ or ImportKeyPair.
 If you do not specify a key pair, you can't connect to the instance
 unless you choose an AMI that is configured to allow users another way
 to log in.
+
+
+=head2 LicenseSpecifications => ArrayRef[L<Paws::EC2::LaunchTemplateLicenseConfigurationRequest>]
+
+  The license configurations.
 
 
 =head2 Monitoring => L<Paws::EC2::LaunchTemplatesMonitoringRequest>
