@@ -56,7 +56,7 @@ traces.
 
 =head2 GroupARN => Str
 
-The ARN that was generated upon create.
+The ARN that was generated upon creation.
 
 
 

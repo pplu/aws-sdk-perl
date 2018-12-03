@@ -21,7 +21,7 @@ Paws::XRay::GetServiceGraphResult
 
 =head2 ContainsOldGroupVersions => Bool
 
-A flag indicating whether or not the group's filter expression has been
+A flag indicating whether the group's filter expression has been
 consistent, or if the returned service graph may show traces from an
 older version of the group's filter expression.
 

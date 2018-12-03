@@ -58,7 +58,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/xra
 
 =head2 B<REQUIRED> EndTime => Str
 
-The end of the time frame for which to generate a graph.
+The end of the timeframe for which to generate a graph.
 
 
 
