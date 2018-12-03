@@ -1,5 +1,5 @@
 
-package Paws::ServiceDiscovery::CreatePublicDnsNamespace;
+package Paws::ServiceDiscovery::CreateHttpNamespace;
   use Moose;
   has CreatorRequestId => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
@@ -7,8 +7,8 @@ package Paws::ServiceDiscovery::CreatePublicDnsNamespace;
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreatePublicDnsNamespace');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServiceDiscovery::CreatePublicDnsNamespaceResponse');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateHttpNamespace');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServiceDiscovery::CreateHttpNamespaceResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -16,33 +16,32 @@ package Paws::ServiceDiscovery::CreatePublicDnsNamespace;
 
 =head1 NAME
 
-Paws::ServiceDiscovery::CreatePublicDnsNamespace - Arguments for method CreatePublicDnsNamespace on L<Paws::ServiceDiscovery>
+Paws::ServiceDiscovery::CreateHttpNamespace - Arguments for method CreateHttpNamespace on L<Paws::ServiceDiscovery>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreatePublicDnsNamespace on the
+This class represents the parameters used for calling the method CreateHttpNamespace on the
 L<AWS Cloud Map|Paws::ServiceDiscovery> service. Use the attributes of this class
-as arguments to method CreatePublicDnsNamespace.
+as arguments to method CreateHttpNamespace.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreatePublicDnsNamespace.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateHttpNamespace.
 
 =head1 SYNOPSIS
 
     my $servicediscovery = Paws->service('ServiceDiscovery');
-    my $CreatePublicDnsNamespaceResponse =
-      $servicediscovery->CreatePublicDnsNamespace(
+    my $CreateHttpNamespaceResponse = $servicediscovery->CreateHttpNamespace(
       Name             => 'MyNamespaceName',
       CreatorRequestId => 'MyResourceId',             # OPTIONAL
       Description      => 'MyResourceDescription',    # OPTIONAL
-      );
+    );
 
     # Results:
-    my $OperationId = $CreatePublicDnsNamespaceResponse->OperationId;
+    my $OperationId = $CreateHttpNamespaceResponse->OperationId;
 
- # Returns a L<Paws::ServiceDiscovery::CreatePublicDnsNamespaceResponse> object.
+    # Returns a L<Paws::ServiceDiscovery::CreateHttpNamespaceResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/servicediscovery/CreatePublicDnsNamespace>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/servicediscovery/CreateHttpNamespace>
 
 =head1 ATTRIBUTES
 
@@ -50,7 +49,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ser
 =head2 CreatorRequestId => Str
 
 A unique string that identifies the request and that allows failed
-C<CreatePublicDnsNamespace> requests to be retried without the risk of
+C<CreateHttpNamespace> requests to be retried without the risk of
 executing the operation twice. C<CreatorRequestId> can be any unique
 string, for example, a date/time stamp.
 
@@ -71,7 +70,7 @@ The name that you want to assign to this namespace.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method CreatePublicDnsNamespace in L<Paws::ServiceDiscovery>
+This class forms part of L<Paws>, documenting arguments for method CreateHttpNamespace in L<Paws::ServiceDiscovery>
 
 =head1 BUGS and CONTRIBUTIONS
 

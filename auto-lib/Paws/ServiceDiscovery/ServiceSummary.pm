@@ -1,7 +1,11 @@
 package Paws::ServiceDiscovery::ServiceSummary;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str');
+  has CreateDate => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+  has DnsConfig => (is => 'ro', isa => 'Paws::ServiceDiscovery::DnsConfig');
+  has HealthCheckConfig => (is => 'ro', isa => 'Paws::ServiceDiscovery::HealthCheckConfig');
+  has HealthCheckCustomConfig => (is => 'ro', isa => 'Paws::ServiceDiscovery::HealthCheckCustomConfig');
   has Id => (is => 'ro', isa => 'Str');
   has InstanceCount => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str');
@@ -42,8 +46,13 @@ A complex type that contains information about a specified service.
 
 =head2 Arn => Str
 
-  The Amazon Resource Name (ARN) that Route 53 assigns to the service
-when you create it.
+  The Amazon Resource Name (ARN) that AWS Cloud Map assigns to the
+service when you create it.
+
+
+=head2 CreateDate => Str
+
+  The date and time that the service was created.
 
 
 =head2 Description => Str
@@ -51,9 +60,24 @@ when you create it.
   The description that you specify when you create the service.
 
 
+=head2 DnsConfig => L<Paws::ServiceDiscovery::DnsConfig>
+
+  
+
+
+=head2 HealthCheckConfig => L<Paws::ServiceDiscovery::HealthCheckConfig>
+
+  
+
+
+=head2 HealthCheckCustomConfig => L<Paws::ServiceDiscovery::HealthCheckCustomConfig>
+
+  
+
+
 =head2 Id => Str
 
-  The ID that Route 53 assigned to the service when you created it.
+  The ID that AWS Cloud Map assigned to the service when you created it.
 
 
 =head2 InstanceCount => Int

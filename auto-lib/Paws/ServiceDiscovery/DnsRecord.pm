@@ -32,8 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceDisc
 
 =head1 DESCRIPTION
 
-A complex type that contains information about the records that you
-want Route 53 to create when you register an instance.
+A complex type that contains information about the Route 53 DNS records
+that you want AWS Cloud Map to create when you register an instance.
 
 =head1 ATTRIBUTES
 
@@ -62,21 +62,22 @@ Note the following:
 
 =item *
 
-B<A, AAAA, and SRV records: You can specify settings for a maximum of
+B<A, AAAA, and SRV records:> You can specify settings for a maximum of
 one A, one AAAA, and one SRV record. You can specify them in any
-combination.>
+combination.
 
 =item *
 
 B<CNAME records:> If you specify C<CNAME> for C<Type>, you can't define
-any other records. This is a limitation of DNSE<mdash>you can't create
-a CNAME record and any other type of record that has the same name as a
+any other records. This is a limitation of DNS: you can't create a
+CNAME record and any other type of record that has the same name as a
 CNAME record.
 
 =item *
 
-B<Alias records:> If you want Route 53 to create an alias record when
-you register an instance, specify C<A> or C<AAAA> for C<Type>.
+B<Alias records:> If you want AWS Cloud Map to create a Route 53 alias
+record when you register an instance, specify C<A> or C<AAAA> for
+C<Type>.
 
 =item *
 
@@ -176,8 +177,8 @@ C<test.backend.example.com>
 
 If you specify settings for an SRV record and if you specify values for
 C<AWS_INSTANCE_IPV4>, C<AWS_INSTANCE_IPV6>, or both in the
-C<RegisterInstance> request, Route 53 automatically creates C<A> and/or
-C<AAAA> records that have the same name as the value of
+C<RegisterInstance> request, AWS Cloud Map automatically creates C<A>
+and/or C<AAAA> records that have the same name as the value of
 C<service-hostname> in the SRV record. You can ignore these records.
 
 

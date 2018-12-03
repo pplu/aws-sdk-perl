@@ -1,6 +1,7 @@
 package Paws::ServiceDiscovery::NamespaceProperties;
   use Moose;
   has DnsProperties => (is => 'ro', isa => 'Paws::ServiceDiscovery::DnsProperties');
+  has HttpProperties => (is => 'ro', isa => 'Paws::ServiceDiscovery::HttpProperties');
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ServiceDiscovery::NamespaceProperties object:
 
-  $service_obj->Method(Att1 => { DnsProperties => $value, ..., DnsProperties => $value  });
+  $service_obj->Method(Att1 => { DnsProperties => $value, ..., HttpProperties => $value  });
 
 =head3 Results returned from an API call
 
@@ -39,8 +40,13 @@ namespace type.
 
 =head2 DnsProperties => L<Paws::ServiceDiscovery::DnsProperties>
 
-  A complex type that contains the ID for the hosted zone that Route 53
-creates when you create a namespace.
+  A complex type that contains the ID for the Route 53 hosted zone that
+AWS Cloud Map creates when you create a namespace.
+
+
+=head2 HttpProperties => L<Paws::ServiceDiscovery::HttpProperties>
+
+  A complex type that contains the name of an HTTP namespace.
 
 
 
