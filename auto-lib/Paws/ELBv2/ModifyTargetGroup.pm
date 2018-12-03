@@ -1,6 +1,7 @@
 
 package Paws::ELBv2::ModifyTargetGroup;
   use Moose;
+  has HealthCheckEnabled => (is => 'ro', isa => 'Bool');
   has HealthCheckIntervalSeconds => (is => 'ro', isa => 'Int');
   has HealthCheckPath => (is => 'ro', isa => 'Str');
   has HealthCheckPort => (is => 'ro', isa => 'Str');
@@ -58,12 +59,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 =head1 ATTRIBUTES
 
 
+=head2 HealthCheckEnabled => Bool
+
+Indicates whether health checks are enabled.
+
+
+
 =head2 HealthCheckIntervalSeconds => Int
 
 The approximate amount of time, in seconds, between health checks of an
 individual target. For Application Load Balancers, the range is
 5E<ndash>300 seconds. For Network Load Balancers, the supported values
 are 10 or 30 seconds.
+
+If the protocol of the target group is TCP, you can't modify this
+setting.
 
 
 
@@ -87,12 +97,18 @@ The protocol the load balancer uses when performing health checks on
 targets. The TCP protocol is supported only if the protocol of the
 target group is TCP.
 
-Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">
+If the protocol of the target group is TCP, you can't modify this
+setting.
+
+Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">, C<"UDP">
 
 =head2 HealthCheckTimeoutSeconds => Int
 
 [HTTP/HTTPS health checks] The amount of time, in seconds, during which
 no response means a failed health check.
+
+If the protocol of the target group is TCP, you can't modify this
+setting.
 
 
 
@@ -107,6 +123,9 @@ considering an unhealthy target healthy.
 
 [HTTP/HTTPS health checks] The HTTP codes to use when checking for a
 successful response from a target.
+
+If the protocol of the target group is TCP, you can't modify this
+setting.
 
 
 

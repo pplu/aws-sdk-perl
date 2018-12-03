@@ -60,15 +60,22 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 The actions.
 
-If the action type is C<forward>, you can specify a single target
-group.
+If the action type is C<forward>, you specify a target group. The
+protocol of the target group must be HTTP or HTTPS for an Application
+Load Balancer or TCP for a Network Load Balancer.
 
-If the action type is C<authenticate-oidc>, you can use an identity
-provider that is OpenID Connect (OIDC) compliant to authenticate users
-as they access your application.
+[HTTPS listener] If the action type is C<authenticate-oidc>, you
+authenticate users through an identity provider that is OpenID Connect
+(OIDC) compliant.
 
-If the action type is C<authenticate-cognito>, you can use Amazon
-Cognito to authenticate users as they access your application.
+[HTTPS listener] If the action type is C<authenticate-cognito>, you
+authenticate users through the user pools supported by Amazon Cognito.
+
+[Application Load Balancer] If the action type is C<redirect>, you
+redirect specified client requests from one URL to another.
+
+[Application Load Balancer] If the action type is C<fixed-response>,
+you drop specified client requests and return a custom HTTP response.
 
 
 

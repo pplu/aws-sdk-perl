@@ -33,14 +33,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       JobUpdate => {
         AllocatedCapacity => 1,    # OPTIONAL
         Command           => {
-          Name           => 'MyGenericString',
+          Name           => 'MyGenericString',           # OPTIONAL
           ScriptLocation => 'MyScriptLocationString',    # OPTIONAL
         },    # OPTIONAL
         Connections => {
-          Connections => [ 'MyGenericString', ... ],    # OPTIONAL
+          Connections => [
+            'MyGenericString', ...    # OPTIONAL
+          ],                          # OPTIONAL
         },    # OPTIONAL
-        DefaultArguments => { 'MyGenericString' => 'MyGenericString', }
-        ,     # OPTIONAL
+        DefaultArguments => {
+          'MyGenericString' =>
+            'MyGenericString',    # key: OPTIONAL, value: OPTIONAL
+        },    # OPTIONAL
         Description       => 'MyDescriptionString',    # max: 2048; OPTIONAL
         ExecutionProperty => {
           MaxConcurrentRuns => 1,                      # OPTIONAL

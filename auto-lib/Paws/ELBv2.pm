@@ -94,6 +94,11 @@ package Paws::ELBv2;
     my $call_object = $self->new_with_coercions('Paws::ELBv2::DescribeLoadBalancers', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeProvisionedCapacity {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ELBv2::DescribeProvisionedCapacity', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeRules {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ELBv2::DescribeRules', @_);
@@ -132,6 +137,11 @@ package Paws::ELBv2;
   sub ModifyLoadBalancerAttributes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ELBv2::ModifyLoadBalancerAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyProvisionedCapacity {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ELBv2::ModifyProvisionedCapacity', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ModifyRule {
@@ -256,7 +266,7 @@ package Paws::ELBv2;
   }
 
 
-  sub operations { qw/AddListenerCertificates AddTags CreateListener CreateLoadBalancer CreateRule CreateTargetGroup DeleteListener DeleteLoadBalancer DeleteRule DeleteTargetGroup DeregisterTargets DescribeAccountLimits DescribeListenerCertificates DescribeListeners DescribeLoadBalancerAttributes DescribeLoadBalancers DescribeRules DescribeSSLPolicies DescribeTags DescribeTargetGroupAttributes DescribeTargetGroups DescribeTargetHealth ModifyListener ModifyLoadBalancerAttributes ModifyRule ModifyTargetGroup ModifyTargetGroupAttributes RegisterTargets RemoveListenerCertificates RemoveTags SetIpAddressType SetRulePriorities SetSecurityGroups SetSubnets / }
+  sub operations { qw/AddListenerCertificates AddTags CreateListener CreateLoadBalancer CreateRule CreateTargetGroup DeleteListener DeleteLoadBalancer DeleteRule DeleteTargetGroup DeregisterTargets DescribeAccountLimits DescribeListenerCertificates DescribeListeners DescribeLoadBalancerAttributes DescribeLoadBalancers DescribeProvisionedCapacity DescribeRules DescribeSSLPolicies DescribeTags DescribeTargetGroupAttributes DescribeTargetGroups DescribeTargetHealth ModifyListener ModifyLoadBalancerAttributes ModifyProvisionedCapacity ModifyRule ModifyTargetGroup ModifyTargetGroupAttributes RegisterTargets RemoveListenerCertificates RemoveTags SetIpAddressType SetRulePriorities SetSecurityGroups SetSubnets / }
 
 1;
 
@@ -388,7 +398,8 @@ certificate is not added again.
 
 To list the certificates for your listener, use
 DescribeListenerCertificates. To remove certificates from your
-listener, use RemoveListenerCertificates.
+listener, use RemoveListenerCertificates. To specify the default SSL
+server certificate, use ModifyListener.
 
 
 =head2 AddTags
@@ -557,11 +568,7 @@ To delete a rule, use DeleteRule.
 
 =item Name => Str
 
-=item Port => Int
-
-=item Protocol => Str
-
-=item VpcId => Str
+=item [HealthCheckEnabled => Bool]
 
 =item [HealthCheckIntervalSeconds => Int]
 
@@ -577,9 +584,15 @@ To delete a rule, use DeleteRule.
 
 =item [Matcher => L<Paws::ELBv2::Matcher>]
 
+=item [Port => Int]
+
+=item [Protocol => Str]
+
 =item [TargetType => Str]
 
 =item [UnhealthyThresholdCount => Int]
+
+=item [VpcId => Str]
 
 
 =back
@@ -832,6 +845,22 @@ To describe the attributes for a load balancer, use
 DescribeLoadBalancerAttributes.
 
 
+=head2 DescribeProvisionedCapacity
+
+=over
+
+=item LoadBalancerArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ELBv2::DescribeProvisionedCapacity>
+
+Returns: a L<Paws::ELBv2::DescribeProvisionedCapacityOutput> instance
+
+
+
+
 =head2 DescribeRules
 
 =over
@@ -1024,6 +1053,24 @@ call fails. Any existing attributes that you do not modify retain their
 current values.
 
 
+=head2 ModifyProvisionedCapacity
+
+=over
+
+=item LoadBalancerArn => Str
+
+=item MinimumLBCapacityUnits => Int
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ELBv2::ModifyProvisionedCapacity>
+
+Returns: a L<Paws::ELBv2::ModifyProvisionedCapacityOutput> instance
+
+
+
+
 =head2 ModifyRule
 
 =over
@@ -1054,6 +1101,8 @@ To modify the actions for the default rule, use ModifyListener.
 =over
 
 =item TargetGroupArn => Str
+
+=item [HealthCheckEnabled => Bool]
 
 =item [HealthCheckIntervalSeconds => Int]
 
@@ -1119,9 +1168,8 @@ Returns: a L<Paws::ELBv2::RegisterTargetsOutput> instance
 
 Registers the specified targets with the specified target group.
 
-You can register targets by instance ID or by IP address. If the target
-is an EC2 instance, it must be in the C<running> state when you
-register it.
+If the target is an EC2 instance, it must be in the C<running> state
+when you register it.
 
 By default, the load balancer routes requests to registered targets
 using the protocol and port for the target group. Alternatively, you

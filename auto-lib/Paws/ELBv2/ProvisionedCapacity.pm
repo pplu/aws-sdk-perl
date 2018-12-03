@@ -1,15 +1,16 @@
-package Paws::ELBv2::SubnetMapping;
+package Paws::ELBv2::ProvisionedCapacity;
   use Moose;
-  has AllocationId => (is => 'ro', isa => 'Str');
-  has StaticIp => (is => 'ro', isa => 'Bool');
-  has SubnetId => (is => 'ro', isa => 'Str');
+  has DecreasesRemaining => (is => 'ro', isa => 'Int');
+  has LastModifiedTime => (is => 'ro', isa => 'Str');
+  has MinimumLBCapacityUnits => (is => 'ro', isa => 'Int');
+  has Status => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ELBv2::SubnetMapping
+Paws::ELBv2::ProvisionedCapacity
 
 =head1 USAGE
 
@@ -20,37 +21,42 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::ELBv2::SubnetMapping object:
+As an example, if Att1 is expected to be a Paws::ELBv2::ProvisionedCapacity object:
 
-  $service_obj->Method(Att1 => { AllocationId => $value, ..., SubnetId => $value  });
+  $service_obj->Method(Att1 => { DecreasesRemaining => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::ELBv2::SubnetMapping object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::ELBv2::ProvisionedCapacity object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AllocationId
+  $result->Att1->DecreasesRemaining
 
 =head1 DESCRIPTION
 
-Information about a subnet mapping.
+This class has no description
 
 =head1 ATTRIBUTES
 
 
-=head2 AllocationId => Str
-
-  [Network Load Balancers] The allocation ID of the Elastic IP address.
-
-
-=head2 StaticIp => Bool
+=head2 DecreasesRemaining => Int
 
   
 
 
-=head2 SubnetId => Str
+=head2 LastModifiedTime => Str
 
-  The ID of the subnet.
+  
+
+
+=head2 MinimumLBCapacityUnits => Int
+
+  
+
+
+=head2 Status => Str
+
+  
 
 
 

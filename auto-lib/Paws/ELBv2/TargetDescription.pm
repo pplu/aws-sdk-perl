@@ -46,20 +46,27 @@ Availability Zone or from all enabled Availability Zones for the load
 balancer.
 
 This parameter is not supported if the target type of the target group
-is C<instance>. If the IP address is in a subnet of the VPC for the
-target group, the Availability Zone is automatically detected and this
-parameter is optional. If the IP address is outside the VPC, this
-parameter is required.
+is C<instance>.
 
-With an Application Load Balancer, if the IP address is outside the VPC
-for the target group, the only supported value is C<all>.
+If the target type is C<ip> and the IP address is in a subnet of the
+VPC for the target group, the Availability Zone is automatically
+detected and this parameter is optional. If the IP address is outside
+the VPC, this parameter is required.
+
+With an Application Load Balancer, if the target type is C<ip> and the
+IP address is outside the VPC for the target group, the only supported
+value is C<all>.
+
+If the target type is C<lambda>, this parameter is optional and the
+only supported value is C<all>.
 
 
 =head2 B<REQUIRED> Id => Str
 
   The ID of the target. If the target type of the target group is
 C<instance>, specify an instance ID. If the target type is C<ip>,
-specify an IP address.
+specify an IP address. If the target type is C<lambda>, specify the ARN
+of the Lambda function.
 
 
 =head2 Port => Int

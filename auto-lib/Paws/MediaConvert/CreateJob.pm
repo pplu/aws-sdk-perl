@@ -47,7 +47,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             AudioSelectorGroups => {
               'My__string' => {
                 AudioSelectorNames => [
-                  'My__stringMin1', ...    # min: 1; OPTIONAL
+                  'My__stringMin1', ...    # min: 1
                 ],                         # OPTIONAL
               },
             },    # OPTIONAL
@@ -521,7 +521,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ],                                          # OPTIONAL
                 CaptionDescriptions => [
                   {
-                    CaptionSelectorName => 'My__stringMin1',  # min: 1; OPTIONAL
+                    CaptionSelectorName => 'My__stringMin1',    # min: 1
                     CustomLanguageCode => 'My__stringMin3Max3PatternAZaZ3'
                     ,    # min: 3, max: 3; OPTIONAL
                     DestinationSettings => {
@@ -710,7 +710,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },    # OPTIONAL
                 },    # OPTIONAL
                 Extension      => 'My__string',
-                NameModifier   => 'My__stringMin1',    # min: 1; OPTIONAL
+                NameModifier   => 'My__stringMin1',    # min: 1
                 OutputSettings => {
                   HlsSettings => {
                     AudioGroupId       => 'My__string',

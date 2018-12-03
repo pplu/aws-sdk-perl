@@ -1,6 +1,7 @@
 package Paws::ELBv2::AvailabilityZone;
   use Moose;
   has LoadBalancerAddresses => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::LoadBalancerAddress]');
+  has StaticIp => (is => 'ro', isa => 'Bool');
   has SubnetId => (is => 'ro', isa => 'Str');
   has ZoneName => (is => 'ro', isa => 'Str');
 1;
@@ -41,6 +42,11 @@ Information about an Availability Zone.
 =head2 LoadBalancerAddresses => ArrayRef[L<Paws::ELBv2::LoadBalancerAddress>]
 
   [Network Load Balancers] The static IP address.
+
+
+=head2 StaticIp => Bool
+
+  
 
 
 =head2 SubnetId => Str

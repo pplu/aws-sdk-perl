@@ -41,8 +41,8 @@ Information about a target group attribute.
 
   The name of the attribute.
 
-The following attributes are supported by both Application Load
-Balancers and Network Load Balancers:
+The following attribute is supported by both Application Load Balancers
+and Network Load Balancers:
 
 =over
 
@@ -51,12 +51,13 @@ Balancers and Network Load Balancers:
 C<deregistration_delay.timeout_seconds> - The amount of time, in
 seconds, for Elastic Load Balancing to wait before changing the state
 of a deregistering target from C<draining> to C<unused>. The range is
-0-3600 seconds. The default value is 300 seconds.
+0-3600 seconds. The default value is 300 seconds. If the target is a
+Lambda function, this attribute is not supported.
 
 =back
 
-The following attributes are supported by only Application Load
-Balancers:
+The following attributes are supported by Application Load Balancers if
+the target is not a Lambda function:
 
 =over
 
@@ -88,7 +89,23 @@ seconds). The default value is 1 day (86400 seconds).
 
 =back
 
-The following attributes are supported by only Network Load Balancers:
+The following attribute is supported only if the target is a Lambda
+function.
+
+=over
+
+=item *
+
+C<lambda.multi_value_headers.enabled> - Indicates whether the request
+and response headers exchanged between the load balancer and the Lambda
+function include arrays of values or strings. The value is C<true> or
+C<false>. The default is C<false>. If the value is C<false> and the
+request contains a duplicate header field name or query parameter key,
+the load balancer uses the last value sent by the client.
+
+=back
+
+The following attribute is supported only by Network Load Balancers:
 
 =over
 
