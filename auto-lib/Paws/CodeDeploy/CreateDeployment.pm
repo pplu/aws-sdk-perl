@@ -86,7 +86,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },
               ...
             ],
-            ...
+            ...                        # OPTIONAL
           ],                           # OPTIONAL
         },    # OPTIONAL
         TagFilters => [
@@ -97,7 +97,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyValue',    # OPTIONAL
           },
           ...
-        ],
+        ],                         # OPTIONAL
       },    # OPTIONAL
       UpdateOutdatedInstancesOnly => 1,    # OPTIONAL
     );
