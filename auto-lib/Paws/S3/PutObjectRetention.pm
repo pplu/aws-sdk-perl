@@ -69,13 +69,14 @@ Retention configuration to.
 
 =head2 BypassGovernanceRetention => Bool
 
-
+Indicates whether this operation should bypass Governance-mode
+restrictions.j
 
 
 
 =head2 ContentMD5 => Str
 
-The MD5 signature for the configuration included in your request.
+The MD5 hash for the request body.
 
 
 

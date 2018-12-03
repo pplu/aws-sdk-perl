@@ -157,7 +157,9 @@ HTTP headers.
 
 =head2 ObjectLockLegalHoldStatus => Str
 
-
+Indicates whether this object has an active legal hold. This field is
+only returned if you have permission to view an object's legal hold
+status.
 
 Valid values are: C<"ON">, C<"OFF">
 

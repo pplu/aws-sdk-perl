@@ -39,7 +39,7 @@ The container element for Object Lock configuration parameters.
 
 =head2 ObjectLockEnabled => Str
 
-  Indicates whether this object has an Object Lock configuration enabled.
+  Indicates whether this bucket has an Object Lock configuration enabled.
 
 
 =head2 Rule => L<Paws::S3::ObjectLockRule>

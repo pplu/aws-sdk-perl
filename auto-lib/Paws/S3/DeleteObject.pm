@@ -65,7 +65,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 BypassGovernanceRetention => Bool
 
-
+Indicates whether S3 Object Lock should bypass Governance-mode
+restrictions to process this operation.
 
 
 

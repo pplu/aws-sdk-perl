@@ -71,7 +71,7 @@ replace.
 
 =head2 ContentMD5 => Str
 
-The MD5 signature for the configuration included in your request.
+The MD5 hash for the request body.
 
 
 
