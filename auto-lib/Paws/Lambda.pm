@@ -14,6 +14,11 @@ package Paws::Lambda;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
 
   
+  sub AddLayerVersionPermission {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lambda::AddLayerVersionPermission', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AddPermission {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lambda::AddPermission', @_);
@@ -54,6 +59,11 @@ package Paws::Lambda;
     my $call_object = $self->new_with_coercions('Paws::Lambda::DeleteFunctionConcurrency', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteLayerVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lambda::DeleteLayerVersion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetAccountSettings {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lambda::GetAccountSettings', @_);
@@ -77,6 +87,16 @@ package Paws::Lambda;
   sub GetFunctionConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lambda::GetFunctionConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetLayerVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lambda::GetLayerVersion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetLayerVersionPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lambda::GetLayerVersionPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetPolicy {
@@ -109,6 +129,16 @@ package Paws::Lambda;
     my $call_object = $self->new_with_coercions('Paws::Lambda::ListFunctions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListLayers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lambda::ListLayers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListLayerVersions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lambda::ListLayerVersions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListTags {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lambda::ListTags', @_);
@@ -119,6 +149,11 @@ package Paws::Lambda;
     my $call_object = $self->new_with_coercions('Paws::Lambda::ListVersionsByFunction', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PublishLayerVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lambda::PublishLayerVersion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PublishVersion {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lambda::PublishVersion', @_);
@@ -127,6 +162,11 @@ package Paws::Lambda;
   sub PutFunctionConcurrency {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lambda::PutFunctionConcurrency', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RemoveLayerVersionPermission {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lambda::RemoveLayerVersionPermission', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RemovePermission {
@@ -236,7 +276,7 @@ package Paws::Lambda;
   }
 
 
-  sub operations { qw/AddPermission CreateAlias CreateEventSourceMapping CreateFunction DeleteAlias DeleteEventSourceMapping DeleteFunction DeleteFunctionConcurrency GetAccountSettings GetAlias GetEventSourceMapping GetFunction GetFunctionConfiguration GetPolicy Invoke InvokeAsync ListAliases ListEventSourceMappings ListFunctions ListTags ListVersionsByFunction PublishVersion PutFunctionConcurrency RemovePermission TagResource UntagResource UpdateAlias UpdateEventSourceMapping UpdateFunctionCode UpdateFunctionConfiguration / }
+  sub operations { qw/AddLayerVersionPermission AddPermission CreateAlias CreateEventSourceMapping CreateFunction DeleteAlias DeleteEventSourceMapping DeleteFunction DeleteFunctionConcurrency DeleteLayerVersion GetAccountSettings GetAlias GetEventSourceMapping GetFunction GetFunctionConfiguration GetLayerVersion GetLayerVersionPolicy GetPolicy Invoke InvokeAsync ListAliases ListEventSourceMappings ListFunctions ListLayers ListLayerVersions ListTags ListVersionsByFunction PublishLayerVersion PublishVersion PutFunctionConcurrency RemoveLayerVersionPermission RemovePermission TagResource UntagResource UpdateAlias UpdateEventSourceMapping UpdateFunctionCode UpdateFunctionConfiguration / }
 
 1;
 
@@ -280,6 +320,40 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 
 =head1 METHODS
+
+=head2 AddLayerVersionPermission
+
+=over
+
+=item Action => Str
+
+=item LayerName => Str
+
+=item Principal => Str
+
+=item StatementId => Str
+
+=item VersionNumber => Int
+
+=item [OrganizationId => Str]
+
+=item [RevisionId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lambda::AddLayerVersionPermission>
+
+Returns: a L<Paws::Lambda::AddLayerVersionPermissionResponse> instance
+
+Adds permissions to the resource-based policy of a version of a
+function layer. Use this action to grant layer usage permission to
+other accounts. You can grant permission to a single account, all AWS
+accounts, or all accounts in an organization.
+
+To revoke permission, call RemoveLayerVersionPermission with the
+statement ID that you specified when you added it.
+
 
 =head2 AddPermission
 
@@ -429,6 +503,8 @@ Using AWS Lambda with Amazon DynamoDB
 
 =item [KMSKeyArn => Str]
 
+=item [Layers => ArrayRef[Str|Undef]]
+
 =item [MemorySize => Int]
 
 =item [Publish => Bool]
@@ -533,6 +609,26 @@ Returns: nothing
 Removes concurrent execution limits from this function. For more
 information, see Managing Concurrency
 (http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html).
+
+
+=head2 DeleteLayerVersion
+
+=over
+
+=item LayerName => Str
+
+=item VersionNumber => Int
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lambda::DeleteLayerVersion>
+
+Returns: nothing
+
+Deletes a version of a function layer. Deleted versions can no longer
+be viewed or added to functions. However, a copy of the version remains
+in Lambda until no functions refer to it.
 
 
 =head2 GetAccountSettings
@@ -649,6 +745,44 @@ versioning, see AWS Lambda Function Versioning and Aliases
 
 This operation requires permission for the
 C<lambda:GetFunctionConfiguration> operation.
+
+
+=head2 GetLayerVersion
+
+=over
+
+=item LayerName => Str
+
+=item VersionNumber => Int
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lambda::GetLayerVersion>
+
+Returns: a L<Paws::Lambda::GetLayerVersionResponse> instance
+
+Returns information about a version of a function layer, with a link to
+download the layer archive that's valid for 10 minutes.
+
+
+=head2 GetLayerVersionPolicy
+
+=over
+
+=item LayerName => Str
+
+=item VersionNumber => Int
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lambda::GetLayerVersionPolicy>
+
+Returns: a L<Paws::Lambda::GetLayerVersionPolicyResponse> instance
+
+Returns the permission policy for a layer version. For more
+information, see AddLayerVersionPermission.
 
 
 =head2 GetPolicy
@@ -837,6 +971,56 @@ versioning feature, see AWS Lambda Function Versioning and Aliases
 (http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
 
 
+=head2 ListLayers
+
+=over
+
+=item [CompatibleRuntime => Str]
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lambda::ListLayers>
+
+Returns: a L<Paws::Lambda::ListLayersResponse> instance
+
+Lists function layers and shows information about the latest version of
+each. Specify a runtime identifier
+(http://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html) to
+list only layers that indicate that they're compatible with that
+runtime.
+
+
+=head2 ListLayerVersions
+
+=over
+
+=item LayerName => Str
+
+=item [CompatibleRuntime => Str]
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lambda::ListLayerVersions>
+
+Returns: a L<Paws::Lambda::ListLayerVersionsResponse> instance
+
+Lists the versions of a function layer. Versions that have been deleted
+aren't listed. Specify a runtime identifier
+(http://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html) to
+list only versions that indicate that they're compatible with that
+runtime.
+
+
 =head2 ListTags
 
 =over
@@ -877,6 +1061,35 @@ Returns: a L<Paws::Lambda::ListVersionsByFunctionResponse> instance
 Lists all versions of a function. For information about versioning, see
 AWS Lambda Function Versioning and Aliases
 (http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
+
+
+=head2 PublishLayerVersion
+
+=over
+
+=item Content => L<Paws::Lambda::LayerVersionContentInput>
+
+=item LayerName => Str
+
+=item [CompatibleRuntimes => ArrayRef[Str|Undef]]
+
+=item [Description => Str]
+
+=item [LicenseInfo => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lambda::PublishLayerVersion>
+
+Returns: a L<Paws::Lambda::PublishLayerVersionResponse> instance
+
+Creates a function layer from a ZIP archive. Each time you call
+C<PublishLayerVersion> with the same version name, a new version is
+created.
+
+Add layers to your function with CreateFunction or
+UpdateFunctionConfiguration.
 
 
 =head2 PublishVersion
@@ -930,6 +1143,29 @@ concurrency limit. This means if your account limit is 1000, you have a
 total of 900 available to allocate to individual functions. For more
 information, see Managing Concurrency
 (http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html).
+
+
+=head2 RemoveLayerVersionPermission
+
+=over
+
+=item LayerName => Str
+
+=item StatementId => Str
+
+=item VersionNumber => Int
+
+=item [RevisionId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lambda::RemoveLayerVersionPermission>
+
+Returns: nothing
+
+Removes a statement from the permissions policy for a layer version.
+For more information, see AddLayerVersionPermission.
 
 
 =head2 RemovePermission
@@ -1123,6 +1359,8 @@ action.
 =item [Handler => Str]
 
 =item [KMSKeyArn => Str]
+
+=item [Layers => ArrayRef[Str|Undef]]
 
 =item [MemorySize => Int]
 

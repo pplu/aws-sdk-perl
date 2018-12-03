@@ -84,7 +84,7 @@ will also be computed and returned in the response.
 
 =head2 B<REQUIRED> FunctionName => Str
 
-The name of the lambda function.
+The name of the Lambda function.
 
 B<Name formats>
 

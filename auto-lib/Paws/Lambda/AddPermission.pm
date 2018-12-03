@@ -79,7 +79,7 @@ function. This is currently only used for Alexa Smart Home functions.
 
 =head2 B<REQUIRED> FunctionName => Str
 
-The name of the lambda function.
+The name of the Lambda function.
 
 B<Name formats>
 

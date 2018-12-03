@@ -8,6 +8,7 @@ package Paws::Lambda::CreateFunction;
   has FunctionName => (is => 'ro', isa => 'Str', required => 1);
   has Handler => (is => 'ro', isa => 'Str', required => 1);
   has KMSKeyArn => (is => 'ro', isa => 'Str');
+  has Layers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MemorySize => (is => 'ro', isa => 'Int');
   has Publish => (is => 'ro', isa => 'Bool');
   has Role => (is => 'ro', isa => 'Str', required => 1);
@@ -116,7 +117,7 @@ execution.
 
 =head2 B<REQUIRED> FunctionName => Str
 
-The name of the lambda function.
+The name of the Lambda function.
 
 B<Name formats>
 
@@ -157,6 +158,14 @@ variables. If not provided, AWS Lambda will use a default service key.
 
 
 
+=head2 Layers => ArrayRef[Str|Undef]
+
+A list of function layers
+(http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
+to add to the function's execution environment.
+
+
+
 =head2 MemorySize => Int
 
 The amount of memory that your function has access to. Increasing the
@@ -183,7 +192,7 @@ The Amazon Resource Name (ARN) of the function's execution role
 
 The runtime version for the function.
 
-Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"nodejs8.10">, C<"java8">, C<"python2.7">, C<"python3.6">, C<"python3.7">, C<"dotnetcore1.0">, C<"dotnetcore2.0">, C<"dotnetcore2.1">, C<"nodejs4.3-edge">, C<"go1.x">
+Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"nodejs8.10">, C<"java8">, C<"python2.7">, C<"python3.6">, C<"python3.7">, C<"dotnetcore1.0">, C<"dotnetcore2.0">, C<"dotnetcore2.1">, C<"nodejs4.3-edge">, C<"go1.x">, C<"ruby2.5">, C<"provided">
 
 =head2 Tags => L<Paws::Lambda::Tags>
 

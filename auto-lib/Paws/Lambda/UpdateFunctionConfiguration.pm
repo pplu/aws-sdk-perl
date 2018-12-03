@@ -7,6 +7,7 @@ package Paws::Lambda::UpdateFunctionConfiguration;
   has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName', required => 1);
   has Handler => (is => 'ro', isa => 'Str');
   has KMSKeyArn => (is => 'ro', isa => 'Str');
+  has Layers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MemorySize => (is => 'ro', isa => 'Int');
   has RevisionId => (is => 'ro', isa => 'Str');
   has Role => (is => 'ro', isa => 'Str');
@@ -105,7 +106,7 @@ settings.
 
 =head2 B<REQUIRED> FunctionName => Str
 
-The name of the lambda function.
+The name of the Lambda function.
 
 B<Name formats>
 
@@ -146,6 +147,14 @@ default service key, pass in an empty string ("") for this parameter.
 
 
 
+=head2 Layers => ArrayRef[Str|Undef]
+
+A list of function layers
+(http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
+to add to the function's execution environment.
+
+
+
 =head2 MemorySize => Int
 
 The amount of memory, in MB, your Lambda function is given. AWS Lambda
@@ -179,7 +188,7 @@ when it executes your function.
 
 The runtime version for the function.
 
-Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"nodejs8.10">, C<"java8">, C<"python2.7">, C<"python3.6">, C<"python3.7">, C<"dotnetcore1.0">, C<"dotnetcore2.0">, C<"dotnetcore2.1">, C<"nodejs4.3-edge">, C<"go1.x">
+Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"nodejs8.10">, C<"java8">, C<"python2.7">, C<"python3.6">, C<"python3.7">, C<"dotnetcore1.0">, C<"dotnetcore2.0">, C<"dotnetcore2.1">, C<"nodejs4.3-edge">, C<"go1.x">, C<"ruby2.5">, C<"provided">
 
 =head2 Timeout => Int
 

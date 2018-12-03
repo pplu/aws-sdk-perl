@@ -79,7 +79,7 @@ synchronous (C<RequestResponse>) invocation type.
 
 =head2 B<REQUIRED> FunctionName => Str
 
-The name of the lambda function.
+The name of the Lambda function.
 
 B<Name formats>
 
