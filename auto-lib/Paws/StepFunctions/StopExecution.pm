@@ -31,8 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $states = Paws->service('StepFunctions');
     my $StopExecutionOutput = $states->StopExecution(
       ExecutionArn => 'MyArn',
-      Cause        => 'MyCause',    # OPTIONAL
-      Error        => 'MyError',    # OPTIONAL
+      Cause        => 'MySensitiveCause',    # OPTIONAL
+      Error        => 'MySensitiveError',    # OPTIONAL
     );
 
     # Results:
@@ -48,13 +48,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sta
 
 =head2 Cause => Str
 
-A more detailed explanation of the cause of the termination.
+A more detailed explanation of the cause of the failure.
 
 
 
 =head2 Error => Str
 
-An arbitrary error code that identifies the cause of the termination.
+The error code of the failure.
 
 
 

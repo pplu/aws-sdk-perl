@@ -21,6 +21,14 @@ package Paws::StepFunctions::HistoryEvent;
   has PreviousEventId => (is => 'ro', isa => 'Int', request_name => 'previousEventId', traits => ['NameInRequest']);
   has StateEnteredEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::StateEnteredEventDetails', request_name => 'stateEnteredEventDetails', traits => ['NameInRequest']);
   has StateExitedEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::StateExitedEventDetails', request_name => 'stateExitedEventDetails', traits => ['NameInRequest']);
+  has TaskFailedEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::TaskFailedEventDetails', request_name => 'taskFailedEventDetails', traits => ['NameInRequest']);
+  has TaskScheduledEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::TaskScheduledEventDetails', request_name => 'taskScheduledEventDetails', traits => ['NameInRequest']);
+  has TaskStartedEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::TaskStartedEventDetails', request_name => 'taskStartedEventDetails', traits => ['NameInRequest']);
+  has TaskStartFailedEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::TaskStartFailedEventDetails', request_name => 'taskStartFailedEventDetails', traits => ['NameInRequest']);
+  has TaskSubmitFailedEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::TaskSubmitFailedEventDetails', request_name => 'taskSubmitFailedEventDetails', traits => ['NameInRequest']);
+  has TaskSubmittedEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::TaskSubmittedEventDetails', request_name => 'taskSubmittedEventDetails', traits => ['NameInRequest']);
+  has TaskSucceededEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::TaskSucceededEventDetails', request_name => 'taskSucceededEventDetails', traits => ['NameInRequest']);
+  has TaskTimedOutEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::TaskTimedOutEventDetails', request_name => 'taskTimedOutEventDetails', traits => ['NameInRequest']);
   has Timestamp => (is => 'ro', isa => 'Str', request_name => 'timestamp', traits => ['NameInRequest'], required => 1);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
 1;
@@ -70,8 +78,8 @@ Contains details about the events of an execution.
 
 =head2 ActivityScheduleFailedEventDetails => L<Paws::StepFunctions::ActivityScheduleFailedEventDetails>
 
-  Contains details about an activity schedule event which failed during
-an execution.
+  Contains details about an activity schedule event that failed during an
+execution.
 
 
 =head2 ActivityStartedEventDetails => L<Paws::StepFunctions::ActivityStartedEventDetails>
@@ -136,13 +144,13 @@ an execution.
 
 =head2 LambdaFunctionStartFailedEventDetails => L<Paws::StepFunctions::LambdaFunctionStartFailedEventDetails>
 
-  Contains details about a lambda function which failed to start during
-an execution.
+  Contains details about a lambda function that failed to start during an
+execution.
 
 
 =head2 LambdaFunctionSucceededEventDetails => L<Paws::StepFunctions::LambdaFunctionSucceededEventDetails>
 
-  Contains details about a lambda function which terminated successfully
+  Contains details about a lambda function that terminated successfully
 during an execution.
 
 
@@ -166,9 +174,49 @@ during an execution.
   
 
 
+=head2 TaskFailedEventDetails => L<Paws::StepFunctions::TaskFailedEventDetails>
+
+  
+
+
+=head2 TaskScheduledEventDetails => L<Paws::StepFunctions::TaskScheduledEventDetails>
+
+  
+
+
+=head2 TaskStartedEventDetails => L<Paws::StepFunctions::TaskStartedEventDetails>
+
+  
+
+
+=head2 TaskStartFailedEventDetails => L<Paws::StepFunctions::TaskStartFailedEventDetails>
+
+  
+
+
+=head2 TaskSubmitFailedEventDetails => L<Paws::StepFunctions::TaskSubmitFailedEventDetails>
+
+  
+
+
+=head2 TaskSubmittedEventDetails => L<Paws::StepFunctions::TaskSubmittedEventDetails>
+
+  
+
+
+=head2 TaskSucceededEventDetails => L<Paws::StepFunctions::TaskSucceededEventDetails>
+
+  
+
+
+=head2 TaskTimedOutEventDetails => L<Paws::StepFunctions::TaskTimedOutEventDetails>
+
+  
+
+
 =head2 B<REQUIRED> Timestamp => Str
 
-  The date the event occurred.
+  The date and time the event occurred.
 
 
 =head2 B<REQUIRED> Type => Str

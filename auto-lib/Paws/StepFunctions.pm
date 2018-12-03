@@ -274,8 +274,8 @@ Each argument is described in detail in: L<Paws::StepFunctions::CreateActivity>
 
 Returns: a L<Paws::StepFunctions::CreateActivityOutput> instance
 
-Creates an activity. An activity is a task which you write in any
-programming language and host on any machine which has access to AWS
+Creates an activity. An activity is a task that you write in any
+programming language and host on any machine that has access to AWS
 Step Functions. Activities must poll Step Functions using the
 C<GetActivityTask> API action and respond using C<SendTask*> API
 actions. This function lets Step Functions know the existence of your
@@ -360,6 +360,9 @@ Returns: a L<Paws::StepFunctions::DescribeActivityOutput> instance
 
 Describes an activity.
 
+This operation is eventually consistent. The results are best effort
+and may not reflect very recent updates and changes.
+
 
 =head2 DescribeExecution
 
@@ -375,6 +378,9 @@ Each argument is described in detail in: L<Paws::StepFunctions::DescribeExecutio
 Returns: a L<Paws::StepFunctions::DescribeExecutionOutput> instance
 
 Describes an execution.
+
+This operation is eventually consistent. The results are best effort
+and may not reflect very recent updates and changes.
 
 
 =head2 DescribeStateMachine
@@ -392,6 +398,9 @@ Returns: a L<Paws::StepFunctions::DescribeStateMachineOutput> instance
 
 Describes a state machine.
 
+This operation is eventually consistent. The results are best effort
+and may not reflect very recent updates and changes.
+
 
 =head2 DescribeStateMachineForExecution
 
@@ -407,6 +416,9 @@ Each argument is described in detail in: L<Paws::StepFunctions::DescribeStateMac
 Returns: a L<Paws::StepFunctions::DescribeStateMachineForExecutionOutput> instance
 
 Describes the state machine associated with a specific execution.
+
+This operation is eventually consistent. The results are best effort
+and may not reflect very recent updates and changes.
 
 
 =head2 GetActivityTask
@@ -436,6 +448,11 @@ Workers should set their client side socket timeout to at least 65
 seconds (5 seconds higher than the maximum time the service may hold
 the poll request).
 
+Polling with C<GetActivityTask> can cause latency in some
+implementations. See Avoid Latency When Polling for Activity Tasks
+(http://docs.aws.amazon.com/step-functions/latest/dg/bp-activity-pollers.html)
+in the Step Functions Developer Guide.
+
 
 =head2 GetExecutionHistory
 
@@ -461,10 +478,12 @@ default, the results are returned in ascending order of the
 C<timeStamp> of the events. Use the C<reverseOrder> parameter to get
 the latest events first.
 
-If a C<nextToken> is returned by a previous call, there are more
-results available. To retrieve the next page of results, make the call
-again using the returned token in C<nextToken>. Keep all other
-arguments unchanged.
+If C<nextToken> is returned, there are more results available. The
+value of C<nextToken> is a unique pagination token for each page. Make
+the call again using the returned token to retrieve the next page. Keep
+all other arguments unchanged. Each pagination token expires after 60
+seconds. Using an expired pagination token will return an I<HTTP 400
+InvalidToken> error.
 
 
 =head2 ListActivities
@@ -484,10 +503,15 @@ Returns: a L<Paws::StepFunctions::ListActivitiesOutput> instance
 
 Lists the existing activities.
 
-If a C<nextToken> is returned by a previous call, there are more
-results available. To retrieve the next page of results, make the call
-again using the returned token in C<nextToken>. Keep all other
-arguments unchanged.
+If C<nextToken> is returned, there are more results available. The
+value of C<nextToken> is a unique pagination token for each page. Make
+the call again using the returned token to retrieve the next page. Keep
+all other arguments unchanged. Each pagination token expires after 60
+seconds. Using an expired pagination token will return an I<HTTP 400
+InvalidToken> error.
+
+This operation is eventually consistent. The results are best effort
+and may not reflect very recent updates and changes.
 
 
 =head2 ListExecutions
@@ -510,12 +534,18 @@ Each argument is described in detail in: L<Paws::StepFunctions::ListExecutions>
 Returns: a L<Paws::StepFunctions::ListExecutionsOutput> instance
 
 Lists the executions of a state machine that meet the filtering
-criteria.
+criteria. Results are sorted by time, with the most recent execution
+first.
 
-If a C<nextToken> is returned by a previous call, there are more
-results available. To retrieve the next page of results, make the call
-again using the returned token in C<nextToken>. Keep all other
-arguments unchanged.
+If C<nextToken> is returned, there are more results available. The
+value of C<nextToken> is a unique pagination token for each page. Make
+the call again using the returned token to retrieve the next page. Keep
+all other arguments unchanged. Each pagination token expires after 60
+seconds. Using an expired pagination token will return an I<HTTP 400
+InvalidToken> error.
+
+This operation is eventually consistent. The results are best effort
+and may not reflect very recent updates and changes.
 
 
 =head2 ListStateMachines
@@ -535,10 +565,15 @@ Returns: a L<Paws::StepFunctions::ListStateMachinesOutput> instance
 
 Lists the existing state machines.
 
-If a C<nextToken> is returned by a previous call, there are more
-results available. To retrieve the next page of results, make the call
-again using the returned token in C<nextToken>. Keep all other
-arguments unchanged.
+If C<nextToken> is returned, there are more results available. The
+value of C<nextToken> is a unique pagination token for each page. Make
+the call again using the returned token to retrieve the next page. Keep
+all other arguments unchanged. Each pagination token expires after 60
+seconds. Using an expired pagination token will return an I<HTTP 400
+InvalidToken> error.
+
+This operation is eventually consistent. The results are best effort
+and may not reflect very recent updates and changes.
 
 
 =head2 SendTaskFailure
@@ -629,6 +664,12 @@ Returns: a L<Paws::StepFunctions::StartExecutionOutput> instance
 
 Starts a state machine execution.
 
+C<StartExecution> is idempotent. If C<StartExecution> is called with
+the same name and input as a running execution, the call will succeed
+and return the same response as the original request. If the execution
+is closed or if the input is different, it will return a 400
+C<ExecutionAlreadyExists> error. Names can be reused after 90 days.
+
 
 =head2 StopExecution
 
@@ -669,14 +710,14 @@ Returns: a L<Paws::StepFunctions::UpdateStateMachineOutput> instance
 
 Updates an existing state machine by modifying its C<definition> and/or
 C<roleArn>. Running executions will continue to use the previous
-C<definition> and C<roleArn>.
+C<definition> and C<roleArn>. You must include at least one of
+C<definition> or C<roleArn> or you will receive a
+C<MissingRequiredParameter> error.
 
 All C<StartExecution> calls within a few seconds will use the updated
 C<definition> and C<roleArn>. Executions started immediately after
 calling C<UpdateStateMachine> may use the previous state machine
-C<definition> and C<roleArn>. You must include at least one of
-C<definition> or C<roleArn> or you will receive a
-C<MissingRequiredParameter> error.
+C<definition> and C<roleArn>.
 
 
 

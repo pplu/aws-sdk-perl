@@ -53,7 +53,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sta
 
 The maximum number of results that are returned per call. You can use
 C<nextToken> to obtain further pages of results. The default is 100 and
-the maximum allowed page size is 100. A value of 0 uses the default.
+the maximum allowed page size is 1000. A value of 0 uses the default.
 
 This is only an upper limit. The actual number of results returned per
 call might be fewer than the specified maximum.
@@ -62,13 +62,12 @@ call might be fewer than the specified maximum.
 
 =head2 NextToken => Str
 
-If a C<nextToken> is returned by a previous call, there are more
-results available. To retrieve the next page of results, make the call
-again using the returned token in C<nextToken>. Keep all other
-arguments unchanged.
-
-The configured C<maxResults> determines how many results can be
-returned in a single call.
+If C<nextToken> is returned, there are more results available. The
+value of C<nextToken> is a unique pagination token for each page. Make
+the call again using the returned token to retrieve the next page. Keep
+all other arguments unchanged. Each pagination token expires after 60
+seconds. Using an expired pagination token will return an I<HTTP 400
+InvalidToken> error.
 
 
 

@@ -22,13 +22,12 @@ The list of activities.
 
 =head2 NextToken => Str
 
-If a C<nextToken> is returned by a previous call, there are more
-results available. To retrieve the next page of results, make the call
-again using the returned token in C<nextToken>. Keep all other
-arguments unchanged.
-
-The configured C<maxResults> determines how many results can be
-returned in a single call.
+If C<nextToken> is returned, there are more results available. The
+value of C<nextToken> is a unique pagination token for each page. Make
+the call again using the returned token to retrieve the next page. Keep
+all other arguments unchanged. Each pagination token expires after 60
+seconds. Using an expired pagination token will return an I<HTTP 400
+InvalidToken> error.
 
 
 =head2 _request_id => Str

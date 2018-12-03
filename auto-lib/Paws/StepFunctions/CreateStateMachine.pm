@@ -50,17 +50,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sta
 
 =head2 B<REQUIRED> Definition => Str
 
-The Amazon States Language definition of the state machine.
+The Amazon States Language definition of the state machine. See Amazon
+States Language
+(http://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html).
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the state machine. This name must be unique for your AWS
-account and region for 90 days. For more information, see Limits
-Related to State Machine Executions
-(http://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions)
-in the I<AWS Step Functions Developer Guide>.
+The name of the state machine.
 
 A name must I<not> contain:
 
