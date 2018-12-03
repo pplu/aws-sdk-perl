@@ -24,6 +24,9 @@
  - New API: KinesisAnalyticsV2
  - New API: MediaConnect
  - New API: SecurityHub
+ - New API: AppMesh
+ - New API: Kafka
+ - New API: LicenseManager
 
 0.38 19 Jun 2018
  - Fix test suite so that credentials_process tests don't need extra modules (#251, #248)
