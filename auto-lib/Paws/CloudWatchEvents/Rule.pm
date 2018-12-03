@@ -3,6 +3,7 @@ package Paws::CloudWatchEvents::Rule;
   has Arn => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has EventPattern => (is => 'ro', isa => 'Str');
+  has ManagedBy => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has RoleArn => (is => 'ro', isa => 'Str');
   has ScheduleExpression => (is => 'ro', isa => 'Str');
@@ -58,6 +59,13 @@ Contains information about a rule in Amazon CloudWatch Events.
 Event Patterns
 (http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html)
 in the I<Amazon CloudWatch Events User Guide>.
+
+
+=head2 ManagedBy => Str
+
+  If the rule was created on behalf of your account by an AWS service,
+this field displays the principal name of the service that created the
+rule.
 
 
 =head2 Name => Str
