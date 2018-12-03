@@ -47,8 +47,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lig
 
 =head2 PageToken => Str
 
-A token used for advancing to a specific page of results for your get
-relational database snapshots request.
+A token used for advancing to a specific page of results for your C<get
+relational database snapshots> request.
 
 
 

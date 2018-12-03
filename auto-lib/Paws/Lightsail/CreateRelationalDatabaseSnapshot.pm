@@ -3,6 +3,7 @@ package Paws::Lightsail::CreateRelationalDatabaseSnapshot;
   use Moose;
   has RelationalDatabaseName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'relationalDatabaseName' , required => 1);
   has RelationalDatabaseSnapshotName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'relationalDatabaseSnapshotName' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +33,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $lightsail->CreateRelationalDatabaseSnapshot(
       RelationalDatabaseName         => 'MyResourceName',
       RelationalDatabaseSnapshotName => 'MyResourceName',
-
+      Tags                           => [
+        {
+          Key   => 'MyTagKey',      # OPTIONAL
+          Value => 'MyTagValue',    # OPTIONAL
+        },
+        ...
+      ],                            # OPTIONAL
       );
 
     # Results:
@@ -70,6 +77,15 @@ The first and last character must be a letter or number.
 
 =back
 
+
+
+
+=head2 Tags => ArrayRef[L<Paws::Lightsail::Tag>]
+
+The tag keys and optional values to add to the resource during create.
+
+To tag a resource after it has been created, see the C<tag resource>
+operation.
 
 
 

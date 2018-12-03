@@ -8,6 +8,7 @@ package Paws::Lightsail::CreateRelationalDatabaseFromSnapshot;
   has RelationalDatabaseSnapshotName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'relationalDatabaseSnapshotName' );
   has RestoreTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'restoreTime' );
   has SourceRelationalDatabaseName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceRelationalDatabaseName' );
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has UseLatestRestorableTime => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'useLatestRestorableTime' );
 
   use MooseX::ClassAttribute;
@@ -43,7 +44,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RelationalDatabaseSnapshotName => 'MyResourceName',         # OPTIONAL
       RestoreTime                    => '1970-01-01T01:00:00',    # OPTIONAL
       SourceRelationalDatabaseName   => 'MyResourceName',         # OPTIONAL
-      UseLatestRestorableTime        => 1,                        # OPTIONAL
+      Tags                           => [
+        {
+          Key   => 'MyTagKey',                                    # OPTIONAL
+          Value => 'MyTagValue',                                  # OPTIONAL
+        },
+        ...
+      ],                                                          # OPTIONAL
+      UseLatestRestorableTime => 1,                               # OPTIONAL
       );
 
     # Results:
@@ -155,6 +163,15 @@ PM UTC, then you input C<1538424000> as the restore time.
 =head2 SourceRelationalDatabaseName => Str
 
 The name of the source database.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::Lightsail::Tag>]
+
+The tag keys and optional values to add to the resource during create.
+
+To tag a resource after it has been created, see the C<tag resource>
+operation.
 
 
 

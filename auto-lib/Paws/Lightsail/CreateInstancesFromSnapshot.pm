@@ -7,6 +7,7 @@ package Paws::Lightsail::CreateInstancesFromSnapshot;
   has InstanceNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'instanceNames' , required => 1);
   has InstanceSnapshotName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceSnapshotName' , required => 1);
   has KeyPairName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'keyPairName' );
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has UserData => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'userData' );
 
   use MooseX::ClassAttribute;
@@ -49,7 +50,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ],
       },    # OPTIONAL
       KeyPairName => 'MyResourceName',    # OPTIONAL
-      UserData    => 'Mystring',          # OPTIONAL
+      Tags        => [
+        {
+          Key   => 'MyTagKey',            # OPTIONAL
+          Value => 'MyTagValue',          # OPTIONAL
+        },
+        ...
+      ],                                  # OPTIONAL
+      UserData => 'Mystring',             # OPTIONAL
       );
 
     # Results:
@@ -104,6 +112,15 @@ information about your existing snapshots.
 =head2 KeyPairName => Str
 
 The name for your key pair.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::Lightsail::Tag>]
+
+The tag keys and optional values to add to the resource during create.
+
+To tag a resource after it has been created, see the C<tag resource>
+operation.
 
 
 

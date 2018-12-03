@@ -93,8 +93,8 @@ of available log streams.
 
 =head2 PageToken => Str
 
-A token used for advancing to a specific page of results for your get
-relational database log events request.
+A token used for advancing to a specific page of results for your C<get
+relational database log events> request.
 
 
 
