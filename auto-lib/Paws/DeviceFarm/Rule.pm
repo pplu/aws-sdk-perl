@@ -33,15 +33,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 =head1 DESCRIPTION
 
-Represents a condition for a device pool.
+Represents a condition for a device pool. It is passed in as the
+C<rules> parameter to CreateDevicePool and UpdateDevicePool.
 
 =head1 ATTRIBUTES
 
 
 =head2 Attribute => Str
 
-  The rule's stringified attribute. For example, specify the value as
-C<"\"abc\"">.
+  The rule's attribute. It is the aspect of a device such as platform or
+model used as selection criteria to create or update a device pool.
 
 Allowed values include:
 
@@ -49,23 +50,30 @@ Allowed values include:
 
 =item *
 
-ARN: The ARN.
+ARN: The Amazon Resource Name (ARN) of a device. For example,
+"arn:aws:devicefarm:us-west-2::device:12345Example".
 
 =item *
 
-FORM_FACTOR: The form factor (for example, phone or tablet).
+PLATFORM: The device platform. Valid values are "ANDROID" or "IOS".
 
 =item *
 
-MANUFACTURER: The manufacturer.
+FORM_FACTOR: The device form factor. Valid values are "PHONE" or
+"TABLET".
 
 =item *
 
-PLATFORM: The platform (for example, Android or iOS).
+MANUFACTURER: The device manufacturer. For example, "Apple".
 
 =item *
 
 REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access.
+
+=item *
+
+REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote
+debugging.
 
 =item *
 
@@ -78,6 +86,10 @@ INSTANCE_ARN: The Amazon Resource Name (ARN) of the device instance.
 =item *
 
 INSTANCE_LABELS: The label of the device instance.
+
+=item *
+
+FLEET_TYPE: The fleet type. Valid values are "PUBLIC" or "PRIVATE".
 
 =back
 
@@ -120,6 +132,12 @@ CONTAINS: The contains operator.
 =head2 Value => Str
 
   The rule's value.
+
+The value must be passed in as a string using escaped quotes.
+
+For example:
+
+"value": "\"ANDROID\""
 
 
 

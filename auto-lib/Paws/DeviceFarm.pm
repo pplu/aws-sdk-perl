@@ -1377,6 +1377,8 @@ Gets information about device pools.
 
 =item [Arn => Str]
 
+=item [Filters => ArrayRef[L<Paws::DeviceFarm::DeviceFilter>]]
+
 =item [NextToken => Str]
 
 
@@ -1728,8 +1730,6 @@ should be able to invoke this operation.
 
 =over
 
-=item DevicePoolArn => Str
-
 =item ProjectArn => Str
 
 =item Test => L<Paws::DeviceFarm::ScheduleRunTest>
@@ -1737,6 +1737,10 @@ should be able to invoke this operation.
 =item [AppArn => Str]
 
 =item [Configuration => L<Paws::DeviceFarm::ScheduleRunConfiguration>]
+
+=item [DevicePoolArn => Str]
+
+=item [DeviceSelectionConfiguration => L<Paws::DeviceFarm::DeviceSelectionConfiguration>]
 
 =item [ExecutionConfiguration => L<Paws::DeviceFarm::ExecutionConfiguration>]
 
@@ -2032,9 +2036,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::DeviceFarm::ListDevicePoolsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllDevices(sub { },[Arn => Str, NextToken => Str])
+=head2 ListAllDevices(sub { },[Arn => Str, Filters => ArrayRef[L<Paws::DeviceFarm::DeviceFilter>], NextToken => Str])
 
-=head2 ListAllDevices([Arn => Str, NextToken => Str])
+=head2 ListAllDevices([Arn => Str, Filters => ArrayRef[L<Paws::DeviceFarm::DeviceFilter>], NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

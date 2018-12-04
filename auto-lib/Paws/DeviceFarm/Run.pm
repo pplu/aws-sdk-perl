@@ -9,6 +9,7 @@ package Paws::DeviceFarm::Run;
   has CustomerArtifactPaths => (is => 'ro', isa => 'Paws::DeviceFarm::CustomerArtifactPaths', request_name => 'customerArtifactPaths', traits => ['NameInRequest']);
   has DeviceMinutes => (is => 'ro', isa => 'Paws::DeviceFarm::DeviceMinutes', request_name => 'deviceMinutes', traits => ['NameInRequest']);
   has DevicePoolArn => (is => 'ro', isa => 'Str', request_name => 'devicePoolArn', traits => ['NameInRequest']);
+  has DeviceSelectionResult => (is => 'ro', isa => 'Paws::DeviceFarm::DeviceSelectionResult', request_name => 'deviceSelectionResult', traits => ['NameInRequest']);
   has EventCount => (is => 'ro', isa => 'Int', request_name => 'eventCount', traits => ['NameInRequest']);
   has JobTimeoutMinutes => (is => 'ro', isa => 'Int', request_name => 'jobTimeoutMinutes', traits => ['NameInRequest']);
   has Locale => (is => 'ro', isa => 'Str', request_name => 'locale', traits => ['NameInRequest']);
@@ -112,6 +113,12 @@ run.
 =head2 DevicePoolArn => Str
 
   The ARN of the device pool for the run.
+
+
+=head2 DeviceSelectionResult => L<Paws::DeviceFarm::DeviceSelectionResult>
+
+  The results of a device filter used to select the devices for a test
+run.
 
 
 =head2 EventCount => Int
