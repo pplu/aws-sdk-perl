@@ -4,6 +4,7 @@ package Paws::MQ::CreateConfiguration;
   has EngineType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'engineType');
   has EngineVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'engineVersion');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has Tags => (is => 'ro', isa => 'Paws::MQ::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -31,9 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $mq = Paws->service('MQ');
     my $CreateConfigurationResponse = $mq->CreateConfiguration(
-      EngineType    => 'ACTIVEMQ',      # OPTIONAL
-      EngineVersion => 'My__string',    # OPTIONAL
-      Name          => 'My__string',    # OPTIONAL
+      EngineType    => 'ACTIVEMQ',                           # OPTIONAL
+      EngineVersion => 'My__string',                         # OPTIONAL
+      Name          => 'My__string',                         # OPTIONAL
+      Tags          => { 'My__string' => 'My__string', },    # OPTIONAL
     );
 
     # Results:
@@ -60,8 +62,9 @@ Valid values are: C<"ACTIVEMQ">
 
 =head2 EngineVersion => Str
 
-Required. The version of the broker engine. Note: Currently, Amazon MQ
-supports only 5.15.6 and 5.15.0.
+Required. The version of the broker engine. For a list of supported
+engine versions, see
+https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
 
 
 
@@ -70,6 +73,12 @@ supports only 5.15.6 and 5.15.0.
 Required. The name of the configuration. This value can contain only
 alphanumeric characters, dashes, periods, underscores, and tildes (- .
 _ ~). This value must be 1-150 characters long.
+
+
+
+=head2 Tags => L<Paws::MQ::__mapOf__string>
+
+Create tags when creating the configuration.
 
 
 

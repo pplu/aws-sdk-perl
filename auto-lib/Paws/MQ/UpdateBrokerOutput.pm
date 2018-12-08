@@ -57,7 +57,9 @@ Returns information about the updated broker.
 
 =head2 EngineVersion => Str
 
-  The version of the broker engine to upgrade to.
+  The version of the broker engine to upgrade to. For a list of supported
+engine versions, see
+https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
 
 
 =head2 Logs => L<Paws::MQ::Logs>

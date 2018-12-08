@@ -24,6 +24,11 @@ package Paws::MQ;
     my $call_object = $self->new_with_coercions('Paws::MQ::CreateConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateTags {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MQ::CreateTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateUser {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MQ::CreateUser', @_);
@@ -32,6 +37,11 @@ package Paws::MQ;
   sub DeleteBroker {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MQ::DeleteBroker', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteTags {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MQ::DeleteTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteUser {
@@ -74,6 +84,11 @@ package Paws::MQ;
     my $call_object = $self->new_with_coercions('Paws::MQ::ListConfigurations', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTags {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MQ::ListTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListUsers {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MQ::ListUsers', @_);
@@ -102,7 +117,7 @@ package Paws::MQ;
   
 
 
-  sub operations { qw/CreateBroker CreateConfiguration CreateUser DeleteBroker DeleteUser DescribeBroker DescribeConfiguration DescribeConfigurationRevision DescribeUser ListBrokers ListConfigurationRevisions ListConfigurations ListUsers RebootBroker UpdateBroker UpdateConfiguration UpdateUser / }
+  sub operations { qw/CreateBroker CreateConfiguration CreateTags CreateUser DeleteBroker DeleteTags DeleteUser DescribeBroker DescribeConfiguration DescribeConfigurationRevision DescribeUser ListBrokers ListConfigurationRevisions ListConfigurations ListTags ListUsers RebootBroker UpdateBroker UpdateConfiguration UpdateUser / }
 
 1;
 
@@ -171,6 +186,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/amazon-mq/>
 
 =item [SubnetIds => ArrayRef[Str|Undef]]
 
+=item [Tags => L<Paws::MQ::__mapOf__string>]
+
 =item [Users => ArrayRef[L<Paws::MQ::User>]]
 
 
@@ -193,6 +210,8 @@ Creates a broker. Note: This API is asynchronous.
 
 =item [Name => Str]
 
+=item [Tags => L<Paws::MQ::__mapOf__string>]
+
 
 =back
 
@@ -202,6 +221,24 @@ Returns: a L<Paws::MQ::CreateConfigurationResponse> instance
 
 Creates a new configuration for the specified configuration name.
 Amazon MQ uses the default configuration (the engine type and version).
+
+
+=head2 CreateTags
+
+=over
+
+=item ResourceArn => Str
+
+=item [Tags => L<Paws::MQ::__mapOf__string>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MQ::CreateTags>
+
+Returns: nothing
+
+Add a tag to a resource.
 
 
 =head2 CreateUser
@@ -242,6 +279,24 @@ Each argument is described in detail in: L<Paws::MQ::DeleteBroker>
 Returns: a L<Paws::MQ::DeleteBrokerResponse> instance
 
 Deletes a broker. Note: This API is asynchronous.
+
+
+=head2 DeleteTags
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MQ::DeleteTags>
+
+Returns: nothing
+
+Remove a tag from a resource.
 
 
 =head2 DeleteUser
@@ -385,6 +440,22 @@ Each argument is described in detail in: L<Paws::MQ::ListConfigurations>
 Returns: a L<Paws::MQ::ListConfigurationsResponse> instance
 
 Returns a list of all configurations.
+
+
+=head2 ListTags
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MQ::ListTags>
+
+Returns: a L<Paws::MQ::ListTagsResponse> instance
+
+Lists tags for a resource.
 
 
 =head2 ListUsers

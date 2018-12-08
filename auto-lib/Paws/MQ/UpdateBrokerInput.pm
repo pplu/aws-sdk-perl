@@ -53,8 +53,9 @@ maintenance window of the broker or after a manual broker reboot.
 
 =head2 EngineVersion => Str
 
-  The version of the broker engine. Note: Currently, Amazon MQ supports
-only 5.15.6 and 5.15.0.
+  The version of the broker engine. For a list of supported engine
+versions, see
+https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
 
 
 =head2 Logs => L<Paws::MQ::Logs>

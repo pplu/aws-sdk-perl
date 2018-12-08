@@ -9,6 +9,7 @@ package Paws::MQ::DescribeConfigurationResponse;
   has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
   has LatestRevision => (is => 'ro', isa => 'Paws::MQ::ConfigurationRevision', traits => ['NameInRequest'], request_name => 'latestRevision');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has Tags => (is => 'ro', isa => 'Paws::MQ::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -45,7 +46,9 @@ supports only ACTIVEMQ.
 Valid values are: C<"ACTIVEMQ">
 =head2 EngineVersion => Str
 
-Required. The version of the broker engine.
+Required. The version of the broker engine. For a list of supported
+engine versions, see
+https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
 
 
 =head2 Id => Str
@@ -63,6 +66,11 @@ Required. The latest revision of the configuration.
 Required. The name of the configuration. This value can contain only
 alphanumeric characters, dashes, periods, underscores, and tildes (- .
 _ ~). This value must be 1-150 characters long.
+
+
+=head2 Tags => L<Paws::MQ::__mapOf__string>
+
+The list of all tags associated with this configuration.
 
 
 =head2 _request_id => Str

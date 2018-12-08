@@ -54,6 +54,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $PubliclyAccessible   = $DescribeBrokerResponse->PubliclyAccessible;
     my $SecurityGroups       = $DescribeBrokerResponse->SecurityGroups;
     my $SubnetIds            = $DescribeBrokerResponse->SubnetIds;
+    my $Tags                 = $DescribeBrokerResponse->Tags;
     my $Users                = $DescribeBrokerResponse->Users;
 
     # Returns a L<Paws::MQ::DescribeBrokerResponse> object.

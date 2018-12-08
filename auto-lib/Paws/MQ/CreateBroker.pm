@@ -14,6 +14,7 @@ package Paws::MQ::CreateBroker;
   has PubliclyAccessible => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'publiclyAccessible');
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'securityGroups');
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'subnetIds');
+  has Tags => (is => 'ro', isa => 'Paws::MQ::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags');
   has Users => (is => 'ro', isa => 'ArrayRef[Paws::MQ::User]', traits => ['NameInRequest'], request_name => 'users');
 
   use MooseX::ClassAttribute;
@@ -63,9 +64,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         TimeOfDay => 'My__string',
         TimeZone  => 'My__string',
       },    # OPTIONAL
-      PubliclyAccessible => 1,                        # OPTIONAL
-      SecurityGroups     => [ 'My__string', ... ],    # OPTIONAL
-      SubnetIds          => [ 'My__string', ... ],    # OPTIONAL
+      PubliclyAccessible => 1,                                    # OPTIONAL
+      SecurityGroups     => [ 'My__string', ... ],                # OPTIONAL
+      SubnetIds          => [ 'My__string', ... ],                # OPTIONAL
+      Tags               => { 'My__string' => 'My__string', },    # OPTIONAL
       Users              => [
         {
           ConsoleAccess => 1,
@@ -74,7 +76,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Username      => 'My__string',
         },
         ...
-      ],                                              # OPTIONAL
+      ],                                                          # OPTIONAL
     );
 
     # Results:
@@ -137,8 +139,9 @@ Valid values are: C<"ACTIVEMQ">
 
 =head2 EngineVersion => Str
 
-Required. The version of the broker engine. Note: Currently, Amazon MQ
-supports only 5.15.6 and 5.15.0.
+Required. The version of the broker engine. For a list of supported
+engine versions, see
+https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
 
 
 
@@ -180,6 +183,12 @@ The list of groups (2 maximum) that define which subnets and IP ranges
 the broker can use from different Availability Zones. A SINGLE_INSTANCE
 deployment requires one subnet (for example, the default subnet). An
 ACTIVE_STANDBY_MULTI_AZ deployment requires two subnets.
+
+
+
+=head2 Tags => L<Paws::MQ::__mapOf__string>
+
+Create tags when creating the broker.
 
 
 

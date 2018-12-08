@@ -19,6 +19,7 @@ package Paws::MQ::DescribeBrokerResponse;
   has PubliclyAccessible => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'publiclyAccessible');
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'securityGroups');
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'subnetIds');
+  has Tags => (is => 'ro', isa => 'Paws::MQ::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags');
   has Users => (is => 'ro', isa => 'ArrayRef[Paws::MQ::UserSummary]', traits => ['NameInRequest'], request_name => 'users');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -91,8 +92,9 @@ supports only ACTIVEMQ.
 Valid values are: C<"ACTIVEMQ">
 =head2 EngineVersion => Str
 
-The version of the broker engine. Note: Currently, Amazon MQ supports
-only 5.15.6 and 5.15.0.
+The version of the broker engine. For a list of supported engine
+versions, see
+https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
 
 
 =head2 HostInstanceType => Str
@@ -113,7 +115,9 @@ The parameters that determine the WeeklyStartTime.
 
 =head2 PendingEngineVersion => Str
 
-The version of the broker engine to upgrade to.
+The version of the broker engine to upgrade to. For a list of supported
+engine versions, see
+https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
 
 
 =head2 PubliclyAccessible => Bool
@@ -134,6 +138,11 @@ The list of groups (2 maximum) that define which subnets and IP ranges
 the broker can use from different Availability Zones. A SINGLE_INSTANCE
 deployment requires one subnet (for example, the default subnet). An
 ACTIVE_STANDBY_MULTI_AZ deployment requires two subnets.
+
+
+=head2 Tags => L<Paws::MQ::__mapOf__string>
+
+The list of all tags associated with this broker.
 
 
 =head2 Users => ArrayRef[L<Paws::MQ::UserSummary>]
