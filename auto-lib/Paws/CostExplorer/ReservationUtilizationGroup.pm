@@ -34,29 +34,29 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CostExplore
 
 =head1 DESCRIPTION
 
-A group of Reserved Instances (RIs) that share a set of attributes.
+A group of reservations that share a set of attributes.
 
 =head1 ATTRIBUTES
 
 
 =head2 Attributes => L<Paws::CostExplorer::Attributes>
 
-  The attributes for this group of RIs.
+  The attributes for this group of reservations.
 
 
 =head2 Key => Str
 
-  The key for a specific RI attribute.
+  The key for a specific reservation attribute.
 
 
 =head2 Utilization => L<Paws::CostExplorer::ReservationAggregates>
 
-  How much you used this group of RIs.
+  How much you used this group of reservations.
 
 
 =head2 Value => Str
 
-  The value of a specific RI attribute.
+  The value of a specific reservation attribute.
 
 
 

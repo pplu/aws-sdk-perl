@@ -94,6 +94,9 @@ Sets the AWS cost granularity to C<MONTHLY> or C<DAILY>. If
 C<Granularity> isn't set, the response object doesn't include the
 C<Granularity>, either C<MONTHLY> or C<DAILY>.
 
+The C<GetCostAndUsageRequest> operation supports only C<DAILY> and
+C<MONTHLY> granularities.
+
 Valid values are: C<"DAILY">, C<"MONTHLY">, C<"HOURLY">
 
 =head2 GroupBy => ArrayRef[L<Paws::CostExplorer::GroupDefinition>]
@@ -123,10 +126,11 @@ C<UsageQuantity>.
 
 If you return the C<UsageQuantity> metric, the service aggregates all
 usage numbers without taking into account the units. For example, if
-you aggregate C<usageQuantity> across all of EC2, the results aren't
-meaningful because EC2 compute hours and data transfer are measured in
-different units (for example, hours vs. GB). To get more meaningful
-C<UsageQuantity> metrics, filter by C<UsageType> or C<UsageTypeGroups>.
+you aggregate C<usageQuantity> across all of Amazon EC2, the results
+aren't meaningful because Amazon EC2 compute hours and data transfer
+are measured in different units (for example, hours vs. GB). To get
+more meaningful C<UsageQuantity> metrics, filter by C<UsageType> or
+C<UsageTypeGroups>.
 
 C<Metrics> is required for C<GetCostAndUsage> requests.
 

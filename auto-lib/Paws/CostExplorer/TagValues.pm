@@ -39,12 +39,12 @@ The values that are available for a tag.
 
 =head2 Key => Str
 
-  The key for a tag.
+  The key for the tag.
 
 
 =head2 Values => ArrayRef[Str|Undef]
 
-  The specific value of a tag.
+  The specific value of the tag.
 
 
 

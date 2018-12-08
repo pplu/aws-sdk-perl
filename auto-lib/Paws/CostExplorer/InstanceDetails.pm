@@ -42,7 +42,7 @@ Details about the instances that AWS recommends that you purchase.
 
 =head2 EC2InstanceDetails => L<Paws::CostExplorer::EC2InstanceDetails>
 
-  The EC2 instances that AWS recommends that you purchase.
+  The Amazon EC2 instances that AWS recommends that you purchase.
 
 
 =head2 ElastiCacheInstanceDetails => L<Paws::CostExplorer::ElastiCacheInstanceDetails>
@@ -57,7 +57,7 @@ Details about the instances that AWS recommends that you purchase.
 
 =head2 RDSInstanceDetails => L<Paws::CostExplorer::RDSInstanceDetails>
 
-  The RDS instances that AWS recommends that you purchase.
+  The Amazon RDS instances that AWS recommends that you purchase.
 
 
 =head2 RedshiftInstanceDetails => L<Paws::CostExplorer::RedshiftInstanceDetails>

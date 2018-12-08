@@ -43,7 +43,7 @@ you purchase.
 
 =head2 CurrentGeneration => Bool
 
-  Whether the recommendation is for a current generation instance.
+  Whether the recommendation is for a current-generation instance.
 
 
 =head2 Family => Str

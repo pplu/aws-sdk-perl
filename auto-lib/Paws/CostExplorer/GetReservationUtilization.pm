@@ -133,11 +133,11 @@ TENANCY
 
 =back
 
-C<GetReservationUtilization> uses the same C< Expression
+C<GetReservationUtilization> uses the same Expression
 (http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html)
-> object as the other operations, but only C<AND> is supported among
-each dimension, and nesting is supported up to only one level deep. If
-there are multiple values for a dimension, they are OR'd together.
+object as the other operations, but only C<AND> is supported among each
+dimension, and nesting is supported up to only one level deep. If there
+are multiple values for a dimension, they are OR'd together.
 
 
 
@@ -147,6 +147,9 @@ If C<GroupBy> is set, C<Granularity> can't be set. If C<Granularity>
 isn't set, the response object doesn't include C<Granularity>, either
 C<MONTHLY> or C<DAILY>. If both C<GroupBy> and C<Granularity> aren't
 set, C<GetReservationUtilization> defaults to C<DAILY>.
+
+The C<GetReservationUtilization> operation supports only C<DAILY> and
+C<MONTHLY> granularities.
 
 Valid values are: C<"DAILY">, C<"MONTHLY">, C<"HOURLY">
 
@@ -166,12 +169,11 @@ maximum page size.
 
 =head2 B<REQUIRED> TimePeriod => L<Paws::CostExplorer::DateInterval>
 
-Sets the start and end dates for retrieving Reserved Instance (RI)
-utilization. The start date is inclusive, but the end date is
-exclusive. For example, if C<start> is C<2017-01-01> and C<end> is
-C<2017-05-01>, then the cost and usage data is retrieved from
-C<2017-01-01> up to and including C<2017-04-30> but not including
-C<2017-05-01>.
+Sets the start and end dates for retrieving RI utilization. The start
+date is inclusive, but the end date is exclusive. For example, if
+C<start> is C<2017-01-01> and C<end> is C<2017-05-01>, then the cost
+and usage data is retrieved from C<2017-01-01> up to and including
+C<2017-04-30> but not including C<2017-05-01>.
 
 
 

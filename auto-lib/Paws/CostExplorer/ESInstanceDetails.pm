@@ -35,14 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CostExplore
 
 =head1 DESCRIPTION
 
-Details about the ES instances that AWS recommends that you purchase.
+Details about the Amazon ES instances that AWS recommends that you
+purchase.
 
 =head1 ATTRIBUTES
 
 
 =head2 CurrentGeneration => Bool
 
-  Whether the recommendation is for a current generation instance.
+  Whether the recommendation is for a current-generation instance.
 
 
 =head2 InstanceClass => Str

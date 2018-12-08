@@ -4,6 +4,7 @@ package Paws::CostExplorer::GetReservationCoverage;
   has Filter => (is => 'ro', isa => 'Paws::CostExplorer::Expression');
   has Granularity => (is => 'ro', isa => 'Str');
   has GroupBy => (is => 'ro', isa => 'ArrayRef[Paws::CostExplorer::GroupDefinition]');
+  has Metrics => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has NextPageToken => (is => 'ro', isa => 'Str');
   has TimePeriod => (is => 'ro', isa => 'Paws::CostExplorer::DateInterval', required => 1);
 
@@ -59,6 +60,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                     # OPTIONAL
+      Metrics => [ 'MyMetricName', ... ],    # OPTIONAL
       NextPageToken => 'MyNextPageToken',    # OPTIONAL
     );
 
@@ -132,10 +134,10 @@ TENANCY
 
 =back
 
-C<GetReservationCoverage> uses the same C< Expression
+C<GetReservationCoverage> uses the same Expression
 (http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html)
-> object as the other operations, but only C<AND> is supported among
-each dimension. You can nest only one level deep. If there are multiple
+object as the other operations, but only C<AND> is supported among each
+dimension. You can nest only one level deep. If there are multiple
 values for a dimension, they are OR'd together.
 
 If you don't provide a C<SERVICE> filter, Cost Explorer defaults to
@@ -151,6 +153,9 @@ are C<MONTHLY> and C<DAILY>.
 If C<GroupBy> is set, C<Granularity> can't be set. If C<Granularity>
 isn't set, the response object doesn't include C<Granularity>, either
 C<MONTHLY> or C<DAILY>.
+
+The C<GetReservationCoverage> operation supports only C<DAILY> and
+C<MONTHLY> granularities.
 
 Valid values are: C<"DAILY">, C<"MONTHLY">, C<"HOURLY">
 
@@ -209,6 +214,12 @@ TENANCY
 
 
 
+=head2 Metrics => ArrayRef[Str|Undef]
+
+
+
+
+
 =head2 NextPageToken => Str
 
 The token to retrieve the next set of results. AWS provides the token
@@ -219,8 +230,8 @@ maximum page size.
 
 =head2 B<REQUIRED> TimePeriod => L<Paws::CostExplorer::DateInterval>
 
-The start and end dates of the period for which you want to retrieve
-data about reservation coverage. You can retrieve data for a maximum of
+The start and end dates of the period that you want to retrieve data
+about reservation coverage for. You can retrieve data for a maximum of
 13 months: the last 12 months and the current month. The start date is
 inclusive, but the end date is exclusive. For example, if C<start> is
 C<2017-01-01> and C<end> is C<2017-05-01>, then the cost and usage data

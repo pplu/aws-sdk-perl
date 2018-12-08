@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CostExplore
 
 =head1 DESCRIPTION
 
-The EC2 hardware specifications that you want AWS to provide
+The Amazon EC2 hardware specifications that you want AWS to provide
 recommendations for.
 
 =head1 ATTRIBUTES

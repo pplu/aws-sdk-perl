@@ -1,14 +1,13 @@
-package Paws::CostExplorer::GroupDefinition;
+package Paws::CostExplorer::CoverageCost;
   use Moose;
-  has Key => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
+  has OnDemandCost => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::CostExplorer::GroupDefinition
+Paws::CostExplorer::CoverageCost
 
 =head1 USAGE
 
@@ -19,33 +18,27 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::CostExplorer::GroupDefinition object:
+As an example, if Att1 is expected to be a Paws::CostExplorer::CoverageCost object:
 
-  $service_obj->Method(Att1 => { Key => $value, ..., Type => $value  });
+  $service_obj->Method(Att1 => { OnDemandCost => $value, ..., OnDemandCost => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::CostExplorer::GroupDefinition object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::CostExplorer::CoverageCost object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Key
+  $result->Att1->OnDemandCost
 
 =head1 DESCRIPTION
 
-Represents a group when you specify a group by criteria or in the
-response to a query with a specific grouping.
+How much it cost to run an instance.
 
 =head1 ATTRIBUTES
 
 
-=head2 Key => Str
+=head2 OnDemandCost => Str
 
-  The string that represents a key for a specified group.
-
-
-=head2 Type => Str
-
-  The string that represents the type of group.
+  How much an On-Demand instance cost.
 
 
 

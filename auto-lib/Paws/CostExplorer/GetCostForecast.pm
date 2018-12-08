@@ -80,6 +80,9 @@ API supports all of the Cost Explorer filters.
 How granular you want the forecast to be. You can get 3 months of
 C<DAILY> forecasts or 12 months of C<MONTHLY> forecasts.
 
+The C<GetCostForecast> operation supports only C<DAILY> and C<MONTHLY>
+granularities.
+
 Valid values are: C<"DAILY">, C<"MONTHLY">, C<"HOURLY">
 
 =head2 B<REQUIRED> Metric => Str

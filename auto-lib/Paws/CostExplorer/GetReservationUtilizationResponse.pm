@@ -25,12 +25,12 @@ maximum page size.
 
 =head2 Total => L<Paws::CostExplorer::ReservationAggregates>
 
-The total amount of time that you utilized your RIs.
+The total amount of time that you used your RIs.
 
 
 =head2 B<REQUIRED> UtilizationsByTime => ArrayRef[L<Paws::CostExplorer::UtilizationByTime>]
 
-The amount of time that you utilized your RIs.
+The amount of time that you used your RIs.
 
 
 =head2 _request_id => Str

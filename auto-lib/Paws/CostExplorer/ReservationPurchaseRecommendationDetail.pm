@@ -136,8 +136,8 @@ reservation purchases.
 
 =head2 MinimumNormalizedUnitsUsedPerHour => Str
 
-  The minimum number of hours that you used in an hour during the
-historical period. AWS uses this to calculate your recommended
+  The minimum number of normalized units that you used in an hour during
+the historical period. AWS uses this to calculate your recommended
 reservation purchases.
 
 

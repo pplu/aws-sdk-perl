@@ -40,17 +40,17 @@ The amount of utilization, in hours.
 
 =head2 Groups => ArrayRef[L<Paws::CostExplorer::ReservationUtilizationGroup>]
 
-  The groups that are included in this utilization result.
+  The groups that this utilization result uses.
 
 
 =head2 TimePeriod => L<Paws::CostExplorer::DateInterval>
 
-  The period of time over which this utilization was used.
+  The period of time that this utilization was used for.
 
 
 =head2 Total => L<Paws::CostExplorer::ReservationAggregates>
 
-  The total number of RI hours that were used.
+  The total number of reservation hours that were used.
 
 
 
