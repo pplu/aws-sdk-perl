@@ -390,6 +390,29 @@ package Paws::Route53;
 
     return undef
   }
+  sub ListAllVPCAssociationAuthorizations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListVPCAssociationAuthorizations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListVPCAssociationAuthorizations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->VPCs }, @{ $next_result->VPCs };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'VPCs') foreach (@{ $result->VPCs });
+        $result = $self->ListVPCAssociationAuthorizations(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'VPCs') foreach (@{ $result->VPCs });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AssociateVPCWithHostedZone ChangeResourceRecordSets ChangeTagsForResource CreateHealthCheck CreateHostedZone CreateQueryLoggingConfig CreateReusableDelegationSet CreateTrafficPolicy CreateTrafficPolicyInstance CreateTrafficPolicyVersion CreateVPCAssociationAuthorization DeleteHealthCheck DeleteHostedZone DeleteQueryLoggingConfig DeleteReusableDelegationSet DeleteTrafficPolicy DeleteTrafficPolicyInstance DeleteVPCAssociationAuthorization DisassociateVPCFromHostedZone GetAccountLimit GetChange GetCheckerIpRanges GetGeoLocation GetHealthCheck GetHealthCheckCount GetHealthCheckLastFailureReason GetHealthCheckStatus GetHostedZone GetHostedZoneCount GetHostedZoneLimit GetQueryLoggingConfig GetReusableDelegationSet GetReusableDelegationSetLimit GetTrafficPolicy GetTrafficPolicyInstance GetTrafficPolicyInstanceCount ListGeoLocations ListHealthChecks ListHostedZones ListHostedZonesByName ListQueryLoggingConfigs ListResourceRecordSets ListReusableDelegationSets ListTagsForResource ListTagsForResources ListTrafficPolicies ListTrafficPolicyInstances ListTrafficPolicyInstancesByHostedZone ListTrafficPolicyInstancesByPolicy ListTrafficPolicyVersions ListVPCAssociationAuthorizations TestDNSAnswer UpdateHealthCheck UpdateHostedZoneComment UpdateTrafficPolicyComment UpdateTrafficPolicyInstance / }
@@ -2443,6 +2466,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - ResourceRecordSets, passing the object as the first parameter, and the string 'ResourceRecordSets' as the second parameter 
 
 If not, it will return a a L<Paws::Route53::ListResourceRecordSetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllVPCAssociationAuthorizations(sub { },HostedZoneId => Str, [MaxResults => Str, NextToken => Str])
+
+=head2 ListAllVPCAssociationAuthorizations(HostedZoneId => Str, [MaxResults => Str, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - VPCs, passing the object as the first parameter, and the string 'VPCs' as the second parameter 
+
+If not, it will return a a L<Paws::Route53::ListVPCAssociationAuthorizationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 
