@@ -45,9 +45,19 @@ package Paws::CodeBuild;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::DeleteProject', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteSourceCredentials {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::DeleteSourceCredentials', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteWebhook {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::DeleteWebhook', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ImportSourceCredentials {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::ImportSourceCredentials', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub InvalidateProjectCache {
@@ -73,6 +83,11 @@ package Paws::CodeBuild;
   sub ListProjects {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::ListProjects', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListSourceCredentials {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::ListSourceCredentials', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StartBuild {
@@ -167,7 +182,7 @@ package Paws::CodeBuild;
   }
 
 
-  sub operations { qw/BatchDeleteBuilds BatchGetBuilds BatchGetProjects CreateProject CreateWebhook DeleteProject DeleteWebhook InvalidateProjectCache ListBuilds ListBuildsForProject ListCuratedEnvironmentImages ListProjects StartBuild StopBuild UpdateProject UpdateWebhook / }
+  sub operations { qw/BatchDeleteBuilds BatchGetBuilds BatchGetProjects CreateProject CreateWebhook DeleteProject DeleteSourceCredentials DeleteWebhook ImportSourceCredentials InvalidateProjectCache ListBuilds ListBuildsForProject ListCuratedEnvironmentImages ListProjects ListSourceCredentials StartBuild StopBuild UpdateProject UpdateWebhook / }
 
 1;
 
@@ -288,6 +303,24 @@ C<StopBuild>: Attempts to stop running a build.
 
 C<ListCuratedEnvironmentImages>: Gets information about Docker images
 that are managed by AWS CodeBuild.
+
+=item *
+
+C<DeleteSourceCredentials>: Deletes a set of GitHub, GitHub Enterprise,
+or Bitbucket source credentials.
+
+=item *
+
+C<ImportSourceCredentials>: Imports the source repository credentials
+for an AWS CodeBuild project that has its source code stored in a
+GitHub, GitHub Enterprise, or Bitbucket repository.
+
+=item *
+
+C<ListSourceCredentials>: Returns a list of C<SourceCredentialsInfo>
+objects. Each C<SourceCredentialsInfo> object includes the
+authentication type, token ARN, and type of source provider for one set
+of credentials.
 
 =back
 
@@ -438,6 +471,23 @@ Returns: a L<Paws::CodeBuild::DeleteProjectOutput> instance
 Deletes a build project.
 
 
+=head2 DeleteSourceCredentials
+
+=over
+
+=item Arn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeBuild::DeleteSourceCredentials>
+
+Returns: a L<Paws::CodeBuild::DeleteSourceCredentialsOutput> instance
+
+Deletes a set of GitHub, GitHub Enterprise, or Bitbucket source
+credentials.
+
+
 =head2 DeleteWebhook
 
 =over
@@ -455,6 +505,30 @@ For an existing AWS CodeBuild build project that has its source code
 stored in a GitHub or Bitbucket repository, stops AWS CodeBuild from
 rebuilding the source code every time a code change is pushed to the
 repository.
+
+
+=head2 ImportSourceCredentials
+
+=over
+
+=item AuthType => Str
+
+=item ServerType => Str
+
+=item Token => Str
+
+=item [Username => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeBuild::ImportSourceCredentials>
+
+Returns: a L<Paws::CodeBuild::ImportSourceCredentialsOutput> instance
+
+Imports the source repository credentials for an AWS CodeBuild project
+that has its source code stored in a GitHub, GitHub Enterprise, or
+Bitbucket repository.
 
 
 =head2 InvalidateProjectCache
@@ -546,6 +620,20 @@ Returns: a L<Paws::CodeBuild::ListProjectsOutput> instance
 
 Gets a list of build project names, with each build project name
 representing a single build project.
+
+
+=head2 ListSourceCredentials
+
+
+
+
+
+
+Each argument is described in detail in: L<Paws::CodeBuild::ListSourceCredentials>
+
+Returns: a L<Paws::CodeBuild::ListSourceCredentialsOutput> instance
+
+Returns a list of C<SourceCredentialsInfo> objects.
 
 
 =head2 StartBuild
