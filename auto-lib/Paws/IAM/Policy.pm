@@ -107,7 +107,7 @@ to set the permissions boundary.
 
 For more information about permissions boundaries, see Permissions
 Boundaries for IAM Identities
-(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html)
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html)
 in the I<IAM User Guide>.
 
 

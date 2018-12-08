@@ -81,7 +81,7 @@ happens, you can resync the device
 The serial number that uniquely identifies the MFA device. For virtual
 MFA devices, the serial number is the device ARN.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
 also include any of the following characters: =,.@:/-
@@ -92,7 +92,7 @@ also include any of the following characters: =,.@:/-
 
 The name of the IAM user for whom you want to enable the MFA device.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
 also include any of the following characters: _+=,.@-

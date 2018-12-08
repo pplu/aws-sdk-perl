@@ -84,9 +84,7 @@ in the I<Using IAM> guide.
 user.
 
 For more information about permissions boundaries, see Permissions
-Boundaries for IAM Identities
-(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html)
-in the I<IAM User Guide>.
+Boundaries for IAM Identities in the I<IAM User Guide>.
 
 
 =head2 Tags => ArrayRef[L<Paws::IAM::Tag>]

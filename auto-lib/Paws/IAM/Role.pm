@@ -74,7 +74,7 @@ in the I<IAM User Guide> guide.
 =head2 MaxSessionDuration => Int
 
   The maximum session duration (in seconds) for the specified role.
-Anyone who uses the AWS CLI or API to assume the role can specify the
+Anyone who uses the AWS CLI, or API to assume the role can specify the
 duration using the optional C<DurationSeconds> API parameter or
 C<duration-seconds> CLI parameter.
 
@@ -93,9 +93,7 @@ in the I<Using IAM> guide.
 role.
 
 For more information about permissions boundaries, see Permissions
-Boundaries for IAM Identities
-(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html)
-in the I<IAM User Guide>.
+Boundaries for IAM Identities in the I<IAM User Guide>.
 
 
 =head2 B<REQUIRED> RoleId => Str
