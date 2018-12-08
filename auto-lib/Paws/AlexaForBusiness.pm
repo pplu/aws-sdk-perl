@@ -45,6 +45,11 @@ package Paws::AlexaForBusiness;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::CreateAddressBook', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateBusinessReportSchedule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::CreateBusinessReportSchedule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateConferenceProvider {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::CreateConferenceProvider', @_);
@@ -78,6 +83,11 @@ package Paws::AlexaForBusiness;
   sub DeleteAddressBook {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::DeleteAddressBook', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteBusinessReportSchedule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::DeleteBusinessReportSchedule', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteConferenceProvider {
@@ -193,6 +203,11 @@ package Paws::AlexaForBusiness;
   sub GetSkillGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::GetSkillGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListBusinessReportSchedules {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::ListBusinessReportSchedules', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListConferenceProviders {
@@ -328,6 +343,11 @@ package Paws::AlexaForBusiness;
   sub UpdateAddressBook {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::UpdateAddressBook', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateBusinessReportSchedule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::UpdateBusinessReportSchedule', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateConferenceProvider {
@@ -524,7 +544,7 @@ package Paws::AlexaForBusiness;
   }
 
 
-  sub operations { qw/ApproveSkill AssociateContactWithAddressBook AssociateDeviceWithRoom AssociateSkillGroupWithRoom AssociateSkillWithSkillGroup CreateAddressBook CreateConferenceProvider CreateContact CreateProfile CreateRoom CreateSkillGroup CreateUser DeleteAddressBook DeleteConferenceProvider DeleteContact DeleteDevice DeleteProfile DeleteRoom DeleteRoomSkillParameter DeleteSkillAuthorization DeleteSkillGroup DeleteUser DisassociateContactFromAddressBook DisassociateDeviceFromRoom DisassociateSkillFromSkillGroup DisassociateSkillGroupFromRoom ForgetSmartHomeAppliances GetAddressBook GetConferencePreference GetConferenceProvider GetContact GetDevice GetProfile GetRoom GetRoomSkillParameter GetSkillGroup ListConferenceProviders ListDeviceEvents ListSkills ListSkillsStoreCategories ListSkillsStoreSkillsByCategory ListSmartHomeAppliances ListTags PutConferencePreference PutRoomSkillParameter PutSkillAuthorization RegisterAVSDevice RejectSkill ResolveRoom RevokeInvitation SearchAddressBooks SearchContacts SearchDevices SearchProfiles SearchRooms SearchSkillGroups SearchUsers SendInvitation StartDeviceSync StartSmartHomeApplianceDiscovery TagResource UntagResource UpdateAddressBook UpdateConferenceProvider UpdateContact UpdateDevice UpdateProfile UpdateRoom UpdateSkillGroup / }
+  sub operations { qw/ApproveSkill AssociateContactWithAddressBook AssociateDeviceWithRoom AssociateSkillGroupWithRoom AssociateSkillWithSkillGroup CreateAddressBook CreateBusinessReportSchedule CreateConferenceProvider CreateContact CreateProfile CreateRoom CreateSkillGroup CreateUser DeleteAddressBook DeleteBusinessReportSchedule DeleteConferenceProvider DeleteContact DeleteDevice DeleteProfile DeleteRoom DeleteRoomSkillParameter DeleteSkillAuthorization DeleteSkillGroup DeleteUser DisassociateContactFromAddressBook DisassociateDeviceFromRoom DisassociateSkillFromSkillGroup DisassociateSkillGroupFromRoom ForgetSmartHomeAppliances GetAddressBook GetConferencePreference GetConferenceProvider GetContact GetDevice GetProfile GetRoom GetRoomSkillParameter GetSkillGroup ListBusinessReportSchedules ListConferenceProviders ListDeviceEvents ListSkills ListSkillsStoreCategories ListSkillsStoreSkillsByCategory ListSmartHomeAppliances ListTags PutConferencePreference PutRoomSkillParameter PutSkillAuthorization RegisterAVSDevice RejectSkill ResolveRoom RevokeInvitation SearchAddressBooks SearchContacts SearchDevices SearchProfiles SearchRooms SearchSkillGroups SearchUsers SendInvitation StartDeviceSync StartSmartHomeApplianceDiscovery TagResource UntagResource UpdateAddressBook UpdateBusinessReportSchedule UpdateConferenceProvider UpdateContact UpdateDevice UpdateProfile UpdateRoom UpdateSkillGroup / }
 
 1;
 
@@ -683,6 +703,35 @@ Returns: a L<Paws::AlexaForBusiness::CreateAddressBookResponse> instance
 Creates an address book with the specified details.
 
 
+=head2 CreateBusinessReportSchedule
+
+=over
+
+=item ContentRange => L<Paws::AlexaForBusiness::BusinessReportContentRange>
+
+=item Format => Str
+
+=item [ClientRequestToken => Str]
+
+=item [Recurrence => L<Paws::AlexaForBusiness::BusinessReportRecurrence>]
+
+=item [S3BucketName => Str]
+
+=item [S3KeyPrefix => Str]
+
+=item [ScheduleName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::CreateBusinessReportSchedule>
+
+Returns: a L<Paws::AlexaForBusiness::CreateBusinessReportScheduleResponse> instance
+
+Creates a recurring schedule for usage reports to deliver to the
+specified S3 location with a specified daily or weekly interval.
+
+
 =head2 CreateConferenceProvider
 
 =over
@@ -715,13 +764,13 @@ Adds a new conference provider under the user's AWS account.
 
 =item FirstName => Str
 
-=item PhoneNumber => Str
-
 =item [ClientRequestToken => Str]
 
 =item [DisplayName => Str]
 
 =item [LastName => Str]
+
+=item [PhoneNumber => Str]
 
 
 =back
@@ -853,6 +902,23 @@ Each argument is described in detail in: L<Paws::AlexaForBusiness::DeleteAddress
 Returns: a L<Paws::AlexaForBusiness::DeleteAddressBookResponse> instance
 
 Deletes an address book by the address book ARN.
+
+
+=head2 DeleteBusinessReportSchedule
+
+=over
+
+=item ScheduleArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::DeleteBusinessReportSchedule>
+
+Returns: a L<Paws::AlexaForBusiness::DeleteBusinessReportScheduleResponse> instance
+
+Deletes the recurring report delivery schedule with the specified
+schedule ARN.
 
 
 =head2 DeleteConferenceProvider
@@ -1242,6 +1308,24 @@ Each argument is described in detail in: L<Paws::AlexaForBusiness::GetSkillGroup
 Returns: a L<Paws::AlexaForBusiness::GetSkillGroupResponse> instance
 
 Gets skill group details by skill group ARN.
+
+
+=head2 ListBusinessReportSchedules
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::ListBusinessReportSchedules>
+
+Returns: a L<Paws::AlexaForBusiness::ListBusinessReportSchedulesResponse> instance
+
+Lists the details of the schedules that a user configured.
 
 
 =head2 ListConferenceProviders
@@ -1799,6 +1883,33 @@ Each argument is described in detail in: L<Paws::AlexaForBusiness::UpdateAddress
 Returns: a L<Paws::AlexaForBusiness::UpdateAddressBookResponse> instance
 
 Updates address book details by the address book ARN.
+
+
+=head2 UpdateBusinessReportSchedule
+
+=over
+
+=item ScheduleArn => Str
+
+=item [Format => Str]
+
+=item [Recurrence => L<Paws::AlexaForBusiness::BusinessReportRecurrence>]
+
+=item [S3BucketName => Str]
+
+=item [S3KeyPrefix => Str]
+
+=item [ScheduleName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::UpdateBusinessReportSchedule>
+
+Returns: a L<Paws::AlexaForBusiness::UpdateBusinessReportScheduleResponse> instance
+
+Updates the configuration of the report delivery schedule with the
+specified schedule ARN.
 
 
 =head2 UpdateConferenceProvider

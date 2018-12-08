@@ -47,9 +47,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       PSTNDialIn => {
         CountryCode      => 'MyCountryCode',
-        OneClickIdDelay  => 'MyOneClickIdDelay',     # min: 1, max: 2
-        OneClickPinDelay => 'MyOneClickPinDelay',    # min: 1, max: 2
-        PhoneNumber      => 'MyPhoneNumber',
+        OneClickIdDelay  => 'MyOneClickIdDelay',       # min: 1, max: 2
+        OneClickPinDelay => 'MyOneClickPinDelay',      # min: 1, max: 2
+        PhoneNumber      => 'MyOutboundPhoneNumber',
 
       },    # OPTIONAL
     );
