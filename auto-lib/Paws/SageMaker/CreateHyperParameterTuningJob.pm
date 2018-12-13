@@ -75,7 +75,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         Strategy => 'Bayesian',                  # values: Bayesian
-
+        TrainingJobEarlyStoppingType => 'Off',   # values: Off, Auto; OPTIONAL
       },
       HyperParameterTuningJobName => 'MyHyperParameterTuningJobName',
       TrainingJobDefinition       => {

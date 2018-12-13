@@ -4,6 +4,7 @@ package Paws::SageMaker::HyperParameterTuningJobConfig;
   has ParameterRanges => (is => 'ro', isa => 'Paws::SageMaker::ParameterRanges', required => 1);
   has ResourceLimits => (is => 'ro', isa => 'Paws::SageMaker::ResourceLimits', required => 1);
   has Strategy => (is => 'ro', isa => 'Str', required => 1);
+  has TrainingJobEarlyStoppingType => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SageMaker::HyperParameterTuningJobConfig object:
 
-  $service_obj->Method(Att1 => { HyperParameterTuningJobObjective => $value, ..., Strategy => $value  });
+  $service_obj->Method(Att1 => { HyperParameterTuningJobObjective => $value, ..., TrainingJobEarlyStoppingType => $value  });
 
 =head3 Results returned from an API call
 
@@ -61,6 +62,28 @@ jobs and parallel training jobs for this tuning job.
 
   Specifies the search strategy for hyperparameters. Currently, the only
 valid value is C<Bayesian>.
+
+
+=head2 TrainingJobEarlyStoppingType => Str
+
+  Specifies whether to use early stopping for training jobs launched by
+the hyperparameter tuning job. One of the following values:
+
+=over
+
+=item OFF
+
+Training jobs launched by the hyperparameter tuning job do not use
+early stopping.
+
+=item AUTO
+
+Amazon SageMaker stops training jobs launched by the hyperparameter
+tuning job when they are no longer improving as measured by the
+objective metric of the tuning job.
+
+=back
+
 
 
 
