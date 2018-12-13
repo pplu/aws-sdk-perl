@@ -45,7 +45,7 @@ You can use queues to manage the resources that are available to your
 AWS account for running multiple transcoding jobs at the same time. If
 you don't specify a queue, the service sends all jobs through the
 default queue. For more information, see
-https://docs.aws.amazon.com/mediaconvert/latest/ug/about-resource-allocation-and-job-prioritization.html.
+https://docs.aws.amazon.com/mediaconvert/latest/ug/working-with-queues.html.
 
 =head1 ATTRIBUTES
 
@@ -57,7 +57,7 @@ https://docs.aws.amazon.com/mediaconvert/latest/ug/about-resource-allocation-and
 
 =head2 CreatedAt => Str
 
-  The time stamp in epoch seconds for queue creation.
+  The timestamp in epoch seconds for when you created the queue.
 
 
 =head2 Description => Str
@@ -67,7 +67,8 @@ https://docs.aws.amazon.com/mediaconvert/latest/ug/about-resource-allocation-and
 
 =head2 LastUpdated => Str
 
-  The time stamp in epoch seconds when the queue was last updated.
+  The timestamp in epoch seconds for when you most recently updated the
+queue.
 
 
 =head2 B<REQUIRED> Name => Str
@@ -78,12 +79,11 @@ your account.
 
 =head2 PricingPlan => Str
 
-  Specifies whether the pricing plan for the queue is On-demand or
-Reserved. The pricing plan for the queue determines whether you pay
-On-demand or Reserved pricing for the transcoding jobs that you run
-through the queue. For Reserved queue pricing, you must set up a
-contract. You can create a Reserved queue contract through the AWS
-Elemental MediaConvert console.
+  Specifies whether the pricing plan for the queue is on-demand or
+reserved. For on-demand, you pay per minute, billed in increments of
+.01 minute. For reserved, you pay for the transcoding capacity of the
+entire queue, regardless of how much or how little you use it. Reserved
+pricing requires a 12-month commitment.
 
 
 =head2 ProgressingJobsCount => Int
@@ -112,9 +112,9 @@ error.
 
 =head2 Type => Str
 
-  Specifies whether this queue is system or custom. System queues are
-built in. You can't modify or delete system queues. You can create and
-modify custom queues.
+  Specifies whether this on-demand queue is system or custom. System
+queues are built in. You can't modify or delete system queues. You can
+create and modify custom queues.
 
 
 

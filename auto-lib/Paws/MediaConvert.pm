@@ -430,9 +430,9 @@ Each argument is described in detail in: L<Paws::MediaConvert::CreateQueue>
 
 Returns: a L<Paws::MediaConvert::CreateQueueResponse> instance
 
-Create a new transcoding queue. For information about job templates see
-the User Guide at
-http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
+Create a new transcoding queue. For information about queues, see
+Working With Queues in the User Guide at
+https://docs.aws.amazon.com/mediaconvert/latest/ug/working-with-queues.html
 
 
 =head2 DeleteJobTemplate

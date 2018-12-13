@@ -41,24 +41,27 @@ reserved queues and not applicable to on-demand queues.
 
 =head2 B<REQUIRED> Commitment => Str
 
-  The length of time that you commit to when you set up a pricing plan
-contract for a reserved queue.
+  The length of the term of your reserved queue pricing plan commitment.
 
 
 =head2 B<REQUIRED> RenewalType => Str
 
-  Specifies whether the pricing plan contract for your reserved queue
-automatically renews (AUTO_RENEW) or expires (EXPIRE) at the end of the
-contract period.
+  Specifies whether the term of your reserved queue pricing plan is
+automatically extended (AUTO_RENEW) or expires (EXPIRE) at the end of
+the term. When your term is auto renewed, you extend your commitment by
+12 months from the auto renew date. You can cancel this commitment.
 
 
 =head2 B<REQUIRED> ReservedSlots => Int
 
   Specifies the number of reserved transcode slots (RTS) for this queue.
 The number of RTS determines how many jobs the queue can process in
-parallel; each RTS can process one job at a time. To increase this
-number, create a replacement contract through the AWS Elemental
-MediaConvert console.
+parallel; each RTS can process one job at a time. You can't decrease
+the number of RTS in your reserved queue. You can increase the number
+of RTS by extending your existing commitment with a new 12-month
+commitment for the larger number. The new commitment begins when you
+purchase the additional capacity. You can't cancel your commitment or
+revert to your original commitment after you increase the capacity.
 
 
 
