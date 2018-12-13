@@ -58,13 +58,13 @@ An object representing an Amazon EKS cluster.
 
 =head2 ClientRequestToken => Str
 
-  Unique, case-sensitive identifier you provide to ensure the idempotency
-of the request.
+  Unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request.
 
 
 =head2 CreatedAt => Str
 
-  The Unix epoch time stamp in seconds for when the cluster was created.
+  The Unix epoch timestamp in seconds for when the cluster was created.
 
 
 =head2 Endpoint => Str
@@ -80,7 +80,9 @@ of the request.
 =head2 PlatformVersion => Str
 
   The platform version of your Amazon EKS cluster. For more information,
-see Platform Versions in the I< I<Amazon EKS User Guide> >.
+see Platform Versions
+(http://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html)
+in the I< I<Amazon EKS User Guide> >.
 
 
 =head2 ResourcesVpcConfig => L<Paws::EKS::VpcConfigResponse>

@@ -29,15 +29,30 @@ package Paws::EKS;
     my $call_object = $self->new_with_coercions('Paws::EKS::DescribeCluster', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeUpdate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EKS::DescribeUpdate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListClusters {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EKS::ListClusters', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListUpdates {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EKS::ListUpdates', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateClusterVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EKS::UpdateClusterVersion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
 
 
-  sub operations { qw/CreateCluster DeleteCluster DescribeCluster ListClusters / }
+  sub operations { qw/CreateCluster DeleteCluster DescribeCluster DescribeUpdate ListClusters ListUpdates UpdateClusterVersion / }
 
 1;
 
@@ -182,6 +197,29 @@ The API server endpoint and certificate authority data are not
 available until the cluster reaches the C<ACTIVE> state.
 
 
+=head2 DescribeUpdate
+
+=over
+
+=item Name => Str
+
+=item UpdateId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EKS::DescribeUpdate>
+
+Returns: a L<Paws::EKS::DescribeUpdateResponse> instance
+
+Returns descriptive information about an update against your Amazon EKS
+cluster.
+
+When the status of the update is C<Succeeded>, the update is complete.
+If an update fails, the status is C<Failed>, and an error detail
+explains the reason for the failure.
+
+
 =head2 ListClusters
 
 =over
@@ -199,6 +237,56 @@ Returns: a L<Paws::EKS::ListClustersResponse> instance
 
 Lists the Amazon EKS clusters in your AWS account in the specified
 Region.
+
+
+=head2 ListUpdates
+
+=over
+
+=item Name => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EKS::ListUpdates>
+
+Returns: a L<Paws::EKS::ListUpdatesResponse> instance
+
+Lists the updates associated with an Amazon EKS cluster in your AWS
+account, in the specified Region.
+
+
+=head2 UpdateClusterVersion
+
+=over
+
+=item Name => Str
+
+=item Version => Str
+
+=item [ClientRequestToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EKS::UpdateClusterVersion>
+
+Returns: a L<Paws::EKS::UpdateClusterVersionResponse> instance
+
+Updates an Amazon EKS cluster to the specified Kubernetes version. Your
+cluster continues to function during the update. The response output
+includes an update ID that you can use to track the status of your
+cluster update with the DescribeUpdate API operation.
+
+Cluster updates are asynchronous, and they should finish within a few
+minutes. During an update, the cluster status moves to C<UPDATING>
+(this status transition is eventually consistent). When the update is
+complete (either C<Failed> or C<Successful>), the cluster status moves
+to C<Active>.
 
 
 

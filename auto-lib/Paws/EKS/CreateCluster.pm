@@ -56,8 +56,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/eks
 
 =head2 ClientRequestToken => Str
 
-Unique, case-sensitive identifier you provide to ensure the idempotency
-of the request.
+Unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request.
 
 
 
@@ -76,8 +76,8 @@ with Kubernetes. For more information, see Cluster VPC Considerations
 Cluster Security Group Considerations
 (http://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html)
 in the I<Amazon EKS User Guide>. You must specify at least two subnets.
-You may specify up to 5 security groups, but we recommend that you use
-a dedicated security group for your cluster control plane.
+You may specify up to five security groups, but we recommend that you
+use a dedicated security group for your cluster control plane.
 
 
 
