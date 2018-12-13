@@ -154,9 +154,12 @@ CLI.
 
 B<AWS Management Console>: Go to the EC2 page, choose B<Load Balancers>
 in the navigation pane, choose the load balancer, choose the
-B<Description> tab, and get the value of the B<DNS name> field. (If
-you're routing traffic to a Classic Load Balancer, get the value that
-begins with B<dualstack>.)
+B<Description> tab, and get the value of the B<DNS name> field.
+
+If you're routing traffic to a Classic Load Balancer, get the value
+that begins with B<dualstack>. If you're routing traffic to another
+type of load balancer, get the value that applies to the record type, A
+or AAAA.
 
 =item *
 
@@ -202,7 +205,7 @@ Application and Network Load Balancers: describe-load-balancers
 
 Specify the domain name of the Amazon S3 website endpoint that you
 created the bucket in, for example,
-C<s3-website-us-east-2.amazonaws.com>. For more information about valid
+C<s3-website.us-east-2.amazonaws.com>. For more information about valid
 values, see the table Amazon Simple Storage Service (S3) Website
 Endpoints
 (http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region) in
