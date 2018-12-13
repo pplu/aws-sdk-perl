@@ -420,6 +420,8 @@ create an Aurora Read Replica of an RDS MySQL DB instance, the Aurora
 MySQL DB cluster for the Aurora Read Replica is shown. This output does
 not contain information about cross region Aurora Read Replicas.
 
+Currently, each RDS DB instance can have only one Aurora Read Replica.
+
 
 =head2 ReadReplicaDBInstanceIdentifiers => ArrayRef[Str|Undef]
 

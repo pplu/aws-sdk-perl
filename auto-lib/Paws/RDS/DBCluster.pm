@@ -125,7 +125,13 @@ retained.
 
 =head2 Capacity => Int
 
-  
+  The current capacity of an Aurora Serverless DB cluster. The capacity
+is 0 (zero) when the cluster is paused.
+
+For more information about Aurora Serverless, see Using Amazon Aurora
+Serverless
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html)
+in the I<Amazon Aurora User Guide>.
 
 
 =head2 CharacterSetName => Str
