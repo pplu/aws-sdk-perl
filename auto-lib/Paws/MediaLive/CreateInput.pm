@@ -3,8 +3,10 @@ package Paws::MediaLive::CreateInput;
   use Moose;
   has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputDestinationRequest]', traits => ['NameInRequest'], request_name => 'destinations');
   has InputSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'inputSecurityGroups');
+  has MediaConnectFlows => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::MediaConnectFlowRequest]', traits => ['NameInRequest'], request_name => 'mediaConnectFlows');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
   has RequestId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'requestId');
+  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn');
   has Sources => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputSourceRequest]', traits => ['NameInRequest'], request_name => 'sources');
   has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type');
 
@@ -43,8 +45,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InputSecurityGroups => [
         'My__string', ...                # OPTIONAL
       ],                                 # OPTIONAL
+      MediaConnectFlows => [
+        {
+          FlowArn => 'My__string',       # OPTIONAL
+        },
+        ...
+      ],                                 # OPTIONAL
       Name      => 'My__string',         # OPTIONAL
       RequestId => 'My__string',         # OPTIONAL
+      RoleArn   => 'My__string',         # OPTIONAL
       Sources   => [
         {
           PasswordParam => 'My__string',    # OPTIONAL
@@ -59,8 +68,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $Destinations        = $CreateInputResponse->Destinations;
     my $InputSecurityGroups = $CreateInputResponse->InputSecurityGroups;
+    my $MediaConnectFlows   = $CreateInputResponse->MediaConnectFlows;
     my $Name                = $CreateInputResponse->Name;
     my $RequestId           = $CreateInputResponse->RequestId;
+    my $RoleArn             = $CreateInputResponse->RoleArn;
     my $Sources             = $CreateInputResponse->Sources;
     my $Type                = $CreateInputResponse->Type;
 
@@ -84,6 +95,16 @@ A list of security groups referenced by IDs to attach to the input.
 
 
 
+=head2 MediaConnectFlows => ArrayRef[L<Paws::MediaLive::MediaConnectFlowRequest>]
+
+A list of the MediaConnect Flows that you want to use in this input.
+You can specify as few as one Flow and presently, as many as two. The
+only requirement is when you have more than one is that each Flow is in
+a separate Availability Zone as this ensures your EML input is
+redundant to AZ issues.
+
+
+
 =head2 Name => Str
 
 Name of the input.
@@ -94,6 +115,13 @@ Name of the input.
 
 Unique identifier of the request to ensure the request is handled
 exactly once in case of retries.
+
+
+
+=head2 RoleArn => Str
+
+The Amazon Resource Name (ARN) of the role this input assumes during
+and after creation.
 
 
 
@@ -109,7 +137,7 @@ type Inputs. Leave Destinations empty.
 
 
 
-Valid values are: C<"UDP_PUSH">, C<"RTP_PUSH">, C<"RTMP_PUSH">, C<"RTMP_PULL">, C<"URL_PULL">, C<"MP4_FILE">
+Valid values are: C<"UDP_PUSH">, C<"RTP_PUSH">, C<"RTMP_PUSH">, C<"RTMP_PULL">, C<"URL_PULL">, C<"MP4_FILE">, C<"MEDIACONNECT">
 
 
 =head1 SEE ALSO

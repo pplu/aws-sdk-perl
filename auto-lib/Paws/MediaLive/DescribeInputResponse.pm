@@ -5,7 +5,9 @@ package Paws::MediaLive::DescribeInputResponse;
   has AttachedChannels => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'attachedChannels');
   has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputDestination]', traits => ['NameInRequest'], request_name => 'destinations');
   has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
+  has MediaConnectFlows => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::MediaConnectFlow]', traits => ['NameInRequest'], request_name => 'mediaConnectFlows');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn');
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'securityGroups');
   has Sources => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputSource]', traits => ['NameInRequest'], request_name => 'sources');
   has State => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'state');
@@ -44,9 +46,20 @@ A list of the destinations of the input (PUSH-type).
 The generated ID of the input (unique for user account, immutable).
 
 
+=head2 MediaConnectFlows => ArrayRef[L<Paws::MediaLive::MediaConnectFlow>]
+
+A list of MediaConnect Flows for this input.
+
+
 =head2 Name => Str
 
 The user-assigned name (This is a mutable value).
+
+
+=head2 RoleArn => Str
+
+The Amazon Resource Name (ARN) of the role this input assumes during
+and after creation.
 
 
 =head2 SecurityGroups => ArrayRef[Str|Undef]
@@ -68,7 +81,7 @@ Valid values are: C<"CREATING">, C<"DETACHED">, C<"ATTACHED">, C<"DELETING">, C<
 
 
 
-Valid values are: C<"UDP_PUSH">, C<"RTP_PUSH">, C<"RTMP_PUSH">, C<"RTMP_PULL">, C<"URL_PULL">, C<"MP4_FILE">
+Valid values are: C<"UDP_PUSH">, C<"RTP_PUSH">, C<"RTMP_PUSH">, C<"RTMP_PULL">, C<"URL_PULL">, C<"MP4_FILE">, C<"MEDIACONNECT">
 =head2 _request_id => Str
 
 

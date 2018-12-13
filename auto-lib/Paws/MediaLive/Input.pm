@@ -4,7 +4,9 @@ package Paws::MediaLive::Input;
   has AttachedChannels => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'attachedChannels', traits => ['NameInRequest']);
   has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputDestination]', request_name => 'destinations', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
+  has MediaConnectFlows => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::MediaConnectFlow]', request_name => 'mediaConnectFlows', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroups', traits => ['NameInRequest']);
   has Sources => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputSource]', request_name => 'sources', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
@@ -65,9 +67,20 @@ input can only be attached to one channel).
   The generated ID of the input (unique for user account, immutable).
 
 
+=head2 MediaConnectFlows => ArrayRef[L<Paws::MediaLive::MediaConnectFlow>]
+
+  A list of MediaConnect Flows for this input.
+
+
 =head2 Name => Str
 
   The user-assigned name (This is a mutable value).
+
+
+=head2 RoleArn => Str
+
+  The Amazon Resource Name (ARN) of the role this input assumes during
+and after creation.
 
 
 =head2 SecurityGroups => ArrayRef[Str|Undef]

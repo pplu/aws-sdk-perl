@@ -375,9 +375,13 @@ Creates a new channel
 
 =item [InputSecurityGroups => ArrayRef[Str|Undef]]
 
+=item [MediaConnectFlows => ArrayRef[L<Paws::MediaLive::MediaConnectFlowRequest>]]
+
 =item [Name => Str]
 
 =item [RequestId => Str]
+
+=item [RoleArn => Str]
 
 =item [Sources => ArrayRef[L<Paws::MediaLive::InputSourceRequest>]]
 
@@ -783,13 +787,15 @@ Updates a channel.
 
 =over
 
-=item InputId => Str
-
 =item [Destinations => ArrayRef[L<Paws::MediaLive::InputDestinationRequest>]]
 
 =item [InputSecurityGroups => ArrayRef[Str|Undef]]
 
+=item [MediaConnectFlows => ArrayRef[L<Paws::MediaLive::MediaConnectFlowRequest>]]
+
 =item [Name => Str]
+
+=item [RoleArn => Str]
 
 =item [Sources => ArrayRef[L<Paws::MediaLive::InputSourceRequest>]]
 

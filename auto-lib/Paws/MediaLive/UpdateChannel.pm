@@ -809,7 +809,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       'LOOSE',    # values: LOOSE, STRICT; OPTIONAL
                   },    # OPTIONAL
                   AudioPidSelection => {
-                    Pid => 1,    # max: 8191
+                    Pid => 1,    # max: 8191; OPTIONAL
 
                   },    # OPTIONAL
                 },    # OPTIONAL
@@ -869,7 +869,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ColorSpaceUsage => 'FALLBACK', # values: FALLBACK, FORCE; OPTIONAL
               SelectorSettings => {
                 VideoSelectorPid => {
-                  Pid => 1,                  # max: 8191
+                  Pid => 1,                  # max: 8191; OPTIONAL
                 },    # OPTIONAL
                 VideoSelectorProgramId => {
                   ProgramId => 1,    # max: 65536
