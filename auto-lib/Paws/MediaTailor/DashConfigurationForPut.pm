@@ -1,6 +1,5 @@
-package Paws::MediaTailor::DashConfiguration;
+package Paws::MediaTailor::DashConfigurationForPut;
   use Moose;
-  has ManifestEndpointPrefix => (is => 'ro', isa => 'Str');
   has MpdLocation => (is => 'ro', isa => 'Str');
 1;
 
@@ -8,7 +7,7 @@ package Paws::MediaTailor::DashConfiguration;
 
 =head1 NAME
 
-Paws::MediaTailor::DashConfiguration
+Paws::MediaTailor::DashConfigurationForPut
 
 =head1 USAGE
 
@@ -19,28 +18,22 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::MediaTailor::DashConfiguration object:
+As an example, if Att1 is expected to be a Paws::MediaTailor::DashConfigurationForPut object:
 
-  $service_obj->Method(Att1 => { ManifestEndpointPrefix => $value, ..., MpdLocation => $value  });
+  $service_obj->Method(Att1 => { MpdLocation => $value, ..., MpdLocation => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::MediaTailor::DashConfiguration object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::MediaTailor::DashConfigurationForPut object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ManifestEndpointPrefix
+  $result->Att1->MpdLocation
 
 =head1 DESCRIPTION
 
 The configuration object for DASH content.
 
 =head1 ATTRIBUTES
-
-
-=head2 ManifestEndpointPrefix => Str
-
-  The URL that is used to initiate a playback session for devices that
-support DASH.
 
 
 =head2 MpdLocation => Str

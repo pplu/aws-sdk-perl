@@ -3,6 +3,7 @@ package Paws::MediaTailor::PutPlaybackConfiguration;
   use Moose;
   has AdDecisionServerUrl => (is => 'ro', isa => 'Str');
   has CdnConfiguration => (is => 'ro', isa => 'Paws::MediaTailor::CdnConfiguration');
+  has DashConfiguration => (is => 'ro', isa => 'Paws::MediaTailor::DashConfigurationForPut');
   has Name => (is => 'ro', isa => 'Str');
   has SlateAdUrl => (is => 'ro', isa => 'Str');
   has TranscodeProfileName => (is => 'ro', isa => 'Str');
@@ -40,10 +41,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         AdSegmentUrlPrefix      => 'My__string',
         ContentSegmentUrlPrefix => 'My__string',
       },                                      # OPTIONAL
-      Name                  => 'My__string',  # OPTIONAL
-      SlateAdUrl            => 'My__string',  # OPTIONAL
-      TranscodeProfileName  => 'My__string',  # OPTIONAL
-      VideoContentSourceUrl => 'My__string',  # OPTIONAL
+      DashConfiguration     => { MpdLocation => 'My__string', },    # OPTIONAL
+      Name                  => 'My__string',                        # OPTIONAL
+      SlateAdUrl            => 'My__string',                        # OPTIONAL
+      TranscodeProfileName  => 'My__string',                        # OPTIONAL
+      VideoContentSourceUrl => 'My__string',                        # OPTIONAL
       );
 
     # Results:
@@ -87,6 +89,12 @@ length is 25000 characters.
 
 The configuration for using a content delivery network (CDN), like
 Amazon CloudFront, for content and ad segment management.
+
+
+
+=head2 DashConfiguration => L<Paws::MediaTailor::DashConfigurationForPut>
+
+The configuration object for DASH content.
 
 
 

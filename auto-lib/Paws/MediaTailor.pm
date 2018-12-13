@@ -146,6 +146,8 @@ retrieve the next pageful.
 
 =item [CdnConfiguration => L<Paws::MediaTailor::CdnConfiguration>]
 
+=item [DashConfiguration => L<Paws::MediaTailor::DashConfigurationForPut>]
+
 =item [Name => Str]
 
 =item [SlateAdUrl => Str]
