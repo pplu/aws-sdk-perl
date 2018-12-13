@@ -1560,6 +1560,8 @@ Lists all classifier objects in the Data Catalog.
 
 =item [CatalogId => Str]
 
+=item [HidePassword => Bool]
+
 
 =back
 
@@ -1577,6 +1579,8 @@ Retrieves a connection definition from the Data Catalog.
 =item [CatalogId => Str]
 
 =item [Filter => L<Paws::Glue::GetConnectionsFilter>]
+
+=item [HidePassword => Bool]
 
 =item [MaxResults => Int]
 
@@ -2617,9 +2621,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Glue::GetClassifiersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 GetAllConnections(sub { },[CatalogId => Str, Filter => L<Paws::Glue::GetConnectionsFilter>, MaxResults => Int, NextToken => Str])
+=head2 GetAllConnections(sub { },[CatalogId => Str, Filter => L<Paws::Glue::GetConnectionsFilter>, HidePassword => Bool, MaxResults => Int, NextToken => Str])
 
-=head2 GetAllConnections([CatalogId => Str, Filter => L<Paws::Glue::GetConnectionsFilter>, MaxResults => Int, NextToken => Str])
+=head2 GetAllConnections([CatalogId => Str, Filter => L<Paws::Glue::GetConnectionsFilter>, HidePassword => Bool, MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

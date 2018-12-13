@@ -71,6 +71,13 @@ C<PASSWORD> - A password, if one is used, for the user name.
 
 =item *
 
+C<ENCRYPTED_PASSWORD> - When you enable connection password protection
+by setting C<ConnectionPasswordEncryption> in the Data Catalog
+encryption settings, this field stores the key you designate to encrypt
+the password.
+
+=item *
+
 C<JDBC_DRIVER_JAR_URI> - The S3 path of the a jar file that contains
 the JDBC driver to use.
 

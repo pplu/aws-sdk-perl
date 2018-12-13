@@ -31,6 +31,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $PutDataCatalogEncryptionSettingsResponse =
       $glue->PutDataCatalogEncryptionSettings(
       DataCatalogEncryptionSettings => {
+        ConnectionPasswordEncryption => {
+          ReturnConnectionPasswordEncrypted => 1,
+          AwsKmsKeyId => 'MyNameString',    # min: 1, max: 255; OPTIONAL
+        },    # OPTIONAL
         EncryptionAtRest => {
           CatalogEncryptionMode => 'DISABLED',      # values: DISABLED, SSE-KMS
           SseAwsKmsKeyId        => 'MyNameString',  # min: 1, max: 255; OPTIONAL

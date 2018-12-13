@@ -7,6 +7,7 @@ package Paws::Glue::ConnectionProperties;
   class_has xml_values =>(is => 'ro', default => 'value');
 
   has CONFIG_FILES => (is => 'ro', isa => 'Str');
+  has ENCRYPTED_PASSWORD => (is => 'ro', isa => 'Str');
   has HOST => (is => 'ro', isa => 'Str');
   has INSTANCE_ID => (is => 'ro', isa => 'Str');
   has JDBC_CONNECTION_URL => (is => 'ro', isa => 'Str');
@@ -54,6 +55,9 @@ This class has no description
 
 
 =head2 CONFIG_FILES => Str
+
+
+=head2 ENCRYPTED_PASSWORD => Str
 
 
 =head2 HOST => Str
