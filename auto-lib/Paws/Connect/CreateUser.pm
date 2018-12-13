@@ -76,8 +76,8 @@ directory used for identity management. If Amazon Connect is unable to
 access the existing directory, you can use the C<DirectoryUserId> to
 authenticate users. If you include the parameter, it is assumed that
 Amazon Connect cannot access the directory. If the parameter is not
-included, the UserIdentityInfo is used to authenticate users from your
-existing directory.
+included, the C<UserIdentityInfo> is used to authenticate users from
+your existing directory.
 
 This parameter is required if you are using an existing directory for
 identity management in Amazon Connect when Amazon Connect cannot access
@@ -125,7 +125,8 @@ C<InvalidRequestException> is returned.
 =head2 B<REQUIRED> PhoneConfig => L<Paws::Connect::UserPhoneConfig>
 
 Specifies the phone settings for the user, including
-AfterContactWorkTimeLimit, AutoAccept, DeskPhoneNumber, and PhoneType.
+C<AfterContactWorkTimeLimit>, C<AutoAccept>, C<DeskPhoneNumber>, and
+C<PhoneType>.
 
 
 
@@ -145,7 +146,9 @@ created.
 
 =head2 B<REQUIRED> Username => Str
 
-The user name in Amazon Connect for the account to create.
+The user name in Amazon Connect for the account to create. If you are
+using SAML for identity management in your Amazon Connect, the value
+for C<Username> can include up to 64 characters from [a-zA-Z0-9_-.\@]+.
 
 
 

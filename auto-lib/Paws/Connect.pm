@@ -39,6 +39,11 @@ package Paws::Connect;
     my $call_object = $self->new_with_coercions('Paws::Connect::DescribeUserHierarchyStructure', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetContactAttributes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Connect::GetContactAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetCurrentMetricData {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Connect::GetCurrentMetricData', @_);
@@ -117,7 +122,7 @@ package Paws::Connect;
   
 
 
-  sub operations { qw/CreateUser DeleteUser DescribeUser DescribeUserHierarchyGroup DescribeUserHierarchyStructure GetCurrentMetricData GetFederationToken GetMetricData ListRoutingProfiles ListSecurityProfiles ListUserHierarchyGroups ListUsers StartOutboundVoiceContact StopContact UpdateContactAttributes UpdateUserHierarchy UpdateUserIdentityInfo UpdateUserPhoneConfig UpdateUserRoutingProfile UpdateUserSecurityProfiles / }
+  sub operations { qw/CreateUser DeleteUser DescribeUser DescribeUserHierarchyGroup DescribeUserHierarchyStructure GetContactAttributes GetCurrentMetricData GetFederationToken GetMetricData ListRoutingProfiles ListSecurityProfiles ListUserHierarchyGroups ListUsers StartOutboundVoiceContact StopContact UpdateContactAttributes UpdateUserHierarchy UpdateUserIdentityInfo UpdateUserPhoneConfig UpdateUserRoutingProfile UpdateUserSecurityProfiles / }
 
 1;
 
@@ -151,9 +156,18 @@ parameters, and errors. Amazon Connect is a cloud-based contact center
 solution that makes it easy to set up and manage a customer contact
 center and provide reliable customer engagement at any scale.
 
-There is a throttling limit placed on usage of the Amazon Connect
-operations that includes a RateLimit of 2 per second, and a BurstLimit
+Throttling limits for the Amazon Connect API operations:
+
+For the C<GetMetricData> and C<GetCurrentMetricData> operations, a
+RateLimit of 5 per second, and a BurstLimit of 8 per second.
+
+For all other operations, a RateLimit of 2 per second, and a BurstLimit
 of 5 per second.
+
+You can request an increase to the throttling limits by submitting a
+Amazon Connect service limits increase form
+(https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase).
+You must be signed in to your AWS account to access the form.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/connect-2017-08-08>
 
@@ -263,6 +277,24 @@ Returns: a L<Paws::Connect::DescribeUserHierarchyStructureResponse> instance
 
 Returns a C<HiearchyGroupStructure> object, which contains data about
 the levels in the agent hierarchy.
+
+
+=head2 GetContactAttributes
+
+=over
+
+=item InitialContactId => Str
+
+=item InstanceId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Connect::GetContactAttributes>
+
+Returns: a L<Paws::Connect::GetContactAttributesResponse> instance
+
+Retrieves the contact attributes associated with a contact.
 
 
 =head2 GetCurrentMetricData
@@ -461,6 +493,9 @@ place an outbound call to a customer.
 
 If you are using an IAM account, it must have permission to the
 C<connect:StartOutboundVoiceContact> action.
+
+There is a 60 second dialing timeout for this operation. If the call is
+not connected after 60 seconds, the call fails.
 
 
 =head2 StopContact

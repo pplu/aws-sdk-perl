@@ -131,8 +131,9 @@ retrieve with the request.
 A C<HistoricalMetric> object contains: C<HistoricalMetricName>,
 C<Statistic>, C<Threshold>, and C<Unit>.
 
-For each historical metric you include in the request, you must include
-a C<Unit> and a C<Statistic>.
+You must list each metric to retrieve data for in the request. For each
+historical metric you include in the request, you must include a
+C<Unit> and a C<Statistic>.
 
 The following historical metrics are available:
 

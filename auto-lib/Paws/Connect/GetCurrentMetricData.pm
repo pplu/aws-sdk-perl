@@ -73,7 +73,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/con
 
 A list of C<CurrentMetric> objects for the metrics to retrieve. Each
 C<CurrentMetric> includes a name of a metric to retrieve and the unit
-to use for it.
+to use for it. You must list each metric to retrieve data for in the
+request.
 
 The following metrics are available:
 

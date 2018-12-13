@@ -47,7 +47,7 @@ and Threshold for the metric.
 
 =head2 Statistic => Str
 
-  The statistic for the metric: SUM, MAX, or SUM.
+  The statistic for the metric.
 
 
 =head2 Threshold => L<Paws::Connect::Threshold>
@@ -57,7 +57,7 @@ and Threshold for the metric.
 
 =head2 Unit => Str
 
-  The unit for the metric: COUNT, PERCENT, or SECONDS.
+  The unit for the metric.
 
 
 
