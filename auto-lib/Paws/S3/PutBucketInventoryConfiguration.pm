@@ -40,7 +40,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Destination => {
           S3BucketDestination => {
             Bucket     => 'MyBucketName',
-            Format     => 'CSV',            # values: CSV, ORC
+            Format     => 'CSV',            # values: CSV, ORC, Parquet
             AccountId  => 'MyAccountId',    # OPTIONAL
             Encryption => {
               SSEKMS => {
