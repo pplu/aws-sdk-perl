@@ -2,6 +2,7 @@
 package Paws::ECR::CreateRepository;
   use Moose;
   has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECR::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
@@ -53,6 +54,12 @@ The name to use for the repository. The repository name may be
 specified on its own (such as C<nginx-web-app>) or it can be prepended
 with a namespace to group the repository into a category (such as
 C<project-a/nginx-web-app>).
+
+
+
+=head2 Tags => ArrayRef[L<Paws::ECR::Tag>]
+
+
 
 
 

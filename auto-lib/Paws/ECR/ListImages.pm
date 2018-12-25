@@ -65,7 +65,7 @@ paginated output. When this parameter is used, C<ListImages> only
 returns C<maxResults> results in a single page along with a
 C<nextToken> response element. The remaining results of the initial
 request can be seen by sending another C<ListImages> request with the
-returned C<nextToken> value. This value can be between 1 and 100. If
+returned C<nextToken> value. This value can be between 1 and 1000. If
 this parameter is not used, then C<ListImages> returns up to 100
 results and a C<nextToken> value, if applicable.
 

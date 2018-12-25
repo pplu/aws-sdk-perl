@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $GetLifecyclePolicyPreviewResponse = $ecr->GetLifecyclePolicyPreview(
       RepositoryName => 'MyRepositoryName',
       Filter         => {
-        TagStatus => 'TAGGED',    # values: TAGGED, UNTAGGED; OPTIONAL
+        TagStatus => 'TAGGED',    # values: TAGGED, UNTAGGED, ANY; OPTIONAL
       },    # OPTIONAL
       ImageIds => [
         {
@@ -89,7 +89,7 @@ C<maxResults> results in a single page along with a C<nextToken>
 response element. The remaining results of the initial request can be
 seen by sending another C<GetLifecyclePolicyPreviewRequest> request
 with the returned C<nextToken> value. This value can be between 1 and
-100. If this parameter is not used, then
+1000. If this parameter is not used, then
 C<GetLifecyclePolicyPreviewRequest> returns up to 100 results and a
 C<nextToken> value, if applicable. This option cannot be used when you
 specify images with C<imageIds>.
