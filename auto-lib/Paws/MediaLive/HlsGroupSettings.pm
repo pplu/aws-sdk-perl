@@ -264,8 +264,8 @@ in the master manifest (.m3u8) file.
 
 =head2 SegmentationMode => Str
 
-  When set to useInputSegmentation, the output segment or fragment points
-are set by the RAI markers from the input streams.
+  useInputSegmentation has been deprecated. The configured segment size
+is always used.
 
 
 =head2 SegmentLength => Int

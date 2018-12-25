@@ -37,6 +37,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             ActionName             => 'My__string',
             ScheduleActionSettings => {
+              HlsTimedMetadataSettings => {
+                Id3 => 'My__string',
+
+              },    # OPTIONAL
               InputSwitchSettings => {
                 InputAttachmentNameReference => 'My__string',
 

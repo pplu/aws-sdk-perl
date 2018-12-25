@@ -1,5 +1,6 @@
 package Paws::MediaLive::ScheduleActionSettings;
   use Moose;
+  has HlsTimedMetadataSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsTimedMetadataScheduleActionSettings', request_name => 'hlsTimedMetadataSettings', traits => ['NameInRequest']);
   has InputSwitchSettings => (is => 'ro', isa => 'Paws::MediaLive::InputSwitchScheduleActionSettings', request_name => 'inputSwitchSettings', traits => ['NameInRequest']);
   has Scte35ReturnToNetworkSettings => (is => 'ro', isa => 'Paws::MediaLive::Scte35ReturnToNetworkScheduleActionSettings', request_name => 'scte35ReturnToNetworkSettings', traits => ['NameInRequest']);
   has Scte35SpliceInsertSettings => (is => 'ro', isa => 'Paws::MediaLive::Scte35SpliceInsertScheduleActionSettings', request_name => 'scte35SpliceInsertSettings', traits => ['NameInRequest']);
@@ -25,20 +26,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaLive::ScheduleActionSettings object:
 
-  $service_obj->Method(Att1 => { InputSwitchSettings => $value, ..., StaticImageDeactivateSettings => $value  });
+  $service_obj->Method(Att1 => { HlsTimedMetadataSettings => $value, ..., StaticImageDeactivateSettings => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::ScheduleActionSettings object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->InputSwitchSettings
+  $result->Att1->HlsTimedMetadataSettings
 
 =head1 DESCRIPTION
 
 Holds the settings for a single schedule action.
 
 =head1 ATTRIBUTES
+
+
+=head2 HlsTimedMetadataSettings => L<Paws::MediaLive::HlsTimedMetadataScheduleActionSettings>
+
+  Settings to emit HLS metadata
 
 
 =head2 InputSwitchSettings => L<Paws::MediaLive::InputSwitchScheduleActionSettings>

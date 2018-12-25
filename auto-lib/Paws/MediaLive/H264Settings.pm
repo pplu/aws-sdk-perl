@@ -33,6 +33,7 @@ package Paws::MediaLive::H264Settings;
   has Slices => (is => 'ro', isa => 'Int', request_name => 'slices', traits => ['NameInRequest']);
   has Softness => (is => 'ro', isa => 'Int', request_name => 'softness', traits => ['NameInRequest']);
   has SpatialAq => (is => 'ro', isa => 'Str', request_name => 'spatialAq', traits => ['NameInRequest']);
+  has SubgopLength => (is => 'ro', isa => 'Str', request_name => 'subgopLength', traits => ['NameInRequest']);
   has Syntax => (is => 'ro', isa => 'Str', request_name => 'syntax', traits => ['NameInRequest']);
   has TemporalAq => (is => 'ro', isa => 'Str', request_name => 'temporalAq', traits => ['NameInRequest']);
   has TimecodeInsertion => (is => 'ro', isa => 'Str', request_name => 'timecodeInsertion', traits => ['NameInRequest']);
@@ -292,6 +293,13 @@ content in the encoded image.
 
   If set to enabled, adjust quantization within each frame based on
 spatial variation of content complexity.
+
+
+=head2 SubgopLength => Str
+
+  If set to fixed, use gopNumBFrames B-frames per sub-GOP. If set to
+dynamic, optimize the number of B-frames used for each sub-GOP to
+improve visual quality.
 
 
 =head2 Syntax => Str
