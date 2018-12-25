@@ -133,6 +133,75 @@ package Paws::XRay;
 
     return undef
   }
+  sub GetAllGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetGroups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetGroups(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Groups }, @{ $next_result->Groups };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Groups') foreach (@{ $result->Groups });
+        $result = $self->GetGroups(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Groups') foreach (@{ $result->Groups });
+    }
+
+    return undef
+  }
+  sub GetAllSamplingRules {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetSamplingRules(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetSamplingRules(@_, NextToken => $next_result->NextToken);
+        push @{ $result->SamplingRuleRecords }, @{ $next_result->SamplingRuleRecords };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'SamplingRuleRecords') foreach (@{ $result->SamplingRuleRecords });
+        $result = $self->GetSamplingRules(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'SamplingRuleRecords') foreach (@{ $result->SamplingRuleRecords });
+    }
+
+    return undef
+  }
+  sub GetAllSamplingStatisticSummaries {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetSamplingStatisticSummaries(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetSamplingStatisticSummaries(@_, NextToken => $next_result->NextToken);
+        push @{ $result->SamplingStatisticSummaries }, @{ $next_result->SamplingStatisticSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'SamplingStatisticSummaries') foreach (@{ $result->SamplingStatisticSummaries });
+        $result = $self->GetSamplingStatisticSummaries(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'SamplingStatisticSummaries') foreach (@{ $result->SamplingStatisticSummaries });
+    }
+
+    return undef
+  }
   sub GetAllServiceGraph {
     my $self = shift;
 
@@ -707,6 +776,42 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Traces, passing the object as the first parameter, and the string 'Traces' as the second parameter 
 
 If not, it will return a a L<Paws::XRay::BatchGetTracesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllGroups(sub { },[NextToken => Str])
+
+=head2 GetAllGroups([NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Groups, passing the object as the first parameter, and the string 'Groups' as the second parameter 
+
+If not, it will return a a L<Paws::XRay::GetGroupsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllSamplingRules(sub { },[NextToken => Str])
+
+=head2 GetAllSamplingRules([NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SamplingRuleRecords, passing the object as the first parameter, and the string 'SamplingRuleRecords' as the second parameter 
+
+If not, it will return a a L<Paws::XRay::GetSamplingRulesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllSamplingStatisticSummaries(sub { },[NextToken => Str])
+
+=head2 GetAllSamplingStatisticSummaries([NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SamplingStatisticSummaries, passing the object as the first parameter, and the string 'SamplingStatisticSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::XRay::GetSamplingStatisticSummariesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 GetAllServiceGraph(sub { },EndTime => Str, StartTime => Str, [GroupARN => Str, GroupName => Str, NextToken => Str])
