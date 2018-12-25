@@ -29,6 +29,11 @@ package Paws::PinpointEmail;
     my $call_object = $self->new_with_coercions('Paws::PinpointEmail::CreateDedicatedIpPool', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateDeliverabilityTestReport {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::PinpointEmail::CreateDeliverabilityTestReport', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateEmailIdentity {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::PinpointEmail::CreateEmailIdentity', @_);
@@ -59,6 +64,11 @@ package Paws::PinpointEmail;
     my $call_object = $self->new_with_coercions('Paws::PinpointEmail::GetAccount', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetBlacklistReports {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::PinpointEmail::GetBlacklistReports', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetConfigurationSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::PinpointEmail::GetConfigurationSet', @_);
@@ -79,6 +89,21 @@ package Paws::PinpointEmail;
     my $call_object = $self->new_with_coercions('Paws::PinpointEmail::GetDedicatedIps', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetDeliverabilityDashboardOptions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::PinpointEmail::GetDeliverabilityDashboardOptions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetDeliverabilityTestReport {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::PinpointEmail::GetDeliverabilityTestReport', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetDomainStatisticsReport {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::PinpointEmail::GetDomainStatisticsReport', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetEmailIdentity {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::PinpointEmail::GetEmailIdentity', @_);
@@ -92,6 +117,11 @@ package Paws::PinpointEmail;
   sub ListDedicatedIpPools {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::PinpointEmail::ListDedicatedIpPools', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListDeliverabilityTestReports {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::PinpointEmail::ListDeliverabilityTestReports', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListEmailIdentities {
@@ -139,6 +169,11 @@ package Paws::PinpointEmail;
     my $call_object = $self->new_with_coercions('Paws::PinpointEmail::PutDedicatedIpWarmupAttributes', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutDeliverabilityDashboardOption {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::PinpointEmail::PutDeliverabilityDashboardOption', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutEmailIdentityDkimAttributes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::PinpointEmail::PutEmailIdentityDkimAttributes', @_);
@@ -165,9 +200,124 @@ package Paws::PinpointEmail;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub GetAllDedicatedIps {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetDedicatedIps(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetDedicatedIps(@_, NextToken => $next_result->NextToken);
+        push @{ $result->DedicatedIps }, @{ $next_result->DedicatedIps };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'DedicatedIps') foreach (@{ $result->DedicatedIps });
+        $result = $self->GetDedicatedIps(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'DedicatedIps') foreach (@{ $result->DedicatedIps });
+    }
+
+    return undef
+  }
+  sub ListAllConfigurationSets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListConfigurationSets(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListConfigurationSets(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ConfigurationSets }, @{ $next_result->ConfigurationSets };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ConfigurationSets') foreach (@{ $result->ConfigurationSets });
+        $result = $self->ListConfigurationSets(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ConfigurationSets') foreach (@{ $result->ConfigurationSets });
+    }
+
+    return undef
+  }
+  sub ListAllDedicatedIpPools {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDedicatedIpPools(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListDedicatedIpPools(@_, NextToken => $next_result->NextToken);
+        push @{ $result->DedicatedIpPools }, @{ $next_result->DedicatedIpPools };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'DedicatedIpPools') foreach (@{ $result->DedicatedIpPools });
+        $result = $self->ListDedicatedIpPools(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'DedicatedIpPools') foreach (@{ $result->DedicatedIpPools });
+    }
+
+    return undef
+  }
+  sub ListAllDeliverabilityTestReports {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDeliverabilityTestReports(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListDeliverabilityTestReports(@_, NextToken => $next_result->NextToken);
+        push @{ $result->DeliverabilityTestReports }, @{ $next_result->DeliverabilityTestReports };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'DeliverabilityTestReports') foreach (@{ $result->DeliverabilityTestReports });
+        $result = $self->ListDeliverabilityTestReports(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'DeliverabilityTestReports') foreach (@{ $result->DeliverabilityTestReports });
+    }
+
+    return undef
+  }
+  sub ListAllEmailIdentities {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListEmailIdentities(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListEmailIdentities(@_, NextToken => $next_result->NextToken);
+        push @{ $result->EmailIdentities }, @{ $next_result->EmailIdentities };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'EmailIdentities') foreach (@{ $result->EmailIdentities });
+        $result = $self->ListEmailIdentities(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'EmailIdentities') foreach (@{ $result->EmailIdentities });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/CreateConfigurationSet CreateConfigurationSetEventDestination CreateDedicatedIpPool CreateEmailIdentity DeleteConfigurationSet DeleteConfigurationSetEventDestination DeleteDedicatedIpPool DeleteEmailIdentity GetAccount GetConfigurationSet GetConfigurationSetEventDestinations GetDedicatedIp GetDedicatedIps GetEmailIdentity ListConfigurationSets ListDedicatedIpPools ListEmailIdentities PutAccountDedicatedIpWarmupAttributes PutAccountSendingAttributes PutConfigurationSetDeliveryOptions PutConfigurationSetReputationOptions PutConfigurationSetSendingOptions PutConfigurationSetTrackingOptions PutDedicatedIpInPool PutDedicatedIpWarmupAttributes PutEmailIdentityDkimAttributes PutEmailIdentityFeedbackAttributes PutEmailIdentityMailFromAttributes SendEmail UpdateConfigurationSetEventDestination / }
+  sub operations { qw/CreateConfigurationSet CreateConfigurationSetEventDestination CreateDedicatedIpPool CreateDeliverabilityTestReport CreateEmailIdentity DeleteConfigurationSet DeleteConfigurationSetEventDestination DeleteDedicatedIpPool DeleteEmailIdentity GetAccount GetBlacklistReports GetConfigurationSet GetConfigurationSetEventDestinations GetDedicatedIp GetDedicatedIps GetDeliverabilityDashboardOptions GetDeliverabilityTestReport GetDomainStatisticsReport GetEmailIdentity ListConfigurationSets ListDedicatedIpPools ListDeliverabilityTestReports ListEmailIdentities PutAccountDedicatedIpWarmupAttributes PutAccountSendingAttributes PutConfigurationSetDeliveryOptions PutConfigurationSetReputationOptions PutConfigurationSetSendingOptions PutConfigurationSetTrackingOptions PutDedicatedIpInPool PutDedicatedIpWarmupAttributes PutDeliverabilityDashboardOption PutEmailIdentityDkimAttributes PutEmailIdentityFeedbackAttributes PutEmailIdentityMailFromAttributes SendEmail UpdateConfigurationSetEventDestination / }
 
 1;
 
@@ -202,8 +352,26 @@ This document contains reference information for the Amazon Pinpoint
 is best used in conjunction with the Amazon Pinpoint Developer Guide
 (http://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html).
 
-The Amazon Pinpoint API is available in the US East (N. Virginia)
-Region at the following endpoint: C<email.us-east-1.amazonaws.com>
+The Amazon Pinpoint Email API is available in the US East (N.
+Virginia), US West (Oregon) and the EU (Ireland) Regions at the
+following endpoints:
+
+=over
+
+=item *
+
+B<US East (N. Virginia)>: C<email.us-east-1.amazonaws.com>
+
+=item *
+
+B<US West (Oregon)>: C<email.us-west-2.amazonaws.com>
+
+=item *
+
+B<EU (Ireland)>: C<email.eu-west-1.amazonaws.com>
+
+=back
+
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/ses/>
 
@@ -285,6 +453,34 @@ more dedicated IP addresses that are associated with your Amazon
 Pinpoint account. You can associate a pool with a configuration set.
 When you send an email that uses that configuration set, Amazon
 Pinpoint sends it using only the IP addresses in the associated pool.
+
+
+=head2 CreateDeliverabilityTestReport
+
+=over
+
+=item Content => L<Paws::PinpointEmail::EmailContent>
+
+=item FromEmailAddress => Str
+
+=item [ReportName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::PinpointEmail::CreateDeliverabilityTestReport>
+
+Returns: a L<Paws::PinpointEmail::CreateDeliverabilityTestReportResponse> instance
+
+Create a new predictive inbox placement test. Predictive inbox
+placement tests can help you predict how your messages will be handled
+by various email providers around the world. When you perform a
+predictive inbox placement test, you provide a sample message that
+contains the content that you plan to send to your customers. Amazon
+Pinpoint then sends that message to special email addresses spread
+across several major email providers. After about 24 hours, the test is
+complete, and you can use the C<GetDeliverabilityTestReport> operation
+to view the results of the test.
 
 
 =head2 CreateEmailIdentity
@@ -415,6 +611,23 @@ Obtain information about the email-sending status and capabilities of
 your Amazon Pinpoint account in the current AWS Region.
 
 
+=head2 GetBlacklistReports
+
+=over
+
+=item BlacklistItemNames => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::PinpointEmail::GetBlacklistReports>
+
+Returns: a L<Paws::PinpointEmail::GetBlacklistReportsResponse> instance
+
+Retrieve a list of the blacklists that your dedicated IP addresses
+appear on.
+
+
 =head2 GetConfigurationSet
 
 =over
@@ -502,6 +715,67 @@ List the dedicated IP addresses that are associated with your Amazon
 Pinpoint account.
 
 
+=head2 GetDeliverabilityDashboardOptions
+
+
+
+
+
+
+Each argument is described in detail in: L<Paws::PinpointEmail::GetDeliverabilityDashboardOptions>
+
+Returns: a L<Paws::PinpointEmail::GetDeliverabilityDashboardOptionsResponse> instance
+
+Show the status of the Deliverability dashboard. When the
+Deliverability dashboard is enabled, you gain access to reputation
+metrics for the domains that you use to send email using Amazon
+Pinpoint. You also gain the ability to perform predictive inbox
+placement tests.
+
+When you use the Deliverability dashboard, you pay a monthly charge of
+USD$1,250.00, in addition to any other fees that you accrue by using
+Amazon Pinpoint. If you enable the Deliverability dashboard after the
+first day of a calendar month, AWS prorates the monthly charge based on
+how many days have elapsed in the current calendar month.
+
+
+=head2 GetDeliverabilityTestReport
+
+=over
+
+=item ReportId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::PinpointEmail::GetDeliverabilityTestReport>
+
+Returns: a L<Paws::PinpointEmail::GetDeliverabilityTestReportResponse> instance
+
+Retrieve the results of a predictive inbox placement test.
+
+
+=head2 GetDomainStatisticsReport
+
+=over
+
+=item Domain => Str
+
+=item EndDate => Str
+
+=item StartDate => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::PinpointEmail::GetDomainStatisticsReport>
+
+Returns: a L<Paws::PinpointEmail::GetDomainStatisticsReportResponse> instance
+
+Retrieve inbox placement and engagement rates for the domains that you
+use to send email.
+
+
 =head2 GetEmailIdentity
 
 =over
@@ -562,6 +836,27 @@ Returns: a L<Paws::PinpointEmail::ListDedicatedIpPoolsResponse> instance
 
 List all of the dedicated IP pools that exist in your Amazon Pinpoint
 account in the current AWS Region.
+
+
+=head2 ListDeliverabilityTestReports
+
+=over
+
+=item [NextToken => Str]
+
+=item [PageSize => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::PinpointEmail::ListDeliverabilityTestReports>
+
+Returns: a L<Paws::PinpointEmail::ListDeliverabilityTestReportsResponse> instance
+
+Show a list of the predictive inbox placement tests that you've
+performed, regardless of their statuses. For predictive inbox placement
+tests that are complete, you can use the C<GetDeliverabilityTestReport>
+operation to view the results.
 
 
 =head2 ListEmailIdentities
@@ -737,6 +1032,31 @@ Returns: a L<Paws::PinpointEmail::PutDedicatedIpWarmupAttributesResponse> instan
 
 
 
+=head2 PutDeliverabilityDashboardOption
+
+=over
+
+=item DashboardEnabled => Bool
+
+
+=back
+
+Each argument is described in detail in: L<Paws::PinpointEmail::PutDeliverabilityDashboardOption>
+
+Returns: a L<Paws::PinpointEmail::PutDeliverabilityDashboardOptionResponse> instance
+
+Enable or disable the Deliverability dashboard. When you enable the
+Deliverability dashboard, you gain access to reputation metrics for the
+domains that you use to send email using Amazon Pinpoint. You also gain
+the ability to perform predictive inbox placement tests.
+
+When you use the Deliverability dashboard, you pay a monthly charge of
+USD$1,250.00, in addition to any other fees that you accrue by using
+Amazon Pinpoint. If you enable the Deliverability dashboard after the
+first day of a calendar month, we prorate the monthly charge based on
+how many days have elapsed in the current calendar month.
+
+
 =head2 PutEmailIdentityDkimAttributes
 
 =over
@@ -890,6 +1210,66 @@ stream data to Amazon S3 for long-term storage.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 GetAllDedicatedIps(sub { },[NextToken => Str, PageSize => Int, PoolName => Str])
+
+=head2 GetAllDedicatedIps([NextToken => Str, PageSize => Int, PoolName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DedicatedIps, passing the object as the first parameter, and the string 'DedicatedIps' as the second parameter 
+
+If not, it will return a a L<Paws::PinpointEmail::GetDedicatedIpsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllConfigurationSets(sub { },[NextToken => Str, PageSize => Int])
+
+=head2 ListAllConfigurationSets([NextToken => Str, PageSize => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ConfigurationSets, passing the object as the first parameter, and the string 'ConfigurationSets' as the second parameter 
+
+If not, it will return a a L<Paws::PinpointEmail::ListConfigurationSetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDedicatedIpPools(sub { },[NextToken => Str, PageSize => Int])
+
+=head2 ListAllDedicatedIpPools([NextToken => Str, PageSize => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DedicatedIpPools, passing the object as the first parameter, and the string 'DedicatedIpPools' as the second parameter 
+
+If not, it will return a a L<Paws::PinpointEmail::ListDedicatedIpPoolsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDeliverabilityTestReports(sub { },[NextToken => Str, PageSize => Int])
+
+=head2 ListAllDeliverabilityTestReports([NextToken => Str, PageSize => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DeliverabilityTestReports, passing the object as the first parameter, and the string 'DeliverabilityTestReports' as the second parameter 
+
+If not, it will return a a L<Paws::PinpointEmail::ListDeliverabilityTestReportsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllEmailIdentities(sub { },[NextToken => Str, PageSize => Int])
+
+=head2 ListAllEmailIdentities([NextToken => Str, PageSize => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - EmailIdentities, passing the object as the first parameter, and the string 'EmailIdentities' as the second parameter 
+
+If not, it will return a a L<Paws::PinpointEmail::ListEmailIdentitiesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 
