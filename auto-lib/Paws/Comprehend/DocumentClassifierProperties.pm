@@ -88,7 +88,7 @@ was trained on.
 
 =head2 Status => Str
 
-  The status of the document classifier. The the status is C<TRAINED> the
+  The status of the document classifier. If the status is C<TRAINED> the
 classifier is ready to use. If the status is C<FAILED> you can see
 additional information about why the classifier wasn't trained in the
 C<Message> field.

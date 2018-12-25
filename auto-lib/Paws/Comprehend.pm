@@ -215,7 +215,178 @@ package Paws::Comprehend;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::StopSentimentDetectionJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StopTrainingDocumentClassifier {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::StopTrainingDocumentClassifier', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopTrainingEntityRecognizer {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::StopTrainingEntityRecognizer', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
+  sub ListAllDocumentClassificationJobs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDocumentClassificationJobs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListDocumentClassificationJobs(@_, NextToken => $next_result->NextToken);
+        push @{ $result->DocumentClassificationJobPropertiesList }, @{ $next_result->DocumentClassificationJobPropertiesList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'DocumentClassificationJobPropertiesList') foreach (@{ $result->DocumentClassificationJobPropertiesList });
+        $result = $self->ListDocumentClassificationJobs(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'DocumentClassificationJobPropertiesList') foreach (@{ $result->DocumentClassificationJobPropertiesList });
+    }
+
+    return undef
+  }
+  sub ListAllDocumentClassifiers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDocumentClassifiers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListDocumentClassifiers(@_, NextToken => $next_result->NextToken);
+        push @{ $result->DocumentClassifierPropertiesList }, @{ $next_result->DocumentClassifierPropertiesList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'DocumentClassifierPropertiesList') foreach (@{ $result->DocumentClassifierPropertiesList });
+        $result = $self->ListDocumentClassifiers(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'DocumentClassifierPropertiesList') foreach (@{ $result->DocumentClassifierPropertiesList });
+    }
+
+    return undef
+  }
+  sub ListAllDominantLanguageDetectionJobs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDominantLanguageDetectionJobs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListDominantLanguageDetectionJobs(@_, NextToken => $next_result->NextToken);
+        push @{ $result->DominantLanguageDetectionJobPropertiesList }, @{ $next_result->DominantLanguageDetectionJobPropertiesList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'DominantLanguageDetectionJobPropertiesList') foreach (@{ $result->DominantLanguageDetectionJobPropertiesList });
+        $result = $self->ListDominantLanguageDetectionJobs(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'DominantLanguageDetectionJobPropertiesList') foreach (@{ $result->DominantLanguageDetectionJobPropertiesList });
+    }
+
+    return undef
+  }
+  sub ListAllEntitiesDetectionJobs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListEntitiesDetectionJobs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListEntitiesDetectionJobs(@_, NextToken => $next_result->NextToken);
+        push @{ $result->EntitiesDetectionJobPropertiesList }, @{ $next_result->EntitiesDetectionJobPropertiesList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'EntitiesDetectionJobPropertiesList') foreach (@{ $result->EntitiesDetectionJobPropertiesList });
+        $result = $self->ListEntitiesDetectionJobs(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'EntitiesDetectionJobPropertiesList') foreach (@{ $result->EntitiesDetectionJobPropertiesList });
+    }
+
+    return undef
+  }
+  sub ListAllEntityRecognizers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListEntityRecognizers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListEntityRecognizers(@_, NextToken => $next_result->NextToken);
+        push @{ $result->EntityRecognizerPropertiesList }, @{ $next_result->EntityRecognizerPropertiesList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'EntityRecognizerPropertiesList') foreach (@{ $result->EntityRecognizerPropertiesList });
+        $result = $self->ListEntityRecognizers(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'EntityRecognizerPropertiesList') foreach (@{ $result->EntityRecognizerPropertiesList });
+    }
+
+    return undef
+  }
+  sub ListAllKeyPhrasesDetectionJobs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListKeyPhrasesDetectionJobs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListKeyPhrasesDetectionJobs(@_, NextToken => $next_result->NextToken);
+        push @{ $result->KeyPhrasesDetectionJobPropertiesList }, @{ $next_result->KeyPhrasesDetectionJobPropertiesList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'KeyPhrasesDetectionJobPropertiesList') foreach (@{ $result->KeyPhrasesDetectionJobPropertiesList });
+        $result = $self->ListKeyPhrasesDetectionJobs(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'KeyPhrasesDetectionJobPropertiesList') foreach (@{ $result->KeyPhrasesDetectionJobPropertiesList });
+    }
+
+    return undef
+  }
+  sub ListAllSentimentDetectionJobs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListSentimentDetectionJobs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListSentimentDetectionJobs(@_, NextToken => $next_result->NextToken);
+        push @{ $result->SentimentDetectionJobPropertiesList }, @{ $next_result->SentimentDetectionJobPropertiesList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'SentimentDetectionJobPropertiesList') foreach (@{ $result->SentimentDetectionJobPropertiesList });
+        $result = $self->ListSentimentDetectionJobs(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'SentimentDetectionJobPropertiesList') foreach (@{ $result->SentimentDetectionJobPropertiesList });
+    }
+
+    return undef
+  }
   sub ListAllTopicsDetectionJobs {
     my $self = shift;
 
@@ -241,7 +412,7 @@ package Paws::Comprehend;
   }
 
 
-  sub operations { qw/BatchDetectDominantLanguage BatchDetectEntities BatchDetectKeyPhrases BatchDetectSentiment BatchDetectSyntax CreateDocumentClassifier CreateEntityRecognizer DeleteDocumentClassifier DeleteEntityRecognizer DescribeDocumentClassificationJob DescribeDocumentClassifier DescribeDominantLanguageDetectionJob DescribeEntitiesDetectionJob DescribeEntityRecognizer DescribeKeyPhrasesDetectionJob DescribeSentimentDetectionJob DescribeTopicsDetectionJob DetectDominantLanguage DetectEntities DetectKeyPhrases DetectSentiment DetectSyntax ListDocumentClassificationJobs ListDocumentClassifiers ListDominantLanguageDetectionJobs ListEntitiesDetectionJobs ListEntityRecognizers ListKeyPhrasesDetectionJobs ListSentimentDetectionJobs ListTopicsDetectionJobs StartDocumentClassificationJob StartDominantLanguageDetectionJob StartEntitiesDetectionJob StartKeyPhrasesDetectionJob StartSentimentDetectionJob StartTopicsDetectionJob StopDominantLanguageDetectionJob StopEntitiesDetectionJob StopKeyPhrasesDetectionJob StopSentimentDetectionJob / }
+  sub operations { qw/BatchDetectDominantLanguage BatchDetectEntities BatchDetectKeyPhrases BatchDetectSentiment BatchDetectSyntax CreateDocumentClassifier CreateEntityRecognizer DeleteDocumentClassifier DeleteEntityRecognizer DescribeDocumentClassificationJob DescribeDocumentClassifier DescribeDominantLanguageDetectionJob DescribeEntitiesDetectionJob DescribeEntityRecognizer DescribeKeyPhrasesDetectionJob DescribeSentimentDetectionJob DescribeTopicsDetectionJob DetectDominantLanguage DetectEntities DetectKeyPhrases DetectSentiment DetectSyntax ListDocumentClassificationJobs ListDocumentClassifiers ListDominantLanguageDetectionJobs ListEntitiesDetectionJobs ListEntityRecognizers ListKeyPhrasesDetectionJobs ListSentimentDetectionJobs ListTopicsDetectionJobs StartDocumentClassificationJob StartDominantLanguageDetectionJob StartEntitiesDetectionJob StartKeyPhrasesDetectionJob StartSentimentDetectionJob StartTopicsDetectionJob StopDominantLanguageDetectionJob StopEntitiesDetectionJob StopKeyPhrasesDetectionJob StopSentimentDetectionJob StopTrainingDocumentClassifier StopTrainingEntityRecognizer / }
 
 1;
 
@@ -401,7 +572,8 @@ Creates a new document classifier that you can use to categorize
 documents. To create a classifier you provide a set of training
 documents that labeled with the categories that you want to use. After
 the classifier is trained you can use it to categorize a set of labeled
-documents into the categories.
+documents into the categories. For more information, see
+how-document-classification.
 
 
 =head2 CreateEntityRecognizer
@@ -1158,11 +1330,141 @@ When a job is stopped, any documents already processed are written to
 the output location.
 
 
+=head2 StopTrainingDocumentClassifier
+
+=over
+
+=item DocumentClassifierArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::StopTrainingDocumentClassifier>
+
+Returns: a L<Paws::Comprehend::StopTrainingDocumentClassifierResponse> instance
+
+Stops a document classifier training job while in progress.
+
+If the training job state is C<TRAINING>, the job is marked for
+termination and put into the C<STOP_REQUESTED> state. If the training
+job completes before it can be stopped, it is put into the C<TRAINED>;
+otherwise the training job is stopped and put into the C<STOPPED> state
+and the service sends back an HTTP 200 response with an empty HTTP
+body.
+
+
+=head2 StopTrainingEntityRecognizer
+
+=over
+
+=item EntityRecognizerArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::StopTrainingEntityRecognizer>
+
+Returns: a L<Paws::Comprehend::StopTrainingEntityRecognizerResponse> instance
+
+Stops an entity recognizer training job while in progress.
+
+If the training job state is C<TRAINING>, the job is marked for
+termination and put into the C<STOP_REQUESTED> state. If the training
+job completes before it can be stopped, it is put into the C<TRAINED>;
+otherwise the training job is stopped and putted into the C<STOPPED>
+state and the service sends back an HTTP 200 response with an empty
+HTTP body.
+
+
 
 
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllDocumentClassificationJobs(sub { },[Filter => L<Paws::Comprehend::DocumentClassificationJobFilter>, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllDocumentClassificationJobs([Filter => L<Paws::Comprehend::DocumentClassificationJobFilter>, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DocumentClassificationJobPropertiesList, passing the object as the first parameter, and the string 'DocumentClassificationJobPropertiesList' as the second parameter 
+
+If not, it will return a a L<Paws::Comprehend::ListDocumentClassificationJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDocumentClassifiers(sub { },[Filter => L<Paws::Comprehend::DocumentClassifierFilter>, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllDocumentClassifiers([Filter => L<Paws::Comprehend::DocumentClassifierFilter>, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DocumentClassifierPropertiesList, passing the object as the first parameter, and the string 'DocumentClassifierPropertiesList' as the second parameter 
+
+If not, it will return a a L<Paws::Comprehend::ListDocumentClassifiersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDominantLanguageDetectionJobs(sub { },[Filter => L<Paws::Comprehend::DominantLanguageDetectionJobFilter>, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllDominantLanguageDetectionJobs([Filter => L<Paws::Comprehend::DominantLanguageDetectionJobFilter>, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DominantLanguageDetectionJobPropertiesList, passing the object as the first parameter, and the string 'DominantLanguageDetectionJobPropertiesList' as the second parameter 
+
+If not, it will return a a L<Paws::Comprehend::ListDominantLanguageDetectionJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllEntitiesDetectionJobs(sub { },[Filter => L<Paws::Comprehend::EntitiesDetectionJobFilter>, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllEntitiesDetectionJobs([Filter => L<Paws::Comprehend::EntitiesDetectionJobFilter>, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - EntitiesDetectionJobPropertiesList, passing the object as the first parameter, and the string 'EntitiesDetectionJobPropertiesList' as the second parameter 
+
+If not, it will return a a L<Paws::Comprehend::ListEntitiesDetectionJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllEntityRecognizers(sub { },[Filter => L<Paws::Comprehend::EntityRecognizerFilter>, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllEntityRecognizers([Filter => L<Paws::Comprehend::EntityRecognizerFilter>, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - EntityRecognizerPropertiesList, passing the object as the first parameter, and the string 'EntityRecognizerPropertiesList' as the second parameter 
+
+If not, it will return a a L<Paws::Comprehend::ListEntityRecognizersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllKeyPhrasesDetectionJobs(sub { },[Filter => L<Paws::Comprehend::KeyPhrasesDetectionJobFilter>, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllKeyPhrasesDetectionJobs([Filter => L<Paws::Comprehend::KeyPhrasesDetectionJobFilter>, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - KeyPhrasesDetectionJobPropertiesList, passing the object as the first parameter, and the string 'KeyPhrasesDetectionJobPropertiesList' as the second parameter 
+
+If not, it will return a a L<Paws::Comprehend::ListKeyPhrasesDetectionJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSentimentDetectionJobs(sub { },[Filter => L<Paws::Comprehend::SentimentDetectionJobFilter>, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllSentimentDetectionJobs([Filter => L<Paws::Comprehend::SentimentDetectionJobFilter>, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SentimentDetectionJobPropertiesList, passing the object as the first parameter, and the string 'SentimentDetectionJobPropertiesList' as the second parameter 
+
+If not, it will return a a L<Paws::Comprehend::ListSentimentDetectionJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 =head2 ListAllTopicsDetectionJobs(sub { },[Filter => L<Paws::Comprehend::TopicsDetectionJobFilter>, MaxResults => Int, NextToken => Str])
 
