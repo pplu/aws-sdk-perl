@@ -48,6 +48,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'INITIATED_CALL',
           ... # values: INITIATED_CALL, RINGING, ANSWERED, COMPLETED_CALL, BUSY, FAILED, NO_ANSWER
         ],    # OPTIONAL
+        SnsDestination => {
+          TopicArn => 'MyString',    # OPTIONAL
+        },    # OPTIONAL
       },    # OPTIONAL
       );
 

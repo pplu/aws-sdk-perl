@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::PinpointSMS
 
 =head1 DESCRIPTION
 
-An object that contains information about a event destination that
+An object that contains information about an event destination that
 sends data to Amazon Kinesis Data Firehose.
 
 =head1 ATTRIBUTES

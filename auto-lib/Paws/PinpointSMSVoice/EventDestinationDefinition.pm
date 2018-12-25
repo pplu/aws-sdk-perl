@@ -4,6 +4,7 @@ package Paws::PinpointSMSVoice::EventDestinationDefinition;
   has Enabled => (is => 'ro', isa => 'Bool');
   has KinesisFirehoseDestination => (is => 'ro', isa => 'Paws::PinpointSMSVoice::KinesisFirehoseDestination');
   has MatchingEventTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has SnsDestination => (is => 'ro', isa => 'Paws::PinpointSMSVoice::SnsDestination');
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::PinpointSMSVoice::EventDestinationDefinition object:
 
-  $service_obj->Method(Att1 => { CloudWatchLogsDestination => $value, ..., MatchingEventTypes => $value  });
+  $service_obj->Method(Att1 => { CloudWatchLogsDestination => $value, ..., SnsDestination => $value  });
 
 =head3 Results returned from an API call
 
@@ -57,6 +58,11 @@ specified event destination.
 
 
 =head2 MatchingEventTypes => ArrayRef[Str|Undef]
+
+  
+
+
+=head2 SnsDestination => L<Paws::PinpointSMSVoice::SnsDestination>
 
   
 
