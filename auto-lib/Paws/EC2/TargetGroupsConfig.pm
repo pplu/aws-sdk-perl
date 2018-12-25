@@ -1,6 +1,6 @@
 package Paws::EC2::TargetGroupsConfig;
   use Moose;
-  has TargetGroups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TargetGroup]', request_name => 'targetGroups', traits => ['NameInRequest'], required => 1);
+  has TargetGroups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TargetGroup]', request_name => 'targetGroups', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +36,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> TargetGroups => ArrayRef[L<Paws::EC2::TargetGroup>]
+=head2 TargetGroups => ArrayRef[L<Paws::EC2::TargetGroup>]
 
   One or more target groups.
 

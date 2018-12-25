@@ -33,12 +33,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
-      GroupNames => [ 'MyString', ... ],    # OPTIONAL
+      ],                           # OPTIONAL
+      GroupNames => [
+        'MyString', ...            # OPTIONAL
+      ],                           # OPTIONAL
     );
 
     # Results:
@@ -79,7 +83,7 @@ C<state> - The state of the placement group (C<pending> | C<available>
 =item *
 
 C<strategy> - The strategy of the placement group (C<cluster> |
-C<spread>).
+C<spread> | C<partition>).
 
 =back
 

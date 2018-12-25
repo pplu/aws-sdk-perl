@@ -1,6 +1,6 @@
 package Paws::EC2::UnsuccessfulItem;
   use Moose;
-  has Error => (is => 'ro', isa => 'Paws::EC2::UnsuccessfulItemError', request_name => 'error', traits => ['NameInRequest'], required => 1);
+  has Error => (is => 'ro', isa => 'Paws::EC2::UnsuccessfulItemError', request_name => 'error', traits => ['NameInRequest']);
   has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest']);
 1;
 
@@ -37,7 +37,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Error => L<Paws::EC2::UnsuccessfulItemError>
+=head2 Error => L<Paws::EC2::UnsuccessfulItemError>
 
   Information about the error.
 

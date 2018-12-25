@@ -1,6 +1,6 @@
 package Paws::EC2::ClassicLoadBalancer;
   use Moose;
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +36,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Name => Str
+=head2 Name => Str
 
   The name of the load balancer.
 

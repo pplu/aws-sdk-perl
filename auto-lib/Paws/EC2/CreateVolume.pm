@@ -124,10 +124,11 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 =head2 Iops => Int
 
 The number of I/O operations per second (IOPS) to provision for the
-volume, with a maximum ratio of 50 IOPS/GiB. Range is 100 to 64,000IOPS
-for volumes in most regions. Maximum IOPS of 64,000 is guaranteed only
-on Nitro-based instances. Other instance families guarantee performance
-up to 32,000 IOPS. For more information, see Amazon EBS Volume Types
+volume, with a maximum ratio of 50 IOPS/GiB. Range is 100 to 64,000
+IOPS for volumes in most regions. Maximum IOPS of 64,000 is guaranteed
+only on Nitro-based instances. Other instance families guarantee
+performance up to 32,000 IOPS. For more information, see Amazon EBS
+Volume Types
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 

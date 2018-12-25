@@ -64,6 +64,9 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 The IDs of one or more resources, separated by spaces.
 
+Constraints: Up to 1000 resource IDs. We recommend breaking up this
+request into smaller batches.
+
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]

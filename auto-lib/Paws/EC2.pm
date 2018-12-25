@@ -50,6 +50,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::AllocateHosts', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ApplySecurityGroupsToClientVpnTargetNetwork {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ApplySecurityGroupsToClientVpnTargetNetwork', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AssignIpv6Addresses {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::AssignIpv6Addresses', @_);
@@ -63,6 +68,11 @@ package Paws::EC2;
   sub AssociateAddress {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::AssociateAddress', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub AssociateClientVpnTargetNetwork {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::AssociateClientVpnTargetNetwork', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub AssociateDhcpOptions {
@@ -118,6 +128,11 @@ package Paws::EC2;
   sub AttachVpnGateway {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::AttachVpnGateway', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub AuthorizeClientVpnIngress {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::AuthorizeClientVpnIngress', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub AuthorizeSecurityGroupEgress {
@@ -198,6 +213,16 @@ package Paws::EC2;
   sub CreateCapacityReservation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateCapacityReservation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateClientVpnEndpoint {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateClientVpnEndpoint', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateClientVpnRoute {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateClientVpnRoute', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateCustomerGateway {
@@ -403,6 +428,16 @@ package Paws::EC2;
   sub CreateVpnGateway {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateVpnGateway', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteClientVpnEndpoint {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteClientVpnEndpoint', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteClientVpnRoute {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteClientVpnRoute', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteCustomerGateway {
@@ -633,6 +668,31 @@ package Paws::EC2;
   sub DescribeClassicLinkInstances {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeClassicLinkInstances', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeClientVpnAuthorizationRules {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeClientVpnAuthorizationRules', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeClientVpnConnections {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeClientVpnConnections', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeClientVpnEndpoints {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeClientVpnEndpoints', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeClientVpnRoutes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeClientVpnRoutes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeClientVpnTargetNetworks {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeClientVpnTargetNetworks', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeConversionTasks {
@@ -1095,6 +1155,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DisassociateAddress', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DisassociateClientVpnTargetNetwork {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DisassociateClientVpnTargetNetwork', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DisassociateIamInstanceProfile {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DisassociateIamInstanceProfile', @_);
@@ -1143,6 +1208,16 @@ package Paws::EC2;
   sub EnableVpcClassicLinkDnsSupport {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::EnableVpcClassicLinkDnsSupport', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ExportClientVpnClientCertificateRevocationList {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ExportClientVpnClientCertificateRevocationList', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ExportClientVpnClientConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ExportClientVpnClientConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ExportTransitGatewayRoutes {
@@ -1195,6 +1270,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::GetTransitGatewayRouteTablePropagations', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ImportClientVpnClientCertificateRevocationList {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ImportClientVpnClientCertificateRevocationList', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ImportImage {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::ImportImage', @_);
@@ -1223,6 +1303,11 @@ package Paws::EC2;
   sub ModifyCapacityReservation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::ModifyCapacityReservation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyClientVpnEndpoint {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyClientVpnEndpoint', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ModifyFleet {
@@ -1495,6 +1580,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::RestoreAddressToClassic', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub RevokeClientVpnIngress {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::RevokeClientVpnIngress', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RevokeSecurityGroupEgress {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::RevokeSecurityGroupEgress', @_);
@@ -1528,6 +1618,11 @@ package Paws::EC2;
   sub StopInstances {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::StopInstances', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TerminateClientVpnConnections {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::TerminateClientVpnConnections', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub TerminateInstances {
@@ -1565,6 +1660,351 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::WithdrawByoipCidr', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeAllByoipCidrs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeByoipCidrs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeByoipCidrs(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ByoipCidrs }, @{ $next_result->ByoipCidrs };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ByoipCidrs') foreach (@{ $result->ByoipCidrs });
+        $result = $self->DescribeByoipCidrs(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ByoipCidrs') foreach (@{ $result->ByoipCidrs });
+    }
+
+    return undef
+  }
+  sub DescribeAllCapacityReservations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeCapacityReservations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeCapacityReservations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->CapacityReservations }, @{ $next_result->CapacityReservations };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'CapacityReservations') foreach (@{ $result->CapacityReservations });
+        $result = $self->DescribeCapacityReservations(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'CapacityReservations') foreach (@{ $result->CapacityReservations });
+    }
+
+    return undef
+  }
+  sub DescribeAllClassicLinkInstances {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeClassicLinkInstances(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeClassicLinkInstances(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Instances }, @{ $next_result->Instances };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Instances') foreach (@{ $result->Instances });
+        $result = $self->DescribeClassicLinkInstances(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Instances') foreach (@{ $result->Instances });
+    }
+
+    return undef
+  }
+  sub DescribeAllClientVpnAuthorizationRules {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeClientVpnAuthorizationRules(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeClientVpnAuthorizationRules(@_, NextToken => $next_result->NextToken);
+        push @{ $result->AuthorizationRules }, @{ $next_result->AuthorizationRules };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'AuthorizationRules') foreach (@{ $result->AuthorizationRules });
+        $result = $self->DescribeClientVpnAuthorizationRules(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'AuthorizationRules') foreach (@{ $result->AuthorizationRules });
+    }
+
+    return undef
+  }
+  sub DescribeAllClientVpnConnections {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeClientVpnConnections(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeClientVpnConnections(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Connections }, @{ $next_result->Connections };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Connections') foreach (@{ $result->Connections });
+        $result = $self->DescribeClientVpnConnections(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Connections') foreach (@{ $result->Connections });
+    }
+
+    return undef
+  }
+  sub DescribeAllClientVpnEndpoints {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeClientVpnEndpoints(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeClientVpnEndpoints(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ClientVpnEndpoints }, @{ $next_result->ClientVpnEndpoints };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ClientVpnEndpoints') foreach (@{ $result->ClientVpnEndpoints });
+        $result = $self->DescribeClientVpnEndpoints(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ClientVpnEndpoints') foreach (@{ $result->ClientVpnEndpoints });
+    }
+
+    return undef
+  }
+  sub DescribeAllClientVpnRoutes {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeClientVpnRoutes(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeClientVpnRoutes(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Routes }, @{ $next_result->Routes };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Routes') foreach (@{ $result->Routes });
+        $result = $self->DescribeClientVpnRoutes(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Routes') foreach (@{ $result->Routes });
+    }
+
+    return undef
+  }
+  sub DescribeAllClientVpnTargetNetworks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeClientVpnTargetNetworks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeClientVpnTargetNetworks(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ClientVpnTargetNetworks }, @{ $next_result->ClientVpnTargetNetworks };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ClientVpnTargetNetworks') foreach (@{ $result->ClientVpnTargetNetworks });
+        $result = $self->DescribeClientVpnTargetNetworks(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ClientVpnTargetNetworks') foreach (@{ $result->ClientVpnTargetNetworks });
+    }
+
+    return undef
+  }
+  sub DescribeAllEgressOnlyInternetGateways {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeEgressOnlyInternetGateways(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeEgressOnlyInternetGateways(@_, NextToken => $next_result->NextToken);
+        push @{ $result->EgressOnlyInternetGateways }, @{ $next_result->EgressOnlyInternetGateways };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'EgressOnlyInternetGateways') foreach (@{ $result->EgressOnlyInternetGateways });
+        $result = $self->DescribeEgressOnlyInternetGateways(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'EgressOnlyInternetGateways') foreach (@{ $result->EgressOnlyInternetGateways });
+    }
+
+    return undef
+  }
+  sub DescribeAllFleets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeFleets(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeFleets(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Fleets }, @{ $next_result->Fleets };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Fleets') foreach (@{ $result->Fleets });
+        $result = $self->DescribeFleets(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Fleets') foreach (@{ $result->Fleets });
+    }
+
+    return undef
+  }
+  sub DescribeAllFlowLogs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeFlowLogs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeFlowLogs(@_, NextToken => $next_result->NextToken);
+        push @{ $result->FlowLogs }, @{ $next_result->FlowLogs };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'FlowLogs') foreach (@{ $result->FlowLogs });
+        $result = $self->DescribeFlowLogs(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'FlowLogs') foreach (@{ $result->FlowLogs });
+    }
+
+    return undef
+  }
+  sub DescribeAllFpgaImages {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeFpgaImages(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeFpgaImages(@_, NextToken => $next_result->NextToken);
+        push @{ $result->FpgaImages }, @{ $next_result->FpgaImages };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'FpgaImages') foreach (@{ $result->FpgaImages });
+        $result = $self->DescribeFpgaImages(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'FpgaImages') foreach (@{ $result->FpgaImages });
+    }
+
+    return undef
+  }
+  sub DescribeAllHostReservationOfferings {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeHostReservationOfferings(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeHostReservationOfferings(@_, NextToken => $next_result->NextToken);
+        push @{ $result->OfferingSet }, @{ $next_result->OfferingSet };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'OfferingSet') foreach (@{ $result->OfferingSet });
+        $result = $self->DescribeHostReservationOfferings(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'OfferingSet') foreach (@{ $result->OfferingSet });
+    }
+
+    return undef
+  }
+  sub DescribeAllHostReservations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeHostReservations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeHostReservations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->HostReservationSet }, @{ $next_result->HostReservationSet };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'HostReservationSet') foreach (@{ $result->HostReservationSet });
+        $result = $self->DescribeHostReservations(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'HostReservationSet') foreach (@{ $result->HostReservationSet });
+    }
+
+    return undef
+  }
+  sub DescribeAllHosts {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeHosts(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeHosts(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Hosts }, @{ $next_result->Hosts };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Hosts') foreach (@{ $result->Hosts });
+        $result = $self->DescribeHosts(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Hosts') foreach (@{ $result->Hosts });
+    }
+
+    return undef
+  }
   sub DescribeAllIamInstanceProfileAssociations {
     my $self = shift;
 
@@ -1584,6 +2024,75 @@ package Paws::EC2;
         $result = $self->DescribeIamInstanceProfileAssociations(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'IamInstanceProfileAssociations') foreach (@{ $result->IamInstanceProfileAssociations });
+    }
+
+    return undef
+  }
+  sub DescribeAllImportImageTasks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeImportImageTasks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeImportImageTasks(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ImportImageTasks }, @{ $next_result->ImportImageTasks };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ImportImageTasks') foreach (@{ $result->ImportImageTasks });
+        $result = $self->DescribeImportImageTasks(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ImportImageTasks') foreach (@{ $result->ImportImageTasks });
+    }
+
+    return undef
+  }
+  sub DescribeAllImportSnapshotTasks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeImportSnapshotTasks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeImportSnapshotTasks(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ImportSnapshotTasks }, @{ $next_result->ImportSnapshotTasks };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ImportSnapshotTasks') foreach (@{ $result->ImportSnapshotTasks });
+        $result = $self->DescribeImportSnapshotTasks(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ImportSnapshotTasks') foreach (@{ $result->ImportSnapshotTasks });
+    }
+
+    return undef
+  }
+  sub DescribeAllInstanceCreditSpecifications {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeInstanceCreditSpecifications(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeInstanceCreditSpecifications(@_, NextToken => $next_result->NextToken);
+        push @{ $result->InstanceCreditSpecifications }, @{ $next_result->InstanceCreditSpecifications };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'InstanceCreditSpecifications') foreach (@{ $result->InstanceCreditSpecifications });
+        $result = $self->DescribeInstanceCreditSpecifications(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'InstanceCreditSpecifications') foreach (@{ $result->InstanceCreditSpecifications });
     }
 
     return undef
@@ -1634,6 +2143,75 @@ package Paws::EC2;
 
     return undef
   }
+  sub DescribeAllLaunchTemplates {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeLaunchTemplates(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeLaunchTemplates(@_, NextToken => $next_result->NextToken);
+        push @{ $result->LaunchTemplates }, @{ $next_result->LaunchTemplates };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'LaunchTemplates') foreach (@{ $result->LaunchTemplates });
+        $result = $self->DescribeLaunchTemplates(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'LaunchTemplates') foreach (@{ $result->LaunchTemplates });
+    }
+
+    return undef
+  }
+  sub DescribeAllLaunchTemplateVersions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeLaunchTemplateVersions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeLaunchTemplateVersions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->LaunchTemplateVersions }, @{ $next_result->LaunchTemplateVersions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'LaunchTemplateVersions') foreach (@{ $result->LaunchTemplateVersions });
+        $result = $self->DescribeLaunchTemplateVersions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'LaunchTemplateVersions') foreach (@{ $result->LaunchTemplateVersions });
+    }
+
+    return undef
+  }
+  sub DescribeAllMovingAddresses {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeMovingAddresses(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeMovingAddresses(@_, NextToken => $next_result->NextToken);
+        push @{ $result->MovingAddressStatuses }, @{ $next_result->MovingAddressStatuses };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'MovingAddressStatuses') foreach (@{ $result->MovingAddressStatuses });
+        $result = $self->DescribeMovingAddresses(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'MovingAddressStatuses') foreach (@{ $result->MovingAddressStatuses });
+    }
+
+    return undef
+  }
   sub DescribeAllNatGateways {
     my $self = shift;
 
@@ -1657,6 +2235,29 @@ package Paws::EC2;
 
     return undef
   }
+  sub DescribeAllNetworkInterfacePermissions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeNetworkInterfacePermissions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeNetworkInterfacePermissions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->NetworkInterfacePermissions }, @{ $next_result->NetworkInterfacePermissions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'NetworkInterfacePermissions') foreach (@{ $result->NetworkInterfacePermissions });
+        $result = $self->DescribeNetworkInterfacePermissions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'NetworkInterfacePermissions') foreach (@{ $result->NetworkInterfacePermissions });
+    }
+
+    return undef
+  }
   sub DescribeAllNetworkInterfaces {
     my $self = shift;
 
@@ -1676,6 +2277,75 @@ package Paws::EC2;
         $result = $self->DescribeNetworkInterfaces(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'NetworkInterfaces') foreach (@{ $result->NetworkInterfaces });
+    }
+
+    return undef
+  }
+  sub DescribeAllPrefixLists {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribePrefixLists(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribePrefixLists(@_, NextToken => $next_result->NextToken);
+        push @{ $result->PrefixLists }, @{ $next_result->PrefixLists };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'PrefixLists') foreach (@{ $result->PrefixLists });
+        $result = $self->DescribePrefixLists(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'PrefixLists') foreach (@{ $result->PrefixLists });
+    }
+
+    return undef
+  }
+  sub DescribeAllPrincipalIdFormat {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribePrincipalIdFormat(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribePrincipalIdFormat(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Principals }, @{ $next_result->Principals };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Principals') foreach (@{ $result->Principals });
+        $result = $self->DescribePrincipalIdFormat(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Principals') foreach (@{ $result->Principals });
+    }
+
+    return undef
+  }
+  sub DescribeAllPublicIpv4Pools {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribePublicIpv4Pools(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribePublicIpv4Pools(@_, NextToken => $next_result->NextToken);
+        push @{ $result->PublicIpv4Pools }, @{ $next_result->PublicIpv4Pools };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'PublicIpv4Pools') foreach (@{ $result->PublicIpv4Pools });
+        $result = $self->DescribePublicIpv4Pools(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'PublicIpv4Pools') foreach (@{ $result->PublicIpv4Pools });
     }
 
     return undef
@@ -1745,6 +2415,52 @@ package Paws::EC2;
         $result = $self->DescribeRouteTables(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'RouteTables') foreach (@{ $result->RouteTables });
+    }
+
+    return undef
+  }
+  sub DescribeAllScheduledInstanceAvailability {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeScheduledInstanceAvailability(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeScheduledInstanceAvailability(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ScheduledInstanceAvailabilitySet }, @{ $next_result->ScheduledInstanceAvailabilitySet };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ScheduledInstanceAvailabilitySet') foreach (@{ $result->ScheduledInstanceAvailabilitySet });
+        $result = $self->DescribeScheduledInstanceAvailability(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ScheduledInstanceAvailabilitySet') foreach (@{ $result->ScheduledInstanceAvailabilitySet });
+    }
+
+    return undef
+  }
+  sub DescribeAllScheduledInstances {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeScheduledInstances(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeScheduledInstances(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ScheduledInstanceSet }, @{ $next_result->ScheduledInstanceSet };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ScheduledInstanceSet') foreach (@{ $result->ScheduledInstanceSet });
+        $result = $self->DescribeScheduledInstances(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ScheduledInstanceSet') foreach (@{ $result->ScheduledInstanceSet });
     }
 
     return undef
@@ -1864,6 +2580,29 @@ package Paws::EC2;
 
     return undef
   }
+  sub DescribeAllStaleSecurityGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeStaleSecurityGroups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeStaleSecurityGroups(@_, NextToken => $next_result->NextToken);
+        push @{ $result->StaleSecurityGroupSet }, @{ $next_result->StaleSecurityGroupSet };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'StaleSecurityGroupSet') foreach (@{ $result->StaleSecurityGroupSet });
+        $result = $self->DescribeStaleSecurityGroups(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'StaleSecurityGroupSet') foreach (@{ $result->StaleSecurityGroupSet });
+    }
+
+    return undef
+  }
   sub DescribeAllTags {
     my $self = shift;
 
@@ -1883,6 +2622,98 @@ package Paws::EC2;
         $result = $self->DescribeTags(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+    }
+
+    return undef
+  }
+  sub DescribeAllTransitGatewayAttachments {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeTransitGatewayAttachments(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeTransitGatewayAttachments(@_, NextToken => $next_result->NextToken);
+        push @{ $result->TransitGatewayAttachments }, @{ $next_result->TransitGatewayAttachments };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'TransitGatewayAttachments') foreach (@{ $result->TransitGatewayAttachments });
+        $result = $self->DescribeTransitGatewayAttachments(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'TransitGatewayAttachments') foreach (@{ $result->TransitGatewayAttachments });
+    }
+
+    return undef
+  }
+  sub DescribeAllTransitGatewayRouteTables {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeTransitGatewayRouteTables(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeTransitGatewayRouteTables(@_, NextToken => $next_result->NextToken);
+        push @{ $result->TransitGatewayRouteTables }, @{ $next_result->TransitGatewayRouteTables };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'TransitGatewayRouteTables') foreach (@{ $result->TransitGatewayRouteTables });
+        $result = $self->DescribeTransitGatewayRouteTables(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'TransitGatewayRouteTables') foreach (@{ $result->TransitGatewayRouteTables });
+    }
+
+    return undef
+  }
+  sub DescribeAllTransitGateways {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeTransitGateways(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeTransitGateways(@_, NextToken => $next_result->NextToken);
+        push @{ $result->TransitGateways }, @{ $next_result->TransitGateways };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'TransitGateways') foreach (@{ $result->TransitGateways });
+        $result = $self->DescribeTransitGateways(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'TransitGateways') foreach (@{ $result->TransitGateways });
+    }
+
+    return undef
+  }
+  sub DescribeAllTransitGatewayVpcAttachments {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeTransitGatewayVpcAttachments(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeTransitGatewayVpcAttachments(@_, NextToken => $next_result->NextToken);
+        push @{ $result->TransitGatewayVpcAttachments }, @{ $next_result->TransitGatewayVpcAttachments };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'TransitGatewayVpcAttachments') foreach (@{ $result->TransitGatewayVpcAttachments });
+        $result = $self->DescribeTransitGatewayVpcAttachments(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'TransitGatewayVpcAttachments') foreach (@{ $result->TransitGatewayVpcAttachments });
     }
 
     return undef
@@ -1910,6 +2741,29 @@ package Paws::EC2;
 
     return undef
   }
+  sub DescribeAllVolumesModifications {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeVolumesModifications(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeVolumesModifications(@_, NextToken => $next_result->NextToken);
+        push @{ $result->VolumesModifications }, @{ $next_result->VolumesModifications };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'VolumesModifications') foreach (@{ $result->VolumesModifications });
+        $result = $self->DescribeVolumesModifications(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'VolumesModifications') foreach (@{ $result->VolumesModifications });
+    }
+
+    return undef
+  }
   sub DescribeAllVolumeStatus {
     my $self = shift;
 
@@ -1933,9 +2787,239 @@ package Paws::EC2;
 
     return undef
   }
+  sub DescribeAllVpcClassicLinkDnsSupport {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeVpcClassicLinkDnsSupport(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeVpcClassicLinkDnsSupport(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Vpcs }, @{ $next_result->Vpcs };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Vpcs') foreach (@{ $result->Vpcs });
+        $result = $self->DescribeVpcClassicLinkDnsSupport(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Vpcs') foreach (@{ $result->Vpcs });
+    }
+
+    return undef
+  }
+  sub DescribeAllVpcEndpointConnectionNotifications {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeVpcEndpointConnectionNotifications(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeVpcEndpointConnectionNotifications(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ConnectionNotificationSet }, @{ $next_result->ConnectionNotificationSet };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ConnectionNotificationSet') foreach (@{ $result->ConnectionNotificationSet });
+        $result = $self->DescribeVpcEndpointConnectionNotifications(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ConnectionNotificationSet') foreach (@{ $result->ConnectionNotificationSet });
+    }
+
+    return undef
+  }
+  sub DescribeAllVpcEndpointConnections {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeVpcEndpointConnections(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeVpcEndpointConnections(@_, NextToken => $next_result->NextToken);
+        push @{ $result->VpcEndpointConnections }, @{ $next_result->VpcEndpointConnections };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'VpcEndpointConnections') foreach (@{ $result->VpcEndpointConnections });
+        $result = $self->DescribeVpcEndpointConnections(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'VpcEndpointConnections') foreach (@{ $result->VpcEndpointConnections });
+    }
+
+    return undef
+  }
+  sub DescribeAllVpcEndpoints {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeVpcEndpoints(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeVpcEndpoints(@_, NextToken => $next_result->NextToken);
+        push @{ $result->VpcEndpoints }, @{ $next_result->VpcEndpoints };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'VpcEndpoints') foreach (@{ $result->VpcEndpoints });
+        $result = $self->DescribeVpcEndpoints(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'VpcEndpoints') foreach (@{ $result->VpcEndpoints });
+    }
+
+    return undef
+  }
+  sub DescribeAllVpcEndpointServiceConfigurations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeVpcEndpointServiceConfigurations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeVpcEndpointServiceConfigurations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ServiceConfigurations }, @{ $next_result->ServiceConfigurations };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ServiceConfigurations') foreach (@{ $result->ServiceConfigurations });
+        $result = $self->DescribeVpcEndpointServiceConfigurations(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ServiceConfigurations') foreach (@{ $result->ServiceConfigurations });
+    }
+
+    return undef
+  }
+  sub DescribeAllVpcEndpointServicePermissions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeVpcEndpointServicePermissions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeVpcEndpointServicePermissions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->AllowedPrincipals }, @{ $next_result->AllowedPrincipals };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'AllowedPrincipals') foreach (@{ $result->AllowedPrincipals });
+        $result = $self->DescribeVpcEndpointServicePermissions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'AllowedPrincipals') foreach (@{ $result->AllowedPrincipals });
+    }
+
+    return undef
+  }
+  sub DescribeAllVpcEndpointServices {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeVpcEndpointServices(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeVpcEndpointServices(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ServiceDetails }, @{ $next_result->ServiceDetails };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ServiceDetails') foreach (@{ $result->ServiceDetails });
+        $result = $self->DescribeVpcEndpointServices(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ServiceDetails') foreach (@{ $result->ServiceDetails });
+    }
+
+    return undef
+  }
+  sub GetAllTransitGatewayAttachmentPropagations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetTransitGatewayAttachmentPropagations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetTransitGatewayAttachmentPropagations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->TransitGatewayAttachmentPropagations }, @{ $next_result->TransitGatewayAttachmentPropagations };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'TransitGatewayAttachmentPropagations') foreach (@{ $result->TransitGatewayAttachmentPropagations });
+        $result = $self->GetTransitGatewayAttachmentPropagations(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'TransitGatewayAttachmentPropagations') foreach (@{ $result->TransitGatewayAttachmentPropagations });
+    }
+
+    return undef
+  }
+  sub GetAllTransitGatewayRouteTableAssociations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetTransitGatewayRouteTableAssociations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetTransitGatewayRouteTableAssociations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Associations }, @{ $next_result->Associations };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Associations') foreach (@{ $result->Associations });
+        $result = $self->GetTransitGatewayRouteTableAssociations(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Associations') foreach (@{ $result->Associations });
+    }
+
+    return undef
+  }
+  sub GetAllTransitGatewayRouteTablePropagations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetTransitGatewayRouteTablePropagations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetTransitGatewayRouteTablePropagations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->TransitGatewayRouteTablePropagations }, @{ $next_result->TransitGatewayRouteTablePropagations };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'TransitGatewayRouteTablePropagations') foreach (@{ $result->TransitGatewayRouteTablePropagations });
+        $result = $self->GetTransitGatewayRouteTablePropagations(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'TransitGatewayRouteTablePropagations') foreach (@{ $result->TransitGatewayRouteTablePropagations });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptTransitGatewayVpcAttachment AcceptVpcEndpointConnections AcceptVpcPeeringConnection AdvertiseByoipCidr AllocateAddress AllocateHosts AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateTransitGatewayRouteTable AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelCapacityReservation CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyFpgaImage CopyImage CopySnapshot CreateCapacityReservation CreateCustomerGateway CreateDefaultSubnet CreateDefaultVpc CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFleet CreateFlowLogs CreateFpgaImage CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateLaunchTemplate CreateLaunchTemplateVersion CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreateNetworkInterfacePermission CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateTransitGateway CreateTransitGatewayRoute CreateTransitGatewayRouteTable CreateTransitGatewayVpcAttachment CreateVolume CreateVpc CreateVpcEndpoint CreateVpcEndpointConnectionNotification CreateVpcEndpointServiceConfiguration CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFleets DeleteFlowLogs DeleteFpgaImage DeleteInternetGateway DeleteKeyPair DeleteLaunchTemplate DeleteLaunchTemplateVersions DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeleteNetworkInterfacePermission DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteTransitGateway DeleteTransitGatewayRoute DeleteTransitGatewayRouteTable DeleteTransitGatewayVpcAttachment DeleteVolume DeleteVpc DeleteVpcEndpointConnectionNotifications DeleteVpcEndpoints DeleteVpcEndpointServiceConfigurations DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeprovisionByoipCidr DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAggregateIdFormat DescribeAvailabilityZones DescribeBundleTasks DescribeByoipCidrs DescribeCapacityReservations DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeElasticGpus DescribeExportTasks DescribeFleetHistory DescribeFleetInstances DescribeFleets DescribeFlowLogs DescribeFpgaImageAttribute DescribeFpgaImages DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstanceCreditSpecifications DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeLaunchTemplates DescribeLaunchTemplateVersions DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfacePermissions DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribePrincipalIdFormat DescribePublicIpv4Pools DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeTransitGatewayAttachments DescribeTransitGatewayRouteTables DescribeTransitGateways DescribeTransitGatewayVpcAttachments DescribeVolumeAttribute DescribeVolumes DescribeVolumesModifications DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpointConnectionNotifications DescribeVpcEndpointConnections DescribeVpcEndpoints DescribeVpcEndpointServiceConfigurations DescribeVpcEndpointServicePermissions DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableTransitGatewayRouteTablePropagation DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateTransitGatewayRouteTable DisassociateVpcCidrBlock EnableTransitGatewayRouteTablePropagation EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport ExportTransitGatewayRoutes GetConsoleOutput GetConsoleScreenshot GetHostReservationPurchasePreview GetLaunchTemplateData GetPasswordData GetReservedInstancesExchangeQuote GetTransitGatewayAttachmentPropagations GetTransitGatewayRouteTableAssociations GetTransitGatewayRouteTablePropagations ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyCapacityReservation ModifyFleet ModifyFpgaImageAttribute ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstanceCapacityReservationAttributes ModifyInstanceCreditSpecification ModifyInstancePlacement ModifyLaunchTemplate ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyTransitGatewayVpcAttachment ModifyVolume ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcEndpointConnectionNotification ModifyVpcEndpointServiceConfiguration ModifyVpcEndpointServicePermissions ModifyVpcPeeringConnectionOptions ModifyVpcTenancy MonitorInstances MoveAddressToVpc ProvisionByoipCidr PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectTransitGatewayVpcAttachment RejectVpcEndpointConnections RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReplaceTransitGatewayRoute ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetFpgaImageAttribute ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances SearchTransitGatewayRoutes StartInstances StopInstances TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances UpdateSecurityGroupRuleDescriptionsEgress UpdateSecurityGroupRuleDescriptionsIngress WithdrawByoipCidr / }
+  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptTransitGatewayVpcAttachment AcceptVpcEndpointConnections AcceptVpcPeeringConnection AdvertiseByoipCidr AllocateAddress AllocateHosts ApplySecurityGroupsToClientVpnTargetNetwork AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateClientVpnTargetNetwork AssociateDhcpOptions AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateTransitGatewayRouteTable AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeClientVpnIngress AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelCapacityReservation CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyFpgaImage CopyImage CopySnapshot CreateCapacityReservation CreateClientVpnEndpoint CreateClientVpnRoute CreateCustomerGateway CreateDefaultSubnet CreateDefaultVpc CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFleet CreateFlowLogs CreateFpgaImage CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateLaunchTemplate CreateLaunchTemplateVersion CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreateNetworkInterfacePermission CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateTransitGateway CreateTransitGatewayRoute CreateTransitGatewayRouteTable CreateTransitGatewayVpcAttachment CreateVolume CreateVpc CreateVpcEndpoint CreateVpcEndpointConnectionNotification CreateVpcEndpointServiceConfiguration CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteClientVpnEndpoint DeleteClientVpnRoute DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFleets DeleteFlowLogs DeleteFpgaImage DeleteInternetGateway DeleteKeyPair DeleteLaunchTemplate DeleteLaunchTemplateVersions DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeleteNetworkInterfacePermission DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteTransitGateway DeleteTransitGatewayRoute DeleteTransitGatewayRouteTable DeleteTransitGatewayVpcAttachment DeleteVolume DeleteVpc DeleteVpcEndpointConnectionNotifications DeleteVpcEndpoints DeleteVpcEndpointServiceConfigurations DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeprovisionByoipCidr DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAggregateIdFormat DescribeAvailabilityZones DescribeBundleTasks DescribeByoipCidrs DescribeCapacityReservations DescribeClassicLinkInstances DescribeClientVpnAuthorizationRules DescribeClientVpnConnections DescribeClientVpnEndpoints DescribeClientVpnRoutes DescribeClientVpnTargetNetworks DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeElasticGpus DescribeExportTasks DescribeFleetHistory DescribeFleetInstances DescribeFleets DescribeFlowLogs DescribeFpgaImageAttribute DescribeFpgaImages DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstanceCreditSpecifications DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeLaunchTemplates DescribeLaunchTemplateVersions DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfacePermissions DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribePrincipalIdFormat DescribePublicIpv4Pools DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeTransitGatewayAttachments DescribeTransitGatewayRouteTables DescribeTransitGateways DescribeTransitGatewayVpcAttachments DescribeVolumeAttribute DescribeVolumes DescribeVolumesModifications DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpointConnectionNotifications DescribeVpcEndpointConnections DescribeVpcEndpoints DescribeVpcEndpointServiceConfigurations DescribeVpcEndpointServicePermissions DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableTransitGatewayRouteTablePropagation DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateClientVpnTargetNetwork DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateTransitGatewayRouteTable DisassociateVpcCidrBlock EnableTransitGatewayRouteTablePropagation EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport ExportClientVpnClientCertificateRevocationList ExportClientVpnClientConfiguration ExportTransitGatewayRoutes GetConsoleOutput GetConsoleScreenshot GetHostReservationPurchasePreview GetLaunchTemplateData GetPasswordData GetReservedInstancesExchangeQuote GetTransitGatewayAttachmentPropagations GetTransitGatewayRouteTableAssociations GetTransitGatewayRouteTablePropagations ImportClientVpnClientCertificateRevocationList ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyCapacityReservation ModifyClientVpnEndpoint ModifyFleet ModifyFpgaImageAttribute ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstanceCapacityReservationAttributes ModifyInstanceCreditSpecification ModifyInstancePlacement ModifyLaunchTemplate ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyTransitGatewayVpcAttachment ModifyVolume ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcEndpointConnectionNotification ModifyVpcEndpointServiceConfiguration ModifyVpcEndpointServicePermissions ModifyVpcPeeringConnectionOptions ModifyVpcTenancy MonitorInstances MoveAddressToVpc ProvisionByoipCidr PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectTransitGatewayVpcAttachment RejectVpcEndpointConnections RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReplaceTransitGatewayRoute ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetFpgaImageAttribute ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeClientVpnIngress RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances SearchTransitGatewayRoutes StartInstances StopInstances TerminateClientVpnConnections TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances UpdateSecurityGroupRuleDescriptionsEgress UpdateSecurityGroupRuleDescriptionsIngress WithdrawByoipCidr / }
 
 1;
 
@@ -2201,6 +3285,30 @@ instance size type, Availability Zone, and quantity of hosts to
 allocate.
 
 
+=head2 ApplySecurityGroupsToClientVpnTargetNetwork
+
+=over
+
+=item ClientVpnEndpointId => Str
+
+=item SecurityGroupIds => ArrayRef[Str|Undef]
+
+=item VpcId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::ApplySecurityGroupsToClientVpnTargetNetwork>
+
+Returns: a L<Paws::EC2::ApplySecurityGroupsToClientVpnTargetNetworkResult> instance
+
+Applies a security group to the association between the target network
+and the Client VPN endpoint. This action replaces the existing security
+groups with the specified security groups.
+
+
 =head2 AssignIpv6Addresses
 
 =over
@@ -2325,6 +3433,30 @@ once, Amazon EC2 doesn't return an error, and you may be charged for
 each time the Elastic IP address is remapped to the same instance. For
 more information, see the I<Elastic IP Addresses> section of Amazon EC2
 Pricing (http://aws.amazon.com/ec2/pricing/).
+
+
+=head2 AssociateClientVpnTargetNetwork
+
+=over
+
+=item ClientVpnEndpointId => Str
+
+=item SubnetId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::AssociateClientVpnTargetNetwork>
+
+Returns: a L<Paws::EC2::AssociateClientVpnTargetNetworkResult> instance
+
+Associates a target network with a Client VPN endpoint. A target
+network is a subnet in a VPC. You can associate multiple subnets from
+the same VPC with a Client VPN endpoint. You can associate only one
+subnet in each Availability Zone. We recommend that you associate at
+least two subnets to provide Availability Zone redundancy.
 
 
 =head2 AssociateDhcpOptions
@@ -2645,6 +3777,35 @@ private gateway to one VPC at a time.
 For more information, see AWS Managed VPN Connections
 (http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) in
 the I<Amazon Virtual Private Cloud User Guide>.
+
+
+=head2 AuthorizeClientVpnIngress
+
+=over
+
+=item ClientVpnEndpointId => Str
+
+=item TargetNetworkCidr => Str
+
+=item [AccessGroupId => Str]
+
+=item [AuthorizeAllGroups => Bool]
+
+=item [Description => Str]
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::AuthorizeClientVpnIngress>
+
+Returns: a L<Paws::EC2::AuthorizeClientVpnIngressResult> instance
+
+Adds an ingress authorization rule to a Client VPN endpoint. Ingress
+authorization rules act as firewall rules that grant access to
+networks. You must configure ingress authorization rules to enable
+clients to access resources in AWS or on-premises networks.
 
 
 =head2 AuthorizeSecurityGroupEgress
@@ -3167,6 +4328,68 @@ information about increasing your instance limits, see Amazon EC2
 Service Limits
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
+=head2 CreateClientVpnEndpoint
+
+=over
+
+=item AuthenticationOptions => ArrayRef[L<Paws::EC2::ClientVpnAuthenticationRequest>]
+
+=item ClientCidrBlock => Str
+
+=item ConnectionLogOptions => L<Paws::EC2::ConnectionLogOptions>
+
+=item ServerCertificateArn => Str
+
+=item [ClientToken => Str]
+
+=item [Description => Str]
+
+=item [DnsServers => ArrayRef[Str|Undef]]
+
+=item [DryRun => Bool]
+
+=item [TransportProtocol => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::CreateClientVpnEndpoint>
+
+Returns: a L<Paws::EC2::CreateClientVpnEndpointResult> instance
+
+Creates a Client VPN endpoint. A Client VPN endpoint is the resource
+you create and configure to enable and manage client VPN sessions. It
+is the destination endpoint at which all client VPN sessions are
+terminated.
+
+
+=head2 CreateClientVpnRoute
+
+=over
+
+=item ClientVpnEndpointId => Str
+
+=item DestinationCidrBlock => Str
+
+=item TargetVpcSubnetId => Str
+
+=item [Description => Str]
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::CreateClientVpnRoute>
+
+Returns: a L<Paws::EC2::CreateClientVpnRouteResult> instance
+
+Adds a route to a network to a Client VPN endpoint. Each Client VPN
+endpoint has a route table that describes the available destination
+network routes. Each route in the route table specifies the path for
+trac to specic resources or networks.
 
 
 =head2 CreateCustomerGateway
@@ -3854,11 +5077,13 @@ account at a time.
 
 =over
 
-=item GroupName => Str
-
-=item Strategy => Str
-
 =item [DryRun => Bool]
+
+=item [GroupName => Str]
+
+=item [PartitionCount => Int]
+
+=item [Strategy => Str]
 
 
 =back
@@ -3874,7 +5099,9 @@ the group.
 A C<cluster> placement group is a logical grouping of instances within
 a single Availability Zone that benefit from low network latency, high
 network throughput. A C<spread> placement group places instances on
-distinct hardware.
+distinct hardware. A C<partition> placement group places groups of
+instances in different partitions, where instances in one partition do
+not share the same hardware with instances in another partition.
 
 For more information, see Placement Groups
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
@@ -4716,6 +5943,51 @@ For more information about virtual private gateways, see AWS Managed
 VPN Connections
 (http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) in
 the I<Amazon Virtual Private Cloud User Guide>.
+
+
+=head2 DeleteClientVpnEndpoint
+
+=over
+
+=item ClientVpnEndpointId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DeleteClientVpnEndpoint>
+
+Returns: a L<Paws::EC2::DeleteClientVpnEndpointResult> instance
+
+Deletes the specified Client VPN endpoint. You must disassociate all
+target networks before you can delete a Client VPN endpoint.
+
+
+=head2 DeleteClientVpnRoute
+
+=over
+
+=item ClientVpnEndpointId => Str
+
+=item DestinationCidrBlock => Str
+
+=item [DryRun => Bool]
+
+=item [TargetVpcSubnetId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DeleteClientVpnRoute>
+
+Returns: a L<Paws::EC2::DeleteClientVpnRouteResult> instance
+
+Deletes a route from a Client VPN endpoint. You can only delete routes
+that you manually added using the B<CreateClientVpnRoute> action. You
+cannot delete routes that were automatically added when associating a
+subnet. To remove routes that have been automatically added,
+disassociate the target subnet from the Client VPN endpoint.
 
 
 =head2 DeleteCustomerGateway
@@ -5785,6 +7057,131 @@ a VPC through ClassicLink. You cannot use this request to return
 information about other instances.
 
 
+=head2 DescribeClientVpnAuthorizationRules
+
+=over
+
+=item ClientVpnEndpointId => Str
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeClientVpnAuthorizationRules>
+
+Returns: a L<Paws::EC2::DescribeClientVpnAuthorizationRulesResult> instance
+
+Describes the authorization rules for a specified Client VPN endpoint.
+
+
+=head2 DescribeClientVpnConnections
+
+=over
+
+=item ClientVpnEndpointId => Str
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeClientVpnConnections>
+
+Returns: a L<Paws::EC2::DescribeClientVpnConnectionsResult> instance
+
+Describes active client connections and connections that have been
+terminated within the last 60 minutes for the specified Client VPN
+endpoint.
+
+
+=head2 DescribeClientVpnEndpoints
+
+=over
+
+=item [ClientVpnEndpointIds => ArrayRef[Str|Undef]]
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeClientVpnEndpoints>
+
+Returns: a L<Paws::EC2::DescribeClientVpnEndpointsResult> instance
+
+Describes one or more Client VPN endpoints in the account.
+
+
+=head2 DescribeClientVpnRoutes
+
+=over
+
+=item ClientVpnEndpointId => Str
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeClientVpnRoutes>
+
+Returns: a L<Paws::EC2::DescribeClientVpnRoutesResult> instance
+
+Describes the routes for the specified Client VPN endpoint.
+
+
+=head2 DescribeClientVpnTargetNetworks
+
+=over
+
+=item ClientVpnEndpointId => Str
+
+=item [AssociationIds => ArrayRef[Str|Undef]]
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeClientVpnTargetNetworks>
+
+Returns: a L<Paws::EC2::DescribeClientVpnTargetNetworksResult> instance
+
+Describes the target networks associated with the specified Client VPN
+endpoint.
+
+
 =head2 DescribeConversionTasks
 
 =over
@@ -6100,7 +7497,7 @@ Describes the Dedicated Host reservations that are available to
 purchase.
 
 The results describe all the Dedicated Host reservation offerings,
-including offerings that may not match the instance family and region
+including offerings that may not match the instance family and Region
 of your Dedicated Hosts. When purchasing an offering, ensure that the
 instance family and Region of the offering matches that of the
 Dedicated Hosts with which it is to be associated. For more information
@@ -6153,7 +7550,7 @@ Returns: a L<Paws::EC2::DescribeHostsResult> instance
 
 Describes one or more of your Dedicated Hosts.
 
-The results describe only the Dedicated Hosts in the region you're
+The results describe only the Dedicated Hosts in the Region you're
 currently using. All listed instances consume capacity on your
 Dedicated Host. Dedicated Hosts that have recently been released are
 listed with the state C<released>.
@@ -8394,6 +9791,49 @@ This is an idempotent operation. If you perform the operation more than
 once, Amazon EC2 doesn't return an error.
 
 
+=head2 DisassociateClientVpnTargetNetwork
+
+=over
+
+=item AssociationId => Str
+
+=item ClientVpnEndpointId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DisassociateClientVpnTargetNetwork>
+
+Returns: a L<Paws::EC2::DisassociateClientVpnTargetNetworkResult> instance
+
+Disassociates a target network from the specified Client VPN endpoint.
+When you disassociate the last target network from a Client VPN, the
+following happens:
+
+=over
+
+=item *
+
+The route that was automatically added for the VPC is deleted
+
+=item *
+
+All active client connections are terminated
+
+=item *
+
+New client connections are disallowed
+
+=item *
+
+The Client VPN endpoint's status changes to C<pending-associate>
+
+=back
+
+
+
 =head2 DisassociateIamInstanceProfile
 
 =over
@@ -8605,6 +10045,47 @@ resolves to its private IP address when addressed from a linked
 EC2-Classic instance. For more information, see ClassicLink
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
+=head2 ExportClientVpnClientCertificateRevocationList
+
+=over
+
+=item ClientVpnEndpointId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::ExportClientVpnClientCertificateRevocationList>
+
+Returns: a L<Paws::EC2::ExportClientVpnClientCertificateRevocationListResult> instance
+
+Downloads the client certificate revocation list for the specified
+Client VPN endpoint.
+
+
+=head2 ExportClientVpnClientConfiguration
+
+=over
+
+=item ClientVpnEndpointId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::ExportClientVpnClientConfiguration>
+
+Returns: a L<Paws::EC2::ExportClientVpnClientConfigurationResult> instance
+
+Downloads the contents of the Client VPN endpoint configuration file
+for the specified Client VPN endpoint. The Client VPN endpoint
+configuration file includes the Client VPN endpoint and certificate
+information clients need to establish a connection with the Client VPN
+endpoint.
 
 
 =head2 ExportTransitGatewayRoutes
@@ -8874,6 +10355,31 @@ Gets information about the route table propagations for the specified
 transit gateway route table.
 
 
+=head2 ImportClientVpnClientCertificateRevocationList
+
+=over
+
+=item CertificateRevocationList => Str
+
+=item ClientVpnEndpointId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::ImportClientVpnClientCertificateRevocationList>
+
+Returns: a L<Paws::EC2::ImportClientVpnClientCertificateRevocationListResult> instance
+
+Uploads a client certificate revocation list to the specified Client
+VPN endpoint. Uploading a client certificate revocation list overwrites
+the existing client certificate revocation list.
+
+Uploading a client certificate revocation list resets existing client
+connections.
+
+
 =head2 ImportImage
 
 =over
@@ -9063,6 +10569,35 @@ instance type, EBS optimization, instance store settings, platform,
 Availability Zone, or instance eligibility. If you need to modify any
 of these attributes, we recommend that you cancel the Capacity
 Reservation, and then create a new one with the required attributes.
+
+
+=head2 ModifyClientVpnEndpoint
+
+=over
+
+=item ClientVpnEndpointId => Str
+
+=item [ConnectionLogOptions => L<Paws::EC2::ConnectionLogOptions>]
+
+=item [Description => Str]
+
+=item [DnsServers => L<Paws::EC2::DnsServersOptionsModifyStructure>]
+
+=item [DryRun => Bool]
+
+=item [ServerCertificateArn => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::ModifyClientVpnEndpoint>
+
+Returns: a L<Paws::EC2::ModifyClientVpnEndpointResult> instance
+
+Modifies the specified Client VPN endpoint. You can only modify an
+endpoint's server certificate information, client connection logging
+information, DNS server, and description. Modifying the DNS server
+resets existing client connections.
 
 
 =head2 ModifyFleet
@@ -9406,6 +10941,8 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item [HostId => Str]
 
+=item [PartitionNumber => Int]
+
 =item [Tenancy => Str]
 
 
@@ -9449,8 +10986,8 @@ At least one attribute for affinity, host ID, tenancy, or placement
 group name must be specified in the request. Affinity and tenancy can
 be modified in the same request.
 
-To modify the host ID, tenancy, or placement group for an instance, the
-instance must be in the C<stopped> state.
+To modify the host ID, tenancy, placement group, or partition for an
+instance, the instance must be in the C<stopped> state.
 
 
 =head2 ModifyLaunchTemplate
@@ -10857,6 +12394,30 @@ Elastic IP address must not be associated with an instance or network
 interface.
 
 
+=head2 RevokeClientVpnIngress
+
+=over
+
+=item ClientVpnEndpointId => Str
+
+=item TargetNetworkCidr => Str
+
+=item [AccessGroupId => Str]
+
+=item [DryRun => Bool]
+
+=item [RevokeAllGroups => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::RevokeClientVpnIngress>
+
+Returns: a L<Paws::EC2::RevokeClientVpnIngressResult> instance
+
+Removes an ingress authorization rule from a Client VPN endpoint.
+
+
 =head2 RevokeSecurityGroupEgress
 
 =over
@@ -11292,6 +12853,30 @@ Instance
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
+=head2 TerminateClientVpnConnections
+
+=over
+
+=item ClientVpnEndpointId => Str
+
+=item [ConnectionId => Str]
+
+=item [DryRun => Bool]
+
+=item [Username => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::TerminateClientVpnConnections>
+
+Returns: a L<Paws::EC2::TerminateClientVpnConnectionsResult> instance
+
+Terminates active Client VPN endpoint connections. This action can be
+used to terminate a specific client connection, or up to five
+connections established by a specific user.
+
+
 =head2 TerminateInstances
 
 =over
@@ -11484,6 +13069,186 @@ stops routing to AWS because of BGP propagation delays.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
+=head2 DescribeAllByoipCidrs(sub { },MaxResults => Int, [DryRun => Bool, NextToken => Str])
+
+=head2 DescribeAllByoipCidrs(MaxResults => Int, [DryRun => Bool, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ByoipCidrs, passing the object as the first parameter, and the string 'ByoipCidrs' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeByoipCidrsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllCapacityReservations(sub { },[CapacityReservationIds => ArrayRef[Str|Undef], DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllCapacityReservations([CapacityReservationIds => ArrayRef[Str|Undef], DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - CapacityReservations, passing the object as the first parameter, and the string 'CapacityReservations' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeCapacityReservationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllClassicLinkInstances(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], InstanceIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllClassicLinkInstances([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], InstanceIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Instances, passing the object as the first parameter, and the string 'Instances' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeClassicLinkInstancesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllClientVpnAuthorizationRules(sub { },ClientVpnEndpointId => Str, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllClientVpnAuthorizationRules(ClientVpnEndpointId => Str, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AuthorizationRules, passing the object as the first parameter, and the string 'AuthorizationRules' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeClientVpnAuthorizationRulesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllClientVpnConnections(sub { },ClientVpnEndpointId => Str, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllClientVpnConnections(ClientVpnEndpointId => Str, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Connections, passing the object as the first parameter, and the string 'Connections' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeClientVpnConnectionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllClientVpnEndpoints(sub { },[ClientVpnEndpointIds => ArrayRef[Str|Undef], DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllClientVpnEndpoints([ClientVpnEndpointIds => ArrayRef[Str|Undef], DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ClientVpnEndpoints, passing the object as the first parameter, and the string 'ClientVpnEndpoints' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeClientVpnEndpointsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllClientVpnRoutes(sub { },ClientVpnEndpointId => Str, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllClientVpnRoutes(ClientVpnEndpointId => Str, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Routes, passing the object as the first parameter, and the string 'Routes' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeClientVpnRoutesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllClientVpnTargetNetworks(sub { },ClientVpnEndpointId => Str, [AssociationIds => ArrayRef[Str|Undef], DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllClientVpnTargetNetworks(ClientVpnEndpointId => Str, [AssociationIds => ArrayRef[Str|Undef], DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ClientVpnTargetNetworks, passing the object as the first parameter, and the string 'ClientVpnTargetNetworks' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeClientVpnTargetNetworksResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllEgressOnlyInternetGateways(sub { },[DryRun => Bool, EgressOnlyInternetGatewayIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllEgressOnlyInternetGateways([DryRun => Bool, EgressOnlyInternetGatewayIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - EgressOnlyInternetGateways, passing the object as the first parameter, and the string 'EgressOnlyInternetGateways' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeEgressOnlyInternetGatewaysResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllFleets(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], FleetIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllFleets([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], FleetIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Fleets, passing the object as the first parameter, and the string 'Fleets' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeFleetsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllFlowLogs(sub { },[DryRun => Bool, Filter => ArrayRef[L<Paws::EC2::Filter>], FlowLogIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllFlowLogs([DryRun => Bool, Filter => ArrayRef[L<Paws::EC2::Filter>], FlowLogIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - FlowLogs, passing the object as the first parameter, and the string 'FlowLogs' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeFlowLogsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllFpgaImages(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], FpgaImageIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str, Owners => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllFpgaImages([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], FpgaImageIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str, Owners => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - FpgaImages, passing the object as the first parameter, and the string 'FpgaImages' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeFpgaImagesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllHostReservationOfferings(sub { },[Filter => ArrayRef[L<Paws::EC2::Filter>], MaxDuration => Int, MaxResults => Int, MinDuration => Int, NextToken => Str, OfferingId => Str])
+
+=head2 DescribeAllHostReservationOfferings([Filter => ArrayRef[L<Paws::EC2::Filter>], MaxDuration => Int, MaxResults => Int, MinDuration => Int, NextToken => Str, OfferingId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - OfferingSet, passing the object as the first parameter, and the string 'OfferingSet' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeHostReservationOfferingsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllHostReservations(sub { },[Filter => ArrayRef[L<Paws::EC2::Filter>], HostReservationIdSet => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllHostReservations([Filter => ArrayRef[L<Paws::EC2::Filter>], HostReservationIdSet => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - HostReservationSet, passing the object as the first parameter, and the string 'HostReservationSet' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeHostReservationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllHosts(sub { },[Filter => ArrayRef[L<Paws::EC2::Filter>], HostIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllHosts([Filter => ArrayRef[L<Paws::EC2::Filter>], HostIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Hosts, passing the object as the first parameter, and the string 'Hosts' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeHostsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllIamInstanceProfileAssociations(sub { },[AssociationIds => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
 
 =head2 DescribeAllIamInstanceProfileAssociations([AssociationIds => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
@@ -11494,6 +13259,42 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - IamInstanceProfileAssociations, passing the object as the first parameter, and the string 'IamInstanceProfileAssociations' as the second parameter 
 
 If not, it will return a a L<Paws::EC2::DescribeIamInstanceProfileAssociationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllImportImageTasks(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], ImportTaskIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllImportImageTasks([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], ImportTaskIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ImportImageTasks, passing the object as the first parameter, and the string 'ImportImageTasks' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeImportImageTasksResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllImportSnapshotTasks(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], ImportTaskIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllImportSnapshotTasks([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], ImportTaskIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ImportSnapshotTasks, passing the object as the first parameter, and the string 'ImportSnapshotTasks' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeImportSnapshotTasksResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllInstanceCreditSpecifications(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], InstanceIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllInstanceCreditSpecifications([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], InstanceIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - InstanceCreditSpecifications, passing the object as the first parameter, and the string 'InstanceCreditSpecifications' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeInstanceCreditSpecificationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DescribeAllInstances(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], InstanceIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
@@ -11520,6 +13321,42 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeInstanceStatusResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 DescribeAllLaunchTemplates(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], LaunchTemplateIds => ArrayRef[Str|Undef], LaunchTemplateNames => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllLaunchTemplates([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], LaunchTemplateIds => ArrayRef[Str|Undef], LaunchTemplateNames => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - LaunchTemplates, passing the object as the first parameter, and the string 'LaunchTemplates' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeLaunchTemplatesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllLaunchTemplateVersions(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], LaunchTemplateId => Str, LaunchTemplateName => Str, MaxResults => Int, MaxVersion => Str, MinVersion => Str, NextToken => Str, Versions => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllLaunchTemplateVersions([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], LaunchTemplateId => Str, LaunchTemplateName => Str, MaxResults => Int, MaxVersion => Str, MinVersion => Str, NextToken => Str, Versions => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - LaunchTemplateVersions, passing the object as the first parameter, and the string 'LaunchTemplateVersions' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeLaunchTemplateVersionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllMovingAddresses(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, PublicIps => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllMovingAddresses([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, PublicIps => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - MovingAddressStatuses, passing the object as the first parameter, and the string 'MovingAddressStatuses' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeMovingAddressesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllNatGateways(sub { },[Filter => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NatGatewayIds => ArrayRef[Str|Undef], NextToken => Str])
 
 =head2 DescribeAllNatGateways([Filter => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NatGatewayIds => ArrayRef[Str|Undef], NextToken => Str])
@@ -11532,6 +13369,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeNatGatewaysResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 DescribeAllNetworkInterfacePermissions(sub { },[Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NetworkInterfacePermissionIds => ArrayRef[Str|Undef], NextToken => Str])
+
+=head2 DescribeAllNetworkInterfacePermissions([Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NetworkInterfacePermissionIds => ArrayRef[Str|Undef], NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - NetworkInterfacePermissions, passing the object as the first parameter, and the string 'NetworkInterfacePermissions' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeNetworkInterfacePermissionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllNetworkInterfaces(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NetworkInterfaceIds => ArrayRef[Str|Undef], NextToken => Str])
 
 =head2 DescribeAllNetworkInterfaces([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NetworkInterfaceIds => ArrayRef[Str|Undef], NextToken => Str])
@@ -11542,6 +13391,42 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - NetworkInterfaces, passing the object as the first parameter, and the string 'NetworkInterfaces' as the second parameter 
 
 If not, it will return a a L<Paws::EC2::DescribeNetworkInterfacesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllPrefixLists(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, PrefixListIds => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllPrefixLists([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, PrefixListIds => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PrefixLists, passing the object as the first parameter, and the string 'PrefixLists' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribePrefixListsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllPrincipalIdFormat(sub { },[DryRun => Bool, MaxResults => Int, NextToken => Str, Resources => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllPrincipalIdFormat([DryRun => Bool, MaxResults => Int, NextToken => Str, Resources => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Principals, passing the object as the first parameter, and the string 'Principals' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribePrincipalIdFormatResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllPublicIpv4Pools(sub { },[MaxResults => Int, NextToken => Str, PoolIds => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllPublicIpv4Pools([MaxResults => Int, NextToken => Str, PoolIds => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PublicIpv4Pools, passing the object as the first parameter, and the string 'PublicIpv4Pools' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribePublicIpv4PoolsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DescribeAllReservedInstancesModifications(sub { },[Filters => ArrayRef[L<Paws::EC2::Filter>], NextToken => Str, ReservedInstancesModificationIds => ArrayRef[Str|Undef]])
@@ -11578,6 +13463,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - RouteTables, passing the object as the first parameter, and the string 'RouteTables' as the second parameter 
 
 If not, it will return a a L<Paws::EC2::DescribeRouteTablesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllScheduledInstanceAvailability(sub { },FirstSlotStartTimeRange => L<Paws::EC2::SlotDateTimeRangeRequest>, Recurrence => L<Paws::EC2::ScheduledInstanceRecurrenceRequest>, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, MaxSlotDurationInHours => Int, MinSlotDurationInHours => Int, NextToken => Str])
+
+=head2 DescribeAllScheduledInstanceAvailability(FirstSlotStartTimeRange => L<Paws::EC2::SlotDateTimeRangeRequest>, Recurrence => L<Paws::EC2::ScheduledInstanceRecurrenceRequest>, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, MaxSlotDurationInHours => Int, MinSlotDurationInHours => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ScheduledInstanceAvailabilitySet, passing the object as the first parameter, and the string 'ScheduledInstanceAvailabilitySet' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeScheduledInstanceAvailabilityResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllScheduledInstances(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, ScheduledInstanceIds => ArrayRef[Str|Undef], SlotStartTimeRange => L<Paws::EC2::SlotStartTimeRangeRequest>])
+
+=head2 DescribeAllScheduledInstances([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, ScheduledInstanceIds => ArrayRef[Str|Undef], SlotStartTimeRange => L<Paws::EC2::SlotStartTimeRangeRequest>])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ScheduledInstanceSet, passing the object as the first parameter, and the string 'ScheduledInstanceSet' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeScheduledInstancesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DescribeAllSecurityGroups(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], GroupIds => ArrayRef[Str|Undef], GroupNames => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
@@ -11640,6 +13549,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeSpotPriceHistoryResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 DescribeAllStaleSecurityGroups(sub { },VpcId => Str, [DryRun => Bool, MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllStaleSecurityGroups(VpcId => Str, [DryRun => Bool, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - StaleSecurityGroupSet, passing the object as the first parameter, and the string 'StaleSecurityGroupSet' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeStaleSecurityGroupsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllTags(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
 
 =head2 DescribeAllTags([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
@@ -11650,6 +13571,54 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Tags, passing the object as the first parameter, and the string 'Tags' as the second parameter 
 
 If not, it will return a a L<Paws::EC2::DescribeTagsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllTransitGatewayAttachments(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TransitGatewayAttachmentIds => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllTransitGatewayAttachments([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TransitGatewayAttachmentIds => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TransitGatewayAttachments, passing the object as the first parameter, and the string 'TransitGatewayAttachments' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeTransitGatewayAttachmentsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllTransitGatewayRouteTables(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TransitGatewayRouteTableIds => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllTransitGatewayRouteTables([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TransitGatewayRouteTableIds => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TransitGatewayRouteTables, passing the object as the first parameter, and the string 'TransitGatewayRouteTables' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeTransitGatewayRouteTablesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllTransitGateways(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TransitGatewayIds => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllTransitGateways([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TransitGatewayIds => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TransitGateways, passing the object as the first parameter, and the string 'TransitGateways' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeTransitGatewaysResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllTransitGatewayVpcAttachments(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TransitGatewayAttachmentIds => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllTransitGatewayVpcAttachments([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TransitGatewayAttachmentIds => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TransitGatewayVpcAttachments, passing the object as the first parameter, and the string 'TransitGatewayVpcAttachments' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeTransitGatewayVpcAttachmentsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DescribeAllVolumes(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VolumeIds => ArrayRef[Str|Undef]])
@@ -11664,6 +13633,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeVolumesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 DescribeAllVolumesModifications(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VolumeIds => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllVolumesModifications([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VolumeIds => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - VolumesModifications, passing the object as the first parameter, and the string 'VolumesModifications' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeVolumesModificationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllVolumeStatus(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VolumeIds => ArrayRef[Str|Undef]])
 
 =head2 DescribeAllVolumeStatus([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VolumeIds => ArrayRef[Str|Undef]])
@@ -11674,6 +13655,126 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - VolumeStatuses, passing the object as the first parameter, and the string 'VolumeStatuses' as the second parameter 
 
 If not, it will return a a L<Paws::EC2::DescribeVolumeStatusResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllVpcClassicLinkDnsSupport(sub { },[MaxResults => Int, NextToken => Str, VpcIds => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllVpcClassicLinkDnsSupport([MaxResults => Int, NextToken => Str, VpcIds => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Vpcs, passing the object as the first parameter, and the string 'Vpcs' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeVpcClassicLinkDnsSupportResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllVpcEndpointConnectionNotifications(sub { },[ConnectionNotificationId => Str, DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllVpcEndpointConnectionNotifications([ConnectionNotificationId => Str, DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ConnectionNotificationSet, passing the object as the first parameter, and the string 'ConnectionNotificationSet' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeVpcEndpointConnectionNotificationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllVpcEndpointConnections(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllVpcEndpointConnections([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - VpcEndpointConnections, passing the object as the first parameter, and the string 'VpcEndpointConnections' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeVpcEndpointConnectionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllVpcEndpoints(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VpcEndpointIds => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllVpcEndpoints([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VpcEndpointIds => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - VpcEndpoints, passing the object as the first parameter, and the string 'VpcEndpoints' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeVpcEndpointsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllVpcEndpointServiceConfigurations(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, ServiceIds => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllVpcEndpointServiceConfigurations([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, ServiceIds => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ServiceConfigurations, passing the object as the first parameter, and the string 'ServiceConfigurations' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeVpcEndpointServiceConfigurationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllVpcEndpointServicePermissions(sub { },ServiceId => Str, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllVpcEndpointServicePermissions(ServiceId => Str, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AllowedPrincipals, passing the object as the first parameter, and the string 'AllowedPrincipals' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeVpcEndpointServicePermissionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllVpcEndpointServices(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, ServiceNames => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllVpcEndpointServices([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, ServiceNames => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ServiceDetails, passing the object as the first parameter, and the string 'ServiceDetails' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeVpcEndpointServicesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllTransitGatewayAttachmentPropagations(sub { },TransitGatewayAttachmentId => Str, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+=head2 GetAllTransitGatewayAttachmentPropagations(TransitGatewayAttachmentId => Str, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TransitGatewayAttachmentPropagations, passing the object as the first parameter, and the string 'TransitGatewayAttachmentPropagations' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::GetTransitGatewayAttachmentPropagationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllTransitGatewayRouteTableAssociations(sub { },TransitGatewayRouteTableId => Str, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+=head2 GetAllTransitGatewayRouteTableAssociations(TransitGatewayRouteTableId => Str, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Associations, passing the object as the first parameter, and the string 'Associations' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::GetTransitGatewayRouteTableAssociationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllTransitGatewayRouteTablePropagations(sub { },TransitGatewayRouteTableId => Str, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+=head2 GetAllTransitGatewayRouteTablePropagations(TransitGatewayRouteTableId => Str, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TransitGatewayRouteTablePropagations, passing the object as the first parameter, and the string 'TransitGatewayRouteTablePropagations' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::GetTransitGatewayRouteTablePropagationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

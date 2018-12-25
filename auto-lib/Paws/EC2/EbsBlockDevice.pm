@@ -72,8 +72,8 @@ Volume Types
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
-Constraints: Range is 100-10,000 IOPS for C<gp2> volumes and 100 to
-64,000IOPS for C<io1> volumes in most regions. Maximum C<io1>IOPS of
+Constraints: Range is 100-16,000 IOPS for C<gp2> volumes and 100 to
+64,000IOPS for C<io1> volumes in most Regions. Maximum C<io1>IOPS of
 64,000 is guaranteed only on Nitro-based instances. Other instance
 families guarantee performance up to 32,000 IOPS. For more information,
 see Amazon EBS Volume Types
