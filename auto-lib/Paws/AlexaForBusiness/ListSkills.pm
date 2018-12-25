@@ -63,7 +63,7 @@ Valid values are: C<"ENABLED">, C<"PENDING">
 The maximum number of results to include in the response. If more
 results exist than the specified C<MaxResults> value, a token is
 included in the response so that the remaining results can be
-retrieved. Required.
+retrieved.
 
 
 
@@ -72,13 +72,13 @@ retrieved. Required.
 An optional token returned from a prior request. Use this token for
 pagination of results from this action. If this parameter is specified,
 the response includes only results beyond the token, up to the value
-specified by C<MaxResults>. Required.
+specified by C<MaxResults>.
 
 
 
 =head2 SkillGroupArn => Str
 
-The ARN of the skill group for which to list enabled skills. Required.
+The ARN of the skill group for which to list enabled skills.
 
 
 

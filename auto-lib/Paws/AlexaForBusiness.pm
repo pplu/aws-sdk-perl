@@ -40,6 +40,11 @@ package Paws::AlexaForBusiness;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::AssociateSkillWithSkillGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AssociateSkillWithUsers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::AssociateSkillWithUsers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateAddressBook {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::CreateAddressBook', @_);
@@ -148,6 +153,11 @@ package Paws::AlexaForBusiness;
   sub DisassociateSkillFromSkillGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::DisassociateSkillFromSkillGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DisassociateSkillFromUsers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::DisassociateSkillFromUsers', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DisassociateSkillGroupFromRoom {
@@ -381,6 +391,75 @@ package Paws::AlexaForBusiness;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllBusinessReportSchedules {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListBusinessReportSchedules(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListBusinessReportSchedules(@_, NextToken => $next_result->NextToken);
+        push @{ $result->BusinessReportSchedules }, @{ $next_result->BusinessReportSchedules };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'BusinessReportSchedules') foreach (@{ $result->BusinessReportSchedules });
+        $result = $self->ListBusinessReportSchedules(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'BusinessReportSchedules') foreach (@{ $result->BusinessReportSchedules });
+    }
+
+    return undef
+  }
+  sub ListAllConferenceProviders {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListConferenceProviders(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListConferenceProviders(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ConferenceProviders }, @{ $next_result->ConferenceProviders };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ConferenceProviders') foreach (@{ $result->ConferenceProviders });
+        $result = $self->ListConferenceProviders(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ConferenceProviders') foreach (@{ $result->ConferenceProviders });
+    }
+
+    return undef
+  }
+  sub ListAllDeviceEvents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDeviceEvents(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListDeviceEvents(@_, NextToken => $next_result->NextToken);
+        push @{ $result->DeviceEvents }, @{ $next_result->DeviceEvents };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'DeviceEvents') foreach (@{ $result->DeviceEvents });
+        $result = $self->ListDeviceEvents(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'DeviceEvents') foreach (@{ $result->DeviceEvents });
+    }
+
+    return undef
+  }
   sub ListAllSkills {
     my $self = shift;
 
@@ -400,6 +479,75 @@ package Paws::AlexaForBusiness;
         $result = $self->ListSkills(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'SkillSummaries') foreach (@{ $result->SkillSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllSkillsStoreCategories {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListSkillsStoreCategories(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListSkillsStoreCategories(@_, NextToken => $next_result->NextToken);
+        push @{ $result->CategoryList }, @{ $next_result->CategoryList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'CategoryList') foreach (@{ $result->CategoryList });
+        $result = $self->ListSkillsStoreCategories(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'CategoryList') foreach (@{ $result->CategoryList });
+    }
+
+    return undef
+  }
+  sub ListAllSkillsStoreSkillsByCategory {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListSkillsStoreSkillsByCategory(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListSkillsStoreSkillsByCategory(@_, NextToken => $next_result->NextToken);
+        push @{ $result->SkillsStoreSkills }, @{ $next_result->SkillsStoreSkills };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'SkillsStoreSkills') foreach (@{ $result->SkillsStoreSkills });
+        $result = $self->ListSkillsStoreSkillsByCategory(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'SkillsStoreSkills') foreach (@{ $result->SkillsStoreSkills });
+    }
+
+    return undef
+  }
+  sub ListAllSmartHomeAppliances {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListSmartHomeAppliances(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListSmartHomeAppliances(@_, NextToken => $next_result->NextToken);
+        push @{ $result->SmartHomeAppliances }, @{ $next_result->SmartHomeAppliances };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'SmartHomeAppliances') foreach (@{ $result->SmartHomeAppliances });
+        $result = $self->ListSmartHomeAppliances(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'SmartHomeAppliances') foreach (@{ $result->SmartHomeAppliances });
     }
 
     return undef
@@ -544,7 +692,7 @@ package Paws::AlexaForBusiness;
   }
 
 
-  sub operations { qw/ApproveSkill AssociateContactWithAddressBook AssociateDeviceWithRoom AssociateSkillGroupWithRoom AssociateSkillWithSkillGroup CreateAddressBook CreateBusinessReportSchedule CreateConferenceProvider CreateContact CreateProfile CreateRoom CreateSkillGroup CreateUser DeleteAddressBook DeleteBusinessReportSchedule DeleteConferenceProvider DeleteContact DeleteDevice DeleteProfile DeleteRoom DeleteRoomSkillParameter DeleteSkillAuthorization DeleteSkillGroup DeleteUser DisassociateContactFromAddressBook DisassociateDeviceFromRoom DisassociateSkillFromSkillGroup DisassociateSkillGroupFromRoom ForgetSmartHomeAppliances GetAddressBook GetConferencePreference GetConferenceProvider GetContact GetDevice GetProfile GetRoom GetRoomSkillParameter GetSkillGroup ListBusinessReportSchedules ListConferenceProviders ListDeviceEvents ListSkills ListSkillsStoreCategories ListSkillsStoreSkillsByCategory ListSmartHomeAppliances ListTags PutConferencePreference PutRoomSkillParameter PutSkillAuthorization RegisterAVSDevice RejectSkill ResolveRoom RevokeInvitation SearchAddressBooks SearchContacts SearchDevices SearchProfiles SearchRooms SearchSkillGroups SearchUsers SendInvitation StartDeviceSync StartSmartHomeApplianceDiscovery TagResource UntagResource UpdateAddressBook UpdateBusinessReportSchedule UpdateConferenceProvider UpdateContact UpdateDevice UpdateProfile UpdateRoom UpdateSkillGroup / }
+  sub operations { qw/ApproveSkill AssociateContactWithAddressBook AssociateDeviceWithRoom AssociateSkillGroupWithRoom AssociateSkillWithSkillGroup AssociateSkillWithUsers CreateAddressBook CreateBusinessReportSchedule CreateConferenceProvider CreateContact CreateProfile CreateRoom CreateSkillGroup CreateUser DeleteAddressBook DeleteBusinessReportSchedule DeleteConferenceProvider DeleteContact DeleteDevice DeleteProfile DeleteRoom DeleteRoomSkillParameter DeleteSkillAuthorization DeleteSkillGroup DeleteUser DisassociateContactFromAddressBook DisassociateDeviceFromRoom DisassociateSkillFromSkillGroup DisassociateSkillFromUsers DisassociateSkillGroupFromRoom ForgetSmartHomeAppliances GetAddressBook GetConferencePreference GetConferenceProvider GetContact GetDevice GetProfile GetRoom GetRoomSkillParameter GetSkillGroup ListBusinessReportSchedules ListConferenceProviders ListDeviceEvents ListSkills ListSkillsStoreCategories ListSkillsStoreSkillsByCategory ListSmartHomeAppliances ListTags PutConferencePreference PutRoomSkillParameter PutSkillAuthorization RegisterAVSDevice RejectSkill ResolveRoom RevokeInvitation SearchAddressBooks SearchContacts SearchDevices SearchProfiles SearchRooms SearchSkillGroups SearchUsers SendInvitation StartDeviceSync StartSmartHomeApplianceDiscovery TagResource UntagResource UpdateAddressBook UpdateBusinessReportSchedule UpdateConferenceProvider UpdateContact UpdateDevice UpdateProfile UpdateRoom UpdateSkillGroup / }
 
 1;
 
@@ -573,16 +721,16 @@ Paws::AlexaForBusiness - Perl Interface to AWS Alexa For Business
 =head1 DESCRIPTION
 
 Alexa for Business helps you use Alexa in your organization. Alexa for
-Business provides the tools you to manage Alexa devices, enroll your
-users, and assign skills, at scale. You can build your own
+Business provides you with the tools to manage Alexa devices, enroll
+your users, and assign skills, at scale. You can build your own
 context-aware voice skills using the Alexa Skills Kit and the Alexa for
 Business API operations. You can also make these available as private
 skills for your organization. Alexa for Business makes it efficient to
 voice-enable your products and services, thus providing context-aware
-voice experiences for your customers. In addition, Alexa for Business
-enables Alexa Voice Services (AVS) device manufacturers to centrally
-deploy and manage their devices in Alexa for Business as shared devices
-as a part of their existing management flow.
+voice experiences for your customers. Device makers building with the
+Alexa Voice Service (AVS) can create fully integrated solutions,
+register their products with Alexa for Business, and manage them as
+shared devices in their organization.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/a4b-2017-11-09>
 
@@ -681,6 +829,25 @@ Each argument is described in detail in: L<Paws::AlexaForBusiness::AssociateSkil
 Returns: a L<Paws::AlexaForBusiness::AssociateSkillWithSkillGroupResponse> instance
 
 Associates a skill with a skill group.
+
+
+=head2 AssociateSkillWithUsers
+
+=over
+
+=item SkillId => Str
+
+=item [OrganizationArn => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::AssociateSkillWithUsers>
+
+Returns: a L<Paws::AlexaForBusiness::AssociateSkillWithUsersResponse> instance
+
+Makes a private skill available for enrolled users to enable on their
+devices.
 
 
 =head2 CreateAddressBook
@@ -1126,6 +1293,25 @@ Each argument is described in detail in: L<Paws::AlexaForBusiness::DisassociateS
 Returns: a L<Paws::AlexaForBusiness::DisassociateSkillFromSkillGroupResponse> instance
 
 Disassociates a skill from a skill group.
+
+
+=head2 DisassociateSkillFromUsers
+
+=over
+
+=item SkillId => Str
+
+=item [OrganizationArn => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::DisassociateSkillFromUsers>
+
+Returns: a L<Paws::AlexaForBusiness::DisassociateSkillFromUsersResponse> instance
+
+Makes a private skill unavailable for enrolled users and prevents them
+from enabling it on their devices.
 
 
 =head2 DisassociateSkillGroupFromRoom
@@ -2064,6 +2250,42 @@ Updates skill group details by skill group ARN.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
+=head2 ListAllBusinessReportSchedules(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllBusinessReportSchedules([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - BusinessReportSchedules, passing the object as the first parameter, and the string 'BusinessReportSchedules' as the second parameter 
+
+If not, it will return a a L<Paws::AlexaForBusiness::ListBusinessReportSchedulesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllConferenceProviders(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllConferenceProviders([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ConferenceProviders, passing the object as the first parameter, and the string 'ConferenceProviders' as the second parameter 
+
+If not, it will return a a L<Paws::AlexaForBusiness::ListConferenceProvidersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDeviceEvents(sub { },DeviceArn => Str, [EventType => Str, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllDeviceEvents(DeviceArn => Str, [EventType => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DeviceEvents, passing the object as the first parameter, and the string 'DeviceEvents' as the second parameter 
+
+If not, it will return a a L<Paws::AlexaForBusiness::ListDeviceEventsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllSkills(sub { },[EnablementType => Str, MaxResults => Int, NextToken => Str, SkillGroupArn => Str, SkillType => Str])
 
 =head2 ListAllSkills([EnablementType => Str, MaxResults => Int, NextToken => Str, SkillGroupArn => Str, SkillType => Str])
@@ -2074,6 +2296,42 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - SkillSummaries, passing the object as the first parameter, and the string 'SkillSummaries' as the second parameter 
 
 If not, it will return a a L<Paws::AlexaForBusiness::ListSkillsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSkillsStoreCategories(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllSkillsStoreCategories([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - CategoryList, passing the object as the first parameter, and the string 'CategoryList' as the second parameter 
+
+If not, it will return a a L<Paws::AlexaForBusiness::ListSkillsStoreCategoriesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSkillsStoreSkillsByCategory(sub { },CategoryId => Int, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllSkillsStoreSkillsByCategory(CategoryId => Int, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SkillsStoreSkills, passing the object as the first parameter, and the string 'SkillsStoreSkills' as the second parameter 
+
+If not, it will return a a L<Paws::AlexaForBusiness::ListSkillsStoreSkillsByCategoryResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSmartHomeAppliances(sub { },RoomArn => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllSmartHomeAppliances(RoomArn => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SmartHomeAppliances, passing the object as the first parameter, and the string 'SmartHomeAppliances' as the second parameter 
+
+If not, it will return a a L<Paws::AlexaForBusiness::ListSmartHomeAppliancesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllTags(sub { },Arn => Str, [MaxResults => Int, NextToken => Str])
