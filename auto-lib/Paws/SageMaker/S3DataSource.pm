@@ -61,7 +61,7 @@ the subset of training data.
 Don't choose more ML compute instances for training than available S3
 objects. If you do, some nodes won't get any data and you will pay for
 nodes that aren't getting any training data. This applies in both File
-and Pipemodes. Keep this in mind when developing algorithms.
+and Pipe modes. Keep this in mind when developing algorithms.
 
 In distributed training, where you use multiple ML compute EC2
 instances, you might choose C<ShardedByS3Key>. If the algorithm
@@ -121,7 +121,7 @@ The preceding JSON matches the following C<s3Uris>:
 
 C<s3://customer_bucket/some/prefix/relative/path/to/custdata-1>
 
-C<s3://customer_bucket/some/prefix/relative/path/custdata-1>
+C<s3://customer_bucket/some/prefix/relative/path/custdata-2>
 
 C<...>
 

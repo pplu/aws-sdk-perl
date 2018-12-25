@@ -42,7 +42,7 @@ the C<FailureReason> for the C<TrainingJob> C<Resource> searches for
 training job objects that have a value in the C<FailureReason> field.
 
 If you specify a C<Value>, but not an C<Operator>, Amazon SageMaker
-uses the equals operator as a default.
+uses the equals operator as the default.
 
 In search, there are several property types:
 
@@ -68,7 +68,7 @@ C<}>
 =item HyperParameters
 
 To define a hyperparameter filter, enter a value with the form
-C<"HyperParamters.E<lt>nameE<gt>">. Decimal hyperparameter values are
+C<"HyperParameters.E<lt>nameE<gt>">. Decimal hyperparameter values are
 treated as a decimal in a comparison if the specified C<Value> is also
 a decimal value. If the specified C<Value> is an integer, the decimal
 hyperparameter values are treated as integers. For example, the
@@ -98,9 +98,10 @@ C<"Tags.E<lt>keyE<gt>">.
 
 =head2 B<REQUIRED> Name => Str
 
-  A property name. For example, C<TrainingJobName>. See TrainingJob
-properties for the list of valid property names for each supported
-resource.
+  A property name. For example, C<TrainingJobName>. For the list of valid
+property names returned in a search result for each supported resource,
+see TrainingJob properties. You must specify a valid property name for
+the resource.
 
 
 =head2 Operator => Str
@@ -146,13 +147,14 @@ contains the specified C<Value>.
 
 =back
 
+If you have specified a filter C<Value>, the default is C<Equals>.
 
 
 =head2 Value => Str
 
-  A value used with C<Resource> and C<Operator> to determin if objects
-statisfy the filter's condition. For numerical properties, C<Value>
-must be an integer or floating-point decimal. For timestamp properties,
+  A value used with C<Resource> and C<Operator> to determine if objects
+satisfy the filter's condition. For numerical properties, C<Value> must
+be an integer or floating-point decimal. For timestamp properties,
 C<Value> must be an ISO 8601 date-time string of the following format:
 C<YYYY-mm-dd'T'HH:MM:SS>.
 

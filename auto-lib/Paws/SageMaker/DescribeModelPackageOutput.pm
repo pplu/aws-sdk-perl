@@ -46,7 +46,7 @@ The Amazon Resource Name (ARN) of the model package.
 
 =head2 ModelPackageDescription => Str
 
-A brief summary about the model package.
+A brief summary of the model package.
 
 
 =head2 B<REQUIRED> ModelPackageName => Str

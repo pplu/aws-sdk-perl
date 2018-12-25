@@ -4,6 +4,7 @@ package Paws::SageMaker::CompilationJobSummary;
   has CompilationJobArn => (is => 'ro', isa => 'Str', required => 1);
   has CompilationJobName => (is => 'ro', isa => 'Str', required => 1);
   has CompilationJobStatus => (is => 'ro', isa => 'Str', required => 1);
+  has CompilationStartTime => (is => 'ro', isa => 'Str');
   has CompilationTargetDevice => (is => 'ro', isa => 'Str', required => 1);
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
   has LastModifiedTime => (is => 'ro', isa => 'Str');
@@ -60,6 +61,11 @@ A summary of a model compilation job.
 =head2 B<REQUIRED> CompilationJobStatus => Str
 
   The status of the model compilation job.
+
+
+=head2 CompilationStartTime => Str
+
+  The time when the model compilation job started.
 
 
 =head2 B<REQUIRED> CompilationTargetDevice => Str

@@ -41,8 +41,9 @@ Configures how labels are consolidated across human workers.
   The Amazon Resource Name (ARN) of a Lambda function implements the
 logic for annotation consolidation.
 
-Amazon SageMaker Ground Truth provides three annotation consolidation
-functions that you can choose to use. They are:
+For the built-in bounding box, image classification, semantic
+segmentation, and text classification task types, Amazon SageMaker
+Ground Truth provides the following Lambda functions:
 
 =over
 
@@ -51,7 +52,15 @@ functions that you can choose to use. They are:
 I<Bounding box> - Finds the most similar boxes from different workers
 based on the Jaccard index of the boxes.
 
-C<arn:aws:lambda:I<region>:432418664414:function:ACS-BoundingBox>
+C<arn:aws:lambda:us-east-1:432418664414:function:ACS-BoundingBox>
+
+C<arn:aws:lambda:us-east-2:266458841044:function:ACS-BoundingBox>
+
+C<arn:aws:lambda:us-west-2:081040173940:function:ACS-BoundingBox>
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:ACS-BoundingBox>
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-BoundingBox>
 
 =item *
 
@@ -59,7 +68,31 @@ I<Image classification> - Uses a variant of the Expectation
 Maximization approach to estimate the true class of an image based on
 annotations from individual workers.
 
-C<arn:aws:lambda:I<region>:432418664414:function:ACS-ImageMultiClass>
+C<arn:aws:lambda:us-east-1:432418664414:function:ACS-ImageMultiClass>
+
+C<arn:aws:lambda:us-east-2:266458841044:function:ACS-ImageMultiClass>
+
+C<arn:aws:lambda:us-west-2:081040173940:function:ACS-ImageMultiClass>
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:ACS-ImageMultiClass>
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-ImageMultiClass>
+
+=item *
+
+I<Semantic segmentation> - Treats each pixel in an image as a
+multi-class classification and treats pixel annotations from workers as
+"votes" for the correct label.
+
+C<arn:aws:lambda:us-east-1:432418664414:function:ACS-SemanticSegmentation>
+
+C<arn:aws:lambda:us-east-2:266458841044:function:ACS-SemanticSegmentation>
+
+C<arn:aws:lambda:us-west-2:081040173940:function:ACS-SemanticSegmentation>
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:ACS-SemanticSegmentation>
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-SemanticSegmentation>
 
 =item *
 
@@ -67,7 +100,15 @@ I<Text classification> - Uses a variant of the Expectation Maximization
 approach to estimate the true class of text based on annotations from
 individual workers.
 
-C<arn:aws:lambda:I<region>:432418664414:function:ACS-TextMultiClass>
+C<arn:aws:lambda:us-east-1:432418664414:function:ACS-TextMultiClass>
+
+C<arn:aws:lambda:us-east-2:266458841044:function:ACS-TextMultiClass>
+
+C<arn:aws:lambda:us-west-2:081040173940:function:ACS-TextMultiClass>
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:ACS-TextMultiClass>
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-TextMultiClass>
 
 =back
 

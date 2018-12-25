@@ -47,7 +47,8 @@ Defines the training jobs launched by a hyperparameter tuning job.
 =head2 B<REQUIRED> AlgorithmSpecification => L<Paws::SageMaker::HyperParameterAlgorithmSpecification>
 
   The HyperParameterAlgorithmSpecification object that specifies the
-algorithm to use for the training jobs that the tuning job launches.
+resource algorithm to use for the training jobs that the tuning job
+launches.
 
 
 =head2 EnableNetworkIsolation => Bool
@@ -56,8 +57,8 @@ algorithm to use for the training jobs that the tuning job launches.
 can be made, except for calls between peers within a training cluster
 for distributed training. If network isolation is used for training
 jobs that are configured to use a VPC, Amazon SageMaker downloads and
-uploads customer data and model artifacts through the specifed VPC, but
-the training container does not have network access.
+uploads customer data and model artifacts through the specified VPC,
+but the training container does not have network access.
 
 The Semantic Segmentation built-in algorithm does not support network
 isolation.

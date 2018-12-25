@@ -45,7 +45,7 @@ package.
 
 =head2 B<REQUIRED> ValidationStatuses => ArrayRef[L<Paws::SageMaker::ModelPackageStatusItem>]
 
-  The status of the validation of the model package.
+  The validation status of the model package.
 
 
 

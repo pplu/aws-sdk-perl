@@ -210,8 +210,8 @@ specify an instance count greater than 1.
 
 =head2 B<REQUIRED> RoleArn => Str
 
-The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker
-assumes to perform tasks on your behalf.
+The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can
+assume to perform tasks on your behalf.
 
 During model training, Amazon SageMaker needs your permission to read
 input data from an S3 bucket, download a Docker image that contains

@@ -70,6 +70,121 @@ one time.
 a data object is sent to a human worker. Use this function to provide
 input to a custom labeling job.
 
+For the built-in bounding box, image classification, semantic
+segmentation, and text classification task types, Amazon SageMaker
+Ground Truth provides the following Lambda functions:
+
+B<US East (Northern Virginia) (us-east-1):>
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:PRE-BoundingBox>
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:PRE-ImageMultiClass>
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:PRE-SemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:PRE-TextMultiClass>
+
+=back
+
+B<US East (Ohio) (us-east-2):>
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:PRE-BoundingBox>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:PRE-ImageMultiClass>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:PRE-SemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:PRE-TextMultiClass>
+
+=back
+
+B<US West (Oregon) (us-west-2):>
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:PRE-BoundingBox>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:PRE-ImageMultiClass>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:PRE-SemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:PRE-TextMultiClass>
+
+=back
+
+B<EU (Ireland) (eu-west-1):>
+
+=over
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-BoundingBox>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-ImageMultiClass>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-SemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-TextMultiClass>
+
+=back
+
+B<Asia Pacific (Tokyo (ap-northeast-1):>
+
+=over
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-BoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-ImageMultiClass>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-SemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-TextMultiClass>
+
+=back
+
+
 
 =head2 PublicWorkforceTaskPrice => L<Paws::SageMaker::PublicWorkforceTaskPrice>
 

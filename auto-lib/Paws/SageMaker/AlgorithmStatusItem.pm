@@ -40,13 +40,13 @@ Represents the overall status of an algorithm.
 
 =head2 FailureReason => Str
 
-  The reason for failure, if the overall status is a failed state.
+  if the overall status is C<Failed>, the reason for the failure.
 
 
 =head2 B<REQUIRED> Name => Str
 
   The name of the algorithm for which the overall status is being
-repoorted.
+reported.
 
 
 =head2 B<REQUIRED> Status => Str

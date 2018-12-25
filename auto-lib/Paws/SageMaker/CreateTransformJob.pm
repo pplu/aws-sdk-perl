@@ -50,7 +50,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         CompressionType => 'None',             # values: None, Gzip; OPTIONAL
         ContentType     => 'MyContentType',    # max: 256; OPTIONAL
-        SplitType => 'None',    # values: None, Line, RecordIO; OPTIONAL
+        SplitType => 'None',  # values: None, Line, RecordIO, TFRecord; OPTIONAL
       },
       TransformJobName => 'MyTransformJobName',
       TransformOutput  => {

@@ -70,25 +70,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Name => 'MyParameterName',                   # max: 256
             Type =>
               'Integer',    # values: Integer, Continuous, Categorical, FreeText
-            DefaultValue => 'MyParameterValue',       # max: 256
+            DefaultValue => 'MyParameterValue',       # max: 256; OPTIONAL
             Description  => 'MyEntityDescription',    # max: 1024; OPTIONAL
             IsRequired   => 1,                        # OPTIONAL
             IsTunable    => 1,                        # OPTIONAL
             Range        => {
               CategoricalParameterRangeSpecification => {
                 Values => [
-                  'MyParameterValue', ...             # max: 256
+                  'MyParameterValue', ...             # max: 256; OPTIONAL
                 ],                                    # min: 1, max: 20
 
               },    # OPTIONAL
               ContinuousParameterRangeSpecification => {
-                MaxValue => 'MyParameterValue',    # max: 256
-                MinValue => 'MyParameterValue',    # max: 256
+                MaxValue => 'MyParameterValue',    # max: 256; OPTIONAL
+                MinValue => 'MyParameterValue',    # max: 256; OPTIONAL
 
               },    # OPTIONAL
               IntegerParameterRangeSpecification => {
-                MaxValue => 'MyParameterValue',    # max: 256
-                MinValue => 'MyParameterValue',    # max: 256
+                MaxValue => 'MyParameterValue',    # max: 256; OPTIONAL
+                MinValue => 'MyParameterValue',    # max: 256; OPTIONAL
 
               },    # OPTIONAL
             },    # OPTIONAL
@@ -185,7 +185,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               TrainingInputMode => 'Pipe',         # values: Pipe, File
               HyperParameters   => {
                 'MyParameterKey' =>
-                  'MyParameterValue',    # key: max: 256, value: max: 256
+                  'MyParameterValue', # key: max: 256, value: max: 256; OPTIONAL
               },    # max: 100; OPTIONAL
             },
             TransformJobDefinition => {
@@ -201,7 +201,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 },
                 CompressionType => 'None',             # values: None, Gzip
                 ContentType     => 'MyContentType',    # max: 256
-                SplitType => 'None',    # values: None, Line, RecordIO; OPTIONAL
+                SplitType =>
+                  'None',    # values: None, Line, RecordIO, TFRecord; OPTIONAL
               },
               TransformOutput => {
                 S3OutputPath => 'MyS3Uri',       # max: 1024
@@ -251,8 +252,7 @@ A description of the algorithm.
 
 =head2 B<REQUIRED> AlgorithmName => Str
 
-The name of the algorithm. The name must have 1 to 63 characters. Valid
-characters are a-z, A-Z, 0-9, and - (hyphen).
+The name of the algorithm.
 
 
 

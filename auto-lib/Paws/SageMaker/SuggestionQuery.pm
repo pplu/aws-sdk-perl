@@ -38,8 +38,9 @@ Limits the property names that are included in the response.
 
 =head2 PropertyNameQuery => L<Paws::SageMaker::PropertyNameQuery>
 
-  Defines a property name hint. Only property names that match the
-specified hint are included in the response.
+  A type of C<SuggestionQuery>. Defines a property name hint. Only
+property names that match the specified hint are included in the
+response.
 
 
 

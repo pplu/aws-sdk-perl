@@ -47,7 +47,8 @@ Describes the Docker container for the model package.
 
 =head2 B<REQUIRED> Image => Str
 
-  The Amazon EC2 Container Registry path where inference code is stored.
+  The Amazon EC2 Container Registry (Amazon ECR) path where inference
+code is stored.
 
 If you are using your own custom algorithm instead of an algorithm
 provided by Amazon SageMaker, the inference code must meet Amazon
@@ -73,7 +74,7 @@ compressed tar archive (C<.tar.gz> suffix).
 
 =head2 ProductId => Str
 
-  The ID of the model package.
+  The AWS Marketplace product ID of the model package.
 
 
 

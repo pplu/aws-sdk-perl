@@ -63,7 +63,7 @@ automatic model tuning.E<gt>
 
 =head2 SupportedTuningJobObjectiveMetrics => ArrayRef[L<Paws::SageMaker::HyperParameterTuningJobObjective>]
 
-  A list of the metrics that the alogorithm emits that can be used as the
+  A list of the metrics that the algorithm emits that can be used as the
 objective metric in a hyperparameter tuning job.
 
 

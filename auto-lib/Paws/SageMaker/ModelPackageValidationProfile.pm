@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-Contains data such as the inputs and targeted instance types that are
+Contains data, such as the inputs and targeted instance types that are
 used in the process of validating the model package.
 
 The data provided in the validation profile is made available to your

@@ -75,14 +75,14 @@ Security Token Service to download model artifacts from the S3 path you
 provide. AWS STS is activated in your IAM user account by default. If
 you previously deactivated AWS STS for a region, you need to reactivate
 AWS STS for that region. For more information, see Activating and
-Deactivating AWS STS i an AWS Region
+Deactivating AWS STS in an AWS Region
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)
 in the I<AWS Identity and Access Management User Guide>.
 
 
 =head2 ModelPackageName => Str
 
-  The name of the model package in this container.
+  The name of the model package to use to create the model.
 
 
 

@@ -31,9 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateCodeRepositoryOutput = $api . sagemaker->CreateCodeRepository(
       CodeRepositoryName => 'MyEntityName',
       GitConfig          => {
-        RepositoryUrl => 'MyUrl',          # max: 1024
-        Branch        => 'MyBranch',       # min: 1, max: 1024; OPTIONAL
-        SecretArn     => 'MySecretArn',    # min: 1, max: 2048; OPTIONAL
+        RepositoryUrl => 'MyGitConfigUrl',
+        Branch        => 'MyBranch',         # min: 1, max: 1024; OPTIONAL
+        SecretArn     => 'MySecretArn',      # min: 1, max: 2048; OPTIONAL
       },
 
     );

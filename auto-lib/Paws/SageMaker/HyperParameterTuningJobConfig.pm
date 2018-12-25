@@ -67,7 +67,8 @@ valid value is C<Bayesian>.
 =head2 TrainingJobEarlyStoppingType => Str
 
   Specifies whether to use early stopping for training jobs launched by
-the hyperparameter tuning job. One of the following values:
+the hyperparameter tuning job. This can be one of the following values
+(the default value is C<OFF>):
 
 =over
 
@@ -79,8 +80,10 @@ early stopping.
 =item AUTO
 
 Amazon SageMaker stops training jobs launched by the hyperparameter
-tuning job when they are no longer improving as measured by the
-objective metric of the tuning job.
+tuning job when they are unlikely to perform better than previously
+completed training jobs. For more information, see Stop Training Jobs
+Early
+(http://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-early-stopping.html).
 
 =back
 

@@ -52,7 +52,7 @@ Provides summary information about a model package.
 
 =head2 ModelPackageDescription => Str
 
-  A brief statement describing the model package.
+  A brief description of the model package.
 
 
 =head2 B<REQUIRED> ModelPackageName => Str

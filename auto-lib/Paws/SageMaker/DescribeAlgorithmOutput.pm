@@ -26,7 +26,7 @@ Paws::SageMaker::DescribeAlgorithmOutput
 
 =head2 B<REQUIRED> AlgorithmArn => Str
 
-The Amazon Resource Name (ARN) of the algorithm.E<gt>
+The Amazon Resource Name (ARN) of the algorithm.
 
 
 =head2 AlgorithmDescription => Str

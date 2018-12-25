@@ -47,7 +47,7 @@ your model package.
 
 =head2 B<REQUIRED> ValidationRole => Str
 
-  The IAM roles to be used for the validation of a model package.
+  The IAM roles to be used for the validation of the model package.
 
 
 

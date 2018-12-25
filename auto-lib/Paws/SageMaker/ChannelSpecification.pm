@@ -54,7 +54,7 @@ algorithm.
 
 =head2 B<REQUIRED> Name => Str
 
-  The name of the channel./sagemaker/eia
+  The name of the channel.
 
 
 =head2 SupportedCompressionTypes => ArrayRef[Str|Undef]

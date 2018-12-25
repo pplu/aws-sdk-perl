@@ -84,7 +84,7 @@ communicate beyond the VPC they run in.
 
 =head2 FinalMetricDataList => ArrayRef[L<Paws::SageMaker::MetricData>]
 
-  A list of final metric values that are set when the Training Job
+  A list of final metric values that are set when the training job
 completes. Used only if the training job was configured to use metrics.
 
 

@@ -35,8 +35,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 =head1 DESCRIPTION
 
 A multi-expression that searches for the specified resource or
-resources. All resource objects that satisfy the expression's condition
-are included in the search results.
+resources in a search. All resource objects that satisfy the
+expression's condition are included in the search results. You must
+specify at least one subexpression, filter, or nested filter. A
+C<SearchExpression> can contain up to twenty elements.
 
 A C<SearchExpression> contains the following components:
 
@@ -57,7 +59,8 @@ Boolean expressions.
 
 =item *
 
-A list of C<SearchExpression> objects.
+A list of C<SearchExpression> objects. A search expression object can
+be nested in a list of search expression objects.
 
 =item *
 
@@ -85,7 +88,7 @@ A Boolean operator: C<And> or C<Or>.
 every conditional statement in all lists to be satisfied for the entire
 search expression to be true, specify C<And>. If only a single
 conditional statement needs to be true for the entire search expression
-to be true, specify C<Or>.
+to be true, specify C<Or>. The default value is C<And>.
 
 
 =head2 SubExpressions => ArrayRef[L<Paws::SageMaker::SearchExpression>]

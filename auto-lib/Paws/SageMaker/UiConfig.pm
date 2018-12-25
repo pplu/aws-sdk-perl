@@ -39,7 +39,10 @@ job.
 
 =head2 B<REQUIRED> UiTemplateS3Uri => Str
 
-  The Amazon S3 bucket location of the UI template.
+  The Amazon S3 bucket location of the UI template. For more information
+about the contents of a UI template, see Creating Your Custom Labeling
+Task Template
+(http://docs.aws.amazon.com/sagemaker/latest/dg/sms-custom-templates-step2.html).
 
 
 

@@ -32,21 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-A C<NestedFilter> is defined by using a resource name under
-C<NestedPropertyName>, which entries in a list that properties must
-match to be included in the results. To satisfy the conditions
-specified in the C<NestedFilters> call, each object in the list must
-satisfy the conditions of all of the filters.
+Defines a list of C<NestedFilter> objects. To satisfy the conditions
+specified in the C<NestedFilters> call, a resource must satisfy the
+conditions of all of the filters.
 
 For example, a C<NestedFilters> could be defined using the training
 job's C<InputDataConfig> property, this would be defined as a list of
 C<Channel> objects.
 
 A C<NestedFilters> object contains multiple filters. For example, to
-find all training jobs that have C<train> in their name, and have
-C<cat/data> in theirC< C<S3Uri> (under C<InputDataConfig>), you need to
-create a C<NestedFilters> object that specfies the C<InputDataConfig>
-property with the following C<Filter> objects:>
+find all training jobs whose name contains C<train> and that have
+C<cat/data> in their C<S3Uri> (specified in C<InputDataConfig>), you
+need to create a C<NestedFilters> object that specifies the
+C<InputDataConfig> property with the following C<Filter> objects:
 
 =over
 
@@ -68,15 +66,17 @@ C<'{Name:"InputDataConfig.DataSource.S3DataSource.S3Uri",
 
 =head2 B<REQUIRED> Filters => ArrayRef[L<Paws::SageMaker::Filter>]
 
-  A list of filters. Each filter acts on a property. For example, a
-C<NestedFilters> call might include a filter on the C<PropertyName>
-parameter fof the C<InputDataConfig> property:
+  A list of filters. Each filter acts on a property. Filters must contain
+at least one C<Filters> value. For example, a C<NestedFilters> call
+might include a filter on the C<PropertyName> parameter of the
+C<InputDataConfig> property:
 C<InputDataConfig.DataSource.S3DataSource.S3Uri>.
 
 
 =head2 B<REQUIRED> NestedPropertyName => Str
 
-  .The name of the property used in the nested filters.
+  The name of the property to use in the nested filters. The value must
+match a listed property name, such as C<InputDataConfig>.
 
 
 

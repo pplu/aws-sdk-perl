@@ -31,15 +31,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-A suggestion query for retrieving property names.
+A type of C<SuggestionQuery>. A suggestion query for retrieving
+property names that match the specified hint.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> PropertyNameHint => Str
 
-  The hyperparameter, metric, and tag key property names that begin with
-the specified hint.
+  Text that is part of a property's name. The property names of
+hyperparameter, metric, and tag key names that begin with the specified
+text in the C<PropertyNameHint>.
 
 
 

@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-Defines the possible values for categorical, continous, and integer
+Defines the possible values for categorical, continuous, and integer
 hyperparameters to be used by an algorithm.
 
 =head1 ATTRIBUTES

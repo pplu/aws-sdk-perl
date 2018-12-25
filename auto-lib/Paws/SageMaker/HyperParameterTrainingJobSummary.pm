@@ -131,8 +131,7 @@ objective metric.
 
 =head2 TuningJobName => Str
 
-  The name of the hyperparameter tuning job that launched this training
-job.
+  The HyperParameter tuning job that launched the training job.
 
 
 

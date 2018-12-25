@@ -53,7 +53,7 @@ epoch.
 
 =head2 B<REQUIRED> Seed => Int
 
-  Determines the shuffling order in C<ShuffleConfig>. value.
+  Determines the shuffling order in C<ShuffleConfig> value.
 
 
 

@@ -50,48 +50,141 @@ InputConfig$Framework specific.
 
 =item *
 
-C<TENSORFLOW>, C<MXNET> and C<ONNX>: You must specify the name and
-shape of the expected data inputs in order using a dictionary format
-for your trained model.
+C<TensorFlow>: You must specify the name and shape (NHWC format) of the
+expected data inputs using a dictionary format for your trained model.
+The dictionary formats required for the console and CLI are different.
 
 =over
 
 =item *
 
-Example of one input: C<{E<lsquo>dataE<rsquo>:[1,3,1024,1024]}}>
+Examples for one input:
+
+=over
 
 =item *
 
-Example for two inputs: C<{E<lsquo>var1E<rsquo>: [1,1,28,28],
-E<lsquo>var2E<rsquo>:[1,1,28,28]}>
+If using the console, C<{"input":[1,1024,1024,3]}>
+
+=item *
+
+If using the CLI, C<{\"input\":[1,1024,1024,3]}>
 
 =back
 
 =item *
 
-C<PYTORCH>: You can either specify the name and shape of expected data
-inputs in order using a dictionary format for your trained model or you
-can specify the shape only using a list format.
+Examples for two inputs:
 
 =over
 
 =item *
 
-Example of one input in dictionary format:
-C<{E<lsquo>input0E<rsquo>:[1,3,224,234]}>
+If using the console, C<{"data1": [1,28,28,1], "data2":[1,28,28,1]}>
 
 =item *
 
-Example of one input in list format: C<[1,3,224,224]>
+If using the CLI, C<{\"data1\": [1,28,28,1], \"data2\":[1,28,28,1]}>
+
+=back
+
+=back
 
 =item *
 
-Example of two inputs in dictionary format:
-C<{E<lsquo>input0E<rsquo>:[1,3,224,234], 'input1':[1,3,224,224]}>
+C<MXNET/ONNX>: You must specify the name and shape (NCHW format) of the
+expected data inputs in order using a dictionary format for your
+trained model. The dictionary formats required for the console and CLI
+are different.
+
+=over
 
 =item *
 
-Example of two inputs in list format: C<[[1,3,224,224], [1,3,224,224]]>
+Examples for one input:
+
+=over
+
+=item *
+
+If using the console, C<{"data":[1,3,1024,1024]}>
+
+=item *
+
+If using the CLI, C<{\"data\":[1,3,1024,1024]}>
+
+=back
+
+=item *
+
+Examples for two inputs:
+
+=over
+
+=item *
+
+If using the console, C<{"var1": [1,1,28,28], "var2":[1,1,28,28]}>
+
+=item *
+
+If using the CLI, C<{\"var1\": [1,1,28,28], \"var2\":[1,1,28,28]}>
+
+=back
+
+=back
+
+=item *
+
+C<PyTorch>: You can either specify the name and shape (NCHW format) of
+expected data inputs in order using a dictionary format for your
+trained model or you can specify the shape only using a list format.
+The dictionary formats required for the console and CLI are different.
+The list formats for the console and CLI are the same.
+
+=over
+
+=item *
+
+Examples for one input in dictionary format:
+
+=over
+
+=item *
+
+If using the console, C<{"input0":[1,3,224,224]}>
+
+=item *
+
+If using the CLI, C<{\"input0\":[1,3,224,224]}>
+
+=back
+
+=item *
+
+Example for one input in list format: C<[[1,3,224,224]]>
+
+=item *
+
+Examples for two inputs in dictionary format:
+
+=over
+
+=item *
+
+If using the console, C<{"input0":[1,3,224,224],
+"input1":[1,3,224,224]}>
+
+=item *
+
+If using the CLI, C<{\"input0\":[1,3,224,224],
+\"input1\":[1,3,224,224]}>
+
+=back
+
+=item *
+
+Example for two inputs in list format: C<[[1,3,224,224],
+[1,3,224,224]]>
 
 =back
 

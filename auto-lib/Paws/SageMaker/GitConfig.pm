@@ -41,7 +41,7 @@ account.
 
 =head2 Branch => Str
 
-  The default brach for the git repository.
+  The default beach for the git repository.
 
 
 =head2 B<REQUIRED> RepositoryUrl => Str

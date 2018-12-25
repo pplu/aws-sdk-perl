@@ -147,7 +147,10 @@ Valid values are: C<"ml.t2.medium">, C<"ml.t2.large">, C<"ml.t2.xlarge">, C<"ml.
 
 If you provide a AWS KMS key ID, Amazon SageMaker uses it to encrypt
 data at rest on the ML storage volume that is attached to your notebook
-instance.
+instance. The KMS key you provide must be enabled. For information, see
+Enabling and Disabling Keys
+(http://docs.aws.amazon.com/kms/latest/developerguide/enabling-keys.html)
+in the I<AWS Key Management Service Developer Guide>.
 
 
 

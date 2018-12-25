@@ -45,7 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyFilterValue',    # min: 1, max: 1024; OPTIONAL
           },
           ...
-        ],                               # min: 1, max: 20
+        ],                               # min: 1, max: 20; OPTIONAL
         NestedFilters => [
           {
             Filters => [
@@ -56,7 +56,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Value => 'MyFilterValue',    # min: 1, max: 1024; OPTIONAL
               },
               ...
-            ],                               # min: 1, max: 20
+            ],                               # min: 1, max: 20; OPTIONAL
             NestedPropertyName => 'MyResourcePropertyName',   # min: 1, max: 255
 
           },
@@ -108,20 +108,24 @@ Valid values are: C<"TrainingJob">
 =head2 SearchExpression => L<Paws::SageMaker::SearchExpression>
 
 A Boolean conditional statement. Resource objects must satisfy this
-condition to be included in search results.
+condition to be included in search results. You must provide at least
+one subexpression, filter, or nested filter. The maximum number of
+recursive C<SubExpressions>, C<NestedFilters>, and C<Filters> that can
+be included in a C<SearchExpression> object is 50.
 
 
 
 =head2 SortBy => Str
 
 The name of the resource property used to sort the C<SearchResults>.
+The default is C<LastModifiedTime>.
 
 
 
 =head2 SortOrder => Str
 
 How C<SearchResults> are ordered. Valid values are C<Ascending> or
-C<Descending>.
+C<Descending>. The default is C<Descending>.
 
 Valid values are: C<"Ascending">, C<"Descending">
 

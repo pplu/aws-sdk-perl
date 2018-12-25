@@ -47,12 +47,12 @@ Provides summary information about an algorithm.
 
 =head2 AlgorithmDescription => Str
 
-  A brief statement describing the algorithm.
+  A brief description of the algorithm.
 
 
 =head2 B<REQUIRED> AlgorithmName => Str
 
-  The name of the algorithm which is described by the summary.
+  The name of the algorithm that is described by the summary.
 
 
 =head2 B<REQUIRED> AlgorithmStatus => Str

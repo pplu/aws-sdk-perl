@@ -69,6 +69,38 @@ The attribute used as the label in the output manifest file.
 The S3 location of the JSON file that defines the categories used to
 label data objects.
 
+The file is a JSON structure in the following format:
+
+C<{>
+
+C<"document-version": "2018-11-28">
+
+C<"labels": [>
+
+C<{>
+
+C<"label": "I<label 1>">
+
+C<},>
+
+C<{>
+
+C<"label": "I<label 2>">
+
+C<},>
+
+C<...>
+
+C<{>
+
+C<"label": "I<label n>">
+
+C<}>
+
+C<]>
+
+C<}>
+
 
 =head2 B<REQUIRED> LabelCounters => L<Paws::SageMaker::LabelCounters>
 

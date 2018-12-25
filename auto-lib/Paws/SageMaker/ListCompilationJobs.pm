@@ -8,6 +8,8 @@ package Paws::SageMaker::ListCompilationJobs;
   has MaxResults => (is => 'ro', isa => 'Int');
   has NameContains => (is => 'ro', isa => 'Str');
   has NextToken => (is => 'ro', isa => 'Str');
+  has SortBy => (is => 'ro', isa => 'Str');
+  has SortOrder => (is => 'ro', isa => 'Str');
   has StatusEquals => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -42,6 +44,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MaxResults             => 1,                        # OPTIONAL
       NameContains           => 'MyNameContains',         # OPTIONAL
       NextToken              => 'MyNextToken',            # OPTIONAL
+      SortBy                 => 'Name',                   # OPTIONAL
+      SortOrder              => 'Ascending',              # OPTIONAL
       StatusEquals           => 'INPROGRESS',             # OPTIONAL
     );
 
@@ -106,6 +110,18 @@ truncated, the response includes a C<NextToken>. To retrieve the next
 set of model compilation jobs, use the token in the next request.
 
 
+
+=head2 SortBy => Str
+
+The field by which to sort results. The default is C<CreationTime>.
+
+Valid values are: C<"Name">, C<"CreationTime">, C<"Status">
+
+=head2 SortOrder => Str
+
+The sort order for results. The default is C<Ascending>.
+
+Valid values are: C<"Ascending">, C<"Descending">
 
 =head2 StatusEquals => Str
 

@@ -44,7 +44,7 @@ Specifies the validation and image scan statuses of the algorithm.
 
 =head2 ValidationStatuses => ArrayRef[L<Paws::SageMaker::AlgorithmStatusItem>]
 
-  The status of the validation of the algorithm.
+  The status of algorithm validation.
 
 
 

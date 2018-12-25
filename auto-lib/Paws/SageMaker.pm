@@ -391,6 +391,75 @@ package Paws::SageMaker;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllAlgorithms {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAlgorithms(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListAlgorithms(@_, NextToken => $next_result->NextToken);
+        push @{ $result->AlgorithmSummaryList }, @{ $next_result->AlgorithmSummaryList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'AlgorithmSummaryList') foreach (@{ $result->AlgorithmSummaryList });
+        $result = $self->ListAlgorithms(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'AlgorithmSummaryList') foreach (@{ $result->AlgorithmSummaryList });
+    }
+
+    return undef
+  }
+  sub ListAllCodeRepositories {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListCodeRepositories(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListCodeRepositories(@_, NextToken => $next_result->NextToken);
+        push @{ $result->CodeRepositorySummaryList }, @{ $next_result->CodeRepositorySummaryList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'CodeRepositorySummaryList') foreach (@{ $result->CodeRepositorySummaryList });
+        $result = $self->ListCodeRepositories(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'CodeRepositorySummaryList') foreach (@{ $result->CodeRepositorySummaryList });
+    }
+
+    return undef
+  }
+  sub ListAllCompilationJobs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListCompilationJobs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListCompilationJobs(@_, NextToken => $next_result->NextToken);
+        push @{ $result->CompilationJobSummaries }, @{ $next_result->CompilationJobSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'CompilationJobSummaries') foreach (@{ $result->CompilationJobSummaries });
+        $result = $self->ListCompilationJobs(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'CompilationJobSummaries') foreach (@{ $result->CompilationJobSummaries });
+    }
+
+    return undef
+  }
   sub ListAllEndpointConfigs {
     my $self = shift;
 
@@ -437,6 +506,98 @@ package Paws::SageMaker;
 
     return undef
   }
+  sub ListAllHyperParameterTuningJobs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListHyperParameterTuningJobs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListHyperParameterTuningJobs(@_, NextToken => $next_result->NextToken);
+        push @{ $result->HyperParameterTuningJobSummaries }, @{ $next_result->HyperParameterTuningJobSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'HyperParameterTuningJobSummaries') foreach (@{ $result->HyperParameterTuningJobSummaries });
+        $result = $self->ListHyperParameterTuningJobs(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'HyperParameterTuningJobSummaries') foreach (@{ $result->HyperParameterTuningJobSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllLabelingJobs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListLabelingJobs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListLabelingJobs(@_, NextToken => $next_result->NextToken);
+        push @{ $result->LabelingJobSummaryList }, @{ $next_result->LabelingJobSummaryList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'LabelingJobSummaryList') foreach (@{ $result->LabelingJobSummaryList });
+        $result = $self->ListLabelingJobs(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'LabelingJobSummaryList') foreach (@{ $result->LabelingJobSummaryList });
+    }
+
+    return undef
+  }
+  sub ListAllLabelingJobsForWorkteam {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListLabelingJobsForWorkteam(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListLabelingJobsForWorkteam(@_, NextToken => $next_result->NextToken);
+        push @{ $result->LabelingJobSummaryList }, @{ $next_result->LabelingJobSummaryList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'LabelingJobSummaryList') foreach (@{ $result->LabelingJobSummaryList });
+        $result = $self->ListLabelingJobsForWorkteam(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'LabelingJobSummaryList') foreach (@{ $result->LabelingJobSummaryList });
+    }
+
+    return undef
+  }
+  sub ListAllModelPackages {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListModelPackages(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListModelPackages(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ModelPackageSummaryList }, @{ $next_result->ModelPackageSummaryList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ModelPackageSummaryList') foreach (@{ $result->ModelPackageSummaryList });
+        $result = $self->ListModelPackages(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ModelPackageSummaryList') foreach (@{ $result->ModelPackageSummaryList });
+    }
+
+    return undef
+  }
   sub ListAllModels {
     my $self = shift;
 
@@ -460,6 +621,29 @@ package Paws::SageMaker;
 
     return undef
   }
+  sub ListAllNotebookInstanceLifecycleConfigs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListNotebookInstanceLifecycleConfigs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListNotebookInstanceLifecycleConfigs(@_, NextToken => $next_result->NextToken);
+        push @{ $result->NotebookInstanceLifecycleConfigs }, @{ $next_result->NotebookInstanceLifecycleConfigs };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'NotebookInstanceLifecycleConfigs') foreach (@{ $result->NotebookInstanceLifecycleConfigs });
+        $result = $self->ListNotebookInstanceLifecycleConfigs(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'NotebookInstanceLifecycleConfigs') foreach (@{ $result->NotebookInstanceLifecycleConfigs });
+    }
+
+    return undef
+  }
   sub ListAllNotebookInstances {
     my $self = shift;
 
@@ -479,6 +663,29 @@ package Paws::SageMaker;
         $result = $self->ListNotebookInstances(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'NotebookInstances') foreach (@{ $result->NotebookInstances });
+    }
+
+    return undef
+  }
+  sub ListAllSubscribedWorkteams {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListSubscribedWorkteams(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListSubscribedWorkteams(@_, NextToken => $next_result->NextToken);
+        push @{ $result->SubscribedWorkteams }, @{ $next_result->SubscribedWorkteams };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'SubscribedWorkteams') foreach (@{ $result->SubscribedWorkteams });
+        $result = $self->ListSubscribedWorkteams(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'SubscribedWorkteams') foreach (@{ $result->SubscribedWorkteams });
     }
 
     return undef
@@ -525,6 +732,98 @@ package Paws::SageMaker;
         $result = $self->ListTrainingJobs(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'TrainingJobSummaries') foreach (@{ $result->TrainingJobSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllTrainingJobsForHyperParameterTuningJob {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTrainingJobsForHyperParameterTuningJob(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTrainingJobsForHyperParameterTuningJob(@_, NextToken => $next_result->NextToken);
+        push @{ $result->TrainingJobSummaries }, @{ $next_result->TrainingJobSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'TrainingJobSummaries') foreach (@{ $result->TrainingJobSummaries });
+        $result = $self->ListTrainingJobsForHyperParameterTuningJob(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'TrainingJobSummaries') foreach (@{ $result->TrainingJobSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllTransformJobs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTransformJobs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTransformJobs(@_, NextToken => $next_result->NextToken);
+        push @{ $result->TransformJobSummaries }, @{ $next_result->TransformJobSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'TransformJobSummaries') foreach (@{ $result->TransformJobSummaries });
+        $result = $self->ListTransformJobs(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'TransformJobSummaries') foreach (@{ $result->TransformJobSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllWorkteams {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListWorkteams(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListWorkteams(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Workteams }, @{ $next_result->Workteams };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Workteams') foreach (@{ $result->Workteams });
+        $result = $self->ListWorkteams(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Workteams') foreach (@{ $result->Workteams });
+    }
+
+    return undef
+  }
+  sub SearchAll {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->Search(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->Search(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Results }, @{ $next_result->Results };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Results') foreach (@{ $result->Results });
+        $result = $self->Search(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Results') foreach (@{ $result->Results });
     }
 
     return undef
@@ -880,9 +1179,8 @@ Each argument is described in detail in: L<Paws::SageMaker::CreateLabelingJob>
 
 Returns: a L<Paws::SageMaker::CreateLabelingJobResponse> instance
 
-Creates a job that uses human workers to label the data objects in your
-input dataset. You can use the labeled data to train machine learning
-models
+Creates a job that uses workers to label the data objects in your input
+dataset. You can use the labeled data to train machine learning models.
 
 You can select your workforce from one of three providers:
 
@@ -891,14 +1189,14 @@ You can select your workforce from one of three providers:
 =item *
 
 A private workforce that you create. It can include employees,
-contractors, and outside experts. Use a private workforce when the data
-is highly confidential or a specific set of skills is required.
+contractors, and outside experts. Use a private workforce when want the
+data to stay within your organization or when a specific set of skills
+is required.
 
 =item *
 
-One or more vendors that you select from the Amazon Marketplace.
-Vendors provide expertise in specific areas. Vendors are selected by
-AWS and meet a minimum standard of data security requirements.
+One or more vendors that you select from the AWS Marketplace. Vendors
+provide expertise in specific areas.
 
 =item *
 
@@ -911,7 +1209,9 @@ stripped of any personally identifiable information.
 You can also use I<automated data labeling> to reduce the number of
 data objects that need to be labeled by a human. Automated data
 labeling uses I<active learning> to determine if a data object can be
-labeled by machine or if it needs to be sent to a human worker.
+labeled by machine or if it needs to be sent to a human worker. For
+more information, see Using Automated Data Labeling
+(http://docs.aws.amazon.com/sagemaker/latest/dg/sms-automated-labeling.html).
 
 The data objects to be labeled are contained in an Amazon S3 bucket.
 You create a I<manifest file> that describes the location of each
@@ -1004,6 +1304,12 @@ Creates a model package that you can use to create Amazon SageMaker
 models or list on AWS Marketplace. Buyers can subscribe to model
 packages listed on AWS Marketplace to create models in Amazon
 SageMaker.
+
+To create a model package by specifying a Docker container that
+contains your inference code and the Amazon S3 location of your model
+artifacts, provide values for C<InferenceSpecification>. To create a
+model from an algorithm resource that you created or subscribed to in
+AWS Marketplace, provide a value for C<SourceAlgorithmSpecification>.
 
 
 =head2 CreateNotebookInstance
@@ -1164,7 +1470,7 @@ Use the C<NotIpAddress> condition operator and the C<aws:SourceIP>
 condition context key to specify the list of IP addresses that you want
 to have access to the notebook instance. For more information, see
 Limit Access to a Notebook Instance by IP Address
-(http://docs.aws.amazon.com/https:/docs.aws.amazon.com/sagemaker/latest/dg/howitworks-access-ws.html#nbi-ip-filter).
+(http://docs.aws.amazon.com/sagemaker/latest/dg/howitworks-access-ws.html#nbi-ip-filter).
 
 
 =head2 CreateTrainingJob
@@ -1697,10 +2003,10 @@ Each argument is described in detail in: L<Paws::SageMaker::DescribeModelPackage
 Returns: a L<Paws::SageMaker::DescribeModelPackageOutput> instance
 
 Returns a description of the specified model package, which is used to
-create Amazon SageMaker models or list on AWS Marketplace.
+create Amazon SageMaker models or list them on AWS Marketplace.
 
-Buyers can subscribe to model packages listed on AWS Marketplace to
-create models in Amazon SageMaker.
+To create models in Amazon SageMaker, buyers can subscribe to model
+packages listed on AWS Marketplace.
 
 
 =head2 DescribeNotebookInstance
@@ -1821,8 +2127,10 @@ Each argument is described in detail in: L<Paws::SageMaker::GetSearchSuggestions
 
 Returns: a L<Paws::SageMaker::GetSearchSuggestionsResponse> instance
 
-Returns suggestions for the property name to use in C<Search> queries.
-Provides suggestions for C<HyperParameters>, C<Tags>, and C<Metrics>.
+An auto-complete API for the search functionality in the Amazon
+SageMaker console. It returns suggestions of possible matches for the
+property name to use in C<Search> queries. Provides suggestions for
+C<HyperParameters>, C<Tags>, and C<Metrics>.
 
 
 =head2 ListAlgorithms
@@ -1902,6 +2210,10 @@ Gets a list of the git repositories in your account.
 =item [NameContains => Str]
 
 =item [NextToken => Str]
+
+=item [SortBy => Str]
+
+=item [SortOrder => Str]
 
 =item [StatusEquals => Str]
 
@@ -2421,7 +2733,7 @@ Returns: a L<Paws::SageMaker::SearchResponse> instance
 
 Finds Amazon SageMaker resources that match a search query. Matching
 resource objects are returned as a list of C<SearchResult> objects in
-the response. The search results can be sorted by any resrouce property
+the response. You can sort the search results by any resource property
 in a ascending or descending order.
 
 You can query against the following value types: numerical, text,
@@ -2464,8 +2776,8 @@ Returns: nothing
 Stops a model compilation job.
 
 To stop a job, Amazon SageMaker sends the algorithm the SIGTERM signal.
-This gracefully shuts the job down. If the job hasnE<rsquo>t stopped,
-it sends the SIGKILL signal.
+This gracefully shuts the job down. If the job hasn't stopped, it sends
+the SIGKILL signal.
 
 When it receives a C<StopCompilationJob> request, Amazon SageMaker
 changes the CompilationJobSummary$CompilationJobStatus of the job to
@@ -2751,6 +3063,42 @@ description.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
+=head2 ListAllAlgorithms(sub { },[CreationTimeAfter => Str, CreationTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str])
+
+=head2 ListAllAlgorithms([CreationTimeAfter => Str, CreationTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AlgorithmSummaryList, passing the object as the first parameter, and the string 'AlgorithmSummaryList' as the second parameter 
+
+If not, it will return a a L<Paws::SageMaker::ListAlgorithmsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllCodeRepositories(sub { },[CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str])
+
+=head2 ListAllCodeRepositories([CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - CodeRepositorySummaryList, passing the object as the first parameter, and the string 'CodeRepositorySummaryList' as the second parameter 
+
+If not, it will return a a L<Paws::SageMaker::ListCodeRepositoriesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllCompilationJobs(sub { },[CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
+
+=head2 ListAllCompilationJobs([CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - CompilationJobSummaries, passing the object as the first parameter, and the string 'CompilationJobSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::SageMaker::ListCompilationJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllEndpointConfigs(sub { },[CreationTimeAfter => Str, CreationTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str])
 
 =head2 ListAllEndpointConfigs([CreationTimeAfter => Str, CreationTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str])
@@ -2775,6 +3123,54 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SageMaker::ListEndpointsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 ListAllHyperParameterTuningJobs(sub { },[CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
+
+=head2 ListAllHyperParameterTuningJobs([CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - HyperParameterTuningJobSummaries, passing the object as the first parameter, and the string 'HyperParameterTuningJobSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::SageMaker::ListHyperParameterTuningJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllLabelingJobs(sub { },[CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
+
+=head2 ListAllLabelingJobs([CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - LabelingJobSummaryList, passing the object as the first parameter, and the string 'LabelingJobSummaryList' as the second parameter 
+
+If not, it will return a a L<Paws::SageMaker::ListLabelingJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllLabelingJobsForWorkteam(sub { },WorkteamArn => Str, [CreationTimeAfter => Str, CreationTimeBefore => Str, JobReferenceCodeContains => Str, MaxResults => Int, NextToken => Str, SortBy => Str, SortOrder => Str])
+
+=head2 ListAllLabelingJobsForWorkteam(WorkteamArn => Str, [CreationTimeAfter => Str, CreationTimeBefore => Str, JobReferenceCodeContains => Str, MaxResults => Int, NextToken => Str, SortBy => Str, SortOrder => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - LabelingJobSummaryList, passing the object as the first parameter, and the string 'LabelingJobSummaryList' as the second parameter 
+
+If not, it will return a a L<Paws::SageMaker::ListLabelingJobsForWorkteamResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllModelPackages(sub { },[CreationTimeAfter => Str, CreationTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str])
+
+=head2 ListAllModelPackages([CreationTimeAfter => Str, CreationTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ModelPackageSummaryList, passing the object as the first parameter, and the string 'ModelPackageSummaryList' as the second parameter 
+
+If not, it will return a a L<Paws::SageMaker::ListModelPackagesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllModels(sub { },[CreationTimeAfter => Str, CreationTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str])
 
 =head2 ListAllModels([CreationTimeAfter => Str, CreationTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str])
@@ -2787,6 +3183,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SageMaker::ListModelsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 ListAllNotebookInstanceLifecycleConfigs(sub { },[CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str])
+
+=head2 ListAllNotebookInstanceLifecycleConfigs([CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - NotebookInstanceLifecycleConfigs, passing the object as the first parameter, and the string 'NotebookInstanceLifecycleConfigs' as the second parameter 
+
+If not, it will return a a L<Paws::SageMaker::ListNotebookInstanceLifecycleConfigsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllNotebookInstances(sub { },[AdditionalCodeRepositoryEquals => Str, CreationTimeAfter => Str, CreationTimeBefore => Str, DefaultCodeRepositoryContains => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, NotebookInstanceLifecycleConfigNameContains => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
 
 =head2 ListAllNotebookInstances([AdditionalCodeRepositoryEquals => Str, CreationTimeAfter => Str, CreationTimeBefore => Str, DefaultCodeRepositoryContains => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, NotebookInstanceLifecycleConfigNameContains => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
@@ -2797,6 +3205,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - NotebookInstances, passing the object as the first parameter, and the string 'NotebookInstances' as the second parameter 
 
 If not, it will return a a L<Paws::SageMaker::ListNotebookInstancesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSubscribedWorkteams(sub { },[MaxResults => Int, NameContains => Str, NextToken => Str])
+
+=head2 ListAllSubscribedWorkteams([MaxResults => Int, NameContains => Str, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SubscribedWorkteams, passing the object as the first parameter, and the string 'SubscribedWorkteams' as the second parameter 
+
+If not, it will return a a L<Paws::SageMaker::ListSubscribedWorkteamsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllTags(sub { },ResourceArn => Str, [MaxResults => Int, NextToken => Str])
@@ -2821,6 +3241,54 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - TrainingJobSummaries, passing the object as the first parameter, and the string 'TrainingJobSummaries' as the second parameter 
 
 If not, it will return a a L<Paws::SageMaker::ListTrainingJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTrainingJobsForHyperParameterTuningJob(sub { },HyperParameterTuningJobName => Str, [MaxResults => Int, NextToken => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
+
+=head2 ListAllTrainingJobsForHyperParameterTuningJob(HyperParameterTuningJobName => Str, [MaxResults => Int, NextToken => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TrainingJobSummaries, passing the object as the first parameter, and the string 'TrainingJobSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::SageMaker::ListTrainingJobsForHyperParameterTuningJobResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTransformJobs(sub { },[CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
+
+=head2 ListAllTransformJobs([CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TransformJobSummaries, passing the object as the first parameter, and the string 'TransformJobSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::SageMaker::ListTransformJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllWorkteams(sub { },[MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str])
+
+=head2 ListAllWorkteams([MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Workteams, passing the object as the first parameter, and the string 'Workteams' as the second parameter 
+
+If not, it will return a a L<Paws::SageMaker::ListWorkteamsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 SearchAll(sub { },Resource => Str, [MaxResults => Int, NextToken => Str, SearchExpression => L<Paws::SageMaker::SearchExpression>, SortBy => Str, SortOrder => Str])
+
+=head2 SearchAll(Resource => Str, [MaxResults => Int, NextToken => Str, SearchExpression => L<Paws::SageMaker::SearchExpression>, SortBy => Str, SortOrder => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Results, passing the object as the first parameter, and the string 'Results' as the second parameter 
+
+If not, it will return a a L<Paws::SageMaker::SearchResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

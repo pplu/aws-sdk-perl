@@ -90,7 +90,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 },
                 CompressionType => 'None',    # values: None, Gzip; OPTIONAL
                 ContentType => 'MyContentType',    # max: 256
-                SplitType => 'None',    # values: None, Line, RecordIO; OPTIONAL
+                SplitType =>
+                  'None',    # values: None, Line, RecordIO, TFRecord; OPTIONAL
               },
               TransformOutput => {
                 S3OutputPath => 'MyS3Uri',       # max: 1024
