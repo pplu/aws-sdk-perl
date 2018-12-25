@@ -51,7 +51,7 @@ Changes to Stacks and Resources
 Resources that do not currently support drift detection cannot be
 checked. For a list of resources that support drift detection, see
 Resources that Support Drift Detection
-(http://docs.aws.amazon.com/http:/docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html).
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html).
 
 Use DetectStackResourceDrift to detect drift on individual resources,
 or DetectStackDrift to detect drift on all resources in a given stack

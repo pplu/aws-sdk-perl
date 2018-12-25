@@ -63,7 +63,7 @@ differs, or has I<drifted>, from it's expected configuration, as
 defined in the stack template and any values specified as template
 parameters. For more information, see Detecting Unregulated
 Configuration Changes to Stacks and Resources
-(http://docs.aws.amazon.com/http:/docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
 
 
 =head2 LastUpdatedTime => Str

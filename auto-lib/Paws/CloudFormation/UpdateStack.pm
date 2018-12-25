@@ -233,7 +233,7 @@ AWS::IAM::UserToGroupAddition
 
 For more information, see Acknowledging IAM Resources in AWS
 CloudFormation Templates
-(http://docs.aws.amazon.com/http:/docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
 
 =item *
 
@@ -249,9 +249,9 @@ template contains one or more macros, and you choose to update a stack
 directly from the processed template, without first reviewing the
 resulting changes in a change set, you must acknowledge this
 capability. This includes the AWS::Include
-(http://docs.aws.amazon.com/http:/docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html)
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html)
 and AWS::Serverless
-(http://docs.aws.amazon.com/http:/docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html)
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html)
 transforms, which are macros hosted by AWS CloudFormation.
 
 Change sets do not currently support nested stacks. If you want to
@@ -269,7 +269,7 @@ notified.
 
 For more information, see Using AWS CloudFormation Macros to Perform
 Custom Processing on Templates
-(http://docs.aws.amazon.com/http:/docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
 
 =back
 
