@@ -25,8 +25,8 @@ The list of matching executions.
 If C<nextToken> is returned, there are more results available. The
 value of C<nextToken> is a unique pagination token for each page. Make
 the call again using the returned token to retrieve the next page. Keep
-all other arguments unchanged. Each pagination token expires after 60
-seconds. Using an expired pagination token will return an I<HTTP 400
+all other arguments unchanged. Each pagination token expires after 24
+hours. Using an expired pagination token will return an I<HTTP 400
 InvalidToken> error.
 
 

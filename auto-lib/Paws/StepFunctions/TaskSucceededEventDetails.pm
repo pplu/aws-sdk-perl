@@ -33,25 +33,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::StepFunctio
 
 =head1 DESCRIPTION
 
-Contains details about the start of connected service by a task state.
+Contains details about the successful completion of a task state.
 
 =head1 ATTRIBUTES
 
 
 =head2 Output => Str
 
-  The full JSON response from a connected service when a task has
-succeeded. This response becomes the output of the related task.
+  The full JSON response from a resource when a task has succeeded. This
+response becomes the output of the related task.
 
 
 =head2 B<REQUIRED> Resource => Str
 
-  The service name of the connected service in a task state.
+  The service name of the resource in a task state.
 
 
 =head2 B<REQUIRED> ResourceType => Str
 
-  The action of the connected service called by a task state.
+  The action of the resource called by a task state.
 
 
 

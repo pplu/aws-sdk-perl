@@ -34,7 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::StepFunctio
 
 =head1 DESCRIPTION
 
-This class has no description
+Contains details about a task that failed to submit during an
+execution.
 
 =head1 ATTRIBUTES
 
@@ -51,12 +52,12 @@ This class has no description
 
 =head2 B<REQUIRED> Resource => Str
 
-  The service name of the connected service in a task state.
+  The service name of the resource in a task state.
 
 
 =head2 B<REQUIRED> ResourceType => Str
 
-  The action of the connected service called by a task state.
+  The action of the resource called by a task state.
 
 
 

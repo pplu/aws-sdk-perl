@@ -39,12 +39,12 @@ Contains details about the start of a task during an execution.
 
 =head2 B<REQUIRED> Resource => Str
 
-  The service name of the connected service in a task state.
+  The service name of the resource in a task state.
 
 
 =head2 B<REQUIRED> ResourceType => Str
 
-  The action of the connected service called by a task state.
+  The action of the resource called by a task state.
 
 
 

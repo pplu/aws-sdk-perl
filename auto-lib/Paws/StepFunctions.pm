@@ -80,6 +80,11 @@ package Paws::StepFunctions;
     my $call_object = $self->new_with_coercions('Paws::StepFunctions::ListStateMachines', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StepFunctions::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub SendTaskFailure {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StepFunctions::SendTaskFailure', @_);
@@ -103,6 +108,16 @@ package Paws::StepFunctions;
   sub StopExecution {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StepFunctions::StopExecution', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StepFunctions::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StepFunctions::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateStateMachine {
@@ -205,7 +220,7 @@ package Paws::StepFunctions;
   }
 
 
-  sub operations { qw/CreateActivity CreateStateMachine DeleteActivity DeleteStateMachine DescribeActivity DescribeExecution DescribeStateMachine DescribeStateMachineForExecution GetActivityTask GetExecutionHistory ListActivities ListExecutions ListStateMachines SendTaskFailure SendTaskHeartbeat SendTaskSuccess StartExecution StopExecution UpdateStateMachine / }
+  sub operations { qw/CreateActivity CreateStateMachine DeleteActivity DeleteStateMachine DescribeActivity DescribeExecution DescribeStateMachine DescribeStateMachineForExecution GetActivityTask GetExecutionHistory ListActivities ListExecutions ListStateMachines ListTagsForResource SendTaskFailure SendTaskHeartbeat SendTaskSuccess StartExecution StopExecution TagResource UntagResource UpdateStateMachine / }
 
 1;
 
@@ -481,8 +496,8 @@ the latest events first.
 If C<nextToken> is returned, there are more results available. The
 value of C<nextToken> is a unique pagination token for each page. Make
 the call again using the returned token to retrieve the next page. Keep
-all other arguments unchanged. Each pagination token expires after 60
-seconds. Using an expired pagination token will return an I<HTTP 400
+all other arguments unchanged. Each pagination token expires after 24
+hours. Using an expired pagination token will return an I<HTTP 400
 InvalidToken> error.
 
 
@@ -506,8 +521,8 @@ Lists the existing activities.
 If C<nextToken> is returned, there are more results available. The
 value of C<nextToken> is a unique pagination token for each page. Make
 the call again using the returned token to retrieve the next page. Keep
-all other arguments unchanged. Each pagination token expires after 60
-seconds. Using an expired pagination token will return an I<HTTP 400
+all other arguments unchanged. Each pagination token expires after 24
+hours. Using an expired pagination token will return an I<HTTP 400
 InvalidToken> error.
 
 This operation is eventually consistent. The results are best effort
@@ -540,8 +555,8 @@ first.
 If C<nextToken> is returned, there are more results available. The
 value of C<nextToken> is a unique pagination token for each page. Make
 the call again using the returned token to retrieve the next page. Keep
-all other arguments unchanged. Each pagination token expires after 60
-seconds. Using an expired pagination token will return an I<HTTP 400
+all other arguments unchanged. Each pagination token expires after 24
+hours. Using an expired pagination token will return an I<HTTP 400
 InvalidToken> error.
 
 This operation is eventually consistent. The results are best effort
@@ -568,12 +583,28 @@ Lists the existing state machines.
 If C<nextToken> is returned, there are more results available. The
 value of C<nextToken> is a unique pagination token for each page. Make
 the call again using the returned token to retrieve the next page. Keep
-all other arguments unchanged. Each pagination token expires after 60
-seconds. Using an expired pagination token will return an I<HTTP 400
+all other arguments unchanged. Each pagination token expires after 24
+hours. Using an expired pagination token will return an I<HTTP 400
 InvalidToken> error.
 
 This operation is eventually consistent. The results are best effort
 and may not reflect very recent updates and changes.
+
+
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::StepFunctions::ListTagsForResource>
+
+Returns: a L<Paws::StepFunctions::ListTagsForResourceOutput> instance
+
+List tags for a given resource.
 
 
 =head2 SendTaskFailure
@@ -689,6 +720,42 @@ Each argument is described in detail in: L<Paws::StepFunctions::StopExecution>
 Returns: a L<Paws::StepFunctions::StopExecutionOutput> instance
 
 Stops an execution.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => ArrayRef[L<Paws::StepFunctions::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::StepFunctions::TagResource>
+
+Returns: a L<Paws::StepFunctions::TagResourceOutput> instance
+
+Add a tag to a Step Functions resource.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::StepFunctions::UntagResource>
+
+Returns: a L<Paws::StepFunctions::UntagResourceOutput> instance
+
+Remove a tag from a Step Functions resource
 
 
 =head2 UpdateStateMachine

@@ -42,23 +42,22 @@ Contains details about a task scheduled during an execution.
 
 =head2 B<REQUIRED> Parameters => Str
 
-  The JSON data passed to the connected service referenced in a task
-state.
+  The JSON data passed to the resource referenced in a task state.
 
 
 =head2 B<REQUIRED> Region => Str
 
-  
+  The region of the scheduled task
 
 
 =head2 B<REQUIRED> Resource => Str
 
-  The service name of the connected service in a task state.
+  The service name of the resource in a task state.
 
 
 =head2 B<REQUIRED> ResourceType => Str
 
-  The action of the connected service called by a task state.
+  The action of the resource called by a task state.
 
 
 =head2 TimeoutInSeconds => Int
