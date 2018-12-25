@@ -175,6 +175,144 @@ package Paws::Robomaker;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllDeploymentJobs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDeploymentJobs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListDeploymentJobs(@_, nextToken => $next_result->nextToken);
+        push @{ $result->deploymentJobs }, @{ $next_result->deploymentJobs };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'deploymentJobs') foreach (@{ $result->deploymentJobs });
+        $result = $self->ListDeploymentJobs(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'deploymentJobs') foreach (@{ $result->deploymentJobs });
+    }
+
+    return undef
+  }
+  sub ListAllFleets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListFleets(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListFleets(@_, nextToken => $next_result->nextToken);
+        push @{ $result->fleetDetails }, @{ $next_result->fleetDetails };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'fleetDetails') foreach (@{ $result->fleetDetails });
+        $result = $self->ListFleets(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'fleetDetails') foreach (@{ $result->fleetDetails });
+    }
+
+    return undef
+  }
+  sub ListAllRobotApplications {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListRobotApplications(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListRobotApplications(@_, nextToken => $next_result->nextToken);
+        push @{ $result->robotApplicationSummaries }, @{ $next_result->robotApplicationSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'robotApplicationSummaries') foreach (@{ $result->robotApplicationSummaries });
+        $result = $self->ListRobotApplications(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'robotApplicationSummaries') foreach (@{ $result->robotApplicationSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllRobots {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListRobots(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListRobots(@_, nextToken => $next_result->nextToken);
+        push @{ $result->robots }, @{ $next_result->robots };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'robots') foreach (@{ $result->robots });
+        $result = $self->ListRobots(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'robots') foreach (@{ $result->robots });
+    }
+
+    return undef
+  }
+  sub ListAllSimulationApplications {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListSimulationApplications(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListSimulationApplications(@_, nextToken => $next_result->nextToken);
+        push @{ $result->simulationApplicationSummaries }, @{ $next_result->simulationApplicationSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'simulationApplicationSummaries') foreach (@{ $result->simulationApplicationSummaries });
+        $result = $self->ListSimulationApplications(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'simulationApplicationSummaries') foreach (@{ $result->simulationApplicationSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllSimulationJobs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListSimulationJobs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListSimulationJobs(@_, nextToken => $next_result->nextToken);
+        push @{ $result->simulationJobSummaries }, @{ $next_result->simulationJobSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'simulationJobSummaries') foreach (@{ $result->simulationJobSummaries });
+        $result = $self->ListSimulationJobs(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'simulationJobSummaries') foreach (@{ $result->simulationJobSummaries });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/BatchDescribeSimulationJob CancelSimulationJob CreateDeploymentJob CreateFleet CreateRobot CreateRobotApplication CreateRobotApplicationVersion CreateSimulationApplication CreateSimulationApplicationVersion CreateSimulationJob DeleteFleet DeleteRobot DeleteRobotApplication DeleteSimulationApplication DeregisterRobot DescribeDeploymentJob DescribeFleet DescribeRobot DescribeRobotApplication DescribeSimulationApplication DescribeSimulationJob ListDeploymentJobs ListFleets ListRobotApplications ListRobots ListSimulationApplications ListSimulationJobs RegisterRobot RestartSimulationJob SyncDeploymentJob UpdateRobotApplication UpdateSimulationApplication / }
@@ -837,6 +975,78 @@ Updates a simulation application.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllDeploymentJobs(sub { },[Filters => ArrayRef[L<Paws::Robomaker::Filter>], MaxResults => Int, NextToken => Str])
+
+=head2 ListAllDeploymentJobs([Filters => ArrayRef[L<Paws::Robomaker::Filter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - deploymentJobs, passing the object as the first parameter, and the string 'deploymentJobs' as the second parameter 
+
+If not, it will return a a L<Paws::Robomaker::ListDeploymentJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllFleets(sub { },[Filters => ArrayRef[L<Paws::Robomaker::Filter>], MaxResults => Int, NextToken => Str])
+
+=head2 ListAllFleets([Filters => ArrayRef[L<Paws::Robomaker::Filter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - fleetDetails, passing the object as the first parameter, and the string 'fleetDetails' as the second parameter 
+
+If not, it will return a a L<Paws::Robomaker::ListFleetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllRobotApplications(sub { },[Filters => ArrayRef[L<Paws::Robomaker::Filter>], MaxResults => Int, NextToken => Str, VersionQualifier => Str])
+
+=head2 ListAllRobotApplications([Filters => ArrayRef[L<Paws::Robomaker::Filter>], MaxResults => Int, NextToken => Str, VersionQualifier => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - robotApplicationSummaries, passing the object as the first parameter, and the string 'robotApplicationSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::Robomaker::ListRobotApplicationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllRobots(sub { },[Filters => ArrayRef[L<Paws::Robomaker::Filter>], MaxResults => Int, NextToken => Str])
+
+=head2 ListAllRobots([Filters => ArrayRef[L<Paws::Robomaker::Filter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - robots, passing the object as the first parameter, and the string 'robots' as the second parameter 
+
+If not, it will return a a L<Paws::Robomaker::ListRobotsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSimulationApplications(sub { },[Filters => ArrayRef[L<Paws::Robomaker::Filter>], MaxResults => Int, NextToken => Str, VersionQualifier => Str])
+
+=head2 ListAllSimulationApplications([Filters => ArrayRef[L<Paws::Robomaker::Filter>], MaxResults => Int, NextToken => Str, VersionQualifier => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - simulationApplicationSummaries, passing the object as the first parameter, and the string 'simulationApplicationSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::Robomaker::ListSimulationApplicationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSimulationJobs(sub { },[Filters => ArrayRef[L<Paws::Robomaker::Filter>], MaxResults => Int, NextToken => Str])
+
+=head2 ListAllSimulationJobs([Filters => ArrayRef[L<Paws::Robomaker::Filter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - simulationJobSummaries, passing the object as the first parameter, and the string 'simulationJobSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::Robomaker::ListSimulationJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 
