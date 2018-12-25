@@ -470,6 +470,29 @@ package Paws::ServiceCatalog;
 
     return undef
   }
+  sub ListAllOrganizationPortfolioAccess {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListOrganizationPortfolioAccess(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextPageToken) {
+        $next_result = $self->ListOrganizationPortfolioAccess(@_, PageToken => $next_result->NextPageToken);
+        push @{ $result->OrganizationNodes }, @{ $next_result->OrganizationNodes };
+      }
+      return $result;
+    } else {
+      while ($result->NextPageToken) {
+        $callback->($_ => 'OrganizationNodes') foreach (@{ $result->OrganizationNodes });
+        $result = $self->ListOrganizationPortfolioAccess(@_, PageToken => $result->NextPageToken);
+      }
+      $callback->($_ => 'OrganizationNodes') foreach (@{ $result->OrganizationNodes });
+    }
+
+    return undef
+  }
   sub ListAllPortfolios {
     my $self = shift;
 
@@ -539,6 +562,75 @@ package Paws::ServiceCatalog;
 
     return undef
   }
+  sub ListAllProvisionedProductPlans {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListProvisionedProductPlans(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextPageToken) {
+        $next_result = $self->ListProvisionedProductPlans(@_, PageToken => $next_result->NextPageToken);
+        push @{ $result->ProvisionedProductPlans }, @{ $next_result->ProvisionedProductPlans };
+      }
+      return $result;
+    } else {
+      while ($result->NextPageToken) {
+        $callback->($_ => 'ProvisionedProductPlans') foreach (@{ $result->ProvisionedProductPlans });
+        $result = $self->ListProvisionedProductPlans(@_, PageToken => $result->NextPageToken);
+      }
+      $callback->($_ => 'ProvisionedProductPlans') foreach (@{ $result->ProvisionedProductPlans });
+    }
+
+    return undef
+  }
+  sub ListAllProvisioningArtifactsForServiceAction {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListProvisioningArtifactsForServiceAction(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextPageToken) {
+        $next_result = $self->ListProvisioningArtifactsForServiceAction(@_, PageToken => $next_result->NextPageToken);
+        push @{ $result->ProvisioningArtifactViews }, @{ $next_result->ProvisioningArtifactViews };
+      }
+      return $result;
+    } else {
+      while ($result->NextPageToken) {
+        $callback->($_ => 'ProvisioningArtifactViews') foreach (@{ $result->ProvisioningArtifactViews });
+        $result = $self->ListProvisioningArtifactsForServiceAction(@_, PageToken => $result->NextPageToken);
+      }
+      $callback->($_ => 'ProvisioningArtifactViews') foreach (@{ $result->ProvisioningArtifactViews });
+    }
+
+    return undef
+  }
+  sub ListAllRecordHistory {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListRecordHistory(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextPageToken) {
+        $next_result = $self->ListRecordHistory(@_, PageToken => $next_result->NextPageToken);
+        push @{ $result->RecordDetails }, @{ $next_result->RecordDetails };
+      }
+      return $result;
+    } else {
+      while ($result->NextPageToken) {
+        $callback->($_ => 'RecordDetails') foreach (@{ $result->RecordDetails });
+        $result = $self->ListRecordHistory(@_, PageToken => $result->NextPageToken);
+      }
+      $callback->($_ => 'RecordDetails') foreach (@{ $result->RecordDetails });
+    }
+
+    return undef
+  }
   sub ListAllResourcesForTagOption {
     my $self = shift;
 
@@ -562,6 +654,52 @@ package Paws::ServiceCatalog;
 
     return undef
   }
+  sub ListAllServiceActions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListServiceActions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextPageToken) {
+        $next_result = $self->ListServiceActions(@_, PageToken => $next_result->NextPageToken);
+        push @{ $result->ServiceActionSummaries }, @{ $next_result->ServiceActionSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextPageToken) {
+        $callback->($_ => 'ServiceActionSummaries') foreach (@{ $result->ServiceActionSummaries });
+        $result = $self->ListServiceActions(@_, PageToken => $result->NextPageToken);
+      }
+      $callback->($_ => 'ServiceActionSummaries') foreach (@{ $result->ServiceActionSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllServiceActionsForProvisioningArtifact {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListServiceActionsForProvisioningArtifact(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextPageToken) {
+        $next_result = $self->ListServiceActionsForProvisioningArtifact(@_, PageToken => $next_result->NextPageToken);
+        push @{ $result->ServiceActionSummaries }, @{ $next_result->ServiceActionSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextPageToken) {
+        $callback->($_ => 'ServiceActionSummaries') foreach (@{ $result->ServiceActionSummaries });
+        $result = $self->ListServiceActionsForProvisioningArtifact(@_, PageToken => $result->NextPageToken);
+      }
+      $callback->($_ => 'ServiceActionSummaries') foreach (@{ $result->ServiceActionSummaries });
+    }
+
+    return undef
+  }
   sub ListAllTagOptions {
     my $self = shift;
 
@@ -581,6 +719,29 @@ package Paws::ServiceCatalog;
         $result = $self->ListTagOptions(@_, PageToken => $result->PageToken);
       }
       $callback->($_ => 'TagOptionDetails') foreach (@{ $result->TagOptionDetails });
+    }
+
+    return undef
+  }
+  sub ScanAllProvisionedProducts {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ScanProvisionedProducts(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextPageToken) {
+        $next_result = $self->ScanProvisionedProducts(@_, PageToken => $next_result->NextPageToken);
+        push @{ $result->ProvisionedProducts }, @{ $next_result->ProvisionedProducts };
+      }
+      return $result;
+    } else {
+      while ($result->NextPageToken) {
+        $callback->($_ => 'ProvisionedProducts') foreach (@{ $result->ProvisionedProducts });
+        $result = $self->ScanProvisionedProducts(@_, PageToken => $result->NextPageToken);
+      }
+      $callback->($_ => 'ProvisionedProducts') foreach (@{ $result->ProvisionedProducts });
     }
 
     return undef
@@ -1627,9 +1788,9 @@ will allow Service Catalog to receive updates on your organization in
 order to sync your shares with the current structure. This API can only
 be called by the master account in the organization.
 
-By calling this API Service Catalog will use FAS credentials to call
-organizations:EnableAWSServiceAccess so that your shares can be in sync
-with any changes in your AWS Organizations.
+By calling this API Service Catalog will make a call to
+organizations:EnableAWSServiceAccess on your behalf so that your shares
+can be in sync with any changes in your AWS Organizations structure.
 
 
 =head2 ExecuteProvisionedProductPlan
@@ -2491,6 +2652,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ServiceCatalog::ListLaunchPathsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 ListAllOrganizationPortfolioAccess(sub { },OrganizationNodeType => Str, PortfolioId => Str, [AcceptLanguage => Str, PageSize => Int, PageToken => Str])
+
+=head2 ListAllOrganizationPortfolioAccess(OrganizationNodeType => Str, PortfolioId => Str, [AcceptLanguage => Str, PageSize => Int, PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - OrganizationNodes, passing the object as the first parameter, and the string 'OrganizationNodes' as the second parameter 
+
+If not, it will return a a L<Paws::ServiceCatalog::ListOrganizationPortfolioAccessOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllPortfolios(sub { },[AcceptLanguage => Str, PageSize => Int, PageToken => Str])
 
 =head2 ListAllPortfolios([AcceptLanguage => Str, PageSize => Int, PageToken => Str])
@@ -2527,6 +2700,42 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ServiceCatalog::ListPrincipalsForPortfolioOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 ListAllProvisionedProductPlans(sub { },[AcceptLanguage => Str, AccessLevelFilter => L<Paws::ServiceCatalog::AccessLevelFilter>, PageSize => Int, PageToken => Str, ProvisionProductId => Str])
+
+=head2 ListAllProvisionedProductPlans([AcceptLanguage => Str, AccessLevelFilter => L<Paws::ServiceCatalog::AccessLevelFilter>, PageSize => Int, PageToken => Str, ProvisionProductId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ProvisionedProductPlans, passing the object as the first parameter, and the string 'ProvisionedProductPlans' as the second parameter 
+
+If not, it will return a a L<Paws::ServiceCatalog::ListProvisionedProductPlansOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllProvisioningArtifactsForServiceAction(sub { },ServiceActionId => Str, [AcceptLanguage => Str, PageSize => Int, PageToken => Str])
+
+=head2 ListAllProvisioningArtifactsForServiceAction(ServiceActionId => Str, [AcceptLanguage => Str, PageSize => Int, PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ProvisioningArtifactViews, passing the object as the first parameter, and the string 'ProvisioningArtifactViews' as the second parameter 
+
+If not, it will return a a L<Paws::ServiceCatalog::ListProvisioningArtifactsForServiceActionOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllRecordHistory(sub { },[AcceptLanguage => Str, AccessLevelFilter => L<Paws::ServiceCatalog::AccessLevelFilter>, PageSize => Int, PageToken => Str, SearchFilter => L<Paws::ServiceCatalog::ListRecordHistorySearchFilter>])
+
+=head2 ListAllRecordHistory([AcceptLanguage => Str, AccessLevelFilter => L<Paws::ServiceCatalog::AccessLevelFilter>, PageSize => Int, PageToken => Str, SearchFilter => L<Paws::ServiceCatalog::ListRecordHistorySearchFilter>])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - RecordDetails, passing the object as the first parameter, and the string 'RecordDetails' as the second parameter 
+
+If not, it will return a a L<Paws::ServiceCatalog::ListRecordHistoryOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllResourcesForTagOption(sub { },TagOptionId => Str, [PageSize => Int, PageToken => Str, ResourceType => Str])
 
 =head2 ListAllResourcesForTagOption(TagOptionId => Str, [PageSize => Int, PageToken => Str, ResourceType => Str])
@@ -2539,6 +2748,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ServiceCatalog::ListResourcesForTagOptionOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 ListAllServiceActions(sub { },[AcceptLanguage => Str, PageSize => Int, PageToken => Str])
+
+=head2 ListAllServiceActions([AcceptLanguage => Str, PageSize => Int, PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ServiceActionSummaries, passing the object as the first parameter, and the string 'ServiceActionSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::ServiceCatalog::ListServiceActionsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllServiceActionsForProvisioningArtifact(sub { },ProductId => Str, ProvisioningArtifactId => Str, [AcceptLanguage => Str, PageSize => Int, PageToken => Str])
+
+=head2 ListAllServiceActionsForProvisioningArtifact(ProductId => Str, ProvisioningArtifactId => Str, [AcceptLanguage => Str, PageSize => Int, PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ServiceActionSummaries, passing the object as the first parameter, and the string 'ServiceActionSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::ServiceCatalog::ListServiceActionsForProvisioningArtifactOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllTagOptions(sub { },[Filters => L<Paws::ServiceCatalog::ListTagOptionsFilters>, PageSize => Int, PageToken => Str])
 
 =head2 ListAllTagOptions([Filters => L<Paws::ServiceCatalog::ListTagOptionsFilters>, PageSize => Int, PageToken => Str])
@@ -2549,6 +2782,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - TagOptionDetails, passing the object as the first parameter, and the string 'TagOptionDetails' as the second parameter 
 
 If not, it will return a a L<Paws::ServiceCatalog::ListTagOptionsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ScanAllProvisionedProducts(sub { },[AcceptLanguage => Str, AccessLevelFilter => L<Paws::ServiceCatalog::AccessLevelFilter>, PageSize => Int, PageToken => Str])
+
+=head2 ScanAllProvisionedProducts([AcceptLanguage => Str, AccessLevelFilter => L<Paws::ServiceCatalog::AccessLevelFilter>, PageSize => Int, PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ProvisionedProducts, passing the object as the first parameter, and the string 'ProvisionedProducts' as the second parameter 
+
+If not, it will return a a L<Paws::ServiceCatalog::ScanProvisionedProductsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 SearchAllProductsAsAdmin(sub { },[AcceptLanguage => Str, Filters => L<Paws::ServiceCatalog::ProductViewFilters>, PageSize => Int, PageToken => Str, PortfolioId => Str, ProductSource => Str, SortBy => Str, SortOrder => Str])

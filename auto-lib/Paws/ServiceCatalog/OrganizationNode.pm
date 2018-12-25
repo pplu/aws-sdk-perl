@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCata
 
 =head1 DESCRIPTION
 
-This class has no description
+Information about the organization node.
 
 =head1 ATTRIBUTES
 
 
 =head2 Type => Str
 
-  
+  The organization node type.
 
 
 =head2 Value => Str
 
-  
+  The identifier of the organization node.
 
 
 
