@@ -146,6 +146,29 @@ package Paws::CloudWatch;
 
     return undef
   }
+  sub GetAllMetricData {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetMetricData(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetMetricData(@_, NextToken => $next_result->NextToken);
+        push @{ $result->MetricDataResults }, @{ $next_result->MetricDataResults };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'MetricDataResults') foreach (@{ $result->MetricDataResults });
+        $result = $self->GetMetricData(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'MetricDataResults') foreach (@{ $result->MetricDataResults });
+    }
+
+    return undef
+  }
   sub ListAllDashboards {
     my $self = shift;
 
@@ -985,6 +1008,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - MetricAlarms, passing the object as the first parameter, and the string 'MetricAlarms' as the second parameter 
 
 If not, it will return a a L<Paws::CloudWatch::DescribeAlarmsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllMetricData(sub { },EndTime => Str, MetricDataQueries => ArrayRef[L<Paws::CloudWatch::MetricDataQuery>], StartTime => Str, [MaxDatapoints => Int, NextToken => Str, ScanBy => Str])
+
+=head2 GetAllMetricData(EndTime => Str, MetricDataQueries => ArrayRef[L<Paws::CloudWatch::MetricDataQuery>], StartTime => Str, [MaxDatapoints => Int, NextToken => Str, ScanBy => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - MetricDataResults, passing the object as the first parameter, and the string 'MetricDataResults' as the second parameter 
+
+If not, it will return a a L<Paws::CloudWatch::GetMetricDataOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllDashboards(sub { },[DashboardNamePrefix => Str, NextToken => Str])

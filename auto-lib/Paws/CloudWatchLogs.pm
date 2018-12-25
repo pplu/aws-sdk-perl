@@ -234,6 +234,29 @@ package Paws::CloudWatchLogs;
 
     return undef
   }
+  sub DescribeAllExportTasks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeExportTasks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeExportTasks(@_, nextToken => $next_result->nextToken);
+        push @{ $result->exportTasks }, @{ $next_result->exportTasks };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'exportTasks') foreach (@{ $result->exportTasks });
+        $result = $self->DescribeExportTasks(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'exportTasks') foreach (@{ $result->exportTasks });
+    }
+
+    return undef
+  }
   sub DescribeAllLogGroups {
     my $self = shift;
 
@@ -299,6 +322,52 @@ package Paws::CloudWatchLogs;
         $result = $self->DescribeMetricFilters(@_, nextToken => $result->nextToken);
       }
       $callback->($_ => 'metricFilters') foreach (@{ $result->metricFilters });
+    }
+
+    return undef
+  }
+  sub DescribeAllQueries {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeQueries(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeQueries(@_, nextToken => $next_result->nextToken);
+        push @{ $result->queries }, @{ $next_result->queries };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'queries') foreach (@{ $result->queries });
+        $result = $self->DescribeQueries(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'queries') foreach (@{ $result->queries });
+    }
+
+    return undef
+  }
+  sub DescribeAllResourcePolicies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeResourcePolicies(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeResourcePolicies(@_, nextToken => $next_result->nextToken);
+        push @{ $result->resourcePolicies }, @{ $next_result->resourcePolicies };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'resourcePolicies') foreach (@{ $result->resourcePolicies });
+        $result = $self->DescribeResourcePolicies(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'resourcePolicies') foreach (@{ $result->resourcePolicies });
     }
 
     return undef
@@ -1503,6 +1572,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CloudWatchLogs::DescribeDestinationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 DescribeAllExportTasks(sub { },[Limit => Int, NextToken => Str, StatusCode => Str, TaskId => Str])
+
+=head2 DescribeAllExportTasks([Limit => Int, NextToken => Str, StatusCode => Str, TaskId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - exportTasks, passing the object as the first parameter, and the string 'exportTasks' as the second parameter 
+
+If not, it will return a a L<Paws::CloudWatchLogs::DescribeExportTasksResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllLogGroups(sub { },[Limit => Int, LogGroupNamePrefix => Str, NextToken => Str])
 
 =head2 DescribeAllLogGroups([Limit => Int, LogGroupNamePrefix => Str, NextToken => Str])
@@ -1537,6 +1618,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - metricFilters, passing the object as the first parameter, and the string 'metricFilters' as the second parameter 
 
 If not, it will return a a L<Paws::CloudWatchLogs::DescribeMetricFiltersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllQueries(sub { },[LogGroupName => Str, MaxResults => Int, NextToken => Str, Status => Str])
+
+=head2 DescribeAllQueries([LogGroupName => Str, MaxResults => Int, NextToken => Str, Status => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - queries, passing the object as the first parameter, and the string 'queries' as the second parameter 
+
+If not, it will return a a L<Paws::CloudWatchLogs::DescribeQueriesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllResourcePolicies(sub { },[Limit => Int, NextToken => Str])
+
+=head2 DescribeAllResourcePolicies([Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - resourcePolicies, passing the object as the first parameter, and the string 'resourcePolicies' as the second parameter 
+
+If not, it will return a a L<Paws::CloudWatchLogs::DescribeResourcePoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DescribeAllSubscriptionFilters(sub { },LogGroupName => Str, [FilterNamePrefix => Str, Limit => Int, NextToken => Str])

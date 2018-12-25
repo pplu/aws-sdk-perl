@@ -91,6 +91,75 @@ package Paws::CloudWatchEvents;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllRuleNamesByTarget {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListRuleNamesByTarget(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListRuleNamesByTarget(@_, NextToken => $next_result->NextToken);
+        push @{ $result->RuleNames }, @{ $next_result->RuleNames };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'RuleNames') foreach (@{ $result->RuleNames });
+        $result = $self->ListRuleNamesByTarget(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'RuleNames') foreach (@{ $result->RuleNames });
+    }
+
+    return undef
+  }
+  sub ListAllRules {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListRules(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListRules(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Rules }, @{ $next_result->Rules };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Rules') foreach (@{ $result->Rules });
+        $result = $self->ListRules(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Rules') foreach (@{ $result->Rules });
+    }
+
+    return undef
+  }
+  sub ListAllTargetsByRule {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTargetsByRule(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTargetsByRule(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Targets }, @{ $next_result->Targets };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Targets') foreach (@{ $result->Targets });
+        $result = $self->ListTargetsByRule(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Targets') foreach (@{ $result->Targets });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/DeleteRule DescribeEventBus DescribeRule DisableRule EnableRule ListRuleNamesByTarget ListRules ListTargetsByRule PutEvents PutPermission PutRule PutTargets RemovePermission RemoveTargets TestEventPattern / }
@@ -714,6 +783,42 @@ event you want to match.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllRuleNamesByTarget(sub { },TargetArn => Str, [Limit => Int, NextToken => Str])
+
+=head2 ListAllRuleNamesByTarget(TargetArn => Str, [Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - RuleNames, passing the object as the first parameter, and the string 'RuleNames' as the second parameter 
+
+If not, it will return a a L<Paws::CloudWatchEvents::ListRuleNamesByTargetResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllRules(sub { },[Limit => Int, NamePrefix => Str, NextToken => Str])
+
+=head2 ListAllRules([Limit => Int, NamePrefix => Str, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Rules, passing the object as the first parameter, and the string 'Rules' as the second parameter 
+
+If not, it will return a a L<Paws::CloudWatchEvents::ListRulesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTargetsByRule(sub { },Rule => Str, [Limit => Int, NextToken => Str])
+
+=head2 ListAllTargetsByRule(Rule => Str, [Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Targets, passing the object as the first parameter, and the string 'Targets' as the second parameter 
+
+If not, it will return a a L<Paws::CloudWatchEvents::ListTargetsByRuleResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 
