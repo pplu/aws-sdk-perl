@@ -4,6 +4,7 @@ package Paws::ElasticBeanstalk::EnvironmentResourceDescription;
   has EnvironmentName => (is => 'ro', isa => 'Str');
   has Instances => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::Instance]');
   has LaunchConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::LaunchConfiguration]');
+  has LaunchTemplates => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::LaunchTemplate]');
   has LoadBalancers => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::LoadBalancer]');
   has Queues => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::Queue]');
   has Triggers => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::Trigger]');
@@ -61,6 +62,11 @@ live.
 =head2 LaunchConfigurations => ArrayRef[L<Paws::ElasticBeanstalk::LaunchConfiguration>]
 
   The Auto Scaling launch configurations in use by this environment.
+
+
+=head2 LaunchTemplates => ArrayRef[L<Paws::ElasticBeanstalk::LaunchTemplate>]
+
+  The Amazon EC2 launch templates in use by this environment.
 
 
 =head2 LoadBalancers => ArrayRef[L<Paws::ElasticBeanstalk::LoadBalancer>]

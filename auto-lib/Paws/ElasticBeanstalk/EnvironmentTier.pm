@@ -42,10 +42,40 @@ Describes the properties of an environment tier
 
   The name of this environment tier.
 
+Valid values:
+
+=over
+
+=item *
+
+For I<Web server tier> E<ndash> C<WebServer>
+
+=item *
+
+For I<Worker tier> E<ndash> C<Worker>
+
+=back
+
+
 
 =head2 Type => Str
 
   The type of this environment tier.
+
+Valid values:
+
+=over
+
+=item *
+
+For I<Web server tier> E<ndash> C<Standard>
+
+=item *
+
+For I<Worker tier> E<ndash> C<SQS/HTTP>
+
+=back
+
 
 
 =head2 Version => Str

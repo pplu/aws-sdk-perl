@@ -122,7 +122,7 @@ C<Green>: Indicates the environment is healthy and fully functional.
 
 C<Grey>: Default health for a new environment. The environment is not
 fully launched and health checks have not started or health checks are
-suspended during an C<UpdateEnvironment> or C<RestartEnvironement>
+suspended during an C<UpdateEnvironment> or C<RestartEnvironment>
 request.
 
 =back
