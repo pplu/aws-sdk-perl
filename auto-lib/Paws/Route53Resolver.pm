@@ -126,6 +126,29 @@ package Paws::Route53Resolver;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllTagsForResource {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTagsForResource(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTagsForResource(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Tags }, @{ $next_result->Tags };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+        $result = $self->ListTagsForResource(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AssociateResolverEndpointIpAddress AssociateResolverRule CreateResolverEndpoint CreateResolverRule DeleteResolverEndpoint DeleteResolverRule DisassociateResolverEndpointIpAddress DisassociateResolverRule GetResolverEndpoint GetResolverRule GetResolverRuleAssociation GetResolverRulePolicy ListResolverEndpointIpAddresses ListResolverEndpoints ListResolverRuleAssociations ListResolverRules ListTagsForResource PutResolverRulePolicy TagResource UntagResource UpdateResolverEndpoint UpdateResolverRule / }
@@ -708,6 +731,18 @@ parameter, it retains its current value.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllTagsForResource(sub { },ResourceArn => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllTagsForResource(ResourceArn => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Tags, passing the object as the first parameter, and the string 'Tags' as the second parameter 
+
+If not, it will return a a L<Paws::Route53Resolver::ListTagsForResourceResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

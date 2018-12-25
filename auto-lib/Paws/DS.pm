@@ -266,6 +266,29 @@ package Paws::DS;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllDirectories {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDirectories(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeDirectories(@_, NextToken => $next_result->NextToken);
+        push @{ $result->DirectoryDescriptions }, @{ $next_result->DirectoryDescriptions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'DirectoryDescriptions') foreach (@{ $result->DirectoryDescriptions });
+        $result = $self->DescribeDirectories(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'DirectoryDescriptions') foreach (@{ $result->DirectoryDescriptions });
+    }
+
+    return undef
+  }
   sub DescribeAllDomainControllers {
     my $self = shift;
 
@@ -285,6 +308,167 @@ package Paws::DS;
         $result = $self->DescribeDomainControllers(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'DomainControllers') foreach (@{ $result->DomainControllers });
+    }
+
+    return undef
+  }
+  sub DescribeAllSharedDirectories {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeSharedDirectories(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeSharedDirectories(@_, NextToken => $next_result->NextToken);
+        push @{ $result->SharedDirectories }, @{ $next_result->SharedDirectories };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'SharedDirectories') foreach (@{ $result->SharedDirectories });
+        $result = $self->DescribeSharedDirectories(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'SharedDirectories') foreach (@{ $result->SharedDirectories });
+    }
+
+    return undef
+  }
+  sub DescribeAllSnapshots {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeSnapshots(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeSnapshots(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Snapshots }, @{ $next_result->Snapshots };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Snapshots') foreach (@{ $result->Snapshots });
+        $result = $self->DescribeSnapshots(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Snapshots') foreach (@{ $result->Snapshots });
+    }
+
+    return undef
+  }
+  sub DescribeAllTrusts {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeTrusts(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeTrusts(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Trusts }, @{ $next_result->Trusts };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Trusts') foreach (@{ $result->Trusts });
+        $result = $self->DescribeTrusts(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Trusts') foreach (@{ $result->Trusts });
+    }
+
+    return undef
+  }
+  sub ListAllIpRoutes {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListIpRoutes(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListIpRoutes(@_, NextToken => $next_result->NextToken);
+        push @{ $result->IpRoutesInfo }, @{ $next_result->IpRoutesInfo };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'IpRoutesInfo') foreach (@{ $result->IpRoutesInfo });
+        $result = $self->ListIpRoutes(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'IpRoutesInfo') foreach (@{ $result->IpRoutesInfo });
+    }
+
+    return undef
+  }
+  sub ListAllLogSubscriptions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListLogSubscriptions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListLogSubscriptions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->LogSubscriptions }, @{ $next_result->LogSubscriptions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'LogSubscriptions') foreach (@{ $result->LogSubscriptions });
+        $result = $self->ListLogSubscriptions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'LogSubscriptions') foreach (@{ $result->LogSubscriptions });
+    }
+
+    return undef
+  }
+  sub ListAllSchemaExtensions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListSchemaExtensions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListSchemaExtensions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->SchemaExtensionsInfo }, @{ $next_result->SchemaExtensionsInfo };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'SchemaExtensionsInfo') foreach (@{ $result->SchemaExtensionsInfo });
+        $result = $self->ListSchemaExtensions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'SchemaExtensionsInfo') foreach (@{ $result->SchemaExtensionsInfo });
+    }
+
+    return undef
+  }
+  sub ListAllTagsForResource {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTagsForResource(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTagsForResource(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Tags }, @{ $next_result->Tags };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+        $result = $self->ListTagsForResource(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Tags') foreach (@{ $result->Tags });
     }
 
     return undef
@@ -1471,6 +1655,18 @@ Microsoft AD directory and an external domain.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
+=head2 DescribeAllDirectories(sub { },[DirectoryIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+
+=head2 DescribeAllDirectories([DirectoryIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DirectoryDescriptions, passing the object as the first parameter, and the string 'DirectoryDescriptions' as the second parameter 
+
+If not, it will return a a L<Paws::DS::DescribeDirectoriesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllDomainControllers(sub { },DirectoryId => Str, [DomainControllerIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
 
 =head2 DescribeAllDomainControllers(DirectoryId => Str, [DomainControllerIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
@@ -1481,6 +1677,90 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - DomainControllers, passing the object as the first parameter, and the string 'DomainControllers' as the second parameter 
 
 If not, it will return a a L<Paws::DS::DescribeDomainControllersResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllSharedDirectories(sub { },OwnerDirectoryId => Str, [Limit => Int, NextToken => Str, SharedDirectoryIds => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllSharedDirectories(OwnerDirectoryId => Str, [Limit => Int, NextToken => Str, SharedDirectoryIds => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SharedDirectories, passing the object as the first parameter, and the string 'SharedDirectories' as the second parameter 
+
+If not, it will return a a L<Paws::DS::DescribeSharedDirectoriesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllSnapshots(sub { },[DirectoryId => Str, Limit => Int, NextToken => Str, SnapshotIds => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllSnapshots([DirectoryId => Str, Limit => Int, NextToken => Str, SnapshotIds => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Snapshots, passing the object as the first parameter, and the string 'Snapshots' as the second parameter 
+
+If not, it will return a a L<Paws::DS::DescribeSnapshotsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllTrusts(sub { },[DirectoryId => Str, Limit => Int, NextToken => Str, TrustIds => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllTrusts([DirectoryId => Str, Limit => Int, NextToken => Str, TrustIds => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Trusts, passing the object as the first parameter, and the string 'Trusts' as the second parameter 
+
+If not, it will return a a L<Paws::DS::DescribeTrustsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllIpRoutes(sub { },DirectoryId => Str, [Limit => Int, NextToken => Str])
+
+=head2 ListAllIpRoutes(DirectoryId => Str, [Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - IpRoutesInfo, passing the object as the first parameter, and the string 'IpRoutesInfo' as the second parameter 
+
+If not, it will return a a L<Paws::DS::ListIpRoutesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllLogSubscriptions(sub { },[DirectoryId => Str, Limit => Int, NextToken => Str])
+
+=head2 ListAllLogSubscriptions([DirectoryId => Str, Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - LogSubscriptions, passing the object as the first parameter, and the string 'LogSubscriptions' as the second parameter 
+
+If not, it will return a a L<Paws::DS::ListLogSubscriptionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSchemaExtensions(sub { },DirectoryId => Str, [Limit => Int, NextToken => Str])
+
+=head2 ListAllSchemaExtensions(DirectoryId => Str, [Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SchemaExtensionsInfo, passing the object as the first parameter, and the string 'SchemaExtensionsInfo' as the second parameter 
+
+If not, it will return a a L<Paws::DS::ListSchemaExtensionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTagsForResource(sub { },ResourceId => Str, [Limit => Int, NextToken => Str])
+
+=head2 ListAllTagsForResource(ResourceId => Str, [Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Tags, passing the object as the first parameter, and the string 'Tags' as the second parameter 
+
+If not, it will return a a L<Paws::DS::ListTagsForResourceResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

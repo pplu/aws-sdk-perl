@@ -176,6 +176,52 @@ package Paws::WorkSpaces;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllAccountModifications {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeAccountModifications(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeAccountModifications(@_, NextToken => $next_result->NextToken);
+        push @{ $result->AccountModifications }, @{ $next_result->AccountModifications };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'AccountModifications') foreach (@{ $result->AccountModifications });
+        $result = $self->DescribeAccountModifications(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'AccountModifications') foreach (@{ $result->AccountModifications });
+    }
+
+    return undef
+  }
+  sub DescribeAllIpGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeIpGroups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeIpGroups(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Result }, @{ $next_result->Result };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Result') foreach (@{ $result->Result });
+        $result = $self->DescribeIpGroups(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Result') foreach (@{ $result->Result });
+    }
+
+    return undef
+  }
   sub DescribeAllWorkspaceBundles {
     my $self = shift;
 
@@ -222,6 +268,29 @@ package Paws::WorkSpaces;
 
     return undef
   }
+  sub DescribeAllWorkspaceImages {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeWorkspaceImages(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeWorkspaceImages(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Images }, @{ $next_result->Images };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Images') foreach (@{ $result->Images });
+        $result = $self->DescribeWorkspaceImages(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Images') foreach (@{ $result->Images });
+    }
+
+    return undef
+  }
   sub DescribeAllWorkspaces {
     my $self = shift;
 
@@ -241,6 +310,52 @@ package Paws::WorkSpaces;
         $result = $self->DescribeWorkspaces(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'Workspaces') foreach (@{ $result->Workspaces });
+    }
+
+    return undef
+  }
+  sub DescribeAllWorkspacesConnectionStatus {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeWorkspacesConnectionStatus(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeWorkspacesConnectionStatus(@_, NextToken => $next_result->NextToken);
+        push @{ $result->WorkspacesConnectionStatus }, @{ $next_result->WorkspacesConnectionStatus };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'WorkspacesConnectionStatus') foreach (@{ $result->WorkspacesConnectionStatus });
+        $result = $self->DescribeWorkspacesConnectionStatus(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'WorkspacesConnectionStatus') foreach (@{ $result->WorkspacesConnectionStatus });
+    }
+
+    return undef
+  }
+  sub ListAllAvailableManagementCidrRanges {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAvailableManagementCidrRanges(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListAvailableManagementCidrRanges(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ManagementCidrRanges }, @{ $next_result->ManagementCidrRanges };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ManagementCidrRanges') foreach (@{ $result->ManagementCidrRanges });
+        $result = $self->ListAvailableManagementCidrRanges(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ManagementCidrRanges') foreach (@{ $result->ManagementCidrRanges });
     }
 
     return undef
@@ -950,6 +1065,30 @@ with the specified rules.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
+=head2 DescribeAllAccountModifications(sub { },[NextToken => Str])
+
+=head2 DescribeAllAccountModifications([NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AccountModifications, passing the object as the first parameter, and the string 'AccountModifications' as the second parameter 
+
+If not, it will return a a L<Paws::WorkSpaces::DescribeAccountModificationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllIpGroups(sub { },[GroupIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllIpGroups([GroupIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Result, passing the object as the first parameter, and the string 'Result' as the second parameter 
+
+If not, it will return a a L<Paws::WorkSpaces::DescribeIpGroupsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllWorkspaceBundles(sub { },[BundleIds => ArrayRef[Str|Undef], NextToken => Str, Owner => Str])
 
 =head2 DescribeAllWorkspaceBundles([BundleIds => ArrayRef[Str|Undef], NextToken => Str, Owner => Str])
@@ -974,6 +1113,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::WorkSpaces::DescribeWorkspaceDirectoriesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 DescribeAllWorkspaceImages(sub { },[ImageIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllWorkspaceImages([ImageIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Images, passing the object as the first parameter, and the string 'Images' as the second parameter 
+
+If not, it will return a a L<Paws::WorkSpaces::DescribeWorkspaceImagesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllWorkspaces(sub { },[BundleId => Str, DirectoryId => Str, Limit => Int, NextToken => Str, UserName => Str, WorkspaceIds => ArrayRef[Str|Undef]])
 
 =head2 DescribeAllWorkspaces([BundleId => Str, DirectoryId => Str, Limit => Int, NextToken => Str, UserName => Str, WorkspaceIds => ArrayRef[Str|Undef]])
@@ -984,6 +1135,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Workspaces, passing the object as the first parameter, and the string 'Workspaces' as the second parameter 
 
 If not, it will return a a L<Paws::WorkSpaces::DescribeWorkspacesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllWorkspacesConnectionStatus(sub { },[NextToken => Str, WorkspaceIds => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllWorkspacesConnectionStatus([NextToken => Str, WorkspaceIds => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - WorkspacesConnectionStatus, passing the object as the first parameter, and the string 'WorkspacesConnectionStatus' as the second parameter 
+
+If not, it will return a a L<Paws::WorkSpaces::DescribeWorkspacesConnectionStatusResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAvailableManagementCidrRanges(sub { },ManagementCidrRangeConstraint => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllAvailableManagementCidrRanges(ManagementCidrRangeConstraint => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ManagementCidrRanges, passing the object as the first parameter, and the string 'ManagementCidrRanges' as the second parameter 
+
+If not, it will return a a L<Paws::WorkSpaces::ListAvailableManagementCidrRangesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

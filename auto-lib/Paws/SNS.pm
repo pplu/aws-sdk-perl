@@ -188,6 +188,29 @@ package Paws::SNS;
 
     return undef
   }
+  sub ListAllPhoneNumbersOptedOut {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPhoneNumbersOptedOut(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListPhoneNumbersOptedOut(@_, nextToken => $next_result->nextToken);
+        push @{ $result->phoneNumbers }, @{ $next_result->phoneNumbers };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'phoneNumbers') foreach (@{ $result->phoneNumbers });
+        $result = $self->ListPhoneNumbersOptedOut(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'phoneNumbers') foreach (@{ $result->phoneNumbers });
+    }
+
+    return undef
+  }
   sub ListAllPlatformApplications {
     my $self = shift;
 
@@ -1074,6 +1097,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Endpoints, passing the object as the first parameter, and the string 'Endpoints' as the second parameter 
 
 If not, it will return a a L<Paws::SNS::ListEndpointsByPlatformApplicationResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPhoneNumbersOptedOut(sub { },[NextToken => Str])
+
+=head2 ListAllPhoneNumbersOptedOut([NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - phoneNumbers, passing the object as the first parameter, and the string 'phoneNumbers' as the second parameter 
+
+If not, it will return a a L<Paws::SNS::ListPhoneNumbersOptedOutResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllPlatformApplications(sub { },[NextToken => Str])

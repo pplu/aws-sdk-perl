@@ -354,6 +354,52 @@ package Paws::AutoScaling;
 
     return undef
   }
+  sub DescribeAllLoadBalancers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeLoadBalancers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeLoadBalancers(@_, NextToken => $next_result->NextToken);
+        push @{ $result->LoadBalancers }, @{ $next_result->LoadBalancers };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'LoadBalancers') foreach (@{ $result->LoadBalancers });
+        $result = $self->DescribeLoadBalancers(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'LoadBalancers') foreach (@{ $result->LoadBalancers });
+    }
+
+    return undef
+  }
+  sub DescribeAllLoadBalancerTargetGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeLoadBalancerTargetGroups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeLoadBalancerTargetGroups(@_, NextToken => $next_result->NextToken);
+        push @{ $result->LoadBalancerTargetGroups }, @{ $next_result->LoadBalancerTargetGroups };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'LoadBalancerTargetGroups') foreach (@{ $result->LoadBalancerTargetGroups });
+        $result = $self->DescribeLoadBalancerTargetGroups(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'LoadBalancerTargetGroups') foreach (@{ $result->LoadBalancerTargetGroups });
+    }
+
+    return undef
+  }
   sub DescribeAllNotificationConfigurations {
     my $self = shift;
 
@@ -2122,6 +2168,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - LaunchConfigurations, passing the object as the first parameter, and the string 'LaunchConfigurations' as the second parameter 
 
 If not, it will return a a L<Paws::AutoScaling::LaunchConfigurationsType> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllLoadBalancers(sub { },AutoScalingGroupName => Str, [MaxRecords => Int, NextToken => Str])
+
+=head2 DescribeAllLoadBalancers(AutoScalingGroupName => Str, [MaxRecords => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - LoadBalancers, passing the object as the first parameter, and the string 'LoadBalancers' as the second parameter 
+
+If not, it will return a a L<Paws::AutoScaling::DescribeLoadBalancersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllLoadBalancerTargetGroups(sub { },AutoScalingGroupName => Str, [MaxRecords => Int, NextToken => Str])
+
+=head2 DescribeAllLoadBalancerTargetGroups(AutoScalingGroupName => Str, [MaxRecords => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - LoadBalancerTargetGroups, passing the object as the first parameter, and the string 'LoadBalancerTargetGroups' as the second parameter 
+
+If not, it will return a a L<Paws::AutoScaling::DescribeLoadBalancerTargetGroupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DescribeAllNotificationConfigurations(sub { },[AutoScalingGroupNames => ArrayRef[Str|Undef], MaxRecords => Int, NextToken => Str])

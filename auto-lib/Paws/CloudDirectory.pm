@@ -483,6 +483,29 @@ package Paws::CloudDirectory;
 
     return undef
   }
+  sub ListAllIncomingTypedLinks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListIncomingTypedLinks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListIncomingTypedLinks(@_, NextToken => $next_result->NextToken);
+        push @{ $result->LinkSpecifiers }, @{ $next_result->LinkSpecifiers };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'LinkSpecifiers') foreach (@{ $result->LinkSpecifiers });
+        $result = $self->ListIncomingTypedLinks(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'LinkSpecifiers') foreach (@{ $result->LinkSpecifiers });
+    }
+
+    return undef
+  }
   sub ListAllIndex {
     my $self = shift;
 
@@ -502,6 +525,29 @@ package Paws::CloudDirectory;
         $result = $self->ListIndex(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'IndexAttachments') foreach (@{ $result->IndexAttachments });
+    }
+
+    return undef
+  }
+  sub ListAllManagedSchemaArns {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListManagedSchemaArns(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListManagedSchemaArns(@_, NextToken => $next_result->NextToken);
+        push @{ $result->SchemaArns }, @{ $next_result->SchemaArns };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'SchemaArns') foreach (@{ $result->SchemaArns });
+        $result = $self->ListManagedSchemaArns(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'SchemaArns') foreach (@{ $result->SchemaArns });
     }
 
     return undef
@@ -571,6 +617,29 @@ package Paws::CloudDirectory;
         $result = $self->ListObjectPolicies(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'AttachedPolicyIds') foreach (@{ $result->AttachedPolicyIds });
+    }
+
+    return undef
+  }
+  sub ListAllOutgoingTypedLinks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListOutgoingTypedLinks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListOutgoingTypedLinks(@_, NextToken => $next_result->NextToken);
+        push @{ $result->TypedLinkSpecifiers }, @{ $next_result->TypedLinkSpecifiers };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'TypedLinkSpecifiers') foreach (@{ $result->TypedLinkSpecifiers });
+        $result = $self->ListOutgoingTypedLinks(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'TypedLinkSpecifiers') foreach (@{ $result->TypedLinkSpecifiers });
     }
 
     return undef
@@ -2343,6 +2412,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CloudDirectory::ListFacetNamesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 ListAllIncomingTypedLinks(sub { },DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, FilterAttributeRanges => ArrayRef[L<Paws::CloudDirectory::TypedLinkAttributeRange>], FilterTypedLink => L<Paws::CloudDirectory::TypedLinkSchemaAndFacetName>, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllIncomingTypedLinks(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, FilterAttributeRanges => ArrayRef[L<Paws::CloudDirectory::TypedLinkAttributeRange>], FilterTypedLink => L<Paws::CloudDirectory::TypedLinkSchemaAndFacetName>, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - LinkSpecifiers, passing the object as the first parameter, and the string 'LinkSpecifiers' as the second parameter 
+
+If not, it will return a a L<Paws::CloudDirectory::ListIncomingTypedLinksResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllIndex(sub { },DirectoryArn => Str, IndexReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str, RangesOnIndexedValues => ArrayRef[L<Paws::CloudDirectory::ObjectAttributeRange>]])
 
 =head2 ListAllIndex(DirectoryArn => Str, IndexReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str, RangesOnIndexedValues => ArrayRef[L<Paws::CloudDirectory::ObjectAttributeRange>]])
@@ -2353,6 +2434,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - IndexAttachments, passing the object as the first parameter, and the string 'IndexAttachments' as the second parameter 
 
 If not, it will return a a L<Paws::CloudDirectory::ListIndexResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllManagedSchemaArns(sub { },[MaxResults => Int, NextToken => Str, SchemaArn => Str])
+
+=head2 ListAllManagedSchemaArns([MaxResults => Int, NextToken => Str, SchemaArn => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SchemaArns, passing the object as the first parameter, and the string 'SchemaArns' as the second parameter 
+
+If not, it will return a a L<Paws::CloudDirectory::ListManagedSchemaArnsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllObjectAttributes(sub { },DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, FacetFilter => L<Paws::CloudDirectory::SchemaFacet>, MaxResults => Int, NextToken => Str])
@@ -2389,6 +2482,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - AttachedPolicyIds, passing the object as the first parameter, and the string 'AttachedPolicyIds' as the second parameter 
 
 If not, it will return a a L<Paws::CloudDirectory::ListObjectPoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllOutgoingTypedLinks(sub { },DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, FilterAttributeRanges => ArrayRef[L<Paws::CloudDirectory::TypedLinkAttributeRange>], FilterTypedLink => L<Paws::CloudDirectory::TypedLinkSchemaAndFacetName>, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllOutgoingTypedLinks(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, FilterAttributeRanges => ArrayRef[L<Paws::CloudDirectory::TypedLinkAttributeRange>], FilterTypedLink => L<Paws::CloudDirectory::TypedLinkSchemaAndFacetName>, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TypedLinkSpecifiers, passing the object as the first parameter, and the string 'TypedLinkSpecifiers' as the second parameter 
+
+If not, it will return a a L<Paws::CloudDirectory::ListOutgoingTypedLinksResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllPolicyAttachments(sub { },DirectoryArn => Str, PolicyReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str])

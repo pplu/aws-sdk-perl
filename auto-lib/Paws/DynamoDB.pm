@@ -269,6 +269,29 @@ package Paws::DynamoDB;
 
     return undef
   }
+  sub ListAllTagsOfResource {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTagsOfResource(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTagsOfResource(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Tags }, @{ $next_result->Tags };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+        $result = $self->ListTagsOfResource(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+    }
+
+    return undef
+  }
   sub QueryAll {
     my $self = shift;
 
@@ -2150,6 +2173,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - TableNames, passing the object as the first parameter, and the string 'TableNames' as the second parameter 
 
 If not, it will return a a L<Paws::DynamoDB::ListTablesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTagsOfResource(sub { },ResourceArn => Str, [NextToken => Str])
+
+=head2 ListAllTagsOfResource(ResourceArn => Str, [NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Tags, passing the object as the first parameter, and the string 'Tags' as the second parameter 
+
+If not, it will return a a L<Paws::DynamoDB::ListTagsOfResourceOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 QueryAll(sub { },TableName => Str, [AttributesToGet => ArrayRef[Str|Undef], ConditionalOperator => Str, ConsistentRead => Bool, ExclusiveStartKey => L<Paws::DynamoDB::Key>, ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>, ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>, FilterExpression => Str, IndexName => Str, KeyConditionExpression => Str, KeyConditions => L<Paws::DynamoDB::KeyConditions>, Limit => Int, ProjectionExpression => Str, QueryFilter => L<Paws::DynamoDB::FilterConditionMap>, ReturnConsumedCapacity => Str, ScanIndexForward => Bool, Select => Str])

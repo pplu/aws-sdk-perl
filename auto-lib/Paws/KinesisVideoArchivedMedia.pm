@@ -30,6 +30,29 @@ package Paws::KinesisVideoArchivedMedia;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllFragments {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListFragments(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListFragments(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Fragments }, @{ $next_result->Fragments };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Fragments') foreach (@{ $result->Fragments });
+        $result = $self->ListFragments(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Fragments') foreach (@{ $result->Fragments });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/GetHLSStreamingSessionURL GetMediaForFragmentList ListFragments / }
@@ -329,6 +352,18 @@ location within the archived data.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllFragments(sub { },StreamName => Str, [FragmentSelector => L<Paws::KinesisVideoArchivedMedia::FragmentSelector>, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllFragments(StreamName => Str, [FragmentSelector => L<Paws::KinesisVideoArchivedMedia::FragmentSelector>, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Fragments, passing the object as the first parameter, and the string 'Fragments' as the second parameter 
+
+If not, it will return a a L<Paws::KinesisVideoArchivedMedia::ListFragmentsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

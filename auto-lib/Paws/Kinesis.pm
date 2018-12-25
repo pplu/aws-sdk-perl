@@ -179,6 +179,52 @@ package Paws::Kinesis;
 
     return undef
   }
+  sub ListAllShards {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListShards(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListShards(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Shards }, @{ $next_result->Shards };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Shards') foreach (@{ $result->Shards });
+        $result = $self->ListShards(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Shards') foreach (@{ $result->Shards });
+    }
+
+    return undef
+  }
+  sub ListAllStreamConsumers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListStreamConsumers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListStreamConsumers(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Consumers }, @{ $next_result->Consumers };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Consumers') foreach (@{ $result->Consumers });
+        $result = $self->ListStreamConsumers(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Consumers') foreach (@{ $result->Consumers });
+    }
+
+    return undef
+  }
   sub ListAllStreams {
     my $self = shift;
 
@@ -1404,6 +1450,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - StreamDescription.Shards, passing the object as the first parameter, and the string 'StreamDescription.Shards' as the second parameter 
 
 If not, it will return a a L<Paws::Kinesis::DescribeStreamOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllShards(sub { },[ExclusiveStartShardId => Str, MaxResults => Int, NextToken => Str, StreamCreationTimestamp => Str, StreamName => Str])
+
+=head2 ListAllShards([ExclusiveStartShardId => Str, MaxResults => Int, NextToken => Str, StreamCreationTimestamp => Str, StreamName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Shards, passing the object as the first parameter, and the string 'Shards' as the second parameter 
+
+If not, it will return a a L<Paws::Kinesis::ListShardsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllStreamConsumers(sub { },StreamARN => Str, [MaxResults => Int, NextToken => Str, StreamCreationTimestamp => Str])
+
+=head2 ListAllStreamConsumers(StreamARN => Str, [MaxResults => Int, NextToken => Str, StreamCreationTimestamp => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Consumers, passing the object as the first parameter, and the string 'Consumers' as the second parameter 
+
+If not, it will return a a L<Paws::Kinesis::ListStreamConsumersOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllStreams(sub { },[ExclusiveStartStreamName => Str, Limit => Int])

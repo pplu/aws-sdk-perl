@@ -130,6 +130,75 @@ package Paws::ES;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllReservedElasticsearchInstanceOfferings {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeReservedElasticsearchInstanceOfferings(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeReservedElasticsearchInstanceOfferings(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ReservedElasticsearchInstanceOfferings }, @{ $next_result->ReservedElasticsearchInstanceOfferings };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ReservedElasticsearchInstanceOfferings') foreach (@{ $result->ReservedElasticsearchInstanceOfferings });
+        $result = $self->DescribeReservedElasticsearchInstanceOfferings(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ReservedElasticsearchInstanceOfferings') foreach (@{ $result->ReservedElasticsearchInstanceOfferings });
+    }
+
+    return undef
+  }
+  sub DescribeAllReservedElasticsearchInstances {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeReservedElasticsearchInstances(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeReservedElasticsearchInstances(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ReservedElasticsearchInstances }, @{ $next_result->ReservedElasticsearchInstances };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ReservedElasticsearchInstances') foreach (@{ $result->ReservedElasticsearchInstances });
+        $result = $self->DescribeReservedElasticsearchInstances(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ReservedElasticsearchInstances') foreach (@{ $result->ReservedElasticsearchInstances });
+    }
+
+    return undef
+  }
+  sub GetAllUpgradeHistory {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetUpgradeHistory(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetUpgradeHistory(@_, NextToken => $next_result->NextToken);
+        push @{ $result->UpgradeHistories }, @{ $next_result->UpgradeHistories };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'UpgradeHistories') foreach (@{ $result->UpgradeHistories });
+        $result = $self->GetUpgradeHistory(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'UpgradeHistories') foreach (@{ $result->UpgradeHistories });
+    }
+
+    return undef
+  }
   sub ListAllElasticsearchInstanceTypes {
     my $self = shift;
 
@@ -704,6 +773,42 @@ eligibility check to a compatible Elasticsearch version.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllReservedElasticsearchInstanceOfferings(sub { },[MaxResults => Int, NextToken => Str, ReservedElasticsearchInstanceOfferingId => Str])
+
+=head2 DescribeAllReservedElasticsearchInstanceOfferings([MaxResults => Int, NextToken => Str, ReservedElasticsearchInstanceOfferingId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ReservedElasticsearchInstanceOfferings, passing the object as the first parameter, and the string 'ReservedElasticsearchInstanceOfferings' as the second parameter 
+
+If not, it will return a a L<Paws::ES::DescribeReservedElasticsearchInstanceOfferingsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllReservedElasticsearchInstances(sub { },[MaxResults => Int, NextToken => Str, ReservedElasticsearchInstanceId => Str])
+
+=head2 DescribeAllReservedElasticsearchInstances([MaxResults => Int, NextToken => Str, ReservedElasticsearchInstanceId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ReservedElasticsearchInstances, passing the object as the first parameter, and the string 'ReservedElasticsearchInstances' as the second parameter 
+
+If not, it will return a a L<Paws::ES::DescribeReservedElasticsearchInstancesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllUpgradeHistory(sub { },DomainName => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 GetAllUpgradeHistory(DomainName => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - UpgradeHistories, passing the object as the first parameter, and the string 'UpgradeHistories' as the second parameter 
+
+If not, it will return a a L<Paws::ES::GetUpgradeHistoryResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 =head2 ListAllElasticsearchInstanceTypes(sub { },ElasticsearchVersion => Str, [DomainName => Str, MaxResults => Int, NextToken => Str])
 

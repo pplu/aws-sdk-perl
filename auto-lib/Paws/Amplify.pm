@@ -115,6 +115,98 @@ package Paws::Amplify;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllApps {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListApps(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListApps(@_, nextToken => $next_result->nextToken);
+        push @{ $result->apps }, @{ $next_result->apps };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'apps') foreach (@{ $result->apps });
+        $result = $self->ListApps(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'apps') foreach (@{ $result->apps });
+    }
+
+    return undef
+  }
+  sub ListAllBranches {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListBranches(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListBranches(@_, nextToken => $next_result->nextToken);
+        push @{ $result->branches }, @{ $next_result->branches };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'branches') foreach (@{ $result->branches });
+        $result = $self->ListBranches(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'branches') foreach (@{ $result->branches });
+    }
+
+    return undef
+  }
+  sub ListAllDomainAssociations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDomainAssociations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListDomainAssociations(@_, nextToken => $next_result->nextToken);
+        push @{ $result->domainAssociations }, @{ $next_result->domainAssociations };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'domainAssociations') foreach (@{ $result->domainAssociations });
+        $result = $self->ListDomainAssociations(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'domainAssociations') foreach (@{ $result->domainAssociations });
+    }
+
+    return undef
+  }
+  sub ListAllJobs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListJobs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListJobs(@_, nextToken => $next_result->nextToken);
+        push @{ $result->jobSummaries }, @{ $next_result->jobSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'jobSummaries') foreach (@{ $result->jobSummaries });
+        $result = $self->ListJobs(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'jobSummaries') foreach (@{ $result->jobSummaries });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CreateApp CreateBranch CreateDomainAssociation DeleteApp DeleteBranch DeleteDomainAssociation DeleteJob GetApp GetBranch GetDomainAssociation GetJob ListApps ListBranches ListDomainAssociations ListJobs StartJob StopJob UpdateApp UpdateBranch UpdateDomainAssociation / }
@@ -631,6 +723,54 @@ Create a new DomainAssociation on an App
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllApps(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllApps([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - apps, passing the object as the first parameter, and the string 'apps' as the second parameter 
+
+If not, it will return a a L<Paws::Amplify::ListAppsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllBranches(sub { },AppId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllBranches(AppId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - branches, passing the object as the first parameter, and the string 'branches' as the second parameter 
+
+If not, it will return a a L<Paws::Amplify::ListBranchesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDomainAssociations(sub { },AppId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllDomainAssociations(AppId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - domainAssociations, passing the object as the first parameter, and the string 'domainAssociations' as the second parameter 
+
+If not, it will return a a L<Paws::Amplify::ListDomainAssociationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllJobs(sub { },AppId => Str, BranchName => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllJobs(AppId => Str, BranchName => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - jobSummaries, passing the object as the first parameter, and the string 'jobSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::Amplify::ListJobsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

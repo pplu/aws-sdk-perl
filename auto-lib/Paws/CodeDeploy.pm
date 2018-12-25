@@ -369,6 +369,75 @@ package Paws::CodeDeploy;
 
     return undef
   }
+  sub ListAllDeploymentTargets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDeploymentTargets(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListDeploymentTargets(@_, nextToken => $next_result->nextToken);
+        push @{ $result->targetIds }, @{ $next_result->targetIds };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'targetIds') foreach (@{ $result->targetIds });
+        $result = $self->ListDeploymentTargets(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'targetIds') foreach (@{ $result->targetIds });
+    }
+
+    return undef
+  }
+  sub ListAllGitHubAccountTokenNames {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListGitHubAccountTokenNames(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListGitHubAccountTokenNames(@_, nextToken => $next_result->nextToken);
+        push @{ $result->tokenNameList }, @{ $next_result->tokenNameList };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'tokenNameList') foreach (@{ $result->tokenNameList });
+        $result = $self->ListGitHubAccountTokenNames(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'tokenNameList') foreach (@{ $result->tokenNameList });
+    }
+
+    return undef
+  }
+  sub ListAllOnPremisesInstances {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListOnPremisesInstances(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListOnPremisesInstances(@_, nextToken => $next_result->nextToken);
+        push @{ $result->instanceNames }, @{ $next_result->instanceNames };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'instanceNames') foreach (@{ $result->instanceNames });
+        $result = $self->ListOnPremisesInstances(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'instanceNames') foreach (@{ $result->instanceNames });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AddTagsToOnPremisesInstances BatchGetApplicationRevisions BatchGetApplications BatchGetDeploymentGroups BatchGetDeploymentInstances BatchGetDeployments BatchGetDeploymentTargets BatchGetOnPremisesInstances ContinueDeployment CreateApplication CreateDeployment CreateDeploymentConfig CreateDeploymentGroup DeleteApplication DeleteDeploymentConfig DeleteDeploymentGroup DeleteGitHubAccountToken DeregisterOnPremisesInstance GetApplication GetApplicationRevision GetDeployment GetDeploymentConfig GetDeploymentGroup GetDeploymentInstance GetDeploymentTarget GetOnPremisesInstance ListApplicationRevisions ListApplications ListDeploymentConfigs ListDeploymentGroups ListDeploymentInstances ListDeployments ListDeploymentTargets ListGitHubAccountTokenNames ListOnPremisesInstances PutLifecycleEventHookExecutionStatus RegisterApplicationRevision RegisterOnPremisesInstance RemoveTagsFromOnPremisesInstances SkipWaitTimeForInstanceTermination StopDeployment UpdateApplication UpdateDeploymentGroup / }
@@ -1488,6 +1557,42 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - deployments, passing the object as the first parameter, and the string 'deployments' as the second parameter 
 
 If not, it will return a a L<Paws::CodeDeploy::ListDeploymentsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDeploymentTargets(sub { },[DeploymentId => Str, NextToken => Str, TargetFilters => L<Paws::CodeDeploy::TargetFilters>])
+
+=head2 ListAllDeploymentTargets([DeploymentId => Str, NextToken => Str, TargetFilters => L<Paws::CodeDeploy::TargetFilters>])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - targetIds, passing the object as the first parameter, and the string 'targetIds' as the second parameter 
+
+If not, it will return a a L<Paws::CodeDeploy::ListDeploymentTargetsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllGitHubAccountTokenNames(sub { },[NextToken => Str])
+
+=head2 ListAllGitHubAccountTokenNames([NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - tokenNameList, passing the object as the first parameter, and the string 'tokenNameList' as the second parameter 
+
+If not, it will return a a L<Paws::CodeDeploy::ListGitHubAccountTokenNamesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllOnPremisesInstances(sub { },[NextToken => Str, RegistrationStatus => Str, TagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]])
+
+=head2 ListAllOnPremisesInstances([NextToken => Str, RegistrationStatus => Str, TagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - instanceNames, passing the object as the first parameter, and the string 'instanceNames' as the second parameter 
+
+If not, it will return a a L<Paws::CodeDeploy::ListOnPremisesInstancesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

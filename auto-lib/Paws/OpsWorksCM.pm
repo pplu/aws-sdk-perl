@@ -96,6 +96,75 @@ package Paws::OpsWorksCM;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllBackups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeBackups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeBackups(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Backups }, @{ $next_result->Backups };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Backups') foreach (@{ $result->Backups });
+        $result = $self->DescribeBackups(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Backups') foreach (@{ $result->Backups });
+    }
+
+    return undef
+  }
+  sub DescribeAllEvents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeEvents(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeEvents(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ServerEvents }, @{ $next_result->ServerEvents };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ServerEvents') foreach (@{ $result->ServerEvents });
+        $result = $self->DescribeEvents(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ServerEvents') foreach (@{ $result->ServerEvents });
+    }
+
+    return undef
+  }
+  sub DescribeAllServers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeServers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeServers(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Servers }, @{ $next_result->Servers };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Servers') foreach (@{ $result->Servers });
+        $result = $self->DescribeServers(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Servers') foreach (@{ $result->Servers });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AssociateNode CreateBackup CreateServer DeleteBackup DeleteServer DescribeAccountAttributes DescribeBackups DescribeEvents DescribeNodeAssociationStatus DescribeServers DisassociateNode ExportServerEngineAttribute RestoreServer StartMaintenance UpdateServer UpdateServerEngineAttributes / }
@@ -749,6 +818,42 @@ request are not valid.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllBackups(sub { },[BackupId => Str, MaxResults => Int, NextToken => Str, ServerName => Str])
+
+=head2 DescribeAllBackups([BackupId => Str, MaxResults => Int, NextToken => Str, ServerName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Backups, passing the object as the first parameter, and the string 'Backups' as the second parameter 
+
+If not, it will return a a L<Paws::OpsWorksCM::DescribeBackupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllEvents(sub { },ServerName => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllEvents(ServerName => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ServerEvents, passing the object as the first parameter, and the string 'ServerEvents' as the second parameter 
+
+If not, it will return a a L<Paws::OpsWorksCM::DescribeEventsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllServers(sub { },[MaxResults => Int, NextToken => Str, ServerName => Str])
+
+=head2 DescribeAllServers([MaxResults => Int, NextToken => Str, ServerName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Servers, passing the object as the first parameter, and the string 'Servers' as the second parameter 
+
+If not, it will return a a L<Paws::OpsWorksCM::DescribeServersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

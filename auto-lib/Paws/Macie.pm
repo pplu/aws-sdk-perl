@@ -51,6 +51,52 @@ package Paws::Macie;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllMemberAccounts {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListMemberAccounts(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListMemberAccounts(@_, nextToken => $next_result->nextToken);
+        push @{ $result->memberAccounts }, @{ $next_result->memberAccounts };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'memberAccounts') foreach (@{ $result->memberAccounts });
+        $result = $self->ListMemberAccounts(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'memberAccounts') foreach (@{ $result->memberAccounts });
+    }
+
+    return undef
+  }
+  sub ListAllS3Resources {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListS3Resources(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListS3Resources(@_, nextToken => $next_result->nextToken);
+        push @{ $result->s3Resources }, @{ $next_result->s3Resources };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 's3Resources') foreach (@{ $result->s3Resources });
+        $result = $self->ListS3Resources(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 's3Resources') foreach (@{ $result->s3Resources });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AssociateMemberAccount AssociateS3Resources DisassociateMemberAccount DisassociateS3Resources ListMemberAccounts ListS3Resources UpdateS3Resources / }
@@ -244,6 +290,30 @@ for the specified member account.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllMemberAccounts(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllMemberAccounts([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - memberAccounts, passing the object as the first parameter, and the string 'memberAccounts' as the second parameter 
+
+If not, it will return a a L<Paws::Macie::ListMemberAccountsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllS3Resources(sub { },[MaxResults => Int, MemberAccountId => Str, NextToken => Str])
+
+=head2 ListAllS3Resources([MaxResults => Int, MemberAccountId => Str, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - s3Resources, passing the object as the first parameter, and the string 's3Resources' as the second parameter 
+
+If not, it will return a a L<Paws::Macie::ListS3ResourcesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

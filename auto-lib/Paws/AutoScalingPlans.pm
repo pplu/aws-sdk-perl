@@ -46,6 +46,52 @@ package Paws::AutoScalingPlans;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllScalingPlanResources {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeScalingPlanResources(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeScalingPlanResources(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ScalingPlanResources }, @{ $next_result->ScalingPlanResources };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ScalingPlanResources') foreach (@{ $result->ScalingPlanResources });
+        $result = $self->DescribeScalingPlanResources(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ScalingPlanResources') foreach (@{ $result->ScalingPlanResources });
+    }
+
+    return undef
+  }
+  sub DescribeAllScalingPlans {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeScalingPlans(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeScalingPlans(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ScalingPlans }, @{ $next_result->ScalingPlans };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ScalingPlans') foreach (@{ $result->ScalingPlans });
+        $result = $self->DescribeScalingPlans(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ScalingPlans') foreach (@{ $result->ScalingPlans });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CreateScalingPlan DeleteScalingPlan DescribeScalingPlanResources DescribeScalingPlans GetScalingPlanResourceForecastData UpdateScalingPlan / }
@@ -250,6 +296,30 @@ created, updated, or deleted.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllScalingPlanResources(sub { },ScalingPlanName => Str, ScalingPlanVersion => Int, [MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllScalingPlanResources(ScalingPlanName => Str, ScalingPlanVersion => Int, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ScalingPlanResources, passing the object as the first parameter, and the string 'ScalingPlanResources' as the second parameter 
+
+If not, it will return a a L<Paws::AutoScalingPlans::DescribeScalingPlanResourcesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllScalingPlans(sub { },[ApplicationSources => ArrayRef[L<Paws::AutoScalingPlans::ApplicationSource>], MaxResults => Int, NextToken => Str, ScalingPlanNames => ArrayRef[Str|Undef], ScalingPlanVersion => Int])
+
+=head2 DescribeAllScalingPlans([ApplicationSources => ArrayRef[L<Paws::AutoScalingPlans::ApplicationSource>], MaxResults => Int, NextToken => Str, ScalingPlanNames => ArrayRef[Str|Undef], ScalingPlanVersion => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ScalingPlans, passing the object as the first parameter, and the string 'ScalingPlans' as the second parameter 
+
+If not, it will return a a L<Paws::AutoScalingPlans::DescribeScalingPlansResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

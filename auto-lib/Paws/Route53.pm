@@ -367,6 +367,29 @@ package Paws::Route53;
 
     return undef
   }
+  sub ListAllQueryLoggingConfigs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListQueryLoggingConfigs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListQueryLoggingConfigs(@_, NextToken => $next_result->NextToken);
+        push @{ $result->QueryLoggingConfigs }, @{ $next_result->QueryLoggingConfigs };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'QueryLoggingConfigs') foreach (@{ $result->QueryLoggingConfigs });
+        $result = $self->ListQueryLoggingConfigs(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'QueryLoggingConfigs') foreach (@{ $result->QueryLoggingConfigs });
+    }
+
+    return undef
+  }
   sub ListAllResourceRecordSets {
     my $self = shift;
 
@@ -2454,6 +2477,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - HostedZones, passing the object as the first parameter, and the string 'HostedZones' as the second parameter 
 
 If not, it will return a a L<Paws::Route53::ListHostedZonesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllQueryLoggingConfigs(sub { },[HostedZoneId => Str, MaxResults => Str, NextToken => Str])
+
+=head2 ListAllQueryLoggingConfigs([HostedZoneId => Str, MaxResults => Str, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - QueryLoggingConfigs, passing the object as the first parameter, and the string 'QueryLoggingConfigs' as the second parameter 
+
+If not, it will return a a L<Paws::Route53::ListQueryLoggingConfigsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllResourceRecordSets(sub { },HostedZoneId => Str, [MaxItems => Str, StartRecordIdentifier => Str, StartRecordName => Str, StartRecordType => Str])

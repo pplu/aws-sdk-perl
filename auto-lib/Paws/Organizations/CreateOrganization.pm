@@ -53,7 +53,7 @@ feature set supports different levels of functionality.
 
 I<CONSOLIDATED_BILLING>: All member accounts have their bills
 consolidated to and paid by the master account. For more information,
-see Consolidated Billing
+see Consolidated billing
 (http://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-cb-only)
 in the I<AWS Organizations User Guide>.
 

@@ -176,6 +176,98 @@ package Paws::CodePipeline;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllActionTypes {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListActionTypes(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListActionTypes(@_, nextToken => $next_result->nextToken);
+        push @{ $result->actionTypes }, @{ $next_result->actionTypes };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'actionTypes') foreach (@{ $result->actionTypes });
+        $result = $self->ListActionTypes(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'actionTypes') foreach (@{ $result->actionTypes });
+    }
+
+    return undef
+  }
+  sub ListAllPipelineExecutions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPipelineExecutions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListPipelineExecutions(@_, nextToken => $next_result->nextToken);
+        push @{ $result->pipelineExecutionSummaries }, @{ $next_result->pipelineExecutionSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'pipelineExecutionSummaries') foreach (@{ $result->pipelineExecutionSummaries });
+        $result = $self->ListPipelineExecutions(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'pipelineExecutionSummaries') foreach (@{ $result->pipelineExecutionSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllPipelines {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPipelines(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListPipelines(@_, nextToken => $next_result->nextToken);
+        push @{ $result->pipelines }, @{ $next_result->pipelines };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'pipelines') foreach (@{ $result->pipelines });
+        $result = $self->ListPipelines(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'pipelines') foreach (@{ $result->pipelines });
+    }
+
+    return undef
+  }
+  sub ListAllWebhooks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListWebhooks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListWebhooks(@_, NextToken => $next_result->NextToken);
+        push @{ $result->webhooks }, @{ $next_result->webhooks };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'webhooks') foreach (@{ $result->webhooks });
+        $result = $self->ListWebhooks(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'webhooks') foreach (@{ $result->webhooks });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AcknowledgeJob AcknowledgeThirdPartyJob CreateCustomActionType CreatePipeline DeleteCustomActionType DeletePipeline DeleteWebhook DeregisterWebhookWithThirdParty DisableStageTransition EnableStageTransition GetJobDetails GetPipeline GetPipelineExecution GetPipelineState GetThirdPartyJobDetails ListActionTypes ListPipelineExecutions ListPipelines ListWebhooks PollForJobs PollForThirdPartyJobs PutActionRevision PutApprovalResult PutJobFailureResult PutJobSuccessResult PutThirdPartyJobFailureResult PutThirdPartyJobSuccessResult PutWebhook RegisterWebhookWithThirdParty RetryStageExecution StartPipelineExecution UpdatePipeline / }
@@ -1105,6 +1197,54 @@ the pipeline increases the version number of the pipeline by 1.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllActionTypes(sub { },[ActionOwnerFilter => Str, NextToken => Str])
+
+=head2 ListAllActionTypes([ActionOwnerFilter => Str, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - actionTypes, passing the object as the first parameter, and the string 'actionTypes' as the second parameter 
+
+If not, it will return a a L<Paws::CodePipeline::ListActionTypesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPipelineExecutions(sub { },PipelineName => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllPipelineExecutions(PipelineName => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - pipelineExecutionSummaries, passing the object as the first parameter, and the string 'pipelineExecutionSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::CodePipeline::ListPipelineExecutionsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPipelines(sub { },[NextToken => Str])
+
+=head2 ListAllPipelines([NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - pipelines, passing the object as the first parameter, and the string 'pipelines' as the second parameter 
+
+If not, it will return a a L<Paws::CodePipeline::ListPipelinesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllWebhooks(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllWebhooks([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - webhooks, passing the object as the first parameter, and the string 'webhooks' as the second parameter 
+
+If not, it will return a a L<Paws::CodePipeline::ListWebhooksOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

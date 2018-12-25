@@ -101,6 +101,52 @@ package Paws::ACMPCA;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllCertificateAuthorities {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListCertificateAuthorities(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListCertificateAuthorities(@_, NextToken => $next_result->NextToken);
+        push @{ $result->CertificateAuthorities }, @{ $next_result->CertificateAuthorities };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'CertificateAuthorities') foreach (@{ $result->CertificateAuthorities });
+        $result = $self->ListCertificateAuthorities(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'CertificateAuthorities') foreach (@{ $result->CertificateAuthorities });
+    }
+
+    return undef
+  }
+  sub ListAllTags {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTags(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTags(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Tags }, @{ $next_result->Tags };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+        $result = $self->ListTags(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CreateCertificateAuthority CreateCertificateAuthorityAuditReport DeleteCertificateAuthority DescribeCertificateAuthority DescribeCertificateAuthorityAuditReport GetCertificate GetCertificateAuthorityCertificate GetCertificateAuthorityCsr ImportCertificateAuthorityCertificate IssueCertificate ListCertificateAuthorities ListTags RestoreCertificateAuthority RevokeCertificate TagCertificateAuthority UntagCertificateAuthority UpdateCertificateAuthority / }
@@ -314,9 +360,8 @@ new CA.
 =item *
 
 C<DELETED> - Your private CA is within the restoration period, after
-which it will be permanently deleted. The length of time remaining in
-the CA's restoration period will also be included in this operation's
-output.
+which it is permanently deleted. The length of time remaining in the
+CA's restoration period is also included in this operation's output.
 
 =back
 
@@ -659,6 +704,30 @@ again.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllCertificateAuthorities(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllCertificateAuthorities([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - CertificateAuthorities, passing the object as the first parameter, and the string 'CertificateAuthorities' as the second parameter 
+
+If not, it will return a a L<Paws::ACMPCA::ListCertificateAuthoritiesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTags(sub { },CertificateAuthorityArn => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllTags(CertificateAuthorityArn => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Tags, passing the object as the first parameter, and the string 'Tags' as the second parameter 
+
+If not, it will return a a L<Paws::ACMPCA::ListTagsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

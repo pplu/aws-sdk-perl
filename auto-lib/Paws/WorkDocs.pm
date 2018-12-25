@@ -220,6 +220,52 @@ package Paws::WorkDocs;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllActivities {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeActivities(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeActivities(@_, Marker => $next_result->Marker);
+        push @{ $result->UserActivities }, @{ $next_result->UserActivities };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'UserActivities') foreach (@{ $result->UserActivities });
+        $result = $self->DescribeActivities(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'UserActivities') foreach (@{ $result->UserActivities });
+    }
+
+    return undef
+  }
+  sub DescribeAllComments {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeComments(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeComments(@_, Marker => $next_result->Marker);
+        push @{ $result->Comments }, @{ $next_result->Comments };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'Comments') foreach (@{ $result->Comments });
+        $result = $self->DescribeComments(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'Comments') foreach (@{ $result->Comments });
+    }
+
+    return undef
+  }
   sub DescribeAllDocumentVersions {
     my $self = shift;
 
@@ -265,6 +311,98 @@ package Paws::WorkDocs;
       }
       $callback->($_ => 'Folders') foreach (@{ $result->Folders });
       $callback->($_ => 'Documents') foreach (@{ $result->Documents });
+    }
+
+    return undef
+  }
+  sub DescribeAllGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeGroups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeGroups(@_, Marker => $next_result->Marker);
+        push @{ $result->Groups }, @{ $next_result->Groups };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'Groups') foreach (@{ $result->Groups });
+        $result = $self->DescribeGroups(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'Groups') foreach (@{ $result->Groups });
+    }
+
+    return undef
+  }
+  sub DescribeAllNotificationSubscriptions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeNotificationSubscriptions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeNotificationSubscriptions(@_, Marker => $next_result->Marker);
+        push @{ $result->Subscriptions }, @{ $next_result->Subscriptions };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'Subscriptions') foreach (@{ $result->Subscriptions });
+        $result = $self->DescribeNotificationSubscriptions(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'Subscriptions') foreach (@{ $result->Subscriptions });
+    }
+
+    return undef
+  }
+  sub DescribeAllResourcePermissions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeResourcePermissions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeResourcePermissions(@_, Marker => $next_result->Marker);
+        push @{ $result->Principals }, @{ $next_result->Principals };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'Principals') foreach (@{ $result->Principals });
+        $result = $self->DescribeResourcePermissions(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'Principals') foreach (@{ $result->Principals });
+    }
+
+    return undef
+  }
+  sub DescribeAllRootFolders {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeRootFolders(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeRootFolders(@_, Marker => $next_result->Marker);
+        push @{ $result->Folders }, @{ $next_result->Folders };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'Folders') foreach (@{ $result->Folders });
+        $result = $self->DescribeRootFolders(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'Folders') foreach (@{ $result->Folders });
     }
 
     return undef
@@ -1389,6 +1527,30 @@ revokes administrative privileges to the Amazon WorkDocs site.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
+=head2 DescribeAllActivities(sub { },[ActivityTypes => Str, AuthenticationToken => Str, EndTime => Str, IncludeIndirectActivities => Bool, Limit => Int, Marker => Str, OrganizationId => Str, ResourceId => Str, StartTime => Str, UserId => Str])
+
+=head2 DescribeAllActivities([ActivityTypes => Str, AuthenticationToken => Str, EndTime => Str, IncludeIndirectActivities => Bool, Limit => Int, Marker => Str, OrganizationId => Str, ResourceId => Str, StartTime => Str, UserId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - UserActivities, passing the object as the first parameter, and the string 'UserActivities' as the second parameter 
+
+If not, it will return a a L<Paws::WorkDocs::DescribeActivitiesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllComments(sub { },DocumentId => Str, VersionId => Str, [AuthenticationToken => Str, Limit => Int, Marker => Str])
+
+=head2 DescribeAllComments(DocumentId => Str, VersionId => Str, [AuthenticationToken => Str, Limit => Int, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Comments, passing the object as the first parameter, and the string 'Comments' as the second parameter 
+
+If not, it will return a a L<Paws::WorkDocs::DescribeCommentsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllDocumentVersions(sub { },DocumentId => Str, [AuthenticationToken => Str, Fields => Str, Include => Str, Limit => Int, Marker => Str])
 
 =head2 DescribeAllDocumentVersions(DocumentId => Str, [AuthenticationToken => Str, Fields => Str, Include => Str, Limit => Int, Marker => Str])
@@ -1413,6 +1575,54 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Documents, passing the object as the first parameter, and the string 'Documents' as the second parameter 
 
 If not, it will return a a L<Paws::WorkDocs::DescribeFolderContentsResponse> instance with all the C<param>s; andC<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllGroups(sub { },SearchQuery => Str, [AuthenticationToken => Str, Limit => Int, Marker => Str, OrganizationId => Str])
+
+=head2 DescribeAllGroups(SearchQuery => Str, [AuthenticationToken => Str, Limit => Int, Marker => Str, OrganizationId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Groups, passing the object as the first parameter, and the string 'Groups' as the second parameter 
+
+If not, it will return a a L<Paws::WorkDocs::DescribeGroupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllNotificationSubscriptions(sub { },OrganizationId => Str, [Limit => Int, Marker => Str])
+
+=head2 DescribeAllNotificationSubscriptions(OrganizationId => Str, [Limit => Int, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Subscriptions, passing the object as the first parameter, and the string 'Subscriptions' as the second parameter 
+
+If not, it will return a a L<Paws::WorkDocs::DescribeNotificationSubscriptionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllResourcePermissions(sub { },ResourceId => Str, [AuthenticationToken => Str, Limit => Int, Marker => Str, PrincipalId => Str])
+
+=head2 DescribeAllResourcePermissions(ResourceId => Str, [AuthenticationToken => Str, Limit => Int, Marker => Str, PrincipalId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Principals, passing the object as the first parameter, and the string 'Principals' as the second parameter 
+
+If not, it will return a a L<Paws::WorkDocs::DescribeResourcePermissionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllRootFolders(sub { },AuthenticationToken => Str, [Limit => Int, Marker => Str])
+
+=head2 DescribeAllRootFolders(AuthenticationToken => Str, [Limit => Int, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Folders, passing the object as the first parameter, and the string 'Folders' as the second parameter 
+
+If not, it will return a a L<Paws::WorkDocs::DescribeRootFoldersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DescribeAllUsers(sub { },[AuthenticationToken => Str, Fields => Str, Include => Str, Limit => Int, Marker => Str, Order => Str, OrganizationId => Str, Query => Str, Sort => Str, UserIds => Str])

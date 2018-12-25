@@ -236,6 +236,236 @@ package Paws::AppStream;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllDirectoryConfigs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDirectoryConfigs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeDirectoryConfigs(@_, NextToken => $next_result->NextToken);
+        push @{ $result->DirectoryConfigs }, @{ $next_result->DirectoryConfigs };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'DirectoryConfigs') foreach (@{ $result->DirectoryConfigs });
+        $result = $self->DescribeDirectoryConfigs(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'DirectoryConfigs') foreach (@{ $result->DirectoryConfigs });
+    }
+
+    return undef
+  }
+  sub DescribeAllFleets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeFleets(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeFleets(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Fleets }, @{ $next_result->Fleets };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Fleets') foreach (@{ $result->Fleets });
+        $result = $self->DescribeFleets(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Fleets') foreach (@{ $result->Fleets });
+    }
+
+    return undef
+  }
+  sub DescribeAllImageBuilders {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeImageBuilders(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeImageBuilders(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ImageBuilders }, @{ $next_result->ImageBuilders };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ImageBuilders') foreach (@{ $result->ImageBuilders });
+        $result = $self->DescribeImageBuilders(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ImageBuilders') foreach (@{ $result->ImageBuilders });
+    }
+
+    return undef
+  }
+  sub DescribeAllImages {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeImages(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeImages(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Images }, @{ $next_result->Images };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Images') foreach (@{ $result->Images });
+        $result = $self->DescribeImages(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Images') foreach (@{ $result->Images });
+    }
+
+    return undef
+  }
+  sub DescribeAllSessions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeSessions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeSessions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Sessions }, @{ $next_result->Sessions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Sessions') foreach (@{ $result->Sessions });
+        $result = $self->DescribeSessions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Sessions') foreach (@{ $result->Sessions });
+    }
+
+    return undef
+  }
+  sub DescribeAllStacks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeStacks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeStacks(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Stacks }, @{ $next_result->Stacks };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Stacks') foreach (@{ $result->Stacks });
+        $result = $self->DescribeStacks(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Stacks') foreach (@{ $result->Stacks });
+    }
+
+    return undef
+  }
+  sub DescribeAllUsers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeUsers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeUsers(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Users }, @{ $next_result->Users };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Users') foreach (@{ $result->Users });
+        $result = $self->DescribeUsers(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Users') foreach (@{ $result->Users });
+    }
+
+    return undef
+  }
+  sub DescribeAllUserStackAssociations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeUserStackAssociations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeUserStackAssociations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->UserStackAssociations }, @{ $next_result->UserStackAssociations };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'UserStackAssociations') foreach (@{ $result->UserStackAssociations });
+        $result = $self->DescribeUserStackAssociations(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'UserStackAssociations') foreach (@{ $result->UserStackAssociations });
+    }
+
+    return undef
+  }
+  sub ListAllAssociatedFleets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAssociatedFleets(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListAssociatedFleets(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Names }, @{ $next_result->Names };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Names') foreach (@{ $result->Names });
+        $result = $self->ListAssociatedFleets(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Names') foreach (@{ $result->Names });
+    }
+
+    return undef
+  }
+  sub ListAllAssociatedStacks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAssociatedStacks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListAssociatedStacks(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Names }, @{ $next_result->Names };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Names') foreach (@{ $result->Names });
+        $result = $self->ListAssociatedStacks(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Names') foreach (@{ $result->Names });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AssociateFleet BatchAssociateUserStack BatchDisassociateUserStack CopyImage CreateDirectoryConfig CreateFleet CreateImageBuilder CreateImageBuilderStreamingURL CreateStack CreateStreamingURL CreateUser DeleteDirectoryConfig DeleteFleet DeleteImage DeleteImageBuilder DeleteImagePermissions DeleteStack DeleteUser DescribeDirectoryConfigs DescribeFleets DescribeImageBuilders DescribeImagePermissions DescribeImages DescribeSessions DescribeStacks DescribeUsers DescribeUserStackAssociations DisableUser DisassociateFleet EnableUser ExpireSession ListAssociatedFleets ListAssociatedStacks ListTagsForResource StartFleet StartImageBuilder StopFleet StopImageBuilder TagResource UntagResource UpdateDirectoryConfig UpdateFleet UpdateImagePermissions UpdateStack / }
@@ -1291,6 +1521,126 @@ Updates the specified fields for the specified stack.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllDirectoryConfigs(sub { },[DirectoryNames => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllDirectoryConfigs([DirectoryNames => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DirectoryConfigs, passing the object as the first parameter, and the string 'DirectoryConfigs' as the second parameter 
+
+If not, it will return a a L<Paws::AppStream::DescribeDirectoryConfigsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllFleets(sub { },[Names => ArrayRef[Str|Undef], NextToken => Str])
+
+=head2 DescribeAllFleets([Names => ArrayRef[Str|Undef], NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Fleets, passing the object as the first parameter, and the string 'Fleets' as the second parameter 
+
+If not, it will return a a L<Paws::AppStream::DescribeFleetsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllImageBuilders(sub { },[MaxResults => Int, Names => ArrayRef[Str|Undef], NextToken => Str])
+
+=head2 DescribeAllImageBuilders([MaxResults => Int, Names => ArrayRef[Str|Undef], NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ImageBuilders, passing the object as the first parameter, and the string 'ImageBuilders' as the second parameter 
+
+If not, it will return a a L<Paws::AppStream::DescribeImageBuildersResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllImages(sub { },[Arns => ArrayRef[Str|Undef], MaxResults => Int, Names => ArrayRef[Str|Undef], NextToken => Str, Type => Str])
+
+=head2 DescribeAllImages([Arns => ArrayRef[Str|Undef], MaxResults => Int, Names => ArrayRef[Str|Undef], NextToken => Str, Type => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Images, passing the object as the first parameter, and the string 'Images' as the second parameter 
+
+If not, it will return a a L<Paws::AppStream::DescribeImagesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllSessions(sub { },FleetName => Str, StackName => Str, [AuthenticationType => Str, Limit => Int, NextToken => Str, UserId => Str])
+
+=head2 DescribeAllSessions(FleetName => Str, StackName => Str, [AuthenticationType => Str, Limit => Int, NextToken => Str, UserId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Sessions, passing the object as the first parameter, and the string 'Sessions' as the second parameter 
+
+If not, it will return a a L<Paws::AppStream::DescribeSessionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllStacks(sub { },[Names => ArrayRef[Str|Undef], NextToken => Str])
+
+=head2 DescribeAllStacks([Names => ArrayRef[Str|Undef], NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Stacks, passing the object as the first parameter, and the string 'Stacks' as the second parameter 
+
+If not, it will return a a L<Paws::AppStream::DescribeStacksResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllUsers(sub { },AuthenticationType => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllUsers(AuthenticationType => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Users, passing the object as the first parameter, and the string 'Users' as the second parameter 
+
+If not, it will return a a L<Paws::AppStream::DescribeUsersResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllUserStackAssociations(sub { },[AuthenticationType => Str, MaxResults => Int, NextToken => Str, StackName => Str, UserName => Str])
+
+=head2 DescribeAllUserStackAssociations([AuthenticationType => Str, MaxResults => Int, NextToken => Str, StackName => Str, UserName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - UserStackAssociations, passing the object as the first parameter, and the string 'UserStackAssociations' as the second parameter 
+
+If not, it will return a a L<Paws::AppStream::DescribeUserStackAssociationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAssociatedFleets(sub { },StackName => Str, [NextToken => Str])
+
+=head2 ListAllAssociatedFleets(StackName => Str, [NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Names, passing the object as the first parameter, and the string 'Names' as the second parameter 
+
+If not, it will return a a L<Paws::AppStream::ListAssociatedFleetsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAssociatedStacks(sub { },FleetName => Str, [NextToken => Str])
+
+=head2 ListAllAssociatedStacks(FleetName => Str, [NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Names, passing the object as the first parameter, and the string 'Names' as the second parameter 
+
+If not, it will return a a L<Paws::AppStream::ListAssociatedStacksResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

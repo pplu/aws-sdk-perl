@@ -95,6 +95,52 @@ package Paws::Chime;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllAccounts {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAccounts(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListAccounts(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Accounts }, @{ $next_result->Accounts };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Accounts') foreach (@{ $result->Accounts });
+        $result = $self->ListAccounts(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Accounts') foreach (@{ $result->Accounts });
+    }
+
+    return undef
+  }
+  sub ListAllUsers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListUsers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListUsers(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Users }, @{ $next_result->Users };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Users') foreach (@{ $result->Users });
+        $result = $self->ListUsers(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Users') foreach (@{ $result->Users });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/BatchSuspendUser BatchUnsuspendUser BatchUpdateUser CreateAccount DeleteAccount GetAccount GetAccountSettings GetUser InviteUsers ListAccounts ListUsers LogoutUser ResetPersonalPIN UpdateAccount UpdateAccountSettings UpdateUser / }
@@ -548,6 +594,30 @@ C<LicenseType> updates are supported for this action.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllAccounts(sub { },[MaxResults => Int, Name => Str, NextToken => Str, UserEmail => Str])
+
+=head2 ListAllAccounts([MaxResults => Int, Name => Str, NextToken => Str, UserEmail => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Accounts, passing the object as the first parameter, and the string 'Accounts' as the second parameter 
+
+If not, it will return a a L<Paws::Chime::ListAccountsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllUsers(sub { },AccountId => Str, [MaxResults => Int, NextToken => Str, UserEmail => Str])
+
+=head2 ListAllUsers(AccountId => Str, [MaxResults => Int, NextToken => Str, UserEmail => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Users, passing the object as the first parameter, and the string 'Users' as the second parameter 
+
+If not, it will return a a L<Paws::Chime::ListUsersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

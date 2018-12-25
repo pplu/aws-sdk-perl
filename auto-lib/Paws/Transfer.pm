@@ -106,6 +106,29 @@ package Paws::Transfer;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllServers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListServers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListServers(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Servers }, @{ $next_result->Servers };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Servers') foreach (@{ $result->Servers });
+        $result = $self->ListServers(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Servers') foreach (@{ $result->Servers });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CreateServer CreateUser DeleteServer DeleteSshPublicKey DeleteUser DescribeServer DescribeUser ImportSshPublicKey ListServers ListTagsForResource ListUsers StartServer StopServer TagResource TestIdentityProvider UntagResource UpdateServer UpdateUser / }
@@ -577,6 +600,18 @@ updated user.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllServers(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllServers([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Servers, passing the object as the first parameter, and the string 'Servers' as the second parameter 
+
+If not, it will return a a L<Paws::Transfer::ListServersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

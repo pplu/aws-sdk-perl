@@ -135,6 +135,29 @@ package Paws::ApplicationAutoScaling;
 
     return undef
   }
+  sub DescribeAllScheduledActions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeScheduledActions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeScheduledActions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ScheduledActions }, @{ $next_result->ScheduledActions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ScheduledActions') foreach (@{ $result->ScheduledActions });
+        $result = $self->DescribeScheduledActions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ScheduledActions') foreach (@{ $result->ScheduledActions });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/DeleteScalingPolicy DeleteScheduledAction DeregisterScalableTarget DescribeScalableTargets DescribeScalingActivities DescribeScalingPolicies DescribeScheduledActions PutScalingPolicy PutScheduledAction RegisterScalableTarget / }
@@ -634,6 +657,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - ScalingPolicies, passing the object as the first parameter, and the string 'ScalingPolicies' as the second parameter 
 
 If not, it will return a a L<Paws::ApplicationAutoScaling::DescribeScalingPoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllScheduledActions(sub { },ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, ResourceId => Str, ScalableDimension => Str, ScheduledActionNames => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllScheduledActions(ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, ResourceId => Str, ScalableDimension => Str, ScheduledActionNames => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ScheduledActions, passing the object as the first parameter, and the string 'ScheduledActions' as the second parameter 
+
+If not, it will return a a L<Paws::ApplicationAutoScaling::DescribeScheduledActionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

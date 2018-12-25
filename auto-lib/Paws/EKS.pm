@@ -50,6 +50,52 @@ package Paws::EKS;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllClusters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListClusters(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListClusters(@_, nextToken => $next_result->nextToken);
+        push @{ $result->clusters }, @{ $next_result->clusters };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'clusters') foreach (@{ $result->clusters });
+        $result = $self->ListClusters(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'clusters') foreach (@{ $result->clusters });
+    }
+
+    return undef
+  }
+  sub ListAllUpdates {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListUpdates(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListUpdates(@_, nextToken => $next_result->nextToken);
+        push @{ $result->updateIds }, @{ $next_result->updateIds };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'updateIds') foreach (@{ $result->updateIds });
+        $result = $self->ListUpdates(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'updateIds') foreach (@{ $result->updateIds });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CreateCluster DeleteCluster DescribeCluster DescribeUpdate ListClusters ListUpdates UpdateClusterVersion / }
@@ -294,6 +340,30 @@ to C<Active>.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllClusters(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllClusters([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - clusters, passing the object as the first parameter, and the string 'clusters' as the second parameter 
+
+If not, it will return a a L<Paws::EKS::ListClustersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllUpdates(sub { },Name => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllUpdates(Name => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - updateIds, passing the object as the first parameter, and the string 'updateIds' as the second parameter 
+
+If not, it will return a a L<Paws::EKS::ListUpdatesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

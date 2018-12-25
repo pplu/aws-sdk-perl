@@ -365,6 +365,29 @@ package Paws::SES;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllConfigurationSets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListConfigurationSets(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListConfigurationSets(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ConfigurationSets }, @{ $next_result->ConfigurationSets };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ConfigurationSets') foreach (@{ $result->ConfigurationSets });
+        $result = $self->ListConfigurationSets(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ConfigurationSets') foreach (@{ $result->ConfigurationSets });
+    }
+
+    return undef
+  }
   sub ListAllCustomVerificationEmailTemplates {
     my $self = shift;
 
@@ -407,6 +430,52 @@ package Paws::SES;
         $result = $self->ListIdentities(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'Identities') foreach (@{ $result->Identities });
+    }
+
+    return undef
+  }
+  sub ListAllReceiptRuleSets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListReceiptRuleSets(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListReceiptRuleSets(@_, NextToken => $next_result->NextToken);
+        push @{ $result->RuleSets }, @{ $next_result->RuleSets };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'RuleSets') foreach (@{ $result->RuleSets });
+        $result = $self->ListReceiptRuleSets(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'RuleSets') foreach (@{ $result->RuleSets });
+    }
+
+    return undef
+  }
+  sub ListAllTemplates {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTemplates(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTemplates(@_, NextToken => $next_result->NextToken);
+        push @{ $result->TemplatesMetadata }, @{ $next_result->TemplatesMetadata };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'TemplatesMetadata') foreach (@{ $result->TemplatesMetadata });
+        $result = $self->ListTemplates(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'TemplatesMetadata') foreach (@{ $result->TemplatesMetadata });
     }
 
     return undef
@@ -2575,6 +2644,18 @@ You can execute this operation no more than once per second.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
+=head2 ListAllConfigurationSets(sub { },[MaxItems => Int, NextToken => Str])
+
+=head2 ListAllConfigurationSets([MaxItems => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ConfigurationSets, passing the object as the first parameter, and the string 'ConfigurationSets' as the second parameter 
+
+If not, it will return a a L<Paws::SES::ListConfigurationSetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllCustomVerificationEmailTemplates(sub { },[MaxResults => Int, NextToken => Str])
 
 =head2 ListAllCustomVerificationEmailTemplates([MaxResults => Int, NextToken => Str])
@@ -2597,6 +2678,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Identities, passing the object as the first parameter, and the string 'Identities' as the second parameter 
 
 If not, it will return a a L<Paws::SES::ListIdentitiesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllReceiptRuleSets(sub { },[NextToken => Str])
+
+=head2 ListAllReceiptRuleSets([NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - RuleSets, passing the object as the first parameter, and the string 'RuleSets' as the second parameter 
+
+If not, it will return a a L<Paws::SES::ListReceiptRuleSetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTemplates(sub { },[MaxItems => Int, NextToken => Str])
+
+=head2 ListAllTemplates([MaxItems => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TemplatesMetadata, passing the object as the first parameter, and the string 'TemplatesMetadata' as the second parameter 
+
+If not, it will return a a L<Paws::SES::ListTemplatesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

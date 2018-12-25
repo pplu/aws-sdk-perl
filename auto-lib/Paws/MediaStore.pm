@@ -81,6 +81,29 @@ package Paws::MediaStore;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllContainers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListContainers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListContainers(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Containers }, @{ $next_result->Containers };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Containers') foreach (@{ $result->Containers });
+        $result = $self->ListContainers(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Containers') foreach (@{ $result->Containers });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CreateContainer DeleteContainer DeleteContainerPolicy DeleteCorsPolicy DeleteLifecyclePolicy DescribeContainer GetContainerPolicy GetCorsPolicy GetLifecyclePolicy ListContainers PutContainerPolicy PutCorsPolicy PutLifecyclePolicy / }
@@ -395,6 +418,18 @@ existing policy with the new policy.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllContainers(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllContainers([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Containers, passing the object as the first parameter, and the string 'Containers' as the second parameter 
+
+If not, it will return a a L<Paws::MediaStore::ListContainersOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

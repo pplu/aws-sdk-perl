@@ -185,6 +185,121 @@ package Paws::IoTAnalytics;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllChannels {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListChannels(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListChannels(@_, nextToken => $next_result->nextToken);
+        push @{ $result->channelSummaries }, @{ $next_result->channelSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'channelSummaries') foreach (@{ $result->channelSummaries });
+        $result = $self->ListChannels(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'channelSummaries') foreach (@{ $result->channelSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllDatasetContents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDatasetContents(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListDatasetContents(@_, nextToken => $next_result->nextToken);
+        push @{ $result->datasetContentSummaries }, @{ $next_result->datasetContentSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'datasetContentSummaries') foreach (@{ $result->datasetContentSummaries });
+        $result = $self->ListDatasetContents(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'datasetContentSummaries') foreach (@{ $result->datasetContentSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllDatasets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDatasets(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListDatasets(@_, nextToken => $next_result->nextToken);
+        push @{ $result->datasetSummaries }, @{ $next_result->datasetSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'datasetSummaries') foreach (@{ $result->datasetSummaries });
+        $result = $self->ListDatasets(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'datasetSummaries') foreach (@{ $result->datasetSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllDatastores {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDatastores(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListDatastores(@_, nextToken => $next_result->nextToken);
+        push @{ $result->datastoreSummaries }, @{ $next_result->datastoreSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'datastoreSummaries') foreach (@{ $result->datastoreSummaries });
+        $result = $self->ListDatastores(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'datastoreSummaries') foreach (@{ $result->datastoreSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllPipelines {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPipelines(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListPipelines(@_, nextToken => $next_result->nextToken);
+        push @{ $result->pipelineSummaries }, @{ $next_result->pipelineSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'pipelineSummaries') foreach (@{ $result->pipelineSummaries });
+        $result = $self->ListPipelines(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'pipelineSummaries') foreach (@{ $result->pipelineSummaries });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/BatchPutMessage CancelPipelineReprocessing CreateChannel CreateDataset CreateDatasetContent CreateDatastore CreatePipeline DeleteChannel DeleteDataset DeleteDatasetContent DeleteDatastore DeletePipeline DescribeChannel DescribeDataset DescribeDatastore DescribeLoggingOptions DescribePipeline GetDatasetContent ListChannels ListDatasetContents ListDatasets ListDatastores ListPipelines ListTagsForResource PutLoggingOptions RunPipelineActivity SampleChannelData StartPipelineReprocessing TagResource UntagResource UpdateChannel UpdateDataset UpdateDatastore UpdatePipeline / }
@@ -892,6 +1007,66 @@ Updates the settings of a pipeline.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllChannels(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllChannels([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - channelSummaries, passing the object as the first parameter, and the string 'channelSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::IoTAnalytics::ListChannelsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDatasetContents(sub { },DatasetName => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllDatasetContents(DatasetName => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - datasetContentSummaries, passing the object as the first parameter, and the string 'datasetContentSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::IoTAnalytics::ListDatasetContentsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDatasets(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllDatasets([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - datasetSummaries, passing the object as the first parameter, and the string 'datasetSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::IoTAnalytics::ListDatasetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDatastores(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllDatastores([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - datastoreSummaries, passing the object as the first parameter, and the string 'datastoreSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::IoTAnalytics::ListDatastoresResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPipelines(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllPipelines([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - pipelineSummaries, passing the object as the first parameter, and the string 'pipelineSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::IoTAnalytics::ListPipelinesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

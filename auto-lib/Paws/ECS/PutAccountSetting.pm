@@ -71,7 +71,7 @@ changed only for the authenticated user.
 =head2 B<REQUIRED> Value => Str
 
 The account setting value for the specified principal ARN. Accepted
-values are C<ENABLED> and C<DISABLED>.
+values are C<enabled> and C<disabled>.
 
 
 

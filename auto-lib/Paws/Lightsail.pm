@@ -585,6 +585,75 @@ package Paws::Lightsail;
 
     return undef
   }
+  sub GetAllCloudFormationStackRecords {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetCloudFormationStackRecords(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextPageToken) {
+        $next_result = $self->GetCloudFormationStackRecords(@_, pageToken => $next_result->nextPageToken);
+        push @{ $result->cloudFormationStackRecords }, @{ $next_result->cloudFormationStackRecords };
+      }
+      return $result;
+    } else {
+      while ($result->nextPageToken) {
+        $callback->($_ => 'cloudFormationStackRecords') foreach (@{ $result->cloudFormationStackRecords });
+        $result = $self->GetCloudFormationStackRecords(@_, pageToken => $result->nextPageToken);
+      }
+      $callback->($_ => 'cloudFormationStackRecords') foreach (@{ $result->cloudFormationStackRecords });
+    }
+
+    return undef
+  }
+  sub GetAllDisks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetDisks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextPageToken) {
+        $next_result = $self->GetDisks(@_, pageToken => $next_result->nextPageToken);
+        push @{ $result->disks }, @{ $next_result->disks };
+      }
+      return $result;
+    } else {
+      while ($result->nextPageToken) {
+        $callback->($_ => 'disks') foreach (@{ $result->disks });
+        $result = $self->GetDisks(@_, pageToken => $result->nextPageToken);
+      }
+      $callback->($_ => 'disks') foreach (@{ $result->disks });
+    }
+
+    return undef
+  }
+  sub GetAllDiskSnapshots {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetDiskSnapshots(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextPageToken) {
+        $next_result = $self->GetDiskSnapshots(@_, pageToken => $next_result->nextPageToken);
+        push @{ $result->diskSnapshots }, @{ $next_result->diskSnapshots };
+      }
+      return $result;
+    } else {
+      while ($result->nextPageToken) {
+        $callback->($_ => 'diskSnapshots') foreach (@{ $result->diskSnapshots });
+        $result = $self->GetDiskSnapshots(@_, pageToken => $result->nextPageToken);
+      }
+      $callback->($_ => 'diskSnapshots') foreach (@{ $result->diskSnapshots });
+    }
+
+    return undef
+  }
   sub GetAllDomains {
     my $self = shift;
 
@@ -604,6 +673,29 @@ package Paws::Lightsail;
         $result = $self->GetDomains(@_, pageToken => $result->nextPageToken);
       }
       $callback->($_ => 'domains') foreach (@{ $result->domains });
+    }
+
+    return undef
+  }
+  sub GetAllExportSnapshotRecords {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetExportSnapshotRecords(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextPageToken) {
+        $next_result = $self->GetExportSnapshotRecords(@_, pageToken => $next_result->nextPageToken);
+        push @{ $result->exportSnapshotRecords }, @{ $next_result->exportSnapshotRecords };
+      }
+      return $result;
+    } else {
+      while ($result->nextPageToken) {
+        $callback->($_ => 'exportSnapshotRecords') foreach (@{ $result->exportSnapshotRecords });
+        $result = $self->GetExportSnapshotRecords(@_, pageToken => $result->nextPageToken);
+      }
+      $callback->($_ => 'exportSnapshotRecords') foreach (@{ $result->exportSnapshotRecords });
     }
 
     return undef
@@ -677,6 +769,29 @@ package Paws::Lightsail;
 
     return undef
   }
+  sub GetAllLoadBalancers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetLoadBalancers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextPageToken) {
+        $next_result = $self->GetLoadBalancers(@_, pageToken => $next_result->nextPageToken);
+        push @{ $result->loadBalancers }, @{ $next_result->loadBalancers };
+      }
+      return $result;
+    } else {
+      while ($result->nextPageToken) {
+        $callback->($_ => 'loadBalancers') foreach (@{ $result->loadBalancers });
+        $result = $self->GetLoadBalancers(@_, pageToken => $result->nextPageToken);
+      }
+      $callback->($_ => 'loadBalancers') foreach (@{ $result->loadBalancers });
+    }
+
+    return undef
+  }
   sub GetAllOperations {
     my $self = shift;
 
@@ -696,6 +811,144 @@ package Paws::Lightsail;
         $result = $self->GetOperations(@_, pageToken => $result->nextPageToken);
       }
       $callback->($_ => 'operations') foreach (@{ $result->operations });
+    }
+
+    return undef
+  }
+  sub GetAllRelationalDatabaseBlueprints {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetRelationalDatabaseBlueprints(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextPageToken) {
+        $next_result = $self->GetRelationalDatabaseBlueprints(@_, pageToken => $next_result->nextPageToken);
+        push @{ $result->blueprints }, @{ $next_result->blueprints };
+      }
+      return $result;
+    } else {
+      while ($result->nextPageToken) {
+        $callback->($_ => 'blueprints') foreach (@{ $result->blueprints });
+        $result = $self->GetRelationalDatabaseBlueprints(@_, pageToken => $result->nextPageToken);
+      }
+      $callback->($_ => 'blueprints') foreach (@{ $result->blueprints });
+    }
+
+    return undef
+  }
+  sub GetAllRelationalDatabaseBundles {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetRelationalDatabaseBundles(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextPageToken) {
+        $next_result = $self->GetRelationalDatabaseBundles(@_, pageToken => $next_result->nextPageToken);
+        push @{ $result->bundles }, @{ $next_result->bundles };
+      }
+      return $result;
+    } else {
+      while ($result->nextPageToken) {
+        $callback->($_ => 'bundles') foreach (@{ $result->bundles });
+        $result = $self->GetRelationalDatabaseBundles(@_, pageToken => $result->nextPageToken);
+      }
+      $callback->($_ => 'bundles') foreach (@{ $result->bundles });
+    }
+
+    return undef
+  }
+  sub GetAllRelationalDatabaseEvents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetRelationalDatabaseEvents(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextPageToken) {
+        $next_result = $self->GetRelationalDatabaseEvents(@_, pageToken => $next_result->nextPageToken);
+        push @{ $result->relationalDatabaseEvents }, @{ $next_result->relationalDatabaseEvents };
+      }
+      return $result;
+    } else {
+      while ($result->nextPageToken) {
+        $callback->($_ => 'relationalDatabaseEvents') foreach (@{ $result->relationalDatabaseEvents });
+        $result = $self->GetRelationalDatabaseEvents(@_, pageToken => $result->nextPageToken);
+      }
+      $callback->($_ => 'relationalDatabaseEvents') foreach (@{ $result->relationalDatabaseEvents });
+    }
+
+    return undef
+  }
+  sub GetAllRelationalDatabaseParameters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetRelationalDatabaseParameters(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextPageToken) {
+        $next_result = $self->GetRelationalDatabaseParameters(@_, pageToken => $next_result->nextPageToken);
+        push @{ $result->parameters }, @{ $next_result->parameters };
+      }
+      return $result;
+    } else {
+      while ($result->nextPageToken) {
+        $callback->($_ => 'parameters') foreach (@{ $result->parameters });
+        $result = $self->GetRelationalDatabaseParameters(@_, pageToken => $result->nextPageToken);
+      }
+      $callback->($_ => 'parameters') foreach (@{ $result->parameters });
+    }
+
+    return undef
+  }
+  sub GetAllRelationalDatabases {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetRelationalDatabases(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextPageToken) {
+        $next_result = $self->GetRelationalDatabases(@_, pageToken => $next_result->nextPageToken);
+        push @{ $result->relationalDatabases }, @{ $next_result->relationalDatabases };
+      }
+      return $result;
+    } else {
+      while ($result->nextPageToken) {
+        $callback->($_ => 'relationalDatabases') foreach (@{ $result->relationalDatabases });
+        $result = $self->GetRelationalDatabases(@_, pageToken => $result->nextPageToken);
+      }
+      $callback->($_ => 'relationalDatabases') foreach (@{ $result->relationalDatabases });
+    }
+
+    return undef
+  }
+  sub GetAllRelationalDatabaseSnapshots {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetRelationalDatabaseSnapshots(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextPageToken) {
+        $next_result = $self->GetRelationalDatabaseSnapshots(@_, pageToken => $next_result->nextPageToken);
+        push @{ $result->relationalDatabaseSnapshots }, @{ $next_result->relationalDatabaseSnapshots };
+      }
+      return $result;
+    } else {
+      while ($result->nextPageToken) {
+        $callback->($_ => 'relationalDatabaseSnapshots') foreach (@{ $result->relationalDatabaseSnapshots });
+        $result = $self->GetRelationalDatabaseSnapshots(@_, pageToken => $result->nextPageToken);
+      }
+      $callback->($_ => 'relationalDatabaseSnapshots') foreach (@{ $result->relationalDatabaseSnapshots });
     }
 
     return undef
@@ -3109,6 +3362,42 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Lightsail::GetBundlesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 GetAllCloudFormationStackRecords(sub { },[PageToken => Str])
+
+=head2 GetAllCloudFormationStackRecords([PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - cloudFormationStackRecords, passing the object as the first parameter, and the string 'cloudFormationStackRecords' as the second parameter 
+
+If not, it will return a a L<Paws::Lightsail::GetCloudFormationStackRecordsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllDisks(sub { },[PageToken => Str])
+
+=head2 GetAllDisks([PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - disks, passing the object as the first parameter, and the string 'disks' as the second parameter 
+
+If not, it will return a a L<Paws::Lightsail::GetDisksResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllDiskSnapshots(sub { },[PageToken => Str])
+
+=head2 GetAllDiskSnapshots([PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - diskSnapshots, passing the object as the first parameter, and the string 'diskSnapshots' as the second parameter 
+
+If not, it will return a a L<Paws::Lightsail::GetDiskSnapshotsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 GetAllDomains(sub { },[PageToken => Str])
 
 =head2 GetAllDomains([PageToken => Str])
@@ -3119,6 +3408,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - domains, passing the object as the first parameter, and the string 'domains' as the second parameter 
 
 If not, it will return a a L<Paws::Lightsail::GetDomainsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllExportSnapshotRecords(sub { },[PageToken => Str])
+
+=head2 GetAllExportSnapshotRecords([PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - exportSnapshotRecords, passing the object as the first parameter, and the string 'exportSnapshotRecords' as the second parameter 
+
+If not, it will return a a L<Paws::Lightsail::GetExportSnapshotRecordsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 GetAllInstances(sub { },[PageToken => Str])
@@ -3157,6 +3458,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Lightsail::GetKeyPairsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 GetAllLoadBalancers(sub { },[PageToken => Str])
+
+=head2 GetAllLoadBalancers([PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - loadBalancers, passing the object as the first parameter, and the string 'loadBalancers' as the second parameter 
+
+If not, it will return a a L<Paws::Lightsail::GetLoadBalancersResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 GetAllOperations(sub { },[PageToken => Str])
 
 =head2 GetAllOperations([PageToken => Str])
@@ -3167,6 +3480,78 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - operations, passing the object as the first parameter, and the string 'operations' as the second parameter 
 
 If not, it will return a a L<Paws::Lightsail::GetOperationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllRelationalDatabaseBlueprints(sub { },[PageToken => Str])
+
+=head2 GetAllRelationalDatabaseBlueprints([PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - blueprints, passing the object as the first parameter, and the string 'blueprints' as the second parameter 
+
+If not, it will return a a L<Paws::Lightsail::GetRelationalDatabaseBlueprintsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllRelationalDatabaseBundles(sub { },[PageToken => Str])
+
+=head2 GetAllRelationalDatabaseBundles([PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - bundles, passing the object as the first parameter, and the string 'bundles' as the second parameter 
+
+If not, it will return a a L<Paws::Lightsail::GetRelationalDatabaseBundlesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllRelationalDatabaseEvents(sub { },RelationalDatabaseName => Str, [DurationInMinutes => Int, PageToken => Str])
+
+=head2 GetAllRelationalDatabaseEvents(RelationalDatabaseName => Str, [DurationInMinutes => Int, PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - relationalDatabaseEvents, passing the object as the first parameter, and the string 'relationalDatabaseEvents' as the second parameter 
+
+If not, it will return a a L<Paws::Lightsail::GetRelationalDatabaseEventsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllRelationalDatabaseParameters(sub { },RelationalDatabaseName => Str, [PageToken => Str])
+
+=head2 GetAllRelationalDatabaseParameters(RelationalDatabaseName => Str, [PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - parameters, passing the object as the first parameter, and the string 'parameters' as the second parameter 
+
+If not, it will return a a L<Paws::Lightsail::GetRelationalDatabaseParametersResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllRelationalDatabases(sub { },[PageToken => Str])
+
+=head2 GetAllRelationalDatabases([PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - relationalDatabases, passing the object as the first parameter, and the string 'relationalDatabases' as the second parameter 
+
+If not, it will return a a L<Paws::Lightsail::GetRelationalDatabasesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllRelationalDatabaseSnapshots(sub { },[PageToken => Str])
+
+=head2 GetAllRelationalDatabaseSnapshots([PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - relationalDatabaseSnapshots, passing the object as the first parameter, and the string 'relationalDatabaseSnapshots' as the second parameter 
+
+If not, it will return a a L<Paws::Lightsail::GetRelationalDatabaseSnapshotsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 GetAllStaticIps(sub { },[PageToken => Str])

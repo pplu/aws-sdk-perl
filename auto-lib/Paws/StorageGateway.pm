@@ -476,6 +476,29 @@ package Paws::StorageGateway;
 
     return undef
   }
+  sub ListAllTapes {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTapes(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->ListTapes(@_, Marker => $next_result->Marker);
+        push @{ $result->TapeInfos }, @{ $next_result->TapeInfos };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'TapeInfos') foreach (@{ $result->TapeInfos });
+        $result = $self->ListTapes(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'TapeInfos') foreach (@{ $result->TapeInfos });
+    }
+
+    return undef
+  }
   sub ListAllVolumes {
     my $self = shift;
 
@@ -2620,6 +2643,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Gateways, passing the object as the first parameter, and the string 'Gateways' as the second parameter 
 
 If not, it will return a a L<Paws::StorageGateway::ListGatewaysOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTapes(sub { },[Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str|Undef]])
+
+=head2 ListAllTapes([Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TapeInfos, passing the object as the first parameter, and the string 'TapeInfos' as the second parameter 
+
+If not, it will return a a L<Paws::StorageGateway::ListTapesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllVolumes(sub { },[GatewayARN => Str, Limit => Int, Marker => Str])

@@ -115,6 +115,29 @@ package Paws::MQ;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllBrokers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListBrokers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListBrokers(@_, NextToken => $next_result->NextToken);
+        push @{ $result->BrokerSummaries }, @{ $next_result->BrokerSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'BrokerSummaries') foreach (@{ $result->BrokerSummaries });
+        $result = $self->ListBrokers(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'BrokerSummaries') foreach (@{ $result->BrokerSummaries });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CreateBroker CreateConfiguration CreateTags CreateUser DeleteBroker DeleteTags DeleteUser DescribeBroker DescribeConfiguration DescribeConfigurationRevision DescribeUser ListBrokers ListConfigurationRevisions ListConfigurations ListTags ListUsers RebootBroker UpdateBroker UpdateConfiguration UpdateUser / }
@@ -567,6 +590,18 @@ Updates the information for an ActiveMQ user.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllBrokers(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllBrokers([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - BrokerSummaries, passing the object as the first parameter, and the string 'BrokerSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::MQ::ListBrokersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

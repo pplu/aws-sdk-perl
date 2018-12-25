@@ -141,6 +141,121 @@ package Paws::Datasync;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllAgents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAgents(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListAgents(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Agents }, @{ $next_result->Agents };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Agents') foreach (@{ $result->Agents });
+        $result = $self->ListAgents(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Agents') foreach (@{ $result->Agents });
+    }
+
+    return undef
+  }
+  sub ListAllLocations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListLocations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListLocations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Locations }, @{ $next_result->Locations };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Locations') foreach (@{ $result->Locations });
+        $result = $self->ListLocations(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Locations') foreach (@{ $result->Locations });
+    }
+
+    return undef
+  }
+  sub ListAllTagsForResource {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTagsForResource(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTagsForResource(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Tags }, @{ $next_result->Tags };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+        $result = $self->ListTagsForResource(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+    }
+
+    return undef
+  }
+  sub ListAllTaskExecutions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTaskExecutions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTaskExecutions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->TaskExecutions }, @{ $next_result->TaskExecutions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'TaskExecutions') foreach (@{ $result->TaskExecutions });
+        $result = $self->ListTaskExecutions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'TaskExecutions') foreach (@{ $result->TaskExecutions });
+    }
+
+    return undef
+  }
+  sub ListAllTasks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTasks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTasks(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Tasks }, @{ $next_result->Tasks };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Tasks') foreach (@{ $result->Tasks });
+        $result = $self->ListTasks(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Tasks') foreach (@{ $result->Tasks });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CancelTaskExecution CreateAgent CreateLocationEfs CreateLocationNfs CreateLocationS3 CreateTask DeleteAgent DeleteLocation DeleteTask DescribeAgent DescribeLocationEfs DescribeLocationNfs DescribeLocationS3 DescribeTask DescribeTaskExecution ListAgents ListLocations ListTagsForResource ListTaskExecutions ListTasks StartTaskExecution TagResource UntagResource UpdateAgent UpdateTask / }
@@ -741,6 +856,66 @@ Updates the metadata associated with a task.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllAgents(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllAgents([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Agents, passing the object as the first parameter, and the string 'Agents' as the second parameter 
+
+If not, it will return a a L<Paws::Datasync::ListAgentsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllLocations(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllLocations([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Locations, passing the object as the first parameter, and the string 'Locations' as the second parameter 
+
+If not, it will return a a L<Paws::Datasync::ListLocationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTagsForResource(sub { },ResourceArn => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllTagsForResource(ResourceArn => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Tags, passing the object as the first parameter, and the string 'Tags' as the second parameter 
+
+If not, it will return a a L<Paws::Datasync::ListTagsForResourceResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTaskExecutions(sub { },[MaxResults => Int, NextToken => Str, TaskArn => Str])
+
+=head2 ListAllTaskExecutions([MaxResults => Int, NextToken => Str, TaskArn => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TaskExecutions, passing the object as the first parameter, and the string 'TaskExecutions' as the second parameter 
+
+If not, it will return a a L<Paws::Datasync::ListTaskExecutionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTasks(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllTasks([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Tasks, passing the object as the first parameter, and the string 'Tasks' as the second parameter 
+
+If not, it will return a a L<Paws::Datasync::ListTasksResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

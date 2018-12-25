@@ -160,6 +160,29 @@ package Paws::ELB;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllAccountLimits {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeAccountLimits(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextMarker) {
+        $next_result = $self->DescribeAccountLimits(@_, Marker => $next_result->NextMarker);
+        push @{ $result->Limits }, @{ $next_result->Limits };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $callback->($_ => 'Limits') foreach (@{ $result->Limits });
+        $result = $self->DescribeAccountLimits(@_, Marker => $result->NextMarker);
+      }
+      $callback->($_ => 'Limits') foreach (@{ $result->Limits });
+    }
+
+    return undef
+  }
   sub DescribeAllLoadBalancers {
     my $self = shift;
 
@@ -1061,6 +1084,18 @@ in the I<Classic Load Balancers Guide>.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllAccountLimits(sub { },[Marker => Str, PageSize => Int])
+
+=head2 DescribeAllAccountLimits([Marker => Str, PageSize => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Limits, passing the object as the first parameter, and the string 'Limits' as the second parameter 
+
+If not, it will return a a L<Paws::ELB::DescribeAccountLimitsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 =head2 DescribeAllLoadBalancers(sub { },[LoadBalancerNames => ArrayRef[Str|Undef], Marker => Str, PageSize => Int])
 

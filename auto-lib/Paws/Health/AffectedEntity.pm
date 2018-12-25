@@ -2,6 +2,7 @@ package Paws::Health::AffectedEntity;
   use Moose;
   has AwsAccountId => (is => 'ro', isa => 'Str', request_name => 'awsAccountId', traits => ['NameInRequest']);
   has EntityArn => (is => 'ro', isa => 'Str', request_name => 'entityArn', traits => ['NameInRequest']);
+  has EntityUrl => (is => 'ro', isa => 'Str', request_name => 'entityUrl', traits => ['NameInRequest']);
   has EntityValue => (is => 'ro', isa => 'Str', request_name => 'entityValue', traits => ['NameInRequest']);
   has EventArn => (is => 'ro', isa => 'Str', request_name => 'eventArn', traits => ['NameInRequest']);
   has LastUpdatedTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedTime', traits => ['NameInRequest']);
@@ -53,6 +54,11 @@ Information about an entity that is affected by a Health event.
 C<arn:aws:health:I<entity-region>:I<aws-account>:entity/I<entity-id> >.
 Example:
 C<arn:aws:health:us-east-1:111222333444:entity/AVh5GGT7ul1arKr1sE1K>
+
+
+=head2 EntityUrl => Str
+
+  
 
 
 =head2 EntityValue => Str

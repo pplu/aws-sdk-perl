@@ -180,6 +180,167 @@ package Paws::AppSync;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllApiKeys {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListApiKeys(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListApiKeys(@_, nextToken => $next_result->nextToken);
+        push @{ $result->apiKeys }, @{ $next_result->apiKeys };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'apiKeys') foreach (@{ $result->apiKeys });
+        $result = $self->ListApiKeys(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'apiKeys') foreach (@{ $result->apiKeys });
+    }
+
+    return undef
+  }
+  sub ListAllDataSources {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDataSources(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListDataSources(@_, nextToken => $next_result->nextToken);
+        push @{ $result->dataSources }, @{ $next_result->dataSources };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'dataSources') foreach (@{ $result->dataSources });
+        $result = $self->ListDataSources(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'dataSources') foreach (@{ $result->dataSources });
+    }
+
+    return undef
+  }
+  sub ListAllFunctions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListFunctions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListFunctions(@_, nextToken => $next_result->nextToken);
+        push @{ $result->functions }, @{ $next_result->functions };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'functions') foreach (@{ $result->functions });
+        $result = $self->ListFunctions(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'functions') foreach (@{ $result->functions });
+    }
+
+    return undef
+  }
+  sub ListAllGraphqlApis {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListGraphqlApis(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListGraphqlApis(@_, nextToken => $next_result->nextToken);
+        push @{ $result->graphqlApis }, @{ $next_result->graphqlApis };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'graphqlApis') foreach (@{ $result->graphqlApis });
+        $result = $self->ListGraphqlApis(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'graphqlApis') foreach (@{ $result->graphqlApis });
+    }
+
+    return undef
+  }
+  sub ListAllResolvers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListResolvers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListResolvers(@_, nextToken => $next_result->nextToken);
+        push @{ $result->resolvers }, @{ $next_result->resolvers };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'resolvers') foreach (@{ $result->resolvers });
+        $result = $self->ListResolvers(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'resolvers') foreach (@{ $result->resolvers });
+    }
+
+    return undef
+  }
+  sub ListAllResolversByFunction {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListResolversByFunction(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListResolversByFunction(@_, nextToken => $next_result->nextToken);
+        push @{ $result->resolvers }, @{ $next_result->resolvers };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'resolvers') foreach (@{ $result->resolvers });
+        $result = $self->ListResolversByFunction(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'resolvers') foreach (@{ $result->resolvers });
+    }
+
+    return undef
+  }
+  sub ListAllTypes {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTypes(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListTypes(@_, nextToken => $next_result->nextToken);
+        push @{ $result->types }, @{ $next_result->types };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'types') foreach (@{ $result->types });
+        $result = $self->ListTypes(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'types') foreach (@{ $result->types });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CreateApiKey CreateDataSource CreateFunction CreateGraphqlApi CreateResolver CreateType DeleteApiKey DeleteDataSource DeleteFunction DeleteGraphqlApi DeleteResolver DeleteType GetDataSource GetFunction GetGraphqlApi GetIntrospectionSchema GetResolver GetSchemaCreationStatus GetType ListApiKeys ListDataSources ListFunctions ListGraphqlApis ListResolvers ListResolversByFunction ListTypes StartSchemaCreation UpdateApiKey UpdateDataSource UpdateFunction UpdateGraphqlApi UpdateResolver UpdateType / }
@@ -953,6 +1114,90 @@ Updates a C<Type> object.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllApiKeys(sub { },ApiId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllApiKeys(ApiId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - apiKeys, passing the object as the first parameter, and the string 'apiKeys' as the second parameter 
+
+If not, it will return a a L<Paws::AppSync::ListApiKeysResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDataSources(sub { },ApiId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllDataSources(ApiId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - dataSources, passing the object as the first parameter, and the string 'dataSources' as the second parameter 
+
+If not, it will return a a L<Paws::AppSync::ListDataSourcesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllFunctions(sub { },ApiId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllFunctions(ApiId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - functions, passing the object as the first parameter, and the string 'functions' as the second parameter 
+
+If not, it will return a a L<Paws::AppSync::ListFunctionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllGraphqlApis(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllGraphqlApis([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - graphqlApis, passing the object as the first parameter, and the string 'graphqlApis' as the second parameter 
+
+If not, it will return a a L<Paws::AppSync::ListGraphqlApisResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllResolvers(sub { },ApiId => Str, TypeName => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllResolvers(ApiId => Str, TypeName => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - resolvers, passing the object as the first parameter, and the string 'resolvers' as the second parameter 
+
+If not, it will return a a L<Paws::AppSync::ListResolversResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllResolversByFunction(sub { },ApiId => Str, FunctionId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllResolversByFunction(ApiId => Str, FunctionId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - resolvers, passing the object as the first parameter, and the string 'resolvers' as the second parameter 
+
+If not, it will return a a L<Paws::AppSync::ListResolversByFunctionResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTypes(sub { },ApiId => Str, Format => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllTypes(ApiId => Str, Format => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - types, passing the object as the first parameter, and the string 'types' as the second parameter 
+
+If not, it will return a a L<Paws::AppSync::ListTypesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

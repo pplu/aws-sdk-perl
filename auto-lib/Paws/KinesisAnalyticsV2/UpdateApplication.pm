@@ -51,7 +51,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
         },    # OPTIONAL
         ApplicationSnapshotConfigurationUpdate => {
-          SnapshotsEnabledUpdate => 1,    # OPTIONAL
+          SnapshotsEnabledUpdate => 1,
 
         },    # OPTIONAL
         EnvironmentPropertyUpdates => {
@@ -71,7 +71,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         FlinkApplicationConfigurationUpdate => {
           CheckpointConfigurationUpdate => {
             CheckpointIntervalUpdate   => 1,    # OPTIONAL
-            CheckpointingEnabledUpdate => 1,    # OPTIONAL
+            CheckpointingEnabledUpdate => 1,
             ConfigurationTypeUpdate =>
               'DEFAULT',    # values: DEFAULT, CUSTOM; OPTIONAL
             MinPauseBetweenCheckpointsUpdate => 1,    # OPTIONAL
@@ -85,7 +85,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ,    # values: APPLICATION, TASK, OPERATOR, PARALLELISM; OPTIONAL
           },    # OPTIONAL
           ParallelismConfigurationUpdate => {
-            AutoScalingEnabledUpdate => 1,    # OPTIONAL
+            AutoScalingEnabledUpdate => 1,
             ConfigurationTypeUpdate =>
               'DEFAULT',    # values: DEFAULT, CUSTOM; OPTIONAL
             ParallelismPerKPUUpdate => 1,    # min: 1; OPTIONAL
@@ -115,7 +115,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     Mapping => 'MyRecordColumnMapping',    # OPTIONAL
                   },
                   ...
-                ],                                         # min: 1, max: 1000
+                ],    # min: 1, max: 1000; OPTIONAL
                 RecordEncodingUpdate => 'MyRecordEncoding',    # OPTIONAL
                 RecordFormatUpdate   => {
                   RecordFormatType  => 'JSON',    # values: JSON, CSV
@@ -131,7 +131,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                     },    # OPTIONAL
                   },    # OPTIONAL
-                },
+                },    # OPTIONAL
               },    # OPTIONAL
               KinesisFirehoseInputUpdate => {
                 ResourceARNUpdate => 'MyResourceARN',    # min: 1, max: 2048
@@ -180,13 +180,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     Mapping => 'MyRecordColumnMapping',    # OPTIONAL
                   },
                   ...
-                ],                                         # min: 1, max: 1000
+                ],    # min: 1, max: 1000; OPTIONAL
                 RecordFormat => {
-                  RecordFormatType  => 'JSON',             # values: JSON, CSV
+                  RecordFormatType  => 'JSON',    # values: JSON, CSV
                   MappingParameters => {
                     CSVMappingParameters => {
                       RecordColumnDelimiter =>
-                        'MyRecordColumnDelimiter',         # min: 1
+                        'MyRecordColumnDelimiter',    # min: 1
                       RecordRowDelimiter => 'MyRecordRowDelimiter',    # min: 1
 
                     },    # OPTIONAL
@@ -195,7 +195,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                     },    # OPTIONAL
                   },    # OPTIONAL
-                },
+                },    # OPTIONAL
                 RecordEncoding => 'MyRecordEncoding',    # OPTIONAL
               },    # OPTIONAL
               S3ReferenceDataSourceUpdate => {

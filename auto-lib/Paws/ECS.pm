@@ -201,6 +201,52 @@ package Paws::ECS;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllAccountSettings {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAccountSettings(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListAccountSettings(@_, nextToken => $next_result->nextToken);
+        push @{ $result->settings }, @{ $next_result->settings };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'settings') foreach (@{ $result->settings });
+        $result = $self->ListAccountSettings(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'settings') foreach (@{ $result->settings });
+    }
+
+    return undef
+  }
+  sub ListAllAttributes {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAttributes(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListAttributes(@_, nextToken => $next_result->nextToken);
+        push @{ $result->attributes }, @{ $next_result->attributes };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'attributes') foreach (@{ $result->attributes });
+        $result = $self->ListAttributes(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'attributes') foreach (@{ $result->attributes });
+    }
+
+    return undef
+  }
   sub ListAllClusters {
     my $self = shift;
 
@@ -1785,6 +1831,30 @@ largest number of running tasks for this service.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllAccountSettings(sub { },[EffectiveSettings => Bool, MaxResults => Int, Name => Str, NextToken => Str, PrincipalArn => Str, Value => Str])
+
+=head2 ListAllAccountSettings([EffectiveSettings => Bool, MaxResults => Int, Name => Str, NextToken => Str, PrincipalArn => Str, Value => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - settings, passing the object as the first parameter, and the string 'settings' as the second parameter 
+
+If not, it will return a a L<Paws::ECS::ListAccountSettingsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAttributes(sub { },TargetType => Str, [AttributeName => Str, AttributeValue => Str, Cluster => Str, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllAttributes(TargetType => Str, [AttributeName => Str, AttributeValue => Str, Cluster => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - attributes, passing the object as the first parameter, and the string 'attributes' as the second parameter 
+
+If not, it will return a a L<Paws::ECS::ListAttributesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 =head2 ListAllClusters(sub { },[MaxResults => Int, NextToken => Str])
 

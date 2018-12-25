@@ -91,6 +91,121 @@ package Paws::LicenseManager;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllAssociationsForLicenseConfiguration {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAssociationsForLicenseConfiguration(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListAssociationsForLicenseConfiguration(@_, NextToken => $next_result->NextToken);
+        push @{ $result->LicenseConfigurationAssociations }, @{ $next_result->LicenseConfigurationAssociations };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'LicenseConfigurationAssociations') foreach (@{ $result->LicenseConfigurationAssociations });
+        $result = $self->ListAssociationsForLicenseConfiguration(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'LicenseConfigurationAssociations') foreach (@{ $result->LicenseConfigurationAssociations });
+    }
+
+    return undef
+  }
+  sub ListAllLicenseConfigurations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListLicenseConfigurations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListLicenseConfigurations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->LicenseConfigurations }, @{ $next_result->LicenseConfigurations };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'LicenseConfigurations') foreach (@{ $result->LicenseConfigurations });
+        $result = $self->ListLicenseConfigurations(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'LicenseConfigurations') foreach (@{ $result->LicenseConfigurations });
+    }
+
+    return undef
+  }
+  sub ListAllLicenseSpecificationsForResource {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListLicenseSpecificationsForResource(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListLicenseSpecificationsForResource(@_, NextToken => $next_result->NextToken);
+        push @{ $result->LicenseSpecifications }, @{ $next_result->LicenseSpecifications };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'LicenseSpecifications') foreach (@{ $result->LicenseSpecifications });
+        $result = $self->ListLicenseSpecificationsForResource(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'LicenseSpecifications') foreach (@{ $result->LicenseSpecifications });
+    }
+
+    return undef
+  }
+  sub ListAllResourceInventory {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListResourceInventory(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListResourceInventory(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ResourceInventoryList }, @{ $next_result->ResourceInventoryList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ResourceInventoryList') foreach (@{ $result->ResourceInventoryList });
+        $result = $self->ListResourceInventory(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ResourceInventoryList') foreach (@{ $result->ResourceInventoryList });
+    }
+
+    return undef
+  }
+  sub ListAllUsageForLicenseConfiguration {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListUsageForLicenseConfiguration(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListUsageForLicenseConfiguration(@_, NextToken => $next_result->NextToken);
+        push @{ $result->LicenseConfigurationUsageList }, @{ $next_result->LicenseConfigurationUsageList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'LicenseConfigurationUsageList') foreach (@{ $result->LicenseConfigurationUsageList });
+        $result = $self->ListUsageForLicenseConfiguration(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'LicenseConfigurationUsageList') foreach (@{ $result->LicenseConfigurationUsageList });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CreateLicenseConfiguration DeleteLicenseConfiguration GetLicenseConfiguration GetServiceSettings ListAssociationsForLicenseConfiguration ListLicenseConfigurations ListLicenseSpecificationsForResource ListResourceInventory ListTagsForResource ListUsageForLicenseConfiguration TagResource UntagResource UpdateLicenseConfiguration UpdateLicenseSpecificationsForResource UpdateServiceSettings / }
@@ -471,6 +586,66 @@ Updates License Manager service settings.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllAssociationsForLicenseConfiguration(sub { },LicenseConfigurationArn => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllAssociationsForLicenseConfiguration(LicenseConfigurationArn => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - LicenseConfigurationAssociations, passing the object as the first parameter, and the string 'LicenseConfigurationAssociations' as the second parameter 
+
+If not, it will return a a L<Paws::LicenseManager::ListAssociationsForLicenseConfigurationResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllLicenseConfigurations(sub { },[Filters => ArrayRef[L<Paws::LicenseManager::Filter>], LicenseConfigurationArns => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 ListAllLicenseConfigurations([Filters => ArrayRef[L<Paws::LicenseManager::Filter>], LicenseConfigurationArns => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - LicenseConfigurations, passing the object as the first parameter, and the string 'LicenseConfigurations' as the second parameter 
+
+If not, it will return a a L<Paws::LicenseManager::ListLicenseConfigurationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllLicenseSpecificationsForResource(sub { },ResourceArn => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllLicenseSpecificationsForResource(ResourceArn => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - LicenseSpecifications, passing the object as the first parameter, and the string 'LicenseSpecifications' as the second parameter 
+
+If not, it will return a a L<Paws::LicenseManager::ListLicenseSpecificationsForResourceResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllResourceInventory(sub { },[Filters => ArrayRef[L<Paws::LicenseManager::InventoryFilter>], MaxResults => Int, NextToken => Str])
+
+=head2 ListAllResourceInventory([Filters => ArrayRef[L<Paws::LicenseManager::InventoryFilter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ResourceInventoryList, passing the object as the first parameter, and the string 'ResourceInventoryList' as the second parameter 
+
+If not, it will return a a L<Paws::LicenseManager::ListResourceInventoryResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllUsageForLicenseConfiguration(sub { },LicenseConfigurationArn => Str, [Filters => ArrayRef[L<Paws::LicenseManager::Filter>], MaxResults => Int, NextToken => Str])
+
+=head2 ListAllUsageForLicenseConfiguration(LicenseConfigurationArn => Str, [Filters => ArrayRef[L<Paws::LicenseManager::Filter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - LicenseConfigurationUsageList, passing the object as the first parameter, and the string 'LicenseConfigurationUsageList' as the second parameter 
+
+If not, it will return a a L<Paws::LicenseManager::ListUsageForLicenseConfigurationResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

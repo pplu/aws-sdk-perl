@@ -121,6 +121,167 @@ package Paws::DAX;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllClusters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeClusters(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeClusters(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Clusters }, @{ $next_result->Clusters };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Clusters') foreach (@{ $result->Clusters });
+        $result = $self->DescribeClusters(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Clusters') foreach (@{ $result->Clusters });
+    }
+
+    return undef
+  }
+  sub DescribeAllDefaultParameters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDefaultParameters(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeDefaultParameters(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Parameters }, @{ $next_result->Parameters };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Parameters') foreach (@{ $result->Parameters });
+        $result = $self->DescribeDefaultParameters(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Parameters') foreach (@{ $result->Parameters });
+    }
+
+    return undef
+  }
+  sub DescribeAllEvents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeEvents(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeEvents(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Events }, @{ $next_result->Events };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Events') foreach (@{ $result->Events });
+        $result = $self->DescribeEvents(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Events') foreach (@{ $result->Events });
+    }
+
+    return undef
+  }
+  sub DescribeAllParameterGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeParameterGroups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeParameterGroups(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ParameterGroups }, @{ $next_result->ParameterGroups };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ParameterGroups') foreach (@{ $result->ParameterGroups });
+        $result = $self->DescribeParameterGroups(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ParameterGroups') foreach (@{ $result->ParameterGroups });
+    }
+
+    return undef
+  }
+  sub DescribeAllParameters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeParameters(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeParameters(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Parameters }, @{ $next_result->Parameters };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Parameters') foreach (@{ $result->Parameters });
+        $result = $self->DescribeParameters(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Parameters') foreach (@{ $result->Parameters });
+    }
+
+    return undef
+  }
+  sub DescribeAllSubnetGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeSubnetGroups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeSubnetGroups(@_, NextToken => $next_result->NextToken);
+        push @{ $result->SubnetGroups }, @{ $next_result->SubnetGroups };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'SubnetGroups') foreach (@{ $result->SubnetGroups });
+        $result = $self->DescribeSubnetGroups(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'SubnetGroups') foreach (@{ $result->SubnetGroups });
+    }
+
+    return undef
+  }
+  sub ListAllTags {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTags(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTags(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Tags }, @{ $next_result->Tags };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+        $result = $self->ListTags(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CreateCluster CreateParameterGroup CreateSubnetGroup DecreaseReplicationFactor DeleteCluster DeleteParameterGroup DeleteSubnetGroup DescribeClusters DescribeDefaultParameters DescribeEvents DescribeParameterGroups DescribeParameters DescribeSubnetGroups IncreaseReplicationFactor ListTags RebootNode TagResource UntagResource UpdateCluster UpdateParameterGroup UpdateSubnetGroup / }
@@ -650,6 +811,90 @@ Modifies an existing subnet group.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllClusters(sub { },[ClusterNames => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllClusters([ClusterNames => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Clusters, passing the object as the first parameter, and the string 'Clusters' as the second parameter 
+
+If not, it will return a a L<Paws::DAX::DescribeClustersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllDefaultParameters(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllDefaultParameters([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Parameters, passing the object as the first parameter, and the string 'Parameters' as the second parameter 
+
+If not, it will return a a L<Paws::DAX::DescribeDefaultParametersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllEvents(sub { },[Duration => Int, EndTime => Str, MaxResults => Int, NextToken => Str, SourceName => Str, SourceType => Str, StartTime => Str])
+
+=head2 DescribeAllEvents([Duration => Int, EndTime => Str, MaxResults => Int, NextToken => Str, SourceName => Str, SourceType => Str, StartTime => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Events, passing the object as the first parameter, and the string 'Events' as the second parameter 
+
+If not, it will return a a L<Paws::DAX::DescribeEventsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllParameterGroups(sub { },[MaxResults => Int, NextToken => Str, ParameterGroupNames => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllParameterGroups([MaxResults => Int, NextToken => Str, ParameterGroupNames => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ParameterGroups, passing the object as the first parameter, and the string 'ParameterGroups' as the second parameter 
+
+If not, it will return a a L<Paws::DAX::DescribeParameterGroupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllParameters(sub { },ParameterGroupName => Str, [MaxResults => Int, NextToken => Str, Source => Str])
+
+=head2 DescribeAllParameters(ParameterGroupName => Str, [MaxResults => Int, NextToken => Str, Source => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Parameters, passing the object as the first parameter, and the string 'Parameters' as the second parameter 
+
+If not, it will return a a L<Paws::DAX::DescribeParametersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllSubnetGroups(sub { },[MaxResults => Int, NextToken => Str, SubnetGroupNames => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllSubnetGroups([MaxResults => Int, NextToken => Str, SubnetGroupNames => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SubnetGroups, passing the object as the first parameter, and the string 'SubnetGroups' as the second parameter 
+
+If not, it will return a a L<Paws::DAX::DescribeSubnetGroupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTags(sub { },ResourceName => Str, [NextToken => Str])
+
+=head2 ListAllTags(ResourceName => Str, [NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Tags, passing the object as the first parameter, and the string 'Tags' as the second parameter 
+
+If not, it will return a a L<Paws::DAX::ListTagsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

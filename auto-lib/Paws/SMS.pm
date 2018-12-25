@@ -248,6 +248,29 @@ package Paws::SMS;
 
     return undef
   }
+  sub ListAllApps {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListApps(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListApps(@_, nextToken => $next_result->nextToken);
+        push @{ $result->apps }, @{ $next_result->apps };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'apps') foreach (@{ $result->apps });
+        $result = $self->ListApps(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'apps') foreach (@{ $result->apps });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CreateApp CreateReplicationJob DeleteApp DeleteAppLaunchConfiguration DeleteAppReplicationConfiguration DeleteReplicationJob DeleteServerCatalog DisassociateConnector GenerateChangeSet GenerateTemplate GetApp GetAppLaunchConfiguration GetAppReplicationConfiguration GetConnectors GetReplicationJobs GetReplicationRuns GetServers ImportServerCatalog LaunchApp ListApps PutAppLaunchConfiguration PutAppReplicationConfiguration StartAppReplication StartOnDemandReplicationRun StopAppReplication TerminateApp UpdateApp UpdateReplicationJob / }
@@ -928,6 +951,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - serverList, passing the object as the first parameter, and the string 'serverList' as the second parameter 
 
 If not, it will return a a L<Paws::SMS::GetServersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllApps(sub { },[AppIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 ListAllApps([AppIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - apps, passing the object as the first parameter, and the string 'apps' as the second parameter 
+
+If not, it will return a a L<Paws::SMS::ListAppsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

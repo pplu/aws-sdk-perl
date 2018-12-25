@@ -121,6 +121,52 @@ package Paws::KinesisAnalyticsV2;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllApplications {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListApplications(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListApplications(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ApplicationSummaries }, @{ $next_result->ApplicationSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ApplicationSummaries') foreach (@{ $result->ApplicationSummaries });
+        $result = $self->ListApplications(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ApplicationSummaries') foreach (@{ $result->ApplicationSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllApplicationSnapshots {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListApplicationSnapshots(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListApplicationSnapshots(@_, NextToken => $next_result->NextToken);
+        push @{ $result->SnapshotSummaries }, @{ $next_result->SnapshotSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'SnapshotSummaries') foreach (@{ $result->SnapshotSummaries });
+        $result = $self->ListApplicationSnapshots(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'SnapshotSummaries') foreach (@{ $result->SnapshotSummaries });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AddApplicationCloudWatchLoggingOption AddApplicationInput AddApplicationInputProcessingConfiguration AddApplicationOutput AddApplicationReferenceDataSource CreateApplication CreateApplicationSnapshot DeleteApplication DeleteApplicationCloudWatchLoggingOption DeleteApplicationInputProcessingConfiguration DeleteApplicationOutput DeleteApplicationReferenceDataSource DeleteApplicationSnapshot DescribeApplication DescribeApplicationSnapshot DiscoverInputSchema ListApplications ListApplicationSnapshots StartApplication StopApplication UpdateApplication / }
@@ -677,6 +723,30 @@ SqlApplicationConfigurationUpdate) will result in an error.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllApplications(sub { },[Limit => Int, NextToken => Str])
+
+=head2 ListAllApplications([Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ApplicationSummaries, passing the object as the first parameter, and the string 'ApplicationSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::KinesisAnalyticsV2::ListApplicationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllApplicationSnapshots(sub { },ApplicationName => Str, [Limit => Int, NextToken => Str])
+
+=head2 ListAllApplicationSnapshots(ApplicationName => Str, [Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SnapshotSummaries, passing the object as the first parameter, and the string 'SnapshotSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::KinesisAnalyticsV2::ListApplicationSnapshotsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

@@ -45,6 +45,52 @@ package Paws::Kafka;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllClusters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListClusters(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListClusters(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ClusterInfoList }, @{ $next_result->ClusterInfoList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ClusterInfoList') foreach (@{ $result->ClusterInfoList });
+        $result = $self->ListClusters(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ClusterInfoList') foreach (@{ $result->ClusterInfoList });
+    }
+
+    return undef
+  }
+  sub ListAllNodes {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListNodes(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListNodes(@_, NextToken => $next_result->NextToken);
+        push @{ $result->NodeInfoList }, @{ $next_result->NodeInfoList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'NodeInfoList') foreach (@{ $result->NodeInfoList });
+        $result = $self->ListNodes(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'NodeInfoList') foreach (@{ $result->NodeInfoList });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CreateCluster DeleteCluster DescribeCluster GetBootstrapBrokers ListClusters ListNodes / }
@@ -205,6 +251,30 @@ Returns a list of the broker nodes in the cluster.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllClusters(sub { },[ClusterNameFilter => Str, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllClusters([ClusterNameFilter => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ClusterInfoList, passing the object as the first parameter, and the string 'ClusterInfoList' as the second parameter 
+
+If not, it will return a a L<Paws::Kafka::ListClustersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllNodes(sub { },ClusterArn => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllNodes(ClusterArn => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - NodeInfoList, passing the object as the first parameter, and the string 'NodeInfoList' as the second parameter 
+
+If not, it will return a a L<Paws::Kafka::ListNodesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

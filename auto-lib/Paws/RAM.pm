@@ -95,6 +95,144 @@ package Paws::RAM;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub GetAllResourcePolicies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetResourcePolicies(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->GetResourcePolicies(@_, nextToken => $next_result->nextToken);
+        push @{ $result->policies }, @{ $next_result->policies };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'policies') foreach (@{ $result->policies });
+        $result = $self->GetResourcePolicies(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'policies') foreach (@{ $result->policies });
+    }
+
+    return undef
+  }
+  sub GetAllResourceShareAssociations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetResourceShareAssociations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->GetResourceShareAssociations(@_, nextToken => $next_result->nextToken);
+        push @{ $result->resourceShareAssociations }, @{ $next_result->resourceShareAssociations };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'resourceShareAssociations') foreach (@{ $result->resourceShareAssociations });
+        $result = $self->GetResourceShareAssociations(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'resourceShareAssociations') foreach (@{ $result->resourceShareAssociations });
+    }
+
+    return undef
+  }
+  sub GetAllResourceShareInvitations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetResourceShareInvitations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->GetResourceShareInvitations(@_, nextToken => $next_result->nextToken);
+        push @{ $result->resourceShareInvitations }, @{ $next_result->resourceShareInvitations };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'resourceShareInvitations') foreach (@{ $result->resourceShareInvitations });
+        $result = $self->GetResourceShareInvitations(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'resourceShareInvitations') foreach (@{ $result->resourceShareInvitations });
+    }
+
+    return undef
+  }
+  sub GetAllResourceShares {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetResourceShares(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->GetResourceShares(@_, nextToken => $next_result->nextToken);
+        push @{ $result->resourceShares }, @{ $next_result->resourceShares };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'resourceShares') foreach (@{ $result->resourceShares });
+        $result = $self->GetResourceShares(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'resourceShares') foreach (@{ $result->resourceShares });
+    }
+
+    return undef
+  }
+  sub ListAllPrincipals {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPrincipals(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListPrincipals(@_, nextToken => $next_result->nextToken);
+        push @{ $result->principals }, @{ $next_result->principals };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'principals') foreach (@{ $result->principals });
+        $result = $self->ListPrincipals(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'principals') foreach (@{ $result->principals });
+    }
+
+    return undef
+  }
+  sub ListAllResources {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListResources(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListResources(@_, nextToken => $next_result->nextToken);
+        push @{ $result->resources }, @{ $next_result->resources };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'resources') foreach (@{ $result->resources });
+        $result = $self->ListResources(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'resources') foreach (@{ $result->resources });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AcceptResourceShareInvitation AssociateResourceShare CreateResourceShare DeleteResourceShare DisassociateResourceShare EnableSharingWithAwsOrganization GetResourcePolicies GetResourceShareAssociations GetResourceShareInvitations GetResourceShares ListPrincipals ListResources RejectResourceShareInvitation TagResource UntagResource UpdateResourceShare / }
@@ -519,6 +657,78 @@ Updates the specified resource share.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 GetAllResourcePolicies(sub { },ResourceArns => ArrayRef[Str|Undef], [MaxResults => Int, NextToken => Str, Principal => Str])
+
+=head2 GetAllResourcePolicies(ResourceArns => ArrayRef[Str|Undef], [MaxResults => Int, NextToken => Str, Principal => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - policies, passing the object as the first parameter, and the string 'policies' as the second parameter 
+
+If not, it will return a a L<Paws::RAM::GetResourcePoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllResourceShareAssociations(sub { },AssociationType => Str, [AssociationStatus => Str, MaxResults => Int, NextToken => Str, Principal => Str, ResourceArn => Str, ResourceShareArns => ArrayRef[Str|Undef]])
+
+=head2 GetAllResourceShareAssociations(AssociationType => Str, [AssociationStatus => Str, MaxResults => Int, NextToken => Str, Principal => Str, ResourceArn => Str, ResourceShareArns => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - resourceShareAssociations, passing the object as the first parameter, and the string 'resourceShareAssociations' as the second parameter 
+
+If not, it will return a a L<Paws::RAM::GetResourceShareAssociationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllResourceShareInvitations(sub { },[MaxResults => Int, NextToken => Str, ResourceShareArns => ArrayRef[Str|Undef], ResourceShareInvitationArns => ArrayRef[Str|Undef]])
+
+=head2 GetAllResourceShareInvitations([MaxResults => Int, NextToken => Str, ResourceShareArns => ArrayRef[Str|Undef], ResourceShareInvitationArns => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - resourceShareInvitations, passing the object as the first parameter, and the string 'resourceShareInvitations' as the second parameter 
+
+If not, it will return a a L<Paws::RAM::GetResourceShareInvitationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllResourceShares(sub { },ResourceOwner => Str, [MaxResults => Int, Name => Str, NextToken => Str, ResourceShareArns => ArrayRef[Str|Undef], ResourceShareStatus => Str, TagFilters => ArrayRef[L<Paws::RAM::TagFilter>]])
+
+=head2 GetAllResourceShares(ResourceOwner => Str, [MaxResults => Int, Name => Str, NextToken => Str, ResourceShareArns => ArrayRef[Str|Undef], ResourceShareStatus => Str, TagFilters => ArrayRef[L<Paws::RAM::TagFilter>]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - resourceShares, passing the object as the first parameter, and the string 'resourceShares' as the second parameter 
+
+If not, it will return a a L<Paws::RAM::GetResourceSharesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPrincipals(sub { },ResourceOwner => Str, [MaxResults => Int, NextToken => Str, Principals => ArrayRef[Str|Undef], ResourceArn => Str, ResourceShareArns => ArrayRef[Str|Undef], ResourceType => Str])
+
+=head2 ListAllPrincipals(ResourceOwner => Str, [MaxResults => Int, NextToken => Str, Principals => ArrayRef[Str|Undef], ResourceArn => Str, ResourceShareArns => ArrayRef[Str|Undef], ResourceType => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - principals, passing the object as the first parameter, and the string 'principals' as the second parameter 
+
+If not, it will return a a L<Paws::RAM::ListPrincipalsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllResources(sub { },ResourceOwner => Str, [MaxResults => Int, NextToken => Str, Principal => Str, ResourceArns => ArrayRef[Str|Undef], ResourceShareArns => ArrayRef[Str|Undef], ResourceType => Str])
+
+=head2 ListAllResources(ResourceOwner => Str, [MaxResults => Int, NextToken => Str, Principal => Str, ResourceArns => ArrayRef[Str|Undef], ResourceShareArns => ArrayRef[Str|Undef], ResourceType => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - resources, passing the object as the first parameter, and the string 'resources' as the second parameter 
+
+If not, it will return a a L<Paws::RAM::ListResourcesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

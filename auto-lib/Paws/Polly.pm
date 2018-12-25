@@ -83,6 +83,52 @@ package Paws::Polly;
 
     return undef
   }
+  sub ListAllLexicons {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListLexicons(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListLexicons(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Lexicons }, @{ $next_result->Lexicons };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Lexicons') foreach (@{ $result->Lexicons });
+        $result = $self->ListLexicons(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Lexicons') foreach (@{ $result->Lexicons });
+    }
+
+    return undef
+  }
+  sub ListAllSpeechSynthesisTasks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListSpeechSynthesisTasks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListSpeechSynthesisTasks(@_, NextToken => $next_result->NextToken);
+        push @{ $result->SynthesisTasks }, @{ $next_result->SynthesisTasks };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'SynthesisTasks') foreach (@{ $result->SynthesisTasks });
+        $result = $self->ListSpeechSynthesisTasks(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'SynthesisTasks') foreach (@{ $result->SynthesisTasks });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/DeleteLexicon DescribeVoices GetLexicon GetSpeechSynthesisTask ListLexicons ListSpeechSynthesisTasks PutLexicon StartSpeechSynthesisTask SynthesizeSpeech / }
@@ -383,6 +429,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Voices, passing the object as the first parameter, and the string 'Voices' as the second parameter 
 
 If not, it will return a a L<Paws::Polly::DescribeVoicesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllLexicons(sub { },[NextToken => Str])
+
+=head2 ListAllLexicons([NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Lexicons, passing the object as the first parameter, and the string 'Lexicons' as the second parameter 
+
+If not, it will return a a L<Paws::Polly::ListLexiconsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSpeechSynthesisTasks(sub { },[MaxResults => Int, NextToken => Str, Status => Str])
+
+=head2 ListAllSpeechSynthesisTasks([MaxResults => Int, NextToken => Str, Status => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SynthesisTasks, passing the object as the first parameter, and the string 'SynthesisTasks' as the second parameter 
+
+If not, it will return a a L<Paws::Polly::ListSpeechSynthesisTasksOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

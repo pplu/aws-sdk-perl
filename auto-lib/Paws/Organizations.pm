@@ -952,6 +952,16 @@ because your organization is still initializing, wait one hour and then
 try again. If the error persists, contact AWS Support
 (https://console.aws.amazon.com/support/home#/).
 
+=item *
+
+Using CreateAccount to create multiple temporary accounts is not
+recommended. You can only close an account from the Billing and Cost
+Management Console, and you must be signed in as the root user. For
+information on the requirements and process for closing an account, see
+Closing an AWS Account
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html)
+in the I<AWS Organizations User Guide>.
+
 =back
 
 When you create a member account with this operation, you can choose

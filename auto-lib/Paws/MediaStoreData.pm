@@ -40,6 +40,29 @@ package Paws::MediaStoreData;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllItems {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListItems(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListItems(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Items }, @{ $next_result->Items };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Items') foreach (@{ $result->Items });
+        $result = $self->ListItems(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Items') foreach (@{ $result->Items });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/DeleteObject DescribeObject GetObject ListItems PutObject / }
@@ -180,6 +203,18 @@ MB.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllItems(sub { },[MaxResults => Int, NextToken => Str, Path => Str])
+
+=head2 ListAllItems([MaxResults => Int, NextToken => Str, Path => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Items, passing the object as the first parameter, and the string 'Items' as the second parameter 
+
+If not, it will return a a L<Paws::MediaStoreData::ListItemsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

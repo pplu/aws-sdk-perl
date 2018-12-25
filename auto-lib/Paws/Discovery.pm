@@ -126,6 +126,144 @@ package Paws::Discovery;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllAgents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeAgents(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeAgents(@_, nextToken => $next_result->nextToken);
+        push @{ $result->agentsInfo }, @{ $next_result->agentsInfo };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'agentsInfo') foreach (@{ $result->agentsInfo });
+        $result = $self->DescribeAgents(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'agentsInfo') foreach (@{ $result->agentsInfo });
+    }
+
+    return undef
+  }
+  sub DescribeAllContinuousExports {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeContinuousExports(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeContinuousExports(@_, nextToken => $next_result->nextToken);
+        push @{ $result->descriptions }, @{ $next_result->descriptions };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'descriptions') foreach (@{ $result->descriptions });
+        $result = $self->DescribeContinuousExports(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'descriptions') foreach (@{ $result->descriptions });
+    }
+
+    return undef
+  }
+  sub DescribeAllExportConfigurations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeExportConfigurations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeExportConfigurations(@_, nextToken => $next_result->nextToken);
+        push @{ $result->exportsInfo }, @{ $next_result->exportsInfo };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'exportsInfo') foreach (@{ $result->exportsInfo });
+        $result = $self->DescribeExportConfigurations(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'exportsInfo') foreach (@{ $result->exportsInfo });
+    }
+
+    return undef
+  }
+  sub DescribeAllExportTasks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeExportTasks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeExportTasks(@_, nextToken => $next_result->nextToken);
+        push @{ $result->exportsInfo }, @{ $next_result->exportsInfo };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'exportsInfo') foreach (@{ $result->exportsInfo });
+        $result = $self->DescribeExportTasks(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'exportsInfo') foreach (@{ $result->exportsInfo });
+    }
+
+    return undef
+  }
+  sub DescribeAllTags {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeTags(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeTags(@_, nextToken => $next_result->nextToken);
+        push @{ $result->tags }, @{ $next_result->tags };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'tags') foreach (@{ $result->tags });
+        $result = $self->DescribeTags(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'tags') foreach (@{ $result->tags });
+    }
+
+    return undef
+  }
+  sub ListAllConfigurations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListConfigurations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListConfigurations(@_, nextToken => $next_result->nextToken);
+        push @{ $result->configurations }, @{ $next_result->configurations };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'configurations') foreach (@{ $result->configurations });
+        $result = $self->ListConfigurations(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'configurations') foreach (@{ $result->configurations });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AssociateConfigurationItemsToApplication CreateApplication CreateTags DeleteApplications DeleteTags DescribeAgents DescribeConfigurations DescribeContinuousExports DescribeExportConfigurations DescribeExportTasks DescribeTags DisassociateConfigurationItemsFromApplication ExportConfigurations GetDiscoverySummary ListConfigurations ListServerNeighbors StartContinuousExport StartDataCollectionByAgentIds StartExportTask StopContinuousExport StopDataCollectionByAgentIds UpdateApplication / }
@@ -746,6 +884,78 @@ Updates metadata about an application.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllAgents(sub { },[AgentIds => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::Discovery::Filter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllAgents([AgentIds => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::Discovery::Filter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - agentsInfo, passing the object as the first parameter, and the string 'agentsInfo' as the second parameter 
+
+If not, it will return a a L<Paws::Discovery::DescribeAgentsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllContinuousExports(sub { },[ExportIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllContinuousExports([ExportIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - descriptions, passing the object as the first parameter, and the string 'descriptions' as the second parameter 
+
+If not, it will return a a L<Paws::Discovery::DescribeContinuousExportsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllExportConfigurations(sub { },[ExportIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllExportConfigurations([ExportIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - exportsInfo, passing the object as the first parameter, and the string 'exportsInfo' as the second parameter 
+
+If not, it will return a a L<Paws::Discovery::DescribeExportConfigurationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllExportTasks(sub { },[ExportIds => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::Discovery::ExportFilter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllExportTasks([ExportIds => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::Discovery::ExportFilter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - exportsInfo, passing the object as the first parameter, and the string 'exportsInfo' as the second parameter 
+
+If not, it will return a a L<Paws::Discovery::DescribeExportTasksResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllTags(sub { },[Filters => ArrayRef[L<Paws::Discovery::TagFilter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllTags([Filters => ArrayRef[L<Paws::Discovery::TagFilter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - tags, passing the object as the first parameter, and the string 'tags' as the second parameter 
+
+If not, it will return a a L<Paws::Discovery::DescribeTagsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllConfigurations(sub { },ConfigurationType => Str, [Filters => ArrayRef[L<Paws::Discovery::Filter>], MaxResults => Int, NextToken => Str, OrderBy => ArrayRef[L<Paws::Discovery::OrderByElement>]])
+
+=head2 ListAllConfigurations(ConfigurationType => Str, [Filters => ArrayRef[L<Paws::Discovery::Filter>], MaxResults => Int, NextToken => Str, OrderBy => ArrayRef[L<Paws::Discovery::OrderByElement>]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - configurations, passing the object as the first parameter, and the string 'configurations' as the second parameter 
+
+If not, it will return a a L<Paws::Discovery::ListConfigurationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

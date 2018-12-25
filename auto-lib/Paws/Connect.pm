@@ -120,6 +120,121 @@ package Paws::Connect;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub GetAllMetricData {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetMetricData(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetMetricData(@_, NextToken => $next_result->NextToken);
+        push @{ $result->MetricResults }, @{ $next_result->MetricResults };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'MetricResults') foreach (@{ $result->MetricResults });
+        $result = $self->GetMetricData(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'MetricResults') foreach (@{ $result->MetricResults });
+    }
+
+    return undef
+  }
+  sub ListAllRoutingProfiles {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListRoutingProfiles(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListRoutingProfiles(@_, NextToken => $next_result->NextToken);
+        push @{ $result->RoutingProfileSummaryList }, @{ $next_result->RoutingProfileSummaryList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'RoutingProfileSummaryList') foreach (@{ $result->RoutingProfileSummaryList });
+        $result = $self->ListRoutingProfiles(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'RoutingProfileSummaryList') foreach (@{ $result->RoutingProfileSummaryList });
+    }
+
+    return undef
+  }
+  sub ListAllSecurityProfiles {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListSecurityProfiles(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListSecurityProfiles(@_, NextToken => $next_result->NextToken);
+        push @{ $result->SecurityProfileSummaryList }, @{ $next_result->SecurityProfileSummaryList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'SecurityProfileSummaryList') foreach (@{ $result->SecurityProfileSummaryList });
+        $result = $self->ListSecurityProfiles(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'SecurityProfileSummaryList') foreach (@{ $result->SecurityProfileSummaryList });
+    }
+
+    return undef
+  }
+  sub ListAllUserHierarchyGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListUserHierarchyGroups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListUserHierarchyGroups(@_, NextToken => $next_result->NextToken);
+        push @{ $result->UserHierarchyGroupSummaryList }, @{ $next_result->UserHierarchyGroupSummaryList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'UserHierarchyGroupSummaryList') foreach (@{ $result->UserHierarchyGroupSummaryList });
+        $result = $self->ListUserHierarchyGroups(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'UserHierarchyGroupSummaryList') foreach (@{ $result->UserHierarchyGroupSummaryList });
+    }
+
+    return undef
+  }
+  sub ListAllUsers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListUsers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListUsers(@_, NextToken => $next_result->NextToken);
+        push @{ $result->UserSummaryList }, @{ $next_result->UserSummaryList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'UserSummaryList') foreach (@{ $result->UserSummaryList });
+        $result = $self->ListUsers(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'UserSummaryList') foreach (@{ $result->UserSummaryList });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CreateUser DeleteUser DescribeUser DescribeUserHierarchyGroup DescribeUserHierarchyStructure GetContactAttributes GetCurrentMetricData GetFederationToken GetMetricData ListRoutingProfiles ListSecurityProfiles ListUserHierarchyGroups ListUsers StartOutboundVoiceContact StopContact UpdateContactAttributes UpdateUserHierarchy UpdateUserIdentityInfo UpdateUserPhoneConfig UpdateUserRoutingProfile UpdateUserSecurityProfiles / }
@@ -670,6 +785,66 @@ Updates the security profiles assigned to the user.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 GetAllMetricData(sub { },EndTime => Str, Filters => L<Paws::Connect::Filters>, HistoricalMetrics => ArrayRef[L<Paws::Connect::HistoricalMetric>], InstanceId => Str, StartTime => Str, [Groupings => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 GetAllMetricData(EndTime => Str, Filters => L<Paws::Connect::Filters>, HistoricalMetrics => ArrayRef[L<Paws::Connect::HistoricalMetric>], InstanceId => Str, StartTime => Str, [Groupings => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - MetricResults, passing the object as the first parameter, and the string 'MetricResults' as the second parameter 
+
+If not, it will return a a L<Paws::Connect::GetMetricDataResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllRoutingProfiles(sub { },InstanceId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllRoutingProfiles(InstanceId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - RoutingProfileSummaryList, passing the object as the first parameter, and the string 'RoutingProfileSummaryList' as the second parameter 
+
+If not, it will return a a L<Paws::Connect::ListRoutingProfilesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSecurityProfiles(sub { },InstanceId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllSecurityProfiles(InstanceId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SecurityProfileSummaryList, passing the object as the first parameter, and the string 'SecurityProfileSummaryList' as the second parameter 
+
+If not, it will return a a L<Paws::Connect::ListSecurityProfilesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllUserHierarchyGroups(sub { },InstanceId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllUserHierarchyGroups(InstanceId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - UserHierarchyGroupSummaryList, passing the object as the first parameter, and the string 'UserHierarchyGroupSummaryList' as the second parameter 
+
+If not, it will return a a L<Paws::Connect::ListUserHierarchyGroupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllUsers(sub { },InstanceId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllUsers(InstanceId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - UserSummaryList, passing the object as the first parameter, and the string 'UserSummaryList' as the second parameter 
+
+If not, it will return a a L<Paws::Connect::ListUsersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

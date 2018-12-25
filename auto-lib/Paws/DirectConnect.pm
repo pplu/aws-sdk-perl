@@ -241,6 +241,75 @@ package Paws::DirectConnect;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllDirectConnectGatewayAssociations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDirectConnectGatewayAssociations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeDirectConnectGatewayAssociations(@_, nextToken => $next_result->nextToken);
+        push @{ $result->directConnectGatewayAssociations }, @{ $next_result->directConnectGatewayAssociations };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'directConnectGatewayAssociations') foreach (@{ $result->directConnectGatewayAssociations });
+        $result = $self->DescribeDirectConnectGatewayAssociations(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'directConnectGatewayAssociations') foreach (@{ $result->directConnectGatewayAssociations });
+    }
+
+    return undef
+  }
+  sub DescribeAllDirectConnectGatewayAttachments {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDirectConnectGatewayAttachments(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeDirectConnectGatewayAttachments(@_, nextToken => $next_result->nextToken);
+        push @{ $result->directConnectGatewayAttachments }, @{ $next_result->directConnectGatewayAttachments };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'directConnectGatewayAttachments') foreach (@{ $result->directConnectGatewayAttachments });
+        $result = $self->DescribeDirectConnectGatewayAttachments(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'directConnectGatewayAttachments') foreach (@{ $result->directConnectGatewayAttachments });
+    }
+
+    return undef
+  }
+  sub DescribeAllDirectConnectGateways {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDirectConnectGateways(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeDirectConnectGateways(@_, nextToken => $next_result->nextToken);
+        push @{ $result->directConnectGateways }, @{ $next_result->directConnectGateways };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'directConnectGateways') foreach (@{ $result->directConnectGateways });
+        $result = $self->DescribeDirectConnectGateways(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'directConnectGateways') foreach (@{ $result->directConnectGateways });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AllocateConnectionOnInterconnect AllocateHostedConnection AllocatePrivateVirtualInterface AllocatePublicVirtualInterface AssociateConnectionWithLag AssociateHostedConnection AssociateVirtualInterface ConfirmConnection ConfirmPrivateVirtualInterface ConfirmPublicVirtualInterface CreateBGPPeer CreateConnection CreateDirectConnectGateway CreateDirectConnectGatewayAssociation CreateInterconnect CreateLag CreatePrivateVirtualInterface CreatePublicVirtualInterface DeleteBGPPeer DeleteConnection DeleteDirectConnectGateway DeleteDirectConnectGatewayAssociation DeleteInterconnect DeleteLag DeleteVirtualInterface DescribeConnectionLoa DescribeConnections DescribeConnectionsOnInterconnect DescribeDirectConnectGatewayAssociations DescribeDirectConnectGatewayAttachments DescribeDirectConnectGateways DescribeHostedConnections DescribeInterconnectLoa DescribeInterconnects DescribeLags DescribeLoa DescribeLocations DescribeTags DescribeVirtualGateways DescribeVirtualInterfaces DisassociateConnectionFromLag TagResource UntagResource UpdateLag UpdateVirtualInterfaceAttributes / }
@@ -1440,6 +1509,42 @@ interface supports jumbo frames, call DescribeVirtualInterfaces.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllDirectConnectGatewayAssociations(sub { },[DirectConnectGatewayId => Str, MaxResults => Int, NextToken => Str, VirtualGatewayId => Str])
+
+=head2 DescribeAllDirectConnectGatewayAssociations([DirectConnectGatewayId => Str, MaxResults => Int, NextToken => Str, VirtualGatewayId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - directConnectGatewayAssociations, passing the object as the first parameter, and the string 'directConnectGatewayAssociations' as the second parameter 
+
+If not, it will return a a L<Paws::DirectConnect::DescribeDirectConnectGatewayAssociationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllDirectConnectGatewayAttachments(sub { },[DirectConnectGatewayId => Str, MaxResults => Int, NextToken => Str, VirtualInterfaceId => Str])
+
+=head2 DescribeAllDirectConnectGatewayAttachments([DirectConnectGatewayId => Str, MaxResults => Int, NextToken => Str, VirtualInterfaceId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - directConnectGatewayAttachments, passing the object as the first parameter, and the string 'directConnectGatewayAttachments' as the second parameter 
+
+If not, it will return a a L<Paws::DirectConnect::DescribeDirectConnectGatewayAttachmentsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllDirectConnectGateways(sub { },[DirectConnectGatewayId => Str, MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllDirectConnectGateways([DirectConnectGatewayId => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - directConnectGateways, passing the object as the first parameter, and the string 'directConnectGateways' as the second parameter 
+
+If not, it will return a a L<Paws::DirectConnect::DescribeDirectConnectGatewaysResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

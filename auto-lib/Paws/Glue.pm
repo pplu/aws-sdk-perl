@@ -658,6 +658,29 @@ package Paws::Glue;
 
     return undef
   }
+  sub GetAllSecurityConfigurations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetSecurityConfigurations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetSecurityConfigurations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->SecurityConfigurations }, @{ $next_result->SecurityConfigurations };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'SecurityConfigurations') foreach (@{ $result->SecurityConfigurations });
+        $result = $self->GetSecurityConfigurations(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'SecurityConfigurations') foreach (@{ $result->SecurityConfigurations });
+    }
+
+    return undef
+  }
   sub GetAllTables {
     my $self = shift;
 
@@ -2715,6 +2738,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Partitions, passing the object as the first parameter, and the string 'Partitions' as the second parameter 
 
 If not, it will return a a L<Paws::Glue::GetPartitionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllSecurityConfigurations(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 GetAllSecurityConfigurations([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SecurityConfigurations, passing the object as the first parameter, and the string 'SecurityConfigurations' as the second parameter 
+
+If not, it will return a a L<Paws::Glue::GetSecurityConfigurationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 GetAllTables(sub { },DatabaseName => Str, [CatalogId => Str, Expression => Str, MaxResults => Int, NextToken => Str])

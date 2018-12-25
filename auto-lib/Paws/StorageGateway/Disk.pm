@@ -2,6 +2,7 @@ package Paws::StorageGateway::Disk;
   use Moose;
   has DiskAllocationResource => (is => 'ro', isa => 'Str');
   has DiskAllocationType => (is => 'ro', isa => 'Str');
+  has DiskAttributeList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DiskId => (is => 'ro', isa => 'Str');
   has DiskNode => (is => 'ro', isa => 'Str');
   has DiskPath => (is => 'ro', isa => 'Str');
@@ -37,14 +38,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::StorageGate
 
 =head1 DESCRIPTION
 
-This class has no description
+Represents a gateway's local disk.
 
 =head1 ATTRIBUTES
 
 
 =head2 DiskAllocationResource => Str
 
-  
+  The iSCSI Qualified Name (IQN) that is defined for a disk. This field
+is not included in the response if the local disk is not defined as an
+iSCSI target. The format of this field is
+I<targetIqn::LUNNumber::region-volumeId>.
 
 
 =head2 DiskAllocationType => Str
@@ -52,29 +56,36 @@ This class has no description
   
 
 
-=head2 DiskId => Str
+=head2 DiskAttributeList => ArrayRef[Str|Undef]
 
   
+
+
+=head2 DiskId => Str
+
+  The unique device ID or other distinguishing data that identifies a
+local disk.
 
 
 =head2 DiskNode => Str
 
-  
+  The device node of a local disk as assigned by the virtualization
+environment.
 
 
 =head2 DiskPath => Str
 
-  
+  The path of a local disk in the gateway virtual machine (VM).
 
 
 =head2 DiskSizeInBytes => Int
 
-  
+  The local disk size in bytes.
 
 
 =head2 DiskStatus => Str
 
-  
+  A value that represents the status of a local disk.
 
 
 

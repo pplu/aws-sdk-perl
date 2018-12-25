@@ -71,6 +71,75 @@ package Paws::FSX;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllBackups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeBackups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeBackups(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Backups }, @{ $next_result->Backups };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Backups') foreach (@{ $result->Backups });
+        $result = $self->DescribeBackups(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Backups') foreach (@{ $result->Backups });
+    }
+
+    return undef
+  }
+  sub DescribeAllFileSystems {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeFileSystems(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeFileSystems(@_, NextToken => $next_result->NextToken);
+        push @{ $result->FileSystems }, @{ $next_result->FileSystems };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'FileSystems') foreach (@{ $result->FileSystems });
+        $result = $self->DescribeFileSystems(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'FileSystems') foreach (@{ $result->FileSystems });
+    }
+
+    return undef
+  }
+  sub ListAllTagsForResource {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTagsForResource(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTagsForResource(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Tags }, @{ $next_result->Tags };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+        $result = $self->ListTagsForResource(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CreateBackup CreateFileSystem CreateFileSystemFromBackup DeleteBackup DeleteFileSystem DescribeBackups DescribeFileSystems ListTagsForResource TagResource UntagResource UpdateFileSystem / }
@@ -588,6 +657,42 @@ Updates a file system configuration.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllBackups(sub { },[BackupIds => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::FSX::Filter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllBackups([BackupIds => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::FSX::Filter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Backups, passing the object as the first parameter, and the string 'Backups' as the second parameter 
+
+If not, it will return a a L<Paws::FSX::DescribeBackupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllFileSystems(sub { },[FileSystemIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllFileSystems([FileSystemIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - FileSystems, passing the object as the first parameter, and the string 'FileSystems' as the second parameter 
+
+If not, it will return a a L<Paws::FSX::DescribeFileSystemsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTagsForResource(sub { },ResourceARN => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllTagsForResource(ResourceARN => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Tags, passing the object as the first parameter, and the string 'Tags' as the second parameter 
+
+If not, it will return a a L<Paws::FSX::ListTagsForResourceResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

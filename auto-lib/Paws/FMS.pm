@@ -81,6 +81,75 @@ package Paws::FMS;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllComplianceStatus {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListComplianceStatus(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListComplianceStatus(@_, NextToken => $next_result->NextToken);
+        push @{ $result->PolicyComplianceStatusList }, @{ $next_result->PolicyComplianceStatusList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'PolicyComplianceStatusList') foreach (@{ $result->PolicyComplianceStatusList });
+        $result = $self->ListComplianceStatus(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'PolicyComplianceStatusList') foreach (@{ $result->PolicyComplianceStatusList });
+    }
+
+    return undef
+  }
+  sub ListAllMemberAccounts {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListMemberAccounts(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListMemberAccounts(@_, NextToken => $next_result->NextToken);
+        push @{ $result->MemberAccounts }, @{ $next_result->MemberAccounts };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'MemberAccounts') foreach (@{ $result->MemberAccounts });
+        $result = $self->ListMemberAccounts(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'MemberAccounts') foreach (@{ $result->MemberAccounts });
+    }
+
+    return undef
+  }
+  sub ListAllPolicies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPolicies(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListPolicies(@_, NextToken => $next_result->NextToken);
+        push @{ $result->PolicyList }, @{ $next_result->PolicyList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'PolicyList') foreach (@{ $result->PolicyList });
+        $result = $self->ListPolicies(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'PolicyList') foreach (@{ $result->PolicyList });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AssociateAdminAccount DeleteNotificationChannel DeletePolicy DisassociateAdminAccount GetAdminAccount GetComplianceDetail GetNotificationChannel GetPolicy ListComplianceStatus ListMemberAccounts ListPolicies PutNotificationChannel PutPolicy / }
@@ -366,6 +435,42 @@ Creates an AWS Firewall Manager policy.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllComplianceStatus(sub { },PolicyId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllComplianceStatus(PolicyId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PolicyComplianceStatusList, passing the object as the first parameter, and the string 'PolicyComplianceStatusList' as the second parameter 
+
+If not, it will return a a L<Paws::FMS::ListComplianceStatusResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllMemberAccounts(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllMemberAccounts([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - MemberAccounts, passing the object as the first parameter, and the string 'MemberAccounts' as the second parameter 
+
+If not, it will return a a L<Paws::FMS::ListMemberAccountsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPolicies(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllPolicies([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PolicyList, passing the object as the first parameter, and the string 'PolicyList' as the second parameter 
+
+If not, it will return a a L<Paws::FMS::ListPoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

@@ -240,6 +240,29 @@ package Paws::WorkMail;
 
     return undef
   }
+  sub ListAllMailboxPermissions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListMailboxPermissions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListMailboxPermissions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Permissions }, @{ $next_result->Permissions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Permissions') foreach (@{ $result->Permissions });
+        $result = $self->ListMailboxPermissions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Permissions') foreach (@{ $result->Permissions });
+    }
+
+    return undef
+  }
   sub ListAllOrganizations {
     my $self = shift;
 
@@ -259,6 +282,29 @@ package Paws::WorkMail;
         $result = $self->ListOrganizations(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'OrganizationSummaries') foreach (@{ $result->OrganizationSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllResourceDelegates {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListResourceDelegates(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListResourceDelegates(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Delegates }, @{ $next_result->Delegates };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Delegates') foreach (@{ $result->Delegates });
+        $result = $self->ListResourceDelegates(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Delegates') foreach (@{ $result->Delegates });
     }
 
     return undef
@@ -1077,6 +1123,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::WorkMail::ListGroupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 ListAllMailboxPermissions(sub { },EntityId => Str, OrganizationId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllMailboxPermissions(EntityId => Str, OrganizationId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Permissions, passing the object as the first parameter, and the string 'Permissions' as the second parameter 
+
+If not, it will return a a L<Paws::WorkMail::ListMailboxPermissionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllOrganizations(sub { },[MaxResults => Int, NextToken => Str])
 
 =head2 ListAllOrganizations([MaxResults => Int, NextToken => Str])
@@ -1087,6 +1145,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - OrganizationSummaries, passing the object as the first parameter, and the string 'OrganizationSummaries' as the second parameter 
 
 If not, it will return a a L<Paws::WorkMail::ListOrganizationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllResourceDelegates(sub { },OrganizationId => Str, ResourceId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllResourceDelegates(OrganizationId => Str, ResourceId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Delegates, passing the object as the first parameter, and the string 'Delegates' as the second parameter 
+
+If not, it will return a a L<Paws::WorkMail::ListResourceDelegatesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllResources(sub { },OrganizationId => Str, [MaxResults => Int, NextToken => Str])

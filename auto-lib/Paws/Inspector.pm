@@ -316,6 +316,29 @@ package Paws::Inspector;
 
     return undef
   }
+  sub ListAllExclusions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListExclusions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListExclusions(@_, nextToken => $next_result->nextToken);
+        push @{ $result->exclusionArns }, @{ $next_result->exclusionArns };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'exclusionArns') foreach (@{ $result->exclusionArns });
+        $result = $self->ListExclusions(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'exclusionArns') foreach (@{ $result->exclusionArns });
+    }
+
+    return undef
+  }
   sub ListAllFindings {
     my $self = shift;
 
@@ -1236,6 +1259,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - subscriptions, passing the object as the first parameter, and the string 'subscriptions' as the second parameter 
 
 If not, it will return a a L<Paws::Inspector::ListEventSubscriptionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllExclusions(sub { },AssessmentRunArn => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllExclusions(AssessmentRunArn => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - exclusionArns, passing the object as the first parameter, and the string 'exclusionArns' as the second parameter 
+
+If not, it will return a a L<Paws::Inspector::ListExclusionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllFindings(sub { },[AssessmentRunArns => ArrayRef[Str|Undef], Filter => L<Paws::Inspector::FindingFilter>, MaxResults => Int, NextToken => Str])

@@ -568,6 +568,121 @@ package Paws::RDS;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllCertificates {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeCertificates(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeCertificates(@_, Marker => $next_result->Marker);
+        push @{ $result->Certificates }, @{ $next_result->Certificates };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'Certificates') foreach (@{ $result->Certificates });
+        $result = $self->DescribeCertificates(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'Certificates') foreach (@{ $result->Certificates });
+    }
+
+    return undef
+  }
+  sub DescribeAllDBClusterBacktracks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBClusterBacktracks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBClusterBacktracks(@_, Marker => $next_result->Marker);
+        push @{ $result->DBClusterBacktracks }, @{ $next_result->DBClusterBacktracks };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'DBClusterBacktracks') foreach (@{ $result->DBClusterBacktracks });
+        $result = $self->DescribeDBClusterBacktracks(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'DBClusterBacktracks') foreach (@{ $result->DBClusterBacktracks });
+    }
+
+    return undef
+  }
+  sub DescribeAllDBClusterEndpoints {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBClusterEndpoints(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBClusterEndpoints(@_, Marker => $next_result->Marker);
+        push @{ $result->DBClusterEndpoints }, @{ $next_result->DBClusterEndpoints };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'DBClusterEndpoints') foreach (@{ $result->DBClusterEndpoints });
+        $result = $self->DescribeDBClusterEndpoints(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'DBClusterEndpoints') foreach (@{ $result->DBClusterEndpoints });
+    }
+
+    return undef
+  }
+  sub DescribeAllDBClusterParameterGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBClusterParameterGroups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBClusterParameterGroups(@_, Marker => $next_result->Marker);
+        push @{ $result->DBClusterParameterGroups }, @{ $next_result->DBClusterParameterGroups };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'DBClusterParameterGroups') foreach (@{ $result->DBClusterParameterGroups });
+        $result = $self->DescribeDBClusterParameterGroups(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'DBClusterParameterGroups') foreach (@{ $result->DBClusterParameterGroups });
+    }
+
+    return undef
+  }
+  sub DescribeAllDBClusterParameters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBClusterParameters(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBClusterParameters(@_, Marker => $next_result->Marker);
+        push @{ $result->Parameters }, @{ $next_result->Parameters };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'Parameters') foreach (@{ $result->Parameters });
+        $result = $self->DescribeDBClusterParameters(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'Parameters') foreach (@{ $result->Parameters });
+    }
+
+    return undef
+  }
   sub DescribeAllDBClusters {
     my $self = shift;
 
@@ -821,6 +936,29 @@ package Paws::RDS;
 
     return undef
   }
+  sub DescribeAllEngineDefaultClusterParameters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeEngineDefaultClusterParameters(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->EngineDefaults->Marker) {
+        $next_result = $self->DescribeEngineDefaultClusterParameters(@_, Marker => $next_result->EngineDefaults->Marker);
+        push @{ $result->EngineDefaults->Parameters }, @{ $next_result->EngineDefaults->Parameters };
+      }
+      return $result;
+    } else {
+      while ($result->EngineDefaults->Marker) {
+        $callback->($_ => 'EngineDefaults.Parameters') foreach (@{ $result->EngineDefaults->Parameters });
+        $result = $self->DescribeEngineDefaultClusterParameters(@_, Marker => $result->EngineDefaults->Marker);
+      }
+      $callback->($_ => 'EngineDefaults.Parameters') foreach (@{ $result->EngineDefaults->Parameters });
+    }
+
+    return undef
+  }
   sub DescribeAllEngineDefaultParameters {
     my $self = shift;
 
@@ -982,6 +1120,29 @@ package Paws::RDS;
 
     return undef
   }
+  sub DescribeAllPendingMaintenanceActions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribePendingMaintenanceActions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribePendingMaintenanceActions(@_, Marker => $next_result->Marker);
+        push @{ $result->PendingMaintenanceActions }, @{ $next_result->PendingMaintenanceActions };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'PendingMaintenanceActions') foreach (@{ $result->PendingMaintenanceActions });
+        $result = $self->DescribePendingMaintenanceActions(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'PendingMaintenanceActions') foreach (@{ $result->PendingMaintenanceActions });
+    }
+
+    return undef
+  }
   sub DescribeAllReservedDBInstances {
     my $self = shift;
 
@@ -1024,6 +1185,29 @@ package Paws::RDS;
         $result = $self->DescribeReservedDBInstancesOfferings(@_, Marker => $result->Marker);
       }
       $callback->($_ => 'ReservedDBInstancesOfferings') foreach (@{ $result->ReservedDBInstancesOfferings });
+    }
+
+    return undef
+  }
+  sub DescribeAllSourceRegions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeSourceRegions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeSourceRegions(@_, Marker => $next_result->Marker);
+        push @{ $result->SourceRegions }, @{ $next_result->SourceRegions };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'SourceRegions') foreach (@{ $result->SourceRegions });
+        $result = $self->DescribeSourceRegions(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'SourceRegions') foreach (@{ $result->SourceRegions });
     }
 
     return undef
@@ -4766,6 +4950,66 @@ Aurora clusters, use StopDBCluster instead.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
+=head2 DescribeAllCertificates(sub { },[CertificateIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllCertificates([CertificateIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Certificates, passing the object as the first parameter, and the string 'Certificates' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::CertificateMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllDBClusterBacktracks(sub { },DBClusterIdentifier => Str, [BacktrackIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllDBClusterBacktracks(DBClusterIdentifier => Str, [BacktrackIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DBClusterBacktracks, passing the object as the first parameter, and the string 'DBClusterBacktracks' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::DBClusterBacktrackMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllDBClusterEndpoints(sub { },[DBClusterEndpointIdentifier => Str, DBClusterIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllDBClusterEndpoints([DBClusterEndpointIdentifier => Str, DBClusterIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DBClusterEndpoints, passing the object as the first parameter, and the string 'DBClusterEndpoints' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::DBClusterEndpointMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllDBClusterParameterGroups(sub { },[DBClusterParameterGroupName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllDBClusterParameterGroups([DBClusterParameterGroupName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DBClusterParameterGroups, passing the object as the first parameter, and the string 'DBClusterParameterGroups' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::DBClusterParameterGroupsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllDBClusterParameters(sub { },DBClusterParameterGroupName => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, Source => Str])
+
+=head2 DescribeAllDBClusterParameters(DBClusterParameterGroupName => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, Source => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Parameters, passing the object as the first parameter, and the string 'Parameters' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::DBClusterParameterGroupDetails> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllDBClusters(sub { },[DBClusterIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
 
 =head2 DescribeAllDBClusters([DBClusterIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
@@ -4898,6 +5142,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::DBSubnetGroupMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 DescribeAllEngineDefaultClusterParameters(sub { },DBParameterGroupFamily => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllEngineDefaultClusterParameters(DBParameterGroupFamily => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - EngineDefaults.Parameters, passing the object as the first parameter, and the string 'EngineDefaults.Parameters' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::DescribeEngineDefaultClusterParametersResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllEngineDefaultParameters(sub { },DBParameterGroupFamily => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
 
 =head2 DescribeAllEngineDefaultParameters(DBParameterGroupFamily => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
@@ -4982,6 +5238,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::OrderableDBInstanceOptionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 DescribeAllPendingMaintenanceActions(sub { },[Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, ResourceIdentifier => Str])
+
+=head2 DescribeAllPendingMaintenanceActions([Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, ResourceIdentifier => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PendingMaintenanceActions, passing the object as the first parameter, and the string 'PendingMaintenanceActions' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::PendingMaintenanceActionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllReservedDBInstances(sub { },[DBInstanceClass => Str, Duration => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, MultiAZ => Bool, OfferingType => Str, ProductDescription => Str, ReservedDBInstanceId => Str, ReservedDBInstancesOfferingId => Str])
 
 =head2 DescribeAllReservedDBInstances([DBInstanceClass => Str, Duration => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, MultiAZ => Bool, OfferingType => Str, ProductDescription => Str, ReservedDBInstanceId => Str, ReservedDBInstancesOfferingId => Str])
@@ -5004,6 +5272,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - ReservedDBInstancesOfferings, passing the object as the first parameter, and the string 'ReservedDBInstancesOfferings' as the second parameter 
 
 If not, it will return a a L<Paws::RDS::ReservedDBInstancesOfferingMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllSourceRegions(sub { },[Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, RegionName => Str])
+
+=head2 DescribeAllSourceRegions([Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, RegionName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SourceRegions, passing the object as the first parameter, and the string 'SourceRegions' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::SourceRegionMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DownloadAllDBLogFilePortions(sub { },DBInstanceIdentifier => Str, LogFileName => Str, [Marker => Str, NumberOfLines => Int])

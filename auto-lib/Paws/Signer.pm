@@ -60,6 +60,75 @@ package Paws::Signer;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllSigningJobs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListSigningJobs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListSigningJobs(@_, nextToken => $next_result->nextToken);
+        push @{ $result->jobs }, @{ $next_result->jobs };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'jobs') foreach (@{ $result->jobs });
+        $result = $self->ListSigningJobs(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'jobs') foreach (@{ $result->jobs });
+    }
+
+    return undef
+  }
+  sub ListAllSigningPlatforms {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListSigningPlatforms(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListSigningPlatforms(@_, nextToken => $next_result->nextToken);
+        push @{ $result->platforms }, @{ $next_result->platforms };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'platforms') foreach (@{ $result->platforms });
+        $result = $self->ListSigningPlatforms(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'platforms') foreach (@{ $result->platforms });
+    }
+
+    return undef
+  }
+  sub ListAllSigningProfiles {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListSigningProfiles(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListSigningProfiles(@_, nextToken => $next_result->nextToken);
+        push @{ $result->profiles }, @{ $next_result->profiles };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'profiles') foreach (@{ $result->profiles });
+        $result = $self->ListSigningProfiles(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'profiles') foreach (@{ $result->profiles });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CancelSigningProfile DescribeSigningJob GetSigningPlatform GetSigningProfile ListSigningJobs ListSigningPlatforms ListSigningProfiles PutSigningProfile StartSigningJob / }
@@ -356,6 +425,42 @@ http://docs.aws.amazon.com/acm/latest/userguide/
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllSigningJobs(sub { },[MaxResults => Int, NextToken => Str, PlatformId => Str, RequestedBy => Str, Status => Str])
+
+=head2 ListAllSigningJobs([MaxResults => Int, NextToken => Str, PlatformId => Str, RequestedBy => Str, Status => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - jobs, passing the object as the first parameter, and the string 'jobs' as the second parameter 
+
+If not, it will return a a L<Paws::Signer::ListSigningJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSigningPlatforms(sub { },[Category => Str, MaxResults => Int, NextToken => Str, Partner => Str, Target => Str])
+
+=head2 ListAllSigningPlatforms([Category => Str, MaxResults => Int, NextToken => Str, Partner => Str, Target => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - platforms, passing the object as the first parameter, and the string 'platforms' as the second parameter 
+
+If not, it will return a a L<Paws::Signer::ListSigningPlatformsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSigningProfiles(sub { },[IncludeCanceled => Bool, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllSigningProfiles([IncludeCanceled => Bool, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - profiles, passing the object as the first parameter, and the string 'profiles' as the second parameter 
+
+If not, it will return a a L<Paws::Signer::ListSigningProfilesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

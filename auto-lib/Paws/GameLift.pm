@@ -351,6 +351,374 @@ package Paws::GameLift;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllFleetAttributes {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeFleetAttributes(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeFleetAttributes(@_, NextToken => $next_result->NextToken);
+        push @{ $result->FleetAttributes }, @{ $next_result->FleetAttributes };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'FleetAttributes') foreach (@{ $result->FleetAttributes });
+        $result = $self->DescribeFleetAttributes(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'FleetAttributes') foreach (@{ $result->FleetAttributes });
+    }
+
+    return undef
+  }
+  sub DescribeAllFleetCapacity {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeFleetCapacity(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeFleetCapacity(@_, NextToken => $next_result->NextToken);
+        push @{ $result->FleetCapacity }, @{ $next_result->FleetCapacity };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'FleetCapacity') foreach (@{ $result->FleetCapacity });
+        $result = $self->DescribeFleetCapacity(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'FleetCapacity') foreach (@{ $result->FleetCapacity });
+    }
+
+    return undef
+  }
+  sub DescribeAllFleetEvents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeFleetEvents(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeFleetEvents(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Events }, @{ $next_result->Events };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Events') foreach (@{ $result->Events });
+        $result = $self->DescribeFleetEvents(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Events') foreach (@{ $result->Events });
+    }
+
+    return undef
+  }
+  sub DescribeAllFleetUtilization {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeFleetUtilization(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeFleetUtilization(@_, NextToken => $next_result->NextToken);
+        push @{ $result->FleetUtilization }, @{ $next_result->FleetUtilization };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'FleetUtilization') foreach (@{ $result->FleetUtilization });
+        $result = $self->DescribeFleetUtilization(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'FleetUtilization') foreach (@{ $result->FleetUtilization });
+    }
+
+    return undef
+  }
+  sub DescribeAllGameSessionDetails {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeGameSessionDetails(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeGameSessionDetails(@_, NextToken => $next_result->NextToken);
+        push @{ $result->GameSessionDetails }, @{ $next_result->GameSessionDetails };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'GameSessionDetails') foreach (@{ $result->GameSessionDetails });
+        $result = $self->DescribeGameSessionDetails(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'GameSessionDetails') foreach (@{ $result->GameSessionDetails });
+    }
+
+    return undef
+  }
+  sub DescribeAllGameSessionQueues {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeGameSessionQueues(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeGameSessionQueues(@_, NextToken => $next_result->NextToken);
+        push @{ $result->GameSessionQueues }, @{ $next_result->GameSessionQueues };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'GameSessionQueues') foreach (@{ $result->GameSessionQueues });
+        $result = $self->DescribeGameSessionQueues(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'GameSessionQueues') foreach (@{ $result->GameSessionQueues });
+    }
+
+    return undef
+  }
+  sub DescribeAllGameSessions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeGameSessions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeGameSessions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->GameSessions }, @{ $next_result->GameSessions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'GameSessions') foreach (@{ $result->GameSessions });
+        $result = $self->DescribeGameSessions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'GameSessions') foreach (@{ $result->GameSessions });
+    }
+
+    return undef
+  }
+  sub DescribeAllInstances {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeInstances(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeInstances(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Instances }, @{ $next_result->Instances };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Instances') foreach (@{ $result->Instances });
+        $result = $self->DescribeInstances(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Instances') foreach (@{ $result->Instances });
+    }
+
+    return undef
+  }
+  sub DescribeAllMatchmakingConfigurations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeMatchmakingConfigurations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeMatchmakingConfigurations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Configurations }, @{ $next_result->Configurations };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Configurations') foreach (@{ $result->Configurations });
+        $result = $self->DescribeMatchmakingConfigurations(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Configurations') foreach (@{ $result->Configurations });
+    }
+
+    return undef
+  }
+  sub DescribeAllMatchmakingRuleSets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeMatchmakingRuleSets(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeMatchmakingRuleSets(@_, NextToken => $next_result->NextToken);
+        push @{ $result->RuleSets }, @{ $next_result->RuleSets };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'RuleSets') foreach (@{ $result->RuleSets });
+        $result = $self->DescribeMatchmakingRuleSets(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'RuleSets') foreach (@{ $result->RuleSets });
+    }
+
+    return undef
+  }
+  sub DescribeAllPlayerSessions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribePlayerSessions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribePlayerSessions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->PlayerSessions }, @{ $next_result->PlayerSessions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'PlayerSessions') foreach (@{ $result->PlayerSessions });
+        $result = $self->DescribePlayerSessions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'PlayerSessions') foreach (@{ $result->PlayerSessions });
+    }
+
+    return undef
+  }
+  sub DescribeAllScalingPolicies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeScalingPolicies(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeScalingPolicies(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ScalingPolicies }, @{ $next_result->ScalingPolicies };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ScalingPolicies') foreach (@{ $result->ScalingPolicies });
+        $result = $self->DescribeScalingPolicies(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ScalingPolicies') foreach (@{ $result->ScalingPolicies });
+    }
+
+    return undef
+  }
+  sub ListAllAliases {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAliases(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListAliases(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Aliases }, @{ $next_result->Aliases };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Aliases') foreach (@{ $result->Aliases });
+        $result = $self->ListAliases(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Aliases') foreach (@{ $result->Aliases });
+    }
+
+    return undef
+  }
+  sub ListAllBuilds {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListBuilds(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListBuilds(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Builds }, @{ $next_result->Builds };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Builds') foreach (@{ $result->Builds });
+        $result = $self->ListBuilds(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Builds') foreach (@{ $result->Builds });
+    }
+
+    return undef
+  }
+  sub ListAllFleets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListFleets(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListFleets(@_, NextToken => $next_result->NextToken);
+        push @{ $result->FleetIds }, @{ $next_result->FleetIds };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'FleetIds') foreach (@{ $result->FleetIds });
+        $result = $self->ListFleets(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'FleetIds') foreach (@{ $result->FleetIds });
+    }
+
+    return undef
+  }
+  sub SearchAllGameSessions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->SearchGameSessions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->SearchGameSessions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->GameSessions }, @{ $next_result->GameSessions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'GameSessions') foreach (@{ $result->GameSessions });
+        $result = $self->SearchGameSessions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'GameSessions') foreach (@{ $result->GameSessions });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AcceptMatch CreateAlias CreateBuild CreateFleet CreateGameSession CreateGameSessionQueue CreateMatchmakingConfiguration CreateMatchmakingRuleSet CreatePlayerSession CreatePlayerSessions CreateVpcPeeringAuthorization CreateVpcPeeringConnection DeleteAlias DeleteBuild DeleteFleet DeleteGameSessionQueue DeleteMatchmakingConfiguration DeleteScalingPolicy DeleteVpcPeeringAuthorization DeleteVpcPeeringConnection DescribeAlias DescribeBuild DescribeEC2InstanceLimits DescribeFleetAttributes DescribeFleetCapacity DescribeFleetEvents DescribeFleetPortSettings DescribeFleetUtilization DescribeGameSessionDetails DescribeGameSessionPlacement DescribeGameSessionQueues DescribeGameSessions DescribeInstances DescribeMatchmaking DescribeMatchmakingConfigurations DescribeMatchmakingRuleSets DescribePlayerSessions DescribeRuntimeConfiguration DescribeScalingPolicies DescribeVpcPeeringAuthorizations DescribeVpcPeeringConnections GetGameSessionLogUrl GetInstanceAccess ListAliases ListBuilds ListFleets PutScalingPolicy RequestUploadCredentials ResolveAlias SearchGameSessions StartFleetActions StartGameSessionPlacement StartMatchBackfill StartMatchmaking StopFleetActions StopGameSessionPlacement StopMatchmaking UpdateAlias UpdateBuild UpdateFleetAttributes UpdateFleetCapacity UpdateFleetPortSettings UpdateGameSession UpdateGameSessionQueue UpdateMatchmakingConfiguration UpdateRuntimeConfiguration ValidateMatchmakingRuleSet / }
@@ -6499,6 +6867,198 @@ ValidateMatchmakingRuleSet
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllFleetAttributes(sub { },[FleetIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+
+=head2 DescribeAllFleetAttributes([FleetIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - FleetAttributes, passing the object as the first parameter, and the string 'FleetAttributes' as the second parameter 
+
+If not, it will return a a L<Paws::GameLift::DescribeFleetAttributesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllFleetCapacity(sub { },[FleetIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+
+=head2 DescribeAllFleetCapacity([FleetIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - FleetCapacity, passing the object as the first parameter, and the string 'FleetCapacity' as the second parameter 
+
+If not, it will return a a L<Paws::GameLift::DescribeFleetCapacityOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllFleetEvents(sub { },FleetId => Str, [EndTime => Str, Limit => Int, NextToken => Str, StartTime => Str])
+
+=head2 DescribeAllFleetEvents(FleetId => Str, [EndTime => Str, Limit => Int, NextToken => Str, StartTime => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Events, passing the object as the first parameter, and the string 'Events' as the second parameter 
+
+If not, it will return a a L<Paws::GameLift::DescribeFleetEventsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllFleetUtilization(sub { },[FleetIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+
+=head2 DescribeAllFleetUtilization([FleetIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - FleetUtilization, passing the object as the first parameter, and the string 'FleetUtilization' as the second parameter 
+
+If not, it will return a a L<Paws::GameLift::DescribeFleetUtilizationOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllGameSessionDetails(sub { },[AliasId => Str, FleetId => Str, GameSessionId => Str, Limit => Int, NextToken => Str, StatusFilter => Str])
+
+=head2 DescribeAllGameSessionDetails([AliasId => Str, FleetId => Str, GameSessionId => Str, Limit => Int, NextToken => Str, StatusFilter => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - GameSessionDetails, passing the object as the first parameter, and the string 'GameSessionDetails' as the second parameter 
+
+If not, it will return a a L<Paws::GameLift::DescribeGameSessionDetailsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllGameSessionQueues(sub { },[Limit => Int, Names => ArrayRef[Str|Undef], NextToken => Str])
+
+=head2 DescribeAllGameSessionQueues([Limit => Int, Names => ArrayRef[Str|Undef], NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - GameSessionQueues, passing the object as the first parameter, and the string 'GameSessionQueues' as the second parameter 
+
+If not, it will return a a L<Paws::GameLift::DescribeGameSessionQueuesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllGameSessions(sub { },[AliasId => Str, FleetId => Str, GameSessionId => Str, Limit => Int, NextToken => Str, StatusFilter => Str])
+
+=head2 DescribeAllGameSessions([AliasId => Str, FleetId => Str, GameSessionId => Str, Limit => Int, NextToken => Str, StatusFilter => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - GameSessions, passing the object as the first parameter, and the string 'GameSessions' as the second parameter 
+
+If not, it will return a a L<Paws::GameLift::DescribeGameSessionsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllInstances(sub { },FleetId => Str, [InstanceId => Str, Limit => Int, NextToken => Str])
+
+=head2 DescribeAllInstances(FleetId => Str, [InstanceId => Str, Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Instances, passing the object as the first parameter, and the string 'Instances' as the second parameter 
+
+If not, it will return a a L<Paws::GameLift::DescribeInstancesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllMatchmakingConfigurations(sub { },[Limit => Int, Names => ArrayRef[Str|Undef], NextToken => Str, RuleSetName => Str])
+
+=head2 DescribeAllMatchmakingConfigurations([Limit => Int, Names => ArrayRef[Str|Undef], NextToken => Str, RuleSetName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Configurations, passing the object as the first parameter, and the string 'Configurations' as the second parameter 
+
+If not, it will return a a L<Paws::GameLift::DescribeMatchmakingConfigurationsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllMatchmakingRuleSets(sub { },[Limit => Int, Names => ArrayRef[Str|Undef], NextToken => Str])
+
+=head2 DescribeAllMatchmakingRuleSets([Limit => Int, Names => ArrayRef[Str|Undef], NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - RuleSets, passing the object as the first parameter, and the string 'RuleSets' as the second parameter 
+
+If not, it will return a a L<Paws::GameLift::DescribeMatchmakingRuleSetsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllPlayerSessions(sub { },[GameSessionId => Str, Limit => Int, NextToken => Str, PlayerId => Str, PlayerSessionId => Str, PlayerSessionStatusFilter => Str])
+
+=head2 DescribeAllPlayerSessions([GameSessionId => Str, Limit => Int, NextToken => Str, PlayerId => Str, PlayerSessionId => Str, PlayerSessionStatusFilter => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PlayerSessions, passing the object as the first parameter, and the string 'PlayerSessions' as the second parameter 
+
+If not, it will return a a L<Paws::GameLift::DescribePlayerSessionsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllScalingPolicies(sub { },FleetId => Str, [Limit => Int, NextToken => Str, StatusFilter => Str])
+
+=head2 DescribeAllScalingPolicies(FleetId => Str, [Limit => Int, NextToken => Str, StatusFilter => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ScalingPolicies, passing the object as the first parameter, and the string 'ScalingPolicies' as the second parameter 
+
+If not, it will return a a L<Paws::GameLift::DescribeScalingPoliciesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAliases(sub { },[Limit => Int, Name => Str, NextToken => Str, RoutingStrategyType => Str])
+
+=head2 ListAllAliases([Limit => Int, Name => Str, NextToken => Str, RoutingStrategyType => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Aliases, passing the object as the first parameter, and the string 'Aliases' as the second parameter 
+
+If not, it will return a a L<Paws::GameLift::ListAliasesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllBuilds(sub { },[Limit => Int, NextToken => Str, Status => Str])
+
+=head2 ListAllBuilds([Limit => Int, NextToken => Str, Status => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Builds, passing the object as the first parameter, and the string 'Builds' as the second parameter 
+
+If not, it will return a a L<Paws::GameLift::ListBuildsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllFleets(sub { },[BuildId => Str, Limit => Int, NextToken => Str])
+
+=head2 ListAllFleets([BuildId => Str, Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - FleetIds, passing the object as the first parameter, and the string 'FleetIds' as the second parameter 
+
+If not, it will return a a L<Paws::GameLift::ListFleetsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 SearchAllGameSessions(sub { },[AliasId => Str, FilterExpression => Str, FleetId => Str, Limit => Int, NextToken => Str, SortExpression => Str])
+
+=head2 SearchAllGameSessions([AliasId => Str, FilterExpression => Str, FleetId => Str, Limit => Int, NextToken => Str, SortExpression => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - GameSessions, passing the object as the first parameter, and the string 'GameSessions' as the second parameter 
+
+If not, it will return a a L<Paws::GameLift::SearchGameSessionsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

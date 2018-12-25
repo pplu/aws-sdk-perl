@@ -385,6 +385,29 @@ package Paws::DeviceFarm;
 
     return undef
   }
+  sub ListAllDeviceInstances {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDeviceInstances(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListDeviceInstances(@_, nextToken => $next_result->nextToken);
+        push @{ $result->deviceInstances }, @{ $next_result->deviceInstances };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'deviceInstances') foreach (@{ $result->deviceInstances });
+        $result = $self->ListDeviceInstances(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'deviceInstances') foreach (@{ $result->deviceInstances });
+    }
+
+    return undef
+  }
   sub ListAllDevicePools {
     my $self = shift;
 
@@ -431,6 +454,29 @@ package Paws::DeviceFarm;
 
     return undef
   }
+  sub ListAllInstanceProfiles {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListInstanceProfiles(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListInstanceProfiles(@_, nextToken => $next_result->nextToken);
+        push @{ $result->instanceProfiles }, @{ $next_result->instanceProfiles };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'instanceProfiles') foreach (@{ $result->instanceProfiles });
+        $result = $self->ListInstanceProfiles(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'instanceProfiles') foreach (@{ $result->instanceProfiles });
+    }
+
+    return undef
+  }
   sub ListAllJobs {
     my $self = shift;
 
@@ -450,6 +496,52 @@ package Paws::DeviceFarm;
         $result = $self->ListJobs(@_, nextToken => $result->nextToken);
       }
       $callback->($_ => 'jobs') foreach (@{ $result->jobs });
+    }
+
+    return undef
+  }
+  sub ListAllNetworkProfiles {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListNetworkProfiles(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListNetworkProfiles(@_, nextToken => $next_result->nextToken);
+        push @{ $result->networkProfiles }, @{ $next_result->networkProfiles };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'networkProfiles') foreach (@{ $result->networkProfiles });
+        $result = $self->ListNetworkProfiles(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'networkProfiles') foreach (@{ $result->networkProfiles });
+    }
+
+    return undef
+  }
+  sub ListAllOfferingPromotions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListOfferingPromotions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListOfferingPromotions(@_, nextToken => $next_result->nextToken);
+        push @{ $result->offeringPromotions }, @{ $next_result->offeringPromotions };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'offeringPromotions') foreach (@{ $result->offeringPromotions });
+        $result = $self->ListOfferingPromotions(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'offeringPromotions') foreach (@{ $result->offeringPromotions });
     }
 
     return undef
@@ -519,6 +611,29 @@ package Paws::DeviceFarm;
         $result = $self->ListProjects(@_, nextToken => $result->nextToken);
       }
       $callback->($_ => 'projects') foreach (@{ $result->projects });
+    }
+
+    return undef
+  }
+  sub ListAllRemoteAccessSessions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListRemoteAccessSessions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListRemoteAccessSessions(@_, nextToken => $next_result->nextToken);
+        push @{ $result->remoteAccessSessions }, @{ $next_result->remoteAccessSessions };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'remoteAccessSessions') foreach (@{ $result->remoteAccessSessions });
+        $result = $self->ListRemoteAccessSessions(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'remoteAccessSessions') foreach (@{ $result->remoteAccessSessions });
     }
 
     return undef
@@ -657,6 +772,29 @@ package Paws::DeviceFarm;
         $result = $self->ListUploads(@_, nextToken => $result->nextToken);
       }
       $callback->($_ => 'uploads') foreach (@{ $result->uploads });
+    }
+
+    return undef
+  }
+  sub ListAllVPCEConfigurations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListVPCEConfigurations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListVPCEConfigurations(@_, nextToken => $next_result->nextToken);
+        push @{ $result->vpceConfigurations }, @{ $next_result->vpceConfigurations };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'vpceConfigurations') foreach (@{ $result->vpceConfigurations });
+        $result = $self->ListVPCEConfigurations(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'vpceConfigurations') foreach (@{ $result->vpceConfigurations });
     }
 
     return undef
@@ -2024,6 +2162,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::DeviceFarm::ListArtifactsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 ListAllDeviceInstances(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllDeviceInstances([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - deviceInstances, passing the object as the first parameter, and the string 'deviceInstances' as the second parameter 
+
+If not, it will return a a L<Paws::DeviceFarm::ListDeviceInstancesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllDevicePools(sub { },Arn => Str, [NextToken => Str, Type => Str])
 
 =head2 ListAllDevicePools(Arn => Str, [NextToken => Str, Type => Str])
@@ -2048,6 +2198,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::DeviceFarm::ListDevicesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 ListAllInstanceProfiles(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllInstanceProfiles([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - instanceProfiles, passing the object as the first parameter, and the string 'instanceProfiles' as the second parameter 
+
+If not, it will return a a L<Paws::DeviceFarm::ListInstanceProfilesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllJobs(sub { },Arn => Str, [NextToken => Str])
 
 =head2 ListAllJobs(Arn => Str, [NextToken => Str])
@@ -2058,6 +2220,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - jobs, passing the object as the first parameter, and the string 'jobs' as the second parameter 
 
 If not, it will return a a L<Paws::DeviceFarm::ListJobsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllNetworkProfiles(sub { },Arn => Str, [NextToken => Str, Type => Str])
+
+=head2 ListAllNetworkProfiles(Arn => Str, [NextToken => Str, Type => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - networkProfiles, passing the object as the first parameter, and the string 'networkProfiles' as the second parameter 
+
+If not, it will return a a L<Paws::DeviceFarm::ListNetworkProfilesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllOfferingPromotions(sub { },[NextToken => Str])
+
+=head2 ListAllOfferingPromotions([NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - offeringPromotions, passing the object as the first parameter, and the string 'offeringPromotions' as the second parameter 
+
+If not, it will return a a L<Paws::DeviceFarm::ListOfferingPromotionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllOfferings(sub { },[NextToken => Str])
@@ -2094,6 +2280,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - projects, passing the object as the first parameter, and the string 'projects' as the second parameter 
 
 If not, it will return a a L<Paws::DeviceFarm::ListProjectsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllRemoteAccessSessions(sub { },Arn => Str, [NextToken => Str])
+
+=head2 ListAllRemoteAccessSessions(Arn => Str, [NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - remoteAccessSessions, passing the object as the first parameter, and the string 'remoteAccessSessions' as the second parameter 
+
+If not, it will return a a L<Paws::DeviceFarm::ListRemoteAccessSessionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllRuns(sub { },Arn => Str, [NextToken => Str])
@@ -2166,6 +2364,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - uploads, passing the object as the first parameter, and the string 'uploads' as the second parameter 
 
 If not, it will return a a L<Paws::DeviceFarm::ListUploadsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllVPCEConfigurations(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllVPCEConfigurations([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - vpceConfigurations, passing the object as the first parameter, and the string 'vpceConfigurations' as the second parameter 
+
+If not, it will return a a L<Paws::DeviceFarm::ListVPCEConfigurationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

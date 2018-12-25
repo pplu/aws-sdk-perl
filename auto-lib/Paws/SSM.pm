@@ -594,6 +594,190 @@ package Paws::SSM;
 
     return undef
   }
+  sub DescribeAllAssociationExecutions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeAssociationExecutions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeAssociationExecutions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->AssociationExecutions }, @{ $next_result->AssociationExecutions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'AssociationExecutions') foreach (@{ $result->AssociationExecutions });
+        $result = $self->DescribeAssociationExecutions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'AssociationExecutions') foreach (@{ $result->AssociationExecutions });
+    }
+
+    return undef
+  }
+  sub DescribeAllAssociationExecutionTargets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeAssociationExecutionTargets(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeAssociationExecutionTargets(@_, NextToken => $next_result->NextToken);
+        push @{ $result->AssociationExecutionTargets }, @{ $next_result->AssociationExecutionTargets };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'AssociationExecutionTargets') foreach (@{ $result->AssociationExecutionTargets });
+        $result = $self->DescribeAssociationExecutionTargets(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'AssociationExecutionTargets') foreach (@{ $result->AssociationExecutionTargets });
+    }
+
+    return undef
+  }
+  sub DescribeAllAutomationExecutions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeAutomationExecutions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeAutomationExecutions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->AutomationExecutionMetadataList }, @{ $next_result->AutomationExecutionMetadataList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'AutomationExecutionMetadataList') foreach (@{ $result->AutomationExecutionMetadataList });
+        $result = $self->DescribeAutomationExecutions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'AutomationExecutionMetadataList') foreach (@{ $result->AutomationExecutionMetadataList });
+    }
+
+    return undef
+  }
+  sub DescribeAllAutomationStepExecutions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeAutomationStepExecutions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeAutomationStepExecutions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->StepExecutions }, @{ $next_result->StepExecutions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'StepExecutions') foreach (@{ $result->StepExecutions });
+        $result = $self->DescribeAutomationStepExecutions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'StepExecutions') foreach (@{ $result->StepExecutions });
+    }
+
+    return undef
+  }
+  sub DescribeAllAvailablePatches {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeAvailablePatches(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeAvailablePatches(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Patches }, @{ $next_result->Patches };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Patches') foreach (@{ $result->Patches });
+        $result = $self->DescribeAvailablePatches(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Patches') foreach (@{ $result->Patches });
+    }
+
+    return undef
+  }
+  sub DescribeAllEffectiveInstanceAssociations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeEffectiveInstanceAssociations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeEffectiveInstanceAssociations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Associations }, @{ $next_result->Associations };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Associations') foreach (@{ $result->Associations });
+        $result = $self->DescribeEffectiveInstanceAssociations(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Associations') foreach (@{ $result->Associations });
+    }
+
+    return undef
+  }
+  sub DescribeAllEffectivePatchesForPatchBaseline {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeEffectivePatchesForPatchBaseline(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeEffectivePatchesForPatchBaseline(@_, NextToken => $next_result->NextToken);
+        push @{ $result->EffectivePatches }, @{ $next_result->EffectivePatches };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'EffectivePatches') foreach (@{ $result->EffectivePatches });
+        $result = $self->DescribeEffectivePatchesForPatchBaseline(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'EffectivePatches') foreach (@{ $result->EffectivePatches });
+    }
+
+    return undef
+  }
+  sub DescribeAllInstanceAssociationsStatus {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeInstanceAssociationsStatus(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeInstanceAssociationsStatus(@_, NextToken => $next_result->NextToken);
+        push @{ $result->InstanceAssociationStatusInfos }, @{ $next_result->InstanceAssociationStatusInfos };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'InstanceAssociationStatusInfos') foreach (@{ $result->InstanceAssociationStatusInfos });
+        $result = $self->DescribeInstanceAssociationsStatus(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'InstanceAssociationStatusInfos') foreach (@{ $result->InstanceAssociationStatusInfos });
+    }
+
+    return undef
+  }
   sub DescribeAllInstanceInformation {
     my $self = shift;
 
@@ -617,6 +801,282 @@ package Paws::SSM;
 
     return undef
   }
+  sub DescribeAllInstancePatches {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeInstancePatches(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeInstancePatches(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Patches }, @{ $next_result->Patches };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Patches') foreach (@{ $result->Patches });
+        $result = $self->DescribeInstancePatches(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Patches') foreach (@{ $result->Patches });
+    }
+
+    return undef
+  }
+  sub DescribeAllInstancePatchStates {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeInstancePatchStates(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeInstancePatchStates(@_, NextToken => $next_result->NextToken);
+        push @{ $result->InstancePatchStates }, @{ $next_result->InstancePatchStates };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'InstancePatchStates') foreach (@{ $result->InstancePatchStates });
+        $result = $self->DescribeInstancePatchStates(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'InstancePatchStates') foreach (@{ $result->InstancePatchStates });
+    }
+
+    return undef
+  }
+  sub DescribeAllInstancePatchStatesForPatchGroup {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeInstancePatchStatesForPatchGroup(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeInstancePatchStatesForPatchGroup(@_, NextToken => $next_result->NextToken);
+        push @{ $result->InstancePatchStates }, @{ $next_result->InstancePatchStates };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'InstancePatchStates') foreach (@{ $result->InstancePatchStates });
+        $result = $self->DescribeInstancePatchStatesForPatchGroup(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'InstancePatchStates') foreach (@{ $result->InstancePatchStates });
+    }
+
+    return undef
+  }
+  sub DescribeAllInventoryDeletions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeInventoryDeletions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeInventoryDeletions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->InventoryDeletions }, @{ $next_result->InventoryDeletions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'InventoryDeletions') foreach (@{ $result->InventoryDeletions });
+        $result = $self->DescribeInventoryDeletions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'InventoryDeletions') foreach (@{ $result->InventoryDeletions });
+    }
+
+    return undef
+  }
+  sub DescribeAllMaintenanceWindowExecutions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeMaintenanceWindowExecutions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeMaintenanceWindowExecutions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->WindowExecutions }, @{ $next_result->WindowExecutions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'WindowExecutions') foreach (@{ $result->WindowExecutions });
+        $result = $self->DescribeMaintenanceWindowExecutions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'WindowExecutions') foreach (@{ $result->WindowExecutions });
+    }
+
+    return undef
+  }
+  sub DescribeAllMaintenanceWindowExecutionTaskInvocations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeMaintenanceWindowExecutionTaskInvocations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeMaintenanceWindowExecutionTaskInvocations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->WindowExecutionTaskInvocationIdentities }, @{ $next_result->WindowExecutionTaskInvocationIdentities };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'WindowExecutionTaskInvocationIdentities') foreach (@{ $result->WindowExecutionTaskInvocationIdentities });
+        $result = $self->DescribeMaintenanceWindowExecutionTaskInvocations(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'WindowExecutionTaskInvocationIdentities') foreach (@{ $result->WindowExecutionTaskInvocationIdentities });
+    }
+
+    return undef
+  }
+  sub DescribeAllMaintenanceWindowExecutionTasks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeMaintenanceWindowExecutionTasks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeMaintenanceWindowExecutionTasks(@_, NextToken => $next_result->NextToken);
+        push @{ $result->WindowExecutionTaskIdentities }, @{ $next_result->WindowExecutionTaskIdentities };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'WindowExecutionTaskIdentities') foreach (@{ $result->WindowExecutionTaskIdentities });
+        $result = $self->DescribeMaintenanceWindowExecutionTasks(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'WindowExecutionTaskIdentities') foreach (@{ $result->WindowExecutionTaskIdentities });
+    }
+
+    return undef
+  }
+  sub DescribeAllMaintenanceWindows {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeMaintenanceWindows(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeMaintenanceWindows(@_, NextToken => $next_result->NextToken);
+        push @{ $result->WindowIdentities }, @{ $next_result->WindowIdentities };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'WindowIdentities') foreach (@{ $result->WindowIdentities });
+        $result = $self->DescribeMaintenanceWindows(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'WindowIdentities') foreach (@{ $result->WindowIdentities });
+    }
+
+    return undef
+  }
+  sub DescribeAllMaintenanceWindowSchedule {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeMaintenanceWindowSchedule(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeMaintenanceWindowSchedule(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ScheduledWindowExecutions }, @{ $next_result->ScheduledWindowExecutions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ScheduledWindowExecutions') foreach (@{ $result->ScheduledWindowExecutions });
+        $result = $self->DescribeMaintenanceWindowSchedule(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ScheduledWindowExecutions') foreach (@{ $result->ScheduledWindowExecutions });
+    }
+
+    return undef
+  }
+  sub DescribeAllMaintenanceWindowsForTarget {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeMaintenanceWindowsForTarget(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeMaintenanceWindowsForTarget(@_, NextToken => $next_result->NextToken);
+        push @{ $result->WindowIdentities }, @{ $next_result->WindowIdentities };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'WindowIdentities') foreach (@{ $result->WindowIdentities });
+        $result = $self->DescribeMaintenanceWindowsForTarget(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'WindowIdentities') foreach (@{ $result->WindowIdentities });
+    }
+
+    return undef
+  }
+  sub DescribeAllMaintenanceWindowTargets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeMaintenanceWindowTargets(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeMaintenanceWindowTargets(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Targets }, @{ $next_result->Targets };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Targets') foreach (@{ $result->Targets });
+        $result = $self->DescribeMaintenanceWindowTargets(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Targets') foreach (@{ $result->Targets });
+    }
+
+    return undef
+  }
+  sub DescribeAllMaintenanceWindowTasks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeMaintenanceWindowTasks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeMaintenanceWindowTasks(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Tasks }, @{ $next_result->Tasks };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Tasks') foreach (@{ $result->Tasks });
+        $result = $self->DescribeMaintenanceWindowTasks(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Tasks') foreach (@{ $result->Tasks });
+    }
+
+    return undef
+  }
   sub DescribeAllParameters {
     my $self = shift;
 
@@ -636,6 +1096,121 @@ package Paws::SSM;
         $result = $self->DescribeParameters(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'Parameters') foreach (@{ $result->Parameters });
+    }
+
+    return undef
+  }
+  sub DescribeAllPatchBaselines {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribePatchBaselines(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribePatchBaselines(@_, NextToken => $next_result->NextToken);
+        push @{ $result->BaselineIdentities }, @{ $next_result->BaselineIdentities };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'BaselineIdentities') foreach (@{ $result->BaselineIdentities });
+        $result = $self->DescribePatchBaselines(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'BaselineIdentities') foreach (@{ $result->BaselineIdentities });
+    }
+
+    return undef
+  }
+  sub DescribeAllPatchGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribePatchGroups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribePatchGroups(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Mappings }, @{ $next_result->Mappings };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Mappings') foreach (@{ $result->Mappings });
+        $result = $self->DescribePatchGroups(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Mappings') foreach (@{ $result->Mappings });
+    }
+
+    return undef
+  }
+  sub DescribeAllSessions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeSessions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeSessions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Sessions }, @{ $next_result->Sessions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Sessions') foreach (@{ $result->Sessions });
+        $result = $self->DescribeSessions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Sessions') foreach (@{ $result->Sessions });
+    }
+
+    return undef
+  }
+  sub GetAllInventory {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetInventory(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetInventory(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Entities }, @{ $next_result->Entities };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Entities') foreach (@{ $result->Entities });
+        $result = $self->GetInventory(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Entities') foreach (@{ $result->Entities });
+    }
+
+    return undef
+  }
+  sub GetAllInventorySchema {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetInventorySchema(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetInventorySchema(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Schemas }, @{ $next_result->Schemas };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Schemas') foreach (@{ $result->Schemas });
+        $result = $self->GetInventorySchema(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Schemas') foreach (@{ $result->Schemas });
     }
 
     return undef
@@ -709,6 +1284,29 @@ package Paws::SSM;
 
     return undef
   }
+  sub ListAllAssociationVersions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAssociationVersions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListAssociationVersions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->AssociationVersions }, @{ $next_result->AssociationVersions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'AssociationVersions') foreach (@{ $result->AssociationVersions });
+        $result = $self->ListAssociationVersions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'AssociationVersions') foreach (@{ $result->AssociationVersions });
+    }
+
+    return undef
+  }
   sub ListAllCommandInvocations {
     my $self = shift;
 
@@ -755,6 +1353,52 @@ package Paws::SSM;
 
     return undef
   }
+  sub ListAllComplianceItems {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListComplianceItems(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListComplianceItems(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ComplianceItems }, @{ $next_result->ComplianceItems };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ComplianceItems') foreach (@{ $result->ComplianceItems });
+        $result = $self->ListComplianceItems(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ComplianceItems') foreach (@{ $result->ComplianceItems });
+    }
+
+    return undef
+  }
+  sub ListAllComplianceSummaries {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListComplianceSummaries(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListComplianceSummaries(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ComplianceSummaryItems }, @{ $next_result->ComplianceSummaryItems };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ComplianceSummaryItems') foreach (@{ $result->ComplianceSummaryItems });
+        $result = $self->ListComplianceSummaries(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ComplianceSummaryItems') foreach (@{ $result->ComplianceSummaryItems });
+    }
+
+    return undef
+  }
   sub ListAllDocuments {
     my $self = shift;
 
@@ -774,6 +1418,75 @@ package Paws::SSM;
         $result = $self->ListDocuments(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'DocumentIdentifiers') foreach (@{ $result->DocumentIdentifiers });
+    }
+
+    return undef
+  }
+  sub ListAllDocumentVersions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDocumentVersions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListDocumentVersions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->DocumentVersions }, @{ $next_result->DocumentVersions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'DocumentVersions') foreach (@{ $result->DocumentVersions });
+        $result = $self->ListDocumentVersions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'DocumentVersions') foreach (@{ $result->DocumentVersions });
+    }
+
+    return undef
+  }
+  sub ListAllResourceComplianceSummaries {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListResourceComplianceSummaries(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListResourceComplianceSummaries(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ResourceComplianceSummaryItems }, @{ $next_result->ResourceComplianceSummaryItems };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ResourceComplianceSummaryItems') foreach (@{ $result->ResourceComplianceSummaryItems });
+        $result = $self->ListResourceComplianceSummaries(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ResourceComplianceSummaryItems') foreach (@{ $result->ResourceComplianceSummaryItems });
+    }
+
+    return undef
+  }
+  sub ListAllResourceDataSync {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListResourceDataSync(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListResourceDataSync(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ResourceDataSyncItems }, @{ $next_result->ResourceDataSyncItems };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ResourceDataSyncItems') foreach (@{ $result->ResourceDataSyncItems });
+        $result = $self->ListResourceDataSync(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ResourceDataSyncItems') foreach (@{ $result->ResourceDataSyncItems });
     }
 
     return undef
@@ -3690,6 +4403,102 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::DescribeActivationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 DescribeAllAssociationExecutions(sub { },AssociationId => Str, [Filters => ArrayRef[L<Paws::SSM::AssociationExecutionFilter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllAssociationExecutions(AssociationId => Str, [Filters => ArrayRef[L<Paws::SSM::AssociationExecutionFilter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AssociationExecutions, passing the object as the first parameter, and the string 'AssociationExecutions' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::DescribeAssociationExecutionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllAssociationExecutionTargets(sub { },AssociationId => Str, ExecutionId => Str, [Filters => ArrayRef[L<Paws::SSM::AssociationExecutionTargetsFilter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllAssociationExecutionTargets(AssociationId => Str, ExecutionId => Str, [Filters => ArrayRef[L<Paws::SSM::AssociationExecutionTargetsFilter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AssociationExecutionTargets, passing the object as the first parameter, and the string 'AssociationExecutionTargets' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::DescribeAssociationExecutionTargetsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllAutomationExecutions(sub { },[Filters => ArrayRef[L<Paws::SSM::AutomationExecutionFilter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllAutomationExecutions([Filters => ArrayRef[L<Paws::SSM::AutomationExecutionFilter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AutomationExecutionMetadataList, passing the object as the first parameter, and the string 'AutomationExecutionMetadataList' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::DescribeAutomationExecutionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllAutomationStepExecutions(sub { },AutomationExecutionId => Str, [Filters => ArrayRef[L<Paws::SSM::StepExecutionFilter>], MaxResults => Int, NextToken => Str, ReverseOrder => Bool])
+
+=head2 DescribeAllAutomationStepExecutions(AutomationExecutionId => Str, [Filters => ArrayRef[L<Paws::SSM::StepExecutionFilter>], MaxResults => Int, NextToken => Str, ReverseOrder => Bool])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - StepExecutions, passing the object as the first parameter, and the string 'StepExecutions' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::DescribeAutomationStepExecutionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllAvailablePatches(sub { },[Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllAvailablePatches([Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Patches, passing the object as the first parameter, and the string 'Patches' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::DescribeAvailablePatchesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllEffectiveInstanceAssociations(sub { },InstanceId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllEffectiveInstanceAssociations(InstanceId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Associations, passing the object as the first parameter, and the string 'Associations' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::DescribeEffectiveInstanceAssociationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllEffectivePatchesForPatchBaseline(sub { },BaselineId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllEffectivePatchesForPatchBaseline(BaselineId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - EffectivePatches, passing the object as the first parameter, and the string 'EffectivePatches' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::DescribeEffectivePatchesForPatchBaselineResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllInstanceAssociationsStatus(sub { },InstanceId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllInstanceAssociationsStatus(InstanceId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - InstanceAssociationStatusInfos, passing the object as the first parameter, and the string 'InstanceAssociationStatusInfos' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::DescribeInstanceAssociationsStatusResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllInstanceInformation(sub { },[Filters => ArrayRef[L<Paws::SSM::InstanceInformationStringFilter>], InstanceInformationFilterList => ArrayRef[L<Paws::SSM::InstanceInformationFilter>], MaxResults => Int, NextToken => Str])
 
 =head2 DescribeAllInstanceInformation([Filters => ArrayRef[L<Paws::SSM::InstanceInformationStringFilter>], InstanceInformationFilterList => ArrayRef[L<Paws::SSM::InstanceInformationFilter>], MaxResults => Int, NextToken => Str])
@@ -3702,6 +4511,150 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::DescribeInstanceInformationResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 DescribeAllInstancePatches(sub { },InstanceId => Str, [Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllInstancePatches(InstanceId => Str, [Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Patches, passing the object as the first parameter, and the string 'Patches' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::DescribeInstancePatchesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllInstancePatchStates(sub { },InstanceIds => ArrayRef[Str|Undef], [MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllInstancePatchStates(InstanceIds => ArrayRef[Str|Undef], [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - InstancePatchStates, passing the object as the first parameter, and the string 'InstancePatchStates' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::DescribeInstancePatchStatesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllInstancePatchStatesForPatchGroup(sub { },PatchGroup => Str, [Filters => ArrayRef[L<Paws::SSM::InstancePatchStateFilter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllInstancePatchStatesForPatchGroup(PatchGroup => Str, [Filters => ArrayRef[L<Paws::SSM::InstancePatchStateFilter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - InstancePatchStates, passing the object as the first parameter, and the string 'InstancePatchStates' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::DescribeInstancePatchStatesForPatchGroupResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllInventoryDeletions(sub { },[DeletionId => Str, MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllInventoryDeletions([DeletionId => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - InventoryDeletions, passing the object as the first parameter, and the string 'InventoryDeletions' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::DescribeInventoryDeletionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllMaintenanceWindowExecutions(sub { },WindowId => Str, [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllMaintenanceWindowExecutions(WindowId => Str, [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - WindowExecutions, passing the object as the first parameter, and the string 'WindowExecutions' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::DescribeMaintenanceWindowExecutionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllMaintenanceWindowExecutionTaskInvocations(sub { },TaskId => Str, WindowExecutionId => Str, [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllMaintenanceWindowExecutionTaskInvocations(TaskId => Str, WindowExecutionId => Str, [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - WindowExecutionTaskInvocationIdentities, passing the object as the first parameter, and the string 'WindowExecutionTaskInvocationIdentities' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::DescribeMaintenanceWindowExecutionTaskInvocationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllMaintenanceWindowExecutionTasks(sub { },WindowExecutionId => Str, [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllMaintenanceWindowExecutionTasks(WindowExecutionId => Str, [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - WindowExecutionTaskIdentities, passing the object as the first parameter, and the string 'WindowExecutionTaskIdentities' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::DescribeMaintenanceWindowExecutionTasksResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllMaintenanceWindows(sub { },[Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllMaintenanceWindows([Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - WindowIdentities, passing the object as the first parameter, and the string 'WindowIdentities' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::DescribeMaintenanceWindowsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllMaintenanceWindowSchedule(sub { },[Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str, ResourceType => Str, Targets => ArrayRef[L<Paws::SSM::Target>], WindowId => Str])
+
+=head2 DescribeAllMaintenanceWindowSchedule([Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str, ResourceType => Str, Targets => ArrayRef[L<Paws::SSM::Target>], WindowId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ScheduledWindowExecutions, passing the object as the first parameter, and the string 'ScheduledWindowExecutions' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::DescribeMaintenanceWindowScheduleResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllMaintenanceWindowsForTarget(sub { },ResourceType => Str, Targets => ArrayRef[L<Paws::SSM::Target>], [MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllMaintenanceWindowsForTarget(ResourceType => Str, Targets => ArrayRef[L<Paws::SSM::Target>], [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - WindowIdentities, passing the object as the first parameter, and the string 'WindowIdentities' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::DescribeMaintenanceWindowsForTargetResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllMaintenanceWindowTargets(sub { },WindowId => Str, [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllMaintenanceWindowTargets(WindowId => Str, [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Targets, passing the object as the first parameter, and the string 'Targets' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::DescribeMaintenanceWindowTargetsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllMaintenanceWindowTasks(sub { },WindowId => Str, [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllMaintenanceWindowTasks(WindowId => Str, [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Tasks, passing the object as the first parameter, and the string 'Tasks' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::DescribeMaintenanceWindowTasksResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllParameters(sub { },[Filters => ArrayRef[L<Paws::SSM::ParametersFilter>], MaxResults => Int, NextToken => Str, ParameterFilters => ArrayRef[L<Paws::SSM::ParameterStringFilter>]])
 
 =head2 DescribeAllParameters([Filters => ArrayRef[L<Paws::SSM::ParametersFilter>], MaxResults => Int, NextToken => Str, ParameterFilters => ArrayRef[L<Paws::SSM::ParameterStringFilter>]])
@@ -3712,6 +4665,66 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Parameters, passing the object as the first parameter, and the string 'Parameters' as the second parameter 
 
 If not, it will return a a L<Paws::SSM::DescribeParametersResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllPatchBaselines(sub { },[Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllPatchBaselines([Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - BaselineIdentities, passing the object as the first parameter, and the string 'BaselineIdentities' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::DescribePatchBaselinesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllPatchGroups(sub { },[Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllPatchGroups([Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Mappings, passing the object as the first parameter, and the string 'Mappings' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::DescribePatchGroupsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllSessions(sub { },State => Str, [Filters => ArrayRef[L<Paws::SSM::SessionFilter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllSessions(State => Str, [Filters => ArrayRef[L<Paws::SSM::SessionFilter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Sessions, passing the object as the first parameter, and the string 'Sessions' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::DescribeSessionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllInventory(sub { },[Aggregators => ArrayRef[L<Paws::SSM::InventoryAggregator>], Filters => ArrayRef[L<Paws::SSM::InventoryFilter>], MaxResults => Int, NextToken => Str, ResultAttributes => ArrayRef[L<Paws::SSM::ResultAttribute>]])
+
+=head2 GetAllInventory([Aggregators => ArrayRef[L<Paws::SSM::InventoryAggregator>], Filters => ArrayRef[L<Paws::SSM::InventoryFilter>], MaxResults => Int, NextToken => Str, ResultAttributes => ArrayRef[L<Paws::SSM::ResultAttribute>]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Entities, passing the object as the first parameter, and the string 'Entities' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::GetInventoryResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllInventorySchema(sub { },[Aggregator => Bool, MaxResults => Int, NextToken => Str, SubType => Bool, TypeName => Str])
+
+=head2 GetAllInventorySchema([Aggregator => Bool, MaxResults => Int, NextToken => Str, SubType => Bool, TypeName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Schemas, passing the object as the first parameter, and the string 'Schemas' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::GetInventorySchemaResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 GetAllParameterHistory(sub { },Name => Str, [MaxResults => Int, NextToken => Str, WithDecryption => Bool])
@@ -3750,6 +4763,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::ListAssociationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 ListAllAssociationVersions(sub { },AssociationId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllAssociationVersions(AssociationId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AssociationVersions, passing the object as the first parameter, and the string 'AssociationVersions' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::ListAssociationVersionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllCommandInvocations(sub { },[CommandId => Str, Details => Bool, Filters => ArrayRef[L<Paws::SSM::CommandFilter>], InstanceId => Str, MaxResults => Int, NextToken => Str])
 
 =head2 ListAllCommandInvocations([CommandId => Str, Details => Bool, Filters => ArrayRef[L<Paws::SSM::CommandFilter>], InstanceId => Str, MaxResults => Int, NextToken => Str])
@@ -3774,6 +4799,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::ListCommandsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 ListAllComplianceItems(sub { },[Filters => ArrayRef[L<Paws::SSM::ComplianceStringFilter>], MaxResults => Int, NextToken => Str, ResourceIds => ArrayRef[Str|Undef], ResourceTypes => ArrayRef[Str|Undef]])
+
+=head2 ListAllComplianceItems([Filters => ArrayRef[L<Paws::SSM::ComplianceStringFilter>], MaxResults => Int, NextToken => Str, ResourceIds => ArrayRef[Str|Undef], ResourceTypes => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ComplianceItems, passing the object as the first parameter, and the string 'ComplianceItems' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::ListComplianceItemsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllComplianceSummaries(sub { },[Filters => ArrayRef[L<Paws::SSM::ComplianceStringFilter>], MaxResults => Int, NextToken => Str])
+
+=head2 ListAllComplianceSummaries([Filters => ArrayRef[L<Paws::SSM::ComplianceStringFilter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ComplianceSummaryItems, passing the object as the first parameter, and the string 'ComplianceSummaryItems' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::ListComplianceSummariesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllDocuments(sub { },[DocumentFilterList => ArrayRef[L<Paws::SSM::DocumentFilter>], Filters => ArrayRef[L<Paws::SSM::DocumentKeyValuesFilter>], MaxResults => Int, NextToken => Str])
 
 =head2 ListAllDocuments([DocumentFilterList => ArrayRef[L<Paws::SSM::DocumentFilter>], Filters => ArrayRef[L<Paws::SSM::DocumentKeyValuesFilter>], MaxResults => Int, NextToken => Str])
@@ -3784,6 +4833,42 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - DocumentIdentifiers, passing the object as the first parameter, and the string 'DocumentIdentifiers' as the second parameter 
 
 If not, it will return a a L<Paws::SSM::ListDocumentsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDocumentVersions(sub { },Name => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllDocumentVersions(Name => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DocumentVersions, passing the object as the first parameter, and the string 'DocumentVersions' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::ListDocumentVersionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllResourceComplianceSummaries(sub { },[Filters => ArrayRef[L<Paws::SSM::ComplianceStringFilter>], MaxResults => Int, NextToken => Str])
+
+=head2 ListAllResourceComplianceSummaries([Filters => ArrayRef[L<Paws::SSM::ComplianceStringFilter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ResourceComplianceSummaryItems, passing the object as the first parameter, and the string 'ResourceComplianceSummaryItems' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::ListResourceComplianceSummariesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllResourceDataSync(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllResourceDataSync([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ResourceDataSyncItems, passing the object as the first parameter, and the string 'ResourceDataSyncItems' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::ListResourceDataSyncResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

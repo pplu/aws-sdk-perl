@@ -80,6 +80,75 @@ package Paws::ServerlessRepo;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllApplicationDependencies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListApplicationDependencies(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListApplicationDependencies(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Dependencies }, @{ $next_result->Dependencies };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Dependencies') foreach (@{ $result->Dependencies });
+        $result = $self->ListApplicationDependencies(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Dependencies') foreach (@{ $result->Dependencies });
+    }
+
+    return undef
+  }
+  sub ListAllApplications {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListApplications(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListApplications(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Applications }, @{ $next_result->Applications };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Applications') foreach (@{ $result->Applications });
+        $result = $self->ListApplications(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Applications') foreach (@{ $result->Applications });
+    }
+
+    return undef
+  }
+  sub ListAllApplicationVersions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListApplicationVersions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListApplicationVersions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Versions }, @{ $next_result->Versions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Versions') foreach (@{ $result->Versions });
+        $result = $self->ListApplicationVersions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Versions') foreach (@{ $result->Versions });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CreateApplication CreateApplicationVersion CreateCloudFormationChangeSet CreateCloudFormationTemplate DeleteApplication GetApplication GetApplicationPolicy GetCloudFormationTemplate ListApplicationDependencies ListApplications ListApplicationVersions PutApplicationPolicy UpdateApplication / }
@@ -464,6 +533,42 @@ Updates the specified application.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllApplicationDependencies(sub { },ApplicationId => Str, [MaxItems => Int, NextToken => Str, SemanticVersion => Str])
+
+=head2 ListAllApplicationDependencies(ApplicationId => Str, [MaxItems => Int, NextToken => Str, SemanticVersion => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Dependencies, passing the object as the first parameter, and the string 'Dependencies' as the second parameter 
+
+If not, it will return a a L<Paws::ServerlessRepo::ListApplicationDependenciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllApplications(sub { },[MaxItems => Int, NextToken => Str])
+
+=head2 ListAllApplications([MaxItems => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Applications, passing the object as the first parameter, and the string 'Applications' as the second parameter 
+
+If not, it will return a a L<Paws::ServerlessRepo::ListApplicationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllApplicationVersions(sub { },ApplicationId => Str, [MaxItems => Int, NextToken => Str])
+
+=head2 ListAllApplicationVersions(ApplicationId => Str, [MaxItems => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Versions, passing the object as the first parameter, and the string 'Versions' as the second parameter 
+
+If not, it will return a a L<Paws::ServerlessRepo::ListApplicationVersionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

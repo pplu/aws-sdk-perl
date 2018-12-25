@@ -160,6 +160,144 @@ package Paws::SecurityHub;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub GetAllEnabledStandards {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetEnabledStandards(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetEnabledStandards(@_, NextToken => $next_result->NextToken);
+        push @{ $result->StandardsSubscriptions }, @{ $next_result->StandardsSubscriptions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'StandardsSubscriptions') foreach (@{ $result->StandardsSubscriptions });
+        $result = $self->GetEnabledStandards(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'StandardsSubscriptions') foreach (@{ $result->StandardsSubscriptions });
+    }
+
+    return undef
+  }
+  sub GetAllFindings {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetFindings(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetFindings(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Findings }, @{ $next_result->Findings };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Findings') foreach (@{ $result->Findings });
+        $result = $self->GetFindings(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Findings') foreach (@{ $result->Findings });
+    }
+
+    return undef
+  }
+  sub GetAllInsights {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetInsights(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetInsights(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Insights }, @{ $next_result->Insights };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Insights') foreach (@{ $result->Insights });
+        $result = $self->GetInsights(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Insights') foreach (@{ $result->Insights });
+    }
+
+    return undef
+  }
+  sub ListAllEnabledProductsForImport {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListEnabledProductsForImport(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListEnabledProductsForImport(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ProductSubscriptions }, @{ $next_result->ProductSubscriptions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ProductSubscriptions') foreach (@{ $result->ProductSubscriptions });
+        $result = $self->ListEnabledProductsForImport(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ProductSubscriptions') foreach (@{ $result->ProductSubscriptions });
+    }
+
+    return undef
+  }
+  sub ListAllInvitations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListInvitations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListInvitations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Invitations }, @{ $next_result->Invitations };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Invitations') foreach (@{ $result->Invitations });
+        $result = $self->ListInvitations(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Invitations') foreach (@{ $result->Invitations });
+    }
+
+    return undef
+  }
+  sub ListAllMembers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListMembers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListMembers(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Members }, @{ $next_result->Members };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Members') foreach (@{ $result->Members });
+        $result = $self->ListMembers(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Members') foreach (@{ $result->Members });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AcceptInvitation BatchDisableStandards BatchEnableStandards BatchImportFindings CreateInsight CreateMembers DeclineInvitations DeleteInsight DeleteInvitations DeleteMembers DisableImportFindingsForProduct DisableSecurityHub DisassociateFromMasterAccount DisassociateMembers EnableImportFindingsForProduct EnableSecurityHub GetEnabledStandards GetFindings GetInsightResults GetInsights GetInvitationsCount GetMasterAccount GetMembers InviteMembers ListEnabledProductsForImport ListInvitations ListMembers UpdateFindings UpdateInsight / }
@@ -729,6 +867,78 @@ Updates the AWS Security Hub insight specified by the insight ARN.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 GetAllEnabledStandards(sub { },[MaxResults => Int, NextToken => Str, StandardsSubscriptionArns => ArrayRef[Str|Undef]])
+
+=head2 GetAllEnabledStandards([MaxResults => Int, NextToken => Str, StandardsSubscriptionArns => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - StandardsSubscriptions, passing the object as the first parameter, and the string 'StandardsSubscriptions' as the second parameter 
+
+If not, it will return a a L<Paws::SecurityHub::GetEnabledStandardsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllFindings(sub { },[Filters => L<Paws::SecurityHub::AwsSecurityFindingFilters>, MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[L<Paws::SecurityHub::SortCriterion>]])
+
+=head2 GetAllFindings([Filters => L<Paws::SecurityHub::AwsSecurityFindingFilters>, MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[L<Paws::SecurityHub::SortCriterion>]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Findings, passing the object as the first parameter, and the string 'Findings' as the second parameter 
+
+If not, it will return a a L<Paws::SecurityHub::GetFindingsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllInsights(sub { },[InsightArns => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 GetAllInsights([InsightArns => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Insights, passing the object as the first parameter, and the string 'Insights' as the second parameter 
+
+If not, it will return a a L<Paws::SecurityHub::GetInsightsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllEnabledProductsForImport(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllEnabledProductsForImport([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ProductSubscriptions, passing the object as the first parameter, and the string 'ProductSubscriptions' as the second parameter 
+
+If not, it will return a a L<Paws::SecurityHub::ListEnabledProductsForImportResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllInvitations(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllInvitations([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Invitations, passing the object as the first parameter, and the string 'Invitations' as the second parameter 
+
+If not, it will return a a L<Paws::SecurityHub::ListInvitationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllMembers(sub { },[MaxResults => Int, NextToken => Str, OnlyAssociated => Bool])
+
+=head2 ListAllMembers([MaxResults => Int, NextToken => Str, OnlyAssociated => Bool])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Members, passing the object as the first parameter, and the string 'Members' as the second parameter 
+
+If not, it will return a a L<Paws::SecurityHub::ListMembersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

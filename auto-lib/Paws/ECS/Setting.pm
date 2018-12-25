@@ -51,9 +51,9 @@ root user. If this field is omitted, the authenticated user is assumed.
 
 =head2 Value => Str
 
-  The current account setting for the resource name. If C<ENABLED>, then
+  The current account setting for the resource name. If C<enabled>, then
 the resource will receive the new Amazon Resource Name (ARN) and
-resource identifier (ID) format. If C<DISABLED>, then the resource will
+resource identifier (ID) format. If C<disabled>, then the resource will
 receive the old Amazon Resource Name (ARN) and resource identifier (ID)
 format.
 

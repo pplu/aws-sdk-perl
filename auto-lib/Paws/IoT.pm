@@ -845,6 +845,144 @@ package Paws::IoT;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllActiveViolations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListActiveViolations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListActiveViolations(@_, nextToken => $next_result->nextToken);
+        push @{ $result->activeViolations }, @{ $next_result->activeViolations };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'activeViolations') foreach (@{ $result->activeViolations });
+        $result = $self->ListActiveViolations(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'activeViolations') foreach (@{ $result->activeViolations });
+    }
+
+    return undef
+  }
+  sub ListAllAttachedPolicies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAttachedPolicies(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextMarker) {
+        $next_result = $self->ListAttachedPolicies(@_, marker => $next_result->nextMarker);
+        push @{ $result->policies }, @{ $next_result->policies };
+      }
+      return $result;
+    } else {
+      while ($result->nextMarker) {
+        $callback->($_ => 'policies') foreach (@{ $result->policies });
+        $result = $self->ListAttachedPolicies(@_, marker => $result->nextMarker);
+      }
+      $callback->($_ => 'policies') foreach (@{ $result->policies });
+    }
+
+    return undef
+  }
+  sub ListAllAuditFindings {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAuditFindings(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListAuditFindings(@_, nextToken => $next_result->nextToken);
+        push @{ $result->findings }, @{ $next_result->findings };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'findings') foreach (@{ $result->findings });
+        $result = $self->ListAuditFindings(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'findings') foreach (@{ $result->findings });
+    }
+
+    return undef
+  }
+  sub ListAllAuditTasks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAuditTasks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListAuditTasks(@_, nextToken => $next_result->nextToken);
+        push @{ $result->tasks }, @{ $next_result->tasks };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'tasks') foreach (@{ $result->tasks });
+        $result = $self->ListAuditTasks(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'tasks') foreach (@{ $result->tasks });
+    }
+
+    return undef
+  }
+  sub ListAllAuthorizers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAuthorizers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextMarker) {
+        $next_result = $self->ListAuthorizers(@_, marker => $next_result->nextMarker);
+        push @{ $result->authorizers }, @{ $next_result->authorizers };
+      }
+      return $result;
+    } else {
+      while ($result->nextMarker) {
+        $callback->($_ => 'authorizers') foreach (@{ $result->authorizers });
+        $result = $self->ListAuthorizers(@_, marker => $result->nextMarker);
+      }
+      $callback->($_ => 'authorizers') foreach (@{ $result->authorizers });
+    }
+
+    return undef
+  }
+  sub ListAllBillingGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListBillingGroups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListBillingGroups(@_, nextToken => $next_result->nextToken);
+        push @{ $result->billingGroups }, @{ $next_result->billingGroups };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'billingGroups') foreach (@{ $result->billingGroups });
+        $result = $self->ListBillingGroups(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'billingGroups') foreach (@{ $result->billingGroups });
+    }
+
+    return undef
+  }
   sub ListAllCACertificates {
     my $self = shift;
 
@@ -910,6 +1048,121 @@ package Paws::IoT;
         $result = $self->ListCertificatesByCA(@_, marker => $result->nextMarker);
       }
       $callback->($_ => 'certificates') foreach (@{ $result->certificates });
+    }
+
+    return undef
+  }
+  sub ListAllIndices {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListIndices(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListIndices(@_, nextToken => $next_result->nextToken);
+        push @{ $result->indexNames }, @{ $next_result->indexNames };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'indexNames') foreach (@{ $result->indexNames });
+        $result = $self->ListIndices(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'indexNames') foreach (@{ $result->indexNames });
+    }
+
+    return undef
+  }
+  sub ListAllJobExecutionsForJob {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListJobExecutionsForJob(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListJobExecutionsForJob(@_, nextToken => $next_result->nextToken);
+        push @{ $result->executionSummaries }, @{ $next_result->executionSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'executionSummaries') foreach (@{ $result->executionSummaries });
+        $result = $self->ListJobExecutionsForJob(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'executionSummaries') foreach (@{ $result->executionSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllJobExecutionsForThing {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListJobExecutionsForThing(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListJobExecutionsForThing(@_, nextToken => $next_result->nextToken);
+        push @{ $result->executionSummaries }, @{ $next_result->executionSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'executionSummaries') foreach (@{ $result->executionSummaries });
+        $result = $self->ListJobExecutionsForThing(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'executionSummaries') foreach (@{ $result->executionSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllJobs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListJobs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListJobs(@_, nextToken => $next_result->nextToken);
+        push @{ $result->jobs }, @{ $next_result->jobs };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'jobs') foreach (@{ $result->jobs });
+        $result = $self->ListJobs(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'jobs') foreach (@{ $result->jobs });
+    }
+
+    return undef
+  }
+  sub ListAllOTAUpdates {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListOTAUpdates(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListOTAUpdates(@_, nextToken => $next_result->nextToken);
+        push @{ $result->otaUpdates }, @{ $next_result->otaUpdates };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'otaUpdates') foreach (@{ $result->otaUpdates });
+        $result = $self->ListOTAUpdates(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'otaUpdates') foreach (@{ $result->otaUpdates });
     }
 
     return undef
@@ -1029,6 +1282,259 @@ package Paws::IoT;
 
     return undef
   }
+  sub ListAllRoleAliases {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListRoleAliases(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextMarker) {
+        $next_result = $self->ListRoleAliases(@_, marker => $next_result->nextMarker);
+        push @{ $result->roleAliases }, @{ $next_result->roleAliases };
+      }
+      return $result;
+    } else {
+      while ($result->nextMarker) {
+        $callback->($_ => 'roleAliases') foreach (@{ $result->roleAliases });
+        $result = $self->ListRoleAliases(@_, marker => $result->nextMarker);
+      }
+      $callback->($_ => 'roleAliases') foreach (@{ $result->roleAliases });
+    }
+
+    return undef
+  }
+  sub ListAllScheduledAudits {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListScheduledAudits(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListScheduledAudits(@_, nextToken => $next_result->nextToken);
+        push @{ $result->scheduledAudits }, @{ $next_result->scheduledAudits };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'scheduledAudits') foreach (@{ $result->scheduledAudits });
+        $result = $self->ListScheduledAudits(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'scheduledAudits') foreach (@{ $result->scheduledAudits });
+    }
+
+    return undef
+  }
+  sub ListAllSecurityProfiles {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListSecurityProfiles(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListSecurityProfiles(@_, nextToken => $next_result->nextToken);
+        push @{ $result->securityProfileIdentifiers }, @{ $next_result->securityProfileIdentifiers };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'securityProfileIdentifiers') foreach (@{ $result->securityProfileIdentifiers });
+        $result = $self->ListSecurityProfiles(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'securityProfileIdentifiers') foreach (@{ $result->securityProfileIdentifiers });
+    }
+
+    return undef
+  }
+  sub ListAllSecurityProfilesForTarget {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListSecurityProfilesForTarget(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListSecurityProfilesForTarget(@_, nextToken => $next_result->nextToken);
+        push @{ $result->securityProfileTargetMappings }, @{ $next_result->securityProfileTargetMappings };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'securityProfileTargetMappings') foreach (@{ $result->securityProfileTargetMappings });
+        $result = $self->ListSecurityProfilesForTarget(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'securityProfileTargetMappings') foreach (@{ $result->securityProfileTargetMappings });
+    }
+
+    return undef
+  }
+  sub ListAllStreams {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListStreams(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListStreams(@_, nextToken => $next_result->nextToken);
+        push @{ $result->streams }, @{ $next_result->streams };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'streams') foreach (@{ $result->streams });
+        $result = $self->ListStreams(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'streams') foreach (@{ $result->streams });
+    }
+
+    return undef
+  }
+  sub ListAllTagsForResource {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTagsForResource(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListTagsForResource(@_, nextToken => $next_result->nextToken);
+        push @{ $result->tags }, @{ $next_result->tags };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'tags') foreach (@{ $result->tags });
+        $result = $self->ListTagsForResource(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'tags') foreach (@{ $result->tags });
+    }
+
+    return undef
+  }
+  sub ListAllTargetsForPolicy {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTargetsForPolicy(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextMarker) {
+        $next_result = $self->ListTargetsForPolicy(@_, marker => $next_result->nextMarker);
+        push @{ $result->targets }, @{ $next_result->targets };
+      }
+      return $result;
+    } else {
+      while ($result->nextMarker) {
+        $callback->($_ => 'targets') foreach (@{ $result->targets });
+        $result = $self->ListTargetsForPolicy(@_, marker => $result->nextMarker);
+      }
+      $callback->($_ => 'targets') foreach (@{ $result->targets });
+    }
+
+    return undef
+  }
+  sub ListAllTargetsForSecurityProfile {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTargetsForSecurityProfile(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListTargetsForSecurityProfile(@_, nextToken => $next_result->nextToken);
+        push @{ $result->securityProfileTargets }, @{ $next_result->securityProfileTargets };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'securityProfileTargets') foreach (@{ $result->securityProfileTargets });
+        $result = $self->ListTargetsForSecurityProfile(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'securityProfileTargets') foreach (@{ $result->securityProfileTargets });
+    }
+
+    return undef
+  }
+  sub ListAllThingGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListThingGroups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListThingGroups(@_, nextToken => $next_result->nextToken);
+        push @{ $result->thingGroups }, @{ $next_result->thingGroups };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'thingGroups') foreach (@{ $result->thingGroups });
+        $result = $self->ListThingGroups(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'thingGroups') foreach (@{ $result->thingGroups });
+    }
+
+    return undef
+  }
+  sub ListAllThingGroupsForThing {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListThingGroupsForThing(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListThingGroupsForThing(@_, nextToken => $next_result->nextToken);
+        push @{ $result->thingGroups }, @{ $next_result->thingGroups };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'thingGroups') foreach (@{ $result->thingGroups });
+        $result = $self->ListThingGroupsForThing(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'thingGroups') foreach (@{ $result->thingGroups });
+    }
+
+    return undef
+  }
+  sub ListAllThingRegistrationTasks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListThingRegistrationTasks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListThingRegistrationTasks(@_, nextToken => $next_result->nextToken);
+        push @{ $result->taskIds }, @{ $next_result->taskIds };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'taskIds') foreach (@{ $result->taskIds });
+        $result = $self->ListThingRegistrationTasks(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'taskIds') foreach (@{ $result->taskIds });
+    }
+
+    return undef
+  }
   sub ListAllThings {
     my $self = shift;
 
@@ -1046,6 +1552,52 @@ package Paws::IoT;
       while ($result->nextToken) {
         $callback->($_ => 'things') foreach (@{ $result->things });
         $result = $self->ListThings(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'things') foreach (@{ $result->things });
+    }
+
+    return undef
+  }
+  sub ListAllThingsInBillingGroup {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListThingsInBillingGroup(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListThingsInBillingGroup(@_, nextToken => $next_result->nextToken);
+        push @{ $result->things }, @{ $next_result->things };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'things') foreach (@{ $result->things });
+        $result = $self->ListThingsInBillingGroup(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'things') foreach (@{ $result->things });
+    }
+
+    return undef
+  }
+  sub ListAllThingsInThingGroup {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListThingsInThingGroup(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListThingsInThingGroup(@_, nextToken => $next_result->nextToken);
+        push @{ $result->things }, @{ $next_result->things };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'things') foreach (@{ $result->things });
+        $result = $self->ListThingsInThingGroup(@_, nextToken => $result->nextToken);
       }
       $callback->($_ => 'things') foreach (@{ $result->things });
     }
@@ -1094,6 +1646,52 @@ package Paws::IoT;
         $result = $self->ListTopicRules(@_, nextToken => $result->nextToken);
       }
       $callback->($_ => 'rules') foreach (@{ $result->rules });
+    }
+
+    return undef
+  }
+  sub ListAllV2LoggingLevels {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListV2LoggingLevels(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListV2LoggingLevels(@_, nextToken => $next_result->nextToken);
+        push @{ $result->logTargetConfigurations }, @{ $next_result->logTargetConfigurations };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'logTargetConfigurations') foreach (@{ $result->logTargetConfigurations });
+        $result = $self->ListV2LoggingLevels(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'logTargetConfigurations') foreach (@{ $result->logTargetConfigurations });
+    }
+
+    return undef
+  }
+  sub ListAllViolationEvents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListViolationEvents(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListViolationEvents(@_, nextToken => $next_result->nextToken);
+        push @{ $result->violationEvents }, @{ $next_result->violationEvents };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'violationEvents') foreach (@{ $result->violationEvents });
+        $result = $self->ListViolationEvents(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'violationEvents') foreach (@{ $result->violationEvents });
     }
 
     return undef
@@ -4621,6 +5219,78 @@ Validates a Device Defender security profile behaviors specification.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
+=head2 ListAllActiveViolations(sub { },[MaxResults => Int, NextToken => Str, SecurityProfileName => Str, ThingName => Str])
+
+=head2 ListAllActiveViolations([MaxResults => Int, NextToken => Str, SecurityProfileName => Str, ThingName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - activeViolations, passing the object as the first parameter, and the string 'activeViolations' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListActiveViolationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAttachedPolicies(sub { },Target => Str, [Marker => Str, PageSize => Int, Recursive => Bool])
+
+=head2 ListAllAttachedPolicies(Target => Str, [Marker => Str, PageSize => Int, Recursive => Bool])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - policies, passing the object as the first parameter, and the string 'policies' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListAttachedPoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAuditFindings(sub { },[CheckName => Str, EndTime => Str, MaxResults => Int, NextToken => Str, ResourceIdentifier => L<Paws::IoT::ResourceIdentifier>, StartTime => Str, TaskId => Str])
+
+=head2 ListAllAuditFindings([CheckName => Str, EndTime => Str, MaxResults => Int, NextToken => Str, ResourceIdentifier => L<Paws::IoT::ResourceIdentifier>, StartTime => Str, TaskId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - findings, passing the object as the first parameter, and the string 'findings' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListAuditFindingsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAuditTasks(sub { },EndTime => Str, StartTime => Str, [MaxResults => Int, NextToken => Str, TaskStatus => Str, TaskType => Str])
+
+=head2 ListAllAuditTasks(EndTime => Str, StartTime => Str, [MaxResults => Int, NextToken => Str, TaskStatus => Str, TaskType => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - tasks, passing the object as the first parameter, and the string 'tasks' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListAuditTasksResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAuthorizers(sub { },[AscendingOrder => Bool, Marker => Str, PageSize => Int, Status => Str])
+
+=head2 ListAllAuthorizers([AscendingOrder => Bool, Marker => Str, PageSize => Int, Status => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - authorizers, passing the object as the first parameter, and the string 'authorizers' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListAuthorizersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllBillingGroups(sub { },[MaxResults => Int, NamePrefixFilter => Str, NextToken => Str])
+
+=head2 ListAllBillingGroups([MaxResults => Int, NamePrefixFilter => Str, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - billingGroups, passing the object as the first parameter, and the string 'billingGroups' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListBillingGroupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllCACertificates(sub { },[AscendingOrder => Bool, Marker => Str, PageSize => Int])
 
 =head2 ListAllCACertificates([AscendingOrder => Bool, Marker => Str, PageSize => Int])
@@ -4655,6 +5325,66 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - certificates, passing the object as the first parameter, and the string 'certificates' as the second parameter 
 
 If not, it will return a a L<Paws::IoT::ListCertificatesByCAResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllIndices(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllIndices([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - indexNames, passing the object as the first parameter, and the string 'indexNames' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListIndicesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllJobExecutionsForJob(sub { },JobId => Str, [MaxResults => Int, NextToken => Str, Status => Str])
+
+=head2 ListAllJobExecutionsForJob(JobId => Str, [MaxResults => Int, NextToken => Str, Status => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - executionSummaries, passing the object as the first parameter, and the string 'executionSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListJobExecutionsForJobResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllJobExecutionsForThing(sub { },ThingName => Str, [MaxResults => Int, NextToken => Str, Status => Str])
+
+=head2 ListAllJobExecutionsForThing(ThingName => Str, [MaxResults => Int, NextToken => Str, Status => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - executionSummaries, passing the object as the first parameter, and the string 'executionSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListJobExecutionsForThingResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllJobs(sub { },[MaxResults => Int, NextToken => Str, Status => Str, TargetSelection => Str, ThingGroupId => Str, ThingGroupName => Str])
+
+=head2 ListAllJobs([MaxResults => Int, NextToken => Str, Status => Str, TargetSelection => Str, ThingGroupId => Str, ThingGroupName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - jobs, passing the object as the first parameter, and the string 'jobs' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllOTAUpdates(sub { },[MaxResults => Int, NextToken => Str, OtaUpdateStatus => Str])
+
+=head2 ListAllOTAUpdates([MaxResults => Int, NextToken => Str, OtaUpdateStatus => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - otaUpdates, passing the object as the first parameter, and the string 'otaUpdates' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListOTAUpdatesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllOutgoingCertificates(sub { },[AscendingOrder => Bool, Marker => Str, PageSize => Int])
@@ -4717,6 +5447,138 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::IoT::ListPrincipalThingsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 ListAllRoleAliases(sub { },[AscendingOrder => Bool, Marker => Str, PageSize => Int])
+
+=head2 ListAllRoleAliases([AscendingOrder => Bool, Marker => Str, PageSize => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - roleAliases, passing the object as the first parameter, and the string 'roleAliases' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListRoleAliasesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllScheduledAudits(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllScheduledAudits([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - scheduledAudits, passing the object as the first parameter, and the string 'scheduledAudits' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListScheduledAuditsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSecurityProfiles(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllSecurityProfiles([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - securityProfileIdentifiers, passing the object as the first parameter, and the string 'securityProfileIdentifiers' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListSecurityProfilesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSecurityProfilesForTarget(sub { },SecurityProfileTargetArn => Str, [MaxResults => Int, NextToken => Str, Recursive => Bool])
+
+=head2 ListAllSecurityProfilesForTarget(SecurityProfileTargetArn => Str, [MaxResults => Int, NextToken => Str, Recursive => Bool])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - securityProfileTargetMappings, passing the object as the first parameter, and the string 'securityProfileTargetMappings' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListSecurityProfilesForTargetResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllStreams(sub { },[AscendingOrder => Bool, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllStreams([AscendingOrder => Bool, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - streams, passing the object as the first parameter, and the string 'streams' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListStreamsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTagsForResource(sub { },ResourceArn => Str, [NextToken => Str])
+
+=head2 ListAllTagsForResource(ResourceArn => Str, [NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - tags, passing the object as the first parameter, and the string 'tags' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListTagsForResourceResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTargetsForPolicy(sub { },PolicyName => Str, [Marker => Str, PageSize => Int])
+
+=head2 ListAllTargetsForPolicy(PolicyName => Str, [Marker => Str, PageSize => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - targets, passing the object as the first parameter, and the string 'targets' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListTargetsForPolicyResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTargetsForSecurityProfile(sub { },SecurityProfileName => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllTargetsForSecurityProfile(SecurityProfileName => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - securityProfileTargets, passing the object as the first parameter, and the string 'securityProfileTargets' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListTargetsForSecurityProfileResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllThingGroups(sub { },[MaxResults => Int, NamePrefixFilter => Str, NextToken => Str, ParentGroup => Str, Recursive => Bool])
+
+=head2 ListAllThingGroups([MaxResults => Int, NamePrefixFilter => Str, NextToken => Str, ParentGroup => Str, Recursive => Bool])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - thingGroups, passing the object as the first parameter, and the string 'thingGroups' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListThingGroupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllThingGroupsForThing(sub { },ThingName => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllThingGroupsForThing(ThingName => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - thingGroups, passing the object as the first parameter, and the string 'thingGroups' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListThingGroupsForThingResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllThingRegistrationTasks(sub { },[MaxResults => Int, NextToken => Str, Status => Str])
+
+=head2 ListAllThingRegistrationTasks([MaxResults => Int, NextToken => Str, Status => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - taskIds, passing the object as the first parameter, and the string 'taskIds' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListThingRegistrationTasksResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllThings(sub { },[AttributeName => Str, AttributeValue => Str, MaxResults => Int, NextToken => Str, ThingTypeName => Str])
 
 =head2 ListAllThings([AttributeName => Str, AttributeValue => Str, MaxResults => Int, NextToken => Str, ThingTypeName => Str])
@@ -4727,6 +5589,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - things, passing the object as the first parameter, and the string 'things' as the second parameter 
 
 If not, it will return a a L<Paws::IoT::ListThingsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllThingsInBillingGroup(sub { },BillingGroupName => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllThingsInBillingGroup(BillingGroupName => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - things, passing the object as the first parameter, and the string 'things' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListThingsInBillingGroupResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllThingsInThingGroup(sub { },ThingGroupName => Str, [MaxResults => Int, NextToken => Str, Recursive => Bool])
+
+=head2 ListAllThingsInThingGroup(ThingGroupName => Str, [MaxResults => Int, NextToken => Str, Recursive => Bool])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - things, passing the object as the first parameter, and the string 'things' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListThingsInThingGroupResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllThingTypes(sub { },[MaxResults => Int, NextToken => Str, ThingTypeName => Str])
@@ -4751,6 +5637,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - rules, passing the object as the first parameter, and the string 'rules' as the second parameter 
 
 If not, it will return a a L<Paws::IoT::ListTopicRulesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllV2LoggingLevels(sub { },[MaxResults => Int, NextToken => Str, TargetType => Str])
+
+=head2 ListAllV2LoggingLevels([MaxResults => Int, NextToken => Str, TargetType => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - logTargetConfigurations, passing the object as the first parameter, and the string 'logTargetConfigurations' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListV2LoggingLevelsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllViolationEvents(sub { },EndTime => Str, StartTime => Str, [MaxResults => Int, NextToken => Str, SecurityProfileName => Str, ThingName => Str])
+
+=head2 ListAllViolationEvents(EndTime => Str, StartTime => Str, [MaxResults => Int, NextToken => Str, SecurityProfileName => Str, ThingName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - violationEvents, passing the object as the first parameter, and the string 'violationEvents' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListViolationEventsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

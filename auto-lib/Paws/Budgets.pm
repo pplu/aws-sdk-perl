@@ -86,6 +86,75 @@ package Paws::Budgets;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllBudgets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeBudgets(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeBudgets(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Budgets }, @{ $next_result->Budgets };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Budgets') foreach (@{ $result->Budgets });
+        $result = $self->DescribeBudgets(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Budgets') foreach (@{ $result->Budgets });
+    }
+
+    return undef
+  }
+  sub DescribeAllNotificationsForBudget {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeNotificationsForBudget(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeNotificationsForBudget(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Notifications }, @{ $next_result->Notifications };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Notifications') foreach (@{ $result->Notifications });
+        $result = $self->DescribeNotificationsForBudget(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Notifications') foreach (@{ $result->Notifications });
+    }
+
+    return undef
+  }
+  sub DescribeAllSubscribersForNotification {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeSubscribersForNotification(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeSubscribersForNotification(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Subscribers }, @{ $next_result->Subscribers };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Subscribers') foreach (@{ $result->Subscribers });
+        $result = $self->DescribeSubscribersForNotification(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Subscribers') foreach (@{ $result->Subscribers });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CreateBudget CreateNotification CreateSubscriber DeleteBudget DeleteNotification DeleteSubscriber DescribeBudget DescribeBudgetPerformanceHistory DescribeBudgets DescribeNotificationsForBudget DescribeSubscribersForNotification UpdateBudget UpdateNotification UpdateSubscriber / }
@@ -512,6 +581,42 @@ Updates a subscriber.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllBudgets(sub { },AccountId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllBudgets(AccountId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Budgets, passing the object as the first parameter, and the string 'Budgets' as the second parameter 
+
+If not, it will return a a L<Paws::Budgets::DescribeBudgetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllNotificationsForBudget(sub { },AccountId => Str, BudgetName => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllNotificationsForBudget(AccountId => Str, BudgetName => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Notifications, passing the object as the first parameter, and the string 'Notifications' as the second parameter 
+
+If not, it will return a a L<Paws::Budgets::DescribeNotificationsForBudgetResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllSubscribersForNotification(sub { },AccountId => Str, BudgetName => Str, Notification => L<Paws::Budgets::Notification>, [MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllSubscribersForNotification(AccountId => Str, BudgetName => Str, Notification => L<Paws::Budgets::Notification>, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Subscribers, passing the object as the first parameter, and the string 'Subscribers' as the second parameter 
+
+If not, it will return a a L<Paws::Budgets::DescribeSubscribersForNotificationResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

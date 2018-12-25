@@ -86,6 +86,52 @@ package Paws::CloudTrail;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllPublicKeys {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPublicKeys(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListPublicKeys(@_, NextToken => $next_result->NextToken);
+        push @{ $result->PublicKeyList }, @{ $next_result->PublicKeyList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'PublicKeyList') foreach (@{ $result->PublicKeyList });
+        $result = $self->ListPublicKeys(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'PublicKeyList') foreach (@{ $result->PublicKeyList });
+    }
+
+    return undef
+  }
+  sub ListAllTags {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTags(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTags(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ResourceTagList }, @{ $next_result->ResourceTagList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ResourceTagList') foreach (@{ $result->ResourceTagList });
+        $result = $self->ListTags(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ResourceTagList') foreach (@{ $result->ResourceTagList });
+    }
+
+    return undef
+  }
   sub LookupAllEvents {
     my $self = shift;
 
@@ -626,6 +672,30 @@ C<InvalidHomeRegionException> is thrown.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllPublicKeys(sub { },[EndTime => Str, NextToken => Str, StartTime => Str])
+
+=head2 ListAllPublicKeys([EndTime => Str, NextToken => Str, StartTime => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PublicKeyList, passing the object as the first parameter, and the string 'PublicKeyList' as the second parameter 
+
+If not, it will return a a L<Paws::CloudTrail::ListPublicKeysResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTags(sub { },ResourceIdList => ArrayRef[Str|Undef], [NextToken => Str])
+
+=head2 ListAllTags(ResourceIdList => ArrayRef[Str|Undef], [NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ResourceTagList, passing the object as the first parameter, and the string 'ResourceTagList' as the second parameter 
+
+If not, it will return a a L<Paws::CloudTrail::ListTagsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 =head2 LookupAllEvents(sub { },[EndTime => Str, LookupAttributes => ArrayRef[L<Paws::CloudTrail::LookupAttribute>], MaxResults => Int, NextToken => Str, StartTime => Str])
 

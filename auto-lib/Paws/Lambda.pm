@@ -274,6 +274,75 @@ package Paws::Lambda;
 
     return undef
   }
+  sub ListAllLayers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListLayers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextMarker) {
+        $next_result = $self->ListLayers(@_, Marker => $next_result->NextMarker);
+        push @{ $result->Layers }, @{ $next_result->Layers };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $callback->($_ => 'Layers') foreach (@{ $result->Layers });
+        $result = $self->ListLayers(@_, Marker => $result->NextMarker);
+      }
+      $callback->($_ => 'Layers') foreach (@{ $result->Layers });
+    }
+
+    return undef
+  }
+  sub ListAllLayerVersions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListLayerVersions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextMarker) {
+        $next_result = $self->ListLayerVersions(@_, Marker => $next_result->NextMarker);
+        push @{ $result->LayerVersions }, @{ $next_result->LayerVersions };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $callback->($_ => 'LayerVersions') foreach (@{ $result->LayerVersions });
+        $result = $self->ListLayerVersions(@_, Marker => $result->NextMarker);
+      }
+      $callback->($_ => 'LayerVersions') foreach (@{ $result->LayerVersions });
+    }
+
+    return undef
+  }
+  sub ListAllVersionsByFunction {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListVersionsByFunction(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextMarker) {
+        $next_result = $self->ListVersionsByFunction(@_, Marker => $next_result->NextMarker);
+        push @{ $result->Versions }, @{ $next_result->Versions };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $callback->($_ => 'Versions') foreach (@{ $result->Versions });
+        $result = $self->ListVersionsByFunction(@_, Marker => $result->NextMarker);
+      }
+      $callback->($_ => 'Versions') foreach (@{ $result->Versions });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AddLayerVersionPermission AddPermission CreateAlias CreateEventSourceMapping CreateFunction DeleteAlias DeleteEventSourceMapping DeleteFunction DeleteFunctionConcurrency DeleteLayerVersion GetAccountSettings GetAlias GetEventSourceMapping GetFunction GetFunctionConfiguration GetLayerVersion GetLayerVersionPolicy GetPolicy Invoke InvokeAsync ListAliases ListEventSourceMappings ListFunctions ListLayers ListLayerVersions ListTags ListVersionsByFunction PublishLayerVersion PublishVersion PutFunctionConcurrency RemoveLayerVersionPermission RemovePermission TagResource UntagResource UpdateAlias UpdateEventSourceMapping UpdateFunctionCode UpdateFunctionConfiguration / }
@@ -1439,6 +1508,42 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Functions, passing the object as the first parameter, and the string 'Functions' as the second parameter 
 
 If not, it will return a a L<Paws::Lambda::ListFunctionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllLayers(sub { },[CompatibleRuntime => Str, Marker => Str, MaxItems => Int])
+
+=head2 ListAllLayers([CompatibleRuntime => Str, Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Layers, passing the object as the first parameter, and the string 'Layers' as the second parameter 
+
+If not, it will return a a L<Paws::Lambda::ListLayersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllLayerVersions(sub { },LayerName => Str, [CompatibleRuntime => Str, Marker => Str, MaxItems => Int])
+
+=head2 ListAllLayerVersions(LayerName => Str, [CompatibleRuntime => Str, Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - LayerVersions, passing the object as the first parameter, and the string 'LayerVersions' as the second parameter 
+
+If not, it will return a a L<Paws::Lambda::ListLayerVersionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllVersionsByFunction(sub { },FunctionName => Str, [Marker => Str, MaxItems => Int])
+
+=head2 ListAllVersionsByFunction(FunctionName => Str, [Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Versions, passing the object as the first parameter, and the string 'Versions' as the second parameter 
+
+If not, it will return a a L<Paws::Lambda::ListVersionsByFunctionResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

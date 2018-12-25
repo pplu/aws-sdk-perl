@@ -420,6 +420,29 @@ package Paws::RedShift;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllClusterDbRevisions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeClusterDbRevisions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeClusterDbRevisions(@_, Marker => $next_result->Marker);
+        push @{ $result->ClusterDbRevisions }, @{ $next_result->ClusterDbRevisions };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'ClusterDbRevisions') foreach (@{ $result->ClusterDbRevisions });
+        $result = $self->DescribeClusterDbRevisions(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'ClusterDbRevisions') foreach (@{ $result->ClusterDbRevisions });
+    }
+
+    return undef
+  }
   sub DescribeAllClusterParameterGroups {
     my $self = shift;
 
@@ -554,6 +577,29 @@ package Paws::RedShift;
         $result = $self->DescribeClusterSubnetGroups(@_, Marker => $result->Marker);
       }
       $callback->($_ => 'ClusterSubnetGroups') foreach (@{ $result->ClusterSubnetGroups });
+    }
+
+    return undef
+  }
+  sub DescribeAllClusterTracks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeClusterTracks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeClusterTracks(@_, Marker => $next_result->Marker);
+        push @{ $result->MaintenanceTracks }, @{ $next_result->MaintenanceTracks };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'MaintenanceTracks') foreach (@{ $result->MaintenanceTracks });
+        $result = $self->DescribeClusterTracks(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'MaintenanceTracks') foreach (@{ $result->MaintenanceTracks });
     }
 
     return undef
@@ -761,6 +807,121 @@ package Paws::RedShift;
         $result = $self->DescribeReservedNodes(@_, Marker => $result->Marker);
       }
       $callback->($_ => 'ReservedNodes') foreach (@{ $result->ReservedNodes });
+    }
+
+    return undef
+  }
+  sub DescribeAllSnapshotCopyGrants {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeSnapshotCopyGrants(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeSnapshotCopyGrants(@_, Marker => $next_result->Marker);
+        push @{ $result->SnapshotCopyGrants }, @{ $next_result->SnapshotCopyGrants };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'SnapshotCopyGrants') foreach (@{ $result->SnapshotCopyGrants });
+        $result = $self->DescribeSnapshotCopyGrants(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'SnapshotCopyGrants') foreach (@{ $result->SnapshotCopyGrants });
+    }
+
+    return undef
+  }
+  sub DescribeAllSnapshotSchedules {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeSnapshotSchedules(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeSnapshotSchedules(@_, Marker => $next_result->Marker);
+        push @{ $result->SnapshotSchedules }, @{ $next_result->SnapshotSchedules };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'SnapshotSchedules') foreach (@{ $result->SnapshotSchedules });
+        $result = $self->DescribeSnapshotSchedules(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'SnapshotSchedules') foreach (@{ $result->SnapshotSchedules });
+    }
+
+    return undef
+  }
+  sub DescribeAllTableRestoreStatus {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeTableRestoreStatus(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeTableRestoreStatus(@_, Marker => $next_result->Marker);
+        push @{ $result->TableRestoreStatusDetails }, @{ $next_result->TableRestoreStatusDetails };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'TableRestoreStatusDetails') foreach (@{ $result->TableRestoreStatusDetails });
+        $result = $self->DescribeTableRestoreStatus(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'TableRestoreStatusDetails') foreach (@{ $result->TableRestoreStatusDetails });
+    }
+
+    return undef
+  }
+  sub DescribeAllTags {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeTags(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeTags(@_, Marker => $next_result->Marker);
+        push @{ $result->TaggedResources }, @{ $next_result->TaggedResources };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'TaggedResources') foreach (@{ $result->TaggedResources });
+        $result = $self->DescribeTags(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'TaggedResources') foreach (@{ $result->TaggedResources });
+    }
+
+    return undef
+  }
+  sub GetAllReservedNodeExchangeOfferings {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetReservedNodeExchangeOfferings(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->GetReservedNodeExchangeOfferings(@_, Marker => $next_result->Marker);
+        push @{ $result->ReservedNodeOfferings }, @{ $next_result->ReservedNodeOfferings };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'ReservedNodeOfferings') foreach (@{ $result->ReservedNodeOfferings });
+        $result = $self->GetReservedNodeExchangeOfferings(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'ReservedNodeOfferings') foreach (@{ $result->ReservedNodeOfferings });
     }
 
     return undef
@@ -3233,6 +3394,18 @@ Rotates the encryption keys for a cluster.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
+=head2 DescribeAllClusterDbRevisions(sub { },[ClusterIdentifier => Str, Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllClusterDbRevisions([ClusterIdentifier => Str, Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ClusterDbRevisions, passing the object as the first parameter, and the string 'ClusterDbRevisions' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::ClusterDbRevisionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllClusterParameterGroups(sub { },[Marker => Str, MaxRecords => Int, ParameterGroupName => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
 
 =head2 DescribeAllClusterParameterGroups([Marker => Str, MaxRecords => Int, ParameterGroupName => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
@@ -3303,6 +3476,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - ClusterSubnetGroups, passing the object as the first parameter, and the string 'ClusterSubnetGroups' as the second parameter 
 
 If not, it will return a a L<Paws::RedShift::ClusterSubnetGroupMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllClusterTracks(sub { },[MaintenanceTrackName => Str, Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllClusterTracks([MaintenanceTrackName => Str, Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - MaintenanceTracks, passing the object as the first parameter, and the string 'MaintenanceTracks' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::TrackListMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DescribeAllClusterVersions(sub { },[ClusterParameterGroupFamily => Str, ClusterVersion => Str, Marker => Str, MaxRecords => Int])
@@ -3411,6 +3596,66 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - ReservedNodes, passing the object as the first parameter, and the string 'ReservedNodes' as the second parameter 
 
 If not, it will return a a L<Paws::RedShift::ReservedNodesMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllSnapshotCopyGrants(sub { },[Marker => Str, MaxRecords => Int, SnapshotCopyGrantName => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllSnapshotCopyGrants([Marker => Str, MaxRecords => Int, SnapshotCopyGrantName => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SnapshotCopyGrants, passing the object as the first parameter, and the string 'SnapshotCopyGrants' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::SnapshotCopyGrantMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllSnapshotSchedules(sub { },[ClusterIdentifier => Str, Marker => Str, MaxRecords => Int, ScheduleIdentifier => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllSnapshotSchedules([ClusterIdentifier => Str, Marker => Str, MaxRecords => Int, ScheduleIdentifier => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SnapshotSchedules, passing the object as the first parameter, and the string 'SnapshotSchedules' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::DescribeSnapshotSchedulesOutputMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllTableRestoreStatus(sub { },[ClusterIdentifier => Str, Marker => Str, MaxRecords => Int, TableRestoreRequestId => Str])
+
+=head2 DescribeAllTableRestoreStatus([ClusterIdentifier => Str, Marker => Str, MaxRecords => Int, TableRestoreRequestId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TableRestoreStatusDetails, passing the object as the first parameter, and the string 'TableRestoreStatusDetails' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::TableRestoreStatusMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllTags(sub { },[Marker => Str, MaxRecords => Int, ResourceName => Str, ResourceType => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllTags([Marker => Str, MaxRecords => Int, ResourceName => Str, ResourceType => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TaggedResources, passing the object as the first parameter, and the string 'TaggedResources' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::TaggedResourceListMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllReservedNodeExchangeOfferings(sub { },ReservedNodeId => Str, [Marker => Str, MaxRecords => Int])
+
+=head2 GetAllReservedNodeExchangeOfferings(ReservedNodeId => Str, [Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ReservedNodeOfferings, passing the object as the first parameter, and the string 'ReservedNodeOfferings' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::GetReservedNodeExchangeOfferingsOutputMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

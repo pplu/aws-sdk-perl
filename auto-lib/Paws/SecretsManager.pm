@@ -106,6 +106,29 @@ package Paws::SecretsManager;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllSecrets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListSecrets(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListSecrets(@_, NextToken => $next_result->NextToken);
+        push @{ $result->SecretList }, @{ $next_result->SecretList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'SecretList') foreach (@{ $result->SecretList });
+        $result = $self->ListSecrets(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'SecretList') foreach (@{ $result->SecretList });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CancelRotateSecret CreateSecret DeleteResourcePolicy DeleteSecret DescribeSecret GetRandomPassword GetResourcePolicy GetSecretValue ListSecrets ListSecretVersionIds PutResourcePolicy PutSecretValue RestoreSecret RotateSecret TagResource UntagResource UpdateSecret UpdateSecretVersionStage / }
@@ -1598,6 +1621,18 @@ C<SecretVersionsToStages> response value.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllSecrets(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllSecrets([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SecretList, passing the object as the first parameter, and the string 'SecretList' as the second parameter 
+
+If not, it will return a a L<Paws::SecretsManager::ListSecretsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

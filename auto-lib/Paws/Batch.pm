@@ -95,6 +95,98 @@ package Paws::Batch;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllComputeEnvironments {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeComputeEnvironments(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeComputeEnvironments(@_, nextToken => $next_result->nextToken);
+        push @{ $result->computeEnvironments }, @{ $next_result->computeEnvironments };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'computeEnvironments') foreach (@{ $result->computeEnvironments });
+        $result = $self->DescribeComputeEnvironments(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'computeEnvironments') foreach (@{ $result->computeEnvironments });
+    }
+
+    return undef
+  }
+  sub DescribeAllJobDefinitions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeJobDefinitions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeJobDefinitions(@_, nextToken => $next_result->nextToken);
+        push @{ $result->jobDefinitions }, @{ $next_result->jobDefinitions };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'jobDefinitions') foreach (@{ $result->jobDefinitions });
+        $result = $self->DescribeJobDefinitions(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'jobDefinitions') foreach (@{ $result->jobDefinitions });
+    }
+
+    return undef
+  }
+  sub DescribeAllJobQueues {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeJobQueues(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeJobQueues(@_, nextToken => $next_result->nextToken);
+        push @{ $result->jobQueues }, @{ $next_result->jobQueues };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'jobQueues') foreach (@{ $result->jobQueues });
+        $result = $self->DescribeJobQueues(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'jobQueues') foreach (@{ $result->jobQueues });
+    }
+
+    return undef
+  }
+  sub ListAllJobs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListJobs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListJobs(@_, nextToken => $next_result->nextToken);
+        push @{ $result->jobSummaryList }, @{ $next_result->jobSummaryList };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'jobSummaryList') foreach (@{ $result->jobSummaryList });
+        $result = $self->ListJobs(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'jobSummaryList') foreach (@{ $result->jobSummaryList });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CancelJob CreateComputeEnvironment CreateJobQueue DeleteComputeEnvironment DeleteJobQueue DeregisterJobDefinition DescribeComputeEnvironments DescribeJobDefinitions DescribeJobQueues DescribeJobs ListJobs RegisterJobDefinition SubmitJob TerminateJob UpdateComputeEnvironment UpdateJobQueue / }
@@ -608,6 +700,54 @@ Updates a job queue.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllComputeEnvironments(sub { },[ComputeEnvironments => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllComputeEnvironments([ComputeEnvironments => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - computeEnvironments, passing the object as the first parameter, and the string 'computeEnvironments' as the second parameter 
+
+If not, it will return a a L<Paws::Batch::DescribeComputeEnvironmentsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllJobDefinitions(sub { },[JobDefinitionName => Str, JobDefinitions => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str, Status => Str])
+
+=head2 DescribeAllJobDefinitions([JobDefinitionName => Str, JobDefinitions => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str, Status => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - jobDefinitions, passing the object as the first parameter, and the string 'jobDefinitions' as the second parameter 
+
+If not, it will return a a L<Paws::Batch::DescribeJobDefinitionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllJobQueues(sub { },[JobQueues => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllJobQueues([JobQueues => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - jobQueues, passing the object as the first parameter, and the string 'jobQueues' as the second parameter 
+
+If not, it will return a a L<Paws::Batch::DescribeJobQueuesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllJobs(sub { },[ArrayJobId => Str, JobQueue => Str, JobStatus => Str, MaxResults => Int, MultiNodeJobId => Str, NextToken => Str])
+
+=head2 ListAllJobs([ArrayJobId => Str, JobQueue => Str, JobStatus => Str, MaxResults => Int, MultiNodeJobId => Str, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - jobSummaryList, passing the object as the first parameter, and the string 'jobSummaryList' as the second parameter 
+
+If not, it will return a a L<Paws::Batch::ListJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 
