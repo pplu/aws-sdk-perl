@@ -391,6 +391,12 @@ Some services, like the MachineLearning predictor API want you to specify a cust
   my $predictor = Paws->service('ML', endpoint => $model->EndpointInfo->EndpointUrl, region => 'eu-west-1');
   $predictor->...
 
+=head3 max_attempts
+
+Sets the total number of request attempts to make per API call, by retrying after failures. For most services the value defaults to 5 - that is, after a failure, up to 4 retries will be made, making a total of up to 5 attempts.
+
+  my $sms = Paws->service('SMS', max_attempts => 10);
+
 =head2 Using VPC Endpoints
 
 If you are going to consume a service behind a VPC Endpoint, you can use the C<endpoint> and the C<region> attributes to configure Paws appropiately
