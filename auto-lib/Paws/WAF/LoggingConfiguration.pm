@@ -33,22 +33,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::Loggin
 
 =head1 DESCRIPTION
 
-The Amazon Kinesis Data Firehose delivery streams, C<RedactedFields>
-information, and the web ACL Amazon Resource Name (ARN).
+The Amazon Kinesis Data Firehose, C<RedactedFields> information, and
+the web ACL Amazon Resource Name (ARN).
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> LogDestinationConfigs => ArrayRef[Str|Undef]
 
-  An array of Amazon Kinesis Data Firehose delivery stream ARNs.
+  An array of Amazon Kinesis Data Firehose ARNs.
 
 
 =head2 RedactedFields => ArrayRef[L<Paws::WAF::FieldToMatch>]
 
   The parts of the request that you want redacted from the logs. For
 example, if you redact the cookie field, the cookie field in the
-delivery stream will be C<xxx>.
+firehose will be C<xxx>.
 
 
 =head2 B<REQUIRED> ResourceArn => Str

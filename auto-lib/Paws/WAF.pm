@@ -404,6 +404,52 @@ package Paws::WAF;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub GetAllRateBasedRuleManagedKeys {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetRateBasedRuleManagedKeys(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextMarker) {
+        $next_result = $self->GetRateBasedRuleManagedKeys(@_, NextMarker => $next_result->NextMarker);
+        push @{ $result->ManagedKeys }, @{ $next_result->ManagedKeys };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $callback->($_ => 'ManagedKeys') foreach (@{ $result->ManagedKeys });
+        $result = $self->GetRateBasedRuleManagedKeys(@_, NextMarker => $result->NextMarker);
+      }
+      $callback->($_ => 'ManagedKeys') foreach (@{ $result->ManagedKeys });
+    }
+
+    return undef
+  }
+  sub ListAllActivatedRulesInRuleGroup {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListActivatedRulesInRuleGroup(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextMarker) {
+        $next_result = $self->ListActivatedRulesInRuleGroup(@_, NextMarker => $next_result->NextMarker);
+        push @{ $result->ActivatedRules }, @{ $next_result->ActivatedRules };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $callback->($_ => 'ActivatedRules') foreach (@{ $result->ActivatedRules });
+        $result = $self->ListActivatedRulesInRuleGroup(@_, NextMarker => $result->NextMarker);
+      }
+      $callback->($_ => 'ActivatedRules') foreach (@{ $result->ActivatedRules });
+    }
+
+    return undef
+  }
   sub ListAllByteMatchSets {
     my $self = shift;
 
@@ -427,6 +473,29 @@ package Paws::WAF;
 
     return undef
   }
+  sub ListAllGeoMatchSets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListGeoMatchSets(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextMarker) {
+        $next_result = $self->ListGeoMatchSets(@_, NextMarker => $next_result->NextMarker);
+        push @{ $result->GeoMatchSets }, @{ $next_result->GeoMatchSets };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $callback->($_ => 'GeoMatchSets') foreach (@{ $result->GeoMatchSets });
+        $result = $self->ListGeoMatchSets(@_, NextMarker => $result->NextMarker);
+      }
+      $callback->($_ => 'GeoMatchSets') foreach (@{ $result->GeoMatchSets });
+    }
+
+    return undef
+  }
   sub ListAllIPSets {
     my $self = shift;
 
@@ -446,6 +515,121 @@ package Paws::WAF;
         $result = $self->ListIPSets(@_, NextMarker => $result->NextMarker);
       }
       $callback->($_ => 'IPSets') foreach (@{ $result->IPSets });
+    }
+
+    return undef
+  }
+  sub ListAllLoggingConfigurations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListLoggingConfigurations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextMarker) {
+        $next_result = $self->ListLoggingConfigurations(@_, NextMarker => $next_result->NextMarker);
+        push @{ $result->LoggingConfigurations }, @{ $next_result->LoggingConfigurations };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $callback->($_ => 'LoggingConfigurations') foreach (@{ $result->LoggingConfigurations });
+        $result = $self->ListLoggingConfigurations(@_, NextMarker => $result->NextMarker);
+      }
+      $callback->($_ => 'LoggingConfigurations') foreach (@{ $result->LoggingConfigurations });
+    }
+
+    return undef
+  }
+  sub ListAllRateBasedRules {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListRateBasedRules(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextMarker) {
+        $next_result = $self->ListRateBasedRules(@_, NextMarker => $next_result->NextMarker);
+        push @{ $result->Rules }, @{ $next_result->Rules };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $callback->($_ => 'Rules') foreach (@{ $result->Rules });
+        $result = $self->ListRateBasedRules(@_, NextMarker => $result->NextMarker);
+      }
+      $callback->($_ => 'Rules') foreach (@{ $result->Rules });
+    }
+
+    return undef
+  }
+  sub ListAllRegexMatchSets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListRegexMatchSets(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextMarker) {
+        $next_result = $self->ListRegexMatchSets(@_, NextMarker => $next_result->NextMarker);
+        push @{ $result->RegexMatchSets }, @{ $next_result->RegexMatchSets };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $callback->($_ => 'RegexMatchSets') foreach (@{ $result->RegexMatchSets });
+        $result = $self->ListRegexMatchSets(@_, NextMarker => $result->NextMarker);
+      }
+      $callback->($_ => 'RegexMatchSets') foreach (@{ $result->RegexMatchSets });
+    }
+
+    return undef
+  }
+  sub ListAllRegexPatternSets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListRegexPatternSets(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextMarker) {
+        $next_result = $self->ListRegexPatternSets(@_, NextMarker => $next_result->NextMarker);
+        push @{ $result->RegexPatternSets }, @{ $next_result->RegexPatternSets };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $callback->($_ => 'RegexPatternSets') foreach (@{ $result->RegexPatternSets });
+        $result = $self->ListRegexPatternSets(@_, NextMarker => $result->NextMarker);
+      }
+      $callback->($_ => 'RegexPatternSets') foreach (@{ $result->RegexPatternSets });
+    }
+
+    return undef
+  }
+  sub ListAllRuleGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListRuleGroups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextMarker) {
+        $next_result = $self->ListRuleGroups(@_, NextMarker => $next_result->NextMarker);
+        push @{ $result->RuleGroups }, @{ $next_result->RuleGroups };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $callback->($_ => 'RuleGroups') foreach (@{ $result->RuleGroups });
+        $result = $self->ListRuleGroups(@_, NextMarker => $result->NextMarker);
+      }
+      $callback->($_ => 'RuleGroups') foreach (@{ $result->RuleGroups });
     }
 
     return undef
@@ -515,6 +699,29 @@ package Paws::WAF;
         $result = $self->ListSqlInjectionMatchSets(@_, NextMarker => $result->NextMarker);
       }
       $callback->($_ => 'SqlInjectionMatchSets') foreach (@{ $result->SqlInjectionMatchSets });
+    }
+
+    return undef
+  }
+  sub ListAllSubscribedRuleGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListSubscribedRuleGroups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextMarker) {
+        $next_result = $self->ListSubscribedRuleGroups(@_, NextMarker => $next_result->NextMarker);
+        push @{ $result->RuleGroups }, @{ $next_result->RuleGroups };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $callback->($_ => 'RuleGroups') foreach (@{ $result->RuleGroups });
+        $result = $self->ListSubscribedRuleGroups(@_, NextMarker => $result->NextMarker);
+      }
+      $callback->($_ => 'RuleGroups') foreach (@{ $result->RuleGroups });
     }
 
     return undef
@@ -730,13 +937,13 @@ Each argument is described in detail in: L<Paws::WAF::CreateIPSet>
 
 Returns: a L<Paws::WAF::CreateIPSetResponse> instance
 
-Creates an IPSet, which you use to specify which web requests you want
-to allow or block based on the IP addresses that the requests originate
-from. For example, if you're receiving a lot of requests from one or
-more individual IP addresses or one or more ranges of IP addresses and
-you want to block the requests, you can create an C<IPSet> that
-contains those IP addresses and then configure AWS WAF to block the
-requests.
+Creates an IPSet, which you use to specify which web requests that you
+want to allow or block based on the IP addresses that the requests
+originate from. For example, if you're receiving a lot of requests from
+one or more individual IP addresses or one or more ranges of IP
+addresses and you want to block the requests, you can create an
+C<IPSet> that contains those IP addresses and then configure AWS WAF to
+block the requests.
 
 To create and configure an C<IPSet>, perform the following steps:
 
@@ -1020,7 +1227,7 @@ Creates a C<Rule>, which contains the C<IPSet> objects, C<ByteMatchSet>
 objects, and other predicates that identify the requests that you want
 to block. If you add more than one predicate to a C<Rule>, a request
 must match all of the specifications to be allowed or blocked. For
-example, suppose you add the following to a C<Rule>:
+example, suppose that you add the following to a C<Rule>:
 
 =over
 
@@ -2536,22 +2743,19 @@ using the following steps:
 
 =item 1.
 
-Create an Amazon Kinesis Data Firehose delivery stream. For more
-information, see Creating an Amazon Kinesis Data Firehose Delivery
-Stream
-(https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html).
+Create an Amazon Kinesis Data Firehose .
 
 =item 2.
 
-Associate that delivery stream to your web ACL using a
+Associate that firehose to your web ACL using a
 C<PutLoggingConfiguration> request.
 
 =back
 
 When you successfully enable logging using a C<PutLoggingConfiguration>
 request, AWS WAF will create a service linked role with the necessary
-permissions to write logs to the Amazon Kinesis Data Firehose delivery
-stream. For more information, see Logging Web ACL Traffic Information
+permissions to write logs to the Amazon Kinesis Data Firehose. For more
+information, see Logging Web ACL Traffic Information
 (http://docs.aws.amazon.com/waf/latest/developerguide/logging.html) in
 the I<AWS WAF Developer Guide>.
 
@@ -3147,7 +3351,7 @@ object identifies a predicate, such as a ByteMatchSet or an IPSet, that
 specifies the web requests that you want to allow, block, or count. If
 you add more than one predicate to a C<Rule>, a request must match all
 of the specifications to be allowed, blocked, or counted. For example,
-suppose you add the following to a C<Rule>:
+suppose that you add the following to a C<Rule>:
 
 =over
 
@@ -3399,9 +3603,9 @@ You can only specify a single type of TextTransformation.
 =back
 
 You use C<SqlInjectionMatchSet> objects to specify which CloudFront
-requests you want to allow, block, or count. For example, if you're
-receiving requests that contain snippets of SQL code in the query
-string and you want to block the requests, you can create a
+requests that you want to allow, block, or count. For example, if
+you're receiving requests that contain snippets of SQL code in the
+query string and you want to block the requests, you can create a
 C<SqlInjectionMatchSet> with the applicable settings, and then
 configure AWS WAF to block the requests.
 
@@ -3464,9 +3668,9 @@ in any of the C<Rules> in a C<WebACL>.
 
 =item *
 
-The C<Rules> that you want to add and/or delete. If you want to replace
-one C<Rule> with another, you delete the existing C<Rule> and add the
-new one.
+The C<Rules> that you want to add or delete. If you want to replace one
+C<Rule> with another, you delete the existing C<Rule> and add the new
+one.
 
 =item *
 
@@ -3479,7 +3683,7 @@ The order in which you want AWS WAF to evaluate the C<Rules> in a
 C<WebACL>. If you add more than one C<Rule> to a C<WebACL>, AWS WAF
 evaluates each request against the C<Rules> in order based on the value
 of C<Priority>. (The C<Rule> that has the lowest value for C<Priority>
-is evaluated first.) When a web request matches all of the predicates
+is evaluated first.) When a web request matches all the predicates
 (such as C<ByteMatchSets> and C<IPSets>) in a C<Rule>, AWS WAF
 immediately takes the corresponding action, allow or block, and doesn't
 evaluate the request against the remaining C<Rules> in the C<WebACL>,
@@ -3518,6 +3722,16 @@ Submit an C<UpdateWebACL> request to specify the C<Rules> that you want
 to include in the C<WebACL>, to specify the default action, and to
 associate the C<WebACL> with a CloudFront distribution.
 
+The C<ActivatedRule> can be a rule group. If you specify a rule group
+as your C<ActivatedRule>, you can exclude specific rules from that rule
+group.
+
+If you already have a rule group associated with a web ACL and want to
+submit an C<UpdateWebACL> request to exclude certain rules from that
+rule group, you must first remove the rule group from the web ACL, the
+re-insert it again, specifying the excluded rules. For details, see
+ActivatedRule$ExcludedRules.
+
 =back
 
 Be aware that if you try to add a RATE_BASED rule to a web ACL without
@@ -3555,8 +3769,8 @@ For each C<XssMatchTuple> object, you specify the following values:
 =item *
 
 C<Action>: Whether to insert the object into or delete the object from
-the array. To change a C<XssMatchTuple>, you delete the existing object
-and add a new one.
+the array. To change an C<XssMatchTuple>, you delete the existing
+object and add a new one.
 
 =item *
 
@@ -3574,12 +3788,12 @@ You can only specify a single type of TextTransformation.
 
 =back
 
-You use C<XssMatchSet> objects to specify which CloudFront requests you
-want to allow, block, or count. For example, if you're receiving
-requests that contain cross-site scripting attacks in the request body
-and you want to block the requests, you can create an C<XssMatchSet>
-with the applicable settings, and then configure AWS WAF to block the
-requests.
+You use C<XssMatchSet> objects to specify which CloudFront requests
+that you want to allow, block, or count. For example, if you're
+receiving requests that contain cross-site scripting attacks in the
+request body and you want to block the requests, you can create an
+C<XssMatchSet> with the applicable settings, and then configure AWS WAF
+to block the requests.
 
 To create and configure an C<XssMatchSet>, perform the following steps:
 
@@ -3613,6 +3827,30 @@ HTTP requests, see the AWS WAF Developer Guide
 
 Paginator methods are helpers that repetively call methods that return partial results
 
+=head2 GetAllRateBasedRuleManagedKeys(sub { },RuleId => Str, [NextMarker => Str])
+
+=head2 GetAllRateBasedRuleManagedKeys(RuleId => Str, [NextMarker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ManagedKeys, passing the object as the first parameter, and the string 'ManagedKeys' as the second parameter 
+
+If not, it will return a a L<Paws::WAF::GetRateBasedRuleManagedKeysResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllActivatedRulesInRuleGroup(sub { },[Limit => Int, NextMarker => Str, RuleGroupId => Str])
+
+=head2 ListAllActivatedRulesInRuleGroup([Limit => Int, NextMarker => Str, RuleGroupId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ActivatedRules, passing the object as the first parameter, and the string 'ActivatedRules' as the second parameter 
+
+If not, it will return a a L<Paws::WAF::ListActivatedRulesInRuleGroupResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllByteMatchSets(sub { },[Limit => Int, NextMarker => Str])
 
 =head2 ListAllByteMatchSets([Limit => Int, NextMarker => Str])
@@ -3625,6 +3863,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::WAF::ListByteMatchSetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 ListAllGeoMatchSets(sub { },[Limit => Int, NextMarker => Str])
+
+=head2 ListAllGeoMatchSets([Limit => Int, NextMarker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - GeoMatchSets, passing the object as the first parameter, and the string 'GeoMatchSets' as the second parameter 
+
+If not, it will return a a L<Paws::WAF::ListGeoMatchSetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllIPSets(sub { },[Limit => Int, NextMarker => Str])
 
 =head2 ListAllIPSets([Limit => Int, NextMarker => Str])
@@ -3635,6 +3885,66 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - IPSets, passing the object as the first parameter, and the string 'IPSets' as the second parameter 
 
 If not, it will return a a L<Paws::WAF::ListIPSetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllLoggingConfigurations(sub { },[Limit => Int, NextMarker => Str])
+
+=head2 ListAllLoggingConfigurations([Limit => Int, NextMarker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - LoggingConfigurations, passing the object as the first parameter, and the string 'LoggingConfigurations' as the second parameter 
+
+If not, it will return a a L<Paws::WAF::ListLoggingConfigurationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllRateBasedRules(sub { },[Limit => Int, NextMarker => Str])
+
+=head2 ListAllRateBasedRules([Limit => Int, NextMarker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Rules, passing the object as the first parameter, and the string 'Rules' as the second parameter 
+
+If not, it will return a a L<Paws::WAF::ListRateBasedRulesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllRegexMatchSets(sub { },[Limit => Int, NextMarker => Str])
+
+=head2 ListAllRegexMatchSets([Limit => Int, NextMarker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - RegexMatchSets, passing the object as the first parameter, and the string 'RegexMatchSets' as the second parameter 
+
+If not, it will return a a L<Paws::WAF::ListRegexMatchSetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllRegexPatternSets(sub { },[Limit => Int, NextMarker => Str])
+
+=head2 ListAllRegexPatternSets([Limit => Int, NextMarker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - RegexPatternSets, passing the object as the first parameter, and the string 'RegexPatternSets' as the second parameter 
+
+If not, it will return a a L<Paws::WAF::ListRegexPatternSetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllRuleGroups(sub { },[Limit => Int, NextMarker => Str])
+
+=head2 ListAllRuleGroups([Limit => Int, NextMarker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - RuleGroups, passing the object as the first parameter, and the string 'RuleGroups' as the second parameter 
+
+If not, it will return a a L<Paws::WAF::ListRuleGroupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllRules(sub { },[Limit => Int, NextMarker => Str])
@@ -3671,6 +3981,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - SqlInjectionMatchSets, passing the object as the first parameter, and the string 'SqlInjectionMatchSets' as the second parameter 
 
 If not, it will return a a L<Paws::WAF::ListSqlInjectionMatchSetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSubscribedRuleGroups(sub { },[Limit => Int, NextMarker => Str])
+
+=head2 ListAllSubscribedRuleGroups([Limit => Int, NextMarker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - RuleGroups, passing the object as the first parameter, and the string 'RuleGroups' as the second parameter 
+
+If not, it will return a a L<Paws::WAF::ListSubscribedRuleGroupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllWebACLs(sub { },[Limit => Int, NextMarker => Str])

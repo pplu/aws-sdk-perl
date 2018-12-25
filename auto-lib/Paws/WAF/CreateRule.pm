@@ -61,8 +61,8 @@ The value returned by the most recent call to GetChangeToken.
 
 A friendly name or description for the metrics for this C<Rule>. The
 name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name
-can't contain whitespace. You can't change the name of the metric after
-you create the C<Rule>.
+can't contain white space. You can't change the name of the metric
+after you create the C<Rule>.
 
 
 

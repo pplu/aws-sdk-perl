@@ -73,7 +73,7 @@ associated with the C<WebACL>.
 
 A friendly name or description for the metrics for this C<WebACL>. The
 name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name
-can't contain whitespace. You can't change C<MetricName> after you
+can't contain white space. You can't change C<MetricName> after you
 create the C<WebACL>.
 
 
