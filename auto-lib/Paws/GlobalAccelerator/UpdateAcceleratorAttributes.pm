@@ -53,26 +53,37 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glo
 =head2 AcceleratorArn => Str
 
 The Amazon Resource Name (ARN) of the accelerator that you want to
-update.
+update. Attribute is required.
 
 
 
 =head2 FlowLogsEnabled => Bool
 
-Update whether flow logs are enabled.
+Update whether flow logs are enabled. The default value is false. If
+the value is true, C<FlowLogsS3Bucket> and C<FlowLogsS3Prefix> must be
+specified.
+
+For more information, see Flow Logs
+(https://docs.aws.amazon.com/global-accelerator/latest/dg/monitoring-global-accelerator.flow-logs.html)
+in the I<AWS Global Accelerator Developer Guide>.
 
 
 
 =head2 FlowLogsS3Bucket => Str
 
-Update the name of the Amazon S3 bucket for the flow logs.
+The name of the Amazon S3 bucket for the flow logs. Attribute is
+required if C<FlowLogsEnabled> is C<true>. The bucket must exist and
+have a bucket policy that grants AWS Global Accelerator permission to
+write to the bucket.
 
 
 
 =head2 FlowLogsS3Prefix => Str
 
 Update the prefix for the location in the Amazon S3 bucket for the flow
-logs.
+logs. Attribute is required if C<FlowLogsEnabled> is C<true>. If you
+donE<rsquo>t specify a prefix, the flow logs are stored in the root of
+the bucket.
 
 
 

@@ -47,7 +47,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glo
 =head2 AcceleratorArn => Str
 
 The Amazon Resource Name (ARN) of the accelerator with the attributes
-that you want to describe.
+that you want to describe. Value is required.
 
 
 

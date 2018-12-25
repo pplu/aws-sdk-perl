@@ -101,6 +101,75 @@ package Paws::GlobalAccelerator;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllAccelerators {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAccelerators(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListAccelerators(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Accelerators }, @{ $next_result->Accelerators };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Accelerators') foreach (@{ $result->Accelerators });
+        $result = $self->ListAccelerators(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Accelerators') foreach (@{ $result->Accelerators });
+    }
+
+    return undef
+  }
+  sub ListAllEndpointGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListEndpointGroups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListEndpointGroups(@_, NextToken => $next_result->NextToken);
+        push @{ $result->EndpointGroups }, @{ $next_result->EndpointGroups };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'EndpointGroups') foreach (@{ $result->EndpointGroups });
+        $result = $self->ListEndpointGroups(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'EndpointGroups') foreach (@{ $result->EndpointGroups });
+    }
+
+    return undef
+  }
+  sub ListAllListeners {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListListeners(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListListeners(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Listeners }, @{ $next_result->Listeners };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Listeners') foreach (@{ $result->Listeners });
+        $result = $self->ListListeners(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Listeners') foreach (@{ $result->Listeners });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CreateAccelerator CreateEndpointGroup CreateListener DeleteAccelerator DeleteEndpointGroup DeleteListener DescribeAccelerator DescribeAcceleratorAttributes DescribeEndpointGroup DescribeListener ListAccelerators ListEndpointGroups ListListeners UpdateAccelerator UpdateAcceleratorAttributes UpdateEndpointGroup UpdateListener / }
@@ -137,7 +206,7 @@ This is the I<AWS Global Accelerator API Reference>. This guide is for
 developers who need detailed information about AWS Global Accelerator
 API actions, data types, and errors. For more information about Global
 Accelerator features, see the AWS Global Accelerator Developer Guide
-(https://docs.awa.amazon.com/global-accelerator/latest/dg/Welcome.html).
+(https://docs.aws.amazon.com/global-accelerator/latest/dg/Welcome.html).
 
 AWS Global Accelerator is a network layer service in which you create
 accelerators to improve availability and performance for internet
@@ -166,10 +235,10 @@ improve performance and availability for your applications:
 
 AWS Global Accelerator provides you with a set of static IP addresses
 which are anycast from the AWS edge network and serve as the single
-fixed points of contact for your clients. If you already have Elastic
-Load Balancing or Elastic IP address resources set up for your
-applications, you can easily add those to Global Accelerator to allow
-the resources to be accessed by a Global Accelerator static IP address.
+fixed entry points for your clients. If you already have Elastic Load
+Balancing or Elastic IP address resources set up for your applications,
+you can easily add those to Global Accelerator to allow the resources
+to be accessed by a Global Accelerator static IP address.
 
 =item Accelerator
 
@@ -204,7 +273,7 @@ within the endpoint groups associated with a listener.
 Each endpoint group is associated with a specific AWS Region. Endpoint
 groups include one or more endpoints in the Region. You can increase or
 reduce the percentage of traffic that would be otherwise directed to an
-endpoint group by adjusting a setting called a traffic dial. The
+endpoint group by adjusting a setting called a I<traffic dial>. The
 traffic dial lets you easily do performance testing or blue/green
 deployment testing for new releases across different AWS Regions, for
 example.
@@ -215,7 +284,7 @@ An endpoint is an Elastic IP address, Network Load Balancer, or
 Application Load Balancer. Traffic is routed to endpoints based on
 several factors, including the geo-proximity to the user, the health of
 the endpoint, and the configuration options that you choose, such as
-endpoint weights. You can configure weights for each endpoint, which
+endpoint weights. For each endpoint, you can configure weights, which
 are numbers that you can use to specify the proportion of traffic to
 route to each one. This can be useful, for example, to do performance
 testing within a Region.
@@ -285,8 +354,8 @@ Each argument is described in detail in: L<Paws::GlobalAccelerator::CreateEndpoi
 
 Returns: a L<Paws::GlobalAccelerator::CreateEndpointGroupResponse> instance
 
-Create an endpoint group for the specified accelerator. An endpoint
-group is a collection of endpoints in one AWS Region. To see an AWS CLI
+Create an endpoint group for the specified listener. An endpoint group
+is a collection of endpoints in one AWS Region. To see an AWS CLI
 example of creating an endpoint group, scroll down to B<Example>.
 
 
@@ -331,7 +400,8 @@ Each argument is described in detail in: L<Paws::GlobalAccelerator::DeleteAccele
 Returns: nothing
 
 Delete an accelerator. Note: before you can delete an accelerator, you
-must disable it.
+must disable it and remove all dependent resources (listeners and
+endpoint groups).
 
 
 =head2 DeleteEndpointGroup
@@ -592,6 +662,42 @@ Update a listener.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllAccelerators(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllAccelerators([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Accelerators, passing the object as the first parameter, and the string 'Accelerators' as the second parameter 
+
+If not, it will return a a L<Paws::GlobalAccelerator::ListAcceleratorsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllEndpointGroups(sub { },ListenerArn => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllEndpointGroups(ListenerArn => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - EndpointGroups, passing the object as the first parameter, and the string 'EndpointGroups' as the second parameter 
+
+If not, it will return a a L<Paws::GlobalAccelerator::ListEndpointGroupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllListeners(sub { },AcceleratorArn => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllListeners(AcceleratorArn => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Listeners, passing the object as the first parameter, and the string 'Listeners' as the second parameter 
+
+If not, it will return a a L<Paws::GlobalAccelerator::ListListenersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

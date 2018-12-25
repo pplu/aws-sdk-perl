@@ -76,8 +76,8 @@ The Amazon Resource Name (ARN) of the endpoint group.
 
 =head2 HealthCheckIntervalSeconds => Int
 
-The time, in seconds, between each health check for an endpoint. The
-default value is 30.
+The timeE<mdash>10 seconds or 30 secondsE<mdash>between each health
+check for an endpoint. The default value is 30.
 
 
 

@@ -62,8 +62,8 @@ endpoint group for a specific listener.
 
 =head2 HealthCheckIntervalSeconds => Int
 
-  The elapsed time, in seconds, between health checks for each endpoint.
-The default value is 30.
+  The timeE<mdash>10 seconds or 30 secondsE<mdash>between health checks
+for each endpoint. The default value is 30.
 
 
 =head2 HealthCheckPath => Str
