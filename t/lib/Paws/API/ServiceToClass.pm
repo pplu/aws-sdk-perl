@@ -9,6 +9,8 @@ package Paws::API::ServiceToClass;
     amplify => 'Amplify',
     athena => 'Athena',
     apigateway => 'ApiGateway',
+    apigatewayv2 => 'ApiGatewayV2',
+    apigatewaymanagementapi => 'ApiGatewayManagement',
     appmesh => 'AppMesh',
     appsync => 'AppSync',
     autoscaling => 'AutoScaling',

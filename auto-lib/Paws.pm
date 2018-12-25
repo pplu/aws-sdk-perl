@@ -244,7 +244,13 @@ L<Paws::Amplify>
 
 L<Paws::ApiGateway>
 
+L<Paws::ApiGatewayManagement>
+
+L<Paws::ApiGatewayV2>
+
 L<Paws::ApplicationAutoScaling>
+
+L<Paws::AppMesh>
 
 L<Paws::AppStream>
 
@@ -406,6 +412,8 @@ L<Paws::IoTData>
 
 L<Paws::IoTJobsData>
 
+L<Paws::Kafka>
+
 L<Paws::Kinesis>
 
 L<Paws::KinesisAnalytics>
@@ -425,6 +433,8 @@ L<Paws::Lambda>
 L<Paws::LexModels>
 
 L<Paws::LexRuntime>
+
+L<Paws::LicenseManager>
 
 L<Paws::Lightsail>
 

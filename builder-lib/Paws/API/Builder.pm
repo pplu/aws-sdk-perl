@@ -244,6 +244,10 @@ package Paws::API::Builder {
     return 'SimulateAllPrincipalPolicies' if ($name eq 'SimulatePrincipalPolicy');
     return 'PollForAllDecisionTasks' if ($name eq 'PollForDecisionTask');
     return 'PreviewAllAgents' if ($name eq 'PreviewAgents');
+    return 'AdminListAllGroupsForUser' if ($name eq 'AdminListGroupsForUser');
+    return 'AdminListAllUserAuthEvents' if ($name eq 'AdminListUserAuthEvents');
+    return 'ViewAllBilling' if ($name eq 'ViewBilling');
+    return 'ScanAllProvisionedProducts' if ($name eq 'ScanProvisionedProducts');
 
     die "Please help me generate a good name for the paginator $name";
   }
