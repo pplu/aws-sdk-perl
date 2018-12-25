@@ -129,6 +129,75 @@ package Paws::Snowball;
 
     return undef
   }
+  sub ListAllClusterJobs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListClusterJobs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListClusterJobs(@_, NextToken => $next_result->NextToken);
+        push @{ $result->JobListEntries }, @{ $next_result->JobListEntries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'JobListEntries') foreach (@{ $result->JobListEntries });
+        $result = $self->ListClusterJobs(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'JobListEntries') foreach (@{ $result->JobListEntries });
+    }
+
+    return undef
+  }
+  sub ListAllClusters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListClusters(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListClusters(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ClusterListEntries }, @{ $next_result->ClusterListEntries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ClusterListEntries') foreach (@{ $result->ClusterListEntries });
+        $result = $self->ListClusters(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ClusterListEntries') foreach (@{ $result->ClusterListEntries });
+    }
+
+    return undef
+  }
+  sub ListAllCompatibleImages {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListCompatibleImages(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListCompatibleImages(@_, NextToken => $next_result->NextToken);
+        push @{ $result->CompatibleImages }, @{ $next_result->CompatibleImages };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'CompatibleImages') foreach (@{ $result->CompatibleImages });
+        $result = $self->ListCompatibleImages(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'CompatibleImages') foreach (@{ $result->CompatibleImages });
+    }
+
+    return undef
+  }
   sub ListAllJobs {
     my $self = shift;
 
@@ -657,6 +726,42 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Addresses, passing the object as the first parameter, and the string 'Addresses' as the second parameter 
 
 If not, it will return a a L<Paws::Snowball::DescribeAddressesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllClusterJobs(sub { },ClusterId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllClusterJobs(ClusterId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - JobListEntries, passing the object as the first parameter, and the string 'JobListEntries' as the second parameter 
+
+If not, it will return a a L<Paws::Snowball::ListClusterJobsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllClusters(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllClusters([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ClusterListEntries, passing the object as the first parameter, and the string 'ClusterListEntries' as the second parameter 
+
+If not, it will return a a L<Paws::Snowball::ListClustersResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllCompatibleImages(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllCompatibleImages([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - CompatibleImages, passing the object as the first parameter, and the string 'CompatibleImages' as the second parameter 
+
+If not, it will return a a L<Paws::Snowball::ListCompatibleImagesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllJobs(sub { },[MaxResults => Int, NextToken => Str])
