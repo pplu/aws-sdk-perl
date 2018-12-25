@@ -6,6 +6,7 @@ package Paws::Firehose::ExtendedS3DestinationUpdate;
   has CompressionFormat => (is => 'ro', isa => 'Str');
   has DataFormatConversionConfiguration => (is => 'ro', isa => 'Paws::Firehose::DataFormatConversionConfiguration');
   has EncryptionConfiguration => (is => 'ro', isa => 'Paws::Firehose::EncryptionConfiguration');
+  has ErrorOutputPrefix => (is => 'ro', isa => 'Str');
   has Prefix => (is => 'ro', isa => 'Str');
   has ProcessingConfiguration => (is => 'ro', isa => 'Paws::Firehose::ProcessingConfiguration');
   has RoleARN => (is => 'ro', isa => 'Str');
@@ -80,6 +81,13 @@ S3.
 
   The encryption configuration. If no value is specified, the default is
 no encryption.
+
+
+=head2 ErrorOutputPrefix => Str
+
+  A prefix that Kinesis Data Firehose evaluates and adds to failed
+records before writing them to S3. This prefix appears immediately
+following the bucket name.
 
 
 =head2 Prefix => Str

@@ -42,7 +42,7 @@ Data Firehose delivery stream.
 =head2 DeliveryStartTimestamp => Str
 
   Kinesis Data Firehose starts retrieving records from the Kinesis data
-stream starting with this time stamp.
+stream starting with this timestamp.
 
 
 =head2 KinesisStreamARN => Str

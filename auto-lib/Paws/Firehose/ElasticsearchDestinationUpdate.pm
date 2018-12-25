@@ -48,7 +48,7 @@ Describes an update for a destination in Amazon ES.
 =head2 BufferingHints => L<Paws::Firehose::ElasticsearchBufferingHints>
 
   The buffering options. If no value is specified,
-B<ElasticsearchBufferingHints> object default values are used.
+C<ElasticsearchBufferingHints> object default values are used.
 
 
 =head2 CloudWatchLoggingOptions => L<Paws::Firehose::CloudWatchLoggingOptions>
@@ -61,7 +61,7 @@ B<ElasticsearchBufferingHints> object default values are used.
   The ARN of the Amazon ES domain. The IAM role must have permissions for
 C<DescribeElasticsearchDomain>, C<DescribeElasticsearchDomains>, and
 C<DescribeElasticsearchDomainConfig> after assuming the IAM role
-specified in B<RoleARN>. For more information, see Amazon Resource
+specified in C<RoleARN>. For more information, see Amazon Resource
 Names (ARNs) and AWS Service Namespaces
 (https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 
@@ -73,8 +73,8 @@ Names (ARNs) and AWS Service Namespaces
 
 =head2 IndexRotationPeriod => Str
 
-  The Elasticsearch index rotation period. Index rotation appends a time
-stamp to C<IndexName> to facilitate the expiration of old data. For
+  The Elasticsearch index rotation period. Index rotation appends a
+timestamp to C<IndexName> to facilitate the expiration of old data. For
 more information, see Index Rotation for the Amazon ES Destination
 (http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#es-index-rotation).
 Default value is C<OneDay>.

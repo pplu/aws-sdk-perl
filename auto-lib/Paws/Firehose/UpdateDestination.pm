@@ -96,7 +96,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             NoEncryptionConfig =>
               'NoEncryption',    # values: NoEncryption; OPTIONAL
           },    # OPTIONAL
-          Prefix  => 'MyPrefix',     # OPTIONAL
+          ErrorOutputPrefix => 'MyErrorOutputPrefix',    # OPTIONAL
+          Prefix            => 'MyPrefix',               # OPTIONAL
           RoleARN => 'MyRoleARN',    # min: 1, max: 512; OPTIONAL
         },    # OPTIONAL
         TypeName => 'MyElasticsearchTypeName',    # min: 1, max: 100; OPTIONAL
@@ -124,8 +125,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               OpenXJsonSerDe => {
                 CaseInsensitive         => 1,    # OPTIONAL
                 ColumnToJsonKeyMappings => {
-                  'MyNonEmptyStringWithoutWhitespace' => 'MyNonEmptyString',
-                },                               # OPTIONAL
+                  'MyNonEmptyStringWithoutWhitespace' =>
+                    'MyNonEmptyString',          # key: OPTIONAL
+                },    # OPTIONAL
                 ConvertDotsInJsonKeysToUnderscores => 1,    # OPTIONAL
               },    # OPTIONAL
             },    # OPTIONAL
@@ -133,10 +135,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           OutputFormatConfiguration => {
             Serializer => {
               OrcSerDe => {
-                BlockSizeBytes => 1,    # min: 67108864; OPTIONAL
-                BloomFilterColumns =>
-                  [ 'MyNonEmptyStringWithoutWhitespace', ... ],    # OPTIONAL
-                BloomFilterFalsePositiveProbability => 1,    # max: 1; OPTIONAL
+                BlockSizeBytes     => 1,    # min: 67108864; OPTIONAL
+                BloomFilterColumns => [
+                  'MyNonEmptyStringWithoutWhitespace', ...    # OPTIONAL
+                ],                                            # OPTIONAL
+                BloomFilterFalsePositiveProbability => 1,     # max: 1; OPTIONAL
                 Compression => 'NONE',    # values: NONE, ZLIB, SNAPPY; OPTIONAL
                 DictionaryKeyThreshold => 1,    # max: 1; OPTIONAL
                 EnablePadding          => 1,    # OPTIONAL
@@ -157,12 +160,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },    # OPTIONAL
           },    # OPTIONAL
           SchemaConfiguration => {
-            CatalogId    => 'MyNonEmptyStringWithoutWhitespace',
-            DatabaseName => 'MyNonEmptyStringWithoutWhitespace',
-            Region       => 'MyNonEmptyStringWithoutWhitespace',
-            RoleARN      => 'MyNonEmptyStringWithoutWhitespace',
-            TableName    => 'MyNonEmptyStringWithoutWhitespace',
-            VersionId    => 'MyNonEmptyStringWithoutWhitespace',
+            CatalogId    => 'MyNonEmptyStringWithoutWhitespace',    # OPTIONAL
+            DatabaseName => 'MyNonEmptyStringWithoutWhitespace',    # OPTIONAL
+            Region       => 'MyNonEmptyStringWithoutWhitespace',    # OPTIONAL
+            RoleARN      => 'MyNonEmptyStringWithoutWhitespace',    # OPTIONAL
+            TableName    => 'MyNonEmptyStringWithoutWhitespace',    # OPTIONAL
+            VersionId    => 'MyNonEmptyStringWithoutWhitespace',    # OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
         EncryptionConfiguration => {
@@ -172,12 +175,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           NoEncryptionConfig => 'NoEncryption', # values: NoEncryption; OPTIONAL
         },    # OPTIONAL
-        Prefix                  => 'MyPrefix',    # OPTIONAL
+        ErrorOutputPrefix       => 'MyErrorOutputPrefix',    # OPTIONAL
+        Prefix                  => 'MyPrefix',               # OPTIONAL
         ProcessingConfiguration => {
-          Enabled    => 1,                        # OPTIONAL
+          Enabled    => 1,                                   # OPTIONAL
           Processors => [
             {
-              Type       => 'Lambda',             # values: Lambda
+              Type       => 'Lambda',                        # values: Lambda
               Parameters => [
                 {
                   ParameterName => 'LambdaArn'
@@ -215,7 +219,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             NoEncryptionConfig =>
               'NoEncryption',    # values: NoEncryption; OPTIONAL
           },    # OPTIONAL
-          Prefix  => 'MyPrefix',     # OPTIONAL
+          ErrorOutputPrefix => 'MyErrorOutputPrefix',    # OPTIONAL
+          Prefix            => 'MyPrefix',               # OPTIONAL
           RoleARN => 'MyRoleARN',    # min: 1, max: 512; OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
@@ -277,7 +282,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             NoEncryptionConfig =>
               'NoEncryption',    # values: NoEncryption; OPTIONAL
           },    # OPTIONAL
-          Prefix  => 'MyPrefix',     # OPTIONAL
+          ErrorOutputPrefix => 'MyErrorOutputPrefix',    # OPTIONAL
+          Prefix            => 'MyPrefix',               # OPTIONAL
           RoleARN => 'MyRoleARN',    # min: 1, max: 512; OPTIONAL
         },    # OPTIONAL
         S3Update => {
@@ -301,7 +307,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             NoEncryptionConfig =>
               'NoEncryption',    # values: NoEncryption; OPTIONAL
           },    # OPTIONAL
-          Prefix  => 'MyPrefix',     # OPTIONAL
+          ErrorOutputPrefix => 'MyErrorOutputPrefix',    # OPTIONAL
+          Prefix            => 'MyPrefix',               # OPTIONAL
           RoleARN => 'MyRoleARN',    # min: 1, max: 512; OPTIONAL
         },    # OPTIONAL
         Username => 'MyUsername',    # min: 1; OPTIONAL
@@ -326,8 +333,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           NoEncryptionConfig => 'NoEncryption', # values: NoEncryption; OPTIONAL
         },    # OPTIONAL
-        Prefix  => 'MyPrefix',     # OPTIONAL
-        RoleARN => 'MyRoleARN',    # min: 1, max: 512; OPTIONAL
+        ErrorOutputPrefix => 'MyErrorOutputPrefix', # OPTIONAL
+        Prefix            => 'MyPrefix',            # OPTIONAL
+        RoleARN           => 'MyRoleARN',           # min: 1, max: 512; OPTIONAL
       },    # OPTIONAL
       SplunkDestinationUpdate => {
         CloudWatchLoggingOptions => {
@@ -384,7 +392,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             NoEncryptionConfig =>
               'NoEncryption',    # values: NoEncryption; OPTIONAL
           },    # OPTIONAL
-          Prefix  => 'MyPrefix',     # OPTIONAL
+          ErrorOutputPrefix => 'MyErrorOutputPrefix',    # OPTIONAL
+          Prefix            => 'MyPrefix',               # OPTIONAL
           RoleARN => 'MyRoleARN',    # min: 1, max: 512; OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
@@ -398,7 +407,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/fir
 
 =head2 B<REQUIRED> CurrentDeliveryStreamVersionId => Str
 
-Obtain this value from the B<VersionId> result of
+Obtain this value from the C<VersionId> result of
 DeliveryStreamDescription. This value is required, and helps the
 service perform conditional operations. For example, if there is an
 interleaving update and this value is null, then the update destination
