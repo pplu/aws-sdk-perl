@@ -4,6 +4,7 @@ package Paws::Quicksight::RegisterUserResponse;
   has RequestId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Int');
   has User => (is => 'ro', isa => 'Paws::Quicksight::User');
+  has UserInvitationUrl => (is => 'ro', isa => 'Str');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -30,6 +31,13 @@ The http status of the request.
 =head2 User => L<Paws::Quicksight::User>
 
 The user name.
+
+
+=head2 UserInvitationUrl => Str
+
+The URL the user visits to complete registration and provide a
+password. This is returned only for users with an identity type of
+C<QUICKSIGHT>.
 
 
 =head2 _request_id => Str

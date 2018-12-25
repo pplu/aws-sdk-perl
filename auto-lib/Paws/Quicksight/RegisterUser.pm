@@ -47,9 +47,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $RequestId = $RegisterUserResponse->RequestId;
-    my $Status    = $RegisterUserResponse->Status;
-    my $User      = $RegisterUserResponse->User;
+    my $RequestId         = $RegisterUserResponse->RequestId;
+    my $Status            = $RegisterUserResponse->Status;
+    my $User              = $RegisterUserResponse->User;
+    my $UserInvitationUrl = $RegisterUserResponse->UserInvitationUrl;
 
     # Returns a L<Paws::Quicksight::RegisterUserResponse> object.
 

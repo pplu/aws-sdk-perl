@@ -69,7 +69,7 @@ The ID for the dashboard, also added to IAM policy
 
 =head2 B<REQUIRED> IdentityType => Str
 
-The authentication method the user uses to sign in (IAM or QUICKSIGHT).
+The authentication method the user uses to sign in (IAM only).
 
 Valid values are: C<"IAM">, C<"QUICKSIGHT">
 
