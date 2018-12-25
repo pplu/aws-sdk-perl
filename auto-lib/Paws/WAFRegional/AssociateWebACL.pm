@@ -42,7 +42,25 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/waf
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-The ARN (Amazon Resource Name) of the resource to be protected.
+The ARN (Amazon Resource Name) of the resource to be protected, either
+an application load balancer or Amazon API Gateway stage.
+
+The ARN should be in one of the following formats:
+
+=over
+
+=item *
+
+For an Application Load Balancer:
+C<arn:aws:elasticloadbalancing:I<region>:I<account-id>:loadbalancer/app/I<load-balancer-name>/I<load-balancer-id>>
+
+=item *
+
+For an Amazon API Gateway stage:
+C<arn:aws:apigateway:I<region>::/restapis/I<api-id>/stages/I<stage-name>>
+
+=back
+
 
 
 

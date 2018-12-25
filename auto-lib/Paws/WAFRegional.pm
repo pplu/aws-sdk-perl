@@ -464,7 +464,8 @@ Each argument is described in detail in: L<Paws::WAFRegional::AssociateWebACL>
 
 Returns: a L<Paws::WAFRegional::AssociateWebACLResponse> instance
 
-Associates a web ACL with a resource.
+Associates a web ACL with a resource, either an application load
+balancer or Amazon API Gateway stage.
 
 
 =head2 CreateByteMatchSet
@@ -587,13 +588,13 @@ Each argument is described in detail in: L<Paws::WAFRegional::CreateIPSet>
 
 Returns: a L<Paws::WAFRegional::CreateIPSetResponse> instance
 
-Creates an IPSet, which you use to specify which web requests you want
-to allow or block based on the IP addresses that the requests originate
-from. For example, if you're receiving a lot of requests from one or
-more individual IP addresses or one or more ranges of IP addresses and
-you want to block the requests, you can create an C<IPSet> that
-contains those IP addresses and then configure AWS WAF to block the
-requests.
+Creates an IPSet, which you use to specify which web requests that you
+want to allow or block based on the IP addresses that the requests
+originate from. For example, if you're receiving a lot of requests from
+one or more individual IP addresses or one or more ranges of IP
+addresses and you want to block the requests, you can create an
+C<IPSet> that contains those IP addresses and then configure AWS WAF to
+block the requests.
 
 To create and configure an C<IPSet>, perform the following steps:
 
@@ -877,7 +878,7 @@ Creates a C<Rule>, which contains the C<IPSet> objects, C<ByteMatchSet>
 objects, and other predicates that identify the requests that you want
 to block. If you add more than one predicate to a C<Rule>, a request
 must match all of the specifications to be allowed or blocked. For
-example, suppose you add the following to a C<Rule>:
+example, suppose that you add the following to a C<Rule>:
 
 =over
 
@@ -1762,7 +1763,8 @@ Each argument is described in detail in: L<Paws::WAFRegional::DisassociateWebACL
 
 Returns: a L<Paws::WAFRegional::DisassociateWebACLResponse> instance
 
-Removes a web ACL from the specified resource.
+Removes a web ACL from the specified resource, either an application
+load balancer or Amazon API Gateway stage.
 
 
 =head2 GetByteMatchSet
@@ -2112,7 +2114,8 @@ Each argument is described in detail in: L<Paws::WAFRegional::GetWebACLForResour
 
 Returns: a L<Paws::WAFRegional::GetWebACLForResourceResponse> instance
 
-Returns the web ACL for the specified resource.
+Returns the web ACL for the specified resource, either an application
+load balancer or Amazon API Gateway stage.
 
 
 =head2 GetXssMatchSet
@@ -3051,7 +3054,7 @@ object identifies a predicate, such as a ByteMatchSet or an IPSet, that
 specifies the web requests that you want to allow, block, or count. If
 you add more than one predicate to a C<Rule>, a request must match all
 of the specifications to be allowed, blocked, or counted. For example,
-suppose you add the following to a C<Rule>:
+suppose that you add the following to a C<Rule>:
 
 =over
 
@@ -3303,9 +3306,9 @@ You can only specify a single type of TextTransformation.
 =back
 
 You use C<SqlInjectionMatchSet> objects to specify which CloudFront
-requests you want to allow, block, or count. For example, if you're
-receiving requests that contain snippets of SQL code in the query
-string and you want to block the requests, you can create a
+requests that you want to allow, block, or count. For example, if
+you're receiving requests that contain snippets of SQL code in the
+query string and you want to block the requests, you can create a
 C<SqlInjectionMatchSet> with the applicable settings, and then
 configure AWS WAF to block the requests.
 
@@ -3368,9 +3371,9 @@ in any of the C<Rules> in a C<WebACL>.
 
 =item *
 
-The C<Rules> that you want to add and/or delete. If you want to replace
-one C<Rule> with another, you delete the existing C<Rule> and add the
-new one.
+The C<Rules> that you want to add or delete. If you want to replace one
+C<Rule> with another, you delete the existing C<Rule> and add the new
+one.
 
 =item *
 
@@ -3383,7 +3386,7 @@ The order in which you want AWS WAF to evaluate the C<Rules> in a
 C<WebACL>. If you add more than one C<Rule> to a C<WebACL>, AWS WAF
 evaluates each request against the C<Rules> in order based on the value
 of C<Priority>. (The C<Rule> that has the lowest value for C<Priority>
-is evaluated first.) When a web request matches all of the predicates
+is evaluated first.) When a web request matches all the predicates
 (such as C<ByteMatchSets> and C<IPSets>) in a C<Rule>, AWS WAF
 immediately takes the corresponding action, allow or block, and doesn't
 evaluate the request against the remaining C<Rules> in the C<WebACL>,
@@ -3422,6 +3425,16 @@ Submit an C<UpdateWebACL> request to specify the C<Rules> that you want
 to include in the C<WebACL>, to specify the default action, and to
 associate the C<WebACL> with a CloudFront distribution.
 
+The C<ActivatedRule> can be a rule group. If you specify a rule group
+as your C<ActivatedRule>, you can exclude specific rules from that rule
+group.
+
+If you already have a rule group associated with a web ACL and want to
+submit an C<UpdateWebACL> request to exclude certain rules from that
+rule group, you must first remove the rule group from the web ACL, the
+re-insert it again, specifying the excluded rules. For details, see
+ActivatedRule$ExcludedRules.
+
 =back
 
 Be aware that if you try to add a RATE_BASED rule to a web ACL without
@@ -3459,8 +3472,8 @@ For each C<XssMatchTuple> object, you specify the following values:
 =item *
 
 C<Action>: Whether to insert the object into or delete the object from
-the array. To change a C<XssMatchTuple>, you delete the existing object
-and add a new one.
+the array. To change an C<XssMatchTuple>, you delete the existing
+object and add a new one.
 
 =item *
 
@@ -3478,12 +3491,12 @@ You can only specify a single type of TextTransformation.
 
 =back
 
-You use C<XssMatchSet> objects to specify which CloudFront requests you
-want to allow, block, or count. For example, if you're receiving
-requests that contain cross-site scripting attacks in the request body
-and you want to block the requests, you can create an C<XssMatchSet>
-with the applicable settings, and then configure AWS WAF to block the
-requests.
+You use C<XssMatchSet> objects to specify which CloudFront requests
+that you want to allow, block, or count. For example, if you're
+receiving requests that contain cross-site scripting attacks in the
+request body and you want to block the requests, you can create an
+C<XssMatchSet> with the applicable settings, and then configure AWS WAF
+to block the requests.
 
 To create and configure an C<XssMatchSet>, perform the following steps:
 

@@ -46,7 +46,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/waf
 
 =head2 ResourceType => Str
 
-The type of resource to list, either and application load balancer or
+The type of resource to list, either an application load balancer or
 Amazon API Gateway.
 
 Valid values are: C<"APPLICATION_LOAD_BALANCER">, C<"API_GATEWAY">

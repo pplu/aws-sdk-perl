@@ -179,7 +179,7 @@ the value before you base64-encode it is 50 bytes.
 For example, suppose the value of C<Type> is C<HEADER> and the value of
 C<Data> is C<User-Agent>. If you want to search the C<User-Agent>
 header for the value C<BadBot>, you base64-encode C<BadBot> using MIME
-base64 encoding and include the resulting value, C<QmFkQm90>, in the
+base64-encoding and include the resulting value, C<QmFkQm90>, in the
 value of C<TargetString>.
 
 B<If you're using the AWS CLI or one of the AWS SDKs>

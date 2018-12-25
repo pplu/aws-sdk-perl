@@ -99,8 +99,8 @@ WebACLUpdate: Contains C<Action> and C<ActivatedRule>
 
 ActivatedRule: Contains C<Action>, C<OverrideAction>, C<Priority>,
 C<RuleId>, and C<Type>. C<ActivatedRule|OverrideAction> applies only
-when updating or adding a C<RuleGroup> to a C<WebACL>. In this case you
-do not use C<ActivatedRule|Action>. For all other update requests,
+when updating or adding a C<RuleGroup> to a C<WebACL>. In this case,
+you do not use C<ActivatedRule|Action>. For all other update requests,
 C<ActivatedRule|Action> is used instead of
 C<ActivatedRule|OverrideAction>.
 
