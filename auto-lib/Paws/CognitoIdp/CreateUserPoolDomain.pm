@@ -54,9 +54,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cog
 The configuration for a custom domain that hosts the sign-up and
 sign-in webpages for your application.
 
-Provide this parameter only if you want to use own custom domain for
-your user pool. Otherwise, you can exclude this parameter and use the
-Amazon Cognito hosted domain instead.
+Provide this parameter only if you want to use a custom domain for your
+user pool. Otherwise, you can exclude this parameter and use the Amazon
+Cognito hosted domain instead.
 
 For more information about the hosted domain and custom domains, see
 Configuring a User Pool Domain
