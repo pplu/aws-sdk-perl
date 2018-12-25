@@ -42,9 +42,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Transcribe:
 =head1 DESCRIPTION
 
 Describes an asynchronous transcription job that was created with the
-C<StartTranscriptionJob> operation. Note that en-AU, en-UK, and fr-CA
-languages are in preview and are only available to whitelisted
-customers.
+C<StartTranscriptionJob> operation.
 
 =head1 ATTRIBUTES
 

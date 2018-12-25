@@ -116,10 +116,7 @@ Each argument is described in detail in: L<Paws::Transcribe::CreateVocabulary>
 Returns: a L<Paws::Transcribe::CreateVocabularyResponse> instance
 
 Creates a new custom vocabulary that you can use to change the way
-Amazon Transcribe handles transcription of an audio file. Note that
-vocabularies for en-AU, en-UK, and fr-CA languages that are in preview
-are not available. In the console, the vocabulary section will be
-greyed-out and SDK will return error message.
+Amazon Transcribe handles transcription of an audio file.
 
 
 =head2 DeleteTranscriptionJob
@@ -187,10 +184,7 @@ Each argument is described in detail in: L<Paws::Transcribe::GetVocabulary>
 
 Returns: a L<Paws::Transcribe::GetVocabularyResponse> instance
 
-Gets information about a vocabulary. Note that vocabularies for en-AU,
-en-UK, and fr-CA languages that are in preview are not available. In
-the console, the vocabulary section will be greyed-out and SDK will
-return error message.
+Gets information about a vocabulary.
 
 
 =head2 ListTranscriptionJobs
@@ -263,9 +257,7 @@ Each argument is described in detail in: L<Paws::Transcribe::StartTranscriptionJ
 
 Returns: a L<Paws::Transcribe::StartTranscriptionJobResponse> instance
 
-Starts an asynchronous job to transcribe speech to text. Note that
-en-AU, en-UK, and fr-CA languages are in preview and are only available
-to whitelisted customers.
+Starts an asynchronous job to transcribe speech to text.
 
 
 =head2 UpdateVocabulary
@@ -287,10 +279,7 @@ Returns: a L<Paws::Transcribe::UpdateVocabularyResponse> instance
 
 Updates an existing vocabulary with new values. The C<UpdateVocabulary>
 operation overwrites all of the existing information with the values
-that you provide in the request. Note that vocabularies for en-AU,
-en-UK, and fr-CA languages that are in preview are not available. In
-the console, the vocabulary section will be greyed-out and SDK will
-return error message.
+that you provide in the request.
 
 
 
