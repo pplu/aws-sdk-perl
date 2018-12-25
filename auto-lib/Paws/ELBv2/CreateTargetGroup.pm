@@ -105,7 +105,7 @@ targets. The TCP protocol is supported only if the protocol of the
 target group is TCP. For Application Load Balancers, the default is
 HTTP. For Network Load Balancers, the default is TCP.
 
-Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">, C<"UDP">
+Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">
 
 =head2 HealthCheckTimeoutSeconds => Int
 
@@ -159,7 +159,7 @@ Load Balancers, the supported protocols are HTTP and HTTPS. For Network
 Load Balancers, the supported protocol is TCP. If the target is a
 Lambda function, this parameter does not apply.
 
-Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">, C<"UDP">
+Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">
 
 =head2 TargetType => Str
 

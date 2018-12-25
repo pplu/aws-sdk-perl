@@ -133,7 +133,7 @@ The protocol for connections from clients to the load balancer.
 Application Load Balancers support HTTP and HTTPS and Network Load
 Balancers support TCP.
 
-Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">, C<"UDP">
+Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">
 
 =head2 SslPolicy => Str
 

@@ -152,7 +152,7 @@ The protocol for connections from clients to the load balancer. For
 Application Load Balancers, the supported protocols are HTTP and HTTPS.
 For Network Load Balancers, the supported protocol is TCP.
 
-Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">, C<"UDP">
+Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">
 
 =head2 SslPolicy => Str
 

@@ -94,11 +94,6 @@ package Paws::ELBv2;
     my $call_object = $self->new_with_coercions('Paws::ELBv2::DescribeLoadBalancers', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub DescribeProvisionedCapacity {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ELBv2::DescribeProvisionedCapacity', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
   sub DescribeRules {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ELBv2::DescribeRules', @_);
@@ -137,11 +132,6 @@ package Paws::ELBv2;
   sub ModifyLoadBalancerAttributes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ELBv2::ModifyLoadBalancerAttributes', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ModifyProvisionedCapacity {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ELBv2::ModifyProvisionedCapacity', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ModifyRule {
@@ -195,6 +185,52 @@ package Paws::ELBv2;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllAccountLimits {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeAccountLimits(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextMarker) {
+        $next_result = $self->DescribeAccountLimits(@_, Marker => $next_result->NextMarker);
+        push @{ $result->Limits }, @{ $next_result->Limits };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $callback->($_ => 'Limits') foreach (@{ $result->Limits });
+        $result = $self->DescribeAccountLimits(@_, Marker => $result->NextMarker);
+      }
+      $callback->($_ => 'Limits') foreach (@{ $result->Limits });
+    }
+
+    return undef
+  }
+  sub DescribeAllListenerCertificates {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeListenerCertificates(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextMarker) {
+        $next_result = $self->DescribeListenerCertificates(@_, Marker => $next_result->NextMarker);
+        push @{ $result->Certificates }, @{ $next_result->Certificates };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $callback->($_ => 'Certificates') foreach (@{ $result->Certificates });
+        $result = $self->DescribeListenerCertificates(@_, Marker => $result->NextMarker);
+      }
+      $callback->($_ => 'Certificates') foreach (@{ $result->Certificates });
+    }
+
+    return undef
+  }
   sub DescribeAllListeners {
     my $self = shift;
 
@@ -241,6 +277,52 @@ package Paws::ELBv2;
 
     return undef
   }
+  sub DescribeAllRules {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeRules(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextMarker) {
+        $next_result = $self->DescribeRules(@_, Marker => $next_result->NextMarker);
+        push @{ $result->Rules }, @{ $next_result->Rules };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $callback->($_ => 'Rules') foreach (@{ $result->Rules });
+        $result = $self->DescribeRules(@_, Marker => $result->NextMarker);
+      }
+      $callback->($_ => 'Rules') foreach (@{ $result->Rules });
+    }
+
+    return undef
+  }
+  sub DescribeAllSSLPolicies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeSSLPolicies(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextMarker) {
+        $next_result = $self->DescribeSSLPolicies(@_, Marker => $next_result->NextMarker);
+        push @{ $result->SslPolicies }, @{ $next_result->SslPolicies };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $callback->($_ => 'SslPolicies') foreach (@{ $result->SslPolicies });
+        $result = $self->DescribeSSLPolicies(@_, Marker => $result->NextMarker);
+      }
+      $callback->($_ => 'SslPolicies') foreach (@{ $result->SslPolicies });
+    }
+
+    return undef
+  }
   sub DescribeAllTargetGroups {
     my $self = shift;
 
@@ -266,7 +348,7 @@ package Paws::ELBv2;
   }
 
 
-  sub operations { qw/AddListenerCertificates AddTags CreateListener CreateLoadBalancer CreateRule CreateTargetGroup DeleteListener DeleteLoadBalancer DeleteRule DeleteTargetGroup DeregisterTargets DescribeAccountLimits DescribeListenerCertificates DescribeListeners DescribeLoadBalancerAttributes DescribeLoadBalancers DescribeProvisionedCapacity DescribeRules DescribeSSLPolicies DescribeTags DescribeTargetGroupAttributes DescribeTargetGroups DescribeTargetHealth ModifyListener ModifyLoadBalancerAttributes ModifyProvisionedCapacity ModifyRule ModifyTargetGroup ModifyTargetGroupAttributes RegisterTargets RemoveListenerCertificates RemoveTags SetIpAddressType SetRulePriorities SetSecurityGroups SetSubnets / }
+  sub operations { qw/AddListenerCertificates AddTags CreateListener CreateLoadBalancer CreateRule CreateTargetGroup DeleteListener DeleteLoadBalancer DeleteRule DeleteTargetGroup DeregisterTargets DescribeAccountLimits DescribeListenerCertificates DescribeListeners DescribeLoadBalancerAttributes DescribeLoadBalancers DescribeRules DescribeSSLPolicies DescribeTags DescribeTargetGroupAttributes DescribeTargetGroups DescribeTargetHealth ModifyListener ModifyLoadBalancerAttributes ModifyRule ModifyTargetGroup ModifyTargetGroupAttributes RegisterTargets RemoveListenerCertificates RemoveTags SetIpAddressType SetRulePriorities SetSecurityGroups SetSubnets / }
 
 1;
 
@@ -845,22 +927,6 @@ To describe the attributes for a load balancer, use
 DescribeLoadBalancerAttributes.
 
 
-=head2 DescribeProvisionedCapacity
-
-=over
-
-=item LoadBalancerArn => Str
-
-
-=back
-
-Each argument is described in detail in: L<Paws::ELBv2::DescribeProvisionedCapacity>
-
-Returns: a L<Paws::ELBv2::DescribeProvisionedCapacityOutput> instance
-
-
-
-
 =head2 DescribeRules
 
 =over
@@ -1051,24 +1117,6 @@ Balancer or Network Load Balancer.
 If any of the specified attributes can't be modified as requested, the
 call fails. Any existing attributes that you do not modify retain their
 current values.
-
-
-=head2 ModifyProvisionedCapacity
-
-=over
-
-=item LoadBalancerArn => Str
-
-=item MinimumLBCapacityUnits => Int
-
-
-=back
-
-Each argument is described in detail in: L<Paws::ELBv2::ModifyProvisionedCapacity>
-
-Returns: a L<Paws::ELBv2::ModifyProvisionedCapacityOutput> instance
-
-
 
 
 =head2 ModifyRule
@@ -1323,6 +1371,30 @@ You can't change the subnets for a Network Load Balancer.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
+=head2 DescribeAllAccountLimits(sub { },[Marker => Str, PageSize => Int])
+
+=head2 DescribeAllAccountLimits([Marker => Str, PageSize => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Limits, passing the object as the first parameter, and the string 'Limits' as the second parameter 
+
+If not, it will return a a L<Paws::ELBv2::DescribeAccountLimitsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllListenerCertificates(sub { },ListenerArn => Str, [Marker => Str, PageSize => Int])
+
+=head2 DescribeAllListenerCertificates(ListenerArn => Str, [Marker => Str, PageSize => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Certificates, passing the object as the first parameter, and the string 'Certificates' as the second parameter 
+
+If not, it will return a a L<Paws::ELBv2::DescribeListenerCertificatesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllListeners(sub { },[ListenerArns => ArrayRef[Str|Undef], LoadBalancerArn => Str, Marker => Str, PageSize => Int])
 
 =head2 DescribeAllListeners([ListenerArns => ArrayRef[Str|Undef], LoadBalancerArn => Str, Marker => Str, PageSize => Int])
@@ -1345,6 +1417,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - LoadBalancers, passing the object as the first parameter, and the string 'LoadBalancers' as the second parameter 
 
 If not, it will return a a L<Paws::ELBv2::DescribeLoadBalancersOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllRules(sub { },[ListenerArn => Str, Marker => Str, PageSize => Int, RuleArns => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllRules([ListenerArn => Str, Marker => Str, PageSize => Int, RuleArns => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Rules, passing the object as the first parameter, and the string 'Rules' as the second parameter 
+
+If not, it will return a a L<Paws::ELBv2::DescribeRulesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllSSLPolicies(sub { },[Marker => Str, Names => ArrayRef[Str|Undef], PageSize => Int])
+
+=head2 DescribeAllSSLPolicies([Marker => Str, Names => ArrayRef[Str|Undef], PageSize => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SslPolicies, passing the object as the first parameter, and the string 'SslPolicies' as the second parameter 
+
+If not, it will return a a L<Paws::ELBv2::DescribeSSLPoliciesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DescribeAllTargetGroups(sub { },[LoadBalancerArn => Str, Marker => Str, Names => ArrayRef[Str|Undef], PageSize => Int, TargetGroupArns => ArrayRef[Str|Undef]])

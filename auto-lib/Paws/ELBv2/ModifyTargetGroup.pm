@@ -100,7 +100,7 @@ target group is TCP.
 If the protocol of the target group is TCP, you can't modify this
 setting.
 
-Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">, C<"UDP">
+Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">
 
 =head2 HealthCheckTimeoutSeconds => Int
 

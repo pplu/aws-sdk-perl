@@ -1,7 +1,6 @@
 package Paws::ELBv2::SubnetMapping;
   use Moose;
   has AllocationId => (is => 'ro', isa => 'Str');
-  has StaticIp => (is => 'ro', isa => 'Bool');
   has SubnetId => (is => 'ro', isa => 'Str');
 1;
 
@@ -41,11 +40,6 @@ Information about a subnet mapping.
 =head2 AllocationId => Str
 
   [Network Load Balancers] The allocation ID of the Elastic IP address.
-
-
-=head2 StaticIp => Bool
-
-  
 
 
 =head2 SubnetId => Str

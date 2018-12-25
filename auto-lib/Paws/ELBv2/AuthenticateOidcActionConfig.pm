@@ -3,14 +3,13 @@ package Paws::ELBv2::AuthenticateOidcActionConfig;
   has AuthenticationRequestExtraParams => (is => 'ro', isa => 'Paws::ELBv2::AuthenticateOidcActionAuthenticationRequestExtraParams');
   has AuthorizationEndpoint => (is => 'ro', isa => 'Str', required => 1);
   has ClientId => (is => 'ro', isa => 'Str', required => 1);
-  has ClientSecret => (is => 'ro', isa => 'Str');
+  has ClientSecret => (is => 'ro', isa => 'Str', required => 1);
   has Issuer => (is => 'ro', isa => 'Str', required => 1);
   has OnUnauthenticatedRequest => (is => 'ro', isa => 'Str');
   has Scope => (is => 'ro', isa => 'Str');
   has SessionCookieName => (is => 'ro', isa => 'Str');
   has SessionTimeout => (is => 'ro', isa => 'Int');
   has TokenEndpoint => (is => 'ro', isa => 'Str', required => 1);
-  has UseExistingClientSecret => (is => 'ro', isa => 'Bool');
   has UserInfoEndpoint => (is => 'ro', isa => 'Str', required => 1);
 1;
 
@@ -65,7 +64,7 @@ including the HTTPS protocol, the domain, and the path.
   The OAuth 2.0 client identifier.
 
 
-=head2 ClientSecret => Str
+=head2 B<REQUIRED> ClientSecret => Str
 
   The OAuth 2.0 client secret.
 
@@ -125,11 +124,6 @@ default is 604800 seconds (7 days).
 
   The token endpoint of the IdP. This must be a full URL, including the
 HTTPS protocol, the domain, and the path.
-
-
-=head2 UseExistingClientSecret => Bool
-
-  
 
 
 =head2 B<REQUIRED> UserInfoEndpoint => Str
