@@ -1,7 +1,7 @@
 
 package Paws::SNS::CheckIfPhoneNumberIsOptedOutResponse;
   use Moose;
-  has IsOptedOut => (is => 'ro', isa => 'Bool');
+  has IsOptedOut => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'isOptedOut');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
