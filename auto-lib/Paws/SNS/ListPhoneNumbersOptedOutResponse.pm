@@ -1,8 +1,8 @@
 
 package Paws::SNS::ListPhoneNumbersOptedOutResponse;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has PhoneNumbers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
+  has PhoneNumbers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'phoneNumbers', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
