@@ -1,0 +1,13 @@
+---
+content: |
+  <CheckIfPhoneNumberIsOptedOutResponse
+  	xmlns="http://sns.amazonaws.com/doc/2010-03-31/">
+  	<CheckIfPhoneNumberIsOptedOutResult>
+  		<isOptedOut>false</isOptedOut>
+  	</CheckIfPhoneNumberIsOptedOutResult>
+  	<ResponseMetadata>
+  		<RequestId>aad6a426-1470-541b-af1d-f0b9035a2eac</RequestId>
+  	</ResponseMetadata>
+  </CheckIfPhoneNumberIsOptedOutResponse>
+headers: []
+status: 200

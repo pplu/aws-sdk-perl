@@ -1,0 +1,7 @@
+---
+call: CheckIfPhoneNumberIsOptedOut
+service: SNS
+tests:
+  - expected: 0
+    op: ==
+    path: IsOptedOut
