@@ -33,8 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTAnalytic
 
 =head1 DESCRIPTION
 
-A "DatasetAction" object specifying the query that creates the data set
-content.
+A "DatasetAction" object that specifies how data set contents are
+automatically created.
 
 =head1 ATTRIBUTES
 
@@ -54,8 +54,8 @@ Docker container along with any needed support libraries.
 
 =head2 QueryAction => L<Paws::IoTAnalytics::SqlQueryDatasetAction>
 
-  An "SqlQueryDatasetAction" object that contains the SQL query to modify
-the message.
+  An "SqlQueryDatasetAction" object that uses an SQL query to
+automatically create data set contents.
 
 
 

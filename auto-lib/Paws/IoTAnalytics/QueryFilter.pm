@@ -40,14 +40,7 @@ according to the time frame in which it arrives.
 =head2 DeltaTime => L<Paws::IoTAnalytics::DeltaTime>
 
   Used to limit data to that which has arrived since the last execution
-of the action. When you create data set contents using message data
-from a specified time frame, some message data may still be "in flight"
-when processing begins, and so will not arrive in time to be processed.
-Use this field to make allowances for the "in flight" time of you
-message data, so that data not processed from a previous time frame
-will be included with the next time frame. Without this, missed message
-data would be excluded from processing during the next time frame as
-well, because its timestamp places it within the previous time frame.
+of the action.
 
 
 

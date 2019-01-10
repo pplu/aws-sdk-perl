@@ -32,19 +32,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTAnalytic
 
 =head1 DESCRIPTION
 
-This class has no description
+When data set contents are created they are delivered to destination
+specified here.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Destination => L<Paws::IoTAnalytics::DatasetContentDeliveryDestination>
 
-  
+  The destination to which data set contents are delivered.
 
 
 =head2 EntryName => Str
 
-  
+  The name of the data set content delivery rules entry.
 
 
 

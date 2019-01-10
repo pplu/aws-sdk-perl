@@ -31,14 +31,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTAnalytic
 
 =head1 DESCRIPTION
 
-This class has no description
+The destination to which data set contents are delivered.
 
 =head1 ATTRIBUTES
 
 
 =head2 IotEventsDestinationConfiguration => L<Paws::IoTAnalytics::IotEventsDestinationConfiguration>
 
-  
+  Configuration information for delivery of data set contents to AWS IoT
+Events.
 
 
 

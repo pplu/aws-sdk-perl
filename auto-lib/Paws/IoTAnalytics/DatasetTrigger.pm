@@ -40,8 +40,8 @@ updated.
 
 =head2 Dataset => L<Paws::IoTAnalytics::TriggeringDataset>
 
-  The data set whose content creation will trigger the creation of this
-data set's contents.
+  The data set whose content creation triggers the creation of this data
+set's contents.
 
 
 =head2 Schedule => L<Paws::IoTAnalytics::Schedule>

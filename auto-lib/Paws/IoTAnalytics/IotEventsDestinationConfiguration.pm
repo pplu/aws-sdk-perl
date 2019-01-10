@@ -32,19 +32,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTAnalytic
 
 =head1 DESCRIPTION
 
-This class has no description
+Configuration information for delivery of data set contents to AWS IoT
+Events.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> InputName => Str
 
-  
+  The name of the AWS IoT Events input to which data set contents are
+delivered.
 
 
 =head2 B<REQUIRED> RoleArn => Str
 
-  
+  The ARN of the role which grants AWS IoT Analytics permission to
+deliver data set contents to an AWS IoT Events input.
 
 
 

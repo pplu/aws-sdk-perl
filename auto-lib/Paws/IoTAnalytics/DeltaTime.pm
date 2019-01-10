@@ -32,14 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTAnalytic
 
 =head1 DESCRIPTION
 
-When you create data set contents using message data from a specified
-time frame, some message data may still be "in flight" when processing
-begins, and so will not arrive in time to be processed. Use this field
-to make allowances for the "in flight" time of your message data, so
-that data not processed from the previous time frame will be included
-with the next time frame. Without this, missed message data would be
-excluded from processing during the next time frame as well, because
-its timestamp places it within the previous time frame.
+Used to limit data to that which has arrived since the last execution
+of the action.
 
 =head1 ATTRIBUTES
 
@@ -47,7 +41,14 @@ its timestamp places it within the previous time frame.
 =head2 B<REQUIRED> OffsetSeconds => Int
 
   The number of seconds of estimated "in flight" lag time of message
-data.
+data. When you create data set contents using message data from a
+specified time frame, some message data may still be "in flight" when
+processing begins, and so will not arrive in time to be processed. Use
+this field to make allowances for the "in flight" time of your message
+data, so that data not processed from a previous time frame will be
+included with the next time frame. Without this, missed message data
+would be excluded from processing during the next time frame as well,
+because its timestamp places it within the previous time frame.
 
 
 =head2 B<REQUIRED> TimeExpression => Str
