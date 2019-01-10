@@ -56,32 +56,53 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/opsworks-cm/lat
 
 =head2 B<REQUIRED> ExportAttributeName => Str
 
-The name of the export attribute. Currently supported export attribute
-is "Userdata" which exports a userdata script filled out with
-parameters provided in the C<InputAttributes> list.
+The name of the export attribute. Currently, the supported export
+attribute is C<Userdata>. This exports a user data script that includes
+parameters and values provided in the C<InputAttributes> list.
 
 
 
 =head2 InputAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>]
 
-The list of engine attributes. The list type is C<EngineAttribute>.
-C<EngineAttribute> is a pair of attribute name and value. For
-C<ExportAttributeName> "Userdata", currently supported input attribute
-names are: - "RunList": For Chef, an ordered list of roles and/or
-recipes that are run in the exact order. For Puppet, this parameter is
-ignored. - "OrganizationName": For Chef, an organization name. AWS
-OpsWorks for Chef Server always creates the organization "default". For
-Puppet, this parameter is ignored. - "NodeEnvironment": For Chef, a
-node environment (eg. development, staging, onebox). For Puppet, this
-parameter is ignored. - "NodeClientVersion": For Chef, version of Chef
-Engine (3 numbers separated by dots, eg. "13.8.5"). If empty, it uses
-the latest one. For Puppet, this parameter is ignored.
+The list of engine attributes. The list type is C<EngineAttribute>. An
+C<EngineAttribute> list item is a pair that includes an attribute name
+and its value. For the C<Userdata> ExportAttributeName, the following
+are supported engine attribute names.
+
+=over
+
+=item *
+
+B<RunList> In Chef, a list of roles or recipes that are run in the
+specified order. In Puppet, this parameter is ignored.
+
+=item *
+
+B<OrganizationName> In Chef, an organization name. AWS OpsWorks for
+Chef Automate always creates the organization C<default>. In Puppet,
+this parameter is ignored.
+
+=item *
+
+B<NodeEnvironment> In Chef, a node environment (for example,
+development, staging, or one-box). In Puppet, this parameter is
+ignored.
+
+=item *
+
+B<NodeClientVersion> In Chef, the version of the Chef engine (three
+numbers separated by dots, such as 13.8.5). If this attribute is empty,
+OpsWorks for Chef Automate uses the most current version. In Puppet,
+this parameter is ignored.
+
+=back
+
 
 
 
 =head2 B<REQUIRED> ServerName => Str
 
-The name of the Server to which the attribute is being exported from
+The name of the server from which you are exporting the attribute.
 
 
 
