@@ -1,12 +1,12 @@
 package Paws::AppMesh::HealthCheckPolicy;
   use Moose;
-  has HealthyThreshold => (is => 'ro', isa => 'Int', request_name => 'healthyThreshold', traits => ['NameInRequest']);
-  has IntervalMillis => (is => 'ro', isa => 'Int', request_name => 'intervalMillis', traits => ['NameInRequest']);
+  has HealthyThreshold => (is => 'ro', isa => 'Int', request_name => 'healthyThreshold', traits => ['NameInRequest'], required => 1);
+  has IntervalMillis => (is => 'ro', isa => 'Int', request_name => 'intervalMillis', traits => ['NameInRequest'], required => 1);
   has Path => (is => 'ro', isa => 'Str', request_name => 'path', traits => ['NameInRequest']);
   has Port => (is => 'ro', isa => 'Int', request_name => 'port', traits => ['NameInRequest']);
-  has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest']);
-  has TimeoutMillis => (is => 'ro', isa => 'Int', request_name => 'timeoutMillis', traits => ['NameInRequest']);
-  has UnhealthyThreshold => (is => 'ro', isa => 'Int', request_name => 'unhealthyThreshold', traits => ['NameInRequest']);
+  has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest'], required => 1);
+  has TimeoutMillis => (is => 'ro', isa => 'Int', request_name => 'timeoutMillis', traits => ['NameInRequest'], required => 1);
+  has UnhealthyThreshold => (is => 'ro', isa => 'Int', request_name => 'unhealthyThreshold', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -40,44 +40,45 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppMesh::He
 An object representing the health check policy for a virtual node's
 listener.
 
-Listener health checks are not available during the App Mesh preview.
-
 =head1 ATTRIBUTES
 
 
-=head2 HealthyThreshold => Int
+=head2 B<REQUIRED> HealthyThreshold => Int
 
   The number of consecutive successful health checks that must occur
 before declaring listener healthy.
 
 
-=head2 IntervalMillis => Int
+=head2 B<REQUIRED> IntervalMillis => Int
 
   The time period in milliseconds between each health check execution.
 
 
 =head2 Path => Str
 
-  The destination path for the health check request.
+  The destination path for the health check request. This is only
+required if the specified protocol is HTTP; if the protocol is TCP,
+then this parameter is ignored.
 
 
 =head2 Port => Int
 
-  The destination port for the health check request.
+  The destination port for the health check request. This port must match
+the port defined in the PortMapping for the listener.
 
 
-=head2 Protocol => Str
+=head2 B<REQUIRED> Protocol => Str
 
   The protocol for the health check request.
 
 
-=head2 TimeoutMillis => Int
+=head2 B<REQUIRED> TimeoutMillis => Int
 
   The amount of time to wait when receiving a response from the health
 check, in milliseconds.
 
 
-=head2 UnhealthyThreshold => Int
+=head2 B<REQUIRED> UnhealthyThreshold => Int
 
   The number of consecutive failed health checks that must occur before
 declaring a virtual node unhealthy.

@@ -41,8 +41,6 @@ An object representing a listener for a virtual node.
 
   The health check information for the listener.
 
-Listener health checks are not available during the App Mesh preview.
-
 
 =head2 PortMapping => L<Paws::AppMesh::PortMapping>
 

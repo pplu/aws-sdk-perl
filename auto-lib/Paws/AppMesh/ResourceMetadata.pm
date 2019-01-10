@@ -59,12 +59,12 @@ environment variable.
 
 =head2 CreatedAt => Str
 
-  The Unix epoch timestamp in seconds for when the cluster was created.
+  The Unix epoch timestamp in seconds for when the resource was created.
 
 
 =head2 LastUpdatedAt => Str
 
-  The Unix epoch timestamp in seconds for when the cluster was last
+  The Unix epoch timestamp in seconds for when the resource was last
 updated.
 
 
