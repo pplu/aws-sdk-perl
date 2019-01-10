@@ -135,7 +135,7 @@ and keep running on your cluster.
 Specifies whether to enable Amazon ECS managed tags for the tasks
 within the service. For more information, see Tagging Your Amazon ECS
 Resources
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/Using_Tags.html)
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 

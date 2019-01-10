@@ -79,7 +79,7 @@ cluster. You can specify up to 10 tasks per call.
 
 Specifies whether to enable Amazon ECS managed tags for the task. For
 more information, see Tagging Your Amazon ECS Resources
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/Using_Tags.html)
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
