@@ -35,10 +35,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 Represents a device filter used to select a set of devices to be
 included in a test run. This data structure is passed in as the
-"deviceSelectionConfiguration" parameter to ScheduleRun. For an example
-of the JSON request syntax, see ScheduleRun.
+C<deviceSelectionConfiguration> parameter to ScheduleRun. For an
+example of the JSON request syntax, see ScheduleRun.
 
-It is also passed in as the "filters" parameter to ListDevices. For an
+It is also passed in as the C<filters> parameter to ListDevices. For an
 example of the JSON request syntax, see ListDevices.
 
 =head1 ATTRIBUTES
@@ -87,11 +87,12 @@ MANUFACTURER: The device manufacturer. For example, "Apple".
 =item *
 
 REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access.
+Valid values are "TRUE" or "FALSE".
 
 =item *
 
 REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote
-debugging.
+debugging. Valid values are "TRUE" or "FALSE".
 
 =item *
 
@@ -150,8 +151,8 @@ B<Operator Values>
 
 =item *
 
-The IN and NOT operators can take a values array that has more than one
-element.
+The IN and NOT_IN operators can take a values array that has more than
+one element.
 
 =item *
 

@@ -78,8 +78,8 @@ Information about the settings for the run to be scheduled.
 
 The ARN of the device pool for the run to be scheduled.
 
-Either B< C<devicePoolArn> > or B< C<deviceSelectionConfiguration> >
-are required in a request.
+Either B< C<devicePoolArn> > or B< C<deviceSelectionConfiguration> > is
+required in a request.
 
 
 
@@ -89,8 +89,8 @@ The filter criteria used to dynamically select a set of devices for a
 test run, as well as the maximum number of devices to be included in
 the run.
 
-Either B< C<devicePoolArn> > or B< C<deviceSelectionConfiguration> >
-are required in a request.
+Either B< C<devicePoolArn> > or B< C<deviceSelectionConfiguration> > is
+required in a request.
 
 
 

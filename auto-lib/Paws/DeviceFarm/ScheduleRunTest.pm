@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 =head1 DESCRIPTION
 
 Represents test settings. This data structure is passed in as the
-"test" parameter to ScheduleRun. For an example of the JSON request
+C<test> parameter to ScheduleRun. For an example of the JSON request
 syntax, see ScheduleRun.
 
 =head1 ATTRIBUTES
@@ -85,14 +85,14 @@ For Appium tests (all types):
 =item *
 
 appium_version: The Appium version. Currently supported values are
-"1.7.2", "1.7.1", "1.6.5", "latest", and "default".
+"1.6.5" (and higher), "latest", and "default".
 
 =over
 
 =item *
 
 E<ldquo>latestE<rdquo> will run the latest Appium version supported by
-Device Farm (1.7.2).
+Device Farm (1.9.1).
 
 =item *
 
@@ -271,15 +271,31 @@ APPIUM_PYTHON: The Appium Python type.
 
 =item *
 
-APPIUM_WEB_JAVA_JUNIT: The Appium Java JUnit type for Web apps.
+APPIUM_NODE: The Appium Node.js type.
 
 =item *
 
-APPIUM_WEB_JAVA_TESTNG: The Appium Java TestNG type for Web apps.
+APPIUM_RUBY: The Appium Ruby type.
 
 =item *
 
-APPIUM_WEB_PYTHON: The Appium Python type for Web apps.
+APPIUM_WEB_JAVA_JUNIT: The Appium Java JUnit type for web apps.
+
+=item *
+
+APPIUM_WEB_JAVA_TESTNG: The Appium Java TestNG type for web apps.
+
+=item *
+
+APPIUM_WEB_PYTHON: The Appium Python type for web apps.
+
+=item *
+
+APPIUM_WEB_NODE: The Appium Node.js type for web apps.
+
+=item *
+
+APPIUM_WEB_RUBY: The Appium Ruby type for web apps.
 
 =item *
 

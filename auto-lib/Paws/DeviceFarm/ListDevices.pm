@@ -102,11 +102,12 @@ MANUFACTURER: The device manufacturer. For example, "Apple".
 =item *
 
 REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access.
+Valid values are "TRUE" or "FALSE".
 
 =item *
 
 REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote
-debugging.
+debugging. Valid values are "TRUE" or "FALSE".
 
 =item *
 
@@ -159,8 +160,8 @@ Values: An array of one or more filter values.
 
 =item *
 
-The IN and NOT operators can take a values array that has more than one
-element.
+The IN and NOT_IN operators take a values array that has one or more
+elements.
 
 =item *
 
