@@ -51,7 +51,7 @@ Specifies the number of member account IDs that you want AWS Firewall
 Manager to return for this request. If you have more IDs than the
 number that you specify for C<MaxResults>, the response includes a
 C<NextToken> value that you can use to get another batch of member
-account IDs. The maximum value for C<MaxResults> is 100.
+account IDs.
 
 
 
