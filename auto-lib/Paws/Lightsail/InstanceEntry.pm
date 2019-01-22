@@ -74,6 +74,10 @@ instance.
 
 NONE E<mdash> Default to Amazon EC2.
 
+=item *
+
+CLOSED E<mdash> All ports closed.
+
 =back
 
 

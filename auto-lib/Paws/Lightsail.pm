@@ -1283,9 +1283,11 @@ Dev Guide
 
 =over
 
-=item DiskName => Str
-
 =item DiskSnapshotName => Str
+
+=item [DiskName => Str]
+
+=item [InstanceName => Str]
 
 =item [Tags => ArrayRef[L<Paws::Lightsail::Tag>]]
 
@@ -1310,6 +1312,16 @@ writes to the disk, you should unmount the disk from within the
 Lightsail instance, issue the create disk snapshot command, and then
 remount the disk to ensure a consistent and complete snapshot. You may
 remount and use your disk while the snapshot status is pending.
+
+You can also use this operation to create a snapshot of an instance's
+system volume. You might want to do this, for example, to recover data
+from the system volume of a botched instance or to create a backup of
+the system volume like you would for a block storage disk. To create a
+snapshot of a system volume, just define the C<instance name> parameter
+when issuing the snapshot command, and a snapshot of the defined
+instance's system volume will be created. After the snapshot is
+available, you can create a block storage disk from the snapshot and
+attach it to a running instance to access the data on the disk.
 
 The C<create disk snapshot> operation supports tag-based access control
 via request tags. For more information, see the Lightsail Dev Guide
@@ -2026,7 +2038,7 @@ Each argument is described in detail in: L<Paws::Lightsail::ExportSnapshot>
 
 Returns: a L<Paws::Lightsail::ExportSnapshotResult> instance
 
-Exports a Amazon Lightsail instance or block storage disk snapshot to
+Exports an Amazon Lightsail instance or block storage disk snapshot to
 Amazon Elastic Compute Cloud (Amazon EC2). This operation results in an
 export snapshot record that can be used with the C<create cloud
 formation stack> operation to create new Amazon EC2 instances.
@@ -2988,10 +3000,7 @@ Each argument is described in detail in: L<Paws::Lightsail::RebootInstance>
 
 Returns: a L<Paws::Lightsail::RebootInstanceResult> instance
 
-Restarts a specific instance. When your Amazon Lightsail instance is
-finished rebooting, Lightsail assigns a new public IP address. To use
-the same IP address after restarting, create a static IP address and
-attach it to the instance.
+Restarts a specific instance.
 
 The C<reboot instance> operation supports tag-based access control via
 resource tags applied to the resource identified by instanceName. For
@@ -3051,7 +3060,13 @@ Each argument is described in detail in: L<Paws::Lightsail::StartInstance>
 Returns: a L<Paws::Lightsail::StartInstanceResult> instance
 
 Starts a specific Amazon Lightsail instance from a stopped state. To
-restart an instance, use the reboot instance operation.
+restart an instance, use the C<reboot instance> operation.
+
+When you start a stopped instance, Lightsail assigns a new public IP
+address to the instance. To use the same IP address after stopping and
+starting an instance, create a static IP address and attach it to the
+instance. For more information, see the Lightsail Dev Guide
+(https://lightsail.aws.amazon.com/ls/docs/en/articles/lightsail-create-static-ip).
 
 The C<start instance> operation supports tag-based access control via
 resource tags applied to the resource identified by instanceName. For
@@ -3098,6 +3113,12 @@ Each argument is described in detail in: L<Paws::Lightsail::StopInstance>
 Returns: a L<Paws::Lightsail::StopInstanceResult> instance
 
 Stops a specific Amazon Lightsail instance that is currently running.
+
+When you start a stopped instance, Lightsail assigns a new public IP
+address to the instance. To use the same IP address after stopping and
+starting an instance, create a static IP address and attach it to the
+instance. For more information, see the Lightsail Dev Guide
+(https://lightsail.aws.amazon.com/ls/docs/en/articles/lightsail-create-static-ip).
 
 The C<stop instance> operation supports tag-based access control via
 resource tags applied to the resource identified by instanceName. For

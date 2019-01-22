@@ -1,8 +1,9 @@
 
 package Paws::Lightsail::CreateDiskSnapshot;
   use Moose;
-  has DiskName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'diskName' , required => 1);
+  has DiskName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'diskName' );
   has DiskSnapshotName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'diskSnapshotName' , required => 1);
+  has InstanceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceName' );
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
@@ -30,15 +31,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $lightsail = Paws->service('Lightsail');
     my $CreateDiskSnapshotResult = $lightsail->CreateDiskSnapshot(
-      DiskName         => 'MyResourceName',
       DiskSnapshotName => 'MyResourceName',
+      DiskName         => 'MyResourceName',    # OPTIONAL
+      InstanceName     => 'MyResourceName',    # OPTIONAL
       Tags             => [
         {
-          Key   => 'MyTagKey',      # OPTIONAL
-          Value => 'MyTagValue',    # OPTIONAL
+          Key   => 'MyTagKey',                 # OPTIONAL
+          Value => 'MyTagValue',               # OPTIONAL
         },
         ...
-      ],                            # OPTIONAL
+      ],                                       # OPTIONAL
     );
 
     # Results:
@@ -52,9 +54,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lig
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DiskName => Str
+=head2 DiskName => Str
 
-The unique name of the source disk (e.g., C<my-source-disk>).
+The unique name of the source disk (e.g., C<Disk-Virginia-1>).
+
+This parameter cannot be defined together with the C<instance name>
+parameter. The C<disk name> and C<instance name> parameters are
+mutually exclusive.
 
 
 
@@ -62,6 +68,18 @@ The unique name of the source disk (e.g., C<my-source-disk>).
 
 The name of the destination disk snapshot (e.g., C<my-disk-snapshot>)
 based on the source disk.
+
+
+
+=head2 InstanceName => Str
+
+The unique name of the source instance (e.g.,
+C<Amazon_Linux-512MB-Virginia-1>). When this is defined, a snapshot of
+the instance's system volume is created.
+
+This parameter cannot be defined together with the C<disk name>
+parameter. The C<instance name> and C<disk name> parameters are
+mutually exclusive.
 
 
 

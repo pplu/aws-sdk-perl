@@ -4,6 +4,8 @@ package Paws::Lightsail::DiskSnapshot;
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
   has FromDiskArn => (is => 'ro', isa => 'Str', request_name => 'fromDiskArn', traits => ['NameInRequest']);
   has FromDiskName => (is => 'ro', isa => 'Str', request_name => 'fromDiskName', traits => ['NameInRequest']);
+  has FromInstanceArn => (is => 'ro', isa => 'Str', request_name => 'fromInstanceArn', traits => ['NameInRequest']);
+  has FromInstanceName => (is => 'ro', isa => 'Str', request_name => 'fromInstanceName', traits => ['NameInRequest']);
   has Location => (is => 'ro', isa => 'Paws::Lightsail::ResourceLocation', request_name => 'location', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Progress => (is => 'ro', isa => 'Str', request_name => 'progress', traits => ['NameInRequest']);
@@ -59,14 +61,26 @@ Describes a block storage disk snapshot.
 
 =head2 FromDiskArn => Str
 
-  The Amazon Resource Name (ARN) of the source disk from which you are
-creating the disk snapshot.
+  The Amazon Resource Name (ARN) of the source disk from which the disk
+snapshot was created.
 
 
 =head2 FromDiskName => Str
 
-  The unique name of the source disk from which you are creating the disk
-snapshot.
+  The unique name of the source disk from which the disk snapshot was
+created.
+
+
+=head2 FromInstanceArn => Str
+
+  The Amazon Resource Name (ARN) of the source instance from which the
+disk (system volume) snapshot was created.
+
+
+=head2 FromInstanceName => Str
+
+  The unique name of the source instance from which the disk (system
+volume) snapshot was created.
 
 
 =head2 Location => L<Paws::Lightsail::ResourceLocation>
