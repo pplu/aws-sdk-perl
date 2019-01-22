@@ -32,24 +32,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 =head1 DESCRIPTION
 
-For motion overlays that don't have a built-in framerate, specify the
-framerate of the overlay in frames per second, as a fraction. For
-example, specify 24 fps as 24/1. The overlay framerate doesn't need to
-match the framerate of the underlying video.
+For motion overlays that don't have a built-in frame rate, specify the
+frame rate of the overlay in frames per second, as a fraction. For
+example, specify 24 fps as 24/1. The overlay frame rate doesn't need to
+match the frame rate of the underlying video.
 
 =head1 ATTRIBUTES
 
 
 =head2 FramerateDenominator => Int
 
-  The bottom of the fraction that expresses your overlay framerate. For
-example, if your framerate is 24 fps, set this value to 1.
+  The bottom of the fraction that expresses your overlay frame rate. For
+example, if your frame rate is 24 fps, set this value to 1.
 
 
 =head2 FramerateNumerator => Int
 
-  The top of the fraction that expresses your overlay framerate. For
-example, if your framerate is 24 fps, set this value to 24.
+  The top of the fraction that expresses your overlay frame rate. For
+example, if your frame rate is 24 fps, set this value to 24.
 
 
 

@@ -93,9 +93,9 @@ filter settings (Deblock and Denoise). The range is -5 to 5. Default is
 
 =head2 ImageInserter => L<Paws::MediaConvert::ImageInserter>
 
-  Enable the Image inserter (ImageInserter) feature to include a graphic
-overlay on your video. Enable or disable this feature for each input
-individually. This setting is disabled by default.
+  Enable the image inserter feature to include a graphic overlay on your
+video. Enable or disable this feature for each input individually. This
+setting is disabled by default.
 
 
 =head2 InputClippings => ArrayRef[L<Paws::MediaConvert::InputClipping>]

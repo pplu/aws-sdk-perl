@@ -75,9 +75,10 @@ Settings for video outputs
   Applies only if your input aspect ratio is different from your output
 aspect ratio. Use Input cropping rectangle (Crop) to specify the video
 area the service will include in the output. This will crop the input
-source, causing video pixels to be removed on encode. Do not use this
-setting if you have enabled Stretch to output (stretchToOutput) in your
-output settings.
+source, causing video pixels to be removed on encode. If you crop your
+input frame size to smaller than your output frame size, make sure to
+specify the behavior you want in your output setting "Scaling
+behavior".
 
 
 =head2 DropFrameTimecode => Str
