@@ -51,13 +51,16 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sto
 
 =head2 B<REQUIRED> FileShareARN => Str
 
-
+The Amazon Resource Name (ARN) of the file share you want to refresh.
 
 
 
 =head2 FolderList => ArrayRef[Str|Undef]
 
-
+A comma-separated list of the paths of folders to refresh in the cache.
+The default is [C<"/">]. The default refreshes objects and folders at
+the root of the Amazon S3 bucket. If C<Recursive> is set to "true", the
+entire S3 bucket that the file share has access to is refreshed.
 
 
 

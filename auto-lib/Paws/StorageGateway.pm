@@ -40,6 +40,11 @@ package Paws::StorageGateway;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::AddWorkingStorage', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AttachVolume {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::AttachVolume', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CancelArchival {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::CancelArchival', @_);
@@ -213,6 +218,11 @@ package Paws::StorageGateway;
   sub DescribeWorkingStorage {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::DescribeWorkingStorage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DetachVolume {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::DetachVolume', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DisableGateway {
@@ -524,7 +534,7 @@ package Paws::StorageGateway;
   }
 
 
-  sub operations { qw/ActivateGateway AddCache AddTagsToResource AddUploadBuffer AddWorkingStorage CancelArchival CancelRetrieval CreateCachediSCSIVolume CreateNFSFileShare CreateSMBFileShare CreateSnapshot CreateSnapshotFromVolumeRecoveryPoint CreateStorediSCSIVolume CreateTapes CreateTapeWithBarcode DeleteBandwidthRateLimit DeleteChapCredentials DeleteFileShare DeleteGateway DeleteSnapshotSchedule DeleteTape DeleteTapeArchive DeleteVolume DescribeBandwidthRateLimit DescribeCache DescribeCachediSCSIVolumes DescribeChapCredentials DescribeGatewayInformation DescribeMaintenanceStartTime DescribeNFSFileShares DescribeSMBFileShares DescribeSMBSettings DescribeSnapshotSchedule DescribeStorediSCSIVolumes DescribeTapeArchives DescribeTapeRecoveryPoints DescribeTapes DescribeUploadBuffer DescribeVTLDevices DescribeWorkingStorage DisableGateway JoinDomain ListFileShares ListGateways ListLocalDisks ListTagsForResource ListTapes ListVolumeInitiators ListVolumeRecoveryPoints ListVolumes NotifyWhenUploaded RefreshCache RemoveTagsFromResource ResetCache RetrieveTapeArchive RetrieveTapeRecoveryPoint SetLocalConsolePassword SetSMBGuestPassword ShutdownGateway StartGateway UpdateBandwidthRateLimit UpdateChapCredentials UpdateGatewayInformation UpdateGatewaySoftwareNow UpdateMaintenanceStartTime UpdateNFSFileShare UpdateSMBFileShare UpdateSnapshotSchedule UpdateVTLDeviceType / }
+  sub operations { qw/ActivateGateway AddCache AddTagsToResource AddUploadBuffer AddWorkingStorage AttachVolume CancelArchival CancelRetrieval CreateCachediSCSIVolume CreateNFSFileShare CreateSMBFileShare CreateSnapshot CreateSnapshotFromVolumeRecoveryPoint CreateStorediSCSIVolume CreateTapes CreateTapeWithBarcode DeleteBandwidthRateLimit DeleteChapCredentials DeleteFileShare DeleteGateway DeleteSnapshotSchedule DeleteTape DeleteTapeArchive DeleteVolume DescribeBandwidthRateLimit DescribeCache DescribeCachediSCSIVolumes DescribeChapCredentials DescribeGatewayInformation DescribeMaintenanceStartTime DescribeNFSFileShares DescribeSMBFileShares DescribeSMBSettings DescribeSnapshotSchedule DescribeStorediSCSIVolumes DescribeTapeArchives DescribeTapeRecoveryPoints DescribeTapes DescribeUploadBuffer DescribeVTLDevices DescribeWorkingStorage DetachVolume DisableGateway JoinDomain ListFileShares ListGateways ListLocalDisks ListTagsForResource ListTapes ListVolumeInitiators ListVolumeRecoveryPoints ListVolumes NotifyWhenUploaded RefreshCache RemoveTagsFromResource ResetCache RetrieveTapeArchive RetrieveTapeRecoveryPoint SetLocalConsolePassword SetSMBGuestPassword ShutdownGateway StartGateway UpdateBandwidthRateLimit UpdateChapCredentials UpdateGatewayInformation UpdateGatewaySoftwareNow UpdateMaintenanceStartTime UpdateNFSFileShare UpdateSMBFileShare UpdateSnapshotSchedule UpdateVTLDeviceType / }
 
 1;
 
@@ -799,6 +809,34 @@ gateway.
 In the request, you specify the gateway Amazon Resource Name (ARN) to
 which you want to add working storage, and one or more disk IDs that
 you want to configure as working storage.
+
+
+=head2 AttachVolume
+
+=over
+
+=item GatewayARN => Str
+
+=item NetworkInterfaceId => Str
+
+=item VolumeARN => Str
+
+=item [DiskId => Str]
+
+=item [TargetName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::StorageGateway::AttachVolume>
+
+Returns: a L<Paws::StorageGateway::AttachVolumeOutput> instance
+
+Connects a volume to an iSCSI connection and then attaches the volume
+to the specified gateway. Detaching and attaching a volume enables you
+to recover your data from one gateway to a different gateway without
+creating a snapshot. It also makes it easier to move your volumes from
+an on-premises gateway to a gateway hosted on an Amazon EC2 instance.
 
 
 =head2 CancelArchival
@@ -1748,6 +1786,29 @@ The response includes disk IDs that are configured as working storage,
 and it includes the amount of working storage allocated and used.
 
 
+=head2 DetachVolume
+
+=over
+
+=item VolumeARN => Str
+
+=item [ForceDetach => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::StorageGateway::DetachVolume>
+
+Returns: a L<Paws::StorageGateway::DetachVolumeOutput> instance
+
+Disconnects a volume from an iSCSI connection and then detaches the
+volume from the specified gateway. Detaching and attaching a volume
+enables you to recover your data from one gateway to a different
+gateway without creating a snapshot. It also makes it easier to move
+your volumes from an on-premises gateway to a gateway hosted on an
+Amazon EC2 instance.
+
+
 =head2 DisableGateway
 
 =over
@@ -1782,6 +1843,10 @@ Once a gateway is disabled it cannot be enabled.
 =item Password => Str
 
 =item UserName => Str
+
+=item [DomainControllers => ArrayRef[Str|Undef]]
+
+=item [OrganizationalUnit => Str]
 
 
 =back

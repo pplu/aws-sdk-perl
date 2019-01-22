@@ -45,7 +45,7 @@ Represents a gateway's local disk.
 
 =head2 DiskAllocationResource => Str
 
-  The iSCSI Qualified Name (IQN) that is defined for a disk. This field
+  The iSCSI qualified name (IQN) that is defined for a disk. This field
 is not included in the response if the local disk is not defined as an
 iSCSI target. The format of this field is
 I<targetIqn::LUNNumber::region-volumeId>.
