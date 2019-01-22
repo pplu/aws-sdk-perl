@@ -20,6 +20,11 @@ package Paws::Discovery;
     my $call_object = $self->new_with_coercions('Paws::Discovery::AssociateConfigurationItemsToApplication', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub BatchDeleteImportData {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Discovery::BatchDeleteImportData', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateApplication {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Discovery::CreateApplication', @_);
@@ -65,6 +70,11 @@ package Paws::Discovery;
     my $call_object = $self->new_with_coercions('Paws::Discovery::DescribeExportTasks', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeImportTasks {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Discovery::DescribeImportTasks', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeTags {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Discovery::DescribeTags', @_);
@@ -108,6 +118,11 @@ package Paws::Discovery;
   sub StartExportTask {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Discovery::StartExportTask', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StartImportTask {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Discovery::StartImportTask', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StopContinuousExport {
@@ -266,7 +281,7 @@ package Paws::Discovery;
   }
 
 
-  sub operations { qw/AssociateConfigurationItemsToApplication CreateApplication CreateTags DeleteApplications DeleteTags DescribeAgents DescribeConfigurations DescribeContinuousExports DescribeExportConfigurations DescribeExportTasks DescribeTags DisassociateConfigurationItemsFromApplication ExportConfigurations GetDiscoverySummary ListConfigurations ListServerNeighbors StartContinuousExport StartDataCollectionByAgentIds StartExportTask StopContinuousExport StopDataCollectionByAgentIds UpdateApplication / }
+  sub operations { qw/AssociateConfigurationItemsToApplication BatchDeleteImportData CreateApplication CreateTags DeleteApplications DeleteTags DescribeAgents DescribeConfigurations DescribeContinuousExports DescribeExportConfigurations DescribeExportTasks DescribeImportTasks DescribeTags DisassociateConfigurationItemsFromApplication ExportConfigurations GetDiscoverySummary ListConfigurations ListServerNeighbors StartContinuousExport StartDataCollectionByAgentIds StartExportTask StartImportTask StopContinuousExport StopDataCollectionByAgentIds UpdateApplication / }
 
 1;
 
@@ -354,12 +369,6 @@ data is handled according to the AWS Privacy Policy
 Service offline to inspect collected data before it is shared with the
 service.
 
-Your AWS account must be granted access to Application Discovery
-Service, a process called I<whitelisting>. This is true for AWS
-partners and customers alike. To request access, sign up for
-Application Discovery Service
-(http://aws.amazon.com/application-discovery/).
-
 This API reference provides descriptions, syntax, and usage examples
 for each of the actions and data types for Application Discovery
 Service. The topic for each action shows the API request parameters and
@@ -393,6 +402,32 @@ Each argument is described in detail in: L<Paws::Discovery::AssociateConfigurati
 Returns: a L<Paws::Discovery::AssociateConfigurationItemsToApplicationResponse> instance
 
 Associates one or more configuration items with an application.
+
+
+=head2 BatchDeleteImportData
+
+=over
+
+=item ImportTaskIds => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Discovery::BatchDeleteImportData>
+
+Returns: a L<Paws::Discovery::BatchDeleteImportDataResponse> instance
+
+Deletes one or more import tasks, each identified by their import ID.
+Each import task has a number of records that can identify servers or
+applications.
+
+AWS Application Discovery Service has built-in matching logic that will
+identify when discovered servers match existing entries that you've
+previously discovered, the information for the already-existing
+discovered server is updated. When you delete an import task that
+contains records that were used to match, the information in those
+matched records that comes from the deleted records will also be
+deleted.
 
 
 =head2 CreateApplication
@@ -509,7 +544,7 @@ Returns: a L<Paws::Discovery::DescribeConfigurationsResponse> instance
 Retrieves attributes for a list of configuration item IDs.
 
 All of the supplied IDs must be for the same asset type from one of the
-follwoing:
+following:
 
 =over
 
@@ -607,6 +642,28 @@ Returns: a L<Paws::Discovery::DescribeExportTasksResponse> instance
 
 Retrieve status of one or more export tasks. You can retrieve the
 status of up to 100 export tasks.
+
+
+=head2 DescribeImportTasks
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::Discovery::ImportTaskFilter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Discovery::DescribeImportTasks>
+
+Returns: a L<Paws::Discovery::DescribeImportTasksResponse> instance
+
+Returns an array of import tasks for your account, including status
+information, times, IDs, the Amazon S3 Object URL for the import file,
+and more.
 
 
 =head2 DescribeTags
@@ -825,6 +882,70 @@ If you do not include an C<agentIds> filter, summary data is exported
 that includes both AWS Agentless Discovery Connector data and summary
 data from AWS Discovery Agents. Export of summary data is limited to
 two exports per day.
+
+
+=head2 StartImportTask
+
+=over
+
+=item ImportUrl => Str
+
+=item Name => Str
+
+=item [ClientRequestToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Discovery::StartImportTask>
+
+Returns: a L<Paws::Discovery::StartImportTaskResponse> instance
+
+Starts an import task, which allows you to import details of your
+on-premises environment directly into AWS without having to use the
+Application Discovery Service (ADS) tools such as the Discovery
+Connector or Discovery Agent. This gives you the option to perform
+migration assessment and planning directly from your imported data,
+including the ability to group your devices as applications and track
+their migration status.
+
+To start an import request, do this:
+
+=over
+
+=item 1.
+
+Download the specially formatted comma separated value (CSV) import
+template, which you can find here:
+https://s3-us-west-2.amazonaws.com/templates-7cffcf56-bd96-4b1c-b45b-a5b42f282e46/import_template.csv
+(https://s3-us-west-2.amazonaws.com/templates-7cffcf56-bd96-4b1c-b45b-a5b42f282e46/import_template.csv).
+
+=item 2.
+
+Fill out the template with your server and application data.
+
+=item 3.
+
+Upload your import file to an Amazon S3 bucket, and make a note of it's
+Object URL. Your import file must be in the CSV format.
+
+=item 4.
+
+Use the console or the C<StartImportTask> command with the AWS CLI or
+one of the AWS SDKs to import the records from your file.
+
+=back
+
+For more information, including step-by-step procedures, see Migration
+Hub Import
+(http://docs.aws.amazon.com/application-discovery/latest/userguide/discovery-import.html)
+in the I<AWS Application Discovery Service User Guide>.
+
+There are limits to the number of import tasks you can create (and
+delete) in an AWS account. For more information, see AWS Application
+Discovery Service Limits
+(http://docs.aws.amazon.com/application-discovery/latest/userguide/ads_service_limits.html)
+in the I<AWS Application Discovery Service User Guide>.
 
 
 =head2 StopContinuousExport
