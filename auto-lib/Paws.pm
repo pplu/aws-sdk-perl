@@ -262,6 +262,8 @@ L<Paws::AutoScaling>
 
 L<Paws::AutoScalingPlans>
 
+L<Paws::Backup>
+
 L<Paws::Batch>
 
 L<Paws::Budgets>
@@ -337,6 +339,8 @@ L<Paws::Discovery>
 L<Paws::DLM>
 
 L<Paws::DMS>
+
+L<Paws::DocDB>
 
 L<Paws::DS>
 

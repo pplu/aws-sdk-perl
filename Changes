@@ -29,6 +29,8 @@
  - New API: LicenseManager
  - New API: ApiGatewayManagement 
  - New API: ApiGatewayV2
+ - New API: Backup
+ - New API: DocDB
 
 0.38 19 Jun 2018
  - Fix test suite so that credentials_process tests don't need extra modules (#251, #248)
