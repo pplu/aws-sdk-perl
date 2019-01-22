@@ -55,7 +55,8 @@ so on.
 
 =head2 AdditionalSlaveSecurityGroups => ArrayRef[Str|Undef]
 
-  A list of additional Amazon EC2 security group IDs for the slave nodes.
+  A list of additional Amazon EC2 security group IDs for the core and
+task nodes.
 
 
 =head2 Ec2AvailabilityZone => Str
@@ -88,7 +89,8 @@ instance type for nodes of a cluster launched in a VPC.
 
 =head2 EmrManagedSlaveSecurityGroup => Str
 
-  The identifier of the Amazon EC2 security group for the slave nodes.
+  The identifier of the Amazon EC2 security group for the core and task
+nodes.
 
 
 =head2 IamInstanceProfile => Str

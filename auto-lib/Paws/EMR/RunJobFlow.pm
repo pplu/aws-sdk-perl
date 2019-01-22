@@ -67,7 +67,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         EmrManagedSlaveSecurityGroup =>
           'MyXmlStringMaxLen256',                  # max: 256; OPTIONAL
         HadoopVersion  => 'MyXmlStringMaxLen256',  # max: 256; OPTIONAL
-        InstanceCount  => 1,
+        InstanceCount  => 1,                       # OPTIONAL
         InstanceFleets => [
           {
             InstanceFleetType   => 'MASTER',       # values: MASTER, CORE, TASK
@@ -88,11 +88,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   EbsBlockDeviceConfigs => [
                     {
                       VolumeSpecification => {
-                        SizeInGB   => 1,
+                        SizeInGB   => 1,                              # OPTIONAL
                         VolumeType => 'MyString',
-                        Iops       => 1,
+                        Iops       => 1,                              # OPTIONAL
                       },
-                      VolumesPerInstance => 1,
+                      VolumesPerInstance => 1,                        # OPTIONAL
                     },
                     ...
                   ],                                                  # OPTIONAL
@@ -119,23 +119,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ],                                     # OPTIONAL
         InstanceGroups => [
           {
-            InstanceCount     => 1,
+            InstanceCount     => 1,                 # OPTIONAL
             InstanceRole      => 'MASTER',          # values: MASTER, CORE, TASK
             InstanceType      => 'MyInstanceType',  # min: 1, max: 256
             AutoScalingPolicy => {
               Constraints => {
-                MaxCapacity => 1,
-                MinCapacity => 1,
+                MaxCapacity => 1,                   # OPTIONAL
+                MinCapacity => 1,                   # OPTIONAL
 
               },
               Rules => [
                 {
                   Action => {
                     SimpleScalingPolicyConfiguration => {
-                      ScalingAdjustment => 1,
+                      ScalingAdjustment => 1,                     # OPTIONAL
                       AdjustmentType    => 'CHANGE_IN_CAPACITY'
                       , # values: CHANGE_IN_CAPACITY, PERCENT_CHANGE_IN_CAPACITY, EXACT_CAPACITY; OPTIONAL
-                      CoolDown => 1,
+                      CoolDown => 1,    # OPTIONAL
                     },
                     Market => 'ON_DEMAND',   # values: ON_DEMAND, SPOT; OPTIONAL
                   },
@@ -145,7 +145,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       ComparisonOperator => 'GREATER_THAN_OR_EQUAL'
                       , # values: GREATER_THAN_OR_EQUAL, GREATER_THAN, LESS_THAN, LESS_THAN_OR_EQUAL
                       MetricName => 'MyString',
-                      Period     => 1,
+                      Period     => 1,            # OPTIONAL
                       Threshold  => 1,
                       Dimensions => [
                         {
@@ -153,8 +153,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                           Value => 'MyString',
                         },
                         ...
-                      ],    # OPTIONAL
-                      EvaluationPeriods => 1,
+                      ],                          # OPTIONAL
+                      EvaluationPeriods => 1,               # OPTIONAL
                       Namespace         => 'MyString',
                       Statistic         => 'SAMPLE_COUNT'
                       , # values: SAMPLE_COUNT, AVERAGE, SUM, MINIMUM, MAXIMUM; OPTIONAL
@@ -182,11 +182,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               EbsBlockDeviceConfigs => [
                 {
                   VolumeSpecification => {
-                    SizeInGB   => 1,
+                    SizeInGB   => 1,                                # OPTIONAL
                     VolumeType => 'MyString',
-                    Iops       => 1,
+                    Iops       => 1,                                # OPTIONAL
                   },
-                  VolumesPerInstance => 1,
+                  VolumesPerInstance => 1,                          # OPTIONAL
                 },
                 ...
               ],                                                    # OPTIONAL
@@ -332,9 +332,11 @@ AMI, use C<CustomAmiID>.
 
 =head2 Applications => ArrayRef[L<Paws::EMR::Application>]
 
-For Amazon EMR releases 4.0 and later. A list of applications for the
-cluster. Valid values are: "Hadoop", "Hive", "Mahout", "Pig", and
-"Spark." They are case insensitive.
+Applies to Amazon EMR releases 4.0 and later. A case-insensitive list
+of applications for Amazon EMR to install and configure when launching
+the cluster. For a list of applications available for each Amazon EMR
+release version, see the Amazon EMR Release Guide
+(http://docs.aws.amazon.com/emr/latest/ReleaseGuide/).
 
 
 
