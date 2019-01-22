@@ -16,7 +16,7 @@ Paws::DynamoDB::DescribeEndpointsResponse
 
 =head2 B<REQUIRED> Endpoints => ArrayRef[L<Paws::DynamoDB::Endpoint>]
 
-
+List of endpoints.
 
 
 =head2 _request_id => Str

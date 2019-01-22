@@ -76,7 +76,7 @@ C<ALL> - All types of on-demand backups (USER and SYSTEM).
 =back
 
 
-Valid values are: C<"USER">, C<"SYSTEM">, C<"ALL">
+Valid values are: C<"USER">, C<"SYSTEM">, C<"AWS_BACKUP">, C<"ALL">
 
 =head2 ExclusiveStartBackupArn => Str
 

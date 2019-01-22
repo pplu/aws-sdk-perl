@@ -77,7 +77,7 @@ C<"BS": ["U3Vubnk=", "UmFpbnk=", "U25vd3k="]>
 
   An attribute of type List. For example:
 
-C<"L": ["Cookies", "Coffee", 3.14159]>
+C<"L": [ {"S": "Cookies"} , {"S": "Coffee"}, {"N", "3.14159"}]>
 
 
 =head2 M => L<Paws::DynamoDB::MapAttributeValue>

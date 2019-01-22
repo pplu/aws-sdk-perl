@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::E
 
 =head1 DESCRIPTION
 
-This class has no description
+An endpoint information details.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Address => Str
 
-  
+  IP address of the endpoint.
 
 
 =head2 B<REQUIRED> CachePeriodInMinutes => Int
 
-  
+  Endpoint cache time to live (TTL) value.
 
 
 

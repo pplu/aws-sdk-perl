@@ -113,9 +113,9 @@ Valid values are: C<"PROVISIONED">, C<"PAY_PER_REQUEST">
 
 =head2 GlobalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndex>]
 
-One or more global secondary indexes (the maximum is five) to be
-created on the table. Each global secondary index in the array includes
-the following:
+One or more global secondary indexes (the maximum is 20) to be created
+on the table. Each global secondary index in the array includes the
+following:
 
 =over
 
@@ -164,7 +164,7 @@ C<ALL> - All of the table attributes are projected into the index.
 C<NonKeyAttributes> - A list of one or more non-key attribute names
 that are projected into the secondary index. The total count of
 attributes provided in C<NonKeyAttributes>, summed across all of the
-secondary indexes, must not exceed 20. If you project the same
+secondary indexes, must not exceed 100. If you project the same
 attribute into two different indexes, this counts as two distinct
 attributes when determining the total.
 
@@ -240,10 +240,10 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 =head2 LocalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::LocalSecondaryIndex>]
 
-One or more local secondary indexes (the maximum is five) to be created
-on the table. Each index is scoped to a given partition key value.
-There is a 10 GB size limit per partition key value; otherwise, the
-size of a local secondary index is unconstrained.
+One or more local secondary indexes (the maximum is 5) to be created on
+the table. Each index is scoped to a given partition key value. There
+is a 10 GB size limit per partition key value; otherwise, the size of a
+local secondary index is unconstrained.
 
 Each local secondary index in the array includes the following:
 
@@ -295,7 +295,7 @@ C<ALL> - All of the table attributes are projected into the index.
 C<NonKeyAttributes> - A list of one or more non-key attribute names
 that are projected into the secondary index. The total count of
 attributes provided in C<NonKeyAttributes>, summed across all of the
-secondary indexes, must not exceed 20. If you project the same
+secondary indexes, must not exceed 100. If you project the same
 attribute into two different indexes, this counts as two distinct
 attributes when determining the total.
 

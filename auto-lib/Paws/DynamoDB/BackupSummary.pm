@@ -96,6 +96,11 @@ a C<SYSTEM> backup is automatically created and is retained for 35 days
 (at no additional cost). System backups allow you to restore the
 deleted table to the state it was in just before the point of deletion.
 
+=item *
+
+C<AWS_BACKUP> - On-demand backup created by you from AWS Backup
+service.
+
 =back
 
 
