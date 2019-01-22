@@ -115,8 +115,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-The name of an AWS CodeDeploy application associated with the
-applicable IAM user or AWS account.
+The name of an AWS CodeDeploy application associated with the IAM user
+or AWS account.
 
 
 
@@ -129,13 +129,13 @@ a deployment is created.
 
 =head2 DeploymentConfigName => Str
 
-The name of a deployment configuration associated with the applicable
-IAM user or AWS account.
+The name of a deployment configuration associated with the IAM user or
+AWS account.
 
-If not specified, the value configured in the deployment group will be
-used as the default. If the deployment group does not have a deployment
-configuration associated with it, then CodeDeployDefault.OneAtATime
-will be used by default.
+If not specified, the value configured in the deployment group is used
+as the default. If the deployment group does not have a deployment
+configuration associated with it, CodeDeployDefault.OneAtATime is used
+by default.
 
 
 
@@ -185,13 +185,13 @@ Valid values are: C<"DISALLOW">, C<"OVERWRITE">, C<"RETAIN">
 
 If set to true, then if the deployment causes the ApplicationStop
 deployment lifecycle event to an instance to fail, the deployment to
-that instance will not be considered to have failed at that point and
-will continue on to the BeforeInstall deployment lifecycle event.
+that instance is considered to have failed at that point and continues
+on to the BeforeInstall deployment lifecycle event.
 
 If set to false or not specified, then if the deployment causes the
 ApplicationStop deployment lifecycle event to fail to an instance, the
-deployment to that instance will stop, and the deployment to that
-instance will be considered to have failed.
+deployment to that instance stops, and the deployment to that instance
+is considered to have failed.
 
 
 
@@ -203,7 +203,7 @@ The type and location of the revision to deploy.
 
 =head2 TargetInstances => L<Paws::CodeDeploy::TargetInstances>
 
-Information about the instances that will belong to the replacement
+Information about the instances that belong to the replacement
 environment in a blue/green deployment.
 
 

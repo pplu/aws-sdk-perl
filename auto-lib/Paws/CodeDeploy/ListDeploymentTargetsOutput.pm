@@ -17,10 +17,9 @@ Paws::CodeDeploy::ListDeploymentTargetsOutput
 
 =head2 NextToken => Str
 
-If a large amount of information is returned, a token identifier will
-also be returned. It can be used in a subsequent
-C<ListDeploymentTargets> call to return the next set of deployment
-targets in the list.
+If a large amount of information is returned, a token identifier is
+also returned. It can be used in a subsequent C<ListDeploymentTargets>
+call to return the next set of deployment targets in the list.
 
 
 =head2 TargetIds => ArrayRef[Str|Undef]

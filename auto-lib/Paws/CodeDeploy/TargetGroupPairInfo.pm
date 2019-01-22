@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
 =head1 DESCRIPTION
 
-Information about two target groups and how traffic routes during an
+Information about two target groups and how traffic is routed during an
 Amazon ECS deployment. An optional test traffic route can be specified.
 
 =head1 ATTRIBUTES
@@ -48,14 +48,14 @@ Amazon ECS deployment is complete.
 =head2 TargetGroups => ArrayRef[L<Paws::CodeDeploy::TargetGroupInfo>]
 
   One pair of target groups. One is associated with the original task
-set. The second target is associated with the task set that serves
-traffic after the deployment completes.
+set. The second is associated with the task set that serves traffic
+after the deployment is complete.
 
 
 =head2 TestTrafficRoute => L<Paws::CodeDeploy::TrafficRoute>
 
   An optional path used by a load balancer to route test traffic after an
-Amazon ECS deployment. Validation can happen while test traffic is
+Amazon ECS deployment. Validation can occur while test traffic is
 served during a deployment.
 
 

@@ -202,8 +202,8 @@ group is created.
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-The name of an AWS CodeDeploy application associated with the
-applicable IAM user or AWS account.
+The name of an AWS CodeDeploy application associated with the IAM user
+or AWS account.
 
 
 
@@ -216,7 +216,7 @@ a deployment group is created.
 
 =head2 AutoScalingGroups => ArrayRef[Str|Undef]
 
-A list of associated Auto Scaling groups.
+A list of associated Amazon EC2 Auto Scaling groups.
 
 
 
@@ -234,7 +234,7 @@ deployment configuration that you create by calling the create
 deployment configuration operation.
 
 CodeDeployDefault.OneAtATime is the default deployment configuration.
-It is used if a configuration isn't specified for the deployment or the
+It is used if a configuration isn't specified for the deployment or
 deployment group.
 
 For more information about the predefined deployment configurations in
@@ -260,26 +260,27 @@ balancer.
 
 =head2 Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>]
 
-The Amazon EC2 tags on which to filter. The deployment group will
-include EC2 instances with any of the specified tags. Cannot be used in
-the same call as ec2TagSet.
+The Amazon EC2 tags on which to filter. The deployment group includes
+EC2 instances with any of the specified tags. Cannot be used in the
+same call as ec2TagSet.
 
 
 
 =head2 Ec2TagSet => L<Paws::CodeDeploy::EC2TagSet>
 
 Information about groups of tags applied to EC2 instances. The
-deployment group will include only EC2 instances identified by all the
-tag groups. Cannot be used in the same call as ec2TagFilters.
+deployment group includes only EC2 instances identified by all the tag
+groups. Cannot be used in the same call as ec2TagFilters.
 
 
 
 =head2 EcsServices => ArrayRef[L<Paws::CodeDeploy::ECSService>]
 
-The target ECS services in the deployment group. This only applies to
-deployment groups that use the Amazon ECS compute platform. A target
-ECS service is specified as an Amazon ECS cluster and service name pair
-using the format C<E<lt>clusternameE<gt>:E<lt>servicenameE<gt>>.
+The target Amazon ECS services in the deployment group. This applies
+only to deployment groups that use the Amazon ECS compute platform. A
+target Amazon ECS service is specified as an Amazon ECS cluster and
+service name pair using the format
+C<E<lt>clusternameE<gt>:E<lt>servicenameE<gt>>.
 
 
 
@@ -292,16 +293,16 @@ Information about the load balancer used in a deployment.
 =head2 OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]
 
 The on-premises instance tags on which to filter. The deployment group
-will include on-premises instances with any of the specified tags.
-Cannot be used in the same call as OnPremisesTagSet.
+includes on-premises instances with any of the specified tags. Cannot
+be used in the same call as OnPremisesTagSet.
 
 
 
 =head2 OnPremisesTagSet => L<Paws::CodeDeploy::OnPremisesTagSet>
 
 Information about groups of tags applied to on-premises instances. The
-deployment group will include only on-premises instances identified by
-all the tag groups. Cannot be used in the same call as
+deployment group includes only on-premises instances identified by all
+of the tag groups. Cannot be used in the same call as
 onPremisesInstanceTagFilters.
 
 

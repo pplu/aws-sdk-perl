@@ -33,8 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 =head1 DESCRIPTION
 
 Information about a configuration for automatically rolling back to a
-previous version of an application revision when a deployment doesn't
-complete successfully.
+previous version of an application revision when a deployment is not
+completed successfully.
 
 =head1 ATTRIBUTES
 

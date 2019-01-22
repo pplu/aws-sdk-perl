@@ -72,7 +72,8 @@ GREEN: The instance is part of the replacement environment.
 
 =head2 LastUpdatedAt => Str
 
-  A timestamp indicating when the instance information was last updated.
+  A timestamp that indicaties when the instance information was last
+updated.
 
 
 =head2 LifecycleEvents => ArrayRef[L<Paws::CodeDeploy::LifecycleEvent>]

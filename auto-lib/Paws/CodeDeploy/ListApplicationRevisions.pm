@@ -57,8 +57,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-The name of an AWS CodeDeploy application associated with the
-applicable IAM user or AWS account.
+The name of an AWS CodeDeploy application associated with the IAM user
+or AWS account.
 
 
 
@@ -134,7 +134,7 @@ deployment.
 
 =back
 
-If not specified or set to null, the results will be returned in an
+If not specified or set to null, the results are returned in an
 arbitrary order.
 
 Valid values are: C<"registerTime">, C<"firstUsedTime">, C<"lastUsedTime">
@@ -155,9 +155,9 @@ descending: descending order.
 
 =back
 
-If not specified, the results will be sorted in ascending order.
+If not specified, the results are sorted in ascending order.
 
-If set to null, the results will be sorted in an arbitrary order.
+If set to null, the results are sorted in an arbitrary order.
 
 Valid values are: C<"ascending">, C<"descending">
 

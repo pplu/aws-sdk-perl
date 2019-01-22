@@ -39,8 +39,7 @@ Information about a deployment error.
 
 =head2 Code => Str
 
-  For information about additional error codes, see Error Codes for AWS
-CodeDeploy
+  For more information, see Error Codes for AWS CodeDeploy
 (http://docs.aws.amazon.com/codedeploy/latest/userguide/error-codes.html)
 in the AWS CodeDeploy User Guide
 (http://docs.aws.amazon.com/codedeploy/latest/userguide).
@@ -51,15 +50,15 @@ The error code:
 
 =item *
 
-APPLICATION_MISSING: The application was missing. This error code will
-most likely be raised if the application is deleted after the
-deployment is created but before it is started.
+APPLICATION_MISSING: The application was missing. This error code is
+most likely raised if the application is deleted after the deployment
+is created, but before it is started.
 
 =item *
 
 DEPLOYMENT_GROUP_MISSING: The deployment group was missing. This error
-code will most likely be raised if the deployment group is deleted
-after the deployment is created but before it is started.
+code is most likely raised if the deployment group is deleted after the
+deployment is created, but before it is started.
 
 =item *
 
@@ -86,16 +85,17 @@ INTERNAL_ERROR: There was an internal error.
 
 =item *
 
-NO_EC2_SUBSCRIPTION: The calling account is not subscribed to the
-Amazon EC2 service.
+NO_EC2_SUBSCRIPTION: The calling account is not subscribed to Amazon
+EC2.
 
 =item *
 
-NO_INSTANCES: No instance were specified, or no instance can be found.
+NO_INSTANCES: No instances were specified, or no instances can be
+found.
 
 =item *
 
-OVER_MAX_INSTANCES: The maximum number of instance was exceeded.
+OVER_MAX_INSTANCES: The maximum number of instances was exceeded.
 
 =item *
 
@@ -108,9 +108,9 @@ TIMEOUT: The deployment has timed out.
 
 =item *
 
-REVISION_MISSING: The revision ID was missing. This error code will
-most likely be raised if the revision is deleted after the deployment
-is created but before it is started.
+REVISION_MISSING: The revision ID was missing. This error code is most
+likely raised if the revision is deleted after the deployment is
+created, but before it is started.
 
 =back
 

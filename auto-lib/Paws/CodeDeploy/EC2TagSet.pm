@@ -38,9 +38,9 @@ Information about groups of EC2 instance tags.
 
 =head2 Ec2TagSetList => ArrayRef[L<ArrayRef[Paws::CodeDeploy::EC2TagFilter]>]
 
-  A list containing other lists of EC2 instance tag groups. In order for
-an instance to be included in the deployment group, it must be
-identified by all the tag groups in the list.
+  A list that contains other lists of EC2 instance tag groups. For an
+instance to be included in the deployment group, it must be identified
+by all of the tag groups in the list.
 
 
 

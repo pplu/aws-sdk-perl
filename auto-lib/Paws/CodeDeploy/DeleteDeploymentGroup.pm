@@ -47,14 +47,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-The name of an AWS CodeDeploy application associated with the
-applicable IAM user or AWS account.
+The name of an AWS CodeDeploy application associated with the IAM user
+or AWS account.
 
 
 
 =head2 B<REQUIRED> DeploymentGroupName => Str
 
-The name of an existing deployment group for the specified application.
+The name of a deployment group for the specified application.
 
 
 

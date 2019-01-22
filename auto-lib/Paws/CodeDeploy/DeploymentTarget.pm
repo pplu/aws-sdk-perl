@@ -41,7 +41,7 @@ Information about the deployment target.
 
 =head2 DeploymentTargetType => Str
 
-  The deployment type which is specific to the deployment's compute
+  The deployment type that is specific to the deployment's compute
 platform.
 
 

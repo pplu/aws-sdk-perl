@@ -44,12 +44,12 @@ replaces the deprecated C<RawString> data type.
 
   The YAML-formatted or JSON-formatted revision string.
 
-For an AWS Lambda deployment the content includes a Lambda function
+For an AWS Lambda deployment, the content includes a Lambda function
 name, the alias for its original version, and the alias for its
 replacement version. The deployment shifts traffic from the original
 version of the Lambda function to the replacement version.
 
-For an Amazon ECS deployment the content includes the task name,
+For an Amazon ECS deployment, the content includes the task name,
 information about the load balancer that serves traffic to the
 container, and more.
 

@@ -41,18 +41,18 @@ group used in a deployment.
 
 =head2 ElbInfoList => ArrayRef[L<Paws::CodeDeploy::ELBInfo>]
 
-  An array containing information about the load balancer to use for load
-balancing in a deployment. In Elastic Load Balancing, load balancers
-are used with Classic Load Balancers.
+  An array that contains information about the load balancer to use for
+load balancing in a deployment. In Elastic Load Balancing, load
+balancers are used with Classic Load Balancers.
 
 Adding more than one load balancer to the array is not supported.
 
 
 =head2 TargetGroupInfoList => ArrayRef[L<Paws::CodeDeploy::TargetGroupInfo>]
 
-  An array containing information about the target group to use for load
-balancing in a deployment. In Elastic Load Balancing, target groups are
-used with Application Load Balancers.
+  An array that contains information about the target group to use for
+load balancing in a deployment. In Elastic Load Balancing, target
+groups are used with Application Load Balancers.
 
 Adding more than one target group to the array is not supported.
 

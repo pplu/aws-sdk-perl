@@ -40,8 +40,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 B<REQUIRED> DeploymentConfigName => Str
 
-The name of a deployment configuration associated with the applicable
-IAM user or AWS account.
+The name of a deployment configuration associated with the IAM user or
+AWS account.
 
 
 

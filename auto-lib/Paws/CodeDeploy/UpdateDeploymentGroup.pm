@@ -204,7 +204,8 @@ deployment group is updated.
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-The application name corresponding to the deployment group to update.
+The application name that corresponds to the deployment group to
+update.
 
 
 
@@ -262,17 +263,18 @@ tags, do not enter any tag names.
 =head2 Ec2TagSet => L<Paws::CodeDeploy::EC2TagSet>
 
 Information about groups of tags applied to on-premises instances. The
-deployment group will include only EC2 instances identified by all the
-tag groups.
+deployment group includes only EC2 instances identified by all the tag
+groups.
 
 
 
 =head2 EcsServices => ArrayRef[L<Paws::CodeDeploy::ECSService>]
 
-The target ECS services in the deployment group. This only applies to
-deployment groups that use the Amazon ECS compute platform. A target
-ECS service is specified as an Amazon ECS cluster and service name pair
-using the format C<E<lt>clusternameE<gt>:E<lt>servicenameE<gt>>.
+The target Amazon ECS services in the deployment group. This applies
+only to deployment groups that use the Amazon ECS compute platform. A
+target Amazon ECS service is specified as an Amazon ECS cluster and
+service name pair using the format
+C<E<lt>clusternameE<gt>:E<lt>servicenameE<gt>>.
 
 
 
@@ -299,8 +301,7 @@ To remove tags, do not enter any tag names.
 =head2 OnPremisesTagSet => L<Paws::CodeDeploy::OnPremisesTagSet>
 
 Information about an on-premises instance tag set. The deployment group
-will include only on-premises instances identified by all the tag
-groups.
+includes only on-premises instances identified by all the tag groups.
 
 
 
