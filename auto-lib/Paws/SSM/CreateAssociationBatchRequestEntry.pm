@@ -1,6 +1,7 @@
 package Paws::SSM::CreateAssociationBatchRequestEntry;
   use Moose;
   has AssociationName => (is => 'ro', isa => 'Str');
+  has AutomationTargetParameterName => (is => 'ro', isa => 'Str');
   has ComplianceSeverity => (is => 'ro', isa => 'Str');
   has DocumentVersion => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
@@ -50,6 +51,13 @@ instance.
 =head2 AssociationName => Str
 
   Specify a descriptive name for the association.
+
+
+=head2 AutomationTargetParameterName => Str
+
+  Specify the target for the association. This target is required for
+associations that use an Automation document and target resources by
+using rate controls.
 
 
 =head2 ComplianceSeverity => Str

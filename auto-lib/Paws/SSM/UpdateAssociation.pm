@@ -4,6 +4,7 @@ package Paws::SSM::UpdateAssociation;
   has AssociationId => (is => 'ro', isa => 'Str', required => 1);
   has AssociationName => (is => 'ro', isa => 'Str');
   has AssociationVersion => (is => 'ro', isa => 'Str');
+  has AutomationTargetParameterName => (is => 'ro', isa => 'Str');
   has ComplianceSeverity => (is => 'ro', isa => 'Str');
   has DocumentVersion => (is => 'ro', isa => 'Str');
   has MaxConcurrency => (is => 'ro', isa => 'Str');
@@ -42,6 +43,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AssociationId      => 'MyAssociationId',
       AssociationName    => 'MyAssociationName',       # OPTIONAL
       AssociationVersion => 'MyAssociationVersion',    # OPTIONAL
+      AutomationTargetParameterName =>
+        'MyAutomationTargetParameterName',             # OPTIONAL
       ComplianceSeverity => 'CRITICAL',                # OPTIONAL
       DocumentVersion    => 'MyDocumentVersion',       # OPTIONAL
       MaxConcurrency     => 'MyMaxConcurrency',        # OPTIONAL
@@ -96,6 +99,14 @@ This parameter is provided for concurrency control purposes. You must
 specify the latest association version in the service. If you want to
 ensure that this request succeeds, either specify C<$LATEST>, or omit
 this parameter.
+
+
+
+=head2 AutomationTargetParameterName => Str
+
+Specify the target for the association. This target is required for
+associations that use an Automation document and target resources by
+using rate controls.
 
 
 

@@ -44,9 +44,9 @@ instances only.
 
   The value of the yum repo configuration. For example:
 
-C<cachedir=/var/cache/yum/$basesearch>
+C<[main]>
 
-C<$releasever>
+C<cachedir=/var/cache/yum/$basesearch$releasever>
 
 C<keepcache=0>
 

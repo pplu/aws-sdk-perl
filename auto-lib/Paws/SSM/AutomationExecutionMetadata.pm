@@ -70,8 +70,8 @@ Failed, Timed out, or Cancelled.
 
 =head2 AutomationType => Str
 
-  Use this filter with DescribeAutomationExecution. Specify either Local
-of CrossAccount. CrossAccount is an Automation that executes in
+  Use this filter with DescribeAutomationExecutions. Specify either Local
+or CrossAccount. CrossAccount is an Automation that executes in
 multiple AWS Regions and accounts. For more information, see
 Concurrently Executing Automations in Multiple AWS Regions and Accounts
 (http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation-multiple-accounts-and-regions.html)

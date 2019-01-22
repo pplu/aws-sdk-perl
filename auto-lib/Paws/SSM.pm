@@ -1668,6 +1668,8 @@ Up Systems Manager in Hybrid Environments
 
 =item [AssociationName => Str]
 
+=item [AutomationTargetParameterName => Str]
+
 =item [ComplianceSeverity => Str]
 
 =item [DocumentVersion => Str]
@@ -4065,6 +4067,8 @@ session cannot be resumed.
 =item [AssociationName => Str]
 
 =item [AssociationVersion => Str]
+
+=item [AutomationTargetParameterName => Str]
 
 =item [ComplianceSeverity => Str]
 

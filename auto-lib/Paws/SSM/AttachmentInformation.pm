@@ -31,14 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Attach
 
 =head1 DESCRIPTION
 
-An attribute of an attachment, such as the attachment name or size.
+An attribute of an attachment, such as the attachment name.
 
 =head1 ATTRIBUTES
 
 
 =head2 Name => Str
 
-  
+  The name of the attachment.
 
 
 
