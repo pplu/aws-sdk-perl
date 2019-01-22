@@ -54,7 +54,7 @@ artifact. You can use it to create a model (C<CreateModel>).
   The maximum length of time, in seconds, that the training job can run.
 If model training does not complete during this time, Amazon SageMaker
 ends the job. If value is not specified, default value is 1 day.
-Maximum value is 5 days.
+Maximum value is 28 days.
 
 
 

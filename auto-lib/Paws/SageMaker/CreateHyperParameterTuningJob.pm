@@ -107,10 +107,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         StoppingCondition => {
           MaxRuntimeInSeconds => 1,          # min: 1; OPTIONAL
         },
-        EnableNetworkIsolation => 1,         # OPTIONAL
-        InputDataConfig        => [
+        EnableInterContainerTrafficEncryption => 1,    # OPTIONAL
+        EnableNetworkIsolation                => 1,    # OPTIONAL
+        InputDataConfig                       => [
           {
-            ChannelName => 'MyChannelName',    # min: 1, max: 64
+            ChannelName => 'MyChannelName',            # min: 1, max: 64
             DataSource  => {
               S3DataSource => {
                 S3DataType => 'ManifestFile'
@@ -225,18 +226,19 @@ resource configuration, and stopping condition.
 
 =head2 WarmStartConfig => L<Paws::SageMaker::HyperParameterTuningJobWarmStartConfig>
 
-Specifies configuration for starting the hyperparameter tuning job
+Specifies the configuration for starting the hyperparameter tuning job
 using one or more previous tuning jobs as a starting point. The results
 of previous tuning jobs are used to inform which combinations of
 hyperparameters to search over in the new tuning job.
 
 All training jobs launched by the new hyperparameter tuning job are
 evaluated by using the objective metric. If you specify
-C<IDENTICAL_DATA_AND_ALGORITHM> as the C<WarmStartType> for the warm
-start configuration, the training job that performs the best in the new
-tuning job is compared to the best training jobs from the parent tuning
-jobs. From these, the training job that performs the best as measured
-by the objective metric is returned as the overall best training job.
+C<IDENTICAL_DATA_AND_ALGORITHM> as the C<WarmStartType> value for the
+warm start configuration, the training job that performs the best in
+the new tuning job is compared to the best training jobs from the
+parent tuning jobs. From these, the training job that performs the best
+as measured by the objective metric is returned as the overall best
+training job.
 
 All training jobs launched by parent hyperparameter tuning jobs and the
 new hyperparameter tuning jobs count against the limit of training jobs

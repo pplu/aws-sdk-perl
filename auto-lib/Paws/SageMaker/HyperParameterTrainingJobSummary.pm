@@ -101,7 +101,11 @@ objective metric.
 
 =head2 TrainingEndTime => Str
 
-  The date and time that the training job ended.
+  Specifies the time when the training job ends on training instances.
+You are billed for the time interval between the value of
+C<TrainingStartTime> and this time. For successful jobs and stopped
+jobs, this is the time after model artifacts are uploaded. For failed
+jobs, this is the time when Amazon SageMaker detects a job failure.
 
 
 =head2 B<REQUIRED> TrainingJobArn => Str

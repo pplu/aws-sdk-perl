@@ -16,7 +16,7 @@ Paws::SageMaker::UpdateCodeRepositoryOutput
 
 =head2 B<REQUIRED> CodeRepositoryArn => Str
 
-The ARN of the git repository.
+The ARN of the Git repository.
 
 
 =head2 _request_id => Str

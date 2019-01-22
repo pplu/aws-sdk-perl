@@ -49,10 +49,9 @@ job.
 =head2 AssembleWith => Str
 
   Defines how to assemble the results of the transform job as a single S3
-object. You should select a format that is most convenient to you. To
-concatenate the results in binary format, specify C<None>. To add a
-newline character at the end of every transformed record, specify
-C<Line>.
+object. Choose a format that is most convenient to you. To concatenate
+the results in binary format, specify C<None>. To add a newline
+character at the end of every transformed record, specify C<Line>.
 
 
 =head2 KmsKeyId => Str
@@ -109,11 +108,11 @@ of the transform job. For example, C<s3://bucket-name/key-name-prefix>.
 
 For every S3 object used as input for the transform job, the
 transformed data is stored in a corresponding subfolder in the location
-under the output prefix. For example, the input data
-C<s3://bucket-name/input-name-prefix/dataset01/data.csv> will have the
-transformed data stored at
-C<s3://bucket-name/key-name-prefix/dataset01/>, based on the original
-name, as a series of .part files (.part0001, part0002, etc).
+under the output prefix. For example, for the input data
+C<s3://bucket-name/input-name-prefix/dataset01/data.csv> the
+transformed data is stored at
+C<s3://bucket-name/key-name-prefix/dataset01/>. This is based on the
+original name, as a series of .part files (.part0001, part0002, etc.).
 
 
 

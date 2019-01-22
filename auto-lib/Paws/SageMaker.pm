@@ -942,17 +942,17 @@ Each argument is described in detail in: L<Paws::SageMaker::CreateCodeRepository
 
 Returns: a L<Paws::SageMaker::CreateCodeRepositoryOutput> instance
 
-Create a git repository as a resource in your Amazon SageMaker account.
-You can associate the repository with notebook instances so that you
-can use git source control for the notebooks you create. The git
-repository is a resource in your Amazon SageMaker account, so it can be
-associated with more than one notebook instance, and it persists
+Creates a Git repository as a resource in your Amazon SageMaker
+account. You can associate the repository with notebook instances so
+that you can use Git source control for the notebooks you create. The
+Git repository is a resource in your Amazon SageMaker account, so it
+can be associated with more than one notebook instance, and it persists
 independently from the lifecycle of any notebook instances it is
 associated with.
 
 The repository can be hosted either in AWS CodeCommit
 (http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
-or in any other git repository.
+or in any other Git repository.
 
 
 =head2 CreateCompilationJob
@@ -1489,6 +1489,8 @@ Limit Access to a Notebook Instance by IP Address
 
 =item TrainingJobName => Str
 
+=item [EnableInterContainerTrafficEncryption => Bool]
+
 =item [EnableNetworkIsolation => Bool]
 
 =item [HyperParameters => L<Paws::SageMaker::HyperParameters>]
@@ -1695,7 +1697,7 @@ Each argument is described in detail in: L<Paws::SageMaker::DeleteCodeRepository
 
 Returns: nothing
 
-Deletes the specified git repository from your account.
+Deletes the specified Git repository from your account.
 
 
 =head2 DeleteEndpoint
@@ -1885,7 +1887,7 @@ Each argument is described in detail in: L<Paws::SageMaker::DescribeCodeReposito
 
 Returns: a L<Paws::SageMaker::DescribeCodeRepositoryOutput> instance
 
-Gets details about the specified git repository.
+Gets details about the specified Git repository.
 
 
 =head2 DescribeCompilationJob
@@ -2190,7 +2192,7 @@ Each argument is described in detail in: L<Paws::SageMaker::ListCodeRepositories
 
 Returns: a L<Paws::SageMaker::ListCodeRepositoriesOutput> instance
 
-Gets a list of the git repositories in your account.
+Gets a list of the Git repositories in your account.
 
 
 =head2 ListCompilationJobs
@@ -2915,7 +2917,7 @@ Each argument is described in detail in: L<Paws::SageMaker::UpdateCodeRepository
 
 Returns: a L<Paws::SageMaker::UpdateCodeRepositoryOutput> instance
 
-Updates the specified git repository with the specified values.
+Updates the specified Git repository with the specified values.
 
 
 =head2 UpdateEndpoint

@@ -2,6 +2,7 @@
 package Paws::SageMaker::CreateTrainingJob;
   use Moose;
   has AlgorithmSpecification => (is => 'ro', isa => 'Paws::SageMaker::AlgorithmSpecification', required => 1);
+  has EnableInterContainerTrafficEncryption => (is => 'ro', isa => 'Bool');
   has EnableNetworkIsolation => (is => 'ro', isa => 'Bool');
   has HyperParameters => (is => 'ro', isa => 'Paws::SageMaker::HyperParameters');
   has InputDataConfig => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Channel]');
@@ -66,9 +67,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       StoppingCondition => {
         MaxRuntimeInSeconds => 1,          # min: 1; OPTIONAL
       },
-      TrainingJobName        => 'MyTrainingJobName',
-      EnableNetworkIsolation => 1,                     # OPTIONAL
-      HyperParameters        => {
+      TrainingJobName                       => 'MyTrainingJobName',
+      EnableInterContainerTrafficEncryption => 1,                     # OPTIONAL
+      EnableNetworkIsolation                => 1,                     # OPTIONAL
+      HyperParameters                       => {
         'MyParameterKey' => 'MyParameterValue', # key: max: 256, value: max: 256
       },    # OPTIONAL
       InputDataConfig => [
@@ -140,14 +142,23 @@ Algorithms with Amazon SageMaker
 
 
 
+=head2 EnableInterContainerTrafficEncryption => Bool
+
+To encrypt all communications between ML compute instances in
+distributed training, choose C<True>,. Encryption provides greater
+security for distributed training, but training can take longer because
+of additional communications between ML compute instances.
+
+
+
 =head2 EnableNetworkIsolation => Bool
 
 Isolates the training container. No inbound or outbound network calls
 can be made, except for calls between peers within a training cluster
-for distributed training. If network isolation is used for training
+for distributed training. If you enable network isolation for training
 jobs that are configured to use a VPC, Amazon SageMaker downloads and
-uploads customer data and model artifacts through the specifed VPC, but
-the training container does not have network access.
+uploads customer data and model artifacts through the specified VPC,
+but the training container does not have network access.
 
 The Semantic Segmentation built-in algorithm does not support network
 isolation.

@@ -62,41 +62,41 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 
 =head2 CreationTimeAfter => Str
 
-A filter that returns only git repositories that were created after the
+A filter that returns only Git repositories that were created after the
 specified time.
 
 
 
 =head2 CreationTimeBefore => Str
 
-A filter that returns only git repositories that were created before
+A filter that returns only Git repositories that were created before
 the specified time.
 
 
 
 =head2 LastModifiedTimeAfter => Str
 
-A filter that returns only git repositories that were last modified
+A filter that returns only Git repositories that were last modified
 after the specified time.
 
 
 
 =head2 LastModifiedTimeBefore => Str
 
-A filter that returns only git repositories that were last modified
+A filter that returns only Git repositories that were last modified
 before the specified time.
 
 
 
 =head2 MaxResults => Int
 
-The maximum number of git repositories to return in the response.
+The maximum number of Git repositories to return in the response.
 
 
 
 =head2 NameContains => Str
 
-A string in the git repositories name. This filter returns only
+A string in the Git repositories name. This filter returns only
 repositories whose name contains the specified string.
 
 
@@ -104,7 +104,7 @@ repositories whose name contains the specified string.
 =head2 NextToken => Str
 
 If the result of a C<ListCodeRepositoriesOutput> request was truncated,
-the response includes a C<NextToken>. To get the next set of git
+the response includes a C<NextToken>. To get the next set of Git
 repositories, use the token in the next request.
 
 

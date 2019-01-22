@@ -3,6 +3,7 @@ package Paws::SageMaker::DescribeTrainingJobResponse;
   use Moose;
   has AlgorithmSpecification => (is => 'ro', isa => 'Paws::SageMaker::AlgorithmSpecification', required => 1);
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
+  has EnableInterContainerTrafficEncryption => (is => 'ro', isa => 'Bool');
   has EnableNetworkIsolation => (is => 'ro', isa => 'Bool');
   has FailureReason => (is => 'ro', isa => 'Str');
   has FinalMetricDataList => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::MetricData]');
@@ -47,14 +48,22 @@ metadata.
 A timestamp that indicates when the training job was created.
 
 
+=head2 EnableInterContainerTrafficEncryption => Bool
+
+To encrypt all communications between ML compute instances in
+distributed training, specify C<True>. Encryption provides greater
+security for distributed training, but training take longer because of
+the additional communications between ML compute instances.
+
+
 =head2 EnableNetworkIsolation => Bool
 
-If C<True>, inbound or outbound network calls can be made, except for
-calls between peers within a training cluster for distributed training.
-If network isolation is used for training jobs that are configured to
-use a VPC, Amazon SageMaker downloads and uploads customer data and
-model artifacts through the specifed VPC, but the training container
-does not have network access.
+If you want to allow inbound or outbound network calls, except for
+calls between peers within a training cluster for distributed training,
+choose C<True>. If you enable network isolation for training jobs that
+are configured to use a VPC, Amazon SageMaker downloads and uploads
+customer data and model artifacts through the specified VPC, but the
+training container does not have network access.
 
 The Semantic Segmentation built-in algorithm does not support network
 isolation.

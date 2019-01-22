@@ -82,8 +82,8 @@ sources to be used by the algorithm.
 
 =head2 B<REQUIRED> TrainingImage => Str
 
-  The Amazon Amazon ECR registry path of the Docker image that contains
-the training algorithm.
+  The Amazon ECR registry path of the Docker image that contains the
+training algorithm.
 
 
 =head2 TrainingImageDigest => Str

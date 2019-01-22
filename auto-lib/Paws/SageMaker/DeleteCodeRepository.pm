@@ -40,7 +40,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 
 =head2 B<REQUIRED> CodeRepositoryName => Str
 
-The name of the git repository to delete.
+The name of the Git repository to delete.
 
 
 

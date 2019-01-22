@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-Specifies configuration details for a git repository in your AWS
+Specifies configuration details for a Git repository in your AWS
 account.
 
 =head1 ATTRIBUTES
@@ -41,12 +41,12 @@ account.
 
 =head2 Branch => Str
 
-  The default beach for the git repository.
+  The default branch for the Git repository.
 
 
 =head2 B<REQUIRED> RepositoryUrl => Str
 
-  The URL where the git repository is located.
+  The URL where the Git repository is located.
 
 
 =head2 SecretArn => Str

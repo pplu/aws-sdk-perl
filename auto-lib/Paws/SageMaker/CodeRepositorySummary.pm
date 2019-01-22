@@ -35,36 +35,36 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-Specifies summary information about a git repository.
+Specifies summary information about a Git repository.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> CodeRepositoryArn => Str
 
-  The Amazon Resource Name (ARN) of the git repository.
+  The Amazon Resource Name (ARN) of the Git repository.
 
 
 =head2 B<REQUIRED> CodeRepositoryName => Str
 
-  The name of the git repository.
+  The name of the Git repository.
 
 
 =head2 B<REQUIRED> CreationTime => Str
 
-  The date and time that the git repository was created.
+  The date and time that the Git repository was created.
 
 
 =head2 GitConfig => L<Paws::SageMaker::GitConfig>
 
-  Configuration details for the git repository, including the URL where
+  Configuration details for the Git repository, including the URL where
 it is located and the ARN of the AWS Secrets Manager secret that
 contains the credentials used to access the repository.
 
 
 =head2 B<REQUIRED> LastModifiedTime => Str
 
-  The date and time that the git repository was last modified.
+  The date and time that the Git repository was last modified.
 
 
 

@@ -51,7 +51,7 @@ Details about the current status of the algorithm.
 
 =head2 CertifyForMarketplace => Bool
 
-Whether the algorithm is certified to be listed in AWS Marektplace.
+Whether the algorithm is certified to be listed in AWS Marketplace.
 
 
 =head2 B<REQUIRED> CreationTime => Str

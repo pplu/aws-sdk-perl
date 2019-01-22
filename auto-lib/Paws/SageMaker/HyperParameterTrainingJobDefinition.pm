@@ -1,6 +1,7 @@
 package Paws::SageMaker::HyperParameterTrainingJobDefinition;
   use Moose;
   has AlgorithmSpecification => (is => 'ro', isa => 'Paws::SageMaker::HyperParameterAlgorithmSpecification', required => 1);
+  has EnableInterContainerTrafficEncryption => (is => 'ro', isa => 'Bool');
   has EnableNetworkIsolation => (is => 'ro', isa => 'Bool');
   has InputDataConfig => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Channel]');
   has OutputDataConfig => (is => 'ro', isa => 'Paws::SageMaker::OutputDataConfig', required => 1);
@@ -49,6 +50,14 @@ Defines the training jobs launched by a hyperparameter tuning job.
   The HyperParameterAlgorithmSpecification object that specifies the
 resource algorithm to use for the training jobs that the tuning job
 launches.
+
+
+=head2 EnableInterContainerTrafficEncryption => Bool
+
+  To encrypt all communications between ML compute instances in
+distributed training, specify C<True>. Encryption provides greater
+security for distributed training, but training take longer because of
+the additional communications between ML compute instances.
 
 
 =head2 EnableNetworkIsolation => Bool
