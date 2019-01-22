@@ -78,12 +78,12 @@ launched from this image.
 
 =head2 Description => Str
 
-  The description for display.
+  The description to display.
 
 
 =head2 DisplayName => Str
 
-  The image name for display.
+  The image name to display.
 
 
 =head2 ImageBuilderSupported => Bool

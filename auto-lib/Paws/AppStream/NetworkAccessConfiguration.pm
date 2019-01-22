@@ -32,7 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::
 
 =head1 DESCRIPTION
 
-The network details of the fleet instance for the streaming session.
+Describes the network details of the fleet instance for the streaming
+session.
 
 =head1 ATTRIBUTES
 

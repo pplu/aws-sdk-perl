@@ -48,7 +48,7 @@ The name of the private image.
 
 =head2 B<REQUIRED> SharedAccountId => Str
 
-The 12-digit ID of the AWS account for which to delete image
+The 12-digit identifier of the AWS account for which to delete image
 permissions.
 
 

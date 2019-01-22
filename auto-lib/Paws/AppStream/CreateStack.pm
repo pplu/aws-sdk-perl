@@ -8,6 +8,7 @@ package Paws::AppStream::CreateStack;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has RedirectURL => (is => 'ro', isa => 'Str');
   has StorageConnectors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::StorageConnector]');
+  has Tags => (is => 'ro', isa => 'Paws::AppStream::Tags');
   has UserSettings => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::UserSetting]');
 
   use MooseX::ClassAttribute;
@@ -55,6 +56,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                                   # OPTIONAL
+      Tags => {
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
+      },    # OPTIONAL
       UserSettings => [
         {
           Action => 'CLIPBOARD_COPY_FROM_LOCAL_DEVICE'
@@ -88,13 +92,13 @@ to the next session.
 
 =head2 Description => Str
 
-The description for display.
+The description to display.
 
 
 
 =head2 DisplayName => Str
 
-The stack name for display.
+The stack name to display.
 
 
 
@@ -121,6 +125,20 @@ ends.
 =head2 StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]
 
 The storage connectors to enable.
+
+
+
+=head2 Tags => L<Paws::AppStream::Tags>
+
+The tags to associate with the stack. A tag is a key-value pair (the
+value is optional). For example, Environment=Test, or, if you do not
+specify a value, Environment=.
+
+If you do not specify a value, we set the value to an empty string.
+
+For more information about tags, see Tagging Your Resources
+(http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
+in the I<Amazon AppStream 2.0 Developer Guide>.
 
 
 

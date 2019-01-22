@@ -47,7 +47,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::
 
 =head1 DESCRIPTION
 
-Contains the parameters for a fleet.
+Describes the parameters for a fleet.
 
 =head1 ATTRIBUTES
 
@@ -69,7 +69,7 @@ Contains the parameters for a fleet.
 
 =head2 Description => Str
 
-  The description for display.
+  The description to display.
 
 
 =head2 DisconnectTimeoutInSeconds => Int
@@ -82,12 +82,13 @@ Specify a value between 60 and 57600.
 
 =head2 DisplayName => Str
 
-  The fleet name for display.
+  The fleet name to display.
 
 
 =head2 DomainJoinInfo => L<Paws::AppStream::DomainJoinInfo>
 
-  The information needed to join a Microsoft Active Directory domain.
+  The name of the directory and organizational unit (OU) to use to join
+the fleet to a Microsoft Active Directory domain.
 
 
 =head2 EnableDefaultInternetAccess => Bool

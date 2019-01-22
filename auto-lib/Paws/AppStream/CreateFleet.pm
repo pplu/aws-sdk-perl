@@ -13,6 +13,7 @@ package Paws::AppStream::CreateFleet;
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
   has MaxUserDurationInSeconds => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::AppStream::Tags');
   has VpcConfig => (is => 'ro', isa => 'Paws::AppStream::VpcConfig');
 
   use MooseX::ClassAttribute;
@@ -59,13 +60,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ImageArn                    => 'MyArn',        # OPTIONAL
       ImageName                   => 'MyString',     # OPTIONAL
       MaxUserDurationInSeconds    => 1,              # OPTIONAL
-      VpcConfig                   => {
+      Tags                        => {
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
+      },    # OPTIONAL
+      VpcConfig => {
         SecurityGroupIds => [
-          'MyString', ...                            # min: 1
-        ],                                           # max: 5; OPTIONAL
+          'MyString', ...    # min: 1
+        ],                   # max: 5; OPTIONAL
         SubnetIds => [
-          'MyString', ...                            # min: 1
-        ],                                           # OPTIONAL
+          'MyString', ...    # min: 1
+        ],                   # OPTIONAL
       },    # OPTIONAL
     );
 
@@ -88,7 +92,7 @@ The desired capacity for the fleet.
 
 =head2 Description => Str
 
-The description for display.
+The description to display.
 
 
 
@@ -103,13 +107,14 @@ Specify a value between 60 and 57600.
 
 =head2 DisplayName => Str
 
-The fleet name for display.
+The fleet name to display.
 
 
 
 =head2 DomainJoinInfo => L<Paws::AppStream::DomainJoinInfo>
 
-The information needed to join a Microsoft Active Directory domain.
+The name of the directory and organizational unit (OU) to use to join
+the fleet to a Microsoft Active Directory domain.
 
 
 
@@ -257,6 +262,20 @@ a value between 600 and 57600.
 =head2 B<REQUIRED> Name => Str
 
 A unique name for the fleet.
+
+
+
+=head2 Tags => L<Paws::AppStream::Tags>
+
+The tags to associate with the fleet. A tag is a key-value pair (the
+value is optional). For example, Environment=Test, or, if you do not
+specify a value, Environment=.
+
+If you do not specify a value, we set the value to an empty string.
+
+For more information, see Tagging Your Resources
+(http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
+in the I<Amazon AppStream 2.0 Developer Guide>.
 
 
 

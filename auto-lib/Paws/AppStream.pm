@@ -498,8 +498,29 @@ Paws::AppStream - Perl Interface to AWS Amazon AppStream
 
 Amazon AppStream 2.0
 
-You can use Amazon AppStream 2.0 to stream desktop applications to any
-device running a web browser, without rewriting them.
+This is the I<Amazon AppStream 2.0 API Reference>. It provides
+descriptions and syntax for each of the actions and data types in
+AppStream 2.0. AppStream 2.0 is a fully managed application streaming
+service. You centrally manage your desktop applications on AppStream
+2.0 and securely deliver them to any computer. AppStream 2.0 manages
+the AWS resources required to host and run your applications, scales
+automatically, and provides access to your users on demand.
+
+To learn more about AppStream 2.0, see the following resources:
+
+=over
+
+=item *
+
+Amazon AppStream 2.0 product page (http://aws.amazon.com/appstream2)
+
+=item *
+
+Amazon AppStream 2.0 documentation
+(http://aws.amazon.com/documentation/appstream2)
+
+=back
+
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/appstream2-2016-12-01>
 
@@ -632,6 +653,8 @@ Active Directory domain.
 
 =item [MaxUserDurationInSeconds => Int]
 
+=item [Tags => L<Paws::AppStream::Tags>]
+
 =item [VpcConfig => L<Paws::AppStream::VpcConfig>]
 
 
@@ -666,6 +689,8 @@ specified image.
 =item [ImageArn => Str]
 
 =item [ImageName => Str]
+
+=item [Tags => L<Paws::AppStream::Tags>]
 
 =item [VpcConfig => L<Paws::AppStream::VpcConfig>]
 
@@ -718,6 +743,8 @@ Creates a URL to start an image builder streaming session.
 =item [RedirectURL => Str]
 
 =item [StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]]
+
+=item [Tags => L<Paws::AppStream::Tags>]
 
 =item [UserSettings => ArrayRef[L<Paws::AppStream::UserSetting>]]
 
@@ -1052,7 +1079,7 @@ Each argument is described in detail in: L<Paws::AppStream::DescribeSessions>
 Returns: a L<Paws::AppStream::DescribeSessionsResult> instance
 
 Retrieves a list that describes the streaming sessions for a specified
-stack and fleet. If a user ID is provided for the stack and fleet, only
+stack and fleet. If a UserId is provided for the stack and fleet, only
 streaming sessions for that user are described. If an authentication
 type is not provided, the default is to authenticate users using a
 streaming URL.
@@ -1096,8 +1123,7 @@ Each argument is described in detail in: L<Paws::AppStream::DescribeUsers>
 Returns: a L<Paws::AppStream::DescribeUsersResult> instance
 
 Retrieves a list that describes one or more specified users in the user
-pool, if user names are provided. Otherwise, all users in the user pool
-are described.
+pool.
 
 
 =head2 DescribeUserStackAssociations

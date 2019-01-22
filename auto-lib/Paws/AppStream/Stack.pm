@@ -63,12 +63,12 @@ Describes a stack.
 
 =head2 Description => Str
 
-  The description for display.
+  The description to display.
 
 
 =head2 DisplayName => Str
 
-  The stack name for display.
+  The stack name to display.
 
 
 =head2 FeedbackURL => Str

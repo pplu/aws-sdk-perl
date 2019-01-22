@@ -82,7 +82,7 @@ The name of the stack.
 
 =head2 B<REQUIRED> UserId => Str
 
-The ID of the user.
+The identifier of the user.
 
 
 
