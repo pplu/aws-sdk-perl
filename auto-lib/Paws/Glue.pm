@@ -1120,6 +1120,8 @@ Creates a new DevEndpoint.
 
 =item [LogUri => Str]
 
+=item [MaxCapacity => Num]
+
 =item [MaxRetries => Int]
 
 =item [NotificationProperty => L<Paws::Glue::NotificationProperty>]
@@ -2296,6 +2298,8 @@ C<SCHEDULED>.
 =item [Arguments => L<Paws::Glue::GenericMap>]
 
 =item [JobRunId => Str]
+
+=item [MaxCapacity => Num]
 
 =item [NotificationProperty => L<Paws::Glue::NotificationProperty>]
 

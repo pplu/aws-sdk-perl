@@ -7,6 +7,7 @@ package Paws::Glue::JobUpdate;
   has Description => (is => 'ro', isa => 'Str');
   has ExecutionProperty => (is => 'ro', isa => 'Paws::Glue::ExecutionProperty');
   has LogUri => (is => 'ro', isa => 'Str');
+  has MaxCapacity => (is => 'ro', isa => 'Num');
   has MaxRetries => (is => 'ro', isa => 'Int');
   has NotificationProperty => (is => 'ro', isa => 'Paws::Glue::NotificationProperty');
   has Role => (is => 'ro', isa => 'Str');
@@ -51,7 +52,9 @@ information.
 
 =head2 AllocatedCapacity => Int
 
-  The number of AWS Glue data processing units (DPUs) to allocate to this
+  This field is deprecated. Use C<MaxCapacity> instead.
+
+The number of AWS Glue data processing units (DPUs) to allocate to this
 Job. From 2 to 100 DPUs can be allocated; the default is 10. A DPU is a
 relative measure of processing power that consists of 4 vCPUs of
 compute capacity and 16 GB of memory. For more information, see the AWS
@@ -100,6 +103,14 @@ allowed for this job.
 =head2 LogUri => Str
 
   This field is reserved for future use.
+
+
+=head2 MaxCapacity => Num
+
+  AWS Glue supports running jobs on a C<JobCommand.Name>="pythonshell"
+with allocated processing as low as 0.0625 DPU, which can be specified
+using C<MaxCapacity>. Glue ETL jobs running in any other way cannot
+have fractional DPU allocations.
 
 
 =head2 MaxRetries => Int
