@@ -35,18 +35,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',    # OPTIONAL
-          Values => [
-            'MyString', ...        # OPTIONAL
-          ],                       # OPTIONAL
+          Name   => 'MyString',
+          Values => [ 'MyString', ... ],    # OPTIONAL
         },
         ...
-      ],                           # OPTIONAL
-      MaxResults        => 1,             # OPTIONAL
-      NextToken         => 'MyString',    # OPTIONAL
-      TransitGatewayIds => [
-        'MyString', ...                   # OPTIONAL
-      ],                                  # OPTIONAL
+      ],                                    # OPTIONAL
+      MaxResults        => 1,                      # OPTIONAL
+      NextToken         => 'MyString',             # OPTIONAL
+      TransitGatewayIds => [ 'MyString', ... ],    # OPTIONAL
     );
 
     # Results:
@@ -78,35 +74,55 @@ One or more filters. The possible values are:
 
 =item *
 
-C<amazon-side-asn> - The private ASN for the Amazon side of a BGP
-session.
+C<owner-id> - The ID of the AWS account that owns the transit gateway.
 
 =item *
 
-C<association-default-route-table-id> - The ID of the default
+C<options.propagation-default-route-table-id> - The ID of the default
+propagation route table.
+
+=item *
+
+C<options.amazon-side-asn> - The private ASN for the Amazon side of a
+BGP session.
+
+=item *
+
+C<options.association-default-route-table-id> - The ID of the default
 association route table.
 
 =item *
 
-C<default-route-table-association> - Indicates whether resource
+C<options.auto-accept-shared-attachments> - Indicates whether there is
+automatic acceptance of attachment requests (C<enable> | C<disable>).
+
+=item *
+
+C<options.default-route-table-association> - Indicates whether resource
 attachments are automatically associated with the default association
 route table (C<enable> | C<disable>).
 
 =item *
 
-C<default-route-table-propagation> - Indicates whether resource
+C<options.default-route-table-propagation> - Indicates whether resource
 attachments automatically propagate routes to the default propagation
 route table (C<enable> | C<disable>).
 
 =item *
 
-C<owner-account-id> - The ID of the AWS account that owns the transit
-gateway.
+C<options.dns-support> - Indicates whether DNS support is enabled
+(C<enable> | C<disable>).
 
 =item *
 
-C<propagation-default-route-table-id> - The ID of the default
-propagation route table.
+C<options.vpn-ecmp-support> - Indicates whether Equal Cost Multipath
+Protocol support is enabled (C<enable> | C<disable>).
+
+=item *
+
+C<state> - The state of the attachment (C<pendingAcceptance> |
+C<pending> | C<available> | C<modifying> | C<deleting> | C<deleted> |
+C<failed> | C<rejected>).
 
 =item *
 

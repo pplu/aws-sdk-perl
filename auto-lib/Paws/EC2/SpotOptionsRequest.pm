@@ -4,6 +4,7 @@ package Paws::EC2::SpotOptionsRequest;
   has InstanceInterruptionBehavior => (is => 'ro', isa => 'Str');
   has InstancePoolsToUseCount => (is => 'ro', isa => 'Int');
   has MinTargetCapacity => (is => 'ro', isa => 'Int');
+  has SingleAvailabilityZone => (is => 'ro', isa => 'Bool');
   has SingleInstanceType => (is => 'ro', isa => 'Bool');
 1;
 
@@ -66,6 +67,12 @@ that you specify.
   The minimum target capacity for Spot Instances in the fleet. If the
 minimum target capacity is not reached, the fleet launches no
 instances.
+
+
+=head2 SingleAvailabilityZone => Bool
+
+  Indicates that the fleet launches all Spot Instances into a single
+Availability Zone.
 
 
 =head2 SingleInstanceType => Bool

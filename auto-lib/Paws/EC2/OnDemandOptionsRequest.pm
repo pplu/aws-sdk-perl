@@ -2,6 +2,7 @@ package Paws::EC2::OnDemandOptionsRequest;
   use Moose;
   has AllocationStrategy => (is => 'ro', isa => 'Str');
   has MinTargetCapacity => (is => 'ro', isa => 'Int');
+  has SingleAvailabilityZone => (is => 'ro', isa => 'Bool');
   has SingleInstanceType => (is => 'ro', isa => 'Bool');
 1;
 
@@ -53,6 +54,12 @@ If you do not specify a value, EC2 Fleet defaults to C<lowest-price>.
   The minimum target capacity for On-Demand Instances in the fleet. If
 the minimum target capacity is not reached, the fleet launches no
 instances.
+
+
+=head2 SingleAvailabilityZone => Bool
+
+  Indicates that the fleet launches all On-Demand Instances into a single
+Availability Zone.
 
 
 =head2 SingleInstanceType => Bool

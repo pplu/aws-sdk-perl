@@ -36,18 +36,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',    # OPTIONAL
-          Values => [
-            'MyString', ...        # OPTIONAL
-          ],                       # OPTIONAL
+          Name   => 'MyString',
+          Values => [ 'MyString', ... ],    # OPTIONAL
         },
         ...
-      ],                           # OPTIONAL
-      MaxResults                  => 1,             # OPTIONAL
-      NextToken                   => 'MyString',    # OPTIONAL
-      TransitGatewayRouteTableIds => [
-        'MyString', ...                             # OPTIONAL
-      ],                                            # OPTIONAL
+      ],                                    # OPTIONAL
+      MaxResults                  => 1,                      # OPTIONAL
+      NextToken                   => 'MyString',             # OPTIONAL
+      TransitGatewayRouteTableIds => [ 'MyString', ... ],    # OPTIONAL
       );
 
     # Results:
@@ -92,17 +88,18 @@ C<false>).
 
 =item *
 
+C<state> - The state of the attachment (C<pendingAcceptance> |
+C<pending> | C<available> | C<modifying> | C<deleting> | C<deleted> |
+C<failed> | C<rejected>).
+
+=item *
+
 C<transit-gateway-id> - The ID of the transit gateway.
 
 =item *
 
 C<transit-gateway-route-table-id> - The ID of the transit gateway route
 table.
-
-=item *
-
-C<transit-gateway-route-table-state> - The state (C<pending> |
-C<available> | C<deleting> | C<deleted>).
 
 =back
 

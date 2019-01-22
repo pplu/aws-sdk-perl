@@ -35,18 +35,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',    # OPTIONAL
-          Values => [
-            'MyString', ...        # OPTIONAL
-          ],                       # OPTIONAL
+          Name   => 'MyString',
+          Values => [ 'MyString', ... ],    # OPTIONAL
         },
         ...
-      ],                           # OPTIONAL
-      InstanceIds => [
-        'MyString', ...            # OPTIONAL
-      ],                           # OPTIONAL
-      MaxResults => 1,             # OPTIONAL
-      NextToken  => 'MyString',    # OPTIONAL
+      ],                                    # OPTIONAL
+      InstanceIds => [ 'MyString', ... ],   # OPTIONAL
+      MaxResults  => 1,                     # OPTIONAL
+      NextToken   => 'MyString',            # OPTIONAL
     );
 
     # Results:
@@ -380,12 +376,13 @@ C<owner-id> - The AWS account ID of the instance owner.
 
 =item *
 
-C<partition-number> - The partition in which the instance is located.
+C<placement-group-name> - The name of the placement group for the
+instance.
 
 =item *
 
-C<placement-group-name> - The name of the placement group for the
-instance.
+C<placement-partition-number> - The partition in which the instance is
+located.
 
 =item *
 
