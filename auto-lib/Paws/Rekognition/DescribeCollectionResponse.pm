@@ -32,7 +32,7 @@ Universal Time (UTC), Thursday, 1 January 1970.
 =head2 FaceCount => Int
 
 The number of faces that are indexed into the collection. To index
-faces into a collection, use .
+faces into a collection, use IndexFaces.
 
 
 =head2 FaceModelVersion => Str

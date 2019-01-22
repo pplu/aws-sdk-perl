@@ -35,7 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 
 =head1 DESCRIPTION
 
-Provides information about a celebrity recognized by the operation.
+Provides information about a celebrity recognized by the
+RecognizeCelebrities operation.
 
 =head1 ATTRIBUTES
 

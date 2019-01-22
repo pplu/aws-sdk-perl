@@ -64,7 +64,8 @@ the image is rotated.
 =back
 
 Bounding box information is returned in the C<FaceRecords> array. You
-can get the version of the face detection model by calling .
+can get the version of the face detection model by calling
+DescribeCollection.
 
 Valid values are: C<"ROTATE_0">, C<"ROTATE_90">, C<"ROTATE_180">, C<"ROTATE_270">
 =head2 UnindexedFaces => ArrayRef[L<Paws::Rekognition::UnindexedFace>]

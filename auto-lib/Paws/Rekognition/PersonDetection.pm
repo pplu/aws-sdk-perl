@@ -37,8 +37,8 @@ is tracked in a video. Amazon Rekognition operations that track
 people's paths return an array of C<PersonDetection> objects with
 elements for each time a person's path is tracked in a video.
 
-For more information, see API_GetPersonTracking in the Amazon
-Rekognition Developer Guide.
+For more information, see GetPersonTracking in the Amazon Rekognition
+Developer Guide.
 
 =head1 ATTRIBUTES
 

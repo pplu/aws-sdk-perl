@@ -76,7 +76,8 @@ C<StreamProcessorInput>.
 
 An identifier you assign to the stream processor. You can use C<Name>
 to manage the stream processor. For example, you can get the current
-status of the stream processor by calling . C<Name> is idempotent.
+status of the stream processor by calling DescribeStreamProcessor.
+C<Name> is idempotent.
 
 
 

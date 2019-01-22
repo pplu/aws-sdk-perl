@@ -32,8 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 
 =head1 DESCRIPTION
 
-A face that detected, but didn't index. Use the C<Reasons> response
-attribute to determine why a face wasn't indexed.
+A face that IndexFaces detected, but didn't index. Use the C<Reasons>
+response attribute to determine why a face wasn't indexed.
 
 =head1 ATTRIBUTES
 
