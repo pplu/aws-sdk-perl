@@ -2483,6 +2483,8 @@ Creates a new thing type.
 
 =item TopicRulePayload => L<Paws::IoT::TopicRulePayload>
 
+=item [Tags => Str]
+
 
 =back
 
