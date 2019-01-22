@@ -114,16 +114,16 @@ B<Name formats>
 
 =item *
 
-B<Function name> - C<MyFunction>.
+B<Function name> - C<my-function>.
 
 =item *
 
 B<Function ARN> -
-C<arn:aws:lambda:us-west-2:123456789012:function:MyFunction>.
+C<arn:aws:lambda:us-west-2:123456789012:function:my-function>.
 
 =item *
 
-B<Partial ARN> - C<123456789012:function:MyFunction>.
+B<Partial ARN> - C<123456789012:function:my-function>.
 
 =back
 
@@ -168,12 +168,9 @@ The value must be a multiple of 64 MB.
 
 =head2 RevisionId => Str
 
-An optional value you can use to ensure you are updating the latest
-update of the function version or alias. If the C<RevisionID> you pass
-doesn't match the latest C<RevisionId> of the function or alias, it
-will fail with an error message, advising you to retrieve the latest
-function version or alias C<RevisionID> using either GetFunction or
-GetAlias.
+Only update the function if the revision ID matches the ID specified.
+Use this option to avoid modifying a function that has changed since
+you last read it.
 
 
 

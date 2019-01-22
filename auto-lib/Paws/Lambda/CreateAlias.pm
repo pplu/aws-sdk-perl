@@ -62,7 +62,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 Description => Str
 
-Description of the alias.
+A description of the alias.
 
 
 
@@ -96,22 +96,21 @@ the function name, it is limited to 64 characters in length.
 
 =head2 B<REQUIRED> FunctionVersion => Str
 
-Lambda function version for which you are creating the alias.
+The function version that the alias invokes.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-Name for the alias you are creating.
+The name of the alias.
 
 
 
 =head2 RoutingConfig => L<Paws::Lambda::AliasRoutingConfiguration>
 
-Specifies an additional version your alias can point to, allowing you
-to dictate what percentage of traffic will invoke each version. For
-more information, see Traffic Shifting Using Aliases
-(http://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html).
+The routing configuration
+(http://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html)
+of the alias.
 
 
 

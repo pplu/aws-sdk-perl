@@ -39,8 +39,7 @@ The ARN of the Lambda function.
 
 =head2 LastModified => Str
 
-The date that the event source mapping was last updated, in Unix time
-seconds.
+The date that the event source mapping was last updated.
 
 
 =head2 LastProcessingResult => Str

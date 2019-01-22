@@ -84,25 +84,21 @@ the function name, it is limited to 64 characters in length.
 
 =head2 FunctionVersion => Str
 
-If you specify this optional parameter, the API returns only the
-aliases that are pointing to the specific Lambda function version,
-otherwise the API returns all of the aliases created for the Lambda
-function.
+Specify a function version to only list aliases that invoke that
+version.
 
 
 
 =head2 Marker => Str
 
-Optional string. An opaque pagination token returned from a previous
-C<ListAliases> operation. If present, indicates where to continue the
-listing.
+Specify the pagination token returned by a previous request to retrieve
+the next page of results.
 
 
 
 =head2 MaxItems => Int
 
-Optional integer. Specifies the maximum number of aliases to return in
-response. This parameter value must be greater than 0.
+Limit the number of aliases returned.
 
 
 

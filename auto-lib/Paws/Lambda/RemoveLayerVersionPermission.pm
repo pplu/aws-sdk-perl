@@ -46,7 +46,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 B<REQUIRED> LayerName => Str
 
-The name of the layer.
+The name or Amazon Resource Name (ARN) of the layer.
 
 
 

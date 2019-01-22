@@ -45,7 +45,7 @@ The description of the version.
 
 =head2 LayerArn => Str
 
-The Amazon Resource Name (ARN) of the function layer.
+The ARN of the layer.
 
 
 =head2 LayerVersionArn => Str

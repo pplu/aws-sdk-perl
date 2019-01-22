@@ -61,7 +61,7 @@ The function's environment variables.
 
 =head2 FunctionArn => Str
 
-The function's Amazon Resource Name.
+The function's Amazon Resource Name (ARN).
 
 
 =head2 FunctionName => Str
@@ -89,13 +89,13 @@ format (https://www.w3.org/TR/NOTE-datetime)
 
 =head2 Layers => ArrayRef[L<Paws::Lambda::Layer>]
 
-A list of function layers
-(http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
+The function's layers
+(http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
 
 
 =head2 MasterArn => Str
 
-The ARN of the master function.
+For Lambda@Edge functions, the ARN of the master function.
 
 
 =head2 MemorySize => Int

@@ -32,20 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::Fun
 
 =head1 DESCRIPTION
 
-The object for the Lambda function location.
+Details about a function's deployment package.
 
 =head1 ATTRIBUTES
 
 
 =head2 Location => Str
 
-  The presigned URL you can use to download the function's .zip file that
-you previously uploaded. The URL is valid for up to 10 minutes.
+  A pre-signed URL that you can use to download the deployment package.
 
 
 =head2 RepositoryType => Str
 
-  The repository from which you can download the function.
+  The service hosting the file.
 
 
 

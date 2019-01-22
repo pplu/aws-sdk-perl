@@ -60,7 +60,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 Description => Str
 
-You can change the description of the alias using this parameter.
+A description of the alias.
 
 
 
@@ -94,34 +94,29 @@ the function name, it is limited to 64 characters in length.
 
 =head2 FunctionVersion => Str
 
-Using this parameter you can change the Lambda function version to
-which the alias points.
+The function version that the alias invokes.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-The alias name.
+The name of the alias.
 
 
 
 =head2 RevisionId => Str
 
-An optional value you can use to ensure you are updating the latest
-update of the function version or alias. If the C<RevisionID> you pass
-doesn't match the latest C<RevisionId> of the function or alias, it
-will fail with an error message, advising you retrieve the latest
-function version or alias C<RevisionID> using either GetFunction or
-GetAlias.
+Only update the alias if the revision ID matches the ID specified. Use
+this option to avoid modifying an alias that has changed since you last
+read it.
 
 
 
 =head2 RoutingConfig => L<Paws::Lambda::AliasRoutingConfiguration>
 
-Specifies an additional version your alias can point to, allowing you
-to dictate what percentage of traffic will invoke each version. For
-more information, see Traffic Shifting Using Aliases
-(http://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html).
+The routing configuration
+(http://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html)
+of the alias.
 
 
 

@@ -57,16 +57,16 @@ B<Name formats>
 
 =item *
 
-B<Function name> - C<MyFunction>.
+B<Function name> - C<my-function>.
 
 =item *
 
 B<Function ARN> -
-C<arn:aws:lambda:us-west-2:123456789012:function:MyFunction>.
+C<arn:aws:lambda:us-west-2:123456789012:function:my-function>.
 
 =item *
 
-B<Partial ARN> - C<123456789012:function:MyFunction>.
+B<Partial ARN> - C<123456789012:function:my-function>.
 
 =back
 
@@ -77,7 +77,7 @@ the function name, it is limited to 64 characters in length.
 
 =head2 B<REQUIRED> ReservedConcurrentExecutions => Int
 
-The concurrent execution limit reserved for this function.
+The number of simultaneous executions to reserve for the function.
 
 
 

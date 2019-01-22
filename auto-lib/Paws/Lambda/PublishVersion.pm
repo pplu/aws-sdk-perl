@@ -66,19 +66,17 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 CodeSha256 => Str
 
-The SHA256 hash of the deployment package you want to publish. This
-provides validation on the code you are publishing. If you provide this
-parameter, the value must match the SHA256 of the $LATEST version for
-the publication to succeed. You can use the B<DryRun> parameter of
-UpdateFunctionCode to verify the hash value that will be returned
-before publishing your new version.
+Only publish a version if the hash matches the value specified. Use
+this option to avoid publishing a version if the function code has
+changed since you last updated it. You can get the hash for the version
+you uploaded from the output of UpdateFunctionCode.
 
 
 
 =head2 Description => Str
 
-The description for the version you are publishing. If not provided,
-AWS Lambda copies the description from the $LATEST version.
+Specify a description for the version to override the description in
+the function configuration.
 
 
 
@@ -112,12 +110,9 @@ the function name, it is limited to 64 characters in length.
 
 =head2 RevisionId => Str
 
-An optional value you can use to ensure you are updating the latest
-update of the function version or alias. If the C<RevisionID> you pass
-doesn't match the latest C<RevisionId> of the function or alias, it
-will fail with an error message, advising you retrieve the latest
-function version or alias C<RevisionID> using either GetFunction or
-GetAlias.
+Only update the function if the revision ID matches the ID specified.
+Use this option to avoid publishing a version if the function
+configuration has changed since you last updated it.
 
 
 

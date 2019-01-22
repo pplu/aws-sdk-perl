@@ -125,16 +125,16 @@ B<Name formats>
 
 =item *
 
-B<Function name> - C<MyFunction>.
+B<Function name> - C<my-function>.
 
 =item *
 
 B<Function ARN> -
-C<arn:aws:lambda:us-west-2:123456789012:function:MyFunction>.
+C<arn:aws:lambda:us-west-2:123456789012:function:my-function>.
 
 =item *
 
-B<Partial ARN> - C<123456789012:function:MyFunction>.
+B<Partial ARN> - C<123456789012:function:my-function>.
 
 =back
 
@@ -146,15 +146,18 @@ the function name, it is limited to 64 characters in length.
 =head2 B<REQUIRED> Handler => Str
 
 The name of the method within your code that Lambda calls to execute
-your function. For more information, see Programming Model
+your function. The format includes the filename and can also include
+namespaces and other qualifiers, depending on the runtime. For more
+information, see Programming Model
 (http://docs.aws.amazon.com/lambda/latest/dg/programming-model-v2.html).
 
 
 
 =head2 KMSKeyArn => Str
 
-The ARN of the KMS key used to encrypt your function's environment
-variables. If not provided, AWS Lambda will use a default service key.
+The ARN of the AWS Key Management Service key used to encrypt your
+function's environment variables. If not provided, AWS Lambda uses a
+default service key.
 
 
 
@@ -162,7 +165,8 @@ variables. If not provided, AWS Lambda will use a default service key.
 
 A list of function layers
 (http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
-to add to the function's execution environment.
+to add to the function's execution environment. Specify each layer by
+ARN, including the version.
 
 
 
@@ -183,23 +187,22 @@ creation.
 
 =head2 B<REQUIRED> Role => Str
 
-The Amazon Resource Name (ARN) of the function's execution role
-(http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role).
+The Amazon Resource Name (ARN) of the function's execution role.
 
 
 
 =head2 B<REQUIRED> Runtime => Str
 
-The runtime version for the function.
+The identifier of the function's runtime
+(http://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html).
 
 Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"nodejs8.10">, C<"java8">, C<"python2.7">, C<"python3.6">, C<"python3.7">, C<"dotnetcore1.0">, C<"dotnetcore2.0">, C<"dotnetcore2.1">, C<"nodejs4.3-edge">, C<"go1.x">, C<"ruby2.5">, C<"provided">
 
 =head2 Tags => L<Paws::Lambda::Tags>
 
-The list of tags (key-value pairs) assigned to the new function. For
-more information, see Tagging Lambda Functions
-(http://docs.aws.amazon.com/lambda/latest/dg/tagging.html) in the B<AWS
-Lambda Developer Guide>.
+A list of tags
+(http://docs.aws.amazon.com/lambda/latest/dg/tagging.html) to apply to
+the function.
 
 
 
@@ -220,10 +223,11 @@ requests with AWS X-Ray.
 
 =head2 VpcConfig => L<Paws::Lambda::VpcConfig>
 
-If your Lambda function accesses resources in a VPC, you provide this
-parameter identifying the list of security group IDs and subnet IDs.
-These must belong to the same VPC. You must provide at least one
-security group and one subnet ID.
+For network connectivity to AWS resources in a VPC, specify a list of
+security groups and subnets in the VPC. When you connect a function to
+a VPC, it can only access resources and the internet through that VPC.
+For more information, see VPC Settings
+(http://docs.aws.amazon.com/lambda/latest/dg/vpc.html).
 
 
 

@@ -82,7 +82,7 @@ the function name, it is limited to 64 characters in length.
 
 =head2 B<REQUIRED> Name => Str
 
-Name of the alias for which you want to retrieve information.
+The name of the alias.
 
 
 

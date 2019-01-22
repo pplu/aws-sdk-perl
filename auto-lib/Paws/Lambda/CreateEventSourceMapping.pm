@@ -157,8 +157,8 @@ Valid values are: C<"TRIM_HORIZON">, C<"LATEST">, C<"AT_TIMESTAMP">
 
 =head2 StartingPositionTimestamp => Str
 
-With C<StartingPosition> set to C<AT_TIMESTAMP>, the Unix time in
-seconds from which to start reading.
+With C<StartingPosition> set to C<AT_TIMESTAMP>, the time from which to
+start reading.
 
 
 

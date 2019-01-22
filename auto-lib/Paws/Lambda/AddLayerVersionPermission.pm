@@ -65,7 +65,7 @@ C<lambda:GetLayerVersion>.
 
 =head2 B<REQUIRED> LayerName => Str
 
-The name of the layer.
+The name or Amazon Resource Name (ARN) of the layer.
 
 
 

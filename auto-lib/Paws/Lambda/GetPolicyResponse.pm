@@ -18,14 +18,12 @@ Paws::Lambda::GetPolicyResponse
 
 =head2 Policy => Str
 
-The resource policy associated with the specified function. The
-response returns the same as a string using a backslash ("\") as an
-escape character in the JSON.
+The resource-based policy.
 
 
 =head2 RevisionId => Str
 
-Represents the latest updated revision of the function or alias.
+A unique identifier for the current revision of the policy.
 
 
 =head2 _request_id => Str

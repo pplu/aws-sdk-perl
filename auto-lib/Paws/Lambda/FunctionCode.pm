@@ -34,15 +34,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::Fun
 
 =head1 DESCRIPTION
 
-The code for the Lambda function. You can specify either an S3
-location, or upload a deployment package directly.
+The code for the Lambda function. You can specify either an object in
+Amazon S3, or upload a deployment package directly.
 
 =head1 ATTRIBUTES
 
 
 =head2 S3Bucket => Str
 
-  An Amazon S3 bucket in the same region as your function.
+  An Amazon S3 bucket in the same region as your function. The bucket can
+be in a different AWS account.
 
 
 =head2 S3Key => Str
@@ -58,8 +59,8 @@ use.
 
 =head2 ZipFile => Str
 
-  The base64-encoded contents of your zip file containing your deployment
-package. AWS SDK and AWS CLI clients handle the encoding for you.
+  The base64-encoded contents of the deployment package. AWS SDK and AWS
+CLI clients handle the encoding for you.
 
 
 

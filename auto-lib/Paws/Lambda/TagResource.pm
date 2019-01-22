@@ -43,19 +43,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 B<REQUIRED> Resource => Str
 
-The ARN (Amazon Resource Name) of the Lambda function. For more
-information, see Tagging Lambda Functions
-(http://docs.aws.amazon.com/lambda/latest/dg/tagging.html) in the B<AWS
-Lambda Developer Guide>.
+The function's Amazon Resource Name (ARN).
 
 
 
 =head2 B<REQUIRED> Tags => L<Paws::Lambda::Tags>
 
-The list of tags (key-value pairs) you are assigning to the Lambda
-function. For more information, see Tagging Lambda Functions
-(http://docs.aws.amazon.com/lambda/latest/dg/tagging.html) in the B<AWS
-Lambda Developer Guide>.
+A list of tags to apply to the function.
 
 
 
