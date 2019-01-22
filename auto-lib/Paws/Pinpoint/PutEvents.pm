@@ -71,12 +71,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },    # OPTIONAL
             Events => {
               'My__string' => {
-                Attributes => { 'My__string' => 'My__string', },    # OPTIONAL
+                AppPackageName => 'My__string',
+                AppTitle       => 'My__string',
+                AppVersionCode => 'My__string',
+                Attributes     => { 'My__string' => 'My__string', },  # OPTIONAL
                 ClientSdkVersion => 'My__string',
                 EventType        => 'My__string',
-                Metrics          => { 'My__string' => 1, },         # OPTIONAL
+                Metrics          => { 'My__string' => 1, },           # OPTIONAL
+                SdkName          => 'My__string',
                 Session          => {
-                  Duration       => 1,                              # OPTIONAL
+                  Duration       => 1,                                # OPTIONAL
                   Id             => 'My__string',
                   StartTimestamp => 'My__string',
                   StopTimestamp  => 'My__string',
