@@ -1,7 +1,7 @@
 
 package Paws::SNS::GetSMSAttributesResponse;
   use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::SNS::MapStringToString');
+  has Attributes => (is => 'ro', isa => 'Paws::SNS::MapStringToString', request_name => 'attributes', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
