@@ -148,6 +148,38 @@ $test_params = {
 
 request_has_params($test_params, $request);
 
+$request = $sns->Publish(
+  Message => 'MyMessage',
+  MessageAttributes => {
+    'AWS.SNS.SMS.SenderID' => {
+      StringValue => 'My Sender ID',
+      DataType => 'String',
+    },
+    'AWS.SNS.SMS.SMSType' => {
+      StringValue => 'Transactional',
+      DataType => 'String',
+    },
+  },
+  PhoneNumber => '+34000000000',
+);
+
+use Data::Dumper;
+print Dumper($request);
+
+$test_params = {
+  Message => 'MyMessage',
+  'MessageAttributes.entry.1.Name' => 'AWS.SNS.SMS.SenderID',
+  'MessageAttributes.entry.1.Value.StringValue' => 'My Sender ID',
+  'MessageAttributes.entry.1.Value.DataType' => 'String',
+  'MessageAttributes.entry.2.Name' => 'AWS.SNS.SMS.SMSType',
+  'MessageAttributes.entry.2.Value.StringValue' => 'Transactional',
+  'MessageAttributes.entry.2.Value.DataType' => 'String',
+  PhoneNumber => '+34000000000',
+};
+
+request_has_params($test_params, $request);
+
+
 
 my $ses = $aws->service('SES');
 
