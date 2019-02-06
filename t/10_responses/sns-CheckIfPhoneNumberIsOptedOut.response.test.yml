@@ -1,7 +1,0 @@
----
-call: CheckIfPhoneNumberIsOptedOut
-service: SNS
-tests:
-  - expected: 1
-    op: ==
-    path: IsOptedOut
