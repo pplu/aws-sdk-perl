@@ -40,7 +40,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/app
 
 =head2 B<REQUIRED> SessionId => Str
 
-The ID of the streaming session.
+The identifier of the streaming session.
 
 
 

@@ -51,7 +51,11 @@ be used from each input.
 =head2 CustomLanguageCode => Str
 
   Indicates the language of the caption output track, using the ISO 639-2
-or ISO 639-3 three-letter language code
+or ISO 639-3 three-letter language code. For most captions output
+formats, the encoder puts this language information in the output
+captions metadata. If your output captions format is DVB-Sub or Burn
+in, the encoder uses this language information to choose the font
+language for rendering the captions text.
 
 
 =head2 DestinationSettings => L<Paws::MediaConvert::CaptionDestinationSettings>
@@ -61,7 +65,11 @@ or ISO 639-3 three-letter language code
 
 =head2 LanguageCode => Str
 
-  Indicates the language of the caption output track.
+  Specify the language of this captions output track. For most captions
+output formats, the encoder puts this language information in the
+output captions metadata. If your output captions format is DVB-Sub or
+Burn in, the encoder uses this language information to choose the font
+language for rendering the captions text.
 
 
 =head2 LanguageDescription => Str

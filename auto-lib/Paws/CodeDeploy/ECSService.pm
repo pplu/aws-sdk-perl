@@ -40,12 +40,12 @@ deployment's target.
 
 =head2 ClusterName => Str
 
-  The name of the cluster that the ECS service is associated with.
+  The name of the cluster that the Amazon ECS service is associated with.
 
 
 =head2 ServiceName => Str
 
-  The name of the target ECS service.
+  The name of the target Amazon ECS service.
 
 
 

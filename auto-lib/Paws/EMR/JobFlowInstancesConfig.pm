@@ -64,7 +64,8 @@ must be present), but we don't recommend this configuration.
 
 =head2 AdditionalSlaveSecurityGroups => ArrayRef[Str|Undef]
 
-  A list of additional Amazon EC2 security group IDs for the slave nodes.
+  A list of additional Amazon EC2 security group IDs for the core and
+task nodes.
 
 
 =head2 Ec2KeyName => Str
@@ -105,7 +106,8 @@ versions 4.8.0 and later, excluding 5.0.x versions.
 
 =head2 EmrManagedSlaveSecurityGroup => Str
 
-  The identifier of the Amazon EC2 security group for the slave nodes.
+  The identifier of the Amazon EC2 security group for the core and task
+nodes.
 
 
 =head2 HadoopVersion => Str
@@ -161,7 +163,7 @@ service to access clusters in VPC private subnets.
 
 =head2 SlaveInstanceType => Str
 
-  The EC2 instance type of the slave nodes.
+  The EC2 instance type of the core and task nodes.
 
 
 =head2 TerminationProtected => Bool

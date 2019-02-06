@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::Ali
 
 =head1 DESCRIPTION
 
-The alias's traffic shifting
+A Lambda function alias's traffic shifting
 (http://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html)
 configuration.
 

@@ -17,7 +17,7 @@ Paws::SageMaker::ListCodeRepositoriesOutput
 
 =head2 B<REQUIRED> CodeRepositorySummaryList => ArrayRef[L<Paws::SageMaker::CodeRepositorySummary>]
 
-Gets a list of summaries of the git repositories. Each summary
+Gets a list of summaries of the Git repositories. Each summary
 specifies the following values for the repository:
 
 =over
@@ -44,8 +44,6 @@ Configuration information, including the URL location of the repository
 and the ARN of the AWS Secrets Manager secret that contains the
 credentials used to access the repository.
 
-=item *
-
 =back
 
 
@@ -53,7 +51,7 @@ credentials used to access the repository.
 =head2 NextToken => Str
 
 If the result of a C<ListCodeRepositoriesOutput> request was truncated,
-the response includes a C<NextToken>. To get the next set of git
+the response includes a C<NextToken>. To get the next set of Git
 repositories, use the token in the next request.
 
 

@@ -36,6 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $AlgorithmSpecification =
       $DescribeTrainingJobResponse->AlgorithmSpecification;
     my $CreationTime = $DescribeTrainingJobResponse->CreationTime;
+    my $EnableInterContainerTrafficEncryption =
+      $DescribeTrainingJobResponse->EnableInterContainerTrafficEncryption;
     my $EnableNetworkIsolation =
       $DescribeTrainingJobResponse->EnableNetworkIsolation;
     my $FailureReason       = $DescribeTrainingJobResponse->FailureReason;

@@ -1,8 +1,10 @@
 
 package Paws::StorageGateway::JoinDomain;
   use Moose;
+  has DomainControllers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
+  has OrganizationalUnit => (is => 'ro', isa => 'Str');
   has Password => (is => 'ro', isa => 'Str', required => 1);
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -31,11 +33,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $storagegateway = Paws->service('StorageGateway');
     my $JoinDomainOutput = $storagegateway->JoinDomain(
-      DomainName => 'MyDomainName',
-      GatewayARN => 'MyGatewayARN',
-      Password   => 'MyDomainUserPassword',
-      UserName   => 'MyDomainUserName',
-
+      DomainName         => 'MyDomainName',
+      GatewayARN         => 'MyGatewayARN',
+      Password           => 'MyDomainUserPassword',
+      UserName           => 'MyDomainUserName',
+      DomainControllers  => [ 'MyHost', ... ],         # OPTIONAL
+      OrganizationalUnit => 'MyOrganizationalUnit',    # OPTIONAL
     );
 
     # Results:
@@ -49,6 +52,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sto
 =head1 ATTRIBUTES
 
 
+=head2 DomainControllers => ArrayRef[Str|Undef]
+
+List of IPv4 addresses, NetBIOS names, or host names of your domain
+server. If you need to specify the port number include it after the
+colon (E<ldquo>:E<rdquo>). For example, C<mydc.mydomain.com:389>.
+
+
+
 =head2 B<REQUIRED> DomainName => Str
 
 The name of the domain that you want the gateway to join.
@@ -57,8 +68,17 @@ The name of the domain that you want the gateway to join.
 
 =head2 B<REQUIRED> GatewayARN => Str
 
-The unique Amazon Resource Name (ARN) of the file gateway you want to
-add to the Active Directory domain.
+The Amazon Resource Name (ARN) of the gateway. Use the C<ListGateways>
+operation to return a list of gateways for your account and region.
+
+
+
+=head2 OrganizationalUnit => Str
+
+The organizational unit (OU) is a container with an Active Directory
+that can hold users, groups, computers, and other OUs and this
+parameter specifies the OU that the gateway will join within the AD
+domain.
 
 
 

@@ -31,8 +31,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTAnalytic
 
 =head1 DESCRIPTION
 
-The URI of the location where data set contents are stored, usually the
-URI of a file in an S3 bucket.
+The value of the variable as a structure that specifies an output file
+URI.
 
 =head1 ATTRIBUTES
 

@@ -54,32 +54,30 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 FunctionVersion => Str
 
-Set to C<ALL> to list all published versions. If not specified, only
-the latest unpublished version ARN is returned.
+Set to C<ALL> to include entries for all published versions of each
+function.
 
 Valid values are: C<"ALL">
 
 =head2 Marker => Str
 
-Optional string. An opaque pagination token returned from a previous
-C<ListFunctions> operation. If present, indicates where to continue the
-listing.
+Specify the pagination token returned by a previous request to retrieve
+the next page of results.
 
 
 
 =head2 MasterRegion => Str
 
-Specify a region (e.g. C<us-east-2>) to only list functions that were
-created in that region, or C<ALL> to include functions replicated from
-any region. If specified, you also must specify the C<FunctionVersion>.
+For Lambda@Edge functions, the region of the master function. For
+example, C<us-east-2> or C<ALL>. If specified, you must set
+C<FunctionVersion> to C<ALL>.
 
 
 
 =head2 MaxItems => Int
 
-Optional integer. Specifies the maximum number of AWS Lambda functions
-to return in response. This parameter value must be greater than 0. The
-absolute maximum of AWS Lambda functions that can be returned is 50.
+Specify a value between 1 and 50 to limit the number of functions in
+the response.
 
 
 

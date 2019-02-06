@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 
 =head1 DESCRIPTION
 
-Information about a word or line of text detected by .
+Information about a word or line of text detected by DetectText.
 
 The C<DetectedText> field contains the text that Amazon Rekognition
 detected in the image.

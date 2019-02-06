@@ -17,7 +17,7 @@ Paws::CodeDeploy::BatchGetDeploymentInstancesOutput
 
 =head2 ErrorMessage => Str
 
-Information about errors that may have occurred during the API call.
+Information about errors that might have occurred during the API call.
 
 
 =head2 InstancesSummary => ArrayRef[L<Paws::CodeDeploy::InstanceSummary>]

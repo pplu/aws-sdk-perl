@@ -239,6 +239,8 @@ AWS Firewall Manager SNS logs.
 
 =item PolicyId => Str
 
+=item [DeleteAllPolicyResources => Bool]
+
 
 =back
 
@@ -261,9 +263,8 @@ Each argument is described in detail in: L<Paws::FMS::DisassociateAdminAccount>
 Returns: nothing
 
 Disassociates the account that has been set as the AWS Firewall Manager
-administrator account. You will need to submit an
-C<AssociateAdminAccount> request to set a new account as the AWS
-Firewall administrator.
+administrator account. To set a different account as the administrator
+account, you must submit an C<AssociateAdminAccount> request .
 
 
 =head2 GetAdminAccount

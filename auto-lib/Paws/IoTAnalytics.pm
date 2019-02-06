@@ -464,7 +464,8 @@ Each argument is described in detail in: L<Paws::IoTAnalytics::CreateDatasetCont
 
 Returns: a L<Paws::IoTAnalytics::CreateDatasetContentResponse> instance
 
-Creates the content of a data set by applying a SQL action.
+Creates the content of a data set by applying a "queryAction" (a SQL
+query) or a "containerAction" (executing a containerized application).
 
 
 =head2 CreateDatastore
@@ -722,6 +723,10 @@ Retrieves a list of channels.
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
+
+=item [ScheduledBefore => Str]
+
+=item [ScheduledOnOrAfter => Str]
 
 
 =back
@@ -1020,9 +1025,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::IoTAnalytics::ListChannelsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllDatasetContents(sub { },DatasetName => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListAllDatasetContents(sub { },DatasetName => Str, [MaxResults => Int, NextToken => Str, ScheduledBefore => Str, ScheduledOnOrAfter => Str])
 
-=head2 ListAllDatasetContents(DatasetName => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListAllDatasetContents(DatasetName => Str, [MaxResults => Int, NextToken => Str, ScheduledBefore => Str, ScheduledOnOrAfter => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

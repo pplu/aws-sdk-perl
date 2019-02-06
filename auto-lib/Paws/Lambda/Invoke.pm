@@ -62,24 +62,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 ClientContext => Str
 
-Using the C<ClientContext> you can pass client-specific information to
-the Lambda function you are invoking. You can then process the client
-information in your Lambda function as you choose through the context
-variable. For an example of a C<ClientContext> JSON, see PutEvents
-(http://docs.aws.amazon.com/mobileanalytics/latest/ug/PutEvents.html)
-in the I<Amazon Mobile Analytics API Reference and User Guide>.
-
-The ClientContext JSON must be base64-encoded and has a maximum size of
-3583 bytes.
-
-C<ClientContext> information is returned only if you use the
-synchronous (C<RequestResponse>) invocation type.
+Up to 3583 bytes of base64-encoded data about the invoking client to
+pass to the function in the context object.
 
 
 
 =head2 B<REQUIRED> FunctionName => Str
 
-The name of the Lambda function.
+The name of the Lambda function, version, or alias.
 
 B<Name formats>
 
@@ -87,21 +77,23 @@ B<Name formats>
 
 =item *
 
-B<Function name> - C<MyFunction>.
+B<Function name> - C<my-function> (name-only), C<my-function:v1> (with
+alias).
 
 =item *
 
 B<Function ARN> -
-C<arn:aws:lambda:us-west-2:123456789012:function:MyFunction>.
+C<arn:aws:lambda:us-west-2:123456789012:function:my-function>.
 
 =item *
 
-B<Partial ARN> - C<123456789012:function:MyFunction>.
+B<Partial ARN> - C<123456789012:function:my-function>.
 
 =back
 
-The length constraint applies only to the full ARN. If you specify only
-the function name, it is limited to 64 characters in length.
+You can append a version number or alias to any of the formats. The
+length constraint applies only to the full ARN. If you specify only the
+function name, it is limited to 64 characters in length.
 
 
 
@@ -115,11 +107,13 @@ Choose from the following options.
 
 C<RequestResponse> (default) - Invoke the function synchronously. Keep
 the connection open until the function returns a response or times out.
+The API response includes the function response and additional data.
 
 =item *
 
 C<Event> - Invoke the function asynchronously. Send events that fail
-multiple times to the function's dead-letter queue (if configured).
+multiple times to the function's dead-letter queue (if configured). The
+API response only includes a status code.
 
 =item *
 
@@ -133,11 +127,7 @@ Valid values are: C<"Event">, C<"RequestResponse">, C<"DryRun">
 
 =head2 LogType => Str
 
-You can set this optional parameter to C<Tail> in the request only if
-you specify the C<InvocationType> parameter with value
-C<RequestResponse>. In this case, AWS Lambda returns the base64-encoded
-last 4 KB of log data produced by your Lambda function in the
-C<x-amz-log-result> header.
+Set to C<Tail> to include the execution log in the response.
 
 Valid values are: C<"None">, C<"Tail">
 

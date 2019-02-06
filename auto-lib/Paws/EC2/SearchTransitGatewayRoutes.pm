@@ -33,10 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SearchTransitGatewayRoutesResult = $ec2->SearchTransitGatewayRoutes(
       Filters => [
         {
-          Name   => 'MyString',    # OPTIONAL
-          Values => [
-            'MyString', ...        # OPTIONAL
-          ],                       # OPTIONAL
+          Name   => 'MyString',
+          Values => [ 'MyString', ... ],    # OPTIONAL
         },
         ...
       ],
@@ -91,11 +89,6 @@ attachment.
 
 C<transit-gateway-route-type> - The route type (C<static> |
 C<propagated>).
-
-=item *
-
-C<transit-gateway-route-vpn-connection-id> - The ID of the VPN
-connection.
 
 =back
 

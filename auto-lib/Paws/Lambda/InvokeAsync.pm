@@ -59,16 +59,16 @@ B<Name formats>
 
 =item *
 
-B<Function name> - C<MyFunction>.
+B<Function name> - C<my-function>.
 
 =item *
 
 B<Function ARN> -
-C<arn:aws:lambda:us-west-2:123456789012:function:MyFunction>.
+C<arn:aws:lambda:us-west-2:123456789012:function:my-function>.
 
 =item *
 
-B<Partial ARN> - C<123456789012:function:MyFunction>.
+B<Partial ARN> - C<123456789012:function:my-function>.
 
 =back
 

@@ -43,12 +43,12 @@ Elastic Inference in Amazon SageMaker
 
 =head2 AdditionalCodeRepositories => ArrayRef[Str|Undef]
 
-An array of up to 3 git repositories associated with the notebook
-instance. These can be either the names of git repositories stored as
-resources in your account, or the URL of git repositories in AWS
+An array of up to three Git repositories associated with the notebook
+instance. These can be either the names of Git repositories stored as
+resources in your account, or the URL of Git repositories in AWS
 CodeCommit
 (http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
-or in any other git repository. These repositories are cloned at the
+or in any other Git repository. These repositories are cloned at the
 same level as the default repository of your notebook instance. For
 more information, see Associating Git Repositories with Amazon
 SageMaker Notebook Instances
@@ -63,12 +63,12 @@ instance was created
 
 =head2 DefaultCodeRepository => Str
 
-The git repository associated with the notebook instance as its default
-code repository. This can be either the name of a git repository stored
-as a resource in your account, or the URL of a git repository in AWS
+The Git repository associated with the notebook instance as its default
+code repository. This can be either the name of a Git repository stored
+as a resource in your account, or the URL of a Git repository in AWS
 CodeCommit
 (http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
-or in any other git repository. When you open a notebook instance, it
+or in any other Git repository. When you open a notebook instance, it
 opens in the directory that contains this repository. For more
 information, see Associating Git Repositories with Amazon SageMaker
 Notebook Instances
@@ -89,7 +89,7 @@ Default
 Valid values are: C<"Enabled">, C<"Disabled">
 =head2 FailureReason => Str
 
-If status is failed, the reason it failed.
+If status is C<Failed>, the reason it failed.
 
 
 =head2 InstanceType => Str
@@ -99,8 +99,8 @@ The type of ML compute instance running on the notebook instance.
 Valid values are: C<"ml.t2.medium">, C<"ml.t2.large">, C<"ml.t2.xlarge">, C<"ml.t2.2xlarge">, C<"ml.t3.medium">, C<"ml.t3.large">, C<"ml.t3.xlarge">, C<"ml.t3.2xlarge">, C<"ml.m4.xlarge">, C<"ml.m4.2xlarge">, C<"ml.m4.4xlarge">, C<"ml.m4.10xlarge">, C<"ml.m4.16xlarge">, C<"ml.m5.xlarge">, C<"ml.m5.2xlarge">, C<"ml.m5.4xlarge">, C<"ml.m5.12xlarge">, C<"ml.m5.24xlarge">, C<"ml.c4.xlarge">, C<"ml.c4.2xlarge">, C<"ml.c4.4xlarge">, C<"ml.c4.8xlarge">, C<"ml.c5.xlarge">, C<"ml.c5.2xlarge">, C<"ml.c5.4xlarge">, C<"ml.c5.9xlarge">, C<"ml.c5.18xlarge">, C<"ml.c5d.xlarge">, C<"ml.c5d.2xlarge">, C<"ml.c5d.4xlarge">, C<"ml.c5d.9xlarge">, C<"ml.c5d.18xlarge">, C<"ml.p2.xlarge">, C<"ml.p2.8xlarge">, C<"ml.p2.16xlarge">, C<"ml.p3.2xlarge">, C<"ml.p3.8xlarge">, C<"ml.p3.16xlarge">
 =head2 KmsKeyId => Str
 
-AWS KMS key ID Amazon SageMaker uses to encrypt data when storing it on
-the ML storage volume attached to the instance.
+The AWS KMS key ID Amazon SageMaker uses to encrypt data when storing
+it on the ML storage volume attached to the instance.
 
 
 =head2 LastModifiedTime => Str
@@ -111,7 +111,7 @@ instance was last modified.
 
 =head2 NetworkInterfaceId => Str
 
-Network interface IDs that Amazon SageMaker created at the time of
+The network interface IDs that Amazon SageMaker created at the time of
 creating the instance.
 
 
@@ -131,7 +131,7 @@ Step 2.1: (Optional) Customize a Notebook Instance
 
 =head2 NotebookInstanceName => Str
 
-Name of the Amazon SageMaker notebook instance.
+The name of the Amazon SageMaker notebook instance.
 
 
 =head2 NotebookInstanceStatus => Str
@@ -141,7 +141,7 @@ The status of the notebook instance.
 Valid values are: C<"Pending">, C<"InService">, C<"Stopping">, C<"Stopped">, C<"Failed">, C<"Deleting">, C<"Updating">
 =head2 RoleArn => Str
 
-Amazon Resource Name (ARN) of the IAM role associated with the
+The Amazon Resource Name (ARN) of the IAM role associated with the
 instance.
 
 

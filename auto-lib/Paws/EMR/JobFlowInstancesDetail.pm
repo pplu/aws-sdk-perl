@@ -69,9 +69,9 @@ identifier of the subnet where the cluster was launched.
 =head2 B<REQUIRED> InstanceCount => Int
 
   The number of Amazon EC2 instances in the cluster. If the value is 1,
-the same instance serves as both the master and slave node. If the
-value is greater than 1, one instance is the master node and all others
-are slave nodes.
+the same instance serves as both the master and core and task node. If
+the value is greater than 1, one instance is the master node and all
+others are core and task nodes.
 
 
 =head2 InstanceGroups => ArrayRef[L<Paws::EMR::InstanceGroupDetail>]
@@ -119,7 +119,7 @@ only an approximation and does not reflect the actual billing rate.
 
 =head2 B<REQUIRED> SlaveInstanceType => Str
 
-  The Amazon EC2 slave node instance type.
+  The Amazon EC2 core and task node instance type.
 
 
 =head2 TerminationProtected => Bool

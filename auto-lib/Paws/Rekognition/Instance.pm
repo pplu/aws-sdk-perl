@@ -32,7 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 
 =head1 DESCRIPTION
 
-An instance of a label detected by .
+An instance of a label returned by Amazon Rekognition Image
+(DetectLabels) or by Amazon Rekognition Video (GetLabelDetection).
 
 =head1 ATTRIBUTES
 
@@ -44,7 +45,7 @@ An instance of a label detected by .
 
 =head2 Confidence => Num
 
-  The confidence that Amazon Rekognition Image has in the accuracy of the
+  The confidence that Amazon Rekognition has in the accuracy of the
 bounding box.
 
 

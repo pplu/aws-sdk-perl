@@ -249,7 +249,7 @@ must have a containerized application running on Amazon EC2 instances,
 hosted in either Amazon ECS, Amazon EKS, or Kubernetes on AWS. For more
 information about service discovery on Amazon ECS, see Service
 Discovery
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguideservice-discovery.html)
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html)
 in the I<Amazon Elastic Container Service Developer Guide>. Kubernetes
 C<kube-dns> is supported. For more information, see DNS for Services
 and Pods
@@ -479,7 +479,7 @@ Each argument is described in detail in: L<Paws::AppMesh::DescribeMesh>
 
 Returns: a L<Paws::AppMesh::DescribeMeshOutput> instance
 
-Describes an existing cluster.
+Describes an existing service mesh.
 
 
 =head2 DescribeRoute

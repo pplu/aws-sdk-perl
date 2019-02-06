@@ -69,11 +69,12 @@ MANUFACTURER: The device manufacturer. For example, "Apple".
 =item *
 
 REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access.
+Valid values are "TRUE" or "FALSE".
 
 =item *
 
 REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote
-debugging.
+debugging. Valid values are "TRUE" or "FALSE".
 
 =item *
 

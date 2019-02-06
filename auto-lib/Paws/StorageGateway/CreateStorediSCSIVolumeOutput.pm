@@ -18,7 +18,7 @@ Paws::StorageGateway::CreateStorediSCSIVolumeOutput
 
 =head2 TargetARN => Str
 
-he Amazon Resource Name (ARN) of the volume target that includes the
+The Amazon Resource Name (ARN) of the volume target, which includes the
 iSCSI name that initiators can use to connect to the target.
 
 

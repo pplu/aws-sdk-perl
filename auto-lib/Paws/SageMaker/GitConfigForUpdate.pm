@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-Specifies configuration details for a git repository when the
+Specifies configuration details for a Git repository when the
 repository is updated.
 
 =head1 ATTRIBUTES

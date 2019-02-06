@@ -66,12 +66,12 @@ S3: An application revision stored in Amazon S3.
 =item *
 
 GitHub: An application revision stored in GitHub (EC2/On-premises
-deployments only)
+deployments only).
 
 =item *
 
 String: A YAML-formatted or JSON-formatted string (AWS Lambda
-deployments only)
+deployments only).
 
 =back
 

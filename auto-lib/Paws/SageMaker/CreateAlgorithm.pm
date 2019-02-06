@@ -70,25 +70,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Name => 'MyParameterName',                   # max: 256
             Type =>
               'Integer',    # values: Integer, Continuous, Categorical, FreeText
-            DefaultValue => 'MyParameterValue',       # max: 256; OPTIONAL
+            DefaultValue => 'MyParameterValue',       # max: 256
             Description  => 'MyEntityDescription',    # max: 1024; OPTIONAL
             IsRequired   => 1,                        # OPTIONAL
             IsTunable    => 1,                        # OPTIONAL
             Range        => {
               CategoricalParameterRangeSpecification => {
                 Values => [
-                  'MyParameterValue', ...             # max: 256; OPTIONAL
+                  'MyParameterValue', ...             # max: 256
                 ],                                    # min: 1, max: 20
 
               },    # OPTIONAL
               ContinuousParameterRangeSpecification => {
-                MaxValue => 'MyParameterValue',    # max: 256; OPTIONAL
-                MinValue => 'MyParameterValue',    # max: 256; OPTIONAL
+                MaxValue => 'MyParameterValue',    # max: 256
+                MinValue => 'MyParameterValue',    # max: 256
 
               },    # OPTIONAL
               IntegerParameterRangeSpecification => {
-                MaxValue => 'MyParameterValue',    # max: 256; OPTIONAL
-                MinValue => 'MyParameterValue',    # max: 256; OPTIONAL
+                MaxValue => 'MyParameterValue',    # max: 256
+                MinValue => 'MyParameterValue',    # max: 256
 
               },    # OPTIONAL
             },    # OPTIONAL
@@ -185,7 +185,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               TrainingInputMode => 'Pipe',         # values: Pipe, File
               HyperParameters   => {
                 'MyParameterKey' =>
-                  'MyParameterValue', # key: max: 256, value: max: 256; OPTIONAL
+                  'MyParameterValue',    # key: max: 256, value: max: 256
               },    # max: 100; OPTIONAL
             },
             TransformJobDefinition => {
@@ -259,7 +259,7 @@ The name of the algorithm.
 =head2 CertifyForMarketplace => Bool
 
 Whether to certify the algorithm so that it can be listed in AWS
-Marektplace.
+Marketplace.
 
 
 

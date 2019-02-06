@@ -59,8 +59,8 @@ The name of the private image.
 
 =head2 B<REQUIRED> SharedAccountId => Str
 
-The 12-digit ID of the AWS account for which you want add or update
-image permissions.
+The 12-digit identifier of the AWS account for which you want add or
+update image permissions.
 
 
 

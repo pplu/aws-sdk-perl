@@ -58,7 +58,7 @@ applicable IAM user or AWS account.
 
 =head2 B<REQUIRED> DeploymentGroupNames => ArrayRef[Str|Undef]
 
-The deployment groups' names.
+The names of the deployment groups.
 
 
 

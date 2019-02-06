@@ -50,7 +50,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-The ARN of the resource whose tags will be modified.
+The ARN of the resource whose tags you want to modify.
 
 
 

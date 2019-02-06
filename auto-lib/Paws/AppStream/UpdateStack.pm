@@ -107,20 +107,21 @@ Deletes the storage connectors currently enabled for the stack.
 
 =head2 Description => Str
 
-The description for display.
+The description to display.
 
 
 
 =head2 DisplayName => Str
 
-The stack name for display.
+The stack name to display.
 
 
 
 =head2 FeedbackURL => Str
 
-The URL that users are redirected to after they click the Send Feedback
-link. If no URL is specified, no Send Feedback link is displayed.
+The URL that users are redirected to after they choose the Send
+Feedback link. If no URL is specified, no Send Feedback link is
+displayed.
 
 
 

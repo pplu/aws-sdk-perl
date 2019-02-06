@@ -82,17 +82,14 @@ the function name, it is limited to 64 characters in length.
 
 =head2 Marker => Str
 
-Optional string. An opaque pagination token returned from a previous
-C<ListVersionsByFunction> operation. If present, indicates where to
-continue the listing.
+Specify the pagination token returned by a previous request to retrieve
+the next page of results.
 
 
 
 =head2 MaxItems => Int
 
-Optional integer. Specifies the maximum number of AWS Lambda function
-versions to return in response. This parameter value must be greater
-than 0.
+Limit the number of versions returned.
 
 
 

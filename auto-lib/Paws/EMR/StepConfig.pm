@@ -40,7 +40,10 @@ Specification of a cluster (job flow) step.
 
 =head2 ActionOnFailure => Str
 
-  The action to take if the step fails.
+  The action to take when the cluster step fails. Possible values are
+TERMINATE_CLUSTER, CANCEL_AND_WAIT, and CONTINUE. TERMINATE_JOB_FLOW is
+provided for backward compatibility. We recommend using
+TERMINATE_CLUSTER instead.
 
 
 =head2 B<REQUIRED> HadoopJarStep => L<Paws::EMR::HadoopJarStepConfig>

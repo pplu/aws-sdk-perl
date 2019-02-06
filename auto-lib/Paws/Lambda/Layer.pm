@@ -32,7 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::Lay
 
 =head1 DESCRIPTION
 
-A function layer.
+An AWS Lambda layer
+(http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
 
 =head1 ATTRIBUTES
 

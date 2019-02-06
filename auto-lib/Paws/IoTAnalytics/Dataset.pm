@@ -57,7 +57,8 @@ contents.
 
 =head2 ContentDeliveryRules => ArrayRef[L<Paws::IoTAnalytics::DatasetContentDeliveryRule>]
 
-  
+  When data set contents are created they are delivered to destinations
+specified here.
 
 
 =head2 CreationTime => Str

@@ -42,7 +42,7 @@ attributes.
 
 =head2 B<REQUIRED> Attribute => Str
 
-  The name of the attribute that will contain the result of the math
+  The name of the attribute that contains the result of the math
 operation.
 
 

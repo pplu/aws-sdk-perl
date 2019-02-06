@@ -10,6 +10,7 @@ package Paws::AppStream::CreateImageBuilder;
   has ImageName => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::AppStream::Tags');
   has VpcConfig => (is => 'ro', isa => 'Paws::AppStream::VpcConfig');
 
   use MooseX::ClassAttribute;
@@ -50,13 +51,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EnableDefaultInternetAccess => 1,             # OPTIONAL
       ImageArn                    => 'MyArn',       # OPTIONAL
       ImageName                   => 'MyString',    # OPTIONAL
-      VpcConfig                   => {
+      Tags                        => {
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
+      },    # OPTIONAL
+      VpcConfig => {
         SecurityGroupIds => [
-          'MyString', ...                           # min: 1
-        ],                                          # max: 5; OPTIONAL
+          'MyString', ...    # min: 1
+        ],                   # max: 5; OPTIONAL
         SubnetIds => [
-          'MyString', ...                           # min: 1
-        ],                                          # OPTIONAL
+          'MyString', ...    # min: 1
+        ],                   # OPTIONAL
       },    # OPTIONAL
     );
 
@@ -80,19 +84,20 @@ To use the latest version of the AppStream 2.0 agent, specify [LATEST].
 
 =head2 Description => Str
 
-The description for display.
+The description to display.
 
 
 
 =head2 DisplayName => Str
 
-The image builder name for display.
+The image builder name to display.
 
 
 
 =head2 DomainJoinInfo => L<Paws::AppStream::DomainJoinInfo>
 
-The information needed to join a Microsoft Active Directory domain.
+The name of the directory and organizational unit (OU) to use to join
+the image builder to a Microsoft Active Directory domain.
 
 
 
@@ -110,7 +115,7 @@ The ARN of the public, private, or shared image to use.
 
 =head2 ImageName => Str
 
-The name of the image used to create the builder.
+The name of the image used to create the image builder.
 
 
 
@@ -123,6 +128,20 @@ The instance type to use when launching the image builder.
 =head2 B<REQUIRED> Name => Str
 
 A unique name for the image builder.
+
+
+
+=head2 Tags => L<Paws::AppStream::Tags>
+
+The tags to associate with the image builder. A tag is a key-value pair
+(the value is optional). For example, Environment=Test, or, if you do
+not specify a value, Environment=.
+
+If you do not specify a value, we set the value to an empty string.
+
+For more information about tags, see Tagging Your Resources
+(http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
+in the I<Amazon AppStream 2.0 Developer Guide>.
 
 
 

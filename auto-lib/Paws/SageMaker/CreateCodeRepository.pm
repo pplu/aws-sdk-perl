@@ -51,7 +51,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 
 =head2 B<REQUIRED> CodeRepositoryName => Str
 
-The name of the git repository. The name must have 1 to 63 characters.
+The name of the Git repository. The name must have 1 to 63 characters.
 Valid characters are a-z, A-Z, 0-9, and - (hyphen).
 
 

@@ -65,7 +65,7 @@ period, the deployment status is changed to Stopped.
 =head2 WaitTimeInMinutes => Int
 
   The number of minutes to wait before the status of a blue/green
-deployment changed to Stopped if rerouting is not started manually.
+deployment is changed to Stopped if rerouting is not started manually.
 Applies only to the STOP_DEPLOYMENT option for actionOnTimeout
 
 

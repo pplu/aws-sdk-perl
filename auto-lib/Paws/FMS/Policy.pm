@@ -48,7 +48,7 @@ An AWS Firewall Manager policy.
 =head2 ExcludeMap => L<Paws::FMS::CustomerPolicyScopeMap>
 
   Specifies the AWS account IDs to exclude from the policy. The
-C<IncludeMap> values are evaluated first, with all of the appropriate
+C<IncludeMap> values are evaluated first, with all the appropriate
 account IDs added to the policy. Then the accounts listed in
 C<ExcludeMap> are removed, resulting in the final list of accounts to
 add to the policy.
@@ -69,9 +69,9 @@ the specified tags are associated with the policy.
 =head2 IncludeMap => L<Paws::FMS::CustomerPolicyScopeMap>
 
   Specifies the AWS account IDs to include in the policy. If
-C<IncludeMap> is null, all accounts in the AWS Organization are
-included in the policy. If C<IncludeMap> is not null, only values
-listed in C<IncludeMap> will be included in the policy.
+C<IncludeMap> is null, all accounts in the organization in AWS
+Organizations are included in the policy. If C<IncludeMap> is not null,
+only values listed in C<IncludeMap> are included in the policy.
 
 The key to the map is C<ACCOUNT>. For example, a valid C<IncludeMap>
 would be C<{E<ldquo>ACCOUNTE<rdquo> : [E<ldquo>accountID1E<rdquo>,

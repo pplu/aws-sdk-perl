@@ -63,23 +63,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 B<REQUIRED> Action => Str
 
-The AWS Lambda action you want to allow in this statement. Each Lambda
-action is a string starting with C<lambda:> followed by the API name .
-For example, C<lambda:CreateFunction>. You can use wildcard
-(C<lambda:*>) to grant permission for all AWS Lambda actions.
+The action that the principal can use on the function. For example,
+C<lambda:InvokeFunction> or C<lambda:GetFunction>.
 
 
 
 =head2 EventSourceToken => Str
 
-A unique token that must be supplied by the principal invoking the
-function. This is currently only used for Alexa Smart Home functions.
+For Alexa Smart Home functions, a token that must be supplied by the
+invoker.
 
 
 
 =head2 B<REQUIRED> FunctionName => Str
 
-The name of the Lambda function.
+The name of the Lambda function, version, or alias.
 
 B<Name formats>
 
@@ -87,31 +85,31 @@ B<Name formats>
 
 =item *
 
-B<Function name> - C<MyFunction>.
+B<Function name> - C<my-function> (name-only), C<my-function:v1> (with
+alias).
 
 =item *
 
 B<Function ARN> -
-C<arn:aws:lambda:us-west-2:123456789012:function:MyFunction>.
+C<arn:aws:lambda:us-west-2:123456789012:function:my-function>.
 
 =item *
 
-B<Partial ARN> - C<123456789012:function:MyFunction>.
+B<Partial ARN> - C<123456789012:function:my-function>.
 
 =back
 
-The length constraint applies only to the full ARN. If you specify only
-the function name, it is limited to 64 characters in length.
+You can append a version number or alias to any of the formats. The
+length constraint applies only to the full ARN. If you specify only the
+function name, it is limited to 64 characters in length.
 
 
 
 =head2 B<REQUIRED> Principal => Str
 
-The principal who is getting this permission. The principal can be an
-AWS service (e.g. C<s3.amazonaws.com> or C<sns.amazonaws.com>) for
-service triggers, or an account ID for cross-account access. If you
-specify a service as a principal, use the C<SourceArn> parameter to
-limit who can invoke the function through that service.
+The AWS service or account that invokes the function. If you specify a
+service, use C<SourceArn> or C<SourceAccount> to limit who can invoke
+the function through that service.
 
 
 
@@ -124,41 +122,34 @@ the function.
 
 =head2 RevisionId => Str
 
-An optional value you can use to ensure you are updating the latest
-update of the function version or alias. If the C<RevisionID> you pass
-doesn't match the latest C<RevisionId> of the function or alias, it
-will fail with an error message, advising you to retrieve the latest
-function version or alias C<RevisionID> using either GetFunction or
-GetAlias
+Only update the policy if the revision ID matches the ID specified. Use
+this option to avoid modifying a policy that has changed since you last
+read it.
 
 
 
 =head2 SourceAccount => Str
 
-This parameter is used for S3 and SES. The AWS account ID (without a
-hyphen) of the source owner. For example, if the C<SourceArn>
-identifies a bucket, then this is the bucket owner's account ID. You
-can use this additional condition to ensure the bucket you specify is
-owned by a specific account (it is possible the bucket owner deleted
-the bucket and some other AWS account created the bucket). You can also
-use this condition to specify all sources (that is, you don't specify
-the C<SourceArn>) owned by a specific account.
+For AWS services, the ID of the account that owns the resource. Use
+instead of C<SourceArn> to grant permission to resources owned by
+another account (e.g. all of an account's Amazon S3 buckets). Or use
+together with C<SourceArn> to ensure that the resource is owned by the
+specified account. For example, an Amazon S3 bucket could be deleted by
+its owner and recreated by another account.
 
 
 
 =head2 SourceArn => Str
 
-The Amazon Resource Name of the invoker.
-
-If you add a permission to a service principal without providing the
-source ARN, any AWS account that creates a mapping to your function ARN
-can invoke your Lambda function.
+For AWS services, the ARN of the AWS resource that invokes the
+function. For example, an Amazon S3 bucket or Amazon SNS topic.
 
 
 
 =head2 B<REQUIRED> StatementId => Str
 
-A unique statement identifier.
+A statement identifier that differentiates the statement from others in
+the same policy.
 
 
 

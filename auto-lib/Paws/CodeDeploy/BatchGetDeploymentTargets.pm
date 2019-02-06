@@ -61,13 +61,13 @@ deployment determines the type of the targets and their formats.
 =item *
 
 For deployments that use the EC2/On-premises compute platform, the
-target IDs are EC2 or on-premises instances IDs and their target type
+target IDs are EC2 or on-premises instances IDs, and their target type
 is C<instanceTarget>.
 
 =item *
 
 For deployments that use the AWS Lambda compute platform, the target
-IDs are the names of Lambda functions and their target type is
+IDs are the names of Lambda functions, and their target type is
 C<instanceTarget>.
 
 =item *

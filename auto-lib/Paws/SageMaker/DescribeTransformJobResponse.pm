@@ -31,9 +31,10 @@ Paws::SageMaker::DescribeTransformJobResponse
 
 =head2 BatchStrategy => Str
 
-SingleRecord means only one record was used per a batch. C<MultiRecord>
-means batches contained as many records that could possibly fit within
-the C<MaxPayloadInMB> limit.
+If you want to include only one record in a batch, specify
+C<SingleRecord>.. If you want batches to contain a maximum of the
+number of records specified in the C<MaxPayloadInMB> parameter, specify
+C<MultiRecord>.S
 
 Valid values are: C<"MultiRecord">, C<"SingleRecord">
 =head2 B<REQUIRED> CreationTime => Str
@@ -65,7 +66,7 @@ be launched in a transform job. The default value is 1.
 
 =head2 MaxPayloadInMB => Int
 
-The maximum payload size , in MB used in the transform job.
+The maximum payload size, in MB, used in the transform job.
 
 
 =head2 B<REQUIRED> ModelName => Str
@@ -75,9 +76,9 @@ The name of the model used in the transform job.
 
 =head2 TransformEndTime => Str
 
-Indicates when the transform job is C<Completed>, C<Stopped>, or
-C<Failed>. You are billed for the time interval between this time and
-the value of C<TransformStartTime>.
+Indicates when the transform job has been completed, or has stopped or
+failed. You are billed for the time interval between this time and the
+value of C<TransformStartTime>.
 
 
 =head2 B<REQUIRED> TransformInput => L<Paws::SageMaker::TransformInput>

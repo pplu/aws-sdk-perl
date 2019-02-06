@@ -35,11 +35,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextInvocations     = $SnapshotSchedule->NextInvocations;
-    my $ScheduleDefinitions = $SnapshotSchedule->ScheduleDefinitions;
-    my $ScheduleDescription = $SnapshotSchedule->ScheduleDescription;
-    my $ScheduleIdentifier  = $SnapshotSchedule->ScheduleIdentifier;
-    my $Tags                = $SnapshotSchedule->Tags;
+    my $AssociatedClusterCount = $SnapshotSchedule->AssociatedClusterCount;
+    my $AssociatedClusters     = $SnapshotSchedule->AssociatedClusters;
+    my $NextInvocations        = $SnapshotSchedule->NextInvocations;
+    my $ScheduleDefinitions    = $SnapshotSchedule->ScheduleDefinitions;
+    my $ScheduleDescription    = $SnapshotSchedule->ScheduleDescription;
+    my $ScheduleIdentifier     = $SnapshotSchedule->ScheduleIdentifier;
+    my $Tags                   = $SnapshotSchedule->Tags;
 
     # Returns a L<Paws::RedShift::SnapshotSchedule> object.
 

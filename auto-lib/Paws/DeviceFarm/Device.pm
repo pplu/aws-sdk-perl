@@ -63,7 +63,8 @@ Represents a device type that an app is tested against.
 
 =head2 Availability => Str
 
-  Reflects how likely a device will be available for a test run.
+  Reflects how likely a device will be available for a test run. It is
+currently available in the ListDevices and GetDevice API methods.
 
 
 =head2 Carrier => Str

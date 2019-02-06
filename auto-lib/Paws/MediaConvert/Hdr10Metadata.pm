@@ -42,13 +42,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 =head1 DESCRIPTION
 
-Use the HDR master display (Hdr10Metadata) settings to correct HDR
-metadata or to provide missing metadata. These values vary depending on
-the input video and must be provided by a color grader. Range is 0 to
-50,000, each increment represents 0.00002 in CIE1931 color coordinate.
-Note that these settings are not color correction. Note that if you are
-creating HDR outputs inside of an HLS CMAF package, to comply with the
-Apple specification, you must use the HVC1 for H.265 setting.
+Use the "HDR master display information" (Hdr10Metadata) settings to
+correct HDR metadata or to provide missing metadata. These values vary
+depending on the input video and must be provided by a color grader.
+Range is 0 to 50,000; each increment represents 0.00002 in CIE1931
+color coordinate. Note that these settings are not color correction.
+Note that if you are creating HDR outputs inside of an HLS CMAF
+package, to comply with the Apple specification, you must use the
+following settings. Set "MP4 packaging type" (writeMp4PackagingType) to
+HVC1 (HVC1). Set "Profile" (H265Settings E<gt> codecProfile) to
+Main10/High (MAIN10_HIGH). Set "Level" (H265Settings E<gt> codecLevel)
+to 5 (LEVEL_5).
 
 =head1 ATTRIBUTES
 

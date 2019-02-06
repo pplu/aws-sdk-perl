@@ -22,7 +22,7 @@ The requested engine attribute pair with attribute name and value.
 
 =head2 ServerName => Str
 
-The requested ServerName.
+The server name used in the request.
 
 
 =head2 _request_id => Str

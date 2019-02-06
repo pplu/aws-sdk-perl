@@ -185,9 +185,11 @@ target capacity or also attempts to maintain it. When this value is
 C<request>, the Spot Fleet only places the required requests. It does
 not attempt to replenish Spot Instances if capacity is diminished, nor
 does it submit requests in alternative Spot pools if capacity is not
-available. To maintain a certain target capacity, the Spot Fleet places
-the required requests to meet capacity and automatically replenishes
-any interrupted instances. Default: C<maintain>.
+available. When this value is C<maintain>, the Spot Fleet maintains the
+target capacity. The Spot Fleet places the required requests to meet
+capacity and automatically replenishes any interrupted instances.
+Default: C<maintain>. C<instant> is listed but is not used by Spot
+Fleet.
 
 
 =head2 ValidFrom => Str

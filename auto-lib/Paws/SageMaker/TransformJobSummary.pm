@@ -37,8 +37,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-Provides a summary of a transform job. Multiple TransformJobSummary
-objects are returned as a list after calling ListTransformJobs.
+Provides a summary of a transform job. Multiple C<TransformJobSummary>
+objects are returned as a list after in response to a ListTransformJobs
+call.
 
 =head1 ATTRIBUTES
 

@@ -69,7 +69,7 @@ A C<RenderableTask> object containing a representative task to render.
 
 =head2 B<REQUIRED> UiTemplate => L<Paws::SageMaker::UiTemplate>
 
-A C<Template>object containing the worker UI template to render.
+A C<Template> object containing the worker UI template to render.
 
 
 

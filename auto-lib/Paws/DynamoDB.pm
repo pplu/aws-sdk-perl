@@ -946,7 +946,7 @@ Each argument is described in detail in: L<Paws::DynamoDB::DescribeEndpoints>
 
 Returns: a L<Paws::DynamoDB::DescribeEndpointsResponse> instance
 
-
+Returns the regional endpoint information.
 
 
 =head2 DescribeGlobalTable

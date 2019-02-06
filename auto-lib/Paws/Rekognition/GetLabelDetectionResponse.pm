@@ -2,6 +2,7 @@
 package Paws::Rekognition::GetLabelDetectionResponse;
   use Moose;
   has JobStatus => (is => 'ro', isa => 'Str');
+  has LabelModelVersion => (is => 'ro', isa => 'Str');
   has Labels => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::LabelDetection]');
   has NextToken => (is => 'ro', isa => 'Str');
   has StatusMessage => (is => 'ro', isa => 'Str');
@@ -23,6 +24,12 @@ Paws::Rekognition::GetLabelDetectionResponse
 The current status of the label detection job.
 
 Valid values are: C<"IN_PROGRESS">, C<"SUCCEEDED">, C<"FAILED">
+=head2 LabelModelVersion => Str
+
+Version number of the label detection model that was used to detect
+labels.
+
+
 =head2 Labels => ArrayRef[L<Paws::Rekognition::LabelDetection>]
 
 An array of labels detected in the video. Each element contains the

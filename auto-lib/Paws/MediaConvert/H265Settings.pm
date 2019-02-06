@@ -128,12 +128,12 @@ between reference frames (numberBFramesBetweenReferenceFrames).
 
 =head2 FramerateDenominator => Int
 
-  Framerate denominator.
+  Frame rate denominator.
 
 
 =head2 FramerateNumerator => Int
 
-  Framerate numerator - framerate is a fraction, e.g. 24000 / 1001 =
+  Frame rate numerator - frame rate is a fraction, e.g. 24000 / 1001 =
 23.976 fps.
 
 

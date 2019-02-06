@@ -76,10 +76,6 @@ One or more filters. The possible values are:
 
 =item *
 
-C<association-id> - The ID of the association.
-
-=item *
-
 C<resource-id> - The ID of the resource.
 
 =item *

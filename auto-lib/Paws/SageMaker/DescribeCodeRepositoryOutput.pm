@@ -20,12 +20,12 @@ Paws::SageMaker::DescribeCodeRepositoryOutput
 
 =head2 B<REQUIRED> CodeRepositoryArn => Str
 
-The Amazon Resource Name (ARN) of the git repository.
+The Amazon Resource Name (ARN) of the Git repository.
 
 
 =head2 B<REQUIRED> CodeRepositoryName => Str
 
-The name of the git repository.
+The name of the Git repository.
 
 
 =head2 B<REQUIRED> CreationTime => Str

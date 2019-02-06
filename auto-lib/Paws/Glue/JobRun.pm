@@ -11,6 +11,7 @@ package Paws::Glue::JobRun;
   has JobRunState => (is => 'ro', isa => 'Str');
   has LastModifiedOn => (is => 'ro', isa => 'Str');
   has LogGroupName => (is => 'ro', isa => 'Str');
+  has MaxCapacity => (is => 'ro', isa => 'Num');
   has NotificationProperty => (is => 'ro', isa => 'Paws::Glue::NotificationProperty');
   has PredecessorRuns => (is => 'ro', isa => 'ArrayRef[Paws::Glue::Predecessor]');
   has PreviousRunId => (is => 'ro', isa => 'Str');
@@ -55,7 +56,9 @@ Contains information about a job run.
 
 =head2 AllocatedCapacity => Int
 
-  The number of AWS Glue data processing units (DPUs) allocated to this
+  This field is deprecated, use C<MaxCapacity> instead.
+
+The number of AWS Glue data processing units (DPUs) allocated to this
 JobRun. From 2 to 100 DPUs can be allocated; the default is 10. A DPU
 is a relative measure of processing power that consists of 4 vCPUs of
 compute capacity and 16 GB of memory. For more information, see the AWS
@@ -129,6 +132,14 @@ in which case the default encryption is C<NONE>. If you add a role name
 and SecurityConfiguration name (in other words,
 C</aws-glue/jobs-yourRoleName-yourSecurityConfigurationName/>), then
 that security configuration will be used to encrypt the log group.
+
+
+=head2 MaxCapacity => Num
+
+  AWS Glue supports running jobs on a C<JobCommand.Name>="pythonshell"
+with allocated processing as low as 0.0625 DPU, which can be specified
+using C<MaxCapacity>. Glue ETL jobs running in any other way cannot
+have fractional DPU allocations.
 
 
 =head2 NotificationProperty => L<Paws::Glue::NotificationProperty>

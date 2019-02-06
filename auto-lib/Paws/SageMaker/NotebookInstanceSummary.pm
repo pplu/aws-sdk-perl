@@ -47,12 +47,12 @@ Provides summary information for an Amazon SageMaker notebook instance.
 
 =head2 AdditionalCodeRepositories => ArrayRef[Str|Undef]
 
-  An array of up to 3 git repositories associated with the notebook
-instance. These can be either the names of git repositories stored as
-resources in your account, or the URL of git repositories in AWS
+  An array of up to three Git repositories associated with the notebook
+instance. These can be either the names of Git repositories stored as
+resources in your account, or the URL of Git repositories in AWS
 CodeCommit
 (http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
-or in any other git repository. These repositories are cloned at the
+or in any other Git repository. These repositories are cloned at the
 same level as the default repository of your notebook instance. For
 more information, see Associating Git Repositories with Amazon
 SageMaker Notebook Instances
@@ -66,12 +66,12 @@ SageMaker Notebook Instances
 
 =head2 DefaultCodeRepository => Str
 
-  The git repository associated with the notebook instance as its default
-code repository. This can be either the name of a git repository stored
-as a resource in your account, or the URL of a git repository in AWS
+  The Git repository associated with the notebook instance as its default
+code repository. This can be either the name of a Git repository stored
+as a resource in your account, or the URL of a Git repository in AWS
 CodeCommit
 (http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
-or in any other git repository. When you open a notebook instance, it
+or in any other Git repository. When you open a notebook instance, it
 opens in the directory that contains this repository. For more
 information, see Associating Git Repositories with Amazon SageMaker
 Notebook Instances

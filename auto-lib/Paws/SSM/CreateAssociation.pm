@@ -2,6 +2,7 @@
 package Paws::SSM::CreateAssociation;
   use Moose;
   has AssociationName => (is => 'ro', isa => 'Str');
+  has AutomationTargetParameterName => (is => 'ro', isa => 'Str');
   has ComplianceSeverity => (is => 'ro', isa => 'Str');
   has DocumentVersion => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
@@ -38,13 +39,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ssm = Paws->service('SSM');
     my $CreateAssociationResult = $ssm->CreateAssociation(
-      Name               => 'MyDocumentName',
-      AssociationName    => 'MyAssociationName',    # OPTIONAL
-      ComplianceSeverity => 'CRITICAL',             # OPTIONAL
-      DocumentVersion    => 'MyDocumentVersion',    # OPTIONAL
-      InstanceId         => 'MyInstanceId',         # OPTIONAL
-      MaxConcurrency     => 'MyMaxConcurrency',     # OPTIONAL
-      MaxErrors          => 'MyMaxErrors',          # OPTIONAL
+      Name            => 'MyDocumentName',
+      AssociationName => 'MyAssociationName',    # OPTIONAL
+      AutomationTargetParameterName =>
+        'MyAutomationTargetParameterName',       # OPTIONAL
+      ComplianceSeverity => 'CRITICAL',          # OPTIONAL
+      DocumentVersion    => 'MyDocumentVersion', # OPTIONAL
+      InstanceId         => 'MyInstanceId',      # OPTIONAL
+      MaxConcurrency     => 'MyMaxConcurrency',  # OPTIONAL
+      MaxErrors          => 'MyMaxErrors',       # OPTIONAL
       OutputLocation     => {
         S3Location => {
           OutputS3BucketName => 'MyS3BucketName',    # min: 3, max: 63; OPTIONAL
@@ -79,6 +82,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 =head2 AssociationName => Str
 
 Specify a descriptive name for the association.
+
+
+
+=head2 AutomationTargetParameterName => Str
+
+Specify the target for the association. This target is required for
+associations that use an Automation document and target resources by
+using rate controls.
 
 
 

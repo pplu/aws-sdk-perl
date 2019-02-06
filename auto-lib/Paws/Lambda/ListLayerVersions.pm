@@ -58,7 +58,7 @@ Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"nodejs8.10">,
 
 =head2 B<REQUIRED> LayerName => Str
 
-The name of the layer.
+The name or Amazon Resource Name (ARN) of the layer.
 
 
 

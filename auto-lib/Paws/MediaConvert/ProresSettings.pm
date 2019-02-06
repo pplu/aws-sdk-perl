@@ -64,15 +64,16 @@ Required when you set (Codec) under
 
 =head2 FramerateDenominator => Int
 
-  Framerate denominator.
+  Frame rate denominator.
 
 
 =head2 FramerateNumerator => Int
 
-  When you use the API for transcode jobs that use framerate conversion,
-specify the framerate as a fraction. For example, 24000 / 1001 = 23.976
-fps. Use FramerateNumerator to specify the numerator of this fraction.
-In this example, use 24000 for the value of FramerateNumerator.
+  When you use the API for transcode jobs that use frame rate conversion,
+specify the frame rate as a fraction. For example, 24000 / 1001 =
+23.976 fps. Use FramerateNumerator to specify the numerator of this
+fraction. In this example, use 24000 for the value of
+FramerateNumerator.
 
 
 =head2 InterlaceMode => Str

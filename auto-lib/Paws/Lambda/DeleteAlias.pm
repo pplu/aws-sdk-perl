@@ -75,7 +75,7 @@ the function name, it is limited to 64 characters in length.
 
 =head2 B<REQUIRED> Name => Str
 
-Name of the alias to delete.
+The name of the alias.
 
 
 

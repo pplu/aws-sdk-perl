@@ -36,18 +36,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',    # OPTIONAL
-          Values => [
-            'MyString', ...        # OPTIONAL
-          ],                       # OPTIONAL
+          Name   => 'MyString',
+          Values => [ 'MyString', ... ],    # OPTIONAL
         },
         ...
-      ],                           # OPTIONAL
-      MaxResults                  => 1,             # OPTIONAL
-      NextToken                   => 'MyString',    # OPTIONAL
-      TransitGatewayAttachmentIds => [
-        'MyString', ...                             # OPTIONAL
-      ],                                            # OPTIONAL
+      ],                                    # OPTIONAL
+      MaxResults                  => 1,                      # OPTIONAL
+      NextToken                   => 'MyString',             # OPTIONAL
+      TransitGatewayAttachmentIds => [ 'MyString', ... ],    # OPTIONAL
       );
 
     # Results:
@@ -80,21 +76,21 @@ One or more filters. The possible values are:
 
 =item *
 
-C<association-id> - The ID of the association.
+C<association.transit-gateway-route-table-id> - The ID of the route
+table for the transit gateway.
 
 =item *
 
-C<association-route-table-id> - The ID of the route table for the
-transit gateway.
-
-=item *
-
-C<associate-state> - The state of the association (C<associating> |
+C<association.state> - The state of the association (C<associating> |
 C<associated> | C<disassociating>).
 
 =item *
 
 C<resource-id> - The ID of the resource.
+
+=item *
+
+C<resource-owner> - The ID of the AWS account that owns the resource.
 
 =item *
 

@@ -4,6 +4,8 @@ package Paws::IoTAnalytics::ListDatasetContents;
   has DatasetName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'datasetName', required => 1);
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
+  has ScheduledBefore => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'scheduledBefore');
+  has ScheduledOnOrAfter => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'scheduledOnOrAfter');
 
   use MooseX::ClassAttribute;
 
@@ -31,9 +33,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $iotanalytics = Paws->service('IoTAnalytics');
     my $ListDatasetContentsResponse = $iotanalytics->ListDatasetContents(
-      DatasetName => 'MyDatasetName',
-      MaxResults  => 1,                 # OPTIONAL
-      NextToken   => 'MyNextToken',     # OPTIONAL
+      DatasetName        => 'MyDatasetName',
+      MaxResults         => 1,                        # OPTIONAL
+      NextToken          => 'MyNextToken',            # OPTIONAL
+      ScheduledBefore    => '1970-01-01T01:00:00',    # OPTIONAL
+      ScheduledOnOrAfter => '1970-01-01T01:00:00',    # OPTIONAL
     );
 
     # Results:
@@ -64,6 +68,22 @@ The maximum number of results to return in this request.
 =head2 NextToken => Str
 
 The token for the next set of results.
+
+
+
+=head2 ScheduledBefore => Str
+
+A filter to limit results to those data set contents whose creation is
+scheduled before the given time. See the field C<triggers.schedule> in
+the CreateDataset request. (timestamp)
+
+
+
+=head2 ScheduledOnOrAfter => Str
+
+A filter to limit results to those data set contents whose creation is
+scheduled on or after the given time. See the field
+C<triggers.schedule> in the CreateDataset request. (timestamp)
 
 
 

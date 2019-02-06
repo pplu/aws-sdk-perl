@@ -89,7 +89,7 @@ The name of the stack. This value is case-sensitive.
 
 =head2 UserId => Str
 
-The user ID.
+The user identifier.
 
 
 

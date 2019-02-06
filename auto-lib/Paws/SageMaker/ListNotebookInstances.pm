@@ -71,7 +71,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head2 AdditionalCodeRepositoryEquals => Str
 
 A filter that returns only notebook instances with associated with the
-specified git respository.
+specified git repository.
 
 
 
@@ -91,7 +91,7 @@ the specified time (timestamp).
 
 =head2 DefaultCodeRepositoryContains => Str
 
-A string in the name or URL of a git repository associated with this
+A string in the name or URL of a Git repository associated with this
 notebook instance. This filter returns only notebook instances
 associated with a git repository with a name that contains the
 specified string.

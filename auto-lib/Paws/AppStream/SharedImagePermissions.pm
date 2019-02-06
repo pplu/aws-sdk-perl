@@ -45,7 +45,8 @@ account for a shared image.
 
 =head2 B<REQUIRED> SharedAccountId => Str
 
-  The 12-digit ID of the AWS account with which the image is shared.
+  The 12-digit identifier of the AWS account with which the image is
+shared.
 
 
 

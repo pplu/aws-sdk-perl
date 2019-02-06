@@ -46,7 +46,7 @@ job. These settings don't affect input clipping.
 Anchor Timecode (Anchor) to specify a timecode that will match the
 input video frame to the output video frame. Use 24-hour format with
 frame number, (HH:MM:SS:FF) or (HH:MM:SS;FF). This setting ignores
-framerate conversion. System behavior for Anchor Timecode varies
+frame rate conversion. System behavior for Anchor Timecode varies
 depending on your setting for Source (TimecodeSource). * If Source
 (TimecodeSource) is set to Specified Start (SPECIFIEDSTART), the first
 input frame is the specified value in Start Timecode (Start). Anchor

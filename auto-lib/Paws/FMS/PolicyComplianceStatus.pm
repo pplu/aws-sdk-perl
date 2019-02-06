@@ -54,7 +54,7 @@ are not protected by the policy.
   Details about problems with dependent services, such as AWS WAF or AWS
 Config, that are causing a resource to be non-compliant. The details
 include the name of the dependent service and the error message
-recieved indicating the problem with the service.
+received that indicates the problem with the service.
 
 
 =head2 LastUpdated => Str

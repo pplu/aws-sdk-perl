@@ -32,13 +32,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-Defines a list of C<NestedFilter> objects. To satisfy the conditions
+Defines a list of C<NestedFilters> objects. To satisfy the conditions
 specified in the C<NestedFilters> call, a resource must satisfy the
 conditions of all of the filters.
 
-For example, a C<NestedFilters> could be defined using the training
-job's C<InputDataConfig> property, this would be defined as a list of
-C<Channel> objects.
+For example, you could define a C<NestedFilters> using the training
+job's C<InputDataConfig> property to filter on C<Channel> objects.
 
 A C<NestedFilters> object contains multiple filters. For example, to
 find all training jobs whose name contains C<train> and that have

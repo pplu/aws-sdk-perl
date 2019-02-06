@@ -31,16 +31,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTAnalytic
 
 =head1 DESCRIPTION
 
-Information about the data set whose content generation will trigger
-the new data set content generation.
+Information about the data set whose content generation triggers the
+new data set content generation.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Name => Str
 
-  The name of the data set whose content generation will trigger the new
-data set content generation.
+  The name of the data set whose content generation triggers the new data
+set content generation.
 
 
 

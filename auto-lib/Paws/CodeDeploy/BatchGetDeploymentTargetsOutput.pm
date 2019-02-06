@@ -24,17 +24,17 @@ type of the target objects depends on the deployment' compute platform.
 
 =item *
 
-B<EC2/On-premises> - Each target object is an EC2 or on-premises
+B<EC2/On-premises>: Each target object is an EC2 or on-premises
 instance.
 
 =item *
 
-B<AWS Lambda> - The target object is a specific version of an AWS
-Lambda function.
+B<AWS Lambda>: The target object is a specific version of an AWS Lambda
+function.
 
 =item *
 
-B<Amazon ECS> - The target object is an Amazon ECS service.
+B<Amazon ECS>: The target object is an Amazon ECS service.
 
 =back
 

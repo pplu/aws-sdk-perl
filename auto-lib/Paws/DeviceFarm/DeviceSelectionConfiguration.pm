@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 Represents the device filters used in a test run as well as the maximum
 number of devices to be included in the run. It is passed in as the
-deviceSelectionConfiguration request parameter in ScheduleRun.
+C<deviceSelectionConfiguration> request parameter in ScheduleRun.
 
 =head1 ATTRIBUTES
 
@@ -48,8 +48,10 @@ made up of an attribute, an operator, and one or more values.
 
 =item *
 
-Attribute: The aspect of a device such as platform or model used as the
-selection criteria in a device filter.
+B<Attribute>
+
+The aspect of a device such as platform or model used as the selection
+criteria in a device filter.
 
 Allowed values include:
 
@@ -89,11 +91,12 @@ MANUFACTURER: The device manufacturer. For example, "Apple".
 =item *
 
 REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access.
+Valid values are "TRUE" or "FALSE".
 
 =item *
 
 REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote
-debugging.
+debugging. Valid values are "TRUE" or "FALSE".
 
 =item *
 
@@ -111,7 +114,9 @@ FLEET_TYPE: The fleet type. Valid values are "PUBLIC" or "PRIVATE".
 
 =item *
 
-Operator: The filter operator.
+B<Operator>
+
+The filter operator.
 
 =over
 
@@ -140,23 +145,45 @@ attribute.
 
 =item *
 
-Values: An array of one or more filter values.
+B<Values>
+
+An array of one or more filter values.
+
+B<Operator Values>
 
 =over
 
 =item *
 
-The IN and NOT operators can take a values array that has more than one
-element.
+The IN and NOT_IN operators can take a values array that has more than
+one element.
 
 =item *
 
 The other operators require an array with a single element.
 
+=back
+
+B<Attribute Values>
+
+=over
+
 =item *
 
-In a request, the AVAILABILITY attribute takes "AVAILABLE",
-"HIGHLY_AVAILABLE", "BUSY", or "TEMPORARY_NOT_AVAILABLE" as values.
+The PLATFORM attribute can be set to "ANDROID" or "IOS".
+
+=item *
+
+The AVAILABILITY attribute can be set to "AVAILABLE",
+"HIGHLY_AVAILABLE", "BUSY", or "TEMPORARY_NOT_AVAILABLE".
+
+=item *
+
+The FORM_FACTOR attribute can be set to "PHONE" or "TABLET".
+
+=item *
+
+The FLEET_TYPE attribute can be set to "PUBLIC" or "PRIVATE".
 
 =back
 

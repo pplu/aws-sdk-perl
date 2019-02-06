@@ -55,7 +55,7 @@ URL (C<API>) or SAML federation (C<SAML>).
 
 =head2 B<REQUIRED> Id => Str
 
-  The ID of the streaming session.
+  The identifier of the streaming session.
 
 
 =head2 NetworkAccessConfiguration => L<Paws::AppStream::NetworkAccessConfiguration>

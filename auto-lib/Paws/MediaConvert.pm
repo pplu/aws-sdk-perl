@@ -334,6 +334,8 @@ you can't start it again. You can't delete a running job.
 
 =item Settings => L<Paws::MediaConvert::JobSettings>
 
+=item [AccelerationSettings => L<Paws::MediaConvert::AccelerationSettings>]
+
 =item [BillingTagsSource => Str]
 
 =item [ClientRequestToken => Str]
@@ -363,6 +365,8 @@ http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 =item Name => Str
 
 =item Settings => L<Paws::MediaConvert::JobTemplateSettings>
+
+=item [AccelerationSettings => L<Paws::MediaConvert::AccelerationSettings>]
 
 =item [Category => Str]
 
@@ -752,6 +756,8 @@ https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html
 =over
 
 =item Name => Str
+
+=item [AccelerationSettings => L<Paws::MediaConvert::AccelerationSettings>]
 
 =item [Category => Str]
 

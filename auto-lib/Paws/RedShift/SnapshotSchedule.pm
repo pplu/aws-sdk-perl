@@ -1,6 +1,8 @@
 
 package Paws::RedShift::SnapshotSchedule;
   use Moose;
+  has AssociatedClusterCount => (is => 'ro', isa => 'Int');
+  has AssociatedClusters => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ClusterAssociatedToSchedule]', request_name => 'ClusterAssociatedToSchedule', traits => ['NameInRequest',]);
   has NextInvocations => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'SnapshotTime', traits => ['NameInRequest',]);
   has ScheduleDefinitions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ScheduleDefinition', traits => ['NameInRequest',]);
   has ScheduleDescription => (is => 'ro', isa => 'Str');
@@ -17,6 +19,16 @@ package Paws::RedShift::SnapshotSchedule;
 Paws::RedShift::SnapshotSchedule
 
 =head1 ATTRIBUTES
+
+
+=head2 AssociatedClusterCount => Int
+
+
+
+
+=head2 AssociatedClusters => ArrayRef[L<Paws::RedShift::ClusterAssociatedToSchedule>]
+
+
 
 
 =head2 NextInvocations => ArrayRef[Str|Undef]

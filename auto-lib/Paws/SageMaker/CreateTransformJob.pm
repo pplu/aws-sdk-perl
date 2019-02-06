@@ -95,16 +95,17 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 
 =head2 BatchStrategy => Str
 
-Determines the number of records included in a single mini-batch.
-C<SingleRecord> means only one record is used per mini-batch.
-C<MultiRecord> means a mini-batch is set to contain as many records
-that can fit within the C<MaxPayloadInMB> limit.
+Determines the number of records to include in a mini-batch. If you
+want to include only one record in a mini-batch, specify
+C<SingleRecord>.. If you want mini-batches to contain a maximum of the
+number of records specified in the C<MaxPayloadInMB> parameter, specify
+C<MultiRecord>.
 
-Batch transform will automatically split your input data into whatever
-payload size is specified if you set C<SplitType> to C<Line> and
-C<BatchStrategy> to C<MultiRecord>. There's no need to split the
-dataset into smaller files or to use larger payload sizes unless the
-records in your dataset are very large.
+If you set C<SplitType> to C<Line> and C<BatchStrategy> to
+C<MultiRecord>, a batch transform automatically splits your input data
+into the specified payload size. There's no need to split the dataset
+into smaller files or to use larger payload sizes unless the records in
+your dataset are very large.
 
 Valid values are: C<"MultiRecord">, C<"SingleRecord">
 
@@ -117,11 +118,11 @@ to 16 key and values entries in the map.
 
 =head2 MaxConcurrentTransforms => Int
 
-The maximum number of parallel requests that can be sent to each
-instance in a transform job. This is good for algorithms that implement
-multiple workers on larger instances . The default value is C<1>. To
-allow Amazon SageMaker to determine the appropriate number for
-C<MaxConcurrentTransforms>, set the value to C<0>.
+The maximum number of parallel requests that can be sent to an
+algorithm container on an instance. This is good for algorithms that
+implement multiple workers on larger instances . The default value is
+C<1>. To allow Amazon SageMaker to determine the appropriate number for
+C<MaxConcurrentTransforms>, do not set the value in the API.
 
 
 
@@ -153,8 +154,8 @@ within an AWS Region in an AWS account.
 
 =head2 Tags => ArrayRef[L<Paws::SageMaker::Tag>]
 
-An array of key-value pairs. Adding tags is optional. For more
-information, see Using Cost Allocation Tags
+(Optional) An array of key-value pairs. For more information, see Using
+Cost Allocation Tags
 (http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
 in the I<AWS Billing and Cost Management User Guide>.
 

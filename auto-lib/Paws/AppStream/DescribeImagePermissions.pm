@@ -73,8 +73,8 @@ this operation. If this value is null, it retrieves the first page.
 
 =head2 SharedAwsAccountIds => ArrayRef[Str|Undef]
 
-The 12-digit ID of one or more AWS accounts with which the image is
-shared.
+The 12-digit identifier of one or more AWS accounts with which the
+image is shared.
 
 
 

@@ -46,12 +46,12 @@ specify.
 
   If your motion graphic asset is a .mov file, keep this setting
 unspecified. If your motion graphic asset is a series of .png files,
-specify the framerate of the overlay in frames per second, as a
+specify the frame rate of the overlay in frames per second, as a
 fraction. For example, specify 24 fps as 24/1. Make sure that the
-number of images in your series matches the framerate and your intended
-overlay duration. For example, if you want a 30-second overlay at 30
-fps, you should have 900 .png images. This overlay framerate doesn't
-need to match the framerate of the underlying video.
+number of images in your series matches the frame rate and your
+intended overlay duration. For example, if you want a 30-second overlay
+at 30 fps, you should have 900 .png images. This overlay frame rate
+doesn't need to match the frame rate of the underlying video.
 
 
 =head2 Input => Str

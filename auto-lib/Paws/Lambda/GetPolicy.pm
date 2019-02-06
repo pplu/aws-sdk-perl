@@ -51,7 +51,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 B<REQUIRED> FunctionName => Str
 
-The name of the lambda function.
+The name of the Lambda function, version, or alias.
 
 B<Name formats>
 
@@ -59,31 +59,29 @@ B<Name formats>
 
 =item *
 
-B<Function name> - C<MyFunction>.
+B<Function name> - C<my-function> (name-only), C<my-function:v1> (with
+alias).
 
 =item *
 
 B<Function ARN> -
-C<arn:aws:lambda:us-west-2:123456789012:function:MyFunction>.
+C<arn:aws:lambda:us-west-2:123456789012:function:my-function>.
 
 =item *
 
-B<Partial ARN> - C<123456789012:function:MyFunction>.
+B<Partial ARN> - C<123456789012:function:my-function>.
 
 =back
 
-The length constraint applies only to the full ARN. If you specify only
-the function name, it is limited to 64 characters in length.
+You can append a version number or alias to any of the formats. The
+length constraint applies only to the full ARN. If you specify only the
+function name, it is limited to 64 characters in length.
 
 
 
 =head2 Qualifier => Str
 
-You can specify this optional query parameter to specify a function
-version or an alias name in which case this API will return all
-permissions associated with the specific qualified ARN. If you don't
-provide this parameter, the API will return permissions that apply to
-the unqualified function ARN.
+Specify a version or alias to get the policy for that resource.
 
 
 
