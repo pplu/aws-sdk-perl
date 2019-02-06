@@ -18,7 +18,7 @@ requires 'URI::Template';
 requires 'Config::INI';
 requires 'Digest::SHA';
 # For the paws CLI
-requires 'Hash::Flatten';
+requires 'DataStruct::Flat';
 requires 'MooseX::Getopt';
 requires 'ARGV::Struct';
 requires 'Module::Find';
