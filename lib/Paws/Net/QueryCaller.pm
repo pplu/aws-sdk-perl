@@ -50,9 +50,9 @@ package Paws::Net::QueryCaller;
         } elsif ($params->$att->does('Paws::API::StrToObjMapParser')) {
           my $i = 1;
           foreach my $map_key (keys %{ $params->$att->Map }){
-            $p{ "$key.$i.Name" } = $map_key;
+            $p{ "$key.entry.$i.Name" } = $map_key;
             my %complex_value = $self->_to_querycaller_params($params->$att->Map->{ $map_key });
-            map { $p{ "$key.$i.Value.$_" } = $complex_value{$_} } keys %complex_value;
+            map { $p{ "$key.entry.$i.Value.$_" } = $complex_value{$_} } sort keys %complex_value;
             $i++;
           }
         } elsif ($params->$att->does('Paws::API::StrToNativeMapParser')) {
