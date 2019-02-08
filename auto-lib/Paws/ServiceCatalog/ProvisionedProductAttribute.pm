@@ -112,7 +112,7 @@ recent operation succeeded and completed.
 
 =item *
 
-C<UNDER_CHANGE> - Transitive state, operations performed might not have
+C<UNDER_CHANGE> - Transitive state. Operations performed might not have
 valid results. Wait for an C<AVAILABLE> status before performing
 operations.
 
@@ -125,9 +125,16 @@ the stack rolled back to the current version.
 
 =item *
 
-C<ERROR> - An unexpected error occurred, the provisioned product exists
+C<ERROR> - An unexpected error occurred. The provisioned product exists
 but the stack is not running. For example, CloudFormation received a
 parameter value that was not valid and could not launch the stack.
+
+=item *
+
+C<PLAN_IN_PROGRESS> - Transitive state. The plan operations were
+performed to provision a new product, but resources have not yet been
+created. After reviewing the list of resources to be created, execute
+the plan. Wait for an C<AVAILABLE> status before performing operations.
 
 =back
 

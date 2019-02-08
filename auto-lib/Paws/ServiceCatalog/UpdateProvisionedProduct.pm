@@ -53,8 +53,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ...
       ],                                           # OPTIONAL
       ProvisioningPreferences => {
-        StackSetAccounts => [ 'MyAccountId', ... ],    # OPTIONAL
-        StackSetFailureToleranceCount => 1,            # OPTIONAL
+        StackSetAccounts              => [ 'MyAccountId', ... ],    # OPTIONAL
+        StackSetFailureToleranceCount => 1,                         # OPTIONAL
         StackSetFailureTolerancePercentage => 1,    # max: 100; OPTIONAL
         StackSetMaxConcurrencyCount        => 1,    # min: 1; OPTIONAL
         StackSetMaxConcurrencyPercentage   => 1,    # min: 1, max: 100; OPTIONAL
