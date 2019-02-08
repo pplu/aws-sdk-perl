@@ -5,6 +5,7 @@ package Paws::ACMPCA::CreateCertificateAuthority;
   has CertificateAuthorityType => (is => 'ro', isa => 'Str', required => 1);
   has IdempotencyToken => (is => 'ro', isa => 'Str');
   has RevocationConfiguration => (is => 'ro', isa => 'Paws::ACMPCA::RevocationConfiguration');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ACMPCA::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -66,6 +67,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           S3BucketName     => 'MyString3To255',    # min: 3, max: 255; OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256; OPTIONAL
+        },
+        ...
+      ],                            # OPTIONAL
       );
 
     # Results:
@@ -115,6 +123,13 @@ ACM PCA will write the CRL, and an optional CNAME alias that you can
 use to hide the name of your bucket in the B<CRL Distribution Points>
 extension of your CA certificate. For more information, see the
 CrlConfiguration structure.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::ACMPCA::Tag>]
+
+Key-value pairs that will be attached to the new private CA. You can
+associate up to 50 tags with a private CA.
 
 
 
