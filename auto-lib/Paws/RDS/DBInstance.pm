@@ -1,6 +1,7 @@
 package Paws::RDS::DBInstance;
   use Moose;
   has AllocatedStorage => (is => 'ro', isa => 'Int');
+  has AssociatedRoles => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBInstanceRole]', request_name => 'DBInstanceRole', traits => ['NameInRequest']);
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
@@ -97,6 +98,12 @@ action.
 =head2 AllocatedStorage => Int
 
   Specifies the allocated storage size specified in gibibytes.
+
+
+=head2 AssociatedRoles => ArrayRef[L<Paws::RDS::DBInstanceRole>]
+
+  The AWS Identity and Access Management (IAM) roles associated with the
+DB instance.
 
 
 =head2 AutoMinorVersionUpgrade => Bool

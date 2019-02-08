@@ -37,6 +37,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::AddRoleToDBCluster', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AddRoleToDBInstance {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::AddRoleToDBInstance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AddSourceIdentifierToSubscription {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::AddSourceIdentifierToSubscription', @_);
@@ -490,6 +495,11 @@ package Paws::RDS;
   sub RemoveRoleFromDBCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::RemoveRoleFromDBCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RemoveRoleFromDBInstance {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::RemoveRoleFromDBInstance', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RemoveSourceIdentifierFromSubscription {
@@ -1237,7 +1247,7 @@ package Paws::RDS;
   }
 
 
-  sub operations { qw/AddRoleToDBCluster AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress BacktrackDBCluster CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateDBCluster CreateDBClusterEndpoint CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateGlobalCluster CreateOptionGroup DeleteDBCluster DeleteDBClusterEndpoint DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBInstanceAutomatedBackup DeleteDBParameterGroup DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteGlobalCluster DeleteOptionGroup DescribeAccountAttributes DescribeCertificates DescribeDBClusterBacktracks DescribeDBClusterEndpoints DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstanceAutomatedBackups DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeGlobalClusters DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DescribeSourceRegions DescribeValidDBInstanceModifications DownloadDBLogFilePortion FailoverDBCluster ListTagsForResource ModifyCurrentDBClusterCapacity ModifyDBCluster ModifyDBClusterEndpoint ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBSnapshot ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyGlobalCluster ModifyOptionGroup PromoteReadReplica PromoteReadReplicaDBCluster PurchaseReservedDBInstancesOffering RebootDBInstance RemoveFromGlobalCluster RemoveRoleFromDBCluster RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromS3 RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceFromS3 RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress StartDBCluster StartDBInstance StopDBCluster StopDBInstance / }
+  sub operations { qw/AddRoleToDBCluster AddRoleToDBInstance AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress BacktrackDBCluster CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateDBCluster CreateDBClusterEndpoint CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateGlobalCluster CreateOptionGroup DeleteDBCluster DeleteDBClusterEndpoint DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBInstanceAutomatedBackup DeleteDBParameterGroup DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteGlobalCluster DeleteOptionGroup DescribeAccountAttributes DescribeCertificates DescribeDBClusterBacktracks DescribeDBClusterEndpoints DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstanceAutomatedBackups DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeGlobalClusters DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DescribeSourceRegions DescribeValidDBInstanceModifications DownloadDBLogFilePortion FailoverDBCluster ListTagsForResource ModifyCurrentDBClusterCapacity ModifyDBCluster ModifyDBClusterEndpoint ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBSnapshot ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyGlobalCluster ModifyOptionGroup PromoteReadReplica PromoteReadReplicaDBCluster PurchaseReservedDBInstancesOffering RebootDBInstance RemoveFromGlobalCluster RemoveRoleFromDBCluster RemoveRoleFromDBInstance RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromS3 RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceFromS3 RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress StartDBCluster StartDBInstance StopDBCluster StopDBInstance / }
 
 1;
 
@@ -1360,11 +1370,32 @@ Each argument is described in detail in: L<Paws::RDS::AddRoleToDBCluster>
 
 Returns: nothing
 
-Associates an Identity and Access Management (IAM) role from an Aurora
-DB cluster. For more information, see Authorizing Amazon Aurora MySQL
-to Access Other AWS Services on Your Behalf
+Associates an Identity and Access Management (IAM) role from an Amazon
+Aurora DB cluster. For more information, see Authorizing Amazon Aurora
+MySQL to Access Other AWS Services on Your Behalf
 (http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Integrating.Authorizing.html)
 in the I<Amazon Aurora User Guide>.
+
+
+=head2 AddRoleToDBInstance
+
+=over
+
+=item DBInstanceIdentifier => Str
+
+=item FeatureName => Str
+
+=item RoleArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::AddRoleToDBInstance>
+
+Returns: nothing
+
+Associates an AWS Identity and Access Management (IAM) role with a DB
+instance.
 
 
 =head2 AddSourceIdentifierToSubscription
@@ -4213,11 +4244,32 @@ Each argument is described in detail in: L<Paws::RDS::RemoveRoleFromDBCluster>
 
 Returns: nothing
 
-Disassociates an Identity and Access Management (IAM) role from an
-Aurora DB cluster. For more information, see Authorizing Amazon Aurora
-MySQL to Access Other AWS Services on Your Behalf
+Disassociates an AWS Identity and Access Management (IAM) role from an
+Amazon Aurora DB cluster. For more information, see Authorizing Amazon
+Aurora MySQL to Access Other AWS Services on Your Behalf
 (http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Integrating.Authorizing.html)
 in the I<Amazon Aurora User Guide>.
+
+
+=head2 RemoveRoleFromDBInstance
+
+=over
+
+=item DBInstanceIdentifier => Str
+
+=item FeatureName => Str
+
+=item RoleArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::RemoveRoleFromDBInstance>
+
+Returns: nothing
+
+Disassociates an AWS Identity and Access Management (IAM) role from a
+DB instance.
 
 
 =head2 RemoveSourceIdentifierFromSubscription

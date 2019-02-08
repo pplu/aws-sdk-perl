@@ -33,11 +33,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $rds-data = Paws->service('RDSData');
     my $ExecuteSqlResponse = $rds -data->ExecuteSql(
-      AwsSecretStoreArn      => 'MyString',
-      DbClusterOrInstanceArn => 'MyString',
-      SqlStatements          => 'MyString',
-      Database               => 'MyString',    # OPTIONAL
-      Schema                 => 'MyString',    # OPTIONAL
+      AwsSecretStoreArn      => 'MyArn',
+      DbClusterOrInstanceArn => 'MyArn',
+      SqlStatements          => 'MySqlStatement',
+      Database               => 'MyDbName',         # OPTIONAL
+      Schema                 => 'MyDbName',         # OPTIONAL
     );
 
     # Results:

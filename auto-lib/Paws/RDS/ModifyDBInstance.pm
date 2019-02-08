@@ -208,6 +208,10 @@ instance.
 The configuration setting for the log types to be enabled for export to
 CloudWatch Logs for a specific DB instance.
 
+A change to the C<CloudwatchLogsExportConfiguration> parameter is
+always applied to the DB instance immediately. Therefore, the
+C<ApplyImmediately> parameter has no effect.
+
 
 
 =head2 CopyTagsToSnapshot => Bool
