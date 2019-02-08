@@ -5,6 +5,7 @@ package Paws::ES::ElasticsearchClusterConfig;
   has DedicatedMasterType => (is => 'ro', isa => 'Str');
   has InstanceCount => (is => 'ro', isa => 'Int');
   has InstanceType => (is => 'ro', isa => 'Str');
+  has ZoneAwarenessConfig => (is => 'ro', isa => 'Paws::ES::ZoneAwarenessConfig');
   has ZoneAwarenessEnabled => (is => 'ro', isa => 'Bool');
 1;
 
@@ -69,6 +70,12 @@ for more information.
 =head2 InstanceType => Str
 
   The instance type for an Elasticsearch cluster.
+
+
+=head2 ZoneAwarenessConfig => L<Paws::ES::ZoneAwarenessConfig>
+
+  Specifies the zone awareness configuration for a domain when zone
+awareness is enabled.
 
 
 =head2 ZoneAwarenessEnabled => Bool
