@@ -1215,6 +1215,8 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 =item [InstanceIdentityDocumentSignature => Str]
 
+=item [PlatformDevices => ArrayRef[L<Paws::ECS::PlatformDevice>]]
+
 =item [Tags => ArrayRef[L<Paws::ECS::Tag>]]
 
 =item [TotalResources => ArrayRef[L<Paws::ECS::Resource>]]

@@ -155,9 +155,13 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 =head2 PropagateTags => Str
 
-Specifies whether to propagate the tags from the task definition or the
-service to the task. If no value is specified, the tags are not
-propagated.
+Specifies whether to propagate the tags from the task definition to the
+task. If no value is specified, the tags are not propagated. Tags can
+only be propagated to the task during task creation. To add tags to a
+task after task creation, use the TagResource API action.
+
+An error will be received if you specify the C<SERVICE> option when
+running a task.
 
 Valid values are: C<"TASK_DEFINITION">, C<"SERVICE">
 

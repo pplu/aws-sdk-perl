@@ -253,10 +253,10 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 =head2 PropagateTags => Str
 
 Specifies whether to propagate the tags from the task definition or the
-service to the tasks. If no value is specified, the tags are not
-propagated. Tags can only be propagated to the tasks within the service
-during service creation. To add tags to a task after service creation,
-use the TagResource API action.
+service to the tasks in the service. If no value is specified, the tags
+are not propagated. Tags can only be propagated to the tasks within the
+service during service creation. To add tags to a task after service
+creation, use the TagResource API action.
 
 Valid values are: C<"TASK_DEFINITION">, C<"SERVICE">
 

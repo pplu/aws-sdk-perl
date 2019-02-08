@@ -27,6 +27,7 @@ package Paws::ECS::ContainerDefinition;
   has PseudoTerminal => (is => 'ro', isa => 'Bool', request_name => 'pseudoTerminal', traits => ['NameInRequest']);
   has ReadonlyRootFilesystem => (is => 'ro', isa => 'Bool', request_name => 'readonlyRootFilesystem', traits => ['NameInRequest']);
   has RepositoryCredentials => (is => 'ro', isa => 'Paws::ECS::RepositoryCredentials', request_name => 'repositoryCredentials', traits => ['NameInRequest']);
+  has ResourceRequirements => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ResourceRequirement]', request_name => 'resourceRequirements', traits => ['NameInRequest']);
   has Secrets => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Secret]', request_name => 'secrets', traits => ['NameInRequest']);
   has SystemControls => (is => 'ro', isa => 'ArrayRef[Paws::ECS::SystemControl]', request_name => 'systemControls', traits => ['NameInRequest']);
   has Ulimits => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Ulimit]', request_name => 'ulimits', traits => ['NameInRequest']);
@@ -618,6 +619,12 @@ This parameter is not supported for Windows containers.
 =head2 RepositoryCredentials => L<Paws::ECS::RepositoryCredentials>
 
   The private repository authentication credentials to use.
+
+
+=head2 ResourceRequirements => ArrayRef[L<Paws::ECS::ResourceRequirement>]
+
+  The type and amount of a resource to assign to a container. The only
+supported resource is a GPU.
 
 
 =head2 Secrets => ArrayRef[L<Paws::ECS::Secret>]

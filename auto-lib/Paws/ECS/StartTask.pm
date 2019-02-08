@@ -61,9 +61,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },
               ...
             ],                                    # OPTIONAL
-            Memory            => 1,               # OPTIONAL
-            MemoryReservation => 1,               # OPTIONAL
-            Name              => 'MyString',
+            Memory               => 1,            # OPTIONAL
+            MemoryReservation    => 1,            # OPTIONAL
+            Name                 => 'MyString',
+            ResourceRequirements => [
+              {
+                Type  => 'GPU',                   # values: GPU
+                Value => 'MyString',
+
+              },
+              ...
+            ],                                    # OPTIONAL
           },
           ...
         ],                                        # OPTIONAL

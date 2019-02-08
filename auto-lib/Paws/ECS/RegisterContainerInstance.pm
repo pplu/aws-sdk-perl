@@ -6,6 +6,7 @@ package Paws::ECS::RegisterContainerInstance;
   has ContainerInstanceArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'containerInstanceArn' );
   has InstanceIdentityDocument => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceIdentityDocument' );
   has InstanceIdentityDocumentSignature => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceIdentityDocumentSignature' );
+  has PlatformDevices => (is => 'ro', isa => 'ArrayRef[Paws::ECS::PlatformDevice]', traits => ['NameInRequest'], request_name => 'platformDevices' );
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has TotalResources => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Resource]', traits => ['NameInRequest'], request_name => 'totalResources' );
   has VersionInfo => (is => 'ro', isa => 'Paws::ECS::VersionInfo', traits => ['NameInRequest'], request_name => 'versionInfo' );
@@ -49,7 +50,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ContainerInstanceArn              => 'MyString',    # OPTIONAL
       InstanceIdentityDocument          => 'MyString',    # OPTIONAL
       InstanceIdentityDocumentSignature => 'MyString',    # OPTIONAL
-      Tags                              => [
+      PlatformDevices                   => [
+        {
+          Id   => 'MyString',
+          Type => 'GPU',                                  # values: GPU
+
+        },
+        ...
+      ],                                                  # OPTIONAL
+      Tags => [
         {
           Key   => 'MyTagKey',      # min: 1, max: 128; OPTIONAL
           Value => 'MyTagValue',    # max: 256; OPTIONAL
@@ -122,6 +131,13 @@ The instance identity document signature for the EC2 instance to
 register. This signature can be found by running the following command
 from the instance: C<curl
 http://169.254.169.254/latest/dynamic/instance-identity/signature/>
+
+
+
+=head2 PlatformDevices => ArrayRef[L<Paws::ECS::PlatformDevice>]
+
+The devices that are available on the container instance. The only
+supported device type is a GPU.
 
 
 
