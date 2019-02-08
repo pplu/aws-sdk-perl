@@ -1,7 +1,7 @@
 
 package Paws::WorkSpaces::ModifyClientProperties;
   use Moose;
-  has ClientProperties => (is => 'ro', isa => 'Paws::WorkSpaces::ClientProperties');
+  has ClientProperties => (is => 'ro', isa => 'Paws::WorkSpaces::ClientProperties', required => 1);
   has ResourceId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -29,10 +29,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $workspaces = Paws->service('WorkSpaces');
     my $ModifyClientPropertiesResult = $workspaces->ModifyClientProperties(
-      ResourceId       => 'MyNonEmptyString',
       ClientProperties => {
         ReconnectEnabled => 'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
-      },    # OPTIONAL
+      },
+      ResourceId => 'MyNonEmptyString',
+
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -41,7 +42,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 =head1 ATTRIBUTES
 
 
-=head2 ClientProperties => L<Paws::WorkSpaces::ClientProperties>
+=head2 B<REQUIRED> ClientProperties => L<Paws::WorkSpaces::ClientProperties>
 
 Information about the Amazon WorkSpaces client.
 

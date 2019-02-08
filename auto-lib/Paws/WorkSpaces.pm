@@ -854,9 +854,9 @@ specified account.
 
 =over
 
-=item ResourceId => Str
+=item ClientProperties => L<Paws::WorkSpaces::ClientProperties>
 
-=item [ClientProperties => L<Paws::WorkSpaces::ClientProperties>]
+=item ResourceId => Str
 
 
 =back
