@@ -31,6 +31,7 @@
  - New API: ApiGatewayV2
  - New API: Backup
  - New API: DocDB
+ - New API: PinpointSMSVoice
  - New API: WorkLink
 
 0.38 19 Jun 2018

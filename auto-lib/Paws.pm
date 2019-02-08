@@ -490,6 +490,8 @@ L<Paws::PinpointEmail>
 
 L<Paws::PinpointSMSVoice>
 
+L<Paws::PinpointSMSVoice>
+
 L<Paws::Polly>
 
 L<Paws::Pricing>
@@ -581,6 +583,8 @@ L<Paws::WAF>
 L<Paws::WAFRegional>
 
 L<Paws::WorkDocs>
+
+L<Paws::WorkLink>
 
 L<Paws::WorkMail>
 
