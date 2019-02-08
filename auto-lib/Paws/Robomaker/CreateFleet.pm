@@ -2,6 +2,7 @@
 package Paws::Robomaker::CreateFleet;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::Robomaker::TagMap', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -30,13 +31,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $robomaker = Paws->service('Robomaker');
     my $CreateFleetResponse = $robomaker->CreateFleet(
       Name => 'MyName',
-
+      Tags => {
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
+      },    # OPTIONAL
     );
 
     # Results:
     my $Arn       = $CreateFleetResponse->Arn;
     my $CreatedAt = $CreateFleetResponse->CreatedAt;
     my $Name      = $CreateFleetResponse->Name;
+    my $Tags      = $CreateFleetResponse->Tags;
 
     # Returns a L<Paws::Robomaker::CreateFleetResponse> object.
 
@@ -49,6 +53,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rob
 =head2 B<REQUIRED> Name => Str
 
 The name of the fleet.
+
+
+
+=head2 Tags => L<Paws::Robomaker::TagMap>
+
+A map that contains tag keys and tag values that are attached to the
+fleet.
 
 
 

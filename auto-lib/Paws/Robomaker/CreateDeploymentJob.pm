@@ -5,6 +5,7 @@ package Paws::Robomaker::CreateDeploymentJob;
   has DeploymentApplicationConfigs => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::DeploymentApplicationConfig]', traits => ['NameInRequest'], request_name => 'deploymentApplicationConfigs', required => 1);
   has DeploymentConfig => (is => 'ro', isa => 'Paws::Robomaker::DeploymentConfig', traits => ['NameInRequest'], request_name => 'deploymentConfig');
   has Fleet => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'fleet', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::Robomaker::TagMap', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -35,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ClientRequestToken           => 'MyClientRequestToken',
       DeploymentApplicationConfigs => [
         {
-          Application        => 'MyArn',        # min: 1, max: 1224
-          ApplicationVersion => 'MyVersion',    # min: 1, max: 255
+          Application        => 'MyArn',                  # min: 1, max: 1224
+          ApplicationVersion => 'MyDeploymentVersion',    # min: 1, max: 255
           LaunchConfig       => {
             LaunchFile           => 'MyGenericString',
             PackageName          => 'MyGenericString',
@@ -56,6 +57,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ConcurrentDeploymentPercentage => 1,    # min: 1, max: 100; OPTIONAL
         FailureThresholdPercentage     => 1,    # min: 1, max: 100; OPTIONAL
       },    # OPTIONAL
+      Tags => {
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
+      },    # OPTIONAL
     );
 
     # Results:
@@ -68,6 +72,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $FailureReason    = $CreateDeploymentJobResponse->FailureReason;
     my $Fleet            = $CreateDeploymentJobResponse->Fleet;
     my $Status           = $CreateDeploymentJobResponse->Status;
+    my $Tags             = $CreateDeploymentJobResponse->Tags;
 
     # Returns a L<Paws::Robomaker::CreateDeploymentJobResponse> object.
 
@@ -99,6 +104,13 @@ The requested deployment configuration.
 =head2 B<REQUIRED> Fleet => Str
 
 The Amazon Resource Name (ARN) of the fleet to deploy.
+
+
+
+=head2 Tags => L<Paws::Robomaker::TagMap>
+
+A map that contains tag keys and tag values that are attached to the
+deployment job.
 
 
 

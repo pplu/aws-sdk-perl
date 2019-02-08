@@ -43,12 +43,12 @@ Configuration information for a deployment launch.
 =head2 EnvironmentVariables => L<Paws::Robomaker::EnvironmentVariableMap>
 
   An array of key/value pairs specifying environment variables for the
-deployment application.
+robot application
 
 
 =head2 B<REQUIRED> LaunchFile => Str
 
-  The deployment launch file.
+  The launch file name.
 
 
 =head2 B<REQUIRED> PackageName => Str
@@ -59,13 +59,13 @@ deployment application.
 =head2 PostLaunchFile => Str
 
   The deployment post-launch file. This file will be executed after the
-deployment launch file.
+launch file.
 
 
 =head2 PreLaunchFile => Str
 
   The deployment pre-launch file. This file will be executed prior to the
-deployment launch file.
+launch file.
 
 
 

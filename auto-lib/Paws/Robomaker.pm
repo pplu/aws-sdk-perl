@@ -149,6 +149,11 @@ package Paws::Robomaker;
     my $call_object = $self->new_with_coercions('Paws::Robomaker::ListSimulationJobs', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Robomaker::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RegisterRobot {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Robomaker::RegisterRobot', @_);
@@ -162,6 +167,16 @@ package Paws::Robomaker;
   sub SyncDeploymentJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Robomaker::SyncDeploymentJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Robomaker::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Robomaker::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateRobotApplication {
@@ -315,7 +330,7 @@ package Paws::Robomaker;
   }
 
 
-  sub operations { qw/BatchDescribeSimulationJob CancelSimulationJob CreateDeploymentJob CreateFleet CreateRobot CreateRobotApplication CreateRobotApplicationVersion CreateSimulationApplication CreateSimulationApplicationVersion CreateSimulationJob DeleteFleet DeleteRobot DeleteRobotApplication DeleteSimulationApplication DeregisterRobot DescribeDeploymentJob DescribeFleet DescribeRobot DescribeRobotApplication DescribeSimulationApplication DescribeSimulationJob ListDeploymentJobs ListFleets ListRobotApplications ListRobots ListSimulationApplications ListSimulationJobs RegisterRobot RestartSimulationJob SyncDeploymentJob UpdateRobotApplication UpdateSimulationApplication / }
+  sub operations { qw/BatchDescribeSimulationJob CancelSimulationJob CreateDeploymentJob CreateFleet CreateRobot CreateRobotApplication CreateRobotApplicationVersion CreateSimulationApplication CreateSimulationApplicationVersion CreateSimulationJob DeleteFleet DeleteRobot DeleteRobotApplication DeleteSimulationApplication DeregisterRobot DescribeDeploymentJob DescribeFleet DescribeRobot DescribeRobotApplication DescribeSimulationApplication DescribeSimulationJob ListDeploymentJobs ListFleets ListRobotApplications ListRobots ListSimulationApplications ListSimulationJobs ListTagsForResource RegisterRobot RestartSimulationJob SyncDeploymentJob TagResource UntagResource UpdateRobotApplication UpdateSimulationApplication / }
 
 1;
 
@@ -395,6 +410,8 @@ Cancels the specified simulation job.
 
 =item [DeploymentConfig => L<Paws::Robomaker::DeploymentConfig>]
 
+=item [Tags => L<Paws::Robomaker::TagMap>]
+
 
 =back
 
@@ -402,7 +419,13 @@ Each argument is described in detail in: L<Paws::Robomaker::CreateDeploymentJob>
 
 Returns: a L<Paws::Robomaker::CreateDeploymentJobResponse> instance
 
-Creates a deployment job.
+Deploys a specific version of a robot application to robots in a fleet.
+
+The robot application must have a numbered C<applicationVersion> for
+consistency reasons. To create a new version, use
+C<CreateRobotApplicationVersion> or see Creating a Robot Application
+Version
+(https://docs.aws.amazon.com/robomaker/latest/dg/create-robot-application-version.html).
 
 
 =head2 CreateFleet
@@ -410,6 +433,8 @@ Creates a deployment job.
 =over
 
 =item Name => Str
+
+=item [Tags => L<Paws::Robomaker::TagMap>]
 
 
 =back
@@ -432,6 +457,8 @@ application.
 
 =item Name => Str
 
+=item [Tags => L<Paws::Robomaker::TagMap>]
+
 
 =back
 
@@ -451,6 +478,8 @@ Creates a robot.
 =item RobotSoftwareSuite => L<Paws::Robomaker::RobotSoftwareSuite>
 
 =item Sources => ArrayRef[L<Paws::Robomaker::SourceConfig>]
+
+=item [Tags => L<Paws::Robomaker::TagMap>]
 
 
 =back
@@ -493,6 +522,8 @@ Creates a version of a robot application.
 =item SimulationSoftwareSuite => L<Paws::Robomaker::SimulationSoftwareSuite>
 
 =item Sources => ArrayRef[L<Paws::Robomaker::SourceConfig>]
+
+=item [Tags => L<Paws::Robomaker::TagMap>]
 
 
 =back
@@ -539,6 +570,8 @@ Creates a simulation application with a specific revision id.
 =item [RobotApplications => ArrayRef[L<Paws::Robomaker::RobotApplicationConfig>]]
 
 =item [SimulationApplications => ArrayRef[L<Paws::Robomaker::SimulationApplicationConfig>]]
+
+=item [Tags => L<Paws::Robomaker::TagMap>]
 
 =item [VpcConfig => L<Paws::Robomaker::VPCConfig>]
 
@@ -869,6 +902,22 @@ Returns a list of simulation jobs. You can optionally provide filters
 to retrieve specific simulation jobs.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Robomaker::ListTagsForResource>
+
+Returns: a L<Paws::Robomaker::ListTagsForResourceResponse> instance
+
+Lists all tags on a AWS RoboMaker resource.
+
+
 =head2 RegisterRobot
 
 =over
@@ -920,6 +969,54 @@ Returns: a L<Paws::Robomaker::SyncDeploymentJobResponse> instance
 
 Syncrhonizes robots in a fleet to the latest deployment. This is
 helpful if robots were added after a deployment.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => L<Paws::Robomaker::TagMap>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Robomaker::TagResource>
+
+Returns: a L<Paws::Robomaker::TagResourceResponse> instance
+
+Adds or edits tags for a AWS RoboMaker resource.
+
+Each tag consists of a tag key and a tag value. Tag keys and tag values
+are both required, but tag values can be empty strings.
+
+For information about the rules that apply to tag keys and tag values,
+see User-Defined Tag Restrictions
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html)
+in the I<AWS Billing and Cost Management User Guide>.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Robomaker::UntagResource>
+
+Returns: a L<Paws::Robomaker::UntagResourceResponse> instance
+
+Removes the specified tags from the specified AWS RoboMaker resource.
+
+To remove a tag, specify the tag key. To change the tag value of an
+existing tag key, use C<TagResource>
+(https://docs.aws.amazon.com/robomaker/latest/dg//API_Reference.htmlAPI_TagResource.html).
 
 
 =head2 UpdateRobotApplication

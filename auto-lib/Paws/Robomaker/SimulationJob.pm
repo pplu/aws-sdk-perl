@@ -4,6 +4,7 @@ package Paws::Robomaker::SimulationJob;
   has ClientRequestToken => (is => 'ro', isa => 'Str', request_name => 'clientRequestToken', traits => ['NameInRequest']);
   has FailureBehavior => (is => 'ro', isa => 'Str', request_name => 'failureBehavior', traits => ['NameInRequest']);
   has FailureCode => (is => 'ro', isa => 'Str', request_name => 'failureCode', traits => ['NameInRequest']);
+  has FailureReason => (is => 'ro', isa => 'Str', request_name => 'failureReason', traits => ['NameInRequest']);
   has IamRole => (is => 'ro', isa => 'Str', request_name => 'iamRole', traits => ['NameInRequest']);
   has LastUpdatedAt => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedAt', traits => ['NameInRequest']);
   has MaxJobDurationInSeconds => (is => 'ro', isa => 'Int', request_name => 'maxJobDurationInSeconds', traits => ['NameInRequest']);
@@ -13,6 +14,7 @@ package Paws::Robomaker::SimulationJob;
   has SimulationApplications => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::SimulationApplicationConfig]', request_name => 'simulationApplications', traits => ['NameInRequest']);
   has SimulationTimeMillis => (is => 'ro', isa => 'Int', request_name => 'simulationTimeMillis', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'Paws::Robomaker::TagMap', request_name => 'tags', traits => ['NameInRequest']);
   has VpcConfig => (is => 'ro', isa => 'Paws::Robomaker::VPCConfigResponse', request_name => 'vpcConfig', traits => ['NameInRequest']);
 1;
 
@@ -82,6 +84,11 @@ Stop the simulation job and terminate the instance.
   The failure code of the simulation job if it failed.
 
 
+=head2 FailureReason => Str
+
+  The reason why the simulation job failed.
+
+
 =head2 IamRole => Str
 
   The IAM role that allows the simulation instance to call the AWS APIs
@@ -131,6 +138,12 @@ days (691,200 seconds) or less.
 =head2 Status => Str
 
   Status of the simulation job.
+
+
+=head2 Tags => L<Paws::Robomaker::TagMap>
+
+  A map that contains tag keys and tag values that are attached to the
+simulation job.
 
 
 =head2 VpcConfig => L<Paws::Robomaker::VPCConfigResponse>

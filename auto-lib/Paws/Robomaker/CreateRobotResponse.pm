@@ -6,6 +6,7 @@ package Paws::Robomaker::CreateRobotResponse;
   has CreatedAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdAt');
   has GreengrassGroupId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'greengrassGroupId');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has Tags => (is => 'ro', isa => 'Paws::Robomaker::TagMap', traits => ['NameInRequest'], request_name => 'tags');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -43,6 +44,11 @@ the robot.
 =head2 Name => Str
 
 The name of the robot.
+
+
+=head2 Tags => L<Paws::Robomaker::TagMap>
+
+The list of all tags added to the robot.
 
 
 =head2 _request_id => Str

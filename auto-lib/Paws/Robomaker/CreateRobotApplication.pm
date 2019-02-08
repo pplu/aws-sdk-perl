@@ -4,6 +4,7 @@ package Paws::Robomaker::CreateRobotApplication;
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
   has RobotSoftwareSuite => (is => 'ro', isa => 'Paws::Robomaker::RobotSoftwareSuite', traits => ['NameInRequest'], request_name => 'robotSoftwareSuite', required => 1);
   has Sources => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::SourceConfig]', traits => ['NameInRequest'], request_name => 'sources', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::Robomaker::TagMap', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -44,7 +45,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],
-
+      Tags => {
+        'MyTagKey' => 'MyTagValue',     # key: min: 1, max: 128, value: max: 256
+      },    # OPTIONAL
     );
 
     # Results:
@@ -55,6 +58,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $RobotSoftwareSuite =
       $CreateRobotApplicationResponse->RobotSoftwareSuite;
     my $Sources = $CreateRobotApplicationResponse->Sources;
+    my $Tags    = $CreateRobotApplicationResponse->Tags;
     my $Version = $CreateRobotApplicationResponse->Version;
 
     # Returns a L<Paws::Robomaker::CreateRobotApplicationResponse> object.
@@ -80,6 +84,13 @@ The robot software suite used by the robot application.
 =head2 B<REQUIRED> Sources => ArrayRef[L<Paws::Robomaker::SourceConfig>]
 
 The sources of the robot application.
+
+
+
+=head2 Tags => L<Paws::Robomaker::TagMap>
+
+A map that contains tag keys and tag values that are attached to the
+robot application.
 
 
 

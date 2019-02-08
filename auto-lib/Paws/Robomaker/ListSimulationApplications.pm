@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $robomaker->ListSimulationApplications(
       Filters => [
         {
-          Name   => 'MyName',    # min: 1, max: 255; OPTIONAL
+          Name   => 'MyName',    # min: 1, max: 255
           Values => [
-            'MyName', ...        # min: 1, max: 255; OPTIONAL
+            'MyName', ...        # min: 1, max: 255
           ],                     # min: 1, max: 1; OPTIONAL
         },
         ...

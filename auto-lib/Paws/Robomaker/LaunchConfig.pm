@@ -45,7 +45,7 @@ Information about a launch configuration.
 
 =head2 B<REQUIRED> LaunchFile => Str
 
-  The launch file.
+  The launch file name.
 
 
 =head2 B<REQUIRED> PackageName => Str

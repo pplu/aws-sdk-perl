@@ -8,6 +8,7 @@ package Paws::Robomaker::DescribeFleetResponse;
   has LastDeploymentTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastDeploymentTime');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
   has Robots => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::Robot]', traits => ['NameInRequest'], request_name => 'robots');
+  has Tags => (is => 'ro', isa => 'Paws::Robomaker::TagMap', traits => ['NameInRequest'], request_name => 'tags');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -54,6 +55,11 @@ The name of the fleet.
 =head2 Robots => ArrayRef[L<Paws::Robomaker::Robot>]
 
 A list of robots.
+
+
+=head2 Tags => L<Paws::Robomaker::TagMap>
+
+The list of all tags added to the specified fleet.
 
 
 =head2 _request_id => Str

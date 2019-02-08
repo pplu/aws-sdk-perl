@@ -13,6 +13,7 @@ package Paws::Robomaker::CreateSimulationJobResponse;
   has SimulationApplications => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::SimulationApplicationConfig]', traits => ['NameInRequest'], request_name => 'simulationApplications');
   has SimulationTimeMillis => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'simulationTimeMillis');
   has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status');
+  has Tags => (is => 'ro', isa => 'Paws::Robomaker::TagMap', traits => ['NameInRequest'], request_name => 'tags');
   has VpcConfig => (is => 'ro', isa => 'Paws::Robomaker::VPCConfigResponse', traits => ['NameInRequest'], request_name => 'vpcConfig');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -45,9 +46,73 @@ the failure behavior for the simulation job.
 Valid values are: C<"Fail">, C<"Continue">
 =head2 FailureCode => Str
 
-The failure code of the simulation job if it failed.
+The failure code of the simulation job if it failed:
 
-Valid values are: C<"InternalServiceError">, C<"RobotApplicationCrash">, C<"SimulationApplicationCrash">, C<"BadPermissionsRobotApplication">, C<"BadPermissionsSimulationApplication">, C<"BadPermissionsS3Output">, C<"BadPermissionsCloudwatchLogs">, C<"SubnetIpLimitExceeded">, C<"ENILimitExceeded">, C<"BadPermissionsUserCredentials">, C<"InvalidBundleRobotApplication">, C<"InvalidBundleSimulationApplication">, C<"RobotApplicationVersionMismatchedEtag">, C<"SimulationApplicationVersionMismatchedEtag">
+=over
+
+=item InternalServiceError
+
+Internal service error.
+
+=item RobotApplicationCrash
+
+Robot application exited abnormally.
+
+=item SimulationApplicationCrash
+
+Simulation application exited abnormally.
+
+=item BadPermissionsRobotApplication
+
+Robot application bundle could not be downloaded.
+
+=item BadPermissionsSimulationApplication
+
+Simulation application bundle could not be downloaded.
+
+=item BadPermissionsS3Output
+
+Unable to publish outputs to customer-provided S3 bucket.
+
+=item BadPermissionsCloudwatchLogs
+
+Unable to publish logs to customer-provided CloudWatch Logs resource.
+
+=item SubnetIpLimitExceeded
+
+Subnet IP limit exceeded.
+
+=item ENILimitExceeded
+
+ENI limit exceeded.
+
+=item BadPermissionsUserCredentials
+
+Unable to use the Role provided.
+
+=item InvalidBundleRobotApplication
+
+Robot bundle cannot be extracted (invalid format, bundling error, or
+other issue).
+
+=item InvalidBundleSimulationApplication
+
+Simulation bundle cannot be extracted (invalid format, bundling error,
+or other issue).
+
+=item RobotApplicationVersionMismatchedEtag
+
+Etag for RobotApplication does not match value during version creation.
+
+=item SimulationApplicationVersionMismatchedEtag
+
+Etag for SimulationApplication does not match value during version
+creation.
+
+=back
+
+
+Valid values are: C<"InternalServiceError">, C<"RobotApplicationCrash">, C<"SimulationApplicationCrash">, C<"BadPermissionsRobotApplication">, C<"BadPermissionsSimulationApplication">, C<"BadPermissionsS3Output">, C<"BadPermissionsCloudwatchLogs">, C<"SubnetIpLimitExceeded">, C<"ENILimitExceeded">, C<"BadPermissionsUserCredentials">, C<"InvalidBundleRobotApplication">, C<"InvalidBundleSimulationApplication">, C<"RobotApplicationVersionMismatchedEtag">, C<"SimulationApplicationVersionMismatchedEtag">, C<"WrongRegionS3Output">, C<"WrongRegionRobotApplication">, C<"WrongRegionSimulationApplication">
 =head2 IamRole => Str
 
 The IAM role that allows the simulation job to call the AWS APIs that
@@ -91,6 +156,11 @@ The simulation job execution duration in milliseconds.
 The status of the simulation job.
 
 Valid values are: C<"Pending">, C<"Preparing">, C<"Running">, C<"Restarting">, C<"Completed">, C<"Failed">, C<"RunningFailed">, C<"Terminating">, C<"Terminated">, C<"Canceled">
+=head2 Tags => L<Paws::Robomaker::TagMap>
+
+The list of all tags added to the simulation job.
+
+
 =head2 VpcConfig => L<Paws::Robomaker::VPCConfigResponse>
 
 Information about the vpc configuration.

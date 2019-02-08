@@ -45,6 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $RobotDeploymentSummary =
       $DescribeDeploymentJobResponse->RobotDeploymentSummary;
     my $Status = $DescribeDeploymentJobResponse->Status;
+    my $Tags   = $DescribeDeploymentJobResponse->Tags;
 
     # Returns a L<Paws::Robomaker::DescribeDeploymentJobResponse> object.
 

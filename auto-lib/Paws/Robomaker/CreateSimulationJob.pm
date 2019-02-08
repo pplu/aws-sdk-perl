@@ -8,6 +8,7 @@ package Paws::Robomaker::CreateSimulationJob;
   has OutputLocation => (is => 'ro', isa => 'Paws::Robomaker::OutputLocation', traits => ['NameInRequest'], request_name => 'outputLocation');
   has RobotApplications => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::RobotApplicationConfig]', traits => ['NameInRequest'], request_name => 'robotApplications');
   has SimulationApplications => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::SimulationApplicationConfig]', traits => ['NameInRequest'], request_name => 'simulationApplications');
+  has Tags => (is => 'ro', isa => 'Paws::Robomaker::TagMap', traits => ['NameInRequest'], request_name => 'tags');
   has VpcConfig => (is => 'ro', isa => 'Paws::Robomaker::VPCConfig', traits => ['NameInRequest'], request_name => 'vpcConfig');
 
   use MooseX::ClassAttribute;
@@ -74,6 +75,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                        # OPTIONAL
+      Tags => {
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
+      },    # OPTIONAL
       VpcConfig => {
         Subnets        => [ 'MyGenericString', ... ], # min: 1, max: 16
         AssignPublicIp => 1,                          # OPTIONAL
@@ -97,6 +101,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SimulationTimeMillis =
       $CreateSimulationJobResponse->SimulationTimeMillis;
     my $Status    = $CreateSimulationJobResponse->Status;
+    my $Tags      = $CreateSimulationJobResponse->Tags;
     my $VpcConfig = $CreateSimulationJobResponse->VpcConfig;
 
     # Returns a L<Paws::Robomaker::CreateSimulationJobResponse> object.
@@ -135,11 +140,9 @@ Valid values are: C<"Fail">, C<"Continue">
 
 =head2 B<REQUIRED> IamRole => Str
 
-The IAM role that allows the simulation instance to call the AWS APIs
-that are specified in its associated policies on your behalf. This is
-how credentials are passed in to your simulation job. See how to
-specify AWS security credentials for your application
-(https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/deployment-ecs-specify-credentials).
+The IAM role name that allows the simulation instance to call the AWS
+APIs that are specified in its associated policies on your behalf. This
+is how credentials are passed in to your simulation job.
 
 
 
@@ -166,6 +169,13 @@ The robot application to use in the simulation job.
 =head2 SimulationApplications => ArrayRef[L<Paws::Robomaker::SimulationApplicationConfig>]
 
 The simulation application to use in the simulation job.
+
+
+
+=head2 Tags => L<Paws::Robomaker::TagMap>
+
+A map that contains tag keys and tag values that are attached to the
+simulation job.
 
 
 

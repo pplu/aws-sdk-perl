@@ -40,7 +40,7 @@ Information about a deployment application configuration.
 
 =head2 B<REQUIRED> Application => Str
 
-  The application.
+  The Amazon Resource Name (ARN) of the robot application.
 
 
 =head2 B<REQUIRED> ApplicationVersion => Str
@@ -50,7 +50,7 @@ Information about a deployment application configuration.
 
 =head2 B<REQUIRED> LaunchConfig => L<Paws::Robomaker::DeploymentLaunchConfig>
 
-  The launch configuration, usually C<roslaunch>.
+  The launch configuration.
 
 
 

@@ -38,6 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ClientRequestToken = $DescribeSimulationJobResponse->ClientRequestToken;
     my $FailureBehavior    = $DescribeSimulationJobResponse->FailureBehavior;
     my $FailureCode        = $DescribeSimulationJobResponse->FailureCode;
+    my $FailureReason      = $DescribeSimulationJobResponse->FailureReason;
     my $IamRole            = $DescribeSimulationJobResponse->IamRole;
     my $LastUpdatedAt      = $DescribeSimulationJobResponse->LastUpdatedAt;
     my $MaxJobDurationInSeconds =
@@ -50,6 +51,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SimulationTimeMillis =
       $DescribeSimulationJobResponse->SimulationTimeMillis;
     my $Status    = $DescribeSimulationJobResponse->Status;
+    my $Tags      = $DescribeSimulationJobResponse->Tags;
     my $VpcConfig = $DescribeSimulationJobResponse->VpcConfig;
 
     # Returns a L<Paws::Robomaker::DescribeSimulationJobResponse> object.

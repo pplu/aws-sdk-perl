@@ -44,7 +44,71 @@ Information about the deployment configuration.
 
 =head2 FailureCode => Str
 
-The failure code if the job fails.
+The failure code if the job fails:
+
+=over
+
+=item InternalServiceError
+
+Internal service error.
+
+=item RobotApplicationCrash
+
+Robot application exited abnormally.
+
+=item SimulationApplicationCrash
+
+Simulation application exited abnormally.
+
+=item BadPermissionsRobotApplication
+
+Robot application bundle could not be downloaded.
+
+=item BadPermissionsSimulationApplication
+
+Simulation application bundle could not be downloaded.
+
+=item BadPermissionsS3Output
+
+Unable to publish outputs to customer-provided S3 bucket.
+
+=item BadPermissionsCloudwatchLogs
+
+Unable to publish logs to customer-provided CloudWatch Logs resource.
+
+=item SubnetIpLimitExceeded
+
+Subnet IP limit exceeded.
+
+=item ENILimitExceeded
+
+ENI limit exceeded.
+
+=item BadPermissionsUserCredentials
+
+Unable to use the Role provided.
+
+=item InvalidBundleRobotApplication
+
+Robot bundle cannot be extracted (invalid format, bundling error, or
+other issue).
+
+=item InvalidBundleSimulationApplication
+
+Simulation bundle cannot be extracted (invalid format, bundling error,
+or other issue).
+
+=item RobotApplicationVersionMismatchedEtag
+
+Etag for RobotApplication does not match value during version creation.
+
+=item SimulationApplicationVersionMismatchedEtag
+
+Etag for SimulationApplication does not match value during version
+creation.
+
+=back
+
 
 Valid values are: C<"ResourceNotFound">, C<"FailureThresholdBreached">, C<"RobotDeploymentNoResponse">, C<"GreengrassDeploymentFailed">, C<"MissingRobotArchitecture">, C<"MissingRobotApplicationArchitecture">, C<"MissingRobotDeploymentResource">, C<"GreengrassGroupVersionDoesNotExist">, C<"ExtractingBundleFailure">, C<"PreLaunchFileFailure">, C<"PostLaunchFileFailure">, C<"BadPermissionError">, C<"InternalServerError">
 =head2 FailureReason => Str

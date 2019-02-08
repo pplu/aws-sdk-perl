@@ -10,6 +10,7 @@ package Paws::Robomaker::DescribeDeploymentJobResponse;
   has Fleet => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'fleet');
   has RobotDeploymentSummary => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::RobotDeployment]', traits => ['NameInRequest'], request_name => 'robotDeploymentSummary');
   has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status');
+  has Tags => (is => 'ro', isa => 'Paws::Robomaker::TagMap', traits => ['NameInRequest'], request_name => 'tags');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -69,6 +70,11 @@ A list of robot deployment summaries.
 The status of the deployment job.
 
 Valid values are: C<"Pending">, C<"Preparing">, C<"InProgress">, C<"Failed">, C<"Succeeded">
+=head2 Tags => L<Paws::Robomaker::TagMap>
+
+The list of all tags added to the specified deployment job.
+
+
 =head2 _request_id => Str
 
 

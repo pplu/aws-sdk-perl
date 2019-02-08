@@ -10,6 +10,7 @@ package Paws::Robomaker::DescribeRobotResponse;
   has LastDeploymentTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastDeploymentTime');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
   has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status');
+  has Tags => (is => 'ro', isa => 'Paws::Robomaker::TagMap', traits => ['NameInRequest'], request_name => 'tags');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -68,6 +69,11 @@ The name of the robot.
 The status of the fleet.
 
 Valid values are: C<"Available">, C<"Registered">, C<"PendingNewDeployment">, C<"Deploying">, C<"Failed">, C<"InSync">, C<"NoResponse">
+=head2 Tags => L<Paws::Robomaker::TagMap>
+
+The list of all tags added to the specified robot.
+
+
 =head2 _request_id => Str
 
 

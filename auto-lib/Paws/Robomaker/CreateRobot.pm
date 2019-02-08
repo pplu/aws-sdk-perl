@@ -4,6 +4,7 @@ package Paws::Robomaker::CreateRobot;
   has Architecture => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'architecture', required => 1);
   has GreengrassGroupId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'greengrassGroupId', required => 1);
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::Robomaker::TagMap', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -34,7 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Architecture      => 'X86_64',
       GreengrassGroupId => 'MyId',
       Name              => 'MyName',
-
+      Tags              => {
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
+      },    # OPTIONAL
     );
 
     # Results:
@@ -43,6 +46,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreatedAt         = $CreateRobotResponse->CreatedAt;
     my $GreengrassGroupId = $CreateRobotResponse->GreengrassGroupId;
     my $Name              = $CreateRobotResponse->Name;
+    my $Tags              = $CreateRobotResponse->Tags;
 
     # Returns a L<Paws::Robomaker::CreateRobotResponse> object.
 
@@ -67,6 +71,13 @@ The Greengrass group id.
 =head2 B<REQUIRED> Name => Str
 
 The name for the robot.
+
+
+
+=head2 Tags => L<Paws::Robomaker::TagMap>
+
+A map that contains tag keys and tag values that are attached to the
+robot.
 
 
 

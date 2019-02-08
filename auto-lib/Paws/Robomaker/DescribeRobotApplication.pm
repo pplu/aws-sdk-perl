@@ -42,6 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $RobotSoftwareSuite =
       $DescribeRobotApplicationResponse->RobotSoftwareSuite;
     my $Sources = $DescribeRobotApplicationResponse->Sources;
+    my $Tags    = $DescribeRobotApplicationResponse->Tags;
     my $Version = $DescribeRobotApplicationResponse->Version;
 
     # Returns a L<Paws::Robomaker::DescribeRobotApplicationResponse> object.

@@ -7,6 +7,7 @@ package Paws::Robomaker::DescribeRobotApplicationResponse;
   has RevisionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'revisionId');
   has RobotSoftwareSuite => (is => 'ro', isa => 'Paws::Robomaker::RobotSoftwareSuite', traits => ['NameInRequest'], request_name => 'robotSoftwareSuite');
   has Sources => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::Source]', traits => ['NameInRequest'], request_name => 'sources');
+  has Tags => (is => 'ro', isa => 'Paws::Robomaker::TagMap', traits => ['NameInRequest'], request_name => 'tags');
   has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -50,6 +51,11 @@ The robot software suite used by the robot application.
 =head2 Sources => ArrayRef[L<Paws::Robomaker::Source>]
 
 The sources of the robot application.
+
+
+=head2 Tags => L<Paws::Robomaker::TagMap>
+
+The list of all tags added to the specified robot application.
 
 
 =head2 Version => Str
