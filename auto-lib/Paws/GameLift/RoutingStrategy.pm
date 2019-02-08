@@ -35,8 +35,6 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::R
 
 Routing configuration for a fleet alias.
 
-Fleet-related operations include:
-
 =over
 
 =item *

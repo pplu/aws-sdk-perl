@@ -90,7 +90,7 @@ Set of custom properties for a game session, formatted as key:value
 pairs. These properties are passed to a game server process in the
 GameSession object with a request to start a new game session (see
 Start a Game Session
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 
 
 
@@ -100,7 +100,7 @@ Set of custom game session properties, formatted as a single string
 value. This data is passed to a game server process in the GameSession
 object with a request to start a new game session (see Start a Game
 Session
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 
 
 

@@ -39,8 +39,6 @@ region where a player is reporting latency higher than the cap. Latency
 policies are only enforced when the placement request contains player
 latency information.
 
-Queue-related operations include:
-
 =over
 
 =item *

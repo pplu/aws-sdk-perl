@@ -50,8 +50,6 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::F
 
 General properties describing a fleet.
 
-Fleet-related operations include:
-
 =over
 
 =item *
@@ -195,7 +193,7 @@ See Amazon EC2 Instance Types
 Amazon GameLift captures and stores any log files in this location.
 These logs are in addition to game session logs; see more on game
 session logs in the Amazon GameLift Developer Guide
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-api-server-code).
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-api-server-code).
 If no default log path for a fleet is specified, Amazon GameLift
 automatically uploads logs that are stored on each instance at
 C<C:\game\logs> (for Windows) or C</local/game/logs> (for Linux). Use

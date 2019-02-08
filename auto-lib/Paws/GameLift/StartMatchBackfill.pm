@@ -40,18 +40,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           PlayerAttributes => {
             'MyNonZeroAndMaxString' => {
-              N   => 1,
-              S   => 'MyNonZeroAndMaxString',    # min: 1, max: 1024
+              N   => 1,                          # OPTIONAL
+              S   => 'MyNonZeroAndMaxString',    # min: 1, max: 1024; OPTIONAL
               SDM => {
-                'MyNonZeroAndMaxString' => 1,    # key: min: 1, max: 1024
+                'MyNonZeroAndMaxString' =>
+                  1,    # key: min: 1, max: 1024; OPTIONAL, value: OPTIONAL
               },    # OPTIONAL
               SL => [
-                'MyNonZeroAndMaxString', ...    # min: 1, max: 1024
+                'MyNonZeroAndMaxString', ...    # min: 1, max: 1024; OPTIONAL
               ],                                # OPTIONAL
-            },    # key: min: 1, max: 1024
+            },    # key: min: 1, max: 1024; OPTIONAL
           },    # OPTIONAL
-          PlayerId => 'MyNonZeroAndMaxString',    # min: 1, max: 1024
-          Team     => 'MyNonZeroAndMaxString',    # min: 1, max: 1024
+          PlayerId => 'MyNonZeroAndMaxString',    # min: 1, max: 1024; OPTIONAL
+          Team     => 'MyNonZeroAndMaxString',    # min: 1, max: 1024; OPTIONAL
         },
         ...
       ],
@@ -85,7 +86,7 @@ this parameter.
 =head2 B<REQUIRED> GameSessionArn => Str
 
 Amazon Resource Name (ARN
-(http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
 that is assigned to a game session and uniquely identifies it.
 
 
@@ -104,7 +105,7 @@ PlayerID, PlayerAttributes, Team -\\- This information is maintained in
 the GameSession object, C<MatchmakerData> property, for all players who
 are currently assigned to the game session. The matchmaker data is in
 JSON syntax, formatted as a string. For more details, see Match Data
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/match-server.html#match-server-data).
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-server.html#match-server-data).
 
 =item *
 

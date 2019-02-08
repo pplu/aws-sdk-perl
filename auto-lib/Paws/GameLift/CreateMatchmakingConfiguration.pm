@@ -118,7 +118,7 @@ Set of custom properties for a game session, formatted as key:value
 pairs. These properties are passed to a game server process in the
 GameSession object with a request to start a new game session (see
 Start a Game Session
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 This information is added to the new GameSession object that is created
 for a successful match.
 
@@ -130,7 +130,7 @@ Set of custom game session properties, formatted as a single string
 value. This data is passed to a game server process in the GameSession
 object with a request to start a new game session (see Start a Game
 Session
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 This information is added to the new GameSession object that is created
 for a successful match.
 
@@ -139,7 +139,7 @@ for a successful match.
 =head2 B<REQUIRED> GameSessionQueueArns => ArrayRef[Str|Undef]
 
 Amazon Resource Name (ARN
-(http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
 that is assigned to a game session queue and uniquely identifies it.
 Format is
 C<arn:aws:gamelift:E<lt>regionE<gt>::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912>.

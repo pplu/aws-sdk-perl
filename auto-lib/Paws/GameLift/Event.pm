@@ -161,8 +161,8 @@ reason for peering failure is that the two VPCs have overlapping CIDR
 blocks of IPv4 addresses. To resolve this, change the CIDR block for
 the VPC in your AWS account. For more information on VPC peering
 failures, see
-http://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide/invalid-peering-configurations.html
-(http://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide/invalid-peering-configurations.html)
+https://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide/invalid-peering-configurations.html
+(https://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide/invalid-peering-configurations.html)
 
 =item *
 

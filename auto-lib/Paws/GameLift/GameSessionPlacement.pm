@@ -85,7 +85,7 @@ timed out.
 pairs. These properties are passed to a game server process in the
 GameSession object with a request to start a new game session (see
 Start a Game Session
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 
 
 =head2 GameSessionArn => Str
@@ -102,7 +102,7 @@ use this value as a C<GameSessionId> value as needed.
 value. This data is passed to a game server process in the GameSession
 object with a request to start a new game session (see Start a Game
 Session
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 
 
 =head2 GameSessionId => Str
@@ -145,7 +145,7 @@ syntax, formatted as a string. It identifies the matchmaking
 configuration used to create the match, and contains data on all
 players assigned to the match, including player attributes and team
 assignments. For more details on matchmaker data, see Match Data
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/match-server.html#match-server-data).
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-server.html#match-server-data).
 
 
 =head2 MaximumPlayerSessionCount => Int

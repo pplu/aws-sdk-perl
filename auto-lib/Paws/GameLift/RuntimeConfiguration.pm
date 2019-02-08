@@ -57,8 +57,6 @@ run-time configuration, add the values of the C<ConcurrentExecutions>
 parameter for each C< ServerProcess > object in the run-time
 configuration.
 
-Fleet-related operations include:
-
 =over
 
 =item *
