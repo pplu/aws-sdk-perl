@@ -190,7 +190,7 @@ API actions, data types, and errors. For detailed information about AWS
 WAF and AWS Shield Advanced features and an overview of how to use the
 AWS WAF and AWS Shield Advanced APIs, see the AWS WAF and AWS Shield
 Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/shield-2016-06-02>
 
@@ -288,7 +288,8 @@ Returns: a L<Paws::Shield::CreateProtectionResponse> instance
 
 Enables AWS Shield Advanced for a specific AWS resource. The resource
 can be an Amazon CloudFront distribution, Elastic Load Balancing load
-balancer, Elastic IP Address, or an Amazon Route 53 hosted zone.
+balancer, AWS Global Accelerator accelerator, Elastic IP Address, or an
+Amazon Route 53 hosted zone.
 
 You can add protection to only a single resource with each
 CreateProtection request. If you want to add protection to multiple
@@ -408,7 +409,9 @@ suspected attack.
 
 =over
 
-=item ProtectionId => Str
+=item [ProtectionId => Str]
+
+=item [ResourceArn => Str]
 
 
 =back
