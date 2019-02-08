@@ -49,6 +49,11 @@ package Paws::MediaConnect;
     my $call_object = $self->new_with_coercions('Paws::MediaConnect::ListFlows', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaConnect::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RemoveFlowOutput {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaConnect::RemoveFlowOutput', @_);
@@ -67,6 +72,16 @@ package Paws::MediaConnect;
   sub StopFlow {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaConnect::StopFlow', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaConnect::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaConnect::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateFlowEntitlement {
@@ -133,7 +148,7 @@ package Paws::MediaConnect;
   }
 
 
-  sub operations { qw/AddFlowOutputs CreateFlow DeleteFlow DescribeFlow GrantFlowEntitlements ListEntitlements ListFlows RemoveFlowOutput RevokeFlowEntitlement StartFlow StopFlow UpdateFlowEntitlement UpdateFlowOutput UpdateFlowSource / }
+  sub operations { qw/AddFlowOutputs CreateFlow DeleteFlow DescribeFlow GrantFlowEntitlements ListEntitlements ListFlows ListTagsForResource RemoveFlowOutput RevokeFlowEntitlement StartFlow StopFlow TagResource UntagResource UpdateFlowEntitlement UpdateFlowOutput UpdateFlowSource / }
 
 1;
 
@@ -302,6 +317,22 @@ Displays a list of flows that are associated with this account. This
 request returns a paginated result.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaConnect::ListTagsForResource>
+
+Returns: a L<Paws::MediaConnect::ListTagsForResourceResponse> instance
+
+Lists all tags associated with the resource.
+
+
 =head2 RemoveFlowOutput
 
 =over
@@ -374,6 +405,44 @@ Each argument is described in detail in: L<Paws::MediaConnect::StopFlow>
 Returns: a L<Paws::MediaConnect::StopFlowResponse> instance
 
 Stops a flow.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => L<Paws::MediaConnect::__mapOf__string>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaConnect::TagResource>
+
+Returns: nothing
+
+Associates the specified tags to a resource. If the request does not
+mention an existing tag associated with the resource, that tag is not
+changed.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaConnect::UntagResource>
+
+Returns: nothing
+
+Deletes the specified tags from a resource.
 
 
 =head2 UpdateFlowEntitlement
