@@ -55,7 +55,7 @@ package Paws::Credential::InstanceProfile;
   sub _refresh {
     my $self = shift;
 
-    return if $self->expiration >= time;
+    return if $self->expiration - 240 >= time;
 
     my $ua = $self->ua;
     my $r = $ua->get($self->metadata_url);
