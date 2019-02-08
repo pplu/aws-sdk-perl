@@ -69,7 +69,7 @@ C<pending_termination> while instances are terminating.
 
   Unique, case-sensitive identifier you provide to ensure the idempotency
 of the request. For more information, see Ensuring Idempotency
-(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 
 Constraints: Maximum 64 ASCII characters
 

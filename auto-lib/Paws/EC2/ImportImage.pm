@@ -141,7 +141,7 @@ Specifies whether the destination AMI of the imported image should be
 encrypted. The default CMK for EBS is used unless you specify a
 non-default AWS Key Management Service (AWS KMS) CMK using C<KmsKeyId>.
 For more information, see Amazon EBS Encryption
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
@@ -207,7 +207,7 @@ importing.
 B<Note:> You may only use BYOL if you have existing licenses with
 rights to use these licenses in a third party cloud like AWS. For more
 information, see Prerequisites
-(http://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html#prerequisites-image)
+(https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html#prerequisites-image)
 in the VM Import/Export User Guide.
 
 Valid values: C<AWS> | C<BYOL>

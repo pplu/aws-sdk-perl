@@ -282,7 +282,7 @@ the instance. A value of C<true> means that checking is enabled, and
 C<false> means that checking is disabled. The value must be C<false>
 for the instance to perform NAT. For more information, see NAT
 Instances
-(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html)
+(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
 

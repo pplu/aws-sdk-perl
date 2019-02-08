@@ -91,7 +91,7 @@ The Availability Zone in which to create the Capacity Reservation.
 Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. For more information, see How to Ensure
 Idempotency
-(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 
 Constraint: Maximum 64 ASCII characters.
 
@@ -202,13 +202,13 @@ Valid values are: C<"open">, C<"targeted">
 
 The type of operating system for which to reserve capacity.
 
-Valid values are: C<"Linux/UNIX">, C<"Red Hat Enterprise Linux">, C<"SUSE Linux">, C<"Windows">, C<"Windows with SQL Server">, C<"Windows with SQL Server Enterprise">, C<"Windows with SQL Server Standard">, C<"Windows with SQL Server Web">
+Valid values are: C<"Linux/UNIX">, C<"Red Hat Enterprise Linux">, C<"SUSE Linux">, C<"Windows">, C<"Windows with SQL Server">, C<"Windows with SQL Server Enterprise">, C<"Windows with SQL Server Standard">, C<"Windows with SQL Server Web">, C<"Linux with SQL Server Standard">, C<"Linux with SQL Server Web">, C<"Linux with SQL Server Enterprise">
 
 =head2 B<REQUIRED> InstanceType => Str
 
 The instance type for which to reserve capacity. For more information,
 see Instance Types
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 

@@ -74,14 +74,17 @@ action.
 
 =head2 CapacityReservationSpecification => L<Paws::EC2::LaunchTemplateCapacityReservationSpecificationRequest>
 
-  The Capacity Reservation targeting option.
+  The Capacity Reservation targeting option. If you do not specify this
+parameter, the instance's Capacity Reservation preference defaults to
+C<open>, which enables it to run in any open Capacity Reservation that
+has matching attributes (instance type, platform, Availability Zone).
 
 
 =head2 CpuOptions => L<Paws::EC2::LaunchTemplateCpuOptionsRequest>
 
   The CPU options for the instance. For more information, see Optimizing
 CPU Options
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
@@ -122,10 +125,10 @@ Additional usage charges apply when using an EBS-optimized instance.
   Indicates whether an instance is enabled for hibernation. This
 parameter is valid only if the instance meets the hibernation
 prerequisites
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#hibernating-prerequisites).
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#hibernating-prerequisites).
 Hibernation is currently supported only for Amazon Linux. For more
 information, see Hibernate Your Instance
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html) in
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html) in
 the I<Amazon Elastic Compute Cloud User Guide>.
 
 
@@ -156,7 +159,7 @@ Default: C<stop>
 =head2 InstanceType => Str
 
   The instance type. For more information, see Instance Types
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
@@ -166,7 +169,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 We recommend that you use PV-GRUB instead of kernels and RAM disks. For
 more information, see User Provided Kernels
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
@@ -206,7 +209,7 @@ to log in.
 
 We recommend that you use PV-GRUB instead of kernels and RAM disks. For
 more information, see User Provided Kernels
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
@@ -236,9 +239,9 @@ after it has been created, see CreateTags.
 
   The Base64-encoded user data to make available to the instance. For
 more information, see Running Commands on Your Linux Instance at Launch
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html)
 (Linux) and Adding User Data
-(http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data)
+(https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data)
 (Windows).
 
 

@@ -36,14 +36,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
-      MaxResults                  => 1,                      # OPTIONAL
-      NextToken                   => 'MyString',             # OPTIONAL
-      TransitGatewayAttachmentIds => [ 'MyString', ... ],    # OPTIONAL
+      ],                           # OPTIONAL
+      MaxResults                  => 1,             # OPTIONAL
+      NextToken                   => 'MyString',    # OPTIONAL
+      TransitGatewayAttachmentIds => [
+        'MyString', ...                             # OPTIONAL
+      ],                                            # OPTIONAL
       );
 
     # Results:
@@ -76,13 +80,13 @@ One or more filters. The possible values are:
 
 =item *
 
-C<association.transit-gateway-route-table-id> - The ID of the route
-table for the transit gateway.
+C<association.state> - The state of the association (C<associating> |
+C<associated> | C<disassociating>).
 
 =item *
 
-C<association.state> - The state of the association (C<associating> |
-C<associated> | C<disassociating>).
+C<association.transit-gateway-route-table-id> - The ID of the route
+table for the transit gateway.
 
 =item *
 
@@ -90,7 +94,8 @@ C<resource-id> - The ID of the resource.
 
 =item *
 
-C<resource-owner> - The ID of the AWS account that owns the resource.
+C<resource-owner-id> - The ID of the AWS account that owns the
+resource.
 
 =item *
 
@@ -98,9 +103,9 @@ C<resource-type> - The resource type (C<vpc> | C<vpn>).
 
 =item *
 
-C<state> - The state of the attachment (C<pendingAcceptance> |
-C<pending> | C<available> | C<modifying> | C<deleting> | C<deleted> |
-C<failed> | C<rejected>).
+C<state> - The state of the attachment (C<available> | C<deleted> |
+C<deleting> | C<failed> | C<modifying> | C<pendingAcceptance> |
+C<pending> | C<rollingBack> | C<rejected> | C<rejecting>).
 
 =item *
 
@@ -112,7 +117,7 @@ C<transit-gateway-id> - The ID of the transit gateway.
 
 =item *
 
-C<transit-gateway-owner> - The ID of the AWS account that owns the
+C<transit-gateway-owner-id> - The ID of the AWS account that owns the
 transit gateway.
 
 =back

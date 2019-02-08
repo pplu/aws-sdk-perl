@@ -71,27 +71,48 @@ One or more filters. The possible values are:
 
 =item *
 
-C<transit-gateway-route-destination-cidr-block> - The CIDR range.
+C<attachment.transit-gateway-attachment-id>- The id of the transit
+gateway attachment.
 
 =item *
 
-C<transit-gateway-route-state> - The state of the route (C<active> |
-C<blackhole>).
-
-=item *
-
-C<transit-gateway-route-transit-gateway-attachment-id> - The ID of the
+C<attachment.resource-id> - The resource id of the transit gateway
 attachment.
 
 =item *
 
-C<transit-gateway-route-type> - The route type (C<static> |
-C<propagated>).
+C<route-search.exact-match> - The exact match of the specified filter.
 
 =item *
 
-C<transit-gateway-route-vpn-connection-id> - The ID of the VPN
-connection.
+C<route-search.longest-prefix-match> - The longest prefix that matches
+the route.
+
+=item *
+
+C<route-search.subnet-of-match> - The routes with a subnet that match
+the specified CIDR filter.
+
+=item *
+
+C<route-search.supernet-of-match> - The routes with a CIDR that
+encompass the CIDR filter. For example, if you have 10.0.1.0/29 and
+10.0.1.0/31 routes in your route table and you specify
+supernet-of-match as 10.0.1.0/30, then the result returns 10.0.1.0/29.
+
+=item *
+
+C<state> - The state of the attachment (C<available> | C<deleted> |
+C<deleting> | C<failed> | C<modifying> | C<pendingAcceptance> |
+C<pending> | C<rollingBack> | C<rejected> | C<rejecting>).
+
+=item *
+
+C<transit-gateway-route-destination-cidr-block> - The CIDR range.
+
+=item *
+
+C<type> - The type of roue (C<active> | C<blackhole>).
 
 =back
 

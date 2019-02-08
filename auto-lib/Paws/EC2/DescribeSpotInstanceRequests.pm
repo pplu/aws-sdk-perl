@@ -218,7 +218,7 @@ C<state> - The state of the Spot Instance request (C<open> | C<active>
 | C<closed> | C<cancelled> | C<failed>). Spot request status
 information can help you track your Amazon EC2 Spot Instance requests.
 For more information, see Spot Request Status
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html)
 in the I<Amazon EC2 User Guide for Linux Instances>.
 
 =item *

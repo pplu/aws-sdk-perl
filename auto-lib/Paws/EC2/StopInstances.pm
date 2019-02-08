@@ -73,7 +73,7 @@ Default: C<false>
 Hibernates the instance if the instance was enabled for hibernation at
 launch. If the instance cannot hibernate successfully, a normal
 shutdown occurs. For more information, see Hibernate Your Instance
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html) in
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html) in
 the I<Amazon Elastic Compute Cloud User Guide>.
 
 Default: C<false>

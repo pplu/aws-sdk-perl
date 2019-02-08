@@ -35,14 +35,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
-      MaxResults        => 1,                      # OPTIONAL
-      NextToken         => 'MyString',             # OPTIONAL
-      TransitGatewayIds => [ 'MyString', ... ],    # OPTIONAL
+      ],                           # OPTIONAL
+      MaxResults        => 1,             # OPTIONAL
+      NextToken         => 'MyString',    # OPTIONAL
+      TransitGatewayIds => [
+        'MyString', ...                   # OPTIONAL
+      ],                                  # OPTIONAL
     );
 
     # Results:
@@ -71,10 +75,6 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 One or more filters. The possible values are:
 
 =over
-
-=item *
-
-C<owner-id> - The ID of the AWS account that owns the transit gateway.
 
 =item *
 
@@ -120,18 +120,17 @@ Protocol support is enabled (C<enable> | C<disable>).
 
 =item *
 
-C<state> - The state of the attachment (C<pendingAcceptance> |
-C<pending> | C<available> | C<modifying> | C<deleting> | C<deleted> |
-C<failed> | C<rejected>).
+C<owner-id> - The ID of the AWS account that owns the transit gateway.
+
+=item *
+
+C<state> - The state of the attachment (C<available> | C<deleted> |
+C<deleting> | C<failed> | C<modifying> | C<pendingAcceptance> |
+C<pending> | C<rollingBack> | C<rejected> | C<rejecting>).
 
 =item *
 
 C<transit-gateway-id> - The ID of the transit gateway.
-
-=item *
-
-C<transit-gateway-state> - The state of the transit gateway (C<pending>
-| C<available> | C<deleting> | C<deleted>).
 
 =back
 

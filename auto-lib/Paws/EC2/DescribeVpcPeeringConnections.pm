@@ -3,6 +3,8 @@ package Paws::EC2::DescribeVpcPeeringConnections;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has MaxResults => (is => 'ro', isa => 'Int');
+  has NextToken => (is => 'ro', isa => 'Str');
   has VpcPeeringConnectionIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'VpcPeeringConnectionId' );
 
   use MooseX::ClassAttribute;
@@ -34,15 +36,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
-      VpcPeeringConnectionIds => [ 'MyString', ... ],    # OPTIONAL
+      ],                           # OPTIONAL
+      MaxResults              => 1,             # OPTIONAL
+      NextToken               => 'MyString',    # OPTIONAL
+      VpcPeeringConnectionIds => [
+        'MyString', ...                         # OPTIONAL
+      ],                                        # OPTIONAL
       );
 
     # Results:
+    my $NextToken = $DescribeVpcPeeringConnectionsResult->NextToken;
     my $VpcPeeringConnections =
       $DescribeVpcPeeringConnectionsResult->VpcPeeringConnections;
 
@@ -133,6 +142,21 @@ C<vpc-peering-connection-id> - The ID of the VPC peering connection.
 
 =back
 
+
+
+
+=head2 MaxResults => Int
+
+The maximum number of results to return for this request. The request
+returns a token that you can specify in a subsequent call to get the
+next set of results.
+
+
+
+=head2 NextToken => Str
+
+The token to request the next page of results. (You received this token
+from a prior call.)
 
 
 

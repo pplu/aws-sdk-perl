@@ -163,7 +163,7 @@ the tag value.
 
 =head2 PublicIps => ArrayRef[Str|Undef]
 
-[EC2-Classic] One or more Elastic IP addresses.
+One or more Elastic IP addresses.
 
 Default: Describes all your Elastic IP addresses.
 

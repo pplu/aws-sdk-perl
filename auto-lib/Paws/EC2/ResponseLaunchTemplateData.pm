@@ -74,7 +74,7 @@ This class has no description
 
   The CPU options for the instance. For more information, see Optimizing
 CPU Options
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
@@ -108,7 +108,7 @@ using the Amazon EC2 console, command line tool, or API.
 
   Indicates whether an instance is configured for hibernation. For more
 information, see Hibernate Your Instance
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html) in
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html) in
 the I<Amazon Elastic Compute Cloud User Guide>.
 
 

@@ -69,7 +69,7 @@ performance of the volume and the rate at which the volume accumulates
 I/O credits for bursting. For more information about General Purpose
 SSD baseline performance, I/O credits, and bursting, see Amazon EBS
 Volume Types
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 Constraints: Range is 100-16,000 IOPS for C<gp2> volumes and 100 to
@@ -77,7 +77,7 @@ Constraints: Range is 100-16,000 IOPS for C<gp2> volumes and 100 to
 64,000 is guaranteed only on Nitro-based instances. Other instance
 families guarantee performance up to 32,000 IOPS. For more information,
 see Amazon EBS Volume Types
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 Condition: This parameter is required for requests to create C<io1>
@@ -92,11 +92,11 @@ CMK under which the EBS volume is encrypted.
 
 This parameter is only supported on C<BlockDeviceMapping> objects
 called by RunInstances
-(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RunInstances.html),
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RunInstances.html),
 RequestSpotFleet
-(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RequestSpotFleet.html),
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RequestSpotFleet.html),
 and RequestSpotInstances
-(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RequestSpotInstances.html).
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RequestSpotInstances.html).
 
 
 =head2 SnapshotId => Str

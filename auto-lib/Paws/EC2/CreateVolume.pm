@@ -116,7 +116,7 @@ automatically encrypted. There is no way to create an encrypted volume
 from an unencrypted snapshot or vice versa. If your AMI uses encrypted
 volumes, you can only launch it on supported instance types. For more
 information, see Amazon EBS Encryption
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
@@ -129,7 +129,7 @@ IOPS for volumes in most regions. Maximum IOPS of 64,000 is guaranteed
 only on Nitro-based instances. Other instance families guarantee
 performance up to 32,000 IOPS. For more information, see Amazon EBS
 Volume Types
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 This parameter is valid only for Provisioned IOPS SSD (io1) volumes.
@@ -190,11 +190,15 @@ snapshot size.
 Default: If you're creating the volume from a snapshot and don't
 specify a volume size, the default is the snapshot size.
 
+At least one of Size or SnapshotId are required.
+
 
 
 =head2 SnapshotId => Str
 
 The snapshot from which to create the volume.
+
+At least one of Size or SnapshotId are required.
 
 
 

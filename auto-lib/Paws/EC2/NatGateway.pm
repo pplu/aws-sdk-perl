@@ -122,7 +122,7 @@ with the NAT gateway.
 
   Reserved. If you need to sustain traffic greater than the documented
 limits
-(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html),
+(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html),
 contact us through the Support Center
 (https://console.aws.amazon.com/support/home?).
 

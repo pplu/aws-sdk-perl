@@ -137,7 +137,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 Unique, case-sensitive identifier you provide to ensure the idempotency
 of the request. For more information, see Ensuring Idempotency
-(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 
 
 
@@ -188,9 +188,9 @@ The key-value pair for tagging the EC2 Fleet request on creation. The
 value for C<ResourceType> must be C<fleet>, otherwise the fleet request
 fails. To tag instances at launch, specify the tags in the launch
 template
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template).
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template).
 For information about tagging after launch, see Tagging Your Resources
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-resources).
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-resources).
 
 
 
@@ -218,7 +218,7 @@ for any instances that could not be launched. A value of C<request>
 places an asynchronous one-time request without maintaining capacity or
 submitting requests in alternative capacity pools if capacity is
 unavailable. For more information, see EC2 Fleet Request Types
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet-configuration-strategies.html#ec2-fleet-request-type)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet-configuration-strategies.html#ec2-fleet-request-type)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 Valid values are: C<"request">, C<"maintain">, C<"instant">

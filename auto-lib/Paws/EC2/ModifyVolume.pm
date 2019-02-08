@@ -65,7 +65,7 @@ The target IOPS rate of the volume.
 
 This is only valid for Provisioned IOPS SSD (C<io1>) volumes. For more
 information, see Provisioned IOPS SSD (io1) Volumes
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html#EBSVolumeTypes_piops).
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html#EBSVolumeTypes_piops).
 
 Default: If no IOPS value is specified, the existing value is retained.
 
@@ -77,7 +77,7 @@ The target size of the volume, in GiB. The target volume size must be
 greater than or equal to than the existing size of the volume. For
 information about available EBS volume sizes, see Amazon EBS Volume
 Types
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html).
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html).
 
 Default: If no size is specified, the existing size is retained.
 
