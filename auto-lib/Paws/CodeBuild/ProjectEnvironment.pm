@@ -4,7 +4,9 @@ package Paws::CodeBuild::ProjectEnvironment;
   has ComputeType => (is => 'ro', isa => 'Str', request_name => 'computeType', traits => ['NameInRequest'], required => 1);
   has EnvironmentVariables => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::EnvironmentVariable]', request_name => 'environmentVariables', traits => ['NameInRequest']);
   has Image => (is => 'ro', isa => 'Str', request_name => 'image', traits => ['NameInRequest'], required => 1);
+  has ImagePullCredentialsType => (is => 'ro', isa => 'Str', request_name => 'imagePullCredentialsType', traits => ['NameInRequest']);
   has PrivilegedMode => (is => 'ro', isa => 'Bool', request_name => 'privilegedMode', traits => ['NameInRequest']);
+  has RegistryCredential => (is => 'ro', isa => 'Paws::CodeBuild::RegistryCredential', request_name => 'registryCredential', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
 1;
 
@@ -77,7 +79,51 @@ build project.
 
 =head2 B<REQUIRED> Image => Str
 
-  The ID of the Docker image to use for this build project.
+  The image tag or image digest that identifies the Docker image to use
+for this build project. Use the following formats:
+
+=over
+
+=item *
+
+For an image tag: C<registry/repository:tag>. For example, to specify
+an image with the tag "latest," use C<registry/repository:latest>.
+
+=item *
+
+For an image digest: C<registry/repository@digest>. For example, to
+specify an image with the digest
+"sha256:cbbf2f9a99b47fc460d422812b6a5adff7dfee951d8fa2e4a98caa0382cfbdbf,"
+use
+C<registry/repository@sha256:cbbf2f9a99b47fc460d422812b6a5adff7dfee951d8fa2e4a98caa0382cfbdbf>.
+
+=back
+
+
+
+=head2 ImagePullCredentialsType => Str
+
+  The type of credentials AWS CodeBuild uses to pull images in your
+build. There are two valid values:
+
+=over
+
+=item *
+
+C<CODEBUILD> specifies that AWS CodeBuild uses its own credentials.
+This requires that you modify your ECR repository policy to trust AWS
+CodeBuild's service principal.
+
+=item *
+
+C<SERVICE_ROLE> specifies that AWS CodeBuild uses your build project's
+service role.
+
+=back
+
+When you use a cross-account or private registry image, you must use
+SERVICE_ROLE credentials. When you use an AWS CodeBuild curated image,
+you must use CODEBUILD credentials.
 
 
 =head2 PrivilegedMode => Bool
@@ -105,6 +151,11 @@ argument to C<timeout>:
 C<- nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock
 --host=tcp://0.0.0.0:2375 --storage-driver=overlay& - timeout 15 -t sh
 -c "until docker info; do echo .; sleep 1; done">
+
+
+=head2 RegistryCredential => L<Paws::CodeBuild::RegistryCredential>
+
+  The credentials for access to a private registry.
 
 
 =head2 B<REQUIRED> Type => Str

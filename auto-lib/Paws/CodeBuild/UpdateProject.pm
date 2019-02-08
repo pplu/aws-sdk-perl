@@ -77,7 +77,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],                        # OPTIONAL
-        PrivilegedMode => 1,      # OPTIONAL
+        ImagePullCredentialsType =>
+          'CODEBUILD',            # values: CODEBUILD, SERVICE_ROLE; OPTIONAL
+        PrivilegedMode     => 1,  # OPTIONAL
+        RegistryCredential => {
+          Credential         => 'MyNonEmptyString',    # min: 1
+          CredentialProvider => 'SECRETS_MANAGER',     # values: SECRETS_MANAGER
+
+        },    # OPTIONAL
       },    # OPTIONAL
       LogsConfig => {
         CloudWatchLogs => {

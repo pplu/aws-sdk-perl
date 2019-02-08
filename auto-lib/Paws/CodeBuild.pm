@@ -662,6 +662,8 @@ Returns a list of C<SourceCredentialsInfo> objects.
 
 =item [ImageOverride => Str]
 
+=item [ImagePullCredentialsTypeOverride => Str]
+
 =item [InsecureSslOverride => Bool]
 
 =item [LogsConfigOverride => L<Paws::CodeBuild::LogsConfig>]
@@ -669,6 +671,8 @@ Returns a list of C<SourceCredentialsInfo> objects.
 =item [PrivilegedModeOverride => Bool]
 
 =item [QueuedTimeoutInMinutesOverride => Int]
+
+=item [RegistryCredentialOverride => L<Paws::CodeBuild::RegistryCredential>]
 
 =item [ReportBuildStatusOverride => Bool]
 

@@ -11,11 +11,13 @@ package Paws::CodeBuild::StartBuild;
   has GitCloneDepthOverride => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'gitCloneDepthOverride' );
   has IdempotencyToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'idempotencyToken' );
   has ImageOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'imageOverride' );
+  has ImagePullCredentialsTypeOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'imagePullCredentialsTypeOverride' );
   has InsecureSslOverride => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'insecureSslOverride' );
   has LogsConfigOverride => (is => 'ro', isa => 'Paws::CodeBuild::LogsConfig', traits => ['NameInRequest'], request_name => 'logsConfigOverride' );
   has PrivilegedModeOverride => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'privilegedModeOverride' );
   has ProjectName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectName' , required => 1);
   has QueuedTimeoutInMinutesOverride => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'queuedTimeoutInMinutesOverride' );
+  has RegistryCredentialOverride => (is => 'ro', isa => 'Paws::CodeBuild::RegistryCredential', traits => ['NameInRequest'], request_name => 'registryCredentialOverride' );
   has ReportBuildStatusOverride => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'reportBuildStatusOverride' );
   has SecondaryArtifactsOverride => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectArtifacts]', traits => ['NameInRequest'], request_name => 'secondaryArtifactsOverride' );
   has SecondarySourcesOverride => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectSource]', traits => ['NameInRequest'], request_name => 'secondarySourcesOverride' );
@@ -80,11 +82,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                          # OPTIONAL
-      GitCloneDepthOverride => 1,                     # OPTIONAL
-      IdempotencyToken      => 'MyString',            # OPTIONAL
-      ImageOverride         => 'MyNonEmptyString',    # OPTIONAL
-      InsecureSslOverride   => 1,                     # OPTIONAL
-      LogsConfigOverride    => {
+      GitCloneDepthOverride            => 1,                     # OPTIONAL
+      IdempotencyToken                 => 'MyString',            # OPTIONAL
+      ImageOverride                    => 'MyNonEmptyString',    # OPTIONAL
+      ImagePullCredentialsTypeOverride => 'CODEBUILD',           # OPTIONAL
+      InsecureSslOverride              => 1,                     # OPTIONAL
+      LogsConfigOverride               => {
         CloudWatchLogs => {
           Status     => 'ENABLED',     # values: ENABLED, DISABLED
           GroupName  => 'MyString',    # OPTIONAL
@@ -97,8 +100,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       PrivilegedModeOverride         => 1,    # OPTIONAL
       QueuedTimeoutInMinutesOverride => 1,    # OPTIONAL
-      ReportBuildStatusOverride      => 1,    # OPTIONAL
-      SecondaryArtifactsOverride     => [
+      RegistryCredentialOverride     => {
+        Credential         => 'MyNonEmptyString',    # min: 1
+        CredentialProvider => 'SECRETS_MANAGER',     # values: SECRETS_MANAGER
+
+      },    # OPTIONAL
+      ReportBuildStatusOverride  => 1,    # OPTIONAL
+      SecondaryArtifactsOverride => [
         {
           Type => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
           ArtifactIdentifier   => 'MyString', # OPTIONAL
@@ -233,6 +241,32 @@ the build project.
 
 
 
+=head2 ImagePullCredentialsTypeOverride => Str
+
+The type of credentials AWS CodeBuild uses to pull images in your
+build. There are two valid values:
+
+=over
+
+=item *
+
+C<CODEBUILD> specifies that AWS CodeBuild uses its own credentials.
+This requires that you modify your ECR repository policy to trust AWS
+CodeBuild's service principal.
+
+=item *
+
+C<SERVICE_ROLE> specifies that AWS CodeBuild uses your build project's
+service role.
+
+=back
+
+When using a cross-account or private registry image, you must use
+SERVICE_ROLE credentials. When using an AWS CodeBuild curated image,
+you must use CODEBUILD credentials.
+
+Valid values are: C<"CODEBUILD">, C<"SERVICE_ROLE">
+
 =head2 InsecureSslOverride => Bool
 
 Enable this flag to override the insecure SSL setting that is specified
@@ -265,6 +299,12 @@ The name of the AWS CodeBuild build project to start running a build.
 
 The number of minutes a build is allowed to be queued before it times
 out.
+
+
+
+=head2 RegistryCredentialOverride => L<Paws::CodeBuild::RegistryCredential>
+
+The credentials for access to a private registry.
 
 
 
