@@ -1,5 +1,6 @@
 package Paws::FSX::CreateFileSystemLustreConfiguration;
   use Moose;
+  has ExportPath => (is => 'ro', isa => 'Str');
   has ImportedFileChunkSize => (is => 'ro', isa => 'Int');
   has ImportPath => (is => 'ro', isa => 'Str');
   has WeeklyMaintenanceStartTime => (is => 'ro', isa => 'Str');
@@ -22,14 +23,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::FSX::CreateFileSystemLustreConfiguration object:
 
-  $service_obj->Method(Att1 => { ImportedFileChunkSize => $value, ..., WeeklyMaintenanceStartTime => $value  });
+  $service_obj->Method(Att1 => { ExportPath => $value, ..., WeeklyMaintenanceStartTime => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::FSX::CreateFileSystemLustreConfiguration object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ImportedFileChunkSize
+  $result->Att1->ExportPath
 
 =head1 DESCRIPTION
 
@@ -37,6 +38,28 @@ The configuration object for Lustre file systems used in the
 C<CreateFileSystem> operation.
 
 =head1 ATTRIBUTES
+
+
+=head2 ExportPath => Str
+
+  (Optional) The path in Amazon S3 where the root of your Amazon FSx file
+system is exported. The path must use the same Amazon S3 bucket as
+specified in ImportPath. You can provide an optional prefix to which
+new and changed data is to be exported from your Amazon FSx for Lustre
+file system. If an C<ExportPath> value is not provided, Amazon FSx sets
+a default export path,
+C<s3://import-bucket/FSxLustre[creation-timestamp]>. The timestamp is
+in UTC format, for example
+C<s3://import-bucket/FSxLustre20181105T222312Z>.
+
+The Amazon S3 export bucket must be the same as the import bucket
+specified by C<ImportPath>. If you only specify a bucket name, such as
+C<s3://import-bucket>, you get a 1:1 mapping of file system objects to
+S3 bucket objects. This mapping means that the input data in S3 is
+overwritten on export. If you provide a custom prefix in the export
+path, such as C<s3://import-bucket/[custom-optional-prefix]>, Amazon
+FSx exports the contents of your file system to that export prefix in
+the Amazon S3 bucket.
 
 
 =head2 ImportedFileChunkSize => Int
@@ -53,11 +76,13 @@ The chunk size default is 1,024 MiB (1 GiB) and can go as high as
 
 =head2 ImportPath => Str
 
-  (Optional) The path to the Amazon S3 bucket (and optional prefix) that
-you're using as the data repository for your FSx for Lustre file
-system, for example C<s3://import-bucket/optional-prefix>. If you
-specify a prefix after the Amazon S3 bucket name, only object keys with
-that prefix are loaded into the file system.
+  (Optional) The path to the Amazon S3 bucket (including the optional
+prefix) that you're using as the data repository for your Amazon FSx
+for Lustre file system. The root of your FSx for Lustre file system
+will be mapped to the root of the Amazon S3 bucket you select. An
+example is C<s3://import-bucket/optional-prefix>. If you specify a
+prefix after the Amazon S3 bucket name, only object keys with that
+prefix are loaded into the file system.
 
 
 =head2 WeeklyMaintenanceStartTime => Str

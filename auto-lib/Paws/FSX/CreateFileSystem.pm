@@ -44,6 +44,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ClientRequestToken  => 'MyClientRequestToken',    # OPTIONAL
       KmsKeyId            => 'MyKmsKeyId',              # OPTIONAL
       LustreConfiguration => {
+        ExportPath => 'MyArchivePath',    # min: 3, max: 900; OPTIONAL
         ImportPath => 'MyArchivePath',    # min: 3, max: 900; OPTIONAL
         ImportedFileChunkSize => 1,       # min: 1, max: 512000; OPTIONAL
         WeeklyMaintenanceStartTime => 'MyWeeklyTime', # min: 7, max: 7; OPTIONAL

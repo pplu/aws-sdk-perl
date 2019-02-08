@@ -41,14 +41,8 @@ returned in the response of the C<CreateFileSystem> operation.
 
 =head2 ExportPath => Str
 
-  The Amazon S3 commit path to use for storing new and changed Lustre
-file system files as part of the archive operation from the file system
-to Amazon S3. The value is
-C<s3://import-bucket/FSxLustre[creationtimestamp]>. The timestamp is
-presented in UTC format, for example
-C<s3://import-bucket/FSxLustre20181105T222312Z>. Files are archived to
-a different prefix in the Amazon S3 bucket, preventing input data from
-being overwritten.
+  The export path to the Amazon S3 bucket (and prefix) that you are using
+to store new and changed Lustre file system files in S3.
 
 
 =head2 ImportedFileChunkSize => Int

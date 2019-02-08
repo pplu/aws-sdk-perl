@@ -101,7 +101,7 @@ system.
 system is accessible. The elastic network interface is automatically
 created in the same VPC that the Amazon FSx file system was created in.
 For more information, see Elastic Network Interfaces
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html) in
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html) in
 the I<Amazon EC2 User Guide.>
 
 For an Amazon FSx for Windows File Server file system, you can have one
@@ -137,8 +137,8 @@ Availability Zone associated with this subnet.
 
   The tags to associate with the file system. For more information, see
 Tagging Your Amazon EC2 Resources
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) in
-the I<Amazon EC2 User Guide>.
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html)
+in the I<Amazon EC2 User Guide>.
 
 
 =head2 VpcId => Str
