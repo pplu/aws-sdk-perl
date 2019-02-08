@@ -1,7 +1,5 @@
 #!perl
 
-use lib 'auto-lib', 'lib';
-
 use 5.010;
 use strict;
 use warnings;
