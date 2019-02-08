@@ -2,7 +2,9 @@
 package Paws::DeviceFarm::UpdateDevicePool;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn' , required => 1);
+  has ClearMaxDevices => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'clearMaxDevices' );
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
+  has MaxDevices => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxDevices' );
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' );
   has Rules => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Rule]', traits => ['NameInRequest'], request_name => 'rules' );
 
@@ -68,9 +70,39 @@ to update.
 
 
 
+=head2 ClearMaxDevices => Bool
+
+Sets whether the C<maxDevices> parameter applies to your device pool.
+If you set this parameter to C<true>, the C<maxDevices> parameter does
+not apply, and Device Farm does not limit the number of devices that it
+adds to your device pool. In this case, Device Farm adds all available
+devices that meet the criteria that are specified for the C<rules>
+parameter.
+
+If you use this parameter in your request, you cannot use the
+C<maxDevices> parameter in the same request.
+
+
+
 =head2 Description => Str
 
 A description of the device pool you wish to update.
+
+
+
+=head2 MaxDevices => Int
+
+The number of devices that Device Farm can add to your device pool.
+Device Farm adds devices that are available and that meet the criteria
+that you assign for the C<rules> parameter. Depending on how many
+devices meet these constraints, your device pool might contain fewer
+devices than the value for this parameter.
+
+By specifying the maximum number of devices, you can control the costs
+that you incur by running tests.
+
+If you use this parameter in your request, you cannot use the
+C<clearMaxDevices> parameter in the same request.
 
 
 

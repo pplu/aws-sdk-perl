@@ -49,62 +49,88 @@ example of the JSON request syntax, see ListDevices.
   The aspect of a device such as platform or model used as the selection
 criteria in a device filter.
 
-Allowed values include:
+The supported operators for each attribute are provided in the
+following list.
 
 =over
 
-=item *
+=item ARN
 
-ARN: The Amazon Resource Name (ARN) of the device. For example,
+The Amazon Resource Name (ARN) of the device. For example,
 "arn:aws:devicefarm:us-west-2::device:12345Example".
 
-=item *
+I<Supported operators>: C<EQUALS>, C<IN>, C<NOT_IN>
 
-PLATFORM: The device platform. Valid values are "ANDROID" or "IOS".
+=item PLATFORM
 
-=item *
+The device platform. Valid values are "ANDROID" or "IOS".
 
-OS_VERSION: The operating system version. For example, "10.3.2".
+I<Supported operators>: C<EQUALS>
 
-=item *
+=item OS_VERSION
 
-MODEL: The device model. For example, "iPad 5th Gen".
+The operating system version. For example, "10.3.2".
 
-=item *
+I<Supported operators>: C<EQUALS>, C<GREATER_THAN>,
+C<GREATER_THAN_OR_EQUALS>, C<IN>, C<LESS_THAN>, C<LESS_THAN_OR_EQUALS>,
+C<NOT_IN>
 
-AVAILABILITY: The current availability of the device. Valid values are
-"AVAILABLE", "HIGHLY_AVAILABLE", "BUSY", or "TEMPORARY_NOT_AVAILABLE".
+=item MODEL
 
-=item *
+The device model. For example, "iPad 5th Gen".
 
-FORM_FACTOR: The device form factor. Valid values are "PHONE" or
-"TABLET".
+I<Supported operators>: C<CONTAINS>, C<EQUALS>, C<IN>, C<NOT_IN>
 
-=item *
+=item AVAILABILITY
 
-MANUFACTURER: The device manufacturer. For example, "Apple".
+The current availability of the device. Valid values are "AVAILABLE",
+"HIGHLY_AVAILABLE", "BUSY", or "TEMPORARY_NOT_AVAILABLE".
 
-=item *
+I<Supported operators>: C<EQUALS>
 
-REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access.
-Valid values are "TRUE" or "FALSE".
+=item FORM_FACTOR
 
-=item *
+The device form factor. Valid values are "PHONE" or "TABLET".
 
-REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote
-debugging. Valid values are "TRUE" or "FALSE".
+I<Supported operators>: C<EQUALS>
 
-=item *
+=item MANUFACTURER
 
-INSTANCE_ARN: The Amazon Resource Name (ARN) of the device instance.
+The device manufacturer. For example, "Apple".
 
-=item *
+I<Supported operators>: C<EQUALS>, C<IN>, C<NOT_IN>
 
-INSTANCE_LABELS: The label of the device instance.
+=item REMOTE_ACCESS_ENABLED
 
-=item *
+Whether the device is enabled for remote access. Valid values are
+"TRUE" or "FALSE".
 
-FLEET_TYPE: The fleet type. Valid values are "PUBLIC" or "PRIVATE".
+I<Supported operators>: C<EQUALS>
+
+=item REMOTE_DEBUG_ENABLED
+
+Whether the device is enabled for remote debugging. Valid values are
+"TRUE" or "FALSE".
+
+I<Supported operators>: C<EQUALS>
+
+=item INSTANCE_ARN
+
+The Amazon Resource Name (ARN) of the device instance.
+
+I<Supported operators>: C<EQUALS>, C<IN>, C<NOT_IN>
+
+=item INSTANCE_LABELS
+
+The label of the device instance.
+
+I<Supported operators>: C<CONTAINS>
+
+=item FLEET_TYPE
+
+The fleet type. Valid values are "PUBLIC" or "PRIVATE".
+
+I<Supported operators>: C<EQUALS>
 
 =back
 
@@ -112,33 +138,9 @@ FLEET_TYPE: The fleet type. Valid values are "PUBLIC" or "PRIVATE".
 
 =head2 Operator => Str
 
-  The filter operator.
-
-=over
-
-=item *
-
-The EQUALS operator is available for every attribute except
-INSTANCE_LABELS.
-
-=item *
-
-The CONTAINS operator is available for the INSTANCE_LABELS and MODEL
-attributes.
-
-=item *
-
-The IN and NOT_IN operators are available for the ARN, OS_VERSION,
-MODEL, MANUFACTURER, and INSTANCE_ARN attributes.
-
-=item *
-
-The LESS_THAN, GREATER_THAN, LESS_THAN_OR_EQUALS, and
-GREATER_THAN_OR_EQUALS operators are also available for the OS_VERSION
-attribute.
-
-=back
-
+  Specifies how Device Farm compares the filter's attribute to the value.
+For the operators that are supported by each attribute, see the
+attribute descriptions.
 
 
 =head2 Values => ArrayRef[Str|Undef]

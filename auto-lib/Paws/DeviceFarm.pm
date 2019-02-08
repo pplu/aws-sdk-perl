@@ -850,6 +850,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dev
 
 =item [Description => Str]
 
+=item [MaxDevices => Int]
+
 
 =back
 
@@ -1980,7 +1982,11 @@ Updates information about an existing private device instance.
 
 =item Arn => Str
 
+=item [ClearMaxDevices => Bool]
+
 =item [Description => Str]
+
+=item [MaxDevices => Int]
 
 =item [Name => Str]
 

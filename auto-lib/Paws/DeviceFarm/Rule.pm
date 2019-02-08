@@ -33,64 +33,104 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 =head1 DESCRIPTION
 
-Represents a condition for a device pool. It is passed in as the
-C<rules> parameter to CreateDevicePool and UpdateDevicePool.
+Represents a condition for a device pool.
 
 =head1 ATTRIBUTES
 
 
 =head2 Attribute => Str
 
-  The rule's attribute. It is the aspect of a device such as platform or
-model used as selection criteria to create or update a device pool.
+  The rule's stringified attribute. For example, specify the value as
+C<"\"abc\"">.
 
-Allowed values include:
+The supported operators for each attribute are provided in the
+following list.
 
 =over
 
-=item *
+=item APPIUM_VERSION
 
-ARN: The Amazon Resource Name (ARN) of a device. For example,
+The Appium version for the test.
+
+I<Supported operators>: C<CONTAINS>
+
+=item ARN
+
+The Amazon Resource Name (ARN) of the device. For example,
 "arn:aws:devicefarm:us-west-2::device:12345Example".
 
-=item *
+I<Supported operators>: C<EQUALS>, C<IN>, C<NOT_IN>
 
-PLATFORM: The device platform. Valid values are "ANDROID" or "IOS".
+=item AVAILABILITY
 
-=item *
+The current availability of the device. Valid values are "AVAILABLE",
+"HIGHLY_AVAILABLE", "BUSY", or "TEMPORARY_NOT_AVAILABLE".
 
-FORM_FACTOR: The device form factor. Valid values are "PHONE" or
-"TABLET".
+I<Supported operators>: C<EQUALS>
 
-=item *
+=item FLEET_TYPE
 
-MANUFACTURER: The device manufacturer. For example, "Apple".
+The fleet type. Valid values are "PUBLIC" or "PRIVATE".
 
-=item *
+I<Supported operators>: C<EQUALS>
 
-REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access.
-Valid values are "TRUE" or "FALSE".
+=item FORM_FACTOR
 
-=item *
+The device form factor. Valid values are "PHONE" or "TABLET".
 
-REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote
-debugging. Valid values are "TRUE" or "FALSE".
+I<Supported operators>: C<EQUALS>, C<IN>, C<NOT_IN>
 
-=item *
+=item INSTANCE_ARN
 
-APPIUM_VERSION: The Appium version for the test.
+The Amazon Resource Name (ARN) of the device instance.
 
-=item *
+I<Supported operators>: C<IN>, C<NOT_IN>
 
-INSTANCE_ARN: The Amazon Resource Name (ARN) of the device instance.
+=item INSTANCE_LABELS
 
-=item *
+The label of the device instance.
 
-INSTANCE_LABELS: The label of the device instance.
+I<Supported operators>: C<CONTAINS>
 
-=item *
+=item MANUFACTURER
 
-FLEET_TYPE: The fleet type. Valid values are "PUBLIC" or "PRIVATE".
+The device manufacturer. For example, "Apple".
+
+I<Supported operators>: C<EQUALS>, C<IN>, C<NOT_IN>
+
+=item MODEL
+
+The device model, such as "Apple iPad Air 2" or "Google Pixel".
+
+I<Supported operators>: C<CONTAINS>, C<EQUALS>, C<IN>, C<NOT_IN>
+
+=item OS_VERSION
+
+The operating system version. For example, "10.3.2".
+
+I<Supported operators>: C<EQUALS>, C<GREATER_THAN>,
+C<GREATER_THAN_OR_EQUALS>, C<IN>, C<LESS_THAN>, C<LESS_THAN_OR_EQUALS>,
+C<NOT_IN>
+
+=item PLATFORM
+
+The device platform. Valid values are "ANDROID" or "IOS".
+
+I<Supported operators>: C<EQUALS>, C<IN>, C<NOT_IN>
+
+=item REMOTE_ACCESS_ENABLED
+
+Whether the device is enabled for remote access. Valid values are
+"TRUE" or "FALSE".
+
+I<Supported operators>: C<EQUALS>
+
+=item REMOTE_DEBUG_ENABLED
+
+Whether the device is enabled for remote debugging. Valid values are
+"TRUE" or "FALSE".
+
+I<Supported operators>: C<EQUALS>
 
 =back
 
@@ -98,47 +138,14 @@ FLEET_TYPE: The fleet type. Valid values are "PUBLIC" or "PRIVATE".
 
 =head2 Operator => Str
 
-  The rule's operator.
-
-=over
-
-=item *
-
-EQUALS: The equals operator.
-
-=item *
-
-GREATER_THAN: The greater-than operator.
-
-=item *
-
-IN: The in operator.
-
-=item *
-
-LESS_THAN: The less-than operator.
-
-=item *
-
-NOT_IN: The not-in operator.
-
-=item *
-
-CONTAINS: The contains operator.
-
-=back
-
+  Specifies how Device Farm compares the rule's attribute to the value.
+For the operators that are supported by each attribute, see the
+attribute descriptions.
 
 
 =head2 Value => Str
 
   The rule's value.
-
-The value must be passed in as a string using escaped quotes.
-
-For example:
-
-"value": "\"ANDROID\""
 
 
 

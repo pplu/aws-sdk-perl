@@ -78,9 +78,6 @@ Information about the settings for the run to be scheduled.
 
 The ARN of the device pool for the run to be scheduled.
 
-Either B< C<devicePoolArn> > or B< C<deviceSelectionConfiguration> > is
-required in a request.
-
 
 
 =head2 DeviceSelectionConfiguration => L<Paws::DeviceFarm::DeviceSelectionConfiguration>

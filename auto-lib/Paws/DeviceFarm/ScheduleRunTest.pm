@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 =head1 DESCRIPTION
 
 Represents test settings. This data structure is passed in as the
-C<test> parameter to ScheduleRun. For an example of the JSON request
+"test" parameter to ScheduleRun. For an example of the JSON request
 syntax, see ScheduleRun.
 
 =head1 ATTRIBUTES
