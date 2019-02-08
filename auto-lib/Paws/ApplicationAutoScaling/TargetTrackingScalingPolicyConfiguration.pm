@@ -36,7 +36,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Application
 
 =head1 DESCRIPTION
 
-Represents a target tracking scaling policy configuration.
+Represents a target tracking scaling policy configuration to use with
+Application Auto Scaling.
 
 =head1 ATTRIBUTES
 

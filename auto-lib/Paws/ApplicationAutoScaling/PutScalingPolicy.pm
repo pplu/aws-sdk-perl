@@ -109,12 +109,15 @@ The name of the scaling policy.
 =head2 PolicyType => Str
 
 The policy type. This parameter is required if you are creating a
-policy.
+scaling policy.
 
-For DynamoDB, only C<TargetTrackingScaling> is supported. For Amazon
-ECS, Spot Fleet, and Amazon RDS, both C<StepScaling> and
-C<TargetTrackingScaling> are supported. For any other service, only
-C<StepScaling> is supported.
+For information on which services do not support C<StepScaling> or
+C<TargetTrackingScaling>, see Step Scaling Policies for Application
+Auto Scaling
+(https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html)
+and Target Tracking Scaling Policies for Application Auto Scaling
+(https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html)
+in the I<Application Auto Scaling User Guide>.
 
 Valid values are: C<"StepScaling">, C<"TargetTrackingScaling">
 
@@ -175,7 +178,8 @@ C<endpoint/my-end-point/variant/KMeansClustering>.
 Custom resources are not supported with a resource type. This parameter
 must specify the C<OutputValue> from the CloudFormation template stack
 used to access the resources. The unique identifier is defined by the
-service provider.
+service provider. More information is available in our GitHub
+repository (https://github.com/aws/aws-auto-scaling-custom-resource).
 
 =back
 
@@ -231,7 +235,8 @@ for a DynamoDB global secondary index.
 =item *
 
 C<rds:cluster:ReadReplicaCount> - The count of Aurora Replicas in an
-Aurora DB cluster. Available for Aurora MySQL-compatible edition.
+Aurora DB cluster. Available for Aurora MySQL-compatible edition and
+Aurora PostgreSQL-compatible edition.
 
 =item *
 

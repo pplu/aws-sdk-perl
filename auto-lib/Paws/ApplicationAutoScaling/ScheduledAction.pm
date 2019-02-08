@@ -112,7 +112,8 @@ C<endpoint/my-end-point/variant/KMeansClustering>.
 Custom resources are not supported with a resource type. This parameter
 must specify the C<OutputValue> from the CloudFormation template stack
 used to access the resources. The unique identifier is defined by the
-service provider.
+service provider. More information is available in our GitHub
+repository (https://github.com/aws/aws-auto-scaling-custom-resource).
 
 =back
 
@@ -167,7 +168,8 @@ for a DynamoDB global secondary index.
 =item *
 
 C<rds:cluster:ReadReplicaCount> - The count of Aurora Replicas in an
-Aurora DB cluster. Available for Aurora MySQL-compatible edition.
+Aurora DB cluster. Available for Aurora MySQL-compatible edition and
+Aurora PostgreSQL-compatible edition.
 
 =item *
 
@@ -200,15 +202,15 @@ Application Auto Scaling scales in to the maximum capacity.
 
 =item *
 
-At expressions - C<at(I<yyyy>-I<mm>-I<dd>TI<hh>:I<mm>:I<ss>)>
+At expressions - "C<at(I<yyyy>-I<mm>-I<dd>TI<hh>:I<mm>:I<ss>)>"
 
 =item *
 
-Rate expressions - C<rate(I<value> I<unit>)>
+Rate expressions - "C<rate(I<value> I<unit>)>"
 
 =item *
 
-Cron expressions - C<cron(I<fields>)>
+Cron expressions - "C<cron(I<fields>)>"
 
 =back
 
@@ -219,7 +221,7 @@ For rate expressions, I<value> is a positive integer and I<unit> is
 C<minute> | C<minutes> | C<hour> | C<hours> | C<day> | C<days>.
 
 For more information about cron expressions, see Cron Expressions
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions)
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions)
 in the I<Amazon CloudWatch Events User Guide>.
 
 
