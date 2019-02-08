@@ -13,6 +13,7 @@ package Paws::MediaLive::DeleteChannelResponse;
   has PipelinesRunningCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'pipelinesRunningCount');
   has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn');
   has State => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'state');
+  has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', traits => ['NameInRequest'], request_name => 'tags');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -89,6 +90,11 @@ Channel.
 
 
 Valid values are: C<"CREATING">, C<"CREATE_FAILED">, C<"IDLE">, C<"STARTING">, C<"RUNNING">, C<"RECOVERING">, C<"STOPPING">, C<"DELETING">, C<"DELETED">
+=head2 Tags => L<Paws::MediaLive::Tags>
+
+A collection of key-value pairs.
+
+
 =head2 _request_id => Str
 
 

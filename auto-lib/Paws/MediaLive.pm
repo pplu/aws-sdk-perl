@@ -34,6 +34,11 @@ package Paws::MediaLive;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::CreateInputSecurityGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateTags {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::CreateTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteChannel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::DeleteChannel', @_);
@@ -52,6 +57,11 @@ package Paws::MediaLive;
   sub DeleteReservation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::DeleteReservation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteTags {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::DeleteTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeChannel {
@@ -107,6 +117,11 @@ package Paws::MediaLive;
   sub ListReservations {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::ListReservations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::ListTagsForResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PurchaseOffering {
@@ -280,7 +295,7 @@ package Paws::MediaLive;
   }
 
 
-  sub operations { qw/BatchUpdateSchedule CreateChannel CreateInput CreateInputSecurityGroup DeleteChannel DeleteInput DeleteInputSecurityGroup DeleteReservation DescribeChannel DescribeInput DescribeInputSecurityGroup DescribeOffering DescribeReservation DescribeSchedule ListChannels ListInputs ListInputSecurityGroups ListOfferings ListReservations PurchaseOffering StartChannel StopChannel UpdateChannel UpdateInput UpdateInputSecurityGroup / }
+  sub operations { qw/BatchUpdateSchedule CreateChannel CreateInput CreateInputSecurityGroup CreateTags DeleteChannel DeleteInput DeleteInputSecurityGroup DeleteReservation DeleteTags DescribeChannel DescribeInput DescribeInputSecurityGroup DescribeOffering DescribeReservation DescribeSchedule ListChannels ListInputs ListInputSecurityGroups ListOfferings ListReservations ListTagsForResource PurchaseOffering StartChannel StopChannel UpdateChannel UpdateInput UpdateInputSecurityGroup / }
 
 1;
 
@@ -357,6 +372,8 @@ Update a channel schedule
 
 =item [RoleArn => Str]
 
+=item [Tags => L<Paws::MediaLive::Tags>]
+
 
 =back
 
@@ -385,6 +402,8 @@ Creates a new channel
 
 =item [Sources => ArrayRef[L<Paws::MediaLive::InputSourceRequest>]]
 
+=item [Tags => L<Paws::MediaLive::Tags>]
+
 =item [Type => Str]
 
 
@@ -401,6 +420,8 @@ Create an input
 
 =over
 
+=item [Tags => L<Paws::MediaLive::Tags>]
+
 =item [WhitelistRules => ArrayRef[L<Paws::MediaLive::InputWhitelistRuleCidr>]]
 
 
@@ -411,6 +432,24 @@ Each argument is described in detail in: L<Paws::MediaLive::CreateInputSecurityG
 Returns: a L<Paws::MediaLive::CreateInputSecurityGroupResponse> instance
 
 Creates a Input Security Group
+
+
+=head2 CreateTags
+
+=over
+
+=item ResourceArn => Str
+
+=item [Tags => L<Paws::MediaLive::Tags>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::CreateTags>
+
+Returns: nothing
+
+Create tags for a resource
 
 
 =head2 DeleteChannel
@@ -475,6 +514,24 @@ Each argument is described in detail in: L<Paws::MediaLive::DeleteReservation>
 Returns: a L<Paws::MediaLive::DeleteReservationResponse> instance
 
 Delete an expired reservation.
+
+
+=head2 DeleteTags
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::DeleteTags>
+
+Returns: nothing
+
+Removes tags for a resource
 
 
 =head2 DescribeChannel
@@ -697,6 +754,22 @@ Returns: a L<Paws::MediaLive::ListReservationsResponse> instance
 List purchased reservations.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::ListTagsForResource>
+
+Returns: a L<Paws::MediaLive::ListTagsForResourceResponse> instance
+
+Produces list of tags that have been created for a resource
+
+
 =head2 PurchaseOffering
 
 =over
@@ -814,6 +887,8 @@ Updates an input.
 =over
 
 =item InputSecurityGroupId => Str
+
+=item [Tags => L<Paws::MediaLive::Tags>]
 
 =item [WhitelistRules => ArrayRef[L<Paws::MediaLive::InputWhitelistRuleCidr>]]
 

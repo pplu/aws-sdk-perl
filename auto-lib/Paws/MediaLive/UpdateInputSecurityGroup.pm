@@ -2,6 +2,7 @@
 package Paws::MediaLive::UpdateInputSecurityGroup;
   use Moose;
   has InputSecurityGroupId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'inputSecurityGroupId', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', traits => ['NameInRequest'], request_name => 'tags');
   has WhitelistRules => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputWhitelistRuleCidr]', traits => ['NameInRequest'], request_name => 'whitelistRules');
 
   use MooseX::ClassAttribute;
@@ -31,6 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $medialive = Paws->service('MediaLive');
     my $UpdateInputSecurityGroupResponse = $medialive->UpdateInputSecurityGroup(
       InputSecurityGroupId => 'My__string',
+      Tags                 => { 'My__string' => 'My__string', },     # OPTIONAL
       WhitelistRules       => [ { Cidr => 'My__string', }, ... ],    # OPTIONAL
     );
 
@@ -48,6 +50,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/med
 =head2 B<REQUIRED> InputSecurityGroupId => Str
 
 The id of the Input Security Group to update.
+
+
+
+=head2 Tags => L<Paws::MediaLive::Tags>
+
+A collection of key-value pairs.
 
 
 

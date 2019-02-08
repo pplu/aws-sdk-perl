@@ -172,6 +172,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Destination => { DestinationRefId => 'My__string', },
                 RolloverInterval => 1,    # min: 1; OPTIONAL
               },    # OPTIONAL
+              FrameCaptureGroupSettings => {
+                Destination => { DestinationRefId => 'My__string', },
+
+              },    # OPTIONAL
               HlsGroupSettings => {
                 Destination => { DestinationRefId => 'My__string', },
                 AdMarkers   => [
@@ -194,7 +198,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ClientCache => 'DISABLED', # values: DISABLED, ENABLED; OPTIONAL
                 CodecSpecification =>
                   'RFC_4281',    # values: RFC_4281, RFC_6381; OPTIONAL
-                ConstantIv         => 'My__stringMin32Max32', # min: 32, max: 32
+                ConstantIv =>
+                  'My__stringMin32Max32',    # min: 32, max: 32; OPTIONAL
                 DirectoryStructure => 'SINGLE_DIRECTORY'
                 ,  # values: SINGLE_DIRECTORY, SUBDIRECTORY_PER_STREAM; OPTIONAL
                 EncryptionType =>
@@ -233,6 +238,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     RestartDelay => 1,    # max: 15
                   },    # OPTIONAL
                 },    # OPTIONAL
+                IFrameOnlyPlaylists =>
+                  'DISABLED',    # values: DISABLED, STANDARD; OPTIONAL
                 IndexNSegments => 1,    # min: 3; OPTIONAL
                 InputLossAction =>
                   'EMIT_OUTPUT',   # values: EMIT_OUTPUT, PAUSE_OUTPUT; OPTIONAL
@@ -244,12 +251,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 KeyFormatVersions   => 'My__string',
                 KeyProviderSettings => {
                   StaticKeySettings => {
-                    StaticKeyValue => 'My__stringMin32Max32', # min: 32, max: 32
+                    StaticKeyValue =>
+                      'My__stringMin32Max32',    # min: 32, max: 32; OPTIONAL
                     KeyProviderServer => {
                       Uri           => 'My__string',
                       PasswordParam => 'My__string',
                       Username      => 'My__string',
-                    },                                        # OPTIONAL
+                    },                           # OPTIONAL
                   },    # OPTIONAL
                 },    # OPTIONAL
                 ManifestCompression => 'GZIP',    # values: GZIP, NONE; OPTIONAL
@@ -411,6 +419,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     Extension    => 'My__string',
                     NameModifier => 'My__string',
                   },    # OPTIONAL
+                  FrameCaptureOutputSettings =>
+                    { NameModifier => 'My__string', },    # OPTIONAL
                   HlsOutputSettings => {
                     HlsSettings => {
                       AudioOnlyHlsSettings => {
@@ -419,7 +429,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                           Uri           => 'My__string',
                           PasswordParam => 'My__string',
                           Username      => 'My__string',
-                        },    # OPTIONAL
+                        },                                # OPTIONAL
                         AudioTrackType => 'ALTERNATE_AUDIO_AUTO_SELECT'
                         , # values: ALTERNATE_AUDIO_AUTO_SELECT, ALTERNATE_AUDIO_AUTO_SELECT_DEFAULT, ALTERNATE_AUDIO_NOT_AUTO_SELECT, AUDIO_ONLY_VARIANT_STREAM; OPTIONAL
                       },    # OPTIONAL
@@ -570,6 +580,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             Name          => 'My__string',
             CodecSettings => {
+              FrameCaptureSettings => {
+                CaptureInterval => 1,    # min: 1, max: 3600
+
+              },    # OPTIONAL
               H264Settings => {
                 AdaptiveQuantization => 'HIGH'
                 ,    # values: HIGH, HIGHER, LOW, MAX, MEDIUM, OFF; OPTIONAL
@@ -584,8 +598,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 FlickerAq => 'DISABLED',   # values: DISABLED, ENABLED; OPTIONAL
                 FramerateControl => 'INITIALIZE_FROM_SOURCE'
                 ,    # values: INITIALIZE_FROM_SOURCE, SPECIFIED; OPTIONAL
-                FramerateDenominator => 1,    # OPTIONAL
-                FramerateNumerator   => 1,    # OPTIONAL
+                FramerateDenominator => 1,    # min: 1; OPTIONAL
+                FramerateNumerator   => 1,    # min: 1; OPTIONAL
                 GopBReference =>
                   'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
                 GopClosedCadence => 1,    # OPTIONAL

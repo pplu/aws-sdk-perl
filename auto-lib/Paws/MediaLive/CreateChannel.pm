@@ -10,6 +10,7 @@ package Paws::MediaLive::CreateChannel;
   has RequestId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'requestId');
   has Reserved => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reserved');
   has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn');
+  has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -174,6 +175,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 },
                 RolloverInterval => 1,                 # min: 1; OPTIONAL
               },    # OPTIONAL
+              FrameCaptureGroupSettings => {
+                Destination => {
+                  DestinationRefId => 'My__string',    # OPTIONAL
+                },
+
+              },    # OPTIONAL
               HlsGroupSettings => {
                 Destination => {
                   DestinationRefId => 'My__string',    # OPTIONAL
@@ -198,7 +205,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ClientCache => 'DISABLED', # values: DISABLED, ENABLED; OPTIONAL
                 CodecSpecification =>
                   'RFC_4281',    # values: RFC_4281, RFC_6381; OPTIONAL
-                ConstantIv         => 'My__stringMin32Max32', # min: 32, max: 32
+                ConstantIv =>
+                  'My__stringMin32Max32',    # min: 32, max: 32; OPTIONAL
                 DirectoryStructure => 'SINGLE_DIRECTORY'
                 ,  # values: SINGLE_DIRECTORY, SUBDIRECTORY_PER_STREAM; OPTIONAL
                 EncryptionType =>
@@ -237,6 +245,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     RestartDelay => 1,    # max: 15
                   },    # OPTIONAL
                 },    # OPTIONAL
+                IFrameOnlyPlaylists =>
+                  'DISABLED',    # values: DISABLED, STANDARD; OPTIONAL
                 IndexNSegments => 1,    # min: 3; OPTIONAL
                 InputLossAction =>
                   'EMIT_OUTPUT',   # values: EMIT_OUTPUT, PAUSE_OUTPUT; OPTIONAL
@@ -248,11 +258,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 KeyFormatVersions   => 'My__string',    # OPTIONAL
                 KeyProviderSettings => {
                   StaticKeySettings => {
-                    StaticKeyValue => 'My__stringMin32Max32', # min: 32, max: 32
+                    StaticKeyValue =>
+                      'My__stringMin32Max32',    # min: 32, max: 32; OPTIONAL
                     KeyProviderServer => {
-                      Uri           => 'My__string',          # OPTIONAL
-                      PasswordParam => 'My__string',          # OPTIONAL
-                      Username      => 'My__string',          # OPTIONAL
+                      Uri           => 'My__string',    # OPTIONAL
+                      PasswordParam => 'My__string',    # OPTIONAL
+                      Username      => 'My__string',    # OPTIONAL
                     },    # OPTIONAL
                   },    # OPTIONAL
                 },    # OPTIONAL
@@ -415,6 +426,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       },    # OPTIONAL
                     },
                     Extension    => 'My__string',    # OPTIONAL
+                    NameModifier => 'My__string',    # OPTIONAL
+                  },    # OPTIONAL
+                  FrameCaptureOutputSettings => {
                     NameModifier => 'My__string',    # OPTIONAL
                   },    # OPTIONAL
                   HlsOutputSettings => {
@@ -585,6 +599,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             Name          => 'My__string',    # OPTIONAL
             CodecSettings => {
+              FrameCaptureSettings => {
+                CaptureInterval => 1,         # min: 1, max: 3600
+
+              },    # OPTIONAL
               H264Settings => {
                 AdaptiveQuantization => 'HIGH'
                 ,    # values: HIGH, HIGHER, LOW, MAX, MEDIUM, OFF; OPTIONAL
@@ -599,8 +617,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 FlickerAq => 'DISABLED',   # values: DISABLED, ENABLED; OPTIONAL
                 FramerateControl => 'INITIALIZE_FROM_SOURCE'
                 ,    # values: INITIALIZE_FROM_SOURCE, SPECIFIED; OPTIONAL
-                FramerateDenominator => 1,    # OPTIONAL
-                FramerateNumerator   => 1,    # OPTIONAL
+                FramerateDenominator => 1,    # min: 1; OPTIONAL
+                FramerateNumerator   => 1,    # min: 1; OPTIONAL
                 GopBReference =>
                   'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
                 GopClosedCadence => 1,    # OPTIONAL
@@ -906,6 +924,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RequestId => 'My__string',    # OPTIONAL
       Reserved  => 'My__string',    # OPTIONAL
       RoleArn   => 'My__string',    # OPTIONAL
+      Tags      => {
+        'My__string' => 'My__string',    # key: OPTIONAL, value: OPTIONAL
+      },    # OPTIONAL
     );
 
     # Results:
@@ -918,6 +939,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $RequestId          = $CreateChannelResponse->RequestId;
     my $Reserved           = $CreateChannelResponse->Reserved;
     my $RoleArn            = $CreateChannelResponse->RoleArn;
+    my $Tags               = $CreateChannelResponse->Tags;
 
     # Returns a L<Paws::MediaLive::CreateChannelResponse> object.
 
@@ -981,6 +1003,12 @@ Deprecated field that's only usable by whitelisted customers.
 
 An optional Amazon Resource Name (ARN) of the role to assume when
 running the Channel.
+
+
+
+=head2 Tags => L<Paws::MediaLive::Tags>
+
+A collection of key-value pairs.
 
 
 

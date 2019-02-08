@@ -10,6 +10,7 @@ package Paws::MediaLive::Input;
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroups', traits => ['NameInRequest']);
   has Sources => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputSource]', request_name => 'sources', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', request_name => 'tags', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
 1;
 
@@ -96,6 +97,11 @@ and after creation.
 =head2 State => Str
 
   
+
+
+=head2 Tags => L<Paws::MediaLive::Tags>
+
+  A collection of key-value pairs.
 
 
 =head2 Type => Str

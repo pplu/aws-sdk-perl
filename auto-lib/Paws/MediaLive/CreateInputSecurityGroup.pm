@@ -1,6 +1,7 @@
 
 package Paws::MediaLive::CreateInputSecurityGroup;
   use Moose;
+  has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', traits => ['NameInRequest'], request_name => 'tags');
   has WhitelistRules => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputWhitelistRuleCidr]', traits => ['NameInRequest'], request_name => 'whitelistRules');
 
   use MooseX::ClassAttribute;
@@ -29,12 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $medialive = Paws->service('MediaLive');
     my $CreateInputSecurityGroupResponse = $medialive->CreateInputSecurityGroup(
-      WhitelistRules => [
-        {
-          Cidr => 'My__string',    # OPTIONAL
-        },
-        ...
-      ],                           # OPTIONAL
+      Tags           => { 'My__string' => 'My__string', },     # OPTIONAL
+      WhitelistRules => [ { Cidr => 'My__string', }, ... ],    # OPTIONAL
     );
 
     # Results:
@@ -46,6 +43,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/medialive/CreateInputSecurityGroup>
 
 =head1 ATTRIBUTES
+
+
+=head2 Tags => L<Paws::MediaLive::Tags>
+
+A collection of key-value pairs.
+
 
 
 =head2 WhitelistRules => ArrayRef[L<Paws::MediaLive::InputWhitelistRuleCidr>]

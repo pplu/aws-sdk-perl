@@ -8,6 +8,7 @@ package Paws::MediaLive::CreateInput;
   has RequestId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'requestId');
   has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn');
   has Sources => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputSourceRequest]', traits => ['NameInRequest'], request_name => 'sources');
+  has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', traits => ['NameInRequest'], request_name => 'tags');
   has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type');
 
   use MooseX::ClassAttribute;
@@ -62,7 +63,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                    # OPTIONAL
-      Type => 'UDP_PUSH',                   # OPTIONAL
+      Tags => {
+        'My__string' => 'My__string',       # key: OPTIONAL, value: OPTIONAL
+      },    # OPTIONAL
+      Type => 'UDP_PUSH',    # OPTIONAL
     );
 
     # Results:
@@ -73,6 +77,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $RequestId           = $CreateInputResponse->RequestId;
     my $RoleArn             = $CreateInputResponse->RoleArn;
     my $Sources             = $CreateInputResponse->Sources;
+    my $Tags                = $CreateInputResponse->Tags;
     my $Type                = $CreateInputResponse->Type;
 
     # Returns a L<Paws::MediaLive::CreateInputResponse> object.
@@ -130,6 +135,12 @@ and after creation.
 The source URLs for a PULL-type input. Every PULL type input needs
 exactly two source URLs for redundancy. Only specify sources for PULL
 type Inputs. Leave Destinations empty.
+
+
+
+=head2 Tags => L<Paws::MediaLive::Tags>
+
+A collection of key-value pairs.
 
 
 

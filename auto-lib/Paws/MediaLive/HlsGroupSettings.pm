@@ -12,6 +12,7 @@ package Paws::MediaLive::HlsGroupSettings;
   has DirectoryStructure => (is => 'ro', isa => 'Str', request_name => 'directoryStructure', traits => ['NameInRequest']);
   has EncryptionType => (is => 'ro', isa => 'Str', request_name => 'encryptionType', traits => ['NameInRequest']);
   has HlsCdnSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsCdnSettings', request_name => 'hlsCdnSettings', traits => ['NameInRequest']);
+  has IFrameOnlyPlaylists => (is => 'ro', isa => 'Str', request_name => 'iFrameOnlyPlaylists', traits => ['NameInRequest']);
   has IndexNSegments => (is => 'ro', isa => 'Int', request_name => 'indexNSegments', traits => ['NameInRequest']);
   has InputLossAction => (is => 'ro', isa => 'Str', request_name => 'inputLossAction', traits => ['NameInRequest']);
   has IvInManifest => (is => 'ro', isa => 'Str', request_name => 'ivInManifest', traits => ['NameInRequest']);
@@ -152,6 +153,12 @@ parameter if no encryption is desired.
 =head2 HlsCdnSettings => L<Paws::MediaLive::HlsCdnSettings>
 
   Parameters that control interactions with the CDN.
+
+
+=head2 IFrameOnlyPlaylists => Str
+
+  If enabled, writes out I-Frame only playlists in addition to media
+playlists.
 
 
 =head2 IndexNSegments => Int

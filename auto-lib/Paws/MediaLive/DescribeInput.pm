@@ -44,6 +44,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SecurityGroups    = $DescribeInputResponse->SecurityGroups;
     my $Sources           = $DescribeInputResponse->Sources;
     my $State             = $DescribeInputResponse->State;
+    my $Tags              = $DescribeInputResponse->Tags;
     my $Type              = $DescribeInputResponse->Type;
 
     # Returns a L<Paws::MediaLive::DescribeInputResponse> object.

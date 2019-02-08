@@ -11,6 +11,7 @@ package Paws::MediaLive::DescribeInputResponse;
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'securityGroups');
   has Sources => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputSource]', traits => ['NameInRequest'], request_name => 'sources');
   has State => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'state');
+  has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', traits => ['NameInRequest'], request_name => 'tags');
   has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -77,6 +78,11 @@ A list of the sources of the input (PULL-type).
 
 
 Valid values are: C<"CREATING">, C<"DETACHED">, C<"ATTACHED">, C<"DELETING">, C<"DELETED">
+=head2 Tags => L<Paws::MediaLive::Tags>
+
+A collection of key-value pairs.
+
+
 =head2 Type => Str
 
 
