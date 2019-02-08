@@ -101,11 +101,12 @@ each target receives traffic from the load balancer.
 =head2 HealthCheckProtocol => Str
 
 The protocol the load balancer uses when performing health checks on
-targets. The TCP protocol is supported only if the protocol of the
-target group is TCP. For Application Load Balancers, the default is
-HTTP. For Network Load Balancers, the default is TCP.
+targets. For Application Load Balancers, the default is HTTP. For
+Network Load Balancers, the default is TCP. The TCP protocol is
+supported for health checks only if the protocol of the target group is
+TCP or TLS. The TLS protocol is not supported for health checks.
 
-Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">
+Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">
 
 =head2 HealthCheckTimeoutSeconds => Int
 
@@ -156,10 +157,10 @@ is a Lambda function, this parameter does not apply.
 
 The protocol to use for routing traffic to the targets. For Application
 Load Balancers, the supported protocols are HTTP and HTTPS. For Network
-Load Balancers, the supported protocol is TCP. If the target is a
-Lambda function, this parameter does not apply.
+Load Balancers, the supported protocols are TCP and TLS. If the target
+is a Lambda function, this parameter does not apply.
 
-Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">
+Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">
 
 =head2 TargetType => Str
 

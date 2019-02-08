@@ -62,13 +62,14 @@ The actions.
 
 If the action type is C<forward>, you specify a target group. The
 protocol of the target group must be HTTP or HTTPS for an Application
-Load Balancer or TCP for a Network Load Balancer.
+Load Balancer. The protocol of the target group must be TCP or TLS for
+a Network Load Balancer.
 
-[HTTPS listener] If the action type is C<authenticate-oidc>, you
+[HTTPS listeners] If the action type is C<authenticate-oidc>, you
 authenticate users through an identity provider that is OpenID Connect
 (OIDC) compliant.
 
-[HTTPS listener] If the action type is C<authenticate-cognito>, you
+[HTTPS listeners] If the action type is C<authenticate-cognito>, you
 authenticate users through the user pools supported by Amazon Cognito.
 
 [Application Load Balancer] If the action type is C<redirect>, you

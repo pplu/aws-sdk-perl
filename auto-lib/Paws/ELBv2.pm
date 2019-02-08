@@ -396,8 +396,8 @@ Balancers.
 
 An Application Load Balancer makes routing and load balancing decisions
 at the application layer (HTTP/HTTPS). A Network Load Balancer makes
-routing and load balancing decisions at the transport layer (TCP). Both
-Application Load Balancers and Network Load Balancers can route
+routing and load balancing decisions at the transport layer (TCP/TLS).
+Both Application Load Balancers and Network Load Balancers can route
 requests to one or more ports on each EC2 instance or container
 instance in your virtual private cloud (VPC).
 
@@ -473,7 +473,7 @@ Each argument is described in detail in: L<Paws::ELBv2::AddListenerCertificates>
 
 Returns: a L<Paws::ELBv2::AddListenerCertificatesOutput> instance
 
-Adds the specified certificate to the specified secure listener.
+Adds the specified certificate to the specified HTTPS listener.
 
 If the certificate was already added, the call is successful but the
 certificate is not added again.
@@ -851,7 +851,7 @@ Each argument is described in detail in: L<Paws::ELBv2::DescribeListenerCertific
 
 Returns: a L<Paws::ELBv2::DescribeListenerCertificatesOutput> instance
 
-Describes the certificates for the specified secure listener.
+Describes the certificates for the specified HTTPS listener.
 
 
 =head2 DescribeListeners
@@ -1091,9 +1091,10 @@ Returns: a L<Paws::ELBv2::ModifyListenerOutput> instance
 Modifies the specified properties of the specified listener.
 
 Any properties that you do not specify retain their current values.
-However, changing the protocol from HTTPS to HTTP removes the security
-policy and SSL certificate properties. If you change the protocol from
-HTTP to HTTPS, you must add the security policy and server certificate.
+However, changing the protocol from HTTPS to HTTP, or from TLS to TCP,
+removes the security policy and server certificate properties. If you
+change the protocol from HTTP to HTTPS, or from TCP to TLS, you must
+add the security policy and server certificate properties.
 
 
 =head2 ModifyLoadBalancerAttributes
@@ -1248,7 +1249,7 @@ Each argument is described in detail in: L<Paws::ELBv2::RemoveListenerCertificat
 
 Returns: a L<Paws::ELBv2::RemoveListenerCertificatesOutput> instance
 
-Removes the specified certificate from the specified secure listener.
+Removes the specified certificate from the specified HTTPS listener.
 
 You can't remove the default certificate for a listener. To replace the
 default certificate, call ModifyListener.

@@ -44,13 +44,13 @@ Information about an action.
 
 =head2 AuthenticateCognitoConfig => L<Paws::ELBv2::AuthenticateCognitoActionConfig>
 
-  [HTTPS listener] Information for using Amazon Cognito to authenticate
+  [HTTPS listeners] Information for using Amazon Cognito to authenticate
 users. Specify only when C<Type> is C<authenticate-cognito>.
 
 
 =head2 AuthenticateOidcConfig => L<Paws::ELBv2::AuthenticateOidcActionConfig>
 
-  [HTTPS listener] Information about an identity provider that is
+  [HTTPS listeners] Information about an identity provider that is
 compliant with OpenID Connect (OIDC). Specify only when C<Type> is
 C<authenticate-oidc>.
 

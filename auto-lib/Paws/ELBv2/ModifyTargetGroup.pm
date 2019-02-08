@@ -94,13 +94,14 @@ targets.
 =head2 HealthCheckProtocol => Str
 
 The protocol the load balancer uses when performing health checks on
-targets. The TCP protocol is supported only if the protocol of the
-target group is TCP.
+targets. The TCP protocol is supported for health checks only if the
+protocol of the target group is TCP or TLS. The TLS protocol is not
+supported for health checks.
 
 If the protocol of the target group is TCP, you can't modify this
 setting.
 
-Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">
+Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">
 
 =head2 HealthCheckTimeoutSeconds => Int
 
