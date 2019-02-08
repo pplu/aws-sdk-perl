@@ -11,7 +11,7 @@ use Paws;
 use Moose::Util;
 use ARGV::Struct;
 use Term::ANSIColor 2.00 qw();
-use Hash::Flatten qw//;
+use DataStruct::Flat;
 use List::Util qw(reduce);
 use Module::Find;
 
@@ -106,7 +106,7 @@ if ($@) {
 
 if (ref($result)) {
   my $h = $service->to_hash($result);
-  $h = Hash::Flatten::flatten($h, { HashDelimiter => '.', ArrayDelimiter => '.' });
+  $h = DataStruct::Flat->new->flatten($h);
 
   my $max_chars = reduce { length($a) > length($b) ? $a : $b } keys %$h;
   $max_chars = length($max_chars);
