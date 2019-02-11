@@ -1,4 +1,5 @@
 package Paws::Net::RestXmlCaller;
+  use Paws;
   use Moose::Role;
   use HTTP::Request::Common;
   use POSIX qw(strftime);
@@ -36,10 +37,10 @@ package Paws::Net::RestXmlCaller;
       if (defined $params->$att) {
         my $att_type = $params->meta->get_attribute($att)->type_constraint;
 
-        if ($self->_is_internal_type($att_type)) {
+        if (Paws->is_internal_type($att_type)) {
           $p{ $key } = $params->{$att};
         } elsif ($att_type =~ m/^ArrayRef\[(.*)\]/) {
-          if ($self->_is_internal_type("$1")){
+          if (Paws->is_internal_type("$1")){
             my $i = 1;
             foreach my $value (@{ $params->$att }){
               $p{ sprintf($self->array_flatten_string, $key, $i) } = $value;
