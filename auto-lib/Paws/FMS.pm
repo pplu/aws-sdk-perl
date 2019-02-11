@@ -60,6 +60,11 @@ package Paws::FMS;
     my $call_object = $self->new_with_coercions('Paws::FMS::ListComplianceStatus', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListMemberAccounts {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::FMS::ListMemberAccounts', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListPolicies {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::FMS::ListPolicies', @_);
@@ -76,9 +81,78 @@ package Paws::FMS;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllComplianceStatus {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListComplianceStatus(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListComplianceStatus(@_, NextToken => $next_result->NextToken);
+        push @{ $result->PolicyComplianceStatusList }, @{ $next_result->PolicyComplianceStatusList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'PolicyComplianceStatusList') foreach (@{ $result->PolicyComplianceStatusList });
+        $result = $self->ListComplianceStatus(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'PolicyComplianceStatusList') foreach (@{ $result->PolicyComplianceStatusList });
+    }
+
+    return undef
+  }
+  sub ListAllMemberAccounts {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListMemberAccounts(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListMemberAccounts(@_, NextToken => $next_result->NextToken);
+        push @{ $result->MemberAccounts }, @{ $next_result->MemberAccounts };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'MemberAccounts') foreach (@{ $result->MemberAccounts });
+        $result = $self->ListMemberAccounts(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'MemberAccounts') foreach (@{ $result->MemberAccounts });
+    }
+
+    return undef
+  }
+  sub ListAllPolicies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPolicies(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListPolicies(@_, NextToken => $next_result->NextToken);
+        push @{ $result->PolicyList }, @{ $next_result->PolicyList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'PolicyList') foreach (@{ $result->PolicyList });
+        $result = $self->ListPolicies(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'PolicyList') foreach (@{ $result->PolicyList });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/AssociateAdminAccount DeleteNotificationChannel DeletePolicy DisassociateAdminAccount GetAdminAccount GetComplianceDetail GetNotificationChannel GetPolicy ListComplianceStatus ListPolicies PutNotificationChannel PutPolicy / }
+  sub operations { qw/AssociateAdminAccount DeleteNotificationChannel DeletePolicy DisassociateAdminAccount GetAdminAccount GetComplianceDetail GetNotificationChannel GetPolicy ListComplianceStatus ListMemberAccounts ListPolicies PutNotificationChannel PutPolicy / }
 
 1;
 
@@ -133,14 +207,14 @@ Each argument is described in detail in: L<Paws::FMS::AssociateAdminAccount>
 Returns: nothing
 
 Sets the AWS Firewall Manager administrator account. AWS Firewall
-Manager must be associated with a master account in AWS Organizations
-or associated with a member account that has the appropriate
-permissions. If the account ID that you submit is not an AWS
-Organizations master account, AWS Firewall Manager will set the
+Manager must be associated with the master account your AWS
+organization or associated with a member account that has the
+appropriate permissions. If the account ID that you submit is not an
+AWS Organizations master account, AWS Firewall Manager will set the
 appropriate permissions for the given member account.
 
 The account that you associate with AWS Firewall Manager is called the
-AWS Firewall manager administrator account.
+AWS Firewall Manager administrator account.
 
 
 =head2 DeleteNotificationChannel
@@ -165,6 +239,8 @@ AWS Firewall Manager SNS logs.
 
 =item PolicyId => Str
 
+=item [DeleteAllPolicyResources => Bool]
+
 
 =back
 
@@ -187,9 +263,8 @@ Each argument is described in detail in: L<Paws::FMS::DisassociateAdminAccount>
 Returns: nothing
 
 Disassociates the account that has been set as the AWS Firewall Manager
-administrator account. You will need to submit an
-C<AssociateAdminAccount> request to set a new account as the AWS
-Firewall administrator.
+administrator account. To set a different account as the administrator
+account, you must submit an C<AssociateAdminAccount> request .
 
 
 =head2 GetAdminAccount
@@ -281,6 +356,28 @@ Use C<PolicyComplianceStatus> to get a summary of which member accounts
 are protected by the specified policy.
 
 
+=head2 ListMemberAccounts
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::FMS::ListMemberAccounts>
+
+Returns: a L<Paws::FMS::ListMemberAccountsResponse> instance
+
+Returns a C<MemberAccounts> object that lists the member accounts in
+the administrator's AWS organization.
+
+The C<ListMemberAccounts> must be submitted by the account that is set
+as the AWS Firewall Manager administrator.
+
+
 =head2 ListPolicies
 
 =over
@@ -339,6 +436,42 @@ Creates an AWS Firewall Manager policy.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllComplianceStatus(sub { },PolicyId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllComplianceStatus(PolicyId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PolicyComplianceStatusList, passing the object as the first parameter, and the string 'PolicyComplianceStatusList' as the second parameter 
+
+If not, it will return a a L<Paws::FMS::ListComplianceStatusResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllMemberAccounts(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllMemberAccounts([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - MemberAccounts, passing the object as the first parameter, and the string 'MemberAccounts' as the second parameter 
+
+If not, it will return a a L<Paws::FMS::ListMemberAccountsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPolicies(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllPolicies([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PolicyList, passing the object as the first parameter, and the string 'PolicyList' as the second parameter 
+
+If not, it will return a a L<Paws::FMS::ListPoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

@@ -44,8 +44,6 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::S
 Rule that controls how a fleet is scaled. Scaling policies are uniquely
 identified by the combination of name and fleet ID.
 
-Operations related to fleet capacity scaling include:
-
 =over
 
 =item *
@@ -125,7 +123,7 @@ policy.
   Name of the Amazon GameLift-defined metric that is used to trigger a
 scaling adjustment. For detailed descriptions of fleet metrics, see
 Monitor Amazon GameLift with Amazon CloudWatch
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/monitoring-cloudwatch.html).
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/monitoring-cloudwatch.html).
 
 =over
 

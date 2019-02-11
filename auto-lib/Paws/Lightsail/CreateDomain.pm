@@ -2,6 +2,7 @@
 package Paws::Lightsail::CreateDomain;
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domainName' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
@@ -29,7 +30,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $lightsail = Paws->service('Lightsail');
     my $CreateDomainResult = $lightsail->CreateDomain(
       DomainName => 'MyDomainName',
-
+      Tags       => [
+        {
+          Key   => 'MyTagKey',      # OPTIONAL
+          Value => 'MyTagValue',    # OPTIONAL
+        },
+        ...
+      ],                            # OPTIONAL
     );
 
     # Results:
@@ -51,6 +58,15 @@ You cannot register a new domain name using Lightsail. You must
 register a domain name using Amazon Route 53 or another domain name
 registrar. If you have already registered your domain, you can enter
 its name in this parameter to manage the DNS records for that domain.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::Lightsail::Tag>]
+
+The tag keys and optional values to add to the resource during create.
+
+To tag a resource after it has been created, see the C<tag resource>
+operation.
 
 
 

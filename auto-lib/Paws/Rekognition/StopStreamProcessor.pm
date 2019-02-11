@@ -40,7 +40,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rek
 
 =head2 B<REQUIRED> Name => Str
 
-The name of a stream processor created by .
+The name of a stream processor created by CreateStreamProcessor.
 
 
 

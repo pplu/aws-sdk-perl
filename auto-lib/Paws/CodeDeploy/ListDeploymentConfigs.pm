@@ -46,9 +46,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 NextToken => Str
 
-An identifier returned from the previous list deployment configurations
-call. It can be used to return the next set of deployment
-configurations in the list.
+An identifier returned from the previous C<ListDeploymentConfigs> call.
+It can be used to return the next set of deployment configurations in
+the list.
 
 
 

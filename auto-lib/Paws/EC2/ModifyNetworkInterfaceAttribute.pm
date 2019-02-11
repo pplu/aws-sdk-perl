@@ -130,7 +130,7 @@ Indicates whether source/destination checking is enabled. A value of
 C<true> means checking is enabled, and C<false> means checking is
 disabled. This value must be C<false> for a NAT instance to perform
 NAT. For more information, see NAT Instances
-(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html)
+(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
 

@@ -59,6 +59,11 @@ package Paws::MediaPackage;
     my $call_object = $self->new_with_coercions('Paws::MediaPackage::RotateChannelCredentials', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub RotateIngestEndpointCredentials {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaPackage::RotateIngestEndpointCredentials', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateChannel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaPackage::UpdateChannel', @_);
@@ -118,7 +123,7 @@ package Paws::MediaPackage;
   }
 
 
-  sub operations { qw/CreateChannel CreateOriginEndpoint DeleteChannel DeleteOriginEndpoint DescribeChannel DescribeOriginEndpoint ListChannels ListOriginEndpoints RotateChannelCredentials UpdateChannel UpdateOriginEndpoint / }
+  sub operations { qw/CreateChannel CreateOriginEndpoint DeleteChannel DeleteOriginEndpoint DescribeChannel DescribeOriginEndpoint ListChannels ListOriginEndpoints RotateChannelCredentials RotateIngestEndpointCredentials UpdateChannel UpdateOriginEndpoint / }
 
 1;
 
@@ -322,7 +327,28 @@ Each argument is described in detail in: L<Paws::MediaPackage::RotateChannelCred
 
 Returns: a L<Paws::MediaPackage::RotateChannelCredentialsResponse> instance
 
-Changes the Channel ingest username and password.
+Changes the Channel's first IngestEndpoint's username and password.
+WARNING - This API is deprecated. Please use
+RotateIngestEndpointCredentials instead
+
+
+=head2 RotateIngestEndpointCredentials
+
+=over
+
+=item Id => Str
+
+=item IngestEndpointId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaPackage::RotateIngestEndpointCredentials>
+
+Returns: a L<Paws::MediaPackage::RotateIngestEndpointCredentialsResponse> instance
+
+Rotate the IngestEndpoint's username and password, as specified by the
+IngestEndpoint's id.
 
 
 =head2 UpdateChannel

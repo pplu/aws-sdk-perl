@@ -65,6 +65,29 @@ package Paws::KinesisVideo;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllStreams {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListStreams(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListStreams(@_, NextToken => $next_result->NextToken);
+        push @{ $result->StreamInfoList }, @{ $next_result->StreamInfoList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'StreamInfoList') foreach (@{ $result->StreamInfoList });
+        $result = $self->ListStreams(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'StreamInfoList') foreach (@{ $result->StreamInfoList });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CreateStream DeleteStream DescribeStream GetDataEndpoint ListStreams ListTagsForStream TagStream UntagStream UpdateDataRetention UpdateStream / }
@@ -414,6 +437,18 @@ complete.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllStreams(sub { },[MaxResults => Int, NextToken => Str, StreamNameCondition => L<Paws::KinesisVideo::StreamNameCondition>])
+
+=head2 ListAllStreams([MaxResults => Int, NextToken => Str, StreamNameCondition => L<Paws::KinesisVideo::StreamNameCondition>])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - StreamInfoList, passing the object as the first parameter, and the string 'StreamInfoList' as the second parameter 
+
+If not, it will return a a L<Paws::KinesisVideo::ListStreamsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

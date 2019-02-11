@@ -42,17 +42,18 @@ Describes how CSV-formatted results are formatted.
 
 =head2 FieldDelimiter => Str
 
-  Value used to separate individual fields in a record.
+  The value used to separate individual fields in a record.
 
 
 =head2 QuoteCharacter => Str
 
-  Value used for escaping where the field delimiter is part of the value.
+  The value used for escaping where the field delimiter is part of the
+value.
 
 
 =head2 QuoteEscapeCharacter => Str
 
-  Single character used for escaping the quote character inside an
+  Th single character used for escaping the quote character inside an
 already escaped value.
 
 
@@ -63,7 +64,7 @@ already escaped value.
 
 =head2 RecordDelimiter => Str
 
-  Value used to separate individual records.
+  The value used to separate individual records.
 
 
 

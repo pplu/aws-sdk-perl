@@ -73,31 +73,8 @@ ensure uniqueness within the specified secret.
 
 Secrets Manager uses this value to prevent the accidental creation of
 duplicate versions if there are failures and retries during the
-function's processing.
-
-=over
-
-=item *
-
-If the C<ClientRequestToken> value isn't already associated with a
-version of the secret then a new version of the secret is created.
-
-=item *
-
-If a version with this value already exists and that version's
-C<SecretString> and C<SecretBinary> values are the same as the request,
-then the request is ignored (the operation is idempotent).
-
-=item *
-
-If a version with this value already exists and that version's
-C<SecretString> and C<SecretBinary> values are different from the
-request then an error occurs because you cannot modify an existing
-secret value.
-
-=back
-
-This value becomes the C<SecretVersionId> of the new version.
+function's processing. This value becomes the C<VersionId> of the new
+version.
 
 
 
@@ -118,6 +95,20 @@ A structure that defines the rotation configuration for this secret.
 
 Specifies the secret that you want to rotate. You can specify either
 the Amazon Resource Name (ARN) or the friendly name of the secret.
+
+If you specify an ARN, we generally recommend that you specify a
+complete ARN. You can specify a partial ARN tooE<mdash>for example, if
+you donE<rsquo>t include the final hyphen and six random characters
+that Secrets Manager adds at the end of the ARN when you created the
+secret. A partial ARN match can work as long as it uniquely matches
+only one secret. However, if your secret has a name that ends in a
+hyphen followed by six characters (before Secrets Manager adds the
+hyphen and six characters to the ARN) and you try to use that as a
+partial ARN, then those characters cause Secrets Manager to assume that
+youE<rsquo>re specifying a complete ARN. This confusion can cause
+unexpected results. To avoid this situation, we recommend that you
+donE<rsquo>t create secret names that end with a hyphen followed by six
+characters.
 
 
 

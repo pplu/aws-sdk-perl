@@ -116,6 +116,75 @@ package Paws::CloudHSM;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllHapgs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListHapgs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListHapgs(@_, NextToken => $next_result->NextToken);
+        push @{ $result->HapgList }, @{ $next_result->HapgList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'HapgList') foreach (@{ $result->HapgList });
+        $result = $self->ListHapgs(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'HapgList') foreach (@{ $result->HapgList });
+    }
+
+    return undef
+  }
+  sub ListAllHsms {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListHsms(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListHsms(@_, NextToken => $next_result->NextToken);
+        push @{ $result->HsmList }, @{ $next_result->HsmList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'HsmList') foreach (@{ $result->HsmList });
+        $result = $self->ListHsms(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'HsmList') foreach (@{ $result->HsmList });
+    }
+
+    return undef
+  }
+  sub ListAllLunaClients {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListLunaClients(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListLunaClients(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ClientList }, @{ $next_result->ClientList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ClientList') foreach (@{ $result->ClientList });
+        $result = $self->ListLunaClients(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ClientList') foreach (@{ $result->ClientList });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AddTagsToResource CreateHapg CreateHsm CreateLunaClient DeleteHapg DeleteHsm DeleteLunaClient DescribeHapg DescribeHsm DescribeLunaClient GetConfig ListAvailableZones ListHapgs ListHsms ListLunaClients ListTagsForResource ModifyHapg ModifyHsm ModifyLunaClient RemoveTagsFromResource / }
@@ -862,6 +931,42 @@ overwrite the value for an existing tag, use AddTagsToResource.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllHapgs(sub { },[NextToken => Str])
+
+=head2 ListAllHapgs([NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - HapgList, passing the object as the first parameter, and the string 'HapgList' as the second parameter 
+
+If not, it will return a a L<Paws::CloudHSM::ListHapgsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllHsms(sub { },[NextToken => Str])
+
+=head2 ListAllHsms([NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - HsmList, passing the object as the first parameter, and the string 'HsmList' as the second parameter 
+
+If not, it will return a a L<Paws::CloudHSM::ListHsmsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllLunaClients(sub { },[NextToken => Str])
+
+=head2 ListAllLunaClients([NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ClientList, passing the object as the first parameter, and the string 'ClientList' as the second parameter 
+
+If not, it will return a a L<Paws::CloudHSM::ListLunaClientsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

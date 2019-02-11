@@ -7,6 +7,7 @@ package Paws::Lightsail::CreateInstances;
   has CustomImageName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'customImageName' );
   has InstanceNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'instanceNames' , required => 1);
   has KeyPairName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'keyPairName' );
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has UserData => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'userData' );
 
   use MooseX::ClassAttribute;
@@ -40,7 +41,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InstanceNames    => [ 'Mystring', ... ],
       CustomImageName  => 'MyResourceName',      # OPTIONAL
       KeyPairName      => 'MyResourceName',      # OPTIONAL
-      UserData         => 'Mystring',            # OPTIONAL
+      Tags             => [
+        {
+          Key   => 'MyTagKey',                   # OPTIONAL
+          Value => 'MyTagValue',                 # OPTIONAL
+        },
+        ...
+      ],                                         # OPTIONAL
+      UserData => 'Mystring',                    # OPTIONAL
     );
 
     # Results:
@@ -58,9 +66,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lig
 
 The Availability Zone in which to create your instance. Use the
 following format: C<us-east-2a> (case sensitive). You can get a list of
-availability zones by using the get regions
+Availability Zones by using the get regions
 (http://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetRegions.html)
-operation. Be sure to add the C<include availability zones> parameter
+operation. Be sure to add the C<include Availability Zones> parameter
 to your request.
 
 
@@ -100,6 +108,15 @@ C<["MyFirstInstance","MySecondInstance"]>
 =head2 KeyPairName => Str
 
 The name of your key pair.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::Lightsail::Tag>]
+
+The tag keys and optional values to add to the resource during create.
+
+To tag a resource after it has been created, see the C<tag resource>
+operation.
 
 
 

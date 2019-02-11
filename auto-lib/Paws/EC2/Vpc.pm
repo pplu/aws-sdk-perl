@@ -6,6 +6,7 @@ package Paws::EC2::Vpc;
   has InstanceTenancy => (is => 'ro', isa => 'Str', request_name => 'instanceTenancy', traits => ['NameInRequest']);
   has Ipv6CidrBlockAssociationSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VpcIpv6CidrBlockAssociation]', request_name => 'ipv6CidrBlockAssociationSet', traits => ['NameInRequest']);
   has IsDefault => (is => 'ro', isa => 'Bool', request_name => 'isDefault', traits => ['NameInRequest']);
+  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
   has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
@@ -73,6 +74,11 @@ C<default> if the default options are associated with the VPC).
 =head2 IsDefault => Bool
 
   Indicates whether the VPC is the default VPC.
+
+
+=head2 OwnerId => Str
+
+  The ID of the AWS account that owns the VPC.
 
 
 =head2 State => Str

@@ -8,10 +8,12 @@ package Paws::Glue::CreateJob;
   has Description => (is => 'ro', isa => 'Str');
   has ExecutionProperty => (is => 'ro', isa => 'Paws::Glue::ExecutionProperty');
   has LogUri => (is => 'ro', isa => 'Str');
+  has MaxCapacity => (is => 'ro', isa => 'Num');
   has MaxRetries => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has NotificationProperty => (is => 'ro', isa => 'Paws::Glue::NotificationProperty');
   has Role => (is => 'ro', isa => 'Str', required => 1);
+  has SecurityConfiguration => (is => 'ro', isa => 'Str');
   has Timeout => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
@@ -59,11 +61,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         MaxConcurrentRuns => 1,                      # OPTIONAL
       },    # OPTIONAL
       LogUri               => 'MyUriString',    # OPTIONAL
+      MaxCapacity          => 1,                # OPTIONAL
       MaxRetries           => 1,                # OPTIONAL
       NotificationProperty => {
-        NotifyDelayAfter => 1,                  # min: 1, ; OPTIONAL
+        NotifyDelayAfter => 1,                  # min: 1; OPTIONAL
       },    # OPTIONAL
-      Timeout => 1,    # OPTIONAL
+      SecurityConfiguration => 'MyNameString',    # OPTIONAL
+      Timeout               => 1,                 # OPTIONAL
     );
 
     # Results:
@@ -78,6 +82,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 
 
 =head2 AllocatedCapacity => Int
+
+This parameter is deprecated. Use C<MaxCapacity> instead.
 
 The number of AWS Glue data processing units (DPUs) to allocate to this
 Job. From 2 to 100 DPUs can be allocated; the default is 10. A DPU is a
@@ -137,6 +143,15 @@ This field is reserved for future use.
 
 
 
+=head2 MaxCapacity => Num
+
+AWS Glue supports running jobs on a C<JobCommand.Name>="pythonshell"
+with allocated processing as low as 0.0625 DPU, which can be specified
+using C<MaxCapacity>. Glue ETL jobs running in any other way cannot
+have fractional DPU allocations.
+
+
+
 =head2 MaxRetries => Int
 
 The maximum number of times to retry this job if it fails.
@@ -162,9 +177,18 @@ The name or ARN of the IAM role associated with this job.
 
 
 
+=head2 SecurityConfiguration => Str
+
+The name of the SecurityConfiguration structure to be used with this
+job.
+
+
+
 =head2 Timeout => Int
 
-The job timeout in minutes. The default is 2880 minutes (48 hours).
+The job timeout in minutes. This is the maximum time that a job run can
+consume resources before it is terminated and enters C<TIMEOUT> status.
+The default is 2,880 minutes (48 hours).
 
 
 

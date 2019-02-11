@@ -61,17 +61,20 @@ Contains directory limit information for a region.
 
 =head2 CloudOnlyMicrosoftADCurrentCount => Int
 
-  The current number of Microsoft AD directories in the region.
+  The current number of AWS Managed Microsoft AD directories in the
+region.
 
 
 =head2 CloudOnlyMicrosoftADLimit => Int
 
-  The maximum number of Microsoft AD directories allowed in the region.
+  The maximum number of AWS Managed Microsoft AD directories allowed in
+the region.
 
 
 =head2 CloudOnlyMicrosoftADLimitReached => Bool
 
-  Indicates if the Microsoft AD directory limit has been reached.
+  Indicates if the AWS Managed Microsoft AD directory limit has been
+reached.
 
 
 =head2 ConnectedDirectoriesCurrentCount => Int

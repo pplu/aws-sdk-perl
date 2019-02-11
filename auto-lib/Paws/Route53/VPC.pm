@@ -45,8 +45,8 @@ about an Amazon VPC.
 
 =head2 VPCRegion => Str
 
-  (Private hosted zones only) The region in which you created an Amazon
-VPC.
+  (Private hosted zones only) The region that an Amazon VPC was created
+in.
 
 
 

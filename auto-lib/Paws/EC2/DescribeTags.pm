@@ -76,17 +76,24 @@ C<key> - The tag key.
 
 =item *
 
-C<resource-id> - The resource ID.
+C<resource-id> - The ID of the resource.
 
 =item *
 
 C<resource-type> - The resource type (C<customer-gateway> |
-C<dhcp-options> | C<elastic-ip> | C<fpga-image> | C<image> |
-C<instance> | C<internet-gateway> | C<launch-template> | C<natgateway>
-| C<network-acl> | C<network-interface> | C<reserved-instances> |
-C<route-table> | C<security-group> | C<snapshot> |
-C<spot-instances-request> | C<subnet> | C<volume> | C<vpc> |
-C<vpc-peering-connection> | C<vpn-connection> | C<vpn-gateway>).
+C<dedicated-host> | C<dhcp-options> | C<elastic-ip> | C<fleet> |
+C<fpga-image> | C<image> | C<instance> | C<internet-gateway> |
+C<launch-template> | C<natgateway> | C<network-acl> |
+C<network-interface> | C<reserved-instances> | C<route-table> |
+C<security-group> | C<snapshot> | C<spot-instances-request> | C<subnet>
+| C<volume> | C<vpc> | C<vpc-peering-connection> | C<vpn-connection> |
+C<vpn-gateway>).
+
+=item *
+
+C<tag>:E<lt>keyE<gt> - The key/value combination of the tag. For
+example, specify "tag:Owner" for the filter name and "TeamA" for the
+filter value to find resources with the tag "Owner=TeamA".
 
 =item *
 

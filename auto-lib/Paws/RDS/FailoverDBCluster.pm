@@ -1,7 +1,7 @@
 
 package Paws::RDS::FailoverDBCluster;
   use Moose;
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str');
+  has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has TargetDBInstanceIdentifier => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -45,7 +45,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 =head1 ATTRIBUTES
 
 
-=head2 DBClusterIdentifier => Str
+=head2 B<REQUIRED> DBClusterIdentifier => Str
 
 A DB cluster identifier to force a failover for. This parameter is not
 case-sensitive.

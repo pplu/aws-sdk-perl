@@ -37,6 +37,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::AddRoleToDBCluster', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AddRoleToDBInstance {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::AddRoleToDBInstance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AddSourceIdentifierToSubscription {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::AddSourceIdentifierToSubscription', @_);
@@ -92,6 +97,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::CreateDBCluster', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateDBClusterEndpoint {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::CreateDBClusterEndpoint', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateDBClusterParameterGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::CreateDBClusterParameterGroup', @_);
@@ -137,6 +147,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::CreateEventSubscription', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateGlobalCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::CreateGlobalCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateOptionGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::CreateOptionGroup', @_);
@@ -145,6 +160,11 @@ package Paws::RDS;
   sub DeleteDBCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::DeleteDBCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteDBClusterEndpoint {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DeleteDBClusterEndpoint', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteDBClusterParameterGroup {
@@ -160,6 +180,11 @@ package Paws::RDS;
   sub DeleteDBInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::DeleteDBInstance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteDBInstanceAutomatedBackup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DeleteDBInstanceAutomatedBackup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteDBParameterGroup {
@@ -187,6 +212,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::DeleteEventSubscription', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteGlobalCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DeleteGlobalCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteOptionGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::DeleteOptionGroup', @_);
@@ -205,6 +235,11 @@ package Paws::RDS;
   sub DescribeDBClusterBacktracks {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBClusterBacktracks', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeDBClusterEndpoints {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBClusterEndpoints', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeDBClusterParameterGroups {
@@ -235,6 +270,11 @@ package Paws::RDS;
   sub DescribeDBEngineVersions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBEngineVersions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeDBInstanceAutomatedBackups {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBInstanceAutomatedBackups', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeDBInstances {
@@ -302,6 +342,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::DescribeEventSubscriptions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeGlobalClusters {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeGlobalClusters', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeOptionGroupOptions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::DescribeOptionGroupOptions', @_);
@@ -357,9 +402,19 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::ListTagsForResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ModifyCurrentDBClusterCapacity {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::ModifyCurrentDBClusterCapacity', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ModifyDBCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::ModifyDBCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyDBClusterEndpoint {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::ModifyDBClusterEndpoint', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ModifyDBClusterParameterGroup {
@@ -402,6 +457,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::ModifyEventSubscription', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ModifyGlobalCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::ModifyGlobalCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ModifyOptionGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::ModifyOptionGroup', @_);
@@ -427,9 +487,19 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::RebootDBInstance', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub RemoveFromGlobalCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::RemoveFromGlobalCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RemoveRoleFromDBCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::RemoveRoleFromDBCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RemoveRoleFromDBInstance {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::RemoveRoleFromDBInstance', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RemoveSourceIdentifierFromSubscription {
@@ -487,9 +557,19 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::RevokeDBSecurityGroupIngress', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartDBCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::StartDBCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartDBInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::StartDBInstance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopDBCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::StopDBCluster', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StopDBInstance {
@@ -498,6 +578,121 @@ package Paws::RDS;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllCertificates {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeCertificates(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeCertificates(@_, Marker => $next_result->Marker);
+        push @{ $result->Certificates }, @{ $next_result->Certificates };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'Certificates') foreach (@{ $result->Certificates });
+        $result = $self->DescribeCertificates(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'Certificates') foreach (@{ $result->Certificates });
+    }
+
+    return undef
+  }
+  sub DescribeAllDBClusterBacktracks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBClusterBacktracks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBClusterBacktracks(@_, Marker => $next_result->Marker);
+        push @{ $result->DBClusterBacktracks }, @{ $next_result->DBClusterBacktracks };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'DBClusterBacktracks') foreach (@{ $result->DBClusterBacktracks });
+        $result = $self->DescribeDBClusterBacktracks(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'DBClusterBacktracks') foreach (@{ $result->DBClusterBacktracks });
+    }
+
+    return undef
+  }
+  sub DescribeAllDBClusterEndpoints {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBClusterEndpoints(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBClusterEndpoints(@_, Marker => $next_result->Marker);
+        push @{ $result->DBClusterEndpoints }, @{ $next_result->DBClusterEndpoints };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'DBClusterEndpoints') foreach (@{ $result->DBClusterEndpoints });
+        $result = $self->DescribeDBClusterEndpoints(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'DBClusterEndpoints') foreach (@{ $result->DBClusterEndpoints });
+    }
+
+    return undef
+  }
+  sub DescribeAllDBClusterParameterGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBClusterParameterGroups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBClusterParameterGroups(@_, Marker => $next_result->Marker);
+        push @{ $result->DBClusterParameterGroups }, @{ $next_result->DBClusterParameterGroups };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'DBClusterParameterGroups') foreach (@{ $result->DBClusterParameterGroups });
+        $result = $self->DescribeDBClusterParameterGroups(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'DBClusterParameterGroups') foreach (@{ $result->DBClusterParameterGroups });
+    }
+
+    return undef
+  }
+  sub DescribeAllDBClusterParameters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBClusterParameters(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBClusterParameters(@_, Marker => $next_result->Marker);
+        push @{ $result->Parameters }, @{ $next_result->Parameters };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'Parameters') foreach (@{ $result->Parameters });
+        $result = $self->DescribeDBClusterParameters(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'Parameters') foreach (@{ $result->Parameters });
+    }
+
+    return undef
+  }
   sub DescribeAllDBClusters {
     my $self = shift;
 
@@ -563,6 +758,29 @@ package Paws::RDS;
         $result = $self->DescribeDBEngineVersions(@_, Marker => $result->Marker);
       }
       $callback->($_ => 'DBEngineVersions') foreach (@{ $result->DBEngineVersions });
+    }
+
+    return undef
+  }
+  sub DescribeAllDBInstanceAutomatedBackups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBInstanceAutomatedBackups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBInstanceAutomatedBackups(@_, Marker => $next_result->Marker);
+        push @{ $result->DBInstanceAutomatedBackups }, @{ $next_result->DBInstanceAutomatedBackups };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'DBInstanceAutomatedBackups') foreach (@{ $result->DBInstanceAutomatedBackups });
+        $result = $self->DescribeDBInstanceAutomatedBackups(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'DBInstanceAutomatedBackups') foreach (@{ $result->DBInstanceAutomatedBackups });
     }
 
     return undef
@@ -728,6 +946,29 @@ package Paws::RDS;
 
     return undef
   }
+  sub DescribeAllEngineDefaultClusterParameters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeEngineDefaultClusterParameters(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->EngineDefaults->Marker) {
+        $next_result = $self->DescribeEngineDefaultClusterParameters(@_, Marker => $next_result->EngineDefaults->Marker);
+        push @{ $result->EngineDefaults->Parameters }, @{ $next_result->EngineDefaults->Parameters };
+      }
+      return $result;
+    } else {
+      while ($result->EngineDefaults->Marker) {
+        $callback->($_ => 'EngineDefaults.Parameters') foreach (@{ $result->EngineDefaults->Parameters });
+        $result = $self->DescribeEngineDefaultClusterParameters(@_, Marker => $result->EngineDefaults->Marker);
+      }
+      $callback->($_ => 'EngineDefaults.Parameters') foreach (@{ $result->EngineDefaults->Parameters });
+    }
+
+    return undef
+  }
   sub DescribeAllEngineDefaultParameters {
     my $self = shift;
 
@@ -793,6 +1034,29 @@ package Paws::RDS;
         $result = $self->DescribeEventSubscriptions(@_, Marker => $result->Marker);
       }
       $callback->($_ => 'EventSubscriptionsList') foreach (@{ $result->EventSubscriptionsList });
+    }
+
+    return undef
+  }
+  sub DescribeAllGlobalClusters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeGlobalClusters(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeGlobalClusters(@_, Marker => $next_result->Marker);
+        push @{ $result->GlobalClusters }, @{ $next_result->GlobalClusters };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'GlobalClusters') foreach (@{ $result->GlobalClusters });
+        $result = $self->DescribeGlobalClusters(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'GlobalClusters') foreach (@{ $result->GlobalClusters });
     }
 
     return undef
@@ -866,6 +1130,29 @@ package Paws::RDS;
 
     return undef
   }
+  sub DescribeAllPendingMaintenanceActions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribePendingMaintenanceActions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribePendingMaintenanceActions(@_, Marker => $next_result->Marker);
+        push @{ $result->PendingMaintenanceActions }, @{ $next_result->PendingMaintenanceActions };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'PendingMaintenanceActions') foreach (@{ $result->PendingMaintenanceActions });
+        $result = $self->DescribePendingMaintenanceActions(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'PendingMaintenanceActions') foreach (@{ $result->PendingMaintenanceActions });
+    }
+
+    return undef
+  }
   sub DescribeAllReservedDBInstances {
     my $self = shift;
 
@@ -912,6 +1199,29 @@ package Paws::RDS;
 
     return undef
   }
+  sub DescribeAllSourceRegions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeSourceRegions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeSourceRegions(@_, Marker => $next_result->Marker);
+        push @{ $result->SourceRegions }, @{ $next_result->SourceRegions };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'SourceRegions') foreach (@{ $result->SourceRegions });
+        $result = $self->DescribeSourceRegions(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'SourceRegions') foreach (@{ $result->SourceRegions });
+    }
+
+    return undef
+  }
   sub DownloadAllDBLogFilePortions {
     my $self = shift;
 
@@ -937,7 +1247,7 @@ package Paws::RDS;
   }
 
 
-  sub operations { qw/AddRoleToDBCluster AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress BacktrackDBCluster CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateDBCluster CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateOptionGroup DeleteDBCluster DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBParameterGroup DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteOptionGroup DescribeAccountAttributes DescribeCertificates DescribeDBClusterBacktracks DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DescribeSourceRegions DescribeValidDBInstanceModifications DownloadDBLogFilePortion FailoverDBCluster ListTagsForResource ModifyDBCluster ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBSnapshot ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyOptionGroup PromoteReadReplica PromoteReadReplicaDBCluster PurchaseReservedDBInstancesOffering RebootDBInstance RemoveRoleFromDBCluster RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromS3 RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceFromS3 RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress StartDBInstance StopDBInstance / }
+  sub operations { qw/AddRoleToDBCluster AddRoleToDBInstance AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress BacktrackDBCluster CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateDBCluster CreateDBClusterEndpoint CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateGlobalCluster CreateOptionGroup DeleteDBCluster DeleteDBClusterEndpoint DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBInstanceAutomatedBackup DeleteDBParameterGroup DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteGlobalCluster DeleteOptionGroup DescribeAccountAttributes DescribeCertificates DescribeDBClusterBacktracks DescribeDBClusterEndpoints DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstanceAutomatedBackups DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeGlobalClusters DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DescribeSourceRegions DescribeValidDBInstanceModifications DownloadDBLogFilePortion FailoverDBCluster ListTagsForResource ModifyCurrentDBClusterCapacity ModifyDBCluster ModifyDBClusterEndpoint ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBSnapshot ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyGlobalCluster ModifyOptionGroup PromoteReadReplica PromoteReadReplicaDBCluster PurchaseReservedDBInstancesOffering RebootDBInstance RemoveFromGlobalCluster RemoveRoleFromDBCluster RemoveRoleFromDBInstance RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromS3 RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceFromS3 RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress StartDBCluster StartDBInstance StopDBCluster StopDBInstance / }
 
 1;
 
@@ -1060,10 +1370,32 @@ Each argument is described in detail in: L<Paws::RDS::AddRoleToDBCluster>
 
 Returns: nothing
 
-Associates an Identity and Access Management (IAM) role from an Aurora
-DB cluster. For more information, see Authorizing Amazon Aurora to
-Access Other AWS Services On Your Behalf
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Authorizing.AWSServices.html).
+Associates an Identity and Access Management (IAM) role from an Amazon
+Aurora DB cluster. For more information, see Authorizing Amazon Aurora
+MySQL to Access Other AWS Services on Your Behalf
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Integrating.Authorizing.html)
+in the I<Amazon Aurora User Guide>.
+
+
+=head2 AddRoleToDBInstance
+
+=over
+
+=item DBInstanceIdentifier => Str
+
+=item FeatureName => Str
+
+=item RoleArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::AddRoleToDBInstance>
+
+Returns: nothing
+
+Associates an AWS Identity and Access Management (IAM) role with a DB
+instance.
 
 
 =head2 AddSourceIdentifierToSubscription
@@ -1194,8 +1526,8 @@ cluster.
 
 For more information on backtracking, see Backtracking an Aurora DB
 Cluster
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AuroraMySQL.Managing.Backtrack.html)
-in the I<Amazon RDS User Guide.>
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Managing.Backtrack.html)
+in the I<Amazon Aurora User Guide.>
 
 
 =head2 CopyDBClusterParameterGroup
@@ -1329,14 +1661,13 @@ DB cluster snapshot identified by C<TargetDBClusterSnapshotIdentifier>
 while that DB cluster snapshot is in "copying" status.
 
 For more information on copying encrypted DB cluster snapshots from one
-AWS Region to another, see Copying a DB Cluster Snapshot in the Same
-Account, Either in the Same Region or Across Regions
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopyDBClusterSnapshot.CrossRegion)
-in the I<Amazon RDS User Guide.>
+AWS Region to another, see Copying a Snapshot
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_CopySnapshot.html)
+in the I<Amazon Aurora User Guide.>
 
-For more information on Amazon Aurora, see Aurora on Amazon RDS
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
-in the I<Amazon RDS User Guide.>
+For more information on Amazon Aurora, see What Is Amazon Aurora?
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
+in the I<Amazon Aurora User Guide.>
 
 
 =head2 CopyDBParameterGroup
@@ -1442,11 +1773,17 @@ Copies the specified option group.
 
 =item [DBSubnetGroupName => Str]
 
+=item [DeletionProtection => Bool]
+
 =item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
 
 =item [EnableIAMDatabaseAuthentication => Bool]
 
+=item [EngineMode => Str]
+
 =item [EngineVersion => Str]
+
+=item [GlobalClusterIdentifier => Str]
 
 =item [KmsKeyId => Str]
 
@@ -1465,6 +1802,8 @@ Copies the specified option group.
 =item [PreSignedUrl => Str]
 
 =item [ReplicationSourceIdentifier => Str]
+
+=item [ScalingConfiguration => L<Paws::RDS::ScalingConfiguration>]
 
 =item [StorageEncrypted => Bool]
 
@@ -1487,9 +1826,34 @@ DB instance. For cross-region replication where the DB cluster
 identified by C<ReplicationSourceIdentifier> is encrypted, you must
 also specify the C<PreSignedUrl> parameter.
 
-For more information on Amazon Aurora, see Aurora on Amazon RDS
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
-in the I<Amazon RDS User Guide.>
+For more information on Amazon Aurora, see What Is Amazon Aurora?
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
+in the I<Amazon Aurora User Guide.>
+
+
+=head2 CreateDBClusterEndpoint
+
+=over
+
+=item DBClusterEndpointIdentifier => Str
+
+=item DBClusterIdentifier => Str
+
+=item EndpointType => Str
+
+=item [ExcludedMembers => ArrayRef[Str|Undef]]
+
+=item [StaticMembers => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::CreateDBClusterEndpoint>
+
+Returns: a L<Paws::RDS::DBClusterEndpoint> instance
+
+Creates a new custom endpoint and associates it with an Amazon Aurora
+DB cluster.
 
 
 =head2 CreateDBClusterParameterGroup
@@ -1539,9 +1903,9 @@ You can use the I<Parameter Groups> option of the Amazon RDS console
 DescribeDBClusterParameters command to verify that your DB cluster
 parameter group has been created or modified.
 
-For more information on Amazon Aurora, see Aurora on Amazon RDS
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
-in the I<Amazon RDS User Guide.>
+For more information on Amazon Aurora, see What Is Amazon Aurora?
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
+in the I<Amazon Aurora User Guide.>
 
 
 =head2 CreateDBClusterSnapshot
@@ -1562,9 +1926,9 @@ Each argument is described in detail in: L<Paws::RDS::CreateDBClusterSnapshot>
 Returns: a L<Paws::RDS::CreateDBClusterSnapshotResult> instance
 
 Creates a snapshot of a DB cluster. For more information on Amazon
-Aurora, see Aurora on Amazon RDS
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
-in the I<Amazon RDS User Guide.>
+Aurora, see What Is Amazon Aurora?
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
+in the I<Amazon Aurora User Guide.>
 
 
 =head2 CreateDBInstance
@@ -1599,6 +1963,8 @@ in the I<Amazon RDS User Guide.>
 
 =item [DBSubnetGroupName => Str]
 
+=item [DeletionProtection => Bool]
+
 =item [Domain => Str]
 
 =item [DomainIAMRoleName => Str]
@@ -1630,6 +1996,8 @@ in the I<Amazon RDS User Guide.>
 =item [OptionGroupName => Str]
 
 =item [PerformanceInsightsKMSKeyId => Str]
+
+=item [PerformanceInsightsRetentionPeriod => Int]
 
 =item [Port => Int]
 
@@ -1685,6 +2053,8 @@ Creates a new DB instance.
 
 =item [DBSubnetGroupName => Str]
 
+=item [DeletionProtection => Bool]
+
 =item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
 
 =item [EnableIAMDatabaseAuthentication => Bool]
@@ -1705,6 +2075,8 @@ Creates a new DB instance.
 
 =item [PerformanceInsightsKMSKeyId => Str]
 
+=item [PerformanceInsightsRetentionPeriod => Int]
+
 =item [Port => Int]
 
 =item [PreSignedUrl => Str]
@@ -1719,6 +2091,8 @@ Creates a new DB instance.
 
 =item [UseDefaultProcessorFeatures => Bool]
 
+=item [VpcSecurityGroupIds => ArrayRef[Str|Undef]]
+
 
 =back
 
@@ -1730,7 +2104,8 @@ Creates a new DB instance that acts as a Read Replica for an existing
 source DB instance. You can create a Read Replica for a DB instance
 running MySQL, MariaDB, or PostgreSQL. For more information, see
 Working with PostgreSQL, MySQL, and MariaDB Read Replicas
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html)
+in the I<Amazon RDS User Guide>.
 
 Amazon Aurora doesn't support this action. You must call the
 C<CreateDBInstance> action to create a DB instance for an Aurora DB
@@ -1905,6 +2280,43 @@ notified of events generated from all RDS sources belonging to your
 customer account.
 
 
+=head2 CreateGlobalCluster
+
+=over
+
+=item [DatabaseName => Str]
+
+=item [DeletionProtection => Bool]
+
+=item [Engine => Str]
+
+=item [EngineVersion => Str]
+
+=item [GlobalClusterIdentifier => Str]
+
+=item [SourceDBClusterIdentifier => Str]
+
+=item [StorageEncrypted => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::CreateGlobalCluster>
+
+Returns: a L<Paws::RDS::CreateGlobalClusterResult> instance
+
+Creates an Aurora global database spread across multiple regions. The
+global database contains a single primary cluster with read-write
+capability, and a read-only secondary cluster that receives data from
+the primary cluster through high-speed replication performed by the
+Aurora storage subsystem.
+
+You can create a global database that is initially empty, and then add
+a primary cluster and a secondary cluster to it. Or you can specify an
+existing Aurora cluster during the create operation, and this cluster
+becomes the primary cluster of the global database.
+
+
 =head2 CreateOptionGroup
 
 =over
@@ -1951,9 +2363,26 @@ When you delete a DB cluster, all automated backups for that DB cluster
 are deleted and can't be recovered. Manual DB cluster snapshots of the
 specified DB cluster are not deleted.
 
-For more information on Amazon Aurora, see Aurora on Amazon RDS
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
-in the I<Amazon RDS User Guide.>
+For more information on Amazon Aurora, see What Is Amazon Aurora?
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
+in the I<Amazon Aurora User Guide.>
+
+
+=head2 DeleteDBClusterEndpoint
+
+=over
+
+=item DBClusterEndpointIdentifier => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::DeleteDBClusterEndpoint>
+
+Returns: a L<Paws::RDS::DBClusterEndpoint> instance
+
+Deletes a custom endpoint and removes it from an Amazon Aurora DB
+cluster.
 
 
 =head2 DeleteDBClusterParameterGroup
@@ -1972,9 +2401,9 @@ Returns: nothing
 Deletes a specified DB cluster parameter group. The DB cluster
 parameter group to be deleted can't be associated with any DB clusters.
 
-For more information on Amazon Aurora, see Aurora on Amazon RDS
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
-in the I<Amazon RDS User Guide.>
+For more information on Amazon Aurora, see What Is Amazon Aurora?
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
+in the I<Amazon Aurora User Guide.>
 
 
 =head2 DeleteDBClusterSnapshot
@@ -1996,9 +2425,9 @@ copy operation is terminated.
 The DB cluster snapshot must be in the C<available> state to be
 deleted.
 
-For more information on Amazon Aurora, see Aurora on Amazon RDS
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
-in the I<Amazon RDS User Guide.>
+For more information on Amazon Aurora, see What Is Amazon Aurora?
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
+in the I<Amazon Aurora User Guide.>
 
 
 =head2 DeleteDBInstance
@@ -2006,6 +2435,8 @@ in the I<Amazon RDS User Guide.>
 =over
 
 =item DBInstanceIdentifier => Str
+
+=item [DeleteAutomatedBackups => Bool]
 
 =item [FinalDBSnapshotIdentifier => Str]
 
@@ -2056,6 +2487,23 @@ the C<DeleteDBInstance> API action to delete the final instance in the
 DB cluster.
 
 
+=head2 DeleteDBInstanceAutomatedBackup
+
+=over
+
+=item DbiResourceId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::DeleteDBInstanceAutomatedBackup>
+
+Returns: a L<Paws::RDS::DeleteDBInstanceAutomatedBackupResult> instance
+
+Deletes automated backups based on the source instance's
+C<DbiResourceId> value or the restorable instance's resource ID.
+
+
 =head2 DeleteDBParameterGroup
 
 =over
@@ -2069,7 +2517,7 @@ Each argument is described in detail in: L<Paws::RDS::DeleteDBParameterGroup>
 
 Returns: nothing
 
-Deletes a specified DBParameterGroup. The DBParameterGroup to be
+Deletes a specified DB parameter group. The DB parameter group to be
 deleted can't be associated with any DB instances.
 
 
@@ -2105,10 +2553,10 @@ Each argument is described in detail in: L<Paws::RDS::DeleteDBSnapshot>
 
 Returns: a L<Paws::RDS::DeleteDBSnapshotResult> instance
 
-Deletes a DBSnapshot. If the snapshot is being copied, the copy
+Deletes a DB snapshot. If the snapshot is being copied, the copy
 operation is terminated.
 
-The DBSnapshot must be in the C<available> state to be deleted.
+The DB snapshot must be in the C<available> state to be deleted.
 
 
 =head2 DeleteDBSubnetGroup
@@ -2144,6 +2592,23 @@ Each argument is described in detail in: L<Paws::RDS::DeleteEventSubscription>
 Returns: a L<Paws::RDS::DeleteEventSubscriptionResult> instance
 
 Deletes an RDS event notification subscription.
+
+
+=head2 DeleteGlobalCluster
+
+=over
+
+=item GlobalClusterIdentifier => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::DeleteGlobalCluster>
+
+Returns: a L<Paws::RDS::DeleteGlobalClusterResult> instance
+
+Deletes a global database cluster. The primary and secondary clusters
+must already be detached or destroyed first.
 
 
 =head2 DeleteOptionGroup
@@ -2227,9 +2692,33 @@ Returns: a L<Paws::RDS::DBClusterBacktrackMessage> instance
 
 Returns information about backtracks for a DB cluster.
 
-For more information on Amazon Aurora, see Aurora on Amazon RDS
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
-in the I<Amazon RDS User Guide.>
+For more information on Amazon Aurora, see What Is Amazon Aurora?
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
+in the I<Amazon Aurora User Guide.>
+
+
+=head2 DescribeDBClusterEndpoints
+
+=over
+
+=item [DBClusterEndpointIdentifier => Str]
+
+=item [DBClusterIdentifier => Str]
+
+=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::DescribeDBClusterEndpoints>
+
+Returns: a L<Paws::RDS::DBClusterEndpointMessage> instance
+
+Returns information about endpoints for an Amazon Aurora DB cluster.
 
 
 =head2 DescribeDBClusterParameterGroups
@@ -2256,9 +2745,9 @@ C<DBClusterParameterGroupName> parameter is specified, the list will
 contain only the description of the specified DB cluster parameter
 group.
 
-For more information on Amazon Aurora, see Aurora on Amazon RDS
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
-in the I<Amazon RDS User Guide.>
+For more information on Amazon Aurora, see What Is Amazon Aurora?
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
+in the I<Amazon Aurora User Guide.>
 
 
 =head2 DescribeDBClusterParameters
@@ -2285,9 +2774,9 @@ Returns: a L<Paws::RDS::DBClusterParameterGroupDetails> instance
 Returns the detailed parameter list for a particular DB cluster
 parameter group.
 
-For more information on Amazon Aurora, see Aurora on Amazon RDS
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
-in the I<Amazon RDS User Guide.>
+For more information on Amazon Aurora, see What Is Amazon Aurora?
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
+in the I<Amazon Aurora User Guide.>
 
 
 =head2 DescribeDBClusters
@@ -2312,9 +2801,9 @@ Returns: a L<Paws::RDS::DBClusterMessage> instance
 Returns information about provisioned Aurora DB clusters. This API
 supports pagination.
 
-For more information on Amazon Aurora, see Aurora on Amazon RDS
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
-in the I<Amazon RDS User Guide.>
+For more information on Amazon Aurora, see What Is Amazon Aurora?
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
+in the I<Amazon Aurora User Guide.>
 
 
 =head2 DescribeDBClusterSnapshotAttributes
@@ -2375,9 +2864,9 @@ Returns: a L<Paws::RDS::DBClusterSnapshotMessage> instance
 Returns information about DB cluster snapshots. This API action
 supports pagination.
 
-For more information on Amazon Aurora, see Aurora on Amazon RDS
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
-in the I<Amazon RDS User Guide.>
+For more information on Amazon Aurora, see What Is Amazon Aurora?
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
+in the I<Amazon Aurora User Guide.>
 
 
 =head2 DescribeDBEngineVersions
@@ -2410,6 +2899,37 @@ Each argument is described in detail in: L<Paws::RDS::DescribeDBEngineVersions>
 Returns: a L<Paws::RDS::DBEngineVersionMessage> instance
 
 Returns a list of the available DB engines.
+
+
+=head2 DescribeDBInstanceAutomatedBackups
+
+=over
+
+=item [DBInstanceIdentifier => Str]
+
+=item [DbiResourceId => Str]
+
+=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::DescribeDBInstanceAutomatedBackups>
+
+Returns: a L<Paws::RDS::DBInstanceAutomatedBackupMessage> instance
+
+Displays backups for both current and deleted instances. For example,
+use this operation to find details about automated backups for
+previously deleted instances. Current instances with retention periods
+greater than zero (0) are returned for both the
+C<DescribeDBInstanceAutomatedBackups> and C<DescribeDBInstances>
+operations.
+
+All parameters are optional.
 
 
 =head2 DescribeDBInstances
@@ -2570,6 +3090,8 @@ the ModifyDBSnapshotAttribute API action.
 
 =item [DBInstanceIdentifier => Str]
 
+=item [DbiResourceId => Str]
+
 =item [DBSnapshotIdentifier => Str]
 
 =item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
@@ -2644,9 +3166,9 @@ Returns: a L<Paws::RDS::DescribeEngineDefaultClusterParametersResult> instance
 Returns the default engine and system parameter information for the
 cluster database engine.
 
-For more information on Amazon Aurora, see Aurora on Amazon RDS
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
-in the I<Amazon RDS User Guide.>
+For more information on Amazon Aurora, see What Is Amazon Aurora?
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
+in the I<Amazon Aurora User Guide.>
 
 
 =head2 DescribeEngineDefaultParameters
@@ -2755,6 +3277,33 @@ CustomerID, SourceType, SourceID, CreationTime, and Status.
 
 If you specify a SubscriptionName, lists the description for that
 subscription.
+
+
+=head2 DescribeGlobalClusters
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+
+=item [GlobalClusterIdentifier => Str]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::DescribeGlobalClusters>
+
+Returns: a L<Paws::RDS::GlobalClustersMessage> instance
+
+Returns information about Aurora global database clusters. This API
+supports pagination.
+
+For more information on Amazon Aurora, see What Is Amazon Aurora?
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
+in the I<Amazon Aurora User Guide.>
 
 
 =head2 DescribeOptionGroupOptions
@@ -2997,7 +3546,7 @@ size.
 
 =over
 
-=item [DBClusterIdentifier => Str]
+=item DBClusterIdentifier => Str
 
 =item [TargetDBInstanceIdentifier => Str]
 
@@ -3021,9 +3570,9 @@ Because each instance in a DB cluster has its own endpoint address, you
 will need to clean up and re-establish any existing connections that
 use those endpoint addresses when the failover is complete.
 
-For more information on Amazon Aurora, see Aurora on Amazon RDS
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
-in the I<Amazon RDS User Guide.>
+For more information on Amazon Aurora, see What Is Amazon Aurora?
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
+in the I<Amazon Aurora User Guide.>
 
 
 =head2 ListTagsForResource
@@ -3045,7 +3594,53 @@ Lists all tags on an Amazon RDS resource.
 
 For an overview on tagging an Amazon RDS resource, see Tagging Amazon
 RDS Resources
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html)
+in the I<Amazon RDS User Guide>.
+
+
+=head2 ModifyCurrentDBClusterCapacity
+
+=over
+
+=item DBClusterIdentifier => Str
+
+=item [Capacity => Int]
+
+=item [SecondsBeforeTimeout => Int]
+
+=item [TimeoutAction => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::ModifyCurrentDBClusterCapacity>
+
+Returns: a L<Paws::RDS::DBClusterCapacityInfo> instance
+
+Set the capacity of an Aurora Serverless DB cluster to a specific
+value.
+
+Aurora Serverless scales seamlessly based on the workload on the DB
+cluster. In some cases, the capacity might not scale fast enough to
+meet a sudden change in workload, such as a large number of new
+transactions. Call C<ModifyCurrentDBClusterCapacity> to set the
+capacity explicitly.
+
+After this call sets the DB cluster capacity, Aurora Serverless can
+automatically scale the DB cluster based on the cooldown period for
+scaling up and the cooldown period for scaling down.
+
+For more information about Aurora Serverless, see Using Amazon Aurora
+Serverless
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html)
+in the I<Amazon Aurora User Guide>.
+
+If you call C<ModifyCurrentDBClusterCapacity> with the default
+C<TimeoutAction>, connections that prevent Aurora Serverless from
+finding a scaling point might be dropped. For more information about
+scaling points, see Autoscaling for Aurora Serverless
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.how-it-works.html#aurora-serverless.how-it-works.auto-scaling)
+in the I<Amazon Aurora User Guide>.
 
 
 =head2 ModifyDBCluster
@@ -3064,6 +3659,10 @@ RDS Resources
 
 =item [DBClusterParameterGroupName => Str]
 
+=item [DeletionProtection => Bool]
+
+=item [EnableHttpEndpoint => Bool]
+
 =item [EnableIAMDatabaseAuthentication => Bool]
 
 =item [EngineVersion => Str]
@@ -3080,6 +3679,8 @@ RDS Resources
 
 =item [PreferredMaintenanceWindow => Str]
 
+=item [ScalingConfiguration => L<Paws::RDS::ScalingConfiguration>]
+
 =item [VpcSecurityGroupIds => ArrayRef[Str|Undef]]
 
 
@@ -3092,9 +3693,31 @@ Returns: a L<Paws::RDS::ModifyDBClusterResult> instance
 Modify a setting for an Amazon Aurora DB cluster. You can change one or
 more database configuration parameters by specifying these parameters
 and the new values in the request. For more information on Amazon
-Aurora, see Aurora on Amazon RDS
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
-in the I<Amazon RDS User Guide.>
+Aurora, see What Is Amazon Aurora?
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
+in the I<Amazon Aurora User Guide.>
+
+
+=head2 ModifyDBClusterEndpoint
+
+=over
+
+=item DBClusterEndpointIdentifier => Str
+
+=item [EndpointType => Str]
+
+=item [ExcludedMembers => ArrayRef[Str|Undef]]
+
+=item [StaticMembers => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::ModifyDBClusterEndpoint>
+
+Returns: a L<Paws::RDS::DBClusterEndpoint> instance
+
+Modifies the properties of an endpoint in an Amazon Aurora DB cluster.
 
 
 =head2 ModifyDBClusterParameterGroup
@@ -3117,9 +3740,9 @@ than one parameter, submit a list of the following: C<ParameterName>,
 C<ParameterValue>, and C<ApplyMethod>. A maximum of 20 parameters can
 be modified in a single request.
 
-For more information on Amazon Aurora, see Aurora on Amazon RDS
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
-in the I<Amazon RDS User Guide.>
+For more information on Amazon Aurora, see What Is Amazon Aurora?
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
+in the I<Amazon Aurora User Guide.>
 
 Changes to dynamic parameters are applied immediately. Changes to
 static parameters require a reboot without failover to the DB cluster
@@ -3210,6 +3833,8 @@ private, use the DescribeDBClusterSnapshotAttributes API action.
 
 =item [DBSubnetGroupName => Str]
 
+=item [DeletionProtection => Bool]
+
 =item [Domain => Str]
 
 =item [DomainIAMRoleName => Str]
@@ -3237,6 +3862,8 @@ private, use the DescribeDBClusterSnapshotAttributes API action.
 =item [OptionGroupName => Str]
 
 =item [PerformanceInsightsKMSKeyId => Str]
+
+=item [PerformanceInsightsRetentionPeriod => Int]
 
 =item [PreferredBackupWindow => Str]
 
@@ -3423,8 +4050,33 @@ RemoveSourceIdentifierFromSubscription calls.
 You can see a list of the event categories for a given SourceType in
 the Events
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html)
-topic in the Amazon RDS User Guide or by using the
+topic in the I<Amazon RDS User Guide> or by using the
 B<DescribeEventCategories> action.
+
+
+=head2 ModifyGlobalCluster
+
+=over
+
+=item [DeletionProtection => Bool]
+
+=item [GlobalClusterIdentifier => Str]
+
+=item [NewGlobalClusterIdentifier => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::ModifyGlobalCluster>
+
+Returns: a L<Paws::RDS::ModifyGlobalClusterResult> instance
+
+Modify a setting for an Amazon Aurora global cluster. You can change
+one or more database configuration parameters by specifying these
+parameters and the new values in the request. For more information on
+Amazon Aurora, see What Is Amazon Aurora?
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
+in the I<Amazon Aurora User Guide.>
 
 
 =head2 ModifyOptionGroup
@@ -3552,7 +4204,29 @@ a DB instance results in a momentary outage, during which the DB
 instance status is set to rebooting.
 
 For more information about rebooting, see Rebooting a DB Instance
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_RebootInstance.html).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_RebootInstance.html)
+in the I<Amazon RDS User Guide.>
+
+
+=head2 RemoveFromGlobalCluster
+
+=over
+
+=item [DbClusterIdentifier => Str]
+
+=item [GlobalClusterIdentifier => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::RemoveFromGlobalCluster>
+
+Returns: a L<Paws::RDS::RemoveFromGlobalClusterResult> instance
+
+Detaches an Aurora secondary cluster from an Aurora global database
+cluster. The cluster becomes a standalone cluster with read-write
+capability instead of being read-only and receiving data from a primary
+cluster in a different region.
 
 
 =head2 RemoveRoleFromDBCluster
@@ -3570,10 +4244,32 @@ Each argument is described in detail in: L<Paws::RDS::RemoveRoleFromDBCluster>
 
 Returns: nothing
 
-Disassociates an Identity and Access Management (IAM) role from an
-Aurora DB cluster. For more information, see Authorizing Amazon Aurora
-to Access Other AWS Services On Your Behalf
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Authorizing.AWSServices.html).
+Disassociates an AWS Identity and Access Management (IAM) role from an
+Amazon Aurora DB cluster. For more information, see Authorizing Amazon
+Aurora MySQL to Access Other AWS Services on Your Behalf
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Integrating.Authorizing.html)
+in the I<Amazon Aurora User Guide>.
+
+
+=head2 RemoveRoleFromDBInstance
+
+=over
+
+=item DBInstanceIdentifier => Str
+
+=item FeatureName => Str
+
+=item RoleArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::RemoveRoleFromDBInstance>
+
+Returns: nothing
+
+Disassociates an AWS Identity and Access Management (IAM) role from a
+DB instance.
 
 
 =head2 RemoveSourceIdentifierFromSubscription
@@ -3614,7 +4310,8 @@ Removes metadata tags from an Amazon RDS resource.
 
 For an overview on tagging an Amazon RDS resource, see Tagging Amazon
 RDS Resources
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html)
+in the I<Amazon RDS User Guide.>
 
 
 =head2 ResetDBClusterParameterGroup
@@ -3646,9 +4343,9 @@ effect on the next DB instance restart or RebootDBInstance request. You
 must call RebootDBInstance for every DB instance in your DB cluster
 that you want the updated static parameter to apply to.
 
-For more information on Amazon Aurora, see Aurora on Amazon RDS
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
-in the I<Amazon RDS User Guide.>
+For more information on Amazon Aurora, see What Is Amazon Aurora?
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
+in the I<Amazon Aurora User Guide.>
 
 
 =head2 ResetDBParameterGroup
@@ -3712,6 +4409,8 @@ or C<RebootDBInstance> request.
 
 =item [DBSubnetGroupName => Str]
 
+=item [DeletionProtection => Bool]
+
 =item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
 
 =item [EnableIAMDatabaseAuthentication => Bool]
@@ -3746,8 +4445,9 @@ Returns: a L<Paws::RDS::RestoreDBClusterFromS3Result> instance
 Creates an Amazon Aurora DB cluster from data stored in an Amazon S3
 bucket. Amazon RDS must be authorized to access the Amazon S3 bucket
 and the data must be created using the Percona XtraBackup utility as
-described in Migrating Data from MySQL by Using an Amazon S3 Bucket
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Migrate.MySQL.html#Aurora.Migrate.MySQL.S3).
+described in Migrating Data to an Amazon Aurora MySQL DB Cluster
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Migrating.html)
+in the I<Amazon Aurora User Guide>.
 
 
 =head2 RestoreDBClusterFromSnapshot
@@ -3766,11 +4466,17 @@ described in Migrating Data from MySQL by Using an Amazon S3 Bucket
 
 =item [DatabaseName => Str]
 
+=item [DBClusterParameterGroupName => Str]
+
 =item [DBSubnetGroupName => Str]
+
+=item [DeletionProtection => Bool]
 
 =item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
 
 =item [EnableIAMDatabaseAuthentication => Bool]
+
+=item [EngineMode => Str]
 
 =item [EngineVersion => Str]
 
@@ -3779,6 +4485,8 @@ described in Migrating Data from MySQL by Using an Amazon S3 Bucket
 =item [OptionGroupName => Str]
 
 =item [Port => Int]
+
+=item [ScalingConfiguration => L<Paws::RDS::ScalingConfiguration>]
 
 =item [Tags => ArrayRef[L<Paws::RDS::Tag>]]
 
@@ -3802,9 +4510,9 @@ from the source DB cluster restore point with the same configuration as
 the original source DB cluster, except that the new DB cluster is
 created with the default security group.
 
-For more information on Amazon Aurora, see Aurora on Amazon RDS
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
-in the I<Amazon RDS User Guide.>
+For more information on Amazon Aurora, see What Is Amazon Aurora?
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
+in the I<Amazon Aurora User Guide.>
 
 
 =head2 RestoreDBClusterToPointInTime
@@ -3817,7 +4525,11 @@ in the I<Amazon RDS User Guide.>
 
 =item [BacktrackWindow => Int]
 
+=item [DBClusterParameterGroupName => Str]
+
 =item [DBSubnetGroupName => Str]
+
+=item [DeletionProtection => Bool]
 
 =item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
 
@@ -3860,9 +4572,9 @@ restored DB cluster in C<DBClusterIdentifier>. You can create DB
 instances only after the C<RestoreDBClusterToPointInTime> action has
 completed and the DB cluster is available.
 
-For more information on Amazon Aurora, see Aurora on Amazon RDS
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
-in the I<Amazon RDS User Guide.>
+For more information on Amazon Aurora, see What Is Amazon Aurora?
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
+in the I<Amazon Aurora User Guide.>
 
 
 =head2 RestoreDBInstanceFromDBSnapshot
@@ -3883,7 +4595,11 @@ in the I<Amazon RDS User Guide.>
 
 =item [DBName => Str]
 
+=item [DBParameterGroupName => Str]
+
 =item [DBSubnetGroupName => Str]
+
+=item [DeletionProtection => Bool]
 
 =item [Domain => Str]
 
@@ -3918,6 +4634,8 @@ in the I<Amazon RDS User Guide.>
 =item [TdeCredentialPassword => Str]
 
 =item [UseDefaultProcessorFeatures => Bool]
+
+=item [VpcSecurityGroupIds => ArrayRef[Str|Undef]]
 
 
 =back
@@ -3988,6 +4706,8 @@ Aurora, use RestoreDBClusterFromSnapshot.
 
 =item [DBSubnetGroupName => Str]
 
+=item [DeletionProtection => Bool]
+
 =item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
 
 =item [EnableIAMDatabaseAuthentication => Bool]
@@ -4015,6 +4735,8 @@ Aurora, use RestoreDBClusterFromSnapshot.
 =item [OptionGroupName => Str]
 
 =item [PerformanceInsightsKMSKeyId => Str]
+
+=item [PerformanceInsightsRetentionPeriod => Int]
 
 =item [Port => Int]
 
@@ -4051,14 +4773,13 @@ on-premises database, store it on Amazon Simple Storage Service (Amazon
 S3), and then restore the backup file onto a new Amazon RDS DB instance
 running MySQL. For more information, see Importing Data into an Amazon
 RDS MySQL DB Instance
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Procedural.Importing.html).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Procedural.Importing.html)
+in the I<Amazon RDS User Guide.>
 
 
 =head2 RestoreDBInstanceToPointInTime
 
 =over
-
-=item SourceDBInstanceIdentifier => Str
 
 =item TargetDBInstanceIdentifier => Str
 
@@ -4072,7 +4793,11 @@ RDS MySQL DB Instance
 
 =item [DBName => Str]
 
+=item [DBParameterGroupName => Str]
+
 =item [DBSubnetGroupName => Str]
+
+=item [DeletionProtection => Bool]
 
 =item [Domain => Str]
 
@@ -4100,6 +4825,10 @@ RDS MySQL DB Instance
 
 =item [RestoreTime => Str]
 
+=item [SourceDBInstanceIdentifier => Str]
+
+=item [SourceDbiResourceId => Str]
+
 =item [StorageType => Str]
 
 =item [Tags => ArrayRef[L<Paws::RDS::Tag>]]
@@ -4111,6 +4840,8 @@ RDS MySQL DB Instance
 =item [UseDefaultProcessorFeatures => Bool]
 
 =item [UseLatestRestorableTime => Bool]
+
+=item [VpcSecurityGroupIds => ArrayRef[Str|Undef]]
 
 
 =back
@@ -4164,6 +4895,28 @@ are one of CIDRIP, EC2SecurityGroupId for VPC, or
 EC2SecurityGroupId).
 
 
+=head2 StartDBCluster
+
+=over
+
+=item DBClusterIdentifier => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::StartDBCluster>
+
+Returns: a L<Paws::RDS::StartDBClusterResult> instance
+
+Starts an Amazon Aurora DB cluster that was stopped using the AWS
+console, the stop-db-cluster AWS CLI command, or the StopDBCluster
+action.
+
+For more information, see Stopping and Starting an Aurora Cluster
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-cluster-stop-start.html)
+in the I<Amazon Aurora User Guide.>
+
+
 =head2 StartDBInstance
 
 =over
@@ -4177,12 +4930,40 @@ Each argument is described in detail in: L<Paws::RDS::StartDBInstance>
 
 Returns: a L<Paws::RDS::StartDBInstanceResult> instance
 
-Starts a DB instance that was stopped using the AWS console, the
-stop-db-instance AWS CLI command, or the StopDBInstance action. For
-more information, see Stopping and Starting a DB instance in the AWS
-RDS user guide.
+Starts an Amazon RDS DB instance that was stopped using the AWS
+console, the stop-db-instance AWS CLI command, or the StopDBInstance
+action.
 
-This command doesn't apply to Aurora MySQL and Aurora PostgreSQL.
+For more information, see Starting an Amazon RDS DB instance That Was
+Previously Stopped
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_StartInstance.html)
+in the I<Amazon RDS User Guide.>
+
+This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
+Aurora DB clusters, use StartDBCluster instead.
+
+
+=head2 StopDBCluster
+
+=over
+
+=item DBClusterIdentifier => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::StopDBCluster>
+
+Returns: a L<Paws::RDS::StopDBClusterResult> instance
+
+Stops an Amazon Aurora DB cluster. When you stop a DB cluster, Aurora
+retains the DB cluster's metadata, including its endpoints and DB
+parameter groups. Aurora also retains the transaction logs so you can
+do a point-in-time restore if necessary.
+
+For more information, see Stopping and Starting an Aurora Cluster
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-cluster-stop-start.html)
+in the I<Amazon Aurora User Guide.>
 
 
 =head2 StopDBInstance
@@ -4200,14 +4981,19 @@ Each argument is described in detail in: L<Paws::RDS::StopDBInstance>
 
 Returns: a L<Paws::RDS::StopDBInstanceResult> instance
 
-Stops a DB instance. When you stop a DB instance, Amazon RDS retains
-the DB instance's metadata, including its endpoint, DB parameter group,
-and option group membership. Amazon RDS also retains the transaction
-logs so you can do a point-in-time restore if necessary. For more
-information, see Stopping and Starting a DB instance in the AWS RDS
-user guide.
+Stops an Amazon RDS DB instance. When you stop a DB instance, Amazon
+RDS retains the DB instance's metadata, including its endpoint, DB
+parameter group, and option group membership. Amazon RDS also retains
+the transaction logs so you can do a point-in-time restore if
+necessary.
 
-This command doesn't apply to Aurora MySQL and Aurora PostgreSQL.
+For more information, see Stopping an Amazon RDS DB Instance
+Temporarily
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_StopInstance.html)
+in the I<Amazon RDS User Guide.>
+
+This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
+Aurora clusters, use StopDBCluster instead.
 
 
 
@@ -4215,6 +5001,66 @@ This command doesn't apply to Aurora MySQL and Aurora PostgreSQL.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllCertificates(sub { },[CertificateIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllCertificates([CertificateIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Certificates, passing the object as the first parameter, and the string 'Certificates' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::CertificateMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllDBClusterBacktracks(sub { },DBClusterIdentifier => Str, [BacktrackIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllDBClusterBacktracks(DBClusterIdentifier => Str, [BacktrackIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DBClusterBacktracks, passing the object as the first parameter, and the string 'DBClusterBacktracks' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::DBClusterBacktrackMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllDBClusterEndpoints(sub { },[DBClusterEndpointIdentifier => Str, DBClusterIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllDBClusterEndpoints([DBClusterEndpointIdentifier => Str, DBClusterIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DBClusterEndpoints, passing the object as the first parameter, and the string 'DBClusterEndpoints' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::DBClusterEndpointMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllDBClusterParameterGroups(sub { },[DBClusterParameterGroupName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllDBClusterParameterGroups([DBClusterParameterGroupName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DBClusterParameterGroups, passing the object as the first parameter, and the string 'DBClusterParameterGroups' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::DBClusterParameterGroupsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllDBClusterParameters(sub { },DBClusterParameterGroupName => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, Source => Str])
+
+=head2 DescribeAllDBClusterParameters(DBClusterParameterGroupName => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, Source => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Parameters, passing the object as the first parameter, and the string 'Parameters' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::DBClusterParameterGroupDetails> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 =head2 DescribeAllDBClusters(sub { },[DBClusterIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
 
@@ -4250,6 +5096,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - DBEngineVersions, passing the object as the first parameter, and the string 'DBEngineVersions' as the second parameter 
 
 If not, it will return a a L<Paws::RDS::DBEngineVersionMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllDBInstanceAutomatedBackups(sub { },[DBInstanceIdentifier => Str, DbiResourceId => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllDBInstanceAutomatedBackups([DBInstanceIdentifier => Str, DbiResourceId => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DBInstanceAutomatedBackups, passing the object as the first parameter, and the string 'DBInstanceAutomatedBackups' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::DBInstanceAutomatedBackupMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DescribeAllDBInstances(sub { },[DBInstanceIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
@@ -4312,9 +5170,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::DBSecurityGroupMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllDBSnapshots(sub { },[DBInstanceIdentifier => Str, DBSnapshotIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], IncludePublic => Bool, IncludeShared => Bool, Marker => Str, MaxRecords => Int, SnapshotType => Str])
+=head2 DescribeAllDBSnapshots(sub { },[DBInstanceIdentifier => Str, DbiResourceId => Str, DBSnapshotIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], IncludePublic => Bool, IncludeShared => Bool, Marker => Str, MaxRecords => Int, SnapshotType => Str])
 
-=head2 DescribeAllDBSnapshots([DBInstanceIdentifier => Str, DBSnapshotIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], IncludePublic => Bool, IncludeShared => Bool, Marker => Str, MaxRecords => Int, SnapshotType => Str])
+=head2 DescribeAllDBSnapshots([DBInstanceIdentifier => Str, DbiResourceId => Str, DBSnapshotIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], IncludePublic => Bool, IncludeShared => Bool, Marker => Str, MaxRecords => Int, SnapshotType => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -4334,6 +5192,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - DBSubnetGroups, passing the object as the first parameter, and the string 'DBSubnetGroups' as the second parameter 
 
 If not, it will return a a L<Paws::RDS::DBSubnetGroupMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllEngineDefaultClusterParameters(sub { },DBParameterGroupFamily => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllEngineDefaultClusterParameters(DBParameterGroupFamily => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - EngineDefaults.Parameters, passing the object as the first parameter, and the string 'EngineDefaults.Parameters' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::DescribeEngineDefaultClusterParametersResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DescribeAllEngineDefaultParameters(sub { },DBParameterGroupFamily => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
@@ -4372,6 +5242,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::EventSubscriptionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 DescribeAllGlobalClusters(sub { },[Filters => ArrayRef[L<Paws::RDS::Filter>], GlobalClusterIdentifier => Str, Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllGlobalClusters([Filters => ArrayRef[L<Paws::RDS::Filter>], GlobalClusterIdentifier => Str, Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - GlobalClusters, passing the object as the first parameter, and the string 'GlobalClusters' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::GlobalClustersMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllOptionGroupOptions(sub { },EngineName => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], MajorEngineVersion => Str, Marker => Str, MaxRecords => Int])
 
 =head2 DescribeAllOptionGroupOptions(EngineName => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], MajorEngineVersion => Str, Marker => Str, MaxRecords => Int])
@@ -4408,6 +5290,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::OrderableDBInstanceOptionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 DescribeAllPendingMaintenanceActions(sub { },[Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, ResourceIdentifier => Str])
+
+=head2 DescribeAllPendingMaintenanceActions([Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, ResourceIdentifier => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PendingMaintenanceActions, passing the object as the first parameter, and the string 'PendingMaintenanceActions' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::PendingMaintenanceActionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllReservedDBInstances(sub { },[DBInstanceClass => Str, Duration => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, MultiAZ => Bool, OfferingType => Str, ProductDescription => Str, ReservedDBInstanceId => Str, ReservedDBInstancesOfferingId => Str])
 
 =head2 DescribeAllReservedDBInstances([DBInstanceClass => Str, Duration => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, MultiAZ => Bool, OfferingType => Str, ProductDescription => Str, ReservedDBInstanceId => Str, ReservedDBInstancesOfferingId => Str])
@@ -4430,6 +5324,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - ReservedDBInstancesOfferings, passing the object as the first parameter, and the string 'ReservedDBInstancesOfferings' as the second parameter 
 
 If not, it will return a a L<Paws::RDS::ReservedDBInstancesOfferingMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllSourceRegions(sub { },[Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, RegionName => Str])
+
+=head2 DescribeAllSourceRegions([Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, RegionName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SourceRegions, passing the object as the first parameter, and the string 'SourceRegions' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::SourceRegionMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DownloadAllDBLogFilePortions(sub { },DBInstanceIdentifier => Str, LogFileName => Str, [Marker => Str, NumberOfLines => Int])

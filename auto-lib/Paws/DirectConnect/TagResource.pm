@@ -32,8 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ResourceArn => 'MyResourceArn',
       Tags        => [
         {
-          key   => 'MyTagKey',      # min: 1, max: 128
-          value => 'MyTagValue',    # max: 256; OPTIONAL
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256; OPTIONAL
         },
         ...
       ],
@@ -48,16 +48,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-The Amazon Resource Name (ARN) of the Direct Connect resource.
-
-Example:
-arn:aws:directconnect:us-east-1:123456789012:dxcon/dxcon-fg5678gh
+The Amazon Resource Name (ARN) of the resource.
 
 
 
 =head2 B<REQUIRED> Tags => ArrayRef[L<Paws::DirectConnect::Tag>]
 
-The list of tags to add.
+The tags to add.
 
 
 

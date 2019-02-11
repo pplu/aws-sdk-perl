@@ -45,7 +45,9 @@ unique within each batch sent.
 
 =head2 B<REQUIRED> Payload => Str
 
-  The payload of the message.
+  The payload of the message. This may be a JSON string or a
+Base64-encoded string representing binary data (in which case you must
+decode it by means of a pipeline activity).
 
 
 

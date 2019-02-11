@@ -47,10 +47,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/aut
 
 =head2 B<REQUIRED> HealthStatus => Str
 
-The health status of the instance. Set to C<Healthy> if you want the
-instance to remain in service. Set to C<Unhealthy> if you want the
-instance to be out of service. Auto Scaling will terminate and replace
-the unhealthy instance.
+The health status of the instance. Set to C<Healthy> to have the
+instance remain in service. Set to C<Unhealthy> to have the instance be
+out of service. Amazon EC2 Auto Scaling terminates and replaces the
+unhealthy instance.
 
 
 
@@ -64,11 +64,11 @@ The ID of the instance.
 
 If the Auto Scaling group of the specified instance has a
 C<HealthCheckGracePeriod> specified for the group, by default, this
-call will respect the grace period. Set this to C<False>, if you do not
-want the call to respect the grace period associated with the group.
+call respects the grace period. Set this to C<False>, to have the call
+not respect the grace period associated with the group.
 
-For more information, see the description of the health check grace
-period for CreateAutoScalingGroup.
+For more information about the health check grace period, see
+CreateAutoScalingGroup.
 
 
 

@@ -10,6 +10,7 @@ package Paws::EC2::ReplaceRoute;
   has NatGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'natGatewayId' );
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'networkInterfaceId' );
   has RouteTableId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'routeTableId' , required => 1);
+  has TransitGatewayId => (is => 'ro', isa => 'Str');
   has VpcPeeringConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'vpcPeeringConnectionId' );
 
   use MooseX::ClassAttribute;
@@ -58,14 +59,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 =head2 DestinationCidrBlock => Str
 
 The IPv4 CIDR address block used for the destination match. The value
-you provide must match the CIDR of an existing route in the table.
+that you provide must match the CIDR of an existing route in the table.
 
 
 
 =head2 DestinationIpv6CidrBlock => Str
 
 The IPv6 CIDR address block used for the destination match. The value
-you provide must match the CIDR of an existing route in the table.
+that you provide must match the CIDR of an existing route in the table.
 
 
 
@@ -80,13 +81,13 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 EgressOnlyInternetGatewayId => Str
 
-[IPv6 traffic only] The ID of an egress-only Internet gateway.
+[IPv6 traffic only] The ID of an egress-only internet gateway.
 
 
 
 =head2 GatewayId => Str
 
-The ID of an Internet gateway or virtual private gateway.
+The ID of an internet gateway or virtual private gateway.
 
 
 
@@ -111,6 +112,12 @@ The ID of a network interface.
 =head2 B<REQUIRED> RouteTableId => Str
 
 The ID of the route table.
+
+
+
+=head2 TransitGatewayId => Str
+
+The ID of a transit gateway.
 
 
 

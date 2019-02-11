@@ -34,27 +34,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppSync::Us
 
 =head1 DESCRIPTION
 
-Describes an Amazon Cognito User Pool configuration.
+Describes an Amazon Cognito user pool configuration.
 
 =head1 ATTRIBUTES
 
 
 =head2 AppIdClientRegex => Str
 
-  A regular expression for validating the incoming Amazon Cognito User
-Pool app client ID.
+  A regular expression for validating the incoming Amazon Cognito user
+pool app client ID.
 
 
 =head2 B<REQUIRED> AwsRegion => Str
 
-  The AWS region in which the user pool was created.
+  The AWS Region in which the user pool was created.
 
 
 =head2 B<REQUIRED> DefaultAction => Str
 
   The action that you want your GraphQL API to take when a request that
-uses Amazon Cognito User Pool authentication doesn't match the Amazon
-Cognito User Pool configuration.
+uses Amazon Cognito user pool authentication doesn't match the Amazon
+Cognito user pool configuration.
 
 
 =head2 B<REQUIRED> UserPoolId => Str

@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::StepFunctio
 
 =head1 DESCRIPTION
 
-Contains details about an activity timeout which occurred during an
+Contains details about an activity timeout that occurred during an
 execution.
 
 =head1 ATTRIBUTES

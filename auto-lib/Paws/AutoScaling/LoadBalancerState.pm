@@ -39,11 +39,11 @@ the state of the load balancer is C<InService>.
 
 If you attach a load balancer to an existing Auto Scaling group, the
 initial state is C<Adding>. The state transitions to C<Added> after all
-instances in the group are registered with the load balancer. If ELB
-health checks are enabled for the load balancer, the state transitions
-to C<InService> after at least one instance in the group passes the
-health check. If EC2 health checks are enabled instead, the load
-balancer remains in the C<Added> state.
+instances in the group are registered with the load balancer. If
+Elastic Load Balancing health checks are enabled for the load balancer,
+the state transitions to C<InService> after at least one instance in
+the group passes the health check. If EC2 health checks are enabled
+instead, the load balancer remains in the C<Added> state.
 
 =head1 ATTRIBUTES
 

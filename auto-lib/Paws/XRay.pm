@@ -19,9 +19,54 @@ package Paws::XRay;
     my $call_object = $self->new_with_coercions('Paws::XRay::BatchGetTraces', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::XRay::CreateGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateSamplingRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::XRay::CreateSamplingRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::XRay::DeleteGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteSamplingRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::XRay::DeleteSamplingRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetEncryptionConfig {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::XRay::GetEncryptionConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::XRay::GetGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetGroups {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::XRay::GetGroups', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetSamplingRules {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::XRay::GetSamplingRules', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetSamplingStatisticSummaries {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::XRay::GetSamplingStatisticSummaries', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetSamplingTargets {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::XRay::GetSamplingTargets', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetServiceGraph {
@@ -54,6 +99,16 @@ package Paws::XRay;
     my $call_object = $self->new_with_coercions('Paws::XRay::PutTraceSegments', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::XRay::UpdateGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateSamplingRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::XRay::UpdateSamplingRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
   sub BatchGetAllTraces {
     my $self = shift;
@@ -74,6 +129,75 @@ package Paws::XRay;
         $result = $self->BatchGetTraces(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'Traces') foreach (@{ $result->Traces });
+    }
+
+    return undef
+  }
+  sub GetAllGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetGroups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetGroups(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Groups }, @{ $next_result->Groups };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Groups') foreach (@{ $result->Groups });
+        $result = $self->GetGroups(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Groups') foreach (@{ $result->Groups });
+    }
+
+    return undef
+  }
+  sub GetAllSamplingRules {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetSamplingRules(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetSamplingRules(@_, NextToken => $next_result->NextToken);
+        push @{ $result->SamplingRuleRecords }, @{ $next_result->SamplingRuleRecords };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'SamplingRuleRecords') foreach (@{ $result->SamplingRuleRecords });
+        $result = $self->GetSamplingRules(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'SamplingRuleRecords') foreach (@{ $result->SamplingRuleRecords });
+    }
+
+    return undef
+  }
+  sub GetAllSamplingStatisticSummaries {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetSamplingStatisticSummaries(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetSamplingStatisticSummaries(@_, NextToken => $next_result->NextToken);
+        push @{ $result->SamplingStatisticSummaries }, @{ $next_result->SamplingStatisticSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'SamplingStatisticSummaries') foreach (@{ $result->SamplingStatisticSummaries });
+        $result = $self->GetSamplingStatisticSummaries(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'SamplingStatisticSummaries') foreach (@{ $result->SamplingStatisticSummaries });
     }
 
     return undef
@@ -149,7 +273,7 @@ package Paws::XRay;
   }
 
 
-  sub operations { qw/BatchGetTraces GetEncryptionConfig GetServiceGraph GetTraceGraph GetTraceSummaries PutEncryptionConfig PutTelemetryRecords PutTraceSegments / }
+  sub operations { qw/BatchGetTraces CreateGroup CreateSamplingRule DeleteGroup DeleteSamplingRule GetEncryptionConfig GetGroup GetGroups GetSamplingRules GetSamplingStatisticSummaries GetSamplingTargets GetServiceGraph GetTraceGraph GetTraceSummaries PutEncryptionConfig PutTelemetryRecords PutTraceSegments UpdateGroup UpdateSamplingRule / }
 
 1;
 
@@ -205,6 +329,83 @@ of segment documents that originates from a single request. Use
 C<GetTraceSummaries> to get a list of trace IDs.
 
 
+=head2 CreateGroup
+
+=over
+
+=item GroupName => Str
+
+=item [FilterExpression => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::XRay::CreateGroup>
+
+Returns: a L<Paws::XRay::CreateGroupResult> instance
+
+Creates a group resource with a name and a filter expression.
+
+
+=head2 CreateSamplingRule
+
+=over
+
+=item SamplingRule => L<Paws::XRay::SamplingRule>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::XRay::CreateSamplingRule>
+
+Returns: a L<Paws::XRay::CreateSamplingRuleResult> instance
+
+Creates a rule to control sampling behavior for instrumented
+applications. Services retrieve rules with GetSamplingRules, and
+evaluate each rule in ascending order of I<priority> for each request.
+If a rule matches, the service records a trace, borrowing it from the
+reservoir size. After 10 seconds, the service reports back to X-Ray
+with GetSamplingTargets to get updated versions of each in-use rule.
+The updated rule contains a trace quota that the service can use
+instead of borrowing from the reservoir.
+
+
+=head2 DeleteGroup
+
+=over
+
+=item [GroupARN => Str]
+
+=item [GroupName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::XRay::DeleteGroup>
+
+Returns: a L<Paws::XRay::DeleteGroupResult> instance
+
+Deletes a group resource.
+
+
+=head2 DeleteSamplingRule
+
+=over
+
+=item [RuleARN => Str]
+
+=item [RuleName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::XRay::DeleteSamplingRule>
+
+Returns: a L<Paws::XRay::DeleteSamplingRuleResult> instance
+
+Deletes a sampling rule.
+
+
 =head2 GetEncryptionConfig
 
 
@@ -219,6 +420,90 @@ Returns: a L<Paws::XRay::GetEncryptionConfigResult> instance
 Retrieves the current encryption configuration for X-Ray data.
 
 
+=head2 GetGroup
+
+=over
+
+=item [GroupARN => Str]
+
+=item [GroupName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::XRay::GetGroup>
+
+Returns: a L<Paws::XRay::GetGroupResult> instance
+
+Retrieves group resource details.
+
+
+=head2 GetGroups
+
+=over
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::XRay::GetGroups>
+
+Returns: a L<Paws::XRay::GetGroupsResult> instance
+
+Retrieves all active group details.
+
+
+=head2 GetSamplingRules
+
+=over
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::XRay::GetSamplingRules>
+
+Returns: a L<Paws::XRay::GetSamplingRulesResult> instance
+
+Retrieves all sampling rules.
+
+
+=head2 GetSamplingStatisticSummaries
+
+=over
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::XRay::GetSamplingStatisticSummaries>
+
+Returns: a L<Paws::XRay::GetSamplingStatisticSummariesResult> instance
+
+Retrieves information about recent sampling results for all sampling
+rules.
+
+
+=head2 GetSamplingTargets
+
+=over
+
+=item SamplingStatisticsDocuments => ArrayRef[L<Paws::XRay::SamplingStatisticsDocument>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::XRay::GetSamplingTargets>
+
+Returns: a L<Paws::XRay::GetSamplingTargetsResult> instance
+
+Requests a sampling quota for rules that the service is using to sample
+requests.
+
+
 =head2 GetServiceGraph
 
 =over
@@ -226,6 +511,10 @@ Retrieves the current encryption configuration for X-Ray data.
 =item EndTime => Str
 
 =item StartTime => Str
+
+=item [GroupARN => Str]
+
+=item [GroupName => Str]
 
 =item [NextToken => Str]
 
@@ -435,6 +724,42 @@ digits.
 
 
 
+=head2 UpdateGroup
+
+=over
+
+=item [FilterExpression => Str]
+
+=item [GroupARN => Str]
+
+=item [GroupName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::XRay::UpdateGroup>
+
+Returns: a L<Paws::XRay::UpdateGroupResult> instance
+
+Updates a group resource.
+
+
+=head2 UpdateSamplingRule
+
+=over
+
+=item SamplingRuleUpdate => L<Paws::XRay::SamplingRuleUpdate>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::XRay::UpdateSamplingRule>
+
+Returns: a L<Paws::XRay::UpdateSamplingRuleResult> instance
+
+Modifies a sampling rule's configuration.
+
+
 
 
 =head1 PAGINATORS
@@ -453,9 +778,45 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::XRay::BatchGetTracesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 GetAllServiceGraph(sub { },EndTime => Str, StartTime => Str, [NextToken => Str])
+=head2 GetAllGroups(sub { },[NextToken => Str])
 
-=head2 GetAllServiceGraph(EndTime => Str, StartTime => Str, [NextToken => Str])
+=head2 GetAllGroups([NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Groups, passing the object as the first parameter, and the string 'Groups' as the second parameter 
+
+If not, it will return a a L<Paws::XRay::GetGroupsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllSamplingRules(sub { },[NextToken => Str])
+
+=head2 GetAllSamplingRules([NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SamplingRuleRecords, passing the object as the first parameter, and the string 'SamplingRuleRecords' as the second parameter 
+
+If not, it will return a a L<Paws::XRay::GetSamplingRulesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllSamplingStatisticSummaries(sub { },[NextToken => Str])
+
+=head2 GetAllSamplingStatisticSummaries([NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SamplingStatisticSummaries, passing the object as the first parameter, and the string 'SamplingStatisticSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::XRay::GetSamplingStatisticSummariesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllServiceGraph(sub { },EndTime => Str, StartTime => Str, [GroupARN => Str, GroupName => Str, NextToken => Str])
+
+=head2 GetAllServiceGraph(EndTime => Str, StartTime => Str, [GroupARN => Str, GroupName => Str, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

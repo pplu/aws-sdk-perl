@@ -35,34 +35,34 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SMS::Server
 
 =head1 DESCRIPTION
 
-Object representing a server
+Represents a server.
 
 =head1 ATTRIBUTES
 
 
 =head2 ReplicationJobId => Str
 
-  
+  The identifier of the replication job.
 
 
 =head2 ReplicationJobTerminated => Bool
 
-  
+  Indicates whether the replication job is deleted or failed.
 
 
 =head2 ServerId => Str
 
-  
+  The identifier of the server.
 
 
 =head2 ServerType => Str
 
-  
+  The type of server.
 
 
 =head2 VmServer => L<Paws::SMS::VmServer>
 
-  
+  Information about the VM server.
 
 
 

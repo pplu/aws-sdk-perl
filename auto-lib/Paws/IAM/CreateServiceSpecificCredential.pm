@@ -62,7 +62,7 @@ The new service-specific credentials have the same permissions as the
 associated user except that they can be used only to access the
 specified service.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
 also include any of the following characters: _+=,.@-

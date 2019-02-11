@@ -53,8 +53,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dev
 
 =head2 B<REQUIRED> Arn => Str
 
-The Amazon Resource Name (ARN) of the project for which you want to
-list samples.
+The Amazon Resource Name (ARN) of the job used to list samples.
 
 
 

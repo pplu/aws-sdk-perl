@@ -35,7 +35,7 @@ Address at which the file system may be mounted via the mount target.
 
 Lifecycle state of the mount target.
 
-Valid values are: C<"creating">, C<"available">, C<"deleting">, C<"deleted">
+Valid values are: C<"creating">, C<"available">, C<"updating">, C<"deleting">, C<"deleted">
 =head2 B<REQUIRED> MountTargetId => Str
 
 System-assigned mount target ID.

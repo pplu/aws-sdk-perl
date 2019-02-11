@@ -109,7 +109,7 @@ on a per-instance basis.
 =head2 TimeoutSeconds => Int
 
   If this time is reached and the command has not already started
-executing, it doesn not execute.
+executing, it doesn't run.
 
 
 

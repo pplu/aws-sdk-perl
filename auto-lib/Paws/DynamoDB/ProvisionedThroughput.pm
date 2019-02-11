@@ -51,6 +51,9 @@ see Specifying Read and Write Requirements
 (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput)
 in the I<Amazon DynamoDB Developer Guide>.
 
+If read/write capacity mode is C<PAY_PER_REQUEST> the value is set to
+0.
+
 
 =head2 B<REQUIRED> WriteCapacityUnits => Int
 
@@ -59,6 +62,9 @@ returns a C<ThrottlingException>. For more information, see Specifying
 Read and Write Requirements
 (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput)
 in the I<Amazon DynamoDB Developer Guide>.
+
+If read/write capacity mode is C<PAY_PER_REQUEST> the value is set to
+0.
 
 
 

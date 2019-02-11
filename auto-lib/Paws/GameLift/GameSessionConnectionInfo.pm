@@ -48,7 +48,7 @@ DescribeMatchmaking.
 =head2 GameSessionArn => Str
 
   Amazon Resource Name (ARN
-(http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
 that is assigned to a game session and uniquely identifies it.
 
 

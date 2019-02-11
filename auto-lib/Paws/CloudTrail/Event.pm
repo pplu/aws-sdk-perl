@@ -1,10 +1,12 @@
 package Paws::CloudTrail::Event;
   use Moose;
+  has AccessKeyId => (is => 'ro', isa => 'Str');
   has CloudTrailEvent => (is => 'ro', isa => 'Str');
   has EventId => (is => 'ro', isa => 'Str');
   has EventName => (is => 'ro', isa => 'Str');
   has EventSource => (is => 'ro', isa => 'Str');
   has EventTime => (is => 'ro', isa => 'Str');
+  has ReadOnly => (is => 'ro', isa => 'Str');
   has Resources => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::Resource]');
   has Username => (is => 'ro', isa => 'Str');
 1;
@@ -26,14 +28,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CloudTrail::Event object:
 
-  $service_obj->Method(Att1 => { CloudTrailEvent => $value, ..., Username => $value  });
+  $service_obj->Method(Att1 => { AccessKeyId => $value, ..., Username => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CloudTrail::Event object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->CloudTrailEvent
+  $result->Att1->AccessKeyId
 
 =head1 DESCRIPTION
 
@@ -41,6 +43,13 @@ Contains information about an event that was returned by a lookup
 request. The result includes a representation of a CloudTrail event.
 
 =head1 ATTRIBUTES
+
+
+=head2 AccessKeyId => Str
+
+  The AWS access key ID that was used to sign the request. If the request
+was made with temporary security credentials, this is the access key ID
+of the temporary credentials.
 
 
 =head2 CloudTrailEvent => Str
@@ -66,6 +75,11 @@ request. The result includes a representation of a CloudTrail event.
 =head2 EventTime => Str
 
   The date and time of the event returned.
+
+
+=head2 ReadOnly => Str
+
+  Information about whether the event is a write event or a read event.
 
 
 =head2 Resources => ArrayRef[L<Paws::CloudTrail::Resource>]

@@ -84,28 +84,28 @@ output files. Elastic Transcoder supports the following options:
 
 =item *
 
-B<S3:> Amazon S3 creates and manages the keys used for encrypting your
+B<s3:> Amazon S3 creates and manages the keys used for encrypting your
 files.
 
 =item *
 
-B<S3-AWS-KMS:> Amazon S3 calls the Amazon Key Management Service, which
+B<s3-aws-kms:> Amazon S3 calls the Amazon Key Management Service, which
 creates and manages the keys that are used for encrypting your files.
-If you specify C<S3-AWS-KMS> and you don't want to use the default key,
+If you specify C<s3-aws-kms> and you don't want to use the default key,
 you must add the AWS-KMS key that you want to use to your pipeline.
 
 =item *
 
-B<AES-CBC-PKCS7:> A padded cipher-block mode of operation originally
+B<aes-cbc-pkcs7:> A padded cipher-block mode of operation originally
 used for HLS files.
 
 =item *
 
-B<AES-CTR:> AES Counter Mode.
+B<aes-ctr:> AES Counter Mode.
 
 =item *
 
-B<AES-GCM:> AES Galois Counter Mode, a mode of operation that is an
+B<aes-gcm:> AES Galois Counter Mode, a mode of operation that is an
 authenticated encryption format, meaning that a file, key, or
 initialization vector that has been tampered with fails the decryption
 process.

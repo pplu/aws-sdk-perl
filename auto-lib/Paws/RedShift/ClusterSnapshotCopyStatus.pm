@@ -1,6 +1,7 @@
 package Paws::RedShift::ClusterSnapshotCopyStatus;
   use Moose;
   has DestinationRegion => (is => 'ro', isa => 'Str');
+  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has RetentionPeriod => (is => 'ro', isa => 'Int');
   has SnapshotCopyGrantName => (is => 'ro', isa => 'Str');
 1;
@@ -43,6 +44,15 @@ for cross-region snapshot copy.
 
   The destination region that snapshots are automatically copied to when
 cross-region snapshot copy is enabled.
+
+
+=head2 ManualSnapshotRetentionPeriod => Int
+
+  The number of days that automated snapshots are retained in the
+destination region after they are copied from a source region. If the
+value is -1, the manual snapshot is retained indefinitely.
+
+The value must be either -1 or an integer between 1 and 3,653.
 
 
 =head2 RetentionPeriod => Int

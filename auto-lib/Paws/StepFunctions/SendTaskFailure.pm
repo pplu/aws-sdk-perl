@@ -31,8 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $states = Paws->service('StepFunctions');
     my $SendTaskFailureOutput = $states->SendTaskFailure(
       TaskToken => 'MyTaskToken',
-      Cause     => 'MyCause',       # OPTIONAL
-      Error     => 'MyError',       # OPTIONAL
+      Cause     => 'MySensitiveCause',    # OPTIONAL
+      Error     => 'MySensitiveError',    # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -49,7 +49,7 @@ A more detailed explanation of the cause of the failure.
 
 =head2 Error => Str
 
-An arbitrary error code that identifies the cause of the failure.
+The error code of the failure.
 
 
 

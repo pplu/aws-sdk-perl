@@ -36,6 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Arn                = $DescribeRuleResponse->Arn;
     my $Description        = $DescribeRuleResponse->Description;
     my $EventPattern       = $DescribeRuleResponse->EventPattern;
+    my $ManagedBy          = $DescribeRuleResponse->ManagedBy;
     my $Name               = $DescribeRuleResponse->Name;
     my $RoleArn            = $DescribeRuleResponse->RoleArn;
     my $ScheduleExpression = $DescribeRuleResponse->ScheduleExpression;

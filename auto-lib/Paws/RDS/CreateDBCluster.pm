@@ -9,10 +9,13 @@ package Paws::RDS::CreateDBCluster;
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
+  has EngineMode => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
+  has GlobalClusterIdentifier => (is => 'ro', isa => 'Str');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
@@ -22,6 +25,7 @@ package Paws::RDS::CreateDBCluster;
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has PreSignedUrl => (is => 'ro', isa => 'Str');
   has ReplicationSourceIdentifier => (is => 'ro', isa => 'Str');
+  has ScalingConfiguration => (is => 'ro', isa => 'Paws::RDS::ScalingConfiguration');
   has StorageEncrypted => (is => 'ro', isa => 'Bool');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -64,7 +68,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'MasterUserPassword'          => 'mypassword',
         'MasterUsername'              => 'myuser',
         'Port'                        => 3306,
-        'StorageEncrypted'            => true
+        'StorageEncrypted'            => 1
       }
     );
 
@@ -79,8 +83,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 A list of EC2 Availability Zones that instances in the DB cluster can
 be created in. For information on AWS Regions and Availability Zones,
-see Regions and Availability Zones
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+see Choosing the Regions and Availability Zones
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.RegionsAndAvailabilityZones.html)
+in the I<Amazon Aurora User Guide>.
 
 
 
@@ -159,7 +164,7 @@ First character must be a letter.
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens.
+Can't end with a hyphen or contain two consecutive hyphens.
 
 =back
 
@@ -178,8 +183,8 @@ Constraints:
 
 =item *
 
-If supplied, must match the name of an existing
-DBClusterParameterGroup.
+If supplied, must match the name of an existing DB cluster parameter
+group.
 
 =back
 
@@ -197,10 +202,22 @@ Example: C<mySubnetgroup>
 
 
 
+=head2 DeletionProtection => Bool
+
+Indicates if the DB cluster should have deletion protection enabled.
+The database can't be deleted when this value is set to true. The
+default is false.
+
+
+
 =head2 EnableCloudwatchLogsExports => ArrayRef[Str|Undef]
 
 The list of log types that need to be enabled for exporting to
-CloudWatch Logs.
+CloudWatch Logs. The values in the list depend on the DB engine being
+used. For more information, see Publishing Database Logs to Amazon
+CloudWatch Logs
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
+in the I<Amazon Aurora User Guide>.
 
 
 
@@ -223,6 +240,13 @@ C<aurora-postgresql>
 
 
 
+=head2 EngineMode => Str
+
+The DB engine mode of the DB cluster, either C<provisioned>,
+C<serverless>, C<parallelquery>, or C<global>.
+
+
+
 =head2 EngineVersion => Str
 
 The version number of the database engine to use.
@@ -234,6 +258,13 @@ Example: C<5.6.10a>, C<5.7.12>
 B<Aurora PostgreSQL>
 
 Example: C<9.6.3>
+
+
+
+=head2 GlobalClusterIdentifier => Str
+
+The global cluster ID of an Aurora cluster that becomes the primary
+cluster in the new global database cluster.
 
 
 
@@ -293,7 +324,7 @@ First character must be a letter.
 
 =item *
 
-Cannot be a reserved word for the chosen database engine.
+Can't be a reserved word for the chosen database engine.
 
 =back
 
@@ -338,9 +369,9 @@ parameter.
 
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region. To see the time blocks available,
-see Adjusting the Preferred Maintenance Window
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
-in the I<Amazon RDS User Guide.>
+see Adjusting the Preferred DB Cluster Maintenance Window
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
+in the I<Amazon Aurora User Guide.>
 
 Constraints:
 
@@ -376,10 +407,10 @@ Format: C<ddd:hh24:mi-ddd:hh24:mi>
 
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region, occurring on a random day of the
-week. To see the time blocks available, see Adjusting the Preferred
-Maintenance Window
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
-in the I<Amazon RDS User Guide.>
+week. To see the time blocks available, see Adjusting the Preferred DB
+Cluster Maintenance Window
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
+in the I<Amazon Aurora User Guide.>
 
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
 
@@ -440,6 +471,13 @@ and Signature Version 4 Signing Process
 
 The Amazon Resource Name (ARN) of the source DB instance or DB cluster
 if this DB cluster is created as a Read Replica.
+
+
+
+=head2 ScalingConfiguration => L<Paws::RDS::ScalingConfiguration>
+
+For DB clusters in C<serverless> DB engine mode, the scaling properties
+of the DB cluster.
 
 
 

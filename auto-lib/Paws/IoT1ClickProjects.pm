@@ -80,6 +80,52 @@ package Paws::IoT1ClickProjects;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllPlacements {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPlacements(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListPlacements(@_, nextToken => $next_result->nextToken);
+        push @{ $result->placements }, @{ $next_result->placements };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'placements') foreach (@{ $result->placements });
+        $result = $self->ListPlacements(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'placements') foreach (@{ $result->placements });
+    }
+
+    return undef
+  }
+  sub ListAllProjects {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListProjects(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListProjects(@_, nextToken => $next_result->nextToken);
+        push @{ $result->projects }, @{ $next_result->projects };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'projects') foreach (@{ $result->projects });
+        $result = $self->ListProjects(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'projects') foreach (@{ $result->projects });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AssociateDeviceWithPlacement CreatePlacement CreateProject DeletePlacement DeleteProject DescribePlacement DescribeProject DisassociateDeviceFromPlacement GetDevicesInPlacement ListPlacements ListProjects UpdatePlacement UpdateProject / }
@@ -112,7 +158,7 @@ Paws::IoT1ClickProjects - Perl Interface to AWS AWS IoT 1-Click Projects Service
 
 The AWS IoT 1-Click Project API Reference
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/projects.iot1click-2018-05-14>
 
 
 =head1 METHODS
@@ -382,6 +428,30 @@ values that are provided. To clear a value, pass the empty string
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllPlacements(sub { },ProjectName => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllPlacements(ProjectName => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - placements, passing the object as the first parameter, and the string 'placements' as the second parameter 
+
+If not, it will return a a L<Paws::IoT1ClickProjects::ListPlacementsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllProjects(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllProjects([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - projects, passing the object as the first parameter, and the string 'projects' as the second parameter 
+
+If not, it will return a a L<Paws::IoT1ClickProjects::ListProjectsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

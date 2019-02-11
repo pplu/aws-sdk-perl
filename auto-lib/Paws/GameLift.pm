@@ -100,6 +100,11 @@ package Paws::GameLift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::DeleteMatchmakingConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteMatchmakingRuleSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GameLift::DeleteMatchmakingRuleSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteScalingPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::DeleteScalingPolicy', @_);
@@ -351,9 +356,377 @@ package Paws::GameLift;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllFleetAttributes {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeFleetAttributes(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeFleetAttributes(@_, NextToken => $next_result->NextToken);
+        push @{ $result->FleetAttributes }, @{ $next_result->FleetAttributes };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'FleetAttributes') foreach (@{ $result->FleetAttributes });
+        $result = $self->DescribeFleetAttributes(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'FleetAttributes') foreach (@{ $result->FleetAttributes });
+    }
+
+    return undef
+  }
+  sub DescribeAllFleetCapacity {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeFleetCapacity(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeFleetCapacity(@_, NextToken => $next_result->NextToken);
+        push @{ $result->FleetCapacity }, @{ $next_result->FleetCapacity };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'FleetCapacity') foreach (@{ $result->FleetCapacity });
+        $result = $self->DescribeFleetCapacity(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'FleetCapacity') foreach (@{ $result->FleetCapacity });
+    }
+
+    return undef
+  }
+  sub DescribeAllFleetEvents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeFleetEvents(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeFleetEvents(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Events }, @{ $next_result->Events };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Events') foreach (@{ $result->Events });
+        $result = $self->DescribeFleetEvents(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Events') foreach (@{ $result->Events });
+    }
+
+    return undef
+  }
+  sub DescribeAllFleetUtilization {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeFleetUtilization(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeFleetUtilization(@_, NextToken => $next_result->NextToken);
+        push @{ $result->FleetUtilization }, @{ $next_result->FleetUtilization };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'FleetUtilization') foreach (@{ $result->FleetUtilization });
+        $result = $self->DescribeFleetUtilization(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'FleetUtilization') foreach (@{ $result->FleetUtilization });
+    }
+
+    return undef
+  }
+  sub DescribeAllGameSessionDetails {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeGameSessionDetails(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeGameSessionDetails(@_, NextToken => $next_result->NextToken);
+        push @{ $result->GameSessionDetails }, @{ $next_result->GameSessionDetails };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'GameSessionDetails') foreach (@{ $result->GameSessionDetails });
+        $result = $self->DescribeGameSessionDetails(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'GameSessionDetails') foreach (@{ $result->GameSessionDetails });
+    }
+
+    return undef
+  }
+  sub DescribeAllGameSessionQueues {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeGameSessionQueues(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeGameSessionQueues(@_, NextToken => $next_result->NextToken);
+        push @{ $result->GameSessionQueues }, @{ $next_result->GameSessionQueues };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'GameSessionQueues') foreach (@{ $result->GameSessionQueues });
+        $result = $self->DescribeGameSessionQueues(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'GameSessionQueues') foreach (@{ $result->GameSessionQueues });
+    }
+
+    return undef
+  }
+  sub DescribeAllGameSessions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeGameSessions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeGameSessions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->GameSessions }, @{ $next_result->GameSessions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'GameSessions') foreach (@{ $result->GameSessions });
+        $result = $self->DescribeGameSessions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'GameSessions') foreach (@{ $result->GameSessions });
+    }
+
+    return undef
+  }
+  sub DescribeAllInstances {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeInstances(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeInstances(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Instances }, @{ $next_result->Instances };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Instances') foreach (@{ $result->Instances });
+        $result = $self->DescribeInstances(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Instances') foreach (@{ $result->Instances });
+    }
+
+    return undef
+  }
+  sub DescribeAllMatchmakingConfigurations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeMatchmakingConfigurations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeMatchmakingConfigurations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Configurations }, @{ $next_result->Configurations };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Configurations') foreach (@{ $result->Configurations });
+        $result = $self->DescribeMatchmakingConfigurations(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Configurations') foreach (@{ $result->Configurations });
+    }
+
+    return undef
+  }
+  sub DescribeAllMatchmakingRuleSets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeMatchmakingRuleSets(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeMatchmakingRuleSets(@_, NextToken => $next_result->NextToken);
+        push @{ $result->RuleSets }, @{ $next_result->RuleSets };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'RuleSets') foreach (@{ $result->RuleSets });
+        $result = $self->DescribeMatchmakingRuleSets(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'RuleSets') foreach (@{ $result->RuleSets });
+    }
+
+    return undef
+  }
+  sub DescribeAllPlayerSessions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribePlayerSessions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribePlayerSessions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->PlayerSessions }, @{ $next_result->PlayerSessions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'PlayerSessions') foreach (@{ $result->PlayerSessions });
+        $result = $self->DescribePlayerSessions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'PlayerSessions') foreach (@{ $result->PlayerSessions });
+    }
+
+    return undef
+  }
+  sub DescribeAllScalingPolicies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeScalingPolicies(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeScalingPolicies(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ScalingPolicies }, @{ $next_result->ScalingPolicies };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ScalingPolicies') foreach (@{ $result->ScalingPolicies });
+        $result = $self->DescribeScalingPolicies(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ScalingPolicies') foreach (@{ $result->ScalingPolicies });
+    }
+
+    return undef
+  }
+  sub ListAllAliases {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAliases(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListAliases(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Aliases }, @{ $next_result->Aliases };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Aliases') foreach (@{ $result->Aliases });
+        $result = $self->ListAliases(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Aliases') foreach (@{ $result->Aliases });
+    }
+
+    return undef
+  }
+  sub ListAllBuilds {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListBuilds(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListBuilds(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Builds }, @{ $next_result->Builds };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Builds') foreach (@{ $result->Builds });
+        $result = $self->ListBuilds(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Builds') foreach (@{ $result->Builds });
+    }
+
+    return undef
+  }
+  sub ListAllFleets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListFleets(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListFleets(@_, NextToken => $next_result->NextToken);
+        push @{ $result->FleetIds }, @{ $next_result->FleetIds };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'FleetIds') foreach (@{ $result->FleetIds });
+        $result = $self->ListFleets(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'FleetIds') foreach (@{ $result->FleetIds });
+    }
+
+    return undef
+  }
+  sub SearchAllGameSessions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->SearchGameSessions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->SearchGameSessions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->GameSessions }, @{ $next_result->GameSessions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'GameSessions') foreach (@{ $result->GameSessions });
+        $result = $self->SearchGameSessions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'GameSessions') foreach (@{ $result->GameSessions });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/AcceptMatch CreateAlias CreateBuild CreateFleet CreateGameSession CreateGameSessionQueue CreateMatchmakingConfiguration CreateMatchmakingRuleSet CreatePlayerSession CreatePlayerSessions CreateVpcPeeringAuthorization CreateVpcPeeringConnection DeleteAlias DeleteBuild DeleteFleet DeleteGameSessionQueue DeleteMatchmakingConfiguration DeleteScalingPolicy DeleteVpcPeeringAuthorization DeleteVpcPeeringConnection DescribeAlias DescribeBuild DescribeEC2InstanceLimits DescribeFleetAttributes DescribeFleetCapacity DescribeFleetEvents DescribeFleetPortSettings DescribeFleetUtilization DescribeGameSessionDetails DescribeGameSessionPlacement DescribeGameSessionQueues DescribeGameSessions DescribeInstances DescribeMatchmaking DescribeMatchmakingConfigurations DescribeMatchmakingRuleSets DescribePlayerSessions DescribeRuntimeConfiguration DescribeScalingPolicies DescribeVpcPeeringAuthorizations DescribeVpcPeeringConnections GetGameSessionLogUrl GetInstanceAccess ListAliases ListBuilds ListFleets PutScalingPolicy RequestUploadCredentials ResolveAlias SearchGameSessions StartFleetActions StartGameSessionPlacement StartMatchBackfill StartMatchmaking StopFleetActions StopGameSessionPlacement StopMatchmaking UpdateAlias UpdateBuild UpdateFleetAttributes UpdateFleetCapacity UpdateFleetPortSettings UpdateGameSession UpdateGameSessionQueue UpdateMatchmakingConfiguration UpdateRuntimeConfiguration ValidateMatchmakingRuleSet / }
+  sub operations { qw/AcceptMatch CreateAlias CreateBuild CreateFleet CreateGameSession CreateGameSessionQueue CreateMatchmakingConfiguration CreateMatchmakingRuleSet CreatePlayerSession CreatePlayerSessions CreateVpcPeeringAuthorization CreateVpcPeeringConnection DeleteAlias DeleteBuild DeleteFleet DeleteGameSessionQueue DeleteMatchmakingConfiguration DeleteMatchmakingRuleSet DeleteScalingPolicy DeleteVpcPeeringAuthorization DeleteVpcPeeringConnection DescribeAlias DescribeBuild DescribeEC2InstanceLimits DescribeFleetAttributes DescribeFleetCapacity DescribeFleetEvents DescribeFleetPortSettings DescribeFleetUtilization DescribeGameSessionDetails DescribeGameSessionPlacement DescribeGameSessionQueues DescribeGameSessions DescribeInstances DescribeMatchmaking DescribeMatchmakingConfigurations DescribeMatchmakingRuleSets DescribePlayerSessions DescribeRuntimeConfiguration DescribeScalingPolicies DescribeVpcPeeringAuthorizations DescribeVpcPeeringConnections GetGameSessionLogUrl GetInstanceAccess ListAliases ListBuilds ListFleets PutScalingPolicy RequestUploadCredentials ResolveAlias SearchGameSessions StartFleetActions StartGameSessionPlacement StartMatchBackfill StartMatchmaking StopFleetActions StopGameSessionPlacement StopMatchmaking UpdateAlias UpdateBuild UpdateFleetAttributes UpdateFleetCapacity UpdateFleetPortSettings UpdateGameSession UpdateGameSessionQueue UpdateMatchmakingConfiguration UpdateRuntimeConfiguration ValidateMatchmakingRuleSet / }
 
 1;
 
@@ -418,16 +791,17 @@ GameLift. You can use the API functionality with these tools:
 
 The Amazon Web Services software development kit (AWS SDK
 (http://aws.amazon.com/tools/#sdk)) is available in multiple languages
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-supported.html#gamelift-supported-clients)
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-supported.html#gamelift-supported-clients)
 including C++ and C#. Use the SDK to access the API programmatically
 from an application, such as a game client.
 
 =item *
 
-The AWS command-line interface (http://aws.amazon.com/cli/) (CLI) tool
-is primarily useful for handling administrative actions, such as
-setting up and managing Amazon GameLift settings and resources. You can
-use the AWS CLI to manage all of your AWS services.
+The AWS command-line interface
+(https://docs.aws.amazon.com/cli/latest/userguide/) (CLI) tool is
+primarily useful for handling administrative actions, such as setting
+up and managing Amazon GameLift settings and resources. You can use the
+AWS CLI to manage all of your AWS services.
 
 =item *
 
@@ -444,7 +818,7 @@ Amazon GameLift Local is a tool for testing your game's integration
 with Amazon GameLift before deploying it on the service. This tools
 supports a subset of key API actions, which can be called from either
 the AWS CLI or programmatically. See Testing an Integration
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/integration-testing-local.html).
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/integration-testing-local.html).
 
 =back
 
@@ -455,7 +829,7 @@ B<Learn more>
 =item *
 
 Developer Guide
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/) -- Read
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/) -- Read
 about Amazon GameLift features and how to use them.
 
 =item *
@@ -465,8 +839,8 @@ fast with walkthroughs and sample projects.
 
 =item *
 
-GameDev Blog (http://aws.amazon.com/blogs/gamedev/) -- Stay up to date
-with new features and techniques.
+GameDev Blog (https://gamedev.amazon.com/blogs/gamedev/) -- Stay up to
+date with new features and techniques.
 
 =item *
 
@@ -476,9 +850,9 @@ GameDev Forums
 
 =item *
 
-Release notes (http://aws.amazon.com/releasenotes/Amazon-GameLift/) and
-document history
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/doc-history.html)
+Release notes (https://aws.amazon.com/releasenotes/Amazon-GameLift/)
+and document history
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/doc-history.html)
 -- Stay current with updates to the Amazon GameLift service, SDKs, and
 documentation.
 
@@ -638,7 +1012,7 @@ B<Setting Up and Managing Game Servers>
 
 When setting up Amazon GameLift resources for your game, you first
 create a game build
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html)
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html)
 and upload it to Amazon GameLift. You can then use these actions to
 configure and manage a fleet of resources to run your game servers,
 scale capacity to meet player demand, access performance and
@@ -777,39 +1151,77 @@ StopFleetActions -- Suspend a fleet's auto-scaling policies.
 
 =item *
 
-B<Manage VPC peering connections for fleets>
+B<Manage game session queues>
 
 =over
 
 =item *
 
-CreateVpcPeeringAuthorization -- Authorize a peering connection to one
-of your VPCs.
+CreateGameSessionQueue -- Create a queue for processing requests for
+new game sessions.
 
 =item *
 
-DescribeVpcPeeringAuthorizations -- Retrieve valid peering connection
-authorizations.
+DescribeGameSessionQueues -- Retrieve game session queues defined in a
+Amazon GameLift region.
 
 =item *
 
-DeleteVpcPeeringAuthorization -- Delete a peering connection
-authorization.
+UpdateGameSessionQueue -- Change the configuration of a game session
+queue.
 
 =item *
 
-CreateVpcPeeringConnection -- Establish a peering connection between
-the VPC for a Amazon GameLift fleet and one of your VPCs.
+DeleteGameSessionQueue -- Remove a game session queue from the region.
+
+=back
 
 =item *
 
-DescribeVpcPeeringConnections -- Retrieve information on active or
-pending VPC peering connections with a Amazon GameLift fleet.
+B<Manage FlexMatch resources>
+
+=over
 
 =item *
 
-DeleteVpcPeeringConnection -- Delete a VPC peering connection with a
-Amazon GameLift fleet.
+CreateMatchmakingConfiguration -- Create a matchmaking configuration
+with instructions for building a player group and placing in a new game
+session.
+
+=item *
+
+DescribeMatchmakingConfigurations -- Retrieve matchmaking
+configurations defined a Amazon GameLift region.
+
+=item *
+
+UpdateMatchmakingConfiguration -- Change settings for matchmaking
+configuration. queue.
+
+=item *
+
+DeleteMatchmakingConfiguration -- Remove a matchmaking configuration
+from the region.
+
+=item *
+
+CreateMatchmakingRuleSet -- Create a set of rules to use when searching
+for player matches.
+
+=item *
+
+DescribeMatchmakingRuleSets -- Retrieve matchmaking rule sets defined
+in a Amazon GameLift region.
+
+=item *
+
+ValidateMatchmakingRuleSet -- Verify syntax for a set of matchmaking
+rules.
+
+=item *
+
+DeleteMatchmakingRuleSet -- Remove a matchmaking rule set from the
+region.
 
 =back
 
@@ -891,72 +1303,39 @@ ResolveAlias -- Get the fleet ID that a specified alias points to.
 
 =item *
 
-B<Manage game session queues>
+B<Manage VPC peering connections for fleets>
 
 =over
 
 =item *
 
-CreateGameSessionQueue -- Create a queue for processing requests for
-new game sessions.
+CreateVpcPeeringAuthorization -- Authorize a peering connection to one
+of your VPCs.
 
 =item *
 
-DescribeGameSessionQueues -- Retrieve game session queues defined in a
-Amazon GameLift region.
+DescribeVpcPeeringAuthorizations -- Retrieve valid peering connection
+authorizations.
 
 =item *
 
-UpdateGameSessionQueue -- Change the configuration of a game session
-queue.
+DeleteVpcPeeringAuthorization -- Delete a peering connection
+authorization.
 
 =item *
 
-DeleteGameSessionQueue -- Remove a game session queue from the region.
-
-=back
-
-=item *
-
-B<Manage FlexMatch resources>
-
-=over
+CreateVpcPeeringConnection -- Establish a peering connection between
+the VPC for a Amazon GameLift fleet and one of your VPCs.
 
 =item *
 
-CreateMatchmakingConfiguration -- Create a matchmaking configuration
-with instructions for building a player group and placing in a new game
-session.
+DescribeVpcPeeringConnections -- Retrieve information on active or
+pending VPC peering connections with a Amazon GameLift fleet.
 
 =item *
 
-DescribeMatchmakingConfigurations -- Retrieve matchmaking
-configurations defined a Amazon GameLift region.
-
-=item *
-
-UpdateMatchmakingConfiguration -- Change settings for matchmaking
-configuration. queue.
-
-=item *
-
-DeleteMatchmakingConfiguration -- Remove a matchmaking configuration
-from the region.
-
-=item *
-
-CreateMatchmakingRuleSet -- Create a set of rules to use when searching
-for player matches.
-
-=item *
-
-DescribeMatchmakingRuleSets -- Retrieve matchmaking rule sets defined
-in a Amazon GameLift region.
-
-=item *
-
-ValidateMatchmakingRuleSet -- Verify syntax for a set of matchmaking
-rules.
+DeleteVpcPeeringConnection -- Delete a VPC peering connection with a
+Amazon GameLift fleet.
 
 =back
 
@@ -1010,8 +1389,6 @@ C<SEARCHING> to find a new match. For tickets where one or more players
 failed to accept the match, the ticket status is set to C<FAILED>, and
 processing is terminated. A new matchmaking request for these players
 can be submitted as needed.
-
-Matchmaking-related operations include:
 
 =over
 
@@ -1077,8 +1454,6 @@ record is returned, including an alias ID, which you can reference when
 creating a game session. You can reassign an alias to another fleet by
 calling C<UpdateAlias>.
 
-Alias-related operations include:
-
 =over
 
 =item *
@@ -1134,16 +1509,16 @@ Amazon Simple Storage Service (Amazon S3) location.
 
 Game server binaries must be combined into a C<.zip> file for use with
 Amazon GameLift. See Uploading Your Game
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html)
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html)
 for more information.
 
 To create new builds quickly and easily, use the AWS CLI command B<
 upload-build
-(http://docs.aws.amazon.com/cli/latest/reference/gamelift/upload-build.html)
+(https://docs.aws.amazon.com/cli/latest/reference/gamelift/upload-build.html)
 >. This helper command uploads your build and creates a new build
 record in one step, and automatically handles the necessary
 permissions. See Upload Build Files to Amazon GameLift
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html)
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html)
 for more help.
 
 The C<CreateBuild> operation should be used only when you need to
@@ -1156,7 +1531,7 @@ manually upload your build files, as in the following scenarios:
 Store a build file in an Amazon S3 bucket under your own AWS account.
 To use this option, you must first give Amazon GameLift access to that
 Amazon S3 bucket. See Create a Build with Files in Amazon S3
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build)
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build)
 for detailed help. To create a new build record using files in your
 Amazon S3 bucket, call C<CreateBuild> and specify a build name,
 operating system, and the storage location of your game build.
@@ -1169,7 +1544,7 @@ operating system. This action creates a new build record and returns an
 Amazon S3 storage location (bucket and key only) and temporary access
 credentials. Use the credentials to manually upload your build file to
 the storage location (see the Amazon S3 topic Uploading Objects
-(http://docs.aws.amazon.com/AmazonS3/latest/dev/UploadingObjects.html)).
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/UploadingObjects.html)).
 You can upload files to a location only once.
 
 =back
@@ -1178,8 +1553,6 @@ If successful, this operation creates a new build record with a unique
 build ID and places it in C<INITIALIZED> status. You can use
 DescribeBuild to check the status of your build. A build must be in
 C<READY> status before it can be used to create fleets.
-
-Build-related operations include:
 
 =over
 
@@ -1252,50 +1625,14 @@ Creates a new fleet to run your game servers. A fleet is a set of
 Amazon Elastic Compute Cloud (Amazon EC2) instances, each of which can
 run multiple server processes to host game sessions. You set up a fleet
 to use instances with certain hardware specifications (see Amazon EC2
-Instance Types (http://aws.amazon.com/ec2/instance-types/) for more
-information), and deploy your game build to run on each instance.
+Instance Types (http://aws.amazon.com/ec2/instance-types/)), and deploy
+your game build to the fleet.
 
-To create a new fleet, you must specify the following: (1) a fleet
-name, (2) the build ID of a successfully uploaded game build, (3) an
-EC2 instance type, and (4) a run-time configuration, which describes
-the server processes to run on each instance in the fleet. If you don't
-specify a fleet type (on-demand or spot), the new fleet uses on-demand
-instances by default.
-
-You can also configure the new fleet with the following settings:
-
-=over
-
-=item *
-
-Fleet description
-
-=item *
-
-Access permissions for inbound traffic
-
-=item *
-
-Fleet-wide game session protection
-
-=item *
-
-Resource usage limits
-
-=back
-
-=over
-
-=item *
-
-VPC peering connection (see VPC Peering with Amazon GameLift Fleets
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html))
-
-=back
-
-If you use Amazon CloudWatch for metrics, you can add the new fleet to
-a metric group. By adding multiple fleets to a metric group, you can
-view aggregated metrics for all the fleets in the group.
+To create a new fleet, you must provide the following: (1) a fleet
+name, (2) an EC2 instance type, (3) the build ID for your game build,
+and (4) a run-time configuration, which specifies the server processes
+to run on each instance in the fleet. If fleet type is not set, the new
+fleet will use on-demand instances by default.
 
 If the C<CreateFleet> call is successful, Amazon GameLift performs the
 following tasks. You can track the process of a fleet by checking the
@@ -1333,7 +1670,12 @@ ready to host a game session.
 
 =back
 
-Fleet-related operations include:
+B<Learn more>
+
+See Amazon GameLift Developer Guide topics in Working with Fleets
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
+
+B<Related operations>
 
 =over
 
@@ -1492,8 +1834,6 @@ the log files.
 
 I<Available in Amazon GameLift Local.>
 
-Game-session-related operations include:
-
 =over
 
 =item *
@@ -1597,8 +1937,6 @@ To create a new queue, provide a name, timeout value, a list of
 destinations and, if desired, a set of latency policies. If successful,
 a new queue object is returned.
 
-Queue-related operations include:
-
 =over
 
 =item *
@@ -1684,12 +2022,10 @@ Notification Service (SNS). To use notifications, you first need to set
 up an SNS topic to receive the notifications, and provide the topic ARN
 in the matchmaking configuration (see Setting up Notifications for
 Matchmaking
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html)).
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html)).
 Since notifications promise only "best effort" delivery, we recommend
 calling C<DescribeMatchmaking> if no notifications are received within
 30 seconds.
-
-Operations related to match configurations and rule sets include:
 
 =over
 
@@ -1720,6 +2056,10 @@ DescribeMatchmakingRuleSets
 =item *
 
 ValidateMatchmakingRuleSet
+
+=item *
+
+DeleteMatchmakingRuleSet
 
 =back
 
@@ -1743,28 +2083,39 @@ Returns: a L<Paws::GameLift::CreateMatchmakingRuleSetOutput> instance
 Creates a new rule set for FlexMatch matchmaking. A rule set describes
 the type of match to create, such as the number and size of teams, and
 sets the parameters for acceptable player matches, such as minimum
-skill level or character type. Rule sets are used in matchmaking
-configurations, which define how matchmaking requests are handled. Each
-MatchmakingConfiguration uses one rule set; you can set up multiple
-rule sets to handle the scenarios that suit your game (such as for
-different game modes), and create a separate matchmaking configuration
-for each rule set. See additional information on rule set content in
-the MatchmakingRuleSet structure. For help creating rule sets,
-including useful examples, see the topic Adding FlexMatch to Your Game
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/match-intro.html).
+skill level or character type. A rule set is used by a
+MatchmakingConfiguration.
 
-Once created, matchmaking rule sets cannot be changed or deleted, so we
-recommend checking the rule set syntax using ValidateMatchmakingRuleSet
-before creating the rule set.
+To create a matchmaking rule set, provide unique rule set name and the
+rule set body in JSON format. Rule sets must be defined in the same
+region as the matchmaking configuration they will be used with.
 
-To create a matchmaking rule set, provide the set of rules and a unique
-name. Rule sets must be defined in the same region as the matchmaking
-configuration they will be used with. Rule sets cannot be edited or
-deleted. If you need to change a rule set, create a new one with the
-necessary edits and then update matchmaking configurations to use the
-new rule set.
+Since matchmaking rule sets cannot be edited, it is a good idea to
+check the rule set syntax using ValidateMatchmakingRuleSet before
+creating a new rule set.
 
-Operations related to match configurations and rule sets include:
+B<Learn more>
+
+=over
+
+=item *
+
+Build a Rule Set
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-rulesets.html)
+
+=item *
+
+Design a Matchmaker
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-configuration.html)
+
+=item *
+
+Matchmaking with FlexMatch
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-intro.html)
+
+=back
+
+B<Related operations>
 
 =over
 
@@ -1795,6 +2146,10 @@ DescribeMatchmakingRuleSets
 =item *
 
 ValidateMatchmakingRuleSet
+
+=item *
+
+DeleteMatchmakingRuleSet
 
 =back
 
@@ -1829,8 +2184,6 @@ to the game session and a new PlayerSession object is returned. Player
 sessions cannot be updated.
 
 I<Available in Amazon GameLift Local.>
-
-Player-session-related operations include:
 
 =over
 
@@ -1900,8 +2253,6 @@ objects is returned. Player sessions cannot be updated.
 
 I<Available in Amazon GameLift Local.>
 
-Player-session-related operations include:
-
 =over
 
 =item *
@@ -1962,7 +2313,7 @@ fleet to communicate directly with other AWS resources. Once you've
 received authorization, call CreateVpcPeeringConnection to establish
 the peering connection. For more information, see VPC Peering with
 Amazon GameLift Fleets
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
 
 You can peer with VPCs that are owned by any AWS account you have
 access to, including the account that you use to manage your Amazon
@@ -1987,8 +2338,6 @@ that you use to manage Amazon GameLift.
 The authorization remains valid for 24 hours unless it is canceled by a
 call to DeleteVpcPeeringAuthorization. You must create or delete the
 peering connection while the authorization is valid.
-
-VPC peering connection operations include:
 
 =over
 
@@ -2045,7 +2394,7 @@ account that you have access to, including the account that you use to
 manage your Amazon GameLift fleets. You cannot peer with VPCs that are
 in different regions. For more information, see VPC Peering with Amazon
 GameLift Fleets
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
 
 Before calling this operation to establish the peering connection, you
 first need to call CreateVpcPeeringAuthorization and identify the VPC
@@ -2063,8 +2412,6 @@ operation is asynchronous. If successful, a VpcPeeringConnection
 request is created. You can use continuous polling to track the
 request's status using DescribeVpcPeeringConnections, or by monitoring
 fleet events for success or failure using DescribeFleetEvents.
-
-VPC peering connection operations include:
 
 =over
 
@@ -2113,8 +2460,6 @@ Deletes an alias. This action removes all record of the alias. Game
 clients attempting to access a server process using the deleted alias
 receive an error. To delete an alias, specify the alias ID to be
 deleted.
-
-Alias-related operations include:
 
 =over
 
@@ -2166,8 +2511,6 @@ To delete a build, specify its ID. Deleting a build does not affect the
 status of any active fleets using the build, but you can no longer
 create new fleets with the deleted build.
 
-Build-related operations include:
-
 =over
 
 =item *
@@ -2212,8 +2555,6 @@ must set the fleet's desired capacity to zero. See UpdateFleetCapacity.
 
 This action removes the fleet's resources and the fleet record. Once a
 fleet is deleted, you can no longer use that fleet.
-
-Fleet-related operations include:
 
 =over
 
@@ -2326,8 +2667,6 @@ Deletes a game session queue. This action means that any
 StartGameSessionPlacement requests that reference this queue will fail.
 To delete a queue, specify the queue name.
 
-Queue-related operations include:
-
 =over
 
 =item *
@@ -2367,7 +2706,73 @@ Permanently removes a FlexMatch matchmaking configuration. To delete,
 specify the configuration name. A matchmaking configuration cannot be
 deleted if it is being used in any active matchmaking tickets.
 
-Operations related to match configurations and rule sets include:
+=over
+
+=item *
+
+CreateMatchmakingConfiguration
+
+=item *
+
+DescribeMatchmakingConfigurations
+
+=item *
+
+UpdateMatchmakingConfiguration
+
+=item *
+
+DeleteMatchmakingConfiguration
+
+=item *
+
+CreateMatchmakingRuleSet
+
+=item *
+
+DescribeMatchmakingRuleSets
+
+=item *
+
+ValidateMatchmakingRuleSet
+
+=item *
+
+DeleteMatchmakingRuleSet
+
+=back
+
+
+
+=head2 DeleteMatchmakingRuleSet
+
+=over
+
+=item Name => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GameLift::DeleteMatchmakingRuleSet>
+
+Returns: a L<Paws::GameLift::DeleteMatchmakingRuleSetOutput> instance
+
+Deletes an existing matchmaking rule set. To delete the rule set,
+provide the rule set name. Rule sets cannot be deleted if they are
+currently being used by a matchmaking configuration.
+
+B<Learn more>
+
+=over
+
+=item *
+
+Build a Rule Set
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-rulesets.html)
+
+=back
+
+B<Related operations>
 
 =over
 
@@ -2399,6 +2804,10 @@ DescribeMatchmakingRuleSets
 
 ValidateMatchmakingRuleSet
 
+=item *
+
+DeleteMatchmakingRuleSet
+
 =back
 
 
@@ -2425,8 +2834,6 @@ associated with.
 
 To temporarily suspend scaling policies, call StopFleetActions. This
 operation suspends all policies for the fleet.
-
-Operations related to fleet capacity scaling include:
 
 =over
 
@@ -2501,8 +2908,6 @@ Cancels a pending VPC peering authorization for the specified VPC. If
 the authorization has already been used to create a peering connection,
 call DeleteVpcPeeringConnection to remove the connection.
 
-VPC peering connection operations include:
-
 =over
 
 =item *
@@ -2559,8 +2964,6 @@ account that is used to manage the Amazon GameLift fleets. Identify the
 connection to delete by the connection ID and fleet ID. If successful,
 the connection is removed.
 
-VPC peering connection operations include:
-
 =over
 
 =item *
@@ -2611,8 +3014,6 @@ C<ResolveAlias>.
 To get alias properties, specify the alias ID. If successful, the
 requested alias record is returned.
 
-Alias-related operations include:
-
 =over
 
 =item *
@@ -2659,8 +3060,6 @@ Returns: a L<Paws::GameLift::DescribeBuildOutput> instance
 Retrieves properties for a build. To request a build record, specify a
 build ID. If successful, an object containing the build properties is
 returned.
-
-Build-related operations include:
 
 =over
 
@@ -2719,8 +3118,6 @@ current usage level for the AWS account
 Service limits vary depending on region. Available regions for Amazon
 GameLift can be found in the AWS Management Console for Amazon GameLift
 (see the drop-down list in the upper right corner).
-
-Fleet-related operations include:
 
 =over
 
@@ -2845,8 +3242,6 @@ exist.
 Some API actions may limit the number of fleet IDs allowed in one
 request. If a request exceeds this limit, the request fails and the
 error message includes the maximum allowed.
-
-Fleet-related operations include:
 
 =over
 
@@ -2973,8 +3368,6 @@ Some API actions may limit the number of fleet IDs allowed in one
 request. If a request exceeds this limit, the request fails and the
 error message includes the maximum allowed.
 
-Fleet-related operations include:
-
 =over
 
 =item *
@@ -3095,8 +3488,6 @@ a time range to limit the result set. Use the pagination parameters to
 retrieve results as a set of sequential pages. If successful, a
 collection of event log entries matching the request are returned.
 
-Fleet-related operations include:
-
 =over
 
 =item *
@@ -3211,8 +3602,6 @@ get a fleet's inbound connection permissions, specify a fleet ID. If
 successful, a collection of IpPermission objects is returned for the
 requested fleet ID. If the requested fleet has been deleted, the result
 set is empty.
-
-Fleet-related operations include:
 
 =over
 
@@ -3336,8 +3725,6 @@ returned only for fleets that currently exist.
 Some API actions may limit the number of fleet IDs allowed in one
 request. If a request exceeds this limit, the request fails and the
 error message includes the maximum allowed.
-
-Fleet-related operations include:
 
 =over
 
@@ -3469,8 +3856,6 @@ session status. Use the pagination parameters to retrieve results as a
 set of sequential pages. If successful, a GameSessionDetail object is
 returned for each session matching the request.
 
-Game-session-related operations include:
-
 =over
 
 =item *
@@ -3537,8 +3922,6 @@ Returns: a L<Paws::GameLift::DescribeGameSessionPlacementOutput> instance
 Retrieves properties and current status of a game session placement
 request. To get game session placement details, specify the placement
 ID. If successful, a GameSessionPlacement object is returned.
-
-Game-session-related operations include:
 
 =over
 
@@ -3614,8 +3997,6 @@ object is returned for each requested queue. When specifying a list of
 queues, objects are returned only for queues that currently exist in
 the region.
 
-Queue-related operations include:
-
 =over
 
 =item *
@@ -3674,8 +4055,6 @@ sequential pages. If successful, a GameSession object is returned for
 each game session matching the request.
 
 I<Available in Amazon GameLift Local.>
-
-Game-session-related operations include:
 
 =over
 
@@ -3783,8 +4162,6 @@ To request matchmaking tickets, provide a list of up to 10 ticket IDs.
 If the request is successful, a ticket object is returned for each
 requested ID that currently exists.
 
-Matchmaking-related operations include:
-
 =over
 
 =item *
@@ -3840,8 +4217,6 @@ If successful, a configuration is returned for each requested name.
 When specifying a list of names, only configurations that currently
 exist are returned.
 
-Operations related to match configurations and rule sets include:
-
 =over
 
 =item *
@@ -3871,6 +4246,10 @@ DescribeMatchmakingRuleSets
 =item *
 
 ValidateMatchmakingRuleSet
+
+=item *
+
+DeleteMatchmakingRuleSet
 
 =back
 
@@ -3899,7 +4278,18 @@ or more rule set names. When requesting multiple items, use the
 pagination parameters to retrieve results as a set of sequential pages.
 If successful, a rule set is returned for each requested name.
 
-Operations related to match configurations and rule sets include:
+B<Learn more>
+
+=over
+
+=item *
+
+Build a Rule Set
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-rulesets.html)
+
+=back
+
+B<Related operations>
 
 =over
 
@@ -3930,6 +4320,10 @@ DescribeMatchmakingRuleSets
 =item *
 
 ValidateMatchmakingRuleSet
+
+=item *
+
+DeleteMatchmakingRuleSet
 
 =back
 
@@ -3972,8 +4366,6 @@ retrieve results as a set of sequential pages. If successful, a
 PlayerSession object is returned for each session matching the request.
 
 I<Available in Amazon GameLift Local.>
-
-Player-session-related operations include:
 
 =over
 
@@ -4029,8 +4421,6 @@ Returns: a L<Paws::GameLift::DescribeRuntimeConfigurationOutput> instance
 Retrieves the current run-time configuration for the specified fleet.
 The run-time configuration tells Amazon GameLift how to launch server
 processes on instances in the fleet.
-
-Fleet-related operations include:
 
 =over
 
@@ -4159,8 +4549,6 @@ scaling policies, which remains ACTIVE. To see whether a fleet's
 scaling policies are in force or suspended, call
 DescribeFleetAttributes and check the stopped actions.
 
-Operations related to fleet capacity scaling include:
-
 =over
 
 =item *
@@ -4231,8 +4619,6 @@ account. This operation returns all VPC peering authorizations and
 requests for peering. This includes those initiated and received by
 this account.
 
-VPC peering connection operations include:
-
 =over
 
 =item *
@@ -4286,8 +4672,6 @@ records. If successful, the retrieved information includes both active
 and pending connections. Active connections identify the IpV4 CIDR
 block that the VPC uses to connect.
 
-VPC peering connection operations include:
-
 =over
 
 =item *
@@ -4337,11 +4721,9 @@ automatically stores the logs in Amazon S3 and retains them for 14
 days. Use this URL to download the logs.
 
 See the AWS Service Limits
-(http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_gamelift)
+(https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_gamelift)
 page for maximum log file sizes. Log files that exceed this limit are
 not saved.
-
-Game-session-related operations include:
 
 =over
 
@@ -4422,12 +4804,13 @@ If you're making this request using the AWS CLI, saving the secret can
 be handled as part of the GetInstanceAccess request. (See the example
 later in this topic). For more information on remote access, see
 Remotely Accessing an Instance
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-remote-access.html).
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-remote-access.html).
 
-To request access to a specific instance, specify the IDs of the
-instance and the fleet it belongs to. If successful, an InstanceAccess
-object is returned containing the instance's IP address and a set of
-credentials.
+To request access to a specific instance, specify the IDs of both the
+instance and the fleet it belongs to. You can retrieve a fleet's
+instance IDs by calling DescribeInstances. If successful, an
+InstanceAccess object is returned containing the instance's IP address
+and a set of credentials.
 
 
 =head2 ListAliases
@@ -4454,8 +4837,6 @@ set by alias name and/or routing strategy type. Use the pagination
 parameters to retrieve results in sequential pages.
 
 Returned aliases are not listed in any particular order.
-
-Alias-related operations include:
 
 =over
 
@@ -4511,8 +4892,6 @@ retrieve results in a set of sequential pages.
 
 Build records are not listed in any particular order.
 
-Build-related operations include:
-
 =over
 
 =item *
@@ -4561,8 +4940,6 @@ filter the result set by build ID. Use the pagination parameters to
 retrieve results in sequential pages.
 
 Fleet records are not listed in any particular order.
-
-Fleet-related operations include:
 
 =over
 
@@ -4713,7 +5090,7 @@ the policy with DeleteScalingPolicy.
 
 Learn more about how to work with auto-scaling in Set Up Fleet
 Automatic Scaling
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-autoscaling.html).
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-autoscaling.html).
 
 B<Target-based policy>
 
@@ -4772,8 +5149,6 @@ the policy name is returned. Scaling policies are automatically in
 force as soon as they're successfully created. If the fleet's
 auto-scaling actions are temporarily suspended, the new policy will be
 in force once the fleet actions are restarted.
-
-Operations related to fleet capacity scaling include:
 
 =over
 
@@ -4866,8 +5241,6 @@ Each argument is described in detail in: L<Paws::GameLift::ResolveAlias>
 Returns: a L<Paws::GameLift::ResolveAliasOutput> instance
 
 Retrieves the fleet ID that a specified alias is currently pointing to.
-
-Alias-related operations include:
 
 =over
 
@@ -4996,8 +5369,6 @@ and combine the results. This search feature finds only game sessions
 that are in C<ACTIVE> status. To locate games in statuses other than
 active, use DescribeGameSessionDetails.
 
-Game-session-related operations include:
-
 =over
 
 =item *
@@ -5073,8 +5444,6 @@ once again initiates scaling events as triggered by the fleet's scaling
 policies. If actions on the fleet were never stopped, this operation
 will have no effect. You can view a fleet's stopped actions using
 DescribeFleetAttributes.
-
-Operations related to fleet capacity scaling include:
 
 =over
 
@@ -5195,8 +5564,10 @@ track the status of the placement request
 
 =item *
 
-(Optional) A set of IDs and player data for each player you want to
-join to the new game session
+(Optional) A set of player data and a unique player ID for each player
+that you are joining to the new game session (player data is optional,
+but if you include it, you must also provide a unique ID for each
+player)
 
 =item *
 
@@ -5212,8 +5583,6 @@ DescribeGameSessionPlacement and check the request's status. If the
 status is C<FULFILLED>, a new game session has been created and a game
 session ARN and region are referenced. If the placement request times
 out, you can resubmit the request or retry it with a different queue.
-
-Game-session-related operations include:
 
 =over
 
@@ -5300,7 +5669,7 @@ QUEUED. The ticket is placed in the matchmaker's ticket pool and
 processed. Track the status of the ticket to respond as needed. For
 more detail how to set up backfilling, see Backfill Existing Games with
 FlexMatch
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/match-backfill.html).
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-backfill.html).
 
 The process of finding backfill matches is essentially identical to the
 initial matchmaking process. The matchmaker searches the pool and
@@ -5311,9 +5680,7 @@ the match are updated with the game session's connection information,
 and the GameSession object is updated to include matchmaker data on the
 new players. For more detail on how match backfill requests are
 processed, see How Amazon GameLift FlexMatch Works
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/match-intro.html).
-
-Matchmaking-related operations include:
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-intro.html).
 
 =over
 
@@ -5370,7 +5737,7 @@ match. Match type, rules, and the queue used to place a new game
 session are defined in a C<MatchmakingConfiguration>. For complete
 information on setting up and using FlexMatch, see the topic Adding
 FlexMatch to Your Game
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/match-intro.html).
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-intro.html).
 
 To start matchmaking, provide a unique ticket ID, specify a matchmaking
 configuration, and include the players to be matched. You must also
@@ -5447,8 +5814,6 @@ game.
 
 =back
 
-Matchmaking-related operations include:
-
 =over
 
 =item *
@@ -5521,8 +5886,6 @@ Cancels a game session placement that is in C<PENDING> status. To stop
 a placement, provide the placement ID values. If successful, the
 placement is moved to C<CANCELLED> status.
 
-Game-session-related operations include:
-
 =over
 
 =item *
@@ -5591,8 +5954,6 @@ the matchmaking operation, specify the ticket ID. If successful, work
 on the ticket is stopped, and the ticket status is changed to
 C<CANCELLED>.
 
-Matchmaking-related operations include:
-
 =over
 
 =item *
@@ -5642,8 +6003,6 @@ Updates properties for an alias. To update properties, specify the
 alias ID to be updated and provide the information to be changed. To
 reassign an alias to another fleet, provide an updated routing
 strategy. If successful, the updated alias record is returned.
-
-Alias-related operations include:
 
 =over
 
@@ -5696,8 +6055,6 @@ Updates metadata in a build record, including the build name and
 version. To update the metadata, specify the build ID to update and
 provide the new values. If successful, a build object containing the
 updated metadata is returned.
-
-Build-related operations include:
 
 =over
 
@@ -5752,8 +6109,6 @@ Updates fleet properties, including name and description, for a fleet.
 To update metadata, specify the fleet ID and the property values that
 you want to change. If successful, the fleet ID for the updated fleet
 is returned.
-
-Fleet-related operations include:
 
 =over
 
@@ -5888,8 +6243,6 @@ current capacity information by calling DescribeFleetCapacity. If the
 desired instance count is higher than the instance type's limit, the
 "Limit Exceeded" exception occurs.
 
-Fleet-related operations include:
-
 =over
 
 =item *
@@ -6008,8 +6361,6 @@ C<InboundPermissionAuthorizations>, and permissions you want to remove
 in C<InboundPermissionRevocations>. Permissions to be removed must
 match existing fleet permissions. If successful, the fleet ID for the
 updated fleet is returned.
-
-Fleet-related operations include:
 
 =over
 
@@ -6134,8 +6485,6 @@ players can join the session. To update a game session, specify the
 game session ID and the values you want to change. If successful, an
 updated GameSession object is returned.
 
-Game-session-related operations include:
-
 =over
 
 =item *
@@ -6210,8 +6559,6 @@ game session requests in the queue are processed. To update settings,
 specify the queue name to be updated and provide the new settings. When
 updating destinations, provide a complete list of destinations.
 
-Queue-related operations include:
-
 =over
 
 =item *
@@ -6273,8 +6620,6 @@ Updates settings for a FlexMatch matchmaking configuration. To update
 settings, specify the configuration name to be updated and provide the
 new settings.
 
-Operations related to match configurations and rule sets include:
-
 =over
 
 =item *
@@ -6304,6 +6649,10 @@ DescribeMatchmakingRuleSets
 =item *
 
 ValidateMatchmakingRuleSet
+
+=item *
+
+DeleteMatchmakingRuleSet
 
 =back
 
@@ -6343,8 +6692,6 @@ current run-time configuration. As a result, the run-time configuration
 changes are applied gradually as existing processes shut down and new
 processes are launched in Amazon GameLift's normal process recycling
 activity.
-
-Fleet-related operations include:
 
 =over
 
@@ -6454,11 +6801,22 @@ Each argument is described in detail in: L<Paws::GameLift::ValidateMatchmakingRu
 Returns: a L<Paws::GameLift::ValidateMatchmakingRuleSetOutput> instance
 
 Validates the syntax of a matchmaking rule or rule set. This operation
-checks that the rule set uses syntactically correct JSON and that it
-conforms to allowed property expressions. To validate syntax, provide a
-rule set string.
+checks that the rule set is using syntactically correct JSON and that
+it conforms to allowed property expressions. To validate syntax,
+provide a rule set JSON string.
 
-Operations related to match configurations and rule sets include:
+B<Learn more>
+
+=over
+
+=item *
+
+Build a Rule Set
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-rulesets.html)
+
+=back
+
+B<Related operations>
 
 =over
 
@@ -6490,6 +6848,10 @@ DescribeMatchmakingRuleSets
 
 ValidateMatchmakingRuleSet
 
+=item *
+
+DeleteMatchmakingRuleSet
+
 =back
 
 
@@ -6499,6 +6861,198 @@ ValidateMatchmakingRuleSet
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllFleetAttributes(sub { },[FleetIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+
+=head2 DescribeAllFleetAttributes([FleetIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - FleetAttributes, passing the object as the first parameter, and the string 'FleetAttributes' as the second parameter 
+
+If not, it will return a a L<Paws::GameLift::DescribeFleetAttributesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllFleetCapacity(sub { },[FleetIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+
+=head2 DescribeAllFleetCapacity([FleetIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - FleetCapacity, passing the object as the first parameter, and the string 'FleetCapacity' as the second parameter 
+
+If not, it will return a a L<Paws::GameLift::DescribeFleetCapacityOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllFleetEvents(sub { },FleetId => Str, [EndTime => Str, Limit => Int, NextToken => Str, StartTime => Str])
+
+=head2 DescribeAllFleetEvents(FleetId => Str, [EndTime => Str, Limit => Int, NextToken => Str, StartTime => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Events, passing the object as the first parameter, and the string 'Events' as the second parameter 
+
+If not, it will return a a L<Paws::GameLift::DescribeFleetEventsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllFleetUtilization(sub { },[FleetIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+
+=head2 DescribeAllFleetUtilization([FleetIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - FleetUtilization, passing the object as the first parameter, and the string 'FleetUtilization' as the second parameter 
+
+If not, it will return a a L<Paws::GameLift::DescribeFleetUtilizationOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllGameSessionDetails(sub { },[AliasId => Str, FleetId => Str, GameSessionId => Str, Limit => Int, NextToken => Str, StatusFilter => Str])
+
+=head2 DescribeAllGameSessionDetails([AliasId => Str, FleetId => Str, GameSessionId => Str, Limit => Int, NextToken => Str, StatusFilter => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - GameSessionDetails, passing the object as the first parameter, and the string 'GameSessionDetails' as the second parameter 
+
+If not, it will return a a L<Paws::GameLift::DescribeGameSessionDetailsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllGameSessionQueues(sub { },[Limit => Int, Names => ArrayRef[Str|Undef], NextToken => Str])
+
+=head2 DescribeAllGameSessionQueues([Limit => Int, Names => ArrayRef[Str|Undef], NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - GameSessionQueues, passing the object as the first parameter, and the string 'GameSessionQueues' as the second parameter 
+
+If not, it will return a a L<Paws::GameLift::DescribeGameSessionQueuesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllGameSessions(sub { },[AliasId => Str, FleetId => Str, GameSessionId => Str, Limit => Int, NextToken => Str, StatusFilter => Str])
+
+=head2 DescribeAllGameSessions([AliasId => Str, FleetId => Str, GameSessionId => Str, Limit => Int, NextToken => Str, StatusFilter => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - GameSessions, passing the object as the first parameter, and the string 'GameSessions' as the second parameter 
+
+If not, it will return a a L<Paws::GameLift::DescribeGameSessionsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllInstances(sub { },FleetId => Str, [InstanceId => Str, Limit => Int, NextToken => Str])
+
+=head2 DescribeAllInstances(FleetId => Str, [InstanceId => Str, Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Instances, passing the object as the first parameter, and the string 'Instances' as the second parameter 
+
+If not, it will return a a L<Paws::GameLift::DescribeInstancesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllMatchmakingConfigurations(sub { },[Limit => Int, Names => ArrayRef[Str|Undef], NextToken => Str, RuleSetName => Str])
+
+=head2 DescribeAllMatchmakingConfigurations([Limit => Int, Names => ArrayRef[Str|Undef], NextToken => Str, RuleSetName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Configurations, passing the object as the first parameter, and the string 'Configurations' as the second parameter 
+
+If not, it will return a a L<Paws::GameLift::DescribeMatchmakingConfigurationsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllMatchmakingRuleSets(sub { },[Limit => Int, Names => ArrayRef[Str|Undef], NextToken => Str])
+
+=head2 DescribeAllMatchmakingRuleSets([Limit => Int, Names => ArrayRef[Str|Undef], NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - RuleSets, passing the object as the first parameter, and the string 'RuleSets' as the second parameter 
+
+If not, it will return a a L<Paws::GameLift::DescribeMatchmakingRuleSetsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllPlayerSessions(sub { },[GameSessionId => Str, Limit => Int, NextToken => Str, PlayerId => Str, PlayerSessionId => Str, PlayerSessionStatusFilter => Str])
+
+=head2 DescribeAllPlayerSessions([GameSessionId => Str, Limit => Int, NextToken => Str, PlayerId => Str, PlayerSessionId => Str, PlayerSessionStatusFilter => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PlayerSessions, passing the object as the first parameter, and the string 'PlayerSessions' as the second parameter 
+
+If not, it will return a a L<Paws::GameLift::DescribePlayerSessionsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllScalingPolicies(sub { },FleetId => Str, [Limit => Int, NextToken => Str, StatusFilter => Str])
+
+=head2 DescribeAllScalingPolicies(FleetId => Str, [Limit => Int, NextToken => Str, StatusFilter => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ScalingPolicies, passing the object as the first parameter, and the string 'ScalingPolicies' as the second parameter 
+
+If not, it will return a a L<Paws::GameLift::DescribeScalingPoliciesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAliases(sub { },[Limit => Int, Name => Str, NextToken => Str, RoutingStrategyType => Str])
+
+=head2 ListAllAliases([Limit => Int, Name => Str, NextToken => Str, RoutingStrategyType => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Aliases, passing the object as the first parameter, and the string 'Aliases' as the second parameter 
+
+If not, it will return a a L<Paws::GameLift::ListAliasesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllBuilds(sub { },[Limit => Int, NextToken => Str, Status => Str])
+
+=head2 ListAllBuilds([Limit => Int, NextToken => Str, Status => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Builds, passing the object as the first parameter, and the string 'Builds' as the second parameter 
+
+If not, it will return a a L<Paws::GameLift::ListBuildsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllFleets(sub { },[BuildId => Str, Limit => Int, NextToken => Str])
+
+=head2 ListAllFleets([BuildId => Str, Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - FleetIds, passing the object as the first parameter, and the string 'FleetIds' as the second parameter 
+
+If not, it will return a a L<Paws::GameLift::ListFleetsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 SearchAllGameSessions(sub { },[AliasId => Str, FilterExpression => Str, FleetId => Str, Limit => Int, NextToken => Str, SortExpression => Str])
+
+=head2 SearchAllGameSessions([AliasId => Str, FilterExpression => Str, FleetId => Str, Limit => Int, NextToken => Str, SortExpression => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - GameSessions, passing the object as the first parameter, and the string 'GameSessions' as the second parameter 
+
+If not, it will return a a L<Paws::GameLift::SearchGameSessionsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

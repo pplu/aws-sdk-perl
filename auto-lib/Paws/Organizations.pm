@@ -10,6 +10,7 @@ package Paws::Organizations;
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+       sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'TooManyRequestsException' },
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -727,7 +728,7 @@ C<organizations:AcceptHandshake> permission. If you enabled all
 features in the organization, then the user must also have the
 C<iam:CreateServiceLinkedRole> permission so that Organizations can
 create the required service-linked role named
-I<OrgsServiceLinkedRoleName>. For more information, see AWS
+I<AWSServiceRoleForOrganizations>. For more information, see AWS
 Organizations and Service-Linked Roles
 (http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integration_services.html#orgs_integration_service-linked-roles)
 in the I<AWS Organizations User Guide>.
@@ -876,29 +877,44 @@ Returns: a L<Paws::Organizations::CreateAccountResponse> instance
 
 Creates an AWS account that is automatically a member of the
 organization whose credentials made the request. This is an
-asynchronous request that AWS performs in the background. If you want
-to check the status of the request later, you need the C<OperationId>
-response element from this operation to provide as a parameter to the
-DescribeCreateAccountStatus operation.
+asynchronous request that AWS performs in the background. Because
+C<CreateAccount> operates asynchronously, it can return a successful
+completion message even though account initialization might still be in
+progress. You might need to wait a few minutes before you can
+successfully access the account. To check the status of the request, do
+one of the following:
 
-The user who calls the API for an invitation to join must have the
-C<organizations:CreateAccount> permission. If you enabled all features
-in the organization, then the user must also have the
-C<iam:CreateServiceLinkedRole> permission so that Organizations can
-create the required service-linked role named
-I<OrgsServiceLinkedRoleName>. For more information, see AWS
-Organizations and Service-Linked Roles
-(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integration_services.html#orgs_integration_service-linked-roles)
+=over
+
+=item *
+
+Use the C<OperationId> response element from this operation to provide
+as a parameter to the DescribeCreateAccountStatus operation.
+
+=item *
+
+Check the AWS CloudTrail log for the C<CreateAccountResult> event. For
+information on using AWS CloudTrail with Organizations, see Monitoring
+the Activity in Your Organization
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_monitoring.html)
 in the I<AWS Organizations User Guide>.
 
-The user in the master account who calls this API must also have the
-C<iam:CreateRole> permission because AWS Organizations preconfigures
-the new member account with a role (named
-C<OrganizationAccountAccessRole> by default) that grants users in the
-master account administrator permissions in the new member account.
-Principals in the master account can assume the role. AWS Organizations
-clones the company name and address information for the new account
-from the organization's master account.
+=back
+
+The user who calls the API to create an account must have the
+C<organizations:CreateAccount> permission. If you enabled all features
+in the organization, AWS Organizations will create the required
+service-linked role named C<AWSServiceRoleForOrganizations>. For more
+information, see AWS Organizations and Service-Linked Roles
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html#orgs_integrate_services-using_slrs)
+in the I<AWS Organizations User Guide>.
+
+AWS Organizations preconfigures the new member account with a role
+(named C<OrganizationAccountAccessRole> by default) that grants users
+in the master account administrator permissions in the new member
+account. Principals in the master account can assume the role. AWS
+Organizations clones the company name and address information for the
+new account from the organization's master account.
 
 This operation can be called only from the organization's master
 account.
@@ -915,28 +931,36 @@ in the I<AWS Organizations User Guide>.
 When you create an account in an organization using the AWS
 Organizations console, API, or CLI commands, the information required
 for the account to operate as a standalone account, such as a payment
-method and signing the End User Licence Agreement (EULA) is I<not>
+method and signing the end user license agreement (EULA) is I<not>
 automatically collected. If you must remove an account from your
 organization later, you can do so only after you provide the missing
-information. Follow the steps at To leave an organization when all
-required account information has not yet been provided
+information. Follow the steps at To leave an organization as a member
+account
 (http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info)
 in the I<AWS Organizations User Guide>.
 
 =item *
 
 If you get an exception that indicates that you exceeded your account
-limits for the organization or that the operation failed because your
-organization is still initializing, wait one hour and then try again.
-If the error persists after an hour, then contact AWS Customer Support
+limits for the organization, contact AWS Support
 (https://console.aws.amazon.com/support/home#/).
 
 =item *
 
-Because C<CreateAccount> operates asynchronously, it can return a
-successful completion message even though account initialization might
-still be in progress. You might need to wait a few minutes before you
-can successfully access the account.
+If you get an exception that indicates that the operation failed
+because your organization is still initializing, wait one hour and then
+try again. If the error persists, contact AWS Support
+(https://console.aws.amazon.com/support/home#/).
+
+=item *
+
+Using CreateAccount to create multiple temporary accounts is not
+recommended. You can only close an account from the Billing and Cost
+Management Console, and you must be signed in as the root user. For
+information on the requirements and process for closing an account, see
+Closing an AWS Account
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html)
+in the I<AWS Organizations User Guide>.
 
 =back
 
@@ -944,9 +968,9 @@ When you create a member account with this operation, you can choose
 whether to create the account with the B<IAM User and Role Access to
 Billing Information> switch enabled. If you enable it, IAM users and
 roles that have appropriate permissions can view billing information
-for the account. If you disable this, then only the account root user
-can access billing information. For information about how to disable
-this for an account, see Granting Access to Your Billing Information
+for the account. If you disable it, only the account root user can
+access billing information. For information about how to disable this
+switch for an account, see Granting Access to Your Billing Information
 and Tools
 (http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html).
 
@@ -1081,7 +1105,7 @@ Returns: nothing
 
 Deletes the organization. You can delete an organization only by using
 credentials from the master account. The organization must be empty of
-member accounts, organizational units (OUs), and policies.
+member accounts.
 
 
 =head2 DeleteOrganizationalUnit

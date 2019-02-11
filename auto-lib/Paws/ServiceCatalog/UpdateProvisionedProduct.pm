@@ -8,6 +8,7 @@ package Paws::ServiceCatalog::UpdateProvisionedProduct;
   has ProvisionedProductName => (is => 'ro', isa => 'Str');
   has ProvisioningArtifactId => (is => 'ro', isa => 'Str');
   has ProvisioningParameters => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::UpdateProvisioningParameter]');
+  has ProvisioningPreferences => (is => 'ro', isa => 'Paws::ServiceCatalog::UpdateProvisioningPreferences');
   has UpdateToken => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -51,6 +52,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                           # OPTIONAL
+      ProvisioningPreferences => {
+        StackSetAccounts              => [ 'MyAccountId', ... ],    # OPTIONAL
+        StackSetFailureToleranceCount => 1,                         # OPTIONAL
+        StackSetFailureTolerancePercentage => 1,    # max: 100; OPTIONAL
+        StackSetMaxConcurrencyCount        => 1,    # min: 1; OPTIONAL
+        StackSetMaxConcurrencyPercentage   => 1,    # min: 1, max: 100; OPTIONAL
+        StackSetOperationType =>
+          'CREATE',    # values: CREATE, UPDATE, DELETE; OPTIONAL
+        StackSetRegions => [ 'MyRegion', ... ],    # OPTIONAL
+      },    # OPTIONAL
       );
 
     # Results:
@@ -96,7 +107,7 @@ default path, and required if the product has more than one path.
 
 =head2 ProductId => Str
 
-The identifier of the provisioned product.
+The identifier of the product.
 
 
 
@@ -123,6 +134,13 @@ The identifier of the provisioning artifact.
 =head2 ProvisioningParameters => ArrayRef[L<Paws::ServiceCatalog::UpdateProvisioningParameter>]
 
 The new parameters.
+
+
+
+=head2 ProvisioningPreferences => L<Paws::ServiceCatalog::UpdateProvisioningPreferences>
+
+An object that contains information about the provisioning preferences
+for a stack set.
 
 
 

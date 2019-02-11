@@ -6,6 +6,7 @@ package Paws::CloudTrail::UpdateTrail;
   has EnableLogFileValidation => (is => 'ro', isa => 'Bool');
   has IncludeGlobalServiceEvents => (is => 'ro', isa => 'Bool');
   has IsMultiRegionTrail => (is => 'ro', isa => 'Bool');
+  has IsOrganizationTrail => (is => 'ro', isa => 'Bool');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has S3BucketName => (is => 'ro', isa => 'Str');
@@ -43,6 +44,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EnableLogFileValidation    => 1,             # OPTIONAL
       IncludeGlobalServiceEvents => 1,             # OPTIONAL
       IsMultiRegionTrail         => 1,             # OPTIONAL
+      IsOrganizationTrail        => 1,             # OPTIONAL
       KmsKeyId                   => 'MyString',    # OPTIONAL
       S3BucketName               => 'MyString',    # OPTIONAL
       S3KeyPrefix                => 'MyString',    # OPTIONAL
@@ -55,8 +57,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CloudWatchLogsRoleArn = $UpdateTrailResponse->CloudWatchLogsRoleArn;
     my $IncludeGlobalServiceEvents =
       $UpdateTrailResponse->IncludeGlobalServiceEvents;
-    my $IsMultiRegionTrail = $UpdateTrailResponse->IsMultiRegionTrail;
-    my $KmsKeyId           = $UpdateTrailResponse->KmsKeyId;
+    my $IsMultiRegionTrail  = $UpdateTrailResponse->IsMultiRegionTrail;
+    my $IsOrganizationTrail = $UpdateTrailResponse->IsOrganizationTrail;
+    my $KmsKeyId            = $UpdateTrailResponse->KmsKeyId;
     my $LogFileValidationEnabled =
       $UpdateTrailResponse->LogFileValidationEnabled;
     my $Name         = $UpdateTrailResponse->Name;
@@ -125,6 +128,20 @@ trails in other regions will be deleted.
 
 
 
+=head2 IsOrganizationTrail => Bool
+
+Specifies whether the trail is applied to all accounts in an
+organization in AWS Organizations, or only for the current AWS account.
+The default is false, and cannot be true unless the call is made on
+behalf of an AWS account that is the master account for an organization
+in AWS Organizations. If the trail is not an organization trail and
+this is set to true, the trail will be created in all AWS accounts that
+belong to the organization. If the trail is an organization trail and
+this is set to false, the trail will remain in the current AWS account
+but be deleted from all member accounts in the organization.
+
+
+
 =head2 KmsKeyId => Str
 
 Specifies the KMS key ID to use to encrypt the logs delivered by
@@ -142,11 +159,11 @@ alias/MyAliasName
 
 =item *
 
-arn:aws:kms:us-east-1:123456789012:alias/MyAliasName
+arn:aws:kms:us-east-2:123456789012:alias/MyAliasName
 
 =item *
 
-arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
+arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012
 
 =item *
 
@@ -190,7 +207,7 @@ Not be in IP address format (for example, 192.168.5.4)
 
 If C<Name> is a trail ARN, it must be in the format:
 
-C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>
+C<arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail>
 
 
 

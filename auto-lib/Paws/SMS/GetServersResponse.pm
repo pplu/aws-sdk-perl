@@ -19,22 +19,23 @@ Paws::SMS::GetServersResponse
 
 =head2 LastModifiedOn => Str
 
-
+The time when the server was last modified.
 
 
 =head2 NextToken => Str
 
-
+The token required to retrieve the next set of results. This value is
+null when there are no more results to return.
 
 
 =head2 ServerCatalogStatus => Str
 
-
+The status of the server catalog.
 
 Valid values are: C<"NOT_IMPORTED">, C<"IMPORTING">, C<"AVAILABLE">, C<"DELETED">, C<"EXPIRED">
 =head2 ServerList => ArrayRef[L<Paws::SMS::Server>]
 
-
+Information about the servers.
 
 
 =head2 _request_id => Str

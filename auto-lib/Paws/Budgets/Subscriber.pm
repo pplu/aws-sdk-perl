@@ -33,8 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Budgets::Su
 =head1 DESCRIPTION
 
 The subscriber to a budget notification. The subscriber consists of a
-subscription type and either an Amazon Simple Notification Service
-topic or an email address.
+subscription type and either an Amazon SNS topic or an email address.
 
 For example, an email subscriber would have the following parameters:
 

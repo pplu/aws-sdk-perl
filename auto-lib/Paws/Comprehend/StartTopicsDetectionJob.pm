@@ -71,7 +71,9 @@ request token, Amazon Comprehend generates one.
 
 The Amazon Resource Name (ARN) of the AWS Identity and Access
 Management (IAM) role that grants Amazon Comprehend read access to your
-input data.
+input data. For more information, see
+https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions
+(https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions).
 
 
 
@@ -95,7 +97,10 @@ The number of topics to detect.
 
 =head2 B<REQUIRED> OutputDataConfig => L<Paws::Comprehend::OutputDataConfig>
 
-Specifies where to send the output files.
+Specifies where to send the output files. The output is a compressed
+archive with two files, C<topic-terms.csv> that lists the terms
+associated with each topic, and C<doc-topics.csv> that lists the
+documents associated with each topic
 
 
 

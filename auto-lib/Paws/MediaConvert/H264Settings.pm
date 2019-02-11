@@ -4,6 +4,7 @@ package Paws::MediaConvert::H264Settings;
   has Bitrate => (is => 'ro', isa => 'Int', request_name => 'bitrate', traits => ['NameInRequest']);
   has CodecLevel => (is => 'ro', isa => 'Str', request_name => 'codecLevel', traits => ['NameInRequest']);
   has CodecProfile => (is => 'ro', isa => 'Str', request_name => 'codecProfile', traits => ['NameInRequest']);
+  has DynamicSubGop => (is => 'ro', isa => 'Str', request_name => 'dynamicSubGop', traits => ['NameInRequest']);
   has EntropyEncoding => (is => 'ro', isa => 'Str', request_name => 'entropyEncoding', traits => ['NameInRequest']);
   has FieldEncoding => (is => 'ro', isa => 'Str', request_name => 'fieldEncoding', traits => ['NameInRequest']);
   has FlickerAdaptiveQuantization => (is => 'ro', isa => 'Str', request_name => 'flickerAdaptiveQuantization', traits => ['NameInRequest']);
@@ -26,6 +27,7 @@ package Paws::MediaConvert::H264Settings;
   has ParDenominator => (is => 'ro', isa => 'Int', request_name => 'parDenominator', traits => ['NameInRequest']);
   has ParNumerator => (is => 'ro', isa => 'Int', request_name => 'parNumerator', traits => ['NameInRequest']);
   has QualityTuningLevel => (is => 'ro', isa => 'Str', request_name => 'qualityTuningLevel', traits => ['NameInRequest']);
+  has QvbrSettings => (is => 'ro', isa => 'Paws::MediaConvert::H264QvbrSettings', request_name => 'qvbrSettings', traits => ['NameInRequest']);
   has RateControlMode => (is => 'ro', isa => 'Str', request_name => 'rateControlMode', traits => ['NameInRequest']);
   has RepeatPps => (is => 'ro', isa => 'Str', request_name => 'repeatPps', traits => ['NameInRequest']);
   has SceneChangeDetect => (is => 'ro', isa => 'Str', request_name => 'sceneChangeDetect', traits => ['NameInRequest']);
@@ -95,6 +97,16 @@ multiple of 1000.
   
 
 
+=head2 DynamicSubGop => Str
+
+  Choose Adaptive to improve subjective video quality for high-motion
+content. This will cause the service to use fewer B-frames (which infer
+information based on other frames) for high-motion portions of the
+video and more B-frames for low-motion portions. The maximum number of
+B-frames is limited by the value you provide for the setting B frames
+between reference frames (numberBFramesBetweenReferenceFrames).
+
+
 =head2 EntropyEncoding => Str
 
   
@@ -122,18 +134,18 @@ multiple of 1000.
 
 =head2 FramerateDenominator => Int
 
-  When you use the API for transcode jobs that use framerate conversion,
-specify the framerate as a fraction. For example, 24000 / 1001 = 23.976
-fps. Use FramerateDenominator to specify the denominator of this
+  When you use the API for transcode jobs that use frame rate conversion,
+specify the frame rate as a fraction. For example, 24000 / 1001 =
+23.976 fps. Use FramerateDenominator to specify the denominator of this
 fraction. In this example, use 1001 for the value of
 FramerateDenominator. When you use the console for transcode jobs that
-use framerate conversion, provide the value as a decimal number for
+use frame rate conversion, provide the value as a decimal number for
 Framerate. In this example, specify 23.976.
 
 
 =head2 FramerateNumerator => Int
 
-  Framerate numerator - framerate is a fraction, e.g. 24000 / 1001 =
+  Frame rate numerator - frame rate is a fraction, e.g. 24000 / 1001 =
 23.976 fps.
 
 
@@ -181,7 +193,7 @@ megabits as 5000000.
 =head2 MaxBitrate => Int
 
   Maximum bitrate in bits/second. For example, enter five megabits per
-second as 5000000.
+second as 5000000. Required when Rate control mode is QVBR.
 
 
 =head2 MinIInterval => Int
@@ -224,6 +236,14 @@ requested if using B-frames and/or interlaced encoding.
 =head2 QualityTuningLevel => Str
 
   
+
+
+=head2 QvbrSettings => L<Paws::MediaConvert::H264QvbrSettings>
+
+  Settings for quality-defined variable bitrate encoding with the H.264
+codec. Required when you set Rate control mode to QVBR. Not valid when
+you set Rate control mode to a value other than QVBR, or when you don't
+define Rate control mode.
 
 
 =head2 RateControlMode => Str

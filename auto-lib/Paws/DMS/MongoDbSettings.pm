@@ -100,11 +100,11 @@ Default value is false.
 
 =head2 KmsKeyId => Str
 
-  The KMS key identifier that will be used to encrypt the connection
-parameters. If you do not specify a value for the KmsKeyId parameter,
-then AWS DMS will use your default encryption key. AWS KMS creates the
-default encryption key for your AWS account. Your AWS account has a
-different default encryption key for each AWS region.
+  The AWS KMS key identifier that is used to encrypt the content on the
+replication instance. If you don't specify a value for the C<KmsKeyId>
+parameter, then AWS DMS uses your default encryption key. AWS KMS
+creates the default encryption key for your AWS account. Your AWS
+account has a different default encryption key for each AWS Region.
 
 
 =head2 NestingLevel => Str

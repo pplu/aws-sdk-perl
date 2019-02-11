@@ -1,6 +1,6 @@
 package Paws::MediaConvert::VideoCodecSettings;
   use Moose;
-  has Codec => (is => 'ro', isa => 'Str', request_name => 'codec', traits => ['NameInRequest'], required => 1);
+  has Codec => (is => 'ro', isa => 'Str', request_name => 'codec', traits => ['NameInRequest']);
   has FrameCaptureSettings => (is => 'ro', isa => 'Paws::MediaConvert::FrameCaptureSettings', request_name => 'frameCaptureSettings', traits => ['NameInRequest']);
   has H264Settings => (is => 'ro', isa => 'Paws::MediaConvert::H264Settings', request_name => 'h264Settings', traits => ['NameInRequest']);
   has H265Settings => (is => 'ro', isa => 'Paws::MediaConvert::H265Settings', request_name => 'h265Settings', traits => ['NameInRequest']);
@@ -48,9 +48,10 @@ FrameCaptureSettings
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Codec => Str
+=head2 Codec => Str
 
-  
+  Specifies the video codec. This must be equal to one of the enum values
+defined by the object VideoCodec.
 
 
 =head2 FrameCaptureSettings => L<Paws::MediaConvert::FrameCaptureSettings>

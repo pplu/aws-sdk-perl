@@ -45,7 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       VPC => {
         VPCId     => 'MyVPCId',    # max: 1024; OPTIONAL
         VPCRegion => 'us-east-1'
-        , # values: us-east-1, us-east-2, us-west-1, us-west-2, eu-west-1, eu-west-2, eu-west-3, eu-central-1, ap-southeast-1, ap-southeast-2, ap-south-1, ap-northeast-1, ap-northeast-2, ap-northeast-3, sa-east-1, ca-central-1, cn-north-1min: 1, max: 64; OPTIONAL
+        , # values: us-east-1, us-east-2, us-west-1, us-west-2, eu-west-1, eu-west-2, eu-west-3, eu-central-1, ap-southeast-1, ap-southeast-2, ap-south-1, ap-northeast-1, ap-northeast-2, ap-northeast-3, eu-north-1, sa-east-1, ca-central-1, cn-north-1min: 1, max: 64; OPTIONAL
       },    # OPTIONAL
     );
 
@@ -107,18 +107,17 @@ C<HostedZoneConfig> and the other elements.
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the domain. For resource record types that include a domain
-name, specify a fully qualified domain name, for example,
-I<www.example.com>. The trailing dot is optional; Amazon Route 53
-assumes that the domain name is fully qualified. This means that Amazon
+The name of the domain. Specify a fully qualified domain name, for
+example, I<www.example.com>. The trailing dot is optional; Amazon Route
+53 assumes that the domain name is fully qualified. This means that
 Route 53 treats I<www.example.com> (without a trailing dot) and
 I<www.example.com.> (with a trailing dot) as identical.
 
 If you're creating a public hosted zone, this is the name you have
 registered with your DNS registrar. If your domain name is registered
-with a registrar other than Amazon Route 53, change the name servers
-for your domain to the set of C<NameServers> that C<CreateHostedZone>
-returns in C<DelegationSet>.
+with a registrar other than Route 53, change the name servers for your
+domain to the set of C<NameServers> that C<CreateHostedZone> returns in
+C<DelegationSet>.
 
 
 

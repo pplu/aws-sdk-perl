@@ -50,7 +50,8 @@ An error record for table-version operations.
 
 =head2 VersionId => Str
 
-  The ID value of the version in question.
+  The ID value of the version in question. A C<VersionID> is a string
+representation of an integer. Each version is incremented by 1.
 
 
 

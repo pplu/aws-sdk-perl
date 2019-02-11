@@ -11,6 +11,7 @@ package Paws::DynamoDB;
   });
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
        sub { $_[0]->code eq 'Crc32Error' },
+       sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'TransactionInProgressException' },
        sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'ProvisionedThroughputExceededException' },
   ] });
 
@@ -91,6 +92,11 @@ package Paws::DynamoDB;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::DescribeContinuousBackups', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeEndpoints {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DynamoDB::DescribeEndpoints', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeGlobalTable {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::DescribeGlobalTable', @_);
@@ -169,6 +175,16 @@ package Paws::DynamoDB;
   sub TagResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TransactGetItems {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DynamoDB::TransactGetItems', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TransactWriteItems {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DynamoDB::TransactWriteItems', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UntagResource {
@@ -253,6 +269,29 @@ package Paws::DynamoDB;
 
     return undef
   }
+  sub ListAllTagsOfResource {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTagsOfResource(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTagsOfResource(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Tags }, @{ $next_result->Tags };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+        $result = $self->ListTagsOfResource(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+    }
+
+    return undef
+  }
   sub QueryAll {
     my $self = shift;
 
@@ -313,7 +352,7 @@ package Paws::DynamoDB;
   }
 
 
-  sub operations { qw/BatchGetItem BatchWriteItem CreateBackup CreateGlobalTable CreateTable DeleteBackup DeleteItem DeleteTable DescribeBackup DescribeContinuousBackups DescribeGlobalTable DescribeGlobalTableSettings DescribeLimits DescribeTable DescribeTimeToLive GetItem ListBackups ListGlobalTables ListTables ListTagsOfResource PutItem Query RestoreTableFromBackup RestoreTableToPointInTime Scan TagResource UntagResource UpdateContinuousBackups UpdateGlobalTable UpdateGlobalTableSettings UpdateItem UpdateTable UpdateTimeToLive / }
+  sub operations { qw/BatchGetItem BatchWriteItem CreateBackup CreateGlobalTable CreateTable DeleteBackup DeleteItem DeleteTable DescribeBackup DescribeContinuousBackups DescribeEndpoints DescribeGlobalTable DescribeGlobalTableSettings DescribeLimits DescribeTable DescribeTimeToLive GetItem ListBackups ListGlobalTables ListTables ListTagsOfResource PutItem Query RestoreTableFromBackup RestoreTableToPointInTime Scan TagResource TransactGetItems TransactWriteItems UntagResource UpdateContinuousBackups UpdateGlobalTable UpdateGlobalTableSettings UpdateItem UpdateTable UpdateTimeToLive / }
 
 1;
 
@@ -705,13 +744,15 @@ matching secondary indexes across your global table.
 
 =item KeySchema => ArrayRef[L<Paws::DynamoDB::KeySchemaElement>]
 
-=item ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>
-
 =item TableName => Str
+
+=item [BillingMode => Str]
 
 =item [GlobalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndex>]]
 
 =item [LocalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::LocalSecondaryIndex>]]
+
+=item [ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>]
 
 =item [SSESpecification => L<Paws::DynamoDB::SSESpecification>]
 
@@ -892,6 +933,20 @@ time. You can restore your table to any point in time during the last
 
 You can call C<DescribeContinuousBackups> at a maximum rate of 10 times
 per second.
+
+
+=head2 DescribeEndpoints
+
+
+
+
+
+
+Each argument is described in detail in: L<Paws::DynamoDB::DescribeEndpoints>
+
+Returns: a L<Paws::DynamoDB::DescribeEndpointsResponse> instance
+
+Returns the regional endpoint information.
 
 
 =head2 DescribeGlobalTable
@@ -1107,6 +1162,8 @@ value.
 =head2 ListBackups
 
 =over
+
+=item [BackupType => Str]
 
 =item [ExclusiveStartBackupArn => Str]
 
@@ -1661,6 +1718,154 @@ For an overview on tagging DynamoDB resources, see Tagging for DynamoDB
 in the I<Amazon DynamoDB Developer Guide>.
 
 
+=head2 TransactGetItems
+
+=over
+
+=item TransactItems => ArrayRef[L<Paws::DynamoDB::TransactGetItem>]
+
+=item [ReturnConsumedCapacity => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DynamoDB::TransactGetItems>
+
+Returns: a L<Paws::DynamoDB::TransactGetItemsOutput> instance
+
+C<TransactGetItems> is a synchronous operation that atomically
+retrieves multiple items from one or more tables (but not from indexes)
+in a single account and region. A C<TransactGetItems> call can contain
+up to 10 C<TransactGetItem> objects, each of which contains a C<Get>
+structure that specifies an item to retrieve from a table in the
+account and region. A call to C<TransactGetItems> cannot retrieve items
+from tables in more than one AWS account or region.
+
+DynamoDB rejects the entire C<TransactGetItems> request if any of the
+following is true:
+
+=over
+
+=item *
+
+A conflicting operation is in the process of updating an item to be
+read.
+
+=item *
+
+There is insufficient provisioned capacity for the transaction to be
+completed.
+
+=item *
+
+There is a user error, such as an invalid data format.
+
+=back
+
+
+
+=head2 TransactWriteItems
+
+=over
+
+=item TransactItems => ArrayRef[L<Paws::DynamoDB::TransactWriteItem>]
+
+=item [ClientRequestToken => Str]
+
+=item [ReturnConsumedCapacity => Str]
+
+=item [ReturnItemCollectionMetrics => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DynamoDB::TransactWriteItems>
+
+Returns: a L<Paws::DynamoDB::TransactWriteItemsOutput> instance
+
+C<TransactWriteItems> is a synchronous write operation that groups up
+to 10 action requests. These actions can target items in different
+tables, but not in different AWS accounts or regions, and no two
+actions can target the same item. For example, you cannot both
+C<ConditionCheck> and C<Update> the same item.
+
+The actions are completed atomically so that either all of them
+succeed, or all of them fail. They are defined by the following
+objects:
+
+=over
+
+=item *
+
+C<Put> E<151> Initiates a C<PutItem> operation to write a new item.
+This structure specifies the primary key of the item to be written, the
+name of the table to write it in, an optional condition expression that
+must be satisfied for the write to succeed, a list of the item's
+attributes, and a field indicating whether or not to retrieve the
+item's attributes if the condition is not met.
+
+=item *
+
+C<Update> E<151> Initiates an C<UpdateItem> operation to update an
+existing item. This structure specifies the primary key of the item to
+be updated, the name of the table where it resides, an optional
+condition expression that must be satisfied for the update to succeed,
+an expression that defines one or more attributes to be updated, and a
+field indicating whether or not to retrieve the item's attributes if
+the condition is not met.
+
+=item *
+
+C<Delete> E<151> Initiates a C<DeleteItem> operation to delete an
+existing item. This structure specifies the primary key of the item to
+be deleted, the name of the table where it resides, an optional
+condition expression that must be satisfied for the deletion to
+succeed, and a field indicating whether or not to retrieve the item's
+attributes if the condition is not met.
+
+=item *
+
+C<ConditionCheck> E<151> Applies a condition to an item that is not
+being modified by the transaction. This structure specifies the primary
+key of the item to be checked, the name of the table where it resides,
+a condition expression that must be satisfied for the transaction to
+succeed, and a field indicating whether or not to retrieve the item's
+attributes if the condition is not met.
+
+=back
+
+DynamoDB rejects the entire C<TransactWriteItems> request if any of the
+following is true:
+
+=over
+
+=item *
+
+A condition in one of the condition expressions is not met.
+
+=item *
+
+A conflicting operation is in the process of updating the same item.
+
+=item *
+
+There is insufficient provisioned capacity for the transaction to be
+completed.
+
+=item *
+
+An item size becomes too large (bigger than 400 KB), a Local Secondary
+Index (LSI) becomes too large, or a similar validation error occurs
+because of changes made by the transaction.
+
+=item *
+
+There is a user error, such as an invalid data format.
+
+=back
+
+
+
 =head2 UntagResource
 
 =over
@@ -1769,7 +1974,11 @@ write capacity units.
 
 =item GlobalTableName => Str
 
+=item [GlobalTableBillingMode => Str]
+
 =item [GlobalTableGlobalSecondaryIndexSettingsUpdate => ArrayRef[L<Paws::DynamoDB::GlobalTableGlobalSecondaryIndexSettingsUpdate>]]
+
+=item [GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate => L<Paws::DynamoDB::AutoScalingSettingsUpdate>]
 
 =item [GlobalTableProvisionedWriteCapacityUnits => Int]
 
@@ -1839,9 +2048,13 @@ C<UpdateItem> operation using the C<ReturnValues> parameter.
 
 =item [AttributeDefinitions => ArrayRef[L<Paws::DynamoDB::AttributeDefinition>]]
 
+=item [BillingMode => Str]
+
 =item [GlobalSecondaryIndexUpdates => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndexUpdate>]]
 
 =item [ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>]
+
+=item [SSESpecification => L<Paws::DynamoDB::SSESpecification>]
 
 =item [StreamSpecification => L<Paws::DynamoDB::StreamSpecification>]
 
@@ -1938,9 +2151,9 @@ in the Amazon DynamoDB Developer Guide.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 ListAllBackups(sub { },[ExclusiveStartBackupArn => Str, Limit => Int, TableName => Str, TimeRangeLowerBound => Str, TimeRangeUpperBound => Str])
+=head2 ListAllBackups(sub { },[BackupType => Str, ExclusiveStartBackupArn => Str, Limit => Int, TableName => Str, TimeRangeLowerBound => Str, TimeRangeUpperBound => Str])
 
-=head2 ListAllBackups([ExclusiveStartBackupArn => Str, Limit => Int, TableName => Str, TimeRangeLowerBound => Str, TimeRangeUpperBound => Str])
+=head2 ListAllBackups([BackupType => Str, ExclusiveStartBackupArn => Str, Limit => Int, TableName => Str, TimeRangeLowerBound => Str, TimeRangeUpperBound => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1960,6 +2173,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - TableNames, passing the object as the first parameter, and the string 'TableNames' as the second parameter 
 
 If not, it will return a a L<Paws::DynamoDB::ListTablesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTagsOfResource(sub { },ResourceArn => Str, [NextToken => Str])
+
+=head2 ListAllTagsOfResource(ResourceArn => Str, [NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Tags, passing the object as the first parameter, and the string 'Tags' as the second parameter 
+
+If not, it will return a a L<Paws::DynamoDB::ListTagsOfResourceOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 QueryAll(sub { },TableName => Str, [AttributesToGet => ArrayRef[Str|Undef], ConditionalOperator => Str, ConsistentRead => Bool, ExclusiveStartKey => L<Paws::DynamoDB::Key>, ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>, ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>, FilterExpression => Str, IndexName => Str, KeyConditionExpression => Str, KeyConditions => L<Paws::DynamoDB::KeyConditions>, Limit => Int, ProjectionExpression => Str, QueryFilter => L<Paws::DynamoDB::FilterConditionMap>, ReturnConsumedCapacity => Str, ScanIndexForward => Bool, Select => Str])

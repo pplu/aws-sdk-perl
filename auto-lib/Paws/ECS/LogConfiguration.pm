@@ -42,10 +42,10 @@ container.
 
   The log driver to use for the container. The valid values listed for
 this parameter are log drivers that the Amazon ECS container agent can
-communicate with by default. If using the Fargate launch type, the only
-supported value is C<awslogs>. For more information about using the
-C<awslogs> driver, see Using the awslogs Log Driver
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_awslogs.html)
+communicate with by default. If you are using the Fargate launch type,
+the only supported value is C<awslogs>. For more information about
+using the C<awslogs> driver, see Using the awslogs Log Driver
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_awslogs.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 If you have a custom driver that is not listed above that you would
@@ -59,8 +59,8 @@ currently support running modified copies of this software.
 This parameter requires version 1.18 of the Docker Remote API or
 greater on your container instance. To check the Docker Remote API
 version on your container instance, log in to your container instance
-and run the following command: C<sudo docker version | grep "Server API
-version">
+and run the following command: C<sudo docker version --format
+'{{.Server.APIVersion}}'>
 
 
 =head2 Options => L<Paws::ECS::LogConfigurationOptionsMap>
@@ -69,7 +69,8 @@ version">
 requires version 1.19 of the Docker Remote API or greater on your
 container instance. To check the Docker Remote API version on your
 container instance, log in to your container instance and run the
-following command: C<sudo docker version | grep "Server API version">
+following command: C<sudo docker version --format
+'{{.Server.APIVersion}}'>
 
 
 

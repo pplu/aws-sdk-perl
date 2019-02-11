@@ -23,23 +23,23 @@ Attributes include the following:
 
 =item *
 
-C<EventEndpointCreated> -- Topic ARN to which EndpointCreated event
-notifications should be sent.
+C<EventEndpointCreated> E<ndash> Topic ARN to which EndpointCreated
+event notifications should be sent.
 
 =item *
 
-C<EventEndpointDeleted> -- Topic ARN to which EndpointDeleted event
-notifications should be sent.
+C<EventEndpointDeleted> E<ndash> Topic ARN to which EndpointDeleted
+event notifications should be sent.
 
 =item *
 
-C<EventEndpointUpdated> -- Topic ARN to which EndpointUpdate event
-notifications should be sent.
+C<EventEndpointUpdated> E<ndash> Topic ARN to which EndpointUpdate
+event notifications should be sent.
 
 =item *
 
-C<EventDeliveryFailure> -- Topic ARN to which DeliveryFailure event
-notifications should be sent upon Direct Publish delivery failure
+C<EventDeliveryFailure> E<ndash> Topic ARN to which DeliveryFailure
+event notifications should be sent upon Direct Publish delivery failure
 (permanent) to one of the application's endpoints.
 
 =back

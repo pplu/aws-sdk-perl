@@ -3,6 +3,7 @@ package Paws::S3::PutBucketPolicy;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has ConfirmRemoveSelfBucketAccess => (is => 'ro', isa => 'Bool', header_name => 'x-amz-confirm-remove-self-bucket-access', traits => ['ParamInHeader']);
+  has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
   has Policy => (is => 'ro', isa => 'Str', required => 1);
 
@@ -37,6 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Bucket                        => 'MyBucketName',
       Policy                        => 'MyPolicy',
       ConfirmRemoveSelfBucketAccess => 1,                 # OPTIONAL
+      ContentLength                 => 1,                 # OPTIONAL
       ContentMD5                    => 'MyContentMD5',    # OPTIONAL
     );
 
@@ -56,6 +58,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 Set this parameter to true to confirm that you want to remove your
 permissions to change this bucket policy in the future.
+
+
+
+=head2 ContentLength => Int
+
+Size of the body in bytes.
 
 
 

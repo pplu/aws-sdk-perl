@@ -39,13 +39,16 @@ Information about the build badge for the build project.
 
 =head2 BadgeEnabled => Bool
 
-  Set this to true to generate a publicly-accessible URL for your
+  Set this to true to generate a publicly accessible URL for your
 project's build badge.
 
 
 =head2 BadgeRequestUrl => Str
 
   The publicly-accessible URL through which you can access the build
+badge for your project.
+
+The publicly accessible URL through which you can access the build
 badge for your project.
 
 

@@ -7,6 +7,7 @@ package Paws::MediaConvert::InputTemplate;
   has DenoiseFilter => (is => 'ro', isa => 'Str', request_name => 'denoiseFilter', traits => ['NameInRequest']);
   has FilterEnable => (is => 'ro', isa => 'Str', request_name => 'filterEnable', traits => ['NameInRequest']);
   has FilterStrength => (is => 'ro', isa => 'Int', request_name => 'filterStrength', traits => ['NameInRequest']);
+  has ImageInserter => (is => 'ro', isa => 'Paws::MediaConvert::ImageInserter', request_name => 'imageInserter', traits => ['NameInRequest']);
   has InputClippings => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::InputClipping]', request_name => 'inputClippings', traits => ['NameInRequest']);
   has ProgramNumber => (is => 'ro', isa => 'Int', request_name => 'programNumber', traits => ['NameInRequest']);
   has PsiControl => (is => 'ro', isa => 'Str', request_name => 'psiControl', traits => ['NameInRequest']);
@@ -88,6 +89,13 @@ captions selectors per input.
   Use Filter strength (FilterStrength) to adjust the magnitude the input
 filter settings (Deblock and Denoise). The range is -5 to 5. Default is
 0.
+
+
+=head2 ImageInserter => L<Paws::MediaConvert::ImageInserter>
+
+  Enable the image inserter feature to include a graphic overlay on your
+video. Enable or disable this feature for each input individually. This
+setting is disabled by default.
 
 
 =head2 InputClippings => ArrayRef[L<Paws::MediaConvert::InputClipping>]

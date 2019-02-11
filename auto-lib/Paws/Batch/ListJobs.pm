@@ -5,6 +5,7 @@ package Paws::Batch::ListJobs;
   has JobQueue => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobQueue');
   has JobStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobStatus');
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
+  has MultiNodeJobId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'multiNodeJobId');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
 
   use MooseX::ClassAttribute;
@@ -96,6 +97,14 @@ seen by sending another C<ListJobs> request with the returned
 C<nextToken> value. This value can be between 1 and 100. If this
 parameter is not used, then C<ListJobs> returns up to 100 results and a
 C<nextToken> value if applicable.
+
+
+
+=head2 MultiNodeJobId => Str
+
+The job ID for a multi-node parallel job. Specifying a multi-node
+parallel job ID with this parameter lists all nodes that are associated
+with the specified job.
 
 
 

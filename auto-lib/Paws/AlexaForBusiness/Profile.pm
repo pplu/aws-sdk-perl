@@ -1,7 +1,9 @@
 package Paws::AlexaForBusiness::Profile;
   use Moose;
   has Address => (is => 'ro', isa => 'Str');
+  has AddressBookArn => (is => 'ro', isa => 'Str');
   has DistanceUnit => (is => 'ro', isa => 'Str');
+  has IsDefault => (is => 'ro', isa => 'Bool');
   has MaxVolumeLimit => (is => 'ro', isa => 'Int');
   has ProfileArn => (is => 'ro', isa => 'Str');
   has ProfileName => (is => 'ro', isa => 'Str');
@@ -50,9 +52,19 @@ A room profile with attributes.
   The address of a room profile.
 
 
+=head2 AddressBookArn => Str
+
+  The ARN of the address book.
+
+
 =head2 DistanceUnit => Str
 
   The distance unit of a room profile.
+
+
+=head2 IsDefault => Bool
+
+  Retrieves if the profile is default or not.
 
 
 =head2 MaxVolumeLimit => Int

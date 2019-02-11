@@ -97,7 +97,7 @@ information, see Instances
 
 =head2 Arn => Str
 
-  
+  The instance's Amazon Resource Number (ARN).
 
 
 =head2 AutoScalingType => Str

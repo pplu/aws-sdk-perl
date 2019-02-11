@@ -46,10 +46,6 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 The ID of the LAG.
 
-Example: dxlag-abc123
-
-Default: None
-
 
 
 

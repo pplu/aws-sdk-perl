@@ -41,8 +41,8 @@ specification to an XssMatchSet or delete it from an C<XssMatchSet>.
 
 =head2 B<REQUIRED> Action => Str
 
-  Specify C<INSERT> to add a XssMatchSetUpdate to an XssMatchSet. Use
-C<DELETE> to remove a C<XssMatchSetUpdate> from an C<XssMatchSet>.
+  Specify C<INSERT> to add an XssMatchSetUpdate to an XssMatchSet. Use
+C<DELETE> to remove an C<XssMatchSetUpdate> from an C<XssMatchSet>.
 
 
 =head2 B<REQUIRED> XssMatchTuple => L<Paws::WAF::XssMatchTuple>

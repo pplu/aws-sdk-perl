@@ -44,7 +44,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam
 The unique identifier of the service-specific credential. You can get
 this value by calling ListServiceSpecificCredentials.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters that can
 consist of any upper or lowercased letter or digit.
 
@@ -56,7 +56,7 @@ The name of the IAM user associated with the service-specific
 credential. If this value is not specified, then the operation assumes
 the user whose credentials are used to call the operation.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
 also include any of the following characters: _+=,.@-

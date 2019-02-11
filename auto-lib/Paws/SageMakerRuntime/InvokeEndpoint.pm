@@ -4,6 +4,7 @@ package Paws::SageMakerRuntime::InvokeEndpoint;
   has Accept => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Accept');
   has Body => (is => 'ro', isa => 'Str', required => 1);
   has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type');
+  has CustomAttributes => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-SageMaker-Custom-Attributes');
   has EndpointName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'EndpointName', required => 1);
 
   use MooseX::ClassAttribute;
@@ -32,15 +33,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $runtime.sagemaker = Paws->service('SageMakerRuntime');
     my $InvokeEndpointOutput = $runtime . sagemaker->InvokeEndpoint(
-      Body         => 'BlobBodyBlob',
-      EndpointName => 'MyEndpointName',
-      Accept       => 'MyHeader',         # OPTIONAL
-      ContentType  => 'MyHeader',         # OPTIONAL
+      Body             => 'BlobBodyBlob',
+      EndpointName     => 'MyEndpointName',
+      Accept           => 'MyHeader',                    # OPTIONAL
+      ContentType      => 'MyHeader',                    # OPTIONAL
+      CustomAttributes => 'MyCustomAttributesHeader',    # OPTIONAL
     );
 
     # Results:
-    my $Body        = $InvokeEndpointOutput->Body;
-    my $ContentType = $InvokeEndpointOutput->ContentType;
+    my $Body             = $InvokeEndpointOutput->Body;
+    my $ContentType      = $InvokeEndpointOutput->ContentType;
+    my $CustomAttributes = $InvokeEndpointOutput->CustomAttributes;
     my $InvokedProductionVariant =
       $InvokeEndpointOutput->InvokedProductionVariant;
 
@@ -64,11 +67,21 @@ Provides input data, in the format specified in the C<ContentType>
 request header. Amazon SageMaker passes all of the data in the body to
 the model.
 
+For information about the format of the request body, see Common Data
+FormatsE<mdash>Inference
+(http://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html).
+
 
 
 =head2 ContentType => Str
 
 The MIME type of the input data in the request body.
+
+
+
+=head2 CustomAttributes => Str
+
+
 
 
 

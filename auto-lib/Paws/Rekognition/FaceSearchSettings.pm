@@ -33,7 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 =head1 DESCRIPTION
 
 Input face recognition parameters for an Amazon Rekognition stream
-processor. C<FaceRecognitionSettings> is a request parameter for .
+processor. C<FaceRecognitionSettings> is a request parameter for
+CreateStreamProcessor.
 
 =head1 ATTRIBUTES
 

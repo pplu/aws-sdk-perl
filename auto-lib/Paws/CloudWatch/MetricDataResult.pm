@@ -38,7 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatch:
 
 A C<GetMetricData> call returns an array of C<MetricDataResult>
 structures. Each of these structures includes the data points for that
-metric, along with the time stamps of those data points and other
+metric, along with the timestamps of those data points and other
 identifying information.
 
 =head1 ATTRIBUTES
@@ -72,16 +72,16 @@ Retry your request using C<NextToken>, if present.
 
 =head2 Timestamps => ArrayRef[Str|Undef]
 
-  The time stamps for the data points, formatted in Unix timestamp
-format. The number of time stamps always matches the number of values
-and the value for Timestamps[x] is Values[x].
+  The timestamps for the data points, formatted in Unix timestamp format.
+The number of timestamps always matches the number of values and the
+value for Timestamps[x] is Values[x].
 
 
 =head2 Values => ArrayRef[Num]
 
   The data points for the metric corresponding to C<Timestamps>. The
-number of values always matches the number of time stamps and the time
-stamp for Values[x] is Timestamps[x].
+number of values always matches the number of timestamps and the
+timestamp for Values[x] is Timestamps[x].
 
 
 

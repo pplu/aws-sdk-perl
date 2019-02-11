@@ -28,7 +28,8 @@ The full SHA of the commit that contains this file change.
 
 =head2 B<REQUIRED> TreeId => Str
 
-Tree information for the commit that contains this file change.
+The full SHA-1 pointer of the tree information for the commit that
+contains this file change.
 
 
 =head2 _request_id => Str

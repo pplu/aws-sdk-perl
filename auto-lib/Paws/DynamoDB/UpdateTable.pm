@@ -2,8 +2,10 @@
 package Paws::DynamoDB::UpdateTable;
   use Moose;
   has AttributeDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::AttributeDefinition]');
+  has BillingMode => (is => 'ro', isa => 'Str');
   has GlobalSecondaryIndexUpdates => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::GlobalSecondaryIndexUpdate]');
   has ProvisionedThroughput => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughput');
+  has SSESpecification => (is => 'ro', isa => 'Paws::DynamoDB::SSESpecification');
   has StreamSpecification => (is => 'ro', isa => 'Paws::DynamoDB::StreamSpecification');
   has TableName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -64,6 +66,32 @@ index.
 
 
 
+=head2 BillingMode => Str
+
+Controls how you are charged for read and write throughput and how you
+manage capacity. When switching from pay-per-request to provisioned
+capacity, initial provisioned capacity values must be set. The initial
+provisioned capacity values are estimated based on the consumed read
+and write capacity of your table and global secondary indexes over the
+past 30 minutes.
+
+=over
+
+=item *
+
+C<PROVISIONED> - Sets the billing mode to C<PROVISIONED>. We recommend
+using C<PROVISIONED> for predictable workloads.
+
+=item *
+
+C<PAY_PER_REQUEST> - Sets the billing mode to C<PAY_PER_REQUEST>. We
+recommend using C<PAY_PER_REQUEST> for unpredictable workloads.
+
+=back
+
+
+Valid values are: C<"PROVISIONED">, C<"PAY_PER_REQUEST">
+
 =head2 GlobalSecondaryIndexUpdates => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndexUpdate>]
 
 An array of one or more global secondary indexes for the table. For
@@ -96,6 +124,12 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 The new provisioned throughput settings for the specified table or
 index.
+
+
+
+=head2 SSESpecification => L<Paws::DynamoDB::SSESpecification>
+
+The new server-side encryption settings for the specified table.
 
 
 

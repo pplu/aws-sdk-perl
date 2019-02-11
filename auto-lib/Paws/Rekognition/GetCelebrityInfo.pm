@@ -47,7 +47,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rek
 =head2 B<REQUIRED> Id => Str
 
 The ID for the celebrity. You get the celebrity ID from a call to the
-operation, which recognizes celebrities in an image.
+RecognizeCelebrities operation, which recognizes celebrities in an
+image.
 
 
 

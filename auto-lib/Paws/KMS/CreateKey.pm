@@ -2,6 +2,7 @@
 package Paws::KMS::CreateKey;
   use Moose;
   has BypassPolicyLockoutSafetyCheck => (is => 'ro', isa => 'Bool');
+  has CustomKeyStoreId => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has KeyUsage => (is => 'ro', isa => 'Str');
   has Origin => (is => 'ro', isa => 'Str');
@@ -67,6 +68,30 @@ The default value is false.
 
 
 
+=head2 CustomKeyStoreId => Str
+
+Creates the CMK in the specified custom key store
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html)
+and the key material in its associated AWS CloudHSM cluster. To create
+a CMK in a custom key store, you must also specify the C<Origin>
+parameter with a value of C<AWS_CLOUDHSM>. The AWS CloudHSM cluster
+that is associated with the custom key store must have at least two
+active HSMs, each in a different Availability Zone in the Region.
+
+To find the ID of a custom key store, use the DescribeCustomKeyStores
+operation.
+
+The response includes the custom key store ID and the ID of the AWS
+CloudHSM cluster.
+
+This operation is part of the Custom Key Store feature
+(http://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html)
+feature in AWS KMS, which combines the convenience and extensive
+integration of AWS KMS with the isolation and control of a
+single-tenant key store.
+
+
+
 =head2 Description => Str
 
 A description of the CMK.
@@ -86,19 +111,27 @@ Valid values are: C<"ENCRYPT_DECRYPT">
 
 =head2 Origin => Str
 
-The source of the CMK's key material.
+The source of the CMK's key material. You cannot change the origin
+after you create the CMK.
 
-The default is C<AWS_KMS>, which means AWS KMS creates the key
-material. When this parameter is set to C<EXTERNAL>, the request
-creates a CMK without key material so that you can import key material
-from your existing key management infrastructure. For more information
-about importing key material into AWS KMS, see Importing Key Material
+The default is C<AWS_KMS>, which means AWS KMS creates the key material
+in its own key store.
+
+When the parameter value is C<EXTERNAL>, AWS KMS creates a CMK without
+key material so that you can import key material from your existing key
+management infrastructure. For more information about importing key
+material into AWS KMS, see Importing Key Material
 (http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html)
 in the I<AWS Key Management Service Developer Guide>.
 
-The CMK's C<Origin> is immutable and is set when the CMK is created.
+When the parameter value is C<AWS_CLOUDHSM>, AWS KMS creates the CMK in
+a AWS KMS custom key store
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html)
+and creates its key material in the associated AWS CloudHSM cluster.
+You must also use the C<CustomKeyStoreId> parameter to identify the
+custom key store.
 
-Valid values are: C<"AWS_KMS">, C<"EXTERNAL">
+Valid values are: C<"AWS_KMS">, C<"EXTERNAL">, C<"AWS_CLOUDHSM">
 
 =head2 Policy => Str
 

@@ -2,15 +2,16 @@ package Paws::Batch::ContainerProperties;
   use Moose;
   has Command => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'command', traits => ['NameInRequest']);
   has Environment => (is => 'ro', isa => 'ArrayRef[Paws::Batch::KeyValuePair]', request_name => 'environment', traits => ['NameInRequest']);
-  has Image => (is => 'ro', isa => 'Str', request_name => 'image', traits => ['NameInRequest'], required => 1);
+  has Image => (is => 'ro', isa => 'Str', request_name => 'image', traits => ['NameInRequest']);
+  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
   has JobRoleArn => (is => 'ro', isa => 'Str', request_name => 'jobRoleArn', traits => ['NameInRequest']);
-  has Memory => (is => 'ro', isa => 'Int', request_name => 'memory', traits => ['NameInRequest'], required => 1);
+  has Memory => (is => 'ro', isa => 'Int', request_name => 'memory', traits => ['NameInRequest']);
   has MountPoints => (is => 'ro', isa => 'ArrayRef[Paws::Batch::MountPoint]', request_name => 'mountPoints', traits => ['NameInRequest']);
   has Privileged => (is => 'ro', isa => 'Bool', request_name => 'privileged', traits => ['NameInRequest']);
   has ReadonlyRootFilesystem => (is => 'ro', isa => 'Bool', request_name => 'readonlyRootFilesystem', traits => ['NameInRequest']);
   has Ulimits => (is => 'ro', isa => 'ArrayRef[Paws::Batch::Ulimit]', request_name => 'ulimits', traits => ['NameInRequest']);
   has User => (is => 'ro', isa => 'Str', request_name => 'user', traits => ['NameInRequest']);
-  has Vcpus => (is => 'ro', isa => 'Int', request_name => 'vcpus', traits => ['NameInRequest'], required => 1);
+  has Vcpus => (is => 'ro', isa => 'Int', request_name => 'vcpus', traits => ['NameInRequest']);
   has Volumes => (is => 'ro', isa => 'ArrayRef[Paws::Batch::Volume]', request_name => 'volumes', traits => ['NameInRequest']);
 1;
 
@@ -79,7 +80,7 @@ convention is reserved for variables that are set by the AWS Batch
 service.
 
 
-=head2 B<REQUIRED> Image => Str
+=head2 Image => Str
 
   The image used to start a container. This string is passed directly to
 the Docker daemon. Images in the Docker Hub registry are available by
@@ -121,13 +122,20 @@ name (for example, C<quay.io/assemblyline/ubuntu>).
 
 
 
+=head2 InstanceType => Str
+
+  The instance type to use for a multi-node parallel job. Currently all
+node groups in a multi-node parallel job must use the same instance
+type. This parameter is not valid for single-node container jobs.
+
+
 =head2 JobRoleArn => Str
 
   The Amazon Resource Name (ARN) of the IAM role that the container can
 assume for AWS permissions.
 
 
-=head2 B<REQUIRED> Memory => Int
+=head2 Memory => Int
 
   The hard limit (in MiB) of memory to present to the container. If your
 container attempts to exceed the memory specified here, the container
@@ -202,7 +210,7 @@ and the C<--user> option to docker run
 (https://docs.docker.com/engine/reference/run/).
 
 
-=head2 B<REQUIRED> Vcpus => Int
+=head2 Vcpus => Int
 
   The number of vCPUs reserved for the container. This parameter maps to
 C<CpuShares> in the Create a container

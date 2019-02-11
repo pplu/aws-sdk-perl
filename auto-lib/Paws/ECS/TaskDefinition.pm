@@ -5,8 +5,10 @@ package Paws::ECS::TaskDefinition;
   has Cpu => (is => 'ro', isa => 'Str', request_name => 'cpu', traits => ['NameInRequest']);
   has ExecutionRoleArn => (is => 'ro', isa => 'Str', request_name => 'executionRoleArn', traits => ['NameInRequest']);
   has Family => (is => 'ro', isa => 'Str', request_name => 'family', traits => ['NameInRequest']);
+  has IpcMode => (is => 'ro', isa => 'Str', request_name => 'ipcMode', traits => ['NameInRequest']);
   has Memory => (is => 'ro', isa => 'Str', request_name => 'memory', traits => ['NameInRequest']);
   has NetworkMode => (is => 'ro', isa => 'Str', request_name => 'networkMode', traits => ['NameInRequest']);
+  has PidMode => (is => 'ro', isa => 'Str', request_name => 'pidMode', traits => ['NameInRequest']);
   has PlacementConstraints => (is => 'ro', isa => 'ArrayRef[Paws::ECS::TaskDefinitionPlacementConstraint]', request_name => 'placementConstraints', traits => ['NameInRequest']);
   has RequiresAttributes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Attribute]', request_name => 'requiresAttributes', traits => ['NameInRequest']);
   has RequiresCompatibilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'requiresCompatibilities', traits => ['NameInRequest']);
@@ -54,7 +56,7 @@ Details of a task definition.
 
   The launch type to use with your task. For more information, see Amazon
 ECS Launch Types
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
@@ -64,17 +66,17 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 different containers that make up your task. For more information about
 container definition parameters and defaults, see Amazon ECS Task
 Definitions
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 =head2 Cpu => Str
 
-  The number of C<cpu> units used by the task. If using the EC2 launch
-type, this field is optional and any value can be used. If using the
-Fargate launch type, this field is required and you must use one of the
-following values, which determines your range of valid values for the
-C<memory> parameter:
+  The number of C<cpu> units used by the task. If you are using the EC2
+launch type, this field is optional and any value can be used. If you
+are using the Fargate launch type, this field is required and you must
+use one of the following values, which determines your range of valid
+values for the C<memory> parameter:
 
 =over
 
@@ -116,6 +118,50 @@ Amazon ECS container agent and the Docker daemon can assume.
 =head2 Family => Str
 
   The family of your task definition, used as the definition name.
+
+
+=head2 IpcMode => Str
+
+  The IPC resource namespace to use for the containers in the task. The
+valid values are C<host>, C<task>, or C<none>. If C<host> is specified,
+then all containers within the tasks that specified the C<host> IPC
+mode on the same container instance share the same IPC resources with
+the host Amazon EC2 instance. If C<task> is specified, all containers
+within the specified task share the same IPC resources. If C<none> is
+specified, then IPC resources within the containers of a task are
+private and not shared with other containers in a task or on the
+container instance. If no value is specified, then the IPC resource
+namespace sharing depends on the Docker daemon setting on the container
+instance. For more information, see IPC settings
+(https://docs.docker.com/engine/reference/run/#ipc-settings---ipc) in
+the I<Docker run reference>.
+
+If the C<host> IPC mode is used, be aware that there is a heightened
+risk of undesired IPC namespace expose. For more information, see
+Docker security (https://docs.docker.com/engine/security/security/).
+
+If you are setting namespaced kernel parameters using C<systemControls>
+for the containers in the task, the following will apply to your IPC
+resource namespace. For more information, see System Controls
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
+
+=over
+
+=item *
+
+For tasks that use the C<host> IPC mode, IPC namespace related
+C<systemControls> are not supported.
+
+=item *
+
+For tasks that use the C<task> IPC mode, IPC namespace related
+C<systemControls> will apply to all containers within a task.
+
+=back
+
+This parameter is not supported for Windows containers or tasks using
+the Fargate launch type.
 
 
 =head2 Memory => Str
@@ -161,15 +207,15 @@ Available C<cpu> values: 4096 (4 vCPU)
 
   The Docker networking mode to use for the containers in the task. The
 valid values are C<none>, C<bridge>, C<awsvpc>, and C<host>. The
-default Docker network mode is C<bridge>. If using the Fargate launch
-type, the C<awsvpc> network mode is required. If using the EC2 launch
-type, any network mode can be used. If the network mode is set to
-C<none>, you can't specify port mappings in your container definitions,
-and the task's containers do not have external connectivity. The
-C<host> and C<awsvpc> network modes offer the highest networking
-performance for containers because they use the EC2 network stack
-instead of the virtualized network stack provided by the C<bridge>
-mode.
+default Docker network mode is C<bridge>. If you are using the Fargate
+launch type, the C<awsvpc> network mode is required. If you are using
+the EC2 launch type, any network mode can be used. If the network mode
+is set to C<none>, you cannot specify port mappings in your container
+definitions, and the tasks containers do not have external
+connectivity. The C<host> and C<awsvpc> network modes offer the highest
+networking performance for containers because they use the EC2 network
+stack instead of the virtualized network stack provided by the
+C<bridge> mode.
 
 With the C<host> and C<awsvpc> network modes, exposed container ports
 are mapped directly to the corresponding host port (for the C<host>
@@ -177,18 +223,18 @@ network mode) or the attached elastic network interface port (for the
 C<awsvpc> network mode), so you cannot take advantage of dynamic host
 port mappings.
 
-If the network mode is C<awsvpc>, the task is allocated an Elastic
-Network Interface, and you must specify a NetworkConfiguration when you
-create a service or run a task with the task definition. For more
-information, see Task Networking
+If the network mode is C<awsvpc>, the task is allocated an elastic
+network interface, and you must specify a NetworkConfiguration value
+when you create a service or run a task with the task definition. For
+more information, see Task Networking
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
-Currently, only the Amazon ECS-optimized AMI, other Amazon Linux
-variants with the C<ecs-init> package, or AWS Fargate infrastructure
-support the C<awsvpc> network mode.
+Currently, only Amazon ECS-optimized AMIs, other Amazon Linux variants
+with the C<ecs-init> package, or AWS Fargate infrastructure support the
+C<awsvpc> network mode.
 
-If the network mode is C<host>, you can't run multiple instantiations
+If the network mode is C<host>, you cannot run multiple instantiations
 of the same task on a single container instance when port mappings are
 used.
 
@@ -203,31 +249,52 @@ For more information, see Network settings
 I<Docker run reference>.
 
 
+=head2 PidMode => Str
+
+  The process namespace to use for the containers in the task. The valid
+values are C<host> or C<task>. If C<host> is specified, then all
+containers within the tasks that specified the C<host> PID mode on the
+same container instance share the same IPC resources with the host
+Amazon EC2 instance. If C<task> is specified, all containers within the
+specified task share the same process namespace. If no value is
+specified, the default is a private namespace. For more information,
+see PID settings
+(https://docs.docker.com/engine/reference/run/#pid-settings---pid) in
+the I<Docker run reference>.
+
+If the C<host> PID mode is used, be aware that there is a heightened
+risk of undesired process namespace expose. For more information, see
+Docker security (https://docs.docker.com/engine/security/security/).
+
+This parameter is not supported for Windows containers or tasks using
+the Fargate launch type.
+
+
 =head2 PlacementConstraints => ArrayRef[L<Paws::ECS::TaskDefinitionPlacementConstraint>]
 
   An array of placement constraint objects to use for tasks. This field
-is not valid if using the Fargate launch type for your task.
+is not valid if you are using the Fargate launch type for your task.
 
 
 =head2 RequiresAttributes => ArrayRef[L<Paws::ECS::Attribute>]
 
   The container instance attributes required by your task. This field is
-not valid if using the Fargate launch type for your task.
+not valid if you are using the Fargate launch type for your task.
 
 
 =head2 RequiresCompatibilities => ArrayRef[Str|Undef]
 
-  The launch type the task is using.
+  The launch type that the task is using.
 
 
 =head2 Revision => Int
 
   The revision of the task in a particular family. The revision is a
 version number of a task definition in a family. When you register a
-task definition for the first time, the revision is C<1>; each time you
-register a new revision of a task definition in the same family, the
-revision value always increases by one (even if you have deregistered
-previous revisions in this family).
+task definition for the first time, the revision is C<1>. Each time
+that you register a new revision of a task definition in the same
+family, the revision value always increases by one, even if you have
+deregistered previous revisions in this family.
 
 
 =head2 Status => Str
@@ -251,7 +318,7 @@ option is set when you launch the Amazon ECS-optimized Windows AMI.
 Your containers must also run some configuration code in order to take
 advantage of the feature. For more information, see Windows IAM Roles
 for Tasks
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/windows_task_IAM_roles.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/windows_task_IAM_roles.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
@@ -264,7 +331,7 @@ parameters are not supported.
 
 For more information about volume definition parameters and defaults,
 see Amazon ECS Task Definitions
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 

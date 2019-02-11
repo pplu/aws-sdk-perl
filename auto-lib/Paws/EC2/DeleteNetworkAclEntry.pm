@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # ACL.
     $ec2->DeleteNetworkAclEntry(
       {
-        'Egress'       => true,
+        'Egress'       => 1,
         'NetworkAclId' => 'acl-5fb85d36',
         'RuleNumber'   => 100
       }

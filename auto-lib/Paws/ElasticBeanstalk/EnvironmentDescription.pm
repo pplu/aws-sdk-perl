@@ -122,7 +122,7 @@ C<Green>: Indicates the environment is healthy and fully functional.
 
 C<Grey>: Default health for a new environment. The environment is not
 fully launched and health checks have not started or health checks are
-suspended during an C<UpdateEnvironment> or C<RestartEnvironement>
+suspended during an C<UpdateEnvironment> or C<RestartEnvironment>
 request.
 
 =back
@@ -136,7 +136,7 @@ Returns the health status of the application running in your
 environment. For more information, see Health Colors and Statuses
 (http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html).
 
-Valid values are: C<"NoData">, C<"Unknown">, C<"Pending">, C<"Ok">, C<"Info">, C<"Warning">, C<"Degraded">, C<"Severe">
+Valid values are: C<"NoData">, C<"Unknown">, C<"Pending">, C<"Ok">, C<"Info">, C<"Warning">, C<"Degraded">, C<"Severe">, C<"Suspended">
 =head2 PlatformArn => Str
 
 The ARN of the platform.

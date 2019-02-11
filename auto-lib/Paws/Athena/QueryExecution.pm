@@ -4,6 +4,7 @@ package Paws::Athena::QueryExecution;
   has QueryExecutionContext => (is => 'ro', isa => 'Paws::Athena::QueryExecutionContext');
   has QueryExecutionId => (is => 'ro', isa => 'Str');
   has ResultConfiguration => (is => 'ro', isa => 'Paws::Athena::ResultConfiguration');
+  has StatementType => (is => 'ro', isa => 'Str');
   has Statistics => (is => 'ro', isa => 'Paws::Athena::QueryExecutionStatistics');
   has Status => (is => 'ro', isa => 'Paws::Athena::QueryExecutionStatus');
 1;
@@ -62,10 +63,19 @@ Information about a single instance of a query execution.
 encryption option, if any, used for query results.
 
 
+=head2 StatementType => Str
+
+  The type of query statement that was run. C<DDL> indicates DDL query
+statements. C<DML> indicates DML (Data Manipulation Language) query
+statements, such as C<CREATE TABLE AS SELECT>. C<UTILITY> indicates
+query statements other than DDL and DML, such as C<SHOW CREATE TABLE>,
+or C<DESCRIBE E<lt>tableE<gt>>.
+
+
 =head2 Statistics => L<Paws::Athena::QueryExecutionStatistics>
 
   The amount of data scanned during the query execution and the amount of
-time that it took to execute.
+time that it took to execute, and the type of statement that was run.
 
 
 =head2 Status => L<Paws::Athena::QueryExecutionStatus>

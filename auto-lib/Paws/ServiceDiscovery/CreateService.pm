@@ -3,10 +3,11 @@ package Paws::ServiceDiscovery::CreateService;
   use Moose;
   has CreatorRequestId => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
-  has DnsConfig => (is => 'ro', isa => 'Paws::ServiceDiscovery::DnsConfig', required => 1);
+  has DnsConfig => (is => 'ro', isa => 'Paws::ServiceDiscovery::DnsConfig');
   has HealthCheckConfig => (is => 'ro', isa => 'Paws::ServiceDiscovery::HealthCheckConfig');
   has HealthCheckCustomConfig => (is => 'ro', isa => 'Paws::ServiceDiscovery::HealthCheckCustomConfig');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has NamespaceId => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -24,7 +25,7 @@ Paws::ServiceDiscovery::CreateService - Arguments for method CreateService on L<
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreateService on the
-L<Amazon Route 53 Auto Naming|Paws::ServiceDiscovery> service. Use the attributes of this class
+L<AWS Cloud Map|Paws::ServiceDiscovery> service. Use the attributes of this class
 as arguments to method CreateService.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateService.
@@ -33,7 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $servicediscovery = Paws->service('ServiceDiscovery');
     my $CreateServiceResponse = $servicediscovery->CreateService(
-      DnsConfig => {
+      Name             => 'MyServiceName',
+      CreatorRequestId => 'MyResourceId',             # OPTIONAL
+      Description      => 'MyResourceDescription',    # OPTIONAL
+      DnsConfig        => {
         DnsRecords => [
           {
             TTL  => 1,        # max: 2147483647
@@ -44,18 +48,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ],
         NamespaceId => 'MyResourceId',    # max: 64
         RoutingPolicy => 'MULTIVALUE',  # values: MULTIVALUE, WEIGHTED; OPTIONAL
-      },
-      Name              => 'MyServiceName',
-      CreatorRequestId  => 'MyResourceId',             # OPTIONAL
-      Description       => 'MyResourceDescription',    # OPTIONAL
+      },    # OPTIONAL
       HealthCheckConfig => {
+        Type             => 'HTTP',              # values: HTTP, HTTPS, TCP
         FailureThreshold => 1,                   # min: 1, max: 10; OPTIONAL
         ResourcePath     => 'MyResourcePath',    # max: 255; OPTIONAL
-        Type => 'HTTP',    # values: HTTP, HTTPS, TCP; OPTIONAL
       },    # OPTIONAL
       HealthCheckCustomConfig => {
         FailureThreshold => 1,    # min: 1, max: 10; OPTIONAL
       },    # OPTIONAL
+      NamespaceId => 'MyResourceId',    # OPTIONAL
     );
 
     # Results:
@@ -84,34 +86,48 @@ A description for the service.
 
 
 
-=head2 B<REQUIRED> DnsConfig => L<Paws::ServiceDiscovery::DnsConfig>
+=head2 DnsConfig => L<Paws::ServiceDiscovery::DnsConfig>
 
-A complex type that contains information about the records that you
-want Route 53 to create when you register an instance.
+A complex type that contains information about the Amazon Route 53
+records that you want AWS Cloud Map to create when you register an
+instance.
 
 
 
 =head2 HealthCheckConfig => L<Paws::ServiceDiscovery::HealthCheckConfig>
 
 I<Public DNS namespaces only.> A complex type that contains settings
-for an optional health check. If you specify settings for a health
-check, Route 53 associates the health check with all the records that
-you specify in C<DnsConfig>.
+for an optional Route 53 health check. If you specify settings for a
+health check, AWS Cloud Map associates the health check with all the
+Route 53 DNS records that you specify in C<DnsConfig>.
 
-For information about the charges for health checks, see Route 53
-Pricing (http://aws.amazon.com/route53/pricing).
+If you specify a health check configuration, you can specify either
+C<HealthCheckCustomConfig> or C<HealthCheckConfig> but not both.
+
+For information about the charges for health checks, see AWS Cloud Map
+Pricing (http://aws.amazon.com/cloud-map/pricing/).
 
 
 
 =head2 HealthCheckCustomConfig => L<Paws::ServiceDiscovery::HealthCheckCustomConfig>
 
+A complex type that contains information about an optional custom
+health check.
 
+If you specify a health check configuration, you can specify either
+C<HealthCheckCustomConfig> or C<HealthCheckConfig> but not both.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
 The name that you want to assign to the service.
+
+
+
+=head2 NamespaceId => Str
+
+The ID of the namespace that you want to use to create the service.
 
 
 

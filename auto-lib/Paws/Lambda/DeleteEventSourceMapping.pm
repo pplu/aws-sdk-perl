@@ -58,7 +58,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 B<REQUIRED> UUID => Str
 
-The event source mapping ID.
+The identifier of the event source mapping.
 
 
 

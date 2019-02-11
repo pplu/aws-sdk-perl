@@ -3,6 +3,7 @@ package Paws::Batch::RegisterJobDefinition;
   use Moose;
   has ContainerProperties => (is => 'ro', isa => 'Paws::Batch::ContainerProperties', traits => ['NameInRequest'], request_name => 'containerProperties');
   has JobDefinitionName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobDefinitionName', required => 1);
+  has NodeProperties => (is => 'ro', isa => 'Paws::Batch::NodeProperties', traits => ['NameInRequest'], request_name => 'nodeProperties');
   has Parameters => (is => 'ro', isa => 'Paws::Batch::ParametersMap', traits => ['NameInRequest'], request_name => 'parameters');
   has RetryStrategy => (is => 'ro', isa => 'Paws::Batch::RetryStrategy', traits => ['NameInRequest'], request_name => 'retryStrategy');
   has Timeout => (is => 'ro', isa => 'Paws::Batch::JobTimeout', traits => ['NameInRequest'], request_name => 'timeout');
@@ -63,8 +64,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/bat
 
 =head2 ContainerProperties => L<Paws::Batch::ContainerProperties>
 
-An object with various properties specific for container-based jobs.
-This parameter is required if the C<type> parameter is C<container>.
+An object with various properties specific to single-node
+container-based jobs. If the job definition's C<type> parameter is
+C<container>, then you must specify either C<containerProperties> or
+C<nodeProperties>.
 
 
 
@@ -73,6 +76,18 @@ This parameter is required if the C<type> parameter is C<container>.
 The name of the job definition to register. Up to 128 letters
 (uppercase and lowercase), numbers, hyphens, and underscores are
 allowed.
+
+
+
+=head2 NodeProperties => L<Paws::Batch::NodeProperties>
+
+An object with various properties specific to multi-node parallel jobs.
+If you specify node properties for a job, it becomes a multi-node
+parallel job. For more information, see Multi-node Parallel Jobs
+(http://docs.aws.amazon.com/batch/latest/userguide/multi-node-parallel-jobs.html)
+in the I<AWS Batch User Guide>. If the job definition's C<type>
+parameter is C<container>, then you must specify either
+C<containerProperties> or C<nodeProperties>.
 
 
 
@@ -112,7 +127,7 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 The type of job definition.
 
-Valid values are: C<"container">
+Valid values are: C<"container">, C<"multinode">
 
 
 =head1 SEE ALSO

@@ -63,108 +63,93 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 B<REQUIRED> Action => Str
 
-The AWS Lambda action you want to allow in this statement. Each Lambda
-action is a string starting with C<lambda:> followed by the API name .
-For example, C<lambda:CreateFunction>. You can use wildcard
-(C<lambda:*>) to grant permission for all AWS Lambda actions.
+The action that the principal can use on the function. For example,
+C<lambda:InvokeFunction> or C<lambda:GetFunction>.
 
 
 
 =head2 EventSourceToken => Str
 
-A unique token that must be supplied by the principal invoking the
-function. This is currently only used for Alexa Smart Home functions.
+For Alexa Smart Home functions, a token that must be supplied by the
+invoker.
 
 
 
 =head2 B<REQUIRED> FunctionName => Str
 
-Name of the Lambda function whose resource policy you are updating by
-adding a new permission.
+The name of the Lambda function, version, or alias.
 
-You can specify a function name (for example, C<Thumbnail>) or you can
-specify Amazon Resource Name (ARN) of the function (for example,
-C<arn:aws:lambda:us-west-2:account-id:function:ThumbNail>). AWS Lambda
-also allows you to specify partial ARN (for example,
-C<account-id:Thumbnail>). Note that the length constraint applies only
-to the ARN. If you specify only the function name, it is limited to 64
-characters in length.
+B<Name formats>
+
+=over
+
+=item *
+
+B<Function name> - C<my-function> (name-only), C<my-function:v1> (with
+alias).
+
+=item *
+
+B<Function ARN> -
+C<arn:aws:lambda:us-west-2:123456789012:function:my-function>.
+
+=item *
+
+B<Partial ARN> - C<123456789012:function:my-function>.
+
+=back
+
+You can append a version number or alias to any of the formats. The
+length constraint applies only to the full ARN. If you specify only the
+function name, it is limited to 64 characters in length.
 
 
 
 =head2 B<REQUIRED> Principal => Str
 
-The principal who is getting this permission. It can be Amazon S3
-service Principal (C<s3.amazonaws.com>) if you want Amazon S3 to invoke
-the function, an AWS account ID if you are granting cross-account
-permission, or any valid AWS service principal such as
-C<sns.amazonaws.com>. For example, you might want to allow a custom
-application in another AWS account to push events to AWS Lambda by
-invoking your function.
+The AWS service or account that invokes the function. If you specify a
+service, use C<SourceArn> or C<SourceAccount> to limit who can invoke
+the function through that service.
 
 
 
 =head2 Qualifier => Str
 
-You can use this optional query parameter to describe a qualified ARN
-using a function version or an alias name. The permission will then
-apply to the specific qualified ARN. For example, if you specify
-function version 2 as the qualifier, then permission applies only when
-request is made using qualified function ARN:
-
-C<arn:aws:lambda:aws-region:acct-id:function:function-name:2>
-
-If you specify an alias name, for example C<PROD>, then the permission
-is valid only for requests made using the alias ARN:
-
-C<arn:aws:lambda:aws-region:acct-id:function:function-name:PROD>
-
-If the qualifier is not specified, the permission is valid only when
-requests is made using unqualified function ARN.
-
-C<arn:aws:lambda:aws-region:acct-id:function:function-name>
+Specify a version or alias to add permissions to a published version of
+the function.
 
 
 
 =head2 RevisionId => Str
 
-An optional value you can use to ensure you are updating the latest
-update of the function version or alias. If the C<RevisionID> you pass
-doesn't match the latest C<RevisionId> of the function or alias, it
-will fail with an error message, advising you to retrieve the latest
-function version or alias C<RevisionID> using either or .
+Only update the policy if the revision ID matches the ID specified. Use
+this option to avoid modifying a policy that has changed since you last
+read it.
 
 
 
 =head2 SourceAccount => Str
 
-This parameter is used for S3 and SES. The AWS account ID (without a
-hyphen) of the source owner. For example, if the C<SourceArn>
-identifies a bucket, then this is the bucket owner's account ID. You
-can use this additional condition to ensure the bucket you specify is
-owned by a specific account (it is possible the bucket owner deleted
-the bucket and some other AWS account created the bucket). You can also
-use this condition to specify all sources (that is, you don't specify
-the C<SourceArn>) owned by a specific account.
+For AWS services, the ID of the account that owns the resource. Use
+instead of C<SourceArn> to grant permission to resources owned by
+another account (e.g. all of an account's Amazon S3 buckets). Or use
+together with C<SourceArn> to ensure that the resource is owned by the
+specified account. For example, an Amazon S3 bucket could be deleted by
+its owner and recreated by another account.
 
 
 
 =head2 SourceArn => Str
 
-This is optional; however, when granting permission to invoke your
-function, you should specify this field with the Amazon Resource Name
-(ARN) as its value. This ensures that only events generated from the
-specified source can invoke the function.
-
-If you add a permission without providing the source ARN, any AWS
-account that creates a mapping to your function ARN can send events to
-invoke your Lambda function.
+For AWS services, the ARN of the AWS resource that invokes the
+function. For example, an Amazon S3 bucket or Amazon SNS topic.
 
 
 
 =head2 B<REQUIRED> StatementId => Str
 
-A unique statement identifier.
+A statement identifier that differentiates the statement from others in
+the same policy.
 
 
 

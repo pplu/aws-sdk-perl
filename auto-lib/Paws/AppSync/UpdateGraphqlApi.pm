@@ -38,21 +38,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name               => 'MyString',
       AuthenticationType => 'API_KEY',    # OPTIONAL
       LogConfig          => {
-        cloudWatchLogsRoleArn => 'MyString',
-        fieldLogLevel         => 'NONE',       # values: NONE, ERROR, ALL
+        CloudWatchLogsRoleArn => 'MyString',
+        FieldLogLevel         => 'NONE',       # values: NONE, ERROR, ALL
 
       },    # OPTIONAL
       OpenIDConnectConfig => {
-        issuer   => 'MyString',
-        authTTL  => 1,            # OPTIONAL
-        clientId => 'MyString',
-        iatTTL   => 1,            # OPTIONAL
+        Issuer   => 'MyString',
+        AuthTTL  => 1,            # OPTIONAL
+        ClientId => 'MyString',
+        IatTTL   => 1,            # OPTIONAL
       },    # OPTIONAL
       UserPoolConfig => {
-        awsRegion        => 'MyString',
-        defaultAction    => 'ALLOW',      # values: ALLOW, DENY
-        userPoolId       => 'MyString',
-        appIdClientRegex => 'MyString',
+        AwsRegion        => 'MyString',
+        DefaultAction    => 'ALLOW',      # values: ALLOW, DENY
+        UserPoolId       => 'MyString',
+        AppIdClientRegex => 'MyString',
       },    # OPTIONAL
     );
 
@@ -81,7 +81,7 @@ Valid values are: C<"API_KEY">, C<"AWS_IAM">, C<"AMAZON_COGNITO_USER_POOLS">, C<
 
 =head2 LogConfig => L<Paws::AppSync::LogConfig>
 
-The Amazon CloudWatch logs configuration for the C<GraphqlApi> object.
+The Amazon CloudWatch Logs configuration for the C<GraphqlApi> object.
 
 
 
@@ -93,14 +93,13 @@ The new name for the C<GraphqlApi> object.
 
 =head2 OpenIDConnectConfig => L<Paws::AppSync::OpenIDConnectConfig>
 
-The Open Id Connect configuration configuration for the C<GraphqlApi>
-object.
+The OpenID Connect configuration for the C<GraphqlApi> object.
 
 
 
 =head2 UserPoolConfig => L<Paws::AppSync::UserPoolConfig>
 
-The new Amazon Cognito User Pool configuration for the C<GraphqlApi>
+The new Amazon Cognito user pool configuration for the C<GraphqlApi>
 object.
 
 

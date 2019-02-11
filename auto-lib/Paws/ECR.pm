@@ -100,6 +100,11 @@ package Paws::ECR;
     my $call_object = $self->new_with_coercions('Paws::ECR::ListImages', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECR::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutImage {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECR::PutImage', @_);
@@ -118,6 +123,16 @@ package Paws::ECR;
   sub StartLifecyclePolicyPreview {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECR::StartLifecyclePolicyPreview', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECR::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECR::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UploadLayerPart {
@@ -197,7 +212,7 @@ package Paws::ECR;
   }
 
 
-  sub operations { qw/BatchCheckLayerAvailability BatchDeleteImage BatchGetImage CompleteLayerUpload CreateRepository DeleteLifecyclePolicy DeleteRepository DeleteRepositoryPolicy DescribeImages DescribeRepositories GetAuthorizationToken GetDownloadUrlForLayer GetLifecyclePolicy GetLifecyclePolicyPreview GetRepositoryPolicy InitiateLayerUpload ListImages PutImage PutLifecyclePolicy SetRepositoryPolicy StartLifecyclePolicyPreview UploadLayerPart / }
+  sub operations { qw/BatchCheckLayerAvailability BatchDeleteImage BatchGetImage CompleteLayerUpload CreateRepository DeleteLifecyclePolicy DeleteRepository DeleteRepositoryPolicy DescribeImages DescribeRepositories GetAuthorizationToken GetDownloadUrlForLayer GetLifecyclePolicy GetLifecyclePolicyPreview GetRepositoryPolicy InitiateLayerUpload ListImages ListTagsForResource PutImage PutLifecyclePolicy SetRepositoryPolicy StartLifecyclePolicyPreview TagResource UntagResource UploadLayerPart / }
 
 1;
 
@@ -349,6 +364,8 @@ cases, you should use the C<docker> CLI to pull, tag, and push images.
 =over
 
 =item RepositoryName => Str
+
+=item [Tags => ArrayRef[L<Paws::ECR::Tag>]]
 
 
 =back
@@ -638,6 +655,22 @@ them. Or, you can filter your results to return only C<TAGGED> images
 to list all of the tags in your repository.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECR::ListTagsForResource>
+
+Returns: a L<Paws::ECR::ListTagsForResourceResponse> instance
+
+List the tags for an Amazon ECR resource.
+
+
 =head2 PutImage
 
 =over
@@ -729,6 +762,44 @@ Returns: a L<Paws::ECR::StartLifecyclePolicyPreviewResponse> instance
 
 Starts a preview of the specified lifecycle policy. This allows you to
 see the results before creating the lifecycle policy.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => ArrayRef[L<Paws::ECR::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECR::TagResource>
+
+Returns: a L<Paws::ECR::TagResourceResponse> instance
+
+Adds specified tags to a resource with the specified ARN. Existing tags
+on a resource are not changed if they are not specified in the request
+parameters.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECR::UntagResource>
+
+Returns: a L<Paws::ECR::UntagResourceResponse> instance
+
+Deletes specified tags from a resource.
 
 
 =head2 UploadLayerPart

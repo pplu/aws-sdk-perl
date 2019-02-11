@@ -48,7 +48,7 @@ C<DescribeTopicDetectionJob> operation.
 =back
 
 
-Valid values are: C<"SUBMITTED">, C<"IN_PROGRESS">, C<"COMPLETED">, C<"FAILED">
+Valid values are: C<"SUBMITTED">, C<"IN_PROGRESS">, C<"COMPLETED">, C<"FAILED">, C<"STOP_REQUESTED">, C<"STOPPED">
 =head2 _request_id => Str
 
 

@@ -35,11 +35,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
+      ],                           # OPTIONAL
       FleetIds   => [ 'MyFleetIdentifier', ... ],    # OPTIONAL
       MaxResults => 1,                               # OPTIONAL
       NextToken  => 'MyString',                      # OPTIONAL
@@ -69,6 +71,37 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
 One or more filters.
+
+=over
+
+=item *
+
+C<activity-status> - The progress of the EC2 Fleet ( C<error> |
+C<pending-fulfillment> | C<pending-termination> | C<fulfilled>).
+
+=item *
+
+C<excess-capacity-termination-policy> - Indicates whether to terminate
+running instances if the target capacity is decreased below the current
+EC2 Fleet size (C<true> | C<false>).
+
+=item *
+
+C<fleet-state> - The state of the EC2 Fleet (C<submitted> | C<active> |
+C<deleted> | C<failed> | C<deleted-running> | C<deleted-terminating> |
+C<modifying>).
+
+=item *
+
+C<replace-unhealthy-instances> - Indicates whether EC2 Fleet should
+replace unhealthy instances (C<true> | C<false>).
+
+=item *
+
+C<type> - The type of request (C<instant> | C<request> | C<maintain>).
+
+=back
+
 
 
 

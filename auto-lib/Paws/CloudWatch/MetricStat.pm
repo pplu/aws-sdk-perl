@@ -48,7 +48,7 @@ dimensions.
 
 =head2 B<REQUIRED> Period => Int
 
-  The period to use when retrieving the metric.
+  The period, in seconds, to use when retrieving the metric.
 
 
 =head2 B<REQUIRED> Stat => Str

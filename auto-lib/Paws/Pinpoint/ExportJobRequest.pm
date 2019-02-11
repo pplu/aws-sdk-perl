@@ -3,6 +3,7 @@ package Paws::Pinpoint::ExportJobRequest;
   has RoleArn => (is => 'ro', isa => 'Str');
   has S3UrlPrefix => (is => 'ro', isa => 'Str');
   has SegmentId => (is => 'ro', isa => 'Str');
+  has SegmentVersion => (is => 'ro', isa => 'Int');
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Pinpoint::ExportJobRequest object:
 
-  $service_obj->Method(Att1 => { RoleArn => $value, ..., SegmentId => $value  });
+  $service_obj->Method(Att1 => { RoleArn => $value, ..., SegmentVersion => $value  });
 
 =head3 Results returned from an API call
 
@@ -33,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::E
 
 =head1 DESCRIPTION
 
-This class has no description
+Export job request.
 
 =head1 ATTRIBUTES
 
@@ -55,8 +56,13 @@ Amazon Pinpoint will export endpoints to this location.
 
 =head2 SegmentId => Str
 
-  The ID of the segment to export endpoints from. If not present all
-endpoints will be exported.
+  The ID of the segment to export endpoints from. If not present, Amazon
+Pinpoint exports all of the endpoints that belong to the application.
+
+
+=head2 SegmentVersion => Int
+
+  The version of the segment to export if specified.
 
 
 

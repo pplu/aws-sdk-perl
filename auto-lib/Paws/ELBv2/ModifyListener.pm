@@ -83,27 +83,36 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 =head2 Certificates => ArrayRef[L<Paws::ELBv2::Certificate>]
 
-[HTTPS listeners] The default SSL server certificate. You must provide
-exactly one certificate. To create a certificate list, use
-AddListenerCertificates.
+[HTTPS and TLS listeners] The default SSL server certificate. You must
+provide exactly one certificate. Set C<CertificateArn> to the
+certificate ARN but do not set C<IsDefault>.
+
+To create a certificate list, use AddListenerCertificates.
 
 
 
 =head2 DefaultActions => ArrayRef[L<Paws::ELBv2::Action>]
 
 The actions for the default rule. The rule must include one forward
-action.
+action or one or more fixed-response actions.
 
-If the action type is C<forward>, you can specify a single target
-group. The protocol of the target group must be HTTP or HTTPS for an
-Application Load Balancer or TCP for a Network Load Balancer.
+If the action type is C<forward>, you specify a target group. The
+protocol of the target group must be HTTP or HTTPS for an Application
+Load Balancer. The protocol of the target group must be TCP or TLS for
+a Network Load Balancer.
 
-If the action type is C<authenticate-oidc>, you can use an identity
-provider that is OpenID Connect (OIDC) compliant to authenticate users
-as they access your application.
+[HTTPS listeners] If the action type is C<authenticate-oidc>, you
+authenticate users through an identity provider that is OpenID Connect
+(OIDC) compliant.
 
-If the action type is C<authenticate-cognito>, you can use Amazon
-Cognito to authenticate users as they access your application.
+[HTTPS listeners] If the action type is C<authenticate-cognito>, you
+authenticate users through the user pools supported by Amazon Cognito.
+
+[Application Load Balancer] If the action type is C<redirect>, you
+redirect specified client requests from one URL to another.
+
+[Application Load Balancer] If the action type is C<fixed-response>,
+you drop specified client requests and return a custom HTTP response.
 
 
 
@@ -122,15 +131,16 @@ The port for connections from clients to the load balancer.
 =head2 Protocol => Str
 
 The protocol for connections from clients to the load balancer.
-Application Load Balancers support HTTP and HTTPS and Network Load
-Balancers support TCP.
+Application Load Balancers support the HTTP and HTTPS protocols.
+Network Load Balancers support the TCP and TLS protocols.
 
-Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">
+Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">
 
 =head2 SslPolicy => Str
 
-[HTTPS listeners] The security policy that defines which protocols and
-ciphers are supported. For more information, see Security Policies
+[HTTPS and TLS listeners] The security policy that defines which
+protocols and ciphers are supported. For more information, see Security
+Policies
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies)
 in the I<Application Load Balancers Guide>.
 

@@ -1,5 +1,6 @@
 package Paws::IoT::JobExecutionsRolloutConfig;
   use Moose;
+  has ExponentialRate => (is => 'ro', isa => 'Paws::IoT::ExponentialRolloutRate', request_name => 'exponentialRate', traits => ['NameInRequest']);
   has MaximumPerMinute => (is => 'ro', isa => 'Int', request_name => 'maximumPerMinute', traits => ['NameInRequest']);
 1;
 
@@ -20,20 +21,26 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT::JobExecutionsRolloutConfig object:
 
-  $service_obj->Method(Att1 => { MaximumPerMinute => $value, ..., MaximumPerMinute => $value  });
+  $service_obj->Method(Att1 => { ExponentialRate => $value, ..., MaximumPerMinute => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::JobExecutionsRolloutConfig object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->MaximumPerMinute
+  $result->Att1->ExponentialRate
 
 =head1 DESCRIPTION
 
 Allows you to create a staged rollout of a job.
 
 =head1 ATTRIBUTES
+
+
+=head2 ExponentialRate => L<Paws::IoT::ExponentialRolloutRate>
+
+  The rate of increase for a job rollout. This parameter allows you to
+define an exponential rate for a job rollout.
 
 
 =head2 MaximumPerMinute => Int

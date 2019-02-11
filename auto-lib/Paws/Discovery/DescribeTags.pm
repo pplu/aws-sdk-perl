@@ -32,8 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeTagsResponse = $discovery->DescribeTags(
       Filters => [
         {
-          name   => 'MyFilterName',
-          values => [ 'MyFilterValue', ... ],
+          Name   => 'MyFilterName',
+          Values => [ 'MyFilterValue', ... ],
 
         },
         ...

@@ -64,6 +64,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sns
 
 The message you want to send.
 
+The C<Message> parameter is always a string. If you set
+C<MessageStructure> to C<json>, you must string-encode the C<Message>
+parameter.
+
 If you are publishing to a topic and you want to send the same message
 to all transport protocols, include the text of the message as a String
 value. If you want to send different messages for each transport
@@ -77,18 +81,22 @@ Constraints:
 =item *
 
 With the exception of SMS, messages must be UTF-8 encoded strings and
-at most 256 KB in size (262144 bytes, not 262144 characters).
+at most 256 KB in size (262,144 bytes, not 262,144 characters).
 
 =item *
 
-For SMS, each message can contain up to 140 bytes, and the character
-limit depends on the encoding scheme. For example, an SMS message can
+For SMS, each message can contain up to 140 characters. This character
+limit depends on the encoding schema. For example, an SMS message can
 contain 160 GSM characters, 140 ASCII characters, or 70 UCS-2
-characters. If you publish a message that exceeds the size limit,
-Amazon SNS sends it as multiple messages, each fitting within the size
-limit. Messages are not cut off in the middle of a word but on
-whole-word boundaries. The total size limit for a single SMS publish
-action is 1600 bytes.
+characters.
+
+If you publish a message that exceeds this size limit, Amazon SNS sends
+the message as multiple messages, each fitting within the size limit.
+Messages aren't truncated mid-word but are cut off at whole-word
+boundaries.
+
+The total size limit for a single SMS C<Publish> action is 1,600
+characters.
 
 =back
 

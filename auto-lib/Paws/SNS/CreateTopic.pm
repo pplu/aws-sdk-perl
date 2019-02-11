@@ -1,6 +1,7 @@
 
 package Paws::SNS::CreateTopic;
   use Moose;
+  has Attributes => (is => 'ro', isa => 'Paws::SNS::TopicAttributesMap');
   has Name => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -28,8 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $sns = Paws->service('SNS');
     my $CreateTopicResponse = $sns->CreateTopic(
-      Name => 'MytopicName',
-
+      Name       => 'MytopicName',
+      Attributes => { 'MyattributeName' => 'MyattributeValue', },    # OPTIONAL
     );
 
     # Results:
@@ -41,6 +42,35 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sns/CreateTopic>
 
 =head1 ATTRIBUTES
+
+
+=head2 Attributes => L<Paws::SNS::TopicAttributesMap>
+
+A map of attributes with their corresponding values.
+
+The following lists the names, descriptions, and values of the special
+request parameters that the C<CreateTopic> action uses:
+
+=over
+
+=item *
+
+C<DeliveryPolicy> E<ndash> The policy that defines how Amazon SNS
+retries failed deliveries to HTTP/S endpoints.
+
+=item *
+
+C<DisplayName> E<ndash> The display name to use for a topic with SMS
+subscriptions.
+
+=item *
+
+C<Policy> E<ndash> The policy that defines who can access your topic.
+By default, only the topic owner can publish or subscribe to the topic.
+
+=back
+
+
 
 
 =head2 B<REQUIRED> Name => Str

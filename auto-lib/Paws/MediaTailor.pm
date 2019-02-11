@@ -35,6 +35,29 @@ package Paws::MediaTailor;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllPlaybackConfigurations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPlaybackConfigurations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListPlaybackConfigurations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Items }, @{ $next_result->Items };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Items') foreach (@{ $result->Items });
+        $result = $self->ListPlaybackConfigurations(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Items') foreach (@{ $result->Items });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/DeletePlaybackConfiguration GetPlaybackConfiguration ListPlaybackConfigurations PutPlaybackConfiguration / }
@@ -78,7 +101,7 @@ the same as you do through the console. For example, you specify ad
 insertion behavior and mapping information for the origin server and
 the ad decision server (ADS).
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.mediatailor-2018-04-23>
 
 
 =head1 METHODS
@@ -146,9 +169,13 @@ retrieve the next pageful.
 
 =item [CdnConfiguration => L<Paws::MediaTailor::CdnConfiguration>]
 
+=item [DashConfiguration => L<Paws::MediaTailor::DashConfigurationForPut>]
+
 =item [Name => Str]
 
 =item [SlateAdUrl => Str]
+
+=item [TranscodeProfileName => Str]
 
 =item [VideoContentSourceUrl => Str]
 
@@ -167,6 +194,18 @@ Adds a new configuration to AWS Elemental MediaTailor.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllPlaybackConfigurations(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllPlaybackConfigurations([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Items, passing the object as the first parameter, and the string 'Items' as the second parameter 
+
+If not, it will return a a L<Paws::MediaTailor::ListPlaybackConfigurationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

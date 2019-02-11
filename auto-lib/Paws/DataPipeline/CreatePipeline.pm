@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description => 'Mystring',    # OPTIONAL
       Tags        => [
         {
-          key   => 'MytagKey',      # min: 1, max: 128
-          value => 'MytagValue',    # max: 256
+          Key   => 'MytagKey',      # min: 1, max: 128
+          Value => 'MytagValue',    # max: 256
 
         },
         ...

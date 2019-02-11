@@ -56,7 +56,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 
 The language code of the vocabulary entries.
 
-Valid values are: C<"en-US">, C<"es-US">
+Valid values are: C<"en-US">, C<"es-US">, C<"en-AU">, C<"fr-CA">, C<"en-GB">, C<"de-DE">, C<"pt-BR">, C<"fr-FR">, C<"it-IT">
 
 =head2 B<REQUIRED> Phrases => ArrayRef[Str|Undef]
 

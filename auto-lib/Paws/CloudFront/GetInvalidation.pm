@@ -7,7 +7,7 @@ package Paws::CloudFront::GetInvalidation;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetInvalidation');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2017-10-30/distribution/{DistributionId}/invalidation/{Id}');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2018-11-05/distribution/{DistributionId}/invalidation/{Id}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::GetInvalidationResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
@@ -22,11 +22,11 @@ Paws::CloudFront::GetInvalidation - Arguments for method GetInvalidation on L<Pa
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetInvalidation2017_10_30 on the
+This class represents the parameters used for calling the method GetInvalidation2018_11_05 on the
 L<Amazon CloudFront|Paws::CloudFront> service. Use the attributes of this class
-as arguments to method GetInvalidation2017_10_30.
+as arguments to method GetInvalidation2018_11_05.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetInvalidation2017_10_30.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetInvalidation2018_11_05.
 
 =head1 SYNOPSIS
 
@@ -64,7 +64,7 @@ C<IDFDVBD632BHDS5>.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method GetInvalidation2017_10_30 in L<Paws::CloudFront>
+This class forms part of L<Paws>, documenting arguments for method GetInvalidation2018_11_05 in L<Paws::CloudFront>
 
 =head1 BUGS and CONTRIBUTIONS
 

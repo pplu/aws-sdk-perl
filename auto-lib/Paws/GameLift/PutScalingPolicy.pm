@@ -89,7 +89,7 @@ be in any of the following statuses: ERROR or DELETING.
 Name of the Amazon GameLift-defined metric that is used to trigger a
 scaling adjustment. For detailed descriptions of fleet metrics, see
 Monitor Amazon GameLift with Amazon CloudWatch
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/monitoring-cloudwatch.html).
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/monitoring-cloudwatch.html).
 
 =over
 

@@ -21,7 +21,7 @@ Paws::ServiceDiscovery::ListInstances - Arguments for method ListInstances on L<
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListInstances on the
-L<Amazon Route 53 Auto Naming|Paws::ServiceDiscovery> service. Use the attributes of this class
+L<AWS Cloud Map|Paws::ServiceDiscovery> service. Use the attributes of this class
 as arguments to method ListInstances.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListInstances.
@@ -49,9 +49,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ser
 
 =head2 MaxResults => Int
 
-The maximum number of instances that you want Amazon Route 53 to return
+The maximum number of instances that you want AWS Cloud Map to return
 in the response to a C<ListInstances> request. If you don't specify a
-value for C<MaxResults>, Route 53 returns up to 100 instances.
+value for C<MaxResults>, AWS Cloud Map returns up to 100 instances.
 
 
 

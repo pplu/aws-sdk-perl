@@ -1,6 +1,7 @@
 package Paws::CodePipeline::PipelineDeclaration;
   use Moose;
-  has ArtifactStore => (is => 'ro', isa => 'Paws::CodePipeline::ArtifactStore', request_name => 'artifactStore', traits => ['NameInRequest'], required => 1);
+  has ArtifactStore => (is => 'ro', isa => 'Paws::CodePipeline::ArtifactStore', request_name => 'artifactStore', traits => ['NameInRequest']);
+  has ArtifactStores => (is => 'ro', isa => 'Paws::CodePipeline::ArtifactStoreMap', request_name => 'artifactStores', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
   has Stages => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::StageDeclaration]', request_name => 'stages', traits => ['NameInRequest'], required => 1);
@@ -41,10 +42,21 @@ pipeline.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ArtifactStore => L<Paws::CodePipeline::ArtifactStore>
+=head2 ArtifactStore => L<Paws::CodePipeline::ArtifactStore>
 
   Represents information about the Amazon S3 bucket where artifacts are
 stored for the pipeline.
+
+
+=head2 ArtifactStores => L<Paws::CodePipeline::ArtifactStoreMap>
+
+  A mapping of artifactStore objects and their corresponding regions.
+There must be an artifact store for the pipeline region and for each
+cross-region action within the pipeline. You can only use either
+artifactStore or artifactStores, not both.
+
+If you create a cross-region action in your pipeline, you must use
+artifactStores.
 
 
 =head2 B<REQUIRED> Name => Str

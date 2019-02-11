@@ -20,6 +20,11 @@ package Paws::CostExplorer;
     my $call_object = $self->new_with_coercions('Paws::CostExplorer::GetCostAndUsage', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetCostForecast {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CostExplorer::GetCostForecast', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetDimensionValues {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CostExplorer::GetDimensionValues', @_);
@@ -48,7 +53,7 @@ package Paws::CostExplorer;
   
 
 
-  sub operations { qw/GetCostAndUsage GetDimensionValues GetReservationCoverage GetReservationPurchaseRecommendation GetReservationUtilization GetTags / }
+  sub operations { qw/GetCostAndUsage GetCostForecast GetDimensionValues GetReservationCoverage GetReservationPurchaseRecommendation GetReservationUtilization GetTags / }
 
 1;
 
@@ -76,7 +81,7 @@ Paws::CostExplorer - Perl Interface to AWS AWS Cost Explorer Service
 
 =head1 DESCRIPTION
 
-The Cost Explorer API allows you to programmatically query your cost
+The Cost Explorer API enables you to programmatically query your cost
 and usage data. You can query for aggregated data such as total monthly
 costs or total daily usage. You can also query for granular data, such
 as the number of daily write operations for Amazon DynamoDB database
@@ -90,7 +95,7 @@ The Cost Explorer API provides the following endpoint:
 
 =item *
 
-https://ce.us-east-1.amazonaws.com
+C<https://ce.us-east-1.amazonaws.com>
 
 =back
 
@@ -98,7 +103,7 @@ For information about costs associated with the Cost Explorer API, see
 AWS Cost Management Pricing
 (https://aws.amazon.com/aws-cost-management/pricing/).
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/account-billing/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/account-billing/>
 
 
 =head1 METHODS
@@ -131,10 +136,36 @@ which cost and usage-related metric, such as C<BlendedCosts> or
 C<UsageQuantity>, that you want the request to return. You can also
 filter and group your data by various dimensions, such as C<SERVICE> or
 C<AZ>, in a specific time range. For a complete list of valid
-dimensions, see the C< GetDimensionValues
+dimensions, see the GetDimensionValues
 (http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetDimensionValues.html)
-> operation. Master accounts in an organization in AWS Organizations
-have access to all member accounts.
+operation. Master accounts in an organization in AWS Organizations have
+access to all member accounts.
+
+
+=head2 GetCostForecast
+
+=over
+
+=item Granularity => Str
+
+=item Metric => Str
+
+=item TimePeriod => L<Paws::CostExplorer::DateInterval>
+
+=item [Filter => L<Paws::CostExplorer::Expression>]
+
+=item [PredictionIntervalLevel => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CostExplorer::GetCostForecast>
+
+Returns: a L<Paws::CostExplorer::GetCostForecastResponse> instance
+
+Retrieves a forecast for how much Amazon Web Services predicts that you
+will spend over the forecast time period that you select, based on your
+past costs.
 
 
 =head2 GetDimensionValues
@@ -175,6 +206,8 @@ string.
 
 =item [GroupBy => ArrayRef[L<Paws::CostExplorer::GroupDefinition>]]
 
+=item [Metrics => ArrayRef[Str|Undef]]
+
 =item [NextPageToken => Str]
 
 
@@ -184,12 +217,13 @@ Each argument is described in detail in: L<Paws::CostExplorer::GetReservationCov
 
 Returns: a L<Paws::CostExplorer::GetReservationCoverageResponse> instance
 
-Retrieves the reservation coverage for your account. This allows you to
-see how much of your Amazon Elastic Compute Cloud, Amazon ElastiCache,
-Amazon Relational Database Service, or Amazon Redshift usage is covered
-by a reservation. An organization's master account can see the coverage
-of the associated member accounts. For any time period, you can filter
-data about reservation usage by the following dimensions:
+Retrieves the reservation coverage for your account. This enables you
+to see how much of your Amazon Elastic Compute Cloud, Amazon
+ElastiCache, Amazon Relational Database Service, or Amazon Redshift
+usage is covered by a reservation. An organization's master account can
+see the coverage of the associated member accounts. For any time
+period, you can filter data about reservation usage by the following
+dimensions:
 
 =over
 
@@ -287,14 +321,14 @@ simulates every combination of reservations in each category of usage
 to identify the best number of each type of RI to purchase to maximize
 your estimated savings.
 
-For example, AWS automatically aggregates your EC2 Linux, shared
+For example, AWS automatically aggregates your Amazon EC2 Linux, shared
 tenancy, and c4 family usage in the US West (Oregon) Region and
 recommends that you buy size-flexible regional reservations to apply to
 the c4 family usage. AWS recommends the smallest size instance in an
 instance family. This makes it easier to purchase a size-flexible RI.
 AWS also shows the equal number of normalized units so that you can
 purchase any instance size that you want. For this example, your RI
-recommendation would be for C<c4.large>, because that is the smallest
+recommendation would be for C<c4.large> because that is the smallest
 size instance in the c4 instance family.
 
 

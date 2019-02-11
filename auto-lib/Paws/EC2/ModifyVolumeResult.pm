@@ -17,7 +17,7 @@ Paws::EC2::ModifyVolumeResult
 
 =head2 VolumeModification => L<Paws::EC2::VolumeModification>
 
-A VolumeModification object.
+Information about the volume modification.
 
 
 =head2 _request_id => Str

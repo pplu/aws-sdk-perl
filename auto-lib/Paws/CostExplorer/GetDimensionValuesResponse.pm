@@ -20,7 +20,7 @@ Paws::CostExplorer::GetDimensionValuesResponse
 =head2 B<REQUIRED> DimensionValues => ArrayRef[L<Paws::CostExplorer::DimensionValuesWithAttributes>]
 
 The filters that you used to filter your request. Some dimensions are
-available only for a specific context:
+available only for a specific context.
 
 If you set the context to C<COST_AND_USAGE>, you can use the following
 dimensions for searching:
@@ -38,7 +38,8 @@ Examples are Aurora or MySQL.
 
 =item *
 
-INSTANCE_TYPE - The type of EC2 instance. An example is C<m4.xlarge>.
+INSTANCE_TYPE - The type of Amazon EC2 instance. An example is
+C<m4.xlarge>.
 
 =item *
 
@@ -62,7 +63,8 @@ C<CreateBucket>.
 
 =item *
 
-PLATFORM - The EC2 operating system. Examples are Windows or Linux.
+PLATFORM - The Amazon EC2 operating system. Examples are Windows or
+Linux.
 
 =item *
 
@@ -83,7 +85,7 @@ attribute. Examples include GB and Hrs.
 =item *
 
 USAGE_TYPE_GROUP - The grouping of common usage types. An example is
-EC2: CloudWatch E<ndash> Alarms. The response for this operation
+Amazon EC2: CloudWatch E<ndash> Alarms. The response for this operation
 includes a unit attribute.
 
 =item *
@@ -114,7 +116,8 @@ deployments. Valid values are C<SingleAZ> and C<MultiAZ>.
 
 =item *
 
-INSTANCE_TYPE - The type of EC2 instance. An example is C<m4.xlarge>.
+INSTANCE_TYPE - The type of Amazon EC2 instance. An example is
+C<m4.xlarge>.
 
 =item *
 
@@ -124,7 +127,8 @@ the member account.
 
 =item *
 
-PLATFORM - The EC2 operating system. Examples are Windows or Linux.
+PLATFORM - The Amazon EC2 operating system. Examples are Windows or
+Linux.
 
 =item *
 

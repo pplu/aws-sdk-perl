@@ -41,7 +41,7 @@ matches. Rule sets are used in MatchmakingConfiguration objects.
 A rule set may define the following elements for a match. For detailed
 information and examples showing how to construct a rule set, see Build
 a FlexMatch Rule Set
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/match-rulesets.html).
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-rulesets.html).
 
 =over
 

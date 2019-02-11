@@ -31,7 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeWorkspaceDirectoriesResult =
       $workspaces->DescribeWorkspaceDirectories(
       DirectoryIds => [ 'MyDirectoryId', ... ],    # OPTIONAL
-      NextToken => 'MyPaginationToken',            # OPTIONAL
+      NextToken    => 'MyPaginationToken',         # OPTIONAL
       );
 
     # Results:
@@ -55,8 +55,8 @@ directories are retrieved.
 
 =head2 NextToken => Str
 
-The token for the next set of results. (You received this token from a
-previous call.)
+If you received a C<NextToken> from a previous call that was paginated,
+provide this token to receive the next set of results.
 
 
 

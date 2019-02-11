@@ -24,8 +24,7 @@ A list of application names.
 
 If a large amount of information is returned, an identifier is also
 returned. It can be used in a subsequent list applications call to
-return the next set of applications, will also be returned. in the
-list.
+return the next set of applications in the list.
 
 
 =head2 _request_id => Str

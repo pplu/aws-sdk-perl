@@ -4,6 +4,7 @@ package Paws::MediaConvert::Mpeg2Settings;
   has Bitrate => (is => 'ro', isa => 'Int', request_name => 'bitrate', traits => ['NameInRequest']);
   has CodecLevel => (is => 'ro', isa => 'Str', request_name => 'codecLevel', traits => ['NameInRequest']);
   has CodecProfile => (is => 'ro', isa => 'Str', request_name => 'codecProfile', traits => ['NameInRequest']);
+  has DynamicSubGop => (is => 'ro', isa => 'Str', request_name => 'dynamicSubGop', traits => ['NameInRequest']);
   has FramerateControl => (is => 'ro', isa => 'Str', request_name => 'framerateControl', traits => ['NameInRequest']);
   has FramerateConversionAlgorithm => (is => 'ro', isa => 'Str', request_name => 'framerateConversionAlgorithm', traits => ['NameInRequest']);
   has FramerateDenominator => (is => 'ro', isa => 'Int', request_name => 'framerateDenominator', traits => ['NameInRequest']);
@@ -88,6 +89,16 @@ multiple of 1000.
   
 
 
+=head2 DynamicSubGop => Str
+
+  Choose Adaptive to improve subjective video quality for high-motion
+content. This will cause the service to use fewer B-frames (which infer
+information based on other frames) for high-motion portions of the
+video and more B-frames for low-motion portions. The maximum number of
+B-frames is limited by the value you provide for the setting B frames
+between reference frames (numberBFramesBetweenReferenceFrames).
+
+
 =head2 FramerateControl => Str
 
   
@@ -100,12 +111,12 @@ multiple of 1000.
 
 =head2 FramerateDenominator => Int
 
-  Framerate denominator.
+  Frame rate denominator.
 
 
 =head2 FramerateNumerator => Int
 
-  Framerate numerator - framerate is a fraction, e.g. 24000 / 1001 =
+  Frame rate numerator - frame rate is a fraction, e.g. 24000 / 1001 =
 23.976 fps.
 
 

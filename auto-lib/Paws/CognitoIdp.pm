@@ -480,6 +480,11 @@ package Paws::CognitoIdp;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::UpdateUserPoolClient', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateUserPoolDomain {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::UpdateUserPoolDomain', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub VerifySoftwareToken {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::VerifySoftwareToken', @_);
@@ -491,9 +496,193 @@ package Paws::CognitoIdp;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub AdminListAllGroupsForUser {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->AdminListGroupsForUser(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->AdminListGroupsForUser(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Groups }, @{ $next_result->Groups };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Groups') foreach (@{ $result->Groups });
+        $result = $self->AdminListGroupsForUser(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Groups') foreach (@{ $result->Groups });
+    }
+
+    return undef
+  }
+  sub AdminListAllUserAuthEvents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->AdminListUserAuthEvents(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->AdminListUserAuthEvents(@_, NextToken => $next_result->NextToken);
+        push @{ $result->AuthEvents }, @{ $next_result->AuthEvents };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'AuthEvents') foreach (@{ $result->AuthEvents });
+        $result = $self->AdminListUserAuthEvents(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'AuthEvents') foreach (@{ $result->AuthEvents });
+    }
+
+    return undef
+  }
+  sub ListAllGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListGroups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListGroups(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Groups }, @{ $next_result->Groups };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Groups') foreach (@{ $result->Groups });
+        $result = $self->ListGroups(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Groups') foreach (@{ $result->Groups });
+    }
+
+    return undef
+  }
+  sub ListAllIdentityProviders {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListIdentityProviders(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListIdentityProviders(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Providers }, @{ $next_result->Providers };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Providers') foreach (@{ $result->Providers });
+        $result = $self->ListIdentityProviders(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Providers') foreach (@{ $result->Providers });
+    }
+
+    return undef
+  }
+  sub ListAllResourceServers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListResourceServers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListResourceServers(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ResourceServers }, @{ $next_result->ResourceServers };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ResourceServers') foreach (@{ $result->ResourceServers });
+        $result = $self->ListResourceServers(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ResourceServers') foreach (@{ $result->ResourceServers });
+    }
+
+    return undef
+  }
+  sub ListAllUserPoolClients {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListUserPoolClients(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListUserPoolClients(@_, NextToken => $next_result->NextToken);
+        push @{ $result->UserPoolClients }, @{ $next_result->UserPoolClients };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'UserPoolClients') foreach (@{ $result->UserPoolClients });
+        $result = $self->ListUserPoolClients(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'UserPoolClients') foreach (@{ $result->UserPoolClients });
+    }
+
+    return undef
+  }
+  sub ListAllUserPools {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListUserPools(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListUserPools(@_, NextToken => $next_result->NextToken);
+        push @{ $result->UserPools }, @{ $next_result->UserPools };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'UserPools') foreach (@{ $result->UserPools });
+        $result = $self->ListUserPools(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'UserPools') foreach (@{ $result->UserPools });
+    }
+
+    return undef
+  }
+  sub ListAllUsersInGroup {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListUsersInGroup(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListUsersInGroup(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Users }, @{ $next_result->Users };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Users') foreach (@{ $result->Users });
+        $result = $self->ListUsersInGroup(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Users') foreach (@{ $result->Users });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/AddCustomAttributes AdminAddUserToGroup AdminConfirmSignUp AdminCreateUser AdminDeleteUser AdminDeleteUserAttributes AdminDisableProviderForUser AdminDisableUser AdminEnableUser AdminForgetDevice AdminGetDevice AdminGetUser AdminInitiateAuth AdminLinkProviderForUser AdminListDevices AdminListGroupsForUser AdminListUserAuthEvents AdminRemoveUserFromGroup AdminResetUserPassword AdminRespondToAuthChallenge AdminSetUserMFAPreference AdminSetUserSettings AdminUpdateAuthEventFeedback AdminUpdateDeviceStatus AdminUpdateUserAttributes AdminUserGlobalSignOut AssociateSoftwareToken ChangePassword ConfirmDevice ConfirmForgotPassword ConfirmSignUp CreateGroup CreateIdentityProvider CreateResourceServer CreateUserImportJob CreateUserPool CreateUserPoolClient CreateUserPoolDomain DeleteGroup DeleteIdentityProvider DeleteResourceServer DeleteUser DeleteUserAttributes DeleteUserPool DeleteUserPoolClient DeleteUserPoolDomain DescribeIdentityProvider DescribeResourceServer DescribeRiskConfiguration DescribeUserImportJob DescribeUserPool DescribeUserPoolClient DescribeUserPoolDomain ForgetDevice ForgotPassword GetCSVHeader GetDevice GetGroup GetIdentityProviderByIdentifier GetSigningCertificate GetUICustomization GetUser GetUserAttributeVerificationCode GetUserPoolMfaConfig GlobalSignOut InitiateAuth ListDevices ListGroups ListIdentityProviders ListResourceServers ListUserImportJobs ListUserPoolClients ListUserPools ListUsers ListUsersInGroup ResendConfirmationCode RespondToAuthChallenge SetRiskConfiguration SetUICustomization SetUserMFAPreference SetUserPoolMfaConfig SetUserSettings SignUp StartUserImportJob StopUserImportJob UpdateAuthEventFeedback UpdateDeviceStatus UpdateGroup UpdateIdentityProvider UpdateResourceServer UpdateUserAttributes UpdateUserPool UpdateUserPoolClient VerifySoftwareToken VerifyUserAttribute / }
+  sub operations { qw/AddCustomAttributes AdminAddUserToGroup AdminConfirmSignUp AdminCreateUser AdminDeleteUser AdminDeleteUserAttributes AdminDisableProviderForUser AdminDisableUser AdminEnableUser AdminForgetDevice AdminGetDevice AdminGetUser AdminInitiateAuth AdminLinkProviderForUser AdminListDevices AdminListGroupsForUser AdminListUserAuthEvents AdminRemoveUserFromGroup AdminResetUserPassword AdminRespondToAuthChallenge AdminSetUserMFAPreference AdminSetUserSettings AdminUpdateAuthEventFeedback AdminUpdateDeviceStatus AdminUpdateUserAttributes AdminUserGlobalSignOut AssociateSoftwareToken ChangePassword ConfirmDevice ConfirmForgotPassword ConfirmSignUp CreateGroup CreateIdentityProvider CreateResourceServer CreateUserImportJob CreateUserPool CreateUserPoolClient CreateUserPoolDomain DeleteGroup DeleteIdentityProvider DeleteResourceServer DeleteUser DeleteUserAttributes DeleteUserPool DeleteUserPoolClient DeleteUserPoolDomain DescribeIdentityProvider DescribeResourceServer DescribeRiskConfiguration DescribeUserImportJob DescribeUserPool DescribeUserPoolClient DescribeUserPoolDomain ForgetDevice ForgotPassword GetCSVHeader GetDevice GetGroup GetIdentityProviderByIdentifier GetSigningCertificate GetUICustomization GetUser GetUserAttributeVerificationCode GetUserPoolMfaConfig GlobalSignOut InitiateAuth ListDevices ListGroups ListIdentityProviders ListResourceServers ListUserImportJobs ListUserPoolClients ListUserPools ListUsers ListUsersInGroup ResendConfirmationCode RespondToAuthChallenge SetRiskConfiguration SetUICustomization SetUserMFAPreference SetUserPoolMfaConfig SetUserSettings SignUp StartUserImportJob StopUserImportJob UpdateAuthEventFeedback UpdateDeviceStatus UpdateGroup UpdateIdentityProvider UpdateResourceServer UpdateUserAttributes UpdateUserPool UpdateUserPoolClient UpdateUserPoolDomain VerifySoftwareToken VerifyUserAttribute / }
 
 1;
 
@@ -530,7 +719,7 @@ Cognito User Pools.
 
 For more information, see the Amazon Cognito Documentation.
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/cognito/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/cognito/>
 
 
 =head1 METHODS
@@ -1527,6 +1716,8 @@ Creates the user pool client.
 
 =item UserPoolId => Str
 
+=item [CustomDomainConfig => L<Paws::CognitoIdp::CustomDomainConfigType>]
+
 
 =back
 
@@ -1784,7 +1975,7 @@ Each argument is described in detail in: L<Paws::CognitoIdp::DescribeUserPoolCli
 Returns: a L<Paws::CognitoIdp::DescribeUserPoolClientResponse> instance
 
 Client method for returning the configuration information and metadata
-of the specified user pool client.
+of the specified user pool app client.
 
 
 =head2 DescribeUserPoolDomain
@@ -2671,7 +2862,9 @@ Each argument is described in detail in: L<Paws::CognitoIdp::UpdateUserPool>
 
 Returns: a L<Paws::CognitoIdp::UpdateUserPoolResponse> instance
 
-Updates the specified user pool with the specified attributes.
+Updates the specified user pool with the specified attributes. If you
+don't provide a value for an attribute, it will be set to the default
+value. You can get a list of the current user pool settings with .
 
 
 =head2 UpdateUserPoolClient
@@ -2715,8 +2908,60 @@ Each argument is described in detail in: L<Paws::CognitoIdp::UpdateUserPoolClien
 
 Returns: a L<Paws::CognitoIdp::UpdateUserPoolClientResponse> instance
 
-Allows the developer to update the specified user pool client and
-password policy.
+Updates the specified user pool app client with the specified
+attributes. If you don't provide a value for an attribute, it will be
+set to the default value. You can get a list of the current user pool
+app client settings with .
+
+
+=head2 UpdateUserPoolDomain
+
+=over
+
+=item CustomDomainConfig => L<Paws::CognitoIdp::CustomDomainConfigType>
+
+=item Domain => Str
+
+=item UserPoolId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CognitoIdp::UpdateUserPoolDomain>
+
+Returns: a L<Paws::CognitoIdp::UpdateUserPoolDomainResponse> instance
+
+Updates the Secure Sockets Layer (SSL) certificate for the custom
+domain for your user pool.
+
+You can use this operation to provide the Amazon Resource Name (ARN) of
+a new certificate to Amazon Cognito. You cannot use it to change the
+domain for a user pool.
+
+A custom domain is used to host the Amazon Cognito hosted UI, which
+provides sign-up and sign-in pages for your application. When you set
+up a custom domain, you provide a certificate that you manage with AWS
+Certificate Manager (ACM). When necessary, you can use this operation
+to change the certificate that you applied to your custom domain.
+
+Usually, this is unnecessary following routine certificate renewal with
+ACM. When you renew your existing certificate in ACM, the ARN for your
+certificate remains the same, and your custom domain uses the new
+certificate automatically.
+
+However, if you replace your existing certificate with a new one, ACM
+gives the new certificate a new ARN. To apply the new certificate to
+your custom domain, you must provide this ARN to Amazon Cognito.
+
+When you add your new certificate in ACM, you must choose US East (N.
+Virginia) as the AWS Region.
+
+After you submit your request, Amazon Cognito requires up to 1 hour to
+distribute your new certificate to your custom domain.
+
+For more information about adding a custom domain to your user pool,
+see Using Your Own Domain for the Hosted UI
+(http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-add-custom-domain.html).
 
 
 =head2 VerifySoftwareToken
@@ -2768,6 +3013,102 @@ Verifies the specified user attributes in the user pool.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 AdminListAllGroupsForUser(sub { },Username => Str, UserPoolId => Str, [Limit => Int, NextToken => Str])
+
+=head2 AdminListAllGroupsForUser(Username => Str, UserPoolId => Str, [Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Groups, passing the object as the first parameter, and the string 'Groups' as the second parameter 
+
+If not, it will return a a L<Paws::CognitoIdp::AdminListGroupsForUserResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 AdminListAllUserAuthEvents(sub { },Username => Str, UserPoolId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 AdminListAllUserAuthEvents(Username => Str, UserPoolId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AuthEvents, passing the object as the first parameter, and the string 'AuthEvents' as the second parameter 
+
+If not, it will return a a L<Paws::CognitoIdp::AdminListUserAuthEventsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllGroups(sub { },UserPoolId => Str, [Limit => Int, NextToken => Str])
+
+=head2 ListAllGroups(UserPoolId => Str, [Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Groups, passing the object as the first parameter, and the string 'Groups' as the second parameter 
+
+If not, it will return a a L<Paws::CognitoIdp::ListGroupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllIdentityProviders(sub { },UserPoolId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllIdentityProviders(UserPoolId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Providers, passing the object as the first parameter, and the string 'Providers' as the second parameter 
+
+If not, it will return a a L<Paws::CognitoIdp::ListIdentityProvidersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllResourceServers(sub { },UserPoolId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllResourceServers(UserPoolId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ResourceServers, passing the object as the first parameter, and the string 'ResourceServers' as the second parameter 
+
+If not, it will return a a L<Paws::CognitoIdp::ListResourceServersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllUserPoolClients(sub { },UserPoolId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllUserPoolClients(UserPoolId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - UserPoolClients, passing the object as the first parameter, and the string 'UserPoolClients' as the second parameter 
+
+If not, it will return a a L<Paws::CognitoIdp::ListUserPoolClientsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllUserPools(sub { },MaxResults => Int, [NextToken => Str])
+
+=head2 ListAllUserPools(MaxResults => Int, [NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - UserPools, passing the object as the first parameter, and the string 'UserPools' as the second parameter 
+
+If not, it will return a a L<Paws::CognitoIdp::ListUserPoolsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllUsersInGroup(sub { },GroupName => Str, UserPoolId => Str, [Limit => Int, NextToken => Str])
+
+=head2 ListAllUsersInGroup(GroupName => Str, UserPoolId => Str, [Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Users, passing the object as the first parameter, and the string 'Users' as the second parameter 
+
+If not, it will return a a L<Paws::CognitoIdp::ListUsersInGroupResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

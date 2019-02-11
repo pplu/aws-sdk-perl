@@ -47,15 +47,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs
 
 =head2 Cluster => Str
 
-The short name or full Amazon Resource Name (ARN) of the cluster that
-the container instance belongs to.
+The short name or full Amazon Resource Name (ARN) of the cluster to
+which the container instance belongs.
 
 
 
 =head2 ContainerInstance => Str
 
 The container instance ID or full ARN of the container instance. The
-ARN contains the C<arn:aws:ecs> namespace, followed by the region of
+ARN contains the C<arn:aws:ecs> namespace, followed by the Region of
 the container instance, the AWS account ID of the container instance
 owner, the C<container-instance> namespace, and then the container
 instance ID. For example,

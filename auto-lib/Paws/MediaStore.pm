@@ -35,6 +35,11 @@ package Paws::MediaStore;
     my $call_object = $self->new_with_coercions('Paws::MediaStore::DeleteCorsPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteLifecyclePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaStore::DeleteLifecyclePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeContainer {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaStore::DescribeContainer', @_);
@@ -48,6 +53,11 @@ package Paws::MediaStore;
   sub GetCorsPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaStore::GetCorsPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetLifecyclePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaStore::GetLifecyclePolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListContainers {
@@ -65,10 +75,38 @@ package Paws::MediaStore;
     my $call_object = $self->new_with_coercions('Paws::MediaStore::PutCorsPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutLifecyclePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaStore::PutLifecyclePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
+  sub ListAllContainers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListContainers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListContainers(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Containers }, @{ $next_result->Containers };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Containers') foreach (@{ $result->Containers });
+        $result = $self->ListContainers(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Containers') foreach (@{ $result->Containers });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/CreateContainer DeleteContainer DeleteContainerPolicy DeleteCorsPolicy DescribeContainer GetContainerPolicy GetCorsPolicy ListContainers PutContainerPolicy PutCorsPolicy / }
+  sub operations { qw/CreateContainer DeleteContainer DeleteContainerPolicy DeleteCorsPolicy DeleteLifecyclePolicy DescribeContainer GetContainerPolicy GetCorsPolicy GetLifecyclePolicy ListContainers PutContainerPolicy PutCorsPolicy PutLifecyclePolicy / }
 
 1;
 
@@ -178,6 +216,22 @@ C<MediaStore:DeleteCorsPolicy> action. The container owner has this
 permission by default and can grant this permission to others.
 
 
+=head2 DeleteLifecyclePolicy
+
+=over
+
+=item ContainerName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaStore::DeleteLifecyclePolicy>
+
+Returns: a L<Paws::MediaStore::DeleteLifecyclePolicyOutput> instance
+
+Removes an object lifecycle policy from a container.
+
+
 =head2 DescribeContainer
 
 =over
@@ -238,6 +292,22 @@ information that is set for the container.
 To use this operation, you must have permission to perform the
 C<MediaStore:GetCorsPolicy> action. By default, the container owner has
 this permission and can grant it to others.
+
+
+=head2 GetLifecyclePolicy
+
+=over
+
+=item ContainerName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaStore::GetLifecyclePolicy>
+
+Returns: a L<Paws::MediaStore::GetLifecyclePolicyOutput> instance
+
+Retrieves the object lifecycle policy that is assigned to a container.
 
 
 =head2 ListContainers
@@ -323,11 +393,43 @@ rules to a CORS policy. If more than one rule applies, the service uses
 the first applicable rule listed.
 
 
+=head2 PutLifecyclePolicy
+
+=over
+
+=item ContainerName => Str
+
+=item LifecyclePolicy => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaStore::PutLifecyclePolicy>
+
+Returns: a L<Paws::MediaStore::PutLifecyclePolicyOutput> instance
+
+Writes an object lifecycle policy to a container. If the container
+already has an object lifecycle policy, the service replaces the
+existing policy with the new policy.
+
+
 
 
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllContainers(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllContainers([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Containers, passing the object as the first parameter, and the string 'Containers' as the second parameter 
+
+If not, it will return a a L<Paws::MediaStore::ListContainersOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

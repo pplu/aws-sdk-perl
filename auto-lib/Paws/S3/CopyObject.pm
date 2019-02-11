@@ -24,6 +24,9 @@ package Paws::S3::CopyObject;
   has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
   has Metadata => (is => 'ro', isa => 'Paws::S3::Metadata', header_prefix => 'x-amz-meta-', traits => ['ParamInHeaders']);
   has MetadataDirective => (is => 'ro', isa => 'Str', header_name => 'x-amz-metadata-directive', traits => ['ParamInHeader']);
+  has ObjectLockLegalHoldStatus => (is => 'ro', isa => 'Str', header_name => 'x-amz-object-lock-legal-hold', traits => ['ParamInHeader']);
+  has ObjectLockMode => (is => 'ro', isa => 'Str', header_name => 'x-amz-object-lock-mode', traits => ['ParamInHeader']);
+  has ObjectLockRetainUntilDate => (is => 'ro', isa => 'Str', header_name => 'x-amz-object-lock-retain-until-date', traits => ['ParamInHeader']);
   has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
   has ServerSideEncryption => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption', traits => ['ParamInHeader']);
   has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-algorithm', traits => ['ParamInHeader']);
@@ -87,16 +90,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       GrantWriteACP               => 'MyGrantWriteACP',               # OPTIONAL
       Metadata          => { 'MyMetadataKey' => 'MyMetadataValue', }, # OPTIONAL
       MetadataDirective => 'COPY',                                    # OPTIONAL
-      RequestPayer      => 'requester',                               # OPTIONAL
-      SSECustomerAlgorithm    => 'MySSECustomerAlgorithm',            # OPTIONAL
-      SSECustomerKey          => 'MySSECustomerKey',                  # OPTIONAL
-      SSECustomerKeyMD5       => 'MySSECustomerKeyMD5',               # OPTIONAL
-      SSEKMSKeyId             => 'MySSEKMSKeyId',                     # OPTIONAL
-      ServerSideEncryption    => 'AES256',                            # OPTIONAL
-      StorageClass            => 'STANDARD',                          # OPTIONAL
-      Tagging                 => 'MyTaggingHeader',                   # OPTIONAL
-      TaggingDirective        => 'COPY',                              # OPTIONAL
-      WebsiteRedirectLocation => 'MyWebsiteRedirectLocation',         # OPTIONAL
+      ObjectLockLegalHoldStatus => 'ON',                              # OPTIONAL
+      ObjectLockMode            => 'GOVERNANCE',                      # OPTIONAL
+      ObjectLockRetainUntilDate => '1970-01-01T01:00:00',             # OPTIONAL
+      RequestPayer              => 'requester',                       # OPTIONAL
+      SSECustomerAlgorithm      => 'MySSECustomerAlgorithm',          # OPTIONAL
+      SSECustomerKey            => 'MySSECustomerKey',                # OPTIONAL
+      SSECustomerKeyMD5         => 'MySSECustomerKeyMD5',             # OPTIONAL
+      SSEKMSKeyId               => 'MySSEKMSKeyId',                   # OPTIONAL
+      ServerSideEncryption      => 'AES256',                          # OPTIONAL
+      StorageClass              => 'STANDARD',                        # OPTIONAL
+      Tagging                   => 'MyTaggingHeader',                 # OPTIONAL
+      TaggingDirective          => 'COPY',                            # OPTIONAL
+      WebsiteRedirectLocation   => 'MyWebsiteRedirectLocation',       # OPTIONAL
     );
 
     # Results:
@@ -267,6 +273,25 @@ replaced with metadata provided in the request.
 
 Valid values are: C<"COPY">, C<"REPLACE">
 
+=head2 ObjectLockLegalHoldStatus => Str
+
+Specifies whether you want to apply a Legal Hold to the copied object.
+
+Valid values are: C<"ON">, C<"OFF">
+
+=head2 ObjectLockMode => Str
+
+The Object Lock mode that you want to apply to the copied object.
+
+Valid values are: C<"GOVERNANCE">, C<"COMPLIANCE">
+
+=head2 ObjectLockRetainUntilDate => Str
+
+The date and time when you want the copied object's Object Lock to
+expire.
+
+
+
 =head2 RequestPayer => Str
 
 
@@ -319,7 +344,7 @@ http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signatur
 
 The type of storage to use for the object. Defaults to 'STANDARD'.
 
-Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"ONEZONE_IA">
+Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"ONEZONE_IA">, C<"INTELLIGENT_TIERING">, C<"GLACIER">
 
 =head2 Tagging => Str
 

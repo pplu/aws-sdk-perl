@@ -71,7 +71,7 @@ in the I<IAM User Guide>.
 This parameter is optional. If it is not included, it defaults to a
 slash (/).
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 either a forward slash (/) by itself or a string that must begin and
 end with forward slashes. In addition, it can contain any ASCII
@@ -115,7 +115,7 @@ return (\u000D)
 
 The friendly name of the policy.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
 also include any of the following characters: _+=,.@-

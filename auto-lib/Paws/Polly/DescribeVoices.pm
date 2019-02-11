@@ -1,6 +1,7 @@
 
 package Paws::Polly::DescribeVoices;
   use Moose;
+  has IncludeAdditionalLanguageCodes => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'IncludeAdditionalLanguageCodes');
   has LanguageCode => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'LanguageCode');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'NextToken');
 
@@ -51,6 +52,17 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pol
 =head1 ATTRIBUTES
 
 
+=head2 IncludeAdditionalLanguageCodes => Bool
+
+Boolean value indicating whether to return any bilingual voices that
+use the specified language as an additional language. For instance, if
+you request all languages that use US English (es-US), and there is an
+Italian voice that speaks both Italian (it-IT) and US English, that
+voice will be included if you specify C<yes> but not if you specify
+C<no>.
+
+
+
 =head2 LanguageCode => Str
 
 The language identification tag (ISO 639 code for the language name-ISO
@@ -58,7 +70,7 @@ The language identification tag (ISO 639 code for the language name-ISO
 don't specify this optional parameter, all available voices are
 returned.
 
-Valid values are: C<"cy-GB">, C<"da-DK">, C<"de-DE">, C<"en-AU">, C<"en-GB">, C<"en-GB-WLS">, C<"en-IN">, C<"en-US">, C<"es-ES">, C<"es-US">, C<"fr-CA">, C<"fr-FR">, C<"is-IS">, C<"it-IT">, C<"ko-KR">, C<"ja-JP">, C<"nb-NO">, C<"nl-NL">, C<"pl-PL">, C<"pt-BR">, C<"pt-PT">, C<"ro-RO">, C<"ru-RU">, C<"sv-SE">, C<"tr-TR">
+Valid values are: C<"cmn-CN">, C<"cy-GB">, C<"da-DK">, C<"de-DE">, C<"en-AU">, C<"en-GB">, C<"en-GB-WLS">, C<"en-IN">, C<"en-US">, C<"es-ES">, C<"es-MX">, C<"es-US">, C<"fr-CA">, C<"fr-FR">, C<"is-IS">, C<"it-IT">, C<"ja-JP">, C<"hi-IN">, C<"ko-KR">, C<"nb-NO">, C<"nl-NL">, C<"pl-PL">, C<"pt-BR">, C<"pt-PT">, C<"ro-RO">, C<"ru-RU">, C<"sv-SE">, C<"tr-TR">
 
 =head2 NextToken => Str
 

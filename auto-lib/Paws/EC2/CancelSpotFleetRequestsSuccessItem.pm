@@ -1,8 +1,8 @@
 package Paws::EC2::CancelSpotFleetRequestsSuccessItem;
   use Moose;
-  has CurrentSpotFleetRequestState => (is => 'ro', isa => 'Str', request_name => 'currentSpotFleetRequestState', traits => ['NameInRequest'], required => 1);
-  has PreviousSpotFleetRequestState => (is => 'ro', isa => 'Str', request_name => 'previousSpotFleetRequestState', traits => ['NameInRequest'], required => 1);
-  has SpotFleetRequestId => (is => 'ro', isa => 'Str', request_name => 'spotFleetRequestId', traits => ['NameInRequest'], required => 1);
+  has CurrentSpotFleetRequestState => (is => 'ro', isa => 'Str', request_name => 'currentSpotFleetRequestState', traits => ['NameInRequest']);
+  has PreviousSpotFleetRequestState => (is => 'ro', isa => 'Str', request_name => 'previousSpotFleetRequestState', traits => ['NameInRequest']);
+  has SpotFleetRequestId => (is => 'ro', isa => 'Str', request_name => 'spotFleetRequestId', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -38,17 +38,17 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> CurrentSpotFleetRequestState => Str
+=head2 CurrentSpotFleetRequestState => Str
 
   The current state of the Spot Fleet request.
 
 
-=head2 B<REQUIRED> PreviousSpotFleetRequestState => Str
+=head2 PreviousSpotFleetRequestState => Str
 
   The previous state of the Spot Fleet request.
 
 
-=head2 B<REQUIRED> SpotFleetRequestId => Str
+=head2 SpotFleetRequestId => Str
 
   The ID of the Spot Fleet request.
 

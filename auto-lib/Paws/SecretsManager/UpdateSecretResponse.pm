@@ -18,7 +18,7 @@ Paws::SecretsManager::UpdateSecretResponse
 
 =head2 ARN => Str
 
-The ARN of this secret.
+The ARN of the secret that was updated.
 
 Secrets Manager automatically adds several random characters to the
 name at the end of the ARN when you initially create a secret. This
@@ -31,13 +31,13 @@ are different.
 
 =head2 Name => Str
 
-The friendly name of this secret.
+The friendly name of the secret that was updated.
 
 
 =head2 VersionId => Str
 
-If a version of the secret was created or updated by this operation,
-then its unique identifier is returned.
+If a new version of the secret was created by this operation, then
+C<VersionId> contains the unique identifier of the new version.
 
 
 =head2 _request_id => Str

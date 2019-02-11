@@ -59,8 +59,9 @@ C<NextToken> to get results as a set of sequential pages.
 
 =head2 Names => ArrayRef[Str|Undef]
 
-Unique identifier for a matchmaking rule set. This name is used to
-identify the rule set associated with a matchmaking configuration.
+List of one or more matchmaking rule set names to retrieve details for.
+(Note: The rule set name is different from the optional "name" field in
+the rule set body.)
 
 
 

@@ -1,0 +1,33 @@
+
+package Paws::EC2::AssociateClientVpnTargetNetworkResult;
+  use Moose;
+  has AssociationId => (is => 'ro', isa => 'Str', request_name => 'associationId', traits => ['NameInRequest',]);
+  has Status => (is => 'ro', isa => 'Paws::EC2::AssociationStatus', request_name => 'status', traits => ['NameInRequest',]);
+
+  has _request_id => (is => 'ro', isa => 'Str');
+1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::EC2::AssociateClientVpnTargetNetworkResult
+
+=head1 ATTRIBUTES
+
+
+=head2 AssociationId => Str
+
+The unique ID of the target network association.
+
+
+=head2 Status => L<Paws::EC2::AssociationStatus>
+
+The current state of the target network association.
+
+
+=head2 _request_id => Str
+
+
+=cut
+

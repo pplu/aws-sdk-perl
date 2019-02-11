@@ -44,13 +44,13 @@ instances only.
 
   The value of the yum repo configuration. For example:
 
-C<cachedir=/var/cache/yum/$basesearch>
+C<[main]>
 
-C<$releasever>
+C<cachedir=/var/cache/yum/$basesearch$releasever>
 
 C<keepcache=0>
 
-C<debualevel=2>
+C<debuglevel=2>
 
 
 =head2 B<REQUIRED> Name => Str

@@ -46,6 +46,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $PipelinesRunningCount = $StopChannelResponse->PipelinesRunningCount;
     my $RoleArn               = $StopChannelResponse->RoleArn;
     my $State                 = $StopChannelResponse->State;
+    my $Tags                  = $StopChannelResponse->Tags;
 
     # Returns a L<Paws::MediaLive::StopChannelResponse> object.
 

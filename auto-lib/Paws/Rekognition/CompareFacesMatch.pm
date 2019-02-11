@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 =head1 DESCRIPTION
 
 Provides information about a face in a target image that matches the
-source image face analysed by C<CompareFaces>. The C<Face> property
+source image face analyzed by C<CompareFaces>. The C<Face> property
 contains the bounding box of the face in the target image. The
 C<Similarity> property is the confidence that the source image face
 matches the face in the bounding box.

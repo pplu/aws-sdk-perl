@@ -4,13 +4,16 @@ package Paws::MediaConvert::Input;
   has AudioSelectors => (is => 'ro', isa => 'Paws::MediaConvert::__mapOfAudioSelector', request_name => 'audioSelectors', traits => ['NameInRequest']);
   has CaptionSelectors => (is => 'ro', isa => 'Paws::MediaConvert::__mapOfCaptionSelector', request_name => 'captionSelectors', traits => ['NameInRequest']);
   has DeblockFilter => (is => 'ro', isa => 'Str', request_name => 'deblockFilter', traits => ['NameInRequest']);
+  has DecryptionSettings => (is => 'ro', isa => 'Paws::MediaConvert::InputDecryptionSettings', request_name => 'decryptionSettings', traits => ['NameInRequest']);
   has DenoiseFilter => (is => 'ro', isa => 'Str', request_name => 'denoiseFilter', traits => ['NameInRequest']);
-  has FileInput => (is => 'ro', isa => 'Str', request_name => 'fileInput', traits => ['NameInRequest'], required => 1);
+  has FileInput => (is => 'ro', isa => 'Str', request_name => 'fileInput', traits => ['NameInRequest']);
   has FilterEnable => (is => 'ro', isa => 'Str', request_name => 'filterEnable', traits => ['NameInRequest']);
   has FilterStrength => (is => 'ro', isa => 'Int', request_name => 'filterStrength', traits => ['NameInRequest']);
+  has ImageInserter => (is => 'ro', isa => 'Paws::MediaConvert::ImageInserter', request_name => 'imageInserter', traits => ['NameInRequest']);
   has InputClippings => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::InputClipping]', request_name => 'inputClippings', traits => ['NameInRequest']);
   has ProgramNumber => (is => 'ro', isa => 'Int', request_name => 'programNumber', traits => ['NameInRequest']);
   has PsiControl => (is => 'ro', isa => 'Str', request_name => 'psiControl', traits => ['NameInRequest']);
+  has SupplementalImps => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'supplementalImps', traits => ['NameInRequest']);
   has TimecodeSource => (is => 'ro', isa => 'Str', request_name => 'timecodeSource', traits => ['NameInRequest']);
   has VideoSelector => (is => 'ro', isa => 'Paws::MediaConvert::VideoSelector', request_name => 'videoSelector', traits => ['NameInRequest']);
 1;
@@ -74,17 +77,26 @@ captions selectors per input.
   
 
 
+=head2 DecryptionSettings => L<Paws::MediaConvert::InputDecryptionSettings>
+
+  Settings for decrypting any input files that are encrypted.
+
+
 =head2 DenoiseFilter => Str
 
   
 
 
-=head2 B<REQUIRED> FileInput => Str
+=head2 FileInput => Str
 
-  Use Input (fileInput) to define the source file used in the transcode
-job. There can be multiple inputs in a job. These inputs are
-concantenated, in the order they are specified in the job, to create
-the output.
+  Specify the source file for your transcoding job. You can use multiple
+inputs in a single job. The service concatenates these inputs, in the
+order that you specify them in the job, to create the outputs. If your
+input format is IMF, specify your input by providing the path to your
+CPL. For example, "s3://bucket/vf/cpl.xml". If the CPL is in an
+incomplete IMP, make sure to use *Supplemental IMPs* (SupplementalImps)
+to specify any supplemental IMPs that contain assets referenced by the
+CPL.
 
 
 =head2 FilterEnable => Str
@@ -97,6 +109,13 @@ the output.
   Use Filter strength (FilterStrength) to adjust the magnitude the input
 filter settings (Deblock and Denoise). The range is -5 to 5. Default is
 0.
+
+
+=head2 ImageInserter => L<Paws::MediaConvert::ImageInserter>
+
+  Enable the image inserter feature to include a graphic overlay on your
+video. Enable or disable this feature for each input individually. This
+setting is disabled by default.
 
 
 =head2 InputClippings => ArrayRef[L<Paws::MediaConvert::InputClipping>]
@@ -122,6 +141,17 @@ this default.
 =head2 PsiControl => Str
 
   
+
+
+=head2 SupplementalImps => ArrayRef[Str|Undef]
+
+  Provide a list of any necessary supplemental IMPs. You need
+supplemental IMPs if the CPL that you're using for your input is in an
+incomplete IMP. Specify either the supplemental IMP directories with a
+trailing slash or the ASSETMAP.xml files. For example
+["s3://bucket/ov/", "s3://bucket/vf2/ASSETMAP.xml"]. You don't need to
+specify the IMP that contains your input CPL, because the service
+automatically detects it.
 
 
 =head2 TimecodeSource => Str

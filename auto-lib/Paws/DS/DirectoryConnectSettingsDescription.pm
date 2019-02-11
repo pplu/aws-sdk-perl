@@ -53,7 +53,7 @@ Contains information about an AD Connector directory.
 
 =head2 CustomerUserName => Str
 
-  The username of the service account in the on-premises directory.
+  The user name of the service account in the on-premises directory.
 
 
 =head2 SecurityGroupId => Str

@@ -15,6 +15,8 @@ package Paws::RedShift::RestoreFromClusterSnapshot;
   has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
   has IamRoles => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has KmsKeyId => (is => 'ro', isa => 'Str');
+  has MaintenanceTrackName => (is => 'ro', isa => 'Str');
+  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has NodeType => (is => 'ro', isa => 'Str');
   has OwnerAccount => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
@@ -22,6 +24,7 @@ package Paws::RedShift::RestoreFromClusterSnapshot;
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has SnapshotClusterIdentifier => (is => 'ro', isa => 'Str');
   has SnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  has SnapshotScheduleIdentifier => (is => 'ro', isa => 'Str');
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
@@ -65,12 +68,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       HsmConfigurationIdentifier       => 'MyString',             # OPTIONAL
       IamRoles                         => [ 'MyString', ... ],    # OPTIONAL
       KmsKeyId                         => 'MyString',             # OPTIONAL
+      MaintenanceTrackName             => 'MyString',             # OPTIONAL
+      ManualSnapshotRetentionPeriod    => 1,                      # OPTIONAL
       NodeType                         => 'MyString',             # OPTIONAL
       OwnerAccount                     => 'MyString',             # OPTIONAL
       Port                             => 1,                      # OPTIONAL
       PreferredMaintenanceWindow       => 'MyString',             # OPTIONAL
       PubliclyAccessible               => 1,                      # OPTIONAL
       SnapshotClusterIdentifier        => 'MyString',             # OPTIONAL
+      SnapshotScheduleIdentifier       => 'MyString',             # OPTIONAL
       VpcSecurityGroupIds              => [ 'MyString', ... ],    # OPTIONAL
       );
 
@@ -263,6 +269,24 @@ shared snapshot.
 
 
 
+=head2 MaintenanceTrackName => Str
+
+The name of the maintenance track for the restored cluster. When you
+take a snapshot, the snapshot inherits the C<MaintenanceTrack> value
+from the cluster. The snapshot might be on a different track than the
+cluster that was the source for the snapshot. For example, suppose that
+you take a snapshot of a cluster that is on the current track and then
+change the cluster to be on the trailing track. In this case, the
+snapshot and the source cluster are on different tracks.
+
+
+
+=head2 ManualSnapshotRetentionPeriod => Int
+
+
+
+
+
 =head2 NodeType => Str
 
 The node type that the restored cluster will be provisioned with.
@@ -341,6 +365,12 @@ The name of the snapshot from which to create the new cluster. This
 parameter isn't case sensitive.
 
 Example: C<my-snapshot-id>
+
+
+
+=head2 SnapshotScheduleIdentifier => Str
+
+A unique identifier for the snapshot schedule.
 
 
 

@@ -115,16 +115,15 @@ indicate where the next call should start.
 
 =head2 MaxItems => Int
 
-(Optional) Use this only when paginating results to indicate the
-maximum number of items you want in the response. If additional items
-exist beyond the maximum you specify, the C<IsTruncated> response
-element is C<true>.
+Use this only when paginating results to indicate the maximum number of
+items you want in the response. If additional items exist beyond the
+maximum you specify, the C<IsTruncated> response element is C<true>.
 
-If you do not include this parameter, it defaults to 100. Note that IAM
-might return fewer results, even when there are more results available.
-In that case, the C<IsTruncated> response element returns C<true> and
-C<Marker> contains a value to include in the subsequent call that tells
-the service where to continue from.
+If you do not include this parameter, the number of items defaults to
+100. Note that IAM might return fewer results, even when there are more
+results available. In that case, the C<IsTruncated> response element
+returns C<true>, and C<Marker> contains a value to include in the
+subsequent call that tells the service where to continue from.
 
 
 
@@ -170,7 +169,7 @@ return (\u000D)
 =head2 ResourceArns => ArrayRef[Str|Undef]
 
 A list of ARNs of AWS resources to include in the simulation. If this
-parameter is not provided then the value defaults to C<*> (all
+parameter is not provided, then the value defaults to C<*> (all
 resources). Each API in the C<ActionNames> parameter is evaluated for
 each resource in this list. The simulation determines the access result
 (allowed or denied) of each combination and reports it in the response.
@@ -257,16 +256,21 @@ instance, image, security-group, network-interface, subnet, volume
 
 =head2 ResourceOwner => Str
 
-An AWS account ID that specifies the owner of any simulated resource
-that does not identify its owner in the resource ARN, such as an S3
-bucket or object. If C<ResourceOwner> is specified, it is also used as
-the account owner of any C<ResourcePolicy> included in the simulation.
-If the C<ResourceOwner> parameter is not specified, then the owner of
-the resources and the resource policy defaults to the account of the
-identity provided in C<CallerArn>. This parameter is required only if
-you specify a resource-based policy and account that owns the resource
-is different from the account that owns the simulated calling user
-C<CallerArn>.
+An ARN representing the AWS account ID that specifies the owner of any
+simulated resource that does not identify its owner in the resource
+ARN, such as an S3 bucket or object. If C<ResourceOwner> is specified,
+it is also used as the account owner of any C<ResourcePolicy> included
+in the simulation. If the C<ResourceOwner> parameter is not specified,
+then the owner of the resources and the resource policy defaults to the
+account of the identity provided in C<CallerArn>. This parameter is
+required only if you specify a resource-based policy and account that
+owns the resource is different from the account that owns the simulated
+calling user C<CallerArn>.
+
+The ARN for an account uses the following syntax:
+C<arn:aws:iam::I<AWS-account-ID>:root>. For example, to represent the
+account with the 112233445566 ID, use the following ARN:
+C<arn:aws:iam::112233445566-ID:root>.
 
 
 

@@ -1,14 +1,15 @@
 package Paws::MediaConvert::BurninDestinationSettings;
   use Moose;
-  has Alignment => (is => 'ro', isa => 'Str', request_name => 'alignment', traits => ['NameInRequest'], required => 1);
+  has Alignment => (is => 'ro', isa => 'Str', request_name => 'alignment', traits => ['NameInRequest']);
   has BackgroundColor => (is => 'ro', isa => 'Str', request_name => 'backgroundColor', traits => ['NameInRequest']);
   has BackgroundOpacity => (is => 'ro', isa => 'Int', request_name => 'backgroundOpacity', traits => ['NameInRequest']);
   has FontColor => (is => 'ro', isa => 'Str', request_name => 'fontColor', traits => ['NameInRequest']);
-  has FontOpacity => (is => 'ro', isa => 'Int', request_name => 'fontOpacity', traits => ['NameInRequest'], required => 1);
+  has FontOpacity => (is => 'ro', isa => 'Int', request_name => 'fontOpacity', traits => ['NameInRequest']);
   has FontResolution => (is => 'ro', isa => 'Int', request_name => 'fontResolution', traits => ['NameInRequest']);
+  has FontScript => (is => 'ro', isa => 'Str', request_name => 'fontScript', traits => ['NameInRequest']);
   has FontSize => (is => 'ro', isa => 'Int', request_name => 'fontSize', traits => ['NameInRequest']);
-  has OutlineColor => (is => 'ro', isa => 'Str', request_name => 'outlineColor', traits => ['NameInRequest'], required => 1);
-  has OutlineSize => (is => 'ro', isa => 'Int', request_name => 'outlineSize', traits => ['NameInRequest'], required => 1);
+  has OutlineColor => (is => 'ro', isa => 'Str', request_name => 'outlineColor', traits => ['NameInRequest']);
+  has OutlineSize => (is => 'ro', isa => 'Int', request_name => 'outlineSize', traits => ['NameInRequest']);
   has ShadowColor => (is => 'ro', isa => 'Str', request_name => 'shadowColor', traits => ['NameInRequest']);
   has ShadowOpacity => (is => 'ro', isa => 'Int', request_name => 'shadowOpacity', traits => ['NameInRequest']);
   has ShadowXOffset => (is => 'ro', isa => 'Int', request_name => 'shadowXOffset', traits => ['NameInRequest']);
@@ -51,7 +52,7 @@ Burn-In Destination Settings.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Alignment => Str
+=head2 Alignment => Str
 
   
 
@@ -73,7 +74,7 @@ to 0 (transparent). All burn-in and DVB-Sub font settings must match.
   
 
 
-=head2 B<REQUIRED> FontOpacity => Int
+=head2 FontOpacity => Int
 
   Specifies the opacity of the burned-in captions. 255 is opaque; 0 is
 transparent. All burn-in and DVB-Sub font settings must match.
@@ -85,6 +86,15 @@ transparent. All burn-in and DVB-Sub font settings must match.
 and DVB-Sub font settings must match.
 
 
+=head2 FontScript => Str
+
+  Provide the font script, using an ISO 15924 script code, if the
+LanguageCode is not sufficient for determining the script type. Where
+LanguageCode or CustomLanguageCode is sufficient, use "AUTOMATIC" or
+leave unset. This is used to help determine the appropriate font for
+rendering burn-in captions.
+
+
 =head2 FontSize => Int
 
   A positive integer indicates the exact font size in points. Set to 0
@@ -92,12 +102,12 @@ for automatic font size selection. All burn-in and DVB-Sub font
 settings must match.
 
 
-=head2 B<REQUIRED> OutlineColor => Str
+=head2 OutlineColor => Str
 
   
 
 
-=head2 B<REQUIRED> OutlineSize => Int
+=head2 OutlineSize => Int
 
   Specifies font outline size in pixels. This option is not valid for
 source captions that are either 608/embedded or teletext. These source

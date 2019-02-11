@@ -33,9 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreatePullRequestOutput = $codecommit->CreatePullRequest(
       Targets => [
         {
-          repositoryName       => 'MyRepositoryName',    # min: 1, max: 100
-          sourceReference      => 'MyReferenceName',
-          destinationReference => 'MyReferenceName',
+          RepositoryName       => 'MyRepositoryName',    # min: 1, max: 100
+          SourceReference      => 'MyReferenceName',
+          DestinationReference => 'MyReferenceName',
         },
         ...
       ],

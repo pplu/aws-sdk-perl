@@ -91,9 +91,7 @@ The new or updated Notification object.
 
 =head2 Resources => L<Paws::Snowball::JobResource>
 
-The updated S3Resource object (for a single Amazon S3 bucket or key
-range), or the updated JobResource object (for multiple buckets or key
-ranges).
+The updated C<JobResource> object, or the updated JobResource object.
 
 
 
@@ -117,7 +115,7 @@ Valid values are: C<"SECOND_DAY">, C<"NEXT_DAY">, C<"EXPRESS">, C<"STANDARD">
 The updated C<SnowballCapacityPreference> of this job's JobMetadata
 object. The 50 TB Snowballs are only available in the US regions.
 
-Valid values are: C<"T50">, C<"T80">, C<"T100">, C<"NoPreference">
+Valid values are: C<"T50">, C<"T80">, C<"T100">, C<"T42">, C<"NoPreference">
 
 
 =head1 SEE ALSO

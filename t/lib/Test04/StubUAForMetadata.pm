@@ -15,9 +15,9 @@ package Test04::StubUAForMetadata;
     if ($url eq 'http://169.254.169.254/latest/meta-data/iam/security-credentials/MyRole') {
       $self->increment_calls;
       if ($self->calls == 1){
-        return { success => 1, content => '{"Code" : "Success","LastUpdated" : "2012-04-26T16:39:16Z","Type" : "AWS-HMAC","AccessKeyId" : "AK1","SecretAccessKey" : "SK1","Token" : "TK1","Expiration" : "' . DateTime->now->add(seconds => 1)->iso8601 .'Z"}' };
+        return { success => 1, content => '{"Code" : "Success","LastUpdated" : "2012-04-26T16:39:16Z","Type" : "AWS-HMAC","AccessKeyId" : "AK1","SecretAccessKey" : "SK1","Token" : "TK1","Expiration" : "' . DateTime->now->add(seconds => 241)->iso8601 .'Z"}' };
       } elsif ($self->calls == 2){
-        return { success => 1, content => '{"Code" : "Success","LastUpdated" : "2012-04-26T16:39:16Z","Type" : "AWS-HMAC","AccessKeyId" : "AK2","SecretAccessKey" : "SK2","Token" : "TK2","Expiration" : "' . DateTime->now->add(seconds => 1)->iso8601 .'Z"}' };
+        return { success => 1, content => '{"Code" : "Success","LastUpdated" : "2012-04-26T16:39:16Z","Type" : "AWS-HMAC","AccessKeyId" : "AK2","SecretAccessKey" : "SK2","Token" : "TK2","Expiration" : "' . DateTime->now->add(seconds => 241)->iso8601 .'Z"}' };
       } elsif ($self->calls == 3){
         return { success => 1, content => 'Error in JSON' };
       } elsif ($self->calls == 4){

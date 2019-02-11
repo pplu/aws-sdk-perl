@@ -3,6 +3,7 @@ package Paws::MediaConvert::UpdateQueue;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
+  has ReservationPlanSettings => (is => 'ro', isa => 'Paws::MediaConvert::ReservationPlanSettings', traits => ['NameInRequest'], request_name => 'reservationPlanSettings');
   has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status');
 
   use MooseX::ClassAttribute;
@@ -31,9 +32,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $mediaconvert = Paws->service('MediaConvert');
     my $UpdateQueueResponse = $mediaconvert->UpdateQueue(
-      Name        => 'My__string',
-      Description => 'My__string',    # OPTIONAL
-      Status      => 'ACTIVE',        # OPTIONAL
+      Name                    => 'My__string',
+      Description             => 'My__string',    # OPTIONAL
+      ReservationPlanSettings => {
+        Commitment    => 'ONE_YEAR',              # values: ONE_YEAR
+        RenewalType   => 'AUTO_RENEW',            # values: AUTO_RENEW, EXPIRE
+        ReservedSlots => 1,
+
+      },    # OPTIONAL
+      Status => 'ACTIVE',    # OPTIONAL
     );
 
     # Results:
@@ -55,13 +62,27 @@ The new description for the queue, if you are changing it.
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the queue you are modifying.
+The name of the queue that you are modifying.
+
+
+
+=head2 ReservationPlanSettings => L<Paws::MediaConvert::ReservationPlanSettings>
+
+The new details of your pricing plan for your reserved queue. When you
+set up a new pricing plan to replace an expired one, you enter into
+another 12-month commitment. When you add capacity to your queue by
+increasing the number of RTS, you extend the term of your commitment to
+12 months from when you add capacity. After you make these commitments,
+you can't cancel them.
 
 
 
 =head2 Status => Str
 
-
+Pause or activate a queue by changing its status between ACTIVE and
+PAUSED. If you pause a queue, jobs in that queue won't begin. Jobs that
+are running when you pause the queue continue to run until they finish
+or result in an error.
 
 Valid values are: C<"ACTIVE">, C<"PAUSED">
 

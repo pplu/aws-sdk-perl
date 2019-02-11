@@ -47,7 +47,7 @@ if the WorkSpace is stopped.
 
 =head2 ConnectionStateCheckTimestamp => Str
 
-  The timestamp of the connection state check.
+  The timestamp of the connection status check.
 
 
 =head2 LastKnownUserConnectionTimestamp => Str
@@ -57,7 +57,7 @@ if the WorkSpace is stopped.
 
 =head2 WorkspaceId => Str
 
-  The ID of the WorkSpace.
+  The identifier of the WorkSpace.
 
 
 

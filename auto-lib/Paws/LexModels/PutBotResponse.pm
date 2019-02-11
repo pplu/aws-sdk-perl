@@ -136,7 +136,7 @@ C<failureReason> response element.
 When you set C<processBehavior>to C<SAVE>, Amazon Lex sets the status
 code to C<NOT BUILT>.
 
-Valid values are: C<"BUILDING">, C<"READY">, C<"FAILED">, C<"NOT_BUILT">
+Valid values are: C<"BUILDING">, C<"READY">, C<"READY_BASIC_TESTING">, C<"FAILED">, C<"NOT_BUILT">
 =head2 Version => Str
 
 The version of the bot. For a new bot, the version is always

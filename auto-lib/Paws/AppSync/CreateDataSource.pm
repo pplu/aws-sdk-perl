@@ -5,8 +5,10 @@ package Paws::AppSync::CreateDataSource;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has DynamodbConfig => (is => 'ro', isa => 'Paws::AppSync::DynamodbDataSourceConfig', traits => ['NameInRequest'], request_name => 'dynamodbConfig');
   has ElasticsearchConfig => (is => 'ro', isa => 'Paws::AppSync::ElasticsearchDataSourceConfig', traits => ['NameInRequest'], request_name => 'elasticsearchConfig');
+  has HttpConfig => (is => 'ro', isa => 'Paws::AppSync::HttpDataSourceConfig', traits => ['NameInRequest'], request_name => 'httpConfig');
   has LambdaConfig => (is => 'ro', isa => 'Paws::AppSync::LambdaDataSourceConfig', traits => ['NameInRequest'], request_name => 'lambdaConfig');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
+  has RelationalDatabaseConfig => (is => 'ro', isa => 'Paws::AppSync::RelationalDatabaseDataSourceConfig', traits => ['NameInRequest'], request_name => 'relationalDatabaseConfig');
   has ServiceRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceRoleArn');
   has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type', required => 1);
 
@@ -41,18 +43,39 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Type           => 'AWS_LAMBDA',
       Description    => 'MyString',         # OPTIONAL
       DynamodbConfig => {
-        awsRegion            => 'MyString',
-        tableName            => 'MyString',
-        useCallerCredentials => 1,            # OPTIONAL
+        AwsRegion            => 'MyString',
+        TableName            => 'MyString',
+        UseCallerCredentials => 1,            # OPTIONAL
       },    # OPTIONAL
       ElasticsearchConfig => {
-        awsRegion => 'MyString',
-        endpoint  => 'MyString',
+        AwsRegion => 'MyString',
+        Endpoint  => 'MyString',
 
       },    # OPTIONAL
+      HttpConfig => {
+        AuthorizationConfig => {
+          AuthorizationType => 'AWS_IAM',    # values: AWS_IAM
+          AwsIamConfig      => {
+            SigningRegion      => 'MyString',
+            SigningServiceName => 'MyString',
+          },                                 # OPTIONAL
+        },    # OPTIONAL
+        Endpoint => 'MyString',
+      },    # OPTIONAL
       LambdaConfig => {
-        lambdaFunctionArn => 'MyString',
+        LambdaFunctionArn => 'MyString',
 
+      },    # OPTIONAL
+      RelationalDatabaseConfig => {
+        RdsHttpEndpointConfig => {
+          AwsRegion           => 'MyString',
+          AwsSecretStoreArn   => 'MyString',
+          DatabaseName        => 'MyString',
+          DbClusterIdentifier => 'MyString',
+          Schema              => 'MyString',
+        },    # OPTIONAL
+        RelationalDatabaseSourceType =>
+          'RDS_HTTP_ENDPOINT',    # values: RDS_HTTP_ENDPOINT; OPTIONAL
       },    # OPTIONAL
       ServiceRoleArn => 'MyString',    # OPTIONAL
     );
@@ -82,13 +105,19 @@ A description of the C<DataSource>.
 
 =head2 DynamodbConfig => L<Paws::AppSync::DynamodbDataSourceConfig>
 
-DynamoDB settings.
+Amazon DynamoDB settings.
 
 
 
 =head2 ElasticsearchConfig => L<Paws::AppSync::ElasticsearchDataSourceConfig>
 
-Amazon Elasticsearch settings.
+Amazon Elasticsearch Service settings.
+
+
+
+=head2 HttpConfig => L<Paws::AppSync::HttpDataSourceConfig>
+
+HTTP endpoint settings.
 
 
 
@@ -104,10 +133,16 @@ A user-supplied name for the C<DataSource>.
 
 
 
+=head2 RelationalDatabaseConfig => L<Paws::AppSync::RelationalDatabaseDataSourceConfig>
+
+Relational database settings.
+
+
+
 =head2 ServiceRoleArn => Str
 
-The IAM service role ARN for the data source. The system assumes this
-role when accessing the data source.
+The AWS IAM service role ARN for the data source. The system assumes
+this role when accessing the data source.
 
 
 
@@ -115,7 +150,7 @@ role when accessing the data source.
 
 The type of the C<DataSource>.
 
-Valid values are: C<"AWS_LAMBDA">, C<"AMAZON_DYNAMODB">, C<"AMAZON_ELASTICSEARCH">, C<"NONE">
+Valid values are: C<"AWS_LAMBDA">, C<"AMAZON_DYNAMODB">, C<"AMAZON_ELASTICSEARCH">, C<"NONE">, C<"HTTP">, C<"RELATIONAL_DATABASE">
 
 
 =head1 SEE ALSO

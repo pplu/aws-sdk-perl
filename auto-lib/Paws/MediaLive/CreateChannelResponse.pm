@@ -10,6 +10,7 @@ package Paws::MediaLive::CreateChannelResponse;
   has RequestId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'requestId');
   has Reserved => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reserved');
   has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn');
+  has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', traits => ['NameInRequest'], request_name => 'tags');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -69,6 +70,11 @@ Deprecated field that's only usable by whitelisted customers.
 
 An optional Amazon Resource Name (ARN) of the role to assume when
 running the Channel.
+
+
+=head2 Tags => L<Paws::MediaLive::Tags>
+
+A collection of key-value pairs.
 
 
 =head2 _request_id => Str

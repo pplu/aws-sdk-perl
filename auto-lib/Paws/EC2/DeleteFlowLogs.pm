@@ -1,6 +1,7 @@
 
 package Paws::EC2::DeleteFlowLogs;
   use Moose;
+  has DryRun => (is => 'ro', isa => 'Bool');
   has FlowLogIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'FlowLogId' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -29,7 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $DeleteFlowLogsResult = $ec2->DeleteFlowLogs(
       FlowLogIds => [ 'MyString', ... ],
-
+      DryRun     => 1,                     # OPTIONAL
     );
 
     # Results:
@@ -41,6 +42,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DeleteFlowLogs>
 
 =head1 ATTRIBUTES
+
+
+=head2 DryRun => Bool
+
+Checks whether you have the required permissions for the action,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
 
 
 =head2 B<REQUIRED> FlowLogIds => ArrayRef[Str|Undef]

@@ -40,12 +40,12 @@ inventory results.
 
 =head2 SSEKMS => L<Paws::S3::SSEKMS>
 
-  Specifies the use of SSE-KMS to encrypt delievered Inventory reports.
+  Specifies the use of SSE-KMS to encrypt delivered Inventory reports.
 
 
 =head2 SSES3 => L<Paws::S3::SSES3>
 
-  Specifies the use of SSE-S3 to encrypt delievered Inventory reports.
+  Specifies the use of SSE-S3 to encrypt delivered Inventory reports.
 
 
 

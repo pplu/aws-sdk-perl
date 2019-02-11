@@ -33,7 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 =head1 DESCRIPTION
 
 Information about a detected celebrity and the time the celebrity was
-detected in a stored video. For more information, see .
+detected in a stored video. For more information, see
+GetCelebrityRecognition in the Amazon Rekognition Developer Guide.
 
 =head1 ATTRIBUTES
 

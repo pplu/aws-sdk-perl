@@ -1,6 +1,7 @@
 package Paws::DeviceFarm::Device;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has Availability => (is => 'ro', isa => 'Str', request_name => 'availability', traits => ['NameInRequest']);
   has Carrier => (is => 'ro', isa => 'Str', request_name => 'carrier', traits => ['NameInRequest']);
   has Cpu => (is => 'ro', isa => 'Paws::DeviceFarm::CPU', request_name => 'cpu', traits => ['NameInRequest']);
   has FleetName => (is => 'ro', isa => 'Str', request_name => 'fleetName', traits => ['NameInRequest']);
@@ -58,6 +59,12 @@ Represents a device type that an app is tested against.
 =head2 Arn => Str
 
   The device's ARN.
+
+
+=head2 Availability => Str
+
+  Reflects how likely a device will be available for a test run. It is
+currently available in the ListDevices and GetDevice API methods.
 
 
 =head2 Carrier => Str

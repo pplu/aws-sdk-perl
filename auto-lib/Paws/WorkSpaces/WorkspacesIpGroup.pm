@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
 =head1 DESCRIPTION
 
-Information about an IP access control group.
+Describes an IP access control group.
 
 =head1 ATTRIBUTES
 
@@ -46,7 +46,7 @@ Information about an IP access control group.
 
 =head2 GroupId => Str
 
-  The ID of the group.
+  The identifier of the group.
 
 
 =head2 GroupName => Str

@@ -17,8 +17,8 @@ Paws::IAM::GetAccountSummaryResponse
 
 =head2 SummaryMap => L<Paws::IAM::SummaryMapType>
 
-A set of key value pairs containing information about IAM entity usage
-and IAM quotas.
+A set of keyE<ndash>value pairs containing information about IAM entity
+usage and IAM quotas.
 
 
 =head2 _request_id => Str

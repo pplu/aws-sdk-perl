@@ -1,6 +1,7 @@
 package Paws::RDS::DBInstance;
   use Moose;
   has AllocatedStorage => (is => 'ro', isa => 'Int');
+  has AssociatedRoles => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBInstanceRole]', request_name => 'DBInstanceRole', traits => ['NameInRequest']);
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
@@ -18,6 +19,7 @@ package Paws::RDS::DBInstance;
   has DBParameterGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBParameterGroupStatus]', request_name => 'DBParameterGroup', traits => ['NameInRequest']);
   has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBSecurityGroupMembership]', request_name => 'DBSecurityGroup', traits => ['NameInRequest']);
   has DBSubnetGroup => (is => 'ro', isa => 'Paws::RDS::DBSubnetGroup');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
   has DomainMemberships => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DomainMembership]', request_name => 'DomainMembership', traits => ['NameInRequest']);
   has EnabledCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Endpoint => (is => 'ro', isa => 'Paws::RDS::Endpoint');
@@ -30,6 +32,7 @@ package Paws::RDS::DBInstance;
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has LatestRestorableTime => (is => 'ro', isa => 'Str');
   has LicenseModel => (is => 'ro', isa => 'Str');
+  has ListenerEndpoint => (is => 'ro', isa => 'Paws::RDS::Endpoint');
   has MasterUsername => (is => 'ro', isa => 'Str');
   has MonitoringInterval => (is => 'ro', isa => 'Int');
   has MonitoringRoleArn => (is => 'ro', isa => 'Str');
@@ -38,6 +41,7 @@ package Paws::RDS::DBInstance;
   has PendingModifiedValues => (is => 'ro', isa => 'Paws::RDS::PendingModifiedValues');
   has PerformanceInsightsEnabled => (is => 'ro', isa => 'Bool');
   has PerformanceInsightsKMSKeyId => (is => 'ro', isa => 'Str');
+  has PerformanceInsightsRetentionPeriod => (is => 'ro', isa => 'Int');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has ProcessorFeatures => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ProcessorFeature]', request_name => 'ProcessorFeature', traits => ['NameInRequest']);
@@ -94,6 +98,12 @@ action.
 =head2 AllocatedStorage => Int
 
   Specifies the allocated storage size specified in gibibytes.
+
+
+=head2 AssociatedRoles => ArrayRef[L<Paws::RDS::DBInstanceRole>]
+
+  The AWS Identity and Access Management (IAM) roles associated with the
+DB instance.
 
 
 =head2 AutoMinorVersionUpgrade => Bool
@@ -212,6 +222,14 @@ instance, including the name, description, and subnets in the subnet
 group.
 
 
+=head2 DeletionProtection => Bool
+
+  Indicates if the DB instance has deletion protection enabled. The
+database can't be deleted when this value is set to true. For more
+information, see Deleting a DB Instance
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
+
+
 =head2 DomainMemberships => ArrayRef[L<Paws::RDS::DomainMembership>]
 
   The Active Directory Domain membership records associated with the DB
@@ -222,6 +240,11 @@ instance.
 
   A list of log types that this DB instance is configured to export to
 CloudWatch Logs.
+
+Log types vary by DB engine. For information about the log types for
+each DB engine, see Amazon RDS Database Log Files
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html)
+in the I<Amazon RDS User Guide.>
 
 
 =head2 Endpoint => L<Paws::RDS::Endpoint>
@@ -300,6 +323,11 @@ point-in-time restore.
   License model information for this DB instance.
 
 
+=head2 ListenerEndpoint => L<Paws::RDS::Endpoint>
+
+  Specifies the listener connection endpoint for SQL Server Always On.
+
+
 =head2 MasterUsername => Str
 
   Contains the master username for the DB instance.
@@ -347,6 +375,12 @@ The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier,
 or the KMS key alias for the KMS encryption key.
 
 
+=head2 PerformanceInsightsRetentionPeriod => Int
+
+  The amount of time, in days, to retain Performance Insights data. Valid
+values are 7 or 731 (2 years).
+
+
 =head2 PreferredBackupWindow => Str
 
   Specifies the daily time range during which automated backups are
@@ -372,7 +406,8 @@ instance class of the DB instance.
 to the primary instance after a failure of the existing primary
 instance. For more information, see Fault Tolerance for an Aurora DB
 Cluster
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance).
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance)
+in the I<Amazon Aurora User Guide>.
 
 
 =head2 PubliclyAccessible => Bool
@@ -383,33 +418,16 @@ DNS name, which resolves to a public IP address. A value of false
 specifies an internal instance with a DNS name that resolves to a
 private IP address.
 
-Default: The default behavior varies depending on whether a VPC has
-been requested or not. The following list shows the default behavior in
-each case.
-
-=over
-
-=item *
-
-B<Default VPC:>true
-
-=item *
-
-B<VPC:>false
-
-=back
-
-If no DB subnet group has been specified as part of the request and the
-PubliclyAccessible value has not been set, the DB instance is publicly
-accessible. If a specific DB subnet group has been specified as part of
-the request and the PubliclyAccessible value has not been set, the DB
-instance is private.
-
 
 =head2 ReadReplicaDBClusterIdentifiers => ArrayRef[Str|Undef]
 
-  Contains one or more identifiers of Aurora DB clusters that are Read
-Replicas of this DB instance.
+  Contains one or more identifiers of Aurora DB clusters to which the RDS
+DB instance is replicated as a Read Replica. For example, when you
+create an Aurora Read Replica of an RDS MySQL DB instance, the Aurora
+MySQL DB cluster for the Aurora Read Replica is shown. This output does
+not contain information about cross region Aurora Read Replicas.
+
+Currently, each RDS DB instance can have only one Aurora Read Replica.
 
 
 =head2 ReadReplicaDBInstanceIdentifiers => ArrayRef[Str|Undef]

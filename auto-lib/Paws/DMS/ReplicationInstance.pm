@@ -3,6 +3,7 @@ package Paws::DMS::ReplicationInstance;
   has AllocatedStorage => (is => 'ro', isa => 'Int');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
+  has DnsNameServers => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has FreeUntil => (is => 'ro', isa => 'Str');
   has InstanceCreateTime => (is => 'ro', isa => 'Str');
@@ -74,6 +75,11 @@ automatically applied to the instance.
   The Availability Zone for the instance.
 
 
+=head2 DnsNameServers => Str
+
+  The DNS name servers for the replication instance.
+
+
 =head2 EngineVersion => Str
 
   The engine version number of the replication instance.
@@ -92,11 +98,11 @@ the Free DMS program.
 
 =head2 KmsKeyId => Str
 
-  The KMS key identifier that is used to encrypt the content on the
-replication instance. If you do not specify a value for the KmsKeyId
-parameter, then AWS DMS will use your default encryption key. AWS KMS
+  The AWS KMS key identifier that is used to encrypt the content on the
+replication instance. If you don't specify a value for the C<KmsKeyId>
+parameter, then AWS DMS uses your default encryption key. AWS KMS
 creates the default encryption key for your AWS account. Your AWS
-account has a different default encryption key for each AWS region.
+account has a different default encryption key for each AWS Region.
 
 
 =head2 MultiAZ => Bool

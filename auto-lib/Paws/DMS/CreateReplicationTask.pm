@@ -92,6 +92,8 @@ Indicates the start time for a change data capture (CDC) operation. Use
 either CdcStartTime or CdcStartPosition to specify when you want a CDC
 operation to start. Specifying both values results in an error.
 
+Timestamp Example: --cdc-start-time E<ldquo>2018-03-08T12:12:12E<rdquo>
+
 
 
 =head2 CdcStopPosition => Str
@@ -149,7 +151,8 @@ Cannot end with a hyphen or contain two consecutive hyphens.
 Settings for the task, such as target metadata settings. For a complete
 list of task settings, see Task Settings for AWS Database Migration
 Service Tasks
-(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html).
+(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html)
+in the I<AWS Database Migration User Guide.>
 
 
 

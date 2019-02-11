@@ -12,6 +12,7 @@ package Paws::CloudFront::DistributionSummary;
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has IsIPV6Enabled => (is => 'ro', isa => 'Bool', required => 1);
   has LastModifiedTime => (is => 'ro', isa => 'Str', required => 1);
+  has OriginGroups => (is => 'ro', isa => 'Paws::CloudFront::OriginGroups');
   has Origins => (is => 'ro', isa => 'Paws::CloudFront::Origins', required => 1);
   has PriceClass => (is => 'ro', isa => 'Str', required => 1);
   has Restrictions => (is => 'ro', isa => 'Paws::CloudFront::Restrictions', required => 1);
@@ -126,6 +127,12 @@ for your distribution.
   The date and time the distribution was last modified.
 
 
+=head2 OriginGroups => L<Paws::CloudFront::OriginGroups>
+
+  A complex type that contains information about origin groups for this
+distribution.
+
+
 =head2 B<REQUIRED> Origins => L<Paws::CloudFront::Origins>
 
   A complex type that contains information about origins for this
@@ -134,7 +141,8 @@ distribution.
 
 =head2 B<REQUIRED> PriceClass => Str
 
-  
+  A complex type that contains information about price class for this
+streaming distribution.
 
 
 =head2 B<REQUIRED> Restrictions => L<Paws::CloudFront::Restrictions>

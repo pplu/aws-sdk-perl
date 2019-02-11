@@ -3,10 +3,10 @@ package Paws::MediaConvert::AacSettings;
   has AudioDescriptionBroadcasterMix => (is => 'ro', isa => 'Str', request_name => 'audioDescriptionBroadcasterMix', traits => ['NameInRequest']);
   has Bitrate => (is => 'ro', isa => 'Int', request_name => 'bitrate', traits => ['NameInRequest']);
   has CodecProfile => (is => 'ro', isa => 'Str', request_name => 'codecProfile', traits => ['NameInRequest']);
-  has CodingMode => (is => 'ro', isa => 'Str', request_name => 'codingMode', traits => ['NameInRequest'], required => 1);
+  has CodingMode => (is => 'ro', isa => 'Str', request_name => 'codingMode', traits => ['NameInRequest']);
   has RateControlMode => (is => 'ro', isa => 'Str', request_name => 'rateControlMode', traits => ['NameInRequest']);
   has RawFormat => (is => 'ro', isa => 'Str', request_name => 'rawFormat', traits => ['NameInRequest']);
-  has SampleRate => (is => 'ro', isa => 'Int', request_name => 'sampleRate', traits => ['NameInRequest'], required => 1);
+  has SampleRate => (is => 'ro', isa => 'Int', request_name => 'sampleRate', traits => ['NameInRequest']);
   has Specification => (is => 'ro', isa => 'Str', request_name => 'specification', traits => ['NameInRequest']);
   has VbrQuality => (is => 'ro', isa => 'Str', request_name => 'vbrQuality', traits => ['NameInRequest']);
 1;
@@ -58,8 +58,14 @@ on the rate control mode.
 
 =head2 Bitrate => Int
 
-  Average bitrate in bits/second. Defaults and valid values depend on
-rate control mode and profile.
+  Average bitrate in bits/second. The set of valid values for this
+setting is: 6000, 8000, 10000, 12000, 14000, 16000, 20000, 24000,
+28000, 32000, 40000, 48000, 56000, 64000, 80000, 96000, 112000, 128000,
+160000, 192000, 224000, 256000, 288000, 320000, 384000, 448000, 512000,
+576000, 640000, 768000, 896000, 1024000. The value you set is also
+constrained by the values you choose for Profile (codecProfile),
+Bitrate control mode (codingMode), and Sample rate (sampleRate).
+Default values depend on Bitrate control mode and Profile.
 
 
 =head2 CodecProfile => Str
@@ -67,7 +73,7 @@ rate control mode and profile.
   
 
 
-=head2 B<REQUIRED> CodingMode => Str
+=head2 CodingMode => Str
 
   
 
@@ -82,7 +88,7 @@ rate control mode and profile.
   
 
 
-=head2 B<REQUIRED> SampleRate => Int
+=head2 SampleRate => Int
 
   Sample rate in Hz. Valid values depend on rate control mode and
 profile.

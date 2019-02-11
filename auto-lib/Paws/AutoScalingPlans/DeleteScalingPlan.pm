@@ -48,7 +48,7 @@ The name of the scaling plan.
 
 =head2 B<REQUIRED> ScalingPlanVersion => Int
 
-The version of the scaling plan.
+The version number of the scaling plan.
 
 
 

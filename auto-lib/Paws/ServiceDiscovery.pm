@@ -15,6 +15,11 @@ package Paws::ServiceDiscovery;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
+  sub CreateHttpNamespace {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceDiscovery::CreateHttpNamespace', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreatePrivateDnsNamespace {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceDiscovery::CreatePrivateDnsNamespace', @_);
@@ -43,6 +48,11 @@ package Paws::ServiceDiscovery;
   sub DeregisterInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceDiscovery::DeregisterInstance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DiscoverInstances {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceDiscovery::DiscoverInstances', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetInstance {
@@ -200,7 +210,7 @@ package Paws::ServiceDiscovery;
   }
 
 
-  sub operations { qw/CreatePrivateDnsNamespace CreatePublicDnsNamespace CreateService DeleteNamespace DeleteService DeregisterInstance GetInstance GetInstancesHealthStatus GetNamespace GetOperation GetService ListInstances ListNamespaces ListOperations ListServices RegisterInstance UpdateInstanceCustomHealthStatus UpdateService / }
+  sub operations { qw/CreateHttpNamespace CreatePrivateDnsNamespace CreatePublicDnsNamespace CreateService DeleteNamespace DeleteService DeregisterInstance DiscoverInstances GetInstance GetInstancesHealthStatus GetNamespace GetOperation GetService ListInstances ListNamespaces ListOperations ListServices RegisterInstance UpdateInstanceCustomHealthStatus UpdateService / }
 
 1;
 
@@ -208,7 +218,7 @@ package Paws::ServiceDiscovery;
 
 =head1 NAME
 
-Paws::ServiceDiscovery - Perl Interface to AWS Amazon Route 53 Auto Naming
+Paws::ServiceDiscovery - Perl Interface to AWS AWS Cloud Map
 
 =head1 SYNOPSIS
 
@@ -228,18 +238,46 @@ Paws::ServiceDiscovery - Perl Interface to AWS Amazon Route 53 Auto Naming
 
 =head1 DESCRIPTION
 
-Amazon Route 53 auto naming lets you configure public or private
-namespaces that your microservice applications run in. When instances
-of the service become available, you can call the auto naming API to
-register the instance, and Route 53 automatically creates up to five
-DNS records and an optional health check. Clients that submit DNS
-queries for the service receive an answer that contains up to eight
-healthy records.
+AWS Cloud Map lets you configure public DNS, private DNS, or HTTP
+namespaces that your microservice applications run in. When an instance
+of the service becomes available, you can call the AWS Cloud Map API to
+register the instance with AWS Cloud Map. For public or private DNS
+namespaces, AWS Cloud Map automatically creates DNS records and an
+optional health check. Clients that submit public or private DNS
+queries, or HTTP requests, for the service receive an answer that
+contains up to eight healthy records.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/servicediscovery-2017-03-14>
 
 
 =head1 METHODS
+
+=head2 CreateHttpNamespace
+
+=over
+
+=item Name => Str
+
+=item [CreatorRequestId => Str]
+
+=item [Description => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServiceDiscovery::CreateHttpNamespace>
+
+Returns: a L<Paws::ServiceDiscovery::CreateHttpNamespaceResponse> instance
+
+Creates an HTTP namespace. Service instances that you register using an
+HTTP namespace can be discovered using a C<DiscoverInstances> request
+but can't be discovered using DNS.
+
+For the current limit on the number of namespaces that you can create
+using the same AWS account, see AWS Cloud Map Limits
+(http://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html)
+in the I<AWS Cloud Map Developer Guide>.
+
 
 =head2 CreatePrivateDnsNamespace
 
@@ -266,9 +304,9 @@ naming scheme. For example, if you name your namespace C<example.com>
 and name your service C<backend>, the resulting DNS name for the
 service will be C<backend.example.com>. For the current limit on the
 number of namespaces that you can create using the same AWS account,
-see Limits on Auto Naming
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html#limits-api-entities-autonaming)
-in the I<Route 53 Developer Guide>.
+see AWS Cloud Map Limits
+(http://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html)
+in the I<AWS Cloud Map Developer Guide>.
 
 
 =head2 CreatePublicDnsNamespace
@@ -293,17 +331,15 @@ internet. The namespace defines your service naming scheme. For
 example, if you name your namespace C<example.com> and name your
 service C<backend>, the resulting DNS name for the service will be
 C<backend.example.com>. For the current limit on the number of
-namespaces that you can create using the same AWS account, see Limits
-on Auto Naming
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html#limits-api-entities-autonaming)
-in the I<Route 53 Developer Guide>.
+namespaces that you can create using the same AWS account, see AWS
+Cloud Map Limits
+(http://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html)
+in the I<AWS Cloud Map Developer Guide>.
 
 
 =head2 CreateService
 
 =over
-
-=item DnsConfig => L<Paws::ServiceDiscovery::DnsConfig>
 
 =item Name => Str
 
@@ -311,9 +347,13 @@ in the I<Route 53 Developer Guide>.
 
 =item [Description => Str]
 
+=item [DnsConfig => L<Paws::ServiceDiscovery::DnsConfig>]
+
 =item [HealthCheckConfig => L<Paws::ServiceDiscovery::HealthCheckConfig>]
 
 =item [HealthCheckCustomConfig => L<Paws::ServiceDiscovery::HealthCheckCustomConfig>]
+
+=item [NamespaceId => Str]
 
 
 =back
@@ -329,7 +369,32 @@ entities:
 
 =item *
 
-Up to three records (A, AAAA, and SRV) or one CNAME record
+For public and private DNS namespaces, one of the following
+combinations of DNS records in Amazon Route 53:
+
+=over
+
+=item *
+
+A
+
+=item *
+
+AAAA
+
+=item *
+
+A and AAAA
+
+=item *
+
+SRV
+
+=item *
+
+CNAME
+
+=back
 
 =item *
 
@@ -338,14 +403,14 @@ Optionally, a health check
 =back
 
 After you create the service, you can submit a RegisterInstance
-request, and Amazon Route 53 uses the values in the configuration to
+request, and AWS Cloud Map uses the values in the configuration to
 create the specified entities.
 
 For the current limit on the number of instances that you can register
-using the same namespace and using the same service, see Limits on Auto
-Naming
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html#limits-api-entities-autonaming)
-in the I<Route 53 Developer Guide>.
+using the same namespace and using the same service, see AWS Cloud Map
+Limits
+(http://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html)
+in the I<AWS Cloud Map Developer Guide>.
 
 
 =head2 DeleteNamespace
@@ -397,8 +462,32 @@ Each argument is described in detail in: L<Paws::ServiceDiscovery::DeregisterIns
 
 Returns: a L<Paws::ServiceDiscovery::DeregisterInstanceResponse> instance
 
-Deletes the records and the health check, if any, that Amazon Route 53
-created for the specified instance.
+Deletes the Amazon Route 53 DNS records and health check, if any, that
+AWS Cloud Map created for the specified instance.
+
+
+=head2 DiscoverInstances
+
+=over
+
+=item NamespaceName => Str
+
+=item ServiceName => Str
+
+=item [HealthStatus => Str]
+
+=item [MaxResults => Int]
+
+=item [QueryParameters => L<Paws::ServiceDiscovery::Attributes>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServiceDiscovery::DiscoverInstances>
+
+Returns: a L<Paws::ServiceDiscovery::DiscoverInstancesResponse> instance
+
+Discovers registered instances for a specified namespace and service.
 
 
 =head2 GetInstance
@@ -600,26 +689,27 @@ Each argument is described in detail in: L<Paws::ServiceDiscovery::RegisterInsta
 
 Returns: a L<Paws::ServiceDiscovery::RegisterInstanceResponse> instance
 
-Creates or updates one or more records and optionally a health check
-based on the settings in a specified service. When you submit a
-C<RegisterInstance> request, Amazon Route 53 does the following:
+Creates or updates one or more records and, optionally, creates a
+health check based on the settings in a specified service. When you
+submit a C<RegisterInstance> request, the following occurs:
 
 =over
 
 =item *
 
-For each DNS record that you define in the service specified by
-C<ServiceId>, creates or updates a record in the hosted zone that is
-associated with the corresponding namespace
+For each DNS record that you define in the service that is specified by
+C<ServiceId>, a record is created or updated in the hosted zone that is
+associated with the corresponding namespace.
 
 =item *
 
-If the service includes C<HealthCheckConfig>, creates or updates a
-health check based on the settings in the health check configuration
+If the service includes C<HealthCheckConfig>, a health check is created
+based on the settings in the health check configuration.
 
 =item *
 
-Associates the health check, if any, with each of the records
+The health check, if any, is associated with each of the new or updated
+records.
 
 =back
 
@@ -628,7 +718,7 @@ another request and specify the same service ID and instance ID.
 
 For more information, see CreateService.
 
-When Route 53 receives a DNS query for the specified DNS name, it
+When AWS Cloud Map receives a DNS query for the specified DNS name, it
 returns the applicable value:
 
 =over
@@ -650,10 +740,10 @@ records
 =back
 
 For the current limit on the number of instances that you can register
-using the same namespace and using the same service, see Limits on Auto
-Naming
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html#limits-api-entities-autonaming)
-in the I<Route 53 Developer Guide>.
+using the same namespace and using the same service, see AWS Cloud Map
+Limits
+(http://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html)
+in the I<AWS Cloud Map Developer Guide>.
 
 
 =head2 UpdateInstanceCustomHealthStatus
@@ -673,7 +763,16 @@ Each argument is described in detail in: L<Paws::ServiceDiscovery::UpdateInstanc
 
 Returns: nothing
 
+Submits a request to change the health status of a custom health check
+to healthy or unhealthy.
 
+You can use C<UpdateInstanceCustomHealthStatus> to change the status
+only for custom health checks, which you define using
+C<HealthCheckCustomConfig> when you create a service. You can't use it
+to change the status for Route 53 health checks, which you define using
+C<HealthCheckConfig>.
+
+For more information, see HealthCheckCustomConfig.
 
 
 =head2 UpdateService
@@ -709,12 +808,13 @@ Add, update, or delete C<HealthCheckConfig> for a specified service
 
 =back
 
-You must specify all C<DnsRecords> configurations (and, optionally,
-C<HealthCheckConfig>) that you want to appear in the updated service.
-Any current configurations that don't appear in an C<UpdateService>
-request are deleted.
+For public and private DNS namespaces, you must specify all
+C<DnsRecords> configurations (and, optionally, C<HealthCheckConfig>)
+that you want to appear in the updated service. Any current
+configurations that don't appear in an C<UpdateService> request are
+deleted.
 
-When you update the TTL setting for a service, Amazon Route 53 also
+When you update the TTL setting for a service, AWS Cloud Map also
 updates the corresponding settings in all the records and health checks
 that were created by using the specified service.
 

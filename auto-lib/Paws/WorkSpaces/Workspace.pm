@@ -45,7 +45,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
 =head1 DESCRIPTION
 
-Information about a WorkSpace.
+Describes a WorkSpace.
 
 =head1 ATTRIBUTES
 
@@ -68,13 +68,13 @@ WorkSpace.
 
 =head2 ErrorCode => Str
 
-  If the WorkSpace could not be created, contains the error code.
+  The error code that is returned if the WorkSpace cannot be created.
 
 
 =head2 ErrorMessage => Str
 
-  If the WorkSpace could not be created, contains a textual error message
-that describes the failure.
+  The text of the error message that is returned if the WorkSpace cannot
+be created.
 
 
 =head2 IpAddress => Str

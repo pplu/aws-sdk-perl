@@ -314,6 +314,29 @@ package Paws::EMR;
 
     return undef
   }
+  sub ListAllSecurityConfigurations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListSecurityConfigurations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->ListSecurityConfigurations(@_, Marker => $next_result->Marker);
+        push @{ $result->SecurityConfigurations }, @{ $next_result->SecurityConfigurations };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'SecurityConfigurations') foreach (@{ $result->SecurityConfigurations });
+        $result = $self->ListSecurityConfigurations(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'SecurityConfigurations') foreach (@{ $result->SecurityConfigurations });
+    }
+
+    return undef
+  }
   sub ListAllSteps {
     my $self = shift;
 
@@ -553,8 +576,7 @@ Each argument is described in detail in: L<Paws::EMR::DescribeCluster>
 Returns: a L<Paws::EMR::DescribeClusterOutput> instance
 
 Provides cluster-level details including status, hardware and software
-configuration, VPC settings, and so on. For information about the
-cluster steps, see ListSteps.
+configuration, VPC settings, and so on.
 
 
 =head2 DescribeJobFlows
@@ -1156,6 +1178,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Instances, passing the object as the first parameter, and the string 'Instances' as the second parameter 
 
 If not, it will return a a L<Paws::EMR::ListInstancesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSecurityConfigurations(sub { },[Marker => Str])
+
+=head2 ListAllSecurityConfigurations([Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SecurityConfigurations, passing the object as the first parameter, and the string 'SecurityConfigurations' as the second parameter 
+
+If not, it will return a a L<Paws::EMR::ListSecurityConfigurationsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllSteps(sub { },ClusterId => Str, [Marker => Str, StepIds => ArrayRef[Str|Undef], StepStates => ArrayRef[Str|Undef]])

@@ -42,7 +42,7 @@ that contains the attribute facet name and attribute name.
 
   The target attribute name that is associated with the facet reference.
 See Attribute References
-(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences)
+(https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html)
 for more information.
 
 
@@ -50,7 +50,7 @@ for more information.
 
   The target facet name that is associated with the facet reference. See
 Attribute References
-(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences)
+(https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html)
 for more information.
 
 

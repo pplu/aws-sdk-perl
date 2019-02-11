@@ -1,7 +1,7 @@
 package Paws::EC2::StaleSecurityGroup;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has GroupId => (is => 'ro', isa => 'Str', request_name => 'groupId', traits => ['NameInRequest'], required => 1);
+  has GroupId => (is => 'ro', isa => 'Str', request_name => 'groupId', traits => ['NameInRequest']);
   has GroupName => (is => 'ro', isa => 'Str', request_name => 'groupName', traits => ['NameInRequest']);
   has StaleIpPermissions => (is => 'ro', isa => 'ArrayRef[Paws::EC2::StaleIpPermission]', request_name => 'staleIpPermissions', traits => ['NameInRequest']);
   has StaleIpPermissionsEgress => (is => 'ro', isa => 'ArrayRef[Paws::EC2::StaleIpPermission]', request_name => 'staleIpPermissionsEgress', traits => ['NameInRequest']);
@@ -46,7 +46,7 @@ This class has no description
   The description of the security group.
 
 
-=head2 B<REQUIRED> GroupId => Str
+=head2 GroupId => Str
 
   The ID of the security group.
 

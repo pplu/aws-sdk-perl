@@ -66,42 +66,53 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 CodeSha256 => Str
 
-The SHA256 hash of the deployment package you want to publish. This
-provides validation on the code you are publishing. If you provide this
-parameter, the value must match the SHA256 of the $LATEST version for
-the publication to succeed. You can use the B<DryRun> parameter of
-UpdateFunctionCode to verify the hash value that will be returned
-before publishing your new version.
+Only publish a version if the hash matches the value specified. Use
+this option to avoid publishing a version if the function code has
+changed since you last updated it. You can get the hash for the version
+you uploaded from the output of UpdateFunctionCode.
 
 
 
 =head2 Description => Str
 
-The description for the version you are publishing. If not provided,
-AWS Lambda copies the description from the $LATEST version.
+Specify a description for the version to override the description in
+the function configuration.
 
 
 
 =head2 B<REQUIRED> FunctionName => Str
 
-The Lambda function name. You can specify a function name (for example,
-C<Thumbnail>) or you can specify Amazon Resource Name (ARN) of the
-function (for example,
-C<arn:aws:lambda:us-west-2:account-id:function:ThumbNail>). AWS Lambda
-also allows you to specify a partial ARN (for example,
-C<account-id:Thumbnail>). Note that the length constraint applies only
-to the ARN. If you specify only the function name, it is limited to 64
-characters in length.
+The name of the lambda function.
+
+B<Name formats>
+
+=over
+
+=item *
+
+B<Function name> - C<MyFunction>.
+
+=item *
+
+B<Function ARN> -
+C<arn:aws:lambda:us-west-2:123456789012:function:MyFunction>.
+
+=item *
+
+B<Partial ARN> - C<123456789012:function:MyFunction>.
+
+=back
+
+The length constraint applies only to the full ARN. If you specify only
+the function name, it is limited to 64 characters in length.
 
 
 
 =head2 RevisionId => Str
 
-An optional value you can use to ensure you are updating the latest
-update of the function version or alias. If the C<RevisionID> you pass
-doesn't match the latest C<RevisionId> of the function or alias, it
-will fail with an error message, advising you to retrieve the latest
-function version or alias C<RevisionID> using either or .
+Only update the function if the revision ID matches the ID specified.
+Use this option to avoid publishing a version if the function
+configuration has changed since you last updated it.
 
 
 

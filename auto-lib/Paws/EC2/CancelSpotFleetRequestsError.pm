@@ -1,7 +1,7 @@
 package Paws::EC2::CancelSpotFleetRequestsError;
   use Moose;
-  has Code => (is => 'ro', isa => 'Str', request_name => 'code', traits => ['NameInRequest'], required => 1);
-  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest'], required => 1);
+  has Code => (is => 'ro', isa => 'Str', request_name => 'code', traits => ['NameInRequest']);
+  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +37,12 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Code => Str
+=head2 Code => Str
 
   The error code.
 
 
-=head2 B<REQUIRED> Message => Str
+=head2 Message => Str
 
   The description for the error code.
 

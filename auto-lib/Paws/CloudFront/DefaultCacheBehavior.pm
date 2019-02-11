@@ -79,7 +79,9 @@ in the I<Amazon CloudFront Developer Guide>.
 
 =head2 FieldLevelEncryptionId => Str
 
-  
+  The value of C<ID> for the field-level encryption configuration that
+you want CloudFront to use for encrypting specific fields of data for a
+cache behavior or for the default cache behavior in your distribution.
 
 
 =head2 B<REQUIRED> ForwardedValues => L<Paws::CloudFront::ForwardedValues>
@@ -128,7 +130,7 @@ value of C<PathPattern>.
 
   The value of C<ID> for the origin that you want CloudFront to route
 requests to when a request matches the path pattern either for a cache
-behavior or for the default cache behavior.
+behavior or for the default cache behavior in your distribution.
 
 
 =head2 B<REQUIRED> TrustedSigners => L<Paws::CloudFront::TrustedSigners>

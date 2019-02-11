@@ -1,6 +1,6 @@
 package Paws::MediaConvert::NoiseReducer;
   use Moose;
-  has Filter => (is => 'ro', isa => 'Str', request_name => 'filter', traits => ['NameInRequest'], required => 1);
+  has Filter => (is => 'ro', isa => 'Str', request_name => 'filter', traits => ['NameInRequest']);
   has FilterSettings => (is => 'ro', isa => 'Paws::MediaConvert::NoiseReducerFilterSettings', request_name => 'filterSettings', traits => ['NameInRequest']);
   has SpatialFilterSettings => (is => 'ro', isa => 'Paws::MediaConvert::NoiseReducerSpatialFilterSettings', request_name => 'spatialFilterSettings', traits => ['NameInRequest']);
 1;
@@ -42,7 +42,7 @@ Noise reducer filter (NoiseReducerFilter).
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Filter => Str
+=head2 Filter => Str
 
   
 

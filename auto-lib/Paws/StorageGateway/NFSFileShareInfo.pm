@@ -62,9 +62,9 @@ buckets. This operation is only supported in file gateways.
 =head2 DefaultStorageClass => Str
 
   The default storage class for objects put into an Amazon S3 bucket by
-file gateway. Possible values are S3_STANDARD, S3_STANDARD_IA or
-S3_ONEZONE_IA. If this field is not populated, the default value
-S3_STANDARD is used. Optional.
+the file gateway. Possible values are C<S3_STANDARD>,
+C<S3_STANDARD_IA>, or C<S3_ONEZONE_IA>. If this field is not populated,
+the default value C<S3_STANDARD> is used. Optional.
 
 
 =head2 FileShareARN => Str
@@ -89,15 +89,15 @@ S3_STANDARD is used. Optional.
 
 =head2 GuessMIMETypeEnabled => Bool
 
-  Enables guessing of the MIME type for uploaded objects based on file
-extensions. Set this value to true to enable MIME type guessing, and
-otherwise to false. The default value is true.
+  A value that enables guessing of the MIME type for uploaded objects
+based on file extensions. Set this value to true to enable MIME type
+guessing, and otherwise to false. The default value is true.
 
 
 =head2 KMSEncrypted => Bool
 
-  True to use Amazon S3 server side encryption with your own KMS key, or
-false to use a key managed by Amazon S3. Optional.
+  True to use Amazon S3 server side encryption with your own AWS KMS key,
+or false to use a key managed by Amazon S3. Optional.
 
 
 =head2 KMSKey => Str
@@ -127,15 +127,15 @@ false to use a key managed by Amazon S3. Optional.
 
 =head2 ReadOnly => Bool
 
-  Sets the write status of a file share. This value is true if the write
-status is read-only, and otherwise false.
+  A value that sets the write status of a file share. This value is true
+if the write status is read-only, and otherwise false.
 
 
 =head2 RequesterPays => Bool
 
-  Sets who pays the cost of the request and the data download from the
-Amazon S3 bucket. Set this value to true if you want the requester to
-pay instead of the bucket owner, and otherwise to false.
+  A value that sets the access control list permission for objects in the
+Amazon S3 bucket that a file gateway puts objects into. The default
+value is C<private>.
 
 
 =head2 Role => Str

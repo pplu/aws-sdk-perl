@@ -45,9 +45,9 @@ Information about a deployment rollback.
 
 =head2 RollbackMessage => Str
 
-  Information describing the status of a deployment rollback; for
+  Information that describes the status of a deployment rollback (for
 example, whether the deployment can't be rolled back, is in progress,
-failed, or succeeded.
+failed, or succeeded).
 
 
 =head2 RollbackTriggeringDeploymentId => Str

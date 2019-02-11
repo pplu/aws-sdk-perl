@@ -8,7 +8,7 @@ package Paws::SSM::RegisterTaskWithMaintenanceWindow;
   has MaxErrors => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str');
   has Priority => (is => 'ro', isa => 'Int');
-  has ServiceRoleArn => (is => 'ro', isa => 'Str', required => 1);
+  has ServiceRoleArn => (is => 'ro', isa => 'Str');
   has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]', required => 1);
   has TaskArn => (is => 'ro', isa => 'Str', required => 1);
   has TaskInvocationParameters => (is => 'ro', isa => 'Paws::SSM::MaintenanceWindowTaskInvocationParameters');
@@ -44,7 +44,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $ssm->RegisterTaskWithMaintenanceWindow(
       MaxConcurrency => 'MyMaxConcurrency',
       MaxErrors      => 'MyMaxErrors',
-      ServiceRoleArn => 'MyServiceRole',
       Targets        => [
         {
           Key => 'MyTargetKey',                  # min: 1, max: 128; OPTIONAL
@@ -64,6 +63,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       Name                     => 'MyMaintenanceWindowName',    # OPTIONAL
       Priority                 => 1,                            # OPTIONAL
+      ServiceRoleArn           => 'MyServiceRole',              # OPTIONAL
       TaskInvocationParameters => {
         Automation => {
           DocumentVersion => 'MyDocumentVersion',               # OPTIONAL
@@ -181,9 +181,23 @@ scheduled in parallel.
 
 
 
-=head2 B<REQUIRED> ServiceRoleArn => Str
+=head2 ServiceRoleArn => Str
 
-The role that should be assumed when executing the task.
+The role to assume when running the Maintenance Window task.
+
+If you do not specify a service role ARN, Systems Manager will use your
+account's service-linked role for Systems Manager by default. If no
+service-linked role for Systems Manager exists in your account, it will
+be created when you run C<RegisterTaskWithMaintenanceWindow> without
+specifying a service role ARN.
+
+For more information, see Service-Linked Role Permissions for Systems
+Manager
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions)
+and Should I Use a Service-Linked Role or a Custom Service Role to Run
+Maintenance Window Tasks?
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role)
+in the I<AWS Systems Manager User Guide>.
 
 
 

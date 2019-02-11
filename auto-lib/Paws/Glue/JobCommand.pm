@@ -39,7 +39,8 @@ Specifies code executed when a job is run.
 
 =head2 Name => Str
 
-  The name of the job command: this must be C<glueetl>.
+  The name of the job command: this must be C<glueetl>, for an Apache
+Spark ETL job, or C<pythonshell>, for a Python shell job.
 
 
 =head2 ScriptLocation => Str

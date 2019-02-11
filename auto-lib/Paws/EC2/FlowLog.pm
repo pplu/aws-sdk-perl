@@ -6,6 +6,8 @@ package Paws::EC2::FlowLog;
   has DeliverLogsStatus => (is => 'ro', isa => 'Str', request_name => 'deliverLogsStatus', traits => ['NameInRequest']);
   has FlowLogId => (is => 'ro', isa => 'Str', request_name => 'flowLogId', traits => ['NameInRequest']);
   has FlowLogStatus => (is => 'ro', isa => 'Str', request_name => 'flowLogStatus', traits => ['NameInRequest']);
+  has LogDestination => (is => 'ro', isa => 'Str', request_name => 'logDestination', traits => ['NameInRequest']);
+  has LogDestinationType => (is => 'ro', isa => 'Str', request_name => 'logDestinationType', traits => ['NameInRequest']);
   has LogGroupName => (is => 'ro', isa => 'Str', request_name => 'logGroupName', traits => ['NameInRequest']);
   has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest']);
   has TrafficType => (is => 'ro', isa => 'Str', request_name => 'trafficType', traits => ['NameInRequest']);
@@ -52,12 +54,12 @@ This class has no description
 =head2 DeliverLogsErrorMessage => Str
 
   Information about the error that occurred. C<Rate limited> indicates
-that CloudWatch logs throttling has been applied for one or more
+that CloudWatch Logs throttling has been applied for one or more
 network interfaces, or that you've reached the limit on the number of
-CloudWatch Logs log groups that you can create. C<Access error>
-indicates that the IAM role associated with the flow log does not have
-sufficient permissions to publish to CloudWatch Logs. C<Unknown error>
-indicates an internal error.
+log groups that you can create. C<Access error> indicates that the IAM
+role associated with the flow log does not have sufficient permissions
+to publish to CloudWatch Logs. C<Unknown error> indicates an internal
+error.
 
 
 =head2 DeliverLogsPermissionArn => Str
@@ -78,6 +80,24 @@ indicates an internal error.
 =head2 FlowLogStatus => Str
 
   The status of the flow log (C<ACTIVE>).
+
+
+=head2 LogDestination => Str
+
+  Specifies the destination to which the flow log data is published. Flow
+log data can be published to an CloudWatch Logs log group or an Amazon
+S3 bucket. If the flow log publishes to CloudWatch Logs, this element
+indicates the Amazon Resource Name (ARN) of the CloudWatch Logs log
+group to which the data is published. If the flow log publishes to
+Amazon S3, this element indicates the ARN of the Amazon S3 bucket to
+which the data is published.
+
+
+=head2 LogDestinationType => Str
+
+  Specifies the type of destination to which the flow log data is
+published. Flow log data can be published to CloudWatch Logs or Amazon
+S3.
 
 
 =head2 LogGroupName => Str

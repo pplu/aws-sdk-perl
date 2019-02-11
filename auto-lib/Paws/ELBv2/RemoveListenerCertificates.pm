@@ -50,6 +50,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 =head2 B<REQUIRED> Certificates => ArrayRef[L<Paws::ELBv2::Certificate>]
 
 The certificate to remove. You can specify one certificate per call.
+Set C<CertificateArn> to the certificate ARN but do not set
+C<IsDefault>.
 
 
 

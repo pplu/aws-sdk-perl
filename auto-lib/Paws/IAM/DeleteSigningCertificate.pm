@@ -59,7 +59,7 @@ that can be upper- or lower-cased letters or digits.
 
 The name of the user the signing certificate belongs to.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
 also include any of the following characters: _+=,.@-

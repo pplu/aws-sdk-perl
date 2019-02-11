@@ -87,7 +87,7 @@ the deployment.
 
 =head2 CompleteTime => Str
 
-  A timestamp indicating when the deployment was complete.
+  A timestamp that indicates when the deployment was complete.
 
 
 =head2 ComputePlatform => Str
@@ -98,7 +98,7 @@ C<Server>).
 
 =head2 CreateTime => Str
 
-  A timestamp indicating when the deployment was created.
+  A timestamp that indicates when the deployment was created.
 
 
 =head2 Creator => Str
@@ -113,7 +113,7 @@ user: A user created the deployment.
 
 =item *
 
-autoscaling: Auto Scaling created the deployment.
+autoscaling: Amazon EC2 Auto Scaling created the deployment.
 
 =item *
 
@@ -135,7 +135,7 @@ codeDeployRollback: A rollback process created the deployment.
 
 =head2 DeploymentId => Str
 
-  The deployment ID.
+  The unique ID of a deployment.
 
 
 =head2 DeploymentOverview => L<Paws::CodeDeploy::DeploymentOverview>
@@ -196,20 +196,20 @@ used as part of the new deployment.
 
   If true, then if the deployment causes the ApplicationStop deployment
 lifecycle event to an instance to fail, the deployment to that instance
-will not be considered to have failed at that point and will continue
-on to the BeforeInstall deployment lifecycle event.
+is not considered to have failed at that point and continues on to the
+BeforeInstall deployment lifecycle event.
 
 If false or not specified, then if the deployment causes the
 ApplicationStop deployment lifecycle event to an instance to fail, the
-deployment to that instance will stop, and the deployment to that
-instance will be considered to have failed.
+deployment to that instance stops, and the deployment to that instance
+is considered to have failed.
 
 
 =head2 InstanceTerminationWaitTimeStarted => Bool
 
   Indicates whether the wait period set for the termination of instances
 in the original environment has started. Status is 'false' if the
-KEEP_ALIVE option is specified; otherwise, 'true' as soon as the
+KEEP_ALIVE option is specified. Otherwise, 'true' as soon as the
 termination wait period starts.
 
 
@@ -237,12 +237,12 @@ service from which to retrieve them.
 
 =head2 StartTime => Str
 
-  A timestamp indicating when the deployment was deployed to the
+  A timestamp that indicates when the deployment was deployed to the
 deployment group.
 
-In some cases, the reported value of the start time may be later than
+In some cases, the reported value of the start time might be later than
 the complete time. This is due to differences in the clock settings of
-back-end servers that participate in the deployment process.
+backend servers that participate in the deployment process.
 
 
 =head2 Status => Str

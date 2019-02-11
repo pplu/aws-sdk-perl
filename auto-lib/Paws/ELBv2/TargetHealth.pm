@@ -46,8 +46,9 @@ the state is C<healthy>, a description is not provided.
 
 =head2 Reason => Str
 
-  The reason code. If the target state is C<healthy>, a reason code is
-not provided.
+  The reason code.
+
+If the target state is C<healthy>, a reason code is not provided.
 
 If the target state is C<initial>, the reason code can be one of the
 following values:
@@ -131,6 +132,18 @@ following value:
 
 C<Target.DeregistrationInProgress> - The target is in the process of
 being deregistered and the deregistration delay period has not expired.
+
+=back
+
+If the target state is C<unavailable>, the reason code can be the
+following value:
+
+=over
+
+=item *
+
+C<Target.HealthCheckDisabled> - Health checks are disabled for the
+target group.
 
 =back
 

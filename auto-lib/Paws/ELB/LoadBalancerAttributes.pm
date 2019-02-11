@@ -48,7 +48,7 @@ specify.
 
 For more information, see Enable Access Logs
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-access-logs.html)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
 =head2 AdditionalAttributes => ArrayRef[L<Paws::ELB::AdditionalAttribute>]
@@ -64,7 +64,7 @@ unhealthy instance.
 
 For more information, see Configure Connection Draining
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-conn-drain.html)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
 =head2 ConnectionSettings => L<Paws::ELB::ConnectionSettings>
@@ -77,7 +77,7 @@ connection timeout for both front-end and back-end connections of your
 load balancer. For more information, see Configure Idle Connection
 Timeout
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-idle-timeout.html)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
 =head2 CrossZoneLoadBalancing => L<Paws::ELB::CrossZoneLoadBalancing>
@@ -87,7 +87,7 @@ all instances regardless of the Availability Zones.
 
 For more information, see Configure Cross-Zone Load Balancing
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-crosszone-lb.html)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
 

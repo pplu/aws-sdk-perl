@@ -3,6 +3,7 @@ package Paws::AppStream::Session;
   has AuthenticationType => (is => 'ro', isa => 'Str');
   has FleetName => (is => 'ro', isa => 'Str', required => 1);
   has Id => (is => 'ro', isa => 'Str', required => 1);
+  has NetworkAccessConfiguration => (is => 'ro', isa => 'Paws::AppStream::NetworkAccessConfiguration');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
   has State => (is => 'ro', isa => 'Str', required => 1);
   has UserId => (is => 'ro', isa => 'Str', required => 1);
@@ -54,7 +55,12 @@ URL (C<API>) or SAML federation (C<SAML>).
 
 =head2 B<REQUIRED> Id => Str
 
-  The ID of the streaming session.
+  The identifier of the streaming session.
+
+
+=head2 NetworkAccessConfiguration => L<Paws::AppStream::NetworkAccessConfiguration>
+
+  The network details for the streaming session.
 
 
 =head2 B<REQUIRED> StackName => Str

@@ -2,6 +2,7 @@
 package Paws::IoTAnalytics::DescribeChannel;
   use Moose;
   has ChannelName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'channelName', required => 1);
+  has IncludeStatistics => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'includeStatistics');
 
   use MooseX::ClassAttribute;
 
@@ -29,12 +30,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $iotanalytics = Paws->service('IoTAnalytics');
     my $DescribeChannelResponse = $iotanalytics->DescribeChannel(
-      ChannelName => 'MyChannelName',
-
+      ChannelName       => 'MyChannelName',
+      IncludeStatistics => 1,                 # OPTIONAL
     );
 
     # Results:
-    my $Channel = $DescribeChannelResponse->Channel;
+    my $Channel    = $DescribeChannelResponse->Channel;
+    my $Statistics = $DescribeChannelResponse->Statistics;
 
     # Returns a L<Paws::IoTAnalytics::DescribeChannelResponse> object.
 
@@ -47,6 +49,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head2 B<REQUIRED> ChannelName => Str
 
 The name of the channel whose information is retrieved.
+
+
+
+=head2 IncludeStatistics => Bool
+
+If true, additional statistical information about the channel is
+included in the response.
 
 
 

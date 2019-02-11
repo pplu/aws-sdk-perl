@@ -56,6 +56,15 @@ Contains information about the schema attribute.
 
   Specifies whether the value of the attribute can be changed.
 
+For any user pool attribute that's mapped to an identity provider
+attribute, you must set this parameter to C<true>. Amazon Cognito
+updates mapped attributes when users sign in to your application
+through an identity provider. If an attribute is immutable, Amazon
+Cognito throws an error when it attempts to update the attribute. For
+more information, see Specifying Identity Provider Attribute Mappings
+for Your User Pool
+(http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html).
+
 
 =head2 Name => Str
 

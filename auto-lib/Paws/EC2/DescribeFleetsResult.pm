@@ -18,7 +18,7 @@ Paws::EC2::DescribeFleetsResult
 
 =head2 Fleets => ArrayRef[L<Paws::EC2::FleetData>]
 
-The EC2 Fleets.
+Information about the EC2 Fleets.
 
 
 =head2 NextToken => Str

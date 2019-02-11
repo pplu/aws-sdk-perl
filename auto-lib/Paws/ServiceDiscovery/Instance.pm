@@ -33,8 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceDisc
 
 =head1 DESCRIPTION
 
-A complex type that contains information about an instance that Amazon
-Route 53 creates when you submit a C<RegisterInstance> request.
+A complex type that contains information about an instance that AWS
+Cloud Map creates when you submit a C<RegisterInstance> request.
 
 =head1 ATTRIBUTES
 
@@ -63,11 +63,11 @@ B<AWS_ALIAS_DNS_NAME>
 
 B<>
 
-If you want Route 53 to create an alias record that routes traffic to
-an Elastic Load Balancing load balancer, specify the DNS name that is
-associated with the load balancer. For information about how to get the
-DNS name, see "DNSName" in the topic AliasTarget
-(http://docs.aws.amazon.com/http:/docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html).
+If you want AWS Cloud Map to create a Route 53 alias record that routes
+traffic to an Elastic Load Balancing load balancer, specify the DNS
+name that is associated with the load balancer. For information about
+how to get the DNS name, see "DNSName" in the topic AliasTarget
+(http://docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html).
 
 Note the following:
 
@@ -86,8 +86,8 @@ C<RoutingPolicy> must be C<WEIGHTED>.
 =item *
 
 If the service that is specified by C<ServiceId> includes
-C<HealthCheckConfig> settings, Route 53 will create the health check,
-but it won't associate the health check with the alias record.
+C<HealthCheckConfig> settings, AWS Cloud Map will create the health
+check, but it won't associate the health check with the alias record.
 
 =item *
 
@@ -180,9 +180,10 @@ among instances that you register by using the same service.
 
 =item *
 
-If you specify an existing C<InstanceId> and C<ServiceId>, Route 53
-updates the existing records. If there's also an existing health check,
-Route 53 deletes the old health check and creates a new one.
+If you specify an existing C<InstanceId> and C<ServiceId>, AWS Cloud
+Map updates the existing DNS records. If there's also an existing
+health check, AWS Cloud Map deletes the old health check and creates a
+new one.
 
 The health check isn't deleted immediately, so it will still appear for
 a while if you submit a C<ListHealthChecks> request, for example.

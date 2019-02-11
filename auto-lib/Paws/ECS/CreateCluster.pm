@@ -2,6 +2,7 @@
 package Paws::ECS::CreateCluster;
   use Moose;
   has ClusterName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clusterName' );
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
@@ -52,6 +53,16 @@ The name of your cluster. If you do not specify a name for your
 cluster, you create a cluster named C<default>. Up to 255 letters
 (uppercase and lowercase), numbers, hyphens, and underscores are
 allowed.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::ECS::Tag>]
+
+The metadata that you apply to the cluster to help you categorize and
+organize them. Each tag consists of a key and an optional value, both
+of which you define. Tag keys can have a maximum character length of
+128 characters, and tag values can have a maximum length of 256
+characters.
 
 
 

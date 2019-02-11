@@ -51,7 +51,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/acm
 The ARN of the issued certificate. The ARN contains the certificate
 serial number and must be in the following form:
 
-C<arn:aws:acm:I<region>:I<account>:certificate-authority/I<12345678-1234-1234-1234-123456789012>/certificate/I<286535153982981100925020015808220737245>>
+C<arn:aws:acm-pca:I<region>:I<account>:certificate-authority/I<12345678-1234-1234-1234-123456789012>/certificate/I<286535153982981100925020015808220737245>>
 
 
 
@@ -60,7 +60,7 @@ C<arn:aws:acm:I<region>:I<account>:certificate-authority/I<12345678-1234-1234-12
 The Amazon Resource Name (ARN) that was returned when you called
 CreateCertificateAuthority. This must be of the form:
 
-C<arn:aws:acm:I<region>:I<account>:certificate-authority/I<12345678-1234-1234-1234-123456789012>
+C<arn:aws:acm-pca:I<region>:I<account>:certificate-authority/I<12345678-1234-1234-1234-123456789012>
 >.
 
 

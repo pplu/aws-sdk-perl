@@ -3,6 +3,7 @@ package Paws::SSM::DescribeDocument;
   use Moose;
   has DocumentVersion => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has VersionName => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -30,7 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ssm = Paws->service('SSM');
     my $DescribeDocumentResult = $ssm->DescribeDocument(
       Name            => 'MyDocumentARN',
-      DocumentVersion => 'MyDocumentVersion',    # OPTIONAL
+      DocumentVersion => 'MyDocumentVersion',        # OPTIONAL
+      VersionName     => 'MyDocumentVersionName',    # OPTIONAL
     );
 
     # Results:
@@ -54,6 +56,14 @@ version or the default version.
 =head2 B<REQUIRED> Name => Str
 
 The name of the Systems Manager document.
+
+
+
+=head2 VersionName => Str
+
+An optional field specifying the version of the artifact associated
+with the document. For example, "Release 12, Update 6". This value is
+unique across all versions of a document, and cannot be changed.
 
 
 

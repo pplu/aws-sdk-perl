@@ -2,9 +2,10 @@
 package Paws::MediaLive::UpdateInput;
   use Moose;
   has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputDestinationRequest]', traits => ['NameInRequest'], request_name => 'destinations');
-  has InputId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'inputId', required => 1);
   has InputSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'inputSecurityGroups');
+  has MediaConnectFlows => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::MediaConnectFlowRequest]', traits => ['NameInRequest'], request_name => 'mediaConnectFlows');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn');
   has Sources => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputSourceRequest]', traits => ['NameInRequest'], request_name => 'sources');
 
   use MooseX::ClassAttribute;
@@ -33,18 +34,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $medialive = Paws->service('MediaLive');
     my $UpdateInputResponse = $medialive->UpdateInput(
-      InputId      => 'My__string',
-      Destinations => [ { StreamName => 'My__string', }, ... ],    # OPTIONAL
-      InputSecurityGroups => [ 'My__string', ... ],                # OPTIONAL
-      Name                => 'My__string',                         # OPTIONAL
-      Sources             => [
+      Destinations => [
         {
-          PasswordParam => 'My__string',
-          Url           => 'My__string',
-          Username      => 'My__string',
+          StreamName => 'My__string',    # OPTIONAL
         },
         ...
-      ],                                                           # OPTIONAL
+      ],                                 # OPTIONAL
+      InputSecurityGroups => [
+        'My__string', ...                # OPTIONAL
+      ],                                 # OPTIONAL
+      MediaConnectFlows => [
+        {
+          FlowArn => 'My__string',       # OPTIONAL
+        },
+        ...
+      ],                                 # OPTIONAL
+      Name    => 'My__string',           # OPTIONAL
+      RoleArn => 'My__string',           # OPTIONAL
+      Sources => [
+        {
+          PasswordParam => 'My__string',    # OPTIONAL
+          Url           => 'My__string',    # OPTIONAL
+          Username      => 'My__string',    # OPTIONAL
+        },
+        ...
+      ],                                    # OPTIONAL
     );
 
     # Results:
@@ -64,21 +78,32 @@ Destination settings for PUSH type inputs.
 
 
 
-=head2 B<REQUIRED> InputId => Str
-
-Unique ID of the input.
-
-
-
 =head2 InputSecurityGroups => ArrayRef[Str|Undef]
 
 A list of security groups referenced by IDs to attach to the input.
 
 
 
+=head2 MediaConnectFlows => ArrayRef[L<Paws::MediaLive::MediaConnectFlowRequest>]
+
+A list of the MediaConnect Flow ARNs that you want to use as the source
+of the input. You can specify as few as one Flow and presently, as many
+as two. The only requirement is when you have more than one is that
+each Flow is in a separate Availability Zone as this ensures your EML
+input is redundant to AZ issues.
+
+
+
 =head2 Name => Str
 
 Name of the input.
+
+
+
+=head2 RoleArn => Str
+
+The Amazon Resource Name (ARN) of the role this input assumes during
+and after creation.
 
 
 

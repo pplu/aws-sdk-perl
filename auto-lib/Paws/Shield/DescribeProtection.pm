@@ -1,7 +1,8 @@
 
 package Paws::Shield::DescribeProtection;
   use Moose;
-  has ProtectionId => (is => 'ro', isa => 'Str', required => 1);
+  has ProtectionId => (is => 'ro', isa => 'Str');
+  has ResourceArn => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -28,8 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $shield = Paws->service('Shield');
     my $DescribeProtectionResponse = $shield->DescribeProtection(
-      ProtectionId => 'MyProtectionId',
-
+      ProtectionId => 'MyProtectionId',    # OPTIONAL
+      ResourceArn  => 'MyResourceArn',     # OPTIONAL
     );
 
     # Results:
@@ -43,9 +44,20 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/shi
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ProtectionId => Str
+=head2 ProtectionId => Str
 
 The unique identifier (ID) for the Protection object that is described.
+When submitting the C<DescribeProtection> request you must provide
+either the C<ResourceArn> or the C<ProtectionID>, but not both.
+
+
+
+=head2 ResourceArn => Str
+
+The ARN (Amazon Resource Name) of the AWS resource for the Protection
+object that is described. When submitting the C<DescribeProtection>
+request you must provide either the C<ResourceArn> or the
+C<ProtectionID>, but not both.
 
 
 

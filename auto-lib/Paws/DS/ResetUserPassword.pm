@@ -57,7 +57,7 @@ The new password that will be reset.
 
 =head2 B<REQUIRED> UserName => Str
 
-The username of the user whose password will be reset.
+The user name of the user whose password will be reset.
 
 
 

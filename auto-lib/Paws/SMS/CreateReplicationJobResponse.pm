@@ -16,7 +16,7 @@ Paws::SMS::CreateReplicationJobResponse
 
 =head2 ReplicationJobId => Str
 
-
+The unique identifier of the replication job.
 
 
 =head2 _request_id => Str

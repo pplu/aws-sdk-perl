@@ -38,8 +38,6 @@ EC2 instances. By default, new fleets have a capacity of one instance,
 but can be updated as needed. The maximum number of instances for a
 fleet is determined by the fleet's instance type.
 
-Fleet-related operations include:
-
 =over
 
 =item *

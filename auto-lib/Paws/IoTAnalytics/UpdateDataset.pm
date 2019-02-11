@@ -2,7 +2,9 @@
 package Paws::IoTAnalytics::UpdateDataset;
   use Moose;
   has Actions => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::DatasetAction]', traits => ['NameInRequest'], request_name => 'actions', required => 1);
+  has ContentDeliveryRules => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::DatasetContentDeliveryRule]', traits => ['NameInRequest'], request_name => 'contentDeliveryRules');
   has DatasetName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'datasetName', required => 1);
+  has RetentionPeriod => (is => 'ro', isa => 'Paws::IoTAnalytics::RetentionPeriod', traits => ['NameInRequest'], request_name => 'retentionPeriod');
   has Triggers => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::DatasetTrigger]', traits => ['NameInRequest'], request_name => 'triggers');
 
   use MooseX::ClassAttribute;
@@ -33,19 +35,74 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     $iotanalytics->UpdateDataset(
       Actions => [
         {
-          actionName  => 'MyDatasetActionName',    # min: 1, max: 128; OPTIONAL
-          queryAction => {
-            sqlQuery => 'MySqlQuery',
+          ActionName      => 'MyDatasetActionName', # min: 1, max: 128; OPTIONAL
+          ContainerAction => {
+            ExecutionRoleArn      => 'MyRoleArn',    # min: 20, max: 2048
+            Image                 => 'MyImage',      # max: 255
+            ResourceConfiguration => {
+              ComputeType    => 'ACU_1',             # values: ACU_1, ACU_2
+              VolumeSizeInGB => 1,                   # min: 1, max: 50
 
-          },                                       # OPTIONAL
+            },
+            Variables => [
+              {
+                Name => 'MyVariableName',            # min: 1, max: 256
+                DatasetContentVersionValue => {
+                  DatasetName => 'MyDatasetName',    # min: 1, max: 128
+
+                },    # OPTIONAL
+                DoubleValue        => 1,    # OPTIONAL
+                OutputFileUriValue => {
+                  FileName => 'MyOutputFileName',
+
+                },                          # OPTIONAL
+                StringValue => 'MyStringValue',    # max: 1024; OPTIONAL
+              },
+              ...
+            ],                                     # max: 50; OPTIONAL
+          },    # OPTIONAL
+          QueryAction => {
+            SqlQuery => 'MySqlQuery',
+            Filters  => [
+              {
+                DeltaTime => {
+                  OffsetSeconds  => 1,
+                  TimeExpression => 'MyTimeExpression',
+
+                },    # OPTIONAL
+              },
+              ...
+            ],        # max: 1; OPTIONAL
+          },    # OPTIONAL
         },
         ...
       ],
-      DatasetName => 'MyDatasetName',
-      Triggers    => [
+      DatasetName          => 'MyDatasetName',
+      ContentDeliveryRules => [
         {
-          schedule => {
-            expression => 'MyScheduleExpression',    # OPTIONAL
+          Destination => {
+            IotEventsDestinationConfiguration => {
+              InputName => 'MyIotEventsInputName',    # min: 1, max: 128
+              RoleArn   => 'MyRoleArn',               # min: 20, max: 2048
+
+            },    # OPTIONAL
+          },
+          EntryName => 'MyEntryName',    # OPTIONAL
+        },
+        ...
+      ],                                 # OPTIONAL
+      RetentionPeriod => {
+        NumberOfDays => 1,               # min: 1; OPTIONAL
+        Unlimited    => 1,               # OPTIONAL
+      },    # OPTIONAL
+      Triggers => [
+        {
+          Dataset => {
+            Name => 'MyDatasetName',    # min: 1, max: 128
+
+          },    # OPTIONAL
+          Schedule => {
+            Expression => 'MyScheduleExpression',    # OPTIONAL
           },    # OPTIONAL
         },
         ...
@@ -60,14 +117,26 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 
 =head2 B<REQUIRED> Actions => ArrayRef[L<Paws::IoTAnalytics::DatasetAction>]
 
-A list of "DatasetAction" objects. Only one action is supported at this
-time.
+A list of "DatasetAction" objects.
+
+
+
+=head2 ContentDeliveryRules => ArrayRef[L<Paws::IoTAnalytics::DatasetContentDeliveryRule>]
+
+When data set contents are created they are delivered to destinations
+specified here.
 
 
 
 =head2 B<REQUIRED> DatasetName => Str
 
 The name of the data set to update.
+
+
+
+=head2 RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>
+
+How long, in days, message data is kept for the data set.
 
 
 

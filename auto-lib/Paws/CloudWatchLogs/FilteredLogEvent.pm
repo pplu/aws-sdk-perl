@@ -53,7 +53,7 @@ milliseconds after Jan 1, 1970 00:00:00 UTC.
 
 =head2 LogStreamName => Str
 
-  The name of the log stream this event belongs to.
+  The name of the log stream to which this event belongs.
 
 
 =head2 Message => Str

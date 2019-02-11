@@ -6,7 +6,7 @@ package Paws::CloudFront::CreateDistributionWithTags;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDistributionWithTags');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2017-10-30/distribution?WithTags');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2018-11-05/distribution?WithTags');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::CreateDistributionWithTagsResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
@@ -21,11 +21,11 @@ Paws::CloudFront::CreateDistributionWithTags - Arguments for method CreateDistri
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateDistributionWithTags2017_10_30 on the
+This class represents the parameters used for calling the method CreateDistributionWithTags2018_11_05 on the
 L<Amazon CloudFront|Paws::CloudFront> service. Use the attributes of this class
-as arguments to method CreateDistributionWithTags2017_10_30.
+as arguments to method CreateDistributionWithTags2018_11_05.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDistributionWithTags2017_10_30.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDistributionWithTags2018_11_05.
 
 =head1 SYNOPSIS
 
@@ -89,7 +89,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   EventType => 'viewer-request'
                   , # values: viewer-request, viewer-response, origin-request, origin-response
                   LambdaFunctionARN => 'MyLambdaFunctionARN',
-
+                  IncludeBody       => 1,
                 },
                 ...
               ],    # OPTIONAL
@@ -99,8 +99,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           Enabled => 1,
           Origins => {
-            Quantity => 1,
-            Items    => [
+            Items => [
               {
                 DomainName    => 'Mystring',
                 Id            => 'Mystring',
@@ -137,7 +136,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 },    # OPTIONAL
               },
               ...
-            ],        # min: 1, ; OPTIONAL
+            ],        # min: 1
+            Quantity => 1,
+
           },
           Aliases => {
             Quantity => 1,
@@ -200,7 +201,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       EventType => 'viewer-request'
                       , # values: viewer-request, viewer-response, origin-request, origin-response
                       LambdaFunctionARN => 'MyLambdaFunctionARN',
-
+                      IncludeBody       => 1,
                     },
                     ...
                   ],    # OPTIONAL
@@ -233,6 +234,35 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Prefix         => 'Mystring',
 
           },                                 # OPTIONAL
+          OriginGroups => {
+            Quantity => 1,
+            Items    => [
+              {
+                FailoverCriteria => {
+                  StatusCodes => {
+                    Items => [ 1, ... ],     # min: 1
+                    Quantity => 1,
+
+                  },
+
+                },
+                Id      => 'Mystring',
+                Members => {
+                  Items => [
+                    {
+                      OriginId => 'Mystring',
+
+                    },
+                    ...
+                  ],    # min: 2, max: 2
+                  Quantity => 1,
+
+                },
+
+              },
+              ...
+            ],          # OPTIONAL
+          },    # OPTIONAL
           PriceClass => 'PriceClass_100'
           ,   # values: PriceClass_100, PriceClass_200, PriceClass_All; OPTIONAL
           Restrictions => {
@@ -293,7 +323,7 @@ The distribution's configuration information.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method CreateDistributionWithTags2017_10_30 in L<Paws::CloudFront>
+This class forms part of L<Paws>, documenting arguments for method CreateDistributionWithTags2018_11_05 in L<Paws::CloudFront>
 
 =head1 BUGS and CONTRIBUTIONS
 

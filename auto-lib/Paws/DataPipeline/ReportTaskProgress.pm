@@ -32,16 +32,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       TaskId => 'MytaskId',
       Fields => [
         {
-          key         => 'MyfieldNameString',     # min: 1, max: 256
-          refValue    => 'MyfieldNameString',     # min: 1, max: 256
-          stringValue => 'MyfieldStringValue',    # max: 10240; OPTIONAL
+          Key         => 'MyfieldNameString',     # min: 1, max: 256
+          RefValue    => 'MyfieldNameString',     # min: 1, max: 256
+          StringValue => 'MyfieldStringValue',    # max: 10240; OPTIONAL
         },
         ...
       ],                                          # OPTIONAL
     );
 
     # Results:
-    my $canceled = $ReportTaskProgressOutput->canceled;
+    my $Canceled = $ReportTaskProgressOutput->Canceled;
 
     # Returns a L<Paws::DataPipeline::ReportTaskProgressOutput> object.
 

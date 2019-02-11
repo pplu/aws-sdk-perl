@@ -51,7 +51,7 @@ The detailed configuration of a specified resource.
 
 =head2 AccountId => Str
 
-  The 12 digit AWS account ID associated with the resource.
+  The 12-digit AWS account ID associated with the resource.
 
 
 =head2 Arn => Str

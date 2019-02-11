@@ -35,14 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::C
 =head1 DESCRIPTION
 
 Campaign Limits are used to limit the number of messages that can be
-sent to a user.
+sent to a single endpoint.
 
 =head1 ATTRIBUTES
 
 
 =head2 Daily => Int
 
-  The maximum number of messages that the campaign can send daily.
+  The maximum number of messages that each campaign can send to a single
+endpoint in a 24-hour period.
 
 
 =head2 MaximumDuration => Int
@@ -60,7 +61,8 @@ minimum value is 50, and the maximum is 20000.
 
 =head2 Total => Int
 
-  The maximum total number of messages that the campaign can send.
+  The maximum number of messages that an individual campaign can send to
+a single endpoint over the course of the campaign.
 
 
 

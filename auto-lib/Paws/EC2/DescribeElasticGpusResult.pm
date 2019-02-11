@@ -19,7 +19,7 @@ Paws::EC2::DescribeElasticGpusResult
 
 =head2 ElasticGpuSet => ArrayRef[L<Paws::EC2::ElasticGpus>]
 
-Information about the Elastic GPUs.
+Information about the Elastic Graphics accelerators.
 
 
 =head2 MaxResults => Int

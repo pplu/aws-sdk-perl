@@ -54,7 +54,8 @@ identifier (0001, 0002, etc.).
 =head2 CurrentRole => Str
 
   The role that is currently assigned to the node - C<primary> or
-C<replica>.
+C<replica>. This member is only applicable for Redis (cluster mode
+disabled) replication groups.
 
 
 =head2 PreferredAvailabilityZone => Str
@@ -64,7 +65,9 @@ C<replica>.
 
 =head2 ReadEndpoint => L<Paws::ElastiCache::Endpoint>
 
-  
+  The information required for client programs to connect to a node for
+read operations. The read endpoint is only applicable on Redis (cluster
+mode disabled) clusters.
 
 
 

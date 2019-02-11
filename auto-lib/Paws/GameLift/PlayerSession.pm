@@ -53,8 +53,6 @@ When a player disconnects, the player session status changes to
 C<COMPLETED>. Once the session ends, the player session object is
 retained for 30 days and then removed.
 
-Player-session-related operations include:
-
 =over
 
 =item *

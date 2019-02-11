@@ -46,6 +46,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 MediaUrl          => 'My__string',
                 RawContent        => 'My__string',
                 SilentPush        => 1,              # OPTIONAL
+                TimeToLive        => 1,              # OPTIONAL
                 Title             => 'My__string',
                 Url               => 'My__string',
               },    # OPTIONAL
@@ -60,6 +61,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 MediaUrl          => 'My__string',
                 RawContent        => 'My__string',
                 SilentPush        => 1,              # OPTIONAL
+                TimeToLive        => 1,              # OPTIONAL
                 Title             => 'My__string',
                 Url               => 'My__string',
               },    # OPTIONAL
@@ -74,6 +76,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 MediaUrl          => 'My__string',
                 RawContent        => 'My__string',
                 SilentPush        => 1,              # OPTIONAL
+                TimeToLive        => 1,              # OPTIONAL
                 Title             => 'My__string',
                 Url               => 'My__string',
               },    # OPTIONAL
@@ -88,6 +91,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 MediaUrl          => 'My__string',
                 RawContent        => 'My__string',
                 SilentPush        => 1,              # OPTIONAL
+                TimeToLive        => 1,              # OPTIONAL
                 Title             => 'My__string',
                 Url               => 'My__string',
               },    # OPTIONAL
@@ -108,6 +112,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 MediaUrl          => 'My__string',
                 RawContent        => 'My__string',
                 SilentPush        => 1,              # OPTIONAL
+                TimeToLive        => 1,              # OPTIONAL
                 Title             => 'My__string',
                 Url               => 'My__string',
               },    # OPTIONAL
@@ -119,9 +124,32 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
             },    # OPTIONAL
             Schedule => {
-              EndTime => 'My__string',
-              Frequency =>
-                'ONCE', # values: ONCE, HOURLY, DAILY, WEEKLY, MONTHLY; OPTIONAL
+              EndTime     => 'My__string',
+              EventFilter => {
+                Dimensions => {
+                  Attributes => {
+                    'My__string' => {
+                      AttributeType =>
+                        'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+                      Values => [ 'My__string', ... ],    # OPTIONAL
+                    },
+                  },    # OPTIONAL
+                  EventType => {
+                    DimensionType =>
+                      'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+                    Values => [ 'My__string', ... ],    # OPTIONAL
+                  },    # OPTIONAL
+                  Metrics => {
+                    'My__string' => {
+                      ComparisonOperator => 'My__string',
+                      Value              => 1,              # OPTIONAL
+                    },
+                  },    # OPTIONAL
+                },    # OPTIONAL
+                FilterType => 'SYSTEM',    # values: SYSTEM, ENDPOINT; OPTIONAL
+              },    # OPTIONAL
+              Frequency => 'ONCE'
+              ,  # values: ONCE, HOURLY, DAILY, WEEKLY, MONTHLY, EVENT; OPTIONAL
               IsLocalTime => 1,    # OPTIONAL
               QuietTime   => {
                 End   => 'My__string',
@@ -161,6 +189,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             MediaUrl          => 'My__string',
             RawContent        => 'My__string',
             SilentPush        => 1,              # OPTIONAL
+            TimeToLive        => 1,              # OPTIONAL
             Title             => 'My__string',
             Url               => 'My__string',
           },    # OPTIONAL
@@ -174,6 +203,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             MediaUrl          => 'My__string',
             RawContent        => 'My__string',
             SilentPush        => 1,              # OPTIONAL
+            TimeToLive        => 1,              # OPTIONAL
             Title             => 'My__string',
             Url               => 'My__string',
           },    # OPTIONAL
@@ -187,6 +217,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             MediaUrl          => 'My__string',
             RawContent        => 'My__string',
             SilentPush        => 1,              # OPTIONAL
+            TimeToLive        => 1,              # OPTIONAL
             Title             => 'My__string',
             Url               => 'My__string',
           },    # OPTIONAL
@@ -200,6 +231,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             MediaUrl          => 'My__string',
             RawContent        => 'My__string',
             SilentPush        => 1,              # OPTIONAL
+            TimeToLive        => 1,              # OPTIONAL
             Title             => 'My__string',
             Url               => 'My__string',
           },    # OPTIONAL
@@ -219,6 +251,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             MediaUrl          => 'My__string',
             RawContent        => 'My__string',
             SilentPush        => 1,              # OPTIONAL
+            TimeToLive        => 1,              # OPTIONAL
             Title             => 'My__string',
             Url               => 'My__string',
           },    # OPTIONAL
@@ -231,9 +264,32 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
         Name     => 'My__string',
         Schedule => {
-          EndTime => 'My__string',
-          Frequency =>
-            'ONCE',    # values: ONCE, HOURLY, DAILY, WEEKLY, MONTHLY; OPTIONAL
+          EndTime     => 'My__string',
+          EventFilter => {
+            Dimensions => {
+              Attributes => {
+                'My__string' => {
+                  AttributeType =>
+                    'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+                  Values => [ 'My__string', ... ],    # OPTIONAL
+                },
+              },    # OPTIONAL
+              EventType => {
+                DimensionType =>
+                  'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+                Values => [ 'My__string', ... ],    # OPTIONAL
+              },    # OPTIONAL
+              Metrics => {
+                'My__string' => {
+                  ComparisonOperator => 'My__string',
+                  Value              => 1,              # OPTIONAL
+                },
+              },    # OPTIONAL
+            },    # OPTIONAL
+            FilterType => 'SYSTEM',    # values: SYSTEM, ENDPOINT; OPTIONAL
+          },    # OPTIONAL
+          Frequency => 'ONCE'
+          ,     # values: ONCE, HOURLY, DAILY, WEEKLY, MONTHLY, EVENT; OPTIONAL
           IsLocalTime => 1,    # OPTIONAL
           QuietTime   => {
             End   => 'My__string',
@@ -256,14 +312,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::Pinpoint::CreateCampaignResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pinpoint/CreateCampaign>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-
+The unique ID of your Amazon Pinpoint application.
 
 
 

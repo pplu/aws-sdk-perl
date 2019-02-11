@@ -69,8 +69,8 @@ This parameter is supported if the policy type is C<SimpleScaling> or
 C<StepScaling>.
 
 For more information, see Dynamic Scaling
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/as-scale-based-on-demand.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scale-based-on-demand.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 
@@ -88,9 +88,9 @@ specified, the default cooldown period for the group applies.
 
 This parameter is supported if the policy type is C<SimpleScaling>.
 
-For more information, see Auto Scaling Cooldowns
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/Cooldown.html)
-in the I<Auto Scaling User Guide>.
+For more information, see Scaling Cooldowns
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html) in
+the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 

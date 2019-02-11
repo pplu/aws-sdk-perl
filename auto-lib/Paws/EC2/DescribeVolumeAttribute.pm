@@ -1,7 +1,7 @@
 
 package Paws::EC2::DescribeVolumeAttribute;
   use Moose;
-  has Attribute => (is => 'ro', isa => 'Str');
+  has Attribute => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has VolumeId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -51,7 +51,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 =head1 ATTRIBUTES
 
 
-=head2 Attribute => Str
+=head2 B<REQUIRED> Attribute => Str
 
 The attribute of the volume. This parameter is required.
 

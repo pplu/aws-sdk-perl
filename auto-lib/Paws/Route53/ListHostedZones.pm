@@ -81,8 +81,8 @@ there are no more hosted zones to get.
 (Optional) The maximum number of hosted zones that you want Amazon
 Route 53 to return. If you have more than C<maxitems> hosted zones, the
 value of C<IsTruncated> in the response is C<true>, and the value of
-C<NextMarker> is the hosted zone ID of the first hosted zone that
-Amazon Route 53 will return if you submit another request.
+C<NextMarker> is the hosted zone ID of the first hosted zone that Route
+53 will return if you submit another request.
 
 
 

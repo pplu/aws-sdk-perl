@@ -89,7 +89,43 @@ Amazon S3.
 
 =head2 Status => Str
 
-  The processing status of the application version.
+  The processing status of the application version. Reflects the state of
+the application version during its creation. Many of the values are
+only applicable if you specified C<True> for the C<Process> parameter
+of the C<CreateApplicationVersion> action. The following list describes
+the possible values.
+
+=over
+
+=item *
+
+C<Unprocessed> E<ndash> Application version wasn't pre-processed or
+validated. Elastic Beanstalk will validate configuration files during
+deployment of the application version to an environment.
+
+=item *
+
+C<Processing> E<ndash> Elastic Beanstalk is currently processing the
+application version.
+
+=item *
+
+C<Building> E<ndash> Application version is currently undergoing an AWS
+CodeBuild build.
+
+=item *
+
+C<Processed> E<ndash> Elastic Beanstalk was successfully pre-processed
+and validated.
+
+=item *
+
+C<Failed> E<ndash> Either the AWS CodeBuild build failed or
+configuration files didn't pass validation. This application version
+isn't usable.
+
+=back
+
 
 
 =head2 VersionLabel => Str

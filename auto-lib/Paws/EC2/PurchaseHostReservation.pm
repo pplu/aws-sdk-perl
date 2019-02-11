@@ -58,7 +58,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 Unique, case-sensitive identifier you provide to ensure idempotency of
 the request. For more information, see How to Ensure Idempotency
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
@@ -73,8 +73,8 @@ Valid values are: C<"USD">
 
 =head2 B<REQUIRED> HostIdSet => ArrayRef[Str|Undef]
 
-The ID/s of the Dedicated Host/s that the reservation will be
-associated with.
+The IDs of the Dedicated Hosts with which the reservation will be
+associated.
 
 
 
@@ -83,10 +83,10 @@ associated with.
 The specified limit is checked against the total upfront cost of the
 reservation (calculated as the offering's upfront cost multiplied by
 the host count). If the total upfront cost is greater than the
-specified price limit, the request will fail. This is used to ensure
-that the purchase does not exceed the expected upfront cost of the
-purchase. At this time, the only supported currency is C<USD>. For
-example, to indicate a limit price of USD 100, specify 100.00.
+specified price limit, the request fails. This is used to ensure that
+the purchase does not exceed the expected upfront cost of the purchase.
+At this time, the only supported currency is C<USD>. For example, to
+indicate a limit price of USD 100, specify 100.00.
 
 
 

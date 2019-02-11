@@ -2,6 +2,7 @@
 package Paws::S3::DeleteObject;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
+  has BypassGovernanceRetention => (is => 'ro', isa => 'Bool', header_name => 'x-amz-bypass-governance-retention', traits => ['ParamInHeader']);
   has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
   has MFA => (is => 'ro', isa => 'Str', header_name => 'x-amz-mfa', traits => ['ParamInHeader']);
   has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
@@ -35,11 +36,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $s3 = Paws->service('S3');
     my $DeleteObjectOutput = $s3->DeleteObject(
-      Bucket       => 'MyBucketName',
-      Key          => 'MyObjectKey',
-      MFA          => 'MyMFA',                # OPTIONAL
-      RequestPayer => 'requester',            # OPTIONAL
-      VersionId    => 'MyObjectVersionId',    # OPTIONAL
+      Bucket                    => 'MyBucketName',
+      Key                       => 'MyObjectKey',
+      BypassGovernanceRetention => 1,                      # OPTIONAL
+      MFA                       => 'MyMFA',                # OPTIONAL
+      RequestPayer              => 'requester',            # OPTIONAL
+      VersionId                 => 'MyObjectVersionId',    # OPTIONAL
     );
 
     # Results:
@@ -58,6 +60,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 =head2 B<REQUIRED> Bucket => Str
 
 
+
+
+
+=head2 BypassGovernanceRetention => Bool
+
+Indicates whether S3 Object Lock should bypass Governance-mode
+restrictions to process this operation.
 
 
 

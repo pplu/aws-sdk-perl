@@ -61,13 +61,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         InstanceCount => 1,                          # OPTIONAL
         InstanceType  => 'm3.medium.elasticsearch'
         , # values: m3.medium.elasticsearch, m3.large.elasticsearch, m3.xlarge.elasticsearch, m3.2xlarge.elasticsearch, m4.large.elasticsearch, m4.xlarge.elasticsearch, m4.2xlarge.elasticsearch, m4.4xlarge.elasticsearch, m4.10xlarge.elasticsearch, t2.micro.elasticsearch, t2.small.elasticsearch, t2.medium.elasticsearch, r3.large.elasticsearch, r3.xlarge.elasticsearch, r3.2xlarge.elasticsearch, r3.4xlarge.elasticsearch, r3.8xlarge.elasticsearch, i2.xlarge.elasticsearch, i2.2xlarge.elasticsearch, d2.xlarge.elasticsearch, d2.2xlarge.elasticsearch, d2.4xlarge.elasticsearch, d2.8xlarge.elasticsearch, c4.large.elasticsearch, c4.xlarge.elasticsearch, c4.2xlarge.elasticsearch, c4.4xlarge.elasticsearch, c4.8xlarge.elasticsearch, r4.large.elasticsearch, r4.xlarge.elasticsearch, r4.2xlarge.elasticsearch, r4.4xlarge.elasticsearch, r4.8xlarge.elasticsearch, r4.16xlarge.elasticsearch, i3.large.elasticsearch, i3.xlarge.elasticsearch, i3.2xlarge.elasticsearch, i3.4xlarge.elasticsearch, i3.8xlarge.elasticsearch, i3.16xlarge.elasticsearch; OPTIONAL
+        ZoneAwarenessConfig => {
+          AvailabilityZoneCount => 1,    # OPTIONAL
+        },    # OPTIONAL
         ZoneAwarenessEnabled => 1,    # OPTIONAL
       },    # OPTIONAL
       LogPublishingOptions => {
         'INDEX_SLOW_LOGS' => {
           CloudWatchLogsLogGroupArn => 'MyCloudWatchLogsLogGroupArn', # OPTIONAL
           Enabled                   => 1,                             # OPTIONAL
-        },    # key: values: INDEX_SLOW_LOGS, SEARCH_SLOW_LOGS
+        }, # key: values: INDEX_SLOW_LOGS, SEARCH_SLOW_LOGS, ES_APPLICATION_LOGS
       },    # OPTIONAL
       SnapshotOptions => {
         AutomatedSnapshotStartHour => 1,    # OPTIONAL
@@ -84,7 +87,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::ES::UpdateElasticsearchDomainConfigResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/elasticsearch-service/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/es/UpdateElasticsearchDomainConfig>
 
 =head1 ATTRIBUTES
 

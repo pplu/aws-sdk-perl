@@ -3,6 +3,7 @@ package Paws::EC2::DescribeAvailabilityZones;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has ZoneIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ZoneId' );
   has ZoneNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ZoneName' );
 
   use MooseX::ClassAttribute;
@@ -76,11 +77,22 @@ C<information> | C<impaired> | C<unavailable>).
 
 =item *
 
+C<zone-id> - The ID of the Availability Zone (for example,
+C<use1-az1>).
+
+=item *
+
 C<zone-name> - The name of the Availability Zone (for example,
 C<us-east-1a>).
 
 =back
 
+
+
+
+=head2 ZoneIds => ArrayRef[Str|Undef]
+
+The IDs of one or more Availability Zones.
 
 
 

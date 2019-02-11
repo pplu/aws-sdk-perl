@@ -39,7 +39,7 @@ Represents an application source.
 
 =head2 CloudFormationStackARN => Str
 
-  The Amazon Resource Name (ARN) of a CloudFormation stack.
+  The Amazon Resource Name (ARN) of a AWS CloudFormation stack.
 
 
 =head2 TagFilters => ArrayRef[L<Paws::AutoScalingPlans::TagFilter>]

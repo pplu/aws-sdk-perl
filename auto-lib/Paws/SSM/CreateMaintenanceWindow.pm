@@ -6,8 +6,11 @@ package Paws::SSM::CreateMaintenanceWindow;
   has Cutoff => (is => 'ro', isa => 'Int', required => 1);
   has Description => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Int', required => 1);
+  has EndDate => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Schedule => (is => 'ro', isa => 'Str', required => 1);
+  has ScheduleTimezone => (is => 'ro', isa => 'Str');
+  has StartDate => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -41,6 +44,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Schedule                 => 'MyMaintenanceWindowSchedule',
       ClientToken              => 'MyClientToken',                    # OPTIONAL
       Description              => 'MyMaintenanceWindowDescription',   # OPTIONAL
+      EndDate          => 'MyMaintenanceWindowStringDateTime',        # OPTIONAL
+      ScheduleTimezone => 'MyMaintenanceWindowTimezone',              # OPTIONAL
+      StartDate        => 'MyMaintenanceWindowStringDateTime',        # OPTIONAL
     );
 
     # Results:
@@ -93,6 +99,14 @@ The duration of the Maintenance Window in hours.
 
 
 
+=head2 EndDate => Str
+
+The date and time, in ISO-8601 Extended format, for when you want the
+Maintenance Window to become inactive. EndDate allows you to set a date
+and time in the future when the Maintenance Window will no longer run.
+
+
+
 =head2 B<REQUIRED> Name => Str
 
 The name of the Maintenance Window.
@@ -103,6 +117,24 @@ The name of the Maintenance Window.
 
 The schedule of the Maintenance Window in the form of a cron or rate
 expression.
+
+
+
+=head2 ScheduleTimezone => Str
+
+The time zone that the scheduled Maintenance Window executions are
+based on, in Internet Assigned Numbers Authority (IANA) format. For
+example: "America/Los_Angeles", "etc/UTC", or "Asia/Seoul". For more
+information, see the Time Zone Database
+(https://www.iana.org/time-zones) on the IANA website.
+
+
+
+=head2 StartDate => Str
+
+The date and time, in ISO-8601 Extended format, for when you want the
+Maintenance Window to become active. StartDate allows you to delay
+activation of the Maintenance Window until the specified future date.
 
 
 

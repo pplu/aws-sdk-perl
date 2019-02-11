@@ -3,6 +3,7 @@ package Paws::Glue::Action;
   has Arguments => (is => 'ro', isa => 'Paws::Glue::GenericMap');
   has JobName => (is => 'ro', isa => 'Str');
   has NotificationProperty => (is => 'ro', isa => 'Paws::Glue::NotificationProperty');
+  has SecurityConfiguration => (is => 'ro', isa => 'Str');
   has Timeout => (is => 'ro', isa => 'Int');
 1;
 
@@ -41,7 +42,7 @@ Defines an action to be initiated by a trigger.
 
 =head2 Arguments => L<Paws::Glue::GenericMap>
 
-  Arguments to be passed to the job.
+  Arguments to be passed to the job run.
 
 You can specify arguments here that your own job-execution script
 consumes, as well as arguments that AWS Glue itself consumes.
@@ -67,10 +68,18 @@ topic in the developer guide.
   Specifies configuration properties of a job run notification.
 
 
+=head2 SecurityConfiguration => Str
+
+  The name of the SecurityConfiguration structure to be used with this
+action.
+
+
 =head2 Timeout => Int
 
-  The job run timeout in minutes. It overrides the timeout value of the
-job.
+  The JobRun timeout in minutes. This is the maximum time that a job run
+can consume resources before it is terminated and enters C<TIMEOUT>
+status. The default is 2,880 minutes (48 hours). This overrides the
+timeout value set in the parent job.
 
 
 

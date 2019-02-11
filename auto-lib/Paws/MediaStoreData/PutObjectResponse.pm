@@ -29,7 +29,7 @@ Unique identifier of the object in the container.
 
 =head2 StorageClass => Str
 
-The storage class where the object was persisted. Should be
+The storage class where the object was persisted. The class should be
 E<ldquo>TemporalE<rdquo>.
 
 Valid values are: C<"TEMPORAL">

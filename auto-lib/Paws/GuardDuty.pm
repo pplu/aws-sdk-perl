@@ -419,7 +419,7 @@ Paws::GuardDuty - Perl Interface to AWS Amazon GuardDuty
 Assess, monitor, manage, and remediate security issues across your AWS
 infrastructure, applications, and data.
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28>
 
 
 =head1 METHODS
@@ -430,9 +430,9 @@ For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
 
 =item DetectorId => Str
 
-=item [InvitationId => Str]
+=item InvitationId => Str
 
-=item [MasterId => Str]
+=item MasterId => Str
 
 
 =back
@@ -450,7 +450,7 @@ Accepts the invitation to be monitored by a master GuardDuty account.
 
 =item DetectorId => Str
 
-=item [FindingIds => ArrayRef[Str|Undef]]
+=item FindingIds => ArrayRef[Str|Undef]
 
 
 =back
@@ -467,7 +467,11 @@ IDs.
 
 =over
 
-=item [Enable => Bool]
+=item Enable => Bool
+
+=item [ClientToken => Str]
+
+=item [FindingPublishingFrequency => Str]
 
 
 =back
@@ -487,15 +491,15 @@ order for GuardDuty to become operational.
 
 =item DetectorId => Str
 
+=item FindingCriteria => L<Paws::GuardDuty::FindingCriteria>
+
+=item Name => Str
+
 =item [Action => Str]
 
 =item [ClientToken => Str]
 
 =item [Description => Str]
-
-=item [FindingCriteria => L<Paws::GuardDuty::FindingCriteria>]
-
-=item [Name => Str]
 
 =item [Rank => Int]
 
@@ -513,15 +517,17 @@ Creates a filter using the specified finding criteria.
 
 =over
 
+=item Activate => Bool
+
 =item DetectorId => Str
 
-=item [Activate => Bool]
+=item Format => Str
 
-=item [Format => Str]
+=item Location => Str
 
-=item [Location => Str]
+=item Name => Str
 
-=item [Name => Str]
+=item [ClientToken => Str]
 
 
 =back
@@ -539,9 +545,9 @@ applications.
 
 =over
 
-=item DetectorId => Str
+=item AccountDetails => ArrayRef[L<Paws::GuardDuty::AccountDetail>]
 
-=item [AccountDetails => ArrayRef[L<Paws::GuardDuty::AccountDetail>]]
+=item DetectorId => Str
 
 
 =back
@@ -579,15 +585,17 @@ example findings of all supported finding types.
 
 =over
 
+=item Activate => Bool
+
 =item DetectorId => Str
 
-=item [Activate => Bool]
+=item Format => Str
 
-=item [Format => Str]
+=item Location => Str
 
-=item [Location => Str]
+=item Name => Str
 
-=item [Name => Str]
+=item [ClientToken => Str]
 
 
 =back
@@ -604,7 +612,7 @@ IP addresses. GuardDuty generates findings based on ThreatIntelSets.
 
 =over
 
-=item [AccountIds => ArrayRef[Str|Undef]]
+=item AccountIds => ArrayRef[Str|Undef]
 
 
 =back
@@ -655,7 +663,7 @@ Deletes the filter specified by the filter name.
 
 =over
 
-=item [AccountIds => ArrayRef[Str|Undef]]
+=item AccountIds => ArrayRef[Str|Undef]
 
 
 =back
@@ -690,9 +698,9 @@ Deletes the IPSet specified by the IPSet ID.
 
 =over
 
-=item DetectorId => Str
+=item AccountIds => ArrayRef[Str|Undef]
 
-=item [AccountIds => ArrayRef[Str|Undef]]
+=item DetectorId => Str
 
 
 =back
@@ -744,9 +752,9 @@ account.
 
 =over
 
-=item DetectorId => Str
+=item AccountIds => ArrayRef[Str|Undef]
 
-=item [AccountIds => ArrayRef[Str|Undef]]
+=item DetectorId => Str
 
 
 =back
@@ -799,7 +807,7 @@ Returns the details of the filter specified by the filter name.
 
 =item DetectorId => Str
 
-=item [FindingIds => ArrayRef[Str|Undef]]
+=item FindingIds => ArrayRef[Str|Undef]
 
 =item [SortCriteria => L<Paws::GuardDuty::SortCriteria>]
 
@@ -819,9 +827,9 @@ Describes Amazon GuardDuty findings specified by finding IDs.
 
 =item DetectorId => Str
 
-=item [FindingCriteria => L<Paws::GuardDuty::FindingCriteria>]
+=item FindingStatisticTypes => ArrayRef[Str|Undef]
 
-=item [FindingStatisticTypes => ArrayRef[Str|Undef]]
+=item [FindingCriteria => L<Paws::GuardDuty::FindingCriteria>]
 
 
 =back
@@ -889,9 +897,9 @@ GuardDuty member account.
 
 =over
 
-=item DetectorId => Str
+=item AccountIds => ArrayRef[Str|Undef]
 
-=item [AccountIds => ArrayRef[Str|Undef]]
+=item DetectorId => Str
 
 
 =back
@@ -927,9 +935,9 @@ ID.
 
 =over
 
-=item DetectorId => Str
+=item AccountIds => ArrayRef[Str|Undef]
 
-=item [AccountIds => ArrayRef[Str|Undef]]
+=item DetectorId => Str
 
 =item [DisableEmailNotification => Bool]
 
@@ -1098,9 +1106,9 @@ detector ID.
 
 =over
 
-=item DetectorId => Str
+=item AccountIds => ArrayRef[Str|Undef]
 
-=item [AccountIds => ArrayRef[Str|Undef]]
+=item DetectorId => Str
 
 
 =back
@@ -1119,9 +1127,9 @@ findings by running StopMonitoringMembers.
 
 =over
 
-=item DetectorId => Str
+=item AccountIds => ArrayRef[Str|Undef]
 
-=item [AccountIds => ArrayRef[Str|Undef]]
+=item DetectorId => Str
 
 
 =back
@@ -1142,7 +1150,7 @@ to monitor these membersE<rsquo> findings.
 
 =item DetectorId => Str
 
-=item [FindingIds => ArrayRef[Str|Undef]]
+=item FindingIds => ArrayRef[Str|Undef]
 
 
 =back
@@ -1162,6 +1170,8 @@ IDs.
 =item DetectorId => Str
 
 =item [Enable => Bool]
+
+=item [FindingPublishingFrequency => Str]
 
 
 =back
@@ -1205,11 +1215,11 @@ Updates the filter specified by the filter name.
 
 =item DetectorId => Str
 
+=item Feedback => Str
+
+=item FindingIds => ArrayRef[Str|Undef]
+
 =item [Comments => Str]
-
-=item [Feedback => Str]
-
-=item [FindingIds => ArrayRef[Str|Undef]]
 
 
 =back

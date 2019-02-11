@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateDeploymentOutput = $codedeploy->CreateDeployment(
       ApplicationName           => 'MyApplicationName',
       AutoRollbackConfiguration => {
-        enabled => 1,    # OPTIONAL
-        events  => [
+        Enabled => 1,    # OPTIONAL
+        Events  => [
           'DEPLOYMENT_FAILURE',
           ... # values: DEPLOYMENT_FAILURE, DEPLOYMENT_STOP_ON_ALARM, DEPLOYMENT_STOP_ON_REQUEST
         ],    # OPTIONAL
@@ -51,27 +51,32 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       FileExistsBehavior            => 'DISALLOW',                  # OPTIONAL
       IgnoreApplicationStopFailures => 1,                           # OPTIONAL
       Revision                      => {
-        gitHubLocation => {
-          commitId   => 'MyCommitId',                               # OPTIONAL
-          repository => 'MyRepository',                             # OPTIONAL
+        AppSpecContent => {
+          Content => 'MyRawStringContent',                          # OPTIONAL
+          Sha256  => 'MyRawStringSha256',                           # OPTIONAL
         },    # OPTIONAL
-        revisionType => 'S3',    # values: S3, GitHub, String; OPTIONAL
-        s3Location   => {
-          bucket => 'MyS3Bucket',    # OPTIONAL
-          bundleType => 'tar',     # values: tar, tgz, zip, YAML, JSON; OPTIONAL
-          eTag       => 'MyETag',  # OPTIONAL
-          key        => 'MyS3Key', # OPTIONAL
-          version => 'MyVersionId',    # OPTIONAL
+        GitHubLocation => {
+          CommitId   => 'MyCommitId',      # OPTIONAL
+          Repository => 'MyRepository',    # OPTIONAL
         },    # OPTIONAL
-        string => {
-          content => 'MyRawStringContent',    # OPTIONAL
-          sha256  => 'MyRawStringSha256',     # OPTIONAL
+        RevisionType =>
+          'S3',    # values: S3, GitHub, String, AppSpecContent; OPTIONAL
+        S3Location => {
+          Bucket => 'MyS3Bucket',    # OPTIONAL
+          BundleType => 'tar',     # values: tar, tgz, zip, YAML, JSON; OPTIONAL
+          ETag       => 'MyETag',  # OPTIONAL
+          Key        => 'MyS3Key', # OPTIONAL
+          Version => 'MyVersionId',    # OPTIONAL
+        },    # OPTIONAL
+        String => {
+          Content => 'MyRawStringContent',    # OPTIONAL
+          Sha256  => 'MyRawStringSha256',     # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       TargetInstances => {
-        autoScalingGroups => [ 'MyAutoScalingGroupName', ... ],    # OPTIONAL
-        ec2TagSet => {
-          ec2TagSetList => [
+        AutoScalingGroups => [ 'MyAutoScalingGroupName', ... ],    # OPTIONAL
+        Ec2TagSet => {
+          Ec2TagSetList => [
             [
               {
                 Key  => 'MyKey',                                   # OPTIONAL
@@ -81,10 +86,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },
               ...
             ],
-            ...                        # OPTIONAL
+            ...
           ],                           # OPTIONAL
         },    # OPTIONAL
-        tagFilters => [
+        TagFilters => [
           {
             Key  => 'MyKey',     # OPTIONAL
             Type => 'KEY_ONLY'
@@ -92,7 +97,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyValue',    # OPTIONAL
           },
           ...
-        ],                         # OPTIONAL
+        ],
       },    # OPTIONAL
       UpdateOutdatedInstancesOnly => 1,    # OPTIONAL
     );
@@ -110,8 +115,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-The name of an AWS CodeDeploy application associated with the
-applicable IAM user or AWS account.
+The name of an AWS CodeDeploy application associated with the IAM user
+or AWS account.
 
 
 
@@ -124,13 +129,13 @@ a deployment is created.
 
 =head2 DeploymentConfigName => Str
 
-The name of a deployment configuration associated with the applicable
-IAM user or AWS account.
+The name of a deployment configuration associated with the IAM user or
+AWS account.
 
-If not specified, the value configured in the deployment group will be
-used as the default. If the deployment group does not have a deployment
-configuration associated with it, then CodeDeployDefault.OneAtATime
-will be used by default.
+If not specified, the value configured in the deployment group is used
+as the default. If the deployment group does not have a deployment
+configuration associated with it, CodeDeployDefault.OneAtATime is used
+by default.
 
 
 
@@ -180,13 +185,13 @@ Valid values are: C<"DISALLOW">, C<"OVERWRITE">, C<"RETAIN">
 
 If set to true, then if the deployment causes the ApplicationStop
 deployment lifecycle event to an instance to fail, the deployment to
-that instance will not be considered to have failed at that point and
-will continue on to the BeforeInstall deployment lifecycle event.
+that instance is considered to have failed at that point and continues
+on to the BeforeInstall deployment lifecycle event.
 
 If set to false or not specified, then if the deployment causes the
 ApplicationStop deployment lifecycle event to fail to an instance, the
-deployment to that instance will stop, and the deployment to that
-instance will be considered to have failed.
+deployment to that instance stops, and the deployment to that instance
+is considered to have failed.
 
 
 
@@ -198,7 +203,7 @@ The type and location of the revision to deploy.
 
 =head2 TargetInstances => L<Paws::CodeDeploy::TargetInstances>
 
-Information about the instances that will belong to the replacement
+Information about the instances that belong to the replacement
 environment in a blue/green deployment.
 
 

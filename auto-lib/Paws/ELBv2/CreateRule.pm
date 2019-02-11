@@ -69,17 +69,26 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 =head2 B<REQUIRED> Actions => ArrayRef[L<Paws::ELBv2::Action>]
 
-The actions. Each rule must include one forward action.
+The actions. Each rule must include exactly one of the following types
+of actions: C<forward>, C<fixed-response>, or C<redirect>.
 
-If the action type is C<forward>, you can specify a single target
-group.
+If the action type is C<forward>, you specify a target group. The
+protocol of the target group must be HTTP or HTTPS for an Application
+Load Balancer. The protocol of the target group must be TCP or TLS for
+a Network Load Balancer.
 
-If the action type is C<authenticate-oidc>, you can use an identity
-provider that is OpenID Connect (OIDC) compliant to authenticate users
-as they access your application.
+[HTTPS listeners] If the action type is C<authenticate-oidc>, you
+authenticate users through an identity provider that is OpenID Connect
+(OIDC) compliant.
 
-If the action type is C<authenticate-cognito>, you can use Amazon
-Cognito to authenticate users as they access your application.
+[HTTPS listeners] If the action type is C<authenticate-cognito>, you
+authenticate users through the user pools supported by Amazon Cognito.
+
+[Application Load Balancer] If the action type is C<redirect>, you
+redirect specified client requests from one URL to another.
+
+[Application Load Balancer] If the action type is C<fixed-response>,
+you drop specified client requests and return a custom HTTP response.
 
 
 
@@ -91,7 +100,7 @@ value.
 If the field name is C<host-header>, you can specify a single host name
 (for example, my.example.com). A host name is case insensitive, can be
 up to 128 characters in length, and can contain any of the following
-characters. Note that you can include up to three wildcard characters.
+characters. You can include up to three wildcard characters.
 
 =over
 
@@ -114,9 +123,9 @@ A-Z, a-z, 0-9
 =back
 
 If the field name is C<path-pattern>, you can specify a single path
-pattern. A path pattern is case sensitive, can be up to 128 characters
-in length, and can contain any of the following characters. Note that
-you can include up to three wildcard characters.
+pattern. A path pattern is case-sensitive, can be up to 128 characters
+in length, and can contain any of the following characters. You can
+include up to three wildcard characters.
 
 =over
 

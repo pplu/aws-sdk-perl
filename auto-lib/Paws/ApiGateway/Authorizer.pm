@@ -57,7 +57,7 @@ C</2015-03-31/functions/[FunctionARN]/invocations>.
 
 =head2 AuthType => Str
 
-Optional customer-defined field, used in Swagger imports and exports
+Optional customer-defined field, used in OpenAPI imports and exports
 without functional impact.
 
 

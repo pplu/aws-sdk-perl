@@ -46,7 +46,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'NetworkInterfaces' => [
 
             {
-              'AssociatePublicIpAddress' => true,
+              'AssociatePublicIpAddress' => 1,
               'DeviceIndex'              => 0,
               'Groups'                   => ['sg-12345678'],
               'SubnetId'                 => 'subnet-12345678'
@@ -97,7 +97,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 Unique, case-sensitive identifier that ensures the idempotency of the
 request. For more information, see Ensuring Idempotency
-(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 
 
 

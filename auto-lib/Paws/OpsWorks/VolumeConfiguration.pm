@@ -84,23 +84,29 @@ information, see Amazon EBS Encryption
 
 =item *
 
-C<standard> - Magnetic
+C<standard> - Magnetic. Magnetic volumes must have a minimum size of 1
+GiB and a maximum size of 1024 GiB.
 
 =item *
 
-C<io1> - Provisioned IOPS (SSD)
+C<io1> - Provisioned IOPS (SSD). PIOPS volumes must have a minimum size
+of 4 GiB and a maximum size of 16384 GiB.
 
 =item *
 
-C<gp2> - General Purpose (SSD)
+C<gp2> - General Purpose (SSD). General purpose volumes must have a
+minimum size of 1 GiB and a maximum size of 16384 GiB.
 
 =item *
 
-C<st1> - Throughput Optimized hard disk drive (HDD)
+C<st1> - Throughput Optimized hard disk drive (HDD). Throughput
+optimized HDD volumes must have a minimum size of 500 GiB and a maximum
+size of 16384 GiB.
 
 =item *
 
-C<sc1> - Cold HDD
+C<sc1> - Cold HDD. Cold HDD volumes must have a minimum size of 500 GiB
+and a maximum size of 16384 GiB.
 
 =back
 

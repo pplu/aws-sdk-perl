@@ -36,13 +36,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           GetLinkAttributes => {
             AttributeNames => [
-              'MyAttributeName', ...    # min: 1, max: 64; OPTIONAL
+              'MyAttributeName', ...    # min: 1, max: 230; OPTIONAL
             ],
             TypedLinkSpecifier => {
               IdentityAttributeValues => [
                 {
                   AttributeName =>
-                    'MyAttributeName',    # min: 1, max: 64; OPTIONAL
+                    'MyAttributeName',    # min: 1, max: 230; OPTIONAL
                   Value => {
                     BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
                     BooleanValue  => 1,                             # OPTIONAL
@@ -71,7 +71,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           GetObjectAttributes => {
             AttributeNames => [
-              'MyAttributeName', ...    # min: 1, max: 64; OPTIONAL
+              'MyAttributeName', ...    # min: 1, max: 230; OPTIONAL
             ],
             ObjectReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
@@ -79,7 +79,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             SchemaFacet => {
               FacetName => 'MyFacetName',    # min: 1, max: 64; OPTIONAL
               SchemaArn => 'MyArn',
-            },
+            },    # OPTIONAL
 
           },    # OPTIONAL
           GetObjectInformation => {
@@ -92,7 +92,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             TargetReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
             },
-            MaxResults => 1,                              # min: 1, ; OPTIONAL
+            MaxResults => 1,                              # min: 1; OPTIONAL
             NextToken  => 'MyNextToken',                  # OPTIONAL
           },    # OPTIONAL
           ListIncomingTypedLinks => {
@@ -121,29 +121,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     StringValue   => 'MyStringAttributeValue',      # OPTIONAL
                   },    # OPTIONAL
                 },
-                AttributeName => 'MyAttributeName',  # min: 1, max: 64; OPTIONAL
+                AttributeName => 'MyAttributeName', # min: 1, max: 230; OPTIONAL
               },
               ...
-            ],                                       # OPTIONAL
+            ],                                      # OPTIONAL
             FilterTypedLink => {
               SchemaArn     => 'MyArn',
               TypedLinkName => 'MyTypedLinkName',
 
-            },                                       # OPTIONAL
-            MaxResults => 1,                         # min: 1, ; OPTIONAL
-            NextToken  => 'MyNextToken',             # OPTIONAL
+            },                                      # OPTIONAL
+            MaxResults => 1,                        # min: 1; OPTIONAL
+            NextToken  => 'MyNextToken',            # OPTIONAL
           },    # OPTIONAL
           ListIndex => {
             IndexReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
             },
-            MaxResults            => 1,                   # min: 1, ; OPTIONAL
+            MaxResults            => 1,                   # min: 1; OPTIONAL
             NextToken             => 'MyNextToken',       # OPTIONAL
             RangesOnIndexedValues => [
               {
                 AttributeKey => {
-                  FacetName => 'MyFacetName',        # min: 1, max: 64; OPTIONAL
-                  Name      => 'MyAttributeName',    # min: 1, max: 64; OPTIONAL
+                  FacetName => 'MyFacetName',       # min: 1, max: 64; OPTIONAL
+                  Name      => 'MyAttributeName',   # min: 1, max: 230; OPTIONAL
                   SchemaArn => 'MyArn',
 
                 },    # OPTIONAL
@@ -178,29 +178,36 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             FacetFilter => {
               FacetName => 'MyFacetName',    # min: 1, max: 64; OPTIONAL
               SchemaArn => 'MyArn',
-            },
-            MaxResults => 1,                 # min: 1, ; OPTIONAL
-            NextToken  => 'MyNextToken',     # OPTIONAL
+            },    # OPTIONAL
+            MaxResults => 1,                # min: 1; OPTIONAL
+            NextToken  => 'MyNextToken',    # OPTIONAL
           },    # OPTIONAL
           ListObjectChildren => {
             ObjectReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
             },
-            MaxResults => 1,                              # min: 1, ; OPTIONAL
+            MaxResults => 1,                              # min: 1; OPTIONAL
             NextToken  => 'MyNextToken',                  # OPTIONAL
           },    # OPTIONAL
           ListObjectParentPaths => {
             ObjectReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
             },
-            MaxResults => 1,                              # min: 1, ; OPTIONAL
+            MaxResults => 1,                              # min: 1; OPTIONAL
+            NextToken  => 'MyNextToken',                  # OPTIONAL
+          },    # OPTIONAL
+          ListObjectParents => {
+            ObjectReference => {
+              Selector => 'MySelectorObjectReference',    # OPTIONAL
+            },
+            MaxResults => 1,                              # min: 1; OPTIONAL
             NextToken  => 'MyNextToken',                  # OPTIONAL
           },    # OPTIONAL
           ListObjectPolicies => {
             ObjectReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
             },
-            MaxResults => 1,                              # min: 1, ; OPTIONAL
+            MaxResults => 1,                              # min: 1; OPTIONAL
             NextToken  => 'MyNextToken',                  # OPTIONAL
           },    # OPTIONAL
           ListOutgoingTypedLinks => {
@@ -229,30 +236,30 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     StringValue   => 'MyStringAttributeValue',      # OPTIONAL
                   },    # OPTIONAL
                 },
-                AttributeName => 'MyAttributeName',  # min: 1, max: 64; OPTIONAL
+                AttributeName => 'MyAttributeName', # min: 1, max: 230; OPTIONAL
               },
               ...
-            ],                                       # OPTIONAL
+            ],                                      # OPTIONAL
             FilterTypedLink => {
               SchemaArn     => 'MyArn',
               TypedLinkName => 'MyTypedLinkName',
 
-            },                                       # OPTIONAL
-            MaxResults => 1,                         # min: 1, ; OPTIONAL
-            NextToken  => 'MyNextToken',             # OPTIONAL
+            },                                      # OPTIONAL
+            MaxResults => 1,                        # min: 1; OPTIONAL
+            NextToken  => 'MyNextToken',            # OPTIONAL
           },    # OPTIONAL
           ListPolicyAttachments => {
             PolicyReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
             },
-            MaxResults => 1,                              # min: 1, ; OPTIONAL
+            MaxResults => 1,                              # min: 1; OPTIONAL
             NextToken  => 'MyNextToken',                  # OPTIONAL
           },    # OPTIONAL
           LookupPolicy => {
             ObjectReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
             },
-            MaxResults => 1,                              # min: 1, ; OPTIONAL
+            MaxResults => 1,                              # min: 1; OPTIONAL
             NextToken  => 'MyNextToken',                  # OPTIONAL
           },    # OPTIONAL
         },

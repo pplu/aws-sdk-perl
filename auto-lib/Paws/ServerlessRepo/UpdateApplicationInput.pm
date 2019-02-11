@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServerlessR
 
 =head1 DESCRIPTION
 
-Update application request.
+Update the application request.
 
 =head1 ATTRIBUTES
 
@@ -45,7 +45,7 @@ Update application request.
 
   The name of the author publishing the app.
 
-Min Length=1. Max Length=127.
+Minimum length=1. Maximum length=127.
 
 Pattern "^[a-z0-9](([a-z0-9]|-(?!-))*[a-z0-9])?$";
 
@@ -54,7 +54,7 @@ Pattern "^[a-z0-9](([a-z0-9]|-(?!-))*[a-z0-9])?$";
 
   The description of the application.
 
-Min Length=1. Max Length=256
+Minimum length=1. Maximum length=256
 
 
 =head2 HomePageUrl => Str
@@ -67,25 +67,25 @@ location of your GitHub repository for the application.
 
   Labels to improve discovery of apps in search results.
 
-Min Length=1. Max Length=127. Maximum number of labels: 10
+Minimum length=1. Maximum length=127. Maximum number of labels: 10
 
 Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
 
 
 =head2 ReadmeBody => Str
 
-  A raw text Readme file that contains a more detailed description of the
-application and how it works in markdown language.
+  A text readme file in Markdown language that contains a more detailed
+description of the application and how it works.
 
-Max size 5 MB
+Maximum size 5 MB
 
 
 =head2 ReadmeUrl => Str
 
-  A link to the Readme file that contains a more detailed description of
-the application and how it works in markdown language.
+  A link to the readme file in Markdown language that contains a more
+detailed description of the application and how it works.
 
-Max size 5 MB
+Maximum size 5 MB
 
 
 

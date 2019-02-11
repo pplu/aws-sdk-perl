@@ -40,8 +40,8 @@ The retry strategy associated with a job.
 
   The number of times to move a job to the C<RUNNABLE> status. You may
 specify between 1 and 10 attempts. If the value of C<attempts> is
-greater than one, the job is retried if it fails until it has moved to
-C<RUNNABLE> that many times.
+greater than one, the job is retried on failure the same number of
+attempts as the value.
 
 
 

@@ -42,13 +42,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 
 =head2 B<REQUIRED> DirectoryId => Str
 
-The ID of the directory.
+The identifier of the directory.
 
 
 
 =head2 B<REQUIRED> GroupIds => ArrayRef[Str|Undef]
 
-The IDs of one or more IP access control groups.
+The identifiers of one or more IP access control groups.
 
 
 

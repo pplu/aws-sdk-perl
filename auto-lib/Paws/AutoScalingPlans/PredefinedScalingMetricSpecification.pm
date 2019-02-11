@@ -32,7 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head1 DESCRIPTION
 
-Represents a predefined metric for a target tracking policy.
+Represents a predefined metric that can be used for dynamic scaling as
+part of a target tracking scaling policy.
 
 =head1 ATTRIBUTES
 
@@ -40,7 +41,7 @@ Represents a predefined metric for a target tracking policy.
 =head2 B<REQUIRED> PredefinedScalingMetricType => Str
 
   The metric type. The C<ALBRequestCountPerTarget> metric type applies
-only to Auto Scaling groups, Sport Fleet requests, and ECS services.
+only to Auto Scaling groups, Spot Fleet requests, and ECS services.
 
 
 =head2 ResourceLabel => Str
@@ -60,7 +61,7 @@ where:
 =item *
 
 app/E<lt>load-balancer-nameE<gt>/E<lt>load-balancer-idE<gt> is the
-final portion of the load balancer ARN
+final portion of the load balancer ARN.
 
 =item *
 

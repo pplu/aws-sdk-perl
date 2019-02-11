@@ -3,11 +3,13 @@ package Paws::MediaTailor::PutPlaybackConfigurationResponse;
   use Moose;
   has AdDecisionServerUrl => (is => 'ro', isa => 'Str');
   has CdnConfiguration => (is => 'ro', isa => 'Paws::MediaTailor::CdnConfiguration');
+  has DashConfiguration => (is => 'ro', isa => 'Paws::MediaTailor::DashConfiguration');
   has HlsConfiguration => (is => 'ro', isa => 'Paws::MediaTailor::HlsConfiguration');
   has Name => (is => 'ro', isa => 'Str');
   has PlaybackEndpointPrefix => (is => 'ro', isa => 'Str');
   has SessionInitializationEndpointPrefix => (is => 'ro', isa => 'Str');
   has SlateAdUrl => (is => 'ro', isa => 'Str');
+  has TranscodeProfileName => (is => 'ro', isa => 'Str');
   has VideoContentSourceUrl => (is => 'ro', isa => 'Str');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -36,6 +38,11 @@ maximum length is 25000 characters.
 
 The configuration for using a content delivery network (CDN), like
 Amazon CloudFront, for content and ad segment management.
+
+
+=head2 DashConfiguration => L<Paws::MediaTailor::DashConfiguration>
+
+The configuration object for DASH content.
 
 
 =head2 HlsConfiguration => L<Paws::MediaTailor::HlsConfiguration>
@@ -69,6 +76,14 @@ non-VPAID configurations. For VPAID, the slate is required because AWS
 Elemental MediaTailor provides it in the slots designated for dynamic
 ad content. The slate must be a high-quality asset that contains both
 audio and video.
+
+
+=head2 TranscodeProfileName => Str
+
+Associate this playbackConfiguration with a custom transcode profile,
+overriding MediaTailor's dynamic transcoding defaults. Do not include
+this field if you have not setup custom profiles with the MediaTailor
+service team.
 
 
 =head2 VideoContentSourceUrl => Str

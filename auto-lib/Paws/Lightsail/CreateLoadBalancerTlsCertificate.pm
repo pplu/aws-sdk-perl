@@ -5,6 +5,7 @@ package Paws::Lightsail::CreateLoadBalancerTlsCertificate;
   has CertificateDomainName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateDomainName' , required => 1);
   has CertificateName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateName' , required => 1);
   has LoadBalancerName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'loadBalancerName' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
@@ -36,6 +37,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CertificateName             => 'MyResourceName',
       LoadBalancerName            => 'MyResourceName',
       CertificateAlternativeNames => [ 'MyDomainName', ... ],    # OPTIONAL
+      Tags                        => [
+        {
+          Key   => 'MyTagKey',                                   # OPTIONAL
+          Value => 'MyTagValue',                                 # OPTIONAL
+        },
+        ...
+      ],                                                         # OPTIONAL
       );
 
     # Results:
@@ -81,6 +89,15 @@ information, see Limits
 
 The load balancer name where you want to create the SSL/TLS
 certificate.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::Lightsail::Tag>]
+
+The tag keys and optional values to add to the resource during create.
+
+To tag a resource after it has been created, see the C<tag resource>
+operation.
 
 
 

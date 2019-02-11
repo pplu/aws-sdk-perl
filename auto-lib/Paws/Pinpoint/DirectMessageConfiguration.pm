@@ -5,8 +5,10 @@ package Paws::Pinpoint::DirectMessageConfiguration;
   has BaiduMessage => (is => 'ro', isa => 'Paws::Pinpoint::BaiduMessage');
   has DefaultMessage => (is => 'ro', isa => 'Paws::Pinpoint::DefaultMessage');
   has DefaultPushNotificationMessage => (is => 'ro', isa => 'Paws::Pinpoint::DefaultPushNotificationMessage');
+  has EmailMessage => (is => 'ro', isa => 'Paws::Pinpoint::EmailMessage');
   has GCMMessage => (is => 'ro', isa => 'Paws::Pinpoint::GCMMessage');
   has SMSMessage => (is => 'ro', isa => 'Paws::Pinpoint::SMSMessage');
+  has VoiceMessage => (is => 'ro', isa => 'Paws::Pinpoint::VoiceMessage');
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +28,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Pinpoint::DirectMessageConfiguration object:
 
-  $service_obj->Method(Att1 => { ADMMessage => $value, ..., SMSMessage => $value  });
+  $service_obj->Method(Att1 => { ADMMessage => $value, ..., VoiceMessage => $value  });
 
 =head3 Results returned from an API call
 
@@ -37,7 +39,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::D
 
 =head1 DESCRIPTION
 
-The message configuration.
+Message definitions for the default message and any messages that are
+tailored for specific channels.
 
 =head1 ATTRIBUTES
 
@@ -70,6 +73,11 @@ notification message.
   The default push notification message for all push channels.
 
 
+=head2 EmailMessage => L<Paws::Pinpoint::EmailMessage>
+
+  The message to Email channels. Overrides the default message.
+
+
 =head2 GCMMessage => L<Paws::Pinpoint::GCMMessage>
 
   The message to GCM channels. Overrides the default push notification
@@ -79,6 +87,11 @@ message.
 =head2 SMSMessage => L<Paws::Pinpoint::SMSMessage>
 
   The message to SMS channels. Overrides the default message.
+
+
+=head2 VoiceMessage => L<Paws::Pinpoint::VoiceMessage>
+
+  The message to Voice channels. Overrides the default message.
 
 
 

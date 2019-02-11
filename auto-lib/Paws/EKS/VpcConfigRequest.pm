@@ -42,7 +42,8 @@ An object representing an Amazon EKS cluster VPC configuration request.
   Specify one or more security groups for the cross-account elastic
 network interfaces that Amazon EKS creates to use to allow
 communication between your worker nodes and the Kubernetes control
-plane.
+plane. If you do not specify a security group, the default security
+group for your VPC is used.
 
 
 =head2 B<REQUIRED> SubnetIds => ArrayRef[Str|Undef]

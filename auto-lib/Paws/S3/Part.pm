@@ -57,7 +57,7 @@ and 10,000.
 
 =head2 Size => Int
 
-  Size of the uploaded part data.
+  Size in bytes of the uploaded part data.
 
 
 

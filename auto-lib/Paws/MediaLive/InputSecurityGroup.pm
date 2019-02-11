@@ -4,6 +4,7 @@ package Paws::MediaLive::InputSecurityGroup;
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
   has Inputs => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'inputs', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', request_name => 'tags', traits => ['NameInRequest']);
   has WhitelistRules => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputWhitelistRule]', request_name => 'whitelistRules', traits => ['NameInRequest']);
 1;
 
@@ -58,6 +59,11 @@ An Input Security Group
 =head2 State => Str
 
   The current state of the Input Security Group.
+
+
+=head2 Tags => L<Paws::MediaLive::Tags>
+
+  A collection of key-value pairs.
 
 
 =head2 WhitelistRules => ArrayRef[L<Paws::MediaLive::InputWhitelistRule>]

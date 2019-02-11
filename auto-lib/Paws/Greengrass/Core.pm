@@ -46,7 +46,9 @@ Information about a core.
 
 =head2 Id => Str
 
-  The ID of the core.
+  A descriptive or arbitrary ID for the core. This value must be unique
+within the core definition version. Max length is 128 characters with
+pattern ''[a-zA-Z0-9:_-]+''.
 
 
 =head2 SyncShadow => Bool

@@ -35,7 +35,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head1 DESCRIPTION
 
-Represents a customized metric for a target tracking policy.
+Represents a CloudWatch metric of your choosing that can be used for
+dynamic scaling as part of a target tracking scaling policy.
+
+For information about terminology, see Amazon CloudWatch Concepts
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html).
 
 =head1 ATTRIBUTES
 

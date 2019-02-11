@@ -70,9 +70,9 @@ or false to use a key managed by Amazon S3. Optional.
 
 =head2 KMSKey => Str
 
-The Amazon Resource Name (ARN) of the KMS Key used for Amazon S3 server
-side encryption. This value can only be set when KMSEncrypted is true.
-Optional.
+The Amazon Resource Name (ARN) of the AWS KMS Key used for Amazon S3
+server side encryption. This value can only be set when KMSEncrypted is
+true. Optional.
 
 
 

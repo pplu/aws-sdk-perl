@@ -40,6 +40,8 @@ An object representing the network configuration for a task or service.
 
   The VPC subnets and security groups associated with a task.
 
+All specified subnets and security groups must be from the same VPC.
+
 
 
 =head1 SEE ALSO

@@ -49,6 +49,8 @@ This class has no description
 
   The number of modified Reserved Instances.
 
+This is a required field for a request.
+
 
 =head2 InstanceType => Str
 

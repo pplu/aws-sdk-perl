@@ -1,6 +1,7 @@
 package Paws::Pinpoint::WriteApplicationSettingsRequest;
   use Moose;
   has CampaignHook => (is => 'ro', isa => 'Paws::Pinpoint::CampaignHook');
+  has CloudWatchMetricsEnabled => (is => 'ro', isa => 'Bool');
   has Limits => (is => 'ro', isa => 'Paws::Pinpoint::CampaignLimits');
   has QuietTime => (is => 'ro', isa => 'Paws::Pinpoint::QuietTime');
 1;
@@ -43,18 +44,36 @@ Creating application setting request
   Default campaign hook information.
 
 
+=head2 CloudWatchMetricsEnabled => Bool
+
+  The CloudWatchMetrics settings for the app.
+
+
 =head2 Limits => L<Paws::Pinpoint::CampaignLimits>
 
-  The default campaign limits for the app. These limits apply to each
-campaign for the app, unless the campaign overrides the default with
-limits of its own.
+  The limits that apply to each campaign in the project by default.
+Campaigns can also have their own limits, which override the settings
+at the project level.
 
 
 =head2 QuietTime => L<Paws::Pinpoint::QuietTime>
 
-  The default quiet time for the app. Each campaign for this app sends no
-messages during this time unless the campaign overrides the default
-with a quiet time of its own.
+  The default quiet time for the app. Campaigns in the app don't send
+messages to endpoints during the quiet time. Note: Make sure that your
+endpoints include the Demographics.Timezone attribute if you plan to
+enable a quiet time for your app. If your endpoints don't include this
+attribute, they'll receive the messages that you send them, even if
+quiet time is enabled. When you set up an app to use quiet time,
+campaigns in that app don't send messages during the time range you
+specified, as long as all of the following are true: - The endpoint
+includes a valid Demographic.Timezone attribute. - The current time in
+the endpoint's time zone is later than or equal to the time specified
+in the QuietTime.Start attribute for the app (or campaign, if
+applicable). - The current time in the endpoint's time zone is earlier
+than or equal to the time specified in the QuietTime.End attribute for
+the app (or campaign, if applicable). Individual campaigns within the
+app can have their own quiet time settings, which override the quiet
+time settings at the app level.
 
 
 

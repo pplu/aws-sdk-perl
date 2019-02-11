@@ -1,6 +1,7 @@
 package Paws::Budgets::Notification;
   use Moose;
   has ComparisonOperator => (is => 'ro', isa => 'Str', required => 1);
+  has NotificationState => (is => 'ro', isa => 'Str');
   has NotificationType => (is => 'ro', isa => 'Str', required => 1);
   has Threshold => (is => 'ro', isa => 'Num', required => 1);
   has ThresholdType => (is => 'ro', isa => 'Str');
@@ -34,11 +35,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Budgets::No
 
 =head1 DESCRIPTION
 
-A notification associated with a budget. A budget can have up to five
-notifications.
+A notification that is associated with a budget. A budget can have up
+to five notifications.
 
 Each notification must have at least one subscriber. A notification can
-have one SNS subscriber and up to ten email subscribers, for a total of
+have one SNS subscriber and up to 10 email subscribers, for a total of
 11 subscribers.
 
 For example, if you have a budget for 200 dollars and you want to be
@@ -53,11 +54,15 @@ A notificationType of C<ACTUAL>
 
 =item *
 
-A comparisonOperator of C<GREATER_THAN>
+A C<thresholdType> of C<PERCENTAGE>
 
 =item *
 
-A notification threshold of C<80>
+A C<comparisonOperator> of C<GREATER_THAN>
+
+=item *
+
+A notification C<threshold> of C<80>
 
 =back
 
@@ -67,27 +72,36 @@ A notification threshold of C<80>
 
 =head2 B<REQUIRED> ComparisonOperator => Str
 
-  The comparison used for this notification.
+  The comparison that is used for this notification.
+
+
+=head2 NotificationState => Str
+
+  Whether this notification is in alarm. If a budget notification is in
+the C<ALARM> state, you have passed the set threshold for the budget.
 
 
 =head2 B<REQUIRED> NotificationType => Str
 
   Whether the notification is for how much you have spent (C<ACTUAL>) or
-for how much you are forecasted to spend (C<FORECASTED>).
+for how much you're forecasted to spend (C<FORECASTED>).
 
 
 =head2 B<REQUIRED> Threshold => Num
 
-  The threshold associated with a notification. Thresholds are always a
-percentage.
+  The threshold that is associated with a notification. Thresholds are
+always a percentage.
 
 
 =head2 ThresholdType => Str
 
-  The type of threshold for a notification. For C<ACTUAL> thresholds, AWS
-notifies you when you go over the threshold, and for C<FORECASTED>
-thresholds AWS notifies you when you are forecasted to go over the
-threshold.
+  The type of threshold for a notification. For C<ABSOLUTE_VALUE>
+thresholds, AWS notifies you when you go over or are forecasted to go
+over your total cost threshold. For C<PERCENTAGE> thresholds, AWS
+notifies you when you go over or are forecasted to go over a certain
+percentage of your forecasted spend. For example, if you have a budget
+for 200 dollars and you have a C<PERCENTAGE> threshold of 80%, AWS
+notifies you when you go over 160 dollars.
 
 
 

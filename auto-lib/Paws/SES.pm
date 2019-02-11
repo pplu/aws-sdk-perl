@@ -365,6 +365,29 @@ package Paws::SES;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllConfigurationSets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListConfigurationSets(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListConfigurationSets(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ConfigurationSets }, @{ $next_result->ConfigurationSets };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ConfigurationSets') foreach (@{ $result->ConfigurationSets });
+        $result = $self->ListConfigurationSets(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ConfigurationSets') foreach (@{ $result->ConfigurationSets });
+    }
+
+    return undef
+  }
   sub ListAllCustomVerificationEmailTemplates {
     my $self = shift;
 
@@ -407,6 +430,52 @@ package Paws::SES;
         $result = $self->ListIdentities(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'Identities') foreach (@{ $result->Identities });
+    }
+
+    return undef
+  }
+  sub ListAllReceiptRuleSets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListReceiptRuleSets(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListReceiptRuleSets(@_, NextToken => $next_result->NextToken);
+        push @{ $result->RuleSets }, @{ $next_result->RuleSets };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'RuleSets') foreach (@{ $result->RuleSets });
+        $result = $self->ListReceiptRuleSets(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'RuleSets') foreach (@{ $result->RuleSets });
+    }
+
+    return undef
+  }
+  sub ListAllTemplates {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTemplates(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTemplates(@_, NextToken => $next_result->NextToken);
+        push @{ $result->TemplatesMetadata }, @{ $next_result->TemplatesMetadata };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'TemplatesMetadata') foreach (@{ $result->TemplatesMetadata });
+        $result = $self->ListTemplates(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'TemplatesMetadata') foreach (@{ $result->TemplatesMetadata });
     }
 
     return undef
@@ -455,7 +524,7 @@ Regions and Amazon SES
 the Amazon SES Developer Guide
 (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html).
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/ses/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/ses/>
 
 
 =head1 METHODS
@@ -1639,8 +1708,7 @@ in the I<Amazon SES Developer Guide.>
 
 =item *
 
-The total size of the message, including attachments, must be less than
-10 MB.
+The maximum message size is 10 MB.
 
 =item *
 
@@ -1650,6 +1718,19 @@ a BCC: address. If a recipient email address is invalid (that is, it is
 not in the format I<UserName@[SubDomain.]Domain.TopLevelDomain>), the
 entire message will be rejected, even if the message contains other
 recipients that are valid.
+
+=item *
+
+The message may not include more than 50 recipients, across the To:,
+CC: and BCC: fields. If you need to send an email message to a larger
+audience, you can divide your recipient list into groups of 50 or
+fewer, and then call the C<SendBulkTemplatedEmail> operation several
+times to send the message to each group.
+
+=item *
+
+The number of destinations you can contact in a single call to the API
+may be limited by your account's maximum sending rate.
 
 =back
 
@@ -1739,8 +1820,7 @@ in the I<Amazon SES Developer Guide.>
 
 =item *
 
-The total size of the message, including attachments, must be smaller
-than 10 MB.
+The maximum message size is 10 MB.
 
 =item *
 
@@ -1797,63 +1877,71 @@ Each argument is described in detail in: L<Paws::SES::SendRawEmail>
 
 Returns: a L<Paws::SES::SendRawEmailResponse> instance
 
-Composes an email message and immediately queues it for sending. When
-calling this operation, you may specify the message headers as well as
-the content. The C<SendRawEmail> operation is particularly useful for
-sending multipart MIME emails (such as those that contain both a
-plain-text and an HTML version).
+Composes an email message and immediately queues it for sending.
 
-In order to send email using the C<SendRawEmail> operation, your
-message must meet the following requirements:
+This operation is more flexible than the C<SendEmail> API operation.
+When you use the C<SendRawEmail> operation, you can specify the headers
+of the message as well as its content. This flexibility is useful, for
+example, when you want to send a multipart MIME email (such a message
+that contains both a text and an HTML version). You can also use this
+operation to send messages that include attachments.
+
+The C<SendRawEmail> operation has the following requirements:
 
 =over
 
 =item *
 
-The message must be sent from a verified email address or domain. If
-you attempt to send email using a non-verified address or domain, the
-operation will result in an "Email address not verified" error.
+You can only send email from verified email addresses or domains
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html).
+If you try to send email from an address that isn't verified, the
+operation results in an "Email address not verified" error.
 
 =item *
 
-If your account is still in the Amazon SES sandbox, you may only send
-to verified addresses or domains, or to email addresses associated with
-the Amazon SES Mailbox Simulator. For more information, see Verifying
-Email Addresses and Domains
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html)
-in the I<Amazon SES Developer Guide.>
+If your account is still in the Amazon SES sandbox
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/request-production-access.html),
+you can only send email to other verified addresses in your account, or
+to addresses that are associated with the Amazon SES mailbox simulator
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mailbox-simulator.html).
 
 =item *
 
-The total size of the message, including attachments, must be smaller
-than 10 MB.
+The maximum message size, including attachments, is 10 MB.
 
 =item *
 
-The message must include at least one recipient email address. The
-recipient address can be a To: address, a CC: address, or a BCC:
-address. If a recipient email address is invalid (that is, it is not in
-the format I<UserName@[SubDomain.]Domain.TopLevelDomain>), the entire
-message will be rejected, even if the message contains other recipients
-that are valid.
+Each message has to include at least one recipient address. A recipient
+address includes any address on the To:, CC:, or BCC: lines.
 
 =item *
 
-The message may not include more than 50 recipients, across the To:,
-CC: and BCC: fields. If you need to send an email message to a larger
-audience, you can divide your recipient list into groups of 50 or
-fewer, and then call the C<SendRawEmail> operation several times to
-send the message to each group.
+If you send a single message to more than one recipient address, and
+one of the recipient addresses isn't in a valid format (that is, it's
+not in the format I<UserName@[SubDomain.]Domain.TopLevelDomain>),
+Amazon SES rejects the entire message, even if the other addresses are
+valid.
+
+=item *
+
+Each message can include up to 50 recipient addresses across the To:,
+CC:, or BCC: lines. If you need to send a single message to more than
+50 recipients, you have to split the list of recipient addresses into
+groups of less than 50 recipients, and send separate messages to each
+group.
+
+=item *
+
+Amazon SES allows you to specify 8-bit Content-Transfer-Encoding for
+MIME message parts. However, if Amazon SES has to modify the contents
+of your message (for example, if you use open and click tracking),
+8-bit content isn't preserved. For this reason, we highly recommend
+that you encode all content that isn't 7-bit ASCII. For more
+information, see MIME Encoding
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html#send-email-mime-encoding)
+in the I<Amazon SES Developer Guide>.
 
 =back
-
-For every message that you send, the total number of recipients
-(including each recipient in the To:, CC: and BCC: fields) is counted
-against the maximum number of emails you can send in a 24-hour period
-(your I<sending quota>). For more information about sending quotas in
-Amazon SES, see Managing Your Amazon SES Sending Limits
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html)
-in the I<Amazon SES Developer Guide.>
 
 Additionally, keep the following considerations in mind when using the
 C<SendRawEmail> operation:
@@ -1904,6 +1992,16 @@ From and Return Path addresses to the identity specified in
 C<SourceIdentityArn>. For more information about sending authorization,
 see the Using Sending Authorization with Amazon SES
 (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html)
+in the I<Amazon SES Developer Guide.>
+
+=item *
+
+For every message that you send, the total number of recipients
+(including each recipient in the To:, CC: and BCC: fields) is counted
+against the maximum number of emails you can send in a 24-hour period
+(your I<sending quota>). For more information about sending quotas in
+Amazon SES, see Managing Your Amazon SES Sending Limits
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html)
 in the I<Amazon SES Developer Guide.>
 
 =back
@@ -1971,8 +2069,7 @@ in the I<Amazon SES Developer Guide.>
 
 =item *
 
-The total size of the message, including attachments, must be less than
-10 MB.
+The maximum message size is 10 MB.
 
 =item *
 
@@ -2181,14 +2278,13 @@ Each argument is described in detail in: L<Paws::SES::SetIdentityNotificationTop
 
 Returns: a L<Paws::SES::SetIdentityNotificationTopicResponse> instance
 
-Given an identity (an email address or a domain), sets the Amazon
-Simple Notification Service (Amazon SNS) topic to which Amazon SES will
-publish bounce, complaint, and/or delivery notifications for emails
-sent with that identity as the C<Source>.
-
-Unless feedback forwarding is enabled, you must specify Amazon SNS
-topics for bounce and complaint notifications. For more information,
-see C<SetIdentityFeedbackForwardingEnabled>.
+Sets an Amazon Simple Notification Service (Amazon SNS) topic to use
+when delivering notifications. When you use this operation, you specify
+a verified identity, such as an email address or domain. When you send
+an email that uses the chosen identity in the Source field, Amazon SES
+sends notifications to the topic you specified. You can send bounce,
+complaint, or delivery notifications (or any combination of the three)
+to the Amazon SNS topic that you specify.
 
 You can execute this operation no more than once per second.
 
@@ -2548,6 +2644,18 @@ You can execute this operation no more than once per second.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
+=head2 ListAllConfigurationSets(sub { },[MaxItems => Int, NextToken => Str])
+
+=head2 ListAllConfigurationSets([MaxItems => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ConfigurationSets, passing the object as the first parameter, and the string 'ConfigurationSets' as the second parameter 
+
+If not, it will return a a L<Paws::SES::ListConfigurationSetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllCustomVerificationEmailTemplates(sub { },[MaxResults => Int, NextToken => Str])
 
 =head2 ListAllCustomVerificationEmailTemplates([MaxResults => Int, NextToken => Str])
@@ -2570,6 +2678,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Identities, passing the object as the first parameter, and the string 'Identities' as the second parameter 
 
 If not, it will return a a L<Paws::SES::ListIdentitiesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllReceiptRuleSets(sub { },[NextToken => Str])
+
+=head2 ListAllReceiptRuleSets([NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - RuleSets, passing the object as the first parameter, and the string 'RuleSets' as the second parameter 
+
+If not, it will return a a L<Paws::SES::ListReceiptRuleSetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTemplates(sub { },[MaxItems => Int, NextToken => Str])
+
+=head2 ListAllTemplates([MaxItems => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TemplatesMetadata, passing the object as the first parameter, and the string 'TemplatesMetadata' as the second parameter 
+
+If not, it will return a a L<Paws::SES::ListTemplatesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

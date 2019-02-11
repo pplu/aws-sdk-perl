@@ -2,6 +2,7 @@
 package Paws::IoT::CreateThing;
   use Moose;
   has AttributePayload => (is => 'ro', isa => 'Paws::IoT::AttributePayload', traits => ['NameInRequest'], request_name => 'attributePayload');
+  has BillingGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'billingGroupName');
   has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName', required => 1);
   has ThingTypeName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingTypeName');
 
@@ -33,13 +34,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateThingResponse = $iot->CreateThing(
       ThingName        => 'MyThingName',
       AttributePayload => {
-        attributes => {
+        Attributes => {
           'MyAttributeName' =>
             'MyAttributeValue',    # key: max: 128, value: max: 800
         },    # OPTIONAL
-        merge => 1,    # OPTIONAL
+        Merge => 1,    # OPTIONAL
       },    # OPTIONAL
-      ThingTypeName => 'MyThingTypeName',    # OPTIONAL
+      BillingGroupName => 'MyBillingGroupName',    # OPTIONAL
+      ThingTypeName    => 'MyThingTypeName',       # OPTIONAL
     );
 
     # Results:
@@ -61,6 +63,12 @@ The attribute payload, which consists of up to three name/value pairs
 in a JSON document. For example:
 
 C<{\"attributes\":{\"string1\":\"string2\"}}>
+
+
+
+=head2 BillingGroupName => Str
+
+The name of the billing group the thing will be added to.
 
 
 

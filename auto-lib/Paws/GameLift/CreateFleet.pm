@@ -76,7 +76,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           1,    # min: 1, max: 2147483647; OPTIONAL
         ServerProcesses => [
           {
-            ConcurrentExecutions => 1,                       # min: 1,
+            ConcurrentExecutions => 1,                       # min: 1
             LaunchPath           => 'MyNonZeroAndMaxString', # min: 1, max: 1024
             Parameters           => 'MyNonZeroAndMaxString', # min: 1, max: 1024
           },
@@ -143,9 +143,9 @@ selected for this fleet. You can acquire on-demand instances at any
 time for a fixed price and keep them as long as you need them. Spot
 instances have lower prices, but spot pricing is variable, and while in
 use they can be interrupted (with a two-minute notification). Learn
-more about Amazon GameLift spot instances with at Choose Computing
-Resources
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-ec2-instances.html).
+more about Amazon GameLift spot instances with at Set up Access to
+External Services
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-credentials.html).
 
 Valid values are: C<"ON_DEMAND">, C<"SPOT">
 
@@ -156,17 +156,17 @@ GameLift should store log files once a server process shuts down, use
 the Amazon GameLift server API C<ProcessReady()> and specify one or
 more directory paths in C<logParameters>. See more information in the
 Server API Reference
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api-ref.html#gamelift-sdk-server-api-ref-dataypes-process).
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api-ref.html#gamelift-sdk-server-api-ref-dataypes-process).
 
 
 
 =head2 MetricGroups => ArrayRef[Str|Undef]
 
-Name of a metric group to add this fleet to. A metric group tracks
-metrics across all fleets in the group. Use an existing metric group
-name to add this fleet to the group, or use a new name to create a new
-metric group. A fleet can only be included in one metric group at a
-time.
+Name of an Amazon CloudWatch metric group to add this fleet to. A
+metric group aggregates the metrics for all fleets in the group.
+Specify an existing metric group name, or provide a new name to create
+a new metric group. A fleet can only be included in one metric group at
+a time.
 
 
 
@@ -215,9 +215,10 @@ the AWS Management Console under account settings.
 
 Unique identifier for a VPC with resources to be accessed by your
 Amazon GameLift fleet. The VPC must be in the same region where your
-fleet is deployed. To get VPC information, including IDs, use the
-Virtual Private Cloud service tools, including the VPC Dashboard in the
-AWS Management Console.
+fleet is deployed. Look up a VPC ID using the VPC Dashboard
+(https://console.aws.amazon.com/vpc/) in the AWS Management Console.
+Learn more about VPC peering in VPC Peering with Amazon GameLift Fleets
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
 
 
 

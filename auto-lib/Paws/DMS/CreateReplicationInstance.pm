@@ -4,6 +4,7 @@ package Paws::DMS::CreateReplicationInstance;
   has AllocatedStorage => (is => 'ro', isa => 'Int');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
+  has DnsNameServers => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has MultiAZ => (is => 'ro', isa => 'Bool');
@@ -45,6 +46,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AllocatedStorage                 => 1,             # OPTIONAL
       AutoMinorVersionUpgrade          => 1,             # OPTIONAL
       AvailabilityZone                 => 'MyString',    # OPTIONAL
+      DnsNameServers                   => 'MyString',    # OPTIONAL
       EngineVersion                    => 'MyString',    # OPTIONAL
       KmsKeyId                         => 'MyString',    # OPTIONAL
       MultiAZ                          => 1,             # OPTIONAL
@@ -101,6 +103,12 @@ Example: C<us-east-1d>
 
 
 
+=head2 DnsNameServers => Str
+
+A list of DNS name servers supported for the replication instance.
+
+
+
 =head2 EngineVersion => Str
 
 The engine version number of the replication instance.
@@ -109,11 +117,11 @@ The engine version number of the replication instance.
 
 =head2 KmsKeyId => Str
 
-The KMS key identifier that will be used to encrypt the content on the
-replication instance. If you do not specify a value for the KmsKeyId
-parameter, then AWS DMS will use your default encryption key. AWS KMS
+The AWS KMS key identifier that is used to encrypt the content on the
+replication instance. If you don't specify a value for the C<KmsKeyId>
+parameter, then AWS DMS uses your default encryption key. AWS KMS
 creates the default encryption key for your AWS account. Your AWS
-account has a different default encryption key for each AWS region.
+account has a different default encryption key for each AWS Region.
 
 
 

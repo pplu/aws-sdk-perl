@@ -1,6 +1,8 @@
 package Paws::MediaConvert::Job;
   use Moose;
+  has AccelerationSettings => (is => 'ro', isa => 'Paws::MediaConvert::AccelerationSettings', request_name => 'accelerationSettings', traits => ['NameInRequest']);
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has BillingTagsSource => (is => 'ro', isa => 'Str', request_name => 'billingTagsSource', traits => ['NameInRequest']);
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
   has ErrorCode => (is => 'ro', isa => 'Int', request_name => 'errorCode', traits => ['NameInRequest']);
   has ErrorMessage => (is => 'ro', isa => 'Str', request_name => 'errorMessage', traits => ['NameInRequest']);
@@ -32,14 +34,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConvert::Job object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., UserMetadata => $value  });
+  $service_obj->Method(Att1 => { AccelerationSettings => $value, ..., UserMetadata => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConvert::Job object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Arn
+  $result->Att1->AccelerationSettings
 
 =head1 DESCRIPTION
 
@@ -50,9 +52,19 @@ http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 =head1 ATTRIBUTES
 
 
+=head2 AccelerationSettings => L<Paws::MediaConvert::AccelerationSettings>
+
+  Acceleration settings for job execution.
+
+
 =head2 Arn => Str
 
   An identifier for this resource that is unique within all of AWS.
+
+
+=head2 BillingTagsSource => Str
+
+  
 
 
 =head2 CreatedAt => Str

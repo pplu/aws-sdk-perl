@@ -171,10 +171,10 @@ EC2-VPC, the source security group must be in the same VPC.
 
 =head2 SourceSecurityGroupOwnerId => Str
 
-[EC2-Classic] The AWS account ID for the source security group, if the
-source security group is in a different account. You can't specify this
-parameter in combination with the following parameters: the CIDR IP
-address range, the IP protocol, the start of the port range, and the
+[nondefault VPC] The AWS account ID for the source security group, if
+the source security group is in a different account. You can't specify
+this parameter in combination with the following parameters: the CIDR
+IP address range, the IP protocol, the start of the port range, and the
 end of the port range. Creates rules that grant full ICMP, UDP, and TCP
 access. To create a rule with a specific IP protocol and port range,
 use a set of IP permissions instead.

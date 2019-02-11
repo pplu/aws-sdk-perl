@@ -43,8 +43,6 @@ Pending and terminating counts are non-zero only if fleet capacity is
 adjusting to an UpdateFleetCapacity request, or if access to resources
 is temporarily affected.
 
-Fleet-related operations include:
-
 =over
 
 =item *

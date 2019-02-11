@@ -56,7 +56,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 B<REQUIRED> EgressOnlyInternetGatewayId => Str
 
-The ID of the egress-only Internet gateway.
+The ID of the egress-only internet gateway.
 
 
 

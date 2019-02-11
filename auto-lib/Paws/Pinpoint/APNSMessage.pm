@@ -73,8 +73,7 @@ not changed. To remove the badge, set the value of this key to 0.
 
 =head2 Body => Str
 
-  The message body of the notification, the email body or the text
-message.
+  The message body of the notification.
 
 
 =head2 Category => Str
@@ -101,7 +100,8 @@ notifications' data.pinpoint.jsonBody' object
 
 =head2 MediaUrl => Str
 
-  The URL that points to a video used in the push notification.
+  A URL that refers to the location of an image or video that you want to
+display in the push notification.
 
 
 =head2 PreferredAuthenticationMethod => Str

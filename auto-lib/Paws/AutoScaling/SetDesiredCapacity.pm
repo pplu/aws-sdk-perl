@@ -36,7 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       {
         'AutoScalingGroupName' => 'my-auto-scaling-group',
         'DesiredCapacity'      => 2,
-        'HonorCooldown'        => true
+        'HonorCooldown'        => 1
       }
     );
 
@@ -62,10 +62,10 @@ group.
 
 =head2 HonorCooldown => Bool
 
-Indicates whether Auto Scaling waits for the cooldown period to
-complete before initiating a scaling activity to set your Auto Scaling
-group to its new capacity. By default, Auto Scaling does not honor the
-cooldown period during manual scaling activities.
+Indicates whether Amazon EC2 Auto Scaling waits for the cooldown period
+to complete before initiating a scaling activity to set your Auto
+Scaling group to its new capacity. By default, Amazon EC2 Auto Scaling
+does not honor the cooldown period during manual scaling activities.
 
 
 

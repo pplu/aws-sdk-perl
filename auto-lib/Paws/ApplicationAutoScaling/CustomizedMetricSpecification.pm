@@ -35,7 +35,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Application
 
 =head1 DESCRIPTION
 
-Configures a customized metric for a target tracking policy.
+Configures a customized metric for a target tracking policy to use with
+Application Auto Scaling.
+
+For information about terminology, see Amazon CloudWatch Concepts
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html).
 
 =head1 ATTRIBUTES
 

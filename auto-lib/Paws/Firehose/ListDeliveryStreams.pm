@@ -73,7 +73,10 @@ Valid values are: C<"DirectPut">, C<"KinesisStreamAsSource">
 
 =head2 ExclusiveStartDeliveryStreamName => Str
 
-The name of the delivery stream to start the list with.
+The list of delivery streams returned by this call to
+C<ListDeliveryStreams> will start with the delivery stream whose name
+comes alphabetically immediately after the name you specify in
+C<ExclusiveStartDeliveryStreamName>.
 
 
 

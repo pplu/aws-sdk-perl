@@ -532,20 +532,7 @@ Valid Values: 0 - 15
 
 =head2 PubliclyAccessible => Bool
 
-Boolean value that indicates if the DB instance has a publicly
-resolvable DNS name. Set to C<True> to make the DB instance
-Internet-facing with a publicly resolvable DNS name, which resolves to
-a public IP address. Set to C<False> to make the DB instance internal
-with a DNS name that resolves to a private IP address.
-
-The DB instance must be part of a public subnet and
-C<PubliclyAccessible> must be true in order for it to be publicly
-accessible.
-
-Changes to the C<PubliclyAccessible> parameter are applied immediately
-regardless of the value of the C<ApplyImmediately> parameter.
-
-Default: false
+This parameter is not supported.
 
 
 

@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example creates an event notification subscription.
     my $CreateEventSubscriptionResult = $rds->CreateEventSubscription(
       {
-        'Enabled'         => true,
+        'Enabled'         => 1,
         'EventCategories' => ['availability'],
         'SnsTopicArn' => 'arn:aws:sns:us-east-1:992648334831:MyDemoSNSTopic',
         'SourceIds'   => ['mymysqlinstance'],
@@ -66,7 +66,7 @@ A list of event categories for a SourceType that you want to subscribe
 to. You can see a list of the categories for a given SourceType in the
 Events
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html)
-topic in the Amazon RDS User Guide or by using the
+topic in the I<Amazon RDS User Guide> or by using the
 B<DescribeEventCategories> action.
 
 

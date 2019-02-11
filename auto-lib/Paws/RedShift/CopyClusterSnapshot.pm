@@ -1,6 +1,7 @@
 
 package Paws::RedShift::CopyClusterSnapshot;
   use Moose;
+  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has SourceSnapshotClusterIdentifier => (is => 'ro', isa => 'Str');
   has SourceSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has TargetSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
@@ -32,6 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CopyClusterSnapshotResult = $redshift->CopyClusterSnapshot(
       SourceSnapshotIdentifier        => 'MyString',
       TargetSnapshotIdentifier        => 'MyString',
+      ManualSnapshotRetentionPeriod   => 1,             # OPTIONAL
       SourceSnapshotClusterIdentifier => 'MyString',    # OPTIONAL
     );
 
@@ -44,6 +46,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/redshift/CopyClusterSnapshot>
 
 =head1 ATTRIBUTES
+
+
+=head2 ManualSnapshotRetentionPeriod => Int
+
+The number of days that a manual snapshot is retained. If the value is
+-1, the manual snapshot is retained indefinitely.
+
+The value must be either -1 or an integer between 1 and 3,653.
+
+The default value is -1.
+
 
 
 =head2 SourceSnapshotClusterIdentifier => Str

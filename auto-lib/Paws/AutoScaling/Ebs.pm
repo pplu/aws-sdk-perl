@@ -92,8 +92,6 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 Valid values: C<standard> | C<io1> | C<gp2>
 
-Default: C<standard>
-
 
 
 =head1 SEE ALSO

@@ -59,7 +59,7 @@ The name of a specific cache parameter group family to return details
 for.
 
 Valid values are: C<memcached1.4> | C<redis2.6> | C<redis2.8> |
-C<redis3.2>
+C<redis3.2> | C<redis4.0>
 
 Constraints:
 

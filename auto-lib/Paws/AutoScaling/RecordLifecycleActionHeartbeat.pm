@@ -64,8 +64,9 @@ The ID of the instance.
 =head2 LifecycleActionToken => Str
 
 A token that uniquely identifies a specific lifecycle action associated
-with an instance. Auto Scaling sends this token to the notification
-target you specified when you created the lifecycle hook.
+with an instance. Amazon EC2 Auto Scaling sends this token to the
+notification target that you specified when you created the lifecycle
+hook.
 
 
 

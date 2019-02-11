@@ -51,7 +51,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam
 
 The name of the group to create. Do not include the path in this value.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
 also include any of the following characters: _+=,.@-. The group name
@@ -71,7 +71,7 @@ in the I<IAM User Guide>.
 This parameter is optional. If it is not included, it defaults to a
 slash (/).
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 either a forward slash (/) by itself or a string that must begin and
 end with forward slashes. In addition, it can contain any ASCII

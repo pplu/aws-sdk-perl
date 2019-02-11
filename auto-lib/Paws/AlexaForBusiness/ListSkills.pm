@@ -1,9 +1,11 @@
 
 package Paws::AlexaForBusiness::ListSkills;
   use Moose;
+  has EnablementType => (is => 'ro', isa => 'Str');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
   has SkillGroupArn => (is => 'ro', isa => 'Str');
+  has SkillType => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -30,9 +32,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $a4b = Paws->service('AlexaForBusiness');
     my $ListSkillsResponse = $a4b->ListSkills(
-      MaxResults    => 1,                # OPTIONAL
-      NextToken     => 'MyNextToken',    # OPTIONAL
-      SkillGroupArn => 'MyArn',          # OPTIONAL
+      EnablementType => 'ENABLED',        # OPTIONAL
+      MaxResults     => 1,                # OPTIONAL
+      NextToken      => 'MyNextToken',    # OPTIONAL
+      SkillGroupArn  => 'MyArn',          # OPTIONAL
+      SkillType      => 'PUBLIC',         # OPTIONAL
     );
 
     # Results:
@@ -42,17 +46,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::AlexaForBusiness::ListSkillsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/a4b/ListSkills>
 
 =head1 ATTRIBUTES
 
+
+=head2 EnablementType => Str
+
+Whether the skill is enabled under the user's account, or if it
+requires linking to be used.
+
+Valid values are: C<"ENABLED">, C<"PENDING">
 
 =head2 MaxResults => Int
 
 The maximum number of results to include in the response. If more
 results exist than the specified C<MaxResults> value, a token is
 included in the response so that the remaining results can be
-retrieved. Required.
+retrieved.
 
 
 
@@ -61,15 +72,21 @@ retrieved. Required.
 An optional token returned from a prior request. Use this token for
 pagination of results from this action. If this parameter is specified,
 the response includes only results beyond the token, up to the value
-specified by C<MaxResults>. Required.
+specified by C<MaxResults>.
 
 
 
 =head2 SkillGroupArn => Str
 
-The ARN of the skill group for which to list enabled skills. Required.
+The ARN of the skill group for which to list enabled skills.
 
 
+
+=head2 SkillType => Str
+
+Whether the skill is publicly available or is a private skill.
+
+Valid values are: C<"PUBLIC">, C<"PRIVATE">, C<"ALL">
 
 
 =head1 SEE ALSO

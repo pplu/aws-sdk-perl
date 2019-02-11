@@ -30,7 +30,7 @@ maximum page size.
 
 =head2 Total => L<Paws::CostExplorer::Coverage>
 
-The total amount of instance usage that is covered by a reservation.
+The total amount of instance usage that a reservation covered.
 
 
 =head2 _request_id => Str

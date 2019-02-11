@@ -158,7 +158,10 @@ Valid values are: C<"ENABLED">, C<"DISABLED">
 
 =head2 B<REQUIRED> Type => Str
 
-The type of the compute environment.
+The type of the compute environment. For more information, see Compute
+Environments
+(http://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html)
+in the I<AWS Batch User Guide>.
 
 Valid values are: C<"MANAGED">, C<"UNMANAGED">
 

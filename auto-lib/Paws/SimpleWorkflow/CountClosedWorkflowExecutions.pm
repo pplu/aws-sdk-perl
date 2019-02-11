@@ -36,29 +36,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $WorkflowExecutionCount = $swf->CountClosedWorkflowExecutions(
       Domain            => 'MyDomainName',
       CloseStatusFilter => {
-        status => 'COMPLETED'
+        Status => 'COMPLETED'
         , # values: COMPLETED, FAILED, CANCELED, TERMINATED, CONTINUED_AS_NEW, TIMED_OUT
 
       },    # OPTIONAL
       CloseTimeFilter => {
-        oldestDate => '1970-01-01T01:00:00',
-        latestDate => '1970-01-01T01:00:00',
+        OldestDate => '1970-01-01T01:00:00',
+        LatestDate => '1970-01-01T01:00:00',
       },    # OPTIONAL
       ExecutionFilter => {
-        workflowId => 'MyWorkflowId',    # min: 1, max: 256
+        WorkflowId => 'MyWorkflowId',    # min: 1, max: 256
 
       },    # OPTIONAL
       StartTimeFilter => {
-        oldestDate => '1970-01-01T01:00:00',
-        latestDate => '1970-01-01T01:00:00',
+        OldestDate => '1970-01-01T01:00:00',
+        LatestDate => '1970-01-01T01:00:00',
       },    # OPTIONAL
       TagFilter => {
-        tag => 'MyTag',    # max: 256
+        Tag => 'MyTag',    # max: 256
 
       },    # OPTIONAL
       TypeFilter => {
-        name    => 'MyName',               # min: 1, max: 256
-        version => 'MyVersionOptional',    # max: 64; OPTIONAL
+        Name    => 'MyName',               # min: 1, max: 256
+        Version => 'MyVersionOptional',    # max: 64; OPTIONAL
       },    # OPTIONAL
     );
 

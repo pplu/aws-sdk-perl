@@ -46,11 +46,11 @@ Details of the change set.
 
 =head2 B<REQUIRED> ChangeSetId => Str
 
-  The ARN of the change set.
+  The Amazon Resource Name (ARN) of the change set.
 
-Length Constraints: Minimum length of 1.
+Length constraints: Minimum length of 1.
 
-Pattern: Amazon Resource Name (ARN):[-a-zA-Z0-9:/]*
+Pattern: ARN:[-a-zA-Z0-9:/]*
 
 
 =head2 B<REQUIRED> SemanticVersion => Str

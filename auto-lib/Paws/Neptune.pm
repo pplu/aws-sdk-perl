@@ -318,6 +318,98 @@ package Paws::Neptune;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllDBClusterParameterGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBClusterParameterGroups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBClusterParameterGroups(@_, Marker => $next_result->Marker);
+        push @{ $result->DBClusterParameterGroups }, @{ $next_result->DBClusterParameterGroups };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'DBClusterParameterGroups') foreach (@{ $result->DBClusterParameterGroups });
+        $result = $self->DescribeDBClusterParameterGroups(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'DBClusterParameterGroups') foreach (@{ $result->DBClusterParameterGroups });
+    }
+
+    return undef
+  }
+  sub DescribeAllDBClusterParameters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBClusterParameters(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBClusterParameters(@_, Marker => $next_result->Marker);
+        push @{ $result->Parameters }, @{ $next_result->Parameters };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'Parameters') foreach (@{ $result->Parameters });
+        $result = $self->DescribeDBClusterParameters(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'Parameters') foreach (@{ $result->Parameters });
+    }
+
+    return undef
+  }
+  sub DescribeAllDBClusters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBClusters(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBClusters(@_, Marker => $next_result->Marker);
+        push @{ $result->DBClusters }, @{ $next_result->DBClusters };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'DBClusters') foreach (@{ $result->DBClusters });
+        $result = $self->DescribeDBClusters(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'DBClusters') foreach (@{ $result->DBClusters });
+    }
+
+    return undef
+  }
+  sub DescribeAllDBClusterSnapshots {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBClusterSnapshots(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBClusterSnapshots(@_, Marker => $next_result->Marker);
+        push @{ $result->DBClusterSnapshots }, @{ $next_result->DBClusterSnapshots };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'DBClusterSnapshots') foreach (@{ $result->DBClusterSnapshots });
+        $result = $self->DescribeDBClusterSnapshots(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'DBClusterSnapshots') foreach (@{ $result->DBClusterSnapshots });
+    }
+
+    return undef
+  }
   sub DescribeAllDBEngineVersions {
     my $self = shift;
 
@@ -521,6 +613,29 @@ package Paws::Neptune;
         $result = $self->DescribeOrderableDBInstanceOptions(@_, Marker => $result->Marker);
       }
       $callback->($_ => 'OrderableDBInstanceOptions') foreach (@{ $result->OrderableDBInstanceOptions });
+    }
+
+    return undef
+  }
+  sub DescribeAllPendingMaintenanceActions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribePendingMaintenanceActions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribePendingMaintenanceActions(@_, Marker => $next_result->Marker);
+        push @{ $result->PendingMaintenanceActions }, @{ $next_result->PendingMaintenanceActions };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'PendingMaintenanceActions') foreach (@{ $result->PendingMaintenanceActions });
+        $result = $self->DescribePendingMaintenanceActions(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'PendingMaintenanceActions') foreach (@{ $result->PendingMaintenanceActions });
     }
 
     return undef
@@ -2396,6 +2511,54 @@ completed and the DB cluster is available.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
+=head2 DescribeAllDBClusterParameterGroups(sub { },[DBClusterParameterGroupName => Str, Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllDBClusterParameterGroups([DBClusterParameterGroupName => Str, Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DBClusterParameterGroups, passing the object as the first parameter, and the string 'DBClusterParameterGroups' as the second parameter 
+
+If not, it will return a a L<Paws::Neptune::DBClusterParameterGroupsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllDBClusterParameters(sub { },DBClusterParameterGroupName => Str, [Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int, Source => Str])
+
+=head2 DescribeAllDBClusterParameters(DBClusterParameterGroupName => Str, [Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int, Source => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Parameters, passing the object as the first parameter, and the string 'Parameters' as the second parameter 
+
+If not, it will return a a L<Paws::Neptune::DBClusterParameterGroupDetails> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllDBClusters(sub { },[DBClusterIdentifier => Str, Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllDBClusters([DBClusterIdentifier => Str, Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DBClusters, passing the object as the first parameter, and the string 'DBClusters' as the second parameter 
+
+If not, it will return a a L<Paws::Neptune::DBClusterMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllDBClusterSnapshots(sub { },[DBClusterIdentifier => Str, DBClusterSnapshotIdentifier => Str, Filters => ArrayRef[L<Paws::Neptune::Filter>], IncludePublic => Bool, IncludeShared => Bool, Marker => Str, MaxRecords => Int, SnapshotType => Str])
+
+=head2 DescribeAllDBClusterSnapshots([DBClusterIdentifier => Str, DBClusterSnapshotIdentifier => Str, Filters => ArrayRef[L<Paws::Neptune::Filter>], IncludePublic => Bool, IncludeShared => Bool, Marker => Str, MaxRecords => Int, SnapshotType => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DBClusterSnapshots, passing the object as the first parameter, and the string 'DBClusterSnapshots' as the second parameter 
+
+If not, it will return a a L<Paws::Neptune::DBClusterSnapshotMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllDBEngineVersions(sub { },[DBParameterGroupFamily => Str, DefaultOnly => Bool, Engine => Str, EngineVersion => Str, Filters => ArrayRef[L<Paws::Neptune::Filter>], ListSupportedCharacterSets => Bool, ListSupportedTimezones => Bool, Marker => Str, MaxRecords => Int])
 
 =head2 DescribeAllDBEngineVersions([DBParameterGroupFamily => Str, DefaultOnly => Bool, Engine => Str, EngineVersion => Str, Filters => ArrayRef[L<Paws::Neptune::Filter>], ListSupportedCharacterSets => Bool, ListSupportedTimezones => Bool, Marker => Str, MaxRecords => Int])
@@ -2502,6 +2665,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - OrderableDBInstanceOptions, passing the object as the first parameter, and the string 'OrderableDBInstanceOptions' as the second parameter 
 
 If not, it will return a a L<Paws::Neptune::OrderableDBInstanceOptionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllPendingMaintenanceActions(sub { },[Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int, ResourceIdentifier => Str])
+
+=head2 DescribeAllPendingMaintenanceActions([Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int, ResourceIdentifier => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PendingMaintenanceActions, passing the object as the first parameter, and the string 'PendingMaintenanceActions' as the second parameter 
+
+If not, it will return a a L<Paws::Neptune::PendingMaintenanceActionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

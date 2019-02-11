@@ -44,7 +44,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 B<REQUIRED> DBSnapshotIdentifier => Str
 
-The DBSnapshot identifier.
+The DB snapshot identifier.
 
 Constraints: Must be the name of an existing DB snapshot in the
 C<available> state.

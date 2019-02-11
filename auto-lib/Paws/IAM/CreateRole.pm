@@ -5,7 +5,9 @@ package Paws::IAM::CreateRole;
   has Description => (is => 'ro', isa => 'Str');
   has MaxSessionDuration => (is => 'ro', isa => 'Int');
   has Path => (is => 'ro', isa => 'Str');
+  has PermissionsBoundary => (is => 'ro', isa => 'Str');
   has RoleName => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -121,7 +123,7 @@ in the I<IAM User Guide>.
 This parameter is optional. If it is not included, it defaults to a
 slash (/).
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 either a forward slash (/) by itself or a string that must begin and
 end with forward slashes. In addition, it can contain any ASCII
@@ -131,17 +133,38 @@ letters.
 
 
 
+=head2 PermissionsBoundary => Str
+
+The ARN of the policy that is used to set the permissions boundary for
+the role.
+
+
+
 =head2 B<REQUIRED> RoleName => Str
 
 The name of the role to create.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
 also include any of the following characters: _+=,.@-
 
 Role names are not distinguished by case. For example, you cannot
 create roles named both "PRODROLE" and "prodrole".
+
+
+
+=head2 Tags => ArrayRef[L<Paws::IAM::Tag>]
+
+A list of tags that you want to attach to the newly created role. Each
+tag consists of a key name and an associated value. For more
+information about tagging, see Tagging IAM Identities
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+I<IAM User Guide>.
+
+If any one of the tags is invalid or if you exceed the allowed number
+of tags per role, then the entire request fails and the role is not
+created.
 
 
 

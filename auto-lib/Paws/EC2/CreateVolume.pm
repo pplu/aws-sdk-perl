@@ -116,7 +116,7 @@ automatically encrypted. There is no way to create an encrypted volume
 from an unencrypted snapshot or vice versa. If your AMI uses encrypted
 volumes, you can only launch it on supported instance types. For more
 information, see Amazon EBS Encryption
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
@@ -124,10 +124,13 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 =head2 Iops => Int
 
 The number of I/O operations per second (IOPS) to provision for the
-volume, with a maximum ratio of 50 IOPS/GiB. Range is 100 to 32000 IOPS
-for volumes in most regions. For exceptions, see Amazon EBS Volume
-Types
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html).
+volume, with a maximum ratio of 50 IOPS/GiB. Range is 100 to 64,000
+IOPS for volumes in most regions. Maximum IOPS of 64,000 is guaranteed
+only on Nitro-based instances. Other instance families guarantee
+performance up to 32,000 IOPS. For more information, see Amazon EBS
+Volume Types
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 This parameter is valid only for Provisioned IOPS SSD (io1) volumes.
 
@@ -179,19 +182,23 @@ The action will eventually fail.
 
 The size of the volume, in GiBs.
 
-Constraints: 1-16384 for C<gp2>, 4-16384 for C<io1>, 500-16384 for
-C<st1>, 500-16384 for C<sc1>, and 1-1024 for C<standard>. If you
+Constraints: 1-16,384 for C<gp2>, 4-16,384 for C<io1>, 500-16,384 for
+C<st1>, 500-16,384 for C<sc1>, and 1-1,024 for C<standard>. If you
 specify a snapshot, the volume size must be equal to or larger than the
 snapshot size.
 
 Default: If you're creating the volume from a snapshot and don't
 specify a volume size, the default is the snapshot size.
 
+At least one of Size or SnapshotId are required.
+
 
 
 =head2 SnapshotId => Str
 
 The snapshot from which to create the volume.
+
+At least one of Size or SnapshotId are required.
 
 
 

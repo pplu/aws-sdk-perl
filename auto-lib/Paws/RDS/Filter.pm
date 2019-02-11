@@ -50,6 +50,10 @@ DescribeDBClusterBacktracks
 
 =item *
 
+DescribeDBClusterEndpoints
+
+=item *
+
 DescribeDBClusters
 
 =item *

@@ -48,8 +48,8 @@ stream on your behalf.
 =head2 B<REQUIRED> RoleARN => Str
 
   ARN of the IAM role that Amazon Kinesis Analytics can assume to access
-the stream on your behalf. You need to make sure the role has necessary
-permissions to access the stream.
+the stream on your behalf. You need to make sure that the role has the
+necessary permissions to access the stream.
 
 
 

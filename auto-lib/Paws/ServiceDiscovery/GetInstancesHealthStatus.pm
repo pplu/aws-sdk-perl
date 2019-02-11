@@ -22,7 +22,7 @@ Paws::ServiceDiscovery::GetInstancesHealthStatus - Arguments for method GetInsta
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method GetInstancesHealthStatus on the
-L<Amazon Route 53 Auto Naming|Paws::ServiceDiscovery> service. Use the attributes of this class
+L<AWS Cloud Map|Paws::ServiceDiscovery> service. Use the attributes of this class
 as arguments to method GetInstancesHealthStatus.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetInstancesHealthStatus.
@@ -57,7 +57,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ser
 An array that contains the IDs of all the instances that you want to
 get the health status for.
 
-If you omit C<Instances>, Amazon Route 53 returns the health status for
+If you omit C<Instances>, AWS Cloud Map returns the health status for
 all the instances that are associated with the specified service.
 
 To get the IDs for the instances that you've registered by using a
@@ -67,9 +67,10 @@ specified service, submit a ListInstances request.
 
 =head2 MaxResults => Int
 
-The maximum number of instances that you want Route 53 to return in the
-response to a C<GetInstancesHealthStatus> request. If you don't specify
-a value for C<MaxResults>, Route 53 returns up to 100 instances.
+The maximum number of instances that you want AWS Cloud Map to return
+in the response to a C<GetInstancesHealthStatus> request. If you don't
+specify a value for C<MaxResults>, AWS Cloud Map returns up to 100
+instances.
 
 
 

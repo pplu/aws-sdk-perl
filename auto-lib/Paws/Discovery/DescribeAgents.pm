@@ -32,11 +32,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $discovery = Paws->service('Discovery');
     my $DescribeAgentsResponse = $discovery->DescribeAgents(
       AgentIds => [ 'MyAgentId', ... ],    # OPTIONAL
-      Filters => [
+      Filters  => [
         {
-          condition => 'MyCondition',
-          name      => 'MyString',
-          values    => [ 'MyFilterValue', ... ],
+          Condition => 'MyCondition',
+          Name      => 'MyString',
+          Values    => [ 'MyFilterValue', ... ],
 
         },
         ...

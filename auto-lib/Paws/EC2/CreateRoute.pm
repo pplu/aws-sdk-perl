@@ -10,6 +10,7 @@ package Paws::EC2::CreateRoute;
   has NatGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'natGatewayId' );
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'networkInterfaceId' );
   has RouteTableId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'routeTableId' , required => 1);
+  has TransitGatewayId => (is => 'ro', isa => 'Str');
   has VpcPeeringConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'vpcPeeringConnectionId' );
 
   use MooseX::ClassAttribute;
@@ -80,13 +81,13 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 EgressOnlyInternetGatewayId => Str
 
-[IPv6 traffic only] The ID of an egress-only Internet gateway.
+[IPv6 traffic only] The ID of an egress-only internet gateway.
 
 
 
 =head2 GatewayId => Str
 
-The ID of an Internet gateway or virtual private gateway attached to
+The ID of an internet gateway or virtual private gateway attached to
 your VPC.
 
 
@@ -114,6 +115,12 @@ The ID of a network interface.
 =head2 B<REQUIRED> RouteTableId => Str
 
 The ID of the route table for the route.
+
+
+
+=head2 TransitGatewayId => Str
+
+The ID of a transit gateway.
 
 
 

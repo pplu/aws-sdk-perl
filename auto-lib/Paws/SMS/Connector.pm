@@ -1,7 +1,7 @@
 package Paws::SMS::Connector;
   use Moose;
   has AssociatedOn => (is => 'ro', isa => 'Str', request_name => 'associatedOn', traits => ['NameInRequest']);
-  has CapabilityList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'item', request_name => 'capabilityList', traits => ['NameInRequest','NameInRequest']);
+  has CapabilityList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'capabilityList', traits => ['NameInRequest']);
   has ConnectorId => (is => 'ro', isa => 'Str', request_name => 'connectorId', traits => ['NameInRequest']);
   has IpAddress => (is => 'ro', isa => 'Str', request_name => 'ipAddress', traits => ['NameInRequest']);
   has MacAddress => (is => 'ro', isa => 'Str', request_name => 'macAddress', traits => ['NameInRequest']);
@@ -40,59 +40,59 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SMS::Connec
 
 =head1 DESCRIPTION
 
-Object representing a Connector
+Represents a connector.
 
 =head1 ATTRIBUTES
 
 
 =head2 AssociatedOn => Str
 
-  
+  The time the connector was associated.
 
 
 =head2 CapabilityList => ArrayRef[Str|Undef]
 
-  
+  The capabilities of the connector.
 
 
 =head2 ConnectorId => Str
 
-  
+  The identifier of the connector.
 
 
 =head2 IpAddress => Str
 
-  
+  The IP address of the connector.
 
 
 =head2 MacAddress => Str
 
-  
+  The MAC address of the connector.
 
 
 =head2 Status => Str
 
-  
+  The status of the connector.
 
 
 =head2 Version => Str
 
-  
+  The connector version.
 
 
 =head2 VmManagerId => Str
 
-  
+  The identifier of the VM manager.
 
 
 =head2 VmManagerName => Str
 
-  
+  The name of the VM manager.
 
 
 =head2 VmManagerType => Str
 
-  
+  The VM management product.
 
 
 

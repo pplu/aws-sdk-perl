@@ -49,7 +49,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 
 =head2 GroupIds => ArrayRef[Str|Undef]
 
-The IDs of one or more IP access control groups.
+The identifiers of one or more IP access control groups.
 
 
 
@@ -61,8 +61,8 @@ The maximum number of items to return.
 
 =head2 NextToken => Str
 
-The token for the next set of results. (You received this token from a
-previous call.)
+If you received a C<NextToken> from a previous call that was paginated,
+provide this token to receive the next set of results.
 
 
 

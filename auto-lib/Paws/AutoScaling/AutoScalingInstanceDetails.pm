@@ -57,8 +57,8 @@ Describes an EC2 instance associated with an Auto Scaling group.
 
   The last reported health status of this instance. "Healthy" means that
 the instance is healthy and should remain in service. "Unhealthy" means
-that the instance is unhealthy and Auto Scaling should terminate and
-replace it.
+that the instance is unhealthy and Amazon EC2 Auto Scaling should
+terminate and replace it.
 
 
 =head2 B<REQUIRED> InstanceId => Str
@@ -81,14 +81,14 @@ available if you attached the instance to the Auto Scaling group.
 
   The lifecycle state for the instance. For more information, see Auto
 Scaling Lifecycle
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroupLifecycle.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroupLifecycle.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 =head2 B<REQUIRED> ProtectedFromScaleIn => Bool
 
-  Indicates whether the instance is protected from termination by Auto
-Scaling when scaling in.
+  Indicates whether the instance is protected from termination by Amazon
+EC2 Auto Scaling when scaling in.
 
 
 

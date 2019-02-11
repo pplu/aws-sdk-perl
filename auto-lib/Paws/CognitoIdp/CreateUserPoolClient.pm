@@ -142,16 +142,17 @@ Be registered with the authorization server.
 
 =item *
 
-Not use HTTP without TLS (i.e. use HTTPS instead of HTTP).
-
-=item *
-
 Not include a fragment component.
 
 =back
 
 See OAuth 2.0 - Redirection Endpoint
 (https://tools.ietf.org/html/rfc6749#section-3.1.2).
+
+Amazon Cognito requires HTTPS over HTTP except for http://localhost for
+testing purposes only.
+
+App callback URLs such as myapp://example are also supported.
 
 
 
@@ -179,16 +180,17 @@ Be registered with the authorization server.
 
 =item *
 
-Not use HTTP without TLS (i.e. use HTTPS instead of HTTP).
-
-=item *
-
 Not include a fragment component.
 
 =back
 
 See OAuth 2.0 - Redirection Endpoint
 (https://tools.ietf.org/html/rfc6749#section-3.1.2).
+
+Amazon Cognito requires HTTPS over HTTP except for http://localhost for
+testing purposes only.
+
+App callback URLs such as myapp://example are also supported.
 
 
 
@@ -240,7 +242,17 @@ client.
 
 =head2 WriteAttributes => ArrayRef[Str|Undef]
 
-The write attributes.
+The user pool attributes that the app client can write to.
+
+If your app client allows users to sign in through an identity
+provider, this array must include all attributes that are mapped to
+identity provider attributes. Amazon Cognito updates mapped attributes
+when users sign in to your application through an identity provider. If
+your app client lacks write access to a mapped attribute, Amazon
+Cognito throws an error when it attempts to update the attribute. For
+more information, see Specifying Identity Provider Attribute Mappings
+for Your User Pool
+(http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html).
 
 
 

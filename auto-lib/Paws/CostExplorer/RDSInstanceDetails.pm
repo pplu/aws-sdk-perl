@@ -1,6 +1,7 @@
 package Paws::CostExplorer::RDSInstanceDetails;
   use Moose;
   has CurrentGeneration => (is => 'ro', isa => 'Bool');
+  has DatabaseEdition => (is => 'ro', isa => 'Str');
   has DatabaseEngine => (is => 'ro', isa => 'Str');
   has DeploymentOption => (is => 'ro', isa => 'Str');
   has Family => (is => 'ro', isa => 'Str');
@@ -38,14 +39,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CostExplore
 
 =head1 DESCRIPTION
 
-Details about the RDS instances that AWS recommends that you purchase.
+Details about the Amazon RDS instances that AWS recommends that you
+purchase.
 
 =head1 ATTRIBUTES
 
 
 =head2 CurrentGeneration => Bool
 
-  Whether the recommendation is for a current generation instance.
+  Whether the recommendation is for a current-generation instance.
+
+
+=head2 DatabaseEdition => Str
+
+  The database edition that the recommended reservation supports.
 
 
 =head2 DatabaseEngine => Str
@@ -56,8 +63,8 @@ Details about the RDS instances that AWS recommends that you purchase.
 =head2 DeploymentOption => Str
 
   Whether the recommendation is for a reservation in a single
-availability zone or a reservation with a backup in a second
-availability zone.
+Availability Zone or a reservation with a backup in a second
+Availability Zone.
 
 
 =head2 Family => Str

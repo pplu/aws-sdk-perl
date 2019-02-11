@@ -53,7 +53,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/aut
 
 =head2 MaxResults => Int
 
-The maximum number of scalable resources to return. This value can be
+The maximum number of scalable resources to return. The value must be
 between 1 and 50. The default value is 50.
 
 
@@ -72,7 +72,7 @@ The name of the scaling plan.
 
 =head2 B<REQUIRED> ScalingPlanVersion => Int
 
-The version of the scaling plan.
+The version number of the scaling plan.
 
 
 

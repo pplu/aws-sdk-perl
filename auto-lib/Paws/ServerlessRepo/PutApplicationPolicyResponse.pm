@@ -17,7 +17,7 @@ Paws::ServerlessRepo::PutApplicationPolicyResponse
 
 =head2 Statements => ArrayRef[L<Paws::ServerlessRepo::ApplicationPolicyStatement>]
 
-Array of policy statements applied to the application.
+An array of policy statements applied to the application.
 
 
 =head2 _request_id => Str

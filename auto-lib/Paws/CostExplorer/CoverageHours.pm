@@ -41,18 +41,17 @@ How long a running instance either used a reservation or was On-Demand.
 
 =head2 CoverageHoursPercentage => Str
 
-  The percentage of instance hours that are covered by a reservation.
+  The percentage of instance hours that a reservation covered.
 
 
 =head2 OnDemandHours => Str
 
-  The number of instance running hours that are covered by On-Demand
-Instances.
+  The number of instance running hours that On-Demand Instances covered.
 
 
 =head2 ReservedHours => Str
 
-  The number of instance running hours that are covered by reservations.
+  The number of instance running hours that reservations covered.
 
 
 =head2 TotalRunningHours => Str

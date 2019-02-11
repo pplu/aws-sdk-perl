@@ -74,6 +74,11 @@ package Paws::CloudFormation;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::DescribeChangeSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeStackDriftDetectionStatus {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::DescribeStackDriftDetectionStatus', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeStackEvents {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::DescribeStackEvents', @_);
@@ -87,6 +92,11 @@ package Paws::CloudFormation;
   sub DescribeStackResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::DescribeStackResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeStackResourceDrifts {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::DescribeStackResourceDrifts', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeStackResources {
@@ -107,6 +117,16 @@ package Paws::CloudFormation;
   sub DescribeStackSetOperation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::DescribeStackSetOperation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DetectStackDrift {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::DetectStackDrift', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DetectStackResourceDrift {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::DetectStackResourceDrift', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub EstimateTemplateCost {
@@ -360,7 +380,7 @@ package Paws::CloudFormation;
   }
 
 
-  sub operations { qw/CancelUpdateStack ContinueUpdateRollback CreateChangeSet CreateStack CreateStackInstances CreateStackSet DeleteChangeSet DeleteStack DeleteStackInstances DeleteStackSet DescribeAccountLimits DescribeChangeSet DescribeStackEvents DescribeStackInstance DescribeStackResource DescribeStackResources DescribeStacks DescribeStackSet DescribeStackSetOperation EstimateTemplateCost ExecuteChangeSet GetStackPolicy GetTemplate GetTemplateSummary ListChangeSets ListExports ListImports ListStackInstances ListStackResources ListStacks ListStackSetOperationResults ListStackSetOperations ListStackSets SetStackPolicy SignalResource StopStackSetOperation UpdateStack UpdateStackInstances UpdateStackSet UpdateTerminationProtection ValidateTemplate / }
+  sub operations { qw/CancelUpdateStack ContinueUpdateRollback CreateChangeSet CreateStack CreateStackInstances CreateStackSet DeleteChangeSet DeleteStack DeleteStackInstances DeleteStackSet DescribeAccountLimits DescribeChangeSet DescribeStackDriftDetectionStatus DescribeStackEvents DescribeStackInstance DescribeStackResource DescribeStackResourceDrifts DescribeStackResources DescribeStacks DescribeStackSet DescribeStackSetOperation DetectStackDrift DetectStackResourceDrift EstimateTemplateCost ExecuteChangeSet GetStackPolicy GetTemplate GetTemplateSummary ListChangeSets ListExports ListImports ListStackInstances ListStackResources ListStacks ListStackSetOperationResults ListStackSetOperations ListStackSets SetStackPolicy SignalResource StopStackSetOperation UpdateStack UpdateStackInstances UpdateStackSet UpdateTerminationProtection ValidateTemplate / }
 
 1;
 
@@ -785,6 +805,37 @@ information, see Updating Stacks Using Change Sets
 in the AWS CloudFormation User Guide.
 
 
+=head2 DescribeStackDriftDetectionStatus
+
+=over
+
+=item StackDriftDetectionId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudFormation::DescribeStackDriftDetectionStatus>
+
+Returns: a L<Paws::CloudFormation::DescribeStackDriftDetectionStatusOutput> instance
+
+Returns information about a stack drift detection operation. A stack
+drift detection operation detects whether a stack's actual
+configuration differs, or has I<drifted>, from it's expected
+configuration, as defined in the stack template and any values
+specified as template parameters. A stack is considered to have drifted
+if one or more of its resources have drifted. For more information on
+stack and resource drift, see Detecting Unregulated Configuration
+Changes to Stacks and Resources
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
+
+Use DetectStackDrift to initiate a stack drift detection operation.
+C<DetectStackDrift> returns a C<StackDriftDetectionId> you can use to
+monitor the progress of the operation using
+C<DescribeStackDriftDetectionStatus>. Once the drift detection
+operation has completed, use DescribeStackResourceDrifts to return
+drift information about the stack and its resources.
+
+
 =head2 DescribeStackEvents
 
 =over
@@ -853,6 +904,43 @@ Returns a description of the specified resource in the specified stack.
 
 For deleted stacks, DescribeStackResource returns resource information
 for up to 90 days after the stack has been deleted.
+
+
+=head2 DescribeStackResourceDrifts
+
+=over
+
+=item StackName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [StackResourceDriftStatusFilters => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudFormation::DescribeStackResourceDrifts>
+
+Returns: a L<Paws::CloudFormation::DescribeStackResourceDriftsOutput> instance
+
+Returns drift information for the resources that have been checked for
+drift in the specified stack. This includes actual and expected
+configuration values for resources where AWS CloudFormation detects
+configuration drift.
+
+For a given stack, there will be one C<StackResourceDrift> for each
+stack resource that has been checked for drift. Resources that have not
+yet been checked for drift are not included. Resources that do not
+currently support drift detection are not checked, and so not included.
+For a list of resources that support drift detection, see Resources
+that Support Drift Detection
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html).
+
+Use DetectStackResourceDrift to detect drift on individual resources,
+or DetectStackDrift to detect drift on all supported resources for a
+given stack.
 
 
 =head2 DescribeStackResources
@@ -949,6 +1037,88 @@ Each argument is described in detail in: L<Paws::CloudFormation::DescribeStackSe
 Returns: a L<Paws::CloudFormation::DescribeStackSetOperationOutput> instance
 
 Returns the description of the specified stack set operation.
+
+
+=head2 DetectStackDrift
+
+=over
+
+=item StackName => Str
+
+=item [LogicalResourceIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudFormation::DetectStackDrift>
+
+Returns: a L<Paws::CloudFormation::DetectStackDriftOutput> instance
+
+Detects whether a stack's actual configuration differs, or has
+I<drifted>, from it's expected configuration, as defined in the stack
+template and any values specified as template parameters. For each
+resource in the stack that supports drift detection, AWS CloudFormation
+compares the actual configuration of the resource with its expected
+template configuration. Only resource properties explicitly defined in
+the stack template are checked for drift. A stack is considered to have
+drifted if one or more of its resources differ from their expected
+template configurations. For more information, see Detecting
+Unregulated Configuration Changes to Stacks and Resources
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
+
+Use C<DetectStackDrift> to detect drift on all supported resources for
+a given stack, or DetectStackResourceDrift to detect drift on
+individual resources.
+
+For a list of stack resources that currently support drift detection,
+see Resources that Support Drift Detection
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html).
+
+C<DetectStackDrift> can take up to several minutes, depending on the
+number of resources contained within the stack. Use
+DescribeStackDriftDetectionStatus to monitor the progress of a detect
+stack drift operation. Once the drift detection operation has
+completed, use DescribeStackResourceDrifts to return drift information
+about the stack and its resources.
+
+When detecting drift on a stack, AWS CloudFormation does not detect
+drift on any nested stacks belonging to that stack. Perform
+C<DetectStackDrift> directly on the nested stack itself.
+
+
+=head2 DetectStackResourceDrift
+
+=over
+
+=item LogicalResourceId => Str
+
+=item StackName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudFormation::DetectStackResourceDrift>
+
+Returns: a L<Paws::CloudFormation::DetectStackResourceDriftOutput> instance
+
+Returns information about whether a resource's actual configuration
+differs, or has I<drifted>, from it's expected configuration, as
+defined in the stack template and any values specified as template
+parameters. This information includes actual and expected property
+values for resources in which AWS CloudFormation detects drift. Only
+resource properties explicitly defined in the stack template are
+checked for drift. For more information about stack and resource drift,
+see Detecting Unregulated Configuration Changes to Stacks and Resources
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
+
+Use C<DetectStackResourceDrift> to detect drift on individual
+resources, or DetectStackDrift to detect drift on all resources in a
+given stack that support drift detection.
+
+Resources that do not currently support drift detection cannot be
+checked. For a list of resources that support drift detection, see
+Resources that Support Drift Detection
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html).
 
 
 =head2 EstimateTemplateCost
@@ -1519,14 +1689,11 @@ Returns: a L<Paws::CloudFormation::UpdateTerminationProtectionOutput> instance
 Updates termination protection for the specified stack. If a user
 attempts to delete a stack with termination protection enabled, the
 operation fails and the stack remains unchanged. For more information,
-see Protecting a Stack From Being Deleted
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-protect-stacks.html)
-in the I<AWS CloudFormation User Guide>.
+see Protecting a Stack From Being Deleted in the I<AWS CloudFormation
+User Guide>.
 
-For nested stacks
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html),
-termination protection is set on the root stack and cannot be changed
-directly on the nested stack.
+For nested stacks, termination protection is set on the root stack and
+cannot be changed directly on the nested stack.
 
 
 =head2 ValidateTemplate

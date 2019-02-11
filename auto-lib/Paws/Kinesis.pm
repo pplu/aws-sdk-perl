@@ -35,6 +35,11 @@ package Paws::Kinesis;
     my $call_object = $self->new_with_coercions('Paws::Kinesis::DeleteStream', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeregisterStreamConsumer {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kinesis::DeregisterStreamConsumer', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeLimits {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Kinesis::DescribeLimits', @_);
@@ -43,6 +48,11 @@ package Paws::Kinesis;
   sub DescribeStream {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Kinesis::DescribeStream', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeStreamConsumer {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kinesis::DescribeStreamConsumer', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeStreamSummary {
@@ -80,6 +90,11 @@ package Paws::Kinesis;
     my $call_object = $self->new_with_coercions('Paws::Kinesis::ListShards', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListStreamConsumers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kinesis::ListStreamConsumers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListStreams {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Kinesis::ListStreams', @_);
@@ -105,6 +120,11 @@ package Paws::Kinesis;
     my $call_object = $self->new_with_coercions('Paws::Kinesis::PutRecords', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub RegisterStreamConsumer {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kinesis::RegisterStreamConsumer', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RemoveTagsFromStream {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Kinesis::RemoveTagsFromStream', @_);
@@ -123,6 +143,11 @@ package Paws::Kinesis;
   sub StopStreamEncryption {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Kinesis::StopStreamEncryption', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub SubscribeToShard {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kinesis::SubscribeToShard', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateShardCount {
@@ -154,6 +179,52 @@ package Paws::Kinesis;
 
     return undef
   }
+  sub ListAllShards {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListShards(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListShards(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Shards }, @{ $next_result->Shards };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Shards') foreach (@{ $result->Shards });
+        $result = $self->ListShards(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Shards') foreach (@{ $result->Shards });
+    }
+
+    return undef
+  }
+  sub ListAllStreamConsumers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListStreamConsumers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListStreamConsumers(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Consumers }, @{ $next_result->Consumers };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Consumers') foreach (@{ $result->Consumers });
+        $result = $self->ListStreamConsumers(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Consumers') foreach (@{ $result->Consumers });
+    }
+
+    return undef
+  }
   sub ListAllStreams {
     my $self = shift;
 
@@ -179,7 +250,7 @@ package Paws::Kinesis;
   }
 
 
-  sub operations { qw/AddTagsToStream CreateStream DecreaseStreamRetentionPeriod DeleteStream DescribeLimits DescribeStream DescribeStreamSummary DisableEnhancedMonitoring EnableEnhancedMonitoring GetRecords GetShardIterator IncreaseStreamRetentionPeriod ListShards ListStreams ListTagsForStream MergeShards PutRecord PutRecords RemoveTagsFromStream SplitShard StartStreamEncryption StopStreamEncryption UpdateShardCount / }
+  sub operations { qw/AddTagsToStream CreateStream DecreaseStreamRetentionPeriod DeleteStream DeregisterStreamConsumer DescribeLimits DescribeStream DescribeStreamConsumer DescribeStreamSummary DisableEnhancedMonitoring EnableEnhancedMonitoring GetRecords GetShardIterator IncreaseStreamRetentionPeriod ListShards ListStreamConsumers ListStreams ListTagsForStream MergeShards PutRecord PutRecords RegisterStreamConsumer RemoveTagsFromStream SplitShard StartStreamEncryption StopStreamEncryption SubscribeToShard UpdateShardCount / }
 
 1;
 
@@ -232,8 +303,10 @@ Each argument is described in detail in: L<Paws::Kinesis::AddTagsToStream>
 
 Returns: nothing
 
-Adds or updates tags for the specified Kinesis data stream. Each stream
-can have up to 10 tags.
+Adds or updates tags for the specified Kinesis data stream. Each time
+you invoke this operation, you can specify up to 10 tags. If you want
+to add more than 10 tags to your stream, you can invoke this operation
+multiple times. In total, each stream can have up to 50 tags.
 
 If tags have already been assigned to the stream, C<AddTagsToStream>
 overwrites any existing tags that correspond to the specified tag keys.
@@ -341,6 +414,8 @@ already in the stream that is older than 24 hours is inaccessible.
 
 =item StreamName => Str
 
+=item [EnforceConsumerDeletion => Bool]
+
 
 =back
 
@@ -368,6 +443,35 @@ You can use the DescribeStream operation to check the state of the
 stream, which is returned in C<StreamStatus>.
 
 DeleteStream has a limit of five transactions per second per account.
+
+
+=head2 DeregisterStreamConsumer
+
+=over
+
+=item [ConsumerARN => Str]
+
+=item [ConsumerName => Str]
+
+=item [StreamARN => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Kinesis::DeregisterStreamConsumer>
+
+Returns: nothing
+
+To deregister a consumer, provide its ARN. Alternatively, you can
+provide the ARN of the data stream and the name you gave the consumer
+when you registered it. You may also provide all three parameters, as
+long as they don't conflict with each other. If you don't know the name
+or ARN of the consumer that you want to deregister, you can use the
+ListStreamConsumers operation to get a list of the descriptions of all
+the consumers that are currently registered with a given data stream.
+The description of a consumer contains its name and ARN.
+
+This operation has a limit of five transactions per second per account.
 
 
 =head2 DescribeLimits
@@ -426,6 +530,35 @@ To process shards in chronological order, use the ID of the parent
 shard to track the lineage to the oldest shard.
 
 This operation has a limit of 10 transactions per second per account.
+
+
+=head2 DescribeStreamConsumer
+
+=over
+
+=item [ConsumerARN => Str]
+
+=item [ConsumerName => Str]
+
+=item [StreamARN => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Kinesis::DescribeStreamConsumer>
+
+Returns: a L<Paws::Kinesis::DescribeStreamConsumerOutput> instance
+
+To get the description of a registered consumer, provide the ARN of the
+consumer. Alternatively, you can provide the ARN of the data stream and
+the name you gave the consumer when you registered it. You may also
+provide all three parameters, as long as they don't conflict with each
+other. If you don't know the name or ARN of the consumer that you want
+to describe, you can use the ListStreamConsumers operation to get a
+list of the descriptions of all the consumers that are currently
+registered with a given data stream.
+
+This operation has a limit of 20 transactions per second per account.
 
 
 =head2 DescribeStreamSummary
@@ -527,22 +660,23 @@ the loop when the shard is closed, or when the shard iterator reaches
 the record with the sequence number or other attribute that marks it as
 the last record to process.
 
-Each data record can be up to 1 MB in size, and each shard can read up
-to 2 MB per second. You can ensure that your calls don't exceed the
+Each data record can be up to 1 MiB in size, and each shard can read up
+to 2 MiB per second. You can ensure that your calls don't exceed the
 maximum supported size or throughput by using the C<Limit> parameter to
 specify the maximum number of records that GetRecords can return.
-Consider your average record size when determining this limit.
+Consider your average record size when determining this limit. The
+maximum number of records that can be returned per call is 10,000.
 
 The size of the data returned by GetRecords varies depending on the
 utilization of the shard. The maximum size of data that GetRecords can
-return is 10 MB. If a call returns this amount of data, subsequent
-calls made within the next five seconds throw
+return is 10 MiB. If a call returns this amount of data, subsequent
+calls made within the next 5 seconds throw
 C<ProvisionedThroughputExceededException>. If there is insufficient
 provisioned throughput on the stream, subsequent calls made within the
-next one second throw C<ProvisionedThroughputExceededException>.
-GetRecords won't return any data when it throws an exception. For this
-reason, we recommend that you wait one second between calls to
-GetRecords; however, it's possible that the application will get
+next 1 second throw C<ProvisionedThroughputExceededException>.
+GetRecords doesn't return any data when it throws an exception. For
+this reason, we recommend that you wait 1 second between calls to
+GetRecords. However, it's possible that the application will get
 exceptions for longer than 1 second.
 
 To detect whether the application is falling behind in processing, you
@@ -562,6 +696,8 @@ PutRecords). The time stamp has millisecond precision. There are no
 guarantees about the time stamp accuracy, or that the time stamp is
 always increasing. For example, records in a shard or across a stream
 might have time stamps that are out of order.
+
+This operation has a limit of five transactions per second per account.
 
 
 =head2 GetShardIterator
@@ -585,7 +721,7 @@ Each argument is described in detail in: L<Paws::Kinesis::GetShardIterator>
 
 Returns: a L<Paws::Kinesis::GetShardIteratorOutput> instance
 
-Gets an Amazon Kinesis shard iterator. A shard iterator expires five
+Gets an Amazon Kinesis shard iterator. A shard iterator expires 5
 minutes after it is returned to the requester.
 
 A shard iterator specifies the shard position from which to start
@@ -682,6 +818,8 @@ Each argument is described in detail in: L<Paws::Kinesis::ListShards>
 Returns: a L<Paws::Kinesis::ListShardsOutput> instance
 
 Lists the shards in a stream and provides information about each shard.
+This operation has a limit of 100 transactions per second per data
+stream.
 
 This API is a new operation that is used by the Amazon Kinesis Client
 Library (KCL). If you have a fine-grained IAM policy that only allows
@@ -689,6 +827,31 @@ specific operations, you must update your policy to allow calls to this
 API. For more information, see Controlling Access to Amazon Kinesis
 Data Streams Resources Using IAM
 (https://docs.aws.amazon.com/streams/latest/dev/controlling-access.html).
+
+
+=head2 ListStreamConsumers
+
+=over
+
+=item StreamARN => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [StreamCreationTimestamp => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Kinesis::ListStreamConsumers>
+
+Returns: a L<Paws::Kinesis::ListStreamConsumersOutput> instance
+
+Lists the consumers registered to receive data from a stream using
+enhanced fan-out, and provides information about each consumer.
+
+This operation has a limit of 10 transactions per second per account.
 
 
 =head2 ListStreams
@@ -964,6 +1127,32 @@ they are added to a stream. You can use IncreaseStreamRetentionPeriod
 or DecreaseStreamRetentionPeriod to modify this retention period.
 
 
+=head2 RegisterStreamConsumer
+
+=over
+
+=item ConsumerName => Str
+
+=item StreamARN => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Kinesis::RegisterStreamConsumer>
+
+Returns: a L<Paws::Kinesis::RegisterStreamConsumerOutput> instance
+
+Registers a consumer with a Kinesis data stream. When you use this
+operation, the consumer you register can read data from the stream at a
+rate of up to 2 MiB per second. This rate is unaffected by the total
+number of consumers that read from the same stream.
+
+You can register up to 5 consumers per stream. A given consumer can
+only be registered with one stream.
+
+This operation has a limit of five transactions per second per account.
+
+
 =head2 RemoveTagsFromStream
 
 =over
@@ -1048,7 +1237,8 @@ If the specified stream does not exist, C<DescribeStream> returns a
 C<ResourceNotFoundException>. If you try to create more shards than are
 authorized for your account, you receive a C<LimitExceededException>.
 
-For the default shard limit for an AWS account, see Streams Limits
+For the default shard limit for an AWS account, see Kinesis Data
+Streams Limits
 (http://docs.aws.amazon.com/kinesis/latest/dev/service-sizes-and-limits.html)
 in the I<Amazon Kinesis Data Streams Developer Guide>. To increase this
 limit, contact AWS Support
@@ -1093,11 +1283,10 @@ is C<ACTIVE>, encryption begins for records written to the stream.
 API Limits: You can successfully apply a new AWS KMS key for
 server-side encryption 25 times in a rolling 24-hour period.
 
-Note: It can take up to five seconds after the stream is in an
-C<ACTIVE> status before all records written to the stream are
-encrypted. After you enable encryption, you can verify that encryption
-is applied by inspecting the API response from C<PutRecord> or
-C<PutRecords>.
+Note: It can take up to 5 seconds after the stream is in an C<ACTIVE>
+status before all records written to the stream are encrypted. After
+you enable encryption, you can verify that encryption is applied by
+inspecting the API response from C<PutRecord> or C<PutRecords>.
 
 
 =head2 StopStreamEncryption
@@ -1132,11 +1321,43 @@ Streams.
 API Limits: You can successfully disable server-side encryption 25
 times in a rolling 24-hour period.
 
-Note: It can take up to five seconds after the stream is in an
-C<ACTIVE> status before all records written to the stream are no longer
-subject to encryption. After you disabled encryption, you can verify
-that encryption is not applied by inspecting the API response from
+Note: It can take up to 5 seconds after the stream is in an C<ACTIVE>
+status before all records written to the stream are no longer subject
+to encryption. After you disabled encryption, you can verify that
+encryption is not applied by inspecting the API response from
 C<PutRecord> or C<PutRecords>.
+
+
+=head2 SubscribeToShard
+
+=over
+
+=item ConsumerARN => Str
+
+=item ShardId => Str
+
+=item StartingPosition => L<Paws::Kinesis::StartingPosition>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Kinesis::SubscribeToShard>
+
+Returns: a L<Paws::Kinesis::SubscribeToShardOutput> instance
+
+Call this operation from your consumer after you call
+RegisterStreamConsumer to register the consumer with Kinesis Data
+Streams. If the call succeeds, your consumer starts receiving events of
+type SubscribeToShardEvent for up to 5 minutes, after which time you
+need to call C<SubscribeToShard> again to renew the subscription if you
+want to continue to receive records.
+
+You can make one call to C<SubscribeToShard> per second per
+C<ConsumerARN>. If your call succeeds, and then you call the operation
+again less than 5 seconds later, the second call generates a
+ResourceInUseException. If you call the operation a second time more
+than 5 seconds after the first call succeeds, the second call succeeds
+and the first connection gets shut down.
 
 
 =head2 UpdateShardCount
@@ -1173,7 +1394,8 @@ created, in addition to the final shards. We recommend that you double
 or halve the shard count, as this results in the fewest number of
 splits or merges.
 
-This operation has the following limits. You cannot do the following:
+This operation has the following default limits. By default, you cannot
+do the following:
 
 =over
 
@@ -1228,6 +1450,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - StreamDescription.Shards, passing the object as the first parameter, and the string 'StreamDescription.Shards' as the second parameter 
 
 If not, it will return a a L<Paws::Kinesis::DescribeStreamOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllShards(sub { },[ExclusiveStartShardId => Str, MaxResults => Int, NextToken => Str, StreamCreationTimestamp => Str, StreamName => Str])
+
+=head2 ListAllShards([ExclusiveStartShardId => Str, MaxResults => Int, NextToken => Str, StreamCreationTimestamp => Str, StreamName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Shards, passing the object as the first parameter, and the string 'Shards' as the second parameter 
+
+If not, it will return a a L<Paws::Kinesis::ListShardsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllStreamConsumers(sub { },StreamARN => Str, [MaxResults => Int, NextToken => Str, StreamCreationTimestamp => Str])
+
+=head2 ListAllStreamConsumers(StreamARN => Str, [MaxResults => Int, NextToken => Str, StreamCreationTimestamp => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Consumers, passing the object as the first parameter, and the string 'Consumers' as the second parameter 
+
+If not, it will return a a L<Paws::Kinesis::ListStreamConsumersOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllStreams(sub { },[ExclusiveStartStreamName => Str, Limit => Int])

@@ -185,6 +185,52 @@ package Paws::ELBv2;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllAccountLimits {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeAccountLimits(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextMarker) {
+        $next_result = $self->DescribeAccountLimits(@_, Marker => $next_result->NextMarker);
+        push @{ $result->Limits }, @{ $next_result->Limits };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $callback->($_ => 'Limits') foreach (@{ $result->Limits });
+        $result = $self->DescribeAccountLimits(@_, Marker => $result->NextMarker);
+      }
+      $callback->($_ => 'Limits') foreach (@{ $result->Limits });
+    }
+
+    return undef
+  }
+  sub DescribeAllListenerCertificates {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeListenerCertificates(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextMarker) {
+        $next_result = $self->DescribeListenerCertificates(@_, Marker => $next_result->NextMarker);
+        push @{ $result->Certificates }, @{ $next_result->Certificates };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $callback->($_ => 'Certificates') foreach (@{ $result->Certificates });
+        $result = $self->DescribeListenerCertificates(@_, Marker => $result->NextMarker);
+      }
+      $callback->($_ => 'Certificates') foreach (@{ $result->Certificates });
+    }
+
+    return undef
+  }
   sub DescribeAllListeners {
     my $self = shift;
 
@@ -227,6 +273,52 @@ package Paws::ELBv2;
         $result = $self->DescribeLoadBalancers(@_, Marker => $result->NextMarker);
       }
       $callback->($_ => 'LoadBalancers') foreach (@{ $result->LoadBalancers });
+    }
+
+    return undef
+  }
+  sub DescribeAllRules {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeRules(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextMarker) {
+        $next_result = $self->DescribeRules(@_, Marker => $next_result->NextMarker);
+        push @{ $result->Rules }, @{ $next_result->Rules };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $callback->($_ => 'Rules') foreach (@{ $result->Rules });
+        $result = $self->DescribeRules(@_, Marker => $result->NextMarker);
+      }
+      $callback->($_ => 'Rules') foreach (@{ $result->Rules });
+    }
+
+    return undef
+  }
+  sub DescribeAllSSLPolicies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeSSLPolicies(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextMarker) {
+        $next_result = $self->DescribeSSLPolicies(@_, Marker => $next_result->NextMarker);
+        push @{ $result->SslPolicies }, @{ $next_result->SslPolicies };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $callback->($_ => 'SslPolicies') foreach (@{ $result->SslPolicies });
+        $result = $self->DescribeSSLPolicies(@_, Marker => $result->NextMarker);
+      }
+      $callback->($_ => 'SslPolicies') foreach (@{ $result->SslPolicies });
     }
 
     return undef
@@ -304,8 +396,8 @@ Balancers.
 
 An Application Load Balancer makes routing and load balancing decisions
 at the application layer (HTTP/HTTPS). A Network Load Balancer makes
-routing and load balancing decisions at the transport layer (TCP). Both
-Application Load Balancers and Network Load Balancers can route
+routing and load balancing decisions at the transport layer (TCP/TLS).
+Both Application Load Balancers and Network Load Balancers can route
 requests to one or more ports on each EC2 instance or container
 instance in your virtual private cloud (VPC).
 
@@ -361,7 +453,7 @@ All Elastic Load Balancing operations are idempotent, which means that
 they complete at most one time. If you repeat an operation, it
 succeeds.
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2015-12-01>
 
 
 =head1 METHODS
@@ -381,14 +473,15 @@ Each argument is described in detail in: L<Paws::ELBv2::AddListenerCertificates>
 
 Returns: a L<Paws::ELBv2::AddListenerCertificatesOutput> instance
 
-Adds the specified certificate to the specified secure listener.
+Adds the specified certificate to the specified HTTPS listener.
 
 If the certificate was already added, the call is successful but the
 certificate is not added again.
 
 To list the certificates for your listener, use
 DescribeListenerCertificates. To remove certificates from your
-listener, use RemoveListenerCertificates.
+listener, use RemoveListenerCertificates. To specify the default SSL
+server certificate, use ModifyListener.
 
 
 =head2 AddTags
@@ -557,11 +650,7 @@ To delete a rule, use DeleteRule.
 
 =item Name => Str
 
-=item Port => Int
-
-=item Protocol => Str
-
-=item VpcId => Str
+=item [HealthCheckEnabled => Bool]
 
 =item [HealthCheckIntervalSeconds => Int]
 
@@ -577,9 +666,15 @@ To delete a rule, use DeleteRule.
 
 =item [Matcher => L<Paws::ELBv2::Matcher>]
 
+=item [Port => Int]
+
+=item [Protocol => Str]
+
 =item [TargetType => Str]
 
 =item [UnhealthyThresholdCount => Int]
+
+=item [VpcId => Str]
 
 
 =back
@@ -629,7 +724,7 @@ Returns: a L<Paws::ELBv2::DeleteListenerOutput> instance
 Deletes the specified listener.
 
 Alternatively, your listener is deleted when you delete the load
-balancer it is attached to using DeleteLoadBalancer.
+balancer to which it is attached, using DeleteLoadBalancer.
 
 
 =head2 DeleteLoadBalancer
@@ -756,7 +851,7 @@ Each argument is described in detail in: L<Paws::ELBv2::DescribeListenerCertific
 
 Returns: a L<Paws::ELBv2::DescribeListenerCertificatesOutput> instance
 
-Describes the certificates for the specified secure listener.
+Describes the certificates for the specified HTTPS listener.
 
 
 =head2 DescribeListeners
@@ -996,9 +1091,10 @@ Returns: a L<Paws::ELBv2::ModifyListenerOutput> instance
 Modifies the specified properties of the specified listener.
 
 Any properties that you do not specify retain their current values.
-However, changing the protocol from HTTPS to HTTP removes the security
-policy and SSL certificate properties. If you change the protocol from
-HTTP to HTTPS, you must add the security policy and server certificate.
+However, changing the protocol from HTTPS to HTTP, or from TLS to TCP,
+removes the security policy and server certificate properties. If you
+change the protocol from HTTP to HTTPS, or from TCP to TLS, you must
+add the security policy and server certificate properties.
 
 
 =head2 ModifyLoadBalancerAttributes
@@ -1054,6 +1150,8 @@ To modify the actions for the default rule, use ModifyListener.
 =over
 
 =item TargetGroupArn => Str
+
+=item [HealthCheckEnabled => Bool]
 
 =item [HealthCheckIntervalSeconds => Int]
 
@@ -1119,9 +1217,8 @@ Returns: a L<Paws::ELBv2::RegisterTargetsOutput> instance
 
 Registers the specified targets with the specified target group.
 
-You can register targets by instance ID or by IP address. If the target
-is an EC2 instance, it must be in the C<running> state when you
-register it.
+If the target is an EC2 instance, it must be in the C<running> state
+when you register it.
 
 By default, the load balancer routes requests to registered targets
 using the protocol and port for the target group. Alternatively, you
@@ -1152,7 +1249,7 @@ Each argument is described in detail in: L<Paws::ELBv2::RemoveListenerCertificat
 
 Returns: a L<Paws::ELBv2::RemoveListenerCertificatesOutput> instance
 
-Removes the specified certificate from the specified secure listener.
+Removes the specified certificate from the specified HTTPS listener.
 
 You can't remove the default certificate for a listener. To replace the
 default certificate, call ModifyListener.
@@ -1200,7 +1297,7 @@ Returns: a L<Paws::ELBv2::SetIpAddressTypeOutput> instance
 Sets the type of IP addresses used by the subnets of the specified
 Application Load Balancer or Network Load Balancer.
 
-Note that Network Load Balancers must use C<ipv4>.
+Network Load Balancers must use C<ipv4>.
 
 
 =head2 SetRulePriorities
@@ -1242,8 +1339,7 @@ Associates the specified security groups with the specified Application
 Load Balancer. The specified security groups override the previously
 associated security groups.
 
-Note that you can't specify a security group for a Network Load
-Balancer.
+You can't specify a security group for a Network Load Balancer.
 
 
 =head2 SetSubnets
@@ -1267,7 +1363,7 @@ Enables the Availability Zone for the specified public subnets for the
 specified Application Load Balancer. The specified subnets replace the
 previously enabled subnets.
 
-Note that you can't change the subnets for a Network Load Balancer.
+You can't change the subnets for a Network Load Balancer.
 
 
 
@@ -1275,6 +1371,30 @@ Note that you can't change the subnets for a Network Load Balancer.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllAccountLimits(sub { },[Marker => Str, PageSize => Int])
+
+=head2 DescribeAllAccountLimits([Marker => Str, PageSize => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Limits, passing the object as the first parameter, and the string 'Limits' as the second parameter 
+
+If not, it will return a a L<Paws::ELBv2::DescribeAccountLimitsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllListenerCertificates(sub { },ListenerArn => Str, [Marker => Str, PageSize => Int])
+
+=head2 DescribeAllListenerCertificates(ListenerArn => Str, [Marker => Str, PageSize => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Certificates, passing the object as the first parameter, and the string 'Certificates' as the second parameter 
+
+If not, it will return a a L<Paws::ELBv2::DescribeListenerCertificatesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 =head2 DescribeAllListeners(sub { },[ListenerArns => ArrayRef[Str|Undef], LoadBalancerArn => Str, Marker => Str, PageSize => Int])
 
@@ -1298,6 +1418,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - LoadBalancers, passing the object as the first parameter, and the string 'LoadBalancers' as the second parameter 
 
 If not, it will return a a L<Paws::ELBv2::DescribeLoadBalancersOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllRules(sub { },[ListenerArn => Str, Marker => Str, PageSize => Int, RuleArns => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllRules([ListenerArn => Str, Marker => Str, PageSize => Int, RuleArns => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Rules, passing the object as the first parameter, and the string 'Rules' as the second parameter 
+
+If not, it will return a a L<Paws::ELBv2::DescribeRulesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllSSLPolicies(sub { },[Marker => Str, Names => ArrayRef[Str|Undef], PageSize => Int])
+
+=head2 DescribeAllSSLPolicies([Marker => Str, Names => ArrayRef[Str|Undef], PageSize => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SslPolicies, passing the object as the first parameter, and the string 'SslPolicies' as the second parameter 
+
+If not, it will return a a L<Paws::ELBv2::DescribeSSLPoliciesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DescribeAllTargetGroups(sub { },[LoadBalancerArn => Str, Marker => Str, Names => ArrayRef[Str|Undef], PageSize => Int, TargetGroupArns => ArrayRef[Str|Undef]])

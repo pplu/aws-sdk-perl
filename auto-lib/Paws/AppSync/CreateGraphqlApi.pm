@@ -36,21 +36,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AuthenticationType => 'API_KEY',
       Name               => 'MyString',
       LogConfig          => {
-        cloudWatchLogsRoleArn => 'MyString',
-        fieldLogLevel         => 'NONE',       # values: NONE, ERROR, ALL
+        CloudWatchLogsRoleArn => 'MyString',
+        FieldLogLevel         => 'NONE',       # values: NONE, ERROR, ALL
 
       },    # OPTIONAL
       OpenIDConnectConfig => {
-        issuer   => 'MyString',
-        authTTL  => 1,            # OPTIONAL
-        clientId => 'MyString',
-        iatTTL   => 1,            # OPTIONAL
+        Issuer   => 'MyString',
+        AuthTTL  => 1,            # OPTIONAL
+        ClientId => 'MyString',
+        IatTTL   => 1,            # OPTIONAL
       },    # OPTIONAL
       UserPoolConfig => {
-        awsRegion        => 'MyString',
-        defaultAction    => 'ALLOW',      # values: ALLOW, DENY
-        userPoolId       => 'MyString',
-        appIdClientRegex => 'MyString',
+        AwsRegion        => 'MyString',
+        DefaultAction    => 'ALLOW',      # values: ALLOW, DENY
+        UserPoolId       => 'MyString',
+        AppIdClientRegex => 'MyString',
       },    # OPTIONAL
     );
 
@@ -67,13 +67,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/app
 
 =head2 B<REQUIRED> AuthenticationType => Str
 
-The authentication type: API key, IAM, or Amazon Cognito User Pools.
+The authentication type: API key, AWS IAM, or Amazon Cognito user
+pools.
 
 Valid values are: C<"API_KEY">, C<"AWS_IAM">, C<"AMAZON_COGNITO_USER_POOLS">, C<"OPENID_CONNECT">
 
 =head2 LogConfig => L<Paws::AppSync::LogConfig>
 
-The Amazon CloudWatch logs configuration.
+The Amazon CloudWatch Logs configuration.
 
 
 
@@ -85,13 +86,13 @@ A user-supplied name for the C<GraphqlApi>.
 
 =head2 OpenIDConnectConfig => L<Paws::AppSync::OpenIDConnectConfig>
 
-The Open Id Connect configuration configuration.
+The OpenID Connect configuration.
 
 
 
 =head2 UserPoolConfig => L<Paws::AppSync::UserPoolConfig>
 
-The Amazon Cognito User Pool configuration.
+The Amazon Cognito user pool configuration.
 
 
 

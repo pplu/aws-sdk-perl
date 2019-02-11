@@ -59,20 +59,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $AcceptRanges            = $HeadObjectOutput->AcceptRanges;
-    my $CacheControl            = $HeadObjectOutput->CacheControl;
-    my $ContentDisposition      = $HeadObjectOutput->ContentDisposition;
-    my $ContentEncoding         = $HeadObjectOutput->ContentEncoding;
-    my $ContentLanguage         = $HeadObjectOutput->ContentLanguage;
-    my $ContentLength           = $HeadObjectOutput->ContentLength;
-    my $ContentType             = $HeadObjectOutput->ContentType;
-    my $DeleteMarker            = $HeadObjectOutput->DeleteMarker;
-    my $ETag                    = $HeadObjectOutput->ETag;
-    my $Expiration              = $HeadObjectOutput->Expiration;
-    my $Expires                 = $HeadObjectOutput->Expires;
-    my $LastModified            = $HeadObjectOutput->LastModified;
-    my $Metadata                = $HeadObjectOutput->Metadata;
-    my $MissingMeta             = $HeadObjectOutput->MissingMeta;
+    my $AcceptRanges       = $HeadObjectOutput->AcceptRanges;
+    my $CacheControl       = $HeadObjectOutput->CacheControl;
+    my $ContentDisposition = $HeadObjectOutput->ContentDisposition;
+    my $ContentEncoding    = $HeadObjectOutput->ContentEncoding;
+    my $ContentLanguage    = $HeadObjectOutput->ContentLanguage;
+    my $ContentLength      = $HeadObjectOutput->ContentLength;
+    my $ContentType        = $HeadObjectOutput->ContentType;
+    my $DeleteMarker       = $HeadObjectOutput->DeleteMarker;
+    my $ETag               = $HeadObjectOutput->ETag;
+    my $Expiration         = $HeadObjectOutput->Expiration;
+    my $Expires            = $HeadObjectOutput->Expires;
+    my $LastModified       = $HeadObjectOutput->LastModified;
+    my $Metadata           = $HeadObjectOutput->Metadata;
+    my $MissingMeta        = $HeadObjectOutput->MissingMeta;
+    my $ObjectLockLegalHoldStatus =
+      $HeadObjectOutput->ObjectLockLegalHoldStatus;
+    my $ObjectLockMode = $HeadObjectOutput->ObjectLockMode;
+    my $ObjectLockRetainUntilDate =
+      $HeadObjectOutput->ObjectLockRetainUntilDate;
     my $PartsCount              = $HeadObjectOutput->PartsCount;
     my $ReplicationStatus       = $HeadObjectOutput->ReplicationStatus;
     my $RequestCharged          = $HeadObjectOutput->RequestCharged;

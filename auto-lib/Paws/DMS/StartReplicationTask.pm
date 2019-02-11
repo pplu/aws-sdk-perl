@@ -74,6 +74,8 @@ Indicates the start time for a change data capture (CDC) operation. Use
 either CdcStartTime or CdcStartPosition to specify when you want a CDC
 operation to start. Specifying both values results in an error.
 
+Timestamp Example: --cdc-start-time E<ldquo>2018-03-08T12:12:12E<rdquo>
+
 
 
 =head2 CdcStopPosition => Str

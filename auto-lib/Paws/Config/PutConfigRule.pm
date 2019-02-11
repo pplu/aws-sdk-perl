@@ -48,6 +48,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ConfigRuleName => 'MyStringWithCharLimit64', # min: 1, max: 64; OPTIONAL
         ConfigRuleState => 'ACTIVE'
         ,    # values: ACTIVE, DELETING, DELETING_RESULTS, EVALUATING; OPTIONAL
+        CreatedBy   => 'MyStringWithCharLimit256',          # min: 1, max: 256
         Description => 'MyEmptiableStringWithCharLimit256', # max: 256; OPTIONAL
         InputParameters =>
           'MyStringWithCharLimit1024',    # min: 1, max: 1024; OPTIONAL

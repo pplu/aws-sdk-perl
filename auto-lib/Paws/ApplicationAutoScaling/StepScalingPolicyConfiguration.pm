@@ -35,7 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Application
 
 =head1 DESCRIPTION
 
-Represents a step scaling policy configuration.
+Represents a step scaling policy configuration to use with Application
+Auto Scaling.
 
 =head1 ATTRIBUTES
 

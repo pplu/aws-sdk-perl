@@ -7,6 +7,7 @@ package Paws::EC2::VpnConnection;
   has Routes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VpnStaticRoute]', request_name => 'routes', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
+  has TransitGatewayId => (is => 'ro', isa => 'Str', request_name => 'transitGatewayId', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
   has VgwTelemetry => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VgwTelemetry]', request_name => 'vgwTelemetry', traits => ['NameInRequest']);
   has VpnConnectionId => (is => 'ro', isa => 'Str', request_name => 'vpnConnectionId', traits => ['NameInRequest']);
@@ -50,9 +51,7 @@ This class has no description
 
   The category of the VPN connection. A value of C<VPN> indicates an AWS
 VPN connection. A value of C<VPN-Classic> indicates an AWS Classic VPN
-connection. For more information, see AWS Managed VPN Categories
-(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html#vpn-categories)
-in the I<Amazon Virtual Private Cloud User Guide>.
+connection.
 
 
 =head2 CustomerGatewayConfiguration => Str
@@ -87,6 +86,11 @@ C<pending> or C<available> state.
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
   Any tags assigned to the VPN connection.
+
+
+=head2 TransitGatewayId => Str
+
+  The ID of the transit gateway associated with the VPN connection.
 
 
 =head2 Type => Str

@@ -1,6 +1,7 @@
 package Paws::IoTAnalytics::DatasetAction;
   use Moose;
   has ActionName => (is => 'ro', isa => 'Str', request_name => 'actionName', traits => ['NameInRequest']);
+  has ContainerAction => (is => 'ro', isa => 'Paws::IoTAnalytics::ContainerDatasetAction', request_name => 'containerAction', traits => ['NameInRequest']);
   has QueryAction => (is => 'ro', isa => 'Paws::IoTAnalytics::SqlQueryDatasetAction', request_name => 'queryAction', traits => ['NameInRequest']);
 1;
 
@@ -32,21 +33,29 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTAnalytic
 
 =head1 DESCRIPTION
 
-A "DatasetAction" object specifying the query that creates the data set
-content.
+A "DatasetAction" object that specifies how data set contents are
+automatically created.
 
 =head1 ATTRIBUTES
 
 
 =head2 ActionName => Str
 
-  The name of the data set action.
+  The name of the data set action by which data set contents are
+automatically created.
+
+
+=head2 ContainerAction => L<Paws::IoTAnalytics::ContainerDatasetAction>
+
+  Information which allows the system to run a containerized application
+in order to create the data set contents. The application must be in a
+Docker container along with any needed support libraries.
 
 
 =head2 QueryAction => L<Paws::IoTAnalytics::SqlQueryDatasetAction>
 
-  An "SqlQueryDatasetAction" object that contains the SQL query to modify
-the message.
+  An "SqlQueryDatasetAction" object that uses an SQL query to
+automatically create data set contents.
 
 
 

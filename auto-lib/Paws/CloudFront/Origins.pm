@@ -1,6 +1,6 @@
 package Paws::CloudFront::Origins;
   use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::Origin]', request_name => 'Origin', traits => ['NameInRequest']);
+  has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::Origin]', request_name => 'Origin', traits => ['NameInRequest'], required => 1);
   has Quantity => (is => 'ro', isa => 'Int', required => 1);
 1;
 
@@ -32,20 +32,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-A complex type that contains information about origins for this
-distribution.
+A complex type that contains information about origins and origin
+groups for this distribution.
 
 =head1 ATTRIBUTES
 
 
-=head2 Items => ArrayRef[L<Paws::CloudFront::Origin>]
+=head2 B<REQUIRED> Items => ArrayRef[L<Paws::CloudFront::Origin>]
 
-  A complex type that contains origins for this distribution.
+  A complex type that contains origins or origin groups for this
+distribution.
 
 
 =head2 B<REQUIRED> Quantity => Int
 
-  The number of origins for this distribution.
+  The number of origins or origin groups for this distribution.
 
 
 

@@ -1,6 +1,7 @@
 package Paws::CloudFront::LambdaFunctionAssociation;
   use Moose;
   has EventType => (is => 'ro', isa => 'Str', required => 1);
+  has IncludeBody => (is => 'ro', isa => 'Bool');
   has LambdaFunctionARN => (is => 'ro', isa => 'Str', required => 1);
 1;
 
@@ -63,9 +64,6 @@ response from the origin and before it caches the object in the
 response. When the requested object is in the edge cache, the function
 doesn't execute.
 
-If the origin returns an HTTP status code other than HTTP 200 (OK), the
-function doesn't execute.
-
 =item *
 
 C<viewer-response>: The function executes before CloudFront returns the
@@ -77,6 +75,15 @@ function doesn't execute.
 
 =back
 
+
+
+=head2 IncludeBody => Bool
+
+  A flag that allows a Lambda function to have read access to the body
+content. For more information, see Accessing the Request Body by
+Choosing the Include Body Option
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-include-body-access.html)
+in the Amazon CloudFront Developer Guide.
 
 
 =head2 B<REQUIRED> LambdaFunctionARN => Str

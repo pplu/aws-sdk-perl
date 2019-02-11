@@ -65,7 +65,7 @@ created it.
 
   If the hosted zone was created by another service, the service that
 created the hosted zone. When a hosted zone is created by another
-service, you can't edit or delete it using Amazon Route 53.
+service, you can't edit or delete it using Route 53.
 
 
 =head2 B<REQUIRED> Name => Str

@@ -1,8 +1,10 @@
 
 package Paws::SageMaker::ListNotebookInstances;
   use Moose;
+  has AdditionalCodeRepositoryEquals => (is => 'ro', isa => 'Str');
   has CreationTimeAfter => (is => 'ro', isa => 'Str');
   has CreationTimeBefore => (is => 'ro', isa => 'Str');
+  has DefaultCodeRepositoryContains => (is => 'ro', isa => 'Str');
   has LastModifiedTimeAfter => (is => 'ro', isa => 'Str');
   has LastModifiedTimeBefore => (is => 'ro', isa => 'Str');
   has MaxResults => (is => 'ro', isa => 'Int');
@@ -36,20 +38,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
 =head1 SYNOPSIS
 
-    my $sagemaker = Paws->service('SageMaker');
-    my $ListNotebookInstancesOutput = $sagemaker->ListNotebookInstances(
-      CreationTimeAfter      => '1970-01-01T01:00:00',               # OPTIONAL
-      CreationTimeBefore     => '1970-01-01T01:00:00',               # OPTIONAL
-      LastModifiedTimeAfter  => '1970-01-01T01:00:00',               # OPTIONAL
-      LastModifiedTimeBefore => '1970-01-01T01:00:00',               # OPTIONAL
-      MaxResults             => 1,                                   # OPTIONAL
-      NameContains           => 'MyNotebookInstanceNameContains',    # OPTIONAL
-      NextToken              => 'MyNextToken',                       # OPTIONAL
+    my $api.sagemaker = Paws->service('SageMaker');
+    my $ListNotebookInstancesOutput = $api . sagemaker->ListNotebookInstances(
+      AdditionalCodeRepositoryEquals => 'MyCodeRepositoryNameOrUrl',  # OPTIONAL
+      CreationTimeAfter              => '1970-01-01T01:00:00',        # OPTIONAL
+      CreationTimeBefore             => '1970-01-01T01:00:00',        # OPTIONAL
+      DefaultCodeRepositoryContains  => 'MyCodeRepositoryContains',   # OPTIONAL
+      LastModifiedTimeAfter          => '1970-01-01T01:00:00',        # OPTIONAL
+      LastModifiedTimeBefore         => '1970-01-01T01:00:00',        # OPTIONAL
+      MaxResults                     => 1,                            # OPTIONAL
+      NameContains => 'MyNotebookInstanceNameContains',               # OPTIONAL
+      NextToken    => 'MyNextToken',                                  # OPTIONAL
       NotebookInstanceLifecycleConfigNameContains =>
-        'MyNotebookInstanceLifecycleConfigName',                     # OPTIONAL
-      SortBy       => 'Name',                                        # OPTIONAL
-      SortOrder    => 'Ascending',                                   # OPTIONAL
-      StatusEquals => 'Pending',                                     # OPTIONAL
+        'MyNotebookInstanceLifecycleConfigName',                      # OPTIONAL
+      SortBy       => 'Name',                                         # OPTIONAL
+      SortOrder    => 'Ascending',                                    # OPTIONAL
+      StatusEquals => 'Pending',                                      # OPTIONAL
     );
 
     # Results:
@@ -59,9 +63,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::SageMaker::ListNotebookInstancesOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sagemaker/ListNotebookInstances>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.sagemaker/ListNotebookInstances>
 
 =head1 ATTRIBUTES
+
+
+=head2 AdditionalCodeRepositoryEquals => Str
+
+A filter that returns only notebook instances with associated with the
+specified git repository.
+
 
 
 =head2 CreationTimeAfter => Str
@@ -75,6 +86,15 @@ the specified time (timestamp).
 
 A filter that returns only notebook instances that were created before
 the specified time (timestamp).
+
+
+
+=head2 DefaultCodeRepositoryContains => Str
+
+A string in the name or URL of a Git repository associated with this
+notebook instance. This filter returns only notebook instances
+associated with a git repository with a name that contains the
+specified string.
 
 
 
@@ -144,7 +164,7 @@ Valid values are: C<"Ascending">, C<"Descending">
 A filter that returns only notebook instances with the specified
 status.
 
-Valid values are: C<"Pending">, C<"InService">, C<"Stopping">, C<"Stopped">, C<"Failed">, C<"Deleting">
+Valid values are: C<"Pending">, C<"InService">, C<"Stopping">, C<"Stopped">, C<"Failed">, C<"Deleting">, C<"Updating">
 
 
 =head1 SEE ALSO

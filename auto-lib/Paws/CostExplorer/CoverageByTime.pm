@@ -40,12 +40,12 @@ Reservation coverage for a specified period, in hours.
 
 =head2 Groups => ArrayRef[L<Paws::CostExplorer::ReservationCoverageGroup>]
 
-  The groups of instances that are covered by a reservation.
+  The groups of instances that the reservation covered.
 
 
 =head2 TimePeriod => L<Paws::CostExplorer::DateInterval>
 
-  The period over which this coverage was used.
+  The period that this coverage was used over.
 
 
 =head2 Total => L<Paws::CostExplorer::Coverage>

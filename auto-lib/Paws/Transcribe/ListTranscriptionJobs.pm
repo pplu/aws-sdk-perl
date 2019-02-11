@@ -76,7 +76,9 @@ truncated, include the C<NextToken> to fetch the next set of jobs.
 =head2 Status => Str
 
 When specified, returns only transcription jobs with the specified
-status.
+status. Jobs are ordered by creation date, with the newest jobs
+returned first. If you donE<rsquo>t specify a status, Amazon Transcribe
+returns all transcription jobs ordered by creation date.
 
 Valid values are: C<"IN_PROGRESS">, C<"FAILED">, C<"COMPLETED">
 

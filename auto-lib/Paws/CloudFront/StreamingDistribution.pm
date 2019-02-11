@@ -63,7 +63,9 @@ in the I<Amazon CloudFront Developer Guide>.
 
 =head2 B<REQUIRED> ARN => Str
 
-  
+  The ARN (Amazon Resource Name) for the distribution. For example:
+C<arn:aws:cloudfront::123456789012:distribution/EDFDVBD632BHDS5>, where
+C<123456789012> is your AWS account ID.
 
 
 =head2 B<REQUIRED> DomainName => Str

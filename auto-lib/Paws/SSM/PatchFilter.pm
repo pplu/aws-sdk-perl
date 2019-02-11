@@ -368,6 +368,87 @@ C<Low>
 
 =back
 
+B<Amazon Linux 2 Operating Systems>
+
+The supported keys for Amazon Linux 2 operating systems are C<PRODUCT>,
+C<CLASSIFICATION>, and C<SEVERITY>. See the following lists for valid
+values for each of these keys.
+
+I<Supported key:> C<PRODUCT>
+
+I<Supported values:>
+
+=over
+
+=item *
+
+C<AmazonLinux2>
+
+=item *
+
+C<AmazonLinux2.0>
+
+=item *
+
+C<*>
+
+I<Use a wildcard character (*) to target all supported operating system
+versions.>
+
+=back
+
+I<Supported key:> C<CLASSIFICATION>
+
+I<Supported values:>
+
+=over
+
+=item *
+
+C<Security>
+
+=item *
+
+C<Bugfix>
+
+=item *
+
+C<Enhancement>
+
+=item *
+
+C<Recommended>
+
+=item *
+
+C<Newpackage>
+
+=back
+
+I<Supported key:> C<SEVERITY>
+
+I<Supported values:>
+
+=over
+
+=item *
+
+C<Critical>
+
+=item *
+
+C<Important>
+
+=item *
+
+C<Medium>
+
+=item *
+
+C<Low>
+
+=back
+
 B<RedHat Enterprise Linux (RHEL) Operating Systems>
 
 The supported keys for RedHat Enterprise Linux operating systems are

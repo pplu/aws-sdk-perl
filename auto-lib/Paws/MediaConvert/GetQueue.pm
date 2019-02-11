@@ -46,7 +46,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/med
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the queue.
+The name of the queue that you want information about.
 
 
 

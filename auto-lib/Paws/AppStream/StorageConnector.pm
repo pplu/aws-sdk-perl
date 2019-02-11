@@ -45,7 +45,7 @@ Describes a connector to enable persistent storage for users.
 
 =head2 Domains => ArrayRef[Str|Undef]
 
-  The names of the domains for the G Suite account.
+  The names of the domains for the account.
 
 
 =head2 ResourceIdentifier => Str

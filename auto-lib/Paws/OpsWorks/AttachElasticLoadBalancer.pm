@@ -48,8 +48,8 @@ The Elastic Load Balancing instance's name.
 
 =head2 B<REQUIRED> LayerId => Str
 
-The ID of the layer that the Elastic Load Balancing instance is to be
-attached to.
+The ID of the layer to which the Elastic Load Balancing instance is to
+be attached.
 
 
 

@@ -43,6 +43,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $DescribeProvisioningParametersOutput->ConstraintSummaries;
     my $ProvisioningArtifactParameters =
       $DescribeProvisioningParametersOutput->ProvisioningArtifactParameters;
+    my $ProvisioningArtifactPreferences =
+      $DescribeProvisioningParametersOutput->ProvisioningArtifactPreferences;
     my $TagOptions = $DescribeProvisioningParametersOutput->TagOptions;
     my $UsageInstructions =
       $DescribeProvisioningParametersOutput->UsageInstructions;

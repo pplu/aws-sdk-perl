@@ -2,8 +2,10 @@
 package Paws::SageMaker::CreateTrainingJob;
   use Moose;
   has AlgorithmSpecification => (is => 'ro', isa => 'Paws::SageMaker::AlgorithmSpecification', required => 1);
+  has EnableInterContainerTrafficEncryption => (is => 'ro', isa => 'Bool');
+  has EnableNetworkIsolation => (is => 'ro', isa => 'Bool');
   has HyperParameters => (is => 'ro', isa => 'Paws::SageMaker::HyperParameters');
-  has InputDataConfig => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Channel]', required => 1);
+  has InputDataConfig => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Channel]');
   has OutputDataConfig => (is => 'ro', isa => 'Paws::SageMaker::OutputDataConfig', required => 1);
   has ResourceConfig => (is => 'ro', isa => 'Paws::SageMaker::ResourceConfig', required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', required => 1);
@@ -35,20 +37,53 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
 =head1 SYNOPSIS
 
-    my $sagemaker = Paws->service('SageMaker');
-    my $CreateTrainingJobResponse = $sagemaker->CreateTrainingJob(
+    my $api.sagemaker = Paws->service('SageMaker');
+    my $CreateTrainingJobResponse = $api . sagemaker->CreateTrainingJob(
       AlgorithmSpecification => {
-        TrainingImage     => 'MyAlgorithmImage',    # max: 255
-        TrainingInputMode => 'Pipe',                # values: Pipe, File
+        TrainingInputMode => 'Pipe',           # values: Pipe, File
+        AlgorithmName     => 'MyArnOrName',    # min: 1, max: 170; OPTIONAL
+        MetricDefinitions => [
+          {
+            Name  => 'MyMetricName',           # min: 1, max: 255
+            Regex => 'MyMetricRegex',          # min: 1, max: 500
 
+          },
+          ...
+        ],                                     # max: 20; OPTIONAL
+        TrainingImage => 'MyAlgorithmImage',   # max: 255; OPTIONAL
       },
+      OutputDataConfig => {
+        S3OutputPath => 'MyS3Uri',             # max: 1024
+        KmsKeyId     => 'MyKmsKeyId',          # max: 2048; OPTIONAL
+      },
+      ResourceConfig => {
+        InstanceCount => 1,                    # min: 1
+        InstanceType  => 'ml.m4.xlarge'
+        , # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge
+        VolumeSizeInGB => 1,               # min: 1
+        VolumeKmsKeyId => 'MyKmsKeyId',    # max: 2048; OPTIONAL
+      },
+      RoleArn           => 'MyRoleArn',
+      StoppingCondition => {
+        MaxRuntimeInSeconds => 1,          # min: 1; OPTIONAL
+      },
+      TrainingJobName                       => 'MyTrainingJobName',
+      EnableInterContainerTrafficEncryption => 1,                     # OPTIONAL
+      EnableNetworkIsolation                => 1,                     # OPTIONAL
+      HyperParameters                       => {
+        'MyParameterKey' => 'MyParameterValue', # key: max: 256, value: max: 256
+      },    # OPTIONAL
       InputDataConfig => [
         {
-          ChannelName => 'MyChannelName',           # min: 1, max: 64
+          ChannelName => 'MyChannelName',    # min: 1, max: 64
           DataSource  => {
             S3DataSource => {
-              S3DataType => 'ManifestFile',    # values: ManifestFile, S3Prefix
-              S3Uri      => 'MyS3Uri',         # max: 1024
+              S3DataType => 'ManifestFile'
+              ,    # values: ManifestFile, S3Prefix, AugmentedManifestFile
+              S3Uri          => 'MyS3Uri',    # max: 1024
+              AttributeNames => [
+                'MyAttributeName', ...        # min: 1, max: 256
+              ],                              # max: 16; OPTIONAL
               S3DataDistributionType => 'FullyReplicated'
               ,    # values: FullyReplicated, ShardedByS3Key; OPTIONAL
             },
@@ -56,44 +91,30 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           CompressionType => 'None',             # values: None, Gzip; OPTIONAL
           ContentType     => 'MyContentType',    # max: 256; OPTIONAL
+          InputMode       => 'Pipe',             # values: Pipe, File
           RecordWrapperType => 'None',    # values: None, RecordIO; OPTIONAL
+          ShuffleConfig     => {
+            Seed => 1,
+
+          },                              # OPTIONAL
         },
         ...
-      ],
-      OutputDataConfig => {
-        S3OutputPath => 'MyS3Uri',        # max: 1024
-        KmsKeyId     => 'MyKmsKeyId',     # max: 2048; OPTIONAL
-      },
-      ResourceConfig => {
-        InstanceCount => 1,               # min: 1,
-        InstanceType  => 'ml.m4.xlarge'
-        , # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge
-        VolumeSizeInGB => 1,               # min: 1,
-        VolumeKmsKeyId => 'MyKmsKeyId',    # max: 2048; OPTIONAL
-      },
-      RoleArn           => 'MyRoleArn',
-      StoppingCondition => {
-        MaxRuntimeInSeconds => 1,          # min: 1, ; OPTIONAL
-      },
-      TrainingJobName => 'MyTrainingJobName',
-      HyperParameters => {
-        'MyParameterKey' => 'MyParameterValue', # key: max: 256, value: max: 256
-      },    # OPTIONAL
+      ],                                  # OPTIONAL
       Tags => [
         {
-          Key   => 'MyTagKey',      # min: 1, max: 128
-          Value => 'MyTagValue',    # max: 256
+          Key   => 'MyTagKey',            # min: 1, max: 128
+          Value => 'MyTagValue',          # max: 256
 
         },
         ...
-      ],                            # OPTIONAL
+      ],                                  # OPTIONAL
       VpcConfig => {
         SecurityGroupIds => [
-          'MySecurityGroupId', ...    # max: 32
-        ],                            # min: 1, max: 5
+          'MySecurityGroupId', ...        # max: 32
+        ],                                # min: 1, max: 5
         Subnets => [
-          'MySubnetId', ...           # max: 32
-        ],                            # min: 1, max: 16
+          'MySubnetId', ...               # max: 32
+        ],                                # min: 1, max: 16
 
       },    # OPTIONAL
     );
@@ -104,7 +125,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::SageMaker::CreateTrainingJobResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sagemaker/CreateTrainingJob>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.sagemaker/CreateTrainingJob>
 
 =head1 ATTRIBUTES
 
@@ -115,8 +136,32 @@ The registry path of the Docker image that contains the training
 algorithm and algorithm-specific metadata, including the input mode.
 For more information about algorithms provided by Amazon SageMaker, see
 Algorithms (http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
-For information about providing your own algorithms, see
-your-algorithms.
+For information about providing your own algorithms, see Using Your Own
+Algorithms with Amazon SageMaker
+(http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html).
+
+
+
+=head2 EnableInterContainerTrafficEncryption => Bool
+
+To encrypt all communications between ML compute instances in
+distributed training, choose C<True>,. Encryption provides greater
+security for distributed training, but training can take longer because
+of additional communications between ML compute instances.
+
+
+
+=head2 EnableNetworkIsolation => Bool
+
+Isolates the training container. No inbound or outbound network calls
+can be made, except for calls between peers within a training cluster
+for distributed training. If you enable network isolation for training
+jobs that are configured to use a VPC, Amazon SageMaker downloads and
+uploads customer data and model artifacts through the specified VPC,
+but the training container does not have network access.
+
+The Semantic Segmentation built-in algorithm does not support network
+isolation.
 
 
 
@@ -134,7 +179,7 @@ as specified by the C<Length Constraint>.
 
 
 
-=head2 B<REQUIRED> InputDataConfig => ArrayRef[L<Paws::SageMaker::Channel>]
+=head2 InputDataConfig => ArrayRef[L<Paws::SageMaker::Channel>]
 
 An array of C<Channel> objects. Each channel is a named input source.
 C<InputDataConfig> describes the input data and its location.
@@ -220,15 +265,17 @@ in the I<AWS Billing and Cost Management User Guide>.
 =head2 B<REQUIRED> TrainingJobName => Str
 
 The name of the training job. The name must be unique within an AWS
-Region in an AWS account. It appears in the Amazon SageMaker console.
+Region in an AWS account.
 
 
 
 =head2 VpcConfig => L<Paws::SageMaker::VpcConfig>
 
-A object that specifies the VPC that you want your training job to
-connect to. Control access to and from your training container by
-configuring the VPC. For more information, see train-vpc
+A VpcConfig object that specifies the VPC that you want your training
+job to connect to. Control access to and from your training container
+by configuring the VPC. For more information, see Protect Training Jobs
+by Using an Amazon Virtual Private Cloud
+(http://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html).
 
 
 

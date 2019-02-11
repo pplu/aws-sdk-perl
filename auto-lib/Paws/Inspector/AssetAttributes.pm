@@ -5,7 +5,9 @@ package Paws::Inspector::AssetAttributes;
   has AutoScalingGroup => (is => 'ro', isa => 'Str', request_name => 'autoScalingGroup', traits => ['NameInRequest']);
   has Hostname => (is => 'ro', isa => 'Str', request_name => 'hostname', traits => ['NameInRequest']);
   has Ipv4Addresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ipv4Addresses', traits => ['NameInRequest']);
+  has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::NetworkInterface]', request_name => 'networkInterfaces', traits => ['NameInRequest']);
   has SchemaVersion => (is => 'ro', isa => 'Int', request_name => 'schemaVersion', traits => ['NameInRequest'], required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Tag]', request_name => 'tags', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +27,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Inspector::AssetAttributes object:
 
-  $service_obj->Method(Att1 => { AgentId => $value, ..., SchemaVersion => $value  });
+  $service_obj->Method(Att1 => { AgentId => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -71,9 +73,20 @@ generated.
 generated.
 
 
+=head2 NetworkInterfaces => ArrayRef[L<Paws::Inspector::NetworkInterface>]
+
+  An array of the network interfaces interacting with the EC2 instance
+where the finding is generated.
+
+
 =head2 B<REQUIRED> SchemaVersion => Int
 
   The schema version of this data type.
+
+
+=head2 Tags => ArrayRef[L<Paws::Inspector::Tag>]
+
+  The tags related to the EC2 instance where the finding is generated.
 
 
 

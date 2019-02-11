@@ -20,9 +20,19 @@ package Paws::KMS;
     my $call_object = $self->new_with_coercions('Paws::KMS::CancelKeyDeletion', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ConnectCustomKeyStore {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KMS::ConnectCustomKeyStore', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateAlias {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::KMS::CreateAlias', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateCustomKeyStore {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KMS::CreateCustomKeyStore', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateGrant {
@@ -45,9 +55,19 @@ package Paws::KMS;
     my $call_object = $self->new_with_coercions('Paws::KMS::DeleteAlias', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteCustomKeyStore {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KMS::DeleteCustomKeyStore', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteImportedKeyMaterial {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::KMS::DeleteImportedKeyMaterial', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeCustomKeyStores {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KMS::DescribeCustomKeyStores', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeKey {
@@ -63,6 +83,11 @@ package Paws::KMS;
   sub DisableKeyRotation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::KMS::DisableKeyRotation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DisconnectCustomKeyStore {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KMS::DisconnectCustomKeyStore', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub EnableKey {
@@ -185,6 +210,11 @@ package Paws::KMS;
     my $call_object = $self->new_with_coercions('Paws::KMS::UpdateAlias', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateCustomKeyStore {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KMS::UpdateCustomKeyStore', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateKeyDescription {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::KMS::UpdateKeyDescription', @_);
@@ -285,7 +315,7 @@ package Paws::KMS;
   }
 
 
-  sub operations { qw/CancelKeyDeletion CreateAlias CreateGrant CreateKey Decrypt DeleteAlias DeleteImportedKeyMaterial DescribeKey DisableKey DisableKeyRotation EnableKey EnableKeyRotation Encrypt GenerateDataKey GenerateDataKeyWithoutPlaintext GenerateRandom GetKeyPolicy GetKeyRotationStatus GetParametersForImport ImportKeyMaterial ListAliases ListGrants ListKeyPolicies ListKeys ListResourceTags ListRetirableGrants PutKeyPolicy ReEncrypt RetireGrant RevokeGrant ScheduleKeyDeletion TagResource UntagResource UpdateAlias UpdateKeyDescription / }
+  sub operations { qw/CancelKeyDeletion ConnectCustomKeyStore CreateAlias CreateCustomKeyStore CreateGrant CreateKey Decrypt DeleteAlias DeleteCustomKeyStore DeleteImportedKeyMaterial DescribeCustomKeyStores DescribeKey DisableKey DisableKeyRotation DisconnectCustomKeyStore EnableKey EnableKeyRotation Encrypt GenerateDataKey GenerateDataKeyWithoutPlaintext GenerateRandom GetKeyPolicy GetKeyRotationStatus GetParametersForImport ImportKeyMaterial ListAliases ListGrants ListKeyPolicies ListKeys ListResourceTags ListRetirableGrants PutKeyPolicy ReEncrypt RetireGrant RevokeGrant ScheduleKeyDeletion TagResource UntagResource UpdateAlias UpdateCustomKeyStore UpdateKeyDescription / }
 
 1;
 
@@ -318,11 +348,11 @@ AWS Key Management Service
 AWS Key Management Service (AWS KMS) is an encryption and key
 management web service. This guide describes the AWS KMS operations
 that you can call programmatically. For general information about AWS
-KMS, see the AWS Key Management Service Developer Guide
+KMS, see the I<AWS Key Management Service Developer Guide>
 (http://docs.aws.amazon.com/kms/latest/developerguide/).
 
 AWS provides SDKs that consist of libraries and sample code for various
-programming languages and platforms (Java, Ruby, .Net, iOS, Android,
+programming languages and platforms (Java, Ruby, .Net, macOS, Android,
 etc.). The SDKs provide a convenient way to create programmatic access
 to AWS KMS and other AWS services. For example, the SDKs take care of
 tasks such as signing requests (see below), managing errors, and
@@ -373,8 +403,8 @@ following:
 
 AWS Security Credentials
 (http://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html)
-- This topic provides general information about the types of
-credentials used for accessing AWS.
+- This topic provides general information about the of credentials used
+for accessing AWS.
 
 =item *
 
@@ -448,6 +478,71 @@ see Deleting Customer Master Keys
 (http://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html)
 in the I<AWS Key Management Service Developer Guide>.
 
+The result of this operation varies with the key state of the CMK. For
+details, see How Key State Affects Use of a Customer Master Key
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
+in the I<AWS Key Management Service Developer Guide>.
+
+
+=head2 ConnectCustomKeyStore
+
+=over
+
+=item CustomKeyStoreId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::KMS::ConnectCustomKeyStore>
+
+Returns: a L<Paws::KMS::ConnectCustomKeyStoreResponse> instance
+
+Connects or reconnects a custom key store
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html)
+to its associated AWS CloudHSM cluster.
+
+The custom key store must be connected before you can create customer
+master keys (CMKs) in the key store or use the CMKs it contains. You
+can disconnect and reconnect a custom key store at any time.
+
+To connect a custom key store, its associated AWS CloudHSM cluster must
+have at least one active HSM. To get the number of active HSMs in a
+cluster, use the DescribeClusters
+(http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters)
+operation. To add HSMs to the cluster, use the CreateHsm
+(http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_CreateHsm)
+operation.
+
+The connection process can take an extended amount of time to complete;
+up to 20 minutes. This operation starts the connection process, but it
+does not wait for it to complete. When it succeeds, this operation
+quickly returns an HTTP 200 response and a JSON object with no
+properties. However, this response does not indicate that the custom
+key store is connected. To get the connection state of the custom key
+store, use the DescribeCustomKeyStores operation.
+
+During the connection process, AWS KMS finds the AWS CloudHSM cluster
+that is associated with the custom key store, creates the connection
+infrastructure, connects to the cluster, logs into the AWS CloudHSM
+client as the C<kmsuser> crypto user
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-store-concepts.html#concept-kmsuser)
+(CU), and rotates its password.
+
+The C<ConnectCustomKeyStore> operation might fail for various reasons.
+To find the reason, use the DescribeCustomKeyStores operation and see
+the C<ConnectionErrorCode> in the response. For help interpreting the
+C<ConnectionErrorCode>, see CustomKeyStoresListEntry.
+
+To fix the failure, use the DisconnectCustomKeyStore operation to
+disconnect the custom key store, correct the error, use the
+UpdateCustomKeyStore operation if necessary, and then use
+C<ConnectCustomKeyStore> again.
+
+If you are having trouble connecting or disconnecting a custom key
+store, see Troubleshooting a Custom Key Store
+(http://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html)
+in the I<AWS Key Management Service Developer Guide>.
+
 
 =head2 CreateAlias
 
@@ -490,6 +585,134 @@ different AWS account.
 
 To map an existing alias to a different CMK, call UpdateAlias.
 
+The result of this operation varies with the key state of the CMK. For
+details, see How Key State Affects Use of a Customer Master Key
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
+in the I<AWS Key Management Service Developer Guide>.
+
+
+=head2 CreateCustomKeyStore
+
+=over
+
+=item CloudHsmClusterId => Str
+
+=item CustomKeyStoreName => Str
+
+=item KeyStorePassword => Str
+
+=item TrustAnchorCertificate => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::KMS::CreateCustomKeyStore>
+
+Returns: a L<Paws::KMS::CreateCustomKeyStoreResponse> instance
+
+Creates a custom key store
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html)
+that is associated with an AWS CloudHSM cluster
+(http://docs.aws.amazon.com/cloudhsm/latest/userguide/clusters.html)
+that you own and manage.
+
+This operation is part of the Custom Key Store feature
+(http://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html)
+feature in AWS KMS, which combines the convenience and extensive
+integration of AWS KMS with the isolation and control of a
+single-tenant key store.
+
+When the operation completes successfully, it returns the ID of the new
+custom key store. Before you can use your new custom key store, you
+need to use the ConnectCustomKeyStore operation to connect the new key
+store to its AWS CloudHSM cluster.
+
+The C<CreateCustomKeyStore> operation requires the following elements.
+
+=over
+
+=item *
+
+You must specify an active AWS CloudHSM cluster in the same account and
+AWS Region as the custom key store. You can use an existing cluster or
+create and activate a new AWS CloudHSM cluster
+(http://docs.aws.amazon.com/cloudhsm/latest/userguide/create-cluster.html)
+for the key store. AWS KMS does not require exclusive use of the
+cluster.
+
+=item *
+
+You must include the content of the I<trust anchor certificate> for the
+cluster. You created this certificate, and saved it in the
+C<customerCA.crt> file, when you initialized the cluster
+(http://docs.aws.amazon.com/cloudhsm/latest/userguide/initialize-cluster.html#sign-csr).
+
+=item *
+
+You must provide the password of the dedicated C<kmsuser> crypto user
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-store-concepts.html#concept-kmsuser)
+(CU) account in the cluster.
+
+Before you create the custom key store, use the createUser
+(http://docs.aws.amazon.com/cloudhsm/latest/userguide/cloudhsm_mgmt_util-createUser.html)
+command in C<cloudhsm_mgmt_util> to create a crypto user (CU) named
+C<kmsuser>
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-store-concepts.html#concept-kmsuser)in
+specified AWS CloudHSM cluster. AWS KMS uses the C<kmsuser> CU account
+to create and manage key material on your behalf. For instructions, see
+Create the kmsuser Crypto User
+(http://docs.aws.amazon.com/kms/latest/developerguide/create-keystore.html#before-keystore)
+in the I<AWS Key Management Service Developer Guide>.
+
+=back
+
+The AWS CloudHSM cluster that you specify must meet the following
+requirements.
+
+=over
+
+=item *
+
+The cluster must be active and be in the same AWS account and Region as
+the custom key store.
+
+=item *
+
+Each custom key store must be associated with a different AWS CloudHSM
+cluster. The cluster cannot be associated with another custom key store
+or have the same cluster certificate as a cluster that is associated
+with another custom key store. To view the cluster certificate, use the
+AWS CloudHSM DescribeClusters
+(http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html)
+operation. Clusters that share a backup history have the same cluster
+certificate.
+
+=item *
+
+The cluster must be configured with subnets in at least two different
+Availability Zones in the Region. Because AWS CloudHSM is not supported
+in all Availability Zones, we recommend that the cluster have subnets
+in all Availability Zones in the Region.
+
+=item *
+
+The cluster must contain at least two active HSMs, each in a different
+Availability Zone.
+
+=back
+
+New custom key stores are not automatically connected. After you create
+your custom key store, use the ConnectCustomKeyStore operation to
+connect the custom key store to its associated AWS CloudHSM cluster.
+Even if you are not going to use your custom key store immediately, you
+might want to connect it to verify that all settings are correct and
+then disconnect it until you are ready to use it.
+
+If this operation succeeds, it returns the ID of the new custom key
+store. For help with failures, see Troubleshoot a Custom Key Store
+(http://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html)
+in the I<AWS KMS Developer Guide>.
+
 
 =head2 CreateGrant
 
@@ -521,10 +744,15 @@ can use the CMK and under what conditions. When setting permissions,
 grants are an alternative to key policies.
 
 To perform this operation on a CMK in a different AWS account, specify
-the key ARN in the value of the KeyId parameter. For more information
-about grants, see Grants
+the key ARN in the value of the C<KeyId> parameter. For more
+information about grants, see Grants
 (http://docs.aws.amazon.com/kms/latest/developerguide/grants.html) in
 the I<AWS Key Management Service Developer Guide>.
+
+The result of this operation varies with the key state of the CMK. For
+details, see How Key State Affects Use of a Customer Master Key
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
+in the I<AWS Key Management Service Developer Guide>.
 
 
 =head2 CreateKey
@@ -532,6 +760,8 @@ the I<AWS Key Management Service Developer Guide>.
 =over
 
 =item [BypassPolicyLockoutSafetyCheck => Bool]
+
+=item [CustomKeyStoreId => Str]
 
 =item [Description => Str]
 
@@ -553,9 +783,9 @@ Returns: a L<Paws::KMS::CreateKeyResponse> instance
 Creates a customer master key (CMK) in the caller's AWS account.
 
 You can use a CMK to encrypt small amounts of data (4 KiB or less)
-directly, but CMKs are more commonly used to encrypt data encryption
-keys (DEKs), which are used to encrypt raw data. For more information
-about DEKs and the difference between CMKs and DEKs, see the following:
+directly, but CMKs are more commonly used to encrypt data keys, which
+are used to encrypt raw data. For more information about data keys and
+the difference between CMKs and data keys, see the following:
 
 =over
 
@@ -570,6 +800,19 @@ AWS Key Management Service Concepts
 the I<AWS Key Management Service Developer Guide>
 
 =back
+
+If you plan to import key material
+(http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html),
+use the C<Origin> parameter with a value of C<EXTERNAL> to create a CMK
+with no key material.
+
+To create a CMK in a custom key store
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html),
+use C<CustomKeyStoreId> parameter to specify the custom key store. You
+must also use the C<Origin> parameter with a value of C<AWS_CLOUDHSM>.
+The AWS CloudHSM cluster that is associated with the custom key store
+must have at least two active HSMs, each in a different Availability
+Zone in the Region.
 
 You cannot use this operation to create a CMK in a different AWS
 account.
@@ -621,6 +864,11 @@ access only in key policies. If you must grant C<Decrypt> access in an
 IAM user policy, you should scope the resource to specific keys or to
 specific trusted accounts.
 
+The result of this operation varies with the key state of the CMK. For
+details, see How Key State Affects Use of a Customer Master Key
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
+in the I<AWS Key Management Service Developer Guide>.
+
 
 =head2 DeleteAlias
 
@@ -647,6 +895,58 @@ Each CMK can have multiple aliases. To change the alias of a CMK, use
 DeleteAlias to delete the current alias and CreateAlias to create a new
 alias. To associate an existing alias with a different customer master
 key (CMK), call UpdateAlias.
+
+
+=head2 DeleteCustomKeyStore
+
+=over
+
+=item CustomKeyStoreId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::KMS::DeleteCustomKeyStore>
+
+Returns: a L<Paws::KMS::DeleteCustomKeyStoreResponse> instance
+
+Deletes a custom key store
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html).
+This operation does not delete the AWS CloudHSM cluster that is
+associated with the custom key store, or affect any users or keys in
+the cluster.
+
+The custom key store that you delete cannot contain any AWS KMS
+customer master keys (CMKs)
+(http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys).
+Before deleting the key store, verify that you will never need to use
+any of the CMKs in the key store for any cryptographic operations.
+Then, use ScheduleKeyDeletion to delete the AWS KMS customer master
+keys (CMKs) from the key store. When the scheduled waiting period
+expires, the C<ScheduleKeyDeletion> operation deletes the CMKs. Then it
+makes a best effort to delete the key material from the associated
+cluster. However, you might need to manually delete the orphaned key
+material
+(http://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html#fix-keystore-orphaned-key)
+from the cluster and its backups.
+
+After all CMKs are deleted from AWS KMS, use DisconnectCustomKeyStore
+to disconnect the key store from AWS KMS. Then, you can delete the
+custom key store.
+
+Instead of deleting the custom key store, consider using
+DisconnectCustomKeyStore to disconnect it from AWS KMS. While the key
+store is disconnected, you cannot create or use the CMKs in the key
+store. But, you do not need to delete CMKs and you can reconnect a
+disconnected custom key store at any time.
+
+If the operation succeeds, it returns a JSON object with no properties.
+
+This operation is part of the Custom Key Store feature
+(http://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html)
+feature in AWS KMS, which combines the convenience and extensive
+integration of AWS KMS with the isolation and control of a
+single-tenant key store.
 
 
 =head2 DeleteImportedKeyMaterial
@@ -676,6 +976,65 @@ CMK's state to C<PendingImport>.
 After you delete key material, you can use ImportKeyMaterial to
 reimport the same key material into the CMK.
 
+The result of this operation varies with the key state of the CMK. For
+details, see How Key State Affects Use of a Customer Master Key
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
+in the I<AWS Key Management Service Developer Guide>.
+
+
+=head2 DescribeCustomKeyStores
+
+=over
+
+=item [CustomKeyStoreId => Str]
+
+=item [CustomKeyStoreName => Str]
+
+=item [Limit => Int]
+
+=item [Marker => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::KMS::DescribeCustomKeyStores>
+
+Returns: a L<Paws::KMS::DescribeCustomKeyStoresResponse> instance
+
+Gets information about custom key stores
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html)
+in the account and region.
+
+This operation is part of the Custom Key Store feature
+(http://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html)
+feature in AWS KMS, which combines the convenience and extensive
+integration of AWS KMS with the isolation and control of a
+single-tenant key store.
+
+By default, this operation returns information about all custom key
+stores in the account and region. To get only information about a
+particular custom key store, use either the C<CustomKeyStoreName> or
+C<CustomKeyStoreId> parameter (but not both).
+
+To determine whether the custom key store is connected to its AWS
+CloudHSM cluster, use the C<ConnectionState> element in the response.
+If an attempt to connect the custom key store failed, the
+C<ConnectionState> value is C<FAILED> and the C<ConnectionErrorCode>
+element in the response indicates the cause of the failure. For help
+interpreting the C<ConnectionErrorCode>, see CustomKeyStoresListEntry.
+
+Custom key stores have a C<DISCONNECTED> connection state if the key
+store has never been connected or you use the DisconnectCustomKeyStore
+operation to disconnect it. If your custom key store state is
+C<CONNECTED> but you are having trouble using it, make sure that its
+associated AWS CloudHSM cluster is active and contains the minimum
+number of HSMs required for the operation, if any.
+
+For help repairing your custom key store, see the Troubleshooting
+Custom Key Stores
+(http://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore-html)
+topic in the I<AWS Key Management Service Developer Guide>.
+
 
 =head2 DescribeKey
 
@@ -694,6 +1053,12 @@ Returns: a L<Paws::KMS::DescribeKeyResponse> instance
 
 Provides detailed information about the specified customer master key
 (CMK).
+
+If you use C<DescribeKey> on a predefined AWS alias, that is, an AWS
+alias with no key ID, AWS KMS associates the alias with an AWS managed
+CMK
+(http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys)
+and returns its C<KeyId> and C<Arn> in the response.
 
 To perform this operation on a CMK in a different AWS account, specify
 the key ARN or alias ARN in the value of the KeyId parameter.
@@ -721,6 +1086,11 @@ How Key State Affects the Use of a Customer Master Key
 (http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 in the I<AWS Key Management Service Developer Guide>.
 
+The result of this operation varies with the key state of the CMK. For
+details, see How Key State Affects Use of a Customer Master Key
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
+in the I<AWS Key Management Service Developer Guide>.
+
 
 =head2 DisableKeyRotation
 
@@ -735,9 +1105,53 @@ Each argument is described in detail in: L<Paws::KMS::DisableKeyRotation>
 
 Returns: nothing
 
-Disables automatic rotation of the key material for the specified
-customer master key (CMK). You cannot perform this operation on a CMK
-in a different AWS account.
+Disables automatic rotation of the key material
+(http://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html)
+for the specified customer master key (CMK). You cannot perform this
+operation on a CMK in a different AWS account.
+
+The result of this operation varies with the key state of the CMK. For
+details, see How Key State Affects Use of a Customer Master Key
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
+in the I<AWS Key Management Service Developer Guide>.
+
+
+=head2 DisconnectCustomKeyStore
+
+=over
+
+=item CustomKeyStoreId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::KMS::DisconnectCustomKeyStore>
+
+Returns: a L<Paws::KMS::DisconnectCustomKeyStoreResponse> instance
+
+Disconnects the custom key store
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html)
+from its associated AWS CloudHSM cluster. While a custom key store is
+disconnected, you can manage the custom key store and its customer
+master keys (CMKs), but you cannot create or use CMKs in the custom key
+store. You can reconnect the custom key store at any time.
+
+While a custom key store is disconnected, all attempts to create
+customer master keys (CMKs) in the custom key store or to use existing
+CMKs in cryptographic operations will fail. This action can prevent
+users from storing and accessing sensitive data.
+
+To find the connection state of a custom key store, use the
+DescribeCustomKeyStores operation. To reconnect a custom key store, use
+the ConnectCustomKeyStore operation.
+
+If the operation succeeds, it returns a JSON object with no properties.
+
+This operation is part of the Custom Key Store feature
+(http://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html)
+feature in AWS KMS, which combines the convenience and extensive
+integration of AWS KMS with the isolation and control of a
+single-tenant key store.
 
 
 =head2 EnableKey
@@ -753,9 +1167,14 @@ Each argument is described in detail in: L<Paws::KMS::EnableKey>
 
 Returns: nothing
 
-Sets the state of a customer master key (CMK) to enabled, thereby
-permitting its use for cryptographic operations. You cannot perform
-this operation on a CMK in a different AWS account.
+Sets the key state of a customer master key (CMK) to enabled. This
+allows you to use the CMK for cryptographic operations. You cannot
+perform this operation on a CMK in a different AWS account.
+
+The result of this operation varies with the key state of the CMK. For
+details, see How Key State Affects Use of a Customer Master Key
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
+in the I<AWS Key Management Service Developer Guide>.
 
 
 =head2 EnableKeyRotation
@@ -771,9 +1190,19 @@ Each argument is described in detail in: L<Paws::KMS::EnableKeyRotation>
 
 Returns: nothing
 
-Enables automatic rotation of the key material for the specified
-customer master key (CMK). You cannot perform this operation on a CMK
-in a different AWS account.
+Enables automatic rotation of the key material
+(http://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html)
+for the specified customer master key (CMK). You cannot perform this
+operation on a CMK in a different AWS account.
+
+You cannot enable automatic rotation of CMKs with imported key material
+or CMKs in a custom key store
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html).
+
+The result of this operation varies with the key state of the CMK. For
+details, see How Key State Affects Use of a Customer Master Key
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
+in the I<AWS Key Management Service Developer Guide>.
 
 
 =head2 Encrypt
@@ -827,6 +1256,11 @@ don't need to be encrypted again by calling C<Encrypt>.
 To encrypt data locally in your application, use the GenerateDataKey
 operation to return a plaintext data encryption key and a copy of the
 key encrypted under the CMK of your choosing.
+
+The result of this operation varies with the key state of the CMK. For
+details, see How Key State Affects Use of a Customer Master Key
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
+in the I<AWS Key Management Service Developer Guide>.
 
 
 =head2 GenerateDataKey
@@ -917,6 +1351,11 @@ information, see Encryption Context
 (http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html)
 in the I<AWS Key Management Service Developer Guide>.
 
+The result of this operation varies with the key state of the CMK. For
+details, see How Key State Affects Use of a Customer Master Key
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
+in the I<AWS Key Management Service Developer Guide>.
+
 
 =head2 GenerateDataKeyWithoutPlaintext
 
@@ -960,10 +1399,17 @@ operation, then uses the returned plaintext data key to encrypt data,
 and finally stores the encrypted data in the container. In this system,
 the control plane never sees the plaintext data key.
 
+The result of this operation varies with the key state of the CMK. For
+details, see How Key State Affects Use of a Customer Master Key
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
+in the I<AWS Key Management Service Developer Guide>.
+
 
 =head2 GenerateRandom
 
 =over
+
+=item [CustomKeyStoreId => Str]
 
 =item [NumberOfBytes => Int]
 
@@ -975,6 +1421,12 @@ Each argument is described in detail in: L<Paws::KMS::GenerateRandom>
 Returns: a L<Paws::KMS::GenerateRandomResponse> instance
 
 Returns a random byte string that is cryptographically secure.
+
+By default, the random byte string is generated in AWS KMS. To generate
+the byte string in the AWS CloudHSM cluster that is associated with a
+custom key store
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html),
+specify the custom key store ID.
 
 For more information about entropy and random number generation, see
 the AWS Key Management Service Cryptographic Details
@@ -1015,10 +1467,33 @@ Each argument is described in detail in: L<Paws::KMS::GetKeyRotationStatus>
 Returns: a L<Paws::KMS::GetKeyRotationStatusResponse> instance
 
 Gets a Boolean value that indicates whether automatic rotation of the
-key material is enabled for the specified customer master key (CMK).
+key material
+(http://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html)
+is enabled for the specified customer master key (CMK).
+
+The result of this operation varies with the key state of the CMK. For
+details, see How Key State Affects Use of a Customer Master Key
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
+in the I<AWS Key Management Service Developer Guide>.
+
+=over
+
+=item *
+
+Disabled: The key rotation status does not change when you disable a
+CMK. However, while the CMK is disabled, AWS KMS does not rotate the
+backing key.
+
+=item *
+
+Pending deletion: While a CMK is pending deletion, its key rotation
+status is C<false> and AWS KMS does not rotate the backing key. If you
+cancel the deletion, the original key rotation status is restored.
+
+=back
 
 To perform this operation on a CMK in a different AWS account, specify
-the key ARN in the value of the KeyId parameter.
+the key ARN in the value of the C<KeyId> parameter.
 
 
 =head2 GetParametersForImport
@@ -1057,6 +1532,11 @@ from the same response must be used together. These items are valid for
 24 hours. When they expire, they cannot be used for a subsequent
 ImportKeyMaterial request. To get new ones, send another
 C<GetParametersForImport> request.
+
+The result of this operation varies with the key state of the CMK. For
+details, see How Key State Affects Use of a Customer Master Key
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
+in the I<AWS Key Management Service Developer Guide>.
 
 
 =head2 ImportKeyMaterial
@@ -1127,16 +1607,23 @@ To use the CMK again, you must reimport the same key material.
 
 =back
 
-When this operation is successful, the CMK's key state changes from
-C<PendingImport> to C<Enabled>, and you can use the CMK. After you
+When this operation is successful, the key state of the CMK changes
+from C<PendingImport> to C<Enabled>, and you can use the CMK. After you
 successfully import key material into a CMK, you can reimport the same
 key material into that CMK, but you cannot import different key
 material.
+
+The result of this operation varies with the key state of the CMK. For
+details, see How Key State Affects Use of a Customer Master Key
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
+in the I<AWS Key Management Service Developer Guide>.
 
 
 =head2 ListAliases
 
 =over
+
+=item [KeyId => Str]
 
 =item [Limit => Int]
 
@@ -1153,13 +1640,16 @@ Gets a list of all aliases in the caller's AWS account and region. You
 cannot list aliases in other accounts. For more information about
 aliases, see CreateAlias.
 
-The response might include several aliases that do not have a
-C<TargetKeyId> field because they are not associated with a CMK. These
-are predefined aliases that are reserved for CMKs managed by AWS
-services. If an alias is not associated with a CMK, the alias does not
-count against the alias limit
-(http://docs.aws.amazon.com/kms/latest/developerguide/limits.html#aliases-limit)
-for your account.
+By default, the C<ListAliases> command returns all aliases in the
+account and region. To get only the aliases that point to a particular
+customer master key (CMK), use the C<KeyId> parameter.
+
+The C<ListAliases> response might include several aliases have no
+C<TargetKeyId> field. These are predefined aliases that AWS has created
+but has not yet associated with a CMK. Aliases that AWS creates in your
+account, including predefined aliases, do not count against your AWS
+KMS aliases limit
+(http://docs.aws.amazon.com/kms/latest/developerguide/limits.html#aliases-limit).
 
 
 =head2 ListGrants
@@ -1182,7 +1672,7 @@ Returns: a L<Paws::KMS::ListGrantsResponse> instance
 Gets a list of all grants for the specified customer master key (CMK).
 
 To perform this operation on a CMK in a different AWS account, specify
-the key ARN in the value of the KeyId parameter.
+the key ARN in the value of the C<KeyId> parameter.
 
 
 =head2 ListKeyPolicies
@@ -1340,6 +1830,11 @@ the console, but you must include it manually when you create a CMK
 programmatically or when you set a key policy with the PutKeyPolicy
 operation.
 
+The result of this operation varies with the key state of the CMK. For
+details, see How Key State Affects Use of a Customer Master Key
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
+in the I<AWS Key Management Service Developer Guide>.
+
 
 =head2 RetireGrant
 
@@ -1407,7 +1902,7 @@ Revokes the specified grant for the specified customer master key
 on it.
 
 To perform this operation on a CMK in a different AWS account, specify
-the key ARN in the value of the KeyId parameter.
+the key ARN in the value of the C<KeyId> parameter.
 
 
 =head2 ScheduleKeyDeletion
@@ -1428,22 +1923,36 @@ Returns: a L<Paws::KMS::ScheduleKeyDeletionResponse> instance
 Schedules the deletion of a customer master key (CMK). You may provide
 a waiting period, specified in days, before deletion occurs. If you do
 not provide a waiting period, the default period of 30 days is used.
-When this operation is successful, the state of the CMK changes to
+When this operation is successful, the key state of the CMK changes to
 C<PendingDeletion>. Before the waiting period ends, you can use
 CancelKeyDeletion to cancel the deletion of the CMK. After the waiting
 period ends, AWS KMS deletes the CMK and all AWS KMS data associated
 with it, including all aliases that refer to it.
 
-You cannot perform this operation on a CMK in a different AWS account.
-
 Deleting a CMK is a destructive and potentially dangerous operation.
 When a CMK is deleted, all data that was encrypted under the CMK is
-rendered unrecoverable. To restrict the use of a CMK without deleting
-it, use DisableKey.
+unrecoverable. To prevent the use of a CMK without deleting it, use
+DisableKey.
+
+If you schedule deletion of a CMK from a custom key store
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html),
+when the waiting period expires, C<ScheduleKeyDeletion> deletes the CMK
+from AWS KMS. Then AWS KMS makes a best effort to delete the key
+material from the associated AWS CloudHSM cluster. However, you might
+need to manually delete the orphaned key material
+(http://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html#fix-keystore-orphaned-key)
+from the cluster and its backups.
+
+You cannot perform this operation on a CMK in a different AWS account.
 
 For more information about scheduling a CMK for deletion, see Deleting
 Customer Master Keys
 (http://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html)
+in the I<AWS Key Management Service Developer Guide>.
+
+The result of this operation varies with the key state of the CMK. For
+details, see How Key State Affects Use of a Customer Master Key
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 in the I<AWS Key Management Service Developer Guide>.
 
 
@@ -1462,24 +1971,24 @@ Each argument is described in detail in: L<Paws::KMS::TagResource>
 
 Returns: nothing
 
-Adds or overwrites one or more tags for the specified customer master
-key (CMK). You cannot perform this operation on a CMK in a different
-AWS account.
+Adds or edits tags for a customer master key (CMK). You cannot perform
+this operation on a CMK in a different AWS account.
 
 Each tag consists of a tag key and a tag value. Tag keys and tag values
 are both required, but tag values can be empty (null) strings.
 
-You cannot use the same tag key more than once per CMK. For example,
-consider a CMK with one tag whose tag key is C<Purpose> and tag value
-is C<Test>. If you send a C<TagResource> request for this CMK with a
-tag key of C<Purpose> and a tag value of C<Prod>, it does not create a
-second tag. Instead, the original tag is overwritten with the new tag
-value.
+You can only use a tag key once for each CMK. If you use the tag key
+again, AWS KMS replaces the current tag value with the specified value.
 
 For information about the rules that apply to tag keys and tag values,
 see User-Defined Tag Restrictions
 (http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html)
 in the I<AWS Billing and Cost Management User Guide>.
+
+The result of this operation varies with the key state of the CMK. For
+details, see How Key State Affects Use of a Customer Master Key
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
+in the I<AWS Key Management Service Developer Guide>.
 
 
 =head2 UntagResource
@@ -1497,13 +2006,17 @@ Each argument is described in detail in: L<Paws::KMS::UntagResource>
 
 Returns: nothing
 
-Removes the specified tag or tags from the specified customer master
-key (CMK). You cannot perform this operation on a CMK in a different
-AWS account.
+Removes the specified tags from the specified customer master key
+(CMK). You cannot perform this operation on a CMK in a different AWS
+account.
 
-To remove a tag, you specify the tag key for each tag to remove. You do
-not specify the tag value. To overwrite the tag value for an existing
-tag, use TagResource.
+To remove a tag, specify the tag key. To change the tag value of an
+existing tag key, use TagResource.
+
+The result of this operation varies with the key state of the CMK. For
+details, see How Key State Affects Use of a Customer Master Key
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
+in the I<AWS Key Management Service Developer Guide>.
 
 
 =head2 UpdateAlias
@@ -1543,6 +2056,102 @@ contain only alphanumeric characters, forward slashes (/), underscores
 (_), and dashes (-). Alias names cannot begin with C<aws>; that alias
 name prefix is reserved by Amazon Web Services (AWS).
 
+The result of this operation varies with the key state of the CMK. For
+details, see How Key State Affects Use of a Customer Master Key
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
+in the I<AWS Key Management Service Developer Guide>.
+
+
+=head2 UpdateCustomKeyStore
+
+=over
+
+=item CustomKeyStoreId => Str
+
+=item [CloudHsmClusterId => Str]
+
+=item [KeyStorePassword => Str]
+
+=item [NewCustomKeyStoreName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::KMS::UpdateCustomKeyStore>
+
+Returns: a L<Paws::KMS::UpdateCustomKeyStoreResponse> instance
+
+Changes the properties of a custom key store. Use the
+C<CustomKeyStoreId> parameter to identify the custom key store you want
+to edit. Use the remaining parameters to change the properties of the
+custom key store.
+
+You can only update a custom key store that is disconnected. To
+disconnect the custom key store, use DisconnectCustomKeyStore. To
+reconnect the custom key store after the update completes, use
+ConnectCustomKeyStore. To find the connection state of a custom key
+store, use the DescribeCustomKeyStores operation.
+
+Use the C<NewCustomKeyStoreName> parameter to change the friendly name
+of the custom key store to the value that you specify.
+
+Use the C<KeyStorePassword> parameter tell AWS KMS the current password
+of the C<kmsuser> crypto user (CU)
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-store-concepts.html#concept-kmsuser)
+in the associated AWS CloudHSM cluster. You can use this parameter to
+fix connection failures that occur when AWS KMS cannot log into the
+associated cluster because the C<kmsuser> password has changed. This
+value does not change the password in the AWS CloudHSM cluster.
+
+Use the C<CloudHsmClusterId> parameter to associate the custom key
+store with a related AWS CloudHSM cluster, that is, a cluster that
+shares a backup history with the original cluster. You can use this
+parameter to repair a custom key store if its AWS CloudHSM cluster
+becomes corrupted or is deleted, or when you need to create or restore
+a cluster from a backup.
+
+The cluster ID must identify a AWS CloudHSM cluster with the following
+requirements.
+
+=over
+
+=item *
+
+The cluster must be active and be in the same AWS account and Region as
+the custom key store.
+
+=item *
+
+The cluster must have the same cluster certificate as the original
+cluster. You cannot use this parameter to associate the custom key
+store with an unrelated cluster. To view the cluster certificate, use
+the AWS CloudHSM DescribeClusters
+(http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html)
+operation. Clusters that share a backup history have the same cluster
+certificate.
+
+=item *
+
+The cluster must be configured with subnets in at least two different
+Availability Zones in the Region. Because AWS CloudHSM is not supported
+in all Availability Zones, we recommend that the cluster have subnets
+in all Availability Zones in the Region.
+
+=item *
+
+The cluster must contain at least two active HSMs, each in a different
+Availability Zone.
+
+=back
+
+If the operation succeeds, it returns a JSON object with no properties.
+
+This operation is part of the Custom Key Store feature
+(http://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html)
+feature in AWS KMS, which combines the convenience and extensive
+integration of AWS KMS with the isolation and control of a
+single-tenant key store.
+
 
 =head2 UpdateKeyDescription
 
@@ -1564,6 +2173,11 @@ decription of a CMK, use DescribeKey.
 
 You cannot perform this operation on a CMK in a different AWS account.
 
+The result of this operation varies with the key state of the CMK. For
+details, see How Key State Affects Use of a Customer Master Key
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
+in the I<AWS Key Management Service Developer Guide>.
+
 
 
 
@@ -1571,9 +2185,9 @@ You cannot perform this operation on a CMK in a different AWS account.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 ListAllAliases(sub { },[Limit => Int, Marker => Str])
+=head2 ListAllAliases(sub { },[KeyId => Str, Limit => Int, Marker => Str])
 
-=head2 ListAllAliases([Limit => Int, Marker => Str])
+=head2 ListAllAliases([KeyId => Str, Limit => Int, Marker => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

@@ -33,14 +33,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeHostReservationsResult = $ec2->DescribeHostReservations(
       Filter => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
-      HostReservationIdSet => [ 'MyString', ... ],    # OPTIONAL
-      MaxResults           => 1,                      # OPTIONAL
-      NextToken            => 'MyString',             # OPTIONAL
+      ],                           # OPTIONAL
+      HostReservationIdSet => [
+        'MyString', ...            # OPTIONAL
+      ],                           # OPTIONAL
+      MaxResults => 1,             # OPTIONAL
+      NextToken  => 'MyString',    # OPTIONAL
     );
 
     # Results:
@@ -64,7 +68,7 @@ One or more filters.
 
 =item *
 
-C<instance-family> - The instance family (e.g., C<m4>).
+C<instance-family> - The instance family (for example, C<m4>).
 
 =item *
 
@@ -91,8 +95,8 @@ One or more host reservation IDs.
 
 The maximum number of results to return for the request in a single
 page. The remaining results can be seen by sending another request with
-the returned C<nextToken> value. This value can be between 5 and 500;
-if C<maxResults> is given a larger value than 500, you will receive an
+the returned C<nextToken> value. This value can be between 5 and 500.
+If C<maxResults> is given a larger value than 500, you receive an
 error.
 
 

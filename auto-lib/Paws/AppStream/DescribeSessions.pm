@@ -48,7 +48,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::AppStream::DescribeSessionsResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/appstream2/DescribeSessions>
 
 =head1 ATTRIBUTES
 
@@ -89,7 +89,7 @@ The name of the stack. This value is case-sensitive.
 
 =head2 UserId => Str
 
-The user ID.
+The user identifier.
 
 
 

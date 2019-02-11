@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::StepFunctio
 
 =head1 DESCRIPTION
 
-Contains details about an activity schedule failure which occurred
+Contains details about an activity schedule failure that occurred
 during an execution.
 
 =head1 ATTRIBUTES

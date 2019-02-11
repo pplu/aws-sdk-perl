@@ -32,23 +32,26 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 
 =head1 DESCRIPTION
 
-Details and tracking information for a single time a person is tracked
-in a video. Amazon Rekognition operations that track persons return an
-array of C<PersonDetection> objects with elements for each time a
-person is tracked in a video. For more information, see .
+Details and path tracking information for a single time a person's path
+is tracked in a video. Amazon Rekognition operations that track
+people's paths return an array of C<PersonDetection> objects with
+elements for each time a person's path is tracked in a video.
+
+For more information, see GetPersonTracking in the Amazon Rekognition
+Developer Guide.
 
 =head1 ATTRIBUTES
 
 
 =head2 Person => L<Paws::Rekognition::PersonDetail>
 
-  Details about a person tracked in a video.
+  Details about a person whose path was tracked in a video.
 
 
 =head2 Timestamp => Int
 
-  The time, in milliseconds from the start of the video, that the person
-was tracked.
+  The time, in milliseconds from the start of the video, that the
+person's path was tracked.
 
 
 

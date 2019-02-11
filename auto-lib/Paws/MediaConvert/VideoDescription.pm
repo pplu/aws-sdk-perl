@@ -2,7 +2,7 @@ package Paws::MediaConvert::VideoDescription;
   use Moose;
   has AfdSignaling => (is => 'ro', isa => 'Str', request_name => 'afdSignaling', traits => ['NameInRequest']);
   has AntiAlias => (is => 'ro', isa => 'Str', request_name => 'antiAlias', traits => ['NameInRequest']);
-  has CodecSettings => (is => 'ro', isa => 'Paws::MediaConvert::VideoCodecSettings', request_name => 'codecSettings', traits => ['NameInRequest'], required => 1);
+  has CodecSettings => (is => 'ro', isa => 'Paws::MediaConvert::VideoCodecSettings', request_name => 'codecSettings', traits => ['NameInRequest']);
   has ColorMetadata => (is => 'ro', isa => 'Str', request_name => 'colorMetadata', traits => ['NameInRequest']);
   has Crop => (is => 'ro', isa => 'Paws::MediaConvert::Rectangle', request_name => 'crop', traits => ['NameInRequest']);
   has DropFrameTimecode => (is => 'ro', isa => 'Str', request_name => 'dropFrameTimecode', traits => ['NameInRequest']);
@@ -60,7 +60,7 @@ Settings for video outputs
   
 
 
-=head2 B<REQUIRED> CodecSettings => L<Paws::MediaConvert::VideoCodecSettings>
+=head2 CodecSettings => L<Paws::MediaConvert::VideoCodecSettings>
 
   
 
@@ -75,9 +75,10 @@ Settings for video outputs
   Applies only if your input aspect ratio is different from your output
 aspect ratio. Use Input cropping rectangle (Crop) to specify the video
 area the service will include in the output. This will crop the input
-source, causing video pixels to be removed on encode. Do not use this
-setting if you have enabled Stretch to output (stretchToOutput) in your
-output settings.
+source, causing video pixels to be removed on encode. If you crop your
+input frame size to smaller than your output frame size, make sure to
+specify the behavior you want in your output setting "Scaling
+behavior".
 
 
 =head2 DropFrameTimecode => Str

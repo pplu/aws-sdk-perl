@@ -40,18 +40,20 @@ User send message response.
 
 =head2 ApplicationId => Str
 
-  Application id of the message.
+  The unique ID of the Amazon Pinpoint project used to send the message.
 
 
 =head2 RequestId => Str
 
-  Original request Id for which this message was delivered.
+  The unique ID assigned to the users-messages request.
 
 
 =head2 Result => L<Paws::Pinpoint::MapOfMapOfEndpointMessageResult>
 
-  A map containing of UserId to Map of EndpointId to Endpoint Message
-Result.
+  An object that shows the endpoints that were messaged for each user.
+The object provides a list of user IDs. For each user ID, it provides
+the endpoint IDs that were messaged. For each endpoint ID, it provides
+an EndpointMessageResult object.
 
 
 

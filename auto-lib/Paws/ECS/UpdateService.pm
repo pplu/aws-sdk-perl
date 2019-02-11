@@ -102,11 +102,11 @@ should ignore unhealthy Elastic Load Balancing target health checks
 after a task has first started. This is only valid if your service is
 configured to use a load balancer. If your service's tasks take a while
 to start and respond to Elastic Load Balancing health checks, you can
-specify a health check grace period of up to 1,800 seconds during which
-the ECS service scheduler ignores the Elastic Load Balancing health
-check status. This grace period can prevent the ECS service scheduler
-from marking tasks as unhealthy and stopping them before they have time
-to come up.
+specify a health check grace period of up to 1,800 seconds. During that
+time, the ECS service scheduler ignores the Elastic Load Balancing
+health check status. This grace period can prevent the ECS service
+scheduler from marking tasks as unhealthy and stopping them before they
+have time to come up.
 
 
 
@@ -129,7 +129,12 @@ new service deployment.
 
 =head2 PlatformVersion => Str
 
-The platform version you want to update your service to run.
+The platform version on which your tasks in the service are running. A
+platform version is only specified for tasks using the Fargate launch
+type. If one is not specified, the C<LATEST> platform version is used
+by default. For more information, see AWS Fargate Platform Versions
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 

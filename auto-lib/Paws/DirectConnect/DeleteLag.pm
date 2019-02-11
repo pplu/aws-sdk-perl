@@ -35,8 +35,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $AllowsHostedConnections = $Lag->AllowsHostedConnections;
     my $AwsDevice               = $Lag->AwsDevice;
+    my $AwsDeviceV2             = $Lag->AwsDeviceV2;
     my $Connections             = $Lag->Connections;
     my $ConnectionsBandwidth    = $Lag->ConnectionsBandwidth;
+    my $HasLogicalRedundancy    = $Lag->HasLogicalRedundancy;
+    my $JumboFrameCapable       = $Lag->JumboFrameCapable;
     my $LagId                   = $Lag->LagId;
     my $LagName                 = $Lag->LagName;
     my $LagState                = $Lag->LagState;
@@ -56,11 +59,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =head2 B<REQUIRED> LagId => Str
 
-The ID of the LAG to delete.
-
-Example: dxlag-abc123
-
-Default: None
+The ID of the LAG.
 
 
 

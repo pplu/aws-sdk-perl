@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SubmitTaskStateChangeResponse = $ecs->SubmitTaskStateChange(
       Attachments => [
         {
-          attachmentArn => 'MyString',
-          status        => 'MyString',
+          AttachmentArn => 'MyString',
+          Status        => 'MyString',
 
         },
         ...
@@ -47,19 +47,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Cluster    => 'MyString',    # OPTIONAL
       Containers => [
         {
-          containerName   => 'MyString',
-          exitCode        => 1,            # OPTIONAL
-          networkBindings => [
+          ContainerName   => 'MyString',
+          ExitCode        => 1,            # OPTIONAL
+          NetworkBindings => [
             {
-              bindIP        => 'MyString',
-              containerPort => 1,            # OPTIONAL
-              hostPort      => 1,            # OPTIONAL
-              protocol      => 'tcp',        # values: tcp, udp; OPTIONAL
+              BindIP        => 'MyString',
+              ContainerPort => 1,            # OPTIONAL
+              HostPort      => 1,            # OPTIONAL
+              Protocol      => 'tcp',        # values: tcp, udp; OPTIONAL
             },
             ...
           ],                                 # OPTIONAL
-          reason => 'MyString',
-          status => 'MyString',
+          Reason => 'MyString',
+          Status => 'MyString',
         },
         ...
       ],                                     # OPTIONAL
@@ -103,19 +103,19 @@ Any containers associated with the state change request.
 
 =head2 ExecutionStoppedAt => Str
 
-The Unix time stamp for when the task execution stopped.
+The Unix timestamp for when the task execution stopped.
 
 
 
 =head2 PullStartedAt => Str
 
-The Unix time stamp for when the container image pull began.
+The Unix timestamp for when the container image pull began.
 
 
 
 =head2 PullStoppedAt => Str
 
-The Unix time stamp for when the container image pull completed.
+The Unix timestamp for when the container image pull completed.
 
 
 

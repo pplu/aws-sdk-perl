@@ -41,14 +41,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Deploy
 
 =head1 DESCRIPTION
 
-The details of an Amazon ECS service deployment.
+The details of an Amazon ECS service deployment. This is used when a
+service uses the C<CODE_DEPLOY> deployment controller type.
 
 =head1 ATTRIBUTES
 
 
 =head2 CreatedAt => Str
 
-  The Unix time stamp for when the service was created.
+  The Unix timestamp for when the service deployment was created.
 
 
 =head2 DesiredCount => Int
@@ -64,13 +65,16 @@ service to deploy or maintain.
 
 =head2 LaunchType => Str
 
-  The launch type on which your service is running.
+  The launch type the tasks in the service are using. For more
+information, see Amazon ECS Launch Types
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 =head2 NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>
 
   The VPC subnet and security group configuration for tasks that receive
-their own Elastic Network Interface by using the C<awsvpc> networking
+their own elastic network interface by using the C<awsvpc> networking
 mode.
 
 
@@ -82,7 +86,12 @@ status.
 
 =head2 PlatformVersion => Str
 
-  The platform version on which your service is running.
+  The platform version on which your tasks in the service are running. A
+platform version is only specified for tasks using the Fargate launch
+type. If one is not specified, the C<LATEST> platform version is used
+by default. For more information, see AWS Fargate Platform Versions
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 =head2 RunningCount => Int
@@ -93,21 +102,36 @@ status.
 
 =head2 Status => Str
 
-  The status of the deployment. Valid values are C<PRIMARY> (for the most
-recent deployment), C<ACTIVE> (for previous deployments that still have
-tasks running, but are being replaced with the C<PRIMARY> deployment),
-and C<INACTIVE> (for deployments that have been completely replaced).
+  The status of the deployment. The following describes each state:
+
+=over
+
+=item PRIMARY
+
+The most recent deployment of a service.
+
+=item ACTIVE
+
+A service deployment that still has running tasks, but are in the
+process of being replaced with a new C<PRIMARY> deployment.
+
+=item INACTIVE
+
+A deployment that has been completely replaced.
+
+=back
+
 
 
 =head2 TaskDefinition => Str
 
-  The most recent task definition that was specified for the service to
-use.
+  The most recent task definition that was specified for the tasks in the
+service to use.
 
 
 =head2 UpdatedAt => Str
 
-  The Unix time stamp for when the service was last updated.
+  The Unix timestamp for when the service deployment was last updated.
 
 
 

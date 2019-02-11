@@ -15,6 +15,11 @@ package Paws::Config;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
+  sub BatchGetAggregateResourceConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::BatchGetAggregateResourceConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub BatchGetResourceConfig {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::BatchGetResourceConfig', @_);
@@ -145,6 +150,16 @@ package Paws::Config;
     my $call_object = $self->new_with_coercions('Paws::Config::GetAggregateConfigRuleComplianceSummary', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetAggregateDiscoveredResourceCounts {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::GetAggregateDiscoveredResourceCounts', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetAggregateResourceConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::GetAggregateResourceConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetComplianceDetailsByConfigRule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::GetComplianceDetailsByConfigRule', @_);
@@ -173,6 +188,11 @@ package Paws::Config;
   sub GetResourceConfigHistory {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::GetResourceConfigHistory', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListAggregateDiscoveredResources {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::ListAggregateDiscoveredResources', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListDiscoveredResources {
@@ -231,6 +251,52 @@ package Paws::Config;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllAggregateComplianceByConfigRules {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeAggregateComplianceByConfigRules(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeAggregateComplianceByConfigRules(@_, NextToken => $next_result->NextToken);
+        push @{ $result->AggregateComplianceByConfigRules }, @{ $next_result->AggregateComplianceByConfigRules };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'AggregateComplianceByConfigRules') foreach (@{ $result->AggregateComplianceByConfigRules });
+        $result = $self->DescribeAggregateComplianceByConfigRules(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'AggregateComplianceByConfigRules') foreach (@{ $result->AggregateComplianceByConfigRules });
+    }
+
+    return undef
+  }
+  sub DescribeAllAggregationAuthorizations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeAggregationAuthorizations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeAggregationAuthorizations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->AggregationAuthorizations }, @{ $next_result->AggregationAuthorizations };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'AggregationAuthorizations') foreach (@{ $result->AggregationAuthorizations });
+        $result = $self->DescribeAggregationAuthorizations(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'AggregationAuthorizations') foreach (@{ $result->AggregationAuthorizations });
+    }
+
+    return undef
+  }
   sub DescribeAllComplianceByConfigRule {
     my $self = shift;
 
@@ -277,6 +343,29 @@ package Paws::Config;
 
     return undef
   }
+  sub DescribeAllConfigRuleEvaluationStatus {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeConfigRuleEvaluationStatus(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeConfigRuleEvaluationStatus(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ConfigRulesEvaluationStatus }, @{ $next_result->ConfigRulesEvaluationStatus };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ConfigRulesEvaluationStatus') foreach (@{ $result->ConfigRulesEvaluationStatus });
+        $result = $self->DescribeConfigRuleEvaluationStatus(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ConfigRulesEvaluationStatus') foreach (@{ $result->ConfigRulesEvaluationStatus });
+    }
+
+    return undef
+  }
   sub DescribeAllConfigRules {
     my $self = shift;
 
@@ -296,6 +385,121 @@ package Paws::Config;
         $result = $self->DescribeConfigRules(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'ConfigRules') foreach (@{ $result->ConfigRules });
+    }
+
+    return undef
+  }
+  sub DescribeAllConfigurationAggregators {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeConfigurationAggregators(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeConfigurationAggregators(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ConfigurationAggregators }, @{ $next_result->ConfigurationAggregators };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ConfigurationAggregators') foreach (@{ $result->ConfigurationAggregators });
+        $result = $self->DescribeConfigurationAggregators(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ConfigurationAggregators') foreach (@{ $result->ConfigurationAggregators });
+    }
+
+    return undef
+  }
+  sub DescribeAllConfigurationAggregatorSourcesStatus {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeConfigurationAggregatorSourcesStatus(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeConfigurationAggregatorSourcesStatus(@_, NextToken => $next_result->NextToken);
+        push @{ $result->AggregatedSourceStatusList }, @{ $next_result->AggregatedSourceStatusList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'AggregatedSourceStatusList') foreach (@{ $result->AggregatedSourceStatusList });
+        $result = $self->DescribeConfigurationAggregatorSourcesStatus(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'AggregatedSourceStatusList') foreach (@{ $result->AggregatedSourceStatusList });
+    }
+
+    return undef
+  }
+  sub DescribeAllPendingAggregationRequests {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribePendingAggregationRequests(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribePendingAggregationRequests(@_, NextToken => $next_result->NextToken);
+        push @{ $result->PendingAggregationRequests }, @{ $next_result->PendingAggregationRequests };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'PendingAggregationRequests') foreach (@{ $result->PendingAggregationRequests });
+        $result = $self->DescribePendingAggregationRequests(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'PendingAggregationRequests') foreach (@{ $result->PendingAggregationRequests });
+    }
+
+    return undef
+  }
+  sub DescribeAllRetentionConfigurations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeRetentionConfigurations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeRetentionConfigurations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->RetentionConfigurations }, @{ $next_result->RetentionConfigurations };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'RetentionConfigurations') foreach (@{ $result->RetentionConfigurations });
+        $result = $self->DescribeRetentionConfigurations(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'RetentionConfigurations') foreach (@{ $result->RetentionConfigurations });
+    }
+
+    return undef
+  }
+  sub GetAllAggregateComplianceDetailsByConfigRule {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetAggregateComplianceDetailsByConfigRule(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetAggregateComplianceDetailsByConfigRule(@_, NextToken => $next_result->NextToken);
+        push @{ $result->AggregateEvaluationResults }, @{ $next_result->AggregateEvaluationResults };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'AggregateEvaluationResults') foreach (@{ $result->AggregateEvaluationResults });
+        $result = $self->GetAggregateComplianceDetailsByConfigRule(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'AggregateEvaluationResults') foreach (@{ $result->AggregateEvaluationResults });
     }
 
     return undef
@@ -369,6 +573,29 @@ package Paws::Config;
 
     return undef
   }
+  sub ListAllAggregateDiscoveredResources {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAggregateDiscoveredResources(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListAggregateDiscoveredResources(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ResourceIdentifiers }, @{ $next_result->ResourceIdentifiers };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ResourceIdentifiers') foreach (@{ $result->ResourceIdentifiers });
+        $result = $self->ListAggregateDiscoveredResources(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ResourceIdentifiers') foreach (@{ $result->ResourceIdentifiers });
+    }
+
+    return undef
+  }
   sub ListAllDiscoveredResources {
     my $self = shift;
 
@@ -394,7 +621,7 @@ package Paws::Config;
   }
 
 
-  sub operations { qw/BatchGetResourceConfig DeleteAggregationAuthorization DeleteConfigRule DeleteConfigurationAggregator DeleteConfigurationRecorder DeleteDeliveryChannel DeleteEvaluationResults DeletePendingAggregationRequest DeleteRetentionConfiguration DeliverConfigSnapshot DescribeAggregateComplianceByConfigRules DescribeAggregationAuthorizations DescribeComplianceByConfigRule DescribeComplianceByResource DescribeConfigRuleEvaluationStatus DescribeConfigRules DescribeConfigurationAggregators DescribeConfigurationAggregatorSourcesStatus DescribeConfigurationRecorders DescribeConfigurationRecorderStatus DescribeDeliveryChannels DescribeDeliveryChannelStatus DescribePendingAggregationRequests DescribeRetentionConfigurations GetAggregateComplianceDetailsByConfigRule GetAggregateConfigRuleComplianceSummary GetComplianceDetailsByConfigRule GetComplianceDetailsByResource GetComplianceSummaryByConfigRule GetComplianceSummaryByResourceType GetDiscoveredResourceCounts GetResourceConfigHistory ListDiscoveredResources PutAggregationAuthorization PutConfigRule PutConfigurationAggregator PutConfigurationRecorder PutDeliveryChannel PutEvaluations PutRetentionConfiguration StartConfigRulesEvaluation StartConfigurationRecorder StopConfigurationRecorder / }
+  sub operations { qw/BatchGetAggregateResourceConfig BatchGetResourceConfig DeleteAggregationAuthorization DeleteConfigRule DeleteConfigurationAggregator DeleteConfigurationRecorder DeleteDeliveryChannel DeleteEvaluationResults DeletePendingAggregationRequest DeleteRetentionConfiguration DeliverConfigSnapshot DescribeAggregateComplianceByConfigRules DescribeAggregationAuthorizations DescribeComplianceByConfigRule DescribeComplianceByResource DescribeConfigRuleEvaluationStatus DescribeConfigRules DescribeConfigurationAggregators DescribeConfigurationAggregatorSourcesStatus DescribeConfigurationRecorders DescribeConfigurationRecorderStatus DescribeDeliveryChannels DescribeDeliveryChannelStatus DescribePendingAggregationRequests DescribeRetentionConfigurations GetAggregateComplianceDetailsByConfigRule GetAggregateConfigRuleComplianceSummary GetAggregateDiscoveredResourceCounts GetAggregateResourceConfig GetComplianceDetailsByConfigRule GetComplianceDetailsByResource GetComplianceSummaryByConfigRule GetComplianceSummaryByResourceType GetDiscoveredResourceCounts GetResourceConfigHistory ListAggregateDiscoveredResources ListDiscoveredResources PutAggregationAuthorization PutConfigRule PutConfigurationAggregator PutConfigurationRecorder PutDeliveryChannel PutEvaluations PutRetentionConfiguration StartConfigRulesEvaluation StartConfigurationRecorder StopConfigurationRecorder / }
 
 1;
 
@@ -453,6 +680,41 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/con
 
 
 =head1 METHODS
+
+=head2 BatchGetAggregateResourceConfig
+
+=over
+
+=item ConfigurationAggregatorName => Str
+
+=item ResourceIdentifiers => ArrayRef[L<Paws::Config::AggregateResourceIdentifier>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::BatchGetAggregateResourceConfig>
+
+Returns: a L<Paws::Config::BatchGetAggregateResourceConfigResponse> instance
+
+Returns the current configuration items for resources that are present
+in your AWS Config aggregator. The operation also returns a list of
+resources that are not processed in the current request. If there are
+no unprocessed resources, the operation returns an empty
+C<unprocessedResourceIdentifiers> list.
+
+=over
+
+=item *
+
+The API does not return results for deleted resources.
+
+=item *
+
+The API does not return tags and relationships.
+
+=back
+
+
 
 =head2 BatchGetResourceConfig
 
@@ -1121,6 +1383,57 @@ The results can return an empty result page, but if you have a
 nextToken, the results are displayed on the next page.
 
 
+=head2 GetAggregateDiscoveredResourceCounts
+
+=over
+
+=item ConfigurationAggregatorName => Str
+
+=item [Filters => L<Paws::Config::ResourceCountFilters>]
+
+=item [GroupByKey => Str]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::GetAggregateDiscoveredResourceCounts>
+
+Returns: a L<Paws::Config::GetAggregateDiscoveredResourceCountsResponse> instance
+
+Returns the resource counts across accounts and regions that are
+present in your AWS Config aggregator. You can request the resource
+counts by providing filters and GroupByKey.
+
+For example, if the input contains accountID 12345678910 and region
+us-east-1 in filters, the API returns the count of resources in account
+ID 12345678910 and region us-east-1. If the input contains ACCOUNT_ID
+as a GroupByKey, the API returns resource counts for all source
+accounts that are present in your aggregator.
+
+
+=head2 GetAggregateResourceConfig
+
+=over
+
+=item ConfigurationAggregatorName => Str
+
+=item ResourceIdentifier => L<Paws::Config::AggregateResourceIdentifier>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::GetAggregateResourceConfig>
+
+Returns: a L<Paws::Config::GetAggregateResourceConfigResponse> instance
+
+Returns configuration item that is aggregated for your specific
+resource in a specific source account and region.
+
+
 =head2 GetComplianceDetailsByConfigRule
 
 =over
@@ -1333,6 +1646,41 @@ Each call to the API is limited to span a duration of seven days. It is
 likely that the number of records returned is smaller than the
 specified C<limit>. In such cases, you can make another call, using the
 C<nextToken>.
+
+
+=head2 ListAggregateDiscoveredResources
+
+=over
+
+=item ConfigurationAggregatorName => Str
+
+=item ResourceType => Str
+
+=item [Filters => L<Paws::Config::ResourceFilters>]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::ListAggregateDiscoveredResources>
+
+Returns: a L<Paws::Config::ListAggregateDiscoveredResourcesResponse> instance
+
+Accepts a resource type and returns a list of resource identifiers that
+are aggregated for a specific resource type across accounts and
+regions. A resource identifier includes the resource type, ID, (if
+available) the custom resource name, source account, and source region.
+You can narrow the results to include only resources that have specific
+resource IDs, or a resource name, or source account ID, or source
+region.
+
+For example, if the input consists of accountID 12345678910 and the
+region is us-east-1 for resource type C<AWS::EC2::Instance> then the
+API returns all the EC2 instance identifiers of accountID 12345678910
+and region us-east-1.
 
 
 =head2 ListDiscoveredResources
@@ -1691,6 +2039,30 @@ to record in your AWS account.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
+=head2 DescribeAllAggregateComplianceByConfigRules(sub { },ConfigurationAggregatorName => Str, [Filters => L<Paws::Config::ConfigRuleComplianceFilters>, Limit => Int, NextToken => Str])
+
+=head2 DescribeAllAggregateComplianceByConfigRules(ConfigurationAggregatorName => Str, [Filters => L<Paws::Config::ConfigRuleComplianceFilters>, Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AggregateComplianceByConfigRules, passing the object as the first parameter, and the string 'AggregateComplianceByConfigRules' as the second parameter 
+
+If not, it will return a a L<Paws::Config::DescribeAggregateComplianceByConfigRulesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllAggregationAuthorizations(sub { },[Limit => Int, NextToken => Str])
+
+=head2 DescribeAllAggregationAuthorizations([Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AggregationAuthorizations, passing the object as the first parameter, and the string 'AggregationAuthorizations' as the second parameter 
+
+If not, it will return a a L<Paws::Config::DescribeAggregationAuthorizationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllComplianceByConfigRule(sub { },[ComplianceTypes => ArrayRef[Str|Undef], ConfigRuleNames => ArrayRef[Str|Undef], NextToken => Str])
 
 =head2 DescribeAllComplianceByConfigRule([ComplianceTypes => ArrayRef[Str|Undef], ConfigRuleNames => ArrayRef[Str|Undef], NextToken => Str])
@@ -1715,6 +2087,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Config::DescribeComplianceByResourceResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 DescribeAllConfigRuleEvaluationStatus(sub { },[ConfigRuleNames => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+
+=head2 DescribeAllConfigRuleEvaluationStatus([ConfigRuleNames => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ConfigRulesEvaluationStatus, passing the object as the first parameter, and the string 'ConfigRulesEvaluationStatus' as the second parameter 
+
+If not, it will return a a L<Paws::Config::DescribeConfigRuleEvaluationStatusResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllConfigRules(sub { },[ConfigRuleNames => ArrayRef[Str|Undef], NextToken => Str])
 
 =head2 DescribeAllConfigRules([ConfigRuleNames => ArrayRef[Str|Undef], NextToken => Str])
@@ -1725,6 +2109,66 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - ConfigRules, passing the object as the first parameter, and the string 'ConfigRules' as the second parameter 
 
 If not, it will return a a L<Paws::Config::DescribeConfigRulesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllConfigurationAggregators(sub { },[ConfigurationAggregatorNames => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+
+=head2 DescribeAllConfigurationAggregators([ConfigurationAggregatorNames => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ConfigurationAggregators, passing the object as the first parameter, and the string 'ConfigurationAggregators' as the second parameter 
+
+If not, it will return a a L<Paws::Config::DescribeConfigurationAggregatorsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllConfigurationAggregatorSourcesStatus(sub { },ConfigurationAggregatorName => Str, [Limit => Int, NextToken => Str, UpdateStatus => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllConfigurationAggregatorSourcesStatus(ConfigurationAggregatorName => Str, [Limit => Int, NextToken => Str, UpdateStatus => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AggregatedSourceStatusList, passing the object as the first parameter, and the string 'AggregatedSourceStatusList' as the second parameter 
+
+If not, it will return a a L<Paws::Config::DescribeConfigurationAggregatorSourcesStatusResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllPendingAggregationRequests(sub { },[Limit => Int, NextToken => Str])
+
+=head2 DescribeAllPendingAggregationRequests([Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PendingAggregationRequests, passing the object as the first parameter, and the string 'PendingAggregationRequests' as the second parameter 
+
+If not, it will return a a L<Paws::Config::DescribePendingAggregationRequestsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllRetentionConfigurations(sub { },[NextToken => Str, RetentionConfigurationNames => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllRetentionConfigurations([NextToken => Str, RetentionConfigurationNames => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - RetentionConfigurations, passing the object as the first parameter, and the string 'RetentionConfigurations' as the second parameter 
+
+If not, it will return a a L<Paws::Config::DescribeRetentionConfigurationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllAggregateComplianceDetailsByConfigRule(sub { },AccountId => Str, AwsRegion => Str, ConfigRuleName => Str, ConfigurationAggregatorName => Str, [ComplianceType => Str, Limit => Int, NextToken => Str])
+
+=head2 GetAllAggregateComplianceDetailsByConfigRule(AccountId => Str, AwsRegion => Str, ConfigRuleName => Str, ConfigurationAggregatorName => Str, [ComplianceType => Str, Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AggregateEvaluationResults, passing the object as the first parameter, and the string 'AggregateEvaluationResults' as the second parameter 
+
+If not, it will return a a L<Paws::Config::GetAggregateComplianceDetailsByConfigRuleResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 GetAllComplianceDetailsByConfigRule(sub { },ConfigRuleName => Str, [ComplianceTypes => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
@@ -1761,6 +2205,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - configurationItems, passing the object as the first parameter, and the string 'configurationItems' as the second parameter 
 
 If not, it will return a a L<Paws::Config::GetResourceConfigHistoryResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAggregateDiscoveredResources(sub { },ConfigurationAggregatorName => Str, ResourceType => Str, [Filters => L<Paws::Config::ResourceFilters>, Limit => Int, NextToken => Str])
+
+=head2 ListAllAggregateDiscoveredResources(ConfigurationAggregatorName => Str, ResourceType => Str, [Filters => L<Paws::Config::ResourceFilters>, Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ResourceIdentifiers, passing the object as the first parameter, and the string 'ResourceIdentifiers' as the second parameter 
+
+If not, it will return a a L<Paws::Config::ListAggregateDiscoveredResourcesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllDiscoveredResources(sub { },ResourceType => Str, [IncludeDeletedResources => Bool, Limit => Int, NextToken => Str, ResourceIds => ArrayRef[Str|Undef], ResourceName => Str])

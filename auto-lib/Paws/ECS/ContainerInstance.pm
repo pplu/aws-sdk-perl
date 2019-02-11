@@ -12,6 +12,7 @@ package Paws::ECS::ContainerInstance;
   has RemainingResources => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Resource]', request_name => 'remainingResources', traits => ['NameInRequest']);
   has RunningTasksCount => (is => 'ro', isa => 'Int', request_name => 'runningTasksCount', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', request_name => 'tags', traits => ['NameInRequest']);
   has Version => (is => 'ro', isa => 'Int', request_name => 'version', traits => ['NameInRequest']);
   has VersionInfo => (is => 'ro', isa => 'Paws::ECS::VersionInfo', request_name => 'versionInfo', traits => ['NameInRequest']);
 1;
@@ -54,7 +55,7 @@ registered with a cluster.
 
   This parameter returns C<true> if the agent is connected to Amazon ECS.
 Registered instances with an agent that may be unhealthy or stopped
-return C<false>. Instances without a connected agent can't accept
+return C<false>. Only instances connected to an agent can accept
 placement requests.
 
 
@@ -66,7 +67,7 @@ requested, this value is C<NULL>.
 
 =head2 Attachments => ArrayRef[L<Paws::ECS::Attachment>]
 
-  The Elastic Network Interfaces associated with the container instance.
+  The elastic network interfaces associated with the container instance.
 
 
 =head2 Attributes => ArrayRef[L<Paws::ECS::Attribute>]
@@ -79,7 +80,7 @@ PutAttributes operation.
 =head2 ContainerInstanceArn => Str
 
   The Amazon Resource Name (ARN) of the container instance. The ARN
-contains the C<arn:aws:ecs> namespace, followed by the region of the
+contains the C<arn:aws:ecs> namespace, followed by the Region of the
 container instance, the AWS account ID of the container instance owner,
 the C<container-instance> namespace, and then the container instance
 ID. For example,
@@ -100,14 +101,14 @@ C<PENDING> status.
 
 =head2 RegisteredAt => Str
 
-  The Unix time stamp for when the container instance was registered.
+  The Unix timestamp for when the container instance was registered.
 
 
 =head2 RegisteredResources => ArrayRef[L<Paws::ECS::Resource>]
 
   For CPU and memory resource types, this parameter describes the amount
 of each resource that was available on the container instance when the
-container agent registered it with Amazon ECS; this value represents
+container agent registered it with Amazon ECS. This value represents
 the total amount of CPU and memory that can be allocated on this
 container instance to tasks. For port resource types, this parameter
 describes the ports that were reserved by the Amazon ECS container
@@ -140,8 +141,17 @@ instance can accept tasks. C<DRAINING> indicates that new tasks are not
 placed on the container instance and any service tasks running on the
 container instance are removed if possible. For more information, see
 Container Instance Draining
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-draining.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-draining.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
+
+
+=head2 Tags => ArrayRef[L<Paws::ECS::Tag>]
+
+  The metadata that you apply to the container instance to help you
+categorize and organize them. Each tag consists of a key and an
+optional value, both of which you define. Tag keys can have a maximum
+character length of 128 characters, and tag values can have a maximum
+length of 256 characters.
 
 
 =head2 Version => Int

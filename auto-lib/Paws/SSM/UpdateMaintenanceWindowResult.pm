@@ -6,8 +6,11 @@ package Paws::SSM::UpdateMaintenanceWindowResult;
   has Description => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Int');
   has Enabled => (is => 'ro', isa => 'Bool');
+  has EndDate => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Schedule => (is => 'ro', isa => 'Str');
+  has ScheduleTimezone => (is => 'ro', isa => 'Str');
+  has StartDate => (is => 'ro', isa => 'Str');
   has WindowId => (is => 'ro', isa => 'Str');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -48,6 +51,13 @@ The duration of the Maintenance Window in hours.
 Whether the Maintenance Window is enabled.
 
 
+=head2 EndDate => Str
+
+The date and time, in ISO-8601 Extended format, for when the
+Maintenance Window is scheduled to become inactive. The Maintenance
+Window will not run after this specified time.
+
+
 =head2 Name => Str
 
 The name of the Maintenance Window.
@@ -57,6 +67,22 @@ The name of the Maintenance Window.
 
 The schedule of the Maintenance Window in the form of a cron or rate
 expression.
+
+
+=head2 ScheduleTimezone => Str
+
+The time zone that the scheduled Maintenance Window executions are
+based on, in Internet Assigned Numbers Authority (IANA) format. For
+example: "America/Los_Angeles", "etc/UTC", or "Asia/Seoul". For more
+information, see the Time Zone Database
+(https://www.iana.org/time-zones) on the IANA website.
+
+
+=head2 StartDate => Str
+
+The date and time, in ISO-8601 Extended format, for when the
+Maintenance Window is scheduled to become active. The Maintenance
+Window will not run before this specified time.
 
 
 =head2 WindowId => Str

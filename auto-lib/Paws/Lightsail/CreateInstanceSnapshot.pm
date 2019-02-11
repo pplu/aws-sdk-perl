@@ -3,6 +3,7 @@ package Paws::Lightsail::CreateInstanceSnapshot;
   use Moose;
   has InstanceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceName' , required => 1);
   has InstanceSnapshotName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceSnapshotName' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
@@ -31,7 +32,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateInstanceSnapshotResult = $lightsail->CreateInstanceSnapshot(
       InstanceName         => 'MyResourceName',
       InstanceSnapshotName => 'MyResourceName',
-
+      Tags                 => [
+        {
+          Key   => 'MyTagKey',      # OPTIONAL
+          Value => 'MyTagValue',    # OPTIONAL
+        },
+        ...
+      ],                            # OPTIONAL
     );
 
     # Results:
@@ -54,6 +61,15 @@ The Lightsail instance on which to base your snapshot.
 =head2 B<REQUIRED> InstanceSnapshotName => Str
 
 The name for your new snapshot.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::Lightsail::Tag>]
+
+The tag keys and optional values to add to the resource during create.
+
+To tag a resource after it has been created, see the C<tag resource>
+operation.
 
 
 

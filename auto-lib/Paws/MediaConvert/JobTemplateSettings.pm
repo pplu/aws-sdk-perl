@@ -3,8 +3,9 @@ package Paws::MediaConvert::JobTemplateSettings;
   has AdAvailOffset => (is => 'ro', isa => 'Int', request_name => 'adAvailOffset', traits => ['NameInRequest']);
   has AvailBlanking => (is => 'ro', isa => 'Paws::MediaConvert::AvailBlanking', request_name => 'availBlanking', traits => ['NameInRequest']);
   has Inputs => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::InputTemplate]', request_name => 'inputs', traits => ['NameInRequest']);
+  has MotionImageInserter => (is => 'ro', isa => 'Paws::MediaConvert::MotionImageInserter', request_name => 'motionImageInserter', traits => ['NameInRequest']);
   has NielsenConfiguration => (is => 'ro', isa => 'Paws::MediaConvert::NielsenConfiguration', request_name => 'nielsenConfiguration', traits => ['NameInRequest']);
-  has OutputGroups => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::OutputGroup]', request_name => 'outputGroups', traits => ['NameInRequest'], required => 1);
+  has OutputGroups => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::OutputGroup]', request_name => 'outputGroups', traits => ['NameInRequest']);
   has TimecodeConfig => (is => 'ro', isa => 'Paws::MediaConvert::TimecodeConfig', request_name => 'timecodeConfig', traits => ['NameInRequest']);
   has TimedMetadataInsertion => (is => 'ro', isa => 'Paws::MediaConvert::TimedMetadataInsertion', request_name => 'timedMetadataInsertion', traits => ['NameInRequest']);
 1;
@@ -62,12 +63,18 @@ job. There can only be one input in a job template. Using the API, you
 can include multiple inputs when referencing a job template.
 
 
+=head2 MotionImageInserter => L<Paws::MediaConvert::MotionImageInserter>
+
+  Overlay motion graphics on top of your video. The motion graphics that
+you specify here appear on all outputs in all output groups.
+
+
 =head2 NielsenConfiguration => L<Paws::MediaConvert::NielsenConfiguration>
 
   
 
 
-=head2 B<REQUIRED> OutputGroups => ArrayRef[L<Paws::MediaConvert::OutputGroup>]
+=head2 OutputGroups => ArrayRef[L<Paws::MediaConvert::OutputGroup>]
 
   (OutputGroups) contains one group of settings for each set of outputs
 that share a common package type. All unpackaged files (MPEG-4, MPEG-2

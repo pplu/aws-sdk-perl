@@ -1,6 +1,7 @@
 
 package Paws::ECS::DescribeTaskDefinition;
   use Moose;
+  has Include => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'include' );
   has TaskDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskDefinition' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -44,6 +45,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs/DescribeTaskDefinition>
 
 =head1 ATTRIBUTES
+
+
+=head2 Include => ArrayRef[Str|Undef]
+
+Specifies whether to see the resource tags for the task definition. If
+C<TAGS> is specified, the tags are included in the response. If this
+field is omitted, tags are not included in the response.
+
 
 
 =head2 B<REQUIRED> TaskDefinition => Str

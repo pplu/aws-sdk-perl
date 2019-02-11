@@ -33,8 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Al
 =head1 DESCRIPTION
 
 A complex type that identifies the CloudWatch alarm that you want
-Amazon Route 53 health checkers to use to determine whether this health
-check is healthy.
+Amazon Route 53 health checkers to use to determine whether the
+specified health check is healthy.
 
 =head1 ATTRIBUTES
 
@@ -44,12 +44,31 @@ check is healthy.
   The name of the CloudWatch alarm that you want Amazon Route 53 health
 checkers to use to determine whether this health check is healthy.
 
+Route 53 supports CloudWatch alarms with the following features:
+
+=over
+
+=item *
+
+Standard-resolution metrics. High-resolution metrics aren't supported.
+For more information, see High-Resolution Metrics
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/publishingMetrics.html#high-resolution-metrics)
+in the I<Amazon CloudWatch User Guide>.
+
+=item *
+
+Statistics: Average, Minimum, Maximum, Sum, and SampleCount. Extended
+statistics aren't supported.
+
+=back
+
+
 
 =head2 B<REQUIRED> Region => Str
 
-  A complex type that identifies the CloudWatch alarm that you want
-Amazon Route 53 health checkers to use to determine whether this health
-check is healthy.
+  For the CloudWatch alarm that you want Route 53 health checkers to use
+to determine whether this health check is healthy, the region that the
+alarm was created in.
 
 For the current list of CloudWatch regions, see Amazon CloudWatch
 (http://docs.aws.amazon.com/general/latest/gr/rande.html#cw_region) in

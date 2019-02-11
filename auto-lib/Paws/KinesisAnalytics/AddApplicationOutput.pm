@@ -34,7 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CurrentApplicationVersionId => 1,
       Output                      => {
         DestinationSchema => {
-          RecordFormatType => 'JSON',    # values: JSON, CSV; OPTIONAL
+          RecordFormatType => 'JSON',    # values: JSON, CSV
+
         },
         Name                  => 'MyInAppStreamName',    # min: 1, max: 32
         KinesisFirehoseOutput => {
@@ -83,7 +84,7 @@ current version, the C<ConcurrentModificationException> is returned.
 An array of objects, each describing one output configuration. In the
 output configuration, you specify the name of an in-application stream,
 a destination (that is, an Amazon Kinesis stream, an Amazon Kinesis
-Firehose delivery stream, or an Amazon Lambda function), and record the
+Firehose delivery stream, or an AWS Lambda function), and record the
 formation to use when writing to the destination.
 
 

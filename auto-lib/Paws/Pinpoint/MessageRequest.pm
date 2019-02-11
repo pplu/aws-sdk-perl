@@ -4,6 +4,7 @@ package Paws::Pinpoint::MessageRequest;
   has Context => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string');
   has Endpoints => (is => 'ro', isa => 'Paws::Pinpoint::MapOfEndpointSendConfiguration');
   has MessageConfiguration => (is => 'ro', isa => 'Paws::Pinpoint::DirectMessageConfiguration');
+  has TraceId => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Pinpoint::MessageRequest object:
 
-  $service_obj->Method(Att1 => { Addresses => $value, ..., MessageConfiguration => $value  });
+  $service_obj->Method(Att1 => { Addresses => $value, ..., TraceId => $value  });
 
 =head3 Results returned from an API call
 
@@ -41,9 +42,9 @@ Send message request.
 
 =head2 Addresses => L<Paws::Pinpoint::MapOfAddressConfiguration>
 
-  A map of destination addresses, with the address as the key(Email
-address, phone number or push token) and the Address Configuration as
-the value.
+  A map of key-value pairs, where each key is an address and each value
+is an AddressConfiguration object. An address can be a push
+notification token, a phone number, or an email address.
 
 
 =head2 Context => L<Paws::Pinpoint::MapOf__string>
@@ -55,14 +56,21 @@ or added to the email/sms delivery receipt event attributes.
 
 =head2 Endpoints => L<Paws::Pinpoint::MapOfEndpointSendConfiguration>
 
-  A map of destination addresses, with the address as the key(Email
-address, phone number or push token) and the Address Configuration as
-the value.
+  A map of key-value pairs, where each key is an endpoint ID and each
+value is an EndpointSendConfiguration object. Within an
+EndpointSendConfiguration object, you can tailor the message for an
+endpoint by specifying message overrides or substitutions.
 
 
 =head2 MessageConfiguration => L<Paws::Pinpoint::DirectMessageConfiguration>
 
   Message configuration.
+
+
+=head2 TraceId => Str
+
+  A unique ID that you can use to trace a message. This ID is visible to
+recipients.
 
 
 

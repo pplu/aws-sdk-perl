@@ -38,7 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $RecordId = $PutRecordOutput->RecordId;
+    my $Encrypted = $PutRecordOutput->Encrypted;
+    my $RecordId  = $PutRecordOutput->RecordId;
 
     # Returns a L<Paws::Firehose::PutRecordOutput> object.
 

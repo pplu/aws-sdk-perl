@@ -1,5 +1,6 @@
 package Paws::IoTJobsData::JobExecution;
   use Moose;
+  has ApproximateSecondsBeforeTimedOut => (is => 'ro', isa => 'Int', request_name => 'approximateSecondsBeforeTimedOut', traits => ['NameInRequest']);
   has ExecutionNumber => (is => 'ro', isa => 'Int', request_name => 'executionNumber', traits => ['NameInRequest']);
   has JobDocument => (is => 'ro', isa => 'Str', request_name => 'jobDocument', traits => ['NameInRequest']);
   has JobId => (is => 'ro', isa => 'Str', request_name => 'jobId', traits => ['NameInRequest']);
@@ -29,20 +30,26 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoTJobsData::JobExecution object:
 
-  $service_obj->Method(Att1 => { ExecutionNumber => $value, ..., VersionNumber => $value  });
+  $service_obj->Method(Att1 => { ApproximateSecondsBeforeTimedOut => $value, ..., VersionNumber => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::IoTJobsData::JobExecution object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ExecutionNumber
+  $result->Att1->ApproximateSecondsBeforeTimedOut
 
 =head1 DESCRIPTION
 
 Contains data about a job execution.
 
 =head1 ATTRIBUTES
+
+
+=head2 ApproximateSecondsBeforeTimedOut => Int
+
+  The estimated number of seconds that remain before the job execution
+status will be changed to C<TIMED_OUT>.
 
 
 =head2 ExecutionNumber => Int

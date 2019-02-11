@@ -9,9 +9,13 @@ package Paws::RedShift::ModifyCluster;
   has ClusterType => (is => 'ro', isa => 'Str');
   has ClusterVersion => (is => 'ro', isa => 'Str');
   has ElasticIp => (is => 'ro', isa => 'Str');
+  has Encrypted => (is => 'ro', isa => 'Bool');
   has EnhancedVpcRouting => (is => 'ro', isa => 'Bool');
   has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str');
   has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
+  has KmsKeyId => (is => 'ro', isa => 'Str');
+  has MaintenanceTrackName => (is => 'ro', isa => 'Str');
+  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
   has NewClusterIdentifier => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
@@ -53,9 +57,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ClusterType                      => 'MyString',             # OPTIONAL
       ClusterVersion                   => 'MyString',             # OPTIONAL
       ElasticIp                        => 'MyString',             # OPTIONAL
+      Encrypted                        => 1,                      # OPTIONAL
       EnhancedVpcRouting               => 1,                      # OPTIONAL
       HsmClientCertificateIdentifier   => 'MyString',             # OPTIONAL
       HsmConfigurationIdentifier       => 'MyString',             # OPTIONAL
+      KmsKeyId                         => 'MyString',             # OPTIONAL
+      MaintenanceTrackName             => 'MyString',             # OPTIONAL
+      ManualSnapshotRetentionPeriod    => 1,                      # OPTIONAL
       MasterUserPassword               => 'MyString',             # OPTIONAL
       NewClusterIdentifier             => 'MyString',             # OPTIONAL
       NodeType                         => 'MyString',             # OPTIONAL
@@ -197,6 +205,17 @@ in the Amazon Redshift Cluster Management Guide.
 
 
 
+=head2 Encrypted => Bool
+
+Indicates whether the cluster is encrypted. If the cluster is encrypted
+and you provide a value for the C<KmsKeyId> parameter, we will encrypt
+the cluster with the provided C<KmsKeyId>. If you don't provide a
+C<KmsKeyId>, we will encrypt with the default key. In the China region
+we will use legacy encryption if you specify that the cluster is
+encrypted.
+
+
+
 =head2 EnhancedVpcRouting => Bool
 
 An option that specifies whether to create the cluster with enhanced
@@ -224,6 +243,37 @@ cluster uses to retrieve the data encryption keys stored in an HSM.
 Specifies the name of the HSM configuration that contains the
 information the Amazon Redshift cluster can use to retrieve and store
 keys in an HSM.
+
+
+
+=head2 KmsKeyId => Str
+
+The AWS Key Management Service (KMS) key ID of the encryption key that
+you want to use to encrypt data in the cluster.
+
+
+
+=head2 MaintenanceTrackName => Str
+
+The name for the maintenance track that you want to assign for the
+cluster. This name change is asynchronous. The new track name stays in
+the C<PendingModifiedValues> for the cluster until the next maintenance
+window. When the maintenance track changes, the cluster is switched to
+the latest cluster release available for the maintenance track. At this
+point, the maintenance track name is applied.
+
+
+
+=head2 ManualSnapshotRetentionPeriod => Int
+
+The default for number of days that a newly created manual snapshot is
+retained. If the value is -1, the manual snapshot is retained
+indefinitely. This value doesn't retroactively change the retention
+periods of existing manual snapshots.
+
+The value must be either -1 or an integer between 1 and 3,653.
+
+The default value is -1.
 
 
 

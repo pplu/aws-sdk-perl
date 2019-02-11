@@ -7,6 +7,7 @@ package Paws::Batch::SubmitJob;
   has JobDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobDefinition', required => 1);
   has JobName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobName', required => 1);
   has JobQueue => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobQueue', required => 1);
+  has NodeOverrides => (is => 'ro', isa => 'Paws::Batch::NodeOverrides', traits => ['NameInRequest'], request_name => 'nodeOverrides');
   has Parameters => (is => 'ro', isa => 'Paws::Batch::ParametersMap', traits => ['NameInRequest'], request_name => 'parameters');
   has RetryStrategy => (is => 'ro', isa => 'Paws::Batch::RetryStrategy', traits => ['NameInRequest'], request_name => 'retryStrategy');
   has Timeout => (is => 'ro', isa => 'Paws::Batch::JobTimeout', traits => ['NameInRequest'], request_name => 'timeout');
@@ -88,9 +89,9 @@ A list of dependencies for the job. A job can depend upon a maximum of
 20 jobs. You can specify a C<SEQUENTIAL> type dependency without
 specifying a job ID for array jobs so that each child array job
 completes sequentially, starting at index 0. You can also specify an
-C<N_TO_N> type dependency with a job ID for array jobs so that each
-index child of this job must wait for the corresponding index child of
-each dependency to complete before it can begin.
+C<N_TO_N> type dependency with a job ID for array jobs. In that case,
+each index child of this job must wait for the corresponding index
+child of each dependency to complete before it can begin.
 
 
 
@@ -114,6 +115,13 @@ underscores are allowed.
 
 The job queue into which the job is submitted. You can specify either
 the name or the Amazon Resource Name (ARN) of the queue.
+
+
+
+=head2 NodeOverrides => L<Paws::Batch::NodeOverrides>
+
+A list of node overrides in JSON format that specify the node range to
+target and the container overrides for that node range.
 
 
 

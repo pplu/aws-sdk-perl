@@ -1,10 +1,14 @@
 package Paws::EC2::RequestLaunchTemplateData;
   use Moose;
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LaunchTemplateBlockDeviceMappingRequest]', request_name => 'BlockDeviceMapping', traits => ['NameInRequest']);
+  has CapacityReservationSpecification => (is => 'ro', isa => 'Paws::EC2::LaunchTemplateCapacityReservationSpecificationRequest');
+  has CpuOptions => (is => 'ro', isa => 'Paws::EC2::LaunchTemplateCpuOptionsRequest');
   has CreditSpecification => (is => 'ro', isa => 'Paws::EC2::CreditSpecificationRequest');
   has DisableApiTermination => (is => 'ro', isa => 'Bool');
   has EbsOptimized => (is => 'ro', isa => 'Bool');
   has ElasticGpuSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ElasticGpuSpecification]', request_name => 'ElasticGpuSpecification', traits => ['NameInRequest']);
+  has ElasticInferenceAccelerators => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LaunchTemplateElasticInferenceAccelerator]', request_name => 'ElasticInferenceAccelerator', traits => ['NameInRequest']);
+  has HibernationOptions => (is => 'ro', isa => 'Paws::EC2::LaunchTemplateHibernationOptionsRequest');
   has IamInstanceProfile => (is => 'ro', isa => 'Paws::EC2::LaunchTemplateIamInstanceProfileSpecificationRequest');
   has ImageId => (is => 'ro', isa => 'Str');
   has InstanceInitiatedShutdownBehavior => (is => 'ro', isa => 'Str');
@@ -12,6 +16,7 @@ package Paws::EC2::RequestLaunchTemplateData;
   has InstanceType => (is => 'ro', isa => 'Str');
   has KernelId => (is => 'ro', isa => 'Str');
   has KeyName => (is => 'ro', isa => 'Str');
+  has LicenseSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LaunchTemplateLicenseConfigurationRequest]', request_name => 'LicenseSpecification', traits => ['NameInRequest']);
   has Monitoring => (is => 'ro', isa => 'Paws::EC2::LaunchTemplatesMonitoringRequest');
   has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LaunchTemplateInstanceNetworkInterfaceSpecificationRequest]', request_name => 'NetworkInterface', traits => ['NameInRequest']);
   has Placement => (is => 'ro', isa => 'Paws::EC2::LaunchTemplatePlacementRequest');
@@ -67,10 +72,26 @@ by definition and its encryption status cannot be changed using this
 action.
 
 
+=head2 CapacityReservationSpecification => L<Paws::EC2::LaunchTemplateCapacityReservationSpecificationRequest>
+
+  The Capacity Reservation targeting option. If you do not specify this
+parameter, the instance's Capacity Reservation preference defaults to
+C<open>, which enables it to run in any open Capacity Reservation that
+has matching attributes (instance type, platform, Availability Zone).
+
+
+=head2 CpuOptions => L<Paws::EC2::LaunchTemplateCpuOptionsRequest>
+
+  The CPU options for the instance. For more information, see Optimizing
+CPU Options
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
 =head2 CreditSpecification => L<Paws::EC2::CreditSpecificationRequest>
 
-  The credit option for CPU usage of the instance. Valid for T2 instances
-only.
+  The credit option for CPU usage of the instance. Valid for T2 or T3
+instances only.
 
 
 =head2 DisableApiTermination => Bool
@@ -92,6 +113,23 @@ Additional usage charges apply when using an EBS-optimized instance.
 =head2 ElasticGpuSpecifications => ArrayRef[L<Paws::EC2::ElasticGpuSpecification>]
 
   An elastic GPU to associate with the instance.
+
+
+=head2 ElasticInferenceAccelerators => ArrayRef[L<Paws::EC2::LaunchTemplateElasticInferenceAccelerator>]
+
+  The elastic inference accelerator for the instance.
+
+
+=head2 HibernationOptions => L<Paws::EC2::LaunchTemplateHibernationOptionsRequest>
+
+  Indicates whether an instance is enabled for hibernation. This
+parameter is valid only if the instance meets the hibernation
+prerequisites
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#hibernating-prerequisites).
+Hibernation is currently supported only for Amazon Linux. For more
+information, see Hibernate Your Instance
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html) in
+the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 IamInstanceProfile => L<Paws::EC2::LaunchTemplateIamInstanceProfileSpecificationRequest>
@@ -121,7 +159,7 @@ Default: C<stop>
 =head2 InstanceType => Str
 
   The instance type. For more information, see Instance Types
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
@@ -131,7 +169,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 We recommend that you use PV-GRUB instead of kernels and RAM disks. For
 more information, see User Provided Kernels
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
@@ -143,6 +181,11 @@ or ImportKeyPair.
 If you do not specify a key pair, you can't connect to the instance
 unless you choose an AMI that is configured to allow users another way
 to log in.
+
+
+=head2 LicenseSpecifications => ArrayRef[L<Paws::EC2::LaunchTemplateLicenseConfigurationRequest>]
+
+  The license configurations.
 
 
 =head2 Monitoring => L<Paws::EC2::LaunchTemplatesMonitoringRequest>
@@ -166,7 +209,7 @@ to log in.
 
 We recommend that you use PV-GRUB instead of kernels and RAM disks. For
 more information, see User Provided Kernels
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
@@ -186,18 +229,19 @@ specify both a security group ID and security name in the same request.
 
 =head2 TagSpecifications => ArrayRef[L<Paws::EC2::LaunchTemplateTagSpecificationRequest>]
 
-  The tags to apply to the resources during launch. You can tag instances
-and volumes. The specified tags are applied to all instances or volumes
-that are created during launch.
+  The tags to apply to the resources during launch. You can only tag
+instances and volumes on launch. The specified tags are applied to all
+instances or volumes that are created during launch. To tag a resource
+after it has been created, see CreateTags.
 
 
 =head2 UserData => Str
 
   The Base64-encoded user data to make available to the instance. For
 more information, see Running Commands on Your Linux Instance at Launch
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html)
 (Linux) and Adding User Data
-(http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data)
+(https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data)
 (Windows).
 
 

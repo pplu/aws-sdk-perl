@@ -50,7 +50,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             RecordColumns => [
               {
                 Name    => 'MyRecordColumnName',
-                SqlType => 'MyRecordColumnSqlType',    # min: 1,
+                SqlType => 'MyRecordColumnSqlType',    # min: 1
                 Mapping => 'MyRecordColumnMapping',    # OPTIONAL
               },
               ...
@@ -59,12 +59,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               RecordFormatType  => 'JSON',             # values: JSON, CSV
               MappingParameters => {
                 CSVMappingParameters => {
-                  RecordColumnDelimiter => 'MyRecordColumnDelimiter',  # min: 1,
-                  RecordRowDelimiter    => 'MyRecordRowDelimiter',     # min: 1,
+                  RecordColumnDelimiter => 'MyRecordColumnDelimiter',   # min: 1
+                  RecordRowDelimiter    => 'MyRecordRowDelimiter',      # min: 1
 
                 },    # OPTIONAL
                 JSONMappingParameters => {
-                  RecordRowPath => 'MyRecordRowPath',    # min: 1,
+                  RecordRowPath => 'MyRecordRowPath',    # min: 1
 
                 },    # OPTIONAL
               },    # OPTIONAL
@@ -100,6 +100,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           DestinationSchema => {
             RecordFormatType => 'JSON',    # values: JSON, CSV
+
           },
           Name                  => 'MyInAppStreamName',    # min: 1, max: 32
           KinesisFirehoseOutput => {
@@ -205,8 +206,8 @@ You can configure application output to write data from any of the
 in-application streams to up to three destinations.
 
 These destinations can be Amazon Kinesis streams, Amazon Kinesis
-Firehose delivery streams, Amazon Lambda destinations, or any
-combination of the three.
+Firehose delivery streams, AWS Lambda destinations, or any combination
+of the three.
 
 In the configuration, you specify the in-application stream name, the
 destination stream or Lambda function Amazon Resource Name (ARN), and

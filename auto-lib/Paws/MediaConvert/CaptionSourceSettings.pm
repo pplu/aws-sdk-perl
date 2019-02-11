@@ -4,8 +4,9 @@ package Paws::MediaConvert::CaptionSourceSettings;
   has DvbSubSourceSettings => (is => 'ro', isa => 'Paws::MediaConvert::DvbSubSourceSettings', request_name => 'dvbSubSourceSettings', traits => ['NameInRequest']);
   has EmbeddedSourceSettings => (is => 'ro', isa => 'Paws::MediaConvert::EmbeddedSourceSettings', request_name => 'embeddedSourceSettings', traits => ['NameInRequest']);
   has FileSourceSettings => (is => 'ro', isa => 'Paws::MediaConvert::FileSourceSettings', request_name => 'fileSourceSettings', traits => ['NameInRequest']);
-  has SourceType => (is => 'ro', isa => 'Str', request_name => 'sourceType', traits => ['NameInRequest'], required => 1);
+  has SourceType => (is => 'ro', isa => 'Str', request_name => 'sourceType', traits => ['NameInRequest']);
   has TeletextSourceSettings => (is => 'ro', isa => 'Paws::MediaConvert::TeletextSourceSettings', request_name => 'teletextSourceSettings', traits => ['NameInRequest']);
+  has TrackSourceSettings => (is => 'ro', isa => 'Paws::MediaConvert::TrackSourceSettings', request_name => 'trackSourceSettings', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +26,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConvert::CaptionSourceSettings object:
 
-  $service_obj->Method(Att1 => { AncillarySourceSettings => $value, ..., TeletextSourceSettings => $value  });
+  $service_obj->Method(Att1 => { AncillarySourceSettings => $value, ..., TrackSourceSettings => $value  });
 
 =head3 Results returned from an API call
 
@@ -62,12 +63,17 @@ captions in the input.
   
 
 
-=head2 B<REQUIRED> SourceType => Str
+=head2 SourceType => Str
 
   
 
 
 =head2 TeletextSourceSettings => L<Paws::MediaConvert::TeletextSourceSettings>
+
+  
+
+
+=head2 TrackSourceSettings => L<Paws::MediaConvert::TrackSourceSettings>
 
   
 

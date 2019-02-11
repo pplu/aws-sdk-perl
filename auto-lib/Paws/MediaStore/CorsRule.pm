@@ -1,8 +1,8 @@
 package Paws::MediaStore::CorsRule;
   use Moose;
-  has AllowedHeaders => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has AllowedHeaders => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has AllowedMethods => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has AllowedOrigins => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has AllowedOrigins => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has ExposeHeaders => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MaxAgeSeconds => (is => 'ro', isa => 'Int');
 1;
@@ -42,7 +42,7 @@ rule listed.
 =head1 ATTRIBUTES
 
 
-=head2 AllowedHeaders => ArrayRef[Str|Undef]
+=head2 B<REQUIRED> AllowedHeaders => ArrayRef[Str|Undef]
 
   Specifies which headers are allowed in a preflight C<OPTIONS> request
 through the C<Access-Control-Request-Headers> header. Each header name
@@ -58,17 +58,17 @@ This element can contain only one wildcard character (*).
   Identifies an HTTP method that the origin that is specified in the rule
 is allowed to execute.
 
-Each CORS rule must contain at least one C<AllowedMethod> and one
-C<AllowedOrigin> element.
+Each CORS rule must contain at least one C<AllowedMethods> and one
+C<AllowedOrigins> element.
 
 
-=head2 AllowedOrigins => ArrayRef[Str|Undef]
+=head2 B<REQUIRED> AllowedOrigins => ArrayRef[Str|Undef]
 
   One or more response headers that you want users to be able to access
 from their applications (for example, from a JavaScript
 C<XMLHttpRequest> object).
 
-Each CORS rule must have at least one C<AllowedOrigin> element. The
+Each CORS rule must have at least one C<AllowedOrigins> element. The
 string value can include only one wildcard character (*), for example,
 http://*.example.com. Additionally, you can specify only one wildcard
 character to allow cross-origin access for all origins.

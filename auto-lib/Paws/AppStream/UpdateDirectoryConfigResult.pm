@@ -16,7 +16,7 @@ Paws::AppStream::UpdateDirectoryConfigResult
 
 =head2 DirectoryConfig => L<Paws::AppStream::DirectoryConfig>
 
-Information about the directory configuration.
+Information about the Directory Config object.
 
 
 =head2 _request_id => Str

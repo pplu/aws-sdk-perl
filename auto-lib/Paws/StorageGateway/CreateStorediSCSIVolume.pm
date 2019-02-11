@@ -3,6 +3,8 @@ package Paws::StorageGateway::CreateStorediSCSIVolume;
   use Moose;
   has DiskId => (is => 'ro', isa => 'Str', required => 1);
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
+  has KMSEncrypted => (is => 'ro', isa => 'Bool');
+  has KMSKey => (is => 'ro', isa => 'Str');
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', required => 1);
   has PreserveExistingData => (is => 'ro', isa => 'Bool', required => 1);
   has SnapshotId => (is => 'ro', isa => 'Str');
@@ -41,7 +43,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'GatewayARN' =>
           'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B',
         'NetworkInterfaceId'   => '10.1.1.1',
-        'PreserveExistingData' => true,
+        'PreserveExistingData' => 1,
         'SnapshotId'           => 'snap-f47b7b94',
         'TargetName'           => 'my-volume'
       }
@@ -72,6 +74,21 @@ to list disk IDs for a gateway.
 =head2 B<REQUIRED> GatewayARN => Str
 
 
+
+
+
+=head2 KMSEncrypted => Bool
+
+True to use Amazon S3 server side encryption with your own AWS KMS key,
+or false to use a key managed by Amazon S3. Optional.
+
+
+
+=head2 KMSKey => Str
+
+The Amazon Resource Name (ARN) of the KMS key used for Amazon S3 server
+side encryption. This value can only be set when KMSEncrypted is true.
+Optional.
 
 
 

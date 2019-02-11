@@ -37,7 +37,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head1 DESCRIPTION
 
-Represents a target tracking scaling policy.
+Describes a target tracking configuration. Used with ScalingInstruction
+and ScalingPolicy.
 
 =head1 ATTRIBUTES
 
@@ -49,11 +50,13 @@ Represents a target tracking scaling policy.
 
 =head2 DisableScaleIn => Bool
 
-  Indicates whether scale in by the target tracking policy is disabled.
-If the value is C<true>, scale in is disabled and the target tracking
-policy won't remove capacity from the scalable resource. Otherwise,
-scale in is enabled and the target tracking policy can remove capacity
-from the scalable resource. The default value is C<false>.
+  Indicates whether scale in by the target tracking scaling policy is
+disabled. If the value is C<true>, scale in is disabled and the target
+tracking scaling policy doesn't remove capacity from the scalable
+resource. Otherwise, scale in is enabled and the target tracking
+scaling policy can remove capacity from the scalable resource.
+
+The default value is C<false>.
 
 
 =head2 EstimatedInstanceWarmup => Int
@@ -77,18 +80,18 @@ the scalable resource is an Auto Scaling group.
 The cooldown period is used to block subsequent scale in requests until
 it has expired. The intention is to scale in conservatively to protect
 your application's availability. However, if another alarm triggers a
-scale out policy during the cooldown period after a scale-in, AWS Auto
+scale-out policy during the cooldown period after a scale-in, AWS Auto
 Scaling scales out your scalable target immediately.
 
 
 =head2 ScaleOutCooldown => Int
 
-  The amount of time, in seconds, after a scale out activity completes
-before another scale out activity can start. This value is not used if
+  The amount of time, in seconds, after a scale-out activity completes
+before another scale-out activity can start. This value is not used if
 the scalable resource is an Auto Scaling group.
 
 While the cooldown period is in effect, the capacity that has been
-added by the previous scale out event that initiated the cooldown is
+added by the previous scale-out event that initiated the cooldown is
 calculated as part of the desired capacity for the next scale out. The
 intention is to continuously (but not excessively) scale out.
 

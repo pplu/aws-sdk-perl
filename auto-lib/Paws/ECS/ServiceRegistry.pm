@@ -66,7 +66,7 @@ or a C<port> value, but not both.
 =head2 Port => Int
 
   The port value used if your service discovery service specified an SRV
-record. This field is required if both the C<awsvpc> network mode and
+record. This field may be used if both the C<awsvpc> network mode and
 SRV records are used.
 
 

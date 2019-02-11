@@ -65,6 +65,52 @@ package Paws::IoT1ClickDevices;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllDeviceEvents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDeviceEvents(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListDeviceEvents(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Events }, @{ $next_result->Events };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Events') foreach (@{ $result->Events });
+        $result = $self->ListDeviceEvents(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Events') foreach (@{ $result->Events });
+    }
+
+    return undef
+  }
+  sub ListAllDevices {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDevices(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListDevices(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Devices }, @{ $next_result->Devices };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Devices') foreach (@{ $result->Devices });
+        $result = $self->ListDevices(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Devices') foreach (@{ $result->Devices });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/ClaimDevicesByClaimCode DescribeDevice FinalizeDeviceClaim GetDeviceMethods InitiateDeviceClaim InvokeDeviceMethod ListDeviceEvents ListDevices UnclaimDevice UpdateDeviceState / }
@@ -97,7 +143,7 @@ Paws::IoT1ClickDevices - Perl Interface to AWS AWS IoT 1-Click Devices Service
 
 Stub description
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/devices.iot1click-2018-05-14>
 
 
 =head1 METHODS
@@ -300,6 +346,30 @@ disables the device given a device ID.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllDeviceEvents(sub { },DeviceId => Str, FromTimeStamp => Str, ToTimeStamp => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllDeviceEvents(DeviceId => Str, FromTimeStamp => Str, ToTimeStamp => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Events, passing the object as the first parameter, and the string 'Events' as the second parameter 
+
+If not, it will return a a L<Paws::IoT1ClickDevices::ListDeviceEventsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDevices(sub { },[DeviceType => Str, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllDevices([DeviceType => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Devices, passing the object as the first parameter, and the string 'Devices' as the second parameter 
+
+If not, it will return a a L<Paws::IoT1ClickDevices::ListDevicesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

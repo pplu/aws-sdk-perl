@@ -2,6 +2,7 @@
 package Paws::RDS::DescribeDBSnapshots;
   use Moose;
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
+  has DbiResourceId => (is => 'ro', isa => 'Str');
   has DBSnapshotIdentifier => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Filter]');
   has IncludePublic => (is => 'ro', isa => 'Bool');
@@ -41,7 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       {
         'DBInstanceIdentifier' => 'mymysqlinstance',
         'IncludePublic'        => 0,
-        'IncludeShared'        => true,
+        'IncludeShared'        => 1,
         'SnapshotType'         => 'manual'
       }
     );
@@ -69,6 +70,12 @@ If supplied, must match the identifier of an existing DBInstance.
 
 =back
 
+
+
+
+=head2 DbiResourceId => Str
+
+A specific DB resource ID to describe.
 
 
 

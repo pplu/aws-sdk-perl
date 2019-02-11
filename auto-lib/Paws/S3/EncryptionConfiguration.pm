@@ -31,15 +31,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Encrypt
 
 =head1 DESCRIPTION
 
-Container for information regarding encryption based configuration for
-replicas.
+A container for information about the encryption-based configuration
+for replicas.
 
 =head1 ATTRIBUTES
 
 
 =head2 ReplicaKmsKeyID => Str
 
-  The id of the KMS key used to encrypt the replica object.
+  The ID of the AWS KMS key for the AWS Region where the destination
+bucket resides. Amazon S3 uses this key to encrypt the replica object.
 
 
 

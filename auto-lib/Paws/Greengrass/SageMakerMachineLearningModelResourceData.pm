@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass:
 
 =head1 DESCRIPTION
 
-Attributes that define an SageMaker machine learning resource.
+Attributes that define an Amazon SageMaker machine learning resource.
 
 =head1 ATTRIBUTES
 
@@ -44,7 +44,8 @@ Attributes that define an SageMaker machine learning resource.
 
 =head2 SageMakerJobArn => Str
 
-  The ARN of the SageMaker training job that represents the source model.
+  The ARN of the Amazon SageMaker training job that represents the source
+model.
 
 
 

@@ -29,58 +29,50 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $codepipeline = Paws->service('CodePipeline');
     my $CreatePipelineOutput = $codepipeline->CreatePipeline(
       Pipeline => {
-        artifactStore => {
-          location      => 'MyArtifactStoreLocation',    # min: 3, max: 63
-          type          => 'S3',                         # values: S3
-          encryptionKey => {
-            id   => 'MyEncryptionKeyId',                 # min: 1, max: 100
-            type => 'KMS',                               # values: KMS
-
-          },    # OPTIONAL
-        },
-        name    => 'MyPipelineName',    # min: 1, max: 100
-        roleArn => 'MyRoleArn',         # max: 1024
-        stages  => [
+        Name    => 'MyPipelineName',    # min: 1, max: 100
+        RoleArn => 'MyRoleArn',         # max: 1024
+        Stages  => [
           {
-            actions => [
+            Actions => [
               {
-                actionTypeId => {
-                  category => 'Source'
+                ActionTypeId => {
+                  Category => 'Source'
                   ,    # values: Source, Build, Deploy, Test, Invoke, Approval
-                  owner => 'AWS',    # values: AWS, ThirdParty, Custom
-                  provider => 'MyActionProvider',    # min: 1, max: 25
-                  version  => 'MyVersion',           # min: 1, max: 9
+                  Owner => 'AWS',    # values: AWS, ThirdParty, Custom
+                  Provider => 'MyActionProvider',    # min: 1, max: 25
+                  Version  => 'MyVersion',           # min: 1, max: 9
 
                 },
-                name          => 'MyActionName',     # min: 1, max: 100
-                configuration => {
+                Name          => 'MyActionName',     # min: 1, max: 100
+                Configuration => {
                   'MyActionConfigurationKey' => 'MyActionConfigurationValue'
                   ,    # key: min: 1, max: 50, value: min: 1, max: 1000
                 },    # OPTIONAL
-                inputArtifacts => [
+                InputArtifacts => [
                   {
-                    name => 'MyArtifactName',    # min: 1, max: 100
+                    Name => 'MyArtifactName',    # min: 1, max: 100
 
                   },
                   ...
                 ],                               # OPTIONAL
-                outputArtifacts => [
+                OutputArtifacts => [
                   {
-                    name => 'MyArtifactName',    # min: 1, max: 100
+                    Name => 'MyArtifactName',    # min: 1, max: 100
 
                   },
                   ...
                 ],                               # OPTIONAL
-                roleArn  => 'MyRoleArn',         # max: 1024
-                runOrder => 1,                   # min: 1, max: 999; OPTIONAL
+                Region   => 'MyAWSRegionName',   # min: 4, max: 30; OPTIONAL
+                RoleArn  => 'MyRoleArn',         # max: 1024
+                RunOrder => 1,                   # min: 1, max: 999; OPTIONAL
               },
               ...
             ],
-            name     => 'MyStageName',           # min: 1, max: 100
-            blockers => [
+            Name     => 'MyStageName',           # min: 1, max: 100
+            Blockers => [
               {
-                name => 'MyBlockerName',         # min: 1, max: 100
-                type => 'Schedule',              # values: Schedule
+                Name => 'MyBlockerName',         # min: 1, max: 100
+                Type => 'Schedule',              # values: Schedule
 
               },
               ...
@@ -88,7 +80,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],
-        version => 1,                            # min: 1, ; OPTIONAL
+        ArtifactStore => {
+          Location      => 'MyArtifactStoreLocation',    # min: 3, max: 63
+          Type          => 'S3',                         # values: S3
+          EncryptionKey => {
+            Id   => 'MyEncryptionKeyId',                 # min: 1, max: 100
+            Type => 'KMS',                               # values: KMS
+
+          },    # OPTIONAL
+        },    # OPTIONAL
+        ArtifactStores => {
+          'MyAWSRegionName' => {
+            Location      => 'MyArtifactStoreLocation',    # min: 3, max: 63
+            Type          => 'S3',                         # values: S3
+            EncryptionKey => {
+              Id   => 'MyEncryptionKeyId',                 # min: 1, max: 100
+              Type => 'KMS',                               # values: KMS
+
+            },    # OPTIONAL
+          },    # key: min: 4, max: 30; OPTIONAL, value: OPTIONAL
+        },    # OPTIONAL
+        Version => 1,    # min: 1; OPTIONAL
       },
 
     );

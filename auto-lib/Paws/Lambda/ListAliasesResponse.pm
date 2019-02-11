@@ -23,7 +23,7 @@ A list of aliases.
 
 =head2 NextMarker => Str
 
-A string, present if there are more aliases.
+Pagination token included if more results are available.
 
 
 =head2 _request_id => Str

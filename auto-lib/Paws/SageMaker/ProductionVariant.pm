@@ -1,5 +1,6 @@
 package Paws::SageMaker::ProductionVariant;
   use Moose;
+  has AcceleratorType => (is => 'ro', isa => 'Str');
   has InitialInstanceCount => (is => 'ro', isa => 'Int', required => 1);
   has InitialVariantWeight => (is => 'ro', isa => 'Num');
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
@@ -24,14 +25,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SageMaker::ProductionVariant object:
 
-  $service_obj->Method(Att1 => { InitialInstanceCount => $value, ..., VariantName => $value  });
+  $service_obj->Method(Att1 => { AcceleratorType => $value, ..., VariantName => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::ProductionVariant object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->InitialInstanceCount
+  $result->Att1->AcceleratorType
 
 =head1 DESCRIPTION
 
@@ -41,6 +42,16 @@ SageMaker how to distribute traffic among the models by specifying
 variant weights.
 
 =head1 ATTRIBUTES
+
+
+=head2 AcceleratorType => Str
+
+  The size of the Elastic Inference (EI) instance to use for the
+production variant. EI instances provide on-demand GPU computing for
+inference. For more information, see Using Elastic Inference in Amazon
+SageMaker (http://docs.aws.amazon.com/sagemaker/latest/dg/ei.html). For
+more information, see Using Elastic Inference in Amazon SageMaker
+(http://docs.aws.amazon.com/sagemaker/latest/dg/ei.html).
 
 
 =head2 B<REQUIRED> InitialInstanceCount => Int

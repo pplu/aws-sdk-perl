@@ -30,9 +30,24 @@ package Paws::ServiceCatalog;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::AssociateProductWithPortfolio', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AssociateServiceActionWithProvisioningArtifact {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::AssociateServiceActionWithProvisioningArtifact', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AssociateTagOptionWithResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::AssociateTagOptionWithResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub BatchAssociateServiceActionWithProvisioningArtifact {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::BatchAssociateServiceActionWithProvisioningArtifact', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub BatchDisassociateServiceActionFromProvisioningArtifact {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::BatchDisassociateServiceActionFromProvisioningArtifact', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CopyProduct {
@@ -70,6 +85,11 @@ package Paws::ServiceCatalog;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::CreateProvisioningArtifact', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateServiceAction {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::CreateServiceAction', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateTagOption {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::CreateTagOption', @_);
@@ -105,6 +125,11 @@ package Paws::ServiceCatalog;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DeleteProvisioningArtifact', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteServiceAction {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DeleteServiceAction', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteTagOption {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DeleteTagOption', @_);
@@ -123,6 +148,11 @@ package Paws::ServiceCatalog;
   sub DescribePortfolio {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DescribePortfolio', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribePortfolioShareStatus {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DescribePortfolioShareStatus', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeProduct {
@@ -165,9 +195,19 @@ package Paws::ServiceCatalog;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DescribeRecord', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeServiceAction {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DescribeServiceAction', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeTagOption {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DescribeTagOption', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DisableAWSOrganizationsAccess {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DisableAWSOrganizationsAccess', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DisassociatePrincipalFromPortfolio {
@@ -180,14 +220,34 @@ package Paws::ServiceCatalog;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DisassociateProductFromPortfolio', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DisassociateServiceActionFromProvisioningArtifact {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DisassociateServiceActionFromProvisioningArtifact', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DisassociateTagOptionFromResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DisassociateTagOptionFromResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub EnableAWSOrganizationsAccess {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::EnableAWSOrganizationsAccess', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ExecuteProvisionedProductPlan {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::ExecuteProvisionedProductPlan', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ExecuteProvisionedProductServiceAction {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::ExecuteProvisionedProductServiceAction', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetAWSOrganizationsAccessStatus {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::GetAWSOrganizationsAccessStatus', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListAcceptedPortfolioShares {
@@ -203,6 +263,11 @@ package Paws::ServiceCatalog;
   sub ListLaunchPaths {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::ListLaunchPaths', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListOrganizationPortfolioAccess {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::ListOrganizationPortfolioAccess', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListPortfolioAccess {
@@ -235,6 +300,11 @@ package Paws::ServiceCatalog;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::ListProvisioningArtifacts', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListProvisioningArtifactsForServiceAction {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::ListProvisioningArtifactsForServiceAction', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListRecordHistory {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::ListRecordHistory', @_);
@@ -243,6 +313,16 @@ package Paws::ServiceCatalog;
   sub ListResourcesForTagOption {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::ListResourcesForTagOption', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListServiceActions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::ListServiceActions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListServiceActionsForProvisioningArtifact {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::ListServiceActionsForProvisioningArtifact', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListTagOptions {
@@ -308,6 +388,11 @@ package Paws::ServiceCatalog;
   sub UpdateProvisioningArtifact {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::UpdateProvisioningArtifact', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateServiceAction {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::UpdateServiceAction', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateTagOption {
@@ -385,6 +470,29 @@ package Paws::ServiceCatalog;
 
     return undef
   }
+  sub ListAllOrganizationPortfolioAccess {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListOrganizationPortfolioAccess(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextPageToken) {
+        $next_result = $self->ListOrganizationPortfolioAccess(@_, PageToken => $next_result->NextPageToken);
+        push @{ $result->OrganizationNodes }, @{ $next_result->OrganizationNodes };
+      }
+      return $result;
+    } else {
+      while ($result->NextPageToken) {
+        $callback->($_ => 'OrganizationNodes') foreach (@{ $result->OrganizationNodes });
+        $result = $self->ListOrganizationPortfolioAccess(@_, PageToken => $result->NextPageToken);
+      }
+      $callback->($_ => 'OrganizationNodes') foreach (@{ $result->OrganizationNodes });
+    }
+
+    return undef
+  }
   sub ListAllPortfolios {
     my $self = shift;
 
@@ -454,6 +562,75 @@ package Paws::ServiceCatalog;
 
     return undef
   }
+  sub ListAllProvisionedProductPlans {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListProvisionedProductPlans(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextPageToken) {
+        $next_result = $self->ListProvisionedProductPlans(@_, PageToken => $next_result->NextPageToken);
+        push @{ $result->ProvisionedProductPlans }, @{ $next_result->ProvisionedProductPlans };
+      }
+      return $result;
+    } else {
+      while ($result->NextPageToken) {
+        $callback->($_ => 'ProvisionedProductPlans') foreach (@{ $result->ProvisionedProductPlans });
+        $result = $self->ListProvisionedProductPlans(@_, PageToken => $result->NextPageToken);
+      }
+      $callback->($_ => 'ProvisionedProductPlans') foreach (@{ $result->ProvisionedProductPlans });
+    }
+
+    return undef
+  }
+  sub ListAllProvisioningArtifactsForServiceAction {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListProvisioningArtifactsForServiceAction(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextPageToken) {
+        $next_result = $self->ListProvisioningArtifactsForServiceAction(@_, PageToken => $next_result->NextPageToken);
+        push @{ $result->ProvisioningArtifactViews }, @{ $next_result->ProvisioningArtifactViews };
+      }
+      return $result;
+    } else {
+      while ($result->NextPageToken) {
+        $callback->($_ => 'ProvisioningArtifactViews') foreach (@{ $result->ProvisioningArtifactViews });
+        $result = $self->ListProvisioningArtifactsForServiceAction(@_, PageToken => $result->NextPageToken);
+      }
+      $callback->($_ => 'ProvisioningArtifactViews') foreach (@{ $result->ProvisioningArtifactViews });
+    }
+
+    return undef
+  }
+  sub ListAllRecordHistory {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListRecordHistory(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextPageToken) {
+        $next_result = $self->ListRecordHistory(@_, PageToken => $next_result->NextPageToken);
+        push @{ $result->RecordDetails }, @{ $next_result->RecordDetails };
+      }
+      return $result;
+    } else {
+      while ($result->NextPageToken) {
+        $callback->($_ => 'RecordDetails') foreach (@{ $result->RecordDetails });
+        $result = $self->ListRecordHistory(@_, PageToken => $result->NextPageToken);
+      }
+      $callback->($_ => 'RecordDetails') foreach (@{ $result->RecordDetails });
+    }
+
+    return undef
+  }
   sub ListAllResourcesForTagOption {
     my $self = shift;
 
@@ -477,6 +654,52 @@ package Paws::ServiceCatalog;
 
     return undef
   }
+  sub ListAllServiceActions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListServiceActions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextPageToken) {
+        $next_result = $self->ListServiceActions(@_, PageToken => $next_result->NextPageToken);
+        push @{ $result->ServiceActionSummaries }, @{ $next_result->ServiceActionSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextPageToken) {
+        $callback->($_ => 'ServiceActionSummaries') foreach (@{ $result->ServiceActionSummaries });
+        $result = $self->ListServiceActions(@_, PageToken => $result->NextPageToken);
+      }
+      $callback->($_ => 'ServiceActionSummaries') foreach (@{ $result->ServiceActionSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllServiceActionsForProvisioningArtifact {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListServiceActionsForProvisioningArtifact(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextPageToken) {
+        $next_result = $self->ListServiceActionsForProvisioningArtifact(@_, PageToken => $next_result->NextPageToken);
+        push @{ $result->ServiceActionSummaries }, @{ $next_result->ServiceActionSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextPageToken) {
+        $callback->($_ => 'ServiceActionSummaries') foreach (@{ $result->ServiceActionSummaries });
+        $result = $self->ListServiceActionsForProvisioningArtifact(@_, PageToken => $result->NextPageToken);
+      }
+      $callback->($_ => 'ServiceActionSummaries') foreach (@{ $result->ServiceActionSummaries });
+    }
+
+    return undef
+  }
   sub ListAllTagOptions {
     my $self = shift;
 
@@ -496,6 +719,29 @@ package Paws::ServiceCatalog;
         $result = $self->ListTagOptions(@_, PageToken => $result->PageToken);
       }
       $callback->($_ => 'TagOptionDetails') foreach (@{ $result->TagOptionDetails });
+    }
+
+    return undef
+  }
+  sub ScanAllProvisionedProducts {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ScanProvisionedProducts(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextPageToken) {
+        $next_result = $self->ScanProvisionedProducts(@_, PageToken => $next_result->NextPageToken);
+        push @{ $result->ProvisionedProducts }, @{ $next_result->ProvisionedProducts };
+      }
+      return $result;
+    } else {
+      while ($result->NextPageToken) {
+        $callback->($_ => 'ProvisionedProducts') foreach (@{ $result->ProvisionedProducts });
+        $result = $self->ScanProvisionedProducts(@_, PageToken => $result->NextPageToken);
+      }
+      $callback->($_ => 'ProvisionedProducts') foreach (@{ $result->ProvisionedProducts });
     }
 
     return undef
@@ -525,7 +771,7 @@ package Paws::ServiceCatalog;
   }
 
 
-  sub operations { qw/AcceptPortfolioShare AssociatePrincipalWithPortfolio AssociateProductWithPortfolio AssociateTagOptionWithResource CopyProduct CreateConstraint CreatePortfolio CreatePortfolioShare CreateProduct CreateProvisionedProductPlan CreateProvisioningArtifact CreateTagOption DeleteConstraint DeletePortfolio DeletePortfolioShare DeleteProduct DeleteProvisionedProductPlan DeleteProvisioningArtifact DeleteTagOption DescribeConstraint DescribeCopyProductStatus DescribePortfolio DescribeProduct DescribeProductAsAdmin DescribeProductView DescribeProvisionedProduct DescribeProvisionedProductPlan DescribeProvisioningArtifact DescribeProvisioningParameters DescribeRecord DescribeTagOption DisassociatePrincipalFromPortfolio DisassociateProductFromPortfolio DisassociateTagOptionFromResource ExecuteProvisionedProductPlan ListAcceptedPortfolioShares ListConstraintsForPortfolio ListLaunchPaths ListPortfolioAccess ListPortfolios ListPortfoliosForProduct ListPrincipalsForPortfolio ListProvisionedProductPlans ListProvisioningArtifacts ListRecordHistory ListResourcesForTagOption ListTagOptions ProvisionProduct RejectPortfolioShare ScanProvisionedProducts SearchProducts SearchProductsAsAdmin SearchProvisionedProducts TerminateProvisionedProduct UpdateConstraint UpdatePortfolio UpdateProduct UpdateProvisionedProduct UpdateProvisioningArtifact UpdateTagOption / }
+  sub operations { qw/AcceptPortfolioShare AssociatePrincipalWithPortfolio AssociateProductWithPortfolio AssociateServiceActionWithProvisioningArtifact AssociateTagOptionWithResource BatchAssociateServiceActionWithProvisioningArtifact BatchDisassociateServiceActionFromProvisioningArtifact CopyProduct CreateConstraint CreatePortfolio CreatePortfolioShare CreateProduct CreateProvisionedProductPlan CreateProvisioningArtifact CreateServiceAction CreateTagOption DeleteConstraint DeletePortfolio DeletePortfolioShare DeleteProduct DeleteProvisionedProductPlan DeleteProvisioningArtifact DeleteServiceAction DeleteTagOption DescribeConstraint DescribeCopyProductStatus DescribePortfolio DescribePortfolioShareStatus DescribeProduct DescribeProductAsAdmin DescribeProductView DescribeProvisionedProduct DescribeProvisionedProductPlan DescribeProvisioningArtifact DescribeProvisioningParameters DescribeRecord DescribeServiceAction DescribeTagOption DisableAWSOrganizationsAccess DisassociatePrincipalFromPortfolio DisassociateProductFromPortfolio DisassociateServiceActionFromProvisioningArtifact DisassociateTagOptionFromResource EnableAWSOrganizationsAccess ExecuteProvisionedProductPlan ExecuteProvisionedProductServiceAction GetAWSOrganizationsAccessStatus ListAcceptedPortfolioShares ListConstraintsForPortfolio ListLaunchPaths ListOrganizationPortfolioAccess ListPortfolioAccess ListPortfolios ListPortfoliosForProduct ListPrincipalsForPortfolio ListProvisionedProductPlans ListProvisioningArtifacts ListProvisioningArtifactsForServiceAction ListRecordHistory ListResourcesForTagOption ListServiceActions ListServiceActionsForProvisioningArtifact ListTagOptions ProvisionProduct RejectPortfolioShare ScanProvisionedProducts SearchProducts SearchProductsAsAdmin SearchProvisionedProducts TerminateProvisionedProduct UpdateConstraint UpdatePortfolio UpdateProduct UpdateProvisionedProduct UpdateProvisioningArtifact UpdateServiceAction UpdateTagOption / }
 
 1;
 
@@ -562,7 +808,7 @@ should be familiar with the terminology discussed in AWS Service
 Catalog Concepts
 (http://docs.aws.amazon.com/servicecatalog/latest/adminguide/what-is_concepts.html).
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10>
 
 
 =head1 METHODS
@@ -574,6 +820,8 @@ For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
 =item PortfolioId => Str
 
 =item [AcceptLanguage => Str]
+
+=item [PortfolioShareType => Str]
 
 
 =back
@@ -629,6 +877,28 @@ Returns: a L<Paws::ServiceCatalog::AssociateProductWithPortfolioOutput> instance
 Associates the specified product with the specified portfolio.
 
 
+=head2 AssociateServiceActionWithProvisioningArtifact
+
+=over
+
+=item ProductId => Str
+
+=item ProvisioningArtifactId => Str
+
+=item ServiceActionId => Str
+
+=item [AcceptLanguage => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::AssociateServiceActionWithProvisioningArtifact>
+
+Returns: a L<Paws::ServiceCatalog::AssociateServiceActionWithProvisioningArtifactOutput> instance
+
+Associates a self-service action with a provisioning artifact.
+
+
 =head2 AssociateTagOptionWithResource
 
 =over
@@ -646,6 +916,43 @@ Returns: a L<Paws::ServiceCatalog::AssociateTagOptionWithResourceOutput> instanc
 
 Associate the specified TagOption with the specified portfolio or
 product.
+
+
+=head2 BatchAssociateServiceActionWithProvisioningArtifact
+
+=over
+
+=item ServiceActionAssociations => ArrayRef[L<Paws::ServiceCatalog::ServiceActionAssociation>]
+
+=item [AcceptLanguage => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::BatchAssociateServiceActionWithProvisioningArtifact>
+
+Returns: a L<Paws::ServiceCatalog::BatchAssociateServiceActionWithProvisioningArtifactOutput> instance
+
+Associates multiple self-service actions with provisioning artifacts.
+
+
+=head2 BatchDisassociateServiceActionFromProvisioningArtifact
+
+=over
+
+=item ServiceActionAssociations => ArrayRef[L<Paws::ServiceCatalog::ServiceActionAssociation>]
+
+=item [AcceptLanguage => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::BatchDisassociateServiceActionFromProvisioningArtifact>
+
+Returns: a L<Paws::ServiceCatalog::BatchDisassociateServiceActionFromProvisioningArtifactOutput> instance
+
+Disassociates a batch of self-service actions from the specified
+provisioning artifact.
 
 
 =head2 CopyProduct
@@ -741,11 +1048,13 @@ Creates a portfolio.
 
 =over
 
-=item AccountId => Str
-
 =item PortfolioId => Str
 
 =item [AcceptLanguage => Str]
+
+=item [AccountId => Str]
+
+=item [OrganizationNode => L<Paws::ServiceCatalog::OrganizationNode>]
 
 
 =back
@@ -754,7 +1063,11 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::CreatePortfolio
 
 Returns: a L<Paws::ServiceCatalog::CreatePortfolioShareOutput> instance
 
-Shares the specified portfolio with the specified account.
+Shares the specified portfolio with the specified account or
+organization node. Shares to an organization node can only be created
+by the master account of an Organization. AWSOrganizationsAccess must
+be enabled in order to create a portfolio share to an organization
+node.
 
 
 =head2 CreateProduct
@@ -867,6 +1180,32 @@ You cannot create a provisioning artifact for a product that was shared
 with you.
 
 
+=head2 CreateServiceAction
+
+=over
+
+=item Definition => L<Paws::ServiceCatalog::ServiceActionDefinitionMap>
+
+=item DefinitionType => Str
+
+=item IdempotencyToken => Str
+
+=item Name => Str
+
+=item [AcceptLanguage => Str]
+
+=item [Description => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::CreateServiceAction>
+
+Returns: a L<Paws::ServiceCatalog::CreateServiceActionOutput> instance
+
+Creates a self-service action.
+
+
 =head2 CreateTagOption
 
 =over
@@ -928,11 +1267,13 @@ associated products, users, constraints, or shared accounts.
 
 =over
 
-=item AccountId => Str
-
 =item PortfolioId => Str
 
 =item [AcceptLanguage => Str]
+
+=item [AccountId => Str]
+
+=item [OrganizationNode => L<Paws::ServiceCatalog::OrganizationNode>]
 
 
 =back
@@ -941,7 +1282,9 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::DeletePortfolio
 
 Returns: a L<Paws::ServiceCatalog::DeletePortfolioShareOutput> instance
 
-Stops sharing the specified portfolio with the specified account.
+Stops sharing the specified portfolio with the specified account or
+organization node. Shares to an organization node can only be deleted
+by the master account of an Organization.
 
 
 =head2 DeleteProduct
@@ -1009,6 +1352,24 @@ You cannot delete a provisioning artifact associated with a product
 that was shared with you. You cannot delete the last provisioning
 artifact for a product, because a product must have at least one
 provisioning artifact.
+
+
+=head2 DeleteServiceAction
+
+=over
+
+=item Id => Str
+
+=item [AcceptLanguage => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::DeleteServiceAction>
+
+Returns: a L<Paws::ServiceCatalog::DeleteServiceActionOutput> instance
+
+Deletes a self-service action.
 
 
 =head2 DeleteTagOption
@@ -1082,6 +1443,23 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::DescribePortfol
 Returns: a L<Paws::ServiceCatalog::DescribePortfolioOutput> instance
 
 Gets information about the specified portfolio.
+
+
+=head2 DescribePortfolioShareStatus
+
+=over
+
+=item PortfolioShareToken => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::DescribePortfolioShareStatus>
+
+Returns: a L<Paws::ServiceCatalog::DescribePortfolioShareStatusOutput> instance
+
+Gets the status of the specified portfolio share operation. This API
+can only be called by the master account in the organization.
 
 
 =head2 DescribeProduct
@@ -1259,6 +1637,24 @@ ProvisionProduct, TerminateProvisionedProduct, or
 UpdateProvisionedProduct).
 
 
+=head2 DescribeServiceAction
+
+=over
+
+=item Id => Str
+
+=item [AcceptLanguage => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::DescribeServiceAction>
+
+Returns: a L<Paws::ServiceCatalog::DescribeServiceActionOutput> instance
+
+Describes a self-service action.
+
+
 =head2 DescribeTagOption
 
 =over
@@ -1273,6 +1669,25 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::DescribeTagOpti
 Returns: a L<Paws::ServiceCatalog::DescribeTagOptionOutput> instance
 
 Gets information about the specified TagOption.
+
+
+=head2 DisableAWSOrganizationsAccess
+
+
+
+
+
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::DisableAWSOrganizationsAccess>
+
+Returns: a L<Paws::ServiceCatalog::DisableAWSOrganizationsAccessOutput> instance
+
+Disable portfolio sharing through AWS Organizations feature. This
+feature will not delete your current shares but it will prevent you
+from creating new shares throughout your organization. Current shares
+will not be in sync with your organization structure if it changes
+after calling this API. This API can only be called by the master
+account in the organization.
 
 
 =head2 DisassociatePrincipalFromPortfolio
@@ -1316,6 +1731,29 @@ Returns: a L<Paws::ServiceCatalog::DisassociateProductFromPortfolioOutput> insta
 Disassociates the specified product from the specified portfolio.
 
 
+=head2 DisassociateServiceActionFromProvisioningArtifact
+
+=over
+
+=item ProductId => Str
+
+=item ProvisioningArtifactId => Str
+
+=item ServiceActionId => Str
+
+=item [AcceptLanguage => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::DisassociateServiceActionFromProvisioningArtifact>
+
+Returns: a L<Paws::ServiceCatalog::DisassociateServiceActionFromProvisioningArtifactOutput> instance
+
+Disassociates the specified self-service action association from the
+specified provisioning artifact.
+
+
 =head2 DisassociateTagOptionFromResource
 
 =over
@@ -1332,6 +1770,27 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::DisassociateTag
 Returns: a L<Paws::ServiceCatalog::DisassociateTagOptionFromResourceOutput> instance
 
 Disassociates the specified TagOption from the specified resource.
+
+
+=head2 EnableAWSOrganizationsAccess
+
+
+
+
+
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::EnableAWSOrganizationsAccess>
+
+Returns: a L<Paws::ServiceCatalog::EnableAWSOrganizationsAccessOutput> instance
+
+Enable portfolio sharing feature through AWS Organizations. This API
+will allow Service Catalog to receive updates on your organization in
+order to sync your shares with the current structure. This API can only
+be called by the master account in the organization.
+
+By calling this API Service Catalog will make a call to
+organizations:EnableAWSServiceAccess on your behalf so that your shares
+can be in sync with any changes in your AWS Organizations structure.
 
 
 =head2 ExecuteProvisionedProductPlan
@@ -1353,6 +1812,43 @@ Returns: a L<Paws::ServiceCatalog::ExecuteProvisionedProductPlanOutput> instance
 
 Provisions or modifies a product based on the resource changes for the
 specified plan.
+
+
+=head2 ExecuteProvisionedProductServiceAction
+
+=over
+
+=item ExecuteToken => Str
+
+=item ProvisionedProductId => Str
+
+=item ServiceActionId => Str
+
+=item [AcceptLanguage => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::ExecuteProvisionedProductServiceAction>
+
+Returns: a L<Paws::ServiceCatalog::ExecuteProvisionedProductServiceActionOutput> instance
+
+Executes a self-service action against a provisioned product.
+
+
+=head2 GetAWSOrganizationsAccessStatus
+
+
+
+
+
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::GetAWSOrganizationsAccessStatus>
+
+Returns: a L<Paws::ServiceCatalog::GetAWSOrganizationsAccessStatusOutput> instance
+
+Get the Access Status for AWS Organization portfolio share feature.
+This API can only be called by the master account in the organization.
 
 
 =head2 ListAcceptedPortfolioShares
@@ -1423,6 +1919,32 @@ Returns: a L<Paws::ServiceCatalog::ListLaunchPathsOutput> instance
 Lists the paths to the specified product. A path is how the user has
 access to a specified product, and is necessary when provisioning a
 product. A path also determines the constraints put on the product.
+
+
+=head2 ListOrganizationPortfolioAccess
+
+=over
+
+=item OrganizationNodeType => Str
+
+=item PortfolioId => Str
+
+=item [AcceptLanguage => Str]
+
+=item [PageSize => Int]
+
+=item [PageToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::ListOrganizationPortfolioAccess>
+
+Returns: a L<Paws::ServiceCatalog::ListOrganizationPortfolioAccessOutput> instance
+
+Lists the organization nodes that have access to the specified
+portfolio. This API can only be called by the master account in the
+organization.
 
 
 =head2 ListPortfolioAccess
@@ -1551,6 +2073,29 @@ Lists all provisioning artifacts (also known as versions) for the
 specified product.
 
 
+=head2 ListProvisioningArtifactsForServiceAction
+
+=over
+
+=item ServiceActionId => Str
+
+=item [AcceptLanguage => Str]
+
+=item [PageSize => Int]
+
+=item [PageToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::ListProvisioningArtifactsForServiceAction>
+
+Returns: a L<Paws::ServiceCatalog::ListProvisioningArtifactsForServiceActionOutput> instance
+
+Lists all provisioning artifacts (also known as versions) for the
+specified self-service action.
+
+
 =head2 ListRecordHistory
 
 =over
@@ -1597,6 +2142,51 @@ Returns: a L<Paws::ServiceCatalog::ListResourcesForTagOptionOutput> instance
 Lists the resources associated with the specified TagOption.
 
 
+=head2 ListServiceActions
+
+=over
+
+=item [AcceptLanguage => Str]
+
+=item [PageSize => Int]
+
+=item [PageToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::ListServiceActions>
+
+Returns: a L<Paws::ServiceCatalog::ListServiceActionsOutput> instance
+
+Lists all self-service actions.
+
+
+=head2 ListServiceActionsForProvisioningArtifact
+
+=over
+
+=item ProductId => Str
+
+=item ProvisioningArtifactId => Str
+
+=item [AcceptLanguage => Str]
+
+=item [PageSize => Int]
+
+=item [PageToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::ListServiceActionsForProvisioningArtifact>
+
+Returns: a L<Paws::ServiceCatalog::ListServiceActionsForProvisioningArtifactOutput> instance
+
+Returns a paginated list of self-service actions associated with the
+specified Product ID and Provisioning Artifact ID.
+
+
 =head2 ListTagOptions
 
 =over
@@ -1637,6 +2227,8 @@ Lists the specified TagOptions or all TagOptions.
 
 =item [ProvisioningParameters => ArrayRef[L<Paws::ServiceCatalog::ProvisioningParameter>]]
 
+=item [ProvisioningPreferences => L<Paws::ServiceCatalog::ProvisioningPreferences>]
+
 =item [Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]]
 
 
@@ -1666,6 +2258,8 @@ parameter in Tags[I<N>]:I<Value>".
 =item PortfolioId => Str
 
 =item [AcceptLanguage => Str]
+
+=item [PortfolioShareType => Str]
 
 
 =back
@@ -1922,6 +2516,8 @@ Updates the specified product.
 
 =item [ProvisioningParameters => ArrayRef[L<Paws::ServiceCatalog::UpdateProvisioningParameter>]]
 
+=item [ProvisioningPreferences => L<Paws::ServiceCatalog::UpdateProvisioningPreferences>]
+
 
 =back
 
@@ -1968,6 +2564,30 @@ for the specified product.
 
 You cannot update a provisioning artifact for a product that was shared
 with you.
+
+
+=head2 UpdateServiceAction
+
+=over
+
+=item Id => Str
+
+=item [AcceptLanguage => Str]
+
+=item [Definition => L<Paws::ServiceCatalog::ServiceActionDefinitionMap>]
+
+=item [Description => Str]
+
+=item [Name => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::UpdateServiceAction>
+
+Returns: a L<Paws::ServiceCatalog::UpdateServiceActionOutput> instance
+
+Updates a self-service action.
 
 
 =head2 UpdateTagOption
@@ -2032,6 +2652,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ServiceCatalog::ListLaunchPathsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 ListAllOrganizationPortfolioAccess(sub { },OrganizationNodeType => Str, PortfolioId => Str, [AcceptLanguage => Str, PageSize => Int, PageToken => Str])
+
+=head2 ListAllOrganizationPortfolioAccess(OrganizationNodeType => Str, PortfolioId => Str, [AcceptLanguage => Str, PageSize => Int, PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - OrganizationNodes, passing the object as the first parameter, and the string 'OrganizationNodes' as the second parameter 
+
+If not, it will return a a L<Paws::ServiceCatalog::ListOrganizationPortfolioAccessOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllPortfolios(sub { },[AcceptLanguage => Str, PageSize => Int, PageToken => Str])
 
 =head2 ListAllPortfolios([AcceptLanguage => Str, PageSize => Int, PageToken => Str])
@@ -2068,6 +2700,42 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ServiceCatalog::ListPrincipalsForPortfolioOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 ListAllProvisionedProductPlans(sub { },[AcceptLanguage => Str, AccessLevelFilter => L<Paws::ServiceCatalog::AccessLevelFilter>, PageSize => Int, PageToken => Str, ProvisionProductId => Str])
+
+=head2 ListAllProvisionedProductPlans([AcceptLanguage => Str, AccessLevelFilter => L<Paws::ServiceCatalog::AccessLevelFilter>, PageSize => Int, PageToken => Str, ProvisionProductId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ProvisionedProductPlans, passing the object as the first parameter, and the string 'ProvisionedProductPlans' as the second parameter 
+
+If not, it will return a a L<Paws::ServiceCatalog::ListProvisionedProductPlansOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllProvisioningArtifactsForServiceAction(sub { },ServiceActionId => Str, [AcceptLanguage => Str, PageSize => Int, PageToken => Str])
+
+=head2 ListAllProvisioningArtifactsForServiceAction(ServiceActionId => Str, [AcceptLanguage => Str, PageSize => Int, PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ProvisioningArtifactViews, passing the object as the first parameter, and the string 'ProvisioningArtifactViews' as the second parameter 
+
+If not, it will return a a L<Paws::ServiceCatalog::ListProvisioningArtifactsForServiceActionOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllRecordHistory(sub { },[AcceptLanguage => Str, AccessLevelFilter => L<Paws::ServiceCatalog::AccessLevelFilter>, PageSize => Int, PageToken => Str, SearchFilter => L<Paws::ServiceCatalog::ListRecordHistorySearchFilter>])
+
+=head2 ListAllRecordHistory([AcceptLanguage => Str, AccessLevelFilter => L<Paws::ServiceCatalog::AccessLevelFilter>, PageSize => Int, PageToken => Str, SearchFilter => L<Paws::ServiceCatalog::ListRecordHistorySearchFilter>])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - RecordDetails, passing the object as the first parameter, and the string 'RecordDetails' as the second parameter 
+
+If not, it will return a a L<Paws::ServiceCatalog::ListRecordHistoryOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllResourcesForTagOption(sub { },TagOptionId => Str, [PageSize => Int, PageToken => Str, ResourceType => Str])
 
 =head2 ListAllResourcesForTagOption(TagOptionId => Str, [PageSize => Int, PageToken => Str, ResourceType => Str])
@@ -2080,6 +2748,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ServiceCatalog::ListResourcesForTagOptionOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 ListAllServiceActions(sub { },[AcceptLanguage => Str, PageSize => Int, PageToken => Str])
+
+=head2 ListAllServiceActions([AcceptLanguage => Str, PageSize => Int, PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ServiceActionSummaries, passing the object as the first parameter, and the string 'ServiceActionSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::ServiceCatalog::ListServiceActionsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllServiceActionsForProvisioningArtifact(sub { },ProductId => Str, ProvisioningArtifactId => Str, [AcceptLanguage => Str, PageSize => Int, PageToken => Str])
+
+=head2 ListAllServiceActionsForProvisioningArtifact(ProductId => Str, ProvisioningArtifactId => Str, [AcceptLanguage => Str, PageSize => Int, PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ServiceActionSummaries, passing the object as the first parameter, and the string 'ServiceActionSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::ServiceCatalog::ListServiceActionsForProvisioningArtifactOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllTagOptions(sub { },[Filters => L<Paws::ServiceCatalog::ListTagOptionsFilters>, PageSize => Int, PageToken => Str])
 
 =head2 ListAllTagOptions([Filters => L<Paws::ServiceCatalog::ListTagOptionsFilters>, PageSize => Int, PageToken => Str])
@@ -2090,6 +2782,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - TagOptionDetails, passing the object as the first parameter, and the string 'TagOptionDetails' as the second parameter 
 
 If not, it will return a a L<Paws::ServiceCatalog::ListTagOptionsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ScanAllProvisionedProducts(sub { },[AcceptLanguage => Str, AccessLevelFilter => L<Paws::ServiceCatalog::AccessLevelFilter>, PageSize => Int, PageToken => Str])
+
+=head2 ScanAllProvisionedProducts([AcceptLanguage => Str, AccessLevelFilter => L<Paws::ServiceCatalog::AccessLevelFilter>, PageSize => Int, PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ProvisionedProducts, passing the object as the first parameter, and the string 'ProvisionedProducts' as the second parameter 
+
+If not, it will return a a L<Paws::ServiceCatalog::ScanProvisionedProductsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 SearchAllProductsAsAdmin(sub { },[AcceptLanguage => Str, Filters => L<Paws::ServiceCatalog::ProductViewFilters>, PageSize => Int, PageToken => Str, PortfolioId => Str, ProductSource => Str, SortBy => Str, SortOrder => Str])

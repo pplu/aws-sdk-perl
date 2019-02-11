@@ -33,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       WorkspaceId         => 'MyWorkspaceId',
       WorkspaceProperties => {
         ComputeTypeName => 'VALUE'
-        ,    # values: VALUE, STANDARD, PERFORMANCE, POWER, GRAPHICS; OPTIONAL
+        , # values: VALUE, STANDARD, PERFORMANCE, POWER, GRAPHICS, POWERPRO, GRAPHICSPRO; OPTIONAL
         RootVolumeSizeGib => 1,    # OPTIONAL
         RunningMode => 'AUTO_STOP',    # values: AUTO_STOP, ALWAYS_ON; OPTIONAL
         RunningModeAutoStopTimeoutInMinutes => 1,    # OPTIONAL
@@ -50,7 +50,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 
 =head2 B<REQUIRED> WorkspaceId => Str
 
-The ID of the WorkSpace.
+The identifier of the WorkSpace.
 
 
 

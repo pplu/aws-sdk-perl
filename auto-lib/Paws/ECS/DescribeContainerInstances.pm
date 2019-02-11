@@ -3,6 +3,7 @@ package Paws::ECS::DescribeContainerInstances;
   use Moose;
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
   has ContainerInstances => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'containerInstances' , required => 1);
+  has Include => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'include' );
 
   use MooseX::ClassAttribute;
 
@@ -63,6 +64,15 @@ cluster, the default cluster is assumed.
 
 A list of up to 100 container instance IDs or full Amazon Resource Name
 (ARN) entries.
+
+
+
+=head2 Include => ArrayRef[Str|Undef]
+
+Specifies whether you want to see the resource tags for the container
+instance. If C<TAGS> is specified, the tags are included in the
+response. If this field is omitted, tags are not included in the
+response.
 
 
 

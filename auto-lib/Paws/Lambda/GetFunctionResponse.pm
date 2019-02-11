@@ -20,26 +20,24 @@ Paws::Lambda::GetFunctionResponse
 
 =head2 Code => L<Paws::Lambda::FunctionCodeLocation>
 
-
+The deployment package of the function or version.
 
 
 =head2 Concurrency => L<Paws::Lambda::Concurrency>
 
-The concurrent execution limit set for this function. For more
-information, see concurrent-executions.
+The function's reserved concurrency
+(http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html).
 
 
 =head2 Configuration => L<Paws::Lambda::FunctionConfiguration>
 
-
+The configuration of the function or version.
 
 
 =head2 Tags => L<Paws::Lambda::Tags>
 
-Returns the list of tags associated with the function. For more
-information, see Tagging Lambda Functions
-(http://docs.aws.amazon.com/lambda/latest/dg/tagging.html) in the B<AWS
-Lambda Developer Guide>.
+The function's tags
+(http://docs.aws.amazon.com/lambda/latest/dg/tagging.html).
 
 
 =head2 _request_id => Str

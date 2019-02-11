@@ -68,18 +68,16 @@ include:
 
 =item *
 
-C<CREATED_TIME>: List the build project names based on when each build
-project was created.
+C<CREATED_TIME>: List based on when each build project was created.
 
 =item *
 
-C<LAST_MODIFIED_TIME>: List the build project names based on when
-information about each build project was last changed.
+C<LAST_MODIFIED_TIME>: List based on when information about each build
+project was last changed.
 
 =item *
 
-C<NAME>: List the build project names based on each build project's
-name.
+C<NAME>: List based on each build project's name.
 
 =back
 
@@ -96,11 +94,11 @@ The order in which to list build projects. Valid values include:
 
 =item *
 
-C<ASCENDING>: List the build project names in ascending order.
+C<ASCENDING>: List in ascending order.
 
 =item *
 
-C<DESCENDING>: List the build project names in descending order.
+C<DESCENDING>: List in descending order.
 
 =back
 

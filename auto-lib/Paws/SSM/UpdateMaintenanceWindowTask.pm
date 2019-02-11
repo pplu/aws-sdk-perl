@@ -199,6 +199,20 @@ request. Optional fields that are not specified are set to null.
 The IAM service role ARN to modify. The system assumes this role during
 task execution.
 
+If you do not specify a service role ARN, Systems Manager will use your
+account's service-linked role for Systems Manager by default. If no
+service-linked role for Systems Manager exists in your account, it will
+be created when you run C<RegisterTaskWithMaintenanceWindow> without
+specifying a service role ARN.
+
+For more information, see Service-Linked Role Permissions for Systems
+Manager
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions)
+and Should I Use a Service-Linked Role or a Custom Service Role to Run
+Maintenance Window Tasks?
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role)
+in the I<AWS Systems Manager User Guide>.
+
 
 
 =head2 Targets => ArrayRef[L<Paws::SSM::Target>]

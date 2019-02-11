@@ -1,6 +1,7 @@
 
 package Paws::KMS::GenerateRandom;
   use Moose;
+  has CustomKeyStoreId => (is => 'ro', isa => 'Str');
   has NumberOfBytes => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
@@ -44,6 +45,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms/GenerateRandom>
 
 =head1 ATTRIBUTES
+
+
+=head2 CustomKeyStoreId => Str
+
+Generates the random byte string in the AWS CloudHSM cluster that is
+associated with the specified custom key store
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html).
+To find the ID of a custom key store, use the DescribeCustomKeyStores
+operation.
+
 
 
 =head2 NumberOfBytes => Int

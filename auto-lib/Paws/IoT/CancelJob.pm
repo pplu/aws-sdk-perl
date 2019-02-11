@@ -4,6 +4,7 @@ package Paws::IoT::CancelJob;
   has Comment => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'comment');
   has Force => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'force');
   has JobId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'jobId', required => 1);
+  has ReasonCode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reasonCode');
 
   use MooseX::ClassAttribute;
 
@@ -31,9 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $iot = Paws->service('IoT');
     my $CancelJobResponse = $iot->CancelJob(
-      JobId   => 'MyJobId',
-      Comment => 'MyComment',    # OPTIONAL
-      Force   => 1,              # OPTIONAL
+      JobId      => 'MyJobId',
+      Comment    => 'MyComment',       # OPTIONAL
+      Force      => 1,                 # OPTIONAL
+      ReasonCode => 'MyReasonCode',    # OPTIONAL
     );
 
     # Results:
@@ -71,6 +73,12 @@ is able to recover to a valid state.
 =head2 B<REQUIRED> JobId => Str
 
 The unique identifier you assigned to this job when it was created.
+
+
+
+=head2 ReasonCode => Str
+
+(Optional)A reason code string that explains why the job was canceled.
 
 
 

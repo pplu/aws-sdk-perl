@@ -2,6 +2,7 @@
 package Paws::DeviceFarm::ListDevices;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn' );
+  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::DeviceFilter]', traits => ['NameInRequest'], request_name => 'filters' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   use MooseX::ClassAttribute;
@@ -48,6 +49,133 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dev
 =head2 Arn => Str
 
 The Amazon Resource Name (ARN) of the project.
+
+
+
+=head2 Filters => ArrayRef[L<Paws::DeviceFarm::DeviceFilter>]
+
+Used to select a set of devices. A filter is made up of an attribute,
+an operator, and one or more values.
+
+=over
+
+=item *
+
+Attribute: The aspect of a device such as platform or model used as the
+selction criteria in a device filter.
+
+Allowed values include:
+
+=over
+
+=item *
+
+ARN: The Amazon Resource Name (ARN) of the device. For example,
+"arn:aws:devicefarm:us-west-2::device:12345Example".
+
+=item *
+
+PLATFORM: The device platform. Valid values are "ANDROID" or "IOS".
+
+=item *
+
+OS_VERSION: The operating system version. For example, "10.3.2".
+
+=item *
+
+MODEL: The device model. For example, "iPad 5th Gen".
+
+=item *
+
+AVAILABILITY: The current availability of the device. Valid values are
+"AVAILABLE", "HIGHLY_AVAILABLE", "BUSY", or "TEMPORARY_NOT_AVAILABLE".
+
+=item *
+
+FORM_FACTOR: The device form factor. Valid values are "PHONE" or
+"TABLET".
+
+=item *
+
+MANUFACTURER: The device manufacturer. For example, "Apple".
+
+=item *
+
+REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access.
+Valid values are "TRUE" or "FALSE".
+
+=item *
+
+REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote
+debugging. Valid values are "TRUE" or "FALSE".
+
+=item *
+
+INSTANCE_ARN: The Amazon Resource Name (ARN) of the device instance.
+
+=item *
+
+INSTANCE_LABELS: The label of the device instance.
+
+=item *
+
+FLEET_TYPE: The fleet type. Valid values are "PUBLIC" or "PRIVATE".
+
+=back
+
+=item *
+
+Operator: The filter operator.
+
+=over
+
+=item *
+
+The EQUALS operator is available for every attribute except
+INSTANCE_LABELS.
+
+=item *
+
+The CONTAINS operator is available for the INSTANCE_LABELS and MODEL
+attributes.
+
+=item *
+
+The IN and NOT_IN operators are available for the ARN, OS_VERSION,
+MODEL, MANUFACTURER, and INSTANCE_ARN attributes.
+
+=item *
+
+The LESS_THAN, GREATER_THAN, LESS_THAN_OR_EQUALS, and
+GREATER_THAN_OR_EQUALS operators are also available for the OS_VERSION
+attribute.
+
+=back
+
+=item *
+
+Values: An array of one or more filter values.
+
+=over
+
+=item *
+
+The IN and NOT_IN operators take a values array that has one or more
+elements.
+
+=item *
+
+The other operators require an array with a single element.
+
+=item *
+
+In a request, the AVAILABILITY attribute takes "AVAILABLE",
+"HIGHLY_AVAILABLE", "BUSY", or "TEMPORARY_NOT_AVAILABLE" as values.
+
+=back
+
+=back
+
 
 
 

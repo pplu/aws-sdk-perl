@@ -71,7 +71,7 @@ you don't specify a value, the default is C<exportedlogs>.
 =head2 B<REQUIRED> From => Int
 
 The start time of the range for the request, expressed as the number of
-milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp
+milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a timestamp
 earlier than this time are not exported.
 
 
@@ -98,7 +98,7 @@ The name of the export task.
 =head2 B<REQUIRED> To => Int
 
 The end time of the range for the request, expressed as the number of
-milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp
+milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a timestamp
 later than this time are not exported.
 
 

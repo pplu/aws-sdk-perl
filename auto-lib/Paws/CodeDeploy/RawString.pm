@@ -48,7 +48,7 @@ functions that validate deployment lifecycle events.
 
 =head2 Sha256 => Str
 
-  The SHA256 hash value of the revision that is specified as a RawString.
+  The SHA256 hash value of the revision content.
 
 
 

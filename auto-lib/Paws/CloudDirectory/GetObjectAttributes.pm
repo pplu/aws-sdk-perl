@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $clouddirectory = Paws->service('CloudDirectory');
     my $GetObjectAttributesResponse = $clouddirectory->GetObjectAttributes(
       AttributeNames => [
-        'MyAttributeName', ...    # min: 1, max: 64
+        'MyAttributeName', ...    # min: 1, max: 230
       ],
       DirectoryArn    => 'MyArn',
       ObjectReference => {

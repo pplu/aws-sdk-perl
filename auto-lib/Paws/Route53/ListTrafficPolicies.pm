@@ -58,8 +58,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rou
 Route 53 to return in response to this request. If you have more than
 C<MaxItems> traffic policies, the value of C<IsTruncated> in the
 response is C<true>, and the value of C<TrafficPolicyIdMarker> is the
-ID of the first traffic policy that Amazon Route 53 will return if you
-submit another request.
+ID of the first traffic policy that Route 53 will return if you submit
+another request.
 
 
 

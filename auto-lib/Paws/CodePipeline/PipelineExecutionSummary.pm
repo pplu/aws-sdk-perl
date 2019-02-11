@@ -53,7 +53,8 @@ timestamp format.
 
 =head2 SourceRevisions => ArrayRef[L<Paws::CodePipeline::SourceRevision>]
 
-  
+  A list of the source artifact revisions that initiated a pipeline
+execution.
 
 
 =head2 StartTime => Str

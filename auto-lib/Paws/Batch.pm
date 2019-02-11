@@ -95,6 +95,98 @@ package Paws::Batch;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllComputeEnvironments {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeComputeEnvironments(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeComputeEnvironments(@_, nextToken => $next_result->nextToken);
+        push @{ $result->computeEnvironments }, @{ $next_result->computeEnvironments };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'computeEnvironments') foreach (@{ $result->computeEnvironments });
+        $result = $self->DescribeComputeEnvironments(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'computeEnvironments') foreach (@{ $result->computeEnvironments });
+    }
+
+    return undef
+  }
+  sub DescribeAllJobDefinitions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeJobDefinitions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeJobDefinitions(@_, nextToken => $next_result->nextToken);
+        push @{ $result->jobDefinitions }, @{ $next_result->jobDefinitions };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'jobDefinitions') foreach (@{ $result->jobDefinitions });
+        $result = $self->DescribeJobDefinitions(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'jobDefinitions') foreach (@{ $result->jobDefinitions });
+    }
+
+    return undef
+  }
+  sub DescribeAllJobQueues {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeJobQueues(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeJobQueues(@_, nextToken => $next_result->nextToken);
+        push @{ $result->jobQueues }, @{ $next_result->jobQueues };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'jobQueues') foreach (@{ $result->jobQueues });
+        $result = $self->DescribeJobQueues(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'jobQueues') foreach (@{ $result->jobQueues });
+    }
+
+    return undef
+  }
+  sub ListAllJobs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListJobs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListJobs(@_, nextToken => $next_result->nextToken);
+        push @{ $result->jobSummaryList }, @{ $next_result->jobSummaryList };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'jobSummaryList') foreach (@{ $result->jobSummaryList });
+        $result = $self->ListJobs(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'jobSummaryList') foreach (@{ $result->jobSummaryList });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CancelJob CreateComputeEnvironment CreateJobQueue DeleteComputeEnvironment DeleteJobQueue DeregisterJobDefinition DescribeComputeEnvironments DescribeJobDefinitions DescribeJobQueues DescribeJobs ListJobs RegisterJobDefinition SubmitJob TerminateJob UpdateComputeEnvironment UpdateJobQueue / }
@@ -196,14 +288,18 @@ Returns: a L<Paws::Batch::CreateComputeEnvironmentResponse> instance
 Creates an AWS Batch compute environment. You can create C<MANAGED> or
 C<UNMANAGED> compute environments.
 
-In a managed compute environment, AWS Batch manages the compute
-resources within the environment, based on the compute resources that
-you specify. Instances launched into a managed compute environment use
-a recent, approved version of the Amazon ECS-optimized AMI. You can
-choose to use Amazon EC2 On-Demand Instances in your managed compute
-environment, or you can use Amazon EC2 Spot Instances that only launch
-when the Spot bid price is below a specified percentage of the
-On-Demand price.
+In a managed compute environment, AWS Batch manages the capacity and
+instance types of the compute resources within the environment. This is
+based on the compute resource specification that you define or the
+launch template
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html)
+that you specify when you create the compute environment. You can
+choose to use Amazon EC2 On-Demand Instances or Spot Instances in your
+managed compute environment. You can optionally set a maximum price so
+that Spot Instances only launch when the Spot Instance price is below a
+specified percentage of the On-Demand price.
+
+Multi-node parallel jobs are not supported on Spot Instances.
 
 In an unmanaged compute environment, you can manage your own compute
 resources. This provides more compute resource configuration options,
@@ -214,11 +310,39 @@ see Container Instance AMIs
 in the I<Amazon Elastic Container Service Developer Guide>. After you
 have created your unmanaged compute environment, you can use the
 DescribeComputeEnvironments operation to find the Amazon ECS cluster
-that is associated with it and then manually launch your container
+that is associated with it. Then, manually launch your container
 instances into that Amazon ECS cluster. For more information, see
 Launching an Amazon ECS Container Instance
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
+
+AWS Batch does not upgrade the AMIs in a compute environment after it
+is created (for example, when a newer version of the Amazon
+ECS-optimized AMI is available). You are responsible for the management
+of the guest operating system (including updates and security patches)
+and any additional application software or utilities that you install
+on the compute resources. To use a new AMI for your AWS Batch jobs:
+
+=over
+
+=item 1.
+
+Create a new compute environment with the new AMI.
+
+=item 2.
+
+Add the compute environment to an existing job queue.
+
+=item 3.
+
+Remove the old compute environment from your job queue.
+
+=item 4.
+
+Delete the old compute environment.
+
+=back
+
 
 
 =head2 CreateJobQueue
@@ -407,6 +531,8 @@ Describes a list of AWS Batch jobs.
 
 =item [MaxResults => Int]
 
+=item [MultiNodeJobId => Str]
+
 =item [NextToken => Str]
 
 
@@ -416,9 +542,29 @@ Each argument is described in detail in: L<Paws::Batch::ListJobs>
 
 Returns: a L<Paws::Batch::ListJobsResponse> instance
 
-Returns a list of task jobs for a specified job queue. You can filter
-the results by job status with the C<jobStatus> parameter. If you do
-not specify a status, only C<RUNNING> jobs are returned.
+Returns a list of AWS Batch jobs.
+
+You must specify only one of the following:
+
+=over
+
+=item *
+
+a job queue ID to return a list of jobs in that job queue
+
+=item *
+
+a multi-node parallel job ID to return a list of that job's nodes
+
+=item *
+
+an array job ID to return a list of that job's children
+
+=back
+
+You can filter the results by job status with the C<jobStatus>
+parameter. If you do not specify a status, only C<RUNNING> jobs are
+returned.
 
 
 =head2 RegisterJobDefinition
@@ -430,6 +576,8 @@ not specify a status, only C<RUNNING> jobs are returned.
 =item Type => Str
 
 =item [ContainerProperties => L<Paws::Batch::ContainerProperties>]
+
+=item [NodeProperties => L<Paws::Batch::NodeProperties>]
 
 =item [Parameters => L<Paws::Batch::ParametersMap>]
 
@@ -462,6 +610,8 @@ Registers an AWS Batch job definition.
 =item [ContainerOverrides => L<Paws::Batch::ContainerOverrides>]
 
 =item [DependsOn => ArrayRef[L<Paws::Batch::JobDependency>]]
+
+=item [NodeOverrides => L<Paws::Batch::NodeOverrides>]
 
 =item [Parameters => L<Paws::Batch::ParametersMap>]
 
@@ -550,6 +700,54 @@ Updates a job queue.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllComputeEnvironments(sub { },[ComputeEnvironments => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllComputeEnvironments([ComputeEnvironments => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - computeEnvironments, passing the object as the first parameter, and the string 'computeEnvironments' as the second parameter 
+
+If not, it will return a a L<Paws::Batch::DescribeComputeEnvironmentsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllJobDefinitions(sub { },[JobDefinitionName => Str, JobDefinitions => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str, Status => Str])
+
+=head2 DescribeAllJobDefinitions([JobDefinitionName => Str, JobDefinitions => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str, Status => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - jobDefinitions, passing the object as the first parameter, and the string 'jobDefinitions' as the second parameter 
+
+If not, it will return a a L<Paws::Batch::DescribeJobDefinitionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllJobQueues(sub { },[JobQueues => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllJobQueues([JobQueues => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - jobQueues, passing the object as the first parameter, and the string 'jobQueues' as the second parameter 
+
+If not, it will return a a L<Paws::Batch::DescribeJobQueuesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllJobs(sub { },[ArrayJobId => Str, JobQueue => Str, JobStatus => Str, MaxResults => Int, MultiNodeJobId => Str, NextToken => Str])
+
+=head2 ListAllJobs([ArrayJobId => Str, JobQueue => Str, JobStatus => Str, MaxResults => Int, MultiNodeJobId => Str, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - jobSummaryList, passing the object as the first parameter, and the string 'jobSummaryList' as the second parameter 
+
+If not, it will return a a L<Paws::Batch::ListJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

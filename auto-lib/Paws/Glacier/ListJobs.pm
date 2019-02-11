@@ -48,7 +48,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::Glacier::ListJobsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/glacier/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glacier/ListJobs>
 
 =head1 ATTRIBUTES
 
@@ -71,9 +71,9 @@ The state of the jobs to return. You can specify C<true> or C<false>.
 
 =head2 Limit => Str
 
-The maximum number of jobs to be returned. The default limit is 1000.
-The number of jobs returned might be fewer than the specified limit,
-but the number of returned jobs never exceeds the limit.
+The maximum number of jobs to be returned. The default limit is 50. The
+number of jobs returned might be fewer than the specified limit, but
+the number of returned jobs never exceeds the limit.
 
 
 

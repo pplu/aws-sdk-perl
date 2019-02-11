@@ -5,7 +5,7 @@ package Paws::Lambda::CreateEventSourceMapping;
   has Enabled => (is => 'ro', isa => 'Bool');
   has EventSourceArn => (is => 'ro', isa => 'Str', required => 1);
   has FunctionName => (is => 'ro', isa => 'Str', required => 1);
-  has StartingPosition => (is => 'ro', isa => 'Str', required => 1);
+  has StartingPosition => (is => 'ro', isa => 'Str');
   has StartingPositionTimestamp => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -36,9 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $EventSourceMappingConfiguration = $lambda->CreateEventSourceMapping(
       EventSourceArn            => 'MyArn',
       FunctionName              => 'MyFunctionName',
-      StartingPosition          => 'TRIM_HORIZON',
       BatchSize                 => 1,                        # OPTIONAL
       Enabled                   => 1,                        # OPTIONAL
+      StartingPosition          => 'TRIM_HORIZON',           # OPTIONAL
       StartingPositionTimestamp => '1970-01-01T01:00:00',    # OPTIONAL
     );
 
@@ -64,77 +64,101 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 BatchSize => Int
 
-The largest number of records that AWS Lambda will retrieve from your
-event source at the time of invoking your function. Your function
-receives an event with all the retrieved records. The default is 100
-records.
+The maximum number of items to retrieve in a single batch.
+
+=over
+
+=item *
+
+B<Amazon Kinesis> - Default 100. Max 10,000.
+
+=item *
+
+B<Amazon DynamoDB Streams> - Default 100. Max 1,000.
+
+=item *
+
+B<Amazon Simple Queue Service> - Default 10. Max 10.
+
+=back
+
 
 
 
 =head2 Enabled => Bool
 
-Indicates whether AWS Lambda should begin polling the event source. By
-default, C<Enabled> is true.
+Disables the event source mapping to pause polling and invocation.
 
 
 
 =head2 B<REQUIRED> EventSourceArn => Str
 
-The Amazon Resource Name (ARN) of the Amazon Kinesis or the Amazon
-DynamoDB stream that is the event source. Any record added to this
-stream could cause AWS Lambda to invoke your Lambda function, it
-depends on the C<BatchSize>. AWS Lambda POSTs the Amazon Kinesis event,
-containing records, to your Lambda function as JSON.
+The Amazon Resource Name (ARN) of the event source.
+
+=over
+
+=item *
+
+B<Amazon Kinesis> - The ARN of the data stream or a stream consumer.
+
+=item *
+
+B<Amazon DynamoDB Streams> - The ARN of the stream.
+
+=item *
+
+B<Amazon Simple Queue Service> - The ARN of the queue.
+
+=back
+
 
 
 
 =head2 B<REQUIRED> FunctionName => Str
 
-The Lambda function to invoke when AWS Lambda detects an event on the
-stream.
+The name of the Lambda function.
 
-You can specify the function name (for example, C<Thumbnail>) or you
-can specify Amazon Resource Name (ARN) of the function (for example,
-C<arn:aws:lambda:us-west-2:account-id:function:ThumbNail>).
+B<Name formats>
 
-If you are using versioning, you can also provide a qualified function
-ARN (ARN that is qualified with function version or alias name as
-suffix). For more information about versioning, see AWS Lambda Function
-Versioning and Aliases
-(http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html)
+=over
 
-AWS Lambda also allows you to specify only the function name with the
-account ID qualifier (for example, C<account-id:Thumbnail>).
+=item *
 
-Note that the length constraint applies only to the ARN. If you specify
-only the function name, it is limited to 64 characters in length.
+B<Function name> - C<MyFunction>.
+
+=item *
+
+B<Function ARN> -
+C<arn:aws:lambda:us-west-2:123456789012:function:MyFunction>.
+
+=item *
+
+B<Version or Alias ARN> -
+C<arn:aws:lambda:us-west-2:123456789012:function:MyFunction:PROD>.
+
+=item *
+
+B<Partial ARN> - C<123456789012:function:MyFunction>.
+
+=back
+
+The length constraint applies only to the full ARN. If you specify only
+the function name, it's limited to 64 characters in length.
 
 
 
-=head2 B<REQUIRED> StartingPosition => Str
+=head2 StartingPosition => Str
 
-The position in the DynamoDB or Kinesis stream where AWS Lambda should
-start reading. For more information, see GetShardIterator
-(http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType)
-in the I<Amazon Kinesis API Reference Guide> or GetShardIterator
-(http://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_streams_GetShardIterator.html)
-in the I<Amazon DynamoDB API Reference Guide>. The C<AT_TIMESTAMP>
-value is supported only for Kinesis streams
-(http://docs.aws.amazon.com/streams/latest/dev/amazon-kinesis-streams.html).
+The position in a stream from which to start reading. Required for
+Amazon Kinesis and Amazon DynamoDB Streams sources. C<AT_TIMESTAMP> is
+only supported for Amazon Kinesis streams.
 
 Valid values are: C<"TRIM_HORIZON">, C<"LATEST">, C<"AT_TIMESTAMP">
 
 =head2 StartingPositionTimestamp => Str
 
-The timestamp of the data record from which to start reading. Used with
-shard iterator type
-(http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType)
-AT_TIMESTAMP. If a record with this exact timestamp does not exist, the
-iterator returned is for the next (later) record. If the timestamp is
-older than the current trim horizon, the iterator returned is for the
-oldest untrimmed data record (TRIM_HORIZON). Valid only for Kinesis
-streams
-(http://docs.aws.amazon.com/streams/latest/dev/amazon-kinesis-streams.html).
+With C<StartingPosition> set to C<AT_TIMESTAMP>, the time from which to
+start reading.
 
 
 

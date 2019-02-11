@@ -6,6 +6,7 @@ package Paws::EC2::AllocateHosts;
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken' );
   has InstanceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceType' , required => 1);
   has Quantity => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'quantity' , required => 1);
+  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
 
   use MooseX::ClassAttribute;
 
@@ -32,11 +33,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $AllocateHostsResult = $ec2->AllocateHosts(
-      AvailabilityZone => 'MyString',
-      InstanceType     => 'MyString',
-      Quantity         => 1,
-      AutoPlacement    => 'on',          # OPTIONAL
-      ClientToken      => 'MyString',    # OPTIONAL
+      AvailabilityZone  => 'MyString',
+      InstanceType      => 'MyString',
+      Quantity          => 1,
+      AutoPlacement     => 'on',          # OPTIONAL
+      ClientToken       => 'MyString',    # OPTIONAL
+      TagSpecifications => [
+        {
+          ResourceType => 'customer-gateway'
+          , # values: customer-gateway, dedicated-host, dhcp-options, elastic-ip, fleet, fpga-image, image, instance, internet-gateway, launch-template, natgateway, network-acl, network-interface, reserved-instances, route-table, security-group, snapshot, spot-instances-request, subnet, transit-gateway, transit-gateway-attachment, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway; OPTIONAL
+          Tags => [
+            {
+              Key   => 'MyString',
+              Value => 'MyString',
+            },
+            ...
+          ],    # OPTIONAL
+        },
+        ...
+      ],        # OPTIONAL
     );
 
     # Results:
@@ -68,25 +83,32 @@ The Availability Zone for the Dedicated Hosts.
 
 =head2 ClientToken => Str
 
-Unique, case-sensitive identifier you provide to ensure idempotency of
-the request. For more information, see How to Ensure Idempotency
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html)
+Unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request. For more information, see How to Ensure
+Idempotency
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
 =head2 B<REQUIRED> InstanceType => Str
 
-Specify the instance type that you want your Dedicated Hosts to be
-configured for. When you specify the instance type, that is the only
-instance type that you can launch onto that host.
+Specify the instance type for which to configure your Dedicated Hosts.
+When you specify the instance type, that is the only instance type that
+you can launch onto that host.
 
 
 
 =head2 B<REQUIRED> Quantity => Int
 
-The number of Dedicated Hosts you want to allocate to your account with
-these parameters.
+The number of Dedicated Hosts to allocate to your account with these
+parameters.
+
+
+
+=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+
+The tags to apply to the Dedicated Host during creation.
 
 
 

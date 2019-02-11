@@ -244,7 +244,7 @@ application.
 If you want Amazon Kinesis Analytics to deliver data from an
 in-application stream within your application to an external
 destination (such as an Amazon Kinesis stream, an Amazon Kinesis
-Firehose delivery stream, or an Amazon Lambda function), you add the
+Firehose delivery stream, or an AWS Lambda function), you add the
 relevant configuration to your application using this operation. You
 can configure one or more outputs for your application. Each output
 configuration maps an in-application stream and an external
@@ -252,14 +252,14 @@ destination.
 
 You can use one of the output configurations to deliver data from your
 in-application error stream to an external destination so that you can
-analyze the errors. For conceptual information, see Understanding
-Application Output (Destination)
+analyze the errors. For more information, see Understanding Application
+Output (Destination)
 (http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html).
 
-Note that any configuration update, including adding a streaming source
-using this operation, results in a new version of the application. You
-can use the DescribeApplication operation to find the current
-application version.
+Any configuration update, including adding a streaming source using
+this operation, results in a new version of the application. You can
+use the DescribeApplication operation to find the current application
+version.
 
 For the limits on the number of application inputs and outputs you can
 configure, see Limits

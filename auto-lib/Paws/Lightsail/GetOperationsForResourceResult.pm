@@ -21,8 +21,8 @@ Paws::Lightsail::GetOperationsForResourceResult
 (Deprecated) Returns the number of pages of results that remain.
 
 In releases prior to June 12, 2017, this parameter returned C<null> by
-the API. It is now deprecated, and the API returns the C<nextPageToken>
-parameter instead.
+the API. It is now deprecated, and the API returns the C<next page
+token> parameter instead.
 
 
 =head2 NextPageToken => Str

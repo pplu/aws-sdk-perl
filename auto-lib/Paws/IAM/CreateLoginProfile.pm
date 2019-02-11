@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateLoginProfileResponse = $iam->CreateLoginProfile(
       {
         'Password'              => 'h]6EszR}vJ*m',
-        'PasswordResetRequired' => true,
+        'PasswordResetRequired' => 1,
         'UserName'              => 'Bob'
       }
     );
@@ -79,7 +79,7 @@ sign-in.
 The name of the IAM user to create a password for. The user must
 already exist.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
 also include any of the following characters: _+=,.@-

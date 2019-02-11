@@ -71,7 +71,7 @@ The value returned by the most recent call to GetChangeToken.
 =head2 B<REQUIRED> Updates => ArrayRef[L<Paws::WAFRegional::XssMatchSetUpdate>]
 
 An array of C<XssMatchSetUpdate> objects that you want to insert into
-or delete from a XssMatchSet. For more information, see the applicable
+or delete from an XssMatchSet. For more information, see the applicable
 data types:
 
 =over

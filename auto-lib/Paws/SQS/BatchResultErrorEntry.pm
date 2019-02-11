@@ -34,8 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SQS::BatchR
 
 =head1 DESCRIPTION
 
-This is used in the responses of batch API to give a detailed
-description of the result of an action on each entry in the request.
+Gives a detailed description of the result of an action on each entry
+in the request.
 
 =head1 ATTRIBUTES
 
@@ -57,7 +57,7 @@ description of the result of an action on each entry in the request.
 
 =head2 B<REQUIRED> SenderFault => Bool
 
-  Specifies whether the error happened due to the sender's fault.
+  Specifies whether the error happened due to the producer.
 
 
 

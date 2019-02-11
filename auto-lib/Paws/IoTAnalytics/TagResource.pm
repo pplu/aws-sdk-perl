@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ResourceArn => 'MyResourceArn',
       Tags        => [
         {
-          key   => 'MyTagKey',      # min: 1, max: 256
-          value => 'MyTagValue',    # min: 1, max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 256
+          Value => 'MyTagValue',    # min: 1, max: 256
 
         },
         ...
@@ -50,7 +50,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-The ARN of the resource whose tags will be modified.
+The ARN of the resource whose tags you want to modify.
 
 
 

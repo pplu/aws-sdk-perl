@@ -4,6 +4,7 @@ package Paws::SSM::GetDocument;
   has DocumentFormat => (is => 'ro', isa => 'Str');
   has DocumentVersion => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has VersionName => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -31,16 +32,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ssm = Paws->service('SSM');
     my $GetDocumentResult = $ssm->GetDocument(
       Name            => 'MyDocumentARN',
-      DocumentFormat  => 'YAML',                 # OPTIONAL
-      DocumentVersion => 'MyDocumentVersion',    # OPTIONAL
+      DocumentFormat  => 'YAML',                     # OPTIONAL
+      DocumentVersion => 'MyDocumentVersion',        # OPTIONAL
+      VersionName     => 'MyDocumentVersionName',    # OPTIONAL
     );
 
     # Results:
-    my $Content         = $GetDocumentResult->Content;
-    my $DocumentFormat  = $GetDocumentResult->DocumentFormat;
-    my $DocumentType    = $GetDocumentResult->DocumentType;
-    my $DocumentVersion = $GetDocumentResult->DocumentVersion;
-    my $Name            = $GetDocumentResult->Name;
+    my $AttachmentsContent = $GetDocumentResult->AttachmentsContent;
+    my $Content            = $GetDocumentResult->Content;
+    my $DocumentFormat     = $GetDocumentResult->DocumentFormat;
+    my $DocumentType       = $GetDocumentResult->DocumentType;
+    my $DocumentVersion    = $GetDocumentResult->DocumentVersion;
+    my $Name               = $GetDocumentResult->Name;
+    my $Status             = $GetDocumentResult->Status;
+    my $StatusInformation  = $GetDocumentResult->StatusInformation;
+    my $VersionName        = $GetDocumentResult->VersionName;
 
     # Returns a L<Paws::SSM::GetDocumentResult> object.
 
@@ -66,6 +72,14 @@ The document version for which you want information.
 =head2 B<REQUIRED> Name => Str
 
 The name of the Systems Manager document.
+
+
+
+=head2 VersionName => Str
+
+An optional field specifying the version of the artifact associated
+with the document. For example, "Release 12, Update 6". This value is
+unique across all versions of a document, and cannot be changed.
 
 
 

@@ -1,5 +1,6 @@
 package Paws::Greengrass::FunctionDefinitionVersion;
   use Moose;
+  has DefaultConfig => (is => 'ro', isa => 'Paws::Greengrass::FunctionDefaultConfig');
   has Functions => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::Function]');
 1;
 
@@ -20,20 +21,26 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Greengrass::FunctionDefinitionVersion object:
 
-  $service_obj->Method(Att1 => { Functions => $value, ..., Functions => $value  });
+  $service_obj->Method(Att1 => { DefaultConfig => $value, ..., Functions => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass::FunctionDefinitionVersion object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Functions
+  $result->Att1->DefaultConfig
 
 =head1 DESCRIPTION
 
 Information about a function definition version.
 
 =head1 ATTRIBUTES
+
+
+=head2 DefaultConfig => L<Paws::Greengrass::FunctionDefaultConfig>
+
+  Default configuration that will apply to all Lambda functions in this
+function definition version
 
 
 =head2 Functions => ArrayRef[L<Paws::Greengrass::Function>]

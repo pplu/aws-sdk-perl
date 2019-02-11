@@ -45,7 +45,7 @@ This class has no description
   The access key ID of the owner of the bucket. Before you specify a
 value for your access key ID, review and follow the guidance in Best
 Practices for Managing AWS Access Keys
-(http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html).
+(https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html).
 
 
 =head2 Bucket => Str

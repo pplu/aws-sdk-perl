@@ -20,7 +20,9 @@ Paws::StepFunctions::DescribeStateMachineForExecutionOutput
 
 =head2 B<REQUIRED> Definition => Str
 
-The Amazon States Language definition of the state machine.
+The Amazon States Language definition of the state machine. See Amazon
+States Language
+(http://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html).
 
 
 =head2 B<REQUIRED> Name => Str

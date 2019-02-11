@@ -79,19 +79,19 @@ associated with this traffic policy instance.
 =item Applied
 
 Amazon Route 53 has finished creating resource record sets, and changes
-have propagated to all Amazon Route 53 edge locations.
+have propagated to all Route 53 edge locations.
 
 =item Creating
 
-Amazon Route 53 is creating the resource record sets. Use
+Route 53 is creating the resource record sets. Use
 C<GetTrafficPolicyInstance> to confirm that the
 C<CreateTrafficPolicyInstance> request completed successfully.
 
 =item Failed
 
-Amazon Route 53 wasn't able to create or update the resource record
-sets. When the value of C<State> is C<Failed>, see C<Message> for an
-explanation of what caused the request to fail.
+Route 53 wasn't able to create or update the resource record sets. When
+the value of C<State> is C<Failed>, see C<Message> for an explanation
+of what caused the request to fail.
 
 =back
 

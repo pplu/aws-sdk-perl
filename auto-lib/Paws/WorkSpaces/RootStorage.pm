@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
 =head1 DESCRIPTION
 
-Information about the root volume for a WorkSpace bundle.
+Describes the root volume for a WorkSpace bundle.
 
 =head1 ATTRIBUTES
 

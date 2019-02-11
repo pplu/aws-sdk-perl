@@ -12,6 +12,7 @@ package Paws::MediaLive::HlsGroupSettings;
   has DirectoryStructure => (is => 'ro', isa => 'Str', request_name => 'directoryStructure', traits => ['NameInRequest']);
   has EncryptionType => (is => 'ro', isa => 'Str', request_name => 'encryptionType', traits => ['NameInRequest']);
   has HlsCdnSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsCdnSettings', request_name => 'hlsCdnSettings', traits => ['NameInRequest']);
+  has IFrameOnlyPlaylists => (is => 'ro', isa => 'Str', request_name => 'iFrameOnlyPlaylists', traits => ['NameInRequest']);
   has IndexNSegments => (is => 'ro', isa => 'Int', request_name => 'indexNSegments', traits => ['NameInRequest']);
   has InputLossAction => (is => 'ro', isa => 'Str', request_name => 'inputLossAction', traits => ['NameInRequest']);
   has IvInManifest => (is => 'ro', isa => 'Str', request_name => 'ivInManifest', traits => ['NameInRequest']);
@@ -27,6 +28,7 @@ package Paws::MediaLive::HlsGroupSettings;
   has OutputSelection => (is => 'ro', isa => 'Str', request_name => 'outputSelection', traits => ['NameInRequest']);
   has ProgramDateTime => (is => 'ro', isa => 'Str', request_name => 'programDateTime', traits => ['NameInRequest']);
   has ProgramDateTimePeriod => (is => 'ro', isa => 'Int', request_name => 'programDateTimePeriod', traits => ['NameInRequest']);
+  has RedundantManifest => (is => 'ro', isa => 'Str', request_name => 'redundantManifest', traits => ['NameInRequest']);
   has SegmentationMode => (is => 'ro', isa => 'Str', request_name => 'segmentationMode', traits => ['NameInRequest']);
   has SegmentLength => (is => 'ro', isa => 'Int', request_name => 'segmentLength', traits => ['NameInRequest']);
   has SegmentsPerSubdirectory => (is => 'ro', isa => 'Int', request_name => 'segmentsPerSubdirectory', traits => ['NameInRequest']);
@@ -153,6 +155,12 @@ parameter if no encryption is desired.
   Parameters that control interactions with the CDN.
 
 
+=head2 IFrameOnlyPlaylists => Str
+
+  If enabled, writes out I-Frame only playlists in addition to media
+playlists.
+
+
 =head2 IndexNSegments => Int
 
   If mode is "live", the number of segments to retain in the manifest
@@ -255,10 +263,16 @@ using the timestampOffset.
   Period of insertion of EXT-X-PROGRAM-DATE-TIME entry, in seconds.
 
 
+=head2 RedundantManifest => Str
+
+  When set to "enabled", includes the media playlists from both pipelines
+in the master manifest (.m3u8) file.
+
+
 =head2 SegmentationMode => Str
 
-  When set to useInputSegmentation, the output segment or fragment points
-are set by the RAI markers from the input streams.
+  useInputSegmentation has been deprecated. The configured segment size
+is always used.
 
 
 =head2 SegmentLength => Int

@@ -38,8 +38,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $AllowsHostedConnections = $Lag->AllowsHostedConnections;
     my $AwsDevice               = $Lag->AwsDevice;
+    my $AwsDeviceV2             = $Lag->AwsDeviceV2;
     my $Connections             = $Lag->Connections;
     my $ConnectionsBandwidth    = $Lag->ConnectionsBandwidth;
+    my $HasLogicalRedundancy    = $Lag->HasLogicalRedundancy;
+    my $JumboFrameCapable       = $Lag->JumboFrameCapable;
     my $LagId                   = $Lag->LagId;
     my $LagName                 = $Lag->LagName;
     my $LagState                = $Lag->LagState;
@@ -59,21 +62,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =head2 B<REQUIRED> LagId => Str
 
-The ID of the LAG to update.
-
-Example: dxlag-abc123
-
-Default: None
+The ID of the LAG.
 
 
 
 =head2 LagName => Str
 
-The name for the LAG.
-
-Example: "C<3x10G LAG to AWS>"
-
-Default: None
+The name of the LAG.
 
 
 
@@ -81,8 +76,6 @@ Default: None
 
 The minimum number of physical connections that must be operational for
 the LAG itself to be operational.
-
-Default: None
 
 
 

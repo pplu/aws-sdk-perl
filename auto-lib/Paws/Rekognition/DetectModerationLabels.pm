@@ -42,6 +42,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $ModerationLabels = $DetectModerationLabelsResponse->ModerationLabels;
+    my $ModerationModelVersion =
+      $DetectModerationLabelsResponse->ModerationModelVersion;
 
     # Returns a L<Paws::Rekognition::DetectModerationLabelsResponse> object.
 

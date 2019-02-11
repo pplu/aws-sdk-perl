@@ -20,6 +20,11 @@ package Paws::Discovery;
     my $call_object = $self->new_with_coercions('Paws::Discovery::AssociateConfigurationItemsToApplication', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub BatchDeleteImportData {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Discovery::BatchDeleteImportData', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateApplication {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Discovery::CreateApplication', @_);
@@ -50,6 +55,11 @@ package Paws::Discovery;
     my $call_object = $self->new_with_coercions('Paws::Discovery::DescribeConfigurations', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeContinuousExports {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Discovery::DescribeContinuousExports', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeExportConfigurations {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Discovery::DescribeExportConfigurations', @_);
@@ -58,6 +68,11 @@ package Paws::Discovery;
   sub DescribeExportTasks {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Discovery::DescribeExportTasks', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeImportTasks {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Discovery::DescribeImportTasks', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeTags {
@@ -90,6 +105,11 @@ package Paws::Discovery;
     my $call_object = $self->new_with_coercions('Paws::Discovery::ListServerNeighbors', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartContinuousExport {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Discovery::StartContinuousExport', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartDataCollectionByAgentIds {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Discovery::StartDataCollectionByAgentIds', @_);
@@ -98,6 +118,16 @@ package Paws::Discovery;
   sub StartExportTask {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Discovery::StartExportTask', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StartImportTask {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Discovery::StartImportTask', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopContinuousExport {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Discovery::StopContinuousExport', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StopDataCollectionByAgentIds {
@@ -111,9 +141,147 @@ package Paws::Discovery;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllAgents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeAgents(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeAgents(@_, nextToken => $next_result->nextToken);
+        push @{ $result->agentsInfo }, @{ $next_result->agentsInfo };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'agentsInfo') foreach (@{ $result->agentsInfo });
+        $result = $self->DescribeAgents(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'agentsInfo') foreach (@{ $result->agentsInfo });
+    }
+
+    return undef
+  }
+  sub DescribeAllContinuousExports {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeContinuousExports(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeContinuousExports(@_, nextToken => $next_result->nextToken);
+        push @{ $result->descriptions }, @{ $next_result->descriptions };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'descriptions') foreach (@{ $result->descriptions });
+        $result = $self->DescribeContinuousExports(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'descriptions') foreach (@{ $result->descriptions });
+    }
+
+    return undef
+  }
+  sub DescribeAllExportConfigurations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeExportConfigurations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeExportConfigurations(@_, nextToken => $next_result->nextToken);
+        push @{ $result->exportsInfo }, @{ $next_result->exportsInfo };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'exportsInfo') foreach (@{ $result->exportsInfo });
+        $result = $self->DescribeExportConfigurations(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'exportsInfo') foreach (@{ $result->exportsInfo });
+    }
+
+    return undef
+  }
+  sub DescribeAllExportTasks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeExportTasks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeExportTasks(@_, nextToken => $next_result->nextToken);
+        push @{ $result->exportsInfo }, @{ $next_result->exportsInfo };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'exportsInfo') foreach (@{ $result->exportsInfo });
+        $result = $self->DescribeExportTasks(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'exportsInfo') foreach (@{ $result->exportsInfo });
+    }
+
+    return undef
+  }
+  sub DescribeAllTags {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeTags(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeTags(@_, nextToken => $next_result->nextToken);
+        push @{ $result->tags }, @{ $next_result->tags };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'tags') foreach (@{ $result->tags });
+        $result = $self->DescribeTags(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'tags') foreach (@{ $result->tags });
+    }
+
+    return undef
+  }
+  sub ListAllConfigurations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListConfigurations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListConfigurations(@_, nextToken => $next_result->nextToken);
+        push @{ $result->configurations }, @{ $next_result->configurations };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'configurations') foreach (@{ $result->configurations });
+        $result = $self->ListConfigurations(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'configurations') foreach (@{ $result->configurations });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/AssociateConfigurationItemsToApplication CreateApplication CreateTags DeleteApplications DeleteTags DescribeAgents DescribeConfigurations DescribeExportConfigurations DescribeExportTasks DescribeTags DisassociateConfigurationItemsFromApplication ExportConfigurations GetDiscoverySummary ListConfigurations ListServerNeighbors StartDataCollectionByAgentIds StartExportTask StopDataCollectionByAgentIds UpdateApplication / }
+  sub operations { qw/AssociateConfigurationItemsToApplication BatchDeleteImportData CreateApplication CreateTags DeleteApplications DeleteTags DescribeAgents DescribeConfigurations DescribeContinuousExports DescribeExportConfigurations DescribeExportTasks DescribeImportTasks DescribeTags DisassociateConfigurationItemsFromApplication ExportConfigurations GetDiscoverySummary ListConfigurations ListServerNeighbors StartContinuousExport StartDataCollectionByAgentIds StartExportTask StartImportTask StopContinuousExport StopDataCollectionByAgentIds UpdateApplication / }
 
 1;
 
@@ -201,12 +369,6 @@ data is handled according to the AWS Privacy Policy
 Service offline to inspect collected data before it is shared with the
 service.
 
-Your AWS account must be granted access to Application Discovery
-Service, a process called I<whitelisting>. This is true for AWS
-partners and customers alike. To request access, sign up for
-Application Discovery Service
-(http://aws.amazon.com/application-discovery/).
-
 This API reference provides descriptions, syntax, and usage examples
 for each of the actions and data types for Application Discovery
 Service. The topic for each action shows the API request parameters and
@@ -240,6 +402,32 @@ Each argument is described in detail in: L<Paws::Discovery::AssociateConfigurati
 Returns: a L<Paws::Discovery::AssociateConfigurationItemsToApplicationResponse> instance
 
 Associates one or more configuration items with an application.
+
+
+=head2 BatchDeleteImportData
+
+=over
+
+=item ImportTaskIds => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Discovery::BatchDeleteImportData>
+
+Returns: a L<Paws::Discovery::BatchDeleteImportDataResponse> instance
+
+Deletes one or more import tasks, each identified by their import ID.
+Each import task has a number of records that can identify servers or
+applications.
+
+AWS Application Discovery Service has built-in matching logic that will
+identify when discovered servers match existing entries that you've
+previously discovered, the information for the already-existing
+discovered server is updated. When you delete an import task that
+contains records that were used to match, the information in those
+matched records that comes from the deleted records will also be
+deleted.
 
 
 =head2 CreateApplication
@@ -335,8 +523,9 @@ Each argument is described in detail in: L<Paws::Discovery::DescribeAgents>
 
 Returns: a L<Paws::Discovery::DescribeAgentsResponse> instance
 
-Lists agents or the Connector by ID or lists all agents/Connectors
-associated with your user account if you did not specify an ID.
+Lists agents or connectors as specified by ID or other filters. All
+agents/connectors associated with your user account can be listed if
+you call C<DescribeAgents> as is without passing any parameters.
 
 
 =head2 DescribeConfigurations
@@ -352,16 +541,61 @@ Each argument is described in detail in: L<Paws::Discovery::DescribeConfiguratio
 
 Returns: a L<Paws::Discovery::DescribeConfigurationsResponse> instance
 
-Retrieves attributes for a list of configuration item IDs. All of the
-supplied IDs must be for the same asset type (server, application,
-process, or connection). Output fields are specific to the asset type
-selected. For example, the output for a I<server> configuration item
-includes a list of attributes about the server, such as host name,
-operating system, and number of network cards.
+Retrieves attributes for a list of configuration item IDs.
+
+All of the supplied IDs must be for the same asset type from one of the
+following:
+
+=over
+
+=item *
+
+server
+
+=item *
+
+application
+
+=item *
+
+process
+
+=item *
+
+connection
+
+=back
+
+Output fields are specific to the asset type specified. For example,
+the output for a I<server> configuration item includes a list of
+attributes about the server, such as host name, operating system,
+number of network cards, etc.
 
 For a complete list of outputs for each asset type, see Using the
 DescribeConfigurations Action
 (http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#DescribeConfigurations).
+
+
+=head2 DescribeContinuousExports
+
+=over
+
+=item [ExportIds => ArrayRef[Str|Undef]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Discovery::DescribeContinuousExports>
+
+Returns: a L<Paws::Discovery::DescribeContinuousExportsResponse> instance
+
+Lists exports as specified by ID. All continuous exports associated
+with your user account can be listed if you call
+C<DescribeContinuousExports> as is without passing any parameters.
 
 
 =head2 DescribeExportConfigurations
@@ -381,10 +615,10 @@ Each argument is described in detail in: L<Paws::Discovery::DescribeExportConfig
 
 Returns: a L<Paws::Discovery::DescribeExportConfigurationsResponse> instance
 
-Deprecated. Use C<DescribeExportTasks> instead.
+C<DescribeExportConfigurations> is deprecated.
 
-Retrieves the status of a given export process. You can retrieve status
-from a maximum of 100 processes.
+Use instead C<DescribeExportTasks>
+(http://docs.aws.amazon.com/application-discovery/latest/APIReference/API_DescribeExportTasks.html).
 
 
 =head2 DescribeExportTasks
@@ -410,6 +644,28 @@ Retrieve status of one or more export tasks. You can retrieve the
 status of up to 100 export tasks.
 
 
+=head2 DescribeImportTasks
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::Discovery::ImportTaskFilter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Discovery::DescribeImportTasks>
+
+Returns: a L<Paws::Discovery::DescribeImportTasksResponse> instance
+
+Returns an array of import tasks for your account, including status
+information, times, IDs, the Amazon S3 Object URL for the import file,
+and more.
+
+
 =head2 DescribeTags
 
 =over
@@ -427,9 +683,31 @@ Each argument is described in detail in: L<Paws::Discovery::DescribeTags>
 
 Returns: a L<Paws::Discovery::DescribeTagsResponse> instance
 
-Retrieves a list of configuration items that are tagged with a specific
-tag. Or retrieves a list of all tags assigned to a specific
-configuration item.
+Retrieves a list of configuration items that have tags as specified by
+the key-value pairs, name and value, passed to the optional parameter
+C<filters>.
+
+There are three valid tag filter names:
+
+=over
+
+=item *
+
+tagKey
+
+=item *
+
+tagValue
+
+=item *
+
+configurationId
+
+=back
+
+Also, all configuration items associated with your user account that
+have tags can be listed if you call C<DescribeTags> as is without
+passing any parameters.
 
 
 =head2 DisassociateConfigurationItemsFromApplication
@@ -486,6 +764,9 @@ Returns: a L<Paws::Discovery::GetDiscoverySummaryResponse> instance
 
 Retrieves a short summary of discovered assets.
 
+This API operation takes no request parameters and is called as is at
+the command prompt as shown in the example.
+
 
 =head2 ListConfigurations
 
@@ -508,9 +789,9 @@ Each argument is described in detail in: L<Paws::Discovery::ListConfigurations>
 
 Returns: a L<Paws::Discovery::ListConfigurationsResponse> instance
 
-Retrieves a list of configuration items according to criteria that you
-specify in a filter. The filter criteria identifies the relationship
-requirements.
+Retrieves a list of configuration items as specified by the value
+passed to the required paramater C<configurationType>. Optional
+filtering may be applied to refine search results.
 
 
 =head2 ListServerNeighbors
@@ -536,6 +817,21 @@ Returns: a L<Paws::Discovery::ListServerNeighborsResponse> instance
 
 Retrieves a list of servers that are one network hop away from a
 specified server.
+
+
+=head2 StartContinuousExport
+
+
+
+
+
+
+Each argument is described in detail in: L<Paws::Discovery::StartContinuousExport>
+
+Returns: a L<Paws::Discovery::StartContinuousExportResponse> instance
+
+Start the continuous flow of agent's discovered data into Amazon
+Athena.
 
 
 =head2 StartDataCollectionByAgentIds
@@ -588,6 +884,86 @@ data from AWS Discovery Agents. Export of summary data is limited to
 two exports per day.
 
 
+=head2 StartImportTask
+
+=over
+
+=item ImportUrl => Str
+
+=item Name => Str
+
+=item [ClientRequestToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Discovery::StartImportTask>
+
+Returns: a L<Paws::Discovery::StartImportTaskResponse> instance
+
+Starts an import task, which allows you to import details of your
+on-premises environment directly into AWS without having to use the
+Application Discovery Service (ADS) tools such as the Discovery
+Connector or Discovery Agent. This gives you the option to perform
+migration assessment and planning directly from your imported data,
+including the ability to group your devices as applications and track
+their migration status.
+
+To start an import request, do this:
+
+=over
+
+=item 1.
+
+Download the specially formatted comma separated value (CSV) import
+template, which you can find here:
+https://s3-us-west-2.amazonaws.com/templates-7cffcf56-bd96-4b1c-b45b-a5b42f282e46/import_template.csv
+(https://s3-us-west-2.amazonaws.com/templates-7cffcf56-bd96-4b1c-b45b-a5b42f282e46/import_template.csv).
+
+=item 2.
+
+Fill out the template with your server and application data.
+
+=item 3.
+
+Upload your import file to an Amazon S3 bucket, and make a note of it's
+Object URL. Your import file must be in the CSV format.
+
+=item 4.
+
+Use the console or the C<StartImportTask> command with the AWS CLI or
+one of the AWS SDKs to import the records from your file.
+
+=back
+
+For more information, including step-by-step procedures, see Migration
+Hub Import
+(https://docs.aws.amazon.com/application-discovery/latest/userguide/discovery-import.html)
+in the I<AWS Application Discovery Service User Guide>.
+
+There are limits to the number of import tasks you can create (and
+delete) in an AWS account. For more information, see AWS Application
+Discovery Service Limits
+(https://docs.aws.amazon.com/application-discovery/latest/userguide/ads_service_limits.html)
+in the I<AWS Application Discovery Service User Guide>.
+
+
+=head2 StopContinuousExport
+
+=over
+
+=item ExportId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Discovery::StopContinuousExport>
+
+Returns: a L<Paws::Discovery::StopContinuousExportResponse> instance
+
+Stop the continuous flow of agent's discovered data into Amazon Athena.
+
+
 =head2 StopDataCollectionByAgentIds
 
 =over
@@ -629,6 +1005,78 @@ Updates metadata about an application.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllAgents(sub { },[AgentIds => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::Discovery::Filter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllAgents([AgentIds => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::Discovery::Filter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - agentsInfo, passing the object as the first parameter, and the string 'agentsInfo' as the second parameter 
+
+If not, it will return a a L<Paws::Discovery::DescribeAgentsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllContinuousExports(sub { },[ExportIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllContinuousExports([ExportIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - descriptions, passing the object as the first parameter, and the string 'descriptions' as the second parameter 
+
+If not, it will return a a L<Paws::Discovery::DescribeContinuousExportsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllExportConfigurations(sub { },[ExportIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllExportConfigurations([ExportIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - exportsInfo, passing the object as the first parameter, and the string 'exportsInfo' as the second parameter 
+
+If not, it will return a a L<Paws::Discovery::DescribeExportConfigurationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllExportTasks(sub { },[ExportIds => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::Discovery::ExportFilter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllExportTasks([ExportIds => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::Discovery::ExportFilter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - exportsInfo, passing the object as the first parameter, and the string 'exportsInfo' as the second parameter 
+
+If not, it will return a a L<Paws::Discovery::DescribeExportTasksResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllTags(sub { },[Filters => ArrayRef[L<Paws::Discovery::TagFilter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllTags([Filters => ArrayRef[L<Paws::Discovery::TagFilter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - tags, passing the object as the first parameter, and the string 'tags' as the second parameter 
+
+If not, it will return a a L<Paws::Discovery::DescribeTagsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllConfigurations(sub { },ConfigurationType => Str, [Filters => ArrayRef[L<Paws::Discovery::Filter>], MaxResults => Int, NextToken => Str, OrderBy => ArrayRef[L<Paws::Discovery::OrderByElement>]])
+
+=head2 ListAllConfigurations(ConfigurationType => Str, [Filters => ArrayRef[L<Paws::Discovery::Filter>], MaxResults => Int, NextToken => Str, OrderBy => ArrayRef[L<Paws::Discovery::OrderByElement>]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - configurations, passing the object as the first parameter, and the string 'configurations' as the second parameter 
+
+If not, it will return a a L<Paws::Discovery::ListConfigurationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

@@ -70,7 +70,7 @@ Describes a GraphQL API.
 
 =head2 OpenIDConnectConfig => L<Paws::AppSync::OpenIDConnectConfig>
 
-  The Open Id Connect configuration.
+  The OpenID Connect configuration.
 
 
 =head2 Uris => L<Paws::AppSync::MapOfStringToString>
@@ -80,7 +80,7 @@ Describes a GraphQL API.
 
 =head2 UserPoolConfig => L<Paws::AppSync::UserPoolConfig>
 
-  The Amazon Cognito User Pool configuration.
+  The Amazon Cognito user pool configuration.
 
 
 

@@ -1,6 +1,6 @@
 package Paws::EC2::TargetGroup;
   use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest'], required => 1);
+  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +36,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Arn => Str
+=head2 Arn => Str
 
   The Amazon Resource Name (ARN) of the target group.
 

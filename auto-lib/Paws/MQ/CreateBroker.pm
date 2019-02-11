@@ -9,10 +9,12 @@ package Paws::MQ::CreateBroker;
   has EngineType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'engineType');
   has EngineVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'engineVersion');
   has HostInstanceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'hostInstanceType');
+  has Logs => (is => 'ro', isa => 'Paws::MQ::Logs', traits => ['NameInRequest'], request_name => 'logs');
   has MaintenanceWindowStartTime => (is => 'ro', isa => 'Paws::MQ::WeeklyStartTime', traits => ['NameInRequest'], request_name => 'maintenanceWindowStartTime');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'publiclyAccessible');
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'securityGroups');
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'subnetIds');
+  has Tags => (is => 'ro', isa => 'Paws::MQ::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags');
   has Users => (is => 'ro', isa => 'ArrayRef[Paws::MQ::User]', traits => ['NameInRequest'], request_name => 'users');
 
   use MooseX::ClassAttribute;
@@ -47,20 +49,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Id       => 'My__string',
         Revision => 1,                            # OPTIONAL
       },    # OPTIONAL
-      CreatorRequestId           => 'My__string',         # OPTIONAL
-      DeploymentMode             => 'SINGLE_INSTANCE',    # OPTIONAL
-      EngineType                 => 'ACTIVEMQ',           # OPTIONAL
-      EngineVersion              => 'My__string',         # OPTIONAL
-      HostInstanceType           => 'My__string',         # OPTIONAL
+      CreatorRequestId => 'My__string',         # OPTIONAL
+      DeploymentMode   => 'SINGLE_INSTANCE',    # OPTIONAL
+      EngineType       => 'ACTIVEMQ',           # OPTIONAL
+      EngineVersion    => 'My__string',         # OPTIONAL
+      HostInstanceType => 'My__string',         # OPTIONAL
+      Logs             => {
+        Audit   => 1,
+        General => 1,
+      },                                        # OPTIONAL
       MaintenanceWindowStartTime => {
         DayOfWeek => 'MONDAY'
         , # values: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY; OPTIONAL
         TimeOfDay => 'My__string',
         TimeZone  => 'My__string',
       },    # OPTIONAL
-      PubliclyAccessible => 1,                        # OPTIONAL
-      SecurityGroups     => [ 'My__string', ... ],    # OPTIONAL
-      SubnetIds          => [ 'My__string', ... ],    # OPTIONAL
+      PubliclyAccessible => 1,                                    # OPTIONAL
+      SecurityGroups     => [ 'My__string', ... ],                # OPTIONAL
+      SubnetIds          => [ 'My__string', ... ],                # OPTIONAL
+      Tags               => { 'My__string' => 'My__string', },    # OPTIONAL
       Users              => [
         {
           ConsoleAccess => 1,
@@ -69,7 +76,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Username      => 'My__string',
         },
         ...
-      ],                                              # OPTIONAL
+      ],                                                          # OPTIONAL
     );
 
     # Results:
@@ -79,7 +86,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::MQ::CreateBrokerResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/amazon-mq/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mq/CreateBroker>
 
 =head1 ATTRIBUTES
 
@@ -119,11 +126,7 @@ idempotency.
 
 =head2 DeploymentMode => Str
 
-Required. The deployment mode of the broker. Possible values:
-SINGLE_INSTANCE, ACTIVE_STANDBY_MULTI_AZ SINGLE_INSTANCE creates a
-single-instance broker in a single Availability Zone.
-ACTIVE_STANDBY_MULTI_AZ creates an active/standby broker for high
-availability.
+Required. The deployment mode of the broker.
 
 Valid values are: C<"SINGLE_INSTANCE">, C<"ACTIVE_STANDBY_MULTI_AZ">
 
@@ -136,15 +139,21 @@ Valid values are: C<"ACTIVEMQ">
 
 =head2 EngineVersion => Str
 
-Required. The version of the broker engine. Note: Currently, Amazon MQ
-supports only 5.15.0.
+Required. The version of the broker engine. For a list of supported
+engine versions, see
+https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
 
 
 
 =head2 HostInstanceType => Str
 
-Required. The broker's instance type. Possible values: mq.t2.micro,
-mq.m4.large
+Required. The broker's instance type.
+
+
+
+=head2 Logs => L<Paws::MQ::Logs>
+
+Enables Amazon CloudWatch logging for brokers.
 
 
 
@@ -163,18 +172,23 @@ hosts the broker's subnets.
 
 =head2 SecurityGroups => ArrayRef[Str|Undef]
 
-Required. The list of rules (1 minimum, 125 maximum) that authorize
-connections to brokers.
+The list of rules (1 minimum, 125 maximum) that authorize connections
+to brokers.
 
 
 
 =head2 SubnetIds => ArrayRef[Str|Undef]
 
-Required. The list of groups (2 maximum) that define which subnets and
-IP ranges the broker can use from different Availability Zones. A
-SINGLE_INSTANCE deployment requires one subnet (for example, the
-default subnet). An ACTIVE_STANDBY_MULTI_AZ deployment requires two
-subnets.
+The list of groups (2 maximum) that define which subnets and IP ranges
+the broker can use from different Availability Zones. A SINGLE_INSTANCE
+deployment requires one subnet (for example, the default subnet). An
+ACTIVE_STANDBY_MULTI_AZ deployment requires two subnets.
+
+
+
+=head2 Tags => L<Paws::MQ::__mapOf__string>
+
+Create tags when creating the broker.
 
 
 

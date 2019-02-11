@@ -70,7 +70,7 @@ Information about an application.
 =head2 LinkedToGitHub => Bool
 
   True if the user has authenticated with GitHub for the specified
-application; otherwise, false.
+application. Otherwise, false.
 
 
 

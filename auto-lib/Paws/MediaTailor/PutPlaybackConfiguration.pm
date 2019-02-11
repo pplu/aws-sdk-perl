@@ -3,8 +3,10 @@ package Paws::MediaTailor::PutPlaybackConfiguration;
   use Moose;
   has AdDecisionServerUrl => (is => 'ro', isa => 'Str');
   has CdnConfiguration => (is => 'ro', isa => 'Paws::MediaTailor::CdnConfiguration');
+  has DashConfiguration => (is => 'ro', isa => 'Paws::MediaTailor::DashConfigurationForPut');
   has Name => (is => 'ro', isa => 'Str');
   has SlateAdUrl => (is => 'ro', isa => 'Str');
+  has TranscodeProfileName => (is => 'ro', isa => 'Str');
   has VideoContentSourceUrl => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -39,15 +41,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         AdSegmentUrlPrefix      => 'My__string',
         ContentSegmentUrlPrefix => 'My__string',
       },                                      # OPTIONAL
-      Name                  => 'My__string',  # OPTIONAL
-      SlateAdUrl            => 'My__string',  # OPTIONAL
-      VideoContentSourceUrl => 'My__string',  # OPTIONAL
+      DashConfiguration     => { MpdLocation => 'My__string', },    # OPTIONAL
+      Name                  => 'My__string',                        # OPTIONAL
+      SlateAdUrl            => 'My__string',                        # OPTIONAL
+      TranscodeProfileName  => 'My__string',                        # OPTIONAL
+      VideoContentSourceUrl => 'My__string',                        # OPTIONAL
       );
 
     # Results:
     my $AdDecisionServerUrl =
       $PutPlaybackConfigurationResponse->AdDecisionServerUrl;
     my $CdnConfiguration = $PutPlaybackConfigurationResponse->CdnConfiguration;
+    my $DashConfiguration =
+      $PutPlaybackConfigurationResponse->DashConfiguration;
     my $HlsConfiguration = $PutPlaybackConfigurationResponse->HlsConfiguration;
     my $Name             = $PutPlaybackConfigurationResponse->Name;
     my $PlaybackEndpointPrefix =
@@ -55,13 +61,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SessionInitializationEndpointPrefix =
       $PutPlaybackConfigurationResponse->SessionInitializationEndpointPrefix;
     my $SlateAdUrl = $PutPlaybackConfigurationResponse->SlateAdUrl;
+    my $TranscodeProfileName =
+      $PutPlaybackConfigurationResponse->TranscodeProfileName;
     my $VideoContentSourceUrl =
       $PutPlaybackConfigurationResponse->VideoContentSourceUrl;
 
     # Returns a L<Paws::MediaTailor::PutPlaybackConfigurationResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.mediatailor/PutPlaybackConfiguration>
 
 =head1 ATTRIBUTES
 
@@ -84,6 +92,12 @@ Amazon CloudFront, for content and ad segment management.
 
 
 
+=head2 DashConfiguration => L<Paws::MediaTailor::DashConfigurationForPut>
+
+The configuration object for DASH content.
+
+
+
 =head2 Name => Str
 
 The identifier for the configuration.
@@ -99,6 +113,15 @@ non-VPAID configurations. For VPAID, the slate is required because AWS
 Elemental MediaTailor provides it in the slots that are designated for
 dynamic ad content. The slate must be a high-quality asset that
 contains both audio and video.
+
+
+
+=head2 TranscodeProfileName => Str
+
+Associate this playbackConfiguration with a custom transcode profile,
+overriding MediaTailor's dynamic transcoding defaults. Do not include
+this field if you have not setup custom profiles with the MediaTailor
+service team.
 
 
 

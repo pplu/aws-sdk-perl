@@ -2,6 +2,7 @@
 package Paws::DeviceFarm::CreateDevicePool;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
+  has MaxDevices => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxDevices' );
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
   has ProjectArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectArn' , required => 1);
   has Rules => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Rule]', traits => ['NameInRequest'], request_name => 'rules' , required => 1);
@@ -59,6 +60,19 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dev
 =head2 Description => Str
 
 The device pool's description.
+
+
+
+=head2 MaxDevices => Int
+
+The number of devices that Device Farm can add to your device pool.
+Device Farm adds devices that are available and that meet the criteria
+that you assign for the C<rules> parameter. Depending on how many
+devices meet these constraints, your device pool might contain fewer
+devices than the value for this parameter.
+
+By specifying the maximum number of devices, you can control the costs
+that you incur by running tests.
 
 
 
