@@ -80,7 +80,9 @@ section of the Docker Remote API
 parameter to docker run
 (https://docs.docker.com/engine/reference/run/). For more information,
 see https://docs.docker.com/engine/reference/builder/#cmd
-(https://docs.docker.com/engine/reference/builder/#cmd).
+(https://docs.docker.com/engine/reference/builder/#cmd). If there are
+multiple arguments, each argument should be a separated string in the
+array.
 
 
 =head2 Cpu => Int
@@ -222,7 +224,7 @@ register with the C<ECS_SELINUX_CAPABLE=true> or
 C<ECS_APPARMOR_CAPABLE=true> environment variables before containers
 placed on that instance can use these security options. For more
 information, see Amazon ECS Container Agent Configuration
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 This parameter is not supported for Windows containers.
@@ -273,7 +275,7 @@ application that is composed of multiple containers, you should group
 containers that are used for a common purpose into components, and
 separate the different components into multiple task definitions. For
 more information, see Application Architecture
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/application_architecture.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/application_architecture.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
@@ -452,7 +454,7 @@ register the logging drivers available on that instance with the
 C<ECS_AVAILABLE_LOGGING_DRIVERS> environment variable before containers
 placed on that instance can use these log configuration options. For
 more information, see Amazon ECS Container Agent Configuration
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
@@ -629,7 +631,10 @@ supported resource is a GPU.
 
 =head2 Secrets => ArrayRef[L<Paws::ECS::Secret>]
 
-  The secrets to pass to the container.
+  The secrets to pass to the container. For more information, see
+Specifying Sensitive Data
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 =head2 SystemControls => ArrayRef[L<Paws::ECS::SystemControl>]

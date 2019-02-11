@@ -45,7 +45,7 @@ this parameter are log drivers that the Amazon ECS container agent can
 communicate with by default. If you are using the Fargate launch type,
 the only supported value is C<awslogs>. For more information about
 using the C<awslogs> driver, see Using the awslogs Log Driver
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_awslogs.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_awslogs.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 If you have a custom driver that is not listed above that you would

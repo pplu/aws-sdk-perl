@@ -158,7 +158,7 @@ unhealthy and stopping them before they have time to come up.
 
 The launch type on which to run your service. For more information, see
 Amazon ECS Launch Types
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 Valid values are: C<"EC2">, C<"FARGATE">
@@ -245,7 +245,7 @@ The platform version on which your tasks in the service are running. A
 platform version is only specified for tasks using the Fargate launch
 type. If one is not specified, the C<LATEST> platform version is used
 by default. For more information, see AWS Fargate Platform Versions
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
@@ -283,7 +283,7 @@ specify the full role ARN (this is recommended) or prefix the role name
 with the path. For example, if a role with the name C<bar> has a path
 of C</foo/> then you would specify C</foo/bar> as the role name. For
 more information, see Friendly Names and Paths
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names)
 in the I<IAM User Guide>.
 
 

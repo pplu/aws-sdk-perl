@@ -343,7 +343,7 @@ The short name or full Amazon Resource Name (ARN) of the IAM role that
 containers in this task can assume. All containers in this task are
 granted the permissions that are specified in this role. For more
 information, see IAM Roles for Tasks
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 

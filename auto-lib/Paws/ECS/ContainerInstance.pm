@@ -141,7 +141,7 @@ instance can accept tasks. C<DRAINING> indicates that new tasks are not
 placed on the container instance and any service tasks running on the
 container instance are removed if possible. For more information, see
 Container Instance Draining
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-draining.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-draining.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 

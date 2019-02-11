@@ -33,20 +33,26 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Resour
 =head1 DESCRIPTION
 
 The type and amount of a resource to assign to a container. The only
-supported resource is a GPU.
+supported resource is a GPU. For more information, see Working with
+GPUs on Amazon ECS
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-gpu.html)
+in the I<Amazon Elastic Container Service Developer Guide>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Type => Str
 
-  The type of resource a container desires. The only supported value is
-C<GPU>.
+  The type of resource to assign to a container. The only supported value
+is C<GPU>.
 
 
 =head2 B<REQUIRED> Value => Str
 
-  The number of GPUs to assign to a container.
+  The number of physical C<GPUs> the Amazon ECS container agent will
+reserve for the container. The number of GPUs reserved for all
+containers in a task should not exceed the number of available GPUs on
+the container instance the task is launched on.
 
 
 

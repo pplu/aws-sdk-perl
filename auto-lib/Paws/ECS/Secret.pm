@@ -32,7 +32,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Secret
 
 =head1 DESCRIPTION
 
-An object representing the secret to expose to your container.
+An object representing the secret to expose to your container. For more
+information, see Specifying Sensitive Data
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 =head1 ATTRIBUTES
 
@@ -44,9 +47,17 @@ An object representing the secret to expose to your container.
 
 =head2 B<REQUIRED> ValueFrom => Str
 
-  The secret to expose to the container. Supported values are either the
-full ARN or the name of the parameter in the AWS Systems Manager
-Parameter Store.
+  The secret to expose to the container. If your task is using the EC2
+launch type, then supported values are either the full ARN of the AWS
+Secrets Manager secret or the full ARN of the parameter in the AWS
+Systems Manager Parameter Store. If your task is using the Fargate
+launch type, then the only supported value is the full ARN of the
+parameter in the AWS Systems Manager Parameter Store.
+
+If the AWS Systems Manager Parameter Store parameter exists in the same
+Region as the task you are launching, then you can use either the full
+ARN or name of the parameter. If the parameter exists in a different
+Region, then the full ARN must be specified.
 
 
 

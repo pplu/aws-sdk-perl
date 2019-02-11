@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Placem
 
 The task placement strategy for a task or service. For more
 information, see Task Placement Strategies
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-strategies.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-strategies.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 =head1 ATTRIBUTES

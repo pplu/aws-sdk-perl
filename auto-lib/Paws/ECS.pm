@@ -135,6 +135,11 @@ package Paws::ECS;
     my $call_object = $self->new_with_coercions('Paws::ECS::PutAccountSetting', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutAccountSettingDefault {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::PutAccountSettingDefault', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutAttributes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::PutAttributes', @_);
@@ -387,7 +392,7 @@ package Paws::ECS;
   }
 
 
-  sub operations { qw/CreateCluster CreateService DeleteAccountSetting DeleteAttributes DeleteCluster DeleteService DeregisterContainerInstance DeregisterTaskDefinition DescribeClusters DescribeContainerInstances DescribeServices DescribeTaskDefinition DescribeTasks DiscoverPollEndpoint ListAccountSettings ListAttributes ListClusters ListContainerInstances ListServices ListTagsForResource ListTaskDefinitionFamilies ListTaskDefinitions ListTasks PutAccountSetting PutAttributes RegisterContainerInstance RegisterTaskDefinition RunTask StartTask StopTask SubmitContainerStateChange SubmitTaskStateChange TagResource UntagResource UpdateContainerAgent UpdateContainerInstancesState UpdateService / }
+  sub operations { qw/CreateCluster CreateService DeleteAccountSetting DeleteAttributes DeleteCluster DeleteService DeregisterContainerInstance DeregisterTaskDefinition DescribeClusters DescribeContainerInstances DescribeServices DescribeTaskDefinition DescribeTasks DiscoverPollEndpoint ListAccountSettings ListAttributes ListClusters ListContainerInstances ListServices ListTagsForResource ListTaskDefinitionFamilies ListTaskDefinitions ListTasks PutAccountSetting PutAccountSettingDefault PutAttributes RegisterContainerInstance RegisterTaskDefinition RunTask StartTask StopTask SubmitContainerStateChange SubmitTaskStateChange TagResource UntagResource UpdateContainerAgent UpdateContainerInstancesState UpdateService / }
 
 1;
 
@@ -531,7 +536,7 @@ In addition to maintaining the desired count of tasks in your service,
 you can optionally run your service behind a load balancer. The load
 balancer distributes traffic across the tasks that are associated with
 the service. For more information, see Service Load Balancing
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 You can optionally specify a deployment configuration for your service.
@@ -1017,7 +1022,7 @@ Returns a list of container instances in a specified cluster. You can
 filter the results of a C<ListContainerInstances> operation with
 cluster query language statements inside the C<filter> parameter. For
 more information, see Cluster Query Language
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
@@ -1171,11 +1176,39 @@ Each argument is described in detail in: L<Paws::ECS::PutAccountSetting>
 
 Returns: a L<Paws::ECS::PutAccountSettingResponse> instance
 
-Modifies the ARN and resource ID format of a resource for a specified
-IAM user, IAM role, or the root user for an account. You can specify
-whether the new ARN and resource ID format are enabled for new
-resources that are created. Enabling this setting is required to use
-new Amazon ECS features such as resource tagging.
+Modifies the ARN and resource ID format of a resource type for a
+specified IAM user, IAM role, or the root user for an account. If the
+account setting for the root user is changed, it sets the default
+setting for all of the IAM users and roles for which no individual
+account setting has been set. The opt-in and opt-out account setting
+can be set for each Amazon ECS resource separately. The ARN and
+resource ID format of a resource will be defined by the opt-in status
+of the IAM user or role that created the resource. Enabling this
+setting is required to use new Amazon ECS features such as resource
+tagging. For more information, see Amazon Resource Names (ARNs) and IDs
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-resource-ids.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
+
+
+=head2 PutAccountSettingDefault
+
+=over
+
+=item Name => Str
+
+=item Value => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECS::PutAccountSettingDefault>
+
+Returns: a L<Paws::ECS::PutAccountSettingDefaultResponse> instance
+
+Modifies the ARN and resource ID format of a resource type for all IAM
+users on an account for which no individual account setting has been
+set. Enabling this setting is required to use new Amazon ECS features
+such as resource tagging.
 
 
 =head2 PutAttributes
@@ -1197,7 +1230,7 @@ Create or update an attribute on an Amazon ECS resource. If the
 attribute does not exist, it is created. If the attribute exists, its
 value is replaced with the specified value. To delete an attribute, use
 DeleteAttributes. For more information, see Attributes
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html#attributes)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html#attributes)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
@@ -1279,7 +1312,7 @@ C<containerDefinitions>. Optionally, you can add data volumes to your
 containers with the C<volumes> parameter. For more information about
 task definition parameters and defaults, see Amazon ECS Task
 Definitions
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 You can specify an IAM role for your task with the C<taskRoleArn>
@@ -1287,7 +1320,7 @@ parameter. When you specify an IAM role for a task, its containers can
 then use the latest versions of the AWS CLI or SDKs to make API
 requests to the AWS services that are specified in the IAM policy
 associated with the role. For more information, see IAM Roles for Tasks
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 You can specify a Docker networking mode for the containers in your
@@ -1346,7 +1379,7 @@ Starts a new task using the specified task definition.
 You can allow Amazon ECS to place tasks for you, or you can customize
 how Amazon ECS places tasks using placement constraints and placement
 strategies. For more information, see Scheduling Tasks
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 Alternatively, you can use StartTask to use your own scheduler or place
@@ -1419,7 +1452,7 @@ container instance or instances.
 
 Alternatively, you can use RunTask to place tasks for you. For more
 information, see Scheduling Tasks
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
@@ -1453,7 +1486,7 @@ the container handles the C<SIGTERM> value gracefully and exits within
 The default 30-second timeout can be configured on the Amazon ECS
 container agent with the C<ECS_CONTAINER_STOP_TIMEOUT> variable. For
 more information, see Amazon ECS Container Agent Configuration
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
@@ -1588,7 +1621,7 @@ C<UpdateContainerAgent> requires the Amazon ECS-optimized AMI or Amazon
 Linux with the C<ecs-init> service installed and running. For help
 updating the Amazon ECS container agent on other operating systems, see
 Manually Updating the Amazon ECS Container Agent
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html#manually_update_agent)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html#manually_update_agent)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 

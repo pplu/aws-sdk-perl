@@ -93,14 +93,14 @@ The default ephemeral port range from 49153 through 65535 is always
 used for Docker versions before 1.6.0.
 
 The default reserved ports are 22 for SSH, the Docker ports 2375 and
-2376, and the Amazon ECS container agent ports 51678 and 51679. Any
-host port that was previously specified in a running task is also
-reserved while the task is running (after a task stops, the host port
-is released). The current reserved ports are displayed in the
+2376, and the Amazon ECS container agent ports 51678-51680. Any host
+port that was previously specified in a running task is also reserved
+while the task is running (after a task stops, the host port is
+released). The current reserved ports are displayed in the
 C<remainingResources> of DescribeContainerInstances output. A container
-instance may have up to 100 reserved ports at a time, including the
-default reserved ports. Aautomatically assigned ports do not count
-toward the 100 reserved ports limit.
+instance can have up to 100 reserved ports at a time, including the
+default reserved ports. Automatically assigned ports don't count toward
+the 100 reserved ports limit.
 
 
 =head2 Protocol => Str

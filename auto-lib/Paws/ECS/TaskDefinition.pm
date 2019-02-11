@@ -56,7 +56,7 @@ Details of a task definition.
 
   The launch type to use with your task. For more information, see Amazon
 ECS Launch Types
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
@@ -66,7 +66,7 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 different containers that make up your task. For more information about
 container definition parameters and defaults, see Amazon ECS Task
 Definitions
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
@@ -318,7 +318,7 @@ option is set when you launch the Amazon ECS-optimized Windows AMI.
 Your containers must also run some configuration code in order to take
 advantage of the feature. For more information, see Windows IAM Roles
 for Tasks
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/windows_task_IAM_roles.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/windows_task_IAM_roles.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
@@ -331,7 +331,7 @@ parameters are not supported.
 
 For more information about volume definition parameters and defaults,
 see Amazon ECS Task Definitions
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
