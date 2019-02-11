@@ -1,4 +1,4 @@
-0.39 X Feb 2019
+0.39 11 Feb 2019
  - Paws is now installed with Module::Builder::Tiny, which speeds
    up installation (Grinzz)
  - MojoAsyncCaller is working correctly (leonerd, bork1n)
