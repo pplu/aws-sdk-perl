@@ -938,13 +938,13 @@ one of the AWS SDKs to import the records from your file.
 
 For more information, including step-by-step procedures, see Migration
 Hub Import
-(http://docs.aws.amazon.com/application-discovery/latest/userguide/discovery-import.html)
+(https://docs.aws.amazon.com/application-discovery/latest/userguide/discovery-import.html)
 in the I<AWS Application Discovery Service User Guide>.
 
 There are limits to the number of import tasks you can create (and
 delete) in an AWS account. For more information, see AWS Application
 Discovery Service Limits
-(http://docs.aws.amazon.com/application-discovery/latest/userguide/ads_service_limits.html)
+(https://docs.aws.amazon.com/application-discovery/latest/userguide/ads_service_limits.html)
 in the I<AWS Application Discovery Service User Guide>.
 
 

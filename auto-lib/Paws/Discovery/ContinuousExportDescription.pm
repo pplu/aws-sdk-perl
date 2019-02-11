@@ -178,6 +178,13 @@ Limitations
 (http://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html)
 in the Amazon Simple Storage Service Developer Guide.
 
+=item *
+
+S3_NOT_SIGNED_UP - Your account is not signed up for the Amazon S3
+service. You must sign up before you can use Amazon S3. You can sign up
+at the following URL: https://aws.amazon.com/s3
+(https://aws.amazon.com/s3).
+
 =back
 
 
