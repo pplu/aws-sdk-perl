@@ -79,7 +79,7 @@ automate operations on the specified resources.
 Amazon DLM supports Amazon EBS volumes and snapshots. For information
 about using Amazon DLM with Amazon EBS, see Automating the Amazon EBS
 Snapshot Lifecycle
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html)
 in the I<Amazon EC2 User Guide>.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dlm-2018-01-12>

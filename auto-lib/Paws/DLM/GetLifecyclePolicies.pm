@@ -33,13 +33,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $dlm = Paws->service('DLM');
     my $GetLifecyclePoliciesResponse = $dlm->GetLifecyclePolicies(
-      PolicyIds => [ 'MyPolicyId', ... ],    # OPTIONAL
+      PolicyIds     => [ 'MyPolicyId', ... ],    # OPTIONAL
       ResourceTypes => [
-        'VOLUME', ...                        # values: VOLUME
-      ],                                     # OPTIONAL
-      State      => 'ENABLED',               # OPTIONAL
-      TagsToAdd  => [ 'MyTagFilter', ... ],  # OPTIONAL
-      TargetTags => [ 'MyTagFilter', ... ],  # OPTIONAL
+        'VOLUME', ...                            # values: VOLUME
+      ],                                         # OPTIONAL
+      State      => 'ENABLED',                   # OPTIONAL
+      TagsToAdd  => [ 'MyTagFilter', ... ],      # OPTIONAL
+      TargetTags => [ 'MyTagFilter', ... ],      # OPTIONAL
     );
 
     # Results:
