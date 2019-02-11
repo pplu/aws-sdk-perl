@@ -14,7 +14,7 @@ requires 'DateTime';
 requires 'DateTime::Format::ISO8601';
 requires 'URL::Encode';
 requires 'URL::Encode::XS';
-requires 'URI::Template';
+requires 'URI::Template' => '0.23';
 requires 'Config::INI';
 requires 'Digest::SHA';
 # For the paws CLI
