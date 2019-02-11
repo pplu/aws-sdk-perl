@@ -922,7 +922,9 @@ Arthur Axel fREW Schmidt for speeding up credential refreshing
 
 PopeFelix for solving issues around S3 and MojoAsyncCaller
 
-meis for contributing Paws::Credential::Explicit
+meis for (between others):
+ - contributing Paws::Credential::Explicit
+ - enabling unstable warnings to be silenced
 
 sven-schubert for contributing fixes to RestXML services,
 working on fixing S3 to work correctly.
@@ -941,6 +943,20 @@ castaway for contributing to fixing documentation problems
 autarch for correcting signature generation for a bunch of services
 
 piratefinn for linking calls to documentation AWS URLs
+
+slobo for fixing S3 behaviour
+
+bork1n for fixes to MojoAsynCaller
+
+atoomic for:
+ - tweaking CPAN packaging
+ - improving paws CLI
+
+leonerd for (between others)
+ - documenting retry logic
+ - fixing retry sleep of MojoAsyncCaller
+
+campus-explorer for contributing to test suite
 
 
 =cut
