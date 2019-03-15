@@ -1,0 +1,13 @@
+---
+call: ListObjects
+service: S3
+tests:
+  - expected: fedora-completed-test
+    op: eq
+    path: Name
+  - expected: 41/
+    op: eq
+    path: Prefix
+  - expected: 41/000/
+    op: eq
+    path: CommonPrefixes.0.Prefix
